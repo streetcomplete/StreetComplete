@@ -4396,7 +4396,7 @@
                 },
                 "building/stable": {
                     "name": "Pferdestall",
-                    "terms": "stallungen,stallgebäude"
+                    "terms": "stallungen,stallgebäude,stall"
                 },
                 "building/stadium": {
                     "name": "Stadion",
@@ -6933,7 +6933,7 @@
                     "terms": "erdöl,öl,ölheizkraftwerk,heizkraftwerk,kraftwerk"
                 },
                 "power/plant/source/solar": {
-                    "name": "Solarstromanlage",
+                    "name": "Solarpark",
                     "terms": "solarpark,photovoltaikanlage,pv-anlage,solar,sonne,kraftwerk,pv,photovoltaik,fotovoltaik,solarpanel"
                 },
                 "power/plant/source/waste": {

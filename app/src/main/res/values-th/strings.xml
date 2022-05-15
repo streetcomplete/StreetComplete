@@ -92,7 +92,7 @@
     <string name="quest_openingHours_public_holidays_short">"วันหยุด"</string>
     <string name="quest_openingHours_open_end">"ปลายเปิด"</string>
     <string name="quest_openingHours_answer_247">"เปิด 24 ชั่วโมง"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"ต่างกันในแต่ละเดือน..."</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"ต่างกันในแต่ละเดือน…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"ไม่มีเวลาเปิด-ปิด ที่แน่นอน…"</string>
     <string name="quest_openingHours_comment_title">"ระบุเวลาเปิดทำการ"</string>
     <string name="quest_openingHours_comment_description">"ให้กระชับ ควรใช้ถ้อยคำจากเครื่องหมาย เช่น \"โดยการนัดล่วงหน้าเท่านั้น\" การไม่มีป้ายไม่ได้หมายความว่าไม่มีเวลาเปิดทำการปกติเสมอไป"</string>
@@ -134,7 +134,7 @@
     <string name="autosync_on">"เปิด"</string>
     <string name="autosync_only_on_wifi">"เฉพาะ Wi-Fi"</string>
     <string name="autosync_off">"ปิด"</string>
-    <string name="quest_streetSurface_title">"ถนนเส้นนี้มีผิวจราจรแบบไหน?"</string>
+    <string name="quest_streetSurface_title">"ถนนเส้นนี้มีพื้นผิวแบบไหน?"</string>
     <string name="quest_surface_value_paved">"ปรับผิว (ทั่วไป)"</string>
     <string name="quest_surface_value_unpaved">"ไม่ปรับผิว (ทั่วไป)"</string>
     <string name="quest_surface_value_ground">"ดิน (ทั่วไป)"</string>
@@ -146,7 +146,7 @@
     <string name="quest_surface_value_grass">"หญ้า"</string>
     <string name="quest_surface_value_grass_paver">"บล็อกปูหญ้า"</string>
     <string name="quest_surface_value_gravel">"ลูกรัง"</string>
-    <string name="quest_surface_value_paving_stones">"หินดาด"</string>
+    <string name="quest_surface_value_paving_stones">"หินแผ่นปูพื้น"</string>
     <string name="quest_surface_value_pebblestone">"หินกรวด"</string>
     <string name="quest_surface_value_sand">"ทราย"</string>
     <string name="quest_surface_value_sett">"บล็อกเบลเยี่ยม"</string>
@@ -258,7 +258,7 @@
 
 ไม่งั้น คุณสามารถดาว์นโหลดแป้นพิมพ์ตัวอื่นจาก App Store ได้ แป้นพิมพ์ที่รองรับหลายภาษาที่มีการใช้งานแพร่หลายจะมี Google Gboard, SwiftKey Keyboard และ Multiling O Keyboard"</string>
     <string name="quest_streetName_menuItem_nolanguage">"(ไม่ระบุ)"</string>
-    <string name="quest_fireHydrant_type_title">"นี่คือตัวจ่ายน้ำดับเพลิงชนิดใด?"</string>
+    <string name="quest_fireHydrant_type_title">"นี่คือหัวจ่ายน้ำดับเพลิงชนิดใด?"</string>
     <string name="quest_fireHydrant_type_pillar">"เสา"</string>
     <string name="quest_fireHydrant_type_underground">"ใต้ดิน"</string>
     <string name="quest_fireHydrant_type_wall">"กำแพง"</string>
@@ -350,7 +350,7 @@
     <string name="quest_powerPolesMaterial_wood">"ไม้"</string>
     <string name="quest_powerPolesMaterial_metal">"เหล็ก"</string>
     <string name="quest_powerPolesMaterial_concrete">"คอนกรีต"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"เพียงคำแนะนำจำกัดความเร็ว..."</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"เพียงคำแนะนำจำกัดความเร็ว…"</string>
     <string name="quest_address_answer_house_name">"ไม่มีเลขที่บ้าน มีแต่ชื่อ…"</string>
     <string name="quest_address_house_name_label">"ชื่อบ้าน:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"ชั้นในหลังคา"</string>
@@ -568,7 +568,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"รวมถึงอาคารร้านอาหาร ร้านกาแฟ …"</string>
-    <string name="quest_openingHours_timeSelect_next">"ต่อไป"</string>
+    <string name="quest_openingHours_timeSelect_next">"ถัดไป"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_title">"ความแน่นของพื้นผิวของแทร็กนี้คืออะไร?"</string>
@@ -856,7 +856,7 @@
     <string name="quest_board_type_map">"มันคือแผนที่"</string>
     <string name="quest_board_type_map_title">"มันเป็นเพียงแผนที่และเป็นแผนที่เท่านั้น?"</string>
     <string name="quest_board_type_map_description">"หากกระดานเกี่ยวกับหัวข้อใดหัวข้อหนึ่ง โปรดระบุหัวข้อ ไม่ว่ากระดานจะมีแผนที่รวมอยู่ด้วยหรือไม่ ตัวอย่างเช่น กระดานข้อมูลขนส่งสาธารณะอาจมีแผนที่เส้นทางรถประจำทาง หากหัวข้อไม่อยู่ในรายการคำตอบที่มีอยู่ โปรดพิจารณาใส่หมายเหตุแทน"</string>
-    <string name="quest_surface_detailed_answer_impossible">"พื้นผิวหลายประเภท..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"พื้นผิวหลายประเภท…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"แน่ใจหรือเปล่าว่าไม่สามารถระบุประเภทของพื้นผิวได้? จำไว้ว่าตัวเลือก \"มีความแตกต่างในทางแต่ละส่วน\" สามารถให้คุณแบ่งทางตรงที่พื้นผิวเปลี่ยน กรุณาใช้ตัวเลือก \"ระบุไม่ได้\" ถ้ามีพื้นผิวแบบเดียวแต่ไม่มีตัวเลือกให้เลือกในคำตอบ"</string>
@@ -975,7 +975,7 @@
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
     <string name="quest_tracktype_grade2a">"เป็นพื้นแข็งแต่ยังไม่ปรับผิวถนน"</string>
     <string name="quest_tracktype_grade3a">"พื้นค่อนข้างแข็ง"</string>
-    <string name="quest_generic_answer_does_not_exist">"มันไม่มีอยู่..."</string>
+    <string name="quest_generic_answer_does_not_exist">"มันไม่มีอยู่…"</string>
     <string name="osm_element_gone_description">"คุณแน่ใจว่ามันไม่มีอยู่จริง หรือว่าตำแหน่งที่ตั้งอาจอยู่ผิดที่ไปนิดหน่อย? ถ้าไม่แน่ใจ ให้ใส่หมายเหตุไว้ดีกว่า"</string>
     <string name="osm_element_gone_confirmation">"มันไม่มีอยู่"</string>
     <string name="leave_note">"ใส่โน๊ต"</string>
@@ -998,7 +998,7 @@
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"ตามปกติแล้ว ให้แตะที่ด้านหนึ่งของภาพประกอบ เลือกคำตอบที่ถูกต้อง และทำเช่นเดียวกันกับอีกด้านหนึ่ง ให้สังเกตุตัวเลือกที่มีทั้งหมด: บางกรณีอาจไม่ชัดเจน เช่น ถนนทางเดียวที่อนุญาตให้นักปั่นจักรยานทั้งสองทิศทาง!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"เลือกว่าไม่มีช่องจักรยาน"</string>
-    <string name="quest_construction_completed_at_known_date">"น่าจะเสร็จในวันที่..."</string>
+    <string name="quest_construction_completed_at_known_date">"น่าจะเสร็จในวันที่…"</string>
     <string name="quest_construction_completion_date_title">"จะเสร็จเมื่อไหร่"</string>
     <string name="quest_surface_value_clay">"ดินเหนียว"</string>
     <string name="quest_surface_value_artificial_turf">"หญ้าเทียม"</string>
@@ -1033,7 +1033,7 @@
     <string name="undo_confirm_title2">"ยกเลิกการแก้ไขต่อไปนี้ไหม?"</string>
     <string name="synced">"ซิงค์แล้ว"</string>
     <string name="toast_undo_unavailable">"การแก้ไขนี้ถูกซิงค์แล้วและจะยกเลิกไม่ได้"</string>
-    <string name="quest_cycleway_value_separate">"แสดงแยกส่วนบนแผนที่"</string>
+    <string name="quest_cycleway_value_separate">"แสดงแยกต่างหากบนแผนที่"</string>
 
     <!-- Edit history sidebar -->
     <string name="created_note_action_title">"บันทึกที่สร้าง"</string>
@@ -1053,7 +1053,6 @@
     <string name="background_type_map">"แผนที่"</string>
     <string name="background_type_aerial_esri">"ทางอากาศ (โดย Esri)"</string>
     <string name="quest_barrier_type_title">"ตรงนี้เป็นแผงกั้นประเภทใด?"</string>
-    <string name="quest_barrier_type_gate">"รั้ว"</string>
     <string name="quest_barrier_type_lift_gate">"ไม้กระดก"</string>
     <string name="quest_barrier_type_bollard">"อุปสรรคเสา"</string>
     <string name="quest_barrier_type_chain">"โซ่"</string>
@@ -1076,7 +1075,7 @@
     <string name="quest_barrier_type_swing_gate">"แถบแนวนอน"</string>
     <string name="quest_policeType_title">"นี่คือสถานีตำรวจประเภทใด?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"แปลงเป็นประตู​กลกันสัตว์​เดินออก"</string>
-    <string name="quest_stile_type_title">"นี่คือประตูหมุนแบบไหน?"</string>
+    <string name="quest_stile_type_title">"นี่คือทางข้ามรั้วแบบไหน?"</string>
     <string name="quest_buildingType_semi_detached_description2">"บ้านเดี่ยวเชื่อมกัน"</string>
 
     <!-- Fuzzy -->
@@ -1098,5 +1097,275 @@
     <string name="quest_buildingLevels_title_buildingPart2">"อาคารส่วนนี้มีความสูงเหนือชั้นใต้ดินกี่ชั้น?"</string>
     <string name="quest_crossing_title">"มีขอบถนนตรงที่ทางนี้ไปบรรจบกับถนนไหม? แบบไหน?"</string>
     <string name="pref_subtitle_quests_preset_name">"ค่าที่ตั้งไว้: %s"</string>
+    <string name="default_disabled_msg_roofShape">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะคุณอาจจะมองรูปร่างของหลังคาไม่เห็นจากถนน และภารกิจประเภทนี้มักใช้เวลามาก โดยปกติแล้ว ภารกิจแบบนี้จะทำได้ง่ายกว่าที่บ้านโดยใช้ข้อมูลจากภาพถ่ายทางอากาศ"</string>
     <string name="quest_religion_animist">"วิญญาณนิยม"</string>
+    <string name="quest_construction_steps_title">"ขั้นบันไดตรงนี้เสร็จหรือยัง?"</string>
+    <string name="pref_quests_deselect_all">"เอาภารกิจทั้งหมดออก"</string>
+    <string name="quest_buildingType_boathouse">"โรงเรือ"</string>
+    <string name="quest_buildingType_allotment_house">"บ้านในสวนส่วนกลาง"</string>
+    <string name="quest_buildingType_grandstand">"อัฒจันทร์"</string>
+
+    <!-- Quest selection screen -->
+    <string name="action_search">"ค้นหา"</string>
+    <string name="action_manage_presets">"จัดการค่าที่ตั้งไว้"</string>
+    <string name="team_mode_team_size_label2">"ทีมคุณมีคนจำนวนเท่าไหร่? ใส่ตัวเลขบนโทรศัพท์ทุกคนให้เหมือนกัน"</string>
+    <string name="team_mode_choose_color2">"ทุกคนจะต้องเลือกสีของตัวเอง เลือกสีของคุณ:"</string>
+    <string name="link_organic_maps_description">"แอพแผนที่สำหรับนักเดินทาง นักปีนเขา และนักปั่นจักรยานที่ทำงานออฟไลน์"</string>
+    <string name="quest_kerb_height_no">"ไม่มีขอบทางเลย"</string>
+    <string name="quest_barrier_type_stepover_wooden">"บันไดไม้ข้ามรั้ว"</string>
+    <string name="quest_barrier_type_stepover_stone">"บันไดหินข้ามรั้ว"</string>
+    <string name="quest_bollard_type_removable">"เอาออกได้ (ใช้หรือไม่ใช้กุญแจก็ได้)"</string>
+    <string name="quest_bollard_type_foldable2">"พับได้ (ใช้หรือไม่ใช้กุญแจก็ได้)"</string>
+    <string name="no_search_results">"ไม่เจอข้อมูล"</string>
+    <string name="quest_selection_hint_title">"มีภาจกิจเยอะเกินไปรึเปล่า?"</string>
+    <string name="quest_selection_hint_message">"หัวใจของการช่วยเหลือคือความสนุก! ถ้าคุณรู้สึกท้อแท้กับจำนวนของภารกิจที่เห็น คุณสามารถเลือกให้แสดงประเภทและลำดับของภารกิจได้ในเมนูการตั้งค่า"</string>
+
+    <!-- Managing quest presets screen -->
+    <string name="quest_presets_preset_add">"เพิ่มค่าที่ตั้งไว้"</string>
+    <string name="quest_presets_preset_name">"ชื่อค่าที่ตั้งไว้"</string>
+    <string name="quest_presets_default_name">"ค่าเริ่มต้น"</string>
+    <string name="quest_presets_selected">"เลือกแล้ว"</string>
+    <string name="quest_presets_delete_message">"ลบค่าที่ตั้งไว้ “%s”? ตัวเลือกภารกิจและลำดับจะหายไปอย่างถาวร"</string>
+    <string name="notification_syncing">"กำลังซิงค์ข้อมูล…"</string>
+
+    <!-- Android notifications -->
+    <string name="notification_channel_sync">"ซิงค์ข้อมูล"</string>
+    <string name="quest_board_type_sport">"กีฬา, การออกกำลังกาย"</string>
+    <string name="quest_generic_hasFeature_optional">"มีทางเลือก"</string>
+    <string name="quest_buildingType_bridge">"สะพานเชื่อมอาคาร (โพยมวิถี)"</string>
+    <string name="quest_laundrySelfService_title2">"ร้านซักรีดมีบริการตนเองหรือไม่?"</string>
+    <string name="quest_dietType_explanation_halal">"ผลิตภัณฑ์ฮาลาลเป็นผลิตภัณฑ์ที่ถูกควบคุมตามบทบัญญัติของศาสนาอิสลาม และต้องได้รับการรับรองจากหน่วยงานที่รับผิดชอบ"</string>
+    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีการคลุม (กันฝน) หรือไม่?"</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
+    <string name="quest_generic_answer_is_actually_steps">"ส่วนนี้น่าจะเป็นขั้นบันได"</string>
+    <string name="quest_barrier_type_passage_conversion">"ดัดแปลงเป็นทางเดินผ่านกำแพง/รั้ว/ฯลฯ"</string>
+    <string name="quest_barrier_type_gate_conversion">"ดัดแปลงเป็นประตู"</string>
+    <string name="quest_traffic_calming_type_title">"นี่เป็นอุปกรณ์ควบคุมความเร็วพาหนะแบบไหน?"</string>
+    <string name="quest_traffic_calming_type_bump">"ลูกระนาด (สั้น)"</string>
+    <string name="quest_traffic_calming_type_hump">"ลูกระนาดหลังเต่า (ยาว)"</string>
+    <string name="quest_traffic_calming_type_table">"เนินกระโดด (ด้านบนแบน)"</string>
+    <string name="quest_traffic_calming_type_cushion">"แผ่นสปริงปรับตัวได้ (ไม่กระเทือนพาหนะที่กว้าง)"</string>
+    <string name="quest_traffic_calming_type_choker">"ถนนแคบ"</string>
+    <string name="quest_traffic_calming_type_island">"เกาะ"</string>
+    <string name="quest_traffic_calming_type_chicane">"ทางโค้ง"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"เส้นชะลอความเร็ว"</string>
+    <string name="quest_surface_value_concrete_plates">"แผ่นคอนกรีต"</string>
+    <string name="quest_surface_value_concrete_lanes">"ช่องคอนกรีต"</string>
+    <string name="quest_fireHydrant_diameter_title">"หัวจ่ายมีเส้นผ่านศูนย์กลางเท่าไหร่ที่ระบุบนป้าย?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"เส้นผ่านศูนย์กลางที่ระบุไม่น่าจะถูกต้อง"</string>
+    <string name="quest_fireHydrant_confirmation_title">"แน่ใจนะ? บางครั้งเส้นผ่านศูนย์อาจจะเขียนบนหัวจ่าย"</string>
+    <string name="quest_diet_answer_no_food">"ไม่ขายอาหาร"</string>
+    <string name="short_no_answer_on_button">"ไม่"</string>
+    <string name="restore_confirmation">"กู้คืน"</string>
+    <string name="restore_dialog_message">"แสดงภารกิจทั้งหมดที่เคยซ่อนไว้?"</string>
+    <string name="quest_parking_access_title2">"ใครสามารถนำรถมาจอดได้บ้าง? มีค่าบริการหรือฟรีก็ได้"</string>
+    <string name="quest_access_yes">"ใครก็ได้"</string>
+    <string name="quest_access_customers">"เฉพาะผู้มาใช้บริการ (เช่น เฉพาะลูกค้าเท่านั้น)"</string>
+    <string name="quest_access_private">"เฉพาะผู้ที่ได้รับอนุญาต"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"เวลาไขตู้ยังถูกรึเปล่า?"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน๊ตไว้"</string>
+    <string name="quest_bicycle_barrier_type_title">"รั้วกั้นจักรยานเป็นแบบไหน?"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"ทแยงมุมกับทาง"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"ด้านบนแคบกว่าด้านล่าง คล้ายตัว A"</string>
+    <string name="quest_barrier_bicycle_type_single">"ช่องแคบ ๆ ระหว่างรั้ว"</string>
+    <string name="quest_barrier_bicycle_type_double">"ซิกแซก มีรั้วสองชั้น"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"ซิกแซก มีรั้วมากกว่าสองชั้น"</string>
+    <string name="pref_title_language_select">"เลือกภาษา"</string>
+    <string name="language_default">"ค่าเริ่มต้น"</string>
+    <string name="on_floor">"บนชั้น %s"</string>
+    <string name="quest_street_parking_title">"ตรงนี้จอดรถได้รึเปล่า?"</string>
+    <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
+    <string name="select_street_parking_position">"เลือกตำแหน่ง:"</string>
+    <string name="select_street_parking_no">"มีป้ายหรือสัญลักษณ์บนถนนรึเปล่า?"</string>
+    <string name="street_parking_parallel">"ขนาน"</string>
+    <string name="street_parking_diagonal">"ทแยง"</string>
+    <string name="street_parking_perpendicular">"ตั้งฉาก"</string>
+    <string name="street_parking_on_street">"อยู่บนถนน"</string>
+    <string name="street_parking_half_on_kerb">"อยู่บนถนนบางส่วน"</string>
+    <string name="street_parking_on_kerb">"อยู่ติดกับถนน"</string>
+    <string name="street_parking_street_side">"อยู่ติดกับถนน ในพื้นที่เฉพาะ"</string>
+    <string name="street_parking_painted_area_only">"อยู่บนถนน ในพื้นที่เฉพาะ"</string>
+    <string name="street_parking_separate">"แผนที่แสดงที่จอดรถแยกต่างหาก"</string>
+    <string name="street_parking_no">"ห้ามจอด"</string>
+    <string name="street_parking_prohibited">"ห้ามจอด"</string>
+    <string name="street_stopping_prohibited">"ห้ามหยุด"</string>
+    <string name="street_standing_prohibited">"ห้ามลงจากรถ"</string>
+    <string name="street_parking_conditional_restrictions">"มีเงื่อนไขสำหรับการจอดหรือหยุดรถ"</string>
+    <string name="street_parking_no_other_reasons">"ไม่มีป้ายบอกชัดเจน / จอดรถไม่ได้"</string>
+    <string name="street_parking_conditional_restrictions_hint">"ถ้าจอดหรือหยุดรถตรงนี้ได้ กรุณาระบุเงื่อนไขอย่างคร่าว คุณสามารถระบุเงื่อนไขเพิ่มเติมได้ภายหลัง
+
+หรือสร้างโน๊ตไว้ (อาจจะแนบรูปด้วย)"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"มีทั้งบ้านเลขที่และชื่ออาคาร"</string>
+    <string name="quest_address_house_number_label">"บ้านเลขที่:"</string>
+    <string name="quest_shoulder_title">"ถนนเส้นนี้มีไหล่ทางรึเปล่า?"</string>
+    <string name="quest_fireHydrant_position_title">"หัวจ่ายน้ำดับเพลิงตั้งอยู่ตรงไหน?"</string>
+    <string name="quest_fireHydrant_position_green">"อยู่บนหญ้าหรือดิน"</string>
+    <string name="quest_fireHydrant_position_lane">"อยู่บนถนน"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"อยู่บนทางเท้า"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"อยู่ในที่จอดรถ"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"มี (สร้างโน๊ตไว้)"</string>
+    <string name="quest_smoothness_square_title">"คุณภาพพื้นผิวของสี่เหลี่ยมตรงนี้เป็นอย่างไร?"</string>
+    <string name="quest_smoothness_road_title">"คุณภาพพื้นผิวของเส้นทางนี้เป็นอย่างไร?"</string>
+    <string name="quest_smoothness_title_excellent">"เรียบและสม่ำเสมอ"</string>
+    <string name="quest_smoothness_title_good">"เกือบ ๆ จะสม่ำเสมอ"</string>
+    <string name="quest_smoothness_title_intermediate">"ขรุขระนิดหน่อย"</string>
+    <string name="quest_smoothness_title_bad">"ขรุขระ"</string>
+    <string name="quest_smoothness_title_very_bad">"ขรุขระมาก"</string>
+    <string name="quest_smoothness_title_horrible">"ขระขระมากและเอียง"</string>
+    <string name="quest_smoothness_title_very_horrible">"แทบจะขับผ่านไม่ได้"</string>
+    <string name="quest_smoothness_title_impassable">"ขับผ่านไม่ได้"</string>
+    <string name="quest_smoothness_description_excellent_paved">"ไม่มีหลุมหรือรอย"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"แทบจะไร้รอยต่อ"</string>
+    <string name="quest_smoothness_description_good_paved">"มีรอยแตกเล็กน้อย มีการซ่อมแซม ช่องว่าง หรือขรุขระเล็กน้อยเท่านั้น"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"มีรอยต่อนิดหน่อย"</string>
+    <string name="quest_smoothness_description_good_sett">"ส่วนใหญ่เป็นหินรูปร่างสม่ำเสมอ พื้นเรียบ มีรอยต่อตื้นและแคบ"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"พื้นผิวขรุขระมากผิดปกติ ช่องว่างที่กว้าง มีรอยแตก ร่องตื้น หลุมบ่อ หรือมีความเสียหายอื่นๆ"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"รอยต่อกว้าง อาจจะสึกหรอ หรือชิ้นส่วนหายไป"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"หินจัตุรัส พื้นเรียบ มีรอยต่อตื้นและแคบ"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"กรวดละเอียด มีหลุมตื้น ๆ"</string>
+    <string name="quest_smoothness_description_bad_paved">"เป็นหลุมเป็นบ่อ หรือมีความเสีบหายอื่น"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"ชิ้นส่วนหาย มีช่องว่าง หรือความเสียหายอื่น"</string>
+    <string name="quest_smoothness_description_bad_sett">"หินไม่สม่ำเสมอ มีช่องกว้าง หรือความเสียหายอื่น"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"กรวดหยาบ ขรุขระและเป็นหลุมเป็นบ่อ"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"เป็นหลุมเป็นบ่อ มีรอยแตก และอันตรายอื่น ๆ"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"ช่องกว้าง ชิ้นส่วนหาย หินรูปร่างไม่สม่ำเสมอ และอันตรายอื่น ๆ"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"ชิ้นส่วนหาย มีช่องว่าง และอันตรายอื่น  ๆ"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"มีหินก้อนใหญ่ปน ขรุขระและเป็นหลุมเป็นบ่อมาก และอันตรายอื่น ๆ"</string>
+    <string name="quest_smoothness_description_horrible">"น่าจะขับได้เฉพาะรถออฟโรด"</string>
+    <string name="quest_smoothness_description_very_horrible">"น่าจะขับได้เฉพาะรถออฟโรดดัดแปลง หรือเดินจะดีกว่า"</string>
+    <string name="quest_smoothness_description_impassable">"เดินได้เท่านั้น ถนนไม่เหมาะสำหรับรถ"</string>
+    <string name="quest_smoothness_wrong_surface">"มีความแตกต่างในพื้นผิว"</string>
+    <string name="quest_smoothness_surface_value">"พื้นผิวถูกแท็กเป็น:"</string>
+    <string name="quest_smoothness_obstacle">"มีสิ่งกีดขวาง"</string>
+    <string name="quest_smoothness_obstacle_hint">"กรุณาระบุความเรียบของถนน ให้ถึงสิ่งกีดขวางด้วย แต่ไม่ต้องคำนึงถึงเนินและเส้นนูนชะลอความเร็ว"</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, …ระบุว่าควรพื้นผิวเหมาะสำหรับยานพาหนะประเภทใด สิ่งที่สำคัญคือภาพรวมมากกว่าความเสียหายเพียงจุดเดียว"</string>
+    <string name="link_osmhydrant_description">"ค้นหา เพิ่ม และแก้ไขสถานีดับเพลิงและหัวจ่ายน้ำดับเพลิง"</string>
+    <string name="achievement_lifesaver_title">"ชีพรักษิก"</string>
+    <string name="achievement_lifesaver_solved_X">"คุณพิชิต %d ภารกิจที่ช่วยกู้ภัยและบริการฉุกเฉิน"</string>
+    <string name="quest_fuelSelfService_title">"สามารถเติมน้ำมันได้เองหรือไม่?"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะใช้เวลามาก และยากที่จะทำให้สำเร็จ เปิดภารกิจประเภทนี้ถ้าคิดว่าคุณมีความตั้งใจจริง"</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"กรวดอัดแน่น ไม่มีช่องว่าง"</string>
+    <string name="quest_barrier_path_intersection">"เส้นทางข้ามสิ่งกีดขวางอย่างไร?"</string>
+    <string name="quest_barrier_road_intersection">"ถนนข้ามสิ่งกีดขวางอย่างไร?"</string>
+    <string name="quest_sidewalk_value_separate">"แสดงแยกต่างหากในแผนที่"</string>
+    <string name="quest_shoulder_value_yes">"มีไหล่ทาง"</string>
+    <string name="quest_shoulder_value_no">"ไม่มีไหล่ทาง"</string>
+    <string name="no_camera_permission_warning_title">"สิทธิ์เข้าถึงกล้อง"</string>
+    <string name="no_camera_permission_warning">"สิทธิ์เข้าถึงกล้องจำเป็นต่อการถ่ายรูป และการวัดระยะด้วยกล้อง"</string>
+    <string name="ar_core_error_sdk_too_old">"อัพเดตแอพเถอะ เวอร์ชันเก่าแล้วนะ"</string>
+    <string name="ar_core_tracking_error_bad_state">"เกิดความผิดปกติ ลองวัดใหม่อีกครั้ง"</string>
+    <string name="ar_core_tracking_error_insufficient_light">"มืดเกินไป"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"มีวัตถุเคลื่อนที่มากไป"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"มีทัศนวัตถุไม่พอ"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"มีแอพอื่นกำลังใช้กล้องอยู่"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"ที่ยึดแฮนด์"</string>
+    <string name="quest_bicycle_parking_access_title2">"ใครสามารถนำจักรยานมาจอดได้บ้าง? มีค่าบริการหรือฟรีก็ได้"</string>
+    <string name="quest_playground_access_title2">"ใครสามารถใช้สนามเด็กเล่นนี้ได้บ้าง?"</string>
+    <string name="quest_sidewalk_answer_none_title">"เลือกว่าทางเท้าหายไป"</string>
+    <string name="quest_side_select_interface_explanation">"เลือกตอบทีละฝั่ง"</string>
+
+    <!-- AR Measure screen -->
+    <string name="ar_measure">"วัดระยะ"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"มุมชันเกินไป ถอยห่างอีกนิด"</string>
+    <string name="default_disabled_msg_no_ar">"คุณต้องใช้เทปวัดระยะสำหรับภารกิจนี้ เนื่องจากอุปกรณ์นี้ไม่สามารถใช้กล้องเพื่อวัดระยะได้"</string>
+    <string name="quest_cycleway_width_title">"ช่องทางจักรยานกว้างเท่าไหร่?"</string>
+    <string name="quest_road_width_title">"ถนนกว้างเท่าไหร่?"</string>
+    <string name="quest_road_width_explanation">"ความกว้างของถนนจากขอบถนนถึงขอบถนน: รวมถึงทุกสิ่งที่อยู่บนพื้นผิวถนน เช่น ที่จอดรถริมถนนหรือเลนจักรยาน แต่ไม่รวมสิ่งใดที่อยู่นอกเหนือ เช่น ทางจักรยานเฉพาะหรือที่จอดรถข้างถนน"</string>
+    <string name="quest_sidewalk_answer_none">"ไม่มีทางเท้า"</string>
+    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอพของเรา!
+แต่เสียดายที่กูเกิ้ลมีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอพ ลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
+    <string name="link_osmand_description">"แอพสำหรับแผนที่ออนไลน์และออฟไลน์"</string>
+    <string name="link_sunders_description">"แผนที่แสดงกล้องและอุปกรณ์สอดส่องดูแล"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"ขยับเข้าใกล้ลูกศรอีกนิด แต่ระวังรถด้วย!"</string>
+    <string name="quest_sidewalk_surface_title">"พื้นผิวของทางเท้าที่นี่เป็นแบบไหน?"</string>
+    <string name="quest_tactilePaving_incorrect">"มีด้านเดียว"</string>
+    <string name="quest_fee_answer_yes_but">"ใช่ …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"ไม่ แต่มีเวลาจำกัด …"</string>
+    <string name="unit_days">"วัน"</string>
+    <string name="unit_hours">"ชั่วโมง"</string>
+    <string name="unit_minutes">"นาที"</string>
+    <string name="at_any_time">"ได้ทุกเวลา"</string>
+    <string name="only_at_hours">"เฉพาะเวลาต่อไปนี้:"</string>
+    <string name="except_at_hours">"ยกเว้นเวลาต่อไปนี้:"</string>
+    <string name="quest_bollard_type_not_bollard">"เป็นแบบอื่นที่ไม่ใช่เสา"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"มีเครื่องกีดขวาง แต่ไม่ใช่สำหรับจักรยาน"</string>
+    <string name="quest_smoking_no">"ห้ามสูบ"</string>
+    <string name="quest_smoking_outside">"เฉพาะด้านนอก"</string>
+    <string name="quest_smoking_separated">"เฉพาะพื้นที่ที่จัดไว้"</string>
+    <string name="quest_smoking_yes">"ได้ทุกที่"</string>
+    <string name="quest_seating_name_title">"มีที่นั่งตรงไหนบ้าง?"</string>
+    <string name="quest_seating_takeaway">"ไม่มีที่นั่ง (สั่งกลับบ้านเท่านั้น)"</string>
+    <string name="quest_seating_indoor_only">"มีแต่ที่นั่งในอาคาร"</string>
+    <string name="quest_seating_outdoor_only">"มีแต่ที่นั่งนอกอาคาร"</string>
+    <string name="quest_seating_indoor_and_outdoor">"มีที่นั่งทั้งในและนอกอาคาร"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้น เพราะภารกิจอาจจะทำได้แค่บางช่วงเวลาของปีที่จะตรวจที่นั่งนอกอาคาร"</string>
+    <string name="no_camera_permission_toast">"ไม่มีสิทธิ์เข้าถึงกล้อง"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"จ่ายด้วยเงินสดได้รึเปล่า?"</string>
+    <string name="quest_address_street_title2">"อยู่บนถนนอะไร?"</string>
+    <string name="quest_airConditioning_title">"มีเครื่องปรับอากาศรึเปล่า?"</string>
+    <string name="quest_baby_changing_table_title2">"มีที่เปลี่ยนผ้าอ้อมเด็กรึเปล่า?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"มีม้านั่งรึเปล่า?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"มีถังขยะรึเปล่า?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"มีไฟส่องสว่างรึเปล่า"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"ป้ายมีชื่อว่าอะไร?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"ป้ายมีเลขอ้างอิงรึเปล่า"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"มีหลังคารึเปล่า"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"พื้นเป็นบล็อกปูถนนรึเปล่า?"</string>
+    <string name="quest_dietType_halal_name_title2">"ที่นี่ขายผลิตภันฑ์ฮาลาลรึเปล่า?"</string>
+    <string name="quest_dietType_kosher_name_title2">"ที่นี่ขายผลิตภันฑ์โคเชอร์รึเปล่า?"</string>
+    <string name="quest_dietType_vegan_title2">"เมนูมีอาหาวีแกนรึเปล่า?"</string>
+    <string name="quest_dietType_vegetarian_title2">"เมนูมีอาหารมังสวิรัติรึเปล่า?"</string>
+    <string name="quest_drinking_water_title2">"มีก๊อกน้ำดื่มรึเปล่า?"</string>
+    <string name="quest_existence_title2">"ยังอยู่ไหม?"</string>
+    <string name="quest_generalFee_title2">"มีค่าบริการรึเปล่า?"</string>
+    <string name="quest_internet_access_title">"มีบริการเชื่อมต่ออินเตอร์แบบไหน?"</string>
+    <string name="quest_level_title2">"อยู่บนชั้นไหน?"</string>
+    <string name="quest_lit_title">"มีไฟส่องสว่างไหม?"</string>
+    <string name="quest_openingHours_title">"เปิดให้บริการตอนไหนบ้าง?"</string>
+    <string name="quest_openingHours_signed_title">"มีป้ายบอกเวลาทำการรึเปล่า?"</string>
+    <string name="quest_openingHours_resurvey_title">"ยังให้บริการเวลานี้อยู่รึเปล่า?"</string>
+    <string name="quest_placeName_title">"มีชื่อของสถานที่รึเปล่า?"</string>
+    <string name="quest_shop_type_title2">"เป็นร้านค้าแบบไหน?"</string>
+    <string name="quest_smoking_title2">"ที่นี่อนุญาตให้สูบบุหรี่รึเปล่า?"</string>
+    <string name="quest_smoothness_title">"คุณภาพพื้นผิวที่นี่เป็นอย่างไร?"</string>
+    <string name="quest_summit_register_title2">"มีบันทึกยอดเขารึเปล่า?"</string>
+    <string name="quest_surface_title">"พื้นผิวที่นี่เป็นแบบไหน?"</string>
+    <string name="quest_toiletAvailability_title">"มีห้องน้ำรึเปล่า?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"ห้องน้ำเหมาะสำหรับวีลแชร์รึเปล่า?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"แน่ใจนะว่านักปั่นจะต้องปั่นไปทางเดียวกันถนนเท่านั้น? ลองเช็คป้ายที่ปากทางถ้าไม่แน่ใจ"</string>
+    <string name="link_valhalla_description">"ระบบนำทางที่ใช้หน่วยความจำนิดเดียว ค้นหาเส้นทางแบบหลายต่อ เส้นสมกาละ และอีกมากมาย"</string>
+    <string name="link_backofyourhand_description">"คุณรู้จักเมืองคุณดีแค่ไหน? ลองค้นหาถนนแถวบ้านดู"</string>
+    <string name="link_thenandnow_description">"ลองดูสิว่า OSM เปลี่ยนไปขนาดไหน!"</string>
+    <string name="link_notesreview_description">"ดู กรอง และแสดงความเห็นบนโน๊ตได้อย่างง่ายดาย คุณสามารถแก้ปัญหาได้โดยการเติมข้อมูลลงไปในแผนที่ด้วยโปรแกรม iD หรือ JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"รับบัตรเครดิต/เดบิตรึเปล่า?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"รับหมด"</string>
+    <string name="quest_accepts_cards_credit_only">"เฉพาะบัตรเครดิต"</string>
+    <string name="quest_accepts_cards_dedit_only">"เฉพาะบัตรเดบิต"</string>
+    <string name="quest_accepts_cards_unavailable">"ไม่รับบัตรเครดิต/เดบิต"</string>
+    <string name="quest_barrier_type_gate_any_size">"ประตู"</string>
+    <string name="quest_air_pump_bicycle_title">"มีปั๊มลมรึเปล่า?"</string>
+    <string name="quest_air_pump_compressor_title">"มีเครื่องอัดอากาศรึเปล่า?"</string>
+    <string name="quest_step_count_stile_hint">"จำนวนขั้นบันได ถ้าสองฝั่งไม่เท่ากันให้ใส่เลขที่มากกว่า"</string>
+    <string name="quest_shoulder_explanation2">"ไหล่ทางเป็นช่องทางหยุดฉุกเฉินที่กำหนดไว้อย่างชัดเจน พื้นที่ที่กำหนดเป็นไหล่ทางไม่จำเป็นต้องลาดยางทั้งพื้นที่ และไม่จำเป็นต้องกว้างพอที่รถทั้งคันจะจอดได้"</string>
 </resources>

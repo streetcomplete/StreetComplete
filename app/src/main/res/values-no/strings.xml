@@ -810,7 +810,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Det har flere husnummer"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Du kan skrive kommaseparerte husnumre eller intervaller.\nFor eksempel 1,3 eller 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kan skrive kommaseparerte husnumre eller intervaller.\nFor eksempel 1,3 eller 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Stativ (støtter rammen)"</string>
@@ -1679,7 +1679,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="background_type_map">"Kart"</string>
     <string name="background_type_aerial_esri">"Flyfoto (fra Esri)"</string>
     <string name="quest_barrier_type_title">"Hva slags hindring er dette?"</string>
-    <string name="quest_barrier_type_gate">"Port"</string>
     <string name="quest_barrier_type_lift_gate">"Løftebom"</string>
     <string name="quest_barrier_type_bollard">"Pullert(er)"</string>
     <string name="quest_barrier_type_chain">"Kjetting"</string>
@@ -1898,7 +1897,6 @@ Alternativt, lag en merknad (med bilde)."</string>
     <string name="quest_smoothness_obstacle">"Det er en hindring"</string>
     <string name="quest_smoothness_obstacle_hint">"Gi et generelt svar på hvor jevn overflaten er. Enkelte ujevnheter som fortauskanter, fartsdumper eller ferister kan ignoreres. Gjentatte eller uventede ujevnheter bør vurderes med i svaret."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … velg hva slags kjøretøy som bør være greie å bruke på denne overflaten. Det store bildet er viktigere enn enkelte skader."</string>
-    <string name="quest_shoulder_explanation">"En veiskulder er et tydelig adskilt felt hvor kjøretøy trygt kan stoppe utenfor de trafikkerte kjørefeltene, men ikke nødvendigvis (bare) på belagt underlag."</string>
     <string name="link_osmhydrant_description">"Finn, legg til og endre brannstasjoner og brannhydranter"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
     <string name="achievement_lifesaver_solved_X">"Du har løst %d oppdrag som hjelper nødetater og førstehjelpere!"</string>
@@ -2017,4 +2015,19 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Er det et toalett her?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er dette toalettet tilgjengelig med rullestol?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Er du sikker på at syklister ikke har lov til å sykle begge veier på denne enveiskjørte veien? Sjekk om det er et skilt i enden av veien hvis du er i tvil."</string>
+    <string name="link_backofyourhand_description">"Hvor godt kjenner du nabolaget ditt? Test dine kunnskaper ved å lokalisere veiene."</string>
+    <string name="link_thenandnow_description">"Se hvordan OSM så ut i starten, sammenlignet med hvordan det ser ut nå!"</string>
+    <string name="link_notesreview_description">"Enkelt se, filtrere og kommentere merknader laget av deg selv og andre. Mange merknader kan løses ved å legge inn den oppgitte informasjonen i kartet med iD eller JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Kan man betale med kreditt- eller debetkort her?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Begge"</string>
+    <string name="quest_accepts_cards_credit_only">"Kun kredittkort"</string>
+    <string name="quest_accepts_cards_dedit_only">"Kun debetkort"</string>
+    <string name="quest_accepts_cards_unavailable">"Verken debet- eller kredittkort"</string>
+    <string name="quest_barrier_type_gate_any_size">"Port, alle størrelser"</string>
+    <string name="quest_air_pump_bicycle_title">"Er det en fungerende sykkelpumpe allment tilgjengelig her?"</string>
+    <string name="quest_air_pump_compressor_title">"Er det en luftkompressor tilgjenglig her?"</string>
+    <string name="quest_step_count_stile_hint">"Antall trinn for å nå toppen. Hvis det er ulikt antall trinn på hver side, oppgi det høyeste antallet."</string>
 </resources>

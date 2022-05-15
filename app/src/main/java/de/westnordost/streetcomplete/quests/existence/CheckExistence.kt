@@ -63,7 +63,9 @@ class CheckExistence(
             amenity ~ bicycle_parking|motorcycle_parking
           )
           and (${lastChecked(12.0)})
-        )) and access !~ no|private and (!seasonal or seasonal = no)
+        ))
+        and access !~ no|private
+        and (!seasonal or seasonal = no)
     """.toElementFilterExpression() }
     // traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that

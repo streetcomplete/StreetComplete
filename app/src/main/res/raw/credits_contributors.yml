@@ -1,18 +1,18 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 352199
-  linesOfInterfaceMarkupChanged: 131868
-  assetFilesChanged: 1649
+  linesOfCodeChanged: 353627
+  linesOfInterfaceMarkupChanged: 132720
+  assetFilesChanged: 1679
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16026
-  linesOfInterfaceMarkupChanged: 1645
+  linesOfCodeChanged: 16073
+  linesOfInterfaceMarkupChanged: 1671
   assetFilesChanged: 112
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 11823
-  linesOfInterfaceMarkupChanged: 2585
-  assetFilesChanged: 451
+  linesOfCodeChanged: 12117
+  linesOfInterfaceMarkupChanged: 2759
+  assetFilesChanged: 462
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -28,7 +28,7 @@
   assetFilesChanged: 69
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 2180
+  linesOfCodeChanged: 2627
   linesOfInterfaceMarkupChanged: 2180
   assetFilesChanged: 5
 - name: "sumanabhi"
@@ -49,10 +49,11 @@
   linesOfInterfaceMarkupChanged: 45
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 1122
+  linesOfCodeChanged: 1296
+  linesOfInterfaceMarkupChanged: 98
 - name: "David Dean"
   githubUsername: "dbdean"
-  linesOfCodeChanged: 943
+  linesOfCodeChanged: 950
   linesOfInterfaceMarkupChanged: 117
 - name: "Mark Tully"
   githubUsername: "Teester"
@@ -67,7 +68,7 @@
   linesOfCodeChanged: 524
 - name: "Peter Newman"
   githubUsername: "peternewman"
-  linesOfCodeChanged: 409
+  linesOfCodeChanged: 481
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -111,6 +112,9 @@
   linesOfCodeChanged: 128
   linesOfInterfaceMarkupChanged: 124
   assetFilesChanged: 2
+- name: "Ebrahim Byagowi"
+  githubUsername: "ebraminio"
+  linesOfCodeChanged: 108
 - name: "Swampeyfrog"
   githubUsername: "Southernswampfrog"
   linesOfCodeChanged: 104
@@ -173,6 +177,9 @@
 - name: "Aidan Pieper"
   githubUsername: "Plastix"
   linesOfCodeChanged: 7
+- name: "Cj Malone"
+  githubUsername: "Cj-Malone"
+  linesOfCodeChanged: 6
 - name: "Richard Finegold"
   githubUsername: "goldfndr"
   linesOfCodeChanged: 6
@@ -183,6 +190,9 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "Greg Oledzki"
+  githubUsername: "mccartney"
+  linesOfCodeChanged: 4
 - name: "cyclingcat"
   linesOfCodeChanged: 4
 - name: "MegaArthur"
@@ -199,8 +209,8 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
-- name: "Cj Malone"
-  githubUsername: "Cj-Malone"
+- name: "riQQ"
+  githubUsername: "riQQ"
   linesOfCodeChanged: 2
 - name: "gileri"
   linesOfCodeChanged: 2
@@ -212,9 +222,6 @@
   linesOfCodeChanged: 2
 - name: "UKChris-osm"
   githubUsername: "UKChris-osm"
-  linesOfCodeChanged: 2
-- name: "riQQ"
-  githubUsername: "riQQ"
   linesOfCodeChanged: 2
 - name: "Christian Paul"
   githubUsername: "jaller94"

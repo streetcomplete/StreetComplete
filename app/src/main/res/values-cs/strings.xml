@@ -1485,7 +1485,7 @@ Chcete cestu rozdělit?"</string>
     <string name="quest_postboxRef_title">"Jaké je referenční číslo této poštovní schránky?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo..."</string>
+    <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě označení."</string>
@@ -1628,7 +1628,7 @@ Chcete cestu rozdělit?"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"svobodné wiki mapy světa"</string>
 
     <!-- Fuzzy -->
-    <string name="tutorial_intro">"StreetComplete umožňuje jednoduché přispívání do OpenStreetMap tak, že automaticky vyhledává chybějící údaje ve vašem okolí: cyklostezky, popisná čísla domů, otevírací hodiny a další..."</string>
+    <string name="tutorial_intro">"StreetComplete umožňuje jednoduché přispívání do OpenStreetMap tak, že automaticky vyhledává chybějící údaje ve vašem okolí: cyklostezky, popisná čísla domů, otevírací hodiny a další…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Jakmile je nalezne, budou tyto chybějící údaje na vaší mapě zobrazeny jako úkoly.
@@ -2087,7 +2087,7 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
     <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
     <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
-    <string name="quest_generic_answer_does_not_exist">"Neexistuje to..."</string>
+    <string name="quest_generic_answer_does_not_exist">"Neexistuje to…"</string>
     <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
     <string name="leave_note">"Nechat poznámku"</string>
@@ -2165,7 +2165,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Letecká mapa (od Esri)"</string>
     <string name="quest_barrier_type_title">"Jaký je tohle druh překážky?"</string>
-    <string name="quest_barrier_type_gate">"Brána"</string>
     <string name="quest_barrier_type_lift_gate">"Závora, která se zvedá"</string>
     <string name="quest_barrier_type_bollard">"Sloupek(y)"</string>
     <string name="quest_barrier_type_chain">"Řetěz"</string>
@@ -2379,7 +2378,6 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_smoothness_obstacle">"Je tu překážka"</string>
     <string name="quest_smoothness_obstacle_hint">"Uveďte prosím obecnou odpověď pro průjezdnost. Samostatné překážky, jako jsou obrubníky, zpomalovací hrboly nebo mříže pro dobytek můžete ignorovat. Opakující se nebo neočekávané překážky by měly být do odpovědi zahrnuty."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙… indikuje, pro jaká vozidla je povrch vhodný. Důležitější, než jednotlivá poškození, je celkový stav povrchu."</string>
-    <string name="quest_shoulder_explanation">"Odstavný pruh je zřetelně ohraničený pruh pro nouzové zastavení, který umožňuje vozidlům bezpečně zastavit úplně vedle jízdního pruhu. Nemusí vždy být (úplně) na zpevněném povrchu."</string>
     <string name="link_osmhydrant_description">"Vyhledávejte, přidávejte a upravujte hasičské stanice a požární hydranty"</string>
     <string name="achievement_lifesaver_title">"Záchranář"</string>
     <string name="achievement_lifesaver_solved_X">"Vyřešili jste %d úkolů, které pomůžou záchranářům!"</string>
@@ -2501,4 +2499,22 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Jaký je tu povrch?"</string>
     <string name="quest_toiletAvailability_title">"Jsou tu nějaké toalety?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Jsou toalety na tomto místě přístupné na vozíku?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Jste si jistí, že cyklisté nemohou používat tuto jednosměrku v obou směrech? Pokud váháte, zkontrolujte jestli je na konci této ulice značka."</string>
+    <string name="link_valhalla_description">"Navigační engine s velmi malou paměťovou náročností, navigací s využitím více dopravních prostředků, časovou mapou atd."</string>
+    <string name="link_backofyourhand_description">"Jak dobře znáte vaše okolí? Otestujte si své znalosti lokalizací ulic."</string>
+    <string name="link_thenandnow_description">"Porovnejte, jak OSM vypadala v prvních dnech provozu a jak vypadá teď!"</string>
+    <string name="link_notesreview_description">"Prohlížejte, filtrujte a pište komentáře k poznámkám, které jste vytvořili vy nebo ostatní uživatelé. Mnoho poznámek lze vyřešit tak, že jejich informace zadáte do mapy v iD nebo JOSMu"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Přijímají zde kreditní nebo debetní karty?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Obojí"</string>
+    <string name="quest_accepts_cards_credit_only">"Jen kreditní karty"</string>
+    <string name="quest_accepts_cards_dedit_only">"Jen debetní karty"</string>
+    <string name="quest_accepts_cards_unavailable">"Ani kreditní, ani debetní karty"</string>
+    <string name="quest_barrier_type_gate_any_size">"Brána, jakákoliv velikost"</string>
+    <string name="quest_air_pump_bicycle_title">"Je zde pro všechny k dispozici fungující pumpa na kolo?"</string>
+    <string name="quest_air_pump_compressor_title">"Je tu k dispozici kompresor?"</string>
+    <string name="quest_step_count_stile_hint">"Počet schodů k dosažení vrcholu. Pokud je počet schodů na každé straně jiný, uveďte vyšší číslo."</string>
+    <string name="quest_shoulder_explanation2">"Odstavný pruh je jasně vymezený pruh pro nouzové zastavení. Oblast označená jako odstavný pruh nemusí být zpevněná v celé své šířce a nemusí být ani dost široká na to, aby auto zastavilo úplně mimo jízdní pruh."</string>
 </resources>

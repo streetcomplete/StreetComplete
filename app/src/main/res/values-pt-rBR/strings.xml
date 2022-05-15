@@ -1026,7 +1026,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_housenumber_multiple_numbers">"Tem múltiplos números"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"Você pode digitar os números separados por vírgulas ou faixas. Por exemplo 1,3 ou 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Você pode digitar os números separados por vírgulas ou faixas. Por exemplo 1,3 ou 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Suporte (para o quadro)"</string>
@@ -1642,7 +1642,7 @@ Dividir agora?"</string>
     <string name="tutorial_welcome_to_osm">"Bem-vindo ao OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"o mapa mundial livre"</string>
     <string name="tutorial_intro">"O StreetComplete facilita a contribuição para o OpenStreetMap.
- Ele procura automaticamente detalhes ausentes em sua vizinhança: ciclovias, números de casas, horário de funcionamento e muito mais..."</string>
+ Ele procura automaticamente detalhes ausentes em sua vizinhança: ciclovias, números de casas, horário de funcionamento e muito mais…"</string>
     <string name="tutorial_solving_quests">"Uma vez encontrados, os detalhes ausentes aparecerão no seu mapa como missões.
 
  Você pode começar a resolvê-los imediatamente e depois fazer login para publicar suas respostas."</string>
@@ -1996,7 +1996,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aérea (por Esri)"</string>
     <string name="quest_barrier_type_title">"Que tipo de barreira é essa?"</string>
-    <string name="quest_barrier_type_gate">"Portão"</string>
     <string name="quest_barrier_type_lift_gate">"Cancela"</string>
     <string name="quest_barrier_type_bollard">"Pilarete(s)"</string>
     <string name="quest_barrier_type_chain">"Corrente"</string>
@@ -2074,7 +2073,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Apagar a predefinição \"%s\"? A seleção e ordem da missão será totalmente perdida."</string>
-    <string name="notification_syncing">"Sincronizando dados... "</string>
+    <string name="notification_syncing">"Sincronizando dados…"</string>
 
     <!-- Android notifications -->
     <string name="notification_channel_sync">"Sincronizar dados "</string>
@@ -2196,7 +2195,6 @@ Alternativamente, você pode deixar uma nota (com uma foto)."</string>
     <string name="quest_smoothness_obstacle">"Há um obstáculo"</string>
     <string name="quest_smoothness_obstacle_hint">"Por favor, forneça uma resposta geral para a suavidade. Obstáculos únicos como meio-fio, lombadas ou grades de gado podem ser ignorados. Obstáculos repetidos ou inesperados devem contar para a resposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indicam para quais veículos a superfície deve ser usada. O que importa é o quadro geral, em vez de danos únicos."</string>
-    <string name="quest_shoulder_explanation">"Um acostamento é uma faixa claramente demarcada para paradas de emergência permitindo aos veículos a parada completa com segurança lateralmente à faixa de tráfego, ainda que com superfície não pavimentada (por completo)"</string>
     <string name="link_osmhydrant_description">"Pesquise, adicione e edite quartéis de bombeiros e hidrantes"</string>
     <string name="achievement_lifesaver_title">"Salva-vidas"</string>
     <string name="achievement_lifesaver_solved_X">"Você resolveu %d missões que ajudam os serviços de emergência e socorristas!"</string>
@@ -2314,4 +2312,22 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"Qual a superfície aqui?"</string>
     <string name="quest_toiletAvailability_title">"Há algum banheiro aqui?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"O banheiro neste local é acessível para cadeirantes?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Você tem certeza de que os ciclistas não estão autorizados a usar esta via de mão única em ambas as direções? Na dúvida, verifique se há placa no final da rua"</string>
+    <string name="link_valhalla_description">"Mecanismo de roteamento com uma pegada de memória muito pequena, roteamento multimodal, isócronas e muito mais."</string>
+    <string name="link_backofyourhand_description">"Quão bem você conhece sua área? Teste seus conhecimentos localizando ruas."</string>
+    <string name="link_thenandnow_description">"Explore a aparência do OSM nos primeiros dias em comparação com a aparência atual!"</string>
+    <string name="link_notesreview_description">"Veja, filtre e comente convenientemente as notas criadas por você e outras pessoas. Muitas notas podem ser resolvidas colocando as informações nelas contidas no mapa com iD ou JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Cartões de crédito ou débito são aceitos aqui?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Ambos"</string>
+    <string name="quest_accepts_cards_credit_only">"Apenas cartões de crédito"</string>
+    <string name="quest_accepts_cards_dedit_only">"Apenas cartões de débito"</string>
+    <string name="quest_accepts_cards_unavailable">"Nem débito nem cartão de crédito"</string>
+    <string name="quest_barrier_type_gate_any_size">"Portão, qualquer tamanho"</string>
+    <string name="quest_air_pump_bicycle_title">"Existe uma bomba de bicicleta disponível para todos aqui?"</string>
+    <string name="quest_air_pump_compressor_title">"Existe um compressor de ar disponível aqui?"</string>
+    <string name="quest_step_count_stile_hint">"Apenas o número de passos para chegar ao topo. Se a contagem de passos for diferente em cada lado, dê um número maior."</string>
+    <string name="quest_shoulder_explanation2">"Um acostamento é uma faixa de parada de emergência claramente demarcada. A área designada como acostamento não é necessariamente pavimentada em toda a sua largura e não é necessariamente larga o suficiente para que um carro pare completamente fora da faixa de tráfego."</string>
 </resources>

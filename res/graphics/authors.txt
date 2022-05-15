@@ -472,6 +472,9 @@ steps incline graphics/
     up_reversed.svg
     unknown.svg
 
+street parking/no stopping sign/
+    mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
+
 traffic lights blind features graphics/
     arrow.svg
     sound.svg

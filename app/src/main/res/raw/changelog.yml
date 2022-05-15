@@ -1,3 +1,40 @@
+v43.1: |
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
+  <li>Cycleways: For oneways, make it clearer what the selection options imply for cyclists (#3984)</li>
+  <li>Don't ask about tactile buttons on traffic lights in Russia (#4021)</li>
+  <li>Various minor enhancements and fixes (#3994, #4020...), thanks @peternewman</li>
+  <li>Fix new languages (Armenian, Esperanto) are now displayed as options in the language selection screen</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Latvian, by @Mazurs</li>
+  </ul>
+
+v43.0: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How many steps are here?</i>, asked for stiles (#3932, #3141), by @matkoniecz</li>
+  <li><i>Is there a working bicycle pump available for everyone here?</i>, asked for bicycle shops etc. (#3934, #3053), by @mnalis</li>
+  <li><i>Is there an air compressor available here?</i>, asked for fuel stations (#3934, #3053), by @mnalis</li>
+  <li><i>Are credit or debit cards accepted here?</i>, disabled by default (#3953), by @matkoniecz</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Do not ask questions about objects tagged as seasonal (#3943)</li>
+  <li>Fix in rare cases answered sidewalk quest would not go away (#3976)</li>
+  <li>Kerb type: Remove kerb if user answered that there is no kerb at all (#3983)</li>
+  <li>Ask about opening hours and wheelchair accessibility for a few more kind of places (#3982), by @dbdean</li>
+  <li>Better indicate when there is no GPS signal (#3944, #3977)</li>
+  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795, #3972, #3978, #3962, #2652...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Armenian, by Alexander, Vasak87 and Anteneh Belayneh</li>
+  <li>Added Esperanto, by Jolesh, Jan, Martin Constantino-Bodin, Hendursaga, Robin van der Vliet, Fabio and more</li>
+  </ul>
+
 v42.0: |
   <h3>General Enhancements</h3>
   <ul>

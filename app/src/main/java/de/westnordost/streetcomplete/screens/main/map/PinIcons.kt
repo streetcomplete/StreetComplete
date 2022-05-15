@@ -9,8 +9,12 @@ import de.westnordost.streetcomplete.quests.getNameLabel
         "atm" -> return R.drawable.ic_pin_money
         "bench" -> return R.drawable.ic_pin_bench
         "bicycle_parking" -> return R.drawable.ic_pin_bicycle_parking
+        "bicycle_repair_station" -> {
+            if (map["service:bicycle:pump"] == "yes") return R.drawable.ic_pin_bicycle_pump
+        }
         "charging_station" -> return R.drawable.ic_pin_car_charger
         "clock" -> return R.drawable.ic_pin_clock
+        "compressed_air" -> return R.drawable.ic_pin_car_air_compressor
         "drinking_water" -> return R.drawable.ic_pin_water
         "motorcycle_parking" -> return R.drawable.ic_pin_motorcycle_parking
         "parking" -> return R.drawable.ic_pin_parking

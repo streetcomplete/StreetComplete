@@ -412,6 +412,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
     <string name="link_osrm_description">The fastest routing engine around</string>
     <string name="link_graphhopper_description">A flexible routing engine</string>
+    <string name="link_valhalla_description">Routing engine with a very small memory footprint, multi-modal routing, isochrones and more.</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
@@ -424,7 +425,9 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
     <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
-
+    <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
+    <string name="link_thenandnow_description">Explore how OSM looked like in the early days compared to how it looks now!</string>
+    <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained therein on the map with iD or JOSM</string>
 
     <!-- Achievement screen -->
 
@@ -555,6 +558,12 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
 
+    <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_credit_only">Only credit cards</string>
+    <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
+    <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
+
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
 
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
@@ -596,7 +605,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_stile_type_title">What type of stile is this?</string>
     <string name="quest_barrier_path_intersection">How does this path cross the barrier here?</string>
     <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
-    <string name="quest_barrier_type_gate">Gate</string>
+    <string name="quest_barrier_type_gate_any_size">"Gate, any size"</string>
     <string name="quest_barrier_type_lift_gate">Boom barrier</string>
     <string name="quest_barrier_type_bollard">Bollard(s)</string>
     <string name="quest_barrier_type_chain">Chain</string>
@@ -650,6 +659,9 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
+
+    <string name="quest_air_pump_bicycle_title">Is there a working bicycle pump available for everyone here?</string>
+    <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
     <string name="quest_board_type_title">What’s the topic of this information board?</string>
     <string name="quest_board_type_history">History</string>
@@ -837,6 +849,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
+    <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No cycleway at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
@@ -1207,7 +1220,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_replaced_answer_error2">"Not recognized. Try entering the type of place, for example “bakery”. Otherwise, consider leaving a note."</string>
 
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
-    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
+    <string name="quest_shoulder_explanation2">"A shoulder is a clearly demarcated emergency stopping lane. The area designated as a shoulder is not necessarily paved over its entire width and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
     <string name="quest_shoulder_value_yes">shoulder</string>
     <string name="quest_shoulder_value_no">no shoulder</string>
 
@@ -1309,6 +1322,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_steps_incline_up">This way up</string>
 
     <string name="quest_step_count_title">How many steps are here?</string>
+    <string name="quest_step_count_stile_hint">Just the number of steps to reach the top. If step count differs on each side, give higher number.</string>
 
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
@@ -1452,5 +1466,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
+
 
 </resources>

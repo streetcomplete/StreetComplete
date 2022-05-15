@@ -6,10 +6,13 @@ import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
+import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
+import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
@@ -114,6 +117,7 @@ import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
 import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
+import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
@@ -249,6 +253,10 @@ fun questTypeRegistry(
     AddMotorcycleParkingCover(),
     AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
 
+    // air pump, may require some checking within a garage forecourt
+    AddAirCompressor(),
+    AddBicyclePump(),
+
     // recycling containers
     AddRecyclingType(),
     DetermineRecyclingGlass(), // because most recycling:glass=yes is a tagging mistake
@@ -280,7 +288,7 @@ fun questTypeRegistry(
     AddPlaygroundAccess(),
 
     /* pulled up in priority to be before CheckExistence because this is basically the check
-whether the postbox is still there in countries in which it is enabled */
+       whether the postbox is still there in countries in which it is enabled */
     AddPostboxCollectionTimes(),
     CheckExistence(featureDictionaryFuture),
 
@@ -289,8 +297,9 @@ whether the postbox is still there in countries in which it is enabled */
     AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
     AddBarrierOnPath(),
     AddBarrierOnRoad(),
-    AddStileType(),
     AddBicycleBarrierType(),
+    AddStileType(),
+    AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
 
     AddBollardType(), // useful for first responders
 
@@ -321,10 +330,11 @@ whether the postbox is still there in countries in which it is enabled */
 
     // shops: text input / opening hours input take longer than other quests
     CheckOpeningHoursSigned(featureDictionaryFuture),
-    AddPlaceName(featureDictionaryFuture),
-    SpecifyShopType(),
+    SpecifyShopType(), // above add place name as some brand presets will set the name too
     CheckShopType(),
+    AddPlaceName(featureDictionaryFuture),
     AddOpeningHours(featureDictionaryFuture),
+    AddSeating(), // easily visible from outside, but only seasonally
 
     AddAtmOperator(),
 
@@ -335,7 +345,7 @@ whether the postbox is still there in countries in which it is enabled */
 
     // postboxes (collection times are further up, see comment)
     AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
-    AddPostboxRef(), // requires text input
+    AddPostboxRef(), // requires text input and to be very close to the collection plate
 
     AddWheelchairAccessOutside(),
 
@@ -367,9 +377,9 @@ whether the postbox is still there in countries in which it is enabled */
 
     AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
-    AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
+    AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
-    AddAirConditioning(), // often visible from the outside, if not, visible/feelable inside
+    AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
 
     /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 
@@ -385,14 +395,14 @@ whether the postbox is still there in countries in which it is enabled */
     AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
 
     // shop
-    AddAcceptsCash(),
-    AddVegetarian(),
+    AddVegetarian(), // menus are often posted externally
     AddVegan(),
     AddHalal(), // there are ~ 100 times more Muslims than Jews
     AddKosher(),
     AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
     AddInternetAccess(), // used by OsmAnd
-    AddSeating(),
+    AddAcceptsCards(), // this will often involve going inside and near the till
+    AddAcceptsCash(),
 
     AddFuelSelfService(),
 

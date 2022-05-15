@@ -1103,7 +1103,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="background_type_map">"Carte"</string>
     <string name="background_type_aerial_esri">"Aérienne (par Esri)"</string>
     <string name="quest_barrier_type_title">"Quel type de barrière est-ce ?"</string>
-    <string name="quest_barrier_type_gate">"Porte"</string>
     <string name="quest_barrier_type_lift_gate">"Barrière levante"</string>
     <string name="quest_barrier_type_bollard">"Plot(s)"</string>
     <string name="quest_barrier_type_chain">"Chaîne"</string>
@@ -1305,7 +1304,6 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_smoothness_obstacle">"Il y a un obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Veuillez donner une réponse générale pour l’homogénéité de la surface. Les obstacles ponctuels, comme les dos d’âne ou les ralentisseurs peuvent être ignorés. Les obstacles répétés ou inattendus doivent être pris en compte dans la réponse."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indique pour quel véhicule la surface est adaptée. Cela concerne l’état global, et non pas les dommages unitaires éventuels."</string>
-    <string name="quest_shoulder_explanation">"Une bande d’arrêt d’urgence est une voie clairement délimitée permettant à un véhicule de s’arrêter en parallèle du traffic, sans (nécessairement) être une chaussée bien définie."</string>
     <string name="link_osmhydrant_description">"Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie"</string>
     <string name="achievement_lifesaver_title">"Sauveteur"</string>
     <string name="achievement_lifesaver_solved_X">"Vous avez résolu %d quêtes aidant les services d’urgence et de premier secours !"</string>
@@ -1355,8 +1353,8 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <!-- Fuzzy -->
     <string name="quest_sidewalk_surface_title">"Quelle est la surface de ce trottoir ici ?"</string>
     <string name="quest_tactilePaving_incorrect">"Seulement d’un côté"</string>
-    <string name="quest_fee_answer_yes_but">"Oui, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Non, mais il y a une durée maximale..."</string>
+    <string name="quest_fee_answer_yes_but">"Oui, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Non, mais il y a une durée maximale…"</string>
     <string name="unit_days">"jours"</string>
     <string name="unit_hours">"heures"</string>
     <string name="unit_minutes">"minutes"</string>
@@ -1382,7 +1380,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Le paiement en liquide est-il accepté ici ?"</string>
-    <string name="quest_address_street_title2">"Quelle rue est-ce?"</string>
+    <string name="quest_address_street_title2">"Quelle rue est-ce ?"</string>
     <string name="quest_airConditioning_title">"Ce lieu est-il climatisé ?"</string>
     <string name="quest_baby_changing_table_title2">"Ce lieu dispose-t-il d’une table à langer ?"</string>
 
@@ -1415,7 +1413,7 @@ sorted alphabetically by title -->
     <string name="quest_generalFee_title2">"Doit-on payer pour rentrer ici ?"</string>
     <string name="quest_internet_access_title">"Quel type de connexion internet est proposée ici ?"</string>
     <string name="quest_level_title2">"À quel niveau se trouve cet endroit ?"</string>
-    <string name="quest_lit_title">"Est-ce éclairé?"</string>
+    <string name="quest_lit_title">"Est-ce éclairé ?"</string>
     <string name="quest_openingHours_title">"Quels sont les horaires d’ouverture à cet endroit ?"</string>
     <string name="quest_openingHours_signed_title">"Les heures d’ouverture sont-elles signalées ici ?"</string>
     <string name="quest_openingHours_resurvey_title">"Les horaires d’ouverture sont-ils toujours corrects ?"</string>
@@ -1424,8 +1422,25 @@ sorted alphabetically by title -->
     <string name="quest_smoking_title2">"Peut-on fumer à cet endroit ?"</string>
     <string name="quest_smoothness_title">"Quelle est la qualité de la surface ?"</string>
     <string name="quest_summit_register_title2">"Y’a-t’il un registre d’ascenscion de sommet de montagne ?"</string>
-    <string name="quest_surface_title">"Quelle est le matériau qui compose la surface?"</string>
+    <string name="quest_surface_title">"Quel est le matériau qui compose la surface ?"</string>
     <string name="quest_toiletAvailability_title">"Y a-t-il des toilettes à cet endroit ?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Les toilettes de ce lieu sont-elles accessibles aux fauteuils roulants ?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Êtes-vous certain que les cyclistes ne sont pas autorisés à utiliser cette rue à sens unique dans le deux sens ? En cas de doute, vérifiez qu’un panneau ne se trouve pas en bout de rue."</string>
+    <string name="link_valhalla_description">"Moteur de routage à faible empreinte mémoire, routage multimodal, isochrones, et plus encore."</string>
+    <string name="link_backofyourhand_description">"Connaissez vous bien votre secteur ? Testez votre connaissance en localisant les rues."</string>
+    <string name="link_thenandnow_description">"Explorez les évolutions visuelles d’OSM, des premiers jours jusqu’à aujourd’hui !"</string>
+    <string name="link_notesreview_description">"Trouvez, filtrez et commentez facilement vos notes et celles des autres. Beaucoup de notes peuvent être résolues en reportant leurs informations sur la carte via iD ou JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Est-ce que les cartes de crédit ou de débit sont acceptées ici ?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Les deux"</string>
+    <string name="quest_accepts_cards_credit_only">"Seulement les cartes de crédit"</string>
+    <string name="quest_accepts_cards_dedit_only">"Seulement les cartes de débit"</string>
+    <string name="quest_accepts_cards_unavailable">"Pas de cartes de crédit ni de débit"</string>
+    <string name="quest_barrier_type_gate_any_size">"Porte, toutes tailles"</string>
+    <string name="quest_air_pump_bicycle_title">"Est-ce qu’une pompe à vélo fonctionnelle est disponible pour tout le monde ici ?"</string>
+    <string name="quest_air_pump_compressor_title">"Est-ce qu’un compresseur à air est disponible ici ?"</string>
+    <string name="quest_step_count_stile_hint">"Seulement le nombre de marches pour atteindre le sommet. Si le nombre de marches diffère entre les côtés, donnez le plus grand nombre."</string>
+    <string name="quest_shoulder_explanation2">"Un accotement est une bande d’arrêt d’urgence clairement délimitée. La zone d’accotement n’est ni nécessairement pavée sur toute sa surface ni forcément suffisamment large pour qu’une voiture puisse s’arrêter complètement à l’écart du traffic."</string>
 </resources>

@@ -34,7 +34,7 @@ class AddMaxPhysicalHeight(
         and vehicle !~ private|no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add maximum heights"
+    override val changesetComment = "Add maximum physical heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height_measure
     override val isSplitWayEnabled = true

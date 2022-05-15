@@ -913,7 +913,7 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_surface_value_clay">"Clay court"</string>
     <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
     <string name="quest_surface_value_tartan">"Tartan Track"</string>
-    <string name="quest_bicycle_parking_fee_title">"Is there a fee to park bikes here?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Do you have to pay to park a bike here?"</string>
     <string name="quest_buildingType_house_description2">"not detached single-family home, e.g. a single row house"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Drinking water (no sign)"</string>
@@ -957,7 +957,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="background_type_map">"Map"</string>
     <string name="background_type_aerial_esri">"Aerial (by Esri)"</string>
     <string name="quest_barrier_type_title">"What type of barrier is this?"</string>
-    <string name="quest_barrier_type_gate">"Gate"</string>
 
     <!-- Heard this called lift gate and arm gate before, but never boom barrier! -->
     <!-- Fuzzy -->
@@ -1150,7 +1149,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_smoothness_obstacle">"There is an obstacle"</string>
     <string name="quest_smoothness_obstacle_hint">"Please provide a general answer for the smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indicate for which vehicles the surface should be okay to use. What matters is the big picture rather than single damages."</string>
-    <string name="quest_shoulder_explanation">"A shoulder is a clearly demarcated emergency stopping lane that allows vehicles to stop safely completely beside the traffic lane, though not always (fully) on paved surface."</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="achievement_lifesaver_title">"Lifesaver"</string>
     <string name="achievement_lifesaver_solved_X">"You solved %d quests that help emergency services and first responders!"</string>
@@ -1207,9 +1205,7 @@ Unfortunately, due to a Google Play Store policy, no links leading to donations 
     <string name="quest_smoking_separated">"Only in separated areas"</string>
     <string name="quest_smoking_yes">"Yes, everywhere"</string>
     <string name="quest_seating_name_title">"What kind of seating does this place have?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_seating_takeaway">"Takeaway only"</string>
+    <string name="quest_seating_takeaway">"No seating (takeaway only)"</string>
     <string name="quest_seating_indoor_only">"Indoor seating only"</string>
     <string name="quest_seating_outdoor_only">"Outdoor seating only"</string>
     <string name="quest_seating_indoor_and_outdoor">"Both indoor and outdoor seating"</string>
@@ -1233,10 +1229,10 @@ sorted alphabetically by title -->
     <string name="quest_busStopLit_title2">"Is this stop lit?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopName_title2">"What's the name of this stop?"</string>
+    <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopRef_title2">"What's the reference number of this stop?"</string>
+    <string name="quest_busStopRef_title2">"What’s the reference number of this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
@@ -1256,13 +1252,33 @@ sorted alphabetically by title -->
     <string name="quest_openingHours_title">"What are the opening hours here?"</string>
     <string name="quest_openingHours_signed_title">"Are the opening hours here signed?"</string>
     <string name="quest_openingHours_resurvey_title">"Are these opening hours still correct?"</string>
-    <string name="quest_placeName_title">"What's the name of this place?"</string>
+    <string name="quest_placeName_title">"What’s the name of this place?"</string>
     <string name="quest_shop_type_title2">"What type of shop is this?"</string>
     <string name="quest_smoking_title2">"Is smoking allowed here?"</string>
-    <string name="quest_smoothness_title">"What's the surface quality here?"</string>
+    <string name="quest_smoothness_title">"What’s the surface quality here?"</string>
     <string name="quest_summit_register_title2">"Is there a summit register here?"</string>
-    <string name="quest_surface_title">"What's the surface here?"</string>
+    <string name="quest_surface_title">"What’s the surface here?"</string>
     <string name="quest_toiletAvailability_title">"Are there any toilets here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this oneway street in both directions? If in doubt, check if there is a sign at the end of the street."</string>
+    <string name="link_valhalla_description">"Routeing engine with a very small memory footprint, multi-modal routing, isochrones and more."</string>
+    <string name="link_backofyourhand_description">"How well do you know your area? Test your knowledge by locating streets."</string>
+
+    <!-- The original string "Explore how OSM looked like in the early days compared to how it looks now!" doesn't sound very natural.  "how OSM looked" or "what OSM looked like", but not "how OSM looked like".  "compared to"/"compared with" is probably personal choice, but I prefer "compared with". -->
+    <!-- Fuzzy -->
+    <string name="link_thenandnow_description">"Explore what OSM looked like in the early days compared with how it looks now!"</string>
+
+    <!-- Fuzzy -->
+    <string name="link_notesreview_description">"Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them onto the map with iD or JOSM."</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Are credit or debit cards accepted here?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Both"</string>
+    <string name="quest_accepts_cards_credit_only">"Only credit cards"</string>
+    <string name="quest_accepts_cards_dedit_only">"Only debit cards"</string>
+    <string name="quest_accepts_cards_unavailable">"Neither debit nor credit cards"</string>
+    <string name="quest_barrier_type_gate_any_size">"Gate, any size"</string>
+    <string name="quest_step_count_stile_hint">"Just the number of steps to reach the top.  If the step count differs on either side, give the higher number."</string>
+    <string name="quest_shoulder_explanation2">"A shoulder is a clearly-demarcated emergency stopping lane. The area designated as a shoulder is not necessarily paved over its entire width, and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
 </resources>

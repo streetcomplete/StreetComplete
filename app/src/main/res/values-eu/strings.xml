@@ -40,7 +40,7 @@
     <string name="map_attribution_osm">"© OpenStreetMap laguntzaileak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_otherAnswers">"Beste erantzunak..."</string>
+    <string name="quest_generic_otherAnswers">"Beste erantzunak…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Ez dakit…"</string>
@@ -235,7 +235,7 @@
 
     <!-- As in: "show more of those pictures to select an answer from -->
     <!-- Fuzzy -->
-    <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
+    <string name="quest_roofShape_show_more">"Erakutsi gehiago…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
@@ -606,7 +606,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"eta gehiago..."</string>
+    <string name="credits_and_more">"eta gehiago…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Bizitegi-kalea"</string>
@@ -886,7 +886,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_hasFeature_only">"Bakarrik"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Jaki beganoek ez dute animalietatik eratorritako produktuak (haragirik ez, esnerik ez, arrautzik ez, ... )"</string>
+    <string name="quest_dietType_explanation_vegan">"Jaki beganoek ez dute animalietatik eratorritako produktuak (haragirik ez, esnerik ez, arrautzik ez, … )"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Jaki begetarianoek ez dute haragi edo arrainik"</string>
@@ -1049,7 +1049,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_housenumber_multiple_numbers">"Etxe zenbaki bat baino gehiago dauka"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"Zenbakiak komaz bananduta edo barrutia adieraziz sartu ditzakezu. Esaterako 1,3 edo 2-6"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Zenbakiak komaz bananduta edo barrutia adieraziz sartu ditzakezu. Esaterako 1,3 edo 2–6"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Tente (koadroa lotu daiteke)"</string>
@@ -1177,7 +1177,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_industrial">"Eraikin industriala"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"adib. fabrika, lantegia, kotxeak konpontzeko tailerra, ... "</string>
+    <string name="quest_buildingType_industrial_description">"adib. fabrika, lantegia, kotxeak konpontzeko tailerra, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Bulegoen eraikina"</string>
@@ -1553,7 +1553,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_postboxRef_title">"Zein da postontzi honen erreferentzia zenbakia?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai..."</string>
+    <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Irudiko kalea biratuta dago mapan ikurraren kokapenean"</string>
@@ -1693,7 +1693,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="tutorial_welcome_to_osm_subtitle">"munduko wiki mapa librea"</string>
 
     <!-- Fuzzy -->
-    <string name="tutorial_intro">"StreetComplete-k erraz jartzen dizu OpenStreetMap hobetzea. Automatikoki bilatzen ditu zure inguruan falta diren xehetasunak: bidegorriak, etxeen zenbakiak, irekiera orduak eta askoz gehiago..."</string>
+    <string name="tutorial_intro">"StreetComplete-k erraz jartzen dizu OpenStreetMap hobetzea. Automatikoki bilatzen ditu zure inguruan falta diren xehetasunak: bidegorriak, etxeen zenbakiak, irekiera orduak eta askoz gehiago…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Behin aurkituta, falta diren xehetasunak zure mapan agertuko dira erronka gisa.
@@ -1836,7 +1836,7 @@ Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko ere
     <string name="link_nominatim_description">"OSM datuen geokodetzailea, zerbitzu askok erabilia"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"Marraztu hiri bateko bide guztiak, kamisetetan, katiluetan... inprimatzeko"</string>
+    <string name="link_city_roads_description">"Marraztu hiri bateko bide guztiak, kamisetetan, katiluetan… inprimatzeko"</string>
 
     <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Sortu inprimatzeko moduko hiriko mapak urrats gutxi batzuekin, aukeran kale aurkibidearekin"</string>
@@ -1991,7 +1991,7 @@ mailak"</string>
     <string name="quest_board_type_map">"Mapa bat da"</string>
     <string name="quest_board_type_map_title">"Mapa bat da eta besterik ez?"</string>
     <string name="quest_board_type_map_description">"Argibide-taula gai konkretu bati buruzkoa bada, zehaztu mesedez, ez du axola mapa bat ere baduen ala ez. Adibidez, garraio publikoko argibide-taula batek autobus mapa bat izan dezake. Gaia ez badago hemen zerrendatuta, agian utzi mezu bat horren ordez."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Hainbat zoladura..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Hainbat zoladura…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Ziur zaude ezinezkoa dela zoladura zehaztea? Kontuan izan \"Bidean zehar aldatzen da\" erantzunak zoladura aldatzen den bidea mozteko aukera ematen duena. Erabili \"Ez dakit\" zoladura bakarra badago, baina erantzuteko gai ez bazara."</string>
@@ -2029,7 +2029,7 @@ mailak"</string>
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Semaforo hauek ba al dute adierazle taktilak itsuak segurtasunez pasatzeko?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Oharra: askotan semaforoaren botoiaren zorroaren beheko aldean dagoen dardara-botoia edo kono birakaria da."</string>
-    <string name="quest_buildingType_bungalow_description2">"berezitako etxe txikia (udako etxea, oporretarako bungalowa, kabina...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"berezitako etxe txikia (udako etxea, oporretarako bungalowa, kabina…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Zein hesi dago trenbidea gurutzatzeko leku honetan?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Hesirik ez"</string>
     <string name="quest_steps_ramp_title">"Eskailera hauek arrapalarik al dute? Zein motakoa?"</string>
@@ -2115,7 +2115,7 @@ Autobusentzako bat baldin badago, utzi ohar bat."</string>
 
 Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepidearen alde batek bi norabideko bidea izan dezakeelako txirrindularientzat."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Bizikleta biderik ez dagoela aukeratuzen"</string>
-    <string name="quest_construction_completed_at_known_date">"Data honetan amaituko da..."</string>
+    <string name="quest_construction_completed_at_known_date">"Data honetan amaituko da…"</string>
     <string name="quest_construction_completion_date_title">"Noiz amaituko da?"</string>
     <string name="quest_surface_value_clay">"Buztina"</string>
     <string name="quest_surface_value_artificial_turf">"Belar artifiziala"</string>
@@ -2167,7 +2167,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Airetiko irudia (Esri bidez)"</string>
     <string name="quest_barrier_type_title">"Zein langa edo hesi mota dago hemen?"</string>
-    <string name="quest_barrier_type_gate">"Atea"</string>
     <string name="quest_barrier_type_lift_gate">"Hesi altxagarria"</string>
     <string name="quest_barrier_type_bollard">"Bolardoa(k)"</string>
     <string name="quest_barrier_type_chain">"Katea"</string>
@@ -2242,7 +2241,7 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_presets_default_name">"Berezkoa"</string>
     <string name="quest_presets_selected">"Hautatua"</string>
     <string name="quest_presets_delete_message">"“%s” hobespena ezabatu? Erronken hautaketa eta ordena betirako galduko da."</string>
-    <string name="notification_syncing">"Datuak sinkronizatzen..."</string>
+    <string name="notification_syncing">"Datuak sinkronizatzen…"</string>
 
     <!-- Android notifications -->
     <string name="notification_channel_sync">"Datuak sinkronizatu"</string>
@@ -2318,7 +2317,7 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="street_parking_conditional_restrictions_hint">"Hemen aparkatu edo gelditzea posible bada, lehenik eta behin erantzun baimenduta daudenei nola aparkatu hemen. Zehazki zer murrizketa aplikatzen diren geroago zehaztu daiteke.
 
 Bestela, ohar bat utz dezakezu (argazki batekin)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Etxeko zenbakia eta izena..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Etxeko zenbakia eta izena…"</string>
     <string name="quest_address_house_number_label">"Etxeko zenbakia:"</string>
     <string name="quest_shoulder_title">"Errepide honek ba du bazterbiderik?"</string>
     <string name="quest_fireHydrant_position_title">"Non dago suteetako ur-hargune hori?"</string>
@@ -2363,7 +2362,6 @@ Bestela, ohar bat utz dezakezu (argazki batekin)."</string>
     <string name="quest_smoothness_obstacle_hint">"Eman erantzun orokor bat leuntasunari dagokionez. Oztopo bakarrak, hala nola, ibilguak, abiadura-babesak edo ganadu-sareak alde batera utzi daitezke. Errepikaturiko edo ustekabeko oztopoek erantzuna lortzeko balio izan behar dute."</string>
     <string name="quest_smoothness_hint">"
 🚲, 🚗, 🚙, … adierazi zein ibilgailutarako den egokia azalera hau. Garrantzitsua ikuspegi orokorra zehaztasunak baino."</string>
-    <string name="quest_shoulder_explanation">"Bidebazter argi eta garbi mugatuta, larrialdietarako geldialdietarako, ibilgailuak trafiko-erreiaren ondoan guztiz seguru gelditzea ahalbidetzen duena, nahiz eta ez beti (guztiz) zolatutako gainazalean."</string>
     <string name="link_osmhydrant_description">"Bilatu, gehitu eta editatu suhiltzaileen parkeak eta suhiltzaileen ur-
 harguneak"</string>
     <string name="achievement_lifesaver_title">"Salbagailua"</string>
@@ -2406,8 +2404,8 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="ar_core_tracking_error_no_plane_hit">"Mantendu gezitik gertuago baina kontuz trafikoarekin!"</string>
     <string name="quest_sidewalk_surface_title">"Zein da espaloiaren azalera hemen?"</string>
     <string name="quest_tactilePaving_incorrect">"Alde batean bakarrik"</string>
-    <string name="quest_fee_answer_yes_but">"Bai, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Ez, baina gehienezko iraupena dago..."</string>
+    <string name="quest_fee_answer_yes_but">"Bai, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Ez, baina gehienezko iraupena dago…"</string>
     <string name="unit_days">"egun"</string>
     <string name="unit_hours">"ordu"</string>
     <string name="unit_minutes">"minutu"</string>

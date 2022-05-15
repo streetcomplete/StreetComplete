@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.street_parking
 
+import android.util.Log
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
@@ -23,7 +24,15 @@ fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParki
 private fun createParkingForSide(tags: Map<String, String>, side: String?): StreetParking? {
     val sideVal = if (side != null) ":$side" else ""
 
-    val parkingValue = tags["parking:lane$sideVal"] ?: return null
+    val parkingValue = tags["parking:lane$sideVal"]
+        ?: return when (tags["parking:condition$sideVal"]) {
+            // new style tagging of parking restrictions, without parking:lane:*=no
+            "no_parking" -> StreetParkingProhibited
+            "no_standing" -> StreetStandingProhibited
+            "no_stopping" -> StreetStoppingProhibited
+            "no" -> NoStreetParking
+            else -> null
+        }
 
     when (parkingValue) {
         // old style tagging
@@ -31,8 +40,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
         "no_standing" -> return StreetStandingProhibited
         "no_stopping" -> return StreetStoppingProhibited
         "no" -> {
-            val parkingCondition = tags["parking:condition$sideVal"]
-            return when (parkingCondition) {
+            return when (tags["parking:condition$sideVal"]) {
                 // new style tagging
                 "no_parking" -> StreetParkingProhibited
                 "no_standing" -> StreetStandingProhibited

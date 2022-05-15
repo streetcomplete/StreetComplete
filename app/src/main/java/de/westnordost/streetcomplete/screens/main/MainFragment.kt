@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.screens.main
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Point
@@ -12,7 +10,6 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +30,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -78,6 +74,7 @@ import de.westnordost.streetcomplete.screens.main.map.QuestsMapFragment
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -90,6 +87,7 @@ import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -133,6 +131,7 @@ class MainFragment :
     private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
 
@@ -170,18 +169,6 @@ class MainFragment :
 
     //region Lifecycle - Android Lifecycle Callbacks
 
-    private val locationAvailabilityReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
-
-    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -208,6 +195,7 @@ class MainFragment :
         binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
+        binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateMapQuestOffsets()
     }
@@ -229,15 +217,8 @@ class MainFragment :
     override fun onStart() {
         super.onStart()
         visibleQuestsSource.addListener(this)
-        requireContext().registerReceiver(
-            locationAvailabilityReceiver,
-            IntentFilter(LocationManager.MODE_CHANGED_ACTION)
-        )
-        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
-            requestLocationPermissionResultReceiver,
-            IntentFilter(LocationRequester.REQUEST_LOCATION_PERMISSION_RESULT)
-        )
-        updateLocationAvailability()
+        locationAvailabilityReceiver.addListener(::updateLocationAvailability)
+        updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
     }
 
     /** Called by the activity when the user presses the back button.
@@ -262,8 +243,7 @@ class MainFragment :
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
         wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
-        requireContext().unregisterReceiver(locationAvailabilityReceiver)
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(requestLocationPermissionResultReceiver)
+        locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         locationManager.removeUpdates()
     }
 
@@ -597,8 +577,8 @@ class MainFragment :
 
     //region Location - Request location and update location status
 
-    private fun updateLocationAvailability() {
-        if (requireContext().hasLocationPermission && requireContext().isLocationEnabled) {
+    private fun updateLocationAvailability(isAvailable: Boolean) {
+        if (isAvailable) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -694,6 +674,10 @@ class MainFragment :
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
+    fun starInfoMenu() {
+        val intent = Intent(requireContext(), UserActivity::class.java)
+        startActivity(intent)
+    }
     /* -------------------------------------- Context Menu -------------------------------------- */
 
     private fun showMapContextMenu(position: LatLon) {
@@ -803,8 +787,7 @@ class MainFragment :
 
     private fun closeEditHistorySidebar() {
         if (editHistoryFragment != null) {
-            childFragmentManager.popBackStack(EDIT_HISTORY,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }

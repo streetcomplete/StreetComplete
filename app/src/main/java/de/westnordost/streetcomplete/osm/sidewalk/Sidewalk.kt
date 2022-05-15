@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
-enum class Sidewalk() {
+enum class Sidewalk {
     YES,
     NO,
     SEPARATE,
@@ -47,5 +47,6 @@ fun SidewalkSides.applyTo(tags: Tags) {
         tags["sidewalk:right"] = right.osmValue
         // In case of previous incorrect sidewalk tagging
         tags.remove("sidewalk:both")
+        tags.remove("sidewalk")
     }
 }

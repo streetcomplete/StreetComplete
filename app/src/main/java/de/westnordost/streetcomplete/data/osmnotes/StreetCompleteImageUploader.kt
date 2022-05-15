@@ -50,8 +50,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                         throw ImageUploadServerException("Upload Failed: Unexpected response \"$response\"")
                     }
                 } else {
-                    val error = connection.errorStream.bufferedReader().use { it.readText() }.toInt()
-                    if (error / 100 == 5)
+                    val error = connection.errorStream.bufferedReader().use { it.readText() }
+                    if (status / 100 == 5)
                         throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$error\"")
                     else
                         throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$error\"")

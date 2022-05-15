@@ -380,7 +380,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"keinen, aber Radfahrer dürfen in beiden Richtungen auf der Fahrbahn fahren"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Radfahrer dürfen in beide Richtungen fahren"</string>
     <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß so etwas wie eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
@@ -424,7 +424,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit …"</string>
     <string name="quest_fee_add_times">"Zeiten hinzufügen"</string>
     <string name="quest_housenumber_multiple_numbers">"Hat mehrere Hausnummern"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben. Zum Beispiel 1,3 oder 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben.\nZum Beispiel 1,3 oder 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Bügel"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller"</string>
     <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
@@ -712,14 +712,14 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_touch_mapper_description">"Einfach Blindenleitsystem-Karten für Adressen erstellen"</string>
     <string name="link_mapy_tactile_description">"Blindenleitsystem-Karten für sehbehinderte Menschen"</string>
     <string name="link_josm_description">"Vollwertiger Desktop-OSM-Editor. Das Werkzeug der Wahl für Stammnutzer."</string>
-    <string name="link_vespucci_description">"Erweiterter OSM-Editor für Android"</string>
+    <string name="link_vespucci_description">"Android OSM-Editor für Fortgeschrittene"</string>
     <string name="link_ideditor_description">"Einfacher OSM-Editor für Webbrowser. Optimiert für Desktop oder große Tablets"</string>
     <string name="link_umap_description">"Erstelle Karten nach Maß und füge sie in eigene Seiten ein"</string>
     <string name="link_opnvkarte_description">"Eine Karte für ÖPNV-Routen und -Stopps"</string>
-    <string name="link_pic4review_description">"Durch Ansehen von Bildern deiner Stadt zu OSM beitragen"</string>
+    <string name="link_pic4review_description">"Trage durch Ansehen von Bildern deiner Stadt zu OSM bei"</string>
     <string name="link_wiki_description">"Das Wiki ist dein Startpunkt für alles Relevante zu OpenStreetMap"</string>
     <string name="link_learnosm_description">"Neu bei OpenStreetMap? Hier ist eine Einführung"</string>
-    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, z. B. wo und wie Änderungen gemacht wurden, über Editoren in der Nähe und Bestenlisten"</string>
+    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, zum Beispiel wo und wie Du beigetragen hast, wer sonst noch so in der Nähe beiträgt sowie Bestenlisten"</string>
     <string name="link_welcome_mat_description">"Grundsätzliche Informationen über OpenStreetMap und die Zusammenarbeit mit der Organisation dahinter"</string>
     <string name="link_mapillary_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
     <string name="link_openstreetcam_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
@@ -735,7 +735,7 @@ Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine 
     <string name="link_openinframap_description">"Spezialkarte zu Kraftwerken, Telekommunikation und fossiler Energie"</string>
     <string name="link_openorienteeringmap_description">"Ausdruckbare Karten für Orientierungsläufe"</string>
     <string name="link_openstreetbrowser_description">"OpenStreetMap-Kartenmerkmale erkunden"</string>
-    <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der OpenStreetMap-Welt"</string>
+    <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der Welt von OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Figur-Grund-Diagrammposter einer Stadt oder Umgebung erstellen"</string>
     <string name="achievement_first_edit_title">"Erste Aufgabe gelöst"</string>
     <string name="achievement_first_edit_description">"Willkomen in der OpenStreetMap-Community! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben einsehen."</string>
@@ -804,7 +804,7 @@ Erfolge"</string>
     <string name="quest_recycling_type_engine_oil">"Motoröl"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
     <string name="link_graphhopper_description">"Eine flexible Routing-Engine"</string>
-    <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
+    <string name="link_qwant_maps_description">"Eine Karte mit Suchfunktion und Routenplaner"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen, werden Vektordaten von %1$s heruntergeladen. Siehe deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsoren"</string>
     <string name="quest_board_type_history">"Geschichte"</string>
@@ -825,7 +825,7 @@ Erfolge"</string>
     <string name="quest_buildingType_terrace2">"Reihenhäuser"</string>
     <string name="at_housename">"Hausname %s"</string>
     <string name="at_housenumber">"Hausnummer %s"</string>
-    <string name="quest_openingHours_add_off_days">"Neuer Ruhetag"</string>
+    <string name="quest_openingHours_add_off_days">"Ruhetag hinzufügen"</string>
     <string name="quest_openingHours_off_day">"Ruhetag"</string>
     <string name="quest_openingHours_unspecified_range">"Nicht angegeben"</string>
     <string name="quest_cycleway_resurvey_title">"Sind die Radwege immer noch so?"</string>
@@ -844,7 +844,7 @@ Erfolge"</string>
     <string name="quest_maxweight_select_sign">"Wähle das Schild"</string>
     <string name="quest_steps_incline_title">"Welche Richtung führt auf dieser Treppe nach oben?"</string>
     <string name="quest_steps_incline_up">"Hier nach oben"</string>
-    <string name="quest_step_count_title">"Wie viele Stufen hat diese Treppe?"</string>
+    <string name="quest_step_count_title">"Wie viele Stufen gibt es hier?"</string>
     <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Gibt es an dieser Ampel einen Taster für Blinde, der signalisiert, wenn man über die Straße gehen kann?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Hinweis: Dies ist oft ein vibrierender Taster oder drehender Konus auf der Unterseite des Bedarfsampel-Kastens."</string>
@@ -861,7 +861,7 @@ Erfolge"</string>
     <string name="quest_atm_operator_title">"Zu welcher Bank gehört dieser Geldautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Wer sammelt Altkleider mit diesem Container?"</string>
     <string name="quest_charging_station_operator_title">"Wer ist der Betreiber dieser Ladestation?"</string>
-    <string name="link_indoorequal_description">"Entdecke Karten für den Innenbereich von Einkaufszentren, Bahnhöfe usw."</string>
+    <string name="link_indoorequal_description">"Entdecke Karten für den Innenbereich von Einkaufszentren, Bahnhöfen usw."</string>
     <string name="achievement_rare_title">"Schatzsuche"</string>
     <string name="achievement_rare_solved_X">"Du hast %d sehr seltene Aufgaben gefunden und gelöst, gratuliere!"</string>
     <string name="achievement_citizen_title">"Bürger"</string>
@@ -907,7 +907,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
     <string name="quest_address_street_hint">"Tippe auf die Straße"</string>
     <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
-    <string name="quest_parkingType_street_side">"Parkbuchten"</string>
+    <string name="quest_parkingType_street_side">"Parkbuchten am Straßenrand"</string>
     <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
     <string name="quest_tracktype_grade3a">"Größtenteils fest"</string>
@@ -979,7 +979,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="background_type_map">"Karte"</string>
     <string name="background_type_aerial_esri">"Luftbild (Esri)"</string>
     <string name="quest_barrier_type_title">"Was für eine Barriere ist das?"</string>
-    <string name="quest_barrier_type_gate">"Tor"</string>
     <string name="quest_barrier_type_lift_gate">"Schranke"</string>
     <string name="quest_barrier_type_bollard">"Poller / Pfosten"</string>
     <string name="quest_barrier_type_chain">"Kette"</string>
@@ -1111,7 +1110,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_parking_on_street">"Auf der Straße"</string>
     <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
-    <string name="street_parking_street_side">"Nur in Parkbuchten"</string>
+    <string name="street_parking_street_side">"Nur in Parkbuchten am Straßenrand"</string>
     <string name="street_parking_painted_area_only">"Nur in dafür vorgesehenen Plätzen auf der Straße"</string>
     <string name="street_parking_separate">"Parkplätze sind separat auf Karte eingezeichnet"</string>
     <string name="street_parking_no">"Kein Parken hier / Nicht erlaubt"</string>
@@ -1176,7 +1175,6 @@ Mit fällt aber auch kein besseres Wort ein. Vielleicht kann man es mit "durchei
     <string name="quest_smoothness_obstacle">"Da ist ein Hindernis"</string>
     <string name="quest_smoothness_obstacle_hint">"Bitte gib eine allgemeine Antwort für die Glätte der Oberfläche. Einzelne Hindernisse wie Bordsteinkanten, Schwellen zur Geschwindigkeitsbegrenzung oder Weideroste können ignoriert werden. Mehrfache oder unerwartete Hindernisse sollten in die Antwort miteinbezogen werden."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … zeigen an, für welche Fahrzeuge die Oberfläche okay sein sollte. Was zählt, ist das Gesamtbild, nicht vereinzelte Schäden."</string>
-    <string name="quest_shoulder_explanation">"Ein Seitenstreifen ist eine deutlich markierte Standspur, die Fahrzeugen sicheres Anhalten komplett neben der Fahrspur erlaubt, allerdings nicht immer (komplett) auf befestigtem Untergrund."</string>
     <string name="link_osmhydrant_description">"Finde, erstelle und bearbeite Feuerwehrhäuser und Hydranten"</string>
     <string name="achievement_lifesaver_title">"Lebensretter"</string>
     <string name="achievement_lifesaver_solved_X">"Du hast %d Aufgaben gelöst, die Rettungskräften und Ersthelfern die Arbeit erleichtern!"</string>
@@ -1293,4 +1291,24 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Hat dieser Ort eine Toilette?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Ist die Toilette an diesem Ort zugänglich für Rollstuhlfahrer?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sicher, dass es Radfahrern nicht erlaubt ist, die Einbahnstraße in beide Richtungen zu nutzen? Im Zweifel schaue lieber am Ende der Straße nach einem Schild."</string>
+    <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
+    <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
+    <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
+    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Werden hier Kredit- oder Debitkarten akzeptiert?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Beide"</string>
+    <string name="quest_accepts_cards_credit_only">"Nur Kreditkarten"</string>
+    <string name="quest_accepts_cards_dedit_only">"Nur Debitkarten"</string>
+    <string name="quest_accepts_cards_unavailable">"Weder Kredit- noch Debitkarten"</string>
+    <string name="quest_barrier_type_gate_any_size">"Tor (jede Größe)"</string>
+    <string name="quest_air_pump_bicycle_title">"Gibt es hier eine funktionierende und für alle nutzbare Fahrradpumpe?"</string>
+
+    <!-- "Pressluft" habe ich noch nie gehört, ist "Druckluft" vielleicht besser? Evtl. auch "Gibt es hier einen Druckluft-Kompressor"? -->
+    <string name="quest_air_pump_compressor_title">"Gibt es hier Druckluft zum Aufpumpen von Reifen?"</string>
+    <string name="quest_step_count_stile_hint">"Nur die Anzahl der Stufen, um nach oben zu kommen. Wenn sich die Anzahl je nach Seite unterscheidet, nimm die höhere Zahl."</string>
+    <string name="quest_shoulder_explanation2">"Ein Seitenstreifen ist ein klar abgegrenzter Nothaltebereich. Die als Seitenstreifen ausgewiesene Fläche ist nicht unbedingt über die gesamte Breite befestigt und nicht unbedingt breit genug, damit ein Auto vollständig abseits der Fahrbahn anhalten kann."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"kein, Radfahren in diese Richtung nicht erlaubt"</string>
 </resources>

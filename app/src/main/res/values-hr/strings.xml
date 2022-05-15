@@ -825,11 +825,11 @@ Ti podaci su bitni ne samo poštarima već i svakom navigacijskom sustavu."</str
     <string name="achievement_building_solved_X">"Riješili ste %d zadataka vezanih uz zgrade.
 Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utvrdi njen tip."</string>
     <string name="achievement_blind_title">"Šesto čulo"</string>
-    <string name="achievement_blind_solved_X">"Riješili ste %d zadataka koji su zanimljivi slijepim i slabovidnim osobama."</string>
+    <string name="achievement_blind_solved_X">"Riješili ste %d zadataka koji su korisni slijepim i slabovidnim osobama."</string>
     <string name="achievement_pedestrian_title">"Trkač"</string>
     <string name="achievement_pedestrian_solved_X">"Riješili ste %d zadataka korisnih za pješake!"</string>
     <string name="achievement_veg_title">"Ljubazni prema životinjama"</string>
-    <string name="achievement_veg_solved_X">"Riješili ste %d zadataka koji su zanimljivi ljudima koji žive na prehrani bez mesa!"</string>
+    <string name="achievement_veg_solved_X">"Riješili ste %d zadataka koji su interesantni ljudima koji žive na prehrani bez mesa!"</string>
     <string name="achievement_car_title">"Na cesti"</string>
 
     <!-- Fuzzy -->
@@ -1120,9 +1120,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="background_type_map">"Karta"</string>
     <string name="background_type_aerial_esri">"Zračna snimka (Esri)"</string>
     <string name="quest_barrier_type_title">"Kakva je ovo barijera?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_barrier_type_gate">"Vrata"</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_type_lift_gate">"Brklja"</string>
@@ -1455,7 +1452,6 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … pokazuju za koju vrstu vozila bi površina trebala biti adekvatna za korištenje. Obratite pažnju na širu sliku, a ne na pojedinačna oštećenja."</string>
-    <string name="quest_shoulder_explanation">"Zaustavna traka je jasno razgraničena traka za zaustavljanje vozila u nuždi koja omogućuje da se vozila sigurno zaustave van prometne trake, iako ne uvijek na (potpuno) asfaltiranoj površini."</string>
     <string name="link_osmhydrant_description">"Pretražite, dodajte i uredite vatrogasne stanice i vatrogasne hidrante"</string>
     <string name="achievement_lifesaver_title">"Spasilac"</string>
     <string name="achievement_lifesaver_solved_X">"Riješili ste %d zadataka koji pomažu hitnim službama!"</string>
@@ -1614,4 +1610,28 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Postoji li ovdje toalet?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Je li toalet ovdje pristupačan za invalidska kolica?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Jeste li sigurni da biciklisti ne smiju koristiti ovu jednosmjernu ulicu u oba smjera? Ukoliko nite sigurni, provjerite postoji li znak na kraju ulice."</string>
+    <string name="link_valhalla_description">"Navigacijski servis s vrlo malom potrošnjom memorijskije, multimodalnim prijevozom, izokronama i drugim."</string>
+
+    <!-- Fuzzy -->
+    <string name="link_backofyourhand_description">"Koliko dobro poznajete svoj okoliš? Provjerite svoje znanje pronalazeći ulice."</string>
+    <string name="link_thenandnow_description">"Istražite kako je OSM izgledao u ranim danima u odnosu na to kako izgleda sada!"</string>
+    <string name="link_notesreview_description">"Jednostavno pregledajte, filtrirajte i komentirajte bilješke koje ste stvorili vi i drugi. Mnoge bilješke se mogu riješiti stavljanjem informacija sadržanih u njima na kartu koristeći iD ili JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Primaju li ovdje kreditne ili debitne kartice?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accepts_cards_debit_and_credit">"Oboje"</string>
+    <string name="quest_accepts_cards_credit_only">"Samo kreditne kartice"</string>
+    <string name="quest_accepts_cards_dedit_only">"Samo debitne kartice"</string>
+    <string name="quest_accepts_cards_unavailable">"Ne primaju niti debitne ni kreditne kartice"</string>
+    <string name="quest_barrier_type_gate_any_size">"Vrata (svih veličina)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_air_pump_bicycle_title">"Postoji li ovdje radeća i svima dostupna pumpa za bicikle?"</string>
+    <string name="quest_air_pump_compressor_title">"Postoji li ovdje kompresor zraka?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_step_count_stile_hint">"Samo broj koraka za dostizanje vrha. Ako se broj koraka razlikuje na svakoj strani, navedite veći broj."</string>
 </resources>

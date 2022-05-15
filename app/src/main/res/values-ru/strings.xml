@@ -83,8 +83,9 @@
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Тобиас Цвик и другие"</string>
 
+    <!-- Думаю, лучше сильно не заморачиваться и написать "Домашняя страница проекта" -->
     <!-- Fuzzy -->
-    <string name="about_title_repository">"Исходный код"</string>
+    <string name="about_title_repository">"Сайт проекта"</string>
     <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Сообщить об ошибке"</string>
     <string name="about_title_feedback">"Отправить отзыв"</string>
@@ -151,7 +152,7 @@
 Все данные добавляются прямо на карту, между этим приложением и инфраструктурой OSM нет посредников.
 &lt;/p&gt;
 &lt;p&gt;
-Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата, содержание и местоположение ваших правок видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
+Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата ваших правок, их содержание и местоположение видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
 &lt;/p&gt;
 
 &lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
@@ -1234,7 +1235,7 @@
     <string name="quest_recycling_type_cooking_oil">"Растительное масло"</string>
     <string name="quest_recycling_type_engine_oil">"Моторное масло"</string>
     <string name="link_photon_description">"Автономное расширение для Nominatim с нечётким поиском и функцией поиска по мере ввода"</string>
-    <string name="link_graphhopper_description">"Гибкий механизм построения маршрута"</string>
+    <string name="link_graphhopper_description">"Маршрутизатор с множеством настроек"</string>
     <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из %1$s. Ознакомьтесь с &lt;a href=\"%2$s\"&gt;политикой конфиденциальности&lt;/a&gt; для получения дополнительной информации.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
@@ -1460,7 +1461,6 @@
     <string name="background_type_map">"Карта"</string>
     <string name="background_type_aerial_esri">"Воздушная (Esri)"</string>
     <string name="quest_barrier_type_title">"Что это за барьер?"</string>
-    <string name="quest_barrier_type_gate">"Ворота"</string>
     <string name="quest_barrier_type_lift_gate">"Шлагбаум"</string>
     <string name="quest_barrier_type_bollard">"Боллард(ы)"</string>
     <string name="quest_barrier_type_chain">"Цепь"</string>
@@ -1697,7 +1697,6 @@
     <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Пожалуйста, дайте общее обозрение гладкости. Отдельные препятствия, такие как бордюры, лежачие полицейские или сетки для крупного рогатого скота, можно игнорировать. Повторяющиеся или неожиданные препятствия должны учитываться при ответе. "</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … укажите, какие автомобили могут использовать поверхность. Важна общая картина, а не единичные повреждения."</string>
-    <string name="quest_shoulder_explanation">"Обочина — это чётко обозначенная полоса аварийной остановки, которая позволяет транспортным средствам безопасно останавливаться рядом с полосой движения, хотя и не всегда (полностью) на асфальтированной поверхности."</string>
 
     <!-- Fuzzy -->
     <string name="link_osmhydrant_description">"Найти, добавить или изменить пожарные депо и пожарные краны"</string>
@@ -1715,6 +1714,7 @@
     <string name="quest_sidewalk_value_separate">"показано отдельно на карте"</string>
     <string name="quest_shoulder_value_yes">"обочина"</string>
     <string name="quest_shoulder_value_no">"нет обочины"</string>
+    <string name="no_camera_permission_warning_title">"Необходимо разрешение на использование камеры"</string>
     <string name="no_camera_permission_warning">"Разрешение нужно для того, чтобы делать картинки и для измерения дистанции с помощью камеры."</string>
     <string name="ar_core_error_sdk_too_old">"Это приложение устарело, попробуйте обновить."</string>
     <string name="ar_core_tracking_error_bad_state">"Что-то пошло не так. Попробуйте перезапустить измерение."</string>
@@ -1722,11 +1722,16 @@
     <string name="ar_core_tracking_error_excessive_motion">"Слишком много движений"</string>
     <string name="ar_core_tracking_error_insufficient_features">"Здесь мало визуальных функций"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"Камера используется другим приложением"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Держатель руля"</string>
     <string name="quest_bicycle_parking_access_title2">"Кто может парковать здесь свой велосипед? Парковка может быть платной или бесплатной."</string>
     <string name="quest_playground_access_title2">"Кто может использовать эту игровую площадку?"</string>
+    <string name="quest_sidewalk_answer_none_title">"Отметить тротуары как отсутствующие"</string>
+    <string name="quest_side_select_interface_explanation">"Коснитесь одной стороны и выберите нужный ответ. 
+Сделайте то же самое для другой стороны, если она есть."</string>
 
     <!-- AR Measure screen -->
     <string name="ar_measure">"Измерить"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Слишком крутой угол, немного отойдите"</string>
     <string name="default_disabled_msg_no_ar">"Необходимо ручное измерение для того чтобы решить этот квест потому что измерение с помощью камеры не поддерживается на этом устройстве."</string>
     <string name="quest_cycleway_width_title">"Какова ширина этой велосипедной дорожки?"</string>
     <string name="quest_road_width_title">"Какова ширина этой дороги?"</string>
@@ -1736,27 +1741,42 @@
 К несчастью, из-за политики Google Play Store, мы не можем "</string>
     <string name="link_osmand_description">"Мобильное приложение для онлайн и оффлайн просмотра карт и навигации
 "</string>
-    <string name="link_sunders_description">"Карта камер и "</string>
+    <string name="link_sunders_description">"Карта камер и видеоконтроля"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Будьте ближе к дороге, но следите за трафиком!
 "</string>
+    <string name="quest_sidewalk_surface_title">"Какое покрытие у этого тротуара?"</string>
     <string name="quest_tactilePaving_incorrect">"Только на одной стороне"</string>
-    <string name="quest_fee_answer_yes_but">"Да, ..."</string>
+    <string name="quest_fee_answer_yes_but">"Да, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"нет, но есть максимальная продолжительность стоянки"</string>
     <string name="unit_days">"дней"</string>
     <string name="unit_hours">"часов"</string>
     <string name="unit_minutes">"минут"</string>
     <string name="at_any_time">"в любое время"</string>
     <string name="only_at_hours">"только в это время:"</string>
     <string name="except_at_hours">"за исключением этого времени:"</string>
+    <string name="quest_bollard_type_not_bollard">"Отличный от болларда тип барьера"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Отличный от велосипедного тип барьера"</string>
     <string name="quest_smoking_no">"Нет, запрещено"</string>
     <string name="quest_smoking_outside">"Только снаружи"</string>
     <string name="quest_smoking_separated">"Только в выделенных местах"</string>
     <string name="quest_smoking_yes">"Да, везде"</string>
+    <string name="quest_seating_name_title">"Какой здесь тип сидячих мест?"</string>
+    <string name="quest_seating_takeaway">"Посадочных мест нет (только на вынос)"</string>
+    <string name="quest_seating_indoor_only">"Места только в помещении"</string>
+    <string name="quest_seating_outdoor_only">"Места только на открытом воздухе "</string>
+    <string name="quest_seating_indoor_and_outdoor">"Сидячие места есть и внутри, и снаружи"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"Этот тип квеста отключен по умолчанию, потому что может потребоваться проверка в определенное время года, чтобы проверить места на открытом воздухе."</string>
     <string name="no_camera_permission_toast">"Отсутствует разрешение на использование камеры"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"Принимается ли здесь оплата наличными?"</string>
     <string name="quest_address_street_title2">"На какой это улице?"</string>
     <string name="quest_airConditioning_title">"Есть ли в этом месте кондиционер воздуха?"</string>
+    <string name="quest_baby_changing_table_title2">"Здесь есть пеленальный столик?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopBench_title2">"Есть ли скамейска на этой остановке?"</string>
+    <string name="quest_busStopBench_title2">"Есть ли скамейка на этой остановке?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Есть ли мусорный бак на этой остановке?"</string>
@@ -1766,16 +1786,53 @@
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Как называется эта остановка?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"Какой номер у этой остановки?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"На этой остановке есть укрытие от дождя?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"На этой остановке есть тактильная разметка?"</string>
+    <string name="quest_dietType_halal_name_title2">"Здесь продают халяльные продукты?"</string>
+    <string name="quest_dietType_kosher_name_title2">"Здесь продают кошерные продукты?"</string>
+    <string name="quest_dietType_vegan_title2">"Здесь продают продукты для веганов?"</string>
+    <string name="quest_dietType_vegetarian_title2">"Здесь продают продукты для вегетарианцев?"</string>
+    <string name="quest_drinking_water_title2">"Здесь есть питьевая вода?"</string>
     <string name="quest_existence_title2">"Существует ли это?"</string>
     <string name="quest_generalFee_title2">"Нужно ли платить за вход сюда?"</string>
     <string name="quest_internet_access_title">"Интернет какого типа это место предоставляет?"</string>
+    <string name="quest_level_title2">"На каком уровне находится это место?"</string>
     <string name="quest_lit_title">"Освещено ли тут?"</string>
-    <string name="quest_openingHours_title">"Когда это место работает?"</string>
+    <string name="quest_openingHours_title">"Какие здесь часы работы?"</string>
     <string name="quest_openingHours_signed_title">"Написаны ли тут часы работы?"</string>
     <string name="quest_openingHours_resurvey_title">"Верны ли эти часы работы?"</string>
     <string name="quest_placeName_title">"Как называется это место?"</string>
     <string name="quest_shop_type_title2">"Что это за тип магазина?"</string>
     <string name="quest_smoking_title2">"Разрешено ли тут курить?"</string>
+    <string name="quest_smoothness_title">"Какое здесь качество покрытия?"</string>
+    <string name="quest_summit_register_title2">"Есть ли здесь регистрация восхождения?"</string>
     <string name="quest_surface_title">"Что за поверхность тут?"</string>
     <string name="quest_toiletAvailability_title">"Есть ли в этом месте туалеты?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Доступен ли туалет в этом месте для инвалидных колясок?"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Вы уверены, что велосипедистам нельзя ездить по этой улице с односторонним движением в обоих направлениях?  Если сомневаетесь, проверьте, есть ли знак в конце улицы."</string>
+    <string name="link_valhalla_description">"Маршрутизатор с очень низким потреблением памяти, изохронами и пр."</string>
+    <string name="link_backofyourhand_description">"Насколько хорошо вы знаете свой район? Проверьте свои знания, определяя улицы."</string>
+    <string name="link_thenandnow_description">"Узнайте, как OSM выглядел в первые дни, по сравнению с тем, как он выглядит сейчас!"</string>
+    <string name="link_notesreview_description">"Удобный просмотр, фильтрация и комментирование замечаний созданных вами и другими. Многие замечания могут быть устранены в iD или JOSM благодаря информации, содержащейся в них"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Здесь принимают кредитные или дебетовые карты?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Принимают оба типа"</string>
+    <string name="quest_accepts_cards_credit_only">"Только кредитные"</string>
+    <string name="quest_accepts_cards_dedit_only">"Только дебетовые"</string>
+    <string name="quest_accepts_cards_unavailable">"Ни кредитные, ни дебетовые"</string>
+    <string name="quest_barrier_type_gate_any_size">"Ворота, любой размер"</string>
+    <string name="quest_air_pump_bicycle_title">"Здесь есть доступный всем рабочий велосипедный насос?"</string>
+    <string name="quest_air_pump_compressor_title">"Здесь есть воздушный компрессор?"</string>
+    <string name="quest_step_count_stile_hint">"Количество ступеней до вершины. Если количество различается с разных сторон, укажите большее число."</string>
+    <string name="quest_shoulder_explanation2">"Обочиной является элемент дороги, примыкающий непосредственно к проезжей части на одном уровне с ней, выделенный с помощью разметки или конструктивно. Обочина не обязательно покрыта асфальтом по всей своей ширине и не всегда достаточно широка для остановки машины полностью не на основной полосе."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"нет, велодвижение в этом направлении запрещено"</string>
 </resources>

@@ -13,9 +13,11 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes with leisure = picnic_table
-         and access !~ private|no
-         and !covered
+        nodes with
+          leisure = picnic_table
+          and access !~ private|no
+          and !covered
+          and (!seasonal or seasonal = no)
     """
     override val changesetComment = "Add picnic table cover"
     override val wikiLink = "Key:covered"
