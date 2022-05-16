@@ -463,7 +463,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="achievement_citizen_title">Citizen</string>
     <string name="achievement_citizen_solved_X">You solved %d quests that are useful for everyday life in town!</string>
     <string name="achievement_outdoors_title">Outdoors</string>
-    <string name="achievement_outdoors_solved_X">You solved %d quests that are useful for outdoor people!</string>
+    <string name="achievement_outdoors_solved_X">You solved %d quests that are useful for outdoor enthusiasts!</string>
     <string name="achievement_lifesaver_title">Lifesaver</string>
     <string name="achievement_lifesaver_solved_X">You solved %d quests that help emergency services and first responders!</string>
 
