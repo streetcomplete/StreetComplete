@@ -1197,7 +1197,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
-    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because roof shapes are not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
+    <string name="default_disabled_msg_roofShape">This quest type is disabled by default because roof shapes are often not easily visible from the street. This quest type is also quite time-consuming; in most cases it is easier and more efficient to map this from aerial imagery at home.</string>
 
     <string name="quest_seating_name_title">What kind of seating does this place have?</string>
     <string name="quest_seating_takeaway">No seating (takeout only)</string>
