@@ -71,7 +71,7 @@ class VisibleQuestTypeController(
     private fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
         listeners.forEach { it.onQuestTypeVisibilityChanged(questType, visible) }
     }
-    private fun onQuestTypeVisibilitiesChanged() {
+    fun onQuestTypeVisibilitiesChanged() {
         listeners.forEach { it.onQuestTypeVisibilitiesChanged() }
     }
 }

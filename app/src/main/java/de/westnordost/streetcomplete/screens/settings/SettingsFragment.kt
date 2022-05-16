@@ -259,11 +259,11 @@ class SettingsFragment :
                 resurveyIntervalsUpdater.update()
             }
             Prefs.QUEST_GEOMETRIES -> {
-                visibleQuestTypeController.clear()
+                visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
             Prefs.DAY_NIGHT_BEHAVIOR -> {
                 dayNightQuestFilter.reload()
-                visibleQuestTypeController.clear()
+                visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
         }
     }
