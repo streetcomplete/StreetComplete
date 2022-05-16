@@ -75,4 +75,8 @@ class TracksMapComponent(ctrl: KtMapController) {
 }
 
 private fun List<LngLat>.toPolyline(old: Boolean, record: Boolean) =
-    Polyline(this, mapOf("type" to "line", "old" to old.toString(), "record" to record.toString()))
+    Polyline(this, listOfNotNull(
+        "type" to "line",
+        "old" to old.toString(),
+        if (record) ("record" to "true") else null
+    ).toMap())

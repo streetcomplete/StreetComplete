@@ -93,8 +93,9 @@
                 android:layout_height="@dimen/map_button_size"
                 android:contentDescription="@string/map_btn_stop_track"
                 android:scaleType="center"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:visibility="gone" />
+                android:src="@drawable/ic_stop_recording_24dp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
 
             <ImageButton
                 android:id="@+id/zoomInButton"
