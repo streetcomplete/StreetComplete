@@ -12,6 +12,8 @@ class AddBuildingEntranceTest {
 
     @Test
     fun `not applicable to building passage openings`() {
+        // https://www.openstreetmap.org/node/8492154414#map=19/50.07511/20.05013
+        // should not trigger entrance quest
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1),
