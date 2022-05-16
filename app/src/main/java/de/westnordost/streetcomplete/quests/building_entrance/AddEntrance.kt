@@ -33,7 +33,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     override val icon = R.drawable.ic_quest_door
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrace_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrance_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val buildingsWayNodeIds = mutableSetOf<Long>()
