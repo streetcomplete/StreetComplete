@@ -1122,8 +1122,8 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
-    <string name="quest_postboxCollectionTimes_title">What are the collection times of this collection box?</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Are the collection times of this collection box still correct?</string>
+    <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
