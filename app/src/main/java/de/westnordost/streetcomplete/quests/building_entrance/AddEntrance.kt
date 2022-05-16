@@ -30,7 +30,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     override val changesetComment = "Add entrance info"
     override val wikiLink = "Key:entrance"
-    override val icon = R.drawable.ic_quest_railway // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    override val icon = R.drawable.ic_quest_door
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrace_title
