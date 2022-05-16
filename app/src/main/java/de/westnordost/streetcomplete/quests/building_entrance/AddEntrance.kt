@@ -52,9 +52,9 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
             .flatMapTo(excludedWayNodeIds) { it.nodeIds }
 
         return mapData.nodes
-            .filter { withoutEntranceFilter.matches(it)
-                && it.id in buildingsWayNodeIds && it.id in incomingWayNodeIds
+            .filter { it.id in buildingsWayNodeIds && it.id in incomingWayNodeIds
                 && it.id !in excludedWayNodeIds
+                && withoutEntranceFilter.matches(it)
             }
     }
 
