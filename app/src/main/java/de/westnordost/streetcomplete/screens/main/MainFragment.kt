@@ -27,6 +27,7 @@ import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -52,6 +53,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -93,6 +95,7 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
@@ -212,6 +215,7 @@ class MainFragment :
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
         binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
+        binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
@@ -286,6 +290,7 @@ class MainFragment :
     override fun onMapInitialized() {
         binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
+        binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
     }
@@ -467,7 +472,7 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    /* ---------------------------- LeaveNoteInsteadFragment.Listener --------------------------- */
+    /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon) {
         showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
@@ -476,6 +481,9 @@ class MainFragment :
 
     override fun getMapPositionAt(screenPos: Point): LatLon? =
         mapFragment?.getPositionAt(screenPos.toPointF())
+
+    override fun getRecordedTrack(): List<Trackpoint>? =
+        mapFragment?.recordedTracks
 
     //endregion
 
@@ -618,6 +626,15 @@ class MainFragment :
         mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
     }
 
+    private fun onClickTracksStop() {
+        // hide the track information
+        binding.stopTracksButton.isVisible = false
+        val mapFragment = mapFragment ?: return
+        mapFragment.stopPositionTrackRecording()
+        val pos = mapFragment.displayedLocation?.toLatLon() ?: return
+        composeNote(pos)
+    }
+
     private fun onClickCompassButton() {
         /* Clicking the compass button will always rotate the map back to north and remove tilt */
         val mapFragment = mapFragment ?: return
@@ -678,6 +695,7 @@ class MainFragment :
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
+                R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
             true
@@ -718,6 +736,12 @@ class MainFragment :
 
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
+    }
+
+    private fun onClickCreateTrack() {
+        val mapFragment = mapFragment ?: return
+        mapFragment.startPositionTrackRecording()
+        binding.stopTracksButton.isVisible = true
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */

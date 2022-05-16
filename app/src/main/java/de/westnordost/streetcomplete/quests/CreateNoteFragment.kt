@@ -18,13 +18,18 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 /** Bottom sheet fragment with which the user can create a new note, including moving the note */
@@ -52,6 +57,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     interface Listener {
         fun getMapPositionAt(screenPos: Point): LatLon?
+        fun getRecordedTrack(): List<Trackpoint>?
 
         fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon)
     }
@@ -127,9 +133,13 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
-        // TODO
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
-        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
+        viewLifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                val recordedTrack = listener?.getRecordedTrack().orEmpty()
+                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, recordedTrack)
+            }
+        }
 
         listener?.onCreatedNote(null, position)
     }

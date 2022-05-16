@@ -30,6 +30,8 @@ Before each [release](res/documentation/creating%20new%20release.md), translatio
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
+The source translation is in US English. POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+
 ### iD presets
 
 Some translations are from iD presets. For example in "Is this still here (Bench)" text "Is this still here ()" will be translated as part of StreetComplete, but translation for bench is taken from iD presets.

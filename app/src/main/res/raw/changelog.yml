@@ -1,3 +1,25 @@
+v44.0-beta1: |
+  <h3>Recording GPS track</h3>
+  <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
+  and then attach it to a public note!<br/>
+  Note that the track can only be recorded while the app is in foreground. So, it is not meant to
+  replace tools like GPS Logger but to help locate short missing path segments and similar.<br/>
+  (#3573, #2209), by @goldbattle
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of bicycle rental is this?</i> (#3995, #4010), by @FloEdelmann</li>
+  <li><i>How many rental bike spaces are here?</i> (#2129, #4008), by @FloEdelmann</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Various minor enhancements and fixes (#4015...), thanks @Helium314</li>
+  </ul>
+
+v43.2: |
+  Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, your not yet uploaded
+  edits are safe. (#4028)
+
 v43.1: |
   <h3>Enhancements and Fixes</h3>
   <ul>

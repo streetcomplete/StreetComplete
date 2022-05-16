@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -19,7 +20,8 @@ class NoteEditsController(
         action: NoteEditAction,
         position: LatLon,
         text: String? = null,
-        imagePaths: List<String> = emptyList()
+        imagePaths: List<String> = emptyList(),
+        track: List<Trackpoint> = emptyList(),
     ) {
         val edit = NoteEdit(
             0,
@@ -30,7 +32,8 @@ class NoteEditsController(
             imagePaths,
             currentTimeMillis(),
             false,
-            imagePaths.isNotEmpty()
+            imagePaths.isNotEmpty(),
+            track,
         )
         synchronized(this) { editsDB.add(edit) }
         onAddedEdit(edit)

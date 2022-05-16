@@ -87,6 +87,17 @@
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
             <ImageButton
+                android:id="@+id/stop_tracks_button"
+                style="@style/RoundAccentButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/map_button_size"
+                android:contentDescription="@string/map_btn_stop_track"
+                android:scaleType="center"
+                android:src="@drawable/ic_stop_recording_24dp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <ImageButton
                 android:id="@+id/zoomInButton"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"

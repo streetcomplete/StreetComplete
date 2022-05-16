@@ -21,47 +21,50 @@ class TracksMapComponent(ctrl: KtMapController) {
     private val layer2 = ctrl.addDataLayer(LAYER2)
 
     private var index = 0
-    private var tracks: MutableList<MutableList<LngLat>>
-
-    init {
-        tracks = ArrayList()
-        tracks.add(ArrayList())
-    }
+    private data class Track(val trackpoints: MutableList<LngLat>, val isRecording: Boolean)
+    private var tracks: MutableList<Track> = arrayListOf(Track(ArrayList(), false))
 
     /** Add a point to the current track */
     fun addToCurrentTrack(pos: Location) {
         val track = tracks.last()
-        track.add(pos.toLngLat())
+        track.trackpoints.add(pos.toLngLat())
+        val trackpoints = track.trackpoints
 
         // every 100th trackpoint, move the index to the back
-        if (track.size - index > 100) {
+        if (trackpoints.size - index > 100) {
             putAllTracksInOldLayer()
         } else {
-            layer1.setFeatures(listOf(track.subList(index, track.size).toPolyline(false)))
+            layer1.setFeatures(listOf(trackpoints.subList(index, trackpoints.size).toPolyline(false, track.isRecording)))
         }
     }
 
     /** Start a new track. I.e. the points in that track will be drawn as an own polyline */
-    fun startNewTrack() {
-        tracks.add(ArrayList())
+    fun startNewTrack(record: Boolean) {
+        tracks.add(Track(ArrayList(), record))
         putAllTracksInOldLayer()
     }
 
-    /** Set all the tracks (when re-initializing) */
-    fun setTracks(tracks: List<List<Location>>) {
-        this.tracks = tracks.map { track -> track.map { it.toLngLat() }.toMutableList() }.toMutableList()
+    /** Set all the tracks (when re-initializing), if recording the last track is the only recording */
+    fun setTracks(tracks: List<List<Location>>, isRecording: Boolean) {
+        this.tracks = tracks.mapIndexed { it, track ->
+            var recording = false
+            if (isRecording && it == tracks.size - 1) {
+                recording = true
+            }
+            Track(track.map { it.toLngLat() }.toMutableList(), recording)
+        }.toMutableList()
         putAllTracksInOldLayer()
     }
 
     private fun putAllTracksInOldLayer() {
-        index = max(0, tracks.last().lastIndex)
+        index = max(0, tracks.last().trackpoints.lastIndex)
         layer1.clear()
-        layer2.setFeatures(tracks.map { it.toPolyline(true) })
+        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(true, it.isRecording) })
     }
 
     fun clear() {
         tracks = ArrayList()
-        startNewTrack()
+        startNewTrack(false)
     }
 
     companion object {
@@ -71,5 +74,9 @@ class TracksMapComponent(ctrl: KtMapController) {
     }
 }
 
-private fun List<LngLat>.toPolyline(old: Boolean) =
-    Polyline(this, mapOf("type" to "line", "old" to old.toString()))
+private fun List<LngLat>.toPolyline(old: Boolean, record: Boolean) =
+    Polyline(this, listOfNotNull(
+        "type" to "line",
+        "old" to old.toString(),
+        if (record) ("record" to "true") else null
+    ).toMap())
