@@ -975,7 +975,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Built-up area"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Rural"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the intersection with the main road, you may not find individual signs within the zone, as the speed limit posted there applies to the whole zone."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are opposite directions of traffic separated with a physical barrier? The default speed limit depends on whether this is the case.</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are opposite directions of traffic separated by a physical barrier or greenspace? The default speed limit depends on whether this is the case.</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be a lot of work just to solve a single quest.</string>
 
     <string name="quest_maxweight_title">"What’s the weight limit here?"</string>
