@@ -266,10 +266,9 @@ class OsmQuestController internal constructor(
     }
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
-        val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
-        val entries = db.getAllInBBox(bbox, questTypes).filter {
-            it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions
+        val entries = db.getAllInBboxIfNotHidden(bbox, questTypes).filter {
+            it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
         val elementKeys = HashSet<ElementKey>()
