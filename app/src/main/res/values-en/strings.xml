@@ -1176,7 +1176,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="underground_recycling_container">Underground container</string>
 
     <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
-    <string name="quest_religion_for_wayside_shrine_title">What religion is associated with this shrine?</string>
+    <string name="quest_religion_for_wayside_shrine_title">What religion is this shrine associated with?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>
