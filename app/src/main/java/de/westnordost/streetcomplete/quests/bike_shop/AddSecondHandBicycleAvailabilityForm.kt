@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.bike_shop
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.TextItem
-import de.westnordost.streetcomplete.quests.bike_shop.SecondHandBicycleAvailability
 
 class AddSecondHandBicycleAvailabilityForm : AListQuestAnswerFragment<SecondHandBicycleAvailability>() {
 
