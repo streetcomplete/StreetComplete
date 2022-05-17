@@ -794,7 +794,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopRef_title2">"What’s the number of this stop?"</string>
+    <string name="quest_busStopRef_title2">"What number or code identifies this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -1128,7 +1128,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
     <string name="quest_postboxRef_title">What’s the identification number of this collection box?</string>
-    <string name="quest_ref_answer_noRef">"No number visible…"</string>
+    <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
 
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
     <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
