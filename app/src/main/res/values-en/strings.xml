@@ -1365,11 +1365,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Perpendicular"</string>
-    <string name="street_parking_on_street">"On-street with no curb"</string>
-    <string name="street_parking_half_on_kerb">"On-street but partially in the road"</string>
-    <string name="street_parking_on_kerb">"On-street along the curb"</string>
-    <string name="street_parking_street_side">"Off-street only in dedicated spaces"</string>
-    <string name="street_parking_painted_area_only">"On-street only in dedicated spaces"</string>
+    <string name="street_parking_on_street">"On street"</string>
+    <string name="street_parking_half_on_kerb">"Partially on street"</string>
+    <string name="street_parking_on_kerb">"Adjacent to street"</string>
+    <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
     <string name="street_parking_separate">Parking displayed separately on map</string>
     <string name="street_parking_no">No parking here / Not allowed</string>
     <string name="street_parking_prohibited">No parking</string>
