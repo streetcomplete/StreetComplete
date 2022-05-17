@@ -34,7 +34,7 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
             LatLon(1.0, 2.0),
             NoteEditAction.COMMENT,
             "test345",
-            listOf("a","b","c"),
+            listOf("a", "b", "c"),
             4654679L,
             true,
             true,
