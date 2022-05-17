@@ -1193,7 +1193,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
 
     <string name="quest_road_width_title">"How wide is the road here?"</string>
-    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bike lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bike paths.""</string>
+    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bike lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bike paths."</string>
 
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
