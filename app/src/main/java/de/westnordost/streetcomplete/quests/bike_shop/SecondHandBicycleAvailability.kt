@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
-enum class SecondHandBicycleAvailability() {
-    ONLY_NEW,
-    NEW_AND_SECOND_HAND,
-    ONLY_SECOND_HAND,
-    NO_BICYCLES_SOLD,
+enum class SecondHandBicycleAvailability(osmValue: String?) {
+    ONLY_NEW("no"),
+    NEW_AND_SECOND_HAND("yes"),
+    ONLY_SECOND_HAND("only"),
+    NO_BICYCLES_SOLD(null),
 }

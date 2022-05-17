@@ -39,22 +39,11 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
     override fun createForm() = AddSecondHandBicycleAvailabilityForm()
 
     override fun applyAnswerTo(answer: SecondHandBicycleAvailability, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            SecondHandBicycleAvailability.ONLY_NEW -> {
-                tags.updateWithCheckDate("service:bicycle:retail", "yes")
-                tags["service:bicycle:second_hand"] = "no"
-            }
-            SecondHandBicycleAvailability.NEW_AND_SECOND_HAND -> {
-                tags.updateWithCheckDate("service:bicycle:retail", "yes")
-                tags["service:bicycle:second_hand"] = "yes"
-            }
-            SecondHandBicycleAvailability.ONLY_SECOND_HAND -> {
-                tags.updateWithCheckDate("service:bicycle:retail", "yes")
-                tags["service:bicycle:second_hand"] = "only"
-            }
-            SecondHandBicycleAvailability.NO_BICYCLES_SOLD -> {
-                tags.updateWithCheckDate("service:bicycle:retail", "no")
-            }
+        if (answer.osmValue == null) {
+            tags.updateWithCheckDate("service:bicycle:retail", "no")
+        } else {
+            tags.updateWithCheckDate("service:bicycle:retail", "yes")
+            tags["service:bicycle:second_hand"] = answer.osmValue
         }
     }
 }
