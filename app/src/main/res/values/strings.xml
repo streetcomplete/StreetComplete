@@ -746,15 +746,15 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
+    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin…)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
-    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage, …</string>
+    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage,…</string>
     <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Retail building</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores …</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores…</string>
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
@@ -1125,7 +1125,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
-    <string name="quest_fee_answer_yes_but">Yes, …</string>
+    <string name="quest_fee_answer_yes_but">Yes,…</string>
     <string name="quest_fee_answer_no_but_maxstay">No, but there is a max duration…</string>
     <string name="quest_fee_add_times">"Add times"</string>
     <string name="unit_days">days</string>
@@ -1306,7 +1306,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide an answer for the overall smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
+    <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
 
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
