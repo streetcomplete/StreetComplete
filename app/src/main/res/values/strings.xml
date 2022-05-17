@@ -670,11 +670,11 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
 
     <string name="quest_bicycle_shop_repair_title">Are bicycle repair services offered here?</string>
 
-    <string name="quest_bicycle_shop_second_hand_title">What type of bicycles can be bought here?</string>
-    <string name="quest_bicycle_shop_second_hand_only_new">Only new bicycles</string>
-    <string name="quest_bicycle_shop_second_hand_new_and_used">New bicycles and second-hand bicycles</string>
-    <string name="quest_bicycle_shop_second_hand_only_used">Only second-hand bicycles</string>
-    <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold in this bicycle shop</string>
+    <string name="quest_bicycle_shop_second_hand_title">Are second-hand bicycles sold here?</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">No, only new ones</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">Yes, alongside new ones</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">Yes, exclusively</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
