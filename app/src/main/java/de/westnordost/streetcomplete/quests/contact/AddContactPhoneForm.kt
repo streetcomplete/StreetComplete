@@ -27,7 +27,7 @@ class AddContactPhoneForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onClickOk() {
         prefill = if (contact.contains(" ") && contact.substringBefore(" ").length <= 5)
-                contact.substringBefore(" ")
+                contact.substringBefore(" ") + " "
             else
                 "+"
         applyAnswer(contact)
