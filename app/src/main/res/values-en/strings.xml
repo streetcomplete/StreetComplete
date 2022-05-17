@@ -437,7 +437,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="achievements_empty">You have no achievements yet</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
-    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more about each type of quest you've solved.</string>
+    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more about each type of quest you’ve solved.</string>
     <string name="achievement_surveyor_title">Surveyor</string>
     <string name="achievement_surveyor_solved_X">You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!</string>
     <string name="achievement_regular_title">Regular</string>
