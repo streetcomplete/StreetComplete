@@ -837,7 +837,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_cycleway_title2">"Is there a bike lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
-    <string name="quest_cycleway_value_track">separated bike path</string>
+    <string name="quest_cycleway_value_track">sidepath or protected bike lane</string>
     <string name="quest_cycleway_value_lane">bike lane</string>
     <string name="quest_cycleway_value_lane_soft">bike lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
