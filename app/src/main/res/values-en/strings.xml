@@ -858,7 +858,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bike path here?</string>
 
-    <string name="quest_cycleway_width_title">"What’s the width of this bike path here?"</string>
+    <string name="quest_cycleway_width_title">"How wide is the bike path here?"</string>
 
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
