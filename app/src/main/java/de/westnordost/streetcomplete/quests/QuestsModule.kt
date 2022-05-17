@@ -26,6 +26,8 @@ import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCov
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
 import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCapacity
 import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
+import de.westnordost.streetcomplete.quests.bike_shop.AddBikeRepairAvailability
+import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvailability
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
@@ -396,6 +398,8 @@ fun questTypeRegistry(
     AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
 
     // shop
+    AddBikeRepairAvailability(),
+    AddSecondHandBicycleAvailability(),
     AddVegetarian(), // menus are often posted externally
     AddVegan(),
     AddHalal(), // there are ~ 100 times more Muslims than Jews
