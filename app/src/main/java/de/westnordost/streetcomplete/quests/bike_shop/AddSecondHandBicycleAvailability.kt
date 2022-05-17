@@ -25,7 +25,7 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
         and access !~ private|no
         """
 
-    override val changesetComment = "Add type of parking access"
+    override val changesetComment = "Add whether bicycle shop sells second-hand bicycles"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Tag:service:bicycle:second_hand"
     override val icon = R.drawable.ic_quest_parking_access // TODO ADD AN ICON
