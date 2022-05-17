@@ -121,7 +121,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="short_no_answer_on_button">No</string>
 
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
-    <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or stop seeing this quest"</string>
+    <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only"</string>
     <string name="quest_leave_new_note_yes">"Leave note"</string>
     <string name="quest_leave_new_note_no">"Hide"</string>
 
