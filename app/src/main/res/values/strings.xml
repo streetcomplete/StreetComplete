@@ -562,7 +562,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- sorted alphabetically by title -->
 
     <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
-    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both debit and credit cards</string>
     <string name="quest_accepts_cards_credit_only">Only credit cards</string>
     <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
     <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
