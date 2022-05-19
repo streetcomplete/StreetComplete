@@ -56,6 +56,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
             }
             if(entrancesForApartments.count() >= 2) {
                 for (entrance in entrancesForApartments) {
+                    if(entrance.tags["ref"] == "yes") {
+                        continue
+                    }
                     if(entrance.tags["noref"] == "yes") {
                         continue
                     }
@@ -80,10 +83,10 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
     override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is FlatRange -> tags["addr:flats"] = answer.flatRange
-            is ReferenceCode -> tags["addr:flats"] = answer.referenceCode
+            is ReferenceCode -> tags["ref"] = answer.referenceCode
             is ReferenceCodeAndFlatRange -> {
                 tags["addr:flats"] = answer.flatRange
-                tags["addr:flats"] = answer.referenceCode
+                tags["ref"] = answer.referenceCode
             }
             Unsigned -> tags["ref:signed"] = "no"
         }
