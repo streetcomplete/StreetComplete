@@ -10,12 +10,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
-import de.westnordost.streetcomplete.quests.entrance_reference.AddEntranceReferenceForm
-import de.westnordost.streetcomplete.quests.entrance_reference.EntranceAnswer
-import de.westnordost.streetcomplete.quests.entrance_reference.FlatRange
-import de.westnordost.streetcomplete.quests.entrance_reference.ReferenceCode
-import de.westnordost.streetcomplete.quests.entrance_reference.ReferenceCodeAndFlatRange
-import de.westnordost.streetcomplete.quests.entrance_reference.Unsigned
+import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReferenceForm
+import de.westnordost.streetcomplete.quests.building_entrance_reference.EntranceAnswer
+import de.westnordost.streetcomplete.quests.building_entrance_reference.FlatRange
+import de.westnordost.streetcomplete.quests.building_entrance_reference.ReferenceCode
+import de.westnordost.streetcomplete.quests.building_entrance_reference.ReferenceCodeAndFlatRange
+import de.westnordost.streetcomplete.quests.building_entrance_reference.Unsigned
 
 class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
