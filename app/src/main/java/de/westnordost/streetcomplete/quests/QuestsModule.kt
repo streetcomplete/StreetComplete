@@ -364,14 +364,14 @@ fun questTypeRegistry(
     AddOneway(),
     AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
+    AddEntrance(),
     AddEntranceReference(),
+
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
     AddFerryAccessPedestrian(),
     AddFerryAccessMotorVehicle(),
-
-    AddEntrance(),
 
     AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
