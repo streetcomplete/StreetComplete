@@ -327,7 +327,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="credits_author_title">"Autor y encargado principal"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
-    <string name="credits_and_more">"y más..."</string>
+    <string name="credits_and_more">"y más…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Es una calle peatonal"</string>
@@ -539,7 +539,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Tiene varios números"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Puedes utilizar números separados por comas o rangos. Por ejemplo: 1,3 o 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Puedes utilizar números separados por comas o rangos. Por ejemplo: 1,3 o 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Portabicicletas alto (de cuadro)"</string>
@@ -606,7 +606,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_buildingType_industrial">"Edificio industrial"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"ejemplo: una fábrica, un taller, un taller de reparación de vehículos, ..."</string>
+    <string name="quest_buildingType_industrial_description">"ejemplo: una fábrica, un taller, un taller de reparación de vehículos, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Edificio de oficinas"</string>
@@ -744,7 +744,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="action_deselect_all">"Deseleccionar todo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"incluyendo edificios para restaurantes, cafés..."</string>
+    <string name="quest_buildingType_retail_description">"incluyendo edificios para restaurantes, cafés…"</string>
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
 
     <!-- Fuzzy -->
@@ -828,7 +828,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_leaf_type_broadleaved">"Planifolio, de hoja ancha y plana"</string>
     <string name="quest_leaf_type_mixed">"Hay de los dos tipos"</string>
     <string name="quest_cyclewayPartSurface_title">"¿De qué está hecho el carril bici?"</string>
-    <string name="quest_generic_answer_differs_along_the_way">"Difiere a lo largo de la vía..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Difiere a lo largo de la vía…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Si difiere a lo largo de la vía el primer paso es trocearla, luego puedes responder en cada trozo por separado. ¿Quieres empezar ahora?"</string>
@@ -846,12 +846,12 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_footwayPartSurface_title">"¿Cuál es la superficie de la acera en este punto?"</string>
     <string name="quest_maxweight_title">"¿Cuál es el límite de peso?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso no parece estar bien. ¿Estás seguro de que es correcto?"</string>
-    <string name="quest_maxweight_answer_other_sign">"La señal se ve diferente..."</string>
+    <string name="quest_maxweight_answer_other_sign">"La señal se ve diferente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"¿Te gustaría dejar una nota? Una nota con una foto permitirá que otros mapeadores se encarguen de ello."</string>
     <string name="quest_handrail_title">"¿Estas escaleras tienen barandilla?"</string>
     <string name="about_summary_current_version">"Versión actual: %s"</string>
     <string name="quest_postboxRef_title">"¿Cuál es el número de referencia de este buzón?"</string>
-    <string name="quest_ref_answer_noRef">"No veo ningún número de referencia..."</string>
+    <string name="quest_ref_answer_noRef">"No veo ningún número de referencia…"</string>
     <string name="quest_street_side_puzzle_tutorial">"La versión ampliada de la vía que ves abajo siempre tiene la misma orientación que el tramo marcado en el mapa."</string>
 
     <!-- Fuzzy -->
@@ -978,7 +978,7 @@ Y ya para terminar, ten cuidado: No te despistes y mira a tu alrededor. No entre
     <string name="link_nominatim_description">"El geocodificador para datos OSM, utilizado por muchos otros servicios"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"Genera dibujos con las vías de una ciudad, para imprimir en camisetas, tazas, ..."</string>
+    <string name="link_city_roads_description">"Genera dibujos con las vías de una ciudad, para imprimir en camisetas, tazas, …"</string>
     <string name="link_myosmatic_description">"Genera mapas de ciudades imprimibles en pocos pasos, con un listado opcional de calles"</string>
     <string name="link_brouter_description">"El motor de enrutamiento para ciclistas más avanzado"</string>
     <string name="link_show_me_the_way_description">"Mira los cambios hechos en OSM al momento"</string>
@@ -1097,7 +1097,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_map">"Es un mapa"</string>
     <string name="quest_board_type_map_title">"¿Es sólo un mapa, sin nada más?"</string>
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Estás seguro de que no puedes poner el tipo exacto de superficie? Ten en cuenta que responder «difiere a lo largo de la vía» te permite partir en dos en el punto donde cambia. Puedes pulsar en «no sabría decir» si hay un solo tipo de superficie pero no aparece en la lista."</string>
@@ -1131,7 +1131,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"¿Tienen estos semáforos una indicación táctil para personas ciegas de cuándo es seguro cruzar?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Sugerencia: suele ser un botón que vibra o un cono giratorio en la parte inferior de la caja del botón del semáforo."</string>
-    <string name="quest_buildingType_bungalow_description2">"pequeña casa independiente (casa de verano, de vacaciones, cabaña ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"pequeña casa independiente (casa de verano, de vacaciones, cabaña …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"¿Qué barreras se utilizan en este cruce ferroviario?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Sin barreras"</string>
     <string name="quest_steps_ramp_title">"¿Estas escaleras tienen rampa? ¿De qué tipo?"</string>
@@ -1201,13 +1201,13 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_parkingType_lane">"Estacionamiento al borde de la vía"</string>
     <string name="quest_tracktype_grade2a">"Sólido pero sin pavimentar"</string>
     <string name="quest_tracktype_grade3a">"Mayormente sólido"</string>
-    <string name="quest_generic_answer_does_not_exist">"Esto no existe..."</string>
+    <string name="quest_generic_answer_does_not_exist">"Esto no existe…"</string>
     <string name="osm_element_gone_description">"¿Estás seguro de que ya no existe? ¿No se habrá mudado de sitio? Si dudas es mejor dejar una nota."</string>
     <string name="osm_element_gone_confirmation">"No existe"</string>
     <string name="leave_note">"Dejar una nota"</string>
     <string name="quest_shop_gone_title">"¿Que hay ahora aquí en su lugar?"</string>
     <string name="quest_shop_gone_vacant_answer">"Está libre"</string>
-    <string name="quest_shop_gone_replaced_answer">"Es un..."</string>
+    <string name="quest_shop_gone_replaced_answer">"Es un(a)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Pon el tipo de lugar aquí"</string>
 
     <!-- Fuzzy -->
@@ -1220,7 +1220,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Para completar la tarea, lo típico; toca un lado de la vía, elige tu respuesta y haz lo mismo con el otro lado. Ten en cuenta todas las opciones disponibles, a veces no está tan claro, como en vías de un solo sentido con dos direcciones de carril bici."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Marcando como que no hay carril bici"</string>
-    <string name="quest_construction_completed_at_known_date">"Estará terminado en la fecha..."</string>
+    <string name="quest_construction_completed_at_known_date">"Estará terminado en la fecha…"</string>
     <string name="quest_construction_completion_date_title">"¿Cuándo estará terminado?"</string>
     <string name="quest_surface_value_clay">"Arcillosa o con barro"</string>
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
@@ -1277,7 +1277,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Aéreo (por Esri)"</string>
     <string name="quest_barrier_type_title">"¿Qué tipo de barrera es?"</string>
-    <string name="quest_barrier_type_gate">"Puerta"</string>
     <string name="quest_barrier_type_lift_gate">"Barrera levadiza"</string>
     <string name="quest_barrier_type_bollard">"Bolardo(s)"</string>
     <string name="quest_barrier_type_chain">"Cadena"</string>
@@ -1484,7 +1483,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_smoothness_obstacle">"Hay un obstáculo"</string>
     <string name="quest_smoothness_obstacle_hint">"Si puedes responde teniendo en cuenta el estado general del trazado. No pasa nada si hay algún guardaganado, banda de frenado o bordillo por el camino. Aunque si ves muchos obstáculos seguro que resta puntos."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … indican el tipo de vehículo que puede transitar por la vía, en líneas generales, más allá de problemas puntuales que lo impidan."</string>
-    <string name="quest_shoulder_explanation">"Un arcén es una sección al borde de la vía claramente demarcada para que los vehículos puedan hacer paradas de emergencia seguras, aunque a veces no esté pavimentado del todo."</string>
     <string name="link_osmhydrant_description">"Busca, pon y edita parques de bomberos y bocas de incendio"</string>
     <string name="achievement_lifesaver_title">"Salvavidas"</string>
     <string name="achievement_lifesaver_solved_X">"¡Has completado %d tareas que mejoran la vida de los servicios de emergencia y primeros auxilios!"</string>
@@ -1526,8 +1524,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="ar_core_tracking_error_no_plane_hit">"¡Manténgase más cerca de la flecha pero tenga cuidado con el tráfico!"</string>
     <string name="quest_sidewalk_surface_title">"Cuál es la superficie de esta acera?"</string>
     <string name="quest_tactilePaving_incorrect">"Solo de un lado"</string>
-    <string name="quest_fee_answer_yes_but">"Sí, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"No, pero hay una duración máxima..."</string>
+    <string name="quest_fee_answer_yes_but">"Sí, …"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"No, pero hay una duración máxima…"</string>
     <string name="unit_days">"días"</string>
     <string name="unit_hours">"horas"</string>
     <string name="unit_minutes">"minutos"</string>

@@ -109,6 +109,15 @@ class StreetParkingParserKtTest {
             )))
     }
 
+    @Test fun `prohibited tagged without explicit lane tag`() {
+        assertEquals(
+            LeftAndRightStreetParking(StreetStandingProhibited, NoStreetParking),
+            createStreetParkingSides(mapOf(
+                "parking:condition:left" to "no_standing",
+                "parking:condition:right" to "no"
+            )))
+    }
+
     @Test fun `parking separate`() {
         assertEquals(
             LeftAndRightStreetParking(StreetParkingSeparate, null),

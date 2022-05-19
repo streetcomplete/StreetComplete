@@ -332,7 +332,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"i inni..."</string>
+    <string name="credits_and_more">"i inni…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Jest to droga w strefie zamieszkania"</string>
@@ -622,7 +622,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Możesz wypisać wszystkie numery, oddzielając je przecinkami, lub podać ich zakres.
-Na przykład 1,3 lub 2-6."</string>
+Na przykład 1,3 lub 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Stojak (przytrzymuje rame roweru)"</string>
@@ -917,7 +917,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="action_deselect_all">"Odznacz wszystkie"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"w tym budynki dla restauracji, kawiarni, ..."</string>
+    <string name="quest_buildingType_retail_description">"w tym budynki dla restauracji, kawiarni, …"</string>
     <string name="quest_openingHours_timeSelect_next">"Dalej"</string>
 
     <!-- Fuzzy -->
@@ -998,7 +998,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_cyclewayPartSurface_title">"Jaka jest nawierzchnia części będącej drogą dla rowerów?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"Zmienia się..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Zmienia się…"</string>
     <string name="quest_split_way_description">"Jeśli sytuacja jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
 Podzielić?"</string>
 
@@ -1032,7 +1032,7 @@ Podzielić?"</string>
     <string name="quest_postboxRef_title">"Jaki jest numer tej skrzynki pocztowej?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru..."</string>
+    <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Droga na ilustracji jest obrócona w ten sam sposób jak odcinek na mapie pod znaczkiem zadania."</string>
 
     <!-- Fuzzy -->
@@ -1127,7 +1127,7 @@ Podzielić?"</string>
     <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Witaj w OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"wolnej wiki-mapie świata"</string>
-    <string name="tutorial_intro">"StreetComplete to prosty sposób na współtworzenie OpenStreetMap. Automatycznie wyświetla braki szczegółów w Twej okolicy, dotyczące m.in.: ścieżek rowerowych, numerów domów, godzin otwarcia..."</string>
+    <string name="tutorial_intro">"StreetComplete to prosty sposób na współtworzenie OpenStreetMap. Automatycznie wyświetla braki szczegółów w Twej okolicy, dotyczące m.in.: ścieżek rowerowych, numerów domów, godzin otwarcia…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Wykryte braki pojawią się na Twojej mapie jako zadania.
@@ -1242,7 +1242,7 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="link_nominatim_description">"Wyszukiwarka adresów w danych OSM wykorzystywana przez wiele serwisów"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"Rysowanie wszystkich dróg miasta do wydruku na koszulkach, kubkach, ..."</string>
+    <string name="link_city_roads_description">"Rysowanie wszystkich dróg miasta do wydruku na koszulkach, kubkach, …"</string>
 
     <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Tworzenie w kilku prostych krokach map miejskich do drukowania z opcją katalogu ulic"</string>
@@ -1395,7 +1395,7 @@ osiągnięć"</string>
     <string name="quest_board_type_map">"To jest mapa"</string>
     <string name="quest_board_type_map_title">"Czy to jest mapa i tylko mapa?"</string>
     <string name="quest_board_type_map_description">"Jeśli tablica jest o konkretnym temacie, wybierz go - niezależnie od tego czy pojawia się też mapa. Na przykład tablica o transporcie publicznym może zawierać też mapę tras autobusowych. Jeśli temat nie jest na liście możliwych odpowiedzi, wybierz raczej \"odpowiedź niemożliwa\" i zostaw notatkę."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Różne nawierzchnie..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Różne nawierzchnie…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Czy jesteś pewien że nie jest możliwe podanie nawierzchni? Zauważ że jest opcja \"Zmienia się\" która pozwala na podzielenie na odcinki z różną nawierzchnią. Wybierz \"Odpowiedź niemozliwa\" jeśli jest jedna nawierzchnia która nie jest możliwa do wybrania jako odpowiedź."</string>
@@ -1594,7 +1594,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="background_type_map">"Mapa"</string>
     <string name="background_type_aerial_esri">"Zdjęcia lotnicze/satelitarne (Esri)"</string>
     <string name="quest_barrier_type_title">"Jaki rodzaj bariery jest w tym punkcie?"</string>
-    <string name="quest_barrier_type_gate">"Brama"</string>
     <string name="quest_barrier_type_lift_gate">"Szlaban podnoszony"</string>
     <string name="quest_barrier_type_bollard">"Słupek/słupki"</string>
     <string name="quest_barrier_type_chain">"Łańcuch"</string>
@@ -1608,7 +1607,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_barrier_type_height_restrictor">"Ogranicznik wysokości"</string>
     <string name="quest_barrier_full_height_turnstile">"Bramka obrotowa pełnej wysokości"</string>
     <string name="quest_barrier_type_turnstile">"Bramka obrotowa"</string>
-    <string name="quest_barrier_type_passage">"Przejście przez mur/płot/..."</string>
+    <string name="quest_barrier_type_passage">"Przejście przez mur/płot/…"</string>
     <string name="quest_barrier_type_debris_pile">"Pryzma ziemna"</string>
     <string name="quest_barrier_type_stile_squeezer">"Przełaz - wąska szpara"</string>
     <string name="quest_barrier_type_stile_ladder">"Przełaz - drabina"</string>
@@ -1797,7 +1796,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
     <string name="quest_smoothness_obstacle_hint">"Proszę podać ogólną odpowiedź dotyczącą płynności.  Pojedyncze przeszkody, takie jak krawężniki, progi zwalniające lub kraty dla bydła, można zignorować.  Powtarzające się lub nieoczekiwane przeszkody powinny liczyć się do odpowiedzi."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … wskazują, dla jakich pojazdów nawierzchnia powinna być zdatna do użytku. Liczy się raczej całościowy obraz, a nie pojedyncze uszkodzenia."</string>
-    <string name="quest_shoulder_explanation">"Pas awaryjny to część drogi która umożliwia pojazdom bezpieczne zatrzymanie się całkowicie obok pasa ruchu, choć nie zawsze (w całości) na utwardzonej nawierzchni."</string>
     <string name="link_osmhydrant_description">"Wyszukuj, dodawaj i edytuj remizy strażackie i hydranty strażackie"</string>
     <string name="achievement_lifesaver_title">"Ratownik"</string>
     <string name="achievement_lifesaver_solved_X">"Rozwiązałeś %d zadań, które pomagają służbom ratowniczym!"</string>
@@ -1847,7 +1845,7 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_sidewalk_surface_title">"Jaka jest powierzchnia chodnika tutaj?"</string>
     <string name="quest_tactilePaving_incorrect">"Po jednej stronie"</string>
     <string name="quest_fee_answer_yes_but">"Tak, …"</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Nie, ale jest maksymalny czas..."</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Nie, ale jest maksymalny czas…"</string>
     <string name="unit_days">"dni"</string>
     <string name="unit_hours">"godziny"</string>
     <string name="unit_minutes">"minuty"</string>
@@ -1926,4 +1924,19 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Czy na pewno rowerzyści nie mogą korzystać z tej drogi jednokierunkowej w obu kierunkach? W razie wątpliwości sprawdź znak na końcu ulicy."</string>
+    <string name="link_backofyourhand_description">"Jak dobrze znasz swoją okolicę? Sprawdź swoją wiedzę, lokalizując ulice."</string>
+    <string name="link_thenandnow_description">"Zobacz, jak OSM wyglądał na początku w porównaniu do tego, jak wygląda teraz!"</string>
+    <string name="link_notesreview_description">"Wygodnie przeglądaj, filtruj i komentuj notatki stworzone przez Ciebie i innych. Wiele notatek można rozwiązać umieszczając informacje w nich zawarte na mapie za pomocą iD lub JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Czy akceptowane są tutaj karty kredytowe lub debetowe?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Obie"</string>
+    <string name="quest_accepts_cards_credit_only">"Tylko karty kredytowe"</string>
+    <string name="quest_accepts_cards_dedit_only">"Tylko karty debetowe"</string>
+    <string name="quest_accepts_cards_unavailable">"Ani karty debetowe, ani kredytowe"</string>
+    <string name="quest_barrier_type_gate_any_size">"Brama, dowolny rozmiar"</string>
+    <string name="quest_air_pump_bicycle_title">"Czy jest tu działająca pompka rowerowa dostępna dla każdego?"</string>
+    <string name="quest_air_pump_compressor_title">"Czy jest tutaj dostępny kompresor?"</string>
+    <string name="quest_step_count_stile_hint">"Tylko liczba kroków, aby dotrzeć na szczyt. Jeśli liczba kroków różni się z każdej strony, podaj wyższą liczbę."</string>
 </resources>

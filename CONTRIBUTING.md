@@ -30,6 +30,8 @@ Before each [release](res/documentation/creating%20new%20release.md), translatio
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
+The source translation is in US English (in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+
 ### iD presets
 
 Some translations are from iD presets. For example in "Is this still here (Bench)" text "Is this still here ()" will be translated as part of StreetComplete, but translation for bench is taken from iD presets.
@@ -79,7 +81,7 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 
 If you would like to help and are able to contribute code, you are most welcome.
 
-There are many reasonable feature requests and ideas for new question types in the issue tracker which you can use. If you have own ideas on how to improve this app and want to make sure that the pull request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
+There are many feature requests and ideas for new question types in the issue tracker which you can use. If you have own ideas on how to improve this app and want to make sure that the pull request will be merged, it is strongly suggested you **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
 
 Note that StreetComplete also uses [some dependencies](#issues-with-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
@@ -95,6 +97,8 @@ However, we strongly suggest you [**open an issue** discussing the quest](#sugge
 In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
 Always remember to pay attention to [the quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md) of StreetComplete! It also has tips for implementing a quest.
+
+See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW_QUEST.md).
 
 ### Code style
 

@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4300
-        versionName = "43.0-beta1"
+        versionCode = 4400
+        versionName = "44.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -173,6 +173,7 @@ dependencies {
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
     implementation("de.westnordost:osmapi-notes:2.0")
+    implementation("de.westnordost:osmapi-traces:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
     implementation("com.squareup.okhttp3:okhttp:3.14.9")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
@@ -206,12 +207,12 @@ dependencies {
 val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220418"
+val nsiVersion = "v6.0.20220503"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 

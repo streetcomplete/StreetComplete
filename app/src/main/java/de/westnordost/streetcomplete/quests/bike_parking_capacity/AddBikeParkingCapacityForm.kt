@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.bike_parking_capacity
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBikeParkingCapacityBinding
@@ -17,6 +19,8 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val showClarificationText = arguments?.getBoolean(ARG_SHOW_CLARIFICATION) ?: false
+        binding.clarificationText.isGone = !showClarificationText
         binding.capacityInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
@@ -24,5 +28,15 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override fun onClickOk() {
         applyAnswer(capacity)
+    }
+
+    companion object {
+        private const val ARG_SHOW_CLARIFICATION = "show_clarification"
+
+        fun create(showClarificationText: Boolean): AddBikeParkingCapacityForm {
+            val form = AddBikeParkingCapacityForm()
+            form.arguments = bundleOf(ARG_SHOW_CLARIFICATION to showClarificationText)
+            return form
+        }
     }
 }

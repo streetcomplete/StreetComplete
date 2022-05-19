@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: yellow
 mobileCountryCode: 732
+noEntrySignStyle: no entre
 noParkingSignStyle: mutcd
 noStoppingSignStyle: colombia
 officialLanguages: [es]

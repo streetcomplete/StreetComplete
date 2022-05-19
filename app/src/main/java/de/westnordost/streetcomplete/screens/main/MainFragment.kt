@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.screens.main
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Point
@@ -12,7 +10,6 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -29,11 +26,11 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -88,9 +85,11 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -134,6 +133,7 @@ class MainFragment :
     private val isSurveyChecker: QuestSourceIsSurveyChecker by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val soundFx: SoundFx by inject()
     private val prefs: SharedPreferences by inject()
 
@@ -171,18 +171,6 @@ class MainFragment :
 
     //region Lifecycle - Android Lifecycle Callbacks
 
-    private val locationAvailabilityReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
-
-    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            updateLocationAvailability()
-        }
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -207,6 +195,7 @@ class MainFragment :
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
         binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
+        binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
@@ -231,15 +220,8 @@ class MainFragment :
     override fun onStart() {
         super.onStart()
         visibleQuestsSource.addListener(this)
-        requireContext().registerReceiver(
-            locationAvailabilityReceiver,
-            IntentFilter(LocationManager.MODE_CHANGED_ACTION)
-        )
-        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
-            requestLocationPermissionResultReceiver,
-            IntentFilter(LocationRequester.REQUEST_LOCATION_PERMISSION_RESULT)
-        )
-        updateLocationAvailability()
+        locationAvailabilityReceiver.addListener(::updateLocationAvailability)
+        updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
     }
 
     /** Called by the activity when the user presses the back button.
@@ -264,8 +246,7 @@ class MainFragment :
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
         wasNavigationMode = mapFragment?.isNavigationMode ?: false
         visibleQuestsSource.removeListener(this)
-        requireContext().unregisterReceiver(locationAvailabilityReceiver)
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(requestLocationPermissionResultReceiver)
+        locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         locationManager.removeUpdates()
     }
 
@@ -287,6 +268,7 @@ class MainFragment :
     override fun onMapInitialized() {
         binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
+        binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
         listener?.onMapInitialized()
     }
@@ -539,7 +521,9 @@ class MainFragment :
          */
         closeBottomSheet()
 
-        viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
+        viewLifecycleScope.launch {
+            questController.createNote(note, imagePaths, position, mapFragment.recordedTracks)
+        }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
@@ -599,8 +583,8 @@ class MainFragment :
 
     //region Location - Request location and update location status
 
-    private fun updateLocationAvailability() {
-        if (requireContext().hasLocationPermission && requireContext().isLocationEnabled) {
+    private fun updateLocationAvailability(isAvailable: Boolean) {
+        if (isAvailable) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
@@ -646,6 +630,15 @@ class MainFragment :
 
     private fun onClickZoomIn() {
         mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
+    }
+
+    private fun onClickTracksStop() {
+        // hide the track information
+        binding.stopTracksButton.isVisible = false
+        val mapFragment = mapFragment ?: return
+        mapFragment.stopPositionTrackRecording()
+        val pos = mapFragment.displayedLocation?.toLatLon() ?: return
+        composeNote(pos)
     }
 
     private fun onClickCompassButton() {
@@ -708,6 +701,7 @@ class MainFragment :
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_create_note -> onClickCreateNote(position)
+                R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
             }
             true
@@ -748,6 +742,12 @@ class MainFragment :
 
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
+    }
+
+    private fun onClickCreateTrack() {
+        val mapFragment = mapFragment ?: return
+        mapFragment.startPositionTrackRecording()
+        binding.stopTracksButton.isVisible = true
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
@@ -809,8 +809,7 @@ class MainFragment :
 
     private fun closeEditHistorySidebar() {
         if (editHistoryFragment != null) {
-            childFragmentManager.popBackStack(EDIT_HISTORY,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         mapFragment?.pinMode = QuestsMapFragment.PinMode.QUESTS
     }

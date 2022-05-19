@@ -252,7 +252,7 @@ open class MapFragment :
         return object : DefaultHttpHandler(builder) {
             override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
                 builder
-                    .cacheControl(cacheConfig.cacheControl)
+                    .cacheControl(cacheConfig.tangramCacheControl)
                     .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
             }
         }

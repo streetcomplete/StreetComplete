@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:duration="250"
+<set android:duration="140"
      android:shareInterpolator="true"
      android:interpolator="@android:anim/decelerate_interpolator"
      xmlns:android="http://schemas.android.com/apk/res/android">
     <scale
-        android:fromXScale="50%"
+        android:fromXScale="66%"
         android:toXScale="100%"
-        android:fromYScale="50%"
+        android:fromYScale="66%"
         android:toYScale="100%"
         android:pivotX="80%"
         android:pivotY="100%"

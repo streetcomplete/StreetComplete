@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: yellow
 mobileCountryCode: 748
+noEntrySignStyle: default
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]

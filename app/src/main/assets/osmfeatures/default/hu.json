@@ -55,6 +55,9 @@
                 "access": {
                     "label": "Engedélyezett használat",
                     "options": {
+                        "customers": {
+                            "title": "Ügyfeleknek"
+                        },
                         "designated": {
                             "description": "Tábla vagy helyi jogszabály szerint használható",
                             "title": "Kijelölt"
@@ -358,6 +361,10 @@
                 },
                 "boundary": {
                     "label": "Típus"
+                },
+                "branch_brand": {
+                    "label": "Fiók",
+                    "terms": "bankfiók,üzletág,részleg,telephely"
                 },
                 "brand": {
                     "label": "Márka",
@@ -988,6 +995,10 @@
                 "expected_rwn_route_relations": {
                     "label": "Gyalogos útvonalak száma"
                 },
+                "expressway-US": {
+                    "label": "gyorsforgalmi út",
+                    "terms": "autópálya,sztráda"
+                },
                 "faces": {
                     "label": "Oldalak száma"
                 },
@@ -1014,7 +1025,7 @@
                 "fire_hydrant/type": {
                     "label": "Alak",
                     "options": {
-                        "pillar": "Oszlop",
+                        "pillar": "Felszíni",
                         "pipe": "szívócsonk, csővég",
                         "underground": "Föld alatti",
                         "wall": "Fali"
@@ -1956,8 +1967,14 @@
                         "cans": "Fémdoboz",
                         "cardboard": "Kartonpapír",
                         "clothes": "Ruha",
+                        "cooking_oil": "Sütőolaj",
+                        "engine_oil": "Motorolaj",
+                        "glass": "Bármilyen üveg (hőkezelt, ablaküveg, tükör stb.)",
+                        "glass_bottles": "Üveg palackok és befőttes üvegek",
                         "green_waste": "Zöldhulladék",
                         "paper": "Papír",
+                        "plastic": "Műanyag",
+                        "plastic_bottles": "Műanyag palack",
                         "plastic_packaging": "Műanyag csomagolás",
                         "scrap_metal": "Fémhulladék",
                         "shoes": "Cipő"
@@ -2893,7 +2910,8 @@
                     "terms": "poszterdoboz,citylight"
                 },
                 "advertising/totem": {
-                    "name": "Reklámoszlop"
+                    "name": "Reklámoszlop",
+                    "terms": "reklám totem,óriás hirdetőoszlop,benzinkút árjelző"
                 },
                 "aerialway": {
                     "name": "Drótkötélpályás felvonó"
@@ -2911,14 +2929,16 @@
                     "terms": "sífelvonó,csákányos,tányéros"
                 },
                 "aerialway/gondola": {
-                    "name": "Gondola"
+                    "name": "Gondola",
+                    "terms": "gondolakabinos felvonó,kabinos felvonó"
                 },
                 "aerialway/goods": {
                     "name": "Teherfelvonó",
                     "terms": "teherlift"
                 },
                 "aerialway/j-bar": {
-                    "name": "Egyszemélyes csákányos"
+                    "name": "Egyszemélyes csákányos",
+                    "terms": "egyszemélyes karos sífelvonó"
                 },
                 "aerialway/magic_carpet": {
                     "name": "Szállítószalag-felvonó",
@@ -2941,10 +2961,12 @@
                     "terms": "kötéllift,húzólift,vontatólift"
                 },
                 "aerialway/t-bar": {
-                    "name": "Kétszemélyes csákányos"
+                    "name": "Kétszemélyes csákányos",
+                    "terms": "csákányos sífelvonó"
                 },
                 "aerialway/zip_line": {
-                    "name": "Kötélcsúszda"
+                    "name": "Kötélcsúszda",
+                    "terms": "drótkötél pálya,csúszópálya,csúszka"
                 },
                 "aeroway": {
                     "name": "Légiforgalmi létesítmény"
@@ -3000,7 +3022,8 @@
                     "terms": "szélzsák,szélmutató,szélzászló"
                 },
                 "allotments/plot": {
-                    "name": "Közösségi kert"
+                    "name": "Közösségi kert",
+                    "terms": "közösségi kert"
                 },
                 "amenity": {
                     "name": "Hasznos és fontos szolgáltatás"
@@ -3050,7 +3073,8 @@
                     "terms": "bicaj,bringa,bicikli,kétkerekű parkoló"
                 },
                 "amenity/bicycle_parking/building": {
-                    "name": "Bicikligarázs"
+                    "name": "Bicikligarázs",
+                    "terms": "kerékpártároló épület"
                 },
                 "amenity/bicycle_parking/lockers": {
                     "name": "Kerékpártároló szekrények",
@@ -3073,7 +3097,8 @@
                     "terms": "söröző,terasz"
                 },
                 "amenity/binoculars": {
-                    "name": "Rögzített távcső"
+                    "name": "Rögzített távcső",
+                    "terms": "panorámapont,rögzített távcső"
                 },
                 "amenity/boat_rental": {
                     "name": "Hajókölcsönző",
@@ -3095,7 +3120,8 @@
                     "terms": "kávéház,presszó,cukrászda"
                 },
                 "amenity/cafe/bubble_tea": {
-                    "name": "Bubble tea kávézó"
+                    "name": "Bubble tea kávézó",
+                    "terms": "bubble tea üzlet"
                 },
                 "amenity/cafe/coffee_shop": {
                     "name": "Kávéház",
@@ -3110,7 +3136,8 @@
                     "terms": "gépkocsi,gépjármű,jármű,köcsönzés,bérlés"
                 },
                 "amenity/car_sharing": {
-                    "name": "Autómegosztó állomás"
+                    "name": "Autómegosztó állomás",
+                    "terms": "autómegosztó állomás"
                 },
                 "amenity/car_wash": {
                     "name": "Autómosó",
@@ -3126,7 +3153,7 @@
                 },
                 "amenity/childcare": {
                     "name": "Bölcsőde",
-                    "terms": "csecsemőotthon"
+                    "terms": "bölcsőde,csecsemőotthon,családi napközi"
                 },
                 "amenity/cinema": {
                     "name": "Mozi",
@@ -3239,16 +3266,19 @@
                     "terms": "burger,reggeli,drive-in"
                 },
                 "amenity/fast_food/chicken": {
-                    "name": "Csirkebüfé"
+                    "name": "Csirkebüfé",
+                    "terms": "csirke gyorsétterem,pipiző"
                 },
                 "amenity/fast_food/donut": {
-                    "name": "Fánkbüfé"
+                    "name": "Fánkbüfé",
+                    "terms": "fánkozó,fánk gyorsétterem,fánkozda"
                 },
                 "amenity/fast_food/fish_and_chips": {
                     "name": "Fish & chips büfé"
                 },
                 "amenity/fast_food/hot_dog": {
-                    "name": "Hot dog-büfé"
+                    "name": "Hot dog-büfé",
+                    "terms": "hot dog,hot dog gyorsétterem,hotdogozó"
                 },
                 "amenity/fast_food/ice_cream": {
                     "name": "Fagylaltozó"
@@ -3257,13 +3287,16 @@
                     "name": "Gyümölcslébüfé"
                 },
                 "amenity/fast_food/kebab": {
-                    "name": "Kebab gyorsétterem"
+                    "name": "Kebab gyorsétterem",
+                    "terms": "kebabos,kebabozó,kebab gyorsétterem,gyros,gyrosos,gyrosozó,gyros gyorsétterem"
                 },
                 "amenity/fast_food/mexican": {
-                    "name": "Mexikói büfé"
+                    "name": "Mexikói büfé",
+                    "terms": "mexikói gyorsétterem,tortillázó,taco étterem"
                 },
                 "amenity/fast_food/pizza": {
-                    "name": "Pizza gyorsétterem"
+                    "name": "Pizza gyorsétterem",
+                    "terms": "pizza gyorsétterem,pizzaszelet"
                 },
                 "amenity/fast_food/sandwich": {
                     "name": "Szendvicsező"
@@ -3324,7 +3357,8 @@
                     "terms": "éneklés,dalolás"
                 },
                 "amenity/kindergarten": {
-                    "name": "Óvoda / óvodai terület"
+                    "name": "Óvoda / óvodai terület",
+                    "terms": "iskolai előkészítő területe,óvoda terület,ovi terület,bölcsőde terület,kisdedóvó terület"
                 },
                 "amenity/kneipp_water_cure": {
                     "name": "Kneipp-medence",
@@ -3406,7 +3440,8 @@
                     "terms": "autó,gépkocsi"
                 },
                 "amenity/parking/multi-storey": {
-                    "name": "Parkolóház"
+                    "name": "Parkolóház",
+                    "terms": "többszintes parkolóház"
                 },
                 "amenity/parking/park_ride": {
                     "name": "P+R  parkoló",
@@ -3417,10 +3452,12 @@
                     "terms": "autóparkoló,várakozás,parkírozás,parkolás,út menti parkolás,utcai parkolás"
                 },
                 "amenity/parking/underground": {
-                    "name": "Mélygarázs"
+                    "name": "Mélygarázs",
+                    "terms": "mélygarázs,teremgarázs,földalatti autóparkoló"
                 },
                 "amenity/parking_entrance": {
-                    "name": "Parkolóház-bejárat"
+                    "name": "Parkolóház-bejárat",
+                    "terms": "parkolóház bejárat/kijárat,mélygarázs bejárat/kijárat"
                 },
                 "amenity/parking_space": {
                     "name": "Parkolóhely",
@@ -3526,7 +3563,8 @@
                     "terms": "italmérés,csehó,borozó,poharazó,ivó,talponálló,söntés,csapszék,söröző,sörház,kricsmi,késdobáló"
                 },
                 "amenity/pub/irish": {
-                    "name": "Ír kocsma"
+                    "name": "Ír kocsma",
+                    "terms": "ír kocsma,ivó,ír söröző"
                 },
                 "amenity/pub/lgbtq": {
                     "name": "LMBTQ+ kocsma"
@@ -3551,7 +3589,8 @@
                     "name": "Szelektív hulladékgyűjtő"
                 },
                 "amenity/recycling/container/electrical_items": {
-                    "name": "Elektromoshulladék-konténer"
+                    "name": "Elektromoshulladék-konténer",
+                    "terms": "elektronikai hulladék gyűjtő konténer,e-szemét,számítógép-hulladék,elektronikai újrahasznosítás"
                 },
                 "amenity/recycling/container/green_waste": {
                     "name": "Zöldhulladék-konténer",
@@ -3566,7 +3605,8 @@
                     "terms": "szemét,hulladék"
                 },
                 "amenity/refugee_site": {
-                    "name": "Menekülttábor"
+                    "name": "Menekülttábor",
+                    "terms": "menekülttábor,menekültek,migránsok,kitelepítettek"
                 },
                 "amenity/research_institute": {
                     "name": "Kutatóintézet területe",
@@ -3580,10 +3620,12 @@
                     "name": "Amerikai étterem"
                 },
                 "amenity/restaurant/asian": {
-                    "name": "Ázsiai étterem"
+                    "name": "Ázsiai étterem",
+                    "terms": "ázsiai étterem"
                 },
                 "amenity/restaurant/chinese": {
-                    "name": "Kínai étterem"
+                    "name": "Kínai étterem",
+                    "terms": "kínai étterem"
                 },
                 "amenity/restaurant/french": {
                     "name": "Francia étterem"
@@ -3595,16 +3637,20 @@
                     "name": "Görög étterem"
                 },
                 "amenity/restaurant/indian": {
-                    "name": "Indiai étterem"
+                    "name": "Indiai étterem",
+                    "terms": "indiai étterem,curry"
                 },
                 "amenity/restaurant/italian": {
-                    "name": "Olasz étterem"
+                    "name": "Olasz étterem",
+                    "terms": "olasz étterem,tészták,spagetti,pizza,gnocci"
                 },
                 "amenity/restaurant/japanese": {
-                    "name": "Japán étterem"
+                    "name": "Japán étterem",
+                    "terms": "japán étterem,szusi"
                 },
                 "amenity/restaurant/mexican": {
-                    "name": "Mexikói étterem"
+                    "name": "Mexikói étterem",
+                    "terms": "mexikói étterem,tortilla,taco,chilli,quesadilla"
                 },
                 "amenity/restaurant/noodle": {
                     "name": "Tésztaétterem"
@@ -3730,6 +3776,10 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteátrum",
                     "terms": "aréna"
+                },
+                "amenity/ticket_validator": {
+                    "name": "Jegyellenőrző",
+                    "aliases": "Belépőkapu"
                 },
                 "amenity/toilets": {
                     "name": "WC",
@@ -4158,7 +4208,7 @@
                     "terms": "kollégium,diákszálló,diákotthon"
                 },
                 "building/entrance": {
-                    "name": "Be-/kijárat"
+                    "name": "Bejárat / Kijárat"
                 },
                 "building/farm": {
                     "name": "Mezőgazdasági épület",
@@ -4177,7 +4227,7 @@
                     "terms": "garázsok,autótárolók,garázssor"
                 },
                 "building/grandstand": {
-                    "name": "Lelátó",
+                    "name": "Fedett lelátó",
                     "terms": "tribün,emelvény"
                 },
                 "building/greenhouse": {
@@ -4735,6 +4785,10 @@
                     "name": "Rehabilitációs létesítmény",
                     "terms": "rehab,terapeuta,terápia"
                 },
+                "healthcare/sample_collection": {
+                    "name": "Mintavevő labor",
+                    "aliases": "Tesztállomás"
+                },
                 "healthcare/speech_therapist": {
                     "name": "Beszédterapeuta",
                     "terms": "beszéd,terapeuta,terápia,hang"
@@ -4766,6 +4820,12 @@
                 "highway/crossing/marked": {
                     "name": "Jelölt gyalogátkelő",
                     "terms": "zebra"
+                },
+                "highway/crossing/signals": {
+                    "name": "Jelzőlámpás gyalogátkelőhely"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "Kijelölt gyalogátkelőhely"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Jelöletlen gyalogosátkelő"
@@ -4824,6 +4884,9 @@
                     "name": "Járda",
                     "terms": "járda,gyalogjáró,gyalogút"
                 },
+                "highway/footway/signals": {
+                    "name": "Jelzőlámpás gyalogátkelőhely"
+                },
                 "highway/footway/unmarked": {
                     "name": "Nem jelölt gyalogosátkelő"
                 },
@@ -4857,6 +4920,9 @@
                     "name": "Autópálya fel- vagy lehajtó",
                     "terms": "kijárat,lehajtás,felhajtás"
                 },
+                "highway/motorway_link-US-CA": {
+                    "name": "Autópálya fel- vagy lehajtó"
+                },
                 "highway/passing_place": {
                     "name": "Kitérőhely"
                 },
@@ -4883,6 +4949,9 @@
                 "highway/primary_link": {
                     "name": "Főút fel- vagy lehajtó",
                     "terms": "elsőrendű főútcsatlakozás"
+                },
+                "highway/primary_link-US-CA": {
+                    "name": "Főút fel- vagy lehajtó"
                 },
                 "highway/raceway": {
                     "name": "Autóversenypálya",
@@ -4994,6 +5063,9 @@
                 "highway/trunk_link": {
                     "name": "Autóút fel- vagy lehajtó",
                     "terms": "autóút csatlakozás"
+                },
+                "highway/trunk_link-US-CA": {
+                    "name": "Autóút fel- vagy lehajtó"
                 },
                 "highway/turning_circle": {
                     "name": "Megfordulókör",
@@ -5146,6 +5218,10 @@
                 "landuse/construction": {
                     "name": "Építési terület"
                 },
+                "landuse/education": {
+                    "name": "Oktatási intézmény területe",
+                    "aliases": "Kampusz\nEgyetemváros"
+                },
                 "landuse/farm": {
                     "name": "Mezőgazdasági terület"
                 },
@@ -5272,6 +5348,9 @@
                     "name": "Kiskereskedelmi terület",
                     "terms": "boltok,üzletek,pláza"
                 },
+                "landuse/salt_pond": {
+                    "name": "Sólepárló tó"
+                },
                 "landuse/vineyard": {
                     "name": "Szőlő",
                     "terms": "szőlőskert,szőlőültetvény"
@@ -5302,7 +5381,7 @@
                     "terms": "madárvárta"
                 },
                 "leisure/bleachers": {
-                    "name": "Lelátó",
+                    "name": "Szabadtéri lelátó",
                     "terms": "tribün"
                 },
                 "leisure/bowling_alley": {
@@ -5442,6 +5521,9 @@
                     "name": "Amerikaifutball-pálya",
                     "terms": "amerikai foci pálya"
                 },
+                "leisure/pitch/archery": {
+                    "name": "Íjlövő pálya"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "Ausztrálfutball-pálya"
                 },
@@ -5477,6 +5559,10 @@
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Gyeplabdapálya"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Futsal pálya",
+                    "terms": "futsal,nagypályás teremfoci"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Patkóhajító gödör"
@@ -6245,6 +6331,9 @@
                 },
                 "office/water_utility": {
                     "name": "Vízműiroda"
+                },
+                "office/yes": {
+                    "name": "Iroda (meghatározatlan típusú)"
                 },
                 "piste/downhill": {
                     "name": "Sí lesikló pálya"
@@ -7406,6 +7495,9 @@
                 "shop/wine": {
                     "name": "Borszaküzlet",
                     "terms": "borászat,italbolt,borkereskedés"
+                },
+                "shop/yes": {
+                    "name": "Üzlet (meghatározatlan típusú)"
                 },
                 "telecom": {
                     "name": "Távközlés"

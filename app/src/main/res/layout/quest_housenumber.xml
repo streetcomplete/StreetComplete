@@ -25,12 +25,11 @@
                 android:id="@+id/houseNumberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rectangular_sign_blue"
                 android:imeOptions="actionDone"
                 android:textColorHint="#2fff"
                 android:digits="0123456789.,- /"
                 tools:text="123"
-                android:padding="12dp"
+                android:padding="8dp"
                 style="@style/HousenumberEditText"
                 />
 

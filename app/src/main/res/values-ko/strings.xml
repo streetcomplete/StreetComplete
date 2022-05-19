@@ -614,7 +614,7 @@
     <string name="quest_fee_answer_hours">"시간과 날짜에 따라 다름…"</string>
     <string name="quest_fee_add_times">"시간 추가"</string>
     <string name="quest_housenumber_multiple_numbers">"건물번호가 여러 개 있음"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"건물번호를 쉼표로 분리하거나, 대시로 범위를 표기할 수 있습니다.\n예시: 1,3 또는 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"건물번호를 쉼표로 분리하거나, 대시로 범위를 표기할 수 있습니다.\n예시: 1,3 또는 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"스탠드(자전거 프레임에 걸침)"</string>
@@ -695,7 +695,7 @@
     <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"사람들이 일하거나 물건을 파는 등의 상업 활동을 하는 건물"</string>
     <string name="quest_buildingType_industrial">"산업 건물"</string>
-    <string name="quest_buildingType_industrial_description">"예: 공장, 작업장, 자동차 수리점, ..."</string>
+    <string name="quest_buildingType_industrial_description">"예: 공장, 작업장, 자동차 수리점, …"</string>
     <string name="quest_buildingType_office">"사무용 건물"</string>
     <string name="quest_buildingType_retail">"상점"</string>
     <string name="quest_buildingType_warehouse">"창고"</string>
@@ -923,7 +923,7 @@
     <string name="quest_cyclewayPartSurface_title">"이 자전거 도로의 포장재가 무엇인가요?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"부분별로 다름..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"부분별로 다름…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"부분별로 대답이 다르다면, 먼저 길을 분할해야 합니다. 그런 다음, 나뉘어진 부분에 대해 과제를 각각 수행할 수 있습니다.
@@ -944,7 +944,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"하중 제한이 현실적인 것 같지 않습니다. 이 무게가 맞습니까?"</string>
-    <string name="quest_maxweight_answer_other_sign">"표지판이 다르게 생김..."</string>
+    <string name="quest_maxweight_answer_other_sign">"표지판이 다르게 생김…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"참고를 남기고 싶으신가요? 사진과 함께 참고를 남기면 다른 매퍼가 이를 대신 처리해 줄 수 있습니다."</string>
@@ -1216,7 +1216,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"이 신호등에 시각 장애인에게 횡단해도 좋음을 알려주는 촉각 알림이 있나요?"</string>
     <string name="quest_traffic_signals_vibrate_description">"힌트: 촉각 알림은 보통 신호등 버튼 아래쪽에 진동하는 버튼이나 회전하는 고깔입니다."</string>
-    <string name="quest_buildingType_bungalow_description2">"작은 외딴 집(여름 별장, 전원주택, 오두막, ...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"작은 외딴 집(여름 별장, 전원주택, 오두막, …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"철길 건널목에 어떤 장벽이 있나요?"</string>
     <string name="quest_railway_crossing_barrier_none2">"장벽 없음"</string>
     <string name="quest_steps_ramp_title">"이 계단에 경사로가 있나요? 어떤 종류인가요?"</string>
@@ -1297,7 +1297,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_parkingType_lane">"도로변 주차장"</string>
     <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
     <string name="quest_tracktype_grade3a">"거의 단단함"</string>
-    <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다..."</string>
+    <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다…"</string>
 
     <!-- Fuzzy -->
     <string name="osm_element_gone_description">"정말 존재하지 않습니까? 혹시 바로 옆에 있는 것은 아닌가요? 확신이 들지 않는다면, 대신 참고를 남기는 것이 좋습니다."</string>
@@ -1324,7 +1324,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"평소와 마찬가지로, 그림에서 한 쪽을 탭한 후 적절한 답변을 고르고, 반대쪽도 동일하게 합니다. 모든 선택지를 꼼꼼히 확인하세요: 한눈에 알아보기 힘든 경우도 존재하는데, 예를 들어, 양방향 자전거 통행이 가능한 일방통행로 등이 있습니다."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"자전거 도로가 없음을 표시하기"</string>
-    <string name="quest_construction_completed_at_known_date">"완공일자는..."</string>
+    <string name="quest_construction_completed_at_known_date">"완공일자는…"</string>
     <string name="quest_construction_completion_date_title">"완공일자가 언제인가요?"</string>
     <string name="quest_surface_value_clay">"찰흙"</string>
     <string name="quest_surface_value_artificial_turf">"인조잔디"</string>
@@ -1379,7 +1379,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="background_type_map">"지도"</string>
     <string name="background_type_aerial_esri">"위성사진 (Esri 제공)"</string>
     <string name="quest_barrier_type_title">"어떤 형태의 장벽인가요?"</string>
-    <string name="quest_barrier_type_gate">"문"</string>
     <string name="quest_barrier_type_lift_gate">"차단기"</string>
     <string name="quest_barrier_type_bollard">"볼라드"</string>
     <string name="quest_barrier_type_chain">"체인"</string>
@@ -1545,7 +1544,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="street_parking_conditional_restrictions_hint">"만약 어떤 형태로든 이곳에 주정차가 가능하다면, 그런 상황에서 어떻게 주정차할 수 있는지를 선택하세요. 어떤 제한이 적용되는지는 나중에 추가할 수 있습니다.
 
 아니면, (사진과 함께) 참고를 남길 수도 있습니다."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"건물번호와 이름 둘 다 있음..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"건물번호와 이름 둘 다 있음…"</string>
     <string name="quest_address_house_number_label">"건물번호:"</string>
     <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
     <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
@@ -1593,7 +1592,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoothness_obstacle">"장애물이 있음"</string>
     <string name="quest_smoothness_obstacle_hint">"부드러움에 대한 일반적인 답변을 해 주세요. 연석, 과속 방지턱 또는 가축 통행 방지 시설물과 같은 단일 장애물은 무시할 수 있습니다. 반복되거나 예상치 못한 장애물은 답에 포함되어야 합니다."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … 이 노면을 이용해도 괜찮을 교통수단을 선택해주세요. 한두개의 손상보다 전체적인 상태에 유의하세요."</string>
-    <string name="quest_shoulder_explanation">"갓길은 주행 차로 옆에 차량이 안전하게 멈출 수 있도록 명확하게 구분된 비상 정지 차선이며, 항상 (완전히) 포장되어 있지는 않습니다."</string>
     <string name="link_osmhydrant_description">"소방서 및 소화전 조회, 추가 및 편집"</string>
     <string name="achievement_lifesaver_title">"생명의 은인"</string>
     <string name="achievement_lifesaver_solved_X">"응급 구조대와 긴급 구조원을 돕는 %d개의 과제를 해결했습니다!"</string>

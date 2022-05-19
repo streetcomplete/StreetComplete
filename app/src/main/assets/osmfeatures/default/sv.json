@@ -1979,8 +1979,13 @@
                         "cans": "Burkar",
                         "cardboard": "Kartong",
                         "clothes": "Kläder",
+                        "cooking_oil": "Matlagningsolja",
+                        "engine_oil": "Motorolja",
+                        "glass_bottles": "Glasflaskor och -burkar",
                         "green_waste": "Trädgårdsavfall",
                         "paper": "Papper",
+                        "plastic": "Plast",
+                        "plastic_bottles": "Plastflaskor",
                         "plastic_packaging": "Plastförpackningar",
                         "scrap_metal": "Skräpmetall",
                         "shoes": "Skor"
@@ -2471,7 +2476,7 @@
                     "label": "Yta",
                     "options": {
                         "artificial_turf": "Konstgräs",
-                        "asphalt": "Asfallt",
+                        "asphalt": "Asfalt",
                         "compacted": "Komprimerad",
                         "concrete": "Betong",
                         "dirt": "Jord",

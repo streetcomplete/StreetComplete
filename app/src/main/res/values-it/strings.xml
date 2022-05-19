@@ -446,7 +446,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_fee_answer_hours">"Dipende da giorno e ora…"</string>
     <string name="quest_fee_add_times">"Aggiungi orari"</string>
     <string name="quest_housenumber_multiple_numbers">"Ha più numeri civici"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Basta inserire i numeri separati da virgole o intervalli. Ad esempio 1,3 o 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Basta inserire i numeri separati da virgole o intervalli. Ad esempio 1,3 o 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Porta biciclette alto"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Rastrelliera per biciclette (supporto solo per la ruota)"</string>
     <string name="quest_bicycle_parking_type_shed">"Capannone"</string>
@@ -573,7 +573,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I metadati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleziona tutto"</string>
-    <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, negozi, ecc..."</string>
+    <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, negozi, ecc…"</string>
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
 
     <!-- Fuzzy -->
@@ -869,7 +869,7 @@ riconoscimento"</string>
     <string name="quest_board_type_map">"È una mappa"</string>
     <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
     <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Superfici multiple..."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Superfici multiple…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Confermi che è impossibile specificare la superficie? Ricorda che c'è l'opzione \"Cambia lungo la via\" che ti permette di tagliare la via dove la superficie cambia. Usa \"Non so\" se c'è una singola superficie ma nessuna risposta adatta."</string>
@@ -905,7 +905,7 @@ riconoscimento"</string>
     <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Questo semaforo ha un indicatore tattile che indica agli ipovedenti quando attraversare in sicurezza?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Consiglio: spesso si tratta di un pulsante che vibra o un cono che ruota nella parte inferiore del pulsante semaforico."</string>
-    <string name="quest_buildingType_bungalow_description2">"piccola casa indipendente (casa estiva, cottage per le vacanze, baita...)"</string>
+    <string name="quest_buildingType_bungalow_description2">"piccola casa indipendente (casa estiva, cottage per le vacanze, baita…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Che tipo di barriere ci sono in questo passaggio a livello?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Nessuna barriera"</string>
     <string name="quest_steps_ramp_title">"Questa scala ha una rampa? Di che tipo?"</string>
@@ -918,7 +918,7 @@ riconoscimento"</string>
     <string name="quest_atm_operator_title">"A che banca appartiene questo bancomat?"</string>
     <string name="quest_clothes_container_operator_title">"Chi è il destinatario delle donazioni di questo container per indumenti?"</string>
     <string name="quest_charging_station_operator_title">"Qual è l'operatore di questa stazione di carica?"</string>
-    <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, ..."</string>
+    <string name="link_indoorequal_description">"Scopri mappe degli interni di ipermercati, stazioni, …"</string>
     <string name="achievement_rare_title">"Caccia al tesoro"</string>
     <string name="achievement_rare_solved_X">"Hai trovato e risolto %d missioni che sono completate molto raramente, congratulazioni!"</string>
     <string name="achievement_citizen_title">"Cittadino/a"</string>
@@ -1062,7 +1062,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="background_type_map">"Mappa"</string>
     <string name="background_type_aerial_esri">"Satellite (ESRI)"</string>
     <string name="quest_barrier_type_title">"Che tipo di barriera è questa?"</string>
-    <string name="quest_barrier_type_gate">"Cancello"</string>
     <string name="quest_barrier_type_lift_gate">"Barriera ad asta"</string>
     <string name="quest_barrier_type_bollard">"Colonnina"</string>
     <string name="quest_barrier_type_chain">"Catena"</string>
@@ -1140,7 +1139,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
 
     <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Cancellare la preimpostazione \"%s\"? La selezione della missione e l'ordinamento saranno perse irrimediabilmente."</string>
-    <string name="notification_syncing">"Sincronizzazione..."</string>
+    <string name="notification_syncing">"Sincronizzazione…"</string>
 
     <!-- Android notifications -->
     <string name="notification_channel_sync">"Sincronizza"</string>
@@ -1221,7 +1220,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="street_parking_conditional_restrictions_hint">"Se è possibile parcheggiare o sostare qui, prima rispondi su come parcheggiano le persone che ne hanno il permesso. Le restrizioni che vengono applicate possono essere specificate dopo.
 
 Altrimenti puoi lasciare una nota (con una foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Sia il numero civico che nome..."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Sia il numero civico che nome…"</string>
     <string name="quest_address_house_number_label">"Numero civico:"</string>
     <string name="quest_shoulder_title">"Questa strada ha una banchina?"</string>
     <string name="quest_fireHydrant_position_title">"Dove si trova l'idrante?"</string>
@@ -1269,7 +1268,6 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_smoothness_obstacle">"È presente un ostacolo"</string>
     <string name="quest_smoothness_obstacle_hint">"Per favore, fornisci una risposta per l'uniformità. Ostacoli singoli come cordoli, dossi o grate per il bestiame possono essere ignorati. Ostacoli ripetuti o inaspettati devono essere presi in considerazione nella risposta."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … segna per quale tipologia di veicoli la superficie è indicata. Da valutare nella sua interezza piuttosto che valutare le singole parti."</string>
-    <string name="quest_shoulder_explanation">"La banchina è una zona delimitata da una linea che permette ai veicoli di fermarsi in sicurezza al di fuori della carreggiata, può anche essere non completamente asfaltata."</string>
     <string name="link_osmhydrant_description">"Cerca, aggiungi e modifica le caserme dei pompieri e gli idranti"</string>
     <string name="achievement_lifesaver_title">"Salvagente"</string>
     <string name="achievement_lifesaver_solved_X">"Hai risolto %d missioni per aiutare i servizi di emergenza e i primi soccorritori!"</string>
@@ -1391,4 +1389,18 @@ sorted alphabetically by title -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Il bagno di questo posto è accessibile alle sedie a rotelle?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sei sicuro che i ciclisti non possono circolare in questa strada a senso unico in entrambe le direzioni? Se hai dubbi, controlla se c'è la segnaletica.
 "</string>
+    <string name="link_backofyourhand_description">"Quanto conosci la tua area ? Metti alla prova individuando le strade"</string>
+    <string name="link_thenandnow_description">"Esplora come OSM si presentava all'inizio confrontato a come è oggi!"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Quì accettano carte di credito o debito ?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Entrambi"</string>
+    <string name="quest_accepts_cards_credit_only">"Solo carte di credito"</string>
+    <string name="quest_accepts_cards_dedit_only">"Solo carte di debito"</string>
+    <string name="quest_accepts_cards_unavailable">"Ne carte di debito o credito"</string>
+    <string name="quest_barrier_type_gate_any_size">"Porta, ogni dimensione"</string>
+    <string name="quest_air_pump_bicycle_title">"C'è qui una pompa per bicicletta funzionante disponibile a tutti?"</string>
+    <string name="quest_air_pump_compressor_title">"C'è qui un compressore d'aria disponibile?"</string>
+    <string name="quest_step_count_stile_hint">"Solo il numero di gradini per raggiungere la cima. Se i gradini differiscono per lato, fornire il numero maggiore."</string>
 </resources>

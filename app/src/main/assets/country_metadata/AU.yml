@@ -8,6 +8,7 @@ hasSlowZone: true
 isLeftHandTraffic: true
 livingStreetSignStyle: australia
 mobileCountryCode: 505
+noEntrySignStyle: no entry
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [en]

@@ -1,4 +1,44 @@
-v43.0-beta1: |
+v44.0-beta1: |
+  <h3>Recording GPS track</h3>
+  <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
+  and then attach it to a public note!<br/>
+  Note that the track can only be recorded while the app is in foreground. So, it is not meant to
+  replace tools like GPS Logger but to help locate short missing path segments and similar.<br/>
+  (#3573, #2209), by @goldbattle
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of bicycle rental is this?</i> (#3995, #4010), by @FloEdelmann</li>
+  <li><i>How many rental bike spaces are here?</i> (#2129, #4008), by @FloEdelmann</li>
+  <li><i>Are bicycle repair services offered here?</i>, disabled by default (#4012, #4038), by @matkoniecz</li>
+  <li><i>Are second-hand bicycles sold here?, disabled by default</i> (#4012, #4038), by @matkoniecz</li>
+  <li><i>What kind of building entrance is this?</i> (#3941, #3949), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Clarify a lot of wordings in American English (#4030) by @ZeLonewolf</li>
+  <li>Various minor enhancements and fixes (#4015, ...), thanks @Helium314</li>
+  </ul>
+
+v43.2: |
+  Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, your not yet uploaded
+  edits are safe. (#4028)
+
+v43.1: |
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
+  <li>Cycleways: For oneways, make it clearer what the selection options imply for cyclists (#3984)</li>
+  <li>Don't ask about tactile buttons on traffic lights in Russia (#4021)</li>
+  <li>Various minor enhancements and fixes (#3994, #4020...), thanks @peternewman</li>
+  <li>Fix new languages (Armenian, Esperanto) are now displayed as options in the language selection screen</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Latvian, by @Mazurs</li>
+  </ul>
+
+v43.0: |
   <h3>New Quests</h3>
   <ul>
   <li><i>How many steps are here?</i>, asked for stiles (#3932, #3141), by @matkoniecz</li>
@@ -11,11 +51,13 @@ v43.0-beta1: |
   <li>Do not ask questions about objects tagged as seasonal (#3943)</li>
   <li>Fix in rare cases answered sidewalk quest would not go away (#3976)</li>
   <li>Kerb type: Remove kerb if user answered that there is no kerb at all (#3983)</li>
-  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795, #3972, #3978, #3962...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
+  <li>Ask about opening hours and wheelchair accessibility for a few more kind of places (#3982), by @dbdean</li>
+  <li>Better indicate when there is no GPS signal (#3944, #3977)</li>
+  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795, #3972, #3978, #3962, #2652...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
   </ul>
   <h3>New Translations</h3>
   <ul>
-  <li>Added Armenian, by Alexander and Anteneh Belayneh</li>
+  <li>Added Armenian, by Alexander, Vasak87 and Anteneh Belayneh</li>
   <li>Added Esperanto, by Jolesh, Jan, Martin Constantino-Bodin, Hendursaga, Robin van der Vliet, Fabio and more</li>
   </ul>
 

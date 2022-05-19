@@ -2,6 +2,7 @@
 centerLineStyle: yellow
 hasSlowZone: true
 mobileCountryCode: 716
+noEntrySignStyle: no entre
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es, qu, ay]
