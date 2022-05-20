@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestAnswerForm
 import de.westnordost.streetcomplete.quests.TextItem
-import de.westnordost.streetcomplete.quests.bike_shop.SecondHandBicycleAvailability
 
-class AddSecondHandBicycleAvailabilityForm : AListQuestAnswerFragment<SecondHandBicycleAvailability>() {
+class AddSecondHandBicycleAvailabilityForm : AListQuestAnswerForm<SecondHandBicycleAvailability>() {
 
     override val items = listOf(
         TextItem(SecondHandBicycleAvailability.ONLY_NEW, R.string.quest_bicycle_shop_second_hand_only_new),
