@@ -181,6 +181,8 @@ This especially applies for the possibility to modify tags arbitrarily, but also
 By default, this version is configured to behave very similar to normal StreetComplete.\n\n
 This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
     <string name="quest_settings_restart">Restart of the app (and often re-scanning for quests) is required to apply changed quest settings.</string>
+    <string name="pref_save_gpx">Get GPX notes</string>
+    <string name="pref_save_gpx_not_found">No GPX notes found</string>
 
     <!-- Store description -->
 

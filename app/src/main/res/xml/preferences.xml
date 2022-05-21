@@ -227,6 +227,10 @@
             android:entryValues="@array/pref_entriyvalues_day_night"
             android:persistent="true" />
 
+        <Preference
+            android:key="get_gpx_notes"
+            android:title="@string/pref_save_gpx" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

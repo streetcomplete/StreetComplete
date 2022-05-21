@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -48,7 +50,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
 import java.util.Locale
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
 
 /** Shows the settings screen */
 class SettingsFragment :
@@ -198,7 +205,56 @@ class SettingsFragment :
             true
         }
 
+        findPreference<Preference>("get_gpx_notes")?.setOnPreferenceClickListener {
+            if (File(requireContext().getExternalFilesDir(null), "notes.gpx").exists()) {
+                val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    putExtra(Intent.EXTRA_TITLE, "notes.zip")
+                    type = "application/zip"
+                }
+                startActivityForResult(intent, GPX_REQUEST_CODE)
+            } else {
+                context?.toast(getString(R.string.pref_save_gpx_not_found), Toast.LENGTH_LONG)
+            }
+            true
+        }
+
         buildLanguageSelector()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode != GPX_REQUEST_CODE || resultCode != Activity.RESULT_OK || data == null)
+            return
+        val uri = data.data ?: return
+        val os = activity?.contentResolver?.openOutputStream(uri)?.buffered() ?: return
+        try {
+            // read gpx and extract images
+            val gpxFile = File(requireContext().getExternalFilesDir(null), "notes.gpx")
+            val files = mutableListOf(gpxFile)
+            val gpxText = gpxFile.readText(Charsets.UTF_8)
+            val picturesDir = File(requireContext().getExternalFilesDir(null), "Pictures")
+            // get all files in pictures dir and check whether they occur in gpxText
+            if (picturesDir.isDirectory) {
+                picturesDir.walk().forEach {
+                    if (!it.isDirectory && gpxText.contains(it.name))
+                        files.add(it)
+                }
+            }
+
+            // write to zip
+            val zipStream = ZipOutputStream(os)
+            files.forEach {
+                val fileStream = FileInputStream(it).buffered()
+                zipStream.putNextEntry(ZipEntry(it.name)) // is name the right thing?
+                fileStream.copyTo(zipStream, 1024)
+                fileStream.close()
+                zipStream.closeEntry()
+            }
+            zipStream.close()
+            files.forEach { it.delete() }
+        } catch (e: IOException) {
+            Log.i("sctest", "writing didn't work", e)
+        }
     }
 
     private fun buildLanguageSelector() {
@@ -301,3 +357,5 @@ class SettingsFragment :
         return presetStr + enabledStr
     }
 }
+
+private const val GPX_REQUEST_CODE = 387532
