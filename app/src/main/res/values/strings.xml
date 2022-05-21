@@ -160,6 +160,10 @@
     <string name="quest_osmose_message_for_element">Message for this element (item type %1$s): %2$s</string>
     <string name="quest_osmose_set_value">Set new value for tag</string>
     <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated</string>
+    <string name="quest_osmose_settings_what">What to do?</string>
+    <string name="quest_osmose_settings_items">Select item types to hide</string>
+    <string name="quest_osmose_settings_enable">Enable downloading</string>
+    <string name="quest_osmose_settings_disable">Disable downloading (default)</string>
     <string name="quest_external_title">External quest: %s</string>
     <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, add \'external.csv\' to \`Android/data/de.westnordost.streetcomplete.modified/files\`, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
     <string name="quest_external_remove">Remove from list</string>

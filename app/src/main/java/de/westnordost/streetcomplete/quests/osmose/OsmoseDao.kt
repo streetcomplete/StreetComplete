@@ -32,6 +32,7 @@ class OsmoseDao(
     val client = OkHttpClient()
 
     fun download(bbox: BoundingBox) {
+        if (!sharedPrefs.getBoolean(PREF_OSMOSE_ENABLE, false)) return
         // http://osmose.openstreetmap.fr/en/issues/open.csv?zoom=17&item=xxxx&level=1&limit=500&bbox=16.40570998191834%2C48.179314880149114%2C16.41987204551697%2C48.18563147705161
         // replace bbox
         // try parsing result lines, split each by ','

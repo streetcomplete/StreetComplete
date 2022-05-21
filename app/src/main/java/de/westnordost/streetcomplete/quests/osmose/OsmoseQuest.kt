@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.osmose
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
@@ -47,9 +48,22 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
     override val hasQuestSettings = true
 
     // actual ignoring of stuff happens when downloading
-    override fun getQuestSettingsDialog(context: Context) =
-        singleTypeElementSelectionDialog(context, prefs, PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_osmose_settings_what)
+            .setNeutralButton(R.string.quest_osmose_settings_items) { _,_ ->
+                singleTypeElementSelectionDialog(context, prefs, PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
+                    .show()
+            }
+            .setNegativeButton(R.string.quest_osmose_settings_disable) { _, _ ->
+                prefs.edit().putBoolean(PREF_OSMOSE_ENABLE, false).apply()
+            }
+            .setPositiveButton(R.string.quest_osmose_settings_enable) { _, _ ->
+                prefs.edit().putBoolean(PREF_OSMOSE_ENABLE, true).apply()
+            }
+            .create()
 
 }
 
 private const val PREF_OSMOSE_ITEMS = "quest_osmose_items"
+const val PREF_OSMOSE_ENABLE = "quest_osmose_enable"
