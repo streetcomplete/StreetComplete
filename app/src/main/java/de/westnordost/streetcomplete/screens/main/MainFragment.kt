@@ -923,6 +923,7 @@ class MainFragment :
             childFragmentManager.popBackStack(BOTTOM_SHEET,
                 FragmentManager.POP_BACK_STACK_INCLUSIVE)
             binding.otherQuestsLayout.removeAllViews()
+            binding.otherQuestsScrollView.visibility = View.GONE
         }
         unfreezeMap()
     }
@@ -987,8 +988,8 @@ class MainFragment :
                             viewLifecycleScope.launch { showQuestDetails(osmQuest) }
                         }
                         binding.otherQuestsLayout.addView(questView)
-
                     }
+                    binding.otherQuestsScrollView.visibility = View.VISIBLE
                 }
 
             showHighlightedElements(quest, element!!)

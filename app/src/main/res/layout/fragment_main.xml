@@ -38,6 +38,8 @@
             android:layout_alignParentLeft="true" />
 
         <ScrollView
+            android:id="@+id/otherQuestsScrollView"
+            android:visibility="gone"
             android:layout_below="@id/answers_counter_fragment"
             android:layout_alignParentLeft="true"
             android:layout_width="80dp"
