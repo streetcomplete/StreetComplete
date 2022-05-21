@@ -23,7 +23,7 @@ class AddContactWebsite(private val prefs: SharedPreferences) : OsmFilterQuestTy
 
     override val changesetComment = "Add website"
     override val wikiLink = "Key:website"
-    override val icon = R.drawable.ic_quest_wifi
+    override val icon = R.drawable.ic_quest_website
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_contact_website
 
