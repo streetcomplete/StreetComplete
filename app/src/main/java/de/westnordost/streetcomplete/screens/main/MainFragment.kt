@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -424,10 +425,10 @@ class MainFragment :
     }
 
     override fun onComposeNote(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry, questTitle: String) {
-        showInBottomSheet(LeaveNoteInsteadFragment.create(
-            OsmQuestKey(element.type, element.id, questType.name),
-            questTitle, geometry.center
-        ), false)
+        showInBottomSheet(
+            LeaveNoteInsteadFragment.create(element.type, element.id, questTitle, geometry.center),
+            false
+        )
     }
 
     override fun onSplitWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry) {
@@ -443,8 +444,9 @@ class MainFragment :
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
-    override fun onSplittedWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry) {
-        onQuestSolved(questType, way, geometry)
+    override fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
+        showQuestSolvedAnimation(editType.icon, geometry.center)
+        closeBottomSheet()
     }
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
@@ -474,7 +476,7 @@ class MainFragment :
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
-    override fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon) {
+    override fun onCreatedNote(position: LatLon) {
         showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
         closeBottomSheet()
     }

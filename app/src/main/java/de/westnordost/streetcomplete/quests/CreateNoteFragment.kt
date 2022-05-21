@@ -19,8 +19,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -59,7 +57,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         fun getMapPositionAt(screenPos: Point): LatLon?
         fun getRecordedTrack(): List<Trackpoint>?
 
-        fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon)
+        fun onCreatedNote(position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -141,6 +139,6 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
             }
         }
 
-        listener?.onCreatedNote(null, position)
+        listener?.onCreatedNote(position)
     }
 }

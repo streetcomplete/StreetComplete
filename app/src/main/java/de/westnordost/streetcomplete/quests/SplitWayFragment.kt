@@ -18,6 +18,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
@@ -25,13 +26,14 @@ import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPos
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
+import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.forEachLine
@@ -59,7 +61,7 @@ import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
 class SplitWayFragment :
-    Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingQuestDetails {
+    Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingElement {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
@@ -67,13 +69,13 @@ class SplitWayFragment :
 
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val overlayRegistry: OverlayRegistry by inject()
     private val soundFx: SoundFx by inject()
 
-    override val questKey: QuestKey get() = osmQuestKey
+    override val elementKey: ElementKey by lazy { ElementKey(way.type, way.id) }
 
-    private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
-    private lateinit var questType: OsmElementQuestType<*>
+    private lateinit var editType: ElementEditType
     private lateinit var geometry: ElementPolylinesGeometry
     private var clickPos: PointF? = null
 
@@ -84,8 +86,8 @@ class SplitWayFragment :
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
 
-        /** Called after the given way has been split in the frame of the given quest type */
-        fun onSplittedWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry)
+        /** Called after the given way has been split in the frame of the given edit type */
+        fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -95,9 +97,9 @@ class SplitWayFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
-        osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
         way = Json.decodeFromString(args.getString(ARG_WAY)!!)
-        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as OsmElementQuestType<*>
+        editType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as? OsmElementQuestType<*>
+            ?: overlayRegistry.getByName(args.getString(ARG_QUESTTYPE)!!)!!
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
     }
 
@@ -151,9 +153,9 @@ class SplitWayFragment :
             if (checkIsSurvey(requireContext(), geometry, location)) {
                 val action = SplitWayAction(ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
-                    elementEditsController.add(questType, way, geometry, "survey", action)
+                    elementEditsController.add(editType, way, geometry, "survey", action)
                 }
-                listener?.onSplittedWay(questType, way, geometry)
+                listener?.onSplittedWay(editType, way, geometry)
                 return
             }
         }
@@ -292,18 +294,16 @@ class SplitWayFragment :
     companion object {
         private const val CLICK_AREA_SIZE_AT_MAX_ZOOM = 2.6
 
-        private const val ARG_OSM_QUEST_KEY = "osmQuestKey"
         private const val ARG_WAY = "way"
         private const val ARG_GEOMETRY = "geometry"
         private const val ARG_QUESTTYPE = "quest_type"
 
-        fun create(osmElementQuestType: OsmElementQuestType<*>, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
+        fun create(elementEditType: ElementEditType, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_OSM_QUEST_KEY to Json.encodeToString(OsmQuestKey(way.type, way.id, osmElementQuestType.name)),
                 ARG_WAY to Json.encodeToString(way),
                 ARG_GEOMETRY to Json.encodeToString(elementGeometry),
-                ARG_QUESTTYPE to osmElementQuestType.name
+                ARG_QUESTTYPE to elementEditType.name
             )
             return f
         }

@@ -8,10 +8,10 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -24,8 +24,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 
-/** Bottom sheet fragment with which the user can leave a note instead of solving the quest */
-class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
+/** Bottom sheet fragment with which the user can leave a note instead of solving the quest/edit */
+class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
     private val noteEditsController: NoteEditsController by inject()
 
@@ -46,19 +46,21 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
     override val noteInput get() = contentBinding.noteInput
 
     interface Listener {
-        fun onCreatedNote(questKey: OsmQuestKey?, position: LatLon)
+        fun onCreatedNote(position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private lateinit var questTitle: String
-    override lateinit var questKey: OsmQuestKey
+    private var questTitle: String? = null
     private lateinit var position: LatLon
+    private lateinit var elementType: ElementType
+    private var elementId: Long = 0L
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
         val args = requireArguments()
-        questTitle = args.getString(ARG_QUEST_TITLE)!!
-        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        questTitle = args.getString(ARG_QUEST_TITLE)
+        elementType = ElementType.valueOf(args.getString(ARG_ELEMENT_TYPE)!!)
+        elementId = args.getLong(ARG_ELEMENT_ID)
         position = Json.decodeFromString(args.getString(ARG_POSITION)!!)
     }
 
@@ -81,28 +83,30 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {
-
-        var fullText = "Unable to answer \"$questTitle\""
-        fullText += " for https://osm.org/${questKey.elementType.name.lowercase()}/${questKey.elementId}"
-        fullText += " via ${ApplicationConstants.USER_AGENT}:\n\n$text"
+        val fullText = mutableListOf<String>()
+        if (questTitle != null) fullText += "Unable to answer \"$questTitle\""
+        fullText += "for https://osm.org/${elementType.name.lowercase()}/$elementId"
+        fullText += "via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
+                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText.joinToString(" "), imagePaths)
             }
-            listener?.onCreatedNote(questKey, position)
+            listener?.onCreatedNote(position)
         }
     }
 
     companion object {
         private const val ARG_QUEST_TITLE = "questTitle"
-        private const val ARG_QUEST_KEY = "questKey"
+        private const val ARG_ELEMENT_TYPE = "elementType"
+        private const val ARG_ELEMENT_ID = "elementId"
         private const val ARG_POSITION = "position"
 
-        fun create(questKey: OsmQuestKey, questTitle: String, position: LatLon): LeaveNoteInsteadFragment {
+        fun create(elementType: ElementType, elementId: Long, questTitle: String?, position: LatLon): LeaveNoteInsteadFragment {
             val f = LeaveNoteInsteadFragment()
             f.arguments = bundleOf(
-                ARG_QUEST_KEY to Json.encodeToString(questKey),
+                ARG_ELEMENT_TYPE to elementType.name,
+                ARG_ELEMENT_ID to elementId,
                 ARG_QUEST_TITLE to questTitle,
                 ARG_POSITION to Json.encodeToString(position)
             )
