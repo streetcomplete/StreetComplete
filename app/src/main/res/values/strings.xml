@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This is the source file for the app's strings in en-US.
+<!-- This ( app/src/main/res/values/strings.xml ) is the source file for the app's strings in en-US.
      All other strings.xml are imported from POEditor crowd translation platform.
 
      The strings are sorted into categories to
@@ -16,7 +16,7 @@
 
 This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.
 
-The info you enter is directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
+The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor."</string>
 
 
     <!-- Main menu -->
@@ -202,6 +202,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
 
 
     <!-- Notifications -->
@@ -311,7 +312,7 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
+First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
@@ -563,7 +564,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- sorted alphabetically by title -->
 
     <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
-    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both debit and credit cards</string>
     <string name="quest_accepts_cards_credit_only">Only credit cards</string>
     <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
     <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
@@ -747,15 +748,15 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
+    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin…)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
-    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage, …</string>
+    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage,…</string>
     <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Retail building</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores …</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores…</string>
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
@@ -898,7 +899,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
 
     <string name="quest_dietType_vegan_title2">Any vegan items on the menu here?</string>
-    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, honey …).</string>
+    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, honey…).</string>
 
     <string name="quest_dietType_vegetarian_title2">Any vegetarian items on the menu here?</string>
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
@@ -1126,7 +1127,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
-    <string name="quest_fee_answer_yes_but">Yes, …</string>
+    <string name="quest_fee_answer_yes_but">Yes,…</string>
     <string name="quest_fee_answer_no_but_maxstay">No, but there is a max duration…</string>
     <string name="quest_fee_add_times">"Add times"</string>
     <string name="unit_days">days</string>
@@ -1307,7 +1308,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide an answer for the overall smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
+    <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
 
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>

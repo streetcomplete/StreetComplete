@@ -732,7 +732,7 @@ class MainFragment :
 
     private fun composeNote(pos: LatLon) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(CreateNoteFragment())
+        showInBottomSheet(CreateNoteFragment.create(mapFragment.recordedTracks.isNotEmpty()))
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)

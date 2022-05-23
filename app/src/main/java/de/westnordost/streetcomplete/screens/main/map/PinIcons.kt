@@ -65,6 +65,10 @@ import de.westnordost.streetcomplete.quests.getNameLabel
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
     }
+    when (map["traffic_calming"]) {
+        "choker", "choked_table", "chicane", "choked_island" -> return R.drawable.ic_pin_choker
+        "island" -> return R.drawable.ic_pin_island
+    }
     if (getHouseNumber(map) != null && getNameLabel(map) == null) {
         return R.drawable.ic_none
     }
