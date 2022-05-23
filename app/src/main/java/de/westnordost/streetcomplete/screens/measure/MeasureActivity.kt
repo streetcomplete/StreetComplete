@@ -378,10 +378,8 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
             if (measureState == MeasureState.MEASURING) {
                 (secondNode as? AnchorNode)?.anchor = newAnchor
+                updateDistance()
             }
-            /* update distance should always be called because the world position could be adjusted
-             *  for already existing anchors */
-            updateDistance()
         } catch (e: Exception) {
             Log.e("MeasureActivity", "Error", e)
         }
