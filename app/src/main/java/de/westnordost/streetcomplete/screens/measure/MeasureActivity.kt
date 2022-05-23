@@ -271,7 +271,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
                 /* different behavior: When caller requests result, tapping again doesn't clear the
                  * result, instead the user needs to tap on the "start over" button, like when
                  * taking a picture with the camera */
-                if (!requestResult) clearMeasuring()
+                if (!requestResult) clearMeasuring() else continueMeasuring()
             }
         }
     }
@@ -323,6 +323,12 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         binding.arSceneViewContainer.performHapticFeedback(VIRTUAL_KEY)
         if (requestResult) binding.acceptResultContainer.isGone = false
         measureState = MeasureState.DONE
+    }
+
+    private fun continueMeasuring() {
+        binding.arSceneViewContainer.performHapticFeedback(VIRTUAL_KEY)
+        if (requestResult) binding.acceptResultContainer.isGone = true
+        measureState = MeasureState.MEASURING
     }
 
     private fun clearMeasuring() {
