@@ -708,7 +708,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_building_entrance_title">What kind of building entrance is this?</string>
     <string name="quest_building_entrance_main">Main entrance of a public building</string>
-    <string name="quest_building_entrance_staircase">Staircase entrance (e.g. of apartment building)</string>
+    <string name="quest_building_entrance_staircase">Staircase entrance (e.g. to an apartment building)</string>
     <string name="quest_building_entrance_service">Service entrance</string>
     <string name="quest_building_entrance_exit">Exit only</string>
     <string name="quest_building_entrance_emergency_exit">Emergency exit only</string>
