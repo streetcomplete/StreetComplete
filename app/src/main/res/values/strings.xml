@@ -61,7 +61,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
 
     <string name="map_btn_create_track">Create new track recording</string>
-    <string name="map_btn_stop_track">"Stop Recording Track"</string>
+    <string name="map_btn_stop_track">"Stop recording track"</string>
 
 
     <!-- Android notifications -->
