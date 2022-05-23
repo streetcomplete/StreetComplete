@@ -242,8 +242,10 @@ private data class LastSelection<T>(val left: T?, val right: T?)
 
 interface StreetSideDisplayItem<T> {
     val value: T
+    /** shown on road view */
     val image: Image
     val title: Text?
+    /** shown in "last used" popup and during object selection */
     val icon: Image
     val floatingIcon: Image?
 
