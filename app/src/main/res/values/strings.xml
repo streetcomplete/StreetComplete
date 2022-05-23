@@ -666,7 +666,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_rental_type_title">What type of bicycle rental is this?</string>
     <string name="quest_bicycle_rental_type_docking_station">Docking station which locks bikes</string>
     <string name="quest_bicycle_rental_type_dropoff_point">Designated spot (bikes locked individually)</string>
-    <string name="quest_bicycle_rental_type_human">Human-operated bike rental</string>
+    <string name="quest_bicycle_rental_type_human">Staffed bike rental</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">Bike store that also rents bikes</string>
 
     <string name="quest_bicycle_shop_repair_title">Are bicycle repair services offered here?</string>
