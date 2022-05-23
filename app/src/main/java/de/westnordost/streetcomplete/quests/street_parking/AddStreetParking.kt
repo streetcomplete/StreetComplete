@@ -77,7 +77,8 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_street_parking_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("ways with amenity = parking")
+        getMapData().filter("ways with amenity = parking") +
+        getMapData().filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     override fun createForm() = AddStreetParkingForm()
 
