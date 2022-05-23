@@ -122,7 +122,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             try {
                 arSceneView?.resume()
                 binding.handMotionView.isGone = false
-                binding.trackingErrorTextView.isGone = true
+                binding.trackingMessageTextView.isGone = true
             } catch (e: CameraNotAvailableException) {
                 // without camera, we can't do anything, might as well quit
                 finish()
@@ -161,7 +161,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
             binding.handMotionView.isGone = true
         }
 
-        setTrackingError(frame.camera.trackingFailureReason.messageResId)
+        setTrackingMessage(frame.camera.trackingFailureReason.messageResId)
 
         if (frame.camera.trackingState == TRACKING) {
             if (measureVertical) {
@@ -193,7 +193,9 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
         if (hitResult != null) {
             updateCursor(hitResult)
-            setTrackingError(null)
+            setTrackingMessage(
+                if (measureState == MeasureState.READY) R.string.ar_core_tracking_hint_tap_to_measure else null
+            )
         } else {
             /* when no plane can be found at the cursor position and the camera angle is
                shallow enough, display a hint that user should cross street
@@ -202,15 +204,15 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
                 Vector3.subtract(frame.camera.pose.position, it).length()
             } ?: 0f
 
-            setTrackingError(
+            setTrackingMessage(
                 if (cursorDistanceFromCamera > 3f) R.string.ar_core_tracking_error_no_plane_hit else null
             )
         }
     }
 
-    private fun setTrackingError(messageResId: Int?) {
-        binding.trackingErrorTextView.isGone = messageResId == null
-        messageResId?.let { binding.trackingErrorTextView.setText(messageResId) }
+    private fun setTrackingMessage(messageResId: Int?) {
+        binding.trackingMessageTextView.isGone = messageResId == null
+        messageResId?.let { binding.trackingMessageTextView.setText(messageResId) }
     }
 
     /* ------------------------------------------ Session --------------------------------------- */
@@ -396,10 +398,10 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
         val normalizedCameraAngle = normalizeRadians(cameraAngle.toDouble(), -PI)
         val pi2 = PI / 2
         if (normalizedCameraAngle < -pi2 * 2 / 3 || normalizedCameraAngle > +pi2 * 1 / 2) {
-            setTrackingError(R.string.ar_core_tracking_error_too_steep_angle)
+            setTrackingMessage(R.string.ar_core_tracking_error_too_steep_angle)
             return
         } else {
-            setTrackingError(null)
+            setTrackingMessage(null)
         }
 
         // don't allow negative heights (into the ground)

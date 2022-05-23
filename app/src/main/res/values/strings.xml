@@ -201,6 +201,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
 
 
     <!-- Notifications -->
