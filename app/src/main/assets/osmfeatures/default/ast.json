@@ -1554,10 +1554,6 @@
                     "name": "Teatru",
                     "terms": "comedia,corral"
                 },
-                "amenity/toilets": {
-                    "name": "Aseos",
-                    "terms": "servicios,aseos,retretes"
-                },
                 "amenity/townhall": {
                     "name": "Edificiu municipal",
                     "terms": "casa del conceyu,ayuntamientu"

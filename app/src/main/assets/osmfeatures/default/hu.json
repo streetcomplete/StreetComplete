@@ -512,11 +512,6 @@
                     "label": "Legutóbbi ellenőrzés",
                     "placeholder": "ÉÉÉÉ-HH-NN"
                 },
-                "circumference": {
-                    "label": "Kerület",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "kerület,körméret"
-                },
                 "clothes": {
                     "label": "Ruha"
                 },
@@ -3781,10 +3776,6 @@
                     "name": "Jegyellenőrző",
                     "aliases": "Belépőkapu"
                 },
-                "amenity/toilets": {
-                    "name": "WC",
-                    "terms": "vécé,illemhely,toalett,klotyó,árnyékszék,budi,pottyantós"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "WC (öblítéses)",
                     "terms": "vízöblítéses vécé"
@@ -4805,10 +4796,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Buszmegálló"
-                },
-                "highway/construction": {
-                    "name": "Útépítés miatt lezárt út",
-                    "terms": "építés,lezárás"
                 },
                 "highway/corridor": {
                     "name": "Beltéri folyosó",

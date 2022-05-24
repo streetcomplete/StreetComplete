@@ -509,11 +509,6 @@
                     "label": "Última data de verificação",
                     "placeholder": "AAAA-MM-DD"
                 },
-                "circumference": {
-                    "label": "Circunferência",
-                    "placeholder": " 1 m, 20 cm, 30 in...",
-                    "terms": "círculo,circunferências"
-                },
                 "clothes": {
                     "label": "Roupas"
                 },
@@ -1006,6 +1001,9 @@
                 "fire_hydrant/diameter": {
                     "label": "Diâmetro (mm, polegadas ou letras)",
                     "terms": "diâmetros"
+                },
+                "fire_hydrant/position": {
+                    "label": "Posição"
                 },
                 "fire_hydrant/pressure": {
                     "label": "Pressão (bar)",
@@ -3784,10 +3782,6 @@
                     "name": "Máquina de validação de bilhetes",
                     "terms": "bilhetes,validação,validar,validador,máquina,sistema,tickets,títulos"
                 },
-                "amenity/toilets": {
-                    "name": "Casas de banho",
-                    "terms": "instalações sanitárias,sanitário,gabinete sanitário,banheiros,toilette,lavabo,wc,w.c."
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Autoclismo",
                     "terms": "flush toilets,autoclismo de descarga,retrete de descarga,descarga de água,retrete,sanita"
@@ -4876,10 +4870,6 @@
                 "highway/bus_stop": {
                     "name": "Paragem de autocarro"
                 },
-                "highway/construction": {
-                    "name": "Estrada em construção",
-                    "terms": "fechada,obras,estrada encerrada,acesso vedado"
-                },
                 "highway/corridor": {
                     "name": "Corredor interior",
                     "terms": "indoor corridor,passagem,interno,galeria,átrio"
@@ -5729,6 +5719,10 @@
                 "leisure/pitch/netball": {
                     "name": "Campo de netbol",
                     "terms": "netball,terreno de netbol,netbol,netbola,campo,desporto,bola"
+                },
+                "leisure/pitch/padel": {
+                    "name": "Campo de padel",
+                    "terms": "desporto,desportivo,sport,recinto,ténis,raquetes,esportivo,esporte,jogo,jogar"
                 },
                 "leisure/pitch/paintball": {
                     "name": "Campo de paintball",

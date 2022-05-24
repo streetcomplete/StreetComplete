@@ -419,6 +419,9 @@
                 "bunker_type": {
                     "label": "Typ"
                 },
+                "button_operated": {
+                    "label": "Volací tlačítko"
+                },
                 "cables": {
                     "label": "Kabely",
                     "placeholder": "1, 2, 3…"
@@ -514,9 +517,8 @@
                     "placeholder": "RRRR-MM-DD"
                 },
                 "circumference": {
-                    "label": "obvod",
-                    "placeholder": "1 m, 20 cm, 30 in...",
-                    "terms": "obvod,plocha,zábor,rozměr,velikost"
+                    "label": "Obvod (ve výšce prsou)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Oblečení"
@@ -767,6 +769,9 @@
                         "yes": "Ano"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Vklad"
+                },
                 "depth": {
                     "label": "Hloubka (v metrech)"
                 },
@@ -809,7 +814,13 @@
                 },
                 "diameter": {
                     "label": "Průměr",
-                    "placeholder": "5mm, 10cm, 15in…"
+                    "placeholder": "5mm, 10cm, 15in…",
+                    "terms": "průměr,velikost kruhu,šířka kruhu"
+                },
+                "diameter_crown": {
+                    "label": "Průměr koruny",
+                    "placeholder": "4 m, 9', …",
+                    "terms": "průměr koruny,velikost koruny,šířka koruny"
                 },
                 "diet_multi": {
                     "label": "Typy diet",
@@ -1019,6 +1030,16 @@
                     "label": "Průměr (mm, palce nebo písmena)",
                     "terms": "průměr,míra,rozměr,velikost,mm,in,cm,metrů,velké"
                 },
+                "fire_hydrant/position": {
+                    "label": "Pozice",
+                    "options": {
+                        "green": "Zeleň/Tráva",
+                        "lane": "Pruh silnice",
+                        "parking_lot": "Parkoviště",
+                        "sidewalk": "Chodník podél vozovky"
+                    },
+                    "terms": "pozice,místo"
+                },
                 "fire_hydrant/pressure": {
                     "label": "Tlak (bary)",
                     "terms": "tlak,bar,stlačený,vzduch,tlaková"
@@ -1054,6 +1075,23 @@
                 },
                 "flag/wikidata": {
                     "label": "Wikidata vlajky"
+                },
+                "flashing_lights": {
+                    "label": "Blikající světla",
+                    "options": {
+                        "always": {
+                            "description": "Světla stále blikají",
+                            "title": "Stále blikají"
+                        },
+                        "button": {
+                            "description": "Světla aktivována stisknutím tlačítka",
+                            "title": "Aktivováno tlačítkem"
+                        },
+                        "button;sensor": {
+                            "description": "Světla aktivována senzorem nebo stisknutím tlačítka",
+                            "title": "Aktivováno tlačítkem nebo senzorem"
+                        }
+                    }
                 },
                 "floating": {
                     "label": "Plovoucí"
@@ -1424,6 +1462,9 @@
                 },
                 "liaison": {
                     "label": "Druh"
+                },
+                "lifeguard": {
+                    "label": "Záchranný kruh"
                 },
                 "line_attachment": {
                     "label": "způsob připojení"
@@ -2657,6 +2698,14 @@
                 "traffic_signals": {
                     "label": "Typ"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Taktilní šipka",
+                    "terms": "šipka na stisktutí,chodci stiskněte tlačítko"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Odpočítávadlo",
+                    "terms": "odpočet,odpočítávání,časovač"
+                },
                 "traffic_signals/direction": {
                     "label": "Dotčený směr",
                     "options": {
@@ -2664,6 +2713,28 @@
                         "both": "Oba/všechny směry",
                         "forward": "Dopředu"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Hmatová mapa",
+                    "terms": "haptická mapa,mapa pro nevidomé"
+                },
+                "traffic_signals/sound": {
+                    "label": "Zvukové signály",
+                    "options": {
+                        "locate": {
+                            "description": "Signál je pouze pro nalezení volacího tlačítka",
+                            "title": "Lokátor volacího tlačítka"
+                        },
+                        "no": "Ne",
+                        "walk": {
+                            "description": "Je tam pouze signál, kdy je povolena chůze",
+                            "title": "Ukazatel chůze"
+                        },
+                        "yes": "Ano"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Vibrace"
                 },
                 "trail_visibility": {
                     "label": "Viditelnost pěšiny",
@@ -3821,8 +3892,7 @@
                     "terms": "lístek,ověřovač,děrovač"
                 },
                 "amenity/toilets": {
-                    "name": "Toalety",
-                    "terms": "toalety,toaleta,záchod,záchodky,wc"
+                    "name": "Odpočívadlo"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Splachovací toalety",
@@ -3847,6 +3917,9 @@
                 "amenity/toy_library": {
                     "name": "půjčovna hraček",
                     "terms": "hra,hračka"
+                },
+                "amenity/trolley_bay": {
+                    "name": "Límec kočárku"
                 },
                 "amenity/university": {
                     "name": "Prostor vysoké školy",
@@ -4921,8 +4994,7 @@
                     "name": "Autobusová zastávka"
                 },
                 "highway/construction": {
-                    "name": "Uzavřená cesta (výstavba)",
-                    "terms": "uzavřená cesta,uzavřená silnice,uzavírka,výstavba,stavba,výstavba silnice,zákaz vjezdu,budování cesty,dálnice ve výstavbě,stavba ulice"
+                    "name": "Silnice ve výstavbě"
                 },
                 "highway/corridor": {
                     "name": "Chodba",
@@ -5281,7 +5353,8 @@
                     "terms": "zříceniny,zřícenina"
                 },
                 "historic/tomb": {
-                    "name": "Hrob"
+                    "name": "Hrob",
+                    "terms": "hrobka,místo posledního odpočinku"
                 },
                 "historic/wayside_cross": {
                     "name": "Kříž",
@@ -5768,6 +5841,9 @@
                     "name": "hřiště pro netball",
                     "terms": "basketbal"
                 },
+                "leisure/pitch/padel": {
+                    "name": "Padelové hřiště"
+                },
                 "leisure/pitch/paintball": {
                     "name": "Paintballové hřiště"
                 },
@@ -5810,6 +5886,10 @@
                 "leisure/pitch/tennis": {
                     "name": "Tenisové kurty",
                     "terms": "tenisové hřiště,tenis,kurt,dvorec"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "Tetherballové hřiště",
+                    "terms": "tether tenis,swingball"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Volejbalové hřiště",
@@ -5929,7 +6009,8 @@
                     "terms": "siláž,sklad"
                 },
                 "man_made/cairn": {
-                    "name": "mohyla"
+                    "name": "mohyla",
+                    "terms": "skalní hromada,kamenná hromada,kamenná kopa,carn"
                 },
                 "man_made/chimney": {
                     "name": "Komín",
@@ -5940,7 +6021,8 @@
                     "terms": "řez,les,řezivo,strom,dřevo"
                 },
                 "man_made/compass_rose": {
-                    "name": "Růžice kompasu"
+                    "name": "Růžice kompasu",
+                    "terms": "kompas,východ,sever,větrná růžice,jih,západ,větrová růžice"
                 },
                 "man_made/courtyard": {
                     "name": "Nádvoří"
@@ -5961,7 +6043,8 @@
                     "terms": "ptactvo,ptáci,holuby,holubník,holub domácí,voliéra,chov holubů"
                 },
                 "man_made/dyke": {
-                    "name": "protipovodňová hráz"
+                    "name": "protipovodňová hráz",
+                    "terms": "hráz,hráza,náplavka,doraz"
                 },
                 "man_made/embankment": {
                     "name": "Násyp"
@@ -5987,22 +6070,28 @@
                     "terms": "maják,světlo"
                 },
                 "man_made/manhole": {
-                    "name": "Šachta"
+                    "name": "Šachta",
+                    "terms": "kryt,díra,kanalizace,kanalizační,telekom"
                 },
                 "man_made/manhole/drain": {
-                    "name": "Kanalizační vpusť"
+                    "name": "Kanalizační vpusť",
+                    "terms": "kryt,odtok,díra,déšť,kanalizace,kanalizační,bouře"
                 },
                 "man_made/manhole/gas": {
-                    "name": "šachta (plyn)"
+                    "name": "šachta (plyn)",
+                    "terms": "kryt,plyn,teplo,díra,služba"
                 },
                 "man_made/manhole/power": {
-                    "name": "šachta (elektro)"
+                    "name": "šachta (elektro)",
+                    "terms": "kryt,díra,elektrický,výkon,služba"
                 },
                 "man_made/manhole/sewer": {
-                    "name": "šachta (kanalizace)"
+                    "name": "šachta (kanalizace)",
+                    "terms": "kryt,odtok,díra,kanalizace,kanalizační,inženýrské sítě"
                 },
                 "man_made/manhole/telecom": {
-                    "name": "šachta (telekomunikace)"
+                    "name": "šachta (telekomunikace)",
+                    "terms": "telekom,kabel,kryt,telefon,díra,telekomunikace,telefonní,služba"
                 },
                 "man_made/manhole/water": {
                     "name": "šachta (vodovod)"
@@ -6022,6 +6111,9 @@
                 },
                 "man_made/mast/communication/television": {
                     "name": "TV vysílací stožár"
+                },
+                "man_made/mast/lighting": {
+                    "name": "Stožár osvětlení"
                 },
                 "man_made/mineshaft": {
                     "name": "Důlní šachta"
@@ -6661,6 +6753,9 @@
                 },
                 "playground/cushion": {
                     "name": "skákací polštář"
+                },
+                "playground/hopscotch": {
+                    "name": "Skákací panák"
                 },
                 "playground/horizontal_bar": {
                     "name": "hrazda"

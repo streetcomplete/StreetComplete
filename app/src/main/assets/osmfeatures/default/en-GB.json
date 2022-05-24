@@ -331,10 +331,6 @@
                 "charge_toll": {
                     "placeholder": "1 EUR, 5 USD, 10 JPY…"
                 },
-                "circumference": {
-                    "label": "Circumference",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "Clothes"
                 },
@@ -1332,6 +1328,9 @@
                     },
                     "placeholder": "Yes, No, Takeaway Only..."
                 },
+                "toilets": {
+                    "label": "Toilets"
+                },
                 "toilets/disposal": {
                     "label": "Toilet Disposal",
                     "options": {
@@ -1858,9 +1857,6 @@
                 },
                 "amenity/theatre": {
                     "name": "Theatre"
-                },
-                "amenity/toilets": {
-                    "name": "Toilets"
                 },
                 "amenity/townhall": {
                     "name": "Town Hall"

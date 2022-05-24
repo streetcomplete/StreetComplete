@@ -408,6 +408,9 @@
                 "bunker_type": {
                     "label": "Tipo"
                 },
+                "button_operated": {
+                    "label": "Funciona por botão"
+                },
                 "cables": {
                     "label": "Cabos",
                     "placeholder": "1, 2, 3..."
@@ -468,6 +471,7 @@
                 "castle_type": {
                     "label": "Tipo",
                     "options": {
+                        "castrum": "Forte romano",
                         "palace": "Palácio"
                     }
                 },
@@ -487,11 +491,6 @@
                 "check_date": {
                     "label": "Última data de verificação",
                     "placeholder": "AAAA-MM-DD"
-                },
-                "circumference": {
-                    "label": "Circunferência",
-                    "placeholder": "1 m, 20 cm, 30 na…",
-                    "terms": "círculo,circunferências"
                 },
                 "clothes": {
                     "label": "Roupas"
@@ -607,6 +606,7 @@
                     "label": "Sinais luminosos"
                 },
                 "crossing_raised": {
+                    "label": "Elevado",
                     "options": {
                         "table": "Sim",
                         "undefined": "Não"
@@ -736,6 +736,9 @@
                         "timetable": "Quadro de horários",
                         "yes": "Sim"
                     }
+                },
+                "deposit/trolley": {
+                    "label": "Garagem"
                 },
                 "depth": {
                     "label": "Profundidade (metros)"
@@ -979,6 +982,15 @@
                 "fire_hydrant/diameter": {
                     "label": "Diâmetro (mm, in, ou letras)",
                     "terms": "diâmetro (mm,in,ou letras)"
+                },
+                "fire_hydrant/position": {
+                    "label": "Posição",
+                    "options": {
+                        "green": "Área verde",
+                        "lane": "Faixa de rolamento",
+                        "parking_lot": "Estacionamento",
+                        "sidewalk": "Calçada"
+                    }
                 },
                 "fire_hydrant/pressure": {
                     "label": "Pressão (bar)",
@@ -1647,6 +1659,7 @@
                         "carports": "Abrigo de carros",
                         "garage_boxes": "Vagas de estacionamento",
                         "lane": "Faixa de acostamento",
+                        "layby": "Separado/Alça de acesso",
                         "multi-storey": "Vários níveis",
                         "rooftop": "Telhado",
                         "sheds": "Cabanas",
@@ -2525,6 +2538,12 @@
                 "traffic_signals": {
                     "label": "Tipo"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Seta tátil"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Temporizador"
+                },
                 "traffic_signals/direction": {
                     "label": "Direção afetada",
                     "options": {
@@ -2532,6 +2551,12 @@
                         "both": "Ambas / Todas",
                         "forward": "Igual à direção da linha"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Mapa tátil"
+                },
+                "traffic_signals/sound": {
+                    "label": "Sinais sonoros"
                 },
                 "trail_visibility": {
                     "label": "Visibilidade da Trilha",
@@ -3658,10 +3683,6 @@
                     "name": "Máquina de validação de bilhetes",
                     "terms": "ticket,bilhete,ingresso,validação de ingresso,catraca,entrada"
                 },
-                "amenity/toilets": {
-                    "name": "Banheiros públicos",
-                    "terms": "banheiros,sanitário,wc,lavabo,toalete"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Banheiros com descarga",
                     "terms": "banheiro"
@@ -4744,10 +4765,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Ponto de ônibus"
-                },
-                "highway/construction": {
-                    "name": "Via fechada",
-                    "terms": "via fechada"
                 },
                 "highway/corridor": {
                     "name": "Corredor interno",
@@ -7695,6 +7712,9 @@
                 "shop/wine": {
                     "name": "Loja de Vinhos",
                     "terms": "vinícola,adega"
+                },
+                "shop/yes": {
+                    "name": "Loja (tipo não especificado)"
                 },
                 "telecom": {
                     "name": "Recurso de telecomunicações"

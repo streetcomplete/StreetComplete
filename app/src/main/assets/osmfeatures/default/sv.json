@@ -419,6 +419,9 @@
                 "bunker_type": {
                     "label": "Typ"
                 },
+                "button_operated": {
+                    "label": "Tryckknapp"
+                },
                 "cables": {
                     "label": "Kablar",
                     "placeholder": "1, 2, 3..."
@@ -514,9 +517,8 @@
                     "placeholder": "ÅÅÅÅ-MM-DD"
                 },
                 "circumference": {
-                    "label": "Omkrets",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "omkrets,omfång,storlek,vidd"
+                    "label": "Omkrets (vid brösthöjd)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Kläder"
@@ -767,6 +769,9 @@
                         "yes": "Ja"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Deposition"
+                },
                 "depth": {
                     "label": "Djup (meter)"
                 },
@@ -809,7 +814,13 @@
                 },
                 "diameter": {
                     "label": "Diameter",
-                    "placeholder": "5 mm, 10 cm, 15 in…"
+                    "placeholder": "5 mm, 10 cm, 15 in…",
+                    "terms": "diameter,cirkelbredd,bredd,vidd"
+                },
+                "diameter_crown": {
+                    "label": "Diameter på trädkrona",
+                    "placeholder": "4 m, 9', …",
+                    "terms": "krondiameter,diameter på krona,trädkrona,diameter,träddiameter,trädstorlek"
                 },
                 "diet_multi": {
                     "label": "Typ av diet",
@@ -1018,6 +1029,9 @@
                 "fire_hydrant/diameter": {
                     "label": "Diameter (mm, tum eller bokstäver)",
                     "terms": "diameter,storlek"
+                },
+                "fire_hydrant/position": {
+                    "label": "Position"
                 },
                 "fire_hydrant/pressure": {
                     "label": "Tryck (bar)",
@@ -3800,10 +3814,6 @@
                     "name": "Amfiteater",
                     "terms": "amfiteater,utescen,utomhus,teater,utomhusteater,scen,läktare"
                 },
-                "amenity/toilets": {
-                    "name": "Toaletter",
-                    "terms": "toalett,klosett,vattenklosett,wc,avträde,toa,dass,utedass,bajamaja,torrklosett,hemlighus,klo,mugg,bekvämlighetsinrättning,skithus,baja-maja,badrum,latrin,vattentoalett"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Vattentoalett",
                     "terms": "vattentoalett,toalett,spoltoalett,badrum,wc"
@@ -4895,10 +4905,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Busshållplats"
-                },
-                "highway/construction": {
-                    "name": "Avstängd väg",
-                    "terms": "väg avstängd,avstängd väg,avstängd,stängd,vägbyggnad,väg under konstruktion,vägbygge"
                 },
                 "highway/corridor": {
                     "name": "Korridor inomhus",

@@ -463,11 +463,6 @@
                     "label": "Dátum poslednej kontroly",
                     "placeholder": "RRRR-MM-DD"
                 },
-                "circumference": {
-                    "label": "Obvod",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "obvod"
-                },
                 "clothes": {
                     "label": "Typ oblečenia"
                 },
@@ -3181,15 +3176,16 @@
                     "name": "Fotobúdka"
                 },
                 "amenity/place_of_worship": {
-                    "name": "Náboženské miesto",
-                    "terms": "kostol,kaplnka,chrám,katedrála,bazilika,dom boží,dom modlitieb,misia,mešita,minaret,synagóga,dóm,svätostánok,oratórium,fara,diecéza,stupa,chram,dom bozi,mesita,synagoga,dom,svatostanok,oratorium,dieceza"
+                    "name": "Miesto náboženských obradov",
+                    "terms": "miesto nabozenskych obradov,náboženské miesto,nabozenske miesto"
                 },
                 "amenity/place_of_worship/buddhist": {
                     "name": "Budhistický chrám",
                     "terms": "stupa,vihara,kláštor,pagoda,zendo,dojo,chrám,klastor,chram"
                 },
                 "amenity/place_of_worship/christian": {
-                    "name": "Katolícky kostol"
+                    "name": "Miesto kresťanskej bohoslužby",
+                    "terms": "miesto krestanskej bohosluzby"
                 },
                 "amenity/place_of_worship/christian/jehovahs_witness": {
                     "name": "Sála Kráľovstva Jehovových svedkov"
@@ -3449,10 +3445,6 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteáter"
-                },
-                "amenity/toilets": {
-                    "name": "Toalety",
-                    "terms": "záchod,záchody,toaleta,toalety,wc,zachod,zachody"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Splachovacie záchody"
@@ -4404,9 +4396,6 @@
                 "highway/bus_stop": {
                     "name": "Autobusová zastávka"
                 },
-                "highway/construction": {
-                    "name": "Uzavretá cesta"
-                },
                 "highway/corridor": {
                     "name": "Chodba v budove",
                     "terms": "chodba,hala"
@@ -4884,7 +4873,8 @@
                     "name": "Zóna železnice"
                 },
                 "landuse/recreation_ground": {
-                    "name": "Rekreačný areál"
+                    "name": "Rekreačný park (s ihriskami)",
+                    "terms": "rekreacny park,rekreačný areál,rekreacny areal"
                 },
                 "landuse/religious": {
                     "name": "Náboženský areál"
@@ -5174,8 +5164,12 @@
                     "name": "Sauna"
                 },
                 "leisure/slipway": {
-                    "name": "Spúšťanie lodí",
-                    "terms": "spustanie lodi,dok,lodenica,klzacka,kĺzačka"
+                    "name": "Lodný sklz",
+                    "terms": "lodny sklz,spúšťanie lodí,spustanie lodi,lodenica"
+                },
+                "leisure/slipway_drivable": {
+                    "name": "Lodný sklz (príjazdový)",
+                    "terms": "lodny sklz prijazdovy,spúšťanie lodí,spustanie lodi,lodenica"
                 },
                 "leisure/sports_centre": {
                     "name": "Športové centrum / Komplex"

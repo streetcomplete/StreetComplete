@@ -1610,9 +1610,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Anfiteatro"
                 },
-                "amenity/toilets": {
-                    "name": "Komun"
-                },
                 "amenity/townhall": {
                     "name": "Udaletxe"
                 },

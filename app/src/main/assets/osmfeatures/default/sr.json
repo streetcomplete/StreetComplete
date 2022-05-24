@@ -434,10 +434,6 @@
                     "label": "Последњи проверени датум",
                     "placeholder": "ГГГГ-ММ-ДД"
                 },
-                "circumference": {
-                    "label": "Кружница",
-                    "placeholder": "1 м, 20 цм, 30 инч…"
-                },
                 "clothes": {
                     "label": "Одећа"
                 },
@@ -2502,9 +2498,6 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Амфитеатар"
-                },
-                "amenity/toilets": {
-                    "name": "Тоалети"
                 },
                 "amenity/townhall": {
                     "name": "Градска кућа"

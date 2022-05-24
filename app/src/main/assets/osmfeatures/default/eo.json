@@ -513,11 +513,6 @@
                     "label": "Antaŭe kontrolita je",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "Perimetro (je 1,3 m)",
-                    "placeholder": "1 m, 20 cm…",
-                    "terms": "diametro,cirkonferenco,periferio"
-                },
                 "clothes": {
                     "label": "Vestaĵoj"
                 },
@@ -3824,10 +3819,6 @@
                     "name": "Bilet-kontrolilo",
                     "terms": "biletkontrolilo,kontrolilo,validigilo.bilettruilo,truilo"
                 },
-                "amenity/toilets": {
-                    "name": "Necesejo",
-                    "terms": "tualeto,urinejo,wc,latrino,maltrinkejo,pisejo"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Necesejo akvospruĉa",
                     "terms": "tualeto,urinejo,wc,latrino,pisejo"
@@ -4943,10 +4934,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Haltejo aŭtobusa"
-                },
-                "highway/construction": {
-                    "name": "Fermita vojo",
-                    "terms": "vojo fermita,dumkonstruado,riparata vojo"
                 },
                 "highway/corridor": {
                     "name": "Enkonstruaĵa koridoro (linio)",

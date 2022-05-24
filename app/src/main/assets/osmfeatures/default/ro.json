@@ -1057,9 +1057,6 @@
                 "amenity/theatre": {
                     "name": "Teatru"
                 },
-                "amenity/toilets": {
-                    "name": "Toaletă"
-                },
                 "amenity/townhall": {
                     "name": "Primărie"
                 },

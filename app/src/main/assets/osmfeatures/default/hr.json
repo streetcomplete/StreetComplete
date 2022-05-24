@@ -359,9 +359,6 @@
                 "charge_toll": {
                     "terms": "cestarina,naplata"
                 },
-                "circumference": {
-                    "terms": "opseg"
-                },
                 "clothes": {
                     "label": "Odjeća"
                 },
@@ -1909,10 +1906,6 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatar"
-                },
-                "amenity/toilets": {
-                    "name": "Toalet",
-                    "terms": "wc,toalet,nužnik,sanitarni čvor"
                 },
                 "amenity/townhall": {
                     "name": "Gradska vijećnica",

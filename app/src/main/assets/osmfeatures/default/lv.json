@@ -1469,10 +1469,6 @@
                     "name": "Teātris",
                     "terms": "aktieri,uzstāšanās,uzvedums"
                 },
-                "amenity/toilets": {
-                    "name": "Tualete",
-                    "terms": "toalete,labierīcības,pisuārs"
-                },
                 "amenity/townhall": {
                     "name": "Pilsētas dome"
                 },

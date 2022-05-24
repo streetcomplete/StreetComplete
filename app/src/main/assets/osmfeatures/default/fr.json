@@ -513,11 +513,6 @@
                     "label": "Dernière date de vérification",
                     "placeholder": "AAAA-MM-JJ"
                 },
-                "circumference": {
-                    "label": "Circonférence",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "circonférence,contour,longueur,rayon"
-                },
                 "clothes": {
                     "label": "Vêtements"
                 },
@@ -3823,10 +3818,6 @@
                     "name": "Composteur de billet",
                     "terms": "composteur,machine,composter,compostage,billet,tiquet,titre,transport,train,métro,bus"
                 },
-                "amenity/toilets": {
-                    "name": "Toilettes publiques",
-                    "terms": "toilettes,wc"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Toilettes à chasse d'eau",
                     "terms": "chasse d'eau,entraînement par liquide"
@@ -4942,10 +4933,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Arrêt de bus"
-                },
-                "highway/construction": {
-                    "name": "Route barrée",
-                    "terms": "route,travaux,barrée,fermée,construction"
                 },
                 "highway/corridor": {
                     "name": "Couloir intérieur",

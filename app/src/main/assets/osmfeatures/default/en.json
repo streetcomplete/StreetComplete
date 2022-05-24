@@ -307,9 +307,13 @@
                 "beauty": {
                     "label": "Services",
                     "options": {
-                        "nails": "Nails",
+                        "nails": "Manicure / Pedicure",
                         "tanning": "Tanning",
-                        "cosmetics": "Cosmetics"
+                        "cosmetics": "Cosmetics",
+                        "spa": "Day Spa",
+                        "skin_care": "Skin Care",
+                        "waxing": "Waxing",
+                        "hair_removal": "Hair Removal"
                     }
                 },
                 "bench": {
@@ -409,6 +413,9 @@
                 "bunker_type": {
                     "label": "Type"
                 },
+                "button_operated": {
+                    "label": "Call Button"
+                },
                 "cables": {
                     "label": "Cables",
                     "placeholder": "1, 2, 3..."
@@ -500,8 +507,8 @@
                     "placeholder": "YYYY-MM-DD"
                 },
                 "circumference": {
-                    "label": "Circumference",
-                    "placeholder": "1 m, 20 cm, 30 in…"
+                    "label": "Circumference (at Breast Height)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Clothes"
@@ -787,6 +794,10 @@
                     "label": "Devices",
                     "placeholder": "1, 2, 3..."
                 },
+                "diameter_crown": {
+                    "label": "Crown Diameter",
+                    "placeholder": "4 m, 9', …"
+                },
                 "diameter": {
                     "label": "Diameter",
                     "placeholder": "5 mm, 10 cm, 15 in…"
@@ -989,6 +1000,15 @@
                 "fire_hydrant/diameter": {
                     "label": "Diameter (mm, in, or letters)"
                 },
+                "fire_hydrant/position": {
+                    "label": "Position",
+                    "options": {
+                        "green": "Green/Grass",
+                        "lane": "Road Lane",
+                        "sidewalk": "Sidewalk",
+                        "parking_lot": "Parking Lot"
+                    }
+                },
                 "fire_hydrant/pressure": {
                     "label": "Pressure (bar)"
                 },
@@ -1022,6 +1042,29 @@
                 },
                 "flag/wikidata": {
                     "label": "Flag Wikidata"
+                },
+                "flashing_lights": {
+                    "label": "Flashing Lights",
+                    "options": {
+                        "button": {
+                            "title": "Button activated",
+                            "description": "Lights activated by pressing a button"
+                        },
+                        "always": {
+                            "title": "Always flashing",
+                            "description": "Lights are always flashing"
+                        },
+                        "sensor": {
+                            "title": "Sensor activated",
+                            "description": "Lights activated by a sensor"
+                        },
+                        "button;sensor": {
+                            "title": "Button and sensor activated",
+                            "description": "Lights activated by a sensor or by pressing a button"
+                        },
+                        "no": "No",
+                        "yes": "Yes"
+                    }
                 },
                 "floating": {
                     "label": "Floating"
@@ -1083,6 +1126,10 @@
                 "generator/type": {
                     "label": "Type"
                 },
+                "genus": {
+                    "label": "Genus",
+                    "placeholder": "Acer, Platanus, Quercus …"
+                },
                 "geyser/height": {
                     "label": "Eruption Height"
                 },
@@ -1137,6 +1184,13 @@
                 },
                 "highspeed": {
                     "label": "High-Speed"
+                },
+                "highway_cartpath": {
+                    "label": "Type of Path",
+                    "options": {
+                        "path": "Cartpath",
+                        "service": "Service Road"
+                    }
                 },
                 "highway": {
                     "label": "Type"
@@ -1372,6 +1426,9 @@
                 "liaison": {
                     "label": "Type"
                 },
+                "lifeguard": {
+                    "label": "Lifeguard"
+                },
                 "line_attachment": {
                     "label": "Line Attachment"
                 },
@@ -1493,11 +1550,11 @@
                     "label": "IMBA Trail Difficulty",
                     "placeholder": "Easy, Medium, Difficult...",
                     "options": {
-                        "0": "Easiest (white circle)",
-                        "1": "Easy (green circle)",
-                        "2": "Medium (blue square)",
-                        "3": "Difficult (black diamond)",
-                        "4": "Extremely Difficult (double black diamond)"
+                        "0": "⚪ Easiest (white circle)",
+                        "1": "🟢 Easy (green circle)",
+                        "2": "🟦 Medium (blue square)",
+                        "3": "◆ Difficult (black diamond)",
+                        "4": "◆◆ Extremely Difficult (double black diamond)"
                     }
                 },
                 "mtb/scale/uphill": {
@@ -2276,6 +2333,10 @@
                         "osm notes": "OpenStreetMap Notes"
                     }
                 },
+                "species": {
+                    "label": "Species",
+                    "placeholder": "Acer platanoides, Quercus robur, …"
+                },
                 "species/wikidata": {
                     "label": "Species Wikidata"
                 },
@@ -2470,6 +2531,10 @@
                 "target": {
                     "label": "Target"
                 },
+                "taxon": {
+                    "label": "Taxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …"
+                },
                 "telecom": {
                     "label": "Type"
                 },
@@ -2550,6 +2615,12 @@
                 "traffic_signals": {
                     "label": "Type"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Tactile Arrow"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Countdown Timer"
+                },
                 "traffic_signals/direction": {
                     "label": "Direction Affected",
                     "options": {
@@ -2557,6 +2628,27 @@
                         "backward": "Backward",
                         "both": "Both / All"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Tactile Map"
+                },
+                "traffic_signals/sound": {
+                    "label": "Sound Signals",
+                    "options": {
+                        "yes": "Yes",
+                        "no": "No",
+                        "locate": {
+                            "title": "Call Button Locator",
+                            "description": "There is a signal only for finding the call button"
+                        },
+                        "walk": {
+                            "title": "Walk Indicator",
+                            "description": "There is only a signal when walking is allowed"
+                        }
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Vibration"
                 },
                 "trail_visibility": {
                     "label": "Trail Visibility",
@@ -3749,8 +3841,8 @@
                     "terms": "ticket,validator,puncher"
                 },
                 "amenity/toilets": {
-                    "name": "Toilets",
-                    "aliases": "Restroom\nBathroom\nLavatory\nWater Closet",
+                    "name": "Restroom",
+                    "aliases": "Toilets\nBathroom\nLavatory\nWater Closet",
                     "terms": "outhouse,privy,head,latrine,wc,w.c."
                 },
                 "amenity/toilets/disposal/flush": {
@@ -4275,7 +4367,7 @@
                 },
                 "building/stable": {
                     "name": "Stable",
-                    "terms": "horse shelter"
+                    "terms": "horse barn,horse shed,horse shelter,horse stable"
                 },
                 "building/stadium": {
                     "name": "Stadium Building"
@@ -4635,7 +4727,8 @@
                     "terms": "hazard"
                 },
                 "golf/cartpath": {
-                    "name": "Golf Cartpath"
+                    "name": "Golf Cartpath",
+                    "terms": "cartpath"
                 },
                 "golf/clubhouse": {
                     "name": "Golf Clubhouse",
@@ -4658,7 +4751,8 @@
                     "name": "Lateral Water Hazard"
                 },
                 "golf/path": {
-                    "name": "Golf Walking Path"
+                    "name": "Golf Walking Path",
+                    "terms": "golf path"
                 },
                 "golf/rough": {
                     "name": "Rough"
@@ -5475,8 +5569,8 @@
                     "terms": "makerspace,hackspace,hacklab"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horseback Riding Facility",
-                    "terms": "equestrian,stable"
+                    "name": "Horseback Riding Center",
+                    "terms": "equestrian facility,equestrian,horse farm,horse park,horse ranch,horse riding center,horse riding facility,horse riding,horse stables,riding facility,stables"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink",
@@ -5562,8 +5656,9 @@
                     "terms": "cricket pitch"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Riding Arena",
-                    "terms": "dressage,equestrian,horse,horseback,riding"
+                    "name": "Horseback Riding Arena",
+                    "aliases": "Horseback Riding Ring",
+                    "terms": "arena,dressage arena,dressage ring,dressage,equestrian,horse riding ring,horse riding,horse,horseback riding,horseback,jumping arena,jumping ring,longeing,pen,riding ring,riding,ring,round pen"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Field Hockey Pitch",
@@ -5584,6 +5679,10 @@
                 "leisure/pitch/netball": {
                     "name": "Netball Court",
                     "terms": "basketball"
+                },
+                "leisure/pitch/padel": {
+                    "name": "Padel Court",
+                    "terms": "tennis,paddle"
                 },
                 "leisure/pitch/paintball": {
                     "name": "Paintball Field"
@@ -5625,6 +5724,10 @@
                 "leisure/pitch/tennis": {
                     "name": "Tennis Court",
                     "terms": "tennis net"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "Tetherball Court",
+                    "terms": "tether tennis,swingball"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Volleyball Court",
@@ -5693,8 +5796,9 @@
                     "terms": "bicycle track,bicycling track,cycle racetrack,velodrome"
                 },
                 "leisure/track/horse_racing": {
-                    "name": "Horse Racing Track",
-                    "terms": "equestrian race track,horse race betting,horseracing,horsetrack,horse racetrack"
+                    "name": "Horse Racetrack",
+                    "aliases": "Horse Racing Track",
+                    "terms": "equestrian race track,horse race betting,horse race course,horse racecourse,horse raceway,horse racing,horseracing,horsetrack,race course,racecourse,raceway"
                 },
                 "leisure/track/running": {
                     "name": "Running Track",
@@ -5967,7 +6071,7 @@
                 },
                 "man_made/wastewater_plant": {
                     "name": "Wastewater Plant",
-                    "terms": "sewage*,water treatment plant,reclamation plant"
+                    "terms": "sewage*,water treatment plant,wastewater treatment works,wastewater treatment plant,wwtp,reclamation plant"
                 },
                 "man_made/water_tap": {
                     "name": "Water Tap",
@@ -6544,6 +6648,9 @@
                 "playground/cushion": {
                     "name": "Bouncy Cushion"
                 },
+                "playground/hopscotch": {
+                    "name": "Hopscotch"
+                },
                 "playground/horizontal_bar": {
                     "name": "Play Horizontal Bar",
                     "terms": "chin-up bar,high bar,pull-up bar"
@@ -6571,7 +6678,7 @@
                 "playground/springy": {
                     "name": "Spring Rider",
                     "aliases": "Spring Rocker",
-                    "terms": "springy rocker"
+                    "terms": "rocking horse,spring horse,spring toy,springy"
                 },
                 "playground/structure": {
                     "name": "Play Structure",
@@ -7952,7 +8059,8 @@
                     "name": "Hiking Route"
                 },
                 "type/route/horse": {
-                    "name": "Horse Riding Route"
+                    "name": "Horseback Riding Route",
+                    "terms": "horse riding route,horse trail,riding route,trail riding"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"

@@ -419,6 +419,9 @@
                 "bunker_type": {
                     "label": "Type"
                 },
+                "button_operated": {
+                    "label": "Oproepknop"
+                },
                 "cables": {
                     "label": "Electrokabels",
                     "placeholder": "1, 2, 3 …"
@@ -514,9 +517,8 @@
                     "placeholder": "JJJJ-MM-DD"
                 },
                 "circumference": {
-                    "label": "Omtrek stam",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "omtrek"
+                    "label": "Omtrek (op borsthoogte)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Kleding"
@@ -767,6 +769,9 @@
                         "yes": "Ja"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Borg"
+                },
                 "depth": {
                     "label": "Diepte (in meters)"
                 },
@@ -810,6 +815,10 @@
                 "diameter": {
                     "label": "Diameter",
                     "placeholder": "5 mm, 10 cm, 15 in…"
+                },
+                "diameter_crown": {
+                    "label": "Diameter van de kroon",
+                    "placeholder": "4 m, 9', …"
                 },
                 "diet_multi": {
                     "label": "Soorten diëten",
@@ -1019,6 +1028,16 @@
                     "label": "Diameter van aankoppelingspunt (mm of \" met eenheid, of letter)",
                     "terms": "doorsnee,doorsnede"
                 },
+                "fire_hydrant/position": {
+                    "label": "Plaats",
+                    "options": {
+                        "green": "Groen/gras",
+                        "lane": "Weg",
+                        "parking_lot": "Parkeerplaats",
+                        "sidewalk": "Trottoir"
+                    },
+                    "terms": "locatie,plek,positie"
+                },
                 "fire_hydrant/pressure": {
                     "label": "Druk (bar)",
                     "terms": "druk in bar,bar"
@@ -1054,6 +1073,30 @@
                 },
                 "flag/wikidata": {
                     "label": "Vlag Wikidata"
+                },
+                "flashing_lights": {
+                    "label": "Knipperlichten",
+                    "options": {
+                        "always": {
+                            "description": "Lichten knipperen altijd",
+                            "title": "Altijd knipperend"
+                        },
+                        "button": {
+                            "description": "Lichten geactiveerd door indrukken van een knop",
+                            "title": "Met een knop geactiveerd"
+                        },
+                        "button;sensor": {
+                            "description": "Lichten geactiveerd door een sensor of door het indrukken van een knop",
+                            "title": "Geactiveerd door knop en sensor"
+                        },
+                        "no": "Nee",
+                        "sensor": {
+                            "description": "Lichten geactiveerd door een sensor",
+                            "title": "Door een sensor geactiveerd"
+                        },
+                        "yes": "Ja"
+                    },
+                    "terms": "knipperen,knipperlamp"
                 },
                 "floating": {
                     "label": "Drijvend"
@@ -1117,6 +1160,10 @@
                 },
                 "generator/type": {
                     "label": "Type"
+                },
+                "genus": {
+                    "label": "Geslacht",
+                    "placeholder": "Acer, Platanus, Quercus …"
                 },
                 "geyser/height": {
                     "label": "Uitbarstingshoogte"
@@ -1424,6 +1471,9 @@
                 },
                 "liaison": {
                     "label": "Type"
+                },
+                "lifeguard": {
+                    "label": "Lifeguard"
                 },
                 "line_attachment": {
                     "label": "Lijnverbinding (nutsvoorzieningen)"
@@ -2368,6 +2418,11 @@
                     },
                     "terms": "bronnen,refrentie,opzoeking"
                 },
+                "species": {
+                    "label": "Soort",
+                    "placeholder": "Acer platanoides, Quercus robur, …",
+                    "terms": "diersoort"
+                },
                 "species/wikidata": {
                     "label": "Soort Wikidata"
                 },
@@ -2569,6 +2624,10 @@
                 "target": {
                     "label": "Doelwit"
                 },
+                "taxon": {
+                    "label": "Taxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …"
+                },
                 "telecom": {
                     "label": "Type"
                 },
@@ -2654,6 +2713,14 @@
                 "traffic_signals": {
                     "label": "Type"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Voelbare pijl",
+                    "terms": "blind,pijl,richting,voelen,voelbaar,oversteken"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Afteltimer",
+                    "terms": "aftellen,afteller,seconden,tijd,klok,wachttijd"
+                },
                 "traffic_signals/direction": {
                     "label": "Richting beïnvloed",
                     "options": {
@@ -2661,6 +2728,28 @@
                         "both": "Beide / Alle",
                         "forward": "Voorwaarts (in richting van de getekende lijn)"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Voelbare kaart",
+                    "terms": "minikaart,blind,oversteken"
+                },
+                "traffic_signals/sound": {
+                    "label": "Geluidssignalen",
+                    "options": {
+                        "locate": {
+                            "description": "Er is alleen een signaal om de oproepknop te vinden",
+                            "title": "Oproepknopzoeker"
+                        },
+                        "no": "Nee",
+                        "walk": {
+                            "description": "Er is alleen een signaal wanneer doorlopen is toegestaan",
+                            "title": "Loopindicator"
+                        },
+                        "yes": "Ja"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Trilling"
                 },
                 "trail_visibility": {
                     "label": "Zichtbaarheid van de weg",
@@ -3742,8 +3831,8 @@
                     "name": "Stempelautomaat"
                 },
                 "amenity/toilets": {
-                    "name": "Toiletten",
-                    "terms": "wc,wc's,privaat,sanitaire,urinoir,w.c.,plee"
+                    "name": "Toilet",
+                    "terms": "wc,w.c.,plee"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Doortrektoiletten"
@@ -3763,6 +3852,10 @@
                 },
                 "amenity/toy_library": {
                     "name": "Spelotheek"
+                },
+                "amenity/trolley_bay": {
+                    "name": "Winkelwagenstalling",
+                    "terms": "opstelplaats,winkelwagen,karretjes,winkelkar,overkapping,terugbrengen"
                 },
                 "amenity/university": {
                     "name": "Campus van universiteit of hogeschool",
@@ -4810,7 +4903,8 @@
                     "name": "Bushalte"
                 },
                 "highway/construction": {
-                    "name": "Afgesloten weg (werkzaamheden)"
+                    "name": "Weg in aanbouw",
+                    "terms": "wegwerkzaamheden,gesloten weg,werk aan de weg"
                 },
                 "highway/corridor": {
                     "name": "Gang in gebouw",
@@ -5613,6 +5707,10 @@
                 "leisure/pitch/netball": {
                     "name": "Netballveld"
                 },
+                "leisure/pitch/padel": {
+                    "name": "Padelveld",
+                    "terms": "tennis,padel,veld,speelveld"
+                },
                 "leisure/pitch/paintball": {
                     "name": "Paintballveld",
                     "terms": "paintball,verfbal"
@@ -5652,6 +5750,10 @@
                 "leisure/pitch/tennis": {
                     "name": "Tennisveld",
                     "terms": "tennisbaan,tennisterrein"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "Touwbalveld",
+                    "terms": "touwbal,swingbal,tuierbal,touwtje"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Volleybalveld",
@@ -5857,6 +5959,10 @@
                 },
                 "man_made/mast/communication/television": {
                     "name": "Televisiezendmast"
+                },
+                "man_made/mast/lighting": {
+                    "name": "Lichtmast",
+                    "terms": "stadionverlichting,flood light,sportverlichting,stadion,vloedlicht"
                 },
                 "man_made/mineshaft": {
                     "name": "Mijnschacht"
@@ -6506,6 +6612,10 @@
                 "playground/cushion": {
                     "name": "Springkussen",
                     "terms": "springkussen"
+                },
+                "playground/hopscotch": {
+                    "name": "Hinkelen",
+                    "terms": "hinkelpad"
                 },
                 "playground/horizontal_bar": {
                     "name": "Rekstok als speeltuig",

@@ -511,11 +511,6 @@
                     "label": "تاريخ آخر فحص",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "قطر علو الصدر",
-                    "placeholder": "1مل(m)، 20سم(cm)، 30 بوصة(in)",
-                    "terms": "قطر علو الصدر"
-                },
                 "clothes": {
                     "label": "ملابس"
                 },
@@ -3790,10 +3785,6 @@
                     "name": "مدقق التذاكر",
                     "terms": "مدقق التذاكر"
                 },
-                "amenity/toilets": {
-                    "name": "دورات مياه",
-                    "terms": "دورات مياه,مراحيض,حمامات"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "مرحاض له نظام شطف",
                     "terms": "مرحاض له سيفون,مرحاض يتخلص من نفاياته بالماء"
@@ -4888,10 +4879,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "مسار وقوف الحافلات"
-                },
-                "highway/construction": {
-                    "name": "طريق مغلق (تحت الإنشاء)",
-                    "terms": "طريق مغلق,تحت الإنشاء"
                 },
                 "highway/corridor": {
                     "name": "ممر داخل مبنى",
