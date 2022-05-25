@@ -512,11 +512,6 @@
                     "label": "最終確認日",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "円周",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "円周,外周,周囲"
-                },
                 "clothes": {
                     "label": "服"
                 },
@@ -3721,10 +3716,6 @@
                     "name": "野外劇場",
                     "terms": "野外劇場,円形演技場,ひな壇式客席,階段式観覧席"
                 },
-                "amenity/toilets": {
-                    "name": "トイレ",
-                    "terms": "トイレ,便所,公園,公衆トイレ"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "水洗トイレ",
                     "terms": "水洗トイレ,水洗式,トイレ,お手洗い,洗面所,便所"
@@ -4825,10 +4816,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "バス停"
-                },
-                "highway/construction": {
-                    "name": "閉鎖道路（建設中）",
-                    "terms": "建設中の道路,通行止め,通行止,道路,閉鎖,閉鎖道路（建設中）"
                 },
                 "highway/corridor": {
                     "name": "建物内の通り抜け道路",

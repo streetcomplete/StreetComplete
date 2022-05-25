@@ -449,10 +449,6 @@
                     "label": "Data d'última revisió ",
                     "placeholder": "AAAA-MM-DD"
                 },
-                "circumference": {
-                    "label": "Circumferència ",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "Roba"
                 },
@@ -2875,10 +2871,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatre"
                 },
-                "amenity/toilets": {
-                    "name": "Lavabos",
-                    "terms": "lavabos,serveis,lavabos públics,w.c"
-                },
                 "amenity/toilets/portable": {
                     "name": "Lavabo portàtil"
                 },
@@ -3515,9 +3507,6 @@
                 "highway/bus_stop": {
                     "name": "Parada d'autobús",
                     "aliases": "Parada de bus"
-                },
-                "highway/construction": {
-                    "name": "Carretera tallada"
                 },
                 "highway/corridor": {
                     "name": "Corredor interior"

@@ -419,6 +419,9 @@
                 "bunker_type": {
                     "label": "Typ"
                 },
+                "button_operated": {
+                    "label": "Ruftaste"
+                },
                 "cables": {
                     "label": "Kabel",
                     "placeholder": "1, 2, 3..."
@@ -514,9 +517,7 @@
                     "placeholder": "JJJJ-MM-TT"
                 },
                 "circumference": {
-                    "label": "Umfang",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "umfang,stammumfang"
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Kleidung"
@@ -767,6 +768,9 @@
                         "yes": "Ja"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Pfand"
+                },
                 "depth": {
                     "label": "Tiefe (Meter)"
                 },
@@ -810,6 +814,9 @@
                 "diameter": {
                     "label": "Durchmesser",
                     "placeholder": "5 mm, 10 cm, 15 dm ..."
+                },
+                "diameter_crown": {
+                    "placeholder": "4 m, 9', …"
                 },
                 "diet_multi": {
                     "label": "Ernährungsbesonderheiten",
@@ -1019,6 +1026,16 @@
                     "label": "Durchmesser (mm, in oder Buchstaben)",
                     "terms": "durchmesser (mm,inch oder buchstaben)"
                 },
+                "fire_hydrant/position": {
+                    "label": "Position",
+                    "options": {
+                        "green": "Begrünte/Bewachsene Fläche",
+                        "lane": "Straßenfläche",
+                        "parking_lot": "Stellplatzfläche",
+                        "sidewalk": "Bürgersteig"
+                    },
+                    "terms": "standort,lage"
+                },
                 "fire_hydrant/pressure": {
                     "label": "Druck (bar)",
                     "terms": "druck (bar)"
@@ -1054,6 +1071,12 @@
                 },
                 "flag/wikidata": {
                     "label": "Flagge in Wikidata"
+                },
+                "flashing_lights": {
+                    "options": {
+                        "no": "Nein",
+                        "yes": "Ja"
+                    }
                 },
                 "floating": {
                     "label": "Schwimmend"
@@ -1424,6 +1447,9 @@
                 },
                 "liaison": {
                     "label": "Typ"
+                },
+                "lifeguard": {
+                    "label": "Rettungsschwimmer"
                 },
                 "line_attachment": {
                     "label": "Leitungsbefestigung"
@@ -2657,6 +2683,14 @@
                 "traffic_signals": {
                     "label": "Typ"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Tastbarer Pfeil",
+                    "terms": "taktiler pfeil"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Countdown Timer",
+                    "terms": "countdown-timer"
+                },
                 "traffic_signals/direction": {
                     "label": "Betroffene Richtung",
                     "options": {
@@ -2664,6 +2698,28 @@
                         "both": "Beide / Alle",
                         "forward": "Vorwärts"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Taktile Minikarte",
+                    "terms": "tastbare karte,blindenkarte,taktile karte,minikarte"
+                },
+                "traffic_signals/sound": {
+                    "label": "Akustiksignal",
+                    "options": {
+                        "locate": {
+                            "description": "Es gibt nur ein Signal zum Auffinden der Ruftaste",
+                            "title": "Ruftastensucher"
+                        },
+                        "no": "Nein",
+                        "walk": {
+                            "description": "Es gibt nur ein Signal, wenn das Gehen erlaubt ist.",
+                            "title": "Geh-Anzeiger"
+                        },
+                        "yes": "Ja"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Vibration"
                 },
                 "trail_visibility": {
                     "label": "Erkennbarkeit des Weges",
@@ -3829,7 +3885,8 @@
                 },
                 "amenity/toilets": {
                     "name": "Toilette",
-                    "terms": "bad,toilette,wc"
+                    "terms": "toiletten,wc,klo,klosett,urinal",
+                    "aliases": "WC"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Wassertoilette",
@@ -3854,6 +3911,10 @@
                 "amenity/toy_library": {
                     "name": "Spielzeugbibliothek",
                     "terms": "spielzeugbibliothek"
+                },
+                "amenity/trolley_bay": {
+                    "name": "Abstellplatz für Einkaufswagen",
+                    "terms": "einkaufswagenabstellplatz,einkaufswagen,einkaufswagenhaus,einkaufswagenhäuschen,rückgabe,abstellplatz,stellplatz"
                 },
                 "amenity/university": {
                     "name": "Universitätsgelände",
@@ -4948,8 +5009,8 @@
                     "name": "Bushaltestelle (Wartebereich)"
                 },
                 "highway/construction": {
-                    "name": "Straßensperrung",
-                    "terms": "bauarbeiten,geschlossen,gesperrt,straßenbau,straßenarbeiten,wegarbeiten"
+                    "name": "Straße in Bau",
+                    "terms": "baustelle,straßensperrung,straßenbauarbeiten,gesperrte straße,bauarbeiten"
                 },
                 "highway/corridor": {
                     "name": "Gang/Korridor im Innenraum",
@@ -5803,6 +5864,10 @@
                     "name": "Netballfeld",
                     "terms": "netballfeld"
                 },
+                "leisure/pitch/padel": {
+                    "name": "Padelplatz",
+                    "terms": "padel,tennis,padel-tennis,pádel,paddle-tennis,padelfeld"
+                },
                 "leisure/pitch/paintball": {
                     "name": "Paintball Gelände",
                     "terms": "paintball,gotcha,supair"
@@ -5846,6 +5911,10 @@
                 "leisure/pitch/tennis": {
                     "name": "Tennisplatz",
                     "terms": "tennisplatz"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "Tetherballplatz",
+                    "terms": "tetherball,tetherballfeld"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Volleyballplatz",
@@ -6077,6 +6146,11 @@
                 "man_made/mast/communication/television": {
                     "name": "Fernsehfunkturm",
                     "terms": "antenne,fernsehfunkmast,verankerter mast,fernsehfunkturm"
+                },
+                "man_made/mast/lighting": {
+                    "name": "Beleuchtungsmast",
+                    "terms": "flutlicht,stadionbeleuchtung,beleuchtung,lichtmast,sportplatzbeleuchtung,flutlichtanlage",
+                    "aliases": "Flutlichtmast"
                 },
                 "man_made/mineshaft": {
                     "name": "Bergmännischer Schacht (vertikal)",
@@ -6808,6 +6882,11 @@
                 "playground/cushion": {
                     "name": "Hüpfkissen",
                     "terms": "hüpfkissen"
+                },
+                "playground/hopscotch": {
+                    "name": "Hüpfspiel",
+                    "terms": "hüpfspiel,hüpffeld,hüpffelder,himmel und hölle,hopse,tempelhupfen,tempelhüpfen,häuslhupfa,humpelchen,hippelheisje,reise zum mond,paradiesspiel,hinkekasten,hickelkasten,hüpfekästchen,huppekästechen hüppekästchen,hickelsches,hickeln,hasehoppeln,hipferihoppedi,hickerles,hinkepinke,hinkeln,hüpfschnecke,schneckenhüpfen",
+                    "aliases": "Himmel und Hölle"
                 },
                 "playground/horizontal_bar": {
                     "name": "Klimmzugstange",

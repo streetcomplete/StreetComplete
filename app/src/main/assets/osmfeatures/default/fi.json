@@ -427,10 +427,6 @@
                     "label": "Tarkistettu viimeksi",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "Ympärysmitta",
-                    "placeholder": "1 m, 20 cm, 30 in..."
-                },
                 "clothes": {
                     "label": "Vaatteet"
                 },
@@ -3123,10 +3119,6 @@
                     "name": "Amfiteatteri",
                     "terms": "ulkoilmateatteri,ulkoteatteri,ulko,ulkona,ympyrä,kaari,puoliympyrä,puolikaari,muotoinen"
                 },
-                "amenity/toilets": {
-                    "name": "WC",
-                    "terms": "vessa,käymälä,saniteetti,saniteettitila,sanitaatio,pisuaari,pönttö,wc-istuin,wc-pönttö,pesuhuone,pesuallas,tarpeet,uloste,ulostaminen,virtsa,virtsaaminen"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Vesivessa"
                 },
@@ -3953,9 +3945,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "Linja-autopysäkki"
-                },
-                "highway/construction": {
-                    "name": "Suljettu tie"
                 },
                 "highway/corridor": {
                     "name": "Sisäkäytävä",

@@ -415,10 +415,6 @@
                     "label": "마지막으로 확인한 날짜",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "둘레",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "옷"
                 },
@@ -2956,10 +2952,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "원형극장"
                 },
-                "amenity/toilets": {
-                    "name": "화장실",
-                    "terms": "화장실,아름자리"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "수세식 화장실"
                 },
@@ -3866,9 +3858,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "버스 정류소"
-                },
-                "highway/construction": {
-                    "name": "폐쇄된 도로"
                 },
                 "highway/corridor": {
                     "name": "실내 복도",
@@ -6543,12 +6532,40 @@
                     "name": "우회전 금지",
                     "terms": "우회전 금지"
                 },
+                "type/restriction/no_straight_on": {
+                    "name": "직진 금지",
+                    "terms": "직진 금지"
+                },
+                "type/restriction/no_u_turn": {
+                    "name": "U턴 금지",
+                    "terms": "u턴 금지"
+                },
+                "type/restriction/only_left_turn": {
+                    "name": "좌회전만 허용",
+                    "terms": "좌회전만 허용"
+                },
+                "type/restriction/only_right_turn": {
+                    "name": "우회전만 허용",
+                    "terms": "우회전만 허용"
+                },
+                "type/restriction/only_straight_on": {
+                    "name": "직진만 허용",
+                    "terms": "직진만 허용"
+                },
+                "type/restriction/only_u_turn": {
+                    "name": "U턴만 허용",
+                    "terms": "u턴만 허용"
+                },
                 "type/route": {
                     "name": "노선",
                     "terms": "경로,노선"
                 },
                 "type/route/aerialway": {
                     "name": "항공 노선"
+                },
+                "type/route/bicycle": {
+                    "name": "자전거 노선",
+                    "terms": "자전거 노선"
                 },
                 "type/route/bus": {
                     "name": "버스 노선",
@@ -6559,6 +6576,10 @@
                 },
                 "type/route/ferry": {
                     "name": "페리 노선"
+                },
+                "type/route/foot": {
+                    "name": "도보 노선",
+                    "terms": "도보 노선"
                 },
                 "type/route/hiking": {
                     "name": "하이킹 노선"

@@ -498,11 +498,6 @@
                     "label": "最近检查时间",
                     "placeholder": "年年年年-月月-日日"
                 },
-                "circumference": {
-                    "label": "周长",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "周长,圆周"
-                },
                 "clothes": {
                     "label": "服饰"
                 },
@@ -2173,7 +2168,7 @@
                     "options": {
                         "alley": "巷",
                         "drive-through": "免下车",
-                        "driveway": "私人车道",
+                        "driveway": "私家车道",
                         "emergency_access": "消防通道",
                         "parking_aisle": "停车场通道"
                     }
@@ -3653,10 +3648,6 @@
                     "name": "圆形剧场",
                     "terms": "圆形剧场,露天,竞技场,圆形露天剧场,阶梯教室"
                 },
-                "amenity/toilets": {
-                    "name": "厕所",
-                    "terms": "厕所,公厕,洗手间,卫生间,撤硕"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "冲水式厕所",
                     "terms": "厕所,公厕,洗手间,公共卫生间,马桶,wc"
@@ -3687,7 +3678,8 @@
                     "name": "真空清洁站"
                 },
                 "amenity/vehicle_inspection": {
-                    "name": "车辆检查站"
+                    "name": "车辆检验站",
+                    "terms": "机动车检测站;机动车检测场;车辆检测;验车;年检"
                 },
                 "amenity/vending_machine": {
                     "name": "自动售货机",
@@ -4154,7 +4146,7 @@
                     "terms": "商业建筑,百货,购物中心,商场,零售业建筑"
                 },
                 "building/roof": {
-                    "name": "开放式建筑",
+                    "name": "顶棚建筑",
                     "terms": "大棚,屋顶,上盖,开放式建筑"
                 },
                 "building/ruins": {
@@ -4672,10 +4664,6 @@
                 "highway/bus_stop": {
                     "name": "公交站"
                 },
-                "highway/construction": {
-                    "name": "关闭的道路",
-                    "terms": "关闭,封闭,施工,在建,绕道,封路,修路,挖路"
-                },
                 "highway/corridor": {
                     "name": "室内走廊",
                     "terms": "室内走廊,室内步行街"
@@ -4876,7 +4864,7 @@
                     "terms": "免下车,免下车餐馆,免下车银行"
                 },
                 "highway/service/driveway": {
-                    "name": "车道",
+                    "name": "车道;私家;私人;车库",
                     "terms": "车道"
                 },
                 "highway/service/emergency_access": {
@@ -5631,8 +5619,8 @@
                     "terms": "十字架"
                 },
                 "man_made/cutline": {
-                    "name": "树林分界线",
-                    "terms": "分界线,防火障"
+                    "name": "森林伐带",
+                    "terms": "分界线,防火带,林,线"
                 },
                 "man_made/dovecote": {
                     "name": "鸽舍"

@@ -450,11 +450,6 @@
                     "label": "Sidst kontrolleret",
                     "placeholder": "ÅÅÅÅ-MM-DD"
                 },
-                "circumference": {
-                    "label": "Omkreds",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "omkreds,cirkel,rund"
-                },
                 "clothes": {
                     "label": "Beklædning"
                 },
@@ -2789,10 +2784,6 @@
                 "amenity/theatre": {
                     "name": "Teater",
                     "terms": "teater,revy"
-                },
-                "amenity/toilets": {
-                    "name": "Toiletter",
-                    "terms": "toiletter,wc"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Vandskyllende toiletter",

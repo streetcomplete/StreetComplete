@@ -59,6 +59,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Μπορείτε να αφήσετε ένα δημόσιο σημείωμα στη θέση αυτή, το οποίο άλλοι χαρτογράφοι μπορούν να σχολιάσουν και ελπίζουμε να επιλύσουν ή εναλλακτικά απλώς να αποκρύψετε την αναζήτηση μόνο για εσάς"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"ΟΚ"</string>
 
     <!-- Fuzzy -->
@@ -1418,6 +1420,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συνήθως απαιτείται να ελέγχετε ολόκληρη την οδό για πινακίδες ορίων ταχύτητας και όχι μόνο για το επισημασμένο τμήμα. Αυτό μπορεί μερικές φορές να είναι αρκετό απλά για να λύσει μια μόνο αναζήτηση."</string>
 
     <!-- Fuzzy -->
@@ -1690,7 +1694,11 @@
     <string name="link_category_goodies_title">"Καλούδια"</string>
     <string name="link_category_goodies_description">"Ενδιαφέροντα σχετικά με το χάρτη πράγματα που μπορείτε να δοκιμάσετε"</string>
     <string name="link_cyclosm_description">"Ένας χάρτης για ποδηλάτες"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"Ένας χάρτης για την εύρεση θέσεων προσβάσιμων από αναπηρικά αμαξίδια"</string>
+
+    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"Ένας χάρτης που δείχνει τα κτήρια 3D"</string>
     <string name="link_openvegemap_description">"Ανακαλύψτε χορτοφαγικά και βίγκαν εστιατόρια στην πόλη σας"</string>
     <string name="link_touch_mapper_description">"Δημιουργήστε απτούς χάρτες εύκολα για οποιαδήποτε διεύθυνση"</string>
@@ -1711,8 +1719,12 @@
     <string name="link_welcome_mat_description">"Γενικές πληροφορίες σχετικά με το OpenStreetMap και τον τρόπο συνεργασίας με το OSM ως οργανισμό"</string>
     <string name="link_mapillary_description">"Μια υπηρεσία και μια εφαρμογή για κοινή χρήση φωτογραφιών σε επίπεδο δρόμου, με σαφή άδεια να τις χρησιμοποιείτε για τη συνεισφορά στο OSM"</string>
     <string name="link_openstreetcam_description">"Μια υπηρεσία και μια εφαρμογή για κοινή χρήση φωτογραφιών σε επίπεδο δρόμου, με σαφή άδεια να τις χρησιμοποιείτε για τη συνεισφορά στο OSM"</string>
+
+    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"Πλοήγηση στροφή με στροφή για χρήστες αναπηρικών αμαξιδίων"</string>
     <string name="link_nominatim_description">"Ο γεωκωδικοποιητής για δεδομένα OSM, που χρησιμοποιείται από πολλές άλλες υπηρεσίες"</string>
+
+    <!-- Fuzzy -->
     <string name="link_city_roads_description">"Δώστε όλους τους δρόμους μιας πόλης, για εκτύπωση σε μπλουζάκια, κούπες,…"</string>
     <string name="link_myosmatic_description">"Δημιουργήστε εκτυπώσιμους χάρτες πόλεων με λίγα εύκολα βήματα, προαιρετικά με έναν κατάλογο οδών"</string>
     <string name="link_brouter_description">"Ίσως η καλύτερη μηχανή δρομολόγησης για ποδηλάτες"</string>
@@ -1728,6 +1740,8 @@
     <string name="link_weeklyosm_description">"Το εβδομαδιαίο ιστολόγιο ειδήσεων σχετικά με το τι συμβαίνει στον κόσμο του OpenStreetMap"</string>
     <string name="link_figuregrounder_description">"Δημιουργήστε αφίσες διαγράμματος του εδαφικού σχήματος μιας πόλης ή γειτονιάς"</string>
     <string name="achievement_first_edit_title">"Η Πρώτη Αναζήτηση Επιλύθηκε"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Καλώς ήλθατε στην κοινότητα OpenStreetMap! Στην οθόνη του προφίλ σας, μπορείτε να δείτε περισσότερες πληροφορίες για κάθε τύπο αναζήτησης που επιλύσατε."</string>
     <string name="achievement_surveyor_title">"Επιθεωρητής"</string>
     <string name="achievement_surveyor_solved_X">"Επιλύσατε %d αναζητήσεις! Συνεχίστε να ξεκλειδώνετε περισσότερα επιτεύγματα που περιέχουν συνδέσμους προς το OSM και άλλες εφαρμογές και έργα που σχετίζονται με το χάρτη!"</string>
@@ -1738,8 +1752,12 @@
     <string name="achievement_wheelchair_title">"Κινητικότητα"</string>
     <string name="achievement_wheelchair_solved_X">"Επιλύσατε %d αναζητήσεις που βοηθούν τους χρήστες αναπηρικών αμαξιδίων να μετακινούνται στην πόλη!"</string>
     <string name="achievement_postman_title">"Ταχυδρόμος"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Βοηθήσατε να εντοπίσετε %d διευθύνσεις! Αυτά τα δεδομένα είναι απαραίτητα όχι μόνο για τον ταχυδρόμο αλλά και για οποιοδήποτε σύστημα πλοήγησης."</string>
     <string name="achievement_building_title">"Πολυώροφο"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Επιλύσατε %d αποστολές σχετικές με κτήρια. Λάβετε υπόψη ότι αυτή η εφαρμογή ζητά τον αριθμό οικίας ενός κτηρίου μόνο αφού προσδιοριστεί ο τύπος του."</string>
     <string name="achievement_blind_title">"Έκτη Αίσθηση"</string>
     <string name="achievement_blind_solved_X">"Επιλύσατε %d αναζητήσεις που είναι ενδιαφέρουσες για άτομα με προβλήματα όρασης."</string>
@@ -1816,6 +1834,8 @@
     <string name="quest_openingHours_add_off_days">"Προσθέστε ρεπό"</string>
     <string name="quest_openingHours_off_day">"Ρεπό"</string>
     <string name="quest_openingHours_unspecified_range">"Δεν διευκρινίζεται"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"Είναι ακόμα αυτή η τοποθεσία του ποδηλατόδρομου εδώ;"</string>
     <string name="pref_title_resurvey_intervals">"Διαστήματα επανεξέτασης"</string>
     <string name="resurvey_intervals_less_often">"Ρωτήστε λιγότερο συχνά"</string>
@@ -1836,6 +1856,8 @@
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Έχουν αυτά τα φανάρια ψηλαφιστή ένδειξη για τυφλούς ότι είναι ασφαλές να διασχίσουν τον δρόμο;"</string>
     <string name="quest_traffic_signals_vibrate_description">"Συμβουλή: Συχνά πρόκειται για ένα δονούμενο κουμπί ή περιστρεφόμενο κώνο στην κάτω πλευρά της θήκης του κουμπιού του φαναριού."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"μικρή μονοκατοικία (καλοκαιρινή κατοικία, εξοχικό, σπιτάκι …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Ποια εμπόδια χρησιμοποιούνται σε αυτήν τη σιδηροδρομική διάβαση;"</string>
     <string name="quest_railway_crossing_barrier_none2">"Χωρίς εμπόδια"</string>
@@ -1851,10 +1873,16 @@
     <string name="quest_charging_station_operator_title">"Ποιος είναι ο διαχειριστής αυτού του σταθμού φόρτισης;"</string>
     <string name="link_indoorequal_description">"Ανακαλύψτε εσωτερικούς χάρτες εμπορικών κέντρων, σιδηροδρομικών σταθμών κ.λπ."</string>
     <string name="achievement_rare_title">"Κυνήγι θησαυρού"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Βρήκατε και επιλύσατε %d αναζητήσεις που ολοκληρώνονται πολύ σπάνια, συγχαρητήρια!"</string>
     <string name="achievement_citizen_title">"Πολίτης"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"Λύσατε %d αναζητήσεις χρήσιμες για την καθημερινή ζωή στην πόλη!"</string>
     <string name="achievement_outdoors_title">"Ύπαιθρο"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Λύσατε %d αναζητήσεις που είναι χρήσιμες για άτομα της υπαίθρου!"</string>
     <string name="quest_pedestrian_crossing_island">"Έχει νησίδα αυτή η διάβαση πεζών;"</string>
     <string name="quest_generic_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
@@ -1877,6 +1905,8 @@
     <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Πόσα αυτοκίνητα μπορούν να φορτιστούν ταυτόχρονα σε αυτόν τον σταθμό φόρτισης;"</string>
     <string name="link_disaster_ninja_description">"Χάρτης που δείχνει τις πρόσφατες φυσικές καταστροφές, ενδιαφέρουσες για τους ανθρωπιστικούς χαρτογράφους. Επίσης, δείχνει πολλά ενδιαφέροντα στατιστικά στοιχεία για να αναλύσετε πόσο καλά χαρτογραφημένα και ενημερωμένα μέρη είναι."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_title">"Πόσες λωρίδες για αυτοκίνητα έχει αυτός ο δρόμος;"</string>
     <string name="quest_lanes_answer_lanes">"Διαγραμμίσεις"</string>
     <string name="quest_lanes_answer_noLanes">"Χωρίς διαγραμμίσεις"</string>
@@ -1909,6 +1939,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_hint">"Χτυπήστε το δρόμο στον χάρτη"</string>
 
     <!-- Fuzzy -->
@@ -1917,9 +1949,13 @@
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
     <string name="quest_tracktype_grade3a">"Κυρίως στερεό"</string>
     <string name="quest_generic_answer_does_not_exist">"Δεν υπάρχει…"</string>
+
+    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Είστε βέβαιοι ότι δεν υπάρχει, ούτε καν σε διαφορετική τοποθεσία; Σε περίπτωση αμφιβολίας, καλύτερα να αφήσετε μια σημείωση."</string>
     <string name="osm_element_gone_confirmation">"Δεν υπάρχει"</string>
     <string name="leave_note">"Αφήστε σημείωμα"</string>
@@ -1934,19 +1970,27 @@
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Ο αριθμός λωρίδων διαφέρει για κάθε πλευρά"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή δεν είναι χρήσιμος σε ορισμένες περιοχές και πιθανότατα θα πρέπει να εισαγάγετε το μέρος για να μπορείτε να απαντήσετε σε μια αναζήτηση αυτού του τύπου."</string>
     <string name="quest_dietType_explanation_kosher">"Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Δεν υπάρχει καθόλου ποδηλατόδρομος"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Ως συνήθως, χτυπήστε στη μία πλευρά της εικόνας, επιλέξτε μια σωστή απάντηση και κάντε το ίδιο για την άλλη πλευρά. Σημειώστε όλες τις διαθέσιμες επιλογές: ορισμένες περιπτώσεις δεν είναι προφανείς, όπως ένας μονόδρομος που επιτρέπει ποδηλάτες και στις δύο κατευθύνσεις!"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Επιλέγοντας αυτό δεν υπάρχει ποδηλατόδρομος"</string>
     <string name="quest_construction_completed_at_known_date">"Θα ολοκληρωθεί στις…"</string>
     <string name="quest_construction_completion_date_title">"Πότε θα ολοκληρωθεί;"</string>
     <string name="quest_surface_value_clay">"Πηλός"</string>
     <string name="quest_surface_value_artificial_turf">"Τεχνητός χλοοτάπητας"</string>
     <string name="quest_surface_value_tartan">"Ταρτάν"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Πρέπει να πληρώσετε για να σταθμεύσετε ένα ποδήλατο εδώ;"</string>
 
     <!-- Fuzzy -->
@@ -1977,6 +2021,8 @@
     <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
     <string name="synced">"Συγχρονισμένο"</string>
     <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"εμφανίζεται ξεχωριστά στο χάρτη"</string>
 
     <!-- Edit history sidebar -->
@@ -2008,8 +2054,12 @@
     <string name="quest_barrier_type_log">"Κορμός"</string>
     <string name="quest_barrier_type_kerb">"Κράσπεδο"</string>
     <string name="quest_barrier_type_height_restrictor">"Περιοριστής ύψους"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"Περιστροφική πύλη πλήρους ύψους"</string>
     <string name="quest_barrier_type_turnstile">"Περιστροφική πύλη"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"Διάβαση μέσω τοίχου/φράχτη/κλπ."</string>
     <string name="quest_barrier_type_debris_pile">"Σωρός απορριμάτων"</string>
     <string name="quest_barrier_type_stile_squeezer">"Στενό πέρασμα"</string>
@@ -2043,6 +2093,8 @@
     <string name="quest_buildingLevels_title_buildingPart2">"Πόσα επίπεδα πάνω από το υπόγειο έχει αυτό το τμήμα του κτιρίου;"</string>
     <string name="quest_crossing_title">"Υπάρχουν κράσπεδα εκεί που συναντάει εκείνος ο δρόμος αυτόν εδώ; Τι είδους;"</string>
     <string name="pref_subtitle_quests_preset_name">"Προεπιλογή: %s"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συχνά το σχήμα της στέγης δεν είναι εύκολα ορατό από τον δρόμο. Αυτός ο τύπος αναζήτησης είναι επίσης αρκετά χρονοβόρος - στις περισσότερες περιπτώσεις είναι πιο εύκολο και αποτελεσματικό να γίνει η χαρτογράφηση από αεροφωτογραφίες στο σπίτι."</string>
     <string name="quest_religion_animist">"Ανιμισμός"</string>
     <string name="quest_construction_steps_title">"Έχουν ολοκληρωθεί αυτά τα σκαλοπάτια;"</string>
@@ -2088,6 +2140,7 @@
     <string name="quest_picnicTableCover_title">"Είναι αυτό το τραπέζι πικνίκ καλυμμένο (προστατεύεται από τη βροχή);"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Αυτό το μέρος είναι σκαλιά"</string>
     <string name="quest_barrier_type_passage_conversion">"Μετατράπηκε σε πέρασμα σε τοίχο/φράχτη/κ.λπ."</string>
     <string name="quest_barrier_type_gate_conversion">"Μετατράπηκε σε πύλη"</string>
@@ -2113,6 +2166,8 @@
     <string name="quest_access_yes">"Οποιοδήποτε μέλος του ευρύτερου κοινού"</string>
     <string name="quest_access_customers">"Οποιοδήποτε άτομο επισκέπτεται ένα συγκεκριμένο μέρος (π.χ. μόνο πελάτες)"</string>
     <string name="quest_access_private">"Μόνο άτομο(α) με άδεια"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Οι χρόνοι συλλογής αυτού του ταχυδρομικού κουτιού εξακολουθούν να είναι σωστές;"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Μη αναγνωρίσιμο. Δοκιμάστε να εισαγάγετε τον τύπο του μέρους, για παράδειγμα \"αρτοποιείο\". Αλλιώς, αφήσετε μια σημείωση."</string>
     <string name="quest_bicycle_barrier_type_title">"Τι είδους μπάρα για ποδήλατα είναι αυτή;"</string>
@@ -2135,10 +2190,20 @@
     <string name="street_parking_parallel">"Παράλληλα"</string>
     <string name="street_parking_diagonal">"Διαγώνια"</string>
     <string name="street_parking_perpendicular">"Κάθετα"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_on_street">"Στο δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"Μερικώς στο δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"Δίπλα στο δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_street_side">"Δίπλα σε δρόμο μόνο σε ειδικές θέσεις"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Στον δρόμο μόνο σε ειδικές θέσεις"</string>
     <string name="street_parking_separate">"Ο χώρος στάθμευσης εμφανίζεται ξεχωριστά στον χάρτη"</string>
     <string name="street_parking_no">"Απαγορεύεται η στάθμευση εδώ / Δεν επιτρέπεται"</string>
@@ -2147,10 +2212,14 @@
     <string name="street_standing_prohibited">"Απαγορεύεται η στάση"</string>
     <string name="street_parking_conditional_restrictions">"Η στάθμευση / το σταμάτημα περιορίζεται υπό όρους"</string>
     <string name="street_parking_no_other_reasons">"Δεν υπάρχει σαφής πινακίδα / δεν είναι δυνατή η στάθμευση"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Εάν γίνεται να παρκάρετε ή να σταματήσετε εδώ, απαντήστε πρώτα πώς σταθμεύουν εδώ όσοι επιτρέπεται. Το ποιοι ακριβώς περιορισμοί ισχύουν μπορούν να καθοριστούν αργότερα.
 Εναλλακτικά, μπορείτε να αφήσετε μια σημείωση (με φωτογραφία)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Και αριθμός σπιτιού και ένα όνομα…"</string>
     <string name="quest_address_house_number_label">"Αριθμός σπιτιού:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Έχει ΛΕΑ αυτός ο δρόμος;"</string>
     <string name="quest_fireHydrant_position_title">"Πού βρίσκεται αυτός ο πυροσβεστικός κρουνός;"</string>
     <string name="quest_fireHydrant_position_green">"Στο γρασίδι ή στο χώμα"</string>
@@ -2188,6 +2257,8 @@
     <string name="quest_smoothness_description_very_bad_paved">"Βαθιές λακκούβες, αυλάκια ή άλλες επικίνδυνες ζημιές"</string>
     <string name="quest_smoothness_description_very_bad_sett">"Μεγάλα κενά, μετατόπιση, πέτρες που λείπουν ή έχουν ακανόνιστο σχήμα ή επικίνδυνες ζημιές"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Σπασμένες πέτρες, κενά ή άλλες επικίνδυνες ζημιές"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Μερικές μεγάλες πέτρες, βαθιές λακκούβες, σαμαράκια, αυλάκια, διάβρωση ή άλλες επικίνδυνες ζημιές"</string>
     <string name="quest_smoothness_description_horrible">"Χρησιμοποιείται σωστά μόνο από εκτός δρόμου οχήματα ή με τα πόδια"</string>
     <string name="quest_smoothness_description_very_horrible">"Χρησιμοποιείται σωστά μόνο από εξειδικευμένα οχήματα εκτός δρόμου ή με τα πόδια"</string>
@@ -2197,18 +2268,27 @@
     <string name="quest_smoothness_wrong_surface">"Η επιφάνεια είναι διαφορετική"</string>
     <string name="quest_smoothness_surface_value">"Η επιφάνεια επισημάνθηκε ως:"</string>
     <string name="quest_smoothness_obstacle">"Υπάρχει ένα εμπόδιο"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Δώστε μια γενική απάντηση για την ομαλότητα. Μεμονωμένα εμπόδια όπως τα κράσπεδα, σαμαράκια ή σχάρες βοοειδών μπορούν να αγνοηθούν. Επαναλαμβανόμενα ή απροσδόκητα εμπόδια θα πρέπει να υπολογίζονται στην απάντηση."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … υποδείξτε για ποια οχήματα η επιφάνεια πρέπει να είναι εντάξει για χρήση. Αυτό που έχει σημασία είναι η μεγάλη εικόνα και όχι οι μεμονωμένες ζημιές."</string>
     <string name="link_osmhydrant_description">"Αναζητήστε, προσθέστε και επεξεργαστείτε πυροσβεστικούς σταθμούς και κρουνούς"</string>
     <string name="achievement_lifesaver_title">"Διασώστης"</string>
     <string name="achievement_lifesaver_solved_X">"Λύσατε %d αναζητήσεις που βοηθούν τις υπηρεσίες έκτακτης ανάγκης και τους διασώστες!"</string>
 
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Μπορείτε να γεμίσετε καύσιμα μόνοι σας σ' αυτό το βενζινάδικο;"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή επειδή είναι αρκετά χρονοβόρος και συχνά δύσκολο να γίνει η σωστή επιλογή. Θα πρέπει να τον ενεργοποιήσετε μόνο εάν δεσμεύεστε πραγματικά να προσθέσετε αυτού του είδους τα δεδομένα."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Σκληρή επιφάνεια, λίγο χαλαρό χαλίκι ή άμμος"</string>
     <string name="quest_barrier_path_intersection">"Πώς διασχίζει αυτό το μονοπάτι τις μπάρες εδώ;"</string>
     <string name="quest_barrier_road_intersection">"Πώς διασχίζει αυτός ο δρόμος τις μπάρες εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"εμφανίζεται ξεχωριστά στον χάρτη"</string>
     <string name="quest_shoulder_value_yes">"ΛΕΑ"</string>
     <string name="quest_shoulder_value_no">"χωρίς ΛΕΑ"</string>
@@ -2231,12 +2311,22 @@
 
     <!-- AR Measure screen -->
     <string name="ar_measure">"Μέτρηση"</string>
+
+    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"Πολύ απότομη γωνία, απομακρυνθείτε λίγο"</string>
     <string name="default_disabled_msg_no_ar">"Χρειάζεστε μια μεζούρα για να λύσετε αυτήν την αποστολή, επειδή η μέτρηση με την κάμερα δεν υποστηρίζεται σε αυτήν τη συσκευή."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"Ποιο είναι το πλάτος αυτού του ποδηλατόδρομου εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_road_width_title">"Ποιο είναι το πλάτος αυτού του δρόμου εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Το πλάτος του οδοστρώματος από κράσπεδο σε κράσπεδο: Αυτό περιλαμβάνει οτιδήποτε στην επιφάνεια του δρόμου, όπως στάθμευση στο δρόμο ή λωρίδα ποδηλάτων, αλλά αποκλείει οτιδήποτε πέρα από αυτό, όπως μονοπάτι ποδηλάτων ή στάθμευση δίπλα στο οδόστρωμα."</string>
     <string name="quest_sidewalk_answer_none">"Δεν υπάρχει καθόλου πεζοδρόμιο"</string>
+
+    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτήν την εφαρμογή!
 Δυστυχώς, λόγω μιας πολιτικής του Google Play Store, δεν επιτρέπεται να εμφανίζονται εντός της εφαρμογής σύνδεσμοι που οδηγούν σε δωρεές. Σε αυτό το πλαίσιο, δεν επιτρέπεται ακόμη και η σύνδεση με τον κυρίως χώρο του έργου μας."</string>
     <string name="link_osmand_description">"Εφαρμογή για κινητά για online και offline προβολή και πλοήγηση χαρτών"</string>
@@ -2246,6 +2336,8 @@
     <!-- Fuzzy -->
     <string name="quest_sidewalk_surface_title">"Τι επιφάνεια έχει το πεζοδρόμιο εδώ;"</string>
     <string name="quest_tactilePaving_incorrect">"Μόνο στην μια πλευρά"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Ναι, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Όχι, αλλά υπάρχει μέγιστη διάρκεια…"</string>
     <string name="unit_days">"μέρες"</string>
@@ -2274,6 +2366,8 @@
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Είναι δεκτή η πληρωμή με μετρητά εδώ;"</string>
     <string name="quest_address_street_title2">"Σε ποιο δρόμο είναι αυτό;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"Είναι αυτό το μέρος κλιματιζόμενο;"</string>
     <string name="quest_baby_changing_table_title2">"Αυτό το μέρος έχει αλλαξιέρα μωρού;"</string>
 
@@ -2290,6 +2384,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopName_title2">"Πώς ονομάζεται αυτή η στάση;"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"Ποιος είναι ο αριθμός αναφοράς αυτής της στάσης;"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -2316,24 +2411,37 @@ sorted alphabetically by title -->
     <string name="quest_smoothness_title">"Ποια είναι η ποιότητα της επιφάνειας εδώ;"</string>
     <string name="quest_summit_register_title2">"Υπάρχει βιβλίο κορυφής εδώ;"</string>
     <string name="quest_surface_title">"Ποια είναι η επιφάνεια εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"Υπάρχει τουαλέτα εδώ;"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Είναι η τουαλέτα εδώ προσβάσιμη με αναπηρικό καροτσάκι;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Είστε βέβαιοι ότι οι ποδηλάτες δεν επιτρέπεται να χρησιμοποιούν αυτόν τον μονόδρομο και προς τις δύο κατευθύνσεις; Σε περίπτωση αμφιβολίας, ελέγξτε εάν υπάρχει πινακίδα στις άκρες του δρόμου."</string>
     <string name="link_valhalla_description">"Μηχανή δρομολόγησης με πολύ μικρό αποτύπωμα μνήμης, πολυτροπική δρομολόγηση, ισόχρονες και άλλα."</string>
     <string name="link_backofyourhand_description">"Πόσο καλά γνωρίζετε την περιοχή σας; Δοκιμάστε τις γνώσεις σας εντοπίζοντας δρόμους."</string>
+
+    <!-- Fuzzy -->
     <string name="link_thenandnow_description">"Εξερευνήστε πώς έμοιαζε το OSM τις πρώτες μέρες σε σύγκριση με το πώς φαίνεται τώρα!"</string>
+
+    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Δείτε, φιλτράρετε και σχολιάστε εύκολα στις σημειώσεις που έχετε δημιουργήσει εσείς και άλλοι. Πολλές σημειώσεις μπορούν να λυθούν βάζοντας τις πληροφορίες που περιέχουν μέσα στον χάρτη με το iD ή το JOSM"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Πιστωτικές ή χρεωστικές κάρτες γίνονται δεκτές εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Και οι δύο"</string>
     <string name="quest_accepts_cards_credit_only">"Μόνο πιστωτικές κάρτες"</string>
     <string name="quest_accepts_cards_dedit_only">"Μόνο χρεωστικές κάρτες"</string>
     <string name="quest_accepts_cards_unavailable">"Ούτε χρεωστικές ούτε πιστωτικές κάρτες"</string>
     <string name="quest_barrier_type_gate_any_size">"Πύλη, οποιοδήποτε μέγεθος"</string>
-    <string name="quest_air_pump_bicycle_title">"Υπάρχει διαθέσιμη αντλία ποδηλάτου για όλους εδώ;"</string>
     <string name="quest_air_pump_compressor_title">"Υπάρχει διαθέσιμος αεροσυμπιεστής εδώ;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Μόνο ο αριθμός των βημάτων για να φτάσετε στην κορυφή. Εάν ο αριθμός βημάτων διαφέρει σε κάθε πλευρά, δώστε μεγαλύτερο αριθμό."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Η ΛΕΑ είναι μια σαφής οριοθετημένη λωρίδα στάσης έκτακτης ανάγκης. Η περιοχή που ορίζεται ως ΛΕΑ δεν είναι απαραίτητα ασφαλτοστρωμένη σε όλο της το πλάτος και δεν είναι απαραίτητα αρκετά φαρδιά ώστε ένα αυτοκίνητο να σταματήσει εντελώς εκτός της λωρίδας κυκλοφορίας."</string>
 </resources>

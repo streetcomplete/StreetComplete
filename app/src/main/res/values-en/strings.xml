@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This is the source file for the app's strings in en-US.
+<!-- This ( app/src/main/res/values/strings.xml ) is the source file for the app's strings in en-US.
      All other strings.xml are imported from POEditor crowd translation platform.
 
      The strings are sorted into categories to
@@ -16,7 +16,7 @@
 
 This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.
 
-The info you enter is directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
+The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor."</string>
 
 
     <!-- Main menu -->
@@ -59,6 +59,9 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
     <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
+
+    <string name="map_btn_create_track">Create new track recording</string>
+    <string name="map_btn_stop_track">"Stop recording track"</string>
 
 
     <!-- Android notifications -->
@@ -198,6 +201,7 @@ The info you enter is directly added to the OpenStreetMap in your name, without 
     <string name="ar_core_tracking_error_camera_unavailable">Camera is used by another app</string>
     <string name="ar_core_tracking_error_too_steep_angle">Too steep of an angle, step away a bit</string>
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
 
 
     <!-- Notifications -->
@@ -307,7 +311,7 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.&lt;br/&gt;
+First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
@@ -406,7 +410,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_wheelchair_description">Turn-by-turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_photon_description">A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type</string>
-    <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
+    <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs,…</string>
     <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
     <string name="link_brouter_description">Probably the best routing engine for cyclists</string>
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
@@ -559,7 +563,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- sorted alphabetically by title -->
 
     <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
-    <string name="quest_accepts_cards_debit_and_credit">Both</string>
+    <string name="quest_accepts_cards_debit_and_credit">Both debit and credit cards</string>
     <string name="quest_accepts_cards_credit_only">Only credit cards</string>
     <string name="quest_accepts_cards_dedit_only">Only debit cards</string>
     <string name="quest_accepts_cards_unavailable">Neither debit nor credit cards</string>
@@ -583,7 +587,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_address_answer_house_name_and_housenumber">Both a house number and a name…</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
-    <string name="quest_housenumber_multiple_numbers_description">"You can enter comma–separated house numbers or ranges.\nFor example 1,3 or 2–6."</string>
+    <string name="quest_housenumber_multiple_numbers_description" tools:ignore="TypographyDashes">"You can enter comma-separated house numbers or ranges.\nFor example 1,3 or 2-6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
@@ -647,20 +651,38 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
 
-    <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bike here?</string>
+    <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bicycle here?</string>
 
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
-    <string name="quest_bicycle_parking_type_stand">Stand (supports bike frame)</string>
+    <string name="quest_bicycle_parking_type_stand">Stand (supports bicycle frame)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Wheelbender (supports wheel only)</string>
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
 
-    <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used to park one bike on each side."</string>
 
-    <string name="quest_air_pump_bicycle_title">Is there a working bicycle pump available for everyone here?</string>
+    <string name="quest_bicycle_rental_capacity_title">How many rental bicycle spaces are here?</string>
+
+    <string name="quest_bicycle_rental_type_title">What type of bicycle rental is this?</string>
+    <string name="quest_bicycle_rental_type_docking_station">Docking station which locks bicycles</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">Designated spot (bicycles locked individually)</string>
+    <string name="quest_bicycle_rental_type_human">Staffed bicycle rental</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">Bicycle store that also rents bicycles</string>
+
+    <string name="quest_bicycle_shop_repair_title">Are bicycle repair services offered here?</string>
+
+    <string name="quest_bicycle_shop_second_hand_title">Are second-hand bicycles sold here?</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">No, only new ones</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">Yes, alongside new ones</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">Yes, exclusively</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
+
+    <string name="quest_bikeParkingCapacity_title">"How many bicycles can be parked here?"</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used to park one bicycle on each side."</string>
+
+    <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
     <string name="quest_board_type_title">What’s the topic of this information board?</string>
@@ -685,6 +707,16 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
+
+    <string name="quest_building_entrance_title">What kind of building entrance is this?</string>
+    <string name="quest_building_entrance_main">Main entrance of a public building</string>
+    <string name="quest_building_entrance_staircase">Stairwell entrance (e.g. to an apartment building)</string>
+    <string name="quest_building_entrance_service">Service entrance</string>
+    <string name="quest_building_entrance_exit">Exit only</string>
+    <string name="quest_building_entrance_emergency_exit">Emergency exit only</string>
+    <string name="quest_building_entrance_shop">Storefront entrance</string>
+    <string name="quest_building_entrance_yes">Other entrance type</string>
+    <string name="quest_building_entrance_dead_end">Dead end, no entrance</string>
 
     <string name="quest_building_underground_title">Is this building completely underground?</string>
 
@@ -716,15 +748,15 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin …)</string>
+    <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin…)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
     <string name="quest_buildingType_commercial">Commercial building</string>
     <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
-    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage, …</string>
+    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage,…</string>
     <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Retail building</string>
-    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores …</string>
+    <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores…</string>
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
@@ -835,30 +867,30 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_crossing_type_marked">Marked</string>
     <string name="quest_crossing_type_unmarked">Without road markings</string>
 
-    <string name="quest_cycleway_title2">"Is there a bike lane or path here? What type?"</string>
+    <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
-    <string name="quest_cycleway_value_track">sidepath or protected bike lane</string>
-    <string name="quest_cycleway_value_lane">bike lane</string>
-    <string name="quest_cycleway_value_lane_soft">bike lane (dashed markings)</string>
+    <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
+    <string name="quest_cycleway_value_lane">bicycle lane</string>
+    <string name="quest_cycleway_value_lane_soft">bicycle lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
-    <string name="quest_cycleway_value_lane_dual">bike lane, both directions</string>
-    <string name="quest_cycleway_value_track_dual">separated bike path, both directions</string>
+    <string name="quest_cycleway_value_lane_dual">bicycle lane, both directions</string>
+    <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">Also bike path on the other side…</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bike lane or path at all</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no bike lane or path</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no bicycle lane or path</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">Are you sure that cyclists are not allowed to use this one-way street in both directions? If you’re unsure, look for a sign at the end of the street.</string>
 
-    <string name="quest_cyclewayPartSurface_title">What’s the surface of the bike path here?</string>
+    <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
 
-    <string name="quest_cycleway_width_title">"How wide is the bike path here?"</string>
+    <string name="quest_cycleway_width_title">"How wide is the bicycle path here?"</string>
 
     <string name="quest_dietType_halal_name_title2">Are halal products offered here?</string>
     <string name="quest_dietType_explanation_halal">Halal products must be prepared according to special rules, with Halal certification agencies marking products in compliance.</string>
@@ -867,7 +899,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
 
     <string name="quest_dietType_vegan_title2">Any vegan items on the menu here?</string>
-    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, honey …).</string>
+    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, honey…).</string>
 
     <string name="quest_dietType_vegetarian_title2">Any vegetarian items on the menu here?</string>
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
@@ -928,9 +960,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_lanes_title">"How many car lanes does this road have?"</string>
     <string name="quest_lanes_answer_lanes">"Marked lanes"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Each side has a different number of lanes"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. Bike and dedicated parking lanes don’t count.
+    <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. Bicycle and dedicated parking lanes don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. Bike and dedicated parking lanes don’t count.
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. Bicycle and dedicated parking lanes don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_noLanes">"No marked lanes"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"It has a two-way left turn lane"</string>
@@ -1095,7 +1127,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
-    <string name="quest_fee_answer_yes_but">Yes, …</string>
+    <string name="quest_fee_answer_yes_but">Yes,…</string>
     <string name="quest_fee_answer_no_but_maxstay">No, but there is a max duration…</string>
     <string name="quest_fee_add_times">"Add times"</string>
     <string name="unit_days">days</string>
@@ -1193,7 +1225,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
 
     <string name="quest_road_width_title">"How wide is the road here?"</string>
-    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bike lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bike paths."</string>
+    <string name="quest_road_width_explanation">"The roadway width from curb to curb: This includes anything on the street surface, including on-street parking or bicycle lanes but excluding anything beyond the curb like sidewalks, off-street parking or adjacent bicycle paths."</string>
 
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
@@ -1206,7 +1238,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_seating_indoor_and_outdoor">Both indoor and outdoor seating</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"This quest type is disabled by default because it may require checking during specific part of the year in order to verify outdoor seating."</string>
 
-    <string name="quest_segregated_title">How are the footpath and bike path laid out here?</string>
+    <string name="quest_segregated_title">How are the footpath and bicycle path laid out here?</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
     <string name="quest_segregated_mixed">Cyclists and pedestrians share the same space</string>
 
@@ -1276,7 +1308,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide an answer for the overall smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
+    <string name="quest_smoothness_hint">🚲, 🚗, 🚙,… indicate for which vehicles the surface should be usable. What matters is the big picture rather than single hazards.</string>
 
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
@@ -1466,6 +1498,5 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
-
 
 </resources>

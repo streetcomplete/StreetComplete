@@ -419,6 +419,9 @@
                 "bunker_type": {
                     "label": "Тип"
                 },
+                "button_operated": {
+                    "label": "Кнопка керування"
+                },
                 "cables": {
                     "label": "Дроти",
                     "placeholder": "1, 2, 3…"
@@ -514,9 +517,8 @@
                     "placeholder": "РРРР-ММ-ДД"
                 },
                 "circumference": {
-                    "label": "Окружність",
-                    "placeholder": "1 м, 20 см, 30 дюймів…",
-                    "terms": "стовбур,дерево,окружність,обхват"
+                    "label": "Окружність (на рівні грудей)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Одяг"
@@ -767,6 +769,9 @@
                         "yes": "В наявності"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Застава"
+                },
                 "depth": {
                     "label": "Глибина (метрів)"
                 },
@@ -809,7 +814,13 @@
                 },
                 "diameter": {
                     "label": "Діаметр",
-                    "placeholder": "5 мм, 10 см, 15 дюйм…"
+                    "placeholder": "5 мм, 10 см, 15 дюйм…",
+                    "terms": "діаметр,крона"
+                },
+                "diameter_crown": {
+                    "label": "Діаметр крони",
+                    "placeholder": "4 m, 9', …",
+                    "terms": "крона,діаметр,дерево,кущ"
                 },
                 "diet_multi": {
                     "label": "Страви",
@@ -1019,6 +1030,16 @@
                     "label": "Діаметр (мм, дюйми або літери)",
                     "terms": "діаметр,отвір,мм,дюйм"
                 },
+                "fire_hydrant/position": {
+                    "label": "Знаходиться",
+                    "options": {
+                        "green": "На газоні",
+                        "lane": "На дорозі",
+                        "parking_lot": "На стоянці",
+                        "sidewalk": "На тротуарі"
+                    },
+                    "terms": "місце,положення,розташування"
+                },
                 "fire_hydrant/pressure": {
                     "label": "Тиск (бар)",
                     "terms": "тиск,атмосфера,мм рт"
@@ -1054,6 +1075,30 @@
                 },
                 "flag/wikidata": {
                     "label": "Wikidata прапора"
+                },
+                "flashing_lights": {
+                    "label": "Миготливий сигнал",
+                    "options": {
+                        "always": {
+                            "description": "Сигнал завжди перебуває у миготливому стані",
+                            "title": "Миготить завжди"
+                        },
+                        "button": {
+                            "description": "Сигнал вмикається кнопкою",
+                            "title": "Вмикається кнопкою"
+                        },
+                        "button;sensor": {
+                            "description": "Сигнал активується сенсором чи кнопкою",
+                            "title": "Вмикається сенсором чи кнопкою"
+                        },
+                        "no": "Ні",
+                        "sensor": {
+                            "description": "Сигнал активується сенсором",
+                            "title": "Активується сенсором"
+                        },
+                        "yes": "Так"
+                    },
+                    "terms": "сигнал,світлофор,перехід,пішохід,сенсор,кнопка,миготливий"
                 },
                 "floating": {
                     "label": "Плавучий"
@@ -1118,6 +1163,11 @@
                 "generator/type": {
                     "label": "Тип"
                 },
+                "genus": {
+                    "label": "Рід",
+                    "placeholder": "Acer, Platanus, Quercus …",
+                    "terms": "рід,назва"
+                },
                 "geyser/height": {
                     "label": "Висота виверження"
                 },
@@ -1180,6 +1230,13 @@
                 },
                 "highway": {
                     "label": "Тип"
+                },
+                "highway_cartpath": {
+                    "label": "Тип шляху",
+                    "options": {
+                        "path": "Доріжка для гольф-кара",
+                        "service": "Службовий проїзд"
+                    }
                 },
                 "historic": {
                     "label": "Тип"
@@ -1424,6 +1481,9 @@
                 },
                 "liaison": {
                     "label": "Тип"
+                },
+                "lifeguard": {
+                    "label": "Рятувальник"
                 },
                 "line_attachment": {
                     "label": "Кріплення"
@@ -2370,6 +2430,11 @@
                     },
                     "terms": "джерело,вода,сонце,вітер,прилив,відлив,термо,тепло,газ"
                 },
+                "species": {
+                    "label": "Вид",
+                    "placeholder": "Acer platanoides, Quercus robur, …",
+                    "terms": "вид,підвид"
+                },
                 "species/wikidata": {
                     "label": "Вид, Wikidata код",
                     "terms": "вікі,вид,опис,рослина,царство,тварина"
@@ -2572,6 +2637,11 @@
                 "target": {
                     "label": "Представництво"
                 },
+                "taxon": {
+                    "label": "Таксон",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
+                    "terms": "таксон"
+                },
                 "telecom": {
                     "label": "Тип"
                 },
@@ -2657,6 +2727,14 @@
                 "traffic_signals": {
                     "label": "Тип"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Опукла стрілка",
+                    "terms": "тактильний,знак,символ,незряч*"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Таймер",
+                    "terms": "таймер,відлік,зворотній"
+                },
                 "traffic_signals/direction": {
                     "label": "Напрямок дії",
                     "options": {
@@ -2664,6 +2742,28 @@
                         "both": "В обидва боки/Всі",
                         "forward": "За напрямком лінії"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Тактильна мапа",
+                    "terms": "знак,мапа,зір,вади,безпека,особа,сліпий,незрячий"
+                },
+                "traffic_signals/sound": {
+                    "label": "Звуковий сигнал",
+                    "options": {
+                        "locate": {
+                            "description": "Сигнал, що вказує на розташування кнопки",
+                            "title": "Локатор кнопки"
+                        },
+                        "no": "Ні",
+                        "walk": {
+                            "description": "Сигнал, який сповіщає про те що перехід дозволено",
+                            "title": "Індикатор переходу"
+                        },
+                        "yes": "Так"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Вібраційний"
                 },
                 "trail_visibility": {
                     "label": "Видимість маршруту",
@@ -3826,7 +3926,7 @@
                 },
                 "amenity/toilets": {
                     "name": "Туалет",
-                    "terms": "туалет,вбиральня,клозет"
+                    "terms": "туалет,вбиральня"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Унітаз",
@@ -3851,6 +3951,10 @@
                 "amenity/toy_library": {
                     "name": "Прокат іграшок",
                     "terms": "кукли,іграшки,ляльки"
+                },
+                "amenity/trolley_bay": {
+                    "name": "Місце для візків",
+                    "terms": "магазин,возик,візок"
                 },
                 "amenity/university": {
                     "name": "Територія університету",
@@ -4945,8 +5049,8 @@
                     "name": "Автобусна зупинка"
                 },
                 "highway/construction": {
-                    "name": "Закрита дорога",
-                    "terms": "ремонт,будівництво,роботи,реконструкція,дорожні"
+                    "name": "Ремонт/будівництво дороги",
+                    "terms": "ремонт,будівництво,дорога,проїзд,прохід,заборонено,дорожні,роботи"
                 },
                 "highway/corridor": {
                     "name": "Коридор",
@@ -5801,6 +5905,10 @@
                     "name": "Нетбол",
                     "terms": "м'яч,поле,команда,гра"
                 },
+                "leisure/pitch/padel": {
+                    "name": "Падель корт",
+                    "terms": "корт,майданчик,спорт,ракетка,падель"
+                },
                 "leisure/pitch/paintball": {
                     "name": "Пейнтбольне поле",
                     "terms": "поле,двобій,гра,фарба,пневмо,пейнтбол,страйк"
@@ -5844,6 +5952,10 @@
                 "leisure/pitch/tennis": {
                     "name": "Тенісний майданчик",
                     "terms": "теніс,майданчик"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "Тесербол корт",
+                    "terms": "волейбол,майданчик,м'яч"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "Волейбольний майданчик",
@@ -6074,6 +6186,10 @@
                 "man_made/mast/communication/television": {
                     "name": "Телевежа",
                     "terms": "телевежа,радіовежа,мобільний зв’язок,мачта,вежа,щогла,антена"
+                },
+                "man_made/mast/lighting": {
+                    "name": "Мачта освітлення",
+                    "terms": "освітлення,щогла,прожектор"
                 },
                 "man_made/mineshaft": {
                     "name": "Шахтний ствол",
@@ -6805,6 +6921,10 @@
                 "playground/cushion": {
                     "name": "Надувний замок",
                     "terms": "забавка,ігровий,майданчик,діти,дитячий,замок,надувний,горка,пригалка"
+                },
+                "playground/hopscotch": {
+                    "name": "Класики",
+                    "terms": "класики,розмітка,гра,дозвілля"
                 },
                 "playground/horizontal_bar": {
                     "name": "Перекладина",

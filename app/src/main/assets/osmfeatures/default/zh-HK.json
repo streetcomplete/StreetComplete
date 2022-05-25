@@ -461,10 +461,6 @@
                     "label": "最後檢查日期",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "圓周",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "衣物"
                 },
@@ -3187,10 +3183,6 @@
                     "name": "露天劇場",
                     "terms": "圓形廣場,羅馬廣場,圓形劇場,圓形露天劇場"
                 },
-                "amenity/toilets": {
-                    "name": "廁所",
-                    "terms": "toilets,便所,公厠,公廁,厠所,廁所,方便,洗手間,盥洗室,化粧間"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "沖水廁所"
                 },
@@ -3965,9 +3957,6 @@
                 },
                 "highway/bus_stop": {
                     "name": "巴士站"
-                },
-                "highway/construction": {
-                    "name": "封閉道路"
                 },
                 "highway/corridor": {
                     "name": "室內走廊",

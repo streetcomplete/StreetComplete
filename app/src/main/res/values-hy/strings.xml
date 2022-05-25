@@ -41,6 +41,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"լավ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Ոչ, պարզապես թաքցնել"</string>
     <string name="quest_streetName_title">"Ի՞նչ է կոչվում այս փողոցը։"</string>
     <string name="quest_streetName_description">"ինչպես գրված է փողոցի նշանի վրա, հապավումները պետք է բացահայտել"</string>
@@ -3032,6 +3034,7 @@
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"Դուք լուծել եք %d որոնումներից, որոնք օգնում են շտապ օգնության եւ առաջին պատասխանողներին:"</string>
 
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Կարող եք այստեղ գազ մղել:"</string>
 

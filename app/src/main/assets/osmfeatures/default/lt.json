@@ -1880,10 +1880,6 @@
                     "name": "Teatras",
                     "terms": "teatras"
                 },
-                "amenity/toilets": {
-                    "name": "Tualetas",
-                    "terms": "tualetas,išvietė"
-                },
                 "amenity/townhall": {
                     "name": "Rotušė",
                     "terms": "rotušė"

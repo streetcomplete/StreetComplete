@@ -18,16 +18,23 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
      * */
     override val elementFilter = """
         ways with
-          highway ~ trunk|primary|secondary|tertiary|unclassified
-          and (
-            motorroad = yes
-            or tunnel ~ yes|building_passage|avalanche_protector
-            or bridge = yes
-            or sidewalk ~ no|none
-            or !maxspeed and highway = trunk
-            or maxspeed > 50
-            or maxspeed ~ "(3[5-9]|[4-9][0-9]|1[0-9][0-9]) mph"
-            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
+          (
+            (
+              highway ~ trunk|primary|secondary|tertiary|unclassified
+              and (
+                motorroad = yes
+                or tunnel ~ yes|building_passage|avalanche_protector
+                or bridge = yes
+                or sidewalk ~ no|none
+                or !maxspeed and highway = trunk
+                or maxspeed > 50
+                or maxspeed ~ "(3[5-9]|[4-9][0-9]|1[0-9][0-9]) mph"
+                or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
+              )
+            ) or (
+              highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+              and (foot ~ yes|designated or bicycle ~ yes|designated)
+            )
           )
           and lane_markings != no
           and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}

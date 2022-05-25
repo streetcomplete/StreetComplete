@@ -41,6 +41,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"您可以在此位置留下公共笔记，其他图客可以对其进行评论，也可能可以这个解决问题；也可以仅对自己隐藏这个任务"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"好的"</string>
 
     <!-- Fuzzy -->
@@ -1458,8 +1460,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"这条自行车道的路面是什么材质的？"</string>
     <string name="quest_generic_answer_differs_along_the_way">"一路走来，不同的是…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_description">"如果道路有所不同，那首先要分开它们，然后任务可以分别完成。
 立即分割？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"点击道路上答案不一致的点来分割，尽量精确，你可以正常的放大。"</string>
     <string name="quest_split_way_too_imprecise">"请继续放大"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"有很多分割点，你之后随时可以再进行分割。"</string>
@@ -1487,6 +1493,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_postboxRef_title">"这个邮箱的参考编号是多少？"</string>
 
     <!-- Whats the "number" means -->
+    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到参考数字"</string>
     <string name="quest_street_side_puzzle_tutorial">"图中道路的旋转与地图上指示位置一致。"</string>
 
@@ -1543,6 +1550,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"是否只能回收玻璃瓶罐，还是能回收各种玻璃制品？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"通常不会被接受的玻璃制品：钢化玻璃、玻璃窗、玻璃器皿、灯泡、镜子。"</string>
 
     <!-- Fuzzy -->
@@ -1562,6 +1571,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="about_summary_donate">"展示您对本应用的喜爱！"</string>
+
+    <!-- Fuzzy -->
     <string name="about_description_donate">"感谢您考虑支持此应用，点击下列平台可以看到当前捐赠额且可自行捐赠"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"在此扫描"</string>
     <string name="confirmation_cancel_prev_download_cancel">"继续当前扫描"</string>
@@ -1635,7 +1646,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_category_goodies_title">"好东西"</string>
     <string name="link_category_goodies_description">"一些有趣的地图相关供你尝试"</string>
     <string name="link_cyclosm_description">"骑自行车地图"</string>
+
+    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"供查找轮椅可通行地点的地图"</string>
+
+    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"三维建筑地图"</string>
     <string name="link_openvegemap_description">"查找你的城市中素食主义者和素食餐厅"</string>
 
@@ -1658,6 +1673,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_welcome_mat_description">"关于OpenStreetMap的一般信息以及如何作为一个组织与OSM合作"</string>
     <string name="link_mapillary_description">"一个用来分享群众提供的街景应用程序和服务，包含可用来贡献OSM的明显授权。"</string>
     <string name="link_openstreetcam_description">"一个用来分享群众提供的街景应用程序和服务，包含可用来贡献OSM的明显授权。"</string>
+
+    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"给轮椅使用者的方向导引导航。"</string>
 
     <!-- Fuzzy -->
@@ -1679,6 +1696,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_weeklyosm_description">"报道开放街图大小事的每周新闻论坛"</string>
     <string name="link_figuregrounder_description">"产生城市或是邻里的图底图（ Figure-ground diagram）海报。"</string>
     <string name="achievement_first_edit_title">"完成第一个任务"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"欢迎来到OpenStreetMap社区！在你的资料页面，可以看到更多关于每一种你所完成任务的信息。"</string>
 
     <!-- Fuzzy -->
@@ -1693,8 +1712,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="achievement_wheelchair_title">"机动性"</string>
     <string name="achievement_wheelchair_solved_X">"你完成了%d项任务，帮助了轮椅用户的出行！"</string>
     <string name="achievement_postman_title">"邮差"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"你帮助定位了%d个地址！这些数据对邮递员和任何导航系统都很重要。"</string>
     <string name="achievement_building_title">"高楼"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"你完成了%d项建筑相关的任务。
 本应用仅在确定了建筑类型后才会询问门牌号。"</string>
     <string name="achievement_blind_title">"第六感"</string>
@@ -1783,6 +1806,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_openingHours_add_off_days">"增加关门日期"</string>
     <string name="quest_openingHours_off_day">"关门日期"</string>
     <string name="quest_openingHours_unspecified_range">"未指明"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"这里是仍然是单车道吗？"</string>
     <string name="pref_title_resurvey_intervals">"重新勘察的间隔时间"</string>
     <string name="resurvey_intervals_less_often">"减少询问次数"</string>
@@ -1868,6 +1893,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="link_disaster_ninja_description">"显示近期自然灾害的地图，对人道主义地图绘制者来说很有意思。此外，还显示了许多有趣的统计数据，以分析各地方的地图绘制情况和最新的情况。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_title">"该道路有多少车道？"</string>
     <string name="quest_lanes_answer_lanes">"标线车道"</string>
     <string name="quest_lanes_answer_noLanes">"无标线车道"</string>
@@ -1916,6 +1943,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_parkingType_lane">"路边停车"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"坚实但没有铺装路面"</string>
     <string name="quest_tracktype_grade3a">"多半坚实"</string>
     <string name="quest_generic_answer_does_not_exist">"不存在哦"</string>
@@ -1939,6 +1968,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"这家商店已经空置，它现在又是做什么的？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"每一侧的车道数不同"</string>
 
     <!-- Fuzzy -->
@@ -1946,10 +1977,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_kosher">"犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"没有任何自行车道"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"像往常一样，点击插图的一侧，选择一个合适的答案，然后对另一侧做同样的操作。注意所有可用的选项：有些情况并不明显，比如一条单向行驶的道路允许骑自行车的人在两个方向行驶"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"当无自行车道,选择此项"</string>
     <string name="quest_construction_completed_at_known_date">"竣工日期预计在…"</string>
     <string name="quest_construction_completion_date_title">"预计什么时候竣工呢？"</string>
@@ -2068,6 +2103,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_barrier_type_kerb">"路缘"</string>
     <string name="quest_barrier_type_height_restrictor">"高度障碍"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"全高旋转门"</string>
     <string name="quest_barrier_type_turnstile">"旋转门"</string>
 
@@ -2230,6 +2267,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_picnicTableCover_title">"野餐桌有遮蔽吗（不受雨淋）？"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"这部分是台阶"</string>
     <string name="quest_barrier_type_passage_conversion">"改为墙/栅栏/等的通道。"</string>
     <string name="quest_barrier_type_gate_conversion">"改建成大门"</string>
@@ -2285,6 +2323,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_access_yes">"任何公众人员"</string>
     <string name="quest_access_customers">"访问特定地点的任何人（如仅限顾客）"</string>
     <string name="quest_access_private">"只有获得许可的个人"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"此邮筒的收取时间仍然正确吗?"</string>
 
     <!-- Fuzzy -->
@@ -2317,6 +2357,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="street_parking_parallel">"平行式"</string>
     <string name="street_parking_diagonal">"倾斜式"</string>
     <string name="street_parking_perpendicular">"垂直的"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_on_street">"在车道上"</string>
 
     <!-- Fuzzy -->
@@ -2395,6 +2437,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_smoothness_description_very_bad_sett">"大缝隙、移位、缺失或不规则形状的石头或危险的损坏
 "</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"有丢失和破碎的石头或开裂的缝隙和其他可能会带来危险的损坏"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"一些大石头、深坑、颠簸、车辙、侵蚀或其他危险损害"</string>
     <string name="quest_smoothness_description_horrible">"仅可由越野车或步行妥善通过"</string>
     <string name="quest_smoothness_description_very_horrible">"仅可由专业越野车或步行妥善通过"</string>
@@ -2402,7 +2446,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_smoothness_wrong_surface">"表面不一样"</string>
     <string name="quest_smoothness_surface_value">"该表面被标记为："</string>
     <string name="quest_smoothness_obstacle">"存在一个障碍"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"请提供一个关于平顺度的通用答案。单一的障碍物，如路缘石、减速带或牲畜格栅，可以忽略不计。反复出现的或意想不到的障碍物应计入到回答中。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … 表示该表面对哪些车辆可以使用。重要的是大局，而不是单一的损害。"</string>
     <string name="link_osmhydrant_description">"查询、添加并编辑消防站和消防栓"</string>
 
@@ -2412,12 +2460,17 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"你解决了%d的任务，帮助了紧急服务和第一反应者!"</string>
 
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"你能在这个加油站自助加油吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"这种任务类型在默认情况下是禁用的，因为它相当耗费时间，而且往往很难做出正确的选择。只有当你真的致力于添加这种数据时，你才应该启用这种任务类型。"</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"硬质铺料，很少有松散的砾石或沙子"</string>
     <string name="quest_barrier_path_intersection">"这条小道是如何跨越这里的障碍的？"</string>
     <string name="quest_barrier_road_intersection">"这条道路是如何跨越这里的障碍的？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"在地图上分开显示"</string>
     <string name="quest_shoulder_value_yes">"路肩"</string>
     <string name="quest_shoulder_value_no">"没有路肩"</string>
@@ -2458,6 +2511,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_road_width_title">"这条路的宽度是多少？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"从路缘这头到那头的道路宽度。这包括街道表面的任何东西，如路边停车场或（机动车道旁的）自行车车道，但不包括它以外的任何东西，如专用的自行车道或路边的停车场。"</string>
 
     <!-- Fuzzy -->
@@ -2521,6 +2576,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"此地接受现金支付吗?"</string>
     <string name="quest_address_street_title2">"他在哪条路上？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"这地方有空调吗?"</string>
 
     <!-- Fuzzy -->
@@ -2539,6 +2596,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopName_title2">"这个站点叫什么名字?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"这一站的参考编号是什么？"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -2578,26 +2636,37 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_surface_title">"这里的表面是什么？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"这里有洗手间吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"这个地方的洗手间可以让轮椅进入吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"你确定骑行者不允许双向使用这条单行道吗？如果拿不准，请检查街道尽头是否有标志。"</string>
     <string name="link_valhalla_description">"路线规划引擎具有非常小的内存占用，多模式路线规划，等值线及更多功能。"</string>
     <string name="link_backofyourhand_description">"你对你的地区有多了解？通过定位街道来测试你的知识。"</string>
+
+    <!-- Fuzzy -->
     <string name="link_thenandnow_description">"探索OSM在早期的样子并将及其与现在的模样相比较!"</string>
+
+    <!-- Fuzzy -->
     <string name="link_notesreview_description">"方便地查看、过滤和评论由你和其他人创建的笔记。许多笔记可以通过将其中的信息放在地图上用iD或JOSM来解决。"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cards">"这里接受信用卡或借记卡吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"都可以"</string>
     <string name="quest_accepts_cards_credit_only">"仅限信用卡"</string>
     <string name="quest_accepts_cards_dedit_only">"仅限借记卡"</string>
     <string name="quest_accepts_cards_unavailable">"借记卡和信用卡都不行"</string>
     <string name="quest_barrier_type_gate_any_size">"门，任何大小"</string>
-    <string name="quest_air_pump_bicycle_title">"这里有一个能用的自行车打气筒供任何人使用吗？"</string>
     <string name="quest_air_pump_compressor_title">"这里有空气压缩机可用吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"只是到达顶部的步数。如果两边的步数不一样，就填更高的步数。"</string>
 
     <!-- Fuzzy -->

@@ -30,6 +30,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"K tomuto úkolu můžete přidat veřejnou poznámku, ke které budou moci další uživatelé posílat komentáře a doufejme, že ji i vyřeší:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"OK"</string>
 
     <!-- Is this mean somethimg ike "I don't want to write note, just hide quest"? -->
@@ -1982,6 +1984,7 @@ It is not big issue, but it would be nice to have it correctly. -->
 
     <!-- Could this be translated as: 
 Is the situation on this cycleway still the same? -->
+    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"Je to zde stále aktulální situace cyklostezky?"</string>
     <string name="pref_title_resurvey_intervals">"Intervaly pro ověřování"</string>
     <string name="resurvey_intervals_less_often">"Ptát se méně často"</string>
@@ -2003,6 +2006,8 @@ Is the situation on this cycleway still the same? -->
     <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Mají tyto semafory hmatovou indikaci pro nevidomé, aby věděli, kdy je bezpečné přejít?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tip: Často to může být vibrující tlačítko nebo rotující kužel na spodní straně krabičky s ovládacím tlačítkem."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"malý samostatně stojící dům (prázdninová nebo rekreační chata, chatka…)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Jaké závory se používají na tomto železničním přejezdu?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Žádné závory"</string>
@@ -2018,10 +2023,16 @@ Is the situation on this cycleway still the same? -->
     <string name="quest_charging_station_operator_title">"Kdo provozuje tuto dobíjecí stanici?"</string>
     <string name="link_indoorequal_description">"Objevte vnitřní mapy nákupních středisek, nádraží atd."</string>
     <string name="achievement_rare_title">"Lovec pokladů"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Našli jste a vyřešili %d úkolů, které jsou vyřešeny opravdu velmi zřídka. Gratulujeme!"</string>
     <string name="achievement_citizen_title">"Občan"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"Vyřešili jste %d úkolů užitečných pro každodenní život ve městě!"</string>
     <string name="achievement_outdoors_title">"Outdoorák"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Vyřešili jste %d úkolů užitečných pro lidi, co rádi chodí do přírody!"</string>
     <string name="quest_pedestrian_crossing_island">"Má tento přechod pro chodce ostrůvek?"</string>
     <string name="quest_generic_answer_noSign">"Není tu žádná značka"</string>
@@ -2044,6 +2055,8 @@ Is the situation on this cycleway still the same? -->
     <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Kolik vozidel může být na této dobíjecí stanici najednou dobíjeno?"</string>
     <string name="link_disaster_ninja_description">"Mapa, která zobrazuje aktuální přírodní katastrofy, zajímavá pro humanitární mapéry. Dále jsou tu zajímavé statistiky, podle kterých lze analyzovat, jak jsou místa dobře zmapovaná a aktuální."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_title">"Kolik jízdních pruhů pro auta má tato cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Vyznačené pruhy"</string>
     <string name="quest_lanes_answer_noLanes">"Bez vyznačených pruhů"</string>
@@ -2077,6 +2090,8 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_hint">"Ťukněte na cestu na mapě"</string>
 
     <!-- Fuzzy -->
@@ -2085,9 +2100,13 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Parkuje se přímo vedle cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
     <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
     <string name="quest_generic_answer_does_not_exist">"Neexistuje to…"</string>
+
+    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
     <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
     <string name="leave_note">"Nechat poznámku"</string>
@@ -2102,19 +2121,27 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Tento obchod byl prázdný. Co tu je nyní?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Počet pruhů je na každé straně jiný"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět."</string>
     <string name="quest_dietType_explanation_kosher">"Košer produkty se musí připravovat podle zvláštních pravidel s označením  kašrut od certifikační agentury."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Není tu žádná cyklostezka"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Jako obvykle ťukněte na jednu stranu ilustrace, vyberte správnou odpověď a udělejte to samo na druhé straně. Všimněte si všech možností: v některých případech nemusí být zřejmé: např. jednosměrná cesta, na které můžou cyklisté jezdit v obou směrech!"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vybíráte, že tu není žádná cyklostezka"</string>
     <string name="quest_construction_completed_at_known_date">"Stavba bude dokončena…"</string>
     <string name="quest_construction_completion_date_title">"Kdy to bude stavba dokončena?"</string>
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umělý trávník"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Je zde potřeba platit za parkování kola?"</string>
 
     <!-- Fuzzy -->
@@ -2145,6 +2172,8 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="undo_confirm_title2">"Chcete vrátit následující úpravu?"</string>
     <string name="synced">"Synchronizováno"</string>
     <string name="toast_undo_unavailable">"Tato úprava je již synchronizovaná a proto ji nelze vrátit zpět"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"zobrazeno samostatně na mapě"</string>
 
     <!-- Edit history sidebar -->
@@ -2176,8 +2205,12 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_type_log">"Kláda"</string>
     <string name="quest_barrier_type_kerb">"Obrubník"</string>
     <string name="quest_barrier_type_height_restrictor">"Kontrola výšky"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"Vysoký turniket"</string>
     <string name="quest_barrier_type_turnstile">"Turniket"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"Průchod zdí/plotem/atd."</string>
     <string name="quest_barrier_type_debris_pile">"Hromada trosek"</string>
     <string name="quest_barrier_type_stile_squeezer">"Zúžený průchod"</string>
@@ -2209,6 +2242,8 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_buildingLevels_title_buildingPart2">"Kolik pater nad suterénem má tato část budovy?"</string>
     <string name="quest_crossing_title">"Jsou na tomto křížení cesty se silnicí obrubníky? Jakého druhu?"</string>
     <string name="pref_subtitle_quests_preset_name">"Předvolba: %s"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Tento typ úkolů je ve výchozím nastavení zakázán, protože tvar střechy často není snadno viditelný z ulice. Tento typ úkolů je také poněkud časově náročný; ve většině případů je snazší a efektivnější toto mapovat doma podle leteckých snímků."</string>
     <string name="quest_religion_animist">"Animismus"</string>
     <string name="quest_construction_steps_title">"Jsou tyto schody hotové?"</string>
@@ -2284,6 +2319,8 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_access_yes">"Jakýkoliv člen široké veřejnosti"</string>
     <string name="quest_access_customers">"Kdokoliv, kdo přijel navštívit určité místo (např. jen zákazníci)"</string>
     <string name="quest_access_private">"Pouze lidé s povolením"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Jsou časy vybírání této poštovní poštovní schránky správné?"</string>
     <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznáno. Zkuste zadat druh místa, např. „pekařství“. Jinak zvažte zanechání poznámky."</string>
     <string name="quest_bicycle_barrier_type_title">"Jaký je tohle druh překážky bránící cyklistům v průjezdu?"</string>
@@ -2307,10 +2344,20 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="street_parking_parallel">"Rovnoběžně"</string>
     <string name="street_parking_diagonal">"Šikmo"</string>
     <string name="street_parking_perpendicular">"Kolmo"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_on_street">"Na cestě"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"Zpola na chodníku"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"Vedle vozovky (na chodníku)"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_street_side">"Vedle vozovky pouze na vyhrazených místech"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Na cestě na vyhrazených místech"</string>
     <string name="street_parking_separate">"Parkování je zobrazeno na mapě samostatně"</string>
     <string name="street_parking_no">"Parkování zde není povoleno / je zakázáno"</string>
@@ -2326,6 +2373,8 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Má obojí, číslo domu i jméno…"</string>
     <string name="quest_address_house_number_label">"Číslo domu:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Má tato cesta odstavný pruh?"</string>
     <string name="quest_fireHydrant_position_title">"Kde je tento požární hydrant umístěn?"</string>
     <string name="quest_fireHydrant_position_green">"V trávě nebo hlíně"</string>
@@ -2363,6 +2412,8 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_smoothness_description_very_bad_paved">"Hluboké výmoly, vyjeté koleje nebo jiné nebezpečné poškození"</string>
     <string name="quest_smoothness_description_very_bad_sett">"Velké mezery, dlaždice, které nejsou na místě, chybí, nebo mají neobvyklý tvar nebo nebezpečné poškození"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Chybějící a rozbité dlaždice, mezery, nebo jiné nebezpečné poškození"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Nějaké velké kameny, hluboké výmoly, hrboly, vyjeté koleje, eroze nebo jiné nebezpečné poškození"</string>
 
     <!-- Fuzzy -->
@@ -2376,18 +2427,27 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_smoothness_wrong_surface">"Povrch je jiný"</string>
     <string name="quest_smoothness_surface_value">"Povrch byl označen jako:"</string>
     <string name="quest_smoothness_obstacle">"Je tu překážka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Uveďte prosím obecnou odpověď pro průjezdnost. Samostatné překážky, jako jsou obrubníky, zpomalovací hrboly nebo mříže pro dobytek můžete ignorovat. Opakující se nebo neočekávané překážky by měly být do odpovědi zahrnuty."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙… indikuje, pro jaká vozidla je povrch vhodný. Důležitější, než jednotlivá poškození, je celkový stav povrchu."</string>
     <string name="link_osmhydrant_description">"Vyhledávejte, přidávejte a upravujte hasičské stanice a požární hydranty"</string>
     <string name="achievement_lifesaver_title">"Záchranář"</string>
     <string name="achievement_lifesaver_solved_X">"Vyřešili jste %d úkolů, které pomůžou záchranářům!"</string>
 
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Můžete si u této čerpací stanice sami natankovat?"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"Tento typ úkolů je ve výchozím nastavení zakázán, protože jejich řešení může být časově náročné a často je obtížné. Tento typ úkolů byste měli povolit pouze v případě, že jste opravdu odhodláni přidat tento druh dat."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Tvrdý, velmi málo volného štěrku nebo písku"</string>
     <string name="quest_barrier_path_intersection">"Jak zde tato stezka/chodník překračuje překážku?"</string>
     <string name="quest_barrier_road_intersection">"Jak zde tato cesta překračuje překážku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"zobrazen samostatně na mapě"</string>
     <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
     <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
@@ -2414,12 +2474,22 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
 
     <!-- AR Measure screen -->
     <string name="ar_measure">"Měření"</string>
+
+    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"Příliš velký úhel, trochu ustupte"</string>
     <string name="default_disabled_msg_no_ar">"Pro vyřešení tohoto úkolu potřebujete svinovací metr, protože měření pomocí fotoaparátu není na tomto zařízení podporováno."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"Jaká je zde šířka této cyklostezky?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_road_width_title">"Jaká je zde šířka této cesty?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Šířka cesty od obrubníku k obrubníku: Toto zahrnuje cokoliv na povrchu cesty jako jsou parkovací místa na cestě nebo pruhy pro cyklisty, ale vylučuje cokoli mimo cestu, jako jsou cyklostezky nebo parkování."</string>
     <string name="quest_sidewalk_answer_none">"Není tu žádný chodník"</string>
+
+    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Děkujeme, že zvažujete podporu této aplikace!
 Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazovat žádné odkazy vedoucí k darům pro vývojáře.Proto není povolen ani odkaz na domovskou stránku našeho projektu."</string>
     <string name="link_osmand_description">"Mobilní aplikace pro online a offline zobrazení map a navigaci"</string>
@@ -2427,6 +2497,8 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="ar_core_tracking_error_no_plane_hit">"Držte se blíže k šipce, ale dávejte pozor na provoz!"</string>
     <string name="quest_sidewalk_surface_title">"Jaký je tu povrch chodníku?"</string>
     <string name="quest_tactilePaving_incorrect">"Jen na jedné straně"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Ano, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Ne, ale je tu max. doba…"</string>
     <string name="unit_days">"dny"</string>
@@ -2455,6 +2527,8 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Přijímá se tu platba v hotovosti?"</string>
     <string name="quest_address_street_title2">"Na které ulici je toto?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"Je toto místo klimatizováno?"</string>
     <string name="quest_baby_changing_table_title2">"Má toto místo přebalovací stůl?"</string>
 
@@ -2471,6 +2545,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopName_title2">"Jaký je název této zastávky?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"Jaké je referenční číslo této zastávky?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -2497,24 +2572,68 @@ sorted alphabetically by title -->
     <string name="quest_smoothness_title">"Jaká je tu kvalita povrchu?"</string>
     <string name="quest_summit_register_title2">"Je tu vrcholová kniha?"</string>
     <string name="quest_surface_title">"Jaký je tu povrch?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"Jsou tu nějaké toalety?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Jsou toalety na tomto místě přístupné na vozíku?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Jste si jistí, že cyklisté nemohou používat tuto jednosměrku v obou směrech? Pokud váháte, zkontrolujte jestli je na konci této ulice značka."</string>
     <string name="link_valhalla_description">"Navigační engine s velmi malou paměťovou náročností, navigací s využitím více dopravních prostředků, časovou mapou atd."</string>
     <string name="link_backofyourhand_description">"Jak dobře znáte vaše okolí? Otestujte si své znalosti lokalizací ulic."</string>
+
+    <!-- Fuzzy -->
     <string name="link_thenandnow_description">"Porovnejte, jak OSM vypadala v prvních dnech provozu a jak vypadá teď!"</string>
+
+    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Prohlížejte, filtrujte a pište komentáře k poznámkám, které jste vytvořili vy nebo ostatní uživatelé. Mnoho poznámek lze vyřešit tak, že jejich informace zadáte do mapy v iD nebo JOSMu"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Přijímají zde kreditní nebo debetní karty?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Obojí"</string>
     <string name="quest_accepts_cards_credit_only">"Jen kreditní karty"</string>
     <string name="quest_accepts_cards_dedit_only">"Jen debetní karty"</string>
     <string name="quest_accepts_cards_unavailable">"Ani kreditní, ani debetní karty"</string>
     <string name="quest_barrier_type_gate_any_size">"Brána, jakákoliv velikost"</string>
-    <string name="quest_air_pump_bicycle_title">"Je zde pro všechny k dispozici fungující pumpa na kolo?"</string>
     <string name="quest_air_pump_compressor_title">"Je tu k dispozici kompresor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Počet schodů k dosažení vrcholu. Pokud je počet schodů na každé straně jiný, uveďte vyšší číslo."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Odstavný pruh je jasně vymezený pruh pro nouzové zastavení. Oblast označená jako odstavný pruh nemusí být zpevněná v celé své šířce a nemusí být ani dost široká na to, aby auto zastavilo úplně mimo jízdní pruh."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"není, v tomto směru není jízda na kole povolená"</string>
+    <string name="map_btn_create_track">"Vytvořit novou nahrávku trasy"</string>
+
+    <!-- Fuzzy -->
+    <string name="map_btn_stop_track">"Ukončit nahrávání trasy"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_capacity_title">"Kolik je zde míst na půjčená kola?"</string>
+    <string name="quest_bicycle_rental_type_title">"Jaký je to druh půjčovny kol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_type_human">"Půjčovna kol s lidskou obsluhou"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Prodejna kol, která také kola půjčuje"</string>
+    <string name="quest_bicycle_shop_repair_title">"Nabízí zde opravu kol?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Prodávají se zde ojetá kola?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Ne, jen nová"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Ano, nová i ojetá"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Ano, výhradně"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Neprodávají se tu žádná kola"</string>
+    <string name="quest_building_entrance_title">"Jaký je to vchod do budovy?"</string>
+    <string name="quest_building_entrance_main">"Hlavní vchod do veřejné budovy"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_building_entrance_staircase">"Vchod se schody (např. obytný dům)"</string>
+    <string name="quest_building_entrance_service">"Služební vchod"</string>
+    <string name="quest_building_entrance_exit">"Pouze východ"</string>
+    <string name="quest_building_entrance_emergency_exit">"Pouze nouzový východ"</string>
+    <string name="quest_building_entrance_shop">"Vstup do obchodu"</string>
+    <string name="quest_building_entrance_yes">"Jiný druh vchodu"</string>
 </resources>
