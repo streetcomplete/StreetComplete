@@ -12,10 +12,13 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
+import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
+import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
+import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.viewBinding
@@ -46,6 +49,15 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        childFragmentManagerOrNull?.addFragmentOnAttachListener { fragmentManager, fragment ->
+            if (fragment is AttachPhotoFragment) {
+                fragment.hasGpxAttached = arguments?.getBoolean(ARG_HAS_GPX_ATTACHED) ?: false
+            }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
@@ -117,5 +129,13 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
         listener?.onCreatedNote(text, imagePaths, screenPos)
+    }
+
+    companion object {
+        private const val ARG_HAS_GPX_ATTACHED = "hasGpxAttached"
+
+        fun create(hasGpxAttached: Boolean) = CreateNoteFragment().also {
+            it.arguments = bundleOf(ARG_HAS_GPX_ATTACHED to hasGpxAttached)
+        }
     }
 }

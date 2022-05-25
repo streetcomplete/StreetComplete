@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
@@ -40,6 +43,9 @@ class AddRoadWidth(
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_road_width_title
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     override fun createForm() = AddWidthForm()
 

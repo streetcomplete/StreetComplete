@@ -106,10 +106,19 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         // streets that may have sidewalk tagging
         private val roadsFilter by lazy { """
             ways with
-              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+              (
+                (
+                  highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+                  and motorroad != yes
+                  and foot != no
+                )
+                or
+                (
+                  highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+                  and (foot ~ yes|designated or bicycle ~ yes|designated)
+                )
+              )
               and area != yes
-              and motorroad != yes
-              and foot != no
               and access !~ private|no
         """.toElementFilterExpression() }
 
@@ -125,7 +134,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         * */
         private val untaggedRoadsFilter by lazy { """
             ways with
-              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+              highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
               and (
                 !maxspeed
@@ -137,6 +146,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
                 lit = yes
                 or highway = residential
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+                or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
               )
               and foot != use_sidepath
               and bicycle != use_sidepath

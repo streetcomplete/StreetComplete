@@ -179,6 +179,10 @@ parking lane graphics/
     car4.svg
     car5.svg
 
+pins/
+    choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
+    island.svg                      modified from https://www.svgrepo.com/svg/62967/island, SVG Repo, License: CC-0
+
 police type graphics/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
     ferroviaria.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0

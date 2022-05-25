@@ -741,7 +741,7 @@ class MainFragment :
         mapFragment.updateCameraPosition { position = offsetPos }
 
         freezeMap()
-        showInBottomSheet(CreateNoteFragment())
+        showInBottomSheet(CreateNoteFragment.create(mapFragment.recordedTracks.isNotEmpty()))
     }
 
     private fun onClickCreateTrack() {

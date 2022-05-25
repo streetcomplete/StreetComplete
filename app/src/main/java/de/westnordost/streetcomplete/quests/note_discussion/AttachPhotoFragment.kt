@@ -29,6 +29,7 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
     private lateinit var noteImageAdapter: NoteImageAdapter
 
     val imagePaths: List<String> get() = noteImageAdapter.list
+    var hasGpxAttached = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,8 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
         binding.takePhotoButton.setOnClickListener { lifecycleScope.launch { takePhoto() } }
         binding.photosList.adapter = noteImageAdapter
         noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
+
+        binding.attachedGpxView.isGone = !hasGpxAttached
 
         updateHintVisibility()
     }
