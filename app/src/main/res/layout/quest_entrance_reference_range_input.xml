@@ -14,56 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <Button
-            android:id="@+id/flat_range_and_code"
-            android:text="@string/quest_roofShape_show_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
-
-        <Button
-            android:id="@+id/flat_range_only"
-            android:text="@string/quest_roofShape_show_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
-
-        <Button
-            android:id="@+id/code_only"
-            android:text="@string/quest_roofShape_show_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/quest_entrance_reference_reference_label"/>
-        <me.grantland.widget.AutofitLayout
-            android:id="@+id/referenceCodeInputContainer"
-            android:layout_width="128dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_white_corners"
-            android:layout_gravity="center"
-            >
-
-            <EditText
-                android:id="@+id/referenceCodeInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:background="@drawable/background_rectangular_sign_blue"
-                android:imeOptions="actionDone"
-                android:textColorHint="#2fff"
-                tools:text="VII"
-                android:padding="12dp"
-                style="@style/HousenumberEditText"
-                />
-            <!--android:inputType="text|number|numberSigned|numberDecimal" is treated as number-->
-
-        </me.grantland.widget.AutofitLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

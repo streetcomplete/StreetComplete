@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/quest_entrance_reference_reference_label"/>
+
+        <me.grantland.widget.AutofitLayout
+            android:id="@+id/referenceCodeInputContainer"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_white_corners"
+            android:layout_gravity="center"
+            >
+
+            <EditText
+                android:id="@+id/referenceCodeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:background="@drawable/background_rectangular_sign_blue"
+                android:imeOptions="actionDone"
+                android:textColorHint="#2fff"
+                tools:text="VII"
+                android:padding="12dp"
+                style="@style/HousenumberEditText"
+                />
+            <!--android:inputType="text|number|numberSigned|numberDecimal" is treated as number-->
+
+        </me.grantland.widget.AutofitLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
