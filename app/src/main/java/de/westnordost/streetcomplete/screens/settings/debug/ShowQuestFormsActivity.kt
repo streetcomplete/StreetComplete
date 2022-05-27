@@ -203,6 +203,8 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestAnswerForm.Listen
     }
 
     private fun message(msg: String) {
-        AlertDialog.Builder(this).setMessage(msg).show()
+        runOnUiThread {
+            AlertDialog.Builder(this).setMessage(msg).show()
+        }
     }
 }
