@@ -22,7 +22,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
     private val buildingFilter by lazy { """
         ways with
           building = apartments
-          and ruins !=yes and disused != yes
+          and ruins != yes and disused != yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add entrance identification"
