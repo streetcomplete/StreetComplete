@@ -122,8 +122,8 @@ class AddEntranceReferenceForm : AbstractQuestFormAnswerFragment<EntranceAnswer>
     }
 
     private val InterfaceMode.layout get() = when (this) {
-        InterfaceMode.FLAT_RANGE -> R.layout.quest_entrance_reference_range_input
-        InterfaceMode.ENTRANCE_REFERENCE -> R.layout.quest_entrance_reference_reference_input
+        InterfaceMode.FLAT_RANGE -> R.layout.quest_entrance_flat_range
+        InterfaceMode.ENTRANCE_REFERENCE -> R.layout.quest_entrance_reference
         InterfaceMode.FLAT_RANGE_AND_ENTRANCE_REFERENCE -> R.layout.quest_entrance_reference_range_and_reference_input
         InterfaceMode.SELECTING -> R.layout.quest_entrance_reference_mode_selection
     }
