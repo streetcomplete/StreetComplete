@@ -56,9 +56,6 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
             }
             if(entrancesForApartments.count() >= 2) {
                 for (entrance in entrancesForApartments) {
-                    if(entrance.tags["ref"] == "yes") {
-                        continue
-                    }
                     if(entrance.tags["noref"] == "yes") {
                         continue
                     }
@@ -69,6 +66,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                         continue
                     }
                     if(entrance.tags.containsKey("name")) {
+                        continue
+                    }
+                    if(entrance.tags.containsKey("ref")) {
                         continue
                     }
                     returned.add(entrance)
