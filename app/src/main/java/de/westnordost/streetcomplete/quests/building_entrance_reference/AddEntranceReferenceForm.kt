@@ -103,14 +103,10 @@ class AddEntranceReferenceForm : AbstractQuestFormAnswerFragment<EntranceAnswer>
         val referenceCode = referenceCodeInput?.nonBlankTextOrNull
         val flatRangeStart = flatRangeStartInput?.nonBlankTextOrNull
         val flatRangeEnd = flatRangeEndInput?.nonBlankTextOrNull
-        val flatRange = if(flatRangeStart != null && flatRangeEnd != null) {
-            if(flatRangeStart == flatRangeEnd) {
-                flatRangeStart
-            } else {
-                "$flatRangeStart-$flatRangeEnd"
-            }
-        } else {
-            null
+        val flatRange = when {
+            flatRangeStart == null || flatRangeEnd == null -> null
+            flatRangeStart == flatRangeEnd -> flatRangeStart
+            else -> "$flatRangeStart-$flatRangeEnd"
         }
 
         return when {
