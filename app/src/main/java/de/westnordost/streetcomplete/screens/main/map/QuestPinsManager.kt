@@ -53,6 +53,9 @@ class QuestPinsManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
+    private var updatePinsIsRunning = false
+    private var updatePinsAgain = false
+
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
         set(value) {
@@ -188,9 +191,19 @@ class QuestPinsManager(
     }
 
     private fun updatePins() {
+        if (updatePinsIsRunning) {
+            updatePinsAgain = true
+            return
+        }
         if (isActive) {
+            updatePinsIsRunning = true
             val pins = synchronized(quests) { quests.values.flatten() }
             pinsMapComponent.set(pins)
+            updatePinsIsRunning = false
+            if (updatePinsAgain) {
+                updatePinsAgain = false
+                updatePins()
+            }
         }
     }
 
