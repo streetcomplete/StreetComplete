@@ -39,6 +39,7 @@ class PinsMapComponent(ctrl: KtMapController) {
     /** Clear pins */
     fun clear() {
         pinsLayer.clear()
+        questsGeometryLayer.clear()
     }
 
     companion object {
