@@ -62,7 +62,8 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         private val LIT_RESIDENTIAL_ROADS = arrayOf("residential", "living_street", "pedestrian")
 
         private val LIT_NON_RESIDENTIAL_ROADS =
-            arrayOf("primary", "primary_link", "secondary", "secondary_link",
+            arrayOf("motorway", "motorway_link", "trunk", "trunk_link",
+                    "primary", "primary_link", "secondary", "secondary_link",
                     "tertiary", "tertiary_link", "unclassified", "service")
 
         private val LIT_WAYS = arrayOf("footway", "cycleway", "steps")
