@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 256" xmlns="http://www.w3.org/2000/svg">
+ <path d="m34.944 0v256h57.056v-108l-56.944 38-0.11296-77 57.056-39v-70z" fill="#909090" />
+ <path d="m0 1.3767e-6h35v256h-35z" fill="#808080" />
+ <path d="m35 0v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4z" fill="#fff" />
+ <path d="m93 0v69l-57 40v78l57-40v109" fill="none" stroke="#666" stroke-width="2"/>
+ <path d="m35 192v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4zm0 8v4h2v-4z" fill="#fff" />
+ <path d="m95 0v70l-57 40v74l57-40v112" fill="none" stroke="#999" stroke-width="2"/>
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-97.689" cy="92.514" rx="17.809" ry="14.551" fill="#5aaa55" />
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-88.07" cy="105.25" rx="14.53" ry="14.551" fill="#57a352" />
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-96.042" cy="117.21" rx="10.215" ry="8.3465" fill="#5aaa55" />
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-107.5" cy="108.7" rx="14.537" ry="14.551" fill="#4f994b" />
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-91.607" cy="104.92" rx="8.4015" ry="8.41" fill="#5aaa55" />
+ <ellipse transform="matrix(-.96593 -.25882 -.25882 .96593 0 0)" cx="-99.351" cy="95.988" rx="10.215" ry="9.3874" fill="#539f4d" />
+</svg>

@@ -29,7 +29,8 @@
         app:layout_constraintTop_toTopOf="@id/dialogContainer"
         app:layout_constraintBottom_toBottomOf="@id/dialogContainer"
         app:layout_constraintLeft_toLeftOf="@id/dialogContainer"
-        app:layout_constraintRight_toRightOf="@id/dialogContainer"/>
+        app:layout_constraintRight_toRightOf="@id/dialogContainer"
+        tools:ignore="ContentDescription"/>
 
     <ImageView
         android:id="@+id/shineView2"
@@ -43,7 +44,8 @@
         app:layout_constraintTop_toTopOf="@id/dialogContainer"
         app:layout_constraintBottom_toBottomOf="@id/dialogContainer"
         app:layout_constraintLeft_toLeftOf="@id/dialogContainer"
-        app:layout_constraintRight_toRightOf="@id/dialogContainer"/>
+        app:layout_constraintRight_toRightOf="@id/dialogContainer"
+        tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dialogContainer"
@@ -70,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/speech_bubble_none"/>
 
-        <de.westnordost.streetcomplete.user.AchievementIconView
+        <de.westnordost.streetcomplete.screens.user.achievements.AchievementIconView
             android:id="@+id/achievementIconView"
             android:layout_width="@dimen/achievement_icon_size"
             android:layout_height="@dimen/achievement_icon_size"

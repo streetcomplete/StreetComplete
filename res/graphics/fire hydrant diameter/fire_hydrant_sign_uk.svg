@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="vector" version="1.1" viewBox="0 0 170 130" xmlns="http://www.w3.org/2000/svg">
+ <path id="path" d="m0 0h170v200h-170v-200z" fill="#f4e614"/>
+ <path d="m20 15v155 15h20v-75h90v60 15h20v-170h-20v75h-90v-75h-20z"/>
+ <path d="m0 0h170v200h-170z" fill="none"/>
+</svg>

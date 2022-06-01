@@ -1,137 +1,140 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
-import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.core.view.isGone
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
+import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.RegularOpeningHoursAdapter
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
-import kotlinx.android.synthetic.main.quest_fee_hours.*
-import java.util.*
-import javax.inject.Inject
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_YES_NO
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.MAX_STAY
+import de.westnordost.streetcomplete.view.controller.DurationInputViewController
+import de.westnordost.streetcomplete.view.controller.DurationUnit
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.AT_ANY_TIME
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.EXCEPT_AT_HOURS
+import de.westnordost.streetcomplete.view.controller.TimeRestriction.ONLY_AT_HOURS
+import de.westnordost.streetcomplete.view.controller.TimeRestrictionSelectViewController
 
-class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
+class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAndMaxStay>() {
 
-    override val contentLayoutResId = R.layout.quest_fee_hours
-    override val buttonsResId = R.layout.quest_buttonpanel_yes_no
+    private var feeAtHoursSelect: TimeRestrictionSelectViewController? = null
+
+    private var maxstayDurationInput: DurationInputViewController? = null
+    private var maxstayAtHoursSelect: TimeRestrictionSelectViewController? = null
+
+    override val buttonPanelAnswers get() =
+        if (mode == FEE_YES_NO) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(FeeAndMaxStay(HasNoFee)) },
+            AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(FeeAndMaxStay(HasFee)) }
+        )
+        else emptyList()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
+        AnswerItem(R.string.quest_fee_answer_hours) { mode = FEE_AT_HOURS },
+        AnswerItem(R.string.quest_fee_answer_no_but_maxstay) { mode = MAX_STAY },
     )
 
-    private lateinit var openingHoursAdapter: RegularOpeningHoursAdapter
-
-    private lateinit var content: ViewGroup
-
-    private var isDefiningHours: Boolean = false
-    set(value) {
-        field = value
-
-        content.isGone = !value
-        noButton?.isGone = value
-        yesButton?.isGone = value
-    }
-    private var isFeeOnlyAtHours: Boolean = false
-
-    @Inject internal lateinit var serializer: Serializer
-
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        openingHoursAdapter = RegularOpeningHoursAdapter(requireContext(), countryInfo)
-        openingHoursAdapter.rows = loadOpeningHoursData(savedInstanceState).toMutableList()
-        openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        content = view.findViewById(R.id.content)
-
-        // must be read here because setting these values effects the UI
-        isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
-        isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
-
-        okButton.setOnClickListener { onClickOk() }
-        yesButton.setOnClickListener { onClickYesNo(true) }
-        noButton.setOnClickListener { onClickYesNo(false) }
-
-        openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        openingHoursList.adapter = openingHoursAdapter
-        openingHoursList.isNestedScrollingEnabled = false
-        checkIsFormComplete()
-
-        addTimesButton.setOnClickListener { openingHoursAdapter.addNewWeekdays() }
-
-        val spinnerItems = listOf(
-            getString(R.string.quest_fee_only_at_hours),
-            getString(R.string.quest_fee_not_at_hours)
-        )
-        selectFeeOnlyAtHours.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, spinnerItems)
-        selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
-        selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                isFeeOnlyAtHours = position == 0
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+    private var mode: Mode = FEE_YES_NO
+        set(value) {
+            if (field == value) return
+            field = value
+            updateContentView()
+            updateButtonPanel()
         }
+
+    private fun updateContentView() {
+        clearViewControllers()
+
+        if (mode == FEE_AT_HOURS) {
+            val binding = QuestFeeHoursBinding.bind(setContentView(R.layout.quest_fee_hours))
+
+            feeAtHoursSelect = TimeRestrictionSelectViewController(
+                binding.timeRestrictionSelect.selectAtHours,
+                binding.timeRestrictionSelect.openingHoursList,
+                binding.timeRestrictionSelect.addTimesButton
+            ).also {
+                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
+                it.regularShoppingDays = countryInfo.regularShoppingDays
+                it.onInputChanged = { checkIsFormComplete() }
+                // user already answered that it depends on the time, so don't show the "at any time" option
+                it.selectableTimeRestrictions = listOf(ONLY_AT_HOURS, EXCEPT_AT_HOURS)
+            }
+        } else if (mode == MAX_STAY) {
+            val binding = QuestMaxstayBinding.bind(setContentView(R.layout.quest_maxstay))
+
+            maxstayDurationInput = DurationInputViewController(
+                binding.durationInput.unitSelect,
+                binding.durationInput.input
+            ).also {
+                it.onInputChanged = { checkIsFormComplete() }
+            }
+            maxstayAtHoursSelect = TimeRestrictionSelectViewController(
+                binding.timeRestrictionSelect.selectAtHours,
+                binding.timeRestrictionSelect.openingHoursList,
+                binding.timeRestrictionSelect.addTimesButton
+            ).also {
+                it.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
+                it.regularShoppingDays = countryInfo.regularShoppingDays
+                it.onInputChanged = { checkIsFormComplete() }
+            }
+        }
+    }
+
+    private fun clearViewControllers() {
+        feeAtHoursSelect = null
+        maxstayAtHoursSelect = null
+        maxstayDurationInput = null
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        clearViewControllers()
     }
 
     override fun onClickOk() {
-        val times = openingHoursAdapter.createOpeningHours()
-        if (times.rules.isNotEmpty()) {
-            if(isFeeOnlyAtHours) {
-                applyAnswer(HasFeeAtHours(times))
-            } else {
-                applyAnswer(HasFeeExceptAtHours(times))
+        when (mode) {
+            FEE_AT_HOURS -> {
+                val hours = feeAtHoursSelect!!.times.toOpeningHoursRules()
+                val fee = when (feeAtHoursSelect!!.timeRestriction) {
+                    AT_ANY_TIME -> HasFee
+                    ONLY_AT_HOURS -> HasFeeAtHours(hours)
+                    EXCEPT_AT_HOURS -> HasFeeExceptAtHours(hours)
+                }
+                applyAnswer(FeeAndMaxStay(fee))
             }
-        } else {
-            onClickYesNo(!isFeeOnlyAtHours)
+            MAX_STAY -> {
+                val duration = MaxstayDuration(
+                    maxstayDurationInput!!.durationValue,
+                    when (maxstayDurationInput!!.durationUnit) {
+                        DurationUnit.MINUTES -> Maxstay.Unit.MINUTES
+                        DurationUnit.HOURS -> Maxstay.Unit.HOURS
+                        DurationUnit.DAYS -> Maxstay.Unit.DAYS
+                    }
+                )
+                val hours = maxstayAtHoursSelect!!.times.toOpeningHoursRules()
+                val maxstay = when (maxstayAtHoursSelect!!.timeRestriction) {
+                    AT_ANY_TIME -> duration
+                    ONLY_AT_HOURS -> MaxstayAtHours(duration, hours)
+                    EXCEPT_AT_HOURS -> MaxstayExceptAtHours(duration, hours)
+                }
+                applyAnswer(FeeAndMaxStay(HasNoFee, maxstay))
+            }
+            else -> {}
         }
     }
 
-    private fun onClickYesNo(answer: Boolean) {
-        applyAnswer(if(answer) HasFee else HasNoFee)
+    override fun isRejectingClose() = when (mode) {
+        FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
+        MAX_STAY -> maxstayAtHoursSelect!!.isComplete || maxstayDurationInput!!.durationValue > 0.0
+        else -> false
     }
 
-    private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningHoursRow> =
-        if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<OpeningHoursRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
-        } else {
-            listOf()
-        }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.rows)))
-        outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
-        outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
+    override fun isFormComplete() = when (mode) {
+        FEE_AT_HOURS -> feeAtHoursSelect!!.isComplete
+        MAX_STAY -> maxstayAtHoursSelect!!.isComplete && maxstayDurationInput!!.durationValue > 0.0
+        else -> false
     }
 
-    override fun isFormComplete() =
-        isDefiningHours && openingHoursAdapter.rows.isNotEmpty()
-
-    companion object {
-        private const val OPENING_HOURS_DATA = "oh_data"
-        private const val IS_FEE_ONLY_AT_HOURS = "oh_fee_only_at"
-        private const val IS_DEFINING_HOURS = "oh"
-    }
+    private enum class Mode { FEE_YES_NO, FEE_AT_HOURS, MAX_STAY }
 }

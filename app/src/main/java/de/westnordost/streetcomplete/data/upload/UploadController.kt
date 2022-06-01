@@ -5,13 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /** Controls uploading */
-@Singleton class UploadController @Inject constructor(
+class UploadController(
     private val context: Context
-): UploadProgressSource {
+) : UploadProgressSource {
 
     private var uploadServiceIsBound = false
     private var uploadService: UploadService.Interface? = null
@@ -27,8 +25,13 @@ import javax.inject.Singleton
     }
     private val uploadProgressRelay = UploadProgressRelay()
 
+    /** @return true if an upload is running */
     override val isUploadInProgress: Boolean get() =
         uploadService?.isUploadInProgress == true
+
+    var showNotification: Boolean
+        get() = uploadService?.showUploadNotification == true
+        set(value) { uploadService?.showUploadNotification = value }
 
     init {
         bindServices()
@@ -36,6 +39,7 @@ import javax.inject.Singleton
 
     /** Collect and upload all changes made by the user  */
     fun upload() {
+        if (uploadService == null) return
         context.startService(UploadService.createIntent(context))
     }
 

@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -14,6 +15,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
+        and !sidewalk
         and (
           !cycleway:surface
           or cycleway:surface older today -8 years
@@ -24,26 +26,17 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
           )
         )
     """
-    override val commitMessage = "Add path surfaces"
+    override val changesetComment = "Add cycleway path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_bicycleway_surface
     override val isSplitWayEnabled = true
+    override val questTypeAchievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
 
-    override fun createForm() = AddPathSurfaceForm()
+    override fun createForm() = AddPathPartSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAnswer, changes: StringMapChangesBuilder) {
-        when (answer) {
-            is SpecificSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
-                changes.deleteIfExists("cycleway:surface:note")
-            }
-            is GenericSurfaceAnswer -> {
-                changes.updateWithCheckDate("cycleway:surface", answer.value)
-                changes.addOrModify("cycleway:surface:note", answer.note)
-            }
-        }
-        changes.deleteIfExists("source:cycleway:surface")
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags, "cycleway:surface")
     }
 }

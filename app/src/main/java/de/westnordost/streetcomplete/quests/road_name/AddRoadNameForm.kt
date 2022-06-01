@@ -1,56 +1,48 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import android.content.DialogInterface
-import android.view.View
 import androidx.appcompat.app.AlertDialog
-
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.LocalizedName
+import org.koin.android.ext.android.inject
+import java.lang.IllegalStateException
 import java.util.LinkedList
 import java.util.Locale
 
-import javax.inject.Inject
-
-import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
-import de.westnordost.streetcomplete.quests.AddLocalizedNameAdapter
-import de.westnordost.streetcomplete.quests.LocalizedName
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import java.lang.IllegalStateException
-
-
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
+    override val contentLayoutResId = R.layout.quest_roadname
+    private val binding by contentViewBinding(QuestRoadnameBinding::bind)
+
+    override val addLanguageButton get() = binding.addLanguageButton
+    override val namesList get() = binding.namesList
+
+    override val adapterRowLayoutResId = R.layout.quest_roadname_row
+
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
-        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+        AnswerItem(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
+        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
 
-    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+    private val abbrByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+    override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
-    override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
-        return AddLocalizedNameAdapter(
-            data, requireContext(), getPossibleStreetsignLanguageTags(),
-            abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
-        )
-    }
-
-    private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        val polyline = when(val geom = elementGeometry) {
+    override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
+        val polyline = when (val geom = elementGeometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()
             is ElementPointGeometry -> listOf(geom.center)
         }
-        return roadNameSuggestionsDao.getNames(
+        return roadNameSuggestionsSource.getNames(
             listOf(polyline.first(), polyline.last()),
             MAX_DIST_FOR_ROAD_NAME_SUGGESTION
         )
@@ -58,10 +50,9 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
-        for ((languageTag, name) in adapter.localizedNames) {
-            // if Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP was, could use Locale.forLanguageTag
-            val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale(languageTag)
-            val abbr = abbreviationsByLocale.get(locale)
+        for ((languageTag, name) in adapter?.localizedNames.orEmpty()) {
+            val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
+            val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsLocalizedAbbreviations) {
@@ -70,7 +61,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            val points = when(val g = elementGeometry) {
+            val points = when (val g = elementGeometry) {
                 is ElementPolylinesGeometry -> g.polylines.first()
                 is ElementPolygonsGeometry -> g.polygons.first()
                 is ElementPointGeometry -> listOf(g.center)
@@ -105,7 +96,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                     (dialog as AlertDialog).getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = true
                 } else if (which == DialogInterface.BUTTON_POSITIVE) {
                     selection?.let {
-                        if(it >= 0 && it < answers.size) onAnswer(it)
+                        if (it >= 0 && it < answers.size) onAnswer(it)
                     }
                 }
             }
@@ -115,14 +106,12 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
                 when (answer) {
                     leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
-                    else      -> {
-                        applyAnswer(when(answer) {
-                            linkRoad    -> RoadIsLinkRoad
-                            serviceRoad -> RoadIsServiceRoad
-                            trackRoad   -> RoadIsTrack
-                            else        -> throw IllegalStateException()
-                        })
-                    }
+                    else      -> applyAnswer(when (answer) {
+                        linkRoad    -> RoadIsLinkRoad
+                        serviceRoad -> RoadIsServiceRoad
+                        trackRoad   -> RoadIsTrack
+                        else        -> throw IllegalStateException()
+                    })
                 }
             }
         }
@@ -147,6 +136,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 // m
     }
 }

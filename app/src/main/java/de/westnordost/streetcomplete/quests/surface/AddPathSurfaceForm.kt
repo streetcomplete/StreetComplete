@@ -2,34 +2,45 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPathSurfaceForm : AImageListQuestAnswerFragment<String, SurfaceAnswer>() {
-    override val items: List<Item<String>> get() =
-        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems() +
-            Item("paved", R.drawable.path_surface_paved, R.string.quest_surface_value_paved, null, listOf()) +
-            Item("unpaved", R.drawable.path_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf()) +
-            Item("ground", R.drawable.surface_ground, R.string.quest_surface_value_ground, null, listOf())
+class AddPathSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceOrIsStepsAnswer>() {
+    override val items: List<Item<Surface>>
+        get() = (PAVED_SURFACES + UNPAVED_SURFACES + Surface.WOODCHIPS + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+
+    override val otherAnswers get() = listOfNotNull(
+        createConvertToStepsAnswer(),
+    )
 
     override val itemsPerRow = 3
 
-    override fun onClickOk(selectedItems: List<String>) {
+    override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if(value == "paved" || value == "unpaved") {
+        if (value.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) {
-                    _, _ -> run {
-                        DescribeGenericSurfaceDialog(requireContext()) { description ->
-                          applyAnswer(GenericSurfaceAnswer(value, description))
-                        }.show()
-                    }
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                    DescribeGenericSurfaceDialog(requireContext()) { description ->
+                        applyAnswer(SurfaceAnswer(value, description))
+                    }.show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
             return
         }
-        applyAnswer(SpecificSurfaceAnswer(value))
+        applyAnswer(SurfaceAnswer(value))
+    }
+
+    private fun createConvertToStepsAnswer(): AnswerItem? {
+        val way = osmElement as? Way ?: return null
+        if (way.isArea() || way.tags["highway"] == "steps") return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
+            applyAnswer(IsActuallyStepsAnswer)
+        }
     }
 }

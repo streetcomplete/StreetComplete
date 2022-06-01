@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.view
 
 import android.graphics.Outline
-import android.os.Build
 import android.view.View
 import android.view.ViewOutlineProvider
-import androidx.annotation.RequiresApi
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+/** Outline provider for a view that has rounded corners. Used for casting the shadow of a view
+ *  with rounded corners correctly. For example the speech bubble used for quest forms. */
 class RoundRectOutlineProvider(
     private val radius: Float,
     private val marginLeft: Int = 0,
@@ -20,6 +19,7 @@ class RoundRectOutlineProvider(
             0 + marginTop,
             view.width - marginRight,
             view.height - marginBottom,
-            radius)
+            radius
+        )
     }
 }

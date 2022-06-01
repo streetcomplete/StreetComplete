@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m128 64c0 35.346-28.654 64-64 64s-64-28.654-64-64 28.654-64 64-64 64 28.654 64 64" fill="#e9a76f" stroke-width=".2"/>
+ <path d="m5.1211 66.746c-1.3636 1.645-1.189 3.6646 0.01758 5.2988 18.691 20.997 38.112 32.9 58.295 33.33 20.183 0.4305 40.183-10.729 59.723-33.375 1.0109-2.0766 1.0645-3.8307-0.0821-5.3164-18.991-23.675-38.576-36.705-58.88-36.945s-40.03 12.409-59.074 37.008z" fill-opacity=".2"/>
+ <g transform="matrix(2 0 0 2 0 25.263)">
+  <path d="m4 20c19.214-22.341 37.831-20.306 56 0-19.088 22.123-37.724 20.531-56 0z" fill="#fff" stroke="#888" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="32" cy="18" r="14" fill="#6a85ab"/>
+  <circle cx="32" cy="18" r="6" fill="#272727"/>
+  <path d="m4 20c18.026-15.072 36.613-16.906 56 0" fill="none" stroke="#000" stroke-opacity=".16129" stroke-width="4"/>
+  <path d="m4 20c18.685-24.206 37.346-23.324 56 0-19.061-21.309-37.689-21.362-56 0z" fill="#585858" stroke="#585858" stroke-linejoin="round" stroke-width="4"/>
+  <circle cx="26" cy="14" r="2" fill="#fff" fill-opacity=".66667" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".4" stroke-width="4"/>
+  <path d="m32 28c5.0199 0 10.047-4.7837 10.032-9.8471" fill="none" stroke="#8bb1e7" stroke-linecap="round" stroke-width="5"/>
+ </g>
+</svg>

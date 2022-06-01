@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class AchievementTest {
@@ -13,7 +13,7 @@ class AchievementTest {
     }
 
     @Test fun `getPointThreshold with other progression`() {
-        val a = achievement { it+1 }
+        val a = achievement { it + 1 }
         assertEquals(1, a.getPointThreshold(1))
         assertEquals(3, a.getPointThreshold(2))
         assertEquals(6, a.getPointThreshold(3))

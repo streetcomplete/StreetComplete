@@ -24,9 +24,9 @@ class StringWithCursor(private val string: String) {
         return true
     }
 
-    /** Advances the cursor if str or str.toUpperCase() is the next thing at the cursor
+    /** Advances the cursor if str or str.uppercase() is the next thing at the cursor
      *
-     *  Returns whether the next string was the str or str.toUpperCase
+     *  Returns whether the next string was the str or str.uppercase
      */
     fun nextIsAndAdvanceIgnoreCase(str: String): Boolean {
         if (!nextIsIgnoreCase(str)) return false
@@ -49,7 +49,7 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
-    /** Advance cursor by x and return the string that inbetween the two positions.
+    /** Advance cursor by x and return the string that between the two positions.
      * If cursor+x is beyond the end of the string, the method will just return the string until
      * the end of the string
      *
@@ -72,7 +72,7 @@ class StringWithCursor(private val string: String) {
     fun nextIs(c: Char): Boolean = c == char
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
     fun nextIsIgnoreCase(str: String): Boolean =
-        nextIs(str.toLowerCase()) || nextIs(str.toUpperCase())
+        nextIs(str.lowercase()) || nextIs(str.uppercase())
 
     fun nextMatches(regex: Regex): MatchResult? {
         val match = regex.find(string, cursorPos) ?: return null

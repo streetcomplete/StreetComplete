@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-sealed class PlaceNameAnswer
+import de.westnordost.streetcomplete.quests.LocalizedName
 
-data class PlaceName(val name:String) : PlaceNameAnswer()
-object NoPlaceNameSign : PlaceNameAnswer()
+sealed interface PlaceNameAnswer
+
+data class PlaceName(val localizedNames: List<LocalizedName>) : PlaceNameAnswer
+object NoPlaceNameSign : PlaceNameAnswer

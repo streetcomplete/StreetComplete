@@ -56,7 +56,7 @@ global:
         function() {
             var userLang = global.language;
             if (userLang) {
-                // Preference #1: Take name in own language (f.e. name:en used in Egypt a lot)
+                // Preference #1: Take name in own language (e.g. name:en used in Egypt a lot)
                 var nameInUserLang = feature['name_'+userLang];
                 if (nameInUserLang) return nameInUserLang;
                 
@@ -82,7 +82,7 @@ global:
                     
                     // Preference #2 and #3 are not available in JawgMaps
                     
-                    // Preference #2: Take international name (f.e. used in Greece a lot)
+                    // Preference #2: Take international name (e.g. used in Greece a lot)
                     //var internationalName = feature["int_name"];
                     //if (internationalName) return internationalName;
                     
@@ -103,10 +103,10 @@ global:
                         if (nameInLatinScript) return nameInLatinScript;
                     }
                     
-                    // Preference #6: Take name of any other language whose script is the same as the user's script (f.e. French signs in Laos)
+                    // Preference #6: Take name of any other language whose script is the same as the user's script (e.g. French signs in Laos)
                     // ... not implementable without a mapping of language code to script
                     
-                    // Preference #7: Take name of any other language whose script is in Latin (cause it's kind of "international") script (f.e. French signs in Laos)
+                    // Preference #7: Take name of any other language whose script is in Latin (cause it's kind of "international") script (e.g. French signs in Laos)
                     // ... not implementable without a mapping of language code to script
                 }
             }

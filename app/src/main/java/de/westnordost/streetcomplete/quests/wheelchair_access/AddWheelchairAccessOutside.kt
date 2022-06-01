@@ -1,25 +1,30 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-class AddWheelchairAccessOutside : OsmFilterQuestType<String>() {
+class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with leisure = dog_park
+        nodes, ways, relations with
+         leisure = dog_park
+         and access !~ no|private
          and (!wheelchair or wheelchair older today -8 years)
     """
-    override val commitMessage = "Add wheelchair access to outside places"
+    override val changesetComment = "Add wheelchair access to outside places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_wheelchair_outside
+    override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val questTypeAchievements = listOf(RARE, WHEELCHAIR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
     override fun createForm() = AddWheelchairAccessOutsideForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.updateWithCheckDate("wheelchair", answer)
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }

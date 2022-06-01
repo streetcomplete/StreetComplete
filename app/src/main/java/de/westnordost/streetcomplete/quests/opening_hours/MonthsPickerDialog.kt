@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.opening_hours.model.Months
+import de.westnordost.streetcomplete.osm.opening_hours.model.Months
 
 object MonthsPickerDialog {
 
@@ -13,10 +12,9 @@ object MonthsPickerDialog {
 
         return AlertDialog.Builder(context)
             .setTitle(R.string.quest_openingHours_chooseMonthsTitle)
-            .setMultiChoiceItems(Months.getNames(), selection)  { _, _, _ -> }
+            .setMultiChoiceItems(Months.getNames(), selection) { _, _, _ -> }
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Months(selection)) }
             .show()
     }
-
 }

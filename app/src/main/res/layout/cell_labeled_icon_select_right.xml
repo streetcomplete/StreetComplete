@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/imageView"
         android:layout_centerVertical="true"
-        style="@style/ImageSelectDescription"
+        style="@style/DescriptionNextToImage"
         tools:text="@string/quest_segregated_mixed" />
 
 </RelativeLayout>

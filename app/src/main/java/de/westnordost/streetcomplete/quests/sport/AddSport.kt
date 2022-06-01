@@ -1,41 +1,29 @@
 package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 
-class AddSport : OsmFilterQuestType<List<String>>() {
-
-    private val ambiguousSportValues = listOf(
-        "team_handball", // -> not really ambiguous but same as handball
-        "hockey", // -> ice_hockey or field_hockey
-        "skating", // -> ice_skating or roller_skating
-        "football" // -> american_football, soccer or other *_football
-    )
+class AddSport : OsmFilterQuestType<List<Sport>>() {
 
     override val elementFilter = """
-        nodes, ways with leisure = pitch and
-        (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
-        and (access !~ private|no)
+        ways with
+          leisure = pitch
+          and (!sport or sport ~ football|skating|hockey|team_handball)
+          and access !~ private|no
     """
-    override val commitMessage = "Add pitches sport"
+    /* treat ambiguous values as if it is not set */
+    override val changesetComment = "Add pitches sport"
     override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport
+    override val questTypeAchievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title
 
     override fun createForm() = AddSportForm()
 
-    override fun applyAnswerTo(answer: List<String>, changes: StringMapChangesBuilder) {
-        val previousValue = changes.getPreviousValue("sport")
-        val values = answer.joinToString(";")
-        // only modify the previous values in case of these ~deprecated ones, otherwise assume
-        // always that the tag has not been set yet (will drop the solution if it has been set
-        // in the meantime by other people) (#291)
-        if (ambiguousSportValues.contains(previousValue)) {
-            changes.modify("sport", values)
-        } else {
-            changes.add("sport", values)
-        }
+    override fun applyAnswerTo(answer: List<Sport>, tags: Tags, timestampEdited: Long) {
+        tags["sport"] = answer.joinToString(";") { it.osmValue }
     }
 }

@@ -3,3 +3,4 @@ isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]
 speedUnits: [miles per hour, kilometers per hour]
+atmOperators: [Lloyds Bank]

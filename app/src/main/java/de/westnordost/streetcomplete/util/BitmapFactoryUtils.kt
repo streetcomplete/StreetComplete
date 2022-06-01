@@ -38,7 +38,7 @@ fun decodeScaledBitmapAndNormalize(imagePath: String, desiredMaxWidth: Int, desi
     // Resize & Rotate
     val matrix = getRotationMatrix(imagePath)
     matrix.postScale(desiredScale, desiredScale)
-    val result = Bitmap.createBitmap( sampledSrcBitmap, 0, 0, sampledSrcBitmap.width, sampledSrcBitmap.height, matrix, true)
+    val result = Bitmap.createBitmap(sampledSrcBitmap, 0, 0, sampledSrcBitmap.width, sampledSrcBitmap.height, matrix, true)
 
     if (result != sampledSrcBitmap) {
         sampledSrcBitmap.recycle()

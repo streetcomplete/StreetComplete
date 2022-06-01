@@ -5,11 +5,8 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
@@ -18,119 +15,104 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.osmapi.map.data.Way
-import de.westnordost.streetcomplete.Injector
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestGroup
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition
-import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint
-import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.alongTrackDistanceTo
-import de.westnordost.streetcomplete.util.crossTrackDistanceTo
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.ktx.forEachLine
+import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.alongTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
-import kotlinx.android.synthetic.main.fragment_split_way.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
-class SplitWayFragment : Fragment(R.layout.fragment_split_way),
-    IsCloseableBottomSheet, IsShowingQuestDetails,
-    CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class SplitWayFragment :
+    Fragment(R.layout.fragment_split_way),
+    IsCloseableBottomSheet,
+    IsShowingQuestDetails {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
-    @Inject internal lateinit var soundFx: SoundFx
+    private val binding by viewBinding(FragmentSplitWayBinding::bind)
 
-    override val questId: Long get() = osmQuestId
-    override val questGroup: QuestGroup get() = QuestGroup.OSM
+    private val soundFx: SoundFx by inject()
 
-    private var osmQuestId: Long = 0L
+    override val questKey: QuestKey get() = osmQuestKey
+
+    private lateinit var osmQuestKey: OsmQuestKey
     private lateinit var way: Way
-    private lateinit var positions: List<OsmLatLon>
+    private lateinit var positions: List<LatLon>
     private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
-    private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
+    private val isFormComplete get() = splits.size >= if (way.isClosed) 2 else 1
 
     interface Listener {
-        fun onAddSplit(point: LatLon)
-        fun onRemoveSplit(point: LatLon)
-        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
+        fun onSplittedWay(osmQuestKey: OsmQuestKey, splits: List<SplitPolylineAtPosition>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
+    private val showsGeometryMarkersListener: ShowsGeometryMarkers? get() =
+        parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
-        osmQuestId = args.getLong(ARG_QUEST_ID)
-        way = args.getSerializable(ARG_WAY) as Way
-        val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
-        positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
+        osmQuestKey = Json.decodeFromString(args.getString(ARG_OSM_QUEST_KEY)!!)
+        way = Json.decodeFromString(args.getString(ARG_WAY)!!)
+        val elementGeometry: ElementPolylinesGeometry = Json.decodeFromString(args.getString(ARG_ELEMENT_GEOMETRY)!!)
+        positions = elementGeometry.polylines.single()
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupFittingToSystemWindowInsets()
+        binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
-        splitWayRoot.setOnTouchListener { _, event ->
+        binding.splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
             false
         }
 
-        okButton.setOnClickListener { onClickOk() }
-        cancelButton.setOnClickListener { activity?.onBackPressed() }
-        undoButton.setOnClickListener { onClickUndo() }
+        binding.okButton.setOnClickListener { onClickOk() }
+        binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
+        binding.undoButton.setOnClickListener { onClickUndo() }
 
-        undoButton.isInvisible = !hasChanges
-        okButton.isInvisible = !isFormComplete
+        binding.undoButton.isInvisible = !hasChanges
+        binding.okButton.isInvisible = !isFormComplete
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, margin, margin, margin, margin
-            )
-        }
+        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+        binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, margin, margin, margin
+        )
 
         if (savedInstanceState == null) {
-            view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
+            binding.speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
-        }
-    }
-
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
-
-                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-
-                insets
-            }
         }
     }
 
@@ -139,12 +121,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
-        bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineContext.cancel()
+        binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
     private fun onClickOk() {
@@ -156,7 +133,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     }
 
     private fun onSplittedWayConfirmed() {
-        listener?.onSplittedWay(osmQuestId, splits.map { it.first })
+        listener?.onSplittedWay(osmQuestKey, splits.map { it.first })
     }
 
     private fun confirmManySplits(callback: () -> (Unit)) {
@@ -174,8 +151,10 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
-            launch { soundFx.play(R.raw.plop2) }
-            listener?.onRemoveSplit(item.second)
+            viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
+            showsGeometryMarkersListener?.deleteMarkerForCurrentQuest(
+                ElementPointGeometry(item.second)
+            )
         }
     }
 
@@ -194,35 +173,38 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters }) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            listener?.onAddSplit(splitPosition)
+            showsGeometryMarkersListener?.putMarkerForCurrentQuest(
+                ElementPointGeometry(splitPosition),
+                R.drawable.crosshair_marker,
+                null
+            )
         }
 
         // always consume event. User should press the cancel button to exit
         return true
     }
 
-
     private fun animateScissors() {
         val scissorsPos = clickPos ?: return
 
-        (scissors.drawable as? Animatable)?.start()
+        (binding.scissors.drawable as? Animatable)?.start()
 
-        scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - scissors.width/2).toInt()
-            topMargin = (scissorsPos.y - scissors.height/2).toInt()
+        binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
+            leftMargin = (scissorsPos.x - binding.scissors.width / 2).toInt()
+            topMargin = (scissorsPos.y - binding.scissors.height / 2).toInt()
         }
-        scissors.alpha = 1f
+        binding.scissors.alpha = 1f
         val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)
-        animator.setTarget(scissors)
+        animator.setTarget(binding.scissors)
         animator.start()
 
-        launch { soundFx.play(R.raw.snip) }
+        viewLifecycleScope.launch { soundFx.play(R.raw.snip) }
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {
@@ -253,7 +235,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                 val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
-                    result.add(SplitAtLinePosition(OsmLatLon(first), OsmLatLon(second), delta))
+                    result.add(SplitAtLinePosition(first, second, delta))
                 }
             }
         }
@@ -270,30 +252,30 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
                         onConfirmed()
                     }
-                    .setNegativeButton(R.string.confirmation_discard_negative, null)
+                    .setNegativeButton(R.string.short_no_answer_on_button, null)
                     .show()
             }
         }
     }
 
     private fun animateButtonVisibilities() {
-        if (isFormComplete) okButton.popIn() else okButton.popOut()
-        if (hasChanges) undoButton.popIn() else undoButton.popOut()
+        if (isFormComplete) binding.okButton.popIn() else binding.okButton.popOut()
+        if (hasChanges) binding.undoButton.popIn() else binding.undoButton.popOut()
     }
 
     companion object {
         private const val CLICK_AREA_SIZE_AT_MAX_ZOOM = 2.6
 
-        private const val ARG_QUEST_ID = "questId"
+        private const val ARG_OSM_QUEST_KEY = "osmQuestKey"
         private const val ARG_WAY = "way"
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
 
-        fun create(osmQuestId: Long, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
+        fun create(osmQuestKey: OsmQuestKey, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
-                ARG_QUEST_ID to osmQuestId,
-                ARG_WAY to way,
-                ARG_ELEMENT_GEOMETRY to elementGeometry
+                ARG_OSM_QUEST_KEY to Json.encodeToString(osmQuestKey),
+                ARG_WAY to Json.encodeToString(way),
+                ARG_ELEMENT_GEOMETRY to Json.encodeToString(elementGeometry)
             )
             return f
         }

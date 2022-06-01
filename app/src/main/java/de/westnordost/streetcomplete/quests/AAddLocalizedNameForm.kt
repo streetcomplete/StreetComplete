@@ -5,78 +5,65 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toObject
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.Serializer
-import java.util.*
-import javax.inject.Inject
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import java.util.Queue
 
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
-    override var contentLayoutResId: Int = R.layout.quest_localizedname
+    protected abstract val addLanguageButton: View
+    protected abstract val namesList: RecyclerView
 
-    private val serializer: Serializer
+    open val adapterRowLayoutResId = R.layout.quest_localizedname_row
 
-    protected lateinit var adapter: AddLocalizedNameAdapter
-    private lateinit var namesList: RecyclerView
-    private lateinit var addLanguageButton: View
-
-    init {
-        val fields = InjectedFields()
-        Injector.applicationComponent.inject(fields)
-        serializer = fields.serializer
-    }
+    protected var adapter: AddLocalizedNameAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val data: ArrayList<LocalizedName>? = if (savedInstanceState != null) {
-            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
-        } else {
-            null
-        }
-
-        initLocalizedNameAdapter(view as ViewGroup, data)
+        initLocalizedNameAdapter(
+            savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString(it) }
+        )
     }
 
-    protected fun setLayout(resId: Int) {
-        val view = setContentView(resId)
-        initLocalizedNameAdapter(view as ViewGroup)
-    }
-
-    private fun initLocalizedNameAdapter(view: ViewGroup, data: MutableList<LocalizedName>? = null) {
-        addLanguageButton = view.findViewById(R.id.addLanguageButton)
-        adapter = createLocalizedNameAdapter(data.orEmpty(), addLanguageButton)
+    private fun initLocalizedNameAdapter(data: MutableList<LocalizedName>? = null) {
+        val adapter = AddLocalizedNameAdapter(
+            data.orEmpty(),
+            requireContext(),
+            getSelectableLanguageTags(),
+            getAbbreviationsByLocale(),
+            getLocalizedNameSuggestions(),
+            addLanguageButton,
+            adapterRowLayoutResId
+        )
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        namesList = view.findViewById(R.id.namesList)
+        lifecycle.addObserver(adapter)
+        this.adapter = adapter
         namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         namesList.adapter = adapter
         namesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
     }
 
-    protected open fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
-        AddLocalizedNameAdapter(data, requireContext(), getPossibleStreetsignLanguageTags(), null, null, addLanguageButton)
+    protected open fun getSelectableLanguageTags(): List<String> =
+        (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct()
 
-    protected fun getPossibleStreetsignLanguageTags(): List<String> {
-        val result = mutableListOf<String>()
-        result.addAll(countryInfo.officialLanguages)
-        result.addAll(countryInfo.additionalStreetsignLanguages)
-        return result.distinct()
-    }
+    protected open fun getAbbreviationsByLocale(): AbbreviationsByLocale? = null
+
+    protected open fun getLocalizedNameSuggestions(): List<MutableMap<String, String>>? = null
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
-        outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
+        adapter?.localizedNames?.let { outState.putString(LOCALIZED_NAMES_DATA, Json.encodeToString(it)) }
     }
 
     final override fun onClickOk() {
@@ -84,16 +71,16 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     private fun createOsmModel(): List<LocalizedName> {
-        val data = adapter.localizedNames.toMutableList()
+        val data = adapter?.localizedNames.orEmpty().toMutableList()
         // language is only specified explicitly in OSM (usually) if there is more than one name specified
-        if(data.size == 1) {
+        if (data.size == 1) {
             data[0].languageTag = ""
         }
         // but if there is more than one language, ensure that a "main" name is also specified
         else {
             val mainLanguageIsSpecified = data.indexOfFirst { it.languageTag == "" } >= 0
             // use the name specified in the top row for that
-            if(!mainLanguageIsSpecified) {
+            if (!mainLanguageIsSpecified) {
                 data.add(LocalizedName("", data[0].name))
             }
         }
@@ -113,7 +100,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         }
     }
 
-    protected fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
+    private fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
         val title = resources.getString(
             R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
             "<i>" + Html.escapeHtml(name) + "</i>"
@@ -144,12 +131,9 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     // all added name rows are not empty
-    override fun isFormComplete() = adapter.localizedNames.isNotEmpty()
-            && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
-
-
-    class InjectedFields {
-        @Inject internal lateinit var serializer: Serializer
+    override fun isFormComplete(): Boolean {
+        val localizedNames = adapter?.localizedNames.orEmpty()
+        return localizedNames.isNotEmpty() && localizedNames.all { it.name.trim().isNotEmpty() }
     }
 
     companion object {

@@ -1,16 +1,18 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 
-class AddBuildingType : OsmFilterQuestType<String>() {
+class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
-    // in the case of man_made, historic, military and power, these tags already contain
+    // in the case of man_made, historic, military, aeroway and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
-    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
+    // or question would be confusing as there is no matching reply in available answers
+    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891, #3233
     override val elementFilter = """
-        ways, relations with building = yes
+        ways, relations with (building = yes or building = unclassified)
          and !man_made
          and !historic
          and !military
@@ -19,25 +21,41 @@ class AddBuildingType : OsmFilterQuestType<String>() {
          and !attraction
          and !amenity
          and !leisure
+         and !aeroway
+         and !railway
+         and !description
          and location != underground
          and abandoned != yes
+         and abandoned != building
+         and abandoned:building != yes
          and ruins != yes and ruined != yes
     """
-    override val commitMessage = "Add building types"
+    override val changesetComment = "Add building types"
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
+    override val questTypeAchievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(answer.startsWith("man_made=")) {
-            val manMade = answer.split("=")[1]
-            changes.delete("building")
-            changes.add("man_made", manMade)
+    override fun applyAnswerTo(answer: BuildingType, tags: Tags, timestampEdited: Long) {
+        if (answer.osmKey == "man_made") {
+            tags.remove("building")
+            tags["man_made"] = answer.osmValue
+        } else if (answer.osmKey != "building") {
+            tags[answer.osmKey] = answer.osmValue
+            if (answer == BuildingType.ABANDONED) {
+                tags.remove("disused")
+            }
+            if (answer == BuildingType.RUINS && tags["disused"] == "no") {
+                tags.remove("disused")
+            }
+            if (answer == BuildingType.RUINS && tags["abandoned"] == "no") {
+                tags.remove("abandoned")
+            }
         } else {
-            changes.modify("building", answer)
+            tags["building"] = answer.osmValue
         }
     }
 }

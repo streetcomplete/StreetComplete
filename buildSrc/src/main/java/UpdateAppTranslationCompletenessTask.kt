@@ -1,6 +1,7 @@
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
+import java.util.Locale
 
 /** Update a resources file that specifies the current translation completeness for every language */
 open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
@@ -11,14 +12,16 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
         val targetFiles = targetFiles ?: return
 
         val localizationStatus = fetchLocalizations {
-            LocalizationStatus(it["code"] as String, it["percentage"] as Int)
+            LocalizationStatus(
+                Locale.forLanguageTag(it.string("code")!!).transformPOEditorLanguageTag(),
+                it.int("percentage")!!
+            )
         }
         for (status in localizationStatus) {
-            val languageCode = status.languageCode
+            val locale = status.locale
             val completedPercentage = status.completedPercentage
 
-            val javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(languageCode)
-            val androidResCodes = javaLanguageTagToAndroidResCodes(javaLanguageTag)
+            val androidResCodes = locale.toAndroidResCodes()
 
             // create a metadata file that describes how complete the translation is
             for (androidResCode in androidResCodes) {
@@ -29,13 +32,13 @@ open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
                 targetFile.writeText("""
                     <?xml version="1.0" encoding="utf-8"?>
                     <resources>
-                      <integer name="translation_completeness">${completedPercentage}</integer>
+                      <integer name="translation_completeness">$completedPercentage</integer>
                     </resources>
-                    
-                    """.trimIndent())
+
+                """.trimIndent())
             }
         }
     }
 }
 
-private data class LocalizationStatus(val languageCode: String, val completedPercentage: Int)
+private data class LocalizationStatus(val locale: Locale, val completedPercentage: Int)

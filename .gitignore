@@ -1,5 +1,7 @@
 /.gradle
-/.idea/
+/.idea/*
+!.idea/codeStyles
+!.idea/ktlint.xml
 /local.properties
 .DS_Store
 /build
@@ -7,6 +9,8 @@
 *.iml
 *.ignore
 projectFilesBackup/.idea/workspace.xml
+quest-list.csv
 /keystore.properties
 /buildSrc/build/
 /buildSrc/.gradle
+/projectFilesBackup*/

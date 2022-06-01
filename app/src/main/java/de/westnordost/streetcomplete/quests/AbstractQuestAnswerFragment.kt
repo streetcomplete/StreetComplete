@@ -1,79 +1,111 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.text.parseAsHtml
 import androidx.core.view.isGone
-import com.google.android.flexbox.FlexboxLayout
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmapi.map.data.Way
+import androidx.core.widget.NestedScrollView
+import androidx.viewbinding.ViewBinding
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.isArea
-import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
+import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
+import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
+import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.updateConfiguration
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.FutureTask
-import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
-abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
+abstract class AbstractQuestAnswerFragment<T> :
+    AbstractBottomSheetFragment(), IsShowingQuestDetails, IsLockable {
+
+    private var _binding: FragmentQuestAnswerBinding? = null
+    private val binding get() = _binding!!
+
+    protected var otherAnswersButton: TextView? = null
+        private set
+
+    override val bottomSheetContainer get() = binding.bottomSheetContainer
+    override val bottomSheet get() = binding.bottomSheet
+    override val scrollViewChild get() = binding.scrollViewChild
+    override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
+    override val bottomSheetContent get() = binding.speechbubbleContentContainer
+    override val floatingBottomView get() = binding.okButton
+    override val backButton get() = binding.closeButton
+
+    protected val scrollView: NestedScrollView get() = binding.scrollView
 
     // dependencies
-    private val countryInfos: CountryInfos
-    private val questTypeRegistry: QuestTypeRegistry
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val countryInfos: CountryInfos by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
 
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
-            if(field == null) {
-                val latLon = elementGeometry.center
-                field = countryInfos.get(latLon.longitude, latLon.latitude)
+            if (field == null) {
+                field = countryInfos.getByLocation(
+                    countryBoundaries.get(),
+                    elementGeometry.center.longitude,
+                    elementGeometry.center.latitude,
+                )
             }
             return field
         }
     protected val countryInfo get() = _countryInfo!!
 
-    // views
-    private lateinit var content: ViewGroup
-    private lateinit var buttonPanel: FlexboxLayout
-    private lateinit var otherAnswersButton: Button
+    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
+    protected val countryOrSubdivisionCode: String? get() {
+        val latLon = elementGeometry.center
+        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+    }
+
+    protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
     // passed in parameters
-    override var questId: Long = 0L
-    override var questGroup: QuestGroup = QuestGroup.OSM
+    override lateinit var questKey: QuestKey
     protected lateinit var elementGeometry: ElementGeometry private set
     private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    protected var osmElement: OsmElement? = null
+    protected var osmElement: Element? = null
         private set
 
     private var currentContext = WeakReference<Context>(null)
-    private var currentCountryContext: ContextWrapper? = null
 
     private val englishResources: Resources
         get() {
@@ -85,108 +117,152 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     private var startedOnce = false
 
+    override var locked: Boolean = false
+        set(value) {
+            field = value
+            binding.glassPane.isGone = !locked
+        }
+
     // overridable by child classes
     open val contentLayoutResId: Int? = null
-    open val buttonsResId: Int? = null
-    open val otherAnswers = listOf<OtherAnswer>()
+    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<AnswerItem>()
     open val contentPadding = true
 
     interface Listener {
         /** Called when the user answered the quest with the given id. What is in the bundle, is up to
-         * the dialog with which the quest was answered  */
-        fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any)
+         * the dialog with which the quest was answered */
+        fun onAnsweredQuest(questKey: QuestKey, answer: Any)
 
-        /** Called when the user chose to leave a note instead  */
-        fun onComposeNote(questId: Long, group: QuestGroup, questTitle: String)
+        /** Called when the user chose to leave a note instead */
+        fun onComposeNote(questKey: QuestKey, questTitle: String)
 
-        /** Called when the user chose to split the way  */
-        fun onSplitWay(osmQuestId: Long)
+        /** Called when the user chose to split the way */
+        fun onSplitWay(osmQuestKey: OsmQuestKey)
 
-        /** Called when the user chose to skip the quest  */
-        fun onSkippedQuest(questId: Long, group: QuestGroup)
+        /** Called when the user chose to skip the quest */
+        fun onSkippedQuest(questKey: QuestKey)
+
+        /** Called when the node shall be deleted */
+        fun onDeletePoiNode(osmQuestKey: OsmQuestKey)
+
+        /** Called when a new feature has been selected for an element (a shop of some kind) */
+        fun onReplaceShopElement(osmQuestKey: OsmQuestKey, tags: Map<String, String>)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    init {
-        val fields = InjectedFields()
-        Injector.applicationComponent.inject(fields)
-        countryInfos = fields.countryInfos
-        featureDictionaryFuture = fields.featureDictionaryFuture
-        questTypeRegistry = fields.questTypeRegistry
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val args = requireArguments()
-        questId = args.getLong(ARG_QUEST_ID)
-        questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
-        osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
-        elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
+        questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
+        osmElement = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
+        elementGeometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
+
+        /* The Android resource system is not designed to offer different resources depending on the
+         * country (code). But what it can do is to offer different resources for different
+         * "mobile country codes" - i.e. in which country your mobile phone network provider
+         * operates.
+         *
+         * A few quest forms want to display different resources depending on the country.
+         *
+         * So what we do here is to override the parent activity's "mobile country code" resource
+         * configuration and use this mechanism to access our country-dependent resources */
+        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_quest_answer, container, false)
-        content = view.findViewById(R.id.content)
-        buttonPanel = view.findViewById(R.id.buttonPanel)
-        otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
+        _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
+
+        /* content and buttons panel should be inflated in onCreateView because in onViewCreated,
+        *  subclasses may already want to access the content. */
+        otherAnswersButton = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
 
         contentLayoutResId?.let { setContentView(it) }
-        buttonsResId?.let { setButtonsView(it) }
-        if(!contentPadding) content.setPadding(0,0,0,0)
-        return view
+        updateButtonPanel()
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
+        binding.titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
-        val levelLabelText = getLocationLabelText()
-        locationLabel.isGone = levelLabelText == null
+        val levelLabelText = osmElement?.let { resources.getNameAndLocationLabelString(it.tags, featureDictionary) }
+        binding.titleHintLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            locationLabel.text = levelLabelText
+            binding.titleHintLabel.text = levelLabelText
         }
 
         // no content? -> hide the content container
-        if (content.childCount == 0) {
-            content.visibility = View.GONE
+        if (binding.content.childCount == 0) {
+            binding.content.visibility = View.GONE
         }
     }
 
-    private fun assembleOtherAnswers() : List<OtherAnswer> {
-        val answers = mutableListOf<OtherAnswer>()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        otherAnswersButton = null
+    }
 
-        val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+    private fun assembleOtherAnswers(): List<AnswerItem> {
+        val answers = mutableListOf<AnswerItem>()
+
+        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
-        if (isSplitWayEnabled) {
-            val way = osmElement as? Way
-            if (way != null) {
-                /* splitting up a closed roundabout can be very complex if it is part of a route
-               relation, so it is not supported
-               https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
-            */
-                val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
-                    way.tags?.get("junction") == "roundabout"
-                if (!isClosedRoundabout && !way.isArea()) {
-                    val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
-                        onClickSplitWayAnswer()
-                    }
-                    answers.add(splitWay)
-                }
-            }
-        }
+        createSplitWayAnswer()?.let { answers.add(it) }
+        createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
+
         answers.addAll(otherAnswers)
         return answers
     }
 
+    private fun createSplitWayAnswer(): AnswerItem? {
+        val isSplitWayEnabled = (questType as? OsmElementQuestType)?.isSplitWayEnabled == true
+        if (!isSplitWayEnabled) return null
+
+        val way = osmElement as? Way ?: return null
+
+        /* splitting up a closed roundabout can be very complex if it is part of a route
+           relation, so it is not supported
+           https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
+        */
+        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull()
+            && way.tags["junction"] == "roundabout"
+        if (isClosedRoundabout) return null
+
+        if (way.isArea()) return null
+
+        return AnswerItem(R.string.quest_generic_answer_differs_along_the_way) {
+            onClickSplitWayAnswer()
+        }
+    }
+
+    private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
+        val isDeletePoiEnabled =
+            (questType as? OsmElementQuestType)?.isDeleteElementEnabled == true
+                && osmElement?.type == ElementType.NODE
+        val isReplaceShopEnabled = (questType as? OsmElementQuestType)?.isReplaceShopEnabled == true
+        if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
+        check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
+            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
+        }
+
+        return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
+            if (isDeletePoiEnabled) deletePoiNode()
+            else if (isReplaceShopEnabled) replaceShopElement()
+        }
+    }
+
     private fun showOtherAnswers() {
+        val otherAnswersButton = otherAnswersButton ?: return
         val answers = assembleOtherAnswers()
         val popup = PopupMenu(requireContext(), otherAnswersButton)
         for (i in answers.indices) {
@@ -202,94 +278,20 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
-    private fun getLocationLabelText(): CharSequence? {
-        // prefer to show the level if both are present because it is a more precise indication
-        // where it is supposed to be
-        return getLevelLabelText() ?: getHouseNumberLabelText()
-    }
-
-    private fun getLevelLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
-           denominated in the building and thus may (sometimes) not coincide with it. E.g.
-           addr:floor may be "M" while level is "2" */
-        val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
-        if (level != null) {
-            return resources.getString(R.string.on_level, level)
-        }
-        val tunnel = tags["tunnel"]
-        if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
-            return resources.getString(R.string.underground)
-        }
-        return null
-    }
-
-    private fun getHouseNumberLabelText(): CharSequence? {
-        val tags = osmElement?.tags ?: return null
-
-        val houseName = tags["addr:housename"]
-        val conscriptionNumber = tags["addr:conscriptionnumber"]
-        val streetNumber = tags["addr:streetnumber"]
-        val houseNumber = tags["addr:housenumber"]
-
-        if (houseName != null) {
-            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
-                .parseAsHtml()
-        }
-        if (conscriptionNumber != null) {
-            if (streetNumber != null) {
-                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
-            } else {
-                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
-            }
-        }
-        if (houseNumber != null) {
-            return resources.getString(R.string.at_housenumber, houseNumber)
-        }
-        return null
-    }
-
     override fun onStart() {
         super.onStart()
-        if(!startedOnce) {
+        if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
         }
-        
+
         val answers = assembleOtherAnswers()
         if (answers.size == 1) {
-            otherAnswersButton.setText(answers.first().titleResourceId)
-            otherAnswersButton.setOnClickListener { answers.first().action() }
+            otherAnswersButton?.setText(answers.first().titleResourceId)
+            otherAnswersButton?.setOnClickListener { answers.first().action() }
         } else {
-            otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
-            otherAnswersButton.setOnClickListener { showOtherAnswers() }
-        }
-    }
-
-    /** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
-     * will not resolve any resources specified in the XML according to MCC  */
-    override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
-        // will always return a layout inflater for the current country
-        return super.onGetLayoutInflater(savedInstanceState).cloneInContext(context)
-    }
-
-    override fun getContext(): Context? {
-        val context = super.getContext()
-        if (currentContext.get() !== context) {
-            currentContext = WeakReference<Context>(context)
-            currentCountryContext = if (context != null) createCurrentCountryContextWrapper(context) else null
-        }
-        return currentCountryContext
-    }
-
-    private fun createCurrentCountryContextWrapper(context: Context): ContextWrapper {
-        val conf = Configuration(context.resources.configuration)
-        conf.mcc = countryInfo.mobileCountryCode ?: 0
-        val res = context.createConfigurationContext(conf).resources
-        return object : ContextWrapper(context) {
-            override fun getResources(): Resources {
-                return res
-            }
+            otherAnswersButton?.setText(R.string.quest_generic_otherAnswers)
+            otherAnswersButton?.setOnClickListener { showOtherAnswers() }
         }
     }
 
@@ -304,8 +306,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-        listener?.onComposeNote(questId, questGroup, questTitle)
+        val questTitle = englishResources.getQuestTitle(questType, osmElement)
+        listener?.onComposeNote(questKey, questTitle)
     }
 
     private fun onClickSplitWayAnswer() {
@@ -313,42 +315,84 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             .setMessage(R.string.quest_split_way_description)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                if (questGroup != QuestGroup.OSM) throw IllegalStateException()
-                listener?.onSplitWay(questId)
+                listener?.onSplitWay(questKey as OsmQuestKey)
             }
             .show()
         }
     }
 
     protected fun applyAnswer(data: T) {
-        listener?.onAnsweredQuest(questId, questGroup, data as Any)
+        listener?.onAnsweredQuest(questKey, data as Any)
     }
 
     protected fun skipQuest() {
-        listener?.onSkippedQuest(questId, questGroup)
+        listener?.onSkippedQuest(questKey)
     }
 
-    protected fun setContentView(resourceId: Int): View {
-        if (content.childCount > 0) {
-            content.removeAllViews()
+    protected fun replaceShopElement() {
+        val ctx = context ?: return
+        val element = osmElement ?: return
+
+        if (IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(element)) {
+            ShopGoneDialog(
+                ctx,
+                element.geometryType,
+                countryOrSubdivisionCode,
+                featureDictionary,
+                onSelectedFeature = { tags ->
+                    listener?.onReplaceShopElement(questKey as OsmQuestKey, tags)
+                },
+                onLeaveNote = this::composeNote
+            ).show()
+        } else {
+            composeNote()
         }
-        content.visibility = View.VISIBLE
-        return layoutInflater.inflate(resourceId, content)
     }
 
-    protected fun setNoContentPadding() {
-        content.setPadding(0, 0, 0, 0)
+    protected fun deletePoiNode() {
+        val context = context ?: return
+
+        AlertDialog.Builder(context)
+            .setMessage(R.string.osm_element_gone_description)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ ->
+                listener?.onDeletePoiNode(questKey as OsmQuestKey)
+            }
+            .setNeutralButton(R.string.leave_note) { _, _ ->
+                composeNote()
+            }.show()
     }
 
-    protected fun setButtonsView(resourceId: Int) {
-        otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        removeButtonsView()
-        activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+    /** Inflate given layout resource id into the content view and return the inflated view */
+    protected fun setContentView(resourceId: Int): View {
+        if (binding.content.childCount > 0) {
+            binding.content.removeAllViews()
+        }
+        binding.content.visibility = View.VISIBLE
+        updateContentPadding()
+        layoutInflater.inflate(resourceId, binding.content)
+        return binding.content.getChildAt(0)
     }
 
-    protected fun removeButtonsView() {
-        if (buttonPanel.childCount > 1) {
-            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+    private fun updateContentPadding() {
+        if (!contentPadding) {
+            binding.content.setPadding(0, 0, 0, 0)
+        } else {
+            val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
+            val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
+            binding.content.setPadding(horizontal, vertical, horizontal, vertical)
+        }
+    }
+
+    protected fun updateButtonPanel() {
+        // the other answers button is never removed/replaced
+        if (binding.buttonPanel.childCount > 1) {
+            binding.buttonPanel.removeViews(1, binding.buttonPanel.childCount - 1)
+        }
+
+        for (buttonPanelAnswer in buttonPanelAnswers) {
+            val button = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
+            button.setText(buttonPanelAnswer.titleResourceId)
+            button.setOnClickListener { buttonPanelAnswer.action() }
         }
     }
 
@@ -356,31 +400,27 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         // default empty implementation
     }
 
-    class InjectedFields {
-        @Inject internal lateinit var countryInfos: CountryInfos
-        @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-        @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
-    }
+    protected inline fun <reified T : ViewBinding> contentViewBinding(
+        noinline viewBinder: (View) -> T
+    ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
     companion object {
-        private const val ARG_QUEST_ID = "questId"
-        private const val ARG_QUEST_GROUP = "questGroup"
+        private const val ARG_QUEST_KEY = "quest_key"
         private const val ARG_ELEMENT = "element"
         private const val ARG_GEOMETRY = "geometry"
         private const val ARG_QUESTTYPE = "quest_type"
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(quest: Quest, group: QuestGroup, element: OsmElement?, rotation: Float, tilt: Float) = bundleOf(
-            ARG_QUEST_ID to quest.id!!,
-            ARG_QUEST_GROUP to group.name,
-            ARG_ELEMENT to element,
-            ARG_GEOMETRY to quest.geometry,
-            ARG_QUESTTYPE to quest.type.javaClass.simpleName,
+        fun createArguments(quest: Quest, element: Element?, rotation: Float, tilt: Float) = bundleOf(
+            ARG_QUEST_KEY to Json.encodeToString(quest.key),
+            ARG_ELEMENT to element?.let { Json.encodeToString(element) },
+            ARG_GEOMETRY to Json.encodeToString(quest.geometry),
+            ARG_QUESTTYPE to quest.type::class.simpleName!!,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt
         )
     }
 }
 
-data class OtherAnswer(val titleResourceId: Int, val action: () -> Unit)
+data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)

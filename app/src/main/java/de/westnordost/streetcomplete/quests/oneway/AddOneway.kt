@@ -1,17 +1,18 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.quests.bikeway.createCyclewaySides
-import de.westnordost.streetcomplete.quests.bikeway.estimatedWidth
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.quests.parking_lanes.*
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
+import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 
 class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
@@ -23,16 +24,17 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     /** find only those roads eligible for asking for oneway */
     private val elementFilter by lazy { """
         ways with highway ~ living_street|residential|service|tertiary|unclassified
-         and !oneway and area != yes and junction != roundabout 
+         and width <= 4 and (!lanes or lanes <= 1)
+         and !oneway and area != yes and junction != roundabout
          and (access !~ private|no or (foot and foot !~ private|no))
-         and lanes <= 1 and width
     """.toElementFilterExpression() }
 
-    override val commitMessage = "Add whether this road is a one-way road because it is quite slim"
+    override val changesetComment = "Add whether this road is a one-way road because it is quite slim"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
@@ -46,13 +48,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
                 val prevCount = connectionCountByNodeIds[nodeId] ?: 0
                 connectionCountByNodeIds[nodeId] = prevCount + 1
             }
-            if (elementFilter.matches(road)) {
-                // check if the width of the road minus the space consumed by other stuff is quite narrow
-                val width = road.tags["width"]?.toFloatOrNull()
-                val isNarrow = width != null && width <= estimatedWidthConsumedByOtherThings(road.tags) + 4f
-                if (isNarrow) {
-                    onewayCandidates.add(road)
-                }
+            if (isOnewayRoadCandidate(road)) {
+                onewayCandidates.add(road)
             }
         }
 
@@ -67,34 +64,27 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? = null
-    /* return null because we also want to have a look at the surrounding geometry to filter out
-    *  (some) dead ends */
-
-    private fun estimatedWidthConsumedByOtherThings(tags: Map<String, String>): Float {
-        return estimateWidthConsumedByParkingLanes(tags) +
-                estimateWidthConsumedByCycleLanes(tags)
+    override fun isApplicableTo(element: Element): Boolean? {
+        if (!isOnewayRoadCandidate(element)) return false
+        /* return null because oneway candidate roads must also be connected on both ends with other
+           roads for which we'd need to look at surrounding geometry */
+        return null
     }
 
-    private fun estimateWidthConsumedByParkingLanes(tags: Map<String, String>): Float {
-        val sides = createParkingLaneSides(tags) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.right?.estimatedWidth ?: 0f)
-    }
-
-    private fun estimateWidthConsumedByCycleLanes(tags: Map<String, String>): Float {
-        /* left or right hand traffic is irrelevant here because we don't make a difference between
-           left and right side */
-        val sides = createCyclewaySides(tags, false) ?: return 0f
-        return (sides.left?.estimatedWidth ?: 0f) + (sides.left?.estimatedWidth ?: 0f)
+    private fun isOnewayRoadCandidate(road: Element): Boolean {
+        if (!elementFilter.matches(road)) return false
+        // check if the width of the road minus the space consumed by other stuff is quite narrow
+        val usableWidth = estimateUsableRoadwayWidth(road.tags) ?: return false
+        return usableWidth <= 4f
     }
 
     override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
-        changes.add("oneway", when(answer) {
+    override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, timestampEdited: Long) {
+        tags["oneway"] = when (answer) {
             FORWARD -> "yes"
             BACKWARD -> "-1"
             NO_ONEWAY -> "no"
-        })
+        }
     }
 }

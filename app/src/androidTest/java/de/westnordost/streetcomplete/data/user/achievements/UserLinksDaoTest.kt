@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -9,7 +9,7 @@ class UserLinksDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: UserLinksDao
 
     @Before fun createDao() {
-        dao = UserLinksDao(dbHelper)
+        dao = UserLinksDao(database)
     }
 
     @Test fun putGetAll() {
@@ -21,7 +21,8 @@ class UserLinksDaoTest : ApplicationDbTestCase() {
 
     @Test fun addAll() {
         dao.add(ONE)
-        assertEquals(2, dao.addAll(listOf(ONE, TWO, THREE)))
+        dao.addAll(listOf(ONE, TWO, THREE))
+        assertEquals(listOf(ONE, TWO, THREE), dao.getAll())
     }
 }
 

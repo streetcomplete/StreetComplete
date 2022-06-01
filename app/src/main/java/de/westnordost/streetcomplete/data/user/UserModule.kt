@@ -1,43 +1,34 @@
 package de.westnordost.streetcomplete.data.user
 
-import android.content.SharedPreferences
-import dagger.Module
-import dagger.Provides
 import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
-import oauth.signpost.basic.DefaultOAuthConsumer
-import oauth.signpost.basic.DefaultOAuthProvider
-import javax.inject.Named
-import javax.inject.Provider
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 
-@Module
-object UserModule {
-    private const val STATISTICS_BACKEND_URL = "https://www.westnordost.de/streetcomplete/statistics/"
-    private const val BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/"
-    private const val CONSUMER_KEY = "L3JyJMjVk6g5atwACVySRWgmnrkBAH7u0U18ALO7"
-    private const val CONSUMER_SECRET = "uNjPaXZw15CPHdCSeMzttRm20tyFGaBPO7jHt52c"
-    private const val CALLBACK_SCHEME = "streetcomplete"
-    private const val CALLBACK_HOST = "oauth"
+private const val BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/"
+private const val CONSUMER_KEY = "NV4cEoqQ94Kuoowh8qGJvUJLnbts40WiNykyeC1T"
+private const val CONSUMER_SECRET = "r68v1Bd7RewTixAp0dMdCwn3w5iQvmpk4HlJcH2y"
+private const val CALLBACK_SCHEME = "streetcomplete"
+private const val CALLBACK_HOST = "oauth"
 
-	@Provides fun statisticsDownloader(): StatisticsDownloader =
-        StatisticsDownloader(STATISTICS_BACKEND_URL)
-
-    @Provides fun oAuthStore(prefs: SharedPreferences): OAuthStore = OAuthStore(
-        prefs, Provider { defaultOAuthConsumer() }
-    )
-
-	@Provides fun oAuthProvider(): OAuthProvider = DefaultOAuthProvider(
+val userModule = module {
+    factory(named("OAuthCallbackScheme")) { CALLBACK_SCHEME }
+    factory(named("OAuthCallbackHost")) { CALLBACK_HOST }
+    factory<OAuthConsumer> { OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET) }
+    factory<OAuthProvider> { OkHttpOAuthProvider(
         BASE_OAUTH_URL + "request_token",
         BASE_OAUTH_URL + "access_token",
         BASE_OAUTH_URL + "authorize"
-    )
+    ) }
+    factory { OAuthStore(get()) }
 
-	@Provides fun defaultOAuthConsumer(): OAuthConsumer =
-        DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET)
+    single<UserDataSource> { get<UserDataController>() }
+    single { UserDataController(get(), get()) }
 
-	@Provides @Named("OAuthCallbackScheme")
-    fun oAuthCallbackScheme(): String = CALLBACK_SCHEME
+    single<UserLoginStatusSource> { get<UserLoginStatusController>() }
+    single { UserLoginStatusController(get(), get(), get()) }
 
-	@Provides @Named("OAuthCallbackHost")
-    fun oAuthCallbackHost(): String = CALLBACK_HOST
+    single { UserUpdater(get(), get(), get(), get(), get()) }
 }

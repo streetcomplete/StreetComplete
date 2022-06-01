@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 81.6 62.4" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="filter1329" color-interpolation-filters="sRGB">
+   <feFlood flood-color="rgb(128,128,128)" result="flood"/>
+   <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+   <feGaussianBlur in="composite1" result="blur" stdDeviation="1"/>
+   <feOffset dx="0" dy="-0.5" result="offset"/>
+   <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+  </filter>
+ </defs>
+ <path transform="matrix(1 0 0 -1 0 62.4)" d="m40.8 5.2-18 24h-4c-7 0-12 5-12 12v4c0 7 5 12 12 12h44c7 0 12-5 12-12v-4c0-7-5-12-12-12h-4z" fill="#fff" filter="url(#filter1329)" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width=".167"/>
+</svg>

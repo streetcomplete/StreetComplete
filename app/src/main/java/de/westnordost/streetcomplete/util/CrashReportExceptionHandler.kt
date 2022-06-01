@@ -2,24 +2,23 @@ package de.westnordost.streetcomplete.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
-import androidx.core.os.bundleOf
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.sendEmail
+import de.westnordost.streetcomplete.util.ktx.toast
 import java.io.IOException
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.util.*
-import javax.inject.Inject
-import javax.inject.Singleton
+import java.util.Locale
 
-@Singleton class CrashReportExceptionHandler @Inject constructor(
+/** Exception handler that takes care of asking the user to send the report of the last crash
+ *  to the email address [mailReportTo].
+ *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
+ *  on next startup */
+class CrashReportExceptionHandler(
     private val appCtx: Context,
     private val mailReportTo: String,
     private val crashReportFile: String
@@ -56,18 +55,18 @@ import javax.inject.Singleton
 
     private fun askUserToSendErrorReport(activityCtx: Activity, @StringRes titleResourceId: Int, error: String?) {
         val report = """
-Describe how to reproduce it here:
+        Describe how to reproduce it here:
 
 
 
-$error
-"""
+        $error
+        """.trimIndent()
 
         AlertDialog.Builder(activityCtx)
             .setTitle(titleResourceId)
             .setMessage(R.string.crash_message)
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
-                sendEmail(activityCtx, report)
+                activityCtx.sendEmail(mailReportTo, "Error Report", report)
             }
             .setNegativeButton(android.R.string.no) { _, _ ->
                 activityCtx.toast("\uD83D\uDE22")
@@ -80,14 +79,13 @@ $error
         val stackTrace = StringWriter()
         e.printStackTrace(PrintWriter(stackTrace))
         writeCrashReportToFile("""
-Thread: ${t.name}
-App version: ${BuildConfig.VERSION_NAME}
-Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
-Locale: ${Locale.getDefault()}
-Stack trace:
-$stackTrace
-"""
-        )
+        Thread: ${t.name}
+        App version: ${BuildConfig.VERSION_NAME}
+        Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
+        Locale: ${Locale.getDefault()}
+        Stack trace:
+        $stackTrace
+        """.trimIndent())
         defaultUncaughtExceptionHandler!!.uncaughtException(t, e)
     }
 
@@ -110,21 +108,5 @@ $stackTrace
 
     private fun deleteCrashReport() {
         appCtx.deleteFile(crashReportFile)
-    }
-
-    private fun sendEmail(activityCtx: Activity, text: String) {
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = "mailto:".toUri()
-        intent.putExtras(bundleOf(
-            Intent.EXTRA_EMAIL to arrayOf(mailReportTo),
-            Intent.EXTRA_SUBJECT to ApplicationConstants.USER_AGENT + " Error Report",
-            Intent.EXTRA_TEXT to text
-        ))
-
-        if (intent.resolveActivity(activityCtx.packageManager) != null) {
-            activityCtx.startActivity(intent)
-        } else {
-            activityCtx.toast(R.string.no_email_client)
-        }
     }
 }

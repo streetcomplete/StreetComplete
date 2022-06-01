@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Body"
+        android:textSize="16sp"
+        android:text="@string/quest_fee_answer_no_but_maxstay"/>
+
+    <include
+        android:id="@+id/durationInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        layout="@layout/view_duration"/>
+
+    <include
+        android:id="@+id/timeRestrictionSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/view_time_restriction_select"/>
+
+</LinearLayout>

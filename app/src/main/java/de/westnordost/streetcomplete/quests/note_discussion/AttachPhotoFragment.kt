@@ -1,174 +1,110 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.os.Build
+import android.content.ActivityNotFoundException
+import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.FileProvider
-import androidx.core.net.toUri
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.ApplicationConstants.*
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
-import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
-import kotlinx.android.synthetic.main.fragment_attach_photo.*
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.*
+import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
+import de.westnordost.streetcomplete.util.ktx.hasCameraPermission
+import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import java.lang.Exception
+import kotlin.coroutines.resume
 
-class AttachPhotoFragment : Fragment() {
+class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
-    val imagePaths: List<String> get() = noteImageAdapter.list
-    private var photosListView : RecyclerView? = null
-    private var hintView : TextView? = null
-
-    private var currentImagePath: String? = null
+    private val binding by viewBinding(FragmentAttachPhotoBinding::bind)
+    private val launchTakePhoto = TakePhoto(this, ::askUserToAcknowledgeCameraPermissionRationale)
 
     private lateinit var noteImageAdapter: NoteImageAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_attach_photo, container, false)
+    val imagePaths: List<String> get() = noteImageAdapter.list
+    var hasGpxAttached = false
 
-        // see #1768: Android KitKat and below do not recognize letsencrypt certificates
-        val isPreLollipop = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
-        val hasCamera = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
-        if (isPreLollipop || !hasCamera) {
-            view.visibility = View.GONE
-        }
-        photosListView = view.findViewById(R.id.gridView)
-        hintView = view.findViewById(R.id.photosAreUsefulExplanation)
-        return view
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    private fun updateHintVisibility(){
-        val isImagePathsEmpty = imagePaths.isEmpty()
-        photosListView?.isGone = isImagePathsEmpty
-        hintView?.isGone = !isImagePathsEmpty
+        val paths = savedInstanceState?.getStringArrayList(PHOTO_PATHS) ?: ArrayList()
+        noteImageAdapter = NoteImageAdapter(paths, requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        takePhotoButton.setOnClickListener { takePhoto() }
+        view.isGone = !requireActivity().packageManager.hasSystemFeature(FEATURE_CAMERA_ANY)
 
-        val paths: ArrayList<String>
-        if (savedInstanceState != null) {
-            paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)!!
-            currentImagePath = savedInstanceState.getString(CURRENT_PHOTO_PATH)
-        } else {
-            paths = ArrayList()
-            currentImagePath = null
-        }
-
-        noteImageAdapter = NoteImageAdapter(paths, requireContext())
-        gridView.layoutManager = LinearLayoutManager(
-            context,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        gridView.adapter = noteImageAdapter
+        binding.takePhotoButton.setOnClickListener { lifecycleScope.launch { takePhoto() } }
+        binding.photosList.adapter = noteImageAdapter
         noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
+
+        binding.attachedGpxView.isGone = !hasGpxAttached
+
         updateHintVisibility()
+    }
+
+    private fun updateHintVisibility() {
+        binding.photosList.isGone = imagePaths.isEmpty()
+        binding.photosAreUsefulExplanation.isGone = imagePaths.isNotEmpty()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putStringArrayList(PHOTO_PATHS, ArrayList(imagePaths))
-        outState.putString(CURRENT_PHOTO_PATH, currentImagePath)
     }
 
-    private fun takePhoto() {
-        val takePhotoIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        activity?.packageManager?.let { packageManager ->
-            if (takePhotoIntent.resolveActivity(packageManager) != null) {
-                try {
-                    val photoFile = createImageFile()
-                    val photoUri = if (Build.VERSION.SDK_INT > 21) {
-                        //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-                        FileProvider.getUriForFile(requireContext(),getString(R.string.fileprovider_authority),photoFile)
-                    } else {
-                        photoFile.toUri()
-                    }
-                    currentImagePath = photoFile.path
-                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                    startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
-                } catch (e: IOException) {
-                    Log.e(TAG, "Unable to create file for photo", e)
-                    context?.toast(R.string.quest_leave_new_note_create_image_error)
-                } catch (e: IllegalArgumentException) {
-                    Log.e(TAG, "Unable to create file for photo", e)
+    private suspend fun takePhoto() {
+        try {
+            val filePath = launchTakePhoto(requireActivity())
+            if (filePath == null) {
+                if (activity?.hasCameraPermission == false) context?.toast(R.string.no_camera_permission_toast)
+                return
+            }
+            noteImageAdapter.list.add(filePath)
+            noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
+        } catch (e: Exception) {
+            when (e) {
+                is ActivityNotFoundException -> context?.toast(R.string.no_camera_app)
+                else -> {
+                    Log.e(TAG, "Unable to create photo", e)
                     context?.toast(R.string.quest_leave_new_note_create_image_error)
                 }
             }
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_TAKE_PHOTO) {
-            if (resultCode == RESULT_OK) {
-                try {
-                    val path = currentImagePath!!
-                    val bitmap = decodeScaledBitmapAndNormalize(path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
-                    val out = FileOutputStream(path)
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
-
-                    noteImageAdapter.list.add(path)
-                    noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
-                } catch (e: IOException) {
-                    Log.e(TAG, "Unable to rescale the photo", e)
-                    context?.toast(R.string.quest_leave_new_note_create_image_error)
-                    removeCurrentImage()
-                }
-
-            } else {
-                removeCurrentImage()
-            }
-            currentImagePath = null
-        }
-    }
-
-    private fun removeCurrentImage() {
-        currentImagePath?.let {
-            val photoFile = File(it)
-            if (photoFile.exists()) {
-                photoFile.delete()
-            }
-        }
-    }
-
-    private fun createImageFile(): File {
-        val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
-        val file = File(directory, imageFileName)
-        if(!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
-        return file
     }
 
     fun deleteImages() {
         deleteImages(imagePaths)
     }
 
+    /* ----------------------------------- Permission request ----------------------------------- */
+
+    /** Show dialog that explains why the camera permission is necessary. Returns whether the user
+     *  acknowledged the rationale. */
+    private suspend fun askUserToAcknowledgeCameraPermissionRationale(): Boolean =
+        suspendCancellableCoroutine { cont ->
+            val dlg = AlertDialog.Builder(requireContext())
+                .setTitle(R.string.no_camera_permission_warning_title)
+                .setMessage(R.string.no_camera_permission_warning)
+                .setPositiveButton(android.R.string.ok) { _, _ -> cont.resume(true) }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
+                .setOnCancelListener { cont.resume(false) }
+                .create()
+            cont.invokeOnCancellation { dlg.cancel() }
+            dlg.show()
+        }
+
     companion object {
-
         private const val TAG = "AttachPhotoFragment"
-        private const val REQUEST_TAKE_PHOTO = 1
-
         private const val PHOTO_PATHS = "photo_paths"
-        private const val CURRENT_PHOTO_PATH = "current_photo_path"
     }
 }

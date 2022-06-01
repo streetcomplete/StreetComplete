@@ -1,41 +1,38 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = "nodes with amenity = post_box and !ref and !ref:signed"
-
-    override val icon = R.drawable.ic_quest_mail_ref
-    override val commitMessage = "Add postbox refs"
+    override val changesetComment = "Add postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
-
+    override val icon = R.drawable.ic_quest_mail_ref
+    override val isDeleteElementEnabled = true
+    override val questTypeAchievements = listOf(POSTMAN)
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
-            "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
+        "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxRef_title
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
-        return if (hasName) R.string.quest_postboxRef_name_title
-               else         R.string.quest_postboxRef_title
-    }
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxRefForm()
 
-    override fun applyAnswerTo(answer: PostboxRefAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is NoRefVisible -> changes.add("ref:signed", "no")
-            is Ref ->          changes.add("ref", answer.ref)
+    override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is NoRefVisible -> tags["ref:signed"] = "no"
+            is Ref ->          tags["ref"] = answer.ref
         }
     }
 }

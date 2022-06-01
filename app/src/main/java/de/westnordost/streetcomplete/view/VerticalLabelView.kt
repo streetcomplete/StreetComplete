@@ -9,9 +9,10 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import kotlin.math.min
 
+/** A very basic text view whose text is displayed vertically. No line break is possible */
 class VerticalLabelView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -30,25 +31,28 @@ class VerticalLabelView @JvmOverloads constructor(
         val a = context.obtainStyledAttributes(attrs, R.styleable.VerticalLabelView)
 
         setText(a.getString(R.styleable.VerticalLabelView_android_text))
-        setTextSize(a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, 16f.toPx(context).toInt()))
+        setTextSize(a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, context.dpToPx(16).toInt()))
         setTextColor(a.getColor(R.styleable.VerticalLabelView_android_textColor, Color.BLACK))
         orientationRight = a.getBoolean(R.styleable.VerticalLabelView_orientationRight, false)
         a.recycle()
     }
 
     fun setText(text: String?) {
+        if (this.text == text) return
         this.text = text
         requestLayout()
         invalidate()
     }
 
     fun setTextSize(size: Int) {
+        if (textPaint.textSize == size.toFloat()) return
         textPaint.textSize = size.toFloat()
         requestLayout()
         invalidate()
     }
 
     fun setTextColor(color: Int) {
+        if (textPaint.color == color) return
         textPaint.color = color
         invalidate()
     }
@@ -81,7 +85,7 @@ class VerticalLabelView @JvmOverloads constructor(
         text?.let {
             val originY = paddingTop + textBounds.width() / 2f
             if (orientationRight) {
-                val originX = paddingLeft -  textBounds.height() - textPaint.ascent()
+                val originX = paddingLeft - textBounds.height() - textPaint.ascent()
                 canvas.translate(originX, originY)
                 canvas.rotate(90f)
             } else {

@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-firstDayOfWorkweek: Su
+firstDayOfWorkweek: Sa
 mobileCountryCode: 637
 officialLanguages: [so, ar]
-orchardProduces: [tomato, banana, date, coconut, orange, lemon, lime, grapefruit, guava, mango, mangosteen]
 popularReligions: [muslim]
 workweekDays: 6
+orchardProduces: [tomato, coconut, date, orange, banana, lemon, lime, grapefruit, guava, mango, mangosteen]

@@ -1,9 +1,16 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Swedbank, Citadele, SEB, DNB, Luminor, Nordea, DnB Nord, SEB banka, PrivatBank, DnB, Hipotēku banka,
-   DNB nord, '"AS ""SEB banka"""', SEB Unibanka, Krājbanka, DNB banka, BlueOrange]
-chargingStationOperators: [CSDD, Elektrum]
-isLivingStreetKnown: true
-isSlowZoneKnown: true
+centerLineStyle: white
+edgeLineStyle: white
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 247
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [lv]
-orchardProduces: [apple, tomato, strawberry, pear, cranberry, blueberry, raspberry, plum, cherry]
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ZONA
+atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, BlueOrange]
+chargingStationOperators: [CSDD, Elektrum]
+orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]

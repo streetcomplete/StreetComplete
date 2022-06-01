@@ -3,26 +3,26 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import kotlinx.android.synthetic.main.quest_ref.*
+import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddPostboxRefForm : AbstractQuestFormAnswerFragment<PostboxRefAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_ref
+    private val binding by contentViewBinding(QuestRefBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_ref_answer_noRef) { confirmNoRef() }
+        AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
-    private val ref get() = refInput?.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        refInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        binding.refInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun onClickOk() {

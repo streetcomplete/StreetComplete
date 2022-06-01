@@ -2,26 +2,23 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.Injector
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import java.util.*
-import javax.inject.Inject
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import org.koin.android.ext.android.inject
+import java.util.Locale
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
-    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+    private val abbreviationsByLocale: AbbreviationsByLocale by inject()
+    private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
     private var streetNameInput: EditText? = null
     private var placeNameInput: EditText? = null
@@ -33,20 +30,14 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private val placeName: String get() = placeNameInput?.text?.toString().orEmpty().trim()
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
+        AnswerItem(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
     )
 
-    init {
-        Injector.applicationComponent.inject(this)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
         setLayout(if (isPlaceName) R.layout.quest_housenumber_place else R.layout.quest_housenumber_street)
-
-        return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -58,7 +49,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         if (isPlaceName) return super.onClickMapAt(position, clickAreaSizeInMeters)
 
         val dist = clickAreaSizeInMeters + 5
-        val namesByLocale = roadNameSuggestionsDao.getNames(listOf(position), dist).firstOrNull()
+        val namesByLocale = roadNameSuggestionsSource.getNames(listOf(position), dist).firstOrNull()
         if (namesByLocale != null) {
             // why using .keys.firstOrNull { Locale(it).language == XXX } instead of .containsKey(XXX):
             // ISO 639 is an unstable standard. For example, id == in. If the comparisons are made
@@ -88,7 +79,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        if(isPlaceName) {
+        if (isPlaceName) {
             applyAnswer(PlaceName(placeName))
         } else {
             if (selectedStreetName != null) {
@@ -128,20 +119,21 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
 
-        val onChanged = TextChangedWatcher {
+        val onChanged = {
             checkIsFormComplete()
             // if the user changed the text, it is now his custom input
             selectedStreetName = null
         }
         streetNameInput = view.findViewById(R.id.streetNameInput)
         placeNameInput = view.findViewById(R.id.placeNameInput)
-        streetNameInput?.addTextChangedListener(onChanged)
-        placeNameInput?.addTextChangedListener(onChanged)
+        streetNameInput?.doAfterTextChanged { onChanged() }
+        placeNameInput?.doAfterTextChanged { onChanged() }
     }
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
         setLayout(R.layout.quest_housenumber_place)
+        placeNameInput?.requestFocus()
     }
 
     companion object {

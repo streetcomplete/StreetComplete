@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import android.os.Bundle
 import android.view.View
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
@@ -18,7 +17,7 @@ class AddCyclewaySegregationForm : AImageListQuestAnswerFragment<Boolean, Boolea
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageSelector.cellLayoutId  = R.layout.cell_labeled_icon_select_right
+        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_right
     }
 
     override fun onClickOk(selectedItems: List<Boolean>) {

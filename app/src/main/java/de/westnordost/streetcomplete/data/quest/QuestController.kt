@@ -1,195 +1,254 @@
 package de.westnordost.streetcomplete.data.quest
 
-import android.content.SharedPreferences
 import android.util.Log
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWay
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
-import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
+import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Singleton
+import kotlinx.coroutines.withContext
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
-@Singleton class QuestController @Inject constructor(
-        private val osmQuestController: OsmQuestController,
-        private val osmNoteQuestController: OsmNoteQuestController,
-        private val undoOsmQuestDB: UndoOsmQuestDao,
-        private val osmElementDB: MergedElementDao,
-        private val splitWayDB: OsmQuestSplitWayDao,
-        private val createNoteDB: CreateNoteDao,
-        private val prefs: SharedPreferences
-): CoroutineScope by CoroutineScope(Dispatchers.Default) {
-    /** Create a note for the given OSM Quest instead of answering it. The quest will turn
-     * invisible.
+class QuestController(
+    private val osmQuestController: OsmQuestController,
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val elementEditsController: ElementEditsController,
+    private val noteEditsController: NoteEditsController,
+    private val mapDataSource: MapDataWithEditsSource
+) {
+
+    /** Create a note for the given OSM Quest instead of answering it.
      * @return true if successful
      */
-    fun createNote(osmQuestId: Long, questTitle: String, text: String, imagePaths: List<String>?): Boolean {
-        val q = osmQuestController.get(osmQuestId)
-        if (q?.status != QuestStatus.NEW) return false
+    suspend fun createNote(
+        questKey: QuestKey,
+        questTitle: String,
+        text: String,
+        imagePaths: List<String>
+    ): Boolean = withContext(Dispatchers.IO) {
+        val q = get(questKey) ?: return@withContext false
 
-        val createNote = CreateNote(null, text, q.center, questTitle, ElementKey(q.elementType, q.elementId), imagePaths)
-        createNoteDB.add(createNote)
+        var fullText = "Unable to answer \"$questTitle\""
+        if (q is OsmQuest && q.elementId > 0) {
+            val lowercaseTypeName = q.elementType.name.lowercase()
+            val elementId = q.elementId
+            fullText += " for https://osm.org/$lowercaseTypeName/$elementId"
+        }
+        fullText += " via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
-        /* The quests that reference the same element for which the user was not able to
-           answer the question are removed because the to-be-created note blocks quest
-           creation for other users, so those quests should be removed from the user's
-           own display as well. As soon as the note is resolved, the quests will be re-
-           created next time they are downloaded */
-        removeUnsolvedQuestsForElement(q.elementType, q.elementId)
-        return true
+        noteEditsController.add(0, NoteEditAction.CREATE, q.position, fullText, imagePaths)
+
+        return@withContext true
     }
 
-    fun createNote(text: String, imagePaths: List<String>?, position: LatLon) {
-        val createNote = CreateNote(null, text, position, null, null, imagePaths)
-        createNoteDB.add(createNote)
+    /** Create a note at the given position.
+     */
+    suspend fun createNote(
+        text: String,
+        imagePaths: List<String>,
+        position: LatLon,
+        track: List<Trackpoint>,
+    ) = withContext(Dispatchers.IO) {
+        val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
+        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, track)
     }
 
-    private fun removeUnsolvedQuestsForElement(elementType: Element.Type, elementId: Long) {
-        osmQuestController.deleteAllUnsolvedForElement(elementType, elementId)
-        osmElementDB.deleteUnreferenced()
-    }
-
-    /** Split a way for the given OSM Quest. The quest will turn invisible.
+    /** Split a way for the given OSM Quest.
      * @return true if successful
      */
-    fun splitWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>, source: String): Boolean {
-        val q = osmQuestController.get(osmQuestId)
-        if (q?.status != QuestStatus.NEW) return false
+    suspend fun splitWay(
+        q: OsmQuest,
+        splits: List<SplitPolylineAtPosition>,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val w = getOsmElement(q) as? Way ?: return@withContext false
+        val geom = q.geometry as? ElementPolylinesGeometry ?: return@withContext false
 
-        val unsolvedQuestTypes = osmQuestController.getAllUnsolvedQuestTypesForElement(q.elementType, q.elementId)
-        splitWayDB.add(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits, unsolvedQuestTypes))
-
-        removeUnsolvedQuestsForElement(q.elementType, q.elementId)
-        return true
+        elementEditsController.add(
+            q.osmElementQuestType,
+            w,
+            geom,
+            source,
+            SplitWayAction(ArrayList(splits))
+        )
+        return@withContext true
     }
 
-    /** Apply the user's answer to the given quest. (The quest will turn invisible.)
+    /** Delete the element referred to by the given OSM quest id.
      * @return true if successful
      */
-    fun solve(questId: Long, group: QuestGroup, answer: Any, source: String): Boolean {
-        return when(group) {
-            QuestGroup.OSM -> solveOsmQuest(questId, answer, source)
-            QuestGroup.OSM_NOTE -> solveOsmNoteQuest(questId, answer as NoteAnswer)
+    suspend fun deletePoiElement(
+        q: OsmQuest,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val e = getOsmElement(q) ?: return@withContext false
+
+        Log.d(TAG, "Deleted ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!}")
+
+        elementEditsController.add(
+            q.osmElementQuestType,
+            e,
+            q.geometry,
+            source,
+            DeletePoiNodeAction
+        )
+        return@withContext true
+    }
+
+    /** Replaces the previous element which is assumed to be a shop/amenity of sort with another
+     *  feature.
+     *  @return true if successful
+     */
+    suspend fun replaceShopElement(
+        q: OsmQuest,
+        tags: Map<String, String>,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val e = getOsmElement(q) ?: return@withContext false
+
+        val changes = createReplaceShopChanges(e.tags, tags)
+        Log.d(TAG, "Replaced ${q.elementType.name} #${q.elementId} in frame of quest ${q.type::class.simpleName!!} with $changes")
+
+        elementEditsController.add(
+            q.osmElementQuestType,
+            e,
+            q.geometry,
+            source,
+            UpdateElementTagsAction(changes)
+        )
+
+        return@withContext true
+    }
+
+    private fun createReplaceShopChanges(previousTags: Map<String, String>, newTags: Map<String, String>): StringMapChanges {
+        val tags = StringMapChangesBuilder(previousTags)
+
+        tags.removeCheckDates()
+
+        for (key in previousTags.keys) {
+            if (KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED.any { it.matches(key) }) {
+                tags.remove(key)
+            }
+        }
+        for ((key, value) in newTags) {
+            tags[key] = value
+        }
+
+        return tags.create()
+    }
+
+    /** Apply the user's answer to the given quest.
+     * @return true if successful
+     */
+    suspend fun solve(quest: Quest, answer: Any, source: String): Boolean {
+        return when (quest) {
+            is OsmNoteQuest -> solveOsmNoteQuest(quest, answer as NoteAnswer)
+            is OsmQuest -> solveOsmQuest(quest, answer, source)
+            else -> throw NotImplementedError()
         }
     }
 
-    fun getOsmElement(quest: OsmQuest): OsmElement? =
-        osmElementDB.get(quest.elementType, quest.elementId) as OsmElement?
-
-    /** Undo changes made after answering a quest. */
-    fun undo(quest: OsmQuest) {
-        when(quest.status) {
-            // not uploaded yet -> simply revert to NEW
-            QuestStatus.ANSWERED, QuestStatus.HIDDEN -> {
-                osmQuestController.undo(quest)
-            }
-            // already uploaded! -> create change to reverse the previous change
-            QuestStatus.CLOSED -> {
-                osmQuestController.revert(quest)
-                undoOsmQuestDB.add(UndoOsmQuest(quest))
-            }
-            else -> {
-                throw IllegalStateException("Tried to undo a quest that hasn't been answered yet")
-            }
-        }
+    suspend fun getOsmElement(quest: OsmQuest): Element? = withContext(Dispatchers.IO) {
+        mapDataSource.get(quest.elementType, quest.elementId)
     }
 
-    private fun solveOsmNoteQuest(questId: Long, answer: NoteAnswer): Boolean {
-        val q = osmNoteQuestController.get(questId)
-        if (q == null || q.status !== QuestStatus.NEW) return false
-
+    private suspend fun solveOsmNoteQuest(
+        q: OsmNoteQuest,
+        answer: NoteAnswer
+    ): Boolean = withContext(Dispatchers.IO) {
         require(answer.text.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
-
-        osmNoteQuestController.answer(q, answer)
-        return true
+        // for note quests: questId == noteId
+        noteEditsController.add(q.id, NoteEditAction.COMMENT, q.position, answer.text, answer.imagePaths)
+        return@withContext true
     }
 
-    private fun solveOsmQuest(questId: Long, answer: Any, source: String): Boolean {
-        // race condition: another thread (i.e. quest download thread) may have removed the
-        // element already (#282). So in this case, just ignore
-        val q = osmQuestController.get(questId)
-        if (q?.status != QuestStatus.NEW) return false
-        val element = osmElementDB.get(q.elementType, q.elementId) ?: return false
-
-        val changes = createOsmQuestChanges(q, element, answer)
-        if (changes == null) {
-            // if applying the changes results in an error (=a conflict), the data the quest(ion)
-            // was based on is not valid anymore -> like with other conflicts, silently drop the
-            // user's change (#289) and the quest
-            osmQuestController.fail(q)
-            return false
-        } else {
-            require(!changes.isEmpty()) {
-                "OsmQuest $questId (${q.type.javaClass.simpleName}) has been answered by the user but the changeset is empty!"
-            }
-
-            Log.d(TAG, "Solved a ${q.type.javaClass.simpleName} quest: $changes")
-            osmQuestController.answer(q, changes, source)
-            prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply()
-            return true
+    private suspend fun solveOsmQuest(
+        q: OsmQuest,
+        answer: Any,
+        source: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        /* When OSM data is being updated (e.g. during download), first that data is persisted to
+         *  the database and after that, the quests are updated on the new data.
+         *
+         *  Depending on the volume of the data, this may take some seconds. So in this time, OSM
+         *  data and the quests are out of sync: If in this time, a quest is solved, the quest may
+         *  not be applicable to the element anymore. So we need to check that before trying to
+         *  apply the changes.
+         *
+         *  Why not synchronize the updating of OSM data and generated quests so that they never can
+         *  go out of sync? It was like this (since v32) initially, but it made using the app
+         *  (opening quests, solving quests) unusable and seemingly unresponsive while the app was
+         *  downloading/updating data. See issue #2876 */
+        val e = getOsmElement(q)
+        if (e == null || q.osmElementQuestType.isApplicableTo(e) == false) {
+            /* the quest should then just be removed immediately, otherwise it looks like a bug
+               (can't solve quest, it won't go away), see #3588 */
+            osmQuestController.delete(OsmQuestKey(q.elementType, q.elementId, q.questTypeName))
+            return@withContext false
         }
+
+        val changes = createOsmQuestChanges(q, e, answer)
+        require(!changes.isEmpty()) {
+            "OsmQuest ${q.key} has been answered by the user but there are no changes!"
+        }
+
+        Log.d(TAG, "Solved a ${q.type::class.simpleName!!} quest: $changes")
+
+        elementEditsController.add(
+            q.osmElementQuestType,
+            e,
+            q.geometry,
+            source,
+            UpdateElementTagsAction(changes)
+        )
+
+        return@withContext true
     }
 
-    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any) : StringMapChanges? {
-        return try {
-            val changesBuilder = StringMapChangesBuilder(element.tags.orEmpty())
-            quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder)
-            changesBuilder.create()
-        } catch (e: IllegalArgumentException) {
-            // applying the changes results in an error (=a conflict)
-            null
-        }
+    private fun createOsmQuestChanges(quest: OsmQuest, element: Element, answer: Any): StringMapChanges {
+        val changesBuilder = StringMapChangesBuilder(element.tags)
+        quest.osmElementQuestType.applyAnswerToUnsafe(answer, changesBuilder, element.timestampEdited)
+        return changesBuilder.create()
     }
 
     /** Make the given quest invisible (per user interaction).  */
-    fun hide(questId: Long, group: QuestGroup) {
-        when (group) {
-            QuestGroup.OSM -> {
-                val quest = osmQuestController.get(questId)
-                if (quest?.status != QuestStatus.NEW) return
-                osmQuestController.hide(quest)
-            }
-            QuestGroup.OSM_NOTE -> {
-                val q = osmNoteQuestController.get(questId)
-                if (q?.status != QuestStatus.NEW) return
-                osmNoteQuestController.hide(q)
-            }
+    suspend fun hide(questKey: QuestKey) = withContext(Dispatchers.IO) {
+        when (questKey) {
+            is OsmNoteQuestKey -> osmNoteQuestController.hide(questKey.noteId)
+            is OsmQuestKey -> osmQuestController.hide(questKey)
         }
     }
 
-    /** Retrieve the given quest from local database  */
-    fun get(questId: Long, group: QuestGroup): Quest? = when (group) {
-        QuestGroup.OSM -> osmQuestController.get(questId)
-        QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)
+    /** Unhide all previously hidden quests */
+    suspend fun unhideAll(): Int = withContext(Dispatchers.IO) {
+        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
     }
 
-    /** Delete old unsolved quests as well as long already uploaded quests */
-    fun cleanUp() = launch(Dispatchers.IO) {
-        var deleted = osmQuestController.cleanUp()
-        deleted += osmNoteQuestController.cleanUp()
-
-        if (deleted > 0) {
-            Log.d(TAG, "Deleted $deleted old unsolved quests")
-            osmElementDB.deleteUnreferenced()
+    /** Retrieve the given quest from local database  */
+    suspend fun get(questKey: QuestKey): Quest? = withContext(Dispatchers.IO) {
+        when (questKey) {
+            is OsmNoteQuestKey -> osmNoteQuestController.get(questKey.noteId)
+            is OsmQuestKey -> osmQuestController.get(questKey)
         }
     }
 
@@ -197,5 +256,3 @@ import javax.inject.Singleton
         private const val TAG = "QuestController"
     }
 }
-
-data class QuestAndGroup(val quest: Quest, val group: QuestGroup)

@@ -1,0 +1,28 @@
+name: "Lint"
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  ktlint:
+    name: "Kotlin"
+    runs-on: ubuntu-latest
+    env:
+      lintResultFilename: ktlint-result.txt
+    steps:
+      - name: Checkout the source code
+        uses: actions/checkout@v2.4.0
+      - name: Run Kotlin linter
+        id: ktlint-check
+        uses: musichin/ktlint-check@v1.2.1
+        with:
+          version: '0.45.0'
+          reporter: plain?group_by_file,output=${{ env.lintResultFilename }}
+          relative: true
+          verbose: true
+        continue-on-error: true
+      - name: Kotlin linter result
+        run: |
+          cat ${{ env.lintResultFilename }}
+          [ "${{ steps.ktlint-check.outcome }}" == "success" ] || exit 1

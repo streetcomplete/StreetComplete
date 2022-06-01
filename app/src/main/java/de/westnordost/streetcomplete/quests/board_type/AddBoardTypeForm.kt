@@ -1,47 +1,43 @@
 package de.westnordost.streetcomplete.quests.board_type
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import kotlinx.android.synthetic.main.quest_parking_access.*
+import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.TextItem
+import de.westnordost.streetcomplete.quests.board_type.BoardType.GEOLOGY
+import de.westnordost.streetcomplete.quests.board_type.BoardType.HISTORY
+import de.westnordost.streetcomplete.quests.board_type.BoardType.MAP
+import de.westnordost.streetcomplete.quests.board_type.BoardType.NATURE
+import de.westnordost.streetcomplete.quests.board_type.BoardType.NOTICE
+import de.westnordost.streetcomplete.quests.board_type.BoardType.PLANTS
+import de.westnordost.streetcomplete.quests.board_type.BoardType.PUBLIC_TRANSPORT
+import de.westnordost.streetcomplete.quests.board_type.BoardType.SPORT
+import de.westnordost.streetcomplete.quests.board_type.BoardType.WILDLIFE
 
-class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {
+class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
 
     override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_board_type_map) { confirmOnMap() }
+        AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
+    )
+
+    override val items = listOf(
+        TextItem(HISTORY, R.string.quest_board_type_history),
+        TextItem(GEOLOGY, R.string.quest_board_type_geology),
+        TextItem(PLANTS, R.string.quest_board_type_plants),
+        TextItem(WILDLIFE, R.string.quest_board_type_wildlife),
+        TextItem(NATURE, R.string.quest_board_type_nature),
+        TextItem(PUBLIC_TRANSPORT, R.string.quest_board_type_public_transport),
+        TextItem(SPORT, R.string.quest_board_type_sport),
+        TextItem(NOTICE, R.string.quest_board_type_notice_board),
     )
 
     private fun confirmOnMap() {
         AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_board_type_map_title)
-                .setMessage(R.string.quest_board_type_map_description)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer("map") }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
+            .setTitle(R.string.quest_board_type_map_title)
+            .setMessage(R.string.quest_board_type_map_description)
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(MAP) }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
-
-    override val contentLayoutResId = R.layout.quest_board_type
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
-    }
-
-    override fun onClickOk() {
-        applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
-            R.id.history -> "history"
-            R.id.geology -> "geology"
-            R.id.plants -> "plants"
-            R.id.wildlife -> "wildlife"
-            R.id.nature -> "nature"
-            R.id.public_transport -> "public_transport"
-            R.id.notice -> "notice"
-            else -> throw NullPointerException()
-        })
-    }
-
-    override fun isFormComplete() = radioButtonGroup.checkedRadioButtonId != -1
 }

@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import de.westnordost.osmapi.map.MapDataWithGeometry
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -14,13 +17,14 @@ class AddPlaceName(
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
-        nodes, ways, relations with 
+        nodes, ways, relations with
         (
           shop and shop !~ no|vacant
           or craft
           or office
-          or tourism = information and information = office 
-          or """.trimIndent() +
+          or amenity = recycling and recycling_type = centre
+          or tourism = information and information = office
+          or """ +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -36,6 +40,7 @@ class AddPlaceName(
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
 
                 // name & opening hours
                 "boat_rental",
@@ -74,49 +79,67 @@ class AddPlaceName(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon",
 
                 // name & wheelchair
-                "sports_centre", "stadium", "marina",
-
-                // name & opening hours
-                "horse_riding",
+                "sports_centre", "stadium",
 
                 // name only
-                "dance", "nature_reserve"
+                "dance", "nature_reserve", "marina", "horse_riding",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
             ),
             "military" to arrayOf(
                 "airfield", "barracks", "training_area"
-            )
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+
+                // name & opening hours
+                "physiotherapist", "podiatrist",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
-    """.trimIndent()).toElementFilterExpression() }
+    """).toElementFilterExpression() }
 
-    override val commitMessage = "Determine place names"
+    override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
+    override val isReplaceShopEnabled = true
+    override val questTypeAchievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        featureName.value?.let { arrayOf(it) } ?: arrayOf()
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasFeatureName(element.tags)
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
-            is NoPlaceNameSign -> changes.add("name:signed", "no")
-            is PlaceName -> changes.add("name", answer.name)
+    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, timestampEdited: Long) {
+        when (answer) {
+            is NoPlaceNameSign -> {
+                tags["name:signed"] = "no"
+            }
+            is PlaceName -> {
+                for ((languageTag, name) in answer.localizedNames) {
+                    val key = when (languageTag) {
+                        "" -> "name"
+                        "international" -> "int_name"
+                        else -> "name:$languageTag"
+                    }
+                    tags[key] = name
+                }
+            }
         }
     }
 
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+    private fun hasFeatureName(tags: Map<String, String>): Boolean =
+        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

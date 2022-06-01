@@ -1,41 +1,40 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
-import de.westnordost.streetcomplete.ktx.numberOrNull
+import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
+import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.numberOrNull
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import kotlinx.android.synthetic.main.quest_maxweight.*
+import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxweight
+    private val binding by contentViewBinding(QuestMaxweightBinding::bind)
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
-        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoSign() }
+        AnswerItem(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
     private var sign: MaxWeightSign? = null
 
-    private val maxWeightInput: EditText? get() = inputSignContainer.findViewById(R.id.maxWeightInput)
-    private val weightUnitSelect: Spinner? get() = inputSignContainer.findViewById(R.id.weightUnitSelect)
+    private val maxWeightInput: EditText? get() = binding.inputSignContainer.findViewById(R.id.maxWeightInput)
+    private val weightUnitSelect: Spinner? get() = binding.inputSignContainer.findViewById(R.id.weightUnitSelect)
 
-    private val weightLimitUnits get() = countryInfo.weightLimitUnits.map { it.toWeightMeasurementUnit() }
+    private val weightLimitUnits get() = countryInfo.weightLimitUnits
 
     override fun isFormComplete() = getWeightFromInput() != null
 
@@ -44,14 +43,14 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        selectSignButton.setOnClickListener { showSignSelectionDialog() }
+        binding.selectSignButton.setOnClickListener { showSignSelectionDialog() }
 
         if (savedInstanceState != null) {
             onLoadInstanceState(savedInstanceState)
         }
 
-        selectSignButton.isVisible = sign == null
-        if (sign == null) inputSignContainer.removeAllViews()
+        binding.selectSignButton.isVisible = sign == null
+        if (sign == null) binding.inputSignContainer.removeAllViews()
         initMaxWeightInput()
     }
 
@@ -67,11 +66,11 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun initMaxWeightInput() {
         val maxWeightInput = maxWeightInput ?: return
 
-        maxWeightInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-        maxWeightInput.allowOnlyNumbers()
-        inputSignContainer.setOnClickListener { focusMaxWeightInput() }
+        maxWeightInput.doAfterTextChanged { checkIsFormComplete() }
+        maxWeightInput.filters = arrayOf(acceptDecimalDigits(6, 2))
+        binding.inputSignContainer.setOnClickListener { focusMaxWeightInput() }
 
-        val units = weightLimitUnits.map { it.toDisplayString() }
+        val units = weightLimitUnits.map { it.displayString }
         weightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, units)
         weightUnitSelect?.setSelection(0)
     }
@@ -80,10 +79,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val maxWeightInput = maxWeightInput ?: return
 
         maxWeightInput.requestFocus()
-        Handler(Looper.getMainLooper()).post {
-            val imm = activity?.getSystemService<InputMethodManager>()
-            imm?.showSoftInput(maxWeightInput, InputMethodManager.SHOW_IMPLICIT)
-        }
+        maxWeightInput.showKeyboard()
     }
 
     private fun showSignSelectionDialog() {
@@ -98,16 +94,16 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun setMaxWeightSign(sign: MaxWeightSign) {
         this.sign = sign
 
-        selectSignButton.isInvisible = true
-        inputSignContainer.removeAllViews()
+        binding.selectSignButton.isInvisible = true
+        binding.inputSignContainer.removeAllViews()
 
-        layoutInflater.inflate(sign.layoutResourceId, inputSignContainer)
+        layoutInflater.inflate(sign.layoutResourceId, binding.inputSignContainer)
         initMaxWeightInput()
         focusMaxWeightInput()
 
-        inputSignContainer.scaleX = 3f
-        inputSignContainer.scaleY = 3f
-        inputSignContainer.animate().scaleX(1f).scaleY(1f)
+        binding.inputSignContainer.scaleX = 3f
+        binding.inputSignContainer.scaleY = 3f
+        binding.inputSignContainer.animate().scaleX(1f).scaleY(1f)
     }
 
     override fun onClickOk() {
@@ -131,10 +127,10 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun getWeightFromInput(): Weight? {
         val input = maxWeightInput?.numberOrNull ?: return null
         val unit = weightLimitUnits[weightUnitSelect?.selectedItemPosition ?: 0]
-        return when(unit) {
-            WeightMeasurementUnit.SHORT_TON -> ShortTons(input)
-            WeightMeasurementUnit.POUND     -> ImperialPounds(input.toInt())
-            WeightMeasurementUnit.TON       -> MetricTons(input)
+        return when (unit) {
+            WeightMeasurementUnit.SHORT_TON  -> ShortTons(input)
+            WeightMeasurementUnit.POUND      -> ImperialPounds(input.toInt())
+            WeightMeasurementUnit.METRIC_TON -> MetricTons(input)
         }
     }
 

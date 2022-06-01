@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -9,7 +9,7 @@ class UserAchievementsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: UserAchievementsDao
 
     @Before fun createDao() {
-        dao = UserAchievementsDao(dbHelper)
+        dao = UserAchievementsDao(database)
     }
 
     @Test fun putGetAll() {
@@ -19,7 +19,7 @@ class UserAchievementsDaoTest : ApplicationDbTestCase() {
         assertEquals(mapOf(
             ONE to 4,
             TWO to 2
-        ),dao.getAll())
+        ), dao.getAll())
     }
 }
 

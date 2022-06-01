@@ -1,34 +1,26 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import android.view.View
-
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import kotlinx.android.synthetic.main.quest_placename.*
+import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
+import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.LocalizedName
 
+class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
 
-class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
+    override val contentLayoutResId = R.layout.quest_localizedname
+    private val binding by contentViewBinding(QuestLocalizednameBinding::bind)
 
-    override val contentLayoutResId = R.layout.quest_placename
+    override val addLanguageButton get() = binding.addLanguageButton
+    override val namesList get() = binding.namesList
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_generic_answer_noSign) { confirmNoName() }
+        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoName() }
     )
 
-    private val placeName get() = nameInput?.text?.toString().orEmpty().trim()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-    }
-
-    override fun onClickOk() {
-        applyAnswer(PlaceName(placeName))
+    override fun onClickOk(names: List<LocalizedName>) {
+        applyAnswer(PlaceName(names))
     }
 
     private fun confirmNoName() {
@@ -39,6 +31,4 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
-
-    override fun isFormComplete() = placeName.isNotEmpty()
 }

@@ -1,0 +1,166 @@
+{
+    "en-AU": {
+        "presets": {
+            "fields": {
+                "changing_table": {
+                    "label": "Nappy Changing Table"
+                },
+                "colour": {
+                    "label": "Colour"
+                },
+                "fax": {
+                    "placeholder": "+61 1 2345 6789"
+                },
+                "height": {
+                    "label": "Height (Metres)"
+                },
+                "height_building": {
+                    "label": "Building Height (Metres)"
+                },
+                "kerb": {
+                    "label": "Kerb"
+                },
+                "length": {
+                    "label": "Length (Metres)"
+                },
+                "phone": {
+                    "placeholder": "+61 1 2345 6789"
+                },
+                "recycling_type": {
+                    "options": {
+                        "centre": "Centre"
+                    },
+                    "placeholder": "Container, Centre"
+                },
+                "width": {
+                    "label": "Width (Metres)"
+                }
+            },
+            "presets": {
+                "amenity/arts_centre": {
+                    "name": "Arts Centre"
+                },
+                "amenity/bbq": {
+                    "name": "Barbeque",
+                    "aliases": "BBQ"
+                },
+                "amenity/community_centre": {
+                    "name": "Community Centre"
+                },
+                "amenity/community_centre/lgbtq": {
+                    "name": "LGBTQ+ Community Centre"
+                },
+                "amenity/conference_centre": {
+                    "name": "Convention Centre"
+                },
+                "amenity/dive_centre": {
+                    "name": "Dive Centre"
+                },
+                "amenity/fuel": {
+                    "name": "Service Station",
+                    "aliases": "Petrol Station"
+                },
+                "amenity/parking/park_ride": {
+                    "name": "Park & Ride Car Park",
+                    "aliases": "Commuter Car Park"
+                },
+                "amenity/payment_centre": {
+                    "name": "Payment Centre"
+                },
+                "amenity/pharmacy": {
+                    "name": "Pharmacy"
+                },
+                "amenity/recycling_centre": {
+                    "name": "Recycling Centre"
+                },
+                "amenity/social_centre": {
+                    "name": "Social Centre"
+                },
+                "amenity/vending_machine/fuel": {
+                    "name": "Fuel Pump"
+                },
+                "barrier/kerb": {
+                    "name": "Kerb"
+                },
+                "barrier/kerb/flush": {
+                    "name": "Flush Kerb"
+                },
+                "barrier/kerb/lowered": {
+                    "name": "Lowered Kerb"
+                },
+                "healthcare/birthing_center": {
+                    "name": "Birthing Centre"
+                },
+                "healthcare/blood_donation": {
+                    "name": "Blood Donor Centre"
+                },
+                "highway/crossing/marked": {
+                    "name": "Marked Crossing"
+                },
+                "highway/crossing/zebra": {
+                    "name": "Marked Crossing"
+                },
+                "highway/cycleway/bicycle_foot": {
+                    "name": "Shared Path"
+                },
+                "highway/footway/marked": {
+                    "name": "Marked Crossing"
+                },
+                "highway/footway/sidewalk": {
+                    "name": "Footpath (sidewalk)"
+                },
+                "highway/footway/zebra": {
+                    "name": "Marked Zebra Crossing"
+                },
+                "highway/give_way": {
+                    "name": "Give Way Sign"
+                },
+                "highway/living_street": {
+                    "name": "Shared Zone Road"
+                },
+                "highway/track": {
+                    "name": "Track Road"
+                },
+                "leisure/adult_gaming_centre": {
+                    "name": "Adult Gaming Centre"
+                },
+                "leisure/fitness_centre": {
+                    "name": "Gym / Fitness Centre"
+                },
+                "leisure/sports_centre": {
+                    "name": "Sports Centre / Complex"
+                },
+                "shop/cheese": {
+                    "name": "Cheese Shop",
+                    "terms": "cheesemonger"
+                },
+                "shop/chemist": {
+                    "name": "Pharmacy",
+                    "terms": "chemist"
+                },
+                "shop/chocolate": {
+                    "name": "Chocolate Shop",
+                    "terms": "chocolatier"
+                },
+                "shop/garden_centre": {
+                    "name": "Garden Centre"
+                },
+                "shop/mall": {
+                    "name": "Shopping Centre"
+                },
+                "shop/tyres": {
+                    "name": "Tyre Shop"
+                },
+                "telecom/data_center": {
+                    "name": "Data Centre"
+                },
+                "tourism/caravan_site": {
+                    "name": "Caravan Site"
+                },
+                "tourism/viewpoint": {
+                    "name": "Lookout"
+                }
+            }
+        }
+    }
+}

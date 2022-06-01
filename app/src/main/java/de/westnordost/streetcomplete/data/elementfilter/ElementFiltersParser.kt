@@ -1,12 +1,35 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.elementfilter.filters.*
-import de.westnordost.streetcomplete.data.meta.toCheckDate
-import java.lang.NumberFormatException
+import de.westnordost.streetcomplete.data.elementfilter.filters.CombineFilters
+import de.westnordost.streetcomplete.data.elementfilter.filters.DateFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementNewerThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementOlderThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.FixedDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagGreaterOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagGreaterThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagLessOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasDateTagLessThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagGreaterOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagGreaterThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessOrEqualThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
+import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
+import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.toCheckDate
 import java.text.ParseException
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.EnumSet
 import kotlin.math.min
 
 /**
@@ -36,6 +59,7 @@ private const val DAYS = "days"
 private const val EQUALS = "="
 private const val NOT_EQUALS = "!="
 private const val LIKE = "~"
+private const val NOT = "!"
 private const val NOT_LIKE = "!~"
 private const val GREATER_THAN = ">"
 private const val LESS_THAN = "<"
@@ -49,7 +73,7 @@ private const val MINUS = "-"
 
 private val RESERVED_WORDS = arrayOf(WITH, OR, AND)
 private val QUOTATION_MARKS = charArrayOf('"', '\'')
-private val KEY_VALUE_OPERATORS = arrayOf( EQUALS, NOT_EQUALS, LIKE, NOT_LIKE )
+private val KEY_VALUE_OPERATORS = arrayOf(EQUALS, NOT_EQUALS, LIKE, NOT_LIKE)
 private val COMPARISON_OPERATORS = arrayOf(
     GREATER_THAN, GREATER_OR_EQUAL_THAN,
     LESS_THAN, LESS_OR_EQUAL_THAN
@@ -83,19 +107,18 @@ private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFil
         result.add(element)
     }
     // a little odd interface of EnumSet here
-    return when(result.size) {
+    return when (result.size) {
         1 -> EnumSet.of(result[0])
         2 -> EnumSet.of(result[0], result[1])
         3 -> EnumSet.of(result[0], result[1], result[2])
         else -> throw IllegalStateException()
     }
-
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
     expectAnyNumberOfSpaces()
     for (t in ElementsTypeFilter.values()) {
-        val name = when(t) {
+        val name = when (t) {
             ElementsTypeFilter.NODES -> "nodes"
             ElementsTypeFilter.WAYS -> "ways"
             ElementsTypeFilter.RELATIONS -> "relations"
@@ -115,7 +138,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     // tags are optional...
     if (!nextIsAndAdvance(WITH)) {
         if (!isAtEnd()) {
-            throw ParseException("Expected end of string or 'with' keyword", cursorPos)
+            throw ParseException("Expected end of string or '$WITH' keyword", cursorPos)
         }
         return null
     }
@@ -147,8 +170,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
         } else if (nextIsAndAdvance(AND)) {
             builder.addAnd()
         } else
-            throw ParseException("Expected end of string, 'and' or 'or'", cursorPos)
-
+            throw ParseException("Expected end of string, '$AND' or '$OR'", cursorPos)
     } while (true)
 
     try {
@@ -158,7 +180,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     }
 }
 
-private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*,*>): Boolean {
+private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
     var characterCount = expectAnyNumberOfSpaces()
     var previousCharacterCount: Int
     do {
@@ -180,27 +202,27 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 }
 
 private fun StringWithCursor.parseTag(): ElementFilter {
-    if (nextIsAndAdvance('!')) {
+    if (nextIsAndAdvance(NOT)) {
         expectAnyNumberOfSpaces()
-        if (nextIsAndAdvance('~')) {
+        if (nextIsAndAdvance(LIKE)) {
             return NotHasKeyLike(parseKey())
         } else {
             return NotHasKey(parseKey())
         }
     }
 
-    if (nextIsAndAdvance('~')) {
+    if (nextIsAndAdvance(LIKE)) {
         expectAnyNumberOfSpaces()
         val key = parseKey()
         expectAnyNumberOfSpaces()
         val operator = parseOperator()
         if (operator == null) {
             return HasKeyLike(key)
-        } else if ("~" == operator) {
+        } else if (LIKE == operator) {
             expectAnyNumberOfSpaces()
             return HasTagLike(key, parseQuotableWord())
         }
-        throw ParseException("Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'", cursorPos)
+        throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE'", cursorPos)
     }
 
     if (nextIsAndAdvance(OLDER)) {
@@ -241,7 +263,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         expectAnyNumberOfSpaces()
         if (nextMatches(NUMBER_WORD_REGEX) != null) {
             val value = parseNumber()
-            when(operator) {
+            when (operator) {
                 GREATER_THAN          -> return HasTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
                 LESS_THAN             -> return HasTagLessThan(key, value)
@@ -249,7 +271,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
             }
         } else {
             val value = parseDate()
-            when(operator) {
+            when (operator) {
                 GREATER_THAN          -> return HasDateTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasDateTagGreaterOrEqualThan(key, value)
                 LESS_THAN             -> return HasDateTagLessThan(key, value)
@@ -263,7 +285,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
 private fun StringWithCursor.parseKey(): String {
     val reserved = nextIsReservedWord()
-    if(reserved != null) {
+    if (reserved != null) {
         throw ParseException("A key cannot be named like the reserved word '$reserved', surround it with quotation marks", cursorPos)
     }
 
@@ -323,7 +345,7 @@ private fun StringWithCursor.parseDate(): DateFilter {
         return FixedDate(date)
     }
 
-    throw ParseException("Expected either a date (YYYY-MM-DD) or 'today'", cursorPos)
+    throw ParseException("Expected either a date (YYYY-MM-DD) or '$TODAY'", cursorPos)
 }
 
 private fun StringWithCursor.parseDeltaDurationInDays(): Float {
@@ -336,7 +358,7 @@ private fun StringWithCursor.parseDeltaDurationInDays(): Float {
             expectAnyNumberOfSpaces()
             -parseDurationInDays()
         }
-        else -> throw ParseException("Expected + or -", cursorPos)
+        else -> throw ParseException("Expected $PLUS or $MINUS", cursorPos)
     }
 }
 
@@ -348,7 +370,7 @@ private fun StringWithCursor.parseDurationInDays(): Float {
         nextIsAndAdvance(MONTHS) -> 30.5f * duration
         nextIsAndAdvance(WEEKS) -> 7 * duration
         nextIsAndAdvance(DAYS) -> duration
-        else -> throw ParseException("Expected years, months, weeks or days", cursorPos)
+        else -> throw ParseException("Expected $YEARS, $MONTHS, $WEEKS or $DAYS", cursorPos)
     }
 }
 

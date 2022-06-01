@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/reorder_quest_priority_hint"
-        android:layout_alignParentTop="true"
-        android:padding="8dp"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/table_header"
+        android:id="@+id/tableHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text"
         style="@style/TableHeader">
 
         <TextView
@@ -42,8 +33,19 @@
         android:id="@+id/questSelectionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/table_header"
+        android:layout_below="@+id/tableHeader"
         android:layout_alignParentBottom="true"
         tools:listitem="@layout/row_quest_selection"/>
+
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="@style/TextAppearance.Title"
+        android:visibility="invisible"
+        android:textColor="@color/hint_text"
+        android:text="@string/no_search_results"
+        />
 
 </RelativeLayout>

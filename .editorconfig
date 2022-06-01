@@ -13,9 +13,10 @@ tab_width = 4
 [*.{java,py}]
 indent_style = tab
 
-[*.kt]
+[*.{kt,kts}]
 indent_style = space
 indent_size = 4
+disabled_rules = paren-spacing,chain-wrapping,indent,wrapping,no-multi-spaces
 
 [gradlew]
 indent_style = space

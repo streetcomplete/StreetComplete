@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
-import de.westnordost.osmapi.map.MapDataWithGeometry
-
-import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
@@ -21,7 +21,7 @@ class AddSuspectedOneway(
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 
     private val filter by lazy { """
-        ways with 
+        ways with
           highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
           and !oneway
           and junction != roundabout
@@ -32,12 +32,13 @@ class AddSuspectedOneway(
           )
     """.toElementFilterExpression() }
 
-    override val commitMessage =
+    override val changesetComment =
         "Add whether roads are one-way roads as they were marked as likely oneway by improveosm.org"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
+    override val questTypeAchievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
@@ -56,16 +57,16 @@ class AddSuspectedOneway(
 
         val onewayCandidates = mapData.ways.filter {
             // so, only the ways suspected by improveOSM to be oneways
-            it.id in suspectedOnewayWayIds &&
+            it.id in suspectedOnewayWayIds
             // but also filter the data as ImproveOSM data may be outdated or catching too much
-            filter.matches(it) &&
+            && filter.matches(it)
             /* also exclude rings because the driving direction can then not be determined reliably
                from the improveosm data and the quest should stay simple, i.e not require the
                user to input it in those cases. Additionally, whether a ring-road is a oneway or
                not is less valuable information (for routing) and many times such a ring will
                actually be a roundabout. Oneway information on roundabouts is superfluous.
                See #1320 */
-            it.nodeIds.first() != it.nodeIds.last()
+            && it.nodeIds.first() != it.nodeIds.last()
         }
 
         // rehash traffic direction data into simple "way id -> forward/backward" data and persist
@@ -89,7 +90,7 @@ class AddSuspectedOneway(
         return onewayCandidates.filter { onewayDirectionMap[it.id] != null }
     }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && db.isForward(element.id) != null
 
     /** returns true if all given [trafficFlowSegments] point forward in relation to the
@@ -98,7 +99,7 @@ class AddSuspectedOneway(
      *  If the segments point into different directions or their direction cannot be
      *  determined. returns null.
      */
-    private fun isForward(way: List<LatLon>,trafficFlowSegments: List<TrafficFlowSegment>): Boolean? {
+    private fun isForward(way: List<LatLon>, trafficFlowSegments: List<TrafficFlowSegment>): Boolean? {
         var result: Boolean? = null
         for (segment in trafficFlowSegments) {
             val fromPositionIndex = findClosestPositionIndexOf(way, segment.fromPosition)
@@ -136,15 +137,15 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: Tags, timestampEdited: Long) {
         if (!answer.isOneway) {
-            changes.add("oneway", "no")
+            tags["oneway"] = "no"
         } else {
-            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
+            tags["oneway"] = if (db.isForward(answer.wayId)!!) "yes" else "-1"
         }
     }
 
-    override fun cleanMetadata() {
+    override fun deleteMetadataOlderThan(timestamp: Long) {
         db.deleteUnreferenced()
     }
 }

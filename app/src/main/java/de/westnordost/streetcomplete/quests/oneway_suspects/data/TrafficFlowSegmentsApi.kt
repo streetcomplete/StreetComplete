@@ -1,18 +1,24 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import android.annotation.SuppressLint
-
-import java.net.URL
-
-import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.format
 import org.json.JSONObject
+import java.net.URL
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
 class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
     fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
-        val url = URL("$apiUrl?bbox=${bbox.asLeftBottomRightTopString}")
+        val leftBottomRightTopString = listOf(
+            bbox.min.longitude,
+            bbox.min.latitude,
+            bbox.max.longitude,
+            bbox.max.latitude
+        ).joinToString(",") { it.format(7) }
+
+        val url = URL("$apiUrl?bbox=$leftBottomRightTopString")
         val json = url.openConnection().getInputStream().bufferedReader().use { it.readText() }
         return parse(json)
     }
@@ -20,11 +26,11 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
     companion object {
         fun parse(json: String): Map<Long, List<TrafficFlowSegment>> {
             val obj = JSONObject(json)
-            val segments = obj.getJSONArray("segments")
+            if (!obj.has("segments")) return mapOf()
 
+            val segments = obj.getJSONArray("segments")
             @SuppressLint("UseSparseArrays")
             val result = mutableMapOf<Long, MutableList<TrafficFlowSegment>>()
-            if (segments == null) return result
 
             for (i in 0 until segments.length()) {
                 if (segments.isNull(i)) continue
@@ -40,6 +46,6 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
             return result
         }
 
-        private fun parseLatLon(pos: JSONObject) = OsmLatLon(pos.getDouble("lat"), pos.getDouble("lon"))
+        private fun parseLatLon(pos: JSONObject) = LatLon(pos.getDouble("lat"), pos.getDouble("lon"))
     }
 }
