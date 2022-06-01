@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.util.ktx.runImmediate
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.StreetRotateable
 
+@Deprecated("inline instead...")
 class StreetSideRotater(
     private val puzzle: StreetRotateable,
     private val compassView: View,

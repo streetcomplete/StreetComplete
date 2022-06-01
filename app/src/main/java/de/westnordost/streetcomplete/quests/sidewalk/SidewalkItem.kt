@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.quests.StreetSideDisplayItem
-import de.westnordost.streetcomplete.quests.StreetSideItem
+import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
+import de.westnordost.streetcomplete.view.controller.StreetSideItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 

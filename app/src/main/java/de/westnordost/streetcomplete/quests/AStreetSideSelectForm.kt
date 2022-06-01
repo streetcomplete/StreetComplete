@@ -1,278 +1,138 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.AnyThread
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.core.view.isGone
-import androidx.preference.PreferenceManager
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
-import de.westnordost.streetcomplete.util.math.normalizeDegrees
-import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
-import de.westnordost.streetcomplete.view.Text
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.view.image_select.Item2
-import de.westnordost.streetcomplete.view.setImage
-import kotlin.math.absoluteValue
+import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
+import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
+import org.koin.android.ext.android.inject
 
+/** Abstract base class for any quest answer form in which the user selects items for the left and
+ *  the right side of the street */
 abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestAnswerForm<T>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
+    private val prefs: SharedPreferences by inject()
+
+    protected val puzzleView: StreetSideSelectPuzzle get() = binding.puzzleView
+
     override val contentPadding = false
 
-    protected var puzzleView: StreetSideSelectPuzzle? = null
+    protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>
 
-    private var streetSideRotater: StreetSideRotater? = null
-
-    protected var isDefiningBothSides: Boolean = true
-
-    private var left: I? = null
-    private var right: I? = null
-
-    private lateinit var favs: LastPickedValuesStore<LastSelection<I>>
-    private val lastSelection get() = favs.get().firstOrNull()
-
-    open val cellLayoutId = R.layout.cell_icon_select_with_label_below
-
-    open val defaultImage get() = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
-
-    /** items to display. May not be accessed before onCreate */
-    protected abstract val items: List<I>
-
-    protected abstract fun getDisplayItem(value: I): StreetSideDisplayItem<I>
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
-            key = javaClass.simpleName,
-            serialize = this::serializeLastSelection,
-            deserialize = this::deserializeLastSelection,
-        )
+    var isDisplayingPrevious: Boolean = false
+    set(value) {
+        field = value
+        streetSideSelect.isEnabled = !value
+        updateButtonPanel()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        puzzleView = binding.puzzleView
-
-        if (savedInstanceState != null) {
-            onLoadInstanceState(savedInstanceState)
-        }
-
-        binding.puzzleView.onClickSideListener = { isRight -> showSelectionDialog(isRight) }
-
-        streetSideRotater = StreetSideRotater(
+        streetSideSelect = StreetSideSelectWithLastAnswerButtonViewController(
             binding.puzzleView,
             binding.littleCompass.root,
-            geometry as ElementPolylinesGeometry
+            binding.lastAnswerButton
         )
-
-        val leftItem = left?.let { getDisplayItem(it) }
-        if (leftItem != null) {
-            binding.puzzleView.setLeftSideImage(leftItem.image)
-            binding.puzzleView.setLeftSideFloatingIcon(leftItem.floatingIcon)
-            binding.puzzleView.setLeftSideText(leftItem.title)
-        } else {
-            binding.puzzleView.setLeftSideImage(defaultImage)
+        streetSideSelect.onInputChanged = { checkIsFormComplete() }
+        streetSideSelect.isEnabled = !isDisplayingPrevious
+        streetSideSelect.onClickSide = ::onClickSide
+        streetSideSelect.lastSelection = prefs.getString(Prefs.LAST_PICKED_PREFIX + javaClass.simpleName, null)?.let {
+            deserializeLastSelection(it)
         }
-        val rightItem = right?.let { getDisplayItem(it) }
-        if (rightItem != null) {
-            binding.puzzleView.setRightSideImage(rightItem.image)
-            binding.puzzleView.setRightSideFloatingIcon(rightItem.floatingIcon)
-            binding.puzzleView.setRightSideText(rightItem.title)
-        } else {
-            binding.puzzleView.setRightSideImage(defaultImage)
-        }
+        streetSideSelect.offsetPuzzleRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
+        val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+        streetSideSelect.defaultPuzzleImageLeft = defaultPuzzleImage
+        streetSideSelect.defaultPuzzleImageRight = defaultPuzzleImage
 
-        initStateFromTags()
-        showTapHint()
-        initLastAnswerButton()
-        checkIsFormComplete()
+        if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
     }
 
-    open fun initStateFromTags() {}
+    override fun onStart() {
+        super.onStart()
 
-    @AnyThread
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
-        streetSideRotater?.onMapOrientation(rotation, tilt)
-    }
-
-    private fun showTapHint() {
-        if ((left == null || right == null) && !HAS_SHOWN_TAP_HINT) {
-            if (left == null) binding.puzzleView.showLeftSideTapHint()
-            if (right == null) binding.puzzleView.showRightSideTapHint()
+        if (!HAS_SHOWN_TAP_HINT) {
+            streetSideSelect.showTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
-    }
-
-    /* ---------------------------------- selection dialog -------------------------------------- */
-
-    private fun showSelectionDialog(isRight: Boolean) {
-        val ctx = context ?: return
-
-        ImageListPickerDialog(ctx, items.map { getDisplayItem(it).asItem() }, cellLayoutId, 2) { item ->
-            onSelectedSide(items.find { it == item.value }!!, isRight)
-        }.show()
-    }
-
-    open fun onSelectedSide(selection: I, isRight: Boolean) {
-        replaceSide(selection, isRight)
-    }
-
-    fun replaceSide(selection: I, isRight: Boolean) {
-        val item = getDisplayItem(selection)
-        if (isRight) {
-            binding.puzzleView.replaceRightSideImage(item.image)
-            binding.puzzleView.replaceRightSideFloatingIcon(item.floatingIcon)
-            binding.puzzleView.setRightSideText(item.title)
-            right = selection
-        } else {
-            binding.puzzleView.replaceLeftSideImage(item.image)
-            binding.puzzleView.replaceLeftSideFloatingIcon(item.floatingIcon)
-            binding.puzzleView.setLeftSideText(item.title)
-            left = selection
-        }
-        updateLastAnswerButtonVisibility()
         checkIsFormComplete()
     }
+
+    override fun onMapOrientation(rotation: Float, tilt: Float) {
+        streetSideSelect.onMapOrientation(rotation, tilt)
+    }
+
+    /* --------------------------------- last answer button ------------------------------------- */
+
+    protected fun saveLastSelection() {
+        val isUpsideDown = streetSideSelect.isStreetDisplayedUpsideDown()
+        val l = if (isUpsideDown) streetSideSelect.right else streetSideSelect.left
+        val r = if (isUpsideDown) streetSideSelect.left else streetSideSelect.right
+        /** by default only save selection if both sides were filled because cases where only one side
+         *  may be filled are usually rare and pre-filling just one side is less of a time-saving */
+        if (l?.value != null && r?.value != null) {
+            val str = serializeLastSelection(StreetSideSelectWithLastAnswerButtonViewController.LastSelection(l, r))
+            prefs.edit().putString(Prefs.LAST_PICKED_PREFIX + javaClass.simpleName, str).apply()
+        }
+    }
+
+    private fun serializeLastSelection(selection: StreetSideSelectWithLastAnswerButtonViewController.LastSelection<I>): String =
+        "${serialize(selection.left, false)}#${serialize(selection.right, true)}"
+
+    private fun deserializeLastSelection(str: String): StreetSideSelectWithLastAnswerButtonViewController.LastSelection<I> {
+        val split = str.split('#')
+        val left = deserialize(split[0], false)
+        val right = deserialize(split[1], true)
+        return StreetSideSelectWithLastAnswerButtonViewController.LastSelection(left, right)
+    }
+
+    protected abstract fun serialize(item: StreetSideDisplayItem<I>, isRight: Boolean): String
+
+    protected abstract fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<I>
 
     /* ------------------------------------- instance state ------------------------------------- */
 
-    private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        left = savedInstanceState.getString(LEFT, null)?.let { getItemByString(it) }
-        right = savedInstanceState.getString(RIGHT, null)?.let { getItemByString(it) }
+    private fun onLoadInstanceState(inState: Bundle) {
+        streetSideSelect.showSides = StreetSideSelectWithLastAnswerButtonViewController.Sides.valueOf(inState.getString(SHOW_SIDES, null)!!)
+        streetSideSelect.setPuzzleSide(inState.getString(LEFT, null)?.let { deserialize(it, false) }, false)
+        streetSideSelect.setPuzzleSide(inState.getString(RIGHT, null)?.let { deserialize(it, true) }, true)
+        isDisplayingPrevious = inState.getBoolean(IS_DISPLAYING_PREVIOUS, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(LEFT, left?.toString())
-        outState.putString(RIGHT, right?.toString())
-    }
-
-    private fun getItemByString(str: String): I? =  items.find { it.toString() == str }
-
-    /* --------------------------------- last answer button ------------------------------------- */
-
-    private fun initLastAnswerButton() {
-        updateLastAnswerButtonVisibility()
-
-        lastSelection?.left?.let { binding.lastAnswerButton.leftSideImageView.setImage(getDisplayItem(it).icon) }
-        lastSelection?.right?.let { binding.lastAnswerButton.rightSideImageView.setImage(getDisplayItem(it).icon) }
-
-        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
-    }
-
-    private fun updateLastAnswerButtonVisibility() {
-        binding.lastAnswerButton.root.isGone = lastSelection == null || !isDefiningBothSides
-    }
-
-    private fun saveLastSelection() {
-        val isUpsideDown = isRoadDisplayedUpsideDown()
-        val l = if (isUpsideDown) right else left
-        val r = if (isUpsideDown) left else right
-        if (shouldSaveSelection(l, r)) {
-            favs.add(LastSelection(l, r))
-        }
-    }
-
-    /** by default only save selection if both sides were filled because cases where only one side
-     *  may be filled are usually rare and pre-filling just one side is less of a time-saving */
-    open fun shouldSaveSelection(left: I?, right: I?): Boolean =
-        left != null && right != null
-
-    private fun applyLastSelection() {
-        val lastSelection = lastSelection ?: return
-        val isUpsideDown = isRoadDisplayedUpsideDown()
-        val l = if (isUpsideDown) lastSelection.right else lastSelection.left
-        val r = if (isUpsideDown) lastSelection.left else lastSelection.right
-        if (l != null) replaceSide(l, false)
-        if (r != null) replaceSide(r, true)
-    }
-
-    private fun isRoadDisplayedUpsideDown(): Boolean =
-        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
-
-    private fun serializeLastSelection(selection: LastSelection<I>): String =
-        "${selection.left}#${selection.right}"
-
-    private fun deserializeLastSelection(str: String): LastSelection<I> {
-        val split = str.split('#')
-        val left = getItemByString(split[0])
-        val right = getItemByString(split[1])
-        return LastSelection(left, right)
+        outState.putString(SHOW_SIDES, streetSideSelect.showSides.name)
+        outState.putString(LEFT, streetSideSelect.left?.toString())
+        outState.putString(RIGHT, streetSideSelect.right?.toString())
+        outState.putBoolean(IS_DISPLAYING_PREVIOUS, isDisplayingPrevious)
     }
 
     /* --------------------------------------- apply answer ------------------------------------- */
 
-    override fun onClickOk() {
-        onClickOk(left, right)
-        saveLastSelection()
-    }
+    protected abstract fun onClickSide(isRight: Boolean)
 
-    abstract fun onClickOk(leftSide: I?, rightSide: I?)
+    override fun isFormComplete() =
+        !isDisplayingPrevious && streetSideSelect.isComplete
 
-    override fun isFormComplete() = (
-        if (isDefiningBothSides) left != null && right != null
-        else                     left != null || right != null
-    )
-
-    override fun isRejectingClose() = left != null || right != null
+    override fun isRejectingClose() =
+        !isDisplayingPrevious || streetSideSelect.left != null || streetSideSelect.right != null
 
     companion object {
+        private const val SHOW_SIDES = "show_sides"
         private const val LEFT = "left"
         private const val RIGHT = "right"
+        private const val IS_DISPLAYING_PREVIOUS = "is_displaying_previous"
 
         private var HAS_SHOWN_TAP_HINT = false
     }
-}
-
-private data class LastSelection<T>(val left: T?, val right: T?)
-
-interface StreetSideDisplayItem<T> {
-    val value: T
-    /** shown on road view */
-    val image: Image
-    val title: Text?
-    /** shown in "last used" popup and during object selection */
-    val icon: Image
-    val floatingIcon: Image?
-
-    fun asItem(): DisplayItem<T>
-}
-
-data class StreetSideItem<T>(
-    override val value: T,
-    @DrawableRes val imageId: Int,
-    @StringRes val titleId: Int? = null,
-    @DrawableRes val iconId: Int = imageId,
-    @DrawableRes val floatingIconId: Int? = null
-) : StreetSideDisplayItem<T> {
-    override val image: Image get() = ResImage(imageId)
-    override val title: Text? get() = titleId?.let { ResText(it) }
-    override val icon: Image get() = ResImage(iconId)
-    override val floatingIcon: Image? get() = floatingIconId?.let { ResImage(it) }
-
-    override fun asItem() = Item(value, iconId, titleId)
-}
-
-data class StreetSideItem2<T>(
-    override val value: T,
-    override val image: Image,
-    override val title: Text? = null,
-    override val icon: Image = image,
-    override val floatingIcon: Image? = null
-) : StreetSideDisplayItem<T> {
-    override fun asItem() = Item2(value, icon, title)
 }
