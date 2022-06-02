@@ -1,4 +1,4 @@
-v44.0-beta1: |
+v44.0: |
   <h3>Recording GPS track</h3>
   <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
   and then attach it to a public note!<br/>
@@ -17,6 +17,8 @@ v44.0-beta1: |
   <h3>Enhancements and Fixes</h3>
   <ul>
   <li>Clarify a lot of wordings in American English (#4030) by @ZeLonewolf</li>
+  <li>Improve some aspects of the background map rendering, by @Helium314</li>
+  <li>Improve performance when using the app in a long session (#4070), by @Helium314</li>
   <li>Various minor enhancements, wording improvements and fixes (#4015, #4042, #4001, #4039, #4032, #4056...), thanks @Helium314, @peternewman, @riQQ</li>
   </ul>
 
