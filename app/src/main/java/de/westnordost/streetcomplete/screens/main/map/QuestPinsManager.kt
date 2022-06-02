@@ -141,7 +141,7 @@ class QuestPinsManager(
             synchronized(retrievedTiles) {
                 val tiles = tilesRect.asTilePosSequence().toSet()
                 // remove all retrievedTiles not in current tilesRect
-                retrievedTiles.removeAll { !tiles.contains(it) }
+                retrievedTiles.removeAll { it !in tiles }
             }
         }
         var tiles: List<TilePos>
