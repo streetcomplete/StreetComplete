@@ -725,13 +725,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Ceļa Grūtība",
-                    "options": {
-                        "0": "Vieglākā (baltais aplis)",
-                        "1": "Viegla (zaļais aplis)",
-                        "2": "Vidēja (zilais kvadrāts)",
-                        "3": "Grūta (melns dimants)",
-                        "4": "Ļoti grūta (Dubultais melnais dimants)"
-                    },
                     "placeholder": "Viegls, Vidējs, Grūts..."
                 },
                 "mtb/scale/uphill": {
@@ -2041,9 +2034,6 @@
                 },
                 "leisure/golf_course": {
                     "name": "Golfa laukums"
-                },
-                "leisure/horse_riding": {
-                    "name": "Zirgu jāšanas vieta"
                 },
                 "leisure/ice_rink": {
                     "name": "Ledus halle"

@@ -2612,7 +2612,7 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_dedit_only">"Enkel debetkaarten"</string>
     <string name="quest_accepts_cards_unavailable">"Geen debet- noch kreditkaarten"</string>
     <string name="quest_barrier_type_gate_any_size">"Poort, elke grootte"</string>
-    <string name="quest_air_pump_compressor_title">"Bevindt zich hier een "</string>
+    <string name="quest_air_pump_compressor_title">"Is hier een luchtcompressor aanwezig?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Enkel het aantal treden tot de top. Als het aantal treden verschilt tussen beide kanten, geef dan het grootste getal."</string>
@@ -2665,4 +2665,7 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Winkelingang"</string>
     <string name="quest_building_entrance_yes">"Ander soort ingang"</string>
     <string name="quest_building_entrance_dead_end">"Doodlopend einde, geen ingang"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Druk op het scherm om te starten met meten"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Bevindt zich hier een publiek toegankelijke fietspomp (tenminste wanneer het geopend is)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Bevindt zich hier een werkende fietspomp?"</string>
 </resources>

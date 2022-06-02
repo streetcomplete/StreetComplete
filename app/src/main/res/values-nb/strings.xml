@@ -2172,4 +2172,32 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Antall trinn for å nå toppen. Hvis det er ulikt antall trinn på hver side, oppgi det høyeste antallet."</string>
+    <string name="quest_shoulder_explanation2">"Veiskulder eller sammenbruddsfelt er tydelig markerte nødstoppfelt. Området som er avsatt til veiskulder er ikke nødvendigvis belagt i full bredde og er ikke nødvendigvis bred nok til at en bil kan stå helt utenfor det trafikkerte feltet."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"Ingen, sykling denne retningen er ikke tillatt"</string>
+    <string name="map_btn_create_track">"Lag et nytt sporopptak"</string>
+    <string name="map_btn_stop_track">"Avslutt opptak av spor"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Hvor mange plasser for utleiesykler er det her?"</string>
+    <string name="quest_bicycle_rental_type_title">"Hva slags sykkelutleie er dette?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Sykkelstativ som låser fast syklene"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Avmerket område (syklene låses indivituelt)"</string>
+    <string name="quest_bicycle_rental_type_human">"Bemannet sykkelutleie"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Sykkelbutikk som også leier ut sykler"</string>
+    <string name="quest_bicycle_shop_repair_title">"Tilbys sykkelreparasjoner her?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Selges brukte sykler her?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nei, kun nye"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Ja, i tillegg til nye"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Ja, kun brukte"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Nei, sykler selges ikke her"</string>
+    <string name="quest_building_entrance_title">"Hva slags inngang er dette?"</string>
+    <string name="quest_building_entrance_main">"Hovedinngang til en offentlig bygning"</string>
+    <string name="quest_building_entrance_staircase">"Inngang til trapperom (f.eks. i en blokk)"</string>
+    <string name="quest_building_entrance_service">"Serviceinngang"</string>
+    <string name="quest_building_entrance_exit">"Kun utgang"</string>
+    <string name="quest_building_entrance_emergency_exit">"Kun nødutgang"</string>
+    <string name="quest_building_entrance_shop">"Butikkinngang"</string>
+    <string name="quest_building_entrance_yes">"Annen inngangstype"</string>
+    <string name="quest_building_entrance_dead_end">"Blindvei, ingen inngang"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Trykk på skjermen for å begynne å måle"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Er det en offentilg tilgjengelig sykkelpumpe her (i hverfall når det er åpent)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Er det en fungerende sykkelpumpe her?"</string>
 </resources>

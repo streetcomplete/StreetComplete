@@ -292,7 +292,6 @@
                     "label": "Skønhedsspecialitet",
                     "options": {
                         "cosmetics": "Kosmetik",
-                        "nails": "NEgle",
                         "tanning": "Solbadning"
                     }
                 },
@@ -1288,13 +1287,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Sværhedsgrad for IMBA-spor",
-                    "options": {
-                        "0": "Nemmeste (hvid cirkel)",
-                        "1": "Let (grøn cirkel)",
-                        "2": "Medium (blå firkant)",
-                        "3": "Vanskelig (sort diamant)",
-                        "4": "Ekstremt vanskelig (dobbelt sort diamant)"
-                    },
                     "placeholder": "Nemt, medium, svært"
                 },
                 "mtb/scale/uphill": {
@@ -1746,9 +1738,6 @@
                     "options": {
                         "parking_aisle": "Vej mellem parkeringspladser"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Faciliteter"
                 },
                 "service/vehicle": {
                     "label": "Faciliteter"
@@ -4127,10 +4116,6 @@
                 "leisure/hackerspace": {
                     "name": "Hackerspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ridningsfaciliteter",
-                    "terms": "ridningsfaciliteter,hesteridningsfaciliteter"
-                },
                 "leisure/ice_rink": {
                     "name": "Skøjtebane",
                     "terms": "skøjtebane"
@@ -4193,10 +4178,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Cricketbane",
                     "terms": "cricketbane"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Ridebanehal",
-                    "terms": "ridebanehal,ridebanearena"
                 },
                 "leisure/pitch/rugby_league": {
                     "name": "Rugby station",
@@ -4272,10 +4253,6 @@
                 "leisure/track/cycling": {
                     "name": "Cykelbane",
                     "terms": "cykling,cyklist,løb,bane"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Ridebane",
-                    "terms": "bane,løb,hest,ridning"
                 },
                 "leisure/track/running": {
                     "name": "Løbebane",

@@ -312,8 +312,12 @@
                     "label": "Servicios",
                     "options": {
                         "cosmetics": "Cosméticos",
-                        "nails": "Uñas",
-                        "tanning": "Bronceado"
+                        "hair_removal": "Eliminación del vello",
+                        "nails": "Manicura / Pedicura",
+                        "skin_care": "Cuidado de la piel",
+                        "spa": "Spa diurno",
+                        "tanning": "Bronceado",
+                        "waxing": "Depilación con cera"
                     }
                 },
                 "bench": {
@@ -521,7 +525,8 @@
                     "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
-                    "label": "Ropa"
+                    "label": "Ropa",
+                    "terms": "ropa,prendas,vestidos,vestimenta,indumentaria,trajes,atuendo,ropajes"
                 },
                 "club": {
                     "label": "Tipo"
@@ -1231,6 +1236,13 @@
                 "highway": {
                     "label": "Tipo"
                 },
+                "highway_cartpath": {
+                    "label": "Tipo de camino",
+                    "options": {
+                        "path": "Camino para los carritos",
+                        "service": "Vía de servicio"
+                    }
+                },
                 "historic": {
                     "label": "Tipo"
                 },
@@ -1610,11 +1622,11 @@
                 "mtb/scale/imba": {
                     "label": "Dificultad de pista IMBA",
                     "options": {
-                        "0": "Más fácil (círculo blanco)",
-                        "1": "Fácil (círculo verde)",
-                        "2": "Media (cuadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Extremadamente difícil (doble diamante negro)"
+                        "0": "⚪ Más fácil (círculo blanco)",
+                        "1": "🟢 Fácil (círculo verde)",
+                        "2": "🟦 Media (cuadrado azul)",
+                        "3": "◆ Difícil (diamante negro)",
+                        "4": "◆◆ Extremadamente difícil (doble diamante negro)"
                     },
                     "placeholder": "Fácil, medio, difícil...",
                     "terms": "dificultad de sendero imba,sendero,imba"
@@ -2324,7 +2336,8 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Servicios"
+                    "label": "Servicios para bicicletas",
+                    "terms": "servicios para bicicletas,servicios de bicicletas,bicicletas"
                 },
                 "service/vehicle": {
                     "label": "Servicios"
@@ -4054,7 +4067,7 @@
                 },
                 "amenity/waste_basket": {
                     "name": "Papelera",
-                    "terms": "papelera,papelero,cubo,contenedor,basura,papeles,deshecho,tacho,cubo de basura,tacho de basura,caneca de basura,bote de basura,tobo de basura"
+                    "terms": "papelera,papelero,cubo,contenedor,basura,papeles,deshecho,tacho,cubo de basura,tacho de basura,caneca de basura,bote de basura,tobo de basura,cesto de basura"
                 },
                 "amenity/waste_disposal": {
                     "name": "Contenedor de residuos",
@@ -6017,7 +6030,7 @@
                     "terms": "carril bici,ciclovía,pista de ciclismo,velódromo"
                 },
                 "leisure/track/horse_racing": {
-                    "name": "Pista de carreras de caballos",
+                    "name": "Pista de carrera ecuestre",
                     "terms": "pista de carreras ecuestres,apuestas de carreras de caballos,carreras de caballos,hipódromo,hipodromo"
                 },
                 "leisure/track/running": {
@@ -8417,7 +8430,7 @@
                     "terms": "ruta de senderismo,senderismo,excursionismo,caminata,excursionismo a pie"
                 },
                 "type/route/horse": {
-                    "name": "Ruta a caballo",
+                    "name": "Ruta ecuestre",
                     "terms": "caballos,ruta,ecuestre,equitación,cabalgar,cabalgata,montar"
                 },
                 "type/route/light_rail": {

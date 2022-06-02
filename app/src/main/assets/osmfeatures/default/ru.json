@@ -299,7 +299,6 @@
                     "label": "Услуги",
                     "options": {
                         "cosmetics": "Косметика",
-                        "nails": "Маникюр",
                         "tanning": "Солярий"
                     }
                 },
@@ -1334,13 +1333,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Сложность по рейтингу IMBA",
-                    "options": {
-                        "0": "Легчайшая (белый круг)",
-                        "1": "Лёгкая (зелёный круг)",
-                        "2": "Средняя (синий квадрат)",
-                        "3": "Сложная (чёрный ромб)",
-                        "4": "Экстремально сложная (двойной чёрный круг)"
-                    },
                     "placeholder": "Лёгкая, средняя, сложная…"
                 },
                 "mtb/scale/uphill": {
@@ -1922,9 +1914,6 @@
                     "options": {
                         "emergency_access": "Проезд для экстренных служб"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Услуги"
                 },
                 "service/vehicle": {
                     "label": "Услуги"
@@ -4352,9 +4341,6 @@
                     "name": "Хакерспейс",
                     "terms": "хакспейс"
                 },
-                "leisure/horse_riding": {
-                    "name": "Площадка для верховой езды"
-                },
                 "leisure/ice_rink": {
                     "name": "Каток",
                     "terms": "каток,лед,коньки,фигурное катание"
@@ -4417,9 +4403,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Поля для крикета"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Площадка для верховой езды"
                 },
                 "leisure/pitch/rugby_league": {
                     "name": "Регби-13",
@@ -4502,9 +4485,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Велотрек"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Ипподром"
                 },
                 "leisure/track/running": {
                     "name": "Беговая дорожка"
@@ -6328,9 +6308,6 @@
                 "type/route/hiking": {
                     "name": "Маршрут пешего туризма",
                     "terms": "туризм,хайкинг"
-                },
-                "type/route/horse": {
-                    "terms": "конный маршрут"
                 },
                 "type/route/light_rail": {
                     "name": "Маршрут легкорельсового транспорта"

@@ -258,10 +258,10 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
     <string name="quest_sport_roller_skating">"Rolanje"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"\"Djelomično\" znači da nema više od jedne stepenice za pristup, i da je većina prostorija pristupačna za invalidska kolica."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"\"Djelomično\" znači da nema više od jedne stepenice (visine gležnja) za pristup, i da je većina prostorija pristupačna za invalidska kolica."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Djelomično\" znači da nema više od jedne stepenice za pristup."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Djelomično\" znači da nema više od jedne stepenice (visine gležnja) za pristup."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Kratica u nazivu %s?"</string>
     <string name="quest_recycling_type_title">"O kakvoj vrsti reciklaže se radi?"</string>
     <string name="recycling_centre">"Reciklažni centar"</string>
@@ -658,7 +658,7 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_building_underground_title">"Je li ova zgrada potpuno pod zemljom?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_outside">"\"Djelomično\" znači da nema više od jedne stepenice za pristup."</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"\"Djelomično\" znači da nema više od jedne stepenice (visine gležnja) za pristup."</string>
     <string name="quest_wheelchairAccess_outside_title">"Je li ova lokacija pristupačna za invalidska kolica?"</string>
     <string name="quest_traffic_signals_button_title">"Imaju li ovi semafori tipku za zahtjevanje prelaska pješaka?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Koliko motocikala ovdje može parkirati?"</string>
@@ -1833,4 +1833,6 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_building_entrance_dead_end">"Slijepa ulica, nema ulaza"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotaknite ekran kako biste započeli mjerenje"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Postoji li ovdje javno dostupna pumpa za bicikle (barem u radno vrijeme)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Postoji li ovdje radeća pumpa za bicikle?"</string>
 </resources>

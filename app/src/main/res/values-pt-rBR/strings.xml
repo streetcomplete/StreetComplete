@@ -2436,4 +2436,31 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Um acostamento é uma faixa de parada de emergência claramente demarcada. A área designada como acostamento não é necessariamente pavimentada em toda a sua largura e não é necessariamente larga o suficiente para que um carro pare completamente fora da faixa de tráfego."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"nenhuma, não é permitido ciclismo nesta direção"</string>
+    <string name="map_btn_create_track">"Criar nova gravação de trilhas"</string>
+    <string name="map_btn_stop_track">"Parar de gravar trilha"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Quantos espaços para aluguel de bicicletas estão aqui?"</string>
+    <string name="quest_bicycle_rental_type_title">"Que tipo de aluguel de bicicletas é este?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Estação de ancoragem que tranca as bicicletas"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Ponto designado (bicicletas trancadas individualmente)"</string>
+    <string name="quest_bicycle_rental_type_human">"Aluguel de bicicletas com funcionários"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Loja de bicicletas que também aluga bicicletas"</string>
+    <string name="quest_bicycle_shop_repair_title">"Os serviços de reparo de bicicletas são oferecidos aqui?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Bicicletas de segunda mão são vendidas aqui?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Não, apenas novos"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Sim, junto com os novos"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Sim, exclusivamente"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Nenhuma bicicleta é vendida"</string>
+    <string name="quest_building_entrance_title">"Que tipo de entrada do edifício é esta?"</string>
+    <string name="quest_building_entrance_main">"Entrada principal de um edifício público"</string>
+    <string name="quest_building_entrance_staircase">"Entrada de escadas (por exemplo, para um prédio de apartamentos)"</string>
+    <string name="quest_building_entrance_service">"Entrada de serviço"</string>
+    <string name="quest_building_entrance_exit">"Sair apenas"</string>
+    <string name="quest_building_entrance_emergency_exit">"Somente saída de emergência"</string>
+    <string name="quest_building_entrance_shop">"Entrada na frente da loja"</string>
+    <string name="quest_building_entrance_yes">"Outro tipo de entrada"</string>
+    <string name="quest_building_entrance_dead_end">"Beco sem saída, sem entrada"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Tela de toque para começar a medir"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Existe aqui uma bomba de bicicleta pública (pelo menos quando está aberta)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Há uma bomba de bicicleta funcionando aqui?"</string>
 </resources>

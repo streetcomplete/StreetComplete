@@ -31,7 +31,7 @@
     <!-- I'm unsure what this means, "abbreviations *will be* expanded" or "expand abbrevations"? (currently translated to "will be" -->
     <string name="quest_streetName_description">"som skrevet på vejskiltet, forkortelser skrives helt ud:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Nogle gange er vejskiltet kun i den ene ende af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader, der tilhører en større gade. For det meste har alle gader med huse et navn."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør det dette. Mange typiske forkortelser bliver udvidet automatisk mens du skriver, men ikke alle."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse, bør det dette gøres. Mange typiske forkortelser bliver udvidet automatisk mens du skriver, men ikke alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
     <string name="quest_openingHours_start_time">"åbningstidspunkt"</string>
     <string name="quest_openingHours_end_time">"lukketid"</string>
@@ -179,7 +179,7 @@ Før dine ændringer indsendes, tjekker appen en &lt;a href=\"https://www.westno
     <string name="quest_surface_value_wood">"Træ"</string>
     <string name="quest_sidewalk_title">"Er der fortov på denne vej?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
-    <string name="quest_oneway_title">"Er dette en ensrettet vej?"</string>
+    <string name="quest_oneway_title">"Er denne vej ensrettet?"</string>
     <string name="quest_address_title">"Hvilket husnummer er der på denne bygning?"</string>
 
     <!-- Fuzzy -->
@@ -270,7 +270,7 @@ Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, ud
 
     <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Du valgte mange sportsgrene"</string>
-    <string name="quest_toiletsFee_title">"Skal man betale for at bruge dette toilet?"</string>
+    <string name="quest_toiletsFee_title">"Skal man betale for at benytte dette toilet?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil belægning på begge sider?"</string>
 
     <!-- Fuzzy -->
@@ -278,7 +278,7 @@ Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, ud
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Kun information som blev fundet ved en undersøgelse, bør indberettes."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet imod regn)?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse ser urealistisk ud."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en fartgrænse?"</string>
@@ -478,7 +478,7 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="undo_confirm_negative">"Annuller"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_hasFeature_only">"Kun"</string>
+    <string name="quest_hasFeature_only">"Udelukkende"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Veganske retter indeholder ingen animalske produkter (intet kød, mælkeprodukter, æg, honning …)."</string>
@@ -539,7 +539,7 @@ Delvist betyder, at kørestolsbrugeren kan bruge toilettet, men at der mangler h
     <string name="quest_internet_access_terminal">"Computer med internetadgang"</string>
     <string name="quest_internet_access_no">"Ingen forbindelse"</string>
     <string name="quest_bench_backrest_title">"Har bænken et ryglæn?"</string>
-    <string name="quest_bench_answer_picnic_table">"Det er et bord-bænkesæt"</string>
+    <string name="quest_bench_answer_picnic_table">"Det er et bord- og bænkesæt"</string>
     <string name="quest_religion_for_place_of_worship_title">"Hvilken religion praktiseres på dette sted?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
@@ -606,14 +606,14 @@ Delvist betyder, at kørestolsbrugeren kan bruge toilettet, men at der mangler h
     <string name="quest_bicycle_parking_type_shed">"Skur"</string>
     <string name="quest_bicycle_parking_type_locker">"Skab"</string>
     <string name="quest_bicycle_parking_type_building">"Bygning"</string>
-    <string name="quest_bicycle_parking_type_title">"Hvilken slags cykelparkering er dette?"</string>
+    <string name="quest_bicycle_parking_type_title">"Hvilken type cykelparkering er dette?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_suggestion_lane">"cykel-henvisningssti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Hvad er tømningstiderne for denne postkasse?"</string>
-    <string name="quest_collectionTimes_add_times">"Tilføj tømningstid"</string>
+    <string name="quest_collectionTimes_add_times">"Tilføj tømningstidspunkt"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ingen tider angivet"</string>
     <string name="quest_construction_road_title">"Er denne vej færdiggjort?"</string>
     <string name="quest_construction_cycleway_title">"Er denne cykelsti færdiggjort?"</string>
@@ -693,7 +693,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_industrial_description">"f.eks. en fabrik, værksted, …"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butik(ker)"</string>
-    <string name="quest_buildingType_warehouse">"Varehus"</string>
+    <string name="quest_buildingType_warehouse">"Lagerbygning"</string>
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -787,7 +787,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_segregated_title">"Hvordan er gangsti og cykelsti blevet anlagt her?"</string>
 
     <!-- Fuzzy -->
-    <string name="dialog_tutorial_upload">"Hvis du vil uploade dine ændringer manuelt, skal du bruge knappen i den værktøjslinje, der ser sådan ud."</string>
+    <string name="dialog_tutorial_upload">"For at indsende dine ændringer manuelt, skal du bruge knappen i værktøjslinjen, der ser således ud."</string>
     <string name="quest_segregated_separated">"Adskilt fra hinanden"</string>
 
     <!-- Fuzzy -->
@@ -796,7 +796,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_maxheight_answer_noSign">"Der er intet skilt…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_answer_noSign_question">"Er der plads nok til, at selv de højeste lastbiler (mindst ca. 4,5 meter høj) kan passere igennem?"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Er der rigelig plads til, at selv de højeste lastbiler (mindst ca. 4,5 meter høje) kan passere?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Denne højde virker usandsynlig. Er du sikker på, at den er korrekt?"</string>
 
     <!-- first placeholder is the person, second placeholder is the date -->
@@ -819,7 +819,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_tracktype_title">"Hvordan er overfladefastheden på dette spor?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade1">"Solid"</string>
+    <string name="quest_tracktype_grade1">"Har belægning"</string>
     <string name="quest_tracktype_grade4">"Mest blød"</string>
     <string name="quest_tracktype_grade5">"Blød"</string>
     <string name="quest_building_underground_title">"Er denne bygning helt underjordisk?"</string>
@@ -853,8 +853,8 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbudt for fodgængere at gå på denne vej her?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne vej blev mærket som værende uden fortov på begge sider. Hvis der alligevel er et fortov, men det vises som en separat vej, skal du svare “fortov”."</string>
-    <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne vej blev markeret som værende uden fortov på begge sider. Hvis der alligevel er et fortov, men det vises som en separat vej, skal du svare “fortov”."</string>
+    <string name="quest_buildingType_title">"Hvilken type bygning er dette?"</string>
     <string name="pref_title_theme_select">"Vælg tema"</string>
     <string name="theme_automatic">"Auto"</string>
 
@@ -878,7 +878,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_busStopShelter_covered">"Hele busstoppestedet er overdækket"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ferry_pedestrian_title">"Medtager denne færgerute gående passager?"</string>
+    <string name="quest_ferry_pedestrian_title">"Medtager denne færgerute gående passagerer?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Medtager denne færgerute motorkørestøjer?"</string>
@@ -895,12 +895,12 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_leaf_type_mixed">"Begge er til stede"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cyclewayPartSurface_title">"Hvad er belægningen på denne cykelsti?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Hvilken overflade er der på denne cykelsti?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Det er forskelligt undervejs…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del separat.
-Del vejen nu?"</string>
+    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del enkeltvis.
+Opdel vejen nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Tryk på vejen der hvor du vil opdele den. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
@@ -968,7 +968,7 @@ Del vejen nu?"</string>
     <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_type_plastic">"Alle slags plastik"</string>
+    <string name="quest_recycling_type_plastic">"Alle typer plastik"</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Sko"</string>
@@ -1144,7 +1144,8 @@ Denne data er essentiel ikke bare for postbuddet men også for ethvert navigatio
     <string name="achievement_building_title">"Skyskraberkonge"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_building_solved_X">"Du har løst %d bygningsrelateret opgaver. Bemærk at denne app spørger kun efter et husnummer, når bygningstyper er blevet angivet."</string>
+    <string name="achievement_building_solved_X">"Du har løst %d bygningsrelateret opgaver.
+Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygningstype er blevet fastlagt."</string>
     <string name="achievement_blind_title">"Den sjette sans"</string>
     <string name="achievement_blind_solved_X">"Du har løst %d opgaver der er interessante for synshandicappede."</string>
     <string name="achievement_pedestrian_title">"Løber"</string>
@@ -1231,7 +1232,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_maxweight_select_sign">"Vælg skilt"</string>
     <string name="quest_steps_incline_title">"Hvilken retning er opad for disse trin?"</string>
     <string name="quest_steps_incline_up">"Denne vej op"</string>
-    <string name="quest_step_count_title">"Hvor mange trin her?"</string>
+    <string name="quest_step_count_title">"Hvor mange trin er der her?"</string>
     <string name="quest_traffic_signals_sound_title">"Er der lydsignaler for blinde her?"</string>
 
     <!-- Fuzzy -->
@@ -1267,9 +1268,9 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="achievement_outdoors_solved_X">"Du løste %d opgaver, der er nyttige for friluftsmennesker!"</string>
     <string name="quest_pedestrian_crossing_island">"Har dette fodgængerfelt en midterhelle?"</string>
     <string name="quest_generic_answer_noSign">"Der er ikke noget skilt"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"Er kørestolrampen vist som en selvstændig vej på kortet?"</string>
-    <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
-    <string name="quest_steps_ramp_separate_wheelchair_decline">"ikke separat"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Er kørestolrampen vist som en særskilt vej på kortet?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"særskilt"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"ikke særskilt"</string>
     <string name="pref_title_sync2">"Upload besvarelser automatisk"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Beskriv overfladen"</string>
     <string name="open_url">"Åbn URL"</string>
@@ -1447,8 +1448,8 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_policeType_title">"Hvilken slags politistation er dette?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_barrier_type_kissing_gate_conversion">"Konverteret til kissing gate"</string>
-    <string name="quest_stile_type_title">"Hvilken slags stente er dette?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Omdannet til en 'kissing gate'"</string>
+    <string name="quest_stile_type_title">"Hvilken type stente er dette?"</string>
     <string name="quest_buildingType_semi_detached_description2">"tilstødende enfamiliehus(e)"</string>
 
     <!-- Fuzzy -->
@@ -1493,7 +1494,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_bollard_type_foldable2">"Sammenfoldelig (med eller uden nøgle)"</string>
     <string name="no_search_results">"Intet fundet"</string>
     <string name="quest_selection_hint_title">"For mange opgaver at løse?"</string>
-    <string name="quest_selection_hint_message">"Det skal først og fremmest være sjovt at bidrage! Hvis du bliver overvældet af antallet af opgaver, kan du i indstillingerne altid finjustere, hvilke opgaver du ser og i hvilken rækkefølge."</string>
+    <string name="quest_selection_hint_message">"Det skal først og fremmest være sjovt at bidrage! Hvis antallet af opgaver er for overvældende, kan du i indstillingerne altid finjustere, hvilke opgaver du ser og i hvilken rækkefølge."</string>
 
     <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Tilføj forudindstilling"</string>
@@ -1510,13 +1511,13 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_buildingType_bridge">"Gangbro mellem bygninger"</string>
     <string name="quest_laundrySelfService_title2">"Er der selvbetjening i dette vaskeri?"</string>
     <string name="quest_dietType_explanation_halal">"Halaprodukter skal være lavet efter specielle regler  og skal være med en halalcertificering som markeres på produkterne."</string>
-    <string name="quest_picnicTableCover_title">"Er dette picnicbord overdækket (beskyttet mod regn)?"</string>
+    <string name="quest_picnicTableCover_title">"Er dette bord- og bænkesæt overdækket (beskyttet mod regn)?"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Denne del er trapper"</string>
-    <string name="quest_barrier_type_passage_conversion">"Konverteret til en passage i mur/hegn/osv."</string>
-    <string name="quest_barrier_type_gate_conversion">"Konverteret til en låge"</string>
+    <string name="quest_barrier_type_passage_conversion">"Omdannet til en passage i mur/hegn/osv."</string>
+    <string name="quest_barrier_type_gate_conversion">"Omdannet til en låge"</string>
     <string name="quest_traffic_calming_type_title">"Hvilken type hastighedsdæmpning er dette?"</string>
     <string name="quest_traffic_calming_type_bump">"Vejbump (lille)"</string>
     <string name="quest_traffic_calming_type_hump">"Vejbump (større)"</string>
@@ -1593,13 +1594,15 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_shoulder_title">"Har denne vej et nødspor?"</string>
     <string name="quest_fireHydrant_position_title">"Hvor er denne brandhane placeret?"</string>
     <string name="quest_fireHydrant_position_green">"I græs eller jord"</string>
-    <string name="quest_fireHydrant_position_lane">"På vejen"</string>
+    <string name="quest_fireHydrant_position_lane">"På vejbanen"</string>
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
     <string name="quest_smoothness_square_title">"Hvad er overfladekvaliteten på denne plads?"</string>
     <string name="quest_smoothness_road_title">"Hvad er overfladekvaliteten af denne vej her?"</string>
-    <string name="quest_smoothness_title_excellent">"Jævn og lige"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_title_excellent">"Jævn og plan"</string>
     <string name="quest_smoothness_title_good">"Hovedsageligt jævn"</string>
     <string name="quest_smoothness_title_intermediate">"Lidt ujævn"</string>
     <string name="quest_smoothness_title_bad">"Ujævn"</string>
@@ -1608,7 +1611,9 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <string name="quest_smoothness_title_very_horrible">"Næsten ufremkommelig"</string>
     <string name="quest_smoothness_title_impassable">"Ufremkommelig"</string>
     <string name="quest_smoothness_description_excellent_paved">"Ingen bump eller revner"</string>
-    <string name="quest_smoothness_description_excellent_paving_stones">"Næsten glat"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_smoothness_description_excellent_paving_stones">"Næsten uden mellemrum"</string>
     <string name="quest_smoothness_description_good_paved">"Kun små revner, huller, reparationer eller en lidt jævn overflade"</string>
     <string name="quest_smoothness_description_good_paving_stones">"Overfladiske eller smalle mellemrum"</string>
     <string name="quest_smoothness_description_good_sett">"Usædvanligt flade sten, regelmæssigt mønster, meget overfladiske eller smalle mellemrum"</string>
@@ -1626,25 +1631,25 @@ Alternativt kan du efterlade en note (med et foto)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Nogle store sten, dybe huller, ujævnheder, hjulspor, erosion eller andre farlige skader"</string>
-    <string name="quest_smoothness_description_horrible">"Kun egnet til brug for terrængående køretøjer eller til fods"</string>
-    <string name="quest_smoothness_description_very_horrible">"Kun egnet til brug for specialiserede terrængående køretøjer eller til fods"</string>
+    <string name="quest_smoothness_description_horrible">"Kun brugbar med terrængående køretøjer eller til fods"</string>
+    <string name="quest_smoothness_description_very_horrible">"Kun brugbar med specialiserede, terrængående køretøjer eller til fods"</string>
     <string name="quest_smoothness_description_impassable">"Uegnet for køretøjer, kan kun passeres til fods"</string>
     <string name="quest_smoothness_wrong_surface">"Overflade er anderledes"</string>
     <string name="quest_smoothness_surface_value">"Overfladen var markeret som:"</string>
     <string name="quest_smoothness_obstacle">"Der er en forhindring"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_smoothness_obstacle_hint">"Giv venligst et generelt svar på glatheden. Der kan ses bort fra enkelte forhindringer som kantsten, fartbump eller færiste. Gentagne eller uventede forhindringer skal medregnes i svaret."</string>
+    <string name="quest_smoothness_obstacle_hint">"Giv venligst et generelt svar på jævnheden. Der kan ses bort fra enkelte forhindringer som kantsten, fartbump eller færiste. Gentagne eller uventede forhindringer skal medregnes i svaret."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … angiv, hvilke køretøjer der bør kunne bruges på overfladen. Det vigtige er det generelle billede og ikke enkelte skader."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … angiv, hvilke køretøjer der bør kunne bruges på overfladen. Det vigtige er det overordnede billede og ikke enkelte risikomomenter."</string>
     <string name="link_osmhydrant_description">"Find, tilføj og rediger brandstationer og brandhaner"</string>
     <string name="achievement_lifesaver_title">"Livredder"</string>
     <string name="achievement_lifesaver_solved_X">"Du har løst %d opgaver, der hjælper redningstjenester og førstehjælpere!"</string>
 
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <!-- Fuzzy -->
-    <string name="quest_fuelSelfService_title">"Kan du selv tanke op her?"</string>
+    <string name="quest_fuelSelfService_title">"Kan man selv tanke op her?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Denne opgavetype er som standard deaktiveret, fordi det er ret tidskrævende og ofte svært at træffe det rigtige valg. Du bør kun aktivere denne opgavetype, hvis du virkelig ønsker at tilføje denne type data."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Hårdpakket, meget lidt løst grus eller sand"</string>
     <string name="quest_barrier_path_intersection">"Hvordan krydser denne sti barrieren her?"</string>
@@ -1671,7 +1676,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="ar_measure">"Opmål"</string>
 
     <!-- Fuzzy -->
-    <string name="ar_core_tracking_error_too_steep_angle">"For stejl vinkel, træd en smule væk"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Vinklen er for stejl, træd en smule væk"</string>
     <string name="default_disabled_msg_no_ar">"Du skal bruge et målebånd for at løse denne opgave, da måling med kameraet ikke understøttes på denne enhed."</string>
 
     <!-- Fuzzy -->
@@ -1688,7 +1693,7 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="link_osmand_description">"Mobilapp til online og offline kortvisning og navigation"</string>
     <string name="link_sunders_description">"Et kort over kameraer og overvågningsudstyr"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Hold dig tættere på pilen, men hold øje med trafikken!"</string>
-    <string name="quest_sidewalk_surface_title">"Hvad er fortovets overflade her?"</string>
+    <string name="quest_sidewalk_surface_title">"Hvilken overflade har fortovet her?"</string>
     <string name="quest_tactilePaving_incorrect">"Kun på en side"</string>
 
     <!-- Fuzzy -->
@@ -1706,7 +1711,7 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_smoking_outside">"Kun udenfor"</string>
     <string name="quest_smoking_separated">"Kun i adskilte områder"</string>
     <string name="quest_smoking_yes">"Ja, overalt"</string>
-    <string name="quest_seating_name_title">"Hvilken slags siddepladser har dette sted?"</string>
+    <string name="quest_seating_name_title">"Hvilken slags siddepladser tilbydes der på dette sted?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Ingen siddepladser (kun takeaway)"</string>
@@ -1752,8 +1757,8 @@ sorted alphabetically by title -->
     <string name="quest_dietType_vegetarian_title2">"Er der vegetariske ting på menuen her?"</string>
     <string name="quest_drinking_water_title2">"Er vandet her drikkeligt?"</string>
     <string name="quest_existence_title2">"Er dette stadig her?"</string>
-    <string name="quest_generalFee_title2">"Skal du betale for at komme ind her?"</string>
-    <string name="quest_internet_access_title">"Hvilken slags internetforbindelse tilbyder dette sted?"</string>
+    <string name="quest_generalFee_title2">"Skal man betale for at komme ind her?"</string>
+    <string name="quest_internet_access_title">"Hvilken slags internetforbindelse tilbydes der på dette sted?"</string>
     <string name="quest_level_title2">"På hvilken etage er dette sted placeret? (Stueetage = 0)"</string>
     <string name="quest_lit_title">"Er der belysning her?"</string>
     <string name="quest_openingHours_title">"Hvad er åbningstiderne her?"</string>
@@ -1801,21 +1806,13 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="map_btn_stop_track">"Stop optagelse af spor"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bicycle_rental_capacity_title">"Hvor mange pladser til udlejningscykler er der her?"</string>
-    <string name="quest_bicycle_rental_type_title">"Hvilken slags cykeludlejning er dette?"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_capacity_title">"Hvor mange pladser er der til udlejningscykler her?"</string>
+    <string name="quest_bicycle_rental_type_title">"Hvilken type cykeludlejning er dette?"</string>
     <string name="quest_bicycle_rental_type_docking_station">"Dockingstation, der låser cyklerne"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_dropoff_point">"Anvist sted til aflevering/afhentning (cykler låses individuelt)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_human">"Personbetjent cykeludlejning"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_shop_with_rental">"Cykelforretning, der også udlejer cykler"</string>
     <string name="quest_bicycle_shop_repair_title">"Tilbydes der reparation af cykler her?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Sælges der brugte cykler her?"</string>
@@ -1834,5 +1831,7 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Indgang til butik"</string>
     <string name="quest_building_entrance_yes">"Anden type indgang"</string>
     <string name="quest_building_entrance_dead_end">"Blindgyde, ingen indgang"</string>
-    <string name="ar_core_tracking_hint_tap_to_measure">"Tryk på skærmen for at starte opmålingen"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Tryk på skærmen for at starte opmåling"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Er der en offentligt tilgængelig cykelpumpe her (i hvert fald i åbningstiden)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Er der en funktionsdygtig cykelpumpe her?"</string>
 </resources>

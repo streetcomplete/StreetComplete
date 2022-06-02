@@ -1,0 +1,1 @@
+{"amenity/fuel/eko-f2605e":{"name":"EKO (Serbia)","locationSet":{"include":["sr"]},"geometry":["point","area"],"matchScore":2,"terms":["eko","q903198","εκο","еко"],"fields":["name","brand","{amenity/fuel}"],"tags":{"amenity":"fuel","brand:wikidata":"Q111604683"},"addTags":{"amenity":"fuel","brand":"EKO","brand:wikidata":"Q111604683","name":"EKO"}}}

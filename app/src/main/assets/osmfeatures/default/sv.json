@@ -312,7 +312,6 @@
                     "label": "Tjänster",
                     "options": {
                         "cosmetics": "Kosmetika",
-                        "nails": "Naglar",
                         "tanning": "Solarium"
                     }
                 },
@@ -1571,13 +1570,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Svårighetsgrad enligt IMBA",
-                    "options": {
-                        "0": "Enklast (vita cirkel)",
-                        "1": "Enkel (gröna cirkel)",
-                        "2": "Medium (blå fyrkant)",
-                        "3": "Svår (svart diamant)",
-                        "4": "Extremt svårt (dubbel svart diamant)"
-                    },
                     "placeholder": "Enkel, medel, svår...",
                     "terms": "svårighetsgrad enligt imba,imba,svårighetsgrad,svårighet,utmaning"
                 },
@@ -2279,9 +2271,6 @@
                         "emergency_access": "Åtkomst för utryckningsfordon",
                         "parking_aisle": "Parkeringsväg"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Tjänster"
                 },
                 "service/vehicle": {
                     "label": "Tjänster"
@@ -5635,10 +5624,6 @@
                     "name": "Hackerspace",
                     "terms": "hackerspace,hackare,hackers,lan,makerspace,hacklab,projekt"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ridskola",
-                    "terms": "ridskola,häst,hästridning,ridning,rida,stall,ryttare,häst*,ridklubb,ridhus"
-                },
                 "leisure/ice_rink": {
                     "name": "Skridskobana",
                     "terms": "skridskobana,ishall,ishockey,ishockeybana,isrink,konstisbana,isbana,skridsko,skridskohall,ishockeyhall,hockey,skridskoåkning,curling"
@@ -5718,10 +5703,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Cricketplan",
                     "terms": "cricket,cricketplan,kricket,kricketplan"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Ridområde",
-                    "terms": "ridning,rida,häst,ridskola,hästridning,stall,ryttare,häst*,ridklubb,ridhus,dressyr,hästhoppning,trav,galopp"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Landhockeyplan",
@@ -5842,10 +5823,6 @@
                 "leisure/track/cycling": {
                     "name": "Tävlingsbana (Cykel)",
                     "terms": "cykelspår,cykelväg,cykelstig,cykel,cykelbana"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Tävlingsbana (Hästkapplöpning)",
-                    "terms": "hästkapplöpningsbana,hästkapplöpning,kapplöpningsbana,häst,kapplöpning,trav,galopp"
                 },
                 "leisure/track/running": {
                     "name": "Tävlingsbana (Löpning)",
@@ -8188,10 +8165,6 @@
                 "type/route/hiking": {
                     "name": "Vandringsled",
                     "terms": "vandringsrutt,vandringsled,stig"
-                },
-                "type/route/horse": {
-                    "name": "Ridled",
-                    "terms": "rida,ridning,häst,ridled,hästled,ridrutt,hästrutt,ridväg,hästväg,långfärdsridning,ridetapp,hästsport,ridturism"
                 },
                 "type/route/light_rail": {
                     "name": "Rutt på snabbspårväg / stadsbana",
