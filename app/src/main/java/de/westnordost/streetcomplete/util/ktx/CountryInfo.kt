@@ -88,12 +88,12 @@ private val String?.asLineStyleResId: Int? get() = when (this) {
     else -> null
 }
 
-val CountryInfo.shoulderLineStyleResId: Int? get() = when (edgeLineStyle) {
+val CountryInfo.shoulderLineStyleResId: Int get() = when (edgeLineStyle) {
     "white" -> R.drawable.ic_shoulder_white_line
     "yellow" -> R.drawable.ic_shoulder_yellow_line
     "short white dashes" -> R.drawable.ic_shoulder_short_white_dashes
     "white dashes" -> R.drawable.ic_shoulder_white_dashes
     "short yellow dashes" -> R.drawable.ic_shoulder_short_yellow_dashes
     "two yellow lines" -> R.drawable.ic_shoulder_two_yellow_lines
-    else -> null
+    else -> R.drawable.ic_shoulder_white_line
 }

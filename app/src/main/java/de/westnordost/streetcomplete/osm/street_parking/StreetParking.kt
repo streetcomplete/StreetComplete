@@ -8,23 +8,24 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import kotlinx.serialization.Serializable
 
 data class LeftAndRightStreetParking(val left: StreetParking?, val right: StreetParking?)
 
-sealed class StreetParking
+@Serializable sealed class StreetParking
 
-object StreetParkingProhibited : StreetParking()
-object StreetStandingProhibited : StreetParking()
-object StreetStoppingProhibited : StreetParking()
-object NoStreetParking : StreetParking()
+@Serializable object StreetParkingProhibited : StreetParking()
+@Serializable object StreetStandingProhibited : StreetParking()
+@Serializable object StreetStoppingProhibited : StreetParking()
+@Serializable object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
-object UnknownStreetParking : StreetParking()
+@Serializable object UnknownStreetParking : StreetParking()
 /** When not both parking orientation and position have been specified*/
-object IncompleteStreetParking : StreetParking()
+@Serializable object IncompleteStreetParking : StreetParking()
 /** There is street parking, but it is mapped as separate geometry */
-object StreetParkingSeparate : StreetParking()
+@Serializable object StreetParkingSeparate : StreetParking()
 
-data class StreetParkingPositionAndOrientation(
+@Serializable data class StreetParkingPositionAndOrientation(
     val orientation: ParkingOrientation,
     val position: ParkingPosition
 ) : StreetParking()

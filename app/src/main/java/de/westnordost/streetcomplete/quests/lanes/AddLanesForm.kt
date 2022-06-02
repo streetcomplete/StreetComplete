@@ -14,15 +14,16 @@ import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED_SIDES
 import de.westnordost.streetcomplete.quests.lanes.LanesType.UNMARKED
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import kotlin.math.PI
 
 class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
 
@@ -31,14 +32,13 @@ class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
     private var rightSide: Int = 0
     private var hasCenterLeftTurnLane: Boolean = false
 
-    private var lastRotation: Float = 0f
-    private var lastTilt: Float = 0f
+    private var mapRotation: Float = 0f
+    private var mapTilt: Float = 0f
+    private var wayRotation: Float = 0f
 
     override val contentPadding get() = selectedLanesType == null
 
-    private var puzzleView: LanesSelectPuzzle? = null
-
-    private var streetSideRotater: StreetSideRotater? = null
+    private var streetLanesPuzzleBinding: QuestStreetLanesPuzzleBinding? = null
 
     // just some shortcuts
 
@@ -64,6 +64,11 @@ class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
 
     //region Lifecycle
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        wayRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -82,9 +87,17 @@ class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
     }
 
     @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
-        streetSideRotater?.onMapOrientation(rotation, tilt)
-        lastRotation = rotation
-        lastTilt = tilt
+        mapRotation = (rotation * 180 / PI).toFloat()
+        mapTilt = (tilt * 180 / PI).toFloat()
+        updateStreetOrientation()
+    }
+
+    private fun updateStreetOrientation() {
+        val streetLanesPuzzleBinding = streetLanesPuzzleBinding ?: return
+
+        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation + mapRotation
+        streetLanesPuzzleBinding.littleCompass.root.rotation = mapRotation
+        streetLanesPuzzleBinding.littleCompass.root.rotationX = mapTilt
     }
 
     override fun isFormComplete(): Boolean = when (selectedLanesType) {
@@ -164,15 +177,15 @@ class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
     //region Street side layout
 
     private fun setStreetSideLayout() {
-        puzzleView?.let {
-            it.onPause(this)
-            lifecycle.removeObserver(it)
+        streetLanesPuzzleBinding?.let {
+            it.puzzleView.onPause(this)
+            lifecycle.removeObserver(it.puzzleView)
         }
 
         val view = setContentView(R.layout.quest_street_lanes_puzzle)
         val streetLanesPuzzleBinding = QuestStreetLanesPuzzleBinding.bind(view)
+        this.streetLanesPuzzleBinding = streetLanesPuzzleBinding
         val puzzleView = streetLanesPuzzleBinding.puzzleView
-        this.puzzleView = puzzleView
         lifecycle.addObserver(puzzleView)
 
         when (selectedLanesType) {
@@ -202,18 +215,12 @@ class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
 
         puzzleView.centerLineColor = if (countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
 
-        streetSideRotater = StreetSideRotater(
-            streetLanesPuzzleBinding.puzzleViewRotateContainer,
-            streetLanesPuzzleBinding.littleCompass.root,
-            geometry as ElementPolylinesGeometry
-        )
-        streetSideRotater?.onMapOrientation(lastRotation, lastTilt)
-
+        updateStreetOrientation()
         updatePuzzleView()
     }
 
     private fun updatePuzzleView() {
-        puzzleView?.setLaneCounts(leftSide, rightSide, hasCenterLeftTurnLane)
+        streetLanesPuzzleBinding?.puzzleView?.setLaneCounts(leftSide, rightSide, hasCenterLeftTurnLane)
         checkIsFormComplete()
     }
 

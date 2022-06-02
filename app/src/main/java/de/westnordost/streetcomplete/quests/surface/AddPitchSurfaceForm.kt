@@ -3,11 +3,10 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
-import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddPitchSurfaceForm : AImageListQuestAnswerForm<Surface, SurfaceAnswer>() {
-    override val items: List<Item<Surface>>
-        get() = PITCH_SURFACES.toItems()
+    override val items get() =
+        PITCH_SURFACES.toItems()
 
     override val itemsPerRow = 3
 
