@@ -14,7 +14,10 @@ class AddSeating : OsmFilterQuestType<Seating>() {
 
     override val elementFilter = """
         nodes, ways with
-          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
+          (
+            amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
+            or shop = bakery
+          )
           and takeaway != only
           and (!outdoor_seating or !indoor_seating)
     """
