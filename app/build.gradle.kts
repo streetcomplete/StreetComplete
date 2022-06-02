@@ -119,10 +119,10 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.6.10"
+    val kotlinVersion = "1.6.21"
     val mockitoVersion = "3.12.4"
     val kotlinxVersion = "1.6.0"
-    val koinVersion = "3.1.5"
+    val koinVersion = "3.1.6"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -145,7 +145,7 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.3.0")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.preference:preference-ktx:1.2.0")
@@ -199,7 +199,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.26.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.30.0")
+    implementation("com.google.ar:core:1.31.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -212,7 +212,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220516"
+val nsiVersion = "v6.0.20220530"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 
