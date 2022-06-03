@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.padWith
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import kotlin.math.max

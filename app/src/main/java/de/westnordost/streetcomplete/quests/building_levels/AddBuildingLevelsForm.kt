@@ -14,8 +14,8 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LastPickedValuesStore
-import de.westnordost.streetcomplete.quests.mostCommonWithin
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddBuildingLevelsForm : AbstractOsmQuestAnswerForm<BuildingLevelsAnswer>() {
 

@@ -1,8 +1,8 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.util
 
-import de.westnordost.streetcomplete.quests.Letter.A
-import de.westnordost.streetcomplete.quests.Letter.B
-import de.westnordost.streetcomplete.quests.Letter.C
+import de.westnordost.streetcomplete.util.Letter.A
+import de.westnordost.streetcomplete.util.Letter.B
+import de.westnordost.streetcomplete.util.Letter.C
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
