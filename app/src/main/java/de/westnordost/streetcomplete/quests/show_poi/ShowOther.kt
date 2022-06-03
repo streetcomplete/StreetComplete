@@ -21,7 +21,8 @@ class ShowOther : OsmFilterQuestType<Boolean>() {
                 "place_of_worship", "toilets", "prison", "fire_station", "police", "ranger_station",
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",
                 "monastery", "kindergarten", "school", "college", "university", "research_institute",
-                "drinking_water","shower","post_box","bbq","grit_bin","clock","hunting_stand","fountain",
+                "drinking_water", "shower", "post_box", "bbq", "grit_bin", "clock", "hunting_stand",
+                "fountain", "public_bookcase"
             ),
             "leisure" to arrayOf(
                 "sports_centre", "stadium", "marina",
