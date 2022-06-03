@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
@@ -26,6 +27,15 @@ class AddProhibitedForPedestriansTest {
             mapOf("sidewalk" to "no"),
             HAS_SEPARATE_SIDEWALK,
             StringMapEntryModify("sidewalk", "no", "separate")
+        )
+    }
+
+    @Test fun `remove wrong sidewalk tagging`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk" to "no", "sidewalk:both" to "no"),
+            HAS_SEPARATE_SIDEWALK,
+            StringMapEntryModify("sidewalk", "no", "separate"),
+            StringMapEntryDelete("sidewalk:both", "no")
         )
     }
 
