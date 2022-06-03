@@ -24,7 +24,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="action_about2">"About"</string>
     <string name="action_settings">"Settings"</string>
     <string name="user_profile">My Profile</string>
-    <string name="team_mode">Team Mode</string>
+    <string name="team_mode">Enter Team Mode</string>
 
     <string name="action_download">"Scan for quests here"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
