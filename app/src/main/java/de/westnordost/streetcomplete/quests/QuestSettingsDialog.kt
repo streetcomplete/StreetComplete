@@ -7,6 +7,7 @@ import android.text.InputType
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import java.text.ParseException
@@ -110,3 +111,8 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
 }
 
 fun getStringFor(prefs: SharedPreferences, pref: String) = prefs.getString(pref, "")?.let { if (it.isEmpty()) "" else "or $it"}
+
+fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+    prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
+else
+    ""

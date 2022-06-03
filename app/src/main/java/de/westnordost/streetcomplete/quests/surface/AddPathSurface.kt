@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.showRestartToast
 
 class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
@@ -26,7 +27,7 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
-            surface ~ ${if (prefs.getBoolean(ALLOW_GENERIC_PATH, false)) "" else "paved|unpaved|"}cobblestone
+            surface ~ ${if (prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false)) "" else "paved|unpaved|"}cobblestone
             and !surface:note
             and !note:surface
           )
@@ -42,7 +43,7 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
-    override fun createForm() = AddPathSurfaceForm(prefs.getBoolean(ALLOW_GENERIC_PATH, false))
+    override fun createForm() = AddPathSurfaceForm(prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false))
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
@@ -65,11 +66,11 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             .setMessage(R.string.quest_generic_surface_message)
             .setNeutralButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
-                prefs.edit().putBoolean(ALLOW_GENERIC_PATH, true).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, true).apply()
                 showRestartToast(context)
             }
             .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
-                prefs.edit().putBoolean(ALLOW_GENERIC_PATH, false).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false).apply()
                 showRestartToast(context)
             }
             .create()

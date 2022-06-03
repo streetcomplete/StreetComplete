@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
 class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreferences) : OsmElementQuestType<OsmoseAnswer> {
@@ -52,18 +53,18 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
         AlertDialog.Builder(context)
             .setTitle(R.string.quest_osmose_settings_what)
             .setNeutralButton(R.string.quest_osmose_settings_items) { _,_ ->
-                singleTypeElementSelectionDialog(context, prefs, PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
+                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
                     .show()
             }
             .setNegativeButton(R.string.quest_osmose_settings_disable) { _, _ ->
-                prefs.edit().putBoolean(PREF_OSMOSE_ENABLE, false).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE, false).apply()
             }
             .setPositiveButton(R.string.quest_osmose_settings_enable) { _, _ ->
-                prefs.edit().putBoolean(PREF_OSMOSE_ENABLE, true).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE, true).apply()
             }
             .create()
 
 }
 
-private const val PREF_OSMOSE_ITEMS = "quest_osmose_items"
+const val PREF_OSMOSE_ITEMS = "quest_osmose_items"
 const val PREF_OSMOSE_ENABLE = "quest_osmose_enable"

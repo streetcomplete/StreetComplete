@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 import java.util.concurrent.FutureTask
 
@@ -150,7 +151,7 @@ class AddCycleway(
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f)
         ) / 2f +
-        prefs.getInt(PREF_CYCLEWAY_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
+        prefs.getInt(questPrefix(prefs) + PREF_CYCLEWAY_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -309,7 +310,7 @@ class AddCycleway(
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        numberSelectionDialog(context, prefs, PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_distance_message)
+        numberSelectionDialog(context, prefs, questPrefix(prefs) + PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_distance_message)
 
     companion object {
 

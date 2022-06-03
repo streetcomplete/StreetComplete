@@ -7,12 +7,13 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddBuildingLevels(private val prefs: SharedPreferences) : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override val elementFilter = """
         ways, relations with
-         building ~ ${prefs.getString(PREF_BUILDING_LEVELS_SELECTION, BUILDINGS_WITH_LEVELS)}
+         building ~ ${prefs.getString(questPrefix(prefs) + PREF_BUILDING_LEVELS_SELECTION, BUILDINGS_WITH_LEVELS)}
          and !building:levels
          and !man_made
          and location != underground
@@ -39,7 +40,7 @@ class AddBuildingLevels(private val prefs: SharedPreferences) : OsmFilterQuestTy
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        singleTypeElementSelectionDialog(context, prefs, PREF_BUILDING_LEVELS_SELECTION, BUILDINGS_WITH_LEVELS, R.string.quest_settings_building_levels_message)
+        singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_BUILDING_LEVELS_SELECTION, BUILDINGS_WITH_LEVELS, R.string.quest_settings_building_levels_message)
 }
 
 private val BUILDINGS_WITH_LEVELS = arrayOf(

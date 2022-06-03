@@ -239,6 +239,13 @@
             android:key="import"
             android:title="@string/pref_import" />
 
+        <SwitchPreference
+            android:key="quest_settings_per_profile"
+            android:title="@string/pref_quest_settings_profile_title"
+            android:summary="@string/pref_quest_settings_profile_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
+import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType<String>() {
 
@@ -18,7 +19,7 @@ class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType
         (
          tourism = information and information = office
          or """.trimIndent() +
-         prefs.getString(PREF_PHONE_ELEMENTS, PLACES_FOR_CONTACT_QUESTS) +
+         prefs.getString(questPrefix(prefs) + PREF_PHONE_ELEMENTS, PLACES_FOR_CONTACT_QUESTS) +
         "\n) and !phone and !contact:phone and !contact:mobile and !brand and name"
 
     override val changesetComment = "Add phone number"
@@ -39,7 +40,7 @@ class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, PREF_PHONE_ELEMENTS, R.string.quest_settings_contact, PLACES_FOR_CONTACT_QUESTS)
+        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_PHONE_ELEMENTS, R.string.quest_settings_contact, PLACES_FOR_CONTACT_QUESTS)
 
 }
 

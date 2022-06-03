@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
+import de.westnordost.streetcomplete.quests.questPrefix
 import java.util.concurrent.FutureTask
 
 class AddRoofShape(
@@ -45,7 +46,7 @@ class AddRoofShape(
                 element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
                 || roofsAreUsuallyFlatAt(element, mapData) == false
             ) && (element.tags["building:levels"]?.toIntOrNull() ?: 0) +
-                (element.tags["roof:levels"]?.toIntOrNull() ?: 0) <= prefs.getInt(PREF_ROOF_SHAPE_MAX_LEVELS, 99)
+                (element.tags["roof:levels"]?.toIntOrNull() ?: 0) <= prefs.getInt(questPrefix(prefs) + PREF_ROOF_SHAPE_MAX_LEVELS, 99)
         }
 
     override fun isApplicableTo(element: Element): Boolean? {
@@ -73,7 +74,7 @@ class AddRoofShape(
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) = numberSelectionDialog(
-        context, prefs, PREF_ROOF_SHAPE_MAX_LEVELS, 99, R.string.quest_settings_max_roof_levels
+        context, prefs, questPrefix(prefs) + PREF_ROOF_SHAPE_MAX_LEVELS, 99, R.string.quest_settings_max_roof_levels
     )
 
 }

@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.SUBTITLE
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.TITLE
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.UUID
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
+import de.westnordost.streetcomplete.quests.questPrefix
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
@@ -32,7 +33,7 @@ class OsmoseDao(
     val client = OkHttpClient()
 
     fun download(bbox: BoundingBox) {
-        if (!sharedPrefs.getBoolean(PREF_OSMOSE_ENABLE, false)) return
+        if (!sharedPrefs.getBoolean(questPrefix(sharedPrefs) + PREF_OSMOSE_ENABLE, false)) return
         // http://osmose.openstreetmap.fr/en/issues/open.csv?zoom=17&item=xxxx&level=1&limit=500&bbox=16.40570998191834%2C48.179314880149114%2C16.41987204551697%2C48.18563147705161
         // replace bbox
         // try parsing result lines, split each by ','
@@ -58,7 +59,7 @@ class OsmoseDao(
             //  and the element string needs to be split by '_'
             // currently both are not parsed and thus skipped
             // multiple elements: use the first, and the others only for highlighting geometry
-            val blockedItems = sharedPrefs.getString(PREF_OSMOSE_ITEMS, "")!!.split(',')
+            val blockedItems = sharedPrefs.getString(questPrefix(sharedPrefs) + PREF_OSMOSE_ITEMS, "")!!.split(',')
             db.replaceMany(NAME,
                 arrayOf(UUID, ITEM, TITLE, SUBTITLE, ELEMENT_TYPE, ELEMENT_ID, FALSE_POSITIVE),
                 bodylines.mapNotNull {
@@ -194,7 +195,6 @@ class OsmoseDao(
 }
 
 private const val TAG = "osmose"
-private const val PREF_OSMOSE_ITEMS = "quest_osmose_items"
 
 data class OsmoseIssue(
     val uuid: String,

@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
@@ -87,7 +88,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
             (estimateCycleTrackWidth(tags) ?: 0f)
         ) / 2f +
-        prefs.getInt(PREF_SIDEWALK_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
+        prefs.getInt(questPrefix(prefs) + PREF_SIDEWALK_DISTANCE, 4).toFloat() // + generous buffer for possible grass verge
 
     override fun isApplicableTo(element: Element): Boolean? {
         if (!roadsFilter.matches(element)) return false
@@ -132,7 +133,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
         * */
         private val untaggedRoadsFilter by lazy { """
             ways with
-              highway ~ ${prefs.getString(PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
+              highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
               and (
                 !maxspeed
@@ -171,14 +172,14 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
             .setPositiveButton(R.string.quest_settings_sidewalk_distance_button) { _,_ ->
                 numberSelectionDialog(context,
                     prefs,
-                    PREF_SIDEWALK_DISTANCE,
+                    questPrefix(prefs) + PREF_SIDEWALK_DISTANCE,
                     4,
                     R.string.quest_settings_sidewalk_distance_message).show()
             }
             .setNegativeButton(R.string.quest_settings_sidewalk_highways_button) { _, _ ->
                 singleTypeElementSelectionDialog(context,
                     prefs,
-                    PREF_SIDEWALK_HIGHWAY_SELECTION,
+                    questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION,
                     ROADS_WITH_SIDEWALK.joinToString("|"),
                     R.string.quest_settings_eligible_highways).show()
             }

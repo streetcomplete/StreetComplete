@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import android.content.SharedPreferences
 import java.util.concurrent.CopyOnWriteArrayList
 
 class QuestPresetsController(
@@ -7,6 +8,7 @@ class QuestPresetsController(
     private val selectedQuestPresetStore: SelectedQuestPresetStore,
     private val questTypeOrderDao: QuestTypeOrderDao,
     private val visibleQuestTypeDao: VisibleQuestTypeDao,
+    private val prefs: SharedPreferences,
 ) : QuestPresetsSource {
 
     private val listeners = CopyOnWriteArrayList<QuestPresetsSource.Listener>()
@@ -34,6 +36,18 @@ class QuestPresetsController(
         order.forEach { questTypeOrderDao.put(presetId, it) }
         val visibilities = visibleQuestTypeDao.getAll(copyFromId)
         visibilities.forEach { visibleQuestTypeDao.put(presetId, it.key, it.value) }
+
+        val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith(copyFromId.toString() + "_") }
+        copyFromQuestSettings.forEach { (key, value) ->
+            val newKey = key.replace(copyFromId.toString() + "_", presetId.toString() + "_")
+            when (value) {
+                is Boolean -> prefs.edit().putBoolean(newKey, value).apply()
+                is Int -> prefs.edit().putInt(newKey, value).apply()
+                is String -> prefs.edit().putString(newKey, value).apply()
+                is Long -> prefs.edit().putLong(newKey, value).apply()
+                is Float -> prefs.edit().putFloat(newKey, value).apply()
+            }
+        }
         return presetId
     }
 

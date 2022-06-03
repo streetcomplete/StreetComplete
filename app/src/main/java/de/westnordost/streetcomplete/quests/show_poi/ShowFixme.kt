@@ -6,14 +6,15 @@ import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
 class ShowFixme(private val prefs: SharedPreferences) : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways, relations with
           (fixme or FIXME)
-          and fixme !~ "${prefs.getString(PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT)}"
-          and FIXME !~ "${prefs.getString(PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT)}"
+          and fixme !~ "${prefs.getString(questPrefix(prefs) + PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT)}"
+          and FIXME !~ "${prefs.getString(questPrefix(prefs) + PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT)}"
     """
     override val changesetComment = "Remove/adjust fixme"
     override val wikiLink = "Key:fixme"
@@ -39,7 +40,7 @@ class ShowFixme(private val prefs: SharedPreferences) : OsmFilterQuestType<Boole
 
     // actual ignoring of stuff happens when downloading
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        singleTypeElementSelectionDialog(context, prefs, PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT, R.string.quest_settings_fixme_title)
+        singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT, R.string.quest_settings_fixme_title)
 }
 
 private const val PREF_FIXME_IGNORE = "quest_fixme_ignore"

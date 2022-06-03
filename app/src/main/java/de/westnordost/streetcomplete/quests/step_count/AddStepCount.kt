@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.measuredLength
 
 class AddStepCount(private val prefs: SharedPreferences) : OsmElementQuestType<Int> {
@@ -42,7 +43,7 @@ class AddStepCount(private val prefs: SharedPreferences) : OsmElementQuestType<I
             if (!elementFilter.matches(element)) return@filter false
             val geometry = mapData.getWayGeometry(element.id) as? ElementPolylinesGeometry
             val totalLength = geometry?.polylines?.sumOf { it.measuredLength() } ?: return@filter true
-            totalLength <= prefs.getInt(PREF_MAX_STEPS_LENGTH, 999)
+            totalLength <= prefs.getInt(questPrefix(prefs) + PREF_MAX_STEPS_LENGTH, 999)
         }
     }
 
@@ -55,7 +56,7 @@ class AddStepCount(private val prefs: SharedPreferences) : OsmElementQuestType<I
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) = numberSelectionDialog(
-        context, prefs, PREF_MAX_STEPS_LENGTH, 999, R.string.quest_settings_max_steps_length
+        context, prefs, questPrefix(prefs) + PREF_MAX_STEPS_LENGTH, 999, R.string.quest_settings_max_steps_length
     )
 
 }
