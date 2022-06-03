@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 

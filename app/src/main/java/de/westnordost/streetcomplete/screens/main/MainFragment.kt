@@ -68,12 +68,12 @@ import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerForm
-import de.westnordost.streetcomplete.quests.CreateNoteFragment
-import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
-import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.quests.SplitWayFragment
+import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton

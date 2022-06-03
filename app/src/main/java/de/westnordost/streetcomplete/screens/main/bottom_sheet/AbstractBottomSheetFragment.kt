@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -149,13 +149,15 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         backButton?.isGone = (bottomSheet.top) > 0
     }
 
-    @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+    @UiThread
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         return false
     }
 
     /** Request to close the form through user interaction (back button, clicked other quest,..),
      * requires user confirmation if any changes have been made  */
-    @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
+    @UiThread
+    override fun onClickClose(onConfirmed: () -> Unit) {
         if (!isRejectingClose()) {
             onDiscard()
             onConfirmed()

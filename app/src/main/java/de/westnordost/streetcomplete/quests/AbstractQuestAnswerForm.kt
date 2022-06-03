@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut

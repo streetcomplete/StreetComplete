@@ -10,7 +10,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.toList
 import java.util.Locale
 
-fun getNameAndLocationLabelString(tags: Map<String, String>, resources: Resources, featureDictionary: FeatureDictionary): Spanned? {
+fun getNameAndLocationLabelString(
+    tags: Map<String, String>,
+    resources: Resources,
+    featureDictionary: FeatureDictionary
+): Spanned? {
     val localeList = ConfigurationCompat.getLocales(resources.configuration).toList()
     val feature = getFeatureName(tags, featureDictionary, localeList)
         ?.withNonBreakingSpaces()?.inItalics()

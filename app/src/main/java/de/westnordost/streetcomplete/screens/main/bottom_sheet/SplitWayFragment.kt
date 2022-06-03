@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.forEachLine
 import de.westnordost.streetcomplete.util.ktx.popIn

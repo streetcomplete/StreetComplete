@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.createSelectableLevels
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
-import de.westnordost.streetcomplete.quests.ShowsGeometryMarkers
+import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.util.ktx.toShortString

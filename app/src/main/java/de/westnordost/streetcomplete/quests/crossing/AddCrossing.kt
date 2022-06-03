@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 

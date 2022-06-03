@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
