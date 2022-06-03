@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.bench_material
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer
 import de.westnordost.streetcomplete.quests.bench_material.BenchMaterial.WOOD
 import de.westnordost.streetcomplete.quests.bench_material.BenchMaterial.METAL
 import de.westnordost.streetcomplete.quests.bench_material.BenchMaterial.PLASTIC
@@ -20,6 +22,10 @@ class AddBenchMaterialForm : AImageListQuestAnswerFragment<BenchMaterial, BenchM
         Item(STONE, R.drawable.bench_stone, R.string.quest_benchMaterial_stone),
         Item(BRICK, R.drawable.bench_brick, R.string.quest_benchMaterial_brick)
     )
+
+    override val otherAnswers by lazy { if (osmElement?.tags?.get("amenity") == "bench")
+        listOf(AnswerItem(R.string.quest_bench_answer_picnic_table) { applyAnswer(BenchMaterial.PICNIC) })
+    else emptyList() }
 
     override val itemsPerRow = 3
 

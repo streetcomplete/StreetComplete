@@ -7,4 +7,5 @@ enum class BenchMaterial(val osmValue: String) {
     CONCRETE("concrete"),
     STONE("stone"),
     BRICK("brick"),
+    PICNIC("")
 }

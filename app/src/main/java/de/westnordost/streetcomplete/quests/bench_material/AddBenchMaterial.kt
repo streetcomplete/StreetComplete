@@ -31,6 +31,10 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
     override fun createForm() = AddBenchMaterialForm()
 
     override fun applyAnswerTo(answer: BenchMaterial, tags: Tags, timestampEdited: Long) {
-        tags["material"] = answer.osmValue
+        if (answer == BenchMaterial.PICNIC) {
+            tags.remove("amenity")
+            tags["leisure"] = "picnic_table"
+        } else
+            tags["material"] = answer.osmValue
     }
 }
