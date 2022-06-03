@@ -311,7 +311,6 @@
                     "label": "美容サービスの種類",
                     "options": {
                         "cosmetics": "化粧品店",
-                        "nails": "ネイル",
                         "tanning": "日焼け"
                     }
                 },
@@ -511,11 +510,6 @@
                 "check_date": {
                     "label": "最終確認日",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "円周",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "円周,外周,周囲"
                 },
                 "clothes": {
                     "label": "服"
@@ -1525,13 +1519,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBAトレイル難易度",
-                    "options": {
-                        "0": "非常に容易 (白い円)",
-                        "1": "容易 (緑色の円)",
-                        "2": "中程度 (青い四角形)",
-                        "3": "困難 (黒いひし形)",
-                        "4": "非常に困難 (黒いひし形2つ)"
-                    },
                     "placeholder": "初級者、中級者、上級者...",
                     "terms": "ibmaトレイル難易度,imbaトレイル,難易度"
                 },
@@ -2205,9 +2192,6 @@
                         "emergency_access": "緊急通用路",
                         "parking_aisle": "駐車場内通路"
                     }
-                },
-                "service/bicycle": {
-                    "label": "サービス"
                 },
                 "service/vehicle": {
                     "label": "車両向けサービス品目"
@@ -3721,10 +3705,6 @@
                     "name": "野外劇場",
                     "terms": "野外劇場,円形演技場,ひな壇式客席,階段式観覧席"
                 },
-                "amenity/toilets": {
-                    "name": "トイレ",
-                    "terms": "トイレ,便所,公園,公衆トイレ"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "水洗トイレ",
                     "terms": "水洗トイレ,水洗式,トイレ,お手洗い,洗面所,便所"
@@ -4826,10 +4806,6 @@
                 "highway/bus_stop": {
                     "name": "バス停"
                 },
-                "highway/construction": {
-                    "name": "閉鎖道路（建設中）",
-                    "terms": "建設中の道路,通行止め,通行止,道路,閉鎖,閉鎖道路（建設中）"
-                },
                 "highway/corridor": {
                     "name": "建物内の通り抜け道路",
                     "terms": "建物内の通り抜け道路"
@@ -5563,10 +5539,6 @@
                     "name": "ハッカースペース",
                     "terms": "ハッカースペース,ハックラボ,ハックスペース,メーカースペース,ファブラボ,fablab"
                 },
-                "leisure/horse_riding": {
-                    "name": "乗馬施設",
-                    "terms": "乗馬施設,馬事公苑,乗馬クラブ,スポーツ,運動,娯楽,レジャー"
-                },
                 "leisure/ice_rink": {
                     "name": "アイススケート場",
                     "terms": "アイススケート,アイススケート場,アイススケートリンク,スケートリンク,スポーツ,運動,娯楽,レジャー"
@@ -5650,10 +5622,6 @@
                 "leisure/pitch/cricket": {
                     "name": "クリケット場",
                     "terms": "クリケット場,スポーツ,運動,競技"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "乗馬場",
-                    "terms": "乗馬場,スポーツ,運動,トレーニング,練習,訓練,競技"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "フィールドホッケー場",
@@ -5780,10 +5748,6 @@
                 "leisure/track/cycling": {
                     "name": "自転車競技場",
                     "terms": "自転車競技場,自転車,自転車トラック,自転車レース場"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "競馬トラック",
-                    "terms": "競馬トラック,競馬場,競馬,レース,トラック,馬場,ギャンブル"
                 },
                 "leisure/track/running": {
                     "name": "ランニングトラック",
@@ -8142,10 +8106,6 @@
                 "type/route/hiking": {
                     "name": "ハイキングルート",
                     "terms": "ハイキングルート,ハイキングコース"
-                },
-                "type/route/horse": {
-                    "name": "乗馬ルート",
-                    "terms": "乗馬ルート"
                 },
                 "type/route/light_rail": {
                     "name": "ライトレール・ルート",

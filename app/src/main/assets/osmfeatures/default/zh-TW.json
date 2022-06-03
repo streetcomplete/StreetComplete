@@ -312,8 +312,12 @@
                     "label": "服務",
                     "options": {
                         "cosmetics": "化妝品",
-                        "nails": "美甲",
-                        "tanning": "日光沙龍"
+                        "hair_removal": "除毛",
+                        "nails": "美甲／修腳",
+                        "skin_care": "皮膚護理",
+                        "spa": "日間水療中心",
+                        "tanning": "日光沙龍",
+                        "waxing": "打蠟"
                     }
                 },
                 "bench": {
@@ -419,6 +423,9 @@
                 "bunker_type": {
                     "label": "類型"
                 },
+                "button_operated": {
+                    "label": "呼叫按鈕"
+                },
                 "cables": {
                     "label": "電纜",
                     "placeholder": "1, 2, 3..."
@@ -514,12 +521,12 @@
                     "placeholder": "YYYY-MM-DD"
                 },
                 "circumference": {
-                    "label": "圓周",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "圓周"
+                    "label": "週長（胸高處）",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
-                    "label": "服飾"
+                    "label": "服飾",
+                    "terms": "服飾"
                 },
                 "club": {
                     "label": "類型"
@@ -767,6 +774,9 @@
                         "yes": "是"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "押金"
+                },
                 "depth": {
                     "label": "深度（公尺）"
                 },
@@ -809,7 +819,13 @@
                 },
                 "diameter": {
                     "label": "直徑",
-                    "placeholder": "5 mm, 10 cm, 15 in…"
+                    "placeholder": "5 mm, 10 cm, 15 in…",
+                    "terms": "直徑"
+                },
+                "diameter_crown": {
+                    "label": "樹冠直徑",
+                    "placeholder": "4 m, 9', …",
+                    "terms": "樹冠直徑"
                 },
                 "diet_multi": {
                     "label": "飲食類型",
@@ -1019,6 +1035,16 @@
                     "label": "直徑（毫米、英呎或 letters）",
                     "terms": "直徑 (mm)"
                 },
+                "fire_hydrant/position": {
+                    "label": "位置",
+                    "options": {
+                        "green": "植物",
+                        "lane": "車道",
+                        "parking_lot": "停車場",
+                        "sidewalk": "人行道"
+                    },
+                    "terms": "位置,地點"
+                },
                 "fire_hydrant/pressure": {
                     "label": "壓力（巴）",
                     "terms": "壓力"
@@ -1054,6 +1080,30 @@
                 },
                 "flag/wikidata": {
                     "label": "旗幟維基數據"
+                },
+                "flashing_lights": {
+                    "label": "閃光燈",
+                    "options": {
+                        "always": {
+                            "description": "燈光總是閃爍",
+                            "title": "總是閃爍"
+                        },
+                        "button": {
+                            "description": "按下按鈕啟用燈光",
+                            "title": "按鈕啟用"
+                        },
+                        "button;sensor": {
+                            "description": "透過偵測器或按下按鈕啟用的燈光",
+                            "title": "按鈕與偵測器啟用"
+                        },
+                        "no": "無",
+                        "sensor": {
+                            "description": "偵測器啟用的燈光",
+                            "title": "偵測器啟用"
+                        },
+                        "yes": "有"
+                    },
+                    "terms": "閃光燈"
                 },
                 "floating": {
                     "label": "漂浮"
@@ -1118,6 +1168,11 @@
                 "generator/type": {
                     "label": "種類"
                 },
+                "genus": {
+                    "label": "屬",
+                    "placeholder": "Acer, Platanus, Quercus …",
+                    "terms": "屬"
+                },
                 "geyser/height": {
                     "label": "噴發高度"
                 },
@@ -1180,6 +1235,13 @@
                 },
                 "highway": {
                     "label": "種類"
+                },
+                "highway_cartpath": {
+                    "label": "路徑類型",
+                    "options": {
+                        "path": "路徑",
+                        "service": "服務道路"
+                    }
                 },
                 "historic": {
                     "label": "種類"
@@ -1425,6 +1487,9 @@
                 "liaison": {
                     "label": "類型"
                 },
+                "lifeguard": {
+                    "label": "救生員"
+                },
                 "line_attachment": {
                     "label": "線纜固著"
                 },
@@ -1558,11 +1623,11 @@
                 "mtb/scale/imba": {
                     "label": "國際登山車協會路徑難度",
                     "options": {
-                        "0": "最簡單 (白圈)",
-                        "1": "容易 (綠圈)",
-                        "2": "中等 (藍方塊)",
-                        "3": "困難 (黑色鑽石型)",
-                        "4": "極端困難 (雙重黑色鑽石型)"
+                        "0": "⚪ 最簡單（白圈）",
+                        "1": "🟢 簡單（綠圈）",
+                        "2": "🟦 中等（藍色方塊）",
+                        "3": "◆ 困難（黑色鑽石型）",
+                        "4": "◆◆ 極難（雙黑鑽石型）"
                     },
                     "placeholder": "容易, 中等, 困難...",
                     "terms": "imba 路徑困難度"
@@ -2266,13 +2331,14 @@
                     "options": {
                         "alley": "巷弄",
                         "drive-through": "穿越道路",
-                        "driveway": "車道",
+                        "driveway": "私家車道",
                         "emergency_access": "緊急通道",
                         "parking_aisle": "停車場通道"
                     }
                 },
                 "service/bicycle": {
-                    "label": "服務"
+                    "label": "腳踏車服務",
+                    "terms": "腳踏車服務"
                 },
                 "service/vehicle": {
                     "label": "服務"
@@ -2370,6 +2436,11 @@
                     },
                     "terms": "來源,消息來源"
                 },
+                "species": {
+                    "label": "物種",
+                    "placeholder": "Acer platanoides, Quercus robur, …",
+                    "terms": "物種"
+                },
                 "species/wikidata": {
                     "label": "物種的維基數據",
                     "terms": "wikidata 物種"
@@ -2445,7 +2516,7 @@
                     "label": "人造結構物",
                     "options": {
                         "bridge": "橋樑",
-                        "cutting": "挖土",
+                        "cutting": "路塹",
                         "embankment": "堤",
                         "ford": "淺灘",
                         "tunnel": "隧道"
@@ -2572,6 +2643,11 @@
                 "target": {
                     "label": "目標"
                 },
+                "taxon": {
+                    "label": "分類單元",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
+                    "terms": "分類單元"
+                },
                 "telecom": {
                     "label": "類型"
                 },
@@ -2657,6 +2733,14 @@
                 "traffic_signals": {
                     "label": "號誌種類"
                 },
+                "traffic_signals/arrow": {
+                    "label": "觸覺箭頭",
+                    "terms": "觸覺箭頭"
+                },
+                "traffic_signals/countdown": {
+                    "label": "倒數計時器",
+                    "terms": "倒數計時器"
+                },
                 "traffic_signals/direction": {
                     "label": "受影響的方向",
                     "options": {
@@ -2664,6 +2748,28 @@
                         "both": "兩個方向 / 全部",
                         "forward": "前後"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "觸覺地圖",
+                    "terms": "觸覺地圖"
+                },
+                "traffic_signals/sound": {
+                    "label": "聲音訊號",
+                    "options": {
+                        "locate": {
+                            "description": "僅有找到呼叫按鈕的訊號",
+                            "title": "呼叫按鈕定位器"
+                        },
+                        "no": "否",
+                        "walk": {
+                            "description": "僅允許步行的訊號",
+                            "title": "步行指示器"
+                        },
+                        "yes": "是"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "振動"
                 },
                 "trail_visibility": {
                     "label": "路徑可見度",
@@ -3822,7 +3928,7 @@
                 },
                 "amenity/toilets": {
                     "name": "廁所",
-                    "terms": "便所,公廁,洗手間,盥洗室,公共廁所"
+                    "terms": "廁所"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "沖水馬桶",
@@ -3847,6 +3953,10 @@
                     "name": "玩具圖書館",
                     "terms": "玩具圖書館"
                 },
+                "amenity/trolley_bay": {
+                    "name": "手推車停放區",
+                    "terms": "手推車停放區"
+                },
                 "amenity/university": {
                     "name": "大學範圍",
                     "terms": "大學,大專,大學用地,學校,university grounds,university"
@@ -3856,8 +3966,8 @@
                     "terms": "吸塵器站"
                 },
                 "amenity/vehicle_inspection": {
-                    "name": "車輛檢查",
-                    "terms": "車輛檢查肖"
+                    "name": "車輛檢驗",
+                    "terms": "車輛檢驗;檢測;機動車;檢驗"
                 },
                 "amenity/vending_machine": {
                     "name": "自動販賣機",
@@ -4361,8 +4471,8 @@
                     "terms": "商辦大樓"
                 },
                 "building/roof": {
-                    "name": "屋頂",
-                    "terms": "上蓋"
+                    "name": "頂棚",
+                    "terms": "頂棚,上蓋,膜結構,建築"
                 },
                 "building/ruins": {
                     "name": "建築廢墟",
@@ -4932,8 +5042,8 @@
                     "name": "公車站"
                 },
                 "highway/construction": {
-                    "name": "封閉道路",
-                    "terms": "封閉道路"
+                    "name": "施工中的道路",
+                    "terms": "道路施工中,道路施工"
                 },
                 "highway/corridor": {
                     "name": "室內走廊",
@@ -5146,7 +5256,7 @@
                     "terms": "駕駛通過以獲取服務,德來速車道"
                 },
                 "highway/service/driveway": {
-                    "name": "車道",
+                    "name": "車道;私家;私人",
                     "terms": "車線"
                 },
                 "highway/service/emergency_access": {
@@ -5675,8 +5785,8 @@
                     "terms": "駭客空間,hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "騎馬場",
-                    "terms": "馬場,騎馬設施"
+                    "name": "馬術中心",
+                    "terms": "馬術中心,騎馬中心,馬廄"
                 },
                 "leisure/ice_rink": {
                     "name": "溜冰場",
@@ -5763,8 +5873,8 @@
                     "terms": "板球場"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "馬場",
-                    "terms": "馬場"
+                    "name": "騎馬場",
+                    "terms": "騎馬場"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "曲棍球場",
@@ -5785,6 +5895,10 @@
                 "leisure/pitch/netball": {
                     "name": "籃網球場",
                     "terms": "籃網球場"
+                },
+                "leisure/pitch/padel": {
+                    "name": "籠式網球場",
+                    "terms": "籠式網球場"
                 },
                 "leisure/pitch/paintball": {
                     "name": "漆彈射擊場",
@@ -5829,6 +5943,10 @@
                 "leisure/pitch/tennis": {
                     "name": "網球場",
                     "terms": "網球場,球場"
+                },
+                "leisure/pitch/tetherball": {
+                    "name": "梨球場",
+                    "terms": "梨球場"
                 },
                 "leisure/pitch/volleyball": {
                     "name": "排球場",
@@ -5899,8 +6017,8 @@
                     "terms": "單車道"
                 },
                 "leisure/track/horse_racing": {
-                    "name": "賽馬跑道",
-                    "terms": "賽馬跑道"
+                    "name": "賽馬場",
+                    "terms": "賽馬場"
                 },
                 "leisure/track/running": {
                     "name": "跑道",
@@ -5958,8 +6076,8 @@
                     "terms": "煙筒"
                 },
                 "man_made/clearcut": {
-                    "name": "伐木林",
-                    "terms": "人工林"
+                    "name": "清伐林",
+                    "terms": "採伐,伐,林,跡地"
                 },
                 "man_made/compass_rose": {
                     "name": "羅盤方位圖",
@@ -5977,8 +6095,8 @@
                     "terms": "十字架"
                 },
                 "man_made/cutline": {
-                    "name": "山林分界線",
-                    "terms": "山林分界線"
+                    "name": "森林伐带",
+                    "terms": "森林,林,伐,防火帶,線"
                 },
                 "man_made/dovecote": {
                     "name": "鴿舍",
@@ -6059,6 +6177,10 @@
                 "man_made/mast/communication/television": {
                     "name": "電視播放天線",
                     "terms": "電視通訊塔"
+                },
+                "man_made/mast/lighting": {
+                    "name": "高桿照明",
+                    "terms": "高桿照明"
                 },
                 "man_made/mineshaft": {
                     "name": "礦井",
@@ -6774,6 +6896,10 @@
                 "playground/cushion": {
                     "name": "彈力靠墊",
                     "terms": "彈力靠墊"
+                },
+                "playground/hopscotch": {
+                    "name": "跳房子",
+                    "terms": "跳房子"
                 },
                 "playground/horizontal_bar": {
                     "name": "單槓",

@@ -308,7 +308,6 @@
                     "label": "服务",
                     "options": {
                         "cosmetics": "化妆品",
-                        "nails": "美甲",
                         "tanning": "日光浴"
                     }
                 },
@@ -497,11 +496,6 @@
                 "check_date": {
                     "label": "最近检查时间",
                     "placeholder": "年年年年-月月-日日"
-                },
-                "circumference": {
-                    "label": "周长",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "周长,圆周"
                 },
                 "clothes": {
                     "label": "服饰"
@@ -1533,13 +1527,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA(国际登山车协会)路径难度",
-                    "options": {
-                        "0": "最简单(白圈)",
-                        "1": "容易(绿圈)",
-                        "2": "中等(蓝方块)",
-                        "3": "困难(黑色钻石型)",
-                        "4": "极端困难(双重黑色钻石型)"
-                    },
                     "placeholder": "简单, 中等, 困难...",
                     "terms": "imba步道难度,imba步行径难度"
                 },
@@ -2173,13 +2160,10 @@
                     "options": {
                         "alley": "巷",
                         "drive-through": "免下车",
-                        "driveway": "私人车道",
+                        "driveway": "私家车道",
                         "emergency_access": "消防通道",
                         "parking_aisle": "停车场通道"
                     }
-                },
-                "service/bicycle": {
-                    "label": "服务"
                 },
                 "service/vehicle": {
                     "label": "车辆服务"
@@ -3653,10 +3637,6 @@
                     "name": "圆形剧场",
                     "terms": "圆形剧场,露天,竞技场,圆形露天剧场,阶梯教室"
                 },
-                "amenity/toilets": {
-                    "name": "厕所",
-                    "terms": "厕所,公厕,洗手间,卫生间,撤硕"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "冲水式厕所",
                     "terms": "厕所,公厕,洗手间,公共卫生间,马桶,wc"
@@ -3687,7 +3667,8 @@
                     "name": "真空清洁站"
                 },
                 "amenity/vehicle_inspection": {
-                    "name": "车辆检查站"
+                    "name": "车辆检验站",
+                    "terms": "机动车检测站;机动车检测场;车辆检测;验车;年检"
                 },
                 "amenity/vending_machine": {
                     "name": "自动售货机",
@@ -4154,7 +4135,7 @@
                     "terms": "商业建筑,百货,购物中心,商场,零售业建筑"
                 },
                 "building/roof": {
-                    "name": "开放式建筑",
+                    "name": "顶棚建筑",
                     "terms": "大棚,屋顶,上盖,开放式建筑"
                 },
                 "building/ruins": {
@@ -4672,10 +4653,6 @@
                 "highway/bus_stop": {
                     "name": "公交站"
                 },
-                "highway/construction": {
-                    "name": "关闭的道路",
-                    "terms": "关闭,封闭,施工,在建,绕道,封路,修路,挖路"
-                },
                 "highway/corridor": {
                     "name": "室内走廊",
                     "terms": "室内走廊,室内步行街"
@@ -4809,8 +4786,8 @@
                     "name": "便道"
                 },
                 "highway/pedestrian_area": {
-                    "name": "行人区域（广场）",
-                    "terms": "公交,公交站,公交车,巴士,大巴,客车,车站,站台"
+                    "name": "徒步区",
+                    "terms": "徒步,广场,行人,步行,人行,区"
                 },
                 "highway/pedestrian_line": {
                     "name": "步行街",
@@ -4876,7 +4853,7 @@
                     "terms": "免下车,免下车餐馆,免下车银行"
                 },
                 "highway/service/driveway": {
-                    "name": "车道",
+                    "name": "车道;私家;私人;车库",
                     "terms": "车道"
                 },
                 "highway/service/emergency_access": {
@@ -5362,10 +5339,6 @@
                     "name": "创客空间",
                     "terms": "创客空间,创客,众创,创业,创新,孵化器,黑客,电脑,软件,硬件,程序,互联网,机械,技术,科学,电子,数字,艺术,联合办公,共享办公,办公,工作室,社区"
                 },
-                "leisure/horse_riding": {
-                    "name": "骑马场",
-                    "terms": "骑马场,马场,骑马"
-                },
                 "leisure/ice_rink": {
                     "name": "滑冰场",
                     "terms": "滑冰,滑冰场"
@@ -5440,10 +5413,6 @@
                 "leisure/pitch/cricket": {
                     "name": "板球场地",
                     "terms": "板球,场地"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "骑行场地",
-                    "terms": "骑行,场地,自行车,单车"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "曲棍球场地"
@@ -5558,9 +5527,6 @@
                 "leisure/track/cycling": {
                     "name": "自行车赛道"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "赛马场跑道"
-                },
                 "leisure/track/running": {
                     "name": "体育跑道",
                     "terms": "跑道,田径,跑步,跑,马拉松,冲刺,竞走,健身,操场跑道"
@@ -5631,8 +5597,8 @@
                     "terms": "十字架"
                 },
                 "man_made/cutline": {
-                    "name": "树林分界线",
-                    "terms": "分界线,防火障"
+                    "name": "森林伐带",
+                    "terms": "分界线,防火带,林,线"
                 },
                 "man_made/dovecote": {
                     "name": "鸽舍"
@@ -7774,10 +7740,6 @@
                 "type/route/hiking": {
                     "name": "徒步线路",
                     "terms": "远足线路,路线,线路,徒步,远足,远足路线,徒步路线"
-                },
-                "type/route/horse": {
-                    "name": "骑马路线",
-                    "terms": "骑马线路"
                 },
                 "type/route/light_rail": {
                     "name": "轻轨线路",

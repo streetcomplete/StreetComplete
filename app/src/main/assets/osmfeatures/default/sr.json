@@ -434,10 +434,6 @@
                     "label": "Последњи проверени датум",
                     "placeholder": "ГГГГ-ММ-ДД"
                 },
-                "circumference": {
-                    "label": "Кружница",
-                    "placeholder": "1 м, 20 цм, 30 инч…"
-                },
                 "clothes": {
                     "label": "Одећа"
                 },
@@ -1157,9 +1153,6 @@
                     "placeholder": "0, 1, 2, 3..."
                 },
                 "mtb/scale/imba": {
-                    "options": {
-                        "2": "Средњи (плави квадрат)"
-                    },
                     "placeholder": "Лако, средње, тешко..."
                 },
                 "mtb/scale/uphill": {
@@ -1562,9 +1555,6 @@
                 },
                 "service": {
                     "label": "Врста"
-                },
-                "service/bicycle": {
-                    "label": "Услуге"
                 },
                 "service/vehicle": {
                     "label": "Сервиси"
@@ -2502,9 +2492,6 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Амфитеатар"
-                },
-                "amenity/toilets": {
-                    "name": "Тоалети"
                 },
                 "amenity/townhall": {
                     "name": "Градска кућа"

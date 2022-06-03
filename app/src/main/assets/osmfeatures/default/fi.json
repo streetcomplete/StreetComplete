@@ -427,10 +427,6 @@
                     "label": "Tarkistettu viimeksi",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "Ympärysmitta",
-                    "placeholder": "1 m, 20 cm, 30 in..."
-                },
                 "clothes": {
                     "label": "Vaatteet"
                 },
@@ -1283,13 +1279,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA-polkuluokitus",
-                    "options": {
-                        "0": "Helpoin (valkoinen ympyrä)",
-                        "1": "Helppo (vihreä ympyrä)",
-                        "2": "Keskivaikea (sininen nelikulmio)",
-                        "3": "Vaikea (musta vinoneliö)",
-                        "4": "Äärimmäisen vaikea (kaksinkertainen musta vinoneliö)"
-                    },
                     "placeholder": "Helppo, keskivaikea, Vaikea..."
                 },
                 "mtb/scale/uphill": {
@@ -1868,9 +1857,6 @@
                         "emergency_access": "Hälytysajoneuvotie",
                         "parking_aisle": "Pysäköintiväylä"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Palvelut"
                 },
                 "service/vehicle": {
                     "label": "Palvelut"
@@ -3123,10 +3109,6 @@
                     "name": "Amfiteatteri",
                     "terms": "ulkoilmateatteri,ulkoteatteri,ulko,ulkona,ympyrä,kaari,puoliympyrä,puolikaari,muotoinen"
                 },
-                "amenity/toilets": {
-                    "name": "WC",
-                    "terms": "vessa,käymälä,saniteetti,saniteettitila,sanitaatio,pisuaari,pönttö,wc-istuin,wc-pönttö,pesuhuone,pesuallas,tarpeet,uloste,ulostaminen,virtsa,virtsaaminen"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Vesivessa"
                 },
@@ -3954,9 +3936,6 @@
                 "highway/bus_stop": {
                     "name": "Linja-autopysäkki"
                 },
-                "highway/construction": {
-                    "name": "Suljettu tie"
-                },
                 "highway/corridor": {
                     "name": "Sisäkäytävä",
                     "terms": "katettu,katos,käytävä,sisällä,sisätila,sisätiloissa"
@@ -4511,10 +4490,6 @@
                     "name": "Hacklab",
                     "terms": "hackerspace,hackspace,makerspace,hacklab,häckläb,ohjelmointi,ohjelmoija,koodaus,koodaaja,teknologia,rakentelu,värkkäys,värkkäily,paja,työpaja,tila,julkinen,labra,verstas,kaupunkiverstas"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ratsastusalue",
-                    "terms": "hevonen,hevoset,ratsastus,kenttä,alue,harjoittelu"
-                },
                 "leisure/ice_rink": {
                     "name": "Luistelukenttä",
                     "terms": "jää,jääkenttä,jääalue,kaukalo,jääkiekko,luistelu,jääkiekkokaukalo,luistimet,luistinrata,luistelurata"
@@ -4575,9 +4550,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Krikettikenttä"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Ratsastusareena"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Maahockeykenttä"
@@ -4659,9 +4631,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Pyöräilyrata"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Ravirata"
                 },
                 "leisure/track/running": {
                     "name": "Kuntorata"

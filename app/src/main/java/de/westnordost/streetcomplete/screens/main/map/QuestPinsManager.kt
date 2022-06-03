@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -51,6 +52,9 @@ class QuestPinsManager(
     private val quests: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+
+    private var updatePinsIsRunning = false
+    private var updatePinsAgain = false
 
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
@@ -127,6 +131,19 @@ class QuestPinsManager(
         if (tilesRect.size > 4) {
             return
         }
+        // clean up if too many quests are loaded
+        if (quests.size > 10000 && retrievedTiles.size > 10) { // should depend on device / heap size / cpu performance
+            synchronized(quests) {
+                // remove all quests not in current tilesRect
+                val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+                quests.values.removeAll { list -> list.none { bbox.contains(it.position) } }
+            }
+            synchronized(retrievedTiles) {
+                val tiles = tilesRect.asTilePosSequence().toSet()
+                // remove all retrievedTiles not in current tilesRect
+                retrievedTiles.removeAll { it !in tiles }
+            }
+        }
         var tiles: List<TilePos>
         synchronized(retrievedTiles) {
             tiles = tilesRect.asTilePosSequence().filter { !retrievedTiles.contains(it) }.toList()
@@ -174,9 +191,19 @@ class QuestPinsManager(
     }
 
     private fun updatePins() {
+        if (updatePinsIsRunning) {
+            updatePinsAgain = true
+            return
+        }
         if (isActive) {
+            updatePinsIsRunning = true
             val pins = synchronized(quests) { quests.values.flatten() }
             pinsMapComponent.set(pins)
+            updatePinsIsRunning = false
+            if (updatePinsAgain) {
+                updatePinsAgain = false
+                updatePins()
+            }
         }
     }
 

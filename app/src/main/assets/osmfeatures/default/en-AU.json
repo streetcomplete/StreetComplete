@@ -11,6 +11,11 @@
                 "fax": {
                     "placeholder": "+61 1 2345 6789"
                 },
+                "fire_hydrant/position": {
+                    "options": {
+                        "sidewalk": "Footpath"
+                    }
+                },
                 "height": {
                     "label": "Height (Metres)"
                 },

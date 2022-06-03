@@ -309,8 +309,12 @@
                     "label": "Especialidade",
                     "options": {
                         "cosmetics": "Cosmética",
-                        "nails": "Unhas",
-                        "tanning": "Bronzeamento"
+                        "hair_removal": "Depilação",
+                        "nails": "Manicure/pedicure",
+                        "skin_care": "Cuidados da pele",
+                        "spa": "Spa",
+                        "tanning": "Bronzeamento",
+                        "waxing": "Depilação com cera"
                     }
                 },
                 "bench": {
@@ -510,12 +514,12 @@
                     "placeholder": "AAAA-MM-DD"
                 },
                 "circumference": {
-                    "label": "Circunferência",
-                    "placeholder": " 1 m, 20 cm, 30 in...",
-                    "terms": "círculo,circunferências"
+                    "label": "Circunferência (a 1,3 m de altura)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
-                    "label": "Roupas"
+                    "label": "Roupas",
+                    "terms": "vestuário,roupas,trajes,traje,indumentária,vestes"
                 },
                 "club": {
                     "label": "Tipo"
@@ -803,7 +807,8 @@
                 },
                 "diameter": {
                     "label": "Diâmetro",
-                    "placeholder": "5 mm, 10 cm, 15 in…"
+                    "placeholder": "5 mm, 10 cm, 15 in…",
+                    "terms": "diâmetro,circunferência,raio"
                 },
                 "diet_multi": {
                     "label": "Tipos de dieta",
@@ -1007,6 +1012,9 @@
                     "label": "Diâmetro (mm, polegadas ou letras)",
                     "terms": "diâmetros"
                 },
+                "fire_hydrant/position": {
+                    "label": "Posição"
+                },
                 "fire_hydrant/pressure": {
                     "label": "Pressão (bar)",
                     "terms": "pressões"
@@ -1042,6 +1050,30 @@
                 },
                 "flag/wikidata": {
                     "label": "Wikidata da bandeira"
+                },
+                "flashing_lights": {
+                    "label": "Luzes intermitentes",
+                    "options": {
+                        "always": {
+                            "description": "As luzes estão sempre a piscar",
+                            "title": "Sempre a piscar"
+                        },
+                        "button": {
+                            "description": "Luzes ativadas com botão",
+                            "title": "Ativado por botão"
+                        },
+                        "button;sensor": {
+                            "description": "Luzes ativadas por sensor ou botão",
+                            "title": "Ativado por botão e sensor"
+                        },
+                        "no": "Não",
+                        "sensor": {
+                            "description": "Luzes ativadas por sensor",
+                            "title": "Sensor ativado"
+                        },
+                        "yes": "Sim"
+                    },
+                    "terms": "piscantes,intermitentes"
                 },
                 "floating": {
                     "label": "Flutuante"
@@ -1106,6 +1138,11 @@
                 "generator/type": {
                     "label": "Tipo"
                 },
+                "genus": {
+                    "label": "Género",
+                    "placeholder": "Acer, Platanus, Quercus…",
+                    "terms": "espécie,gênero,botânica,botânico,taxonomia,taxonómico,científico,nome"
+                },
                 "geyser/height": {
                     "label": "Altura da erupção"
                 },
@@ -1168,6 +1205,11 @@
                 },
                 "highway": {
                     "label": "Tipo"
+                },
+                "highway_cartpath": {
+                    "options": {
+                        "service": "Estrada de serviço"
+                    }
                 },
                 "historic": {
                     "label": "Tipo"
@@ -1546,11 +1588,11 @@
                 "mtb/scale/imba": {
                     "label": "Dificuldade do trilho definido pela IMBA",
                     "options": {
-                        "0": "Muito fácil (círculo branco)",
-                        "1": "Fácil (círculo verde)",
-                        "2": "Médio (quadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Muito difícil (diamante negro duplo)"
+                        "0": "⚪ Mais fácil (círculo branco)",
+                        "1": "🟢 Fácil (círculo verde)",
+                        "2": "🟦 Médio (quadrado azul)",
+                        "3": "◆ Difícil (diamante preto)",
+                        "4": "◆◆ Extremamente difícil (duplo diamante preto)"
                     },
                     "placeholder": "Fácil, médio, difícil...",
                     "terms": "imba,dificuldade,nível de dificuldade,grau de dificuldade,btt"
@@ -2243,9 +2285,6 @@
                         "parking_aisle": "Corredor de estacionamento"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Serviços"
-                },
                 "service/vehicle": {
                     "label": "Serviços"
                 },
@@ -2341,6 +2380,11 @@
                         "survey": "Pesquisa no terreno"
                     },
                     "terms": "referências"
+                },
+                "species": {
+                    "label": "Espécie",
+                    "placeholder": "Acer platanoides, Quercus robur…",
+                    "terms": "nome,científico,nome científico,biologia,biológico,biológica,taxonomia,taxonómico,latim"
                 },
                 "species/wikidata": {
                     "label": "Wikidata Espécies",
@@ -2543,6 +2587,11 @@
                 "target": {
                     "label": "Alvo"
                 },
+                "taxon": {
+                    "label": "Táxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer…",
+                    "terms": "nome,científico,nome científico,biologia,biológico,biológica,taxonomia,taxonómico,latim,taxa"
+                },
                 "telecom": {
                     "label": "Tipo"
                 },
@@ -2635,6 +2684,20 @@
                         "both": "Ambos / Todas",
                         "forward": "Para a frente"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Mapa táctil",
+                    "terms": "minimap,tacto,tato,tátil,tail,invisuais,invusial,cegos,braille"
+                },
+                "traffic_signals/sound": {
+                    "label": "Sinais sonoros",
+                    "options": {
+                        "no": "Não",
+                        "yes": "Sim"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Vibração"
                 },
                 "trail_visibility": {
                     "label": "Visibilidade",
@@ -3784,10 +3847,6 @@
                     "name": "Máquina de validação de bilhetes",
                     "terms": "bilhetes,validação,validar,validador,máquina,sistema,tickets,títulos"
                 },
-                "amenity/toilets": {
-                    "name": "Casas de banho",
-                    "terms": "instalações sanitárias,sanitário,gabinete sanitário,banheiros,toilette,lavabo,wc,w.c."
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Autoclismo",
                     "terms": "flush toilets,autoclismo de descarga,retrete de descarga,descarga de água,retrete,sanita"
@@ -4878,7 +4937,7 @@
                 },
                 "highway/construction": {
                     "name": "Estrada em construção",
-                    "terms": "fechada,obras,estrada encerrada,acesso vedado"
+                    "terms": "rua,estrada,rodovia,fechada,encerrada,obras,reparações,reparação,trabalhos,remodelação,alteração,reformulação,trânsito,interrompido"
                 },
                 "highway/corridor": {
                     "name": "Corredor interior",
@@ -5618,10 +5677,6 @@
                     "name": "Espaço de hackers",
                     "terms": "hacker,hackers,hackspace,clube,centro,computadores,computador,informática,internet"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro equestre",
-                    "terms": "horseback riding facility,arena de equitação,hipismo,cavalos,estábulos,cavalgar"
-                },
                 "leisure/ice_rink": {
                     "name": "Rinque de gelo",
                     "terms": "ice rink,ringue de gelo,gelo,pista de gelo,pista de patinagem,patinagem,patins,patinador"
@@ -5706,10 +5761,6 @@
                     "name": "Campo de críquete",
                     "terms": "campo de críquete,campo de cricket,campo de jogos de críquete,campo de jogos de cricket,recinto,campo,desporto"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "Pista de equitação",
-                    "terms": "riding arena,pista,equitação,hipismo,cavalos,equestre,cavalgar,dressage"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hóquei em campo",
                     "terms": "field hockey pitch,hóquei em campo,hóquei sobre a grama,relvado,sintético"
@@ -5729,6 +5780,10 @@
                 "leisure/pitch/netball": {
                     "name": "Campo de netbol",
                     "terms": "netball,terreno de netbol,netbol,netbola,campo,desporto,bola"
+                },
+                "leisure/pitch/padel": {
+                    "name": "Campo de padel",
+                    "terms": "desporto,desportivo,sport,recinto,ténis,raquetes,esportivo,esporte,jogo,jogar"
                 },
                 "leisure/pitch/paintball": {
                     "name": "Campo de paintball",
@@ -5841,10 +5896,6 @@
                 "leisure/track/cycling": {
                     "name": "Pista de ciclismo",
                     "terms": "cycling track,pista de ciclismo,pista de bicicletas,pista de ciclistas,pista para ciclismo,pista para bicicletas,pista para ciclistas,velódromo,circuito bicicleta,desporto"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de corridas de cavalos",
-                    "terms": "pista de corridas de cavalos,apostas em cavalos,corrida de cavalos,corridas de cavalos,pista de cavalos,pista para cavalos,hipódromo"
                 },
                 "leisure/track/running": {
                     "name": "Pista de atletismo",
@@ -8212,10 +8263,6 @@
                 "type/route/hiking": {
                     "name": "Rota de caminhada",
                     "terms": "hiking,rota,trekking,rota de caminhada,circuito pedestre,percurso recomendado,pequena rota,grande rota,rota levada,rota trail,percurso trail,percurso,levada,trail"
-                },
-                "type/route/horse": {
-                    "name": "Rota de equitação",
-                    "terms": "percurso,cavalos,equestre,cavaleiros,burros,mulas,riding"
                 },
                 "type/route/light_rail": {
                     "name": "Rota de comboio ligeiro",

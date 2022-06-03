@@ -376,11 +376,6 @@
                     "label": "Tanggal terakhir dicek",
                     "placeholder": "YYYY-MM-DD"
                 },
-                "circumference": {
-                    "label": "Keliling lingkaran",
-                    "placeholder": "1 m, 20 cm, 30 inci…",
-                    "terms": "keliling,panjang lingkaran,bundaran,putaran,elips,keliling lengkungan"
-                },
                 "clothes": {
                     "label": "Baju"
                 },
@@ -1052,13 +1047,6 @@
                     "placeholder": "0, 1, 2, 3..."
                 },
                 "mtb/scale/imba": {
-                    "options": {
-                        "0": "Sangat Mudah (lingkaran putih)",
-                        "1": "Mudah (lingkaran hijau)",
-                        "2": "Menengah (kotak biru)",
-                        "3": "Susah (berlian hitam)",
-                        "4": "Sangat Susah (berlian hitam ganda)"
-                    },
                     "placeholder": "Mudah, Menengah, Susah..."
                 },
                 "mtb/scale/uphill": {
@@ -1520,10 +1508,6 @@
                 "amenity/theatre": {
                     "name": "Teater",
                     "terms": "teater"
-                },
-                "amenity/toilets": {
-                    "name": "Toilet",
-                    "terms": "kamar kecil,wc"
                 },
                 "amenity/townhall": {
                     "name": "Balai Kota",

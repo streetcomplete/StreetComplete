@@ -312,7 +312,6 @@
                     "label": "Servoj",
                     "options": {
                         "cosmetics": "kosmetiko",
-                        "nails": "manikuro/pedikuro (ung-flagado)",
                         "tanning": "sunbrunigo"
                     }
                 },
@@ -512,11 +511,6 @@
                 "check_date": {
                     "label": "Antaŭe kontrolita je",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "Perimetro (je 1,3 m)",
-                    "placeholder": "1 m, 20 cm…",
-                    "terms": "diametro,cirkonferenco,periferio"
                 },
                 "clothes": {
                     "label": "Vestaĵoj"
@@ -1557,13 +1551,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Montbicikla malfacileca skalo de IMBA",
-                    "options": {
-                        "0": "Facilega (blanka cirklo)",
-                        "1": "Facila (verda cirklo)",
-                        "2": "Meza (blua kvadrato)",
-                        "3": "Malfacila (nigra rombo)",
-                        "4": "Malfacilega (duobla nigra rombo)"
-                    },
                     "placeholder": "Facila, meza, malfacila…",
                     "terms": "imba"
                 },
@@ -2270,9 +2257,6 @@
                         "emergency_access": "aliro por vivsava servo",
                         "parking_aisle": "parkumeja strateto"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Servoj"
                 },
                 "service/vehicle": {
                     "label": "Servoj"
@@ -3824,10 +3808,6 @@
                     "name": "Bilet-kontrolilo",
                     "terms": "biletkontrolilo,kontrolilo,validigilo.bilettruilo,truilo"
                 },
-                "amenity/toilets": {
-                    "name": "Necesejo",
-                    "terms": "tualeto,urinejo,wc,latrino,maltrinkejo,pisejo"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Necesejo akvospruĉa",
                     "terms": "tualeto,urinejo,wc,latrino,pisejo"
@@ -4944,10 +4924,6 @@
                 "highway/bus_stop": {
                     "name": "Haltejo aŭtobusa"
                 },
-                "highway/construction": {
-                    "name": "Fermita vojo",
-                    "terms": "vojo fermita,dumkonstruado,riparata vojo"
-                },
                 "highway/corridor": {
                     "name": "Enkonstruaĵa koridoro (linio)",
                     "terms": "interna koridoro,ena koridoro,endoma koridoro,koridoro"
@@ -5689,10 +5665,6 @@
                     "name": "Kodumulejo (hackerspace)",
                     "terms": "hackerspace,hackspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ĉeval-rajdadejo",
-                    "terms": "ĉevalrajdado,chevalrajdado,cxevalrajdado,rajdejo,rajdadejo"
-                },
                 "leisure/ice_rink": {
                     "name": "Glitkurejo",
                     "terms": "glitejo"
@@ -5776,10 +5748,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Kriketa ludkampo",
                     "terms": "kriketo,kriketejo"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Rajdlernejo",
-                    "terms": "ĉevalrajdlernejo,rajdlernejo,rajdejo,rajdadejo,maneĝo,maneĝejo,hipodromo"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Ludkampo por herbhokeo",
@@ -5912,10 +5880,6 @@
                 "leisure/track/cycling": {
                     "name": "Kurejo bicikla",
                     "terms": "dromo,biciklado,biciklkonkursejo,konkursejo"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Kurejo ĉevala",
-                    "terms": "ĉevalkurejo,chevalkurejo,cxevalkurejo,hipodromo"
                 },
                 "leisure/track/running": {
                     "name": "Kurejo",
@@ -8304,10 +8268,6 @@
                 "type/route/hiking": {
                     "name": "Piedirada kurso",
                     "terms": "turisma kurso,vojo turisma,marŝada kurso"
-                },
-                "type/route/horse": {
-                    "name": "Ĉevala kurso",
-                    "terms": "chevala kurso,cxevala kurso,ĉevalvojo"
                 },
                 "type/route/light_rail": {
                     "name": "Kurso de fervojo malpeza",
