@@ -197,6 +197,8 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_not_found">Cannot create note, quest not found or hidden</string>
     <string name="pref_quest_settings_profile_title">Per-preset quest settings</string>
     <string name="pref_quest_settings_profile_summary">When enabled, quest settings are only valid for the current quest preset</string>
+    <string name="pref_hide_button_title">Show hide button</string>
+    <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
 
     <!-- Store description -->
 

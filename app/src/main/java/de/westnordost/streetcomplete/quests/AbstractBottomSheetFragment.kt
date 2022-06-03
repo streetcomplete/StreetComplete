@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -24,6 +25,7 @@ import de.westnordost.streetcomplete.view.SlidingRelativeLayout
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import kotlin.math.min
 
 /** Abstract base class for expandable and closeable bottom sheets
@@ -33,6 +35,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     protected abstract val bottomSheetContainer: SlidingRelativeLayout
     protected abstract val bottomSheet: ViewGroup
     protected abstract val scrollViewChild: View
+    protected val prefs: SharedPreferences by inject()
 
     /** Title view of the bottom sheet. Tapping on it expands / retracts the bottom sheet */
     protected abstract val bottomSheetTitle: View?

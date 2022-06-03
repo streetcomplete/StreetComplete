@@ -21,6 +21,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -214,11 +215,13 @@ abstract class AbstractQuestAnswerFragment<T> :
             binding.content.visibility = View.GONE
         }
 
-        binding.hideButton.popIn()
-        binding.hideButton.setOnClickListener { tempSkipQuest() }
-        binding.hideButton.setOnLongClickListener {
-            skipQuest()
-            true
+        if (prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
+            binding.hideButton.popIn()
+            binding.hideButton.setOnClickListener { tempSkipQuest() }
+            binding.hideButton.setOnLongClickListener {
+                skipQuest()
+                true
+            }
         }
     }
 

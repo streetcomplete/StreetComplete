@@ -22,7 +22,6 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     protected abstract val noteInput: EditText
     protected abstract val okButton: View
     protected abstract val gpxButton: View
-    protected val prefs: SharedPreferences by inject()
 
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment?

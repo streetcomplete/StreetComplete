@@ -246,6 +246,13 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="show_hide_button"
+            android:title="@string/pref_hide_button_title"
+            android:summary="@string/pref_hide_button_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

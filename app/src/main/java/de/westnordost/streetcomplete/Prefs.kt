@@ -63,6 +63,7 @@ object Prefs {
     const val OFFSET_FIX = "offset_fix"
     const val DAY_NIGHT_BEHAVIOR = "day_night_behavior"
     const val QUEST_SETTINGS_PER_PROFILE = "quest_settings_per_profile"
+    const val SHOW_HIDE_BUTTON = "show_hide_button"
 
     enum class Autosync {
         ON, WIFI, OFF
