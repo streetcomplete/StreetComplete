@@ -84,7 +84,7 @@ class AddEntranceReferenceForm : AbstractQuestFormAnswerFragment<EntranceAnswer>
     override fun isFormComplete(): Boolean {
         val referenceCode = referenceCodeInput?.nonBlankTextOrNull
         val flatRangeStart = flatRangeStartInput?.nonBlankTextOrNull
-        val flatRangeEnd = referenceCodeInput?.nonBlankTextOrNull
+        val flatRangeEnd = flatRangeEndInput?.nonBlankTextOrNull
 
         return when (interfaceMode) {
             InterfaceMode.FLAT_RANGE -> flatRangeStart != null && flatRangeEnd != null
