@@ -231,6 +231,14 @@
             android:key="get_gpx_notes"
             android:title="@string/pref_save_gpx" />
 
+        <Preference
+            android:key="export"
+            android:title="@string/pref_export" />
+
+        <Preference
+            android:key="import"
+            android:title="@string/pref_import" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
