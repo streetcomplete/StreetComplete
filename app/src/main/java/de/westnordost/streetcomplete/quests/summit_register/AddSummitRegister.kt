@@ -48,10 +48,10 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         val hikingRoutes = mapData.relations
             .filter { it.tags["route"] == "hiking" }
             .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
-        if (hikingRoutes.isEmpty()) return emptyList()
 
         // yes, this is very inefficient, however, peaks are very rare
         return peaks.filter { peak ->
+            peak.tags["summit:cross"] == "yes" || peak.tags.containsKey("summit:register") ||
             hikingRoutes.any { hikingRoute ->
                 hikingRoute.polylines.any { ways ->
                     peak.position.distanceToArcs(ways) <= 10
