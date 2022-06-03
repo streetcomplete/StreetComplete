@@ -32,11 +32,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "de.westnordost.streetcomplete.modified"
+        applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 31
         versionCode = 4301
-        versionName = "43.0"
+        versionName = "43.0_expert_edition"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

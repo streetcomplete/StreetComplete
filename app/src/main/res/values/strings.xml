@@ -105,7 +105,7 @@
     <string name="quest_edit_tags_title">Edit tags</string>
     <string name="quest_edit_tags_save">Save</string>
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
-    <string name="pref_show_gpx_button_summary">Notes are stored to Android/data/de.westnordost.streetcomplete.modified/files/notes.gpx</string>
+    <string name="pref_show_gpx_button_summary">Use the option below to access notes</string>
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
@@ -151,7 +151,7 @@
     <string name="quest_crossing_type_zebra">Zebra</string>
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">"Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note."</string>
-    <string name="quest_tree_disabled_msg">This quest is disabled by default because it\'s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with translation by adding \'trees.csv\' to \`Android/data/de.westnordost.streetcomplete.modified/files\`, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
+    <string name="quest_tree_disabled_msg">This quest is disabled by default because it\'s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with translation by adding \'trees.csv\' to \`Android/data/de.westnordost.streetcomplete.expert/files\`, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
     <string name="quest_osmose_title">Osmose quest: %s</string>
     <string name="quest_osmose_false_positive">Report false positive</string>
     <string name="quest_osmose_modify_tag">Modify tag</string>
@@ -165,7 +165,7 @@
     <string name="quest_osmose_settings_enable">Enable downloading</string>
     <string name="quest_osmose_settings_disable">Disable downloading (default)</string>
     <string name="quest_external_title">External quest: %s</string>
-    <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, add \'external.csv\' to \`Android/data/de.westnordost.streetcomplete.modified/files\`, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
+    <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, add \'external.csv\' to \`Android/data/de.westnordost.streetcomplete.expert/files\`, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
     <string name="quest_external_remove">Remove from list</string>
     <string name="quest_external_message_for_element">Message for this element: %s</string>
     <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note? (Please restart the app after changing this setting)</string>
@@ -193,6 +193,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="import_warning">This will overwrite your settings or quest presets (depending on choice below)</string>
     <string name="restart_required">Restart required</string>
     <string name="restart_required_message">Some change requires restarting the app. This does not work automatically on some Android versions, so you may need to start the app again manually</string>
+    <string name="fork_about_title_repository">"Expert edition project Home"</string>
 
     <!-- Store description -->
 

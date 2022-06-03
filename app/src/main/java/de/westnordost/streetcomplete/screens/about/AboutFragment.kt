@@ -55,6 +55,10 @@ class AboutFragment : PreferenceFragmentCompat() {
             true
         }
 
+        findPreference<Preference>("fork_repository")?.setOnPreferenceClickListener {
+            openUrl("https://github.com/Helium314/StreetComplete/")
+        }
+
         findPreference<Preference>("repository")?.setOnPreferenceClickListener {
             openUrl("https://github.com/streetcomplete/StreetComplete/")
         }
@@ -63,21 +67,12 @@ class AboutFragment : PreferenceFragmentCompat() {
             openUrl("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ")
         }
 
-        findPreference<Preference>("translate")?.summary = resources.getString(
-            R.string.about_description_translate,
-            Locale.getDefault().displayLanguage,
-            resources.getInteger(R.integer.translation_completeness)
-        )
-        findPreference<Preference>("translate")?.setOnPreferenceClickListener {
-            openUrl("https://poeditor.com/join/project/IE4GC127Ki")
-        }
-
         findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/streetcomplete/StreetComplete/issues/")
+            openUrl("https://github.com/Helium314/StreetComplete/issues/")
         }
 
         findPreference<Preference>("give_feedback")?.setOnPreferenceClickListener {
-            openUrl("https://github.com/streetcomplete/StreetComplete/discussions/")
+            openUrl("https://github.com/Helium314/StreetComplete/discussions/")
         }
 
         findPreference<Preference>("rate")?.isVisible = isInstalledViaGooglePlay()

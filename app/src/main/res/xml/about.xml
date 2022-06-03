@@ -19,14 +19,15 @@
         />
 
     <Preference
-        android:key="translate"
-        android:title="@string/about_title_translate"
-        android:widgetLayout="@layout/widget_image_open_in_browser" />
-
-    <Preference
         android:key="license"
         android:title="@string/about_title_license"
         android:summary="@string/about_summary_license"
+        android:widgetLayout="@layout/widget_image_open_in_browser"/>
+
+    <Preference
+        android:key="fork_repository"
+        android:title="@string/fork_about_title_repository"
+        android:summary="@string/about_summary_repository"
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
     <Preference
