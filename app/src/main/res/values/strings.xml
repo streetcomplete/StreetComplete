@@ -199,6 +199,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_quest_settings_profile_summary">When enabled, quest settings are only valid for the current quest preset</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
+    <string name="quest_osmose_hide_type">Ignore issues of this type when scanning</string>
 
     <!-- Store description -->
 

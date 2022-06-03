@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.questPrefix
 
 class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<OsmoseAnswer>() {
 
@@ -67,6 +68,17 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<Osmose
             } )
         updateButtonPanel()
     }
+
+    override val otherAnswers: List<AnswerItem> by lazy { listOf(
+        AnswerItem(R.string.quest_osmose_hide_type) {
+            val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!.split(",").filterNot { it.isBlank() }.toMutableSet()
+            issue?.let {
+                types.add(it.item)
+                prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.joinToString(",")).apply()
+            }
+            tempSkipQuest()
+        }
+    ) }
 
 }
 
