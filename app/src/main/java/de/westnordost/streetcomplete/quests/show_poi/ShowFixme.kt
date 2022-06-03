@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
@@ -39,7 +38,7 @@ class ShowFixme(private val prefs: SharedPreferences) : OsmFilterQuestType<Boole
     override val hasQuestSettings = true
 
     // actual ignoring of stuff happens when downloading
-    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+    override fun getQuestSettingsDialog(context: Context) =
         singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT, R.string.quest_settings_fixme_title)
 }
 

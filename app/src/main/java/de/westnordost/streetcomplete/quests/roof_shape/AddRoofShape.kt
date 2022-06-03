@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries

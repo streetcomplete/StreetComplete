@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import android.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
@@ -55,7 +55,7 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
 
     override val hasQuestSettings = true
 
-    override fun getQuestSettingsDialog(context: Context): AlertDialog? {
+    override fun getQuestSettingsDialog(context: Context): AlertDialog {
         return AlertDialog.Builder(context)
             .setMessage(R.string.quest_generic_surface_message)
             .setNeutralButton(android.R.string.cancel, null)

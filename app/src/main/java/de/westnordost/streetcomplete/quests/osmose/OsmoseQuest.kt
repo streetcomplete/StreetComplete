@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.osmose
 
-import android.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
