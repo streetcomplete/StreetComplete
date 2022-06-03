@@ -2024,7 +2024,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"由红绿灯控制的十字路口"</string>
-    <string name="undo_confirm_title2">"要恢复接下来的编辑吗？"</string>
+    <string name="undo_confirm_title2">"要还原如下的编辑吗？"</string>
 
     <!-- Fuzzy -->
     <string name="synced">"已同步"</string>
@@ -2671,4 +2671,26 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"路肩是一个明确划定的紧急停车道。被指定为路肩的区域不一定在整个宽度上铺设，也不一定宽到足以让汽车完全停在交通车道之外。"</string>
+    <string name="map_btn_create_track">"创建新记录轨迹"</string>
+    <string name="map_btn_stop_track">"停止记录轨迹"</string>
+    <string name="quest_bicycle_rental_capacity_title">"这里有多少个出租自行车的车位？"</string>
+    <string name="quest_bicycle_rental_type_title">"这是哪种自行车租赁方式？"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"可锁住自行车的停靠站"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"指定地点（自行车单独上锁）"</string>
+    <string name="quest_bicycle_rental_type_human">"专人负责自行车租赁"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"由自行车店提供租车服务"</string>
+    <string name="quest_bicycle_shop_repair_title">"这提供自行车维修服务吗？"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"这有卖二手自行车吗？"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"不，只卖新车"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"有，同时也卖新车"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"有，专卖二手自行车"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"完全不销售自行车"</string>
+    <string name="quest_building_entrance_title">"这是哪种建筑入口？"</string>
+    <string name="quest_building_entrance_main">"公共建筑的主要入口"</string>
+    <string name="quest_building_entrance_service">"服务性入口"</string>
+    <string name="quest_building_entrance_exit">"出口"</string>
+    <string name="quest_building_entrance_emergency_exit">"紧急出口"</string>
+    <string name="quest_building_entrance_yes">"其它入口类型"</string>
+    <string name="quest_building_entrance_dead_end">"死路，没有入口"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"点击屏幕以开始测量"</string>
 </resources>

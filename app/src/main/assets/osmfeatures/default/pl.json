@@ -292,7 +292,6 @@
                     "label": "Usługi",
                     "options": {
                         "cosmetics": "cosmetics (zabiegi kosmetyczne)",
-                        "nails": "nails (manicure/pedicure)",
                         "tanning": "tanning (solarium)"
                     }
                 },
@@ -1384,13 +1383,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Skala trudności szlaków dla rowerów górskich IMBA",
-                    "options": {
-                        "0": "Najłatwiejszy (biały okrąg)",
-                        "1": "Łatwy (zielony okrąg)",
-                        "2": "Wymagający (niebieski kwadrat)",
-                        "3": "Trudny (czarny romb)",
-                        "4": "Ekstremalnie trudny (podwójny czarny romb)"
-                    },
                     "placeholder": "Łatwy, Wymagający, Trudny...",
                     "terms": "skala trudności szlaków dla rowerów górskich imba"
                 },
@@ -2033,9 +2025,6 @@
                         "emergency_access": "emergency_access (dla służb ratowniczych)",
                         "parking_aisle": "parking_aisle (uliczka parkingowa)"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Usługi"
                 },
                 "service/vehicle": {
                     "label": "Usługi"
@@ -5304,10 +5293,6 @@
                     "name": "Hackerspace",
                     "terms": "hackerspace,hackspace,hacklab,makerspace,creative space"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ośrodek jeździecki",
-                    "terms": "ośrodek jeździecki,centrum jazdy konnej,jazda konna,jeździectwo,koń,konie"
-                },
                 "leisure/ice_rink": {
                     "name": "Lodowisko",
                     "terms": "lodowisko,ślizgawka,łyżwy,łyżwiarstwo,hokej na lodzie,curling"
@@ -5387,10 +5372,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Pole do krykieta",
                     "terms": "pole do krykieta"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Ujeżdżalnia",
-                    "terms": "ujeżdżalnia"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Boisko do hokeja na trawie",
@@ -5495,10 +5476,6 @@
                 "leisure/track/cycling": {
                     "name": "Tor kolarski",
                     "terms": "tor,kolarstwo,welodrom,rower"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Hipodrom (Wyścigi konne)",
-                    "terms": "hipodrom,wyścigi,konne,konie,tor wyścigowy"
                 },
                 "leisure/track/running": {
                     "name": "Bieżnia",
@@ -7793,10 +7770,6 @@
                 "type/route/hiking": {
                     "name": "Szlak pieszy",
                     "terms": "szlak pieszy,szlak górski,szlak alpejski,szlak turystyczny"
-                },
-                "type/route/horse": {
-                    "name": "Szlak konny",
-                    "terms": "szlak konny,konie"
                 },
                 "type/route/light_rail": {
                     "name": "Linia kolei miejskiej",

@@ -304,7 +304,6 @@
                     "label": "Servizi",
                     "options": {
                         "cosmetics": "Cosmetica",
-                        "nails": "Unghie",
                         "tanning": "Abbronzatura"
                     }
                 },
@@ -1386,13 +1385,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Difficoltà IMBA del tracciato",
-                    "options": {
-                        "0": "Più semplice (cerchio bianco)",
-                        "1": "Semplice (cerchio verde)",
-                        "2": "Medio (quadrato blu)",
-                        "3": "Difficile (rombo nero)",
-                        "4": "Estremamente difficile (rombo nero doppio)"
-                    },
                     "placeholder": "Facile, Medio, Difficile..."
                 },
                 "mtb/scale/uphill": {
@@ -2017,9 +2009,6 @@
                         "emergency_access": "Accesso per i veicoli di soccorso/emergenza",
                         "parking_aisle": "Corsia di un parcheggio"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Servizi"
                 },
                 "service/vehicle": {
                     "label": "Servizi"
@@ -5166,10 +5155,6 @@
                     "name": "Spazio hacker",
                     "terms": "makerspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro equestre",
-                    "terms": "cavallo,cavalli,equestre,circolo,ippica,club,destrieri,stalla,stalle"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista di Ghiaccio",
                     "terms": "pista di pattinaggio su ghiaccio,campo da hockey su ghiaccio"
@@ -5242,10 +5227,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Campo da cricket",
                     "terms": "cricket,campo,sportivo"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Maneggio",
-                    "terms": "dressage,equestre,cavallo,cavalli,cavalcata,cavalcate"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo di hockey su prato"
@@ -5341,10 +5322,6 @@
                 "leisure/track/cycling": {
                     "name": "Pista per ciclismo",
                     "terms": "pista bici,pista bicicletta,pista,pista ciclismo,ciclismo,bici,velodromo,circuito"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Pista per la corsa dei cavalli",
-                    "terms": "corsa equestre,pista da gara,corsa dei cavalli,scommesse,pista,cavalli"
                 },
                 "leisure/track/running": {
                     "name": "Pista da corsa",
@@ -7488,9 +7465,6 @@
                 "type/route/hiking": {
                     "name": "Percorso escursionistico",
                     "terms": "sentiero,escursione,gita,rotta,percorso,passeggiata,cammino"
-                },
-                "type/route/horse": {
-                    "name": "Ippovia"
                 },
                 "type/route/light_rail": {
                     "name": "Linea della metropolitana di superficie",

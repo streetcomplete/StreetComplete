@@ -1047,13 +1047,6 @@
                     "placeholder": "0, 1, 2, 3..."
                 },
                 "mtb/scale/imba": {
-                    "options": {
-                        "0": "Sangat Mudah (lingkaran putih)",
-                        "1": "Mudah (lingkaran hijau)",
-                        "2": "Menengah (kotak biru)",
-                        "3": "Susah (berlian hitam)",
-                        "4": "Sangat Susah (berlian hitam ganda)"
-                    },
                     "placeholder": "Mudah, Menengah, Susah..."
                 },
                 "mtb/scale/uphill": {

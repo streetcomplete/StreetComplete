@@ -17,7 +17,7 @@ layers:
 
     highway:
         data: { source: jawg, layer: road }
-        filter: [ class: motorway, { class: main, type: trunk } ]
+        filter: [ class: [ motorway, motorway_link ], { class: main, type: trunk }, { class: street, type: trunk_link } ]
         draw:
             lines-highway-style:
                 order: 34
@@ -30,6 +30,12 @@ layers:
                     width: function () { return 1/4 * Math.log($zoom); }
                     order: 35
 
+        link:
+            filter: [ class: motorway_link, { class: street, type: trunk_link } ]
+            draw:
+                lines-highway-style:
+                    width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
+
         bridges:
             filter: { structure: bridge }
             draw:
@@ -38,6 +44,7 @@ layers:
                     outline:
                         cap: butt
                         order: 45
+
         tunnel:
             filter: { structure: tunnel }
             draw:
@@ -59,7 +66,7 @@ layers:
 
     roads:
         data: { source: jawg, layer: road }
-        filter: { class: [main, street, motorway_link, street_limited, service, driveway, path], not: { type: trunk } }
+        filter: { class: [main, street, street_limited, service, driveway, path], not: { type: [ trunk, trunk_link ] } }
         draw:
             lines-road-style:
                 order: 30
@@ -93,6 +100,12 @@ layers:
                 lines-road-style:
                     color: global.path_color
                     width: [[14, 0.5px], [15, 1px], [19, 2m]]
+            path-tunnel:
+                filter: { structure: tunnel }
+                draw:
+                    lines-road-style:
+                        style: tunnel-way
+                        color: global.tunnel_color
             steps:
                 filter: { type: steps }
                 draw:
@@ -101,6 +114,11 @@ layers:
                         cap: butt
                         color: global.path_color
                         width: [[14, 0.5px], [15, 1px], [19, 2m]]
+                bridge-steps:
+                    filter: { structure: bridge }
+                    draw:
+                        step_dashes:
+                            order: 41
 
         road-outline:
             filter: { $zoom: { min: 15 } }

@@ -1580,4 +1580,7 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Butiksentré"</string>
     <string name="quest_building_entrance_yes">"Annan slags entré"</string>
     <string name="quest_building_entrance_dead_end">"Återvändsgränd"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Dutta på skärmen för att börja mäta"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Finns det en cykelpump för allmänt bruk här (iaf när det är öppet)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Finns det en fungerade cykelpump här?"</string>
 </resources>

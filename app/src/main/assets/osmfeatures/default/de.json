@@ -312,8 +312,12 @@
                     "label": "Schönheitssalon",
                     "options": {
                         "cosmetics": "Kosmetik",
-                        "nails": "Fingernägel",
-                        "tanning": "Sonnenstudio"
+                        "hair_removal": "Haarentfernung",
+                        "nails": "Maniküre / Pediküre",
+                        "skin_care": "Hautpflege",
+                        "spa": "Day Spa",
+                        "tanning": "Sonnenstudio",
+                        "waxing": "Haarentfernung"
                     }
                 },
                 "bench": {
@@ -517,6 +521,7 @@
                     "placeholder": "JJJJ-MM-TT"
                 },
                 "circumference": {
+                    "label": "Stammdurchmesser (auf Brusthöhe)",
                     "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
@@ -813,10 +818,13 @@
                 },
                 "diameter": {
                     "label": "Durchmesser",
-                    "placeholder": "5 mm, 10 cm, 15 dm ..."
+                    "placeholder": "5 mm, 10 cm, 15 dm ...",
+                    "terms": "stammdurchmesser,durchmesser,brusthöhendurchmesser,bhd,baumdurchmesser,stammbreite"
                 },
                 "diameter_crown": {
-                    "placeholder": "4 m, 9', …"
+                    "label": "Kronendurchmesser",
+                    "placeholder": "4 m, 9', …",
+                    "terms": "krone,kronenbreite,kronendurchmesser,kronentrauf,kronen-breite,kronen-durchmesser,kronen-trauf,baumkrone,baumkronenbreite,baumkronendurchmesser,baumkronentrauf,baumkronen-breite,baumkronen-durchmesser,baumkronen-trauf"
                 },
                 "diet_multi": {
                     "label": "Ernährungsbesonderheiten",
@@ -1073,10 +1081,28 @@
                     "label": "Flagge in Wikidata"
                 },
                 "flashing_lights": {
+                    "label": "Blinkleuchten",
                     "options": {
+                        "always": {
+                            "description": "Leuchten blinken durchgängig",
+                            "title": "Leuchten blinken"
+                        },
+                        "button": {
+                            "description": "Leuchten aktiviert durch Tastendruck",
+                            "title": "Aktiviert durch Tastendruck"
+                        },
+                        "button;sensor": {
+                            "description": "Leuchten durch Sensor oder Tastendruck aktiviert",
+                            "title": "Aktiviert durch Sensor und Tastendruck"
+                        },
                         "no": "Nein",
+                        "sensor": {
+                            "description": "Leuchten aktiviert durch Sensor",
+                            "title": "Aktiviert durch Sensor"
+                        },
                         "yes": "Ja"
-                    }
+                    },
+                    "terms": "blinkleuchten,blinkleuchte,fußgängerleuchten,fußgängerleuchte,blinklichter,blinklicht,fußgängerlicht,fußgängerlichter"
                 },
                 "floating": {
                     "label": "Schwimmend"
@@ -1141,6 +1167,11 @@
                 "generator/type": {
                     "label": "Typ"
                 },
+                "genus": {
+                    "label": "Genus",
+                    "placeholder": "Acer, Platanus, Quercus …",
+                    "terms": "gattung,pflanzengattung,tiergattung,gattungsname"
+                },
                 "geyser/height": {
                     "label": "Eruptionshöhe"
                 },
@@ -1204,6 +1235,13 @@
                 "highway": {
                     "label": "Typ"
                 },
+                "highway_cartpath": {
+                    "label": "Art des Wegs",
+                    "options": {
+                        "path": "Golfwagenweg",
+                        "service": "Zufahrtsweg"
+                    }
+                },
                 "historic": {
                     "label": "Typ"
                 },
@@ -1256,7 +1294,7 @@
                         "impossible": "Unpassierbar: Weg oder Brücke für Pferde nicht benützbar. Zu schmal, unzureichende Unterstützung, Hindernisse wie Leitern. Lebensgefahr."
                     },
                     "placeholder": "schwierig, gefährlich ...",
-                    "terms": "pferderückenreitschwierigkeitsgrad,reitschwierigkeitsgrad,reitschwierigkeit"
+                    "terms": "reitschwierigkeitsgrad,reitschwierigkeit"
                 },
                 "horse_stables": {
                     "label": "Reitstall",
@@ -1584,11 +1622,11 @@
                 "mtb/scale/imba": {
                     "label": "Bikepark-IMBA-Schwierigkeitsgrad",
                     "options": {
-                        "0": "Am einfachsten (weißer Kreis)",
-                        "1": "Leicht (grüner Kreis)",
-                        "2": "Mittel (blaues Quadrat)",
-                        "3": "Schwierig (schwarze Raute)",
-                        "4": "Extrem schwierig (doppelte schwarze Raute)"
+                        "0": "⚪ Sehr leicht (weißer Kreis)",
+                        "1": "🟢 Leicht (grüner Kreis)",
+                        "2": "🟦 Mittel (blaues Quadrat)",
+                        "3": "◆ Schwierig (schwarze Raute)",
+                        "4": "◆◆ Extrem schwierig (zwei schwarze Rauten)"
                     },
                     "placeholder": "Leicht, Mittel, Schwierig …",
                     "terms": "imba trail schwierigkeit"
@@ -2297,9 +2335,6 @@
                         "parking_aisle": "Parkplatzfahrgassen"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Fahrradservice"
-                },
                 "service/vehicle": {
                     "label": "Fahrzeugservice"
                 },
@@ -2395,6 +2430,11 @@
                         "survey": "Erhebung vor Ort"
                     },
                     "terms": "quellen,referenz"
+                },
+                "species": {
+                    "label": "Species",
+                    "placeholder": "Acer platanoides, Quercus robur, …",
+                    "terms": "species,spezies,art,artname,pflanzenart,tierart"
                 },
                 "species/wikidata": {
                     "label": "Species Wikidata",
@@ -2597,6 +2637,11 @@
                 },
                 "target": {
                     "label": "Ländercode"
+                },
+                "taxon": {
+                    "label": "Taxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
+                    "terms": "taxon,sippe"
                 },
                 "telecom": {
                     "label": "Typ"
@@ -5754,7 +5799,8 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Reitanlage",
-                    "terms": "reitanlage,reitstall,pferdereitstall,pferdereiteinrichtung,reiterhof"
+                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,ponyhof,reitanlage,reiten,reiterhof,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
+                    "aliases": "Reiterhof\nReitstall\nReitzentrum"
                 },
                 "leisure/ice_rink": {
                     "name": "Eislaufbahn",
@@ -5842,7 +5888,7 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "Reitplatz",
-                    "terms": "reitplatz,pferdesportplatz,reitbahn"
+                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Hockeyfeld",
@@ -5986,7 +6032,7 @@
                 },
                 "leisure/track/horse_racing": {
                     "name": "Pferderennbahn",
-                    "terms": "pferderennbahn"
+                    "terms": "rennstrecke (pferderennen),pferderennstrecke,pferderennbahn"
                 },
                 "leisure/track/running": {
                     "name": "Laufbahn",
@@ -8389,7 +8435,7 @@
                 },
                 "type/route/horse": {
                     "name": "Reitroute",
-                    "terms": "reitroute"
+                    "terms": "reitwanderroute,wanderreitroute"
                 },
                 "type/route/light_rail": {
                     "name": "Stadtbahnlinie",

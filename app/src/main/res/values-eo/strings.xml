@@ -19,13 +19,11 @@
     <string name="quest_generic_answer_notApplicable">"Mi ne povas diri…"</string>
     <string name="quest_generic_confirmation_title">"Ĉu vi certas?"</string>
     <string name="quest_generic_confirmation_yes">"Jes, mi certas"</string>
-    <string name="quest_generic_confirmation_no">"Mi kontrolos"</string>
+    <string name="quest_generic_confirmation_no">"Mi kontrolu"</string>
     <string name="quest_leave_new_note_title">"Ĉu skribi noton anstataŭe?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Vi povas skribi publikan noton ĉi tie por ke aliaj mapistoj povu komenti ĝin kaj esperable solvi ĝin, aŭ alimaniere nur kaŝi la demandon nur por vi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"Bone"</string>
 
     <!-- Fuzzy -->
@@ -68,7 +66,9 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Forviŝi"</string>
-    <string name="action_download">"Skani por taskoj ĉi tie"</string>
+
+    <!-- Fuzzy -->
+    <string name="action_download">"Serĉi taskojn ĉi tie"</string>
 
     <!-- Fuzzy -->
     <string name="action_upload">"Alŝuti respondojn"</string>
@@ -79,16 +79,16 @@
 
     <!-- Fuzzy -->
     <string name="close">"fermi"</string>
-    <string name="download_error">"Eraro skanante por taskoj"</string>
+    <string name="download_error">"Eraro serĉante taskojn"</string>
     <string name="upload_error">"Eraro alŝutante respondojn"</string>
 
     <!-- Fuzzy -->
     <string name="download_area_too_big">"Bonvolu alproksimiĝi pli"</string>
-    <string name="confirmation_cancel_prev_download_title">"Ĉu halti nunan serĉon kaj kani ĉi tie antataŭe?"</string>
-    <string name="turn_on_location_request">"Loko estas malŝaltita. Ĉu malfermi agordojn por ŝalti ĝin nun?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Via loko necesas por skani por taskon en via najbaraĵo."</string>
+    <string name="confirmation_cancel_prev_download_title">"Ĉu halti nunan serĉon kaj serĉi ĉi tie anstataŭe?"</string>
+    <string name="turn_on_location_request">"Loko estas malŝaltita. Ĉu malfermi agordojn por ŝalti ĝin nun?"</string>
+    <string name="no_location_permission_warning">"Via loko estas bezonata por serĉi taskojn ĉirkaŭ vi."</string>
     <string name="about_title_authors">"Agnoskoj"</string>
 
     <!-- Fuzzy -->
@@ -113,7 +113,7 @@
     <!-- Fuzzy -->
     <string name="not_authorized">"Ne rajtigita"</string>
     <string name="version_banned_message">"Ĉi tiu versio de StreetComplete estas tro malnova. Bonvolu ĝisdatigi!"</string>
-    <string name="no_gps_no_quests">"Por skani por taskoj ĉirkaŭ vi aŭtomate, ŝaltu lokon"</string>
+    <string name="no_gps_no_quests">"Por aŭtomate serĉi taskoj ĉirkaŭ vi, ŝaltu loktrovilon"</string>
 
     <!-- Fuzzy -->
     <string name="later">"Poste"</string>
@@ -121,8 +121,8 @@
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Io alia (lasu noton)"</string>
     <string name="about_title_privacy_statement">"Deklaracio pri privateco"</string>
     <string name="about_summary_privacy_statement">"kaj uzado de datumoj"</string>
-    <string name="quest_openingHours_public_holidays">"Publikaj festoj"</string>
-    <string name="quest_openingHours_public_holidays_short">"Regnofestoj"</string>
+    <string name="quest_openingHours_public_holidays">"Feriaj tagoj"</string>
+    <string name="quest_openingHours_public_holidays_short">"Feria tago"</string>
     <string name="quest_openingHours_open_end">"kiam lasta homo eliras"</string>
 
     <!-- Fuzzy -->
@@ -168,12 +168,8 @@ La aplikaĵo ne kunhavigas vian GPS lokon kun iu ajn. Ĝi estas uzata po aŭtoma
 &lt;p&gt;
 Kiel menciite, la aplikaĵo direkte komunikas kun infrastrukturo de OSM. &lt;br/&gt;
 Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; simpla tekstodosiero &lt;/a&gt; je mia servilo, ĉu ĝi estas forbarita je alŝuto de ajnaj ŝanĝoj. Tio estas antaŭzorga ago por bari versiojn de la aplikaĵo, en kiuj estas trovatataj kritikaj cimoj, de eble difekti OSM datumoj.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"Ŝaltita"</string>
     <string name="autosync_only_on_wifi">"Nur je Wi-Fi"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_off">"Malŝaltita"</string>
     <string name="quest_streetSurface_title">"Kia estas la supraĵo de tiu ĉi vojo?"</string>
     <string name="quest_surface_value_paved">"Pavimita (komuna)"</string>
@@ -193,12 +189,10 @@ Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href=\"
     <string name="quest_surface_value_pebblestone">"Ŝtonetoj"</string>
     <string name="quest_surface_value_sand">"Sablo"</string>
     <string name="quest_surface_value_sett">"Pavimaj ŝtonoj"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Ligno"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sidewalk_title">"Ĉu ĉi tiu vojo havas flankan paŝadvojo?"</string>
+    <string name="quest_sidewalk_title">"Ĉu ĉi tiu vojo havas flankan paŝadvojon?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kie estas ĉi tiu vojo?"</string>
@@ -218,12 +212,10 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Ĝi ne havas nomon…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Ĉu vere sen nomo?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Jes, nenia nomo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_add_times">"Aldoni malfermhonojn"</string>
+    <string name="quest_openingHours_add_times">"Aldoni malfermhorojn"</string>
 
     <!-- Fuzzy -->
     <string name="crash_message">"Ĉu vi bonvole povas sendi erarraporton al ties programisto?"</string>
@@ -233,7 +225,7 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <string name="crash_compose_email">"Verki retleteron"</string>
     <string name="no_email_client">"Vi ne havas instalitan retpoŝtilon."</string>
     <string name="pref_title_keep_screen_on">"Tenu la ekranon ŝaltita"</string>
-    <string name="download_server_error">"Eraro de konektado dum skano por taskoj. Reprovu poste."</string>
+    <string name="download_server_error">"Eraro de konektado dum skanado de taskoj. Reprovu poste."</string>
     <string name="upload_server_error">"Eraro de konektado dum alŝuto de respondoj. Reprovu poste."</string>
 
     <!-- Generic strings used in various quests -->
@@ -299,6 +291,8 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <string name="dialog_session_dont_show_again">"Ne demandu refoje dum la nuna seanco"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tiu limo de rapideco ŝajnas malkredinda"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ĉu vi certas, ke neniu limo estas signata?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Ĉu vi kontrolis en ambaŭ finoj de la strato?
+Se nenia indikilo kiu aplikiĝus por la ĉi-montrita parto aperas en la tuta strato, la defaŭlta rapidlimo aplikiĝas."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Jes, sen ŝildo"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Konstruaĵara areo"</string>
 
@@ -322,7 +316,7 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <string name="quest_wheelchairAccess_limited_description_business">"Parte signifas, ke estas ne pli ol unu ŝtupo por atingi la lokon kaj la plejmulto de ĉambroj ene estas atingeblaj por rulseĝoj."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Parte signifas, ke e estas pli ol unu ŝtupo en eniro."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"“Parte“ signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ĉu estas mallongigoj en la nomo %s?"</string>
 
     <!-- Fuzzy -->
@@ -471,6 +465,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="produce_sisal">"Sisalo"</string>
     <string name="quest_way_lit_automatic">"Ĝi uzadas movmalkovro"</string>
     <string name="quest_way_lit_24_7">"Ĝi estas lumi nokton kaj tagon"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Ne eblas serĉi tie. Provu zomi aŭ malfortigi la mapdeklinon."</string>
     <string name="quest_crossing_type_title">"Kia transirejo ĉi tio estas?"</string>
 
     <!-- Fuzzy -->
@@ -567,11 +562,12 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ankaŭ biciklovojo aliflanke…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Vi devas priskribi kio estas sur la signo. Se ne estas signo, vi devus peti la malfermajn horojn interne."</string>
+    <string name="quest_openingHours_emptyAnswer">"Vi devas priskribi kio estas sur la signo. Se ne estas signo, vi devus peti la malfermajn horojn ene."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Neniu, sed biciklantoj povas uzi vojon en ambaŭ direktoj"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Kial ĝi ne havas nomon?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Estas alira vojo aŭ parkumeja vojo"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ĝi estas agrikultura aŭ arbara vojo"</string>
     <string name="quest_streetName_answer_noName_noname">"Neniu el ĉi-supraj, ĝi simple ne havas nomon"</string>
     <string name="map_btn_create_note">"Krei novan noton"</string>
@@ -633,8 +629,11 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Arko (kiu subtenas biciklan kadron)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_parking_type_wheelbender">"Ringo (kiu nur tenas radion)"</string>
     <string name="quest_bicycle_parking_type_shed">"Ŝedo"</string>
-    <string name="quest_bicycle_parking_type_locker">"Ŝlosilo"</string>
+    <string name="quest_bicycle_parking_type_locker">"Ŝlosilita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Konstruaĵo"</string>
@@ -648,6 +647,9 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_construction_building_title">"Ĉu ĉi tiu konstruaĵo estas finita?"</string>
     <string name="questList_disabled_in_country">"Neniam montrita en %s"</string>
     <string name="quest_select_hint_most_specific">"Elektu la plej specifan, kiu taŭgas:"</string>
+
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
+    <string name="quest_generic_item_confirmation">"Ĉu vi certas ne povi identifigi ĝin pli precize?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (lasi noton)"</string>
@@ -791,6 +793,9 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Ĉu ĉi tiu konstruaĵo estas entute subtere?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_limited_description_outside">"“Parte“ signifas, ke nur unu ŝtupeto bezonas esti transirita."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ĉu ĉi tiu loko estas atingebla per rulseĝo?"</string>
     <string name="quest_traffic_signals_button_title">"Ĉu ĉi tiuj semaforoj havas butonon por peti marŝan signalon?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kiom da motorbicikloj pvas estas parkitaj ĉi tie?"</string>
@@ -865,13 +870,20 @@ Dividi ĝin nun?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Ĉi tiuj estas sufiĉe multaj disiĝoj. Vi ĉiam povas plu dividi la vojon poste."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_title">"Kia estas limo de pezecp ĉi tie?"</string>
+    <string name="quest_maxweight_title">"Kia estas la limo de pezo ĉi tie?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Tiu pezo ŝajnas malebla. Ĉu vi certas ke ĝi validas?"</string>
     <string name="quest_maxweight_answer_other_sign">"Ŝildo aspektas alie…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Ĉu vi ŝatus lasi rimarkon? Rimarkon kun foto helpos aliajn mapistojn solvi ĝin."</string>
     <string name="quest_handrail_title">"Ĉu ĉi tiu ŝtuparo havas manrelon?"</string>
     <string name="about_summary_current_version">"Nuna versio: %s"</string>
+    <string name="quest_postboxRef_title">"Kiu estas la referencnumero de ĉi tiu poŝtkesto?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ne referencan numeron videblan…"</string>
+    <string name="quest_street_side_puzzle_tutorial">"La vojo en la bildo estas samorientita kiel surmape en la pozicio de la marko."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_recycling_materials_title">"Kiajn recikleblaĵojn oni povas lasi tie?"</string>
     <string name="quest_recycling_type_batteries">"Baterioj"</string>
     <string name="quest_recycling_type_cans">"Ladskatoloj"</string>
     <string name="quest_recycling_type_clothes">"Ŝtofoj"</string>
@@ -895,8 +907,8 @@ Dividi ĝin nun?"</string>
     <string name="about_summary_rate">"je Google Play"</string>
     <string name="about_title_donate">"Donaci"</string>
     <string name="about_summary_donate">"Montru vian aprezon! ❤️"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Skani ĉi tie antstataŭe"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Kontinui nunan skanon"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Serĉi ĉi tie anstataŭe"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Daŭrigi nunan serĉadon"</string>
     <string name="quest_tourism_information_office">"Turisma informa oficejo"</string>
     <string name="quest_tourism_information_board">"Informtabulo"</string>
     <string name="quest_tourism_information_terminal">"Informoj stacio"</string>
@@ -1001,7 +1013,7 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="achievement_building_title">"Altaĵo"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_building_solved_X">"Vi solvis %d konstruaĵrilatajn taskojn.
+    <string name="achievement_building_solved_X">"Vi solvis %d taskojn pri konstruaĵoj.
 Rimarku, ke ĉi tiu aplikaĵo petas la domnumeron de konstruaĵo nur post kiam ĝia speco estas determinita."</string>
     <string name="achievement_blind_title">"Sesa Senco"</string>
     <string name="achievement_blind_solved_X">"Vi solvis %d taskojn, kiuj estas interesaj por vidhandikapitoj."</string>
@@ -1097,6 +1109,9 @@ aktiva"</string>
     <string name="quest_charging_station_operator_title">"Kiu estas la funkciigisto de ĉi tiu ŝargstacio?"</string>
 
     <!-- Fuzzy -->
+    <string name="achievement_rare_title">"Trezora ĉasado"</string>
+
+    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Vi trovis kaj solvis %d taskojn kiuj estas plenumitaj vere malofte, gratulon!"</string>
     <string name="achievement_citizen_title">"Civitano"</string>
 
@@ -1105,6 +1120,7 @@ aktiva"</string>
     <string name="achievement_outdoors_title">"Ekstere"</string>
     <string name="quest_pedestrian_crossing_island">"Ĉu ĉi tiu piedira transirejo havas insulon?"</string>
     <string name="quest_generic_answer_noSign">"Ne estas signo"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Ĉu la rulseĝa rampo estas afiŝita kiel aparta vojo surmape?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"aparta"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ne aparta"</string>
     <string name="pref_title_sync2">"Alŝutu respondojn aŭtomate"</string>
@@ -1117,6 +1133,9 @@ aktiva"</string>
     <string name="quest_buildingType_abandoned_description">"neuzata konstruaĵo kies origina funkcio aŭ celo estas nekonataj"</string>
     <string name="quest_buildingType_ruins">"Ruinoj"</string>
     <string name="quest_charging_station_capacity_title">"Kiom da aŭtoj povas esti akuzitaj ĉi tie samtempe?"</string>
+    <string name="quest_lanes_title">"Kiom da veturkoridoroj estas en tiu vojo?"</string>
+    <string name="quest_lanes_answer_lanes">"Markitaj koridoroj"</string>
+    <string name="quest_lanes_answer_noLanes">"Neniu markita koridoro"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ĉu ĉi tio estas ĝusta?"</string>
     <string name="quest_maxheight_below_bridge_title">"Kio estas la alteca limo sub la ponto?"</string>
     <string name="quest_maxheight_split_way_hint">"Se ĝi ne validas por la tuta vojo, konsideru respondi \"%s\"."</string>
@@ -1138,7 +1157,7 @@ aktiva"</string>
     <string name="quest_generic_answer_does_not_exist">"Ĝi ne ekzistas…"</string>
 
     <!-- Fuzzy -->
-    <string name="osm_element_gone_description">"Ĉu vi certas, ke ĝi ne ekzistas, eĉ ne en iomete alia loko? Kiam vi dubas, prefere lasu noton anstataŭe."</string>
+    <string name="osm_element_gone_description">"Ĉu vi certas, ke ĝi ne ekzistas, eĉ ne en iomete alia loko? Se vi dubas, prefere lasu noton anstataŭe."</string>
     <string name="osm_element_gone_confirmation">"Ĝi ne ekzistas"</string>
     <string name="leave_note">"Lasu noton"</string>
     <string name="quest_shop_gone_title">"Kio estas ĉi tie nun?"</string>
@@ -1149,6 +1168,7 @@ aktiva"</string>
     <string name="quest_shop_gone_replaced_answer">"Ĝi estas…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Tajpu specon de loko ĉi tie"</string>
     <string name="quest_shop_vacant_type_title">"Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Ne estas samkvante da koridoroj ambaŭflanke"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Tute neniu biciklovojo"</string>
@@ -1158,9 +1178,10 @@ aktiva"</string>
     <string name="quest_construction_completed_at_known_date">"Finiĝos ĉe dato…"</string>
     <string name="quest_construction_completion_date_title">"Kiam ĝi estos kompleta?"</string>
     <string name="quest_surface_value_clay">"Argilo"</string>
+    <string name="quest_surface_value_artificial_turf">"Artefarita herbo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_parking_fee_title">"Ĉu vi devas pagi por parki biciklon ĉi tie?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Ĉu oni devas pagi por parki biciklon ĉi tie?"</string>
     <string name="quest_buildingType_house_description2">"nesendependa unufamilia hejmo, ekz. unua vica domo"</string>
     <string name="quest_drinking_water_potable_signed">"Sekure trinkebla (signita)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Sekure trinkebla (ne signita)"</string>
@@ -1213,7 +1234,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_type_height_restrictor">"Alteca barilo"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Bicikla baro"</string>
     <string name="quest_policeType_title">"Kiu speco de policejo estas ĉi tio?"</string>
-    <string name="quest_stile_type_title">"Kia stilo estas ĉi tio?"</string>
+    <string name="quest_stile_type_title">"Kia bestobarilo estas ĉi tio?"</string>
     <string name="pref_title_quests2">"Taskelekto kaj vidiga ordo"</string>
     <string name="pref_subtitle_quests">"%1$d el %2$d ebligita"</string>
     <string name="no_location_permission_warning_title">"Loka Permeso"</string>
@@ -1454,13 +1475,13 @@ sorted alphabetically by title -->
     <string name="quest_generalFee_title2">"Ĉu vi devas pagi por eniri ĉi tien?"</string>
     <string name="quest_internet_access_title">"Kian interretan konekton proponas ĉi tiu loko?"</string>
     <string name="quest_level_title2">"Sur kiu nivela numero troviĝas ĉi tiu loko?"</string>
-    <string name="quest_lit_title">"Ĉu ĝi estas lumigita ĉi tie?"</string>
+    <string name="quest_lit_title">"Ĉu estas lumigita ĉi tie?"</string>
     <string name="quest_openingHours_title">"Kio estas la malfermaj horoj ĉi tie?"</string>
     <string name="quest_openingHours_signed_title">"Ĉu la malfermaj horoj ĉi tie estas subskribitaj?"</string>
     <string name="quest_openingHours_resurvey_title">"Ĉu ĉi tiuj malfermaj horoj ankoraŭ ĝustas?"</string>
     <string name="quest_placeName_title">"Kiel nomiĝas ĉi tiu loko?"</string>
-    <string name="quest_shop_type_title2">"Kia butiko estas ĉi tio?"</string>
-    <string name="quest_smoking_title2">"Ĉu fumado estas permesata ĉi tie?"</string>
+    <string name="quest_shop_type_title2">"Kia butiko estas ĉi tiu?"</string>
+    <string name="quest_smoking_title2">"Ĉu oni rajtas fumi ĉi tie?"</string>
     <string name="quest_smoothness_title">"Kio estas la surfackvalito ĉi tie?"</string>
     <string name="quest_summit_register_title2">"Ĉu estas pintkunvena registro ĉi tie?"</string>
     <string name="quest_surface_title">"Kio estas la surfaco ĉi tie?"</string>
@@ -1482,7 +1503,7 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_unavailable">"Nek debitaj nek kreditaj kartoj"</string>
     <string name="quest_barrier_type_gate_any_size">"Pordego, ia grandeco"</string>
     <string name="quest_air_pump_compressor_title">"Ĉu estas aera kompresoro disponebla ĉi tie?"</string>
-    <string name="quest_step_count_stile_hint">"Nur la nombro de paŝoj por atingi la supron. Se la paŝa kalkulo diferencas ambaŭflanke, donu la pli altan nombron."</string>
+    <string name="quest_step_count_stile_hint">"Nur la nombro de ŝtupoj por atingi la supron. Se ne estas samkvante da ŝtupoj ambaŭflanke, indiku la plej altan nombron."</string>
     <string name="quest_cycleway_value_none_and_oneway">"neniu, neniu biciklado permesita en ĉi tiu direkto"</string>
     <string name="map_btn_create_track">"Kreu novan trakan registradon"</string>
 
@@ -1517,4 +1538,6 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_emergency_exit">"Nur kriza eliro"</string>
     <string name="quest_building_entrance_shop">"Butikvesta enirejo"</string>
     <string name="quest_building_entrance_yes">"Alia enira tipo"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Ĉu estas publike alirebla bicikla pumpilo tie (almenaŭ dum ĝi malfermas)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Ĉu estas bicikla pumpilo kiu funkcias tie?"</string>
 </resources>

@@ -311,8 +311,10 @@
                     "label": "Szolgáltatások",
                     "options": {
                         "cosmetics": "Kozmetika",
-                        "nails": "Körömápolás",
-                        "tanning": "Szolárium"
+                        "nails": "Manikűr / pedikűr",
+                        "skin_care": "Bőrápolás",
+                        "tanning": "Szolárium",
+                        "waxing": "Gyantázás"
                     }
                 },
                 "bench": {
@@ -1013,6 +1015,14 @@
                     "label": "Átmérő (mm vagy betű)",
                     "terms": "keresztmetszet"
                 },
+                "fire_hydrant/position": {
+                    "label": "Pozíció",
+                    "options": {
+                        "green": "Föld / zöld terület",
+                        "parking_lot": "Parkoló",
+                        "sidewalk": "Járda"
+                    }
+                },
                 "fire_hydrant/pressure": {
                     "label": "Nyomás (bar)",
                     "terms": "hálózati"
@@ -1544,8 +1554,8 @@
                 "mtb/scale/imba": {
                     "label": "IMBA útvonal nehézség",
                     "options": {
-                        "0": "Legyegyszerűbb (fehér kör)",
-                        "1": "Egyszerű (zöld kör)",
+                        "0": "Legegyszerűbb (fehér kör)",
+                        "1": "Könnyű (zöld kör)",
                         "2": "Közepes (kék négyzet)",
                         "3": "Nehéz (fekete gyémánt)",
                         "4": "Extrém nehéz (dupla fekete gyémánt)"
@@ -2251,9 +2261,6 @@
                         "parking_aisle": "Parkolón belüli út"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Szolgáltatások"
-                },
                 "service/vehicle": {
                     "label": "Szolgáltatások"
                 },
@@ -2634,6 +2641,12 @@
                 "traffic_signals": {
                     "label": "Típus"
                 },
+                "traffic_signals/arrow": {
+                    "label": "Tapintható nyíl"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Visszaszámláló"
+                },
                 "traffic_signals/direction": {
                     "label": "Jelzőlámpa iránya",
                     "options": {
@@ -2641,6 +2654,15 @@
                         "both": "Mindkettő / Összes",
                         "forward": "Előre"
                     }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Vakvezető burkolatú térkép"
+                },
+                "traffic_signals/sound": {
+                    "label": "Hangjelzés"
+                },
+                "traffic_signals/vibration": {
+                    "label": "Rezgés"
                 },
                 "trail_visibility": {
                     "label": "Ösvény láthatósága",
@@ -3776,6 +3798,9 @@
                     "name": "Jegyellenőrző",
                     "aliases": "Belépőkapu"
                 },
+                "amenity/toilets": {
+                    "name": "Mosdó, vécé"
+                },
                 "amenity/toilets/disposal/flush": {
                     "name": "WC (öblítéses)",
                     "terms": "vízöblítéses vécé"
@@ -4581,6 +4606,9 @@
                     "name": "Mentőállomás",
                     "terms": "mentőautó állomás"
                 },
+                "emergency/assembly_point": {
+                    "name": "Vészhelyzeti gyülekezőhely"
+                },
                 "emergency/defibrillator": {
                     "name": "Defibrillátor",
                     "terms": "újraélesztés"
@@ -4642,6 +4670,9 @@
                 },
                 "emergency/siren": {
                     "name": "Sziréna"
+                },
+                "emergency/water_reservoir_covered": {
+                    "name": "Vészhelyzeti víztartály (föld alatti)"
                 },
                 "emergency/water_tank": {
                     "name": "Tűzivíztartály",
@@ -4796,6 +4827,9 @@
                 },
                 "highway/bus_stop": {
                     "name": "Buszmegálló"
+                },
+                "highway/construction": {
+                    "name": "Útépítés"
                 },
                 "highway/corridor": {
                     "name": "Beltéri folyosó",
@@ -5465,10 +5499,6 @@
                 "leisure/hackerspace": {
                     "name": "Hackerspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Lovasiskola",
-                    "terms": "lovaglás"
-                },
                 "leisure/ice_rink": {
                     "name": "Jégpálya",
                     "terms": "műjégpálya"
@@ -5539,10 +5569,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Krikettpálya"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Lovaspálya",
-                    "terms": "lovarda,lovasiskola"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Gyeplabdapálya"
@@ -5656,10 +5682,6 @@
                 "leisure/track/cycling": {
                     "name": "Kerékpár-versenypálya",
                     "terms": "velodrom"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Lóversenypálya",
-                    "terms": "lovi,ügető"
                 },
                 "leisure/track/running": {
                     "name": "Futópálya"
@@ -7787,9 +7809,6 @@
                 "type/route/hiking": {
                     "name": "Turistaút",
                     "terms": "túraút,gyalogtúra"
-                },
-                "type/route/horse": {
-                    "name": "Lovastúra-útvonal"
                 },
                 "type/route/light_rail": {
                     "name": "HÉV-vonal"

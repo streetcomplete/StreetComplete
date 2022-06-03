@@ -2204,6 +2204,7 @@ sorted alphabetically by title -->
     <string name="quest_existence_title2">"Onko tämä vielä tässä?"</string>
     <string name="quest_generalFee_title2">"Onko tänne pääsymaksu?"</string>
     <string name="quest_internet_access_title">"Millainen internet-yhteys täällä on?"</string>
+    <string name="quest_level_title2">"Missä kerroksessa tämä paikka on?"</string>
     <string name="quest_lit_title">"Onko täällä valaistusta?"</string>
     <string name="quest_openingHours_title">"Mitkä ovat tämän aukioloajat?"</string>
     <string name="quest_openingHours_signed_title">"Ovatko aukioloajat näkyvillä?"</string>
@@ -2231,4 +2232,23 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_dedit_only">"Vain debit-kortit"</string>
     <string name="quest_accepts_cards_unavailable">"Ei debit eikä credit kortit"</string>
     <string name="quest_air_pump_compressor_title">"Onko täällä ilmakompressoria?"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Kuinka monta vuokrapyöräpaikkaa täällä on?"</string>
+    <string name="quest_bicycle_rental_type_title">"Minkä tyyppinen pyörävuokraamo tämä on?"</string>
+    <string name="quest_bicycle_rental_type_human">"Vuokraamo jossa henkilökuntaa"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Pyörämyymälä joka myös vuokraa pyöriä"</string>
+    <string name="quest_bicycle_shop_repair_title">"Korjataanko täällä polkupyöriä?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Myydäänkö täällä käytettyjä pyöriä?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Ei, ainoastaan uusia"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Kyllä, uusien ohella"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Kyllä, ainoastaan"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Pyöriä ei myydä lainkaan"</string>
+    <string name="quest_building_entrance_title">"Millainen sisäänkäynti tämä on?"</string>
+    <string name="quest_building_entrance_main">"Pääsisäänäynti julkiseen rakennukseen"</string>
+    <string name="quest_building_entrance_service">"Takaovi huoltoa varten"</string>
+    <string name="quest_building_entrance_exit">"Vain uloskäynti"</string>
+    <string name="quest_building_entrance_emergency_exit">"Vain hätäuloskäynti"</string>
+    <string name="quest_building_entrance_yes">"Muu sisäänkäynti"</string>
+    <string name="quest_building_entrance_dead_end">"Umpikuja, ei sisäänkäyntiä"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Onko täällä julkista pyöränpumppua (ainakin kun liike avoinna)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Onko täällä toimivaa pyöränpumppua?"</string>
 </resources>

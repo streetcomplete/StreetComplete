@@ -874,13 +874,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA maršruto sudėtingumas",
-                    "options": {
-                        "0": "Lengviausias (baltas apskritimas)",
-                        "1": "Lengvas (žalias apskritimas)",
-                        "2": "Vidutinis (mėlynas apskritimas)",
-                        "3": "Sunkus (juodas rombas)",
-                        "4": "Ypač sunkus (dvigubas juodas rombas)"
-                    },
                     "placeholder": "Lengvas, vidutinis, sunkus..."
                 },
                 "mtb/scale/uphill": {
@@ -1269,9 +1262,6 @@
                 },
                 "service": {
                     "label": "Tipas"
-                },
-                "service/bicycle": {
-                    "label": "Paslaugos"
                 },
                 "service/vehicle": {
                     "label": "Paslaugos"

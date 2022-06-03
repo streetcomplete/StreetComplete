@@ -2252,7 +2252,7 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Services"
+                    "label": "Bicycle Services"
                 },
                 "service/vehicle": {
                     "label": "Services"
@@ -7186,7 +7186,8 @@
                 },
                 "shop/bicycle": {
                     "name": "Bicycle Shop",
-                    "terms": "bike,repair,tricycle,unicycle"
+                    "aliases": "Bike Shop",
+                    "terms": "bicycle store,bike,bike store,repair,tricycle,unicycle"
                 },
                 "shop/boat": {
                     "name": "Boat Store",

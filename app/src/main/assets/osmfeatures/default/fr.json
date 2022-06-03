@@ -312,7 +312,7 @@
                     "label": "Services",
                     "options": {
                         "cosmetics": "Parfumerie",
-                        "nails": "Manucure",
+                        "nails": "Manucure / Pédicure",
                         "tanning": "Salon de bronzage"
                     }
                 },
@@ -512,6 +512,9 @@
                 "check_date": {
                     "label": "Dernière date de vérification",
                     "placeholder": "AAAA-MM-JJ"
+                },
+                "circumference": {
+                    "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
                     "label": "Vêtements"
@@ -806,6 +809,9 @@
                     "label": "Diamètre",
                     "placeholder": "5 mm, 10 cm, 15 in…"
                 },
+                "diameter_crown": {
+                    "placeholder": "4 m, 9', …"
+                },
                 "diet_multi": {
                     "label": "Types de régimes",
                     "options": {
@@ -1014,6 +1020,12 @@
                     "label": "Diamètre (mm, pouces, ou lettres)",
                     "terms": "diamètre"
                 },
+                "fire_hydrant/position": {
+                    "options": {
+                        "parking_lot": "Parking",
+                        "sidewalk": "Trottoir"
+                    }
+                },
                 "fire_hydrant/pressure": {
                     "label": "Pression (bar)",
                     "terms": "pression"
@@ -1049,6 +1061,20 @@
                 },
                 "flag/wikidata": {
                     "label": "Wikidata"
+                },
+                "flashing_lights": {
+                    "label": "Feux clignotants",
+                    "options": {
+                        "always": {
+                            "description": "Les feux clignotent en permanence",
+                            "title": "Clignote en permanence"
+                        },
+                        "button": {
+                            "description": "Feux activés en appuyant sur un bouton"
+                        },
+                        "no": "Non",
+                        "yes": "Oui"
+                    }
                 },
                 "floating": {
                     "label": "Flottant"
@@ -1112,6 +1138,10 @@
                 },
                 "generator/type": {
                     "label": "Type"
+                },
+                "genus": {
+                    "label": "Genre",
+                    "placeholder": "Acer, Platanus, Quercus …"
                 },
                 "geyser/height": {
                     "label": "Hauteur de l'éruption"
@@ -1552,13 +1582,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Difficulté sur échelle IMBA ",
-                    "options": {
-                        "0": "Simplissime (ronds blancs)",
-                        "1": "Facile (ronds verts)",
-                        "2": "Intermédiaire (carrés bleus)",
-                        "3": "Difficile (losanges noirs)",
-                        "4": "Extrêmement difficile (doubles losanges noirs)"
-                    },
                     "placeholder": "Facile, Intermédiaire, Difficile...",
                     "terms": "imba"
                 },
@@ -2266,9 +2289,6 @@
                         "parking_aisle": "Allée de parking"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Services"
-                },
                 "service/vehicle": {
                     "label": "Services"
                 },
@@ -2364,6 +2384,10 @@
                         "survey": "Vérifié sur le terrain"
                     },
                     "terms": "sources,références"
+                },
+                "species": {
+                    "label": "Espèces",
+                    "placeholder": "Acer, Platanus, Quercus …"
                 },
                 "species/wikidata": {
                     "label": "Wikidata de l'espèce",
@@ -2567,6 +2591,10 @@
                 "target": {
                     "label": "Cible"
                 },
+                "taxon": {
+                    "label": "Taxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …"
+                },
                 "telecom": {
                     "label": "Type"
                 },
@@ -2658,6 +2686,15 @@
                         "backward": "Vers l'arrière",
                         "both": "Les deux / Tous",
                         "forward": "Vers l'avant"
+                    }
+                },
+                "traffic_signals/minimap": {
+                    "label": "Plan tactile"
+                },
+                "traffic_signals/sound": {
+                    "options": {
+                        "no": "Non",
+                        "yes": "Oui"
                     }
                 },
                 "trail_visibility": {
@@ -5675,10 +5712,6 @@
                     "name": "Tiers-lieu",
                     "terms": "hackerspace,tiers lieu"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centre équestre",
-                    "terms": "centre équestre,écurie,équitation."
-                },
                 "leisure/ice_rink": {
                     "name": "Patinoire",
                     "terms": "patinoire"
@@ -5762,10 +5795,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Terrain de cricket",
                     "terms": "terrain de cricket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Terrain d'équitation",
-                    "terms": "terrain d'équitation"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Terrain de hockey sur gazon"
@@ -5897,10 +5926,6 @@
                 "leisure/track/cycling": {
                     "name": "Piste de cyclisme",
                     "terms": "piste de cyclisme,cyclisme,piste,course,vélodrome"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Piste de courses hippiques",
-                    "terms": "piste de course,course hippique,hippique,cheval,chevaux,équestre,pari sportif"
                 },
                 "leisure/track/running": {
                     "name": "Piste de course à pied",
@@ -8289,10 +8314,6 @@
                 "type/route/hiking": {
                     "name": "Itinéraire de randonnée",
                     "terms": "sentier pédestre"
-                },
-                "type/route/horse": {
-                    "name": "Itinéraire équestre",
-                    "terms": "parcours équestre,chemin équestre,piste équestre"
                 },
                 "type/route/light_rail": {
                     "name": "Itinéraire de métro léger",

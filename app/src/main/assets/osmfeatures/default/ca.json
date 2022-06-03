@@ -292,7 +292,6 @@
                     "label": "Serveis",
                     "options": {
                         "cosmetics": "Cosmètica",
-                        "nails": "Ungles",
                         "tanning": "Saló de bronzejat"
                     }
                 },
@@ -1280,13 +1279,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultat del camí segons IMBA",
-                    "options": {
-                        "0": "La més fàcil (cercle blanc)",
-                        "1": "Fàcil (cercle verd)",
-                        "2": "Mitjana (quadrat blau)",
-                        "3": "Difícil (diamant negre)",
-                        "4": "Extremadament difícil (diamant negre doble)"
-                    },
                     "placeholder": "Fàcil, Mitjana, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -1846,9 +1838,6 @@
                         "emergency_access": "Accés per a emergències",
                         "parking_aisle": "Carrer d'aparcament"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Serveis"
                 },
                 "service/vehicle": {
                     "label": "Serveis"
@@ -3962,9 +3951,6 @@
                     "name": "Camp de golf",
                     "terms": "camp de golf"
                 },
-                "leisure/horse_riding": {
-                    "name": "Hípica"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de gel"
                 },
@@ -4066,9 +4052,6 @@
                 "leisure/swimming_pool": {
                     "name": "Piscina",
                     "terms": "piscina"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de curses de cavalls"
                 },
                 "leisure/water_park": {
                     "name": "Parc Aquàtic"
@@ -5467,10 +5450,6 @@
                 "type/route/hiking": {
                     "name": "Ruta senderista",
                     "aliases": "Ruta excursionista"
-                },
-                "type/route/horse": {
-                    "name": "Ruta eqüestre",
-                    "terms": "camí de ferradura,cavall,cavalls,hípica"
                 },
                 "type/route/light_rail": {
                     "name": "Ruta de tren lleuger"

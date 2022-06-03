@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 353833
-  linesOfInterfaceMarkupChanged: 132994
+  linesOfCodeChanged: 353865
+  linesOfInterfaceMarkupChanged: 133002
   assetFilesChanged: 1685
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16428
+  linesOfCodeChanged: 16433
   linesOfInterfaceMarkupChanged: 1866
   assetFilesChanged: 150
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 12678
+  linesOfCodeChanged: 12684
   linesOfInterfaceMarkupChanged: 2759
   assetFilesChanged: 462
 - name: "ENT8R"
@@ -21,9 +21,9 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
-- name: "Helium314"
+- name: "Helium"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 3248
+  linesOfCodeChanged: 3275
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "arrival-spring"
@@ -57,7 +57,7 @@
   linesOfInterfaceMarkupChanged: 62
 - name: "David Dean"
   githubUsername: "dbdean"
-  linesOfCodeChanged: 950
+  linesOfCodeChanged: 952
   linesOfInterfaceMarkupChanged: 117
 - name: "Mark Tully"
   githubUsername: "Teester"

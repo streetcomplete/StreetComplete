@@ -308,7 +308,6 @@
                     "label": "Υπηρεσίες",
                     "options": {
                         "cosmetics": "Καλλυντικά",
-                        "nails": "Νύχια",
                         "tanning": "Μαύρισμα"
                     }
                 },
@@ -1511,13 +1510,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Επίπεδα Δυσκολίας μονοπατιών του IMBA",
-                    "options": {
-                        "0": "Πανεύκολο (λευκός κύκλος)",
-                        "1": "Εύκολο (πράσινος κύκλος)",
-                        "2": "Μέτριο (μπλε τετράγωνο)",
-                        "3": "Δύσκολο (μαύρος ρόμβος)",
-                        "4": "Εξαιρετικά Δύσκολο (διπλός μαύρος ρόμβος)"
-                    },
                     "placeholder": "Εύκολο, Μέτριο, Δύσκολο..."
                 },
                 "mtb/scale/uphill": {
@@ -2199,9 +2191,6 @@
                         "emergency_access": "Εκτάκτου Ανάγκης",
                         "parking_aisle": "Νησίδα Πάρκινκ"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Υπηρεσίες"
                 },
                 "service/vehicle": {
                     "label": "Υπηρεσίες"
@@ -5045,9 +5034,6 @@
                 "leisure/hackerspace": {
                     "name": "Χώρος Συζήτησης Εργασιών"
                 },
-                "leisure/horse_riding": {
-                    "name": "Χώροι Ιπποστασίου"
-                },
                 "leisure/ice_rink": {
                     "name": "Παγοδρόμιο"
                 },
@@ -5117,9 +5103,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Γήπεδο Cricket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Αίθουσα Ιππασίας"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Γήπεδο Χόκεϋ"
@@ -5231,9 +5214,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Ποδηλατική Πίστα"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Πίστα Ιπποδρομιών"
                 },
                 "leisure/track/running": {
                     "name": "Στίβος"
@@ -7103,9 +7083,6 @@
                 },
                 "type/route/hiking": {
                     "name": "Διαδρομή Ορεινής Ανάβασης"
-                },
-                "type/route/horse": {
-                    "name": "Διαδρομή Ιππασίας"
                 },
                 "type/route/light_rail": {
                     "name": "Διαδρομή Ελαφρού Σιδηρόδρομου"
