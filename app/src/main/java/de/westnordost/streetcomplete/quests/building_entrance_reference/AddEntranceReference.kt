@@ -27,7 +27,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
     override val changesetComment = "Add entrance identification"
     override val wikiLink = "Key:ref"
-    override val icon = R.drawable.ic_quest_power // TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    override val icon = R.drawable.ic_quest_door_address
     override val questTypeAchievements = listOf(CITIZEN, BLIND)
     override val enabledInCountries = NoCountriesExcept("BG", "PL", "RU", "UA", "BY", "EE")
     override fun getTitle(tags: Map<String, String>) = R.string.quest_entrance_reference
