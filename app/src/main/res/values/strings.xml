@@ -194,6 +194,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="restart_required">Restart required</string>
     <string name="restart_required_message">Some change requires restarting the app. This does not work automatically on some Android versions, so you may need to start the app again manually</string>
     <string name="fork_about_title_repository">"Expert edition project Home"</string>
+    <string name="quest_not_found">"Cannot create note, quest not found or hidden"</string>
 
     <!-- Store description -->
 

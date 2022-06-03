@@ -541,7 +541,8 @@ class MainFragment :
                 else if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
-            }
+            } else
+                context?.toast(R.string.quest_not_found)
         }
     }
 
