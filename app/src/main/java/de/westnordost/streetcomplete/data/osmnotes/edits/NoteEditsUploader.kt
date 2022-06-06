@@ -126,7 +126,7 @@ class NoteEditsUploader(
     ): String {
         if (trackpoints.isEmpty()) return ""
         val track = tracksApi.create(trackpoints, noteText)
-        val encodedUsername = URLEncoder.encode(track.userName, "utf-8")
+        val encodedUsername = URLEncoder.encode(track.userName, "utf-8").replace("+", "%20")
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/${track.id}\n"
     }
 
