@@ -18,6 +18,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import java.net.URLEncoder
 
 class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
@@ -125,7 +126,8 @@ class NoteEditsUploader(
     ): String {
         if (trackpoints.isEmpty()) return ""
         val track = tracksApi.create(trackpoints, noteText)
-        return "\n\nGPS Trace: \nhttps://www.openstreetmap.org/user/${track.userName}/traces/${track.id}"
+        val encodedUsername = URLEncoder.encode(track.userName, "utf-8")
+        return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/${track.id}\n"
     }
 
     companion object {
