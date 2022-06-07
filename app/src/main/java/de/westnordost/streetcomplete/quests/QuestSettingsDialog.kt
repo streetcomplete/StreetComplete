@@ -45,7 +45,7 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
         button?.isEnabled = numberInput.text.toString().let { it.toIntOrNull() != null }
     }
     numberInput.setPaddingRelative(30,10,30,10)
-    numberInput.setText(defaultValue.toString())
+    numberInput.setText(prefs.getInt(pref, defaultValue).toString())
     dialog = AlertDialog.Builder(context)
         .setMessage(messageId)
         .setView(numberInput)
