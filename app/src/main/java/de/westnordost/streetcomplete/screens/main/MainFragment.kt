@@ -47,6 +47,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestController
@@ -505,7 +506,7 @@ class MainFragment :
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
-    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point) {
+    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean) {
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
         if (!mapFragment.isMapInitialized) return
@@ -522,7 +523,11 @@ class MainFragment :
         closeBottomSheet()
 
         viewLifecycleScope.launch {
-            questController.createNote(note, imagePaths, position, mapFragment.recordedTracks)
+            var recordedTracks: List<Trackpoint> = emptyList()
+            if (hasGpxAttached) {
+                recordedTracks = mapFragment.recordedTracks
+            }
+            questController.createNote(note, imagePaths, position, recordedTracks)
         }
 
         listener?.onCreatedNote(screenPosition)
@@ -638,7 +643,7 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
-        composeNote(pos)
+        composeNote(pos, true)
     }
 
     private fun onClickCompassButton() {
@@ -734,14 +739,14 @@ class MainFragment :
         else composeNote(pos)
     }
 
-    private fun composeNote(pos: LatLon) {
+    private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
         val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
         mapFragment.updateCameraPosition { position = offsetPos }
 
         freezeMap()
-        showInBottomSheet(CreateNoteFragment.create(mapFragment.recordedTracks.isNotEmpty()))
+        showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
     }
 
     private fun onClickCreateTrack() {
