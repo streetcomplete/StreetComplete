@@ -73,7 +73,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
 
     private fun getSelectedFeature(): Feature? {
         val input = binding.presetsEditText.text.toString()
-        return getFeatures(input).firstOrNull { it.canonicalName == StringUtils.canonicalize(input) }
+        return getFeatures(input).firstOrNull { it.canonicalNames.first() == StringUtils.canonicalize(input) }
     }
 
     private fun getFeatures(startsWith: String): List<Feature> {
