@@ -47,7 +47,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
         val hikingPathsAndRoutes = mapData.ways.filter { hikingPathsFilter.matches(it) }
             .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry } +
-            mapData.relations.filter {  it.tags["route"] == "hiking" }
+            mapData.relations.filter { it.tags["route"] == "hiking" }
                 .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
 
         // yes, this is very inefficient, however, peaks are very rare
