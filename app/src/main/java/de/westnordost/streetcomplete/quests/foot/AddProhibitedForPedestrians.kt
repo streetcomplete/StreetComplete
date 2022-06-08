@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
-
     override val elementFilter = """
         ways with (
           sidewalk:both ~ none|no
@@ -57,7 +56,17 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> tags["foot"] = "no"
             NO -> tags["foot"] = "yes"
-            HAS_SEPARATE_SIDEWALK -> tags["sidewalk"] = "separate"
+            HAS_SEPARATE_SIDEWALK -> {
+                tags["sidewalk"] = "separate"
+                // wrong tagging may exist, it should be removed to prevent quest from reappearing
+                // technically it may remove sidewalk:both=separate and replace it with less accurate
+                // sidewalk=separate but it will happen only with contradicting wrong data such as
+                // sidewalk:left=no or sidewalk:right=none or sidewalk=no
+                // And in such case all sidewalk tagging is suspect anyway
+                tags.remove("sidewalk:both")
+                tags.remove("sidewalk:left")
+                tags.remove("sidewalk:right")
+            }
             IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }

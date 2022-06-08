@@ -634,7 +634,7 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
-        composeNote(pos)
+        composeNote(pos, true)
     }
 
     private fun onClickCompassButton() {
@@ -730,9 +730,9 @@ class MainFragment :
         else composeNote(pos)
     }
 
-    private fun composeNote(pos: LatLon) {
+    private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(CreateNoteFragment.create(mapFragment.recordedTracks.isNotEmpty()))
+        showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)

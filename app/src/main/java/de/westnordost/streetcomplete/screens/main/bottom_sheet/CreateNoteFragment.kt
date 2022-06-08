@@ -70,7 +70,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         super.onCreate(savedInstanceState)
         hasGpxAttached = arguments?.getBoolean(ARG_HAS_GPX_ATTACHED) ?: false
 
-        childFragmentManagerOrNull?.addFragmentOnAttachListener { fragmentManager, fragment ->
+        childFragmentManagerOrNull?.addFragmentOnAttachListener { _, fragment ->
             if (fragment is AttachPhotoFragment) {
                 fragment.hasGpxAttached = hasGpxAttached
             }

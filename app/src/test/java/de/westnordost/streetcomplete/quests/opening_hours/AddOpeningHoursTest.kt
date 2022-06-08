@@ -50,7 +50,8 @@ class AddOpeningHoursTest {
     @Test fun `apply no opening hours sign answer`() {
         questType.verifyAnswer(
             NoOpeningHoursSign,
-            StringMapEntryAdd("opening_hours:signed", "no")
+            StringMapEntryAdd("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -58,7 +59,8 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "oh"),
             NoOpeningHoursSign,
-            StringMapEntryAdd("opening_hours:signed", "no")
+            StringMapEntryAdd("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
 
