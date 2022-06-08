@@ -1021,7 +1021,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_memorialType_bust">Bust</string>
     <string name="quest_memorialType_plaque">Plaque</string>
     <string name="quest_memorialType_war_memorial">War memorial</string>
-    <string name="quest_memorialType_stolperstein">Stolperstein</string>
     <string name="quest_memorialType_stone">Stone</string>
 
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
