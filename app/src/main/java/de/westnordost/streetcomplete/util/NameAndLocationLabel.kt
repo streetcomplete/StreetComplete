@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.util
 
 import android.content.res.Resources
 import android.text.Html

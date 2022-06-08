@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope

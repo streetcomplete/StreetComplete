@@ -5,7 +5,7 @@ import android.content.res.Resources
 import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.quests.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Locale
