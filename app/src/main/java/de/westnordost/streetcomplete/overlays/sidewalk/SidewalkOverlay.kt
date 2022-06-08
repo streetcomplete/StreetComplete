@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
-import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -8,11 +7,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Tags
 
-class SidewalkOverlay : Overlay {
+class SidewalkOverlay : Overlay<Unit> {
 
     override val title = R.string.overlay_sidewalk
     override val icon = R.drawable.ic_quest_sidewalk
@@ -46,7 +47,11 @@ class SidewalkOverlay : Overlay {
         )
     }
 
-    override fun createForm(element: Element): Fragment? {
+    override fun applyAnswerTo(answer: Unit, tags: Tags, timestampEdited: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun createForm(element: Element): AbstractOverlayForm<Unit>? {
         TODO("Not yet implemented")
     }
 }

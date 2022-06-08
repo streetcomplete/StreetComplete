@@ -18,7 +18,6 @@ data class PolygonStyle(
     val color: String,
     /** label to show in the center of the area */
     val label: String?,
-    // TODO LAYERS (maybe enable the possibility to add icons later)
 ) : Style
 
 data class PointStyle(

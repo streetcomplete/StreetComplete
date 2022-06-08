@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
-import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -8,11 +7,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Tags
 
-class WayLitOverlay : Overlay {
+class WayLitOverlay : Overlay<Unit> {
 
     override val title = R.string.overlay_lit
     override val icon = R.drawable.ic_quest_lantern
@@ -25,7 +26,11 @@ class WayLitOverlay : Overlay {
             .filter("ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
             .map { it to PolylineStyle(createLitStatus(it).color) }
 
-    override fun createForm(element: Element): Fragment? {
+    override fun applyAnswerTo(answer: Unit, tags: Tags, timestampEdited: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun createForm(element: Element): AbstractOverlayForm<Unit>? {
         TODO("Not yet implemented")
     }
 }

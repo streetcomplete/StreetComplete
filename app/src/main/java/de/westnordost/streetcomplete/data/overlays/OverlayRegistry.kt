@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.overlays.Overlay
  *
  * Could theoretically be done with Reflection, but that doesn't really work on Android
  */
-class OverlayRegistry(private val overlays: List<Overlay>) : List<Overlay> by overlays {
+class OverlayRegistry(private val overlays: List<Overlay<*>>) : List<Overlay<*>> by overlays {
 
-    private val typeMap: Map<String, Overlay>
+    private val typeMap: Map<String, Overlay<*>>
 
     init {
-        val map = mutableMapOf<String, Overlay>()
+        val map = mutableMapOf<String, Overlay<*>>()
         for (overlay in this) {
             val overlayName = overlay.name
             require(!map.containsKey(overlayName)) {
@@ -22,5 +22,5 @@ class OverlayRegistry(private val overlays: List<Overlay>) : List<Overlay> by ov
         typeMap = map
     }
 
-    fun getByName(typeName: String): Overlay? = typeMap[typeName]
+    fun getByName(typeName: String): Overlay<*>? = typeMap[typeName]
 }

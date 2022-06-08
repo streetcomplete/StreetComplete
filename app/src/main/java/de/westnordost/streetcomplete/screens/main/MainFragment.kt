@@ -65,7 +65,9 @@ import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
@@ -141,6 +143,7 @@ class MainFragment :
     LocationAwareMapFragment.Listener,
     MainMapFragment.Listener,
     AbstractOsmQuestForm.Listener,
+    AbstractOverlayForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
     LeaveNoteInsteadFragment.Listener,
@@ -415,7 +418,7 @@ class MainFragment :
 
     //region Bottom Sheet - Callbacks from the bottom sheet (quest forms, split way form, create note form, ...)
 
-    /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
+    /* --------------------------------- AbstractQuestForm.Listener ----------------------------- */
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
@@ -439,6 +442,13 @@ class MainFragment :
     }
 
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
+        closeBottomSheet()
+    }
+
+    /* ----------------------------- AbstractOverlayForm.Listener ------------------------------- */
+
+    override fun onEdited(overlay: Overlay<*>, element: Element, geometry: ElementGeometry) {
+        showQuestSolvedAnimation(overlay.icon, geometry.center)
         closeBottomSheet()
     }
 
@@ -878,6 +888,14 @@ class MainFragment :
 
         val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }  ?: return
         val f = overlay.createForm(element) ?: return
+        if (f.arguments == null) f.arguments = bundleOf()
+
+        val camera = mapFragment.cameraPosition
+        val rotation = camera?.rotation ?: 0f
+        val tilt = camera?.tilt ?: 0f
+        val args = AbstractOverlayForm.createArguments(overlay, element, geometry, rotation, tilt)
+        f.requireArguments().putAll(args)
+
         showInBottomSheet(f)
 
         mapFragment.highlightGeometry(geometry)
