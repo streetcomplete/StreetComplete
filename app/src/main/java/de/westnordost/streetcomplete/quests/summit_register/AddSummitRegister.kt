@@ -61,7 +61,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     private val hikingPathsFilter by lazy { """
         ways with
           highway = path
-          sac_scale ~ mountain_hiking|demanding_mountain_hiking|alpine_hiking|demanding_alpine_hiking|difficult_alpine_hiking
+          and sac_scale ~ mountain_hiking|demanding_mountain_hiking|alpine_hiking|demanding_alpine_hiking|difficult_alpine_hiking
    """.toElementFilterExpression() }
 
     override fun isApplicableTo(element: Element): Boolean? =
