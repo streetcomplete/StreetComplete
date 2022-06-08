@@ -45,12 +45,14 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         val peaks = mapData.nodes.filter { filter.matches(it) }
         if (peaks.isEmpty()) return emptyList()
 
-        val hikingPaths = mapData.ways.filter { hikingPathsFilter.matches(it) }
-            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
+        val hikingPathsAndRoutes = mapData.ways.filter { hikingPathsFilter.matches(it) }
+            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry } +
+            mapData.relations.filter {  it.tags["route"] == "hiking" }
+                .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
 
         // yes, this is very inefficient, however, peaks are very rare
         return peaks.filter { peak ->
-            hikingPaths.any { hikingPath ->
+            hikingPathsAndRoutes.any { hikingPath ->
                 hikingPath.polylines.any { ways ->
                     peak.position.distanceToArcs(ways) <= 10
                 }
