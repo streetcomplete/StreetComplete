@@ -32,8 +32,8 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentShowQuestFormsBinding
 import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.math.translate
@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.view.ListAdapter
 import org.koin.android.ext.android.inject
 
 /** activity only used in debug, to show all the different forms for the different quests. */
-class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestAnswerForm.Listener {
+class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val prefs: SharedPreferences by inject()
@@ -138,9 +138,9 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestAnswerForm.Listen
         val f = questType.createForm()
         if (f.arguments == null) f.arguments = bundleOf()
         f.requireArguments().putAll(
-            AbstractQuestAnswerForm.createArguments(quest.key, quest.type, geometry, 30.0f, 0.0f)
+            AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0f, 0.0f)
         )
-        f.requireArguments().putAll(AbstractOsmQuestAnswerForm.createArguments(element))
+        f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
         f.hideOsmQuestController = object : HideOsmQuestController {
             override fun hide(key: OsmQuestKey) {}
         }

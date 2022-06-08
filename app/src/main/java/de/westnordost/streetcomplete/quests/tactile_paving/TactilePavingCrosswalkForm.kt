@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.INCORRECT
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.NO
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.YES
 
-class TactilePavingCrosswalkForm : AbstractOsmQuestAnswerForm<TactilePavingCrosswalkAnswer>() {
+class TactilePavingCrosswalkForm : AbstractOsmQuestForm<TactilePavingCrosswalkAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_tactile_paving
 

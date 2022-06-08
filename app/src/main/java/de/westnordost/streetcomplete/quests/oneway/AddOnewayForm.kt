@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.oneway
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import kotlin.math.PI
 
-class AddOnewayForm : AImageListQuestAnswerForm<OnewayAnswer, OnewayAnswer>() {
+class AddOnewayForm : AImageListQuestForm<OnewayAnswer, OnewayAnswer>() {
 
     override val items get() =
         OnewayAnswer.values().map { it.toItem(requireContext(), wayRotation + mapRotation) }

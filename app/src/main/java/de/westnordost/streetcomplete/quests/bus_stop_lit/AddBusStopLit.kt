@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBusStopLit : OsmFilterQuestType<Boolean>() {
@@ -31,7 +31,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopLit_title2
 
-    override fun createForm() = YesNoQuestAnswerForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("lit", answer.toYesNo())

@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
@@ -30,7 +30,7 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_baby_changing_table_title2
 
-    override fun createForm() = YesNoQuestAnswerForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["changing_table"] = answer.toYesNo()

@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestAnswerForm<Surface, SurfaceAnswer>() {
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val items get() =
         (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 
 /** A quest type appears as a pin with an icon on the map and when opened, the quest type's
  *  question is displayed along with a UI to answer that quest.
@@ -21,7 +21,7 @@ interface QuestType : EditType {
     val defaultDisabledMessage: Int get() = 0
 
     /** returns the fragment in which the user can add the data */
-    fun createForm(): AbstractQuestAnswerForm
+    fun createForm(): AbstractQuestForm
 
     /** The quest type can clean it's metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}

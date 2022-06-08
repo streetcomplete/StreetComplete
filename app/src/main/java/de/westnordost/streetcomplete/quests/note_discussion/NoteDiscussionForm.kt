@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -41,7 +41,7 @@ import org.koin.core.qualifier.named
 import java.io.File
 import java.time.Instant
 
-class NoteDiscussionForm : AbstractQuestAnswerForm() {
+class NoteDiscussionForm : AbstractQuestForm() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     private val binding by contentViewBinding(QuestNoteDiscussionContentBinding::bind)

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.way_lit.WayLit.AUTOMATIC
 import de.westnordost.streetcomplete.quests.way_lit.WayLit.NIGHT_AND_DAY
@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.way_lit.WayLit.NO
 import de.westnordost.streetcomplete.quests.way_lit.WayLit.YES
 import de.westnordost.streetcomplete.util.ktx.isArea
 
-class WayLitForm : AbstractOsmQuestAnswerForm<WayLitOrIsStepsAnswer>() {
+class WayLitForm : AbstractOsmQuestForm<WayLitOrIsStepsAnswer>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },

@@ -50,7 +50,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
-    override fun createForm() = SmokingAllowedAnswerForm()
+    override fun createForm() = SmokingAllowedForm()
 
     override fun applyAnswerTo(answer: SmokingAllowed, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("smoking", answer.osmValue)

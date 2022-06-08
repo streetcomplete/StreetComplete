@@ -12,7 +12,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.Surface
 import de.westnordost.streetcomplete.quests.surface.asItem
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.ktx.asImageSpan
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddSmoothnessForm : AImageListQuestAnswerForm<Smoothness, SmoothnessAnswer>() {
+class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
 
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 

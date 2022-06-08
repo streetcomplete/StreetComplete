@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 
@@ -63,7 +63,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
 
-    override fun createForm() = YesNoQuestAnswerForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("summit:register", answer.toYesNo())

@@ -12,7 +12,7 @@ import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddHousenumberForm : AbstractOsmQuestAnswerForm<HousenumberAnswer>() {
+class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },

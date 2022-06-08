@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 
-class ShopTypeForm : AbstractOsmQuestAnswerForm<ShopTypeAnswer>() {
+class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
 
     override val contentLayoutResId = R.layout.view_shop_type
     private val binding by contentViewBinding(ViewShopTypeBinding::bind)

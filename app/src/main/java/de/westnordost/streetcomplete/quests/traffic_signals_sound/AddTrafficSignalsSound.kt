@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
@@ -54,7 +54,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = YesNoQuestAnswerForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate(SOUND_SIGNALS, answer.toYesNo())

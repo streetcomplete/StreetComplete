@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.level.SingleLevel
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.createSelectableLevels
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
@@ -27,7 +27,7 @@ import org.koin.android.ext.android.inject
 import kotlin.math.ceil
 import kotlin.math.floor
 
-class AddLevelForm : AbstractOsmQuestAnswerForm<String>() {
+class AddLevelForm : AbstractOsmQuestForm<String>() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
 

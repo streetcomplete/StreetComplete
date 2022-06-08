@@ -5,7 +5,7 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestSuspectedOnewayBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import kotlin.math.PI
 
-class AddSuspectedOnewayForm : AbstractOsmQuestAnswerForm<SuspectedOnewayAnswer>() {
+class AddSuspectedOnewayForm : AbstractOsmQuestForm<SuspectedOnewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_suspected_oneway
     private val binding by contentViewBinding(QuestSuspectedOnewayBinding::bind)

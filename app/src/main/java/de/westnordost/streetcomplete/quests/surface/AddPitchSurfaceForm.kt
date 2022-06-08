@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddPitchSurfaceForm : AImageListQuestAnswerForm<Surface, SurfaceAnswer>() {
+class AddPitchSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val items get() =
         PITCH_SURFACES.toItems()
 

@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_P
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
@@ -33,7 +33,7 @@ import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
-class AddMaxSpeedForm : AbstractOsmQuestAnswerForm<MaxSpeedAnswer>() {
+class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
     private val binding by contentViewBinding(QuestMaxspeedBinding::bind)

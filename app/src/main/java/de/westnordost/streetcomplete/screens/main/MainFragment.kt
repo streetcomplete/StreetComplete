@@ -66,8 +66,8 @@ import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -140,7 +140,7 @@ class MainFragment :
     MapFragment.Listener,
     LocationAwareMapFragment.Listener,
     MainMapFragment.Listener,
-    AbstractOsmQuestAnswerForm.Listener,
+    AbstractOsmQuestForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
     LeaveNoteInsteadFragment.Listener,
@@ -306,7 +306,7 @@ class MainFragment :
         updateLocationPointerPin()
 
         val f = bottomSheetFragment
-        if (f is AbstractOsmQuestAnswerForm<*>) f.onMapOrientation(rotation, tilt)
+        if (f is AbstractOsmQuestForm<*>) f.onMapOrientation(rotation, tilt)
     }
 
     override fun onPanBegin() {
@@ -905,12 +905,12 @@ class MainFragment :
         val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
-        val args = AbstractQuestAnswerForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
+        val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
             val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestAnswerForm.createArguments(element)
+            val osmArgs = AbstractOsmQuestForm.createArguments(element)
             f.requireArguments().putAll(osmArgs)
 
             showInBottomSheet(f)

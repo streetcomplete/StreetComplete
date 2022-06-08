@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddTrafficSignalsVibrationForm : AbstractOsmQuestAnswerForm<Boolean>() {
+class AddTrafficSignalsVibrationForm : AbstractOsmQuestForm<Boolean>() {
 
     override val contentLayoutResId = R.layout.quest_traffic_lights_vibration
 

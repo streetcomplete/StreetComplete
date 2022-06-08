@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.NO
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.OUTSIDE
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.SEPARATED
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.YES
 
-class SmokingAllowedAnswerForm : AListQuestAnswerForm<SmokingAllowed>() {
+class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
 
     override val items: List<TextItem<SmokingAllowed>> get() {
         val tags = element.tags

@@ -7,11 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 
-class AddMaxHeightForm : AbstractOsmQuestAnswerForm<MaxHeightAnswer>() {
+class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
     private lateinit var lengthInput: LengthInputViewController
 

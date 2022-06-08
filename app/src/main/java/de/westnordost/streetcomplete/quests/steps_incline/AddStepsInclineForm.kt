@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.steps_incline
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import kotlin.math.PI
 
-class AddStepsInclineForm : AImageListQuestAnswerForm<StepsIncline, StepsIncline>() {
+class AddStepsInclineForm : AImageListQuestForm<StepsIncline, StepsIncline>() {
 
     override val items get() =
         StepsIncline.values().map { it.toItem(requireContext(), wayRotation + mapRotation) }

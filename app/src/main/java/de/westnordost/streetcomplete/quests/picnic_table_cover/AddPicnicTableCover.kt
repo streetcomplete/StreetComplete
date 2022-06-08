@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerForm
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
@@ -30,7 +30,7 @@ class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with leisure = picnic_table")
 
-    override fun createForm() = YesNoQuestAnswerForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["covered"] = answer.toYesNo()

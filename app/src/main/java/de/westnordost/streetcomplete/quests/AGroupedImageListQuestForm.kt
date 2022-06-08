@@ -22,7 +22,7 @@ import kotlin.math.max
  *
  * Saving and restoring state is not implemented
  */
-abstract class AGroupedImageListQuestAnswerForm<I, T> : AbstractOsmQuestAnswerForm<T>() {
+abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)

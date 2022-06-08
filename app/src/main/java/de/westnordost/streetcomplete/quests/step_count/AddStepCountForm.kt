@@ -6,10 +6,10 @@ import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddStepCountForm : AbstractOsmQuestAnswerForm<Int>() {
+class AddStepCountForm : AbstractOsmQuestForm<Int>() {
 
     override val contentLayoutResId = R.layout.quest_step_count
     private val binding by contentViewBinding(QuestStepCountBinding::bind)

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.databinding.QuestStreetLanesPuzzleBinding
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED_SIDES
@@ -25,7 +25,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.math.PI
 
-class AddLanesForm : AbstractOsmQuestAnswerForm<LanesAnswer>() {
+class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
     private var selectedLanesType: LanesType? = null
     private var leftSide: Int = 0

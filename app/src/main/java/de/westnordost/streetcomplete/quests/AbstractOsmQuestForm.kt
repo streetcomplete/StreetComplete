@@ -48,8 +48,7 @@ import java.util.Locale
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
-abstract class AbstractOsmQuestAnswerForm<T> :
-    AbstractQuestAnswerForm(), IsShowingQuestDetails {
+abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDetails {
 
     // dependencies
     private val elementEditsController: ElementEditsController by inject()

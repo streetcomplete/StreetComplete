@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -108,7 +108,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * The element is not directly modified, instead, a map of [tags] is built */
     fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
 
-    override fun createForm(): AbstractOsmQuestAnswerForm<T>
+    override fun createForm(): AbstractOsmQuestForm<T>
 }
 
 typealias Tags = StringMapChangesBuilder

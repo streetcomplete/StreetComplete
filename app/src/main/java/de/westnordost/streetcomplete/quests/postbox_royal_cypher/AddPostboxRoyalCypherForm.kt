@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPostboxRoyalCypherForm : AImageListQuestAnswerForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
+class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
     override val items = listOf(
         Item(PostboxRoyalCypher.ELIZABETH_II,   R.drawable.ic_postbox_royal_cypher_eiir,           R.string.quest_postboxRoyalCypher_type_eiir),

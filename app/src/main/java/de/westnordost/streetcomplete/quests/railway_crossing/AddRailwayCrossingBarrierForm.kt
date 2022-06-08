@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.CHICANE
 import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.DOUBLE_HALF
 import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.FULL
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarr
 import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.NO
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
-class AddRailwayCrossingBarrierForm : AImageListQuestAnswerForm<RailwayCrossingBarrier, RailwayCrossingBarrier>() {
+class AddRailwayCrossingBarrierForm : AImageListQuestForm<RailwayCrossingBarrier, RailwayCrossingBarrier>() {
 
     override val items: List<DisplayItem<RailwayCrossingBarrier>> get() {
         val isPedestrian = element.tags["railway"] == "crossing"

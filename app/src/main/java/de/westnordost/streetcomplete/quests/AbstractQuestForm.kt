@@ -39,7 +39,7 @@ import java.util.concurrent.FutureTask
  *    button bar
  *  - and more...
  */
-abstract class AbstractQuestAnswerForm : AbstractBottomSheetFragment(), IsShowingQuestDetails {
+abstract class AbstractQuestForm : AbstractBottomSheetFragment(), IsShowingQuestDetails {
 
     // dependencies
     private val countryInfos: CountryInfos by inject()

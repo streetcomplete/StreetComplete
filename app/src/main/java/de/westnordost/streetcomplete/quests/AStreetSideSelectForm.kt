@@ -16,7 +16,7 @@ import org.koin.android.ext.android.inject
 
 /** Abstract base class for any quest answer form in which the user selects items for the left and
  *  the right side of the street */
-abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestAnswerForm<T>() {
+abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)

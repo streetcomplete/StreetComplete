@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.foot
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogLivingStreetConfirmationBinding
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestAnswerForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 
-class AddProhibitedForPedestriansForm : AbstractOsmQuestAnswerForm<ProhibitedForPedestriansAnswer>() {
+class AddProhibitedForPedestriansForm : AbstractOsmQuestForm<ProhibitedForPedestriansAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_prohibited_for_pedestrians_separate_sidewalk_explanation
 
