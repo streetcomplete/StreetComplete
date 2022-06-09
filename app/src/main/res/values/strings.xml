@@ -177,7 +177,8 @@
     <string name="day_night_visibility">Don’t show certain quests</string>
     <string name="tutorial_info_fork_title">Warning</string>
     <string name="tutorial_info_fork_message">This modified version of StreetComplete gives you more control, but also more responsibility.\n
-This especially applies for the possibility to modify tags arbitrarily, but also if you modify element selection, which is possible for some quests.\n
+This especially applies for the possibility to modify tags arbitrarily, but also if you modify element selection, which is possible for some quests.
+Some of the quest added in this version may not be answerable in all cases. Please hide the quests when this happens and do not spam notes.\n
 By default, this version is configured to behave very similar to normal StreetComplete.\n\n
 This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
     <string name="quest_settings_restart">Usually re-scanning for quests and sometimes a restart of the app (happens automatically) is required to apply changed quest settings.</string>
