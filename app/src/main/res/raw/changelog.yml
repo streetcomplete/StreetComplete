@@ -1,3 +1,10 @@
+v44.1: |
+  <ul>
+  <li>Fix: Tag <code>barrier=kerb</code>, not <code>curb</code> (#4087), by @FloEdelmann</li>
+  <li>Fix recorded track was attached to every subsequent note (#4082), by @goldbattle</li>
+  <li>Some other tiny fixes and enhancements (#4084, ...)</li>
+  </ul>
+
 v44.0: |
   <h3>🧭 Recording GPS track</h3>
   <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
