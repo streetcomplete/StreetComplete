@@ -229,21 +229,6 @@ class SettingsFragment :
         }
 
         findPreference<Preference>("export")?.setOnPreferenceClickListener {
-            fun export(name: String) {
-                val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                    putExtra(Intent.EXTRA_TITLE, "$name.txt")
-                    type = "application/text"
-                }
-                val requestCode = when (name) {
-                    "settings" -> REQUEST_CODE_SETTINGS_EXPORT
-                    "hidden_quests" ->  REQUEST_CODE_HIDDEN_EXPORT
-                    "presets" ->  REQUEST_CODE_PRESETS_EXPORT
-                    else -> 0
-                }
-                startActivityForResult(intent, requestCode)
-            }
-
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_export)
                 .setNegativeButton(R.string.import_export_settings) { _,_ -> export("settings") }
@@ -255,20 +240,6 @@ class SettingsFragment :
         }
 
         findPreference<Preference>("import")?.setOnPreferenceClickListener {
-            fun import(name: String) {
-                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                    type = "*/*" // can't select text file if setting to application/text
-                }
-                val requestCode = when (name) {
-                    "settings" -> REQUEST_CODE_SETTINGS_IMPORT
-                    "hidden_quests" ->  REQUEST_CODE_HIDDEN_IMPORT
-                    "presets" ->  REQUEST_CODE_PRESETS_IMPORT
-                    else -> 0
-                }
-                startActivityForResult(intent, requestCode)
-            }
-
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pref_import)
                 .setMessage(R.string.import_warning)
@@ -280,17 +251,81 @@ class SettingsFragment :
             true
         }
 
+        findPreference<Preference>("trees")?.setOnPreferenceClickListener {
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_trees_title)
+                .setMessage(R.string.tree_external_import_export_message)
+                .setNeutralButton(android.R.string.cancel, null)
+                .setNegativeButton(R.string.tree_external_import) { _,_ -> import("trees") }
+                .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("trees") }
+                .show()
+
+            val treesFile = File(context?.getExternalFilesDir(null), "trees.csv")
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
+
+            true
+        }
+
+        findPreference<Preference>("external")?.setOnPreferenceClickListener {
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_external_title)
+                .setMessage(R.string.tree_external_import_export_message)
+                .setNeutralButton(android.R.string.cancel, null)
+                .setNegativeButton(R.string.tree_external_import) { _,_ -> import("external") }
+                .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("external") }
+                .show()
+
+            val treesFile = File(context?.getExternalFilesDir(null), "external.csv")
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
+
+            true
+        }
+
         buildLanguageSelector()
+    }
+
+    fun import(name: String) {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*" // can't select text file if setting to application/text
+        }
+        val requestCode = when (name) {
+            "settings" -> REQUEST_CODE_SETTINGS_IMPORT
+            "hidden_quests" ->  REQUEST_CODE_HIDDEN_IMPORT
+            "presets" ->  REQUEST_CODE_PRESETS_IMPORT
+            "trees" -> REQUEST_CODE_TREES_IMPORT
+            "external" -> REQUEST_CODE_EXTERNAL_IMPORT
+            else -> throw(IllegalArgumentException())
+        }
+        startActivityForResult(intent, requestCode)
+    }
+
+    fun export(name: String) {
+        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            val fileName = if (name in arrayOf("trees", "external")) "$name.csv" else "$name.txt"
+            putExtra(Intent.EXTRA_TITLE, fileName)
+            type = "application/text"
+        }
+        val requestCode = when (name) {
+            "settings" -> REQUEST_CODE_SETTINGS_EXPORT
+            "hidden_quests" ->  REQUEST_CODE_HIDDEN_EXPORT
+            "presets" ->  REQUEST_CODE_PRESETS_EXPORT
+            "trees" -> REQUEST_CODE_TREES_EXPORT
+            "external" -> REQUEST_CODE_EXTERNAL_EXPORT
+            else -> throw(IllegalArgumentException())
+        }
+        startActivityForResult(intent, requestCode)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode != Activity.RESULT_OK || data == null)
             return
+        val uri = data.data ?: return
         when (requestCode) {
             GPX_REQUEST_CODE -> saveGpx(data)
             REQUEST_CODE_SETTINGS_EXPORT -> {
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                val uri = data.data ?: return
                 if (!f.exists()) return
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val lines = f.readLines().filterNot {
@@ -301,7 +336,6 @@ class SettingsFragment :
                 // there is some SharedPreferencesBackupHelper, but can't access this without some app backup thing apparently
             }
             REQUEST_CODE_HIDDEN_EXPORT -> {
-                val uri = data.data ?: return
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
 
@@ -326,7 +360,6 @@ class SettingsFragment :
                 os.close()
             }
             REQUEST_CODE_PRESETS_EXPORT -> {
-                val uri = data.data ?: return
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
 
@@ -360,7 +393,6 @@ class SettingsFragment :
                 // how to make sure shared prefs are re-read from the new file?
                 // probably need to restart app on import
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                val uri = data.data ?: return
                 val inputStream = activity?.contentResolver?.openInputStream(uri) ?: return
                 val t = inputStream.reader().readText()
                 if (!t.startsWith("<?xml version")) {
@@ -373,7 +405,6 @@ class SettingsFragment :
             }
             REQUEST_CODE_HIDDEN_IMPORT -> {
                 // do not delete existing hidden quests
-                val uri = data.data ?: return
                 val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
                 if (input.readLine() != version.toString()) return // TODO: handle this once the version changes
@@ -419,7 +450,6 @@ class SettingsFragment :
                 // maybe more?
             }
             REQUEST_CODE_PRESETS_IMPORT -> {
-                val uri = data.data ?: return
                 val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
                 if (input.readLine() != version.toString()) return // TODO: handle this once the version changes
@@ -473,6 +503,28 @@ class SettingsFragment :
                 prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).apply()
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
                 // TODO: also allow adding the profile with new id(s)
+            }
+            REQUEST_CODE_EXTERNAL_IMPORT -> {
+                val text = activity?.contentResolver?.openInputStream(uri)?.bufferedReader()?.readText() ?: return
+                File(context?.getExternalFilesDir(null), "external.csv").writeText(text)
+            }
+            REQUEST_CODE_EXTERNAL_EXPORT -> {
+                val text = File(context?.getExternalFilesDir(null), "external.csv").readText()
+                activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter()?.apply {
+                    write(text)
+                    close()
+                }
+            }
+            REQUEST_CODE_TREES_IMPORT -> {
+                val text = activity?.contentResolver?.openInputStream(uri)?.bufferedReader()?.readText() ?: return
+                File(context?.getExternalFilesDir(null), "trees.csv").writeText(text)
+            }
+            REQUEST_CODE_TREES_EXPORT -> {
+                val text = File(context?.getExternalFilesDir(null), "trees.csv").readText()
+                activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter()?.apply {
+                    write(text)
+                    close()
+                }
             }
         }
     }
@@ -647,3 +699,7 @@ private const val REQUEST_CODE_PRESETS_EXPORT = 532529
 private const val REQUEST_CODE_SETTINGS_IMPORT = 67367487
 private const val REQUEST_CODE_HIDDEN_IMPORT = 67367488
 private const val REQUEST_CODE_PRESETS_IMPORT = 67367489
+private const val REQUEST_CODE_TREES_IMPORT = 5331
+private const val REQUEST_CODE_TREES_EXPORT = 5332
+private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333
+private const val REQUEST_CODE_EXTERNAL_EXPORT = 5334
