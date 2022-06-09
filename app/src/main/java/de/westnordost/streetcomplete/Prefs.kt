@@ -64,6 +64,7 @@ object Prefs {
     const val DAY_NIGHT_BEHAVIOR = "day_night_behavior"
     const val QUEST_SETTINGS_PER_PRESET = "quest_settings_per_preset"
     const val SHOW_HIDE_BUTTON = "show_hide_button"
+    const val SELECT_FIRST_EDIT = "select_first_edit"
 
     enum class Autosync {
         ON, WIFI, OFF

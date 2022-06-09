@@ -155,6 +155,13 @@
             android:persistent="true" />
 
         <SwitchPreference
+            android:key="select_first_edit"
+            android:title="@string/pref_select_first_edit_title"
+            android:summary="@string/pref_select_first_edit_summary"
+            android:defaultValue="true"
+            android:persistent="true" />
+
+        <SwitchPreference
             android:key="3d_buildings"
             android:title="@string/pref_3d_buildings_title"
             android:defaultValue="true"

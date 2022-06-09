@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -21,6 +23,7 @@ import org.koin.android.ext.android.inject
 class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
 
     private val editHistorySource: EditHistorySource by inject()
+    private val prefs: SharedPreferences by inject()
 
     interface Listener {
         /** Called when an edit has been selected and the undo-button appeared */
@@ -71,7 +74,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
             adapter.setEdits(edits)
             val first = edits.firstOrNull { it.isUndoable }
-            if (first != null) {
+            if (first != null && prefs.getBoolean(Prefs.SELECT_FIRST_EDIT, true)) {
                 adapter.select(first)
             }
             binding.editHistoryList.adapter = adapter
