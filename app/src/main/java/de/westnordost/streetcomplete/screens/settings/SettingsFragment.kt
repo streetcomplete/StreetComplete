@@ -325,7 +325,7 @@ class SettingsFragment :
                 }
                 os.close()
             }
-            REQUEST_CODE_PRESETSS_EXPORT -> {
+            REQUEST_CODE_PRESETS_EXPORT -> {
                 val uri = data.data ?: return
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
