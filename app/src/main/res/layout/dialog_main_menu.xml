@@ -33,7 +33,7 @@
             android:padding="16dp"
             android:text="@string/action_overlays"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-            app:drawableTopCompat="@drawable/ic_experimental_48dp" />
+            app:drawableTopCompat="@drawable/ic_overlay_48dp" />
 
         <TextView
             android:id="@+id/settingsButton"
