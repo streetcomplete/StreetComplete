@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -272,6 +274,7 @@ class QuestSelectionAdapter(
             binding.questSettings.setOnClickListener {
                 val settings = item.questType.getQuestSettingsDialog(it.context)
                 settings?.show()
+                context.toast(R.string.quest_settings_restart, Toast.LENGTH_LONG)
             }
             binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
 

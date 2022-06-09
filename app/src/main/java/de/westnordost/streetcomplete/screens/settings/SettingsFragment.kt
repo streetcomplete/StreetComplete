@@ -2,12 +2,9 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
@@ -481,24 +478,10 @@ class SettingsFragment :
     }
 
     private fun restartApp() {
-        val i = Intent(requireContext(), this.javaClass)
-        val pi = PendingIntent.getActivity(requireContext(), 234, i, PendingIntent.FLAG_CANCEL_CURRENT)
-        val a = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        // according to stackoverflow, restart does not work due to some restrictions added in Q
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            AlertDialog.Builder(requireContext())
-                .setCancelable(false)
-                .setTitle(R.string.restart_required)
-                .setMessage(R.string.restart_required_message)
-                .setPositiveButton(android.R.string.ok) { _,_ ->
-                    a.set(AlarmManager.RTC, System.currentTimeMillis() + 50, pi)
-                    exitProcess(0)
-                }
-                .show()
-        } else {
-            a.set(AlarmManager.RTC, System.currentTimeMillis() + 50, pi)
-            exitProcess(0)
-        }
+        // exitProcess does actually restart with the activity below, which should always be MainActivity.
+        // No idea how to come back to SettingsFragment automatically, or why it actually DOES
+        //  return to SettingsFragment when calling this from onActivityResult (settings import)
+        exitProcess(0)
     }
 
     private fun saveGpx(data: Intent) {
@@ -562,6 +545,14 @@ class SettingsFragment :
     override fun onResume() {
         super.onResume()
         prefs.registerOnSharedPreferenceChangeListener(this)
+        c = context
+        if (restartNecessary)
+            restartApp()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        c = null
     }
 
     override fun onPause() {
@@ -599,6 +590,10 @@ class SettingsFragment :
                 dayNightQuestFilter.reload()
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
+            Prefs.QUEST_SETTINGS_PER_PROFILE -> {
+                prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false)).commit()
+                restartApp()
+            }
         }
     }
 
@@ -633,6 +628,15 @@ class SettingsFragment :
         val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 
         return presetStr + enabledStr
+    }
+
+    companion object {
+        private var c: Context? = null // android studio complains, but actually this is set to null when exiting settings
+        var restartNecessary = false
+            set(value) {
+                field = value
+                c?.let { it.toast(it.getString(R.string.restart_toast), Toast.LENGTH_LONG) }
+            }
     }
 }
 

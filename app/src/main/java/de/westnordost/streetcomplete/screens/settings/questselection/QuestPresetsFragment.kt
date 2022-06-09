@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -21,6 +22,7 @@ import org.koin.android.ext.android.inject
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
     private val questPresetsController: QuestPresetsController by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 
@@ -28,7 +30,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
+        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController, prefs)
         lifecycle.addObserver(adapter)
         binding.questPresetsList.adapter = adapter
         binding.addPresetButton.setOnClickListener { showProfileSelector() }

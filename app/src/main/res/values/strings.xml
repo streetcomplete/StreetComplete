@@ -180,7 +180,7 @@
 This especially applies for the possibility to modify tags arbitrarily, but also if you modify element selection, which is possible for some quests.\n
 By default, this version is configured to behave very similar to normal StreetComplete.\n\n
 This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
-    <string name="quest_settings_restart">Restart of the app (and often re-scanning for quests) is required to apply changed quest settings.</string>
+    <string name="quest_settings_restart">Usually re-scanning for quests and sometimes a restart of the app (happens automatically) is required to apply changed quest settings.</string>
     <string name="pref_save_gpx">Get GPX notes</string>
     <string name="pref_save_gpx_not_found">No GPX notes found</string>
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
@@ -191,15 +191,15 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="import_export_hidden_quests">Hidden quests</string>
     <string name="import_error">Import error</string>
     <string name="import_warning">This will overwrite your settings or quest presets (depending on choice below)</string>
-    <string name="restart_required">Restart required</string>
-    <string name="restart_required_message">Some change requires restarting the app. This does not work automatically on some Android versions, so you may need to start the app again manually</string>
     <string name="fork_about_title_repository">Expert edition project Home</string>
     <string name="quest_not_found">Cannot create note, quest not found or hidden</string>
     <string name="pref_quest_settings_profile_title">Per-preset quest settings</string>
-    <string name="pref_quest_settings_profile_summary">When enabled, quest settings are only valid for the current quest preset</string>
+    <string name="pref_quest_settings_profile_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
     <string name="quest_osmose_hide_type">Ignore issues of this type when scanning</string>
+    <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching profile, a restart may be necessary.</string>
+    <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
 
     <!-- Store description -->
 

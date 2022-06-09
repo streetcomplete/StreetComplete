@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
-import de.westnordost.streetcomplete.quests.showRestartToast
+import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 
 class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
@@ -67,11 +67,11 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             .setNeutralButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
                 prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, true).apply()
-                showRestartToast(context)
+                SettingsFragment.restartNecessary = true
             }
             .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
                 prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false).apply()
-                showRestartToast(context)
+                SettingsFragment.restartNecessary = true
             }
             .create()
     }

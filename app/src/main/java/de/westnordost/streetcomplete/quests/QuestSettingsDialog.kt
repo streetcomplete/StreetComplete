@@ -10,8 +10,11 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import java.text.ParseException
 
+// restarts are necessary on changes of element selection because the filter is created by lazy,
+//  and I have no idea how to reset this any other way
 fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
@@ -26,11 +29,11 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
-            showRestartToast(context)
+            SettingsFragment.restartNecessary = true
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            showRestartToast(context)
+            SettingsFragment.restartNecessary = true
         }
         .create()
     return dialog
@@ -53,12 +56,10 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
         .setPositiveButton(android.R.string.ok) { _,_ ->
             numberInput.text.toString().toIntOrNull()?.let {
                 prefs.edit().putInt(pref, it).apply()
-                showRestartToast(context)
             }
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            showRestartToast(context)
         }
         .create()
     return dialog
@@ -85,18 +86,14 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
-            showRestartToast(context)
+            SettingsFragment.restartNecessary = true
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            showRestartToast(context)
+            SettingsFragment.restartNecessary = true
         }
         .create()
     return dialog
-}
-
-fun showRestartToast(context: Context) {
-    Toast.makeText(context, R.string.quest_settings_restart, Toast.LENGTH_LONG).show()
 }
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {

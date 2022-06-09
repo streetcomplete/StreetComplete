@@ -733,6 +733,8 @@ class MainFragment :
             .setSingleChoiceItems(array, selected) { _, i ->
                 questPresetsController.selectedId = presets[i].id
                 dialog?.dismiss()
+                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+                    context?.toast(R.string.quest_settings_per_preset_restart, Toast.LENGTH_LONG)
             }
             .setNegativeButton(android.R.string.cancel, null)
         dialog = builder.create()

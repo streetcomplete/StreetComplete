@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
@@ -8,11 +9,14 @@ import androidx.core.view.isInvisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
+import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -23,7 +27,8 @@ import kotlinx.coroutines.launch
  *  use. */
 class QuestPresetsAdapter(
     private val context: Context,
-    private val questPresetsController: QuestPresetsController
+    private val questPresetsController: QuestPresetsController,
+    private val prefs: SharedPreferences
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
@@ -93,6 +98,8 @@ class QuestPresetsAdapter(
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.selectedId = presetId
             }
+            if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+                SettingsFragment.restartNecessary = true
         }
 
         fun onClickDeleteQuestPreset(preset: QuestPreset) {
