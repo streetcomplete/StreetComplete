@@ -117,6 +117,9 @@ class OsmQuestControllerTest {
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
         on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
+        on(db.getAllInBboxIfNotHidden(bbox, null)).thenReturn(entries.filterNot {
+            hiddenQuests.contains(OsmQuestKey(it.elementType, it.elementId, it.questTypeName))
+        })
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
                 ElementKey(NODE, 1),
@@ -129,6 +132,11 @@ class OsmQuestControllerTest {
         val expectedQuests = listOf(
             OsmQuest(ApplicableQuestType, NODE, 1, geoms[0]),
         )
+        println(ctrl.getAllVisibleInBBox(bbox, null))
+        println(expectedQuests)
+        println(hiddenDB.getAllIds())
+        println(db.getAllInBBox(bbox, null))
+        println(db.getAllInBboxIfNotHidden(bbox, null))
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
 

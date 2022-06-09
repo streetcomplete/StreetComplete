@@ -65,7 +65,7 @@ class OpenQuestChangesetsManagerTest {
             "created_by" to ApplicationConstants.USER_AGENT,
             "comment" to "test me",
             "locale" to "es-AR",
-            "StreetComplete_modified:quest_type" to questType::class.simpleName!!
+            "${ApplicationConstants.NAME}:quest_type" to questType::class.simpleName!!
         ))
         verify(openChangesetsDB).put(any())
     }

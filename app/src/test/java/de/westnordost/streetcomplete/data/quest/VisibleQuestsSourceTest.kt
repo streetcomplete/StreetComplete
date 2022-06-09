@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
@@ -29,7 +30,8 @@ class VisibleQuestsSourceTest {
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
-    private lateinit var  levelFilter: LevelFilter
+    private lateinit var levelFilter: LevelFilter
+    private lateinit var dayNightFilter: DayNightQuestFilter
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
@@ -49,11 +51,13 @@ class VisibleQuestsSourceTest {
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
         levelFilter = mock()
+        dayNightFilter = mock()
         questTypeRegistry = QuestTypeRegistry(questTypes)
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)
         on(levelFilter.isVisible(any())).thenReturn(true)
+        on(dayNightFilter.isVisible(any())).thenReturn(true)
 
         on(osmNoteQuestSource.addListener(any())).then { invocation ->
             noteQuestListener = (invocation.arguments[0] as OsmNoteQuestSource.Listener)
@@ -72,7 +76,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, levelFilter)
+        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, levelFilter, dayNightFilter)
 
         listener = mock()
         source.addListener(listener)
