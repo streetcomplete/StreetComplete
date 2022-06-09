@@ -10,7 +10,7 @@ class SelectedOverlayController(
 
     private val listeners = CopyOnWriteArrayList<SelectedOverlaySource.Listener>()
 
-    override var selectedOverlay: Overlay<*>?
+    override var selectedOverlay: Overlay?
     set(value) {
         if (value != null && value in overlayRegistry) {
             selectedOverlayStore.set(value.name)

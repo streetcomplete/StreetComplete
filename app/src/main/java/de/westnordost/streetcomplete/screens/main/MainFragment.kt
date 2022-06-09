@@ -447,7 +447,7 @@ class MainFragment :
 
     /* ----------------------------- AbstractOverlayForm.Listener ------------------------------- */
 
-    override fun onEdited(overlay: Overlay<*>, element: Element, geometry: ElementGeometry) {
+    override fun onEdited(overlay: Overlay, element: Element, geometry: ElementGeometry) {
         showQuestSolvedAnimation(overlay.icon, geometry.center)
         closeBottomSheet()
     }

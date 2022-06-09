@@ -11,16 +11,16 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 /** Adapter for the list in which the user can select which overlay he wants to use */
 class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.ViewHolder>() {
 
-    var onSelectedOverlay: ((Overlay<*>?) -> Unit)? = null
+    var onSelectedOverlay: ((Overlay?) -> Unit)? = null
 
-    var overlays: List<Overlay<*>> = emptyList()
+    var overlays: List<Overlay> = emptyList()
         set(value) {
             if (field == value) return
             field = value
             notifyDataSetChanged()
         }
 
-    var selectedOverlay: Overlay<*>? = null
+    var selectedOverlay: Overlay? = null
         set(value) {
             if (field == value) return
             field = value
@@ -42,7 +42,7 @@ class OverlaySelectionAdapter : RecyclerView.Adapter<OverlaySelectionAdapter.Vie
     inner class ViewHolder(private val binding: RowOverlaySelectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(with: Overlay<*>?) {
+        fun onBind(with: Overlay?) {
             val ctx = binding.root.context
             binding.radioButton.setText(with?.title ?: R.string.overlay_none)
             val icon = with?.icon?.let { ctx.getDrawable(it) }

@@ -24,13 +24,12 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -55,7 +54,7 @@ import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
-abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseableBottomSheet {
+abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBottomSheet {
 
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
@@ -87,7 +86,7 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
     private var startedOnce = false
 
     // passed in parameters
-    protected lateinit var overlay: Overlay<T> private set
+    protected lateinit var overlay: Overlay private set
     protected lateinit var element: Element private set
     protected lateinit var geometry: ElementGeometry private set
     private var initialMapRotation = 0f
@@ -103,7 +102,13 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
         val displayedMapLocation: Location?
 
         /** Called when the user successfully answered the quest */
-        fun onEdited(overlay: Overlay<*>, element: Element, geometry: ElementGeometry)
+        fun onEdited(overlay: Overlay, element: Element, geometry: ElementGeometry)
+
+        /** Called when the user chose to leave a note instead */
+        fun onComposeNote(overlay: Overlay, element: Element, geometry: ElementGeometry, questTitle: String)
+
+        /** Called when the user chose to split the way */
+        fun onSplitWay(overlay: Overlay, way: Way, geometry: ElementPolylinesGeometry)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -115,7 +120,7 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
         super.onCreate(savedInstanceState)
 
         val args = requireArguments()
-        overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!! as Overlay<T>
+        overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!!
         element = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
@@ -235,9 +240,9 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
         }
     }
 
-    protected fun applyAnswer(answer: T) {
+    protected fun applyEdit(answer: ElementEditAction) {
         viewLifecycleScope.launch {
-            solve(UpdateElementTagsAction(createChanges(answer)))
+            solve(answer)
         }
     }
 
@@ -279,16 +284,6 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
         binding.glassPane.isGone = !locked
     }
 
-    private fun createChanges(answer: T): StringMapChanges {
-        val changesBuilder = StringMapChangesBuilder(element.tags)
-        overlay.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
-        val changes = changesBuilder.create()
-        require(!changes.isEmpty()) {
-            "${overlay.name} was answered by the user but there are no changes!"
-        }
-        return changes
-    }
-
     companion object {
         private const val ARG_ELEMENT = "element"
         private const val ARG_GEOMETRY = "geometry"
@@ -296,7 +291,7 @@ abstract class AbstractOverlayForm<T> : Fragment(), IsShowingElement, IsCloseabl
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(overlay: Overlay<*>, element: Element, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
+        fun createArguments(overlay: Overlay, element: Element, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_OVERLAY to overlay.name,

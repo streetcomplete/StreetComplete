@@ -8,17 +8,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 /** An overlay is displayed on top of the normal map but behind quest pins and visualizes how
  *  selected data is tagged. Tapping on an element can optionally open a form in which the user
  *  can answer a question, just like with quests */
-interface Overlay<T> : ElementEditType {
+interface Overlay : ElementEditType {
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
 
-    /** applies the data from [answer] to the element that has last been edited at [timestampEdited].
-     * The element is not directly modified, instead, a map of [tags] is built */
-    fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
-
     /** returns the fragment in which the user can view/add the data or null if no form should be
      * displayed for the given element */
-    fun createForm(element: Element): AbstractOverlayForm<T>?
+    fun createForm(element: Element): AbstractOverlayForm?
 }
 
 typealias Tags = StringMapChangesBuilder

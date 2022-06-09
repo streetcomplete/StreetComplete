@@ -52,7 +52,7 @@ class StyleableOverlayManager(
         and (!foot or foot ~ private|no)
     """.toElementFilterExpression() }
 
-    private var overlay: Overlay<*>? = null
+    private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
         field = value
@@ -161,7 +161,7 @@ class StyleableOverlayManager(
         }
     }
 
-    private fun createStyledElementsByKey(overlay: Overlay<*>, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
+    private fun createStyledElementsByKey(overlay: Overlay, mapData: MapDataWithGeometry): Sequence<Pair<ElementKey, StyledElement?>> =
         overlay.getStyledElements(mapData).map { (element, style) ->
             val key = ElementKey(element.type, element.id)
             val geometry = mapData.getGeometry(element.type, element.id)

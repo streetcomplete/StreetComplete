@@ -7,7 +7,7 @@ interface SelectedOverlaySource {
         fun onSelectedOverlayChanged()
     }
 
-    val selectedOverlay: Overlay<*>?
+    val selectedOverlay: Overlay?
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)

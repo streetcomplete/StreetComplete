@@ -11,9 +11,8 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.overlays.Tags
 
-class WayLitOverlay : Overlay<Unit> {
+class WayLitOverlay : Overlay {
 
     override val title = R.string.overlay_lit
     override val icon = R.drawable.ic_quest_lantern
@@ -26,11 +25,7 @@ class WayLitOverlay : Overlay<Unit> {
             .filter("ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
             .map { it to PolylineStyle(createLitStatus(it).color) }
 
-    override fun applyAnswerTo(answer: Unit, tags: Tags, timestampEdited: Long) {
-        TODO("Not yet implemented")
-    }
-
-    override fun createForm(element: Element): AbstractOverlayForm<Unit>? {
+    override fun createForm(element: Element): AbstractOverlayForm? {
         TODO("Not yet implemented")
     }
 }
