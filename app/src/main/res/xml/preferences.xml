@@ -240,9 +240,9 @@
             android:title="@string/pref_import" />
 
         <SwitchPreference
-            android:key="quest_settings_per_profile"
-            android:title="@string/pref_quest_settings_profile_title"
-            android:summary="@string/pref_quest_settings_profile_summary"
+            android:key="quest_settings_per_preset"
+            android:title="@string/pref_quest_settings_preset_title"
+            android:summary="@string/pref_quest_settings_preset_summary"
             android:defaultValue="false"
             android:persistent="true" />
 

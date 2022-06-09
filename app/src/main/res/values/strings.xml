@@ -30,8 +30,8 @@
     <string name="pref_hide_notes_hint">"Use comma to separate user names or IDs"</string>
     <string name="pref_hide_notes_message">"Enter user names or IDs to ignore"</string>
     <string name="theme_dark_contrast">Dark (increased contrast)</string>
-    <string name="copy_profile_title">Copy from another profile?</string>
-    <string name="copy_profile_new">Don\'t copy</string>
+    <string name="copy_preset_title">Copy from another preset?</string>
+    <string name="copy_preset_new">Don’t copy</string>
     <string name="resurvey_intervals_even_less_often">Ask even less often</string>
     <string name="quest_settings_eligible_highways">Set highways eligible for this quest, comma separated</string>
     <string name="quest_settings_sidewalk_what">What to set?</string>
@@ -81,7 +81,7 @@
     <string name="pref_show_all_quests_title">Show all quests for same element</string>
     <string name="pref_show_all_quests_summary">Shows all quest for this element when quest form is open (even hidden and disabled)</string>
     <string name="pref_show_quick_settings_title">Show quick settings button</string>
-    <string name="quick_switch_profile">Switch profile</string>
+    <string name="quick_switch_preset">Switch preset</string>
     <string name="level_filter">Level filter</string>
     <string name="quest_order_reverse">Reverse quest order</string>
     <string name="quest_order_normal">Back to normal quest order</string>
@@ -186,19 +186,19 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
     <string name="pref_export">Export settings</string>
     <string name="pref_import">Import settings</string>
-    <string name="import_export_profiles">Presets</string>
+    <string name="import_export_presets">Presets</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
     <string name="import_error">Import error</string>
     <string name="import_warning">This will overwrite your settings or quest presets (depending on choice below)</string>
     <string name="fork_about_title_repository">Expert edition project Home</string>
     <string name="quest_not_found">Cannot create note, quest not found or hidden</string>
-    <string name="pref_quest_settings_profile_title">Per-preset quest settings</string>
-    <string name="pref_quest_settings_profile_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
+    <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
+    <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
     <string name="quest_osmose_hide_type">Ignore issues of this type when scanning</string>
-    <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching profile, a restart may be necessary.</string>
+    <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
     <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
 
     <!-- Store description -->

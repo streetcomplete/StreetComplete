@@ -62,7 +62,7 @@ object Prefs {
     const val HIDE_KEYBOAD_FOR_NOTE = "hide_keyboard_for_note"
     const val OFFSET_FIX = "offset_fix"
     const val DAY_NIGHT_BEHAVIOR = "day_night_behavior"
-    const val QUEST_SETTINGS_PER_PROFILE = "quest_settings_per_profile"
+    const val QUEST_SETTINGS_PER_PRESET = "quest_settings_per_preset"
     const val SHOW_HIDE_BUTTON = "show_hide_button"
 
     enum class Autosync {

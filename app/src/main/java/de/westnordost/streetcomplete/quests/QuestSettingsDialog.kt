@@ -109,7 +109,7 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
 
 fun getStringFor(prefs: SharedPreferences, pref: String) = prefs.getString(pref, "")?.let { if (it.isEmpty()) "" else "or $it"}
 
-fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""

@@ -238,7 +238,7 @@ class SettingsFragment :
                 val requestCode = when (name) {
                     "settings" -> REQUEST_CODE_SETTINGS_EXPORT
                     "hidden_quests" ->  REQUEST_CODE_HIDDEN_EXPORT
-                    "presets" ->  REQUEST_CODE_PROFILES_EXPORT
+                    "presets" ->  REQUEST_CODE_PRESETS_EXPORT
                     else -> 0
                 }
                 startActivityForResult(intent, requestCode)
@@ -248,7 +248,7 @@ class SettingsFragment :
                 .setTitle(R.string.pref_export)
                 .setNegativeButton(R.string.import_export_settings) { _,_ -> export("settings") }
                 .setNeutralButton(R.string.import_export_hidden_quests) { _,_ -> export("hidden_quests") }
-                .setPositiveButton(R.string.import_export_profiles)  { _,_ -> export("presets") }
+                .setPositiveButton(R.string.import_export_presets)  { _,_ -> export("presets") }
                 .show()
 
             true
@@ -263,7 +263,7 @@ class SettingsFragment :
                 val requestCode = when (name) {
                     "settings" -> REQUEST_CODE_SETTINGS_IMPORT
                     "hidden_quests" ->  REQUEST_CODE_HIDDEN_IMPORT
-                    "presets" ->  REQUEST_CODE_PROFILES_IMPORT
+                    "presets" ->  REQUEST_CODE_PRESETS_IMPORT
                     else -> 0
                 }
                 startActivityForResult(intent, requestCode)
@@ -274,7 +274,7 @@ class SettingsFragment :
                 .setMessage(R.string.import_warning)
                 .setNegativeButton(R.string.import_export_settings) { _,_ -> import("settings") }
                 .setNeutralButton(R.string.import_export_hidden_quests) { _,_ -> import("hidden_quests") }
-                .setPositiveButton(R.string.import_export_profiles)  { _,_ -> import("presets") }
+                .setPositiveButton(R.string.import_export_presets)  { _,_ -> import("presets") }
                 .show()
 
             true
@@ -325,7 +325,7 @@ class SettingsFragment :
                 }
                 os.close()
             }
-            REQUEST_CODE_PROFILES_EXPORT -> {
+            REQUEST_CODE_PRESETSS_EXPORT -> {
                 val uri = data.data ?: return
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
@@ -418,7 +418,7 @@ class SettingsFragment :
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
                 // maybe more?
             }
-            REQUEST_CODE_PROFILES_IMPORT -> {
+            REQUEST_CODE_PRESETS_IMPORT -> {
                 val uri = data.data ?: return
                 val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
@@ -590,8 +590,8 @@ class SettingsFragment :
                 dayNightQuestFilter.reload()
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
-            Prefs.QUEST_SETTINGS_PER_PROFILE -> {
-                prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false)).commit()
+            Prefs.QUEST_SETTINGS_PER_PRESET -> {
+                prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)).commit()
                 restartApp()
             }
         }
@@ -643,7 +643,7 @@ class SettingsFragment :
 private const val GPX_REQUEST_CODE = 387532
 private const val REQUEST_CODE_SETTINGS_EXPORT = 532527
 private const val REQUEST_CODE_HIDDEN_EXPORT = 532528
-private const val REQUEST_CODE_PROFILES_EXPORT = 532529
+private const val REQUEST_CODE_PRESETS_EXPORT = 532529
 private const val REQUEST_CODE_SETTINGS_IMPORT = 67367487
 private const val REQUEST_CODE_HIDDEN_IMPORT = 67367488
-private const val REQUEST_CODE_PROFILES_IMPORT = 67367489
+private const val REQUEST_CODE_PRESETS_IMPORT = 67367489

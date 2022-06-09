@@ -98,7 +98,7 @@ class QuestPresetsAdapter(
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.selectedId = presetId
             }
-            if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+            if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
                 SettingsFragment.restartNecessary = true
         }
 

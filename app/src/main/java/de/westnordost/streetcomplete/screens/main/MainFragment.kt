@@ -697,7 +697,7 @@ class MainFragment :
 
     private fun onClickQuickSettings() {
         val popupMenu = PopupMenu(requireContext(), binding.quickSettingsButton)
-        popupMenu.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quick_switch_profile)
+        popupMenu.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quick_switch_preset)
         popupMenu.menu.add(Menu.NONE, 2, Menu.NONE, R.string.level_filter)
         popupMenu.menu.add(Menu.NONE, 3, Menu.NONE,
             if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
@@ -729,11 +729,11 @@ class MainFragment :
         var dialog: AlertDialog? = null
         val array = presets.map { it.name }.toTypedArray()
         val builder = AlertDialog.Builder(c)
-            .setTitle("Choose profile")
+            .setTitle(R.string.quest_presets_preset_name)
             .setSingleChoiceItems(array, selected) { _, i ->
                 questPresetsController.selectedId = presets[i].id
                 dialog?.dismiss()
-                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PROFILE, false))
+                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
                     context?.toast(R.string.quest_settings_per_preset_restart, Toast.LENGTH_LONG)
             }
             .setNegativeButton(android.R.string.cancel, null)
