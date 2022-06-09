@@ -28,6 +28,8 @@ class AddTreeGenus : OsmFilterQuestType<Tree>() {
 
     override fun createForm() = AddTreeGenusForm()
 
+    override val isDeleteElementEnabled = true
+
     override fun applyAnswerTo(answer: Tree, tags: Tags, timestampEdited: Long) {
         if (answer.isSpecies)
             tags["species"] = answer.name
