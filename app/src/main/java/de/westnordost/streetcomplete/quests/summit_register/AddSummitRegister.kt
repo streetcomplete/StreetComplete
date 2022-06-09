@@ -52,6 +52,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
 
         // yes, this is very inefficient, however, peaks are very rare
         return peaks.filter { peak ->
+            peak.tags["summit:cross"] == "yes" || peak.tags.containsKey("summit:register") ||
             hikingPathsAndRoutes.any { hikingPath ->
                 hikingPath.polylines.any { ways ->
                     peak.position.distanceToArcs(ways) <= 10
@@ -67,7 +68,11 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
    """.toElementFilterExpression() }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!filter.matches(element)) false else null
+        when {
+            !filter.matches(element) -> false
+            element.tags["summit:cross"] == "yes" || element.tags.containsKey("summit:register") -> true
+            else -> null
+        }
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
