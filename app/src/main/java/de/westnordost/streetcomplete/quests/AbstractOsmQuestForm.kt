@@ -15,6 +15,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -83,13 +84,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val displayedMapLocation: Location?
 
         /** Called when the user successfully answered the quest */
-        fun onQuestSolved(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
-        fun onComposeNote(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry, questTitle: String)
+        fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
 
         /** Called when the user chose to split the way */
-        fun onSplitWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry)
+        fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
 
         /** Called when the user chose to hide the quest instead */
         fun onQuestHidden(osmQuestKey: OsmQuestKey)
@@ -128,22 +129,15 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
-        val cantSay = AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
-        answers.add(cantSay)
+        answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
-        createSplitWayAnswer()?.let { answers.add(it) }
+        if (element.isSplittable()) {
+            answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
+        }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
         return answers
-    }
-
-    private fun createSplitWayAnswer(): AnswerItem? {
-        if (!element.isSplittable()) return null
-
-        return AnswerItem(R.string.quest_generic_answer_differs_along_the_way) {
-            onClickSplitWayAnswer()
-        }
     }
 
     private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
@@ -216,7 +210,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun composeNote() {
         val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
-        listener?.onComposeNote(osmElementQuestType, element, geometry, questTitle)
+        val leaveNoteContext = "Unable to answer \"$questTitle\""
+        listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
 
     protected fun hideQuest() {
@@ -272,7 +267,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         withContext(Dispatchers.IO) {
             addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
         }
-        listener?.onQuestSolved(osmElementQuestType, element, geometry)
+        listener?.onEdited(osmElementQuestType, element, geometry)
     }
 
     companion object {

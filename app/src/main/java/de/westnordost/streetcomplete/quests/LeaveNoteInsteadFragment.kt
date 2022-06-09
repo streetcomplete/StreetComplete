@@ -51,7 +51,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private var questTitle: String? = null
+    private var leaveNoteContext: String? = null
     private lateinit var position: LatLon
     private lateinit var elementType: ElementType
     private var elementId: Long = 0L
@@ -59,7 +59,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
         val args = requireArguments()
-        questTitle = args.getString(ARG_QUEST_TITLE)
+        leaveNoteContext = args.getString(ARG_LEAVE_NOTE_CONTEXT)
         elementType = ElementType.valueOf(args.getString(ARG_ELEMENT_TYPE)!!)
         elementId = args.getLong(ARG_ELEMENT_ID)
         position = Json.decodeFromString(args.getString(ARG_POSITION)!!)
@@ -85,7 +85,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         val fullText = mutableListOf<String>()
-        if (questTitle != null) fullText += "Unable to answer \"$questTitle\""
+        leaveNoteContext?.let { fullText += it }
         fullText += "for https://osm.org/${elementType.name.lowercase()}/$elementId"
         fullText += "via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
@@ -98,17 +98,17 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     }
 
     companion object {
-        private const val ARG_QUEST_TITLE = "questTitle"
+        private const val ARG_LEAVE_NOTE_CONTEXT = "questTitle"
         private const val ARG_ELEMENT_TYPE = "elementType"
         private const val ARG_ELEMENT_ID = "elementId"
         private const val ARG_POSITION = "position"
 
-        fun create(elementType: ElementType, elementId: Long, questTitle: String?, position: LatLon): LeaveNoteInsteadFragment {
+        fun create(elementType: ElementType, elementId: Long, leaveNoteContext: String?, position: LatLon): LeaveNoteInsteadFragment {
             val f = LeaveNoteInsteadFragment()
             f.arguments = bundleOf(
                 ARG_ELEMENT_TYPE to elementType.name,
                 ARG_ELEMENT_ID to elementId,
-                ARG_QUEST_TITLE to questTitle,
+                ARG_LEAVE_NOTE_CONTEXT to leaveNoteContext,
                 ARG_POSITION to Json.encodeToString(position)
             )
             return f

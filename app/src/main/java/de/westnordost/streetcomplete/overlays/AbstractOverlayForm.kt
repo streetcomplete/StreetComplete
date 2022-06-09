@@ -4,9 +4,11 @@ import android.content.res.Configuration
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.PopupMenu
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +25,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -32,10 +35,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
@@ -96,23 +101,22 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
+    open val otherAnswers = listOf<AnswerItem>()
 
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
 
         /** Called when the user successfully answered the quest */
-        fun onEdited(overlay: Overlay, element: Element, geometry: ElementGeometry)
+        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
 
         /** Called when the user chose to leave a note instead */
-        fun onComposeNote(overlay: Overlay, element: Element, geometry: ElementGeometry, questTitle: String)
+        fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
 
         /** Called when the user chose to split the way */
-        fun onSplitWay(overlay: Overlay, way: Way, geometry: ElementPolylinesGeometry)
+        fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    // TODO button panel w/ icons and answers
 
     /* --------------------------------------- Lifecycle --------------------------------------- */
 
@@ -150,6 +154,9 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
 
         binding.titleHintLabel.text = getNameAndLocationLabelString(element.tags, resources, featureDictionary)
 
+        binding.moreButton.setOnClickListener {
+            showOtherAnswers()
+        }
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {
                 activity?.toast(R.string.no_changes)
@@ -266,6 +273,47 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
         noinline viewBinder: (View) -> T
     ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
+    /* -------------------------------------- ...-Button -----------------------------------------*/
+
+    private fun showOtherAnswers() {
+        val answers = assembleOtherAnswers()
+        val popup = PopupMenu(requireContext(), binding.moreButton)
+        for (i in answers.indices) {
+            val otherAnswer = answers[i]
+            val order = answers.size - i
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+        }
+        popup.show()
+
+        popup.setOnMenuItemClickListener { item ->
+            answers[item.itemId].action()
+            true
+        }
+    }
+
+    private fun assembleOtherAnswers(): List<AnswerItem> {
+        val answers = mutableListOf<AnswerItem>()
+
+        answers.add(AnswerItem(R.string.leave_note) { composeNote() })
+
+        if (element.isSplittable()) {
+            answers.add(AnswerItem(R.string.split_way) { splitWay() })
+        }
+
+        answers.addAll(otherAnswers)
+        return answers
+    }
+
+    protected fun splitWay() {
+        listener?.onSplitWay(overlay, element as Way, geometry as ElementPolylinesGeometry)
+    }
+
+    protected fun composeNote() {
+        val overlayTitle = requireContext().getString(overlay.title)
+        val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
+        listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
+    }
+
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
     private suspend fun solve(action: ElementEditAction) {
@@ -300,3 +348,5 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
         )
     }
 }
+
+data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)

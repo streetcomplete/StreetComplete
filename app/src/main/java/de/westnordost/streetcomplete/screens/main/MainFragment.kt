@@ -51,7 +51,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -67,17 +66,15 @@ import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
-import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment
@@ -85,6 +82,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragmen
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
+import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
@@ -418,37 +416,31 @@ class MainFragment :
 
     //region Bottom Sheet - Callbacks from the bottom sheet (quest forms, split way form, create note form, ...)
 
-    /* --------------------------------- AbstractQuestForm.Listener ----------------------------- */
+    /* ------------------------------- AbstractOsmQuestForm.Listener ---------------------------- */
+    /* -------------------------------- AbstractOverlayForm.Listener ---------------------------- */
 
     override val displayedMapLocation: Location? get() = mapFragment?.displayedLocation
 
-    override fun onQuestSolved(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry) {
-        showQuestSolvedAnimation(questType.icon, geometry.center)
+    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
+        showQuestSolvedAnimation(editType.icon, geometry.center)
         closeBottomSheet()
     }
 
-    override fun onComposeNote(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry, questTitle: String) {
+    override fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String) {
         showInBottomSheet(
-            LeaveNoteInsteadFragment.create(element.type, element.id, questTitle, geometry.center),
+            LeaveNoteInsteadFragment.create(element.type, element.id, leaveNoteContext, geometry.center),
             false
         )
     }
 
-    override fun onSplitWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry) {
+    override fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(SplitWayFragment.create(questType, way, geometry))
+        showInBottomSheet(SplitWayFragment.create(editType, way, geometry))
         mapFragment.highlightGeometry(geometry)
         mapFragment.hideNonHighlightedPins()
     }
 
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
-        closeBottomSheet()
-    }
-
-    /* ----------------------------- AbstractOverlayForm.Listener ------------------------------- */
-
-    override fun onEdited(overlay: Overlay, element: Element, geometry: ElementGeometry) {
-        showQuestSolvedAnimation(overlay.icon, geometry.center)
         closeBottomSheet()
     }
 

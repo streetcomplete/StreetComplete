@@ -187,7 +187,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         questType: OsmElementQuestType<*>,
         element: Element,
         geometry: ElementGeometry,
-        questTitle: String,
+        leaveNoteContext: String,
     ) {
         message("Composing note")
         popQuestForm()
