@@ -54,7 +54,6 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
     override val changesetComment = "Add whether there are shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
-    override val isSplitWayEnabled = true
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title

@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -139,18 +139,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     private fun createSplitWayAnswer(): AnswerItem? {
-        if (!osmElementQuestType.isSplitWayEnabled) return null
-        val way = element as? Way ?: return null
-
-        /* splitting up a closed roundabout can be very complex if it is part of a route
-           relation, so it is not supported
-           https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
-        */
-        val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull()
-            && way.tags["junction"] == "roundabout"
-        if (isClosedRoundabout) return null
-
-        if (way.isArea()) return null
+        if (!element.isSplittable()) return null
 
         return AnswerItem(R.string.quest_generic_answer_differs_along_the_way) {
             onClickSplitWayAnswer()

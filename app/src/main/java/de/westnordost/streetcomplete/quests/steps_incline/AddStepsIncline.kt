@@ -19,7 +19,6 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
     override val changesetComment = "Add which way leads up for these steps"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.ic_quest_steps
-    override val isSplitWayEnabled = true
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title

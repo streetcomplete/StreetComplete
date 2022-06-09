@@ -19,7 +19,6 @@ class AddStepCount : OsmFilterQuestType<Int>() {
     override val icon = R.drawable.ic_quest_steps_count
     // because the user needs to start counting at the start of the steps
     override val hasMarkersAtEnds = true
-    override val isSplitWayEnabled = true
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title

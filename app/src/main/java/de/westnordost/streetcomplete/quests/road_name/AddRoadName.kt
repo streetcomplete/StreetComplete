@@ -29,7 +29,6 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
-    override val isSplitWayEnabled = true
     override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title

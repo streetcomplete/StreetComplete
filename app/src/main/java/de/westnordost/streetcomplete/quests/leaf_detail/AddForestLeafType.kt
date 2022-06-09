@@ -22,7 +22,6 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     override val changesetComment = "Add leaf type"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
-    override val isSplitWayEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title

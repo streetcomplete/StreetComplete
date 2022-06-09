@@ -27,7 +27,6 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:segregated"
     override val icon = R.drawable.ic_quest_path_segregation
     override val achievements = listOf(BICYCLIST, OUTDOORS)
-    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title
 

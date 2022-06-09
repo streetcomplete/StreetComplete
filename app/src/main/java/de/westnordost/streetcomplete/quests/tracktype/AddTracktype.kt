@@ -23,7 +23,6 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     override val changesetComment = "Add tracktype"
     override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.ic_quest_tractor
-    override val isSplitWayEnabled = true
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title

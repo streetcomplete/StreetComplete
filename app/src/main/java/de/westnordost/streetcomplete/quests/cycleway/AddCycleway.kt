@@ -51,7 +51,6 @@ class AddCycleway(
     override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
-    override val isSplitWayEnabled = true
     override val achievements = listOf(BICYCLIST)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt

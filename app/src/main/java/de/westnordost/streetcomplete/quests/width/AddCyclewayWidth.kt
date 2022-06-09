@@ -35,7 +35,6 @@ class AddCyclewayWidth(
     override val changesetComment = "Determine cycleways width"
     override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_bicycleway_width
-    override val isSplitWayEnabled = true
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0

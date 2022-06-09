@@ -44,7 +44,6 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val changesetComment = "Add whether way is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
-    override val isSplitWayEnabled = true
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title

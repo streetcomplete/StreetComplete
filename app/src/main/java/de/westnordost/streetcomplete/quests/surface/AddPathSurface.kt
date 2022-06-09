@@ -33,7 +33,6 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val changesetComment = "Add path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
-    override val isSplitWayEnabled = true
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title

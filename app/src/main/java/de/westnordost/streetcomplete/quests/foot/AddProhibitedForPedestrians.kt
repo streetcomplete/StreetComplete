@@ -44,7 +44,6 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val changesetComment = "Add whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
-    override val isSplitWayEnabled = true
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited

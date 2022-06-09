@@ -37,14 +37,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
 
-    /** Whether the user should be given the option to split the way instead - shown in the
-     * "Other answers..." menu. By default: false.
-     *
-     *  Splitting of a way is necessary when the property the quest is asked for in reality changes
-     *  over the course of the way. E.g. a street has a sidewalk for only a part of the whole
-     *  length. */
-    val isSplitWayEnabled: Boolean get() = false
-
     /** Whether the user should be able to delete this element instead. Only elements that
      *  are not expected...
      *  - to be part of a relation

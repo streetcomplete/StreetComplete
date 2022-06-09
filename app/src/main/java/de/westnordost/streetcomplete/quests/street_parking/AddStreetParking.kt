@@ -70,7 +70,6 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
     override val changesetComment = "Add how cars park here"
     override val wikiLink = "Key:parking:lane"
     override val icon = R.drawable.ic_quest_parking_lane
-    override val isSplitWayEnabled = true
     override val achievements = listOf(CAR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
