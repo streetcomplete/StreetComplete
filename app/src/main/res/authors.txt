@@ -253,3 +253,6 @@ vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/w
 
 ic_quest_tree.xml              Public Domain     https://commons.wikimedia.org/wiki/File:Broccoli-tree.svg (Dvortygirl)
 ic_quest_website.xml           Public Domain     https://commons.wikimedia.org/wiki/File:Web_(89510)_-_The_Noun_Project.svg
+
+crossing_type_signals_zebra... CC BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Passage_pi%C3%A9ton_Cours_Lafayette_%C3%A0_Lyon_trottoir_oppos%C3%A9,_d%C3%A9but_du_Square_J%C3%A9r%C3%B4me_B%C3%A9rerd.jpg (Benoît Prieur)
+crossing_type_marked.jpg       CC BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Pedestrian_crossing_Gympie_Rd_and_Murphy_Rd_pedestrian_crossing_DSCF5782.jpg (John Robert McPherson)

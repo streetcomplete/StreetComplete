@@ -146,8 +146,6 @@
     <string name="quest_recycling_excrement_bag_dispenser">It has an excrement bag dispenser</string>
     <string name="pref_offset_fix_title">Remove quest marker offsets</string>
     <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
-    <string name="quest_crossing_type_marked_raised">Raised with markings</string>
-    <string name="quest_crossing_type_unmarked_raised">Raised without road markings</string>
     <string name="quest_crossing_type_zebra">Zebra</string>
     <string name="quest_tree_genus_title">What is the genus or species of this tree?</string>
     <string name="quest_tree_error">"Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note."</string>
@@ -201,6 +199,8 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_osmose_hide_type">Ignore issues of this type when scanning</string>
     <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
     <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
+    <string name="quest_crossing_type_signals_controlled_zebra">Traffic lights and zebra</string>
+    <string name="quest_crossing_type_raised">Raised crossing</string>
 
     <!-- Store description -->
 
