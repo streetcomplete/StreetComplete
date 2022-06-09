@@ -15,6 +15,7 @@
         android:textSize="@dimen/large_input"
         android:gravity="center"
         android:inputType="numberDecimal"
+        android:digits="0123456789.,"
         tools:text="30"
         />
 
