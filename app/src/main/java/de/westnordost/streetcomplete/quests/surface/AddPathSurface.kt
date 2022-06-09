@@ -77,4 +77,4 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
     }
 }
 
-private const val ALLOW_GENERIC_PATH = "allow_generic_path"
+private const val ALLOW_GENERIC_PATH = "qs_AddPathSurface_allow_generic"

@@ -61,4 +61,4 @@ class AddStepCount(private val prefs: SharedPreferences) : OsmElementQuestType<I
 
 }
 
-private const val PREF_MAX_STEPS_LENGTH = "max_steps_length"
+private const val PREF_MAX_STEPS_LENGTH = "qs_AddStepCount_max_length"

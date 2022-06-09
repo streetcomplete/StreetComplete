@@ -69,4 +69,4 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
     "healthcare" to arrayOf("psychotherapist", "physiotherapist", "laboratory")
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
 
-private const val PREF_PHONE_ELEMENTS = "pref_phone_elements"
+private const val PREF_PHONE_ELEMENTS = "qs_AddContactPhone_element_selection"

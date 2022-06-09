@@ -178,4 +178,4 @@ class AddLevel(
 
 }
 
-private const val PREF_MORE_LEVELS = "prefs_more_levels"
+private const val PREF_MORE_LEVELS = "qs_AddLevel_more_levels"

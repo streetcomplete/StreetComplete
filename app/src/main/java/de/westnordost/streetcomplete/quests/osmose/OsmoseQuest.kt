@@ -57,14 +57,14 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
                     .show()
             }
             .setNegativeButton(R.string.quest_osmose_settings_disable) { _, _ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE, false).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false).apply()
             }
             .setPositiveButton(R.string.quest_osmose_settings_enable) { _, _ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE, true).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, true).apply()
             }
             .create()
 
 }
 
-const val PREF_OSMOSE_ITEMS = "quest_osmose_items"
-const val PREF_OSMOSE_ENABLE = "quest_osmose_enable"
+const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"
+const val PREF_OSMOSE_ENABLE_DOWNLOAD = "qs_OsmoseQuest_enable_download"

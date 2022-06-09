@@ -15,6 +15,8 @@ import java.text.ParseException
 
 // restarts are necessary on changes of element selection because the filter is created by lazy,
 //  and I have no idea how to reset this any other way
+
+// quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
 fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)

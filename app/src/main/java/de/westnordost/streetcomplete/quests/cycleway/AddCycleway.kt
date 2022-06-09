@@ -404,4 +404,4 @@ class AddCycleway(
 private fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
     left?.let(block) == true || right?.let(block) == true
 
-private const val PREF_CYCLEWAY_DISTANCE = "quest_cycleway_distance"
+private const val PREF_CYCLEWAY_DISTANCE = "qs_AddCycleway_distance"

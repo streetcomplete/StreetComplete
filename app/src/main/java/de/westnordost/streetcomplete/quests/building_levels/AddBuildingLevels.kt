@@ -51,4 +51,4 @@ private val BUILDINGS_WITH_LEVELS = arrayOf(
     "cabin"
 ).joinToString("|")
 
-private const val PREF_BUILDING_LEVELS_SELECTION = "quest_building_levels_selection"
+private const val PREF_BUILDING_LEVELS_SELECTION = "qs_AddBuildingLevels_element_selection"

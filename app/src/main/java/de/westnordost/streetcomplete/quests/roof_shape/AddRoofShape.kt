@@ -78,4 +78,4 @@ class AddRoofShape(
 
 }
 
-private const val PREF_ROOF_SHAPE_MAX_LEVELS = "quest_roof_shape_max_levels"
+private const val PREF_ROOF_SHAPE_MAX_LEVELS = "qs_AddRoofShape_max_levels"

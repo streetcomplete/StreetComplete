@@ -8,10 +8,8 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestDao
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.FALSE_POSITIVE
@@ -33,7 +31,7 @@ class OsmoseDao(
     val client = OkHttpClient()
 
     fun download(bbox: BoundingBox) {
-        if (!sharedPrefs.getBoolean(questPrefix(sharedPrefs) + PREF_OSMOSE_ENABLE, false)) return
+        if (!sharedPrefs.getBoolean(questPrefix(sharedPrefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false)) return
         // http://osmose.openstreetmap.fr/en/issues/open.csv?zoom=17&item=xxxx&level=1&limit=500&bbox=16.40570998191834%2C48.179314880149114%2C16.41987204551697%2C48.18563147705161
         // replace bbox
         // try parsing result lines, split each by ','

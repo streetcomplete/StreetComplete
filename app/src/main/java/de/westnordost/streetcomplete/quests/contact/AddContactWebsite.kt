@@ -44,4 +44,4 @@ class AddContactWebsite(private val prefs: SharedPreferences) : OsmFilterQuestTy
 
 }
 
-private const val PREF_WEBSITE_ELEMENTS = "pref_phone_elements"
+private const val PREF_WEBSITE_ELEMENTS = "qs_AddContactWebsite_element_selection"

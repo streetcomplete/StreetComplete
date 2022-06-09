@@ -71,4 +71,4 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
     }
 }
 
-private const val ALLOW_GENERIC_ROAD = "allow_generic_road"
+private const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"

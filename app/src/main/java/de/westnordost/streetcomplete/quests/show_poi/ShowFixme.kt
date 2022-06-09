@@ -42,5 +42,5 @@ class ShowFixme(private val prefs: SharedPreferences) : OsmFilterQuestType<Boole
         singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_FIXME_IGNORE, FIXME_IGNORE_DEFAULT, R.string.quest_settings_fixme_title)
 }
 
-private const val PREF_FIXME_IGNORE = "quest_fixme_ignore"
+private const val PREF_FIXME_IGNORE = "qs_ShowFixme_ignore_values"
 private const val FIXME_IGNORE_DEFAULT = "yes|continue|continue?"
