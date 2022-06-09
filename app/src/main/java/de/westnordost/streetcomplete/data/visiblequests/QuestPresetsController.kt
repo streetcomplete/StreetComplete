@@ -37,9 +37,9 @@ class QuestPresetsController(
         val visibilities = visibleQuestTypeDao.getAll(copyFromId)
         visibilities.forEach { visibleQuestTypeDao.put(presetId, it.key, it.value) }
 
-        val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith(copyFromId.toString() + "_") }
+        val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${copyFromId}_qs_") }
         copyFromQuestSettings.forEach { (key, value) ->
-            val newKey = key.replace(copyFromId.toString() + "_", presetId.toString() + "_")
+            val newKey = key.replace("${copyFromId}_qs_", "${presetId}_qs_")
             when (value) {
                 is Boolean -> prefs.edit().putBoolean(newKey, value).apply()
                 is Int -> prefs.edit().putInt(newKey, value).apply()
