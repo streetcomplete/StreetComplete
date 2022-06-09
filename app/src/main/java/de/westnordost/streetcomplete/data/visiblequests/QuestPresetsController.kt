@@ -56,6 +56,8 @@ class QuestPresetsController(
             selectedId = 0
         }
         questPresetsDao.delete(presetId)
+        val presetSettings = prefs.all.keys.filter { it.startsWith("${presetId}_qs_") }
+        presetSettings.forEach { prefs.edit().remove(it).apply() }
         onDeletedQuestPreset(presetId)
     }
 
