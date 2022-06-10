@@ -1,3 +1,17 @@
+StreetComplete expert edition is a modified version of StreetComplete with enhanced capabilities.
+
+Notable changes:
+* Option to directly edit tags
+* Ability to create notes in a GPX file
+* Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest.
+* More customization of UI and what is displayed
+* Configurable quests
+* Different app name, which means edits made with this version will not be counted in StreetComplete statistics
+
+A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml)
+
+# original readme
+
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.

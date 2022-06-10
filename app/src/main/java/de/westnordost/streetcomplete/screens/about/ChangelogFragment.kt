@@ -89,7 +89,18 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 data class Release(val title: String, val description: String)
 
 private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
+    val upstreamChangelog = resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
+    val eeChangelog = resources.getYamlStringMap(R.raw.changelog_ee).map { Release(it.key, addedLinksEE(it.value)) }
+    (upstreamChangelog + eeChangelog).sortedBy {
+        // reverse sort by version number, _ee first, then normal, then beta
+        when {
+            it.title.endsWith("_ee") ->
+                -it.title.substringAfter("v").substringBefore("_ee").toFloat() - 0.001F
+            it.title.contains("-beta") ->
+                -it.title.substringAfter("v").substringBefore("-beta").toFloat() + 0.001F
+            else -> -it.title.substringAfter("v").toFloat()
+        }
+    }
 }
 
 private fun addedLinks(description: String): String {
@@ -97,6 +108,18 @@ private fun addedLinks(description: String): String {
         .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
             val issue = matchResult.groupValues[1]
             "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
+        }
+        .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
+            val contributor = matchResult.groupValues[1]
+            "<a href=\"https://github.com/$contributor\">@$contributor</a>"
+        }
+}
+
+private fun addedLinksEE(description: String): String {
+    return description
+        .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
+            val issue = matchResult.groupValues[1]
+            "<a href=\"https://github.com/Helium314/StreetComplete/issues/$issue\">#$issue</a>"
         }
         .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
             val contributor = matchResult.groupValues[1]

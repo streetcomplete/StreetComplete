@@ -1,0 +1,54 @@
+v43.1_ee: |
+  <h2>First release of expert edition</h2>
+  <h3>New quests</h3>
+  <ul>
+  <li>Ask for material of benches and picnic tables (by @mnalis)</li>
+  <li>Ask if track grade and surface are contradictory (by @matkoniecz)</li>
+  <li>Ask for phone number and website of some places</li>
+  <li>Ask for cuisine of restaurants</li>
+  <li>Ask for healthcare speciality of doctors</li>
+  <li>Ask for type and operator of service buildings</li>
+  <li>Ask for outdoor seating type</li>
+  <li>Ask for species or genus of trees</li>
+  <li>Show Osmose issues as quests</li>
+  <li>Allow specifying a message for a specific element, shown as quest</li>
+  <li>Show POIs (not really a quest, but it’s still realized using quests)</li>
+  </ul>
+  <h3>Quest changes</h3>
+  <ul>
+  <li>Allow disabling and moving notes quest</li>
+  <li>Add private answer to some quests</li>
+  <li>Add demolished answer to building type quest</li>
+  <li>Add more building types</li>
+  <li>Move no cycleway answer to better position</li>
+  <li>Add more crossing types and allow tagging raised crossing (combined with speed table)</li>
+  </ul>
+  <h3>Additional and extended settings</h3>
+  <ul>
+  <li>Quest settings for some quests. Changes usually require re-scanning for quest to be applied.</li>
+  <li>Zoom using volume buttons</li>
+  <li>Switch off 3D buildings</li>
+  <li>Show geometries for quests without selecting them</li>
+  <li>When clearing data, decide whether map data or background tiles should be deleted</li>
+  <li>Disable auto-download</li>
+  <li>Choose location update intervals</li>
+  <li>Hide notes by specific users</li>
+  <li>High-contrast dark theme</li>
+  <li>Copy quest presets</li>
+  <li>Quick-hide button (short press hides temporarily, long press hides permanently)</li>
+  <li>Don’t re-download recent data on manually scanning for quests</li>
+  <li>Show other quests for the same element (currently also showing hidden and disabled quests)</li>
+  <li>Quick settings button for switching presets, filtering levels and reversing quest order</li>
+  <li>Create notes in a GPX file instead of OSM notes</li>
+  <li>Remove offsets of quest pins and white dots</li>
+  <li>Show lit quests only at night, or increase their priority at night</li>
+  </ul>
+  <h3>Other</h3>
+  <ul>
+  <li>Change app name</li>
+  <li>Quicker find location when device recently acquired location from some other app</li>
+  <li>Pause upload when starting a download</li>
+  <li>More efficient database queries when checking whether a quest is hidden</li>
+  <li>Use faster SQLite library (ca 20% faster than default on Android 9)</li>
+  <li>Additional warning about this version on first start</li>
+  </ul>
