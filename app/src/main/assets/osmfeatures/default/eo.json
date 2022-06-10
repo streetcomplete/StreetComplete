@@ -312,7 +312,6 @@
                     "label": "Servoj",
                     "options": {
                         "cosmetics": "kosmetiko",
-                        "nails": "manikuro/pedikuro (ung-flagado)",
                         "tanning": "sunbrunigo"
                     }
                 },
@@ -1552,13 +1551,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Montbicikla malfacileca skalo de IMBA",
-                    "options": {
-                        "0": "Facilega (blanka cirklo)",
-                        "1": "Facila (verda cirklo)",
-                        "2": "Meza (blua kvadrato)",
-                        "3": "Malfacila (nigra rombo)",
-                        "4": "Malfacilega (duobla nigra rombo)"
-                    },
                     "placeholder": "Facila, meza, malfacila…",
                     "terms": "imba"
                 },
@@ -2265,9 +2257,6 @@
                         "emergency_access": "aliro por vivsava servo",
                         "parking_aisle": "parkumeja strateto"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Servoj"
                 },
                 "service/vehicle": {
                     "label": "Servoj"
@@ -5676,10 +5665,6 @@
                     "name": "Kodumulejo (hackerspace)",
                     "terms": "hackerspace,hackspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Ĉeval-rajdadejo",
-                    "terms": "ĉevalrajdado,chevalrajdado,cxevalrajdado,rajdejo,rajdadejo"
-                },
                 "leisure/ice_rink": {
                     "name": "Glitkurejo",
                     "terms": "glitejo"
@@ -5763,10 +5748,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Kriketa ludkampo",
                     "terms": "kriketo,kriketejo"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Rajdlernejo",
-                    "terms": "ĉevalrajdlernejo,rajdlernejo,rajdejo,rajdadejo,maneĝo,maneĝejo,hipodromo"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Ludkampo por herbhokeo",
@@ -5899,10 +5880,6 @@
                 "leisure/track/cycling": {
                     "name": "Kurejo bicikla",
                     "terms": "dromo,biciklado,biciklkonkursejo,konkursejo"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Kurejo ĉevala",
-                    "terms": "ĉevalkurejo,chevalkurejo,cxevalkurejo,hipodromo"
                 },
                 "leisure/track/running": {
                     "name": "Kurejo",
@@ -8291,10 +8268,6 @@
                 "type/route/hiking": {
                     "name": "Piedirada kurso",
                     "terms": "turisma kurso,vojo turisma,marŝada kurso"
-                },
-                "type/route/horse": {
-                    "name": "Ĉevala kurso",
-                    "terms": "chevala kurso,cxevala kurso,ĉevalvojo"
                 },
                 "type/route/light_rail": {
                     "name": "Kurso de fervojo malpeza",

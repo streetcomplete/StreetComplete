@@ -1626,4 +1626,22 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Un accotement est une bande d’arrêt d’urgence clairement délimitée. La zone d’accotement n’est ni nécessairement pavée sur toute sa surface ni forcément suffisamment large pour qu’une voiture puisse s’arrêter complètement à l’écart du traffic."</string>
     <string name="quest_cycleway_value_none_and_oneway">"aucun, circulation en vélo interdite dans cette direction"</string>
+    <string name="map_btn_create_track">"Créer un enregistrement de trace GPS"</string>
+    <string name="map_btn_stop_track">"Arrêter l’enregistrement"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Combien d’espaces de location de vélos il y a-il ici ?"</string>
+    <string name="quest_bicycle_rental_type_title">"Quel type de location de vélos est ceci ?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Station où les vélos sont verrouillés"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Magasin de vélos qui propose des vélos à louer"</string>
+    <string name="quest_bicycle_shop_repair_title">"Des services de réparation de vélos sont-ils proposés ici ?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Est ce que des vélos d’occasion sont vendus ici ?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Non, seulement des neufs"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Oui, avec des neufs également"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Oui, exclusivement"</string>
+    <string name="quest_building_entrance_title">"Quel type d’entrée de bâtiment est-ce ?"</string>
+    <string name="quest_building_entrance_main">"Entrée principale d’un bâtiment public"</string>
+    <string name="quest_building_entrance_staircase">"Cage d’escalier (ex. vers un appartement)"</string>
+    <string name="quest_building_entrance_service">"Entrée de service"</string>
+    <string name="quest_building_entrance_exit">"Sortie seulement"</string>
+    <string name="quest_building_entrance_emergency_exit">"Sortie d’urgence"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Y a-t’il une pompe à vélo ici (au moins quand c’est ouvert) ?"</string>
 </resources>

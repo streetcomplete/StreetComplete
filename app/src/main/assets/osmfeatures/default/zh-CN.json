@@ -308,7 +308,6 @@
                     "label": "服务",
                     "options": {
                         "cosmetics": "化妆品",
-                        "nails": "美甲",
                         "tanning": "日光浴"
                     }
                 },
@@ -1528,13 +1527,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA(国际登山车协会)路径难度",
-                    "options": {
-                        "0": "最简单(白圈)",
-                        "1": "容易(绿圈)",
-                        "2": "中等(蓝方块)",
-                        "3": "困难(黑色钻石型)",
-                        "4": "极端困难(双重黑色钻石型)"
-                    },
                     "placeholder": "简单, 中等, 困难...",
                     "terms": "imba步道难度,imba步行径难度"
                 },
@@ -2172,9 +2164,6 @@
                         "emergency_access": "消防通道",
                         "parking_aisle": "停车场通道"
                     }
-                },
-                "service/bicycle": {
-                    "label": "服务"
                 },
                 "service/vehicle": {
                     "label": "车辆服务"
@@ -4797,8 +4786,8 @@
                     "name": "便道"
                 },
                 "highway/pedestrian_area": {
-                    "name": "行人区域（广场）",
-                    "terms": "公交,公交站,公交车,巴士,大巴,客车,车站,站台"
+                    "name": "徒步区",
+                    "terms": "徒步,广场,行人,步行,人行,区"
                 },
                 "highway/pedestrian_line": {
                     "name": "步行街",
@@ -5350,10 +5339,6 @@
                     "name": "创客空间",
                     "terms": "创客空间,创客,众创,创业,创新,孵化器,黑客,电脑,软件,硬件,程序,互联网,机械,技术,科学,电子,数字,艺术,联合办公,共享办公,办公,工作室,社区"
                 },
-                "leisure/horse_riding": {
-                    "name": "骑马场",
-                    "terms": "骑马场,马场,骑马"
-                },
                 "leisure/ice_rink": {
                     "name": "滑冰场",
                     "terms": "滑冰,滑冰场"
@@ -5428,10 +5413,6 @@
                 "leisure/pitch/cricket": {
                     "name": "板球场地",
                     "terms": "板球,场地"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "骑行场地",
-                    "terms": "骑行,场地,自行车,单车"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "曲棍球场地"
@@ -5545,9 +5526,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "自行车赛道"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "赛马场跑道"
                 },
                 "leisure/track/running": {
                     "name": "体育跑道",
@@ -7762,10 +7740,6 @@
                 "type/route/hiking": {
                     "name": "徒步线路",
                     "terms": "远足线路,路线,线路,徒步,远足,远足路线,徒步路线"
-                },
-                "type/route/horse": {
-                    "name": "骑马路线",
-                    "terms": "骑马线路"
                 },
                 "type/route/light_rail": {
                     "name": "轻轨线路",

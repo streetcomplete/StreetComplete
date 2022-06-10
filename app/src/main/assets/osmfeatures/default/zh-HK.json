@@ -296,7 +296,6 @@
                     "label": "服務",
                     "options": {
                         "cosmetics": "化妝品",
-                        "nails": "美甲",
                         "tanning": "日光浴"
                     }
                 },
@@ -1328,13 +1327,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "國際越野單車協會路徑難度",
-                    "options": {
-                        "0": "最容易（白圓圈）",
-                        "1": "容易（綠圓圈）",
-                        "2": "中等（藍正方）",
-                        "3": "困難（黑鑽石）",
-                        "4": "極度困難（雙黑鑽石）"
-                    },
                     "placeholder": "容易、中等、困難 …"
                 },
                 "mtb/scale/uphill": {
@@ -1926,9 +1918,6 @@
                         "emergency_access": "緊急通道",
                         "parking_aisle": "停車場通道"
                     }
-                },
-                "service/bicycle": {
-                    "label": "服務"
                 },
                 "service/vehicle": {
                     "label": "服務"
@@ -4393,10 +4382,6 @@
                     "name": "高爾夫球場",
                     "terms": "golf course,哥夫球場,高爾夫球場"
                 },
-                "leisure/horse_riding": {
-                    "name": "騎馬設施",
-                    "terms": "horseback riding facility,騎馬場"
-                },
                 "leisure/ice_rink": {
                     "name": "溜冰場",
                     "terms": "溜冰場"
@@ -4460,10 +4445,6 @@
                 "leisure/pitch/cricket": {
                     "name": "木球場",
                     "terms": "cricket field,木球場"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "策騎場地",
-                    "terms": "riding arena,策騎場地"
                 },
                 "leisure/pitch/futsal": {
                     "name": "室內五人足球場"
@@ -4548,9 +4529,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "單車徑"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "賽馬跑道"
                 },
                 "leisure/track/running": {
                     "name": "緩跑徑"
@@ -5861,9 +5839,6 @@
                 "type/route/hiking": {
                     "name": "遠足路綫",
                     "terms": "hiking route,行山路綫,行山路線,遠足路線"
-                },
-                "type/route/horse": {
-                    "name": "騎馬路綫"
                 },
                 "type/route/light_rail": {
                     "name": "輕鐵路綫",

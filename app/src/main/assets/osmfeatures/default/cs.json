@@ -312,8 +312,12 @@
                     "label": "Služby",
                     "options": {
                         "cosmetics": "Kosmetika",
-                        "nails": "Nehty",
-                        "tanning": "Opalování"
+                        "hair_removal": "Odstranění vlasů",
+                        "nails": "Manikúra / Pedikúra",
+                        "skin_care": "Péče o pleť",
+                        "spa": "Denní lázně",
+                        "tanning": "Opalování",
+                        "waxing": "Voskování"
                     }
                 },
                 "bench": {
@@ -1090,8 +1094,15 @@
                         "button;sensor": {
                             "description": "Světla aktivována senzorem nebo stisknutím tlačítka",
                             "title": "Aktivováno tlačítkem nebo senzorem"
-                        }
-                    }
+                        },
+                        "no": "Ne",
+                        "sensor": {
+                            "description": "Světla aktivována stisknutím senzoru",
+                            "title": "Aktivováno senzorem"
+                        },
+                        "yes": "Ano"
+                    },
+                    "terms": "blikající světla,blikačky,blikání,blikat,přerušovaná světla"
                 },
                 "floating": {
                     "label": "Plovoucí"
@@ -1156,6 +1167,10 @@
                 "generator/type": {
                     "label": "Typ"
                 },
+                "genus": {
+                    "label": "Rod",
+                    "placeholder": "Acer, Platanus, Quercus …"
+                },
                 "geyser/height": {
                     "label": "Výška výtrysku"
                 },
@@ -1218,6 +1233,13 @@
                 },
                 "highway": {
                     "label": "Typ"
+                },
+                "highway_cartpath": {
+                    "label": "Typ cesty",
+                    "options": {
+                        "path": "Vozová stezka",
+                        "service": "Účelová komunikace, příjezd"
+                    }
                 },
                 "historic": {
                     "label": "Typ"
@@ -1599,11 +1621,11 @@
                 "mtb/scale/imba": {
                     "label": "Podle IMBA",
                     "options": {
-                        "0": "Nejlehčí (bílý kruh)",
-                        "1": "Lehké (zelený kruh)",
-                        "2": "Středně těžké (modrý čtverec)",
-                        "3": "Těžké (černý kosočtverec)",
-                        "4": "Velmi těžké (dvojitý černý kosočtverec)"
+                        "0": "⚪ Nejlehčí (bílý kruh)",
+                        "1": "🟢 Lehké (zelený kruh)",
+                        "2": "🟦 Středně těžké (modrý čtverec)",
+                        "3": "◆ Těžké (černý kosočtverec)",
+                        "4": "◆◆ Velmi těžké (dvojitý černý kosočtverec)"
                     },
                     "placeholder": "Lehké, středně těžké, těžké",
                     "terms": "horská kola,hory,kolo,cyklista,cyklistika,obtížnost,jízda na kole,náročnost,jízdní kolo,do kopce,imba,rating,bikepark,překážky,překážkové,horská cyklistika,klasifikace"
@@ -2313,7 +2335,7 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Služby"
+                    "label": "Služby jízdních kol"
                 },
                 "service/vehicle": {
                     "label": "Služby"
@@ -2410,6 +2432,10 @@
                         "survey": "Průzkum"
                     },
                     "terms": "zdroje,původ,zdroj,odkud,zdroj informací,web,rešerše,ověření,potvrzení"
+                },
+                "species": {
+                    "label": "Druh",
+                    "placeholder": "Acer platanoides, Quercus robur, …"
                 },
                 "species/wikidata": {
                     "label": "Wikidata druhu",
@@ -2612,6 +2638,10 @@
                 },
                 "target": {
                     "label": "Cíl"
+                },
+                "taxon": {
+                    "label": "Taxon",
+                    "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …"
                 },
                 "telecom": {
                     "label": "Typ"
@@ -5729,10 +5759,6 @@
                     "name": "hackerspace",
                     "terms": "makerspace,hackspace,hacklab"
                 },
-                "leisure/horse_riding": {
-                    "name": "Jezdecký areál",
-                    "terms": "jízda na koni,stáje"
-                },
                 "leisure/ice_rink": {
                     "name": "Kluziště",
                     "terms": "kluziště,zimní stadion,led,ledová plocha"
@@ -5816,10 +5842,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Kriketové hřiště",
                     "terms": "hřiště na kriket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Jízdní aréna",
-                    "terms": "drezúra,jízda na koni,kůň,koně,jízda,jezdit,aréna"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "hřiště pro pozemní hokej",
@@ -5958,10 +5980,6 @@
                 "leisure/track/cycling": {
                     "name": "cyklistická dráha",
                     "terms": "cyklistická dráha,dráha pro cyklisty,cyklistické závody,závodní cyklistika,dráha pro jízdu na kole,závodní dráha,závodní dráha pro cyklisty,bicykl"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Jezdecká dráha",
-                    "terms": "jezdecká dostihová dráha,sázení na dostihy,dostihy,koňská dráha,dostihová dráha"
                 },
                 "leisure/track/running": {
                     "name": "Běžecká dráha",
@@ -8129,9 +8147,6 @@
                 "type/route/hiking": {
                     "name": "Turistická trasa",
                     "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt"
-                },
-                "type/route/horse": {
-                    "name": "Stezka pro jízdu na koni"
                 },
                 "type/route/light_rail": {
                     "name": "Trasa lehké dráhy"

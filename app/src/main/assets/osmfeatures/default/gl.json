@@ -1244,13 +1244,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultade do roteiro de sendeiro",
-                    "options": {
-                        "0": "O máis doado (círculo branco)",
-                        "1": "Doado (círculo verde)",
-                        "2": "Media (cadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Extremadamente difícil (dobre diamante negro)"
-                    },
                     "placeholder": "Doado, Medio, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -1854,9 +1847,6 @@
                 },
                 "service": {
                     "label": "Tipo"
-                },
-                "service/bicycle": {
-                    "label": "Servizos"
                 },
                 "service/vehicle": {
                     "label": "Servizos"
@@ -4685,9 +4675,6 @@
                 "leisure/golf_course": {
                     "name": "Campo de golf"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro de equitación"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de xeo"
                 },
@@ -4749,10 +4736,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Campo de crícket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Picadeiro",
-                    "terms": "picadeiro,cabalos,equitación"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hóckey",
@@ -4834,9 +4817,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Circuíto de ciclismo"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de carreiras de cabalos"
                 },
                 "leisure/track/running": {
                     "name": "Pista de atletismo"

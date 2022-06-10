@@ -959,13 +959,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Težina staze po IMBA",
-                    "options": {
-                        "0": "Najlakše (bijeli krug)",
-                        "1": "Lagano (plava staza)",
-                        "2": "Srednje (plavi kvadrat)",
-                        "3": "Teško (crni dijamant)",
-                        "4": "Izuzetno teško (dupli crni dijamant)"
-                    },
                     "placeholder": "Lagano, srednje, teško...",
                     "terms": "imba disciplina brdskog biciklizma"
                 },
@@ -2811,9 +2804,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Staza za utrkivanje bicikala"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Staza za utrkivanje konja"
                 },
                 "leisure/track/running": {
                     "name": "Staza za trčanje"

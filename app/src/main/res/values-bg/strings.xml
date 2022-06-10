@@ -1564,4 +1564,31 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Сигурни ли сте, че велосипедистите не могат да ползват тази еднопосочна улица и двете направления? Ако се съмнявате, проверете дали има знаци за това."</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Приемат ли се кредитни или дебитни карти?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"И двата вида се приемат"</string>
+    <string name="quest_accepts_cards_credit_only">"Само кредитни карти"</string>
+    <string name="quest_accepts_cards_dedit_only">"Сано дебитни карти"</string>
+    <string name="quest_accepts_cards_unavailable">"Не се приемат карти"</string>
+    <string name="quest_air_pump_compressor_title">"Има ли въздушен компресор тук?"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Магазин за велосипеди, предлага и под наем"</string>
+    <string name="quest_bicycle_shop_repair_title">"Ремонтират ли се велосипеди тук?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Продават ли се велосипеди втора ръка?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Не, само нови"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Да, нови и употребявани"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Да, само втора употреба"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Не се продават велосипеди"</string>
+    <string name="quest_building_entrance_title">"Какъв вид вход е това?"</string>
+    <string name="quest_building_entrance_main">"Главен вход за зданието"</string>
+    <string name="quest_building_entrance_staircase">"Вход към стълбище (например към апартаменти)"</string>
+    <string name="quest_building_entrance_service">"Сервизен вход"</string>
+    <string name="quest_building_entrance_exit">"Изход"</string>
+    <string name="quest_building_entrance_emergency_exit">"Авариен изход"</string>
+    <string name="quest_building_entrance_yes">"Друг вид вход"</string>
+    <string name="quest_building_entrance_dead_end">"Не е вход"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Докоснете екрана за да започнете измерване"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Има ли достъпна помпа за велосипеди (или поне докато е отворено)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Тук има ли работеща помпа за велосипеди?"</string>
 </resources>

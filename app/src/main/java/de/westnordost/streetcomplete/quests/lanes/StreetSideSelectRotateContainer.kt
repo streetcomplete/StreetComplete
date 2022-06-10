@@ -41,7 +41,7 @@ class StreetSideSelectRotateContainer @JvmOverloads constructor(
         set(value) {
             val view = view ?: return
             view.rotation = value
-            val scale = abs(cos(rotation * PI / 180)).toFloat()
+            val scale = abs(cos(value * PI / 180)).toFloat()
             view.scaleX = 1 + scale * 2 / 3f
             view.scaleY = 1 + scale * 2 / 3f
         }

@@ -44,6 +44,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     override val noteInput get() = contentBinding.noteInput
 
+    private var hasGpxAttached: Boolean = false
+
     interface Listener {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point)
@@ -52,9 +54,11 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        hasGpxAttached = arguments?.getBoolean(ARG_HAS_GPX_ATTACHED) ?: false
+
         childFragmentManagerOrNull?.addFragmentOnAttachListener { fragmentManager, fragment ->
             if (fragment is AttachPhotoFragment) {
-                fragment.hasGpxAttached = arguments?.getBoolean(ARG_HAS_GPX_ATTACHED) ?: false
+                fragment.hasGpxAttached = hasGpxAttached
             }
         }
     }
@@ -109,6 +113,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         return a
     }
+
+    override fun isRejectingClose() = super.isRejectingClose() || hasGpxAttached
 
     override fun onDiscard() {
         super.onDiscard()

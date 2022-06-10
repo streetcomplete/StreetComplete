@@ -301,7 +301,6 @@
                     "label": "Služby",
                     "options": {
                         "cosmetics": "Kozmetika",
-                        "nails": "nechty",
                         "tanning": "Opaľovanie"
                     }
                 },
@@ -1420,13 +1419,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Obtiažnosť podľa IMBA",
-                    "options": {
-                        "0": "Najľahšia (biely kruh)",
-                        "1": "Ľahká (zelený kruh)",
-                        "2": "Stredná (modrý štvorec)",
-                        "3": "Ťažká (čierny kosoštvorec)",
-                        "4": "Veľmi ťažká (dvojitý čierny kosoštvorec)"
-                    },
                     "placeholder": "Lahká, stredná, ťažká...",
                     "terms": "imba,náročnosť trailu podľa imba,mtb trail,horská cyklistika"
                 },
@@ -2080,9 +2072,6 @@
                         "emergency_access": "Núdzový vstup",
                         "parking_aisle": "Parkovacia ulička"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Služby"
                 },
                 "service/vehicle": {
                     "label": "Služby"
@@ -4912,7 +4901,7 @@
                 },
                 "leisure/bandstand": {
                     "name": "Hudobný pavilón",
-                    "terms": "hudobny pavilon,hudobný altán,hudobny altan,altan,pavilón,pavilon,pódium"
+                    "terms": "hudobny pavilon,hudobný altán,hudobny altan,altan,pavilón,pavilon,pódium,podium"
                 },
                 "leisure/beach_resort": {
                     "name": "Plážový rezort"
@@ -5022,9 +5011,6 @@
                 "leisure/hackerspace": {
                     "name": "Hackerspace"
                 },
-                "leisure/horse_riding": {
-                    "name": "Zariadenie jazdy na koni"
-                },
                 "leisure/ice_rink": {
                     "name": "Klzisko",
                     "terms": "ľadová plocha,ladova plocha,korčulovanie,korculovanie,ľad,lad"
@@ -5094,9 +5080,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Kriketové ihrisko"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Jazdecká aréna"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Ihrisko pre pozemný hokej"
@@ -5200,9 +5183,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Cyklodráha"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Dostihová dráha"
                 },
                 "leisure/track/running": {
                     "name": "Bežecká dráha"
@@ -7061,9 +7041,6 @@
                 "type/route/hiking": {
                     "name": "Turistická trasa",
                     "terms": "turisticka trasa,hiking,trekking,trasa,trek,tura,túra,turistika"
-                },
-                "type/route/horse": {
-                    "name": "Jazdecká trasa"
                 },
                 "type/route/light_rail": {
                     "name": "Trasa ľahkého metra"

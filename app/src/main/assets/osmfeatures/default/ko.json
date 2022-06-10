@@ -262,7 +262,6 @@
                     "label": "서비스",
                     "options": {
                         "cosmetics": "화장품",
-                        "nails": "네일",
                         "tanning": "태닝"
                     }
                 },
@@ -1216,13 +1215,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA 산길 난이도",
-                    "options": {
-                        "0": "매우 쉬움 (하얀 동그라미)",
-                        "1": "쉬움 (초록 동그라미)",
-                        "2": "중간 (파란 네모)",
-                        "3": "어려움 (검은 마름모)",
-                        "4": "매우 어려움 (두 검은 마름모)"
-                    },
                     "placeholder": "쉬움, 중간, 어려움..."
                 },
                 "mtb/scale/uphill": {
@@ -1726,9 +1718,6 @@
                     "options": {
                         "drive-through": "드라이브 스루"
                     }
-                },
-                "service/bicycle": {
-                    "label": "서비스"
                 },
                 "service/vehicle": {
                     "label": "서비스"
@@ -4443,10 +4432,6 @@
                     "name": "해커스페이스",
                     "terms": "메이커스페이스"
                 },
-                "leisure/horse_riding": {
-                    "name": "승마 시설",
-                    "terms": "승마 시설"
-                },
                 "leisure/ice_rink": {
                     "name": "아이스 링크",
                     "terms": "아이스하키,스케이팅,컬링"
@@ -4518,10 +4503,6 @@
                 "leisure/pitch/cricket": {
                     "name": "크리켓장",
                     "terms": "크리켓 경기장"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "승마 경기장",
-                    "terms": "승마 경기장"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "필드 하키장"
@@ -4619,9 +4600,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "자전거 경주로"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "경마 경주로"
                 },
                 "leisure/track/running": {
                     "name": "육상 트랙",
@@ -6583,9 +6561,6 @@
                 },
                 "type/route/hiking": {
                     "name": "하이킹 노선"
-                },
-                "type/route/horse": {
-                    "name": "승마 노선"
                 },
                 "type/route/light_rail": {
                     "name": "경전철 노선"

@@ -303,7 +303,6 @@
                     "label": "Serviço",
                     "options": {
                         "cosmetics": "Cosméticos",
-                        "nails": "Unhas",
                         "tanning": "Bronzeamento"
                     }
                 },
@@ -1500,13 +1499,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Trilha de baixa dificuldade",
-                    "options": {
-                        "0": "Mais fácil (cículo branco)",
-                        "1": "Fácil (círculo verde)",
-                        "2": "Médio (quadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Extremamente difícil (duplo diamante negro)"
-                    },
                     "placeholder": "Fácil, Médio, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -2171,9 +2163,6 @@
                         "emergency_access": "Acesso de emergência",
                         "parking_aisle": "Corredor de estacionamento"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Serviços"
                 },
                 "service/vehicle": {
                     "label": "Serviços"
@@ -4862,8 +4851,8 @@
                     "terms": "rua de convivência,rua preferencial a pedestres,espaço compartilhado,rua compartilhada,vila,beco"
                 },
                 "highway/milestone": {
-                    "name": "Marco da Rodovia",
-                    "terms": "marco da rodovia"
+                    "name": "Marco quilométrico rodoviário",
+                    "terms": "marco rodoviário,marco da rodovia,quilometragem"
                 },
                 "highway/mini_roundabout": {
                     "name": "Mini-Rotatória",
@@ -5500,10 +5489,6 @@
                     "name": "Hackerspace",
                     "terms": "hacklab,makerspace,hackspace,clube de programação,clube de hackers"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro de Hipismo",
-                    "terms": "hipismo,equitação,centro de equitação,cavalos,galopamento"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de Patinação no Gelo",
                     "terms": "ringue de patinação no gelo,patinação,hóquei,patins"
@@ -5583,10 +5568,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Campo de Críquete",
                     "terms": "campo de cricket,críquete,cricket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Pista de Hipismo",
-                    "terms": "equitação,picadeiro,hipismo,cavalos,equinos"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hóquei em campo",
@@ -5710,10 +5691,6 @@
                 "leisure/track/cycling": {
                     "name": "Trilha de ciclismo",
                     "terms": "trilha de ciclismo"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Corrida de Cavalos",
-                    "terms": "corrida de cavalos"
                 },
                 "leisure/track/running": {
                     "name": "Pista de Atletismo",
@@ -6911,7 +6888,7 @@
                     "terms": "veículo leve sobre trilhos (vlt)"
                 },
                 "railway/milestone": {
-                    "name": "Marco de Ferrovia",
+                    "name": "Marco quilométrico ferroviário",
                     "terms": "marco de quilometragem,quilômetro,kilometro,ferrovia,marco quilométrico"
                 },
                 "railway/miniature": {
@@ -8042,10 +8019,6 @@
                     "name": "Rota de Caminhada",
                     "terms": "rota de trekking"
                 },
-                "type/route/horse": {
-                    "name": "Rota de hipismo",
-                    "terms": "rota de hipismo"
-                },
                 "type/route/light_rail": {
                     "name": "Rota de VLT",
                     "terms": "rota de veículo leve sobre trilhos,rota de trem ligeiro"
@@ -8146,8 +8119,8 @@
                     "terms": "portão de dique"
                 },
                 "waterway/milestone": {
-                    "name": "Marco da via navegável",
-                    "terms": "marco da via navegável"
+                    "name": "Marco quilométrico hidroviário",
+                    "terms": "marco da via navegável,marco hidroviário,quilometragem"
                 },
                 "waterway/river": {
                     "name": "Rio",

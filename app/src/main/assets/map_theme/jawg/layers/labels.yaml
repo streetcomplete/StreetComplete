@@ -25,7 +25,7 @@ layers:
             text:
                 text_source: global.name_source
                 buffer: 12px
-                priority: function() { return feature.scalerank }
+                priority: function() { 20 + return feature.scalerank }
                 font:
                     family: global.text_font_family
                     fill: global.text_water_color
@@ -69,7 +69,29 @@ layers:
             text:
                 text_source: global.name_source
                 buffer: 4px
-                priority: function() { return 10 + feature.scalerank }
+                priority: |
+                  function() {
+                      if(feature.type == "city") {
+                          return 10 + feature.scalerank;
+                      }
+                      if(feature.type == "town") {
+                          return 10 + feature.scalerank + 1;
+                      }
+                      if(feature.type == "village") {
+                          return 10 + feature.scalerank + 2;
+                      }
+                      if(feature.type == "hamlet") {
+                          return 10 + feature.scalerank + 3;
+                      }
+                      if(feature.type == "suburb") {
+                          return 10 + feature.scalerank + 4;
+                      }
+                      if(feature.type == "neighbourhood") {
+                          return 10 + feature.scalerank + 5;
+                      }
+                      /* note that locality and isolated_dwelling are not supported in Jawg */
+                      return 10 + feature.scalerank + 6;
+                  }
                 font:
                     family: global.text_font_family
                     fill: global.text_fill_color

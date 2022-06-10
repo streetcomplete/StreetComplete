@@ -2626,4 +2626,10 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_yes">"دیگر نوع ورودی"</string>
     <string name="quest_building_entrance_dead_end">"بن‌بست، بدون ورودی"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"برای شروع اندازه‌گیری، روی صفحه ضربه بزنید"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_air_pump_bicycle_shop_title">"آیا اینجا یک پمپ عمومی دوچرخه وجود دارد (حداقل وقتی باز است)؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_air_pump_bicycle_repair_station_title">"آیا پمپ دوچرخه در اینجا کار می‌کند؟"</string>
 </resources>

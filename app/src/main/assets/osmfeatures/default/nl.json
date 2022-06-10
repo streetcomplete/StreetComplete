@@ -312,8 +312,12 @@
                     "label": "Diensten",
                     "options": {
                         "cosmetics": "Cosmetica",
-                        "nails": "Nagels",
-                        "tanning": "Bruinen"
+                        "hair_removal": "Ontharing",
+                        "nails": "Manicure / Pedicure",
+                        "skin_care": "Huidverzorging",
+                        "spa": "kuuroord",
+                        "tanning": "Bruinen",
+                        "waxing": "Waxen"
                     }
                 },
                 "bench": {
@@ -521,7 +525,8 @@
                     "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
-                    "label": "Kleding"
+                    "label": "Kleding",
+                    "terms": "kleding,kleren,broek,jas,shirt"
                 },
                 "club": {
                     "label": "Type"
@@ -1228,6 +1233,13 @@
                 "highway": {
                     "label": "Type"
                 },
+                "highway_cartpath": {
+                    "label": "Type pad",
+                    "options": {
+                        "path": "Karrenpad",
+                        "service": "Toegangsweg"
+                    }
+                },
                 "historic": {
                     "label": "Type"
                 },
@@ -1608,11 +1620,11 @@
                 "mtb/scale/imba": {
                     "label": "IMBA-route-moeilijkheidsgraad",
                     "options": {
-                        "0": "Gemakkelijkst (witte cirkel)",
-                        "1": "Makkelijk (groene cirkel)",
-                        "2": "Gemiddeld (blauw vierkant)",
-                        "3": "Moeilijk (zwarte ruit)",
-                        "4": "Extreem moeilijk (dubbele zwarte ruit)"
+                        "0": "⚪ Zeer envoudig (witte cirkel)",
+                        "1": "🟢 Eenvoudig (groene cirkel)",
+                        "2": "🟦 Gemiddeld (blauw vierkant)",
+                        "3": "◆ Moeilijk (zwarte ruit)",
+                        "4": "◆◆ Zeer moeilijk (dubbele zwarte ruit)"
                     },
                     "placeholder": "Makkelijk, Gemiddeld, Moeilijk …",
                     "terms": "lastigheid,moeilijkheid"
@@ -2320,7 +2332,7 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Diensten"
+                    "label": "Diensten voor fietsen"
                 },
                 "service/vehicle": {
                     "label": "Diensten"
@@ -5604,8 +5616,8 @@
                     "terms": "hackspace,makerspace,hacklab"
                 },
                 "leisure/horse_riding": {
-                    "name": "Manege",
-                    "terms": "manege,paardrijden,stallen,dressuur,jumping"
+                    "name": "Paardrijcentrum",
+                    "terms": "manege"
                 },
                 "leisure/ice_rink": {
                     "name": "Schaatsbaan",
@@ -5687,8 +5699,8 @@
                     "name": "Cricketveld"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Paardrijpiste",
-                    "terms": "bak,dressuur,paardenbak,manegebak"
+                    "name": "Paardenpiste",
+                    "terms": "piste,paardrijden,manege,arena,ruiter,dressuur"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Veldhockeyveld"

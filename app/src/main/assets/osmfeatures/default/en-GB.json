@@ -865,13 +865,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Trail Difficulty",
-                    "options": {
-                        "0": "Easiest (white circle)",
-                        "1": "Easy (green circle)",
-                        "2": "Medium (blue square)",
-                        "3": "Difficult (black diamond)",
-                        "4": "Extremely Difficult (double black diamond)"
-                    },
                     "placeholder": "Easy, Medium, Difficult..."
                 },
                 "mtb/scale/uphill": {
@@ -1163,9 +1156,6 @@
                 },
                 "service": {
                     "label": "Type"
-                },
-                "service/bicycle": {
-                    "label": "Services"
                 },
                 "service/vehicle": {
                     "label": "Services"
@@ -1662,6 +1652,9 @@
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Youth Centre"
+                },
                 "amenity/compressed_air": {
                     "name": "Compressed Air"
                 },
@@ -1830,6 +1823,9 @@
                 },
                 "amenity/smoking_area": {
                     "name": "Smoking Area"
+                },
+                "amenity/social_centre": {
+                    "name": "Social Centre"
                 },
                 "amenity/social_facility": {
                     "name": "Social Facility"
@@ -2384,6 +2380,9 @@
                 "healthcare/blood_donation": {
                     "name": "Blood Donor Centre"
                 },
+                "healthcare/counselling": {
+                    "name": "Counselling Centre"
+                },
                 "healthcare/hospice": {
                     "name": "Hospice"
                 },
@@ -2793,7 +2792,8 @@
                     "name": "Hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horse Riding Facility"
+                    "name": "Horse Riding Centre",
+                    "aliases": "Horse Riding Stables"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink"
@@ -2844,7 +2844,7 @@
                     "name": "Cricket Field"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Riding Arena"
+                    "name": "Horse Riding Arena"
                 },
                 "leisure/pitch/netball": {
                     "name": "Netball Court"
@@ -3947,6 +3947,9 @@
                 },
                 "type/route/hiking": {
                     "name": "Hiking Route"
+                },
+                "type/route/horse": {
+                    "name": "Horse Riding Route"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"

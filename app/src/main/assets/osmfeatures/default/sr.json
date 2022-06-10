@@ -1153,9 +1153,6 @@
                     "placeholder": "0, 1, 2, 3..."
                 },
                 "mtb/scale/imba": {
-                    "options": {
-                        "2": "Средњи (плави квадрат)"
-                    },
                     "placeholder": "Лако, средње, тешко..."
                 },
                 "mtb/scale/uphill": {
@@ -1558,9 +1555,6 @@
                 },
                 "service": {
                     "label": "Врста"
-                },
-                "service/bicycle": {
-                    "label": "Услуге"
                 },
                 "service/vehicle": {
                     "label": "Сервиси"
