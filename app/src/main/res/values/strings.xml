@@ -105,7 +105,7 @@
     <string name="quest_edit_tags_title">Edit tags</string>
     <string name="quest_edit_tags_save">Save</string>
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
-    <string name="pref_show_gpx_button_summary">Use the option below to access notes</string>
+    <string name="pref_show_gpx_button_summary">Contrary to OSM notes, adding a GPX not will not hide any quest at the affected location</string>
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
@@ -180,7 +180,7 @@ Some of the quest added in this version may not be answerable in all cases. Plea
 By default, this version is configured to behave very similar to normal StreetComplete.\n\n
 This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
     <string name="quest_settings_restart">Usually re-scanning for quests and sometimes a restart of the app (happens automatically) is required to apply changed quest settings.</string>
-    <string name="pref_save_gpx">Get GPX notes</string>
+    <string name="pref_save_gpx">Get GPX notes and attached photos</string>
     <string name="pref_save_gpx_not_found">No GPX notes found</string>
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
     <string name="pref_export">Export settings</string>
