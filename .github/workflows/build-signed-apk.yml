@@ -1,0 +1,36 @@
+name: Build signed apk
+
+on:
+  [workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Create keystore file
+      run: echo "${{ secrets.keystore }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
+    - name: Build with Gradle
+      run: ./gradlew assembleRelease
+        -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks
+        -Pandroid.injected.signing.store.password=${{ secrets.keystore_password }}
+        -Pandroid.injected.signing.key.alias=${{ secrets.key_alias }}
+        -Pandroid.injected.signing.key.password=${{ secrets.key_password }}
+    - name: Rename APK
+      run: mv app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/release/StreetComplete-release-$(git log -n 1 --format='%h').apk
+    - name: Archive APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: release-apk
+        path: app/build/outputs/apk/release/*.apk
+        retention-days: 1
