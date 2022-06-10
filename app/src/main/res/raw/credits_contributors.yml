@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 353865
-  linesOfInterfaceMarkupChanged: 133002
+  linesOfCodeChanged: 353901
+  linesOfInterfaceMarkupChanged: 133013
   assetFilesChanged: 1685
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16433
+  linesOfCodeChanged: 16435
   linesOfInterfaceMarkupChanged: 1866
   assetFilesChanged: 150
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 12684
+  linesOfCodeChanged: 12709
   linesOfInterfaceMarkupChanged: 2759
   assetFilesChanged: 462
 - name: "ENT8R"
@@ -21,9 +21,9 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
-- name: "Helium"
+- name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 3275
+  linesOfCodeChanged: 3312
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "arrival-spring"
@@ -53,7 +53,7 @@
   linesOfInterfaceMarkupChanged: 98
 - name: "Patrick Geneva"
   githubUsername: "goldbattle"
-  linesOfCodeChanged: 1095
+  linesOfCodeChanged: 1120
   linesOfInterfaceMarkupChanged: 62
 - name: "David Dean"
   githubUsername: "dbdean"
@@ -194,15 +194,15 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "cyclingcat"
+  linesOfCodeChanged: 4
+- name: "MegaArthur"
+  linesOfCodeChanged: 4
 - name: "Brian Sperlongano"
   githubUsername: "ZeLonewolf"
   linesOfCodeChanged: 4
 - name: "Greg Oledzki"
   githubUsername: "mccartney"
-  linesOfCodeChanged: 4
-- name: "cyclingcat"
-  linesOfCodeChanged: 4
-- name: "MegaArthur"
   linesOfCodeChanged: 4
 - name: "Dominik Danelski"
   githubUsername: "Etua"
@@ -213,10 +213,10 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "gileri"
+  linesOfCodeChanged: 2
 - name: "riQQ"
   githubUsername: "riQQ"
-  linesOfCodeChanged: 2
-- name: "gileri"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
   githubUsername: "yrtimiD"

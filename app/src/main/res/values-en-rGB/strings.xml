@@ -259,7 +259,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <!-- Do we want to change this to "grown" like the default? -->
     <!-- Fuzzy -->
-    <string name="quest_orchard_produce_title">"What’s being cultivated here?"</string>
+    <string name="quest_orchard_produce_title">"What’s being grown here?"</string>
     <string name="produce_grapes">"Grapes"</string>
     <string name="produce_agaves">"Agaves"</string>
     <string name="produce_almonds">"Almonds"</string>
@@ -1306,7 +1306,7 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"What’s the surface here?"</string>
     <string name="quest_toiletAvailability_title">"Are there any toilets here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
-    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this one-way street in both directions? If you're unsure, look for a sign at the end of the street."</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Are you sure that cyclists are not allowed to use this one-way street in both directions? If you’re unsure, look for a sign at the end of the street."</string>
     <string name="link_valhalla_description">"Routeing engine with a very small memory footprint, multi-modal routing, isochrones and more."</string>
     <string name="link_backofyourhand_description">"How well do you know your area? Test your knowledge by locating streets."</string>
 
@@ -1376,6 +1376,6 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_yes">"Other entrance type"</string>
     <string name="quest_building_entrance_dead_end">"Dead end, no entrance"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Tap screen to start measuring"</string>
-    <string name="quest_air_pump_bicycle_shop_title">"Is there a public bicycle pump here (at least when it's open)?"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Is there a public bicycle pump here (at least when it’s open)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Is there a working bicycle pump here?"</string>
 </resources>

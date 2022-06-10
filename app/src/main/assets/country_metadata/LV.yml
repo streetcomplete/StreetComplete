@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: white
 edgeLineStyle: white
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
