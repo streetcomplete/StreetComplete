@@ -881,7 +881,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_ferry_pedestrian_title">"Medtager denne færgerute gående passagerer?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ferry_motor_vehicle_title">"Medtager denne færgerute motorkørestøjer?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Medtager denne færgerute motorkøretøjer?"</string>
 
     <!-- Add note interface -->
     <!-- Fuzzy -->

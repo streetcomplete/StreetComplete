@@ -2617,6 +2617,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_docking_station">"Stojan se zamykáním kol"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Vyhrazené místo (jízdní kola se zamykají jednotlivě)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_human">"Půjčovna kol s lidskou obsluhou"</string>

@@ -1996,4 +1996,7 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Вход в магазин"</string>
     <string name="quest_building_entrance_yes">"Другой тип входа"</string>
     <string name="quest_building_entrance_dead_end">"Тупик, нет прохода"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Прикоснитесь к экрану для начала измерений"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Здесь есть велосипедный насос (хотя бы когда открыто)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Здесь есть велосипедный насос?"</string>
 </resources>

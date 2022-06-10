@@ -100,6 +100,7 @@
                 android:background="#0fff"
                 android:gravity="center"
                 android:inputType="numberDecimal"
+                android:digits="0123456789.,"
                 android:textSize="40dp"
                 android:textStyle="bold"
                 tools:text="8.55" />

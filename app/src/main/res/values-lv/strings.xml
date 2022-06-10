@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Iestatījumi"</string>
     <string name="oauth_communication_error">"Neizdevās sasniegt autorizēšanās serveri"</string>
-    <string name="oauth_failed_permissions">"Autorizācija neizdevās: jāsniedz visas uzskaitītas atļaujas"</string>
+    <string name="oauth_failed_permissions">"Pilnvarošana neizdevās: jāsniedz visas uzskaitītas atļaujas"</string>
 
     <!-- Settings screen -->
     <string name="pref_category_communication">"Saziņa"</string>
@@ -175,6 +175,8 @@ Informācija, ko jūs ievadiet, tiek pievienota OpenStreetMap jūsu lietotājvā
     <string name="quest_sport_beachvolleyball">"Pludmales volejbos"</string>
     <string name="quest_sport_american_football">"Amerikāņu futbols"</string>
     <string name="quest_sport_skateboard">"Skeitbords"</string>
+    <string name="quest_sport_bowls">"Angļu bouls"</string>
+    <string name="quest_sport_boules">"Bouls"</string>
     <string name="quest_sport_shooting">"Šaušana"</string>
     <string name="quest_sport_cricket">"Krikets"</string>
     <string name="quest_sport_table_tennis">"Galda teniss"</string>
@@ -307,8 +309,10 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="action_undo">"Atsaukt"</string>
     <string name="produce_mangosteen">"Mangostāni"</string>
     <string name="produce_tomatoes">"Tomāti"</string>
+    <string name="produce_areca_nuts">"Beteļrieksti"</string>
     <string name="produce_sweet_peppers">"Paprika"</string>
     <string name="produce_brazil_nuts">"Brazīlijas rieksti"</string>
+    <string name="produce_tung_nuts">"Tungas rieksti"</string>
     <string name="quest_parkingType_title">"Kāda veida stāvvieta tā ir?"</string>
     <string name="quest_parkingType_surface">"Placis"</string>
     <string name="quest_parkingType_underground">"Pazemes garāža"</string>
@@ -326,15 +330,11 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingLevels_levelsLabel2">"parastie stāvi (neskaitot jumtu)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Atšķiras dažādās ēkas daļās"</string>
     <string name="quest_buildingLevels_answer_description">"Šādā gadījumā ievadiet vērtības augstākajā ēkas daļā."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Vai šīs ielas braucamās daļas ir fiziski nodalītas (piem. ar barjeru)? No tā ir atkarīgs, kādi ir noklusējuma ātruma ierobežojumi."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Vai šīs ielas braucamās daļas ir fiziski nodalītas ar barjeru vai zaļu joslu? No tā ir atkarīgs, kādi ir noklusējuma ātruma ierobežojumi."</string>
     <string name="about_category_feedback">"Atsauksmes"</string>
     <string name="quest_leave_new_note_photo">"Pievienot fotogrāfiju"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vai vēlaties šo fotogrāfiju dzēst?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_track">"veloceliņš"</string>
+    <string name="quest_cycleway_value_track">"nodalīts veloceliņš vai aizsargāta velojosla"</string>
     <string name="quest_cycleway_value_lane">"velojosla"</string>
     <string name="quest_cycleway_value_none">"nav"</string>
     <string name="quest_cycleway_value_shared">"tiek sagaidīts, ka joslā var piedalīties pārējā satiksme"</string>
@@ -342,9 +342,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_cycleway_value_sidewalk">"skaidri nodalīta ietve"</string>
     <string name="quest_leave_new_note_create_image_error">"Nevar izveidot datni fotogrāfijai"</string>
     <string name="quest_cycleway_value_lane_dual">"velojosla, abi virzieni"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_track_dual">"veloceliņš, abi virzieni"</string>
+    <string name="quest_cycleway_value_track_dual">"nodalīts veloceliņš vai aizsargāta velojosla, abi virzieni"</string>
     <string name="pref_category_advanced">"Paplašināti"</string>
     <string name="quest_enabled">"Ieslēgts"</string>
     <string name="quest_type">"Uzdevuma veids"</string>
@@ -380,8 +378,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Parasti izskatās apmēram šādi:"</string>
     <string name="quest_surface_value_metal">"Metāls"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Vai šeit ir veloceliņš vai velojosla? Kāda veida?"</string>
     <string name="quest_bridge_structure_title">"Kāda veida konstrukcijas tilts tas ir?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
@@ -412,8 +408,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_fee_answer_hours">"Atkarīgs no laika un dienas…"</string>
     <string name="quest_fee_add_times">"Pievienot laikus"</string>
     <string name="quest_housenumber_multiple_numbers">"Ir vairāki māju numuri"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Jūs varat ievadīt ar komatu atdalītus māju numurs vai apgabalus.\nPiemēram: 1,3 vai 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Stends (atbalsta velosipēda rāmi)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Riteņa novietne (atbalsta tikai ratu)"</string>
@@ -422,9 +416,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_bicycle_parking_type_building">"Ēka"</string>
     <string name="quest_bicycle_parking_type_title">"Kāda vieda velosipēdu novietne tā ir?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"rekomendējošā velojosla"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxCollectionTimes_title">"Kad šajā pastkastē savāc saturu?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Cikos no šīs pastkastes savāc saturu?"</string>
     <string name="quest_collectionTimes_add_times">"Pievienot savākšanas laiku"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Nav norādīts laiks"</string>
     <string name="quest_construction_road_title">"Vai šis autoceļš ir pabeigts?"</string>
@@ -540,9 +532,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_retail_description">"tai skaitā ēkas restorāniem, kafejnīcām, veikaliem…"</string>
     <string name="quest_openingHours_timeSelect_next">"Nākamais"</string>
     <string name="quest_tracktype_title">"Kāda ir šī celiņa virsmas cietība?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade1">"Ciets"</string>
+    <string name="quest_tracktype_grade1">"Noklāts"</string>
     <string name="quest_tracktype_grade4">"Pārsvarā mīksts"</string>
     <string name="quest_tracktype_grade5">"Mīksts"</string>
     <string name="quest_building_underground_title">"Vai ēka ir pilnībā zem zemes?"</string>
@@ -551,8 +541,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_traffic_signals_button_title">"Vai šim luksoforam ir poga, lai pieprasītu zaļo gaismu gājējiem?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Cik šeit var novietot motociklus?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Vai šī motociklu stāvvieta ir nosegta (pasargāta no lietus)?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Pēc noklusējuma šis uzdevuma veids ir izslēgts, jo lai noskaidrotu ātruma ierobežojumus, ir jāapseko visa iela, ne tikai izvēlētais nogrieznis. Varētu nākties šķērsot lielus attālumus, lai izpildītu vienu uzdevumu."</string>
     <string name="pref_title_quests_restore_hidden">"Atjaunot paslēptos uzdevumus"</string>
     <string name="restore_hidden_success">"Atjaunoja %d paslēptus uzdevumus"</string>
@@ -595,9 +583,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_cyclewayPartSurface_title">"Kāds ir šī veloceliņa segums?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Dažādās vietās dažāds…"</string>
     <string name="quest_split_way_description">"Ja dažādās vietās ir dažāds, pirmais solis ir ceļu sadalīt apakšposmos. Pēc tam uzdevumu var atbildēt katram posmam atsevišķi. Sadalīt tagad?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Uzspiediet uz ceļa, lai to sadalītu punktos, kur atbildes atšķiras. Mēģiniet būt pēc iespējas precīzs; jūs varat tuvināt karti kā ierasts."</string>
+    <string name="quest_split_way_tutorial">"Uzspiediet uz ceļa, lai to sadalītu punktos, kur atbildes atšķiras. Izmantojiet kartes tuvināšanas funkciju un mēģiniet būt pēc iespējas precīzi."</string>
     <string name="quest_split_way_too_imprecise">"Lūdzu, tuviniet vēl vairāk"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Tie ir diezgan daudz dalījumi. Jūs vienmēr varat sadalīt smalkāk vēlāk."</string>
     <string name="quest_footwayPartSurface_title">"Kāds ir šī gājēju celiņa segums?"</string>
@@ -611,9 +597,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_ref_answer_noRef">"Nav redzams numurs vai kods…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Attēlā ceļš ir pagriezts tāpat kā uz kartes pie atrašanās vietas saspraudes."</string>
     <string name="quest_recycling_materials_title">"Kādus izšķirotos atkritumus šeit var izmest?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_recycling_materials_note">"Ja kaut kas papildus iekļautajām opcijām šeit var tikt izšķirots, lūdzu norādiet to piezīmē."</string>
+    <string name="quest_recycling_materials_note">"Ja šajā vietā var atstāt pārstrādei kaut ko, kas šeit nav uzskaitīts, lūdzu, tā vietā atstājiet piezīmi."</string>
     <string name="quest_recycling_type_batteries">"Baterijas"</string>
     <string name="quest_recycling_type_cans">"Bundžas"</string>
     <string name="quest_recycling_type_clothes">"Drēbes"</string>
@@ -630,8 +614,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_recycling_type_scrap_metal">"Metāllūžņus"</string>
     <string name="quest_recycling_type_any_glass">"Jebkāda veida stiklu"</string>
     <string name="quest_recycling_glass_title">"Vai var izmest tikai stikla pudeles un burkas, vai arī visa veida stiklu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Stiklu veidi, kuri bieži netiek pieņemti: rūdītais stikls, loga rūtis, stikla trauki, spuldzes un spoguļi."</string>
     <string name="about_title_changelog">"Versiju vēsture"</string>
     <string name="title_whats_new">"Kas jauns?"</string>
@@ -639,8 +621,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="about_summary_rate">"Google Play veikalā"</string>
     <string name="about_title_donate">"Ziedo"</string>
     <string name="about_summary_donate">"Parādiet savu atzinību! ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"Paldies, ka apsverat atbalstīt šo lietotni! Lai redzētu pašreizējos ziedojumus un ziedotu paši, spiediet uz atbilstošo platformu:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Tā vietā pārlūkot šeit"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Turpināt pašreizējo pārlūkošanu"</string>
@@ -731,6 +711,7 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="link_openorienteeringmap_description">"Izveidojiet drukājamas kartes orientēšanās sportam"</string>
     <string name="link_openstreetbrowser_description">"Karte, kur var pārlūkot OpenStreetMap iezīmes pēc kategorijas"</string>
     <string name="link_weeklyosm_description">"Iknedēļas jaunumu emuāri par to, kas notiek OpenStreetMap pasaulē"</string>
+    <string name="link_figuregrounder_description">"Izveidot pilsētas vai apkaimes apbūves diagrammas plakātus"</string>
     <string name="achievement_first_edit_title">"Izpildīts pirmais uzdevums"</string>
     <string name="achievement_first_edit_description">"Laipni lūdzam OpenStreetMap kopienā! Savā profila ekrānā jūs varat uzzināt vairāk par uzdevumu veidiem, ko esat atrisinājuši."</string>
     <string name="achievement_surveyor_title">"Mērnieks"</string>
@@ -879,26 +860,18 @@ līmeņi"</string>
     <string name="quest_kerb_height_lowered">"Nedaudz virs ceļa virsmas"</string>
     <string name="quest_kerb_height_raised">"Augsta apmale"</string>
     <string name="quest_kerb_height_lowered_ramp">"Apmales rampa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_lanes_answer_lanes_description2">"Norādiet kopējo iezīmēto joslu skaitu (abos virzienos), ko satiksmē var izmantot autotransports. Velojoslas un stāvvietu joslas neskaitās.
+    <string name="quest_lanes_answer_lanes_description2">"Norādiet kopējo iezīmēto joslu skaitu (abos virzienos), ko var izmantot autotransports. Velojoslas un stāvvietu joslas neskaitās.
 Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Norādiet kopējo iezīmēto joslu skaitu, ko satiksmē var izmantot autotransports. Velo un stāvvietu joslas neskaitās.
 Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</string>
     <string name="quest_surface_value_rock">"Akmens"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Augstas kravas mašīnas var izbraukt cauri"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Augstas kravas mašīnas nevar izspraukties cauri"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_hint">"Kartē spiediet uz ceļa"</string>
     <string name="quest_crossing_type_marked">"Marķēts"</string>
     <string name="quest_parkingType_street_side">"Auto novietošana pie ceļa"</string>
     <string name="quest_parkingType_lane">"Auto novietošana uz ceļa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2a">"Ciets, bet nav asfalts"</string>
+    <string name="quest_tracktype_grade2a">"Cieti sablīvēta zeme"</string>
     <string name="quest_tracktype_grade3a">"Pārsvarā ciets"</string>
     <string name="quest_generic_answer_does_not_exist">"Neeksistē…"</string>
     <string name="osm_element_gone_description">"Vai esat pārliecināts, ka tiešām neeksistē, pat ne nedaudz citā vietā? Ja šaubāties, atbildes vietā atstājiet piezīmi."</string>
@@ -984,8 +957,10 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_barrier_type_stile_squeezer">"Izspraukšanās vieta"</string>
     <string name="quest_barrier_type_stile_ladder">"Kāpnes pāri"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Velo barjera"</string>
+    <string name="quest_barrier_type_kissing_gate">"Buču vārti"</string>
     <string name="quest_barrier_type_swing_gate">"Horizontāla josla"</string>
     <string name="quest_policeType_title">"Kāda veida policijas iecirknis tas ir?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Pārveidots par buču vārtiem"</string>
     <string name="quest_stile_type_title">"Kāda veida šķēršu pāreja tā ir?"</string>
     <string name="quest_buildingType_semi_detached_description2">"savienota(-s) savrupmāja(-s)"</string>
     <string name="pref_title_quests2">"Uzdevumu atlase un attēlošanas secība"</string>
@@ -1006,8 +981,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_buildingLevels_title_buildingPart2">"Cik daudz stāvu virs pagraba ir šai ēkas daļai?"</string>
     <string name="quest_crossing_title">"Vai ir apmales tajā vietā, kur tiekas šis ceļš ar ielu? Kāda veida?"</string>
     <string name="pref_subtitle_quests_preset_name">"Priekšiestatījums: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo jumtu formas no ielas puses nereti ir grūti saskatīt. Šis uzdevumu veids arī ir diezgan laikietilpīgs; vairumā gadījumu šo informāciju ir vieglāk iegūt mājās no aerofoto."</string>
     <string name="quest_religion_animist">"Animisms"</string>
     <string name="quest_construction_steps_title">"Vai šie soļi ir izpildīti?"</string>
@@ -1149,8 +1122,6 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
     <string name="quest_smoothness_wrong_surface">"Segums ir citādāks"</string>
     <string name="quest_smoothness_surface_value">"Segums tika atzīmēts kā:"</string>
     <string name="quest_smoothness_obstacle">"Tur ir šķērslis"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Lūdzu, dodiet vispārīgu atbildi par gludumu. Var ignorēt atsevišķus šķēršļus, piemēram ietves, guļošos policistus un lopu režģus. Atbildot var ņemt vērā atkārtotus vai negaidītus šķēršļus."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … norādiet, kuriem transporta līdzekļiem šī virsma ir atbilstoša. Svarīgākās ir lielās līnijas, nevis atsevišķi apdraudējumi."</string>
     <string name="link_osmhydrant_description">"Uzmeklēt un rediģēt ugunsdzēsības hidrantus"</string>
@@ -1159,9 +1130,7 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
 
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">"Vai šī degvielas uzpildes stacija atļauj pašapkalpošanos?"</string>
-
-    <!-- Fuzzy -->
-    <string name="default_disabled_msg_difficult_and_time_consuming">"Šis uzdevums pēc noklusējuma ir izslēgts, jo tas aizņem daudz laika un nereti ir grūti veikt pareizo izvēli. Jums šos uzdevumus vajadzētu ieslēgt tikai tad, ja vēlaties ievadīti šāda veida datus."</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Šis uzdevums pēc noklusējuma ir izslēgts, jo tas aizņem daudz laika un nereti ir grūti veikt pareizo izvēli. Jums šos uzdevumus vajadzētu ieslēgt tikai tad, ja tiešām vēlaties ievadīti šāda veida datus."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Cieši saspiesta smalka grants vai smilts"</string>
     <string name="quest_barrier_path_intersection">"Vai šis ceļš šeit šķērso barjeru?"</string>
     <string name="quest_barrier_road_intersection">"Kā šis ceļš šeit šķērso barjeru?"</string>
@@ -1189,14 +1158,10 @@ Dariet to arī otrai pusei, ja tāda ir."</string>
     <string name="default_disabled_msg_no_ar">"Jums vajag mērlenti, lai atrisinātu šo uzdevumu, ko šī ierīce neatbalsta mērīšanu ar kameru."</string>
     <string name="quest_cycleway_width_title">"Cik plats šeit ir veloceliņš?"</string>
     <string name="quest_road_width_title">"Kāds šeit ir ceļa platums?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_road_width_explanation">"Autoceļa platums no ietves līdz apmalei: tas iekļauj visu uz ceļa virsmas, ieskaitot autostāvvietas uz braucamās daļas un velojoslas, bet neiekļauj visu pārējo, piemēram, veloceliņus un autostāvvietas ārpus ceļa braucamās daļas."</string>
+    <string name="quest_road_width_explanation">"Autoceļa platums no ietves līdz ietvei: tas iekļauj visu uz ceļa virsmas, ieskaitot autostāvvietas uz braucamās daļas un velojoslas, bet neiekļauj visu pārējo, piemēram, gājēju celiņus,  veloceliņus un autostāvvietas ārpus ceļa braucamās daļas."</string>
     <string name="quest_sidewalk_answer_none">"Vispār nav ietves"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Paldies, ka apsvērāt atbalstīt šo lietotni!
-Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīties neviena saite, kas ved uz ziedojumu lapu. Šādā kontekstā nedrīkst pat likt saiti uz mūsu mājas lapu."</string>
+Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīties neviena saite, kas ved uz ziedojumu lapu. Šādā kontekstā nedrīkst pat likt saiti uz mūsu projekta mājas lapu."</string>
     <string name="link_osmand_description">"Mobilā lietotne tiešsaistes un bezsaistes karšu skatīšanai un navigācijai"</string>
     <string name="link_sunders_description">"Karte ar kamerām un novērošanas aprīkojumu"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Turies tuvāk bultai, bet sargies satiksmes!"</string>
