@@ -17,13 +17,15 @@ import java.text.ParseException
 //  and I have no idea how to reset this any other way
 
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
+
+// for setting values of a single key, comma separated
 fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
         val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
         button?.isEnabled = textInput.text.toString().let {
-            it.lowercase().matches("[a-z0-9_?,\\s]+".toRegex())
+            it.lowercase().matches(valueRegex)
                 && !it.trim().endsWith(',')
                 && !it.contains(",,")
                 && it.isNotEmpty() }
@@ -67,13 +69,15 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
     return dialog
 }
 
+// for setting full element selection
+// this will check validity of input and only allow saving if parsing works without error
 fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
         val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
         button?.isEnabled = textInput.text.toString().let {
-            it.lowercase().matches("[a-z0-9_=!~()|<>\\s+-]+".toRegex())
+            it.lowercase().matches(elementSelectionRegex)
                 && it.count { c -> c == '('} == it.count { c -> c == ')'}
                 && (it.contains('=') || it.contains('~'))
                 && try {"nodes with $it".toElementFilterExpression()
@@ -115,3 +119,6 @@ fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SET
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""
+
+private val valueRegex = "[a-z0-9_?,\\s]+".toRegex()
+private val elementSelectionRegex = "[a-z0-9_=!~()|:<>\\s+-]+".toRegex()
