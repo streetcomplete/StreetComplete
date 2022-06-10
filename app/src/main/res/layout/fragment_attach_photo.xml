@@ -14,6 +14,7 @@
         android:insetBottom="0dp"
         android:insetLeft="0dp"
         android:insetRight="0dp"
+        android:layout_marginStart="48dp"
         app:icon="@drawable/ic_add_photo_24dp"
         app:iconPadding="0dp"
         app:iconGravity="textStart"
