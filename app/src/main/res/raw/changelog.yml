@@ -2,6 +2,7 @@ v44.1: |
   <ul>
   <li>Fix: Tag <code>barrier=kerb</code>, not <code>curb</code> (#4087), by @FloEdelmann</li>
   <li>Fix recorded track was attached to every subsequent note (#4082), by @goldbattle</li>
+  <li>Fix summit register quest, it did not show before (#4075), by @Helium314</li>
   <li>Some other tiny fixes and enhancements (#4084, ...)</li>
   </ul>
 
