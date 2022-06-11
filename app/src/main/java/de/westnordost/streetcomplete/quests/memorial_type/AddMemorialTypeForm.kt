@@ -11,7 +11,9 @@ class AddMemorialTypeForm : AImageListQuestAnswerFragment<String,String>() {
         Item("bust", R.drawable.memorial_type_bust, R.string.quest_memorialType_bust),
         Item("plaque", R.drawable.memorial_type_plaque, R.string.quest_memorialType_plaque),
         Item("war_memorial", R.drawable.memorial_type_war_memorial, R.string.quest_memorialType_war_memorial),
-        Item("stone", R.drawable.memorial_type_stone, R.string.quest_memorialType_stone)
+        Item("stone", R.drawable.memorial_type_stone, R.string.quest_memorialType_stone),
+        Item("stele", R.drawable.memorial_type_stele, R.string.quest_memorialType_stele),
+        Item("obelisk", R.drawable.memorial_type_obelisk, R.string.quest_memorialType_obelisk),
     )
 
     override val itemsPerRow = 3
