@@ -5,11 +5,13 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
+hasTactilePaving: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 247
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lv]
+postBoxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA
 atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, BlueOrange]

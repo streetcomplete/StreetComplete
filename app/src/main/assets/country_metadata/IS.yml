@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+cyclewaysAreCommon: true
 edgeLineStyle: white dashes
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
@@ -7,7 +8,8 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 274
 noEntrySignStyle: yellow
 officialLanguages: [is]
+postBoxesHaveCollectionTimes: true
+clothesContainerOperators: [Sorpa]
 atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
 chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
-clothesContainerOperators: [Sorpa]
 orchardProduces: [tomato]

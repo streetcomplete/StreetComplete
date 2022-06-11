@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+cyclewaysAreCommon: true
 officialLanguages: [en]
 chargingStationOperators: [Flo, Delta Prince Edward]

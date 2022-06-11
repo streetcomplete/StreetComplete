@@ -1,9 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: white
+cyclewaysAreCommon: true
 edgeLineStyle: short white dashes
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: false
+hasTactilePaving: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 240
 noEntrySignStyle: yellow
@@ -11,8 +13,10 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]
 popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]
+postBoxesHaveCollectionTimes: true
 regularShoppingDays: 5
+shopsUsuallyAcceptCash: false
+clothesContainerOperators: [Myrorna, Human Bridge, FTI]
 atmOperators: [Swedbank, Bankomat AB, Nordea, Bankomat, Handelsbanken, SEB, Kontanten, ICA Banken, ICA, Länsförsäkringar, ICA-banken, Kontanten AB, Nokas, Danske Bank, Uttag, Länsförsäkringar Bank, Forex, Autocash]
 chargingStationOperators: [Fortum Charge & Drive, Tesla Motors Inc., Bee, Tesla, Vattenfall, InCharge, CaCharge, Göteborgs Energi, Umeå Energi, Sundsvall Elnät/Green Highway, Karlshamn Energi, Jämtkraft, Clever, CLEVER, Bee Charging Solutions, Ultra, BTEA, inCharge, e-on, charge&drive, VB Energi, SKF, NOVI Ressort, Mönsterås Kommun, Ljusdal Energi, Lidl, Kraftringen, Ionity, IKEA, Gävle Energi, Fyrfasen Energi, Fortum, Enkla Elbolaget, Drive&charge, Charge & Drive, Affärsverken]
-clothesContainerOperators: [Myrorna, Human Bridge, FTI]
 orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]

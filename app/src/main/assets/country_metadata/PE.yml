@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: yellow
 hasSlowZone: true
+hasSummitMarkings: true
 mobileCountryCode: 716
 noEntrySignStyle: no entre
 noParkingSignStyle: mutcd latin

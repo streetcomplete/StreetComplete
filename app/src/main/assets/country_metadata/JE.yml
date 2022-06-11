@@ -1,6 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+busStopsHaveRef: true
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]
+postBoxesHaveRef: true
 speedUnits: [miles per hour, kilometers per hour]
 atmOperators: [HSBC, NatWest, RBS]

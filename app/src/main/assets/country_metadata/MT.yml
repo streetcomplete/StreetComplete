@@ -5,6 +5,9 @@ isLeftHandTraffic: true
 mobileCountryCode: 278
 noStoppingLineStyle: double yellow
 officialLanguages: [mt, en]
+postBoxesHaveCollectionTimes: true
+postBoxesHaveRef: true
+postBoxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true
 atmOperators: [BOV, HSBC, Euronet, Bank of Valletta, Bank of Valleta, APS]
 orchardProduces: [grape]

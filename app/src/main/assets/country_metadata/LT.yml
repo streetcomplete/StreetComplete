@@ -4,12 +4,14 @@ edgeLineStyle: white
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
+hasTactilePaving: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 246
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
+postBoxesHaveCollectionTimes: true
+clothesContainerOperators: [UAB „VAATC“]
 atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB "Swedbank", AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
 chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
-clothesContainerOperators: [UAB „VAATC“]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]

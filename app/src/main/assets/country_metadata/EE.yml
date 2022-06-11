@@ -4,12 +4,14 @@ hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
+hasTactilePaving: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 248
 officialLanguages: [et]
+postBoxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA
+clothesContainerOperators: [Tallinna Jäätmekeskus]
 atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
 chargingStationOperators: [Elmo, ELMO]
-clothesContainerOperators: [Tallinna Jäätmekeskus]
 orchardProduces: [strawberry, apple, raspberry, plum, tomato]

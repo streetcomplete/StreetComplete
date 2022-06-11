@@ -2,4 +2,5 @@
 hasSlowZone: true
 mobileCountryCode: 213
 officialLanguages: [ca]
+postBoxesHaveCollectionTimes: true
 atmOperators: [Crèdit Andorrà]

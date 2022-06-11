@@ -1,15 +1,26 @@
 # Do not edit. Source files are in /res/country_metadata
+addressHasStreet: true
 advisorySpeedLimitSignStyle: blue
+busStopsHaveName: true
+busStopsHaveRef: false
 centerLineStyle: white
+cyclewaysAreCommon: false
 edgeLineStyle: white
 firstDayOfWorkweek: Mo
+fuelStationsUsuallyAreSelfService: true
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
 hasCenterLeftTurnLane: false
 hasDailyAlternateSideParkingSign: false
+hasFireHydrantDiameterSign: false
 hasLivingStreet: false
 hasNoStandingSign: false
 hasSlowZone: false
+hasSummitMarkings: false
+hasTactilePaving: false
+hasTrafficSignalsVibration: true
+houseNumbersAreImported: false
+houseNumbersOutsideBuilding: false
 isLeftHandTraffic: false
 isUsuallyAnyGlassRecyclableInContainers: false
 lengthUnits: [meter]
@@ -19,8 +30,12 @@ noStoppingSignStyle: vienna
 officialLanguages: [en]
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
+postBoxesHaveCollectionTimes: false
+postBoxesHaveRef: false
+postBoxesHaveRoyalCypher: false
 regularShoppingDays: 6
 roofsAreUsuallyFlat: false
+shopsUsuallyAcceptCash: true
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5
