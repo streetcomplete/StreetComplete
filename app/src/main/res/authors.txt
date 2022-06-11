@@ -27,7 +27,7 @@ barrier_kissing_gate.jpg       CC-BY-SA 2.0      David Anstiss https://commons.w
 barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikimedia.org/wiki/File:Bicycle_barrier_2.JPG
 barrier_bicycle_barrier_dia... CC0               DerDings https://commons.wikimedia.org/wiki/File%3ABicycle%5Fbarrier%2EJPG
 barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier2.jpg
-barrier_bicycle_barrier_dou... CC-BY-SA-4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
+barrier_bicycle_barrier_dou... CC-BY-SA 4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
 barrier_bicycle_barrier_tri... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier1.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
 
@@ -94,28 +94,28 @@ power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/w
 power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
 
-produce_agave.jpg              CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Agave_americana_R01.jpg (Marc Ryckaert, under username MJJR)
-produce_almond.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg (antcaesar)
+produce_agave.jpg              CC-BY-SA 3.0      Marc Ryckaert, under username MJJR https://en.wikipedia.org/wiki/File:Agave_americana_R01.jpg
+produce_almond.jpg             CC-BY-SA 2.0      antcaesar https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
 produce_apple.jpg              CC0               https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/ - archived at https://web.archive.org/web/20210507233404/https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/
-produce_apricot.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Apricots.jpg (Fir0002)
-produce_areca_nut.jpg          CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Betel_nut_tree.JPG (Mamun2a)
-produce_avocado.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Persea_americana_fruit_2.JPG (B.navez)
-produce_banana.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Musa-sp3.1.jpg (JoJan)
+produce_apricot.jpg            CC-BY-SA 3.0      Fir0002 https://commons.wikimedia.org/wiki/File:Apricots.jpg
+produce_areca_nut.jpg          CC-BY-SA 2.5      Mamun2a https://commons.wikimedia.org/wiki/File:Betel_nut_tree.JPG
+produce_avocado.jpg            CC-BY-SA 3.0      B.navez https://commons.wikimedia.org/wiki/File:Persea_americana_fruit_2.JPG
+produce_banana.jpg             CC-BY-SA 3.0      JoJan https://commons.wikimedia.org/wiki/File:Musa-sp3.1.jpg
 produce_bell_pepper.jpg        CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/ - note that Pixabay changed licensing since it was obtained, for reference see https://commons.wikimedia.org/wiki/Template:Pixabay
-produce_blueberry.jpg          Public Domain     https://commons.wikimedia.org/wiki/File:PattsBlueberries.jpg (PhreddieH3)
-produce_brazil_nut.jpg         CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg (mauroguanandi)
-produce_cacao.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG (Medicaster)
-produce_cashew.jpg             CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Cashew_apples.jpg (Abhishek Jacob)
-produce_cherry.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2_cherries.jpg (0x010C)
-produce_chestnut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Chataigne.JPG (historicair)
-produce_chili.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Thai_peppers.jpg (Daniel Risacher)
-produce_coconut.jpg            CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg (Diego Torres Silvestre)
-produce_coffee.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg (Marcelo Corrêa )
-produce_cranberry.jpg          CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg (Ecomare/Sytske Dijksen)
-produce_fig.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
+produce_blueberry.jpg          Public Domain     PhreddieH3 https://commons.wikimedia.org/wiki/File:PattsBlueberries.jpg
+produce_brazil_nut.jpg         CC-BY 2.0         mauroguanandi https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg
+produce_cacao.jpg              Public Domain     Medicaster https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG
+produce_cashew.jpg             CC-BY-SA 3.0      Abhishek Jacob https://de.wikipedia.org/wiki/Datei:Cashew_apples.jpg
+produce_cherry.jpg             CC-BY-SA 4.0      0x010C https://commons.wikimedia.org/wiki/File:2_cherries.jpg
+produce_chestnut.jpg           CC-BY-SA 3.0      historicair https://commons.wikimedia.org/wiki/File:Chataigne.JPG
+produce_chili.jpg              CC-BY-SA 3.0      Daniel Risacher https://commons.wikimedia.org/wiki/File:Thai_peppers.jpg
+produce_coconut.jpg            CC-BY 2.0         Diego Torres Silvestre https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg
+produce_coffee.jpg             CC-BY-SA 3.0      Marcelo Corrêa https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
+produce_cranberry.jpg          CC-BY-SA 4.0      Ecomare/Sytske Dijksen https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
+produce_fig.jpg                CC-BY-SA 3.0      Archives et jardin personnels https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
-produce_grapefruit.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
-produce_guava.jpg              CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Starr_070519-7147_Psidium_guajava.jpg
+produce_grapefruit.jpg         CC-BY-SA 3.0      Lipsio https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
+produce_guava.jpg              CC-BY 3.0         Forest & Kim Starr (http://www.starrenvironmental.com/) https://commons.wikimedia.org/wiki/File:Starr_070519-7147_Psidium_guajava.jpg
 produce_hazelnut.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:CORYLUS_AVELLANA_-_SANT_JUST_-_IB-046_(Avellaner).JPG
 produce_hop.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Hopfendolde-mit-hopfengarten.jpg
 produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
