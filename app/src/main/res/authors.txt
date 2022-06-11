@@ -72,8 +72,8 @@ fire_hydrant_position_pillar_… CC-BY 4.0         modified from Corripiano http
 fire_hydrant_position_pillar_… CC-BY 4.0         modified from Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3686#issuecomment-1024936939
 fire_hydrant_position_pillar_… CC-BY 4.0         modified from Stefan Patscheider https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-7190010477.jpg
 
-ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney
-ic_trophy.xml                  SIL OFL 1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
+ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney (unclear, see https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
+ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_raised_original... CC0               Mateusz Konieczny (...)
@@ -187,10 +187,10 @@ surface_woodchips.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 
 surface_asphalt_bad.jpg        CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Crumbling_asphalt_path.jpg (Andre Thum)
 surface_asphalt_excellent.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Mala_Hrastice_2020-06-16_Ulice_z_navsi_na_nadrazi_obr05.jpg (Miloš Hlávka)
-surface_asphalt_good.jpg       public domain     https://wiki.openstreetmap.org/wiki/File:Small_road_with_a_few_repairs.jpg (helium314)
+surface_asphalt_good.jpg       Public Domain     https://wiki.openstreetmap.org/wiki/File:Small_road_with_a_few_repairs.jpg (helium314)
 surface_asphalt_intermediat... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Nids-de-poule_sur_une_route_communale.jpg (Mathis Brancquart)
 surface_asphalt_very_bad.jpg   CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Kamieniec_Szalejow_Gorny_road.jpg (Jojo)
-surface_compacted_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Rough_compacted_track.jpg (helium314)
+surface_compacted_bad.jpg      Public Domain     https://wiki.openstreetmap.org/wiki/File:Rough_compacted_track.jpg (helium314)
 surface_compacted_good.jpg     CC-BY-SA 2.0      https://www.geograph.org.uk/photo/3670104 (Alan Hunt)
 surface_compacted_intermedi... CC-BY-SA 2.0      https://www.geograph.org.uk/photo/3670853 (Alan Hunt)
 surface_compacted_very_bad.jpg CC0               https://wiki.openstreetmap.org/wiki/File:Smoothness_very_bad.jpg (rhhsm)
@@ -205,26 +205,26 @@ surface_gravel_very_bad.jpg    CC-BY-SA 4.0      https://wiki.openstreetmap.org/
 surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
 surface_paving_stones_excel... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Footway_with_very_smooth_paving.jpg (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
-surface_paving_stones_inter... public domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
+surface_paving_stones_inter... Public Domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
 surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (Aultsville)
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
-surface_sett_good.jpg          CC-0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
+surface_sett_good.jpg          CC0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
 surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_mostly_square_but_rough_stones.jpg (Andre Thum)
-surface_sett_very_bad.jpg      public domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
+surface_sett_very_bad.jpg      Public Domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
 surface_unpaved_horrible.jpg   CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Smoothness_horrible.jpg (rhhsm)
-surface_unpaved_impassable.jpg public domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
+surface_unpaved_impassable.jpg Public Domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 
 tactile_paving_illustration... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Trajet_Ouigo,_train_low-cost_(SNCF,France)_(10072029534).jpg (jean-louis Zimmermann)
                                CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Accessibilit%C3%A9_handicap%C3%A9s%2C_aire_autoroute_(Meyrargues%2CFR13)_(10493532264).jpg (jean-louis Zimmermann)
                                CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg (jean-louis Zimmermann)
 
-traffic_calming_bump.jpg       PD                Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
+traffic_calming_bump.jpg       Public Domain     Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
 traffic_calming_chicane.jpg    CC-BY-SA 2.0      Richard Drdul https://commons.wikimedia.org/wiki/File:One-lane_chicane_1.jpg
 traffic_calming_choker.jpg     CC-BY-SA 2.0      Mike Faherty https://www.geograph.ie/photo/2350574
 traffic_calming_cushion.jpg    CC-BY-SA 2.0      Zorro2212 https://commons.wikimedia.org/wiki/File%3ASpeed%5Fcushion%5F%2D%5Fberliner%5Fpillow%2C%5F%C5%81%C3%B3d%C5%BA%5FKarolewska%5FStreet%5F2015%5F02%2Ejpg
 traffic_calming_hump.jpg       CC-BY-SA 3.0      Petr Vilgus https://commons.wikimedia.org/wiki/File:Horn%C3%AD_Po%C4%8Dernice_zpomalovac%C3%AD_pruh.JPG
-traffic_calming_island.jpg     PD                MetiorErgoSum https://wiki.openstreetmap.org/wiki/File:Trafficcalming-island.jpg
+traffic_calming_island.jpg     Public Domain     MetiorErgoSum https://wiki.openstreetmap.org/wiki/File:Trafficcalming-island.jpg
 traffic_calming_ruble_strip... CC-BY-SA 3.0      Koolah https://commons.wikimedia.org/wiki/File%3AZebra%5Fzone%5Fat%5Firiomote%2Ejpg
 traffic_calming_table.jpg      CC-BY-SA 2.5      noebse https://commons.wikimedia.org/wiki/File%3ABremsschwelle%2EJPG
 
