@@ -1,7 +1,6 @@
 global:
     api_key: false # intended to be overwritten by StreetComplete
     language: false # intended to be overwritten by StreetComplete
-    language_script: Latn # intended to be overwritten by StreetComplete
     text_font_family: 'Roboto'
     text_stroke_color: 'white'
     text_water_color: '#fff'
@@ -149,6 +148,5 @@ sources:
 textures:
     oneway-arrow:
         url: images/oneway_arrow@2x.png
-        # url: https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/images/oneway_arrow@2x.png
         filtering: mipmap
         density: 5
