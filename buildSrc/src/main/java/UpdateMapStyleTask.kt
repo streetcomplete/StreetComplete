@@ -53,16 +53,13 @@ open class UpdateMapStyleTask : DefaultTask() {
             .flatMap { if (it.type == "dir") fetchDirectoryContents(URL(it.url)) else listOf(it) }
 }
 
-private const val ONLINE_START_IDENTIFIER = "# for online testing"
-private const val LOCAL_START_IDENTIFIER = "# for local testing"
-
 private fun String.normalizeLineEndings() = this.replace("\r\n", "\n")
 
 private fun String.replaceOnlineWithLocalSections(): String {
     val lines = this.split("\n").toMutableList()
 
-    val onlineStartLineIndices = lines.indices.filter { lines[it].trim().startsWith(ONLINE_START_IDENTIFIER) }
-    val localStartLineIndices = lines.indices.filter { lines[it].trim().startsWith(LOCAL_START_IDENTIFIER) }
+    val onlineStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for online testing") }
+    val localStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for local testing") }
 
     val onlineRanges = onlineStartLineIndices.zip(localStartLineIndices)
     onlineRanges.forEach { (start, end) -> assert(start < end) }
