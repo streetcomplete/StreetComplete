@@ -2102,4 +2102,30 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Odstavný pruh je jasne vymedzený pruh pre núdzové zastavenie. Oblasť označená ako odstavný pruh nemusí byť spevnená v celej svojej šírke a nemusí byť ani dosť široká na to, aby auto zastavilo úplne mimo jazdného pruhu."</string>
     <string name="quest_cycleway_value_none_and_oneway">"žiadne, bicyklovanie nie je povolené v tomto smere"</string>
+    <string name="map_btn_create_track">"Vytvoriť novú nahrávku trasy"</string>
+    <string name="map_btn_stop_track">"Ukončiť nahrávanie trasy"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Koľko je tu miest pre požičané bicykle?"</string>
+    <string name="quest_bicycle_rental_type_title">"Aký je to druh požičovne bicyklov?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Stojan na zamykanie bicyklov"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Vyhradené miesto (bicykle uzamknuté jednotlivo)"</string>
+    <string name="quest_bicycle_rental_type_human">"Požičovňa bicyklov s obsluhou"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Predajňa bicyklov, ktorá tiež bicykle požičiava"</string>
+    <string name="quest_bicycle_shop_repair_title">"Ponúkajú tu opravu bicyklov?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Predávajú sa tu bicykle z druhej ruky?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nie, iba nové"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Áno, aj nové, aj z druhej ruky"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Áno, výhradne"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Nepredávajú sa tu žiadne bicykle"</string>
+    <string name="quest_building_entrance_title">"Aký je to vchod do budovy?"</string>
+    <string name="quest_building_entrance_main">"Hlavný vchod do verejnej budovy"</string>
+    <string name="quest_building_entrance_staircase">"Vchod so schodmi (napr. bytovka)"</string>
+    <string name="quest_building_entrance_service">"Služobný vchod"</string>
+    <string name="quest_building_entrance_exit">"Iba východ"</string>
+    <string name="quest_building_entrance_emergency_exit">"Iba núdzový východ"</string>
+    <string name="quest_building_entrance_shop">"Vstup do obchodu"</string>
+    <string name="quest_building_entrance_yes">"Iný druh vchodu"</string>
+    <string name="quest_building_entrance_dead_end">"Slepá ulička, žiadny vstup"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Dotkni sa pre začatie merania"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Je tu verejne prístupná pumpa (aspoň keď je otvorené)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Je tam fungujúca pompa na bicykel?"</string>
 </resources>

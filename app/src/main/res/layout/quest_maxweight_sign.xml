@@ -22,6 +22,7 @@
             android:background="#0fff"
             android:gravity="center"
             android:inputType="numberDecimal"
+            android:digits="0123456789.,"
             android:textColor="@color/traffic_black"
             android:textSize="56dp"
             android:textStyle="bold"

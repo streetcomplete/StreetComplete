@@ -45,23 +45,34 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         val peaks = mapData.nodes.filter { filter.matches(it) }
         if (peaks.isEmpty()) return emptyList()
 
-        val hikingRoutes = mapData.relations
-            .filter { it.tags["route"] == "hiking" }
-            .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
-        if (hikingRoutes.isEmpty()) return emptyList()
+        val hikingPathsAndRoutes = mapData.ways.filter { hikingPathsFilter.matches(it) }
+            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry } +
+            mapData.relations.filter { it.tags["route"] == "hiking" }
+                .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
 
         // yes, this is very inefficient, however, peaks are very rare
         return peaks.filter { peak ->
-            hikingRoutes.any { hikingRoute ->
-                hikingRoute.polylines.any { ways ->
+            peak.tags["summit:cross"] == "yes" || peak.tags.containsKey("summit:register") ||
+            hikingPathsAndRoutes.any { hikingPath ->
+                hikingPath.polylines.any { ways ->
                     peak.position.distanceToArcs(ways) <= 10
                 }
             }
         }
     }
 
+    private val hikingPathsFilter by lazy { """
+        ways with
+          highway = path
+          and sac_scale ~ mountain_hiking|demanding_mountain_hiking|alpine_hiking|demanding_alpine_hiking|difficult_alpine_hiking
+   """.toElementFilterExpression() }
+
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!filter.matches(element)) false else null
+        when {
+            !filter.matches(element) -> false
+            element.tags["summit:cross"] == "yes" || element.tags.containsKey("summit:register") -> true
+            else -> null
+        }
 
     override fun createForm() = YesNoQuestAnswerFragment()
 

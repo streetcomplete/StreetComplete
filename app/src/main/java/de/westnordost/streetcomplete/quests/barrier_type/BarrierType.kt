@@ -15,7 +15,7 @@ enum class BarrierType(val osmValue: String) {
     BLOCK("block"),
     JERSEY_BARRIER("jersey_barrier"),
     LOG("log"),
-    KERB("curb"),
+    KERB("kerb"),
     HEIGHT_RESTRICTOR("height_restrictor"),
     FULL_HEIGHT_TURNSTILE("full-height_turnstile"),
     TURNSTILE("turnstile"),

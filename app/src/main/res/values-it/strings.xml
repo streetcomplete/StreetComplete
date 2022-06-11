@@ -1578,4 +1578,21 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Solo il numero di gradini per raggiungere la cima. Se i gradini differiscono per lato, fornire il numero maggiore."</string>
+    <string name="map_btn_create_track">"Inizia la registrazione di una nuova traccia"</string>
+    <string name="map_btn_stop_track">"Ferma la registrazione della traccia"</string>
+    <string name="quest_bicycle_rental_type_title">"Di quale tipo di noleggio di biciclette si tratta?"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Negozio di biciclette che offre anche il noleggio"</string>
+    <string name="quest_bicycle_shop_repair_title">"È presente anche il servizio di riparazione di biciclette?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Vengono vendute anche biciclette di seconda mano?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"No, solo nuove"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Sì, insieme a quelle nuove"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Sì, esclusivamente"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Non vengono vendute biciclette"</string>
+    <string name="quest_building_entrance_title">"Di quale tipo di ingresso si tratta?"</string>
+    <string name="quest_building_entrance_main">"Ingresso principale di un edificio pubblico"</string>
+    <string name="quest_building_entrance_staircase">"Ingresso sul pianerottolo (ad esempio in un condominio)"</string>
+    <string name="quest_building_entrance_service">"Entrata di servizio"</string>
+    <string name="quest_building_entrance_exit">"Solo uscita"</string>
+    <string name="quest_building_entrance_emergency_exit">"Solo uscita di emergenza"</string>
+    <string name="quest_building_entrance_yes">"Altro tipo di ingresso"</string>
 </resources>
