@@ -77,6 +77,7 @@ data class IncompleteCountryInfo(
 
 data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
     val countryCode get() = infos.first().countryCode
+    val countryCodes get() = infos.map { it.countryCode }
 
     // part of default.yml, so cannot be null
     val advisorySpeedLimitSignStyle: String
