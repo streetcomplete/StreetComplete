@@ -67,14 +67,12 @@ private fun String.replaceOnlineWithLocalSections(): String {
     // uncomment local sections
     var shouldUncomment = false
     lines.forEachIndexed { index, line ->
-        if (shouldUncomment) {
-            if (line.trim().startsWith("#")) {
-                lines[index] = line.replaceFirst("#", "")
-            } else {
-                shouldUncomment = false
-            }
-        } else if (localStartLineIndices.contains(index)) {
+        if (localStartLineIndices.contains(index)) {
             shouldUncomment = true
+        } else if (shouldUncomment && line.trim().startsWith("#")) {
+            lines[index] = line.replaceFirst("#", "")
+        } else {
+            shouldUncomment = false
         }
     }
 
