@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 
 class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {

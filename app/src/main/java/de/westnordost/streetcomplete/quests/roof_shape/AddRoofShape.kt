@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import java.util.concurrent.FutureTask
 

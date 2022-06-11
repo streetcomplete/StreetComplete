@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.car_wash_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 
@@ -16,5 +15,3 @@ interface Overlay : ElementEditType {
      * displayed for the given element */
     fun createForm(element: Element): AbstractOverlayForm?
 }
-
-typealias Tags = StringMapChangesBuilder

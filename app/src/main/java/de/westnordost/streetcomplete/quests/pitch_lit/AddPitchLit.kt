@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.pitch_lit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm

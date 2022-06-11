@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES

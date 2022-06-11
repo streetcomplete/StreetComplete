@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS

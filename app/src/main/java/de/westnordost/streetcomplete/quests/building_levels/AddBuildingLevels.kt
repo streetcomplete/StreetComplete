@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {

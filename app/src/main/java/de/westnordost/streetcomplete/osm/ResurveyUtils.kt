@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import java.time.DateTimeException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
