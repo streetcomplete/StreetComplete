@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.police_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 
 class AddPoliceType : OsmFilterQuestType<PoliceType>() {
@@ -12,8 +12,10 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
     override val changesetComment = "Add police type"
     override val wikiLink = "Tag:amenity=police"
     override val icon = R.drawable.ic_quest_police
-    override val enabledInCountries = NoCountriesExcept("IT")
     override val questTypeAchievements = listOf(CITIZEN)
+
+    // only implemented for Italy for now
+    override fun isEnabled(countryInfo: CountryInfo) = countryInfo.countryCodes.contains("IT")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_policeType_title
 

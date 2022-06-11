@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.accepts_cash
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
@@ -54,8 +54,9 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-    override val enabledInCountries = NoCountriesExcept("SE")
     override val questTypeAchievements = listOf(CITIZEN)
+
+    override fun isEnabled(countryInfo: CountryInfo) = !countryInfo.shopsUsuallyAcceptCash
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 

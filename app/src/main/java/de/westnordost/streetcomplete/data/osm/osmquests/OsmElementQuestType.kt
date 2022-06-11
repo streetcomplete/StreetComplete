@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 
 /** Quest type where each quest refers to one OSM element.
@@ -23,18 +22,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** The OpenStreetMap wiki page with the documentation for the tag or feature that is being
      *  edited by this quest type */
     val wikiLink: String?
-
-    /** In which countries the quest should be shown. By default, in all countries.
-     *
-     *  Use [AllCountriesExcept][de.westnordost.streetcomplete.data.quest.AllCountriesExcept] to exclude some countries.
-     *  Use [NoCountriesExcept][de.westnordost.streetcomplete.data.quest.NoCountriesExcept] to exclude all except some countries.
-     *
-     * A quest type should not be shown in a country if it is either irrelevant/not applicable in
-     * that country or if it would not fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)
-     * in that country only.
-     *
-     * The reason why a country is excluded or included here should be documented. */
-    val enabledInCountries: Countries get() = AllCountries
 
     /** Whether the markers should be at the ends instead of the center. By default: false.
      *
@@ -68,6 +55,13 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  i.e. anything that when it's gone, there is a vacant shop then.
      *  */
     val isReplaceShopEnabled: Boolean get() = false
+
+    /** If the quest should be shown in a particular country. By default, in all countries.
+     *
+     * A quest type should not be shown in a country if it is either irrelevant/not applicable in
+     * that country or if it would not fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)
+     * in that country only. */
+    fun isEnabled(countryInfo: CountryInfo): Boolean = true
 
     override val title: Int get() = getTitle(emptyMap())
 

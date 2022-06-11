@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.fuel_service
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.util.ktx.toYesNo
@@ -20,7 +20,8 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:self_service"
     override val icon = R.drawable.ic_quest_fuel_self_service
     override val questTypeAchievements = listOf(CAR)
-    override val enabledInCountries = NoCountriesExcept("IT", "UK")
+
+    override fun isEnabled(countryInfo: CountryInfo) = !countryInfo.fuelStationsUsuallyAreSelfService
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fuelSelfService_title
 

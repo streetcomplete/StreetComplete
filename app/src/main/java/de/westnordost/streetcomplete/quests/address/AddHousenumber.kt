@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -12,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
@@ -25,16 +25,9 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
     override val questTypeAchievements = listOf(POSTMAN)
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
-    override val enabledInCountries = AllCountriesExcept(
-        "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
-        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
-        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
-        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
-        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
-        "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-        "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
-    )
+
+    override fun isEnabled(countryInfo: CountryInfo) =
+        !countryInfo.houseNumbersAreImported && !countryInfo.houseNumbersOutsideBuilding
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 

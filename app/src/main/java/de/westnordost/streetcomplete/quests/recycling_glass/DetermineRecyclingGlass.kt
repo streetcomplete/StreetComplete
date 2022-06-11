@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.recycling_glass
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
@@ -23,10 +23,10 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_glass
-    // see isUsuallyAnyGlassRecycleableInContainers.yml
-    override val enabledInCountries = AllCountriesExcept("CZ")
     override val isDeleteElementEnabled = true
     override val questTypeAchievements = listOf(CITIZEN)
+
+    override fun isEnabled(countryInfo: CountryInfo) = !countryInfo.isUsuallyAnyGlassRecyclableInContainers
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title
 

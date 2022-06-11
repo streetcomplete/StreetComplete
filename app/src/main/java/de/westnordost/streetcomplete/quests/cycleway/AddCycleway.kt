@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -12,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
@@ -54,33 +54,7 @@ class AddCycleway(
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(BICYCLIST)
 
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
-    // #749. sources:
-    // Google Street View (driving around in virtual car)
-    // https://en.wikivoyage.org/wiki/Cycling
-    // http://peopleforbikes.org/get-local/ (US)
-    override val enabledInCountries = NoCountriesExcept(
-        // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-        "NO", "SE", "FI", "IS", "DK",
-        "GB", "IE", "NL", "BE", "FR", "LU",
-        "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
-        "ES", "IT", "HR",
-        // East Asia
-        "JP", "KR", "TW",
-        // some of China (East Coast)
-        "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
-        "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
-        // Australia etc
-        "NZ", "AU",
-        // some of Canada
-        "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
-        // some of the US
-        // West Coast, East Coast, Center, South
-        "US-WA", "US-OR", "US-CA",
-        "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
-        "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
-        "US-AZ", "US-TX"
-    )
+    override fun isEnabled(countryInfo: CountryInfo) = countryInfo.cyclewaysAreCommon
 
     override fun getTitle(tags: Map<String, String>) =
         if (createCyclewaySides(tags, false) != null)

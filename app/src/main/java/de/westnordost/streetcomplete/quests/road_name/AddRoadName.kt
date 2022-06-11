@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
@@ -24,13 +24,14 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
             or foot and foot !~ private|no
           )
     """
-    override val enabledInCountries = AllCountriesExcept("JP")
     override val changesetComment = "Determine road names and types"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
     override val questTypeAchievements = listOf(CAR, PEDESTRIAN, POSTMAN)
+
+    override fun isEnabled(countryInfo: CountryInfo) = countryInfo.addressHasStreet
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title
 
