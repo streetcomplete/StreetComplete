@@ -36,20 +36,31 @@ data class IncompleteCountryInfo(
     // sorted alphabetically for better overview
     val additionalStreetsignLanguages: List<String>? = null,
     val additionalValidHousenumberRegex: String? = null,
+    val addressHasStreet: Boolean? = null,
     val advisorySpeedLimitSignStyle: String? = null,
     val atmOperators: List<String>? = null,
+    val busStopsHaveName: Boolean? = null,
+    val busStopsHaveRef: Boolean? = null,
     val centerLineStyle: String? = null,
     val chargingStationOperators: List<String>? = null,
     val clothesContainerOperators: List<String>? = null,
+    val cyclewaysAreCommon: Boolean? = null,
     val edgeLineStyle: String? = null,
     val firstDayOfWorkweek: String? = null,
+    val fuelStationsUsuallyAreSelfService: Boolean? = null,
     val hasAdvisorySpeedLimitSign: Boolean? = null,
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
     val hasDailyAlternateSideParkingSign: Boolean? = null,
+    val hasFireHydrantDiameterSign: Boolean? = null,
     val hasLivingStreet: Boolean? = null,
     val hasNoStandingSign: Boolean? = null,
     val hasSlowZone: Boolean? = null,
+    val hasSummitMarkings: Boolean? = null,
+    val hasTactilePaving: Boolean? = null,
+    val hasTrafficSignalsVibration: Boolean? = null,
+    val houseNumbersAreImported: Boolean? = null,
+    val houseNumbersOutsideBuilding: Boolean? = null,
     val isLeftHandTraffic: Boolean? = null,
     val isUsuallyAnyGlassRecyclableInContainers: Boolean? = null,
     val lengthUnits: List<LengthUnit>? = null,
@@ -66,8 +77,12 @@ data class IncompleteCountryInfo(
     val orchardProduces: List<String>? = null,
     val popularReligions: List<String>? = null,
     val popularSports: List<String>? = null,
+    val postBoxesHaveCollectionTimes: Boolean? = null,
+    val postBoxesHaveRef: Boolean? = null,
+    val postBoxesHaveRoyalCypher: Boolean? = null,
     val regularShoppingDays: Int? = null,
     val roofsAreUsuallyFlat: Boolean? = null,
+    val shopsUsuallyAcceptCash: Boolean? = null,
     val slowZoneLabelPosition: String? = null,
     val slowZoneLabelText: String? = null,
     val speedUnits: List<SpeedMeasurementUnit>? = null,
@@ -80,14 +95,24 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
     val countryCodes get() = infos.map { it.countryCode }
 
     // part of default.yml, so cannot be null
+    val addressHasStreet: Boolean
+        get() = infos.firstNotNullOf { it.addressHasStreet }
     val advisorySpeedLimitSignStyle: String
         get() = infos.firstNotNullOf { it.advisorySpeedLimitSignStyle }
+    val busStopsHaveName: Boolean
+        get() = infos.firstNotNullOf { it.busStopsHaveName }
+    val busStopsHaveRef: Boolean
+        get() = infos.firstNotNullOf { it.busStopsHaveRef }
     val centerLineStyle: String
         get() = infos.firstNotNullOf { it.centerLineStyle }
+    val cyclewaysAreCommon: Boolean
+        get() = infos.firstNotNullOf { it.cyclewaysAreCommon }
     val edgeLineStyle: String
         get() = infos.firstNotNullOf { it.edgeLineStyle }
     val firstDayOfWorkweek: String
         get() = infos.firstNotNullOf { it.firstDayOfWorkweek }
+    val fuelStationsUsuallyAreSelfService: Boolean
+        get() = infos.firstNotNullOf { it.fuelStationsUsuallyAreSelfService }
     val hasAdvisorySpeedLimitSign: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
     val hasBiWeeklyAlternateSideParkingSign: Boolean
@@ -96,12 +121,24 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.hasCenterLeftTurnLane }
     val hasDailyAlternateSideParkingSign: Boolean
         get() = infos.firstNotNullOf { it.hasDailyAlternateSideParkingSign }
+    val hasFireHydrantDiameterSign: Boolean
+        get() = infos.firstNotNullOf { it.hasFireHydrantDiameterSign }
     val hasLivingStreet: Boolean
         get() = infos.firstNotNullOf { it.hasLivingStreet }
     val hasNoStandingSign: Boolean
         get() = infos.firstNotNullOf { it.hasNoStandingSign }
     val hasSlowZone: Boolean
         get() = infos.firstNotNullOf { it.hasSlowZone }
+    val hasSummitMarkings: Boolean
+        get() = infos.firstNotNullOf { it.hasSummitMarkings }
+    val hasTactilePaving: Boolean
+        get() = infos.firstNotNullOf { it.hasTactilePaving }
+    val hasTrafficSignalsVibration: Boolean
+        get() = infos.firstNotNullOf { it.hasTrafficSignalsVibration }
+    val houseNumbersAreImported: Boolean
+        get() = infos.firstNotNullOf { it.houseNumbersAreImported }
+    val houseNumbersOutsideBuilding: Boolean
+        get() = infos.firstNotNullOf { it.houseNumbersOutsideBuilding }
     val isLeftHandTraffic: Boolean
         get() = infos.firstNotNullOf { it.isLeftHandTraffic }
     val isUsuallyAnyGlassRecyclableInContainers: Boolean
@@ -118,10 +155,18 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.officialLanguages }
     val popularReligions: List<String>
         get() = infos.firstNotNullOf { it.popularReligions }
+    val postBoxesHaveCollectionTimes: Boolean
+        get() = infos.firstNotNullOf { it.postBoxesHaveCollectionTimes }
+    val postBoxesHaveRef: Boolean
+        get() = infos.firstNotNullOf { it.postBoxesHaveRef }
+    val postBoxesHaveRoyalCypher: Boolean
+        get() = infos.firstNotNullOf { it.postBoxesHaveRoyalCypher }
     val regularShoppingDays: Int
         get() = infos.firstNotNullOf { it.regularShoppingDays }
     val roofsAreUsuallyFlat: Boolean
         get() = infos.firstNotNullOf { it.roofsAreUsuallyFlat }
+    val shopsUsuallyAcceptCash: Boolean
+        get() = infos.firstNotNullOf { it.shopsUsuallyAcceptCash }
     val speedUnits: List<SpeedMeasurementUnit>
         get() = infos.firstNotNullOf { it.speedUnits }
     val weightLimitUnits: List<WeightMeasurementUnit>
