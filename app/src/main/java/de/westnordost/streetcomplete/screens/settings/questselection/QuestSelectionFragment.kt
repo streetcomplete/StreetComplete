@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
@@ -39,6 +40,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
     private val questPresetsSource: QuestPresetsSource by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val questTypeOrderController: QuestTypeOrderController by inject()
+    private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val prefs: SharedPreferences by inject()
 
@@ -74,7 +76,7 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
         super.onAttach(context)
         questSelectionAdapter = QuestSelectionAdapter(
             requireContext(), visibleQuestTypeController, questTypeOrderController,
-            questTypeRegistry, countryBoundaries, prefs
+            questTypeRegistry, countryInfos, countryBoundaries, prefs
         )
     }
 

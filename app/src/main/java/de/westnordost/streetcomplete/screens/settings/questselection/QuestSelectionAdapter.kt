@@ -21,10 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
@@ -33,7 +31,6 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeControll
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
-import de.westnordost.streetcomplete.util.ktx.containsAny
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -50,11 +47,13 @@ class QuestSelectionAdapter(
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
+    private val countryInfos: CountryInfos,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
 ) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), DefaultLifecycleObserver {
 
     private val currentCountryCodes: List<String>
+    private val currentCountryInfo get() = countryInfos.get(currentCountryCodes)
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -246,16 +245,7 @@ class QuestSelectionAdapter(
         lateinit var item: QuestVisibility
 
         private val isEnabledInCurrentCountry: Boolean
-            get() {
-                (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when (val countries = questType.enabledInCountries) {
-                        is AllCountries -> true
-                        is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
-                        is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
-                    }
-                }
-                return true
-            }
+            get() = (item.questType as? OsmElementQuestType<*>)?.isEnabled(currentCountryInfo) ?: true
 
         fun onBind(with: QuestVisibility) {
             this.item = with

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -21,8 +22,8 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.intersects
-import de.westnordost.streetcomplete.util.ktx.isInAny
+import de.westnordost.streetcomplete.util.ktx.getIds
+import de.westnordost.streetcomplete.util.ktx.getIntersectingIds
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -46,7 +47,8 @@ class OsmQuestController internal constructor(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+    private val countryInfos: CountryInfos,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
 ) : OsmQuestSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -151,7 +153,9 @@ class OsmQuestController internal constructor(
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType::class.simpleName!!
-                if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
+                val countryCodes = countryBoundaries.getIntersectingIds(bbox)
+
+                if (!countryCodes.any { questType.isEnabled(countryInfos.get(listOf(it))) }) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
                 } else {
@@ -247,8 +251,8 @@ class OsmQuestController internal constructor(
         if (downloadedBoundingBox != null && !downloadedBoundingBox.contains(pos)) return false
 
         // do not create quests in countries where the quest is not activated
-        val countries = questType.enabledInCountries
-        if (!countryBoundariesFuture.get().isInAny(pos, countries)) return false
+        val countryCodes = countryBoundariesFuture.get().getIds(pos)
+        if (!questType.isEnabled(countryInfos.get(countryCodes))) return false
 
         return true
     }

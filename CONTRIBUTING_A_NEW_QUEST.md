@@ -184,7 +184,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
-In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
+In some cases it will be a good idea to [limit quests to certain countries](#isEnabled).
 
 You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
@@ -498,13 +498,11 @@ Even more complex ones using different class bases are possible. Such as what wa
 
 It allows it to make complex geometry checks, but writing them is also far more complex.
 
-## `enabledInCountries`
+## `isEnabled`
 
-Some quests should be enabled only in some countries or disabled in a specific countries.
+Some quests should be enabled or disabled depending on country-specific metadata (stored in the [countrymetadata repository](https://github.com/streetcomplete/countrymetadata)).
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
-
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA and Canada
+[`override fun isEnabled(countryInfo: CountryInfo) = !countryInfo.shopsUsuallyAcceptCash`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
 ## `defaultDisabledMessage`
 

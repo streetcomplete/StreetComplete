@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -12,8 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.quest.Countries
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
@@ -45,6 +45,7 @@ class OsmQuestControllerTest {
     private lateinit var notesSource: NotesWithEditsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var countryBoundaries: CountryBoundaries
+    private lateinit var countryInfos: CountryInfos
 
     private lateinit var ctrl: OsmQuestController
     private lateinit var listener: OsmQuestSource.Listener
@@ -65,6 +66,8 @@ class OsmQuestControllerTest {
             ApplicableQuestTypeNotInAnyCountry, ApplicableQuestType2
         ))
         countryBoundaries = mock()
+        countryInfos = mock()
+        on(countryInfos.get(any())).thenReturn(mock())
 
         on(mapDataSource.addListener(any())).then { invocation ->
             mapDataListener = invocation.getArgument(0)
@@ -81,7 +84,7 @@ class OsmQuestControllerTest {
 
         listener = mock()
         hideListener = mock()
-        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
+        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, countryInfos, futureTask)
         ctrl.addListener(listener)
         ctrl.addHideQuestsListener(hideListener)
     }
@@ -375,7 +378,7 @@ private object ApplicableQuestType2 : TestQuestTypeA() {
 
 private object ApplicableQuestTypeNotInAnyCountry : TestQuestTypeA() {
     override fun isApplicableTo(element: Element) = true
-    override val enabledInCountries: Countries get() = NoCountriesExcept()
+    override fun isEnabled(countryInfo: CountryInfo) = false
 }
 
 private object NotApplicableQuestType : TestQuestTypeA() {
