@@ -266,6 +266,11 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
+tasks.register<UpdateMapStyleTask>("updateMapStyle") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/map_theme/jawg"
+}
+
 tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"

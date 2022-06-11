@@ -23,8 +23,12 @@ fun URL.readText() = openConnection().getInputStream().bufferedReader().readText
 data class GithubDirectoryListingItem(
     /** File or directory name */
     val name: String,
+    /** Path including file or directory name, relative to repository root */
+    val path: String,
     /** Whether it is a file or a directory */
     val type: String,
+    /** URL to the "contents" API endpoint for this item */
+    val url: String,
     /** URL for the raw file contents, null for directories */
     val download_url: String?
 )

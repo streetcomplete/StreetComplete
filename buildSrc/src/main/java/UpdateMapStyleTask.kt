@@ -1,0 +1,90 @@
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.TaskAction
+import java.io.File
+import java.net.URL
+
+open class UpdateMapStyleTask : DefaultTask() {
+
+    @get:Input var targetDir: String? = null
+
+    @TaskAction fun run() {
+        println("hello")
+
+        val targetDir = targetDir?.let { File(it) } ?: return
+        assert(targetDir.exists())
+
+        val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/streetcomplete-mapstyle/contents?ref=jawg")
+        val mapStyleFiles = fetchDirectoryContents(githubDirectoryListingUrl)
+
+        val excludeFilePaths = setOf(
+            ".gitattributes",
+            "LICENSE",
+            "README.md"
+        )
+
+        for (file in mapStyleFiles) {
+            if (file.path in excludeFilePaths) {
+                continue
+            }
+
+            val targetFile = File(targetDir, file.path)
+            val downloadUrl = URL(file.download_url)
+
+            if (file.name.endsWith(".yaml")) {
+                val fileContent = downloadUrl.readText()
+                    .normalizeLineEndings()
+                    .replaceOnlineWithLocalSections()
+
+                targetFile.writeText(fileContent)
+            } else {
+                // e.g. for images: don't try to read/write as UTF-8
+                downloadUrl.openStream().use { it.transferTo(targetFile.outputStream()) }
+            }
+        }
+    }
+
+    private val json = Json { ignoreUnknownKeys = true }
+
+    private fun fetchDirectoryContents(sourceGithubDirectoryUrl: URL): List<GithubDirectoryListingItem> =
+        json.decodeFromString<List<GithubDirectoryListingItem>>(sourceGithubDirectoryUrl.readText())
+            .flatMap { if (it.type == "dir") fetchDirectoryContents(URL(it.url)) else listOf(it) }
+}
+
+private const val ONLINE_START_IDENTIFIER = "# for online testing"
+private const val LOCAL_START_IDENTIFIER = "# for local testing"
+
+private fun String.normalizeLineEndings() = this.replace("\r\n", "\n")
+
+private fun String.replaceOnlineWithLocalSections(): String {
+    val lines = this.split("\n").toMutableList()
+
+    val onlineStartLineIndices = lines.indices.filter { lines[it].trim().startsWith(ONLINE_START_IDENTIFIER) }
+    val localStartLineIndices = lines.indices.filter { lines[it].trim().startsWith(LOCAL_START_IDENTIFIER) }
+
+    val onlineRanges = onlineStartLineIndices.zip(localStartLineIndices)
+    onlineRanges.forEach { (start, end) -> assert(start < end) }
+
+    // uncomment local sections
+    var shouldUncomment = false
+    lines.forEachIndexed { index, line ->
+        if (shouldUncomment) {
+            if (line.trim().startsWith("#")) {
+                lines[index] = line.replaceFirst("#", "")
+            } else {
+                shouldUncomment = false
+            }
+        } else if (localStartLineIndices.contains(index)) {
+            shouldUncomment = true
+        }
+    }
+
+    // delete online sections
+    val filteredLines = lines.filterIndexed { index, _ -> !onlineRanges.any { it.contains(index) } }
+
+    return filteredLines.joinToString("\n")
+}
+
+private fun Pair<Int, Int>.contains(value: Int) = value in first..second
