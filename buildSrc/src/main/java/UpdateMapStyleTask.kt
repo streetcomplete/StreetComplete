@@ -11,8 +11,6 @@ open class UpdateMapStyleTask : DefaultTask() {
     @get:Input var targetDir: String? = null
 
     @TaskAction fun run() {
-        println("hello")
-
         val targetDir = targetDir?.let { File(it) } ?: return
         require(targetDir.exists()) { "Directory ${targetDir.absolutePath} does not exist." }
 
