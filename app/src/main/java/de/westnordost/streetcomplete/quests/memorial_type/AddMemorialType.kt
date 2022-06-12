@@ -4,8 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
+import de.westnordost.streetcomplete.quests.barrier_type.applyTo
 
-class AddMemorialType : OsmFilterQuestType<String>() {
+class AddMemorialType : OsmFilterQuestType<MemorialTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -22,24 +23,7 @@ class AddMemorialType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddMemorialTypeForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            "wooden_stele" -> {
-                tags["memorial"] = "stele"
-                tags["material"] = "wood"
-            }
-            "stone_stele" -> {
-                tags["memorial"] = "stele"
-                tags["material"] = "stone"
-            }
-            "khachkar_stele" -> {
-                tags["memorial"] = "stele"
-                tags["material"] = "stone"
-                tags["stele"] = "khachkar"
-            }
-            else -> {
-                tags["memorial"] = answer
-            }
-        }
+    override fun applyAnswerTo(answer: MemorialTypeAnswer, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags)
     }
 }
