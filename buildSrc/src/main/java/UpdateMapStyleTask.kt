@@ -14,7 +14,7 @@ open class UpdateMapStyleTask : DefaultTask() {
         println("hello")
 
         val targetDir = targetDir?.let { File(it) } ?: return
-        assert(targetDir.exists())
+        require(targetDir.exists()) { "Directory ${targetDir.absolutePath} does not exist." }
 
         val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/streetcomplete-mapstyle/contents?ref=jawg")
         val mapStyleFiles = fetchDirectoryContents(githubDirectoryListingUrl)
@@ -60,9 +60,14 @@ private fun String.replaceOnlineWithLocalSections(): String {
 
     val onlineStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for online testing") }
     val localStartLineIndices = lines.indices.filter { lines[it].trim().startsWith("# for local testing") }
+    require(onlineStartLineIndices.size == localStartLineIndices.size) {
+        "There should be the same number of online sections and local sections"
+    }
 
     val onlineRanges = onlineStartLineIndices.zip(localStartLineIndices)
-    onlineRanges.forEach { (start, end) -> assert(start < end) }
+    onlineRanges.forEach { (start, end) ->
+        require(start < end) { "Online section should be before local section" }
+    }
 
     // uncomment local sections
     var shouldUncomment = false
