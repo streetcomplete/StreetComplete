@@ -1,8 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 addressHasStreet: true
 advisorySpeedLimitSignStyle: blue
-busStopsHaveName: true
-busStopsHaveRef: false
+busStopIdentifiers: [name]
 centerLineStyle: white
 cyclewaysAreCommon: false
 edgeLineStyle: white

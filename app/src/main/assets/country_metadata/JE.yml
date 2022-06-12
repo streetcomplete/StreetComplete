@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-busStopsHaveRef: true
+busStopIdentifiers: [name, ref]
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]

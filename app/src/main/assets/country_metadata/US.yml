@@ -1,7 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 advisorySpeedLimitSignStyle: yellow
-busStopsHaveName: false
-busStopsHaveRef: true
+busStopIdentifiers: [ref]
 centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true
