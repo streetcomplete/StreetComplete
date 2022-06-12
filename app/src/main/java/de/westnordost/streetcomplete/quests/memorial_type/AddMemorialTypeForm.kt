@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddMemorialTypeForm : AImageListQuestAnswerFragment<String,String>() {
+class AddMemorialTypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("statue", R.drawable.memorial_type_statue, R.string.quest_memorialType_statue),
