@@ -47,7 +47,7 @@ data class IncompleteCountryInfo(
     val cyclewaysAreCommon: Boolean? = null,
     val edgeLineStyle: String? = null,
     val firstDayOfWorkweek: String? = null,
-    val fuelStationsUsuallyAreSelfService: Boolean? = null,
+    val fuelStationsService: String? = null,
     val hasAdvisorySpeedLimitSign: Boolean? = null,
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
@@ -111,8 +111,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.edgeLineStyle }
     val firstDayOfWorkweek: String
         get() = infos.firstNotNullOf { it.firstDayOfWorkweek }
-    val fuelStationsUsuallyAreSelfService: Boolean
-        get() = infos.firstNotNullOf { it.fuelStationsUsuallyAreSelfService }
+    val fuelStationsService: String
+        get() = infos.firstNotNullOf { it.fuelStationsService }
     val hasAdvisorySpeedLimitSign: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
     val hasBiWeeklyAlternateSideParkingSign: Boolean

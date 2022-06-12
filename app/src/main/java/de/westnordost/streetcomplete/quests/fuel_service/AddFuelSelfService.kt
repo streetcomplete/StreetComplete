@@ -21,7 +21,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_fuel_self_service
     override val questTypeAchievements = listOf(CAR)
 
-    override fun isEnabled(countryInfo: CountryInfo) = !countryInfo.fuelStationsUsuallyAreSelfService
+    override fun isEnabled(countryInfo: CountryInfo) = countryInfo.fuelStationsService == "both"
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fuelSelfService_title
 
