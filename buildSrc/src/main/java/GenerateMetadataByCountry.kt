@@ -1,7 +1,6 @@
 import com.esotericsoftware.yamlbeans.YamlConfig
 import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
@@ -76,10 +75,11 @@ open class GenerateMetadataByCountry : DefaultTask() {
             .filter { it.isFile && it.name.endsWith(".yml") }
             .associate { it.name.withoutExtension to YamlReader(it.readText()).read() as Map<String, Any> }
 
+    private val json = Json { ignoreUnknownKeys = true }
+
     /** Fetch country metadata. Returns map of file name -> contents */
     private fun fetchCountryMetadata(sourceGithubDirectoryUrl: URL): Map<String, Map<String, Any>> =
-        Json { ignoreUnknownKeys = true }
-            .decodeFromString<List<GithubDirectoryListingItem>>(sourceGithubDirectoryUrl.readText())
+        json.decodeFromString<List<GithubDirectoryListingItem>>(sourceGithubDirectoryUrl.readText())
             .filter { it.type == "file" && it.name.endsWith(".yml") }
             .associate {
                 val response = URL(it.download_url).readText()
@@ -88,11 +88,3 @@ open class GenerateMetadataByCountry : DefaultTask() {
 }
 
 private val String.withoutExtension get() = substringBeforeLast('.')
-private fun URL.readText() = openConnection().getInputStream().bufferedReader().readText()
-
-@Serializable
-data class GithubDirectoryListingItem(
-    val name: String,
-    val type: String,
-    val download_url: String
-)
