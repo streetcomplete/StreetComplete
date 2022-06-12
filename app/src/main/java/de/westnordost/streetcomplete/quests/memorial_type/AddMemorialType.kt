@@ -32,14 +32,13 @@ class AddMemorialType : OsmFilterQuestType<String>() {
                 tags["memorial"] = "stele"
                 tags["material"] = "stone"
             }
-            "khatchkar_stele" -> {
+            "khachkar_stele" -> {
                 tags["memorial"] = "stele"
                 tags["material"] = "stone"
+                tags["stele"] = "khachkar"
             }
             else -> {
-                tags["memorial"] = "stele"
-                tags["stele"] = "khachkar"
-                tags["material"] = "stone"
+                tags["memorial"] = answer
             }
         }
     }
