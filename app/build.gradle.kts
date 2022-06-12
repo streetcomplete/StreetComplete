@@ -269,6 +269,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
     targetDir = "$projectDir/src/main/assets/map_theme/jawg"
+    mapStyleBranch = "jawg"
 }
 
 tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {

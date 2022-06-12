@@ -8,13 +8,14 @@ import java.net.URL
 
 open class UpdateMapStyleTask : DefaultTask() {
 
-    @get:Input var targetDir: String? = null
+    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var mapStyleBranch: String
 
     @TaskAction fun run() {
-        val targetDir = targetDir?.let { File(it) } ?: return
+        val targetDir = File(targetDir)
         require(targetDir.exists()) { "Directory ${targetDir.absolutePath} does not exist." }
 
-        val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/streetcomplete-mapstyle/contents?ref=jawg")
+        val githubDirectoryListingUrl = URL("https://api.github.com/repos/streetcomplete/streetcomplete-mapstyle/contents?ref=$mapStyleBranch")
         val mapStyleFiles = fetchDirectoryContents(githubDirectoryListingUrl)
 
         val excludeFilePaths = setOf(
