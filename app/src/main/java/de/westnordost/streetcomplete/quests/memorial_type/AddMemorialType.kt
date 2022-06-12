@@ -23,6 +23,24 @@ class AddMemorialType : OsmFilterQuestType<String>() {
     override fun createForm() = AddMemorialTypeForm()
 
     override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
-        tags["memorial"] = answer
+        when(answer) {
+            "wooden_stele" -> {
+                tags["memorial"] = "stele"
+                tags["material"] = "wood"
+            }
+            "stone_stele" -> {
+                tags["memorial"] = "stele"
+                tags["material"] = "stone"
+            }
+            "khatchkar_stele" -> {
+                tags["memorial"] = "stele"
+                tags["material"] = "stone"
+            }
+            else -> {
+                tags["memorial"] = "stele"
+                tags["stele"] = "khachkar"
+                tags["material"] = "stone"
+            }
+        }
     }
 }

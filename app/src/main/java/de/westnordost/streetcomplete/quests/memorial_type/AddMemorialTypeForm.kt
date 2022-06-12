@@ -12,7 +12,9 @@ class AddMemorialTypeForm : AImageListQuestAnswerFragment<String,String>() {
         Item("plaque", R.drawable.memorial_type_plaque, R.string.quest_memorialType_plaque),
         Item("war_memorial", R.drawable.memorial_type_war_memorial, R.string.quest_memorialType_war_memorial),
         Item("stone", R.drawable.memorial_type_stone, R.string.quest_memorialType_stone),
-        Item("stele", R.drawable.memorial_type_stele, R.string.quest_memorialType_stele),
+        Item("wooden_stele", R.drawable.memorial_type_stele_wooden, R.string.quest_memorialType_stele_wooden),
+        Item("stone_stele", R.drawable.memorial_type_stele_stone, R.string.quest_memorialType_stele_wooden),
+        Item("khatchkar_stele", R.drawable.memorial_type_stele_khatchkar, R.string.quest_memorialType_stele_khatchkar),
         Item("obelisk", R.drawable.memorial_type_obelisk, R.string.quest_memorialType_obelisk),
     )
 
