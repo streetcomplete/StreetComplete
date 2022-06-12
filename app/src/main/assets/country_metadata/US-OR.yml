@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 cyclewaysAreCommon: true
+fuelStationsService: full service
 clothesContainerOperators: [Gemtext]
 chargingStationOperators: [Portland General Electric, Tesla, Blink, EVgo, Volta, SemaConnect, OpConnect, Church Extension Plan, Chargepoint, AeroVironment]

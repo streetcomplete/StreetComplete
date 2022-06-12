@@ -7,7 +7,7 @@ centerLineStyle: white
 cyclewaysAreCommon: false
 edgeLineStyle: white
 firstDayOfWorkweek: Mo
-fuelStationsUsuallyAreSelfService: true
+fuelStationsService: self service
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
 hasCenterLeftTurnLane: false

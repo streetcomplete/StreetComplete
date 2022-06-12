@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: white
 edgeLineStyle: yellow
+fuelStationsService: full service
 hasLivingStreet: true
 isLeftHandTraffic: true
 livingStreetSignStyle: sadc

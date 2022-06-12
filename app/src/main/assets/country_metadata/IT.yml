@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [de]
 cyclewaysAreCommon: true
-fuelStationsUsuallyAreSelfService: false
+fuelStationsService: both
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: false
 hasLivingStreet: false
