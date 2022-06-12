@@ -39,8 +39,7 @@ data class IncompleteCountryInfo(
     val addressHasStreet: Boolean? = null,
     val advisorySpeedLimitSignStyle: String? = null,
     val atmOperators: List<String>? = null,
-    val busStopsHaveName: Boolean? = null,
-    val busStopsHaveRef: Boolean? = null,
+    val busStopIdentifiers: Set<String>? = null,
     val centerLineStyle: String? = null,
     val chargingStationOperators: List<String>? = null,
     val clothesContainerOperators: List<String>? = null,
@@ -99,10 +98,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.addressHasStreet }
     val advisorySpeedLimitSignStyle: String
         get() = infos.firstNotNullOf { it.advisorySpeedLimitSignStyle }
-    val busStopsHaveName: Boolean
-        get() = infos.firstNotNullOf { it.busStopsHaveName }
-    val busStopsHaveRef: Boolean
-        get() = infos.firstNotNullOf { it.busStopsHaveRef }
+    val busStopIdentifiers: Set<String>
+        get() = infos.firstNotNullOf { it.busStopIdentifiers }
     val centerLineStyle: String
         get() = infos.firstNotNullOf { it.centerLineStyle }
     val cyclewaysAreCommon: Boolean

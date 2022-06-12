@@ -22,7 +22,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
     override val icon = R.drawable.ic_quest_bus_stop_name
     override val questTypeAchievements = listOf(PEDESTRIAN)
 
-    override fun isEnabled(countryInfo: CountryInfo) = countryInfo.busStopsHaveRef
+    override fun isEnabled(countryInfo: CountryInfo) = "ref" in countryInfo.busStopIdentifiers
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopRef_title2
 
