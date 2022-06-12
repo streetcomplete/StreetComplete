@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeDialog
@@ -58,10 +59,9 @@ class MainMenuDialog(
 
         if (indexInTeam != null) {
             binding.teamModeColorCircle.setIndexInTeam(indexInTeam)
-            binding.bigMenuItemsContainer.removeView(binding.enableTeamModeButton)
-        } else {
-            binding.bigMenuItemsContainer.removeView(binding.disableTeamModeButton)
         }
+        binding.enableTeamModeButton.isGone = indexInTeam != null
+        binding.disableTeamModeButton.isGone = indexInTeam == null
 
         binding.root.doOnPreDraw {
             binding.bigMenuItemsContainer.columnCount = binding.root.width / binding.profileButton.width
