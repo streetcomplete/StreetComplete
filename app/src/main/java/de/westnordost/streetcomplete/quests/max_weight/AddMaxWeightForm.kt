@@ -117,7 +117,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun userSelectedUnrealisticWeight(): Boolean {
         val weight = getWeightFromInput() ?: return false
         val w = weight.toMetricTons()
-        return w > 25 || w < 2
+        return w > 30 || w < 2
     }
 
     private fun applyMaxWeightFormAnswer() {
