@@ -109,33 +109,37 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
 
-            when (pinMode) {
-                PinMode.QUESTS -> {
-                    val props = controller?.pickLabel(x, y)?.properties
-                    val questKey = props?.let { questPinsManager?.getQuestKey(it) }
-                    if (questKey != null) {
-                        listener?.onClickedQuest(questKey)
-                        return@launch
+            if (pinsMapComponent?.isVisible == true) {
+                when (pinMode) {
+                    PinMode.QUESTS -> {
+                        val props = controller?.pickLabel(x, y)?.properties
+                        val questKey = props?.let { questPinsManager?.getQuestKey(it) }
+                        if (questKey != null) {
+                            listener?.onClickedQuest(questKey)
+                            return@launch
+                        }
                     }
-                }
-                PinMode.EDITS -> {
-                    val props = controller?.pickLabel(x, y)?.properties
-                    val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
-                    if (editKey != null) {
-                        listener?.onClickedEdit(editKey)
-                        return@launch
+                    PinMode.EDITS -> {
+                        val props = controller?.pickLabel(x, y)?.properties
+                        val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
+                        if (editKey != null) {
+                            listener?.onClickedEdit(editKey)
+                            return@launch
+                        }
                     }
+                    PinMode.NONE -> {}
                 }
-                PinMode.NONE -> {}
             }
 
-            if (selectedOverlaySource.selectedOverlay != null) {
-                val props = controller?.pickFeature(x, y)?.properties
-                    ?: controller?.pickLabel(x, y)?.properties
-                val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }
-                if (elementKey != null) {
-                    listener?.onClickedElement(elementKey)
-                    return@launch
+            if (styleableOverlayMapComponent?.isVisible == true) {
+                if (selectedOverlaySource.selectedOverlay != null) {
+                    val props = controller?.pickFeature(x, y)?.properties
+                        ?: controller?.pickLabel(x, y)?.properties
+                    val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }
+                    if (elementKey != null) {
+                        listener?.onClickedElement(elementKey)
+                        return@launch
+                    }
                 }
             }
 
@@ -188,6 +192,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         pinsMapComponent?.isVisible = false
     }
 
+    fun hideOverlay() {
+        styleableOverlayMapComponent?.isVisible = false
+        styleableOverlayMapComponent?.isVisible = false
+    }
+
     fun highlightGeometry(geometry: ElementGeometry) {
         geometryMapComponent?.showGeometry(geometry)
     }
@@ -195,6 +204,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
+        styleableOverlayMapComponent?.isVisible = true
         selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()

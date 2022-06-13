@@ -438,6 +438,7 @@ class MainFragment :
         showInBottomSheet(SplitWayFragment.create(editType, way, geometry))
         mapFragment.highlightGeometry(geometry)
         mapFragment.hideNonHighlightedPins()
+        mapFragment.hideOverlay()
     }
 
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
@@ -933,6 +934,7 @@ class MainFragment :
         mapFragment.highlightGeometry(quest.geometry)
         mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
         mapFragment.hideNonHighlightedPins()
+        mapFragment.hideOverlay()
     }
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
