@@ -25,7 +25,6 @@ class AddMemorialTypeForm : AImageListQuestAnswerFragment<MemorialTypeAnswer, Me
         Item(OBELISK, R.drawable.memorial_type_obelisk, R.string.quest_memorialType_obelisk),
         Item(WOODEN_STELE, R.drawable.memorial_type_stele_wooden, R.string.quest_memorialType_stele_wooden),
         Item(STONE_STELE, R.drawable.memorial_type_stele_stone, R.string.quest_memorialType_stele_stone),
-        Item(KHACHKAR_STELE, R.drawable.memorial_type_stele_khachkar, R.string.quest_memorialType_stele_khachkar),
     )
 
     override val itemsPerRow = 3

@@ -29,8 +29,4 @@ fun MemorialTypeAnswer.applyTo(tags: Tags) {
             tags["material"] = this.osmMaterialValue
         }
     }
-
-    if (this == Stele.KHACHKAR_STELE) {
-        tags["stele"] = "khachkar"
-    }
 }
