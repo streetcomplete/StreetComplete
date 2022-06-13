@@ -16,21 +16,15 @@ val ANYTHING_PAVED = ANYTHING_FULLY_PAVED + setOf(
     "concrete:lanes"
 )
 
-fun isSurfaceAndTractypeMismatching(surface: String, tracktype: String): Boolean {
-    if (tracktype == "grade1") {
-        if (ANYTHING_UNPAVED.contains(surface)) {
-            return true
-        }
+fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean {
+    if (tracktype == "grade1" && ANYTHING_UNPAVED.contains(surface)) {
+        return true
     }
-    if (tracktype == "grade2") {
-        if (SOFT_SURFACES.contains(surface)) {
-            return true
-        }
+    if (tracktype == "grade2" && SOFT_SURFACES.contains(surface)) {
+        return true
     }
-    if (tracktype == "grade3" || tracktype == "grade4" || tracktype == "grade5") {
-        if (ANYTHING_FULLY_PAVED.contains(surface)) {
-            return true
-        }
+    if ((tracktype == "grade3" || tracktype == "grade4" || tracktype == "grade5") && ANYTHING_FULLY_PAVED.contains(surface)) {
+        return true
     }
     return false
 }

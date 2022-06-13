@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.isSurfaceAndTractypeMismatching
+import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.image_select.Item
 
@@ -15,7 +15,7 @@ class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
         if (osmElement!!.tags.containsKey("tracktype")) {
-            if (isSurfaceAndTractypeMismatching(value.osmValue, osmElement!!.tags["tracktype"]!!)) {
+            if (isSurfaceAndTracktypeMismatching(value.osmValue, osmElement!!.tags["tracktype"]!!)) {
                 confirmTracktypeMismatch { collectSurfaceDescriptionIfNeededAndApplyAnswer(value, true) }
             }
         } else {
