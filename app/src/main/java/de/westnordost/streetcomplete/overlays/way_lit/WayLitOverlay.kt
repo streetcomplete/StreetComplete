@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.osm.lit.LitStatus
+import de.westnordost.streetcomplete.osm.lit.createLitStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -23,18 +24,16 @@ class WayLitOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .filter("ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
-            .map { it to PolylineStyle(createLitStatus(it).color) }
+            .map { it to PolylineStyle(createLitStatus(it.tags).color) }
 
-    override fun createForm(element: Element): AbstractOverlayForm? {
-        TODO("Not yet implemented")
-    }
+    override fun createForm(element: Element) = WayLitOverlayForm()
 }
 
 private val LitStatus?.color: String get() = when (this) {
-    LitStatus.YES ->           "#ccff00"
+    LitStatus.YES,
+    LitStatus.UNSUPPORTED ->   "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"
     LitStatus.AUTOMATIC ->     "#00aaff"
     LitStatus.NO ->            "#555555"
-    LitStatus.UNSUPPORTED ->   Color.UNSUPPORTED
     null ->                    Color.UNSPECIFIED
 }

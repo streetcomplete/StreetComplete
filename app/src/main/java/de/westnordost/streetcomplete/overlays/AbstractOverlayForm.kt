@@ -164,12 +164,6 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
                 onClickOk()
             }
         }
-
-        if (savedInstanceState == null) {
-            binding.speechbubbleContentContainer.startAnimation(
-                AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
-            )
-        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

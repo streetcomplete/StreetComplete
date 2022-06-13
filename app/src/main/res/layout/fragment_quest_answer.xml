@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_alignParentLeft="true"
     android:layout_width="@dimen/quest_form_width"
+    tools:layout_width="300dp"
     android:layout_height="match_parent"
     android:id="@+id/bottomSheetContainer"
     tools:ignore="RtlHardcoded">

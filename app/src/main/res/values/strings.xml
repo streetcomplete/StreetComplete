@@ -979,8 +979,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_level_title2">On which level number is this place located?</string>
 
     <string name="quest_lit_title">"Is it lit here?"</string>
-    <string name="quest_way_lit_automatic">"It uses motion detection"</string>
-    <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
 
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
@@ -1506,7 +1504,14 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="select_overlay">Select Overlay</string>
 
     <string name="overlay_none">None</string>
+
     <string name="overlay_lit">Street lighting</string>
+    <string name="lit_value_yes">Lit</string>
+    <string name="lit_value_no">Not lit</string>
+    <string name="lit_value_24_7">Lit night and day</string>
+    <string name="lit_value_automatic">Lit when someone passes by</string>
+
     <string name="overlay_sidewalk">Sidewalks</string>
+
 
 </resources>

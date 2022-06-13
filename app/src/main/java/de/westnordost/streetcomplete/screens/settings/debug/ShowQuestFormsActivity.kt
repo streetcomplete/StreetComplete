@@ -179,12 +179,12 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             longitude = pos.longitude
         }
 
-    override fun onQuestSolved(questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry) {
+    override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
         popQuestForm()
     }
 
     override fun onComposeNote(
-        questType: OsmElementQuestType<*>,
+        editType: ElementEditType,
         element: Element,
         geometry: ElementGeometry,
         leaveNoteContext: String,
@@ -193,7 +193,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         popQuestForm()
     }
 
-    override fun onSplitWay(questType: OsmElementQuestType<*>, way: Way, geometry: ElementPolylinesGeometry) {
+    override fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
         message("Splitting way")
         popQuestForm()
     }

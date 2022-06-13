@@ -837,7 +837,7 @@ class MainFragment :
         if (bottomSheetFragment != null && clearPreviousHighlighting) {
             clearHighlighting()
         }
-        val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
+        val appearAnim = R.animator.quest_answer_form_appear
         val disappearAnim = R.animator.quest_answer_form_disappear
         childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
