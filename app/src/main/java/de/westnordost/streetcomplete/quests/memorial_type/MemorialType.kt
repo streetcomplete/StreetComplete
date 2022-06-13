@@ -2,31 +2,20 @@ package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 
-sealed interface MemorialTypeAnswer
-
-enum class MemorialType(val osmValue: String) : MemorialTypeAnswer {
+enum class MemorialTypeAnswer(val osmValue: String, val osmMaterialValue: String? = null) {
     STATUE("statue"),
     BUST("bust"),
     PLAQUE("plaque"),
     WAR_MEMORIAL("war_memorial"),
     STONE("stone"),
     OBELISK("obelisk"),
-}
-
-enum class Stele(val osmMaterialValue: String) : MemorialTypeAnswer {
-    WOODEN_STELE("wood"),
-    STONE_STELE("stone"),
-    KHACHKAR_STELE("stone"),
+    WOODEN_STELE("stele", "wood"),
+    STONE_STELE("stele", "stone"),
 }
 
 fun MemorialTypeAnswer.applyTo(tags: Tags) {
-    when (this) {
-        is MemorialType -> {
-            tags["memorial"] = this.osmValue
-        }
-        is Stele -> {
-            tags["memorial"] = "stele"
-            tags["material"] = this.osmMaterialValue
-        }
+    tags["memorial"] = this.osmValue
+    if (this.osmMaterialValue != null) {
+        tags["material"] = this.osmMaterialValue
     }
 }
