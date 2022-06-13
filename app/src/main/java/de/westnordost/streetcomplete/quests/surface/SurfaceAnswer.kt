@@ -7,11 +7,15 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 sealed interface SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
 
-data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
+data class SurfaceAnswer(val value: Surface, val note: String? = null, val replacesTracktype: Boolean = false) : SurfaceOrIsStepsAnswer
 
 fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue
     val previousOsmValue = tags[key]
+
+    if (replacesTracktype) {
+        tags.remove("tracktype")
+    }
 
     // update surface + check date
     tags.updateWithCheckDate(key, osmValue)

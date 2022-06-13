@@ -26,6 +26,9 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
             and !surface:note
             and !note:surface
           )
+          or tracktype = grade1 and surface ~ sand|gravel|fine_gravel|compacted|grass|earth|dirt|mud|pebbles|unpaved
+          or tracktype = grade2 and surface ~ sand|grass|earth|dirt|mud
+          or tracktype ~ grade3|grade4|grade5 and surface ~ asphalt|concrete|paving_stones|paved
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
