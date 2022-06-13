@@ -1,48 +1,34 @@
 package de.westnordost.streetcomplete.osm
 
-val ANYTHING_UNPAVED = setOf(
+val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
+
+val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver",
-    "ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
 )
 
-val ANYTHING_PAVED = setOf(
+val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
-    "concrete", "concrete:lanes", "concrete:plates", "paving_stones",
+    "concrete", "concrete:plates", "paving_stones",
     "metal", "wood", "unhewn_cobblestone"
+)
+
+val ANYTHING_PAVED = ANYTHING_FULLY_PAVED + setOf(
+    "concrete:lanes"
 )
 
 fun isSurfaceAndTractypeMismatching(surface: String, tracktype: String): Boolean {
     if (tracktype == "grade1") {
-        if (arrayOf("sand",
-                "gravel",
-                "fine_gravel",
-                "compacted",
-                "grass",
-                "earth",
-                "dirt",
-                "mud",
-                "pebbles",
-                "unpaved").contains(surface)
-        ) {
+        if (ANYTHING_UNPAVED.contains(surface)) {
             return true
         }
     }
     if (tracktype == "grade2") {
-        if (surface == "sand" ||
-            surface == "grass" ||
-            surface == "earth" ||
-            surface == "dirt" ||
-            surface == "mud"
-        ) {
+        if (SOFT_SURFACES.contains(surface)) {
             return true
         }
     }
     if (tracktype == "grade3" || tracktype == "grade4" || tracktype == "grade5") {
-        if (surface == "asphalt" ||
-            surface == "concrete" ||
-            surface == "paving_stones" ||
-            surface == "paved"
-        ) {
+        if (ANYTHING_FULLY_PAVED.contains(surface)) {
             return true
         }
     }

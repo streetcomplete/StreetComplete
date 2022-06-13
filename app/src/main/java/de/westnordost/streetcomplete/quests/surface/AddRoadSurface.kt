@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.SOFT_SURFACES
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -26,9 +28,9 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
             and !surface:note
             and !note:surface
           )
-          or tracktype = grade1 and surface ~ sand|gravel|fine_gravel|compacted|grass|earth|dirt|mud|pebbles|unpaved
-          or tracktype = grade2 and surface ~ sand|grass|earth|dirt|mud
-          or tracktype ~ grade3|grade4|grade5 and surface ~ asphalt|concrete|paving_stones|paved
+          or tracktype = grade1 and surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+          or tracktype = grade2 and surface ~ ${SOFT_SURFACES.joinToString("|")}
+          or tracktype = grade3|grade4|grade5 and surface ~ ${ANYTHING_FULLY_PAVED.joinToString("|")}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
