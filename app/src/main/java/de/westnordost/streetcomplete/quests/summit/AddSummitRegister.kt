@@ -2,12 +2,10 @@ package de.westnordost.streetcomplete.quests.summit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -28,16 +26,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
     override val questTypeAchievements = listOf(RARE, OUTDOORS)
-    override val enabledInCountries = NoCountriesExcept(
-        // regions gathered in
-        // https://github.com/streetcomplete/StreetComplete/issues/561#issuecomment-325623974
-
-        // Europe
-        "AT", "DE", "CZ", "ES", "IT", "FR", "GR", "SI", "CH", "RO", "SK",
-
-        // Americas
-        "US", "AR", "PE"
-    )
+    override val enabledInCountries = COUNTRIES_WHERE_SUMMIT_MARKINGS_ARE_COMMON
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_register_title2
 
@@ -45,10 +34,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         val peaks = mapData.nodes.filter { filter.matches(it) }
         if (peaks.isEmpty()) return emptyList()
 
-        val hikingPathsAndRoutes = mapData.ways.filter { hikingPathsFilter.matches(it) }
-            .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry } +
-            mapData.relations.filter { it.tags["route"] == "hiking" }
-                .mapNotNull { mapData.getRelationGeometry(it.id) as? ElementPolylinesGeometry }
+        val hikingPathsAndRoutes = getHikingPathsAndRoutes(mapData)
 
         // yes, this is very inefficient, however, peaks are very rare
         return peaks.filter { peak ->
@@ -60,12 +46,6 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
             }
         }
     }
-
-    private val hikingPathsFilter by lazy { """
-        ways with
-          highway = path
-          and sac_scale ~ mountain_hiking|demanding_mountain_hiking|alpine_hiking|demanding_alpine_hiking|difficult_alpine_hiking
-   """.toElementFilterExpression() }
 
     override fun isApplicableTo(element: Element): Boolean? =
         when {
