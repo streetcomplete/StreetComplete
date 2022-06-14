@@ -1,3 +1,14 @@
+v45.0-beta1: |
+  <h3>🍰 Overlays!</h3>
+  <p>Make every survey unique! How? Dedicate each survey to updating a different aspect of the map by activating a different overlay, respectively!</p>
+  <p><b>This is for advanced users</b> who want to be more effective in adding and maintaining certain data area-wide. Read more in <a href="TODO">this blog post</a>!</p>
+  <p>For now, there is only an overlay for street lighting and for sidewalks, but more will be added over time.</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li></li>
+  <li></li>
+  </ul>
+
 v44.1: |
   <ul>
   <li>Fix: Tag <code>barrier=kerb</code>, not <code>curb</code> (#4087), by @FloEdelmann</li>
