@@ -24,6 +24,6 @@ data class Achievement(
 
 sealed class AchievementCondition
 
-object SolvedQuestsOfTypes : AchievementCondition()
-object TotalSolvedQuests : AchievementCondition()
+object EditsOfTypeCount : AchievementCondition()
+object TotalEditCount : AchievementCondition()
 object DaysActive : AchievementCondition()

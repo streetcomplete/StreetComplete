@@ -11,9 +11,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -51,8 +51,7 @@ class AddCycleway(
     override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(BICYCLIST)
+    override val achievements = listOf(BICYCLIST)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:

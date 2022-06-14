@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.NO
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.PICNIC_TABLE
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.YES
 
-class AddBenchBackrestForm : AbstractQuestAnswerFragment<BenchBackrestAnswer>() {
+class AddBenchBackrestForm : AbstractOsmQuestForm<BenchBackrestAnswer>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },

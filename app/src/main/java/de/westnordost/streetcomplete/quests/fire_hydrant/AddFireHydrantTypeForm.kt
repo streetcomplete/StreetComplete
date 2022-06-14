@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.PILLAR
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.POND
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.UNDERGROUND
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.WALL
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<FireHydrantType, FireHydrantType>() {
+class AddFireHydrantTypeForm : AImageListQuestForm<FireHydrantType, FireHydrantType>() {
 
     override val items = listOf(
         Item(PILLAR, R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),

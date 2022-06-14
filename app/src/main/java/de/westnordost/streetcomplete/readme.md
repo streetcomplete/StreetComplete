@@ -10,6 +10,7 @@ This is a short and high-level overview what to find in which package
   - `messages` - Control of messages shown to the user
   - `osm` - Management, download, persistence and upload of OSM map data: OSM map data itself, its geometry, quests generated from that and edits made on that data
   - `osmnotes` - Management, download, persistence and upload of OSM notes data: OSM notes data itself, quests generated from that, edits made on that data, attaching and upload of photos
+  - `overlays` - Management and persistence of selected overlay
   - `quest` - Management of quests, automatic upload behavior
   - `sync` - Android intent service and notification for upload / download
   - `upload` - Upload service
@@ -17,6 +18,8 @@ This is a short and high-level overview what to find in which package
   - `visiblequests` - Management and persistence of quest type order, enablement and quest presets
 
 - `osm` - Parsers, data model and other stuff dealing with OpenStreetMap tagging logic. Some tagging logic is (still) in the `quests` package
+
+- `overlays` - Overlay definitions, forms and associated logic
 
 - `quests` - Quest type definitions, quest forms and associated logic
 

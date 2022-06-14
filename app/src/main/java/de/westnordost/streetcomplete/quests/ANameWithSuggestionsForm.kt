@@ -7,7 +7,7 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
 
-abstract class ANameWithSuggestionsForm<T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class ANameWithSuggestionsForm<T> : AbstractOsmQuestForm<T>() {
 
     final override val contentLayoutResId = R.layout.quest_name_suggestion
     private val binding by contentViewBinding(QuestNameSuggestionBinding::bind)

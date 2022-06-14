@@ -26,7 +26,7 @@ class CountryStatisticsDao(private val db: Database) {
             if (countriesStatistics.isNotEmpty()) {
                 db.replaceMany(NAME,
                     arrayOf(COUNTRY_CODE, SUCCEEDED, RANK),
-                    countriesStatistics.map { arrayOf(it.countryCode, it.solvedCount, it.rank) }
+                    countriesStatistics.map { arrayOf(it.countryCode, it.count, it.rank) }
                 )
             }
         }
@@ -50,7 +50,7 @@ class CountryStatisticsDao(private val db: Database) {
     }
 }
 
-fun CursorPosition.toCountryStatistics() = CountryStatistics(
+private fun CursorPosition.toCountryStatistics() = CountryStatistics(
     getString(COUNTRY_CODE),
     getInt(SUCCEEDED),
     getIntOrNull(RANK)

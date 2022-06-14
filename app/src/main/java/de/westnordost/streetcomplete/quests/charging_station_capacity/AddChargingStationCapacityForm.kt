@@ -5,10 +5,10 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestChargingStationCapacityBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddChargingStationCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
+class AddChargingStationCapacityForm : AbstractOsmQuestForm<Int>() {
 
     override val contentLayoutResId = R.layout.quest_charging_station_capacity
     private val binding by contentViewBinding(QuestChargingStationCapacityBinding::bind)

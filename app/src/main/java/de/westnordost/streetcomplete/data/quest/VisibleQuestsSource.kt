@@ -47,7 +47,7 @@ class VisibleQuestsSource(
     }
 
     private val visibleQuestTypeSourceListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
             // many different quests could become visible/invisible when this is changed
             invalidate()
         }
@@ -75,7 +75,7 @@ class VisibleQuestsSource(
     fun getAllVisible(bbox: BoundingBox): List<Quest> {
         val visibleQuestTypeNames = questTypeRegistry
             .filter { visibleQuestTypeSource.isVisible(it) }
-            .map { it::class.simpleName!! }
+            .map { it.name }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
@@ -83,6 +83,11 @@ class VisibleQuestsSource(
 
         return osmQuests.filter(::isVisible) + osmNoteQuests.filter(::isVisible)
     }
+
+    fun get(questKey: QuestKey): Quest? = when(questKey) {
+        is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
+        is OsmQuestKey -> osmQuestSource.get(questKey)
+    }?.takeIf { isVisible(it) }
 
     private fun isVisible(quest: Quest): Boolean =
         visibleQuestTypeSource.isVisible(quest.type) && teamModeQuestFilter.isVisible(quest)

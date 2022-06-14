@@ -3,9 +3,6 @@ package de.westnordost.streetcomplete.data.user.statistics
 import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
@@ -20,10 +17,9 @@ import java.util.concurrent.FutureTask
 
 class StatisticsControllerTest {
 
-    private lateinit var questTypeStatisticsDao: QuestTypeStatisticsDao
+    private lateinit var editTypeStatisticsDao: EditTypeStatisticsDao
     private lateinit var countryStatisticsDao: CountryStatisticsDao
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var prefs: SharedPreferences
     private lateinit var loginStatusSource: UserLoginStatusSource
     private lateinit var loginStatusListener: UserLoginStatusSource.Listener
@@ -31,14 +27,13 @@ class StatisticsControllerTest {
     private lateinit var statisticsController: StatisticsController
     private lateinit var listener: StatisticsSource.Listener
 
-    private val questA = TestQuestTypeA()
-    private val questB = TestQuestTypeB()
+    private val questA = "TestQuestTypeA"
+    private val questB = "TestQuestTypeB"
 
     @Before fun setUp() {
-        questTypeStatisticsDao = mock()
+        editTypeStatisticsDao = mock()
         countryStatisticsDao = mock()
         countryBoundaries = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(questA, questB))
         prefs = mock()
         on(prefs.edit()).thenReturn(mock())
         listener = mock()
@@ -53,17 +48,16 @@ class StatisticsControllerTest {
         }
 
         statisticsController = StatisticsController(
-            questTypeStatisticsDao, countryStatisticsDao, ft, questTypeRegistry,
-            prefs, loginStatusSource
+            editTypeStatisticsDao, countryStatisticsDao, ft, prefs, loginStatusSource
         )
         statisticsController.addListener(listener)
     }
 
     @Test fun getSolvedCount() {
-        on(questTypeStatisticsDao.getTotalAmount()).thenReturn(5)
+        on(editTypeStatisticsDao.getTotalAmount()).thenReturn(5)
         assertEquals(
             5,
-            statisticsController.getSolvedCount()
+            statisticsController.getEditCount()
         )
     }
 
@@ -71,7 +65,7 @@ class StatisticsControllerTest {
         on(countryBoundaries.getIds(anyDouble(), anyDouble())).thenReturn(listOf("US-TX", "US", "World"))
         statisticsController.addOne(questA, p(0.0, 0.0))
 
-        verify(questTypeStatisticsDao).addOne("TestQuestTypeA")
+        verify(editTypeStatisticsDao).addOne("TestQuestTypeA")
         verify(countryStatisticsDao).addOne("US")
         verify(listener).onAddedOne(questA)
     }
@@ -81,7 +75,7 @@ class StatisticsControllerTest {
 
         statisticsController.addOne(questA, p(0.0, 0.0))
 
-        verify(questTypeStatisticsDao).addOne("TestQuestTypeA")
+        verify(editTypeStatisticsDao).addOne("TestQuestTypeA")
         verify(listener).onAddedOne(questA)
         verify(listener).onUpdatedDaysActive()
     }
@@ -90,7 +84,7 @@ class StatisticsControllerTest {
         on(countryBoundaries.getIds(anyDouble(), anyDouble())).thenReturn(listOf("US-TX", "US", "World"))
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
-        verify(questTypeStatisticsDao).subtractOne("TestQuestTypeA")
+        verify(editTypeStatisticsDao).subtractOne("TestQuestTypeA")
         verify(countryStatisticsDao).subtractOne("US")
         verify(listener).onSubtractedOne(questA)
     }
@@ -100,7 +94,7 @@ class StatisticsControllerTest {
 
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
-        verify(questTypeStatisticsDao).subtractOne("TestQuestTypeA")
+        verify(editTypeStatisticsDao).subtractOne("TestQuestTypeA")
         verify(listener).onSubtractedOne(questA)
         verify(listener).onUpdatedDaysActive()
     }
@@ -111,7 +105,7 @@ class StatisticsControllerTest {
 
         loginStatusListener.onLoggedOut()
 
-        verify(questTypeStatisticsDao).clear()
+        verify(editTypeStatisticsDao).clear()
         verify(countryStatisticsDao).clear()
         verify(editor).remove(Prefs.USER_DAYS_ACTIVE)
         verify(editor).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
@@ -125,9 +119,9 @@ class StatisticsControllerTest {
         on(prefs.edit()).thenReturn(editor)
 
         statisticsController.updateAll(Statistics(
-            questTypes = listOf(
-                QuestTypeStatistics(questA, 123),
-                QuestTypeStatistics(questB, 44),
+            types = listOf(
+                EditTypeStatistics(questA, 123),
+                EditTypeStatistics(questB, 44),
             ),
             countries = listOf(
                 CountryStatistics("DE", 12, 5),
@@ -138,7 +132,7 @@ class StatisticsControllerTest {
             lastUpdate = 9999999,
             isAnalyzing = false
         ))
-        verify(questTypeStatisticsDao).replaceAll(mapOf(
+        verify(editTypeStatisticsDao).replaceAll(mapOf(
             "TestQuestTypeA" to 123,
             "TestQuestTypeB" to 44
         ))

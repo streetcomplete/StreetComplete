@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddStepsRampForm : AImageListQuestAnswerFragment<StepsRamp, StepsRampAnswer>() {
+class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
     override val items = listOf(
         Item(NONE,       R.drawable.ramp_none,       R.string.quest_steps_ramp_none),

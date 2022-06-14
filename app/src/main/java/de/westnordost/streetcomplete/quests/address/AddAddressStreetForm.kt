@@ -10,13 +10,13 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
-class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
+class AddAddressStreetForm : AbstractOsmQuestForm<AddressStreetAnswer>() {
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
     private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 

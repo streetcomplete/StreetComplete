@@ -17,7 +17,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.util.Queue
 
-abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
+abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     protected abstract val addLanguageButton: View
     protected abstract val namesList: RecyclerView

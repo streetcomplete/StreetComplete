@@ -6,7 +6,6 @@
 
     <RelativeLayout
         android:id="@+id/rotateContainer"
-        android:foreground="?android:attr/selectableItemBackground"
         android:background="#3666"
         android:layout_width="280dp"
         android:layout_height="280dp"

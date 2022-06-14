@@ -4,7 +4,6 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
@@ -177,7 +176,7 @@ fun questTypeRegistry(
     countryInfos: CountryInfos,
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker
-) = QuestTypeRegistry(listOf<QuestType<*>>(
+) = QuestTypeRegistry(listOf(
 
     /* The quest types are primarily sorted by how easy they can be solved:
     1. quests that are solvable from a distance or while passing by (fast)

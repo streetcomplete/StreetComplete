@@ -34,7 +34,7 @@ class VisibleQuestTypeController(
             return _visibleQuests!!
         }
 
-    fun setVisible(questType: QuestType<*>, visible: Boolean) {
+    fun setVisible(questType: QuestType, visible: Boolean) {
         synchronized(this) {
             visibleQuestTypeDao.put(questPresetsSource.selectedId, questType.name, visible)
             visibleQuests[questType.name] = visible
@@ -42,7 +42,7 @@ class VisibleQuestTypeController(
         onQuestTypeVisibilityChanged(questType, visible)
     }
 
-    fun setAllVisible(questTypes: List<QuestType<*>>, visible: Boolean) {
+    fun setAllVisible(questTypes: List<QuestType>, visible: Boolean) {
         val questTypeNames = questTypes.filter { it !is OsmNoteQuestType }.map { it.name }
         synchronized(this) {
             visibleQuestTypeDao.put(questPresetsSource.selectedId, questTypeNames, visible)
@@ -59,7 +59,7 @@ class VisibleQuestTypeController(
         onQuestTypeVisibilitiesChanged()
     }
 
-    override fun isVisible(questType: QuestType<*>): Boolean =
+    override fun isVisible(questType: QuestType): Boolean =
         visibleQuests[questType.name] ?: (questType.defaultDisabledMessage <= 0)
 
     override fun addListener(listener: VisibleQuestTypeSource.Listener) {
@@ -68,7 +68,7 @@ class VisibleQuestTypeController(
     override fun removeListener(listener: VisibleQuestTypeSource.Listener) {
         listeners.remove(listener)
     }
-    private fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+    private fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
         listeners.forEach { it.onQuestTypeVisibilityChanged(questType, visible) }
     }
     private fun onQuestTypeVisibilitiesChanged() {
@@ -76,4 +76,3 @@ class VisibleQuestTypeController(
     }
 }
 
-private val QuestType<*>.name get() = this::class.simpleName!!

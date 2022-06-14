@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.meta
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.toCheckDate

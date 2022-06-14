@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
@@ -16,7 +18,7 @@ enum class Sidewalk {
 
 /** Value for the sidewalk=* key. Returns null for combinations that can't be expressed with the
  *  sidewalk=* key. */
-val SidewalkSides.simpleOsmValue: String? get() = when {
+private val SidewalkSides.simpleOsmValue: String? get() = when {
     left == YES && right == YES -> "both"
     left == YES && right == NO ->  "left"
     left == NO && right == YES ->  "right"
@@ -25,7 +27,7 @@ val SidewalkSides.simpleOsmValue: String? get() = when {
     else -> null
 }
 
-val Sidewalk.osmValue: String get() = when (this) {
+private val Sidewalk.osmValue: String get() = when (this) {
     YES -> "yes"
     NO -> "no"
     SEPARATE -> "separate"
@@ -48,5 +50,8 @@ fun SidewalkSides.applyTo(tags: Tags) {
         // In case of previous incorrect sidewalk tagging
         tags.remove("sidewalk:both")
         tags.remove("sidewalk")
+    }
+    if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {
+        tags.updateCheckDateForKey("sidewalk")
     }
 }

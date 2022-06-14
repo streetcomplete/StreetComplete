@@ -88,9 +88,10 @@ class UndoDialog(
         scope.cancel()
     }
 
-    suspend fun Edit.getTitle(): CharSequence = when (this) {
+    private suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
-            getQuestTitle(questType, originalElement)
+            if (type is QuestType) getQuestTitle(type, originalElement)
+            else context.resources.getText(type.title)
         }
         is NoteEdit -> {
             context.resources.getText(when (action) {
@@ -123,7 +124,7 @@ class UndoDialog(
         else -> throw IllegalArgumentException()
     }
 
-    private fun getQuestTitle(questType: QuestType<*>, element: Element?): CharSequence =
+    private fun getQuestTitle(questType: QuestType, element: Element?): CharSequence =
         try {
             context.resources.getHtmlQuestTitle(questType, element)
         } catch (e: MissingFormatArgumentException) {

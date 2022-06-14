@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.board_type.BoardType.GEOLOGY
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.board_type.BoardType.PUBLIC_TRANSPOR
 import de.westnordost.streetcomplete.quests.board_type.BoardType.SPORT
 import de.westnordost.streetcomplete.quests.board_type.BoardType.WILDLIFE
 
-class AddBoardTypeForm : AListQuestAnswerFragment<BoardType>() {
+class AddBoardTypeForm : AListQuestForm<BoardType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }

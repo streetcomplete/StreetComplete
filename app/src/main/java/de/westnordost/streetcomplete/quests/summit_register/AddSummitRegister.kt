@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 
@@ -27,7 +27,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
     override val changesetComment = "Add whether summit register is present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.ic_quest_peak
-    override val questTypeAchievements = listOf(RARE, OUTDOORS)
+    override val achievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
         // https://github.com/streetcomplete/StreetComplete/issues/561#issuecomment-325623974
@@ -74,7 +74,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
             else -> null
         }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("summit:register", answer.toYesNo())

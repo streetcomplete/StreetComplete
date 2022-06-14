@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.SURVEY_MARK_KEY
 
 fun removeTagsDescribingConstruction(tags: Tags) {

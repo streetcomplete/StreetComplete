@@ -498,6 +498,8 @@ tutorial graphics/
 
 create_note_black_24dp.svg
 
+lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
+
 mail.svg
 
 osm_anon_avatar.svg

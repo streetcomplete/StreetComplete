@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BICYCLE_BARRIER
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BLOCK
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BOLLARD
@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.TURNSTILE
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.WIRE_GATE
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddBarrierTypeForm : AImageListQuestAnswerFragment<BarrierType, BarrierType>() {
+class AddBarrierTypeForm : AImageListQuestForm<BarrierType, BarrierType>() {
 
     override val items = listOf(
         Item(PASSAGE, R.drawable.barrier_passage, R.string.quest_barrier_type_passage),
