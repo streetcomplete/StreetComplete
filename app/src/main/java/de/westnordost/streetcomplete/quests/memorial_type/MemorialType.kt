@@ -11,6 +11,7 @@ enum class MemorialTypeAnswer(val osmValue: String, val osmMaterialValue: String
     OBELISK("obelisk"),
     WOODEN_STELE("stele", "wood"),
     STONE_STELE("stele", "stone"),
+    SCULPTURE("sculpture"),
 }
 
 fun MemorialTypeAnswer.applyTo(tags: Tags) {

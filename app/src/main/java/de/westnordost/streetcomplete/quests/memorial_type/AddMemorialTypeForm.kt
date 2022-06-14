@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.quests.memorial_type.MemorialTypeAnswer.STO
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialTypeAnswer.STONE_STELE
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialTypeAnswer.WAR_MEMORIAL
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialTypeAnswer.WOODEN_STELE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialTypeAnswer.SCULPTURE
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
@@ -24,6 +25,7 @@ class AddMemorialTypeForm : AImageListQuestAnswerFragment<MemorialTypeAnswer, Me
         Item(OBELISK, R.drawable.memorial_type_obelisk, R.string.quest_memorialType_obelisk),
         Item(WOODEN_STELE, R.drawable.memorial_type_stele_wooden, R.string.quest_memorialType_stele_wooden),
         Item(STONE_STELE, R.drawable.memorial_type_stele_stone, R.string.quest_memorialType_stele_stone),
+        Item(SCULPTURE, R.drawable.memorial_type_sculpture, R.string.quest_memorialType_sculpture),
     )
 
     override val itemsPerRow = 3
