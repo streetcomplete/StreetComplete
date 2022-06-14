@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
+import de.westnordost.streetcomplete.quests.way_lit.WayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
 import org.koin.core.qualifier.named
@@ -46,6 +48,9 @@ private val typeAliases = listOf(
     "DetailRoadSurface"                  to AddRoadSurface::class.simpleName!!,
     "AddTrafficSignalsBlindFeatures"     to AddTrafficSignalsVibration::class.simpleName!!,
     "AddSuspectedOneway"                 to AddOneway::class.simpleName!!,
+    // whether lit roads have been added in context of the quest or the overlay should not matter for the statistics
+    "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
+    "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,
 )
 
 private val links = listOf(
