@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.createLitStatus
 import de.westnordost.streetcomplete.overlays.Color
@@ -24,12 +25,23 @@ class WayLitOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .filter("ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
-            .map { it to PolylineStyle(createLitStatus(it.tags).color) }
+            .map { it to getWayStyle(it) }
 
     override fun createForm(element: Element) = WayLitOverlayForm()
 }
 
-private val LitStatus?.color: String get() = when (this) {
+private fun getWayStyle(element: Element): PolylineStyle {
+    val lit = createLitStatus(element.tags)
+    // not set but indoor or private -> do not highlight as missing
+    if (lit == null) {
+        if (isIndoor(element) || isPrivateOnFoot(element)) {
+            return PolylineStyle(Color.INVISIBLE)
+        }
+    }
+    return PolylineStyle(lit.color)
+}
+
+private val LitStatus?.color get() = when (this) {
     LitStatus.YES,
     LitStatus.UNSUPPORTED ->   "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"
@@ -38,4 +50,4 @@ private val LitStatus?.color: String get() = when (this) {
     null ->                    Color.UNSPECIFIED
 }
 
-// TODO ideally, indoor ways should be invisible too
+private fun isIndoor(element: Element): Boolean = element.tags["indoor"] == "yes"

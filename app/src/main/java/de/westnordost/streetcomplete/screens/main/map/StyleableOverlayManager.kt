@@ -5,7 +5,6 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -14,10 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PointStyle
-import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.overlays.PolylineStyle
-import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -45,12 +40,6 @@ class StyleableOverlayManager(
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
-
-    private val isPrivateFilter by lazy { """
-        nodes, ways, relations with
-        access ~ private|no
-        and (!foot or foot ~ private|no)
-    """.toElementFilterExpression() }
 
     private var overlay: Overlay? = null
     set(value) {
@@ -165,38 +154,8 @@ class StyleableOverlayManager(
         overlay.getStyledElements(mapData).map { (element, style) ->
             val key = ElementKey(element.type, element.id)
             val geometry = mapData.getGeometry(element.type, element.id)
-            key to geometry?.let { StyledElement(element, geometry, overrideStyle(style, element)) }
+            key to geometry?.let { StyledElement(element, geometry, style) }
         }
-
-    // TODO LAYERS "show last checked older X as not set" slider? -> controller simply modifies colors -> needs standard colors
-
-    // TODO LAYERS may be cleaner after all to move this override-stuff to each layer; decide after introducing re-coloring based on tag age
-    private fun overrideStyle(style: Style, element: Element): Style {
-        return when (style) {
-            is PointStyle -> style
-            is PolygonStyle -> {
-                val color = overrideColor(style.color, element)
-                if (color !== style.color) style.copy(color) else style
-            }
-            is PolylineStyle -> {
-                val colorLeft = style.colorLeft?.let { overrideColor(it, element) }
-                val colorRight = style.colorRight?.let { overrideColor(it, element) }
-                val color = style.color?.let { overrideColor(it, element) }
-                if (colorLeft !== style.colorLeft || colorRight !== style.colorRight || color !== style.color) {
-                    style.copy(color, colorLeft, colorRight)
-                } else {
-                    style
-                }
-            }
-        }
-    }
-
-    private fun overrideColor(color: String, element: Element): String {
-        if ((color == Color.UNSPECIFIED || color == Color.UNSUPPORTED) && isPrivateFilter.matches(element)) {
-            return Color.INVISIBLE
-        }
-        return color
-    }
 
     companion object {
         private const val TILES_ZOOM = 16
