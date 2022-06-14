@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.summit_register
+package de.westnordost.streetcomplete.quests.summit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
