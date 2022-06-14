@@ -78,7 +78,9 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     override fun onClickOk() {
         val left = streetSideSelect.left?.value
         val right = streetSideSelect.right?.value
-        if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) saveLastSelection()
+        if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
+            streetSideSelect.saveLastSelection()
+        }
         applyAnswer(SidewalkSurfaceAnswer(
             left?.let { SurfaceAnswer(it, leftNote) },
             right?.let { SurfaceAnswer(it, rightNote) }
@@ -105,7 +107,6 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
 
     override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<Surface> =
         Surface.valueOf(str).asStreetSideItem(requireContext().resources)
-
 
     companion object {
         private const val LEFT_NOTE = "left_note"

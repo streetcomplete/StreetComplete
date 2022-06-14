@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests
+package de.westnordost.streetcomplete.overlays
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -6,19 +6,19 @@ import android.view.View
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
 import org.koin.android.ext.android.inject
 
-/** Abstract base class for any quest answer form in which the user selects items for the left and
+/** Abstract base class for any overlay form in which the user selects items for the left and
  *  the right side of the street */
-abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
+abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
-    private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_street_side_puzzle_with_last_answer_button
+    private val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     private val prefs: SharedPreferences by inject()
 
@@ -26,12 +26,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>
 
-    protected var isDisplayingPrevious: Boolean = false
-    set(value) {
-        field = value
-        streetSideSelect.isEnabled = !value
-        updateButtonPanel()
-    }
+    private var hasChanges: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,8 +40,10 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
             ::serialize,
             ::deserialize
         )
-        streetSideSelect.onInputChanged = { checkIsFormComplete() }
-        streetSideSelect.isEnabled = !isDisplayingPrevious
+        streetSideSelect.onInputChanged = {
+            hasChanges = true
+            checkIsFormComplete()
+        }
         streetSideSelect.onClickSide = ::onClickSide
         streetSideSelect.offsetPuzzleRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
         val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
@@ -76,7 +73,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         streetSideSelect.showSides = StreetSideSelectWithLastAnswerButtonViewController.Sides.valueOf(inState.getString(SHOW_SIDES, null)!!)
         streetSideSelect.setPuzzleSide(inState.getString(LEFT, null)?.let { deserialize(it, false) }, false)
         streetSideSelect.setPuzzleSide(inState.getString(RIGHT, null)?.let { deserialize(it, true) }, true)
-        isDisplayingPrevious = inState.getBoolean(IS_DISPLAYING_PREVIOUS, false)
+        hasChanges = inState.getBoolean(HAS_CHANGES, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -84,7 +81,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         outState.putString(SHOW_SIDES, streetSideSelect.showSides.name)
         outState.putString(LEFT, streetSideSelect.left?.let { serialize(it, false) })
         outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it, true) })
-        outState.putBoolean(IS_DISPLAYING_PREVIOUS, isDisplayingPrevious)
+        outState.putBoolean(HAS_CHANGES, hasChanges)
     }
 
     protected abstract fun serialize(item: StreetSideDisplayItem<I>, isRight: Boolean): String
@@ -95,17 +92,16 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected abstract fun onClickSide(isRight: Boolean)
 
-    override fun isFormComplete() =
-        !isDisplayingPrevious && streetSideSelect.isComplete
+    override fun isFormComplete() = streetSideSelect.isComplete
 
     override fun isRejectingClose() =
-        !isDisplayingPrevious || streetSideSelect.left != null || streetSideSelect.right != null
+        hasChanges && (streetSideSelect.left != null || streetSideSelect.right != null)
 
     companion object {
         private const val SHOW_SIDES = "show_sides"
         private const val LEFT = "left"
         private const val RIGHT = "right"
-        private const val IS_DISPLAYING_PREVIOUS = "is_displaying_previous"
+        private const val HAS_CHANGES = "has_changes"
 
         private var HAS_SHOWN_TAP_HINT = false
     }

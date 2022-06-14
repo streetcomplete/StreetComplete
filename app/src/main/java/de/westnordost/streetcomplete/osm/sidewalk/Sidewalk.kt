@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 data class SidewalkSides(val left: Sidewalk, val right: Sidewalk)
 
@@ -48,5 +50,8 @@ fun SidewalkSides.applyTo(tags: Tags) {
         // In case of previous incorrect sidewalk tagging
         tags.remove("sidewalk:both")
         tags.remove("sidewalk")
+    }
+    if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {
+        tags.updateCheckDateForKey("sidewalk")
     }
 }

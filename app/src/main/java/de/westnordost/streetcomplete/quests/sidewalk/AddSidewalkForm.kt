@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.asItem
+import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
@@ -35,7 +37,7 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, SidewalkSides>() {
     }
 
     override fun onClickOk() {
-        saveLastSelection()
+        streetSideSelect.saveLastSelection()
         applyAnswer(SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value))
     }
 

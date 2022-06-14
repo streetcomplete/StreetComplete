@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -46,9 +48,8 @@ class SidewalkOverlay : Overlay {
         )
     }
 
-    override fun createForm(element: Element): AbstractOverlayForm? {
-        TODO("Not yet implemented")
-    }
+    override fun createForm(element: Element): AbstractOverlayForm? =
+        if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm() else null
 }
 
 private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =

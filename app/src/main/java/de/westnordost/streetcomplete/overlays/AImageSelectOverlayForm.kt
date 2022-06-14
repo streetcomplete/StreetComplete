@@ -34,9 +34,11 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
         binding.selectButton.setOnClickListener {
             ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                hasChanges = true
-                selectedItem = item
-                checkIsFormComplete()
+                if (item != selectedItem) {
+                    selectedItem = item
+                    checkIsFormComplete()
+                    hasChanges = true
+                }
             }.show()
         }
 

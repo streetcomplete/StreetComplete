@@ -27,7 +27,7 @@ class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
     }
 
     override fun onClickOk() {
-        saveLastSelection()
+        streetSideSelect.saveLastSelection()
         applyAnswer(ShoulderSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value))
     }
 

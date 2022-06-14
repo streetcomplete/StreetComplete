@@ -139,8 +139,8 @@ class AddStreetParkingForm : AStreetSideSelectForm<StreetParking, LeftAndRightSt
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
+        streetSideSelect.saveLastSelection()
         applyAnswer(LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value))
-        saveLastSelection()
     }
 }
 

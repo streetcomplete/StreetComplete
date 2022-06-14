@@ -180,11 +180,11 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
             confirmNotOnewayForCyclists {
                 applyAnswer(answer)
-                saveLastSelection()
+                streetSideSelect.saveLastSelection()
             }
         } else {
             applyAnswer(answer)
-            saveLastSelection()
+            streetSideSelect.saveLastSelection()
         }
     }
 

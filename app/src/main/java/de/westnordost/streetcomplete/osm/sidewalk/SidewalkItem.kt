@@ -1,7 +1,6 @@
-package de.westnordost.streetcomplete.quests.sidewalk
+package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES

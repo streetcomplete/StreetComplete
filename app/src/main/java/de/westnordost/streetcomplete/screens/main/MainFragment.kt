@@ -74,6 +74,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
@@ -307,7 +308,7 @@ class MainFragment :
         updateLocationPointerPin()
 
         val f = bottomSheetFragment
-        if (f is AbstractOsmQuestForm<*>) f.onMapOrientation(rotation, tilt)
+        if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
     }
 
     override fun onPanBegin() {

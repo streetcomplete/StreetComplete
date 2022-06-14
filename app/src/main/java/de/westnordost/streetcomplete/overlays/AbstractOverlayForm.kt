@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.PopupMenu
-import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
@@ -37,6 +35,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
@@ -59,7 +58,8 @@ import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
-abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBottomSheet {
+abstract class AbstractOverlayForm :
+    Fragment(), IsShowingElement, IsCloseableBottomSheet, IsMapOrientationAware {
 
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
@@ -183,7 +183,7 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
         }
     }
 
-    @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
     }
 
@@ -261,7 +261,7 @@ abstract class AbstractOverlayForm : Fragment(), IsShowingElement, IsCloseableBo
 
     protected open fun isFormComplete(): Boolean = false
 
-    protected open fun onClickOk() {}
+    protected abstract fun onClickOk()
 
     protected inline fun <reified T : ViewBinding> contentViewBinding(
         noinline viewBinder: (View) -> T

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
 import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 enum class LitStatus {
@@ -35,7 +36,7 @@ fun LitStatus.applyTo(tags: Tags) {
     val litValue = when (this) {
         YES -> {
             if (createLitStatus(tags) == UNSUPPORTED) {
-                tags.updateCheckDate()
+                tags.updateCheckDateForKey("lit")
                 return
             } else {
                 "yes"

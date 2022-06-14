@@ -37,3 +37,5 @@ private val LitStatus?.color: String get() = when (this) {
     LitStatus.NO ->            "#555555"
     null ->                    Color.UNSPECIFIED
 }
+
+// TODO ideally, indoor ways should be invisible too

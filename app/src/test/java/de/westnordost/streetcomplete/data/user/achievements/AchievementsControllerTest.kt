@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
@@ -279,7 +279,7 @@ private object OverlayOne : Overlay {
     override val wikiLink: String? = null
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
-    override fun createForm(element: Element): Fragment? = null
+    override fun createForm(element: Element): AbstractOverlayForm? = null
 
     override val achievements =  editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

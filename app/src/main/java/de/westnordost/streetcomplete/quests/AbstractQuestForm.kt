@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -39,7 +40,8 @@ import java.util.concurrent.FutureTask
  *    button bar
  *  - and more...
  */
-abstract class AbstractQuestForm : AbstractBottomSheetFragment(), IsShowingQuestDetails {
+abstract class AbstractQuestForm :
+    AbstractBottomSheetFragment(), IsShowingQuestDetails, IsMapOrientationAware {
 
     // dependencies
     private val countryInfos: CountryInfos by inject()
@@ -210,7 +212,7 @@ abstract class AbstractQuestForm : AbstractBottomSheetFragment(), IsShowingQuest
 
     protected open fun isFormComplete(): Boolean = false
 
-    @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
+    @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
     }
 
