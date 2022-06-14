@@ -177,6 +177,8 @@ abstract class AbstractOverlayForm :
     override fun onStart() {
         super.onStart()
 
+        checkIsFormComplete()
+
         if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
             startedOnce = true
@@ -248,6 +250,7 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun checkIsFormComplete() {
+        binding.okButton.isEnabled = hasChanges()
         if (isFormComplete()) {
             binding.okButton.popIn()
         } else {
@@ -255,7 +258,9 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    protected open fun isRejectingClose() = isFormComplete()
+    private fun isRejectingClose(): Boolean = hasChanges()
+
+    protected abstract fun hasChanges(): Boolean
 
     protected open fun onDiscard() {}
 

@@ -5,6 +5,7 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
@@ -20,6 +21,8 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
+    private var currentSidewalk: LeftAndRightSidewalk? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (savedInstanceState == null) {
@@ -29,6 +32,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     private fun initStateFromTags() {
         val sidewalk = createSidewalkSides(element.tags)
+        currentSidewalk = sidewalk
         if (sidewalk?.left != null) streetSideSelect.setPuzzleSide(sidewalk.left.asStreetSideItem(), false)
         if (sidewalk?.right != null) streetSideSelect.setPuzzleSide(sidewalk.right.asStreetSideItem(), true)
     }
@@ -43,10 +47,12 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            // TODO need to update check date!
             SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value).applyTo(it)
         }.create()))
     }
+
+    override fun hasChanges(): Boolean =
+        LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value) != currentSidewalk
 
     override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
         item.value.name

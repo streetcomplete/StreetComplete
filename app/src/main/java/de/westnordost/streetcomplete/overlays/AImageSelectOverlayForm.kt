@@ -22,7 +22,6 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     protected abstract val items: List<DisplayItem<I>>
     protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
 
-    private var hasChanges: Boolean = false
     var selectedItem: DisplayItem<I>? = null
     set(value) {
         field = value
@@ -37,7 +36,6 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
                 if (item != selectedItem) {
                     selectedItem = item
                     checkIsFormComplete()
-                    hasChanges = true
                 }
             }.show()
         }
@@ -48,11 +46,6 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
         binding.selectedCellView.children.first().background = null
 
         updateSelectedCell()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        checkIsFormComplete()
     }
 
     private fun updateSelectedCell() {
@@ -69,23 +62,18 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     private fun onLoadInstanceState(inState: Bundle) {
         val selectedIndex = inState.getInt(SELECTED_INDEX)
         selectedItem = if (selectedIndex != -1) items[selectedIndex] else null
-        hasChanges = inState.getBoolean(HAS_CHANGES, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(SELECTED_INDEX, items.indexOf(selectedItem))
-        outState.putBoolean(HAS_CHANGES, hasChanges)
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete() = selectedItem != null
 
-    override fun isRejectingClose() = hasChanges && selectedItem != null
-
     companion object {
         private const val SELECTED_INDEX = "selected_index"
-        private const val HAS_CHANGES = "has_changes"
     }
 }

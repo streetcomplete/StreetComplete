@@ -26,8 +26,6 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>
 
-    private var hasChanges: Boolean = false
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,10 +38,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
             ::serialize,
             ::deserialize
         )
-        streetSideSelect.onInputChanged = {
-            hasChanges = true
-            checkIsFormComplete()
-        }
+        streetSideSelect.onInputChanged = { checkIsFormComplete() }
         streetSideSelect.onClickSide = ::onClickSide
         streetSideSelect.offsetPuzzleRotation = (geometry as ElementPolylinesGeometry).getOrientationAtCenterLineInDegrees()
         val defaultPuzzleImage = ResImage(if (countryInfo.isLeftHandTraffic) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
@@ -60,7 +55,6 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
             streetSideSelect.showTapHint()
             HAS_SHOWN_TAP_HINT = true
         }
-        checkIsFormComplete()
     }
 
     override fun onMapOrientation(rotation: Float, tilt: Float) {
@@ -73,7 +67,6 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
         streetSideSelect.showSides = StreetSideSelectWithLastAnswerButtonViewController.Sides.valueOf(inState.getString(SHOW_SIDES, null)!!)
         streetSideSelect.setPuzzleSide(inState.getString(LEFT, null)?.let { deserialize(it, false) }, false)
         streetSideSelect.setPuzzleSide(inState.getString(RIGHT, null)?.let { deserialize(it, true) }, true)
-        hasChanges = inState.getBoolean(HAS_CHANGES, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -81,7 +74,6 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
         outState.putString(SHOW_SIDES, streetSideSelect.showSides.name)
         outState.putString(LEFT, streetSideSelect.left?.let { serialize(it, false) })
         outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it, true) })
-        outState.putBoolean(HAS_CHANGES, hasChanges)
     }
 
     protected abstract fun serialize(item: StreetSideDisplayItem<I>, isRight: Boolean): String
@@ -94,14 +86,10 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override fun isFormComplete() = streetSideSelect.isComplete
 
-    override fun isRejectingClose() =
-        hasChanges && (streetSideSelect.left != null || streetSideSelect.right != null)
-
     companion object {
         private const val SHOW_SIDES = "show_sides"
         private const val LEFT = "left"
         private const val RIGHT = "right"
-        private const val HAS_CHANGES = "has_changes"
 
         private var HAS_SHOWN_TAP_HINT = false
     }
