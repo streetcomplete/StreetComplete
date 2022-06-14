@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.BUST
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.OBELISK
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.PLAQUE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.SCULPTURE
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STATUE
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE_STELE
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WAR_MEMORIAL
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WOODEN_STELE
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.SCULPTURE
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddMemorialTypeForm : AImageListQuestAnswerFragment<MemorialType, MemorialType>() {
+class AddMemorialTypeForm : AImageListQuestForm<MemorialType, MemorialType>() {
 
     override val items: List<DisplayItem<MemorialType>> = listOf(
         Item(STATUE, R.drawable.memorial_type_statue, R.string.quest_memorialType_statue),

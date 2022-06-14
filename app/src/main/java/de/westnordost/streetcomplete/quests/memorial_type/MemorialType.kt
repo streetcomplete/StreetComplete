@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 
 enum class MemorialType(val osmValue: String, val osmMaterialValue: String? = null) {
     STATUE("statue"),
