@@ -77,6 +77,7 @@ import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
+import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -208,6 +209,8 @@ fun questTypeRegistry(
     OsmNoteQuestType,
 
     /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
+
+    AddMemorialType(),
 
     // bus stop quests
     AddBusStopShelter(),  // used by at least OsmAnd

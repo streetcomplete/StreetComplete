@@ -84,6 +84,16 @@ kerb_height_flush_original.jpg CC0               Mateusz Konieczny (...)
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 
+memorial_type_statue.jpg       CC-BY-SA 4.0      Rabax63 https://commons.wikimedia.org/wiki/File:Garibaldi_Monument.jpg
+memorial_type_bust.jpg         CC0               Jebulon https://commons.wikimedia.org/wiki/File:Aristotelis_Valaoritis_bust_National_Garden_Athens,_Greece.jpg
+memorial_type_plaque.jpg       Public Domain     Geotek https://commons.wikimedia.org/wiki/File:Bleaklow_Plaque.jpg
+memorial_type_war_memorial.jpg Public Domain     Stanfordsiver https://commons.wikimedia.org/wiki/File:Women_of_World_War_II.jpg
+memorial_type_stone.jpg        Public Domain     Ola / Ojp https://commons.wikimedia.org/wiki/File:Memorial_stone_of_battle_of_Liljendal.18080224.ojp.JPG
+memorial_type_obelisk.jpg      CC-BY-SA 4.0      Leserättin https://commons.wikimedia.org/wiki/File:KatCC-BY-SAharina-Denkmal_(2).jpg
+memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.wikimedia.org/wiki/File:Infostele_Chronik_der_Mauer_mit_Adolph_Philipp.JPG
+memorial_type_stele_stone.jpg  CC-BY 2.0         Marcus Cyron https://wiki.openstreetmap.org/wiki/File:Kerameikos,_Ancient_Graveyard,_Athens,_Greece_(4451597911).jpg
+memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
+
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_street_side.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:20200925-parking-lined-perpendicular.jpg
