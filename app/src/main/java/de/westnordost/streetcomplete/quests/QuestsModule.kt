@@ -124,6 +124,7 @@ import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
+import de.westnordost.streetcomplete.quests.summit.AddSummitCross
 import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
@@ -375,7 +376,8 @@ fun questTypeRegistry(
 
     MarkCompletedHighwayConstruction(), // need to look the whole way
 
-    AddSummitRegister(), // the summit register is not necessarily directly at the peak, need to look around
+    AddSummitCross(), // summit markings are not necessarily directly at the peak, need to look around
+    AddSummitRegister(), // register is harder to find than cross
 
     AddForestLeafType(), // need to walk around in the highlighted section
 
