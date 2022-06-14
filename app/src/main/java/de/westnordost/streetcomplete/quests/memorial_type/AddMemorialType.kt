@@ -4,9 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
-import de.westnordost.streetcomplete.quests.barrier_type.applyTo
 
-class AddMemorialType : OsmFilterQuestType<MemorialTypeAnswer>() {
+class AddMemorialType : OsmFilterQuestType<MemorialType>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -23,7 +22,7 @@ class AddMemorialType : OsmFilterQuestType<MemorialTypeAnswer>() {
 
     override fun createForm() = AddMemorialTypeForm()
 
-    override fun applyAnswerTo(answer: MemorialTypeAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: MemorialType, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

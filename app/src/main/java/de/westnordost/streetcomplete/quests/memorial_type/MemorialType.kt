@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 
-enum class MemorialTypeAnswer(val osmValue: String, val osmMaterialValue: String? = null) {
+enum class MemorialType(val osmValue: String, val osmMaterialValue: String? = null) {
     STATUE("statue"),
     BUST("bust"),
     PLAQUE("plaque"),
@@ -14,7 +14,7 @@ enum class MemorialTypeAnswer(val osmValue: String, val osmMaterialValue: String
     SCULPTURE("sculpture"),
 }
 
-fun MemorialTypeAnswer.applyTo(tags: Tags) {
+fun MemorialType.applyTo(tags: Tags) {
     tags["memorial"] = this.osmValue
     if (this.osmMaterialValue != null) {
         tags["material"] = this.osmMaterialValue
