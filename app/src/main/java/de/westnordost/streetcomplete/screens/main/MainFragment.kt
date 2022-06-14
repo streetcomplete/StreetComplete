@@ -893,6 +893,7 @@ class MainFragment :
         showInBottomSheet(f)
 
         mapFragment.highlightGeometry(geometry)
+        mapFragment.highlightPins(overlay.icon, listOf(geometry.center))
         mapFragment.hideNonHighlightedPins()
     }
 
