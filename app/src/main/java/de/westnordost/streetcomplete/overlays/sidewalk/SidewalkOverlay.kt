@@ -26,8 +26,8 @@ class SidewalkOverlay : Overlay {
         // roads
         mapData.filter("""
             ways with
-            highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
-            and area != yes
+              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              and area != yes
         """).map { it to getSidewalkStyle(it) } +
         // footways etc, just to highlight e.g. separately mapped sidewalks
         mapData.filter("""
