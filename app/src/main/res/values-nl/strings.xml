@@ -1961,6 +1961,8 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mappers portaal %s"</string>
     <string name="user_statistics_filter_by_country">"per land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"per vraagtype"</string>
     <string name="user_profile_global_rank">"Wereldwijde rang"</string>
     <string name="user_profile_local_rank">"Rang in %s"</string>
@@ -2178,9 +2180,13 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_postboxRoyalCypher_title">"Welk koninklijk monogram / teken staat er op deze brievenbus?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Geen koninklijk monogram / teken zichbaar"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"De kroon van Schotland"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brandweerpost"</string>
     <string name="quest_recycling_type_beverage_cartons">"Alleen drankverpakkingen"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Alleen plastic flessen en kartonverpakkingen"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Team modus"</string>
 
     <!-- Team mode -->
@@ -2528,7 +2534,7 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_seating_name_title">"Wat voor zitplaatsen heeft deze plek?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_seating_takeaway">"Alleen afhaalmaaltijden"</string>
+    <string name="quest_seating_takeaway">"Geen (alleen afhalen)"</string>
     <string name="quest_seating_indoor_only">"Alleen zitplaatsen binnen"</string>
     <string name="quest_seating_outdoor_only">"Alleen zitplaatsen buiten"</string>
     <string name="quest_seating_indoor_and_outdoor">"Zowel zitplaatsen binnen als buiten"</string>

@@ -993,6 +993,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Номер не виден…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Изображённая дорога повернута так же, как и дорога в месте метки на карте."</string>
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
 
@@ -1080,6 +1082,8 @@
 
     <!-- Links screen -->
     <string name="links_empty">"У вас пока нет ссылок"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Вы не опубликовали ни одного ответа на квест"</string>
 
     <!-- Fuzzy -->
@@ -1089,6 +1093,7 @@
     <string name="unsynced_quests_not_logged_in_description">"У вас есть %d неопубликованных дополнений. Вам нужно залогиниться, чтобы их отправить."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Решённые квесты"</string>
     <string name="user_achievements_title">"Достижения"</string>
     <string name="user_links_title">"Коллекция ссылок"</string>
@@ -1257,6 +1262,8 @@
     <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографический портал %s"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
     <string name="user_profile_global_rank">"Общий
 рейтинг"</string>
@@ -1477,9 +1484,13 @@
     <string name="quest_postboxRoyalCypher_title">"Какой Королевский шифр на этом почтовом ящике?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Королевского шифра не видно"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландии"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Пожарная часть"</string>
     <string name="quest_recycling_type_beverage_cartons">"Только картонные упаковки от напитков"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Только пластиковые бутылки и картон"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Командный режим"</string>
 
     <!-- Team mode -->

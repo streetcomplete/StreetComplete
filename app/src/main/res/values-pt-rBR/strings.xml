@@ -1658,11 +1658,14 @@ Dividir agora?"</string>
 
     <!-- Links screen -->
     <string name="links_empty">"Você ainda não possui links"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Você não publicou respostas para a missão ainda"</string>
     <string name="unsynced_quests_description">"mais %d alterações não publicadas."</string>
     <string name="unsynced_quests_not_logged_in_description">"Você %d ainda não publicou alterações.  Você precisa fazer o login para enviá-los."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Missões resolvidas"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_links_title">"Coleção de link"</string>
@@ -1781,6 +1784,8 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="user_statistics_country_rank">"Rank em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"por tipo de missão"</string>
     <string name="user_profile_global_rank">"Rank
 global"</string>
@@ -2001,9 +2006,13 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real nesta caixa de correio?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nenhuma cifra real é visível"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Corpo de Bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e caixas"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modo de equipe"</string>
 
     <!-- Team mode -->

@@ -991,6 +991,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"참조 번호가 보이지 않음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"아래 그림의 회전 방향은 위 지도의 핀 부분에서와 같습니다."</string>
     <string name="quest_recycling_materials_title">"이 분리수거함에 무엇을 넣을 수 있나요?"</string>
 
@@ -1074,11 +1076,14 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Links screen -->
     <string name="links_empty">"아직 링크가 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"아직 아무 답변도 업로드하지 않았습니다"</string>
     <string name="unsynced_quests_description">"아직 올리지 않은 답변 %d개."</string>
     <string name="unsynced_quests_not_logged_in_description">"아직 변경 내역 %d개를 업로드하지 않았습니다. 변경 내역을 업로드하려면 로그인하세요."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"해결한 과제"</string>
     <string name="user_achievements_title">"업적"</string>
     <string name="user_links_title">"링크 모음"</string>
@@ -1191,6 +1196,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="user_statistics_country_rank">"%2$s에서의 순위: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"지도 제작 포털 %s"</string>
     <string name="user_statistics_filter_by_country">"국가별"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"과제 유형별"</string>
     <string name="user_profile_global_rank">"전 세계
 순위"</string>
@@ -1413,9 +1420,13 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_postboxRoyalCypher_title">"이 우체통에 어떤 왕실 문장이 박혀 있나요?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"왕실 문장이 보이지 않음"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"스코틀랜드 왕관"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"소방서"</string>
     <string name="quest_recycling_type_beverage_cartons">"종이팩만 취급"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"플라스틱 병(페트병 등)과 종이팩만 취급"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"팀 모드"</string>
 
     <!-- Team mode -->

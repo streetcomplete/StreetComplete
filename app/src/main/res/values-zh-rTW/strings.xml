@@ -1669,11 +1669,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"您尚未有任何連結"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"您尚未發佈任何任務的解答"</string>
     <string name="unsynced_quests_description">"增加 %d 尚未發佈的更改。"</string>
     <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %d 項變更。您必須登入來上傳它們。"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"解決的任務"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"連結集合"</string>
@@ -1791,6 +1794,8 @@
     <string name="user_statistics_country_rank">"在 %2$s: %1$d 的排名"</string>
     <string name="user_statistics_country_wiki_link">"繪製導航 %s"</string>
     <string name="user_statistics_filter_by_country">"依國家"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"依任務類型"</string>
     <string name="user_profile_global_rank">"全球排行"</string>
     <string name="user_profile_local_rank">"在 %s 的排名"</string>
@@ -2005,9 +2010,13 @@
     <string name="quest_postboxRoyalCypher_title">"這個郵筒的皇家徽章是什麼？"</string>
     <string name="quest_postboxRoyalCypher_type_none">"沒有看到皇家徽章"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"協作模式"</string>
 
     <!-- Team mode -->

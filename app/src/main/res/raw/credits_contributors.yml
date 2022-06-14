@@ -1,18 +1,18 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 353901
-  linesOfInterfaceMarkupChanged: 133013
-  assetFilesChanged: 1685
+  linesOfCodeChanged: 364931
+  linesOfInterfaceMarkupChanged: 133863
+  assetFilesChanged: 1699
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16435
+  linesOfCodeChanged: 16601
   linesOfInterfaceMarkupChanged: 1866
   assetFilesChanged: 150
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 12709
-  linesOfInterfaceMarkupChanged: 2759
-  assetFilesChanged: 462
+  linesOfCodeChanged: 12934
+  linesOfInterfaceMarkupChanged: 2763
+  assetFilesChanged: 530
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -97,6 +97,11 @@
   githubUsername: "errolpais"
   linesOfCodeChanged: 227
   linesOfInterfaceMarkupChanged: 90
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 200
+  linesOfInterfaceMarkupChanged: 203
+  assetFilesChanged: 44
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -107,10 +112,6 @@
 - name: "sdirollo"
   linesOfCodeChanged: 147
   linesOfInterfaceMarkupChanged: 139
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 144
-  linesOfInterfaceMarkupChanged: 179
 - name: "rugk"
   githubUsername: "rugk"
   linesOfCodeChanged: 128
@@ -194,15 +195,15 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
-- name: "cyclingcat"
-  linesOfCodeChanged: 4
-- name: "MegaArthur"
-  linesOfCodeChanged: 4
 - name: "Brian Sperlongano"
   githubUsername: "ZeLonewolf"
   linesOfCodeChanged: 4
 - name: "Greg Oledzki"
   githubUsername: "mccartney"
+  linesOfCodeChanged: 4
+- name: "cyclingcat"
+  linesOfCodeChanged: 4
+- name: "MegaArthur"
   linesOfCodeChanged: 4
 - name: "Dominik Danelski"
   githubUsername: "Etua"
@@ -213,10 +214,10 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
-- name: "gileri"
-  linesOfCodeChanged: 2
 - name: "riQQ"
   githubUsername: "riQQ"
+  linesOfCodeChanged: 2
+- name: "gileri"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
   githubUsername: "yrtimiD"

@@ -611,6 +611,8 @@ Dividir agora?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
     <string name="quest_postboxRef_title">"Qual é o número de referência desta caixa/marco de correio?"</string>
     <string name="quest_ref_answer_noRef">"Não tem nº de referência visível…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"A via na seguinte ilustração, possui a mesma orientação que a do mapa na localização do marcador."</string>
     <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
     <string name="quest_recycling_materials_note">"Se algo que não constar na lista puder ser reciclado aqui, deixe antes uma nota."</string>
@@ -674,11 +676,14 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
 
     <!-- Links screen -->
     <string name="links_empty">"Ainda não tem nenhuma hiperligação."</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Ainda não publicou respostas a missões"</string>
     <string name="unsynced_quests_description">"mais %d alterações por publicar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tem %d alterações por publicar. Terá que se autenticar para submetê-las."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Missões resolvidas"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_links_title">"Coleção de hiperligações"</string>
@@ -773,6 +778,8 @@ Note que esta aplicação apenas pergunta pelo número de porta de um edifício 
     <string name="user_statistics_country_rank">"Classificação em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"por tipo de missão"</string>
     <string name="user_profile_global_rank">"Classificação
 global"</string>
@@ -921,9 +928,13 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real nesta caixa de correio?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Não está visível nenhuma cifra real"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Edifício de quartel de bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e pacotes"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modo de equipa"</string>
 
     <!-- Team mode -->

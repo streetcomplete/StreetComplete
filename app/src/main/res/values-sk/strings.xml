@@ -1668,9 +1668,13 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_postboxRoyalCypher_title">"Je na tejto poštovej schránke kráľovský znak?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nie je vidno žiadno kráľovský monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Škótska koruna"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Hasičská stanica"</string>
     <string name="quest_recycling_type_beverage_cartons">"Iba kartóny od nápojov"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Iba plastové fľaše a kartóny"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Tímový režim"</string>
 
     <!-- Team mode -->

@@ -842,7 +842,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"på etage %s"</string>
+    <string name="on_level">"på niveau %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"underjordisk"</string>
@@ -899,17 +899,17 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_generic_answer_differs_along_the_way">"Det er forskelligt undervejs…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del enkeltvis.
-Opdel vejen nu?"</string>
+    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele strækningen. Derefter kan opgaven besvares for hver del enkeltvis.
+Opdel strækningen nu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Tryk på vejen der hvor du vil opdele den. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
+    <string name="quest_split_way_tutorial">"Tryk på strækningen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Zoom venligst længere ind"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele vejen længere fremme senere."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele strækningen længere fremme senere."</string>
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Hvilken overflade er der på denne gangsti?"</string>
@@ -935,6 +935,8 @@ Opdel vejen nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Intet synligt referencenummer…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vejen på illustrationen er roteret så den vender på samme måde som på kortet"</string>
 
     <!-- Fuzzy -->
@@ -1053,11 +1055,14 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
 
     <!-- Links screen -->
     <string name="links_empty">"Du har endnu ingen links"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har ikke indsendt nogle svar endnu"</string>
     <string name="unsynced_quests_description">"plus %d ændringer der endnu ikke er indsendt."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endnu ikke indsendte ændringer. Du skal logge ind for at indsende dem."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Løste opgaver"</string>
     <string name="user_achievements_title">"Præstationer"</string>
     <string name="user_links_title">"Linksamling"</string>
@@ -1174,6 +1179,8 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kortlægningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"efter opgavetype"</string>
     <string name="user_profile_global_rank">"Global rang"</string>
     <string name="user_profile_local_rank">"Rang i %s"</string>
@@ -1380,9 +1387,13 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="quest_postboxRoyalCypher_title">"Hvad er det royale tegn på denne postkasse?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Intet royalt tegn synligt"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotlands krone"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
     <string name="quest_recycling_type_beverage_cartons">"Kun kartoner til drikkevarer"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartoner"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Holdtilstand"</string>
 
     <!-- Team mode -->
@@ -1537,7 +1548,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="restore_confirmation">"Gendan"</string>
     <string name="restore_dialog_message">"Gendan alle opgaver du har skjult?"</string>
     <string name="quest_parking_access_title2">"Hvem må parkere her? Parkering kan være gratis eller mod betaling."</string>
-    <string name="quest_access_yes">"Alle fra offentligheden"</string>
+    <string name="quest_access_yes">"Enhver fra offentligheden"</string>
     <string name="quest_access_customers">"Enhver person, der besøger et bestemt sted (f.eks. kun kunder)"</string>
     <string name="quest_access_private">"Kun person(er) med tilladelse"</string>
 

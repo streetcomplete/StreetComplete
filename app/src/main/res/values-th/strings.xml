@@ -720,6 +720,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"ถนนในภาพได้หมุนไปในทิศทางเดียวกันกับแผนที่ตรงตำแหน่งหมุด"</string>
     <string name="quest_recycling_materials_title">"ที่นี่สามารถรับอะไรเพื่อรีไซเคิลได้บ้าง?"</string>
 
@@ -794,11 +796,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"คุณยังไม่มีลิงก์"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"คุณยังไม่ได้เผยแพร่คำตอบจากภารกิจ"</string>
     <string name="unsynced_quests_description">"บวกกับ %d การเปลี่ยนแปลงที่ยังไม่ถูกเผยแพร่"</string>
     <string name="unsynced_quests_not_logged_in_description">"คุณมีการเปลี่ยนแปลง %d รายการที่ยังไม่ได้เผยแพร่ คุณต้องเข้าสู่ระบบก่อนที่จะอัพโหลดได้"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"ภารกิจที่สำเร็จแล้ว"</string>
     <string name="user_achievements_title">"ความสำเร็จ"</string>
     <string name="user_links_title">"รวบรวมลิ้งค์"</string>
@@ -915,6 +920,8 @@
     <string name="user_statistics_country_rank">"อันดับที่ %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"พอร์ทัลของแผนที่ %s"</string>
     <string name="user_statistics_filter_by_country">"ตามประเทศ"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"ตามภารกิจ"</string>
     <string name="user_profile_global_rank">"อันดับทั่วโลก"</string>
     <string name="user_profile_local_rank">"อันดับใน %s"</string>
@@ -1130,9 +1137,13 @@
     <string name="quest_postboxRoyalCypher_title">"ตู้ไปรษณีย์นี้มีตราประจำพระองค์ใด?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"ไม่มีตราประจำพระองค์บนตู้นี้"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"มงกุฎแห่งสกอตแลนด์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"สถานีดับเพลิง"</string>
     <string name="quest_recycling_type_beverage_cartons">"กล่องเครื่องดื่มเท่านั้น"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"ขวดพลาสติกและกล่องเครื่องดื่มเท่านั้น"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"โหมดทีม"</string>
 
     <!-- Team mode -->
