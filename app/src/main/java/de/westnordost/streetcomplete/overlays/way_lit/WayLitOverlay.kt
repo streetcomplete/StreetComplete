@@ -34,7 +34,7 @@ private fun getWayStyle(element: Element): PolylineStyle {
     val lit = createLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
     if (lit == null) {
-        if (isIndoor(element) || isPrivateOnFoot(element)) {
+        if (isIndoor(element.tags) || isPrivateOnFoot(element)) {
             return PolylineStyle(Color.INVISIBLE)
         }
     }
@@ -50,4 +50,4 @@ private val LitStatus?.color get() = when (this) {
     null ->                    Color.UNSPECIFIED
 }
 
-private fun isIndoor(element: Element): Boolean = element.tags["indoor"] == "yes"
+private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
