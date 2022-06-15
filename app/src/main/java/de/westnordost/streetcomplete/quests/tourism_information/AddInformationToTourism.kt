@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.tourism_information
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 

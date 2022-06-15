@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.building_underground
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 
 class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>() {

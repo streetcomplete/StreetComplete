@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.traffic_calming_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
 

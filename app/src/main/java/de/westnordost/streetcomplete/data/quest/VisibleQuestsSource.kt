@@ -84,7 +84,7 @@ class VisibleQuestsSource(
         return osmQuests.filter(::isVisible) + osmNoteQuests.filter(::isVisible)
     }
 
-    fun get(questKey: QuestKey): Quest? = when(questKey) {
+    fun get(questKey: QuestKey): Quest? = when (questKey) {
         is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.get(questKey)
     }?.takeIf { isVisible(it) }
