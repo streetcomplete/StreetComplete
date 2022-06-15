@@ -15,7 +15,7 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food|ice_cream and food != no
+          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court and food != no
           or amenity ~ pub|nightclub|biergarten|bar and food = yes
           or shop ~ butcher|supermarket|ice_cream|convenience
         )

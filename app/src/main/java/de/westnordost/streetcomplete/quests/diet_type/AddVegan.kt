@@ -19,7 +19,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
           amenity = ice_cream
           or diet:vegetarian ~ yes|only and
           (
-            amenity ~ restaurant|cafe|fast_food and food != no
+            amenity ~ restaurant|cafe|fast_food|food_court and food != no
             or amenity ~ pub|nightclub|biergarten|bar and food = yes
           )
         )
