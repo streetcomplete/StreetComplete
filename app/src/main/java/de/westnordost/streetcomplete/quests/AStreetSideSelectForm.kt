@@ -99,7 +99,7 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
         !isDisplayingPrevious && streetSideSelect.isComplete
 
     override fun isRejectingClose() =
-        !isDisplayingPrevious || streetSideSelect.left != null || streetSideSelect.right != null
+        !isDisplayingPrevious && (streetSideSelect.left != null || streetSideSelect.right != null)
 
     companion object {
         private const val SHOW_SIDES = "show_sides"
