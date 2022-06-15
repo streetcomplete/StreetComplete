@@ -63,7 +63,9 @@ class SidewalkKtTest {
             mapOf(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate",
-                "sidewalk:both" to "yes and separate ;-)"
+                "sidewalk:both" to "yes and separate ;-)",
+                "sidewalk:left:surface" to "jello",
+                "sidewalk:both:oneway" to "yes"
             ),
             SidewalkSides(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
@@ -71,6 +73,8 @@ class SidewalkKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
                 StringMapEntryDelete("sidewalk:both", "yes and separate ;-)"),
+                StringMapEntryDelete("sidewalk:left:surface", "jello"),
+                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
             )
         )
     }
@@ -79,7 +83,9 @@ class SidewalkKtTest {
         verifyAnswer(
             mapOf(
                 "sidewalk" to "both",
-                "sidewalk:both" to "yes"
+                "sidewalk:both" to "yes",
+                "sidewalk:left:surface" to "jello",
+                "sidewalk:both:oneway" to "yes"
             ),
             SidewalkSides(Sidewalk.SEPARATE, Sidewalk.YES),
             arrayOf(
@@ -87,6 +93,8 @@ class SidewalkKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryDelete("sidewalk:left:surface", "jello"),
+                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
             )
         )
     }

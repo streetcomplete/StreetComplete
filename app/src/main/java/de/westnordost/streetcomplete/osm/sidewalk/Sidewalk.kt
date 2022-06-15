@@ -37,6 +37,19 @@ private val Sidewalk.osmValue: String get() = when (this) {
 }
 
 fun SidewalkSides.applyTo(tags: Tags) {
+    val currentSidewalk = createSidewalkSides(tags)
+
+    // was set before and changed: may be incorrect now - remove!
+    if (currentSidewalk?.left != null && currentSidewalk.left != left ||
+        currentSidewalk?.right != null && currentSidewalk.right != right) {
+        val sidewalkSubtagging = Regex("^sidewalk:(left|right|both):.*")
+        for (key in tags.keys) {
+            if (key.matches(sidewalkSubtagging)) {
+                tags.remove(key)
+            }
+        }
+    }
+
     val sidewalkValue = simpleOsmValue
     if (sidewalkValue != null) {
         tags["sidewalk"] = sidewalkValue
