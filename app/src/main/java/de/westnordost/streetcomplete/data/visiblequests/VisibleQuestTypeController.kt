@@ -75,4 +75,3 @@ class VisibleQuestTypeController(
         listeners.forEach { it.onQuestTypeVisibilitiesChanged() }
     }
 }
-
