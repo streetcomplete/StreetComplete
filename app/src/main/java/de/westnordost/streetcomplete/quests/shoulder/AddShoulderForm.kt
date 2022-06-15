@@ -38,12 +38,12 @@ class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
         (str == "yes").asStreetSideItem()
 
     private fun Boolean.asStreetSideItem(): StreetSideDisplayItem<Boolean> = when (this) {
-        true -> StreetSideItem(false, countryInfo.shoulderLineStyleResId, R.string.quest_shoulder_value_yes)
-        false -> StreetSideItem(true, R.drawable.ic_shoulder_no, R.string.quest_shoulder_value_no, R.drawable.ic_bare_road_without_feature)
+        true -> StreetSideItem(true, countryInfo.shoulderLineStyleResId, R.string.quest_shoulder_value_yes)
+        false -> StreetSideItem(false, R.drawable.ic_shoulder_no, R.string.quest_shoulder_value_no, R.drawable.ic_bare_road_without_feature)
     }
 
     private fun Boolean.asItem(): DisplayItem<Boolean> = when (this) {
-        true -> Item(false, countryInfo.shoulderLineStyleResId, R.string.quest_shoulder_value_yes)
-        false -> Item(true, R.drawable.ic_bare_road_without_feature, R.string.quest_shoulder_value_no)
+        true -> Item(true, countryInfo.shoulderLineStyleResId, R.string.quest_shoulder_value_yes)
+        false -> Item(false, R.drawable.ic_bare_road_without_feature, R.string.quest_shoulder_value_no)
     }
 }
