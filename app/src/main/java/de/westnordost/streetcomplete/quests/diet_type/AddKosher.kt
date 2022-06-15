@@ -19,7 +19,7 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
           or amenity ~ pub|nightclub|biergarten|bar and food = yes
           or shop ~ butcher|supermarket|ice_cream|convenience
         )
-        and name and (
+        and (
           !diet:kosher
           or diet:kosher != only and diet:kosher older today -4 years
         )

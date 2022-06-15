@@ -19,7 +19,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
           or shop ~ butcher|supermarket|ice_cream|convenience
         )
         and diet:vegan != only
-        and name and (
+        and (
           !diet:halal
           or diet:halal != only and diet:halal older today -4 years
         )

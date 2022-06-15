@@ -14,7 +14,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
         (
-          (shop ~ mall|department_store and name)
+          shop ~ mall|department_store
           or highway ~ services|rest_area
         )
         and !toilets

@@ -34,7 +34,7 @@ class AddLevel : OsmElementQuestType<String> {
     private val filter by lazy { """
         nodes with
          (${isShopExpressionFragment()})
-         and !level and (name or brand)
+         and !level
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add level to shops"

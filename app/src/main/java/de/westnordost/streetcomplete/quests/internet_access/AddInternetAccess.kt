@@ -15,7 +15,6 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|camp_site|caravan_site|chalet
         )
         and access !~ no|private
-        and name
         and (
           !internet_access
           or internet_access = yes

@@ -14,7 +14,6 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
          (tourism = museum or leisure = beach_resort or tourism = gallery)
          and access !~ private|no
          and !fee
-         and name
     """
     override val changesetComment = "Add fee info"
     override val wikiLink = "Key:fee"
