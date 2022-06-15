@@ -1,8 +1,8 @@
 v45.0-alpha1: |
   <h3>🍰 Overlays!</h3>
   <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
-  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!<br/>
-     For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920)</p>
+  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
+  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
