@@ -122,6 +122,7 @@ produce_chili.jpg              CC-BY-SA 3.0      Daniel Risacher https://commons
 produce_coconut.jpg            CC-BY 2.0         Diego Torres Silvestre https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg
 produce_coffee.jpg             CC-BY-SA 3.0      Marcelo Corrêa https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
 produce_cranberry.jpg          CC-BY-SA 4.0      Ecomare/Sytske Dijksen https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
+produce_date.jpg              CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
 produce_fig.jpg                CC-BY-SA 3.0      Archives et jardin personnels https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
 produce_grapefruit.jpg         CC-BY-SA 3.0      Lipsio https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
@@ -179,6 +180,7 @@ surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/w
 surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
 path_surface_paved.jpg         CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
