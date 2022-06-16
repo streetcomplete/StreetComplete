@@ -105,15 +105,16 @@ class OsmQuestController internal constructor(
         /** Replace all quests of the given types in the given bounding box with the given quests.
          *  Called on download of a quest type for a bounding box. */
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-            val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
+            val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes) // don't put these quests in cache, some could be hidden
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
-                val previousQuests = db.getAllInBBox(bbox)
+                val previousQuests = db.getAllInBBox(bbox) // can't be done from cache because here we need ALL quests
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
                 updateQuests(quests, obsoleteQuestKeys)
             }
 
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
+            // supply bbox to onUpdated, all tiles fully within will be added to cache (and replaced if existing)
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys, replaceBBox = bbox)
         }
 
         override fun onCleared() {
@@ -131,6 +132,8 @@ class OsmQuestController internal constructor(
             onInvalidated()
         }
     }
+
+    private val cache = QuestControllerCache(192) { bbox, types -> getAllVisibleInBBoxFromDB(bbox, types) }
 
     init {
         mapDataSource.addListener(mapDataSourceListener)
@@ -257,7 +260,9 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key))
     }
 
+    // get from cache, if not found check in db
     override fun get(key: OsmQuestKey): OsmQuest? {
+        cache.getQuest(key)?.let { return it }
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -265,7 +270,7 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
+    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, questTypes).filter {
@@ -282,6 +287,11 @@ class OsmQuestController internal constructor(
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
+    }
+
+    // check cache, which will load data using getAllVisibleInBBoxFromDB if not found
+    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
+        return cache.get(bbox, questTypes)
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
@@ -372,7 +382,8 @@ class OsmQuestController internal constructor(
 
     private fun onUpdated(
         added: Collection<OsmQuest> = emptyList(),
-        deletedKeys: Collection<OsmQuestKey> = emptyList()
+        deletedKeys: Collection<OsmQuestKey> = emptyList(),
+        replaceBBox: BoundingBox? = null
     ) {
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
@@ -384,6 +395,12 @@ class OsmQuestController internal constructor(
         } else {
             added
         }
+
+        // update cache
+        if (deletedKeys.isNotEmpty())
+            cache.remove(deletedKeys)
+        if (added.isNotEmpty())
+            cache.add(added, replaceBBox)
 
         listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
