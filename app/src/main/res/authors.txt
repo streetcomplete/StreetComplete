@@ -74,9 +74,11 @@ fire_hydrant_position_pillar_s… CC-BY 4.0         modified from Stefan Patsche
 
 ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney (unclear, see https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
 ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
-ic_notification.png            GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
-ic_launcher.png                GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
-ic_launcher_round.png          GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_notification.png            GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher.png                GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher_round.png          GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_link_josm.png               CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
+ic_link_ideditor.png           WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_raised_original... CC0               Mateusz Konieczny (...)
