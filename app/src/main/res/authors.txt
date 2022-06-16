@@ -74,6 +74,9 @@ fire_hydrant_position_pillar_s… CC-BY 4.0         modified from Stefan Patsche
 
 ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney (unclear, see https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
 ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
+ic_notification.png            GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher.png                GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher_round.png          GPL 2.0           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_raised_original... CC0               Mateusz Konieczny (...)
@@ -179,7 +182,8 @@ surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/w
 surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
 surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
-path_surface_paved.jpg         CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+path_surface_paved.jpg         CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
