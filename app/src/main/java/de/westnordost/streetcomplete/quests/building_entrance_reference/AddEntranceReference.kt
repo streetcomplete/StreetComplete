@@ -88,6 +88,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                     if (entrance.tags.containsKey("addr:flats")) {
                         continue
                     }
+                    if (entrance.tags.containsKey("addr:housenumber")) {
+                        continue
+                    }
                     if (entrance.tags.containsKey("name")) {
                         continue
                     }
