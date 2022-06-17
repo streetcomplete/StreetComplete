@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReferenceForm
 import de.westnordost.streetcomplete.quests.building_entrance_reference.EntranceAnswer
 import de.westnordost.streetcomplete.quests.building_entrance_reference.FlatRange
@@ -48,27 +48,27 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
             val entrancesForApartments = mutableListOf<Node>()
             way.nodeIds.forEach { nodeId ->
                 val node = mapData.getNode(nodeId)
-                if(node != null) {
-                    if(node.tags["entrance"] == "main" || node.tags["entrance"] == "staircase") {
+                if (node != null) {
+                    if (node.tags["entrance"] == "main" || node.tags["entrance"] == "staircase") {
                         entrancesForApartments.add(node)
                     }
                 }
             }
-            if(entrancesForApartments.count() >= 2) {
+            if (entrancesForApartments.count() >= 2) {
                 for (entrance in entrancesForApartments) {
-                    if(entrance.tags["noref"] == "yes") {
+                    if (entrance.tags["noref"] == "yes") {
                         continue
                     }
-                    if(entrance.tags["ref:signed"] == "no") {
+                    if (entrance.tags["ref:signed"] == "no") {
                         continue
                     }
-                    if(entrance.tags.containsKey("addr:flats")) {
+                    if (entrance.tags.containsKey("addr:flats")) {
                         continue
                     }
-                    if(entrance.tags.containsKey("name")) {
+                    if (entrance.tags.containsKey("name")) {
                         continue
                     }
-                    if(entrance.tags.containsKey("ref")) {
+                    if (entrance.tags.containsKey("ref")) {
                         continue
                     }
                     returned.add(entrance)
@@ -96,6 +96,5 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                 tags["ref:signed"] = "no"
             }
         }
-
     }
 }
