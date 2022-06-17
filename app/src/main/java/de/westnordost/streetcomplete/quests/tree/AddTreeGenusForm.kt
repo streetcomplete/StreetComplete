@@ -71,10 +71,10 @@ class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
     }
 
     private fun getTrees(search: String): List<Tree> {
-        return trees.filter {
-            it.toDisplayString() == search
-            || it.name.startsWith(search, true)
-            || it.localName?.contains(search, true) == true
+        return trees.filter { tree ->
+            tree.toDisplayString() == search
+            || tree.name.split(" ").any { it.startsWith(search, true) }
+            || tree.localName?.contains(search, true) == true
         //sorting: genus-only first, then prefer trees with localName
         }.sortedBy { it.localName == null }.sortedBy { it.isSpecies }
     }
@@ -82,10 +82,11 @@ class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
     private fun loadTrees(): Set<Tree> {
         if (treeSet.isNotEmpty()) return treeSet
 
-        // load from file, assuming it's all species, format: <Species> (<localName>)
+        // load from file, assuming format: <Genus/Species> (<localName>)
+        //  assume species if it contains a space character
         try {
             context?.getExternalFilesDir(null)?.let { dir ->
-                treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(true) })
+                treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(it.substringBefore(" (").contentEquals(" ")) })
             }
         } catch (e: IOException) { } // file may not exist, so a exception is no surprise
 
