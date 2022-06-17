@@ -1,8 +1,12 @@
 package de.westnordost.streetcomplete.data.upload
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
@@ -26,6 +30,7 @@ class Uploader(
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex,
     private val osmoseDao: OsmoseDao,
+    private val prefs: SharedPreferences,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -51,6 +56,16 @@ class Uploader(
         val banned = withContext(Dispatchers.IO) { bannedInfo }
         if (banned is IsBanned) {
             throw VersionBannedException(banned.reason)
+        } else if (banned is UnknownIfBanned) {
+            val old = prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0)
+            prefs.edit().putInt(Prefs.BAN_CHECK_ERROR_COUNT, old + 1).apply()
+        } else
+            prefs.edit().putInt(Prefs.BAN_CHECK_ERROR_COUNT, 0).apply()
+        if (prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0) > 10) {
+            AlertDialog.Builder(context)
+                .setMessage(R.string.ban_check_fails)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
 
         // let's fail early in case of no authorization

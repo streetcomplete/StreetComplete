@@ -65,6 +65,7 @@ object Prefs {
     const val QUEST_SETTINGS_PER_PRESET = "quest_settings_per_preset"
     const val SHOW_HIDE_BUTTON = "show_hide_button"
     const val SELECT_FIRST_EDIT = "select_first_edit"
+    const val BAN_CHECK_ERROR_COUNT = "ban_check_error_count"
 
     enum class Autosync {
         ON, WIFI, OFF

@@ -22,6 +22,7 @@ class VersionIsBannedChecker(private val url: String, private val userAgent: Str
         } catch (e: IOException) {
             // if there is an io exception, never mind then...! (The unreachability of the above
             // internet address should not lead to this app being unusable!)
+            return UnknownIfBanned
         } finally {
             connection?.disconnect()
         }
@@ -36,3 +37,4 @@ sealed class BannedInfo
 
 data class IsBanned(val reason: String?) : BannedInfo()
 object IsNotBanned : BannedInfo()
+object UnknownIfBanned : BannedInfo()
