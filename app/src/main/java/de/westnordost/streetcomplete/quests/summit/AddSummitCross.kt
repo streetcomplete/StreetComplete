@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
@@ -26,7 +27,23 @@ class AddSummitCross : OsmElementQuestType<Boolean> {
     override val wikiLink = "Key:summit:cross"
     override val icon = R.drawable.ic_quest_summit_cross
     override val achievements = listOf(RARE, OUTDOORS)
-    override val enabledInCountries = COUNTRIES_WHERE_SUMMIT_MARKINGS_ARE_COMMON
+    override val enabledInCountries = NoCountriesExcept(
+        // Europe
+        "AT", // https://de.wikipedia.org/wiki/Gipfelkreuz
+        "CH", // https://de.wikipedia.org/wiki/Gipfelkreuz
+        "DE", // https://de.wikipedia.org/wiki/Gipfelbuch
+        "ES", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre
+        "FR", // https://fr.wikipedia.org/wiki/Croix_sommitale
+        "IT", // https://it.wikipedia.org/wiki/Croce_di_vetta
+        // not "NL": https://nl.wikipedia.org/wiki/Gipfelkreuz is about "foreign" summit crosses e.g. in the Alps
+        "PL", // https://it.wikipedia.org/wiki/Croce_di_vetta#Alcuni_esempi_di_croci_di_vetta
+        "RO", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre#Ejemplos
+        "SK", // https://it.wikipedia.org/wiki/Croce_di_vetta#Alcuni_esempi_di_croci_di_vetta
+
+        // Americas
+        "AR", // https://en.wikipedia.org/wiki/Summit_cross#Gallery
+        "PE", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre#Ejemplos
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_cross_title
 
