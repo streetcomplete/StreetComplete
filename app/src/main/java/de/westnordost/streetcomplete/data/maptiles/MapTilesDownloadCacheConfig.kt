@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.Prefs
 import okhttp3.Cache
 import okhttp3.CacheControl
@@ -15,7 +15,7 @@ class MapTilesDownloadCacheConfig(context: Context) {
 
     val cacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
-        .maxStale(DELETE_OLD_DATA_AFTER.toInt(), TimeUnit.MILLISECONDS)
+        .maxStale(DELETE_OLD_DATA_AFTER_DAYS * 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS)
         .build()
 
     val cache: Cache?

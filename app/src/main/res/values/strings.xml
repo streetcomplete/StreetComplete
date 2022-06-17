@@ -209,6 +209,9 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_select_first_edit_title">Select first edit on opening history</string>
     <string name="pref_select_first_edit_summary">Allows for quicker undo, but moves camera automatically</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
+    <string name="pref_delete_old_data_after">Delete old data after</string>
+    <string name="pref_delete_old_data_after_message">Remove downloaded OSM data if older than this many days</string>
+    <string name="pref_delete_old_data_after_summary">%d days</string>
 
     <!-- Store description -->
 

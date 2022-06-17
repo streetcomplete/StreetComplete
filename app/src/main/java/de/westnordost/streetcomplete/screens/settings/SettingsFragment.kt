@@ -21,7 +21,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
@@ -104,7 +104,7 @@ class SettingsFragment :
             val dialogBinding = DialogDeleteCacheBinding.inflate(layoutInflater)
             dialogBinding.descriptionText.text = resources.getString(R.string.delete_cache_dialog_message2,
                 (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1),
-                (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1)
+                (1.0 * DELETE_OLD_DATA_AFTER_DAYS).format(Locale.getDefault(), 1)
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)

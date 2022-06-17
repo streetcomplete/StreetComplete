@@ -223,6 +223,20 @@
             android:defaultValue="true"
             android:persistent="true" />
 
+        <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+            android:key="data_retain_time"
+            android:title="@string/pref_delete_old_data_after"
+            android:summary="@string/pref_delete_old_data_after_summary"
+            android:defaultValue="14"
+            android:persistent="true"
+            app:minValue="7"
+            app:maxValue="50"
+            app:step="1"
+            android:dialogMessage="@string/pref_delete_old_data_after_message"
+            android:dialogLayout="@layout/dialog_number_picker_preference"
+            android:positiveButtonText="@android:string/ok"
+            android:negativeButtonText="@android:string/cancel" />
+
         <ListPreference
             android:key="day_night_behavior"
             android:title="@string/pref_day_night_title"

@@ -66,6 +66,7 @@ object Prefs {
     const val SHOW_HIDE_BUTTON = "show_hide_button"
     const val SELECT_FIRST_EDIT = "select_first_edit"
     const val BAN_CHECK_ERROR_COUNT = "ban_check_error_count"
+    const val DATA_RETAIN_TIME = "data_retain_time"
 
     enum class Autosync {
         ON, WIFI, OFF

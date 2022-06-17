@@ -14,7 +14,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val osmApiModule = module {
-    factory { Cleaner(get(), get(), get()) }
+    factory { Cleaner(get(), get(), get(), get()) }
     factory<MapDataApi> { MapDataApiImpl(get()) }
     factory<NotesApi> { NotesApiImpl(get()) }
     factory { Preloader(get(named("CountryBoundariesFuture")), get(named("FeatureDictionaryFuture"))) }
