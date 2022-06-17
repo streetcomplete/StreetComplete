@@ -1427,6 +1427,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
+    <string name="quest_summit_cross_title">Is there a summit cross here?</string>
+
     <string name="quest_summit_register_title2">Is there a summit register here?</string>
 
     <string name="quest_surface_title">"What’s the surface here?"</string>
