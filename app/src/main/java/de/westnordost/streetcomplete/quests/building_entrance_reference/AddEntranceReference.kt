@@ -48,7 +48,8 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         // Czech Republic (CZ) https://t.me/openstreetmapcz/1242
         // Croatia https://github.com/streetcomplete/StreetComplete/issues/3064#issuecomment-1157858833
 
-        // was unable to reach communities or get replies from Kazakhstan, Moldova, Bosnia and Herzegovina
+        // was unable to reach communities or get replies from Kazakhstan, Moldova, Bosnia and Herzegovina,
+        // Slovenia, Albania, Montenegro, Georgia (using what was on https://openstreetmap.community/ )
         // if you are sure that this quest should be enabled there or elsewhere
         // please create an issue at https://github.com/streetcomplete/StreetComplete/issues
     )
