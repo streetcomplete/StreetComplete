@@ -78,9 +78,6 @@ class StreetCompleteApplication : Application() {
         deleteDatabase(ApplicationConstants.OLD_DATABASE_NAME)
 
         startKoin {
-            // Level.ERROR is used as a workaround for this Koin issue:
-            // https://github.com/InsertKoinIO/koin/issues/1188 TODO remove when updated to Koin 3.2.0
-            androidLogger(Level.ERROR)
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()
             modules(

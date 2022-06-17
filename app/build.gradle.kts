@@ -122,7 +122,7 @@ dependencies {
     val kotlinVersion = "1.6.21"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.2"
-    val koinVersion = "3.1.6"
+    val koinVersion = "3.2.0"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -130,12 +130,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("org.assertj:assertj-core:3.22.0")
+    testImplementation("org.assertj:assertj-core:3.23.1")
 
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.22.0")
+    androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
     // dependency injection
     implementation("io.insert-koin:koin-android-compat:$koinVersion")
@@ -146,7 +146,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.3.0")
+    implementation("androidx.annotation:annotation:1.4.0")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
@@ -189,14 +189,14 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.charleskorn.kaml:kaml:0.42.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("com.charleskorn.kaml:kaml:0.45.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.26.0")
+    implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
     implementation("com.google.ar:core:1.31.0")
