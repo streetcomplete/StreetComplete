@@ -595,6 +595,8 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="about_summary_current_version">"Pašreizējā versija: %s"</string>
     <string name="quest_postboxRef_title">"Kāds ir šīs pasta kastes identifikācijas numurs?"</string>
     <string name="quest_ref_answer_noRef">"Nav redzams numurs vai kods…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Attēlā ceļš ir pagriezts tāpat kā uz kartes pie atrašanās vietas saspraudes."</string>
     <string name="quest_recycling_materials_title">"Kādus izšķirotos atkritumus šeit var izmest?"</string>
     <string name="quest_recycling_materials_note">"Ja šajā vietā var atstāt pārstrādei kaut ko, kas šeit nav uzskaitīts, lūdzu, tā vietā atstājiet piezīmi."</string>
@@ -656,11 +658,14 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
 
     <!-- Links screen -->
     <string name="links_empty">"Jums vēl nav saišu"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Jūs vēl neesat publicējis atbildes"</string>
     <string name="unsynced_quests_description">"plus vēl %d nepublicētas izmaiņas."</string>
     <string name="unsynced_quests_not_logged_in_description">"Jums ir %d vēl nepublicētas izmaiņas. Lai tās augšupielādētu, jums jāierakstās."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Izpildīti uzdevumi"</string>
     <string name="user_achievements_title">"Sasniegumi"</string>
     <string name="user_links_title">"Saišu kolekcija"</string>
@@ -755,6 +760,8 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="user_statistics_country_rank">"Rangs %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartēšanas portāls %s"</string>
     <string name="user_statistics_filter_by_country">"pēc valts"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"pēc uzdevuma veida"</string>
     <string name="user_profile_global_rank">"Globālais rangs"</string>
     <string name="user_profile_local_rank">"Rangs valstī
@@ -904,9 +911,13 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_postboxRoyalCypher_title">"Kāds ir karaliskais šifrs uz šīs pastkastes?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nav redzams karaliskais šifrs"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotijas kronis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Ugunsdzēsēju depo"</string>
     <string name="quest_recycling_type_beverage_cartons">"Tikai dzērienu kartona iepakojumi"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Tikai plastmasas pudeles un kartona iepakojumi"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Komandas režīms"</string>
 
     <!-- Team mode -->

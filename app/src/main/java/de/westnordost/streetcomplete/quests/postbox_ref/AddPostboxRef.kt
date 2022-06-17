@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
@@ -16,7 +16,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.ic_quest_mail_ref
     override val isDeleteElementEnabled = true
-    override val questTypeAchievements = listOf(POSTMAN)
+    override val achievements = listOf(POSTMAN)
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
         "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"

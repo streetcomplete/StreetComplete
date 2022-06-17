@@ -15,10 +15,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.distanceTo
 
-fun ElementGeometry.toTangramGeometry(): List<Geometry> = when (this) {
+fun ElementGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Geometry> = when (this) {
     is ElementPolylinesGeometry -> {
         polylines.map { polyline ->
-            Polyline(polyline.map { it.toLngLat() }, mapOf("type" to "line"))
+            Polyline(polyline.map { it.toLngLat() }, properties + ("type" to "line"))
         }
     }
     is ElementPolygonsGeometry -> {
@@ -27,12 +27,12 @@ fun ElementGeometry.toTangramGeometry(): List<Geometry> = when (this) {
                 polygons.map { polygon ->
                     polygon.map { it.toLngLat() }
                 },
-                mapOf("type" to "poly")
+                properties + ("type" to "poly")
             )
         )
     }
     is ElementPointGeometry -> {
-        listOf(Point(center.toLngLat(), mapOf("type" to "point")))
+        listOf(Point(center.toLngLat(), properties + ("type" to "point")))
     }
 }
 

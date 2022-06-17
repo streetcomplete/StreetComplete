@@ -2,13 +2,9 @@ package de.westnordost.streetcomplete.quests.cycleway
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
@@ -16,41 +12,33 @@ import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.util.math.normalizeDegrees
-import de.westnordost.streetcomplete.view.ResImage
-import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
+import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
+import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
+import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
+import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.setImage
-import kotlin.math.absoluteValue
 
-class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
-
-    override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
-    private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
+class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
 
     override val buttonPanelAnswers get() =
-        if (isDisplayingPreviousCycleway) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+        if (isDisplayingPrevious) listOf(
+            AnswerItem(R.string.quest_generic_hasFeature_no) { isDisplayingPrevious = false },
             AnswerItem(R.string.quest_generic_hasFeature_yes) { onClickOk() }
         )
         else emptyList()
 
     override val otherAnswers: List<AnswerItem> get() {
-        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout" && osmElement!!.tags["junction"] != "circular"
+        val isNoRoundabout = element.tags["junction"] != "roundabout" && element.tags["junction"] != "circular"
         val result = mutableListOf<AnswerItem>()
-        if (!isDefiningBothSides && isNoRoundabout) {
-            result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
+        if (streetSideSelect.showSides != BOTH && isNoRoundabout) {
+            result.add(AnswerItem(R.string.quest_cycleway_answer_contraflow_cycleway) { streetSideSelect.showSides = BOTH })
         }
         result.add(AnswerItem(R.string.quest_cycleway_answer_no_bicycle_infrastructure) { noCyclewayHereHint() })
         return result
     }
-
-    override val contentPadding = false
-
-    private var isDisplayingPreviousCycleway: Boolean = false
 
     private fun noCyclewayHereHint() {
         activity?.let { AlertDialog.Builder(it)
@@ -68,157 +56,70 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         )
     """.toElementFilterExpression()
 
-    private var streetSideRotater: StreetSideRotater? = null
-
-    private var isDefiningBothSides: Boolean = false
-
-    private var leftSide: Cycleway? = null
-    private var rightSide: Cycleway? = null
-
     /** returns whether the side that goes into the opposite direction of the driving direction of a
      * one-way is on the right side of the way */
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
-    private val isOneway get() = isOneway(osmElement!!.tags)
+    private val isOneway get() = isOneway(element.tags)
 
-    private val isForwardOneway get() = isForwardOneway(osmElement!!.tags)
-    private val isReversedOneway get() = isReversedOneway(osmElement!!.tags)
+    private val isForwardOneway get() = isForwardOneway(element.tags)
+    private val isReversedOneway get() = isReversedOneway(element.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
+    private fun isContraflowInOneway(isRight: Boolean): Boolean =
+        isOneway && (isReverseSideRight xor !isRight)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (savedInstanceState == null) {
             initStateFromTags()
-        } else {
-            onLoadInstanceState(savedInstanceState)
         }
-
-        binding.puzzleView.onClickSideListener = { isRight -> showCyclewaySelectionDialog(isRight) }
-
-        streetSideRotater = StreetSideRotater(
-            binding.puzzleView,
-            binding.littleCompass.root,
-            elementGeometry as ElementPolylinesGeometry
-        )
-
-        if (!isDefiningBothSides) {
-            if (isLeftHandTraffic) binding.puzzleView.showOnlyLeftSide()
-            else                   binding.puzzleView.showOnlyRightSide()
-        }
-
-        val defaultResId =
-            if (isLeftHandTraffic) R.drawable.ic_street_side_unknown_l
-            else                   R.drawable.ic_street_side_unknown
-
-        binding.puzzleView.setLeftSideImage(ResImage(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
-        binding.puzzleView.setRightSideImage(ResImage(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId))
-
-        val isLeftContraflowInOneway = isOneway && !isReverseSideRight
-        binding.puzzleView.setLeftSideText(leftSide?.getTitleResId(isLeftContraflowInOneway)?.let { ResText(it) })
-        binding.puzzleView.setLeftSideFloatingIcon(leftSide?.getFloatingIconResId(isLeftContraflowInOneway, countryInfo)?.let { ResImage(it) })
-
-        val isRightContraflowInOneway = isOneway && isReverseSideRight
-        binding.puzzleView.setRightSideText(rightSide?.getTitleResId(isRightContraflowInOneway)?.let { ResText(it) })
-        binding.puzzleView.setRightSideFloatingIcon(rightSide?.getFloatingIconResId(isRightContraflowInOneway, countryInfo)?.let { ResImage(it) })
-
-        showTapHint()
-        initLastAnswerButton()
-        checkIsFormComplete()
     }
 
     private fun initStateFromTags() {
         val countryCode = countryInfo.countryCode
-        val sides = createCyclewaySides(osmElement!!.tags, isLeftHandTraffic)
+        val sides = createCyclewaySides(element.tags, isLeftHandTraffic)
         val left = sides?.left?.takeIf { it.isAvailableAsSelection(countryCode) }
         val right = sides?.right?.takeIf { it.isAvailableAsSelection(countryCode) }
         val bothSidesWereDefinedBefore = sides?.left != null && sides.right != null
+        val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
+        val noEntrySignResId = countryInfo.noEntrySignDrawableResId
 
-        leftSide = left
-        rightSide = right
-        isDefiningBothSides = bothSidesWereDefinedBefore || !likelyNoBicycleContraflow.matches(osmElement!!)
+        streetSideSelect.showSides = when {
+            bothSidesWereDefinedBefore || bicycleTrafficOnBothSidesIsLikely -> BOTH
+            isLeftHandTraffic -> LEFT
+            else -> RIGHT
+        }
+        val leftItem = left?.asStreetSideItem(isLeftHandTraffic, isContraflowInOneway(false), noEntrySignResId)
+        streetSideSelect.setPuzzleSide(leftItem, false)
+
+        val rightItem = right?.asStreetSideItem(isLeftHandTraffic, isContraflowInOneway(true), noEntrySignResId)
+        streetSideSelect.setPuzzleSide(rightItem, true)
 
         // only show as re-survey (yes/no button) if the previous tagging was complete
-        setAsResurvey(isFormComplete())
-    }
-
-    private fun onLoadInstanceState(savedInstanceState: Bundle) {
-        isDefiningBothSides = savedInstanceState.getBoolean(DEFINE_BOTH_SIDES)
-        savedInstanceState.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
-        savedInstanceState.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
-        setAsResurvey(savedInstanceState.getBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY))
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        rightSide?.let { outState.putString(CYCLEWAY_RIGHT, it.name) }
-        leftSide?.let { outState.putString(CYCLEWAY_LEFT, it.name) }
-        outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides)
-        outState.putBoolean(IS_DISPLAYING_PREVIOUS_CYCLEWAY, isDisplayingPreviousCycleway)
-    }
-
-    private fun setAsResurvey(resurvey: Boolean) {
-        isDisplayingPreviousCycleway = resurvey
-        binding.puzzleView.isEnabled = !resurvey
-        updateButtonPanel()
-    }
-
-    @AnyThread
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
-        streetSideRotater?.onMapOrientation(rotation, tilt)
-    }
-
-    private fun showTapHint() {
-        if ((leftSide == null || rightSide == null) && !HAS_SHOWN_TAP_HINT) {
-            if (leftSide == null) binding.puzzleView.showLeftSideTapHint()
-            if (rightSide == null) binding.puzzleView.showRightSideTapHint()
-            HAS_SHOWN_TAP_HINT = true
-        }
-    }
-
-    private fun showBothSides() {
-        isDefiningBothSides = true
-        binding.puzzleView.showBothSides()
-        updateLastAnswerButtonVisibility()
-        checkIsFormComplete()
+        isDisplayingPrevious = streetSideSelect.isComplete
     }
 
     /* ---------------------------------- selection dialog -------------------------------------- */
 
-    private fun showCyclewaySelectionDialog(isRight: Boolean) {
-        val ctx = context ?: return
-        val isContraflowInOneway = isOneway && (isReverseSideRight xor !isRight)
-        val items = getCyclewayItems(isRight).map { it.asDialogItem(ctx, isLeftHandTraffic, isContraflowInOneway) }
-        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) {
-            onSelectedSide(it.value!!, isRight)
+    override fun onClickSide(isRight: Boolean) {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        val dialogItems = getSelectableCycleways(isRight)
+            .map { it.asDialogItem(requireContext(), isLeftHandTraffic, isContraflowInOneway) }
+
+        ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
+            val streetSideItem = item.value!!.asStreetSideItem(
+                isLeftHandTraffic,
+                isContraflowInOneway,
+                countryInfo.noEntrySignDrawableResId
+            )
+            streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
         }.show()
     }
 
-    private fun onSelectedSide(cycleway: Cycleway, isRight: Boolean) {
-        val isContraflowInOneway = isOneway && (isReverseSideRight xor !isRight)
-
-        val icon = ResImage(cycleway.getIconResId(isLeftHandTraffic))
-        val title = ResText(cycleway.getTitleResId(isContraflowInOneway))
-        val floatingIcon = cycleway.getFloatingIconResId(isContraflowInOneway, countryInfo)?.let { ResImage(it) }
-
-        if (isRight) {
-            binding.puzzleView.replaceRightSideImage(icon)
-            binding.puzzleView.setRightSideText(title)
-            binding.puzzleView.replaceRightSideFloatingIcon(floatingIcon)
-            rightSide = cycleway
-        } else {
-            binding.puzzleView.replaceLeftSideImage(icon)
-            binding.puzzleView.setLeftSideText(title)
-            binding.puzzleView.replaceLeftSideFloatingIcon(floatingIcon)
-            leftSide = cycleway
-        }
-        updateLastAnswerButtonVisibility()
-        checkIsFormComplete()
-    }
-
-    private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
+    private fun getSelectableCycleways(isRight: Boolean): List<Cycleway> {
         val country = countryInfo.countryCode
         val values = DISPLAYED_CYCLEWAY_ITEMS.filter { it.isAvailableAsSelection(country) }.toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
@@ -229,59 +130,21 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         return values
     }
 
-    /* --------------------------------- last answer button ------------------------------------- */
+    override fun serialize(item: StreetSideDisplayItem<Cycleway>, isRight: Boolean) =
+        item.value.name
 
-    private fun initLastAnswerButton() {
-        updateLastAnswerButtonVisibility()
-
-        lastSelection?.let {
-            binding.lastAnswerButton.leftSideImageView.setImage(it.left.getDialogIcon(requireContext(), isLeftHandTraffic))
-            binding.lastAnswerButton.rightSideImageView.setImage(it.right.getDialogIcon(requireContext(), isLeftHandTraffic))
-        }
-
-        binding.lastAnswerButton.root.setOnClickListener { applyLastSelection() }
-    }
-
-    private fun updateLastAnswerButtonVisibility() {
-        val formIsPrefilled = leftSide != null || rightSide != null
-        val lastAnswerWasForBothSides = (lastSelection?.left != null && lastSelection?.right != null)
-        val isDefiningBothSides = isDefiningBothSides && lastAnswerWasForBothSides
-
-        binding.lastAnswerButton.root.isGone =
-            lastSelection == null || formIsPrefilled || !isDefiningBothSides
-    }
-
-    private fun saveLastSelection() {
-        val leftSide = leftSide
-        val rightSide = rightSide
-        if (leftSide != null && rightSide != null) {
-            lastSelection =
-                if (isRoadDisplayedUpsideDown())
-                    LastCyclewaySelection(rightSide, leftSide)
-                else
-                    LastCyclewaySelection(leftSide, rightSide)
-        }
-    }
-
-    private fun applyLastSelection() {
-        val lastSelection = lastSelection ?: return
-        if (isRoadDisplayedUpsideDown()) {
-            onSelectedSide(lastSelection.right, false)
-            onSelectedSide(lastSelection.left, true)
-        } else {
-            onSelectedSide(lastSelection.left, false)
-            onSelectedSide(lastSelection.right, true)
-        }
-    }
-
-    private fun isRoadDisplayedUpsideDown(): Boolean =
-        normalizeDegrees(binding.puzzleView.streetRotation, -180f).absoluteValue > 90f
+    override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<Cycleway> =
+        Cycleway.valueOf(str).asStreetSideItem(
+            isLeftHandTraffic,
+            isContraflowInOneway(isRight),
+            countryInfo.noEntrySignDrawableResId
+        )
 
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        val leftSide = leftSide
-        val rightSide = rightSide
+        val leftSide = streetSideSelect.left?.value
+        val rightSide = streetSideSelect.right?.value
 
         // a cycleway that goes into opposite direction of a oneway street needs special tagging
         // as oneway:bicycle=* tag will differ from oneway=*
@@ -313,15 +176,15 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             isOnewayNotForCyclists = isOnewayNotForCyclists
         )
 
-        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(osmElement!!.tags, isLeftHandTraffic)
+        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(element.tags, isLeftHandTraffic)
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
             confirmNotOnewayForCyclists {
                 applyAnswer(answer)
-                saveLastSelection()
+                streetSideSelect.saveLastSelection()
             }
         } else {
             applyAnswer(answer)
-            saveLastSelection()
+            streetSideSelect.saveLastSelection()
         }
     }
 
@@ -332,34 +195,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
-
-    private fun Cycleway.isSingleTrackOrLane() =
-        this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
-
-    private fun Cycleway.isDualTrackOrLane() =
-        this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
-
-    override fun isFormComplete() = !isDisplayingPreviousCycleway && (
-        if (isDefiningBothSides) leftSide != null && rightSide != null
-        else                     leftSide != null || rightSide != null
-    )
-
-    override fun isRejectingClose() =
-        !isDisplayingPreviousCycleway && (leftSide != null || rightSide != null)
-
-    companion object {
-        private const val CYCLEWAY_LEFT = "cycleway_left"
-        private const val CYCLEWAY_RIGHT = "cycleway_right"
-        private const val DEFINE_BOTH_SIDES = "define_both_sides"
-        private const val IS_DISPLAYING_PREVIOUS_CYCLEWAY = "is_displaying_previous_cycleway"
-
-        private var HAS_SHOWN_TAP_HINT = false
-
-        private var lastSelection: LastCyclewaySelection? = null
-    }
 }
 
-private data class LastCyclewaySelection(
-    val left: Cycleway,
-    val right: Cycleway
-)
+private fun Cycleway.isSingleTrackOrLane() =
+    this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
+
+private fun Cycleway.isDualTrackOrLane() =
+    this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE

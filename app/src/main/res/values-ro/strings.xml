@@ -893,6 +893,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nici un număr de referință vizibil …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Drumul din ilustrație este orientat la fel ca pe hartă la locația indicată."</string>
     <string name="quest_recycling_materials_title">"Ce se poate recicla aici?"</string>
 
@@ -966,11 +968,14 @@ Se caută automat detaliile care lipsesc în vecinătatea ta: piste pentru bicic
 
     <!-- Links screen -->
     <string name="links_empty">"Nu aveți încă linkuri"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Nu ați publicat încă niciun răspuns la misiuni"</string>
     <string name="unsynced_quests_description">"plus %d modificări nepublicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Aveți %d modificări nepublicate. Trebuie să vă autentificați pentru a putea fi urcate pe server."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Misiuni rezolvate"</string>
     <string name="user_achievements_title">"Realizări"</string>
     <string name="user_links_title">"Colecție de legături"</string>
@@ -1086,6 +1091,8 @@ Aceste date sunt esențiale nu numai pentru poștaș, ci și pentru orice sistem
     <string name="user_statistics_country_rank">"Nivel in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de cartografiere %s"</string>
     <string name="user_statistics_filter_by_country">"după țară"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"după tipul de misiune"</string>
     <string name="user_profile_global_rank">"Rang
 global"</string>
@@ -1304,9 +1311,13 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_postboxRoyalCypher_title">"Care-i codul poștal pentru această cutie poștală?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nici un cod regal nu este vizibil"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Coroana Scoției"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Statie de pompieri"</string>
     <string name="quest_recycling_type_beverage_cartons">"Doar cutii de băuturi"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Doar sticle de plastic si carton"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Mod echipă"</string>
 
     <!-- Team mode -->

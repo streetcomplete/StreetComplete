@@ -728,6 +728,8 @@ Suddividere?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come appare nella mappa rispetto al puntatore."</string>
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
 
@@ -803,11 +805,14 @@ Infine, ricorda di stare al sicuro: fa attenzione a ciò che ti circonda e non e
 
     <!-- Links screen -->
     <string name="links_empty">"Non hai ancora collegamenti"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Non hai ancora pubblicato risposte"</string>
     <string name="unsynced_quests_description">"e %d modifiche non pubblicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Hai %d modifiche non ancora pubblicate. Devi accedere per caricarle."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Missioni risolte"</string>
     <string name="user_achievements_title">"Riconoscimenti"</string>
     <string name="user_links_title">"Collezione di collegamenti"</string>
@@ -928,6 +933,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
     <string name="user_statistics_country_rank">"Posizione in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portale di mappatura %s"</string>
     <string name="user_statistics_filter_by_country">"per nazione"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"per tipo di missione"</string>
     <string name="user_profile_global_rank">"Globale"</string>
     <string name="user_profile_local_rank">"Livello in
@@ -1141,9 +1148,13 @@ riconoscimento"</string>
     <string name="quest_postboxRoyalCypher_title">"Quale monogramma reale è presente su questa cassetta postale?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Non è visibile nessun monogramma reale"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Corona di Scozia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Centrale dei vigili del fuoco"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cartoni per bevande"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo bottiglie di plastica e cartoni per bevande"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modalità squadra"</string>
 
     <!-- Team mode -->

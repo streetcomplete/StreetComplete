@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -14,15 +16,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
  *  Quest types that do not require complex filters that depend on the geometry of surrounding
  *  elements subclass [OsmFilterQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType]
  *  */
-interface OsmElementQuestType<T> : QuestType<T> {
-
-    /** The changeset comment to be used for this quest type when uploading to the OSM API. It
-     *  should briefly explain what is being changed (in English). */
-    val changesetComment: String
-
-    /** The OpenStreetMap wiki page with the documentation for the tag or feature that is being
-     *  edited by this quest type */
-    val wikiLink: String?
+interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
      *
@@ -42,14 +36,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
      * should be there too. For the street surface, it is necessary to view the whole street, so it
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
-
-    /** Whether the user should be given the option to split the way instead - shown in the
-     * "Other answers..." menu. By default: false.
-     *
-     *  Splitting of a way is necessary when the property the quest is asked for in reality changes
-     *  over the course of the way. E.g. a street has a sidewalk for only a part of the whole
-     *  length. */
-    val isSplitWayEnabled: Boolean get() = false
 
     /** Whether the user should be able to delete this element instead. Only elements that
      *  are not expected...
@@ -114,10 +100,5 @@ interface OsmElementQuestType<T> : QuestType<T> {
      * The element is not directly modified, instead, a map of [tags] is built */
     fun applyAnswerTo(answer: T, tags: Tags, timestampEdited: Long)
 
-    @Suppress("UNCHECKED_CAST")
-    fun applyAnswerToUnsafe(answer: Any, tags: Tags, timestampEdited: Long) {
-        applyAnswerTo(answer as T, tags, timestampEdited)
-    }
+    override fun createForm(): AbstractOsmQuestForm<T>
 }
-
-typealias Tags = StringMapChangesBuilder

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_entrance
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.EMERGENCY_EXIT
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.EXIT
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnsw
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SHOP
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.STAIRCASE
 
-class AddEntranceForm : AListQuestAnswerFragment<EntranceAnswer>() {
+class AddEntranceForm : AListQuestForm<EntranceAnswer>() {
     override val items: List<TextItem<EntranceAnswer>> = listOf(
         TextItem(MAIN, R.string.quest_building_entrance_main),
         TextItem(STAIRCASE, R.string.quest_building_entrance_staircase),

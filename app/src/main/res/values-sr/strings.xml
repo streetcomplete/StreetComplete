@@ -678,6 +678,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Не види се референтни број…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Пут на илустрацији се ротира исто као и карта на означеном месту."</string>
     <string name="quest_recycling_materials_title">"Шта се овде може оставити за рециклажу?"</string>
 
@@ -745,11 +747,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"Још немате веза"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Још  нисте објавили ни један одговор"</string>
     <string name="unsynced_quests_description">"и %d необјављених измена."</string>
     <string name="unsynced_quests_not_logged_in_description">"Имате %d необјављених измена. Морате се пријавити како би их послали."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Решени задаци"</string>
     <string name="user_achievements_title">"Постигнућа"</string>
     <string name="user_links_title">"Збирка веза"</string>
@@ -858,6 +863,8 @@
     <string name="user_statistics_country_rank">"Ранг у %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографски портал %s"</string>
     <string name="user_statistics_filter_by_country">"по земљама"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"по врсти задатка"</string>
     <string name="user_profile_global_rank">"Светска
 ранг листа"</string>
@@ -1038,9 +1045,13 @@
     <string name="quest_postboxRoyalCypher_title">"Која је краљевска шифра на овом поштанском сандучету?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Краљевска шифра није видљива"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Шкотска Круна"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Ватрогасна станица"</string>
     <string name="quest_recycling_type_beverage_cartons">"Само картонска амбалажа (тетрапак)"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Само пластичне флаше и картон"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Рад у тиму"</string>
 
     <!-- Team mode -->

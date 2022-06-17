@@ -74,7 +74,8 @@ class EditHistoryPinsManager(
         viewLifecycleScope.launch {
             if (this@EditHistoryPinsManager.isActive) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
-                pinsMapComponent.set(createEditPins(edits))
+                val pins = createEditPins(edits)
+                pinsMapComponent.set(pins)
             }
         }
     }
@@ -120,7 +121,7 @@ private fun Edit.toProperties(): Map<String, String> = when (this) {
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OSM_QUEST,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
-        MARKER_QUEST_TYPE to questType::class.simpleName!!
+        MARKER_QUEST_TYPE to questType.name
     )
     else -> throw IllegalArgumentException()
 }

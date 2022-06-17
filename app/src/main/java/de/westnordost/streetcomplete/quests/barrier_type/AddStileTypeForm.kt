@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.barrier_type.StileType.LADDER
 import de.westnordost.streetcomplete.quests.barrier_type.StileType.SQUEEZER
 import de.westnordost.streetcomplete.quests.barrier_type.StileType.STEPOVER_STONE
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.StileType.STEPOVER_WOOD
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddStileTypeForm : AImageListQuestAnswerFragment<StileTypeAnswer, StileTypeAnswer>() {
+class AddStileTypeForm : AImageListQuestForm<StileTypeAnswer, StileTypeAnswer>() {
 
     override val items: List<DisplayItem<StileTypeAnswer>> = listOf(
         Item(SQUEEZER, R.drawable.barrier_stile_squeezer, R.string.quest_barrier_type_stile_squeezer),

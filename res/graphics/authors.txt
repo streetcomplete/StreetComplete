@@ -251,6 +251,7 @@ quest icons/
     max_height.svg
     max_speed.svg
     max_weight.svg
+    memorial.svg
     money.svg                        modified from EmojiOne 2: U+1F4B8
     motorcycle.svg
     motorcycle_parking.svg
@@ -496,6 +497,8 @@ tutorial graphics/
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
 
 create_note_black_24dp.svg
+
+lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 
 mail.svg
 

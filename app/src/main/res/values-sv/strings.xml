@@ -706,6 +706,8 @@ Dela den nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vägen i illustrationen är roterad likadant som på kartan på stiftets plats."</string>
     <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
 
@@ -778,11 +780,14 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
 
     <!-- Links screen -->
     <string name="links_empty">"Du har inga länkar ännu"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har inte publicerat några uppdragssvar ännu"</string>
     <string name="unsynced_quests_description">"plus %d ännu inte publicerade ändringar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d ännu inte publicerade ändringar. Du måste logga in för att få dem skickade."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Lösta uppdrag"</string>
     <string name="user_achievements_title">"Prestationer"</string>
     <string name="user_links_title">"Länksamling"</string>
@@ -907,6 +912,8 @@ Observera att appen ber om husnummer för en byggnad först efter att dess typ h
     <string name="user_statistics_country_rank">"Rang i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartläggningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"efter uppdragstyp"</string>
     <string name="user_profile_global_rank">"Global
 rang"</string>
@@ -1099,9 +1106,13 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="quest_postboxRoyalCypher_title">"Vad har den här brevlådan för kungligt monogram?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Det finns inget monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krona"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
     <string name="quest_recycling_type_beverage_cartons">"Endast dryckeskartonger"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Endast plastflaskor och kartonger"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Gruppläge"</string>
 
     <!-- Team mode -->

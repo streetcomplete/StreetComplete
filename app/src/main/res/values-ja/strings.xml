@@ -1339,6 +1339,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など…)を自動で探します。"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"解決済みの探索"</string>
     <string name="user_achievements_title">"実績"</string>
     <string name="link_cyclosm_description">"サイクリストのための地図"</string>
@@ -1511,6 +1512,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"スコットランドの王冠"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"消防署"</string>
 
     <!-- Fuzzy -->
@@ -1518,6 +1521,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"プラスチックボトル・紙パックのみ"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"チームモード"</string>
 
     <!-- Team mode -->

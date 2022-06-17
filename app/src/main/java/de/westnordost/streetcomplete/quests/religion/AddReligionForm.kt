@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.ANIMIST
 import de.westnordost.streetcomplete.quests.religion.Religion.BAHAI
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.quests.religion.Religion.SIKH
 import de.westnordost.streetcomplete.quests.religion.Religion.TAOIST
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddReligionForm : AImageListQuestAnswerFragment<Religion, Religion>() {
+class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }

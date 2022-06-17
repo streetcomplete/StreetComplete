@@ -70,7 +70,8 @@ class StreetParkingDrawable(
             // drawing the cars
             for (i in 0 until carCount) {
                 if (i in omittedCarIndices) continue
-                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(CAR_RES_IDS.size)]
+                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(
+                    CAR_RES_IDS.size)]
                 val car = context.getDrawable(carResId)!!
                 val carHeight = car.intrinsicHeight * carWidth / car.intrinsicWidth
                 val paddingY = (height / carCount - carHeight) / 2

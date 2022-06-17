@@ -18,12 +18,17 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.Style
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -36,8 +41,9 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementEditsDao
 
     @Before fun createDao() {
-        val list = listOf<QuestType<*>>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
-        dao = ElementEditsDao(database, QuestTypeRegistry(list))
+        val list = listOf<QuestType>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
+        val list2 = listOf<Overlay>(TestOverlay)
+        dao = ElementEditsDao(database, QuestTypeRegistry(list), OverlayRegistry(list2))
     }
 
     @Test fun addGet_UpdateElementTagsEdit() {
@@ -319,3 +325,13 @@ private val geom = ElementPointGeometry(p)
 
 private val TEST_QUEST_TYPE = TestQuestType()
 private val TEST_QUEST_TYPE2 = TestQuestType2()
+
+private object TestOverlay : Overlay {
+    override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, Style>>()
+    override fun createForm(element: Element) = null
+    override val changesetComment = "bla"
+    override val icon = 0
+    override val title = 0
+    override val wikiLink = null
+    override val achievements = listOf<EditTypeAchievement>()
+}

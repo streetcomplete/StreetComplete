@@ -2155,9 +2155,13 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_postboxRoyalCypher_title">"Jaký královský monogram je na této schránce?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Není vidět žádný královský monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Hasičská stanice"</string>
     <string name="quest_recycling_type_beverage_cartons">"Pouze kartonové obaly od nápojů"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Pouze plastové lahve a kartonové obaly"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Týmový režim"</string>
 
     <!-- Team mode -->

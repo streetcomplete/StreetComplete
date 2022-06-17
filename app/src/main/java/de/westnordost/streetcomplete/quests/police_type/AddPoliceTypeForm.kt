@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.police_type
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddPoliceTypeForm : AImageListQuestAnswerFragment<PoliceType, PoliceType>() {
+class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
 
     override val items = listOf(
         Item(PoliceType.CARABINIERI,            R.drawable.ic_police_type_carabinieri,         R.string.quest_policeType_type_it_carabinieri),

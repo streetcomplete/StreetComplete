@@ -98,7 +98,7 @@ class QuestSelectionAdapter(
         questTypesDuringDrag ?: filteredQuestTypes ?: questTypes
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType<*>, visible: Boolean) {
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
             /* not doing anything here - we assume that this happened due to a tap on the checkbox
              * for a quest, so the display and data was already updated :-/ */
         }
@@ -115,7 +115,7 @@ class QuestSelectionAdapter(
     }
 
     private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
-        override fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+        override fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
             val itemIndex = questTypes.indexOfFirst { it.questType == item }
             val toAfterIndex = questTypes.indexOfFirst { it.questType == toAfter }
 

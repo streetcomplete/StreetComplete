@@ -1495,6 +1495,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Whats the "number" means -->
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到参考数字"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"图中道路的旋转与地图上指示位置一致。"</string>
 
     <!-- Fuzzy -->
@@ -1618,11 +1620,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Links screen -->
     <string name="links_empty">"你还没有链接"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"你还没有发布任何任务的答案"</string>
     <string name="unsynced_quests_description">"还有 %d 个未推送的变更。"</string>
     <string name="unsynced_quests_not_logged_in_description">"你有%d处改变尚未发布。你需要登录以上传它们。"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"已解决任务"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"链接集合"</string>
@@ -1753,6 +1758,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="user_statistics_country_wiki_link">"映射门户网站 %s"</string>
     <string name="user_statistics_filter_by_country">"依据国家"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"依据任务类型"</string>
     <string name="user_profile_global_rank">"全球排名"</string>
     <string name="user_profile_local_rank">"在%s排名"</string>
@@ -2013,6 +2020,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"仅限饮料纸盒"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"仅限塑料瓶与盒子"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"团队模式"</string>
 
     <!-- Team mode -->

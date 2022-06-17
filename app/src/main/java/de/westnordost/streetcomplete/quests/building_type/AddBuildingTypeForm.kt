@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.building_type
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<BuildingType?, BuildingType>() {
+class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType?, BuildingType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },

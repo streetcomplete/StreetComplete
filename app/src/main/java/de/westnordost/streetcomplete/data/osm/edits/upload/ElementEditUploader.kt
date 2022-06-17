@@ -2,14 +2,14 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
 
 class ElementEditUploader(
-    private val changesetManager: OpenQuestChangesetsManager,
+    private val changesetManager: OpenChangesetsManager,
     private val mapDataApi: MapDataApi
 ) {
 
@@ -23,10 +23,10 @@ class ElementEditUploader(
         val mapDataChanges = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
 
         return try {
-            val changesetId = changesetManager.getOrCreateChangeset(edit.questType, edit.source)
+            val changesetId = changesetManager.getOrCreateChangeset(edit.type, edit.source)
             mapDataApi.uploadChanges(changesetId, mapDataChanges)
         } catch (e: ConflictException) {
-            val changesetId = changesetManager.createChangeset(edit.questType, edit.source)
+            val changesetId = changesetManager.createChangeset(edit.type, edit.source)
             mapDataApi.uploadChanges(changesetId, mapDataChanges)
         }
     }

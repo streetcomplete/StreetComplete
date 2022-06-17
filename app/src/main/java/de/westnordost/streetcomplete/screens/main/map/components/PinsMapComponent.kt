@@ -11,7 +11,7 @@ class PinsMapComponent(ctrl: KtMapController) {
 
     private val pinsLayer: MapData = ctrl.addDataLayer(PINS_LAYER)
 
-    /** Shows/hids the pins */
+    /** Shows/hides the pins */
     var isVisible: Boolean
         get() = pinsLayer.visible
         set(value) { pinsLayer.visible = value }

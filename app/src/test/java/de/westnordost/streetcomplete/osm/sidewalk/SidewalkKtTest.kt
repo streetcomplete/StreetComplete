@@ -4,8 +4,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
+import java.time.LocalDate
 
 class SidewalkKtTest {
     @Test fun `apply simple values`() {
@@ -60,7 +63,9 @@ class SidewalkKtTest {
             mapOf(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate",
-                "sidewalk:both" to "yes and separate ;-)"
+                "sidewalk:both" to "yes and separate ;-)",
+                "sidewalk:left:surface" to "jello",
+                "sidewalk:both:oneway" to "yes"
             ),
             SidewalkSides(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
@@ -68,6 +73,8 @@ class SidewalkKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
                 StringMapEntryDelete("sidewalk:both", "yes and separate ;-)"),
+                StringMapEntryDelete("sidewalk:left:surface", "jello"),
+                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
             )
         )
     }
@@ -76,7 +83,9 @@ class SidewalkKtTest {
         verifyAnswer(
             mapOf(
                 "sidewalk" to "both",
-                "sidewalk:both" to "yes"
+                "sidewalk:both" to "yes",
+                "sidewalk:left:surface" to "jello",
+                "sidewalk:both:oneway" to "yes"
             ),
             SidewalkSides(Sidewalk.SEPARATE, Sidewalk.YES),
             arrayOf(
@@ -84,6 +93,28 @@ class SidewalkKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
+                StringMapEntryDelete("sidewalk:left:surface", "jello"),
+                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
+            )
+        )
+    }
+
+    @Test fun `updates check date`() {
+        verifyAnswer(
+            mapOf("sidewalk" to "both"),
+            SidewalkSides(Sidewalk.YES, Sidewalk.YES),
+            arrayOf(
+                StringMapEntryModify("sidewalk", "both", "both"),
+                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+            )
+        )
+        verifyAnswer(
+            mapOf("sidewalk:left" to "separate", "sidewalk:right" to "no"),
+            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.NO),
+            arrayOf(
+                StringMapEntryModify("sidewalk:left", "separate", "separate"),
+                StringMapEntryModify("sidewalk:right", "no", "no"),
+                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
             )
         )
     }

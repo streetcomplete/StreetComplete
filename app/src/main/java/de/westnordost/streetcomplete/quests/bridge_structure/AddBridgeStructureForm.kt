@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.ARCH
 import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.BEAM
 import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.CABLE_STAYED
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.TIE
 import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.TRUSS
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddBridgeStructureForm : AImageListQuestAnswerFragment<BridgeStructure, BridgeStructure>() {
+class AddBridgeStructureForm : AImageListQuestForm<BridgeStructure, BridgeStructure>() {
 
     // structures sorted highest to lowest amount of values on taginfo, footbridge-types last
     override val items = listOf(

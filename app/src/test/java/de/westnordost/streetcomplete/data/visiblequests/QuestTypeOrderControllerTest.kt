@@ -49,7 +49,7 @@ class QuestTypeOrderControllerTest {
     }
 
     @Test fun sort() {
-        val list = mutableListOf<QuestType<*>>(questA, questB, questC, questD)
+        val list = mutableListOf<QuestType>(questA, questB, questC, questD)
         on(questTypeOrderDao.getAll(0)).thenReturn(listOf(
             // A,B,C,D -> A,D,B,C
             questD.name to questA.name,
@@ -78,5 +78,3 @@ class QuestTypeOrderControllerTest {
         verify(listener).onQuestTypeOrdersChanged()
     }
 }
-
-private val QuestType<*>.name get() = this::class.simpleName!!

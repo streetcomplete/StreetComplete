@@ -733,6 +733,7 @@
     <string name="quest_ref_answer_noRef">"Не видно ніякого індексного номера…"</string>
 
     <!-- Питання, можливо не обертається, а повертає? -->
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Дорога на ілюстрації обертається так само як і на мапі в точці локації."</string>
     <string name="quest_recycling_materials_title">"Що тут можна залишити для переробки?"</string>
 
@@ -807,11 +808,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"У вас ще немає посилань"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Ви ще не опублікували відповідей на квести"</string>
     <string name="unsynced_quests_description">"і %d ще не опублікованих змін."</string>
     <string name="unsynced_quests_not_logged_in_description">"Ви маєте %d ще не опублікованих змін. Вам потрібно увійти, щоб їх надіслати."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Розв'язані квести"</string>
     <string name="user_achievements_title">"Досягнення"</string>
     <string name="user_links_title">"Колекція посилань"</string>
@@ -930,6 +934,8 @@
     <string name="user_statistics_country_rank">"Рейтинг у %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографічний портал %s"</string>
     <string name="user_statistics_filter_by_country">"за країною"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"за типом квесту"</string>
     <string name="user_profile_global_rank">"Загальний рейтинг"</string>
     <string name="user_profile_local_rank">"Рейтинг у
@@ -1143,9 +1149,13 @@
     <string name="quest_postboxRoyalCypher_title">"Який королівський шифр на цій поштовій скрині?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Королівського шифру не видно"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландії"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Пожежна станція"</string>
     <string name="quest_recycling_type_beverage_cartons">"Лише упаковки до напоїв"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Лише пластикові пляшки і картон"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Командний режим"</string>
 
     <!-- Team mode -->

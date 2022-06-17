@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="192dp">
+
+    <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
+        android:id="@+id/puzzleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+    <!-- note the other compass in fragment_main -->
+    <include
+        android:id="@+id/littleCompass"
+        layout="@layout/view_little_compass" />
+
+    <include
+        android:id="@+id/lastAnswerButton"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        layout="@layout/view_street_side_last_answer_button"/>
+
+</RelativeLayout>

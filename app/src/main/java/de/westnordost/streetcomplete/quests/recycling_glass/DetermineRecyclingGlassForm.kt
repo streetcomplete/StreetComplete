@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.recycling_glass
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 
-class DetermineRecyclingGlassForm : AbstractQuestAnswerFragment<RecyclingGlass>() {
+class DetermineRecyclingGlassForm : AbstractOsmQuestForm<RecyclingGlass>() {
     override val contentLayoutResId = R.layout.quest_determine_recycling_glass_explanation
 
     override val buttonPanelAnswers = listOf(

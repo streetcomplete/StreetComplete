@@ -5,11 +5,11 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 
@@ -25,7 +25,7 @@ class AddSummitCross : OsmElementQuestType<Boolean> {
     override val changesetComment = "Add whether summit cross is present"
     override val wikiLink = "Key:summit:cross"
     override val icon = R.drawable.ic_quest_summit_cross
-    override val questTypeAchievements = listOf(RARE, OUTDOORS)
+    override val achievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = COUNTRIES_WHERE_SUMMIT_MARKINGS_ARE_COMMON
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_cross_title
@@ -53,7 +53,7 @@ class AddSummitCross : OsmElementQuestType<Boolean> {
         else -> null
     }
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("summit:cross", answer.toYesNo())
