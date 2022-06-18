@@ -211,6 +211,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_delete_old_data_after">Delete old data after</string>
     <string name="pref_delete_old_data_after_message">Remove downloaded OSM data if older than this many days</string>
     <string name="pref_delete_old_data_after_summary">%d days</string>
+    <string name="quest_way_private">It’s private</string>
 
     <!-- Store description -->
 

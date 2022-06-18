@@ -23,6 +23,7 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -242,6 +243,7 @@ abstract class AbstractQuestAnswerFragment<T> :
 
         createSplitWayAnswer()?.let { answers.add(it) }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
+        createItsPrivateAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
         return answers
@@ -283,6 +285,34 @@ abstract class AbstractQuestAnswerFragment<T> :
             else if (isReplaceShopEnabled) replaceShopElement()
         }
     }
+
+    private fun createItsPrivateAnswer(): AnswerItem? {
+        val element = osmElement ?: return null
+        if (element !is Way) return null
+        return if (wayWithoutAccessTagsFilter.matches(element))
+            AnswerItem(R.string.quest_way_private) {
+                val tags = element.tags.toMutableMap()
+                tags["access"] = "private"
+                listener?.onChangedTags(questKey as OsmQuestKey, tags)
+            }
+            else null
+    }
+
+    // check the most common access tags
+    private val wayWithoutAccessTagsFilter by lazy { """
+        ways with highway
+         and !access
+         and !bicycle
+         and !foot
+         and !vehicle
+         and !motor_vehicle
+         and !horse
+         and !bus
+         and !hgv
+         and !motorcar
+         and !psv
+         and !ski
+    """.toElementFilterExpression() }
 
     private fun showOtherAnswers() {
         val otherAnswersButton = otherAnswersButton ?: return
