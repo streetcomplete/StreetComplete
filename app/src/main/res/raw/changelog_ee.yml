@@ -22,6 +22,7 @@ v43.1_ee: |
   <li>Add more building types</li>
   <li>Move no cycleway answer to better position</li>
   <li>Add more crossing types and allow tagging raised crossing (combined with speed table)</li>
+  <li>Split building type quest into one quest for buildings with address and one for buildings without</li>
   </ul>
   <h3>Additional and extended settings</h3>
   <ul>
