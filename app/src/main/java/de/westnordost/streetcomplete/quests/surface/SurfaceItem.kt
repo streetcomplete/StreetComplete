@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.surface.Surface.GRASS_PAVER
 import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
 import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.METAL
+import de.westnordost.streetcomplete.quests.surface.Surface.METAL_GRID
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
 import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
@@ -45,6 +46,7 @@ fun Surface.asItem(): Item<Surface> = when (this) {
     WOOD -> Item(this, R.drawable.surface_wood, R.string.quest_surface_value_wood)
     WOODCHIPS -> Item(this, R.drawable.surface_woodchips, R.string.quest_surface_value_woodchips)
     METAL -> Item(this, R.drawable.surface_metal, R.string.quest_surface_value_metal)
+    METAL_GRID -> Item(this, R.drawable.surface_metal_grid, R.string.quest_surface_value_metal_grid)
     GRAVEL -> Item(this, R.drawable.surface_gravel, R.string.quest_surface_value_gravel)
     PEBBLES -> Item(this, R.drawable.surface_pebblestone, R.string.quest_surface_value_pebblestone)
     GRASS -> Item(this, R.drawable.surface_grass, R.string.quest_surface_value_grass)

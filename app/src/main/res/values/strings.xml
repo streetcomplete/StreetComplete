@@ -213,6 +213,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_delete_old_data_after_summary">%d days</string>
     <string name="quest_way_private">It’s private</string>
     <string name="quest_buildingType_has_address_title">What kind of building is this? (has address)</string>
+    <string name="quest_surface_value_metal_grid">Metal grid</string>
 
     <!-- Store description -->
 

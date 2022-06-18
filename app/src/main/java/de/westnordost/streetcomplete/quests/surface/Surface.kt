@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.surface.Surface.GRAVEL
 import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_AREA
 import de.westnordost.streetcomplete.quests.surface.Surface.GROUND_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.METAL
+import de.westnordost.streetcomplete.quests.surface.Surface.METAL_GRID
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_AREA
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.quests.surface.Surface.PAVING_STONES
@@ -58,12 +59,13 @@ enum class Surface(val osmValue: String) {
     PAVED_AREA("paved"),
     UNPAVED_AREA("unpaved"),
     GROUND_AREA("ground"),
+    METAL_GRID("metal_grid"),
 }
 
 val PAVED_SURFACES = listOf(
     ASPHALT, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
     PAVING_STONES, SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-    WOOD, METAL
+    WOOD, METAL, METAL_GRID
 )
 
 val UNPAVED_SURFACES = listOf(
