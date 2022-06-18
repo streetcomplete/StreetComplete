@@ -104,7 +104,7 @@ class SettingsFragment :
             val dialogBinding = DialogDeleteCacheBinding.inflate(layoutInflater)
             dialogBinding.descriptionText.text = resources.getString(R.string.delete_cache_dialog_message2,
                 (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(Locale.getDefault(), 1),
-                (1.0 * DELETE_OLD_DATA_AFTER_DAYS).format(Locale.getDefault(), 1)
+                (1.0 * prefs.getInt(Prefs.DATA_RETAIN_TIME, DELETE_OLD_DATA_AFTER_DAYS)).format(Locale.getDefault(), 1)
             )
             AlertDialog.Builder(requireContext())
                 .setView(dialogBinding.root)
