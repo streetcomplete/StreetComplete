@@ -27,8 +27,7 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
         createConvertToStepsAnswer(),
-        AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() },
-        AnswerItem(R.string.quest_way_private) { applyAnswer(IsPrivateAnswer) },
+        AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
     private val surfaceTag get() = osmElement!!.tags["surface"]

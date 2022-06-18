@@ -2,20 +2,15 @@ package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.GRADE1
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.GRADE2
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.GRADE3
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.GRADE4
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.GRADE5
-import de.westnordost.streetcomplete.quests.tracktype.Tracktype.PRIVATE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddTracktypeForm : AImageListQuestAnswerFragment<Tracktype, Tracktype>() {
 
-    override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_way_private) { applyAnswer(PRIVATE) },
-    )
     override val items = listOf(
         Item(GRADE1, R.drawable.tracktype_grade1, R.string.quest_tracktype_grade1),
         Item(GRADE2, R.drawable.tracktype_grade2, R.string.quest_tracktype_grade2a),

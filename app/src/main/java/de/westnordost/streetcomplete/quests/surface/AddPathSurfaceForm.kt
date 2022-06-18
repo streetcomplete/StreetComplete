@@ -14,7 +14,6 @@ class AddPathSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestAns
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
-        AnswerItem(R.string.quest_way_private) { applyAnswer(IsPrivateAnswer) },
     )
 
     override val itemsPerRow = 3

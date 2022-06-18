@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 
-class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
+class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -46,11 +46,8 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
 
     override fun createForm() = AddRoadSurfaceForm(prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false))
 
-    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
-        if (answer is SurfaceAnswer)
-            answer.applyTo(tags, "surface")
-        else if (answer is IsPrivateAnswer)
-            tags["access"] = "private"
+    override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags, "surface")
     }
 
     override val hasQuestSettings = true

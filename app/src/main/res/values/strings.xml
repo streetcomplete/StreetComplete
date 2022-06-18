@@ -99,7 +99,6 @@
     <string name="advanced_resurvey_message_date">Instead of using resurvey intervals, resurvey above keys if check date older than:</string>
     <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
     <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
-    <string name="quest_way_private">It’s private</string>
     <string name="quest_buildingType_answer_demolished">It’s demolished (traces visible)</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
     <string name="quest_edit_tags_title">Edit tags</string>

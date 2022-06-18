@@ -53,9 +53,6 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"
             }
-            is IsPrivateAnswer -> {
-                tags["access"] = "private"
-            }
         }
     }
 

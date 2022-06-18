@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
-object IsPrivateAnswer : SurfaceOrIsStepsAnswer
 
 data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
 
