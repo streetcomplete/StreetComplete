@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import kotlinx.coroutines.CoroutineName
@@ -16,11 +18,13 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import java.net.URLEncoder
 
 class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val notesApi: NotesApi,
+    private val tracksApi: TracksApi,
     private val imageUploader: StreetCompleteImageUploader
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -62,8 +66,12 @@ class NoteEditsUploader(
     }
 
     private fun uploadEdit(edit: NoteEdit) {
-        val text = edit.text.orEmpty() + uploadAndGetAttachedPhotosText(edit.imagePaths)
+        // try to upload the image and track if we have them
+        val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
+        val trackText = uploadAndGetAttachedTrackText(edit.track, edit.text)
+        val text = edit.text.orEmpty() + imageText + trackText
 
+        // done, try to upload the note to OSM
         try {
             val note = when (edit.action) {
                 CREATE -> notesApi.create(edit.position, text)
@@ -110,6 +118,16 @@ class NoteEditsUploader(
             }
         }
         return ""
+    }
+
+    private fun uploadAndGetAttachedTrackText(
+        trackpoints: List<Trackpoint>,
+        noteText: String?
+    ): String {
+        if (trackpoints.isEmpty()) return ""
+        val track = tracksApi.create(trackpoints, noteText)
+        val encodedUsername = URLEncoder.encode(track.userName, "utf-8").replace("+", "%20")
+        return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/${track.id}\n"
     }
 
     companion object {

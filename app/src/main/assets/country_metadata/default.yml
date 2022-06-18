@@ -13,6 +13,7 @@ hasSlowZone: false
 isLeftHandTraffic: false
 isUsuallyAnyGlassRecyclableInContainers: false
 lengthUnits: [meter]
+noEntrySignStyle: default
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]

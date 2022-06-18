@@ -21,12 +21,12 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlin.collections.ArrayList
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
  *  undoing, etc. */
@@ -67,10 +67,11 @@ class QuestController(
     suspend fun createNote(
         text: String,
         imagePaths: List<String>,
-        position: LatLon
+        position: LatLon,
+        track: List<Trackpoint>,
     ) = withContext(Dispatchers.IO) {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
-        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths)
+        noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, track)
     }
 
     /** Split a way for the given OSM Quest.

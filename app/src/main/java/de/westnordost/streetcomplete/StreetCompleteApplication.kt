@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
 import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
+import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
@@ -65,6 +66,7 @@ class StreetCompleteApplication : Application() {
     private val downloadedTilesDao: DownloadedTilesDao by inject()
     private val prefs: SharedPreferences by inject()
     private val editHistoryController: EditHistoryController by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
@@ -109,6 +111,15 @@ class StreetCompleteApplication : Application() {
                 userModule,
                 arModule
             )
+        }
+
+        /* Force log out users who use the old OAuth consumer key+secret because it does not exist
+           anymore. Trying to use that does not result in a "not authorized" API response, but some
+           response the app cannot handle */
+        if (!prefs.getBoolean(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP, false)) {
+            if (userLoginStatusController.isLoggedIn) {
+                userLoginStatusController.logOut()
+            }
         }
 
         setDefaultLocales()

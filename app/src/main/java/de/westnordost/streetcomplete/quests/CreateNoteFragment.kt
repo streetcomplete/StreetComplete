@@ -12,11 +12,14 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
+import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
+import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
+import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.viewBinding
@@ -50,11 +53,25 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     override val noteInput get() = contentBinding.noteInput
 
+    private var hasGpxAttached: Boolean = false
+
     interface Listener {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, isGpxNote: Boolean)
+        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean = false)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        hasGpxAttached = arguments?.getBoolean(ARG_HAS_GPX_ATTACHED) ?: false
+
+        childFragmentManagerOrNull?.addFragmentOnAttachListener { _, fragment ->
+            if (fragment is AttachPhotoFragment) {
+                fragment.hasGpxAttached = hasGpxAttached
+            }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
@@ -111,6 +128,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         return a
     }
 
+    override fun isRejectingClose() = super.isRejectingClose() || hasGpxAttached
+
     override fun onDiscard() {
         super.onDiscard()
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
@@ -130,5 +149,14 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
         listener?.onCreatedNote(text, imagePaths, screenPos, isGpxNote)
+        listener?.onCreatedNote(text, imagePaths, screenPos, hasGpxAttached)
+    }
+
+    companion object {
+        private const val ARG_HAS_GPX_ATTACHED = "hasGpxAttached"
+
+        fun create(hasGpxAttached: Boolean) = CreateNoteFragment().also {
+            it.arguments = bundleOf(ARG_HAS_GPX_ATTACHED to hasGpxAttached)
+        }
     }
 }

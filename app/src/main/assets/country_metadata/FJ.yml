@@ -2,6 +2,7 @@
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 542
+noEntrySignStyle: no entry on white
 officialLanguages: [en, fj, hif]
 popularReligions: [christian, hindu]
 atmOperators: [ANZ, BSP, Westpac, BSP ATM]

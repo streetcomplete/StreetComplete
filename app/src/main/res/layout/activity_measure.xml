@@ -53,7 +53,7 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/trackingErrorTextView"
+            android:id="@+id/tracking_message_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"

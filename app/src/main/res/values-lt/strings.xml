@@ -59,6 +59,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Jūs galite šioje vietoje palikti viešą pastabą, kurią kiti žymėtojai galės komentuoti ir galbūt išspręsti:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"Gerai"</string>
 
     <!-- Fuzzy -->

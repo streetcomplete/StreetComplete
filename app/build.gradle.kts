@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4301
-        versionName = "43.0_expert_edition"
+        versionCode = 4402
+        versionName = "44.1_expert_edition"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -119,10 +119,10 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.6.10"
+    val kotlinVersion = "1.6.21"
     val mockitoVersion = "3.12.4"
-    val kotlinxVersion = "1.6.0"
-    val koinVersion = "3.1.5"
+    val kotlinxCoroutinesVersion = "1.6.2"
+    val koinVersion = "3.1.6"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -143,9 +143,9 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.3.0")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.preference:preference-ktx:1.2.0")
@@ -158,9 +158,9 @@ dependencies {
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxCoroutinesVersion")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.7.1")
@@ -168,11 +168,12 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:1.5")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures-android:4.1")
+    implementation("de.westnordost:osmfeatures-android:5.0")
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:2.0")
     implementation("de.westnordost:osmapi-changesets:2.0")
     implementation("de.westnordost:osmapi-notes:2.0")
+    implementation("de.westnordost:osmapi-traces:2.0")
     implementation("de.westnordost:osmapi-user:2.0")
     implementation("com.squareup.okhttp3:okhttp:3.14.9")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
@@ -206,7 +207,7 @@ dependencies {
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.30.0")
+    implementation("com.google.ar:core:1.31.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -214,12 +215,12 @@ dependencies {
 val bcp47ExportLanguages = setOf(
     "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sr-cyrl", "sv", "th", "tr", "uk", "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220421"
+val nsiVersion = "v6.0.20220530"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.2.2"
 

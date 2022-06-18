@@ -87,6 +87,7 @@
                 android:maxLength="5"
                 android:textSize="@dimen/x_large_input"
                 android:inputType="numberDecimal"
+                android:digits="0123456789.,"
                 android:imeOptions="actionDone"
                 tools:text="1.8"
                 tools:ignore="HardcodedText" />

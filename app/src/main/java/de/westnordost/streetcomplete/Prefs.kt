@@ -21,6 +21,7 @@ object Prefs {
     const val OSM_USER_ID = "osm.userid"
     const val OSM_USER_NAME = "osm.username"
     const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
+    const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
     const val USER_DAYS_ACTIVE = "days_active"
     const val USER_GLOBAL_RANK = "user_global_rank"
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"

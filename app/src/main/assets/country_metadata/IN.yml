@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
 mobileCountryCode: 404
+noEntrySignStyle: arrow
 noParkingLineStyle: yellow
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna

@@ -26,9 +26,14 @@ import de.westnordost.streetcomplete.quests.bench_material.AddBenchMaterial
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
+import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCapacity
+import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
+import de.westnordost.streetcomplete.quests.bike_shop.AddBikeRepairAvailability
+import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvailability
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
+import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingWithAddressType
@@ -352,11 +357,13 @@ fun questTypeRegistry(
 
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
-    // bike parking: would be higher up if not for bike parking capacity which is usually not solvable when moving past
+    // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
     AddBikeParkingCover(), // used by OsmAnd in the object description
+    AddBikeRentalType(), // generally less overlap of possible types/fewer choices/simpler to answer
     AddBikeParkingType(), // used by OsmAnd
     AddBikeParkingAccess(),
     AddBikeParkingFee(),
+    AddBikeRentalCapacity(), // less ambiguous than bike parking
     AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
@@ -398,6 +405,8 @@ fun questTypeRegistry(
     AddFerryAccessPedestrian(),
     AddFerryAccessMotorVehicle(),
 
+    AddEntrance(),
+
     AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
     MarkCompletedHighwayConstruction(), // need to look the whole way
@@ -428,6 +437,8 @@ fun questTypeRegistry(
     AddWheelchairAccessToilets(), // used by wheelmap, OsmAnd, Organic Maps
 
     // shop
+    AddBikeRepairAvailability(),
+    AddSecondHandBicycleAvailability(),
     AddVegetarian(), // menus are often posted externally
     AddVegan(),
     AddHalal(), // there are ~ 100 times more Muslims than Jews

@@ -21,7 +21,7 @@ class AddShoulderForm : AStreetSideSelectFragment<Boolean, ShoulderSides>() {
                 R.string.quest_shoulder_value_yes
             )
         } else {
-            StreetSideItem(value, R.drawable.ic_shoulder_no, R.string.quest_shoulder_value_no)
+            StreetSideItem(value, R.drawable.ic_shoulder_no, R.string.quest_shoulder_value_no, R.drawable.ic_bare_road_without_feature)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

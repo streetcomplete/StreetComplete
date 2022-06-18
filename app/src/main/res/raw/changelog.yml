@@ -1,8 +1,47 @@
+v44.1: |
+  <ul>
+  <li>Fix: Tag <code>barrier=kerb</code>, not <code>curb</code> (#4087), by @FloEdelmann</li>
+  <li>Fix recorded track was attached to every subsequent note (#4082), by @goldbattle</li>
+  <li>Fix summit register quest, it did not show before (#4075), by @Helium314</li>
+  <li>Some other tiny fixes and enhancements (#4084, ...)</li>
+  </ul>
+
+v44.0: |
+  <h3>🧭 Recording GPS track</h3>
+  <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
+  and then attach it to a public note!<br/>
+  Note that the track can only be recorded while the app is in foreground. So, it is not meant to
+  replace tools like GPS Logger but to help locate short missing path segments and similar.<br/>
+  (#3573, #2209), by @goldbattle
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of bicycle rental is this?</i> (#3995, #4010), by @FloEdelmann</li>
+  <li><i>How many rental bike spaces are here?</i> (#2129, #4008), by @FloEdelmann</li>
+  <li><i>Are bicycle repair services offered here?</i>, disabled by default (#4012, #4038), by @matkoniecz</li>
+  <li><i>Are second-hand bicycles sold here?, disabled by default</i> (#4012, #4038), by @matkoniecz</li>
+  <li><i>What kind of building entrance is this?</i> (#3941, #3949), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Clarify a lot of wordings in American English (#4030) by @ZeLonewolf</li>
+  <li>Improve some aspects of the background map rendering, by @Helium314</li>
+  <li>Improve performance when using the app in a long session (#4070), by @Helium314</li>
+  <li>Various minor enhancements, wording improvements and fixes (#4015, #4042, #4001, #4039, #4032, #4056...), thanks @Helium314, @peternewman, @riQQ</li>
+  </ul>
+
+v43.2: |
+  Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, your not yet uploaded
+  edits are safe. (#4028)
+
 v43.1: |
-  <h3>Other Enhancements and Fixes</h3>
+  <h3>Enhancements and Fixes</h3>
   <ul>
   <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
-  <li>Various minor enhancements and fixes (#3994...), thanks @peternewman</li>
+  <li>Cycleways: For oneways, make it clearer what the selection options imply for cyclists (#3984)</li>
+  <li>Don't ask about tactile buttons on traffic lights in Russia (#4021)</li>
+  <li>Various minor enhancements and fixes (#3994, #4020...), thanks @peternewman</li>
+  <li>Fix new languages (Armenian, Esperanto) are now displayed as options in the language selection screen</li>
   </ul>
   <h3>New Translations</h3>
   <ul>

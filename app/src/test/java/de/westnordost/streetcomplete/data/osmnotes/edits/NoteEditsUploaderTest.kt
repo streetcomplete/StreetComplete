@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.testutils.any
@@ -26,6 +27,7 @@ class NoteEditsUploaderTest {
     private lateinit var noteController: NoteController
     private lateinit var noteEditsController: NoteEditsController
     private lateinit var notesApi: NotesApi
+    private lateinit var tracksApi: TracksApi
     private lateinit var imageUploader: StreetCompleteImageUploader
 
     private lateinit var uploader: NoteEditsUploader
@@ -42,10 +44,11 @@ class NoteEditsUploaderTest {
         on(notesApi.comment(anyLong(), any())).thenReturn(note())
         on(notesApi.create(any(), any())).thenReturn(note())
 
+        tracksApi = mock()
         imageUploader = mock()
         listener = mock()
 
-        uploader = NoteEditsUploader(noteEditsController, noteController, notesApi, imageUploader)
+        uploader = NoteEditsUploader(noteEditsController, noteController, notesApi, tracksApi, imageUploader)
         uploader.uploadedChangeListener = listener
     }
 

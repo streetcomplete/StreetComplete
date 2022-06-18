@@ -331,10 +331,6 @@
                 "charge_toll": {
                     "placeholder": "1 EUR, 5 USD, 10 JPY…"
                 },
-                "circumference": {
-                    "label": "Circumference",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "Clothes"
                 },
@@ -869,13 +865,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Trail Difficulty",
-                    "options": {
-                        "0": "Easiest (white circle)",
-                        "1": "Easy (green circle)",
-                        "2": "Medium (blue square)",
-                        "3": "Difficult (black diamond)",
-                        "4": "Extremely Difficult (double black diamond)"
-                    },
                     "placeholder": "Easy, Medium, Difficult..."
                 },
                 "mtb/scale/uphill": {
@@ -1168,9 +1157,6 @@
                 "service": {
                     "label": "Type"
                 },
-                "service/bicycle": {
-                    "label": "Services"
-                },
                 "service/vehicle": {
                     "label": "Services"
                 },
@@ -1331,6 +1317,9 @@
                         "yes": "Yes"
                     },
                     "placeholder": "Yes, No, Takeaway Only..."
+                },
+                "toilets": {
+                    "label": "Toilets"
                 },
                 "toilets/disposal": {
                     "label": "Toilet Disposal",
@@ -1663,6 +1652,9 @@
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Youth Centre"
+                },
                 "amenity/compressed_air": {
                     "name": "Compressed Air"
                 },
@@ -1758,7 +1750,7 @@
                     "name": "Car Park"
                 },
                 "amenity/parking/multi-storey": {
-                    "name": "Multistory Car Park"
+                    "name": "Multistorey Car Park"
                 },
                 "amenity/parking_space": {
                     "name": "Parking Space"
@@ -1832,6 +1824,9 @@
                 "amenity/smoking_area": {
                     "name": "Smoking Area"
                 },
+                "amenity/social_centre": {
+                    "name": "Social Centre"
+                },
                 "amenity/social_facility": {
                     "name": "Social Facility"
                 },
@@ -1858,9 +1853,6 @@
                 },
                 "amenity/theatre": {
                     "name": "Theatre"
-                },
-                "amenity/toilets": {
-                    "name": "Toilets"
                 },
                 "amenity/townhall": {
                     "name": "Town Hall"
@@ -2388,6 +2380,9 @@
                 "healthcare/blood_donation": {
                     "name": "Blood Donor Centre"
                 },
+                "healthcare/counselling": {
+                    "name": "Counselling Centre"
+                },
                 "healthcare/hospice": {
                     "name": "Hospice"
                 },
@@ -2797,7 +2792,8 @@
                     "name": "Hackerspace"
                 },
                 "leisure/horse_riding": {
-                    "name": "Horse Riding Facility"
+                    "name": "Horse Riding Centre",
+                    "aliases": "Horse Riding Stables"
                 },
                 "leisure/ice_rink": {
                     "name": "Ice Rink"
@@ -2848,7 +2844,7 @@
                     "name": "Cricket Field"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Riding Arena"
+                    "name": "Horse Riding Arena"
                 },
                 "leisure/pitch/netball": {
                     "name": "Netball Court"
@@ -3454,7 +3450,8 @@
                     "name": "Shop"
                 },
                 "shop/alcohol": {
-                    "name": "Off licence (Alcohol shop)"
+                    "name": "Off licence (Alcohol shop)",
+                    "terms": "alcohol,beer,booze,wine,off licence,off license"
                 },
                 "shop/antiques": {
                     "name": "Antiques Shop"
@@ -3950,6 +3947,9 @@
                 },
                 "type/route/hiking": {
                     "name": "Hiking Route"
+                },
+                "type/route/horse": {
+                    "name": "Horse Riding Route"
                 },
                 "type/route/light_rail": {
                     "name": "Light Rail Route"

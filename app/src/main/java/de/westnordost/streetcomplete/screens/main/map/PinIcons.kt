@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.quests.getNameLabel
         "atm" -> return R.drawable.ic_pin_money
         "bench" -> return R.drawable.ic_pin_bench
         "bicycle_parking" -> return R.drawable.ic_pin_bicycle_parking
+        "bicycle_rental" -> return R.drawable.ic_pin_bicycle_rental
         "bicycle_repair_station" -> {
             if (map["service:bicycle:pump"] == "yes") return R.drawable.ic_pin_bicycle_pump
         }
@@ -63,6 +64,10 @@ import de.westnordost.streetcomplete.quests.getNameLabel
     }
     when (map["tourism"]) {
         "information" -> return R.drawable.ic_pin_information
+    }
+    when (map["traffic_calming"]) {
+        "choker", "choked_table", "chicane", "choked_island" -> return R.drawable.ic_pin_choker
+        "island" -> return R.drawable.ic_pin_island
     }
     if (getHouseNumber(map) != null && getNameLabel(map) == null) {
         return R.drawable.ic_none

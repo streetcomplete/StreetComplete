@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:background="#0fff"
                     android:inputType="numberDecimal"
+                    android:digits="0123456789.,"
                     android:gravity="center"
                     android:textColor="@color/traffic_black"
                     android:textSize="32dp"

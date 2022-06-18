@@ -3,6 +3,7 @@ global:
     geometry_line_color: '#44D14000'
     geometry_point_color: '#88D14000'
     track_color: '#44536dfe'
+    track_color_record: '#44fe1616'
     old_track_color: '#22536dfe'
     quest_geometry_color: '#330092D1' # complementary to accent, a bit more transparent
 
@@ -63,7 +64,7 @@ layers:
     streetcomplete_pins:
         data: { source: streetcomplete_pins }
         pins:
-            filter: { $zoom: { min: 14 }, poi_color: no }
+            filter: { $zoom: { min: 15 }, poi_color: no }
             draw:
                 pin-icons:
                     interactive: true
@@ -141,7 +142,8 @@ layers:
             filter: { old: [false] }
             draw:
                 track-lines:
-                    color: global.track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
@@ -161,7 +163,8 @@ layers:
             filter: { old: [false] }
             draw:
                 track-lines:
-                    color: global.track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round

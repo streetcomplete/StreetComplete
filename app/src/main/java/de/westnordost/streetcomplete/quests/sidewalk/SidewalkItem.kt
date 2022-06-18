@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 val Sidewalk.iconResId get() = when (this) {
     YES -> R.drawable.ic_sidewalk_yes
-    NO -> R.drawable.ic_sidewalk_no
+    NO -> R.drawable.ic_bare_road_without_feature
     SEPARATE -> R.drawable.ic_sidewalk_separate
     else -> 0
 }

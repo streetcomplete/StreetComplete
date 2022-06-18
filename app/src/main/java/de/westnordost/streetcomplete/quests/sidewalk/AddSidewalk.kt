@@ -112,10 +112,19 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
         // streets that may have sidewalk tagging
         private val roadsFilter by lazy { """
             ways with
-              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+              (
+                (
+                  highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+                  and motorroad != yes
+                  and foot != no
+                )
+                or
+                (
+                  highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+                  and (foot ~ yes|designated or bicycle ~ yes|designated)
+                )
+              )
               and area != yes
-              and motorroad != yes
-              and foot != no
               and access !~ private|no
         """.toElementFilterExpression() }
 
@@ -145,6 +154,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
                 lit = yes
                 or highway = residential
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+                or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
               )
               and foot != use_sidepath
               and bicycle != use_sidepath
