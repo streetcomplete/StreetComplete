@@ -560,6 +560,7 @@ class MainFragment :
         mapFragment?.startFocus(geometry, mapOffsetWithOpenBottomSheet)
         mapFragment?.highlightGeometry(geometry)
         mapFragment?.highlightPins(edit.icon, listOf(edit.position))
+        mapFragment?.hideOverlay()
     }
 
     private fun Edit.getGeometry(): ElementGeometry = when (this) {
@@ -803,6 +804,7 @@ class MainFragment :
             replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
         }
+        mapFragment?.hideOverlay()
         mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
     }
 
