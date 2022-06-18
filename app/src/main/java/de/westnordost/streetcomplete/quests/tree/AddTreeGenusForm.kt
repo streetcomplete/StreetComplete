@@ -86,9 +86,9 @@ class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
         //  assume species if it contains a space character
         try {
             context?.getExternalFilesDir(null)?.let { dir ->
-                treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(it.substringBefore(" (").contentEquals(" ")) })
+                treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(it.substringBefore(" (").contains(" ")) })
             }
-        } catch (e: IOException) { } // file may not exist, so a exception is no surprise
+        } catch (e: IOException) { } // file may not exist, so an exception is no surprise
 
         // load from other data, assuming format: <Genus> (<localName>) or <Species> (<localName>)
         treeSet.addAll(otherDataGenus.split("\n").mapNotNull { it.toTree(false) })
