@@ -110,6 +110,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.File
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -542,7 +545,7 @@ class MainFragment :
             if (quest != null) {
                 closeBottomSheet()
                 if (isGpxNote)
-                    onCreatedGpxNote("$questTitle: $note", imagePaths, quest.position)
+                    onCreatedGpxNote("$questTitle: $note", imagePaths, quest.position, null)
                 else if (questController.createNote(questKey, questTitle, note, imagePaths)) {
                     onQuestSolved(quest, null)
                 }
@@ -553,8 +556,7 @@ class MainFragment :
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
-    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, isGpxNote: Boolean) {
-    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean) {
+    override fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean, isGpxNote: Boolean) {
         val mapFragment = mapFragment ?: return
         val mapView = mapFragment.view ?: return
         if (!mapFragment.isMapInitialized) return
@@ -570,16 +572,27 @@ class MainFragment :
          */
         closeBottomSheet()
 
-        if (isGpxNote)
-            onCreatedGpxNote(note, imagePaths, position)
+        if (isGpxNote) {
+            val recordedTracks = if (hasGpxAttached)
+                mapFragment.recordedTracks
+            else null
+            onCreatedGpxNote(note, imagePaths, position, recordedTracks)
+        }
         else
-            viewLifecycleScope.launch { questController.createNote(note, imagePaths, position) }
+            viewLifecycleScope.launch {
+                var recordedTracks: List<Trackpoint> = emptyList()
+                if (hasGpxAttached) {
+                    recordedTracks = mapFragment.recordedTracks
+                }
+                questController.createNote(note, imagePaths, position, recordedTracks)
+            }
 
         listener?.onCreatedNote(screenPosition)
         showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
     }
 
-    private fun onCreatedGpxNote(note: String, imagePaths: List<String>, position: LatLon) {
+    // todo: there is some xmlwriter, and even gpxTrackWriter -> maybe use this instead of the current ugly things
+    private fun onCreatedGpxNote(note: String, imagePaths: List<String>, position: LatLon, recordedTrack: List<Trackpoint>?) {
         val path = context?.getExternalFilesDir(null) ?: return
         path.mkdirs()
         val fileName = "notes.gpx"
@@ -596,8 +609,44 @@ class MainFragment :
         // save image file names (this is not nice, but better than not keeping any reference to them
         val imageText = if (imagePaths.isEmpty()) "" else
             "\n images used: ${imagePaths.joinToString(", ")}"
+        val trackFile: File?
+        if (recordedTrack != null && recordedTrack.isNotEmpty()) {
+            var i = 1
+            while (File(path, "track_$i.gpx").exists()) {
+                i += 1
+            }
+            trackFile = File(path, "track_$i.gpx")
+            val formatter = DateTimeFormatter
+                .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
+                .withZone(ZoneOffset.UTC)
+            val trackText = recordedTrack.map {
+                "     <trkpt lon=\"${it.position.longitude}\" lat=\"${it.position.latitude}\">\n" +
+                "       <time>\"${formatter.format(Instant.ofEpochMilli(it.time))}\"</time>\n" +
+                if (it.elevation == 0.0f)
+                    ""
+                else {
+                    "       <ele>\"${it.elevation}\"</ele>\n" +
+                    "       <hdop>\"${it.horizontalDilutionOfPrecision}\">\n"
+                } +
+                "     </trkpt>"
+            }
+            trackFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<gpx \n" +
+                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
+                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
+                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
+                "  <trk>\n" +
+                "    <name>${trackFile.name.substringBefore(".gpx")}</name>\n" +
+                "    <trkseg>\n" +
+                trackText.joinToString("\n") + "\n" +
+                "    </trkseg>\n" +
+                "  </trk>\n" +
+                "</gpx>", Charsets.UTF_8)
+        } else trackFile = null
+        val trackText = if (trackFile == null) "" else
+            "\n attached track: ${trackFile.name}"
         gpxFile.writeText(oldText +" <wpt lon=\"" + position.longitude + "\" lat=\"" + position.latitude + "\">\n" +
-            "  <name>" + (note + imageText).replace("&","&amp;")
+            "  <name>" + (note + trackText + imageText).replace("&","&amp;")
             .replace("<","&lt;")
             .replace(">","&gt;")
             .replace("\"","&quot;")

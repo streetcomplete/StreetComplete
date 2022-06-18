@@ -191,7 +191,7 @@ open class LocationAwareMapFragment : MapFragment() {
         _recordedTracks.clear()
         tracks.add(ArrayList())
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(500, 1f)
+        locationManager.requestUpdates(500, prefs.getInt(Prefs.NETWORK_INTERVAL, 2) * 1000L, 1f)
         tracksMapComponent?.startNewTrack(true)
     }
 

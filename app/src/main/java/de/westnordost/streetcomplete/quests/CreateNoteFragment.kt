@@ -57,8 +57,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     interface Listener {
         /** Called when the user wants to leave a note which is not related to a quest  */
-        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, isGpxNote: Boolean)
-        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean = false)
+        fun onCreatedNote(note: String, imagePaths: List<String>, screenPosition: Point, hasGpxAttached: Boolean, isGpxNote: Boolean)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -148,8 +147,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
-        listener?.onCreatedNote(text, imagePaths, screenPos, isGpxNote)
-        listener?.onCreatedNote(text, imagePaths, screenPos, hasGpxAttached)
+        listener?.onCreatedNote(text, imagePaths, screenPos, hasGpxAttached, isGpxNote)
     }
 
     companion object {

@@ -200,8 +200,8 @@ private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk) -> Boolean): Bo
     left?.let(block) == true || right?.let(block) == true
 
 private val ROADS_WITH_SIDEWALK = arrayOf(
-    "trunk","trunk_link","primary","primary_link","secondary","secondary_link",
-    "tertiary","tertiary_link","unclassified","residential")
+    "motorway","motorway_link","trunk","trunk_link","primary","primary_link","secondary",
+    "secondary_link","tertiary","tertiary_link","unclassified","residential")
 
 private const val PREF_SIDEWALK_HIGHWAY_SELECTION = "qs_AddSidewalk_highway_selection"
 private const val PREF_SIDEWALK_DISTANCE = "qs_AddSidewalk_distance"

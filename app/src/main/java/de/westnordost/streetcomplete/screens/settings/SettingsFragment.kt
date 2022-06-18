@@ -541,16 +541,21 @@ class SettingsFragment :
         val os = activity?.contentResolver?.openOutputStream(uri)?.buffered() ?: return
         try {
             // read gpx and extract images
-            val gpxFile = File(requireContext().getExternalFilesDir(null), "notes.gpx")
+            val filesDir = requireContext().getExternalFilesDir(null)
+            val gpxFile = File(filesDir, "notes.gpx")
             val files = mutableListOf(gpxFile)
             val gpxText = gpxFile.readText(Charsets.UTF_8)
-            val picturesDir = File(requireContext().getExternalFilesDir(null), "Pictures")
+            val picturesDir = File(filesDir, "Pictures")
             // get all files in pictures dir and check whether they occur in gpxText
             if (picturesDir.isDirectory) {
                 picturesDir.walk().forEach {
                     if (!it.isDirectory && gpxText.contains(it.name))
                         files.add(it)
                 }
+            }
+            filesDir?.walk()?.forEach {
+                if (it.name.startsWith("track_") && it.name.endsWith(".gpx") && gpxText.contains(it.name))
+                    files.add(it)
             }
 
             // write to zip
