@@ -58,6 +58,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORT
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.WAREHOUSE
 
+@Suppress("ktlint:paren-spacing")
 enum class BuildingType(val osmKey: String, val osmValue: String) {
     HOUSE           ("building", "house"),
     APARTMENTS      ("building", "apartments"),

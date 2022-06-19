@@ -77,6 +77,7 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
         val y = a.y
         val z = a.z
 
+        @Suppress("ktlint:paren-spacing")
         val r = arrayOf( // rotation matrix for rotation about supplied axis
             arrayOf(t * x * x + c,     t * x * y - s * z, t * x * z + s * y),
             arrayOf(t * y * x + s * z, t * y * y + c,     t * y * z - s * x),
