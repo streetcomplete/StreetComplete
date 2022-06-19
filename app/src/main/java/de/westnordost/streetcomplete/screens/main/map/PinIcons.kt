@@ -36,10 +36,10 @@ import de.westnordost.streetcomplete.util.getNameLabel
     }
     when (map["highway"]) {
         "crossing" -> {
-            if (map["crossing"] == "traffic_signals")
-                return R.drawable.ic_pin_pedestrian_traffic_light
-            else
-                return R.drawable.ic_pin_crossing
+            return when (map["crossing"]) {
+                "traffic_signals" -> R.drawable.ic_pin_pedestrian_traffic_light
+                else -> R.drawable.ic_pin_crossing
+            }
         }
         "traffic_signals" -> {
             if (map["crossing"] == "traffic_signals") return R.drawable.ic_pin_pedestrian_traffic_light

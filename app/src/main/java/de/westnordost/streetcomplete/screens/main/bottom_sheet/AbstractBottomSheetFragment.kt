@@ -102,10 +102,11 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         bottomSheetTitle?.setOnClickListener {
             bottomSheetBehavior.apply {
-                if (state == STATE_EXPANDED)
+                if (state == STATE_EXPANDED) {
                     state = STATE_COLLAPSED
-                else if (state == STATE_COLLAPSED)
+                } else if (state == STATE_COLLAPSED) {
                     state = STATE_EXPANDED
+                }
             }
         }
 

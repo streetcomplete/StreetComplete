@@ -81,11 +81,10 @@ class AddCycleway(
         "US-AZ", "US-TX"
     )
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (createCyclewaySides(tags, false) != null)
-            R.string.quest_cycleway_resurvey_title
-        else
-            R.string.quest_cycleway_title2
+    override fun getTitle(tags: Map<String, String>) = when {
+        createCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
+        else -> R.string.quest_cycleway_title2
+    }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }

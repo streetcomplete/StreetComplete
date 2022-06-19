@@ -602,8 +602,10 @@ class MainFragment :
     }
 
     private fun onLocationIsDisabled() {
-        binding.gpsTrackingButton.state = if (requireContext().hasLocationPermission)
-            LocationStateButton.State.ALLOWED else LocationStateButton.State.DENIED
+        binding.gpsTrackingButton.state = when {
+            requireContext().hasLocationPermission -> LocationStateButton.State.ALLOWED
+            else -> LocationStateButton.State.DENIED
+        }
         binding.gpsTrackingButton.isNavigation = false
         binding.locationPointerPin.visibility = View.GONE
         mapFragment!!.clearPositionTracking()

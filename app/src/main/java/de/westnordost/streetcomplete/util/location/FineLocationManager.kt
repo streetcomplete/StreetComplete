@@ -54,10 +54,12 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
-        if (deviceHasGPS)
+        if (deviceHasGPS) {
             locationManager.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
-        if (deviceHasNetworkLocationProvider)
+        }
+        if (deviceHasNetworkLocationProvider) {
             locationManager.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+        }
     }
 
     @RequiresPermission(ACCESS_FINE_LOCATION)

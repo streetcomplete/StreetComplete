@@ -73,9 +73,7 @@ class AddSuspectedOneway(
             val segments = trafficDirectionMap[way.id]
             val geometry = mapData.getWayGeometry(way.id) as? ElementPolylinesGeometry
             val isForward =
-                if (segments != null && geometry != null)
-                    isForward(geometry.polylines.first(), segments)
-                else null
+                if (segments != null && geometry != null) isForward(geometry.polylines.first(), segments) else null
 
             way.id to isForward
         }
