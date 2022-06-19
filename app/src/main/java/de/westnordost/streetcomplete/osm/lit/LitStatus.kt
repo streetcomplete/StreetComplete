@@ -20,7 +20,7 @@ enum class LitStatus {
 /** Returns the lit status as an enum */
 fun createLitStatus(tags: Map<String, String>): LitStatus? = when (tags["lit"]) {
     "yes" -> YES
-    "no"  -> NO
+    "no" -> NO
     "automatic" -> AUTOMATIC
     "24/7" -> NIGHT_AND_DAY
     // invalid ones count as if not set

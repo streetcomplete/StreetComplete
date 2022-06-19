@@ -213,7 +213,7 @@ fun questTypeRegistry(
     AddMemorialType(),
 
     // bus stop quests
-    AddBusStopShelter(),  // used by at least OsmAnd
+    AddBusStopShelter(), // used by at least OsmAnd
     AddBenchStatusOnBusStop(), // can be seen from across the street
     AddBinStatusOnBusStop(), // can be seen from across the street
     AddTactilePavingBusStop(), // requires you to be very close to it
