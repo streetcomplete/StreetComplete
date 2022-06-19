@@ -16,7 +16,7 @@ indent_style = tab
 [*.{kt,kts}]
 indent_style = space
 indent_size = 4
-disabled_rules = paren-spacing,chain-wrapping,indent,wrapping,no-multi-spaces,argument-list-wrapping,package-name,spacing-between-declarations-with-annotations,spacing-between-declarations-with-comments,filename
+disabled_rules = paren-spacing,chain-wrapping,indent,wrapping,no-multi-spaces,argument-list-wrapping,package-name,spacing-between-declarations-with-annotations,filename
 
 [gradlew]
 indent_style = space

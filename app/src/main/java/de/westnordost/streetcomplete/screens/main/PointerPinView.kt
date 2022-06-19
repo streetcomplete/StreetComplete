@@ -150,8 +150,10 @@ class PointerPinView @JvmOverloads constructor(
     companion object {
         // half size of the sharp end of pin, depends on the pin drawable: using quest_pin_pointer
         private const val PIN_CENTER_OFFSET_FRACTION = 14f / 124f
+
         // size of the icon part of the pin, depends on the pin drawable: using quest_pin_pointer
         private const val ICON_SIZE_FRACTION = 84f / 124f
+
         // intrinsic/default size
         private const val DEFAULT_SIZE = 64 // in dp
     }

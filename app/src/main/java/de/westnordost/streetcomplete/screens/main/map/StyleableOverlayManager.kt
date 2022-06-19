@@ -34,6 +34,7 @@ class StyleableOverlayManager(
 
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
+
     // map data in current view: key -> [pin, ...]
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
 

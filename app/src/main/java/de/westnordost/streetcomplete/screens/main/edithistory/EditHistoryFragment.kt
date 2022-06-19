@@ -25,8 +25,10 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
     interface Listener {
         /** Called when an edit has been selected and the undo-button appeared */
         fun onSelectedEdit(edit: Edit)
+
         /** Called when the edit that was selected has been removed */
         fun onDeletedSelectedEdit()
+
         /** Called when the edit history is empty now */
         fun onEditHistoryIsEmpty()
     }

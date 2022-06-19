@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
 
+@Suppress("ktlint:spacing-between-declarations-with-comments")
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
      *  exclusive access for cyclists */

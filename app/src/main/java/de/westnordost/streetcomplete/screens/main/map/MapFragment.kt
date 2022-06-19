@@ -100,12 +100,16 @@ open class MapFragment :
     interface Listener {
         /** Called when the map has been completely initialized */
         fun onMapInitialized()
+
         /** Called during camera animation and while the map is being controlled by a user */
         fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
+
         /** Called after camera animation or after the map was controlled by a user */
         fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
+
         /** Called when the user begins to pan the map */
         fun onPanBegin()
+
         /** Called when the user long-presses the map */
         fun onLongPress(x: Float, y: Float)
     }

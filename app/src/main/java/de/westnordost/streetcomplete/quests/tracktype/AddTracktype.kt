@@ -20,6 +20,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
         and (access !~ private|no or (foot and foot !~ private|no))
     """
     /* ~paved tracks are less likely to change the surface type */
+
     override val changesetComment = "Add tracktype"
     override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.ic_quest_tractor

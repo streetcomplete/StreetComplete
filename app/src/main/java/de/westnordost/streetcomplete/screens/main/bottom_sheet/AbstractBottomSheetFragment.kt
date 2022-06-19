@@ -41,11 +41,13 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     /** Title view of the bottom sheet. Tapping on it expands / retracts the bottom sheet */
     protected abstract val bottomSheetTitle: View?
+
     /** Content view of the bottom sheet */
     protected abstract val bottomSheetContent: View?
 
     /** View that floats at the bottom on top of any retracted/expanded bottom sheet */
     protected abstract val floatingBottomView: View?
+
     /** View that is only shown when the bottom sheet is expanded and acts like a back-button */
     protected abstract val backButton: View?
 

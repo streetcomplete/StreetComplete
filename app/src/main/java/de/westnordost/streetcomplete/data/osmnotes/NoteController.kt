@@ -18,6 +18,7 @@ class NoteController(
     interface Listener {
         /** called when a number of notes has been added, updated or deleted */
         fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>)
+
         /** called when all notes have been cleared */
         fun onCleared()
     }

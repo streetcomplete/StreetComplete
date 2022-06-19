@@ -18,6 +18,7 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     private val binding by contentViewBinding(FragmentOverlayImageSelectBinding::bind)
 
     protected open val itemsPerRow = 2
+
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
     protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below

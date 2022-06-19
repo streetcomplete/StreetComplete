@@ -78,6 +78,7 @@ private val COMPARISON_OPERATORS = arrayOf(
     GREATER_THAN, GREATER_OR_EQUAL_THAN,
     LESS_THAN, LESS_OR_EQUAL_THAN
 )
+
 // must be in that order because if ">=" would be after ">", parser would match ">" also when encountering ">="
 private val OPERATORS = arrayOf(
     GREATER_OR_EQUAL_THAN,

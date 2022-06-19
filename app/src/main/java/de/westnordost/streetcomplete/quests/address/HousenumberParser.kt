@@ -133,6 +133,7 @@ sealed class StructuredHouseNumber : Comparable<StructuredHouseNumber> {
 data class SimpleHouseNumber(override val number: Int) : StructuredHouseNumber() {
     override fun toString() = number.toString()
 }
+
 /** e.g. 12c */
 data class HouseNumberWithLetter(
     override val number: Int,
@@ -141,6 +142,7 @@ data class HouseNumberWithLetter(
 ) : StructuredHouseNumber() {
     override fun toString() = "$number$separator$letter"
 }
+
 /** e.g. 12/3 */
 data class HouseNumberWithNumber(
     override val number: Int,

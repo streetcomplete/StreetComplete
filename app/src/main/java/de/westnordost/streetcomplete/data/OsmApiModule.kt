@@ -30,6 +30,7 @@ val osmApiModule = module {
 }
 
 private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
+
 /** Returns an osm connection with the supplied consumer (i.e. not the one from the OAuthStore) */
 fun osmConnection(consumer: OAuthConsumer?): OsmConnection {
     return OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer)

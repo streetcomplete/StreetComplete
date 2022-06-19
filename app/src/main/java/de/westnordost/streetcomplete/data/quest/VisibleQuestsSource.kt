@@ -20,6 +20,7 @@ class VisibleQuestsSource(
     interface Listener {
         /** Called when given quests in the given group have been added/removed */
         fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>)
+
         /** Called when something has changed which should trigger any listeners to update all */
         fun onVisibleQuestsInvalidated()
     }

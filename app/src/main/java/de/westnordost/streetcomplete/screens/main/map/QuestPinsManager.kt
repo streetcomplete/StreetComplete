@@ -40,8 +40,10 @@ class QuestPinsManager(
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType, Int> = mutableMapOf()
+
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
+
     // quests in current view: key -> [pin, ...]
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
 

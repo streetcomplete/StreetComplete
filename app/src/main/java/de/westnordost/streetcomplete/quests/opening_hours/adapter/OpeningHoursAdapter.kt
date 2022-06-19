@@ -49,6 +49,7 @@ class OpeningHoursAdapter(private val context: Context) :
 
     /** Set to change which weekdays are pre-checked in the weekday-select dialog */
     var firstDayOfWorkweek: String = "Mo"
+
     /** Set to change which weekdays are pre-checked in the weekday-select dialog */
     var regularShoppingDays: Int = 6
 

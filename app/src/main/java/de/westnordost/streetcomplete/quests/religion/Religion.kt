@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.religion
 
+@Suppress("ktlint:spacing-between-declarations-with-comments")
 enum class Religion(val osmValue: String) {
     // sorted by worldwide usages, *minus* country specific ones
     CHRISTIAN("christian"),

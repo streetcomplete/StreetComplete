@@ -8,6 +8,7 @@ interface QuestTypeOrderSource {
     interface Listener {
         /** Called when a new order item was added */
         fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType)
+
         /** Called when the orders changed */
         fun onQuestTypeOrdersChanged()
     }

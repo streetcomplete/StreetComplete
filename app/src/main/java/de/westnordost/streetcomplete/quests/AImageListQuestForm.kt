@@ -37,11 +37,14 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
+
     /** return -1 for any number. Default: 1  */
     protected open val maxSelectableItems = 1
+
     /** return true to move last picked items to the front. On by default. Only respected if the
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
+
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
 

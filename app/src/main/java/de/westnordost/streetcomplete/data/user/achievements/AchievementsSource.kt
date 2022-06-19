@@ -4,6 +4,7 @@ interface AchievementsSource {
     interface Listener {
         /** Called when a single achievement level has been unlocked */
         fun onAchievementUnlocked(achievement: Achievement, level: Int)
+
         /** Called when all achievements have been updated (after sync with server) */
         fun onAllAchievementsUpdated()
     }

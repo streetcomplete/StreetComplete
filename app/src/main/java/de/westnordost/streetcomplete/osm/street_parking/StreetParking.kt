@@ -18,10 +18,13 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 @Serializable object StreetStandingProhibited : StreetParking()
 @Serializable object StreetStoppingProhibited : StreetParking()
 @Serializable object NoStreetParking : StreetParking()
+
 /** When an unknown/unsupported value has been used */
 @Serializable object UnknownStreetParking : StreetParking()
+
 /** When not both parking orientation and position have been specified*/
 @Serializable object IncompleteStreetParking : StreetParking()
+
 /** There is street parking, but it is mapped as separate geometry */
 @Serializable object StreetParkingSeparate : StreetParking()
 

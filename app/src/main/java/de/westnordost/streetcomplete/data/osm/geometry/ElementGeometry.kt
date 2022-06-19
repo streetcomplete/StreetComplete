@@ -10,7 +10,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class ElementGeometry {
     abstract val center: LatLon
-    // the bbox should not be serialized, his is why the bounds cannot be a (computed) property directly
+
+    // the bbox should not be serialized, this is why the bounds cannot be a (computed) property directly
     abstract fun getBounds(): BoundingBox
 }
 

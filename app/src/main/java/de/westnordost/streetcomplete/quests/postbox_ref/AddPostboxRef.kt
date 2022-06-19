@@ -17,6 +17,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
     override val icon = R.drawable.ic_quest_mail_ref
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
+
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
         "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
