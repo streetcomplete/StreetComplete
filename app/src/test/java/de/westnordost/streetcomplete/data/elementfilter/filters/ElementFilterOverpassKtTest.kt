@@ -69,7 +69,8 @@ class ElementFilterOverpassKtTest {
         assertEquals("[!'name:old']", NotHasKey("name:old").toOverpassString())
     }
 
-    @Test(expected = UnsupportedOperationException::class) fun notHasKeyLike() {
+    @Test(expected = UnsupportedOperationException::class)
+    fun notHasKeyLike() {
         assertEquals(
             "[!~'^(na[ms]e)$' ~ '.*']",
             NotHasKeyLike("na[ms]e").toOverpassString()

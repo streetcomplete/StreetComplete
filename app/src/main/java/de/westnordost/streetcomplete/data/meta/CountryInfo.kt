@@ -6,25 +6,36 @@ import java.util.Locale
 
 @Serializable
 enum class LengthUnit(private val abbr: String) {
-    @SerialName("meter") METER("m"),
-    @SerialName("foot and inch") FOOT_AND_INCH("ft / in");
+    @SerialName("meter")
+    METER("m"),
+
+    @SerialName("foot and inch")
+    FOOT_AND_INCH("ft / in");
 
     override fun toString() = abbr
 }
 
 @Serializable
 enum class SpeedMeasurementUnit(private val displayString: String) {
-    @SerialName("kilometers per hour") KILOMETERS_PER_HOUR("km/h"),
-    @SerialName("miles per hour") MILES_PER_HOUR("mph");
+    @SerialName("kilometers per hour")
+    KILOMETERS_PER_HOUR("km/h"),
+
+    @SerialName("miles per hour")
+    MILES_PER_HOUR("mph");
 
     override fun toString() = displayString
 }
 
 @Serializable
 enum class WeightMeasurementUnit(val displayString: String) {
-    @SerialName("ton") METRIC_TON("TONS"),
-    @SerialName("short ton") SHORT_TON("TONS"),
-    @SerialName("pound") POUND("POUNDS"),
+    @SerialName("ton")
+    METRIC_TON("TONS"),
+
+    @SerialName("short ton")
+    SHORT_TON("TONS"),
+
+    @SerialName("pound")
+    POUND("POUNDS"),
 }
 
 @Serializable

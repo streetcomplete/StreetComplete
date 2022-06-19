@@ -5,7 +5,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class NumberSystemTest {
-    @Test(expected = IllegalArgumentException::class) fun `illegal arguments`() {
+    @Test(expected = IllegalArgumentException::class)
+    fun `illegal arguments`() {
         NumberSystem(10, 3)
     }
 

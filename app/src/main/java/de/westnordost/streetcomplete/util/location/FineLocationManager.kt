@@ -61,7 +61,8 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     }
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
-    @Synchronized fun getCurrentLocation() {
+    @Synchronized
+    fun getCurrentLocation() {
         refreshCancellationSignals()
         if (deviceHasGPS) {
             LocationManagerCompat.getCurrentLocation(
