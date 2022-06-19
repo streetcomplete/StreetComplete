@@ -19,6 +19,7 @@ class SlidingRelativeLayout @JvmOverloads constructor(
             field = fraction
             if (height != 0) translationY = height * yFraction
         }
+
     @Keep
     var xFraction: Float = 0f
         set(fraction) {

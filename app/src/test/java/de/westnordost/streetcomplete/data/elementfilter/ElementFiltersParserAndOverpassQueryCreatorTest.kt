@@ -203,6 +203,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         val date = dateDaysAgo(14f).toCheckDateString()
         check("nodes with older today -14 days", "node(if: date(timestamp()) < date('$date'));")
     }
+
     @Test fun `element newer x days`() {
         val date = dateDaysAgo(-14f).toCheckDateString()
         check("nodes with newer today + 14 days", "node(if: date(timestamp()) > date('$date'));")
