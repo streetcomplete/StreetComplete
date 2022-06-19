@@ -45,7 +45,6 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
          * be excluded whose center is within of ~15 meters of a footway, to be on the safe side. */
 
         if (roadsWithMissingSidewalks.isNotEmpty()) {
-
             val maybeSeparatelyMappedSidewalkGeometries = mapData.ways
                 .filter { maybeSeparatelyMappedSidewalksFilter.matches(it) }
                 .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }

@@ -48,7 +48,6 @@ class ArCoreSessionCreator(
     /** Returns an ARCore session (after some back and forth with the user) or a reason why it can't
      *  be created */
     suspend operator fun invoke(): Result {
-
         /* extra requirements for Sceneform: min Android SDK and OpenGL ES 3.1*/
         if (!hasSufficientAndroidSdkVersion()) {
             return Failure(ANDROID_SDK_VERSION_TOO_OLD)

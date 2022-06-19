@@ -212,7 +212,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on notes listener update`() {
-
         val notes = listOf(note(1))
 
         notesListener.onUpdated(added = notes, updated = emptyList(), deleted = emptyList())
@@ -254,7 +253,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener update for updated elements`() {
-
         val geom = pGeom(0.0, 0.0)
 
         val elements = listOf(
@@ -297,7 +295,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener replace for bbox`() {
-
         val elements = listOf(
             node(1),
             // missing geometry

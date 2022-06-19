@@ -86,7 +86,6 @@ private fun intersectionWithVerticalSegment(
     vy: Float,
     length: Float
 ): Float {
-
     val dx = qx - px
     if (dx == 0f) return Float.MAX_VALUE
     val a = (vx - px) / dx
@@ -114,7 +113,6 @@ private fun intersectionWithHorizontalSegment(
     hy: Float,
     length: Float
 ): Float {
-
     val dy = qy - py
     if (dy == 0f) return Float.MAX_VALUE
     val a = (hy - py) / dy

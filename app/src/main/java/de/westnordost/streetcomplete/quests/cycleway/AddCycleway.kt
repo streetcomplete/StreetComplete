@@ -101,7 +101,6 @@ class AddCycleway(
         val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }.toMutableList()
 
         if (roadsWithMissingCycleway.isNotEmpty()) {
-
             val maybeSeparatelyMappedCyclewayGeometries = mapData.ways
                 .filter { maybeSeparatelyMappedCyclewaysFilter.matches(it) }
                 .mapNotNull { mapData.getWayGeometry(it.id) as? ElementPolylinesGeometry }
@@ -190,7 +189,6 @@ class AddCycleway(
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, tags: Tags) {
-
         /* only tag if we know the sidewalk value for both sides (because it is not possible in
            OSM to specify the sidewalk value only for one side. sidewalk:right/left=yes is not
            well established. */

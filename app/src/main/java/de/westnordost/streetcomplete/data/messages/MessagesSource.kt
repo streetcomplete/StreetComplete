@@ -77,7 +77,6 @@ class MessagesSource(
     }
 
     fun popNextMessage(): Message? {
-
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()

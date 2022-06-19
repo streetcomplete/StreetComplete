@@ -11,7 +11,6 @@ class StatisticsParserTest {
     private val questC = "TestQuestTypeC"
 
     @Test fun `parse all`() {
-
         assertEquals(Statistics(
             types = listOf(
                 EditTypeStatistics(questA, 11),
