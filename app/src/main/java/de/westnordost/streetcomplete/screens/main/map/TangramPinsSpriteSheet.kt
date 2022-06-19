@@ -25,11 +25,10 @@ class TangramPinsSpriteSheet(
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
-        val spriteSheet =
-            if (!isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown())
-                createSpritesheet()
-            else
-                prefs.getString(Prefs.PIN_SPRITES, "")!!
+        val spriteSheet = when {
+            !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
+            else -> prefs.getString(Prefs.PIN_SPRITES, "")!!
+        }
 
         createSceneUpdates(spriteSheet)
     }

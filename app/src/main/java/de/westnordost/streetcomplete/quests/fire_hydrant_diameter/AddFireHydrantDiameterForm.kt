@@ -37,10 +37,11 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             FireHydrantDiameter(diameterValue, MILLIMETER)
         }
 
-        if (isUnusualDiameter(diameter))
+        if (isUnusualDiameter(diameter)) {
             confirmUnusualInput { applyAnswer(diameter) }
-        else
+        } else {
             applyAnswer(diameter)
+        }
     }
 
     private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {
