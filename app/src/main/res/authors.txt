@@ -79,6 +79,18 @@ ic_launcher.png                GPL-2.0-only      https://www.elegantthemes.com/b
 ic_launcher_round.png          GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 ic_link_josm.png               CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
 ic_link_ideditor.png           WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
+ic_link_pic4review.png         CC-BY-SA 4.0      PanierAvide https://wiki.openstreetmap.org/wiki/File:Pic4Review.png
+ic_link_brouter.png            fair use          used while linking and promoting this project
+ic_link_learnosm.png           fair use          used while linking and promoting this project
+ic_link_osmhydrant.png         fair use          used while linking and promoting this project
+ic_link_city_roads.png         fair use          used while linking and promoting this project
+ic_link_mapy_tactile.png       fair use          used while linking and promoting this project
+ic_link_osmlab.png             fair use          used while linking and promoting this project
+ic_link_sunders.png            fair use          used while linking and promoting this project
+ic_link_figuregrounder.png     fair use          used while linking and promoting this project
+ic_link_indoorequal.png        fair use          used while linking and promoting this project
+ic_link_myosmatic.png          fair use          used while linking and promoting this project
+ic_link_opnvkarte.png          fair use          used while linking and promoting this project
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_raised_original... CC0               Mateusz Konieczny (...)
