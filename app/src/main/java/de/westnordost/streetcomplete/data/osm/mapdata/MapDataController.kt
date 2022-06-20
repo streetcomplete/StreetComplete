@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.SpatialCache
 import de.westnordost.streetcomplete.util.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -39,6 +40,19 @@ class MapDataController internal constructor(
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
+    val spatialCache = SpatialCache(192,
+        { bbox -> getDataInBBoxForCache(bbox) },
+        { ids -> removeCachedElementsForNodes(ids) }
+    )
+    // cache by ElementKey, or multiple caches by id?
+    //  -> performance for getMapDataWithGeometry is always a little better for caches by ElementKey
+    //   no further performance differences found, so use the cache by ElementKey
+    // TODO: use geometries instead of entries? but for creating MutableMapDataWithGeometry the geometryEntries are necessary
+    private val elementCache = HashMap<ElementKey, Element>(20000)
+    private val geometryCache = HashMap<ElementKey, ElementGeometryEntry>(20000)
+    private val wayIdsByNodeIdCache = HashMap<Long, HashSet<Long>>() // <NodeId, <Set<WayId>>
+    private val relationIdsByElementKeyCache = HashMap<ElementKey, HashSet<Long>>()
+
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
@@ -60,6 +74,10 @@ class MapDataController internal constructor(
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
+
+            deleteFromCache(oldElementKeys)
+            addToCache(mapData, geometryEntries)
+
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
             geometryDB.putAll(geometryEntries)
@@ -95,6 +113,9 @@ class MapDataController internal constructor(
             val newElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.newElementId) }
             val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
             deletedKeys = mapDataUpdates.deleted + oldElementKeys
+
+            deleteFromCache(deletedKeys)
+            addToCache(elements, geometryEntries)
 
             elementDB.deleteAll(deletedKeys)
             geometryDB.deleteAll(deletedKeys)
@@ -150,16 +171,49 @@ class MapDataController internal constructor(
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
-        val elements = elementDB.getAll(bbox)
-        /* performance improvement over geometryDB.getAllEntries(elements): no need to query
-           nodeDB twice (once for the element, another time for the geometry */
-        val elementGeometries = geometryDB.getAllEntries(
-            elements.mapNotNull { if (it !is Node) ElementKey(it.type, it.id) else null }
-        ) + elements.mapNotNull { if (it is Node) it.toElementGeometryEntry() else null }
+        val nodeIds = spatialCache.get(bbox)
+        val wayIds = nodeIds.mapNotNull { wayIdsByNodeIdCache[it] }.flatten().toSet()
+        val relationIds = nodeIds.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.NODE, it)] }.flatten() +
+            wayIds.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.WAY, it)] }.flatten() // how fast?
+
+        // interestingly, here 1 cache is clearly faster than 3 separate caches for node/way/relation, while everywhere else it's the same
+        val elementKeys = (nodeIds.map { ElementKey(ElementType.NODE, it) } + wayIds.map { ElementKey(ElementType.WAY, it) } + relationIds.map { ElementKey(ElementType.RELATION, it) }).toSet()
+        val elements = elementCache.filterKeys { it in elementKeys }.values
+        val elementGeometries = geometryCache.filterKeys { it in elementKeys }.values
+
         val result = MutableMapDataWithGeometry(elements, elementGeometries)
         result.boundingBox = bbox
         Log.i(TAG, "Fetched ${elements.size} elements and geometries in ${currentTimeMillis() - time}ms")
         return result
+    }
+
+    private fun getDataInBBoxForCache(bbox: BoundingBox): Map<Long, LatLon> {
+        val time = currentTimeMillis()
+
+        val nodes = nodeDB.getAll(bbox)
+        val nodeIds = nodes.map { it.id }
+        val ways = wayDB.getAllForNodes(nodeIds)
+        val wayIds = ways.map { it.id }
+        val relations = relationDB.getAllForElements(nodeIds = nodeIds, wayIds = wayIds)
+        val elements = nodes + ways + relations
+        val elementGeometries = geometryDB.getAllEntries(
+            elements.mapNotNull { if (it !is Node) ElementKey(it.type, it.id) else null }
+        ) + elements.mapNotNull { if (it is Node) it.toElementGeometryEntry() else null }
+
+        // this is essentially the same as addToCache, but without putting nodes to spatialCache
+        //  and maybe a bit faster because no filtering by elenent type is necessary
+        elementCache.putAll(elements.associateBy { ElementKey(it.type, it.id) })
+        geometryCache.putAll(elementGeometries.associateBy { ElementKey(it.elementType, it.elementId) })
+
+        ways.forEach { way ->
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
+        }
+        relations.forEach { relation ->
+            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id) }
+        }
+
+        Log.i(TAG, "Fetched ${elements.size} elements and geometries from DB in ${currentTimeMillis() - time}ms")
+        return nodes.associate { it.id to it.position }
     }
 
     fun Node.toElementGeometryEntry() =
@@ -198,6 +252,7 @@ class MapDataController internal constructor(
             elements = elementDB.getIdsOlderThan(timestamp, limit)
             if (elements.isEmpty()) return 0
 
+            deleteFromCache(elements)
             elementCount = elementDB.deleteAll(elements)
             geometryCount = geometryDB.deleteAll(elements)
             createdElementsController.deleteAll(elements)
@@ -213,6 +268,11 @@ class MapDataController internal constructor(
         elementDB.clear()
         geometryDB.clear()
         createdElementsController.clear()
+        spatialCache.clear()
+        wayIdsByNodeIdCache.clear()
+        relationIdsByElementKeyCache.clear()
+        elementCache.clear()
+        geometryCache.clear()
         onCleared()
     }
 
@@ -230,6 +290,69 @@ class MapDataController internal constructor(
         if (updated.nodes.isEmpty() && updated.ways.isEmpty() && updated.relations.isEmpty() && deleted.isEmpty()) return
 
         listeners.forEach { it.onUpdated(updated, deleted) }
+    }
+
+    private fun deleteFromCache(deleted: Collection<ElementKey>) {
+        // this will call removeCachedElementsForNodes
+        spatialCache.removeAll(deleted.filter { it.type == ElementType.NODE }.map { it.id })
+        // still need to remove elements and geometries in case no nodes were deleted
+        deleted.forEach {
+            elementCache.remove(it)
+            geometryCache.remove(it)
+        }
+    }
+
+    private fun addToCache(elements: Iterable<Element>, geometries: Iterable<ElementGeometryEntry>) {
+        // TODO: if the containing tile is not cached, the element might stay in cache forever
+        //  how to fix this?
+        elementCache.putAll(elements.associateBy { ElementKey(it.type, it.id) })
+        geometryCache.putAll(geometries.associateBy { ElementKey(it.elementType, it.elementId) })
+
+        elements.filterIsInstance(Way::class.java).forEach { way ->
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
+        }
+        elements.filterIsInstance(Relation::class.java).forEach { relation ->
+            relation.members.forEach {
+                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id)
+            }
+        }
+
+        elements.filterIsInstance(Node::class.java).forEach {
+            spatialCache.putIfTileExists(it.id, it.position)
+        }
+    }
+
+    private fun removeCachedElementsForNodes(nodesToRemove: Set<Long>) {
+        val waysToRemove = hashSetOf<Long>()
+        wayIdsByNodeIdCache.filterKeys { it in nodesToRemove }.values.forEach {
+            waysToRemove.addAll(it)
+        }
+        // don't remove way if all some cached nodes are not on the to-remove list
+        waysToRemove.retainAll { wayId ->
+            val way = elementCache[ElementKey(ElementType.WAY, wayId)]!! as Way
+            val cachedNodesOfWay = way.nodeIds.filter { elementCache.containsKey(ElementKey(ElementType.NODE, it)) }
+            nodesToRemove.containsAll(cachedNodesOfWay)
+        }
+
+        val relationsToRemove = hashSetOf<Long>()
+        relationIdsByElementKeyCache.filterKeys {
+            (it.type == ElementType.NODE && it.id in nodesToRemove) || (it.type == ElementType.WAY && it.id in waysToRemove)
+        }.values.forEach { relationsToRemove.addAll(it) }
+        relationsToRemove.retainAll { relationId ->
+            val relation = elementCache[ElementKey(ElementType.RELATION, relationId)]!! as Relation
+            val cachedNodesOfRelation = relation.members.filter { it.type == ElementType.NODE && elementCache.containsKey(ElementKey(ElementType.NODE, it.ref)) }.map { it.ref }
+            val cachedWaysOfRelation = relation.members.filter { it.type == ElementType.WAY && elementCache.containsKey(ElementKey(ElementType.WAY, it.ref)) }.map { it.ref }
+            waysToRemove.containsAll(cachedWaysOfRelation) && nodesToRemove.containsAll(cachedNodesOfRelation)
+        }
+
+        val keysToRemove = nodesToRemove.map { ElementKey(ElementType.NODE, it) } + waysToRemove.map { ElementKey(ElementType.WAY, it) } + relationsToRemove.map { ElementKey(ElementType.RELATION, it) }
+//        elementCache.keys.removeAll(keysToRemove)
+//        geometryCache.keys.removeAll(keysToRemove)
+        // interestingly keys.removeAll is really slow compared to the loop... why?
+        keysToRemove.forEach {
+            elementCache.remove(it)
+            geometryCache.remove(it)
+        }
     }
 
     private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {

@@ -133,7 +133,11 @@ class OsmQuestController internal constructor(
         }
     }
 
-    private val cache = QuestControllerCache(192) { bbox, types -> getAllVisibleInBBoxFromDB(bbox, types) }
+    private val spatialCache = SpatialCache(192,
+        { bbox -> getAllVisibleInBBoxFromDB(bbox) },
+        { entries -> questCache.keys.removeAll(entries) })
+    private val questCache = HashMap<OsmQuestKey, OsmQuest>(2000)
+    private var visibleQuests: HashSet<String>? = null
 
     init {
         mapDataSource.addListener(mapDataSourceListener)
@@ -262,7 +266,7 @@ class OsmQuestController internal constructor(
 
     // get from cache, if not found check in db
     override fun get(key: OsmQuestKey): OsmQuest? {
-        cache.getQuest(key)?.let { return it }
+        questCache[key]?.let { return it }
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -270,10 +274,10 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
+    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox): Map<OsmQuestKey, LatLon> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
-        val entries = db.getAllInBBox(bbox, questTypes).filter {
+        val entries = db.getAllInBBox(bbox, visibleQuests).filter {
             it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
@@ -283,15 +287,23 @@ class OsmQuestController internal constructor(
         val geometriesByKey = mapDataSource.getGeometries(elementKeys)
             .associateBy { ElementKey(it.elementType, it.elementId) }
 
-        return entries.mapNotNull { entry ->
+        val quests = entries.mapNotNull { entry ->
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
+        quests.forEach { questCache[it.key] = it }
+
+        return quests.associate { it.key to it.position }
     }
 
-    // check cache, which will load data using getAllVisibleInBBoxFromDB if not found
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
-        return cache.get(bbox, questTypes)
+        val newTypes = questTypes?.toHashSet()
+        if (visibleQuests != newTypes) {
+            spatialCache.clear()
+            questCache.clear()
+            visibleQuests = newTypes
+        }
+        return spatialCache.get(bbox).map { questCache[it]!! }
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
@@ -383,7 +395,7 @@ class OsmQuestController internal constructor(
     private fun onUpdated(
         added: Collection<OsmQuest> = emptyList(),
         deletedKeys: Collection<OsmQuestKey> = emptyList(),
-        replaceBBox: BoundingBox? = null
+        replaceBBox: BoundingBox? = null // this is important, so cache can persist fully contained tiles
     ) {
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
@@ -397,10 +409,22 @@ class OsmQuestController internal constructor(
         }
 
         // update cache
-        if (deletedKeys.isNotEmpty())
-            cache.remove(deletedKeys)
-        if (added.isNotEmpty())
-            cache.add(added, replaceBBox)
+        if (deletedKeys.isNotEmpty()) {
+            spatialCache.removeAll(deletedKeys)
+            questCache.keys.removeAll(deletedKeys) // loop may be faster, see result in mapdatacontroller.removeCachedElementsForNodes
+        }
+        if (visibleAdded.isNotEmpty()) {
+            val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
+            if (replaceBBox != null) {
+                spatialCache.replaceAllInBBox(actuallyVisible.associate { it.key to it.position }, replaceBBox)
+                questCache.putAll(actuallyVisible.associateBy { it.key })
+            } else {
+                actuallyVisible.forEach {
+                    if (spatialCache.putIfTileExists(it.key, it.position))
+                        questCache[it.key] = it
+                }
+            }
+        }
 
         listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
