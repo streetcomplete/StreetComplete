@@ -25,6 +25,20 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
           and ruins != yes and disused != yes
     """.toElementFilterExpression() }
 
+    private val entrancesFilter by lazy {
+        "nodes with entrance ~ main|staircase".toElementFilterExpression()
+    }
+
+    private val noEntranceRefFilter by lazy { """
+        nodes with
+          noref != yes
+          and ref:signed != no
+          and !addr:flats
+          and !addr:housenumber
+          and !name
+          and !ref
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Add entrance identification"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_door_address
@@ -60,49 +74,21 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         getMapData().filter { it.tags.containsKey("entrance") }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (element !is Node || (element.tags["entrance"] != "main" && element.tags["entrance"] != "staircase") ) false else null
+        if (!entrancesFilter.matches(element)) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // note: it does not support multipolygon buildings
-        val buildingWays = mapData.ways.asSequence()
+        val buildings = mapData.ways.asSequence()
             .filter { buildingFilter.matches(it) }
-        val returned = mutableListOf<Node>()
-
-        for (way in buildingWays) {
-            val entrancesForApartments = mutableListOf<Node>()
-            way.nodeIds.forEach { nodeId ->
-                val node = mapData.getNode(nodeId)
-                if (node != null) {
-                    if (node.tags["entrance"] == "main" || node.tags["entrance"] == "staircase") {
-                        entrancesForApartments.add(node)
-                    }
-                }
-            }
-            if (entrancesForApartments.count() >= 2) {
-                for (entrance in entrancesForApartments) {
-                    if (entrance.tags["noref"] == "yes") {
-                        continue
-                    }
-                    if (entrance.tags["ref:signed"] == "no") {
-                        continue
-                    }
-                    if (entrance.tags.containsKey("addr:flats")) {
-                        continue
-                    }
-                    if (entrance.tags.containsKey("addr:housenumber")) {
-                        continue
-                    }
-                    if (entrance.tags.containsKey("name")) {
-                        continue
-                    }
-                    if (entrance.tags.containsKey("ref")) {
-                        continue
-                    }
-                    returned.add(entrance)
-                }
-            }
+        val result = mutableListOf<Node>()
+        for (building in buildings) {
+            val buildingEntrances = building.nodeIds
+                .mapNotNull { mapData.getNode(it) }
+                .filter { entrancesFilter.matches(it) }
+            if (buildingEntrances.count() < 2) continue
+            result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) })
         }
-        return returned
+        return result
     }
 
     override fun createForm() = AddEntranceReferenceForm()
