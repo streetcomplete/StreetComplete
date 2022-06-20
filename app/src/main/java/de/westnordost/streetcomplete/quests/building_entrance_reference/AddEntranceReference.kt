@@ -50,7 +50,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
         // Slovenia (SI) - https://forum.openstreetmap.org/viewtopic.php?pid=865336#p865336
 
         // was unable to reach communities or get replies from Kazakhstan, Moldova, Bosnia and Herzegovina,
-        // Albania, Montenegro, Georgia (using what was on https://openstreetmap.community/ )```
+        // Albania, Montenegro, Georgia (using what was on https://openstreetmap.community/ )
         // if you are sure that this quest should be enabled there or elsewhere
         // please create an issue at https://github.com/streetcomplete/StreetComplete/issues
     )
