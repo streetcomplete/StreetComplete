@@ -8,7 +8,9 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.hourCompat
+import de.westnordost.streetcomplete.util.ktx.minuteCompat
+import de.westnordost.streetcomplete.util.ktx.updateTime
 
 /** A dialog in which you can select a time */
 class TimePickerDialog(
@@ -26,7 +28,7 @@ class TimePickerDialog(
         setView(timePicker)
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P || timePicker.validateInput()) {
-                callback(timePicker.currentHour, timePicker.currentMinute)
+                callback(timePicker.hourCompat, timePicker.minuteCompat)
                 // Clearing focus forces the dialog to commit any pending
                 // changes, e.g. typed text in a NumberPicker.
                 timePicker.clearFocus()
@@ -37,19 +39,13 @@ class TimePickerDialog(
             cancel()
         }
         timePicker.setIs24HourView(is24HourView)
-        timePicker.currentHour = initialHourOfDay
-        timePicker.currentMinute = initialMinute
-    }
-
-    fun updateTime(hourOfDay: Int, minuteOfHour: Int) {
-        timePicker.currentHour = hourOfDay
-        timePicker.currentMinute = minuteOfHour
+        timePicker.updateTime(initialHourOfDay, initialMinute)
     }
 
     override fun onSaveInstanceState(): Bundle {
         val state = super.onSaveInstanceState()
-        state.putInt(HOUR, timePicker.currentHour)
-        state.putInt(MINUTE, timePicker.currentMinute)
+        state.putInt(HOUR, timePicker.hourCompat)
+        state.putInt(MINUTE, timePicker.minuteCompat)
         state.putBoolean(IS_24_HOUR, timePicker.is24HourView)
         return state
     }
@@ -59,8 +55,7 @@ class TimePickerDialog(
         val hour = savedInstanceState.getInt(HOUR)
         val minute = savedInstanceState.getInt(MINUTE)
         timePicker.setIs24HourView(savedInstanceState.getBoolean(IS_24_HOUR))
-        timePicker.currentHour = hour
-        timePicker.currentMinute = minute
+        timePicker.updateTime(hour, minute)
     }
 
     companion object {

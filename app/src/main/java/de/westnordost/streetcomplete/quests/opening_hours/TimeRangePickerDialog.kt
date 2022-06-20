@@ -20,6 +20,9 @@ import de.westnordost.streetcomplete.databinding.DialogTimeRangePickerBinding
 import de.westnordost.streetcomplete.databinding.TimeRangePickerEndPickerBinding
 import de.westnordost.streetcomplete.databinding.TimeRangePickerStartPickerBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
+import de.westnordost.streetcomplete.util.ktx.hourCompat
+import de.westnordost.streetcomplete.util.ktx.minuteCompat
+import de.westnordost.streetcomplete.util.ktx.updateTime
 
 class TimeRangePickerDialog(
     context: Context,
@@ -38,9 +41,9 @@ class TimeRangePickerDialog(
 
     private val openEndCheckbox: CheckBox
 
-    private val minutesStart get() = startPicker.currentHour * 60 + startPicker.currentMinute
+    private val minutesStart get() = startPicker.hourCompat * 60 + startPicker.minuteCompat
 
-    private val minutesEnd get() = endPicker.currentHour * 60 + endPicker.currentMinute
+    private val minutesEnd get() = endPicker.hourCompat * 60 + endPicker.minuteCompat
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -69,11 +72,8 @@ class TimeRangePickerDialog(
         endPicker = endPickerBinding.picker
         endPicker.setIs24HourView(is24HourView)
         if (timeRange != null) {
-            startPicker.currentHour = timeRange.start / 60
-            startPicker.currentMinute = timeRange.start % 60
-
-            endPicker.currentHour = timeRange.end / 60
-            endPicker.currentMinute = timeRange.end % 60
+            startPicker.updateTime(timeRange.start / 60, timeRange.start % 60)
+            endPicker.updateTime(timeRange.end / 60, timeRange.end % 60)
             openEndCheckbox.isChecked = timeRange.isOpenEnded
         }
 
