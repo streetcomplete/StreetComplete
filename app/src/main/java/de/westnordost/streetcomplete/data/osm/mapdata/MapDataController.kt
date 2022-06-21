@@ -346,13 +346,14 @@ class MapDataController internal constructor(
         }
 
         val keysToRemove = nodesToRemove.map { ElementKey(ElementType.NODE, it) } + waysToRemove.map { ElementKey(ElementType.WAY, it) } + relationsToRemove.map { ElementKey(ElementType.RELATION, it) }
-//        elementCache.keys.removeAll(keysToRemove)
-//        geometryCache.keys.removeAll(keysToRemove)
-        // interestingly keys.removeAll is really slow compared to the loop... why?
+        // interestingly keys.removeAll is slow compared to the loop, even when using a set
         keysToRemove.forEach {
             elementCache.remove(it)
             geometryCache.remove(it)
+            relationIdsByElementKeyCache.remove(it)
         }
+        wayIdsByNodeIdCache.keys.removeAll(nodesToRemove)
+        // TODO: cleanup is incomplete! on trim to 0 tiles wayIdsByNodeIdCache and relationIdsByElementKeyCache are still not empty
     }
 
     private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
