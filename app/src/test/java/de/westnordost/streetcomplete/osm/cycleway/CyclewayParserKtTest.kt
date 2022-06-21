@@ -2340,6 +2340,50 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `track on left side that is not in contraflow direction is unsupported`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, NONE),
+            parse(
+                "cycleway:right" to "no",
+                "cycleway:left" to "track",
+                "cycleway:left:oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `track on left side for left-hand-traffic that is not in flow direction is unsupported`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, NONE),
+            parseForLeftHandTraffic(
+                "cycleway:right" to "no",
+                "cycleway:left" to "track",
+                "cycleway:left:oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `track on right side that is not in flow direction is unsupported`() {
+        assertEquals(
+            LeftAndRightCycleway(NONE, UNKNOWN),
+            parse(
+                "cycleway:left" to "no",
+                "cycleway:right" to "track",
+                "cycleway:right:oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `track on right side for left-hand-traffic that is not in contraflow direction is unsupported`() {
+        assertEquals(
+            LeftAndRightCycleway(NONE, UNKNOWN),
+            parseForLeftHandTraffic(
+                "cycleway:left" to "no",
+                "cycleway:right" to "track",
+                "cycleway:right:oneway" to "yes"
+            )
+        )
+    }
+
     /* ------------------------------ cycleway:right opposite tagging --------------------------- */
 
     @Test fun `right opposite`() {

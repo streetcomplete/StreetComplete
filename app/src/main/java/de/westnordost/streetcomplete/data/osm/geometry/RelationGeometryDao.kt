@@ -17,8 +17,9 @@ class RelationGeometryDao(
     private val polylinesSerializer: PolylinesSerializer,
 ) {
     fun put(entry: ElementGeometryEntry) {
-        if (entry.elementType != ElementType.RELATION)
+        if (entry.elementType != ElementType.RELATION) {
             throw(IllegalArgumentException("trying to store ${entry.elementType.name} geometry in relation geometry table"))
+        }
         db.replace(NAME, entry.toPairs())
     }
 
@@ -33,8 +34,9 @@ class RelationGeometryDao(
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
         if (entries.isEmpty()) return
-        if (entries.any { it.elementType != ElementType.RELATION })
+        if (entries.any { it.elementType != ElementType.RELATION }) {
             throw(IllegalArgumentException("trying to store non-relation geometry in relation geometry table"))
+        }
         db.replaceMany(NAME,
             arrayOf(
                 ID,

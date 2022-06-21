@@ -41,8 +41,9 @@ class TeamModeIndexSelectAdapter : RecyclerView.Adapter<TeamModeIndexSelectAdapt
     }
 
     private fun toggle(index: Int) {
-        if (index < 0 || index >= count)
+        if (index < 0 || index >= count) {
             throw ArrayIndexOutOfBoundsException(index)
+        }
 
         selectedIndex = if (index == selectedIndex) null else index
     }

@@ -73,10 +73,11 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         if (speedType == NO_SIGN) {
             val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(element.tags["highway"])
 
-            if (couldBeSlowZone)
+            if (couldBeSlowZone) {
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }
-            else
+            } else {
                 confirmNoSign { determineImplicitMaxspeedType() }
+            }
         } else if (speedType == LIVING_STREET) {
             applyAnswer(IsLivingStreet)
         } else if (speedType == NSL) {
@@ -84,11 +85,10 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                 onYes = { applyNoSignAnswer("nsl_dual") },
                 onNo = { applyNoSignAnswer("nsl_single") }
             )
+        } else if (userSelectedUnusualSpeed()) {
+            confirmUnusualInput { applySpeedLimitFormAnswer() }
         } else {
-            if (userSelectedUnusualSpeed())
-                confirmUnusualInput { applySpeedLimitFormAnswer() }
-            else
-                applySpeedLimitFormAnswer()
+            applySpeedLimitFormAnswer()
         }
     }
 

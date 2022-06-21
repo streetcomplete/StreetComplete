@@ -207,11 +207,11 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
         puzzleView.edgeLineColor =
             if (edgeLine.contains("yellow")) Color.YELLOW else Color.WHITE
-        puzzleView.edgeLineStyle =
-            if (edgeLine.contains("dashes"))
-                if (edgeLine.contains("short")) LineStyle.SHORT_DASHES else LineStyle.DASHES
-            else
-                LineStyle.CONTINUOUS
+        puzzleView.edgeLineStyle = when {
+            !edgeLine.contains("dashes") -> LineStyle.CONTINUOUS
+            edgeLine.contains("short") -> LineStyle.SHORT_DASHES
+            else -> LineStyle.DASHES
+        }
 
         puzzleView.centerLineColor = if (countryInfo.centerLineStyle.contains("yellow")) Color.YELLOW else Color.WHITE
 

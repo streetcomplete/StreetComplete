@@ -84,8 +84,9 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
     }
 
     private fun checkIndexRange(index: Int) {
-        if (index < 0 || index >= items.size)
+        if (index < 0 || index >= items.size) {
             throw ArrayIndexOutOfBoundsException(index)
+        }
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
