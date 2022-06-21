@@ -48,7 +48,9 @@ class SpatialCache<T>(
             if (previousPosition != position) remove(key)
             else return true
         }
-        if (byTile[getTilePosFor(position)]?.add(key) != null) {
+        val tileInCache = byTile[getTilePosFor(position)]
+        if (tileInCache  != null) {
+            tileInCache.add(key)
             byKey[key] = position
             return true
         }
