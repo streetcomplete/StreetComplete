@@ -161,7 +161,7 @@ open class LocationAwareMapFragment : MapFragment() {
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(2000, 1f)
+        locationManager.requestUpdates(0, 5000, 1f)
     }
 
     fun stopPositionTracking() {
@@ -186,7 +186,6 @@ open class LocationAwareMapFragment : MapFragment() {
         _recordedTracks.clear()
         tracks.add(ArrayList())
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(500, 1f)
         tracksMapComponent?.startNewTrack(true)
     }
 
