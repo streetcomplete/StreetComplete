@@ -44,9 +44,9 @@ class SpatialCache<T>(
         val previousPosition = byKey[key]
         // in cache already
         if (previousPosition != null) {
-                // but moved -> remove
-                if (previousPosition != position) remove(key)
-                else return true
+            // but moved -> remove
+            if (previousPosition != position) remove(key)
+            else return true
         }
         if (byTile[getTilePosFor(position)]?.add(key) != null) {
             byKey[key] = position
