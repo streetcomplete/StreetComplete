@@ -4912,9 +4912,6 @@
                 "waterway/river": {
                     "name": "Река"
                 },
-                "waterway/riverbank": {
-                    "name": "Речно корито"
-                },
                 "waterway/stream": {
                     "name": "Поток"
                 },

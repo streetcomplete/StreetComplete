@@ -3,10 +3,10 @@
         "presets": {
             "categories": {
                 "category-barrier": {
-                    "name": "Στοιχεία Εμπόδιου"
+                    "name": "Στοιχεία Εμποδίου\nΣτοιχεία Εμπόδιου"
                 },
                 "category-building": {
-                    "name": "Στοιχεία Κτιρίου"
+                    "name": "Στοιχεία Κτηρίου\nΣτοιχεία Κτιρίου"
                 },
                 "category-golf": {
                     "name": "Στοιχεία Golf"
@@ -308,7 +308,12 @@
                     "label": "Υπηρεσίες",
                     "options": {
                         "cosmetics": "Καλλυντικά",
-                        "tanning": "Μαύρισμα"
+                        "hair_removal": "Αποτρίχωση",
+                        "nails": "Μανικιούρ / Πεντικιούρ",
+                        "skin_care": "Περιποίηση δέρματος",
+                        "spa": "Σπα Ημέρας",
+                        "tanning": "Μαύρισμα",
+                        "waxing": "Αποτρίχωση με κερί"
                     }
                 },
                 "bench": {
@@ -378,7 +383,7 @@
                     "label": "Τύπος"
                 },
                 "building": {
-                    "label": "Κτίριο",
+                    "label": "Κτήριο\nΚτίριο",
                     "terms": "κτίριο,κτήριο,οικοδόμημα"
                 },
                 "building/flats": {
@@ -442,12 +447,12 @@
                     }
                 },
                 "capacity": {
-                    "label": "Θέσεις",
+                    "label": "Χωρητικότητα",
                     "placeholder": "50, 100, 200...",
                     "terms": "χωρητικότητα"
                 },
                 "capacity/caravans": {
-                    "label": "Θέσεις (Τροχόσπιτων)",
+                    "label": "Χωρητικότητα (Τροχόσπιτων)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity/disabled_parking": {
@@ -455,11 +460,11 @@
                     "placeholder": "1, 2, 3..."
                 },
                 "capacity/persons": {
-                    "label": "Θέσεις (Ατόμων)",
+                    "label": "Χωρητικότητα (Ατόμων)",
                     "placeholder": "50, 100, 200..."
                 },
                 "capacity/tents": {
-                    "label": "Θέσεις (Σκηνές)",
+                    "label": "Χωρητικότητα (Σκηνές)",
                     "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
@@ -749,6 +754,9 @@
                         "yes": "Ναι"
                     }
                 },
+                "deposit/trolley": {
+                    "label": "Με πληρωμή"
+                },
                 "depth": {
                     "label": "Βάθος (μέτρα)"
                 },
@@ -994,8 +1002,12 @@
                     "terms": "διάμετρος"
                 },
                 "fire_hydrant/position": {
+                    "label": "Θέση",
                     "options": {
-                        "lane": "Λωρίδα Δρόμου"
+                        "green": "Γρασίδι",
+                        "lane": "Λωρίδα Δρόμου",
+                        "parking_lot": "Χώρος Στάθμευσης",
+                        "sidewalk": "Πεζοδρόμιο"
                     }
                 },
                 "fire_hydrant/pressure": {
@@ -1033,6 +1045,18 @@
                 },
                 "flag/wikidata": {
                     "label": "Σημαία Wikidata"
+                },
+                "flashing_lights": {
+                    "options": {
+                        "button": {
+                            "description": "Φώτα που ενεργοποιούνται με το πάτημα ενός κουμπιού"
+                        },
+                        "button;sensor": {
+                            "description": "Φώτα που ενεργοποιούνται με αισθητήρα ή το πάτημα ενός κουμπιού"
+                        },
+                        "no": "Όχι",
+                        "yes": "Ναι"
+                    }
                 },
                 "floating": {
                     "label": "Πλωτός"
@@ -1151,6 +1175,13 @@
                 },
                 "highway": {
                     "label": "Είδος"
+                },
+                "highway_cartpath": {
+                    "label": "Είδος Δρόμου Πεζών",
+                    "options": {
+                        "path": "Δρόμος Κάρων",
+                        "service": "Ειδικός Δρόμος"
+                    }
                 },
                 "historic": {
                     "label": "Είδος"
@@ -2185,7 +2216,7 @@
                 "service": {
                     "label": "Τύπος",
                     "options": {
-                        "alley": "Ιδιωτικό Στενάκι",
+                        "alley": "Στενάκι\nΙδιωτικό Στενάκι",
                         "drive-through": "Οδήγηση Δια Μέσου",
                         "driveway": "Δρομάκι Εισόδου",
                         "emergency_access": "Εκτάκτου Ανάγκης",
@@ -2351,7 +2382,7 @@
                     "label": "Διάρθρωση",
                     "options": {
                         "bridge": "Γέφυρα",
-                        "cutting": "Ανασκαφή",
+                        "cutting": "Όρυγμα",
                         "embankment": "Επίχωμα",
                         "ford": "Κοιτόστρωση",
                         "tunnel": "Σήραγγα"
@@ -2556,6 +2587,15 @@
                         "both": "Και στις δύο / Παντού",
                         "forward": "Προς τα Εμπρός"
                     }
+                },
+                "traffic_signals/sound": {
+                    "options": {
+                        "no": "Όχι",
+                        "yes": "Ναι"
+                    }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Δόνηση"
                 },
                 "trail_visibility": {
                     "label": "Ορατότητα Μονοπατιού",
@@ -3491,6 +3531,9 @@
                     "name": "Μηχάνημα ακύρωσης εισιτηρίων",
                     "terms": "ακυρωτικό μηχάνημα"
                 },
+                "amenity/toilets": {
+                    "name": "Τουαλέτες"
+                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Τουαλέτες με καζανάκι"
                 },
@@ -3988,7 +4031,7 @@
                     "name": "Ενωμένα Ομοιόμορφα Σπίτια"
                 },
                 "building/train_station": {
-                    "name": "Κτήριο Σιδηροδρομικού Σταθμού"
+                    "name": "Κτήριο Σταθμού Τρένου"
                 },
                 "building/transportation": {
                     "name": "Κτίριο Μεταφορών"
@@ -4463,7 +4506,7 @@
                     "name": "Χώρος Στάθμευσης Εκτάκτου Ανάγκης"
                 },
                 "highway/footway": {
-                    "name": "Μονοπάτι Πεζοπορίας",
+                    "name": "Μονοπάτι Πεζών",
                     "terms": "μονοπάτι,διαδρομή πεζού,πεζοδρόμιο,πεζόδρομος,βόλτα"
                 },
                 "highway/footway/access_aisle": {
@@ -4520,7 +4563,7 @@
                     "name": "Πέρασμα"
                 },
                 "highway/path": {
-                    "name": "Μονοπάτι",
+                    "name": "Μονοπάτι (χρήση εκτός μηχανοκίνητων οχημάτων)",
                     "terms": "διαδρομή,μονοπάτι"
                 },
                 "highway/path/boardwalk": {
@@ -4556,7 +4599,8 @@
                 },
                 "highway/residential": {
                     "name": "Δημοτική Οδός",
-                    "terms": "αστική οδός,τοπική οδός,οδός εντός αστικού ιστού"
+                    "terms": "αστική οδός,τοπική οδός,οδός εντός αστικού ιστού",
+                    "aliases": "Οικιστικός Δρόμος"
                 },
                 "highway/rest_area": {
                     "name": "Χώρος Στάθμευσης και Αναψυχής - Χ.Σ.Α."
@@ -4623,9 +4667,6 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Αυτόματο Σύστημα Διοδίων (Χωρίς Καμπίνες)"
-                },
-                "highway/track": {
-                    "name": "Αγροτικός / Δασικός Δρόμος"
                 },
                 "highway/traffic_mirror": {
                     "name": "Κυρτοί Καθρέπτες Δρόμου"
@@ -5428,6 +5469,9 @@
                 "man_made/tunnel": {
                     "name": "Περιοχή Σήραγγας"
                 },
+                "man_made/utility_pole": {
+                    "name": "Στύλος απροσδιόριστης χρήσης"
+                },
                 "man_made/video_wall": {
                     "name": "Ψηφιακή Οθόνη"
                 },
@@ -5458,6 +5502,9 @@
                 "man_made/works": {
                     "name": "Εργοστάσιο",
                     "terms": "εργοστάσιο,φάμπρικα"
+                },
+                "marker/utility/power": {
+                    "name": "Σημάδι για Στοιχείο Ενέργειας"
                 },
                 "military/bunker": {
                     "name": "Στρατιωτικό Φυλάκιο-Πολυβολείο"
@@ -5907,7 +5954,7 @@
                     "name": "Καλώδιο Ρεύματος"
                 },
                 "power/cable/underground": {
-                    "name": "Υπόγεια Καλωδίωση Ρεύματος"
+                    "name": "Υπόγειο Καλώδιο Ρεύματος"
                 },
                 "power/generator": {
                     "name": "Γεννήτρια Ρεύματος",
@@ -5964,8 +6011,8 @@
                     "name": "Αιολική Φάρμα"
                 },
                 "power/pole": {
-                    "name": "Κολόνα Ρεύματος",
-                    "terms": "στύλος ηλεκτρισμού,κολώνα ρεύματος"
+                    "name": "Στύλος Ρεύματος",
+                    "terms": "στύλος ηλεκτρισμού,κολόνα ρεύματος"
                 },
                 "power/substation": {
                     "name": "Υποσταθμός"
@@ -6054,7 +6101,8 @@
                     "name": "Σταθμός / Τέρμα Λεωφορείου"
                 },
                 "public_transport/station_ferry": {
-                    "name": "Τερματικός Σταθμός Πορθμειακής Γραμμής"
+                    "name": "Τερματικός Σταθμός Πορθμειακής Γραμμής",
+                    "aliases": "Σταθμός Πορθμείου"
                 },
                 "public_transport/station_light_rail": {
                     "name": "Σταθμός Ελαφρού Σιδηρόδρομου"
@@ -6066,10 +6114,10 @@
                     "name": "Σταθμός Υπόγειου Σιδηρόδρομου / Μετρό"
                 },
                 "public_transport/station_train": {
-                    "name": "Σιδηροδρομικός Σταθμός"
+                    "name": "Σταθμός Τρένου"
                 },
                 "public_transport/station_train_halt": {
-                    "name": "Σιδηροδρομικός Σταθμός ( Σε Παραγγελία Στάσης )"
+                    "name": "Σταθμός Τρένου ( Με Παραγγελία Στάσης )"
                 },
                 "public_transport/station_tram": {
                     "name": "Σταθμός Τραμ"
@@ -6135,7 +6183,7 @@
                     "name": "Γραμμή Τελεφερίκ"
                 },
                 "railway/halt": {
-                    "name": "Σιδηροδρομικός Σταθμός ( Σε Παραγγελία Στάσης )"
+                    "name": "Σταθμός Τρένου ( Με Παραγγελία Στάσης )"
                 },
                 "railway/level_crossing": {
                     "name": "Διασταύρωση Σιδηρόδρομου-Δρόμου"
@@ -7170,9 +7218,6 @@
                     "name": "Ποταμός",
                     "terms": "ποτάμι"
                 },
-                "waterway/riverbank": {
-                    "name": "Όχθη Ποταμού"
-                },
                 "waterway/sanitary_dump_station": {
                     "name": "Χημική Τουαλέτα Μαρίνας"
                 },
@@ -7190,7 +7235,7 @@
                     "name": "Πόσιμο Νερό Μαρίνας"
                 },
                 "waterway/waterfall": {
-                    "name": "Καταράκτης",
+                    "name": "Καταρράκτης",
                     "terms": "καταράκτης"
                 },
                 "waterway/weir": {

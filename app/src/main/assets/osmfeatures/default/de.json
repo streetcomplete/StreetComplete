@@ -525,7 +525,8 @@
                     "placeholder": "1 m, 20 cm, 30\"…"
                 },
                 "clothes": {
-                    "label": "Kleidung"
+                    "label": "Kleidung",
+                    "terms": "kleider,kleidung,bekleidung,klamotten"
                 },
                 "club": {
                     "label": "Typ"
@@ -1291,7 +1292,7 @@
                         "dangerous": "Gefährlich: Nur für erfahrenen Reiter und Pferde und nur bei gutem Wetter passierbar. Absteigen.",
                         "demanding": "Mit Vorsicht benutzen: Unebener Weg, teilweise schwierige Passagen.",
                         "difficult": "Schwierig: Weg schmal und ausgesetzt. Kann Hindernisse zum Übersteigen und schmale Passagen beeinhalten.",
-                        "impossible": "Unpassierbar: Weg oder Brücke für Pferde nicht benützbar. Zu schmal, unzureichende Unterstützung, Hindernisse wie Leitern. Lebensgefahr."
+                        "impossible": "Unpassierbar: Weg oder Brücke für Pferde nicht benutzbar. Zu schmal, unzureichende Unterstützung, Hindernisse wie Leitern. Lebensgefahr."
                     },
                     "placeholder": "schwierig, gefährlich ...",
                     "terms": "reitschwierigkeitsgrad,reitschwierigkeit"
@@ -1410,7 +1411,7 @@
                     "label": "Label"
                 },
                 "lamp_mount": {
-                    "label": "Montageort"
+                    "label": "Befestigungsstelle"
                 },
                 "lamp_type": {
                     "label": "Typ"
@@ -1550,7 +1551,7 @@
                     "terms": "material"
                 },
                 "max_age": {
-                    "label": "maximales Alter",
+                    "label": "Höchstalter",
                     "terms": "altersobergrenze,altersgrenze,höchstalter"
                 },
                 "maxheight": {
@@ -1591,7 +1592,7 @@
                     "terms": "sieht aus wie,baum,getarnt,verkleidet"
                 },
                 "min_age": {
-                    "label": "minimales Alter",
+                    "label": "Mindestalter",
                     "terms": "altersuntergrenze,altersgrenze,mindestalter"
                 },
                 "min_height": {
@@ -2335,6 +2336,10 @@
                         "parking_aisle": "Parkplatzfahrgassen"
                     }
                 },
+                "service/bicycle": {
+                    "label": "Fahrradservice",
+                    "terms": "rad,fahrrad,radservice,fahrradservice"
+                },
                 "service/vehicle": {
                     "label": "Fahrzeugservice"
                 },
@@ -2540,8 +2545,8 @@
                     "terms": "überwacht,bemannt,bewacht"
                 },
                 "support": {
-                    "label": "Unterstützung",
-                    "terms": "unterstützung,förderung"
+                    "label": "Befestigungsart",
+                    "terms": "unterstützung,befestigung,montage,montageart,anbringung,anbringungsart"
                 },
                 "surface": {
                     "label": "Oberfläche",
@@ -4671,7 +4676,7 @@
                 },
                 "craft/metal_construction": {
                     "name": "Metallbetrieb",
-                    "terms": "metalllverarbeitender betrieb,metallbau,metallbauer,metallplanung,bauschlosserei,schlosserei,metalltechnik,konstruktionsmechaniker,zaun- und geländerbau,bauschlosser,stahlbauer,schlosser"
+                    "terms": "metallverarbeitender betrieb,metallbau,metallbauer,metallplanung,bauschlosserei,schlosserei,metalltechnik,konstruktionsmechaniker,zaun- und geländerbau,bauschlosser,stahlbauer,schlosser"
                 },
                 "craft/painter": {
                     "name": "Malerbetrieb",
@@ -8543,9 +8548,6 @@
                 "waterway/river": {
                     "name": "Fluss",
                     "terms": "fluss"
-                },
-                "waterway/riverbank": {
-                    "name": "Flussfläche"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Schiffstoilettenentsorgungsanlage",
