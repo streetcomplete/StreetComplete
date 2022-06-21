@@ -229,7 +229,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
         val isUnusual = answer.number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHousenumber(isUnusual) {
             applyAnswer(answer)
-            (answer.number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it  }
+            (answer.number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it }
             answer.number?.houseNumber?.let { lastHouseNumber = it }
         }
     }

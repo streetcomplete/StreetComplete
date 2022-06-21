@@ -132,7 +132,7 @@ class QuestPinsManager(
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
             synchronized(questsInView) {
                 questsInView.clear()
-                quests.forEach { questsInView[it.key] = createQuestPins(it)  }
+                quests.forEach { questsInView[it.key] = createQuestPins(it) }
             }
             updatePins()
         }

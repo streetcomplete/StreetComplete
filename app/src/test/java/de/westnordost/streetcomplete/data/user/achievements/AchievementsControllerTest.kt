@@ -281,5 +281,5 @@ private object OverlayOne : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
     override fun createForm(element: Element): AbstractOverlayForm? = null
 
-    override val achievements =  editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
+    override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

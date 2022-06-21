@@ -16,7 +16,7 @@ fun getMaxspeedInKmh(tags: Map<String, String>): Float? {
     val speed = tags["maxspeed"] ?: return null
     return if (speed.endsWith(" mph")) {
         val mphSpeed = speed.substring(0, speed.length - 4).toFloatOrNull()
-        if (mphSpeed != null) mphSpeed * 1.609344f  else null
+        if (mphSpeed != null) mphSpeed * 1.609344f else null
     } else {
         speed.toFloatOrNull()
     }

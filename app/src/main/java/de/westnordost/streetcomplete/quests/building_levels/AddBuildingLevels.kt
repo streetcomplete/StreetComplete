@@ -20,11 +20,10 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
     override val icon = R.drawable.ic_quest_building_levels
     override val achievements = listOf(BUILDING)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("building:part"))
-            R.string.quest_buildingLevels_title_buildingPart2
-        else
-            R.string.quest_buildingLevels_title2
+    override fun getTitle(tags: Map<String, String>) = when {
+        tags.containsKey("building:part") -> R.string.quest_buildingLevels_title_buildingPart2
+        else -> R.string.quest_buildingLevels_title2
+    }
 
     override fun createForm() = AddBuildingLevelsForm()
 

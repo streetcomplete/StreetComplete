@@ -39,7 +39,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
         val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
-        val rightChanged = answer.right?.let { sideSurfaceChanged(it,  Side.RIGHT, tags) }
+        val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
         if (leftChanged == true) {
             deleteSmoothnessKeys(Side.LEFT, tags)

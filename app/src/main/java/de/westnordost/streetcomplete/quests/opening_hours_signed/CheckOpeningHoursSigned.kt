@@ -20,7 +20,7 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.concurrent.FutureTask
 
-class CheckOpeningHoursSigned (
+class CheckOpeningHoursSigned(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<Boolean> {
 

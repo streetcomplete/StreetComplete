@@ -87,10 +87,11 @@ class PhysicsWorldView @JvmOverloads constructor(
 
             view.rotation = -body.angle * 180f / Math.PI.toFloat()
 
-            if (!hasBeenSized.contains(view))
+            if (!hasBeenSized.contains(view)) {
                 hasBeenSized.add(view)
-            else
+            } else {
                 view.isInvisible = false
+            }
         }
     }
 

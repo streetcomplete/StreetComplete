@@ -24,7 +24,8 @@ data class SplitAtLinePosition(val pos1: LatLon, val pos2: LatLon, val delta: Do
         return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
     }
     init {
-        if (delta <= 0 || delta >= 1)
+        if (delta <= 0 || delta >= 1) {
             throw IllegalArgumentException("Delta must be between 0 and 1 (both exclusive)")
+        }
     }
 }
