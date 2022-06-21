@@ -4,6 +4,9 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.concurrent.CopyOnWriteArrayList
 
+/** Controller to set/get quest types as enabled or disabled. This controls only the visibility
+ *  of quest types per user preference and does not take anything else into account that may
+ *  make a quest type invisible (overlays, ...) */
 class VisibleQuestTypeController(
     private val visibleQuestTypeDao: VisibleQuestTypeDao,
     private val questPresetsSource: QuestPresetsSource

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 
 class SidewalkOverlay : Overlay {
 
@@ -21,6 +22,7 @@ class SidewalkOverlay : Overlay {
     override val changesetComment = "Add whether there are sidewalks"
     override val wikiLink: String = "Key:sidewalk"
     override val achievements = listOf(PEDESTRIAN)
+    override val hidesQuestTypes = setOf(AddSidewalk::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         // roads

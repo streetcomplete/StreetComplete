@@ -8,6 +8,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
  *  selected data is tagged. Tapping on an element can optionally open a form in which the user
  *  can answer a question, just like with quests */
 interface Overlay : ElementEditType {
+    /** which quest types (by name) should not be visible when this overlay is active */
+    val hidesQuestTypes: Set<String> get() = emptySet()
+
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
 
