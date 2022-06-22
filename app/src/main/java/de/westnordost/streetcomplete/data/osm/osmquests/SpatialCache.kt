@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -59,8 +60,13 @@ class SpatialCache<T>(
 
     // returns keys that were not put to cache because not in fully contained tiles
     fun replaceAllInBBox(entries: Collection<Pair<T, LatLon>>, bbox: BoundingBox): List<T> {
-        val ignoredKeys = replaceAllInTiles(entries, bbox.asListOfEnclosingTilePos().filter { it.asBoundingBox(
-            tileZoom).isCompletelyInside(bbox) } )
+        val tiles = bbox.asListOfEnclosingTilePos()
+        val completelyContainedTiles = tiles.filter { it.asBoundingBox(
+            tileZoom).isCompletelyInside(bbox) }
+        if (tiles != completelyContainedTiles)
+            Log.i(TAG, "replacing tiles not completely contained in BBox")
+        val ignoredKeys = replaceAllInTiles(entries, completelyContainedTiles)
+
         // trim only when bbox!
         trim()
         return ignoredKeys
@@ -142,4 +148,8 @@ class SpatialCache<T>(
     fun getTilePosFor(pos: LatLon): TilePos = pos.enclosingTilePos(tileZoom)
 
     fun BoundingBox.asListOfEnclosingTilePos() = enclosingTilesRect(tileZoom).asTilePosSequence().toList()
+
+    companion object {
+        private const val TAG = "SpatialCache"
+    }
 }
