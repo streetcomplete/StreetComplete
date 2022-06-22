@@ -53,6 +53,8 @@ class MapDataController internal constructor(
     // TODO: use geometries instead of entries? but for creating MutableMapDataWithGeometry the geometryEntries are necessary
     private val elementCache = HashMap<ElementKey, Element>(20000)
     private val geometryCache = HashMap<ElementKey, ElementGeometryEntry>(20000)
+    // TODO: hashSet for each entry, and it will have almost as many entries as there are nodes
+    //  -> this might be one reason for high memory use
     private val wayIdsByNodeIdCache = HashMap<Long, HashSet<Long>>() // <NodeId, <Set<WayId>>
     private val relationIdsByElementKeyCache = HashMap<ElementKey, HashSet<Long>>()
 
@@ -214,9 +216,11 @@ class MapDataController internal constructor(
         geometryCache.putAll(elementGeometries.associateBy { ElementKey(it.elementType, it.elementId) })
 
         ways.forEach { way ->
+            // TODO: don't add ids of nodes that are not in nodeIds (also in addToCache)
             way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
         }
         relations.forEach { relation ->
+            // TODO: don't add key for Elements that are not in elements (also in addToCache)
             relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id) }
         }
 
@@ -350,10 +354,12 @@ class MapDataController internal constructor(
         )
 
         ways.forEach { way ->
+            // TODO: don't add id of nodes that are not in nodeIds
             way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
         }
         relations.forEach { relation ->
             relation.members.forEach {
+                // TODO: don't add key of Elements that are not in elements
                 relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id)
             }
         }
@@ -392,6 +398,7 @@ class MapDataController internal constructor(
         }
         wayIdsByNodeIdCache.keys.removeAll(nodesToRemove) // is toSet() really faster? no duplicates anyway
         // TODO: cleanup is incomplete! on trim to 0 tiles wayIdsByNodeIdCache and relationIdsByElementKeyCache are still not empty
+        //  -> reason is probably adding element keys / nodeIds of elements that are not put into cache
     }
 
     private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
