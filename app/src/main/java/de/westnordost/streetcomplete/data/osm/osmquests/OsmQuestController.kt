@@ -133,9 +133,11 @@ class OsmQuestController internal constructor(
         }
     }
 
-    private val spatialCache = SpatialCache(192,
+    private val spatialCache = SpatialCache(
+        192,
+        16,
         { bbox -> getAllVisibleInBBoxFromDB(bbox) },
-        { entries -> questCache.keys.removeAll(entries) })
+        { keys -> questCache.keys.removeAll(keys.toSet()) }) // is toSet() really faster? no duplicates anyway
     private val questCache = HashMap<OsmQuestKey, OsmQuest>(2000)
     private var visibleQuests: HashSet<String>? = null
 
@@ -274,7 +276,7 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox): Map<OsmQuestKey, LatLon> {
+    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox): List<Pair<OsmQuestKey, LatLon>> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, visibleQuests).filter {
@@ -293,7 +295,7 @@ class OsmQuestController internal constructor(
         }
         quests.forEach { questCache[it.key] = it }
 
-        return quests.associate { it.key to it.position }
+        return quests.map { it.key to it.position }
     }
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
@@ -416,8 +418,8 @@ class OsmQuestController internal constructor(
         if (visibleAdded.isNotEmpty()) {
             val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
             if (replaceBBox != null) {
-                spatialCache.replaceAllInBBox(actuallyVisible.associate { it.key to it.position }, replaceBBox)
-                questCache.putAll(actuallyVisible.associateBy { it.key })
+                val notPut = spatialCache.replaceAllInBBox(actuallyVisible.map { it.key to it.position }, replaceBBox)
+                questCache.putAll(actuallyVisible.filterNot { it.key in notPut }.associateBy { it.key })
             } else {
                 actuallyVisible.forEach {
                     if (spatialCache.putIfTileExists(it.key, it.position))

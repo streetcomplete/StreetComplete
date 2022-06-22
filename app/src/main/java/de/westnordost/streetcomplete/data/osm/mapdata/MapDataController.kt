@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.SpatialCache
+import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -40,7 +41,9 @@ class MapDataController internal constructor(
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
-    val spatialCache = SpatialCache(192,
+    val spatialCache = SpatialCache(
+        80, // TODO: 192 is likely WAY too much for S4 mini, maybe make it depend on available memory?
+        16,
         { bbox -> getDataInBBoxForCache(bbox) },
         { ids -> removeCachedElementsForNodes(ids) }
     )
@@ -70,13 +73,16 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet() // todo: use cache?
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
 
             deleteFromCache(oldElementKeys)
-            addToCache(mapData, geometryEntries)
+            // bbox is the bbox from download, and should be from a z16 TilesRect
+            // mapData.boundingBox is expanded by ApplicationConstants.QUEST_FILTER_PADDING (20m)
+            // -> use bbox, not mapData.boundingBox
+            addToCache(mapData, geometryEntries, bbox)
 
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
@@ -187,7 +193,9 @@ class MapDataController internal constructor(
         return result
     }
 
-    private fun getDataInBBoxForCache(bbox: BoundingBox): Map<Long, LatLon> {
+    // here it's necessary that bbox only containing full tiles
+    // this is done by cache, so it should be safe
+    private fun getDataInBBoxForCache(bbox: BoundingBox): List<Pair<Long, LatLon>> {
         val time = currentTimeMillis()
 
         val nodes = nodeDB.getAll(bbox)
@@ -201,7 +209,7 @@ class MapDataController internal constructor(
         ) + elements.mapNotNull { if (it is Node) it.toElementGeometryEntry() else null }
 
         // this is essentially the same as addToCache, but without putting nodes to spatialCache
-        //  and maybe a bit faster because no filtering by elenent type is necessary
+        //  and maybe a bit faster because no filtering by element type is necessary
         elementCache.putAll(elements.associateBy { ElementKey(it.type, it.id) })
         geometryCache.putAll(elementGeometries.associateBy { ElementKey(it.elementType, it.elementId) })
 
@@ -213,7 +221,7 @@ class MapDataController internal constructor(
         }
 
         Log.i(TAG, "Fetched ${elements.size} elements and geometries from DB in ${currentTimeMillis() - time}ms")
-        return nodes.associate { it.id to it.position }
+        return nodes.map { it.id to it.position }
     }
 
     fun Node.toElementGeometryEntry() =
@@ -302,27 +310,57 @@ class MapDataController internal constructor(
         }
     }
 
-    private fun addToCache(elements: Iterable<Element>, geometries: Iterable<ElementGeometryEntry>) {
-        // TODO: if the containing tile is not cached, the element might stay in cache forever
-        //  how to fix this?
-        elementCache.putAll(elements.associateBy { ElementKey(it.type, it.id) })
-        geometryCache.putAll(geometries.associateBy { ElementKey(it.elementType, it.elementId) })
+    private fun addToCache(
+        elements: Iterable<Element>,
+        geometries: Iterable<ElementGeometryEntry>,
+        bbox: BoundingBox? = null
+    ) {
+        val ignoredNodeIds = if (bbox == null) {
+            elements.filterIsInstance(Node::class.java).mapNotNull {
+                if (spatialCache.putIfTileExists(it.id, it.position))
+                    null
+                else
+                    it.id
+            }
+        } else {
+            spatialCache.replaceAllInBBox(
+                elements.filterIsInstance(Node::class.java).map { it.id to it.position },
+                bbox
+            )
+        }
 
-        elements.filterIsInstance(Way::class.java).forEach { way ->
+        // don't put ways and relations that only use ignored nodes
+        val nodes = elements.filter { it is Node && it.id !in ignoredNodeIds }
+        val nodeIds = nodes.map { it.id }
+        val ways = elements.filterIsInstance(Way::class.java).filter { it.nodeIds.containsAny(nodeIds) }
+        val wayIds = ways.map { it.id }
+        val relations = elements.filterIsInstance(Relation::class.java).filter { element ->
+            element.members.any {
+                (it.type == ElementType.NODE && it.ref in nodeIds) || (it.type == ElementType.WAY && it.ref in wayIds)
+            }
+        }
+        val relationIds = relations.map { it.id }
+        elementCache.putAll((nodes+ways+relations).associateBy { ElementKey(it.type, it.id) })
+        geometryCache.putAll(geometries
+            .filter { (it.elementType == ElementType.NODE && it.elementId in nodeIds) ||
+                (it.elementType == ElementType.WAY && it.elementId in wayIds) ||
+                (it.elementType == ElementType.RELATION && it.elementId in relationIds)
+            }
+            .associateBy { ElementKey(it.elementType, it.elementId) }
+        )
+
+        ways.forEach { way ->
             way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
         }
-        elements.filterIsInstance(Relation::class.java).forEach { relation ->
+        relations.forEach { relation ->
             relation.members.forEach {
                 relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id)
             }
         }
 
-        elements.filterIsInstance(Node::class.java).forEach {
-            spatialCache.putIfTileExists(it.id, it.position)
-        }
     }
 
-    private fun removeCachedElementsForNodes(nodesToRemove: Set<Long>) {
+    private fun removeCachedElementsForNodes(nodesToRemove: Collection<Long>) {
         val waysToRemove = hashSetOf<Long>()
         wayIdsByNodeIdCache.filterKeys { it in nodesToRemove }.values.forEach {
             waysToRemove.addAll(it)
@@ -352,7 +390,7 @@ class MapDataController internal constructor(
             geometryCache.remove(it)
             relationIdsByElementKeyCache.remove(it)
         }
-        wayIdsByNodeIdCache.keys.removeAll(nodesToRemove)
+        wayIdsByNodeIdCache.keys.removeAll(nodesToRemove) // is toSet() really faster? no duplicates anyway
         // TODO: cleanup is incomplete! on trim to 0 tiles wayIdsByNodeIdCache and relationIdsByElementKeyCache are still not empty
     }
 
