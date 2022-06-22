@@ -13,6 +13,7 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
+        createMarkAsInsideAnswer(),
     )
 
     override val itemsPerRow = 3
@@ -40,6 +41,15 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
 
         return AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
             applyAnswer(IsActuallyStepsAnswer)
+        }
+    }
+
+    private fun createMarkAsInsideAnswer(): AnswerItem? {
+        val way = element as? Way ?: return null
+        if (way.isArea() || way.tags["inside"] == "yes") return null
+
+        return AnswerItem(R.string.quest_generic_answer_is_indoors) {
+            applyAnswer(IsIndoorsAnswer)
         }
     }
 }
