@@ -47,6 +47,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"
             }
+            is IsIndoorsAnswer -> {
+                tags["indoor"] = "yes"
+            }
         }
     }
 }

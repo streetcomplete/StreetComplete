@@ -88,6 +88,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_noSign">There is no sign</string>
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_indoors">"This is indoors"</string>
 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
