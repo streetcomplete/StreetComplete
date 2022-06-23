@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.util.ListMap
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 
@@ -50,10 +51,10 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
 
     private fun putSelectedPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
         val points = pinPositions.map { position ->
-            Point(position.toLngLat(), mapOf(
+            Point(position.toLngLat(), ListMap(listOf(
                 "type" to "point",
                 "kind" to ctx.resources.getResourceEntryName(iconResId)
-            ))
+            )))
         }
         selectedPinsLayer.setFeatures(points)
     }

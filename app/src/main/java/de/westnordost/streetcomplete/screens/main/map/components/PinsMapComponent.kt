@@ -5,6 +5,7 @@ import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.util.ListMap
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(ctrl: KtMapController) {
@@ -25,10 +26,7 @@ class PinsMapComponent(ctrl: KtMapController) {
                 "kind" to pin.iconName,
                 "importance" to pin.importance.toString()
             )
-            val properties = HashMap<String, String>()
-            properties.putAll(tangramProperties)
-            properties.putAll(pin.properties)
-            Point(pin.position.toLngLat(), properties)
+            Point(pin.position.toLngLat(), ListMap(tangramProperties + pin.properties))
         })
     }
 

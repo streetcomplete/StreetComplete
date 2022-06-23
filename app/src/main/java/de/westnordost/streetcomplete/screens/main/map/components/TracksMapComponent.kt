@@ -5,6 +5,7 @@ import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.util.ListMap
 import kotlin.math.max
 
 /** Takes care of showing the path(s) walked on the map */
@@ -75,8 +76,8 @@ class TracksMapComponent(ctrl: KtMapController) {
 }
 
 private fun List<LngLat>.toPolyline(old: Boolean, record: Boolean) =
-    Polyline(this, listOfNotNull(
+    Polyline(this, ListMap(listOfNotNull(
         "type" to "line",
         "old" to old.toString(),
         if (record) ("record" to "true") else null
-    ).toMap())
+    )))

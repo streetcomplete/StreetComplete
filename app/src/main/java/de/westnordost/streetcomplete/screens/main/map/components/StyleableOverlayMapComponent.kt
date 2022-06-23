@@ -32,33 +32,33 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     /** Show given map data with each the given style */
     fun set(features: Collection<StyledElement>) {
         layer.setFeatures(features.flatMap { (element, geometry, style) ->
-            val props = HashMap<String, String>()
-            props[ELEMENT_ID] = element.id.toString()
-            props[ELEMENT_TYPE] = element.type.name
+            val props = ArrayList<Pair<String, String>>()
+            props.add(ELEMENT_ID to element.id.toString())
+            props.add(ELEMENT_TYPE to element.type.name)
             when (style) {
                 is PolygonStyle -> {
-                    getHeight(element.tags)?.let { props["height"] = it.toString() }
-                    props["color"] = style.color
-                    props["strokeColor"] = getDarkenedColor(style.color)
-                    style.label?.let { props["text"] = it }
+                    getHeight(element.tags)?.let { props.add("height" to it.toString()) }
+                    props.add("color" to style.color)
+                    props.add("strokeColor" to getDarkenedColor(style.color))
+                    style.label?.let { props.add("text" to it) }
                 }
                 is PolylineStyle -> {
-                    props["width"] = getLineWidth(element.tags).toString()
-                    style.colorLeft?.let { props["colorLeft"] = it }
-                    style.colorRight?.let { props["colorRight"] = it }
+                    props.add("width" to getLineWidth(element.tags).toString())
+                    style.colorLeft?.let { props.add("colorLeft" to it) }
+                    style.colorRight?.let { props.add("colorRight" to it) }
                     if (style.color != null) {
-                        props["color"] = style.color
-                        props["strokeColor"] = getDarkenedColor(style.color)
+                        props.add("color" to style.color)
+                        props.add("strokeColor" to getDarkenedColor(style.color))
                     } else if (style.colorLeft != null || style.colorRight != null) {
                         // must have a color for the center if left or right is defined because
                         // there are really ugly overlaps in tangram otherwise
-                        props["color"] = resources.getString(R.string.road_color)
-                        props["strokeColor"] = resources.getString(R.string.road_outline_color)
+                        props.add("color" to resources.getString(R.string.road_color))
+                        props.add("strokeColor" to resources.getString(R.string.road_outline_color))
                     }
-                    style.label?.let { props["text"] = it }
+                    style.label?.let { props.add("text" to it) }
                 }
                 is PointStyle -> {
-                    style.label?.let { props["text"] = it }
+                    style.label?.let { props.add("text" to it) }
                 }
             }
 
