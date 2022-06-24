@@ -215,11 +215,11 @@ class MapDataController internal constructor(
 
         ways.forEach { way ->
             // TODO: don't add ids of nodes that are not in nodeIds (also in addToCache)
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { mutableListOf() }.add(way.id) }
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id) }
         }
         relations.forEach { relation ->
             // TODO: don't add key for Elements that are not in elements (also in addToCache)
-            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { mutableListOf() }.add(relation.id) }
+            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id) }
         }
 
         Log.i(TAG, "Fetched ${elements.size} elements and geometries from DB in ${currentTimeMillis() - time}ms")
@@ -353,12 +353,12 @@ class MapDataController internal constructor(
 
         ways.forEach { way ->
             // TODO: don't add id of nodes that are not in nodeIds
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { mutableListOf() }.add(way.id) }
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id) }
         }
         relations.forEach { relation ->
             relation.members.forEach {
                 // TODO: don't add key of Elements that are not in elements
-                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { mutableListOf() }.add(relation.id)
+                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id)
             }
         }
 
