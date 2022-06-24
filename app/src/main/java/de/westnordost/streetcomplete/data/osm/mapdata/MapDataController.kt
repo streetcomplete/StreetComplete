@@ -53,10 +53,8 @@ class MapDataController internal constructor(
     // TODO: use geometries instead of entries? but for creating MutableMapDataWithGeometry the geometryEntries are necessary
     private val elementCache = HashMap<ElementKey, Element>(20000)
     private val geometryCache = HashMap<ElementKey, ElementGeometryEntry>(20000)
-    // TODO: hashSet for each entry, and it will have almost as many entries as there are nodes
-    //  -> this might be one reason for high memory use
-    private val wayIdsByNodeIdCache = HashMap<Long, HashSet<Long>>() // <NodeId, <Set<WayId>>
-    private val relationIdsByElementKeyCache = HashMap<ElementKey, HashSet<Long>>()
+    private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>() // <NodeId, <Set<WayId>>
+    private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>()
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
@@ -217,11 +215,11 @@ class MapDataController internal constructor(
 
         ways.forEach { way ->
             // TODO: don't add ids of nodes that are not in nodeIds (also in addToCache)
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { mutableListOf() }.add(way.id) }
         }
         relations.forEach { relation ->
             // TODO: don't add key for Elements that are not in elements (also in addToCache)
-            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id) }
+            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { mutableListOf() }.add(relation.id) }
         }
 
         Log.i(TAG, "Fetched ${elements.size} elements and geometries from DB in ${currentTimeMillis() - time}ms")
@@ -355,12 +353,12 @@ class MapDataController internal constructor(
 
         ways.forEach { way ->
             // TODO: don't add id of nodes that are not in nodeIds
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { hashSetOf() }.add(way.id) }
+            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { mutableListOf() }.add(way.id) }
         }
         relations.forEach { relation ->
             relation.members.forEach {
                 // TODO: don't add key of Elements that are not in elements
-                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { hashSetOf() }.add(relation.id)
+                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { mutableListOf() }.add(relation.id)
             }
         }
 
