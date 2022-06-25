@@ -149,7 +149,7 @@ class MapDataController internal constructor(
             }
         }
 
-        val ways = wayDB.getAll(missingWayIds)
+        val ways = getWays(missingWayIds)
         for (way in mapData.ways + ways) {
             for (nodeId in way.nodeIds) {
                 if (mapData.getNode(nodeId) == null) {
@@ -157,7 +157,7 @@ class MapDataController internal constructor(
                 }
             }
         }
-        val nodes = nodeDB.getAll(missingNodeIds)
+        val nodes = getNodes(missingNodeIds)
 
         mapData.addAll(nodes)
         mapData.addAll(ways)
