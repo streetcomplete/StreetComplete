@@ -40,8 +40,9 @@ private fun List<LatLon>.isWithinDistanceAndAngleOf(other: List<LatLon>, maxDist
             // two ways directly opposite each other should count as aligned
             val alignmentDiff = if (bearingDiff > 90) 180 - bearingDiff else bearingDiff
             val distance = first.distanceToArc(otherFirst, otherSecond)
-            if (alignmentDiff <= maxAngle && distance <= maxDistance)
+            if (alignmentDiff <= maxAngle && distance <= maxDistance) {
                 return true
+            }
         }
     }
     return false

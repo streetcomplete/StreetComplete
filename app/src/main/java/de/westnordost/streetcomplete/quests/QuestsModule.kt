@@ -124,7 +124,8 @@ import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
-import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
+import de.westnordost.streetcomplete.quests.summit.AddSummitCross
+import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
@@ -212,7 +213,7 @@ fun questTypeRegistry(
     AddMemorialType(),
 
     // bus stop quests
-    AddBusStopShelter(),  // used by at least OsmAnd
+    AddBusStopShelter(), // used by at least OsmAnd
     AddBenchStatusOnBusStop(), // can be seen from across the street
     AddBinStatusOnBusStop(), // can be seen from across the street
     AddTactilePavingBusStop(), // requires you to be very close to it
@@ -261,7 +262,6 @@ fun questTypeRegistry(
 
     // air pump, may require some checking within a garage forecourt
     AddAirCompressor(),
-    AddBicyclePump(),
 
     // recycling containers
     AddRecyclingType(),
@@ -343,6 +343,7 @@ fun questTypeRegistry(
     AddPlaceName(featureDictionaryFuture),
     AddOpeningHours(featureDictionaryFuture),
     AddSeating(), // easily visible from outside, but only seasonally
+    AddBicyclePump(), // visible from the outside, but only during opening hours
 
     AddAtmOperator(),
 
@@ -377,7 +378,8 @@ fun questTypeRegistry(
 
     MarkCompletedHighwayConstruction(), // need to look the whole way
 
-    AddSummitRegister(), // the summit register is not necessarily directly at the peak, need to look around
+    AddSummitCross(), // summit markings are not necessarily directly at the peak, need to look around
+    AddSummitRegister(), // register is harder to find than cross
 
     AddForestLeafType(), // need to walk around in the highlighted section
 

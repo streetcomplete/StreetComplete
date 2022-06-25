@@ -1362,6 +1362,10 @@
                 "landuse": {
                     "label": "Type"
                 },
+                "lane_markings": {
+                    "label": "Lane Markings",
+                    "terms": "centerline,lane dividers,lane line,striped,unstriped"
+                },
                 "lanes": {
                     "label": "Lanes",
                     "placeholder": "1, 2, 3..."
@@ -2348,6 +2352,14 @@
                         "curling": "Curling",
                         "ice_stock": "Ice Stock",
                         "multi": "Multiple"
+                    }
+                },
+                "sport_pub": {
+                    "label": "Sports",
+                    "options": {
+                        "table_soccer": "Foosball",
+                        "billiards": "Billiards",
+                        "darts": "Darts"
                     }
                 },
                 "sport_racing_motor": {
@@ -3711,6 +3723,7 @@
                 },
                 "amenity/restaurant/pizza": {
                     "name": "Pizza Restaurant",
+                    "aliases": "Pizzeria",
                     "terms": "bar,dine,dining,dinner,drive-in,eat,lunch,table,deep dish,thin crust,slice"
                 },
                 "amenity/restaurant/seafood": {
@@ -3837,7 +3850,7 @@
                 },
                 "amenity/ticket_validator": {
                     "name": "Ticket Validator",
-                    "aliases": "ticket puncher\npunching machine\nticket marker",
+                    "aliases": "Ticket Puncher\nPunching Machine\nTicket Marker",
                     "terms": "ticket,validator,puncher"
                 },
                 "amenity/toilets": {
@@ -4290,6 +4303,10 @@
                 "building/garages": {
                     "name": "Garages"
                 },
+                "building/ger": {
+                    "name": "Yurt",
+                    "terms": "ger"
+                },
                 "building/grandstand": {
                     "name": "Grandstand",
                     "terms": "tribune,stand,stands,bleachers"
@@ -4723,7 +4740,7 @@
                 },
                 "golf/bunker": {
                     "name": "Sand Trap",
-                    "aliases": "bunker",
+                    "aliases": "Bunker",
                     "terms": "hazard"
                 },
                 "golf/cartpath": {
@@ -4922,6 +4939,9 @@
                 "highway/footway/crossing": {
                     "name": "Pedestrian Crossing"
                 },
+                "highway/footway/informal": {
+                    "name": "Informal Foot Path"
+                },
                 "highway/footway/zebra": {
                     "name": "Marked Crosswalk"
                 },
@@ -5072,7 +5092,7 @@
                 },
                 "highway/services": {
                     "name": "Service Area",
-                    "terms": "services,travel plaza,service station"
+                    "terms": "roadhouse,service station,services,travel plaza,truck stop"
                 },
                 "highway/speed_camera": {
                     "name": "Speed Camera",
@@ -5107,8 +5127,8 @@
                     "terms": "license plate camera toll,cashless toll,electronic toll,free-flow toll,toll gantry,transponder toll"
                 },
                 "highway/track": {
-                    "name": "Unmaintained Track Road",
-                    "terms": "woods road,forest road,logging road,fire road,farm road,agricultural road,ranch road,carriage road,primitive,unmaintained,rut,offroad,4wd,4x4,four wheel drive,atv,quad,jeep,double track,two track"
+                    "name": "Track / Land-Access Road",
+                    "terms": "4wd,4x4,agricultural road,atv,carriage road,double track,farm road,fire road,forest road,four wheel drive,high-clearance,jeep,land access road,logging road,offroad,overgrown,primitive,quad,ranch road,rut,track,track road,two track,unmaintained,woods road"
                 },
                 "highway/traffic_mirror": {
                     "name": "Traffic Mirror",
@@ -5717,6 +5737,10 @@
                     "name": "Softball Field",
                     "terms": "baseball,diamond,softball"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "Foosball Table",
+                    "terms": "kicker,table football,table soccer,tecball"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "Ping Pong Table",
                     "terms": "table tennis,ping pong"
@@ -5847,6 +5871,10 @@
                 "man_made/cairn": {
                     "name": "Cairn",
                     "terms": "rock pile,stone stack,stone pile,càrn"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Carpet Hanger",
+                    "terms": "rack,beater,stand"
                 },
                 "man_made/chimney": {
                     "name": "Chimney"
@@ -7270,6 +7298,10 @@
                     "name": "Secondhand Clothing Store",
                     "terms": "blouses,clothes,consignment,dresses,pants,second hand,shirts,shorts,skirts,slacks,suits,used"
                 },
+                "shop/clothes/suits": {
+                    "name": "Suits Store",
+                    "terms": "businessman,necktie,tie"
+                },
                 "shop/clothes/underwear": {
                     "name": "Underwear Store",
                     "terms": "boutique,bras,brassieres,briefs,boxers,fashion,lingerie,panties,slips,socks,stockings,underclothes,undergarments,underpants,undies"
@@ -7277,6 +7309,10 @@
                 "shop/clothes/wedding": {
                     "name": "Wedding Clothes Store",
                     "terms": "boutique,bridal,bride,bridegroom,bridesmaid,groom,groomsman,tuxedo,wedding dress,wedding gown"
+                },
+                "shop/clothes/workwear": {
+                    "name": "Workwear Store",
+                    "terms": "craftsman,safety footwear"
                 },
                 "shop/coffee": {
                     "name": "Coffee Store"
@@ -7979,9 +8015,6 @@
                     "name": "Speed Limit Sign",
                     "terms": "max speed,maximum speed,road,highway"
                 },
-                "type/multipolygon": {
-                    "name": "Multipolygon"
-                },
                 "type/boundary": {
                     "name": "Boundary"
                 },
@@ -8001,6 +8034,9 @@
                 "type/enforcement/maxspeed": {
                     "name": "Speed Limit Enforcement",
                     "terms": "maxspeed,radar,speed camera"
+                },
+                "type/multipolygon": {
+                    "name": "Multipolygon"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "Transit Stop Area Group"
@@ -8082,6 +8118,9 @@
                 "type/route/power": {
                     "name": "Power Route"
                 },
+                "type/route/railway": {
+                    "name": "Railway Route"
+                },
                 "type/route/road": {
                     "name": "Road Route"
                 },
@@ -8102,9 +8141,6 @@
                 },
                 "type/waterway": {
                     "name": "Waterway"
-                },
-                "waterway/riverbank": {
-                    "name": "Riverbank"
                 },
                 "waterway/boatyard": {
                     "name": "Boatyard"

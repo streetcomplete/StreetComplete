@@ -2499,9 +2499,6 @@
                 "highway/tertiary_link": {
                     "name": "Pristupna cesta lokalne ceste"
                 },
-                "highway/track": {
-                    "name": "Šumski ili poljski put"
-                },
                 "highway/traffic_mirror": {
                     "name": "Prometno ogledalo"
                 },
@@ -3915,9 +3912,6 @@
                 },
                 "waterway/river": {
                     "name": "Rijeka"
-                },
-                "waterway/riverbank": {
-                    "name": "Riječna obala"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Stanica za pražnjenje brodskog spremnika fekalija"

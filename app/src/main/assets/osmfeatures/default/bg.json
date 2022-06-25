@@ -139,7 +139,7 @@
                     "label": "Ветробран"
                 },
                 "aerialway/capacity": {
-                    "label": "Капацитет(на час)",
+                    "label": "Капацитет (на час)",
                     "placeholder": "500, 2500, 5000..."
                 },
                 "aerialway/duration": {
@@ -1713,9 +1713,6 @@
                 "highway/toll_gantry": {
                     "name": "Тол камера"
                 },
-                "highway/track": {
-                    "name": "Земеделски път"
-                },
                 "highway/traffic_signals": {
                     "name": "Светофари"
                 },
@@ -2384,7 +2381,7 @@
                     "name": "Пътен знак"
                 },
                 "traffic_sign/city_limit": {
-                    "name": "Начало/клай на населеното място"
+                    "name": "Начало/край на населено място"
                 },
                 "traffic_sign/maxspeed": {
                     "name": "Знак за ограничение на скоростта"
@@ -2459,9 +2456,6 @@
                 },
                 "waterway/river": {
                     "name": "Река"
-                },
-                "waterway/riverbank": {
-                    "name": "Речен бряг"
                 },
                 "waterway/stream": {
                     "name": "Поток"

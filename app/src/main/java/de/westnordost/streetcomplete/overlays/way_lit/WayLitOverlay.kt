@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.lit.createLitStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 
 class WayLitOverlay : Overlay {
 
@@ -21,6 +22,7 @@ class WayLitOverlay : Overlay {
     override val changesetComment = "Add whether way is lit"
     override val wikiLink: String = "Key:lit"
     override val achievements = listOf(PEDESTRIAN)
+    override val hidesQuestTypes = setOf(AddWayLit::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData

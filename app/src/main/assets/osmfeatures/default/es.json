@@ -5315,8 +5315,8 @@
                     "terms": "peaje,cámara de matrícula,cámara de placa,cámara de patente,peaje sin efectivo,peaje electrónico,peaje de flujo libre,free flow,telepase,pórtico de peaje,peaje con transpondedor"
                 },
                 "highway/track": {
-                    "name": "Pista o camino no mantenido",
-                    "terms": "camino,senda,sendero,vía,pista,rural,forestal,agrícola,campo,offroad,doble tracción,tractor,atv,cuadrimoto,quadra track,huella,camino rural,camino de bosque,camino forestal,camino de tala,camino de fuego,camino de granja,camino agrícola,camino de rancho,camino de carro,primitivo,sin mantenimiento,rutina,campo a través,4wd,4x4,tracción en las cuatro ruedas,todoterreno,quad,jeep,dos pista"
+                    "name": "Vía agrícola o forestal",
+                    "terms": "camino,senda,sendero,vía,via,pista,pista agrícola,rural,forestal,agrícola,agricola,campo,offroad,doble tracción,tractor,atv,cuadrimoto,quadra track,huella,camino rural,camino de bosque,camino forestal,camino de tala,camino contra incendios,camino de fuego,camino de granja,camino agrícola,camino de rancho,sin mantenimiento,no mantenido,4wd,4x4,tracción en las cuatro ruedas,todoterreno,todo terreno,quad,jeep,doble huella,acceso a terrenos circundantes"
                 },
                 "highway/traffic_mirror": {
                     "name": "Espejo de tránsito",
@@ -8539,9 +8539,6 @@
                 "waterway/river": {
                     "name": "Río",
                     "terms": "río,afluente"
-                },
-                "waterway/riverbank": {
-                    "name": "Ribera de río ancho"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Desecho de inodoro marino",

@@ -88,6 +88,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_noSign">There is no sign</string>
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_indoors">"This is indoors"</string>
 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
@@ -1426,6 +1427,8 @@ Alternatively, you can leave a note (with a photo)."</string>
 
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
+
+    <string name="quest_summit_cross_title">Is there a summit cross here?</string>
 
     <string name="quest_summit_register_title2">Is there a summit register here?</string>
 

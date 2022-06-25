@@ -4322,8 +4322,8 @@
                     "terms": "建物"
                 },
                 "building/apartments": {
-                    "name": "大樓建築物",
-                    "terms": "大樓建築物,大樓"
+                    "name": "公寓建築物",
+                    "terms": "公寓,建築物,大樓"
                 },
                 "building/barn": {
                     "name": "穀倉",
@@ -5256,8 +5256,8 @@
                     "terms": "駕駛通過以獲取服務,德來速車道"
                 },
                 "highway/service/driveway": {
-                    "name": "車道;私家;私人",
-                    "terms": "車線"
+                    "name": "私家車道",
+                    "terms": "車道;私家;私人"
                 },
                 "highway/service/emergency_access": {
                     "name": "緊急通道",
@@ -5304,8 +5304,8 @@
                     "terms": "開放道路收費,收費門架"
                 },
                 "highway/track": {
-                    "name": "農路·林道",
-                    "terms": "農路、林道"
+                    "name": "轍路 / 土地通達道路",
+                    "terms": "農,林,礦,路,道,田埂"
                 },
                 "highway/traffic_mirror": {
                     "name": "道路反射鏡",
@@ -5479,8 +5479,8 @@
                     "name": "水池"
                 },
                 "landuse/brownfield": {
-                    "name": "棕色地帶",
-                    "terms": "棕色地帶"
+                    "name": "棕土",
+                    "terms": "棕土,棕地,再利用,拆除"
                 },
                 "landuse/cemetery": {
                     "name": "殯葬用地",
@@ -5626,7 +5626,7 @@
                     "terms": "住宅區"
                 },
                 "landuse/residential/apartments": {
-                    "name": "公寓大樓",
+                    "name": "公寓用地",
                     "terms": "公寓大樓,公寓"
                 },
                 "landuse/retail": {
@@ -6377,7 +6377,7 @@
                     "name": "自然圖徽"
                 },
                 "natural/bare_rock": {
-                    "name": "裸露的岩石",
+                    "name": "裸岩",
                     "terms": "裸露的岩石,裸岩"
                 },
                 "natural/bay": {
@@ -6459,8 +6459,8 @@
                     "terms": "崩坍地、碎石坡"
                 },
                 "natural/scrub": {
-                    "name": "荒地",
-                    "terms": "荒地"
+                    "name": "灌木林",
+                    "terms": "灌木,荒地"
                 },
                 "natural/shingle": {
                     "name": "礫灘"
@@ -6502,7 +6502,7 @@
                 },
                 "natural/water/canal": {
                     "name": "運河區",
-                    "terms": "運河區,運河"
+                    "terms": "渠,運河區,運河,水道"
                 },
                 "natural/water/lake": {
                     "name": "湖泊",
@@ -8454,7 +8454,7 @@
                 },
                 "waterway/canal": {
                     "name": "運河",
-                    "terms": "運河"
+                    "terms": "渠,運河,水道,灌溉,水電"
                 },
                 "waterway/canal/lock": {
                     "name": "運河船閘",
@@ -8495,9 +8495,6 @@
                 "waterway/river": {
                     "name": "河流",
                     "terms": "河川"
-                },
-                "waterway/riverbank": {
-                    "name": "河床"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "污水處理放流管",

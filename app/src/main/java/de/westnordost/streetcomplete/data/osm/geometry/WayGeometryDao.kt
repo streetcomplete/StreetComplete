@@ -17,8 +17,9 @@ class WayGeometryDao(
     private val polylinesSerializer: PolylinesSerializer,
 ) {
     fun put(entry: ElementGeometryEntry) {
-        if (entry.elementType != ElementType.WAY)
+        if (entry.elementType != ElementType.WAY) {
             throw(IllegalArgumentException("trying to store ${entry.elementType.name} geometry in way geometry table"))
+        }
         db.replace(NAME, entry.toPairs())
     }
 
@@ -33,8 +34,9 @@ class WayGeometryDao(
 
     fun putAll(entries: Collection<ElementGeometryEntry>) {
         if (entries.isEmpty()) return
-        if (entries.any { it.elementType != ElementType.WAY })
+        if (entries.any { it.elementType != ElementType.WAY }) {
             throw(IllegalArgumentException("trying to store non-way geometry in way geometry table"))
+        }
         db.replaceMany(NAME,
             arrayOf(
                 ID,

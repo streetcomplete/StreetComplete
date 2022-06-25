@@ -132,7 +132,7 @@ class QuestPinsManager(
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
             synchronized(questsInView) {
                 questsInView.clear()
-                quests.forEach { questsInView[it.key] = createQuestPins(it)  }
+                quests.forEach { questsInView[it.key] = createQuestPins(it) }
             }
             updatePins()
         }
@@ -192,12 +192,12 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
-private fun QuestKey.toProperties(): Map<String, String> = when (this) {
-    is OsmNoteQuestKey -> mapOf(
+private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
+    is OsmNoteQuestKey -> listOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM_NOTE,
         MARKER_NOTE_ID to noteId.toString()
     )
-    is OsmQuestKey -> mapOf(
+    is OsmQuestKey -> listOf(
         MARKER_QUEST_GROUP to QUEST_GROUP_OSM,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
