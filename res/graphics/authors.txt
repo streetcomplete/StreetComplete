@@ -195,6 +195,9 @@ police type graphics/
 quest icons/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
+    barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
+    barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
+    barrier_on_road.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
     beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie
     beer.svg                         modified from Twemoji: U+1F37A
     bench_poi.svg
@@ -240,6 +243,7 @@ quest icons/
     housenumber.svg
     housenumber_street.svg
     information.svg
+    kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
     lantern.svg
     laundry.svg

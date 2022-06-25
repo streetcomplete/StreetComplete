@@ -97,7 +97,8 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    jcenter {
+    maven {
+        url = uri("https://jcenter.bintray.com/")
         content {
             includeGroup("org.sufficientlysecure")
         }
