@@ -164,13 +164,13 @@ class MapDataController internal constructor(
     }
 
     fun get(type: ElementType, id: Long): Element? =
-        elementCache[ElementKey(type, id)] ?: elementDB.get(type, id)
+        synchronized(this) { elementCache[ElementKey(type, id)] } ?: elementDB.get(type, id)
 
     fun getGeometry(type: ElementType, id: Long): ElementGeometry? =
-        geometryCache[ElementKey(type, id)]?.geometry ?: geometryDB.get(type, id)
+        synchronized(this) { geometryCache[ElementKey(type, id)]?.geometry } ?: geometryDB.get(type, id)
 
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
-        val geometries = keys.mapNotNull { geometryCache[it] }
+        val geometries = synchronized(this) { keys.mapNotNull { geometryCache[it] } }
         return if (keys.size == geometries.size) geometries
         else {
             val cachedKeys = geometries.map { ElementKey(it.elementType, it.elementId) }
@@ -180,15 +180,26 @@ class MapDataController internal constructor(
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
-        val nodeIds = spatialCache.get(bbox)
-        val wayIds = nodeIds.mapNotNull { wayIdsByNodeIdCache[it] }.flatten().toSet()
-        val relationIds = nodeIds.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.NODE, it)] }.flatten() +
-            wayIds.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.WAY, it)] }.flatten() // how fast?
+        val elements: Collection<Element>
+        val elementGeometries: Collection<ElementGeometryEntry>
+        synchronized(this) {
+            val nodeIds = spatialCache.get(bbox)
+            val wayIds = nodeIds.mapNotNull { wayIdsByNodeIdCache[it] }.flatten().toSet()
+            val relationIds = (
+                nodeIds.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.NODE, it)] }
+                .flatten() +
+                wayIds
+                    .mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.WAY, it)] }
+                    .flatten()
+                ).toSet()
 
-        // interestingly, here 1 cache is clearly faster than 3 separate caches for node/way/relation, while everywhere else it's the same
-        val elementKeys = (nodeIds.map { ElementKey(ElementType.NODE, it) } + wayIds.map { ElementKey(ElementType.WAY, it) } + relationIds.map { ElementKey(ElementType.RELATION, it) }).toSet()
-        val elements = elementCache.filterKeys { it in elementKeys }.values
-        val elementGeometries = geometryCache.filterKeys { it in elementKeys }.values
+            // interestingly, here 1 cache is clearly faster than 3 separate caches for node/way/relation, while everywhere else it's the same
+            val elementKeys = nodeIds.map { ElementKey(ElementType.NODE, it) } +
+                wayIds.map { ElementKey(ElementType.WAY, it) } +
+                relationIds.map { ElementKey(ElementType.RELATION, it) }
+            elements = elementCache.filterKeys { it in elementKeys }.values
+            elementGeometries = geometryCache.filterKeys { it in elementKeys }.values
+        }
 
         val result = MutableMapDataWithGeometry(elements, elementGeometries)
         result.boundingBox = bbox
@@ -198,6 +209,7 @@ class MapDataController internal constructor(
 
     // here it's necessary that bbox only containing full tiles
     // this is done by cache, so it should be safe
+    // no synchronized here, as it should be called only be cache, which is called synchronized
     private fun getDataInBBoxForCache(bbox: BoundingBox): List<Pair<Long, LatLon>> {
         val time = currentTimeMillis()
 
@@ -245,14 +257,22 @@ class MapDataController internal constructor(
         )
     }
 
-    fun getNode(id: Long): Node? = elementCache[ElementKey(ElementType.NODE, id)] as? Node ?: nodeDB.get(id)
-    fun getWay(id: Long): Way? = elementCache[ElementKey(ElementType.WAY, id)] as? Way ?: wayDB.get(id)
-    fun getRelation(id: Long): Relation? = elementCache[ElementKey(ElementType.RELATION, id)] as? Relation ?: relationDB.get(id)
+    fun getNode(id: Long): Node? = synchronized(this) { elementCache[ElementKey(ElementType.NODE, id)] as? Node } ?: nodeDB.get(id)
+    fun getWay(id: Long): Way? = synchronized(this) { elementCache[ElementKey(ElementType.WAY, id)] as? Way } ?: wayDB.get(id)
+    fun getRelation(id: Long): Relation? = synchronized(this) { elementCache[ElementKey(ElementType.RELATION, id)] as? Relation } ?: relationDB.get(id)
 
-    fun getAll(elementKeys: Collection<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
+    fun getAll(elementKeys: Collection<ElementKey>): List<Element> {
+        val elements = synchronized(this) { elementKeys.mapNotNull { elementCache[it] } }
+        return if (elementKeys.size == elements.size) elements
+        else {
+            val cachedElementKeys = elements.map { ElementKey(it.type, it.id) }
+            elements + elementDB.getAll(elementKeys.filterNot { it in cachedElementKeys })
+        }
+    }
+
 
     fun getNodes(ids: Collection<Long>): List<Node> {
-            val nodes = ids.mapNotNull { elementCache[ElementKey(ElementType.NODE, it)] as? Node }
+            val nodes = synchronized(this) { ids.mapNotNull { elementCache[ElementKey(ElementType.NODE, it)] as? Node } }
             return if (ids.size == nodes.size) nodes
             else {
                  val cachedNodeIds = nodes.map { it.id }
@@ -260,7 +280,7 @@ class MapDataController internal constructor(
             }
         }
     fun getWays(ids: Collection<Long>): List<Way> {
-        val ways = ids.mapNotNull { elementCache[ElementKey(ElementType.WAY, it)] as? Way }
+        val ways = synchronized(this) { ids.mapNotNull { elementCache[ElementKey(ElementType.WAY, it)] as? Way } }
         return if (ids.size == ways.size) ways
         else {
             val cachedWayIds = ways.map { it.id }
@@ -268,7 +288,7 @@ class MapDataController internal constructor(
         }
     }
     fun getRelations(ids: Collection<Long>): List<Relation>  {
-        val relations = ids.mapNotNull { elementCache[ElementKey(ElementType.RELATION, it)] as? Relation }
+        val relations = synchronized(this) { ids.mapNotNull { elementCache[ElementKey(ElementType.RELATION, it)] as? Relation } }
         return if (ids.size == relations.size) relations
         else {
             val cachedRelationIds = relations.map { it.id }
@@ -277,13 +297,13 @@ class MapDataController internal constructor(
     }
 
     fun getWaysForNode(id: Long): List<Way> = wayIdsByNodeIdCache[id]?.let { nodes ->
-            nodes.map { elementCache[ElementKey(ElementType.WAY, it)] as Way }
+            synchronized(this) { nodes.map { elementCache[ElementKey(ElementType.WAY, it)] as Way } }
         } ?: wayDB.getAllForNode(id)
     fun getRelationsForNode(id: Long): List<Relation> = relationIdsByElementKeyCache[ElementKey(ElementType.NODE, id)]?.let { elements ->
-            elements.map { elementCache[ElementKey(ElementType.RELATION, it)] as Relation }
+            synchronized(this) { elements.map { elementCache[ElementKey(ElementType.RELATION, it)] as Relation } }
         } ?: relationDB.getAllForNode(id)
     fun getRelationsForWay(id: Long): List<Relation> = relationIdsByElementKeyCache[ElementKey(ElementType.WAY, id)]?.let { relations ->
-            relations.map { elementCache[ElementKey(ElementType.RELATION, it)] as Relation }
+            synchronized(this) { relations.map { elementCache[ElementKey(ElementType.RELATION, it)] as Relation } }
         } ?: relationDB.getAllForWay(id)
     fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
 
