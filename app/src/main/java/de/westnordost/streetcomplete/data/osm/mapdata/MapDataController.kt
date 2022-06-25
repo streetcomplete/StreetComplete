@@ -337,11 +337,13 @@ class MapDataController internal constructor(
 
     // todo: to be called on low memory
     fun clearCache() {
-        wayIdsByNodeIdCache.clear()
-        relationIdsByElementKeyCache.clear()
-        elementCache.clear()
-        geometryCache.clear()
-        spatialCache.clear()
+        synchronized(this) {
+            wayIdsByNodeIdCache.clear()
+            relationIdsByElementKeyCache.clear()
+            elementCache.clear()
+            geometryCache.clear()
+            spatialCache.clear()
+        }
     }
 
     fun addListener(listener: Listener) {
@@ -360,6 +362,7 @@ class MapDataController internal constructor(
         listeners.forEach { it.onUpdated(updated, deleted) }
     }
 
+    // called only from synchronized
     private fun deleteFromCache(deleted: Collection<ElementKey>) {
         // this will call removeCachedElementsForNodes
         spatialCache.removeAll(deleted.filter { it.type == ElementType.NODE }.map { it.id })
@@ -370,6 +373,7 @@ class MapDataController internal constructor(
         }
     }
 
+    // called only from synchronized
     private fun addToCache(
         elements: Iterable<Element>,
         geometries: Iterable<ElementGeometryEntry>,
