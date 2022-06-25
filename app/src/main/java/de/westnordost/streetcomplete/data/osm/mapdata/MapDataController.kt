@@ -214,14 +214,17 @@ class MapDataController internal constructor(
         geometryCache.putAll(elementGeometries.associateBy { ElementKey(it.elementType, it.elementId) })
 
         ways.forEach { way ->
-            // TODO: don't add ids of nodes that are not in nodeIds (also in addToCache)
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id) }
+            way.nodeIds.forEach {
+                if (it in nodeIds)
+                    wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
+            }
         }
         relations.forEach { relation ->
-            // TODO: don't add key for Elements that are not in elements (also in addToCache)
-            relation.members.forEach { relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id) }
+            relation.members.forEach {
+                if ((it.ref in nodeIds && it.type == ElementType.NODE) || (it.ref in wayIds && it.type == ElementType.WAY))
+                    relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id)
+            }
         }
-
         Log.i(TAG, "Fetched ${elements.size} elements and geometries from DB in ${currentTimeMillis() - time}ms")
         return nodes.map { it.id to it.position }
     }
@@ -334,12 +337,13 @@ class MapDataController internal constructor(
         // don't put ways and relations that only use ignored nodes
         val nodes = elements.filter { it is Node && it.id !in ignoredNodeIds }
         val nodeIds = nodes.map { it.id }
-        val ways = elements.filterIsInstance(Way::class.java).filter { it.nodeIds.containsAny(nodeIds) }
+        val ways = elements.filter { it is Way && it.nodeIds.containsAny(nodeIds) }
         val wayIds = ways.map { it.id }
-        val relations = elements.filterIsInstance(Relation::class.java).filter { element ->
-            element.members.any {
-                (it.type == ElementType.NODE && it.ref in nodeIds) || (it.type == ElementType.WAY && it.ref in wayIds)
-            }
+        val relations = elements.filter { element ->
+            element is Relation
+                && element.members.any {
+                    (it.type == ElementType.NODE && it.ref in nodeIds) || (it.type == ElementType.WAY && it.ref in wayIds)
+                }
         }
         val relationIds = relations.map { it.id }
         elementCache.putAll((nodes+ways+relations).associateBy { ElementKey(it.type, it.id) })
@@ -352,15 +356,18 @@ class MapDataController internal constructor(
         )
 
         ways.forEach { way ->
-            // TODO: don't add id of nodes that are not in nodeIds
-            way.nodeIds.forEach { wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id) }
+            way.nodeIds.forEach {
+                if (it in nodeIds)
+                    wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
+            }
         }
         relations.forEach { relation ->
             relation.members.forEach {
-                // TODO: don't add key of Elements that are not in elements
-                relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id)
+                if ((it.ref in nodeIds && it.type == ElementType.NODE) || (it.ref in wayIds && it.type == ElementType.WAY))
+                    relationIdsByElementKeyCache.getOrPut(ElementKey(it.type, it.ref)) { ArrayList(2) }.add(relation.id)
             }
         }
+
 
     }
 
@@ -395,8 +402,6 @@ class MapDataController internal constructor(
             relationIdsByElementKeyCache.remove(it)
         }
         wayIdsByNodeIdCache.keys.removeAll(nodesToRemove) // is toSet() really faster? no duplicates anyway
-        // TODO: cleanup is incomplete! on trim to 0 tiles wayIdsByNodeIdCache and relationIdsByElementKeyCache are still not empty
-        //  -> reason is probably adding element keys / nodeIds of elements that are not put into cache
     }
 
     private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
