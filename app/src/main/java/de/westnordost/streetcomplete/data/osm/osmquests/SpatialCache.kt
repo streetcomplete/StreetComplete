@@ -13,9 +13,6 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
 // inspired by Android LruCache
 // fetch needs get data from db and fill other caches, like questKey -> Quest
 // onRemoveTile needs to clean other caches, like questKey -> Quest
-// careful: put does not actually put key into cache if tile is not cached -> update db blocking if key was not put
-// TODO: synchronized stuff? didn't get related crash so far...
-// TODO: tile zoom as parameter? could smaller tiles help for mapDataController?
 class SpatialCache<T>(
     private val maxTiles: Int,
     private val tileZoom: Int,
@@ -58,7 +55,7 @@ class SpatialCache<T>(
         return false
     }
 
-    // returns keys that were not put to cache because not in fully contained tiles
+    // returns keys that were not put to cache because they are not in fully contained tiles
     fun replaceAllInBBox(entries: Collection<Pair<T, LatLon>>, bbox: BoundingBox): List<T> {
         val tiles = bbox.asListOfEnclosingTilePos()
         val completelyContainedTiles = tiles.filter { it.asBoundingBox(
@@ -104,7 +101,6 @@ class SpatialCache<T>(
     }
 
     fun get(bbox: BoundingBox): List<T> {
-        // TODO: shortcut for creation of tilePos list?
         val requiredTiles = bbox.asListOfEnclosingTilePos()
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
@@ -145,9 +141,9 @@ class SpatialCache<T>(
         byTile.clear()
     }
 
-    fun getTilePosFor(pos: LatLon): TilePos = pos.enclosingTilePos(tileZoom)
+    private fun getTilePosFor(pos: LatLon): TilePos = pos.enclosingTilePos(tileZoom)
 
-    fun BoundingBox.asListOfEnclosingTilePos() = enclosingTilesRect(tileZoom).asTilePosSequence().toList()
+    private fun BoundingBox.asListOfEnclosingTilePos() = enclosingTilesRect(tileZoom).asTilePosSequence().toList()
 
     companion object {
         private const val TAG = "SpatialCache"

@@ -51,9 +51,9 @@ class MapDataController internal constructor(
     //  -> performance for getMapDataWithGeometry is always a little better for caches by ElementKey
     //   no further performance differences found, so use the cache by ElementKey
     // TODO: use geometries instead of entries? but for creating MutableMapDataWithGeometry the geometryEntries are necessary
-    private val elementCache = HashMap<ElementKey, Element>(20000)
+    private val elementCache = HashMap<ElementKey, Element>(20000) // 20000 elements is roughly 4-6 z16 tiles in a city
     private val geometryCache = HashMap<ElementKey, ElementGeometryEntry>(20000)
-    private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>() // <NodeId, <Set<WayId>>
+    private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>() // <NodeId, <List<WayId>>
     private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>()
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
@@ -73,16 +73,13 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet() // todo: use cache?
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
 
             deleteFromCache(oldElementKeys)
-            // bbox is the bbox from download, and should be from a z16 TilesRect
-            // mapData.boundingBox is expanded by ApplicationConstants.QUEST_FILTER_PADDING (20m)
-            // -> use bbox, not mapData.boundingBox
-            addToCache(mapData, geometryEntries, bbox)
+            addToCache(mapData, geometryEntries, bbox) // use bbox, and not of the padded mapData.boundingBox
 
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
@@ -314,12 +311,17 @@ class MapDataController internal constructor(
         elementDB.clear()
         geometryDB.clear()
         createdElementsController.clear()
-        spatialCache.clear()
+        clearCache()
+        onCleared()
+    }
+
+    // todo: to be called on low memory
+    fun clearCache() {
         wayIdsByNodeIdCache.clear()
         relationIdsByElementKeyCache.clear()
         elementCache.clear()
         geometryCache.clear()
-        onCleared()
+        spatialCache.clear()
     }
 
     fun addListener(listener: Listener) {
