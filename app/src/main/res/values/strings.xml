@@ -1488,11 +1488,11 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_tracktype_grade5">Soft</string>
 
     <string name="quest_entrance_reference">What is signed at this entrance?</string>
-    <string name="quest_entrance_reference_select_flat_range_and_code">Entrance code and range of flats</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>
     <string name="quest_entrance_reference_select_flat_range_only">Range of flats</string>
-    <string name="quest_entrance_reference_select_code_only">Entrance code</string>
-    <string name="quest_entrance_reference_nothing_signed">No sign with code or flat range</string>
-    <string name="quest_entrance_reference_reference_label">Entrance code:</string>
+    <string name="quest_entrance_reference_select_code_only">Entrance label</string>
+    <string name="quest_entrance_reference_nothing_signed">No sign with label or flat range</string>
+    <string name="quest_entrance_reference_reference_label">Entrance label:</string>
     <string name="quest_entrance_reference_flat_range_label">Flat range:</string>
     <string name="quest_entrance_reference_flat_range_to">to</string>
 
