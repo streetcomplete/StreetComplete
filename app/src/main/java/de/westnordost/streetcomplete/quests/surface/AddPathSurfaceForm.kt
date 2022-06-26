@@ -46,7 +46,7 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
 
     private fun createMarkAsIndoorsAnswer(): AnswerItem? {
         val way = element as? Way ?: return null
-        if (way.isArea() || way.tags["indoor"] == "yes") return null
+        if (way.tags["indoor"] == "yes") return null
 
         return AnswerItem(R.string.quest_generic_answer_is_indoors) {
             applyAnswer(IsIndoorsAnswer)
