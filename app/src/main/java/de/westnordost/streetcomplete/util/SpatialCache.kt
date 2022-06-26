@@ -92,12 +92,12 @@ class SpatialCache<T>(
             // and return what wasn't put
             val ignoredKeys = mutableListOf<T>() // could also use sth like filter or mapNotNull instead of mutable list
             val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
-            entries.forEach { (key, pos) ->
+            entries@for ((key, pos) in entries) {
                 for (tile in tiles) {
                     if (bboxByTile[tile]!!.contains(pos)) {
                         byTile[tile]!!.add(key)
                         byKey[key] = pos
-                        return@forEach
+                        continue@entries
                     }
                 }
                 ignoredKeys.add(key)
