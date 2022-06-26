@@ -58,7 +58,7 @@ class OsmNoteQuestController(
     }
 
     private val spatialCache = SpatialCache(
-        192,
+        SPATIAL_CACHE_SIZE,
         16,
         { bbox -> getAllVisibleInBBoxForCache(bbox) },
         { keys -> noteCache.keys.removeAll(keys.toSet()) }
@@ -126,6 +126,8 @@ class OsmNoteQuestController(
             spatialCache.clear()
         }
     }
+
+    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE/3) }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -304,3 +306,5 @@ private val NoteComment.isReply: Boolean get() =
 
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
+
+private const val SPATIAL_CACHE_SIZE = 128

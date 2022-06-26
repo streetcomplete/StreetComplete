@@ -135,7 +135,7 @@ class OsmQuestController internal constructor(
     }
 
     private val spatialCache = SpatialCache(
-        192,
+        SPATIAL_CACHE_SIZE,
         16,
         { bbox -> getAllVisibleInBBoxForCache(bbox) },
         { keys -> questCache.keys.removeAll(keys) }
@@ -325,6 +325,8 @@ class OsmQuestController internal constructor(
         }
     }
 
+    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE/3) }
+
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
     private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
@@ -489,3 +491,5 @@ private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddPlaceName -> 2 // FeatureDictionary, extensive filter
     else -> 10
 }
+
+private const val SPATIAL_CACHE_SIZE = 128

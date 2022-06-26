@@ -42,7 +42,7 @@ class MapDataController internal constructor(
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     val spatialCache = SpatialCache(
-        32,
+        SPATIAL_CACHE_SIZE,
         16,
         { bbox -> getDataInBBoxForCache(bbox) },
         { ids -> removeCachedElementsForNodes(ids) }
@@ -335,7 +335,6 @@ class MapDataController internal constructor(
         onCleared()
     }
 
-    // todo: to be called on low memory
     fun clearCache() {
         synchronized(this) {
             wayIdsByNodeIdCache.clear()
@@ -345,6 +344,8 @@ class MapDataController internal constructor(
             spatialCache.clear()
         }
     }
+
+    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE/3) }
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
@@ -473,3 +474,5 @@ class MapDataController internal constructor(
         private const val TAG = "MapDataController"
     }
 }
+
+private const val SPATIAL_CACHE_SIZE = 32
