@@ -15,7 +15,7 @@ v45.0-beta1: |
   <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
   <li>Improve GPS accuracy for some devices (#34139...), by @Helium314</li>
   <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
-  <li>Other small enhancements (#3919, #4120...)</li>
+  <li>Other small enhancements and performance improvements (#3919, #4120...)</li>
   </ul>
 
 v45.0-alpha1: |
