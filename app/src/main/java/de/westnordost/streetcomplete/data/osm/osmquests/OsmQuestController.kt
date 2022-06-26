@@ -268,7 +268,7 @@ class OsmQuestController internal constructor(
 
     // get from cache, if not found check in db
     override fun get(key: OsmQuestKey): OsmQuest? {
-        questCache[key]?.let { return it }
+        synchronized(this) { questCache[key]?.let { return it } }
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -276,6 +276,7 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
+    // to be called from spatialCache only, so will already be synchronized
     private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox): List<Pair<OsmQuestKey, LatLon>> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
@@ -300,12 +301,14 @@ class OsmQuestController internal constructor(
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val newTypes = questTypes?.toHashSet()
-        if (visibleQuests != newTypes) {
-            spatialCache.clear()
-            questCache.clear()
-            visibleQuests = newTypes
+        synchronized(this) {
+            if (visibleQuests != newTypes) {
+                spatialCache.clear()
+                questCache.clear()
+                visibleQuests = newTypes
+            }
+            return spatialCache.get(bbox).map { questCache[it]!! }
         }
-        return spatialCache.get(bbox).map { questCache[it]!! }
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
@@ -411,19 +414,21 @@ class OsmQuestController internal constructor(
         }
 
         // update cache
-        if (deletedKeys.isNotEmpty()) {
-            spatialCache.removeAll(deletedKeys)
-            questCache.keys.removeAll(deletedKeys) // loop may be faster, see result in mapdatacontroller.removeCachedElementsForNodes
-        }
-        if (visibleAdded.isNotEmpty()) {
-            val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
-            if (replaceBBox != null) {
-                val notPut = spatialCache.replaceAllInBBox(actuallyVisible.map { it.key to it.position }, replaceBBox)
-                questCache.putAll(actuallyVisible.filterNot { it.key in notPut }.associateBy { it.key })
-            } else {
-                actuallyVisible.forEach {
-                    if (spatialCache.putIfTileExists(it.key, it.position))
-                        questCache[it.key] = it
+        synchronized(this) {
+            if (deletedKeys.isNotEmpty()) {
+                spatialCache.removeAll(deletedKeys)
+                questCache.keys.removeAll(deletedKeys)
+            }
+            if (visibleAdded.isNotEmpty()) {
+                val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
+                if (replaceBBox != null) {
+                    val notPut = spatialCache.replaceAllInBBox(actuallyVisible.map { it.key to it.position }, replaceBBox)
+                    questCache.putAll(actuallyVisible.filterNot { it.key in notPut }.associateBy { it.key })
+                } else {
+                    actuallyVisible.forEach {
+                        if (spatialCache.putIfTileExists(it.key, it.position))
+                            questCache[it.key] = it
+                    }
                 }
             }
         }
