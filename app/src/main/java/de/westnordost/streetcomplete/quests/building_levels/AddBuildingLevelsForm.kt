@@ -36,7 +36,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
             .toList()
     }
 
-    internal lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
+    private lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)

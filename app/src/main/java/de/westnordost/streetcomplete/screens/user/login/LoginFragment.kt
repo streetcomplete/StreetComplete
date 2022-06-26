@@ -101,7 +101,7 @@ class LoginFragment :
         userLoginStatusController.logOut()
     }
 
-    suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
+    private suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 /* we didn't save the new OAuthConsumer yet but we want to make an API call with it
