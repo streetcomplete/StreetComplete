@@ -119,6 +119,7 @@ class OsmQuestController internal constructor(
 
         override fun onCleared() {
             db.clear()
+            clearCache()
             listeners.forEach { it.onInvalidated() }
         }
     }
@@ -136,8 +137,9 @@ class OsmQuestController internal constructor(
     private val spatialCache = SpatialCache(
         192,
         16,
-        { bbox -> getAllVisibleInBBoxFromDB(bbox) },
-        { keys -> questCache.keys.removeAll(keys.toSet()) }) // is toSet() really faster? no duplicates anyway
+        { bbox -> getAllVisibleInBBoxForCache(bbox) },
+        { keys -> questCache.keys.removeAll(keys) }
+    )
     private val questCache = HashMap<OsmQuestKey, OsmQuest>(2000)
     private var visibleQuests: HashSet<String>? = null
 
@@ -277,7 +279,7 @@ class OsmQuestController internal constructor(
     }
 
     // to be called from spatialCache only, so will already be synchronized
-    private fun getAllVisibleInBBoxFromDB(bbox: BoundingBox): List<Pair<OsmQuestKey, LatLon>> {
+    private fun getAllVisibleInBBoxForCache(bbox: BoundingBox): List<Pair<OsmQuestKey, LatLon>> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, visibleQuests).filter {
@@ -303,8 +305,7 @@ class OsmQuestController internal constructor(
         val newTypes = questTypes?.toHashSet()
         synchronized(this) {
             if (visibleQuests != newTypes) {
-                spatialCache.clear()
-                questCache.clear()
+                clearCache()
                 visibleQuests = newTypes
             }
             return spatialCache.get(bbox).map { questCache[it]!! }
@@ -315,6 +316,13 @@ class OsmQuestController internal constructor(
         if (geometry == null) return null
         val questType = questTypeRegistry.getByName(entry.questTypeName) as? OsmElementQuestType<*> ?: return null
         return OsmQuest(questType, entry.elementType, entry.elementId, geometry)
+    }
+
+    fun clearCache() {
+        synchronized(this) {
+            questCache.clear()
+            spatialCache.clear()
+        }
     }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
