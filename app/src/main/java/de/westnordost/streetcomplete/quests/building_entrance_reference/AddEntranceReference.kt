@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.crossing
+package de.westnordost.streetcomplete.quests.building_entrance_reference
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -6,16 +6,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReferenceForm
-import de.westnordost.streetcomplete.quests.building_entrance_reference.EntranceAnswer
-import de.westnordost.streetcomplete.quests.building_entrance_reference.FlatRange
-import de.westnordost.streetcomplete.quests.building_entrance_reference.ReferenceCode
-import de.westnordost.streetcomplete.quests.building_entrance_reference.ReferenceCodeAndFlatRange
-import de.westnordost.streetcomplete.quests.building_entrance_reference.Unsigned
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
@@ -42,7 +36,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
     override val changesetComment = "Add entrance identification"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_door_address
-    override val questTypeAchievements = listOf(CITIZEN, BLIND)
+    override val achievements = listOf(CITIZEN, BLIND)
     override val enabledInCountries = NoCountriesExcept(
         "PL", // Poland - own knowledge of Mateusz Konieczny https://github.com/streetcomplete/StreetComplete/issues/3064#issuecomment-879447168
         "RU", // Russia - https://github.com/streetcomplete/StreetComplete/issues/3064#issuecomment-880231076

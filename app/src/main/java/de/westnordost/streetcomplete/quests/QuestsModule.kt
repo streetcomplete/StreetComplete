@@ -48,7 +48,7 @@ import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBin
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
-import de.westnordost.streetcomplete.quests.crossing.AddEntranceReference
+import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway

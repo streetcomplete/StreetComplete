@@ -9,12 +9,12 @@ import android.widget.EditText
 import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
-class AddEntranceReferenceForm : AbstractQuestFormAnswerFragment<EntranceAnswer>() {
+class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_entrance_reference_nothing_signed) { onNothingSigned() },
