@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.osmquests
+package de.westnordost.streetcomplete.util
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
