@@ -216,7 +216,7 @@ class SettingsFragment :
         val hasCustomPresets = questPresetsSource.getAll().isNotEmpty()
         val presetStr = if (hasCustomPresets) getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
 
-        val enabledCount = questTypeRegistry.filter { visibleQuestTypeSource.isVisible(it) }.count()
+        val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
         val totalCount = questTypeRegistry.size
         val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 
