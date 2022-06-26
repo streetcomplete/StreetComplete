@@ -46,7 +46,7 @@ private val LitStatus?.color get() = when (this) {
     LitStatus.YES,
     LitStatus.UNSUPPORTED ->   "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"
-    LitStatus.AUTOMATIC ->     "#00aaff"
+    LitStatus.AUTOMATIC ->     "#00eeff"
     LitStatus.NO ->            "#555555"
     null ->                    Color.UNSPECIFIED
 }
