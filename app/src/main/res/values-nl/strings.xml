@@ -727,12 +727,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Er wordt bewegingsdetectie gebruikt"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Het is dag en nacht verlicht"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Niet mogelijk hier te scannen. Probeer meer in te zoomen, of kantel de kaart minder."</string>
 
     <!-- Fuzzy -->
@@ -2674,4 +2668,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Druk op het scherm om te starten met meten"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Bevindt zich hier een publiek toegankelijke fietspomp (tenminste wanneer het geopend is)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Bevindt zich hier een werkende fietspomp?"</string>
+    <string name="action_overlays">"Lagen"</string>
+    <string name="split_way">"Het verschilt"</string>
+    <string name="quest_memorialType_title">"Welk soort gedenkteken is dit?"</string>
+    <string name="quest_memorialType_statue">"Standbeeld"</string>
+    <string name="quest_memorialType_bust">"Borstbeeld"</string>
+    <string name="quest_memorialType_plaque">"Plaquette"</string>
+    <string name="quest_memorialType_war_memorial">"Oorlogsmonument"</string>
+    <string name="quest_memorialType_stone">"Gedenksteen"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
+    <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
+    <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Kies laag"</string>
+    <string name="overlay_none">"Geen"</string>
+    <string name="overlay_lit">"Straatverlichting"</string>
+    <string name="lit_value_yes">"Verlicht"</string>
+    <string name="lit_value_no">"Onverlicht"</string>
+    <string name="lit_value_24_7">"Altijd verlicht"</string>
+    <string name="lit_value_automatic">"Verlicht als iemand passeert"</string>
+    <string name="overlay_sidewalk">"Voetpaden"</string>
 </resources>

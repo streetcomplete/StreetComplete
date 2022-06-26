@@ -14,6 +14,7 @@ v45.0-beta1: |
   <li>Do not assume that any cycle lane or track on the right side of the road will always be in forward direction (in countries with right-hand traffic, for left-hand traffic respectively)</li>
   <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
   <li>Improve GPS accuracy for some devices (#34139...), by @Helium314</li>
+  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
   <li>Other small enhancements (#3919, #4120...)</li>
   </ul>
 

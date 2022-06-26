@@ -486,8 +486,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Orzechy włoskie"</string>
     <string name="produce_sisal">"Agawy sizalowe"</string>
-    <string name="quest_way_lit_automatic">"Wykrywa ruch"</string>
-    <string name="quest_way_lit_24_7">"Jest oświetlona 24 godziny na dobę."</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutaj nie można skanować. Spróbuj przybliżyć lub zmniejszyć pochylenie mapy."</string>
 
     <!-- Fuzzy -->

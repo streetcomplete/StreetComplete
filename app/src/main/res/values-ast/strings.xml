@@ -746,12 +746,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Con sensores de movimientu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Ta allumada de día y de nueche"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Avérate un poco más nel mapa pa buscar xeres."</string>
 
     <!-- Fuzzy -->

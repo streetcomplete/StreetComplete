@@ -483,8 +483,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="produce_vanilla">"Vanilie"</string>
     <string name="produce_walnuts">"Nuci"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Folosește senzori de mișcare"</string>
-    <string name="quest_way_lit_24_7">"Este luminat și ziua și noaptea"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu pot scana aici. Încercați să apropiați mai puțin sau înclinați mai puțin harta."</string>
     <string name="quest_crossing_type_title">"Ce fel de trecere este aceasta?"</string>
 
@@ -1487,4 +1485,20 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
 
     <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
+    <string name="pref_title_language_select">"Selectați limba"</string>
+    <string name="language_default">"Limba dispozitivului"</string>
+    <string name="quest_street_parking_title">"În ce mod se poate parca aici, dacă este permis?"</string>
+    <string name="select_street_parking_position">"Selectați poziția:"</string>
+    <string name="select_street_parking_no">"Există semne sau marcaje aici?"</string>
+    <string name="street_parking_parallel">"Paralel"</string>
+    <string name="street_parking_diagonal">"În diagonală"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"Pe stradă"</string>
+    <string name="street_parking_half_on_kerb">"Parțial pe stradă"</string>
+    <string name="street_parking_on_kerb">"Paralel cu strada"</string>
+    <string name="street_parking_street_side">"Paralel cu strada, doar în spațiile dedicate"</string>
+    <string name="street_parking_painted_area_only">"Pe stradă, în spații dedicate"</string>
+    <string name="street_parking_separate">"Parcarea este afișată separat pe hartă"</string>
+    <string name="street_parking_no">"Nu este parcare / nu este permisă parcarea"</string>
+    <string name="street_parking_prohibited">"Parcarea interzisă"</string>
 </resources>

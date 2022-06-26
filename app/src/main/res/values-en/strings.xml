@@ -88,6 +88,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_noSign">There is no sign</string>
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_indoors">"This is indoors"</string>
 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
@@ -1427,6 +1428,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
+    <string name="quest_summit_cross_title">Is there a summit cross here?</string>
+
     <string name="quest_summit_register_title2">Is there a summit register here?</string>
 
     <string name="quest_surface_title">"What’s the surface here?"</string>
@@ -1483,6 +1486,15 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_tracktype_grade3a">Mostly solid</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
+
+    <string name="quest_entrance_reference">What is signed at this entrance?</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>
+    <string name="quest_entrance_reference_select_flat_range_only">Range of flats</string>
+    <string name="quest_entrance_reference_select_code_only">Entrance label</string>
+    <string name="quest_entrance_reference_nothing_signed">No sign with label or flat range</string>
+    <string name="quest_entrance_reference_reference_label">Entrance label:</string>
+    <string name="quest_entrance_reference_flat_range_label">Flat range:</string>
+    <string name="quest_entrance_reference_flat_range_to">to</string>
 
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>

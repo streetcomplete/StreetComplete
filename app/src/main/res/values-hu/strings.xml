@@ -550,8 +550,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_vanilla">"Vanília"</string>
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
-    <string name="quest_way_lit_automatic">"Mozgásérzékelővel rendelkezik"</string>
-    <string name="quest_way_lit_24_7">"Éjjel-nappal ki van világítva"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nem lehet beolvasni. Próbálj jobban belenagyítani, vagy kevésbé elforgatni a térképet."</string>
     <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>

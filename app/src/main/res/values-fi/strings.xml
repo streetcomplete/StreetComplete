@@ -534,12 +534,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="produce_sisal">"Sisalia"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Käytössä on liiketunnistin"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Valaistu yötä päivää"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutkaaminen tässä ei onnistu. Kokeile lähentää vielä lisää tai kallista karttaa vähemmän."</string>
 
     <!-- Fuzzy -->

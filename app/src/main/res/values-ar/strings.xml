@@ -348,8 +348,6 @@
     <string name="produce_vanilla">"فانيلا"</string>
     <string name="produce_walnuts">"المكسرات"</string>
     <string name="produce_sisal">"سيزال"</string>
-    <string name="quest_way_lit_automatic">"يستخدم مستشعر الحركة للإضاءة"</string>
-    <string name="quest_way_lit_24_7">"إنه مضاء ليلا ونهارا"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"لا يمكن المسح هنا. حاول تكبير الخريطة أو إمالتها بدرجة أقل."</string>
     <string name="quest_crossing_type_title">"أي نوع من معابر المشاة هذا؟"</string>
 
@@ -1556,4 +1554,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"اضغط على الشاشة لبدء القياس"</string>
     <string name="quest_air_pump_bicycle_shop_title">"هل توجد هنا مضخة هواء عامة للدراجات (على الأقل عندما يكون المكان مفتوح)؟"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"هل توجد مضخة هواء للدراجات هنا؟"</string>
+    <string name="action_overlays">"الطبقات"</string>
+    <string name="split_way">"تقسيم الطريق"</string>
+    <string name="quest_memorialType_title">"ما نوع هذا النصب التذكاري؟"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Bust"</string>
+    <string name="quest_memorialType_plaque">"Plaque"</string>
+    <string name="quest_memorialType_war_memorial">"War memorial"</string>
+    <string name="quest_memorialType_stone">"حصاة"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
+    <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
+    <string name="quest_memorialType_sculpture">"منحوتات أخرى"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"تحديد الطبقة"</string>
+    <string name="overlay_none">"لا شيء"</string>
+    <string name="overlay_lit">"إنارة الشارع"</string>
+    <string name="lit_value_yes">"مضاء"</string>
+    <string name="lit_value_no">"غير مضاء"</string>
+    <string name="lit_value_24_7">"مضاء ليلا ونهارا"</string>
+    <string name="lit_value_automatic">"مضاء عندما يمر شخص ما"</string>
+    <string name="overlay_sidewalk">"الأرصفة"</string>
 </resources>

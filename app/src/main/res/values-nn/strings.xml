@@ -284,8 +284,6 @@
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Lyset brukar rørslesensor"</string>
-    <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
     <string name="quest_crossing_type_unmarked">"Utan vegmarkering"</string>
