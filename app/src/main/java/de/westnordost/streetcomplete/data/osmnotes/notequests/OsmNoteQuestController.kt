@@ -98,7 +98,11 @@ class OsmNoteQuestController(
             clearCache()
             showingOnlyNotesPhrasedAsQuestions = showOnlyNotesPhrasedAsQuestions
         }
-        synchronized(this) { return spatialCache.get(bbox).map { noteCache[it]!! } }
+        synchronized(this) {
+            val notes = spatialCache.get(bbox).map { noteCache[it]!! }
+            spatialCache.trim()
+            return notes
+        }
     }
 
     // to be called from spatialCache only, so will already be synchronized

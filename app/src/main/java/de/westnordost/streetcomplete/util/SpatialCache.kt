@@ -10,10 +10,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 
-// inspired by Android LruCache
-// fetch needs get data from db and fill other caches, like questKey -> Quest
-// onRemoveTile needs to clean other caches, like questKey -> Quest
-// the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom
+/**
+ * <Key, LatLon> cache based on tiles, inspired by Android LruCache
+ * fetch needs get data from db and fill other caches, e.g. questKey -> Quest
+ * onRemoveTile needs to clean other caches, e.g. questKey -> Quest
+ * trim() needs to be called after get() and getting data from other caches
+ * the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom
+ */
 class SpatialCache<T>(
     private val maxTiles: Int,
     private val tileZoom: Int,
@@ -106,11 +109,12 @@ class SpatialCache<T>(
         }
     }
 
-    // bbox must fit in cache!
+    /**
+     * get all data inside bbox, will be loaded from db if necessary using fetch
+     * call trim() after using get and getting data from other caches
+     */
     fun get(bbox: BoundingBox): List<T> {
         val requiredTiles = bbox.asListOfEnclosingTilePos()
-        if (requiredTiles.size > maxTiles)
-            throw(IllegalArgumentException("trying to get more tiles than fit in cache"))
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
         if (tilesToFetch.isNotEmpty()) {
@@ -124,10 +128,6 @@ class SpatialCache<T>(
             else
                 byTile[tile]!!.filter { byKey[it]!! in bbox }
         }
-
-        // resize cache now
-        // don't do this right after putting new data, as this might remove tiles we need
-        trim()
 
         return keys
     }

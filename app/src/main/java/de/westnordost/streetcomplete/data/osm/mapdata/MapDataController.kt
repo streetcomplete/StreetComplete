@@ -199,6 +199,7 @@ class MapDataController internal constructor(
                 relationIds.map { ElementKey(ElementType.RELATION, it) }
             elements = elementCache.filterKeys { it in elementKeys }.values
             elementGeometries = geometryCache.filterKeys { it in elementKeys }.values
+            spatialCache.trim()
         }
 
         val result = MutableMapDataWithGeometry(elements, elementGeometries)

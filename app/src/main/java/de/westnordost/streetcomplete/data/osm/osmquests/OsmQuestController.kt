@@ -309,7 +309,9 @@ class OsmQuestController internal constructor(
                 clearCache()
                 visibleQuests = newTypes
             }
-            return spatialCache.get(bbox).map { questCache[it]!! }
+            val quests = spatialCache.get(bbox).map { questCache[it]!! }
+            spatialCache.trim()
+            return quests
         }
     }
 
