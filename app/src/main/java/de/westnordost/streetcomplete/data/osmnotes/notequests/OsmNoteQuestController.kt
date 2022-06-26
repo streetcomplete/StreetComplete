@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.osmquests.SpatialCache
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
@@ -55,6 +57,15 @@ class OsmNoteQuestController(
         }
     }
 
+    private val spatialCache = SpatialCache(
+        192,
+        16,
+        { bbox -> getAllVisibleInBBoxForCache(bbox) },
+        { keys -> noteCache.keys.removeAll(keys.toSet()) }
+    )
+    private val noteCache = HashMap<Long, OsmNoteQuest>()
+    private var showingOnlyNotesPhrasedAsQuestions = showOnlyNotesPhrasedAsQuestions
+
     private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
         override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
@@ -77,12 +88,26 @@ class OsmNoteQuestController(
     }
 
     override fun get(questId: Long): OsmNoteQuest? {
+        synchronized(this) { noteCache[questId]?.let { return it } }
         if (isNoteHidden(questId)) return null
         return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
     override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
-        return createQuestsForNotes(noteSource.getAll(bbox))
+        if (showingOnlyNotesPhrasedAsQuestions != showOnlyNotesPhrasedAsQuestions) {
+            clearCache()
+            showingOnlyNotesPhrasedAsQuestions = showOnlyNotesPhrasedAsQuestions
+        }
+        synchronized(this) { return spatialCache.get(bbox).map { noteCache[it]!! } }
+    }
+
+    // to be called from spatialCache only, so will already be synchronized
+    private fun getAllVisibleInBBoxForCache(bbox: BoundingBox): List<Pair<Long, LatLon>> {
+        val notes = createQuestsForNotes(noteSource.getAll(bbox))
+        notes.forEach {
+            noteCache[it.id] = it
+        }
+        return notes.map { it.id to it.position }
     }
 
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
@@ -94,6 +119,13 @@ class OsmNoteQuestController(
         if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds)) {
             OsmNoteQuest(note.id, note.position)
         } else null
+
+    fun clearCache() {
+        synchronized(this) {
+            noteCache.clear()
+            spatialCache.clear()
+        }
+    }
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -165,6 +197,14 @@ class OsmNoteQuestController(
         deletedQuestIds: Collection<Long> = emptyList()
     ) {
         if (quests.isEmpty() && deletedQuestIds.isEmpty()) return
+
+        synchronized(this) {
+            spatialCache.removeAll(deletedQuestIds)
+            quests.forEach {
+                if (spatialCache.putIfTileExists(it.id, it.position))
+                    noteCache[it.id] = it
+            }
+        }
         listeners.forEach { it.onUpdated(quests, deletedQuestIds) }
     }
 
