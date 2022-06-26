@@ -165,7 +165,7 @@ class StreetCompleteApplication : Application() {
                 // very low on memory -> drop caches
                 cacheTrimmer.clearCaches()
             }
-            ComponentCallbacks2.TRIM_MEMORY_MODERATE, ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE, ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> {
+            ComponentCallbacks2.TRIM_MEMORY_MODERATE, ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW -> {
                 // memory needed, but not critical -> trim only
                 cacheTrimmer.trimCaches()
             }
