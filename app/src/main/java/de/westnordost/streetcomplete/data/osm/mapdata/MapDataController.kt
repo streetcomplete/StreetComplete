@@ -42,7 +42,7 @@ class MapDataController internal constructor(
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     val spatialCache = SpatialCache(
-        80, // TODO: 192 is likely WAY too much for S4 mini, maybe make it depend on available memory?
+        32,
         16,
         { bbox -> getDataInBBoxForCache(bbox) },
         { ids -> removeCachedElementsForNodes(ids) }

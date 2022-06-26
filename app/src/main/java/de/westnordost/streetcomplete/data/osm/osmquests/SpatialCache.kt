@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
 // inspired by Android LruCache
 // fetch needs get data from db and fill other caches, like questKey -> Quest
 // onRemoveTile needs to clean other caches, like questKey -> Quest
+// the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom
 class SpatialCache<T>(
     private val maxTiles: Int,
     private val tileZoom: Int,
@@ -56,13 +57,18 @@ class SpatialCache<T>(
     }
 
     // returns keys that were not put to cache because they are not in fully contained tiles
+    // contrary to get(bbox), here the bbox may be larger than what can be put in cache
     fun replaceAllInBBox(entries: Collection<Pair<T, LatLon>>, bbox: BoundingBox): List<T> {
         val tiles = bbox.asListOfEnclosingTilePos()
-        val completelyContainedTiles = tiles.filter { it.asBoundingBox(
-            tileZoom).isCompletelyInside(bbox) }
+        val completelyContainedTiles = tiles.filter { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
         if (tiles != completelyContainedTiles)
             Log.i(TAG, "replacing tiles not completely contained in BBox")
-        val ignoredKeys = replaceAllInTiles(entries, completelyContainedTiles)
+        val tilesToFetch = if (completelyContainedTiles.size > maxTiles) {
+            Log.i(TAG, "trying to replacing more tiles than fit in cache, ignoring some tiles")
+            completelyContainedTiles.subList(0,maxTiles-1)
+        } else
+            completelyContainedTiles
+        val ignoredKeys = replaceAllInTiles(entries, tilesToFetch)
 
         // trim only when bbox!
         trim()
@@ -100,8 +106,11 @@ class SpatialCache<T>(
         }
     }
 
+    // bbox must fit in cache!
     fun get(bbox: BoundingBox): List<T> {
         val requiredTiles = bbox.asListOfEnclosingTilePos()
+        if (requiredTiles.size > maxTiles)
+            throw(IllegalArgumentException("trying to get more tiles than fit in cache"))
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
         if (tilesToFetch.isNotEmpty()) {
