@@ -197,8 +197,8 @@ class MapDataController internal constructor(
             val elementKeys = nodeIds.map { ElementKey(ElementType.NODE, it) } +
                 wayIds.map { ElementKey(ElementType.WAY, it) } +
                 relationIds.map { ElementKey(ElementType.RELATION, it) }
-            elements = elementCache.filterKeys { it in elementKeys }.values
-            elementGeometries = geometryCache.filterKeys { it in elementKeys }.values
+            elements = elementKeys.mapNotNull { elementCache[it] }
+            elementGeometries = elementKeys.mapNotNull { geometryCache[it] }
             spatialCache.trim()
         }
 
