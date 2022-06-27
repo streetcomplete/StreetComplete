@@ -45,12 +45,15 @@ import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -1087,6 +1090,12 @@ class MainFragment :
 
         fun getMapData(): MapDataWithGeometry {
             val data = mapDataWithEditsSource.getMapDataWithGeometry(bbox)
+            if (data is MutableMapDataWithGeometry && element is Way && !data.isWayComplete(element.id)) {
+                // complete way to show stuff along it
+                mapDataWithEditsSource.getWayComplete(element.id)?.nodes?.forEach {
+                    data.put(it, ElementPointGeometry(it.position))
+                }
+            }
             mapData = data
             return data
         }

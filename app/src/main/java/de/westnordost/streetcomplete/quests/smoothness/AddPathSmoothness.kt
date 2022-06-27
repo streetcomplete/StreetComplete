@@ -4,6 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
@@ -43,6 +47,15 @@ class AddPathSmoothness(private val prefs: SharedPreferences) : OsmFilterQuestTy
         = arrayOf(tags["surface"].toString())
 
     override fun createForm() = AddSmoothnessForm()
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        val nodes = (element as Way).nodeIds
+        return getMapData().nodes.asSequence().filter { it.id in nodes && barrierFilter.matches(it) }
+    }
+
+    private val barrierFilter by lazy {
+        "nodes with barrier or traffic_calming or (kerb and kerb !~ no|flush)".toElementFilterExpression()
+    }
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
