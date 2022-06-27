@@ -30,7 +30,7 @@ class VisibleQuestsSource(
 
     private val osmQuestSourceListener = object : OsmQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmQuest>, deletedQuestKeys: Collection<OsmQuestKey>) {
-            updateVisibleQuests(addedQuests.filter(::isVisibleInTeamMode), deletedQuestKeys)
+            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
         }
         override fun onInvalidated() {
             // apparently the visibility of many different quests have changed
@@ -40,7 +40,7 @@ class VisibleQuestsSource(
 
     private val osmNoteQuestSourceListener = object : OsmNoteQuestSource.Listener {
         override fun onUpdated(addedQuests: Collection<OsmNoteQuest>, deletedQuestIds: Collection<Long>) {
-            updateVisibleQuests(addedQuests.filter(::isVisibleInTeamMode), deletedQuestIds.map { OsmNoteQuestKey(it) })
+            updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestIds.map { OsmNoteQuestKey(it) })
         }
         override fun onInvalidated() {
             // apparently the visibility of many different notes have changed
@@ -100,11 +100,15 @@ class VisibleQuestsSource(
     fun get(questKey: QuestKey): Quest? = when (questKey) {
         is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.get(questKey)
-    }?.takeIf { isVisibleInTeamMode(it) }
+    }?.takeIf { isVisible(it) }
 
     private fun isVisible(questType: QuestType): Boolean =
         visibleQuestTypeSource.isVisible(questType) &&
         selectedOverlaySource.selectedOverlay?.let { questType.name !in it.hidesQuestTypes } ?: true
+
+
+    private fun isVisible(quest: Quest): Boolean =
+        isVisibleInTeamMode(quest) && isVisible(quest.type)
 
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest)
