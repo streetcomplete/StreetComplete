@@ -120,8 +120,7 @@ class OsmQuestController internal constructor(
 
         override fun onCleared() {
             db.clear()
-            clearCache()
-            listeners.forEach { it.onInvalidated() }
+            onInvalidated()
         }
     }
 
@@ -449,6 +448,7 @@ class OsmQuestController internal constructor(
         listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
     private fun onInvalidated() {
+        clearCache()
         listeners.forEach { it.onInvalidated() }
     }
 
