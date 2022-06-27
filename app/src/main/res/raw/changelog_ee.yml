@@ -1,3 +1,11 @@
+v45.0_ee: |
+  <ul>
+  <li>Highlight obstacles along the way for smoothness quests</li>
+  <li>Add quest settings to ask smoothness for all surfaces</li>
+  <li>Add element selection to wheelchair quest</li>
+  <li>Quick-access to settings by pressing menu key when in main menu dialog</li>
+  </ul>
+
 v44.1_ee: |
   <h2>First release of expert edition</h2>
   <h3>New quests</h3>

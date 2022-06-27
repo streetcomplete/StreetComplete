@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
@@ -11,6 +13,7 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
+import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -76,13 +79,22 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     }
 
     internal fun onClickMainMenu() {
-        MainMenuDialog(
+        val d = MainMenuDialog(
             requireContext(),
             if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
             this::onClickDownload,
             teamModeQuestFilter::enableTeamMode,
             teamModeQuestFilter::disableTeamMode
-        ).show()
+        )
+        d.setOnKeyListener { _, _, keyEvent ->
+            if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
+                val intent = Intent(requireContext(), SettingsActivity::class.java)
+                requireContext().startActivity(intent)
+                d.dismiss()
+                true
+            } else false
+        }
+        d.show()
     }
 
     /* ------------------------------------ Download Button  ------------------------------------ */
