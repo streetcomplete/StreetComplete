@@ -11,9 +11,9 @@ v45.0-beta1: |
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
-  <li>Do not assume that any cycle lane or track on the right side of the road will always be in forward direction (in countries with right-hand traffic, for left-hand traffic respectively)</li>
+  <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
   <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
-  <li>Improve GPS accuracy for some devices (#34139...), by @Helium314</li>
+  <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
   <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
   <li>Other small enhancements and performance improvements (#3919, #4120...)</li>
   </ul>
