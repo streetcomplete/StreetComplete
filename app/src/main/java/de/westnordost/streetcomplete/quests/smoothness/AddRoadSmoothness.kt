@@ -81,7 +81,7 @@ class AddRoadSmoothness(private val prefs: SharedPreferences) : OsmFilterQuestTy
             .setMessage(R.string.quest_smoothness_generic_surface_message)
             .setNeutralButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_smoothness_generic_surface_yes) { _,_ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + SMOOTHNESS_FOR_ALL_SURFACES, false).apply()
+                prefs.edit().putBoolean(questPrefix(prefs) + SMOOTHNESS_FOR_ALL_SURFACES, true).apply()
                 SettingsFragment.restartNecessary = true
             }
             .setNegativeButton(R.string.quest_smoothness_generic_surface_no) { _,_ ->
