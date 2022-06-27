@@ -93,11 +93,8 @@ ic_link_myosmatic.png          fair use          used while linking and promotin
 ic_link_opnvkarte.png          fair use          used while linking and promoting this project
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
-kerb_height_raised_original... CC0               Mateusz Konieczny (...)
 kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
-kerb_height_lowered_origina... CC0               Mateusz Konieczny (...)
 kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
-kerb_height_flush_original.jpg CC0               Mateusz Konieczny (...)
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 
@@ -200,7 +197,6 @@ surface_paved.jpg              CC0               https://www.goodfreephotos.com/
 path_surface_paved.jpg         CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
-surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
 surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
