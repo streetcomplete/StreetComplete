@@ -9,7 +9,7 @@ class LastPickedValuesStore<T : Any>(
     private val key: String,
     private val serialize: (T) -> String,
     private val deserialize: (String) -> T?, // null = unwanted value, see mostCommonWithin
-    private val maxEntries: Int = 100
+    private val maxEntries: Int = 50
 ) {
     fun add(newValues: Iterable<T>) {
         val lastValues = newValues.asSequence().map(serialize) + getRaw()
