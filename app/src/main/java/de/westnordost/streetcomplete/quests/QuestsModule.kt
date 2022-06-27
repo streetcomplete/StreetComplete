@@ -443,7 +443,7 @@ fun questTypeRegistry(
     AddVegan(),
     AddHalal(), // there are ~ 100 times more Muslims than Jews
     AddKosher(),
-    AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
+    AddWheelchairAccessBusiness(prefs), // used by wheelmap, OsmAnd, Organic Maps
     AddInternetAccess(), // used by OsmAnd
     AddAcceptsCards(), // this will often involve going inside and near the till
     AddAcceptsCash(),
