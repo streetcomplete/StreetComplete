@@ -214,6 +214,9 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_way_private">It’s private</string>
     <string name="quest_buildingType_has_address_title">What kind of building is this? (has address)</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
+    <string name="quest_smoothness_generic_surface_message">Ask smoothness for all surfaces? This will show images and descriptions for asphalt or gravel for surfaces the quest is not usually asked for.</string>
+    <string name="quest_smoothness_generic_surface_yes">All surfaces</string>
+    <string name="quest_smoothness_generic_surface_no">Default</string>
 
     <!-- Store description -->
 

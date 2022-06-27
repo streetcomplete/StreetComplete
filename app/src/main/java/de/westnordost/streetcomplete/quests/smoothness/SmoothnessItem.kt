@@ -23,6 +23,15 @@ import de.westnordost.streetcomplete.view.image_select.Item2
 fun Array<Smoothness>.toItems(context: Context, surface: String) =
     mapNotNull { it.asItem(context, surface) }
 
+fun Array<Smoothness>.toGenericItems(context: Context) =
+    mapNotNull { it.asGenericItem(context) }
+
+fun Smoothness.asGenericItem(context: Context): DisplayItem<Smoothness>? =
+    when(this) {
+        EXCELLENT, GOOD -> { asItem(context, "asphalt") }
+        else -> { asItem(context, "gravel") }
+    }
+
 // return null if not a valid combination
 fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness>? {
     val imageResId = getImageResId(surface) ?: return null

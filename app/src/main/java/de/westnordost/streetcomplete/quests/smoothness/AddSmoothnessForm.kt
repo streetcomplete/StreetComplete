@@ -25,14 +25,19 @@ class AddSmoothnessForm : AImageListQuestAnswerFragment<Smoothness, SmoothnessAn
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
     override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
+        if (Surface.values().find { it.osmValue == surfaceTag } != null)
+            AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() }
+        else null,
         createConvertToStepsAnswer(),
         AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
     )
 
     private val surfaceTag get() = osmElement!!.tags["surface"]
 
-    override val items get() = Smoothness.values().toItems(requireContext(), surfaceTag!!)
+    override val items get() = if (surfaceTag in SURFACES_FOR_SMOOTHNESS)
+        Smoothness.values().toItems(requireContext(), surfaceTag!!)
+    else
+        Smoothness.values().toGenericItems(requireContext())
 
     override val itemsPerRow = 1
 

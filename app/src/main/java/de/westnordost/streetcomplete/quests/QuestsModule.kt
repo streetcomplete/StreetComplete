@@ -461,8 +461,8 @@ fun questTypeRegistry(
     // AddStreetParking(),
     AddShoulder(), // needs minimal thinking, but after AddStreetParking because a parking lane can be/look very similar to a shoulder
     AddRoadWidth(arSupportChecker),
-    AddRoadSmoothness(),
-    AddPathSmoothness(),
+    AddRoadSmoothness(prefs),
+    AddPathSmoothness(prefs),
 
     // footways
     AddPathSurface(prefs), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
