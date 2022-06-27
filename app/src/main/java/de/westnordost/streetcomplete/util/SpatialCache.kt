@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
 
 /**
  * <Key, LatLon> cache based on tiles, inspired by Android LruCache.
- * fetch needs get data from db and fill other caches, e.g. questKey -> Quest.
- * onRemoveTile needs to clean other caches, e.g. questKey -> Quest.
+ * @fetch needs get data from db and fill other caches, e.g. questKey -> Quest.
+ * @onKeysRemoved needs to clean other caches, e.g. questKey -> Quest.
  * trim() needs to be called after get() and getting data from other caches.
  * the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom.
  */
@@ -51,7 +51,7 @@ class SpatialCache<T>(
 
     /**
      * Puts the entry to cache only if the containing tile is already cached.
-     * return whether the key was put in cache
+     * @return whether the key was put in cache
      */
     fun putIfTileExists(key: T, position: LatLon): Boolean {
         val previousPosition = byKey[key]
@@ -73,20 +73,28 @@ class SpatialCache<T>(
     /**
      * Replaces all tiles fully contained in the bounding box.
      * If the number of tiles exceeds maxTiles, only the first maxSize tiles are cached.
-     * Return all keys not put to cache, either because the tile was not fully contained
+     * @return all keys not put to cache, either because the tile was not fully contained
      * in the given bbox, or because the bbox contained too many tiles at tileZoom.
      */
     fun replaceAllInBBox(entries: Collection<Pair<T, LatLon>>, bbox: BoundingBox): List<T> {
         val tiles = bbox.asListOfEnclosingTilePos()
         val completelyContainedTiles = tiles.filter { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
-        if (tiles != completelyContainedTiles)
-            Log.i(TAG, "replacing tiles not completely contained in BBox")
-        val tilesToFetch = if (completelyContainedTiles.size > maxTiles) {
-            Log.i(TAG, "trying to replacing more tiles than fit in cache, ignoring some tiles")
+        val incompleteTiles = tiles.filter { !it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
+        if (incompleteTiles.isNotEmpty()) {
+            Log.w(TAG, "bbox does not align with tile, clearing incomplete tiles from cache")
+            val removedKeys = hashSetOf<T>()
+            incompleteTiles.forEach { tile ->
+                byTile.remove(tile)?.let { removedKeys.addAll(it) }
+            }
+            byKey.keys.removeAll(removedKeys)
+            onKeysRemoved(removedKeys)
+        }
+        val tilesToReplace = if (completelyContainedTiles.size > maxTiles) {
+            Log.w(TAG, "trying to replacing more tiles than fit in cache, ignoring some tiles")
             completelyContainedTiles.subList(0,maxTiles-1)
         } else
             completelyContainedTiles
-        val ignoredKeys = replaceAllInTiles(entries, tilesToFetch)
+        val ignoredKeys = replaceAllInTiles(entries, tilesToReplace)
 
         // trim only when bbox!
         trim()
@@ -125,7 +133,7 @@ class SpatialCache<T>(
     }
 
     /**
-     * Get all data inside bbox, will be loaded from db if necessary using fetch.
+     * @return all keys inside bbox, will be loaded from db if necessary using fetch.
      * Call trim() after using get and getting data from other caches, as cache size may hav increased
      */
     fun get(bbox: BoundingBox): List<T> {
