@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.SpatialCache
 import de.westnordost.streetcomplete.util.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -22,6 +23,14 @@ class NoteController(
         fun onCleared()
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
+
+    private val spatialCache = SpatialCache(
+        SPATIAL_CACHE_SIZE,
+        16,
+        { bbox -> getAllForCache(bbox) },
+        { keys -> noteCache.keys.removeAll(keys.toSet()) }
+    )
+    private val noteCache = HashMap<Long, Note>()
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
@@ -52,7 +61,7 @@ class NoteController(
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
 
-    fun get(noteId: Long): Note? = dao.get(noteId)
+    fun get(noteId: Long): Note? = synchronized(this) { noteCache[noteId] } ?: dao.get(noteId)
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
     fun delete(noteId: Long) {
@@ -91,12 +100,37 @@ class NoteController(
 
     fun clear() {
         dao.clear()
+        clearCache()
         listeners.forEach { it.onCleared() }
     }
 
-    fun getAllPositions(bbox: BoundingBox): List<LatLon> = dao.getAllPositions(bbox)
-    fun getAll(bbox: BoundingBox): List<Note> = dao.getAll(bbox)
+    fun clearCache() =
+        synchronized(this) {
+            noteCache.clear()
+            spatialCache.clear()
+        }
+
+    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE / 3) }
+
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> =
+        synchronized(this) {
+            val notes = spatialCache.get(bbox).map { noteCache[it]!!.position }
+            spatialCache.trim()
+            notes
+        }
+    fun getAll(bbox: BoundingBox): List<Note> =
+        synchronized(this) {
+            val notes = spatialCache.get(bbox).map { noteCache[it]!! }
+            spatialCache.trim()
+            notes
+        }
     fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
+
+    private fun getAllForCache(bbox: BoundingBox): List<Pair<Long, LatLon>> {
+        val notes = dao.getAll(bbox)
+        notes.forEach { noteCache[it.id] = it }
+        return notes.map { it.id to it.position }
+    }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
@@ -109,7 +143,13 @@ class NoteController(
 
     private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         if (added.isEmpty() && updated.isEmpty() && deleted.isEmpty()) return
-
+        synchronized(this) {
+            spatialCache.removeAll(deleted)
+            (added + updated).forEach {
+                if (spatialCache.putIfTileExists(it.id, it.position))
+                    noteCache[it.id] = it
+            }
+        }
         listeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 
@@ -117,3 +157,5 @@ class NoteController(
         private const val TAG = "NoteController"
     }
 }
+
+private const val SPATIAL_CACHE_SIZE = 128
