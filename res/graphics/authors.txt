@@ -41,6 +41,35 @@ app icon/
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
 
+../../app/src/main/
+    ic_launcher-playstore.png   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/
+    ic_launcher-playstore.png   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-ldpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-mdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-hdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xxhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xxxhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
 bridge structure/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0
@@ -53,8 +82,11 @@ bridge structure/
     truss.svg                   Tobias Zwick, License: CC0 1.0
 
 building/
+    abandoned.svg
+    allotment_house.svg
     apartments.svg
     barn.svg
+    boathouse.svg
     bridge.svg                  Kai Michael Poppe, License: CC-BY-SA 4.0
     bungalow.svg
     bunker.svg
@@ -66,10 +98,12 @@ building/
     dormitory.svg
     farm.svg
     farm_house.svg
+    fire_truck.svg              modified bus.svg, which is based on Twemoji: U+1F68D
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
     greenhouse.svg
     hangar.svg
+    historic.svg
     hospital.svg
     hotel.svg
     house.svg
@@ -83,6 +117,8 @@ building/
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
+    ruins.svg
+    silo.svg
     school.svg
     semi_detached.svg
     service.svg
@@ -163,11 +199,11 @@ links/
     link_neis_one.svg
 
 living street/
-    living_street.svg
-    living_street_australia.svg
-    living_street_france.svg
-    living_street_russian.svg
-    living_street_sadc.svg
+    default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    australia.svg                                    Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    france.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    portrait.svg                                     Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    sadc.svg                                         Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
 
 max height/
     maxheight_sign.svg
@@ -180,21 +216,34 @@ max speed/
 
 max weight/
     axleload.svg
-    bogieweight.svg
+    tandem_axleload.svg
     truck.svg
 
 pins/
+    bicycle_parking.svg
+    bicycle_pump.svg
+    bench.svg
+    car_air_compressor.svg
+    car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
     choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
+    defibrillator.svg               (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
+    fire_hydrant.svg
+    information.svg
     island.svg                      modified from https://www.svgrepo.com/svg/62967/island, SVG Repo, License: CC-0
+    mail.svg
+    motorcycle_parking.svg
+    money.svg                       modified from EmojiOne 2: U+1F4B8
+    power.svg
+    recycling_container.svg         modified from Twemoji: U+267B
+    surveillance_camera.svg
+    toilets.svg
 
 italian police type/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
-    ferroviaria.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
     finanza.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_guardia_di_finanza.svg, Gigillo83, License: CC-BY-SA 3.0
     locale.svg                      modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
     municipale.svg                  modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
-    stradale.svg                    modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
     apple.svg
@@ -210,6 +259,11 @@ quest/
     bicycle_parking.svg
     bicycle_parking_capacity.svg
     bicycle_parking_cover.svg
+    bicycle_parking_fee.svg          Flo Edelmann merged bicycle_parking.svg and fee.svg, both made by Tobias Zwick (CC-BY-SA 4.0)
+    bicycle_pump.svg
+    bicycle_rental.svg
+    bicycle_repair.svg
+    bicycle_second_hand.svg
     bicycleway.svg
     bicycleway_surface.svg
     bicycleway_width.svg
@@ -219,6 +273,7 @@ quest/
     blind_pedestrian_crossing.svg
     blind_traffic_lights.svg
     blind_traffic_lights_sound.svg
+    board_type.svg
     bridge.svg
     building.svg
     building_construction.svg
@@ -226,27 +281,38 @@ quest/
     building_levels.svg
     building_underground.svg
     bus.svg                          modified from Twemoji: U+1F68D
+    bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
     car.svg                          modified from Twemoji: U+1F698
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
+    car_air_compressor.svg
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
+    card.svg
     cash.svg
+    check.svg
     christian.svg
     cow.svg                          modified from EmojiOne 2: U+1F404
-    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
+    crown.svg                        modified from https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (CC-BY-SA 3.0 by Sodacan)
+    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
     drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
+    door.svg
+    door_address.svg                 housenumber.svg recoloured by Mateusz Konieczny, so (c) Tobias Zwick CC-BY-SA 4.0
+    fee.svg
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
     fire_hydrant_diameter.svg
+    fire_hydrant_grass.svg
     fuel.svg
     guidepost.svg
     housenumber.svg
     housenumber_street.svg
     information.svg
+    kerb_tactile_paving.svg
+    kerb_type.svg
     kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
     lantern.svg
@@ -266,7 +332,9 @@ quest/
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
     museum.svg
-    no_bicycle.svg
+    no_bicycles.svg
+    no_cars.svg                      based on car.svg - modified from Twemoji: U+1F698 by Tobias Zwick, negation circle added by Flo Edelmann
+    no_cow.svg                       modified from EmojiOne 2: U+1F404 (via cow.svg)
     no_pedestrians.svg
     note_create.svg
     notes.svg
@@ -279,17 +347,19 @@ quest/
     parking_lane.svg
     parking_maxstay.svg
     path_segregation.svg
-    peak.svg                         (c) 2020 Mateusz Konieczny
+    peak.svg                         (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0)
     pedestrian.svg
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
+    pitch_lantern.svg
     pitch_surface.svg
     playground.svg
     power.svg
     quest.svg
     railway.svg
     recycling.svg                    modified from Twemoji: U+267B
+    recycling_clothes.svg            by Tobias Zwick, based on Twemoji: U+267B and recycling/clothes.svg which in turn is based on EmojiOne 2: U+1F455
     recycling_container.svg          modified from Twemoji: U+267B
     recycling_glass.svg              modified from Twemoji: U+267B
     religion.svg
@@ -299,10 +369,13 @@ quest/
     restaurant_vegetarian.svg        parts taken from Twemoji: U+1F37D and U+1F955
     road_construction.svg
     roof_shape.svg
+    seating.svg
     sidewalk.svg
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD
+    steps_count.svg
+    steps_count_brown.svg            based on steps_count.svg made by Tobias Zwick, recoloured by Mateusz Konieczny (so CC-BY-SA 4.0)
     steps.svg
     steps_ramp.svg
     steps_handrail.svg
@@ -313,25 +386,34 @@ quest/
     street_surface_detail.svg
     street_turn_lanes.svg
     street_width.svg
+    summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
+    surveillance.svg
+    surveillance_camera.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
     tractor.svg
     traffic_lights.svg
     way_surface.svg
+    way_surface_detail.svg          Tobias Zwick (CC-BY-SA 4.0) (based on street_surface_detail.svg), recoloured background by Flo Edelmann
     way_width.svg
     wifi.svg
     wheelchair.svg
     wheelchair_shop.svg
     wheelchair_crossing.svg
 
+lit/
+    24_7.svg
+    automatic.svg
+    yes.svg
+    no.svg
 
 pin/
-    quest_dot.xcf
-    quest_pin.svg
-    quest_pin.xcf
-    quest_pin_bubble.svg
-    quest_pin_pointer.svg
+    pin_dot.xcf
+    pin.svg
+    pin.xcf
+    pin_bubble.svg
+    pin_pointer.svg
 
 railway crossing/
     chicane.svg                      (c) olo81, based on Tobias Zwick work - License: CC0
@@ -343,6 +425,7 @@ railway crossing/
 
 recycling/
     batteries.svg
+    beverage_cartons.svg
     cans.svg
     clothes.svg                      by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
     cooking_oil.svg
@@ -354,6 +437,7 @@ recycling/
     plastic.svg
     plastic_bottles.svg
     plastic_packaging.svg
+    plastic_bottles_and_cartons.svg
     scrap_metal.svg
     shoes.svg                        modified from EmojiOne 2: U+1F45F
     small_electrical_appliances.svg  EmojiOne 2: U+1F50C
@@ -489,10 +573,17 @@ steps incline/
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
 
+surveillance/
+    camera_dome.svg
+    camera_panning.svg
+    camera.svg
+
 traffic lights blind features/
     arrow.svg
     sound.svg
     vibration.svg
+    button.jpg                          Tobias Zwick (CC-BY 4.0), also appearing as vibrating_button_illustration.jpg drawable
+
 
 tutorial/
     checkmark_circle.svg
@@ -512,3 +603,7 @@ lab_flask.svg                           from https://www.svgrepo.com/svg/353167/
 mail.svg
 
 osm_anon_avatar.svg
+
+../../app/src/test/resources/
+    hai_phong_street.jpg
+    mandalay_market.jpg
