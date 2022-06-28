@@ -92,23 +92,15 @@ class SpatialCache<K, T>(
             removeTile(tile)
             byTile[tile] = HashSet()
         }
-        if (tiles.size == 1) {
-            // shortcut: replace old tile
-            byTile[tiles.single()] = items.toHashSet()
-            for (item in items) {
-                byKey[item.getKey()] = item
-            }
-        } else {
-            // put only what is inside tiles
-            val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
-            entries@for (item in items) {
-                val pos = item.getPosition()
-                for (tile in tiles) {
-                    if (pos in bboxByTile[tile]!!) {
-                        byTile[tile]!!.add(item)
-                        byKey[item.getKey()] = item
-                        continue@entries
-                    }
+        // put only what is inside tiles
+        val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
+        entries@for (item in items) {
+            val pos = item.getPosition()
+            for (tile in tiles) {
+                if (pos in bboxByTile[tile]!!) {
+                    byTile[tile]!!.add(item)
+                    byKey[item.getKey()] = item
+                    continue@entries
                 }
             }
         }
