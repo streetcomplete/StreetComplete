@@ -56,11 +56,11 @@ class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
             if (element is Node && element.tags["natural"] == "tree") {
                 val name = getTreeGenus(element.tags) ?: return@forEach
                 val distance = element.position.distanceTo(position)
-                if (distance < bestTree?.second ?: maxDist)
+                if (distance < (bestTree?.second ?: maxDist))
                     bestTree = Pair(name, distance)
             }
         }
-        bestTree?.let { binding.nameInput.setText(getTrees(it.first).first().toDisplayString()) }
+        bestTree?.let { binding.nameInput.setText(getTrees(it.first).firstOrNull()?.toDisplayString() ?: "not found") }
 
         return true
     }
@@ -73,6 +73,7 @@ class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
     private fun getTrees(search: String): List<Tree> {
         return trees.filter { tree ->
             tree.toDisplayString() == search
+            || tree.name == search
             || tree.name.split(" ").any { it.startsWith(search, true) }
             || tree.localName?.contains(search, true) == true
         //sorting: genus-only first, then prefer trees with localName
