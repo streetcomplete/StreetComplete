@@ -159,12 +159,11 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
     }
 
     private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
-        val sides = createSidewalkSides(tags)
-        if (sides == null) return false
-        if (sides.any { it == INVALID }) return true
+        val sides = createSidewalkSides(tags) ?: return false
+        if (sides.any { it == INVALID || it == null }) return true
         return false
     }
 }
 
-private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk) -> Boolean): Boolean =
-    left?.let(block) == true || right?.let(block) == true
+private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk?) -> Boolean): Boolean =
+    block(left) || block(right)
