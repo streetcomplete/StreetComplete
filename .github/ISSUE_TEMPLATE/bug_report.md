@@ -18,5 +18,4 @@ Maybe it is not a bug? Check the FAQ: https://wiki.openstreetmap.org/wiki/Street
 <!-- A clear and concise description of what you expected to happen -->
 
 **Versions affected**
-<!-- Add the Android and StreetComplete version here -->
-
+<!-- Add the Android and StreetComplete version here. Please use exact version instead of saying "latest" -->
