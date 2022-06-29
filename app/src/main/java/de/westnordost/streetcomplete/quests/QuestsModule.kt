@@ -209,6 +209,15 @@ fun questTypeRegistry(
     element is based on wrong data while the note is not resolved */
     OsmNoteQuestType,
 
+    /* ↓ 0. special case  ------------------------------------------------------------------  */
+    // address: usually only visible when just in front + sometimes requires to take "other answer"
+    // on the other hand it is very useful, and listing it higher show new mappers that SC
+    // asks also about clearly useful data, so someone exploring SC by looking at quest list
+    // will not see merely several quests about bus stops or the bench backrest quest
+    // It is also not very likely to crowd out other quests, as is limited to buildings
+    AddHousenumber(),
+    AddAddressStreet(),
+
     /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
     AddMemorialType(),
@@ -332,10 +341,6 @@ fun questTypeRegistry(
     AddBikeParkingFee(),
     AddBikeRentalCapacity(), // less ambiguous than bike parking
     AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
-
-    // address: usually only visible when just in front + sometimes requires to take "other answer"
-    AddHousenumber(),
-    AddAddressStreet(),
 
     // shops: text input / opening hours input take longer than other quests
     CheckOpeningHoursSigned(featureDictionaryFuture),
