@@ -24,18 +24,19 @@ class NoteController(
     }
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
-    private val spatialCache = SpatialCache(
-        SPATIAL_CACHE_SIZE,
+    private val cache = SpatialCache(
         16,
-        { bbox -> getAllForCache(bbox) },
-        { keys -> noteCache.keys.removeAll(keys.toSet()) }
+        SPATIAL_CACHE_SIZE,
+        1000,
+        { bbox -> dao.getAll(bbox) },
+        Note::id, Note::position
     )
-    private val noteCache = HashMap<Long, Note>()
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
-        val time = currentTimeMillis()
+        cache.replaceAllInBBox(notes, bbox)
 
+        val time = currentTimeMillis()
         val oldNotesById = mutableMapOf<Long, Note>()
         val addedNotes = mutableListOf<Note>()
         val updatedNotes = mutableListOf<Note>()
@@ -61,10 +62,12 @@ class NoteController(
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
 
-    fun get(noteId: Long): Note? = synchronized(this) { noteCache[noteId] } ?: dao.get(noteId)
+    fun get(noteId: Long): Note? = cache.get(noteId) ?: dao.get(noteId)
 
     /** delete a note because the note does not exist anymore on OSM (has been closed) */
     fun delete(noteId: Long) {
+        cache.remove(noteId)
+
         val deleteSuccess = synchronized(this) { dao.delete(noteId) }
         if (deleteSuccess) {
             onUpdated(deleted = listOf(noteId))
@@ -75,10 +78,11 @@ class NoteController(
     fun put(note: Note) {
         val hasNote = synchronized(this) { dao.get(note.id) != null }
 
+        cache.putIfTileExists(note)
+        dao.put(note)
+
         if (hasNote) onUpdated(updated = listOf(note))
         else onUpdated(added = listOf(note))
-
-        dao.put(note)
     }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
@@ -88,6 +92,7 @@ class NoteController(
             ids = dao.getIdsOlderThan(timestamp, limit)
             if (ids.isEmpty()) return 0
 
+            cache.removeAll(ids)
             deletedCount = dao.deleteAll(ids)
         }
 
@@ -99,38 +104,26 @@ class NoteController(
     }
 
     fun clear() {
+        cache.clear()
         dao.clear()
-        clearCache()
         listeners.forEach { it.onCleared() }
     }
 
-    fun clearCache() =
-        synchronized(this) {
-            noteCache.clear()
-            spatialCache.clear()
-        }
+    fun trimCache() {
+        cache.trim(SPATIAL_CACHE_SIZE / 3)
+    }
 
-    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE / 3) }
+    fun clearCache() {
+        cache.clear()
+    }
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon> =
-        synchronized(this) {
-            val notes = spatialCache.get(bbox).map { noteCache[it]!!.position }
-            spatialCache.trim()
-            notes
-        }
-    fun getAll(bbox: BoundingBox): List<Note> =
-        synchronized(this) {
-            val notes = spatialCache.get(bbox).map { noteCache[it]!! }
-            spatialCache.trim()
-            notes
-        }
-    fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
+        cache.get(bbox).map { it.position }
 
-    private fun getAllForCache(bbox: BoundingBox): List<Pair<Long, LatLon>> {
-        val notes = dao.getAll(bbox)
-        notes.forEach { noteCache[it.id] = it }
-        return notes.map { it.id to it.position }
-    }
+    fun getAll(bbox: BoundingBox): List<Note> =
+        cache.get(bbox)
+
+    fun getAll(noteIds: Collection<Long>): List<Note> = dao.getAll(noteIds)
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
@@ -143,13 +136,6 @@ class NoteController(
 
     private fun onUpdated(added: Collection<Note> = emptyList(), updated: Collection<Note> = emptyList(), deleted: Collection<Long> = emptyList()) {
         if (added.isEmpty() && updated.isEmpty() && deleted.isEmpty()) return
-        synchronized(this) {
-            spatialCache.removeAll(deleted)
-            (added + updated).forEach {
-                if (spatialCache.putIfTileExists(it.id, it.position))
-                    noteCache[it.id] = it
-            }
-        }
         listeners.forEach { it.onUpdated(added, updated, deleted) }
     }
 

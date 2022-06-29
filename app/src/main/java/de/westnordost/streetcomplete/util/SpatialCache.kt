@@ -11,64 +11,58 @@ import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 
 /**
- * <Key, LatLon> cache based on tiles, inspired by Android LruCache.
- * @fetch needs get data from db and fill other caches, e.g. questKey -> Quest.
- * @onKeysRemoved needs to clean other caches, e.g. questKey -> Quest.
- * trim() needs to be called after get() and getting data from other caches.
+ * Spatial cache containing items of type T that each must have an id of type K and a position
+ * (LatLon). See [getKey] and [getPosition].
+ *
+ * @fetch needs get data from db and fill other caches, e.g. questKey -> Quest
+ *
  * the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom.
  */
-class SpatialCache<T>(
-    private val maxTiles: Int,
+class SpatialCache<K, T>(
     private val tileZoom: Int,
-    private val fetch: (BoundingBox) -> Collection<Pair<T, LatLon>>,
-    private val onKeysRemoved: (Collection<T>) -> Unit
+    private val maxTiles: Int,
+    initialCapacity: Int?,
+    private val fetch: (BoundingBox) -> Collection<T>,
+    private val getKey: T.() -> K,
+    private val getPosition: T.() -> LatLon,
 ) {
     private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles/0.75).toInt(), 0.75f, true)
-    private val byKey = hashMapOf<T, LatLon>()
+    private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
 
-    /**
-     * Removes the given key from cache.
-     * If a key was removed, onKeysRemoved is called.
-     */
-    fun remove(key: T) {
-        val pos = byKey.remove(key) ?: return
-        byTile[getTilePosFor(pos)]?.remove(key)
-        onKeysRemoved(listOf(key))
+    /** @return the item with the given [key] if in cache */
+    fun get(key: K): T? = synchronized(this) {
+        byKey[key]
     }
 
-    /**
-     * Removes the given keys from cache.
-     * If any keys were removed, onKeysRemoved is called.
-     */
-    fun removeAll(keys: Collection<T>) {
-        val removed = keys.filter {
-            val pos = byKey.remove(it) ?: return@filter false
-            byTile[getTilePosFor(pos)]?.remove(it)
-            true
+    /** Removes the given [key] from cache */
+    fun remove(key: K): Unit = synchronized(this) {
+        val item = byKey.remove(key) ?: return
+        byTile[item.getTilePos()]?.remove(item)
+    }
+
+    /** Removes the given [keys] from cache */
+    fun removeAll(keys: Collection<K>) = synchronized(this) {
+        for (key in keys) {
+            remove(key)
         }
-        onKeysRemoved(removed)
     }
 
-    /**
-     * Puts the entry to cache only if the containing tile is already cached.
-     * @return whether the key was put in cache
-     */
-    fun putIfTileExists(key: T, position: LatLon): Boolean {
-        val previousPosition = byKey[key]
+    /** Puts the [item] into cache only if the containing tile is already cached */
+    fun putIfTileExists(item: T) = synchronized(this) {
+        val key = item.getKey()
+        val previousItem = byKey[item.getKey()]
         // in cache already
-        if (previousPosition != null) {
+        if (previousItem != null) {
             // but moved -> remove
-            if (previousPosition != position) remove(key)
-            else return true
+            if (item.getPosition() != previousItem.getPosition()) remove(key)
         }
-        val tileInCache = byTile[getTilePosFor(position)]
-        if (tileInCache  != null) {
-            tileInCache.add(key)
-            byKey[key] = position
-            return true
+        val tile = byTile[item.getTilePos()]
+        if (tile != null) {
+            tile.add(item)
+            byKey[key] = item
         }
-        return false
     }
+
 
     /**
      * Replaces all tiles fully contained in the bounding box.
@@ -76,113 +70,93 @@ class SpatialCache<T>(
      * @return all keys not put to cache, either because the tile was not fully contained
      * in the given bbox, or because the bbox contained too many tiles at tileZoom.
      */
-    fun replaceAllInBBox(entries: Collection<Pair<T, LatLon>>, bbox: BoundingBox): List<T> {
+    fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) = synchronized(this) {
         val tiles = bbox.asListOfEnclosingTilePos()
         val completelyContainedTiles = tiles.filter { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
         val incompleteTiles = tiles.filter { !it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
         if (incompleteTiles.isNotEmpty()) {
-            Log.w(TAG, "bbox does not align with tile, clearing incomplete tiles from cache")
-            val removedKeys = hashSetOf<T>()
-            incompleteTiles.forEach { tile ->
-                byTile.remove(tile)?.let { removedKeys.addAll(it) }
+            Log.w(TAG, "bbox does not align with tiles, clearing incomplete tiles from cache")
+            for (tile in incompleteTiles) {
+                removeTile(tile)
             }
-            byKey.keys.removeAll(removedKeys)
-            onKeysRemoved(removedKeys)
         }
-        val tilesToReplace = if (completelyContainedTiles.size > maxTiles) {
-            Log.w(TAG, "trying to replacing more tiles than fit in cache, ignoring some tiles")
-            completelyContainedTiles.subList(0,maxTiles-1)
-        } else
-            completelyContainedTiles
-        val ignoredKeys = replaceAllInTiles(entries, tilesToReplace)
+        replaceAllInTiles(items, completelyContainedTiles)
 
-        // trim only when bbox!
         trim()
-        return ignoredKeys
     }
 
     // may add tiles, but does not call trim()
-    private fun replaceAllInTiles(entries: Collection<Pair<T, LatLon>>, tiles: Collection<TilePos>): List<T> {
+    private fun replaceAllInTiles(items: Collection<T>, tiles: Collection<TilePos>) {
         // create / replace tiles
-        tiles.forEach { tile ->
-            byTile.remove(tile)?.let { byKey.keys.removeAll(it) }
-            byTile[tile] = hashSetOf()
+        for (tile in tiles) {
+            removeTile(tile)
+            byTile[tile] = HashSet()
         }
-        if (tiles.size == 1) {
-            // shortcut: replace old tile
-            byTile[tiles.single()] = entries.unzip().first.toHashSet()
-            byKey.putAll(entries)
-            return emptyList()
-        } else {
-            // put only what is inside tiles
-            // and return what wasn't put
-            val ignoredKeys = mutableListOf<T>() // could also use sth like filter or mapNotNull instead of mutable list
-            val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
-            entries@for ((key, pos) in entries) {
-                for (tile in tiles) {
-                    if (bboxByTile[tile]!!.contains(pos)) {
-                        byTile[tile]!!.add(key)
-                        byKey[key] = pos
-                        continue@entries
-                    }
+        // put only what is inside tiles
+        val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
+        entries@for (item in items) {
+            val pos = item.getPosition()
+            for (tile in tiles) {
+                if (pos in bboxByTile[tile]!!) {
+                    byTile[tile]!!.add(item)
+                    byKey[item.getKey()] = item
+                    continue@entries
                 }
-                ignoredKeys.add(key)
             }
-            return ignoredKeys
         }
     }
 
-    /**
-     * @return all keys inside bbox, will be loaded from db if necessary using fetch.
-     * Call trim() after using get and getting data from other caches, as cache size may hav increased
-     */
-    fun get(bbox: BoundingBox): List<T> {
+    /** @return all items inside [bbox], items will be loaded if necessary via [fetch] */
+    fun get(bbox: BoundingBox): List<T> = synchronized(this) {
         val requiredTiles = bbox.asListOfEnclosingTilePos()
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
         if (tilesToFetch.isNotEmpty()) {
-            val newEntries = fetch(tilesToFetch.minTileRect()!!.asBoundingBox(tileZoom))
-            replaceAllInTiles(newEntries, tilesToFetch)
+            val newItems = fetch(tilesToFetch.minTileRect()!!.asBoundingBox(tileZoom))
+            replaceAllInTiles(newItems, tilesToFetch)
         }
 
-        val keys = requiredTiles.flatMap { tile ->
+        val items = requiredTiles.flatMap { tile ->
             if (tile.asBoundingBox(tileZoom).isCompletelyInside(bbox))
                 byTile[tile]!!
             else
-                byTile[tile]!!.filter { byKey[it]!! in bbox }
+                byTile[tile]!!.filter { it.getPosition() in bbox }
         }
 
-        return keys
+        trim()
+
+        return items
     }
 
-    /**
-     * Reduces cache size to the given number of tiles.
-     * If any keys were removed, onKeysRemoved is called.
-     */
-    fun trim(size: Int = maxTiles) {
-        if (byTile.size <= size) return
+    /** Reduces cache size to the given number of [tiles].  */
+    fun trim(tiles: Int = maxTiles) = synchronized(this) {
+        if (byTile.size <= tiles) return
 
-        val removedKeys = hashSetOf<T>()
-        while (byTile.size > size) {
-            byTile.remove(byTile.keys.first())?.let { removedKeys.addAll(it) }
-        }
-        if (removedKeys.isNotEmpty()) {
-            byKey.keys.removeAll(removedKeys)
-            onKeysRemoved(removedKeys)
+        while (byTile.size > tiles) {
+            removeTile(byTile.keys.first())
         }
     }
 
-    /**
-     * clears the caches without calling onKeysRemoved
-     */
-    fun clear() {
+    private fun removeTile(tilePos: TilePos) {
+        val removedItems = byTile.remove(tilePos)
+        if (removedItems != null) {
+            for (item in removedItems) {
+                byKey.remove(item.getKey())
+            }
+        }
+    }
+
+    /** Clears the cache */
+    fun clear() = synchronized(this) {
         byKey.clear()
         byTile.clear()
     }
 
-    private fun getTilePosFor(pos: LatLon): TilePos = pos.enclosingTilePos(tileZoom)
+    private fun T.getTilePos(): TilePos =
+        getPosition().enclosingTilePos(tileZoom)
 
-    private fun BoundingBox.asListOfEnclosingTilePos() = enclosingTilesRect(tileZoom).asTilePosSequence().toList()
+    private fun BoundingBox.asListOfEnclosingTilePos() =
+        enclosingTilesRect(tileZoom).asTilePosSequence().toList()
 
     companion object {
         private const val TAG = "SpatialCache"
