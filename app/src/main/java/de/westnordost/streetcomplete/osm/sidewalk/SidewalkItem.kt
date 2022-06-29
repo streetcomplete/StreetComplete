@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
@@ -35,8 +36,10 @@ val Sidewalk.titleResId get() = when (this) {
     else -> 0
 }
 
-fun Sidewalk.asStreetSideItem(): StreetSideDisplayItem<Sidewalk> =
-    StreetSideItem(this, imageResId, titleResId, iconResId, floatingIconResId)
+fun Sidewalk.asStreetSideItem(): StreetSideDisplayItem<Sidewalk>? =
+    if (this == INVALID) null
+    else StreetSideItem(this, imageResId, titleResId, iconResId, floatingIconResId)
 
-fun Sidewalk.asItem(): DisplayItem<Sidewalk> =
-    Item(this, iconResId, titleResId)
+fun Sidewalk.asItem(): DisplayItem<Sidewalk>? =
+    if (this == INVALID) null
+    else Item(this, iconResId, titleResId)
