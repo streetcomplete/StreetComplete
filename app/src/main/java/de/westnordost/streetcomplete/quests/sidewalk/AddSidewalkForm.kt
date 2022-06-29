@@ -30,9 +30,9 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, SidewalkSides>() {
     }
 
     override fun onClickSide(isRight: Boolean) {
-        val items = listOf(YES, NO, SEPARATE).map { it.asItem() }
+        val items = listOf(YES, NO, SEPARATE).mapNotNull { it.asItem() }
         ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
-            streetSideSelect.replacePuzzleSide(item.value!!.asStreetSideItem(), isRight)
+            streetSideSelect.replacePuzzleSide(item.value!!.asStreetSideItem()!!, isRight)
         }.show()
     }
 
@@ -45,5 +45,5 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, SidewalkSides>() {
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean) =
-        Sidewalk.valueOf(str).asStreetSideItem()
+        Sidewalk.valueOf(str).asStreetSideItem()!!
 }

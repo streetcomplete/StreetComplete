@@ -34,7 +34,7 @@
     <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, которую увидят другие пользователи, либо просто скрыть этот квест для вас"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"OK"</string>
+    <string name="quest_leave_new_note_yes">"Оставить заметку"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
@@ -444,8 +444,6 @@
     <string name="produce_vanilla">"Ваниль"</string>
     <string name="produce_walnuts">"Грецкие орехи"</string>
     <string name="produce_sisal">"Сизаль"</string>
-    <string name="quest_way_lit_automatic">"Используется датчик движения"</string>
-    <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
@@ -2010,4 +2008,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Прикоснитесь к экрану для начала измерений"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Здесь есть велосипедный насос (хотя бы когда открыто)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Здесь есть велосипедный насос?"</string>
+    <string name="action_overlays">"Наложение"</string>
+    <string name="split_way">"Разделить путь"</string>
+    <string name="quest_memorialType_title">"Что это за мемориал?"</string>
+    <string name="quest_memorialType_statue">"Статуя"</string>
+    <string name="quest_memorialType_bust">"Бюст"</string>
+    <string name="quest_memorialType_plaque">"Мемориальная доска"</string>
+    <string name="quest_memorialType_war_memorial">"Военный мемориал"</string>
+    <string name="quest_memorialType_stone">"Камень"</string>
+    <string name="quest_memorialType_obelisk">"Обелиск"</string>
+    <string name="quest_memorialType_stele_wooden">"Деревянная стела (мемориальная плита)"</string>
+    <string name="quest_memorialType_stele_stone">"Каменная стела (мемориальная плита)"</string>
+    <string name="quest_memorialType_sculpture">"Другая скульптура"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Выбрать наложение"</string>
+    <string name="overlay_none">"Нет"</string>
+    <string name="overlay_lit">"Уличное освещение"</string>
+    <string name="lit_value_yes">"Освещено"</string>
+    <string name="lit_value_no">"Не освещено"</string>
+    <string name="lit_value_24_7">"Освещено днём и ночью"</string>
+    <string name="lit_value_automatic">"Освещено, когда кто-то проходит мимо"</string>
+    <string name="overlay_sidewalk">"Тротуары"</string>
 </resources>

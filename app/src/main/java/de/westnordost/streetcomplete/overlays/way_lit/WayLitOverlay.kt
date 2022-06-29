@@ -12,7 +12,9 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.createLitStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 
 class WayLitOverlay : Overlay {
@@ -26,28 +28,25 @@ class WayLitOverlay : Overlay {
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
-            .filter("ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
-            .map { it to getWayStyle(it) }
+            .filter("ways, relations with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
+            .map { it to getStyle(it) }
 
     override fun createForm(element: Element) = WayLitOverlayForm()
 }
 
-private fun getWayStyle(element: Element): PolylineStyle {
+private fun getStyle(element: Element): Style {
     val lit = createLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
-    if (lit == null) {
-        if (isIndoor(element.tags) || isPrivateOnFoot(element)) {
-            return PolylineStyle(Color.INVISIBLE)
-        }
-    }
-    return PolylineStyle(lit.color)
+    val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
+    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
+    return if (element.tags["area"] == "yes") PolygonStyle(color, null) else PolylineStyle(color)
 }
 
 private val LitStatus?.color get() = when (this) {
     LitStatus.YES,
     LitStatus.UNSUPPORTED ->   "#ccff00"
     LitStatus.NIGHT_AND_DAY -> "#33ff00"
-    LitStatus.AUTOMATIC ->     "#00aaff"
+    LitStatus.AUTOMATIC ->     "#00eeff"
     LitStatus.NO ->            "#555555"
     null ->                    Color.UNSPECIFIED
 }

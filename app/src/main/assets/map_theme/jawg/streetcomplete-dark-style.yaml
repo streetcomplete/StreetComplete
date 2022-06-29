@@ -9,11 +9,11 @@ global:
     text_fill_color: '#ccf'
     text_water_color: '#ccf'
 
-    railway_color: '#903'
+    railway_color: '#96c'
     road_color: '#559'
     road_outline_color: '#99f'
-    highway_color: '#033'
-    highway_outline_color: '#000'
+    highway_color: '#669'
+    highway_outline_color: global.road_outline_color
     path_color: global.road_color
     path_outline_color: '#547'
     square_color: global.road_color
@@ -35,12 +35,6 @@ global:
     tunnel_color: [0.3, 0.2, 1.0, 0.2]
 
 styles:
-    lines-highway-style:
-        base: lines
-        blend: add
-    lines-railway-style:
-        base: lines
-        blend: add
     buildings-style:
         base: polygons
         blend: translucent

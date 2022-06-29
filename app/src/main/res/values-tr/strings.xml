@@ -573,12 +573,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Harekete duyarlı"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Gece gündüz yanıyor"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Burada tarama yapamıyorum.  Daha fazla yakınlaştırmayı deneyin veya haritayı daha az eğin."</string>
 
     <!-- Fuzzy -->

@@ -742,12 +742,6 @@
     <string name="produce_sisal">"സൈസൽ"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"ഇത് ചലനത്തെ തിരിച്ചറിയാൻ ഉപയോഗിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"ഇത് രാവും പകലും കത്തിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"ഇവിടെ സ്കാൻ ചെയ്യാൻ കഴിയില്ല. സൂം ഇൻ ചെയ്യാൻ ശ്രമിക്കുക അല്ലെങ്കിൽ മാപ്പ് കുറച്ച് ചെരിച്ച് ചെയ്യുക."</string>
 
     <!-- Fuzzy -->

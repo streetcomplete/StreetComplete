@@ -343,8 +343,6 @@
     <string name="produce_vanilla">"วนิลา"</string>
     <string name="produce_walnuts">"วอลนัท"</string>
     <string name="produce_sisal">"ศรนารายณ์"</string>
-    <string name="quest_way_lit_automatic">"ใช้ระบบตรวจจับการเคลื่อนไหว"</string>
-    <string name="quest_way_lit_24_7">"ส่องสว่างทั้งตอนกลางวันและกลางคืน"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
     <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
 

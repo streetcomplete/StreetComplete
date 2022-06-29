@@ -17,7 +17,7 @@ data class PolygonStyle(
     /** argb value as hex value, e.g. "#66ff00" */
     val color: String,
     /** label to show in the center of the area */
-    val label: String?,
+    val label: String? = null,
 ) : Style
 
 data class PointStyle(

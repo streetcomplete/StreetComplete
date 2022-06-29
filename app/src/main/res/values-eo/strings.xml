@@ -463,8 +463,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Juglandoj"</string>
     <string name="produce_sisal">"Sisalo"</string>
-    <string name="quest_way_lit_automatic">"Ĝi uzadas movmalkovro"</string>
-    <string name="quest_way_lit_24_7">"Ĝi estas lumi nokton kaj tagon"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ne eblas serĉi tie. Provu zomi aŭ malfortigi la mapdeklinon."</string>
     <string name="quest_crossing_type_title">"Kia transirejo ĉi tio estas?"</string>
 

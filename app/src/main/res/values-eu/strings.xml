@@ -748,12 +748,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="produce_sisal">"SIsala"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Mugimendu-antzematea darabil"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Gau eta egunez dago argituta"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Ezin da hemen eskaneatu. Saiatu zooma hurbiltzen."</string>
 
     <!-- Fuzzy -->

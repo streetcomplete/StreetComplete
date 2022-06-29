@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4500
-        versionName = "45.0-alpha1"
+        versionCode = 4501
+        versionName = "45.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -97,7 +97,8 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    jcenter {
+    maven {
+        url = uri("https://jcenter.bintray.com/")
         content {
             includeGroup("org.sufficientlysecure")
         }

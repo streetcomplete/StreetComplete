@@ -748,12 +748,6 @@
     <string name="produce_sisal">"Αγαύη"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Χρησιμοποιεί αισθητήρα κίνησης"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Είναι φωτισμένο νύχτα και μέρα"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Δεν είναι δυνατή η σάρωση εδώ. Προσπαθήστε να μεγενθύνετε κι άλλο ή γύρτε τον χάρτη λιγότερο."</string>
 
     <!-- Fuzzy -->

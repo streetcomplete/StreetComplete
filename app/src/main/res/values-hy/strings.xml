@@ -732,12 +732,6 @@
     <string name="produce_sisal">"Սիսալ"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Այն օգտագործում է շարժման հայտնաբերում"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Գիշեր ու ցերեկ է"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Այստեղ չի կարող սկանավորել: Փորձեք մեծացնել հետագա կամ ավելի քիչ թեքել քարտեզը:"</string>
 
     <!-- Fuzzy -->

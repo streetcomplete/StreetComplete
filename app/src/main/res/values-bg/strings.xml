@@ -346,8 +346,6 @@
     <string name="produce_vanilla">"Ванилия"</string>
     <string name="produce_walnuts">"Орехи"</string>
     <string name="produce_sisal">"Сизал"</string>
-    <string name="quest_way_lit_automatic">"Използва сензор за движение"</string>
-    <string name="quest_way_lit_24_7">"Осветен е и през нощта и през деня"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Невъзможно сканирането. Опитайте се да приближите повече или наклонете леко картата."</string>
     <string name="quest_crossing_type_title">"Какъв тип кръстовище е това?"</string>
 

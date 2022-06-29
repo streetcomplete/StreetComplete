@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.math.measuredLength
-import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.math.pointsOnPolylineFromStart
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
@@ -36,11 +36,9 @@ data class OsmQuest(
                 val between = (length - (2 * MARKER_FROM_END_DISTANCE)) / (count - 1)
                 // space markers `between` apart, starting with `MARKER_FROM_END_DISTANCE` (the
                 // final marker will end up at `MARKER_FROM_END_DISTANCE` from the other end)
-                return (0 until count).map {
-                    polyline.pointOnPolylineFromStart(
-                        MARKER_FROM_END_DISTANCE + (it * between)
-                    )!!
-                }
+                return polyline.pointsOnPolylineFromStart(
+                    (0 until count).map { MARKER_FROM_END_DISTANCE + (it * between) }
+                )
             }
         }
         // fall through to a single marker in the middle

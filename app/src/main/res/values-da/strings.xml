@@ -409,8 +409,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnødder"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
-    <string name="quest_way_lit_24_7">"Der er belysning døgnet rundt"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikke søge her. Prøv at zoome længere ind eller vip kortet mindre."</string>
@@ -899,17 +897,17 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_generic_answer_differs_along_the_way">"Det er forskelligt undervejs…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele strækningen. Derefter kan opgaven besvares for hver del enkeltvis.
-Opdel strækningen nu?"</string>
+    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del enkeltvis.
+Opdel den nu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Tryk på strækningen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
+    <string name="quest_split_way_tutorial">"Tryk på vejen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Zoom venligst længere ind"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele strækningen længere fremme senere."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele vejen længere fremme senere."</string>
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Hvilken overflade er der på denne gangsti?"</string>
@@ -1845,4 +1843,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Tryk på skærmen for at starte opmåling"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er der en offentligt tilgængelig cykelpumpe her (i hvert fald i åbningstiden)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Er der en funktionsdygtig cykelpumpe her?"</string>
+    <string name="action_overlays">"Overlejringer"</string>
+    <string name="split_way">"Opdel vej"</string>
+    <string name="quest_memorialType_title">"Hvilken slags mindesmærke er dette?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Buste"</string>
+    <string name="quest_memorialType_plaque">"Mindeplade"</string>
+    <string name="quest_memorialType_war_memorial">"Krigsmindesmærke"</string>
+    <string name="quest_memorialType_stone">"Sten"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Træstele (mindesmærkeplade)"</string>
+    <string name="quest_memorialType_stele_stone">"Stenstele (mindesmærkeplade)"</string>
+    <string name="quest_memorialType_sculpture">"Anden skulptur"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Vælg overlejring"</string>
+    <string name="overlay_none">"Ingen"</string>
+    <string name="overlay_lit">"Gadebelysning"</string>
+    <string name="lit_value_yes">"Oplyst"</string>
+    <string name="lit_value_no">"Ikke oplyst"</string>
+    <string name="lit_value_24_7">"Oplyst nat og dag"</string>
+    <string name="lit_value_automatic">"Oplyses, når nogen passerer forbi"</string>
+    <string name="overlay_sidewalk">"Fortove"</string>
 </resources>

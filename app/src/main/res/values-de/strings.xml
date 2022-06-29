@@ -316,8 +316,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
-    <string name="quest_way_lit_24_7">"Es ist Tag und Nacht beleuchtet"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht suchen. Zoome weiter hinein oder kippe die Karte weniger."</string>
     <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
     <string name="quest_crossing_type_unmarked">"Ohne Markierungen"</string>
@@ -620,7 +618,7 @@ Jetzt aufspalten?"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
     <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Postkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar …"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht in ihrer Mitte auf der Karte."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn hier etwas recycelt werden kann, das nicht aufgelistet ist, hinterlasse bitte stattdessen einen Hinweis."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>
@@ -762,7 +760,7 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits
     <string name="achievement_pedestrian_title">"Fußgänger"</string>
     <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind!"</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
-    <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen!"</string>
+    <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganern am Herzen liegen!"</string>
 
     <!-- Hier sollte nicht ein bestimmtes Fahrzeug suggeriert werden sondern man sollte das offen lassen.
 
@@ -1360,6 +1358,9 @@ sorted alphabetically by title -->
     <string name="lit_value_yes">"Beleuchtet"</string>
     <string name="lit_value_no">"Nicht beleuchtet"</string>
     <string name="lit_value_24_7">"Tag und Nacht beleuchtet"</string>
-    <string name="lit_value_automatic">"Beleuchtet wenn jemand vorbeikommt"</string>
+    <string name="lit_value_automatic">"Beleuchtet, wenn jemand vorbeikommt"</string>
     <string name="overlay_sidewalk">"Bürgersteige"</string>
+    <string name="quest_generic_answer_is_indoors">"ist in Gebäude"</string>
+    <string name="quest_summit_cross_title">"Ist hier ein Gipfelkreuz?"</string>
+    <string name="quest_entrance_reference_flat_range_to">"bis"</string>
 </resources>
