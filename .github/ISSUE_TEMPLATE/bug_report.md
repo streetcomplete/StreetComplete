@@ -15,7 +15,7 @@ Maybe it is not a bug? Check the FAQ: https://wiki.openstreetmap.org/wiki/Street
 <!-- Add steps to reproduce this behavior here -->
 
 **Expected Behavior**
-<!-- A clear and concise description of what you expected to happen -->
+<!-- Add a clear and concise description of what you expected to happen -->
 
 **Versions affected**
-<!-- Add the Android and StreetComplete version here. Please use exact version instead of saying "latest" -->
+<!-- Add the Android and StreetComplete version here. Please use exact version number instead of saying "latest" -->
