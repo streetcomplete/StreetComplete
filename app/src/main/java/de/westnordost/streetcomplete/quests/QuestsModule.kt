@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
+import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
@@ -48,7 +49,6 @@ import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBin
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
-import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
