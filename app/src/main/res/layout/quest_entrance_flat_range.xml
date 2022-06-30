@@ -34,8 +34,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 >
 
                 <EditText
@@ -54,9 +54,8 @@
             </me.grantland.widget.AutofitLayout>
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="13dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_gravity="center"
                 android:text="@string/quest_entrance_reference_flat_range_to"
                 />
@@ -70,8 +69,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 >
 
                 <EditText
