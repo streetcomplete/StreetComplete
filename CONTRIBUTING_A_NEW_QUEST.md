@@ -249,7 +249,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 ## Form
 
 ```kotlin
-override fun createForm() = YesNoQuestAnswerFragment()
+override fun createForm() = YesNoQuestForm()
 ```
 
 Form defines interface used by mappers.
