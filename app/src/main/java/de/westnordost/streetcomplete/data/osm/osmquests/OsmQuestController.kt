@@ -109,6 +109,7 @@ class OsmQuestController internal constructor(
             val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes) // don't put these quests in cache, some could be hidden
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
+                // todo: decide whether all quests should be cached, or only visible
                 val previousQuests = db.getAllInBBox(bbox) // can't be done from cache because here we need ALL quests
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
                 updateQuests(quests, obsoleteQuestKeys)
@@ -135,12 +136,12 @@ class OsmQuestController internal constructor(
     }
 
     private val spatialCache = SpatialCache(
-        SPATIAL_CACHE_SIZE,
         16,
+        SPATIAL_CACHE_SIZE,
+        2000,
         { bbox -> getAllVisibleInBBoxForCache(bbox) },
-        { keys -> questCache.keys.removeAll(keys) }
+        OsmQuest::key, OsmQuest::position
     )
-    private val questCache = HashMap<OsmQuestKey, OsmQuest>(2000)
     private var visibleQuests: HashSet<String>? = null
 
     init {
@@ -270,7 +271,7 @@ class OsmQuestController internal constructor(
 
     // get from cache, if not found check in db
     override fun get(key: OsmQuestKey): OsmQuest? {
-        synchronized(this) { questCache[key]?.let { return it } }
+        spatialCache.get(key)?.let { return it }
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -279,7 +280,7 @@ class OsmQuestController internal constructor(
     }
 
     // to be called from spatialCache only, so will already be synchronized
-    private fun getAllVisibleInBBoxForCache(bbox: BoundingBox): List<Pair<OsmQuestKey, LatLon>> {
+    private fun getAllVisibleInBBoxForCache(bbox: BoundingBox): List<OsmQuest> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
         val entries = db.getAllInBBox(bbox, visibleQuests).filter {
@@ -296,22 +297,16 @@ class OsmQuestController internal constructor(
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
-        quests.forEach { questCache[it.key] = it }
-
-        return quests.map { it.key to it.position }
+        return quests
     }
 
     override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val newTypes = questTypes?.toHashSet()
-        synchronized(this) {
-            if (visibleQuests != newTypes) {
-                clearCache()
-                visibleQuests = newTypes
-            }
-            val quests = spatialCache.get(bbox).map { questCache[it]!! }
-            spatialCache.trim()
-            return quests
+        if (visibleQuests != newTypes) {
+            clearCache()
+            visibleQuests = newTypes
         }
+        return spatialCache.get(bbox)
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
@@ -320,14 +315,9 @@ class OsmQuestController internal constructor(
         return OsmQuest(questType, entry.elementType, entry.elementId, geometry)
     }
 
-    fun clearCache() {
-        synchronized(this) {
-            questCache.clear()
-            spatialCache.clear()
-        }
-    }
+    fun clearCache() = spatialCache.clear()
 
-    fun trimCache() = synchronized(this) { spatialCache.trim(SPATIAL_CACHE_SIZE/3) }
+    fun trimCache() = spatialCache.trim(SPATIAL_CACHE_SIZE / 3)
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -425,25 +415,12 @@ class OsmQuestController internal constructor(
             added
         }
 
-        // update cache
-        synchronized(this) {
-            if (deletedKeys.isNotEmpty()) {
-                spatialCache.removeAll(deletedKeys)
-                questCache.keys.removeAll(deletedKeys)
-            }
-            if (visibleAdded.isNotEmpty()) {
-                val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
-                if (replaceBBox != null) {
-                    val notPut = spatialCache.replaceAllInBBox(actuallyVisible.map { it.key to it.position }, replaceBBox)
-                    questCache.putAll(actuallyVisible.filterNot { it.key in notPut }.associateBy { it.key })
-                } else {
-                    actuallyVisible.forEach {
-                        if (spatialCache.putIfTileExists(it.key, it.position))
-                            questCache[it.key] = it
-                    }
-                }
-            }
-        }
+        spatialCache.removeAll(deletedKeys)
+        val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
+        if (replaceBBox == null)
+            actuallyVisible.forEach { spatialCache.putIfTileExists(it) }
+        else
+            spatialCache.replaceAllInBBox(actuallyVisible, replaceBBox)
 
         listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
