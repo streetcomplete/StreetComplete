@@ -41,14 +41,10 @@ class MapDataController internal constructor(
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     // todo: waste less memory
-    //  use the same keys for element and geometry cache
-    //    saves ca 10-18 (?) bytes / entry on phone, 24 on desktop
-    //    using long as key uses as much memory as a new (not re-used) ElementKey
-    //  think about re-using element keys, and use ElementKeys instead of Long as keys for everything
-    //    hm, here it might make sense to have some val key = ElementKey(type, id) in Element class
-    //     because all elements will go through cache and get an ElementKay anyway
-    //  put elements and geometries in the same cache
-    //    hashMap is 30 bytes / entry on phone, 38 on desktop
+    //  now for 18k elements: 8.4 MB
+    //  HashMap<ElementKey, Pair<Element, ElementGeometry?>> instead of 2 caches: 7.8 MB
+    //  have a fixed key for each element (element.key), and make use of it: 8.2 MB
+    //  -> with both, almost 10% could be saved
 
     val spatialCache = SpatialCache(
         16,
@@ -61,8 +57,6 @@ class MapDataController internal constructor(
     //  -> performance for getMapDataWithGeometry is always a little better for caches by ElementKey
     //   no further performance differences found, so use the cache by ElementKey
     // TODO: use geometries instead of entries?
-    //  but for creating MutableMapDataWithGeometry the geometryEntries are necessary
-    //  unless we use HashMap<ElementKey, Pair<Element, ElementGeometry>> and use MutableMapDataWithGeometry.put(pair.first, pair.second)
     private val wrCache = HashMap<ElementKey, Element>(3000) // 20000 elements is roughly 4-6 z16 tiles in a city, but most of it is nodes
     private val wrGeometryCache = HashMap<ElementKey, ElementGeometryEntry>(3000)
     private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>() // <NodeId, <List<WayId>>
@@ -229,10 +223,12 @@ class MapDataController internal constructor(
 
         val result = MutableMapDataWithGeometry(wr, wrGeometries)
         // todo: always create new node geometry, or store and re-use?
-        //  storing wastes memory, creating is not nice to GC
+        //  storing wastes memory (a lot, due to the probably involved HashMap and the number of nodes), creating is not nice to GC
         nodes.forEach { result.put(it, ElementPointGeometry(it.position)) }
         result.boundingBox = bbox
         Log.i(TAG, "Fetched ${result.size} elements and geometries in ${currentTimeMillis() - time}ms")
+
+        // trimNonSpatialCaches now?
         return result
     }
 
@@ -261,12 +257,13 @@ class MapDataController internal constructor(
         ElementGeometryEntry(type, id, ElementPointGeometry(position))
 
     data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)
+    // this is used after downloading one tile with auto-download, so we should have it in cache
     fun getElementCounts(bbox: BoundingBox): ElementCounts {
-        val keys = elementDB.getAllKeys(bbox) // todo: use cache
+        val data = getMapDataWithGeometry(bbox)
         return ElementCounts(
-            keys.count { it.type == ElementType.NODE },
-            keys.count { it.type == ElementType.WAY },
-            keys.count { it.type == ElementType.RELATION }
+            data.count { it is Node },
+            data.count { it is Way },
+            data.count { it is Relation }
         )
     }
 
@@ -284,7 +281,7 @@ class MapDataController internal constructor(
         }
     }
 
-
+    // todo: just move it to getAll(ids.map { ElementKey(type, it) }).filterIsInstance<type>()?
     fun getNodes(ids: Collection<Long>): List<Node> {
             val nodes = spatialCache.getAll(ids)
             return if (ids.size == nodes.size) nodes
