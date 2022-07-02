@@ -7,7 +7,7 @@
    viewBox="0 0 16.700001 14.77374"
    version="1.1"
    id="svg2717"
-   sodipodi:docname="laurel_leaf_ending.svg"
+   sodipodi:docname="laurel_leaf_stalk_color.svg"
    inkscape:version="1.2 (1:1.2+202206011327+fc4e4096c5)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,7 +25,7 @@
      showgrid="false"
      inkscape:zoom="11.313709"
      inkscape:cx="27.046833"
-     inkscape:cy="39.642172"
+     inkscape:cy="39.730561"
      inkscape:window-width="1920"
      inkscape:window-height="1140"
      inkscape:window-x="0"
@@ -41,20 +41,11 @@
      id="layer1"
      transform="translate(83.787351,21.468133)">
     <rect
-       style="fill:#000000;fill-opacity:0.244816;fill-rule:evenodd;stroke:#065006;stroke-width:0.713252;stroke-opacity:1"
-       id="rect1043"
+       style="fill:#f9006b;fill-opacity:0.24481602;fill-rule:evenodd;stroke:#f6186c;stroke-width:0.713252;stroke-opacity:1"
+       id="rect1043-6"
        width="10.748108"
        height="0.047938362"
-       x="-78.139053"
-       y="-9.0989532" />
-    <g
-       id="g1206-3"
-       transform="matrix(0.82701863,1.0718167,1.0718167,-0.82701863,2.4617716,61.5102)">
-      <path
-         style="fill:#006a00;fill-opacity:1;stroke:none;stroke-width:0.14293px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m -72.59249,-9.1866186 c -0.59142,-0.8247984 -0.666509,-1.0471474 -0.724029,-1.7017904 -0.116308,-1.323697 -1.471447,-3.308405 -2.344423,-4.272861 -1.293266,-1.428791 -4.523419,-3.319866 -4.523419,-3.319866 0,0 0.357286,1.27637 0.834478,2.450477 0.364952,0.897943 0.720162,1.856084 1.326696,2.627174 1.117691,1.420928 3.318703,3.197496 4.129186,3.5162832 0.383661,0.1469449 0.904352,1.0263671 0.904352,1.0263671 z"
-         id="path959-6"
-         sodipodi:nodetypes="csscsaccc" />
-    </g>
+       x="-78.217873"
+       y="-9.1130161" />
   </g>
 </svg>

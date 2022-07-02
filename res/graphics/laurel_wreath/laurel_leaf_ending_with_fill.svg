@@ -7,7 +7,7 @@
    viewBox="0 0 16.700001 14.77374"
    version="1.1"
    id="svg2717"
-   sodipodi:docname="laurel_leaf_ending.svg"
+   sodipodi:docname="laurel_leaf_ending_with_fill.svg"
    inkscape:version="1.2 (1:1.2+202206011327+fc4e4096c5)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,8 +24,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="11.313709"
-     inkscape:cx="27.046833"
-     inkscape:cy="39.642172"
+     inkscape:cx="27.046834"
+     inkscape:cy="39.553785"
      inkscape:window-width="1920"
      inkscape:window-height="1140"
      inkscape:window-x="0"
@@ -40,6 +40,13 @@
   <g
      id="layer1"
      transform="translate(83.787351,21.468133)">
+    <rect
+       style="fill:#f15678;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.37916;stroke-opacity:1"
+       id="rect1847"
+       width="16.700691"
+       height="14.816461"
+       x="-83.788116"
+       y="-21.468735" />
     <rect
        style="fill:#000000;fill-opacity:0.244816;fill-rule:evenodd;stroke:#065006;stroke-width:0.713252;stroke-opacity:1"
        id="rect1043"

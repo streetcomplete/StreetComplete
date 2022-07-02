@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="11.46136mm"
+   width="16.700001mm"
    height="14.77374mm"
-   viewBox="0 0 11.46136 14.77374"
+   viewBox="0 0 16.700001 14.77374"
    version="1.1"
    id="svg2717"
    sodipodi:docname="laurel_leaf_stalk.svg"
-   inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+   inkscape:version="1.2 (1:1.2+202206011327+fc4e4096c5)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,27 +23,29 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="3.6077431"
-     inkscape:cx="-8.7312204"
-     inkscape:cy="66.939356"
+     inkscape:zoom="11.313709"
+     inkscape:cx="27.046833"
+     inkscape:cy="39.730561"
      inkscape:window-width="1920"
      inkscape:window-height="1140"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     height="12.77374mm" />
+     height="12.77374mm"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2714" />
   <g
      id="layer1"
      transform="translate(83.787351,21.468133)">
     <rect
-       style="fill:#000000;fill-opacity:0.244816;fill-rule:evenodd;stroke:#065006;stroke-width:0.713252;stroke-opacity:1"
-       id="rect1043"
+       style="fill:#f9006b;fill-opacity:0.244816;fill-rule:evenodd;stroke:#065006;stroke-width:0.713252;stroke-opacity:1"
+       id="rect1043-6"
        width="10.748108"
        height="0.047938362"
-       x="-83.430725"
-       y="-9.0989532" />
+       x="-80.811401"
+       y="-9.1130161" />
   </g>
 </svg>
