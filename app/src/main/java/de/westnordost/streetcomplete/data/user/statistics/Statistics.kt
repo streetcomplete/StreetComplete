@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.data.quest.QuestType
-
 data class Statistics(
-    val questTypes: List<QuestTypeStatistics>,
+    val types: List<EditTypeStatistics>,
     val countries: List<CountryStatistics>,
     val rank: Int,
     val daysActive: Int,
@@ -11,6 +9,6 @@ data class Statistics(
     val isAnalyzing: Boolean
 )
 
-data class CountryStatistics(val countryCode: String, val solvedCount: Int, val rank: Int?)
+data class CountryStatistics(val countryCode: String, val count: Int, val rank: Int?)
 
-data class QuestTypeStatistics(val questType: QuestType<*>, val solvedCount: Int)
+data class EditTypeStatistics(val type: String, val count: Int)

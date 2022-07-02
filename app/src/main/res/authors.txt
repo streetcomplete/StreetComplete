@@ -72,17 +72,55 @@ fire_hydrant_position_pillar_l… CC-BY 4.0         modified from Corripiano htt
 fire_hydrant_position_pillar_p… CC-BY 4.0         modified from Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3686#issuecomment-1024936939
 fire_hydrant_position_pillar_s… CC-BY 4.0         modified from Stefan Patscheider https://commons.wikimedia.org/wiki/File:Fire-fighting-facility_node-7190010477.jpg
 
-ic_link_cyclosm.xml            CC-BY-SA          Lucas Verney (unclear, see https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
 ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://materialdesignicons.com/icon/trophy-variant)
+ic_notification.png            GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher.png                GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_launcher_round.png          GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ic_link_josm.png               CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
+ic_link_ideditor.png           WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
+ic_link_pic4review.png         CC-BY-SA 4.0      PanierAvide https://wiki.openstreetmap.org/wiki/File:Pic4Review.png
+ic_link_brouter.png            fair use          used while linking and promoting this project
+ic_link_learnosm.png           fair use          used while linking and promoting this project
+ic_link_osmhydrant.png         fair use          used while linking and promoting this project
+ic_link_city_roads.png         fair use          used while linking and promoting this project
+ic_link_mapy_tactile.png       fair use          used while linking and promoting this project
+ic_link_osmlab.png             fair use          used while linking and promoting this project
+ic_link_sunders.png            fair use          used while linking and promoting this project
+ic_link_figuregrounder.png     fair use          used while linking and promoting this project
+ic_link_indoorequal.png        fair use          used while linking and promoting this project
+ic_link_myosmatic.png          fair use          used while linking and promoting this project
+ic_link_opnvkarte.png          fair use          used while linking and promoting this project
+ic_link_thenandnow.png         fair use          used while linking and promoting this project
+ic_link_openstreetbrowser.png  fair use          used while linking and promoting this project
+ic_link_photon.png             fair use          used while linking and promoting this project
+ic_link_valhalla.png           fair use          used while linking and promoting this project
+ic_link_cyclosm.xml            fair use          used while linking and promoting this project ( https://github.com/cyclosm/cyclosm-cartocss-style/issues/615#issuecomment-1152875875 )
+ic_link_weeklyosm.png          fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg https://wiki.openstreetmap.org/wiki/File:Logo_weeklyOSM.svg https://wiki.openstreetmap.org/wiki/File:Weeklyosm_red_cut.svg
+ic_link_cyclosm.png            fair use          used while linking and promoting this project
+ic_link_heigit.png             fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:HeiGIT.svg
+ic_link_openstreetmap.png      fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+ic_link_openvegemap.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/OpenVegeMap
+ic_link_wheelmap.png           fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wheelmap.org_logo.svg
+ic_link_osrm.png               fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:OSRM-Logo.png
+ic_link_wiki.png               fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wikilogo.png
+ic_link_graphhopper.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
+ic_link_organic_maps.png       fair use          used while linking and promoting this project
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
-kerb_height_raised_original... CC0               Mateusz Konieczny (...)
 kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
-kerb_height_lowered_origina... CC0               Mateusz Konieczny (...)
 kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
-kerb_height_flush_original.jpg CC0               Mateusz Konieczny (...)
 kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
 kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
+
+memorial_type_statue.jpg       CC-BY-SA 4.0      Rabax63 https://commons.wikimedia.org/wiki/File:Garibaldi_Monument.jpg
+memorial_type_bust.jpg         CC0               Jebulon https://commons.wikimedia.org/wiki/File:Aristotelis_Valaoritis_bust_National_Garden_Athens,_Greece.jpg
+memorial_type_plaque.jpg       Public Domain     Geotek https://commons.wikimedia.org/wiki/File:Bleaklow_Plaque.jpg
+memorial_type_war_memorial.jpg Public Domain     Stanfordsiver https://commons.wikimedia.org/wiki/File:Women_of_World_War_II.jpg
+memorial_type_stone.jpg        Public Domain     Ola / Ojp https://commons.wikimedia.org/wiki/File:Memorial_stone_of_battle_of_Liljendal.18080224.ojp.JPG
+memorial_type_obelisk.jpg      CC-BY-SA 4.0      Leserättin https://commons.wikimedia.org/wiki/File:KatCC-BY-SAharina-Denkmal_(2).jpg
+memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.wikimedia.org/wiki/File:Infostele_Chronik_der_Mauer_mit_Adolph_Philipp.JPG
+memorial_type_stele_stone.jpg  CC-BY-SA 4.0      Alta Falisa https://commons.wikimedia.org/wiki/File:18_June_1815_%E2%80%93_Waterloo_%E2%80%93_27th_(Inniskilling)_Regiment_of_Foot,_stele.jpg modified by Matija Nalis to remove wreath
+memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
@@ -112,6 +150,7 @@ produce_chili.jpg              CC-BY-SA 3.0      Daniel Risacher https://commons
 produce_coconut.jpg            CC-BY 2.0         Diego Torres Silvestre https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg
 produce_coffee.jpg             CC-BY-SA 3.0      Marcelo Corrêa https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
 produce_cranberry.jpg          CC-BY-SA 4.0      Ecomare/Sytske Dijksen https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
+produce_date.jpg              CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
 produce_fig.jpg                CC-BY-SA 3.0      Archives et jardin personnels https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
 produce_grapefruit.jpg         CC-BY-SA 3.0      Lipsio https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
@@ -168,9 +207,10 @@ surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/w
 surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
 surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
-path_surface_paved.jpg         CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+path_surface_paved.jpg         CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
-surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 surface_rock.jpg               CC0               Elliot Plack
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
 surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg

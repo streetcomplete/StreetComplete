@@ -312,7 +312,12 @@
                     "label": "Tjänster",
                     "options": {
                         "cosmetics": "Kosmetika",
-                        "tanning": "Solarium"
+                        "hair_removal": "Hårborttagning",
+                        "nails": "Manikyr / Pedikyr",
+                        "skin_care": "Hudvård",
+                        "spa": "Dag-spa",
+                        "tanning": "Solarium",
+                        "waxing": "Vaxning"
                     }
                 },
                 "bench": {
@@ -1068,6 +1073,12 @@
                 "flag/wikidata": {
                     "label": "Flaggans Wikidata"
                 },
+                "flashing_lights": {
+                    "options": {
+                        "no": "Nej",
+                        "yes": "Ja"
+                    }
+                },
                 "floating": {
                     "label": "Flytande"
                 },
@@ -1570,6 +1581,13 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Svårighetsgrad enligt IMBA",
+                    "options": {
+                        "0": "⚪ Enklast (vita cirkel)",
+                        "1": "🟢 Enkel (gröna cirkel)",
+                        "2": "🟦 Medel (blå fyrkant)",
+                        "3": "◆ Svår (svart diamant)",
+                        "4": "◆◆ Extremt svårt (dubbel svart diamant)"
+                    },
                     "placeholder": "Enkel, medel, svår...",
                     "terms": "svårighetsgrad enligt imba,imba,svårighetsgrad,svårighet,utmaning"
                 },
@@ -5149,10 +5167,6 @@
                     "name": "Portal för vägtull",
                     "terms": "portal för vägtull,vägtullsportal,vägtull,portal,kamera för registreringsnummer,automatisk vägtull,tullportal,vägavgift,vägavgiftsportal,portal för vägavgift"
                 },
-                "highway/track": {
-                    "name": "Jordbruks-/skogsväg",
-                    "terms": "bruksväg,traktorväg,skogsväg,åkerväg,virkesväg,timmerväg,traktor,skogsmaskin,åker,timmer,jordbruk,brandväg,brandgata,jordbruksväg"
-                },
                 "highway/traffic_mirror": {
                     "name": "Trafikspegel",
                     "terms": "trafikspegel,vägspegel,utfartspegel,spegel,säkerhet,hörn,konvex"
@@ -8272,9 +8286,6 @@
                 "waterway/river": {
                     "name": "Flod",
                     "terms": "å,flod,älv,fors,ström,jokk,vattendrag"
-                },
-                "waterway/riverbank": {
-                    "name": "Flodbank"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Marin latrintömning",

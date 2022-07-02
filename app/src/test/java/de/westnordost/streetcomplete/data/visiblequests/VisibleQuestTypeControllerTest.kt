@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeDisabled
@@ -125,5 +124,3 @@ class VisibleQuestTypeControllerTest {
         verify(visibleQuestTypeDao, times(2)).getAll(0)
     }
 }
-
-private val QuestType<*>.name get() = this::class.simpleName!!

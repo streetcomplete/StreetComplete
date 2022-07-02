@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
-        android:name="de.westnordost.streetcomplete.screens.main.map.QuestsMapFragment"
+        android:name="de.westnordost.streetcomplete.screens.main.map.MainMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_map"

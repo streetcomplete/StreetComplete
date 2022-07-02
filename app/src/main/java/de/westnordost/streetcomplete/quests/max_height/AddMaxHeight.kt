@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.math.intersects
 
@@ -55,8 +55,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val changesetComment = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {
         val isBelowBridge = tags["amenity"] != "parking_entrance"

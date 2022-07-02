@@ -303,7 +303,12 @@
                     "label": "Serviço",
                     "options": {
                         "cosmetics": "Cosméticos",
-                        "tanning": "Bronzeamento"
+                        "hair_removal": "Depilação",
+                        "nails": "Desabilitar pontes integradas",
+                        "skin_care": "Cuidados com a pele",
+                        "spa": "Spa diurno",
+                        "tanning": "Bronzeamento",
+                        "waxing": "Depilação"
                     }
                 },
                 "bench": {
@@ -417,8 +422,13 @@
                 "cai_scale-IT": {
                     "label": "Dificuldade de rota de trilha (Clube Alpino Italiano)",
                     "options": {
-                        "E": "E: Para trilheiros experientes"
-                    }
+                        "E": "E: Para trilheiros experientes",
+                        "EAI": "EAI: Caminhadas em condições de neve",
+                        "EE": "EE: Para caminhantes experientes",
+                        "EEA": "EEE: Para caminhantes experientes com equipamento",
+                        "T": "T: Turístico"
+                    },
+                    "placeholder": "T, E, EE, …"
                 },
                 "camera/direction": {
                     "label": "Direção (Graus Sentido Horário)",
@@ -471,6 +481,8 @@
                     "label": "Tipo",
                     "options": {
                         "castrum": "Forte romano",
+                        "defensive": "Castelo defensivo",
+                        "fortress": "Fortaleza",
                         "palace": "Palácio"
                     }
                 },
@@ -781,6 +793,9 @@
                     "label": "Diâmetro",
                     "placeholder": "5 mm, 10 cm, 15 in…"
                 },
+                "diameter_crown": {
+                    "label": "Diâmetro da coroa"
+                },
                 "diet_multi": {
                     "label": "Tipos de dieta",
                     "options": {
@@ -1027,6 +1042,29 @@
                 "flag/wikidata": {
                     "label": "Wikidata da bandeira"
                 },
+                "flashing_lights": {
+                    "label": "Luzes piscantes",
+                    "options": {
+                        "always": {
+                            "description": "As luzes estão sempre piscando",
+                            "title": "Sempre piscando"
+                        },
+                        "button": {
+                            "description": "Luzes ativadas pressionando um botão",
+                            "title": "Botão ativado"
+                        },
+                        "button;sensor": {
+                            "description": "Luzes ativadas por sensor ou botão",
+                            "title": "Ativado por botão e sensor"
+                        },
+                        "no": "Não",
+                        "sensor": {
+                            "description": "Luzes ativadas por sensor",
+                            "title": "Sensor ativado"
+                        },
+                        "yes": "Sim"
+                    }
+                },
                 "floating": {
                     "label": "Flutuando"
                 },
@@ -1088,6 +1126,10 @@
                 },
                 "generator/type": {
                     "label": "Tipo"
+                },
+                "genus": {
+                    "label": "Gênero",
+                    "placeholder": "Acer, Platanus, Quercus…"
                 },
                 "geyser/height": {
                     "label": "Altura da erupção"
@@ -5006,10 +5048,6 @@
                     "name": "Pedágio de fluxo livre",
                     "terms": "pedágio de fluxo livre,pedágio sem dinheiro"
                 },
-                "highway/track": {
-                    "name": "Estrada agrícola",
-                    "terms": "estrada de fazenda,fazenda,estrada em floresta,floresta"
-                },
                 "highway/traffic_mirror": {
                     "name": "Espelho de tráfego",
                     "terms": "espelho,côncavo,convexo,segurança,visão,retrovisor"
@@ -8125,9 +8163,6 @@
                 "waterway/river": {
                     "name": "Rio",
                     "terms": "rio"
-                },
-                "waterway/riverbank": {
-                    "name": "Orla fluvial"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Ponto de descarga de dejetos (para barcos)",

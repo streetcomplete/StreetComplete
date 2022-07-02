@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.BUILDING
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.HANDLEBAR_HOLDER
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.LOCKERS
@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.ST
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.WALL_LOOPS
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddBikeParkingTypeForm : AImageListQuestAnswerFragment<BikeParkingType, BikeParkingType>() {
+class AddBikeParkingTypeForm : AImageListQuestForm<BikeParkingType, BikeParkingType>() {
 
     override val items = listOf(
         Item(STANDS, R.drawable.bicycle_parking_type_stand, R.string.quest_bicycle_parking_type_stand),

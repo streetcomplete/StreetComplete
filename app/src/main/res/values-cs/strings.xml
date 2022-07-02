@@ -675,12 +675,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Používá detektory pohybu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Je osvětlena nepřetržitě"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Nelze vyhledat úkoly. Zkuste mapu ještě více přiblížit nebo zkuste zmenšit naklonění."</string>
 
     <!-- Fuzzy -->
@@ -2155,9 +2149,13 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_postboxRoyalCypher_title">"Jaký královský monogram je na této schránce?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Není vidět žádný královský monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Hasičská stanice"</string>
     <string name="quest_recycling_type_beverage_cartons">"Pouze kartonové obaly od nápojů"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Pouze plastové lahve a kartonové obaly"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Týmový režim"</string>
 
     <!-- Team mode -->
@@ -2646,4 +2644,24 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotkni se pro zahájení měření"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Je zde veřejně přístupná pumpička (alespoň pokud je otevřeno)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Je tam fungující pumpička na kolo?"</string>
+    <string name="quest_memorialType_title">"Jaký druh památníku to je?"</string>
+    <string name="quest_memorialType_statue">"Socha"</string>
+    <string name="quest_memorialType_bust">"Busta"</string>
+    <string name="quest_memorialType_plaque">"Pamětní deska"</string>
+    <string name="quest_memorialType_war_memorial">"Památník na válku"</string>
+    <string name="quest_memorialType_stone">"Kámen s nápisem (atd.)"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Dřevěná stéla (pamětní deska)"</string>
+    <string name="quest_memorialType_stele_stone">"Kamenná stéla (pamětní deska)"</string>
+    <string name="quest_memorialType_sculpture">"Jiná skulptura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Vyberte překrytí"</string>
+    <string name="overlay_none">"Žádné"</string>
+    <string name="overlay_lit">"Pouliční osvětlení"</string>
+    <string name="lit_value_yes">"Osvětleno"</string>
+    <string name="lit_value_no">"Neosvětleno"</string>
+    <string name="lit_value_24_7">"Osvětleno v noci i ve dne"</string>
+    <string name="lit_value_automatic">"Osvětleno, když někdo prochází"</string>
+    <string name="overlay_sidewalk">"Chodníky"</string>
 </resources>

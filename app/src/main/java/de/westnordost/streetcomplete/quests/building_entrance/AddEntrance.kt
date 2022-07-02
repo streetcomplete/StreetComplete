@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
@@ -31,7 +31,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     override val changesetComment = "Add entrance info"
     override val wikiLink = "Key:entrance"
     override val icon = R.drawable.ic_quest_door
-    override val questTypeAchievements = listOf(PEDESTRIAN)
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrance_title
 

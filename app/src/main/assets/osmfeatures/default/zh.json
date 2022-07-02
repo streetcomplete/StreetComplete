@@ -957,9 +957,6 @@
                 "waterway/river": {
                     "name": "河流"
                 },
-                "waterway/riverbank": {
-                    "name": "河堤"
-                },
                 "waterway/stream": {
                     "name": "溪流"
                 },

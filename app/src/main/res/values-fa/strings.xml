@@ -27,7 +27,7 @@
     <string name="quest_leave_new_note_description">"می‌توانید در این مکان یادداشتی عمومی بگذارید تا نقشه‌کش‌های دیگر در مورد آن نظر دهند و امیدوار باشیم آن را حل نمایند. یا در عوض این مورد را فقط برای خودتان پنهان کنید"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"تأیید"</string>
+    <string name="quest_leave_new_note_yes">"گذاشتن یادداشت"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"نه، فقط پنهان کن"</string>
@@ -691,12 +691,6 @@
     <!-- Fuzzy -->
     <string name="produce_walnuts">"گردو"</string>
     <string name="produce_sisal">"سیسال"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"از ردیاب حرکت برای روشنایی استفاده می‌شود"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"شب و روز روشنایی دارد"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"اگر نمی‌توانید اینجا را بررسی کنید با بزرگنمایی و کوچک نمایی نقشه سعی نمایید."</string>
@@ -1918,6 +1912,8 @@
     <string name="user_statistics_country_rank">"رتبه‌بندی در %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"نقشه‌برداری پویا %s"</string>
     <string name="user_statistics_filter_by_country">"براساس کشور"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"براساس نوع جُستار"</string>
     <string name="user_profile_global_rank">"رتبه‌بندی جهانی"</string>
     <string name="user_profile_local_rank">"رتبه‌بندی در %s"</string>
@@ -2135,9 +2131,13 @@
     <string name="quest_postboxRoyalCypher_title">"رمز ملی روی این صندوق پستی چیست؟"</string>
     <string name="quest_postboxRoyalCypher_type_none">"هیچ رمز ملی قابل مشاهده نیست"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسکاتلند"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"ایستگاه آتش‌نشانی"</string>
     <string name="quest_recycling_type_beverage_cartons">"فقط جعبه‌های نوشیدنی"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"فقط بطری و جعبه پلاستیکی"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"حالت گروهی"</string>
 
     <!-- Team mode -->
@@ -2310,7 +2310,7 @@
     <string name="quest_barrier_bicycle_type_double">"مانع - مانع در هر طرف"</string>
     <string name="quest_barrier_bicycle_type_multiple">"مانع - بیش از دو مانع"</string>
     <string name="pref_title_language_select">"زبان را انتخاب کنید"</string>
-    <string name="language_default">"سامانه پیشفرض"</string>
+    <string name="language_default">"پیش‌فرض سیستم"</string>
 
     <!-- Fuzzy -->
     <string name="on_floor">"در طبقه %s:"</string>
@@ -2632,4 +2632,21 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_air_pump_bicycle_repair_station_title">"آیا پمپ دوچرخه در اینجا کار می‌کند؟"</string>
+    <string name="action_overlays">"همپوشانی‌ها"</string>
+    <string name="quest_memorialType_title">"این چه یادبودی است؟"</string>
+    <string name="quest_memorialType_statue">"مجسمه"</string>
+    <string name="quest_memorialType_bust">"نیم‌تنه"</string>
+    <string name="quest_memorialType_plaque">"بشقاب"</string>
+    <string name="quest_memorialType_war_memorial">"یادبود جنگ"</string>
+    <string name="quest_memorialType_stone">"سنگ"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"انتخاب پوشش"</string>
+    <string name="overlay_none">"هیچ‌کدام"</string>
+    <string name="overlay_lit">"روشنایی خیابان"</string>
+    <string name="lit_value_yes">"روشن"</string>
+    <string name="lit_value_no">"روشن نیست"</string>
+    <string name="lit_value_24_7">"شب و روز روشن"</string>
+    <string name="lit_value_automatic">"وقتی کسی از آنجا می‌گذرد روشن می‌شود"</string>
+    <string name="overlay_sidewalk">"پیاده‌روها"</string>
 </resources>

@@ -301,8 +301,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="produce_vanilla">"Vaniļa"</string>
     <string name="produce_walnuts">"Valrieksti"</string>
     <string name="produce_sisal">"Sizals"</string>
-    <string name="quest_way_lit_automatic">"Tas izmanto kustību sensorus"</string>
-    <string name="quest_way_lit_24_7">"Tiek apgaismots cauru diennakti"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Šeit nevar pārlūkot. Mēģiniet tuvināt karti vai mazināt tās sašķiebšanu."</string>
     <string name="quest_crossing_type_title">"Kāda veida pāreja tā ir?"</string>
     <string name="quest_crossing_type_unmarked">"Bez ceļa marķējumiem"</string>
@@ -595,7 +593,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="about_summary_current_version">"Pašreizējā versija: %s"</string>
     <string name="quest_postboxRef_title">"Kāds ir šīs pasta kastes identifikācijas numurs?"</string>
     <string name="quest_ref_answer_noRef">"Nav redzams numurs vai kods…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Attēlā ceļš ir pagriezts tāpat kā uz kartes pie atrašanās vietas saspraudes."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Attēlā ceļš ir pagriezts tāpat, kā tas ir pagriezts kartes centrā."</string>
     <string name="quest_recycling_materials_title">"Kādus izšķirotos atkritumus šeit var izmest?"</string>
     <string name="quest_recycling_materials_note">"Ja šajā vietā var atstāt pārstrādei kaut ko, kas šeit nav uzskaitīts, lūdzu, tā vietā atstājiet piezīmi."</string>
     <string name="quest_recycling_type_batteries">"Baterijas"</string>
@@ -656,12 +654,12 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
 
     <!-- Links screen -->
     <string name="links_empty">"Jums vēl nav saišu"</string>
-    <string name="quests_empty">"Jūs vēl neesat publicējis atbildes"</string>
+    <string name="quests_empty">"Jūs vēl neesat publicējis labojumus"</string>
     <string name="unsynced_quests_description">"plus vēl %d nepublicētas izmaiņas."</string>
     <string name="unsynced_quests_not_logged_in_description">"Jums ir %d vēl nepublicētas izmaiņas. Lai tās augšupielādētu, jums jāierakstās."</string>
 
     <!-- User screen -->
-    <string name="user_quests_title">"Izpildīti uzdevumi"</string>
+    <string name="user_quests_title">"Labojumi"</string>
     <string name="user_achievements_title">"Sasniegumi"</string>
     <string name="user_links_title">"Saišu kolekcija"</string>
     <string name="user_profile_title">"Profils"</string>
@@ -755,7 +753,7 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="user_statistics_country_rank">"Rangs %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartēšanas portāls %s"</string>
     <string name="user_statistics_filter_by_country">"pēc valts"</string>
-    <string name="user_statistics_filter_by_quest_type">"pēc uzdevuma veida"</string>
+    <string name="user_statistics_filter_by_quest_type">"pēc veida"</string>
     <string name="user_profile_global_rank">"Globālais rangs"</string>
     <string name="user_profile_local_rank">"Rangs valstī
 %s"</string>
@@ -904,10 +902,10 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_postboxRoyalCypher_title">"Kāds ir karaliskais šifrs uz šīs pastkastes?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nav redzams karaliskais šifrs"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotijas kronis"</string>
-    <string name="quest_buildingType_fire_station">"Ugunsdzēsēju depo"</string>
+    <string name="quest_buildingType_fire_station">"Ugunsdzēsēju depo ēka"</string>
     <string name="quest_recycling_type_beverage_cartons">"Tikai dzērienu kartona iepakojumi"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Tikai plastmasas pudeles un kartona iepakojumi"</string>
-    <string name="team_mode">"Komandas režīms"</string>
+    <string name="team_mode">"Pāriet uz komandas režīmu"</string>
 
     <!-- Team mode -->
     <string name="team_mode_exit">"Iziet ko komandas režīma"</string>
@@ -1281,4 +1279,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Spiediet uz ekrāna, lai sāktu mērīt"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Vai šeit ir publiski pieejams velosipēda pumpis (vismaz darba laikā)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Vai šeit ir strādājošs velosipēda pumpis?"</string>
+    <string name="action_overlays">"Pārklājumi"</string>
+    <string name="split_way">"Sadalīt ceļu"</string>
+    <string name="quest_memorialType_title">"Kāda veida piemiņas vieta tā ir?"</string>
+    <string name="quest_memorialType_statue">"Statuja"</string>
+    <string name="quest_memorialType_bust">"Krūšutēls"</string>
+    <string name="quest_memorialType_plaque">"Plāksne"</string>
+    <string name="quest_memorialType_war_memorial">"Kara memoriāls"</string>
+    <string name="quest_memorialType_stone">"Akmens"</string>
+    <string name="quest_memorialType_obelisk">"Obelisks"</string>
+    <string name="quest_memorialType_stele_wooden">"Koka stela (piemiņas plātne)"</string>
+    <string name="quest_memorialType_stele_stone">"Akmens stela (piemiņas plātne)"</string>
+    <string name="quest_memorialType_sculpture">"Cita skulptūra"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Izvēlieties pārklājumu"</string>
+    <string name="overlay_none">"Nav"</string>
+    <string name="overlay_lit">"Ielas apgaismojums"</string>
+    <string name="lit_value_yes">"Apgaismots"</string>
+    <string name="lit_value_no">"Nav apgaismots"</string>
+    <string name="lit_value_24_7">"Apgaismots visu diennakti"</string>
+    <string name="lit_value_automatic">"Apgaismots, kad kāds iet garām"</string>
+    <string name="overlay_sidewalk">"Ietves"</string>
 </resources>

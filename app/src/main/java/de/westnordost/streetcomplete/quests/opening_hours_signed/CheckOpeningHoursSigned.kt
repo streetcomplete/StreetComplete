@@ -7,20 +7,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.concurrent.FutureTask
 
-class CheckOpeningHoursSigned (
+class CheckOpeningHoursSigned(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<Boolean> {
 
@@ -34,7 +34,7 @@ class CheckOpeningHoursSigned (
           and access !~ private|no
           and (
             name or brand or noname = yes or name:signed = no
-            or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure=park or barrier
+            or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure = park or barrier
           )
     """.toElementFilterExpression() }
 
@@ -47,7 +47,7 @@ class CheckOpeningHoursSigned (
     override val wikiLink = "Key:opening_hours:signed"
     override val icon = R.drawable.ic_quest_opening_hours_signed
     override val isReplaceShopEnabled = true
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_openingHours_signed_title
 
@@ -60,7 +60,7 @@ class CheckOpeningHoursSigned (
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
 

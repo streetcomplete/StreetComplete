@@ -5182,10 +5182,6 @@
                     "name": "Televojpagejo",
                     "terms": "vojpagejo,elektronika vojpagejo,impostejo,pagejo"
                 },
-                "highway/track": {
-                    "name": "Vojo kampa",
-                    "terms": "kampa vojo,nepavima,malpavima,tervojo"
-                },
                 "highway/traffic_mirror": {
                     "name": "Trafika spegulo",
                     "terms": "spegulo"
@@ -8375,9 +8371,6 @@
                 "waterway/river": {
                     "name": "Rivero",
                     "terms": "rivereto,torento,akvofluo"
-                },
-                "waterway/riverbank": {
-                    "name": "Riverbordo"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Stacio de forigo de fekaĵoj (por jaĥtoj)",

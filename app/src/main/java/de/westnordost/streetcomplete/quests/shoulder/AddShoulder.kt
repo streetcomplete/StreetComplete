@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.shoulder
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
@@ -54,8 +54,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
     override val changesetComment = "Add whether there are shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title
 

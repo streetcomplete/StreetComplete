@@ -4131,10 +4131,6 @@
                 "highway/toll_gantry": {
                     "name": "Avoin tietulli"
                 },
-                "highway/track": {
-                    "name": "Maatalous-/metsätie",
-                    "terms": "pikkutie,hiekkatie,metsätie,metsäkonetie,metsä,metsäkone,ura,ajoväylä"
-                },
                 "highway/traffic_mirror": {
                     "name": "Tiepeili",
                     "terms": "peili,liikenne,liikennepeili,kupera"
@@ -6423,9 +6419,6 @@
                 },
                 "waterway/river": {
                     "name": "Joki"
-                },
-                "waterway/riverbank": {
-                    "name": "Joentörmä"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Veneiden jäteveden tyhjennyspiste",

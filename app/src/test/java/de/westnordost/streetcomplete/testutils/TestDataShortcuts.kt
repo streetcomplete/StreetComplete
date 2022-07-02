@@ -154,7 +154,7 @@ fun osmNoteQuest(
 fun osmQuestKey(
     elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
-    questTypeName: String = QUEST_TYPE::class.simpleName!!
+    questTypeName: String = QUEST_TYPE.name
 ) = OsmQuestKey(elementType, elementId, questTypeName)
 
 val QUEST_TYPE = TestQuestTypeA()

@@ -323,8 +323,6 @@
     <string name="produce_vanilla">"Ванила"</string>
     <string name="produce_walnuts">"Ораси"</string>
     <string name="produce_sisal">"Сисал-конопља"</string>
-    <string name="quest_way_lit_automatic">"Користи детекцију покрета"</string>
-    <string name="quest_way_lit_24_7">"Осветљен је и ноћу и дању"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Не могу тражити овде. Покушајте још увеличати или мање нагните карту."</string>
     <string name="quest_crossing_type_title">"Какав је ово прелаз?"</string>
     <string name="quest_crossing_type_unmarked">"Без икаквих ознака"</string>
@@ -678,6 +676,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Не види се референтни број…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Пут на илустрацији се ротира исто као и карта на означеном месту."</string>
     <string name="quest_recycling_materials_title">"Шта се овде може оставити за рециклажу?"</string>
 
@@ -745,11 +745,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"Још немате веза"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Још  нисте објавили ни један одговор"</string>
     <string name="unsynced_quests_description">"и %d необјављених измена."</string>
     <string name="unsynced_quests_not_logged_in_description">"Имате %d необјављених измена. Морате се пријавити како би их послали."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Решени задаци"</string>
     <string name="user_achievements_title">"Постигнућа"</string>
     <string name="user_links_title">"Збирка веза"</string>
@@ -858,6 +861,8 @@
     <string name="user_statistics_country_rank">"Ранг у %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографски портал %s"</string>
     <string name="user_statistics_filter_by_country">"по земљама"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"по врсти задатка"</string>
     <string name="user_profile_global_rank">"Светска
 ранг листа"</string>
@@ -1038,9 +1043,13 @@
     <string name="quest_postboxRoyalCypher_title">"Која је краљевска шифра на овом поштанском сандучету?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Краљевска шифра није видљива"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Шкотска Круна"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Ватрогасна станица"</string>
     <string name="quest_recycling_type_beverage_cartons">"Само картонска амбалажа (тетрапак)"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Само пластичне флаше и картон"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Рад у тиму"</string>
 
     <!-- Team mode -->
@@ -1456,4 +1465,49 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Број степеника да бисте стигли до врха. Уколико се број разликује у сваком од смерова, унесите већи."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"не постоји, бицикле нису дозвољене у овом смеру"</string>
+    <string name="map_btn_create_track">"Направи нови снимак путање"</string>
+    <string name="map_btn_stop_track">"Заустави снимање путање"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Колико овде има места за изнајмљивање бицикли?"</string>
+    <string name="quest_bicycle_rental_type_title">"Какав је ово тип изнајмљивања бицикли?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Прикључна станица која закључава бицикле"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Наменско место (бицикле се закључавају свака посебно)"</string>
+    <string name="quest_bicycle_rental_type_human">"Запослено особље"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Продавница бицикли која их и изнајмљује"</string>
+    <string name="quest_bicycle_shop_repair_title">"Да ли се овде нуди поправка бицикли?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Да ли се овде продају половне бицикле?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Не, само нове"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Да, и старе и нове"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Да, само старе"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Овде се не продају бицикле"</string>
+    <string name="quest_building_entrance_title">"Какав је ово улаз у грађевину?"</string>
+    <string name="quest_building_entrance_main">"Главни улаз у јавну грађевину"</string>
+    <string name="quest_building_entrance_staircase">"Улаз на степениште (нпр. у зграду)"</string>
+    <string name="quest_building_entrance_service">"Помоћни улаз"</string>
+    <string name="quest_building_entrance_exit">"Само излаз"</string>
+    <string name="quest_building_entrance_emergency_exit">"Излаз у случају опасности"</string>
+    <string name="quest_building_entrance_shop">"Улаз у продавницу"</string>
+    <string name="quest_building_entrance_yes">"Други тип улаза"</string>
+    <string name="quest_building_entrance_dead_end">"Слепа улица, нема улаза"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Тапните на екран да почнете мерење"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Да ли овде има пумпи за бицикле (бар када је отворено)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Да ли овде има пумпа за бицикле која ради?"</string>
+    <string name="split_way">"Подели линију"</string>
+    <string name="quest_memorialType_title">"Какав је ово спомен-комплекс?"</string>
+    <string name="quest_memorialType_statue">"Статуа"</string>
+    <string name="quest_memorialType_bust">"Биста"</string>
+    <string name="quest_memorialType_plaque">"Спомен-плоча"</string>
+    <string name="quest_memorialType_war_memorial">"Ратни споменик"</string>
+    <string name="quest_memorialType_stone">"Камен"</string>
+    <string name="quest_memorialType_obelisk">"Обелиск"</string>
+    <string name="quest_memorialType_stele_wooden">"Дрвена стела (спомен плоча)"</string>
+    <string name="quest_memorialType_stele_stone">"Камена стела (спомен плоча)"</string>
+    <string name="quest_memorialType_sculpture">"Остали тип склуптуре"</string>
+    <string name="overlay_none">"Никакво"</string>
+    <string name="overlay_lit">"Улично осветљење"</string>
+    <string name="lit_value_yes">"Да"</string>
+    <string name="lit_value_no">"Не"</string>
+    <string name="lit_value_24_7">"Осветљено и дању и ноћу"</string>
+    <string name="lit_value_automatic">"Осветљено када неко прође"</string>
+    <string name="overlay_sidewalk">"Тротоари"</string>
 </resources>

@@ -49,6 +49,32 @@ styles:
     track-lines:
         base: lines
         blend: overlay
+    map_data-lines:
+        base: lines
+        blend: translucent
+    map_data-polygons:
+        base: polygons
+        blend: translucent
+    map_data-points:
+        base: points
+        blend: translucent
+        blend_order: 1
+    map_data-lines-right:
+        base: lines
+        blend: inlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    color.a = color.a * smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+    map_data-lines-left:
+        base: lines
+        blend: inlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    color.a = color.a * smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
 
 layers:
     streetcomplete_selected_pins:
@@ -63,7 +89,7 @@ layers:
     streetcomplete_pins:
         data: { source: streetcomplete_pins }
         pins:
-            filter: { $zoom: { min: 15 } }
+            filter: { $zoom: { min: 16 } }
             draw:
                 pin-icons:
                     interactive: true
@@ -84,7 +110,7 @@ layers:
                     collide: false
                     offset: [-1.5px, -12px]
         dots:
-            filter: { $zoom: { min: 13, max: 15.999 } }
+            filter: { $zoom: { min: 14, max: 15.999 } }
             draw:
                 pin-dots:
                     priority: 1
@@ -135,7 +161,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
         old:
             filter: { old: [true] }
             draw:
@@ -144,7 +170,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
     streetcomplete_track2:
         data: { source: streetcomplete_track2 }
         current:
@@ -156,7 +182,7 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
         old:
             filter: { old: [true] }
             draw:
@@ -165,4 +191,65 @@ layers:
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
-                    order: 1000
+                    order: 900
+    streetcomplete_map_data:
+        data: { source: streetcomplete_map_data }
+        line:
+            filter: { type: [line], color: true }
+            draw:
+                map_data-lines:
+                    interactive: true
+                    color: function() { return feature.color; }
+                    width: function() { return feature.width; }
+                    order: 801
+                    cap: round
+                    join: round
+                    outline:
+                        color: function() { return feature.strokeColor; }
+                        width: 1m
+                        order: 800
+        line-left:
+            filter: { type: [line], colorLeft: true }
+            draw:
+                map_data-lines-left:
+                    interactive: true
+                    color: function() { return feature.colorLeft; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: 802
+                    join: round
+        line-right:
+            filter: { type: [line], colorRight: true }
+            draw:
+                map_data-lines-right:
+                    interactive: true
+                    color: function() { return feature.colorRight; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: 802
+                    join: round
+        area:
+            filter: { type: [poly] }
+            draw:
+                map_data-polygons:
+                    interactive: true
+                    color: function() { return feature.color; }
+                    order: 800
+                    extrude: function() { return feature.height; }
+                map_data-lines:
+                    color: function() { return feature.strokeColor; }
+                    order: 801
+                    extrude: function() { return feature.height; }
+                    width: 1m
+                    cap: round
+                    join: round
+        label:
+            filter: { text: true }
+            draw:
+                text:
+                    interactive: true
+                    text_source: text
+                    priority: 10
+                    font:
+                        family: global.text_font_family
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: global.text_stroke

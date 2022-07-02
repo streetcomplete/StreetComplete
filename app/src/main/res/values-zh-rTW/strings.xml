@@ -748,12 +748,6 @@
     <string name="produce_sisal">"瓊麻"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"使用動態偵測"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"不分日夜照明"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"在這裡無法掃描。請進一步放大或是傾斜地圖程度小點。"</string>
 
     <!-- Fuzzy -->
@@ -1669,11 +1663,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"您尚未有任何連結"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"您尚未發佈任何任務的解答"</string>
     <string name="unsynced_quests_description">"增加 %d 尚未發佈的更改。"</string>
     <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %d 項變更。您必須登入來上傳它們。"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"解決的任務"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"連結集合"</string>
@@ -1791,6 +1788,8 @@
     <string name="user_statistics_country_rank">"在 %2$s: %1$d 的排名"</string>
     <string name="user_statistics_country_wiki_link">"繪製導航 %s"</string>
     <string name="user_statistics_filter_by_country">"依國家"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"依任務類型"</string>
     <string name="user_profile_global_rank">"全球排行"</string>
     <string name="user_profile_local_rank">"在 %s 的排名"</string>
@@ -2005,9 +2004,13 @@
     <string name="quest_postboxRoyalCypher_title">"這個郵筒的皇家徽章是什麼？"</string>
     <string name="quest_postboxRoyalCypher_type_none">"沒有看到皇家徽章"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"協作模式"</string>
 
     <!-- Team mode -->
@@ -2429,4 +2432,54 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"只是到頂部的階梯數，如果兩邊計算不同的話，請取比較大的數字。"</string>
+    <string name="quest_shoulder_explanation2">"路肩或是緊急車道標示緊急停車車道。這個區域設計為路肩，未必整條都有鋪面，而且要停車可能不夠寬，或是停下來會阻礙交通。"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"沒有，這個方向不允許騎單車"</string>
+    <string name="map_btn_create_track">"新增錄製軌跡"</string>
+    <string name="map_btn_stop_track">"停止記錄軌跡"</string>
+    <string name="quest_bicycle_rental_capacity_title">"這裡有多少單車出租數量？"</string>
+    <string name="quest_bicycle_rental_type_title">"這裡是那種型式的單車出租？"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"能夠上鎖單車的單車站"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"指定的地點 (單車個別上鎖)"</string>
+    <string name="quest_bicycle_rental_type_human">"有車架的單車出租"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"也提供單車出租的單車店"</string>
+    <string name="quest_bicycle_shop_repair_title">"這裡有提供單車修理服務嗎？"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"這裡有販售二手單車嗎？"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"沒有，這裡只有販售新車"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"有，與新車一起販售"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"有，只有賣二手車"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"這裡沒有賣單車"</string>
+    <string name="quest_building_entrance_title">"這邊的建築出入口種類是？"</string>
+    <string name="quest_building_entrance_main">"公共建築的主要出入口"</string>
+    <string name="quest_building_entrance_staircase">"樓梯間型式的出入口 (例如公寓建築)"</string>
+    <string name="quest_building_entrance_service">"服務型式的出入口"</string>
+    <string name="quest_building_entrance_exit">"只有離開"</string>
+    <string name="quest_building_entrance_emergency_exit">"只有緊急離開"</string>
+    <string name="quest_building_entrance_shop">"店家正門出入口"</string>
+    <string name="quest_building_entrance_yes">"其他出入口型式"</string>
+    <string name="quest_building_entrance_dead_end">"死路，沒有出入品"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"點一下螢幕來開始測量"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"這裡有公共的單車打氣筒嗎 (至少開放的時候有)？"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"這裡有可能用的單車打氣筒嗎？"</string>
+    <string name="action_overlays">"重疊"</string>
+    <string name="split_way">"分割路徑"</string>
+    <string name="quest_memorialType_title">"這裡是那種類型的紀念碑？"</string>
+    <string name="quest_memorialType_statue">"雕像"</string>
+    <string name="quest_memorialType_bust">"半身像"</string>
+    <string name="quest_memorialType_plaque">"牌匾"</string>
+    <string name="quest_memorialType_war_memorial">"戰爭紀念物"</string>
+    <string name="quest_memorialType_stone">"石像"</string>
+    <string name="quest_memorialType_obelisk">"方尖碑"</string>
+    <string name="quest_memorialType_stele_wooden">"木碑（紀念板）"</string>
+    <string name="quest_memorialType_stele_stone">"石碑（紀念板）"</string>
+    <string name="quest_memorialType_sculpture">"其他雕像"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"選擇重疊"</string>
+    <string name="overlay_none">"沒有"</string>
+    <string name="overlay_lit">"路燈"</string>
+    <string name="lit_value_yes">"有路燈"</string>
+    <string name="lit_value_no">"沒有路燈"</string>
+    <string name="lit_value_24_7">"晚上與白天都有照明"</string>
+    <string name="lit_value_automatic">"只有在人通過時才有照明"</string>
+    <string name="overlay_sidewalk">"人行道"</string>
 </resources>

@@ -4270,10 +4270,6 @@
                     "name": "Arco de peaxe",
                     "terms": "arco de peaxe,arco de portaxe,pórtico de peaxe,pórtico de portaxe,peaxe electrónica,portaxe electrónica"
                 },
-                "highway/track": {
-                    "name": "Pista forestal ou agrícola",
-                    "terms": "camiño,senda,sendeiro,rúa,vía,pista,rural,forestal,agrícola,campo,sen mantemento,offroad,jeep,dobre tracción,tractor,4x4,atv,cuadrimotor,quadratrack,con huella,con pegada,carreiro,verea,vieiro,aldea,parroquia,lugar"
-                },
                 "highway/traffic_mirror": {
                     "name": "Espello de tráfico",
                     "terms": "espello,espello de tráfico,espello convexo"
@@ -6801,9 +6797,6 @@
                 "waterway/river": {
                     "name": "Río",
                     "terms": "río,rio,regato,regacho,afluente,auga,vertente,agua,rama,arroio,curso,esteiro,estuario,foz,riachuelo,ribeira,corrente,curso de auga,beira,marxe"
-                },
-                "waterway/riverbank": {
-                    "name": "Beira de río"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Aseo para embarcacións",

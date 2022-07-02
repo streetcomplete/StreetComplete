@@ -436,8 +436,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Kenari"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Ini menggunakan deteksi gerak"</string>
-    <string name="quest_way_lit_24_7">"Terang siang dan malam"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
@@ -837,6 +835,8 @@ Pisah sekarang?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Tak ada nomor referensi yang terlihat…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Jalan dalam ilustrasi diputar sama seperti pada peta di lokasi pin."</string>
     <string name="quest_recycling_materials_title">"Apa yang tersisa di sini untuk didaur ulang?"</string>
 
@@ -922,6 +922,7 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
     <string name="unsynced_quests_not_logged_in_description">"Kamu belum mengunggah %d perubahan. Kamu perlu masuk untuk mengunggahnya"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Pencarian Terpecahkan"</string>
     <string name="user_achievements_title">"Pencapaian"</string>
     <string name="user_links_title">"Koleksi Link"</string>
@@ -1166,6 +1167,8 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_drinking_water_potable_unsigned">"Aman untuk diminum (tak bertanda)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Tak aman untuk diminum (tertanda)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Tak aman untuk diminum (tak tertanda)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
     <string name="quest_crossing_type_signals_controlled">"Diatur oleh lampu lalu lintas"</string>
     <string name="synced">"Disinkronkan"</string>

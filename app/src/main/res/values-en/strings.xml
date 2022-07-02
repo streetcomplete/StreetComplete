@@ -23,9 +23,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="action_about2">"About"</string>
     <string name="action_settings">"Settings"</string>
+    <string name="action_overlays">"Overlays"</string>
     <string name="user_profile">My Profile</string>
-    <string name="team_mode">Team Mode</string>
 
+    <string name="team_mode">Enter Team Mode</string>
     <string name="action_download">"Scan for quests here"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
@@ -87,6 +88,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_generic_answer_noSign">There is no sign</string>
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <string name="quest_generic_answer_is_actually_steps">"These are steps"</string>
+    <string name="quest_generic_answer_is_indoors">"This is indoors"</string>
 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
@@ -99,7 +101,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">Are you sure that you can not determine it more specifically?</string>
 
-    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as its center on the map.</string>
 
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
@@ -142,6 +144,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Use the zoom function and try to be as precise as possible.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
+    <string name="split_way">Split way</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
@@ -335,7 +338,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <!-- User screen -->
 
-    <string name="user_quests_title">Solved Quests</string>
+    <string name="user_quests_title">Edits</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
     <string name="user_profile_title">Profile</string>
@@ -362,14 +365,14 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- User statistics screen -->
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
-    <string name="quests_empty">You published no quest answers yet</string>
+    <string name="quests_empty">You published no edits yet</string>
 
     <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
 
     <string name="user_statistics_filter_by_country">by country</string>
-    <string name="user_statistics_filter_by_quest_type">by quest type</string>
+    <string name="user_statistics_filter_by_quest_type">by type</string>
 
 
     <!-- Links screen -->
@@ -977,8 +980,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_level_title2">On which level number is this place located?</string>
 
     <string name="quest_lit_title">"Is it lit here?"</string>
-    <string name="quest_way_lit_automatic">"It uses motion detection"</string>
-    <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
 
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
@@ -1015,6 +1016,17 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
+
+    <string name="quest_memorialType_title">What kind of memorial is this?</string>
+    <string name="quest_memorialType_statue">Statue</string>
+    <string name="quest_memorialType_bust">Bust</string>
+    <string name="quest_memorialType_plaque">Plaque</string>
+    <string name="quest_memorialType_war_memorial">War memorial</string>
+    <string name="quest_memorialType_stone">Stone</string>
+    <string name="quest_memorialType_obelisk">Obelisk</string>
+    <string name="quest_memorialType_stele_wooden">Wooden stele (memorial slab)</string>
+    <string name="quest_memorialType_stele_stone">Stone stele (memorial slab)</string>
+    <string name="quest_memorialType_sculpture">Other sculpture</string>
 
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
 
@@ -1416,6 +1428,8 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
+    <string name="quest_summit_cross_title">Is there a summit cross here?</string>
+
     <string name="quest_summit_register_title2">Is there a summit register here?</string>
 
     <string name="quest_surface_title">"What’s the surface here?"</string>
@@ -1473,6 +1487,15 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
 
+    <string name="quest_entrance_reference">What is signed at this entrance?</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>
+    <string name="quest_entrance_reference_select_flat_range_only">Range of flats</string>
+    <string name="quest_entrance_reference_select_code_only">Entrance label</string>
+    <string name="quest_entrance_reference_nothing_signed">No sign with label or flat range</string>
+    <string name="quest_entrance_reference_reference_label">Entrance label:</string>
+    <string name="quest_entrance_reference_flat_range_label">Flat range:</string>
+    <string name="quest_entrance_reference_flat_range_to">to</string>
+
     <string name="quest_traffic_calming_type_title">What type of traffic calming is this?</string>
     <string name="quest_traffic_calming_type_bump">Bump (shorter)</string>
     <string name="quest_traffic_calming_type_hump">Hump (longer)</string>
@@ -1498,5 +1521,20 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
 Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
+
+    <!-- Overlays -->
+
+    <string name="select_overlay">Select Overlay</string>
+
+    <string name="overlay_none">None</string>
+
+    <string name="overlay_lit">Street lighting</string>
+    <string name="lit_value_yes">Lit</string>
+    <string name="lit_value_no">Not lit</string>
+    <string name="lit_value_24_7">Lit night and day</string>
+    <string name="lit_value_automatic">Lit when someone passes by</string>
+
+    <string name="overlay_sidewalk">Sidewalks</string>
+
 
 </resources>

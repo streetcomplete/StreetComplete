@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
@@ -34,7 +34,7 @@ class AddLevel : OsmElementQuestType<String> {
     private val filter by lazy { """
         nodes with
          (${isShopExpressionFragment()})
-         and !level and (name or brand)
+         and !level
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add level to shops"
@@ -45,7 +45,7 @@ class AddLevel : OsmElementQuestType<String> {
     *  the user cannot find the place on any level in the mall, delete the element completely. */
     override val isReplaceShopEnabled = false
     override val isDeleteElementEnabled = true
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title2
 

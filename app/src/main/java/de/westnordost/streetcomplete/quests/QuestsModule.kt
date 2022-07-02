@@ -4,7 +4,6 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
@@ -32,6 +31,7 @@ import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
 import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
+import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
@@ -77,6 +77,7 @@ import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
+import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -124,7 +125,8 @@ import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
-import de.westnordost.streetcomplete.quests.summit_register.AddSummitRegister
+import de.westnordost.streetcomplete.quests.summit.AddSummitCross
+import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
@@ -176,7 +178,7 @@ fun questTypeRegistry(
     countryInfos: CountryInfos,
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker
-) = QuestTypeRegistry(listOf<QuestType<*>>(
+) = QuestTypeRegistry(listOf(
 
     /* The quest types are primarily sorted by how easy they can be solved:
     1. quests that are solvable from a distance or while passing by (fast)
@@ -209,8 +211,10 @@ fun questTypeRegistry(
 
     /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
+    AddMemorialType(),
+
     // bus stop quests
-    AddBusStopShelter(),  // used by at least OsmAnd
+    AddBusStopShelter(), // used by at least OsmAnd
     AddBenchStatusOnBusStop(), // can be seen from across the street
     AddBinStatusOnBusStop(), // can be seen from across the street
     AddTactilePavingBusStop(), // requires you to be very close to it
@@ -259,7 +263,6 @@ fun questTypeRegistry(
 
     // air pump, may require some checking within a garage forecourt
     AddAirCompressor(),
-    AddBicyclePump(),
 
     // recycling containers
     AddRecyclingType(),
@@ -341,6 +344,7 @@ fun questTypeRegistry(
     AddPlaceName(featureDictionaryFuture),
     AddOpeningHours(featureDictionaryFuture),
     AddSeating(), // easily visible from outside, but only seasonally
+    AddBicyclePump(), // visible from the outside, but only during opening hours
 
     AddAtmOperator(),
 
@@ -363,19 +367,21 @@ fun questTypeRegistry(
     AddOneway(),
     AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
+    AddEntrance(),
+    AddEntranceReference(),
+
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
     // ferry: usually visible from looking at the boat, but not always...
     AddFerryAccessPedestrian(),
     AddFerryAccessMotorVehicle(),
 
-    AddEntrance(),
-
     AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
     MarkCompletedHighwayConstruction(), // need to look the whole way
 
-    AddSummitRegister(), // the summit register is not necessarily directly at the peak, need to look around
+    AddSummitCross(), // summit markings are not necessarily directly at the peak, need to look around
+    AddSummitRegister(), // register is harder to find than cross
 
     AddForestLeafType(), // need to walk around in the highlighted section
 

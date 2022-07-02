@@ -401,8 +401,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Nueces"</string>
     <string name="produce_sisal">"Sisal (enequén)"</string>
-    <string name="quest_way_lit_automatic">"Con sensores de movimiento"</string>
-    <string name="quest_way_lit_24_7">"Está alumbrada de día y de noche"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No se puede escanear aquí. Amplía el mapa un poco más para buscar tareas."</string>
     <string name="quest_crossing_type_title">"¿Qué tipo de cruce es?"</string>
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
@@ -902,6 +900,8 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No veo ningún número de referencia…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La versión ampliada de la vía que ves abajo siempre tiene la misma orientación que el tramo marcado en el mapa."</string>
 
     <!-- Fuzzy -->
@@ -980,11 +980,14 @@ Y ya para terminar, ten cuidado: No te despistes y mira a tu alrededor. No entre
 
     <!-- Links screen -->
     <string name="links_empty">"Todavía no tienes ningún enlace"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Todavía no has resuelto ninguna tarea"</string>
     <string name="unsynced_quests_description">"y más de %d cambios todavía sin subir."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tienes %d cambios sin subir. Necesitas iniciar sesión para publicarlos."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Tareas completadas"</string>
     <string name="user_achievements_title">"Logros"</string>
     <string name="user_links_title">"Colección de enlaces"</string>
@@ -1334,11 +1337,14 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_postboxRoyalCypher_title">"¿Cuál es el monograma real (o «royal cypher») del buzón?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"No hay ningún monograma real (o «royal cypher») visible."</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona de Escocia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
 
     <!-- @sanchi Hay que tener cuidado con las mayúsculas, en castellano solo la llevan nombres proprios y a principio de frase, no como en inglés. Otro problema que he visto es el uso del usted, cuando en Android y aquí se dirige al usuario de manera informal. -->
+    <!-- Fuzzy -->
     <string name="team_mode">"Modo equipo"</string>
 
     <!-- Team mode -->

@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.pitch_lit
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddPitchLit : OsmFilterQuestType<Boolean>() {
@@ -23,11 +23,11 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether pitch is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_pitch_lantern
-    override val questTypeAchievements = listOf(OUTDOORS)
+    override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("lit", answer.toYesNo())

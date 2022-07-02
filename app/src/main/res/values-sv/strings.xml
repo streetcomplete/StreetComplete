@@ -63,8 +63,6 @@
     <string name="no_location_permission_warning">"Platsbehörighet är nödvändigt för att visa din position på kartan och söka efter uppdrag i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick och bidragsgivare"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"Projektets hem"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -339,8 +337,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_vanilla">"Vanilj"</string>
     <string name="produce_walnuts">"Valnötter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
-    <string name="quest_way_lit_24_7">"Det är belyst dygnet runt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan inte söka här. Försök att zooma in ytterligare eller minska kartans lutning."</string>
     <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
     <string name="quest_crossing_type_unmarked">"Utan vägmarkeringar"</string>
@@ -706,6 +702,8 @@ Dela den nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vägen i illustrationen är roterad likadant som på kartan på stiftets plats."</string>
     <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
 
@@ -736,8 +734,6 @@ Dela den nu?"</string>
     <string name="about_summary_rate">"på Google Play"</string>
     <string name="about_title_donate">"Donera"</string>
     <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"Tack för att du överväger att stödja den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Sök här istället"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Fortsätt nuvarande sökning"</string>
@@ -778,11 +774,14 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
 
     <!-- Links screen -->
     <string name="links_empty">"Du har inga länkar ännu"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har inte publicerat några uppdragssvar ännu"</string>
     <string name="unsynced_quests_description">"plus %d ännu inte publicerade ändringar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d ännu inte publicerade ändringar. Du måste logga in för att få dem skickade."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Lösta uppdrag"</string>
     <string name="user_achievements_title">"Prestationer"</string>
     <string name="user_links_title">"Länksamling"</string>
@@ -869,13 +868,9 @@ Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din om
     <string name="achievement_wheelchair_title">"Rörlighet"</string>
     <string name="achievement_wheelchair_solved_X">"Du löste %d uppdrag som hjälper rullstolsanvändare ta sig runt i staden!"</string>
     <string name="achievement_postman_title">"Brevbärare"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
 Dessa uppgifter är viktiga inte bara för brevbäraren utan också för alla navigationssystem."</string>
     <string name="achievement_building_title">"Höghus"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"Du löste %d byggnadsrelaterade uppdrag.
 Observera att appen ber om husnummer för en byggnad först efter att dess typ har fastställts."</string>
     <string name="achievement_blind_title">"Sjätte sinne"</string>
@@ -885,8 +880,6 @@ Observera att appen ber om husnummer för en byggnad först efter att dess typ h
     <string name="achievement_veg_title">"Djurvän"</string>
     <string name="achievement_veg_solved_X">"Du löste %d uppdrag som är intressanta för personer som lever på en köttfri diet!"</string>
     <string name="achievement_car_title">"På god väg"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Du löste %d uppdrag som förbättrar detaljer på gator och vägar och du är verkligen på god väg(!) till toppen!"</string>
 
     <!-- Notifications -->
@@ -907,6 +900,8 @@ Observera att appen ber om husnummer för en byggnad först efter att dess typ h
     <string name="user_statistics_country_rank">"Rang i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartläggningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"efter uppdragstyp"</string>
     <string name="user_profile_global_rank">"Global
 rang"</string>
@@ -986,16 +981,12 @@ nivåer"</string>
     <string name="quest_charging_station_operator_title">"Vem är operatören för denna laddstation?"</string>
     <string name="link_indoorequal_description">"Upptäck inomhuskartor över köpcentrum, järnvägsstationer, osv."</string>
     <string name="achievement_rare_title">"Skattjakt"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"Du hittade och löste %d uppdrag som verkligen genomförs sällan, grattis!"</string>
     <string name="achievement_citizen_title">"Medborgare"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"Du löste %d uppdrag som är användbara i vardagslivet!"</string>
     <string name="achievement_outdoors_title">"Friluftsliv"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Du löste %d uppdrag som är användbara för friluftsmänniskor!"</string>
     <string name="quest_pedestrian_crossing_island">"Har detta övergångsställe en refug?"</string>
     <string name="quest_generic_answer_noSign">"Det finns ingen skylt"</string>
@@ -1099,9 +1090,13 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="quest_postboxRoyalCypher_title">"Vad har den här brevlådan för kungligt monogram?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Det finns inget monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krona"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
     <string name="quest_recycling_type_beverage_cartons">"Endast dryckeskartonger"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Endast plastflaskor och kartonger"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Gruppläge"</string>
 
     <!-- Team mode -->
@@ -1425,8 +1420,6 @@ Gör detta för varje sida som finns."</string>
     <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Hela vägbredden från kant till kant: Detta inkluderar allt som utgör vägytan som parkering på gatan eller cykelfiler, men inte gång- och cykelbanor eller särskilt anordnad parkering vid sidan av vägen."</string>
     <string name="quest_sidewalk_answer_none">"Ingen trottoar alls"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Tack för att du vill stödja den här appen!
 Tyvärr har Google Play Store beslutat att inga länkar till donationer får visas i appen, inte ens en länk till vår hemsida."</string>
     <string name="link_osmand_description">"Mobilapp för kartor och navigation, både online och offline"</string>
@@ -1583,4 +1576,30 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Dutta på skärmen för att börja mäta"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Finns det en cykelpump för allmänt bruk här (iaf när det är öppet)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Finns det en fungerade cykelpump här?"</string>
+    <string name="action_overlays">"Extralager"</string>
+    <string name="split_way">"Dela väg"</string>
+    <string name="quest_memorialType_title">"Vad för slags minnesmärke är detta?"</string>
+    <string name="quest_memorialType_statue">"Staty"</string>
+    <string name="quest_memorialType_bust">"Byst"</string>
+    <string name="quest_memorialType_plaque">"Minnestavla"</string>
+    <string name="quest_memorialType_war_memorial">"Krigsminne"</string>
+    <string name="quest_memorialType_stone">"Sten"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_memorialType_stele_wooden">"Stele i trä"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_memorialType_stele_stone">"Rest sten (stele)"</string>
+    <string name="quest_memorialType_sculpture">"Annan skulptur"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Välj extralager"</string>
+    <string name="overlay_none">"Inget"</string>
+    <string name="overlay_lit">"Gatubelysning"</string>
+    <string name="lit_value_yes">"Belyst"</string>
+    <string name="lit_value_no">"Inte belyst"</string>
+    <string name="lit_value_24_7">"Belyst dygnet runt"</string>
+    <string name="lit_value_automatic">"Belyst när någon passerar"</string>
+    <string name="overlay_sidewalk">"Trottoarer"</string>
 </resources>

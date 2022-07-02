@@ -74,7 +74,8 @@ class EditHistoryPinsManager(
         viewLifecycleScope.launch {
             if (this@EditHistoryPinsManager.isActive) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
-                pinsMapComponent.set(createEditPins(edits))
+                val pins = createEditPins(edits)
+                pinsMapComponent.set(pins)
             }
         }
     }
@@ -103,24 +104,24 @@ private const val EDIT_TYPE_NOTE = "note"
 private const val EDIT_TYPE_HIDE_OSM_NOTE_QUEST = "hide_osm_note_quest"
 private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
 
-private fun Edit.toProperties(): Map<String, String> = when (this) {
-    is ElementEdit -> mapOf(
+private fun Edit.toProperties(): List<Pair<String, String>> = when (this) {
+    is ElementEdit -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_ELEMENT,
         MARKER_ID to id.toString()
     )
-    is NoteEdit -> mapOf(
+    is NoteEdit -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_NOTE,
         MARKER_ID to id.toString()
     )
-    is OsmNoteQuestHidden -> mapOf(
+    is OsmNoteQuestHidden -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OSM_NOTE_QUEST,
         MARKER_NOTE_ID to note.id.toString()
     )
-    is OsmQuestHidden -> mapOf(
+    is OsmQuestHidden -> listOf(
         MARKER_EDIT_TYPE to EDIT_TYPE_HIDE_OSM_QUEST,
         MARKER_ELEMENT_TYPE to elementType.name,
         MARKER_ELEMENT_ID to elementId.toString(),
-        MARKER_QUEST_TYPE to questType::class.simpleName!!
+        MARKER_QUEST_TYPE to questType.name
     )
     else -> throw IllegalArgumentException()
 }

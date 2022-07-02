@@ -748,12 +748,6 @@
     <string name="produce_sisal">"Αγαύη"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Χρησιμοποιεί αισθητήρα κίνησης"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Είναι φωτισμένο νύχτα και μέρα"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Δεν είναι δυνατή η σάρωση εδώ. Προσπαθήστε να μεγενθύνετε κι άλλο ή γύρτε τον χάρτη λιγότερο."</string>
 
     <!-- Fuzzy -->
@@ -1554,6 +1548,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Δεν εμφανίζεται αριθμός αναφοράς…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Ο δρόμος στην εικόνα περιστρέφεται όπως και στον χάρτη στη θέση της ακίδας."</string>
 
     <!-- Fuzzy -->
@@ -1669,11 +1665,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"Δεν έχετε ακόμη συνδέσμους"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Δεν έχετε δημοσιεύσει ακόμη απαντήσεις από αναζήτηση"</string>
     <string name="unsynced_quests_description">"συν %d δεν έχουν δημοσιευτεί ακόμη αλλαγές."</string>
     <string name="unsynced_quests_not_logged_in_description">"Έχετε %d μη δημοσιευμένες αλλαγές ακόμη. Πρέπει να συνδεθείτε για να τις ανεβάσετε."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Λυμένα Ερωτήματα"</string>
     <string name="user_achievements_title">"Επιτεύγματα"</string>
     <string name="user_links_title">"Συλλογή συνδέσμων"</string>
@@ -1788,6 +1787,8 @@
     <string name="user_statistics_country_rank">"Κατάταξη σε %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Πύλη Χαρτογράφησης %s"</string>
     <string name="user_statistics_filter_by_country">"ανά χώρα"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"ανά τύπο αναζήτησης"</string>
     <string name="user_profile_global_rank">"Παγκόσμια κατάταξη"</string>
     <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
@@ -2004,9 +2005,13 @@
     <string name="quest_postboxRoyalCypher_title">"Τι είναι ο βασιλικός κώδικας σε αυτό το ταχυδρομικό κουτί;"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Κανένας βασιλικός κώδικας δεν είναι ορατός"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Το Στέμμα της Σκωτίας"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Πυροσβεστικός Σταθμός"</string>
     <string name="quest_recycling_type_beverage_cartons">"Μόνο χαρτόκουτα ποτών"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Μόνο πλαστικά μπουκάλια και χαρτόκουτα"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Λειτουργία ομάδας"</string>
 
     <!-- Team mode -->

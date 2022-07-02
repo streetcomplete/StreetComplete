@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.KILOMETERS_P
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxspeedNoSignNoSlowZoneConfirmationBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.ADVISORY
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.LIVING_STREET
@@ -33,7 +33,7 @@ import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
-class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
+class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
     private val binding by contentViewBinding(QuestMaxspeedBinding::bind)
@@ -55,7 +55,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val highwayTag = osmElement!!.tags["highway"]!!
+        val highwayTag = element.tags["highway"]!!
 
         val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
         binding.zone.isGone = !couldBeSlowZone
@@ -71,12 +71,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
-            val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
+            val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(element.tags["highway"])
 
-            if (couldBeSlowZone)
+            if (couldBeSlowZone) {
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }
-            else
+            } else {
                 confirmNoSign { determineImplicitMaxspeedType() }
+            }
         } else if (speedType == LIVING_STREET) {
             applyAnswer(IsLivingStreet)
         } else if (speedType == NSL) {
@@ -84,11 +85,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
                 onYes = { applyNoSignAnswer("nsl_dual") },
                 onNo = { applyNoSignAnswer("nsl_single") }
             )
+        } else if (userSelectedUnusualSpeed()) {
+            confirmUnusualInput { applySpeedLimitFormAnswer() }
         } else {
-            if (userSelectedUnusualSpeed())
-                confirmUnusualInput { applySpeedLimitFormAnswer() }
-            else
-                applySpeedLimitFormAnswer()
+            applySpeedLimitFormAnswer()
         }
     }
 
@@ -242,7 +242,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun determineImplicitMaxspeedType() {
-        val highwayTag = osmElement!!.tags["highway"]!!
+        val highwayTag = element.tags["highway"]!!
         if (countryInfo.countryCode == "GB") {
             if (ROADS_WITH_DEFINITE_SPEED_LIMIT_GB.contains(highwayTag)) {
                 applyNoSignAnswer(highwayTag)
@@ -279,7 +279,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun determineLit(onYes: () -> Unit, onNo: () -> Unit) {
-        val lit = osmElement!!.tags["lit"]
+        val lit = element.tags["lit"]
         when (lit) {
             "yes" -> onYes()
             "no" -> onNo()

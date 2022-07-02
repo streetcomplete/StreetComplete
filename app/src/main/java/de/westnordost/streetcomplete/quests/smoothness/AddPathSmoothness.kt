@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -28,8 +28,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val changesetComment = "Add path smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_way_surface_detail
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(WHEELCHAIR, BICYCLIST)
+    override val achievements = listOf(WHEELCHAIR, BICYCLIST)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoothness_title

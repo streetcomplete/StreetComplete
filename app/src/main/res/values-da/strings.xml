@@ -409,8 +409,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnødder"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
-    <string name="quest_way_lit_24_7">"Der er belysning døgnet rundt"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikke søge her. Prøv at zoome længere ind eller vip kortet mindre."</string>
@@ -842,7 +840,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"på etage %s"</string>
+    <string name="on_level">"på niveau %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"underjordisk"</string>
@@ -900,10 +898,10 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del enkeltvis.
-Opdel vejen nu?"</string>
+Opdel den nu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Tryk på vejen der hvor du vil opdele den. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
+    <string name="quest_split_way_tutorial">"Tryk på vejen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Zoom venligst længere ind"</string>
@@ -935,6 +933,8 @@ Opdel vejen nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Intet synligt referencenummer…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vejen på illustrationen er roteret så den vender på samme måde som på kortet"</string>
 
     <!-- Fuzzy -->
@@ -1053,11 +1053,14 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
 
     <!-- Links screen -->
     <string name="links_empty">"Du har endnu ingen links"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har ikke indsendt nogle svar endnu"</string>
     <string name="unsynced_quests_description">"plus %d ændringer der endnu ikke er indsendt."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endnu ikke indsendte ændringer. Du skal logge ind for at indsende dem."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Løste opgaver"</string>
     <string name="user_achievements_title">"Præstationer"</string>
     <string name="user_links_title">"Linksamling"</string>
@@ -1174,6 +1177,8 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kortlægningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"efter opgavetype"</string>
     <string name="user_profile_global_rank">"Global rang"</string>
     <string name="user_profile_local_rank">"Rang i %s"</string>
@@ -1380,9 +1385,13 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="quest_postboxRoyalCypher_title">"Hvad er det royale tegn på denne postkasse?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Intet royalt tegn synligt"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skotlands krone"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brandstation"</string>
     <string name="quest_recycling_type_beverage_cartons">"Kun kartoner til drikkevarer"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartoner"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Holdtilstand"</string>
 
     <!-- Team mode -->
@@ -1537,7 +1546,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="restore_confirmation">"Gendan"</string>
     <string name="restore_dialog_message">"Gendan alle opgaver du har skjult?"</string>
     <string name="quest_parking_access_title2">"Hvem må parkere her? Parkering kan være gratis eller mod betaling."</string>
-    <string name="quest_access_yes">"Alle fra offentligheden"</string>
+    <string name="quest_access_yes">"Enhver fra offentligheden"</string>
     <string name="quest_access_customers">"Enhver person, der besøger et bestemt sted (f.eks. kun kunder)"</string>
     <string name="quest_access_private">"Kun person(er) med tilladelse"</string>
 
@@ -1834,4 +1843,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Tryk på skærmen for at starte opmåling"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er der en offentligt tilgængelig cykelpumpe her (i hvert fald i åbningstiden)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Er der en funktionsdygtig cykelpumpe her?"</string>
+    <string name="action_overlays">"Overlejringer"</string>
+    <string name="split_way">"Opdel vej"</string>
+    <string name="quest_memorialType_title">"Hvilken slags mindesmærke er dette?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Buste"</string>
+    <string name="quest_memorialType_plaque">"Mindeplade"</string>
+    <string name="quest_memorialType_war_memorial">"Krigsmindesmærke"</string>
+    <string name="quest_memorialType_stone">"Sten"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Træstele (mindesmærkeplade)"</string>
+    <string name="quest_memorialType_stele_stone">"Stenstele (mindesmærkeplade)"</string>
+    <string name="quest_memorialType_sculpture">"Anden skulptur"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Vælg overlejring"</string>
+    <string name="overlay_none">"Ingen"</string>
+    <string name="overlay_lit">"Gadebelysning"</string>
+    <string name="lit_value_yes">"Oplyst"</string>
+    <string name="lit_value_no">"Ikke oplyst"</string>
+    <string name="lit_value_24_7">"Oplyst nat og dag"</string>
+    <string name="lit_value_automatic">"Oplyses, når nogen passerer forbi"</string>
+    <string name="overlay_sidewalk">"Fortove"</string>
 </resources>

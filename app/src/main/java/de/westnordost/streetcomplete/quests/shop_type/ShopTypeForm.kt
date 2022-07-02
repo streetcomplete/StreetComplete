@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 
-class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
+class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
 
     override val contentLayoutResId = R.layout.view_shop_type
     private val binding by contentViewBinding(ViewShopTypeBinding::bind)
@@ -81,7 +81,7 @@ class ShopTypeForm : AbstractQuestFormAnswerFragment<ShopTypeAnswer>() {
         val localeList = ConfigurationCompat.getLocales(context.resources.configuration)
         return featureDictionary
             .byTerm(startsWith.trim())
-            .forGeometry(osmElement!!.geometryType)
+            .forGeometry(element.geometryType)
             .inCountry(countryOrSubdivisionCode)
             .forLocale(*localeList.toTypedArray())
             .find()

@@ -420,6 +420,9 @@
                 "bunker_type": {
                     "label": "Tipo"
                 },
+                "button_operated": {
+                    "label": "Botão de chamada"
+                },
                 "cables": {
                     "label": "Cabos",
                     "placeholder": "1, 2, 3..."
@@ -678,6 +681,7 @@
                         "sandwich": "Sanduíches",
                         "seafood": "Marisco",
                         "spanish": "Espanhola",
+                        "steak_house": "Churrasqueira",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesa",
                         "thai": "Tailandesa",
@@ -809,6 +813,10 @@
                     "label": "Diâmetro",
                     "placeholder": "5 mm, 10 cm, 15 in…",
                     "terms": "diâmetro,circunferência,raio"
+                },
+                "diameter_crown": {
+                    "label": "Diâmetro da coroa",
+                    "placeholder": "4 m, 9', …"
                 },
                 "diet_multi": {
                     "label": "Tipos de dieta",
@@ -1013,7 +1021,11 @@
                     "terms": "diâmetros"
                 },
                 "fire_hydrant/position": {
-                    "label": "Posição"
+                    "label": "Posição",
+                    "options": {
+                        "sidewalk": "Passeio"
+                    },
+                    "terms": "posição,posicionamento,localização"
                 },
                 "fire_hydrant/pressure": {
                     "label": "Pressão (bar)",
@@ -1454,6 +1466,9 @@
                 },
                 "liaison": {
                     "label": "Tipo"
+                },
+                "lifeguard": {
+                    "label": "Salva-vidas"
                 },
                 "line_attachment": {
                     "label": "Ligação dos cabos"
@@ -2244,6 +2259,15 @@
                 },
                 "seamark/mooring/category": {
                     "label": "Categoria"
+                },
+                "seamark/rescue_station/category": {
+                    "options": {
+                        "aircraft": "Aviação",
+                        "first_aid": "Primeiros socorros",
+                        "lifeboat": "Barco salva-vidas (em terra)",
+                        "lifeboat_on_mooring": "Barco salva-vidas (atracado)",
+                        "radio": "Estação de rádio"
+                    }
                 },
                 "seamark/type": {
                     "label": "Baliza costeira",
@@ -3780,12 +3804,12 @@
                     "terms": "fumadores,fumar,tabaco,charuto,cigarrilha,tabagista,tabagismo"
                 },
                 "amenity/social_centre": {
-                    "name": "Centro social",
-                    "terms": "clube,lions,rotary,fraternidade,sociedade,comunidade,comunitário"
+                    "name": "Clube social",
+                    "terms": "clube,lions,rotary,fraternidade,sociedade,comunidade,comunitário,veteranos"
                 },
                 "amenity/social_facility": {
                     "name": "Serviços sociais",
-                    "terms": "casa do povo,apoio,social,serviços,saúde"
+                    "terms": "casa do povo,apoio,social,serviços,saúde,centro social,lar de dia,lar,hospício,abrigo,sem-abrigo,sem abrigo,cantina,sem fins lucrativos,banco alimentar,caridade,caritativo"
                 },
                 "amenity/social_facility/ambulatory_care": {
                     "name": "Serviços ambulatórios",
@@ -3846,6 +3870,10 @@
                 "amenity/ticket_validator": {
                     "name": "Máquina de validação de bilhetes",
                     "terms": "bilhetes,validação,validar,validador,máquina,sistema,tickets,títulos"
+                },
+                "amenity/toilets": {
+                    "name": "Casas de banho",
+                    "terms": "instalações sanitárias,sanitário,gabinete sanitário,banheiros,toilette,lavabo,wc,w.c."
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Autoclismo",
@@ -5196,7 +5224,7 @@
                 },
                 "highway/track": {
                     "name": "Estrada florestal / agrícola",
-                    "terms": "terra,track,rural,estradão,batida,macadame"
+                    "terms": "terra,track,rural,estradão,batida,macadame,caminho,floresta,agricultura,off road,quinta,herdade,4x4,4wd"
                 },
                 "highway/traffic_mirror": {
                     "name": "Espelho rodoviário",
@@ -8264,6 +8292,10 @@
                     "name": "Rota de caminhada",
                     "terms": "hiking,rota,trekking,rota de caminhada,circuito pedestre,percurso recomendado,pequena rota,grande rota,rota levada,rota trail,percurso trail,percurso,levada,trail"
                 },
+                "type/route/horse": {
+                    "name": "Rota de equitação",
+                    "terms": "percurso,cavalos,equestre,cavaleiros,burros,mulas,riding"
+                },
                 "type/route/light_rail": {
                     "name": "Rota de comboio ligeiro",
                     "terms": "elétrico,eléctrico,metro porto,metro almada,superfície,metro de superfície,carris,caminhos-de-ferro,linha férrea"
@@ -8370,9 +8402,6 @@
                 "waterway/river": {
                     "name": "Rio",
                     "terms": "afluente,barra,curso de água,delta,estuário,ria,fluvial"
-                },
-                "waterway/riverbank": {
-                    "name": "Margem de rio"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Escoamento sanitário para embarcações",

@@ -157,9 +157,6 @@
                 "waterway/river": {
                     "name": "แม่น้ำ"
                 },
-                "waterway/riverbank": {
-                    "name": "ตลิ่งแม่น้ำ"
-                },
                 "waterway/waterfall": {
                     "name": "น้ำตก"
                 },

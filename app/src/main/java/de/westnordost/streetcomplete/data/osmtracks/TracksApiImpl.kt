@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter
 class TracksApiImpl(osm: OsmConnection) : TracksApi {
     private val api: GpsTracesApi = GpsTracesApi(osm)
 
-    override fun create(trackpoints: List<Trackpoint>, noteText: String?): Track = wrapExceptions {
+    override fun create(trackpoints: List<Trackpoint>, noteText: String?): Long = wrapExceptions {
         // Filename is just the start of the track
         // https://stackoverflow.com/a/49862573/7718197
         val name = DateTimeFormatter
@@ -42,9 +42,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         }
 
         // Finally query the API and return!
-        val traceId = api.create(name, visibility, description, tags, history)
-        val details = api.get(traceId)
-        Track(details.id, details.userName)
+        api.create(name, visibility, description, tags, history)
     }
 }
 

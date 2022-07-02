@@ -337,8 +337,6 @@
     <string name="produce_vanilla">"ቫኒላ"</string>
     <string name="produce_walnuts">"ዎልነስ"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"የእንቅስቃሴ ማወቂያን ይጠቀማል"</string>
-    <string name="quest_way_lit_24_7">"ሌሊትና ቀን ይበራል"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"እዚህ ማንበብ አይቻልም። የበለጠ ለማጉላት ይሞክሩ ወይም ካርታውን በትንሹ ያዘንብሉት።"</string>
     <string name="quest_crossing_type_title">"ይህ ምን ዓይነት መሻገሪያ ነው?"</string>
 
@@ -714,6 +712,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ምንም የማጣቀሻ ቁጥር አይታይም…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"በምሳሌው ውስጥ ያለው መንገድ ሚስማር በሚገኝበት ቦታ ላይ በካርታው ላይ ካለው ጋር ተመሳሳይ ነው የሚሽከረከረው ፡፡"</string>
     <string name="quest_recycling_materials_title">"እንደገና ጥቅም ላይ ለማዋል እዚህ ምን ሊተው ይችላል?"</string>
 
@@ -789,11 +789,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"እስካሁን ምንም አገናኞች የሉዎትም"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"እስካሁን ድረስ ምንም የፍለጋ መልስ አላተሙም"</string>
     <string name="unsynced_quests_description">"ሲደመር %d ገና ያልታተሙ ለውጦች።"</string>
     <string name="unsynced_quests_not_logged_in_description">"%d ለውጦችን ገና አላተምም። እንዲጫኑ መግባት ያስፈልግዎታል ፡፡"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"የተፈቱ ተልዕኮዎች"</string>
     <string name="user_achievements_title">"ስኬቶች"</string>
     <string name="user_links_title">"የአገናኝ ስብስብ"</string>
@@ -910,6 +913,8 @@
     <string name="user_statistics_country_rank">"ደረጃ በ%2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"የካርታ ፖርታል %s"</string>
     <string name="user_statistics_filter_by_country">"በሀገር"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"በጥያቄ ዓይነት"</string>
     <string name="user_profile_global_rank">"ዓለም አቀፍ
 ደረጃ"</string>
@@ -1128,9 +1133,13 @@
     <string name="quest_postboxRoyalCypher_title">"በዚህ ፖስታ ሳጥን ላይ ንጉሣዊው ሚስጥር ምንድን ነው?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"ምንም ዘውዳዊ ሚስጥር አይታይም"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"የስኮትላንድ ዘውድ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"የእሳት አደጋ መከላከያ ጣቢያ"</string>
     <string name="quest_recycling_type_beverage_cartons">"የመጠጥ ካርቶኖች ብቻ"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"የፕላስቲክ ጠርሙሶች እና ካርቶኖች ብቻ"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"የቡድን ሁነታ"</string>
 
     <!-- Team mode -->

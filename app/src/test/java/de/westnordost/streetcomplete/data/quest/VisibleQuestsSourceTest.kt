@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq
@@ -28,24 +30,27 @@ class VisibleQuestsSourceTest {
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var visibleQuestTypeSource: VisibleQuestTypeSource
     private lateinit var teamModeQuestFilter: TeamModeQuestFilter
+    private lateinit var selectedOverlaySource: SelectedOverlaySource
     private lateinit var source: VisibleQuestsSource
 
     private lateinit var noteQuestListener: OsmNoteQuestSource.Listener
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var visibleQuestTypeListener: VisibleQuestTypeSource.Listener
     private lateinit var teamModeListener: TeamModeQuestFilter.TeamModeChangeListener
+    private lateinit var selectedOverlayListener: SelectedOverlaySource.Listener
 
     private lateinit var listener: VisibleQuestsSource.Listener
 
     private val bbox = bbox(0.0, 0.0, 1.0, 1.0)
     private val questTypes = listOf(TestQuestTypeA(), TestQuestTypeB(), TestQuestTypeC())
-    private val questTypeNames = questTypes.map { it::class.simpleName!! }
+    private val questTypeNames = questTypes.map { it.name }
 
     @Before fun setUp() {
         osmNoteQuestSource = mock()
         osmQuestSource = mock()
         visibleQuestTypeSource = mock()
         teamModeQuestFilter = mock()
+        selectedOverlaySource = mock()
         questTypeRegistry = QuestTypeRegistry(questTypes)
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
@@ -67,8 +72,12 @@ class VisibleQuestsSourceTest {
             teamModeListener = (invocation.arguments[0] as TeamModeQuestFilter.TeamModeChangeListener)
             Unit
         }
+        on(selectedOverlaySource.addListener(any())).then { invocation ->
+            selectedOverlayListener = (invocation.arguments[0] as SelectedOverlaySource.Listener)
+            Unit
+        }
 
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter)
+        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource)
 
         listener = mock()
         source.addListener(listener)
@@ -104,6 +113,18 @@ class VisibleQuestsSourceTest {
 
         val quests = source.getAllVisible(bbox)
         assertTrue(quests.isEmpty())
+    }
+
+    @Test fun `getAllVisible does not return those that are invisible because of an overlay`() {
+        on(osmQuestSource.getAllVisibleInBBox(bbox, listOf("TestQuestTypeA"))).thenReturn(listOf(mock()))
+        on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf())
+
+        val overlay: Overlay = mock()
+        on(overlay.hidesQuestTypes).thenReturn(setOf("TestQuestTypeB", "TestQuestTypeC"))
+        on(selectedOverlaySource.selectedOverlay).thenReturn(overlay)
+
+        val quests = source.getAllVisible(bbox)
+        assertEquals(1, quests.size)
     }
 
     @Test fun `osm quests added or removed triggers listener`() {

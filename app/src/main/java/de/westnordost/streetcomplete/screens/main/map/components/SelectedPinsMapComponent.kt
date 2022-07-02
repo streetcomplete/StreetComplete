@@ -14,7 +14,8 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 
-/** Takes care of displaying "selected" pins */
+/** Takes care of displaying "selected" pins. Those pins are always shown on top of pins displayed
+ *  by the [PinsMapComponent] */
 class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMapController) {
 
     private val selectedPinsLayer: MapData

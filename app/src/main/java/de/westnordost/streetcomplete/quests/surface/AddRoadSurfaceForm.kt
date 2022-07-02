@@ -3,19 +3,18 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
-    override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
+    override val items get() =
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val value = selectedItems.single()
-        if (osmElement!!.tags.containsKey("tracktype")) {
-            if (isSurfaceAndTracktypeMismatching(value.osmValue, osmElement!!.tags["tracktype"]!!)) {
+        if (element!!.tags.containsKey("tracktype")) {
+            if (isSurfaceAndTracktypeMismatching(value.osmValue, element!!.tags["tracktype"]!!)) {
                 confirmTracktypeMismatch { collectSurfaceDescriptionIfNeededAndApplyAnswer(value, true) }
             }
         } else {

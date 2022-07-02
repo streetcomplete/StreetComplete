@@ -63,8 +63,8 @@ class LoginFragment :
 
         viewLifecycleScope.launch {
             val unsyncedChanges = unsyncedChangesCountSource.getCount()
-            binding.unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-            binding.unpublishedQuestsText.isGone = unsyncedChanges <= 0
+            binding.unpublishedEditCountText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
+            binding.unpublishedEditCountText.isGone = unsyncedChanges <= 0
         }
     }
 
@@ -101,7 +101,7 @@ class LoginFragment :
         userLoginStatusController.logOut()
     }
 
-    suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
+    private suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 /* we didn't save the new OAuthConsumer yet but we want to make an API call with it
@@ -138,8 +138,16 @@ class LoginFragment :
             Permission.READ_PREFERENCES_AND_USER_DETAILS,
             Permission.MODIFY_MAP,
             Permission.WRITE_NOTES,
-            Permission.READ_GPS_TRACES,
-            Permission.WRITE_GPS_TRACES,
+            /* the GPS TRACES permissions are only required for "attaching" gpx track recordings
+               to notes. People that feel uneasy to give these permission should still be able to
+               use this app.
+
+               If those then still use the "attach gpx track recordings" feature and try to upload,
+               they will be prompted to re-authenticate (currently) without further explanation
+               because the OSM API returned a HTTP 403 (forbidden) error.
+             */
+            // Permission.READ_GPS_TRACES,
+            // Permission.WRITE_GPS_TRACES,
         )
 
         private const val ARG_LAUNCH_AUTH = "launch_auth"

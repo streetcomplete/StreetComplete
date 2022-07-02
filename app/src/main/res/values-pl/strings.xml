@@ -486,8 +486,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Orzechy włoskie"</string>
     <string name="produce_sisal">"Agawy sizalowe"</string>
-    <string name="quest_way_lit_automatic">"Wykrywa ruch"</string>
-    <string name="quest_way_lit_24_7">"Jest oświetlona 24 godziny na dobę."</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutaj nie można skanować. Spróbuj przybliżyć lub zmniejszyć pochylenie mapy."</string>
 
     <!-- Fuzzy -->
@@ -1069,6 +1067,8 @@ Podzielić?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Droga na ilustracji jest obrócona w ten sam sposób jak odcinek na mapie pod znaczkiem zadania."</string>
 
     <!-- Fuzzy -->
@@ -1188,6 +1188,7 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="unsynced_quests_not_logged_in_description">"Masz %d nieopublikowanych zmian. Musisz się zalogować żeby je wysłać."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Rozwiązane Zadania"</string>
     <string name="user_achievements_title">"Osiągnięcia"</string>
     <string name="user_links_title">"Kolekcja linków"</string>
@@ -1403,6 +1404,8 @@ I deliberately changed form rather than translating exactly. It is necessary as 
     <string name="user_statistics_country_rank">"%2$s - pozycja %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal %s"</string>
     <string name="user_statistics_filter_by_country">"Według państwa"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"Według typu zadania"</string>
     <string name="user_profile_global_rank">"Pozycja światowa"</string>
     <string name="user_profile_local_rank">"Pozycja:
@@ -1625,9 +1628,13 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="quest_postboxRoyalCypher_title">"Jaki monogram królewski jest na tej skrzynce pocztowej?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Brak monogramu królewskiego"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Korona Szkocji"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Straż pożarna"</string>
     <string name="quest_recycling_type_beverage_cartons">"Tylko kartony po napojach"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Tylko plastikowe butelki i kartony"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Tryb drużynowy"</string>
 
     <!-- Team mode -->
@@ -1840,9 +1847,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
  Alternatywnie możesz zostawić notatkę (ze zdjęciem)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Zarówno numer domu, jak i nazwisko…"</string>
     <string name="quest_address_house_number_label">"Numer domu:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_title">"Czy ta droga ma pas awaryjny?"</string>
+    <string name="quest_shoulder_title">"Czy ta droga ma pobocze lub pas awaryjny?"</string>
     <string name="quest_fireHydrant_position_title">"Gdzie znajduje się ten hydrant?"</string>
     <string name="quest_fireHydrant_position_green">"W trawie lub ziemi"</string>
     <string name="quest_fireHydrant_position_lane">"Na jezdni"</string>
@@ -1910,7 +1915,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"wyświetlane osobno na mapie"</string>
-    <string name="quest_shoulder_value_yes">"pas awaryjny"</string>
+    <string name="quest_shoulder_value_yes">"pobocze/pas awaryjny"</string>
     <string name="quest_shoulder_value_no">"brak pobocza"</string>
     <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
 

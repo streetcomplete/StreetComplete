@@ -55,6 +55,9 @@
                 "access": {
                     "label": "允许通行",
                     "options": {
+                        "customers": {
+                            "title": "顾客"
+                        },
                         "designated": {
                             "description": "只限标志指定或地方规定允许的车辆驶入",
                             "title": "特定"
@@ -308,6 +311,9 @@
                     "label": "服务",
                     "options": {
                         "cosmetics": "化妆品",
+                        "hair_removal": "除毛",
+                        "nails": "美甲／修腳",
+                        "skin_care": "皮肤护理",
                         "tanning": "日光浴"
                     }
                 },
@@ -990,6 +996,13 @@
                 "fire_hydrant/diameter": {
                     "label": "直径 (mm, in 或字母)",
                     "terms": "直径 (mm,in 或字母)"
+                },
+                "fire_hydrant/position": {
+                    "options": {
+                        "green": "植被",
+                        "lane": "车道",
+                        "parking_lot": "停车位"
+                    }
                 },
                 "fire_hydrant/pressure": {
                     "label": "水压 (bar)",
@@ -3637,6 +3650,10 @@
                     "name": "圆形剧场",
                     "terms": "圆形剧场,露天,竞技场,圆形露天剧场,阶梯教室"
                 },
+                "amenity/toilets": {
+                    "name": "厕所",
+                    "terms": "厕所,公厕,洗手间,卫生间"
+                },
                 "amenity/toilets/disposal/flush": {
                     "name": "冲水式厕所",
                     "terms": "厕所,公厕,洗手间,公共卫生间,马桶,wc"
@@ -3872,7 +3889,8 @@
                     "terms": "护柱"
                 },
                 "barrier/bollard_line": {
-                    "name": "系船柱列"
+                    "name": "成排护柱",
+                    "terms": "护柱,拦车"
                 },
                 "barrier/border_control": {
                     "name": "边境检查站",
@@ -4046,7 +4064,7 @@
                 },
                 "building/construction": {
                     "name": "在建建筑",
-                    "terms": "在建建筑"
+                    "terms": "在建建筑,建设中建筑"
                 },
                 "building/cowshed": {
                     "name": "牛棚"
@@ -4653,6 +4671,10 @@
                 "highway/bus_stop": {
                     "name": "公交站"
                 },
+                "highway/construction": {
+                    "name": "施工中道路",
+                    "terms": "关闭,封闭,施工,在建,绕道,封路,修路,挖路,关闭的道路,施工中的道路,建设中道路,道路关闭"
+                },
                 "highway/corridor": {
                     "name": "室内走廊",
                     "terms": "室内走廊,室内步行街"
@@ -4731,6 +4753,9 @@
                     "name": "人行道",
                     "terms": "人行道,人行通道,路缘,路边,路牙,盲道"
                 },
+                "highway/footway/signals": {
+                    "name": "有信号灯的人行横道"
+                },
                 "highway/footway/unmarked": {
                     "name": "人行横道 (无标线)",
                     "terms": "人行横道"
@@ -4786,12 +4811,12 @@
                     "name": "便道"
                 },
                 "highway/pedestrian_area": {
-                    "name": "徒步区",
+                    "name": "步行区域",
                     "terms": "徒步,广场,行人,步行,人行,区"
                 },
                 "highway/pedestrian_line": {
                     "name": "步行街",
-                    "terms": "步行街,广场,人行道,步道,购物中心"
+                    "terms": "步行街,广场,人行道,步道,购物中心,行人专用区,徒步区,行人区域（广场）,行人区域"
                 },
                 "highway/primary": {
                     "name": "主要道路",
@@ -4853,8 +4878,8 @@
                     "terms": "免下车,免下车餐馆,免下车银行"
                 },
                 "highway/service/driveway": {
-                    "name": "车道;私家;私人;车库",
-                    "terms": "车道"
+                    "name": "私家车道",
+                    "terms": "车道;私家;私人;车库"
                 },
                 "highway/service/emergency_access": {
                     "name": "消防通道",
@@ -4900,8 +4925,8 @@
                     "terms": "自由流,自由流收费站,自由流公路收费站,收费门架,收费龙门架,全自动收费站"
                 },
                 "highway/track": {
-                    "name": "农林辙路",
-                    "terms": "车径,小路,土路,泥路,山路,马道,马路,消防道路,农场道路,牧场道路,路,道路,4x4,4wd,四驱,吉普"
+                    "name": "辙路 / 土地通达道路",
+                    "terms": "辙,田埂,车径,小路,土路,泥路,山路,农场,牧场,林场,农,田,林,矿,路,土地通达"
                 },
                 "highway/traffic_mirror": {
                     "name": "道路反光镜",
@@ -5203,7 +5228,7 @@
                 },
                 "landuse/residential/apartments": {
                     "name": "公寓区",
-                    "terms": "公寓区,楼区,公寓楼,公寓,住宅,住宅区,住所,套间"
+                    "terms": "公寓区,小区,楼区,公寓楼,公寓,住宅,住宅区,住所,套间"
                 },
                 "landuse/retail": {
                     "name": "零售区",
@@ -5526,6 +5551,9 @@
                 },
                 "leisure/track/cycling": {
                     "name": "自行车赛道"
+                },
+                "leisure/track/horse_racing": {
+                    "name": "赛马道"
                 },
                 "leisure/track/running": {
                     "name": "体育跑道",
@@ -5977,7 +6005,7 @@
                 },
                 "natural/water/canal": {
                     "name": "运河区域",
-                    "terms": "运河,支流,水路,水道,河,河流,水,航运"
+                    "terms": "渠,运河,水路,水道,河,河流,水,航运"
                 },
                 "natural/water/lake": {
                     "name": "湖泊",
@@ -7805,8 +7833,8 @@
                     "terms": "船舶库"
                 },
                 "waterway/canal": {
-                    "name": "运河",
-                    "terms": "运河"
+                    "name": "运河/渠",
+                    "terms": "渠,运河,水道,河,江"
                 },
                 "waterway/canal/lock": {
                     "name": "船闸",
@@ -7845,9 +7873,6 @@
                 "waterway/river": {
                     "name": "河",
                     "terms": "江,河流,川,水"
-                },
-                "waterway/riverbank": {
-                    "name": "堤"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "航船卸污站",

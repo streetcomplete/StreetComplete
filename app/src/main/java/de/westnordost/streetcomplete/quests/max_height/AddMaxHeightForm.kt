@@ -7,11 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 
-class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
+class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
     private lateinit var lengthInput: LengthInputViewController
 
@@ -29,7 +29,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
         val splitWayHint = view.findViewById<TextView>(R.id.splitWayHint)
         splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
-        splitWayHint?.isGone = osmElement!!.type == ElementType.NODE
+        splitWayHint?.isGone = element.type == ElementType.NODE
 
         lengthInput = LengthInputViewController(
             unitSelect = view.findViewById(R.id.heightUnitSelect),

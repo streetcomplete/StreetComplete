@@ -8,6 +8,7 @@ import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
@@ -18,22 +19,26 @@ import kotlin.math.sqrt
 class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
+    private val overlayRegistry: OverlayRegistry,
     private val prefs: SharedPreferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
-        val spriteSheet =
-            if (!isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown())
-                createSpritesheet()
-            else
-                prefs.getString(Prefs.PIN_SPRITES, "")!!
+        val spriteSheet = when {
+            !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
+            else -> prefs.getString(Prefs.PIN_SPRITES, "")!!
+        }
 
         createSceneUpdates(spriteSheet)
     }
 
     private fun createSpritesheet(): String {
-        val questIconResIds = (questTypeRegistry.map { it.icon } + ADDITIONAL_ICONS).toSortedSet()
+        val questIconResIds = (
+            questTypeRegistry.map { it.icon } +
+            overlayRegistry.map { it.icon } +
+            ADDITIONAL_ICONS
+        ).toSortedSet()
 
         val spriteSheetEntries: MutableList<String> = ArrayList(questIconResIds.size)
         val questPin = context.resources.getDrawable(R.drawable.pin)

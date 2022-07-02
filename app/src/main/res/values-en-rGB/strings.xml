@@ -308,8 +308,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_vanilla">"Vanilla"</string>
     <string name="produce_walnuts">"Walnuts"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"It uses motion detection"</string>
-    <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
     <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
     <string name="quest_crossing_type_unmarked">"Without road markings"</string>
@@ -625,6 +623,8 @@ Split it now?"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="quest_postboxRef_title">"What’s the reference number of this postbox?"</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin."</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
     <string name="quest_recycling_materials_note">"If anything not listed can be recycled here, please leave a note instead."</string>
@@ -686,11 +686,14 @@ Finally, remember to stay safe: Be aware of your surroundings and don’t enter 
 
     <!-- Links screen -->
     <string name="links_empty">"You have no links yet"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"You have published no quest answers yet"</string>
     <string name="unsynced_quests_description">"plus %d not yet published changes."</string>
     <string name="unsynced_quests_not_logged_in_description">"You have %d not yet published changes. You need to login to have them uploaded."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Solved Quests"</string>
     <string name="user_achievements_title">"Achievements"</string>
     <string name="user_links_title">"Link Collection"</string>
@@ -785,6 +788,8 @@ Note that this app asks for the house number of a building only after its type h
     <string name="user_statistics_country_rank">"Rank in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapping Portal %s"</string>
     <string name="user_statistics_filter_by_country">"by country"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"by quest type"</string>
     <string name="user_profile_global_rank">"Global
 rank"</string>
@@ -944,9 +949,13 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_postboxRoyalCypher_title">"What’s the royal cypher on this postbox?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"No royal cypher is visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Fire station"</string>
     <string name="quest_recycling_type_beverage_cartons">"Drinks cartons only"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Team Mode"</string>
 
     <!-- Team mode -->
@@ -1378,4 +1387,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Tap screen to start measuring"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Is there a public bicycle pump here (at least when it’s open)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Is there a working bicycle pump here?"</string>
+    <string name="action_overlays">"Overlays"</string>
+    <string name="split_way">"Split way"</string>
+    <string name="quest_memorialType_title">"What kind of memorial is this?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Bust"</string>
+    <string name="quest_memorialType_plaque">"Plaque"</string>
+    <string name="quest_memorialType_war_memorial">"War memorial"</string>
+    <string name="quest_memorialType_stone">"Stone"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
+    <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
+    <string name="quest_memorialType_sculpture">"Other sculpture"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Select Overlay"</string>
+    <string name="overlay_none">"None"</string>
+    <string name="overlay_lit">"Street lighting"</string>
+    <string name="lit_value_yes">"Lit"</string>
+    <string name="lit_value_no">"Not lit"</string>
+    <string name="lit_value_24_7">"Lit night and day"</string>
+    <string name="lit_value_automatic">"Lit when someone passes by"</string>
+    <string name="overlay_sidewalk">"Pavement"</string>
 </resources>

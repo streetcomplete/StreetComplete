@@ -334,8 +334,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Nous"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Utilitza detector de moviment"</string>
-    <string name="quest_way_lit_24_7">"Està il·luminat de nit i de dia"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
     <string name="quest_crossing_type_title">"Quina classe d’encreuament és aquest?"</string>
 
@@ -712,6 +710,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
 
@@ -782,11 +782,14 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
 
     <!-- Links screen -->
     <string name="links_empty">"Encara no teniu cap enllaç"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Encara no heu publicat cap resposta"</string>
     <string name="unsynced_quests_description">"i %d de canvis no publicats."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tens %d canvis no publicats. Has d'iniciar la sessió per a pujar-los."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Proves resoltes"</string>
     <string name="user_achievements_title">"Assoliments"</string>
     <string name="user_links_title">"Col·lecció d'enllaços"</string>
@@ -901,6 +904,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_statistics_country_rank">"Rang a %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapejant Portal %s"</string>
     <string name="user_statistics_filter_by_country">"per país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"per tipus de missió"</string>
     <string name="user_profile_global_rank">"Global"</string>
     <string name="user_profile_local_rank">"Rang a
@@ -1121,9 +1126,13 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_type_none">"No hi ha cap royal cypher visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Corona d'Escòcia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Parc de bombers"</string>
     <string name="quest_recycling_type_beverage_cartons">"Només cartons de beguda"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Només ampolles i cartons plàstics"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Mode d'equip"</string>
 
     <!-- Team mode -->

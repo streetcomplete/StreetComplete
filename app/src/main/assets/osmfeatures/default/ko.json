@@ -4035,10 +4035,6 @@
                     "name": "3차 도로 연결로",
                     "terms": "3차 도로 연결로"
                 },
-                "highway/track": {
-                    "name": "농·임도",
-                    "terms": "농·임도"
-                },
                 "highway/traffic_mirror": {
                     "name": "차량 거울",
                     "terms": "차량 거울"
@@ -6654,9 +6650,6 @@
                 "waterway/river": {
                     "name": "강",
                     "terms": "강"
-                },
-                "waterway/riverbank": {
-                    "name": "강둑"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "해양 화장실 처리장",

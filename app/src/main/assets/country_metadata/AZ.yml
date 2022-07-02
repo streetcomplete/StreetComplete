@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
+livingStreetSignStyle: russia
 mobileCountryCode: 400
 officialLanguages: [az]
 popularReligions: [muslim]

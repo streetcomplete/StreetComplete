@@ -749,12 +749,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="produce_sisal">"Sizalis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Apšviesta dieną ir naktį"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Nepavyksta čia skenuoti. Labiau priartinkite arba mažiau pakreipkite žemėlapį."</string>
 
     <!-- Fuzzy -->
@@ -1558,6 +1552,8 @@ Pavyzdžiui 1,3 arba 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nematyti jokio numerio…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Kelias iliustracijoje pasuktas taip pat kaip žemėlapyje žymeklio pozicijoje."</string>
 
     <!-- Fuzzy -->
@@ -1976,6 +1972,8 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="user_statistics_country_rank">"Vieta %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Žymėjimo portalas %s"</string>
     <string name="user_statistics_filter_by_country">"pagal šalį"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"pagal užduoties tipą"</string>
     <string name="user_profile_global_rank">"Vieta pasaulyje"</string>
     <string name="user_profile_local_rank">"Vieta
@@ -2045,6 +2043,8 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="quest_charging_station_capacity_title">"Kiek automobilių gali būti kraunama tuo pačiu metu?"</string>
     <string name="quest_construction_completed_at_known_date">"Bus užbaigtos…"</string>
     <string name="quest_construction_completion_date_title">"Kada bus užbaigtos?"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Komandinis režimas"</string>
 
     <!-- Team mode -->

@@ -2384,10 +2384,6 @@
                     "name": "Tretysis Kelias",
                     "terms": "kelias,gatvė"
                 },
-                "highway/track": {
-                    "name": "Neprižiūrimas Kelias",
-                    "terms": "miško keliukas,bekelė,dvigubos vėžės,šunkelis"
-                },
                 "highway/traffic_signals": {
                     "name": "Eismo signala",
                     "terms": "šviesoforas"
@@ -3407,9 +3403,6 @@
                 "waterway/river": {
                     "name": "Upė",
                     "terms": "upė"
-                },
-                "waterway/riverbank": {
-                    "name": "Upės kraštas"
                 },
                 "waterway/stream": {
                     "name": "Upelis",

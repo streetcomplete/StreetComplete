@@ -6,13 +6,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
+class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
@@ -37,10 +37,11 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
             FireHydrantDiameter(diameterValue, MILLIMETER)
         }
 
-        if (isUnusualDiameter(diameter))
+        if (isUnusualDiameter(diameter)) {
             confirmUnusualInput { applyAnswer(diameter) }
-        else
+        } else {
             applyAnswer(diameter)
+        }
     }
 
     private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {

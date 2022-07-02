@@ -148,7 +148,7 @@ class QuestAutoSyncer(
 
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
-        locationManager.requestUpdates(30 * 1000L, 250f)
+        locationManager.requestUpdates(30 * 1000L, 30 * 1000L, 250f)
     }
 
     fun stopPositionTracking() {

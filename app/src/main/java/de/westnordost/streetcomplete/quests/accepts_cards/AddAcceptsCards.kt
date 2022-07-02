@@ -5,16 +5,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
         nodes, ways, relations with (
-          amenity ~ restaurant|fast_food|cafe|ice_cream
+          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
           or (shop and shop !~ no|vacant|mall)
         )
         and !payment:credit_cards and !payment:debit_cards
@@ -26,7 +26,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_card
     override val isReplaceShopEnabled = true
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cards
 

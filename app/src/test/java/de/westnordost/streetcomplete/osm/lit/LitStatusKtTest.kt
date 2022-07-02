@@ -1,0 +1,94 @@
+package de.westnordost.streetcomplete.osm.lit
+
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
+import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
+import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
+import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
+import de.westnordost.streetcomplete.osm.toCheckDateString
+import org.assertj.core.api.Assertions
+import org.junit.Test
+import java.time.LocalDate
+
+class LitStatusKtTest {
+
+    @Test
+    fun `apply normally`() {
+        verifyAnswer(mapOf(), YES, arrayOf(StringMapEntryAdd("lit", "yes")))
+        verifyAnswer(mapOf(), NO, arrayOf(StringMapEntryAdd("lit", "no")))
+        verifyAnswer(mapOf(), AUTOMATIC, arrayOf(StringMapEntryAdd("lit", "automatic")))
+        verifyAnswer(mapOf(), NIGHT_AND_DAY, arrayOf(StringMapEntryAdd("lit", "24/7")))
+    }
+
+    @Test fun `apply updates check date`() {
+        val today = LocalDate.now().toCheckDateString()
+        verifyAnswer(
+            mapOf("lit" to "yes"),
+            YES,
+            arrayOf(
+                StringMapEntryModify("lit", "yes", "yes"),
+                StringMapEntryAdd("check_date:lit", today)
+            )
+        )
+        verifyAnswer(
+            mapOf("lit" to "no"),
+            NO,
+            arrayOf(
+                StringMapEntryModify("lit", "no", "no"),
+                StringMapEntryAdd("check_date:lit", today)
+            )
+        )
+        verifyAnswer(
+            mapOf("lit" to "automatic"),
+            AUTOMATIC,
+            arrayOf(
+                StringMapEntryModify("lit", "automatic", "automatic"),
+                StringMapEntryAdd("check_date:lit", today)
+            )
+        )
+        verifyAnswer(
+            mapOf("lit" to "24/7"),
+            NIGHT_AND_DAY,
+            arrayOf(
+                StringMapEntryModify("lit", "24/7", "24/7"),
+                StringMapEntryAdd("check_date:lit", today)
+            )
+        )
+    }
+
+    @Test fun `apply does not overwrite unspported value if 'yes'`() {
+        verifyAnswer(
+            mapOf("lit" to "limited"),
+            YES,
+            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+        )
+        verifyAnswer(
+            mapOf("lit" to "22:00-05:00"),
+            YES,
+            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+        )
+    }
+
+    @Test fun `apply does overwrite unspported value if not 'yes'`() {
+        verifyAnswer(
+            mapOf("lit" to "limited"),
+            NO,
+            arrayOf(StringMapEntryModify("lit", "limited", "no"))
+        )
+        verifyAnswer(
+            mapOf("lit" to "22:00-05:00"),
+            AUTOMATIC,
+            arrayOf(StringMapEntryModify("lit", "22:00-05:00", "automatic"))
+        )
+    }
+}
+
+fun verifyAnswer(tags: Map<String, String>, answer: LitStatus, expectedChanges: Array<StringMapEntryChange>) {
+    val cb = StringMapChangesBuilder(tags)
+    answer.applyTo(cb)
+    val changes = cb.create().changes
+    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+}

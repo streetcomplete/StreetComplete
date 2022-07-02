@@ -1,5 +1,18 @@
 # Do not edit. Source files are in /res/country_metadata
+centerLineStyle: white
+edgeLineStyle: white
+hasBiWeeklyAlternateSideParkingSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
 hasSlowZone: true
+livingStreetSignStyle: vienna
 mobileCountryCode: 213
+noEntrySignStyle: default
+noParkingLineStyle: dashed yellow
+noParkingSignStyle: vienna
+noStoppingLineStyle: yellow
+noStoppingSignStyle: vienna
 officialLanguages: [ca]
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONA
 atmOperators: [Crèdit Andorrà]

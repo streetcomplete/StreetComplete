@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.databinding.QuestOpeningHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestOpeningHoursCommentBinding
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
@@ -23,7 +23,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>() {
+class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_opening_hours
     private val binding by contentViewBinding(QuestOpeningHoursBinding::bind)
@@ -32,7 +32,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         if (isDisplayingPreviousOpeningHours) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                applyAnswer(RegularOpeningHours(osmElement!!.tags["opening_hours"]!!.toOpeningHoursRules()!!))
+                applyAnswer(RegularOpeningHours(element.tags["opening_hours"]!!.toOpeningHoursRules()!!))
             }
         )
         else emptyList()
@@ -107,7 +107,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun initStateFromTags() {
-        val oh = osmElement!!.tags["opening_hours"]
+        val oh = element.tags["opening_hours"]
         val rows = oh?.toOpeningHoursRules()?.toOpeningHoursRows()
         if (rows != null) {
             openingHoursAdapter.rows = rows.toMutableList()

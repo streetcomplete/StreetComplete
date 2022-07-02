@@ -742,12 +742,6 @@
     <string name="produce_sisal">"സൈസൽ"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"ഇത് ചലനത്തെ തിരിച്ചറിയാൻ ഉപയോഗിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"ഇത് രാവും പകലും കത്തിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"ഇവിടെ സ്കാൻ ചെയ്യാൻ കഴിയില്ല. സൂം ഇൻ ചെയ്യാൻ ശ്രമിക്കുക അല്ലെങ്കിൽ മാപ്പ് കുറച്ച് ചെരിച്ച് ചെയ്യുക."</string>
 
     <!-- Fuzzy -->
@@ -1549,6 +1543,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"റഫറൻസ് നമ്പറുകളൊന്നും കാണുന്നില്ല…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"ഈ ചിത്രീകരണത്തിലെ റോഡ്, പിൻ ലൊക്കേഷനിലെ മാപ്പിലെ പോലെ തന്നെ തിരിച്ചിരിക്കുന്നു."</string>
 
     <!-- Fuzzy -->
@@ -1660,11 +1656,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"നിങ്ങൾക്ക് ഇതുവരെ ലിങ്കുകളൊന്നുമില്ല"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"നിങ്ങൾ ഇതുവരെ ഉത്തരങ്ങൾ പ്രസിദ്ധീകരിച്ചിട്ടില്ല"</string>
     <string name="unsynced_quests_description">"കൂടാതെ, %d ഇതുവരെ പ്രസിദ്ധീകരിക്കാത്ത ഉത്തരങ്ങളും"</string>
     <string name="unsynced_quests_not_logged_in_description">"നിങ്ങൾക്ക് %d ഉത്തരങ്ങൾ ഇതുവരെ പ്രസിദ്ധീകരിച്ചിട്ടില്ല . അവ അപ്ലോഡുചെയ്തതിന് നിങ്ങൾ ലോഗിൻ ചെയ്യേണ്ടതുണ്ട്."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"പരിഹരിച്ച ക്വസ്റ്റുകൾ"</string>
     <string name="user_achievements_title">"നേട്ടങ്ങൾ"</string>
     <string name="user_links_title">"ലിങ്ക് ശേഖരം"</string>
@@ -1765,6 +1764,8 @@
     <string name="user_statistics_country_rank">"%2$s യിൽ റാങ്ക് : %1$d"</string>
     <string name="user_statistics_country_wiki_link">"മാപ്പിംഗ് പോർട്ടൽ %s"</string>
     <string name="user_statistics_filter_by_country">"രാജ്യം അനുസരിച്ച്"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"പ്രശ്നങ്ങളുടെ തരം അനുസരിച്ച്"</string>
     <string name="user_profile_global_rank">"ലോകവാപകമായ
 റാങ്ക്"</string>

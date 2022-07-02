@@ -222,10 +222,10 @@ More info about icon handling [will be given later](#adding-quest-icon).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7cecce384a5baf365119fd3453d600a87f87fadb) in the example repository.
 
-## questTypeAchievements
+## achievements
 
 ```kotlin
-override val questTypeAchievements = listOf(LIFESAVER)
+override val achievements = listOf(LIFESAVER)
 ```
 
 In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/main/java/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
@@ -249,7 +249,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 ## Form
 
 ```kotlin
-override fun createForm() = YesNoQuestAnswerFragment()
+override fun createForm() = YesNoQuestForm()
 ```
 
 Form defines interface used by mappers.

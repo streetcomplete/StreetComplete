@@ -371,8 +371,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Noix"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Oui, avec détection de mouvement"</string>
-    <string name="quest_way_lit_24_7">"Oui, c’est éclairé jour et nuit"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"De quel type de passage piéton s’agit-il ?"</string>
     <string name="quest_crossing_type_unmarked">"Passage piéton sans marquage"</string>
@@ -509,7 +507,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"bande cyclable (délimitée par de la peinture)"</string>
+    <string name="quest_cycleway_value_lane_soft">"accotement (empruntable par les véhicules à moteur)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés non taillés"</string>
     <string name="quest_streetSurface_square_title">"Quel est le revêtement de cette place ?"</string>
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
@@ -772,6 +770,8 @@ Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La route de l’illustration est tournée dans le même sens que sur la carte, à l’emplacement du marqueur."</string>
     <string name="quest_recycling_materials_title">"Qu’est-ce qui peut être déposé ici pour le recyclage ?"</string>
 
@@ -854,6 +854,7 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="unsynced_quests_not_logged_in_description">"Vous avez %d modification(s) non publiée(s). Vous devez vous connecter pour les envoyer."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Quêtes résolues"</string>
     <string name="user_achievements_title">"Succès"</string>
     <string name="user_links_title">"Liens"</string>
@@ -980,6 +981,8 @@ Notez que StreetComplete vous demandera les numéros de rues après avoir indiqu
     <string name="user_statistics_country_rank">"Classement (%2$s) : %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portail cartographique %s"</string>
     <string name="user_statistics_filter_by_country">"par pays"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"par type de quête"</string>
     <string name="user_profile_global_rank">"Classement
 global"</string>
@@ -1165,7 +1168,7 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
 Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu’il n’y a pas de pistes cyclables"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Renseignez qu’il n’y a pas de voies cyclables"</string>
     <string name="quest_construction_completed_at_known_date">"Cela sera fini le …"</string>
     <string name="quest_construction_completion_date_title">"Quand cela sera-t’il fini ?"</string>
 
@@ -1188,9 +1191,13 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_postboxRoyalCypher_title">"Quel est le monogramme royal apposé sur cette boîte aux lettres ?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Aucun monogramme royal visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Couronne d’Écosse"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Caserne de pompiers"</string>
     <string name="quest_recycling_type_beverage_cartons">"Seulement des briques alimentaires en carton"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Seulement des bouteilles en plastique et des cartons"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Mode par équipe"</string>
 
     <!-- Team mode -->
@@ -1646,10 +1653,39 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_service">"Entrée de service"</string>
     <string name="quest_building_entrance_exit">"Sortie seulement"</string>
     <string name="quest_building_entrance_emergency_exit">"Sortie d’urgence"</string>
-    <string name="quest_building_entrance_shop">"Entrée par la devanture"</string>
+    <string name="quest_building_entrance_shop">"Entrée par la devanture du magasin"</string>
     <string name="quest_building_entrance_yes">"Autre type d’entrée"</string>
     <string name="quest_building_entrance_dead_end">"Cul-de-sac, pas d’entrée"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Appuyez sur l’écran pour commencer la mesure"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Y a-t’il une pompe à vélo ici (au moins quand c’est ouvert) ?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Y a t’il une pompe à vélos fonctionnelle ici ?"</string>
+    <string name="action_overlays">"Couches"</string>
+    <string name="split_way">"Couper le chemin"</string>
+    <string name="quest_memorialType_title">"De quel type de mémorial s’agit-il ?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Buste"</string>
+    <string name="quest_memorialType_plaque">"Plaque"</string>
+    <string name="quest_memorialType_war_memorial">"Mémorial de guerre"</string>
+    <string name="quest_memorialType_stone">"Pierre"</string>
+    <string name="quest_memorialType_obelisk">"Obélisque"</string>
+    <string name="quest_memorialType_stele_wooden">"Stèle en bois (plaque commémorative)"</string>
+    <string name="quest_memorialType_stele_stone">"Stèle en pierre (plaque commémorative)"</string>
+    <string name="quest_memorialType_sculpture">"Autre sculpture"</string>
+
+    <!-- Overlays -->
+    <!-- Fuzzy -->
+    <string name="select_overlay">"Sélectionner surcouche"</string>
+
+    <!-- Fuzzy -->
+    <string name="overlay_none">"Aucune"</string>
+
+    <!-- Fuzzy -->
+    <string name="overlay_lit">"Éclairage public"</string>
+    <string name="lit_value_yes">"Éclairé"</string>
+    <string name="lit_value_no">"Non éclairé"</string>
+    <string name="lit_value_24_7">"Éclairage jour et nuit"</string>
+
+    <!-- Fuzzy -->
+    <string name="lit_value_automatic">"Éclairage lorsque quelqu’un passe"</string>
+    <string name="overlay_sidewalk">"Trottoirs"</string>
 </resources>

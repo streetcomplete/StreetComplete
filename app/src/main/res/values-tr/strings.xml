@@ -573,12 +573,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Harekete duyarlı"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Gece gündüz yanıyor"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Burada tarama yapamıyorum.  Daha fazla yakınlaştırmayı deneyin veya haritayı daha az eğin."</string>
 
     <!-- Fuzzy -->
@@ -1382,6 +1376,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="unsynced_quests_not_logged_in_description">"Henüz yayınlanmamış %d değişikliğiniz var. Yüklemek için giriş yapmanız gerekiyor."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Çözülmüş Görevler"</string>
     <string name="user_achievements_title">"Başarımlar"</string>
     <string name="user_links_title">"Bağlantı Koleksyonu"</string>
@@ -1461,6 +1456,8 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <!-- User statistics screen -->
     <string name="stats_are_syncing">"İstatistikleriniz hala senkronize ediliyor. Bu ekranı daha sonra kontrol edin."</string>
     <string name="user_statistics_filter_by_country">"ülkeye göre"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"görev türüne göre"</string>
     <string name="user_profile_global_rank">"Küresel sıralama"</string>
     <string name="quest_address_street_no_named_streets">"Adlandırılmış bir sokağa ait değil"</string>
@@ -1598,7 +1595,11 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"İtfaiye"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Takım Kipi"</string>
 
     <!-- Team mode -->

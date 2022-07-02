@@ -26,10 +26,11 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
         var first = true
 
         for (section in toCircularSections()) {
-            if (!first)
+            if (!first) {
                 sb.append(separator)
-            else
+            } else {
                 first = false
+            }
 
             sb.append(names[section.start])
             if (section.start != section.end) {
@@ -43,10 +44,11 @@ class Weekdays(private val data: BooleanArray = BooleanArray(OSM_ABBR_WEEKDAYS.s
         for (i in WEEKDAY_COUNT until data.size) {
             if (!data[i]) continue
 
-            if (!first)
+            if (!first) {
                 sb.append(separator)
-            else
+            } else {
                 first = false
+            }
 
             sb.append(names[i])
         }

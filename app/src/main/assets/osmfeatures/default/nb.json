@@ -3787,10 +3787,6 @@
                 "highway/tertiary_link": {
                     "name": "Tertiær lenke"
                 },
-                "highway/track": {
-                    "name": "Vei for ATV, landbruk-, hogst- eller anleggsmaskin",
-                    "terms": "landbruksvei,skogsbilvei,traktorsti,traktorvei,anleggsvei"
-                },
                 "highway/traffic_mirror": {
                     "name": "Trafikkspeil"
                 },
@@ -5261,9 +5257,6 @@
                 },
                 "waterway/river": {
                     "name": "Elv"
-                },
-                "waterway/riverbank": {
-                    "name": "Elvebredd"
                 },
                 "waterway/stream": {
                     "name": "Bekk"

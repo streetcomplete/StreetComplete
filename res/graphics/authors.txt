@@ -7,31 +7,31 @@ URLs to other sources used:
 File                            Author if not Tobias Zwick / Source
 ===============================================================================
 
-achievements graphics/
-    achievement_frame           Sanja Dimitrijevic, License: CC-BY-SA 4.0
-    bicyclist                   Sanja Dimitrijevic, License: CC-BY-SA 4.0
-    blind                       Judith Gastell, License: CC-BY-SA 4.0
-    building                    Judith Gastell, License: CC-BY-SA 4.0
-    car                         Sanja Dimitrijevic, License: CC-BY-SA 4.0
-    citizen                     Judith Gastell, License: CC-BY-SA 4.0
-    first_edit                  mashup with https://github.com/openstreetmap/openstreetmap-website/blob/master/app/assets/images/sign-up-illustration.svg
+achievement/
+    achievement_frame.svg       Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    bicyclist.svg               Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    blind.svg                   Judith Gastell, License: CC-BY-SA 4.0
+    building.svg                Judith Gastell, License: CC-BY-SA 4.0
+    car.svg                     Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    citizen.svg                 Judith Gastell, License: CC-BY-SA 4.0
+    first_edit.svg              mashup with https://github.com/openstreetmap/openstreetmap-website/blob/master/app/assets/images/sign-up-illustration.svg
                                 probably (c) Saman Bemel-Benrud, license apparently GPLv2.0
-    lifesaver                   Judith Gastell, License: CC-BY-SA 4.0
-    outdoors                    Judith Gastell, License: CC-BY-SA 4.0
-    pedestrian                  Sanja Dimitrijevic, License: CC-BY-SA 4.0
-    postman                     Judith Gastell, License: CC-BY-SA 4.0
-    rare                        Judith Gastell, License: CC-BY-SA 4.0
-    regular                     Judith Gastell, License: CC-BY-SA 4.0
-    surveyor                    mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+    lifesaver.svg               Judith Gastell, License: CC-BY-SA 4.0
+    outdoors.svg                Judith Gastell, License: CC-BY-SA 4.0
+    pedestrian.svg              Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    postman.svg                 Judith Gastell, License: CC-BY-SA 4.0
+    rare.svg                    Judith Gastell, License: CC-BY-SA 4.0
+    regular.svg                 Judith Gastell, License: CC-BY-SA 4.0
+    surveyor.svg                mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                 (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
-    tourist                     Judith Gastell, License: CC-BY-SA 4.0
-    veg                         Florian Edelmann; mashup with
+    tourist.svg                 Judith Gastell, License: CC-BY-SA 4.0
+    veg.svg                     Florian Edelmann; mashup with
                                 https://github.com/twitter/twemoji/blob/v13.0.1/assets/svg/1f955.svg (License: CC-BY 4.0)
                                 https://openclipart.org/detail/212733/vegetables (License: CC0 1.0)
                                 https://openclipart.org/detail/312402/simple-daikon (License: CC0 1.0)
                                 https://openclipart.org/detail/229813/aubergine (License: CC0 1.0)
                                 https://openclipart.org/detail/280304/fruit-icons-1-package (License: CC0 1.0)
-    wheelchair                  Judith Gastell, License: CC-BY-SA 4.0
+    wheelchair.svg              Judith Gastell, License: CC-BY-SA 4.0
 
 app icon/
     appicon_fancy.svg           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
@@ -41,7 +41,36 @@ app icon/
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
 
-bridge structure graphics/
+../../app/src/main/
+    ic_launcher-playstore.png   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/
+    ic_launcher-playstore.png   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-ldpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-mdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-hdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xxhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+../../app/src/debug/res/mipmap-xxxhdpi/
+    ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+    ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
+
+bridge structure/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0
     cable-stayed.svg            Jay Turner, License: CC0 1.0
@@ -52,9 +81,12 @@ bridge structure graphics/
     tied_arch.svg               Jay Turner, License: CC0 1.0
     truss.svg                   Tobias Zwick, License: CC0 1.0
 
-building icons/
+building/
+    abandoned.svg
+    allotment_house.svg
     apartments.svg
     barn.svg
+    boathouse.svg
     bridge.svg                  Kai Michael Poppe, License: CC-BY-SA 4.0
     bungalow.svg
     bunker.svg
@@ -66,10 +98,12 @@ building icons/
     dormitory.svg
     farm.svg
     farm_house.svg
+    fire_truck.svg              modified bus.svg, which is based on Twemoji: U+1F68D
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
     greenhouse.svg
     hangar.svg
+    historic.svg
     hospital.svg
     hotel.svg
     house.svg
@@ -83,6 +117,8 @@ building icons/
     parking.svg                 parts taken from Twemoji: U+1F698
     retail.svg
     roof.svg
+    ruins.svg
+    silo.svg
     school.svg
     semi_detached.svg
     service.svg
@@ -98,11 +134,11 @@ building icons/
     university.svg
     warehouse.svg
 
-building levels graphics/
+building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
-cycleway graphics/
+cycleway/
     bus_lane.svg
     bus_lane_l.svg
     lane.svg
@@ -130,71 +166,91 @@ cycleway graphics/
     track_dual.svg
     track_dual_l.svg
     track_l.svg
-    unknown.svg
-    unknown_l.svg
 
-cycleway segregation icons/
+cycleway segregation/
     not_segregated.svg
     segregated_l.svg
     segregated_r.svg
 
-fire hydrant diameter graphics/
-    hydrant_sign_de.svg         modified from https://commons.wikimedia.org/wiki/File:Hydrantenschild_mit_Legende.svg, Marvin Feiter
-    hydrant_sign_fi.svg         Marvin Feiter
-    hydrant_sign_nl.svg         Marvin Feiter
-    hydrant_sign_pl.svg         modified from https://wiki.openstreetmap.org/w/images/3/3e/Tablica_orientacyjna_dla_hydrantu.svg, Marvin Feiter
-    hydrant_sign_uk.svg         Marvin Feiter
+fire hydrant diameter/
+    fire_hydrant_sign_de.svg    modified from https://commons.wikimedia.org/wiki/File:Hydrantenschild_mit_Legende.svg, Marvin Feiter
+    fire_hydrant_sign_fi.svg    Marvin Feiter
+    fire_hydrant_sign_nl.svg    Marvin Feiter
+    fire_hydrant_sign_pl.svg    modified from https://wiki.openstreetmap.org/w/images/3/3e/Tablica_orientacyjna_dla_hydrantu.svg, Marvin Feiter
+    fire_hydrant_sign_uk.svg    Marvin Feiter
 
-housenumber graphics/
+housenumber/
     town_silhouette.svg
 
-link graphics/
-    link_neis_one.svg
+kerbs/
+    kerb_height_raised_original... CC0               Mateusz Konieczny
+    kerb_height_lowered_origina... CC0               Mateusz Konieczny
+    kerb_height_flush_original.jpg CC0               Mateusz Konieczny
+    surface_paving_stones_origi... CC-BY-SA 4.0      Tobias Zwick
 
-living street graphics/
-    living_street.svg
-    living_street_australia.svg
-    living_street_france.svg
-    living_street_russian.svg
-    living_street_sadc.svg
-
-max height graphics/
-    maxheight_sign.svg
-
-max speed graphics/
-    roadtype_dual_carriageway.svg
-    roadtype_lit.svg
-    roadtype_lit_no.svg
-    roadtype_urban.svg
-
-max weight graphics/
-    axleload.svg
-    bogieweight.svg
-    truck.svg
-
-parking lane graphics/
+lanes/
     car1.svg
     car2.svg
     car3.svg
     car4.svg
     car5.svg
 
-pins/
-    choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
-    island.svg                      modified from https://www.svgrepo.com/svg/62967/island, SVG Repo, License: CC-0
+links/
+    link_neis_one.svg
 
-police type graphics/
+living street/
+    default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    australia.svg                                    Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    france.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    portrait.svg                                     Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    sadc.svg                                         Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+
+max height/
+    maxheight_sign.svg
+
+max speed/
+    roadtype_dual_carriageway.svg
+    roadtype_lit.svg
+    roadtype_lit_no.svg
+    roadtype_urban.svg
+
+max weight/
+    axleload.svg
+    tandem_axleload.svg
+    truck.svg
+
+pins/
+    bicycle_parking.svg
+    bicycle_pump.svg
+    bench.svg
+    car_air_compressor.svg
+    car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
+    choker.svg                      modified from https://www.svgrepo.com/svg/236894/belt, SVG Repo, License: CC-0
+    defibrillator.svg               (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
+    fire_hydrant.svg
+    information.svg
+    island.svg                      modified from https://www.svgrepo.com/svg/62967/island, SVG Repo, License: CC-0
+    mail.svg
+    motorcycle_parking.svg
+    money.svg                       modified from EmojiOne 2: U+1F4B8
+    power.svg
+    recycling_container.svg         modified from Twemoji: U+267B
+    surveillance_camera.svg
+    toilets.svg
+
+italian police type/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
-    ferroviaria.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
     finanza.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_guardia_di_finanza.svg, Gigillo83, License: CC-BY-SA 3.0
     locale.svg                      modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
     municipale.svg                  modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia_municipale.svg, Gigillo83, License: CC-BY-SA 3.0
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
-    stradale.svg                    modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
-quest icons/
+quest/
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
+    barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
+    barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
+    barrier_on_road.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
     beach.svg                        parts taken from beach_volleyball.svg by Adrien Pavie
     beer.svg                         modified from Twemoji: U+1F37A
     bench_poi.svg
@@ -203,6 +259,11 @@ quest icons/
     bicycle_parking.svg
     bicycle_parking_capacity.svg
     bicycle_parking_cover.svg
+    bicycle_parking_fee.svg          Flo Edelmann merged bicycle_parking.svg and fee.svg, both made by Tobias Zwick (CC-BY-SA 4.0)
+    bicycle_pump.svg
+    bicycle_rental.svg
+    bicycle_repair.svg
+    bicycle_second_hand.svg
     bicycleway.svg
     bicycleway_surface.svg
     bicycleway_width.svg
@@ -212,6 +273,7 @@ quest icons/
     blind_pedestrian_crossing.svg
     blind_traffic_lights.svg
     blind_traffic_lights_sound.svg
+    board_type.svg
     bridge.svg
     building.svg
     building_construction.svg
@@ -219,27 +281,39 @@ quest icons/
     building_levels.svg
     building_underground.svg
     bus.svg                          modified from Twemoji: U+1F68D
+    bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
     car.svg                          modified from Twemoji: U+1F698
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
+    car_air_compressor.svg
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
+    card.svg
     cash.svg
+    check.svg
     christian.svg
     cow.svg                          modified from EmojiOne 2: U+1F404
-    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny
+    crown.svg                        modified from https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (CC-BY-SA 3.0 by Sodacan)
+    defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
     drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
+    door.svg
+    door_address.svg                 housenumber.svg recoloured by Mateusz Konieczny, so (c) Tobias Zwick CC-BY-SA 4.0
+    fee.svg
     ferry.svg                        modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire_hydrant.svg
     fire_hydrant_diameter.svg
+    fire_hydrant_grass.svg
     fuel.svg
     guidepost.svg
     housenumber.svg
     housenumber_street.svg
     information.svg
+    kerb_tactile_paving.svg
+    kerb_type.svg
+    kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
     lantern.svg
     laundry.svg
@@ -251,35 +325,41 @@ quest icons/
     max_height.svg
     max_speed.svg
     max_weight.svg
+    memorial.svg
     money.svg                        modified from EmojiOne 2: U+1F4B8
     motorcycle.svg
     motorcycle_parking.svg
     motorcycle_parking_capacity.svg
     motorcycle_parking_cover.svg
     museum.svg
-    no_bicycle.svg
+    no_bicycles.svg
+    no_cars.svg                      based on car.svg - modified from Twemoji: U+1F698 by Tobias Zwick, negation circle added by Flo Edelmann
+    no_cow.svg                       modified from EmojiOne 2: U+1F404 (via cow.svg)
     no_pedestrians.svg
     note_create.svg
     notes.svg
     oneway.svg
     opening_hours.svg
+    opening_hours_signed.svg
     parking.svg
     parking_access.svg               parts taken from EmojiOne 2: U+1F511
     parking_fee.svg                  parts taken from EmojiOne 2: U+1F4B8
     parking_lane.svg
     parking_maxstay.svg
     path_segregation.svg
-    peak.svg                         (c) 2020 Mateusz Konieczny
+    peak.svg                         (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0)
     pedestrian.svg
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
+    pitch_lantern.svg
     pitch_surface.svg
     playground.svg
     power.svg
     quest.svg
     railway.svg
     recycling.svg                    modified from Twemoji: U+267B
+    recycling_clothes.svg            by Tobias Zwick, based on Twemoji: U+267B and recycling/clothes.svg which in turn is based on EmojiOne 2: U+1F455
     recycling_container.svg          modified from Twemoji: U+267B
     recycling_glass.svg              modified from Twemoji: U+267B
     religion.svg
@@ -289,10 +369,13 @@ quest icons/
     restaurant_vegetarian.svg        parts taken from Twemoji: U+1F37D and U+1F955
     road_construction.svg
     roof_shape.svg
+    seating.svg
     sidewalk.svg
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD
+    steps_count.svg
+    steps_count_brown.svg            based on steps_count.svg made by Tobias Zwick, recoloured by Mateusz Konieczny (so CC-BY-SA 4.0)
     steps.svg
     steps_ramp.svg
     steps_handrail.svg
@@ -303,27 +386,36 @@ quest icons/
     street_surface_detail.svg
     street_turn_lanes.svg
     street_width.svg
+    summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
+    surveillance.svg
+    surveillance_camera.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
     tractor.svg
     traffic_lights.svg
     way_surface.svg
+    way_surface_detail.svg          Tobias Zwick (CC-BY-SA 4.0) (based on street_surface_detail.svg), recoloured background by Flo Edelmann
     way_width.svg
     wifi.svg
     wheelchair.svg
     wheelchair_shop.svg
     wheelchair_crossing.svg
 
+lit/
+    24_7.svg
+    automatic.svg
+    yes.svg
+    no.svg
 
-quest pin/
-    quest_dot.xcf
-    quest_pin.svg
-    quest_pin.xcf
-    quest_pin_bubble.svg
-    quest_pin_pointer.svg
+pin/
+    pin_dot.xcf
+    pin.svg
+    pin.xcf
+    pin_bubble.svg
+    pin_pointer.svg
 
-railway crossing icons/
+railway crossing/
     chicane.svg                      (c) olo81, based on Tobias Zwick work - License: CC0
     double_half.svg                  (c) 2018 ServusWorld - License: CC0
     full.svg                         (c) 2018 ServusWorld - License: CC0
@@ -331,8 +423,9 @@ railway crossing icons/
     half.svg                         (c) 2018 ServusWorld - License: CC0
     none.svg                         (c) 2018 ServusWorld - License: CC0
 
-recycling icons/
+recycling/
     batteries.svg
+    beverage_cartons.svg
     cans.svg
     clothes.svg                      by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
     cooking_oil.svg
@@ -344,11 +437,12 @@ recycling icons/
     plastic.svg
     plastic_bottles.svg
     plastic_packaging.svg
+    plastic_bottles_and_cartons.svg
     scrap_metal.svg
     shoes.svg                        modified from EmojiOne 2: U+1F45F
     small_electrical_appliances.svg  EmojiOne 2: U+1F50C
 
-religion icons/
+religion/
     hindu.svg                        https://commons.wikimedia.org/wiki/File:Om_symbol.svg
     jain.svg                         https://commons.wikimedia.org/wiki/File:Ahimsa.svg
     sikh.svg                         https://en.wikipedia.org/wiki/File:Khanda.svg
@@ -360,12 +454,12 @@ religion icons/
     confucian.svg
     confucian2.svg
     shinto.svg                       https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
-    taoism.svg
-    chinese.svg                      https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
-    caodai.svg
+    taoist.svg
+    chinese_folk.svg                 https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
+    caodaist.svg
 
 
-roof shape icons/
+roof shape/
     cone.svg
     dome.svg
     double_saltbox.svg
@@ -400,7 +494,7 @@ roof shape icons/
     skillion_south.svg
     skillion_west.svg
 
-royal cypher graphics/
+royal cypher/
     EIIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (adapted)
     EVIIIR.svg            Public Domain     https://commons.wikimedia.org/wiki/File:EVIIIR.PNG (adapted)
     EVIIR.svg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)
@@ -409,14 +503,14 @@ royal cypher graphics/
     Scottish Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
     VR.svg                Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
 
-sidewalk graphics/
+sidewalk/
     no.svg
     yes.svg
 
-slow zone graphics/
+slow zone/
     slow_zone_us.svg
 
-smoothness icons/
+smoothness/
     car.svg                          Twemoji: U+1F697
     city_bike.svg                    modified from Twemoji: U+1F6B2
     pedestrian.svg                   Twemoji: U+1F6B6
@@ -431,10 +525,10 @@ speech bubbles/
     speech_bubble_none.9.svg
     speech_bubble_top.9.svg
 
-split way graphics/
+split way/
     scissors.svg
 
-sport icons/
+sport/
     american_football.svg
     archery.svg                      modified from Twemoji: U+1F3F9
     athletics.svg
@@ -471,7 +565,7 @@ sport icons/
     tennis.svg                       EmojiOne 2: U+1F3BE
     volleyball.svg                   EmojiOne 2: U+1F3D0
 
-steps incline graphics/
+steps incline/
     up.svg
     up_reversed.svg
     unknown.svg
@@ -479,12 +573,19 @@ steps incline graphics/
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
 
-traffic lights blind features graphics/
+surveillance/
+    camera_dome.svg
+    camera_panning.svg
+    camera.svg
+
+traffic lights blind features/
     arrow.svg
     sound.svg
     vibration.svg
+    button.jpg                          Tobias Zwick (CC-BY 4.0), also appearing as vibrating_button_illustration.jpg drawable
 
-tutorial graphics/
+
+tutorial/
     checkmark_circle.svg
     logo_osm_magnifier.svg              modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
@@ -497,6 +598,12 @@ tutorial graphics/
 
 create_note_black_24dp.svg
 
+lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
+
 mail.svg
 
 osm_anon_avatar.svg
+
+../../app/src/test/resources/
+    hai_phong_street.jpg
+    mandalay_market.jpg
