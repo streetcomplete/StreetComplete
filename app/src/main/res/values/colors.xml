@@ -23,6 +23,8 @@
     <color name="background">#fff</color>
     <color name="background_transparent">#0fff</color>
 
+    <color name="rank_text">#006a00</color>
+
     <color name="indicator_dot">#888</color>
     <color name="indicator_dot_selected">@color/accent</color>
 
@@ -77,9 +79,6 @@
     <color name="team_9">#494EAD</color>
     <color name="team_10">#AA335D</color>
     <color name="team_11">#655555</color>
-
-    <color name="rank_text">#006a00</color>
-    <color name="rank_background">#bdd19a</color>
 
     <color name="star_of_david">#22f</color>
 

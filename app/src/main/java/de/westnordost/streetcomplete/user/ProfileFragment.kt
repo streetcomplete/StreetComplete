@@ -9,10 +9,10 @@ import android.graphics.Canvas
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat.getColor
 import androidx.core.graphics.withRotation
 import androidx.core.net.toUri
 import androidx.core.view.isGone
@@ -166,22 +166,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     99 to 1: may be losing elements as it gets smaller
     0 and lower: no decorative styling at all
      */
-    class LaurelWreath(val resources: Resources, context: Context, private val percentageOfGrowth: Int) : Drawable() {
+    class LaurelWreath(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
         val laurelLeafOnStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
         val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
         val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
-        // TODO: supporting night mode would be nice
-        // but how can I get color from colour resources?
-        // all
-        // Paint().apply { ResourcesCompat.getColor(resources, R.color.rank_background, null) }
-        // Paint().apply { ContextCompat.getColor(context, R.color.rank_background) }
-        // Paint().apply { context.resources.getColor(R.color.rank_background) }
-        // Paint().apply { R.color.rank_background }
-        // give black
-
         private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
-        private val rankBackgroundPaint: Paint = Paint().apply { setARGB(255, 186, 209, 154) }
+        private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 186, 209, 154) }
         private val yellowPaint: Paint = Paint().apply { setARGB(255, 255, 255, 0) }
         private val orangePaint: Paint = Paint().apply { setARGB(255, 255, 155, 0) }
         private val bluePaint: Paint = Paint().apply { setARGB(255, 0, 0, 255) }
@@ -198,7 +189,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val radius: Float = Math.min(width, height).toFloat() / 2f
 
             // Draw a red circle in the center
-            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, rankBackgroundPaint)
+            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
 
             val imageWith = laurelLeafOnStalk.intrinsicWidth //width is the same as intrinsicWidth
             val imageHeight = laurelLeafOnStalk.intrinsicHeight //width is the same as intrinsicWidth
@@ -258,27 +249,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getSolvedCount() <= 100
         binding.globalRankText.text = "#$rank"
-        binding.globalRankText.background = LaurelWreath(resources, context!!, 1001 - rank)
+        binding.globalRankText.background = LaurelWreath(resources,1001 - rank)
     }
 
     private fun updatePlaceholderRanksTexts() {
         binding.placeholder1Text.text = "100%"
-        binding.placeholder1Text.background = LaurelWreath(resources, context!!, 100)
+        binding.placeholder1Text.background = LaurelWreath(resources, 100)
 
         binding.placeholder2Text.text = "90%"
-        binding.placeholder2Text.background = LaurelWreath(resources, context!!, 90)
+        binding.placeholder2Text.background = LaurelWreath(resources, 90)
 
         binding.placeholder3Text.text = "50%"
-        binding.placeholder3Text.background = LaurelWreath(resources, context!!, 50)
+        binding.placeholder3Text.background = LaurelWreath(resources, 50)
 
         binding.placeholder4Text.text = "30%"
-        binding.placeholder4Text.background = LaurelWreath(resources, context!!, 30)
+        binding.placeholder4Text.background = LaurelWreath(resources, 30)
 
         binding.placeholder5Text.text = "10%"
-        binding.placeholder5Text.background = LaurelWreath(resources, context!!, 10)
+        binding.placeholder5Text.background = LaurelWreath(resources, 10)
 
         binding.placeholder6Text.text = "0%"
-        binding.placeholder6Text.background = LaurelWreath(resources, context!!, 0)
+        binding.placeholder6Text.background = LaurelWreath(resources, 0)
     }
 
     private suspend fun updateLocalRankText() {

@@ -128,17 +128,18 @@
 
                         <TextView
                             android:id="@+id/localRankText"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
                             android:background="@drawable/background_inverted_text_circle"
-                            android:layout_width="84dp"
-                            android:layout_height="84dp"
                             android:gravity="center"
+                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/rank_text"
+                            android:textColor="@color/background"
                             tools:text="#1"/>
 
                         <TextView
@@ -163,16 +164,18 @@
 
                         <TextView
                             android:id="@+id/globalRankText"
-                            android:layout_width="84dp"
-                            android:layout_height="84dp"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
+                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/rank_text"
+                            android:textColor="@color/background"
                             tools:text="#123456"/>
 
                         <TextView
@@ -195,16 +198,18 @@
 
                         <TextView
                             android:id="@+id/daysActiveText"
-                            android:layout_width="84dp"
-                            android:layout_height="84dp"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
+                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/rank_text"
+                            android:textColor="@color/background"
                             tools:text="82"/>
 
                         <TextView
@@ -227,16 +232,18 @@
 
                         <TextView
                             android:id="@+id/achievementLevelsText"
-                            android:layout_width="84dp"
-                            android:layout_height="84dp"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
+                            android:padding="8dp"
                             android:maxLines="1"
                             android:textAppearance="@style/TextAppearance.Title"
                             android:layout_centerHorizontal="true"
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/rank_text"
+                            android:textColor="@color/background"
                             tools:text="123"/>
 
                         <TextView
@@ -364,8 +371,9 @@
                             app:autoSizeTextType="uniform"
                             app:autoSizeMaxTextSize="22dp"
                             app:autoSizeMinTextSize="12dp"
-                            android:textColor="@color/rank_text"
+                            android:textColor="@color/background"
                             tools:text="123"/>
+                        <!-- TODO android:textColor="@color/rank_text" -->
 
                         <TextView
                             android:layout_width="match_parent"

@@ -18,9 +18,6 @@
 
     <color name="smoothness_vehicle_tyre">#70808b</color>
 
-    <color name="rank_text">#bdd19a</color>
-    <color name="rank_background">#006a00</color>
-
     <!-- because on dark background, normal blue doesn't work well -->
     <color name="star_of_david">#44f</color>
 
