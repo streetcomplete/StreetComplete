@@ -4,15 +4,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
-import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
@@ -31,8 +31,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { isApplicableTo(it) }
@@ -45,8 +46,6 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
             !element.hasAnyRecyclingMaterials()
             || recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
         )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 

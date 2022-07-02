@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.hasCheckDate
-import de.westnordost.streetcomplete.data.meta.updateCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.hasCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
@@ -39,10 +39,9 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     override val changesetComment = "Add specific stile type"
     override val wikiLink = "Key:stile"
-    override val icon = R.drawable.ic_quest_cow
+    override val icon = R.drawable.ic_quest_no_cow
     override val isDeleteElementEnabled = true
-
-    override val questTypeAchievements = listOf(OUTDOORS)
+    override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
 

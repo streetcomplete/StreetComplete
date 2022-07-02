@@ -66,22 +66,22 @@
     <style name="HousenumberEditText">
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">@dimen/x_large_input</item>
         <item name="android:inputType">number</item>
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
-        <item name="android:minHeight">86dp</item>
-        <item name="android:background">@drawable/background_housenumber_frame</item>
+        <item name="android:minHeight">80dp</item>
+        <item name="android:background">@drawable/background_housenumber_sign</item>
     </style>
 
     <style name="BlocknumberEditText">
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">40dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/large_input</item>
         <item name="android:inputType">number</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
+        <item name="android:minHeight">52dp</item>
         <item name="android:background">@null</item>
     </style>
 
@@ -98,6 +98,7 @@
     <style name="RoundAccentButton">
         <item name="android:background">@drawable/round_colored_button</item>
         <item name="android:textColor">#fff</item>
+        <item name="tint">#fff</item>
         <item name="android:clickable">true</item>
         <item name="android:gravity">center</item>
         <item name="android:elevation">4dp</item>

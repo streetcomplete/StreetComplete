@@ -118,7 +118,7 @@ layers:
     pedestrian-areas:
         data: { source: jawg , layer: road }
         squares:
-            filter: { class: street_limited, type: pedestrian , $zoom: { min: 17 } }
+            filter: { class: street_limited, type: pedestrian , $zoom: { min: 14 } }
             draw:
                 lines:
                     color: global.square_outline_color
@@ -143,6 +143,13 @@ layers:
                     order: 100
                     color: '#f9f9f9'
 
+    bridges:
+        data: { source: jawg, layer: structure }
+        filter: { class: bridge }
+        draw:
+            polygons:
+                order: 10
+                color: global.building_outline_color
 
 styles:
     hillshade-light-style:

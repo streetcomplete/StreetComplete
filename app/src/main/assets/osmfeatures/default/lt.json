@@ -874,13 +874,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA maršruto sudėtingumas",
-                    "options": {
-                        "0": "Lengviausias (baltas apskritimas)",
-                        "1": "Lengvas (žalias apskritimas)",
-                        "2": "Vidutinis (mėlynas apskritimas)",
-                        "3": "Sunkus (juodas rombas)",
-                        "4": "Ypač sunkus (dvigubas juodas rombas)"
-                    },
                     "placeholder": "Lengvas, vidutinis, sunkus..."
                 },
                 "mtb/scale/uphill": {
@@ -1269,9 +1262,6 @@
                 },
                 "service": {
                     "label": "Tipas"
-                },
-                "service/bicycle": {
-                    "label": "Paslaugos"
                 },
                 "service/vehicle": {
                     "label": "Paslaugos"
@@ -1880,10 +1870,6 @@
                     "name": "Teatras",
                     "terms": "teatras"
                 },
-                "amenity/toilets": {
-                    "name": "Tualetas",
-                    "terms": "tualetas,išvietė"
-                },
                 "amenity/townhall": {
                     "name": "Rotušė",
                     "terms": "rotušė"
@@ -2397,10 +2383,6 @@
                 "highway/tertiary": {
                     "name": "Tretysis Kelias",
                     "terms": "kelias,gatvė"
-                },
-                "highway/track": {
-                    "name": "Neprižiūrimas Kelias",
-                    "terms": "miško keliukas,bekelė,dvigubos vėžės,šunkelis"
                 },
                 "highway/traffic_signals": {
                     "name": "Eismo signala",
@@ -3421,9 +3403,6 @@
                 "waterway/river": {
                     "name": "Upė",
                     "terms": "upė"
-                },
-                "waterway/riverbank": {
-                    "name": "Upės kraštas"
                 },
                 "waterway/stream": {
                     "name": "Upelis",

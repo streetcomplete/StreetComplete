@@ -2,5 +2,5 @@
 centerLineStyle: white
 mobileCountryCode: 467
 officialLanguages: [ko]
-orchardProduces: [apple, pear, peach, tomato, chilli_pepper, sweet_pepper, chestnut, hop]
 workweekDays: 6
+orchardProduces: [apple, chilli_pepper, sweet_pepper, peach, pear, tomato, chestnut, hop]

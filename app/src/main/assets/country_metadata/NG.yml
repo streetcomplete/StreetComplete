@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Wema Bank, UBA]
 mobileCountryCode: 621
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [tomato, pineapple, guava, mango, mangosteen, papaya, cacao, coconut, rubber, kola_nut, cashew_nut, chilli_pepper, sweet_pepper, coffee]
+atmOperators: [Wema Bank, UBA]
+orchardProduces: [cacao, tomato, rubber, kola_nut, pineapple, cashew_nut, guava, mango, mangosteen, chilli_pepper, sweet_pepper, papaya, coconut, coffee]

@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
@@ -19,7 +19,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         and (!indoor or indoor = no)
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -4 years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
             surface ~ paved|unpaved|cobblestone
@@ -33,16 +33,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val changesetComment = "Add path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
+    override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = when {
-        tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title
-        tags["highway"] == "bridleway" -> R.string.quest_pathSurface_title_bridleway
-        tags["highway"] == "steps"     -> R.string.quest_pathSurface_title_steps
-        else                           -> R.string.quest_pathSurface_title
-        // rest is rather similar, can be called simply "path"
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
     override fun createForm() = AddPathSurfaceForm()
 
@@ -53,6 +46,9 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
             }
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"
+            }
+            is IsIndoorsAnswer -> {
+                tags["indoor"] = "yes"
             }
         }
     }

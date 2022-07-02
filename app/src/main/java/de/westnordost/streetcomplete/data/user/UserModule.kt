@@ -8,8 +8,8 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 
 private const val BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/"
-private const val CONSUMER_KEY = "L3JyJMjVk6g5atwACVySRWgmnrkBAH7u0U18ALO7"
-private const val CONSUMER_SECRET = "uNjPaXZw15CPHdCSeMzttRm20tyFGaBPO7jHt52c"
+private const val CONSUMER_KEY = "NV4cEoqQ94Kuoowh8qGJvUJLnbts40WiNykyeC1T"
+private const val CONSUMER_SECRET = "r68v1Bd7RewTixAp0dMdCwn3w5iQvmpk4HlJcH2y"
 private const val CALLBACK_SCHEME = "streetcomplete"
 private const val CALLBACK_HOST = "oauth"
 
@@ -23,10 +23,12 @@ val userModule = module {
         BASE_OAUTH_URL + "authorize"
     ) }
     factory { OAuthStore(get()) }
-    factory<UserDataSource> { get<UserDataController>() }
-    factory<UserLoginStatusSource> { get<UserLoginStatusController>() }
 
+    single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get(), get()) }
-    single { UserLoginStatusController(get(), get()) }
+
+    single<UserLoginStatusSource> { get<UserLoginStatusController>() }
+    single { UserLoginStatusController(get(), get(), get()) }
+
     single { UserUpdater(get(), get(), get(), get(), get()) }
 }

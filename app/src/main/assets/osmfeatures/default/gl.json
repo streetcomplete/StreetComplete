@@ -426,10 +426,6 @@
                     "label": "Data da última revisión",
                     "placeholder": "AAAA-MM-DD"
                 },
-                "circumference": {
-                    "label": "Circunferencia",
-                    "placeholder": "1 m, 20 cm, 30 in…"
-                },
                 "clothes": {
                     "label": "Roupa"
                 },
@@ -1248,13 +1244,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultade do roteiro de sendeiro",
-                    "options": {
-                        "0": "O máis doado (círculo branco)",
-                        "1": "Doado (círculo verde)",
-                        "2": "Media (cadrado azul)",
-                        "3": "Difícil (diamante negro)",
-                        "4": "Extremadamente difícil (dobre diamante negro)"
-                    },
                     "placeholder": "Doado, Medio, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -1858,9 +1847,6 @@
                 },
                 "service": {
                     "label": "Tipo"
-                },
-                "service/bicycle": {
-                    "label": "Servizos"
                 },
                 "service/vehicle": {
                     "label": "Servizos"
@@ -3175,10 +3161,6 @@
                     "name": "Anfiteatro",
                     "terms": "ar libre,aire libre,ao aire libre,grego,ampi,anfi,anfiteatro"
                 },
-                "amenity/toilets": {
-                    "name": "Aseos",
-                    "terms": "aseos,baños,wc,servizo,servizos,lavabo,latrina,retrete,váter,urinario,urinaria"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Aseo con cisterna",
                     "terms": "aseos,aseo,baños,wc,cuarto de baño,servizo,servizos,lavabo,latrina,retrete,váter,urinario,urinaria"
@@ -4068,9 +4050,6 @@
                 "highway/bus_stop": {
                     "name": "Parada de bus"
                 },
-                "highway/construction": {
-                    "name": "Estrada pechada"
-                },
                 "highway/corridor": {
                     "name": "Corredor interior",
                     "terms": "corredor,pasillo"
@@ -4290,10 +4269,6 @@
                 "highway/toll_gantry": {
                     "name": "Arco de peaxe",
                     "terms": "arco de peaxe,arco de portaxe,pórtico de peaxe,pórtico de portaxe,peaxe electrónica,portaxe electrónica"
-                },
-                "highway/track": {
-                    "name": "Pista forestal ou agrícola",
-                    "terms": "camiño,senda,sendeiro,rúa,vía,pista,rural,forestal,agrícola,campo,sen mantemento,offroad,jeep,dobre tracción,tractor,4x4,atv,cuadrimotor,quadratrack,con huella,con pegada,carreiro,verea,vieiro,aldea,parroquia,lugar"
                 },
                 "highway/traffic_mirror": {
                     "name": "Espello de tráfico",
@@ -4696,9 +4671,6 @@
                 "leisure/golf_course": {
                     "name": "Campo de golf"
                 },
-                "leisure/horse_riding": {
-                    "name": "Centro de equitación"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de xeo"
                 },
@@ -4760,10 +4732,6 @@
                 },
                 "leisure/pitch/cricket": {
                     "name": "Campo de crícket"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Picadeiro",
-                    "terms": "picadeiro,cabalos,equitación"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Campo de hóckey",
@@ -4845,9 +4813,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Circuíto de ciclismo"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de carreiras de cabalos"
                 },
                 "leisure/track/running": {
                     "name": "Pista de atletismo"
@@ -6832,9 +6797,6 @@
                 "waterway/river": {
                     "name": "Río",
                     "terms": "río,rio,regato,regacho,afluente,auga,vertente,agua,rama,arroio,curso,esteiro,estuario,foz,riachuelo,ribeira,corrente,curso de auga,beira,marxe"
-                },
-                "waterway/riverbank": {
-                    "name": "Beira de río"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Aseo para embarcacións",

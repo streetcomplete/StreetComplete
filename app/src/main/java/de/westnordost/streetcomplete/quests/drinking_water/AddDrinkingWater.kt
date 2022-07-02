@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
@@ -18,19 +18,15 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         )
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
+        and (!seasonal or seasonal = no)
     """
-
     override val changesetComment = "Add whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
     override val isDeleteElementEnabled = true
+    override val achievements = listOf(OUTDOORS)
 
-    override val questTypeAchievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
-        arrayOf(featureName.value.toString())
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""

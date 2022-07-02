@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesMonthRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesOffdayRowBinding
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
@@ -30,10 +29,8 @@ data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) 
 @Serializable
 data class OffDaysRow(var weekdays: Weekdays) : OpeningHoursRow()
 
-class RegularOpeningHoursAdapter(
-    private val context: Context,
-    private val countryInfo: CountryInfo
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OpeningHoursAdapter(private val context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var rows: MutableList<OpeningHoursRow> = mutableListOf()
         set(value) {
@@ -46,6 +43,11 @@ class RegularOpeningHoursAdapter(
             field = value
             notifyDataSetChanged()
         }
+
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
+    var firstDayOfWorkweek: String = "Mo"
+    /** Set to change which weekdays are pre-checked in the weekday-select dialog */
+    var regularShoppingDays: Int = 6
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -66,7 +68,8 @@ class RegularOpeningHoursAdapter(
             }
             is WeekdayViewHolder -> {
                 val prevRow = if (position > 0) rows[position - 1] as? OpeningWeekdaysRow else null
-                holder.update(row as OpeningWeekdaysRow, prevRow, isEnabled)
+                val nextRow = if (rows.lastIndex > position) rows[position + 1] as? OpeningWeekdaysRow else null
+                holder.update(row as OpeningWeekdaysRow, prevRow, nextRow, isEnabled)
             }
             is OffDaysViewHolder -> {
                 holder.update(row as OffDaysRow, isEnabled)
@@ -94,7 +97,7 @@ class RegularOpeningHoursAdapter(
         notifyItemRemoved(position)
 
         val rowHere = if (position < rows.size) rows[position] else null
-        val rowAbove =  if (position > 0) rows[position - 1] else null
+        val rowAbove = if (position > 0) rows[position - 1] else null
 
         // this weekday row must be updated because it might be the first one with the same weekdays
         // and thus it is the one that should show the weekdays now
@@ -233,15 +236,16 @@ class RegularOpeningHoursAdapter(
             }
         }
 
-        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
+        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, nextRow: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else if (row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
+                else if (rowBefore != null && row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
                 else row.weekdays.toLocalizedString(context.resources)
+
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
-                    notifyItemChanged(adapterPosition)
+                    notifyItemRangeChanged(adapterPosition, if (nextRow != null) 2 else 1)
                 }
             }
 
@@ -292,9 +296,9 @@ class RegularOpeningHoursAdapter(
 
     private fun getWeekdaysSuggestion(isFirst: Boolean): Weekdays {
         if (isFirst) {
-            val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
+            val firstWorkDayIdx = Weekdays.getWeekdayIndex(firstDayOfWorkweek)
             val result = BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
-            for (i in 0 until countryInfo.regularShoppingDays) {
+            for (i in 0 until regularShoppingDays) {
                 result[(i + firstWorkDayIdx) % Weekdays.WEEKDAY_COUNT] = true
             }
             return Weekdays(result)

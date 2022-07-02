@@ -8,7 +8,7 @@ import java.io.File
 
 val notesModule = module {
     factory(named("AvatarsCacheDirectory")) { File(get<Context>().cacheDir, ApplicationConstants.AVATARS_CACHE_DIRECTORY) }
-    factory { AvatarsDownloader(get(), get(named("AvatarsCacheDirectory")) ) }
+    factory { AvatarsDownloader(get(), get(named("AvatarsCacheDirectory"))) }
     factory { AvatarsInNotesUpdater(get()) }
     factory { NoteDao(get()) }
     factory { NotesDownloader(get(), get()) }

@@ -645,9 +645,6 @@
                 "service": {
                     "label": "Type"
                 },
-                "service/bicycle": {
-                    "label": "Tenester"
-                },
                 "service/vehicle": {
                     "label": "Tenester"
                 },

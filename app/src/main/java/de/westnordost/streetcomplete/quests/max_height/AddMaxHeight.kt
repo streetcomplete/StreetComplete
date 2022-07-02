@@ -2,16 +2,16 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.util.intersects
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.ktx.containsAny
+import de.westnordost.streetcomplete.util.math.intersects
 
 class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
@@ -55,25 +55,18 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val changesetComment = "Add maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val isParkingEntrance = tags["amenity"] == "parking_entrance"
-        val isHeightRestrictor = tags["barrier"] == "height_restrictor"
-        val isTunnel = tags["tunnel"] == "yes"
-        val isBelowBridge =
-            !isParkingEntrance && !isHeightRestrictor
-            && tags["tunnel"] == null && tags["covered"] == null
+        val isBelowBridge = tags["amenity"] != "parking_entrance"
+            && tags["barrier"] != "height_restrictor"
+            && tags["tunnel"] == null
+            && tags["covered"] == null
             && tags["man_made"] != "pipeline"
-
+        // only the "below the bridge" situation may need some context
         return when {
-            isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
-            isHeightRestrictor -> R.string.quest_maxheight_height_restrictor_title
-            isTunnel           -> R.string.quest_maxheight_tunnel_title
-            isBelowBridge      -> R.string.quest_maxheight_below_bridge_title
-            else               -> R.string.quest_maxheight_title
+            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
+            else          -> R.string.quest_maxheight_title
         }
     }
 
@@ -132,7 +125,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is MaxHeight -> {
-                tags["maxheight"] = answer.value.toString()
+                tags["maxheight"] = answer.value.toOsmValue()
             }
             is NoMaxHeightSign -> {
                 tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"

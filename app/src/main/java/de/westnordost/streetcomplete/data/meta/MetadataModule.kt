@@ -8,9 +8,8 @@ import org.koin.dsl.module
 import java.util.concurrent.FutureTask
 
 val metadataModule = module {
-    factory { AbbreviationsByLocale(get()) }
-
-    single { CountryInfos(get(), get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture"))) }
+    single { AbbreviationsByLocale(get()) }
+    single { CountryInfos(get()) }
     single(named("CountryBoundariesFuture")) { FutureTask { CountryBoundaries.load(get<AssetManager>().open("boundaries.ser")) } }
     single(named("FeatureDictionaryFuture")) { FutureTask { AndroidFeatureDictionary.create(get(), "osmfeatures/default", "osmfeatures/brands") } }
 }

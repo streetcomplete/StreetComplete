@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
@@ -22,12 +22,10 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
             or (!access and parking !~ street_side|lane)
         )
     """
-
     override val changesetComment = "Add type of parking access"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_access
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title2
 

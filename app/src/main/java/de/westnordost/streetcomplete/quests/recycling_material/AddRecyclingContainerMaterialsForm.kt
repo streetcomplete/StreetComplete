@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.recycling_material
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BATTERIES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddRecyclingContainerMaterialsForm :
-    AImageListQuestAnswerFragment<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
+    AImageListQuestForm<List<RecyclingMaterial>, RecyclingContainerMaterialsAnswer>() {
 
     override val descriptionResId = R.string.quest_recycling_materials_note
 

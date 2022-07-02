@@ -359,9 +359,6 @@
                 "charge_toll": {
                     "terms": "cestarina,naplata"
                 },
-                "circumference": {
-                    "terms": "opseg"
-                },
                 "clothes": {
                     "label": "Odjeća"
                 },
@@ -962,13 +959,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Težina staze po IMBA",
-                    "options": {
-                        "0": "Najlakše (bijeli krug)",
-                        "1": "Lagano (plava staza)",
-                        "2": "Srednje (plavi kvadrat)",
-                        "3": "Teško (crni dijamant)",
-                        "4": "Izuzetno teško (dupli crni dijamant)"
-                    },
                     "placeholder": "Lagano, srednje, teško...",
                     "terms": "imba disciplina brdskog biciklizma"
                 },
@@ -1910,10 +1900,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatar"
                 },
-                "amenity/toilets": {
-                    "name": "Toalet",
-                    "terms": "wc,toalet,nužnik,sanitarni čvor"
-                },
                 "amenity/townhall": {
                     "name": "Gradska vijećnica",
                     "terms": "gradska vijećnica,vijećnica,općinski dom"
@@ -2513,9 +2499,6 @@
                 "highway/tertiary_link": {
                     "name": "Pristupna cesta lokalne ceste"
                 },
-                "highway/track": {
-                    "name": "Šumski ili poljski put"
-                },
                 "highway/traffic_mirror": {
                     "name": "Prometno ogledalo"
                 },
@@ -2818,9 +2801,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Staza za utrkivanje bicikala"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "Staza za utrkivanje konja"
                 },
                 "leisure/track/running": {
                     "name": "Staza za trčanje"
@@ -3932,9 +3912,6 @@
                 },
                 "waterway/river": {
                     "name": "Rijeka"
-                },
-                "waterway/riverbank": {
-                    "name": "Riječna obala"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Stanica za pražnjenje brodskog spremnika fekalija"

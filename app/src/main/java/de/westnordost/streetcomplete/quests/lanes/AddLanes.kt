@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -18,17 +19,16 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             )
           )
           and area != yes
-          and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+          and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
+          and placement != transition
     """
     override val changesetComment = "Add road lanes"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
@@ -15,7 +15,6 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|camp_site|caravan_site|chalet
         )
         and access !~ no|private
-        and name
         and (
           !internet_access
           or internet_access = yes
@@ -29,10 +28,9 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
     override val wikiLink = "Key:internet_access"
     override val icon = R.drawable.ic_quest_wifi
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_internet_access_name_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_internet_access_title
 
     override fun createForm() = AddInternetAccessForm()
 

@@ -12,14 +12,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesRows
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
+class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
@@ -28,7 +28,7 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
         if (isDisplayingPreviousCollectionTimes) listOf(
             AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
             AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                applyAnswer(CollectionTimes(osmElement!!.tags["collection_times"]!!.toOpeningHoursRules()!!))
+                applyAnswer(CollectionTimes(element.tags["collection_times"]!!.toOpeningHoursRules()!!))
             }
         )
         else emptyList()
@@ -89,7 +89,7 @@ class AddPostboxCollectionTimesForm : AbstractQuestFormAnswerFragment<Collection
     }
 
     private fun initStateFromTags() {
-        val ct = osmElement!!.tags["collection_times"]
+        val ct = element.tags["collection_times"]
         val rows = ct?.toOpeningHoursRules()?.toCollectionTimesRows()
         if (rows != null) {
             collectionTimesAdapter.collectionTimesRows = rows.toMutableList()

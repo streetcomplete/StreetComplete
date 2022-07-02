@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [NCB, Scotiabank, National Commercial Bank, Sagicor, JNCB, JN, Jamaica National, Bank of Nova Scotia Jamaica Limited]
 isLeftHandTraffic: true
 mobileCountryCode: 338
 noParkingSignStyle: mutcd
 noStoppingSignStyle: canada
 officialLanguages: [en, jam]
-orchardProduces: [coconut, banana, grapefruit, tomato, pineapple, lemon, lime, chilli_pepper, sweet_pepper, papaya, coffee, orange, guava, mango, mangosteen, avocado, cacao, sisal]
+atmOperators: [NCB, Scotiabank, National Commercial Bank, Sagicor, JNCB, JN, Jamaica National, Bank of Nova Scotia Jamaica Limited]
+orchardProduces: [coconut, coffee, banana, pineapple, grapefruit, lemon, lime, tomato, chilli_pepper, sweet_pepper, cacao, orange, sisal, guava, mango, mangosteen, papaya, avocado]

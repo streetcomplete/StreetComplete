@@ -9,7 +9,7 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import kotlin.math.min
 
 /** A very basic text view whose text is displayed vertically. No line break is possible */
@@ -31,7 +31,7 @@ class VerticalLabelView @JvmOverloads constructor(
         val a = context.obtainStyledAttributes(attrs, R.styleable.VerticalLabelView)
 
         setText(a.getString(R.styleable.VerticalLabelView_android_text))
-        setTextSize(a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, 16f.toPx(context).toInt()))
+        setTextSize(a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, context.dpToPx(16).toInt()))
         setTextColor(a.getColor(R.styleable.VerticalLabelView_android_textColor, Color.BLACK))
         orientationRight = a.getBoolean(R.styleable.VerticalLabelView_orientationRight, false)
         a.recycle()

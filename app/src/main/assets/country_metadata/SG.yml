@@ -1,12 +1,12 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [UOB, POSB, OCBC, DBS, Citibank, OCBC Bank, HSBC, SAM, DBS/POSB, Standard Chartered, AXS, UOB ATM]
 centerLineStyle: white
-chargingStationOperators: [Greenlots]
 isLeftHandTraffic: true
 mobileCountryCode: 525
 noParkingLineStyle: double yellow
 noStandingLineStyle: yellow zig-zags
 noStoppingLineStyle: double yellow zig-zags
 officialLanguages: [en, ms, zh, ta]
-orchardProduces: [coconut, tomato]
 popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]
+atmOperators: [UOB, POSB, OCBC, DBS, Citibank, OCBC Bank, HSBC, SAM, DBS/POSB, Standard Chartered, AXS, UOB ATM]
+chargingStationOperators: [Greenlots]
+orchardProduces: [coconut, tomato]

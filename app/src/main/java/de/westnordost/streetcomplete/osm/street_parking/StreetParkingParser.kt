@@ -23,23 +23,21 @@ fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParki
 private fun createParkingForSide(tags: Map<String, String>, side: String?): StreetParking? {
     val sideVal = if (side != null) ":$side" else ""
 
-    val parkingValue = tags["parking:lane$sideVal"] ?: return null
+    val parkingValue = tags["parking:lane$sideVal"]
 
     when (parkingValue) {
         // old style tagging
         "no_parking" -> return StreetParkingProhibited
         "no_standing" -> return StreetStandingProhibited
         "no_stopping" -> return StreetStoppingProhibited
-        "no" -> {
-            val parkingCondition = tags["parking:condition$sideVal"]
-            return when (parkingCondition) {
-                // new style tagging
-                "no_parking" -> StreetParkingProhibited
-                "no_standing" -> StreetStandingProhibited
-                "no_stopping" -> StreetStoppingProhibited
-                null, "no" -> NoStreetParking
-                else -> null
-            }
+        null, "no" -> return when (tags["parking:condition$sideVal"]) {
+            // new style tagging
+            "no_parking" -> StreetParkingProhibited
+            "no_standing" -> StreetStandingProhibited
+            "no_stopping" -> StreetStoppingProhibited
+            "no" -> NoStreetParking
+            null -> if (parkingValue == "no") NoStreetParking else null
+            else -> null
         }
         "yes" -> return IncompleteStreetParking
         "separate" -> return StreetParkingSeparate

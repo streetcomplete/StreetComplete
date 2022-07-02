@@ -354,9 +354,6 @@
                 "amenity/theatre": {
                     "name": "剧院"
                 },
-                "amenity/toilets": {
-                    "name": "厕所"
-                },
                 "amenity/townhall": {
                     "name": "市政府"
                 },
@@ -959,9 +956,6 @@
                 },
                 "waterway/river": {
                     "name": "河流"
-                },
-                "waterway/riverbank": {
-                    "name": "河堤"
                 },
                 "waterway/stream": {
                     "name": "溪流"

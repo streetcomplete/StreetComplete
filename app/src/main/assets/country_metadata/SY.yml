@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Real Estate Bank, البنك التجاري, Commercial Bank of Syria, المصرف العقاري]
 firstDayOfWorkweek: Su
 mobileCountryCode: 417
 officialLanguages: [ar]
-orchardProduces: [olive, tomato, apple, grape, lemon, lime, almond, cherry, apricot, pistachio, grapefruit, chilli_pepper, sweet_pepper, fig, peach, plum, orange]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+atmOperators: [Real Estate Bank, البنك التجاري, Commercial Bank of Syria, المصرف العقاري]
+orchardProduces: [olive, almond, pistachio, apple, grape, cherry, lemon, lime, tomato, apricot, fig, peach, chilli_pepper, sweet_pepper, pear, plum, walnut]

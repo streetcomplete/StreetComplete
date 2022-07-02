@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
-sealed class SmoothnessAnswer
+sealed interface SmoothnessAnswer
 
-data class SmoothnessValueAnswer(val value: Smoothness) : SmoothnessAnswer()
+data class SmoothnessValueAnswer(val value: Smoothness) : SmoothnessAnswer
 
-object IsActuallyStepsAnswer : SmoothnessAnswer()
-object WrongSurfaceAnswer : SmoothnessAnswer()
+object IsActuallyStepsAnswer : SmoothnessAnswer
+object WrongSurfaceAnswer : SmoothnessAnswer

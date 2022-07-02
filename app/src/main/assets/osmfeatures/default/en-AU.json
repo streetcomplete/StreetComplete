@@ -11,6 +11,11 @@
                 "fax": {
                     "placeholder": "+61 1 2345 6789"
                 },
+                "fire_hydrant/position": {
+                    "options": {
+                        "sidewalk": "Footpath"
+                    }
+                },
                 "height": {
                     "label": "Height (Metres)"
                 },
@@ -103,6 +108,9 @@
                 "highway/cycleway/bicycle_foot": {
                     "name": "Shared Path"
                 },
+                "highway/cycleway/crossing/bicycle_foot": {
+                    "name": "Shared Path Crossing"
+                },
                 "highway/footway/marked": {
                     "name": "Marked Crossing"
                 },
@@ -117,9 +125,6 @@
                 },
                 "highway/living_street": {
                     "name": "Shared Zone Road"
-                },
-                "highway/track": {
-                    "name": "Track Road"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Adult Gaming Centre"

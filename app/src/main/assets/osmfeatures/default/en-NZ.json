@@ -1,0 +1,315 @@
+{
+    "en-NZ": {
+        "presets": {
+            "fields": {
+                "bath/type": {
+                    "label": "Speciality"
+                },
+                "capacity_volume": {
+                    "label": "Capacity (Cubic Metres)"
+                },
+                "changing_table": {
+                    "label": "Nappy Changing Table"
+                },
+                "colour": {
+                    "label": "Colour"
+                },
+                "conveying": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "depth": {
+                    "label": "Depth (Metres)"
+                },
+                "direction_vertex": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "direction_vertex_dual": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "healthcare/speciality": {
+                    "label": "Specialities"
+                },
+                "height": {
+                    "label": "Height (Metres)"
+                },
+                "height_building": {
+                    "label": "Building Height (Metres)"
+                },
+                "kerb": {
+                    "label": "Kerb"
+                },
+                "length": {
+                    "label": "Length (Metres)"
+                },
+                "opening_hours": {
+                    "label": "Opening Hours"
+                },
+                "parking/orientation": {
+                    "options": {
+                        "perpendicular": "Meets the Street at a Right Angle "
+                    }
+                },
+                "railway/signal/direction": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "recycling_type": {
+                    "options": {
+                        "centre": "Centre"
+                    },
+                    "placeholder": "Container, Centre"
+                },
+                "roof/colour": {
+                    "label": "Roof Colour"
+                },
+                "seamark/beacon_lateral/colour": {
+                    "label": "Colour"
+                },
+                "seamark/buoy_lateral/colour": {
+                    "label": "Colour"
+                },
+                "toilets/disposal": {
+                    "options": {
+                        "pitlatrine": "Long Drop"
+                    }
+                },
+                "traffic_sign/direction": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "traffic_signals/direction": {
+                    "options": {
+                        "backward": "Backwards",
+                        "forward": "Forwards"
+                    }
+                },
+                "wetland": {
+                    "options": {
+                        "mangrove": "Mangroves"
+                    }
+                },
+                "width": {
+                    "label": "Width (Metres)"
+                }
+            },
+            "presets": {
+                "amenity/arts_centre": {
+                    "name": "Arts Centre"
+                },
+                "amenity/bbq": {
+                    "name": "Barbeque/Grill",
+                    "terms": "bbq,grill,barbecue"
+                },
+                "amenity/community_centre": {
+                    "name": "Community Centre"
+                },
+                "amenity/community_centre/lgbtq": {
+                    "name": "LGBTQ+ Community Centre"
+                },
+                "amenity/conference_centre": {
+                    "name": "Convention Centre"
+                },
+                "amenity/dive_centre": {
+                    "name": "Dive Centre"
+                },
+                "amenity/drinking_water": {
+                    "name": "Drinking Fountain"
+                },
+                "amenity/exhibition_centre": {
+                    "name": "Exhibition Centre"
+                },
+                "amenity/fuel": {
+                    "name": "Petrol Station",
+                    "terms": "gas station"
+                },
+                "amenity/parking": {
+                    "name": "Car Park",
+                    "terms": "automobile parking,car lot,parking lot,car parking,rv parking,truck parking,vehicle parking"
+                },
+                "amenity/parking/multi-storey": {
+                    "name": "Multistorey Car Park",
+                    "terms": "car,indoor parking,multistorey car park,parkade,parking building,parking deck,parking garage,parking ramp,parking structure,multilevel parking garage"
+                },
+                "amenity/parking/park_ride": {
+                    "name": "Park & Ride Car Park"
+                },
+                "amenity/parking_entrance": {
+                    "name": "Carpark Building Entrance / Exit",
+                    "terms": "parking garage entrace/exit,parking garage entrace,parking garage exit,carpark entrance,car park entrance"
+                },
+                "amenity/payment_centre": {
+                    "name": "Payment Centre"
+                },
+                "amenity/pharmacy": {
+                    "name": "Pharmacy"
+                },
+                "amenity/post_box": {
+                    "name": "Post Box"
+                },
+                "amenity/recycling_centre": {
+                    "name": "Recycling Centre"
+                },
+                "amenity/sanitary_dump_station": {
+                    "name": "Caravan Toilet Disposal"
+                },
+                "amenity/social_centre": {
+                    "name": "Payment Centre"
+                },
+                "amenity/social_facility/group_home": {
+                    "name": "Retirement Home",
+                    "terms": "old,senior,living,care home,assisted living,elderly,retirement,retire,aged care,aged"
+                },
+                "amenity/theatre": {
+                    "name": "Theatre"
+                },
+                "amenity/toilets": {
+                    "name": "Toilets"
+                },
+                "amenity/toilets/disposal/pitlatrine": {
+                    "name": "Long-drop Toilet",
+                    "aliases": "Pit Latrine"
+                },
+                "amenity/vending_machine/fuel": {
+                    "name": "Fuel Pump",
+                    "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel,gas pump"
+                },
+                "amenity/waste_basket": {
+                    "name": "Rubbish Bin",
+                    "terms": "waste basket"
+                },
+                "amenity/water_point": {
+                    "terms": "water faucet,water point,water tap,water source,water spigot,rv drinking water,campervan drinking water"
+                },
+                "amenity/watering_place": {
+                    "terms": "trough"
+                },
+                "amenity/weighbridge": {
+                    "name": "Weighbridge",
+                    "terms": "weigh station,truck scale"
+                },
+                "barrier/kerb": {
+                    "name": "Kerb"
+                },
+                "building/terrace": {
+                    "name": "Terraced Houses",
+                    "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
+                },
+                "healthcare/birthing_center": {
+                    "name": "Birthing Centre"
+                },
+                "healthcare/blood_donation": {
+                    "name": "Blood Donation Centre"
+                },
+                "highway/give_way": {
+                    "name": "Give Way Sign",
+                    "terms": "yield,sign"
+                },
+                "highway/street_lamp": {
+                    "name": "Street Light"
+                },
+                "highway/traffic_signals": {
+                    "name": "Traffic Lights",
+                    "terms": "light,stoplight,traffic light,traffic signals"
+                },
+                "landuse/construction": {
+                    "name": "Construction Site"
+                },
+                "leisure/adult_gaming_centre": {
+                    "name": "Adult Gaming Centre"
+                },
+                "leisure/bandstand": {
+                    "name": "Band Rotunda",
+                    "terms": "bandstand"
+                },
+                "leisure/fitness_centre": {
+                    "name": "Gym / Fitness Centre"
+                },
+                "leisure/indoor_play": {
+                    "name": "Indoor Play Centre"
+                },
+                "leisure/slipway": {
+                    "name": "Boat Ramp"
+                },
+                "leisure/slipway_drivable": {
+                    "name": "Boat Ramp (Drivable)"
+                },
+                "leisure/sports_centre": {
+                    "name": "Sports Centre / Complex"
+                },
+                "leisure/sports_hall": {
+                    "name": "Sports Hall"
+                },
+                "man_made/groyne": {
+                    "name": "Groyne",
+                    "terms": "groin"
+                },
+                "man_made/survey_point": {
+                    "name": "Survey Marker"
+                },
+                "natural/cape": {
+                    "terms": "point"
+                },
+                "natural/wetland/mangrove": {
+                    "name": "Mangroves",
+                    "terms": "mangrove"
+                },
+                "place/suburb": {
+                    "name": "Suburb"
+                },
+                "playground/zipwire": {
+                    "name": "Playground Flying Fox"
+                },
+                "power/line": {
+                    "name": "High Voltage Power Line"
+                },
+                "railway/rail": {
+                    "terms": "railway"
+                },
+                "shop/caravan": {
+                    "name": "Caravan Shop"
+                },
+                "shop/chemist": {
+                    "name": "Chemist"
+                },
+                "shop/convenience": {
+                    "name": "Convenience Store / Dairy",
+                    "terms": "dairy,superette,convenience store,convenience shop,corner store,corner shop"
+                },
+                "shop/dairy": {
+                    "name": "Milk Product Shop"
+                },
+                "shop/garden_centre": {
+                    "name": "Garden Centre"
+                },
+                "shop/second_hand": {
+                    "name": "Second Hand Shop"
+                },
+                "shop/tyres": {
+                    "name": "Tyre Store"
+                },
+                "telecom/data_center": {
+                    "name": "Data Centre"
+                },
+                "tourism/caravan_site": {
+                    "name": "Caravan Site"
+                },
+                "tourism/information/office": {
+                    "name": "Visitor Centre"
+                }
+            }
+        }
+    }
+}

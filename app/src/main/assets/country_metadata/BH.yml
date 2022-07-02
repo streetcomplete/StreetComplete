@@ -1,6 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [HSBC, BISB, BBK, BBK Online, NBB, Ithmaar Bank, Kuwait Finance House]
 centerLineStyle: yellow
 firstDayOfWorkweek: Su
 hasDailyAlternateSideParkingSign: true
@@ -8,6 +7,7 @@ mobileCountryCode: 426
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-orchardProduces: [date, tomato, lemon, lime, banana, grape, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+atmOperators: [HSBC, BISB, BBK, BBK Online, NBB, Ithmaar Bank, Kuwait Finance House]
+orchardProduces: [date, lemon, lime, banana, tomato, grape, chilli_pepper, sweet_pepper]

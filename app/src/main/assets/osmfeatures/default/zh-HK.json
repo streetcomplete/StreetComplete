@@ -296,7 +296,6 @@
                     "label": "服務",
                     "options": {
                         "cosmetics": "化妝品",
-                        "nails": "美甲",
                         "tanning": "日光浴"
                     }
                 },
@@ -460,10 +459,6 @@
                 "check_date": {
                     "label": "最後檢查日期",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "圓周",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "衣物"
@@ -1332,13 +1327,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "國際越野單車協會路徑難度",
-                    "options": {
-                        "0": "最容易（白圓圈）",
-                        "1": "容易（綠圓圈）",
-                        "2": "中等（藍正方）",
-                        "3": "困難（黑鑽石）",
-                        "4": "極度困難（雙黑鑽石）"
-                    },
                     "placeholder": "容易、中等、困難 …"
                 },
                 "mtb/scale/uphill": {
@@ -1684,8 +1672,6 @@
                         "cans": "鋁罐",
                         "cardboard": "紙板",
                         "clothes": "衣物",
-                        "glass": "玻璃",
-                        "glass_bottles": "玻璃樽",
                         "green_waste": "堆肥",
                         "paper": "紙類",
                         "plastic_packaging": "塑膠包裝",
@@ -1932,9 +1918,6 @@
                         "emergency_access": "緊急通道",
                         "parking_aisle": "停車場通道"
                     }
-                },
-                "service/bicycle": {
-                    "label": "服務"
                 },
                 "service/vehicle": {
                     "label": "服務"
@@ -3189,10 +3172,6 @@
                     "name": "露天劇場",
                     "terms": "圓形廣場,羅馬廣場,圓形劇場,圓形露天劇場"
                 },
-                "amenity/toilets": {
-                    "name": "廁所",
-                    "terms": "toilets,便所,公厠,公廁,厠所,廁所,方便,洗手間,盥洗室,化粧間"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "沖水廁所"
                 },
@@ -3968,9 +3947,6 @@
                 "highway/bus_stop": {
                     "name": "巴士站"
                 },
-                "highway/construction": {
-                    "name": "封閉道路"
-                },
                 "highway/corridor": {
                     "name": "室內走廊",
                     "terms": "室內通道"
@@ -4112,10 +4088,6 @@
                 "highway/tertiary_link": {
                     "name": "分路連接路",
                     "terms": "tertiary link,三級道路匝道,三級道路連接路,細路駁路"
-                },
-                "highway/track": {
-                    "name": "無保養道路",
-                    "terms": "未舖設路面的路"
                 },
                 "highway/traffic_mirror": {
                     "name": "廣角鏡",
@@ -4406,10 +4378,6 @@
                     "name": "高爾夫球場",
                     "terms": "golf course,哥夫球場,高爾夫球場"
                 },
-                "leisure/horse_riding": {
-                    "name": "騎馬設施",
-                    "terms": "horseback riding facility,騎馬場"
-                },
                 "leisure/ice_rink": {
                     "name": "溜冰場",
                     "terms": "溜冰場"
@@ -4473,10 +4441,6 @@
                 "leisure/pitch/cricket": {
                     "name": "木球場",
                     "terms": "cricket field,木球場"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "策騎場地",
-                    "terms": "riding arena,策騎場地"
                 },
                 "leisure/pitch/futsal": {
                     "name": "室內五人足球場"
@@ -4561,9 +4525,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "單車徑"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "賽馬跑道"
                 },
                 "leisure/track/running": {
                     "name": "緩跑徑"
@@ -5875,9 +5836,6 @@
                     "name": "遠足路綫",
                     "terms": "hiking route,行山路綫,行山路線,遠足路線"
                 },
-                "type/route/horse": {
-                    "name": "騎馬路綫"
-                },
                 "type/route/light_rail": {
                     "name": "輕鐵路綫",
                     "terms": "light rail route,輕鐵路線"
@@ -5953,9 +5911,6 @@
                 "waterway/river": {
                     "name": "河流",
                     "terms": "river,江,江河,河,河流,河川"
-                },
-                "waterway/riverbank": {
-                    "name": "河岸"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "船舶污水處理",

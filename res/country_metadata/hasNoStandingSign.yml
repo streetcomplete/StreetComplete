@@ -1,8 +1,0 @@
-# whether there are "no standing" signs additionally to "no parking" and "no stopping"
-# "no standing" is usually like "no parking" but loading/unloading goods is also forbidden
-# 
-default: false
-AU: false # https://commons.wikimedia.org/wiki/Road_signs_of_Australia but https://www.smh.com.au/national/no-standing-parking-rule-to-end-in-nsw-20081112-5mob.html
-CA-ON: true # https://commons.wikimedia.org/wiki/Category:Diagrams_of_prohibitory_road_signs_of_Ontario
-PH: true # https://en.wikipedia.org/wiki/Road_signs_in_the_Philippines#Parking_signs
-US: true

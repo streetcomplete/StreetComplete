@@ -1,13 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial Bank of Ceylon PLC, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
-chargingStationOperators: [Spark EV]
 hasDailyAlternateSideParkingSign: true
 isLeftHandTraffic: true
 mobileCountryCode: 413
 noParkingLineStyle: yellow
 noStoppingLineStyle: double yellow
 officialLanguages: [si, ta]
-orchardProduces: [coconut, tea, rubber, tomato, guava, mango, mangosteen, banana, chilli_pepper, sweet_pepper, areca_nut, pineapple, pepper, avocado, orange, cashew_nut, coffee, lemon, lime]
 popularReligions: [buddhist, hindu, christian, muslim]
 popularSports: [soccer, tennis, cricket]
+atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial Bank of Ceylon PLC, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
+chargingStationOperators: [Spark EV]
+orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg]

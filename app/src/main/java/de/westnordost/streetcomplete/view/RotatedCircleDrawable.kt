@@ -1,25 +1,13 @@
 package de.westnordost.streetcomplete.view
 
 import android.graphics.Canvas
-import android.graphics.ColorFilter
 import android.graphics.Path
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.toRectF
 
 /** Container that contains another drawable but rotates it and clips it so it is a circle */
-class RotatedCircleDrawable(val drawable: Drawable) : Drawable() {
-
-    override fun getIntrinsicWidth(): Int = drawable.intrinsicWidth
-    override fun getIntrinsicHeight(): Int = drawable.intrinsicHeight
-
-    override fun setAlpha(alpha: Int) { drawable.alpha = alpha }
-    override fun getAlpha(): Int = drawable.alpha
-
-    override fun setColorFilter(colorFilter: ColorFilter?) { drawable.colorFilter = colorFilter }
-    override fun getColorFilter() = drawable.colorFilter
-
-    override fun getOpacity(): Int = drawable.opacity
+class RotatedCircleDrawable(drawable: Drawable) : DrawableWrapper(drawable) {
 
     var rotation: Float = 0f
         set(value) {

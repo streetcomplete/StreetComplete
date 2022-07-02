@@ -46,7 +46,7 @@
 
     <!-- user screen -->
 
-    <dimen name="quest_statistics_quest_type_icon_size">192dp</dimen>
+    <dimen name="statistics_edit_type_icon_size">192dp</dimen>
     <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
 
     <dimen name="quest_statistics_country_icon_width">320dp</dimen>
@@ -64,5 +64,15 @@
     <!-- tutorial screen -->
 
     <dimen name="tutorial_textbox_width">320dp</dimen>
+
+    <!-- forms -->
+
+    <!-- text size for extra large input fields, i.e.  inputs that should fill about the whole form
+         and generally have a short text -->
+    <dimen name="x_large_input">48sp</dimen>
+
+    <!-- text size for input fields that cover the whole form but have a longer input or secondary
+         inputs -->
+    <dimen name="large_input">28sp</dimen>
 
 </resources>

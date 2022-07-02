@@ -7,6 +7,7 @@ import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.io.StringWriter
 import java.net.URL
+import java.util.Locale
 
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures library */
 open class UpdatePresetsTask : DefaultTask() {
@@ -16,7 +17,10 @@ open class UpdatePresetsTask : DefaultTask() {
 
     @TaskAction fun run() {
         val targetDir = targetDir ?: return
-        val exportLangs = languageCodes
+        /* eagerly also fetch different variants of a language (e.g. "en-NZ" also when just "en"
+           is specified as well as "sr" if just "sr-Cyrl" is specified). Hence, we only look at the
+           language code */
+        val exportLanguages = languageCodes?.map { Locale(Locale.forLanguageTag(it).language) }
         val version = version ?: return
 
         // copy the presets.json 1:1
@@ -24,17 +28,24 @@ open class UpdatePresetsTask : DefaultTask() {
         presetsFile.writeText(fetchPresets(version))
 
         // download each language
-        for (localizationMetadata in fetchLocalizationMetadata()) {
-            val language = localizationMetadata.languageCode
+        val localizationMetadataList = fetchLocalizationMetadata()
+        for (localizationMetadata in localizationMetadataList) {
+            val locale = localizationMetadata.locale
+            val languageLocale = Locale(locale.language)
+            if (exportLanguages != null && !exportLanguages.any { it == languageLocale }) continue
 
-            if (exportLangs != null && !exportLangs.contains(language)) continue
-
-            println(localizationMetadata.languageCode)
+            val javaLanguageTag = locale.toLanguageTag()
+            println(javaLanguageTag)
 
             val presetsLocalization = fetchPresetsLocalizations(localizationMetadata)
-            val javaLanguage = bcp47LanguageTagToJavaLanguageTag(language)
-            File("$targetDir/$javaLanguage.json").writeText(presetsLocalization)
+            File("$targetDir/$javaLanguageTag.json").writeText(presetsLocalization)
         }
+
+        // Norway has two languages, one of them is called Bokmål
+        // coded "no" in iD presets, but "nb" is also expected by Android.
+        // https://github.com/streetcomplete/StreetComplete/issues/3890
+        val bokmalFile = File("$targetDir/no.json")
+        bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
     }
 
     /** Fetch iD presets */
@@ -50,12 +61,13 @@ open class UpdatePresetsTask : DefaultTask() {
         val languagesJson = Parser.default().parse(URL(contentsUrl).openStream()) as JsonArray<JsonObject>
 
         return languagesJson.mapNotNull {
-            if (it["type"] == "file") {
-                val name = it["name"] as String
-                val languageCode = name.subSequence(0, name.lastIndexOf(".")).toString()
+            if (it["type"] != "file") return@mapNotNull null
+            val name = it["name"] as String
+            if (name.endsWith(".min.json")) return@mapNotNull null
 
-                LocalizationMetadata(languageCode, it["download_url"] as String)
-            } else null
+            val filename = name.subSequence(0, name.indexOf(".")).toString()
+            val locale = Locale.forLanguageTag(filename.replace('@', '-'))
+            LocalizationMetadata(locale, it["download_url"] as String)
         }
     }
 
@@ -66,7 +78,7 @@ open class UpdatePresetsTask : DefaultTask() {
     }
 }
 
-private data class LocalizationMetadata(val languageCode: String, val downloadUrl: String)
+private data class LocalizationMetadata(val locale: Locale, val downloadUrl: String)
 
 private fun String.unescapeUnicode(): String {
     val out = StringWriter(length)

@@ -62,7 +62,20 @@ class AddStreetParkingTest {
         )
     }
 
-    @Test fun `apply different parkings on sides`() {
+    @Test fun `apply street side parking answer with different orientations on sides`() {
+        questType.verifyAnswer(
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PERPENDICULAR, ParkingPosition.STREET_SIDE),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.STREET_SIDE)
+            ),
+            StringMapEntryAdd("parking:lane:left", "perpendicular"),
+            StringMapEntryAdd("parking:lane:right", "parallel"),
+            StringMapEntryAdd("parking:lane:left:perpendicular", "street_side"),
+            StringMapEntryAdd("parking:lane:right:parallel", "street_side"),
+        )
+    }
+
+    @Test fun `apply different parking positions and orientations on sides`() {
         questType.verifyAnswer(
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.STREET_SIDE),

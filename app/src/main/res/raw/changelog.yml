@@ -1,4 +1,191 @@
-v40.0-beta1: |
+v45.0-beta1: |
+  <h3>🍰 Overlays!</h3>
+  <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
+  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
+  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
+  <li><i>Is there a summit cross here?</i> (#4111, #4095), by @FloEdelmann</li>
+  <li><i>What is signed at this entrance?</i> (#4066, #3064), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
+  <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
+  <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
+  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
+  <li>Other small enhancements and performance improvements (#3919, #4120...)</li>
+  </ul>
+
+v45.0-alpha1: |
+  <h3>🍰 Overlays!</h3>
+  <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
+  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
+  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Other small enhancements (#3919, ...)</li>
+  </ul>
+
+v44.1: |
+  <ul>
+  <li>Fix: Tag <code>barrier=kerb</code>, not <code>curb</code> (#4087), by @FloEdelmann</li>
+  <li>Fix recorded track was attached to every subsequent note (#4082), by @goldbattle</li>
+  <li>Fix summit register quest, it did not show before (#4075), by @Helium314</li>
+  <li>Some other tiny fixes and enhancements (#4084, ...)</li>
+  </ul>
+
+v44.0: |
+  <h3>🧭 Recording GPS track</h3>
+  <p>Did you ever notice some path missing on OSM while solving quests? Now, you can walk that path
+  and then attach it to a public note!<br/>
+  Note that the track can only be recorded while the app is in foreground. So, it is not meant to
+  replace tools like GPS Logger but to help locate short missing path segments and similar.<br/>
+  (#3573, #2209), by @goldbattle
+  </p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What type of bicycle rental is this?</i> (#3995, #4010), by @FloEdelmann</li>
+  <li><i>How many rental bike spaces are here?</i> (#2129, #4008), by @FloEdelmann</li>
+  <li><i>Are bicycle repair services offered here?</i>, disabled by default (#4012, #4038), by @matkoniecz</li>
+  <li><i>Are second-hand bicycles sold here?, disabled by default</i> (#4012, #4038), by @matkoniecz</li>
+  <li><i>What kind of building entrance is this?</i> (#3941, #3949), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Clarify a lot of wordings in American English (#4030) by @ZeLonewolf</li>
+  <li>Improve some aspects of the background map rendering, by @Helium314</li>
+  <li>Improve performance when using the app in a long session (#4070), by @Helium314</li>
+  <li>Various minor enhancements, wording improvements and fixes (#4015, #4042, #4001, #4039, #4032, #4056...), thanks @Helium314, @peternewman, @riQQ</li>
+  </ul>
+
+v43.2: |
+  Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, your not yet uploaded
+  edits are safe. (#4028)
+
+v43.1: |
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Correct hint text for shoulder quest: Shoulders that are not wide enough for a car are still considered shoulders as long as they are designated (i.e. marked) as such</li>
+  <li>Cycleways: For oneways, make it clearer what the selection options imply for cyclists (#3984)</li>
+  <li>Don't ask about tactile buttons on traffic lights in Russia (#4021)</li>
+  <li>Various minor enhancements and fixes (#3994, #4020...), thanks @peternewman</li>
+  <li>Fix new languages (Armenian, Esperanto) are now displayed as options in the language selection screen</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Latvian, by @Mazurs</li>
+  </ul>
+
+v43.0: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How many steps are here?</i>, asked for stiles (#3932, #3141), by @matkoniecz</li>
+  <li><i>Is there a working bicycle pump available for everyone here?</i>, asked for bicycle shops etc. (#3934, #3053), by @mnalis</li>
+  <li><i>Is there an air compressor available here?</i>, asked for fuel stations (#3934, #3053), by @mnalis</li>
+  <li><i>Are credit or debit cards accepted here?</i>, disabled by default (#3953), by @matkoniecz</li>
+  </ul>
+  <h3>Other Enhancements and Fixes</h3>
+  <ul>
+  <li>Do not ask questions about objects tagged as seasonal (#3943)</li>
+  <li>Fix in rare cases answered sidewalk quest would not go away (#3976)</li>
+  <li>Kerb type: Remove kerb if user answered that there is no kerb at all (#3983)</li>
+  <li>Ask about opening hours and wheelchair accessibility for a few more kind of places (#3982), by @dbdean</li>
+  <li>Better indicate when there is no GPS signal (#3944, #3977)</li>
+  <li>Various minor enhancements and fixes (#3931, #3933, #3717, #3951, #3698, #3795, #3972, #3978, #3962, #2652...), thanks @mnalis, @CJ-Malone, @matkoniecz</li>
+  </ul>
+  <h3>New Translations</h3>
+  <ul>
+  <li>Added Armenian, by Alexander, Vasak87 and Anteneh Belayneh</li>
+  <li>Added Esperanto, by Jolesh, Jan, Martin Constantino-Bodin, Hendursaga, Robin van der Vliet, Fabio and more</li>
+  </ul>
+
+v42.0: |
+  <h3>General Enhancements</h3>
+  <ul>
+  <li>Quest titles are now shorter and more consistent (#3870, #3903), thanks @FloEdelmann, @peternewman</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is smoking allowed anywhere in this place?</i> (#539, #3784, #3856, #3865), by @mnalis</li>
+  <li><i>What is the surface of the sidewalk here?</i> (#1593, #3735), by @arrival-spring</li>
+  <li><i>What kind of seating does this place have?</i> (#1176, #3758, #3911), thanks @fatal69100</li>
+  </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Parking fee: Add answer option for when there is just a max parking duration (#3841, #981, #102)</li>
+  <li>Sidewalk: Also ask when current tagging is incomplete or invalid (#3821), by @arrival-spring</li>
+  <li>Tactile paving on crossings: Add answer option for when it exists only one one side (#3844, #3813), by @arrival-spring</li>
+  <li>Barrier details: Add answer option for when there is a different type of barrier (#3846, #3563, #3845, #3817), by @mnalis</li>
+  <li>Oneway streets: Also ask for roads that are below or equal 4 meters wide</li>
+  <li>Cycleway: Warn before removing that cyclists may use a oneway road in both directions (#3795)</li>
+  <li>Halal: Don't ask for vegan only places (#3883), by @peternewman</li>
+  <li>Fire hydrant position: Allow deletion of hydrant if it doesn't exist (#3871)</li>
+  <li>Housenumbers: More convenient input for housename & housenumber, plus fixed various small issues (#3904, #3907)</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Fix crash issues on Android 5 (#3889, #3914), thanks @FloEdelmann</li>
+  <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
+  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
+  <li>Fix rare crashes (#3888), thanks @tapetis</li>
+  <li>Other minor enhancements and fixes (#3852, #3893, #3895, #3867...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
+  </ul>
+
+v41.2: |
+  <ul>
+  <li>Improved accuracy of measuring with AR (#3832) but also tag that it has been measured with AR</li>
+  <li>Cycleway and road width, number of lanes: Don't ask for sections that have explicitly been marked as "transitions" (#3835, #3842), by @mnalis</li>
+  <li>Cycleway width: Fix the quest did not disappear after solving in rare cases (#3843)</li>
+  <li>Number of lanes: Also ask for trunks and motorways (#3849), by @matkoniecz</li>
+  </ul>
+
+v41.1: |
+  <ul>
+  <li>Fix: ask for camera permission when attaching a photo to a note</li>
+  <li>Fix: app v41.0 didn't show on Google Play</li>
+  </ul>
+
+v41.0: |
+  <h3>Measure with the camera (AR)</h3>
+  <p>Measuring with AR is only supported <a href="https://developers.google.com/ar/devices#google_play_devices">on certain devices</a> and you need to have the Google Play Services on your phone. If AR is not available, the new quests are disabled by default because you'd need to use a tape measure instead. (#3709, #879)</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What’s the width of this cycleway here?</i> (#698)</li>
+  <li><i>What’s the width of this road here?</i></li>
+  <li><i>What is the height limit here?</i></li>
+  </ul>
+  <h3>Quest enhancements</h3>
+  <ul>
+  <li>Add "handlebar holders" as bicycle parking type option (#3061, #3724), by @sams96</li>
+  <li>Tapping on road in street name sometimes did not work (#3797)</li>
+  <li>Other small improvements (#3740, #3755, #3793, #3783, #3814, #3811), thanks @matkoniecz, @tiptoptom, @peternewman, @arrival-spring</li>
+  </ul>
+
+v40.2: |
+  Google Play version only: In the context of donating, removed link to source repository because this is now also against their policies (see #3768).
+
+v40.1: |
+  <h3>Enhancements and fixes</h3>
+  <ul>
+  <li>Faster downloads and faster display of nearby data (#3741), by @Helium314</li>
+  <li>Faster initial download when starting the app</li>
+  <li>Other small improvements, quest enhancements and UI fixes (#3736, #3757, #3719), thanks @mnalis, @matkoniecz</li>
+  <li>Fixed display issue when going through the tutorial too fast (#3767)</li>
+  </ul>
+  <h3>Un-Features</h3>
+  <ul>
+  <li>Google Play version only: Removed donation links in the about screen because this is now against their policies unless those links lead to their own billing system (see #3768).</li>
+  </ul>
+
+v40.0: |
+  <h3>Important: Update manually after Feb 21!</h3>
+  <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera! </p>
   <h3>New Quests</h3>
   <ul>
   <li><i>How does this road cross the barrier here?</i> (#3372, #3515), by @matkoniecz</li>
@@ -12,6 +199,7 @@ v40.0-beta1: |
   <li>Allow answering whether the sidewalk is displayed separately on the map for each side individually</li>
   <li>When asking where a hydrant is located, show example pictures of pillar hydrants if it is a pillar hydrant (#3686, #3695, #3711), by @FloEdelmann</li>
   <li>Ask opening hours, place names and wheelchair accessibility for more amenities in the healthcare sector (#3710), by @FloEdelmann</li>
+  <li>Other small tweaks in UI, quest filters and wording (#3593, #3726, #3657, #3727, #3719, #3693, #3712, #3722, #3716), thanks @matkoniecz, @peternewman, @smichel17, @arrival-spring</li>
   </ul>
   <h3>Fixes and improvements</h3>
   <ul>

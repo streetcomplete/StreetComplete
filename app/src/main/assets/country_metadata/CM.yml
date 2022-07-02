@@ -1,10 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Société générale]
 centerLineStyle: white
 edgeLineStyle: short white dashes
 mobileCountryCode: 624
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, en]
-orchardProduces: [tomato, banana, pineapple, cacao, avocado, rubber, kola_nut, chilli_pepper, sweet_pepper, coffee, tea, coconut, peach, apricot, guava, mango, mangosteen, plum]
 popularSports: [soccer, tennis, basketball, handball]
+atmOperators: [Société générale]
+orchardProduces: [cacao, coffee, kola_nut, tomato, banana, rubber, avocado, chilli_pepper, sweet_pepper, pineapple, tea, coconut, pepper, apricot, date, peach]

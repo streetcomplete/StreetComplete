@@ -12,7 +12,7 @@ open class ApplicationDbTestCase {
     protected lateinit var database: Database
 
     @Before fun setUpHelper() {
-        dbHelper = DbModule.sqLiteOpenHelper(
+        dbHelper = StreetCompleteSQLiteOpenHelper(
             InstrumentationRegistry.getInstrumentation().targetContext,
             DATABASE_NAME
         )

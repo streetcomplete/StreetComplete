@@ -133,9 +133,6 @@
                 "amenity/theatre": {
                     "name": "ቲያትር ቤት"
                 },
-                "amenity/toilets": {
-                    "name": "መፀዳጃ ቤት"
-                },
                 "amenity/university": {
                     "name": "ዩኒቨርሲቲ"
                 },

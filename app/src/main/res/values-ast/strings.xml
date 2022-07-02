@@ -6,11 +6,9 @@
     <string name="oauth_communication_error">"Nun se pue contautar col sirvidor d'autorización"</string>
 
     <!-- Fuzzy -->
-    <string name="retry">"Volver a tentalo"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Falló l'autorización: has de conceder tolos permisos de la llista"</string>
 
+    <!-- Settings screen -->
     <!-- Fuzzy -->
     <string name="pref_category_communication">"Conexón"</string>
 
@@ -59,6 +57,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Pues dexar una nota nesti llugar pa qu'otres persones puedan comentar y, esperemos, resolvelo:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"Aceutar"</string>
 
     <!-- Fuzzy -->
@@ -78,9 +78,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ensin abreviatures"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_name_title">"¿Cuálu ye l'horariu d'apertura de %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"hora d'apertura"</string>
@@ -127,6 +124,7 @@
     <!-- Fuzzy -->
     <string name="action_upload">"Xubir les rempuestes"</string>
 
+    <!-- when the user left the answer form empty -->
     <!-- Fuzzy -->
     <string name="no_changes">"Nun disti nenguna rempuesta"</string>
 
@@ -173,6 +171,7 @@
     <string name="about_title_license">"Llicencia"</string>
     <string name="about_summary_license">"Llicencia Pública Xeneral GNU (GPL)"</string>
 
+    <!-- Error messages and crash report -->
     <!-- Fuzzy -->
     <string name="offline">"Nun hai conexón"</string>
 
@@ -230,16 +229,19 @@
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"¿Qué forma básica tien el teyáu del edificiu?"</string>
 
+    <!-- As in: "select ONE of the pictures below" -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Seleiciona una:"</string>
 
+    <!-- As in: "show more of those pictures to select an answer from -->
     <!-- Fuzzy -->
-    <string name="quest_roofShape_show_more">"Ver más..."</string>
+    <string name="quest_roofShape_show_more">"Ver más…"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Tien distintes formes"</string>
 
+    <!-- Elements on map view -->
     <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Alloñar"</string>
 
@@ -330,9 +332,6 @@ Sicasí, primero de facer cualesquier cambéu l'aplicación comprueba si la vers
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Ónde ta esta cai?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"¿Qué tipu de vía de serviciu ye?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"¿Ye una cai de sentíu únicu?"</string>
 
     <!-- Fuzzy -->
@@ -381,14 +380,12 @@ La información amestada inclúise direutamente n'OpenStreetMap col to nome ensi
     <!-- Fuzzy -->
     <string name="upload_server_error">"Error de conexón a la de xubir les rempuestes. Prueba llueu."</string>
 
+    <!-- Generic strings used in various quests -->
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Sí"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Non"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"¿Esta parada d'autobús ta a techu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"¿Cuántes bicis pueden aparcar equí?"</string>
@@ -458,6 +455,7 @@ La información amestada inclúise direutamente n'OpenStreetMap col to nome ensi
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugbi"</string>
 
+    <!-- As in: "select any of the pictures below that fit" -->
     <!-- Fuzzy -->
     <string name="quest_select_hint">"Seleicionar:"</string>
 
@@ -474,22 +472,13 @@ La información amestada inclúise direutamente n'OpenStreetMap col to nome ensi
     <string name="quest_sport_manySports_confirmation_title">"Seleicionasti demasiaos deportes"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"¿La parada d'autobús %s ta a techu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"¿Estos llavabos son de pagu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_bus">"¿Esta parada d'autobús tien suelu táctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"¿Esti pasu de peatones tien suelu táctil nos dos estremos?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"¿Comprobastilo en persona?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"¿La parada d'autobús %s tien suelu táctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Namái has d'añader información que conozas de toes toes."</string>
@@ -499,9 +488,6 @@ La información amestada inclúise direutamente n'OpenStreetMap col to nome ensi
 
     <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Nun volver amosar nesta sesión"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"¿Qué superficie tien equí la carretera %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"La velocidá máxima nun paez dable."</string>
@@ -543,9 +529,6 @@ Si nun hai señales na parte seleicionada va aplícase la velocidá máxima pred
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"¿%s ye accesible con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Parcialmente"</string>
 
     <!-- Fuzzy -->
@@ -553,30 +536,6 @@ Si nun hai señales na parte seleicionada va aplícase la velocidá máxima pred
 
     <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Patinaxe"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_title">"¿Ye accesible esta estación de buses con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_title">"¿Ye accesible esta entrada de metro con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_title">"¿Ye accesible esta estación de trenes con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_title">"¿Ye accesible esti llugar con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_name_title">"¿Ye accesible la estación de buses %s con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"¿Ye accesible la entrada de metro %s con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_name_title">"¿Ye accesible la estación de trenes %s con siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"¿Ye accesible'l llugar %s con siella de ruedes?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que nun hai más d'un pasu en tol percorríu y que se pue acceder a la mayor parte de les sales en siella de ruedes."</string>
@@ -588,12 +547,6 @@ Si nun hai señales na parte seleicionada va aplícase la velocidá máxima pred
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"¿%s tien dalguna abreviatura?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_toilets_title">"¿Los llavabos tienen un cambiador pa ñácaros?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"¿%s tien un cambiador pa ñácaros?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"¿Qué tipu d'instalación de reciclaxe ye?"</string>
 
     <!-- Fuzzy -->
@@ -602,15 +555,6 @@ Si nun hai señales na parte seleicionada va aplícase la velocidá máxima pred
 
     <!-- Fuzzy -->
     <string name="underground_recycling_container">"Contenedor soterrañu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_generic_error_a_field_empty">"Dexasti un campu en blanco"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Nun puedo escribir los símbolos qu'apaecen na señal"</string>
@@ -656,11 +600,13 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <!-- Fuzzy -->
     <string name="credits_contributors_title">"Collaboraciones col códigu"</string>
 
+    <!-- Credits screen -->
     <!-- Fuzzy -->
     <string name="credits_author_title">"Autor y encargáu principal"</string>
 
+    <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
-    <string name="credits_and_more">"y más..."</string>
+    <string name="credits_and_more">"y más…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Ye una cai peatonal"</string>
@@ -800,21 +746,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"¿Esti tramu ta allumáu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"¿Ta allumada %s nesta zona?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"¿Esti tramu de la cai ta allumáu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Con sensores de movimientu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Ta allumada de día y de nueche"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Avérate un poco más nel mapa pa buscar xeres."</string>
 
     <!-- Fuzzy -->
@@ -856,9 +787,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Garaxe"</string>
 
-    <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_name_title">"¿«%s» tien llavabos?"</string>
-
+    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"¿De qué ta fechu esti poste eléctricu?"</string>
 
@@ -948,12 +877,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="undo_confirm_negative">"Encaboxar"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_vegetarian_name_title">"¿«%s» tien platos vexetarianos nel menú?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_dietType_vegan_name_title">"¿«%s» tien platos veganos nel menú?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Namái eso"</string>
 
     <!-- Fuzzy -->
@@ -986,6 +909,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Númberu de «conscripción»"</string>
 
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Númberu d'«orientación» (opcional)"</string>
 
@@ -1011,12 +935,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_streetName_answer_noName_noname">"Nun lo sé, ye que nun tien nome"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_title">"¿Los llavabos son accesibles pa persones en siella de ruedes?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"¿Pues dir en siella de ruedes pelos llavabos de %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Una señal con una siella de ruedes como la que ves pue dar a entender que los llavabos tán adautaos de manera especial.
     Parcial ye que se pueda entrar cola siella y emplegar los llavabos, pero ensin pasamanes o llavabos específicos."</string>
 
@@ -1029,6 +947,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <!-- Fuzzy -->
     <string name="create_new_note_description">"Pues dexar una nota pa qu'otres persones que collaboren sepan el problema. Axusta la so posición moviendo'l mapa:"</string>
 
+    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normalmente paezse a esto:"</string>
 
@@ -1042,9 +961,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_bridge_structure_title">"¿Cómo ye la cadarma d'esta ponte?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"¿Qué tipu de conexón a Internet ufre %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
 
     <!-- Fuzzy -->
@@ -1055,12 +971,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Ensin conexón a Internet"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"¿La parada del tranvía %s ta a techu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"¿La parada de tranvía ta a techu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"¿Tien respaldu esti bancu?"</string>
@@ -1118,13 +1028,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_surface_value_unhewn_cobblestone">"Empedráu natural"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_pedestrian_title">"¿Cuálu ye'l nome d'esta vía peatonal?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"¿Qué tipu de superficie tien esta plaza?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"¿Qué tipu de superficie tien la plaza «%s»?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Según el día y la hora…"</string>
@@ -1133,26 +1037,11 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_fee_add_times">"Añader hores"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fee_only_at_hours">"Sí, pero namái..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_not_at_hours">"Sí, sacante..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fee_hours_title">"a estes hores:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopName_title">"¿Cuálu ye'l nome d'esta parada d'autobús?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tramStopName_title">"¿Cuálu ye'l nome d'esta parada de tranvía?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Tien dellos númberos"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Inxerta simplemente los númberos separtaos por comas o rangos.
-Por exemplu: 1,3 o 2-6."</string>
+Por exemplu: 1,3 o 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Portabicicletes altu (de cuadru)"</string>
@@ -1203,20 +1092,9 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="questList_disabled_in_country">"Nunca s'amuesa en %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_toiletAvailability_rest_area_title">"¿Esta área de descansu tien llavabos?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_steps">"¿Que tipu de superficie tienen estes escaleres?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"¿Que tipu de superficie tien esta sienda?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"¿Que tipu de superficie tien esti camín?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Seleiciona'l que más s'afaye:"</string>
 
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"¿De xuru que nun pues ser más específicu/a?"</string>
 
@@ -1291,7 +1169,7 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_buildingType_industrial">"Edificiu industrial"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_industrial_description">"por exemplu: una fábrica, un taller, un taller de reparación de vehículos, ..."</string>
+    <string name="quest_buildingType_industrial_description">"por exemplu: una fábrica, un taller, un taller de reparación de vehículos, …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Edificiu d'oficines"</string>
@@ -1448,9 +1326,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_openingHours_no_sign">"Nun hai lletreru coles hores d'apertura"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_name_title2">"¿Cuála ye la velocidá máxima pa %s equí?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Centru deportivu"</string>
 
     <!-- Fuzzy -->
@@ -1458,9 +1333,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"¿Qué establez la velocidá máxima?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_playground_access_title">"¿Esta zona d'espardimientu ye accesible al públicu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_segregated_title">"¿Como tán dispuestos equí'l camín y el carril bici?"</string>
@@ -1478,15 +1350,6 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="quest_maxheight_title">"¿Cuálu ye l'altor máximu equí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_parking_entrance_title">"¿Cuálu ye l'altor máximu pa esta entrada del aparcaderu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_height_restrictor_title">"¿Cuálu ye l'altor máximu permitíu?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxheight_tunnel_title">"¿Cuálu ye l'altor máximu d'esti túnel?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Nun hai señal…"</string>
 
     <!-- Fuzzy -->
@@ -1494,8 +1357,11 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esti altor paez imposible. ¿De xuru que ye correutu?"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 
+    <!-- first placeholder is the person, second placeholder is the date -->
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"Pesllao por %1$s, %2$s"</string>
 
@@ -1512,7 +1378,7 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="action_deselect_all">"Quitar la seleición a too"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"incluyendo edificios pa restoranes, cafés..."</string>
+    <string name="quest_buildingType_retail_description">"incluyendo edificios pa restoranes, cafés…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
@@ -1528,9 +1394,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Suave"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_building_underground_name_title">"¿Ta %s baxo tierra dafechu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"¿Esti edificiu ta baxo tierra dafechu?"</string>
@@ -1552,14 +1415,8 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Esti tipu d'entruga ta desactivada de mano porque, pelo xeneral, habría que buscar señales de llende de velocidá en tola cai, non sólo de la seición resaltada. Puede ser demasiáu trabayu pa completar una sola xera."</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
-    <string name="at_housename">"Nome de la casa %s:"</string>
-    <string name="at_conscription_and_street_number">"Númberu de «conscripción» %1$s, númberu d'«orientación» %2$s:"</string>
 
     <!-- Fuzzy -->
-    <string name="at_conscription_number">"Númberu de «conscripción» %s:"</string>
-    <string name="quest_openingHours_name_type_title">"¿Cuálu ye l'horariu d'apertura de %1$s (%2$s)?"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"¿%1$s (%2$s) ye accesible con siella de ruedes?"</string>
+    <string name="at_housename">"Nome de la casa %s"</string>
     <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
 </resources>

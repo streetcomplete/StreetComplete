@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -94,6 +94,10 @@ class WayDaoTest : ApplicationDbTestCase() {
         assertEquals(
             listOf(e1, e2),
             dao.getAllForNode(1).sortedBy { it.id }
+        )
+        assertEquals(
+            listOf(e2, e3),
+            dao.getAllForNodes(listOf(5, 8)).sortedBy { it.id }
         )
     }
 

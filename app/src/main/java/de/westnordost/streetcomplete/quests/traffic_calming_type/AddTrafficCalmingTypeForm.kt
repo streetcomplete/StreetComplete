@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.BUMP
 import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHICANE
 import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHOKER
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingT
 import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.TABLE
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddTrafficCalmingTypeForm : AImageListQuestAnswerFragment<TrafficCalmingType, TrafficCalmingType>() {
+class AddTrafficCalmingTypeForm : AImageListQuestForm<TrafficCalmingType, TrafficCalmingType>() {
 
     override val items = listOf(
         Item(BUMP, R.drawable.traffic_calming_bump, R.string.quest_traffic_calming_type_bump),

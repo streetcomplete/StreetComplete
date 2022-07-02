@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Euronet, Bank of Cyprus, Ziraat Bankası, JCC, Hellenic Bank, Near East Bank, Coop Bank, Türk Bankasi, Türkiye İş Bankası, Bankamatik, Turk Bankasi]
 hasDailyAlternateSideParkingSign: true
 isLeftHandTraffic: true
 mobileCountryCode: 280
 officialLanguages: [el, tr]
-orchardProduces: [orange, grapefruit, grape, tomato, olive, lemon, lime, banana, apple, fig, peach, chilli_pepper, sweet_pepper, strawberry, plum, apricot, avocado]
+atmOperators: [Euronet, Bank of Cyprus, Ziraat Bankası, JCC, Hellenic Bank, Near East Bank, Coop Bank, Türk Bankasi, Türkiye İş Bankası, Bankamatik, Turk Bankasi]
+orchardProduces: [olive, grape, almond, orange, lemon, lime, grapefruit, plum, apple, peach, tomato, cherry, walnut, banana, apricot, fig, avocado]

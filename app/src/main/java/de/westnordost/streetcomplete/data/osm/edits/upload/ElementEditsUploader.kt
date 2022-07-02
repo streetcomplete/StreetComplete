@@ -47,26 +47,25 @@ class ElementEditsUploader(
     } }
 
     private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
-        val questTypeName = edit.questType::class.simpleName!!
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
             val updates = singleUploader.upload(edit, idProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
-            uploadedChangeListener?.onUploaded(questTypeName, edit.position)
+            uploadedChangeListener?.onUploaded(edit.type.name, edit.position)
 
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
 
             if (edit.action is IsRevertAction) {
-                statisticsController.subtractOne(edit.questType, edit.position)
+                statisticsController.subtractOne(edit.type.name, edit.position)
             } else {
-                statisticsController.addOne(edit.questType, edit.position)
+                statisticsController.addOne(edit.type.name, edit.position)
             }
         } catch (e: ConflictException) {
             Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
-            uploadedChangeListener?.onDiscarded(questTypeName, edit.position)
+            uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
 
             elementEditsController.markSyncFailed(edit)
 

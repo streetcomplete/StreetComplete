@@ -22,12 +22,12 @@ class QuestTypeOrderController(
         })
     }
 
-    fun addOrderItem(item: QuestType<*>, toAfter: QuestType<*>) {
+    fun addOrderItem(item: QuestType, toAfter: QuestType) {
         questTypeOrderDao.put(questPresetsSource.selectedId, item.name to toAfter.name)
         onQuestTypeOrderAdded(item, toAfter)
     }
 
-    override fun sort(questTypes: MutableList<QuestType<*>>) {
+    override fun sort(questTypes: MutableList<QuestType>) {
         val orders = questTypeOrderDao.getAll(questPresetsSource.selectedId)
         for ((item, toAfter) in orders) {
             val itemIndex = questTypes.indexOfFirst { it.name == item }
@@ -50,12 +50,10 @@ class QuestTypeOrderController(
     override fun removeListener(listener: QuestTypeOrderSource.Listener) {
         listeners.remove(listener)
     }
-    private fun onQuestTypeOrderAdded(item: QuestType<*>, toAfter: QuestType<*>) {
+    private fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
         listeners.forEach { it.onQuestTypeOrderAdded(item, toAfter) }
     }
     private fun onQuestTypeOrderChanged() {
         listeners.forEach { it.onQuestTypeOrdersChanged() }
     }
 }
-
-private val QuestType<*>.name get() = this::class.simpleName!!

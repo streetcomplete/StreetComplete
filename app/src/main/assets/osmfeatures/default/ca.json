@@ -292,7 +292,6 @@
                     "label": "Serveis",
                     "options": {
                         "cosmetics": "Cosmètica",
-                        "nails": "Ungles",
                         "tanning": "Saló de bronzejat"
                     }
                 },
@@ -448,10 +447,6 @@
                 "check_date": {
                     "label": "Data d'última revisió ",
                     "placeholder": "AAAA-MM-DD"
-                },
-                "circumference": {
-                    "label": "Circumferència ",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "Roba"
@@ -1284,13 +1279,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultat del camí segons IMBA",
-                    "options": {
-                        "0": "La més fàcil (cercle blanc)",
-                        "1": "Fàcil (cercle verd)",
-                        "2": "Mitjana (quadrat blau)",
-                        "3": "Difícil (diamant negre)",
-                        "4": "Extremadament difícil (diamant negre doble)"
-                    },
                     "placeholder": "Fàcil, Mitjana, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -1851,9 +1839,6 @@
                         "parking_aisle": "Carrer d'aparcament"
                     }
                 },
-                "service/bicycle": {
-                    "label": "Serveis"
-                },
                 "service/vehicle": {
                     "label": "Serveis"
                 },
@@ -1862,7 +1847,7 @@
                     "options": {
                         "crossover": "Intercambiador",
                         "siding": "Apartador",
-                        "spur": "Canvi d'agulles",
+                        "spur": "Ramal curt",
                         "yard": "Platja"
                     }
                 },
@@ -2875,10 +2860,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatre"
                 },
-                "amenity/toilets": {
-                    "name": "Lavabos",
-                    "terms": "lavabos,serveis,lavabos públics,w.c"
-                },
                 "amenity/toilets/portable": {
                     "name": "Lavabo portàtil"
                 },
@@ -3516,9 +3497,6 @@
                     "name": "Parada d'autobús",
                     "aliases": "Parada de bus"
                 },
-                "highway/construction": {
-                    "name": "Carretera tallada"
-                },
                 "highway/corridor": {
                     "name": "Corredor interior"
                 },
@@ -3653,9 +3631,6 @@
                 "highway/tertiary_link": {
                     "name": "Enllaç de carretera terciària",
                     "terms": "enllaç amb terciària"
-                },
-                "highway/track": {
-                    "name": "Pista forestal sense manteniment"
                 },
                 "highway/traffic_mirror": {
                     "name": "Mirall de trànsit"
@@ -3973,9 +3948,6 @@
                     "name": "Camp de golf",
                     "terms": "camp de golf"
                 },
-                "leisure/horse_riding": {
-                    "name": "Hípica"
-                },
                 "leisure/ice_rink": {
                     "name": "Pista de gel"
                 },
@@ -4078,9 +4050,6 @@
                     "name": "Piscina",
                     "terms": "piscina"
                 },
-                "leisure/track/horse_racing": {
-                    "name": "Pista de curses de cavalls"
-                },
                 "leisure/water_park": {
                     "name": "Parc Aquàtic"
                 },
@@ -4103,6 +4072,11 @@
                 "man_made/breakwater": {
                     "name": "trencaonades",
                     "terms": "escullera,espigó,espatller"
+                },
+                "man_made/cairn": {
+                    "name": "Fita",
+                    "terms": "pila de rocs,pila de pedres,fita",
+                    "aliases": "Pila de pedres\nPila de rocs"
                 },
                 "man_made/chimney": {
                     "name": "Xemeneia"
@@ -4797,6 +4771,9 @@
                     "name": "Boca de Metro",
                     "terms": "boca de metro,entrada de metro"
                 },
+                "railway/switch": {
+                    "name": "Canvi d'agulles"
+                },
                 "railway/train_wash": {
                     "name": "Rentat de trens"
                 },
@@ -5476,10 +5453,6 @@
                     "name": "Ruta senderista",
                     "aliases": "Ruta excursionista"
                 },
-                "type/route/horse": {
-                    "name": "Ruta eqüestre",
-                    "terms": "camí de ferradura,cavall,cavalls,hípica"
-                },
                 "type/route/light_rail": {
                     "name": "Ruta de tren lleuger"
                 },
@@ -5553,9 +5526,6 @@
                 "waterway/river": {
                     "name": "Riu",
                     "terms": "riu"
-                },
-                "waterway/riverbank": {
-                    "name": "Banc fluvial"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Lavabo per a vaixells"

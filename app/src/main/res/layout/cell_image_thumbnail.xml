@@ -8,7 +8,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <ImageView
-        tools:src="@drawable/panorama_surface_ground"
+        tools:src="@drawable/surface_paving_stones"
         android:id="@+id/imageView"
         android:scaleType="centerCrop"
         android:layout_width="56dp"

@@ -1,12 +1,13 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
-chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
-clothesContainerOperators: [Sorpa]
 edgeLineStyle: white dashes
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 274
+noEntrySignStyle: yellow
 officialLanguages: [is]
+atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
+chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
+clothesContainerOperators: [Sorpa]
 orchardProduces: [tomato]

@@ -2,15 +2,15 @@ package de.westnordost.streetcomplete.quests.level
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.isKindOfShopExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isShopExpressionFragment
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddLevel : OsmElementQuestType<String> {
 
@@ -33,8 +33,8 @@ class AddLevel : OsmElementQuestType<String> {
     *  outline */
     private val filter by lazy { """
         nodes with
-         (${isKindOfShopExpression()})
-         and !level and (name or brand)
+         (${isShopExpressionFragment()})
+         and !level
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add level to shops"
@@ -45,10 +45,9 @@ class AddLevel : OsmElementQuestType<String> {
     *  the user cannot find the place on any level in the mall, delete the element completely. */
     override val isReplaceShopEnabled = false
     override val isDeleteElementEnabled = true
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area

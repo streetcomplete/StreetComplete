@@ -5,7 +5,6 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.asImageSpan
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.BAD
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.EXCELLENT
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.GOOD
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.quests.smoothness.Smoothness.IMPASSABLE
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.INTERMEDIATE
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.VERY_BAD
 import de.westnordost.streetcomplete.quests.smoothness.Smoothness.VERY_HORRIBLE
+import de.westnordost.streetcomplete.util.ktx.asImageSpan
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText

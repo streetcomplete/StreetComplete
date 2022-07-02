@@ -10,7 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.spToPx
+import de.westnordost.streetcomplete.util.ktx.spToPx
 
 /** A dialog in which you can select one value from a range of values. If a custom layout is supplied,
  *  it must have a NumberPicker with the id "numberPicker". */
@@ -21,7 +21,7 @@ class ValuePickerDialog<T>(
     title: CharSequence? = null,
     @LayoutRes layoutResId: Int = R.layout.dialog_number_picker,
     private val callback: (value: T) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     init {
         val view = LayoutInflater.from(context).inflate(layoutResId, null)
@@ -42,7 +42,7 @@ class ValuePickerDialog<T>(
         numberPicker.minValue = 0
         numberPicker.maxValue = values.size - 1
         if (android.os.Build.VERSION.SDK_INT >= 29) {
-            numberPicker.textSize = 32f.spToPx(context)
+            numberPicker.textSize = context.spToPx(32)
         }
         selectedValue?.let { numberPicker.value = values.indexOf(it) }
         // do not allow keyboard input

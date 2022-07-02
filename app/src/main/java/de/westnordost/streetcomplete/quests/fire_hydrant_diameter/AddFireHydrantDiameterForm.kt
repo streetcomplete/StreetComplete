@@ -3,15 +3,16 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDiameterAnswer>() {
+class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
@@ -20,13 +21,11 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
 
-    private val diameterValue get() = binding.diameterInput.text?.toString().orEmpty().trim().toIntOrNull() ?: 0
+    private val diameterValue get() = binding.diameterInput.intOrNull ?: 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.addTextChangedListener(TextChangedWatcher {
-            checkIsFormComplete()
-        })
+        binding.diameterInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -38,10 +37,11 @@ class AddFireHydrantDiameterForm : AbstractQuestFormAnswerFragment<FireHydrantDi
             FireHydrantDiameter(diameterValue, MILLIMETER)
         }
 
-        if (isUnusualDiameter(diameter))
+        if (isUnusualDiameter(diameter)) {
             confirmUnusualInput { applyAnswer(diameter) }
-        else
+        } else {
             applyAnswer(diameter)
+        }
     }
 
     private fun isUnusualDiameter(diameter: FireHydrantDiameter): Boolean {

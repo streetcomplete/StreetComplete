@@ -15,8 +15,8 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewSideSelectPuzzleBinding
-import de.westnordost.streetcomplete.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.ktx.showTapHint
+import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.showTapHint
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -171,11 +171,15 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     fun showLeftSideTapHint() {
-        binding.leftSideContainer.showTapHint(300)
+        if (binding.leftSideContainer.isClickable) {
+            binding.leftSideContainer.showTapHint(300)
+        }
     }
 
     fun showRightSideTapHint() {
-        binding.rightSideContainer.showTapHint(1200)
+        if (binding.rightSideContainer.isClickable) {
+            binding.rightSideContainer.showTapHint(1200)
+        }
     }
 
     fun showOnlyRightSide() {
@@ -221,12 +225,12 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     private fun scaleToWidth(drawable: BitmapDrawable, width: Int, flip180Degrees: Boolean): BitmapDrawable {
         val m = Matrix()
-        val scale = width.toFloat() / drawable.intrinsicWidth
+        val scale = width.toFloat() / drawable.bitmap.width
         m.postScale(scale, scale)
         if (flip180Degrees) m.postRotate(180f)
         val bitmap = Bitmap.createBitmap(
             drawable.bitmap, 0, 0,
-            drawable.intrinsicWidth, drawable.intrinsicHeight, m, true
+            drawable.bitmap.width, drawable.bitmap.height, m, true
         )
         return BitmapDrawable(resources, bitmap)
     }

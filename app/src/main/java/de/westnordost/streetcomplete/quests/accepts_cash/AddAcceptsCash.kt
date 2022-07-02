@@ -1,19 +1,18 @@
 package de.westnordost.streetcomplete.quests.accepts_cash
 
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.arrayOfNotNull
-import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
-import java.util.concurrent.FutureTask
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddAcceptsCash(
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
-) : OsmFilterQuestType<Boolean>() {
+class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter: String get() {
         val amenities = listOf(
@@ -46,7 +45,7 @@ class AddAcceptsCash(
               or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
               or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
             )
-            and (name or brand) and !payment:cash and !payment:coins and !payment:notes
+            and !payment:cash and !payment:coins and !payment:notes
         """
     }
 
@@ -55,24 +54,17 @@ class AddAcceptsCash(
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-
     override val enabledInCountries = NoCountriesExcept("SE")
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasFeatureName(tags)) R.string.quest_accepts_cash_type_title
-        else                      R.string.quest_accepts_cash_title
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> =
-        arrayOfNotNull(tags["name"] ?: tags["brand"], featureName.value.toString())
-
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["payment:cash"] = answer.toYesNo()
     }
-
-    private fun hasFeatureName(tags: Map<String, String>): Boolean =
-        featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
 }

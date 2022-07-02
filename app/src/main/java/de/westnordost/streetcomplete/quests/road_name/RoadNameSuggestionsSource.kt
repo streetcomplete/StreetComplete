@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import de.westnordost.streetcomplete.data.meta.ALL_PATHS
-import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.util.distanceTo
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 
 class RoadNameSuggestionsSource(
     private val mapDataSource: MapDataWithEditsSource
@@ -18,7 +18,10 @@ class RoadNameSuggestionsSource(
     fun getNames(points: List<LatLon>, maxDistance: Double): List<MutableMap<String, String>> {
         if (points.isEmpty()) return emptyList()
 
-        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance)
+        /* add 50m radius for bbox query because roads will only be included in the result that have
+           at least one node in the bounding box around the tap position. This is a problem for long
+           straight roads (#3797). This doesn't completely solve this issue but mitigates it */
+        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 50)
         val mapData = mapDataSource.getMapDataWithGeometry(bbox)
         val roadsWithNames = mapData.ways.filter { it.isRoadWithName() }
 

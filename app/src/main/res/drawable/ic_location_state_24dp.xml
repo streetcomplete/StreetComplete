@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item app:is_navigation="true" android:drawable="@drawable/ic_location_navigation_24dp"/>
+    <item app:is_navigation="true" app:state_updating="true" android:drawable="@drawable/ic_location_navigation_24dp"/>
+    <item app:is_navigation="true" android:drawable="@drawable/ic_location_navigation_searching_24dp"/>
     <item app:state_updating="true" android:drawable="@drawable/ic_location_24dp"/>
     <item app:state_searching="true" android:drawable="@drawable/ic_location_searching_24dp"/>
     <item app:state_enabled="true" android:drawable="@drawable/ic_location_no_location_24dp"/>

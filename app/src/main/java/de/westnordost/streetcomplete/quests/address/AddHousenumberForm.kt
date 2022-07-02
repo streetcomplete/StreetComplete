@@ -9,17 +9,18 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isInvisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
-import de.westnordost.streetcomplete.ktx.showKeyboard
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
+class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
@@ -46,14 +47,14 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private var houseNumberInputTextColors: ColorStateList? = null
 
+    // because the hint is implemented as a hack: it is actually the text proper but colored in light-gray
     private val isShowingHouseNumberHint: Boolean get() = houseNumberInputTextColors != null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val prevMode = savedInstanceState?.getString(INTERFACE_MODE)?.let { InterfaceMode.valueOf(it) }
-        interfaceMode = prevMode ?: InterfaceMode.HOUSENUMBER
-        setLayoutBasedOnInterfaceMode()
+        setInterfaceMode(prevMode ?: InterfaceMode.HOUSENUMBER)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -61,32 +62,15 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         outState.putString(INTERFACE_MODE, interfaceMode.name)
     }
 
-    override fun onClickOk() {
-        createAnswer()?.let { answer ->
-            confirmHousenumber(answer.looksInvalid(countryInfo.additionalValidHousenumberRegex)) {
-                applyAnswer(answer)
-                if (answer.isRealHouseNumberAnswer) lastRealHousenumberAnswer = answer
-            }
-        }
-    }
-
-    override fun isFormComplete() = when (interfaceMode) {
-        InterfaceMode.HOUSENUMBER -> !isShowingHouseNumberHint
-        InterfaceMode.HOUSENAME -> createAnswer() != null
-        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> houseNameInput?.nonEmptyInput != null && houseNumberInput?.nonEmptyInput != null
-    }
-
     /* ------------------------------------- Other answers -------------------------------------- */
 
     private fun switchToHouseName() {
-        interfaceMode = InterfaceMode.HOUSENAME
-        setLayoutBasedOnInterfaceMode()
+        setInterfaceMode(InterfaceMode.HOUSENAME)
         houseNameInput?.requestFocus()
     }
 
     private fun switchToHouseNameAndHouseNumber() {
-        interfaceMode = InterfaceMode.HOUSENUMBER_AND_HOUSENAME
-        setLayoutBasedOnInterfaceMode()
+        setInterfaceMode(InterfaceMode.HOUSENUMBER_AND_HOUSENAME)
         houseNameInput?.requestFocus()
     }
 
@@ -99,7 +83,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun onNoHouseNumber() {
-        val buildingValue = osmElement!!.tags["building"]!!
+        val buildingValue = element.tags["building"]!!
         val buildingType = BuildingType.getByTag("building", buildingValue)
         if (buildingType != null) {
             showNoHousenumberDialog(buildingType)
@@ -116,26 +100,20 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
         AlertDialog.Builder(requireContext())
             .setView(dialogBinding.root)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(HouseNumberAndHouseName(null, null)) }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongBuildingType) }
             .show()
     }
 
     /* -------------------------- Set (different) housenumber layout  --------------------------- */
 
-    private fun setLayoutBasedOnInterfaceMode() {
-        setLayout(
-            when (interfaceMode) {
-                InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
-                InterfaceMode.HOUSENAME -> R.layout.quest_housename
-                InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
-            }
-        )
+    private fun setInterfaceMode(interfaceMode: InterfaceMode) {
+        this.interfaceMode = interfaceMode
+        val view = setContentView(interfaceMode.layout)
+        onContentViewCreated(view)
     }
 
-    private fun setLayout(layoutResourceId: Int) {
-        val view = setContentView(layoutResourceId)
-
+    private fun onContentViewCreated(view: View) {
         toggleKeyboardButton = view.findViewById(R.id.toggleKeyboardButton)
         houseNumberInput = view.findViewById(R.id.houseNumberInput)
         houseNameInput = view.findViewById(R.id.houseNameInput)
@@ -155,25 +133,23 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         // must be after initKeyboardButton because it re-sets the onFocusListener
         showHouseNumberHint()
 
-        val onChanged = TextChangedWatcher { checkIsFormComplete() }
-        houseNumberInput?.addTextChangedListener(onChanged)
-        houseNameInput?.addTextChangedListener(onChanged)
-        conscriptionNumberInput?.addTextChangedListener(onChanged)
-        streetNumberInput?.addTextChangedListener(onChanged)
-        blockNumberInput?.addTextChangedListener(onChanged)
+        listOfNotNull(
+            houseNumberInput, houseNameInput, conscriptionNumberInput,
+            streetNumberInput, blockNumberInput
+        ).forEach { it.doAfterTextChanged { checkIsFormComplete() } }
+
+        checkIsFormComplete()
     }
 
     private fun prefillBlockNumber() {
         /* the block number likely does not change from one input to the other, so let's prefill it
            with the last selected value */
-        val input = blockNumberInput ?: return
-        val blockNumberAnswer = lastRealHousenumberAnswer as? HouseAndBlockNumber ?: return
-        input.setText(blockNumberAnswer.blockNumber)
+        lastBlockNumber?.let { blockNumberInput?.setText(it) }
     }
 
     private fun showHouseNumberHint() {
         val input = houseNumberInput ?: return
-        val prev = lastRealHousenumberAnswer?.realHouseNumber ?: return
+        val prev = lastHouseNumber ?: return
 
         /* The Auto fit layout does not work with hints, so we workaround this by setting the "real"
         *  text instead and make it look like it is a hint. This little hack is much less effort
@@ -182,11 +158,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         houseNumberInputTextColors = input.textColors
         input.setTextColor(input.hintTextColors)
         input.setText(prev)
-        input.addTextChangedListener(TextChangedWatcher {
+        input.doAfterTextChanged {
             val colors = houseNumberInputTextColors
             if (colors != null) input.setTextColor(colors)
             houseNumberInputTextColors = null
-        })
+        }
         input.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             updateKeyboardButtonVisibility()
             if (hasFocus) input.showKeyboard()
@@ -201,12 +177,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private fun addToHouseNumberInput(add: Int) {
         val input = houseNumberInput ?: return
-        val prev = if (input.text.isEmpty()) {
-            lastRealHousenumberAnswer?.realHouseNumber
-        } else {
-            input.text.toString()
-        } ?: return
-        val newHouseNumber = prev.addToHouseNumber(add) ?: return
+        val prev = input.text.toString().ifBlank { lastHouseNumber }
+        val newHouseNumber = prev?.addToHouseNumber(add) ?: return
         input.setText(newHouseNumber)
         input.setSelection(newHouseNumber.length)
     }
@@ -250,6 +222,27 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         )
     }
 
+    /* ----------------------------------- Commit answer ---------------------------------------- */
+
+    override fun onClickOk() {
+        val answer = createAnswer()
+        val isUnusual = answer.number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
+        confirmHousenumber(isUnusual) {
+            applyAnswer(answer)
+            (answer.number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it }
+            answer.number?.houseNumber?.let { lastHouseNumber = it }
+        }
+    }
+
+    override fun isFormComplete(): Boolean {
+        val answer = createAnswer()
+        return when (interfaceMode) {
+            InterfaceMode.HOUSENUMBER -> answer.number != null
+            InterfaceMode.HOUSENAME -> answer.name != null
+            InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> answer.name != null && answer.number != null
+        }
+    }
+
     private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {
         if (isUnusual) {
             AlertDialog.Builder(requireContext())
@@ -263,54 +256,47 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    override fun isRejectingClose(): Boolean {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
+    override fun isRejectingClose(): Boolean =
+        houseNameInput?.nonBlankTextOrNull != null
+        || houseNumberInput?.nonBlankTextOrNull?.takeIf { !isShowingHouseNumberHint } != null
+        || conscriptionNumberInput?.nonBlankTextOrNull != null
+        || streetNumberInput?.nonBlankTextOrNull != null
+        || blockNumberInput?.nonBlankTextOrNull != null
 
-        return listOf(houseName, houseNumber, conscriptionNumber, streetNumber, blockNumber).any { it != null }
-    }
+    private fun createAnswer(): HouseNumberAndHouseName {
+        val houseName = houseNameInput?.nonBlankTextOrNull
+        val houseNumber = houseNumberInput?.nonBlankTextOrNull?.takeIf { !isShowingHouseNumberHint }
+        val conscriptionNumber = conscriptionNumberInput?.nonBlankTextOrNull
+        val streetNumber = streetNumberInput?.nonBlankTextOrNull
+        val blockNumber = blockNumberInput?.nonBlankTextOrNull
 
-    private fun createAnswer(): HousenumberAnswer? {
-        val houseName = houseNameInput?.nonEmptyInput
-        val houseNumber = houseNumberInput?.nonEmptyInput
-        val conscriptionNumber = conscriptionNumberInput?.nonEmptyInput
-        val streetNumber = streetNumberInput?.nonEmptyInput
-        val blockNumber = blockNumberInput?.nonEmptyInput
-
-        return when {
-            houseName != null && houseNumber != null   -> HouseNameAndHouseNumber(houseName, houseNumber)
-            houseName != null                          -> HouseName(houseName)
+        val addressNumber = when {
             conscriptionNumber != null                 -> ConscriptionNumber(conscriptionNumber, streetNumber) // streetNumber is optional
             blockNumber != null && houseNumber != null -> HouseAndBlockNumber(houseNumber, blockNumber)
             houseNumber != null                        -> HouseNumber(houseNumber)
             else                                       -> null
         }
+        return HouseNumberAndHouseName(addressNumber, houseName)
     }
 
-    private val EditText.nonEmptyInput: String? get() {
-        val input = text.toString().trim()
-        return if (input.isNotEmpty()) input else null
+    private val InterfaceMode.layout get() = when (this) {
+        InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+        InterfaceMode.HOUSENAME -> R.layout.quest_housename
+        InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
     }
 
     companion object {
-        private var lastRealHousenumberAnswer: HousenumberAnswer? = null
+        private var lastBlockNumber: String? = null
+        private var lastHouseNumber: String? = null
 
         private const val INTERFACE_MODE = "interface_mode"
     }
 }
 
-private val HousenumberAnswer.isRealHouseNumberAnswer: Boolean get() = when (this) {
-    is HouseNumber -> true
-    is HouseAndBlockNumber -> true
-    else -> false
-}
-
-private val HousenumberAnswer.realHouseNumber: String? get() = when (this) {
-    is HouseNumber -> number
+private val AddressNumber.houseNumber: String? get() = when (this) {
+    is HouseNumber -> houseNumber
     is HouseAndBlockNumber -> houseNumber
+    // not conscription number because there is no logical succession
     else -> null
 }
 

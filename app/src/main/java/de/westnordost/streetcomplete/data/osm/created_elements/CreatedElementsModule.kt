@@ -4,7 +4,7 @@ import org.koin.dsl.module
 
 val createdElementsModule = module {
     factory { CreatedElementsDao(get()) }
-    factory<CreatedElementsSource> { get<CreatedElementsController>() }
 
+    single<CreatedElementsSource> { get<CreatedElementsController>() }
     single { CreatedElementsController(get()) }
 }

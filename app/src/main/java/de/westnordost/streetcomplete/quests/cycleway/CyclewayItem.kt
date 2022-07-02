@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
@@ -15,19 +18,61 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.view.DrawableImage
+import de.westnordost.streetcomplete.view.DrawableWrapper
+import de.westnordost.streetcomplete.view.Image
+import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.controller.StreetSideItem
+import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun Cycleway.asItem(isLeftHandTraffic: Boolean) =
-    Item(this, getDialogIconResId(isLeftHandTraffic), getTitleResId())
+fun Cycleway.asDialogItem(context: Context, isLeftHandTraffic: Boolean, isContraflowInOneway: Boolean) =
+    Item2(
+        this,
+        getDialogIcon(context, isLeftHandTraffic),
+        ResText(getTitleResId(isContraflowInOneway))
+    )
 
-fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
+fun Cycleway.asStreetSideItem(isLeftHandTraffic: Boolean, isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int) =
+    StreetSideItem(
+        this,
+        getIconResId(isLeftHandTraffic),
+        getTitleResId(isContraflowInOneway),
+        getDialogIconResId(isLeftHandTraffic),
+        getFloatingIconResId(isContraflowInOneway, noEntrySignDrawableResId)
+    )
+
+private fun Cycleway.getDialogIcon(context: Context, isLeftHandTraffic: Boolean): Image {
+    val id = getDialogIconResId(isLeftHandTraffic)
+    return if (isLeftHandTraffic) {
+        DrawableImage(Rotate180Degrees(context.getDrawable(id)!!))
+    } else {
+        ResImage(id)
+    }
+}
+
+private fun Cycleway.getDialogIconResId(isLeftHandTraffic: Boolean): Int =
     when (this) {
         NONE -> R.drawable.ic_cycleway_none_in_selection
         SEPARATE -> R.drawable.ic_cycleway_separate
         else -> getIconResId(isLeftHandTraffic)
     }
 
-fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
+private class Rotate180Degrees(drawable: Drawable) : DrawableWrapper(drawable) {
+    override fun draw(canvas: Canvas) {
+        canvas.scale(-1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
+        drawable.bounds = bounds
+        drawable.draw(canvas)
+    }
+}
+
+private fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int): Int? = when (this) {
+    NONE -> if (isContraflowInOneway) noEntrySignDrawableResId else null
+    SEPARATE -> R.drawable.ic_sidewalk_floating_separate
+    else -> null
+}
+
+private fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
 
 private fun Cycleway.getRightHandTrafficIconResId(): Int = when (this) {
@@ -64,13 +109,16 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when (this) {
     else -> 0
 }
 
-fun Cycleway.getTitleResId(): Int = when (this) {
+private fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (this) {
     UNSPECIFIED_LANE -> R.string.quest_cycleway_value_lane
     EXCLUSIVE_LANE -> R.string.quest_cycleway_value_lane
     ADVISORY_LANE -> R.string.quest_cycleway_value_lane_soft
     SUGGESTION_LANE -> R.string.quest_cycleway_value_suggestion_lane
     TRACK -> R.string.quest_cycleway_value_track
-    NONE -> R.string.quest_cycleway_value_none
+    NONE -> {
+        if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
+        else R.string.quest_cycleway_value_none
+    }
     NONE_NO_ONEWAY -> R.string.quest_cycleway_value_none_but_no_oneway
     PICTOGRAMS -> R.string.quest_cycleway_value_shared
     SIDEWALK_EXPLICIT -> R.string.quest_cycleway_value_sidewalk

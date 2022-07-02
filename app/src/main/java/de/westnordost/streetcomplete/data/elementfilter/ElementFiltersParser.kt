@@ -26,8 +26,8 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLi
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
-import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.toCheckDate
 import java.text.ParseException
 import java.util.EnumSet
 import kotlin.math.min
@@ -169,8 +169,9 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
             builder.addOr()
         } else if (nextIsAndAdvance(AND)) {
             builder.addAnd()
-        } else
+        } else {
             throw ParseException("Expected end of string, '$AND' or '$OR'", cursorPos)
+        }
     } while (true)
 
     try {
@@ -381,8 +382,9 @@ private fun StringWithCursor.expectAnyNumberOfSpaces(): Int {
 }
 
 private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
-    if (!nextIsAndAdvance(' '))
+    if (!nextIsAndAdvance(' ')) {
         throw ParseException("Expected a whitespace", cursorPos)
+    }
     return expectAnyNumberOfSpaces() + 1
 }
 
@@ -414,8 +416,9 @@ private fun StringWithCursor.findQuotationLength(): Int? {
     for (quot in QUOTATION_MARKS) {
         if (nextIs(quot)) {
             val length = findNext(quot, 1)
-            if (isAtEnd(length))
+            if (isAtEnd(length)) {
                 throw ParseException("Did not close quotation marks", cursorPos - 1)
+            }
             // +1 because we want to include the closing quotation mark
             return length + 1
         }

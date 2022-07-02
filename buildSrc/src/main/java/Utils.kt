@@ -1,26 +1,34 @@
+import kotlinx.serialization.Serializable
+import java.net.URL
 import java.util.Locale
 
-// Java (and thus also Android) uses some old iso (language) codes. E.g. id -> in etc.
-// so the localized files also need to use the old iso codes
-fun bcp47LanguageTagToJavaLanguageTag(bcp47: String): String {
-    val locale = Locale.forLanguageTag(bcp47)
-    var result = locale.language
-    if (locale.script.isNotEmpty()) result += "-" + locale.script
-    if (locale.country.isNotEmpty()) result += "-" + locale.country
-    return result
-}
-
-fun javaLanguageTagToAndroidResCodes(languageTag: String): List<String> {
-    if (languageTag == "sr-Cyrl") return listOf("sr")
-    val locale = Locale.forLanguageTag(languageTag)
-    // scripts not supported by Android resource system
-    if (locale.script.isNotEmpty()) return listOf()
-
-    if (languageTag == "nb")    return listOf("no", "nb")
-    if (languageTag == "zh-CN") return listOf("zh")
-    val withCountry = Regex("([a-z]{2,3})-([A-Z]{2})").matchEntire(languageTag)
-    if (withCountry != null) {
-        return listOf(withCountry.groupValues[1] + "-r" + withCountry.groupValues[2])
+fun Locale.toAndroidResCodes(): List<String> {
+    // scripts are not supported by Android resource system
+    if (script.isNotEmpty()) return listOf()
+    // Android (sometimes?) uses the old ISO 639 codes for the resource system
+    val languages = when (language) {
+        "nb", "no" -> listOf("no", "nb") // Norwegian / Norwegian Bokmal
+        "id", "in" -> listOf("id", "in") // Indonesian
+        "he", "iw" -> listOf("he", "iw") // Hebrew
+        "yi", "ji" -> listOf("yi", "ji") // Yiddish
+        else -> listOf(language)
     }
-    return listOf(languageTag)
+    val countryStr = if (country.isNotEmpty()) "-r$country" else ""
+    return languages.map { it + countryStr }
 }
+
+fun URL.readText() = openConnection().getInputStream().bufferedReader().readText()
+
+@Serializable
+data class GithubDirectoryListingItem(
+    /** File or directory name */
+    val name: String,
+    /** Path including file or directory name, relative to repository root */
+    val path: String,
+    /** Whether it is a file or a directory */
+    val type: String,
+    /** URL to the "contents" API endpoint for this item */
+    val url: String,
+    /** URL for the raw file contents, null for directories */
+    val download_url: String?
+)

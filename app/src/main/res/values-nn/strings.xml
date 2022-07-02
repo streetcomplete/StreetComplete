@@ -2,8 +2,9 @@
 <resources>
     <string name="action_settings">"Innstillingar"</string>
     <string name="oauth_communication_error">"Fekk ikkje kontakt med godkjenningstenaren"</string>
-    <string name="retry">"Prøv på nytt"</string>
     <string name="oauth_failed_permissions">"Mislukka godkjenning: Du må godkjenna alle dei oppgjevne løyva"</string>
+
+    <!-- Settings screen -->
     <string name="pref_category_communication">"Kommunikasjon"</string>
     <string name="pref_category_display">"Skjerm"</string>
     <string name="pref_tilecache_size_summary">"%d MiB"</string>
@@ -20,25 +21,20 @@
     <string name="quest_generic_confirmation_yes">"Ja, eg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Eg skal sjekka"</string>
     <string name="quest_leave_new_note_title">"Vil du heller leggja att ein merknad?"</string>
-    <string name="quest_leave_new_note_description">"Du kan leggja att ein offentleg merknad på denne staden. Andre kartleggjarar kan så kommentera på denne og forhåpentlegvis løysa problemet. Du kan òg gøyma oppdraget for deg sjølv."</string>
-    <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"Nei, berre gøym"</string>
+    <string name="quest_leave_new_note_description">"Du kan leggja att ein offentleg merknad på denne staden, så andre kart­leggjarar forhåpentlegvis kan løysa problemet. Du kan òg gøyma oppdraget for deg sjølv."</string>
+    <string name="quest_leave_new_note_yes">"Legg att ein merknad"</string>
+    <string name="quest_leave_new_note_no">"Gøym"</string>
     <string name="quest_streetName_title">"Kva heiter denne vegen?"</string>
     <string name="quest_streetName_description">"som skriven på gateskiltet, med forkortingar skrivne heilt ut:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Nokre gongar står gateskiltet berre ved starten eller enden av gata. Merk òg at det gjerne ikkje finst gateskilt for sidegater som høyrer inn under ei hovudgate. Vanlegvis har alle gater med hus eit namn."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Viss du kan skriva gatenamnet utan forkortingar, bør du gjera dette. Mange vanlege forkortingar vert automatisk utvida, men det gjeld ikkje alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Inga forkorting"</string>
-    <string name="quest_openingHours_name_title">"Når er %s open?"</string>
     <string name="quest_openingHours_start_time">"opningstid"</string>
     <string name="quest_openingHours_end_time">"stengjetid"</string>
     <string name="quest_openingHours_add_months">"Legg til månadar"</string>
     <string name="quest_openingHours_add_hours">"Legg til timar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Legg til vekedagar"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Vel månadar"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Vel vekedagar"</string>
     <string name="quest_openingHours_24_7_confirmation">"Med andre ord, er det ope heile døgnet, kvar dag?"</string>
     <string name="quest_noteDiscussion_title">"Kan du bidra noko til denne merknaden?"</string>
@@ -48,6 +44,8 @@
     <string name="confirmation_discard_positive">"Forkast"</string>
     <string name="action_download">"Søk etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
+
+    <!-- when the user left the answer form empty -->
     <string name="no_changes">"Du gav ingen svar"</string>
     <string name="close">"lukk"</string>
     <string name="download_error">"Feil ved søk etter oppdrag"</string>
@@ -55,24 +53,22 @@
     <string name="download_area_too_big">"Zoom lenger inn"</string>
     <string name="confirmation_cancel_prev_download_title">"Vil du avbryta søket som pågår og heller søkja her?"</string>
     <string name="turn_on_location_request">"Posisjonsinnhenting er slått av. Ønskjer du å endra innstillingane og slå det på no?"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Programmet treng posisjonen din for å kunna søkja opp oppdrag i nærleiken."</string>
+    <string name="no_location_permission_warning">"Programmet treng løyve til å lesa posisjonen din for å kunna visa kor du er på kartet og til å søkja opp oppdrag i nærleiken."</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick og andre bidragsytarar"</string>
-    <string name="about_title_repository">"Kjeldekode"</string>
+    <string name="about_title_repository">"Prosjekt-heimeside"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Meld frå om feil"</string>
     <string name="about_title_feedback">"Gje tilbakemelding"</string>
     <string name="about_title_license">"Lisensvilkår"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
+
+    <!-- Error messages and crash report -->
     <string name="offline">"Du er fråkopla"</string>
     <string name="confirmation_authorize_now">"Du må gje programmet løyve til å bruka OpenStreetMap-kontoen din for å kunna senda inn endringane dine. Vil du gje løyve no?"</string>
     <string name="not_authorized">"Ikkje godkjend"</string>
     <string name="version_banned_message">"Denne versjonen av StreetComplete er for gammal. Du må oppdatera til nyaste versjon."</string>
-    <string name="no_gps_no_quests">"Du må slå på posisjonsinnhenting for å kunna søkja etter oppdrag i nærleiken"</string>
+    <string name="no_gps_no_quests">"Du må slå på posisjons­innhenting for å kunna søkja etter oppdrag i nærleiken."</string>
     <string name="later">"Seinare"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Han koplar berre saman to vegar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noko anna (legg att ein merknad)"</string>
@@ -87,30 +83,22 @@
     <string name="quest_openingHours_comment_title">"Skildra opningstidene"</string>
     <string name="quest_openingHours_comment_description">"Ver kort og konsis. Bruk helst ordlyden frå skiltet, for eksempel «etter avtale». Merk at mangel på skilt med opningstider ikkje nødvendigvis tyder at det ikkje finst faste opningstider."</string>
     <string name="quest_roofShape_title">"Kva grunnform har taket på denne bygningen?"</string>
+
+    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Vel éi:"</string>
+
+    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Vel fleire …"</string>
 
     <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"Det har fleire ulike former"</string>
+
+    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen.
-&lt;/p&gt;
-&lt;p&gt;
-Det er ikkje mogleg å redigera OpenStreetMap anonymt, så alle endringane dine vert gjorde med OSM-brukarkontoen din. Dette medfører at tidspunktet, innhaldet og (implisitt) staden du var på, vert synleg for alle på OpenStreetMap-nettstaden og vert knytte til brukarkontoen din.
-&lt;/p&gt;
-
-&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;
-&lt;p&gt;
-Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp oppdrag og visa (og såleis lasta ned) kartet der du er.&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Som nemnt kommuniserer appen direkte med OSM-infrastrukturen.&lt;br/&gt;Men før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min on han er utestengd for å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil kan komma til å øydeleggja OSM-data.&lt;br/&gt;"</string>
+    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap (OSM).&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen.&lt;/p&gt;&lt;p&gt;Det er ikkje mogleg å redigera OpenStreetMap anonymt. Alle endringane du gjer (og informasjon om tidspunkt og posisjon), vert knytte til OSM-brukarkontoen din og vert synlege for alle på openstreetmap.org. Sidan du berre skal bruka StreetComplete til å registrera data frå staden der du er, vil dette òg indirekte visa når og kor du har brukt appen.&lt;/p&gt;&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;&lt;p&gt;Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp og lasta ned oppdrag rundt deg, og til å visa kartet der du er.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min at han ikkje er utestengd frå å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil, kan lasta opp ugyldige data til OSM.&lt;br/&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Berre på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
@@ -133,27 +121,29 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_surface_value_wood">"Tredekke"</string>
     <string name="quest_sidewalk_title">"Har denne gata fortau?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kor er denne gata?"</string>
-    <string name="quest_serviceType_title">"Kva slags småveg er dette?"</string>
     <string name="quest_oneway_title">"Er dette ei einvegskøyrd gate?"</string>
     <string name="quest_address_title">"Kva er husnummeret til denne bygningen?"</string>
     <string name="store_listing_short_description">"Kartleggingsapp for OpenStreetMap"</string>
-    <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete! Denne appen leitar opp ufullstendige kart­opplysningar i nærleiken av deg og viser desse på kartet. Ved å svara på enkle spørsmål om dei, vil du forbetra kart­grunnlaget der du er. Informasjonen du legg til, vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
+
+    <!-- Fuzzy -->
+    <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete! Denne appen leitar opp manglande kart­opplysningar i nærleiken av deg og viser desse som «oppdrag» på kartet. Du kan løysa oppdraga, og såleis forbetra kart­grunnlaget, ved å gå til den tilhøyrande staden og svara på eit enkelt spørsmål i appen. Informasjonen frå svara dine vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
     <string name="quest_name_answer_noName">"Han har ikkje noko namn …"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Er du sikker på at han manglar namn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, han manglar namn"</string>
     <string name="quest_openingHours_add_times">"Legg til opningstider"</string>
-    <string name="crash_message">"Vil du senda feilrapporten til utviklaren?"</string>
+    <string name="crash_message">"Vil du senda ein feilrapport til utviklaren?"</string>
     <string name="crash_title">"Å, nei! StreetComplete-appen krasja førre gong du brukte han!"</string>
     <string name="crash_compose_email">"Skriv e-post"</string>
     <string name="no_email_client">"Du har ikkje noko e-postprogram installert."</string>
     <string name="pref_title_keep_screen_on">"Hald skjermen på"</string>
     <string name="download_server_error">"Tilkoplingsfeil ved søk etter oppdrag. Prøv på nytt seinare."</string>
     <string name="upload_server_error">"Tilkoplingsfeil ved opplasting av svar. Prøv på nytt seinare."</string>
+
+    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
     <string name="quest_generic_hasFeature_no">"Nei"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"Er det eit busskur på dette stoppet?"</string>
     <string name="quest_bikeParkingCapacity_title">"Kor mange syklar kan parkera her?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Dette husnummeret ser svært uvanleg ut."</string>
     <string name="quest_sport_title">"Kva idrett driv ein med her?"</string>
@@ -184,23 +174,19 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_sport_ice_hockey">"Ishockey"</string>
     <string name="quest_sport_netball">"Nettball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
+
+    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"Vel:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Er denne bana laga for nett desse typane idrett (og har tilhøyrande oppmerking og utstyr) eller som ei generell idrettsbane for mange typar idrett?"</string>
     <string name="quest_manySports_confirmation_specific">"Nett desse typane"</string>
     <string name="quest_manySports_confirmation_generic">"Generell idrettsbane"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde mange idrettsgreiner"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"Er det eit busskur på stoppet %s?"</string>
     <string name="quest_toiletsFee_title">"Kostar det noko å bruka dette toalettet?"</string>
-    <string name="quest_tactilePaving_title_bus">"Har busstoppet leielinjer for blinde i asfalten?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Har fotgjengarovergangen leielinjer for blinde på begge sider?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har sjekka dette på staden?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Har busstoppet %s leielinjer for blinde på fortauet?"</string>
     <string name="quest_source_dialog_note">"Legg berre inn informasjon som du sjølv har observert på staden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er det tak over denne sykkelparkeringa?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikkje fleire gongar i denne økta"</string>
-    <string name="quest_streetSurface_name_title">"Kva vegdekke har vegen %s her?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Fartsgrensa verkar usannsynleg."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata? Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
@@ -215,34 +201,18 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Gæliske leikar"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Er %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvis"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Merk at dei fleste sykkelstativa kan brukast på begge sider, med éin sykkel på kvar side."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bikeParkingCapacity_hint">"Merk at mange sykkelstativ kan brukast med éin sykkel på kvar side."</string>
     <string name="quest_sport_roller_skating">"Rulleskeiser"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Er denne busstasjonen tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Er denne T-banenedgangen tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Er denne jernbanestasjonen tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_location_title">"Er denne staden tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstasjonen %s tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er T-banenedgangen %s tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Er jernbanestasjonen %s tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Er %s tilgjengeleg med rullestol?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen og at inne er dei fleste romma tilgjengelege med rullestol."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet %s?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Finst det stellebord ved dette toalettet?"</string>
-    <string name="quest_baby_changing_table_title">"Finst det stellebord ved %s?"</string>
     <string name="quest_recycling_type_title">"Kva slags returpunkt er dette?"</string>
     <string name="recycling_centre">"Gjenvinningsstasjon"</string>
     <string name="overground_recycling_container">"Konteinar"</string>
     <string name="underground_recycling_container">"Nedkastpunkt"</string>
-    <string name="quest_generic_error_a_field_empty">"Du lét eit felt stå tomt"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Kan ikkje skriva teikna på skiltet"</string>
     <string name="quest_streetName_cantType_title">"Manglar tastaturoppsett?"</string>
     <string name="quest_streetName_cantType_open_settings">"Opna innstillingar"</string>
@@ -257,7 +227,11 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="credits_contributors">"Sjå &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;fullstendig oversikt på GitHub&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Omsetjingar"</string>
     <string name="credits_contributors_title">"Kodebidrag"</string>
+
+    <!-- Credits screen -->
     <string name="credits_author_title">"Opphavsperson og vedlikehaldar"</string>
+
+    <!-- As in "Person A, Person B, Person C and more..." -->
     <string name="credits_and_more">"og fleire andre …"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er eit gatetun"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Finst det altså eit slikt skilt?"</string>
@@ -310,16 +284,9 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Er denne strekninga lyssett?"</string>
-    <string name="quest_way_lit_named_title">"Er %s lyssett her?"</string>
-    <string name="quest_way_lit_road_title">"Er denne strekninga lyssett?"</string>
-    <string name="quest_way_lit_automatic">"Lyset brukar rørslesensor"</string>
-    <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_unmarked">"Overgang utan vegmarkering"</string>
+    <string name="quest_crossing_type_unmarked">"Utan vegmarkering"</string>
     <string name="action_undo">"Angra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomatar"</string>
@@ -331,15 +298,14 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_parkingType_surface">"Parkeringsplass"</string>
     <string name="quest_parkingType_underground">"Underjordisk parkering"</string>
     <string name="quest_parkingType_multiStorage">"Parkeringshus"</string>
-    <string name="quest_toiletAvailability_name_title">"Finst det toalett på %s?"</string>
 
-    <!-- Fuzzy -->
+    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">"Kva er denne lysmasta laga av?"</string>
     <string name="quest_powerPolesMaterial_wood">"Tre"</string>
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Berre ei tilrådd fartsgrense …"</string>
-    <string name="quest_address_answer_house_name">"Ikkje eit husnummer men eit husnamn …"</string>
+    <string name="quest_address_answer_house_name">"Ikkje eit husnummer, men eit husnamn …"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"taketasjar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
@@ -349,14 +315,22 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="about_category_feedback">"Tilbakemelding"</string>
     <string name="quest_leave_new_note_photo">"Legg ved bilete"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ønskjer du å sletta dette biletet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"sykkelveg"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"sykkelfelt"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>
     <string name="quest_cycleway_value_shared">"sykkelfelt delt med andre køyretøy"</string>
     <string name="quest_cycleway_value_bus_lane">"sykkel- og kollektivfelt"</string>
     <string name="quest_cycleway_value_sidewalk">"gang- og sykkelveg"</string>
     <string name="quest_leave_new_note_create_image_error">"Klarte ikkje oppretta biletfil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"sykkelfelt – begge retningar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"sykkelveg – begge retningar"</string>
     <string name="pref_category_advanced">"Avansert"</string>
     <string name="quest_enabled">"Tilby"</string>
@@ -364,15 +338,11 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="action_reset">"Nullstill"</string>
     <string name="undo_confirm_positive">"Angra"</string>
     <string name="undo_confirm_negative">"Avbryt"</string>
-    <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarmat på menyen?"</string>
-    <string name="quest_dietType_vegan_name_title">"Har %s veganmat på menyen?"</string>
-    <string name="quest_hasFeature_only">"Berre"</string>
+    <string name="quest_hasFeature_only">"Ja, berre det"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, fisk, fjørfe, mjølk, egg, …)."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, fisk, fjørfe, mjølk, egg, honning, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneheld ikkje kjøt, fisk eller fjørfe."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Svar berre ja dersom det finst eit fullverdig tilbod for denne dietten – ikkje for eksempel berre forrettar."</string>
     <string name="quest_carWashType_title">"Kva type bilvask kan ein få her?"</string>
     <string name="quest_carWashType_automated">"Automatisk"</string>
@@ -381,7 +351,11 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="enable_quest_confirmation_title">"Vil du visa denne oppdragstypen?"</string>
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
     <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
+
+    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du må skildra kva som står på skiltet. Viss det ikkje finst noko skilt, kan du prøva å spørja om opningstidene inne."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men syklistar kan bruka vegen i begge retningar"</string>
@@ -389,27 +363,22 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_streetName_answer_noProperStreet_service2">"Det er ein innkøyrsel, eit parkeringsfelt e.l."</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Det er ein traktor- eller skogsveg"</string>
     <string name="quest_streetName_answer_noName_noname">"Ingen av grunnane – han manglar rett og slett namn"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Er dette toalettet tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Er toalettet %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt. Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
-    <string name="create_new_note_unprecise">"Zoom lenger inn for å leggja til merknad"</string>
-    <string name="create_new_note_description">"Du kan leggja att ein merknad til andre kartleggjarar om eit problem her. Flytt på plasseringa av merknaden ved å flytta kartet:"</string>
+    <string name="create_new_note_unprecise">"Zoom lenger inn for å leggja til ein merknad"</string>
+    <string name="create_new_note_description">"Du kan leggja att ein merknad til andre kart­leggjarar om eit problem her. Flytt på plasseringa av merknaden ved å flytta kartet:"</string>
+
+    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Ser vanlegvis slik ut:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_cycleway_title2">"Finst det ein sykkelveg her? Kva type?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_title2">"Finst det eit sykkelfelt eller ein sykkelveg her? Kva type?"</string>
     <string name="quest_bridge_structure_title">"Kva struktur har denne brua?"</string>
-    <string name="quest_internet_access_name_title">"Kva slags Internett-tilgang tilbyr %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Kabla tilgang (LAN)"</string>
     <string name="quest_internet_access_terminal">"Datamaskin(er) med Internett-tilgang"</string>
     <string name="quest_internet_access_no">"Ingen Internett-tilgang"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_name_title">"Er det eit trikkeskur på stoppet %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_tram_title">"Er det eit trikkeskur på dette stoppet?"</string>
     <string name="quest_bench_backrest_title">"Har denne benken ryggstø?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er eit piknikbord"</string>
     <string name="quest_religion_for_place_of_worship_title">"Kva religion vert praktisert her?"</string>
@@ -428,20 +397,19 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_religion_chinese_folk">"Kinesisk folkereligion"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Kva religion er representert ved denne heilagdommen?"</string>
     <string name="quest_parking_fee_title">"Kostar det noko å parkera her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"sykkelfelt (stipla linje)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Innstøypt elvestein"</string>
-    <string name="quest_streetName_pedestrian_title">"Kva heiter denne gågata?"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
-    <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen %s her?"</string>
     <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett …"</string>
     <string name="quest_fee_add_times">"Legg til tider"</string>
-    <string name="quest_fee_only_at_hours">"Ja, men berre …"</string>
-    <string name="quest_fee_not_at_hours">"Ja, men ikkje …"</string>
-    <string name="quest_fee_hours_title">"på desse tidene:"</string>
-    <string name="quest_busStopName_title">"Kva heiter dette busstoppet?"</string>
-    <string name="quest_tramStopName_title">"Kva heiter dette trikkestoppet?"</string>
     <string name="quest_housenumber_multiple_numbers">"Det har fleire husnummer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Du kan skriva inn husnummera skilde med komma eller som intervall skilde med binde-/tankestrek: «1,3» eller «2–6»."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Bøylestativ"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Hjullås"</string>
     <string name="quest_bicycle_parking_type_shed">"Skur"</string>
@@ -458,14 +426,12 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_construction_generic_title">"Er denne vegen no ferdigstilt?"</string>
     <string name="quest_construction_building_title">"Er denne bygningen no ferdigstilt?"</string>
     <string name="questList_disabled_in_country">"Vert aldri vist i %s"</string>
-    <string name="quest_toiletAvailability_rest_area_title">"Finst det toalett på denne rasteplassen?"</string>
-    <string name="quest_pathSurface_title_steps">"Kva materiale er desse trappene laga av?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Kva vegdekke har denne ridevegen her?"</string>
-    <string name="quest_pathSurface_title">"Kva vegdekke har denne stien her?"</string>
     <string name="quest_select_hint_most_specific">"Vel det mest spesifikke som passar:"</string>
+
+    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">"Er du sikker på at du ikkje kan fastsetja det meir presist?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For nokre oppdrag vert tilleggsdata frå tredjepartar lasta ned. Søket etter oppdrag om einvegskøyrde gater brukar eit API på westnordost.de for å finna kandidatar for einvegskøyring.&lt;/p&gt;"</string>
-    <string name="quest_generic_hasFeature_no_leave_note">"Ingen (legg att ein merknad)"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nei (legg att ein merknad)"</string>
     <string name="pref_quests_reset">"Vil du nullstilla både type oppdrag og rekkjefølgje?"</string>
     <string name="quest_generic_item_invalid_value">"Vel ein meir spesifikk verdi."</string>
     <string name="quest_buildingType_answer_multiple_types">"Han har fleire bruksområde"</string>
@@ -488,6 +454,8 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingType_commercial">"Forretningsbygg"</string>
     <string name="quest_buildingType_commercial_generic_description">"bygning der folk arbeidar, handlar eller driv annan næringsverksemd"</string>
     <string name="quest_buildingType_industrial">"Industribygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"for eksempel ein fabrikk, ein maskinhall eller ein verkstad"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butikk(ar)"</string>
@@ -499,7 +467,7 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingType_chapel">"Kapell"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
     <string name="quest_buildingType_mosque">"Moské"</string>
-    <string name="quest_buildingType_temple">"Tempelbygning"</string>
+    <string name="quest_buildingType_temple">"Tempel"</string>
     <string name="quest_buildingType_pagoda">"Pagode"</string>
     <string name="quest_buildingType_synagogue">"Synagoge"</string>
     <string name="quest_buildingType_civic">"Samfunnsbygning"</string>
@@ -540,28 +508,27 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingType_shrine">"Heilagstad"</string>
     <string name="quest_maxspeed_title_short2">"Kva er fartsgrensa for denne gata?"</string>
     <string name="quest_maxspeed_answer_sign">"Eit skilt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"Er innanfor ei (sakte)sone"</string>
     <string name="quest_maxspeed_answer_noSign2">"Manglar skilt, så standard fartsgrense gjeld"</string>
     <string name="quest_openingHours_no_sign">"Manglar skilt med opningstider"</string>
-    <string name="quest_maxspeed_name_title2">"Kva er fartsgrensa for %s her?"</string>
     <string name="quest_buildingType_sports_centre">"Idrettshall"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Kva fastset fartsgrensa?"</string>
-    <string name="quest_playground_access_title">"Er denne leikeplassen offentleg tilgjengeleg?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Korleis er gang- og sykkelvegen utforma her?"</string>
     <string name="dialog_tutorial_upload">"For å lasta opp endringane manuelt kan du bruka verktøylinje­knappen som ser slik ut."</string>
     <string name="quest_segregated_separated">"Syklistar og fotgjengarar har kvar sitt felt"</string>
     <string name="quest_segregated_mixed">"Syklistar og fotgjengarar deler same felt"</string>
     <string name="quest_maxheight_title">"Kva er høgdegrensa her?"</string>
-    <string name="quest_maxheight_parking_entrance_title">"Kva er høgdegrensa til parkerings­inngangen?"</string>
-    <string name="quest_maxheight_height_restrictor_title">"Kva er høgdegrensa til denne høgdebarrieren?"</string>
-    <string name="quest_maxheight_tunnel_title">"Kva er høgdegrensa til denne tunellen?"</string>
     <string name="quest_maxheight_answer_noSign">"Det finst ikkje noko skilt …"</string>
     <string name="quest_maxheight_answer_noSign_question">"Er det klart plass til sjølv det høgaste vogntoget (minst 4½ meter)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Høgda verkar usannsynleg. Er du sikker på at ho er rett?"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"– %1$s, %2$s"</string>
+
+    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Lukka av %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Gjenopna av %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Gøymd av %1$s, %2$s"</string>
@@ -569,16 +536,13 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="action_deselect_all">"Fjern merking"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"omfattar òg restaurant- og kafébygningar …"</string>
+    <string name="quest_buildingType_retail_description">"omfattar òg restaurant- og kafébygningar, butikkar, …"</string>
     <string name="quest_openingHours_timeSelect_next">"Neste"</string>
     <string name="quest_tracktype_title">"Kor fast er vegdekket her?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
     <string name="quest_tracktype_grade4">"Stort sett mjukt"</string>
     <string name="quest_tracktype_grade5">"Mjukt"</string>
-    <string name="quest_building_underground_name_title">"Ligg %s heilt under jorda?"</string>
     <string name="quest_building_underground_title">"Er denne bygningen heilt under jorda?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
     <string name="quest_wheelchairAccess_outside_title">"Er denne staden tilgjengeleg med rullestol?"</string>
     <string name="quest_traffic_signals_button_title">"Har trafikklysa ein knapp for fotgjengarar?"</string>
@@ -592,15 +556,13 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"på nivå %s:"</string>
+    <string name="on_level">"på nivå %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <string name="underground">"underjordisk:"</string>
+    <string name="underground">"underjordisk"</string>
     <string name="quest_sidewalk_value_yes">"fortau"</string>
     <string name="quest_sidewalk_value_no">"ikkje fortau"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbode for fotgjengarar å gå på denne vegen her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Det er registrert at gata verken har fortau på venstre eller høgre side. Viss det likevel finst eit fortau, men det er åtskilt frå gata, svar «fortau»."</string>
     <string name="quest_buildingType_title">"Kva slags bygning er dette?"</string>
     <string name="pref_title_theme_select">"Vel tema"</string>
@@ -608,19 +570,19 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="theme_light">"Lyst"</string>
     <string name="theme_dark">"Mørkt"</string>
     <string name="theme_system_default">"Systemstandard"</string>
-    <string name="quest_placeName_title_name">"Kva heiter denne staden? (%s)"</string>
     <string name="action_open_location">"Opna staden i ein annan app"</string>
     <string name="map_application_missing">"Du har ikkje noko anna kartprogram installert."</string>
+
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"husnummer"</string>
     <string name="label_blocknumber">"kvartalsnummer"</string>
     <string name="quest_busStopShelter_covered">"Heile stoppet har tak"</string>
-    <string name="quest_ferry_pedestrian_name_title">"Tek %s fotgjengarar?"</string>
     <string name="quest_ferry_pedestrian_title">"Tek denne ferjeruta fotgjengarar?"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"Tek %s motorkøyretøy?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Tek denne ferjeruta motorkøyretøy?"</string>
+
+    <!-- Add note interface -->
     <string name="quest_leave_new_note_photos_are_useful">"Viss du legg til eit foto, vert merknaden mykje nyttigare."</string>
-    <string name="quest_postboxCollectionTimes_name_title">"Når vert denne %s-postkassen tømd?"</string>
-    <string name="create_new_note_hint">"Du bør skriva merknaden på det lokale språket eller engelsk."</string>
+    <string name="create_new_note_hint">"Du bør helst skriva merknaden på det lokale språket, eventuelt på engelsk."</string>
     <string name="quest_leafType_title">"Har trea her barnåler eller lauv?"</string>
     <string name="quest_leaf_type_needles">"Barnåler"</string>
     <string name="quest_leaf_type_broadleaved">"Lauv"</string>
@@ -630,26 +592,20 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_cyclewayPartSurface_title">"Kva vegdekke har sykkelvegen her?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Forskjellig på ulike delar av vegen …"</string>
     <string name="quest_split_way_description">"Viss det er forskjellig på ulike delar av vegen, må du først dela opp vegen. Du kan så svara for kvart vegstykke. Vil du dela opp vegen no?"</string>
-    <string name="quest_split_way_tutorial">"Trykk på vegen for dela han der svaret er forskjellig. Prøv å vera så nøyaktig som du kan. Du kan zooma inn om nødvendig."</string>
+    <string name="quest_split_way_tutorial">"Trykk på vegen for dela han der svaret er forskjellig. Bruk zoom­funksjonen, og prøv å vera så nøyaktig som du kan."</string>
     <string name="quest_split_way_too_imprecise">"Zoom lenger inn"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Du har no ganske mange vegstykke. Du kan alltids dela vegen meir seinare."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Kva vegdekke har gangvegen her?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"Er toalettet til %s tilgjengeleg med rullestol?"</string>
-    <string name="quest_tactilePaving_title_tram">"Har trikkestoppet leielinjer for blinde i asfalten?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Har trikketoppet %s leielinjer for blinde på fortauet?"</string>
     <string name="quest_maxweight_title">"Kva er vektgrensa her?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Vekta verkar usannsynleg. Er du sikker på at ho er rett?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skilet ser annleis ut …"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du leggja att ein merknad? Ein merknad med foto gjer at andre kart­leggjarar kan løysa problemet."</string>
-    <string name="quest_generalFee_title">"Kostar det noko å komma inn på %s?"</string>
     <string name="quest_handrail_title">"Har denne trappa rekkverk?"</string>
-    <string name="quest_openingHours_no_name_title">"Når er denne plassen open? (%s)"</string>
     <string name="about_summary_current_version">"Gjeldande versjon: %s"</string>
     <string name="quest_postboxRef_title">"Kva er referansenummeret til denne postkassen?"</string>
-    <string name="quest_postboxRef_name_title">"Kva er referansenummeret til denne %s-postkassen?"</string>
     <string name="quest_ref_answer_noRef">"Manglar synleg referansenummer …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vegen i illustrasjonen er orientert likt som den på kartet på staden der oppdrags­merket vert vist."</string>
     <string name="quest_recycling_materials_title">"Kva kan du levera til resirkulering her?"</string>
     <string name="quest_recycling_materials_note">"Viss det kan resirkulerast noko her som ikkje står som svaralternativ, legg heller igjen ein merknad."</string>
@@ -671,56 +627,56 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_recycling_glass_title">"Kan berre glasflasker og syltetøyglas resirkulerast her, eller alle typar glas?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Eksempel på glastypar som ofte ikkje vert tekne imot: herda glas, glasruter, glastøy, lyspærer og speglar."</string>
     <string name="about_title_changelog">"Versjonlogg"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"Nytt i denne utgåva"</string>
     <string name="about_title_rate">"Vurder denne appen"</string>
     <string name="about_summary_rate">"på Google Play"</string>
     <string name="about_title_donate">"Gje pengegåve"</string>
     <string name="about_summary_donate">"Vis di takksemd! ❤️"</string>
     <string name="about_description_donate">"Takk for at du vurderer å støtta denne appen! For å sjå tidlegare pengegåver eller gje ei gåve sjølv, trykk på ei plattform:"</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"Kva religion vert praktisert ved %s?"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Skann heller her"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Hald fram med skanning"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Søk heller her"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Hald fram med søk"</string>
     <string name="quest_buildingType_garages_description">"Ulike område for ulike eigarar/leigetakarar"</string>
     <string name="quest_tourism_information_title">"Kva type turistinformasjon er dette?"</string>
-    <string name="quest_tourism_information_name_title">"Kva type turistinformasjon er %s?"</string>
     <string name="quest_tourism_information_office">"Turistkontor"</string>
     <string name="quest_tourism_information_board">"Informasjonstavle"</string>
     <string name="quest_tourism_information_terminal">"Informasjonsterminal"</string>
     <string name="quest_tourism_information_map">"Kart"</string>
     <string name="quest_tourism_information_guidepost">"Retningsskilt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Det er for restavfall"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Så, er dette ein konteinar for alle typar avfall, som hushalds­avfall og forretnings­avfall?"</string>
-    <string name="quest_accepts_cash_title">"Tek %s imot betaling med kontantar?"</string>
     <string name="user_profile">"Profilen min"</string>
     <string name="user_login">"Logg inn"</string>
     <string name="user_logout">"Logg ut"</string>
     <string name="osm_profile">"OSM-profil"</string>
     <string name="next">"Neste"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"Kom igjen!"</string>
+
+    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"det frie dugnadskartet"</string>
     <string name="tutorial_intro">"StreetComplete gjer det svært enkelt å bidra til OpenStreetMap. Appen ser automatisk etter ting i nærleiken som ikkje er registrert på kartet – sykkelvegar, husnummer, opnings­tider og mykje anna …"</string>
     <string name="tutorial_solving_quests">"Dette vert så vist på kartet som oppdrag til deg. Du kan løysa nokre oppdrag med ein gong, for seinare å logga inn og senda inn informasjonen du registrerer."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Viss du er usikker, kan du alltid svar «Vanskeleg å seia» og leggja att ein merknad til andre. Og hugs å halda deg trygg: Pass på kor du set foten, og gå aldri inn på privat eigedom."</string>
     <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
     <string name="achievements_empty">"Du har ikkje nokon bragder enno"</string>
+
+    <!-- Links screen -->
     <string name="links_empty">"Du har ikkje nokon lenkjer enno"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har ikkje offentleg­gjort nokon svar på oppdrag enno"</string>
     <string name="unsynced_quests_description">"pluss %d ikkje offentleg­gjorde endringar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endringar som du ikkje har offentleg­gjort enno. Du må logga inn for å offentleg­gjera dei."</string>
+
+    <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Løyste oppdrag"</string>
     <string name="user_achievements_title">"Bragder"</string>
     <string name="user_links_title">"Lenkjesamling"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentasjon"</string>
+
+    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"Opplåst lenkje:"</string>
     <string name="achievements_unlocked_links">"Opplåste lenkjer:"</string>
     <string name="link_category_intro_title">"Innleiing"</string>
@@ -745,11 +701,7 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="link_umap_description">"Lag kjapt kart med eigne data for framvising på nettstaden din"</string>
     <string name="link_opnvkarte_description">"Eit kart over ruter og stopp for kollektiv­transport"</string>
     <string name="link_pic4review_description">"Bidra til OSM berre ved å sjå på bilete av gater i byen din"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wiki_description">"Wikien er utgangspunktet for alt som er knytt til OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Ny i OpenStreetMap-verda? Her er ei innføring."</string>
     <string name="link_neis_one_description">"Ei enorm samling statistikk for bidrag­sytarar til OpenStreetMap. Har blant anna informasjon om kor og når du bidrog, kven andre som kartlegg i same område som deg og rankinglister."</string>
     <string name="link_welcome_mat_description">"Generell informasjon om OpenStreetMap og korleis ein kan arbeida med OSM som organisasjon."</string>
@@ -767,8 +719,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="link_openinframap_description">"Eit kart som viser straum-, tele- og oljeinfrastruktur"</string>
     <string name="link_openorienteeringmap_description">"Lag orienteringskart for utskrift"</string>
     <string name="link_openstreetbrowser_description">"Eit kart for å finna OpenStreetMap-oppføringar basert på kategoriar"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Vekentleg nyheits­blogg om kva som skjer i OpenStreetMap-verda"</string>
     <string name="link_figuregrounder_description">"Lag plakatar med figur–grunn-diagram av byar eller nabolag"</string>
     <string name="achievement_first_edit_title">"Første løyste oppdrag"</string>
@@ -782,7 +732,7 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="achievement_wheelchair_title">"Mobilitet"</string>
     <string name="achievement_wheelchair_solved_X">"Du har løyst %d oppdrag som hjelper rullestol­brukarar!"</string>
     <string name="achievement_postman_title">"Postmann"</string>
-    <string name="achievement_postman_solved_X">"Du har stadfesta %d adresser! Ikkje berre postmannen har bruk for dette; det har alle navigasjons­system."</string>
+    <string name="achievement_postman_solved_X">"Du har stadfesta %d adresser! Ikkje berre post­mannen har bruk for dette; det har alle navigasjons­system."</string>
     <string name="achievement_building_title">"Huseigar"</string>
     <string name="achievement_building_solved_X">"Du har løyst %d bygnings­oppdrag! Merk at appen berre ber om hus­nummeret etter at hustypen er fastsett."</string>
     <string name="achievement_blind_title">"Sjette sans"</string>
@@ -792,11 +742,13 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="achievement_veg_title">"Snill med dyr"</string>
     <string name="achievement_veg_solved_X">"Du har løyst %d oppdrag som er interessante for dei som ikkje et kjøt!"</string>
     <string name="achievement_car_title">"På vegen"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"Du har løyst %d oppdrag som forbetrar detalj­nivået på gate­informasjonen – slik at OpenStreetMap lever opp til namnet sitt!"</string>
+
+    <!-- Notifications -->
     <string name="unread_messages_message">"Du har %d ulesne meldingar i innboksen"</string>
     <string name="unread_messages_button">"Opna innboks"</string>
+
+    <!-- Main menu -->
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Meny"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Data vist på profilen din, vert samla saman frå offentleg tilgjengeleg informasjon frå bidrags­loggen din i OpenStreetMap og så lasta opp til tenaren min.&lt;/p&gt;"</string>
@@ -804,18 +756,19 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="credits_art_contributors_title">"Biletbidrag"</string>
     <string name="credits_projects_contributors_title">"Prosjekt laga for StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hovud­bidragsytarar"</string>
+
+    <!-- User statistics screen -->
     <string name="stats_are_syncing">"Synkroniserer statistikken. Kom tilbake seinare."</string>
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"etter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"etter type oppdrag"</string>
     <string name="user_profile_global_rank">"Global rangering"</string>
     <string name="user_profile_local_rank">"Rangering i %s"</string>
     <string name="user_profile_days_active">"Aktive dagar"</string>
     <string name="user_profile_achievement_levels">"Bragd- nivå"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_title">"Kva gate/veg høyrer (hus)nummeret %s til?"</string>
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
     <string name="quest_address_street_description">"Trykk på gata/vegen som det høyrer til, eller skriv inn namnet utan forkortingar nedanfor:"</string>
@@ -834,52 +787,24 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_board_type_notice_board">"Det er ei oppslagstavle"</string>
     <string name="quest_board_type_public_transport">"Kollektiv­tilbod"</string>
     <string name="quest_board_type_title">"Kva handlar denne informasjons­tavla om?"</string>
-    <string name="quest_sidewalk_separately_mapped">"Ja, vist for seg på kart"</string>
     <string name="quest_board_type_map">"Det er eit kart"</string>
     <string name="quest_board_type_map_title">"Er det eit kart og berre eit kart?"</string>
     <string name="quest_board_type_map_description">"Om tavla handlar om eit spesifikt emne, oppgje emnet, uavhengig av om ho òg inneheld eit kart. For eksempel har tavler som viser kollektiv­tilbod, ofte òg eit kart over bussruter. Viss det ikkje finst eit val for emnet til tavla, kan du vurdera å heller leggja att ein merknad."</string>
     <string name="quest_surface_detailed_answer_impossible">"Fleire vegdekke …"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umogleg å fastsetja kva vegdekke det er her? Merk at det finst eit «Forskjellig på ulike delar av vegen»-alternativ, der du kan dela opp vegen der han skiftar vegdekke. Bruk «Vanskeleg å seia» viss det finst eitt vegdekke, men dette vegdekket ikkje er tilgjengeleg som eit alternativ."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Skildra kort vegdekket her, for eksempel «hovudsakleg sand, men med nokre brusteinar». Tekstgrensa er på 255 teikn."</string>
-    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
-    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"internasjonalt"</string>
     <string name="quest_buildingType_terrace2">"Rekkjehus"</string>
-    <string name="at_housename">"husnamn %s:"</string>
-    <string name="at_conscription_and_street_number">"konskripsjonsnummer %1$s, retnings­nummer %2$s:"</string>
-    <string name="at_conscription_number">"konskripsjonsnummer %s:"</string>
-    <string name="at_housenumber">"husnummer %s:"</string>
-    <string name="quest_openingHours_name_type_title">"Når er %1$s (%2$s) open?"</string>
-    <string name="quest_openingHours_resurvey_name_title">"Er opningstidene for %s framleis rette?"</string>
-    <string name="quest_openingHours_resurvey_name_type_title">"Er opningstidene for %1$s (%2$s) framleis rette?"</string>
-    <string name="quest_openingHours_resurvey_no_name_title">"Er opningstidene framleis rette (%s)?"</string>
+    <string name="at_housename">"husnamn %s"</string>
+    <string name="at_housenumber">"husnummer %s"</string>
     <string name="quest_openingHours_add_off_days">"Legg til unntaksdagar"</string>
     <string name="quest_openingHours_off_day">"Dag stengd"</string>
     <string name="quest_openingHours_unspecified_range">"Ikkje oppgjeve"</string>
     <string name="quest_cycleway_resurvey_title">"Er sykkelvegen framleis slik?"</string>
-    <string name="quest_wheelchairAccess_name_type_title">"Er %1$s (%2$s) tilgjengeleg med rullestol?"</string>
     <string name="pref_title_resurvey_intervals">"Tid mellom nykartlegging"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnare"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftare"</string>
-    <string name="quest_accepts_cash_type_title">"Tek %1$s (%2$s) imot betaling med kontantar?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_name_title">"Har trikkestoppet %s ein benk?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_tram_title">"Har dette trikkestoppet ein benk?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_title">"Har dette busstoppet ein benk?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBench_name_title">"Har busstoppet %s ein benk?"</string>
-    <string name="quest_summit_register_title">"Finst det ei turbok å skriva namnet sitt i på %s?"</string>
     <string name="quest_is_defibrillator_inside_title">"Er denne hjarte­startaren innandørs?"</string>
     <string name="about_title_translate">"Hjelp til med å omsetja appen"</string>
     <string name="about_description_translate">"Appen er omsett %2$d %% til %1$s"</string>
@@ -891,12 +816,10 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_steps_incline_up">"Denne vegen leier oppover"</string>
     <string name="quest_step_count_title">"Kor mange trappesteg har trappa?"</string>
     <string name="quest_traffic_signals_sound_title">"Finst det lydsignal for blinde her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Har trafikklysa vibrering for å signalisera til blinde når det er trygt å gå over vegen?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tips: Det finst ofte ein knapp som vibrerer eller ei kjegle som roterer under boksen med knappen ein trykkjer på for å få grønt lys."</string>
-    <string name="quest_busStopRef_title">"Kva er referansenummeret til dette busstoppet?"</string>
-    <string name="quest_tramStopRef_title">"Kva er referansenummeret til dette trikkestoppet?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"lite, éinetasjes hus (sommarhus, feriehytte, …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Korleis er denne jernbane­overgangen sikra?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Ingen hindringar"</string>
@@ -905,14 +828,12 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_steps_ramp_bicycle">"Sykkelrampe"</string>
     <string name="quest_steps_ramp_stroller">"Barnevogn­rampe"</string>
     <string name="quest_steps_ramp_wheelchair">"Rullestol­rampe"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Kva bank høyrer denne minibanken til?"</string>
     <string name="quest_clothes_container_operator_title">"Kven tek imot klede lagde i denne innsamlings­boksen?"</string>
-    <string name="quest_charging_station_operator_title">"Kven er eigar av denne ladestasjonen?"</string>
+    <string name="quest_charging_station_operator_title">"Kven eig denne ladestasjonen?"</string>
     <string name="link_indoorequal_description">"Finn kart for innandørs­navigering på kjøpesenter, togstasjonar osv."</string>
     <string name="achievement_rare_title">"Skattejakt"</string>
-    <string name="achievement_rare_solved_X">"Du har funne og løyst %d oppdrag som svært sjeldant vert fullførte. Gratulerer!"</string>
+    <string name="achievement_rare_solved_X">"Du har funne og løyst %d oppdrag som sjeldant vert fullførte. Gratulerer!"</string>
     <string name="achievement_citizen_title">"Medborgar"</string>
     <string name="achievement_citizen_solved_X">"Du har løyst %d oppdrag som er nyttige for kvardagslivet i byen!"</string>
     <string name="achievement_outdoors_title">"Friskus"</string>
@@ -932,7 +853,7 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_buildingType_abandoned_description">"ubrukt bygning der det ikkje er kjend kva han opphavleg skulle brukast til"</string>
     <string name="quest_buildingType_ruins">"Ruinar"</string>
     <string name="quest_buildingType_ruins_description">"øydelagd, falleferdig eller uidentifiserbar bygning"</string>
-    <string name="quest_charging_station_capacity_title">"Kor mange bilar kan ladast samtidig på denne ladestasjonen?"</string>
+    <string name="quest_charging_station_capacity_title">"Kor mange bilar kan ladast samtidig her?"</string>
     <string name="link_disaster_ninja_description">"Kart som viser nyleg hende natur­katastrofar, som er nyttig for kartlegging for humanitære formål. Viser òg mykje interessant statistikk om kor godt kartlagd stadar er og kort oppdaterte karta er."</string>
     <string name="quest_lanes_title">"Kor mange køyrefelt har denne vegen?"</string>
     <string name="quest_lanes_answer_lanes">"Oppmerkte køyrefelt"</string>
@@ -940,8 +861,6 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Han har eit venstresvinge­felt med tovegskøyring"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette rett?"</string>
     <string name="quest_maxheight_below_bridge_title">"Kva er fri høgd under denne brua?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Viss ho ikkje gjeld heile vegstykket, kan du svara «%s»."</string>
     <string name="quest_tactile_paving_kerb_title">"Finst det leielinjer for blinde på fortaus­kanten her?"</string>
     <string name="quest_kerb_height_title">"Kva er høgda til denne fortauskanten?"</string>
@@ -957,50 +876,269 @@ Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å auto
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn talet på oppmerkte køyrefelt som kan brukast av bilar. Sykkel- og parkerings­felt tel altså ikkje. Viss nokre av felta er reine bussfelt, legg heller att ein merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høge vogntog kan passera"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høge vogntog får ikkje plass"</string>
     <string name="quest_address_street_hint">"Trykk på gata/vegen på kartet"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_marked">"Overgang med vegmarkering"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_crossing_type_marked">"Med vegmarkering"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
-    <string name="quest_existence_title">"Finst denne framleis her? (%s)"</string>
-    <string name="quest_existence_name_title">"Finst %1$s (%2$s) framleis her?"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikkje asfaltert"</string>
     <string name="quest_tracktype_grade3a">"Stort sett fast"</string>
     <string name="quest_generic_answer_does_not_exist">"Han finst ikkje …"</string>
     <string name="osm_element_gone_description">"Er du sikker på at han ikkje finst, heller ikkje like i nærleiken? Er du i tvil, er det betre å leggja att ein merknad."</string>
     <string name="osm_element_gone_confirmation">"Han finst ikkje"</string>
     <string name="leave_note">"Legg att ein merknad"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Kva er her i staden for?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Det er ikkje noko her"</string>
     <string name="quest_shop_gone_replaced_answer">"Ein/ei/eit …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Type plass som er her"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Dette butikk­lokalet har stått tomt. Kva er her no?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Talet på felt er forskjellig på kvar side"</string>
-    <string name="quest_pitchSurface_title">"Kva dekke er brukt på denne idrettsbana?"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Denne oppdragstypen vert som standard ikkje vist, då han ikkje er nyttig alle stadar og du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
-    <string name="quest_dietType_kosher_name_title">"Har %s koscher­produkt?"</string>
     <string name="quest_dietType_explanation_kosher">"Koscher­produkt må lagast etter særskilde religiøse reglar, og det finst eigne sertifiserings­instansar som godkjenner produkta."</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Finst ikkje sykkelveg/-felt"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanleg på éi side av teikninga, vel rett alternativ, og gjenta det same for den andre sida. Men merk at det er mange tilgjengelege alternativ her. Nokre tilfelle er ikkje openbare, for eksempel ein einvegskøyrd veg som likevel tillèt sykling i begge retningar."</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ingen sykkelfelt / ingen sykkelveg"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Trykk som vanleg på éi side av teikninga, vel rett alternativ, og gjenta det same for den andre sida. Men merk at det er mange tilgjengelege alternativ her. Nokre tilfelle er ikkje openbare, for eksempel ein einvegs­køyrd veg som likevel tillèt sykling i begge retningar."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Vel at det ikkje finst nokon sykkelveg"</string>
     <string name="quest_construction_completed_at_known_date">"Vert ferdigstilt ein gitt dato …"</string>
     <string name="quest_construction_completion_date_title">"Når vert han ferdigstilt?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunst­gras"</string>
     <string name="quest_surface_value_tartan">"Tartan"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_parking_fee_title">"Kostar det noko å parkera syklar her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_fire_station">"Brannstasjon"</string>
+
+    <!-- Fuzzy -->
+    <string name="team_mode">"Lag­modus"</string>
+
+    <!-- Team mode -->
+    <string name="team_mode_exit">"Avslutt lagmodus"</string>
+    <string name="team_mode_description">"Når fleire kartleggjer eit område saman, kan de bruka lagmodus for å fordela oppdraga mellom dykk."</string>
+    <string name="team_mode_team_size_hint">"Lagmodus verkar for grupper på 2–12 personar."</string>
+    <string name="team_mode_active">"Lagmodus er på"</string>
+    <string name="team_mode_deactivated">"Lagmodus er av"</string>
+    <string name="quest_crossing_type_signals_controlled">"Med trafikklys"</string>
+    <string name="undo_confirm_title2">"Vil du angra denne endringa?"</string>
+    <string name="synced">"Synkronisert"</string>
+    <string name="toast_undo_unavailable">"Denne endringa er alt synkronisert og kan derfor ikkje angrast."</string>
+    <string name="quest_cycleway_value_separate">"vist for seg på kart"</string>
+
+    <!-- Edit history sidebar -->
+    <string name="created_note_action_title">"La til ny merknad"</string>
+    <string name="commented_note_action_title">"Kommenterte på ein merknad"</string>
+    <string name="hid_action_description">"Du gøymde han"</string>
+    <string name="split_way_action_description">"Du delte opp vegen"</string>
+    <string name="deleted_poi_action_description">"Du sletta han"</string>
+    <string name="added_tag_action_title">"La til %s"</string>
+    <string name="removed_tag_action_title">"Fjerna %s"</string>
+    <string name="changed_tag_action_title">"Oppdatert til %s"</string>
+    <string name="pref_title_delete_cache">"Slett snøgglageret"</string>
+    <string name="pref_title_delete_cache_summary">"Viss du mistenkjer at noko informasjon er utdatert"</string>
+    <string name="delete_confirmation">"Slett"</string>
+    <string name="delete_cache_dialog_message">"Vil du sletta alle nedlasta kartdataa og oppdrag? Alle dataa vert automatisk oppdaterte etter %1$s dagar, og ubrukte data vert sletta etter %2$s dagar."</string>
+    <string name="pref_background_type_select">"Vel bakgrunnstype"</string>
+    <string name="background_type_map">"Kart"</string>
+    <string name="background_type_aerial_esri">"Flyfoto (frå Esri)"</string>
+    <string name="quest_barrier_type_title">"Kva type sperre er dette?"</string>
+    <string name="quest_barrier_type_lift_gate">"Vegbom"</string>
+    <string name="quest_barrier_type_bollard">"Pullert(ar)"</string>
+    <string name="quest_barrier_type_chain">"Kjetting"</string>
+    <string name="quest_barrier_type_rope">"Tau"</string>
+    <string name="quest_barrier_type_wire_gate">"Flyttbart metalltråd-gjerde"</string>
+    <string name="quest_barrier_type_cattle_grid">"Ferist"</string>
+    <string name="quest_barrier_type_block">"Stor, ikkje-flyttbar gjenstand"</string>
+    <string name="quest_barrier_jersey_barrier">"Jerseystein"</string>
+    <string name="quest_barrier_type_log">"Trestamme"</string>
+    <string name="quest_barrier_type_kerb">"Fortauskant"</string>
+    <string name="quest_barrier_type_height_restrictor">"Høgdeavgrensing"</string>
+    <string name="quest_barrier_full_height_turnstile">"Rotasjonsport i full høgd"</string>
+    <string name="quest_barrier_type_turnstile">"Rotasjonsport i halv høgd"</string>
+    <string name="quest_barrier_type_passage">"Opning gjennom mur, gjerde e.l."</string>
+    <string name="quest_barrier_type_debris_pile">"Haug med stein, avfall e.l."</string>
+    <string name="quest_barrier_type_stile_squeezer">"Trang passasje"</string>
+    <string name="quest_barrier_type_stile_ladder">"Gjerdeklyver (stige)"</string>
+    <string name="quest_barrier_type_kissing_gate">"Svinggrind"</string>
+    <string name="quest_barrier_type_swing_gate">"Vassrett bom"</string>
+    <string name="quest_policeType_title">"Kva type politistasjon er dette?"</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">"Gjort om til ei svinggrind"</string>
+    <string name="pref_title_quests2">"Vel oppdragstypar og -rekkjefølgje"</string>
+    <string name="pref_subtitle_quests">"%1$d av %2$d på"</string>
+    <string name="no_location_permission_warning_title">"Posisjonsløyve"</string>
+    <string name="no_camera_app">"Manglar kamera­app"</string>
+    <string name="quest_bollard_type_title">"Kva type pullert er dette?"</string>
+    <string name="quest_bollard_type_rising">"Senkbar"</string>
+    <string name="quest_bollard_type_flexible">"Fleksibel"</string>
+    <string name="quest_bollard_type_fixed">"Fast (ikkje avtakbar)"</string>
+    <string name="quest_camera_type_title">"Kva slags overvakingskamera er dette?"</string>
+    <string name="quest_camera_type_dome">"Dome"</string>
+    <string name="quest_camera_type_fixed">"Fast"</string>
+    <string name="quest_camera_type_panning">"Panorerande"</string>
+    <string name="about_title_faq">"Spørsmål og svar"</string>
+    <string name="quest_buildingLevels_title2">"Kor mange etasjar over jorda har denne bygningen?"</string>
+    <string name="quest_buildingLevels_title_buildingPart2">"Kor mange etasjar over jorda har denne bygningsdelen?"</string>
+    <string name="quest_crossing_title">"Er det ein fortauskant der denne vegen møter vegbana her? Kva type?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Oppdragsutval: %s"</string>
+    <string name="quest_construction_steps_title">"Er denne trappa no ferdigstilt?"</string>
+    <string name="pref_quests_deselect_all">"Vil du fjerna merkinga på alle oppdraga?"</string>
+    <string name="quest_buildingType_boathouse">"Naust"</string>
+    <string name="quest_buildingType_grandstand">"Tribune"</string>
+
+    <!-- Quest selection screen -->
+    <string name="action_search">"Søk"</string>
+    <string name="action_manage_presets">"Handsam oppdragsutval"</string>
+    <string name="team_mode_team_size_label2">"Kor mange deltek? Skriv inn same tal på alle telefonane."</string>
+    <string name="team_mode_choose_color2">"Alle må no velja kvar sin farge. Vel din:"</string>
+    <string name="link_organic_maps_description">"Kartapp for turistar, turgåarar og syklistar, og som fungerer fråkopla Internett"</string>
+    <string name="quest_barrier_type_stepover_wooden">"Gjerdeklyver (tretrinn)"</string>
+    <string name="quest_barrier_type_stepover_stone">"Gjerdeklyver (steintrinn)"</string>
+    <string name="quest_bollard_type_removable">"Avtakbar (med eller utan nøkkel)"</string>
+    <string name="quest_bollard_type_foldable2">"Nedfellbar (med eller utan nøkkel)"</string>
+    <string name="no_search_results">"Fann ingenting"</string>
+    <string name="quest_selection_hint_title">"For mykje å gjera?"</string>
+    <string name="quest_selection_hint_message">"Å bidra skal vera gøy! Viss du er overvelda over talet på oppdrag, kan du alltids justera kva oppdrag som vert vist og i kva rekkjefølgje."</string>
+
+    <!-- Managing quest presets screen -->
+    <string name="quest_presets_preset_add">"Nytt oppdragsutval"</string>
+    <string name="quest_presets_preset_name">"Namn på oppdragsutvalet"</string>
+    <string name="quest_presets_default_name">"Standard"</string>
+    <string name="quest_presets_selected">"Merkt"</string>
+    <string name="quest_presets_delete_message">"Vil du sletta oppdragsutvalet «%1». Val av oppdrag og oppdrags­rekkjefølgja går då tapt for alltid."</string>
+    <string name="notification_syncing">"Synkroniserer data …"</string>
+
+    <!-- Android notifications -->
+    <string name="notification_channel_sync">"Synkroniser data"</string>
+    <string name="quest_board_type_sport">"Idrett, trening"</string>
+    <string name="quest_generic_hasFeature_optional">"Som alternativ"</string>
+    <string name="quest_buildingType_bridge">"Bru mellom bygningar"</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
+    <string name="quest_generic_answer_is_actually_steps">"Dette er ei trapp"</string>
+    <string name="quest_barrier_type_passage_conversion">"Gjort om til ei opning gjennom mur, gjerde e.l."</string>
+    <string name="quest_barrier_type_gate_conversion">"Gjort om til ein port"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameteren verkar usannsynleg."</string>
+    <string name="short_no_answer_on_button">"Nei"</string>
+    <string name="restore_confirmation">"Gjenopprett"</string>
+    <string name="restore_dialog_message">"Vil du gjenoppretta alle oppdraga du tidlegare har gøymt?"</string>
+    <string name="pref_title_language_select">"Vel språk"</string>
     <string name="language_default">"Systemstandard"</string>
+    <string name="on_floor">"i etasje %s"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Både husnummer og husnamn …"</string>
+    <string name="quest_address_house_number_label">"Husnummer:"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ja (legg att ein merknad)"</string>
+    <string name="link_osmhydrant_description">"Vis, legg til og rediger informasjon om brannstasjonar og brannhydrantar"</string>
+    <string name="achievement_lifesaver_title">"Livreddar"</string>
+    <string name="achievement_lifesaver_solved_X">"Du har løyst %d oppdrag som er nyttige for nødetatar og førstehjelp!"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"Denne oppdragstypen vert som standard ikkje vist, då det er tid­krevjande eller vanskeleg å finna svar på spørsmålet. Berre slå på denne oppdrags­typen dersom du er spesielt interessert i registrering av denne typen data."</string>
+    <string name="quest_barrier_path_intersection">"Korleis kryssar stien sperra her?"</string>
+    <string name="quest_barrier_road_intersection">"Korleis kryssar vegen sperra her?"</string>
+    <string name="no_camera_permission_warning_title">"Kameraløyve"</string>
+    <string name="no_camera_permission_warning">"Appen treng løyvet for å ta foto og måla avstandar med kameraet."</string>
+    <string name="ar_core_error_sdk_too_old">"Appen er for gammal. Prøv å oppdatera."</string>
+    <string name="ar_core_tracking_error_bad_state">"Noko gjekk gale. Prøv å måla på nytt."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"For mørkt her"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"For mykje rørsle"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"For få/uklare visuelle element her"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"Kameraet vert brukt av ein annan app"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"Sykkelstyre-lås"</string>
+    <string name="quest_bicycle_parking_access_title2">"Kven har lov til å parkera syklar her? Anten gratis eller med betaling."</string>
+    <string name="quest_playground_access_title2">"Kven kan bruka denne leikeplassen?"</string>
+
+    <!-- AR Measure screen -->
+    <string name="ar_measure">"Mål"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Vinkelen er for bratt (prøv å gå litt unna)"</string>
+    <string name="default_disabled_msg_no_ar">"Du treng eit måleband for å løysa dette oppdraget, då måling med kameraet ikkje er støtta på denne eininga."</string>
+    <string name="about_description_donate_google_play2">"Takk for at du vurderer å støtta denne appen! På grunn av reglane til Google Play kan me dessverre ikkje visa ei lenkje for å gje pengegåver direkte i appen. Me får ikkje eingong lenkja til heimesida vår i denne samanhengen."</string>
+    <string name="link_osmand_description">"Mobilapp for kartvising og navigering både til- og fråkopla Internett"</string>
+    <string name="link_sunders_description">"Kart over kamera og annan overvaking"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"Hald deg nærare pila, men pass deg for trafikken!"</string>
+    <string name="quest_tactilePaving_incorrect">"Berre på éi side"</string>
+    <string name="unit_days">"dagar"</string>
+    <string name="unit_hours">"timar"</string>
+    <string name="unit_minutes">"minutt"</string>
+    <string name="quest_bollard_type_not_bollard">"Ikkje ein pullert, men ei anna type hindring"</string>
+    <string name="no_camera_permission_toast">"Manglar kameraløyve"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cash_title2">"Tek dei imot betaling med kontantar her?"</string>
+    <string name="quest_address_street_title2">"Kva gate/veg høyrer dette til?"</string>
+    <string name="quest_airConditioning_title">"Har denne staden luftavkjøling?"</string>
+    <string name="quest_baby_changing_table_title2">"Finst det stellebord ved denne staden?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"Har dette stoppet ein benk?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"Har dette stoppet ei bosskorg?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"Er det (gate)lys ved dette stoppet?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"Kva heiter dette stoppet?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"Kva referansenummer eller kode har dette stoppet?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"Er det eit skur eller tak på dette stoppet?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Har stoppet leielinjer for blinde i asfalten?"</string>
+    <string name="quest_existence_title2">"Finst denne framleis her?"</string>
+    <string name="quest_lit_title">"Er staden lyssett her?"</string>
+    <string name="quest_placeName_title">"Kva heiter denne staden?"</string>
+    <string name="quest_toiletAvailability_title">"Finst det toalett her?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Er toalettet her tilgjengeleg med rullestol?"</string>
+    <string name="link_valhalla_description">"Ruteplanleggjar som krev svært lite minne og som støttar ulike reisemåtar, isokron­kart, meir meir."</string>
+    <string name="link_backofyourhand_description">"Kor godt kjenner du nærmiljøet ditt? Test deg sjølv ved å finna gater."</string>
+    <string name="link_thenandnow_description">"Utforsk korleis OSM såg ut før, samanlikna med no!"</string>
+    <string name="link_notesreview_description">"Sjå, filtrer og kommenter på merknadar du òg andre har lagt att. Mange merknadar kan lukkast ved å leggja inn informasjonen som står i dei, ved hjelp av programma iD eller JOSM."</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Tek dei imot betaling med kreditt- eller debetkort her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accepts_cards_debit_and_credit">"Både kreditt- og debetkort"</string>
+    <string name="quest_accepts_cards_credit_only">"Berre kredittkort"</string>
+    <string name="quest_accepts_cards_dedit_only">"Berre debetkort"</string>
+    <string name="quest_accepts_cards_unavailable">"Verken kreditt- eller debetkort"</string>
+    <string name="quest_barrier_type_gate_any_size">"Port, alle storleikar"</string>
+    <string name="quest_air_pump_compressor_title">"Finst det ein luftkompressor her?"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"ingen, sykling forbode i denne retninga"</string>
+    <string name="map_btn_create_track">"Start ny spor­registering"</string>
+
+    <!-- Fuzzy -->
+    <string name="map_btn_stop_track">"Stopp spor­registrering"</string>
+    <string name="quest_bicycle_rental_type_title">"Kva type sykkelutleige er her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_type_human">"Betent sykkelutleige"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Sykkelbutikk som òg leiger ut syklar"</string>
+    <string name="quest_bicycle_shop_repair_title">"Tilbyr dei reparasjon av syklar her?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Sel dei bruktsyklar her?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nei, berre nye syklar"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Ja, i tillegg til nye syklar"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Ja, berre bruktsyklar"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Dei sel ikkje syklar i det heile teke"</string>
+    <string name="quest_building_entrance_title">"Kva slags inngang er dette?"</string>
+    <string name="quest_building_entrance_main">"Hovudinngang i eit offentleg bygg"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_building_entrance_staircase">"Trappeinngang (for eksempel i ei blokk)"</string>
+    <string name="quest_building_entrance_service">"Tenesteinngang"</string>
+    <string name="quest_building_entrance_exit">"Berre utgang"</string>
+    <string name="quest_building_entrance_emergency_exit">"Berre nødutgang"</string>
+    <string name="quest_building_entrance_shop">"Kundeinngang"</string>
+    <string name="quest_building_entrance_yes">"Annan type inngang"</string>
+    <string name="quest_building_entrance_dead_end">"Blindgang (ingen inngang)"</string>
 </resources>

@@ -1,15 +1,16 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
 centerLineStyle: white
-chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
-clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
 edgeLineStyle: short yellow dashes
 hasAdvisorySpeedLimitSign: false
 isLeftHandTraffic: true
 mobileCountryCode: 272
+noEntrySignStyle: default
 noParkingLineStyle: double yellow
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, ga]
-orchardProduces: [apple, strawberry, tomato, chilli_pepper, sweet_pepper, raspberry, hop]
 popularSports: [gaelic_games, rugby]
+atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
+chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
+clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
+orchardProduces: [apple, strawberry, pear, raspberry, cherry, apple, plum, grape, hop, tomato, strawberry, chilli_pepper, sweet_pepper, raspberry, tomato]

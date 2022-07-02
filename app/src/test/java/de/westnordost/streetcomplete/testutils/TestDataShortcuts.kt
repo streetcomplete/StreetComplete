@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
@@ -89,7 +90,8 @@ fun noteEdit(
     timestamp: Long = 123L,
     imagePaths: List<String> = emptyList(),
     pos: LatLon = p(1.0, 1.0),
-    isSynced: Boolean = false
+    isSynced: Boolean = false,
+    track: List<Trackpoint> = emptyList(),
 ) = NoteEdit(
     id,
     noteId,
@@ -99,7 +101,8 @@ fun noteEdit(
     imagePaths,
     timestamp,
     isSynced,
-    imagePaths.isNotEmpty()
+    imagePaths.isNotEmpty(),
+    track
 )
 
 fun edit(
@@ -151,7 +154,7 @@ fun osmNoteQuest(
 fun osmQuestKey(
     elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
-    questTypeName: String = QUEST_TYPE::class.simpleName!!
+    questTypeName: String = QUEST_TYPE.name
 ) = OsmQuestKey(elementType, elementId, questTypeName)
 
 val QUEST_TYPE = TestQuestTypeA()

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
-sealed class PostboxRefAnswer
+sealed interface PostboxRefAnswer
 
-data class Ref(val ref: String) : PostboxRefAnswer()
-object NoRefVisible : PostboxRefAnswer()
+data class Ref(val ref: String) : PostboxRefAnswer
+object NoRefVisible : PostboxRefAnswer

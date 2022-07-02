@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.util.math.distanceTo
 
 internal fun isGeometrySubstantiallyDifferent(element: Element, newElement: Element) =
     when (element) {

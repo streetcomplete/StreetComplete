@@ -748,13 +748,6 @@
                     "placeholder": "0, 1, 2, 3..."
                 },
                 "mtb/scale/imba": {
-                    "options": {
-                        "0": "Errazena (zirkulu zuria)",
-                        "1": "Erraza (zirkulu berdea)",
-                        "2": "Erdi (karratu urdina)",
-                        "3": "Zaila (diamante beltza)",
-                        "4": "Oso zaila (Diamante beltz bikoitza)"
-                    },
                     "placeholder": "Erraz, Erdi, Zail..."
                 },
                 "mtb/scale/uphill": {
@@ -1053,9 +1046,6 @@
                 },
                 "service": {
                     "label": "Mota"
-                },
-                "service/bicycle": {
-                    "label": "Zerbitzuak"
                 },
                 "service/vehicle": {
                     "label": "Zerbitzuak"
@@ -1609,9 +1599,6 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Anfiteatro"
-                },
-                "amenity/toilets": {
-                    "name": "Komun"
                 },
                 "amenity/townhall": {
                     "name": "Udaletxe"

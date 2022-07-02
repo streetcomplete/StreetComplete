@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.quests.address
 
-sealed class HousenumberAnswer
+sealed interface HousenumberAnswer
 
-data class ConscriptionNumber(val number: String, val streetNumber: String? = null) : HousenumberAnswer()
-data class HouseNumber(val number: String) : HousenumberAnswer()
-data class HouseName(val name: String) : HousenumberAnswer()
-data class HouseNameAndHouseNumber(val name: String, val number: String) : HousenumberAnswer()
-data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : HousenumberAnswer()
-object NoHouseNumber : HousenumberAnswer()
-object WrongBuildingType : HousenumberAnswer()
+data class HouseNumberAndHouseName(val number: AddressNumber?, val name: String?) : HousenumberAnswer
+object WrongBuildingType : HousenumberAnswer
+
+sealed interface AddressNumber
+
+data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
+data class HouseNumber(val houseNumber: String) : AddressNumber
+data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : AddressNumber

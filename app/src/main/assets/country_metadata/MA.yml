@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [fr, es]
-atmOperators: [BMCI, BMCE, Al Barid Bank, Crédit du Maroc, Societe Generale, البنك الشعبي, سوسيتيه جنرال, Banque Populaire, Crédit Agricole, التجاري وفا بنك, Cash Plus, البنك المغربي للتجارة والصناعة, CIH Bank, BMCE BANK]
 firstDayOfWorkweek: Su
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 604
 noParkingSignStyle: vienna
 officialLanguages: [ar, ber]
-orchardProduces: [tomato, olive, orange, apple, grape, banana, chilli_pepper, sweet_pepper, plum, strawberry, date, peach, almond, fig, apricot, avocado]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
+atmOperators: [BMCI, BMCE, Al Barid Bank, Crédit du Maroc, Societe Generale, البنك الشعبي, سوسيتيه جنرال, Banque Populaire, Crédit Agricole, التجاري وفا بنك, Cash Plus, البنك المغربي للتجارة والصناعة, CIH Bank, BMCE BANK]
+orchardProduces: [olive, almond, fig, date, orange, apple, grape, plum, tomato, peach, apricot, banana, walnut, avocado, sisal]

@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.Tags
 
-class AddParkingFee : OsmFilterQuestType<Fee>() {
+class AddParkingFee : OsmFilterQuestType<FeeAndMaxStay>() {
 
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
@@ -18,13 +18,12 @@ class AddParkingFee : OsmFilterQuestType<Fee>() {
     override val changesetComment = "Add whether there is a parking fee"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_fee
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_fee_title
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: Fee, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: FeeAndMaxStay, tags: Tags, timestampEdited: Long) =
         answer.applyTo(tags)
 }

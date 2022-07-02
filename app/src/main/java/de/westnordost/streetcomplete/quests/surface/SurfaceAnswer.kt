@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.meta.removeCheckDatesForKey
-import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
-sealed class SurfaceOrIsStepsAnswer
-object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer()
+sealed interface SurfaceOrIsStepsAnswer
+object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
+object IsIndoorsAnswer : SurfaceOrIsStepsAnswer
 
-data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer()
+data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
 
 fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue

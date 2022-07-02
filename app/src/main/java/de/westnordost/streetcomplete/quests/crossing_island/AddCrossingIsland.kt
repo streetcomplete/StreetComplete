@@ -5,12 +5,12 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BLIND
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.ktx.toYesNo
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCrossingIsland : OsmElementQuestType<Boolean> {
 
@@ -34,8 +34,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     override val changesetComment = "Add whether pedestrian crossing has an island"
     override val wikiLink = "Key:crossing:island"
     override val icon = R.drawable.ic_quest_pedestrian_crossing_island
-
-    override val questTypeAchievements = listOf(PEDESTRIAN, BLIND)
+    override val achievements = listOf(PEDESTRIAN, BLIND)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_island
 
@@ -55,7 +54,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["crossing:island"] = answer.toYesNo()

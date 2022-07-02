@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.Matcher
-import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
-import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.ktx.toLocalDate
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.toCheckDate
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import java.time.Instant
 import java.time.LocalDate
 

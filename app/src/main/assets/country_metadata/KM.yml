@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Exim Bank]
 mobileCountryCode: 654
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [ar, fr, swb, wni, zdj, wlc]
-orchardProduces: [coconut, banana, tomato, coffee, cacao, vanilla]
 popularReligions: [muslim]
+atmOperators: [Exim Bank]
+orchardProduces: [coconut, banana, coffee, cacao, vanilla, tomato]

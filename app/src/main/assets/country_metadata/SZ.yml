@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Standard Bank, FNB, Nedbank, First National Bank]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
@@ -7,4 +6,5 @@ isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 653
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, orange, pineapple, banana, tomato, plum, almond, avocado, date, guava, mango, mangosteen]
+atmOperators: [Standard Bank, FNB, Nedbank, First National Bank]
+orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date]

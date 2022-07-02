@@ -17,7 +17,7 @@ class ImageListPickerDialog<T>(
     columns: Int = 2,
     @StringRes titleResId: Int = R.string.quest_select_hint,
     onSelection: (DisplayItem<T>) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
 
     init {
         val horizontalMargin = context.resources.getDimensionPixelOffset(R.dimen.dialog_horizontal_margin)

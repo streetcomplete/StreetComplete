@@ -6,7 +6,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
-import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.util.ktx.format
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -55,7 +56,7 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            oldElementKeys = geometryDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
@@ -149,18 +150,24 @@ class MapDataController internal constructor(
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
-        val elementGeometryEntries = geometryDB.getAllEntries(bbox)
-        val elementKeys = elementGeometryEntries.map { ElementKey(it.elementType, it.elementId) }
-        val elements = elementDB.getAll(elementKeys)
-        val result = MutableMapDataWithGeometry(elements, elementGeometryEntries)
+        val elements = elementDB.getAll(bbox)
+        /* performance improvement over geometryDB.getAllEntries(elements): no need to query
+           nodeDB twice (once for the element, another time for the geometry */
+        val elementGeometries = geometryDB.getAllEntries(
+            elements.mapNotNull { if (it !is Node) ElementKey(it.type, it.id) else null }
+        ) + elements.mapNotNull { if (it is Node) it.toElementGeometryEntry() else null }
+        val result = MutableMapDataWithGeometry(elements, elementGeometries)
         result.boundingBox = bbox
-        Log.i(TAG, "Fetched ${elementKeys.size} elements and geometries in ${currentTimeMillis() - time}ms")
+        Log.i(TAG, "Fetched ${elements.size} elements and geometries in ${currentTimeMillis() - time}ms")
         return result
     }
 
+    private fun Node.toElementGeometryEntry() =
+        ElementGeometryEntry(type, id, ElementPointGeometry(position))
+
     data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)
     fun getElementCounts(bbox: BoundingBox): ElementCounts {
-        val keys = geometryDB.getAllKeys(bbox)
+        val keys = elementDB.getAllKeys(bbox)
         return ElementCounts(
             keys.count { it.type == ElementType.NODE },
             keys.count { it.type == ElementType.WAY },
@@ -172,7 +179,7 @@ class MapDataController internal constructor(
     fun getWay(id: Long): Way? = wayDB.get(id)
     fun getRelation(id: Long): Relation? = relationDB.get(id)
 
-    fun getAll(elementKeys: Iterable<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
+    fun getAll(elementKeys: Collection<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
 
     fun getNodes(ids: Collection<Long>): List<Node> = nodeDB.getAll(ids)
     fun getWays(ids: Collection<Long>): List<Way> = wayDB.getAll(ids)

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.copy
 import java.lang.System.currentTimeMillis
 
 fun Element.changesApplied(changes: StringMapChanges): Element {

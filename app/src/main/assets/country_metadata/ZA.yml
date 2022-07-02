@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [ABSA, Standard Bank, FNB, Nedbank, First National Bank, Capitec, Standard, ABSA Atm, Standard Bank ATM, Absa Bank, Capitec Bank, Netbank, Nedbank ATM, Stanbic Bank]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
@@ -11,5 +10,6 @@ noParkingSignStyle: sadc
 noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
-orchardProduces: [grape, orange, apple, tomato, pear, lemon, lime, banana, grapefruit, peach, pineapple, plum, guava, mango, mangosteen, avocado, apricot, chilli_pepper, sweet_pepper]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]
+atmOperators: [ABSA, Standard Bank, FNB, Nedbank, First National Bank, Capitec, Standard, ABSA Atm, Standard Bank ATM, Absa Bank, Capitec Bank, Netbank, Nedbank ATM, Stanbic Bank]
+orchardProduces: [grape, orange, lemon, lime, apple, avocado, grapefruit, pear, pineapple, peach, chilli_pepper, sweet_pepper, tomato, plum, banana, guava, mango, mangosteen, apricot]

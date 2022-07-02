@@ -1,8 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [ru]
-atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
-chargingStationOperators: [Elmo, ELMO]
-clothesContainerOperators: [Tallinna Jäätmekeskus]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -10,6 +7,9 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 248
 officialLanguages: [et]
-orchardProduces: [apple, tomato, strawberry, plum, raspberry, cherry]
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA
+atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
+chargingStationOperators: [Elmo, ELMO]
+clothesContainerOperators: [Tallinna Jäätmekeskus]
+orchardProduces: [strawberry, apple, raspberry, plum, tomato]

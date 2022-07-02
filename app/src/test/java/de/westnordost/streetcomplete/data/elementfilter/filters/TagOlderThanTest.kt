@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.data.elementfilter.matches
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -67,5 +67,19 @@ class TagOlderThanTest {
             "lastcheck:opening_hours" to newDate.toCheckDateString(),
             "check_date:opening_hours" to newDate.toCheckDateString()
         ), newDate))
+    }
+
+    @Test fun `does not match new element with tag only as a prefix`() {
+        assertFalse(c.matches(mapOf("opening_hours:signed" to "tag"), newDate))
+    }
+
+    @Test fun `matches any old element without relevant tags`() {
+        assertTrue(c.matches(mapOf("foo" to "bar"), oldDate))
+        assertTrue(c.matches(mapOf(), oldDate))
+    }
+
+    @Test fun `does not match any new element without relevant tags`() {
+        assertFalse(c.matches(mapOf("foo" to "bar"), newDate))
+        assertFalse(c.matches(mapOf(), newDate))
     }
 }

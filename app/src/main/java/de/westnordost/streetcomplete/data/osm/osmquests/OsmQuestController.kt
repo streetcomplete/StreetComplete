@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.intersects
-import de.westnordost.countryboundaries.isInAny
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -16,16 +14,18 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.ktx.format
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.util.contains
-import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.enlargedBy
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.intersects
+import de.westnordost.streetcomplete.util.ktx.isInAny
+import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -47,7 +47,7 @@ class OsmQuestController internal constructor(
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
-) : OsmQuestSource {
+) : OsmQuestSource, HideOsmQuestController {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -83,8 +83,7 @@ class OsmQuestController internal constructor(
             val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
 
             for (quest in quests) {
-                val questTypeName = quest.type::class.simpleName!!
-                Log.d(TAG, "Created $questTypeName for ${quest.elementType.name}#${quest.elementId}")
+                Log.d(TAG, "Created ${quest.type.name} for ${quest.elementType.name}#${quest.elementId}")
             }
 
             val obsoleteQuestKeys: List<OsmQuestKey>
@@ -150,7 +149,7 @@ class OsmQuestController internal constructor(
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
-                val questTypeName = questType::class.simpleName!!
+                val questTypeName = questType.name
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
@@ -195,7 +194,7 @@ class OsmQuestController internal constructor(
 
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
-                    Log.d(TAG, "${questType::class.simpleName!!} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
+                    Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }
                     appliesToElement = questType.getApplicableElements(mapData)
                         .any { it.id == element.id && it.type == element.type }
@@ -306,7 +305,7 @@ class OsmQuestController internal constructor(
         hiddenDB.getAllIds().toSet()
 
     /** Mark the quest as hidden by user interaction */
-    fun hide(key: OsmQuestKey) {
+    override fun hide(key: OsmQuestKey) {
         synchronized(this) { hiddenDB.add(key) }
 
         val hidden = getHidden(key)

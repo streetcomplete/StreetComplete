@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -90,6 +90,46 @@ class NodeDaoTest : ApplicationDbTestCase() {
         dao.putAll(listOf(nd(1), nd(2), nd(3)))
         dao.clear()
         assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
+    }
+
+    @Test fun getAllIdsForBBox() {
+        val inside = listOf(
+            nd(1, lat = 0.0, lon = 0.0),
+            nd(2, lat = 0.5, lon = 1.5),
+            nd(3, lat = 1.0, lon = 1.0)
+        )
+        val outside = listOf(
+            nd(4, lat = -1.0, lon = 1.0),
+            nd(5, lat = 0.3, lon = 2.1)
+        )
+        dao.putAll(inside + outside)
+
+        val ids = dao.getAllIds(BoundingBox(0.0, 0.0, 1.0, 2.0))
+        assertTrue(ids.containsExactlyInAnyOrder(inside.map { it.id }))
+    }
+
+    @Test fun getAllEntriesForIds() {
+        val e1 = nd(1)
+        val e2 = nd(2)
+        val e3 = nd(3)
+        dao.putAll(listOf(e1, e2, e3))
+        assertEquals(listOf(e1, e2).map { it.id }, dao.getAllAsGeometryEntries(listOf(1, 2, 4)).map { it.elementId })
+    }
+
+    @Test fun getAllForBBox() {
+        val inside = listOf(
+            nd(1, lat = 0.0, lon = 0.0),
+            nd(2, lat = 0.5, lon = 1.5),
+            nd(3, lat = 1.0, lon = 1.0)
+        )
+        val outside = listOf(
+            nd(4, lat = -1.0, lon = 1.0),
+            nd(5, lat = 0.3, lon = 2.1)
+        )
+        dao.putAll(inside + outside)
+
+        val nodes = dao.getAll(BoundingBox(0.0, 0.0, 1.0, 2.0))
+        assertTrue(nodes.containsExactlyInAnyOrder(inside))
     }
 }
 

@@ -2,22 +2,28 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.graphics.Typeface
-import android.os.AsyncTask
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.Menu.NONE
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.util.DefaultTextWatcher
-import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
+import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import java.util.Locale
 
@@ -33,11 +39,13 @@ class AddLocalizedNameAdapter(
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
     private val addLanguageButton: View,
     private val rowLayoutResId: Int = R.layout.quest_localizedname_row
-) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>(), DefaultLifecycleObserver {
 
     var localizedNames: MutableList<LocalizedName>
         private set
     private val listeners = mutableListOf<(LocalizedName) -> Unit>()
+
+    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     init {
         localizedNames = initialLocalizedNames.toMutableList()
@@ -50,6 +58,10 @@ class AddLocalizedNameAdapter(
         }
 
         updateAddLanguageButtonVisibility()
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        viewLifecycleScope.cancel()
     }
 
     private fun getNotAddedLanguageTags(): List<String> {
@@ -217,27 +229,27 @@ class AddLocalizedNameAdapter(
 
         private lateinit var localizedName: LocalizedName
 
-        private val autoCorrectInput: AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
+        private val input: EditText = itemView.findViewById(R.id.autoCorrectInput)
         private val buttonLanguage: TextView = itemView.findViewById(R.id.languageButton)
         private val buttonDelete: View = itemView.findViewById(R.id.deleteButton)
         private val buttonNameSuggestions: View = itemView.findViewById(R.id.nameSuggestionsButton)
 
+        private val autoCorrectAbbreviations = AutoCorrectAbbreviationsViewController(input)
+
         init {
-            autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
-                override fun afterTextChanged(s: Editable) {
-                    val name = s.toString()
-                    localizedName.name = name.trim()
-                    buttonNameSuggestions.isGone = name.isNotEmpty()
-                        || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
-                    for (listener in listeners) {
-                        listener(localizedName)
-                    }
+            input.doAfterTextChanged {
+                val name = input.text.toString()
+                localizedName.name = name.trim()
+                buttonNameSuggestions.isGone = name.isNotEmpty()
+                    || getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
+                for (listener in listeners) {
+                    listener(localizedName)
                 }
-            })
+            }
 
             buttonDelete.setOnClickListener {
                 // clearing focus is very necessary, otherwise crash
-                autoCorrectInput.clearFocus()
+                input.clearFocus()
                 remove(adapterPosition)
             }
         }
@@ -250,15 +262,15 @@ class AddLocalizedNameAdapter(
             buttonDelete.isInvisible = isFirst
             buttonLanguage.isInvisible = languageTags.size <= 1
 
-            autoCorrectInput.setText(localizedName.name)
-            autoCorrectInput.requestFocus()
+            input.setText(localizedName.name)
+            input.requestFocus()
             val languageTag = localizedName.languageTag
             buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
 
             // first entry is bold (the first entry is supposed to be the "default language", I
             // hope that comes across to the users like this. Otherwise, a text hint is necessary)
             buttonLanguage.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
-            autoCorrectInput.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
+            input.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
 
             buttonLanguage.setOnClickListener { v: View ->
                 val notAddedLanguageTags = getNotAddedLanguageTags().toMutableList()
@@ -274,27 +286,18 @@ class AddLocalizedNameAdapter(
                     buttonLanguage.text = if (languageTag == "international") "🌍" else languageTag
                     updateAddLanguageButtonVisibility()
                     updateNameSuggestions()
+                    updateAbbreviations()
                 }
             }
 
             updateNameSuggestions()
-
-            // load abbreviations from file in separate thread
-            object : AsyncTask<Void, Void, Abbreviations>() {
-                override fun doInBackground(vararg params: Void): Abbreviations? {
-                    return abbreviationsByLocale?.get(Locale(localizedName.languageTag))
-                }
-
-                override fun onPostExecute(abbreviations: Abbreviations?) {
-                    autoCorrectInput.abbreviations = abbreviations
-                }
-            }.execute()
+            updateAbbreviations()
         }
 
         private fun updateNameSuggestions() {
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag)
 
-            val nameInputEmpty = autoCorrectInput.text.toString().trim().isEmpty()
+            val nameInputEmpty = input.text.toString().trim().isEmpty()
             val hasNameSuggestions = localizedNameSuggestionsMap.isNotEmpty()
             buttonNameSuggestions.isGone = !nameInputEmpty || !hasNameSuggestions
 
@@ -303,6 +306,15 @@ class AddLocalizedNameAdapter(
                     localizedNames = selection.toLocalizedNameList()
                     notifyDataSetChanged()
                     updateAddLanguageButtonVisibility()
+                }
+            }
+        }
+
+        private fun updateAbbreviations() {
+            // load abbreviations from file in background
+            viewLifecycleScope.launch {
+                autoCorrectAbbreviations.abbreviations = withContext(Dispatchers.IO) {
+                    abbreviationsByLocale?.get(Locale(localizedName.languageTag))
                 }
             }
         }

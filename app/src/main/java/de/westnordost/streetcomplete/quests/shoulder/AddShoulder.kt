@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.shoulder
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
@@ -22,18 +19,21 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
     override val elementFilter = """
         ways with
           (
-            highway = trunk
-            or (
-              highway ~ primary|secondary|tertiary|unclassified
+            (
+              highway ~ trunk|primary|secondary|tertiary|unclassified
               and (
                 motorroad = yes
                 or tunnel ~ yes|building_passage|avalanche_protector
                 or bridge = yes
                 or sidewalk ~ no|none
+                or !maxspeed and highway = trunk
                 or maxspeed > 50
-                or maxspeed ~ "([4-9][0-9]|1[0-9][0-9]) mph"
+                or maxspeed ~ "(3[5-9]|[4-9][0-9]|1[0-9][0-9]) mph"
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
               )
+            ) or (
+              highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+              and (foot ~ yes|designated or bicycle ~ yes|designated)
             )
           )
           and lane_markings != no
@@ -46,19 +46,15 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
           and cycleway:left !~ lane|opposite_lane
           and cycleway:right !~ lane|opposite_lane
           and cycleway:both !~ lane|opposite_lane
+          and !verge
           and !shoulder
           and !shoulder:left and !shoulder:right and !shoulder:both
           and (access !~ private|no or (foot and foot !~ private|no))
     """
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter(elementFilter).asIterable()
-
     override val changesetComment = "Add whether there are shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title
 

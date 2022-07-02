@@ -1,8 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, ATM, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, Τράπεζα Eurobank, NBG GROUP]
-chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
-clothesContainerOperators: [Texcycle]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -14,6 +11,9 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
-orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry, chestnut, walnut, almond, plum]
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ
+atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, ATM, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, Τράπεζα Eurobank, NBG GROUP]
+chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
+clothesContainerOperators: [Texcycle]
+orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]

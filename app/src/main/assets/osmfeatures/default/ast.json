@@ -646,13 +646,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Dificultá IMBA de la sienda",
-                    "options": {
-                        "0": "Más fácil (círculu blancu)",
-                        "1": "Fácil (círculu verde)",
-                        "2": "Mediana  (cuadráu azul)",
-                        "3": "Difícil (diamante prietu)",
-                        "4": "Difícil enforma (doble diamante prietu)"
-                    },
                     "placeholder": "Fácil, mediana, difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -913,9 +906,6 @@
                 },
                 "service": {
                     "label": "Tipu"
-                },
-                "service/bicycle": {
-                    "label": "Servicios"
                 },
                 "service/vehicle": {
                     "label": "Servicios"
@@ -1554,10 +1544,6 @@
                     "name": "Teatru",
                     "terms": "comedia,corral"
                 },
-                "amenity/toilets": {
-                    "name": "Aseos",
-                    "terms": "servicios,aseos,retretes"
-                },
                 "amenity/townhall": {
                     "name": "Edificiu municipal",
                     "terms": "casa del conceyu,ayuntamientu"
@@ -2149,9 +2135,6 @@
                     "name": "Enllaz d'estrada autonómica III",
                     "terms": "salida,accesu,enllaz,autonómica terciaria,autonómica mariella"
                 },
-                "highway/track": {
-                    "name": "Pista ensin mantenimientu"
-                },
                 "highway/traffic_mirror": {
                     "name": "Espeyu pal tráficu"
                 },
@@ -2328,9 +2311,6 @@
                 },
                 "leisure/golf_course": {
                     "name": "Campu de golf"
-                },
-                "leisure/horse_riding": {
-                    "name": "Instalación pa equitación"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista de xelu"
@@ -3280,9 +3260,6 @@
                 "waterway/river": {
                     "name": "Ríu",
                     "terms": "ríu,regatu"
-                },
-                "waterway/riverbank": {
-                    "name": "Ribera"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Vaciáu de sentines",

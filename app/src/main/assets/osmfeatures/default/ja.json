@@ -55,6 +55,9 @@
                 "access": {
                     "label": "通行可否",
                     "options": {
+                        "customers": {
+                            "title": "利用客用"
+                        },
                         "designated": {
                             "description": "標識等や特定の地方条例で通行が許可されている",
                             "title": "特定種の通行禁止"
@@ -117,6 +120,17 @@
                         "yes": "アクセス可"
                     },
                     "terms": "アクセス,許可"
+                },
+                "activity": {
+                    "label": "アクティビティ",
+                    "options": {
+                        "Ski": "スキー",
+                        "bicycle": "サイクリング",
+                        "hiking": "ハイキング",
+                        "horse": "乗馬",
+                        "mtb": "マウンテンバイク"
+                    },
+                    "terms": "アクティビティ,活動,体験"
                 },
                 "addr/interpolation": {
                     "label": "補間の種類",
@@ -297,7 +311,6 @@
                     "label": "美容サービスの種類",
                     "options": {
                         "cosmetics": "化粧品店",
-                        "nails": "ネイル",
                         "tanning": "日焼け"
                     }
                 },
@@ -440,9 +453,21 @@
                     "placeholder": "50, 100, 200...",
                     "terms": "キャパ,容量,収容数,定員,収容台数,座席数"
                 },
+                "capacity/caravans": {
+                    "label": "収容数(キャラバン車)",
+                    "placeholder": "10, 20, 50..."
+                },
                 "capacity/disabled_parking": {
                     "label": "駐車区画数（障害者用）",
                     "placeholder": "1, 2, 3..."
+                },
+                "capacity/persons": {
+                    "label": "収容数(人数)",
+                    "placeholder": "50, 100, 200..."
+                },
+                "capacity/tents": {
+                    "label": "収容数(テント)",
+                    "placeholder": "10, 20, 50..."
                 },
                 "capacity_parking": {
                     "label": "最大収容数",
@@ -456,7 +481,18 @@
                     "label": "入金"
                 },
                 "castle_type": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "castrum": "古代ローマの要塞",
+                        "defensive": "城砦",
+                        "fortress": "要塞",
+                        "hillfort": "土塁",
+                        "kremlin": "クレムリ",
+                        "manor": "マナー・ハウス",
+                        "palace": "宮殿",
+                        "shiro": "（日本の）城",
+                        "stately": "大邸宅"
+                    }
                 },
                 "changing_table": {
                     "label": "オムツ交換台有無"
@@ -474,11 +510,6 @@
                 "check_date": {
                     "label": "最終確認日",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "円周",
-                    "placeholder": "1 m, 20 cm, 30 in…",
-                    "terms": "円周,外周,周囲"
                 },
                 "clothes": {
                     "label": "服"
@@ -575,8 +606,14 @@
                         "yes": "あり"
                     }
                 },
+                "crossing/bell": {
+                    "label": "警報音"
+                },
                 "crossing/island": {
                     "label": "横断島"
+                },
+                "crossing/light": {
+                    "label": "警報灯"
                 },
                 "cuisine": {
                     "label": "料理",
@@ -899,7 +936,16 @@
                     "placeholder": "デフォルト"
                 },
                 "embassy": {
-                    "label": "大使館の種類"
+                    "label": "大使館の種類",
+                    "options": {
+                        "delegation": "政府代表部",
+                        "high_commission": "高等弁務官事務所",
+                        "interests_section": "利益代表部",
+                        "mission": "（国際機関の）代表部",
+                        "nunciature": "法王庁大使館",
+                        "residence": "大使公邸",
+                        "yes": "大使館"
+                    }
                 },
                 "emergency": {
                     "label": "緊急設備"
@@ -1473,13 +1519,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBAトレイル難易度",
-                    "options": {
-                        "0": "非常に容易 (白い円)",
-                        "1": "容易 (緑色の円)",
-                        "2": "中程度 (青い四角形)",
-                        "3": "困難 (黒いひし形)",
-                        "4": "非常に困難 (黒いひし形2つ)"
-                    },
                     "placeholder": "初級者、中級者、上級者...",
                     "terms": "ibmaトレイル難易度,imbaトレイル,難易度"
                 },
@@ -1642,7 +1681,12 @@
                     }
                 },
                 "parking/orientation": {
-                    "label": "駐車の向き"
+                    "label": "駐車の向き",
+                    "options": {
+                        "diagonal": "斜め",
+                        "parallel": "平行",
+                        "perpendicular": "直角"
+                    }
                 },
                 "parking_entrance": {
                     "label": "種類",
@@ -1871,7 +1915,23 @@
                     "terms": "リアル暖炉,暖炉"
                 },
                 "recycling_accepts": {
-                    "label": "リサイクル可能な素材"
+                    "label": "リサイクル可能な素材",
+                    "options": {
+                        "batteries": "電池",
+                        "cans": "カン",
+                        "cardboard": "段ボール",
+                        "clothes": "衣類",
+                        "cooking_oil": "食用油",
+                        "engine_oil": "機械油",
+                        "glass": "ガラス",
+                        "glass_bottles": "ガラスびん",
+                        "paper": "紙",
+                        "plastic": "プラスチック",
+                        "plastic_bottles": "プラスチックびん",
+                        "plastic_packaging": "容器包装プラスチック",
+                        "scrap_metal": "金属",
+                        "shoes": "靴"
+                    }
                 },
                 "recycling_type": {
                     "label": "リサイクルの種類",
@@ -2132,9 +2192,6 @@
                         "emergency_access": "緊急通用路",
                         "parking_aisle": "駐車場内通路"
                     }
-                },
-                "service/bicycle": {
-                    "label": "サービス"
                 },
                 "service/vehicle": {
                     "label": "車両向けサービス品目"
@@ -2563,6 +2620,14 @@
                         "tourism": "観光用"
                     },
                     "terms": "使用方法,鉄道使用方法"
+                },
+                "usage_waterway": {
+                    "options": {
+                        "headrace": "導水路",
+                        "irrigation": "灌漑",
+                        "tailrace": "放水路",
+                        "transportation": "水運"
+                    }
                 },
                 "utility": {
                     "label": "公益事業の種類"
@@ -3035,6 +3100,7 @@
                 },
                 "amenity/community_centre/youth_centre": {
                     "name": "青少年センター",
+                    "terms": "青少年センター,児童館,青年館",
                     "aliases": "児童館\n青年館"
                 },
                 "amenity/compressed_air": {
@@ -3275,6 +3341,10 @@
                 "amenity/nursing_home": {
                     "name": "介護施設"
                 },
+                "amenity/parcel_locker": {
+                    "name": "宅配ロッカー",
+                    "aliases": "宅配便ロッカー\n宅配ボックス"
+                },
                 "amenity/parking": {
                     "name": "駐車場",
                     "terms": "駐車場,駐車スペース,自動車,パーキング,コインパーキング,月極"
@@ -3289,6 +3359,7 @@
                 },
                 "amenity/parking/street-side": {
                     "name": "路傍の駐車区画",
+                    "terms": "路傍の駐車区画,駐車場（道路脇）",
                     "aliases": "駐車場（道路脇）"
                 },
                 "amenity/parking/underground": {
@@ -3633,10 +3704,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "野外劇場",
                     "terms": "野外劇場,円形演技場,ひな壇式客席,階段式観覧席"
-                },
-                "amenity/toilets": {
-                    "name": "トイレ",
-                    "terms": "トイレ,便所,公園,公衆トイレ"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "水洗トイレ",
@@ -4494,6 +4561,10 @@
                     "name": "救急車の基地",
                     "terms": "救急車の基地,救命"
                 },
+                "emergency/assembly_point": {
+                    "name": "避難所",
+                    "terms": "避難所,避難場所,一時集合場所"
+                },
                 "emergency/defibrillator": {
                     "name": "AED",
                     "terms": "自動体外式除細動器,救命"
@@ -4560,6 +4631,12 @@
                 "emergency/siren": {
                     "name": "サイレン",
                     "terms": "サイレン,緊急サイレン"
+                },
+                "emergency/water_reservoir": {
+                    "name": "防火水槽"
+                },
+                "emergency/water_reservoir_covered": {
+                    "name": "防火水槽（地下）"
                 },
                 "emergency/water_tank": {
                     "name": "防火水槽",
@@ -4729,10 +4806,6 @@
                 "highway/bus_stop": {
                     "name": "バス停"
                 },
-                "highway/construction": {
-                    "name": "閉鎖道路（建設中）",
-                    "terms": "建設中の道路,通行止め,通行止,道路,閉鎖,閉鎖道路（建設中）"
-                },
                 "highway/corridor": {
                     "name": "建物内の通り抜け道路",
                     "terms": "建物内の通り抜け道路"
@@ -4812,6 +4885,9 @@
                     "name": "歩道（車道の脇）",
                     "terms": "歩道（車道の脇）,歩道"
                 },
+                "highway/footway/signals": {
+                    "name": "横断歩道（歩行者用信号あり）"
+                },
                 "highway/footway/unmarked": {
                     "name": "横断歩道（マークなし）",
                     "terms": "横断歩道（マークなし）,横断歩道,歩道"
@@ -4847,6 +4923,9 @@
                     "name": "自動車専用道路の接続路",
                     "terms": "自動車専用道路,接続路,車道,幹線,公道"
                 },
+                "highway/motorway_link-US-CA": {
+                    "name": "自動車専用道路の接続路"
+                },
                 "highway/passing_place": {
                     "name": "待避所",
                     "terms": "待避所,退避エリア"
@@ -4878,6 +4957,9 @@
                 "highway/primary_link": {
                     "name": "主要地方道の接続路",
                     "terms": "主要地方道,接続路,車道,幹線,公道"
+                },
+                "highway/primary_link-US-CA": {
+                    "name": "主要地方道の接続路"
                 },
                 "highway/raceway": {
                     "name": "モーターレース場",
@@ -4975,10 +5057,6 @@
                     "name": "フリーフローETC",
                     "terms": "フリーフローetc,料金ガントリー,自動通行料金徴収装置,道路通行料,自動徴収"
                 },
-                "highway/track": {
-                    "name": "農道・林道（自動車通行可）",
-                    "terms": "未舗装農道,農道,未舗装林道,林道,獣道,けもの道,酷道,腐道,険道,死道,損道,道路,わだち,轍,車道,トラック,生活道路"
-                },
                 "highway/traffic_mirror": {
                     "name": "カーブミラー",
                     "terms": "カーブミラー,ミラー,道路反射鏡,道路設備,交通安全"
@@ -4998,6 +5076,9 @@
                 "highway/trunk_link": {
                     "name": "国道の接続路",
                     "terms": "国道,接続路,車道,幹線,公道"
+                },
+                "highway/trunk_link-US-CA": {
+                    "name": "国道の接続路"
                 },
                 "highway/turning_circle": {
                     "name": "転回場",
@@ -5166,6 +5247,10 @@
                     "name": "建設予定地",
                     "terms": "工事中用地,建設用地,工事現場,建設予定地"
                 },
+                "landuse/education": {
+                    "name": "教育機関の敷地",
+                    "terms": "学校,大学,高等学校,高校,中学校,小学校,幼稚園,キャンパス"
+                },
                 "landuse/farm": {
                     "name": "農地（非推奨）"
                 },
@@ -5299,6 +5384,9 @@
                 "landuse/retail": {
                     "name": "店舗用地",
                     "terms": "店舗用地,商業地,ショッピング地区,ショッピング街,商店街,お店,ショッピング,小売"
+                },
+                "landuse/salt_pond": {
+                    "name": "塩田"
                 },
                 "landuse/vineyard": {
                     "name": "ぶどう畑",
@@ -5447,10 +5535,6 @@
                     "name": "ハッカースペース",
                     "terms": "ハッカースペース,ハックラボ,ハックスペース,メーカースペース,ファブラボ,fablab"
                 },
-                "leisure/horse_riding": {
-                    "name": "乗馬施設",
-                    "terms": "乗馬施設,馬事公苑,乗馬クラブ,スポーツ,運動,娯楽,レジャー"
-                },
                 "leisure/ice_rink": {
                     "name": "アイススケート場",
                     "terms": "アイススケート,アイススケート場,アイススケートリンク,スケートリンク,スポーツ,運動,娯楽,レジャー"
@@ -5495,6 +5579,10 @@
                     "name": "アメリカンフットボール場",
                     "terms": "アメリカンフットボール場,アメフト競技場,スポーツ,運動,競技"
                 },
+                "leisure/pitch/archery": {
+                    "name": "矢場",
+                    "terms": "弓,アーチェリー,洋弓,弓道場"
+                },
                 "leisure/pitch/australian_football": {
                     "name": "オーストラリアフットボール場",
                     "terms": "オーストラリアフットボール場,競技場,球技場"
@@ -5531,13 +5619,16 @@
                     "name": "クリケット場",
                     "terms": "クリケット場,スポーツ,運動,競技"
                 },
-                "leisure/pitch/equestrian": {
-                    "name": "乗馬場",
-                    "terms": "乗馬場,スポーツ,運動,トレーニング,練習,訓練,競技"
-                },
                 "leisure/pitch/field_hockey": {
                     "name": "フィールドホッケー場",
                     "terms": "フィールドホッケー場,ホッケー,スポーツ"
+                },
+                "leisure/pitch/four_square": {
+                    "name": "フォー・スクエアのコート",
+                    "terms": "がんばこ,大学おとし,天大中小"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "フットサルコート"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "ホースシューズ場",
@@ -5549,6 +5640,9 @@
                 },
                 "leisure/pitch/paintball": {
                     "name": "ペイントボール場"
+                },
+                "leisure/pitch/pickleball": {
+                    "name": "ピックルボール場"
                 },
                 "leisure/pitch/rugby_league": {
                     "name": "ラグビーリーグ場",
@@ -5650,10 +5744,6 @@
                 "leisure/track/cycling": {
                     "name": "自転車競技場",
                     "terms": "自転車競技場,自転車,自転車トラック,自転車レース場"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "競馬トラック",
-                    "terms": "競馬トラック,競馬場,競馬,レース,トラック,馬場,ギャンブル"
                 },
                 "leisure/track/running": {
                     "name": "ランニングトラック",
@@ -6172,6 +6262,28 @@
                     "name": "湿地",
                     "terms": "湿地帯,湿地,植物,湿原"
                 },
+                "natural/wetland/bog": {
+                    "name": "泥地",
+                    "terms": "湿地"
+                },
+                "natural/wetland/mangrove": {
+                    "name": "マングローブ林"
+                },
+                "natural/wetland/reedbed": {
+                    "name": "葦原",
+                    "terms": "湿地"
+                },
+                "natural/wetland/saltmarsh": {
+                    "name": "塩沼"
+                },
+                "natural/wetland/tidalflat": {
+                    "name": "干潟",
+                    "terms": "湿地"
+                },
+                "natural/wetland/wet_meadow": {
+                    "name": "半湿地",
+                    "terms": "湿地"
+                },
                 "natural/wood": {
                     "name": "森林（自然林・原生林）",
                     "terms": "森林（自然林・原生林）,自然林,原生林,樹木,植物,林"
@@ -6182,7 +6294,7 @@
                 },
                 "office": {
                     "name": "オフィス",
-                    "terms": "オフィス"
+                    "terms": "オフィス,事務所"
                 },
                 "office/accountant": {
                     "name": "会計事務所（主に法人向け）",
@@ -7991,10 +8103,6 @@
                     "name": "ハイキングルート",
                     "terms": "ハイキングルート,ハイキングコース"
                 },
-                "type/route/horse": {
-                    "name": "乗馬ルート",
-                    "terms": "乗馬ルート"
-                },
                 "type/route/light_rail": {
                     "name": "ライトレール・ルート",
                     "terms": "ライトレール・ルート,軽便鉄道ルート"
@@ -8101,9 +8209,6 @@
                 "waterway/river": {
                     "name": "河川",
                     "terms": "川,河川"
-                },
-                "waterway/riverbank": {
-                    "name": "河岸"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "海上汚物廃棄所",

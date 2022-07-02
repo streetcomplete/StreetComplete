@@ -1,6 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 advisorySpeedLimitSignStyle: yellow
-atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
 centerLineStyle: white
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
@@ -9,11 +8,13 @@ hasSlowZone: true
 isLeftHandTraffic: true
 livingStreetSignStyle: australia
 mobileCountryCode: 505
+noEntrySignStyle: no entry
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [en]
-orchardProduces: [grape, tomato, banana, apple, orange, pear, olive, peach, pineapple, almond, avocado, strawberry, lemon, lime, guava, mango, mangosteen, chilli_pepper, sweet_pepper]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: AREA
+atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
+orchardProduces: [grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry]

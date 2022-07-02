@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapFragment"
-        android:name="de.westnordost.streetcomplete.map.QuestsMapFragment"
+        android:name="de.westnordost.streetcomplete.screens.main.map.MainMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_map"
@@ -20,7 +20,7 @@
         android:animateLayoutChanges="true"
         tools:ignore="RtlHardcoded">
 
-        <de.westnordost.streetcomplete.map.PointerPinView
+        <de.westnordost.streetcomplete.screens.main.PointerPinView
             android:id="@+id/locationPointerPin"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -30,7 +30,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/answers_counter_fragment"
-            android:name="de.westnordost.streetcomplete.controls.AnswersCounterFragment"
+            android:name="de.westnordost.streetcomplete.screens.main.controls.AnswersCounterFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_answers_counter"
@@ -40,7 +40,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upload_button_fragment"
-            android:name="de.westnordost.streetcomplete.controls.UploadButtonFragment"
+            android:name="de.westnordost.streetcomplete.screens.main.controls.UploadButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_upload_button"
@@ -49,19 +49,19 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_menu_button_fragment"
-            android:name="de.westnordost.streetcomplete.controls.MainMenuButtonFragment"
+            android:name="de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_main_menu_button"
             android:layout_alignParentRight="true" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/notification_button_fragment"
-            android:name="de.westnordost.streetcomplete.controls.NotificationButtonFragment"
+            android:id="@+id/messages_button_fragment"
+            android:name="de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             android:layout_toLeftOf="@id/upload_button_fragment"
-            tools:layout="@layout/fragment_notification_button" />
+            tools:layout="@layout/fragment_messages_button" />
 
         <!-- note the other compass in quest_street_side_puzzle -->
         <ImageView
@@ -87,6 +87,17 @@
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
             <ImageButton
+                android:id="@+id/stop_tracks_button"
+                style="@style/RoundAccentButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/map_button_size"
+                android:contentDescription="@string/map_btn_stop_track"
+                android:scaleType="center"
+                android:src="@drawable/ic_stop_recording_24dp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <ImageButton
                 android:id="@+id/zoomInButton"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"
@@ -104,7 +115,7 @@
                 android:src="@drawable/ic_subtract_24dp"
                 android:contentDescription="@string/map_btn_zoom_out"/>
 
-            <de.westnordost.streetcomplete.location.LocationStateButton
+            <de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
                 android:id="@+id/gpsTrackingButton"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"
@@ -129,7 +140,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/undo_button_fragment"
-                android:name="de.westnordost.streetcomplete.controls.UndoButtonFragment"
+                android:name="de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"
                 tools:layout="@layout/fragment_undo_button"
@@ -139,7 +150,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/quest_download_progress_fragment"
-            android:name="de.westnordost.streetcomplete.controls.DownloadProgressFragment"
+            android:name="de.westnordost.streetcomplete.screens.main.controls.DownloadProgressFragment"
             android:layout_width="80dp"
             android:layout_height="80dp"
             tools:layout="@layout/fragment_download_progress"

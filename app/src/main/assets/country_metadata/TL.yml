@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 514
 noStoppingSignStyle: australia
 officialLanguages: [tet, pt]
-orchardProduces: [coffee, coconut, guava, mango, mangosteen, avocado, papaya, orange, tomato, banana, cacao, pineapple]
+atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank]
+orchardProduces: [coffee, coconut, cacao, guava, mango, mangosteen, banana, avocado, orange, tomato, papaya, pineapple]

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.measuredLength
-import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.math.measuredLength
+import de.westnordost.streetcomplete.util.math.pointOnPolylineFromStart
 import kotlinx.serialization.Serializable
 
 /** Contains information about at which position to split a way. */
@@ -24,7 +24,8 @@ data class SplitAtLinePosition(val pos1: LatLon, val pos2: LatLon, val delta: Do
         return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
     }
     init {
-        if (delta <= 0 || delta >= 1)
+        if (delta <= 0 || delta >= 1) {
             throw IllegalArgumentException("Delta must be between 0 and 1 (both exclusive)")
+        }
     }
 }

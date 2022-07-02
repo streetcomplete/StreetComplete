@@ -11,52 +11,58 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
 
 enum class Cycleway {
-    // a.k.a. exclusive lane, dedicated lane or simply (proper) lane
+    /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
+     *  exclusive access for cyclists */
     EXCLUSIVE_LANE,
-    // lane in both directions
+    /** [EXCLUSIVE_LANE] in both directions */
     DUAL_LANE,
-    // a.k.a. protective lane, multipurpose lane, soft lane or recommended lane
+    /** a.k.a. cycle lane with dashed markings, protective lane, multipurpose lane, soft lane or
+     *  recommended lane. Usually priority access for cyclists, cars may use if necessary */
     ADVISORY_LANE,
-    // some kind of cycle lane, not specified if with continuous or dashed lane markings
+    /** some kind of cycle lane, not specified whether exclusive or advisory */
     UNSPECIFIED_LANE,
-    // unknown lane: lane tag set, but unknown subtag
+    /** unknown lane: lane tag set, but unknown subtag */
     UNKNOWN_LANE,
 
-    // slight difference to dashed lane only made in NL, BE
+    /** slight difference to advisory lane only made in NL, BE. Basically a very slim multi-purpose
+     *  shoulder */
     SUGGESTION_LANE,
-    // cycle track
+    /** a.k.a. sharrows, shared lane with pictograms. Just some bicycle pictograms drawn on the
+     *  roadway to signalize that there are also cyclists here (and are allowed to use the road) */
     PICTOGRAMS,
-    // unspecified shared lane: shared lane tag set, but no subtag
+    /** shared lane tag set, but no subtag */
     UNSPECIFIED_SHARED_LANE,
-    // unknown shared lane: shared lane tag set, but unknown subtag
+    /** shared lane tag set, but unknown subtag */
     UNKNOWN_SHARED_LANE,
 
-    // no cycleway, but cyclists are to explicitly share the sidewalk
+    /** cycle track, i.e. beyond curb or other barrier */
     TRACK,
-    // track in both directions
+    /** [TRACK] in both directions */
     DUAL_TRACK,
 
-    // shared with bus lane
+    /** cyclists share space with bus lane */
     BUSWAY,
 
-    // shared lane with pictograms
+    /** cyclists explicitly ought to share the sidewalk with pedestrians, i.e. the cycle track is
+     *  not segregated from the sidewalk */
     SIDEWALK_EXPLICIT,
     // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
     // SIDEWALK_OK,
 
-    // no cycleway
+    /** no cycle track or lane */
     NONE,
-    // none, but oneway road is not oneway for cyclists (sometimes has pictograms)
+    /** none, but oneway road is not oneway for cyclists (sometimes has pictograms, which is why it
+     *  should not be confused with [PICTOGRAMS]) */
     NONE_NO_ONEWAY,
 
-    // cycleway is mapped as a separate way
+    /** cycleway is mapped as a separate way */
     SEPARATE,
 
-    // unknown cycleway tag set
+    /** unknown cycleway tag set */
     UNKNOWN,
 
-    // definitely wrong cycleway tag (because wrong scheme, or ambiguous) set
+    /** definitely wrong cycleway tag (because wrong scheme, or ambiguous) set */
     INVALID
 ;
 

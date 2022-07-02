@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.parking_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddParkingType : OsmFilterQuestType<ParkingType>() {
 
@@ -15,8 +15,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
     override val changesetComment = "Add parking type"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
-
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parkingType_title
 

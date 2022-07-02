@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LastPickedValuesStore
-import de.westnordost.streetcomplete.quests.mostCommonWithin
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.mostCommonWithin
 
-class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
+class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_building_levels
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
@@ -31,12 +31,12 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 5, historyCount = 30, first = 1)
+            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
 
-    internal lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
+    private lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
@@ -53,13 +53,9 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val onTextChangedListener = TextChangedWatcher {
-            checkIsFormComplete()
-        }
-
         binding.levelsInput.requestFocus()
-        binding.levelsInput.addTextChangedListener(onTextChangedListener)
-        binding.roofLevelsInput.addTextChangedListener(onTextChangedListener)
+        binding.levelsInput.doAfterTextChanged { checkIsFormComplete() }
+        binding.roofLevelsInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
     }

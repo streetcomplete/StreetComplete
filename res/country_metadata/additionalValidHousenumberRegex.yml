@@ -1,4 +1,0 @@
-# country-dependent additional housenumber strings that should be considered valid
-# 
-ES: s/n
-FR: \p{N}{1,4}\sbis

@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank]
 isLeftHandTraffic: true
 mobileCountryCode: 342
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [coconut, banana, avocado, chilli_pepper, sweet_pepper, tomato]
 popularSports: [cricket]
+atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank]
+orchardProduces: [coconut, banana, avocado, tomato, chilli_pepper, sweet_pepper]

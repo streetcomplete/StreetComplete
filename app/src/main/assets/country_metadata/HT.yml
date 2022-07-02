@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Sogebank, Unibank]
 mobileCountryCode: 372
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, ht]
-orchardProduces: [guava, mango, mangosteen, banana, avocado, lemon, lime, coffee, coconut, grapefruit, orange, cacao, sisal, pineapple, tomato, papaya]
+atmOperators: [Sogebank, Unibank]
+orchardProduces: [banana, coffee, guava, mango, mangosteen, avocado, cacao, sisal, orange, coconut, grapefruit, lemon, lime, pineapple, tomato, papaya]

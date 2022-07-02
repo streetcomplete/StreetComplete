@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.util.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BICYCLE_BARRIER
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BLOCK
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BOLLARD
@@ -27,12 +27,11 @@ import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.TURNSTILE
 import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.WIRE_GATE
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddBarrierTypeForm : AImageListQuestAnswerFragment<BarrierType, BarrierType>() {
+class AddBarrierTypeForm : AImageListQuestForm<BarrierType, BarrierType>() {
 
     override val items = listOf(
         Item(PASSAGE, R.drawable.barrier_passage, R.string.quest_barrier_type_passage),
-        Item(GATE, R.drawable.barrier_gate, R.string.quest_barrier_type_gate),
-        Item(GATE, R.drawable.barrier_gate_pedestrian, R.string.quest_barrier_type_gate),
+        Item(GATE, R.drawable.barrier_gate, R.string.quest_barrier_type_gate_any_size),
         Item(LIFT_GATE, R.drawable.barrier_lift_gate, R.string.quest_barrier_type_lift_gate),
         Item(SWING_GATE, R.drawable.barrier_swing_gate, R.string.quest_barrier_type_swing_gate),
         Item(BOLLARD, R.drawable.barrier_bollard, R.string.quest_barrier_type_bollard),

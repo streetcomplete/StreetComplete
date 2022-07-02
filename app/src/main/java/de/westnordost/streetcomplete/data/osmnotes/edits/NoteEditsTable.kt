@@ -14,6 +14,7 @@ object NoteEditsTable {
         const val TEXT = "text"
         const val IMAGE_PATHS = "image_paths"
         const val IMAGES_NEED_ACTIVATION = "images_need_activation"
+        const val TRACK = "track"
     }
 
     const val CREATE = """
@@ -27,6 +28,7 @@ object NoteEditsTable {
             ${Columns.TEXT} text,
             ${Columns.IMAGE_PATHS} text NOT NULL,
             ${Columns.IMAGES_NEED_ACTIVATION} int NOT NULL,
+            ${Columns.TRACK} text NOT NULL,
             ${Columns.TYPE} varchar(255)
         );
     """

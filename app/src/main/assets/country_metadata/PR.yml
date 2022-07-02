@@ -1,9 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 centerLineStyle: yellow
 lengthUnits: [foot and inch, meter]
+noEntrySignStyle: no entre
 noParkingSignStyle: mutcd text spanish
-noStoppingSignStyle: mutcd
-officialLanguages: [en]
-orchardProduces: [banana, guava, mango, mangosteen, tomato, orange, papaya, pineapple, coffee, chilli_pepper, sweet_pepper, coconut, grapefruit, avocado, lemon, lime]
+noStoppingSignStyle: mutcd text spanish
+officialLanguages: [es, en]
 popularSports: [basketball, tennis, baseball]
 speedUnits: [miles per hour, kilometers per hour]
+orchardProduces: [coffee, orange, banana, guava, mango, mangosteen, tomato, papaya, avocado, chilli_pepper, sweet_pepper, pineapple, coconut, lemon, lime, grapefruit]

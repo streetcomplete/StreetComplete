@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.withSave
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.isApril1st
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
@@ -19,6 +18,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
 import kotlin.random.Random
 
@@ -62,7 +62,7 @@ class StreetParkingDrawable(
             // drawing the street background
             if (backgroundResId != null) {
                 val background = context.getDrawable(backgroundResId)!!
-                val backgroundHeight = background.intrinsicHeight / background.intrinsicWidth * width
+                val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
                 background.setBounds(0, 0, width, backgroundHeight)
                 background.draw(canvas)
             }
@@ -70,7 +70,8 @@ class StreetParkingDrawable(
             // drawing the cars
             for (i in 0 until carCount) {
                 if (i in omittedCarIndices) continue
-                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(CAR_RES_IDS.size)]
+                val carResId = nyanResId ?: staticCarDrawableResId ?: CAR_RES_IDS[Random.nextInt(
+                    CAR_RES_IDS.size)]
                 val car = context.getDrawable(carResId)!!
                 val carHeight = car.intrinsicHeight * carWidth / car.intrinsicWidth
                 val paddingY = (height / carCount - carHeight) / 2

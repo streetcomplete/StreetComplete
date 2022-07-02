@@ -2,10 +2,10 @@
 <svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
  <path d="m24 100h80v-48l-40-16-40 16z" fill="#deb486"/>
  <path d="m16 56 48-20 48 20" fill="none" stroke="#c84747" stroke-width="12"/>
- <rect x="40" y="64" width="24" height="36" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="40" y="64" width="24" height="36" fill="#c08268"/>
  <path d="m64.129 107.87c-8.9032 0-8.9032-11.777 0-11.871 5.9355-8.8095 11.871 0 11.871 0 5.9355-5.9355 11.871 0 11.871 2.9677 5.9355 0 2.9677 8.9032 0 8.9032 0.81899 0.47724-10.791 6.4482-23.742 0z" fill="#539c4e"/>
- <rect x="76" y="68" width="12" height="12" fill="#95685e" style="paint-order:stroke markers fill"/>
- <rect x="76" y="64" width="12" height="4.0001" fill="#c08268" style="paint-order:stroke markers fill"/>
+ <rect x="76" y="68" width="12" height="12" fill="#95685e"/>
+ <rect x="76" y="64" width="12" height="4.0001" fill="#c08268"/>
  <path d="m89.042 117.7c-17.102-3.457-1.663-19.481 2.9583-29.696 4.6667 9.9125 16.283 30.094-2.9583 29.696z" fill="#57a352"/>
  <g transform="rotate(-15 125.78 79.404)">
   <path d="m101.99 64v24" fill="none" stroke="#95685e" stroke-width="4"/>

@@ -501,10 +501,6 @@
                     "name": "Pozorište",
                     "terms": "teatar,pozorište"
                 },
-                "amenity/toilets": {
-                    "name": "Toaleti",
-                    "terms": "kupatila,toaleti,wc-i"
-                },
                 "amenity/townhall": {
                     "name": "Gradska vijećnica",
                     "terms": "gradska vijećnica,vijećnica"
@@ -1532,9 +1528,6 @@
                 "waterway/river": {
                     "name": "Rijeka",
                     "terms": "rijeka,riječni tok"
-                },
-                "waterway/riverbank": {
-                    "name": "Riječno korito"
                 },
                 "waterway/stream": {
                     "name": "Potok",

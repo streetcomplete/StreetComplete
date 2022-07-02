@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.toilet_availability
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.ktx.toYesNo
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
 
@@ -14,7 +14,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
         (
-          (shop ~ mall|department_store and name)
+          shop ~ mall|department_store
           or highway ~ services|rest_area
         )
         and !toilets
@@ -22,16 +22,11 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add toilet availability"
     override val wikiLink = "Key:toilets"
     override val icon = R.drawable.ic_quest_toilets
+    override val achievements = listOf(CITIZEN)
 
-    override val questTypeAchievements = listOf(CITIZEN)
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletAvailability_title
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["highway"] == "rest_area" || tags["highway"] == "services")
-            R.string.quest_toiletAvailability_rest_area_title
-        else
-            R.string.quest_toiletAvailability_name_title
-
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags["toilets"] = answer.toYesNo()

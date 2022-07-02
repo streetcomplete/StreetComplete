@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BSP, ANZ Bank]
 centerLineStyle: yellow
 isLeftHandTraffic: true
 mobileCountryCode: 537
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [tpi, en, ho]
-orchardProduces: [banana, coconut, coffee, cacao, pineapple, rubber, tea, tomato, vanilla, nutmeg, chilli_pepper, sweet_pepper]
+atmOperators: [BSP, ANZ Bank]
+orchardProduces: [coconut, cacao, banana, coffee, rubber, tea, vanilla, pineapple, nutmeg, tomato, chilli_pepper, sweet_pepper]

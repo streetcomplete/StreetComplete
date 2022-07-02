@@ -55,6 +55,9 @@
                 "access": {
                     "label": "Prawo wstępu/wjazdu mają",
                     "options": {
+                        "customers": {
+                            "title": "Klienci"
+                        },
                         "designated": {
                             "description": "Dostęp dozwolony na podstawie znaków lub określonych przepisów lokalnych",
                             "title": "Wyznaczony"
@@ -83,6 +86,9 @@
                             "description": "Dostęp dozwolony tylko za zgodą właściciela na indywidualnych zasadach",
                             "title": "Prywatny"
                         },
+                        "unknown": {
+                            "title": "Nieznany"
+                        },
                         "yes": {
                             "description": "Dostęp zagwarantowany prawnie",
                             "title": "Dozwolony"
@@ -109,9 +115,20 @@
                         "permissive": "permissive (dozwolony)",
                         "permit": "permit (za zgodą)",
                         "private": "private (prywatny)",
+                        "unknown": "Nieznany",
                         "yes": "yes (publiczny)"
                     },
                     "terms": "dozwolony wstęp,dostęp"
+                },
+                "activity": {
+                    "label": "Aktywność",
+                    "options": {
+                        "Ski": "Jazda na nartach",
+                        "bicycle": "Jazda na rowerze",
+                        "hiking": "Wspinaczka",
+                        "horse": "Jeżdżenie na koniu",
+                        "mtb": "Jazda na rowerze górskim"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Rodzaj",
@@ -292,7 +309,6 @@
                     "label": "Usługi",
                     "options": {
                         "cosmetics": "cosmetics (zabiegi kosmetyczne)",
-                        "nails": "nails (manicure/pedicure)",
                         "tanning": "tanning (solarium)"
                     }
                 },
@@ -419,9 +435,15 @@
                     "placeholder": "50, 100, 200...",
                     "terms": "liczba miejsc,pojemność"
                 },
+                "capacity/caravans": {
+                    "placeholder": "10, 20, 50..."
+                },
                 "capacity/disabled_parking": {
                     "label": "Liczba miejsc dla niepełnosprawnych",
                     "placeholder": "1, 2, 3..."
+                },
+                "capacity/persons": {
+                    "label": "Ilość (Osoby)"
                 },
                 "capacity_parking": {
                     "label": "Całkowita liczba miejsc",
@@ -435,7 +457,14 @@
                     "label": "Wpłatomat"
                 },
                 "castle_type": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "fortress": "Twierdza",
+                        "hillfort": "Zamek na wzgórzu",
+                        "kremlin": "Kreml / Cytadela",
+                        "manor": "Dwór",
+                        "palace": "Pałac"
+                    }
                 },
                 "changing_table": {
                     "label": "Przewijak"
@@ -453,11 +482,6 @@
                 "check_date": {
                     "label": "Data ostatniego sprawdzenia",
                     "placeholder": "YYYY-MM-DD"
-                },
-                "circumference": {
-                    "label": "Obwód pnia na wysokości 1,3 m",
-                    "placeholder": "w metrach, np. 4.5",
-                    "terms": "obwód,pierśnica"
                 },
                 "clothes": {
                     "label": "Ubrania"
@@ -527,6 +551,12 @@
                     "label": "Zadaszenie",
                     "terms": "zadaszenie,dach"
                 },
+                "covered_no": {
+                    "options": {
+                        "no": "Nie",
+                        "yes": "Tak"
+                    }
+                },
                 "craft": {
                     "label": "Rodzaj"
                 },
@@ -544,31 +574,73 @@
                 "crossing": {
                     "label": "Rodzaj"
                 },
+                "crossing/barrier": {
+                    "options": {
+                        "full": "Pełne",
+                        "half": "Połowa",
+                        "no": "Nie",
+                        "yes": "Tak"
+                    }
+                },
+                "crossing/bell": {
+                    "label": "Dzwonek"
+                },
                 "crossing/island": {
                     "label": "Wyspa azylu"
+                },
+                "crossing/light": {
+                    "label": "Światła"
+                },
+                "crossing_raised": {
+                    "label": "Podniesione",
+                    "options": {
+                        "table": "Tak",
+                        "undefined": "Nie"
+                    }
                 },
                 "cuisine": {
                     "label": "Kuchnia",
                     "options": {
                         "american": "amerykańska",
                         "asian": "azjatycka",
+                        "bubble_tea": "Bubble Tea",
                         "burger": "burgery",
+                        "cake": "Ciasta",
                         "chicken": "kurczaki",
                         "chinese": "chińska",
+                        "chocolate": "Czekolada",
                         "coffee_shop": "kawy",
+                        "dessert": "Desery",
+                        "donut": "Pączki / Donuty",
+                        "fish": "Ryba",
                         "french": "francuska",
                         "german": "niemiecka",
                         "greek": "grecka",
+                        "hot_dog": "Hot dogi",
                         "ice_cream": "lody",
                         "indian": "indyjska",
+                        "indonesian": "Indonezyjska",
                         "italian": "włoska",
                         "japanese": "japońska",
+                        "juice": "Napoje",
                         "kebab": "kebab",
+                        "korean": "Koreańska",
+                        "lebanese": "Libańska",
+                        "malaysian": "Malezyjska",
                         "mexican": "meksykańska",
+                        "pankcake": "Naleśniki",
+                        "pasta": "Makarony",
                         "pizza": "pizza",
+                        "polish": "Polska",
+                        "portuguese": "Portugalska",
                         "regional": "regionalna",
+                        "russian": "Rosyjska",
+                        "salad": "Sałatki",
                         "sandwich": "kanapki",
+                        "seafood": "Owoce morza",
+                        "spanish": "Hiszpańska",
                         "sushi": "sushi",
+                        "taiwanese": "Tajwańska",
                         "thai": "tajska",
                         "turkish": "turecka",
                         "vietnamese": "wietnamska"
@@ -1390,11 +1462,11 @@
                 "mtb/scale/imba": {
                     "label": "Skala trudności szlaków dla rowerów górskich IMBA",
                     "options": {
-                        "0": "Najłatwiejszy (biały okrąg)",
-                        "1": "Łatwy (zielony okrąg)",
-                        "2": "Wymagający (niebieski kwadrat)",
-                        "3": "Trudny (czarny romb)",
-                        "4": "Ekstremalnie trudny (podwójny czarny romb)"
+                        "0": "⚪ Najłatwiejszy (białe koło)",
+                        "1": "🟢 Łatwy (zielone koło)",
+                        "2": "🟦 Wymagający (niebieski kwadrat)",
+                        "3": "◆ Trudny (czarny romb)",
+                        "4": "◆◆ Ekstremalnie trudny (podwójny czarny romb)"
                     },
                     "placeholder": "Łatwy, Wymagający, Trudny...",
                     "terms": "skala trudności szlaków dla rowerów górskich imba"
@@ -1539,6 +1611,9 @@
                 "par": {
                     "label": "Par",
                     "placeholder": "3, 4, 5..."
+                },
+                "parcel_pickup": {
+                    "label": "Paczkomat"
                 },
                 "park_ride": {
                     "label": "Parkuj i Jedź",
@@ -1780,7 +1855,22 @@
                     "label": "Numer regionalnej sieci rowerowej"
                 },
                 "recycling_accepts": {
-                    "label": "Przyjmuje"
+                    "label": "Przyjmuje",
+                    "options": {
+                        "batteries": "Baterie",
+                        "cans": "Puszki",
+                        "cardboard": "Karton",
+                        "clothes": "Ubrania",
+                        "glass": "Szkło",
+                        "glass_bottles": "Szklane butelki i słoiki",
+                        "green_waste": "Bioodpady",
+                        "paper": "Papier",
+                        "plastic": "Plastik",
+                        "plastic_bottles": "Plastikowe butelki",
+                        "plastic_packaging": "Plastikowe opakowania",
+                        "scrap_metal": "Złom",
+                        "shoes": "Obuwie"
+                    }
                 },
                 "recycling_type": {
                     "label": "Rodzaj",
@@ -1999,6 +2089,12 @@
                 "seamark/mooring/category": {
                     "label": "Kategoria"
                 },
+                "seamark/rescue_station/category": {
+                    "options": {
+                        "first_aid": "Pierwsza pomoc",
+                        "radio": "Stacja radiowa"
+                    }
+                },
                 "seamark/type": {
                     "label": "Znak nawigacyjny",
                     "terms": "znak nawigacyjny,nawigacja"
@@ -2038,9 +2134,6 @@
                         "emergency_access": "emergency_access (dla służb ratowniczych)",
                         "parking_aisle": "parking_aisle (uliczka parkingowa)"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Usługi"
                 },
                 "service/vehicle": {
                     "label": "Usługi"
@@ -2136,6 +2229,9 @@
                         "survey": "survey (wizyta na miejscu)"
                     },
                     "terms": "źródła"
+                },
+                "species": {
+                    "label": "Gatunek"
                 },
                 "species/wikidata": {
                     "label": "Species Wikidata",
@@ -2307,6 +2403,9 @@
                 },
                 "target": {
                     "label": "Kraj przyjmujący"
+                },
+                "taxon": {
+                    "label": "Takson"
                 },
                 "telecom": {
                     "label": "Rodzaj"
@@ -2567,7 +2666,10 @@
                     "terms": "strona www,strona internetowa"
                 },
                 "wetland": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "swamp": "Bagna"
+                    }
                 },
                 "wheelchair": {
                     "label": "Dostęp dla wózków inwalidzkich",
@@ -2924,6 +3026,9 @@
                 "amenity/community_centre/lgbtq": {
                     "name": "Centrum społeczności LGBT",
                     "terms": "centrum społeczności lgbt,lgbtq,gejów,lesbijek"
+                },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Centrum młodzieżowe"
                 },
                 "amenity/compressed_air": {
                     "name": "Kompresor",
@@ -3519,9 +3624,11 @@
                     "name": "Amfiteatr",
                     "terms": "amfiteatr,na świeżym powietrzu,na zewnątrz,grecki,amfi"
                 },
+                "amenity/ticket_validator": {
+                    "name": "Czytnik biletów"
+                },
                 "amenity/toilets": {
-                    "name": "Toalety publiczne",
-                    "terms": "toalety,toaleta,łazienka,ubikacja,wc"
+                    "name": "Toalety"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "WC",
@@ -4604,8 +4711,7 @@
                     "name": "Przystanek autobusowy"
                 },
                 "highway/construction": {
-                    "name": "Droga w budowie",
-                    "terms": "droga w budowie,droga w przebudowie,zamknięta droga,droga zamknięta,ścieżka w budowie,ścieżka w przebudowie,roboty drogowe,budowa"
+                    "name": "Droga w budowie"
                 },
                 "highway/corridor": {
                     "name": "Korytarz (w budynku)",
@@ -4707,15 +4813,15 @@
                     "terms": "mini,rondo,małe,skrzyżowanie"
                 },
                 "highway/motorway": {
-                    "name": "Autostrada",
-                    "terms": "autostrada"
+                    "name": "Droga autostradowa",
+                    "terms": "droga autostradowa"
                 },
                 "highway/motorway_junction": {
-                    "name": "Węzeł autostradowy",
-                    "terms": "węzeł autostradowy,wjazd na autostradę,zjazd z autostrady,autostrada"
+                    "name": "Węzeł dróg autostradowych",
+                    "terms": "węzeł dróg autostradowych,wjazd na drogę autostradową,zjazd z drogi autostradowej,droga autostrada"
                 },
                 "highway/motorway_link": {
-                    "name": "Autostrada – wjazd/zjazd",
+                    "name": "Droga autostradowa – wjazd/zjazd",
                     "terms": "rampa,wjazd,wyjazd,zjazd"
                 },
                 "highway/passing_place": {
@@ -4845,10 +4951,6 @@
                 "highway/toll_gantry": {
                     "name": "Bramownica poboru opłat",
                     "terms": "bramownica poboru opłat,pobór opłat,viatoll"
-                },
-                "highway/track": {
-                    "name": "Droga prowadząca na pola lub do lasu",
-                    "terms": "droga polna,droga leśna,trakt leśny"
                 },
                 "highway/traffic_mirror": {
                     "name": "Lustro drogowe",
@@ -5318,8 +5420,7 @@
                     "terms": "hackerspace,hackspace,hacklab,makerspace,creative space"
                 },
                 "leisure/horse_riding": {
-                    "name": "Ośrodek jeździecki",
-                    "terms": "ośrodek jeździecki,centrum jazdy konnej,jazda konna,jeździectwo,koń,konie"
+                    "name": "Centrum jazdy konnej"
                 },
                 "leisure/ice_rink": {
                     "name": "Lodowisko",
@@ -5402,12 +5503,14 @@
                     "terms": "pole do krykieta"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Ujeżdżalnia",
-                    "terms": "ujeżdżalnia"
+                    "name": "Arena jeździecka"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Boisko do hokeja na trawie",
                     "terms": "boisko do hokeja na trawie,hokej na trawie"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Boisko do futsalu"
                 },
                 "leisure/pitch/horseshoes": {
                     "name": "Miejsce do gry w rzut podkową",
@@ -5417,6 +5520,9 @@
                     "name": "Boisko do gry w netball",
                     "terms": "boisko,netball"
                 },
+                "leisure/pitch/paintball": {
+                    "name": "Pole do gry w paintballa"
+                },
                 "leisure/pitch/rugby_league": {
                     "name": "Boisko rugby league",
                     "terms": "boisko rugby"
@@ -5424,6 +5530,9 @@
                 "leisure/pitch/rugby_union": {
                     "name": "Boisko rugby union",
                     "terms": "boisko rugby"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "Strzelnica"
                 },
                 "leisure/pitch/shuffleboard": {
                     "name": "Boisko do shuffleboard",
@@ -5510,8 +5619,7 @@
                     "terms": "tor,kolarstwo,welodrom,rower"
                 },
                 "leisure/track/horse_racing": {
-                    "name": "Hipodrom (Wyścigi konne)",
-                    "terms": "hipodrom,wyścigi,konne,konie,tor wyścigowy"
+                    "name": "Konny tor wyścigowy"
                 },
                 "leisure/track/running": {
                     "name": "Bieżnia",
@@ -5571,6 +5679,9 @@
                 "man_made/clearcut": {
                     "name": "Poręba",
                     "terms": "wyręba,poręba,wycinka,las,drewno,drzewo"
+                },
+                "man_made/compass_rose": {
+                    "name": "Róża wiatrów"
                 },
                 "man_made/courtyard": {
                     "name": "Dziedziniec"
@@ -6022,6 +6133,9 @@
                     "name": "Bagno",
                     "terms": "bagno,bagna,mokradło,mokradła,moczary,szuwary,grzęzawisko,trzęsawisko,trzcinowisko,podmokłe łąki,podmokły teren,namorzyny,torfowisko,młaka"
                 },
+                "natural/wetland/reedbed": {
+                    "name": "Szuwary"
+                },
                 "natural/wood": {
                     "name": "Drzewa",
                     "terms": "drzewa,las,puszcza,tajga,las pierwotny,las tropikalny,dżungla,bór,knieja,gaj,zagaj,zagajnik,młodnik,młodniak,zadrzewienie,zalesienie"
@@ -6360,7 +6474,7 @@
                     "terms": "piaskownica,piasek,plac zabaw"
                 },
                 "playground/seesaw": {
-                    "name": "Huśtawka",
+                    "name": "Huśtawka belkowa",
                     "terms": "huśtawka"
                 },
                 "playground/slide": {
@@ -6376,7 +6490,7 @@
                     "terms": "zestaw zabawowy,budowla"
                 },
                 "playground/swing": {
-                    "name": "Huśtawka",
+                    "name": "Huśtawka podwieszona",
                     "terms": "huśtawka"
                 },
                 "playground/zipwire": {
@@ -7779,6 +7893,18 @@
                     "name": "Zakaz skrętu w prawo",
                     "terms": "zakaz,prawoskręt"
                 },
+                "type/restriction/no_straight_on": {
+                    "name": "Zakaz jazdy prosto"
+                },
+                "type/restriction/only_left_turn": {
+                    "name": "Nakaz skrętu w lewo"
+                },
+                "type/restriction/only_right_turn": {
+                    "name": "Nakaz skrętu w prawo"
+                },
+                "type/restriction/only_straight_on": {
+                    "name": "Nakaz jazdy prosto"
+                },
                 "type/route": {
                     "name": "Trasa/linia",
                     "terms": "trasa,linia"
@@ -7786,6 +7912,9 @@
                 "type/route/aerialway": {
                     "name": "Trasa kolei linowej",
                     "terms": "trasa kolei linowej,kolej linowa"
+                },
+                "type/route/bicycle": {
+                    "name": "Trasa rowerowa"
                 },
                 "type/route/bus": {
                     "name": "Linia autobusowa",
@@ -7808,8 +7937,7 @@
                     "terms": "szlak pieszy,szlak górski,szlak alpejski,szlak turystyczny"
                 },
                 "type/route/horse": {
-                    "name": "Szlak konny",
-                    "terms": "szlak konny,konie"
+                    "name": "Trasa konna"
                 },
                 "type/route/light_rail": {
                     "name": "Linia kolei miejskiej",
@@ -7917,9 +8045,6 @@
                 "waterway/river": {
                     "name": "Rzeka",
                     "terms": "rzeka,rzeczka,ciek"
-                },
-                "waterway/riverbank": {
-                    "name": "Brzeg rzeki"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Miejsce opróżniania toalety (dla łodzi)",

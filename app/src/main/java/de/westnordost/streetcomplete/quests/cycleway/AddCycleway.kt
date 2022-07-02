@@ -1,21 +1,21 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.MAXSPEED_TYPE_KEYS
-import de.westnordost.streetcomplete.data.meta.hasCheckDateForKey
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
+import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
@@ -38,13 +38,20 @@ import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
-import de.westnordost.streetcomplete.util.isNearAndAligned
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.util.math.isNearAndAligned
+import java.util.concurrent.FutureTask
 
-class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(
+    private val countryInfos: CountryInfos,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+) : OsmElementQuestType<CyclewayAnswer> {
 
     override val changesetComment = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
+    override val achievements = listOf(BICYCLIST)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
@@ -74,15 +81,10 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
         "US-AZ", "US-TX"
     )
 
-    override val isSplitWayEnabled = true
-
-    override val questTypeAchievements = listOf(BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>): Int =
-        if (createCyclewaySides(tags, false) != null)
-            R.string.quest_cycleway_resurvey_title
-        else
-            R.string.quest_cycleway_title2
+    override fun getTitle(tags: Map<String, String>) = when {
+        createCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
+        else -> R.string.quest_cycleway_title2
+    }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }
@@ -125,7 +127,11 @@ class AddCycleway(private val countryInfos: CountryInfos) : OsmElementQuestType<
 
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
             val countryCode = mapData.getWayGeometry(way.id)?.center?.let { p ->
-                countryInfos.get(p.longitude, p.latitude).countryCode
+                countryInfos.getByLocation(
+                    countryBoundariesFuture.get(),
+                    p.longitude,
+                    p.latitude,
+                ).countryCode
             }
             way.hasOldInvalidOrAmbiguousCyclewayTags(countryCode) == true
         }

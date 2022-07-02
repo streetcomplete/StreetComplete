@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
- <rect width="100" height="112" ry="12.008" fill="#3365ff" stroke-width="3.7794" style="paint-order:stroke fill markers"/>
- <rect x="3" y="3.0234" width="94.002" height="105.99" rx="10" ry="9.999" fill="#fff" stroke-width="3.7794" style="paint-order:stroke fill markers"/>
- <rect x="7.0531" y="7.0672" width="86" height="97.991" rx="7.0531" ry="6.9677" fill="#3365ff" stroke-width="3.7794" style="paint-order:stroke fill markers"/>
+ <rect width="100" height="112" ry="12.008" fill="#3365ff" stroke-width="3.7794"/>
+ <rect x="3" y="3.0234" width="94.002" height="105.99" rx="10" ry="9.999" fill="#fff" stroke-width="3.7794"/>
+ <rect x="7.0531" y="7.0672" width="86" height="97.991" rx="7.0531" ry="6.9677" fill="#3365ff" stroke-width="3.7794"/>
  <g transform="matrix(4.8552 0 0 4.8547 -89.342 -58.766)" stroke-width=".77848">
   <g stroke-width=".77848">
    <g transform="matrix(.26458 0 0 .26458 -256.12 72.696)" stroke-width=".77848">
-    <path transform="translate(0,-1024)" d="m1043 826.76v47c0 4 6 4 6 0v-22h1v22c0 4 6 4 6 0v-37h1v12c0 4 6 4 6 0v-12c0-7-2.9999-10-7-10z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" fill-rule="evenodd" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    <path transform="translate(0,-1024)" d="m1043 826.76v47c0 4 6 4 6 0v-22h1v22c0 4 6 4 6 0v-37h1v12c0 4 6 4 6 0v-12c0-7-2.9999-10-7-10z" fill="#fff" fill-rule="evenodd" />
    </g>
-   <circle cx="21.569" cy="18.673" r="1.5828" fill="#fff" style="paint-order:stroke fill markers"/>
+   <circle cx="21.569" cy="18.673" r="1.5828" fill="#fff"/>
   </g>
-  <path d="m27.705 23.803c-0.5244-8.1e-5 -0.94961 0.4249-0.94981 0.9493-8.2e-5 0.5246 0.42521 0.94989 0.94981 0.94981 0.5246 8.1e-5 0.94989-0.42521 0.94981-0.94981-2.03e-4 -0.5244-0.42541-0.94938-0.94981-0.9493zm-0.98242 1.999c-0.63502 0-1.0548 0.79677-1.0583 1.5875l-0.52917-0.52917c-0.52917-0.52917-1.3229 0-0.68914 0.65484 0 0 0.95372 1.1972 1.4829 1.1972 0.52917 0 0.52917-0.47601 0.52917-0.47601v-0.84694l0.26458 4.2e-5v6.35l0.79375 1.8e-5v-3.9688h0.26458l0.0084 3.9604 0.7854 0.0083-4.8e-5 -6.3499 0.26458-4.2e-5 4.8e-5 1.855c1.6e-5 0.635 0.79664 0.635 0.79375 0l-0.0084-1.8467c-0.0037-0.80743-0.41496-1.5958-1.05-1.5958z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" fill-rule="evenodd" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m27.705 23.803c-0.5244-8.1e-5 -0.94961 0.4249-0.94981 0.9493-8.2e-5 0.5246 0.42521 0.94989 0.94981 0.94981 0.5246 8.1e-5 0.94989-0.42521 0.94981-0.94981-2.03e-4 -0.5244-0.42541-0.94938-0.94981-0.9493zm-0.98242 1.999c-0.63502 0-1.0548 0.79677-1.0583 1.5875l-0.52917-0.52917c-0.52917-0.52917-1.3229 0-0.68914 0.65484 0 0 0.95372 1.1972 1.4829 1.1972 0.52917 0 0.52917-0.47601 0.52917-0.47601v-0.84694l0.26458 4.2e-5v6.35l0.79375 1.8e-5v-3.9688h0.26458l0.0084 3.9604 0.7854 0.0083-4.8e-5 -6.3499 0.26458-4.2e-5 4.8e-5 1.855c1.6e-5 0.635 0.79664 0.635 0.79375 0l-0.0084-1.8467c-0.0037-0.80743-0.41496-1.5958-1.05-1.5958z" fill="#fff" fill-rule="evenodd" />
  </g>
  <g transform="matrix(3.7796 0 0 3.7792 0 -1010.4)" fill="#fff" stroke-width=".26458px" aria-label="NEIGHBORHOOD">
   <path d="m9.5319 271.96h-0.32918l-0.48145-1.0693v1.0693h-0.32918v-1.6302h0.32918l0.48257 1.0704v-1.0704h0.32806z"/>

@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -26,11 +26,10 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
           )
         )
     """
-    override val changesetComment = "Add path surfaces"
+    override val changesetComment = "Add cycleway path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_bicycleway_surface
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(BICYCLIST, OUTDOORS)
+    override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
 

@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
 
@@ -15,8 +15,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
     override val changesetComment = "Add orchard produces"
     override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
-
-    override val questTypeAchievements = listOf(OUTDOORS)
+    override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title
 

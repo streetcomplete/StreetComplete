@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.ktx.format
+import de.westnordost.streetcomplete.util.ktx.format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield

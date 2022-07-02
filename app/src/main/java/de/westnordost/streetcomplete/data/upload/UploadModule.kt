@@ -6,10 +6,9 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val uploadModule = module {
-    factory { Uploader(get(), get(), get(), get(), get(), get(named("SerializeSync"))) }
-    factory<UploadProgressSource> { get<UploadController>() }
     factory { VersionIsBannedChecker("https://www.westnordost.de/streetcomplete/banned_versions.txt", ApplicationConstants.USER_AGENT) }
 
+    single { Uploader(get(), get(), get(), get(), get(), get(named("SerializeSync"))) }
     /** uploading and downloading should be serialized, i.e. may not run in parallel, to avoid
      *  certain race-condition.
      *
@@ -20,5 +19,7 @@ val uploadModule = module {
      *  When the download finally finishes, it got the data from 10 seconds ago, before the element
      *  has been updated. Thus, the old element overwrites the new one. */
     single(named("SerializeSync")) { Mutex() }
+
+    single<UploadProgressSource> { get<UploadController>() }
     single { UploadController(get()) }
 }

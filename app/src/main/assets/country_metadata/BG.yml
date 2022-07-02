@@ -1,8 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Raiffeisenbank, Централна кооперативна Банка, Пощенска банка, ДСК, Общинска банка, Райфайзенбанк, Allianz, Piraeus Bank, Райфайзен Банк, Райфайзен]
-chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
-clothesContainerOperators: [БЧК, texcycle]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: false
@@ -11,4 +8,7 @@ mobileCountryCode: 284
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [bg]
-orchardProduces: [grape, tomato, pepper, plum, apple, peach, apricot, raspberry, strawberry, walnut, cherry, pear, chilli_pepper, sweet_pepper, almond, chestnut]
+atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Raiffeisenbank, Централна кооперативна Банка, Пощенска банка, ДСК, Общинска банка, Райфайзенбанк, Allianz, Piraeus Bank, Райфайзен Банк, Райфайзен]
+chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
+clothesContainerOperators: [БЧК, texcycle]
+orchardProduces: [grape, cherry, plum, walnut, tomato, apple, chilli_pepper, sweet_pepper, peach, apricot, raspberry, hazelnut, almond, strawberry, pear, blueberry]

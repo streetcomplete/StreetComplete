@@ -17,7 +17,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp">
 
-        <de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
+        <EditText
             android:id="@+id/streetNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:padding="8dp"
             android:inputType="text"
             android:imeOptions="actionDone"
-            android:textSize="28dp"
+            android:textSize="@dimen/large_input"
             android:textAlignment="center"
             android:maxLines="1"
             android:textColor="#fff"

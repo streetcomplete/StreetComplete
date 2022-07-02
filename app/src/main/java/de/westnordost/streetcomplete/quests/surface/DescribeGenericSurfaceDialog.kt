@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.databinding.QuestSurfaceDetailedAnswerImpos
 class DescribeGenericSurfaceDialog(
     context: Context,
     onSurfaceDescribed: (txt: String) -> Unit
-) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+) : AlertDialog(context) {
     init {
         val binding = QuestSurfaceDetailedAnswerImpossibleBinding.inflate(LayoutInflater.from(context))
 

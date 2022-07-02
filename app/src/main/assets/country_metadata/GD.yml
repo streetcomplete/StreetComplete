@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Scotiabank]
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 352
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-orchardProduces: [coconut, banana, nutmeg, grapefruit, guava, mango, mangosteen, avocado, plum, orange, cacao, apple, tomato, lemon, lime, chilli_pepper, sweet_pepper, pineapple]
 popularSports: [cricket]
 speedUnits: [miles per hour, kilometers per hour]
+atmOperators: [Scotiabank]
+orchardProduces: [coconut, nutmeg, banana, cacao, avocado, guava, mango, mangosteen, plum, tomato, grapefruit, apple, orange, lemon, lime, chilli_pepper, sweet_pepper, pineapple]

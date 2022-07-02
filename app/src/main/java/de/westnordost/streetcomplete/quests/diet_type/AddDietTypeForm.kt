@@ -6,17 +6,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestDietTypeExplanationBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_NO
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_ONLY
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_YES
 
-class AddDietTypeForm : AbstractQuestAnswerFragment<DietAvailabilityAnswer>() {
+class AddDietTypeForm : AbstractOsmQuestForm<DietAvailabilityAnswer>() {
 
     override val otherAnswers: List<AnswerItem> get() {
         val result = mutableListOf<AnswerItem>()
-        if (osmElement?.tags?.get("amenity") == "cafe") {
+        if (element.tags["amenity"] == "cafe") {
             result.add(AnswerItem(R.string.quest_diet_answer_no_food) { confirmNoFood() })
         }
         return result

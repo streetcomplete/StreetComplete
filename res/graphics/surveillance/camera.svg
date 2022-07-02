@@ -4,9 +4,9 @@
  <g transform="rotate(15 95.703 48.155)">
   <path d="m37.615 69.9-8.4853-8.4853-9.9069 9.9069c1.3197 3.8246 3.6614 6.9744 8.4853 8.4853z" fill="#333" stroke="#333" stroke-linejoin="round" stroke-width="4"/>
   <path d="m78.627 37.373-14.142-14.142-36.77 36.77c3.2045 5.8434 6.7023 11.467 14.142 14.142z" fill="#66666f" stroke="#666" stroke-linejoin="round" stroke-width="4"/>
-  <circle transform="rotate(-45)" cx="2.859" cy="82.134" r="10" fill="#666" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+  <circle transform="rotate(-45)" cx="2.859" cy="82.134" r="10" fill="#666" fill-rule="evenodd"/>
   <path d="m10.745 65.657 52.528-52.392c9.5206 2.551 8.98 10.978 12.888 15.119l-37.132 37.273c-7.3263-1.7577-19.49 2.7398-28.284 0z" fill="#ccc" stroke="#999" stroke-linejoin="round" stroke-width="4"/>
-  <circle cx="60.03" cy="55.927" r="4.5625" fill="#444" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+  <circle cx="60.03" cy="55.927" r="4.5625" fill="#444" fill-rule="evenodd"/>
  </g>
- <rect x="88" y="52" width="8" height="24" fill="#666" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+ <rect x="88" y="52" width="8" height="24" fill="#666" fill-rule="evenodd"/>
 </svg>

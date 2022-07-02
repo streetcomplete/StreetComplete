@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.LocalizedName
 
 class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
@@ -24,21 +24,14 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
             or foot and foot !~ private|no
           )
     """
-
     override val enabledInCountries = AllCountriesExcept("JP")
     override val changesetComment = "Determine road names and types"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
-    override val isSplitWayEnabled = true
+    override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
 
-    override val questTypeAchievements = listOf(CAR, PEDESTRIAN, POSTMAN)
-
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["highway"] == "pedestrian")
-            R.string.quest_streetName_pedestrian_title
-        else
-            R.string.quest_streetName_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title
 
     override fun createForm() = AddRoadNameForm()
 

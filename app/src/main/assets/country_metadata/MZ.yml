@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
@@ -9,4 +8,5 @@ mobileCountryCode: 643
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [pt]
-orchardProduces: [banana, tomato, coconut, cashew_nut, pineapple, papaya, tea, guava, mango, mangosteen, grapefruit, lemon, lime, coffee, sisal, orange]
+atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza]
+orchardProduces: [cashew_nut, banana, coconut, tea, tomato, pineapple, guava, mango, mangosteen, papaya, grapefruit, sisal, lemon, lime, coffee, orange]

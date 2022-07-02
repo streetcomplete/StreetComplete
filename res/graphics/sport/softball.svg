@@ -6,8 +6,8 @@
   </clipPath>
  </defs>
  <g transform="matrix(1.4669,0,0,1.4669,4.8255,4.7153)" stroke-width=".53253">
-  <circle cx="12.491" cy="11.983" r="11" fill="#d7e22e" style="paint-order:stroke fill markers"/>
-  <circle cx="11.581" cy="10.951" r="8.1954" fill="#dee755" style="paint-order:stroke fill markers"/>
+  <circle cx="12.491" cy="11.983" r="11" fill="#d7e22e"/>
+  <circle cx="11.581" cy="10.951" r="8.1954" fill="#dee755"/>
  </g>
  <g transform="matrix(6.014,0,0,6.014,-76.433,-1465)" stroke-width=".62846">
   <g transform="matrix(-.10487 .10487 .10487 .10487 16.581 243.3)" clip-path="url(#clipPath44-3)" fill="none" stroke-width="2.2424">

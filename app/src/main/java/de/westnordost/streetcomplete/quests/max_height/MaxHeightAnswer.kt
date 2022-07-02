@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-sealed class MaxHeightAnswer
+import de.westnordost.streetcomplete.osm.Length
 
-data class MaxHeight(val value: Height) : MaxHeightAnswer()
-data class NoMaxHeightSign(val isTallEnough: Boolean) : MaxHeightAnswer()
+sealed interface MaxHeightAnswer
+
+data class MaxHeight(val value: Length) : MaxHeightAnswer
+data class NoMaxHeightSign(val isTallEnough: Boolean) : MaxHeightAnswer

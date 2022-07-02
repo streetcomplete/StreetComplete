@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/quest_form_leftOffset"
         android:paddingRight="@dimen/quest_form_rightOffset"
         android:layout_centerInParent="true"
-        tools:ignore="RtlHardcoded,RtlSymmetry">
+        tools:ignore="RtlHardcoded,RtlSymmetry,UselessParent">
 
         <RelativeLayout
             android:id="@+id/createNoteMarker"

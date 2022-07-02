@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [ANZ, BSP, SCB]
 centerLineStyle: white
 isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
@@ -7,3 +6,5 @@ mobileCountryCode: 549
 officialLanguages: [sm, en]
 popularSports: [cricket]
 speedUnits: [miles per hour, kilometers per hour]
+atmOperators: [ANZ, BSP, SCB]
+orchardProduces: [coconut, banana, cacao, papaya, pineapple, guava, mango, mangosteen, avocado, coffee, pepper]

@@ -9,21 +9,22 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.isCompletelyInside
-import de.westnordost.streetcomplete.util.isInMultipolygon
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.LatLonRaster
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
-
+    override val achievements = listOf(POSTMAN)
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
@@ -32,10 +33,8 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
         "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
-        "FR"  // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
+        "FR", // https://github.com/streetcomplete/StreetComplete/issues/2427 https://t.me/osmfr/26320
     )
-
-    override val questTypeAchievements = listOf(POSTMAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
@@ -129,32 +128,50 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""nodes, ways, relations with
+            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+            and !name and !brand and !operator and !ref
+            """.toElementFilterExpression())
+
     override fun createForm() = AddHousenumberForm()
 
     override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is NoHouseNumber -> tags["nohousenumber"] = "yes"
-            is HouseNumber   -> tags["addr:housenumber"] = answer.number
-            is HouseName     -> tags["addr:housename"] = answer.name
-            is ConscriptionNumber -> {
-                tags["addr:conscriptionnumber"] = answer.number
-                if (answer.streetNumber != null) {
-                    tags["addr:streetnumber"] = answer.streetNumber
-                    tags["addr:housenumber"] = answer.streetNumber
-                } else {
-                    tags["addr:housenumber"] = answer.number
+            is HouseNumberAndHouseName -> {
+                val name = answer.name
+                val number = answer.number
+
+                when (number) {
+                    is ConscriptionNumber -> {
+                        tags["addr:conscriptionnumber"] = number.conscriptionNumber
+                        if (number.streetNumber != null) {
+                            tags["addr:streetnumber"] = number.streetNumber
+                            tags["addr:housenumber"] = number.streetNumber
+                        } else {
+                            tags["addr:housenumber"] = number.conscriptionNumber
+                        }
+                    }
+                    is HouseAndBlockNumber -> {
+                        tags["addr:housenumber"] = number.houseNumber
+                        tags["addr:block_number"] = number.blockNumber
+                    }
+                    is HouseNumber -> {
+                        tags["addr:housenumber"] = number.houseNumber
+                    }
+                    null -> {}
                 }
-            }
-            is HouseAndBlockNumber -> {
-                tags["addr:housenumber"] = answer.houseNumber
-                tags["addr:block_number"] = answer.blockNumber
+
+                if (name != null) {
+                    tags["addr:housename"] = name
+                }
+
+                if (name == null && number == null) {
+                    tags["nohousenumber"] = "yes"
+                }
             }
             WrongBuildingType -> {
                 tags["building"] = "yes"
-            }
-            is HouseNameAndHouseNumber -> {
-                tags["addr:housenumber"] = answer.number
-                tags["addr:housename"] = answer.name
             }
         }
     }

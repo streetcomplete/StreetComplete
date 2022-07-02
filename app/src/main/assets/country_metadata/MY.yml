@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Standard Chartered, ATM, UOB, 7-Eleven Malaysia Sdn Bhd, Public Bank, HSBC, Bank Islam Malaysia Berhad]
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 502
@@ -8,6 +7,7 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: double yellow
 noStoppingSignStyle: vienna
 officialLanguages: [ms]
-orchardProduces: [rubber, coconut, pineapple, banana, tomato, guava, mango, mangosteen, papaya, pepper, cashew_nut, orange, grapefruit, tea, coffee, lemon, lime, chilli_pepper, sweet_pepper]
 popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
 popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]
+atmOperators: [Maybank, CIMB, CIMB Bank, MEPS, Bank Islam, Bank Simpanan Nasional, Bank Rakyat, RHB Bank, RHB, AmBank, Affin Bank, Agrobank, ATM AmBank@7eleven, BSN, Bank Muamalat, Agro Bank, Standard Chartered, ATM, UOB, 7-Eleven Malaysia Sdn Bhd, Public Bank, HSBC, Bank Islam Malaysia Berhad]
+orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange]

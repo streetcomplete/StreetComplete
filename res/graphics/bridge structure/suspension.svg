@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 320 96" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-	<style type="text/css">
-		.cables{fill: none; stroke:#AA0000;stroke-width:4;}
-		.struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
-		.land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
-	</style>
+    <style type="text/css">
+        .cables{fill: none; stroke:#AA0000;stroke-width:4;}
+        .struct{fill:#E0D8D8;stroke:#916F6F;stroke-width:2;}
+        .land{fill:#bea288;stroke:#82a04e;stroke-width:6;}
+    </style>
     <path class="land" d="m-3 52v48h92c-40 0-56-40-88-48h-4zm324 0c-32 8-48 48-88 48h92v-48h-4z"/>
     <path class="cables" d="m-0.13548 40c26.666 0.070894 53.378-11.858 80.135-36 26.577 23.858 53.198 35.929 79.865 36s53.378-11.858 80.135-36c26.577 23.858 53.198 35.929 79.865 36"/>
-	<rect class="struct" x="236" y="4" width="8" height="96"/>
-	<rect class="struct" x="76" y="4" width="8" height="96"/>
-	<path class="cables" d="m320 40v8m-70-36v36m14-26v26m14-17.453v17.453m14-12v12m14-8v8m-306-8v8m70-36v36m-14-26v26m-14-17.453v17.453m-14-12v12m-14-8v8m146-8v8m-70-36v36m14-26v26m14-17.453v17.453m14-12v12m14-8v8m84-36v36m-14-26v26m-14-17.453v17.453m-14-12v12m-14-8v8"/>
-	<rect class="struct" x="-4" y="44" width="328" height="8"/>
+    <rect class="struct" x="236" y="4" width="8" height="96"/>
+    <rect class="struct" x="76" y="4" width="8" height="96"/>
+    <path class="cables" d="m320 40v8m-70-36v36m14-26v26m14-17.453v17.453m14-12v12m14-8v8m-306-8v8m70-36v36m-14-26v26m-14-17.453v17.453m-14-12v12m-14-8v8m146-8v8m-70-36v36m14-26v26m14-17.453v17.453m14-12v12m14-8v8m84-36v36m-14-26v26m-14-17.453v17.453m-14-12v12m-14-8v8"/>
+    <rect class="struct" x="-4" y="44" width="328" height="8"/>
 </svg>

@@ -1,26 +1,18 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import org.json.JSONObject
 import java.time.OffsetDateTime
 
-class StatisticsParser(
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val questAliases: List<Pair<String, String>>
-) {
+class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     fun parse(json: String): Statistics {
         val obj = JSONObject(json)
         val questTypesJson = obj.getJSONObject("questTypes")
-        val questTypesByName: MutableMap<String, Int> = mutableMapOf()
+        val typesByName: MutableMap<String, Int> = mutableMapOf()
         for (questTypeName in questTypesJson.keys()) {
-            questTypesByName[questTypeName] = questTypesJson.getInt(questTypeName)
+            typesByName[questTypeName] = questTypesJson.getInt(questTypeName)
         }
-        mergeQuestAliases(questTypesByName)
-        val questTypes = questTypesByName.mapNotNull {
-            val questType = questTypeRegistry.getByName(it.key)
-            if (questType != null) QuestTypeStatistics(questType, it.value) else null
-        }
-
+        mergeTypeAliases(typesByName)
+        val typesStatistics = typesByName.map { EditTypeStatistics(it.key, it.value) }
         val countriesJson = obj.getJSONObject("countries")
         val countries: MutableMap<String, Int> = mutableMapOf()
         for (country in countriesJson.keys()) {
@@ -36,11 +28,11 @@ class StatisticsParser(
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
         val lastUpdate = OffsetDateTime.parse(obj.getString("lastUpdate")).toInstant()
-        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
+        return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
     }
 
-    private fun mergeQuestAliases(map: MutableMap<String, Int>) {
-        for ((oldName, newName) in questAliases) {
+    private fun mergeTypeAliases(map: MutableMap<String, Int>) {
+        for ((oldName, newName) in typeAliases) {
             val count = map[oldName]
             if (count != null) {
                 map.remove(oldName)

@@ -4,18 +4,19 @@ import ch.poole.openinghoursparser.Rule
 import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
-import de.westnordost.streetcomplete.data.meta.toCheckDate
-import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.ktx.toEpochMilli
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
+import de.westnordost.streetcomplete.osm.toCheckDate
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.lang.System.currentTimeMillis
 import java.time.LocalDate
 
 class AddOpeningHoursTest {
@@ -49,7 +50,8 @@ class AddOpeningHoursTest {
     @Test fun `apply no opening hours sign answer`() {
         questType.verifyAnswer(
             NoOpeningHoursSign,
-            StringMapEntryAdd("opening_hours:signed", "no")
+            StringMapEntryAdd("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -57,7 +59,8 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             mapOf("opening_hours" to "oh"),
             NoOpeningHoursSign,
-            StringMapEntryAdd("opening_hours:signed", "no")
+            StringMapEntryAdd("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
         )
     }
 
@@ -158,6 +161,39 @@ class AddOpeningHoursTest {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
         )))
+    }
+
+    @Test fun `isApplicableTo returns false for known places with recently edited opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis())
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for known places with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for closed shops with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns true for parks with old opening hours`() {
+        val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = currentTimeMillis() - milisecondsFor400Days)
+        ))
+    }
+
+    @Test fun `isApplicableTo returns false for toilets without opening hours`() {
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf("amenity" to "toilets"), timestamp = currentTimeMillis())
+        ))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {

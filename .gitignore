@@ -1,6 +1,7 @@
 /.gradle
 /.idea/*
 !.idea/codeStyles
+!.idea/ktlint.xml
 /local.properties
 .DS_Store
 /build

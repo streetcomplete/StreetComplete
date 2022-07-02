@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-import de.westnordost.streetcomplete.ktx.toShortString
+import de.westnordost.streetcomplete.util.ktx.toShortString
 
 sealed class Weight {
     abstract fun toMetricTons(): Double

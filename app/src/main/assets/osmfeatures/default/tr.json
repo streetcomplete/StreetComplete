@@ -283,7 +283,6 @@
                     "label": "Hizmetler",
                     "options": {
                         "cosmetics": "Makyaj malzemeleri",
-                        "nails": "Tırnaklar",
                         "tanning": "Bronzlaşma"
                     }
                 },
@@ -430,10 +429,6 @@
                 "check_date": {
                     "label": "Son Kontrol Tarihi",
                     "placeholder": "GG-AA-YYYY"
-                },
-                "circumference": {
-                    "label": "Daire Çevresi",
-                    "placeholder": "1 m, 20 cm, 30 in…"
                 },
                 "clothes": {
                     "label": "Çamaşırlar"
@@ -1286,13 +1281,6 @@
                 },
                 "mtb/scale/imba": {
                     "label": "IMBA Yol Zorluk Derecesi",
-                    "options": {
-                        "0": "Çok Kolay (beyaz)",
-                        "1": "Kolay (yeşil)",
-                        "2": "Orta Zorluk (mavi)",
-                        "3": "Çok Zor (siyah)",
-                        "4": "Aşırı Zor (çift siyah)"
-                    },
                     "placeholder": "Kolay, Orta, Zor"
                 },
                 "mtb/scale/uphill": {
@@ -1899,9 +1887,6 @@
                         "emergency_access": "Acil Erişim",
                         "parking_aisle": "Park Alanı"
                     }
-                },
-                "service/bicycle": {
-                    "label": "Bisiklet"
                 },
                 "service/vehicle": {
                     "label": "Hizmetler"
@@ -3218,10 +3203,6 @@
                 "amenity/theatre/type/amphi": {
                     "name": "Amfitiyatro"
                 },
-                "amenity/toilets": {
-                    "name": "Tuvalet",
-                    "terms": "tuvalet"
-                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Alafranga tuvaletler"
                 },
@@ -4198,9 +4179,6 @@
                 "highway/bus_stop": {
                     "name": "Otobüs Durağı"
                 },
-                "highway/construction": {
-                    "name": "Kapalı Yol"
-                },
                 "highway/corridor": {
                     "name": "Koridor",
                     "terms": "koridor,geçit"
@@ -4414,10 +4392,6 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Açık Yol Geçiş Ücreti"
-                },
-                "highway/track": {
-                    "name": "Tarım Yolu",
-                    "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu"
                 },
                 "highway/traffic_mirror": {
                     "name": "Trafik Aynası",
@@ -4829,10 +4803,6 @@
                 "leisure/hackerspace": {
                     "name": "Bilgisayar Korsanı Alanı"
                 },
-                "leisure/horse_riding": {
-                    "name": "At Binicilik Spor Kulübü",
-                    "terms": "at binicilik spor kulübü,binicilik spor kulübü,at binme yeri"
-                },
                 "leisure/ice_rink": {
                     "name": "Buz Pateni",
                     "terms": "buz pateni"
@@ -4901,10 +4871,6 @@
                 "leisure/pitch/cricket": {
                     "name": "Kriket Sahası",
                     "terms": "kriket sahası"
-                },
-                "leisure/pitch/equestrian": {
-                    "name": "Binicilik Alanı",
-                    "terms": "at binme alanı"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Çim Hokeyi Sahası"
@@ -4995,9 +4961,6 @@
                 },
                 "leisure/track/cycling": {
                     "name": "Bisiklet Parkuru"
-                },
-                "leisure/track/horse_racing": {
-                    "name": "At Yarışı Parkuru"
                 },
                 "leisure/track/running": {
                     "name": "Koşu Parkuru"
@@ -7111,9 +7074,6 @@
                 "waterway/river": {
                     "name": "Akarsu",
                     "terms": "akarsu,nehir,irmak"
-                },
-                "waterway/riverbank": {
-                    "name": "Akarsu Kenarı"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Deniz Tuvalet İmha İstasyonu",

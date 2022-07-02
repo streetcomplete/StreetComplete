@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [Barclays, Nouvobanq, MCB]
 hasLivingStreet: true
 isLeftHandTraffic: true
 livingStreetSignStyle: sadc
@@ -7,4 +6,5 @@ mobileCountryCode: 633
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, fr, crs]
-orchardProduces: [coconut, banana, tomato, guava, mango, mangosteen, lemon, lime, orange, pineapple, tea, avocado]
+atmOperators: [Barclays, Nouvobanq, MCB]
+orchardProduces: [coconut, banana, tomato, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple, avocado]

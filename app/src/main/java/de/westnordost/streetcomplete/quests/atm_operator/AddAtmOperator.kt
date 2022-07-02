@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddAtmOperator : OsmFilterQuestType<String>() {
 
@@ -15,8 +15,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
     override val wikiLink = "Tag:amenity=atm"
     override val icon = R.drawable.ic_quest_money
     override val isDeleteElementEnabled = true
-
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_atm_operator_title
 

@@ -12,27 +12,28 @@ open class UpdateAppTranslationsTask : AUpdateFromPOEditorTask() {
 
     @TaskAction fun run() {
         val targetFiles = targetFiles ?: return
-        val exportLangs = languageCodes
-            ?.map { it.toLowerCase(Locale.US) }
-            // don't export en, it is the source language
-            ?.filter { it != "en" }
+        val exportLanguages = languageCodes?.map { Locale.forLanguageTag(it) }
 
-        val languageCodes = fetchLocalizations { it["code"] as String }
-        for (languageCode in languageCodes) {
+        val languageTags = fetchLocalizations { it.string("code")!! }
+        for (languageTag in languageTags) {
+            val locale = Locale.forLanguageTag(languageTag)
 
-            if (exportLangs == null || exportLangs.contains(languageCode.toLowerCase(Locale.US))) {
-                println(languageCode)
+            if (exportLanguages != null && !exportLanguages.any { it == locale }) continue
+            // en-us is the source language
+            if (locale == Locale.US) continue
 
-                val javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(languageCode)
-                val androidResCodes = javaLanguageTagToAndroidResCodes(javaLanguageTag)
+            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
 
-                // download the translation and save it in the appropriate directory
-                val text = fetchLocalization(languageCode, "android_strings") { inputStream ->
-                    inputStream.readBytes().toString(Charsets.UTF_8)
-                }
-                for (androidResCode in androidResCodes) {
-                    File(targetFiles(androidResCode)).writeText(text)
-                }
+            print(languageTag)
+            if (androidResCodes.singleOrNull() != languageTag) print(" -> " + androidResCodes.joinToString(", "))
+            println()
+
+            // download the translation and save it in the appropriate directory
+            val text = fetchLocalization(languageTag, "android_strings") { inputStream ->
+                inputStream.readBytes().toString(Charsets.UTF_8)
+            }
+            for (androidResCode in androidResCodes) {
+                File(targetFiles(androidResCode)).writeText(text)
             }
         }
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="100%" height="100%" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
- <ellipse cx="47.739" cy="48.756" rx="36.386" ry="36.177" fill="#fff" style="paint-order:stroke fill markers"/>
+ <ellipse cx="47.739" cy="48.756" rx="36.386" ry="36.177" fill="#fff"/>
  <path d="m45.737 71.352 11.366-12.178" fill="none" stroke="#b8b8b8" stroke-width="2"/>
  <path d="m33.356 39.081 17.456 3.3489" fill="none" stroke="#b8b8b8" stroke-width="2"/>
  <path d="m48.884 19.393c4.9342 3.2109 8.1475 6.8042 10.656 10.554" fill="none" stroke="#b8b8b8" stroke-width="2"/>

@@ -1,0 +1,1 @@
+{"amenity/fuel/disa-2e774c":{"name":"Disa","locationSet":{"include":["ic"]},"geometry":["point","area"],"matchScore":2,"terms":["disa"],"fields":["name","brand","{amenity/fuel}"],"tags":{"amenity":"fuel","brand:wikidata":"Q5797102"},"addTags":{"amenity":"fuel","brand":"Disa","brand:wikidata":"Q5797102","name":"Disa"}}}

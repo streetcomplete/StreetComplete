@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
-atmOperators: [HBL, UBL, Askari Bank, MCB, Meezan Bank, HBL ATM, NBP, Standard Chartered Bank, Allied Bank, JS Bank, Bank Al Habib, Bank Islami, Faysal Bank, ATM, Soneri Bank, National Bank, Bank Alfalah, Summit Bank, Habib Bank, Habib Metro Bank, Dubai Islamic Bank, Habib Bank Limited, Habib Bank ATM, Meezan Bank Limited, Habib Bank Ltd, National Bank of Pakistan, mohsin house, NIB Bank, UBL ATM]
 isLeftHandTraffic: true
 mobileCountryCode: 410
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ur, en, pa]
-orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper, banana, lemon, lime, peach, grape, plum, almond, pear, walnut]
 popularReligions: [muslim, hindu, christian, animist]
 popularSports: [cricket, soccer, tennis, field_hockey]
 roofsAreUsuallyFlat: true
+atmOperators: [HBL, UBL, Askari Bank, MCB, Meezan Bank, HBL ATM, NBP, Standard Chartered Bank, Allied Bank, JS Bank, Bank Al Habib, Bank Islami, Faysal Bank, ATM, Soneri Bank, National Bank, Bank Alfalah, Summit Bank, Habib Bank, Habib Metro Bank, Dubai Islamic Bank, Habib Bank Limited, Habib Bank ATM, Meezan Bank Limited, Habib Bank Ltd, National Bank of Pakistan, mohsin house, NIB Bank, UBL ATM]
+orchardProduces: [guava, mango, mangosteen, orange, date, apple, tomato, chilli_pepper, sweet_pepper, banana, apricot, grape, peach, lemon, lime, almond, plum, walnut, papaya]

@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
- <rect y="6.1377e-5" width="152" height="256" fill="#808080" stroke-width=".85485" style="paint-order:stroke fill markers"/>
- <rect x="120" width="16" height="256" fill="#fcfcfc" style="paint-order:markers fill stroke"/>
- <path d="m176 108 64 64m-63.965 0 63.965-64" fill="none" stroke="#000" stroke-linecap="round" stroke-opacity=".2" stroke-width="20"/>
- <path d="m176 96 64 64m-63.965 0 63.965-64" fill="none" stroke="#c30" stroke-linecap="round" stroke-width="20"/>
+ <rect y="6.1377e-5" width="152" height="256" fill="#808080"/>
 </svg>

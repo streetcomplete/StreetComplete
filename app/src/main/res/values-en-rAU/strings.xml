@@ -1,55 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="oauth_communication_error">"Unable to reach the authorisation server"</string>
+    <string name="oauth_failed_permissions">"Authorisation failed: All listed permissions need to be granted"</string>
     <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
     <string name="not_authorized">"Not authorised"</string>
     <string name="quest_surface_value_paved">"Sealed (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unsealed (generic)"</string>
     <string name="quest_surface_value_asphalt">"Bitumen"</string>
     <string name="quest_sidewalk_title">"Does this street have a footpath?"</string>
-    <string name="quest_address_title">"What is the street address number of this building?"</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">"This street address looks very unusual."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_title">"What is the address number of this building?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"This address number looks very unusual."</string>
     <string name="quest_sport_australian_football">"Australian rules football"</string>
     <string name="quest_toiletsFee_title">"Do you have to pay to use this toilet?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crossing have tactile pavings on both sides?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
-    <string name="quest_toiletAvailability_name_title">"Does %s have a toilet?"</string>
-    <string name="quest_address_answer_house_name">"No street address number but a name…"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crossing have tactile paving on both sides?"</string>
+    <string name="recycling_centre">"Centre"</string>
+    <string name="quest_address_answer_house_name">"No address number but a name…"</string>
+    <string name="quest_address_house_name_label">"Building or house name:"</string>
     <string name="quest_cycleway_value_sidewalk">"explicitly shared footpath"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Is this toilet wheelchair accessible?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Is the toilet %s wheelchair accessible?"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural, forest road or fire trail"</string>
     <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the toilet is accessible.
 Partially means that a wheelchair can enter and use the toilet, but no handrail or adapted hand basin is present."</string>
-    <string name="quest_busStopShelter_tram_name_title">"Is there a shelter at the tram stop %s?"</string>
-    <string name="quest_busStopShelter_tram_title">"Is there a shelter at this tram stop?"</string>
-    <string name="quest_tramStopName_title">"What is the name of this tram stop?"</string>
-    <string name="quest_housenumber_multiple_numbers">"It has multiple street address numbers"</string>
+    <string name="quest_housenumber_multiple_numbers">"It has multiple address numbers"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma–separated address numbers or ranges.\nFor instance 1,3 or 2–6."</string>
-    <string name="quest_toiletAvailability_rest_area_title">"Does this rest area have toilet facilities?"</string>
     <string name="quest_buildingType_semi_detached">"Semi-detached house (Duplex)"</string>
-    <string name="quest_address_answer_no_housenumber">"It has no street address number…"</string>
+    <string name="quest_buildingType_terrace_description">"a linear row of similar single-family homes (terraces)"</string>
+    <string name="quest_buildingType_static_caravan">"Mobile home (static caravan)"</string>
+    <string name="quest_address_answer_no_housenumber">"It has no address number…"</string>
     <string name="quest_sidewalk_value_yes">"footpath"</string>
     <string name="quest_sidewalk_value_no">"no footpath"</string>
 
     <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no footpath on either side. In the case that there is a footpath after all but it is displayed as a separate way, please answer \"footpath\"."</string>
-    <string name="label_housenumber">"street address number"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>
-    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile pavings?"</string>
-    <string name="at_housenumber">"street address number %s:"</string>
+
+    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
+    <string name="label_housenumber">"address number"</string>
+    <string name="tutorial_intro">"StreetComplete makes it easy to contribute to OpenStreetMap.
+It automatically looks for missing details in your vicinity: bicycle lanes, address numbers, opening hours and much more…"</string>
+
+    <!-- Fuzzy -->
+    <string name="achievement_postman_solved_X">"You helped to locate %d addresses!
+This data is essential not only for the postie but also for any navigation system."</string>
+
+    <!-- Fuzzy -->
+    <string name="achievement_building_solved_X">"You solved %d building related quests.
+Note that this app asks for the address number of a building only after its type has been determined."</string>
+    <string name="quest_buildingType_terrace2">"Row houses (terraces)"</string>
+    <string name="at_housename">"house or building name %s"</string>
+
+    <!-- Fuzzy -->
+    <string name="at_housenumber">"address number %s"</string>
     <string name="quest_openingHours_add_off_days">"Add closed days"</string>
     <string name="quest_openingHours_off_day">"Closed"</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"Both an address number and a name..."</string>
+    <string name="quest_address_house_number_label">"Address number:"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"On the footpath"</string>
+
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
+    <!-- Fuzzy -->
+    <string name="quest_fuelSelfService_title">"Can you pump petrol yourself here?"</string>
+    <string name="quest_sidewalk_answer_none_title">"Selecting that footpaths are missing"</string>
+    <string name="quest_sidewalk_answer_none">"No footpath at all"</string>
+    <string name="quest_sidewalk_surface_title">"What's the surface of the footpath here?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_name_title">"Is there a rubbish bin at the tram stop %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_tram_title">"Is there a rubbish bin at this tram stop?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_title">"Is there a rubbish bin at this bus stop?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopBin_name_title">"Is there a rubbish bin at the bus stop %s?"</string>
-    <string name="language_default">"System default"</string>
+    <string name="quest_toiletAvailability_title">"Is there any toilet here?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
 </resources>
