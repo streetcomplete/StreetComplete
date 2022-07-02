@@ -189,27 +189,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             // Draw a red circle in the center
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
 
-            val imageWith = laurelLeafOnStalk.intrinsicWidth //width is the same as intrinsicWidth
-            val imageHeight = laurelLeafOnStalk.intrinsicHeight //width is the same as intrinsicWidth
+            val imageWith = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
+            val imageHeight = laurelLeafOnStalk.intrinsicHeight // width is the same as intrinsicWidth
 
-            val imageWithEnding = horizontalEndingLeaf.intrinsicWidth //width is the same as intrinsicWidth
-            val imageHeightEnding = horizontalEndingLeaf.intrinsicHeight //width is the same as intrinsicWidth
-            //TODO - ending image should have the same size as a regular one
+            val imageWithEnding = horizontalEndingLeaf.intrinsicWidth // width is the same as intrinsicWidth
+            val imageHeightEnding = horizontalEndingLeaf.intrinsicHeight // width is the same as intrinsicWidth
+            // TODO - ending image should have the same size as a regular one
 
             val n = 11f
 
             val offset = width / 2f
-            val imageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
-            val endingImageInternalOffset = imageWith/2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
-            val reach = ((n-1)*percentageOfGrowth/100).toInt()
+            val imageInternalOffset = imageWith / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            val endingImageInternalOffset = imageWith / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            val reach = ((n - 1) * percentageOfGrowth / 100).toInt()
 
-            for(i in 0..reach) {
+            for (i in 0..reach) {
                 // https://web.archive.org/web/20210201203811/https://stackoverflow.com/questions/36493977/flip-a-bitmap-image-horizontally-or-vertically
-                val offsetFromBorder = height/12f
+                val offsetFromBorder = height / 12f
                 // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
 
                 var bitmap = laurelLeafOnStalk.bitmap
-                if(i == reach) {
+                if (i == reach) {
                     bitmap = horizontalEndingLeaf.bitmap
                 } else if (i == 0 ) {
                     bitmap = laurelStalk.bitmap
@@ -217,16 +217,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
                 val flippedBitmap = bitmap.flipHorizontally()
                 // left side
-                canvas.withRotation(i * 180.0f/n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height*0.78f, antiAliasPaint)
+                canvas.withRotation(i * 180.0f / n, width / 2f, height / 2f) {
+                    canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
                 }
 
-                canvas.withRotation(-i * 180.0f/n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height*0.78f, antiAliasPaint)
+                canvas.withRotation(-i * 180.0f / n, width / 2f, height / 2f) {
+                    canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
                 }
             }
-            //val smallCircleRadius = width /10f
-            //canvas.drawCircle(smallCircleRadius * 2, height - smallCircleRadius * 2, smallCircleRadius, bluePaint)
+            // val smallCircleRadius = width /10f
+            // canvas.drawCircle(smallCircleRadius * 2, height - smallCircleRadius * 2, smallCircleRadius, bluePaint)
         }
 
         override fun setAlpha(alpha: Int) {
@@ -242,12 +242,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             PixelFormat.OPAQUE
     }
 
-
     private fun updateGlobalRankText() {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
         binding.globalRankText.text = "#$rank"
-        binding.globalRankText.background = LaurelWreath(resources,1001 - rank)
+        binding.globalRankText.background = LaurelWreath(resources, 1001 - rank)
     }
 
     private fun updatePlaceholderRanksTexts() {
