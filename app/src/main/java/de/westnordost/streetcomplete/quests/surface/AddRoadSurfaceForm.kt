@@ -12,39 +12,47 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
-        val value = selectedItems.single()
-        if (element!!.tags.containsKey("tracktype")) {
-            if (isSurfaceAndTracktypeMismatching(value.osmValue, element!!.tags["tracktype"]!!)) {
-                confirmTracktypeMismatch { collectSurfaceDescriptionIfNeededAndApplyAnswer(value, true) }
+        val surface = selectedItems.single()
+        confirmPotentialTracktypeMismatch(surface) { shouldRemoveTracktype ->
+            collectSurfaceDescription(surface) { description ->
+                applyAnswer(SurfaceAnswer(surface, description, shouldRemoveTracktype))
             }
+        }
+    }
+
+    private fun confirmPotentialTracktypeMismatch(
+        surface: Surface,
+        onTracktypeConfirmed: (shouldRemoveTracktype: Boolean) -> Unit
+    ) {
+        val tracktype = element!!.tags["tracktype"]
+        if (tracktype == null) {
+            onTracktypeConfirmed(false)
+        } else if (isSurfaceAndTracktypeMismatching(surface.osmValue, tracktype)) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                    onTracktypeConfirmed(true)
+                }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
+    }
+
+    private fun collectSurfaceDescription(
+        surface: Surface,
+        onSurfaceDescribed: (description: String?) -> Unit
+    ) {
+        if (!surface.shouldBeDescribed) {
+            onSurfaceDescribed(null)
         } else {
-            collectSurfaceDescriptionIfNeededAndApplyAnswer(value, false)
-        }
-    }
-
-    private fun confirmTracktypeMismatch(callback: () -> (Unit)) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
-        }
-    }
-
-    private fun collectSurfaceDescriptionIfNeededAndApplyAnswer(value: Surface, removeTracktype: Boolean) {
-        if (value.shouldBeDescribed) {
             AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    DescribeGenericSurfaceDialog(requireContext()) { description ->
-                        applyAnswer(SurfaceAnswer(value, description, removeTracktype))
-                    }.show()
+                    DescribeGenericSurfaceDialog(requireContext(), onSurfaceDescribed).show()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
-            return
         }
-        applyAnswer(SurfaceAnswer(value, replacesTracktype = removeTracktype))
     }
 }
