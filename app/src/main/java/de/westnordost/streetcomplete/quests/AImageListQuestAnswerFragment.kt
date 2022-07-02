@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -111,7 +112,7 @@ abstract class AImageListQuestAnswerFragment<I, T> : AbstractQuestFormAnswerFrag
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+        return if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * itemsPerRow && moveFavoritesToFront) {
             favs.get().filterNotNull().padWith(originalList).toList()
         } else {
             originalList

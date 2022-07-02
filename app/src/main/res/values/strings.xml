@@ -217,6 +217,9 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_smoothness_generic_surface_message">Ask smoothness for all surfaces? This will show images and descriptions for asphalt or gravel for surfaces the quest is not usually asked for.</string>
     <string name="quest_smoothness_generic_surface_yes">All surfaces</string>
     <string name="quest_smoothness_generic_surface_no">Default</string>
+    <string name="pref_recent_answers_first_min_lines">Move recent answers to front</string>
+    <string name="pref_recent_answers_first_min_lines_summary">if form has more than %d lines</string>
+    <string name="pref_recent_answers_first_min_lines_message">Move recent answers to front if the quest answer form has more than this many lines of images</string>
 
     <!-- Store description -->
 

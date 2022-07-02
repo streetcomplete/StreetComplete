@@ -68,6 +68,7 @@ object Prefs {
     const val SELECT_FIRST_EDIT = "select_first_edit"
     const val BAN_CHECK_ERROR_COUNT = "ban_check_error_count"
     const val DATA_RETAIN_TIME = "data_retain_time"
+    const val FAVS_FIRST_MIN_LINES = "favs_first_min_lines"
 
     enum class Autosync {
         ON, WIFI, OFF

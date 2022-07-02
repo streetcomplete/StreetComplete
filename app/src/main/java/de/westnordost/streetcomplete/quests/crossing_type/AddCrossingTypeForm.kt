@@ -60,8 +60,6 @@ class AddCrossingTypeForm : AImageListQuestAnswerFragment<CrossingType, Crossing
 
     override val itemsPerRow = 3
 
-    override val moveFavoritesToFront = false
-
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
         && (!imageSelector.selectedItems.contains(raisedItem) || imageSelector.selectedIndices.size == 2)
 

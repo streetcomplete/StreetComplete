@@ -120,6 +120,20 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+            android:key="favs_first_min_lines"
+            android:title="@string/pref_recent_answers_first_min_lines"
+            android:summary="@string/pref_recent_answers_first_min_lines_summary"
+            android:defaultValue="1"
+            android:persistent="true"
+            app:minValue="0"
+            app:maxValue="10"
+            app:step="1"
+            android:dialogMessage="@string/pref_recent_answers_first_min_lines_message"
+            android:dialogLayout="@layout/dialog_number_picker_preference"
+            android:positiveButtonText="@android:string/ok"
+            android:negativeButtonText="@android:string/cancel" />
+
         <SwitchPreference
             android:key="show_hide_button"
             android:title="@string/pref_hide_button_title"

@@ -4,6 +4,7 @@ v45.0_ee: |
   <li>Add quest settings to ask smoothness for all surfaces</li>
   <li>Add element selection to wheelchair quest</li>
   <li>Quick-access to settings by pressing menu key when in main menu dialog</li>
+  <li>Add setting when to move recently used answers to front of image lists</li>
   </ul>
 
 v44.1_ee: |
