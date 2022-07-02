@@ -37,7 +37,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         } else {
-            applyAnswer(SurfaceAnswer(surface, null, false))
+            onTracktypeConfirmed(false)
         }
     }
 
