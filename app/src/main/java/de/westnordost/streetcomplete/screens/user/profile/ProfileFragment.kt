@@ -253,17 +253,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.placeholder1Text.text = "100%"
         binding.placeholder1Text.background = LaurelWreath(resources, 100)
 
-        binding.placeholder2Text.text = "90%"
-        binding.placeholder2Text.background = LaurelWreath(resources, 90)
+        binding.placeholder2Text.text = "2%"
+        binding.placeholder2Text.background = LaurelWreath(resources, 2)
 
-        binding.placeholder3Text.text = "50%"
-        binding.placeholder3Text.background = LaurelWreath(resources, 50)
+        binding.placeholder3Text.text = "10%"
+        binding.placeholder3Text.background = LaurelWreath(resources, 10)
 
-        binding.placeholder4Text.text = "30%"
-        binding.placeholder4Text.background = LaurelWreath(resources, 30)
+        binding.placeholder4Text.text = "6%"
+        binding.placeholder4Text.background = LaurelWreath(resources, 6)
 
-        binding.placeholder5Text.text = "10%"
-        binding.placeholder5Text.background = LaurelWreath(resources, 10)
+        binding.placeholder5Text.text = "1%"
+        binding.placeholder5Text.background = LaurelWreath(resources, 1)
 
         binding.placeholder6Text.text = "0%"
         binding.placeholder6Text.background = LaurelWreath(resources, 0)
