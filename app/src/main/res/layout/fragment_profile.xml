@@ -451,6 +451,169 @@
                             android:text="Placeholder 6"/>
 
                     </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder7Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder7Text"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/rank_text"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder7Text"
+                            android:layout_below="@id/placeholder7Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 7"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder8Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder8Text"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/rank_text"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder8Text"
+                            android:layout_below="@id/placeholder8Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 8"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder9Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder9Text"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/rank_text"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder9Text"
+                            android:layout_below="@id/placeholder9Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 6"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder10Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder10Text"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/rank_text"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder10Text"
+                            android:layout_below="@id/placeholder10Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 10"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/placeholder11Container"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/placeholder11Text"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/rank_text"
+                            tools:text="123"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@+id/placeholder11Text"
+                            android:layout_below="@id/placeholder11Text"
+                            android:layout_marginTop="4dp"
+                            android:text="Placeholder 11"/>
+
+                    </RelativeLayout>
+
                 </com.google.android.flexbox.FlexboxLayout>
 
             </LinearLayout>

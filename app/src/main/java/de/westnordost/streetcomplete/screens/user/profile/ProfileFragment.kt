@@ -37,6 +37,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
 import java.util.Locale
+import kotlin.random.Random
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -161,8 +162,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     /*
     100 and more: fully grown wreath with all pretty elements
-    99 to 1: may be losing elements as it gets smaller
-    0 and lower: no decorative styling at all
+    99 to 10: may be losing elements as it gets smaller
+    below: no decorative styling at all
      */
     class LaurelWreath(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
         val laurelLeafOnStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
@@ -188,6 +189,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             // Draw a red circle in the center
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
+
+            if(percentageOfGrowth < 10) {
+                return
+            }
 
             val imageWith = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
             val imageHeight = laurelLeafOnStalk.intrinsicHeight // width is the same as intrinsicWidth
@@ -250,23 +255,50 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updatePlaceholderRanksTexts() {
-        binding.placeholder1Text.text = "100%"
-        binding.placeholder1Text.background = LaurelWreath(resources, 100)
+        var percent : Int
+        percent = 100
+        binding.placeholder1Text.text = "$percent"
+        binding.placeholder1Text.background = LaurelWreath(resources, percent)
 
-        binding.placeholder2Text.text = "2%"
-        binding.placeholder2Text.background = LaurelWreath(resources, 2)
+        percent = 90 + Random.nextInt(10)
+        binding.placeholder2Text.text = "$percent"
+        binding.placeholder2Text.background = LaurelWreath(resources, percent)
 
-        binding.placeholder3Text.text = "10%"
-        binding.placeholder3Text.background = LaurelWreath(resources, 10)
+        percent = 80 + Random.nextInt(10)
+        binding.placeholder3Text.text = "$percent"
+        binding.placeholder3Text.background = LaurelWreath(resources, percent)
 
-        binding.placeholder4Text.text = "6%"
-        binding.placeholder4Text.background = LaurelWreath(resources, 6)
+        percent = 70 + Random.nextInt(10)
+        binding.placeholder4Text.text = "$percent"
+        binding.placeholder4Text.background = LaurelWreath(resources, percent)
 
-        binding.placeholder5Text.text = "1%"
-        binding.placeholder5Text.background = LaurelWreath(resources, 1)
+        percent = 60 + Random.nextInt(10)
+        binding.placeholder5Text.text = "$percent"
+        binding.placeholder5Text.background = LaurelWreath(resources, percent)
 
-        binding.placeholder6Text.text = "0%"
-        binding.placeholder6Text.background = LaurelWreath(resources, 0)
+        percent = 50 + Random.nextInt(10)
+        binding.placeholder6Text.text = "$percent"
+        binding.placeholder6Text.background = LaurelWreath(resources, percent)
+
+        percent = 40 + Random.nextInt(10)
+        binding.placeholder7Text.text = "$percent"
+        binding.placeholder7Text.background = LaurelWreath(resources, percent)
+
+        percent = 30 + Random.nextInt(10)
+        binding.placeholder8Text.text = "$percent"
+        binding.placeholder8Text.background = LaurelWreath(resources, percent)
+
+        percent = 20 + Random.nextInt(10)
+        binding.placeholder9Text.text = "$percent"
+        binding.placeholder9Text.background = LaurelWreath(resources, percent)
+
+        percent = 10 + Random.nextInt(10)
+        binding.placeholder10Text.text = "$percent"
+        binding.placeholder10Text.background = LaurelWreath(resources, percent)
+
+        percent = 0 + Random.nextInt(10)
+        binding.placeholder11Text.text = "$percent"
+        binding.placeholder11Text.background = LaurelWreath(resources, percent)
     }
 
     private suspend fun updateLocalRankText() {
