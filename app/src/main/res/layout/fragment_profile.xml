@@ -128,8 +128,8 @@
 
                         <TextView
                             android:id="@+id/localRankText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -164,8 +164,8 @@
 
                         <TextView
                             android:id="@+id/globalRankText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -198,8 +198,8 @@
 
                         <TextView
                             android:id="@+id/daysActiveText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -232,8 +232,8 @@
 
                         <TextView
                             android:id="@+id/achievementLevelsText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"

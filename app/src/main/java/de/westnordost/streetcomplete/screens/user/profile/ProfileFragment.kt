@@ -36,6 +36,8 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
+import java.lang.Math.max
+import java.lang.Math.min
 import java.util.Locale
 import kotlin.random.Random
 
@@ -158,6 +160,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
+        binding.daysActiveText.background = LaurelWreath(resources, min(daysActive, 100))
     }
 
     /*
@@ -240,7 +243,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
         binding.globalRankText.text = "#$rank"
-        binding.globalRankText.background = LaurelWreath(resources, 1001 - rank)
+        val scMapperCountIn2022 = 45000
+        val rankEnoughForFullMarks = 1000
+        val rankEnoughToStartGrowingReward = 8000 // TODO: tweak this based on actual numbers!
+        val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
+        val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
+        binding.globalRankText.background = LaurelWreath(resources, min(scaledRank, 100))
     }
 
     private fun updatePlaceholderRanksTexts() {
@@ -299,8 +307,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.count > 50
             val countryLocale = Locale("", statistics.countryCode)
             binding.localRankContainer.isGone = !shouldShow
-            binding.localRankText.text = "#${statistics.rank}"
-            binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+            if(shouldShow) {
+                binding.localRankText.text = "#${statistics.rank}"
+                binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+                binding.localRankText.background = LaurelWreath(resources, min(100 - statistics.rank!!, 100))
+            }
         }
     }
 
@@ -308,6 +319,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val levels = withContext(Dispatchers.IO) { achievementsSource.getAchievements().sumOf { it.second } }
         binding.achievementLevelsContainer.isGone = levels <= 0
         binding.achievementLevelsText.text = "$levels"
+        binding.achievementLevelsText.background = LaurelWreath(resources, min(levels / 2, 100))
     }
 
     private fun openUrl(url: String): Boolean {
