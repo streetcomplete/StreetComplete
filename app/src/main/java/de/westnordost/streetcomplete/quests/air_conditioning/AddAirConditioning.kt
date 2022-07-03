@@ -19,6 +19,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library
           or tourism ~ apartment|hotel
         )
+        and takeaway != only
         and !air_conditioning
     """
     override val changesetComment = "Add air conditioning"
