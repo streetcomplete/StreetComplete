@@ -58,5 +58,4 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 }
 
 // smoothness is not asked for steps
-// "pedestrian" is in here so the path answers are shown instead of road answers (which focus on cars)
-val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway", "pedestrian")
+val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway")
