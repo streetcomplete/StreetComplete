@@ -170,11 +170,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
         val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
-        private val redPaint: Paint = Paint().apply { setARGB(255, 255, 0, 0) }
         private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 186, 209, 154) }
-        private val yellowPaint: Paint = Paint().apply { setARGB(255, 255, 255, 0) }
-        private val orangePaint: Paint = Paint().apply { setARGB(255, 255, 155, 0) }
-        private val bluePaint: Paint = Paint().apply { setARGB(255, 0, 0, 255) }
 
         private val antiAliasPaint: Paint = Paint().apply {
             isAntiAlias = true
@@ -194,23 +190,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 return
             }
 
-            val imageWith = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
+            val imageWidth = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
             val imageHeight = laurelLeafOnStalk.intrinsicHeight // width is the same as intrinsicWidth
-
-            val imageWithEnding = horizontalEndingLeaf.intrinsicWidth // width is the same as intrinsicWidth
-            val imageHeightEnding = horizontalEndingLeaf.intrinsicHeight // width is the same as intrinsicWidth
-            // TODO - ending image should have the same size as a regular one
 
             val n = 11f
 
             val offset = width / 2f
-            val imageInternalOffset = imageWith / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
-            val endingImageInternalOffset = imageWith / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
+            val endingImageInternalOffset = imageWidth / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
             val reach = ((n - 1) * percentageOfGrowth / 100).toInt()
 
             for (i in 0..reach) {
-                // https://web.archive.org/web/20210201203811/https://stackoverflow.com/questions/36493977/flip-a-bitmap-image-horizontally-or-vertically
-                val offsetFromBorder = height / 12f
                 // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
 
                 var bitmap = laurelLeafOnStalk.bitmap
