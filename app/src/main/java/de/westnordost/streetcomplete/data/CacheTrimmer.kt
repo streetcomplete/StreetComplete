@@ -1,24 +1,19 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 
 class CacheTrimmer(
-    private val osmQuestController: OsmQuestController,
-    private val noteController: NoteController,
+    private val visibleQuestsSource: VisibleQuestsSource,
     private val mapDataController: MapDataController,
 ) {
     fun trimCaches() {
-        osmQuestController.trimCache()
-        noteController.trimCache()
+        visibleQuestsSource.trimCache()
         mapDataController.trimCache()
     }
 
     fun clearCaches() {
         mapDataController.clearCache()
-        osmQuestController.clearCache()
-        noteController.clearCache()
+        visibleQuestsSource.clearCache()
     }
 }

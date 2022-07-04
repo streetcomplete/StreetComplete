@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.util.SpatialCache
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
@@ -106,22 +105,20 @@ class OsmQuestController internal constructor(
         /** Replace all quests of the given types in the given bounding box with the given quests.
          *  Called on download of a quest type for a bounding box. */
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-            val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes) // don't put these quests in cache, some could be hidden
+            val quests = createQuestsForBBox(bbox, mapDataWithGeometry, allQuestTypes)
             val obsoleteQuestKeys: List<OsmQuestKey>
             synchronized(this) {
-                // todo: decide whether all quests should be cached, or only visible
-                val previousQuests = db.getAllInBBox(bbox) // can't be done from cache because here we need ALL quests
+                val previousQuests = db.getAllInBBox(bbox)
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, emptyList())
                 updateQuests(quests, obsoleteQuestKeys)
             }
 
-            // supply bbox to onUpdated, all tiles fully within will be added to cache (and replaced if existing)
-            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys, replaceBBox = bbox)
+            onUpdated(added = quests, deletedKeys = obsoleteQuestKeys)
         }
 
         override fun onCleared() {
             db.clear()
-            onInvalidated()
+            listeners.forEach { it.onInvalidated() }
         }
     }
 
@@ -134,15 +131,6 @@ class OsmQuestController internal constructor(
             onInvalidated()
         }
     }
-
-    private val spatialCache = SpatialCache(
-        16,
-        SPATIAL_CACHE_SIZE,
-        2000,
-        { bbox -> getAllVisibleInBBoxForCache(bbox) },
-        OsmQuest::key, OsmQuest::position
-    )
-    private var visibleQuests: HashSet<String>? = null
 
     init {
         mapDataSource.addListener(mapDataSourceListener)
@@ -269,9 +257,7 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key))
     }
 
-    // get from cache, if not found check in db
     override fun get(key: OsmQuestKey): OsmQuest? {
-        spatialCache.get(key)?.let { return it }
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -279,11 +265,10 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    // to be called from spatialCache only, so will already be synchronized
-    private fun getAllVisibleInBBoxForCache(bbox: BoundingBox): List<OsmQuest> {
+    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
         val hiddenIds = getHiddenQuests()
         val hiddenPositions = getBlacklistedPositions(bbox)
-        val entries = db.getAllInBBox(bbox, visibleQuests).filter {
+        val entries = db.getAllInBBox(bbox, questTypes).filter {
             it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
@@ -293,20 +278,10 @@ class OsmQuestController internal constructor(
         val geometriesByKey = mapDataSource.getGeometries(elementKeys)
             .associateBy { ElementKey(it.elementType, it.elementId) }
 
-        val quests = entries.mapNotNull { entry ->
+        return entries.mapNotNull { entry ->
             val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
             createOsmQuest(entry, geometryEntry?.geometry)
         }
-        return quests
-    }
-
-    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
-        val newTypes = questTypes?.toHashSet()
-        if (visibleQuests != newTypes) {
-            clearCache()
-            visibleQuests = newTypes
-        }
-        return spatialCache.get(bbox)
     }
 
     private fun createOsmQuest(entry: OsmQuestDaoEntry, geometry: ElementGeometry?): OsmQuest? {
@@ -314,10 +289,6 @@ class OsmQuestController internal constructor(
         val questType = questTypeRegistry.getByName(entry.questTypeName) as? OsmElementQuestType<*> ?: return null
         return OsmQuest(questType, entry.elementType, entry.elementId, geometry)
     }
-
-    fun clearCache() = spatialCache.clear()
-
-    fun trimCache() = spatialCache.trim(SPATIAL_CACHE_SIZE / 3)
 
     /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
 
@@ -401,8 +372,7 @@ class OsmQuestController internal constructor(
 
     private fun onUpdated(
         added: Collection<OsmQuest> = emptyList(),
-        deletedKeys: Collection<OsmQuestKey> = emptyList(),
-        replaceBBox: BoundingBox? = null // this is important, so cache can persist fully contained tiles
+        deletedKeys: Collection<OsmQuestKey> = emptyList()
     ) {
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
@@ -415,17 +385,9 @@ class OsmQuestController internal constructor(
             added
         }
 
-        spatialCache.removeAll(deletedKeys)
-        val actuallyVisible = visibleAdded.filter { visibleQuests?.contains(it.questTypeName) != false }
-        if (replaceBBox == null)
-            actuallyVisible.forEach { spatialCache.putIfTileExists(it) }
-        else
-            spatialCache.replaceAllInBBox(actuallyVisible, replaceBBox)
-
         listeners.forEach { it.onUpdated(visibleAdded, deletedKeys) }
     }
     private fun onInvalidated() {
-        clearCache()
         listeners.forEach { it.onInvalidated() }
     }
 
@@ -471,5 +433,3 @@ private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddPlaceName -> 2 // FeatureDictionary, extensive filter
     else -> 10
 }
-
-private const val SPATIAL_CACHE_SIZE = 128

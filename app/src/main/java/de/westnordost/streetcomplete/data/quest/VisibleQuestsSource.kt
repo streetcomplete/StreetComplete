@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.SpatialCache
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Access and listen to quests visible on the map */
@@ -72,6 +73,13 @@ class VisibleQuestsSource(
         }
     }
 
+    private val cache = SpatialCache(
+        16,
+        SPATIAL_CACHE_SIZE,
+        3000,
+        { getAllVisibleForCache(it) },
+        Quest::key, Quest::position
+    )
     init {
         osmQuestSource.addListener(osmQuestSourceListener)
         osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
@@ -80,8 +88,11 @@ class VisibleQuestsSource(
         selectedOverlaySource.addListener(selectedOverlayListener)
     }
 
+    fun getAllVisible(bbox: BoundingBox): List<Quest> =
+        cache.get(bbox)
+
     /** Retrieve all visible quests in the given bounding box from local database */
-    fun getAllVisible(bbox: BoundingBox): List<Quest> {
+    private fun getAllVisibleForCache(bbox: BoundingBox): List<Quest> {
         val visibleQuestTypeNames = questTypeRegistry
             .filter { isVisible(it) }
             .map { it.name }
@@ -97,7 +108,7 @@ class VisibleQuestsSource(
         }
     }
 
-    fun get(questKey: QuestKey): Quest? = when (questKey) {
+    fun get(questKey: QuestKey): Quest? = cache.get(questKey) ?: when (questKey) {
         is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.get(questKey)
     }?.takeIf { isVisible(it) }
@@ -120,12 +131,21 @@ class VisibleQuestsSource(
         listeners.remove(listener)
     }
 
+    fun clearCache() = cache.clear()
+
+    fun trimCache() = cache.trim(SPATIAL_CACHE_SIZE / 3)
+
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+        cache.removeAll(deletedQuestKeys)
+        addedQuests.forEach(cache::putIfTileExists)
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }
 
     private fun invalidate() {
+        clearCache()
         listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
+
+private const val SPATIAL_CACHE_SIZE = 128
