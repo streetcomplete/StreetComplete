@@ -1,3 +1,25 @@
+v45.0: |
+  <h3>🍰 Overlays!</h3>
+  <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
+  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
+  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
+  <li><i>Is there a summit cross here?</i> (#4111, #4095), by @FloEdelmann</li>
+  <li><i>What is signed at this entrance?</i> (#4066, #3064), by @matkoniecz</li>
+  </ul>
+  <h3>Enhancements and Fixes</h3>
+  <ul>
+  <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
+  <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
+  <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
+  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
+  <li>Ask about bus stop reference numbers in Ireland (#4161)</li>
+  <li>Stop asking about toilet fees in US and Canada (#4174), by @matkoniecz</li>
+  <li>Other small enhancements and performance improvements (#3919, #4120, #4138, #4181, #4184, #4180, #4183, #4164...), thanks @Helium314</li>
+  </ul>
+
 v45.0-beta1: |
   <h3>🍰 Overlays!</h3>
   <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
