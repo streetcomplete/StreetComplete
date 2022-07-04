@@ -164,27 +164,32 @@ class MapDataController internal constructor(
 
     fun get(type: ElementType, id: Long): Element? {
         val element = if (type == ElementType.NODE) spatialCache.get(id)
-            else synchronized(this) { wayRelationCache[ElementKey(type, id)] }
+            else synchronized(this) { wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { elementDB.get(type, id) } }
         return element ?: elementDB.get(type, id)
     }
 
     fun getGeometry(type: ElementType, id: Long): ElementGeometry? {
         val geometry = if (type == ElementType.NODE) spatialCache.get(id)
                 ?.let { ElementPointGeometry(it.position) }
-            else synchronized(this) { wayRelationGeometryCache[ElementKey(type, id)] }
+            else synchronized(this) { wayRelationGeometryCache.getOrPutIfNotNull(ElementKey(type, id)) { geometryDB.get(type, id) } }
         return geometry ?: geometryDB.get(type, id)
     }
 
-    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> {
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = synchronized(this){
         val geometries = spatialCache.getAll(keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null } )
             .map { it.toElementGeometryEntry() } +
-            synchronized (this) { keys.mapNotNull { key ->
+            keys.mapNotNull { key ->
                 wayRelationGeometryCache[key]?.let { ElementGeometryEntry(key.type, key.id, it) }
-            } }
+            }
         return if (keys.size == geometries.size) geometries
         else {
             val cachedKeys = geometries.map { ElementKey(it.elementType, it.elementId) }
-            geometries + geometryDB.getAllEntries(keys.filterNot { it in cachedKeys })
+            val fetchedGeometries = geometries + geometryDB.getAllEntries(keys.filterNot { it in cachedKeys })
+            fetchedGeometries.forEach {
+                if (it.elementType == ElementType.NODE)
+                    wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
+            }
+            fetchedGeometries
         }
     }
 
@@ -248,20 +253,28 @@ class MapDataController internal constructor(
     }
 
     fun getNode(id: Long): Node? = spatialCache.get(id) ?: nodeDB.get(id)
-    fun getWay(id: Long): Way? = synchronized(this) { wayRelationCache[ElementKey(ElementType.WAY, id)] as? Way } ?: wayDB.get(id)
-    fun getRelation(id: Long): Relation? = synchronized(this) { wayRelationCache[ElementKey(ElementType.RELATION, id)] as? Relation } ?: relationDB.get(id)
+    fun getWay(id: Long): Way? = synchronized(this) {
+        wayRelationCache.getOrPutIfNotNull(ElementKey(ElementType.WAY, id)) { wayDB.get(id) } as? Way
+    }
+    fun getRelation(id: Long): Relation? = synchronized(this) {
+        wayRelationCache.getOrPutIfNotNull(ElementKey(ElementType.RELATION, id)) { relationDB.get(id) } as? Relation
+    }
 
-    fun getAll(elementKeys: Collection<ElementKey>): List<Element> {
+    fun getAll(elementKeys: Collection<ElementKey>): List<Element> = synchronized(this) {
         val elements = spatialCache.getAll(elementKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null } ) +
-            synchronized(this) { elementKeys.mapNotNull { wayRelationCache[it] } }
+            elementKeys.mapNotNull { wayRelationCache[it] }
         return if (elementKeys.size == elements.size) elements
         else {
             val cachedElementKeys = elements.map { ElementKey(it.type, it.id) }
-            elements + elementDB.getAll(elementKeys.filterNot { it in cachedElementKeys })
+            val fetchedElements = elementDB.getAll(elementKeys.filterNot { it in cachedElementKeys })
+            fetchedElements.forEach {
+                if (it.type == ElementType.NODE)
+                    wayRelationCache[ElementKey(it.type, it.id)] = it
+            }
+            elements + fetchedElements
         }
     }
 
-    // change it to getAll(ids.map { ElementKey(type, it) }).filterIsInstance<type>()?
     fun getNodes(ids: Collection<Long>): List<Node> {
             val nodes = spatialCache.getAll(ids)
             return if (ids.size == nodes.size) nodes
@@ -270,43 +283,34 @@ class MapDataController internal constructor(
                 nodes + nodeDB.getAll(ids.filterNot { it in cachedNodeIds })
             }
         }
-    fun getWays(ids: Collection<Long>): List<Way> {
-        val ways = synchronized(this) { ids.mapNotNull { wayRelationCache[ElementKey(ElementType.WAY, it)] as? Way } }
-        return if (ids.size == ways.size) ways
-        else {
-            val cachedWayIds = ways.map { it.id }
-            ways + wayDB.getAll(ids.filterNot { it in cachedWayIds })
-        }
-    }
-    fun getRelations(ids: Collection<Long>): List<Relation>  {
-        val relations = synchronized(this) { ids.mapNotNull { wayRelationCache[ElementKey(ElementType.RELATION, it)] as? Relation } }
-        return if (ids.size == relations.size) relations
-        else {
-            val cachedRelationIds = relations.map { it.id }
-            relations + relationDB.getAll(ids.filterNot { it in cachedRelationIds })
-        }
-    }
+    fun getWays(ids: Collection<Long>): List<Way> = getAll(ids.map { ElementKey(ElementType.WAY, it) }).filterIsInstance<Way>()
+    fun getRelations(ids: Collection<Long>): List<Relation> = getAll(ids.map { ElementKey(ElementType.RELATION, it) }).filterIsInstance<Relation>()
 
     fun getWaysForNode(id: Long): List<Way> = synchronized(this) {
-        wayIdsByNodeIdCache[id]?.let { wayIds ->
+        wayIdsByNodeIdCache.getOrPut(id) {
+            val ways = wayDB.getAllForNode(id)
+            ways.forEach { wayRelationCache[ElementKey(ElementType.WAY, it.id)] = it }
+            ways.map { it.id }.toMutableList()
+        }.let { wayIds ->
             wayIds.map { wayRelationCache[ElementKey(ElementType.WAY, it)] as Way }
         }
-    } ?: wayDB.getAllForNode(id)
-    fun getRelationsForNode(id: Long): List<Relation> = synchronized(this) {
-        relationIdsByElementKeyCache[ElementKey(ElementType.NODE, id)]?.let { relationIds ->
+    }
+    fun getRelationsForNode(id: Long): List<Relation> = getRelationsForElement(ElementType.NODE, id)
+    fun getRelationsForWay(id: Long): List<Relation> = getRelationsForElement(ElementType.WAY, id)
+    fun getRelationsForRelation(id: Long): List<Relation> = getRelationsForElement(ElementType.RELATION, id)
+    fun getRelationsForElement(type: ElementType, id: Long): List<Relation> = synchronized(this) {
+        relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
+            val relations = when (type) {
+                ElementType.NODE -> relationDB.getAllForNode(id)
+                ElementType.WAY -> relationDB.getAllForWay(id)
+                ElementType.RELATION -> relationDB.getAllForRelation(id)
+            }
+            relations.forEach { wayRelationCache[ElementKey(ElementType.RELATION, it.id)] = it }
+            relations.map { it.id }.toMutableList()
+        }.let { relationIds ->
             relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
         }
-    } ?: relationDB.getAllForNode(id)
-    fun getRelationsForWay(id: Long): List<Relation> = synchronized(this) {
-        relationIdsByElementKeyCache[ElementKey(ElementType.WAY, id)]?.let { relationIds ->
-            relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
-        }
-    } ?: relationDB.getAllForWay(id)
-    fun getRelationsForRelation(id: Long): List<Relation> = synchronized(this) {
-        relationIdsByElementKeyCache[ElementKey(ElementType.RELATION, id)]?.let { relationIds ->
-            relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
-        }
-    } ?: relationDB.getAllForRelation(id)
+    }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val elements: List<ElementKey>
@@ -452,6 +456,16 @@ class MapDataController internal constructor(
 
     private fun onCleared() {
         listeners.forEach { it.onCleared() }
+    }
+
+    private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
+        val v = get(key)
+        if (v == null)
+            valueOrNull()?.let {
+                put(key, it)
+                return it
+            }
+        return v
     }
 
     companion object {
