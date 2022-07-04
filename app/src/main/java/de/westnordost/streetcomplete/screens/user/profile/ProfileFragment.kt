@@ -160,7 +160,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
-        binding.daysActiveText.background = LaurelWreath(resources, min(daysActive, 100))
+        binding.daysActiveText.background = LaurelWreath(resources, min(daysActive + 20, 100))
     }
 
     /*
