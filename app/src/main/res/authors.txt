@@ -187,6 +187,10 @@ produce_tung_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_vanilla.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vanilla_pompona_01.jpg
 produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Juglans_regia_Echte_Walnussfrucht_1.jpg
 
+ramp_none.jpg                  CC0               Mateusz Konieczny
+ramp_stroller.jpg              CC0               Mateusz Konieczny
+ramp_wheelchair.jpg            CC0               Mateusz Konieczny
+
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
