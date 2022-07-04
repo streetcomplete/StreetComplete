@@ -184,12 +184,12 @@ class MapDataController internal constructor(
         return if (keys.size == geometries.size) geometries
         else {
             val cachedKeys = geometries.map { ElementKey(it.elementType, it.elementId) }
-            val fetchedGeometries = geometries + geometryDB.getAllEntries(keys.filterNot { it in cachedKeys })
+            val fetchedGeometries = geometryDB.getAllEntries(keys.filterNot { it in cachedKeys })
             fetchedGeometries.forEach {
                 if (it.elementType == ElementType.NODE)
                     wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
             }
-            fetchedGeometries
+            geometries + fetchedGeometries
         }
     }
 
