@@ -43,7 +43,7 @@ class MapDataController internal constructor(
     val spatialCache = SpatialCache(
         16,
         SPATIAL_CACHE_SIZE,
-        2000,
+        20000,
         { bbox -> getDataInBBoxForSpatialCacheAndPutToNonSpatialCaches(bbox) },
         Node::id, Node::position
     )
