@@ -173,7 +173,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
         val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
-        private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 177, 215, 147) }
+        private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 152, 184, 126) }
 
         private val antiAliasPaint: Paint = Paint().apply {
             isAntiAlias = true
