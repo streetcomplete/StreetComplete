@@ -2227,8 +2227,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Έχει ΛΕΑ αυτός ο δρόμος;"</string>
     <string name="quest_fireHydrant_position_title">"Πού βρίσκεται αυτός ο πυροσβεστικός κρουνός;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Στο γρασίδι ή στο χώμα"</string>
     <string name="quest_fireHydrant_position_lane">"Στον δρόμο"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Στο πεζοδρόμιο"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Σε θέση στάθμευσης"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ναι (αφήστε σημείωση)"</string>

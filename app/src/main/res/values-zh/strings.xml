@@ -2400,8 +2400,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"这条路有路肩吗？"</string>
     <string name="quest_fireHydrant_position_title">"消防栓在哪里？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"在草地或泥土中"</string>
     <string name="quest_fireHydrant_position_lane">"在马路上"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"在人行道上"</string>
     <string name="quest_fireHydrant_position_parking_lot">"在停车场"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"是(留言)"</string>
@@ -2697,6 +2701,7 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"点击屏幕以开始测量"</string>
     <string name="quest_air_pump_bicycle_shop_title">"这里有公共自行车打气泵吗（至少在开放的时候）？"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"这里有可用的自行车打气泵吗？"</string>
+    <string name="action_overlays">"覆盖层"</string>
     <string name="split_way">"分割路径"</string>
     <string name="quest_memorialType_title">"这是哪一种纪念物？"</string>
     <string name="quest_memorialType_statue">"雕塑像"</string>
@@ -2713,5 +2718,11 @@ sorted alphabetically by title -->
     <string name="select_overlay">"选择叠加"</string>
     <string name="overlay_none">"没有"</string>
     <string name="overlay_lit">"街道照明"</string>
+    <string name="lit_value_yes">"点亮"</string>
+    <string name="lit_value_no">"不点亮"</string>
+    <string name="lit_value_24_7">"夜以继日地照亮"</string>
+    <string name="lit_value_automatic">"有人经过时点亮"</string>
     <string name="overlay_sidewalk">"人行道"</string>
+    <string name="quest_generic_answer_is_indoors">"这是室内的"</string>
+    <string name="quest_summit_cross_title">"这里有一个山顶十字架吗？"</string>
 </resources>

@@ -1385,8 +1385,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Този път има ли аварийна лента?"</string>
     <string name="quest_fireHydrant_position_title">"Къде се намира този пожарен кран?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"В тревни площи"</string>
     <string name="quest_fireHydrant_position_lane">"На пътното платно"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"На тротоар"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На паркинг"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Да (оставете бележка)"</string>

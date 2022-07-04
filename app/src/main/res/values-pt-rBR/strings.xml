@@ -2221,8 +2221,12 @@ Alternativamente, você pode deixar uma nota (com uma foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Esta via tem um acostamento?"</string>
     <string name="quest_fireHydrant_position_title">"Onde este hidrante está localizado?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na grama ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Na calçada"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Em uma vaga de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixe uma nota)"</string>
@@ -2490,4 +2494,14 @@ Que tipo de memorial é esse?"</string>
     <string name="lit_value_24_7">"Iluminado noite e dia"</string>
     <string name="lit_value_automatic">"Iluminado quando alguém passa"</string>
     <string name="overlay_sidewalk">"Calçadas"</string>
+    <string name="quest_generic_answer_is_indoors">"Isso é interno"</string>
+    <string name="quest_summit_cross_title">"Há uma cruz de cume aqui?"</string>
+    <string name="quest_entrance_reference">"O que está assinado nesta entrada?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta de entrada e gama de apartamentos"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Gama de apartamentos"</string>
+    <string name="quest_entrance_reference_select_code_only">"Etiqueta de entrada"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nenhuma placa com rótulo ou gama de apartamentos"</string>
+    <string name="quest_entrance_reference_reference_label">"Etiqueta de entrada:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Gama de apartamentos:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"para"</string>
 </resources>

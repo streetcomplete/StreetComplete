@@ -59,6 +59,8 @@ Note that this app asks for the address number of a building only after its type
     <string name="quest_openingHours_off_day">"Closed"</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Both an address number and a name..."</string>
     <string name="quest_address_house_number_label">"Address number:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"On the footpath"</string>
 
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->

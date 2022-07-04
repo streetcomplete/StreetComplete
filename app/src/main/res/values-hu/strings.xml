@@ -2196,8 +2196,12 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Van leállósáv ezen az úton?"</string>
     <string name="quest_fireHydrant_position_title">"Hol található ez a tűzcsap?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Füvön vagy földön"</string>
     <string name="quest_fireHydrant_position_lane">"Úttesten"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Járdán"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Parkolóhelyen"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Igen (megjegyzés írása)"</string>
@@ -2437,4 +2441,27 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Érintsd meg a képernyőt a mérés megkezdéséhez"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (legalábbis amikor nyitva van)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Van itt működő kerékpárpumpa?"</string>
+    <string name="quest_memorialType_title">"Milyen típusú emlékmű ez?"</string>
+    <string name="quest_memorialType_statue">"Szobor"</string>
+    <string name="quest_memorialType_bust">"Mellszobor"</string>
+    <string name="quest_memorialType_plaque">"Emléklap"</string>
+    <string name="quest_memorialType_war_memorial">"Háborús emlékmű"</string>
+    <string name="quest_memorialType_stone">"Kő"</string>
+    <string name="quest_memorialType_obelisk">"Obeliszk"</string>
+    <string name="quest_memorialType_stele_wooden">"Fából készült"</string>
+    <string name="quest_memorialType_stele_stone">"Kőből faragott"</string>
+    <string name="quest_memorialType_sculpture">"Más szobor"</string>
+    <string name="overlay_none">"Nincs"</string>
+    <string name="overlay_lit">"Utcai világítás"</string>
+    <string name="lit_value_yes">"Megvilágítva"</string>
+    <string name="lit_value_no">"Nincs világítás"</string>
+    <string name="lit_value_24_7">"Folyamatos világítás"</string>
+    <string name="lit_value_automatic">"Mozgásérzékelős"</string>
+    <string name="quest_generic_answer_is_indoors">"Épületen belül"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Házszám és lakásszámok"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Lakásszámok"</string>
+    <string name="quest_entrance_reference_select_code_only">"Házszám"</string>
+    <string name="quest_entrance_reference_reference_label">"Házszám:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Lakásszámok:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"eddig:"</string>
 </resources>

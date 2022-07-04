@@ -926,9 +926,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
 
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
-    <string name="quest_fireHydrant_position_green">In grass or dirt</string>
+    <string name="quest_fireHydrant_position_green">In grass, dirt or shrubbery</string>
     <string name="quest_fireHydrant_position_lane">On the roadway</string>
-    <string name="quest_fireHydrant_position_sidewalk">On the sidewalk</string>
+    <string name="quest_fireHydrant_position_sidewalk">On a walkway</string>
     <string name="quest_fireHydrant_position_parking_lot">In a parking spot</string>
 
     <string name="quest_fireHydrant_type_title">What kind of fire hydrant is this?</string>
