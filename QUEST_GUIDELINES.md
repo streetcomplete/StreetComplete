@@ -22,6 +22,7 @@ Consider the following:
 - 🕵️ **Publicly accessible**: The information the users are supposed to collect must be easily accessible from the outside, don't lead users into trouble. I.e. users will not be able to answer reliably if a building has a basement or not, if a restaurant has toilets or not etc. without entering it.
 - 💤 **No spam**: It must be possible to determine whether the quest should reasonably be asked. A quest which is to be answered in 99% of the time with the same answer is not a good quest, don't bore the users. I.e. asking for any road if it is a one-way road, is silly, because the vast majority of all roads will not be one-ways. 
 - 💵 **Valuable Surveyors**: Surveyor time is valuable, they shouldn't be asked to complete data that does not require a survey and can more efficiently be done remotely.
+- 🚶 **Pedestrian oriented**: All quests should be answerable by users moving on foot.
 
 ## 2. Think and write down how to generate the quests
 
