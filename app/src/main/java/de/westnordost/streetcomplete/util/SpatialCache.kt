@@ -35,6 +35,7 @@ class SpatialCache<K, T>(
         byKey[key]
     }
 
+    /** @return the items with the given [keys] that are in the cache */
     fun getAll(keys: Collection<K>): List<T> = synchronized(this) {
         keys.mapNotNull { byKey[it] }
     }
