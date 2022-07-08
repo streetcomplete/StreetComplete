@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -16,6 +19,7 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
+import de.westnordost.streetcomplete.testutils.pGeom
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
