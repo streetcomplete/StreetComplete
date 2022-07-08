@@ -84,8 +84,11 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun getAllVisible() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock(), mock(), mock()))
-        on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock(), mock()))
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
+        val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
+        val noteQuests = listOf(OsmNoteQuest(0L, LatLon(0.0, 0.0)), OsmNoteQuest(1L, LatLon(1.0, 1.0)))
+        on(osmQuestSource.getAllVisibleInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(osmQuests)
+        on(osmNoteQuestSource.getAllVisibleInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
 
         val quests = source.getAllVisible(bbox)
         assertEquals(5, quests.size)
