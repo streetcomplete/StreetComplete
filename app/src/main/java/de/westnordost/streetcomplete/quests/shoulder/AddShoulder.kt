@@ -11,6 +11,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     /* Trunks always, smaller roads only if they are either motorroads, bridges or tunnels or if
      * they are likely rural roads (high max speeds - implicit or explicit - or no sidewalk).
+     * Motorways are assumed to almost always have shoulders, except in some special cases (see #4148).
      *
      * The existence of a parking lane, cycle lane excludes the existence of a shoulder because they
      * are in themselves kind of a shoulder (with a special purpose)
@@ -24,7 +25,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
               and (
                 motorroad = yes
                 or tunnel ~ yes|building_passage|avalanche_protector
-                or bridge = yes
+                or (bridge and bridge != no)
                 or sidewalk ~ no|none
                 or !maxspeed and highway = trunk
                 or maxspeed > 50
@@ -33,7 +34,12 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
               )
             ) or (
               highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-              and (foot ~ yes|designated or bicycle ~ yes|designated)
+              and (
+                foot ~ yes|designated
+                or bicycle ~ yes|designated
+                or tunnel ~ yes|building_passage|avalanche_protector
+                or (bridge and bridge != no)
+              )
             )
           )
           and lane_markings != no
