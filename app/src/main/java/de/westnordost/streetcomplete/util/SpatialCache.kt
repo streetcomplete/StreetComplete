@@ -73,8 +73,6 @@ class SpatialCache<K, T>(
     /**
      * Replaces all tiles fully contained in the bounding box.
      * If the number of tiles exceeds maxTiles, only the first maxSize tiles are cached.
-     * @return all keys not put to cache, either because the tile was not fully contained
-     * in the given bbox, or because the bbox contained too many tiles at tileZoom.
      */
     fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) = synchronized(this) {
         val tiles = bbox.asListOfEnclosingTilePos()
