@@ -31,6 +31,6 @@ data class ElementPolygonsGeometry(val polygons: List<List<LatLon>>, override va
 @Serializable
 @SerialName("point")
 data class ElementPointGeometry(override val center: LatLon) : ElementGeometry() {
-    private val bbox by lazy { listOf(center).enclosingBoundingBox() }
+    private val bbox by lazy { BoundingBox(center, center) }
     override fun getBounds(): BoundingBox = bbox
 }

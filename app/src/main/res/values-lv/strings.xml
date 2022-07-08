@@ -1082,8 +1082,12 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
     <string name="quest_address_house_number_label">"Mājas numurs:"</string>
     <string name="quest_shoulder_title">"Vai šim ceļam ir nomale?"</string>
     <string name="quest_fireHydrant_position_title">"Kur ir novietots ugunsdzēsības hidrants?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Uz zāles vai zemes"</string>
     <string name="quest_fireHydrant_position_lane">"Uz ceļa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Uz trotuāra"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Stāvvietā"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Jā (atstāt piezīmi)"</string>
@@ -1301,4 +1305,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Apgaismots visu diennakti"</string>
     <string name="lit_value_automatic">"Apgaismots, kad kāds iet garām"</string>
     <string name="overlay_sidewalk">"Ietves"</string>
+    <string name="quest_generic_answer_is_indoors">"Tas ir iekštelpās"</string>
+    <string name="quest_summit_cross_title">"Vai šeit ir virsotnes krusts?"</string>
+    <string name="quest_entrance_reference">"Kāda ir zīme pie šīs ieejas?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ieejas marķējums un dzīvokļu intervāls"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Dzīvokļu intervāls"</string>
+    <string name="quest_entrance_reference_select_code_only">"Ieejas marķējums"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nav zīmes ar marķējumu vai dzīvokļu intervālu"</string>
+    <string name="quest_entrance_reference_reference_label">"Ieejas marķējums:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Dzīvokļu intervāls:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"līdz"</string>
 </resources>

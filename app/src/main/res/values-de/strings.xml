@@ -1126,9 +1126,9 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_address_house_number_label">"Hausnummer:"</string>
     <string name="quest_shoulder_title">"Hat diese Straße einen Seitenstreifen?"</string>
     <string name="quest_fireHydrant_position_title">"Wo befindet sich dieser Hydrant?"</string>
-    <string name="quest_fireHydrant_position_green">"Auf Gras- oder Erdboden"</string>
+    <string name="quest_fireHydrant_position_green">"Im Gras, Dreck oder Gebüsch"</string>
     <string name="quest_fireHydrant_position_lane">"Auf der Straße"</string>
-    <string name="quest_fireHydrant_position_sidewalk">"Auf dem Bürgersteig"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Auf einem Fußweg"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Auf einem Parkplatz"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (Hinweis hinterlassen)"</string>
     <string name="quest_smoothness_square_title">"Wie ist die Oberflächenbeschaffenheit dieses Platzes?"</string>
@@ -1360,7 +1360,8 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Tag und Nacht beleuchtet"</string>
     <string name="lit_value_automatic">"Beleuchtet, wenn jemand vorbeikommt"</string>
     <string name="overlay_sidewalk">"Bürgersteige"</string>
-    <string name="quest_generic_answer_is_indoors">"ist in Gebäude"</string>
+    <string name="quest_generic_answer_is_indoors">"Ist in einem Gebäude"</string>
     <string name="quest_summit_cross_title">"Ist hier ein Gipfelkreuz?"</string>
+    <string name="quest_entrance_reference">"Was für ein Schild ist an diesem Eingang angebracht?"</string>
     <string name="quest_entrance_reference_flat_range_to">"bis"</string>
 </resources>

@@ -1105,8 +1105,12 @@ Como alternativa, pode deixar uma nota (com uma fotografia)"</string>
     <string name="quest_address_house_number_label">"Número de porta:"</string>
     <string name="quest_shoulder_title">"Esta estrada tem berma?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está esta boca de incêndio?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na relva ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"No passeio"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Num lugar de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixar uma nota)"</string>

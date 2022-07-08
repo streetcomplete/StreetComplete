@@ -1373,8 +1373,12 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Questa strada ha una banchina?"</string>
     <string name="quest_fireHydrant_position_title">"Dove si trova l'idrante?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Sull'erba o sulla terra"</string>
     <string name="quest_fireHydrant_position_lane">"Sulla strada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Sul marciapiede"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In un parcheggio"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sì (lascia una nota)"</string>
@@ -1577,7 +1581,7 @@ sorted alphabetically by title -->
 
     <!-- Quests
 sorted alphabetically by title -->
-    <string name="quest_accepts_cards">"Quì accettano carte di credito o debito ?"</string>
+    <string name="quest_accepts_cards">"Qui accettano carte di credito o debito?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Entrambi"</string>
@@ -1639,4 +1643,12 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Illuminato giorno e notte"</string>
     <string name="lit_value_automatic">"Illuminato quando qualcuno passa"</string>
     <string name="overlay_sidewalk">"Marciapiedi"</string>
+    <string name="quest_entrance_reference">"Che scritta è presente su questo ingresso?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Un nome e un intervallo di appartamenti"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Un intervallo di appartamenti"</string>
+    <string name="quest_entrance_reference_select_code_only">"Una etichetta con nome"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nessuna etichetta con nome o numeri di appartementi"</string>
+    <string name="quest_entrance_reference_reference_label">"Etichetta dell’ingresso:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Intervallo degli appartamenti:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"fino a"</string>
 </resources>

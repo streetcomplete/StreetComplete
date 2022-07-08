@@ -100,23 +100,11 @@ class VisibleQuestsSourceTest {
         assertEquals(2, quests.filterIsInstance<OsmNoteQuest>().size)
     }
 
-    @Test fun `getAllVisible returns only quests of types that are visible`() {
-        val t1 = TestQuestTypeA()
-        val t2 = TestQuestTypeB()
-        val q1 = osmQuest(elementId = 1, questType = t1)
-        val q2 = osmQuest(elementId = 2, questType = t2)
-        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(q1, q2))
-        on(visibleQuestTypeSource.isVisible(t1)).thenReturn(false)
-        on(visibleQuestTypeSource.isVisible(t2)).thenReturn(true)
-
-        val quests = source.getAllVisible(bbox)
-        assertEquals(q2, quests.single())
-    }
-
     @Test fun `getAllVisible does not return those that are invisible in team mode`() {
         on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock()))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
         on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
+        on(teamModeQuestFilter.isEnabled).thenReturn(true)
 
         val quests = source.getAllVisible(bbox)
         assertTrue(quests.isEmpty())

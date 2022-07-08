@@ -1258,6 +1258,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"途中で変わる場合、まずは道を途中で分割します。 その後、分割された部分ごとに個別にクエストに答えることができます。
 道を分割しますか？"</string>
+    <string name="quest_split_way_tutorial">"答えが違うポイントをタップして分割して下さい。ズーム機能を用いて可能な限り正確に。"</string>
     <string name="quest_split_way_too_imprecise">"拡大してください"</string>
 
     <!-- Fuzzy -->
@@ -1331,6 +1332,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="tutorial_welcome_to_osm_subtitle">"フリーなwikiの世界地図"</string>
     <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。
 このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など…)を自動で探します。"</string>
+    <string name="tutorial_solving_quests">"発見次第、不足している詳細が地図上に探求として表示される。
+
+すぐに回答を始められ、ログイン後に回答を公開できます。"</string>
+    <string name="tutorial_happy_mapping">"楽しい地図作成を！"</string>
 
     <!-- User screen -->
     <!-- Fuzzy -->
