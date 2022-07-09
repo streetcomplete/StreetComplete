@@ -92,12 +92,15 @@ private suspend fun readChangelog(resources: Resources): List<Release> = withCon
     val upstreamChangelog = resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
     val eeChangelog = resources.getYamlStringMap(R.raw.changelog_ee).map { Release(it.key, addedLinksEE(it.value)) }
     (upstreamChangelog + eeChangelog).sortedBy {
-        // reverse sort by version number, _ee first, then normal, then beta
+        // reverse sort by version number, _ee first, then normal, then beta, then alpha
+        // actually there should be proper parsing using regex, but maybe later
         when {
             it.title.endsWith("_ee") ->
                 -it.title.substringAfter("v").substringBefore("_ee").toFloat() - 0.001F
             it.title.contains("-beta") ->
                 -it.title.substringAfter("v").substringBefore("-beta").toFloat() + 0.001F
+            it.title.contains("-alpha") ->
+                -it.title.substringAfter("v").substringBefore("-alpha").toFloat() + 0.002F
             else -> -it.title.substringAfter("v").toFloat()
         }
     }
