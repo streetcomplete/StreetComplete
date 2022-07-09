@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.sport
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.sport.Sport.AMERICAN_FOOTBALL
 import de.westnordost.streetcomplete.quests.sport.Sport.ARCHERY
@@ -41,7 +41,7 @@ import de.westnordost.streetcomplete.quests.sport.Sport.TENNIS
 import de.westnordost.streetcomplete.quests.sport.Sport.VOLLEYBALL
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddSportForm : AImageListQuestAnswerFragment<Sport, List<Sport>>() {
+class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }

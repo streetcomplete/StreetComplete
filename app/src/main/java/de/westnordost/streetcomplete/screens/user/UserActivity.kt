@@ -7,16 +7,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.login.LoginFragment
-import de.westnordost.streetcomplete.screens.user.quest_statistics.CountryInfoFragment
-import de.westnordost.streetcomplete.screens.user.quest_statistics.QuestStatisticsFragment
-import de.westnordost.streetcomplete.screens.user.quest_statistics.QuestTypeInfoFragment
+import de.westnordost.streetcomplete.screens.user.statistics.CountryInfoFragment
+import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsFragment
+import de.westnordost.streetcomplete.screens.user.statistics.EditTypeInfoFragment
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -29,15 +29,15 @@ import org.koin.android.ext.android.inject
 class UserActivity :
     FragmentContainerActivity(R.layout.activity_user),
     AchievementsFragment.Listener,
-    QuestStatisticsFragment.Listener {
+    EditStatisticsFragment.Listener {
 
     private val userLoginStatusSource: UserLoginStatusSource by inject()
 
     private val countryDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?
 
-    private val questTypeDetailsFragment get() =
-        supportFragmentManager.findFragmentById(R.id.questTypeDetailsFragment) as QuestTypeInfoFragment?
+    private val editTypeDetailsFragment get() =
+        supportFragmentManager.findFragmentById(R.id.editTypeDetailsFragment) as EditTypeInfoFragment?
 
     private val achievementDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
@@ -67,9 +67,9 @@ class UserActivity :
             countryDetailsFragment.dismiss()
             return
         }
-        val questTypeDetailsFragment = questTypeDetailsFragment
-        if (questTypeDetailsFragment != null && questTypeDetailsFragment.isShowing) {
-            questTypeDetailsFragment.dismiss()
+        val editTypeDetailsFragment = editTypeDetailsFragment
+        if (editTypeDetailsFragment != null && editTypeDetailsFragment.isShowing) {
+            editTypeDetailsFragment.dismiss()
             return
         }
         val achievementDetailsFragment = achievementDetailsFragment
@@ -93,12 +93,12 @@ class UserActivity :
 
     /* --------------------------- QuestStatisticsFragment.Listener ----------------------------- */
 
-    override fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View) {
-        questTypeDetailsFragment?.show(questType, solvedCount, questBubbleView)
+    override fun onClickedEditType(editType: EditType, editCount: Int, questBubbleView: View) {
+        editTypeDetailsFragment?.show(editType, editCount, questBubbleView)
     }
 
-    override fun onClickedCountryFlag(country: String, solvedCount: Int, rank: Int?, countryBubbleView: View) {
-        countryDetailsFragment?.show(country, solvedCount, rank, countryBubbleView)
+    override fun onClickedCountryFlag(country: String, editCount: Int, rank: Int?, countryBubbleView: View) {
+        countryDetailsFragment?.show(country, editCount, rank, countryBubbleView)
     }
 
     /* ------------------------------------------------------------------------------------------ */

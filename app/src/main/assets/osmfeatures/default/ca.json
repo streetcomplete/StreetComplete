@@ -3632,9 +3632,6 @@
                     "name": "Enllaç de carretera terciària",
                     "terms": "enllaç amb terciària"
                 },
-                "highway/track": {
-                    "name": "Pista forestal sense manteniment"
-                },
                 "highway/traffic_mirror": {
                     "name": "Mirall de trànsit"
                 },
@@ -4075,6 +4072,11 @@
                 "man_made/breakwater": {
                     "name": "trencaonades",
                     "terms": "escullera,espigó,espatller"
+                },
+                "man_made/cairn": {
+                    "name": "Fita",
+                    "terms": "pila de rocs,pila de pedres,fita",
+                    "aliases": "Pila de pedres\nPila de rocs"
                 },
                 "man_made/chimney": {
                     "name": "Xemeneia"
@@ -5524,9 +5526,6 @@
                 "waterway/river": {
                     "name": "Riu",
                     "terms": "riu"
-                },
-                "waterway/riverbank": {
-                    "name": "Banc fluvial"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Lavabo per a vaixells"

@@ -29,10 +29,13 @@ val Element.geometryType: GeometryType get() =
         else -> GeometryType.LINE
     }
 
-fun Element.isArea(): Boolean {
-    return when (this) {
-        is Way -> isClosed && IS_AREA_EXPRESSION.matches(this)
-        is Relation -> tags["type"] == "multipolygon"
-        else -> false
-    }
+fun Element.isArea(): Boolean = when (this) {
+    is Way -> isClosed && IS_AREA_EXPRESSION.matches(this)
+    is Relation -> tags["type"] == "multipolygon"
+    else -> false
+}
+
+fun Element.isSplittable(): Boolean = when (this) {
+    is Way -> !isClosed || !IS_AREA_EXPRESSION.matches(this)
+    else -> false
 }

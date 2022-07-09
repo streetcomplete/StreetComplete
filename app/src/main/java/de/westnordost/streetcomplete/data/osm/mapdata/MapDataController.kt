@@ -164,7 +164,7 @@ class MapDataController internal constructor(
         return result
     }
 
-    fun Node.toElementGeometryEntry() =
+    private fun Node.toElementGeometryEntry() =
         ElementGeometryEntry(type, id, ElementPointGeometry(position))
 
     data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)

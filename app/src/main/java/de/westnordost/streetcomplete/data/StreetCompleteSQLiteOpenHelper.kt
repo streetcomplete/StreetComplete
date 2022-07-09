@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTa
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
-import de.westnordost.streetcomplete.data.user.statistics.QuestTypeStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
@@ -86,7 +86,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(DownloadedTilesTable.CREATE)
 
         // user statistics
-        db.execSQL(QuestTypeStatisticsTable.CREATE)
+        db.execSQL(EditTypeStatisticsTable.CREATE)
         db.execSQL(CountryStatisticsTable.CREATE)
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)

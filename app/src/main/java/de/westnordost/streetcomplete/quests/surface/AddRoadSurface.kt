@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 
 class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceAnswer>() {
@@ -37,8 +37,7 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
     override val changesetComment = "Add road surface info"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(CAR)
+    override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["area"] == "yes") R.string.quest_streetSurface_square_title

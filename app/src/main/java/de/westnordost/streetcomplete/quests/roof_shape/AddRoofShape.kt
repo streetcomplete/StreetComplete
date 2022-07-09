@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 import java.util.concurrent.FutureTask
@@ -33,7 +33,7 @@ class AddRoofShape(
     override val wikiLink = "Key:roof:shape"
     override val icon = R.drawable.ic_quest_roof_shape
     override val defaultDisabledMessage = R.string.default_disabled_msg_roofShape
-    override val questTypeAchievements = listOf(BUILDING)
+    override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title
 

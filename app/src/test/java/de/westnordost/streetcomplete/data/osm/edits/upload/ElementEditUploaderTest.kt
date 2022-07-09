@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenQuestChangesetsManager
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -18,7 +18,7 @@ import org.mockito.Mockito.doThrow
 
 class ElementEditUploaderTest {
 
-    private lateinit var changesetManager: OpenQuestChangesetsManager
+    private lateinit var changesetManager: OpenChangesetsManager
     private lateinit var mapDataApi: MapDataApi
     private lateinit var uploader: ElementEditUploader
 

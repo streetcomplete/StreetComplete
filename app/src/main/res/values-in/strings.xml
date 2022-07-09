@@ -436,8 +436,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Kenari"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Ini menggunakan deteksi gerak"</string>
-    <string name="quest_way_lit_24_7">"Terang siang dan malam"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
@@ -837,6 +835,8 @@ Pisah sekarang?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Tak ada nomor referensi yang terlihat…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Jalan dalam ilustrasi diputar sama seperti pada peta di lokasi pin."</string>
     <string name="quest_recycling_materials_title">"Apa yang tersisa di sini untuk didaur ulang?"</string>
 
@@ -916,12 +916,11 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
 
     <!-- Fuzzy -->
     <string name="quests_empty">"Kamu belum menyelesaikan pencarian apapun"</string>
-
-    <!-- Fuzzy -->
-    <string name="unsynced_quests_description">"perubahan plus %d belum disimpan"</string>
+    <string name="unsynced_quests_description">"tambah %d perubahan yang belum diterbitkan"</string>
     <string name="unsynced_quests_not_logged_in_description">"Kamu belum mengunggah %d perubahan. Kamu perlu masuk untuk mengunggahnya"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Pencarian Terpecahkan"</string>
     <string name="user_achievements_title">"Pencapaian"</string>
     <string name="user_links_title">"Koleksi Link"</string>
@@ -953,7 +952,7 @@ Jangan lupa hati-hati: Sadar terhadap lingkungan sekitar dan jangan masuk proper
     <string name="link_openvegemap_description">"Temukan restoran vegetarian dan vegan di kotamu"</string>
     <string name="link_touch_mapper_description">"Buat peta taktil dengan mudah untuk alamat apapun"</string>
     <string name="link_mapy_tactile_description">"Peta taktil untuk tunanetra dalam banyak skala"</string>
-    <string name="link_josm_description">"Editor OSM yang kaya fitur untuk dekstop. Ini adalah alat mutakhir untuk kontributor reguler."</string>
+    <string name="link_josm_description">"Penyunting OSM yang kaya fitur untuk desktop. Ini adalah alat mutakhir untuk kontributor reguler."</string>
     <string name="link_vespucci_description">"Editor lanjutan OSM untuk Android"</string>
     <string name="link_ideditor_description">"Editor OSM sederhana untuk browser. Optimal untuk dekstop atau tablet besar"</string>
     <string name="link_umap_description">"Buat peta dengan data khusus dengan cepat dan sisipkan ke situsmu"</string>
@@ -1000,7 +999,7 @@ Juga bisa menampilkan isokron (area yang dapat dijangkau dalam X menit dari titi
     <string name="achievement_surveyor_solved_X">"Kamu memecahkan %d pencarian!
 Lanjutkan untuk membuka pencapaian lebih banyak yang berisi tautan ke OSM serta aplikasi dan proyek terkait peta lainnya!"</string>
     <string name="achievement_regular_title">"regular"</string>
-    <string name="achievement_regular_description">"Kamu berkontribusi %d hari ke OSM dengan aplikasi ini! Kontribusi Reguler adalah tulang punggung OSM, terima kasih buat dedikasimu! ❤"</string>
+    <string name="achievement_regular_description">"Kamu berkontribusi %d hari ke OSM dengan aplikasi ini! Kontribusi Reguler adalah tulang punggung OSM, terima kasih untuk dedikasimu! ❤"</string>
     <string name="achievement_bicyclist_title">"Pesepeda"</string>
     <string name="achievement_bicyclist_solved_X">"Kamu memecahkan %d pencarian yang membantu para pesepeda!"</string>
     <string name="achievement_wheelchair_title">"Mobilitas"</string>
@@ -1119,7 +1118,9 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Kamu memecahkan %d pencarian berguna untuk orang-orang luar ruangan!"</string>
     <string name="quest_generic_answer_noSign">"Tidak ada tanda"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">"terpisah"</string>
     <string name="pref_title_sync2">"Unggah jawaban secara otomatis"</string>
+    <string name="quest_surface_detailed_answer_impossible_title">"Jelaskan permukaan"</string>
     <string name="open_url">"Buka URL"</string>
     <string name="quest_buildingType_historic">"Bersejarah"</string>
     <string name="quest_buildingType_historic_description">"bangunan dengan nilai bersejarah, dibangun dengan fungsi yang tidak diketahui atau tidak jelas"</string>
@@ -1166,12 +1167,17 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_drinking_water_potable_unsigned">"Aman untuk diminum (tak bertanda)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Tak aman untuk diminum (tertanda)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Tak aman untuk diminum (tak tertanda)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
     <string name="quest_crossing_type_signals_controlled">"Diatur oleh lampu lalu lintas"</string>
+    <string name="undo_confirm_title2">"Batalkan suntingan berikut?"</string>
     <string name="synced">"Disinkronkan"</string>
+    <string name="quest_cycleway_value_separate">"ditampilkan secara terpisah pada peta"</string>
 
     <!-- Edit history sidebar -->
     <string name="created_note_action_title">"Catatan dibuat"</string>
+    <string name="hid_action_description">"Kamu menyembunyikannya"</string>
     <string name="deleted_poi_action_description">"Kamu menghapusnya"</string>
     <string name="added_tag_action_title">"%s ditambahkan"</string>
     <string name="removed_tag_action_title">"%s dihapus"</string>

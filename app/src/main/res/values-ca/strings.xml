@@ -334,8 +334,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Nous"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Utilitza detector de moviment"</string>
-    <string name="quest_way_lit_24_7">"Està il·luminat de nit i de dia"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
     <string name="quest_crossing_type_title">"Quina classe d’encreuament és aquest?"</string>
 
@@ -712,6 +710,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
 
@@ -782,11 +782,14 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
 
     <!-- Links screen -->
     <string name="links_empty">"Encara no teniu cap enllaç"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Encara no heu publicat cap resposta"</string>
     <string name="unsynced_quests_description">"i %d de canvis no publicats."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tens %d canvis no publicats. Has d'iniciar la sessió per a pujar-los."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Proves resoltes"</string>
     <string name="user_achievements_title">"Assoliments"</string>
     <string name="user_links_title">"Col·lecció d'enllaços"</string>
@@ -901,6 +904,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_statistics_country_rank">"Rang a %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapejant Portal %s"</string>
     <string name="user_statistics_filter_by_country">"per país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"per tipus de missió"</string>
     <string name="user_profile_global_rank">"Global"</string>
     <string name="user_profile_local_rank">"Rang a
@@ -1121,9 +1126,13 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_type_none">"No hi ha cap royal cypher visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Corona d'Escòcia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Parc de bombers"</string>
     <string name="quest_recycling_type_beverage_cartons">"Només cartons de beguda"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Només ampolles i cartons plàstics"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Mode d'equip"</string>
 
     <!-- Team mode -->
@@ -1345,8 +1354,12 @@ Alternativament, pots deixar una nota (amb foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Té voral aquesta carretera?"</string>
     <string name="quest_fireHydrant_position_title">"On es troba l'hidrant?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"En herba o terra"</string>
     <string name="quest_fireHydrant_position_lane">"A la carretera"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"A la vorera"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En un aparcament"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sí (deixa una nota)"</string>
@@ -1568,6 +1581,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Estàs segur que els ciclistes no poden utilitzar els dos sentits d'aquest carrer unidireccional? En cas de dubte, mira si hi ha algun senyal al final del carrer."</string>
+    <string name="link_backofyourhand_description">"Com de bé coneixes la teva zona? Prova el teu coneixement localitzant carrers."</string>
 
     <!-- Fuzzy -->
     <string name="link_thenandnow_description">"Exploreu com semblava OSM en els primers dies en comparació amb com es veu ara!"</string>
@@ -1583,4 +1597,54 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_unavailable">"Cap de les dues"</string>
     <string name="quest_barrier_type_gate_any_size">"Porta, qualsevol mida"</string>
     <string name="quest_air_pump_compressor_title">"Ací hi ha un compressor d'aire?"</string>
+    <string name="quest_step_count_stile_hint">"Només el nombre de passos per arribar a dalt. Si el recompte de passos difereix en cada costat, dona el nombre més alt."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"no, no es permeten bicicletes en aquesta direcció"</string>
+    <string name="map_btn_create_track">"Crear nou recorregut per enregistrar"</string>
+    <string name="map_btn_stop_track">"Aturar l'enregistrament del recorregut"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Quants llocs per bicicletes de lloguer hi ha?"</string>
+    <string name="quest_bicycle_rental_type_title">"Quin tipus de lloguer de bicicletes és?"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Lloc designat (bicicletes bloquejades individualment)"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Botiga de bicicletes que a més les lloga"</string>
+    <string name="quest_bicycle_shop_repair_title">"S'ofereixen serveis de reparació?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Es venen bicicletes de segona mà?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"No, només noves"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Sí, a més de les noves"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Sí, exclusivament"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"No es venen bicicletes"</string>
+    <string name="quest_building_entrance_title">"Quin tipus d'entrada a l'edifici és?"</string>
+    <string name="quest_building_entrance_main">"Entrada principal a l'edifici"</string>
+    <string name="quest_building_entrance_service">"Entrada de servei"</string>
+    <string name="quest_building_entrance_exit">"Només sortida"</string>
+    <string name="quest_building_entrance_emergency_exit">"Només sortida d'emergència"</string>
+    <string name="quest_building_entrance_yes">"Altres tipus d'entrada"</string>
+    <string name="quest_building_entrance_dead_end">"Cul de sac, no hi ha entrada"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Toca la pantalla per iniciar el mesurament"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Hi ha una manxa d'inflar bicicletes pública aquí? (almenys quan és obert)"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Hi ha una manxa de bicicletes que funcioni aquí?"</string>
+    <string name="action_overlays">"Superposicions"</string>
+    <string name="split_way">"Tallar via"</string>
+    <string name="quest_memorialType_title">"Quin tipus de memorial és?"</string>
+    <string name="quest_memorialType_statue">"Estàtua"</string>
+    <string name="quest_memorialType_bust">"Bust"</string>
+    <string name="quest_memorialType_plaque">"Placa"</string>
+    <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
+    <string name="quest_memorialType_stone">"Pedra"</string>
+    <string name="quest_memorialType_obelisk">"Obelisc"</string>
+    <string name="quest_memorialType_sculpture">"Altres escultures"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Seleccionar superposició"</string>
+    <string name="overlay_none">"Cap"</string>
+    <string name="overlay_lit">"Il·luminació al carrer"</string>
+    <string name="lit_value_yes">"Il·luminat"</string>
+    <string name="lit_value_no">"Sense il·luminació"</string>
+    <string name="lit_value_24_7">"Il·luminat durant la nit i el dia"</string>
+    <string name="lit_value_automatic">"Il·luminat quan hi passa algú"</string>
+    <string name="overlay_sidewalk">"Voreres"</string>
+    <string name="quest_generic_answer_is_indoors">"Això és interior"</string>
+    <string name="quest_summit_cross_title">"Hi ha una creu de la cimera ací?"</string>
+    <string name="quest_entrance_reference">"Què hi posa a l'entrada?"</string>
+    <string name="quest_entrance_reference_select_code_only">"Nom de l'entrada"</string>
+    <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
 </resources>

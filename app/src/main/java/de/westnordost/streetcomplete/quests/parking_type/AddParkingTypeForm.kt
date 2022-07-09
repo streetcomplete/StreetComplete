@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.parking_type.ParkingType.LANE
 import de.westnordost.streetcomplete.quests.parking_type.ParkingType.MULTI_STOREY
 import de.westnordost.streetcomplete.quests.parking_type.ParkingType.STREET_SIDE
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.parking_type.ParkingType.SURFACE
 import de.westnordost.streetcomplete.quests.parking_type.ParkingType.UNDERGROUND
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddParkingTypeForm : AImageListQuestAnswerFragment<ParkingType, ParkingType>() {
+class AddParkingTypeForm : AImageListQuestForm<ParkingType, ParkingType>() {
 
     override val items = listOf(
         Item(SURFACE,      R.drawable.parking_type_surface,     R.string.quest_parkingType_surface),

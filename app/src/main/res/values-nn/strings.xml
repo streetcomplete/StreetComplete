@@ -284,8 +284,6 @@
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Lyset brukar rørslesensor"</string>
-    <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
     <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
     <string name="quest_crossing_type_unmarked">"Utan vegmarkering"</string>
@@ -606,6 +604,8 @@
     <string name="about_summary_current_version">"Gjeldande versjon: %s"</string>
     <string name="quest_postboxRef_title">"Kva er referansenummeret til denne postkassen?"</string>
     <string name="quest_ref_answer_noRef">"Manglar synleg referansenummer …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Vegen i illustrasjonen er orientert likt som den på kartet på staden der oppdrags­merket vert vist."</string>
     <string name="quest_recycling_materials_title">"Kva kan du levera til resirkulering her?"</string>
     <string name="quest_recycling_materials_note">"Viss det kan resirkulerast noko her som ikkje står som svaralternativ, legg heller igjen ein merknad."</string>
@@ -662,11 +662,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"Du har ikkje nokon lenkjer enno"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har ikkje offentleg­gjort nokon svar på oppdrag enno"</string>
     <string name="unsynced_quests_description">"pluss %d ikkje offentleg­gjorde endringar."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endringar som du ikkje har offentleg­gjort enno. Du må logga inn for å offentleg­gjera dei."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Løyste oppdrag"</string>
     <string name="user_achievements_title">"Bragder"</string>
     <string name="user_links_title">"Lenkjesamling"</string>
@@ -759,6 +762,8 @@
     <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"etter land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"etter type oppdrag"</string>
     <string name="user_profile_global_rank">"Global rangering"</string>
     <string name="user_profile_local_rank">"Rangering i %s"</string>
@@ -905,7 +910,11 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Kostar det noko å parkera syklar her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brannstasjon"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Lag­modus"</string>
 
     <!-- Team mode -->
@@ -999,7 +1008,7 @@
     <string name="quest_presets_preset_name">"Namn på oppdragsutvalet"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Merkt"</string>
-    <string name="quest_presets_delete_message">"Vil du sletta oppdragsutvalet «%1». Val av oppdrag og oppdrags­rekkjefølgja går då tapt for alltid."</string>
+    <string name="quest_presets_delete_message">"Vil du sletta oppdragsutvalet «%s». Val av oppdrag og oppdrags­rekkjefølgja går då tapt for alltid."</string>
     <string name="notification_syncing">"Synkroniserer data …"</string>
 
     <!-- Android notifications -->

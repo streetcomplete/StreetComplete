@@ -483,8 +483,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="produce_vanilla">"Vanilie"</string>
     <string name="produce_walnuts">"Nuci"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Folosește senzori de mișcare"</string>
-    <string name="quest_way_lit_24_7">"Este luminat și ziua și noaptea"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu pot scana aici. Încercați să apropiați mai puțin sau înclinați mai puțin harta."</string>
     <string name="quest_crossing_type_title">"Ce fel de trecere este aceasta?"</string>
 
@@ -893,6 +891,8 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nici un număr de referință vizibil …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Drumul din ilustrație este orientat la fel ca pe hartă la locația indicată."</string>
     <string name="quest_recycling_materials_title">"Ce se poate recicla aici?"</string>
 
@@ -966,11 +966,14 @@ Se caută automat detaliile care lipsesc în vecinătatea ta: piste pentru bicic
 
     <!-- Links screen -->
     <string name="links_empty">"Nu aveți încă linkuri"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Nu ați publicat încă niciun răspuns la misiuni"</string>
     <string name="unsynced_quests_description">"plus %d modificări nepublicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Aveți %d modificări nepublicate. Trebuie să vă autentificați pentru a putea fi urcate pe server."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Misiuni rezolvate"</string>
     <string name="user_achievements_title">"Realizări"</string>
     <string name="user_links_title">"Colecție de legături"</string>
@@ -1086,6 +1089,8 @@ Aceste date sunt esențiale nu numai pentru poștaș, ci și pentru orice sistem
     <string name="user_statistics_country_rank">"Nivel in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de cartografiere %s"</string>
     <string name="user_statistics_filter_by_country">"după țară"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"după tipul de misiune"</string>
     <string name="user_profile_global_rank">"Rang
 global"</string>
@@ -1304,9 +1309,13 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_postboxRoyalCypher_title">"Care-i codul poștal pentru această cutie poștală?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nici un cod regal nu este vizibil"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Coroana Scoției"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Statie de pompieri"</string>
     <string name="quest_recycling_type_beverage_cartons">"Doar cutii de băuturi"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Doar sticle de plastic si carton"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Mod echipă"</string>
 
     <!-- Team mode -->
@@ -1476,4 +1485,20 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
 
     <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
+    <string name="pref_title_language_select">"Selectați limba"</string>
+    <string name="language_default">"Limba dispozitivului"</string>
+    <string name="quest_street_parking_title">"În ce mod se poate parca aici, dacă este permis?"</string>
+    <string name="select_street_parking_position">"Selectați poziția:"</string>
+    <string name="select_street_parking_no">"Există semne sau marcaje aici?"</string>
+    <string name="street_parking_parallel">"Paralel"</string>
+    <string name="street_parking_diagonal">"În diagonală"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"Pe stradă"</string>
+    <string name="street_parking_half_on_kerb">"Parțial pe stradă"</string>
+    <string name="street_parking_on_kerb">"Paralel cu strada"</string>
+    <string name="street_parking_street_side">"Paralel cu strada, doar în spațiile dedicate"</string>
+    <string name="street_parking_painted_area_only">"Pe stradă, în spații dedicate"</string>
+    <string name="street_parking_separate">"Parcarea este afișată separat pe hartă"</string>
+    <string name="street_parking_no">"Nu este parcare / nu este permisă parcarea"</string>
+    <string name="street_parking_prohibited">"Parcarea interzisă"</string>
 </resources>

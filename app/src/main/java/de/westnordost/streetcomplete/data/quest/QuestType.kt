@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.data.quest
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.quests.AbstractQuestForm
 
 /** A quest type appears as a pin with an icon on the map and when opened, the quest type's
  *  question is displayed along with a UI to answer that quest.
@@ -12,13 +12,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
  *  type can contribute to unlocking new achievement levels of certain types.
  *
  *  Most QuestType inherit from [OsmElementQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType] */
-interface QuestType<T> {
-
-    /** the icon resource id used to display this quest type on the map */
-    val icon: Int
-
-    /** the string resource id used to display the quest's question */
-    val title: Int
+interface QuestType : EditType {
 
     /** the string resource id that explains why this quest is disabled by default or zero if it is
      *  not disabled by default.
@@ -29,13 +23,10 @@ interface QuestType<T> {
     val defaultDisabledMessage: Int get() = 0
 
     /** returns the fragment in which the user can add the data */
-    fun createForm(): AbstractQuestAnswerFragment<T>
+    fun createForm(): AbstractQuestForm
 
     /** The quest type can clean it's metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
-
-    /** towards which achievements ssolving a quest of this type should count */
-    val questTypeAchievements: List<QuestTypeAchievement> get() = listOf()
 
     /** if the quest should only be shown during day-light os night-time hours */
     val dayNightCycle: DayNightCycle get() = DayNightCycle.DAY_AND_NIGHT

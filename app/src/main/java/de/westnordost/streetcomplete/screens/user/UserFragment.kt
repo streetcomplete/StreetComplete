@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.links.LinksFragment
 import de.westnordost.streetcomplete.screens.user.profile.ProfileFragment
-import de.westnordost.streetcomplete.screens.user.quest_statistics.QuestStatisticsFragment
+import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsFragment
 import de.westnordost.streetcomplete.util.viewBinding
 
 /** Shows the viewpager with the user profile, user statistics, achievements and links */
@@ -52,7 +52,7 @@ class UserFragment : Fragment(R.layout.fragment_user), HasTitle {
     companion object {
         private val PAGES = listOf(
             Page(R.string.user_profile_title, R.drawable.ic_profile_48dp) { ProfileFragment() },
-            Page(R.string.user_quests_title, R.drawable.ic_star_48dp) { QuestStatisticsFragment() },
+            Page(R.string.user_quests_title, R.drawable.ic_star_48dp) { EditStatisticsFragment() },
             Page(R.string.user_achievements_title, R.drawable.ic_achievements_48dp) { AchievementsFragment() },
             Page(R.string.user_links_title, R.drawable.ic_bookmarks_48dp) { LinksFragment() }
         )

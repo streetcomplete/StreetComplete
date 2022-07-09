@@ -1529,9 +1529,6 @@
                     "name": "Rijeka",
                     "terms": "rijeka,riječni tok"
                 },
-                "waterway/riverbank": {
-                    "name": "Riječno korito"
-                },
                 "waterway/stream": {
                     "name": "Potok",
                     "terms": "potok,manji vodotok"

@@ -51,10 +51,11 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                     }
                 } else {
                     val error = connection.errorStream.bufferedReader().use { it.readText() }
-                    if (status / 100 == 5)
+                    if (status / 100 == 5) {
                         throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$error\"")
-                    else
+                    } else {
                         throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$error\"")
+                    }
                 }
                 connection.disconnect()
             } catch (e: IOException) {
@@ -82,10 +83,11 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                 // if we might want to try again later.
             } else if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
-                if (status / 100 == 5)
+                if (status / 100 == 5) {
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")
-                else
+                } else {
                     throw ImageUploadClientException("Error code $status, Message: \"$error\"")
+                }
             }
             connection.disconnect()
         } catch (e: IOException) {

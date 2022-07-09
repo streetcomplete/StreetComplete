@@ -24,6 +24,8 @@ import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
 
+/** Implementation of Database using android's SQLiteOpenHelper. Since the minimum API version is
+ *  21, the minimum SQLite version is 3.8. */
 @SuppressLint("Recycle")
 class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     private val db get() = dbHelper.writableDatabase

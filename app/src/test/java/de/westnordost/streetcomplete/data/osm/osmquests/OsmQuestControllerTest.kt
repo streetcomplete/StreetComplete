@@ -184,7 +184,7 @@ class OsmQuestControllerTest {
 
         verify(hiddenDB).add(quest.key)
         verify(hideListener).onHid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+            quest.elementType, quest.elementId, quest.type, quest.position, 555
         )))
         verify(listener).onUpdated(
             addedQuests = eq(emptyList()),
@@ -204,7 +204,7 @@ class OsmQuestControllerTest {
 
         verify(hiddenDB).delete(quest.key)
         verify(hideListener).onUnhid(eq(OsmQuestHidden(
-            quest.elementType, quest.elementId, quest.osmElementQuestType, quest.position, 555
+            quest.elementType, quest.elementId, quest.type, quest.position, 555
         )))
         verify(listener).onUpdated(
             addedQuests = eq(listOf(quest)),

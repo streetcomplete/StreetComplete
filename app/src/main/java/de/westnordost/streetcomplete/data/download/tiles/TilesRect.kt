@@ -73,6 +73,9 @@ data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: In
             tile2lon(right + 1, zoom)
         )
     }
+
+    fun contains(other: TilesRect): Boolean =
+        left <= other.left && right >= other.right && top <= other.top && bottom >= other.bottom
 }
 
 /** Returns the bounding box of the tile rect at the given zoom level that encloses this bounding box.

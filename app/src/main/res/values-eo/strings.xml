@@ -463,8 +463,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Juglandoj"</string>
     <string name="produce_sisal">"Sisalo"</string>
-    <string name="quest_way_lit_automatic">"Ĝi uzadas movmalkovro"</string>
-    <string name="quest_way_lit_24_7">"Ĝi estas lumi nokton kaj tagon"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ne eblas serĉi tie. Provu zomi aŭ malfortigi la mapdeklinon."</string>
     <string name="quest_crossing_type_title">"Kia transirejo ĉi tio estas?"</string>
 
@@ -880,6 +878,8 @@ Dividi ĝin nun?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ne referencan numeron videblan…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La vojo en la bildo estas samorientita kiel surmape en la pozicio de la marko."</string>
 
     <!-- Fuzzy -->
@@ -939,11 +939,14 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
 
     <!-- Links screen -->
     <string name="links_empty">"Vi ne havas ligojn ĝis nun"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Vi ne publikigis taskajn respondojn ĝis nun"</string>
     <string name="unsynced_quests_description">"plus %d ankoraŭ ne publikigitaj ŝanĝoj."</string>
     <string name="unsynced_quests_not_logged_in_description">"Vi ankoraŭ ne publikigis %d ŝanĝojn. Vi devas ensaluti por alŝuti ilin."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Taskoj Solvitaj"</string>
     <string name="user_achievements_title">"Atingoj"</string>
     <string name="user_links_title">"Ligila kolekto"</string>
@@ -1042,6 +1045,8 @@ Rimarku, ke ĉi tiu aplikaĵo petas la domnumeron de konstruaĵo nur post kiam �
     <string name="user_statistics_country_rank">"Rango en %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portalo de Mapado %s"</string>
     <string name="user_statistics_filter_by_country">"per lando"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"laŭ taskospeco"</string>
     <string name="user_profile_global_rank">"Tutmonda
 rango"</string>
@@ -1188,9 +1193,13 @@ aktiva"</string>
     <string name="quest_drinking_water_not_potable_signed">"Ne sekure trinkebla (signita)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Ne sekure trinkebla (ne signita)"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La krono de Skotlando"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Fajrobrigadejo"</string>
     <string name="quest_recycling_type_beverage_cartons">"Nur trinkaĵa kartonoj"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur plastaj boteloj kaj kartonoj"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Teama Reĝimo"</string>
 
     <!-- Team mode -->
@@ -1334,8 +1343,12 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_address_answer_house_name_and_housenumber">"Kaj domnumero kaj -nomo ..."</string>
     <string name="quest_address_house_number_label">"Domnumero:"</string>
     <string name="quest_fireHydrant_position_title">"Kie troviĝas tiu ĉi fajrohidranto?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"En herbo aŭ malpuraĵo"</string>
     <string name="quest_fireHydrant_position_lane">"Sur la vojo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Sur la trotuaro"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En parkejo"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Jes (lasi noton)"</string>

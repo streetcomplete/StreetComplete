@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.lit.applyTo
 
 class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
@@ -45,8 +45,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val changesetComment = "Add whether way is lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(PEDESTRIAN)
+    override val achievements = listOf(PEDESTRIAN)
     override val dayNightCycle = ONLY_NIGHT
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
@@ -56,17 +55,17 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is IsActuallyStepsAnswer -> tags["highway"] = "steps"
-            is WayLit -> tags.updateWithCheckDate("lit", answer.osmValue)
+            is WayLit -> answer.litStatus.applyTo(tags)
         }
     }
 
     companion object {
         private val LIT_RESIDENTIAL_ROADS = arrayOf("residential", "living_street", "pedestrian")
 
-        private val LIT_NON_RESIDENTIAL_ROADS =
-            arrayOf("motorway", "motorway_link", "trunk", "trunk_link",
-                    "primary", "primary_link", "secondary", "secondary_link",
-                    "tertiary", "tertiary_link", "unclassified", "service")
+        private val LIT_NON_RESIDENTIAL_ROADS = arrayOf(
+            "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link",
+            "secondary", "secondary_link", "tertiary", "tertiary_link", "unclassified", "service"
+        )
 
         private val LIT_WAYS = arrayOf("footway", "cycleway", "steps")
     }

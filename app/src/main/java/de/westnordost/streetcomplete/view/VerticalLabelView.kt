@@ -30,11 +30,20 @@ class VerticalLabelView @JvmOverloads constructor(
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.VerticalLabelView)
 
-        setText(a.getString(R.styleable.VerticalLabelView_android_text))
-        setTextSize(a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, context.dpToPx(16).toInt()))
-        setTextColor(a.getColor(R.styleable.VerticalLabelView_android_textColor, Color.BLACK))
+        text = a.getString(R.styleable.VerticalLabelView_android_text)
+        textPaint.textSize = a.getDimensionPixelSize(R.styleable.VerticalLabelView_android_textSize, context.dpToPx(16).toInt()).toFloat()
+        textPaint.color = a.getColor(R.styleable.VerticalLabelView_android_textColor, Color.BLACK)
+        val shadowColor = a.getColor(R.styleable.VerticalLabelView_android_shadowColor, Color.BLACK)
+        val shadowDx = a.getFloat(R.styleable.VerticalLabelView_android_shadowDx, 0f)
+        val shadowDy = a.getFloat(R.styleable.VerticalLabelView_android_shadowDy, 0f)
+        val shadowRadius = a.getFloat(R.styleable.VerticalLabelView_android_shadowRadius, -1f)
+        if (shadowRadius > 0f || shadowDx > 0f || shadowDy > 0f) {
+            textPaint.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor)
+        }
+        textPaint.isFakeBoldText = true
         orientationRight = a.getBoolean(R.styleable.VerticalLabelView_orientationRight, false)
         a.recycle()
+        requestLayout()
     }
 
     fun setText(text: String?) {
@@ -54,6 +63,11 @@ class VerticalLabelView @JvmOverloads constructor(
     fun setTextColor(color: Int) {
         if (textPaint.color == color) return
         textPaint.color = color
+        invalidate()
+    }
+
+    fun setShadowLayer(radius: Float, dx: Float, dy: Float, shadowColor: Int) {
+        textPaint.setShadowLayer(radius, dx, dy, shadowColor)
         invalidate()
     }
 

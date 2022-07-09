@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
@@ -19,12 +18,12 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.DrawableWrapper
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.controller.StreetSideItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
 fun Cycleway.asDialogItem(context: Context, isLeftHandTraffic: Boolean, isContraflowInOneway: Boolean) =
@@ -34,7 +33,16 @@ fun Cycleway.asDialogItem(context: Context, isLeftHandTraffic: Boolean, isContra
         ResText(getTitleResId(isContraflowInOneway))
     )
 
-fun Cycleway.getDialogIcon(context: Context, isLeftHandTraffic: Boolean): Image {
+fun Cycleway.asStreetSideItem(isLeftHandTraffic: Boolean, isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int) =
+    StreetSideItem(
+        this,
+        getIconResId(isLeftHandTraffic),
+        getTitleResId(isContraflowInOneway),
+        getDialogIconResId(isLeftHandTraffic),
+        getFloatingIconResId(isContraflowInOneway, noEntrySignDrawableResId)
+    )
+
+private fun Cycleway.getDialogIcon(context: Context, isLeftHandTraffic: Boolean): Image {
     val id = getDialogIconResId(isLeftHandTraffic)
     return if (isLeftHandTraffic) {
         DrawableImage(Rotate180Degrees(context.getDrawable(id)!!))
@@ -58,13 +66,13 @@ private class Rotate180Degrees(drawable: Drawable) : DrawableWrapper(drawable) {
     }
 }
 
-fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, countryInfo: CountryInfo): Int? = when (this) {
-    NONE -> if (isContraflowInOneway) countryInfo.noEntrySignDrawableResId else null
+private fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int): Int? = when (this) {
+    NONE -> if (isContraflowInOneway) noEntrySignDrawableResId else null
     SEPARATE -> R.drawable.ic_sidewalk_floating_separate
     else -> null
 }
 
-fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
+private fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
 
 private fun Cycleway.getRightHandTrafficIconResId(): Int = when (this) {
@@ -101,7 +109,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(): Int = when (this) {
     else -> 0
 }
 
-fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (this) {
+private fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (this) {
     UNSPECIFIED_LANE -> R.string.quest_cycleway_value_lane
     EXCLUSIVE_LANE -> R.string.quest_cycleway_value_lane
     ADVISORY_LANE -> R.string.quest_cycleway_value_lane_soft

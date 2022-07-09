@@ -79,6 +79,11 @@
                 "seamark/buoy_lateral/colour": {
                     "label": "Colour"
                 },
+                "toilets/disposal": {
+                    "options": {
+                        "pitlatrine": "Long Drop"
+                    }
+                },
                 "traffic_sign/direction": {
                     "options": {
                         "backward": "Backwards",
@@ -169,6 +174,13 @@
                 },
                 "amenity/theatre": {
                     "name": "Theatre"
+                },
+                "amenity/toilets": {
+                    "name": "Toilets"
+                },
+                "amenity/toilets/disposal/pitlatrine": {
+                    "name": "Long-drop Toilet",
+                    "aliases": "Pit Latrine"
                 },
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump",

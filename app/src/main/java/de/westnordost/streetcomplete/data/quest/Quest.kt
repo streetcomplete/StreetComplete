@@ -10,5 +10,5 @@ interface Quest {
     val markerLocations: Collection<LatLon>
     val geometry: ElementGeometry
 
-    val type: QuestType<*>
+    val type: QuestType
 }

@@ -434,7 +434,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private fun getCursorNode(): AnchorNode {
         var node = cursorNode
-        if (node == null)  {
+        if (node == null) {
             node = AnchorNode().apply {
                 renderable = cursorRenderable
                 setParent(arSceneView!!.scene)
@@ -446,7 +446,7 @@ class MeasureActivity : AppCompatActivity(), Scene.OnUpdateListener {
 
     private fun getLineNode(): Node {
         var node = lineNode
-        if (node == null)  {
+        if (node == null) {
             node = Node().apply {
                 renderable = lineRenderable
                 setParent(arSceneView!!.scene)

@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.GREEN
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.LANE
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.PARKING_LOT
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.SIDEWALK
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddFireHydrantPositionForm : AImageListQuestAnswerFragment<FireHydrantPosition, FireHydrantPosition>() {
+class AddFireHydrantPositionForm : AImageListQuestForm<FireHydrantPosition, FireHydrantPosition>() {
 
     override val items
-        get() = if (osmElement?.tags?.get("fire_hydrant:type") == "pillar") {
+        get() = if (element.tags["fire_hydrant:type"] == "pillar") {
             listOf(
                 Item(GREEN, R.drawable.fire_hydrant_position_pillar_green, R.string.quest_fireHydrant_position_green),
                 Item(LANE, R.drawable.fire_hydrant_position_pillar_lane, R.string.quest_fireHydrant_position_lane),

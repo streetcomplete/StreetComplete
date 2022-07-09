@@ -274,7 +274,15 @@ fun List<LatLon>.centerPointOfPolyline(globeRadius: Double = EARTH_RADIUS): LatL
  * Returns the point the distance into the polyline. Null if the polyline is not long enough.
  */
 fun List<LatLon>.pointOnPolylineFromStart(distance: Double): LatLon? {
-    return pointOnPolyline(distance, false)
+    return pointsOnPolyline(false, distance).firstOrNull()
+}
+
+/**
+ * Returns the points the distances into the polyline. Returns less points if the polyline is not
+ * long enough.
+ */
+fun List<LatLon>.pointsOnPolylineFromStart(distances: List<Double>): List<LatLon> {
+    return pointsOnPolyline(false, *distances.toDoubleArray())
 }
 
 /**
@@ -282,25 +290,31 @@ fun List<LatLon>.pointOnPolylineFromStart(distance: Double): LatLon? {
  * not long enough.
  */
 fun List<LatLon>.pointOnPolylineFromEnd(distance: Double): LatLon? {
-    return pointOnPolyline(distance, true)
+    return pointsOnPolyline(true, distance).firstOrNull()
 }
 
-private fun List<LatLon>.pointOnPolyline(distance: Double, fromEnd: Boolean): LatLon? {
+private fun List<LatLon>.pointsOnPolyline(fromEnd: Boolean, vararg distances: Double): List<LatLon> {
+    if (distances.isEmpty()) return emptyList()
     val list = if (fromEnd) this.asReversed() else this
+    distances.sort()
+    var i = 0
     var d = 0.0
+    val result = ArrayList<LatLon>(distances.size)
     list.forEachLine { first, second ->
         val segmentDistance = first.distanceTo(second)
         if (segmentDistance > 0) {
             d += segmentDistance
-            if (d >= distance) {
-                val ratio = (d - distance) / segmentDistance
+            while (d >= distances[i]) {
+                val ratio = (d - distances[i]) / segmentDistance
                 val lat = second.latitude - ratio * (second.latitude - first.latitude)
                 val lon = normalizeLongitude(second.longitude - ratio * normalizeLongitude(second.longitude - first.longitude))
-                return LatLon(lat, lon)
+                result.add(LatLon(lat, lon))
+                ++i
+                if (i == distances.size) return result
             }
         }
     }
-    return null
+    return result
 }
 
 /* --------------------------------- Polygon extension functions -------------------------------- */

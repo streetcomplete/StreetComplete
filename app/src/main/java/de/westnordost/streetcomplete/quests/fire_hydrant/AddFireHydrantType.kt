@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.LIFESAVER
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
@@ -15,7 +15,7 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
     override val isDeleteElementEnabled = true
-    override val questTypeAchievements = listOf(LIFESAVER)
+    override val achievements = listOf(LIFESAVER)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_type_title
 

@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Accesso consentito",
                     "options": {
+                        "customers": {
+                            "description": "Limitato ai clienti della destinazione",
+                            "title": "Clienti"
+                        },
                         "designated": {
                             "description": "Accesso consentito secondo i cartelli stradali o specifiche norme locali",
                             "title": "Riservato"
@@ -304,7 +308,12 @@
                     "label": "Servizi",
                     "options": {
                         "cosmetics": "Cosmetica",
-                        "tanning": "Abbronzatura"
+                        "hair_removal": "Depilazione",
+                        "nails": "Manicure / Pedicure",
+                        "skin_care": "Cura della pelle",
+                        "spa": "Spa",
+                        "tanning": "Abbronzatura",
+                        "waxing": "Ceretta"
                     }
                 },
                 "bench": {
@@ -353,6 +362,9 @@
                 },
                 "boundary": {
                     "label": "Tipo"
+                },
+                "branch_brand": {
+                    "label": "Filiale"
                 },
                 "brand": {
                     "label": "Brand",
@@ -406,9 +418,15 @@
                 "bunker_type": {
                     "label": "Tipo"
                 },
+                "button_operated": {
+                    "label": "Pulsante di chiamata"
+                },
                 "cables": {
                     "label": "Cavi",
                     "placeholder": "1, 2, 3..."
+                },
+                "cai_scale-IT": {
+                    "label": "Difficoltà del percorso escursionistico (Club Alpino Italiano)"
                 },
                 "camera/direction": {
                     "label": "Direzione (gradi in senso orario)",
@@ -477,8 +495,13 @@
                     "label": "Data dell'ultimo controllo",
                     "placeholder": "AAAA-MM-GG"
                 },
+                "circumference": {
+                    "label": "Circonferenza (ad altezza torace)",
+                    "placeholder": "1 m, 20 cm, 30\"…"
+                },
                 "clothes": {
-                    "label": "Abbigliamento"
+                    "label": "Abbigliamento",
+                    "terms": "abbigliamento,vestiti,vestiario,abiti,maglie,camicie,pantaloni,giacche,cappotti,pullover,cardigan"
                 },
                 "club": {
                     "label": "Tipo"
@@ -569,8 +592,19 @@
                 "crossing": {
                     "label": "Tipo"
                 },
+                "crossing/barrier": {
+                    "options": {
+                        "yes": "Sì"
+                    }
+                },
                 "crossing/island": {
                     "label": "Isola rifugio"
+                },
+                "crossing_raised": {
+                    "options": {
+                        "table": "Sì",
+                        "undefined": "No"
+                    }
                 },
                 "cuisine": {
                     "label": "Cucine",
@@ -601,6 +635,7 @@
                         "korean": "Coreana",
                         "lebanese": "Libanese",
                         "mexican": "Messicana",
+                        "pasta": "Pasta",
                         "pizza": "Pizza",
                         "polish": "Polacca",
                         "portuguese": "Portoghese",
@@ -734,6 +769,10 @@
                 "diameter": {
                     "label": "Diametro",
                     "placeholder": "5 mm, 10 cm, 15 in..."
+                },
+                "diameter_crown": {
+                    "label": "Diametro della chioma",
+                    "placeholder": "4 m, 9', …"
                 },
                 "diet_multi": {
                     "label": "Tipi di dieta",
@@ -988,6 +1027,10 @@
                 "generator/type": {
                     "label": "Tipo"
                 },
+                "genus": {
+                    "label": "Genere",
+                    "terms": "genere,tassonomia,categoria"
+                },
                 "geyser/height": {
                     "label": "Altezza dell’eruzione"
                 },
@@ -1038,6 +1081,11 @@
                 },
                 "highway": {
                     "label": "Tipo"
+                },
+                "highway_cartpath": {
+                    "options": {
+                        "service": "Strada di servizio"
+                    }
                 },
                 "historic": {
                     "label": "Tipo"
@@ -1759,7 +1807,22 @@
                     "label": "Codice Ciclabile"
                 },
                 "recycling_accepts": {
-                    "label": "Accetta"
+                    "label": "Accetta",
+                    "options": {
+                        "batteries": "Batterie",
+                        "cans": "Lattine",
+                        "cardboard": "Cartone",
+                        "clothes": "Vestiti",
+                        "cooking_oil": "Oli di cottura",
+                        "engine_oil": "Oli motore",
+                        "glass": "Vetro qualsiasi (temperato, finestre, specchi, etc.)",
+                        "glass_bottles": "Bottiglie e barattoli di vetro",
+                        "paper": "Carta",
+                        "plastic": "Plastica",
+                        "plastic_bottles": "Bottiglie di plastica",
+                        "plastic_packaging": "Imballaggi di plastica",
+                        "shoes": "Scarpe"
+                    }
                 },
                 "recycling_type": {
                     "label": "Tipo",
@@ -1971,6 +2034,12 @@
                 "seamark/mooring/category": {
                     "label": "Categoria"
                 },
+                "seamark/rescue_station/category": {
+                    "options": {
+                        "first_aid": "Primo soccorso",
+                        "radio": "Stazione radio"
+                    }
+                },
                 "seamark/type": {
                     "label": "Elemento nautico"
                 },
@@ -2099,6 +2168,11 @@
                         "streetlevel imagery": "Foto a livello stradale",
                         "survey": "Da rilevamento"
                     }
+                },
+                "species": {
+                    "label": "Specie",
+                    "placeholder": "Acer platanoides, Quercus robur, …",
+                    "terms": "specie,tassonomia,categoria"
                 },
                 "species/wikidata": {
                     "label": "Specie su Wikidata",
@@ -2272,6 +2346,10 @@
                 "target": {
                     "label": "Destinatario"
                 },
+                "taxon": {
+                    "label": "Taxon",
+                    "terms": "taxa,tassonomia,tassonomica,esemplare,specie"
+                },
                 "telecom": {
                     "label": "Tipo"
                 },
@@ -2418,6 +2496,9 @@
                         "tourism": "Turismo"
                     },
                     "terms": "tipo di utilizzo,uso,utilizzo"
+                },
+                "usage_waterway": {
+                    "label": "Tipo di uso"
                 },
                 "utility": {
                     "label": "Utenza"
@@ -3241,7 +3322,7 @@
                 },
                 "amenity/ranger_station": {
                     "name": "Guardiaparco",
-                    "terms": "stazione guardia forestale"
+                    "terms": "stazione guardia forestale,centro visitatori,visitor center,visitor centre"
                 },
                 "amenity/recycling": {
                     "name": "Riciclaggio"
@@ -3828,7 +3909,7 @@
                     "terms": "cristiano,abbazia,basilica,cattedrale,presbiterio,cappella,chiesa,casa di dio,luogo di preghiera,luogo di culto,missione,oratorio,parrocchia,sacello,edicola votiva,tabernacolo,tempio"
                 },
                 "building/civic": {
-                    "name": "Edificio comunale",
+                    "name": "Edificio civico",
                     "terms": "civico,municipale,pubblico,cittadino"
                 },
                 "building/college": {
@@ -4206,7 +4287,7 @@
                 },
                 "craft/window_construction": {
                     "name": "Serramentista",
-                    "terms": "vetri"
+                    "terms": "vetri,vetraio,glass"
                 },
                 "craft/winery": {
                     "name": "Cantina vinicola",
@@ -4472,6 +4553,9 @@
                 "highway/bus_stop": {
                     "name": "Fermata autobus"
                 },
+                "highway/construction": {
+                    "name": "Strada in costruzione"
+                },
                 "highway/corridor": {
                     "name": "Corridoio",
                     "terms": "corridoio"
@@ -4716,11 +4800,11 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Strada a pedaggio senza casello",
-                    "terms": "strada con sistema di pedaggio senza barriere"
+                    "terms": "strada con sistema di pedaggio senza barriere,strada a pedaggio senza barriere,strada senza barriere"
                 },
                 "highway/track": {
-                    "name": "Strada non mantenuta",
-                    "terms": "strada sterrata,strada forestale,strada agricola,abbandonata,fuoristrada,4x4,quattro ruote motrici,quad,atv,jeep"
+                    "name": "Strada sterrata o per l'accesso a terreni",
+                    "terms": "track,strada forestale,strada carrareccia,carrareccia,forestale,strada agricola,agricola,strada ad uso agricolo,strada ad uso forestale"
                 },
                 "highway/traffic_mirror": {
                     "name": "Specchio stradale",
@@ -4880,8 +4964,7 @@
                     "name": "Bacino"
                 },
                 "landuse/brownfield": {
-                    "name": "Area dismessa",
-                    "terms": "area industriale dismessa,area abbandonata,area da riconvertire,edifici abbandonati,area demolita"
+                    "name": "Area dismessa"
                 },
                 "landuse/cemetery": {
                     "name": "Cimitero",
@@ -4895,7 +4978,8 @@
                     "terms": "centro commerciale,area commerciale,commerciale,commercio,laboratori,amministrazione,servizi,magazzini"
                 },
                 "landuse/construction": {
-                    "name": "Cantiere"
+                    "name": "Cantiere",
+                    "terms": "scavo,cantiere,construction,costruzione"
                 },
                 "landuse/farm": {
                     "name": "Terreno agricolo"
@@ -4922,8 +5006,7 @@
                     "terms": "erba,prato,area verde"
                 },
                 "landuse/greenfield": {
-                    "name": "Terreno edificabile",
-                    "terms": "area edificabile,lotto edificabile"
+                    "name": "Terreno edificabile"
                 },
                 "landuse/greenhouse_horticulture": {
                     "name": "Serra",
@@ -5152,8 +5235,7 @@
                     "terms": "campo da golf"
                 },
                 "leisure/hackerspace": {
-                    "name": "Spazio hacker",
-                    "terms": "makerspace"
+                    "name": "Spazio hacker"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista di Ghiaccio",
@@ -7568,9 +7650,6 @@
                 },
                 "waterway/river": {
                     "name": "Fiume"
-                },
-                "waterway/riverbank": {
-                    "name": "Argine"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "Smaltimento reflui marittimi",

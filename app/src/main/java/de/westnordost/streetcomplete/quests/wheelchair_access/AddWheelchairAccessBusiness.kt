@@ -7,10 +7,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFilterQuestType<WheelchairAccess>() {
@@ -124,5 +124,6 @@ private val WHEELCHAIR_PLACES = mapOf(
         "sample_collection", "blood_donation",
     ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
+    override val achievements = listOf(WHEELCHAIR)
 
 private const val PREF_ELEMENTS = "qs_AddWheelchairAccessBusiness_element_selection"

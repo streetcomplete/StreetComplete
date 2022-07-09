@@ -34,7 +34,7 @@
     <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, которую увидят другие пользователи, либо просто скрыть этот квест для вас"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"OK"</string>
+    <string name="quest_leave_new_note_yes">"Оставить заметку"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
@@ -444,8 +444,6 @@
     <string name="produce_vanilla">"Ваниль"</string>
     <string name="produce_walnuts">"Грецкие орехи"</string>
     <string name="produce_sisal">"Сизаль"</string>
-    <string name="quest_way_lit_automatic">"Используется датчик движения"</string>
-    <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
@@ -993,6 +991,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Номер не виден…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Изображённая дорога повернута так же, как и дорога в месте метки на карте."</string>
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
 
@@ -1080,6 +1080,8 @@
 
     <!-- Links screen -->
     <string name="links_empty">"У вас пока нет ссылок"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Вы не опубликовали ни одного ответа на квест"</string>
 
     <!-- Fuzzy -->
@@ -1089,6 +1091,7 @@
     <string name="unsynced_quests_not_logged_in_description">"У вас есть %d неопубликованных дополнений. Вам нужно залогиниться, чтобы их отправить."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Решённые квесты"</string>
     <string name="user_achievements_title">"Достижения"</string>
     <string name="user_links_title">"Коллекция ссылок"</string>
@@ -1257,6 +1260,8 @@
     <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографический портал %s"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
     <string name="user_profile_global_rank">"Общий
 рейтинг"</string>
@@ -1477,9 +1482,13 @@
     <string name="quest_postboxRoyalCypher_title">"Какой Королевский шифр на этом почтовом ящике?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Королевского шифра не видно"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Корона Шотландии"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Пожарная часть"</string>
     <string name="quest_recycling_type_beverage_cartons">"Только картонные упаковки от напитков"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Только пластиковые бутылки и картон"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Командный режим"</string>
 
     <!-- Team mode -->
@@ -1728,8 +1737,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"У этой дороги есть обочина?"</string>
     <string name="quest_fireHydrant_position_title">"Где находится этот пожарный гидрант?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"В траве или грунте"</string>
     <string name="quest_fireHydrant_position_lane">"На проезжей части"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"На тротуаре"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На парковочном месте"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Да (оставьте заметку)"</string>
@@ -1999,4 +2012,26 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Прикоснитесь к экрану для начала измерений"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Здесь есть велосипедный насос (хотя бы когда открыто)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Здесь есть велосипедный насос?"</string>
+    <string name="action_overlays">"Наложение"</string>
+    <string name="split_way">"Разделить путь"</string>
+    <string name="quest_memorialType_title">"Что это за мемориал?"</string>
+    <string name="quest_memorialType_statue">"Статуя"</string>
+    <string name="quest_memorialType_bust">"Бюст"</string>
+    <string name="quest_memorialType_plaque">"Мемориальная доска"</string>
+    <string name="quest_memorialType_war_memorial">"Военный мемориал"</string>
+    <string name="quest_memorialType_stone">"Камень"</string>
+    <string name="quest_memorialType_obelisk">"Обелиск"</string>
+    <string name="quest_memorialType_stele_wooden">"Деревянная стела (мемориальная плита)"</string>
+    <string name="quest_memorialType_stele_stone">"Каменная стела (мемориальная плита)"</string>
+    <string name="quest_memorialType_sculpture">"Другая скульптура"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Выбрать наложение"</string>
+    <string name="overlay_none">"Нет"</string>
+    <string name="overlay_lit">"Уличное освещение"</string>
+    <string name="lit_value_yes">"Освещено"</string>
+    <string name="lit_value_no">"Не освещено"</string>
+    <string name="lit_value_24_7">"Освещено днём и ночью"</string>
+    <string name="lit_value_automatic">"Освещено, когда кто-то проходит мимо"</string>
+    <string name="overlay_sidewalk">"Тротуары"</string>
 </resources>

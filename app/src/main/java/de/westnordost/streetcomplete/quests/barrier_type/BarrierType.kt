@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 
 enum class BarrierType(val osmValue: String) {
     PASSAGE("entrance"),

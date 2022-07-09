@@ -305,8 +305,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Sim, com detetor de movimento"</string>
-    <string name="quest_way_lit_24_7">"Está iluminado de dia e de noite"</string>
 
     <!-- What's the context of this message? At least what's the meaning of "tilt" here? Got something to do with a big area to search for challenges? -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível pesquisar aqui. Tente aproximar a visualização com o botão + ou incline menos o mapa."</string>
@@ -611,7 +609,9 @@ Dividir agora?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
     <string name="quest_postboxRef_title">"Qual é o número de referência desta caixa/marco de correio?"</string>
     <string name="quest_ref_answer_noRef">"Não tem nº de referência visível…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"A via na seguinte ilustração, possui a mesma orientação que a do mapa na localização do marcador."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_street_side_puzzle_tutorial">"A via na seguinte ilustração tem a mesma orientação que a do mapa no sítio do marcador. Clique nela para escolher o sentido."</string>
     <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
     <string name="quest_recycling_materials_note">"Se algo que não constar na lista puder ser reciclado aqui, deixe antes uma nota."</string>
     <string name="quest_recycling_type_batteries">"Baterias"</string>
@@ -679,7 +679,7 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
     <string name="unsynced_quests_not_logged_in_description">"Tem %d alterações por publicar. Terá que se autenticar para submetê-las."</string>
 
     <!-- User screen -->
-    <string name="user_quests_title">"Missões resolvidas"</string>
+    <string name="user_quests_title">"Edições"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_links_title">"Coleção de hiperligações"</string>
     <string name="user_profile_title">"Perfil"</string>
@@ -773,7 +773,7 @@ Note que esta aplicação apenas pergunta pelo número de porta de um edifício 
     <string name="user_statistics_country_rank">"Classificação em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
-    <string name="user_statistics_filter_by_quest_type">"por tipo de missão"</string>
+    <string name="user_statistics_filter_by_quest_type">"por tipo"</string>
     <string name="user_profile_global_rank">"Classificação
 global"</string>
     <string name="user_profile_local_rank">"Posição em
@@ -1105,8 +1105,12 @@ Como alternativa, pode deixar uma nota (com uma fotografia)"</string>
     <string name="quest_address_house_number_label">"Número de porta:"</string>
     <string name="quest_shoulder_title">"Esta estrada tem berma?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está esta boca de incêndio?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na relva ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"No passeio"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Num lugar de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixar uma nota)"</string>
@@ -1307,4 +1311,28 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Toque no ecrã para começar a medir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Existe aqui uma bomba para encher pneus (pelo menos quando está aberto)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Existe aqui uma bomba para encher pneus a funcionar?"</string>
+    <string name="action_overlays">"Camadas"</string>
+
+    <!-- This is an action and not a tag right? -->
+    <string name="split_way">"Dividir via"</string>
+    <string name="quest_memorialType_title">"Que tipo de memorial é este?"</string>
+    <string name="quest_memorialType_statue">"Estátua"</string>
+    <string name="quest_memorialType_bust">"Busto"</string>
+    <string name="quest_memorialType_plaque">"Placa"</string>
+    <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
+    <string name="quest_memorialType_stone">"Pedra"</string>
+    <string name="quest_memorialType_obelisk">"Obelisco"</string>
+    <string name="quest_memorialType_stele_wooden">"Estela de madeira (laje memorial)"</string>
+    <string name="quest_memorialType_stele_stone">"Estela de pedra (laje memorial)"</string>
+    <string name="quest_memorialType_sculpture">"Outra escultura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Selecionar camada"</string>
+    <string name="overlay_none">"Nenhuma"</string>
+    <string name="overlay_lit">"Iluminação das ruas"</string>
+    <string name="lit_value_yes">"Iluminado"</string>
+    <string name="lit_value_no">"Não iluminado"</string>
+    <string name="lit_value_24_7">"Iluminado de dia e de noite"</string>
+    <string name="lit_value_automatic">"Iluminado quando alguém passa"</string>
+    <string name="overlay_sidewalk">"Passeios"</string>
 </resources>

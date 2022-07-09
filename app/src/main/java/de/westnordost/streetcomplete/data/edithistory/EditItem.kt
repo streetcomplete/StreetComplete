@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 
 val Edit.icon: Int get() = when (this) {
-    is ElementEdit -> questType.icon
+    is ElementEdit -> type.icon
     is NoteEdit -> {
         when (action) {
             CREATE -> R.drawable.ic_quest_create_note

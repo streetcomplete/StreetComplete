@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
+import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDialog
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -67,6 +68,30 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     /* ------------------------------------------------------------------------------------------ */
 
+    internal fun onClickMainMenu() {
+        val d = MainMenuDialog(
+            requireContext(),
+            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+            this::onClickDownload,
+            teamModeQuestFilter::enableTeamMode,
+            teamModeQuestFilter::disableTeamMode,
+            this::onClickOverlays,
+        )
+                d.setOnKeyListener { _, _, keyEvent ->
+            if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
+                val intent = Intent(requireContext(), SettingsActivity::class.java)
+                requireContext().startActivity(intent)
+                d.dismiss()
+                true
+            } else false
+        }
+        d.show()
+    }
+
+    private fun onClickOverlays() {
+        OverlaySelectionDialog(requireContext()).show()
+    }
+
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {
             context?.toast(R.string.team_mode_active)
@@ -78,14 +103,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
         }
     }
 
-    internal fun onClickMainMenu() {
-        val d = MainMenuDialog(
-            requireContext(),
-            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
-            this::onClickDownload,
-            teamModeQuestFilter::enableTeamMode,
-            teamModeQuestFilter::disableTeamMode
-        )
         d.setOnKeyListener { _, _, keyEvent ->
             if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
                 val intent = Intent(requireContext(), SettingsActivity::class.java)
@@ -95,8 +112,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
             } else false
         }
         d.show()
-    }
-
     /* ------------------------------------ Download Button  ------------------------------------ */
 
     private fun onClickDownload() {

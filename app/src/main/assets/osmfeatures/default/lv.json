@@ -2703,9 +2703,6 @@
                 "waterway/river": {
                     "name": "Upe"
                 },
-                "waterway/riverbank": {
-                    "name": "Upes krasts"
-                },
                 "waterway/stream": {
                     "name": "Strauts"
                 },

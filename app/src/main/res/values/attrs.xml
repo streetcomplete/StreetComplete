@@ -27,5 +27,9 @@
         <attr name="android:text" format="reference"/>
         <attr name="android:textSize" format="dimension"/>
         <attr name="android:textColor" format="color"/>
+        <attr name="android:shadowColor" format="color" />
+        <attr name="android:shadowDx" format="float" />
+        <attr name="android:shadowDy" format="float" />
+        <attr name="android:shadowRadius" format="float" />
     </declare-styleable>
 </resources>

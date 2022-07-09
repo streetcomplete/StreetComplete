@@ -5,10 +5,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBicyclePump : OsmFilterQuestType<Boolean>() {
@@ -31,7 +31,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add whether bicycle pump is available"
     override val wikiLink = "Key:service:bicycle:pump"
     override val icon = R.drawable.ic_quest_bicycle_pump
-    override val questTypeAchievements = listOf(BICYCLIST)
+    override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["shop"] == "bicycle") R.string.quest_air_pump_bicycle_shop_title
@@ -46,7 +46,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
             or shop = bicycle
         """)
 
-    override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("service:bicycle:pump", answer.toYesNo())

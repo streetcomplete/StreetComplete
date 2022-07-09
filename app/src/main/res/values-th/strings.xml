@@ -343,8 +343,6 @@
     <string name="produce_vanilla">"วนิลา"</string>
     <string name="produce_walnuts">"วอลนัท"</string>
     <string name="produce_sisal">"ศรนารายณ์"</string>
-    <string name="quest_way_lit_automatic">"ใช้ระบบตรวจจับการเคลื่อนไหว"</string>
-    <string name="quest_way_lit_24_7">"ส่องสว่างทั้งตอนกลางวันและกลางคืน"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
     <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
 
@@ -720,6 +718,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"ถนนในภาพได้หมุนไปในทิศทางเดียวกันกับแผนที่ตรงตำแหน่งหมุด"</string>
     <string name="quest_recycling_materials_title">"ที่นี่สามารถรับอะไรเพื่อรีไซเคิลได้บ้าง?"</string>
 
@@ -794,11 +794,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"คุณยังไม่มีลิงก์"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"คุณยังไม่ได้เผยแพร่คำตอบจากภารกิจ"</string>
     <string name="unsynced_quests_description">"บวกกับ %d การเปลี่ยนแปลงที่ยังไม่ถูกเผยแพร่"</string>
     <string name="unsynced_quests_not_logged_in_description">"คุณมีการเปลี่ยนแปลง %d รายการที่ยังไม่ได้เผยแพร่ คุณต้องเข้าสู่ระบบก่อนที่จะอัพโหลดได้"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"ภารกิจที่สำเร็จแล้ว"</string>
     <string name="user_achievements_title">"ความสำเร็จ"</string>
     <string name="user_links_title">"รวบรวมลิ้งค์"</string>
@@ -915,6 +918,8 @@
     <string name="user_statistics_country_rank">"อันดับที่ %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"พอร์ทัลของแผนที่ %s"</string>
     <string name="user_statistics_filter_by_country">"ตามประเทศ"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"ตามภารกิจ"</string>
     <string name="user_profile_global_rank">"อันดับทั่วโลก"</string>
     <string name="user_profile_local_rank">"อันดับใน %s"</string>
@@ -987,7 +992,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"บ้านเดี่ยวหลังเล็ก (บ้านพักฤดูร้อน กระท่อมตากอากาศ กระท่อม …)"</string>
-    <string name="quest_railway_crossing_barrier_title2">"ทางข้ามทางรถไฟนี้ใช้สิ่งกีดขวางประเภทใด?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"ทางข้ามทางรถไฟนี้ใช้เครื่องกั้นประเภทใด?"</string>
     <string name="quest_railway_crossing_barrier_none2">"ไม่มีเครื่องกั้น"</string>
     <string name="quest_steps_ramp_title">"บันไดนี้มีทางลาดหรือไม่? เป็นชนิดไหน?"</string>
     <string name="quest_steps_ramp_none">"ไม่มีทางลาด (ใช้ไม่ได้)"</string>
@@ -1130,9 +1135,13 @@
     <string name="quest_postboxRoyalCypher_title">"ตู้ไปรษณีย์นี้มีตราประจำพระองค์ใด?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"ไม่มีตราประจำพระองค์บนตู้นี้"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"มงกุฎแห่งสกอตแลนด์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"สถานีดับเพลิง"</string>
     <string name="quest_recycling_type_beverage_cartons">"กล่องเครื่องดื่มเท่านั้น"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"ขวดพลาสติกและกล่องเครื่องดื่มเท่านั้น"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"โหมดทีม"</string>
 
     <!-- Team mode -->
@@ -1339,8 +1348,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"ถนนเส้นนี้มีไหล่ทางรึเปล่า?"</string>
     <string name="quest_fireHydrant_position_title">"หัวจ่ายน้ำดับเพลิงตั้งอยู่ตรงไหน?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"อยู่บนหญ้าหรือดิน"</string>
     <string name="quest_fireHydrant_position_lane">"อยู่บนถนน"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"อยู่บนทางเท้า"</string>
     <string name="quest_fireHydrant_position_parking_lot">"อยู่ในที่จอดรถ"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"มี (สร้างโน๊ตไว้)"</string>
@@ -1552,4 +1565,13 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"ไหล่ทางเป็นช่องทางหยุดฉุกเฉินที่กำหนดไว้อย่างชัดเจน พื้นที่ที่กำหนดเป็นไหล่ทางไม่จำเป็นต้องลาดยางทั้งพื้นที่ และไม่จำเป็นต้องกว้างพอที่รถทั้งคันจะจอดได้"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"ไม่มี ไม่อนุญาตให้ปั่นจักรยานในทิศทางนี้"</string>
+    <string name="map_btn_create_track">"สร้างการบันทึกเส้นทางใหม่"</string>
+    <string name="map_btn_stop_track">"หยุดการบันทึกเส้นทาง"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"ไม่ มีแค่จักรยานใหม่"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"ใช่ รวมถึงจักรยานใหม่"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"ใช่ เฉพาะมือสอง"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
+    <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
+    <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
 </resources>

@@ -347,8 +347,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="produce_vanilla">"Vaniglia"</string>
     <string name="produce_walnuts">"Noci"</string>
     <string name="produce_sisal">"Agave sisalana"</string>
-    <string name="quest_way_lit_automatic">"Utilizza il sensore di movimento"</string>
-    <string name="quest_way_lit_24_7">"È illuminato giorno e notte"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
     <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
     <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
@@ -728,6 +726,8 @@ Suddividere?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come appare nella mappa rispetto al puntatore."</string>
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
 
@@ -803,11 +803,14 @@ Infine, ricorda di stare al sicuro: fa attenzione a ciò che ti circonda e non e
 
     <!-- Links screen -->
     <string name="links_empty">"Non hai ancora collegamenti"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Non hai ancora pubblicato risposte"</string>
     <string name="unsynced_quests_description">"e %d modifiche non pubblicate."</string>
     <string name="unsynced_quests_not_logged_in_description">"Hai %d modifiche non ancora pubblicate. Devi accedere per caricarle."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Missioni risolte"</string>
     <string name="user_achievements_title">"Riconoscimenti"</string>
     <string name="user_links_title">"Collezione di collegamenti"</string>
@@ -928,6 +931,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
     <string name="user_statistics_country_rank">"Posizione in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portale di mappatura %s"</string>
     <string name="user_statistics_filter_by_country">"per nazione"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"per tipo di missione"</string>
     <string name="user_profile_global_rank">"Globale"</string>
     <string name="user_profile_local_rank">"Livello in
@@ -1141,9 +1146,13 @@ riconoscimento"</string>
     <string name="quest_postboxRoyalCypher_title">"Quale monogramma reale è presente su questa cassetta postale?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Non è visibile nessun monogramma reale"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La Corona di Scozia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Centrale dei vigili del fuoco"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cartoni per bevande"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo bottiglie di plastica e cartoni per bevande"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modalità squadra"</string>
 
     <!-- Team mode -->
@@ -1364,8 +1373,12 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Questa strada ha una banchina?"</string>
     <string name="quest_fireHydrant_position_title">"Dove si trova l'idrante?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Sull'erba o sulla terra"</string>
     <string name="quest_fireHydrant_position_lane">"Sulla strada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Sul marciapiede"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In un parcheggio"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sì (lascia una nota)"</string>
@@ -1559,14 +1572,16 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sei sicuro che i ciclisti non possono circolare in questa strada a senso unico in entrambe le direzioni? Se hai dubbi, controlla se c'è la segnaletica.
 "</string>
+    <string name="link_valhalla_description">"Motore di navigazione con una ridotta occupazione della memoria, routing muti-modale, isocrone e altro ancora."</string>
     <string name="link_backofyourhand_description">"Quanto conosci la tua area ? Metti alla prova individuando le strade"</string>
 
     <!-- Fuzzy -->
     <string name="link_thenandnow_description">"Esplora come OSM si presentava all'inizio confrontato a come è oggi!"</string>
+    <string name="link_notesreview_description">"Visualizza, filtra e commenta in maniera immediata le note create da te o da altri. Molte di queste possono essere risolte inserendo sulla mappa le informazioni che contengono usando iD oppure JOSM."</string>
 
     <!-- Quests
 sorted alphabetically by title -->
-    <string name="quest_accepts_cards">"Quì accettano carte di credito o debito ?"</string>
+    <string name="quest_accepts_cards">"Qui accettano carte di credito o debito?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Entrambi"</string>
@@ -1578,9 +1593,15 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Solo il numero di gradini per raggiungere la cima. Se i gradini differiscono per lato, fornire il numero maggiore."</string>
+    <string name="quest_shoulder_explanation2">"Una banchina o corsia di emergenza è una corsia chiaramente marcata per arrestare il veicolo in caso di emergenza. L’area della banchina potrebbe non essere asfaltata per tutta la sua larghezza o nemmeno essere larga a sufficienza per permettere ad un veicolo di fermarsi al di fuori della corsia transitabile."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"nessuna, i ciclisti non possono andare in questa direzione"</string>
     <string name="map_btn_create_track">"Inizia la registrazione di una nuova traccia"</string>
     <string name="map_btn_stop_track">"Ferma la registrazione della traccia"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Quanti stalli per il noleggio delle bici sono presenti qui?"</string>
     <string name="quest_bicycle_rental_type_title">"Di quale tipo di noleggio di biciclette si tratta?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Una stazione che blocca con un lucchetto le bici"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Un punto designato (ogni bici viene chiusa a parte)"</string>
+    <string name="quest_bicycle_rental_type_human">"Negozio di noleggio con personale"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Negozio di biciclette che offre anche il noleggio"</string>
     <string name="quest_bicycle_shop_repair_title">"È presente anche il servizio di riparazione di biciclette?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Vengono vendute anche biciclette di seconda mano?"</string>
@@ -1594,5 +1615,40 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_service">"Entrata di servizio"</string>
     <string name="quest_building_entrance_exit">"Solo uscita"</string>
     <string name="quest_building_entrance_emergency_exit">"Solo uscita di emergenza"</string>
+    <string name="quest_building_entrance_shop">"Entrata di un negozio"</string>
     <string name="quest_building_entrance_yes">"Altro tipo di ingresso"</string>
+    <string name="quest_building_entrance_dead_end">"Nessun ingresso, strada senza uscita"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Premi lo schermo per iniziare a misurare"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"È presente una pompa per biciclette pubblica qua (anche se solo quando è aperto)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"È presente una pompa per biciclette funzionante qua?"</string>
+    <string name="action_overlays">"Livelli sovrapposti"</string>
+    <string name="split_way">"Dividi percorso"</string>
+    <string name="quest_memorialType_title">"Che tipo di monumento è questo?"</string>
+    <string name="quest_memorialType_statue">"Statua"</string>
+    <string name="quest_memorialType_bust">"Busto"</string>
+    <string name="quest_memorialType_plaque">"Targa"</string>
+    <string name="quest_memorialType_war_memorial">"Memoriale di guerra"</string>
+    <string name="quest_memorialType_stone">"Pietra"</string>
+    <string name="quest_memorialType_obelisk">"Obelisco"</string>
+    <string name="quest_memorialType_stele_wooden">"Stele di legno (lastra commemorativa)"</string>
+    <string name="quest_memorialType_stele_stone">"Stele di pietra (lastra commemorativa)"</string>
+    <string name="quest_memorialType_sculpture">"Altra scultura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Seleziona livello sovrapposto"</string>
+    <string name="overlay_none">"Nessuno"</string>
+    <string name="overlay_lit">"Illuminazione delle strade"</string>
+    <string name="lit_value_yes">"Illuminato"</string>
+    <string name="lit_value_no">"Non illuminato"</string>
+    <string name="lit_value_24_7">"Illuminato giorno e notte"</string>
+    <string name="lit_value_automatic">"Illuminato quando qualcuno passa"</string>
+    <string name="overlay_sidewalk">"Marciapiedi"</string>
+    <string name="quest_entrance_reference">"Che scritta è presente su questo ingresso?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Un nome e un intervallo di appartamenti"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Un intervallo di appartamenti"</string>
+    <string name="quest_entrance_reference_select_code_only">"Una etichetta con nome"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nessuna etichetta con nome o numeri di appartementi"</string>
+    <string name="quest_entrance_reference_reference_label">"Etichetta dell’ingresso:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Intervallo degli appartamenti:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"fino a"</string>
 </resources>

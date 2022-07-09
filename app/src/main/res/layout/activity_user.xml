@@ -23,15 +23,15 @@
         tools:visibility="gone" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="de.westnordost.streetcomplete.screens.user.quest_statistics.QuestTypeInfoFragment"
-        android:id="@+id/questTypeDetailsFragment"
+        android:name="de.westnordost.streetcomplete.screens.user.statistics.EditTypeInfoFragment"
+        android:id="@+id/editTypeDetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone"
         />
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="de.westnordost.streetcomplete.screens.user.quest_statistics.CountryInfoFragment"
+        android:name="de.westnordost.streetcomplete.screens.user.statistics.CountryInfoFragment"
         android:id="@+id/countryDetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

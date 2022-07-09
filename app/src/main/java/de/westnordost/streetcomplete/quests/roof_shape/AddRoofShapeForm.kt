@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.CONE
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.DOME
@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SALTBOX
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.SKILLION
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddRoofShapeForm : AImageListQuestAnswerFragment<RoofShape, RoofShape>() {
+class AddRoofShapeForm : AImageListQuestForm<RoofShape, RoofShape>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }

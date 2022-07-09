@@ -94,7 +94,7 @@ class QuestPresetsAdapter(
             binding.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
         }
 
-        fun onSelectQuestPreset(presetId: Long) {
+        private fun onSelectQuestPreset(presetId: Long) {
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.selectedId = presetId
             }
@@ -102,7 +102,7 @@ class QuestPresetsAdapter(
                 SettingsFragment.restartNecessary = true
         }
 
-        fun onClickDeleteQuestPreset(preset: QuestPreset) {
+        private fun onClickDeleteQuestPreset(preset: QuestPreset) {
             AlertDialog.Builder(itemView.context, R.style.Theme_Bubble_Dialog_Alert)
                 .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
                 .setPositiveButton(R.string.delete_confirmation) { _, _ -> deleteQuestPreset(preset.id) }
@@ -110,7 +110,7 @@ class QuestPresetsAdapter(
                 .show()
         }
 
-        fun deleteQuestPreset(presetId: Long) {
+        private fun deleteQuestPreset(presetId: Long) {
             binding.deleteButton.isEnabled = false
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.delete(presetId)

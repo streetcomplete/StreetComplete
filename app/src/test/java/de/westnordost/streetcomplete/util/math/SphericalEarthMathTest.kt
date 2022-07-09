@@ -545,6 +545,26 @@ class SphericalEarthMathTest {
         assertEquals(p(-180.0, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.5))
     }
 
+    @Test fun `pointsOnPolylineFromStart for polyline`() {
+        val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
+        assertEquals(
+            listOf(p(2.5, 0.0), p(6.0, 0.0), p(7.5, 0.0)),
+            list.pointsOnPolylineFromStart(listOf(
+                list.measuredLength() * 0.25,
+                list.measuredLength() * 0.75, // unsorted order
+                list.measuredLength() * 0.60, // 0.60 amd 0.75 are in the same segment
+            ))
+        )
+    }
+
+    @Test fun `pointsOnPolylineFromStart for no point`() {
+        val list = listOf(p(0.0, 0.0), p(5.0, 0.0))
+        assertEquals(
+            listOf<LatLon>(),
+            list.pointsOnPolylineFromStart(listOf())
+        )
+    }
+
     /* +++++++++++++++++++++++++++++++ test point in polygon check ++++++++++++++++++++++++++++++ */
 
     @Test fun `point at polygon vertex is in polygon`() {

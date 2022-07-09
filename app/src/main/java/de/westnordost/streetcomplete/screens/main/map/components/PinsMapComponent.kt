@@ -14,7 +14,7 @@ class PinsMapComponent(ctrl: KtMapController) {
     private val pinsLayer: MapData = ctrl.addDataLayer(PINS_LAYER)
     private val questsGeometryLayer: MapData = ctrl.addDataLayer(QUESTS_GEOMETRY_LAYER)
 
-    /** Shows/hids the pins */
+    /** Shows/hides the pins */
     var isVisible: Boolean
         get() = pinsLayer.visible
         set(value) {
@@ -25,12 +25,17 @@ class PinsMapComponent(ctrl: KtMapController) {
     /** Show given pins. Previously shown pins are replaced with these.  */
     fun set(pins: Collection<Pin>) {
         pinsLayer.setFeatures(pins.map { pin ->
-            Point(pin.position.toLngLat(), mapOf(
+            // avoid creation of intermediate HashMaps.
+            val tangramProperties = listOf(
                 "type" to "point",
                 "kind" to pin.iconName,
                 "importance" to pin.importance.toString(),
                 "poi_color" to pin.color
-            ) + pin.properties)
+            )
+            val properties = HashMap<String, String>()
+            properties.putAll(tangramProperties)
+            properties.putAll(pin.properties)
+            Point(pin.position.toLngLat(), properties)
         })
         val questGeometries = pins.mapNotNull { it.geometry?.toTangramGeometry() }.flatten()
         questsGeometryLayer.setFeatures(questGeometries)
@@ -52,7 +57,7 @@ class PinsMapComponent(ctrl: KtMapController) {
 data class Pin(
     val position: LatLon,
     val iconName: String,
-    val properties: Map<String, String> = emptyMap(),
+    val properties: Collection<Pair<String, String>> = emptyList(),
     val importance: Int = 0,
     val geometry: ElementGeometry? = null,
     val color: String = "no",

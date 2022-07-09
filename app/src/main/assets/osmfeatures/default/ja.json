@@ -5057,10 +5057,6 @@
                     "name": "フリーフローETC",
                     "terms": "フリーフローetc,料金ガントリー,自動通行料金徴収装置,道路通行料,自動徴収"
                 },
-                "highway/track": {
-                    "name": "農道・林道（自動車通行可）",
-                    "terms": "未舗装農道,農道,未舗装林道,林道,獣道,けもの道,酷道,腐道,険道,死道,損道,道路,わだち,轍,車道,トラック,生活道路"
-                },
                 "highway/traffic_mirror": {
                     "name": "カーブミラー",
                     "terms": "カーブミラー,ミラー,道路反射鏡,道路設備,交通安全"
@@ -8213,9 +8209,6 @@
                 "waterway/river": {
                     "name": "河川",
                     "terms": "川,河川"
-                },
-                "waterway/riverbank": {
-                    "name": "河岸"
                 },
                 "waterway/sanitary_dump_station": {
                     "name": "海上汚物廃棄所",

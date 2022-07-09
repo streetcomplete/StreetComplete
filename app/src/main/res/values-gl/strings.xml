@@ -337,8 +337,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Noces"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_automatic">"Vai con sensores de movemento"</string>
-    <string name="quest_way_lit_24_7">"Está alumeada de día e de noite"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non se puido buscar aquí. Achega o mapa un chisco máis ou non o inclines tanto."</string>
     <string name="quest_crossing_type_title">"Que tipo de paso de peóns é este?"</string>
     <string name="quest_crossing_type_unmarked">"Sen marcas viarias"</string>
@@ -712,6 +710,8 @@ Queres dividila agora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"A estrada da ilustración está orientada do mesmo xeito que no mapa na localización do marcador."</string>
     <string name="quest_recycling_materials_title">"Que se pode depositar para reciclar aquí?"</string>
 
@@ -779,11 +779,14 @@ Finalmente, lembra estares seguro: atento á túa contorna e non entres a unha p
 
     <!-- Links screen -->
     <string name="links_empty">"Aínda non tes ligazóns"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Aínda non publicaches ningunha resposta"</string>
     <string name="unsynced_quests_description">"%d mudanzas máis aínda non publicadas."</string>
     <string name="unsynced_quests_not_logged_in_description">"Tes %d mudanzas aínda sen publicar. Tes que iniciar sesión para subilas."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Tarefas resoltas"</string>
     <string name="user_achievements_title">"Logros"</string>
     <string name="user_links_title">"Colección de ligazóns"</string>
@@ -894,6 +897,8 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="user_statistics_country_rank">"Rango en %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de cartografado de %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"por tipo de tarefa"</string>
     <string name="user_profile_global_rank">"Rango global"</string>
     <string name="user_profile_local_rank">"Rango en
@@ -1094,9 +1099,13 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_postboxRoyalCypher_title">"Cal é o código real nesta caixa do correo?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Non hai código real visíbel"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A Coroa de Escocia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Estación de bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Só cartóns de bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Só botellas de plástico e cartóns"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modo Equipo"</string>
 
     <!-- Team mode -->
@@ -1290,8 +1299,12 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na herba ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Na beirarúa"</string>
     <string name="quest_fireHydrant_position_parking_lot">"No punto de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Si (deixar nota)"</string>

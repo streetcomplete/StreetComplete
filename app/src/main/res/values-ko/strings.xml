@@ -435,12 +435,6 @@
     <string name="produce_sisal">"사이잘"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"동작 감지 기능을 사용"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"24시간 가동"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"이곳을 탐색할 수 없습니다. 더 확대하거나 지도를 똑바로 세워 보세요."</string>
     <string name="quest_crossing_type_title">"어떤 종류의 횡단보도인가요?"</string>
 
@@ -991,6 +985,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"참조 번호가 보이지 않음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"아래 그림의 회전 방향은 위 지도의 핀 부분에서와 같습니다."</string>
     <string name="quest_recycling_materials_title">"이 분리수거함에 무엇을 넣을 수 있나요?"</string>
 
@@ -1074,11 +1070,14 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Links screen -->
     <string name="links_empty">"아직 링크가 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"아직 아무 답변도 업로드하지 않았습니다"</string>
     <string name="unsynced_quests_description">"아직 올리지 않은 답변 %d개."</string>
     <string name="unsynced_quests_not_logged_in_description">"아직 변경 내역 %d개를 업로드하지 않았습니다. 변경 내역을 업로드하려면 로그인하세요."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"해결한 과제"</string>
     <string name="user_achievements_title">"업적"</string>
     <string name="user_links_title">"링크 모음"</string>
@@ -1191,6 +1190,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="user_statistics_country_rank">"%2$s에서의 순위: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"지도 제작 포털 %s"</string>
     <string name="user_statistics_filter_by_country">"국가별"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"과제 유형별"</string>
     <string name="user_profile_global_rank">"전 세계
 순위"</string>
@@ -1413,9 +1414,13 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_postboxRoyalCypher_title">"이 우체통에 어떤 왕실 문장이 박혀 있나요?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"왕실 문장이 보이지 않음"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"스코틀랜드 왕관"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"소방서"</string>
     <string name="quest_recycling_type_beverage_cartons">"종이팩만 취급"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"플라스틱 병(페트병 등)과 종이팩만 취급"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"팀 모드"</string>
 
     <!-- Team mode -->
@@ -1642,8 +1647,12 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
     <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"잔디 또는 흙"</string>
     <string name="quest_fireHydrant_position_lane">"길가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"인도"</string>
     <string name="quest_fireHydrant_position_parking_lot">"주차장"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"예 (참고 남기기)"</string>
@@ -1721,6 +1730,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="ar_core_tracking_error_insufficient_features">"시각적 지표 부족"</string>
     <string name="ar_core_tracking_error_camera_unavailable">"다른 앱이 카메라 사용 중"</string>
     <string name="quest_bicycle_parking_type_handlebarholder">"핸들 거치대"</string>
+    <string name="quest_bicycle_parking_access_title2">"여기에 자전거를 주차할 수 있는 사람이 누구인가요? 주차 요금은 있을 수도, 없을 수도 있습니다."</string>
     <string name="quest_playground_access_title2">"누가 이 놀이터를 이용할 수 있나요?"</string>
     <string name="quest_sidewalk_answer_none_title">"인도가 있는지 선택하기"</string>
     <string name="quest_side_select_interface_explanation">"한 쪽을 탭하여 올바른 답을 고르세요.
@@ -1767,6 +1777,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoking_outside">"외부 흡연 가능"</string>
     <string name="quest_smoking_separated">"흡연전용구역만"</string>
     <string name="quest_smoking_yes">"어디서든 가능"</string>
+    <string name="quest_seating_name_title">"이 장소에 있는 의자는 어떤 종류인가요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"포장만"</string>
@@ -1778,12 +1789,102 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"이곳에서 현금 결제가 가능한가요?"</string>
+    <string name="quest_address_street_title2">"이것은 어느 거리에 있나요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"이곳에 에어컨이 있나요?"</string>
     <string name="quest_baby_changing_table_title2">"이곳에 기저귀 갈이대가 있나요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"이 정류장에 의자가 있나요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"이 정류장에 쓰레기통이 있나요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"이 정류장에 조명이 있나요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"이 정류장의 이름은 무엇인가요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"이 정류장의 관리번호가 무엇인가요?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"이 정류장에 지붕이 있나요?"</string>
+    <string name="quest_dietType_halal_name_title2">"할랄 음식을 제공하나요?"</string>
+    <string name="quest_dietType_kosher_name_title2">"이곳에서 코셔 음식을 주문할 수 있나요?"</string>
+    <string name="quest_dietType_vegan_title2">"메뉴에 비건 음식이 있나요?"</string>
+    <string name="quest_dietType_vegetarian_title2">"매뉴에 채식주의자 음식이 있나요?"</string>
+    <string name="quest_existence_title2">"이곳이 아직 존재하나요?"</string>
+    <string name="quest_generalFee_title2">"이곳에 입장료가 존재하나요?"</string>
+    <string name="quest_internet_access_title">"이 장소는 어떤 종류의 인터넷 연결을 제공하나요?"</string>
+    <string name="quest_level_title2">"이 장소는 몇 층에 있나요?"</string>
+    <string name="quest_lit_title">"이곳에 조명이 존재하나요?"</string>
+    <string name="quest_openingHours_title">"이곳의 영업시간이 언제인가요?"</string>
+    <string name="quest_openingHours_signed_title">"이곳에 영업시간이 표시되어있나요?"</string>
+    <string name="quest_openingHours_resurvey_title">"영업시간이 아직 동일하나요?"</string>
+    <string name="quest_placeName_title">"이 장소의 이름이 뭔가요?"</string>
+    <string name="quest_shop_type_title2">"이 상점의 종류가 무엇인가요?"</string>
     <string name="quest_smoking_title2">"이곳에서 흡연이 가능한가요?"</string>
+    <string name="quest_smoothness_title">"바닥면 품질이 어떤가요?"</string>
+    <string name="quest_surface_title">"이곳의 바닥 재질이 무엇인가요?"</string>
+    <string name="quest_toiletAvailability_title">"여기에 화장실이 있나요?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"이 장소의 화장실에 휠체어가 갈 수 있나요?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"이 일방통행로에서 자전거 양방향 통행이 불가능한 게 맞나요? 확실하지 않으면, 도로 끝에 표지판이 있는지 확인하세요."</string>
+    <string name="link_backofyourhand_description">"당신은 당신의 동네를 얼마나 알고계신가요? 길을 가보면서 당신의 지식을 시험해보세요."</string>
+    <string name="link_thenandnow_description">"OSM의 초기 모습과 지금의 모습을 비교해보세요!"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"이곳에서 신용카드나 체크카드를 사용할 수 있나요?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"신용카드와 체크카드 모두"</string>
+    <string name="quest_accepts_cards_credit_only">"신용카드만"</string>
+    <string name="quest_accepts_cards_dedit_only">"체크카드만"</string>
+    <string name="quest_accepts_cards_unavailable">"카드를 사용할 수 없음"</string>
+    <string name="quest_air_pump_compressor_title">"이곳에 사용할 수 있는 공기 펌프가 있나요?"</string>
+    <string name="quest_step_count_stile_hint">"정상까지 도달하는 계단 수입니다. 양쪽이 다른 경우 더 높은 숫자를 지정합니다."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"없음, 이 방향으로 자전거가 허용되지 않음"</string>
+    <string name="quest_bicycle_rental_capacity_title">"이곳에 자전거 대여 장소가 얼마나 있나요?"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"자전거를 대여할 수 있는 자전거 판매점"</string>
+    <string name="quest_bicycle_shop_repair_title">"이곳에서 자전거 수리를 받을 수 있나요?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"이곳에서 중고 자전거를 판매하나요?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"아니오, 새 자전거만 판매합니다"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"네, 새 자전거와 같이 판매합니다"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"자전거를 판매하지 않음"</string>
+    <string name="quest_building_entrance_title">"이 건물의 입구는 어떤 종류인가요?"</string>
+    <string name="quest_building_entrance_main">"공공 건물의 주 출입구"</string>
+    <string name="quest_building_entrance_staircase">"계단 입구 (예: 아파트의 입구)"</string>
+    <string name="quest_building_entrance_exit">"출구 전용"</string>
+    <string name="quest_building_entrance_emergency_exit">"비상구 전용"</string>
+    <string name="quest_building_entrance_shop">"매장 입구"</string>
+    <string name="quest_building_entrance_yes">"그 외 입구"</string>
+    <string name="quest_building_entrance_dead_end">"막다른 골목, 입구 없음"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"측정을 위해 화면을 탭하세요"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"이곳에 공용 자전거 펌프가 있습니까? (이곳이 열려있을 때)"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"이곳에 작동하는 자전거 펌프가 있습니까?"</string>
+    <string name="action_overlays">"오버레이"</string>
+    <string name="split_way">"갈림길"</string>
+    <string name="quest_memorialType_title">"이것은 어떤 것을 기념하나요?"</string>
+    <string name="quest_memorialType_statue">"동상"</string>
+    <string name="quest_memorialType_bust">"흉상"</string>
+    <string name="quest_memorialType_plaque">"질병"</string>
+    <string name="quest_memorialType_war_memorial">"전쟁 기념"</string>
+    <string name="quest_memorialType_stone">"돌"</string>
+    <string name="quest_memorialType_obelisk">"오벨리스크"</string>
+    <string name="quest_memorialType_stele_wooden">"나무비 (기념비)"</string>
+    <string name="quest_memorialType_stele_stone">"비석 (기념석판)"</string>
+    <string name="quest_memorialType_sculpture">"기타 조각품"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"오버레이 선택"</string>
+    <string name="overlay_none">"없음"</string>
+    <string name="overlay_lit">"거리 조명"</string>
+    <string name="lit_value_yes">"빛남"</string>
+    <string name="lit_value_no">"켜지지 않음"</string>
+    <string name="lit_value_24_7">"항상 켜짐"</string>
+    <string name="lit_value_automatic">"누군가 지나갈 때 켜짐"</string>
+    <string name="overlay_sidewalk">"인도"</string>
 </resources>

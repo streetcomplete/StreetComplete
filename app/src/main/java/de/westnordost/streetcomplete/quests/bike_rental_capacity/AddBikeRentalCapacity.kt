@@ -5,8 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacityForm
 
@@ -24,7 +24,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
     override val wikiLink = "Tag:amenity=bicycle_rental"
     override val icon = R.drawable.ic_quest_bicycle_rental_capacity
     override val isDeleteElementEnabled = true
-    override val questTypeAchievements = listOf(BICYCLIST)
+    override val achievements = listOf(BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_rental_capacity_title
 

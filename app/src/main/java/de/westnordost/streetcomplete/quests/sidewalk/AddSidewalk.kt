@@ -9,10 +9,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.estimateCycleTrackWidth
 import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
@@ -37,8 +37,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
     override val changesetComment = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(PEDESTRIAN)
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -167,9 +166,8 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
         """.toElementFilterExpression() }
 
     private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
-        val sides = createSidewalkSides(tags)
-        if (sides == null) return false
-        if (sides.any { it == INVALID }) return true
+        val sides = createSidewalkSides(tags) ?: return false
+        if (sides.any { it == INVALID || it == null }) return true
         return false
     }
 
@@ -196,8 +194,8 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
             .create()
 }
 
-private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk) -> Boolean): Boolean =
-    left?.let(block) == true || right?.let(block) == true
+private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk?) -> Boolean): Boolean =
+    block(left) || block(right)
 
 private val ROADS_WITH_SIDEWALK = arrayOf(
     "motorway","motorway_link","trunk","trunk_link","primary","primary_link","secondary",

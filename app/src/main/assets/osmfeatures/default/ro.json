@@ -11,6 +11,9 @@
                 "category-landuse": {
                     "name": "Utilizări de Teren"
                 },
+                "category-playground": {
+                    "name": "Echipament de loc de joacă"
+                },
                 "category-restriction": {
                     "name": "Restricții"
                 },
@@ -22,23 +25,39 @@
                 "access": {
                     "label": "Acces Permis",
                     "options": {
+                        "customers": {
+                            "description": "Restricționat clienților la destinație",
+                            "title": "Clienți"
+                        },
                         "designated": {
+                            "description": "Acces permis după semne și legi locale specifice.",
                             "title": "Desemnat"
                         },
                         "destination": {
+                            "description": "Acces permis doar pentru a ajunge la o destinație.",
                             "title": "Destinație"
                         },
                         "dismount": {
-                            "title": "Demonta"
+                            "title": "Descăleca"
                         },
                         "no": {
+                            "description": "Nu este permis accesul publicului general.",
                             "title": "Interzis"
                         },
                         "permissive": {
+                            "description": "Acces permis până când proprietarul revocă permisiunea. ",
                             "title": "Permisiv"
+                        },
+                        "permit": {
+                            "description": "Acces permis doar cu un permis valid sau licență.",
+                            "title": "Permis"
                         },
                         "private": {
                             "title": "Privat"
+                        },
+                        "unknown": {
+                            "description": "Condițiile de acces sunt necunoscute sau neclare.",
+                            "title": "Necunoscut"
                         },
                         "yes": {
                             "title": "Permis"
@@ -53,8 +72,17 @@
                         "motor_vehicle": "Vehicule cu Motor"
                     }
                 },
+                "access_aisle": {
+                    "label": "Tip"
+                },
                 "access_simple": {
-                    "label": "Acces Permis"
+                    "label": "Acces Permis",
+                    "options": {
+                        "customers": "Doar clienți",
+                        "no": "Niciunul",
+                        "permissive": "Permisiv",
+                        "permit": "Doar cu permis"
+                    }
                 },
                 "address": {
                     "label": "Adresă",
@@ -2170,9 +2198,6 @@
                 },
                 "waterway/river": {
                     "name": "Râu"
-                },
-                "waterway/riverbank": {
-                    "name": "Mal"
                 },
                 "waterway/stream": {
                     "name": "Fluviu",

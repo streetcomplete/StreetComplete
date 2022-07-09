@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -26,8 +26,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Add segregated status for combined footway with cycleway"
     override val wikiLink = "Key:segregated"
     override val icon = R.drawable.ic_quest_path_segregation
-    override val questTypeAchievements = listOf(BICYCLIST, OUTDOORS)
-    override val isSplitWayEnabled = true
+    override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title
 

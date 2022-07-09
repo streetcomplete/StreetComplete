@@ -27,7 +27,7 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Siga-me"</string>
-    <string name="map_attribution_osm">"© contribuidores do OpenStreetMap"</string>
+    <string name="map_attribution_osm">"© colaboradores do OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Outras respostas…"</string>
 
     <!-- Fuzzy -->
@@ -66,10 +66,10 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviação"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_start_time">"hora de abertura"</string>
+    <string name="quest_openingHours_start_time">"horário de abertura"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_end_time">"hora de encerramento"</string>
+    <string name="quest_openingHours_end_time">"horário de encerramento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
@@ -137,7 +137,7 @@
     <string name="about_title_authors">"Créditos"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_authors">"© %s Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick e colaboradores"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_repository">"Repositório do código-fonte"</string>
@@ -149,7 +149,7 @@
     <string name="about_title_report_error">"Reportar erro"</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_feedback">"Comentar experiência"</string>
+    <string name="about_title_feedback">"Compartilhar sua experiência"</string>
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
 
@@ -229,7 +229,7 @@
     <string name="map_btn_zoom_in">"Aproximar"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ora, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Primeiramente, compreenda que com este aplicativo, você faz contribuições reais e diretas para o OpenStreetMap.&lt;br/&gt;
@@ -582,7 +582,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
 
     <!-- Credits screen -->
     <!-- Fuzzy -->
-    <string name="credits_author_title">"Autor e Mantedor"</string>
+    <string name="credits_author_title">"Autor e Mantenedor"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
     <!-- Fuzzy -->
@@ -724,12 +724,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Usa detector de movimento"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
 
     <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui. Tente aproximar mais ou inclinar menos o mapa."</string>
@@ -1439,7 +1433,7 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_theme_select">"Selecione o tema"</string>
+    <string name="pref_title_theme_select">"Tema"</string>
     <string name="theme_automatic">"Automático"</string>
 
     <!-- Fuzzy -->
@@ -1614,7 +1608,7 @@ Dividir agora?"</string>
     <string name="about_title_donate">"Fazer doação"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_donate">"Mostre a sua apreciação! ❤️"</string>
+    <string name="about_summary_donate">"Mostre o seu apreço! ❤️"</string>
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Obrigado por considerar apoiar este aplicativo!  Para ver as doações atuais e doar a si mesmo, toque na respectiva plataforma:"</string>
@@ -1658,11 +1652,14 @@ Dividir agora?"</string>
 
     <!-- Links screen -->
     <string name="links_empty">"Você ainda não possui links"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Você não publicou respostas para a missão ainda"</string>
     <string name="unsynced_quests_description">"mais %d alterações não publicadas."</string>
     <string name="unsynced_quests_not_logged_in_description">"Você %d ainda não publicou alterações.  Você precisa fazer o login para enviá-los."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Missões resolvidas"</string>
     <string name="user_achievements_title">"Conquistas"</string>
     <string name="user_links_title">"Coleção de link"</string>
@@ -1734,7 +1731,7 @@ Dividir agora?"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Bem-vindo à comunidade OpenStreetMap!  Na tela do seu perfil, você pode ver mais informações sobre cada tipo de missão que resolveu."</string>
-    <string name="achievement_surveyor_title">"Surveyor"</string>
+    <string name="achievement_surveyor_title">"Topógrafo"</string>
     <string name="achievement_surveyor_solved_X">"Você resolveu %d missões! Continue desbloqueando mais conquistas que contêm links para o OSM e outros aplicativos e projetos relacionados ao mapa!"</string>
     <string name="achievement_regular_title">"Regular"</string>
     <string name="achievement_regular_description">"Você contribuiu com %d dias para o OSM com este aplicativo! Contribuintes regulares são a espinha dorsal do OSM, obrigado por sua dedicação! ❤"</string>
@@ -1772,7 +1769,7 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Os dados mostrados no seu perfil são agregados do seu histórico de contribuições publicamente disponíveis ao OpenStreetMap e, em seguida, hospedados no meu servidor.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Você também pode fazer isso mais tarde na tela de perfil."</string>
-    <string name="credits_art_contributors_title">"Contribuidores da arte"</string>
+    <string name="credits_art_contributors_title">"Contribuições gráficas"</string>
     <string name="credits_projects_contributors_title">"Projetos feitos para o StreetComplete"</string>
     <string name="credits_main_contributors_title">"Principais colaboradores"</string>
 
@@ -1781,6 +1778,8 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="user_statistics_country_rank">"Rank em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"por tipo de missão"</string>
     <string name="user_profile_global_rank">"Rank
 global"</string>
@@ -1834,12 +1833,12 @@ conquista"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"Esta ainda é a situação da ciclovia aqui?"</string>
-    <string name="pref_title_resurvey_intervals">"Intervalos de nova pesquisa"</string>
+    <string name="pref_title_resurvey_intervals">"Intervalos de novas perguntas"</string>
     <string name="resurvey_intervals_less_often">"Pergunte com menos frequência"</string>
     <string name="resurvey_intervals_default">"Padrão"</string>
     <string name="resurvey_intervals_more_often">"Pergunte com mais frequência"</string>
     <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro de um edifício?"</string>
-    <string name="about_title_translate">"Ajude a traduzir este aplicativo"</string>
+    <string name="about_title_translate">"Ajude a traduzir"</string>
     <string name="about_description_translate">"%1$s está %2$d%% traduzido"</string>
     <string name="quest_oneway2_title">"Esta é uma rua de mão única? Em que direção?"</string>
     <string name="quest_oneway2_dir">"Direção única nesta direção"</string>
@@ -1886,7 +1885,7 @@ conquista"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"A rampa para cadeiras de rodas é exibida como uma maneira separada no mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separado"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"não separado"</string>
-    <string name="pref_title_sync2">"Carregar respostas automaticamente"</string>
+    <string name="pref_title_sync2">"Enviar respostas automaticamente"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Descreva a superfície"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
@@ -2001,9 +2000,13 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_postboxRoyalCypher_title">"Qual é a cifra real nesta caixa de correio?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nenhuma cifra real é visível"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"A coroa da Escócia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Corpo de Bombeiros"</string>
     <string name="quest_recycling_type_beverage_cartons">"Apenas embalagens para bebidas"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e caixas"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Modo de equipe"</string>
 
     <!-- Team mode -->
@@ -2070,7 +2073,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_buildingType_semi_detached_description2">"casa unifamiliar contígua"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests2">"Seleção e prioridade da missão"</string>
+    <string name="pref_title_quests2">"Seleção e prioridade das missões"</string>
     <string name="pref_subtitle_quests">"%1$d de %2$d está ativado"</string>
     <string name="no_location_permission_warning_title">"Permissão de localização"</string>
     <string name="quest_surface_value_woodchips">"Lascas de madeira"</string>
@@ -2083,7 +2086,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_camera_type_dome">"Cúpula"</string>
     <string name="quest_camera_type_fixed">"Fixa"</string>
     <string name="quest_camera_type_panning">"Panorâmica"</string>
-    <string name="about_title_faq">"FAQ"</string>
+    <string name="about_title_faq">"Perguntas frequentes"</string>
     <string name="quest_buildingLevels_title2">"Quantos andares acima do porão este edifício tem?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quantos andares acima do porão esta edificação tem?"</string>
     <string name="quest_crossing_title">"Existem meios-fios onde este caminho encontra a estrada aqui? Que tipo?"</string>
@@ -2173,7 +2176,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_barrier_bicycle_type_single">"Passagem entre duas barreiras"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barreira de cada lado"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - mais de duas barreiras"</string>
-    <string name="pref_title_language_select">"Selecione o idioma"</string>
+    <string name="pref_title_language_select">"Idioma"</string>
     <string name="language_default">"Padrão do sistema "</string>
 
     <!-- Fuzzy -->
@@ -2218,8 +2221,12 @@ Alternativamente, você pode deixar uma nota (com uma foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Esta via tem um acostamento?"</string>
     <string name="quest_fireHydrant_position_title">"Onde este hidrante está localizado?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na grama ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Na calçada"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Em uma vaga de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sim (deixe uma nota)"</string>
@@ -2455,12 +2462,46 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_main">"Entrada principal de um edifício público"</string>
     <string name="quest_building_entrance_staircase">"Entrada de escadas (por exemplo, para um prédio de apartamentos)"</string>
     <string name="quest_building_entrance_service">"Entrada de serviço"</string>
-    <string name="quest_building_entrance_exit">"Sair apenas"</string>
+    <string name="quest_building_entrance_exit">"Somente saída"</string>
     <string name="quest_building_entrance_emergency_exit">"Somente saída de emergência"</string>
-    <string name="quest_building_entrance_shop">"Entrada na frente da loja"</string>
+    <string name="quest_building_entrance_shop">"Entrada da loja"</string>
     <string name="quest_building_entrance_yes">"Outro tipo de entrada"</string>
     <string name="quest_building_entrance_dead_end">"Beco sem saída, sem entrada"</string>
-    <string name="ar_core_tracking_hint_tap_to_measure">"Tela de toque para começar a medir"</string>
-    <string name="quest_air_pump_bicycle_shop_title">"Existe aqui uma bomba de bicicleta pública (pelo menos quando está aberta)?"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Toque na tela para começar a medir"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Há uma bomba de bicicleta pública aqui (pelo menos quando está aberta)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Há uma bomba de bicicleta funcionando aqui?"</string>
+    <string name="action_overlays">"Sobreposições"</string>
+    <string name="split_way">"
+Caminho dividido"</string>
+    <string name="quest_memorialType_title">"
+Que tipo de memorial é esse?"</string>
+    <string name="quest_memorialType_statue">"Estátua"</string>
+    <string name="quest_memorialType_bust">"Busto"</string>
+    <string name="quest_memorialType_plaque">"Placa"</string>
+    <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
+    <string name="quest_memorialType_stone">"Pedra"</string>
+    <string name="quest_memorialType_obelisk">"Obelisco"</string>
+    <string name="quest_memorialType_stele_wooden">"Estela de madeira (laje memorial)"</string>
+    <string name="quest_memorialType_stele_stone">"Estela de pedra (laje memorial)"</string>
+    <string name="quest_memorialType_sculpture">"Outra escultura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Selecione a sobreposição"</string>
+    <string name="overlay_none">"Nenhum"</string>
+    <string name="overlay_lit">"Iluminação pública"</string>
+    <string name="lit_value_yes">"Iluminado"</string>
+    <string name="lit_value_no">"Não iluminado"</string>
+    <string name="lit_value_24_7">"Iluminado noite e dia"</string>
+    <string name="lit_value_automatic">"Iluminado quando alguém passa"</string>
+    <string name="overlay_sidewalk">"Calçadas"</string>
+    <string name="quest_generic_answer_is_indoors">"Isso é interno"</string>
+    <string name="quest_summit_cross_title">"Há uma cruz de cume aqui?"</string>
+    <string name="quest_entrance_reference">"O que está assinado nesta entrada?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta de entrada e gama de apartamentos"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Gama de apartamentos"</string>
+    <string name="quest_entrance_reference_select_code_only">"Etiqueta de entrada"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nenhuma placa com rótulo ou gama de apartamentos"</string>
+    <string name="quest_entrance_reference_reference_label">"Etiqueta de entrada:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Gama de apartamentos:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"para"</string>
 </resources>

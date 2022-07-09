@@ -346,8 +346,6 @@
     <string name="produce_vanilla">"Ванилия"</string>
     <string name="produce_walnuts">"Орехи"</string>
     <string name="produce_sisal">"Сизал"</string>
-    <string name="quest_way_lit_automatic">"Използва сензор за движение"</string>
-    <string name="quest_way_lit_24_7">"Осветен е и през нощта и през деня"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Невъзможно сканирането. Опитайте се да приближите повече или наклонете леко картата."</string>
     <string name="quest_crossing_type_title">"Какъв тип кръстовище е това?"</string>
 
@@ -721,6 +719,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Не се вижда номер…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Пътят на картинката е завъртян по същия начин по който е на картата."</string>
     <string name="quest_recycling_materials_title">"Какво може да се изхвърля тук?"</string>
 
@@ -793,11 +793,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"Все още нямате връзки"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Нямате публикувани отговори на задачи"</string>
     <string name="unsynced_quests_description">"и %d непубликувани промени."</string>
     <string name="unsynced_quests_not_logged_in_description">"Имате %d непубликувани корекции. Трябва да се впишете за да бъдат те качени."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Решени задачи"</string>
     <string name="user_achievements_title">"Постижения"</string>
     <string name="user_links_title">"Колекция на връзките"</string>
@@ -918,6 +921,8 @@
 "</string>
     <string name="user_statistics_country_wiki_link">"Портал за карти %s"</string>
     <string name="user_statistics_filter_by_country">"по държава"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"по типове задачи"</string>
     <string name="user_profile_global_rank">"Общо класиране"</string>
     <string name="user_profile_local_rank">"Класиране в %s"</string>
@@ -1132,9 +1137,13 @@
     <string name="quest_postboxRoyalCypher_title">"Какъв кралски герб има тази пощенска кутия?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Не се вижда кралски герб"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Шотландска корона"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Пожарна"</string>
     <string name="quest_recycling_type_beverage_cartons">"Кашони от напитки само"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Пластмасови бутилки и кашони само"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Работа в екип"</string>
 
     <!-- Team mode -->
@@ -1376,8 +1385,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Този път има ли аварийна лента?"</string>
     <string name="quest_fireHydrant_position_title">"Къде се намира този пожарен кран?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"В тревни площи"</string>
     <string name="quest_fireHydrant_position_lane">"На пътното платно"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"На тротоар"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На паркинг"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Да (оставете бележка)"</string>

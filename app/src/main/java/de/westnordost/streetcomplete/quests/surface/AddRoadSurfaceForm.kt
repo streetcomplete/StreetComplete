@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.image_select.Item
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
-class AddRoadSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestAnswerFragment<Surface, SurfaceAnswer>() {
-    override val items: List<Item<Surface>>
-        get() = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+class AddRoadSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestForm<Surface, SurfaceAnswer>() {
+    override val items get() =
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
 
     override val itemsPerRow = 3
 

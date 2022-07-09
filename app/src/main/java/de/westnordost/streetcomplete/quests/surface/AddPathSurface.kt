@@ -5,13 +5,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 
 class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
@@ -38,8 +38,7 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
     override val changesetComment = "Add path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
+    override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
@@ -52,6 +51,9 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             }
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"
+            }
+            is IsIndoorsAnswer -> {
+                tags["indoor"] = "yes"
             }
         }
     }

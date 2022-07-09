@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.BROADLEAVED
 import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.MIXED
 import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.NEEDLELEAVED
 import de.westnordost.streetcomplete.view.image_select.Item
 
-class AddForestLeafTypeForm : AImageListQuestAnswerFragment<ForestLeafType, ForestLeafType>() {
+class AddForestLeafTypeForm : AImageListQuestForm<ForestLeafType, ForestLeafType>() {
 
     override val items = listOf(
         Item(NEEDLELEAVED, R.drawable.leaf_type_needleleaved, R.string.quest_leaf_type_needles),

@@ -5,10 +5,10 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMotorcycleParkingCapacityBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 
-class AddMotorcycleParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
+class AddMotorcycleParkingCapacityForm : AbstractOsmQuestForm<Int>() {
 
     override val contentLayoutResId = R.layout.quest_motorcycle_parking_capacity
     private val binding by contentViewBinding(QuestMotorcycleParkingCapacityBinding::bind)

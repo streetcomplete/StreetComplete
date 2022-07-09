@@ -348,8 +348,6 @@
     <string name="produce_vanilla">"فانيلا"</string>
     <string name="produce_walnuts">"المكسرات"</string>
     <string name="produce_sisal">"سيزال"</string>
-    <string name="quest_way_lit_automatic">"يستخدم مستشعر الحركة للإضاءة"</string>
-    <string name="quest_way_lit_24_7">"إنه مضاء ليلا ونهارا"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"لا يمكن المسح هنا. حاول تكبير الخريطة أو إمالتها بدرجة أقل."</string>
     <string name="quest_crossing_type_title">"أي نوع من معابر المشاة هذا؟"</string>
 
@@ -736,6 +734,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"لا يوجد رقم مرجعي مرئي …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"يستدير الطريق في الرسم التوضيحي في نفس الاتجاه الموجود على الخريطة عند نقطة التحديد."</string>
     <string name="quest_recycling_materials_title">"ما الذي يمكن تركه هنا لإعادة التدوير؟"</string>
 
@@ -811,11 +811,14 @@
 
     <!-- Links screen -->
     <string name="links_empty">"ليس لديك روابط حتى الان"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"لم تنشر أي إجابات للمهمة حتى الآن"</string>
     <string name="unsynced_quests_description">"بالإضافة إلى %d لم يتم نشر التغييرات بعد"</string>
     <string name="unsynced_quests_not_logged_in_description">"لديك %d تغييرات لم تنشرها بعد. تحتاج إلى تسجيل الدخول لتقوم برفعها."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"أسئلة ومهام تم حلها"</string>
     <string name="user_achievements_title">"إنجازات"</string>
     <string name="user_links_title">"مجموعة من الروابط"</string>
@@ -930,6 +933,8 @@
     <string name="user_statistics_country_rank">"الترتيب في %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"بوابة الخريطة %s"</string>
     <string name="user_statistics_filter_by_country">"حسب البلد"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"حسب نوع المهمة"</string>
     <string name="user_profile_global_rank">"التصنيف العالمي"</string>
     <string name="user_profile_local_rank">"مرتبة في %s"</string>
@@ -1146,9 +1151,13 @@
     <string name="quest_postboxRoyalCypher_title">"ما هو الرمز الملكي على هذا البريد؟"</string>
     <string name="quest_postboxRoyalCypher_type_none">"لا يوجد رمز ملكي مرئي"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسكتلندا"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"محطة الاطفاء"</string>
     <string name="quest_recycling_type_beverage_cartons">"كرتون المشروبات فقط"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"العبوات البلاستيكية والكرتون فقط"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"وضع الفريق"</string>
 
     <!-- Team mode -->
@@ -1275,18 +1284,300 @@
     <string name="notification_channel_sync">"قُم بمزامنة البيانات"</string>
     <string name="quest_board_type_sport">"رياضة، تمارين"</string>
     <string name="quest_generic_hasFeature_optional">"اختياري"</string>
+    <string name="quest_buildingType_bridge">"جسر بين المباني (سكاي واي)"</string>
     <string name="quest_laundrySelfService_title2">","</string>
+    <string name="quest_dietType_explanation_halal">"يتم تحضير المنتجات الحلال وفقًا لقواعد خاصة، كما تقوم منظمات بمنح شهادات الحلال وذلك من خلال وضع علامة على المنتجات."</string>
+    <string name="quest_picnicTableCover_title">"هل طاولة النزهة هذه مغطاة (محمية من المطر)؟"</string>
+
+    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
+    <string name="quest_generic_answer_is_actually_steps">"هذا درج/سلم"</string>
+    <string name="quest_barrier_type_passage_conversion">"تحول إلى ممر في جدارأو سياج/ الخ."</string>
+    <string name="quest_barrier_type_gate_conversion">"تحول إلى بوابة"</string>
+    <string name="quest_traffic_calming_type_title">"ما نوع مخفف السرعة المرورية؟"</string>
+    <string name="quest_traffic_calming_type_bump">"مطب قصير"</string>
+    <string name="quest_traffic_calming_type_hump">"مطب طويل"</string>
+    <string name="quest_traffic_calming_type_table">"مطب مرتفع وطويل لتخفيف السرعة بشكل جبري"</string>
+    <string name="quest_traffic_calming_type_cushion">"مطبات مركبات صغيرة"</string>
+    <string name="quest_traffic_calming_type_choker">"طريق ضيق"</string>
+    <string name="quest_traffic_calming_type_island">"جزيرة"</string>
+    <string name="quest_traffic_calming_type_chicane">"منحنى/ات حادة"</string>
+    <string name="quest_traffic_calming_type_rumble_strip">"مطبات متعددة ومتتالية"</string>
+    <string name="quest_surface_value_concrete_plates">"ألواح خرسانية"</string>
+    <string name="quest_surface_value_concrete_lanes">"مسارات خرسانية"</string>
+    <string name="quest_fireHydrant_diameter_title">"ما القطر المحدد على علامة صنبور إطفاء الحرائق هذا؟"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"هذا القطرغير واقعي ويبدو بأنه غير قابل للتصديق."</string>
+    <string name="quest_fireHydrant_confirmation_title">"هل أنت واثق؟ في بعض الأحيان يمكن العثور على القطر على صنبور المياه نفسه."</string>
+    <string name="quest_diet_answer_no_food">"ليس لديها طعام"</string>
+    <string name="short_no_answer_on_button">"لا"</string>
+    <string name="restore_confirmation">"استرجاع"</string>
+    <string name="restore_dialog_message">"هل تريد استعادة جميع المهام التي أخفيتها؟"</string>
+    <string name="quest_parking_access_title2">"من الذي يسمح له بالوقوف هنا؟ قد يكون وقوف السيارات مجانيًا أو مدفوعًا."</string>
+    <string name="quest_access_yes">"أي فرد من عامة الناس"</string>
+    <string name="quest_access_customers">"أي شخص يزور مكانًا معينًا (مثل العملاء فقط)"</string>
+    <string name="quest_access_private">"فقط الأفراد الحاصلين على إذن/تصريح"</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">"هل ما زالت أوقات الاستلام لصندوق التجميع هذا صحيحة؟"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"ليست معروفة، حاول إدخال نوع المكان ، على سبيل المثال \"مخبز\"، إذا لم تعرف النوع الصحيح فكر في ترك ملاحظة."</string>
+    <string name="quest_bicycle_barrier_type_title">"أي نوع من حواجز الدراجات هذا؟"</string>
+    <string name="quest_barrier_bicycle_type_diagonal">"قطري إلى المسار"</string>
+    <string name="quest_barrier_bicycle_type_tilted">"ممر ضيق ، أصغر باتجاه الأعلى"</string>
+    <string name="quest_barrier_bicycle_type_single">"ممر بين الحواجز"</string>
+    <string name="quest_barrier_bicycle_type_double">"منعطف صناعي - حاجز على كل جانب"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"منعطف صناعي - أكثر من حاجزين"</string>
+    <string name="pref_title_language_select">"اختيار اللغة"</string>
+    <string name="language_default">"حسب إعدادات النظام الافتراضية"</string>
+    <string name="on_floor">"على الدور %s
+"</string>
+    <string name="quest_street_parking_title">"كيف يمكن للسيارات أن تقف هنا ، على كل حال؟"</string>
+    <string name="select_street_parking_orientation">"حدد الاتجاه نحو الطريق:"</string>
+    <string name="select_street_parking_position">"حدد الموضع:"</string>
+    <string name="select_street_parking_no">"أي علامة مرورية أو علامة طريق هنا؟"</string>
+    <string name="street_parking_parallel">"موازي"</string>
+    <string name="street_parking_diagonal">"قطري"</string>
+    <string name="street_parking_perpendicular">"عمودي"</string>
+    <string name="street_parking_on_street">"على الشارع"</string>
+    <string name="street_parking_half_on_kerb">"جزئيا في الشارع"</string>
+    <string name="street_parking_on_kerb">"مجاور للشارع"</string>
+    <string name="street_parking_street_side">"مجاور للشارع فقط في المساحات المخصصة"</string>
+    <string name="street_parking_painted_area_only">"الأماكن المخصصة في الشارع فقط"</string>
+    <string name="street_parking_separate">"يتم عرض وقوف السيارات بشكل منفصل على الخريطة"</string>
+    <string name="street_parking_no">"ممنوع الوقوف هنا / غير مسموح به"</string>
+    <string name="street_parking_prohibited">"ممنوع الوقوف"</string>
+    <string name="street_stopping_prohibited">"ممنوع التوقف"</string>
+    <string name="street_standing_prohibited">"ممنوع التوقف الدائم"</string>
+    <string name="street_parking_conditional_restrictions">"وقوف السيارات مقيد بشروط"</string>
+    <string name="street_parking_no_other_reasons">"لا توجد علامة صريحة / وقوف السيارات غير ممكن
+"</string>
+    <string name="street_parking_conditional_restrictions_hint">"إذا كان من الممكن التوقف بشكل مطلق هنا ، حدد نوع موقف السيارات هل هو على الشارع أو بعيدًا عنه، كما يمكن تحديد قيود إضافية لاحقًا.
+
+كما يمكنك ترك ملاحظة بدلاً من ذلك (مع صورة)."</string>
+    <string name="quest_address_answer_house_name_and_housenumber">"كلاً من رقم المنزل والاسم ..."</string>
+    <string name="quest_address_house_number_label">"رقم المنزل:"</string>
+    <string name="quest_shoulder_title">"هل هذا الطريق به كتف أو مسار طوارئ؟"</string>
+    <string name="quest_fireHydrant_position_title">"أين يقع صنبور الحريق هذا؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_position_green">"في العشب أو التراب"</string>
+    <string name="quest_fireHydrant_position_lane">"على الطريق"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_position_sidewalk">"على الرصيف"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"في مكان وقوف السيارات"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"نعم (اترك ملاحظة)"</string>
+    <string name="quest_smoothness_square_title">"ما هي جودة سطح هذا المربع؟"</string>
+    <string name="quest_smoothness_road_title">"ما هي جودة سطح هذا الطريق هنا؟"</string>
+    <string name="quest_smoothness_title_excellent">"سلس ومتساوي"</string>
+    <string name="quest_smoothness_title_good">"في الغالب مستوي"</string>
+    <string name="quest_smoothness_title_intermediate">"وعر قليلا"</string>
+    <string name="quest_smoothness_title_bad">"به نتوءات
+"</string>
+    <string name="quest_smoothness_title_very_bad">"وعر جدا"</string>
+    <string name="quest_smoothness_title_horrible">"وعر جدا وغير مستوي"</string>
+    <string name="quest_smoothness_title_very_horrible">"يكاد يكون غير قابل للسير عليه"</string>
+    <string name="quest_smoothness_title_impassable">"مستحيل"</string>
+    <string name="quest_smoothness_description_excellent_paved">"لايوجد به نتوءات أو شقوق"</string>
+    <string name="quest_smoothness_description_excellent_paving_stones">"سلس تقريبا"</string>
+    <string name="quest_smoothness_description_good_paved">"فقط شقوق صغيرة أو فجوات أو إصلاحات أو أن سطحه خشن قليلاً"</string>
+    <string name="quest_smoothness_description_good_paving_stones">"فجوات ضئيلة أو ضيقة"</string>
+    <string name="quest_smoothness_description_good_sett">"أحجار مسطحة بشكل غير عادي بنمط منتظم  الفجوات ضئيلة أو ضيقة جدًا"</string>
+    <string name="quest_smoothness_description_intermediate_paved">"سطح خشن بشكل غير عادي أو فجوات أوسع أو شقوق أو شقوق ضئيلة أو حفر أو أضرار أخرى"</string>
+    <string name="quest_smoothness_description_intermediate_paving_stones">"فجوات أوسع ، ربما بعض الحجارة النازحة أو أضرار أخرى"</string>
+    <string name="quest_smoothness_description_intermediate_sett">"أحجار مسطحة أو ذات حواف مربعة بفجوات ضئيلة أو ضيقة"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"حصى ناعم أو مطبات ضئيلة أو حفر"</string>
+    <string name="quest_smoothness_description_bad_paved">"فجوات كبيرة ، حفر ، شقوق ، رصيف متهدم أو أضرار أخرى"</string>
+    <string name="quest_smoothness_description_bad_paving_stones">"أحجار مزاحة أو فجوات كبيرة أو أضرار أخرى"</string>
+    <string name="quest_smoothness_description_bad_sett">"أحجار متجوية أو أشكال غير منتظمة و فجوات كبيرة أو أحجار تالفة"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"بعض الحصى الكبيرة أو المطبات أو الأخاديد أو الحفر"</string>
+    <string name="quest_smoothness_description_very_bad_paved">"الحفر العميقة أو الأخاديد أو الأضرار الخطيرة الأخرى"</string>
+    <string name="quest_smoothness_description_very_bad_sett">"فجوات كبيرة ، حجارة نازحة أو ناقصة وغير منتظمة الشكل أو أضرار خطيرة"</string>
+    <string name="quest_smoothness_description_very_bad_paving_stones">"حجارة ناقصة ومتكسرة أو فجوات أو أضرار خطيرة أخرى"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"بعض الأحجار الكبيرة أو الحفر العميقة أو النتوءات أو الأخاديد أو التعرية أو غيرها من الأضرار الخطيرة"</string>
+    <string name="quest_smoothness_description_horrible">"صالحة للاستخدام فقط عن طريق المركبات على الطرق الوعرة أو سيرا على الأقدام"</string>
+    <string name="quest_smoothness_description_very_horrible">"صالحة للاستخدام فقط عن طريق المركبات المتخصصة على الطرق الوعرة أو سيرًا على الأقدام"</string>
+    <string name="quest_smoothness_description_impassable">"غير صالح لأية مركبة ، يمكن السير فيه فقط على الأقدام"</string>
+    <string name="quest_smoothness_wrong_surface">"السطح مختلف"</string>
+    <string name="quest_smoothness_surface_value">"تم وضع وسم على السطح كـ:"</string>
+    <string name="quest_smoothness_obstacle">"هناك عقبة"</string>
+    <string name="quest_smoothness_obstacle_hint">"يرجى تقديم إجابة شاملة عن مستوى النعومة،  يمكن تجاهل العقبات الفردية مثل الحواجز أو مطبات السرعة أو شبكات الماشية كما يجب احتساب العوائق المتكررة أو غير المتوقعة في الإجابة."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙,… قم بالتأشير على المركبات التي يكون السطح صالحًا للاستخدام فيها، ما يهم هو المخاطر العمومية وليس الفردية."</string>
+    <string name="link_osmhydrant_description">"البحث وإضافة وتحرير محطات الإطفاء وصنابير إطفاء الحرائق"</string>
+    <string name="achievement_lifesaver_title">"المنقذ"</string>
+    <string name="achievement_lifesaver_solved_X">"لقد قمت بحل %d من المهام التي تساعد خدمات الطوارئ والمستجيبين الأوائل!"</string>
+
+    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
+    <string name="quest_fuelSelfService_title">"هل تسمح محطة الوقود هذه بالخدمة الذاتية؟"</string>
+    <string name="default_disabled_msg_difficult_and_time_consuming">"يتم تعطيل نوع المهمة هذا افتراضيًا لأنه يستغرق وقتًا طويلاً أو يصعب اتخاذ القرار الصحيح، قم بتمكينه فقط إذا كنت ملتزمًا حقًا بإضافة هذا النوع من البيانات."</string>
+    <string name="quest_smoothness_description_good_compacted_gravel">"معبأ بشدة ، قليل جدا من الحصى أو الرمل السائب"</string>
+    <string name="quest_barrier_path_intersection">"كيف يقطع هذا المسار الحاجز الذي هنا؟"</string>
+    <string name="quest_barrier_road_intersection">"كيف يقطع هذا الطريق الحاجزالذي هنا؟"</string>
+    <string name="quest_sidewalk_value_separate">"الرصيف ، ولكن يتم عرضها بشكل منفصل على الخريطة"</string>
+    <string name="quest_shoulder_value_yes">"كتف"</string>
+    <string name="quest_shoulder_value_no">"لا يوجد كتف"</string>
+    <string name="no_camera_permission_warning_title">"إذن استخدام الكاميرا"</string>
+    <string name="no_camera_permission_warning">"لابد من وجود إذن وذلك لالتقاط الصور وقياس المسافات بالكاميرا."</string>
+    <string name="ar_core_error_sdk_too_old">"هذا التطبيق قديم جدًا ، حاول التحديث."</string>
+    <string name="ar_core_tracking_error_bad_state">"هناك خطأ ما، حاول إعادة القياس."</string>
+    <string name="ar_core_tracking_error_insufficient_light">"ظلام هنا"</string>
+    <string name="ar_core_tracking_error_excessive_motion">"الكثير من الحركة"</string>
+    <string name="ar_core_tracking_error_insufficient_features">"العناصر المرئية غير كافية هنا"</string>
+    <string name="ar_core_tracking_error_camera_unavailable">"يوجد تطبيق آخر يستخدم الكاميرا"</string>
+    <string name="quest_bicycle_parking_type_handlebarholder">"حامل المقود"</string>
+    <string name="quest_bicycle_parking_access_title2">"من الذي يسمح له بركن دراجة هنا؟ قد يكون وقوف السيارات مجانيًا أو مدفوعًا."</string>
+    <string name="quest_playground_access_title2">"من المسموح له باستخدام هذا الملعب؟"</string>
+    <string name="quest_sidewalk_answer_none_title">"اختيار أن الأرصفة غير موجودة"</string>
+    <string name="quest_side_select_interface_explanation">"اضغط على جانب واحد وحدد الإجابة المطابقة.
+ثم افعل الشيء نفسه مع الجانب الآخر إذا كان موجودًا."</string>
+
+    <!-- AR Measure screen -->
+    <string name="ar_measure">"قياس"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"شديد الانحدار للزاوية ، ابتعد قليلاً"</string>
+    <string name="default_disabled_msg_no_ar">"أنت بحاجة إلى مسطرة القياس لحل هذه المهمة لأن القياس بالكاميرا غير مدعوم على هذا الجهاز."</string>
+    <string name="quest_cycleway_width_title">"ما هو عرض مسار الدراجات هنا؟"</string>
+    <string name="quest_road_width_title">"ما هو عرض الطريق هنا؟"</string>
+    <string name="quest_road_width_explanation">"عرض الطريق من الرصيف إلى الرصيف: يشمل ذلك أي شيء على سطح الشارع ، بما في ذلك مواقف السيارات في الشارع أو مسارات الدراجات ، ولكن باستثناء أي شيء يتجاوز الرصيف مثل الأرصفة أو مواقف السيارات البعيدة عن الشارع أو مسارات الدراجات المجاورة."</string>
+    <string name="quest_sidewalk_answer_none">"لا يوجد رصيف على الإطلاق"</string>
+    <string name="about_description_donate_google_play2">"شكرًا لك على التفكير في دعم هذا التطبيق!
+لكن لسوء الحظ ، نظرًا لسياسة متجر قوقل بلي قد لا يتم عرض أي روابط تؤدي إلى التبرعات داخل التطبيق، و في هذا السياق ، حتى الارتباط بموقع مشروعنا غير مسموح به."</string>
+    <string name="link_osmand_description">"تطبيق جوال لعرض الخرائط والملاحة عبر الإنترنت أو بدون اتصال"</string>
+    <string name="link_sunders_description">"خارطة الكاميرات ومعدات المراقبة"</string>
+    <string name="ar_core_tracking_error_no_plane_hit">"ابق أقرب إلى السهم ولكن احترس من حركة المرور!"</string>
+    <string name="quest_sidewalk_surface_title">"ما هو سطح الرصيف هنا؟"</string>
+    <string name="quest_tactilePaving_incorrect">"فقط من جانب واحد"</string>
+    <string name="quest_fee_answer_yes_but">"نعم،…"</string>
+    <string name="quest_fee_answer_no_but_maxstay">"لا ، ولكن هناك حد أقصى للمدة ..."</string>
+    <string name="unit_days">"أيام"</string>
+    <string name="unit_hours">"ساعات"</string>
+    <string name="unit_minutes">"دقائق"</string>
+    <string name="at_any_time">"في أي وقت"</string>
+    <string name="only_at_hours">"فقط في الأوقات التالية:"</string>
+    <string name="except_at_hours">"باستثناء الأوقات التالية:"</string>
+    <string name="quest_bollard_type_not_bollard">"ليس حاجزًا ، ولكن بعض العوائق الأخرى"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"ليس بحاجز درجات ، ولكن بعض الحواجز الآخرى"</string>
+    <string name="quest_smoking_no">"لا ، ممنوع"</string>
+    <string name="quest_smoking_outside">"فقط في الخارج"</string>
+    <string name="quest_smoking_separated">"فقط في مناطق منفصلة"</string>
+    <string name="quest_smoking_yes">"نعم في كل مكان"</string>
+    <string name="quest_seating_name_title">"ما نوع أماكن الجلوس في هذا المكان؟"</string>
+    <string name="quest_seating_takeaway">"لا توجد أماكن جلوس (للطلبات الخارجية فقط)"</string>
+    <string name="quest_seating_indoor_only">"جلوس داخلي فقط"</string>
+    <string name="quest_seating_outdoor_only">"جلوس في خارجي فقط"</string>
+    <string name="quest_seating_indoor_and_outdoor">"أماكن جلوس داخلية وخارجية"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"يتم تعطيل نوع المهمة هذا افتراضيًا لأنه قد يتطلب التحقق من توفر أماكن الجلوس الخارجية على مدار السنة."</string>
+    <string name="no_camera_permission_toast">"لا يوجد إذن باستخدام الكاميرا"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"هل الدفع نقدا مسموح هنا?"</string>
+    <string name="quest_address_street_title2">"في أي شارع هذا؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"هل هذا المكان مُكيف?"</string>
+    <string name="quest_baby_changing_table_title2">"هل يحتوي هذا المكان على طاولة لتغيير حفاضات الأطفال؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBench_title2">"هل يوجد مقعد في هذه المحطة؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopBin_title2">"هل توجد سلة مهملات في هذه المحطة؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopLit_title2">"هل هذا موقف مضاء؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopName_title2">"ما اسم هذه المحطة؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopRef_title2">"ما الرقم أو الرمز الذي يحدد هذه المحطة؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopShelter_title2">"هل يوجد ملجأ في هذه المحطة؟"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"هل هذا الموقف فيه رصيف بارز للكفيفين؟"</string>
+    <string name="quest_dietType_halal_name_title2">"هل توجد منتجات حلال هنا؟"</string>
+    <string name="quest_dietType_kosher_name_title2">"هل توجد منتجات كوشر هنا؟"</string>
+    <string name="quest_dietType_vegan_title2">"هل توجد منتجات نباتية هنا؟"</string>
+    <string name="quest_dietType_vegetarian_title2">"هل توجد منتجات نباتية تماما هنا؟"</string>
+    <string name="quest_drinking_water_title2">"هل المياه صالحة للشرب هنا؟"</string>
     <string name="quest_existence_title2">"هل هذا المكان ما زال متاحا?"</string>
+    <string name="quest_generalFee_title2">"هل تحتاج إلى الدفع للدخول هنا؟"</string>
+    <string name="quest_internet_access_title">"ما نوع اتصال الإنترنت الذي يقدمه هذا المكان؟"</string>
+    <string name="quest_level_title2">"على أي مستوى يقع هذا المكان؟"</string>
+    <string name="quest_lit_title">"هل هو مضاء هنا؟"</string>
     <string name="quest_openingHours_title">"ماهي ساعات العمل هنا?"</string>
     <string name="quest_openingHours_signed_title">"هل يوجد لوحة تعرض ساعات العمل هنا?"</string>
     <string name="quest_openingHours_resurvey_title">"هل ساعات العمل المذكورة ما زالت صحيحة?"</string>
     <string name="quest_placeName_title">"ماهو اسم هذا المكان ?"</string>
+    <string name="quest_shop_type_title2">"ما نوع هذا المحل؟"</string>
     <string name="quest_smoking_title2">"هل التدخين مسموح هنا ?"</string>
+    <string name="quest_smoothness_title">"ما هي جودة السطح هنا؟"</string>
+    <string name="quest_summit_register_title2">"هل يوجد سجل للقمة هنا؟"</string>
+    <string name="quest_surface_title">"ما هو السطح هنا؟"</string>
+    <string name="quest_toiletAvailability_title">"هل يوجد مرحاض هنا؟"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title2">"هل الحمام في هذا المكان يمكن الوصول إليه بواسطة كرسي متحرك؟"</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"هل أنت متأكد من عدم السماح لراكبي الدراجات بكلا الاتجاهين باستخدام هذا الشارع الذي هو باتجاه واحد؟ إذا كنت غير متأكدًا، فابحث عن لافتة في نهاية الشارع."</string>
+    <string name="link_valhalla_description">"محرك توجيه بمساحة ذاكرة صغيرة جدًا وتوجيه متعدد الوسائط ومتساوي الزمان والمزيد."</string>
+    <string name="link_backofyourhand_description">"ما مدى معرفتك بمنطقتك؟ اختبر معلوماتك من خلال تحديد نوع وتصنيف الشوارع."</string>
+    <string name="link_thenandnow_description">"اكتشف كيف كانت خريطة الشارع المفتوحة تبدوا في الأيام الأولى مقارنة بالشكل التي تبدو عليه الآن!"</string>
+    <string name="link_notesreview_description">"يمكنك مشاهدة الملاحظات التي أنشأتها أنت والآخرون بسهولة وتصفيتها والتعليق عليها، كما يمكن حل العديد من الملاحظات عن طريق وضع المعلومات الواردة فيها على الخريطة باستخدام محررات أخرى مثل iD أو JOSM"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"هل بطاقات الائتمان أو الخصم مقبولة هنا؟"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"كل من بطاقات الخصم والائتمان"</string>
+    <string name="quest_accepts_cards_credit_only">"فقط بطاقات الائتمان"</string>
+    <string name="quest_accepts_cards_dedit_only">"فقط بطاقات الخصم"</string>
+    <string name="quest_accepts_cards_unavailable">"لا بطاقات الخصم ولا الائتمان"</string>
+    <string name="quest_barrier_type_gate_any_size">"البوابة بأي حجم"</string>
+    <string name="quest_air_pump_compressor_title">"هل يوجد منفاخ هواء متوفر هنا؟"</string>
+    <string name="quest_step_count_stile_hint">"فقط عدد من درج السلم للوصول إلى القمة، إذا اختلف عدد درجات السلم من كل جانب، فضع الرقم الأعلى."</string>
+    <string name="quest_shoulder_explanation2">"مسار الكتف هو مسار توقف طوارئ محددة بوضوح، والمنطقة المحددة على أنها الكتف ليست بالضرورة مرصوفة بكامل عرضها وليست بالضرورة واسعة بما يكفي لإيقاف السيارة تمامًا عن مسار المرور."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"لا شيء، ممنوع ركوب الدراجات في هذا الاتجاه"</string>
+    <string name="map_btn_create_track">"إنشاء تسجيل مسار جديد"</string>
+    <string name="map_btn_stop_track">"إيقاف تسجيل المسار"</string>
+    <string name="quest_bicycle_rental_capacity_title">"كم عدد مساحات تأجير الدراجات هنا؟"</string>
+    <string name="quest_bicycle_rental_type_title">"ما نوع تأجير الدراجات هذا؟"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"محطة لإيقاف الدراجات المقفلة"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"مكان مخصص (الدراجات مقفلة بشكل فردي)"</string>
+    <string name="quest_bicycle_rental_type_human">"تأجير دراجات للموظفين"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"متجر دراجات يقوم أيضًا بتأجير الدراجات"</string>
+    <string name="quest_bicycle_shop_repair_title">"هل يتم تقديم خدمات إصلاح الدراجات هنا؟"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"هل تُباع الدراجات المستعملة هنا؟"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"لا ، الجديدة فقط"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"نعم ، جنبًا إلى جنب مع الجديدة"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"نعم حصريا"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"لا يوجد دراجات تباع هنا على الاطلاق"</string>
+    <string name="quest_building_entrance_title">"ما نوع مدخل المبنى هذا؟"</string>
+    <string name="quest_building_entrance_main">"مدخل رئيسي لمبنى عام"</string>
+    <string name="quest_building_entrance_staircase">"مدخل درج/سلم (على سبيل المثال إلى مبنى سكني)"</string>
+    <string name="quest_building_entrance_service">"مدخل خدمة"</string>
+    <string name="quest_building_entrance_exit">"مخرج فقط"</string>
+    <string name="quest_building_entrance_emergency_exit">"مخرج للطوارئ فقط"</string>
+    <string name="quest_building_entrance_shop">"مدخل محل/متجر"</string>
+    <string name="quest_building_entrance_yes">"نوع مدخل آخر"</string>
+    <string name="quest_building_entrance_dead_end">"طريق مسدود، ليس بمدخل"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"اضغط على الشاشة لبدء القياس"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"هل توجد هنا مضخة هواء عامة للدراجات (على الأقل عندما يكون المكان مفتوح)؟"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"هل توجد مضخة هواء للدراجات هنا؟"</string>
+    <string name="action_overlays">"الطبقات"</string>
+    <string name="split_way">"تقسيم الطريق"</string>
+    <string name="quest_memorialType_title">"ما نوع هذا النصب التذكاري؟"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Bust"</string>
+    <string name="quest_memorialType_plaque">"Plaque"</string>
+    <string name="quest_memorialType_war_memorial">"War memorial"</string>
+    <string name="quest_memorialType_stone">"حصاة"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Wooden stele (memorial slab)"</string>
+    <string name="quest_memorialType_stele_stone">"Stone stele (memorial slab)"</string>
+    <string name="quest_memorialType_sculpture">"منحوتات أخرى"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"تحديد الطبقة"</string>
+    <string name="overlay_none">"لا شيء"</string>
+    <string name="overlay_lit">"إنارة الشارع"</string>
+    <string name="lit_value_yes">"مضاء"</string>
+    <string name="lit_value_no">"غير مضاء"</string>
+    <string name="lit_value_24_7">"مضاء ليلا ونهارا"</string>
+    <string name="lit_value_automatic">"مضاء عندما يمر شخص ما"</string>
+    <string name="overlay_sidewalk">"الأرصفة"</string>
 </resources>

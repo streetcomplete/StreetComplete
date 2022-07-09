@@ -710,16 +710,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="produce_sisal">"琼麻"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"它使用动态侦测照明"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"不分日夜照明"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"无法在这里扫描。请进一步放大，或者减少地图的倾斜程度。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_title">"这是哪一种交叉路口？"</string>
+    <string name="quest_crossing_type_title">"这是哪一种人行横道？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"无道路标记的路口"</string>
@@ -1282,7 +1274,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_shrine">"神社/寺庙"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_title_short2">"这条街道的速度限制是多少？"</string>
+    <string name="quest_maxspeed_title_short2">"这条街道的限速是多少？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"道路标识"</string>
@@ -1495,6 +1487,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Whats the "number" means -->
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到参考数字"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"图中道路的旋转与地图上指示位置一致。"</string>
 
     <!-- Fuzzy -->
@@ -1618,11 +1612,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Links screen -->
     <string name="links_empty">"你还没有链接"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"你还没有发布任何任务的答案"</string>
     <string name="unsynced_quests_description">"还有 %d 个未推送的变更。"</string>
     <string name="unsynced_quests_not_logged_in_description">"你有%d处改变尚未发布。你需要登录以上传它们。"</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"已解决任务"</string>
     <string name="user_achievements_title">"成就"</string>
     <string name="user_links_title">"链接集合"</string>
@@ -1753,6 +1750,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="user_statistics_country_wiki_link">"映射门户网站 %s"</string>
     <string name="user_statistics_filter_by_country">"依据国家"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"依据任务类型"</string>
     <string name="user_profile_global_rank">"全球排名"</string>
     <string name="user_profile_local_rank">"在%s排名"</string>
@@ -1849,7 +1848,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"该ATM所属银行名字是？"</string>
-    <string name="quest_clothes_container_operator_title">"谁接收该衣物箱的捐赠？"</string>
+    <string name="quest_clothes_container_operator_title">"由谁接收该衣物箱的捐赠？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_charging_station_operator_title">"谁是这个充电站的经营者？"</string>
@@ -1868,7 +1867,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"你解决了 %d 对户外参与者有用的任务!"</string>
-    <string name="quest_pedestrian_crossing_island">"这个行人穿越道是否有分隔岛？"</string>
+    <string name="quest_pedestrian_crossing_island">"这个人行横道有行人安全岛吗？"</string>
     <string name="quest_generic_answer_noSign">"没有任何标志"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"轮椅坡道在地图上是否单独标注？"</string>
 
@@ -1906,9 +1905,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"如果不适用整条路，则考虑回答 “%s”。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactile_paving_kerb_title">"这里的路缘有触觉铺设吗？"</string>
+    <string name="quest_tactile_paving_kerb_title">"这里的路缘有盲道吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"这的路缘的有多高？"</string>
@@ -2013,6 +2010,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"仅限饮料纸盒"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"仅限塑料瓶与盒子"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"团队模式"</string>
 
     <!-- Team mode -->
@@ -2401,8 +2400,12 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"这条路有路肩吗？"</string>
     <string name="quest_fireHydrant_position_title">"消防栓在哪里？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"在草地或泥土中"</string>
     <string name="quest_fireHydrant_position_lane">"在马路上"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"在人行道上"</string>
     <string name="quest_fireHydrant_position_parking_lot">"在停车场"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"是(留言)"</string>
@@ -2575,7 +2578,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"此地接受现金支付吗?"</string>
-    <string name="quest_address_street_title2">"他在哪条路上？"</string>
+    <string name="quest_address_street_title2">"这是在哪条街上？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"这地方有空调吗?"</string>
@@ -2604,7 +2607,7 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
-    <string name="quest_busStopTactilePaving_title">"这一站是否有触觉铺设？"</string>
+    <string name="quest_busStopTactilePaving_title">"这一站有盲道吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_halal_name_title2">"这里是否提供清真产品？"</string>
@@ -2671,6 +2674,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"路肩是一个明确划定的紧急停车道。被指定为路肩的区域不一定在整个宽度上铺设，也不一定宽到足以让汽车完全停在交通车道之外。"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"没有，这个方向不允许骑自行车"</string>
     <string name="map_btn_create_track">"创建新记录轨迹"</string>
     <string name="map_btn_stop_track">"停止记录轨迹"</string>
     <string name="quest_bicycle_rental_capacity_title">"这里有多少个出租自行车的车位？"</string>
@@ -2687,10 +2691,38 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"完全不销售自行车"</string>
     <string name="quest_building_entrance_title">"这是哪种建筑入口？"</string>
     <string name="quest_building_entrance_main">"公共建筑的主要入口"</string>
+    <string name="quest_building_entrance_staircase">"楼梯间入口（如公寓楼的入口）"</string>
     <string name="quest_building_entrance_service">"服务性入口"</string>
     <string name="quest_building_entrance_exit">"出口"</string>
     <string name="quest_building_entrance_emergency_exit">"紧急出口"</string>
+    <string name="quest_building_entrance_shop">"店面入口"</string>
     <string name="quest_building_entrance_yes">"其它入口类型"</string>
     <string name="quest_building_entrance_dead_end">"死路，没有入口"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"点击屏幕以开始测量"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"这里有公共自行车打气泵吗（至少在开放的时候）？"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"这里有可用的自行车打气泵吗？"</string>
+    <string name="action_overlays">"覆盖层"</string>
+    <string name="split_way">"分割路径"</string>
+    <string name="quest_memorialType_title">"这是哪一种纪念物？"</string>
+    <string name="quest_memorialType_statue">"雕塑像"</string>
+    <string name="quest_memorialType_bust">"半身像"</string>
+    <string name="quest_memorialType_plaque">"牌匾"</string>
+    <string name="quest_memorialType_war_memorial">"战争纪念碑"</string>
+    <string name="quest_memorialType_stone">"纪念石"</string>
+    <string name="quest_memorialType_obelisk">"方尖碑"</string>
+    <string name="quest_memorialType_stele_wooden">"木碑（纪念板）"</string>
+    <string name="quest_memorialType_stele_stone">"石碑（纪念板）"</string>
+    <string name="quest_memorialType_sculpture">"其他雕塑"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"选择叠加"</string>
+    <string name="overlay_none">"没有"</string>
+    <string name="overlay_lit">"街道照明"</string>
+    <string name="lit_value_yes">"点亮"</string>
+    <string name="lit_value_no">"不点亮"</string>
+    <string name="lit_value_24_7">"夜以继日地照亮"</string>
+    <string name="lit_value_automatic">"有人经过时点亮"</string>
+    <string name="overlay_sidewalk">"人行道"</string>
+    <string name="quest_generic_answer_is_indoors">"这是室内的"</string>
+    <string name="quest_summit_cross_title">"这里有一个山顶十字架吗？"</string>
 </resources>

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_alignParentLeft="true"
     android:layout_width="@dimen/quest_form_width"
+    tools:layout_width="300dp"
     android:layout_height="match_parent"
     android:id="@+id/bottomSheetContainer"
     tools:ignore="RtlHardcoded">
@@ -150,19 +151,25 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <TextView
+    <ImageView
         android:id="@+id/okButton"
-        android:text="@android:string/ok"
+        android:src="@drawable/ic_check_48dp"
+        android:scaleType="centerInside"
         style="@style/RoundAccentButton"
         android:layout_width="72dp"
         android:layout_height="72dp"
+        android:padding="20dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="8dp"
         android:visibility="gone"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        android:alpha="0"/>
+        android:alpha="0"
+        tools:alpha="1"
+        tools:visibility="visible"
+        tools:scaleX="1"
+        tools:scaleY="1"/>
 
     <TextView
         android:id="@+id/hideButton"

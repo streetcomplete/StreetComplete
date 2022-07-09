@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4402
-        versionName = "44.1_expert_edition"
+        versionCode = 4502
+        versionName = "45.0_expert_edition"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -75,11 +75,11 @@ android {
     }
 
     lint {
-        // there is currently always an internal error "Unexpected lint invalid arguments" when executing lintAnalyze*, so whatever, disable this then!
-        isCheckReleaseBuilds = false
-        disable("MissingTranslation")
-        ignore("UseCompatLoadingForDrawables") // doesn't make sense for minSdk >= 21
-        isAbortOnError = false
+        disable += listOf(
+            "MissingTranslation",
+            "UseCompatLoadingForDrawables" // doesn't make sense for minSdk >= 21
+        )
+        abortOnError = false
     }
 }
 
@@ -97,7 +97,8 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    jcenter {
+    maven {
+        url = uri("https://jcenter.bintray.com/")
         content {
             includeGroup("org.sufficientlysecure")
         }
@@ -122,7 +123,7 @@ dependencies {
     val kotlinVersion = "1.6.21"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.2"
-    val koinVersion = "3.1.6"
+    val koinVersion = "3.2.0"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 
@@ -130,12 +131,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("org.assertj:assertj-core:3.22.0")
+    testImplementation("org.assertj:assertj-core:3.23.1")
 
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.22.0")
+    androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
     // dependency injection
     implementation("io.insert-koin:koin-android-compat:$koinVersion")
@@ -146,7 +147,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.3.0")
+    implementation("androidx.annotation:annotation:1.4.0")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
@@ -189,14 +190,14 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.charleskorn.kaml:kaml:0.42.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("com.charleskorn.kaml:kaml:0.45.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.26.0")
+    implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // faster sqlite library (additional capapilities like R*-tree or json1 not used)
     // performance comparison: https://github.com/streetcomplete/StreetComplete/issues/3609#issuecomment-1031177576
@@ -220,9 +221,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220530"
+val nsiVersion = "v6.0.20220613"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.2.2"
+val presetsVersion = "v3.3.0"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
@@ -272,6 +273,12 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     group = "streetcomplete"
     apiToken = properties["POEditorAPIToken"] as String
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
+}
+
+tasks.register<UpdateMapStyleTask>("updateMapStyle") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/map_theme/jawg"
+    mapStyleBranch = "jawg"
 }
 
 tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {

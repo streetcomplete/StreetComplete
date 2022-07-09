@@ -538,12 +538,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <!-- Fuzzy -->
     <string name="produce_walnuts">"Valnøtt"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_automatic">"Ved bevegelsesdeteksjon"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_24_7">"Opplyst døgnet rundt"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Klarer ikke å finne oppdrag her. Prøv å forstørre ytterligere."</string>
 
     <!-- Fuzzy -->
@@ -1308,6 +1302,8 @@ Vil du dele opp nå?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Mangler synlig referansenummer…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Veien på illustrasjonen er rotert likt som på kartet der markøren er plassert."</string>
     <string name="quest_recycling_materials_title">"Hva kan leveres til resirkulering her?"</string>
 
@@ -1379,11 +1375,14 @@ Sist, men ikke minst, ta vare på din egen sikkerhet: Vær oppmerksom på omgive
 
     <!-- Links screen -->
     <string name="links_empty">"Du har ikke noen lenker enda"</string>
+
+    <!-- Fuzzy -->
     <string name="quests_empty">"Du har ikke offentliggjort noen svar på oppdrag enda"</string>
     <string name="unsynced_quests_description">"og %d endringer som ikke er offentliggjort."</string>
     <string name="unsynced_quests_not_logged_in_description">"Du har %d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem."</string>
 
     <!-- User screen -->
+    <!-- Fuzzy -->
     <string name="user_quests_title">"Løste oppdrag"</string>
     <string name="user_achievements_title">"Bradger"</string>
     <string name="user_links_title">"Lenkesamling"</string>
@@ -1498,6 +1497,8 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="user_statistics_country_rank">"Plassering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"pr land"</string>
+
+    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"pr oppdragstype"</string>
     <string name="user_profile_global_rank">"Global
 plassering"</string>
@@ -1714,9 +1715,13 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="quest_postboxRoyalCypher_title">"Hvilket kongelig monogram vises på denne postkassen?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Ingen kongelige monogram er synlige"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krone"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Brannstasjon"</string>
     <string name="quest_recycling_type_beverage_cartons">"Kun drikkekartonger"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kun plastflasker og kartonger"</string>
+
+    <!-- Fuzzy -->
     <string name="team_mode">"Gruppemodus"</string>
 
     <!-- Team mode -->
@@ -1958,8 +1963,12 @@ Alternativt, lag en merknad (med bilde)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Har denne veien en veiskulder?"</string>
     <string name="quest_fireHydrant_position_title">"Hvor står denne brannhydranten?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"På gress eller jord"</string>
     <string name="quest_fireHydrant_position_lane">"I veibanen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"På fortauet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplass"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (skriv en merkand)"</string>

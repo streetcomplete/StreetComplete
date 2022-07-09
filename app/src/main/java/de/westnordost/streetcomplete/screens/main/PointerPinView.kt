@@ -59,8 +59,9 @@ class PointerPinView @JvmOverloads constructor(
         context.withStyledAttributes(attrs, R.styleable.PointerPinView) {
             pinRotation = getFloat(R.styleable.PointerPinView_pinRotation, 0f)
             val resId = getResourceId(R.styleable.PointerPinView_iconSrc, 0)
-            if (resId != 0)
+            if (resId != 0) {
                 setPinIconResource(resId)
+            }
         }
         outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {

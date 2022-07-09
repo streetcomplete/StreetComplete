@@ -165,8 +165,7 @@ open class LocationAwareMapFragment : MapFragment() {
     fun startPositionTracking() {
         locationMapComponent?.isVisible = true
         val minGpsTime = prefs.getInt(Prefs.GPS_INTERVAL, 2).coerceAtLeast(0) * 1000L
-        val minNetworkTime = prefs.getInt(Prefs.NETWORK_INTERVAL, 2).coerceAtLeast(0) * 1000L
-        locationManager.requestUpdates(minGpsTime, minNetworkTime, 1f)
+        locationManager.requestUpdates(prefs.getInt(Prefs.GPS_INTERVAL, 0)*1000L, prefs.getInt(Prefs.NETWORK_INTERVAL, 5)*1000L, 1f)
     }
 
     fun stopPositionTracking() {
@@ -191,7 +190,6 @@ open class LocationAwareMapFragment : MapFragment() {
         _recordedTracks.clear()
         tracks.add(ArrayList())
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(500, prefs.getInt(Prefs.NETWORK_INTERVAL, 2) * 1000L, 1f)
         tracksMapComponent?.startNewTrack(true)
     }
 

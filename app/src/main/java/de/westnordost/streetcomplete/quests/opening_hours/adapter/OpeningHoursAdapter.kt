@@ -97,7 +97,7 @@ class OpeningHoursAdapter(private val context: Context) :
         notifyItemRemoved(position)
 
         val rowHere = if (position < rows.size) rows[position] else null
-        val rowAbove =  if (position > 0) rows[position - 1] else null
+        val rowAbove = if (position > 0) rows[position - 1] else null
 
         // this weekday row must be updated because it might be the first one with the same weekdays
         // and thus it is the one that should show the weekdays now

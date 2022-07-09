@@ -12,7 +12,7 @@ import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
+class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
@@ -83,7 +83,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     private fun onNoHouseNumber() {
-        val buildingValue = osmElement!!.tags["building"]!!
+        val buildingValue = element.tags["building"]!!
         val buildingType = BuildingType.getByTag("building", buildingValue)
         if (buildingType != null) {
             showNoHousenumberDialog(buildingType)
@@ -229,7 +229,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val isUnusual = answer.number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHousenumber(isUnusual) {
             applyAnswer(answer)
-            (answer.number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it  }
+            (answer.number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it }
             answer.number?.houseNumber?.let { lastHouseNumber = it }
         }
     }

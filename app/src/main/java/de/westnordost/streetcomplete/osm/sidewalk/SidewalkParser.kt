@@ -20,7 +20,7 @@ fun createSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
     if (sidewalk != null && altSidewalk != null) return LeftAndRightSidewalk(INVALID, INVALID)
 
     // has sidewalk tagging, but not known
-    if (tags.keys.containsAny(KNOWN_SIDEWALK_KEYS) && sidewalk == null && altSidewalk == null) {
+    if (sidewalk == null && altSidewalk == null) {
         return LeftAndRightSidewalk(INVALID, INVALID)
     }
 
@@ -58,10 +58,11 @@ private fun createSidewalksAlternative(tags: Map<String, String>): LeftAndRightS
     }
 }
 
-private fun createSidewalkSide(tag: String?): Sidewalk = when (tag) {
+private fun createSidewalkSide(tag: String?): Sidewalk? = when (tag) {
     "yes" -> YES
-    "no" -> NO
+    "no", "none" -> NO
     "separate" -> SEPARATE
+    null -> null
     else -> INVALID
 }
 

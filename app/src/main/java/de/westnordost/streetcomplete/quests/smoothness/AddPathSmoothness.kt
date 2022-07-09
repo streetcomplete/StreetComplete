@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.questPrefix
@@ -37,8 +37,7 @@ class AddPathSmoothness(private val prefs: SharedPreferences) : OsmFilterQuestTy
     override val changesetComment = "Add path smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_way_surface_detail
-    override val isSplitWayEnabled = true
-    override val questTypeAchievements = listOf(WHEELCHAIR, BICYCLIST)
+    override val achievements = listOf(WHEELCHAIR, BICYCLIST)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoothness_title2
@@ -96,7 +95,6 @@ class AddPathSmoothness(private val prefs: SharedPreferences) : OsmFilterQuestTy
 }
 
 // smoothness is not asked for steps
-// "pedestrian" is in here so the path answers are shown instead of road answers (which focus on cars)
-val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway", "pedestrian")
+val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway")
 
 private const val SMOOTHNESS_FOR_ALL_SURFACES = "qs_AddPathSmoothness_all_surfaces"

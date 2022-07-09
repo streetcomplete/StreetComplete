@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DIAGONAL
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DOUBLE
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.Bicycle
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddBicycleBarrierTypeForm :
-    AImageListQuestAnswerFragment<BicycleBarrierType, BicycleBarrierTypeAnswer>() {
+    AImageListQuestForm<BicycleBarrierType, BicycleBarrierTypeAnswer>() {
 
     override val items = listOf(
         Item(SINGLE, R.drawable.barrier_bicycle_barrier_single, R.string.quest_barrier_bicycle_type_single),

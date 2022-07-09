@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.graphics.Point
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -27,9 +26,12 @@ import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
-import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
@@ -62,15 +64,29 @@ class MainActivity :
     private val questAutoSyncer: QuestAutoSyncer by inject()
     private val downloadController: DownloadController by inject()
     private val uploadController: UploadController by inject()
-    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val prefs: SharedPreferences by inject()
-    private val userLoginStatusController: UserLoginStatusController by inject()
-    private val userUpdater: UserUpdater by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
+    private val userUpdater: UserUpdater by inject()
+    private val elementEditsSource: ElementEditsSource by inject()
+    private val noteEditsSource: NoteEditsSource by inject()
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
+    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val prefs: SharedPreferences by inject()
 
     private val requestLocation = LocationRequester(this, this)
 
     private var mainFragment: MainFragment? = null
+
+    private val elementEditsListener = object : ElementEditsSource.Listener {
+        override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { ensureLoggedIn() } }
+        override fun onSyncedEdit(edit: ElementEdit) {}
+        override fun onDeletedEdits(edits: List<ElementEdit>) {}
+    }
+
+    private val noteEditsListener = object : NoteEditsSource.Listener {
+        override fun onAddedEdit(edit: NoteEdit) { lifecycleScope.launch { ensureLoggedIn() } }
+        override fun onSyncedEdit(edit: NoteEdit) {}
+        override fun onDeletedEdits(edits: List<NoteEdit>) {}
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,10 +97,6 @@ class MainActivity :
 
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-
-        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
 
         setContentView(R.layout.activity_main)
 
@@ -101,6 +113,9 @@ class MainActivity :
                 userUpdater.update()
             }
         }
+
+        elementEditsSource.addListener(elementEditsListener)
+        noteEditsSource.addListener(noteEditsListener)
     }
 
     private fun handleGeoUri() {
@@ -115,6 +130,11 @@ class MainActivity :
 
     public override fun onStart() {
         super.onStart()
+
+        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
         downloadController.showNotification = false
         uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
@@ -179,6 +199,12 @@ class MainActivity :
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        elementEditsSource.removeListener(elementEditsListener)
+        noteEditsSource.removeListener(noteEditsListener)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -276,14 +302,6 @@ class MainActivity :
         supportFragmentManager.findFragmentById(R.id.messages_container_fragment) as? MessagesContainerFragment
 
     /* --------------------------------- MainFragment.Listener ---------------------------------- */
-
-    override fun onQuestSolved(quest: Quest, source: String?) {
-        lifecycleScope.launch { ensureLoggedIn() }
-    }
-
-    override fun onCreatedNote(screenPosition: Point) {
-        lifecycleScope.launch { ensureLoggedIn() }
-    }
 
     override fun onMapInitialized() {
         handleGeoUri()

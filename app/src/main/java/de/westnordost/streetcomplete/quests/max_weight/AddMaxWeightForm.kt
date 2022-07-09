@@ -12,14 +12,14 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.databinding.QuestMaxweightBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.inputfilter.acceptDecimalDigits
 
-class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
+class AddMaxWeightForm : AbstractOsmQuestForm<MaxWeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxweight
     private val binding by contentViewBinding(QuestMaxweightBinding::bind)
@@ -117,7 +117,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun userSelectedUnrealisticWeight(): Boolean {
         val weight = getWeightFromInput() ?: return false
         val w = weight.toMetricTons()
-        return w > 25 || w < 2
+        return w > 30 || w < 2
     }
 
     private fun applyMaxWeightFormAnswer() {
@@ -138,7 +138,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
             .setPositiveButton(android.R.string.ok) { _, _ -> composeNote() }
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
             .show()
         }
     }
