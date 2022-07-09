@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Resources
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import androidx.annotation.DrawableRes
+import androidx.core.graphics.ColorUtils
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -121,6 +123,77 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                     style: 'geometry-lines',
                     width: ${lineWidth}px,
                     color: '$lineColor',
+                    order: 2000,
+                    collide: false,
+                    cap: round,
+                    join: round
+                }
+                """.trimIndent())
+                marker.setPolyline(Polyline(polyline.map { it.toLngLat() }, null))
+                markers.add(marker)
+            }
+        }
+
+        markerIdsByPosition[center] = markers.map { it.markerId }
+    }
+
+    @Synchronized fun putColored(geometry: ElementGeometry, color: Int) {
+        val center = geometry.center
+        delete(geometry)
+
+        val markers = mutableListOf<Marker>()
+
+        val colorString = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 100))
+        val colorStringArea = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 50))
+
+        // point / icon marker
+        if (geometry is ElementPointGeometry) {
+            val marker = ctrl.addMarker()
+            marker.setStylingFromString("""
+            {
+                style: 'geometry-points',
+                color: '$colorString',
+                size: ${pointSize}px,
+                collide: false
+            }
+            """.trimIndent())
+            marker.setPoint(geometry.center)
+            markers.add(marker)
+        }
+
+        // polygon / polylines marker(s)
+        if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
+            val positions = when (geometry) {
+                is ElementPolygonsGeometry -> geometry.polygons
+                is ElementPolylinesGeometry -> geometry.polylines
+                else -> throw IllegalStateException()
+            }
+
+            if (geometry is ElementPolygonsGeometry) {
+                val marker = ctrl.addMarker()
+                marker.setStylingFromString("""
+                {
+                    style: 'geometry-polygons',
+                    color: '$colorStringArea',
+                    order: 2000,
+                    collide: false
+                }
+                """.trimIndent())
+                marker.setPolygon(Polygon(
+                    positions.map { polygon -> polygon.map { it.toLngLat() } }, null
+                ))
+                markers.add(marker)
+            }
+
+            /* Polygons should be styled to have a more opaque outline. Due to a technical
+             *  limitation in tangram-es, these have to be actually two markers then. */
+            for (polyline in positions) {
+                val marker = ctrl.addMarker()
+                marker.setStylingFromString("""
+                {
+                    style: 'geometry-lines',
+                    width: ${lineWidth}px,
+                    color: '$colorString',
                     order: 2000,
                     collide: false,
                     cap: round,

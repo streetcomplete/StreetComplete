@@ -228,6 +228,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.put(geometry, drawableResId, title)
     }
 
+    fun putColoredGeometry(geometry: ElementGeometry, color: Int) =
+        geometryMarkersMapComponent?.putColored(geometry, color)
+
     override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
     }

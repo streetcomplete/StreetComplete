@@ -5,7 +5,8 @@ v45.0_ee: |
   <li>Add element selection to wheelchair quest</li>
   <li>Quick-access to settings by pressing menu key when in main menu dialog</li>
   <li>Add setting when to move recently used answers to front of image lists</li>
-  <li>Optionally show nearby quests while quest form is open, not just for same element</li>
+  <li>Optionally show nearby quests while quest form is open, not just for same element. This also highlights elemets for other quests on the map.</li>
+  <li>Ask shoulders on some specific parts of motorways (by @mnalis).</li>
   </ul>
 
 v44.1_ee: |

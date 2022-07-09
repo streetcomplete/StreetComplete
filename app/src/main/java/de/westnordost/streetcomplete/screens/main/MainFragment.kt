@@ -1005,24 +1005,30 @@ class MainFragment :
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
+            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+            val osmArgs = AbstractOsmQuestForm.createArguments(element)
+            f.requireArguments().putAll(osmArgs)
+
+            showInBottomSheet(f)
+
             if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
                 viewLifecycleScope.launch { // do concurrently with showing highlighted quests
                     val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble())
                         .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
                         .sortedBy { it.elementId != quest.elementId || it.elementType != quest.elementType } // other quests for current element go first
                     if (quests.isEmpty()) return@launch
-                    // todo: highlight other geometries, best in the correct color
-                    //  either somehow give it to highlighted elements
-                    //  or make a new function to do it (better because of color...)
                     binding.compassView.isInvisible = true
                     val qm = mutableMapOf<ElementKey, Pair<Int, MutableList<OsmQuest>>>()
-                    val colorList = listOf(Color.WHITE, Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY)
-                    var i = 0
+                    val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY)
+                    var iter = colors.iterator()
                     quests.forEach {
                         qm.getOrPut(ElementKey(it.elementType, it.elementId)) {
-                            val color = colorList[i]
-                            if (i == colorList.size - 1) i = 1 // cycle through list except white
-                            else i++
+                            val color = if (it.elementType == quest.elementType && it.elementId == quest.elementId)
+                                    Color.WHITE
+                                else iter.next()
+                            if (!iter.hasNext()) iter = colors.iterator() // cycle through colors
+                            if (color != Color.WHITE)
+                                mapFragment.putColoredGeometry(it.geometry, color)
                             Pair(color, mutableListOf())
                         }.second.add(it)
                     }
@@ -1046,12 +1052,6 @@ class MainFragment :
                     binding.otherQuestsScrollView.visibility = View.VISIBLE
                 }
 
-
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestForm.createArguments(element)
-            f.requireArguments().putAll(osmArgs)
-
-            showInBottomSheet(f)
             showHighlightedElements(quest, element)
         } else {
             showInBottomSheet(f)
