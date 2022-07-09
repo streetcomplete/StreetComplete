@@ -78,8 +78,6 @@
     <string name="hide_button">Hide</string>
     <string name="pref_manual_download_cache_title">Always re-download data</string>
     <string name="pref_manual_download_cache_summary">When disabled, data will not be re-downloaded until it is older than 12 hours</string>
-    <string name="pref_show_all_quests_title">Show all quests for same element</string>
-    <string name="pref_show_all_quests_summary">Shows all quest for this element when quest form is open (even hidden and disabled)</string>
     <string name="pref_show_quick_settings_title">Show quick settings button</string>
     <string name="quick_switch_preset">Switch preset</string>
     <string name="level_filter">Level filter</string>
@@ -219,6 +217,13 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_recent_answers_first_min_lines">Move recent answers to front</string>
     <string name="pref_recent_answers_first_min_lines_summary">if form has more than %d lines</string>
     <string name="pref_recent_answers_first_min_lines_message">Move recent answers to front if the quest answer form has more than this many lines of images</string>
+    <string name="pref_show_nearby_quests_title">Show nearby quests</string>
+    <string name="pref_show_nearby_quests_summary">Allows switching nearby quests when a quest form is shown</string>
+    <string name="show_nearby_quests_disable">Don’t show nearby quests</string>
+    <string name="show_nearby_quests_visible">Show only enabled quests types</string>
+    <string name="show_nearby_quests_all_types">Show all quest types</string>
+    <string name="show_nearby_quests_even_hidden">Show all types and hidden quests</string>
+    <string name="show_nearby_quests_distance">Show quests within this distance (limited to 10 meters)</string>
 
     <!-- Store description -->
 

@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -280,6 +282,58 @@ class SettingsFragment :
             val treesFile = File(context?.getExternalFilesDir(null), "external.csv")
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
 
+            true
+        }
+
+        findPreference<Preference>("show_nearby_quests")?.setOnPreferenceClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(R.string.pref_show_nearby_quests_title)
+            val linearLayout = LinearLayout(context)
+            linearLayout.orientation = LinearLayout.VERTICAL
+
+            val buttons = RadioGroup(context)
+            buttons.orientation = RadioGroup.VERTICAL
+            buttons.addView(RadioButton(context).apply {
+                setText(R.string.show_nearby_quests_disable)
+                id = 0
+            })
+            buttons.addView(RadioButton(context).apply {
+                setText(R.string.show_nearby_quests_visible)
+                id = 1
+            })
+            buttons.addView(RadioButton(context).apply {
+                setText(R.string.show_nearby_quests_all_types)
+                id = 2
+            })
+            buttons.addView(RadioButton(context).apply {
+                setText(R.string.show_nearby_quests_even_hidden)
+                id = 3
+            })
+            buttons.check(prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0))
+            buttons.setOnCheckedChangeListener { _, _ ->
+                if (buttons.checkedRadioButtonId in 0..3)
+                    prefs.edit { putInt(Prefs.SHOW_NEARBY_QUESTS, buttons.checkedRadioButtonId) }
+            }
+
+            val distanceText = TextView(context).apply { setText(R.string.show_nearby_quests_distance) }
+
+            val distance = EditText(context).apply {
+                inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+                setText(prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toString())
+            }
+            linearLayout.addView(buttons)
+            linearLayout.addView(distanceText)
+            linearLayout.addView(distance)
+
+            linearLayout.setPadding(30,10,30,10)
+            builder.setView(linearLayout)
+            builder.setPositiveButton(android.R.string.ok) { _, _ ->
+                distance.text.toString().toFloatOrNull()?.let {
+                    if (it in 0.0..10.0)
+                        prefs.edit { putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it) }
+                }
+            }
+            builder.show()
             true
         }
 

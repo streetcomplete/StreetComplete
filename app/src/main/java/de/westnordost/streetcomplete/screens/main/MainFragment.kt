@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.PointF
+import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
@@ -906,6 +907,7 @@ class MainFragment :
             childFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             binding.otherQuestsLayout.removeAllViews()
             binding.otherQuestsScrollView.visibility = View.GONE
+            binding.compassView.isInvisible = abs(binding.compassView.rotation) < 2 && binding.compassView.rotationX < 2
         }
         clearHighlighting()
         unfreezeMap()
@@ -1003,24 +1005,43 @@ class MainFragment :
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
-            if (prefs.getBoolean(Prefs.SHOW_ALL_QUESTS, false))
+            if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
                 viewLifecycleScope.launch { // do concurrently with showing highlighted quests
-                    val q = visibleQuestsSource.getNearbyQuests(quest, 0.0)
-                    q.forEach { osmQuest ->
-                        if (osmQuest == quest) return@forEach // ignore current quest
-                        if (osmQuest.type.dotColor != "no") return@forEach // ignore poi quests
-                        if (osmQuest.elementId != quest.elementId || osmQuest.elementType != quest.elementType) return@forEach // for now, ignore other elements
-                        // ignore disabled quests? or not? what about hidden?
-                        val questView = ImageButton(context)
-                        questView.setImageResource(osmQuest.type.icon)
-                        questView.setBackgroundColor(Color.TRANSPARENT)
-                        questView.scaleType = ImageView.ScaleType.FIT_CENTER
-                        questView.adjustViewBounds = true
-                        questView.setOnClickListener {
-                            binding.otherQuestsLayout.removeAllViews()
-                            viewLifecycleScope.launch { showQuestDetails(osmQuest) }
+                    val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble())
+                        .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
+                        .sortedBy { it.elementId != quest.elementId || it.elementType != quest.elementType } // other quests for current element go first
+                    if (quests.isEmpty()) return@launch
+                    // todo: highlight other geometries, best in the correct color
+                    //  either somehow give it to highlighted elements
+                    //  or make a new function to do it (better because of color...)
+                    binding.compassView.isInvisible = true
+                    val qm = mutableMapOf<ElementKey, Pair<Int, MutableList<OsmQuest>>>()
+                    val colorList = listOf(Color.WHITE, Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY)
+                    var i = 0
+                    quests.forEach {
+                        qm.getOrPut(ElementKey(it.elementType, it.elementId)) {
+                            val color = colorList[i]
+                            if (i == colorList.size - 1) i = 1 // cycle through list except white
+                            else i++
+                            Pair(color, mutableListOf())
+                        }.second.add(it)
+                    }
+                    qm.values.forEach {
+                        val color = it.first
+                        it.second.forEach { osmQuest ->
+                            val questView = ImageButton(context)
+                            questView.setImageResource(osmQuest.type.icon)
+                            questView.setBackgroundColor(Color.TRANSPARENT)
+                            questView.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
+                            questView.scaleType = ImageView.ScaleType.FIT_CENTER
+                            questView.adjustViewBounds = true
+                            questView.setOnClickListener {
+                                binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
+                                binding.otherQuestsLayout.removeAllViews()
+                                viewLifecycleScope.launch { showQuestDetails(osmQuest) }
+                            }
+                            binding.otherQuestsLayout.addView(questView)
                         }
-                        binding.otherQuestsLayout.addView(questView)
                     }
                     binding.otherQuestsScrollView.visibility = View.VISIBLE
                 }

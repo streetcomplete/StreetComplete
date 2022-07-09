@@ -53,7 +53,6 @@ object Prefs {
     const val NETWORK_INTERVAL = "network_interval"
     const val HIDE_NOTES_BY_USERS = "hide_notes_by_users"
     const val MANUAL_DOWNLOAD_OVERRIDE_CACHE = "manual_download_override_cache"
-    const val SHOW_ALL_QUESTS = "show_all_quests"
     const val QUICK_SETTINGS = "quick_settings"
     const val ALLOWED_LEVEL = "allowed_level"
     const val ALLOWED_LEVEL_TAGS = "allowed_level_tags"
@@ -70,6 +69,8 @@ object Prefs {
     const val BAN_CHECK_ERROR_COUNT = "ban_check_error_count"
     const val DATA_RETAIN_TIME = "data_retain_time"
     const val FAVS_FIRST_MIN_LINES = "favs_first_min_lines"
+    const val SHOW_NEARBY_QUESTS = "show_nearby_quests"
+    const val SHOW_NEARBY_QUESTS_DISTANCE = "show_nearby_quests_distance"
 
     enum class Autosync {
         ON, WIFI, OFF

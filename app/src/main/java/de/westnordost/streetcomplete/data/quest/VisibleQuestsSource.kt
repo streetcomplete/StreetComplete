@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.content.SharedPreferences
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
@@ -11,6 +12,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Access and listen to quests visible on the map */
@@ -23,6 +25,7 @@ class VisibleQuestsSource(
     private val selectedOverlaySource: SelectedOverlaySource,
     private val levelFilter: LevelFilter,
     private val dayNightQuestFilter: DayNightQuestFilter,
+    private val prefs: SharedPreferences,
 ) {
     interface Listener {
         /** Called when given quests in the given group have been added/removed */
@@ -118,8 +121,13 @@ class VisibleQuestsSource(
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
-    // todo: this bypasses the planned cache -> make it optional (to show all quest types and hidden quests)
-    fun getNearbyQuests(quest: OsmQuest, distance: Double) = osmQuestSource.getAllNearbyQuests(quest, distance)
+    fun getNearbyQuests(quest: OsmQuest, distance: Double) = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
+        1 -> getAllVisible(quest.position.enclosingBoundingBox(distance)).filterIsInstance<OsmQuest>()
+        2 -> osmQuestSource.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance), null)
+        3 -> osmQuestSource.getAllNearbyQuests(quest, distance)
+        else -> emptyList()
+    }
+
 
     fun addListener(listener: Listener) {
         listeners.add(listener)

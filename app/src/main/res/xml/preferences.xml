@@ -113,12 +113,10 @@
             android:defaultValue="false"
             android:persistent="true" />
 
-        <SwitchPreference
-            android:key="show_all_quests"
-            android:title="@string/pref_show_all_quests_title"
-            android:summary="@string/pref_show_all_quests_summary"
-            android:defaultValue="false"
-            android:persistent="true" />
+        <Preference
+            android:key="show_nearby_quests"
+            android:title="@string/pref_show_nearby_quests_title"
+            android:summary="@string/pref_show_nearby_quests_summary" />
 
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="favs_first_min_lines"
