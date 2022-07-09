@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@drawable/ic_email_24dp"
-        app:tint="#000"/>
+        app:tint="@color/text"/>
 
     <TextView
         android:id="@+id/textView"

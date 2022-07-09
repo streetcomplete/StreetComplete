@@ -89,10 +89,10 @@
 
     <style name="RoundWhiteButton">
         <item name="android:background">@drawable/round_white_button</item>
-        <item name="android:textColor">#000</item>
+        <item name="android:textColor">@color/text</item>
         <item name="android:clickable">true</item>
         <item name="android:elevation">4dp</item>
-        <item name="tint">#000</item>
+        <item name="tint">@color/text</item>
     </style>
 
     <style name="RoundAccentButton">
