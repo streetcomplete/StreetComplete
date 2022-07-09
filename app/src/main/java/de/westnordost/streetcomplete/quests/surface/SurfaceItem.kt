@@ -58,7 +58,6 @@ private val Surface.titleResId: Int get() = when (this) {
     CONCRETE -> R.string.quest_surface_value_concrete
     CONCRETE_PLATES -> R.string.quest_surface_value_concrete_plates
     CONCRETE_LANES -> R.string.quest_surface_value_concrete_lanes
-    METAL_GRID -> Item(this, R.drawable.surface_metal_grid, R.string.quest_surface_value_metal_grid)
     FINE_GRAVEL -> R.string.quest_surface_value_fine_gravel
     PAVING_STONES -> R.string.quest_surface_value_paving_stones
     COMPACTED -> R.string.quest_surface_value_compacted
@@ -69,6 +68,7 @@ private val Surface.titleResId: Int get() = when (this) {
     WOOD -> R.string.quest_surface_value_wood
     WOODCHIPS -> R.string.quest_surface_value_woodchips
     METAL -> R.string.quest_surface_value_metal
+    METAL_GRID -> R.string.quest_surface_value_metal_grid
     GRAVEL -> R.string.quest_surface_value_gravel
     PEBBLES -> R.string.quest_surface_value_pebblestone
     GRASS -> R.string.quest_surface_value_grass
@@ -100,6 +100,7 @@ private val Surface.iconResId: Int get() = when (this) {
     WOOD -> R.drawable.surface_wood
     WOODCHIPS -> R.drawable.surface_woodchips
     METAL -> R.drawable.surface_metal
+    METAL_GRID -> R.drawable.surface_metal_grid
     GRAVEL -> R.drawable.surface_gravel
     PEBBLES -> R.drawable.surface_pebblestone
     GRASS -> R.drawable.surface_grass

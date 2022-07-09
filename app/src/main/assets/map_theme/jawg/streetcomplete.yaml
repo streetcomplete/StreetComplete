@@ -215,7 +215,7 @@ layers:
                     color: global.quest_geometry_color
                     width: 9px
                     collide: false
-                    order: 1000
+                    order: 900
                     cap: round
                     join: round
         poly:
@@ -227,7 +227,7 @@ layers:
                     color: global.quest_geometry_color
                     width: 9px
                     collide: false
-                    order: 1000
+                    order: 900
                     cap: round
                     join: round
     streetcomplete_map_data:
@@ -255,7 +255,8 @@ layers:
                     width: function() { return feature.width * 2.0 + 4.0; }
                     order: 802
                     join: round
-        line-right:            filter: { type: [line], colorRight: true }
+        line-right:
+            filter: { type: [line], colorRight: true }
             draw:
                 map_data-lines-right:
                     interactive: true

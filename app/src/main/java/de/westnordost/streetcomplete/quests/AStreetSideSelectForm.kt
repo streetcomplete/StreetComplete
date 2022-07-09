@@ -20,8 +20,6 @@ abstract class AStreetSideSelectForm<I, T> : AbstractOsmQuestForm<T>() {
     override val contentLayoutResId = R.layout.quest_street_side_puzzle_with_last_answer_button
     private val binding by contentViewBinding(QuestStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
-    private val prefs: SharedPreferences by inject()
-
     override val contentPadding = false
 
     protected lateinit var streetSideSelect: StreetSideSelectWithLastAnswerButtonViewController<I>

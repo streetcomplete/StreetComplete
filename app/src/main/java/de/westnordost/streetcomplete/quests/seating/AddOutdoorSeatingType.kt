@@ -5,10 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.util.ktx.toYesNo
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddOutdoorSeatingType : OsmFilterQuestType<String>() {
 
@@ -21,7 +20,7 @@ class AddOutdoorSeatingType : OsmFilterQuestType<String>() {
     override val wikiLink = "Key:outdoor_seating"
     override val icon = R.drawable.ic_quest_seating_type
     override val isReplaceShopEnabled = true
-    override val questTypeAchievements = listOf(CITIZEN)
+    override val achievements = listOf(EditTypeAchievement.CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_outdoor_seating_name_title
 

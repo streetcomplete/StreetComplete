@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
+import android.content.SharedPreferences
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
@@ -19,8 +20,8 @@ class VisibleQuestsSource(
     private val osmNoteQuestSource: OsmNoteQuestSource,
     private val visibleQuestTypeSource: VisibleQuestTypeSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val levelFilter: LevelFilter,
     private val selectedOverlaySource: SelectedOverlaySource,
+    private val levelFilter: LevelFilter,
     private val dayNightQuestFilter: DayNightQuestFilter,
 ) {
     interface Listener {
@@ -94,7 +95,7 @@ class VisibleQuestsSource(
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
 
-        return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.enabled) {
+        return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {
             osmQuests.filter(::isVisibleInTeamMode) + osmNoteQuests.filter(::isVisibleInTeamMode)
         } else {
             osmQuests + osmNoteQuests
@@ -116,6 +117,9 @@ class VisibleQuestsSource(
 
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
+
+    // todo: this bypasses the planned cache -> make it optional (to show all quest types and hidden quests)
+    fun getNearbyQuests(quest: OsmQuest, distance: Double) = osmQuestSource.getAllNearbyQuests(quest, distance)
 
     fun addListener(listener: Listener) {
         listeners.add(listener)

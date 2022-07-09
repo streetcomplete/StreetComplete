@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.seating
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.TextItem
 
-class AddOutdoorSeatingTypeForm : AListQuestAnswerFragment<String>() {
+class AddOutdoorSeatingTypeForm : AListQuestForm<String>() {
     override val items = listOf(
         TextItem("parklet", R.string.quest_seating_parklet),
         TextItem("pedestrian_zone", R.string.quest_seating_pedestrian_zone),

@@ -7,6 +7,7 @@ Notable changes:
 * More customization of UI and what is displayed
 * Configurable quests
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics
+  * Used in notes and changesets: StreetComplete_ee
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml)
 

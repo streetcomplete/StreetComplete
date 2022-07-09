@@ -122,10 +122,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
-import java.io.File
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -459,18 +455,11 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    override fun onTempSkippedQuest(questKey: QuestKey) {
-        viewLifecycleScope.launch {
-            closeBottomSheet()
-            questController.tempHide(questKey)
-        }
     override fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String) {
         showInBottomSheet(
             LeaveNoteInsteadFragment.create(element.type, element.id, leaveNoteContext, geometry.center),
             false
         )
-    }
-
     }
 
     override fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
@@ -484,15 +473,6 @@ class MainFragment :
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
             closeBottomSheet()
         }
-    override fun onChangedTags(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
-        viewLifecycleScope.launch {
-            solveQuest(osmQuestKey) { quest ->
-                if (questController.changeTags(quest as OsmQuest, tags, "survey")) {
-                    onQuestSolved(quest, "survey")
-                }
-            }
-        }
-    }
 
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
@@ -522,35 +502,16 @@ class MainFragment :
 
     /* ------------------------------ NoteDiscussionForm.Listener ------------------------------- */
 
-    override fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>, isGpxNote: Boolean) {
     override fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon) {
         showQuestSolvedAnimation(questType.icon, position)
         closeBottomSheet()
-                if (isGpxNote)
-                    onCreatedGpxNote("$questTitle: $note", imagePaths, quest.position, null)
-                else if (questController.createNote(questKey, questTitle, note, imagePaths)) {
-            } else
-                context?.toast(R.string.quest_not_found)
     }
 
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
-        showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position, isGpxNote: Boolean)
+        showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
         closeBottomSheet()
-        if (isGpxNote) {
-            val recordedTracks = if (hasGpxAttached)
-                mapFragment.recordedTracks
-            else null
-            onCreatedGpxNote(note, imagePaths, position, recordedTracks)
-        }
-        else
-            viewLifecycleScope.launch {
-                var recordedTracks: List<Trackpoint> = emptyList()
-                if (hasGpxAttached) {
-                    recordedTracks = mapFragment.recordedTracks
-                }
-                questController.createNote(note, imagePaths, position, recordedTracks)
     }
 
     override fun getMapPositionAt(screenPos: Point): LatLon? =
@@ -558,70 +519,6 @@ class MainFragment :
 
     override fun getRecordedTrack(): List<Trackpoint>? =
         mapFragment?.recordedTracks
-
-    // todo: there is some xmlwriter, and even gpxTrackWriter -> maybe use this instead of the current ugly things
-    private fun onCreatedGpxNote(note: String, imagePaths: List<String>, position: LatLon, recordedTrack: List<Trackpoint>?) {
-        val path = context?.getExternalFilesDir(null) ?: return
-        path.mkdirs()
-        val fileName = "notes.gpx"
-        val gpxFile = File(path,fileName)
-        if (gpxFile.createNewFile()) // if this file did not exist
-            gpxFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<gpx \n" +
-                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
-                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
-                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
-                "</gpx>", Charsets.UTF_8)
-        // now delete the last 6 characters, which is <\gpx>
-        val oldText = gpxFile.readText(Charsets.UTF_8).dropLast(6)
-        // save image file names (this is not nice, but better than not keeping any reference to them
-        val imageText = if (imagePaths.isEmpty()) "" else
-            "\n images used: ${imagePaths.joinToString(", ")}"
-        val trackFile: File?
-        if (recordedTrack != null && recordedTrack.isNotEmpty()) {
-            var i = 1
-            while (File(path, "track_$i.gpx").exists()) {
-                i += 1
-            }
-            trackFile = File(path, "track_$i.gpx")
-            val formatter = DateTimeFormatter
-                .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
-                .withZone(ZoneOffset.UTC)
-            val trackText = recordedTrack.map {
-                "     <trkpt lon=\"${it.position.longitude}\" lat=\"${it.position.latitude}\">\n" +
-                "       <time>\"${formatter.format(Instant.ofEpochMilli(it.time))}\"</time>\n" +
-                if (it.elevation == 0.0f)
-                    ""
-                else {
-                    "       <ele>\"${it.elevation}\"</ele>\n" +
-                    "       <hdop>\"${it.horizontalDilutionOfPrecision}\">\n"
-                } +
-                "     </trkpt>"
-            }
-            trackFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<gpx \n" +
-                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
-                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
-                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
-                "  <trk>\n" +
-                "    <name>${trackFile.name.substringBefore(".gpx")}</name>\n" +
-                "    <trkseg>\n" +
-                trackText.joinToString("\n") + "\n" +
-                "    </trkseg>\n" +
-                "  </trk>\n" +
-                "</gpx>", Charsets.UTF_8)
-        } else trackFile = null
-        val trackText = if (trackFile == null) "" else
-            "\n attached track: ${trackFile.name}"
-        gpxFile.writeText(oldText +" <wpt lon=\"" + position.longitude + "\" lat=\"" + position.latitude + "\">\n" +
-            "  <name>" + (note + trackText + imageText).replace("&","&amp;")
-            .replace("<","&lt;")
-            .replace(">","&gt;")
-            .replace("\"","&quot;")
-            .replace("'","&apos;") + "</name>\n" +
-            " </wpt>\n" +
-            "</gpx>", Charsets.UTF_8)
-    }
 
     //endregion
 
@@ -1051,7 +948,7 @@ class MainFragment :
 
     private fun clearHighlighting() {
         mapFragment?.clearHighlighting()
-        mapFragment?.show3DBuildings = true
+        mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
     }
 
     //endregion
@@ -1106,18 +1003,16 @@ class MainFragment :
         f.requireArguments().putAll(args)
 
         if (quest is OsmQuest) {
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestForm.createArguments(element)
-            f.requireArguments().putAll(osmArgs)
             if (prefs.getBoolean(Prefs.SHOW_ALL_QUESTS, false))
                 viewLifecycleScope.launch { // do concurrently with showing highlighted quests
-                    val q = questController.getOtherQuestsForSameElement(quest)
+                    val q = visibleQuestsSource.getNearbyQuests(quest, 0.0)
                     q.forEach { osmQuest ->
                         if (osmQuest == quest) return@forEach // ignore current quest
                         if (osmQuest.type.dotColor != "no") return@forEach // ignore poi quests
+                        if (osmQuest.elementId != quest.elementId || osmQuest.elementType != quest.elementType) return@forEach // for now, ignore other elements
                         // ignore disabled quests? or not? what about hidden?
                         val questView = ImageButton(context)
-                        questView.setImageResource(osmQuest.osmElementQuestType.icon)
+                        questView.setImageResource(osmQuest.type.icon)
                         questView.setBackgroundColor(Color.TRANSPARENT)
                         questView.scaleType = ImageView.ScaleType.FIT_CENTER
                         questView.adjustViewBounds = true
@@ -1130,6 +1025,10 @@ class MainFragment :
                     binding.otherQuestsScrollView.visibility = View.VISIBLE
                 }
 
+
+            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+            val osmArgs = AbstractOsmQuestForm.createArguments(element)
+            f.requireArguments().putAll(osmArgs)
 
             showInBottomSheet(f)
             showHighlightedElements(quest, element)

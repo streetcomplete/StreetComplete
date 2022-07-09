@@ -7,11 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
 
-class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<OsmoseAnswer>() {
+class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>() {
 
     var issue: OsmoseIssue? = null
 
@@ -22,7 +22,6 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<Osmose
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val element = osmElement ?: return
         issue = db.get(ElementKey(element.type, element.id))
         val text = issue?.let {
             if (it.subtitle.isBlank())
@@ -64,7 +63,7 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<Osmose
             buttonPanelAnswers.add(AnswerItem(R.string.quest_osmose_false_positive) {
                 db.setAsFalsePositive(issue?.uuid ?: "", questKey)
                 // quest removed from db, tempHide to make it disappear
-                tempSkipQuest()
+                tempHideQuest()
             } )
         updateButtonPanel()
     }
@@ -76,7 +75,7 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractQuestAnswerFragment<Osmose
                 types.add(it.item)
                 prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.joinToString(",")).apply()
             }
-            tempSkipQuest()
+            tempHideQuest()
         }
     ) }
 

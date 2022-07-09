@@ -6,11 +6,10 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.databinding.QuestContactBinding
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
-
-class AddContactWebsiteForm : AbstractQuestFormAnswerFragment<String>() {
+class AddContactWebsiteForm : AbstractOsmQuestForm<String>() {
 
     override val contentLayoutResId = R.layout.quest_contact
     private val binding by contentViewBinding(QuestContactBinding::bind)

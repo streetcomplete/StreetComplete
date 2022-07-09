@@ -16,6 +16,8 @@ interface OsmQuestSource {
     /** Get all quests of optionally the given types in given bounding box */
     fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>? = null): List<OsmQuest>
 
+    fun getAllNearbyQuests(quest: OsmQuest, distance: Double): List<OsmQuest>
+
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
 }

@@ -143,6 +143,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
         f.hideOsmQuestController = object : HideOsmQuestController {
             override fun hide(key: OsmQuestKey) {}
+            override fun tempHide(key: OsmQuestKey) {}
         }
         f.addElementEditsController = object : AddElementEditsController {
             override fun add(
@@ -201,16 +202,10 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
         popQuestForm()
     }
-    override fun onTempSkippedQuest(questKey: QuestKey) {
-        popQuestForm("Skipping quest temporarily")
-    }
 
     private fun message(msg: String) {
         runOnUiThread {
             AlertDialog.Builder(this).setMessage(msg).show()
         }
-    }
-    override fun onChangedTags(osmQuestKey: OsmQuestKey, tags: Map<String, String>) {
-        popQuestForm("Changing tags")
     }
 }

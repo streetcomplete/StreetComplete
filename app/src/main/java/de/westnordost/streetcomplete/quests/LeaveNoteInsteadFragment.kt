@@ -56,7 +56,6 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override val noteInput get() = contentBinding.noteInput
 
     interface Listener {
-        fun onCreatedNoteInstead(questKey: QuestKey, questTitle: String, note: String, imagePaths: List<String>, isGpxNote: Boolean)
         fun onCreatedNote(position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
@@ -87,6 +86,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         contentBinding.descriptionLabel.isGone = true
         binding.titleLabel.text = getString(R.string.map_btn_create_note)
         if (prefs.getBoolean(Prefs.GPX_BUTTON, false)) {
+            binding.okButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0)
             gpxButton.text = "GPX"
             okButton.text = "OSM"
         }
@@ -98,7 +98,6 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean) {
-        listener?.onCreatedNoteInstead(questKey, questTitle, text, imagePaths, isGpxNote)
         val fullText = mutableListOf<String>()
         leaveNoteContext?.let { fullText += it }
         fullText += "for https://osm.org/${elementType.name.lowercase()}/$elementId"
@@ -106,7 +105,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText.joinToString(" "), imagePaths)
+                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText.joinToString(" "), imagePaths, emptyList(), isGpxNote, context)
             }
             listener?.onCreatedNote(position)
         }

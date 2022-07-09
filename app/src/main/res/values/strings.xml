@@ -190,7 +190,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="import_error">Import error</string>
     <string name="import_warning">This will overwrite your settings or quest presets (depending on choice below)</string>
     <string name="fork_about_title_repository">Expert edition project Home</string>
-    <string name="quest_not_found">Cannot create note, quest not found or hidden</string>
     <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
     <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>

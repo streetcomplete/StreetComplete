@@ -4,15 +4,19 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.location.Location
 import android.os.Bundle
+import android.text.InputType
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
+import androidx.core.widget.addTextChangedListener
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -37,6 +41,7 @@ import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
+import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -109,6 +114,16 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element))
         setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
+
+        floatingBottomView2.popIn()
+        floatingBottomView2.setOnClickListener {
+            tempHideQuest()
+        }
+        floatingBottomView2.setOnLongClickListener {
+            hideQuest()
+            true
+        }
+
     }
 
     override fun onStart() {
@@ -131,10 +146,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
+        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags() })
+
         if (element.isSplittable()) {
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
         }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
+        createItsPrivateAnswer()?.let { answers.add(it) }
 
         answers.addAll(otherAnswers)
         return answers
@@ -214,6 +232,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
 
+    protected fun tempHideQuest() {
+        viewLifecycleScope.launch {
+            withContext(Dispatchers.IO) { hideOsmQuestController.tempHide(questKey as OsmQuestKey) }
+            listener?.onQuestHidden(questKey as OsmQuestKey)
+        }
+    }
+
     protected fun hideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { hideOsmQuestController.hide(questKey as OsmQuestKey) }
@@ -255,6 +280,93 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private fun onDeletePoiNodeConfirmed() {
         viewLifecycleScope.launch {
             solve(DeletePoiNodeAction)
+        }
+    }
+
+    private fun createItsPrivateAnswer(): AnswerItem? {
+        if (element !is Way) return null
+        return if (wayWithoutAccessTagsFilter.matches(element))
+            AnswerItem(R.string.quest_way_private) {
+                viewLifecycleScope.launch {
+                    val builder = StringMapChangesBuilder(element.tags)
+                    builder["access"] = "private"
+                    solve(UpdateElementTagsAction(builder.create()))
+                }
+            }
+        else null
+    }
+
+    // check the most common access tags
+    private val wayWithoutAccessTagsFilter by lazy { """
+        ways with highway
+         and !access
+         and !bicycle
+         and !foot
+         and !vehicle
+         and !motor_vehicle
+         and !horse
+         and !bus
+         and !hgv
+         and !motorcar
+         and !psv
+         and !ski
+    """.toElementFilterExpression() }
+
+    private fun onClickEditTags() {
+        val tags = element.tags
+        context?.let { c ->
+
+            var dialog: AlertDialog? = null
+            val editField = EditText(c)
+            editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            editField.setText(tags.map { "${it.key}=${it.value}" }.joinToString("\n"))
+            editField.addTextChangedListener { text ->
+                var enabled = true
+                val keys = mutableSetOf<String>()
+                val tagsNew = mutableMapOf<String, String>()
+                text.toString().split("\n").forEach {
+                    if (it.isBlank()) return@forEach // allow empty lines
+                    if (!it.contains("=") // no key-value separator
+                        || it.substringBefore("=").isBlank() // no key
+                        || it.substringAfter("=").isBlank() // no value
+                        || !keys.add(it.substringBefore("="))) { // key already exists
+                        enabled = false
+                        return@forEach
+                    }
+                    tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+                }
+                if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
+                    enabled = false // tags not changed
+                dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
+            }
+
+            dialog = AlertDialog.Builder(c)
+                .setTitle(R.string.quest_edit_tags_title)
+                .setView(editField)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->
+                    // validity of tags already checked, and tags have changed
+                    val updatedTags = mutableMapOf<String, String>()
+                    editField.text.toString().split("\n").forEach {
+                        if (it.isBlank()) return@forEach
+                        updatedTags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+                    }
+                    viewLifecycleScope.launch {
+                        val builder = StringMapChangesBuilder(element.tags)
+                        for (key in element.tags.keys) {
+                            if (!updatedTags.containsKey(key))
+                                builder.remove(key)
+                        }
+                        for ((key, value) in updatedTags) {
+                            if (tags[key] == value) continue
+                            builder[key] = value
+                        }
+                        solve(UpdateElementTagsAction(builder.create()))
+                    }
+                }
+                .create()
+            dialog.show()
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
         }
     }
 

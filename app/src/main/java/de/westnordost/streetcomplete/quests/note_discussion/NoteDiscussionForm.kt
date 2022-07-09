@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
+import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -87,6 +88,15 @@ class NoteDiscussionForm : AbstractQuestForm() {
         if (savedInstanceState == null) {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
+
+        floatingBottomView2.popIn()
+        floatingBottomView2.setOnClickListener {
+            tempHideQuest()
+        }
+        floatingBottomView2.setOnLongClickListener {
+            hideQuest()
+            true
+        }
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
@@ -117,6 +127,12 @@ class NoteDiscussionForm : AbstractQuestForm() {
     private fun hideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { osmNoteQuestController.hide(noteId) }
+        }
+    }
+
+    private fun tempHideQuest() {
+        viewLifecycleScope.launch {
+            withContext(Dispatchers.IO) { osmNoteQuestController.tempHide(noteId) }
         }
     }
 

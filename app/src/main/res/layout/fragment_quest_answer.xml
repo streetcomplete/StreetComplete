@@ -151,14 +151,13 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <ImageView
+    <TextView
         android:id="@+id/okButton"
-        android:src="@drawable/ic_check_48dp"
+        app:drawableBottomCompat="@drawable/ic_check_48dp"
         android:scaleType="centerInside"
         style="@style/RoundAccentButton"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:padding="20dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="8dp"

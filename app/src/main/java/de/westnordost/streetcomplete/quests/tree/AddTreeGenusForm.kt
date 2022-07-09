@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.map.getTreeGenus
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -16,9 +15,10 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.koin.android.ext.android.inject
 import java.io.IOException
 import androidx.core.widget.doAfterTextChanged
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import java.io.File
 
-class AddTreeGenusForm : AbstractQuestFormAnswerFragment<Tree>() {
+class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
 
     override val contentLayoutResId = R.layout.quest_name_suggestion
     private val binding by contentViewBinding(QuestNameSuggestionBinding::bind)

@@ -23,7 +23,8 @@ class LevelFilter internal constructor(
     private val visibleQuestTypeController: VisibleQuestTypeController
 ) {
 
-    private var isEnabled = false
+    var isEnabled = false
+        private set
     private var allowedLevel: String? = null
     private lateinit var allowedLevelTags: List<String>
 

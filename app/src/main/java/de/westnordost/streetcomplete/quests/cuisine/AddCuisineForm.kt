@@ -5,10 +5,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
-class AddCuisineForm : AbstractQuestFormAnswerFragment<String>() {
+class AddCuisineForm : AbstractOsmQuestForm<String>() {
 
     override val contentLayoutResId = R.layout.quest_cuisine_suggestion
     private val binding by contentViewBinding(QuestCuisineSuggestionBinding::bind)

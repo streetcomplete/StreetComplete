@@ -14,8 +14,8 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -104,6 +104,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         bottomSheetBinding.titleLabel.text = getString(R.string.map_btn_create_note)
         contentBinding.descriptionLabel.text = getString(R.string.create_new_note_description)
         if (prefs.getBoolean(Prefs.GPX_BUTTON, false)) {
+            bottomSheetBinding.okButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0) // removes check drawable
             gpxButton.text = "GPX"
             okButton.text = "OSM"
         }
@@ -166,7 +167,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 val recordedTrack = listener?.getRecordedTrack().orEmpty()
-                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, recordedTrack)
+                noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, recordedTrack, isGpxNote, context)
             }
         }
 

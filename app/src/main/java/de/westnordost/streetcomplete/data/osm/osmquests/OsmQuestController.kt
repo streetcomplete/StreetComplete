@@ -311,7 +311,7 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key))
     }
 
-    fun tempHide(key: OsmQuestKey) {
+    override fun tempHide(key: OsmQuestKey) {
         onUpdated(deletedKeys = listOf(key))
     }
 
@@ -412,14 +412,24 @@ class OsmQuestController internal constructor(
         hideListeners.forEach { it.onUnhidAll() }
     }
 
-    fun getOtherQuestsForSameElement(quest: OsmQuest): List<OsmQuest> {
-        // getAllInBBox is ~2-3 times faster than getAllForElements
-        val questsEntries = db.getAllInBBox(BoundingBox(quest.position, quest.position))
-        return questsEntries.mapNotNull {
-            if (it.elementId != quest.elementId || it.elementType != quest.elementType)
+    // gets also hidden quests!
+    override fun getAllNearbyQuests(quest: OsmQuest, distance: Double): List<OsmQuest> {
+        val entries = db.getAllInBBox(quest.position.enclosingBoundingBox(distance))
+        val elementKeys = HashSet<ElementKey>()
+        entries.mapNotNullTo(elementKeys) {
+            if (it.elementType == quest.elementType && it.elementId == quest.elementId)
                 null
             else
-                createOsmQuest(it, quest.geometry)
+                ElementKey(it.elementType, it.elementId)
+        }
+
+        val geometriesByKey = HashMap<ElementKey, ElementGeometry>()
+        mapDataSource.getGeometries(elementKeys)
+            .associateTo(geometriesByKey) { ElementKey(it.elementType, it.elementId) to it.geometry }
+        geometriesByKey[ElementKey(quest.elementType, quest.elementId)] = quest.geometry
+
+        return entries.mapNotNull { entry ->
+            createOsmQuest(entry, geometriesByKey[ElementKey(entry.elementType, entry.elementId)])
         }
     }
 

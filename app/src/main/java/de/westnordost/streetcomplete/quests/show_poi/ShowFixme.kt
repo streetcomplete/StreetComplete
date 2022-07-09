@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 

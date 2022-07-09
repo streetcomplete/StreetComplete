@@ -1,10 +1,15 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import android.content.Context
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import java.io.File
 import java.lang.System.currentTimeMillis
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.CopyOnWriteArrayList
 
 class NoteEditsController(
@@ -22,6 +27,8 @@ class NoteEditsController(
         text: String? = null,
         imagePaths: List<String> = emptyList(),
         track: List<Trackpoint> = emptyList(),
+        isGpxNote: Boolean = false,
+        context: Context? = null
     ) {
         val edit = NoteEdit(
             0,
@@ -35,8 +42,12 @@ class NoteEditsController(
             imagePaths.isNotEmpty(),
             track,
         )
-        synchronized(this) { editsDB.add(edit) }
-        onAddedEdit(edit)
+        if (isGpxNote) {
+            createGpxNote(text ?: "", imagePaths, position, track, context)
+        } else {
+            synchronized(this) { editsDB.add(edit) }
+            onAddedEdit(edit)
+        }
     }
 
     fun get(id: Long): NoteEdit? =
@@ -111,6 +122,71 @@ class NoteEditsController(
             return false
         }
         return true
+    }
+
+    // there is some xmlwriter, and even gpxTrackWriter
+    // maybe use this instead of the current ugly things, probably less prone to bugs caused by weird characters
+    private fun createGpxNote(note: String, imagePaths: List<String>, position: LatLon, recordedTrack: List<Trackpoint>?, context: Context?) {
+        val path = context?.getExternalFilesDir(null) ?: return
+        path.mkdirs()
+        val fileName = "notes.gpx"
+        val gpxFile = File(path,fileName)
+        if (gpxFile.createNewFile()) // if this file did not exist
+            gpxFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<gpx \n" +
+                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
+                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
+                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
+                "</gpx>", Charsets.UTF_8)
+        // now delete the last 6 characters, which is <\gpx>
+        val oldText = gpxFile.readText(Charsets.UTF_8).dropLast(6)
+        // save image file names (this is not nice, but better than not keeping any reference to them
+        val imageText = if (imagePaths.isEmpty()) "" else
+            "\n images used: ${imagePaths.joinToString(", ")}"
+        val trackFile: File?
+        if (recordedTrack != null && recordedTrack.isNotEmpty()) {
+            var i = 1
+            while (File(path, "track_$i.gpx").exists()) {
+                i += 1
+            }
+            trackFile = File(path, "track_$i.gpx")
+            val formatter = DateTimeFormatter
+                .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
+                .withZone(ZoneOffset.UTC)
+            val trackText = recordedTrack.map {
+                "     <trkpt lon=\"${it.position.longitude}\" lat=\"${it.position.latitude}\">\n" +
+                    "       <time>\"${formatter.format(Instant.ofEpochMilli(it.time))}\"</time>\n" +
+                    if (it.elevation == 0.0f)
+                        ""
+                    else {
+                        "       <ele>\"${it.elevation}\"</ele>\n" +
+                            "       <hdop>\"${it.horizontalDilutionOfPrecision}\">\n"
+                    } +
+                    "     </trkpt>"
+            }
+            trackFile.writeText("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<gpx \n" +
+                " xmlns=\"http://www.topografix.com/GPX/1/1\" \n" +
+                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \n" +
+                " xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
+                "  <trk>\n" +
+                "    <name>${trackFile.name.substringBefore(".gpx")}</name>\n" +
+                "    <trkseg>\n" +
+                trackText.joinToString("\n") + "\n" +
+                "    </trkseg>\n" +
+                "  </trk>\n" +
+                "</gpx>", Charsets.UTF_8)
+        } else trackFile = null
+        val trackText = if (trackFile == null) "" else
+            "\n attached track: ${trackFile.name}"
+        gpxFile.writeText(oldText +" <wpt lon=\"" + position.longitude + "\" lat=\"" + position.latitude + "\">\n" +
+            "  <name>" + (note + trackText + imageText).replace("&","&amp;")
+            .replace("<","&lt;")
+            .replace(">","&gt;")
+            .replace("\"","&quot;")
+            .replace("'","&apos;") + "</name>\n" +
+            " </wpt>\n" +
+            "</gpx>", Charsets.UTF_8)
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */

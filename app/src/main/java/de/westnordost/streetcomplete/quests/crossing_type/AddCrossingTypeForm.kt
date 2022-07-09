@@ -54,7 +54,7 @@ class AddCrossingTypeForm : AImageListQuestForm<CrossingType, CrossingType>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (osmElement!!.tags["traffic_calming"] == "table")
+        if (element.tags["traffic_calming"] == "table")
             imageSelector.select(imageSelector.items.indexOf(raisedItem))
     }
 

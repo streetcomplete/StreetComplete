@@ -77,7 +77,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
             teamModeQuestFilter::disableTeamMode,
             this::onClickOverlays,
         )
-                d.setOnKeyListener { _, _, keyEvent ->
+        d.setOnKeyListener { _, _, keyEvent ->
             if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
                 val intent = Intent(requireContext(), SettingsActivity::class.java)
                 requireContext().startActivity(intent)
@@ -103,15 +103,6 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
         }
     }
 
-        d.setOnKeyListener { _, _, keyEvent ->
-            if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
-                val intent = Intent(requireContext(), SettingsActivity::class.java)
-                requireContext().startActivity(intent)
-                d.dismiss()
-                true
-            } else false
-        }
-        d.show()
     /* ------------------------------------ Download Button  ------------------------------------ */
 
     private fun onClickDownload() {

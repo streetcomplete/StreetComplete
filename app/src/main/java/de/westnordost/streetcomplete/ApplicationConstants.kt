@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete
 
 object ApplicationConstants {
-    const val NAME = "StreetComplete_expert_edition"
+    const val NAME = "StreetComplete_ee"
     const val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
     const val QUESTTYPE_TAG_KEY = NAME + ":quest_type"
 

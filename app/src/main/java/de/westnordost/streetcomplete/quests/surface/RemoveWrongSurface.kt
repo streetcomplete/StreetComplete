@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.surface
+
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 
 class RemoveWrongSurface : OsmFilterQuestType<WrongSurfaceAnswer>() {
     override val elementFilter = """
@@ -16,7 +16,6 @@ class RemoveWrongSurface : OsmFilterQuestType<WrongSurfaceAnswer>() {
     override val changesetComment = "Remove wrong surface info"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_tractor_surface
-    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wrong_surface_title
 

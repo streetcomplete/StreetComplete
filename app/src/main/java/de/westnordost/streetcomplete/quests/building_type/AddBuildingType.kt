@@ -24,7 +24,7 @@ class AddBuildingType : OsmElementQuestType<BuildingType> {
     override val changesetComment = "Add building types"
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
-    override val questTypeAchievements = listOf(BUILDING)
+    override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.healthcare_speciality
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddHealthcareSpeciality : OsmFilterQuestType<String>() {
 

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.service_building
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AListQuestForm
 import de.westnordost.streetcomplete.quests.TextItem
 
-class AddServiceBuildingTypeForm : AListQuestAnswerFragment<String>() {
+class AddServiceBuildingTypeForm : AListQuestForm<String>() {
 
     override val items = listOf(
         TextItem("gas", R.string.quest_service_building_type_pressure),

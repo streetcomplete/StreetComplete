@@ -76,7 +76,7 @@ class UndoDialog(
         setView(binding.root)
         setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ ->
             scope.launch(Dispatchers.IO) { editHistoryController.undo(edit) }
-            if ((edit is ElementEdit) && edit.questType is OsmoseQuest)
+            if ((edit is ElementEdit) && edit.type.changesetComment == "Fix osmose issues") // todo: this is actually horrible, but... how to access quest type from here?
                 osmoseDao.setNothing(ElementKey(edit.elementType, edit.elementId))
         }
         setButton(BUTTON_NEGATIVE, context.getText(R.string.undo_confirm_negative), null, null)

@@ -5,15 +5,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.Tags
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.data.user.achievements.QuestTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.Tags
 
 class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
 
     override val elementFilter = """
         nodes, ways with
-          (amenity = bench or leisure = picnic_table)
+          (amenity = bench or leisure = picnic_table or amenity = lounger)
           and (!area or area = no)
           and !material
     """
@@ -21,7 +20,7 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
     override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.ic_quest_bench_material
     override val isDeleteElementEnabled = true
-    override val questTypeAchievements = listOf(PEDESTRIAN, OUTDOORS)
+    override val achievements = listOf(EditTypeAchievement.PEDESTRIAN, EditTypeAchievement.OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_benchMaterial_title
 

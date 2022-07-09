@@ -5,26 +5,24 @@ import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class ExternalForm(private val externalList: ExternalList) : AbstractQuestAnswerFragment<Boolean>() {
+class ExternalForm(private val externalList: ExternalList) : AbstractOsmQuestForm<Boolean>() {
 
     override val contentLayoutResId = R.layout.quest_osmose_external
     private val binding by contentViewBinding(QuestOsmoseExternalBinding::bind)
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_external_remove) {
-            val element = osmElement ?: return@AnswerItem
             val key = ElementKey(element.type, element.id)
             externalList.remove(key)
-            tempSkipQuest()
+            tempHideQuest()
         }
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val element = osmElement ?: return
         val key = ElementKey(element.type, element.id)
         val text = externalList.questsMap[key]
         binding.description.text =

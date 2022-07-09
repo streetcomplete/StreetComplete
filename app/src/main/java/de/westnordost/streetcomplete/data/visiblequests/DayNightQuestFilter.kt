@@ -10,10 +10,11 @@ import org.koin.java.KoinJavaComponent.inject
 class DayNightQuestFilter internal constructor(
     private val prefs: SharedPreferences
 ) {
-    private var enabled = false
+    var isEnabled = false
+        private set
 
     fun reload() {
-        enabled = Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")!!) == Prefs.DayNightBehavior.VISIBILITY
+        isEnabled = Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")!!) == Prefs.DayNightBehavior.VISIBILITY
     }
 
     /*
@@ -21,7 +22,7 @@ class DayNightQuestFilter internal constructor(
     However, I think it's reevaluated everytime the displayed quests are updated?
      */
     fun isVisible(quest: Quest): Boolean {
-        if (!enabled) return true
+        if (!isEnabled) return true
         return when (quest.type.dayNightCycle) {
             DAY_AND_NIGHT -> true
             ONLY_DAY -> isDay(quest.position)

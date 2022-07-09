@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-class NoAnswerFragment : AbstractQuestAnswerFragment<Boolean>() {
+class NoAnswerFragment : AbstractOsmQuestForm<Boolean>() {
     override val buttonPanelAnswers = listOf<AnswerItem>()
 }
