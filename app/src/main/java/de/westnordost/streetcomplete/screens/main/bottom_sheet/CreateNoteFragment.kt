@@ -152,7 +152,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>, isGpxNote: Boolean) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed (this is now optional) */
-        if (prefs.getBoolean(Prefs.HIDE_KEYBOAD_FOR_NOTE, true) && contentBinding.noteInput.hideKeyboard() == true) return
+        if (prefs.getBoolean(Prefs.HIDE_KEYBOARD_FOR_NOTE, true) && contentBinding.noteInput.hideKeyboard() == true) return
 
         val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
         screenPos.offset(

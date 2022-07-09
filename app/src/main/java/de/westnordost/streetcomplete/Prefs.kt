@@ -61,7 +61,7 @@ object Prefs {
     const val RESURVEY_DATE = "resurvey_date"
     const val GPX_BUTTON = "gpx_button"
     const val SWAP_GPX_NOTE_BUTTONS = "swap_gpx_note_buttons"
-    const val HIDE_KEYBOAD_FOR_NOTE = "hide_keyboard_for_note"
+    const val HIDE_KEYBOARD_FOR_NOTE = "hide_keyboard_for_note"
     const val OFFSET_FIX = "offset_fix"
     const val DAY_NIGHT_BEHAVIOR = "day_night_behavior"
     const val QUEST_SETTINGS_PER_PRESET = "quest_settings_per_preset"
