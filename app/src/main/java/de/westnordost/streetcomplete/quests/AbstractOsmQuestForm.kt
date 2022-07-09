@@ -15,6 +15,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.children
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
@@ -115,15 +116,16 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element))
         setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
 
-        floatingBottomView2.popIn()
-        floatingBottomView2.setOnClickListener {
-            tempHideQuest()
+        if (prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
+            floatingBottomView2.popIn()
+            floatingBottomView2.setOnClickListener {
+                tempHideQuest()
+            }
+            floatingBottomView2.setOnLongClickListener {
+                hideQuest()
+                true
+            }
         }
-        floatingBottomView2.setOnLongClickListener {
-            hideQuest()
-            true
-        }
-
     }
 
     override fun onStart() {

@@ -13,6 +13,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
@@ -89,13 +90,15 @@ class NoteDiscussionForm : AbstractQuestForm() {
             childFragmentManager.commit { add<AttachPhotoFragment>(R.id.attachPhotoFragment) }
         }
 
-        floatingBottomView2.popIn()
-        floatingBottomView2.setOnClickListener {
-            tempHideQuest()
-        }
-        floatingBottomView2.setOnLongClickListener {
-            hideQuest()
-            true
+        if (prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
+            floatingBottomView2.popIn()
+            floatingBottomView2.setOnClickListener {
+                tempHideQuest()
+            }
+            floatingBottomView2.setOnLongClickListener {
+                hideQuest()
+                true
+            }
         }
     }
 
