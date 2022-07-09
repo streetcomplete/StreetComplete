@@ -5,9 +5,11 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
@@ -415,21 +417,21 @@ class OsmQuestController internal constructor(
     // gets also hidden quests!
     override fun getAllNearbyQuests(quest: OsmQuest, distance: Double): List<OsmQuest> {
         val entries = db.getAllInBBox(quest.position.enclosingBoundingBox(distance))
-        val elementKeys = HashSet<ElementKey>()
-        entries.mapNotNullTo(elementKeys) {
-            if (it.elementType == quest.elementType && it.elementId == quest.elementId)
+        val neededGeometries = HashSet<ElementKey>()
+        entries.mapNotNullTo(neededGeometries) {
+            if ((it.elementType == quest.elementType && it.elementId == quest.elementId) || it.elementType == ElementType.NODE)
                 null
             else
                 ElementKey(it.elementType, it.elementId)
         }
 
         val geometriesByKey = HashMap<ElementKey, ElementGeometry>()
-        mapDataSource.getGeometries(elementKeys)
+        mapDataSource.getGeometries(neededGeometries)
             .associateTo(geometriesByKey) { ElementKey(it.elementType, it.elementId) to it.geometry }
         geometriesByKey[ElementKey(quest.elementType, quest.elementId)] = quest.geometry
 
         return entries.mapNotNull { entry ->
-            createOsmQuest(entry, geometriesByKey[ElementKey(entry.elementType, entry.elementId)])
+            createOsmQuest(entry, geometriesByKey[ElementKey(entry.elementType, entry.elementId)] ?: ElementPointGeometry(entry.position))
         }
     }
 
