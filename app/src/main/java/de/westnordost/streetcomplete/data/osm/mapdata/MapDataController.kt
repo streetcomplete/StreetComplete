@@ -119,6 +119,10 @@ class MapDataController internal constructor(
             spatialCache.update(updatedOrAdded = elements.filterIsInstance<Node>())
             addToNonSpatialCaches(elements, geometryEntries)
 
+            // todo: async!
+            //  but this should block db (or rather table) accesses while in operation
+            //  write operations lock the db in SQLite, but it might happen that another thread
+            //  accesses the db between any two of the 4 operations?
             elementDB.deleteAll(deletedKeys)
             geometryDB.deleteAll(deletedKeys)
             geometryDB.putAll(geometryEntries)
@@ -198,14 +202,15 @@ class MapDataController internal constructor(
         val nodes = spatialCache.get(bbox)
         val result = MutableMapDataWithGeometry()
         synchronized(this) {
-            val wayIds = nodes.mapNotNull { wayIdsByNodeIdCache[it.id] }.flatten().toSet()
-            val relationIds = (
-                nodes.mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.NODE, it.id)] }
-                .flatten() +
-                wayIds
-                    .mapNotNull { relationIdsByElementKeyCache[ElementKey(ElementType.WAY, it)] }
-                    .flatten()
-                ).toSet()
+            val wayIds = hashSetOf<Long>()
+            val relationIds = hashSetOf<Long>()
+            nodes.forEach { node ->
+                wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
+                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
+            }
+            wayIds.forEach { wayId ->
+                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
+            }
 
             val wayAndRelationKeys = wayIds.map { ElementKey(ElementType.WAY, it) } +
                 relationIds.map { ElementKey(ElementType.RELATION, it) }
@@ -359,24 +364,33 @@ class MapDataController internal constructor(
         synchronized(this) {
             val cachedNodeIds = spatialCache.getKeys()
             // ways with at least one node in cache should not be removed
-            val waysWithCachedNode = cachedNodeIds.mapNotNull { wayIdsByNodeIdCache[it] }.flatten().toSet()
-            val cachedWayAndNodeKeys = cachedNodeIds.map { ElementKey(ElementType.NODE, it) } + waysWithCachedNode.map { ElementKey(ElementType.WAY, it) }
+            val waysWithCachedNode = hashSetOf<Long>()
             // relations with at least one element in cache should not be removed
-            val relationsWithCachedElement = cachedWayAndNodeKeys.mapNotNull { relationIdsByElementKeyCache[it] }.flatten().toSet()
-            wayRelationCache.keys.removeAll {
-                if (it.type == ElementType.RELATION)
-                    it.id !in relationsWithCachedElement
-                else it.id !in waysWithCachedNode
+            val relationsWithCachedElement = hashSetOf<Long>()
+            cachedNodeIds.forEach { nodeId ->
+                wayIdsByNodeIdCache[nodeId]?.let { waysWithCachedNode.addAll(it) }
+                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, nodeId)]?.let { relationsWithCachedElement.addAll(it) }
             }
-            wayRelationGeometryCache.keys.removeAll {
+            waysWithCachedNode.forEach { wayId ->
+                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationsWithCachedElement.addAll(it) }
+            }
+            wayRelationCache.keys.retainAll {
                 if (it.type == ElementType.RELATION)
-                    it.id !in relationsWithCachedElement
-                else it.id !in waysWithCachedNode
+                    it.id in relationsWithCachedElement
+                else it.id in waysWithCachedNode
+            }
+            wayRelationGeometryCache.keys.retainAll {
+                if (it.type == ElementType.RELATION)
+                    it.id in relationsWithCachedElement
+                else it.id in waysWithCachedNode
             }
 
             // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
             wayIdsByNodeIdCache.keys.retainAll { it in cachedNodeIds }
-            relationIdsByElementKeyCache.keys.retainAll { it in cachedWayAndNodeKeys }
+            relationIdsByElementKeyCache.keys.retainAll {
+                (it.type == ElementType.NODE && it.id in cachedNodeIds
+                    || it.type == ElementType.WAY && it.id in waysWithCachedNode)
+            }
         }
     }
 
