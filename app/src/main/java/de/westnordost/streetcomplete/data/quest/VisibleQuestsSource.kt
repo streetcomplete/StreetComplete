@@ -74,9 +74,9 @@ class VisibleQuestsSource(
     }
 
     private val cache = SpatialCache(
-        16,
-        SPATIAL_CACHE_SIZE,
-        3000,
+        SPATIAL_CACHE_TILE_ZOOM,
+        SPATIAL_CACHE_TILES,
+        SPATIAL_CACHE_INITIAL_CAPACITY,
         { getAllVisibleForCache(it) },
         Quest::key, Quest::position
     )
@@ -133,7 +133,7 @@ class VisibleQuestsSource(
 
     fun clearCache() = cache.clear()
 
-    fun trimCache() = cache.trim(SPATIAL_CACHE_SIZE / 3)
+    fun trimCache() = cache.trim(SPATIAL_CACHE_TILES / 3)
 
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
@@ -147,4 +147,10 @@ class VisibleQuestsSource(
     }
 }
 
-private const val SPATIAL_CACHE_SIZE = 128
+// same tile zoom as used in QuestPinsManager which is the only caller of getAllVisible
+private const val SPATIAL_CACHE_TILE_ZOOM = 16
+// set a large number of tiles, as the cache is not large in memory and it allows
+// better UX when scrolling the map
+private const val SPATIAL_CACHE_TILES = 128
+// in a city this is the approximate number of quests in ~10 tiles on default visibilities
+private const val SPATIAL_CACHE_INITIAL_CAPACITY = 3000

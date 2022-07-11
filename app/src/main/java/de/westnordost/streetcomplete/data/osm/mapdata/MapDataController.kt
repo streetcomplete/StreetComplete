@@ -41,16 +41,16 @@ class MapDataController internal constructor(
     private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     val spatialCache = SpatialCache(
-        16,
-        SPATIAL_CACHE_SIZE,
-        20000,
+        SPATIAL_CACHE_TILE_ZOOM,
+        SPATIAL_CACHE_TILES,
+        SPATIAL_CACHE_INITIAL_CAPACITY,
         { bbox -> getDataInBBoxForSpatialCacheAndPutToNonSpatialCaches(bbox) },
         Node::id, Node::position
     )
-    private val wayRelationCache = HashMap<ElementKey, Element>(3000)
-    private val wayRelationGeometryCache = HashMap<ElementKey, ElementGeometry>(3000)
-    private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>()
-    private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>()
+    private val wayRelationCache = HashMap<ElementKey, Element>(WAYS_RELATIONS_INITIAL_CAPACITY)
+    private val wayRelationGeometryCache = HashMap<ElementKey, ElementGeometry>(WAYS_RELATIONS_INITIAL_CAPACITY)
+    private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>(WAYS_BY_NODE_INITIAL_CAPACITY)
+    private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>(RELATIONS_BY_ELEMENT_INITIAL_CAPACITY)
 
     /** update element data because in the given bounding box, fresh data from the OSM API has been
      *  downloaded */
@@ -351,7 +351,7 @@ class MapDataController internal constructor(
     }
 
     fun trimCache() {
-        spatialCache.trim(SPATIAL_CACHE_SIZE / 3)
+        spatialCache.trim(SPATIAL_CACHE_TILES / 3)
         trimNonSpatialCaches()
     }
 
@@ -473,4 +473,16 @@ class MapDataController internal constructor(
     }
 }
 
-private const val SPATIAL_CACHE_SIZE = 32
+// typically on the higher end when editing elements in SC
+// todo: cache might profit from switching to 17, as this means less data is loaded when not using overlays
+private const val SPATIAL_CACHE_TILE_ZOOM = 16
+// twice the maximum tiles that can be loaded at once in StyleableOverlayManager,
+// as we don't want to drop tiles from cache already when scrolling the map a bit
+private const val SPATIAL_CACHE_TILES = 32
+// in a city this is the approximate number of nodes in ~4-8 tiles
+private const val SPATIAL_CACHE_INITIAL_CAPACITY = 20000
+// in a city this is the approximate number of ways/relations in ~4-8 tiles
+private const val WAYS_RELATIONS_INITIAL_CAPACITY = 3000
+// we expect that roughly every second node is part of a way, and every 10th element is part of a relation
+private const val WAYS_BY_NODE_INITIAL_CAPACITY = SPATIAL_CACHE_INITIAL_CAPACITY / 2
+private const val RELATIONS_BY_ELEMENT_INITIAL_CAPACITY = SPATIAL_CACHE_INITIAL_CAPACITY / 10
