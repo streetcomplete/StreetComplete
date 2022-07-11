@@ -137,8 +137,7 @@ class VisibleQuestsSource(
 
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
-        cache.removeAll(deletedQuestKeys)
-        addedQuests.forEach(cache::putIfTileExists)
+        cache.update(addedQuests, deletedQuestKeys)
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }
 

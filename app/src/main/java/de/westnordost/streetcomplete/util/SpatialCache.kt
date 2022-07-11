@@ -42,35 +42,29 @@ class SpatialCache<K, T>(
         keys.mapNotNull { byKey[it] }
     }
 
-    /** Removes the given [key] from cache */
-    fun remove(key: K): Unit = synchronized(this) {
-        val item = byKey.remove(key) ?: return
-        byTile[item.getTilePos()]?.remove(item)
-    }
-
-    /** Removes the given [keys] from cache */
-    fun removeAll(keys: Collection<K>) = synchronized(this) {
-        for (key in keys) {
-            remove(key)
+    /**
+     * Removes the keys in [deleted] from cache
+     * Puts the [updatedOrAdded] items into cache only if the containing tile is already cached
+     */
+    fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) = synchronized(this) {
+        for (key in deleted) {
+            val item = byKey.remove(key) ?: continue
+            byTile[item.getTilePos()]?.remove(item)
+        }
+        for (item in updatedOrAdded) {
+            val key = item.getKey()
+            val previousItem = byKey[item.getKey()]
+            // remove item from old tile if it was moved
+            if (previousItem != null && item.getPosition() != previousItem.getPosition()) {
+                byTile[previousItem.getTilePos()]?.remove(item)
+            }
+            val tile = byTile[item.getTilePos()]
+            if (tile != null) {
+                tile.add(item)
+                byKey[key] = item
+            }
         }
     }
-
-    /** Puts the [item] into cache only if the containing tile is already cached */
-    fun putIfTileExists(item: T) = synchronized(this) {
-        val key = item.getKey()
-        val previousItem = byKey[item.getKey()]
-        // in cache already
-        if (previousItem != null) {
-            // but moved -> remove
-            if (item.getPosition() != previousItem.getPosition()) remove(key)
-        }
-        val tile = byTile[item.getTilePos()]
-        if (tile != null) {
-            tile.add(item)
-            byKey[key] = item
-        }
-    }
-
 
     /**
      * Replaces all tiles fully contained in the bounding box.

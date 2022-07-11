@@ -115,8 +115,8 @@ class MapDataController internal constructor(
             val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
             deletedKeys = mapDataUpdates.deleted + oldElementKeys
 
-            deleteFromCache(deletedKeys)
-            elements.forEach { if (it is Node) spatialCache.putIfTileExists(it) }
+            deleteFromCache(deletedKeys) // todo: could also do the delete in same operation
+            spatialCache.update(updatedOrAdded = elements.filterIsInstance<Node>())
             addToNonSpatialCaches(elements, geometryEntries)
 
             elementDB.deleteAll(deletedKeys)
@@ -397,7 +397,7 @@ class MapDataController internal constructor(
     }
 
     private fun deleteFromCache(deleted: Collection<ElementKey>) {
-        spatialCache.removeAll(deleted.filter { it.type == ElementType.NODE }.map { it.id })
+        spatialCache.update(deleted = deleted.filter { it.type == ElementType.NODE }.map { it.id })
         synchronized(this) {
             deleted.forEach {
                 wayRelationCache.remove(it)
