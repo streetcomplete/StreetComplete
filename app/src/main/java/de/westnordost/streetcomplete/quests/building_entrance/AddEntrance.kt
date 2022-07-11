@@ -25,7 +25,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
-        ways with (tunnel and tunnel != no) or covered=yes
+        ways with (tunnel and tunnel != no) or (covered and covered != no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Add entrance info"
