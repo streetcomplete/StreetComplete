@@ -278,7 +278,7 @@ class MapDataController internal constructor(
 // zoom 16 is typically on the higher end when editing elements in SC
 // todo: cache might profit from switching zoom to 17, as this means less data is loaded when not using overlays
 private const val SPATIAL_CACHE_TILE_ZOOM = 16
-// twice the maximum tiles that can be loaded at once in StyleableOverlayManager,
+// twice the maximum tiles that can be loaded at once in StyleableOverlayManager (at same zoom),
 // as we don't want to drop tiles from cache already when scrolling the map a bit
 private const val SPATIAL_CACHE_TILES = 32
 // in a city this is the approximate number of nodes in ~4-8 tiles

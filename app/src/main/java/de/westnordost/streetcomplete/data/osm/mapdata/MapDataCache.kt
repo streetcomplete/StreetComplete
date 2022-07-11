@@ -69,8 +69,10 @@ class MapDataCache(
             val relations = addedOrUpdatedElements.filterIsInstance<Relation>()
             val relationIds = relations.map {it.id}
             (ways + relations).forEach { wayRelationCache[ElementKey(it.type, it.id)] = it }
-            addedOrUpdatedGeometries.filterNot { it.elementType == ElementType.NODE }
-                .forEach { wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry }
+            addedOrUpdatedGeometries.forEach {
+                if (it.elementType != ElementType.NODE)
+                    wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
+            }
 
             ways.forEach { way ->
                 wayRelationCache[ElementKey(ElementType.WAY, way.id)]?.let { oldWay ->
@@ -187,30 +189,38 @@ class MapDataCache(
 
         val result = MutableMapDataWithGeometry()
         result.boundingBox = bbox
-        val nodes: List<Node>
+        val nodes: Collection<Node>
         if (tilesToFetch.isNotEmpty()) {
             // fetch needed data
             val fetchBBox = tilesToFetch.minTileRect()!!.asBoundingBox(tileZoom)
             val (elements, geometries) = fetchMapData(fetchBBox)
-            // get nodes from tiles in cache
-            // this must happen before putting data to caches, because SpatialCache.replaceAllInBBox
-            // calls trim(), and thus after putting the intially cached tiles might have been dropped
-            val remainingBBox = requiredTiles.filter { it in cachedTiles }.minTileRect()?.asBoundingBox(tileZoom)
-            nodes = if (remainingBBox != null) spatialCache.get(remainingBBox)
-                else emptyList()
+
+            // get nodes from spatial cache
+            // this may not contain all nodes, but tiles that were cached initially might
+            // get dropped when the caches are updated
+            // duplicate fetch might be unnecessary often, but it's fast compared to fetching from db
+            nodes = HashSet<Node>().apply { addAll(spatialCache.get(bbox)) }
+
             // put data to caches
             update(addedOrUpdatedElements = elements, addedOrUpdatedGeometries = geometries, bbox = fetchBBox)
-            result.putAll(elements, geometries)
-            if (remainingBBox == null)
+
+            // return data if we need exactly what was just fetched
+            if (fetchBBox == bbox) {
+                result.putAll(elements, geometries + elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() })
                 return result
+            }
+
+            // get nodes again, should contains the newly added nodes this time
+            // (but maybe not the old ones)
+            nodes.addAll(spatialCache.get(bbox))
         } else {
             nodes = spatialCache.get(bbox)
         }
 
-        nodes.forEach { result.put(it, ElementPointGeometry(it.position)) } // create new geometry, as it's not cached
+        nodes.forEach { result.put(it, ElementPointGeometry(it.position)) } // create a new geometry, as it's not cached (this is the slowest part in loading from cache)
         synchronized(this) {
-            val wayIds = hashSetOf<Long>()
-            val relationIds = hashSetOf<Long>()
+            val wayIds = HashSet<Long>(nodes.size / 5)
+            val relationIds = HashSet<Long>(nodes.size / 10)
             nodes.forEach { node ->
                 wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
                 relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
@@ -219,9 +229,14 @@ class MapDataCache(
                 relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
             }
 
-            val wayAndRelationKeys = wayIds.map { ElementKey(ElementType.WAY, it) } +
-                relationIds.map { ElementKey(ElementType.RELATION, it) }
-            wayAndRelationKeys.forEach { result.put(wayRelationCache[it]!!, wayRelationGeometryCache[it]) }
+            wayIds.forEach {
+                val key = ElementKey(ElementType.WAY, it)
+                result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+            }
+            relationIds.forEach {
+                val key = ElementKey(ElementType.RELATION, it)
+                result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+            }
         }
 
         // todo: call trimNonSpatialCaches if tilesToFetch.isNotEmpty()?
@@ -248,7 +263,7 @@ class MapDataCache(
 
     private fun trimNonSpatialCaches() {
         synchronized(this) {
-            val cachedNodeIds = spatialCache.getKeys()
+            val cachedNodeIds = spatialCache.getKeys().toHashSet()
             // ways with at least one node in cache should not be removed
             val waysWithCachedNode = hashSetOf<Long>()
             // relations with at least one element in cache should not be removed
@@ -274,13 +289,13 @@ class MapDataCache(
             // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
             wayIdsByNodeIdCache.keys.retainAll { it in cachedNodeIds }
             relationIdsByElementKeyCache.keys.retainAll {
-                (it.type == ElementType.NODE && it.id in cachedNodeIds
-                    || it.type == ElementType.WAY && it.id in waysWithCachedNode)
+                (it.type == ElementType.NODE && it.id in cachedNodeIds)
+                    || (it.type == ElementType.WAY && it.id in waysWithCachedNode)
             }
         }
     }
 
-    // todo: really used? because actually we could also cache "not existing" response and use getOrPut
+    // todo: really use? because actually we could also cache "not existing" response and use getOrPut
     //  would mean that caches (except spatial) would need to switch to allow null
     //  but need to consider that when filling MapDataWithGeometry, and maybe somewhere else
     private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
