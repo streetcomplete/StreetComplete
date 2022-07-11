@@ -28,7 +28,9 @@ class SpatialCache<K, T>(
 ) {
     private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles/0.75).toInt(), 0.75f, true)
     private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
-    val keys: Set<K> get() = synchronized(this) { byKey.keys.toHashSet() } // return a new set!
+
+    /** @return a new list of all keys in the cache */
+    fun getKeys(): List<K> = synchronized(this) { byKey.keys.toList() }
 
     /** @return the item with the given [key] if in cache */
     fun get(key: K): T? = synchronized(this) {

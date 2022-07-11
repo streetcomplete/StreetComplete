@@ -357,7 +357,7 @@ class MapDataController internal constructor(
 
     private fun trimNonSpatialCaches() {
         synchronized(this) {
-            val cachedNodeIds = spatialCache.keys
+            val cachedNodeIds = spatialCache.getKeys()
             // ways with at least one node in cache should not be removed
             val waysWithCachedNode = cachedNodeIds.mapNotNull { wayIdsByNodeIdCache[it] }.flatten().toSet()
             val cachedWayAndNodeKeys = cachedNodeIds.map { ElementKey(ElementType.NODE, it) } + waysWithCachedNode.map { ElementKey(ElementType.WAY, it) }
@@ -411,7 +411,7 @@ class MapDataController internal constructor(
         elements: Iterable<Element>, // should also contains nodes if they weren't already added to spatialCache
         geometries: Iterable<ElementGeometryEntry> // nodes will be ignored
     ) = synchronized(this) {
-        val nodeIds = (elements.filterIsInstance<Node>().map { it.id } + spatialCache.keys).toSet()
+        val nodeIds = (elements.filterIsInstance<Node>().map { it.id } + spatialCache.getKeys()).toSet()
         val ways = elements.filterIsInstance<Way>()
         val wayIds = ways.map {it.id}
         val relations = elements.filterIsInstance<Relation>()
