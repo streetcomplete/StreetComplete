@@ -117,7 +117,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             updateGlobalRankText()
             updateLocalRankText()
             updateAchievementLevelsText()
-            updatePlaceholderRanksTexts()
         }
     }
 
@@ -248,53 +247,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
         val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
         binding.globalRankText.background = LaurelWreath(resources, min(scaledRank, 100))
-    }
-
-    private fun updatePlaceholderRanksTexts() {
-        var percent: Int
-        percent = 100
-        binding.placeholder1Text.text = "$percent%"
-        binding.placeholder1Text.background = LaurelWreath(resources, percent)
-
-        percent = 90 + Random.nextInt(10)
-        binding.placeholder2Text.text = "$percent%"
-        binding.placeholder2Text.background = LaurelWreath(resources, percent)
-
-        percent = 80 + Random.nextInt(10)
-        binding.placeholder3Text.text = "$percent%"
-        binding.placeholder3Text.background = LaurelWreath(resources, percent)
-
-        percent = 70 + Random.nextInt(10)
-        binding.placeholder4Text.text = "$percent%"
-        binding.placeholder4Text.background = LaurelWreath(resources, percent)
-
-        percent = 60 + Random.nextInt(10)
-        binding.placeholder5Text.text = "$percent%"
-        binding.placeholder5Text.background = LaurelWreath(resources, percent)
-
-        percent = 50 + Random.nextInt(10)
-        binding.placeholder6Text.text = "$percent%"
-        binding.placeholder6Text.background = LaurelWreath(resources, percent)
-
-        percent = 40 + Random.nextInt(10)
-        binding.placeholder7Text.text = "$percent%"
-        binding.placeholder7Text.background = LaurelWreath(resources, percent)
-
-        percent = 30 + Random.nextInt(10)
-        binding.placeholder8Text.text = "$percent%"
-        binding.placeholder8Text.background = LaurelWreath(resources, percent)
-
-        percent = 20 + Random.nextInt(10)
-        binding.placeholder9Text.text = "$percent%"
-        binding.placeholder9Text.background = LaurelWreath(resources, percent)
-
-        percent = 10 + Random.nextInt(10)
-        binding.placeholder10Text.text = "$percent%"
-        binding.placeholder10Text.background = LaurelWreath(resources, percent)
-
-        percent = 0 + Random.nextInt(10)
-        binding.placeholder11Text.text = "$percent%"
-        binding.placeholder11Text.background = LaurelWreath(resources, percent)
     }
 
     private suspend fun updateLocalRankText() {
