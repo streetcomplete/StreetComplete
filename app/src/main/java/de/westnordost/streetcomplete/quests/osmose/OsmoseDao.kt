@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENT_ID
@@ -26,7 +25,6 @@ import java.io.IOException
 class OsmoseDao(
     private val db: Database,
     private val sharedPrefs: SharedPreferences,
-    private val questController: OsmQuestController,
 ) {
     val client = OkHttpClient()
 
@@ -142,8 +140,6 @@ class OsmoseDao(
             values = listOf(FALSE_POSITIVE to 1),
             where = "$UUID = '$uuid'"
         )
-        if (questKey is OsmQuestKey)
-            questController.delete(questKey)
     }
 
     fun setDone(uuid: String) {

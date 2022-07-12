@@ -6,14 +6,19 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
+import org.koin.android.ext.android.inject
 
 class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>() {
 
     var issue: OsmoseIssue? = null
+
+    private val osmQuestController: OsmQuestController by inject()
 
     override val buttonPanelAnswers = mutableListOf<AnswerItem>()
 
@@ -62,8 +67,8 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>
             // TODO: dialog that warns that there is no undo
             buttonPanelAnswers.add(AnswerItem(R.string.quest_osmose_false_positive) {
                 db.setAsFalsePositive(issue?.uuid ?: "", questKey)
-                // quest removed from db, tempHide to make it disappear
-                tempHideQuest()
+                // remove quest from db
+                osmQuestController.delete(questKey as OsmQuestKey)
             } )
         updateButtonPanel()
     }

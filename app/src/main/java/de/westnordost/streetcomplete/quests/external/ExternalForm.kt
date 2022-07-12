@@ -4,20 +4,26 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import org.koin.android.ext.android.inject
 
 class ExternalForm(private val externalList: ExternalList) : AbstractOsmQuestForm<Boolean>() {
 
     override val contentLayoutResId = R.layout.quest_osmose_external
     private val binding by contentViewBinding(QuestOsmoseExternalBinding::bind)
 
+    private val osmQuestController: OsmQuestController by inject()
+
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_external_remove) {
             val key = ElementKey(element.type, element.id)
             externalList.remove(key)
-            tempHideQuest()
+            // OsmQuestKey(key.type, key.id, "ExternalQuest")
+            osmQuestController.delete(questKey as OsmQuestKey)
         }
     )
 

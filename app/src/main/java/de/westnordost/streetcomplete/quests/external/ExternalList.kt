@@ -3,12 +3,11 @@ package de.westnordost.streetcomplete.quests.external
 import android.content.Context
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import java.io.File
 import java.lang.Exception
 
-class ExternalList(context: Context, private val questController: OsmQuestController) {
+class ExternalList(context: Context) {
     val questsMap = mutableMapOf<ElementKey, String>()
     private val path = context.getExternalFilesDir(null)
 
@@ -49,6 +48,5 @@ class ExternalList(context: Context, private val questController: OsmQuestContro
             }
         }
         file.writeText(lines.joinToString("\n"))
-        questController.delete(OsmQuestKey(key.type, key.id, "ExternalQuest"))
     }
 }
