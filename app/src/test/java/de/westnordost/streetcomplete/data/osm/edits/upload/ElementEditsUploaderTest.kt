@@ -60,14 +60,16 @@ class ElementEditsUploaderTest {
         val edit = edit()
         val idProvider = mock<ElementIdProvider>()
         val updates = mock<MapDataUpdates>()
+        val node = node(1)
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenReturn(updates)
+        on(mapDataController.get(any(), anyLong())).thenReturn(node)
+        on(singleUploader.upload(any(), any(), any())).thenReturn(updates)
 
         uploader.upload()
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(edit, idProvider, node)
         verify(listener).onUploaded(any(), any())
         verify(elementEditsController).markSynced(edit, updates)
         verify(mapDataController).updateAll(updates)
@@ -79,15 +81,17 @@ class ElementEditsUploaderTest {
         val edit = edit()
         val idProvider = mock<ElementIdProvider>()
         val updatedNode = node()
+        val localNode = node()
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
+        on(singleUploader.upload(any(), any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(updatedNode)
+        on(mapDataController.get(any(), anyLong())).thenReturn(localNode)
 
         uploader.upload()
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(edit, idProvider, localNode)
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
@@ -101,15 +105,17 @@ class ElementEditsUploaderTest {
     @Test fun `upload catches deleted element exception`() = runBlocking {
         val edit = edit(element = node(1))
         val idProvider = mock<ElementIdProvider>()
+        val node = node(1)
 
         on(elementEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
         on(elementEditsController.getIdProvider(anyLong())).thenReturn(idProvider)
-        on(singleUploader.upload(any(), any())).thenThrow(ConflictException())
+        on(singleUploader.upload(any(), any(), any())).thenThrow(ConflictException())
         on(mapDataApi.getNode(anyLong())).thenReturn(null)
+        on(mapDataController.get(any(), anyLong())).thenReturn(node)
 
         uploader.upload()
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(edit, idProvider, node)
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
