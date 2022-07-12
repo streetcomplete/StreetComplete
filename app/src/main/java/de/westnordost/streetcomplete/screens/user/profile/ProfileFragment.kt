@@ -238,12 +238,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateGlobalRankText() {
+        // note that global rank merges multiple people with the same score
+        // in case that 1000 people made 11 edits all will have the same rank (say, 3814)
+        // in case that 1000 people made 10 edits all will have the same rank (in this case - 3815)
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
         binding.globalRankText.text = "#$rank"
-        val scMapperCountIn2022 = 45000
         val rankEnoughForFullMarks = 1000
-        val rankEnoughToStartGrowingReward = 8000 // TODO: tweak this based on actual numbers!
+        val rankEnoughToStartGrowingReward = 3800
         val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
         val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
         binding.globalRankText.background = LaurelWreath(resources, min(scaledRank, 100))
