@@ -1737,8 +1737,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"У этой дороги есть обочина?"</string>
     <string name="quest_fireHydrant_position_title">"Где находится этот пожарный гидрант?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"В траве или грунте"</string>
     <string name="quest_fireHydrant_position_lane">"На проезжей части"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"На тротуаре"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На парковочном месте"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Да (оставьте заметку)"</string>

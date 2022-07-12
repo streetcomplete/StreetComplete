@@ -992,7 +992,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"บ้านเดี่ยวหลังเล็ก (บ้านพักฤดูร้อน กระท่อมตากอากาศ กระท่อม …)"</string>
-    <string name="quest_railway_crossing_barrier_title2">"ทางข้ามทางรถไฟนี้ใช้สิ่งกีดขวางประเภทใด?"</string>
+    <string name="quest_railway_crossing_barrier_title2">"ทางข้ามทางรถไฟนี้ใช้เครื่องกั้นประเภทใด?"</string>
     <string name="quest_railway_crossing_barrier_none2">"ไม่มีเครื่องกั้น"</string>
     <string name="quest_steps_ramp_title">"บันไดนี้มีทางลาดหรือไม่? เป็นชนิดไหน?"</string>
     <string name="quest_steps_ramp_none">"ไม่มีทางลาด (ใช้ไม่ได้)"</string>
@@ -1348,8 +1348,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"ถนนเส้นนี้มีไหล่ทางรึเปล่า?"</string>
     <string name="quest_fireHydrant_position_title">"หัวจ่ายน้ำดับเพลิงตั้งอยู่ตรงไหน?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"อยู่บนหญ้าหรือดิน"</string>
     <string name="quest_fireHydrant_position_lane">"อยู่บนถนน"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"อยู่บนทางเท้า"</string>
     <string name="quest_fireHydrant_position_parking_lot">"อยู่ในที่จอดรถ"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"มี (สร้างโน๊ตไว้)"</string>
@@ -1561,4 +1565,13 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"ไหล่ทางเป็นช่องทางหยุดฉุกเฉินที่กำหนดไว้อย่างชัดเจน พื้นที่ที่กำหนดเป็นไหล่ทางไม่จำเป็นต้องลาดยางทั้งพื้นที่ และไม่จำเป็นต้องกว้างพอที่รถทั้งคันจะจอดได้"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"ไม่มี ไม่อนุญาตให้ปั่นจักรยานในทิศทางนี้"</string>
+    <string name="map_btn_create_track">"สร้างการบันทึกเส้นทางใหม่"</string>
+    <string name="map_btn_stop_track">"หยุดการบันทึกเส้นทาง"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"ไม่ มีแค่จักรยานใหม่"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"ใช่ รวมถึงจักรยานใหม่"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"ใช่ เฉพาะมือสอง"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
+    <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
+    <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
 </resources>

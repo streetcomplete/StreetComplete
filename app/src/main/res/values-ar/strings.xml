@@ -1354,8 +1354,12 @@
     <string name="quest_address_house_number_label">"رقم المنزل:"</string>
     <string name="quest_shoulder_title">"هل هذا الطريق به كتف أو مسار طوارئ؟"</string>
     <string name="quest_fireHydrant_position_title">"أين يقع صنبور الحريق هذا؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"في العشب أو التراب"</string>
     <string name="quest_fireHydrant_position_lane">"على الطريق"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"على الرصيف"</string>
     <string name="quest_fireHydrant_position_parking_lot">"في مكان وقوف السيارات"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"نعم (اترك ملاحظة)"</string>

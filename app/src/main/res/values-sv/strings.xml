@@ -1319,8 +1319,12 @@ Du kan också lämna en anteckning (med bild)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Har den här vägen en vägren?"</string>
     <string name="quest_fireHydrant_position_title">"Var ligger denna brandpost?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"I gräset eller jorden"</string>
     <string name="quest_fireHydrant_position_lane">"På vägen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"På trottoaren"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplats"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (lämna anteckning)"</string>
@@ -1602,4 +1606,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Belyst dygnet runt"</string>
     <string name="lit_value_automatic">"Belyst när någon passerar"</string>
     <string name="overlay_sidewalk">"Trottoarer"</string>
+    <string name="quest_generic_answer_is_indoors">"Det är inomhus"</string>
+    <string name="quest_summit_cross_title">"Finns det ett toppkors här?"</string>
+    <string name="quest_entrance_reference">"Vad finns skyltat vid denna entré?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ingångsnummer och lägenhetsnummer"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Lägenhetsnummer"</string>
+    <string name="quest_entrance_reference_select_code_only">"Ingångsnummer"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Ingen skylt med ingångs- eller lägenhetsnummer"</string>
+    <string name="quest_entrance_reference_reference_label">"Ingångsnummer:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Lägenhetsnr:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"till"</string>
 </resources>

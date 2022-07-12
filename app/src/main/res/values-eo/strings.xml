@@ -1343,8 +1343,12 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_address_answer_house_name_and_housenumber">"Kaj domnumero kaj -nomo ..."</string>
     <string name="quest_address_house_number_label">"Domnumero:"</string>
     <string name="quest_fireHydrant_position_title">"Kie troviĝas tiu ĉi fajrohidranto?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"En herbo aŭ malpuraĵo"</string>
     <string name="quest_fireHydrant_position_lane">"Sur la vojo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Sur la trotuaro"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En parkejo"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Jes (lasi noton)"</string>

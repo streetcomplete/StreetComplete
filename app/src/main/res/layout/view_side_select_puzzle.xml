@@ -40,19 +40,6 @@
                 tools:ignore="RtlHardcoded"
                 tools:src="@drawable/ic_cycleway_track"/>
 
-            <de.westnordost.streetcomplete.view.VerticalLabelView
-                android:id="@+id/leftSideTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:textSize="10sp"
-                android:textColor="#404040"
-                app:orientationRight="true"
-                tools:text="Sidewalk"/>
-
             <ImageView
                 android:id="@+id/leftSideFloatingIcon"
                 android:layout_width="match_parent"
@@ -65,6 +52,21 @@
                 tools:src="@drawable/ic_no_parking"
                 tools:visibility="visible"
                 android:layout_centerInParent="true" />
+
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/leftSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                android:shadowColor="#fff"
+                android:shadowRadius="2.0"
+                app:orientationRight="true"
+                tools:text="Sidewalk"/>
 
         </RelativeLayout>
 
@@ -90,17 +92,6 @@
                 tools:ignore="RtlHardcoded"
                 tools:src="@drawable/ic_cycleway_sidewalk"/>
 
-            <de.westnordost.streetcomplete.view.VerticalLabelView
-                android:id="@+id/rightSideTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textSize="10sp"
-                android:textColor="#404040"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                tools:text="Sidewalk"/>
-
             <ImageView
                 android:id="@+id/rightSideFloatingIcon"
                 android:layout_width="match_parent"
@@ -114,6 +105,19 @@
                 tools:visibility="visible"
                 tools:src="@drawable/ic_no_parking"
                 />
+
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/rightSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                android:shadowColor="#fff"
+                android:shadowRadius="2.0"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                tools:text="Sidewalk"/>
 
         </RelativeLayout>
 

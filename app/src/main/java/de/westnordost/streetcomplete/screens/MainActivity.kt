@@ -98,10 +98,6 @@ class MainActivity :
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 
-        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
-
         setContentView(R.layout.activity_main)
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
@@ -134,6 +130,11 @@ class MainActivity :
 
     public override fun onStart() {
         super.onStart()
+
+        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
         downloadController.showNotification = false
         uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)

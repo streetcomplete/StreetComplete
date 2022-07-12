@@ -2395,8 +2395,12 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Heeft deze weg een vluchtstrook?"</string>
     <string name="quest_fireHydrant_position_title">"Waar is deze brandkraan geplaatst?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"In gras of aarde"</string>
     <string name="quest_fireHydrant_position_lane">"Op de rijbaan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"op het voetpad"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Op een parkeerplaats"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (laat een notitie achter)"</string>

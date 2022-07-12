@@ -1254,8 +1254,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Да ли овај пут има зауставну траку?"</string>
     <string name="quest_fireHydrant_position_title">"Где се овај хидрант налази?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"На трави или земљи"</string>
     <string name="quest_fireHydrant_position_lane">"На путу"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"На тротоару"</string>
     <string name="quest_fireHydrant_position_parking_lot">"На паркингу"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Да (остави белешку)"</string>

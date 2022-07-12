@@ -1404,8 +1404,12 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Est-ce que cette route a une bande d’arrêt d’urgence ?"</string>
     <string name="quest_fireHydrant_position_title">"Où cette borne incendie est-elle située ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Dans l’herbe ou en terre"</string>
     <string name="quest_fireHydrant_position_lane">"Sur la chaussée"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Sur le trottoir"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Sur une place de stationnement"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Oui (laissez une note)"</string>
@@ -1688,4 +1692,14 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="lit_value_automatic">"Éclairage lorsque quelqu’un passe"</string>
     <string name="overlay_sidewalk">"Trottoirs"</string>
+    <string name="quest_generic_answer_is_indoors">"C'est à l'intérieur"</string>
+    <string name="quest_summit_cross_title">"Y a-t'il une croix à ce sommet ? "</string>
+    <string name="quest_entrance_reference">"Qu'est-il indiqué à cette entrée ?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Inscription à l'entrée et rangée d'appartements"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Rangée d'appartements"</string>
+    <string name="quest_entrance_reference_select_code_only">"Inscription à l'entrée"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Pas d'inscription ou de rangée"</string>
+    <string name="quest_entrance_reference_reference_label">"Inscription à l'entrée :"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Rangée d'appartements :"</string>
+    <string name="quest_entrance_reference_flat_range_to">"à"</string>
 </resources>

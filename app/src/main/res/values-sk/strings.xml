@@ -1645,8 +1645,12 @@ Taktiež môžete nechať poznámku (s fotkou)"</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Má táto cesta odstavný pruh?"</string>
     <string name="quest_fireHydrant_position_title">"Kde sa nachádza tento požiarny hydrant?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"V tráve alebo hline"</string>
     <string name="quest_fireHydrant_position_lane">"Na ceste"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Na chodníku"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Na parkovacom mieste"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Áno (nechajte poznámku)"</string>

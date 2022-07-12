@@ -1963,8 +1963,12 @@ Alternativt, lag en merknad (med bilde)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Har denne veien en veiskulder?"</string>
     <string name="quest_fireHydrant_position_title">"Hvor står denne brannhydranten?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"På gress eller jord"</string>
     <string name="quest_fireHydrant_position_lane">"I veibanen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"På fortauet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplass"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (skriv en merkand)"</string>

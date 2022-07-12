@@ -1647,8 +1647,12 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
     <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"잔디 또는 흙"</string>
     <string name="quest_fireHydrant_position_lane">"길가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"인도"</string>
     <string name="quest_fireHydrant_position_parking_lot">"주차장"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"예 (참고 남기기)"</string>

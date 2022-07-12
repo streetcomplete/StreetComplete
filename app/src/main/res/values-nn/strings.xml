@@ -1008,7 +1008,7 @@
     <string name="quest_presets_preset_name">"Namn på oppdragsutvalet"</string>
     <string name="quest_presets_default_name">"Standard"</string>
     <string name="quest_presets_selected">"Merkt"</string>
-    <string name="quest_presets_delete_message">"Vil du sletta oppdragsutvalet «%1». Val av oppdrag og oppdrags­rekkjefølgja går då tapt for alltid."</string>
+    <string name="quest_presets_delete_message">"Vil du sletta oppdragsutvalet «%s». Val av oppdrag og oppdrags­rekkjefølgja går då tapt for alltid."</string>
     <string name="notification_syncing">"Synkroniserer data …"</string>
 
     <!-- Android notifications -->
