@@ -7,34 +7,8 @@
    viewBox="0 0 16.700001 14.77374"
    version="1.1"
    id="svg2717"
-   sodipodi:docname="laurel_leaf_ending.svg"
-   inkscape:version="1.2 (1:1.2+202206011327+fc4e4096c5)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview6"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="11.313709"
-     inkscape:cx="8.8830285"
-     inkscape:cy="54.668191"
-     inkscape:window-width="1920"
-     inkscape:window-height="1140"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
-     height="12.77374mm"
-     inkscape:showpageshadow="2"
-     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2714" />
   <g
@@ -50,8 +24,7 @@
       <path
          style="fill:#006a00;fill-opacity:1;stroke:none;stroke-width:0.14293px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m -73.208592,-9.9926603 c -0.126602,-0.7606627 -0.05041,-0.2411057 -0.107927,-0.8957487 -0.116308,-1.323697 -1.471447,-3.308405 -2.344423,-4.272861 -1.293266,-1.428791 -4.523419,-3.319866 -4.523419,-3.319866 0,0 0.357286,1.27637 0.834478,2.450477 0.364952,0.897943 0.720162,1.856084 1.326696,2.627174 1.117691,1.420928 3.318703,3.197496 4.129186,3.5162832 0.315039,0.2808677 0.219533,0.2443564 0.219533,0.2443564 z"
-         id="path959-6"
-         sodipodi:nodetypes="csscsaccc" />
+         id="path959-6" />
     </g>
   </g>
 </svg>
