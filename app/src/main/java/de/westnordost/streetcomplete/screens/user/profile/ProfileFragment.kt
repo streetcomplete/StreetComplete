@@ -186,7 +186,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val height: Int = bounds.height()
             val radius: Float = Math.min(width, height).toFloat() / 2f
 
-            // Draw a red circle in the center
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
 
             if (percentageOfGrowth < 10) {
