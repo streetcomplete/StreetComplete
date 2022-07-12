@@ -106,8 +106,9 @@ class MapDataCache(
     }
 
     fun getElement(type: ElementType, id: Long, fetch: (ElementType, Long) -> Element?): Element? {
-        val element = if (type == ElementType.NODE) spatialCache.get(id)
-        else synchronized(this) { wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) } }
+        val element = 
+            if (type == ElementType.NODE) spatialCache.get(id)
+            else synchronized(this) { wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) } }
         return element ?: fetch(type, id)
     }
 
