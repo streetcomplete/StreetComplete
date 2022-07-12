@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.SOFT_SURFACES
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -28,9 +29,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
             and !surface:note
             and !note:surface
           )
-          or tracktype = grade1 and surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
-          or tracktype = grade2 and surface ~ ${SOFT_SURFACES.joinToString("|")}
-          or tracktype = grade3|grade4|grade5 and surface ~ ${ANYTHING_FULLY_PAVED.joinToString("|")}
+          or tracktype = grade1 and surface ~ ${INVALID_SURFACES_FOR_TRACKTYPES["grade1"]!!.joinToString("|")}
+          or tracktype = grade2 and surface ~ ${INVALID_SURFACES_FOR_TRACKTYPES["grade2"]!!.joinToString("|")}
+          or tracktype = grade3 and surface ~ ${INVALID_SURFACES_FOR_TRACKTYPES["grade3"]!!.joinToString("|")}
+          or tracktype = grade4 and surface ~ ${INVALID_SURFACES_FOR_TRACKTYPES["grade4"]!!.joinToString("|")}
+          or tracktype = grade5 and surface ~ ${INVALID_SURFACES_FOR_TRACKTYPES["grade5"]!!.joinToString("|")}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
