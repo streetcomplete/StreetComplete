@@ -190,6 +190,7 @@ produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/w
 ramp_none.jpg                  CC0               Mateusz Konieczny
 ramp_stroller.jpg              CC0               Mateusz Konieczny
 ramp_wheelchair.jpg            CC0               Mateusz Konieczny
+ramp_bicycle.jpg               CC0               Mateusz Konieczny
 
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
