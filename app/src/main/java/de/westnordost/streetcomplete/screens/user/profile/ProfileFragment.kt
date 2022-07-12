@@ -181,12 +181,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         override fun draw(canvas: Canvas) {
             // Get the drawable's bounds
-            val width: Int = bounds.width()
-            val height: Int = bounds.height()
-            val radius: Float = min(width, height).toFloat() / 2f
+            val canvasWidth: Int = bounds.width()
+            val canvasHeight: Int = bounds.height()
+            val circleRadius: Float = min(canvasWidth, canvasHeight).toFloat() / 2f
 
             val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 152, 184, 126) }
-            canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
+            canvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), circleRadius, niceSubtleGreen)
 
             if (percentageOfGrowth < 10) {
                 return
@@ -194,31 +194,31 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             val decorationSegmentImageWidth = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
 
-            val n = 11f
+            val regularSegmentCount = 11f
 
-            val offset = width / 2f
-            val reach = ((n - 1) * percentageOfGrowth / 100).toInt()
+            val circleCenterX = canvasWidth / 2f
+            val shownSegments = ((regularSegmentCount - 1) * percentageOfGrowth / 100).toInt()
             val locationBetweenCenterAndEdge = 0.78f
-            for (i in 0..reach) {
+            for (i in 0..shownSegments) {
                 // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
 
                 var bitmap = laurelLeafOnStalk.bitmap
-                if (i == reach) {
+                if (i == shownSegments) {
                     bitmap = horizontalEndingLeaf.bitmap
                 } else if (i == 0 ) {
                     bitmap = laurelStalk.bitmap
                 }
 
                 // left side
-                canvas.withRotation(i * 180.0f / n, width / 2f, height / 2f) {
+                canvas.withRotation(i * 180.0f / regularSegmentCount, canvasWidth / 2f, canvasHeight / 2f) {
                     // drawBitmap takes corner of the bitmap, we care about centering segments
-                    canvas.drawBitmap(bitmap, offset - decorationSegmentImageWidth / 2f, height * locationBetweenCenterAndEdge, antiAliasPaint)
+                    canvas.drawBitmap(bitmap, circleCenterX - decorationSegmentImageWidth / 2f, canvasHeight * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
 
                 // right side
                 val flippedBitmap = bitmap.flipHorizontally()
-                canvas.withRotation(-i * 180.0f / n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(flippedBitmap, offset - decorationSegmentImageWidth / 2f, height * locationBetweenCenterAndEdge, antiAliasPaint)
+                canvas.withRotation(-i * 180.0f / regularSegmentCount, canvasWidth / 2f, canvasHeight / 2f) {
+                    canvas.drawBitmap(flippedBitmap, circleCenterX - decorationSegmentImageWidth / 2f, canvasHeight * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
             }
         }
