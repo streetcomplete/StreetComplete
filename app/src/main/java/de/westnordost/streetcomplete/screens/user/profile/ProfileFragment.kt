@@ -200,7 +200,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val offset = width / 2f
             val endingImageInternalOffset = imageWidth / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
             val reach = ((n - 1) * percentageOfGrowth / 100).toInt()
-
+            val locationBetweenCenterAndEdge = 0.78f
             for (i in 0..reach) {
                 // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
 
@@ -211,15 +211,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     bitmap = laurelStalk.bitmap
                 }
 
-                val flippedBitmap = bitmap.flipHorizontally()
                 // left side
                 canvas.withRotation(i * 180.0f / n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
+                    canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
 
                 // right side
+                val flippedBitmap = bitmap.flipHorizontally()
                 canvas.withRotation(-i * 180.0f / n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
+                    canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
             }
         }
