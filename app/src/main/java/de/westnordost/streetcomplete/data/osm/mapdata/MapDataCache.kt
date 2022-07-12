@@ -266,32 +266,32 @@ class MapDataCache(
         synchronized(this) {
             val cachedNodeIds = spatialCache.getKeys().toHashSet()
             // ways with at least one node in cache should not be removed
-            val waysWithCachedNode = hashSetOf<Long>()
+            val wayIdsWithCachedNode = HashSet<Long>(cachedNodeIds.size / 2)
             // relations with at least one element in cache should not be removed
-            val relationsWithCachedElement = hashSetOf<Long>()
+            val relationIdsWithCachedElement = HashSet<Long>(cachedNodeIds.size / 10)
             cachedNodeIds.forEach { nodeId ->
-                wayIdsByNodeIdCache[nodeId]?.let { waysWithCachedNode.addAll(it) }
-                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, nodeId)]?.let { relationsWithCachedElement.addAll(it) }
+                wayIdsByNodeIdCache[nodeId]?.let { wayIdsWithCachedNode.addAll(it) }
+                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, nodeId)]?.let { relationIdsWithCachedElement.addAll(it) }
             }
-            waysWithCachedNode.forEach { wayId ->
-                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationsWithCachedElement.addAll(it) }
+            wayIdsWithCachedNode.forEach { wayId ->
+                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIdsWithCachedElement.addAll(it) }
             }
             wayRelationCache.keys.retainAll {
                 if (it.type == ElementType.RELATION)
-                    it.id in relationsWithCachedElement
-                else it.id in waysWithCachedNode
+                    it.id in relationIdsWithCachedElement
+                else it.id in wayIdsWithCachedNode
             }
             wayRelationGeometryCache.keys.retainAll {
                 if (it.type == ElementType.RELATION)
-                    it.id in relationsWithCachedElement
-                else it.id in waysWithCachedNode
+                    it.id in relationIdsWithCachedElement
+                else it.id in wayIdsWithCachedNode
             }
 
             // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
             wayIdsByNodeIdCache.keys.retainAll { it in cachedNodeIds }
             relationIdsByElementKeyCache.keys.retainAll {
                 (it.type == ElementType.NODE && it.id in cachedNodeIds)
-                    || (it.type == ElementType.WAY && it.id in waysWithCachedNode)
+                    || (it.type == ElementType.WAY && it.id in wayIdsWithCachedNode)
             }
         }
     }
