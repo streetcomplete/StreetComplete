@@ -164,6 +164,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     /*
+    Drawable providing decoration, suitable for a circular background
     100 and more: fully grown wreath with all pretty elements
     99 to 10: may be losing elements as it gets smaller
     below: no decorative styling at all
@@ -217,12 +218,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
                 }
 
+                // right side
                 canvas.withRotation(-i * 180.0f / n, width / 2f, height / 2f) {
                     canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height * 0.78f, antiAliasPaint)
                 }
             }
-            // val smallCircleRadius = width /10f
-            // canvas.drawCircle(smallCircleRadius * 2, height - smallCircleRadius * 2, smallCircleRadius, bluePaint)
         }
 
         override fun setAlpha(alpha: Int) {
