@@ -192,13 +192,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 return
             }
 
-            val imageWidth = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
-            val imageHeight = laurelLeafOnStalk.intrinsicHeight // width is the same as intrinsicWidth
+            val decorationSegmentImageWidth = laurelLeafOnStalk.intrinsicWidth // width is the same as intrinsicWidth
 
             val n = 11f
 
             val offset = width / 2f
-            val endingImageInternalOffset = imageWidth / 2f // drawBitmap takes lower-upper corner of bitmap, we care about bitmap center
             val reach = ((n - 1) * percentageOfGrowth / 100).toInt()
             val locationBetweenCenterAndEdge = 0.78f
             for (i in 0..reach) {
@@ -213,13 +211,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
                 // left side
                 canvas.withRotation(i * 180.0f / n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(bitmap, offset - endingImageInternalOffset, height * locationBetweenCenterAndEdge, antiAliasPaint)
+                    // drawBitmap takes corner of the bitmap, we care about centering segments
+                    canvas.drawBitmap(bitmap, offset - decorationSegmentImageWidth / 2f, height * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
 
                 // right side
                 val flippedBitmap = bitmap.flipHorizontally()
                 canvas.withRotation(-i * 180.0f / n, width / 2f, height / 2f) {
-                    canvas.drawBitmap(flippedBitmap, offset - endingImageInternalOffset, height * locationBetweenCenterAndEdge, antiAliasPaint)
+                    canvas.drawBitmap(flippedBitmap, offset - decorationSegmentImageWidth / 2f, height * locationBetweenCenterAndEdge, antiAliasPaint)
                 }
             }
         }
