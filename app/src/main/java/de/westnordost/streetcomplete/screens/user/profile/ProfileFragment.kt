@@ -189,7 +189,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             // Draw a red circle in the center
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
 
-            if(percentageOfGrowth < 10) {
+            if (percentageOfGrowth < 10) {
                 return
             }
 
@@ -252,7 +252,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updatePlaceholderRanksTexts() {
-        var percent : Int
+        var percent: Int
         percent = 100
         binding.placeholder1Text.text = "$percent%"
         binding.placeholder1Text.background = LaurelWreath(resources, percent)
@@ -307,7 +307,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.count > 50
             val countryLocale = Locale("", statistics.countryCode)
             binding.localRankContainer.isGone = !shouldShow
-            if(shouldShow) {
+            if (shouldShow) {
                 binding.localRankText.text = "#${statistics.rank}"
                 binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
                 binding.localRankText.background = LaurelWreath(resources, min(100 - statistics.rank!!, 100))
