@@ -174,8 +174,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
         val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
-        private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 152, 184, 126) }
-
         private val antiAliasPaint: Paint = Paint().apply {
             isAntiAlias = true
             isFilterBitmap = true
@@ -185,8 +183,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             // Get the drawable's bounds
             val width: Int = bounds.width()
             val height: Int = bounds.height()
-            val radius: Float = Math.min(width, height).toFloat() / 2f
+            val radius: Float = min(width, height).toFloat() / 2f
 
+            val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 152, 184, 126) }
             canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, niceSubtleGreen)
 
             if (percentageOfGrowth < 10) {
