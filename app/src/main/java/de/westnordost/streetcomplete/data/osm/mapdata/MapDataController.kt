@@ -193,13 +193,13 @@ class MapDataController internal constructor(
         cache.getElements(elementKeys, elementDB::getAll)
 
     fun getNodes(ids: Collection<Long>): List<Node> {
-            val nodes = cache.getNodes(ids)
-            return if (ids.size == nodes.size) nodes
-            else {
-                 val cachedNodeIds = nodes.map { it.id }
-                nodes + nodeDB.getAll(ids.filterNot { it in cachedNodeIds })
-            }
+        val nodes = cache.getNodes(ids)
+        return if (ids.size == nodes.size) nodes
+        else {
+            val cachedNodeIds = nodes.map { it.id }
+            nodes + nodeDB.getAll(ids.filterNot { it in cachedNodeIds })
         }
+    }
 
     fun getWays(ids: Collection<Long>): List<Way> = getAll(ids.map { ElementKey(ElementType.WAY, it) }).filterIsInstance<Way>()
     fun getRelations(ids: Collection<Long>): List<Relation> = getAll(ids.map { ElementKey(ElementType.RELATION, it) }).filterIsInstance<Relation>()
