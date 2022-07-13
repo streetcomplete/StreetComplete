@@ -179,13 +179,12 @@ class MapDataCache(
         getRelationsForElement(ElementType.RELATION, id) { fetch(id) }
 
     private fun getRelationsForElement(type: ElementType, id: Long, fetch: () -> List<Relation>): List<Relation> = synchronized(this) {
-        relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
+        val relationIds = relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
             val relations = fetch()
             relations.forEach { wayRelationCache[ElementKey(ElementType.RELATION, it.id)] = it }
             relations.map { it.id }.toMutableList()
-        }.let { relationIds ->
-            relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
         }
+        return relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
     }
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
