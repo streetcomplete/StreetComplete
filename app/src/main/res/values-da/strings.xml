@@ -1205,7 +1205,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_board_type_public_transport">"Offentlig transport"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_board_type_title">"Hvilket emne handler infotavlen om?"</string>
+    <string name="quest_board_type_title">"Hvilket emne handler informationstavlen om?"</string>
     <string name="quest_board_type_map">"Det er et kort"</string>
     <string name="quest_board_type_map_title">"Er det udelukkende et kort?"</string>
     <string name="quest_board_type_map_description">"Hvis den indeholder info om et bestemt emne, så angiv det venligst, uanset om der også er et kort. F.eks. et kort over offentlig transport kan også have en busrute angivet. Hvis emnet ikke er blandt de mulige svar må du meget gerne efterlade en note i stedet."</string>
@@ -1602,8 +1602,12 @@ Alternativt kan du efterlade en note (med et foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Har denne vej et nødspor?"</string>
     <string name="quest_fireHydrant_position_title">"Hvor er denne brandhane placeret?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"I græs eller jord"</string>
     <string name="quest_fireHydrant_position_lane">"På vejbanen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"På fortovet"</string>
     <string name="quest_fireHydrant_position_parking_lot">"På en parkeringsplads"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (efterlad note)"</string>
@@ -1865,4 +1869,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Oplyst nat og dag"</string>
     <string name="lit_value_automatic">"Oplyses, når nogen passerer forbi"</string>
     <string name="overlay_sidewalk">"Fortove"</string>
+    <string name="quest_generic_answer_is_indoors">"Dette er indendørs"</string>
+    <string name="quest_summit_cross_title">"Er der et topkors her?"</string>
+    <string name="quest_entrance_reference">"Hvilken skiltning er der ved denne indgang?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Indgangsmærke og serie af lejligheder"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Serie af lejligheder"</string>
+    <string name="quest_entrance_reference_select_code_only">"Indgangsmærke"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Intet skilt med mærke eller serie af lejligheder"</string>
+    <string name="quest_entrance_reference_reference_label">"Indgangsmærke:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Lejlighedsserie:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"til"</string>
 </resources>

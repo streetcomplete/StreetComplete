@@ -41,7 +41,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         and indoor != yes
     """
 
-    override val changesetComment = "Add whether way is lit"
+    override val changesetComment = "Specify whether ways are lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val achievements = listOf(PEDESTRIAN)

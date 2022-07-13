@@ -2221,8 +2221,12 @@
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"這條道路有路肩嗎？"</string>
     <string name="quest_fireHydrant_position_title">"消防栓的位置在那裡呢？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"在草地或是泥土地"</string>
     <string name="quest_fireHydrant_position_lane">"在道路上"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"在人行道"</string>
     <string name="quest_fireHydrant_position_parking_lot">"在停車場空間"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"是 (留下註解)"</string>

@@ -24,7 +24,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
            or ramp older today -8 years
          )
     """
-    override val changesetComment = "Add whether steps have a ramp"
+    override val changesetComment = "Specify whether steps have a ramp"
     override val wikiLink = "Key:ramp"
     override val icon = R.drawable.ic_quest_steps_ramp
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST)

@@ -13,7 +13,7 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>() {
           and !religion
           and access !~ private|no
     """
-    override val changesetComment = "Add religion for wayside shrine"
+    override val changesetComment = "Specify religion for wayside shrines"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion
     override val achievements = listOf(OUTDOORS)

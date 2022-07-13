@@ -95,7 +95,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "  \n)"
 
-    override val changesetComment = "Add wheelchair access"
+    override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true

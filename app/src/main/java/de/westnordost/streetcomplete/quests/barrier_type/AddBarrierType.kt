@@ -25,7 +25,7 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
          and !aeroway
          and !railway
     """
-    override val changesetComment = "Add specific barrier type on a point"
+    override val changesetComment = "Specify type of barriers"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier
     override val isDeleteElementEnabled = true

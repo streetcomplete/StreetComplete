@@ -21,7 +21,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
     """
-    override val changesetComment = "Add whether cards are accepted"
+    override val changesetComment = "Survey whether payment with cards is accepted"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_card

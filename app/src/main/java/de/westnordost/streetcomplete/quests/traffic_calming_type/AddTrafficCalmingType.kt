@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
 
     override val elementFilter = "nodes with traffic_calming = yes"
-    override val changesetComment = "Add specific traffic calming type on a point"
+    override val changesetComment = "Specify traffic calming types"
     override val wikiLink = "Key:traffic_calming"
     override val icon = R.drawable.ic_quest_car_bumpy
     override val isDeleteElementEnabled = true

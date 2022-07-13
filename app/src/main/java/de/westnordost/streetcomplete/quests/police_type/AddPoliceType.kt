@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
     override val elementFilter = "nodes, ways with amenity = police and !operator"
-    override val changesetComment = "Add police type"
+    override val changesetComment = "Specify Italian police types"
     override val wikiLink = "Tag:amenity=police"
     override val icon = R.drawable.ic_quest_police
     override val enabledInCountries = NoCountriesExcept("IT")

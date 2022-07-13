@@ -150,7 +150,7 @@ produce_chili.jpg              CC-BY-SA 3.0      Daniel Risacher https://commons
 produce_coconut.jpg            CC-BY 2.0         Diego Torres Silvestre https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg
 produce_coffee.jpg             CC-BY-SA 3.0      Marcelo Corrêa https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
 produce_cranberry.jpg          CC-BY-SA 4.0      Ecomare/Sytske Dijksen https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
-produce_date.jpg              CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
+produce_date.jpg               CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
 produce_fig.jpg                CC-BY-SA 3.0      Archives et jardin personnels https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
 produce_grapefruit.jpg         CC-BY-SA 3.0      Lipsio https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
@@ -186,6 +186,11 @@ produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_tung_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vernicia_fordii5.jpg
 produce_vanilla.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vanilla_pompona_01.jpg
 produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Juglans_regia_Echte_Walnussfrucht_1.jpg
+
+ramp_none.jpg                  CC0               Mateusz Konieczny
+ramp_stroller.jpg              CC0               Mateusz Konieczny
+ramp_wheelchair.jpg            CC0               Mateusz Konieczny
+ramp_bicycle.jpg               CC0               Mateusz Konieczny
 
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg

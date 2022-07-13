@@ -19,9 +19,10 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library
           or tourism ~ apartment|hotel
         )
+        and takeaway != only
         and !air_conditioning
     """
-    override val changesetComment = "Add air conditioning"
+    override val changesetComment = "Survey availability of air conditioning"
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_snow_poi
     override val isReplaceShopEnabled = true

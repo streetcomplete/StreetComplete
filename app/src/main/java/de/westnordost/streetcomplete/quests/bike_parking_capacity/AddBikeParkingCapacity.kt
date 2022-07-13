@@ -25,7 +25,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
        removing a few of them is minor work
      */
 
-    override val changesetComment = "Add bicycle parking capacities"
+    override val changesetComment = "Specify bicycle parking capacities"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_capacity
     override val isDeleteElementEnabled = true

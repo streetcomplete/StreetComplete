@@ -1562,8 +1562,12 @@ También puedes dejar una nota (con foto)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"¿Tiene arcén?"</string>
     <string name="quest_fireHydrant_position_title">"¿Dónde está esta boca de incendios?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Sobre hierba o tierra"</string>
     <string name="quest_fireHydrant_position_lane">"En la vía"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"En la acera"</string>
     <string name="quest_fireHydrant_position_parking_lot">"En un aparcamiento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Sí (dejar nota)"</string>

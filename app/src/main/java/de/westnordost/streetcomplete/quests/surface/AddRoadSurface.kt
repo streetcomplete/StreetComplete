@@ -36,7 +36,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         return "          or tracktype = " + conflictEntry.key + " and surface ~ ${conflictEntry.value.joinToString("|")}"
     }
 
-    override val changesetComment = "Add road surface info"
+    override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val achievements = listOf(CAR)

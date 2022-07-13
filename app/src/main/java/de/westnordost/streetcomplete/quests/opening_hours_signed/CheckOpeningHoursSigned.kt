@@ -43,7 +43,7 @@ class CheckOpeningHoursSigned(
             "$it < today -1 years"
         }
 
-    override val changesetComment = "Check whether opening hours are signed"
+    override val changesetComment = "Survey whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
     override val icon = R.drawable.ic_quest_opening_hours_signed
     override val isReplaceShopEnabled = true

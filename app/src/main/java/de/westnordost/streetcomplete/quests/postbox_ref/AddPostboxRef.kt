@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = "nodes with amenity = post_box and !ref and !ref:signed"
-    override val changesetComment = "Add postbox refs"
+    override val changesetComment = "Specify postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.ic_quest_mail_ref
     override val isDeleteElementEnabled = true

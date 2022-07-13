@@ -25,7 +25,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             or smoothness:date < today -4 years
           )
     """
-    override val changesetComment = "Add path smoothness"
+    override val changesetComment = "Specify paths smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_way_surface_detail
     override val achievements = listOf(WHEELCHAIR, BICYCLIST)
@@ -58,5 +58,4 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 }
 
 // smoothness is not asked for steps
-// "pedestrian" is in here so the path answers are shown instead of road answers (which focus on cars)
-val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway", "pedestrian")
+val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway")

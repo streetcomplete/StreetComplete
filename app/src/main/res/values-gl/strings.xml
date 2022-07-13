@@ -1299,8 +1299,12 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Na herba ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Na beirarúa"</string>
     <string name="quest_fireHydrant_position_parking_lot">"No punto de estacionamento"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Si (deixar nota)"</string>

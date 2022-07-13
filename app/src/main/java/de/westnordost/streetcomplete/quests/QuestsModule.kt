@@ -211,8 +211,6 @@ fun questTypeRegistry(
 
     /* ↓ 1. solvable from a distance or while passing by -----------------------------------  */
 
-    AddMemorialType(),
-
     // bus stop quests
     AddBusStopShelter(), // used by at least OsmAnd
     AddBenchStatusOnBusStop(), // can be seen from across the street
@@ -249,6 +247,8 @@ fun questTypeRegistry(
     AddHandrail(), // for accessibility of pedestrian routing, can be gathered when walking past
     AddStepsRamp(),
     AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
+
+    AddMemorialType(), // sometimes a bit hard to decide between the different types (something something sculpture)
 
     AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     AddReligionToWaysideShrine(),

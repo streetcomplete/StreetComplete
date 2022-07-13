@@ -1148,8 +1148,12 @@ Alternatively, you can leave a note (with a photo)."</string>
     <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
     <string name="quest_fireHydrant_position_title">"Where is this fire hydrant located?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"In grass or dirt"</string>
     <string name="quest_fireHydrant_position_lane">"On the carriageway"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"On the pavement"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In a parking spot"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>

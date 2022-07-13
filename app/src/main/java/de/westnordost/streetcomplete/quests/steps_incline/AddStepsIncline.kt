@@ -16,7 +16,7 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
          and access !~ private|no
          and !incline
     """
-    override val changesetComment = "Add which way leads up for these steps"
+    override val changesetComment = "Specify which way leads up for steps"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.ic_quest_steps
     override val achievements = listOf(PEDESTRIAN)

@@ -24,7 +24,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
           or diet:vegetarian != only and diet:vegetarian older today -4 years
         )
     """
-    override val changesetComment = "Add vegetarian diet type"
+    override val changesetComment = "Survey whether places have vegetarian food"
     override val wikiLink = "Key:diet"
     override val icon = R.drawable.ic_quest_restaurant_vegetarian
     override val isReplaceShopEnabled = true

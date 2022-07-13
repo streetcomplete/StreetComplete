@@ -24,7 +24,7 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add how road and barrier intersect"
+    override val changesetComment = "Specify how roads and barriers intersect"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier_on_road
     override val achievements = listOf(CAR)

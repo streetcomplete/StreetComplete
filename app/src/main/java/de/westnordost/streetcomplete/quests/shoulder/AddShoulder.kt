@@ -51,7 +51,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
           and !shoulder:left and !shoulder:right and !shoulder:both
           and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add whether there are shoulders"
+    override val changesetComment = "Specify whether roads have shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
     override val achievements = listOf(CAR)
