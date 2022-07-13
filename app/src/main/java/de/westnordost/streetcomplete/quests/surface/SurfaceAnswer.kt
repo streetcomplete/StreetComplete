@@ -21,7 +21,8 @@ fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     // update surface + check date
     tags.updateWithCheckDate(key, osmValue)
     // remove smoothness tag if surface was changed
-    if (previousOsmValue != null && previousOsmValue != osmValue) {
+    // or surface can be treated as outdated
+    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
         tags.remove("smoothness")
         tags.remove("smoothness:date")
         tags.removeCheckDatesForKey("smoothness")
