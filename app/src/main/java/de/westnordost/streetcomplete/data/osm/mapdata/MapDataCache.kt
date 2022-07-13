@@ -163,13 +163,12 @@ class MapDataCache(
     }
 
     fun getWaysForNode(id: Long, fetch: (Long) -> List<Way>): List<Way> = synchronized(this) {
-        wayIdsByNodeIdCache.getOrPut(id) {
+        val wayIds = wayIdsByNodeIdCache.getOrPut(id) {
             val ways = fetch(id)
-            ways.forEach { wayRelationCache[ElementKey(ElementType.WAY, it.id)] = it }
+            for (way in ways) { wayRelationCache[ElementKey(ElementType.WAY, way.id)] = way }
             ways.map { it.id }.toMutableList()
-        }.let { wayIds ->
-            wayIds.map { wayRelationCache[ElementKey(ElementType.WAY, it)] as Way }
         }
+        return wayIds.map { wayRelationCache[ElementKey(ElementType.WAY, it)] as Way }
     }
 
     fun getRelationsForNode(id: Long, fetch: (Long) -> List<Relation>) =
