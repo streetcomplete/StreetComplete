@@ -106,7 +106,6 @@ class VisibleQuestsSource(
         visibleQuestTypeSource.isVisible(questType) &&
         selectedOverlaySource.selectedOverlay?.let { questType.name !in it.hidesQuestTypes } ?: true
 
-
     private fun isVisible(quest: Quest): Boolean =
         isVisibleInTeamMode(quest) && isVisible(quest.type)
 
