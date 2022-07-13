@@ -15,12 +15,8 @@ fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue
     val previousOsmValue = tags[key]
 
-    var replacesTracktype = false
-    if (tags.containsKey("tracktype")) {
-        if (isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)) {
-            replacesTracktype = true
-        }
-    }
+    val replacesTracktype = tags.containsKey("tracktype")
+        && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
 
     if (replacesTracktype) {
         tags.remove("tracktype")
