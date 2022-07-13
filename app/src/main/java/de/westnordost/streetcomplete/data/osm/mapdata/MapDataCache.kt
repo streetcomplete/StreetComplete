@@ -106,7 +106,7 @@ class MapDataCache(
     }
 
     fun getElement(type: ElementType, id: Long, fetch: (ElementType, Long) -> Element?): Element? {
-        val element = 
+        val element =
             if (type == ElementType.NODE) spatialCache.get(id)
             else synchronized(this) { wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) } }
         return element ?: fetch(type, id)
@@ -172,9 +172,16 @@ class MapDataCache(
         }
     }
 
-    fun getRelationsForElement(type: ElementType, id: Long, fetch: (Long) -> List<Relation>): List<Relation> = synchronized(this) {
+    fun getRelationsForNode(id: Long, fetch: (Long) -> List<Relation>) =
+        getRelationsForElement(ElementType.NODE, id) { fetch(id) }
+    fun getRelationsForWay(id: Long, fetch: (Long) -> List<Relation>) =
+        getRelationsForElement(ElementType.WAY, id) { fetch(id) }
+    fun getRelationsForRelation(id: Long, fetch: (Long) -> List<Relation>) =
+        getRelationsForElement(ElementType.RELATION, id) { fetch(id) }
+
+    private fun getRelationsForElement(type: ElementType, id: Long, fetch: () -> List<Relation>): List<Relation> = synchronized(this) {
         relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
-            val relations = fetch(id) // this relies on fetch for the being provided for the correct type!
+            val relations = fetch()
             relations.forEach { wayRelationCache[ElementKey(ElementType.RELATION, it.id)] = it }
             relations.map { it.id }.toMutableList()
         }.let { relationIds ->

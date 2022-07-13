@@ -205,14 +205,9 @@ class MapDataController internal constructor(
     fun getRelations(ids: Collection<Long>): List<Relation> = getAll(ids.map { ElementKey(ElementType.RELATION, it) }).filterIsInstance<Relation>()
 
     fun getWaysForNode(id: Long): List<Way> = cache.getWaysForNode(id, wayDB::getAllForNode)
-    fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForElement(ElementType.NODE, id, relationDB::getAllForNode)
-    fun getRelationsForWay(id: Long): List<Relation> = cache.getRelationsForElement(ElementType.WAY, id, relationDB::getAllForWay)
-    fun getRelationsForRelation(id: Long): List<Relation> = cache.getRelationsForElement(ElementType.RELATION, id, relationDB::getAllForRelation)
-    fun getRelationsForElement(type: ElementType, id: Long): List<Relation> = when (type) {
-        ElementType.NODE -> getRelationsForNode(id)
-        ElementType.WAY -> getRelationsForWay(id)
-        ElementType.RELATION -> getRelationsForRelation(id)
-    }
+    fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForNode(id, relationDB::getAllForNode)
+    fun getRelationsForWay(id: Long): List<Relation> = cache.getRelationsForWay(id, relationDB::getAllForWay)
+    fun getRelationsForRelation(id: Long): List<Relation> = cache.getRelationsForRelation(id, relationDB::getAllForRelation)
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val elements: List<ElementKey>
