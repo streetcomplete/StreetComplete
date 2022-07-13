@@ -24,7 +24,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
         surface: Surface,
         onTracktypeConfirmed: (shouldRemoveTracktype: Boolean) -> Unit
     ) {
-        val tracktype = element!!.tags["tracktype"]
+        val tracktype = element.tags["tracktype"]
         if (tracktype == null) {
             onTracktypeConfirmed(false)
         } else if (isSurfaceAndTracktypeMismatching(surface.osmValue, tracktype)) {
