@@ -9,6 +9,7 @@ import android.graphics.Canvas
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -198,16 +199,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val circleCenterX = canvasWidth / 2f
             val shownSegments = ((regularSegmentCount - 1) * percentageOfGrowth / 100).toInt()
             val locationBetweenCenterAndEdge = 0.78f
-            for (i in 0..shownSegments) {
+            for (i in 1..shownSegments) {
                 // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
 
                 var bitmap = laurelLeafOnStalk.bitmap
                 if (i == shownSegments) {
                     bitmap = horizontalEndingLeaf.bitmap
-                } else if (i == 0 ) {
-                    bitmap = laurelStalk.bitmap
                 }
-
+                val stalkPaint = Paint()
+                stalkPaint.isAntiAlias = true
+                stalkPaint.setARGB(255, 0, 106, 0)
+                stalkPaint.style = Paint.Style.STROKE
+                stalkPaint.strokeWidth = 3f
+                val stalkCircleSize = circleRadius * locationBetweenCenterAndEdge * 1.1f
+                val frame = RectF(canvasWidth.toFloat() / 2 - stalkCircleSize, canvasHeight.toFloat() / 2 - stalkCircleSize, canvasWidth.toFloat() / 2 + stalkCircleSize, canvasHeight.toFloat() / 2 + stalkCircleSize)
+                val stalkLengthInDegrees = 180f * percentageOfGrowth / 100f - 10f
+                canvas.drawArc(frame, 90f, stalkLengthInDegrees, false, stalkPaint )
+                val upperLimitOfRightStalk = (90f - stalkLengthInDegrees + 360) % 360
+                canvas.drawArc(frame, upperLimitOfRightStalk, stalkLengthInDegrees, false, stalkPaint )
                 // left side
                 canvas.withRotation(i * 180.0f / regularSegmentCount, canvasWidth / 2f, canvasHeight / 2f) {
                     // drawBitmap takes corner of the bitmap, we care about centering segments
