@@ -5,7 +5,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class AddSurfaceTest {
+class AddRoadSurfaceTest {
     private val questType = AddRoadSurface()
 
     @Test fun `not applicable to tagged surface`() {
