@@ -33,7 +33,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
           and !ref
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add entrance identification"
+    override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_door_address
     override val achievements = listOf(CITIZEN, BLIND)

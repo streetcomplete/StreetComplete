@@ -26,7 +26,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
           )
         )
     """
-    override val changesetComment = "Add cycleway path surfaces"
+    override val changesetComment = "Specify cycleway path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_bicycleway_surface
     override val achievements = listOf(BICYCLIST, OUTDOORS)

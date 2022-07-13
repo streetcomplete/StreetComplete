@@ -21,7 +21,7 @@ class WayLitOverlay : Overlay {
 
     override val title = R.string.overlay_lit
     override val icon = R.drawable.ic_quest_lantern
-    override val changesetComment = "Add whether way is lit"
+    override val changesetComment = "Specify whether ways are lit"
     override val wikiLink: String = "Key:lit"
     override val achievements = listOf(PEDESTRIAN)
     override val hidesQuestTypes = setOf(AddWayLit::class.simpleName!!)

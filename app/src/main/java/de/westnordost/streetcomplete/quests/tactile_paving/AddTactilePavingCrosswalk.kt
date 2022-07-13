@@ -33,7 +33,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
           or highway and access ~ private|no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add tactile pavings on crosswalks"
+    override val changesetComment = "Specify whether crosswalks have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_pedestrian_crossing
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON

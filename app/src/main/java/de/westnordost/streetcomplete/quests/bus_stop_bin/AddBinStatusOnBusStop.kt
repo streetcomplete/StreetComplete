@@ -20,7 +20,7 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>() {
         and physically_present != no and naptan:BusStopType != HAR
         and (!bin or bin older today -4 years)
     """
-    override val changesetComment = "Add whether a bus stop has a bin"
+    override val changesetComment = "Specify whether bus stops have bins"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.ic_quest_bin_public_transport
     override val achievements = listOf(CITIZEN)

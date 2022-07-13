@@ -29,7 +29,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add road surface info"
+    override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
     override val achievements = listOf(CAR)

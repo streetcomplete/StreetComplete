@@ -67,7 +67,7 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
        roads that are probably outside of settlements (similar idea like for AddWayLit)
       */
 
-    override val changesetComment = "Add how cars park here"
+    override val changesetComment = "Specify whether and how cars park on roads"
     override val wikiLink = "Key:parking:lane"
     override val icon = R.drawable.ic_quest_parking_lane
     override val achievements = listOf(CAR)

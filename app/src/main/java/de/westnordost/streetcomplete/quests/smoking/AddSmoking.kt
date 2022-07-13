@@ -38,7 +38,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
          and takeaway != only
          and (!smoking or smoking older today -8 years)
     """
-    override val changesetComment = "Add smoking status"
+    override val changesetComment = "Survey whether smoking is allowed or prohibited"
     override val wikiLink = "Key:smoking"
     override val icon = R.drawable.ic_quest_smoking
     override val isReplaceShopEnabled = true

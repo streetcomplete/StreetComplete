@@ -17,7 +17,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
           and !capacity
           and bicycle != yes and scooter != yes and motorcar != no
     """
-    override val changesetComment = "Add charging station capacities"
+    override val changesetComment = "Specify charging stations capacities"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.ic_quest_car_charger_capacity
     override val isDeleteElementEnabled = true

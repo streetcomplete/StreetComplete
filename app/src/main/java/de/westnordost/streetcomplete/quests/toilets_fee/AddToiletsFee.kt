@@ -17,7 +17,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
           and !fee
           and (!seasonal or seasonal = no)
     """
-    override val changesetComment = "Add toilets fee"
+    override val changesetComment = "Specify toilet fees"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee
     override val enabledInCountries = AllCountriesExcept("US", "CA")

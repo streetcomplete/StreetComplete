@@ -17,7 +17,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
           and (!bicycle_rental or bicycle_rental = yes)
           and !shop
     """
-    override val changesetComment = "Add bicycle rental type"
+    override val changesetComment = "Specify bicycle rental types"
     override val wikiLink = "Key:bicycle_rental"
     override val icon = R.drawable.ic_quest_bicycle_rental
     override val isDeleteElementEnabled = true

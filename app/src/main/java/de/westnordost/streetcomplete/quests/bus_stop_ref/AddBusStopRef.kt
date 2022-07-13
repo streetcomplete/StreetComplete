@@ -18,7 +18,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
         and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val enabledInCountries = NoCountriesExcept("US", "CA", "JE", "IE")
-    override val changesetComment = "Determine bus/tram stop ref"
+    override val changesetComment = "Determine bus/tram stop refs"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
     override val achievements = listOf(PEDESTRIAN)

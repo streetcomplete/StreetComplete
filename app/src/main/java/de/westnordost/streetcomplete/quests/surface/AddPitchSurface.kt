@@ -37,7 +37,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
         )
     """
 
-    override val changesetComment = "Add pitch surfaces"
+    override val changesetComment = "Specify pitch surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_pitch_surface
     override val achievements = listOf(OUTDOORS)

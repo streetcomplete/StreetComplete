@@ -18,7 +18,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
          and access !~ private|no
          and !indoor
     """
-    override val changesetComment = "Add whether defibrillator is inside building"
+    override val changesetComment = "Determine whether defibrillators are inside buildings"
     override val wikiLink = "Key:indoor"
     override val icon = R.drawable.ic_quest_defibrillator
     override val achievements = listOf(LIFESAVER)

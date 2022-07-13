@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
 
     override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
-    override val changesetComment = "Add specific cycle barrier type"
+    override val changesetComment = "Specify cycle barrier types"
     override val wikiLink = "Key:cycle_barrier"
     override val icon = R.drawable.ic_quest_no_bicycles
     override val isDeleteElementEnabled = true

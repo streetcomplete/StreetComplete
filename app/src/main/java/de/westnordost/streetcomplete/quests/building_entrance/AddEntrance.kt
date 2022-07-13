@@ -28,7 +28,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         ways with (tunnel and tunnel != no) or (covered and covered != no)
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add entrance info"
+    override val changesetComment = "Specify type of entrances"
     override val wikiLink = "Key:entrance"
     override val icon = R.drawable.ic_quest_door
     override val achievements = listOf(PEDESTRIAN)
