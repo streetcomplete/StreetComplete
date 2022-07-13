@@ -139,7 +139,20 @@ class MapDataCache(
         }
     }
 
-    fun getNodes(ids: Collection<Long>): List<Node> = spatialCache.getAll(ids)
+    fun getNodes(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Node>): List<Node> {
+        val nodes = spatialCache.getAll(ids)
+        return if (ids.size == nodes.size) nodes
+        else {
+            val cachedNodeIds = nodes.map { it.id }
+            nodes + fetch(ids.filterNot { it in cachedNodeIds })
+        }
+    }
+    fun getWays(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Way>): List<Way> =
+        getElements(ids.map { ElementKey(ElementType.WAY, it) }) { keys -> fetch(keys.map { it.id }) }
+            .filterIsInstance<Way>()
+    fun getRelations(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Relation>): List<Relation> =
+        getElements(ids.map { ElementKey(ElementType.WAY, it) }) { keys -> fetch(keys.map { it.id }) }
+            .filterIsInstance<Relation>()
 
     fun getGeometries(
         keys: Collection<ElementKey>,

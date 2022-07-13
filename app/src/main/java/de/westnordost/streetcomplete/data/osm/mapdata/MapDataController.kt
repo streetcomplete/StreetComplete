@@ -185,24 +185,16 @@ class MapDataController internal constructor(
         )
     }
 
-    fun getNode(id: Long): Node? = cache.getNode(id) ?: nodeDB.get(id)
+    fun getNode(id: Long): Node? = get(ElementType.NODE, id) as? Node
     fun getWay(id: Long): Way? = get(ElementType.WAY, id) as? Way
     fun getRelation(id: Long): Relation? = get(ElementType.RELATION, id) as? Relation
 
     fun getAll(elementKeys: Collection<ElementKey>): List<Element> =
         cache.getElements(elementKeys, elementDB::getAll)
 
-    fun getNodes(ids: Collection<Long>): List<Node> {
-        val nodes = cache.getNodes(ids)
-        return if (ids.size == nodes.size) nodes
-        else {
-            val cachedNodeIds = nodes.map { it.id }
-            nodes + nodeDB.getAll(ids.filterNot { it in cachedNodeIds })
-        }
-    }
-
-    fun getWays(ids: Collection<Long>): List<Way> = getAll(ids.map { ElementKey(ElementType.WAY, it) }).filterIsInstance<Way>()
-    fun getRelations(ids: Collection<Long>): List<Relation> = getAll(ids.map { ElementKey(ElementType.RELATION, it) }).filterIsInstance<Relation>()
+    fun getNodes(ids: Collection<Long>): List<Node> = cache.getNodes(ids, nodeDB::getAll)
+    fun getWays(ids: Collection<Long>): List<Way> = cache.getWays(ids, wayDB::getAll)
+    fun getRelations(ids: Collection<Long>): List<Relation> = cache.getRelations(ids, relationDB::getAll)
 
     fun getWaysForNode(id: Long): List<Way> = cache.getWaysForNode(id, wayDB::getAllForNode)
     fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForNode(id, relationDB::getAllForNode)
