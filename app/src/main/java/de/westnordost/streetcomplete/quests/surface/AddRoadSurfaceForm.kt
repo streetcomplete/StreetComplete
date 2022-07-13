@@ -13,31 +13,31 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val surface = selectedItems.single()
-        confirmPotentialTracktypeMismatch(surface) { shouldRemoveTracktype ->
+        confirmPotentialTracktypeMismatch(surface) {
             collectSurfaceDescription(surface) { description ->
-                applyAnswer(SurfaceAnswer(surface, description, shouldRemoveTracktype))
+                applyAnswer(SurfaceAnswer(surface, description))
             }
         }
     }
 
     private fun confirmPotentialTracktypeMismatch(
         surface: Surface,
-        onTracktypeConfirmed: (shouldRemoveTracktype: Boolean) -> Unit
+        onTracktypeConfirmed: () -> Unit
     ) {
         val tracktype = element.tags["tracktype"]
         if (tracktype == null) {
-            onTracktypeConfirmed(false)
+            onTracktypeConfirmed()
         } else if (isSurfaceAndTracktypeMismatching(surface.osmValue, tracktype)) {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_surface_tractypeMismatchInput_confirmation_description)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                    onTracktypeConfirmed(true)
+                    onTracktypeConfirmed()
                 }
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         } else {
-            onTracktypeConfirmed(false)
+            onTracktypeConfirmed()
         }
     }
 

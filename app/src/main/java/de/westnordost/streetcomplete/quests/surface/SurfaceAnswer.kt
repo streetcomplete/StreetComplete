@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -8,14 +9,22 @@ sealed interface SurfaceOrIsStepsAnswer
 object IsActuallyStepsAnswer : SurfaceOrIsStepsAnswer
 object IsIndoorsAnswer : SurfaceOrIsStepsAnswer
 
-data class SurfaceAnswer(val value: Surface, val note: String? = null, val replacesTracktype: Boolean = false) : SurfaceOrIsStepsAnswer
+data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
 
 fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue
     val previousOsmValue = tags[key]
 
+    var replacesTracktype = false
+    if (tags.containsKey("tracktype")) {
+        if (isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)) {
+            replacesTracktype = true
+        }
+    }
+
     if (replacesTracktype) {
         tags.remove("tracktype")
+        tags.removeCheckDatesForKey("tracktype")
     }
 
     // update surface + check date
