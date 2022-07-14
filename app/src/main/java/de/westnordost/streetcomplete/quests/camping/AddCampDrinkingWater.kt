@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.camp_drinking_water
+package de.westnordost.streetcomplete.quests.camping
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
+class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with (
