@@ -84,8 +84,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
             }
         })
 
-        binding.showMoreButton.visibility = View.GONE
-
         imageSelector.items = moveFavouritesToFront(items)
         if (savedInstanceState != null) {
             val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!

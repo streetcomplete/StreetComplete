@@ -55,7 +55,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         holder.isGroupExpanded = getGroup(selectedIndex) == position
     }
 
-    private fun toggle(index: Int) {
+    fun toggle(index: Int) {
         val prevSelectedItem = selectedItem
         if (selectedItem == null || prevSelectedItem !== _items[index]) {
             selectedItem = _items[index]

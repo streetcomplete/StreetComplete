@@ -67,13 +67,6 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.layoutManager = imageSelector.gridLayoutManager
         binding.list.isNestedScrollingEnabled = false
 
-        binding.showMoreButton.setOnClickListener {
-            val savedItems = getInitialItems() as List<Item<I>>
-            val group = Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null, savedItems)
-            imageSelector.items = listOf(group) + allItems
-            binding.showMoreButton.visibility = View.GONE
-        }
-
         binding.selectHintLabel.setText(R.string.quest_select_hint_most_specific)
 
         imageSelector.listeners.add { checkIsFormComplete() }
@@ -85,7 +78,11 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         })
         checkIsFormComplete()
 
-        imageSelector.items = getInitialItems()
+        val savedItems = getInitialItems() as List<Item<I>>
+        val group = Item(null, null, R.string.used_often, null, savedItems)
+        imageSelector.items = listOf(group) + allItems
+        imageSelector.toggle(0)
+
         binding.list.adapter = imageSelector
     }
 
