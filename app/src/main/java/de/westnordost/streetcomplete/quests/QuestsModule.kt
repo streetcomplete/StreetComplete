@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
+import de.westnordost.streetcomplete.quests.camping.AddCampType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
@@ -403,6 +404,7 @@ fun questTypeRegistry(
     AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
+    AddCampType(),
     AddCampDrinkingWater(),
     AddCampShower(),
     AddCampPower(),
