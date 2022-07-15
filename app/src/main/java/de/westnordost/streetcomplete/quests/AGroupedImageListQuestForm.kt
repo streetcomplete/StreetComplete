@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import de.westnordost.streetcomplete.view.image_select.Item
 import kotlin.math.max
 
 /**
@@ -78,10 +77,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         })
         checkIsFormComplete()
 
-        val savedItems = getInitialItems() as List<Item<I>>
-        val group = Item(null, null, R.string.used_often, null, savedItems)
-        imageSelector.items = listOf(group) + allItems
-        imageSelector.toggle(0)
+        imageSelector.items = getInitialItems() + allItems
 
         binding.list.adapter = imageSelector
     }

@@ -24,12 +24,12 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
             }
             notifyDataSetChanged()
         }
-        get() = _items.toList()
+        get() = _items.toList().reversed()
 
     var selectedItem: GroupableDisplayItem<T>? = null
         private set
 
-    private val selectedIndex get() = selectedItem?.let { _items.indexOf(it) } ?: -1
+    private val selectedIndex get() = selectedItem?.let { _items.lastIndexOf(it) } ?: -1
 
     val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
 
@@ -51,11 +51,11 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedItem?.let { _items.indexOf(it) == position } == true
+        holder.isSelected = selectedItem?.let { _items.lastIndexOf(it) == position } == true
         holder.isGroupExpanded = getGroup(selectedIndex) == position
     }
 
-    fun toggle(index: Int) {
+    private fun toggle(index: Int) {
         val prevSelectedItem = selectedItem
         if (selectedItem == null || prevSelectedItem !== _items[index]) {
             selectedItem = _items[index]
@@ -65,22 +65,22 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
         val selectedItem = selectedItem
         if (prevSelectedItem != null) {
-            val prevSelectedIndex = _items.indexOf(prevSelectedItem)
+            val prevSelectedIndex = _items.lastIndexOf(prevSelectedItem)
             notifyItemChanged(prevSelectedIndex)
 
             val previousGroupIndex = getGroup(prevSelectedIndex)
             if (previousGroupIndex != -1) {
-                if (selectedItem == null || previousGroupIndex != getGroup(_items.indexOf(selectedItem))) {
+                if (selectedItem == null || previousGroupIndex != getGroup(_items.lastIndexOf(selectedItem))) {
                     retractGroup(previousGroupIndex)
                 }
             }
         }
         if (selectedItem != null) {
-            val selectedIndex = _items.indexOf(selectedItem)
+            val selectedIndex = _items.lastIndexOf(selectedItem)
             notifyItemChanged(selectedIndex)
 
             if (selectedItem.isGroup) {
-                if (prevSelectedItem == null || getGroup(_items.indexOf(prevSelectedItem)) != selectedIndex) {
+                if (prevSelectedItem == null || getGroup(_items.lastIndexOf(prevSelectedItem)) != selectedIndex) {
                     expandGroup(selectedIndex)
                 }
             }
