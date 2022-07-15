@@ -849,6 +849,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_tents_and_caravans">Both tents and caravans</string>
     <string name="quest_camp_type_caravans_only">Only caravans</string>
     <string name="quest_camp_type_tents_only">Only tents</string>
+    <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
