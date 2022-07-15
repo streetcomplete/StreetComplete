@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+  <path
+      android:pathData="m128,64c0,35.346 -28.654,64 -64,64s-64,-28.654 -64,-64 28.654,-64 64,-64 64,28.654 64,64"
+      android:strokeWidth=".2"
+      android:fillColor="#9bbe55"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="m64,16c0,8.464 -31.855,47.229 -31.855,64 0,17.693 14.343,32.037 32.037,32.037 1.958,0 3.872,-0.185 5.732,-0.521 13.773,-1.942 25.489,-14.236 26.264,-29.867 0.001,-0.014 0.001,-0.027 0.002,-0.041 0.026,-0.532 0.039,-1.068 0.039,-1.607 0,-1.445 -0.235,-3.041 -0.633,-4.734 -3.731,-17.806 -22.607,-37.886 -31.586,-59.266z"
+      android:strokeWidth="2.329"
+      android:fillAlpha="0.2"/>
+  <path
+      android:pathData="m96.131,75.996c0,17.693 -14.344,32.037 -32.037,32.037 -17.693,0 -32.037,-14.344 -32.037,-32.037 0,-16.771 31.854,-55.535 31.854,-63.998 0,8.176 32.218,46.364 32.218,63.998z"
+      android:strokeWidth="2.3289042"
+      android:fillColor="#3581c8"/>
+  <path
+      android:pathData="m65.02,24.411c7.866,16.724 38.49,44.795 16.366,49.624 -22.124,4.83 -15.315,-35.921 -16.366,-49.624z"
+      android:strokeWidth="2.3289042"
+      android:fillColor="#529add"/>
+  <path
+      android:pathData="m63.913,11.998c4.443,39.126 -15.874,95.324 3.677,95.744 15.207,-0.878 28.541,-14.486 28.541,-31.747 -0.885,-18.947 -22.435,-40.704 -32.218,-63.998z"
+      android:strokeWidth="2.9593244"
+      android:fillColor="#529add"
+      android:fillAlpha="0.6129"/>
+  <path
+      android:pathData="m66.309,27.042c7.866,16.724 26.264,35.041 13.018,36.671s-11.967,-22.966 -13.018,-36.671z"
+      android:strokeWidth="2.3289042"
+      android:fillColor="#87bce1"/>
+  <path
+      android:pathData="m45.193,57.442c-21.894,24.649 -0.779,44.936 14.61,46.464 -6.528,-5.12 -22.662,-17.089 -14.61,-46.464z"
+      android:strokeWidth="2.3289042"
+      android:fillColor="#2b68a3"/>
+</vector>
