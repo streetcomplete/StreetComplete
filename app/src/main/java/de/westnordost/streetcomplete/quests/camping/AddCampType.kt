@@ -16,6 +16,7 @@ class AddCampType : OsmFilterQuestType<CampType>() {
           tourism=camp_site
         )
         and (!caravans or !tents)
+        and !backcountry
     """
     override val changesetComment = "Survey who may camp here"
     override val wikiLink = "Key:caravans"
