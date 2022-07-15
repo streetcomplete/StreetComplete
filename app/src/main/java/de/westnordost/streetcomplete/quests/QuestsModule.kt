@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
+import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
@@ -400,8 +401,9 @@ fun questTypeRegistry(
 
     AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
-    // camping site
+    // inside camping sites
     AddCampDrinkingWater(),
+    AddCampShower(),
 
     // toilets
     AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
