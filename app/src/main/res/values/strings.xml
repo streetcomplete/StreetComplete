@@ -844,6 +844,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_camp_drinking_water_title">"Does it have drinking water?"</string>
     <string name="quest_camp_shower_title">"Does it have showers?"</string>
+    <string name="quest_camp_power_supply_title">"Can you charge your phone/laptop here?"</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
