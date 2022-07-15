@@ -81,7 +81,7 @@ class MapDataControllerTest {
             ElementKey(NODE, 2L),
         )
         val elements = listOf(node(1), node(2))
-        on(nodeDB.getAll(bboxCacheWillRequest)).thenReturn(elements)
+        on(elementDB.getAll(bboxCacheWillRequest)).thenReturn(elements)
         on(geometryDB.getAllEntries(elementKeys)).thenReturn(geomEntries)
 
         val mapData = controller.getMapDataWithGeometry(bbox)

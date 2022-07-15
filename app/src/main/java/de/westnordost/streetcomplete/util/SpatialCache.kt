@@ -65,6 +65,8 @@ class SpatialCache<K, T>(
             if (tile != null) {
                 tile.add(item)
                 byKey[key] = item
+            } else {
+                byKey.remove(key)
             }
         }
     }
