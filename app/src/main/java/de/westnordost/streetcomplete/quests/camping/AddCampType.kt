@@ -31,7 +31,11 @@ class AddCampType : OsmFilterQuestType<CampType>() {
     override fun createForm() = AddCampTypeForm()
 
     override fun applyAnswerTo(answer: CampType, tags: Tags, timestampEdited: Long) {
-        tags["tents"] = answer.tents.toYesNo()
-        tags["caravans"] = answer.caravans.toYesNo()
+        if (answer.tents || answer.caravans) {
+            tags["tents"] = answer.tents.toYesNo()
+            tags["caravans"] = answer.caravans.toYesNo()
+        } else {
+            tags["backcountry"] = "yes"
+        }
     }
 }
