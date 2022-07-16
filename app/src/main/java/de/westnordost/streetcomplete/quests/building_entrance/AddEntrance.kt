@@ -12,7 +12,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     private val withoutEntranceFilter by lazy { """
         nodes with
-          !entrance and !barrier and noexit != yes
+          !entrance and !barrier and noexit != yes and !railway
     """.toElementFilterExpression() }
 
     private val buildingWaysFilter by lazy { """
