@@ -329,6 +329,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 text.toString().split("\n").forEach {
                     if (it.isBlank()) return@forEach // allow empty lines
                     if (!it.contains("=") // no key-value separator
+                        || it.count { it == '=' } > 1 // more than one equals sign
                         || it.substringBefore("=").isBlank() // no key
                         || it.substringAfter("=").isBlank() // no value
                         || !keys.add(it.substringBefore("="))) { // key already exists
