@@ -132,7 +132,7 @@ class MapDataCache(
             val cachedElementKeys = elements.map { ElementKey(it.type, it.id) }
             val fetchedElements = fetch(elementKeys.filterNot { it in cachedElementKeys })
             fetchedElements.forEach {
-                if (it.type == ElementType.NODE)
+                if (it.type != ElementType.NODE)
                     wayRelationCache[ElementKey(it.type, it.id)] = it
             }
             elements + fetchedElements
@@ -168,7 +168,7 @@ class MapDataCache(
             val cachedKeys = geometries.map { ElementKey(it.elementType, it.elementId) }
             val fetchedGeometries = fetch(keys.filterNot { it in cachedKeys })
             fetchedGeometries.forEach {
-                if (it.elementType == ElementType.NODE)
+                if (it.elementType != ElementType.NODE)
                     wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
             }
             geometries + fetchedGeometries
