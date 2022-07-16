@@ -56,11 +56,15 @@ class MapDataCache(
 
         synchronized(this) {
             // first delete
-            deletedKeys.forEach {
-                wayRelationCache.remove(it)
-                wayRelationGeometryCache.remove(it)
-                if (it.type == ElementType.NODE) wayIdsByNodeIdCache.remove(it.id)
-                relationIdsByElementKeyCache.remove(it)
+            deletedKeys.forEach { key ->
+                val oldElement = wayRelationCache.remove(key)
+                wayRelationGeometryCache.remove(key)
+                if (key.type == ElementType.NODE) wayIdsByNodeIdCache.remove(key.id)
+                if (oldElement is Way)
+                    oldElement.nodeIds.forEach { wayIdsByNodeIdCache[it]?.remove(key.id) }
+                else if (oldElement is Relation)
+                    oldElement.members.forEach { relationIdsByElementKeyCache[ElementKey(it.type, it.ref)]?.remove(key.id) }
+                relationIdsByElementKeyCache.remove(key)
             }
             // then add
             val nodeIds = (addedOrUpdatedElements.filterIsInstance<Node>().map { it.id } + spatialCache.getKeys()).toSet()
