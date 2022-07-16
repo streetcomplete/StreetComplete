@@ -187,8 +187,8 @@ import java.util.concurrent.FutureTask
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
-    single { OsmoseDao(get(), get(), get()) }
-    single { ExternalList(androidContext(), get()) }
+    single { OsmoseDao(get(), get()) }
+    single { ExternalList(androidContext()) }
 
     single { questTypeRegistry(
         get(),
