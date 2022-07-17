@@ -19,6 +19,9 @@ noStoppingSignStyle: vienna
 officialLanguages: [en]
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
+postboxesHaveCollectionTimes: false
+postboxesHaveRef: false
+postboxesHaveRoyalCypher: false
 regularShoppingDays: 6
 roofsAreUsuallyFlat: false
 speedUnits: [kilometers per hour]

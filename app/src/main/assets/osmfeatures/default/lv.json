@@ -1094,14 +1094,6 @@
                 "traffic_signals": {
                     "label": "Tips"
                 },
-                "transformer": {
-                    "options": {
-                        "auto": "Autotransformātors",
-                        "converter": "Pārveidotājs",
-                        "generator": "Ģenerātors",
-                        "yes": "Nezināms"
-                    }
-                },
                 "trees": {
                     "label": "Koki"
                 },
@@ -1994,9 +1986,6 @@
                 },
                 "landuse/military/barracks": {
                     "name": "Kazarmas"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Ūdensspēku bāze"
                 },
                 "landuse/quarry": {
                     "name": "Karjers"

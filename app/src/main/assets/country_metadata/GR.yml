@@ -11,6 +11,7 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ
 atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, ATM, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, Τράπεζα Eurobank, NBG GROUP]

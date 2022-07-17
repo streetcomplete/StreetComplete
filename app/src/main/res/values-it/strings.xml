@@ -1643,6 +1643,8 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Illuminato giorno e notte"</string>
     <string name="lit_value_automatic">"Illuminato quando qualcuno passa"</string>
     <string name="overlay_sidewalk">"Marciapiedi"</string>
+    <string name="quest_generic_answer_is_indoors">"Si trova all'interno"</string>
+    <string name="quest_summit_cross_title">"C'è una croce di vetta qui?"</string>
     <string name="quest_entrance_reference">"Che scritta è presente su questo ingresso?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Un nome e un intervallo di appartamenti"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Un intervallo di appartamenti"</string>

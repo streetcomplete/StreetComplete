@@ -6,6 +6,8 @@ mobileCountryCode: 454
 noStoppingLineStyle: double yellow
 officialLanguages: [en, zh]
 popularReligions: [chinese_folk, taoist, buddhist]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: true
 workweekDays: 6
 chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
 orchardProduces: [tomato]

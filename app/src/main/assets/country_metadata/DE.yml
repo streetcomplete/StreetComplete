@@ -8,6 +8,7 @@ mobileCountryCode: 262
 officialLanguages: [de]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
+postboxesHaveCollectionTimes: true
 regularShoppingDays: 5
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE

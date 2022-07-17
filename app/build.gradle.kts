@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4502
-        versionName = "45.0"
+        versionCode = 4503
+        versionName = "45.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -148,7 +148,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.4.0")
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.0")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -200,7 +200,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.31.0")
+    implementation("com.google.ar:core:1.32.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -213,9 +213,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220613"
+val nsiVersion = "v6.0.20220711"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.3.0"
+val presetsVersion = "v3.4.2"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

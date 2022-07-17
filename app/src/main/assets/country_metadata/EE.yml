@@ -7,6 +7,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 248
 officialLanguages: [et]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA
 atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
