@@ -379,10 +379,17 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             setLocked(false)
             return
         }
-        withContext(Dispatchers.IO) {
-            addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
+            viewLifecycleScope.launch { listener?.onEdited(osmElementQuestType, element, geometry) }
+            withContext(Dispatchers.IO) {
+                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            }
+        } else {
+            withContext(Dispatchers.IO) {
+                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            }
+            listener?.onEdited(osmElementQuestType, element, geometry)
         }
-        listener?.onEdited(osmElementQuestType, element, geometry)
     }
 
     companion object {

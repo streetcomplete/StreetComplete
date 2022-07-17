@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.location.Location
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -67,6 +69,7 @@ abstract class AbstractOverlayForm :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val prefs: SharedPreferences by inject()
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
@@ -321,10 +324,17 @@ abstract class AbstractOverlayForm :
             setLocked(false)
             return
         }
-        withContext(Dispatchers.IO) {
-            addElementEditsController.add(overlay, element, geometry, "survey", action)
+        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
+            viewLifecycleScope.launch { listener?.onEdited(overlay, element, geometry) }
+            withContext(Dispatchers.IO) {
+                addElementEditsController.add(overlay, element, geometry, "survey", action)
+            }
+        } else {
+            withContext(Dispatchers.IO) {
+                addElementEditsController.add(overlay, element, geometry, "survey", action)
+            }
+            listener?.onEdited(overlay, element, geometry)
         }
-        listener?.onEdited(overlay, element, geometry)
     }
 
     private fun setLocked(locked: Boolean) {

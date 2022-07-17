@@ -230,5 +230,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_benchMaterial_concrete">Concrete</string>
     <string name="quest_benchMaterial_stone">Stone</string>
     <string name="quest_benchMaterial_brick">Bricks</string>
+    <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
+    <string name="pref_close_forms_immediately_summary">Closes the form before change is processed, so the quest will disappear a bit later. Don’t try to open the old quest again!</string>
 
 </resources>

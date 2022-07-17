@@ -71,6 +71,7 @@ object Prefs {
     const val FAVS_FIRST_MIN_LINES = "favs_first_min_lines"
     const val SHOW_NEARBY_QUESTS = "show_nearby_quests"
     const val SHOW_NEARBY_QUESTS_DISTANCE = "show_nearby_quests_distance"
+    const val CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING = "close_form_immediately"
 
     enum class Autosync {
         ON, WIFI, OFF

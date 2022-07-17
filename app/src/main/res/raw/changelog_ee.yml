@@ -1,3 +1,9 @@
+v45.1_ee: |
+  <ul>
+  <li>When solving a quest, allow closing the bottom sheet before the changes are processed</li>
+  <li>Fix crash when displaying changelog</li>
+  </ul>
+
 v45.0_ee: |
   <ul>
   <li>Highlight obstacles along the way for smoothness quests</li>
