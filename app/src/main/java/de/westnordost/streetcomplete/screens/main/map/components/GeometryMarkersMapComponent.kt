@@ -23,6 +23,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
     // markers: LatLon -> Marker Id
     private val markerIdsByPosition: MutableMap<LatLon, List<Long>> = HashMap()
+    private val colorMarkerIds = hashSetOf<Long>()
 
     // cache for all drawable res ids supplied so far
     private val drawables: MutableMap<Int, BitmapDrawable> = HashMap()
@@ -138,17 +139,13 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
     }
 
     @Synchronized fun putColored(geometry: ElementGeometry, color: Int) {
-        val center = geometry.center
-        delete(geometry)
 
         val markers = mutableListOf<Marker>()
-
-        val colorString = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 100))
-        val colorStringArea = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 50))
 
         // point / icon marker
         if (geometry is ElementPointGeometry) {
             val marker = ctrl.addMarker()
+            val colorString = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 100))
             marker.setStylingFromString("""
             {
                 style: 'geometry-points',
@@ -169,6 +166,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 else -> throw IllegalStateException()
             }
 
+            val colorStringLine = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 75))
+            val colorStringArea = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 50))
             if (geometry is ElementPolygonsGeometry) {
                 val marker = ctrl.addMarker()
                 marker.setStylingFromString("""
@@ -193,7 +192,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 {
                     style: 'geometry-lines',
                     width: ${lineWidth}px,
-                    color: '$colorString',
+                    color: '$colorStringLine',
                     order: 2000,
                     collide: false,
                     cap: round,
@@ -205,7 +204,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             }
         }
 
-        markerIdsByPosition[center] = markers.map { it.markerId }
+        markers.forEach { colorMarkerIds.add(it.markerId) }
     }
 
     @Synchronized fun delete(geometry: ElementGeometry) {
@@ -219,7 +218,9 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         markerIdsByPosition.values.forEach { markerIds ->
             markerIds.forEach { ctrl.removeMarker(it) }
         }
+        colorMarkerIds.forEach { ctrl.removeMarker(it) }
         markerIdsByPosition.clear()
+        colorMarkerIds.clear()
     }
 
     private fun getBitmapDrawable(@DrawableRes drawableResId: Int): BitmapDrawable {
