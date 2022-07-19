@@ -12,13 +12,14 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampPower : OsmFilterQuestType<Boolean>() {
 
-    /* We only resurvey power_supply=yes and power_supply=no, as it might have more detailed 
+    /* We only resurvey power_supply = yes and power_supply = no, as it might have more detailed 
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with (
-          tourism=camp_site
-        )
-        and (!power_supply or (power_supply older today -4 years and power_supply ~ yes|no))
+        nodes, ways with
+          tourism = camp_site and (
+            !power_supply
+            or power_supply older today -4 years and power_supply ~ yes|no
+          )
     """
     override val changesetComment = "Specify whether there is electricity available at camp site"
     override val wikiLink = "Key:power_supply"
@@ -29,7 +30,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_power_supply_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism=camp_site")
+        getMapData().filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = YesNoQuestForm()
 

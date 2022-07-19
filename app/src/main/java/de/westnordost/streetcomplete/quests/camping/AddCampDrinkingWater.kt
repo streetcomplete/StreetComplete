@@ -13,10 +13,9 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with (
-          tourism=camp_site
-        )
-        and (!drinking_water or drinking_water older today -4 years)
+        nodes, ways with
+          tourism = camp_site
+          and (!drinking_water or drinking_water older today -4 years)
     """
     override val changesetComment = "Specify whether there is drinking water in camp site"
     override val wikiLink = "Key:drinking_water"
@@ -27,7 +26,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_drinking_water_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism=camp_site")
+        getMapData().filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = YesNoQuestForm()
 

@@ -12,11 +12,10 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddCampType : OsmFilterQuestType<CampType>() {
 
     override val elementFilter = """
-        nodes, ways with (
-          tourism=camp_site
-        )
-        and (!caravans or !tents)
-        and !backcountry
+        nodes, ways with
+          tourism = camp_site
+          and (!caravans or !tents)
+          and !backcountry
     """
     override val changesetComment = "Survey who may camp here"
     override val wikiLink = "Key:caravans"
@@ -27,7 +26,7 @@ class AddCampType : OsmFilterQuestType<CampType>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_type_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism=camp_site")
+        getMapData().filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = AddCampTypeForm()
 

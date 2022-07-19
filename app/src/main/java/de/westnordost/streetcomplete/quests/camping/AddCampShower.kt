@@ -12,13 +12,14 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampShower : OsmFilterQuestType<Boolean>() {
 
-    /* We only resurvey shower=yes and shower=no, as it might have more detailed 
+    /* We only resurvey shower = yes and shower = no, as it might have more detailed 
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with (
-          tourism=camp_site
-        )
-        and (!shower or (shower older today -4 years and shower ~ yes|no))
+        nodes, ways with
+          tourism = camp_site and (
+            !shower
+            or shower older today -4 years and shower ~ yes|no
+          )
     """
     override val changesetComment = "Specify whether there are showers available at camp site"
     override val wikiLink = "Key:shower"
@@ -29,7 +30,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_shower_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism=camp_site")
+        getMapData().filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = YesNoQuestForm()
 
