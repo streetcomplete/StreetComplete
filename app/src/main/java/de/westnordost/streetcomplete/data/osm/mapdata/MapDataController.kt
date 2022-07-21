@@ -67,7 +67,7 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            // use cache? but then it's likely the data will be loaded into cache just to be replaced right after
+            // todo: use cache? but then it's likely the data will be loaded into cache just to be replaced right after
             oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
