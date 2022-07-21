@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.messages
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintState.NOT_SHOWN
@@ -22,7 +23,7 @@ class QuestSelectionHintController(
 
     var state: QuestSelectionHintState
         set(value) {
-            prefs.edit().putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()).apply()
+            prefs.edit { putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString()) }
             listeners.forEach { it.onQuestSelectionHintStateChanged() }
         }
         get() {
