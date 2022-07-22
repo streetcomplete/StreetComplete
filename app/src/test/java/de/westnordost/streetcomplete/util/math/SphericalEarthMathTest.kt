@@ -548,11 +548,11 @@ class SphericalEarthMathTest {
     @Test fun `pointsOnPolylineFromStart for polyline`() {
         val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
         assertEquals(
-            listOf(p(2.5, 0.0), p(6.0, 0.0), p(7.5, 0.0)),
+            listOf(p(2.5, 0.0), p(5.5, 0.0), p(7.5, 0.0)),
             list.pointsOnPolylineFromStart(listOf(
                 list.measuredLength() * 0.25,
                 list.measuredLength() * 0.75, // unsorted order
-                list.measuredLength() * 0.60, // 0.60 amd 0.75 are in the same segment
+                list.measuredLength() * 0.55, // 0.55 amd 0.75 are in the same segment
             ))
         )
     }
