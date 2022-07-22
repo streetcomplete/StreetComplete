@@ -221,12 +221,12 @@ fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
     while (it.hasNext()) {
         val pos = it.next()
         // calculate with offsets here to properly handle 180th meridian
-        val lat = pos.latitude - origin.latitude
-        val lon = normalizeLongitude(pos.longitude - origin.longitude)
-        if (lat < minLatOffset) minLatOffset = lat
-        if (lon < minLonOffset) minLonOffset = lon
-        if (lat > maxLatOffset) maxLatOffset = lat
-        if (lon > maxLonOffset) maxLonOffset = lon
+        val latOffset = pos.latitude - origin.latitude
+        val lonOffset = normalizeLongitude(pos.longitude - origin.longitude)
+        if (latOffset < minLatOffset) minLatOffset = latOffset
+        if (lonOffset < minLonOffset) minLonOffset = lonOffset
+        if (latOffset > maxLatOffset) maxLatOffset = latOffset
+        if (lonOffset > maxLonOffset) maxLonOffset = lonOffset
     }
     return BoundingBox(
         origin.latitude + minLatOffset,
