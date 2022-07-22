@@ -25,7 +25,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         val name = DateTimeFormatter
             .ofPattern("yyyy_MM_dd'T'HH_mm_ss.SSSSSS'Z'")
             .withZone(ZoneOffset.UTC)
-            .format(Instant.ofEpochSecond(trackpoints[0].time)) + ".gpx"
+            .format(Instant.ofEpochMilli(trackpoints[0].time)) + ".gpx"
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
         val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
         val tags = listOf(ApplicationConstants.NAME.lowercase())

@@ -2,6 +2,7 @@
 centerLineStyle: white
 edgeLineStyle: short yellow dashes
 hasAdvisorySpeedLimitSign: false
+hasLivingStreet: false
 isLeftHandTraffic: true
 mobileCountryCode: 272
 noEntrySignStyle: default
@@ -10,6 +11,9 @@ noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, ga]
 popularSports: [gaelic_games, rugby]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
+postboxesHaveRoyalCypher: true
 atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
 chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
 clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]

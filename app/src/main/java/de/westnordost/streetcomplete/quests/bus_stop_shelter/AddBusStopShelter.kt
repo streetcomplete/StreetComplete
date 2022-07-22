@@ -25,7 +25,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */
 
-    override val changesetComment = "Add bus stop shelter"
+    override val changesetComment = "Specify whether bus stops have shelters"
     override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
     override val achievements = listOf(PEDESTRIAN)

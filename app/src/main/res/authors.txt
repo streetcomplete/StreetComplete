@@ -122,6 +122,10 @@ memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.w
 memorial_type_stele_stone.jpg  CC-BY-SA 4.0      Alta Falisa https://commons.wikimedia.org/wiki/File:18_June_1815_%E2%80%93_Waterloo_%E2%80%93_27th_(Inniskilling)_Regiment_of_Foot,_stele.jpg modified by Matija Nalis to remove wreath
 memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
 
+location_nyan.png              fair use
+car_nyan.png                   fair use
+
+
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_street_side.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:20200925-parking-lined-perpendicular.jpg
@@ -150,7 +154,7 @@ produce_chili.jpg              CC-BY-SA 3.0      Daniel Risacher https://commons
 produce_coconut.jpg            CC-BY 2.0         Diego Torres Silvestre https://commons.wikimedia.org/wiki/File:Palm_Tree_%26_Coconuts..._(148713113).jpg
 produce_coffee.jpg             CC-BY-SA 3.0      Marcelo Corrêa https://commons.wikimedia.org/wiki/File:Bourbon_Coffee.jpg
 produce_cranberry.jpg          CC-BY-SA 4.0      Ecomare/Sytske Dijksen https://commons.wikimedia.org/wiki/File:Ecomare_-_cranberry_in_de_duinen_(cranberry-duinpark-sd).jpg
-produce_date.jpg              CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
+produce_date.jpg               CC-BY-SA 3.0      Nepenthes https://commons.wikimedia.org/wiki/File:Dates005.jpg
 produce_fig.jpg                CC-BY-SA 3.0      Archives et jardin personnels https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_grape.jpg              CC0               https://pixabay.com/de/weintrauben-rotwein-weinberg-1717387/
 produce_grapefruit.jpg         CC-BY-SA 3.0      Lipsio https://commons.wikimedia.org/wiki/File:Grapefruit.ebola.jpeg
@@ -190,6 +194,7 @@ produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/w
 ramp_none.jpg                  CC0               Mateusz Konieczny
 ramp_stroller.jpg              CC0               Mateusz Konieczny
 ramp_wheelchair.jpg            CC0               Mateusz Konieczny
+ramp_bicycle.jpg               CC0               Mateusz Konieczny
 
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg

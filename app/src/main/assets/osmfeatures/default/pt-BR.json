@@ -287,6 +287,12 @@
                 "barrier": {
                     "label": "Tipo"
                 },
+                "barrier_planter": {
+                    "options": {
+                        "planter": "Sim",
+                        "undefined": "Não"
+                    }
+                },
                 "basin": {
                     "label": "Tipo"
                 },
@@ -1541,6 +1547,13 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Trilha de baixa dificuldade",
+                    "options": {
+                        "0": "⚪ Mais fácil (círculo branco)",
+                        "1": "🟢 Fácil (círculo verde)",
+                        "2": "🟦 Médio (quadrado azul)",
+                        "3": "◆ Difícil (diamante preto)",
+                        "4": "◆◆ Extremamente difícil (duplo diamante preto)"
+                    },
                     "placeholder": "Fácil, Médio, Difícil..."
                 },
                 "mtb/scale/uphill": {
@@ -2602,17 +2615,7 @@
                     "placeholder": "Excelente, Bom, Ruim..."
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotransformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Conversor",
-                        "distribution": "Distribuição",
-                        "generator": "Gerador",
-                        "phase_angle_regulator": "Regulador de ângulo de fase",
-                        "traction": "Tração",
-                        "yes": "Desconhecido"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Árvores"
@@ -3714,6 +3717,9 @@
                     "name": "Máquina de validação de bilhetes",
                     "terms": "ticket,bilhete,ingresso,validação de ingresso,catraca,entrada"
                 },
+                "amenity/toilets": {
+                    "name": "Banheiros"
+                },
                 "amenity/toilets/disposal/flush": {
                     "name": "Banheiros com descarga",
                     "terms": "banheiro"
@@ -4808,10 +4814,6 @@
                     "name": "Faixa de pedestres",
                     "terms": "faixa de pedestres"
                 },
-                "highway/crossing/signals": {
-                    "name": "Faixa de pedestres com semáforos",
-                    "terms": "pedestre,passagem,travessia,atravessar,cruzar,cruzamento,luzes,luminosos"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Travessia de pedestres não marcada",
                     "terms": "travessia de pedestres não marcada"
@@ -5047,6 +5049,9 @@
                 "highway/toll_gantry": {
                     "name": "Pedágio de fluxo livre",
                     "terms": "pedágio de fluxo livre,pedágio sem dinheiro"
+                },
+                "highway/track": {
+                    "name": "Trilha / Via de Acesso"
                 },
                 "highway/traffic_mirror": {
                     "name": "Espelho de tráfego",
@@ -5317,10 +5322,6 @@
                 "landuse/military/danger_area": {
                     "name": "Zona de exclusão militar",
                     "terms": "área de perigo,área perigosa,perigo,área militar,tiro,bombas,nuclear,zona militar,zona de exclusão"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Base naval",
-                    "terms": "base naval,base da marinha"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Curso de obstáculo militar",
@@ -7746,8 +7747,7 @@
                     "name": "Elemento turístico"
                 },
                 "tourism/alpine_hut": {
-                    "name": "Abrigo de montanha",
-                    "terms": "cabana alpina,abrigo de montanha,refúgio de montanha"
+                    "name": "Pousada da Montanha"
                 },
                 "tourism/apartment": {
                     "name": "Apartamento de Temporada",

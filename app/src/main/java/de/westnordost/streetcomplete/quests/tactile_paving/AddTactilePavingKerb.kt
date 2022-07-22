@@ -23,7 +23,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
           or tactile_paving = yes and tactile_paving older today -8 years
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add tactile paving on kerbs"
+    override val changesetComment = "Specify whether kerbs have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_kerb_tactile_paving
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON

@@ -27,7 +27,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
           and access !~ private|no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add recycled materials to container"
+    override val changesetComment = "Specify what can be recycled in recycling containers"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true

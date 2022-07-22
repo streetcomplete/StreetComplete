@@ -6,6 +6,8 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZÓNA
 atmOperators: [VÚB, Slovenská sporiteľňa, Tatra banka, ČSOB, Prima banka, Poštová banka, UniCredit Bank, OTP banka, Euronet, OTP Bank, 365.bank, ATM Point, General Bytes]

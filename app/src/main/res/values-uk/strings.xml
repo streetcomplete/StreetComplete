@@ -1489,6 +1489,11 @@ sorted alphabetically by title -->
     <string name="lit_value_automatic">"Освітлюється коли хтось рухається"</string>
     <string name="overlay_sidewalk">"Тротуари"</string>
     <string name="quest_entrance_reference">"Як підписаний цей вхід?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Номер під'їзду та діапазон квартир"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Діапазон квартир"</string>
+    <string name="quest_entrance_reference_select_code_only">"Номер під'їзду"</string>
     <string name="quest_entrance_reference_nothing_signed">"Немає таблички з номером чи діапазоном квартир"</string>
+    <string name="quest_entrance_reference_reference_label">"Номер під'їзду:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Діапазон квартир:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"—"</string>
 </resources>

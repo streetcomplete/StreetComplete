@@ -2694,4 +2694,18 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Altijd verlicht"</string>
     <string name="lit_value_automatic">"Verlicht als iemand passeert"</string>
     <string name="overlay_sidewalk">"Voetpaden"</string>
+    <string name="quest_generic_answer_is_indoors">"Dit is binnen"</string>
+    <string name="quest_summit_cross_title">"Is er een kruispunt hier?"</string>
+    <string name="quest_entrance_reference">"Wat staat er bij deze ingang aangegeven?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Entree label en appartementen reeks"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_select_flat_range_only">"Appartementen reeks"</string>
+    <string name="quest_entrance_reference_select_code_only">"Entree label"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Geen teken met label of appartementen reeks"</string>
+    <string name="quest_entrance_reference_reference_label">"Entree label:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_flat_range_label">"Appartementen volgorde:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"naar"</string>
 </resources>

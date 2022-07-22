@@ -2,5 +2,6 @@
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]
+postboxesHaveRef: true
 speedUnits: [miles per hour, kilometers per hour]
 atmOperators: [Lloyds Bank]

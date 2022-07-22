@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
@@ -232,7 +233,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
             drawable.bitmap, 0, 0,
             drawable.bitmap.width, drawable.bitmap.height, m, true
         )
-        return BitmapDrawable(resources, bitmap)
+        return bitmap.toDrawable(resources)
     }
 }
 

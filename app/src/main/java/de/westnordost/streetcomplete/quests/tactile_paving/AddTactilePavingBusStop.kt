@@ -24,7 +24,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
           or tactile_paving = yes and tactile_paving older today -8 years
         )
     """
-    override val changesetComment = "Add tactile pavings on bus stops"
+    override val changesetComment = "Specify whether bus stops have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON

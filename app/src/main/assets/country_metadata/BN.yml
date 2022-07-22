@@ -5,5 +5,6 @@ isLeftHandTraffic: true
 mobileCountryCode: 528
 officialLanguages: [ms, en]
 popularReligions: [muslim]
+postboxesHaveCollectionTimes: true
 atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB, Maybank]
 orchardProduces: [rubber, banana, coconut, pineapple, pepper, orange, chilli_pepper, sweet_pepper, lemon, lime, tomato]

@@ -2294,11 +2294,7 @@
                     "placeholder": "Utmerket, god, dårlig..."
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "generator": "Generator",
-                        "yes": "Ukjent"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Trær"
@@ -3928,9 +3924,6 @@
                 "landuse/military/danger_area": {
                     "name": "Fareområde"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Marinebase"
-                },
                 "landuse/orchard": {
                     "name": "Frukthage"
                 },
@@ -5034,9 +5027,6 @@
                 },
                 "telecom/data_center": {
                     "name": "Datasenter"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Fjellhytte"
                 },
                 "tourism/aquarium": {
                     "name": "Akvarium"

@@ -32,7 +32,7 @@ class AddCyclewayWidth(
         and access !~ private|no
         and placement != transition
     """
-    override val changesetComment = "Determine cycleways width"
+    override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_bicycleway_width
     override val achievements = listOf(BICYCLIST)

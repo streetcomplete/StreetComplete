@@ -1825,9 +1825,6 @@
                 "landuse/military/barracks": {
                     "name": "Казарми"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Военноморска база"
-                },
                 "landuse/orchard": {
                     "name": "Овощна градина"
                 },
@@ -2313,9 +2310,6 @@
                 },
                 "shop/video": {
                     "name": "Видеотека"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Хижа"
                 },
                 "tourism/aquarium": {
                     "name": "Аквариум"
