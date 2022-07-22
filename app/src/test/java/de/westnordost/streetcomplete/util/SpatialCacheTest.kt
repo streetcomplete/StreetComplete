@@ -89,41 +89,34 @@ internal class SpatialCacheTest {
     }
 
     @Test fun `get returns all the data in the bbox`() {
-        // should also test that data 1. outside the tile rect and 2. outside the bbox but inside the tile rect is not included
-        // fill tiles rect with stuff at the corners, but with very small offset so it's inside the tile
-        val fetchTile = LatLon(1.0, 1.0).enclosingTilePos(16)
-        val fetchTileBBox = fetchTile.asBoundingBox(16)
+        val tile = LatLon(1.0, 1.0).enclosingTilePos(16)
+        val tileBBox = tile.asBoundingBox(16)
         val nodesInsideFetchBBox = listOf(
-            node(1, LatLon(fetchTileBBox.min.latitude + 0.0001, fetchTileBBox.min.longitude + 0.0001)),
-            node(2, LatLon(fetchTileBBox.min.latitude + 0.0002, fetchTileBBox.min.longitude + 0.0002))
+            node(1, LatLon(tileBBox.min.latitude + 0.0001, tileBBox.min.longitude + 0.0001)),
+            node(2, LatLon(tileBBox.min.latitude + 0.0002, tileBBox.min.longitude + 0.0002))
         )
         val fetchBBox = nodesInsideFetchBBox.map { it.position }.enclosingBoundingBox()
-        assertTrue(nodesInsideFetchBBox[0].position in fetchBBox)
-        println(nodesInsideFetchBBox[1].position)
-        println(fetchBBox)
-        assertTrue(nodesInsideFetchBBox[1].position.latitude == fetchBBox.max.latitude)
-        assertTrue(nodesInsideFetchBBox[1].position.longitude == fetchBBox.max.longitude)
-        assertTrue(nodesInsideFetchBBox[1].position in fetchBBox)
-        val nodesOutsideFetchBBox = listOf(
-            node(3, LatLon(fetchTileBBox.max.latitude - 0.0001, fetchTileBBox.max.longitude - 0.0001)),
-            node(4, LatLon(fetchTileBBox.max.latitude - 0.0002, fetchTileBBox.max.longitude - 0.0002))
+        val nodesInTileButOutsideFetchBBox = listOf(
+            node(3, LatLon(tileBBox.max.latitude - 0.0001, tileBBox.max.longitude - 0.0001)),
+            node(4, LatLon(tileBBox.max.latitude - 0.0002, tileBBox.max.longitude - 0.0002))
         )
-        val nodesOutsideFetchTile = listOf(
-            node(5, LatLon(fetchTileBBox.max.latitude - 0.0001, fetchTileBBox.max.longitude + 0.0001)),
-            node(6, LatLon(fetchTileBBox.max.latitude - 0.0002, fetchTileBBox.max.longitude + 0.0002))
+        val nodesInOtherTile = listOf(
+            node(5, LatLon(tileBBox.max.latitude - 0.0001, tileBBox.max.longitude + 0.0001)),
+            node(6, LatLon(tileBBox.max.latitude - 0.0002, tileBBox.max.longitude + 0.0002))
         )
-        assertTrue((nodesInsideFetchBBox + nodesOutsideFetchBBox).map { it.position }.enclosingBoundingBox().isCompletelyInside(fetchTileBBox))
-        assertFalse(fetchBBox.intersect(nodesOutsideFetchBBox.map { it.position }.enclosingBoundingBox()))
-        assertFalse(fetchTile.asBoundingBox(16).intersect(nodesOutsideFetchTile.map { it.position }.enclosingBoundingBox()))
+        // assert the nodes are in the correct tiles and bboxes don't overlap, because depending
+        // on zoom, this may not be correct
+        assertTrue((nodesInsideFetchBBox + nodesInTileButOutsideFetchBBox).map { it.position }.enclosingBoundingBox().isCompletelyInside(tileBBox))
+        assertFalse(fetchBBox.intersect(nodesInTileButOutsideFetchBBox.map { it.position }.enclosingBoundingBox()))
+        assertFalse(tile.asBoundingBox(16).intersect(nodesInOtherTile.map { it.position }.enclosingBoundingBox()))
 
-        // get bbox of some of the things inside, and verify only the correct nodes are returned
         val cache = SpatialCache<Long, Node>(
             16, 4, null, { emptyList() }, Node::id, Node::position
         )
-        val nodes = nodesInsideFetchBBox + nodesOutsideFetchBBox + nodesOutsideFetchTile
+        val nodes = nodesInsideFetchBBox + nodesInTileButOutsideFetchBBox + nodesInOtherTile
         cache.replaceAllInBBox(nodes, nodes.map { it.position }.enclosingBoundingBox().asBoundingBoxOfEnclosingTiles(16))
-        assertTrue(cache.get(fetchTileBBox).containsExactlyInAnyOrder(nodesInsideFetchBBox + nodesOutsideFetchBBox))
-        assertEquals(cache.get(fetchBBox), nodesInsideFetchBBox)
+        assertTrue(cache.getKeys().containsExactlyInAnyOrder(nodes.map { it.id }))
+        assertTrue(cache.get(tileBBox).containsExactlyInAnyOrder(nodesInsideFetchBBox + nodesInTileButOutsideFetchBBox))
         assertTrue(cache.get(fetchBBox).containsExactlyInAnyOrder(nodesInsideFetchBBox))
     }
 
