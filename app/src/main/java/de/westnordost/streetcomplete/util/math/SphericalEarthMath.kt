@@ -218,22 +218,33 @@ fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
     var minLonOffset = 0.0
     var maxLatOffset = 0.0
     var maxLonOffset = 0.0
+    var minLat = origin.latitude
+    var minLon = origin.longitude
+    var maxLat = origin.latitude
+    var maxLon = origin.longitude
     while (it.hasNext()) {
         val pos = it.next()
         // calculate with offsets here to properly handle 180th meridian
         val latOffset = pos.latitude - origin.latitude
         val lonOffset = normalizeLongitude(pos.longitude - origin.longitude)
-        if (latOffset < minLatOffset) minLatOffset = latOffset
-        if (lonOffset < minLonOffset) minLonOffset = lonOffset
-        if (latOffset > maxLatOffset) maxLatOffset = latOffset
-        if (lonOffset > maxLonOffset) maxLonOffset = lonOffset
+        if (latOffset < minLatOffset) {
+            minLatOffset = latOffset
+            minLat = pos.latitude
+        }
+        if (lonOffset < minLonOffset) {
+            minLonOffset = lonOffset
+            minLon = pos.longitude
+        }
+        if (latOffset > maxLatOffset) {
+            maxLatOffset = latOffset
+            maxLat = pos.latitude
+        }
+        if (lonOffset > maxLonOffset) {
+            maxLonOffset = lonOffset
+            maxLon = pos.longitude
+        }
     }
-    return BoundingBox(
-        origin.latitude + minLatOffset,
-        normalizeLongitude(origin.longitude + minLonOffset),
-        origin.latitude + maxLatOffset,
-        normalizeLongitude(origin.longitude + maxLonOffset)
-    )
+    return BoundingBox(minLat, minLon, maxLat, maxLon)
 }
 
 /** Returns the distance covered by this polyline */
