@@ -50,8 +50,7 @@ class ElementEditsUploader(
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
-            val element = mapDataController.get(edit.elementType, edit.elementId)
-            val updates = singleUploader.upload(edit, idProvider, element)
+            val updates = singleUploader.upload(edit, idProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(edit.type.name, edit.position)

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+
 object ApplicationConstants {
     const val NAME = "StreetComplete"
     const val USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME
@@ -62,5 +64,9 @@ object ApplicationConstants {
         "person",
         // no wiki entry, sounds like it could span large areas
         "power", "pipeline", "railway"
+    )
+
+    val EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES = setOf(
+        SplitWayAction::class
     )
 }
