@@ -149,7 +149,7 @@
     <string name="quest_osmose_title">Osmose quest: %s</string>
     <string name="quest_osmose_false_positive">Report false positive</string>
     <string name="quest_osmose_modify_tag">Modify tag</string>
-    <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. The message is displayed with the quest, and for some issues a tag can be edited, which also reports the issue as solved. It is also possible to report the problem as false positive. Reporting the issue as solved or false positive cannot be undone.</string>
+    <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if enabled in quest settings. The message is displayed with the quest, and for some issues a tag can be edited, which also reports the issue as solved. It is also possible to report the problem as false positive. Reporting the issue as solved or false positive cannot be undone.</string>
     <string name="quest_external_osmose_not_found">Entry for this element has been removed since creation of this quest</string>
     <string name="quest_osmose_message_for_element">Message for this element (item type %1$s): %2$s</string>
     <string name="quest_osmose_set_value">Set new value for tag</string>
