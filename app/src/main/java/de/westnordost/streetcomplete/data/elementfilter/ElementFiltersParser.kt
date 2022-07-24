@@ -382,7 +382,7 @@ private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
 
 private fun StringWithCursor.nextIsReservedWord(): String? {
     return RESERVED_WORDS.firstOrNull {
-        nextIsIgnoreCase(it) && (isAtEnd(it.length) || findNext(' ', it.length) == it.length)
+        nextIs(it) && (isAtEnd(it.length) || findNext(' ', it.length) == it.length)
     }
 }
 

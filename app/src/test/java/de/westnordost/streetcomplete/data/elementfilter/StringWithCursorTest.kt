@@ -58,12 +58,6 @@ class StringWithCursorTest {
         assertEquals(5, x.cursorPos)
     }
 
-    @Test fun nextIsAndAdvanceIgnoreCase() {
-        val x = StringWithCursor("test123")
-        assertTrue(x.nextIsAndAdvanceIgnoreCase("TE"))
-        assertTrue(x.nextIsAndAdvanceIgnoreCase("st"))
-    }
-
     @Test fun findNext() {
         val x = StringWithCursor("abc abc")
         assertEquals("abc abc".length.toLong(), x.findNext("wurst").toLong())
@@ -114,11 +108,5 @@ class StringWithCursorTest {
         assertNull(x.nextMatches(Regex("bc[0-9]")))
         x.advance()
         assertNotNull(x.nextMatches(Regex("bc[0-9]")))
-    }
-
-    @Test fun nextIsStringIgnoreCase() {
-        val x = StringWithCursor("abc")
-        assertTrue(x.nextIsIgnoreCase("A"))
-        assertTrue(x.nextIsIgnoreCase("a"))
     }
 }
