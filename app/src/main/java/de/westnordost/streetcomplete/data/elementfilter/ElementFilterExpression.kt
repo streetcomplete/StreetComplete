@@ -59,8 +59,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |
  *  */
 class ElementFilterExpression(
-    private val elementsTypes: Set<ElementsTypeFilter>,
-    private val elementExprRoot: BooleanExpression<ElementFilter, Element>?
+    internal val elementsTypes: Set<ElementsTypeFilter>,
+    internal val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
     /* Performance improvement: Allows to skip early on elements that have no tags at all */
     private val mayEvaluateToTrueWithNoTags = elementExprRoot?.mayEvaluateToTrueWithNoTags ?: true
@@ -76,9 +76,6 @@ class ElementFilterExpression(
         ElementType.WAY -> elementsTypes.contains(WAYS)
         ElementType.RELATION -> elementsTypes.contains(RELATIONS)
     }
-
-    /** returns this expression as a Overpass query string */
-    fun toOverpassQLString(): String = OverpassQueryCreator(elementsTypes, elementExprRoot).create()
 }
 
 /** Enum that specifies which type(s) of elements to retrieve  */

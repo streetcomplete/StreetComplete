@@ -149,3 +149,7 @@ class OverpassQueryCreator(
         override fun toString() = values.joinToString(" and ")
     }
 }
+
+/** @return this expression as a Overpass query string */
+fun ElementFilterExpression.toOverpassQLString(): String =
+    OverpassQueryCreator(elementsTypes, elementExprRoot).create()
