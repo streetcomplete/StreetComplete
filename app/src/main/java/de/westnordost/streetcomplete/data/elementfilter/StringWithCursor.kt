@@ -67,16 +67,22 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
-    fun previousIs(c: Char): Boolean = c == string[cursorPos - 1]
+    /** @return whether the previous character at the cursor is [c] */
+    fun previousIs(c: Char): Boolean = if (cursorPos == 0) false else c == string[cursorPos - 1]
+    /** @return whether the next character at the cursor is [c] */
     fun nextIs(c: Char): Boolean = c == char
+    /** @return whether the next string at the cursor is [str] */
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
 
+    /** @return whether the [regex] matches the next string sequence at the cursor */
     fun nextMatches(regex: Regex): MatchResult? {
         val match = regex.find(string, cursorPos) ?: return null
         if (match.range.first != cursorPos) return null
         return match
     }
 
+    /** Advances the cursor if [regex] matches the next string sequence at the cursor.
+     *  @return match result */
     fun nextMatchesAndAdvance(regex: Regex): MatchResult? {
         val result = nextMatches(regex) ?: return null
         advanceBy(result.value.length)
