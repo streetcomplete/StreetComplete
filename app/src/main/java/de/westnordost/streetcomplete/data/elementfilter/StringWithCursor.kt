@@ -10,28 +10,35 @@ class StringWithCursor(private val string: String) {
     private val char: Char?
         get() = if (cursorPos < string.length) string[cursorPos] else null
 
-    /** Advances the cursor if str is the next thing at the cursor.
-     *  Returns whether the next string was the str */
+    /** Advances the cursor if [str] is the next string sequence at the cursor.
+     *  @return whether the next string was the [str] */
     fun nextIsAndAdvance(str: String): Boolean {
         if (!nextIs(str)) return false
         advanceBy(str.length)
         return true
     }
 
+    /** Advances the cursor if [c] is the next character at the cursor.
+     *  @return whether the next character was [c] */
     fun nextIsAndAdvance(c: Char): Boolean {
         if (!nextIs(c)) return false
         advance()
         return true
     }
 
-    /** returns whether the cursor reached the end */
-    fun isAtEnd(x: Int = 0): Boolean = cursorPos + x >= string.length
-    fun findNext(str: String): Int = toDelta(string.indexOf(str, cursorPos))
+    /** @return whether the cursor position + [offs] is at the end of the string */
+    fun isAtEnd(offs: Int = 0): Boolean = cursorPos + offs >= string.length
+    /** @return the position relative to the cursor position at which [str] is found in the string.
+     *  If not found, the position past the end of the string is returned */
+    fun findNext(str: String, offs: Int = 0): Int = toDelta(string.indexOf(str, cursorPos + offs))
+    /** @return the position relative to the cursor position at which [c] is found in the string.
+     *  If not found, the position past the end of the string is returned */
     fun findNext(c: Char, offs: Int = 0): Int = toDelta(string.indexOf(c, cursorPos + offs))
 
-    /** Advance cursor by one and return the character that was at that position
+    /** Advance cursor by one
      *
-     * throws IndexOutOfBoundsException if cursor is already at the end
+     * @return character that was at the previous cursor position
+     * @throws IndexOutOfBoundsException if cursor is already at the end
      */
     fun advance(): Char {
         val result = string[cursorPos]
@@ -39,11 +46,13 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
-    /** Advance cursor by x and return the string that between the two positions.
-     * If cursor+x is beyond the end of the string, the method will just return the string until
-     * the end of the string
+    /** Advance cursor by [x]
      *
-     * throws IndexOutOfBoundsException if x < 0
+     * @return the string between the previous cursor and the cursor position now. If cursor+[x] is
+     * beyond the end of the string, the method will just return the string sequence until the end
+     * of the string
+     *
+     * @throws IndexOutOfBoundsException if x < 0
      */
     fun advanceBy(x: Int): String {
         val end = cursorPos + x
