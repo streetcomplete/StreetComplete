@@ -380,7 +380,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             return
         }
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
-            viewLifecycleScope.launch { listener?.onEdited(osmElementQuestType, element, geometry) }
+            viewLifecycleScope.launch {
+                // Only listener is mainFragment for closing bottom sheet and showing the quest
+                // solved animation, so it's ok to call even though the edit was not done yet.
+                listener?.onEdited(osmElementQuestType, element, geometry)
+            }
+            // hides the quest pin immediately (and would close bottom sheet without solved animation)
+            hideOsmQuestController.tempHide(questKey as OsmQuestKey)
             withContext(Dispatchers.IO) {
                 addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
             }

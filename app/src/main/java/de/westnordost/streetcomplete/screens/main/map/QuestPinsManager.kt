@@ -66,10 +66,12 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+            var deleted = false
             synchronized(questsInView) {
                 added.forEach { questsInView[it.key] = createQuestPins(it) }
-                removed.forEach { questsInView.remove(it) }
+                removed.forEach { if (questsInView.remove(it) != null) deleted = true }
             }
+            if (added.isNotEmpty() || deleted)
             updatePins()
         }
 
