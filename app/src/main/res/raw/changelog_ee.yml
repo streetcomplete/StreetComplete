@@ -4,7 +4,7 @@ v45.1_ee: |
   <li>Fix crash when displaying changelog</li>
   <li>When showing all tags, sort them alphabetically</li>
   <li>Show recent answers for some text input forms (cuisine, healthcare, service building operator, tree)</li>
-  <li>Allow adding manual download to queue insteal of always cancelling current download</li>
+  <li>Allow adding manual download to queue instead of always cancelling current download</li>
   </ul>
 
 v45.0_ee: |
