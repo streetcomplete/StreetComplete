@@ -18,7 +18,6 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getShortOrNull
 import androidx.core.database.getStringOrNull
-import androidx.core.database.sqlite.transaction
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
@@ -136,7 +135,14 @@ class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
     }
 
     override fun <T> transaction(block: () -> T): T {
-        return db.transaction { block() }
+        db.beginTransaction()
+        try {
+            val result = block()
+            db.setTransactionSuccessful()
+            return result
+        } finally {
+            db.endTransaction()
+        }
     }
 }
 
