@@ -2043,17 +2043,7 @@
                     "placeholder": "우수함, 좋음, 나쁨..."
                 },
                 "transformer": {
-                    "label": "변압기 유형",
-                    "options": {
-                        "auto": "단권변압기",
-                        "auxiliary": "보조변압기",
-                        "converter": "변환기 변압기",
-                        "distribution": "배전용 변압기",
-                        "generator": "발전기 변압기",
-                        "phase_angle_regulator": "이상변압기",
-                        "traction": "가공 전차선 변압기",
-                        "yes": "알 수 없음"
-                    }
+                    "label": "변압기 유형"
                 },
                 "trees": {
                     "label": "나무"
@@ -4261,10 +4251,6 @@
                     "name": "위험 지역",
                     "terms": "위험 지역"
                 },
-                "landuse/military/naval_base": {
-                    "name": "해군 기지",
-                    "terms": "해군 기지"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "군용 장애물 코스"
                 },
@@ -6311,9 +6297,6 @@
                 },
                 "tourism": {
                     "name": "관광 지물"
-                },
-                "tourism/alpine_hut": {
-                    "name": "고산장"
                 },
                 "tourism/apartment": {
                     "name": "게스트 아파트 / 콘도",

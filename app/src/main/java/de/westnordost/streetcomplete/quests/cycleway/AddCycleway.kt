@@ -53,7 +53,7 @@ class AddCycleway(
     private val prefs: SharedPreferences,
 ) : OsmElementQuestType<CyclewayAnswer> {
 
-    override val changesetComment = "Add whether there are cycleways"
+    override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)

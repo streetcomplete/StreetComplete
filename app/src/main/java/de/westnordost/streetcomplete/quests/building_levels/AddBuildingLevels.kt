@@ -19,7 +19,7 @@ class AddBuildingLevels(private val prefs: SharedPreferences) : OsmFilterQuestTy
          and location != underground
          and ruins != yes
     """
-    override val changesetComment = "Add building and roof levels"
+    override val changesetComment = "Specify building and roof levels"
     override val wikiLink = "Key:building:levels"
     override val icon = R.drawable.ic_quest_building_levels
     override val achievements = listOf(BUILDING)

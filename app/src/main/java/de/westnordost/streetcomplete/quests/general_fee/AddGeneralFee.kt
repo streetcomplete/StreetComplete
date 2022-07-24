@@ -15,7 +15,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
          and access !~ private|no
          and !fee
     """
-    override val changesetComment = "Add fee info"
+    override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_fee
     override val achievements = listOf(CITIZEN)

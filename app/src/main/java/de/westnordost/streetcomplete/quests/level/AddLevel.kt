@@ -69,7 +69,7 @@ class AddLevel(
          and !level
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add level to elements"
+    override val changesetComment = "Determine on which level elements are in a building"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,

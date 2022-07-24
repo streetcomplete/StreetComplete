@@ -34,7 +34,7 @@ class AddRoadWidth(
         and (access !~ private|no or (foot and foot !~ private|no))
         and placement != transition
     """
-    override val changesetComment = "Determine road width"
+    override val changesetComment = "Determine road widths"
     override val wikiLink = "Key:width"
     override val icon = R.drawable.ic_quest_street_width
     override val achievements = listOf(EditTypeAchievement.CAR)

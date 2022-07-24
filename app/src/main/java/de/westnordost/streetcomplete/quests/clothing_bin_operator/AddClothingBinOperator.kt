@@ -20,7 +20,7 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
          and !operator and !name and !brand
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add clothing bin operator"
+    override val changesetComment = "Specify clothing bin operators"
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.ic_quest_recycling_clothes
     override val isDeleteElementEnabled = true

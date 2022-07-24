@@ -25,7 +25,7 @@ achievement/
     surveyor.svg                mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                 (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
     tourist.svg                 Judith Gastell, License: CC-BY-SA 4.0
-    veg.svg                     Florian Edelmann; mashup with
+    veg.svg                     Flo Edelmann; mashup with
                                 https://github.com/twitter/twemoji/blob/v13.0.1/assets/svg/1f955.svg (License: CC-BY 4.0)
                                 https://openclipart.org/detail/212733/vegetables (License: CC0 1.0)
                                 https://openclipart.org/detail/312402/simple-daikon (License: CC0 1.0)
@@ -268,7 +268,7 @@ quest/
     bicycleway.svg
     bicycleway_surface.svg
     bicycleway_width.svg
-    bin_public_transport.svg         Florian Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
+    bin_public_transport.svg         Flo Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
     blind.svg
     blind_bus.svg                    parts taken from Twemoji: U+1F68D
     blind_pedestrian_crossing.svg
@@ -298,7 +298,7 @@ quest/
     cow.svg                          modified from EmojiOne 2: U+1F404
     crown.svg                        modified from https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (CC-BY-SA 3.0 by Sodacan)
     defibrillator.svg                (c) 2020 Sequynth, (c) 2020 Mateusz Konieczny ( https://github.com/matkoniecz/Zazolc/commit/6b20ae7ed27f6aeaa543b690a3559aad1aab62b5 + https://github.com/matkoniecz/Zazolc/commit/e021a329bd1d705d0c03ac08d51d1cc14e176772)
-    drinking_water.svg               Florian Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
+    drinking_water.svg               Flo Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
     door.svg
     door_address.svg                 housenumber.svg recoloured by Mateusz Konieczny, so (c) Tobias Zwick CC-BY-SA 4.0
     fee.svg
@@ -348,10 +348,10 @@ quest/
     parking_lane.svg
     parking_maxstay.svg
     path_segregation.svg
-    peak.svg                         (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0)
+    peak.svg                         2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0)
     pedestrian.svg
     pedestrian_crossing.svg
-    pedestrian_crossing_island.svg   (c) 2020 Kai Michael Poppe and Tobias Zwick
+    pedestrian_crossing_island.svg   2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
     pitch_lantern.svg
     pitch_surface.svg

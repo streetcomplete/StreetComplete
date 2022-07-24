@@ -17,7 +17,7 @@ class AddBuildingWithAddressType : OsmElementQuestType<BuildingType> {
         return buildings.filterNot { it in buildingsWithoutAddress }
     }
 
-    override val changesetComment = "Add building types"
+    override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building_has_address
 

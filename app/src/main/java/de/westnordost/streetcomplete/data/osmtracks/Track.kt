@@ -6,7 +6,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Trackpoint(
     val position: LatLon,
+    /** timestamp in milliseconds */
     val time: Long,
+    /** in meters */
     val horizontalDilutionOfPrecision: Float,
+    /** in meters above sea level */
     val elevation: Float,
 )

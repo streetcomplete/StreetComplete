@@ -31,7 +31,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           or highway and oneway and oneway != no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add whether pedestrian crossing has an island"
+    override val changesetComment = "Specify whether pedestrian crossings have islands"
     override val wikiLink = "Key:crossing:island"
     override val icon = R.drawable.ic_quest_pedestrian_crossing_island
     override val achievements = listOf(PEDESTRIAN, BLIND)

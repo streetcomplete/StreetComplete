@@ -25,7 +25,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
           or lit older today -16 years
         )
     """
-    override val changesetComment = "Add whether a bus stop is lit"
+    override val changesetComment = "Add whether bus stops are lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_bus_stop_lit
     override val achievements = listOf(PEDESTRIAN)

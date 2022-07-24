@@ -21,7 +21,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
           and takeaway != only
           and (!outdoor_seating or !indoor_seating)
     """
-    override val changesetComment = "Add seating info"
+    override val changesetComment = "Survey whether places have seating"
     override val defaultDisabledMessage = R.string.default_disabled_msg_summer_outdoor_seating
     override val wikiLink = "Key:outdoor_seating"
     override val icon = R.drawable.ic_quest_seating

@@ -23,7 +23,7 @@ class AddSummitCross : OsmElementQuestType<Boolean> {
           and (!summit:cross or summit:cross older today -16 years)
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add whether summit cross is present"
+    override val changesetComment = "Specify whether summit crosses are present"
     override val wikiLink = "Key:summit:cross"
     override val icon = R.drawable.ic_quest_summit_cross
     override val achievements = listOf(RARE, OUTDOORS)

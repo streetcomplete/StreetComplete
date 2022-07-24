@@ -25,7 +25,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
           addr:street and addr:interpolation
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add street/place names to address"
+    override val changesetComment = "Specify street/place names to addresses"
     override val icon = R.drawable.ic_quest_housenumber_street
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets

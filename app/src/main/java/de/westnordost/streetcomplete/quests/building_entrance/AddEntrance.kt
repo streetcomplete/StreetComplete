@@ -12,7 +12,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     private val withoutEntranceFilter by lazy { """
         nodes with
-          !entrance and !barrier and noexit != yes
+          !entrance and !barrier and noexit != yes and !railway
     """.toElementFilterExpression() }
 
     private val buildingWaysFilter by lazy { """
@@ -25,10 +25,10 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
-        ways with (tunnel and tunnel != no) or covered=yes
+        ways with (tunnel and tunnel != no) or (covered and covered != no)
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add entrance info"
+    override val changesetComment = "Specify type of entrances"
     override val wikiLink = "Key:entrance"
     override val icon = R.drawable.ic_quest_door
     override val achievements = listOf(PEDESTRIAN)

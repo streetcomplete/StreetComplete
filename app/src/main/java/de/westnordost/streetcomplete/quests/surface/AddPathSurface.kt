@@ -35,7 +35,7 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
     """
     /* ~paved ways are less likely to change the surface type */
 
-    override val changesetComment = "Add path surfaces"
+    override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)

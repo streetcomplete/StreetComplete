@@ -25,7 +25,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           and lane_markings != no
           and placement != transition
     """
-    override val changesetComment = "Add road lanes"
+    override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val achievements = listOf(CAR)

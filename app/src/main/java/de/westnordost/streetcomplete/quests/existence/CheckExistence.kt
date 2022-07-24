@@ -23,6 +23,7 @@ class CheckExistence(
             amenity = atm
             or amenity = telephone
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
+            or amenity = parcel_locker
             or amenity = public_bookcase
           )
           and (${lastChecked(2.0)})
@@ -84,7 +85,7 @@ class CheckExistence(
     *  so asking about this anyway would be a good idea.
     * */
 
-    override val changesetComment = "Check if element still exists"
+    override val changesetComment = "Survey if places still exist"
     override val wikiLink: String? = null
     override val icon = R.drawable.ic_quest_check
     override val achievements = listOf(CITIZEN, OUTDOORS)

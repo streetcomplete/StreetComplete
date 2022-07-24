@@ -24,7 +24,7 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
     /* Asked less often than for example opening hours because this quest is only asked for
        tendentially larger places which are less likely to change often */
 
-    override val changesetComment = "Add internet access"
+    override val changesetComment = "Specify whether place provides internet access"
     override val wikiLink = "Key:internet_access"
     override val icon = R.drawable.ic_quest_wifi
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

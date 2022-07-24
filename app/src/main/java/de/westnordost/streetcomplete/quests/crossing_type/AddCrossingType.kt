@@ -38,7 +38,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
           or highway and access ~ private|no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add crossing type"
+    override val changesetComment = "Specify crossing types"
     override val wikiLink = "Key:crossing"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
     override val achievements = listOf(PEDESTRIAN)

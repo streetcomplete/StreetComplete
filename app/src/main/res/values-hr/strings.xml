@@ -1859,4 +1859,30 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="lit_value_automatic">"Svijetli kada detektira pokret"</string>
     <string name="overlay_sidewalk">"Nogostupi"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_generic_answer_is_indoors">"Nalazi se unutar građevine"</string>
+    <string name="quest_summit_cross_title">"Postoji li križ na ovom vrhu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference">"Što piše na ovom ulazu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ulazna oznaka i raspon stanova"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_select_flat_range_only">"Raspon stanova"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_select_code_only">"Ulazna oznaka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_nothing_signed">"Nema table s ulaznom oznakom ili rasponom stanova"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_reference_label">"Oznaka ulaza:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference_flat_range_label">"Raspon stanova:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"do"</string>
 </resources>

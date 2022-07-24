@@ -2,22 +2,23 @@ package de.westnordost.streetcomplete.util.ktx
 
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.style.ImageSpan
+import androidx.core.graphics.applyCanvas
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.drawable.toDrawable
 
 fun Drawable.createBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight): Bitmap {
-    val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
-    setBounds(0, 0, canvas.width, canvas.height)
-    draw(canvas)
-    return bitmap
+    return createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
+        setBounds(0, 0, this.width, this.height)
+        draw(this)
+    }
 }
 
 fun Drawable.asBitmapDrawable(resources: Resources, width: Int = intrinsicWidth, height: Int = intrinsicHeight): BitmapDrawable =
-    if (this is BitmapDrawable) this else BitmapDrawable(resources, createBitmap(width, height))
+    if (this is BitmapDrawable) this else createBitmap(width, height).toDrawable(resources)
 
 fun Drawable.asBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight): Bitmap =
     if (this is BitmapDrawable) bitmap else createBitmap(width, height)

@@ -23,7 +23,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
           or kerb !~ no|rolled and kerb older today -8 years
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add kerb height info"
+    override val changesetComment = "Determine the heights of kerbs"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.ic_quest_kerb_type
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)

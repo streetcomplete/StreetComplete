@@ -35,7 +35,7 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
         prefs.getString(questPrefix(prefs) + PREF_ELEMENTS, WHEELCHAIR_PLACES) +
         "  \n)"
 
-    override val changesetComment = "Add wheelchair access"
+    override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true

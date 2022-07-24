@@ -19,7 +19,7 @@ class SidewalkOverlay : Overlay {
 
     override val title = R.string.overlay_sidewalk
     override val icon = R.drawable.ic_quest_sidewalk
-    override val changesetComment = "Add whether there are sidewalks"
+    override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink: String = "Key:sidewalk"
     override val achievements = listOf(PEDESTRIAN)
     override val hidesQuestTypes = setOf(AddSidewalk::class.simpleName!!)

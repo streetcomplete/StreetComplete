@@ -2,3 +2,4 @@
 hasSlowZone: true
 mobileCountryCode: 212
 officialLanguages: [fr]
+postboxesHaveCollectionTimes: true

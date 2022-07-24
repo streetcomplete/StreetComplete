@@ -52,7 +52,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           and layer
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add maximum heights"
+    override val changesetComment = "Specify maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val achievements = listOf(CAR)

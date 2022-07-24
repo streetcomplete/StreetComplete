@@ -23,7 +23,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
          and area != yes
          and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add speed limits"
+    override val changesetComment = "Specify speed limits"
     override val wikiLink = "Key:maxspeed"
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true

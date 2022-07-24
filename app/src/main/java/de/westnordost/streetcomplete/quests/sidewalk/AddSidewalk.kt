@@ -34,7 +34,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
     """.toElementFilterExpression() }
     // highway=construction included, as situation often changes during and after construction
 
-    override val changesetComment = "Add whether there are sidewalks"
+    override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val achievements = listOf(PEDESTRIAN)

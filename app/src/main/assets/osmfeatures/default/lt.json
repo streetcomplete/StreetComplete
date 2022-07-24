@@ -1489,13 +1489,7 @@
                     "placeholder": "Puikus, Geras, Prastas..."
                 },
                 "transformer": {
-                    "label": "Tipas",
-                    "options": {
-                        "auto": "Autotransformeris",
-                        "converter": "Konverteris",
-                        "generator": "Generatorius",
-                        "yes": "Nežinoma"
-                    }
+                    "label": "Tipas"
                 },
                 "trees": {
                     "label": "Medžiai"
@@ -3243,9 +3237,6 @@
                 "shop/wine": {
                     "name": "Vyno parduotuvė",
                     "terms": "vyninė,vyno parduotuvė"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Kalnų namelis"
                 },
                 "tourism/apartment": {
                     "name": "Svečių apartamentai / butas"

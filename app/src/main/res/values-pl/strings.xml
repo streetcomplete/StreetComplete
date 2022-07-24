@@ -2051,6 +2051,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Czy na pewno rowerzyści nie mogą korzystać z tej drogi jednokierunkowej w obu kierunkach? W razie wątpliwości sprawdź znak na końcu ulicy."</string>
+    <string name="link_valhalla_description">"Silnik routingu o bardzo małej ilości pamięci, routing multimodalny, izochrony i nie tylko."</string>
     <string name="link_backofyourhand_description">"Jak dobrze znasz swoją okolicę? Sprawdź swoją wiedzę, lokalizując ulice."</string>
 
     <!-- Fuzzy -->
@@ -2073,4 +2074,64 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Tylko liczba kroków, aby dotrzeć na szczyt. Jeśli liczba kroków różni się z każdej strony, podaj wyższą liczbę."</string>
+    <string name="quest_shoulder_explanation2">"Pas poboczny lub awaryjny to wyraźnie oznaczony pas awaryjnego zatrzymania. Obszar oznaczony jako pobocze niekoniecznie musi być utwardzony na całej jego szerokości i niekoniecznie na tyle szeroki, aby samochód mógł całkowicie zatrzymać się poza pasem ruchu."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"brak, zakaz jazdy na rowerze w tym kierunku"</string>
+    <string name="map_btn_create_track">"Stwórz nowe nagranie"</string>
+    <string name="map_btn_stop_track">"Przestań nagrywać"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Ile jest tu rowerów do wypożyczenia?"</string>
+    <string name="quest_bicycle_rental_type_title">"Co to za wypożyczalnia rowerów?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Stacja do blokowania rowerów"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Wyznaczone miejsce (rowery blokowane pojedynczo)"</string>
+    <string name="quest_bicycle_rental_type_human">"Wypożyczalnia rowerów z obsługą"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Sklep rowerowy, który również je wypożycza"</string>
+    <string name="quest_bicycle_shop_repair_title">"Czy można tu naprawić rower?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Czy są tu sprzedawane rowery używane?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nie, tylko nowe"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Tak, oprócz nowych"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Tak, tylko używane"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"W ogóle nie sprzedaje się tu rowerów"</string>
+    <string name="quest_building_entrance_title">"Co to za wejście do budynku?"</string>
+    <string name="quest_building_entrance_main">"Główne wejście"</string>
+    <string name="quest_building_entrance_staircase">"Wejście na klatkę schodową (np. w bloku)"</string>
+    <string name="quest_building_entrance_service">"Wejście dla personelu"</string>
+    <string name="quest_building_entrance_exit">"Wyłącznie wyjście"</string>
+    <string name="quest_building_entrance_emergency_exit">"Wyjście ewakuacyjne"</string>
+    <string name="quest_building_entrance_shop">"Wejście do sklepu"</string>
+    <string name="quest_building_entrance_yes">"Inny rodzaj wejścia"</string>
+    <string name="quest_building_entrance_dead_end">"Ślepa ścieżka, brak wejścia"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Dotknij ekranu, aby rozpocząć pomiar"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Czy jest tu publiczna pompka rowerowa?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Czy jest tu działająca pompka rowerowa?"</string>
+    <string name="action_overlays">"Nakładki"</string>
+    <string name="split_way">"Podziel drogę"</string>
+    <string name="quest_memorialType_title">"Co to za pomnik?"</string>
+    <string name="quest_memorialType_statue">"Statua"</string>
+    <string name="quest_memorialType_bust">"Popiersie"</string>
+    <string name="quest_memorialType_plaque">"Plakieta"</string>
+    <string name="quest_memorialType_war_memorial">"Pomnik wojenny"</string>
+    <string name="quest_memorialType_stone">"Kamień"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Stela drewniana (płyta pamiątkowa)"</string>
+    <string name="quest_memorialType_stele_stone">"Stela kamienna (płyta pamiątkowa)"</string>
+    <string name="quest_memorialType_sculpture">"Inna rzeźba"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Wybierz nakładkę"</string>
+    <string name="overlay_none">"Żadna"</string>
+    <string name="overlay_lit">"Oświetlenie"</string>
+    <string name="lit_value_yes">"Oświetlony"</string>
+    <string name="lit_value_no">"Nieświetlony"</string>
+    <string name="lit_value_24_7">"Oświetlony w dzień i w nocy"</string>
+    <string name="lit_value_automatic">"Oświetlony po wykryciu ruchu"</string>
+    <string name="overlay_sidewalk">"Chodniki"</string>
+    <string name="quest_generic_answer_is_indoors">"To jest wewnątrz"</string>
+    <string name="quest_summit_cross_title">"Czy na szczycie jest krzyż?"</string>
+    <string name="quest_entrance_reference">"Co jest napisane przy tym wejściu?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Numer ganku i numery mieszkań"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Numery mieszkań"</string>
+    <string name="quest_entrance_reference_select_code_only">"Numer ganku"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Brak znaku z numerem ganku czy numerami mieszkań"</string>
+    <string name="quest_entrance_reference_reference_label">"Numer ganku:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Numery mieszkań:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"do"</string>
 </resources>

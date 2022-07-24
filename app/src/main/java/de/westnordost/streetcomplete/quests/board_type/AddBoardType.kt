@@ -19,7 +19,7 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
          and access !~ private|no
          and (!board_type or board_type ~ yes|board)
     """
-    override val changesetComment = "Add board type"
+    override val changesetComment = "Specify board types"
     override val wikiLink = "Key:board_type"
     override val icon = R.drawable.ic_quest_board_type
     override val isDeleteElementEnabled = true

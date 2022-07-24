@@ -320,7 +320,7 @@ class MainActivity :
             }
         }
 
-        prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply()
+        prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
 
         val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (tutorialFragment != null) {

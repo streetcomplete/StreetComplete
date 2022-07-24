@@ -18,6 +18,8 @@ interface TracksApi {
      *                                (Permission.WRITE_GPS_TRACES)
      * @throws ConnectionException if a temporary network connection problem occurs
      *
+     * @throws IllegalArgumentException if noteText is longer than 255 characters
+     *
      * @return id of the new track
      */
     fun create(trackpoints: List<Trackpoint>, noteText: String?): Long

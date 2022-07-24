@@ -20,7 +20,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
           or lit older today -16 years
         )
     """
-    override val changesetComment = "Add whether pitch is lit"
+    override val changesetComment = "Specify whether pitches are lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_pitch_lantern
     override val achievements = listOf(OUTDOORS)
