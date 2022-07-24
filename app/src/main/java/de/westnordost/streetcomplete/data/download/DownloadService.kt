@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -129,12 +130,12 @@ class DownloadService : CoroutineIntentService(TAG) {
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
 
-        fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect, isPriority: Boolean, enqueue: Boolean = false): Intent {
             val intent = Intent(context, DownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, Json.encodeToString(tilesRect))
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-            // priority download should cancel any earlier download
-            intent.putExtra(ARG_PREVIOUS_CANCEL, isPriority)
+            // priority download should cancel any earlier download (except we want to enqueue)
+            intent.putExtra(ARG_PREVIOUS_CANCEL, isPriority && !enqueue)
             return intent
         }
     }

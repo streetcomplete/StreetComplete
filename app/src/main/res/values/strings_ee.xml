@@ -232,5 +232,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_benchMaterial_brick">Bricks</string>
     <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
     <string name="pref_close_forms_immediately_summary">Closes the form before the change is processed, so further quests may take a short time to show up</string>
+    <string name="enqueue_download">Start after current search is done</string>
 
 </resources>

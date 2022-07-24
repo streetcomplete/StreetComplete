@@ -51,11 +51,11 @@ class DownloadController(
      * @param isPriority whether this shall be a priority download (cancels previous downloads and
      * puts itself in the front)
      */
-    fun download(bbox: BoundingBox, isPriority: Boolean = false) {
+    fun download(bbox: BoundingBox, isPriority: Boolean = false, enqueue: Boolean = false) {
         if (downloadService == null) return
 
         val tilesRect = bbox.enclosingTilesRect(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-        context.startService(DownloadService.createIntent(context, tilesRect, isPriority))
+        context.startService(DownloadService.createIntent(context, tilesRect, isPriority, enqueue))
     }
 
     private fun bindServices() {
