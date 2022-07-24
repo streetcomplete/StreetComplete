@@ -144,4 +144,13 @@ class StringWithCursorTest {
         assertNotNull(x.nextMatchesAndAdvance(Regex("[0-9]{2}")))
         assertTrue(x.isAtEnd())
     }
+
+    @Test fun toStringMethod() {
+        val x = StringWithCursor("ab")
+        assertEquals("►ab", x.toString())
+        x.advance()
+        assertEquals("a►b", x.toString())
+        x.advance()
+        assertEquals("ab►", x.toString())
+    }
 }
