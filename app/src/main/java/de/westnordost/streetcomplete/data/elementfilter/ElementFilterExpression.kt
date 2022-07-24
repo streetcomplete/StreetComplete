@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import java.util.EnumSet
 
 /** Represents the parse result of a string in filter syntax, e.g.
  *
@@ -60,7 +59,7 @@ import java.util.EnumSet
  *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |
  *  */
 class ElementFilterExpression(
-    private val elementsTypes: EnumSet<ElementsTypeFilter>,
+    private val elementsTypes: Set<ElementsTypeFilter>,
     private val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
     /* Performance improvement: Allows to skip early on elements that have no tags at all */

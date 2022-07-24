@@ -28,8 +28,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.toCheckDate
-import java.text.ParseException
-import java.util.EnumSet
 import kotlin.math.min
 
 /**
@@ -96,8 +94,8 @@ private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
-private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFilter> {
-    val result = ArrayList<ElementsTypeFilter>()
+private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
+    val result = HashSet<ElementsTypeFilter>()
     result.add(parseElementDeclaration())
     while (nextIsAndAdvance(',')) {
         val element = parseElementDeclaration()
@@ -106,13 +104,7 @@ private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFil
         }
         result.add(element)
     }
-    // a little odd interface of EnumSet here
-    return when (result.size) {
-        1 -> EnumSet.of(result[0])
-        2 -> EnumSet.of(result[0], result[1])
-        3 -> EnumSet.of(result[0], result[1], result[2])
-        else -> throw IllegalStateException()
-    }
+    return result
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
@@ -425,3 +417,5 @@ private fun StringWithCursor.findQuotationLength(): Int? {
     }
     return null
 }
+
+class ParseException(message: String?, val errorOffset: Int) : RuntimeException(message)

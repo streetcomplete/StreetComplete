@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.Test
-import java.text.ParseException
 
 /** Integration test for the filter parser, filter expression and creator, the whole way from parsing
  * the tag filters expression to returning it as a OQL string. More convenient this way since the
