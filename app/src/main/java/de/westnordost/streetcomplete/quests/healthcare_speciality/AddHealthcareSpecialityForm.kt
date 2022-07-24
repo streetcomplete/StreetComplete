@@ -1,12 +1,20 @@
 package de.westnordost.streetcomplete.quests.healthcare_speciality
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.cuisine.AddCuisineForm
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.mostCommonWithin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
 
@@ -20,40 +28,67 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        suggestions.let {
-            binding.cuisineInput.setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_dropdown_item_1line, it
-                )
+        binding.cuisineInput.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                (lastPickedAnswers + suggestions).distinct(),
             )
-        }
+        )
 
         binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.addCuisineButton.setOnClickListener {
-            if (isFormComplete()) {
+            if (isFormComplete() && binding.cuisineInput.text.isNotBlank()) {
                 specialities.add(speciality)
                 binding.currentCuisines.text = specialities.joinToString(";")
                 binding.cuisineInput.text.clear()
             }
+            viewLifecycleScope.launch {
+                delay(20) // delay, because otherwise dropdown disappears immediately
+                binding.cuisineInput.showDropDown()
+            }
         }
         binding.addCuisineButton.setText(R.string.quest_healthcare_speciality_add_more)
+        binding.cuisineInput.showDropDown()
     }
 
     override fun onClickOk() {
+        specialities.removeAll { it.isBlank() }
+        if (specialities.isNotEmpty()) favs.add(specialities)
+        if (speciality.isNotBlank()) favs.add(speciality)
         if (speciality.isBlank())
             applyAnswer(specialities.joinToString(";"))
         else
             applyAnswer((specialities + listOf(speciality)).joinToString(";"))
     }
 
-    override fun isFormComplete() = (speciality.isNotEmpty() || specialities.isNotEmpty())
+    override fun isFormComplete() = (speciality.isNotBlank() || specialities.isNotEmpty())
+        && !specialities.contains(speciality)
         && (speciality.isEmpty() || suggestions.contains(speciality))
         && specialities.all { suggestions.contains(it) }
 
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it },
+            deserialize = { it },
+            maxEntries = 10
+        )
+    }
+
+    private lateinit var favs: LastPickedValuesStore<String>
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 10, historyCount = 10, first = 1)
+            .toList()
+    }
+
     companion object {
-        val suggestions = (healthcareSpecialityFromWiki.split("\n").mapNotNull {
+        private val suggestions = (healthcareSpecialityFromWiki.split("\n").mapNotNull {
             if (it.isBlank()) null
             else it.trim()
         } + healthcareSpecialityValuesFromTaginfo.split("\n").mapNotNull {

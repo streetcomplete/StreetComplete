@@ -1,12 +1,19 @@
 package de.westnordost.streetcomplete.quests.cuisine
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCuisineSuggestionBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.mostCommonWithin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class AddCuisineForm : AbstractOsmQuestForm<String>() {
 
@@ -20,38 +27,63 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        suggestions.let {
-            binding.cuisineInput.setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_dropdown_item_1line,
-                    it
-                )
+        binding.cuisineInput.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                (lastPickedAnswers + suggestions).distinct()
             )
-        }
+        )
 
         binding.cuisineInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.addCuisineButton.setOnClickListener {
-            if (isFormComplete()) {
+            if (isFormComplete() && binding.cuisineInput.text.isNotBlank()) {
                 cuisines.add(cuisine)
                 binding.currentCuisines.text = cuisines.joinToString(";")
                 binding.cuisineInput.text.clear()
             }
+            viewLifecycleScope.launch {
+                delay(20) // delay, because otherwise dropdown disappears immediately
+                binding.cuisineInput.showDropDown()
+            }
         }
+        binding.cuisineInput.showDropDown()
     }
 
     override fun onClickOk() {
+        cuisines.removeAll { it.isBlank() }
+        if (cuisines.isNotEmpty()) favs.add(cuisines)
+        if (cuisine.isNotBlank()) favs.add(cuisine)
         if (cuisine.isBlank())
             applyAnswer(cuisines.joinToString(";"))
         else
             applyAnswer((cuisines + listOf(cuisine)).joinToString(";"))
     }
 
-    override fun isFormComplete() = (cuisine.isNotEmpty() || cuisines.isNotEmpty()) && !cuisine.contains(";")
+    override fun isFormComplete() = (cuisine.isNotBlank() || cuisines.isNotEmpty()) && !cuisine.contains(";") && !cuisines.contains(cuisine)
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it },
+            deserialize = { it },
+            maxEntries = 10
+        )
+    }
+
+    private lateinit var favs: LastPickedValuesStore<String>
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 10, historyCount = 10, first = 1)
+            .toList()
+    }
 
     companion object {
-        val suggestions = cuisineValues.split("\n").mapNotNull {
+        private val suggestions = cuisineValues.split("\n").mapNotNull {
             if (it.isBlank()) null
             else it.trim()
         }.toTypedArray()

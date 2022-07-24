@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.tree
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import de.westnordost.osmfeatures.StringUtils
@@ -15,7 +17,10 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.koin.android.ext.android.inject
 import java.io.IOException
 import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.mostCommonWithin
 import java.io.File
 
 class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
@@ -31,6 +36,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         if (tree == null) {
             binding.nameInput.error = context?.resources?.getText(R.string.quest_tree_error)
         } else {
+            favs.add("${tree.isSpecies}§${tree.name}")
             applyAnswer(tree)
         }
     }
@@ -42,8 +48,14 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.nameInput.setAdapter(SearchAdapter(requireContext(), { term -> getTrees(term) }, { it.toDisplayString() }))
+        val adapter = SearchAdapter(requireContext(), { term -> getTrees(term) }, { it.toDisplayString() })
+        binding.nameInput.setAdapter(adapter)
         binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
+        // set some blank input
+        // this is the only way I found how to display recent answers
+        // unfortunately this still needs a tap on the field, so the keyboard will pop up...
+        binding.nameInput.setOnFocusChangeListener { _, _ -> binding.nameInput.setText(" ", true) }
+        binding.nameInput.requestFocus()
     }
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -71,6 +83,12 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
     }
 
     private fun getTrees(search: String): List<Tree> {
+        val search = search.trim()
+        // not working, i need a tree with the same name and species, but local name?
+        if (search.isEmpty()) return lastPickedAnswers.mapNotNull { answer ->
+            val treeString = answer.split('§')
+            trees.firstOrNull { it.name == treeString[1] && it.isSpecies == (treeString[0] == "true") }
+        }
         return trees.filter { tree ->
             tree.toDisplayString() == search
             || tree.name == search
@@ -78,6 +96,25 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
             || tree.localName?.contains(search, true) == true
         //sorting: genus-only first, then prefer trees with localName
         }.sortedBy { it.localName == null }.sortedBy { it.isSpecies }
+    }
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it },
+            deserialize = { it },
+            maxEntries = 15
+        )
+    }
+
+    private lateinit var favs: LastPickedValuesStore<String>
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 10, historyCount = 15, first = 1)
+            .toList()
     }
 
     private fun loadTrees(): Set<Tree> {

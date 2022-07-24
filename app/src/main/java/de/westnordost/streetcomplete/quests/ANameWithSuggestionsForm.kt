@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
 abstract class ANameWithSuggestionsForm<T> : AbstractOsmQuestForm<T>() {
 
     final override val contentLayoutResId = R.layout.quest_name_suggestion
-    private val binding by contentViewBinding(QuestNameSuggestionBinding::bind)
+    protected val binding by contentViewBinding(QuestNameSuggestionBinding::bind)
 
     protected val name get() = binding.nameInput.text?.toString().orEmpty().trim()
 
