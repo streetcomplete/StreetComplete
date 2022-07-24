@@ -29,7 +29,7 @@ class ExternalQuest(private val externalList: ExternalList) : OsmElementQuestTyp
     override fun getTitle(tags: Map<String, String>): Int = R.string.quest_external_title
 
     override fun getTitleArgs(tags: Map<String, String>): Array<String> =
-        arrayOf(tags.toString())
+        arrayOf(tags.map { "${it.key}=${it.value}" }.sorted().toString())
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) { }
 

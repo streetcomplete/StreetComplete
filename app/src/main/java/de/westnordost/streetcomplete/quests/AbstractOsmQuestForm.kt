@@ -321,7 +321,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             var dialog: AlertDialog? = null
             val editField = EditText(c)
             editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            editField.setText(tags.map { "${it.key}=${it.value}" }.joinToString("\n"))
+            editField.setText(tags.map { "${it.key}=${it.value}" }.sorted().joinToString("\n"))
             editField.addTextChangedListener { text ->
                 var enabled = true
                 val keys = mutableSetOf<String>()
