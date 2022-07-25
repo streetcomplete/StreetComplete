@@ -39,6 +39,19 @@ class StringWithCursorTest {
         assertTrue(x.isAtEnd())
     }
 
+    @Test fun retreatBy() {
+        val x = StringWithCursor("wundertuete")
+        x.advanceBy(6)
+        x.retreatBy(999)
+        assertEquals("wunder",x.advanceBy(6))
+        x.retreatBy(3)
+        assertEquals("dertue",x.advanceBy(6))
+        try {
+            x.retreatBy(-1)
+            fail()
+        } catch (ignore: IndexOutOfBoundsException) {}
+    }
+
     @Test fun nextIsAndAdvance() {
         val x = StringWithCursor("test123")
         assertTrue(x.nextIsAndAdvance("te"))

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import kotlin.math.max
 import kotlin.math.min
 
 /** Convenience class to make it easier to go step by step through a string  */
@@ -7,8 +8,8 @@ class StringWithCursor(private val string: String) {
     var cursorPos = 0
         private set
 
-    fun charAt(pos: Int): Char? =
-        if (pos < string.length) string[pos] else null
+    operator fun get(index: Int): Char? =
+        if (index < string.length) string[index] else null
 
     /** Advances the cursor if [str] is the next string sequence at the cursor.
      *  @return whether the next string was the [str] */
@@ -26,8 +27,17 @@ class StringWithCursor(private val string: String) {
         return true
     }
 
+    /** Advances the cursor if [regex] matches the next string sequence at the cursor.
+     *  @return match result */
+    fun nextMatchesAndAdvance(regex: Regex): MatchResult? {
+        val result = nextMatches(regex) ?: return null
+        advanceBy(result.value.length)
+        return result
+    }
+
     /** @return whether the cursor position + [offs] is at the end of the string */
     fun isAtEnd(offs: Int = 0): Boolean = cursorPos + offs >= string.length
+
     /** @return the position relative to the cursor position at which [str] is found in the string.
      *  If not found, the position past the end of the string is returned */
     fun findNext(str: String, offs: Int = 0): Int = toDelta(string.indexOf(str, cursorPos + offs))
@@ -59,6 +69,7 @@ class StringWithCursor(private val string: String) {
      * @throws IndexOutOfBoundsException if x < 0
      */
     fun advanceBy(x: Int): String {
+        if (x < 0) throw IndexOutOfBoundsException()
         val end = cursorPos + x
         val result: String
         if (string.length < end) {
@@ -71,20 +82,21 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
+    /** Retreat cursor by [x]
+     *
+     * @throws IndexOutOfBoundsException if x < 0
+     */
+    fun retreatBy(x: Int) {
+        if (x < 0) throw IndexOutOfBoundsException()
+        cursorPos = max(0, cursorPos - x)
+    }
+
     /** @return whether the next character at the cursor is [c] */
-    fun nextIs(c: Char): Boolean = c == charAt(cursorPos)
+    fun nextIs(c: Char): Boolean = c == get(cursorPos)
     /** @return whether the next string at the cursor is [str] */
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
-    /** @return whether the [regex] matches the next string sequence at the cursor */
+    /** @return the match of [regex] at the next string sequence at the cursor */
     fun nextMatches(regex: Regex): MatchResult? = regex.matchAt(string, cursorPos)
-
-    /** Advances the cursor if [regex] matches the next string sequence at the cursor.
-     *  @return match result */
-    fun nextMatchesAndAdvance(regex: Regex): MatchResult? {
-        val result = nextMatches(regex) ?: return null
-        advanceBy(result.value.length)
-        return result
-    }
 
     private fun toDelta(index: Int): Int =
         if (index == -1) string.length - cursorPos else index - cursorPos
