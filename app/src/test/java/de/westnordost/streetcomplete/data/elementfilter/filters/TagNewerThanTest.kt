@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.data.elementfilter.matches
 import de.westnordost.streetcomplete.osm.toCheckDateString
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -67,5 +68,9 @@ class TagNewerThanTest {
             "lastcheck:opening_hours" to oldDate.toCheckDateString(),
             "check_date:opening_hours" to oldDate.toCheckDateString()
         ), oldDate))
+    }
+
+    @Test fun toStringMethod() {
+        assertEquals("opening_hours newer ${c.dateFilter}", c.toString())
     }
 }

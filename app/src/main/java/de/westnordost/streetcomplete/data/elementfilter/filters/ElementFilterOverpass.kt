@@ -53,7 +53,7 @@ fun ElementFilter.toOverpassString(): String = when (this) {
     is HasTagLike -> "[~%s ~ %s]".formatQuoted("^($key)$", "^($value)$")
     is HasTagValueLike -> "[%s ~ %s]".formatQuoted(key, "^($value)$")
     is NotHasKey -> "[!%s]".formatQuoted(key)
-    is NotHasKeyLike -> "[!~%s]".formatQuoted(key)
+    is NotHasKeyLike -> "[!~%s ~ '.*']".formatQuoted("^($key)$")
     is NotHasTag -> "[%s != %s]".formatQuoted(key, value)
     is NotHasTagValueLike -> "[%s !~ %s]".formatQuoted(key, "^($value)$")
 }
