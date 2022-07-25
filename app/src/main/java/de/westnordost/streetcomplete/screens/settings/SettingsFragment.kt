@@ -394,6 +394,8 @@ class SettingsFragment :
             REQUEST_CODE_HIDDEN_EXPORT -> {
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                if (version > LAST_KNOWN_DB_VERSION)
+                    context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
 
                 val hiddenQuests = db.query(OsmQuestsHiddenTable.NAME) { c ->
                     c.getLong(OsmQuestsHiddenTable.Columns.ELEMENT_ID).toString() + "," +
@@ -418,6 +420,8 @@ class SettingsFragment :
             REQUEST_CODE_PRESETS_EXPORT -> {
                 val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
                 val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                if (version > LAST_KNOWN_DB_VERSION)
+                    context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
 
                 val presets = db.query(QuestPresetsTable.NAME) { c ->
                     c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
@@ -462,10 +466,14 @@ class SettingsFragment :
             REQUEST_CODE_HIDDEN_IMPORT -> {
                 // do not delete existing hidden quests
                 val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
-                val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (input.readLine() != version.toString()) return // TODO: handle this once the version changes
-                if (input.readLine() != "quests") {
+                val fileVersion = input.readLine().toLongOrNull()
+                if (input.readLine() != "quests" || fileVersion == null) {
                     context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
+                    return
+                }
+                val dbVersion = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                if (fileVersion != dbVersion && (fileVersion > LAST_KNOWN_DB_VERSION || dbVersion > LAST_KNOWN_DB_VERSION)) {
+                    context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
                     return
                 }
                 val lines = input.readLines()
@@ -507,10 +515,14 @@ class SettingsFragment :
             }
             REQUEST_CODE_PRESETS_IMPORT -> {
                 val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
-                val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (input.readLine() != version.toString()) return // TODO: handle this once the version changes
-                if (input.readLine() != "presets") {
+                val fileVersion = input.readLine().toLongOrNull()
+                if (input.readLine() != "presets" || fileVersion == null) {
                     context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
+                    return
+                }
+                val dbVersion = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                if (fileVersion != dbVersion && (fileVersion > LAST_KNOWN_DB_VERSION || dbVersion > LAST_KNOWN_DB_VERSION)) {
+                    context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
                     return
                 }
                 val lines = input.readLines()
@@ -767,3 +779,5 @@ private const val REQUEST_CODE_TREES_IMPORT = 5331
 private const val REQUEST_CODE_TREES_EXPORT = 5332
 private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333
 private const val REQUEST_CODE_EXTERNAL_EXPORT = 5334
+
+private const val LAST_KNOWN_DB_VERSION = 6L // TODO: adjust this once the version changes and handle chnages
