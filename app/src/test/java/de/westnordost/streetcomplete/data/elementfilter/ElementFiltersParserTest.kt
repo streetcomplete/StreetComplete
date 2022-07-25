@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.elementfilter
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
@@ -157,6 +158,27 @@ class ElementFiltersParserTest {
         shouldFail("nodes with !highway!~residential")
     }
 
+    @Test fun `comparisons work with units`() {
+        matchesTags(mapOf("maxspeed" to "30.1 mph"), "maxspeed > 30mph")
+        matchesTags(mapOf("maxspeed" to "48.3"), "maxspeed > 30mph")
+        matchesTags(mapOf("maxspeed" to "48.3 km/h"), "maxspeed > 30mph")
+
+        notMatchesTags(mapOf("maxspeed" to "30.0 mph"), "maxspeed > 30mph")
+        notMatchesTags(mapOf("maxspeed" to "48.2"), "maxspeed > 30mph")
+        notMatchesTags(mapOf("maxspeed" to "48.2 km/h"), "maxspeed > 30mph")
+    }
+
+    @Test fun `comparisons work with extra special units`() {
+        matchesTags(mapOf("maxwidth" to "4 ft 7 in"), "maxwidth > 4'6\"")
+        matchesTags(mapOf("maxwidth" to "4'7\""), "maxwidth > 4'6\"")
+        matchesTags(mapOf("maxwidth" to "1.4 m"), "maxwidth > 4'6\"")
+        matchesTags(mapOf("maxwidth" to "1.4m"), "maxwidth > 4'6\"")
+        matchesTags(mapOf("maxwidth" to "1.4"), "maxwidth > 4'6\"")
+
+        notMatchesTags(mapOf("maxwidth" to "4'6\""), "maxwidth > 4'6\"")
+        notMatchesTags(mapOf("maxwidth" to "1.3"), "maxwidth > 4'6\"")
+    }
+
     // todo check expressions...
 
     private fun shouldFail(input: String) {
@@ -170,7 +192,8 @@ class ElementFiltersParserTest {
         input.toElementFilterExpression()
 
     private fun matchesTags(tags: Map<String,String>, input: String) =
-        assertTrue(
-            ("nodes with $input").toElementFilterExpression().matches(node(tags = tags))
-        )
+        assertTrue(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
+
+    private fun notMatchesTags(tags: Map<String,String>, input: String) =
+        assertFalse(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
 }

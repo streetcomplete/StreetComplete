@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.Matcher
+import de.westnordost.streetcomplete.data.elementfilter.withOptionalUnitToDoubleOrNull
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.toCheckDate
@@ -90,7 +91,7 @@ class HasTagGreaterOrEqualThan(key: String, value: Float) : CompareTagValue(key,
 abstract class CompareTagValue(val key: String, val value: Float) : ElementFilter {
     abstract fun compareTo(tagValue: Float): Boolean
     override fun matches(obj: Element): Boolean {
-        val tagValue = obj.tags[key]?.toFloatOrNull() ?: return false
+        val tagValue = obj.tags[key]?.withOptionalUnitToDoubleOrNull()?.toFloat() ?: return false
         return compareTo(tagValue)
     }
 }

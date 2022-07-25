@@ -89,7 +89,7 @@ private val OPERATORS = linkedSetOf(
     NEWER
 )
 
-private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:$| |\\))")
+private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]+|[0-9]*\\.[0-9]+)[a-z/'\"]*")
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
@@ -253,8 +253,12 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
     if (operator in COMPARISON_OPERATORS) {
         expectAnyNumberOfSpaces()
-        if (nextMatches(NUMBER_WORD_REGEX) != null) {
-            val value = parseNumber()
+        // we need to decide beforehand what to parse here: a number with optional unit or a date
+        val numberWithUnit = nextMatches(NUMBER_WITH_OPTIONAL_UNIT_REGEX)?.value
+        if (numberWithUnit != null && findWordLength() == numberWithUnit.length) {
+            advanceBy(numberWithUnit.length)
+            val value = numberWithUnit.withOptionalUnitToDoubleOrNull()?.toFloat()
+                ?: throw ParseException("must be a number or a number with a known unit", cursorPos)
             when (operator) {
                 GREATER_THAN          -> return HasTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
@@ -270,7 +274,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
                 LESS_OR_EQUAL_THAN    -> return HasDateTagLessOrEqualThan(key, value)
             }
         }
-        throw ParseException("must either be a number or a (relative) date", cursorPos)
+        throw ParseException("must either be a number (with optional unit) or a (relative) date", cursorPos)
     }
     throw ParseException("Unknown operator '$operator'", cursorPos)
 }

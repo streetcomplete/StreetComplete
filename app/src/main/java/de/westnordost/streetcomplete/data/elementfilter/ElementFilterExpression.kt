@@ -40,7 +40,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop ~ car|boat`              | has a tag whose key is `shop` and whose value matches the regex `car|boat`    |
  *  | `shop !~ car|boat`             | doesn't have a tag whose key is `shop` and value matches the regex `car|boat` |
  *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value `car|boat` (both regexes)  |
- *  | `foo < 2.5`                    | has a tag with key `foo` whose value is a number and smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 3.3`                    | has a tag with key `foo` whose value is smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 3.3ft`                  | same as above but value is smaller than 3.3 feet (~1 meter)<br/>This works for other units as well (mph, st, lbs, yds...) |
+ *  | `foo < 3'4"`                   | same as above but value is smaller than 3 feet, 4 inches (~1 meter)           |
  *  | `foo < 2012-10-01`             | same as above but value is a date older than Oct 1st 2012                     |
  *  | `foo < today -1.5 years`       | same as above but value is a date older than 1.5 years<br/>In place of `years`, `months`, `weeks` or `days` work |
  *  | `shop newer today -99 days`    | has a tag with key `shop` which has been modified in the last 99 days.<br/>Absolute dates work too. |
