@@ -37,7 +37,6 @@ import kotlin.math.min
  * <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> (finds all
  * residential and tertiary roads that have no name)
  */
-
 fun String.toElementFilterExpression(): ElementFilterExpression {
     // convert all white-spacey things to whitespaces so we do not have to deal with them later
     val cursor = StringWithCursor(replace("\\s".toRegex(), " "))
@@ -77,7 +76,7 @@ private val COMPARISON_OPERATORS = setOf(
     LESS_THAN, LESS_OR_EQUAL_THAN
 )
 // must be in that order because if ">=" would be after ">", parser would match ">" also when encountering ">="
-private val OPERATORS = arrayOf(
+private val OPERATORS = linkedSetOf(
     GREATER_OR_EQUAL_THAN,
     LESS_OR_EQUAL_THAN,
     GREATER_THAN,
@@ -418,4 +417,5 @@ private fun StringWithCursor.findQuotationLength(): Int? {
     return null
 }
 
-class ParseException(message: String?, val errorOffset: Int) : RuntimeException(message)
+class ParseException(message: String?, val errorOffset: Int)
+    : RuntimeException("At position $errorOffset: $message")
