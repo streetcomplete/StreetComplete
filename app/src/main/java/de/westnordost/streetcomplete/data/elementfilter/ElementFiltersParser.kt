@@ -94,7 +94,7 @@ private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
 private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
-    val result = HashSet<ElementsTypeFilter>()
+    val result = LinkedHashSet<ElementsTypeFilter>()
     result.add(parseElementDeclaration())
     while (nextIsAndAdvance(',')) {
         val element = parseElementDeclaration()
