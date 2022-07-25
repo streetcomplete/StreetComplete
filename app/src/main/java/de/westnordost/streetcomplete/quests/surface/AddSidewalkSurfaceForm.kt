@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
@@ -46,7 +47,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     }
 
     override fun onClickSide(isRight: Boolean) {
-        val items = (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
+        val items = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES)
             .map { it.asItem() }
 
         ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->

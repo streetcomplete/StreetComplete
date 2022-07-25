@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddPitchSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {

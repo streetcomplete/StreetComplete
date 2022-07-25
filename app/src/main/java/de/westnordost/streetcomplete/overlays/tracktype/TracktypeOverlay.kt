@@ -34,7 +34,7 @@ class TracktypeOverlay : Overlay {
 
 private fun getStyle(element: Element): Style {
     val grade = createTracktypeStatus(element.tags)
-    // not set but indoor or private -> do not highlight as missing
+    // not set but private -> do not highlight as missing
     val isNotSetButThatsOkay = grade == null && isPrivateOnFoot(element)
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else grade.color
     return if (element.tags["area"] == "yes") PolygonStyle(color, null) else PolylineStyle(color)

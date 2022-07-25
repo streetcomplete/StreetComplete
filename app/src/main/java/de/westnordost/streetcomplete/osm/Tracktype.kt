@@ -22,13 +22,7 @@ enum class Tracktype(val osmValue: String) {
 
     companion object {
         fun items(): List<Item<Tracktype>> {
-            return listOf(
-                GRADE1.asItem(),
-                GRADE2.asItem(),
-                GRADE3.asItem(),
-                GRADE4.asItem(),
-                GRADE5.asItem(),
-            )
+            return values().map { it.asItem() }
         }
     }
 }

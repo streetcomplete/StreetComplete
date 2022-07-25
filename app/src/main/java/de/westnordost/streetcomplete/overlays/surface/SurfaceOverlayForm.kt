@@ -1,26 +1,27 @@
-package de.westnordost.streetcomplete.overlays.tracktype
+package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.osm.Tracktype
-import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.createTracktypeStatus
+import de.westnordost.streetcomplete.osm.Surface
+import de.westnordost.streetcomplete.osm.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
+import de.westnordost.streetcomplete.quests.surface.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
-class TracktypeOverlayForm : AImageSelectOverlayForm<Tracktype>() {
+class SurfaceOverlayForm : AImageSelectOverlayForm<Surface>() {
 
-    override val items: List<DisplayItem<Tracktype>> = Tracktype.items()
+    override val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
 
-    private var currentStatus: Tracktype? = null
+    private var currentStatus: Surface? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val status = createTracktypeStatus(element.tags)
+        val status = createSurfaceStatus(element.tags)
         currentStatus = status
         if (status != null) {
             selectedItem = status.asItem()
@@ -32,7 +33,7 @@ class TracktypeOverlayForm : AImageSelectOverlayForm<Tracktype>() {
 
     override fun onClickOk() {
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            selectedItem!!.value!!.applyTo(it)
+            it.updateWithCheckDate("surface", selectedItem!!.value!!.osmValue)
         }.create()))
     }
 }

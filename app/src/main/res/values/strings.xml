@@ -1536,6 +1536,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_sidewalk">Sidewalks</string>
     <string name="overlay_tracktype">Track firmess</string>
+    <string name="overlay_surface">Surface info</string>
 
 
 </resources>
