@@ -34,6 +34,10 @@ class StringWithCursor(private val string: String) {
     /** @return the position relative to the cursor position at which [c] is found in the string.
      *  If not found, the position past the end of the string is returned */
     fun findNext(c: Char, offs: Int = 0): Int = toDelta(string.indexOf(c, cursorPos + offs))
+    /** @return the position relative to the cursor position at which [regex] is found in the string.
+     *  If not found, the position past the end of the string is returned */
+    fun findNext(regex: Regex, offs: Int = 0): Int =
+        toDelta(regex.find(string, cursorPos + offs)?.range?.first ?: -1)
 
     /** Advance cursor by one
      *

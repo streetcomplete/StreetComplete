@@ -78,6 +78,14 @@ class StringWithCursorTest {
         assertEquals(3, x.findNext('a'))
     }
 
+    @Test fun findNextRegex() {
+        val x = StringWithCursor("abc abc")
+        assertEquals("abc abc".length, x.findNext("x".toRegex()))
+        assertEquals(0, x.findNext("[a-z]{3}".toRegex()))
+        x.advance()
+        assertEquals(3, x.findNext("[a-z]{3}".toRegex()))
+    }
+
     @Test fun isAtEnd() {
         val x = StringWithCursor("abc")
         assertFalse(x.isAtEnd(2))
