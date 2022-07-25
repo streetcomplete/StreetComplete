@@ -69,9 +69,16 @@ class ElementFiltersParserTest {
         matchesTags(tags, "\"shop\"")
     }
 
+    @Test fun `quoting empty string`() {
+        matchesTags(mapOf("shop" to ""), "shop = ''")
+    }
+
     @Test fun `escaping quotes`() {
         matchesTags(mapOf("shop\"" to "yes"), "\"shop\\\"\"")
-        matchesTags(mapOf("shop\'" to "yes"), "'shop\''")
+        matchesTags(mapOf("shop'" to "yes"), "'shop\\\''")
+        matchesTags(mapOf("shop" to "yes\""), "shop = \"yes\\\"\"")
+        matchesTags(mapOf("shop" to "yes'"), "shop = 'yes\\\''")
+        matchesTags(mapOf("sh'op" to "yes'"), "sh\\'op = yes\\'")
     }
 
     @Test fun `unquoted tag may start with reserved word`() {

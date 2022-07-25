@@ -7,8 +7,8 @@ class StringWithCursor(private val string: String) {
     var cursorPos = 0
         private set
 
-    private val char: Char?
-        get() = if (cursorPos < string.length) string[cursorPos] else null
+    fun charAt(pos: Int): Char? =
+        if (pos < string.length) string[pos] else null
 
     /** Advances the cursor if [str] is the next string sequence at the cursor.
      *  @return whether the next string was the [str] */
@@ -74,7 +74,7 @@ class StringWithCursor(private val string: String) {
     /** @return whether the previous character at the cursor is [c] */
     fun previousIs(c: Char): Boolean = if (cursorPos == 0) false else c == string[cursorPos - 1]
     /** @return whether the next character at the cursor is [c] */
-    fun nextIs(c: Char): Boolean = c == char
+    fun nextIs(c: Char): Boolean = c == charAt(cursorPos)
     /** @return whether the next string at the cursor is [str] */
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
     /** @return whether the [regex] matches the next string sequence at the cursor */

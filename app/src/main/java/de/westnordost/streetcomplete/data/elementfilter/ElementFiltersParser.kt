@@ -90,8 +90,7 @@ private val OPERATORS = linkedSetOf(
 )
 
 private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]+|[0-9]*\\.[0-9]+)[a-z/'\"]*")
-
-private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
+private val ESCAPED_QUOTE_REGEX = Regex("\\\\(['\"])")
 
 private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
     val result = LinkedHashSet<ElementsTypeFilter>()
@@ -289,7 +288,7 @@ private fun StringWithCursor.parseKey(): String {
     if (length == 0) {
         throw ParseException("Missing key (dangling prefix operator)", cursorPos)
     }
-    return advanceBy(length).stripQuotes()
+    return advanceBy(length).stripAndUnescapeQuotes()
 }
 
 private fun StringWithCursor.parseOperator(): String? {
@@ -301,7 +300,7 @@ private fun StringWithCursor.parseQuotableWord(): String {
     if (length == 0) {
         throw ParseException("Missing value (dangling operator)", cursorPos)
     }
-    return advanceBy(length).stripQuotes()
+    return advanceBy(length).stripAndUnescapeQuotes()
 }
 
 private fun StringWithCursor.parseWord(): String {
@@ -410,15 +409,25 @@ private fun StringWithCursor.findQuotableWordLength(): Int =
 private fun StringWithCursor.findQuotationLength(): Int? {
     for (quot in QUOTATION_MARKS) {
         if (nextIs(quot)) {
-            val length = findNext(quot, 1)
-            if (isAtEnd(length)) {
-                throw ParseException("Did not close quotation marks", cursorPos - 1)
+            var length = 0
+            while (true) {
+                length = findNext(quot, 1 + length)
+                if (isAtEnd(length)) {
+                    throw ParseException("Did not close quotation marks", cursorPos - 1)
+                }
+                // ignore escaped
+                if (charAt(cursorPos + length - 1) == '\\') continue
+                // +1 because we want to include the closing quotation mark
+                return length + 1
             }
-            // +1 because we want to include the closing quotation mark
-            return length + 1
         }
     }
     return null
+}
+
+private fun String.stripAndUnescapeQuotes(): String {
+    val trimmed = if (startsWith('\'') || startsWith('"')) substring(1, length - 1) else this
+    return trimmed.replace(ESCAPED_QUOTE_REGEX) { it.groupValues[1] }
 }
 
 class ParseException(message: String?, val errorOffset: Int)
