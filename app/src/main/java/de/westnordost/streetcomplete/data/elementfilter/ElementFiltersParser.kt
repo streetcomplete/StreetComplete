@@ -87,7 +87,7 @@ private val OPERATORS = linkedSetOf(
     NEWER
 )
 
-private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]+|[0-9]*\\.[0-9]+)[a-z/'\"]*")
+private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]*\\.[0-9]+|[0-9]+)[a-z/'\"]*")
 private val ESCAPED_QUOTE_REGEX = Regex("\\\\(['\"])")
 private val WHITESPACE_REGEX = Regex("\\s")
 private val WHITESPACES_REGEX = Regex("\\s*")
@@ -187,10 +187,11 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 
 private fun StringWithCursor.parseTag(): ElementFilter {
     if (nextIsAndAdvance(NOT)) {
-        expectAnyNumberOfSpaces()
         if (nextIsAndAdvance(LIKE)) {
+            expectAnyNumberOfSpaces()
             return NotHasKeyLike(parseKey())
         } else {
+            expectAnyNumberOfSpaces()
             return NotHasKey(parseKey())
         }
     }
