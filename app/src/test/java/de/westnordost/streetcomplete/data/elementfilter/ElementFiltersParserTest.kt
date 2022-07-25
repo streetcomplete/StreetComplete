@@ -126,8 +126,8 @@ class ElementFiltersParserTest {
     }
 
     @Test fun `whitespaces in tag do matter`() {
-        val tags = mapOf("shop \t\n\t\n " to "yes \t\n\t\n ")
-        matchesTags(tags, "\"shop \t\n\t\n\" = \" \t\n\t\n yes \t\n\t\n \"")
+        val tags = mapOf(" \t\n\t\n shop \t\n\t\n " to " \t\n\t\n yes \t\n\t\n ")
+        matchesTags(tags, "\" \t\n\t\n shop \t\n\t\n \" = \" \t\n\t\n yes \t\n\t\n \"")
     }
 
     @Test fun `fail on dangling operator`() {

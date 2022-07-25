@@ -71,8 +71,6 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
-    /** @return whether the previous character at the cursor is [c] */
-    fun previousIs(c: Char): Boolean = if (cursorPos == 0) false else c == string[cursorPos - 1]
     /** @return whether the next character at the cursor is [c] */
     fun nextIs(c: Char): Boolean = c == charAt(cursorPos)
     /** @return whether the next string at the cursor is [str] */

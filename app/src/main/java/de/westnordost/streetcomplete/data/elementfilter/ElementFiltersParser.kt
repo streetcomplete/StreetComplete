@@ -38,9 +38,7 @@ import kotlin.math.min
  * residential and tertiary roads that have no name)
  */
 fun String.toElementFilterExpression(): ElementFilterExpression {
-    // convert all white-spacey things to whitespaces so we do not have to deal with them later
-    val cursor = StringWithCursor(replace("\\s".toRegex(), " "))
-
+    val cursor = StringWithCursor(this)
     return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
 }
 
@@ -91,6 +89,7 @@ private val OPERATORS = linkedSetOf(
 
 private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]+|[0-9]*\\.[0-9]+)[a-z/'\"]*")
 private val ESCAPED_QUOTE_REGEX = Regex("\\\\(['\"])")
+private val WHITESPACE_REGEX = Regex("\\s")
 
 private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
     val result = LinkedHashSet<ElementsTypeFilter>()
@@ -145,7 +144,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
 
         // parseTag() might have "eaten up" a whitespace after the key in expectation of an
         // operator.
-        var separated = previousIs(' ')
+        var separated = charAt(cursorPos - 1)?.let { WHITESPACE_REGEX.matches(it.toString()) } ?: false
         separated = separated or parseBrackets(')', builder)
 
         if (isAtEnd()) break
@@ -328,7 +327,7 @@ private fun StringWithCursor.parseDate(): DateFilter {
     val word = advanceBy(length)
     if (word == TODAY) {
         var deltaDays = 0f
-        if (nextIsAndAdvance(' ')) {
+        if (nextMatchesAndAdvance(WHITESPACE_REGEX) != null) {
             expectAnyNumberOfSpaces()
             deltaDays = parseDeltaDurationInDays()
         }
@@ -371,12 +370,12 @@ private fun StringWithCursor.parseDurationInDays(): Float {
 
 private fun StringWithCursor.expectAnyNumberOfSpaces(): Int {
     var count = 0
-    while (nextIsAndAdvance(' ')) count++
+    while (nextMatchesAndAdvance(WHITESPACE_REGEX) != null) count++
     return count
 }
 
 private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
-    if (!nextIsAndAdvance(' ')) {
+    if (nextMatchesAndAdvance(WHITESPACE_REGEX) == null) {
         throw ParseException("Expected a whitespace", cursorPos)
     }
     return expectAnyNumberOfSpaces() + 1
@@ -384,7 +383,7 @@ private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
 
 private fun StringWithCursor.nextIsReservedWord(): String? {
     return RESERVED_WORDS.firstOrNull {
-        nextIs(it) && (isAtEnd(it.length) || findNext(' ', it.length) == it.length)
+        nextIs(it) && (isAtEnd(it.length) || findNext(WHITESPACE_REGEX, it.length) == it.length)
     }
 }
 
@@ -401,7 +400,7 @@ private fun StringWithCursor.findKeyLength(): Int {
 }
 
 private fun StringWithCursor.findWordLength(): Int =
-    min(findNext(' '), findNext(')'))
+    min(findNext(WHITESPACE_REGEX), findNext(')'))
 
 private fun StringWithCursor.findQuotableWordLength(): Int =
     findQuotationLength() ?: findWordLength()

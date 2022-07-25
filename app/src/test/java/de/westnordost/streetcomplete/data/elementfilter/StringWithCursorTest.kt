@@ -122,17 +122,6 @@ class StringWithCursorTest {
         assertFalse(x.nextIs("c"))
     }
 
-    @Test fun previousIs() {
-        val x = StringWithCursor("abc")
-        assertFalse(x.previousIs('a'))
-        x.advance()
-        assertTrue(x.previousIs('a'))
-        x.advance()
-        assertTrue(x.previousIs('b'))
-        x.advanceBy(999)
-        assertTrue(x.previousIs('c'))
-    }
-
     @Test fun nextMatchesString() {
         val x = StringWithCursor("abc123")
         assertNotNull(x.nextMatches(Regex("abc[0-9]")))
