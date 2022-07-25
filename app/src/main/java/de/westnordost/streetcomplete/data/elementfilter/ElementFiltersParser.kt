@@ -239,7 +239,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         return CombineFilters(HasKey(key), TagNewerThan(key, parseDate()))
     }
 
-    if (KEY_VALUE_OPERATORS.contains(operator)) {
+    if (operator in KEY_VALUE_OPERATORS) {
         expectAnyNumberOfSpaces()
         val value = parseQuotableWord()
 
@@ -251,7 +251,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         }
     }
 
-    if (COMPARISON_OPERATORS.contains(operator)) {
+    if (operator in COMPARISON_OPERATORS) {
         expectAnyNumberOfSpaces()
         if (nextMatches(NUMBER_WORD_REGEX) != null) {
             val value = parseNumber()
