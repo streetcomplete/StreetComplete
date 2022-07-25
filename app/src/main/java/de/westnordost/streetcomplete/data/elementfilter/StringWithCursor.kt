@@ -73,13 +73,8 @@ class StringWithCursor(private val string: String) {
     fun nextIs(c: Char): Boolean = c == char
     /** @return whether the next string at the cursor is [str] */
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
-
     /** @return whether the [regex] matches the next string sequence at the cursor */
-    fun nextMatches(regex: Regex): MatchResult? {
-        val match = regex.find(string, cursorPos) ?: return null
-        if (match.range.first != cursorPos) return null
-        return match
-    }
+    fun nextMatches(regex: Regex): MatchResult? = regex.matchAt(string, cursorPos)
 
     /** Advances the cursor if [regex] matches the next string sequence at the cursor.
      *  @return match result */
