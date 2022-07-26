@@ -88,36 +88,74 @@ private val Surface?.color get() = when (this) {
     // https://icolorpalette.com/collection/color-palette-collection
 
     // gray-black scale for well paved ones
+
+    // orange, light purple remain unused
+    // https://icolorpalette.com/31-purple-color-combinations
+    // https://icolorpalette.com/50-autumn-fall-color-palettes
+
+    // declare test sites in emulator!
+
+    /*
+    for testing:
+[out:json][bbox:{{bbox}}][timeout:800];
+
+(
+  way[surface=wood];
+)->.wood;
+
+(
+  way[surface=woodchips];
+)->.woodchips;
+
+(
+  way.woodchips(around.wood:30);
+)->.woodchips_near_wood;
+(
+  way.wood(around.woodchips_near_wood:30);
+)->.and_its_wood;
+
+(
+.woodchips_near_wood;
+.and_its_wood;
+);
+
+out geom meta;
+     */
+    // gray works nicely for styling but looks ugly and depressing
+    // 10b4f2 looks nicely (right now assigned to compacted)
     ASPHALT -> "#dddddd" // old cccccc is OK, moved to lighter ro make space for lighter paving stones cfcfcf was still OK
+    PAVING_STONES -> "#999999" // 777777, 888888 seems too dark
+
     CONCRETE -> "#aaaaaa" // TODO
     CONCRETE_PLATES -> "#aa7777" // TODO
     CONCRETE_LANES -> "#aa77aa" // TODO
-    PAVING_STONES -> "#999999" // 777777, 888888 seems too dark
     SETT -> "#8888dd" // TODO
     METAL -> "#000000" // 000080 ?
 
     // paved but badly
-    UNHEWN_COBBLESTONE -> "#ff8888"
-    GRASS_PAVER -> "#ee0000"
+    UNHEWN_COBBLESTONE -> "#ee22ee"
+    GRASS_PAVER -> "#dd1111"
 
     // special unique colors strongly matching
     GRASS -> "#70cc00" // green
-    ARTIFICIAL_TURF -> "#61de2a" // toxic green
-    SAND -> "#ffff00" // yellow
+    ARTIFICIAL_TURF -> "#b0ef15" // toxic green
+    SAND -> "#ffff00" // yellow bfa080
     WOOD -> "#804000" // brown
-    WOODCHIPS -> "#bfa080" // brownish
+    WOODCHIPS -> "#bfa080" // brown / brownish
     ROCK -> "#ccccdd" // grayish - very similar to asphalt but this surfaces are quite unlikely to be close to each other
 
-    // orange, light purple remain unused
+    // cyan and related
+    COMPACTED -> "#10b4f2"
+    FINE_GRAVEL -> "#95d4e1"
+    GRAVEL -> "#8db7c1"
+    PEBBLES -> "#68869a"
 
-    FINE_GRAVEL -> "#ccff00" // TODO
-    COMPACTED -> "#ccff00" // TODO
-    DIRT -> "#b78e8e" // TODO
-    GRAVEL -> "#ccff00" // TODO
-    PEBBLES -> "#ccff00" // TODO
+    // orange
+    DIRT -> "#f59709"
+
     CLAY -> "#ccff00" // TODO
     TARTAN -> "#ccff00" // TODO
-    GROUND_ROAD, GROUND_AREA -> "#ccff00" // TODO
+    GROUND_ROAD, GROUND_AREA -> "#ccff00" // greenish
     PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null -> Color.UNSPECIFIED
 }
 
