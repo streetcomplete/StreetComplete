@@ -37,7 +37,12 @@ private fun getStyle(element: Element): Style {
     // not set but private -> do not highlight as missing
     val isNotSetButThatsOkay = grade == null && isPrivateOnFoot(element)
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else grade.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color, null) else PolylineStyle(color)
+    val label = if ("tracktype" in element.tags) {
+        element.tags["tracktype"]
+    } else {
+        null
+    }
+    return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private val Tracktype?.color get() = when (this) {
