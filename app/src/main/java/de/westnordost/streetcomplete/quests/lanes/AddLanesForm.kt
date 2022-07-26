@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED
 import de.westnordost.streetcomplete.quests.lanes.LanesType.MARKED_SIDES
 import de.westnordost.streetcomplete.quests.lanes.LanesType.UNMARKED
+import de.westnordost.streetcomplete.quests.lanes.LanesType.UNMARKED_KNOWN_LANE_COUNT
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
@@ -119,6 +120,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 val backwardLanes = if (isLeftHandTraffic) rightSide else leftSide
                 applyAnswer(MarkedLanesSides(forwardLanes, backwardLanes, hasCenterLeftTurnLane))
             }
+            UNMARKED_KNOWN_LANE_COUNT -> applyAnswer(UnmarkedLanesKnowLaneCount(totalLanes))
             null -> {}
         }
     }
@@ -151,6 +153,12 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         }
         laneSelectBinding.markedLanesButton.setOnClickListener {
             selectedLanesType = MARKED
+            unmarkedLanesButton.isSelected = false
+            checkIsFormComplete()
+            askLanesAndSwitchToStreetSideLayout()
+        }
+        laneSelectBinding.unmarkedLanesKnownLaneCountButton.setOnClickListener {
+            selectedLanesType = UNMARKED_KNOWN_LANE_COUNT
             unmarkedLanesButton.isSelected = false
             checkIsFormComplete()
             askLanesAndSwitchToStreetSideLayout()
@@ -189,7 +197,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         lifecycle.addObserver(puzzleView)
 
         when (selectedLanesType) {
-            MARKED -> {
+            MARKED, UNMARKED_KNOWN_LANE_COUNT -> {
                 puzzleView.onClickListener = this::selectTotalNumberOfLanes
                 puzzleView.onClickSideListener = null
             }
@@ -253,7 +261,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
     private suspend fun askForTotalNumberOfLanes(): Int {
         val currentLaneCount = rightSide + leftSide
-        return if (selectedLanesType == MARKED) {
+        return if (selectedLanesType == MARKED || selectedLanesType == UNMARKED_KNOWN_LANE_COUNT) {
             if (isOneway) {
                 showSelectMarkedLanesDialogForOneSide(currentLaneCount.takeIf { it > 0 })
             } else {
@@ -304,5 +312,5 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 }
 
 private enum class LanesType {
-    MARKED, MARKED_SIDES, UNMARKED
+    MARKED, MARKED_SIDES, UNMARKED, UNMARKED_KNOWN_LANE_COUNT
 }

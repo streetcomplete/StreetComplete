@@ -40,7 +40,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
         laneCount?.let { tags["lanes"] = it.toString() }
 
-        val isMarked = answer !is UnmarkedLanes
+        val isMarked = answer is MarkedLanes || answer is MarkedLanesSides
         // if there is just one lane, the information whether it is marked or not is irrelevant
         // (if there are no more than one lane, there are no markings to separate them)
         when {
@@ -67,16 +67,16 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         }
 
         when (answer) {
-            is MarkedLanes -> {
-                if (answer.count == 1) {
+            is MarkedLanes, is UnmarkedLanesKnowLaneCount -> {
+                if (answer.total == 1) {
                     tags.remove("lanes:forward")
                     tags.remove("lanes:backward")
                 } else {
                     if (tags.containsKey("lanes:forward")) {
-                        tags["lanes:forward"] = (answer.count / 2).toString()
+                        tags["lanes:forward"] = (answer.total!! / 2).toString()
                     }
                     if (tags.containsKey("lanes:backward")) {
-                        tags["lanes:backward"] = (answer.count / 2).toString()
+                        tags["lanes:backward"] = (answer.total!! / 2).toString()
                     }
                 }
             }

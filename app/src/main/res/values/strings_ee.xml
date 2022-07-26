@@ -235,5 +235,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="enqueue_download">Start after current search is done</string>
     <string name="import_error_db_version">Import error: unknown version</string>
     <string name="export_warning_db_version">Warning: database version unknown, import may not work</string>
+    <string name="quest_lanes_answer_noLanes_known_count">No markings, obvious lane count</string>
 
 </resources>
