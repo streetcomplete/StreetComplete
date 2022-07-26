@@ -46,10 +46,10 @@ private fun getStyle(element: Element): Style {
 }
 
 private val Tracktype?.color get() = when (this) {
-    Tracktype.GRADE1 -> "#ccff00"
-    Tracktype.GRADE2 -> "#33ff00"
+    Tracktype.GRADE1 -> "#33ff00"
+    Tracktype.GRADE2 -> "#ccff00"
     Tracktype.GRADE3 -> "#00eeff"
-    Tracktype.GRADE4 -> "#555555"
-    Tracktype.GRADE5 -> "#758885"
+    Tracktype.GRADE4 -> "#f59709"
+    Tracktype.GRADE5 -> "#dd1111"
     null ->             Color.UNSPECIFIED
 }
