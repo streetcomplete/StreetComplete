@@ -26,6 +26,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
@@ -1018,11 +1019,11 @@ class MainFragment :
                         .sortedBy { it.elementId != quest.elementId || it.elementType != quest.elementType } // other quests for current element go first
                     if (quests.isEmpty()) return@launch
                     binding.compassView.isInvisible = true
-                    val qm = mutableMapOf<ElementKey, Pair<Int, MutableList<OsmQuest>>>()
-                    val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.GRAY)
+                    val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<OsmQuest>>>()
+                    val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.BLUE, ColorUtils.blendARGB(Color.RED, Color.YELLOW, 0.5f))
                     var iter = colors.iterator()
                     quests.forEach {
-                        qm.getOrPut(ElementKey(it.elementType, it.elementId)) {
+                        questsAndColorByElement.getOrPut(ElementKey(it.elementType, it.elementId)) {
                             val color = if (it.elementType == quest.elementType && it.elementId == quest.elementId)
                                     Color.WHITE
                                 else iter.next()
@@ -1032,13 +1033,13 @@ class MainFragment :
                             Pair(color, mutableListOf())
                         }.second.add(it)
                     }
-                    qm.values.forEach {
+                    questsAndColorByElement.values.forEach {
                         val color = it.first
                         it.second.forEach { osmQuest ->
                             val questView = ImageButton(context)
                             questView.setImageResource(osmQuest.type.icon)
                             questView.setBackgroundColor(Color.TRANSPARENT)
-                            questView.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
+                            questView.setColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.4f), PorterDuff.Mode.MULTIPLY)
                             questView.scaleType = ImageView.ScaleType.FIT_CENTER
                             questView.adjustViewBounds = true
                             questView.setOnClickListener {
