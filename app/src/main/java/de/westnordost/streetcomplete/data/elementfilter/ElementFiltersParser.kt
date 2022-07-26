@@ -133,13 +133,13 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
 
     do {
         // if it has no bracket, there must be at least one whitespace
-        if (!parseBrackets('(', builder)) {
+        if (!parseBracketsAndSpaces('(', builder)) {
             throw ParseException("Expected a whitespace or bracket before the tag", cursorPos)
         }
 
         builder.addValue(parseTag())
 
-        val separated = parseBrackets(')', builder)
+        val separated = parseBracketsAndSpaces(')', builder)
 
         if (isAtEnd()) break
 
@@ -164,11 +164,11 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     }
 }
 
-private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
-    var characterCount = expectAnyNumberOfSpaces()
-    var previousCharacterCount: Int
+private fun StringWithCursor.parseBracketsAndSpaces(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
+    val initialCursorPos = cursorPos
     do {
-        previousCharacterCount = characterCount
+        val loopStartCursorPos = cursorPos
+        expectAnyNumberOfSpaces()
         if (nextIsAndAdvance(bracket)) {
             try {
                 if (bracket == '(')      expr.addOpenBracket()
@@ -176,13 +176,10 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
             } catch (e: IllegalStateException) {
                 throw ParseException(e.message, cursorPos)
             }
-
-            characterCount++
         }
-        characterCount += expectAnyNumberOfSpaces()
-    } while (characterCount > previousCharacterCount)
-
-    return characterCount > 0
+    } while (loopStartCursorPos < cursorPos)
+    expectAnyNumberOfSpaces()
+    return initialCursorPos < cursorPos
 }
 
 private fun StringWithCursor.parseTag(): ElementFilter {

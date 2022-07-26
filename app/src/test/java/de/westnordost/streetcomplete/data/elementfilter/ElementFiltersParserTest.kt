@@ -364,7 +364,7 @@ class ElementFiltersParserTest {
 
     @Test fun and() {
         val expr = "a and b"
-        matchesTags(mapOfKeys("a", "b"),expr)
+        matchesTags(mapOfKeys("a", "b"), expr)
         notMatchesTags(mapOfKeys("a"), expr)
         notMatchesTags(mapOfKeys("b"), expr)
     }
