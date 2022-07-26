@@ -46,6 +46,17 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
         binding.selectedCellView.children.first().background = null
 
         updateSelectedCell()
+
+        // if answer not selected already: open it immediately - user will confirm it later
+        // so it should fine even in case of a missclick
+        if (selectedItem == null) {
+            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+                if (item != selectedItem) {
+                    selectedItem = item
+                    checkIsFormComplete()
+                }
+            }.show()
+        }
     }
 
     private fun updateSelectedCell() {
