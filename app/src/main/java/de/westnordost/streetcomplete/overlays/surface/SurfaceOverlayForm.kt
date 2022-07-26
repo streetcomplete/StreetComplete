@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 class SurfaceOverlayForm : AImageSelectOverlayForm<Surface>() {
 
     override val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
+    override val itemsPerRow = 4 // 2 or 3 for normal user
 
     private var currentStatus: Surface? = null
 
