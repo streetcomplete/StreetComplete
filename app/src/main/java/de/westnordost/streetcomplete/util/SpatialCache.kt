@@ -59,7 +59,7 @@ class SpatialCache<K, T>(
             val previousItem = byKey[item.getKey()]
             // remove item from old tile if it was moved
             if (previousItem != null && item.getPosition() != previousItem.getPosition()) {
-                byTile[previousItem.getTilePos()]?.remove(item)
+                byTile[previousItem.getTilePos()]?.remove(previousItem)
             }
             val tile = byTile[item.getTilePos()]
             if (tile != null) {
