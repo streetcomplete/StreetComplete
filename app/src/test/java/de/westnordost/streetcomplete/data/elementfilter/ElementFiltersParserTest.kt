@@ -9,6 +9,20 @@ import org.junit.Assert.fail
 import org.junit.Test
 
 class ElementFiltersParserTest {
+
+    @Test fun `fail if no space after or before and or`() {
+        shouldFail("shop andfail")
+        shouldFail("'shop'and fail")
+    }
+
+    @Test fun `fail on unknown like operator`() {
+        shouldFail("~speed > 3")
+    }
+
+    @Test fun `fail on no number for comparison`() {
+        shouldFail("speed > walk")
+    }
+
     @Test fun `whitespaces do not matter for element declaration`() {
         val elements = listOf(node(), way(), rel())
         for (e in elements) {
@@ -138,6 +152,16 @@ class ElementFiltersParserTest {
     @Test fun `fail on dangling boolean operator`() {
         shouldFail("nodes with highway and")
         shouldFail("nodes with highway or ")
+    }
+
+    @Test fun `fail on dangling quote`() {
+        shouldFail("shop = yes '")
+        shouldFail("shop = yes \"")
+    }
+
+    @Test fun `fail on dangling prefix operator`() {
+        shouldFail("shop = yes and !")
+        shouldFail("shop = yes and ~")
     }
 
     @Test fun `fail if bracket not closed`() {
