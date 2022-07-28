@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import java.util.concurrent.CopyOnWriteArrayList
 
 class QuestPresetsController(
@@ -31,22 +32,27 @@ class QuestPresetsController(
 
     fun add(presetName: String, copyFromId: Long): Long {
         val presetId = questPresetsDao.add(presetName)
-        onAddedQuestPreset(presetId, presetName)
         val order = questTypeOrderDao.getAll(copyFromId)
         order.forEach { questTypeOrderDao.put(presetId, it) }
         val visibilities = visibleQuestTypeDao.getAll(copyFromId)
-        visibilities.forEach { visibleQuestTypeDao.put(presetId, it.key, it.value) }
+        val enabledQuests = visibilities.filterValues { it }
+        val disabledQuests = visibilities.filterValues { !it }
+        visibleQuestTypeDao.put(presetId, enabledQuests.keys, true)
+        visibleQuestTypeDao.put(presetId, disabledQuests.keys, false)
+        onAddedQuestPreset(presetId, presetName)
 
         val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${copyFromId}_qs_") }
-        copyFromQuestSettings.forEach { (key, value) ->
-            val newKey = key.replace("${copyFromId}_qs_", "${presetId}_qs_")
-            when (value) {
-                is Boolean -> prefs.edit().putBoolean(newKey, value).apply()
-                is Int -> prefs.edit().putInt(newKey, value).apply()
-                is String -> prefs.edit().putString(newKey, value).apply()
-                is Long -> prefs.edit().putLong(newKey, value).apply()
-                is Float -> prefs.edit().putFloat(newKey, value).apply()
-            }
+        prefs.edit {
+            copyFromQuestSettings.forEach { (key, value) ->
+                val newKey = key.replace("${copyFromId}_qs_", "${presetId}_qs_")
+                when (value) {
+                    is Boolean -> putBoolean(newKey, value)
+                    is Int -> putInt(newKey, value)
+                    is String -> putString(newKey, value)
+                    is Long -> putLong(newKey, value)
+                    is Float -> putFloat(newKey, value)
+                }
+        }
         }
         return presetId
     }
