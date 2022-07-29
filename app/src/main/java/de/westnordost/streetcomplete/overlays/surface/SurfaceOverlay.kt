@@ -121,16 +121,20 @@ private val Surface?.color get() = when (this) {
 
 out geom meta;
      */
-    // gray works nicely for styling but looks ugly and depressing
+    // gray works nicely for styling but looks ugly and depressing in some urban areas
+    // but frankly, it is a depressing urban area in section without SC quests and this
+    // is quite fitting
+    //
+    // but maybe asphalt/paving should get some other palette than grayscale?
     // 10b4f2 looks nicely (right now assigned to compacted)
     ASPHALT -> "#dddddd" // old cccccc is OK, moved to lighter ro make space for lighter paving stones cfcfcf was still OK
     PAVING_STONES -> "#999999" // 777777, 888888 seems too dark
 
-    CONCRETE -> "#aaaaaa" // TODO
-    CONCRETE_PLATES -> "#aa7777" // TODO
+    CONCRETE -> "#8888bb" // aaaaaa was too close to paving stones, trying divergence
+    CONCRETE_PLATES -> "#997777" // aa7777 is nice distinctive but with a massive difference
     CONCRETE_LANES -> "#aa77aa" // TODO
-    SETT -> "#8888dd" // TODO
-    METAL -> "#000000" // 000080 ?
+    SETT -> "#8888dd"
+    METAL -> "#000000" // ??? rare, whatever it gets black
 
     // paved but badly
     UNHEWN_COBBLESTONE -> "#ee22ee"
