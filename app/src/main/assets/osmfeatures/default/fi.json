@@ -2196,17 +2196,7 @@
                     "placeholder": "Erinomainen, hyvä, huono..."
                 },
                 "transformer": {
-                    "label": "Tyyppi",
-                    "options": {
-                        "auto": "Säästömuuntaja",
-                        "auxiliary": "Avustava",
-                        "converter": "Muuntaja",
-                        "distribution": "Jakauma",
-                        "generator": "Generaattori",
-                        "phase_angle_regulator": "Vaihekulmasäädin",
-                        "traction": "Rautatien syöttöasema",
-                        "yes": "Tuntematon"
-                    }
+                    "label": "Tyyppi"
                 },
                 "trees": {
                     "label": "Puut"
@@ -4341,10 +4331,6 @@
                 "landuse/military/danger_area": {
                     "name": "Vaara-alue"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Laivastotukikohta",
-                    "terms": "sotilaallinen,sotilas,armeija,maanpuolustus,puolustus,puolustusvoimat,sodankäynti,sota,merivoimat,meri,rannikko,laivasto,laivat,laiva,sotalaiva,sotalaivat"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Sotilasesterata"
                 },
@@ -6129,10 +6115,6 @@
                 },
                 "tourism": {
                     "name": "Turistikohde"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Alppimaja",
-                    "terms": "alppimaja,alppimökki,alppitalo,vuorimaja,vuoritalo,vuorimökki,vuoristomaja,vuoristomökki,vuoristotalo"
                 },
                 "tourism/apartment": {
                     "name": "Vierasmajoitus"

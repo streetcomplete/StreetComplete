@@ -81,7 +81,7 @@ abstract class AbstractOverlayForm :
         }
     protected val countryInfo get() = _countryInfo!!
 
-    // only used for testing / only used for ShowQuestFormsActvitiy! Found no better way to do this
+    // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 
     // view / state

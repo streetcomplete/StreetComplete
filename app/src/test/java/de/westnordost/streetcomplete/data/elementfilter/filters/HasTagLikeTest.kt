@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -33,5 +34,9 @@ class HasTagLikeTest {
         assertTrue(f.matches(mapOf("shop" to "greengrocer")))
         assertFalse(f.matches(mapOf("shop" to "cheese_frog_swamp")))
         assertFalse(f.matches(mapOf("shop" to "cheese|greengrocer")))
+    }
+
+    @Test fun toStringMethod() {
+        assertEquals("~.ame ~ y.s", HasTagLike(".ame", "y.s").toString())
     }
 }

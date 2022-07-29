@@ -1830,17 +1830,7 @@
                     "placeholder": "Одлично, добро, лоше..."
                 },
                 "transformer": {
-                    "label": "Врста",
-                    "options": {
-                        "auto": "Ауто-трансформатор",
-                        "auxiliary": "Помоћни",
-                        "converter": "Конвертер",
-                        "distribution": "Пренос",
-                        "generator": "Генератор",
-                        "phase_angle_regulator": "Регулатор фазног угла",
-                        "traction": "Вуча",
-                        "yes": "Непознато"
-                    }
+                    "label": "Врста"
                 },
                 "trees": {
                     "label": "Дрвеће"
@@ -3374,9 +3364,6 @@
                     "name": "Опасна област",
                     "terms": "опасна област,опасна зона,опасност"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Поморска база"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Војни полигон са препрекама"
                 },
@@ -4679,9 +4666,6 @@
                 },
                 "tourism": {
                     "name": "Туристичко обележје"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Планинарски дом"
                 },
                 "tourism/apartment": {
                     "name": "Гостински апартман"

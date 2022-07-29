@@ -1372,6 +1372,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"実績
 レベル"</string>
+    <string name="quest_address_street_no_named_streets">"名前の付いた通りには属していません"</string>
     <string name="quest_address_street_place_name_label">"地名："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
@@ -1469,6 +1470,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
+    <string name="quest_address_street_hint">"地図上の道路をタップする"</string>
     <string name="quest_crossing_type_marked">"横断歩道がある"</string>
 
     <!-- Fuzzy -->
@@ -1533,9 +1535,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
     <string name="quest_crossing_type_signals_controlled">"信号機が設置されている"</string>
+    <string name="undo_confirm_title2">"下記の編集を元に戻しますか？"</string>
 
     <!-- Fuzzy -->
     <string name="synced">"同期しました"</string>
+    <string name="toast_undo_unavailable">"この編集は既に同期されており、元に戻す事はできません"</string>
 
     <!-- Edit history sidebar -->
     <string name="created_note_action_title">"作成したメモ"</string>
@@ -1567,7 +1571,24 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_postboxCollectionTimes_resurvey_title">"この回収箱の集荷時間は今でも正しいですか？"</string>
     <string name="pref_title_language_select">"言語選択"</string>
     <string name="language_default">"システム規定値"</string>
+    <string name="select_street_parking_orientation">"車道に面する方向を選択して下さい："</string>
     <string name="select_street_parking_position">"位置を選択："</string>
+    <string name="select_street_parking_no">"ここに何らかの標識または路面標識がありますか？"</string>
+    <string name="street_parking_parallel">"平行"</string>
+    <string name="street_parking_diagonal">"斜め"</string>
+    <string name="street_parking_perpendicular">"垂直"</string>
+    <string name="street_parking_on_street">"路上"</string>
+    <string name="street_parking_half_on_kerb">"部分的に路上"</string>
+    <string name="street_parking_on_kerb">"道路に隣接"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_painted_area_only">"路上は専用区画のみ"</string>
+    <string name="street_parking_no">"駐車場なし／不可"</string>
+    <string name="street_parking_prohibited">"駐車禁止"</string>
+    <string name="street_stopping_prohibited">"停車禁止"</string>
+    <string name="street_standing_prohibited">"停車禁止"</string>
+    <string name="street_parking_conditional_restrictions">"駐車／停車は条件付きで制限されています"</string>
+    <string name="street_parking_no_other_reasons">"明確な標識なし／駐車不可"</string>
     <string name="quest_address_house_number_label">"家屋番号："</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"はい（メモを残す）"</string>
     <string name="quest_smoothness_description_excellent_paved">"デコボコやひび割れなし"</string>
@@ -1583,6 +1604,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"このサイクリングロードの道幅は？"</string>
     <string name="quest_road_width_title">"この道路の幅は？"</string>
+    <string name="unit_days">"日"</string>
+    <string name="unit_hours">"時間"</string>
+    <string name="unit_minutes">"分"</string>
     <string name="quest_smoking_no">"いいえ、禁止されています"</string>
     <string name="quest_smoking_outside">"屋外でのみ"</string>
 
@@ -1601,6 +1625,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"ここは現金での支払いが可能ですか？"</string>
+    <string name="quest_address_street_title2">"ここは何通りにありますか？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"この場所は空調されていますか？"</string>
@@ -1659,4 +1684,11 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_and_oneway">"この向きでの自転車走行は禁止されている"</string>
+    <string name="action_overlays">"オーバーレイ"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"オーバーレイを選択"</string>
+    <string name="overlay_none">"なし"</string>
+    <string name="overlay_lit">"街灯"</string>
+    <string name="overlay_sidewalk">"歩道"</string>
 </resources>

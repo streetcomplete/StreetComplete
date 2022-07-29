@@ -33,7 +33,7 @@
     </me.grantland.widget.AutofitLayout>
 
     <TextView
-        android:layout_width="13dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/quest_entrance_reference_flat_range_to"

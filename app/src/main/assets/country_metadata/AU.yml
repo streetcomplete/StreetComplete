@@ -14,6 +14,7 @@ noStoppingSignStyle: australia
 officialLanguages: [en]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: AREA
 atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]

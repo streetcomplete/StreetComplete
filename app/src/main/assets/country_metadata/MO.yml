@@ -7,6 +7,7 @@ isLeftHandTraffic: true
 mobileCountryCode: 455
 officialLanguages: [zh, pt]
 popularReligions: [chinese_folk, taoist, bhuddist]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA
 orchardProduces: [pepper]

@@ -2456,17 +2456,7 @@
                     "terms": "visibilità,tracciato"
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotrasformatore",
-                        "auxiliary": "Ausiliario",
-                        "converter": "Convertitore",
-                        "distribution": "Distribuzione",
-                        "generator": "Generatore",
-                        "phase_angle_regulator": "Regolatore ad angolo di fase",
-                        "traction": "Trazione",
-                        "yes": "Sconosciuto"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Alberi"
@@ -4567,9 +4557,6 @@
                     "name": "Strisce pedonali",
                     "terms": "attraversamento,pedonale,zebrato,zebra,strisce"
                 },
-                "highway/crossing/signals": {
-                    "name": "Attraversamento pedonale con semaforo"
-                },
                 "highway/crossing/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
                     "terms": "pedone,pedoni,pedonale,attraversamento,punto,senza strisce,informale"
@@ -4633,9 +4620,6 @@
                 "highway/footway/sidewalk": {
                     "name": "Marciapiede",
                     "terms": "marciapiedi"
-                },
-                "highway/footway/signals": {
-                    "name": "Attraversamento pedonale semaforico"
                 },
                 "highway/footway/unmarked": {
                     "name": "Attraversamento pedonale non segnalato",
@@ -5051,10 +5035,6 @@
                 "landuse/military/danger_area": {
                     "name": "Zona militare pericolosa",
                     "terms": "militari,pericolo,soldati,esercito"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Base navale",
-                    "terms": "base,navi,marina,marina militare"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Percorso ad ostacoli militare"
@@ -7266,10 +7246,6 @@
                 },
                 "tourism": {
                     "name": "Elemento turistico"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Rifugio alpino",
-                    "terms": "rifugio,bivacco,dormitorio,malga"
                 },
                 "tourism/apartment": {
                     "name": "Affittacamere",

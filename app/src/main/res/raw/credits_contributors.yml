@@ -1,7 +1,7 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 365764
-  linesOfInterfaceMarkupChanged: 133926
+  linesOfCodeChanged: 366070
+  linesOfInterfaceMarkupChanged: 134224
   assetFilesChanged: 1711
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
@@ -10,9 +10,9 @@
   assetFilesChanged: 151
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 13422
+  linesOfCodeChanged: 13476
   linesOfInterfaceMarkupChanged: 3545
-  assetFilesChanged: 531
+  assetFilesChanged: 547
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -54,7 +54,7 @@
   assetFilesChanged: 12
 - name: "Patrick Geneva"
   githubUsername: "goldbattle"
-  linesOfCodeChanged: 1120
+  linesOfCodeChanged: 1123
   linesOfInterfaceMarkupChanged: 62
 - name: "David Dean"
   githubUsername: "dbdean"
@@ -73,7 +73,7 @@
   linesOfCodeChanged: 524
 - name: "Peter Newman"
   githubUsername: "peternewman"
-  linesOfCodeChanged: 481
+  linesOfCodeChanged: 484
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -179,10 +179,9 @@
   linesOfCodeChanged: 13
 - name: "klemens"
   linesOfCodeChanged: 8
-- name: "ferdinand0101"
-  linesOfCodeChanged: 7
 - name: "Aidan Pieper"
-  githubUsername: "Plastix"
+  linesOfCodeChanged: 7
+- name: "ferdinand0101"
   linesOfCodeChanged: 7
 - name: "Cj Malone"
   githubUsername: "Cj-Malone"

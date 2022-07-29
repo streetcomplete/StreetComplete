@@ -9,6 +9,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [de]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]
+postboxesHaveCollectionTimes: true
 regularShoppingDays: 5
 slowZoneLabelPosition: bottom
 slowZoneLabelText: Zone

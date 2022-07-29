@@ -24,9 +24,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Kamu dapat meninggalkan catatan publik di lokasi ini yang dapat dikomentari pemeta lain yang semoga diselesaikan atau sembunyikan saja pencarian untuk diri sendiri"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"OK"</string>
+    <string name="quest_leave_new_note_yes">"Tinggalkan catatan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Tidak, sembunyikan saja"</string>
@@ -123,10 +121,7 @@ semisal \"sesuai janji\". Jika tidak ada tandanya bukan berarti tidak ada jam bu
     <string name="quest_roofShape_answer_many">"Punya beberapa bentuk"</string>
 
     <!-- Elements on map view -->
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Perkecil"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Perbesar"</string>
 
     <!-- Fuzzy -->
@@ -218,7 +213,7 @@ Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu
     <string name="quest_sport_soccer">"Sepakbola"</string>
     <string name="quest_sport_tennis">"Tenis"</string>
     <string name="quest_sport_baseball">"Bisbol"</string>
-    <string name="quest_sport_basketball">"Bola Basket"</string>
+    <string name="quest_sport_basketball">"Bola basket"</string>
     <string name="quest_sport_golf">"Golf"</string>
     <string name="quest_sport_equestrian">"Olahraga Ekuestrian"</string>
     <string name="quest_sport_athletics">"Olahraga lari"</string>
@@ -1076,7 +1071,7 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_board_type_map_title">"Apakah ini sebuah peta dan hanya sebuah peta?"</string>
     <string name="quest_board_type_map_description">"Jika papan adalah tentang topik tertentu, silakan tentukan, terlepas dari apakah itu juga termasuk peta. Misalnya, papan transportasi umum mungkin memiliki peta rute bus. Jika topik tidak tercantum di antara jawaban yang tersedia, harap pertimbangkan untuk meninggalkan catatan sebagai gantinya."</string>
     <string name="quest_surface_detailed_answer_impossible">"Beberapa permukaan..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Apakah Anda yakin bahwa tidak mungkin untuk menentukan permukaan? Perhatikan opsi jawaban \"Berbeda di sepanjang jalan\" yang memungkinkan Anda memotong jalan di mana permukaan berubah. Silakan gunakan \"Tidak bisa mengatakan\" jika ada satu permukaan tetapi tidak tersedia sebagai jawaban.
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Apakah kamu yakin bahwa tidak mungkin untuk menentukan permukaan? Perhatikan opsi jawaban \"Berbeda sepanjang jalan\" yang memungkinkan kamu memotong jalan di mana permukaan berubah. Silakan gunakan \"Tidak bisa mengatakan\" jika ada satu permukaan tetapi tidak tersedia sebagai jawaban.
 "</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Harap tentukan secara singkat sifat permukaan di sini, misalnya \"berpasir dengan tambalan batu besar\". Panjang teks dibatasi hingga 255 karakter."</string>
     <string name="quest_streetName_menuItem_international">"internasional"</string>
@@ -1097,10 +1092,16 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_oneway2_title">"Apakah jalan ini satu-arah? Ke arah mana?"</string>
     <string name="quest_oneway2_no_oneway">"Bukan satu-arah"</string>
     <string name="quest_maxweight_select_sign">"Pilih tanda"</string>
+    <string name="quest_steps_incline_title">"Arah mana yang naik ke atas pada tangga ini?"</string>
     <string name="quest_step_count_title">"Ada berapa anak tangga di sini?"</string>
     <string name="quest_traffic_signals_sound_title">"Apa ada sinyal suara untuk tunanetra di sini?"</string>
     <string name="quest_railway_crossing_barrier_title2">"Apa pembatas yang digunakan pada penyeberangan rel kereta api ini?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Tak ada pembatas"</string>
+    <string name="quest_steps_ramp_title">"Apa tangga ini memiliki rampa? Apa jenisnya?"</string>
+    <string name="quest_steps_ramp_none">"Tak ada rampa (yang dapat digunakan)"</string>
+    <string name="quest_steps_ramp_bicycle">"Rampa sepeda"</string>
+    <string name="quest_steps_ramp_stroller">"Rampa kereta bayi"</string>
+    <string name="quest_steps_ramp_wheelchair">"Rampa kursi roda"</string>
 
     <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Apakah nama bank untuk ATM ini?"</string>
@@ -1118,7 +1119,9 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Kamu memecahkan %d pencarian berguna untuk orang-orang luar ruangan!"</string>
     <string name="quest_generic_answer_noSign">"Tidak ada tanda"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Apa rampa kursi roda ditampilkan terpisah pada peta?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"terpisah"</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">"tidak terpisah"</string>
     <string name="pref_title_sync2">"Unggah jawaban secara otomatis"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Jelaskan permukaan"</string>
     <string name="open_url">"Buka URL"</string>
@@ -1134,7 +1137,15 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_lanes_answer_noLanes">"Jalur tak ditandai"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Apakah ini benar?"</string>
     <string name="quest_maxheight_below_bridge_title">"Berapa batas ketinggian di bawah jembatan?"</string>
+    <string name="quest_kerb_height_title">"Berapa tinggi trotoar ini?"</string>
+    <string name="quest_kerb_height_flush">"Sama tingginya dengan permukaan jalan"</string>
     <string name="quest_kerb_height_lowered">"Sedikit lebih tinggi daripada permukaan jalan"</string>
+    <string name="quest_kerb_height_raised">"Trotoar tinggi"</string>
+    <string name="quest_kerb_height_lowered_ramp">"Rampa trotoar"</string>
+    <string name="quest_lanes_answer_lanes_description2">"Tentukan jumlah lajur yang ditandai yang dapat digunakan lalu lintas mobil (pada kedua arah). Lajur sepeda dan lajur khusus parkir tidak termasuk.
+Jika ada lajur yang digunakan hanya untuk bus, harap tinggalkan catatan saja."</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">"Tentukan jumlah lajur yang ditandai yang dapat digunakan lalu lintas mobil di sini. Lajur sepeda dan lajur khusus parkir tidak termasuk.
+Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."</string>
     <string name="quest_surface_value_rock">"Batu"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Truk tinggi dapat melewati"</string>
 
@@ -1158,8 +1169,10 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
 
     <!-- Fuzzy -->
     <string name="quest_shop_gone_replaced_answer_hint">"Ketik jenis tempat di sini"</string>
+    <string name="quest_lanes_answer_lanes_odd2">"Setiap sisi memiliki jumlah lajur yang berbeda"</string>
     <string name="quest_construction_completed_at_known_date">"Akan selesai pada tanggal…"</string>
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
+    <string name="quest_surface_value_clay">"Tanah liat"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Apakah kamu harus membayar untuk memarkir sepeda di sini?"</string>
@@ -1170,9 +1183,18 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Stasiun Pemadam Kebakaran"</string>
+    <string name="team_mode">"Masuk ke Mode Kelompok"</string>
+
+    <!-- Team mode -->
+    <string name="team_mode_exit">"Keluar dari Mode Kelompok"</string>
+    <string name="team_mode_description">"Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok."</string>
+    <string name="team_mode_team_size_hint">"Mode kelompok bekerja untuk kelompok dengan 2 sampai 12 orang."</string>
+    <string name="team_mode_active">"Mode kelompok aktif"</string>
+    <string name="team_mode_deactivated">"Mode kelompok nonaktif"</string>
     <string name="quest_crossing_type_signals_controlled">"Diatur oleh lampu lalu lintas"</string>
     <string name="undo_confirm_title2">"Batalkan suntingan berikut?"</string>
     <string name="synced">"Disinkronkan"</string>
+    <string name="toast_undo_unavailable">"Suntingan ini sudah disinkronkan dan tidak dapat dibatalkan"</string>
     <string name="quest_cycleway_value_separate">"ditampilkan secara terpisah pada peta"</string>
 
     <!-- Edit history sidebar -->
@@ -1181,28 +1203,47 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="deleted_poi_action_description">"Kamu menghapusnya"</string>
     <string name="added_tag_action_title">"%s ditambahkan"</string>
     <string name="removed_tag_action_title">"%s dihapus"</string>
+    <string name="changed_tag_action_title">"Diperbarui menjadi %s"</string>
     <string name="pref_title_delete_cache">"Hapus cache"</string>
     <string name="pref_title_delete_cache_summary">"Jika kamu pikir beberapa data kedaluwarsa"</string>
     <string name="delete_confirmation">"Hapus"</string>
     <string name="pref_background_type_select">"Pilih jenis latar belakang"</string>
     <string name="background_type_map">"Peta"</string>
     <string name="quest_barrier_type_rope">"Tali"</string>
+    <string name="quest_barrier_type_height_restrictor">"Pembatas tinggi"</string>
+    <string name="quest_policeType_title">"Apa jenis kantor polisi ini?"</string>
     <string name="pref_subtitle_quests">"%1$d dari %2$d diaktifkan"</string>
     <string name="no_camera_app">"Tidak ada aplikasi kamera yang tersedia"</string>
     <string name="quest_camera_type_title">"Apa jenis kamera pengawas ini?"</string>
 
     <!-- Sekedar info, 'SSD' diambil dari sini: https://kbbi.kemdikbud.go.id/Beranda/Bantuan -->
     <string name="about_title_faq">"SSD (Soal Sering Ditanya)"</string>
+    <string name="quest_buildingLevels_title2">"Berapa jumlah lantai di atas basemen pada bangunan ini?"</string>
+
+    <!-- Quest selection screen -->
+    <string name="action_search">"Cari"</string>
+    <string name="team_mode_team_size_label2">"Berapa orang yang melakukan pemetaan? Masukkan angka yang sama pada setiap ponsel."</string>
+    <string name="team_mode_choose_color2">"Berikutnya, setiap orang harus memilih warna berbeda. Pilih milikmu:"</string>
+    <string name="link_organic_maps_description">"Aplikasi peta untuk para pelancong, pendaki dan pesepeda yang bekerja secara luring"</string>
+    <string name="quest_kerb_height_no">"Tak ada trotoar sama sekali"</string>
+    <string name="quest_bollard_type_foldable2">"Dapat dilipat (dengan atau tanpa kunci)"</string>
     <string name="no_search_results">"Tak ditemukan apapun"</string>
     <string name="quest_selection_hint_title">"Terlalu banyak yang harus dikerjakan?"</string>
+    <string name="quest_presets_default_name">"Bawaan"</string>
+    <string name="quest_presets_selected">"Dipilih"</string>
     <string name="notification_syncing">"Mensinkronkan data..."</string>
 
     <!-- Android notifications -->
     <string name="notification_channel_sync">"Sinkronkan Data"</string>
+    <string name="quest_board_type_sport">"Olahraga, Pelatihan"</string>
     <string name="quest_buildingType_bridge">"Jembatan di antara bangunan (skyway)"</string>
     <string name="quest_dietType_explanation_halal">"Produk-produk Halal harus disiapkan dengan aturan khusus, dengan lembaga sertifikasi Halal menandai bahwa produk sesuai."</string>
     <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameter ini terlihat tidak masuk akal."</string>
+    <string name="quest_fireHydrant_confirmation_title">"Apa kamu yakin? Kadang diameternya dapat ditemukan pada hidran itu sendiri."</string>
     <string name="short_no_answer_on_button">"Tidak"</string>
+    <string name="restore_confirmation">"Pulihkan"</string>
+    <string name="restore_dialog_message">"Pulihkan pencarian yang telah kamu sembunyikan?"</string>
     <string name="quest_parking_access_title2">"Siapa yang diizinkan untuk parkir di sini? Baik berbayar maupun tidak."</string>
     <string name="quest_access_yes">"Masyarakat umum"</string>
     <string name="quest_access_customers">"Orang yang mengunjungi tempat tertentu (contoh, hanya pelanggan)"</string>
@@ -1215,16 +1256,32 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="select_street_parking_position">"Pilih posisi:"</string>
     <string name="street_parking_parallel">"Paralel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_separate">"Parkir ditampilkan secara terpisah pada peta"</string>
+    <string name="street_parking_no">"Tak ada parkir / dilarang parkir di sini"</string>
+    <string name="street_parking_prohibited">"Dilarang parkir"</string>
+    <string name="street_stopping_prohibited">"Dilarang berhenti"</string>
+    <string name="street_parking_no_other_reasons">"Tak ada tanda khusus / parkir tidak memungkinkan"</string>
+    <string name="quest_shoulder_title">"Apa jalan ini memiliki bahu jalan?"</string>
+    <string name="quest_fireHydrant_position_lane">"Pada jalan"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Pada trotoar"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Pada tempat parkir"</string>
+    <string name="quest_generic_hasFeature_yes_leave_note">"Ya (tinggalkan catatan)"</string>
+    <string name="quest_smoothness_road_title">"Bagaimana kualitas permukaan jalan di sini?"</string>
+    <string name="quest_smoothness_title_excellent">"Halus dan rata"</string>
     <string name="quest_smoothness_title_good">"Sebagian besar rata"</string>
     <string name="quest_smoothness_title_very_horrible">"Hampir tak bisa dilewati"</string>
     <string name="quest_smoothness_title_impassable">"Tak bisa dilewati"</string>
     <string name="quest_smoothness_description_impassable">"Tak muat untuk kendaraan apapun, hanya dapat dilewati dengan berjalan kaki"</string>
+    <string name="quest_smoothness_wrong_surface">"Permukaannya berbeda"</string>
+    <string name="link_osmhydrant_description">"Cari, tambahkan dan sunting stasiun pemadam kebakaran dan hidran kebakaran"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_lifesaver_solved_X">"Kamu memecahkan %d pencarian yang membantu layanan darurat dan responden pertama!"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"ditampilkan terpisah pada peta"</string>
+    <string name="quest_shoulder_value_yes">"bahu jalan"</string>
+    <string name="quest_shoulder_value_no">"tidak ada bahu jalan"</string>
 
     <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Izin kamera dibutuhkan untuk mengambil gambar dan untuk mengukur jarak dengan kamera."</string>
@@ -1235,6 +1292,7 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="ar_core_tracking_error_camera_unavailable">"Kamera digunakan oleh aplikasi lain"</string>
     <string name="quest_bicycle_parking_access_title2">"Siapa yang diizinkan untuk memarkir sepeda di sini? Baik berbayar maupun tidak."</string>
     <string name="quest_playground_access_title2">"Siapa yang diizinkan untuk menggunakan taman bermain ini?"</string>
+    <string name="quest_side_select_interface_explanation">"Ketuk salah satu sisi dan pilih jawaban yang cocok. Lakukan yang sama pada sisi yang lain jika ada."</string>
 
     <!-- AR Measure screen -->
     <string name="ar_measure">"Ukur"</string>
@@ -1245,6 +1303,8 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
 
     <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Terima kasih karena telah ingin mendukung aplikasi ini! Sayangnya, karena peraturan Google Play Store, tautan yang ditujukan untuk berdonasi tidak diizinkan untuk ditampilkan dalam aplikasi. Dalam konteks ini, bahkan menambahkan tautan ke beranda proyek kami tidak diizinkan."</string>
+    <string name="link_osmand_description">"Aplikasi seluler untuk melihat peta dan navigasi secara luring maupun daring"</string>
+    <string name="link_sunders_description">"Peta dari kamera dan alat pengawasan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Ya, ..."</string>
@@ -1306,4 +1366,22 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_credit_only">"Hanya kartu kredit"</string>
     <string name="quest_accepts_cards_dedit_only">"Hanya kartu debit"</string>
     <string name="quest_accepts_cards_unavailable">"Tidak satupun"</string>
+    <string name="quest_bicycle_rental_type_title">"Apa jenis penyewaan sepeda ini?"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Toko sepeda yang juga menyewakan sepeda"</string>
+    <string name="quest_bicycle_shop_repair_title">"Apa layanan perbaikan sepeda ditawarkan di sini?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Apa sepeda bekas dijual di sini?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Tidak, hanya yang baru"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Ya, bersama dengan yang baru"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Ya, secara khusus"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Tidak menjual sepeda sama sekali"</string>
+    <string name="quest_building_entrance_title">"Apa jenis pintu masuk bangunan ini?"</string>
+    <string name="quest_building_entrance_main">"Pintu masuk utama dari bangunan umum"</string>
+    <string name="quest_building_entrance_exit">"Hanya untuk keluar"</string>
+    <string name="quest_building_entrance_emergency_exit">"Pintu keluar darurat"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Ketuk layar untuk mulai mengukur"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Apa ada pompa sepeda yang bekerja di sini?"</string>
+    <string name="quest_memorialType_statue">"Patung"</string>
+    <string name="quest_memorialType_stone">"Batu"</string>
+    <string name="overlay_none">"Tidak ada"</string>
+    <string name="overlay_sidewalk">"Trotoar"</string>
 </resources>

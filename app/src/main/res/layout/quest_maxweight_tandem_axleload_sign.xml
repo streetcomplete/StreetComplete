@@ -36,6 +36,7 @@
                 android:textSize="24dp"
                 android:textStyle="bold"
                 android:minEms="1"
+                android:maxLines="1"
                 tools:text="8"
                 tools:ignore="SpUsage" />
 

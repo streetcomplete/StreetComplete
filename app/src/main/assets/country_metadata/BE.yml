@@ -8,6 +8,7 @@ mobileCountryCode: 206
 noParkingLineStyle: dashed yellow
 officialLanguages: [nl, fr, de]
 popularSports: [soccer, tennis, basketball, equestrian, boules]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
 atmOperators: [BNP Paribas Fortis, KBC, Argenta, Belfius, BeoBank, BNP Paribas, ING, bpost, Crelan, AXA, bpost bank, BNP Parisbas Fortis, Dexia, Fortis, BNP-Paribas Fortis, Europabank, AXA Bank, Record, De Post, Record Bank]

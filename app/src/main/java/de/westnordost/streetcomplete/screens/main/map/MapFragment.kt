@@ -193,7 +193,11 @@ open class MapFragment :
 
     override fun onLowMemory() {
         super.onLowMemory()
-        binding.map.onLowMemory()
+        try {
+            binding.map.onLowMemory()
+        } catch (e: Exception) {
+            // ignore (see https://github.com/streetcomplete/StreetComplete/issues/4221)
+        }
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */

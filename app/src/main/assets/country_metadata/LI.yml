@@ -4,6 +4,7 @@ mobileCountryCode: 295
 noParkingLineStyle: dashed yellow line with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
 atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]

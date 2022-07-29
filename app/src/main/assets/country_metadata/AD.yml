@@ -13,6 +13,7 @@ noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [ca]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA
 atmOperators: [Crèdit Andorrà]

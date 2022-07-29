@@ -25,8 +25,6 @@
     <string name="quest_generic_confirmation_yes">"Igen, biztos"</string>
     <string name="quest_generic_confirmation_no">"Majd megnézem"</string>
     <string name="quest_leave_new_note_title">"Inkább írsz egy megjegyzést?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Írhatsz ide egy nyilvános megjegyzést, amelyhez más térképezők is hozzászólhatnak, és remélhetőleg megoldják; vagy elrejtheted a kérdést magadnak"</string>
 
     <!-- Fuzzy -->
@@ -148,8 +146,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Nyitvatartás leírása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitvatartás."</string>
 
     <!-- Fuzzy -->
@@ -202,12 +198,8 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="quest_streetSurface_title">"Milyen a burkolata ennek az útszakasznak?"</string>
     <string name="quest_surface_value_paved">"Burkolt"</string>
     <string name="quest_surface_value_unpaved">"Burkolatlan"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Föld"</string>
     <string name="quest_surface_value_asphalt">"Aszfalt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Tömörített (makadám)"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
 
@@ -400,8 +392,6 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"A „részben” azt jelenti, hogy a bejáratnál legfeljebb egy lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokot kell megtenni."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Van rövidítés ebben a névben: %s?"</string>
 
     <!-- Fuzzy -->
@@ -618,8 +608,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"Ebben az esetben egyszerűen a legmagasabb épületrész emeleteit add meg."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Az úttest két iránya itt el van választva fizikailag (pl. egy akadállyal)? Az alapértelmezett sebességkorlátozás attól függ, hogy ez a helyzet áll-e fent, vagy sem."</string>
     <string name="about_category_feedback">"Visszajelzés"</string>
     <string name="quest_leave_new_note_photo">"Fénykép csatolása"</string>
@@ -732,7 +720,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehet használni, de nincs korlát vagy megfelelő mosdókagyló."</string>
     <string name="map_btn_create_note">"Új megjegyzés létrehozása"</string>
     <string name="create_new_note_unprecise">"Megjegyzés létrehozásához közelíts rá jobban"</string>
-    <string name="create_new_note_description">"Megjegyzés elhelyezésével tájékoztathatod a többi térképezőt arról, hogy itt valami probléma van. A megjegyzés helyét a térkép mozgatásával lehet beállítani:"</string>
+    <string name="create_new_note_description">"Jegyzet elhelyezésével tájékoztatod a többi térképezőt arról, hogy itt teendő van. A jegyzet helyét a térkép mozgatásával lehet beállítani:"</string>
 
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <!-- Fuzzy -->
@@ -2005,7 +1993,7 @@ szintek"</string>
     <string name="commented_note_action_title">"Kommentált megjegyzés"</string>
     <string name="hid_action_description">"Elrejtetted"</string>
     <string name="split_way_action_description">"Felosztottad a vonalat"</string>
-    <string name="deleted_poi_action_description">"Törötlted"</string>
+    <string name="deleted_poi_action_description">"Törölted"</string>
     <string name="added_tag_action_title">"%s hozzáadva"</string>
     <string name="removed_tag_action_title">"%s eltávolítva"</string>
     <string name="changed_tag_action_title">"Feltöltve ide: %s"</string>
@@ -2216,7 +2204,7 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_smoothness_title_intermediate">"Kicsit zötyögős"</string>
     <string name="quest_smoothness_title_bad">"Göröngyös, kátyús"</string>
     <string name="quest_smoothness_title_very_bad">"Nagyon kátyús"</string>
-    <string name="quest_smoothness_title_horrible">"Nagyon kátyús"</string>
+    <string name="quest_smoothness_title_horrible">"Nagyon kátyús, egyenetlen"</string>
     <string name="quest_smoothness_title_very_horrible">"Szinte járhatatlan"</string>
     <string name="quest_smoothness_title_impassable">"Járhatatlan"</string>
     <string name="quest_smoothness_description_excellent_paved">"Zökkenő- és repedésmentes"</string>
@@ -2439,8 +2427,10 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_yes">"Más fajta bejárat"</string>
     <string name="quest_building_entrance_dead_end">"Zsákutca, bejárat nélkül"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Érintsd meg a képernyőt a mérés megkezdéséhez"</string>
-    <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (legalábbis amikor nyitva van)?"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (amikor nyitva van az üzlet)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Van itt működő kerékpárpumpa?"</string>
+    <string name="action_overlays">"Kiemelő"</string>
+    <string name="split_way">"Osztott út"</string>
     <string name="quest_memorialType_title">"Milyen típusú emlékmű ez?"</string>
     <string name="quest_memorialType_statue">"Szobor"</string>
     <string name="quest_memorialType_bust">"Mellszobor"</string>
@@ -2451,16 +2441,23 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_stele_wooden">"Fából készült"</string>
     <string name="quest_memorialType_stele_stone">"Kőből faragott"</string>
     <string name="quest_memorialType_sculpture">"Más szobor"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Válassz kiemelőt"</string>
     <string name="overlay_none">"Nincs"</string>
     <string name="overlay_lit">"Utcai világítás"</string>
     <string name="lit_value_yes">"Megvilágítva"</string>
     <string name="lit_value_no">"Nincs világítás"</string>
     <string name="lit_value_24_7">"Folyamatos világítás"</string>
     <string name="lit_value_automatic">"Mozgásérzékelős"</string>
+    <string name="overlay_sidewalk">"Járda"</string>
     <string name="quest_generic_answer_is_indoors">"Épületen belül"</string>
+    <string name="quest_summit_cross_title">"Van a csúcson kereszt?"</string>
+    <string name="quest_entrance_reference">"Mi van a bejáratra írva?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Házszám és lakásszámok"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Lakásszámok"</string>
     <string name="quest_entrance_reference_select_code_only">"Házszám"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Nincs felirat vagy lakásszám"</string>
     <string name="quest_entrance_reference_reference_label">"Házszám:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Lakásszámok:"</string>
     <string name="quest_entrance_reference_flat_range_to">"eddig:"</string>

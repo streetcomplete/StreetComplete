@@ -9,7 +9,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
-import androidx.core.view.OneShotPreDrawListener
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
@@ -49,7 +49,7 @@ suspend fun View.awaitNextLayout() = suspendCancellableCoroutine<Unit> { cont ->
 }
 
 suspend fun View.awaitPreDraw() = suspendCancellableCoroutine<Unit> { cont ->
-    val listener = OneShotPreDrawListener.add(this) { cont.resume(Unit) }
+    val listener = doOnPreDraw { cont.resume(Unit) }
     cont.invokeOnCancellation { listener.removeListener() }
 }
 
