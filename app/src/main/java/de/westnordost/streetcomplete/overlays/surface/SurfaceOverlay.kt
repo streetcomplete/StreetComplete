@@ -62,7 +62,11 @@ class SurfaceOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
         return mapData
-           .filter( "ways, relations with surface or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and !surface:note and (!surface or surface ~ ${handledSurfaces.joinToString("|") })")
+           .filter( """ways, relations with
+               surface or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+               and !surface:note
+               and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
+               """)
            .map { it to getStyle(it) }
     }
 
