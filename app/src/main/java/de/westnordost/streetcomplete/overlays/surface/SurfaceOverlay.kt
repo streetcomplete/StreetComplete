@@ -157,8 +157,8 @@ out geom meta;
     PAVING_STONES -> "#999999"
 
     CONCRETE -> "#b0b0e0"
-    CONCRETE_PLATES -> "#997777"
-    CONCRETE_LANES -> "#aa77aa" // TODO
+    CONCRETE_PLATES -> "#79a99c" // FOR TRYING: #70b090 - too green (but maybe in heavy soon glare would work well) 79a99c
+    CONCRETE_LANES -> "#beadbe" // aa77aa - very purple (but maybe in heavy soon glare would work well) - try c5bfc5, b79bb7?
     SETT -> "#8888bb"
     METAL -> "#000000" // ??? really rare, whatever, it gets black
 
@@ -174,7 +174,7 @@ out geom meta;
     WOODCHIPS -> "#bfa080" // brown / brownish
     ROCK -> "#ccccdd" // grayish - very similar to asphalt but this surfaces are quite unlikely to be close to each other
 
-    // cyan and related
+    // cyan and related colours for various unpaved surfaces
     COMPACTED -> "#10b4f2"
     FINE_GRAVEL -> "#95d4e1"
     GRAVEL -> "#8db7c1"
