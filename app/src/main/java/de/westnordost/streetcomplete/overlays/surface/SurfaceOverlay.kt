@@ -86,10 +86,32 @@ private val Surface?.color get() = when (this) {
     // design ideas:
     // - use not only color, somehow?
     // https://icolorpalette.com/collection/color-palette-collection
+    //
+    // unknown value is string pink as usual
+    // no value should conflict with it
+    //
+    // surface=paved / surface=unpaved treated as unknown
+    // TODO what about footway:surface=paving_stones cycleway:surface=asphalt surface=paved
+
+    // in general colours should be, in order
+    // - distinctive from each other
+    // - not confusing, especially with other elemnets (barriers, waterways)
+    // - similar values should have colours closer to each other
+    //   surface=asphalt and surface=concrete should be more similar to each other
+    //   than to the surface=woodchips
+    // - intuitive
+    // - pretty
+
+    // special colours for cases where matching between symbolic colour
+    // and actual surface is strong, such as yellow for sand
 
     // gray-black scale for well paved ones
+    // light gray for asphalt as light value not dominating it
+    // darker and stronger and more colourful, especially red
+    // for surface of worse quality
 
-    // orange, light purple remain unused
+
+    // light purple remain unused
     // https://icolorpalette.com/31-purple-color-combinations
     // https://icolorpalette.com/50-autumn-fall-color-palettes
 
@@ -127,18 +149,18 @@ out geom meta;
     //
     // but maybe asphalt/paving should get some other palette than grayscale?
     // 10b4f2 looks nicely (right now assigned to compacted)
-    ASPHALT -> "#dddddd" // old cccccc is OK, moved to lighter ro make space for lighter paving stones cfcfcf was still OK
-    PAVING_STONES -> "#999999" // 777777, 888888 seems too dark
+    ASPHALT -> "#dddddd"
+    PAVING_STONES -> "#999999"
 
-    CONCRETE -> "#8888bb" // aaaaaa was too close to paving stones, trying divergence
-    CONCRETE_PLATES -> "#997777" // aa7777 is nice distinctive but with a massive difference
+    CONCRETE -> "#b0b0e0"
+    CONCRETE_PLATES -> "#997777"
     CONCRETE_LANES -> "#aa77aa" // TODO
-    SETT -> "#8888dd"
-    METAL -> "#000000" // ??? rare, whatever it gets black
+    SETT -> "#8888bb"
+    METAL -> "#000000" // ??? really rare, whatever, it gets black
 
     // paved but badly
-    UNHEWN_COBBLESTONE -> "#ee22ee"
-    GRASS_PAVER -> "#dd1111"
+    UNHEWN_COBBLESTONE -> "#7777af"
+    GRASS_PAVER -> "#aa7777"
 
     // special unique colors strongly matching
     GRASS -> "#70cc00" // green
