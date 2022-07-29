@@ -60,7 +60,6 @@ class ElementFiltersParserTest {
         parse("nodes with(highway)")
     }
 
-
     @Test fun `fail if tag key is like reserved word`() {
         shouldFail("nodes with with")
         shouldFail("nodes with or")
@@ -176,8 +175,8 @@ class ElementFiltersParserTest {
 
     @Test fun `whitespaces do not matter for brackets`() {
         val tags = mapOf("shop" to "yes", "fee" to "yes")
-        matchesTags(tags,"shop and((fee=yes))")
-        matchesTags(tags,"shop and \t\n\t\n ( \t\n\t\n ( \n\t\n\t fee=yes \n\t\n\t ))")
+        matchesTags(tags, "shop and((fee=yes))")
+        matchesTags(tags, "shop and \t\n\t\n ( \t\n\t\n ( \n\t\n\t fee=yes \n\t\n\t ))")
     }
 
     @Test fun `fail on unknown thing after tag`() {
@@ -508,9 +507,9 @@ class ElementFiltersParserTest {
     private fun parse(input: String): ElementFilterExpression =
         input.toElementFilterExpression()
 
-    private fun matchesTags(tags: Map<String,String>, input: String) =
+    private fun matchesTags(tags: Map<String, String>, input: String) =
         assertTrue(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
 
-    private fun notMatchesTags(tags: Map<String,String>, input: String) =
+    private fun notMatchesTags(tags: Map<String, String>, input: String) =
         assertFalse(("nodes with $input").toElementFilterExpression().matches(node(tags = tags)))
 }
