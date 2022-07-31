@@ -4,6 +4,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [tg, ru]
 popularReligions: [muslim]
+postboxesHaveCollectionTimes: true
 roofsAreUsuallyFlat: true
 atmOperators: [Kazkom, Амонатбонк, Amonat Bank, Алиф бонк, Amonatbonk, Эсхата, Amonatbank, Агроинвест бонк, Бонки Эсхата, Банкомат, Eskhata Bank, Эсхата Банк, терминали шот гузарони, Dushanbe City ATM 178, Halyk Bank]
 orchardProduces: [apple, grape, tomato, plum, peach, apricot, almond, pepper, hazelnut, lemon, lime, fig, orange]

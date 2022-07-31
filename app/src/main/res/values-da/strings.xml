@@ -929,7 +929,7 @@ Opdel den nu?"</string>
     <string name="about_summary_current_version">"Nuværende version:  %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Hvad er postkassens referencenummer?"</string>
+    <string name="quest_postboxRef_title">"Hvad er identifikationsnummeret for denne postkasse?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Intet synligt referencenummer…"</string>
@@ -1062,7 +1062,7 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <!-- User screen -->
     <!-- Fuzzy -->
     <string name="user_quests_title">"Løste opgaver"</string>
-    <string name="user_achievements_title">"Præstationer"</string>
+    <string name="user_achievements_title">"Udmærkelser"</string>
     <string name="user_links_title">"Linksamling"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
@@ -1131,8 +1131,7 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <string name="achievement_surveyor_title">"Landmåler"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_surveyor_solved_X">"Du har løst %d opgaver. Fortsæt endelig med at låse op for flere 
-præsentationer der indeholder links til OSM og andre kortorienteret apps og projekter!"</string>
+    <string name="achievement_surveyor_solved_X">"Du har løst %d opgaver! Fortsæt endelig med at låse op for flere udmærkelser, der indeholder links til OSM og andre kortorienteret apps og projekter!"</string>
     <string name="achievement_regular_title">"Stabil"</string>
     <string name="achievement_regular_description">"Du har bidraget %d dage til OSM med denne app. Regelmæssige bidragsydere er grundstenen i OSM, tak for din indsats ❤"</string>
     <string name="achievement_bicyclist_title">"Cyklist"</string>
@@ -1228,7 +1227,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="resurvey_intervals_less_often">"Spørg sjældnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spørg oftere"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i bygningen?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i en bygning?"</string>
     <string name="about_title_translate">"Hjælp med at oversætte denne app"</string>
     <string name="about_description_translate">"%1$s er %2$d%% oversat"</string>
     <string name="quest_oneway2_title">"Er denne vej ensrettet? I hvilken retning?"</string>
@@ -1255,9 +1254,9 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe til kørestol"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"Hvilken bank driver denne hæveautomat?"</string>
+    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne hæveautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
-    <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation"</string>
+    <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation?"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
     <string name="achievement_rare_title">"Skattejagt"</string>
 
@@ -1348,7 +1347,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Indtast her hvilken slags sted"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_vacant_type_title">"Denne butik har været tom. Hvad er her nu?"</string>
+    <string name="quest_shop_vacant_type_title">"Denne butik har stået tom. Hvad er her nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Antal vognbaner er forskellig for hver side"</string>
@@ -1757,7 +1756,7 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
-    <string name="quest_busStopRef_title2">"Hvad er referencenummeret på dette stop?"</string>
+    <string name="quest_busStopRef_title2">"Hvilket nummer eller hvilken kode identificerer dette stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Er der et læskur ved dette stop?"</string>

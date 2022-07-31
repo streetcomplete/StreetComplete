@@ -1,3 +1,13 @@
+v45.1: |
+  <ul>
+  <li>Fix the same recorded GPS tracks was attached to subsequently created notes (#4199, #4204), by @goldbattle</li>
+  <li>Fix crash when trying to upload notes with a long description and attached GPS tracks (#4195)</li>
+  <li>Fix weird filenames for the GPS tracks uploaded (#4208), by @peternewman</li>
+  <li>Fix "keep screen on" option was not respected before app restart (#4189)</li>
+  <li>Fix sidewalk overlay should not ask whether to discard changes when there are none (#4206)</li>
+  <li>More minor enhancements (#4187, #4200, #4160...), thanks @matkoniecz, @peternewman</li>
+  </ul>
+
 v45.0: |
   <h3>🍰 Overlays!</h3>
   <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>

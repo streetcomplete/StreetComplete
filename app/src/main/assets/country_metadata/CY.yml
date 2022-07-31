@@ -3,5 +3,7 @@ hasDailyAlternateSideParkingSign: true
 isLeftHandTraffic: true
 mobileCountryCode: 280
 officialLanguages: [el, tr]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: true
 atmOperators: [Euronet, Bank of Cyprus, Ziraat Bankası, JCC, Hellenic Bank, Near East Bank, Coop Bank, Türk Bankasi, Türkiye İş Bankası, Bankamatik, Turk Bankasi]
 orchardProduces: [olive, grape, almond, orange, lemon, lime, grapefruit, plum, apple, peach, tomato, cherry, walnut, banana, apricot, fig, avocado]

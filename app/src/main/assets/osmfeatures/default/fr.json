@@ -1239,6 +1239,7 @@
                 "highway_cartpath": {
                     "label": "Type de cheminement",
                     "options": {
+                        "path": "Chemin pour voiturettes de golf",
                         "service": "Voie de service"
                     }
                 },
@@ -2336,7 +2337,8 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Services pour les vélos"
+                    "label": "Services pour les vélos",
+                    "terms": "services,aides,vélo,bicyclette,réparation,outillage,vente,location,nettoyage"
                 },
                 "service/vehicle": {
                     "label": "Services"
@@ -2455,6 +2457,15 @@
                         "ice_stock": "Eisstock",
                         "multi": "Multisport"
                     }
+                },
+                "sport_pub": {
+                    "label": "Jeux",
+                    "options": {
+                        "billiards": "Billard",
+                        "darts": "Fléchettes",
+                        "table_soccer": "Baby-foot"
+                    },
+                    "terms": "jeux,amusements,bar"
                 },
                 "sport_racing_motor": {
                     "label": "Sports",
@@ -2732,7 +2743,8 @@
                     "label": "Feu de signalisation spécifique"
                 },
                 "traffic_signals/arrow": {
-                    "label": "Flèche tactile"
+                    "label": "Flèche tactile",
+                    "terms": "flèche,direction,tactile,relief,mal-voyant"
                 },
                 "traffic_signals/countdown": {
                     "label": "Compte à rebours",
@@ -2747,7 +2759,8 @@
                     }
                 },
                 "traffic_signals/minimap": {
-                    "label": "Plan tactile"
+                    "label": "Carte tactile",
+                    "terms": "carte,plan,tactile,en relief,braille,mal voyant,malvoyant,non voyant,non-voyant"
                 },
                 "traffic_signals/sound": {
                     "label": "Signaux sonores",
@@ -2781,17 +2794,7 @@
                     "terms": "visibilité,chemin,sentier,itinéraire"
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "auto": "Autotransformateur",
-                        "auxiliary": "auxiliaire",
-                        "converter": "Convertisseur",
-                        "distribution": "Distribution",
-                        "generator": "Générateur",
-                        "phase_angle_regulator": "Déphaseur",
-                        "traction": "Traction",
-                        "yes": "Inconnu"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Arbres"
@@ -4408,6 +4411,10 @@
                     "name": "Bloc de garages",
                     "terms": "garages,bloc de garages,boxes,box,hangar,parcages,parkings,voitures,parc de stationnement couvert"
                 },
+                "building/ger": {
+                    "name": "Yourte",
+                    "terms": "yourte,tente,abri"
+                },
                 "building/grandstand": {
                     "name": "Tribune",
                     "terms": "tribune,gradins,stands,bancs"
@@ -4898,11 +4905,11 @@
                 },
                 "entrance/emergency_ward_entrance": {
                     "name": "Entrée des urgences",
-                    "terms": "urgences"
+                    "terms": "entrée,urgences,secours"
                 },
                 "entrance/main": {
                     "name": "Entrée principale",
-                    "terms": "entrée,porte,accès,principal,frontal"
+                    "terms": "entrée,porte,accès,principal,principale"
                 },
                 "ford": {
                     "name": "Gué",
@@ -5064,10 +5071,6 @@
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
                 },
-                "highway/crossing/signals": {
-                    "name": "Feux piétons",
-                    "terms": "feux,signalisation lumineuse,traversée,passage,gestion,piétons"
-                },
                 "highway/crossing/uncontrolled": {
                     "name": "Traversée sans feux"
                 },
@@ -5128,6 +5131,9 @@
                 "highway/footway/crossing": {
                     "name": "Passage piéton"
                 },
+                "highway/footway/informal": {
+                    "name": "Chemin piéton informel"
+                },
                 "highway/footway/marked": {
                     "name": "Passage piéton marqué",
                     "terms": "zebra,marquage,passage piéton"
@@ -5135,10 +5141,6 @@
                 "highway/footway/sidewalk": {
                     "name": "Trottoir",
                     "terms": "trottoir"
-                },
-                "highway/footway/signals": {
-                    "name": "Passage piéton avec feux tricolores",
-                    "terms": "passage,traversée,piéton,feux,signalisation"
                 },
                 "highway/footway/unmarked": {
                     "name": "Passage piéton non marqué",
@@ -5488,8 +5490,8 @@
                     "name": "Bassin"
                 },
                 "landuse/brownfield": {
-                    "name": "Friche industrielle",
-                    "terms": "friche industrielle,squat"
+                    "name": "Terrain en friche",
+                    "terms": "friche,squat,abandonné"
                 },
                 "landuse/cemetery": {
                     "name": "Cimetière",
@@ -5584,10 +5586,6 @@
                 "landuse/military/danger_area": {
                     "name": "Zone dangereuse",
                     "terms": "zone dangereuse"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Base Navale",
-                    "terms": "base navale"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Parcours du combattant",
@@ -5945,6 +5943,10 @@
                     "name": "Terrain de softball",
                     "terms": "terrain de softball,softball"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "Baby-foot",
+                    "terms": "baby-foot,babyfoot,football de table"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "Table de ping-pong",
                     "terms": "tennis de table,ping-pong"
@@ -6079,6 +6081,10 @@
                 "man_made/cairn": {
                     "name": "Cairn",
                     "terms": "cairn,pierres,tas de cailloux,pile de cailloux"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Cintre à tapis",
+                    "terms": "cintre à tapis,support de tapis,râtelier à tapis"
                 },
                 "man_made/chimney": {
                     "name": "Cheminée",
@@ -6404,7 +6410,7 @@
                 },
                 "natural/cave_entrance": {
                     "name": "Entrée de caverne",
-                    "terms": "abri sous roche,grotte"
+                    "terms": "entrée,abri sous roche,grotte,caverne"
                 },
                 "natural/cliff": {
                     "name": "Falaise",
@@ -6872,8 +6878,8 @@
                     "terms": "lieu-dit"
                 },
                 "place/neighbourhood": {
-                    "name": "Voisinage",
-                    "terms": "environs,voisinage,quartier"
+                    "name": "Quartier de voisinage",
+                    "terms": "environs,voisinage,quartier,cité"
                 },
                 "place/plot": {
                     "name": "Parcelle",
@@ -7559,6 +7565,10 @@
                     "name": "Magasin de vêtements de seconde main",
                     "terms": "occasion,vêtements,habits,deuxième main,friperie"
                 },
+                "shop/clothes/suits": {
+                    "name": "Magasin de costumes",
+                    "terms": "magasin,costume,smoking,sur-mesure,vêtement,homme,cravatte,nœud papillon,noeud papillon"
+                },
                 "shop/clothes/underwear": {
                     "name": "Boutique de sous-vêtements",
                     "terms": "boutique,magasin de sous-vêtements,sous-vêtements,slips,boxers,soutient-gorges,lingerie,chaussettes"
@@ -7566,6 +7576,10 @@
                 "shop/clothes/wedding": {
                     "name": "Magasin de vêtements de mariage",
                     "terms": "mariage,robe,mariée,mariee"
+                },
+                "shop/clothes/workwear": {
+                    "name": "Magasin de vêtements de travail",
+                    "terms": "magasin,vêtement,blouse,protection,uniforme,sécurité,tablier"
                 },
                 "shop/coffee": {
                     "name": "Boutique de vente de cafés",
@@ -7975,7 +7989,7 @@
                     "terms": "papeterie"
                 },
                 "shop/storage_rental": {
-                    "name": "Location de stockage - Ne pas utiliser",
+                    "name": "Location de stockage",
                     "terms": "location de stockage - ne pas utiliser"
                 },
                 "shop/supermarket": {
@@ -8112,7 +8126,7 @@
                 },
                 "tourism/alpine_hut": {
                     "name": "Refuge de montagne",
-                    "terms": "refuge de montagne,cabane"
+                    "terms": "refuge,cabane,abri"
                 },
                 "tourism/apartment": {
                     "name": "Location de vacances",
@@ -8351,7 +8365,8 @@
                     "terms": "radar,vitesse,controle,contrôle"
                 },
                 "type/multipolygon": {
-                    "name": "Multipolygone"
+                    "name": "Multipolygone",
+                    "terms": "multipolygone,surface complexe"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "Groupe de zones d'arrêt",
@@ -8453,6 +8468,10 @@
                     "name": "Itinéraire électrique",
                     "terms": "ligne électrique"
                 },
+                "type/route/railway": {
+                    "name": "Ligne de chemin de fer",
+                    "terms": "ligne,chemin de fer,ferroviaire,voies ferrées"
+                },
                 "type/route/road": {
                     "name": "Itinéraire routier",
                     "terms": "route,rue,chemin,sentier"
@@ -8463,7 +8482,7 @@
                 },
                 "type/route/train": {
                     "name": "Itinéraire ferroviaire",
-                    "terms": "voie ferrée,chemin de fer"
+                    "terms": "service ferroviaire,itinéraire ferroviaire,trajet ferroviaire"
                 },
                 "type/route/tram": {
                     "name": "Itinéraire de tramway",

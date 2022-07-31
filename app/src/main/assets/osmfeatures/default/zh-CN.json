@@ -503,6 +503,9 @@
                     "label": "最近检查时间",
                     "placeholder": "年年年年-月月-日日"
                 },
+                "circumference": {
+                    "label": "周长（齐胸高处）"
+                },
                 "clothes": {
                     "label": "服饰"
                 },
@@ -1103,6 +1106,10 @@
                 "generator/type": {
                     "label": "类型"
                 },
+                "genus": {
+                    "label": "属",
+                    "terms": "属"
+                },
                 "geyser/height": {
                     "label": "喷水高度"
                 },
@@ -1309,8 +1316,8 @@
                     "terms": "间隔,间隙"
                 },
                 "junction/ref_oneway": {
-                    "label": "匝道编号",
-                    "terms": "路口编号"
+                    "label": "出口编号",
+                    "terms": "路口,出口,匝道,岔路,编号"
                 },
                 "junction_line": {
                     "label": "交叉口",
@@ -1319,7 +1326,7 @@
                         "jughandle": "壶柄式连接路",
                         "roundabout": "环岛"
                     },
-                    "terms": "路口,连接点"
+                    "terms": "路口,枢纽,互通,立交,交叉口"
                 },
                 "kerb": {
                     "label": "路缘"
@@ -1955,7 +1962,7 @@
                     "placeholder": "1-18"
                 },
                 "ref_highway_junction": {
-                    "label": "匝道编号"
+                    "label": "出口编号"
                 },
                 "ref_platform": {
                     "label": "站台编号"
@@ -2270,6 +2277,10 @@
                         "survey": "测量"
                     }
                 },
+                "species": {
+                    "label": "种",
+                    "terms": "种,物种"
+                },
                 "species/wikidata": {
                     "label": "物种维基数据",
                     "terms": "物种维基数据,维基数据"
@@ -2569,17 +2580,7 @@
                     "placeholder": "良好，尚可，稍差..."
                 },
                 "transformer": {
-                    "label": "变压器类型",
-                    "options": {
-                        "auto": "自耦变压器",
-                        "auxiliary": "辅助变压器",
-                        "converter": "变流器",
-                        "distribution": "配电变压器",
-                        "generator": "发电机变压器",
-                        "phase_angle_regulator": "相角调节器",
-                        "traction": "牵引变压器",
-                        "yes": "未知"
-                    }
+                    "label": "变压器类型"
                 },
                 "trees": {
                     "label": "树林"
@@ -4686,9 +4687,6 @@
                     "name": "人行横道 (有标线)",
                     "terms": "人行横道,斑马线"
                 },
-                "highway/crossing/signals": {
-                    "name": "有人行道的信号灯路口"
-                },
                 "highway/crossing/unmarked": {
                     "name": "人行横道 (无标线)",
                     "terms": "人行横道"
@@ -4753,9 +4751,6 @@
                     "name": "人行道",
                     "terms": "人行道,人行通道,路缘,路边,路牙,盲道"
                 },
-                "highway/footway/signals": {
-                    "name": "有信号灯的人行横道"
-                },
                 "highway/footway/unmarked": {
                     "name": "人行横道 (无标线)",
                     "terms": "人行横道"
@@ -4784,8 +4779,8 @@
                     "terms": "高速公路,高速,道路,路,公路,快速路,干道,马路"
                 },
                 "highway/motorway_junction": {
-                    "name": "高速公路交界处/出口",
-                    "terms": "高速公路交界处/出口,入口/出口,出入口"
+                    "name": "高速公路出口",
+                    "terms": "高速,公路,出口,岔道,匝道,分流"
                 },
                 "highway/motorway_link": {
                     "name": "高速公路匝道",
@@ -4811,7 +4806,7 @@
                     "name": "便道"
                 },
                 "highway/pedestrian_area": {
-                    "name": "步行区域",
+                    "name": "行人专用区域",
                     "terms": "徒步,广场,行人,步行,人行,区"
                 },
                 "highway/pedestrian_line": {
@@ -5070,7 +5065,7 @@
                 },
                 "junction": {
                     "name": "交叉口",
-                    "terms": "交通枢纽,路口"
+                    "terms": "路口,枢纽,互通,立交,交叉口"
                 },
                 "landuse": {
                     "name": "土地利用要素"
@@ -5177,10 +5172,6 @@
                 "landuse/military/danger_area": {
                     "name": "军事危险区域",
                     "terms": "危险区"
-                },
-                "landuse/military/naval_base": {
-                    "name": "海军基地",
-                    "terms": "海军,基地"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "军用障碍训练场"
@@ -5919,7 +5910,7 @@
                 },
                 "natural/grassland": {
                     "name": "草原",
-                    "terms": "草原"
+                    "terms": "草,草原"
                 },
                 "natural/heath": {
                     "name": "欧石楠荒原",
@@ -7467,10 +7458,6 @@
                 "tourism": {
                     "name": "旅游要素"
                 },
-                "tourism/alpine_hut": {
-                    "name": "高山小屋",
-                    "terms": "高山小屋"
-                },
                 "tourism/apartment": {
                     "name": "出租公寓",
                     "terms": "公寓,客人公寓,出租公寓"
@@ -7826,7 +7813,7 @@
                     "terms": "水路,水系,水道,航道,水沟,河道,河流,流域,水体,水域"
                 },
                 "waterway": {
-                    "name": "航道要素"
+                    "name": "水道要素"
                 },
                 "waterway/boatyard": {
                     "name": "船舶库",
@@ -7864,8 +7851,8 @@
                     "terms": "船舶加油站,加油,船,航海"
                 },
                 "waterway/lock_gate": {
-                    "name": "闸门",
-                    "terms": "闸门,闸首,水闸,船闸,运河,水阀,阀门"
+                    "name": "船闸闸门",
+                    "terms": "闸门,闸首,水闸,船闸,运河"
                 },
                 "waterway/milestone": {
                     "name": "水道里程碑"

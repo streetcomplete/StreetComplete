@@ -52,7 +52,8 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     override fun hasChanges(): Boolean =
-        LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value) != currentSidewalk
+        streetSideSelect.left?.value != currentSidewalk?.left ||
+        streetSideSelect.right?.value != currentSidewalk?.right
 
     override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
         item.value.name

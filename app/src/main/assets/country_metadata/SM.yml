@@ -2,3 +2,4 @@
 hasSlowZone: true
 mobileCountryCode: 292
 officialLanguages: [it]
+postboxesHaveCollectionTimes: true

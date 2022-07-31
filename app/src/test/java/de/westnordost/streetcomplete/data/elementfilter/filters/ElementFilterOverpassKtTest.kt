@@ -69,7 +69,7 @@ class ElementFilterOverpassKtTest {
         assertEquals("[!'name:old']", NotHasKey("name:old").toOverpassString())
     }
 
-    @Test(expected = UnsupportedOperationException::class) fun notHasKeyLike() {
+    @Test fun notHasKeyLike() {
         assertEquals(
             "[!~'^(na[ms]e)$' ~ '.*']",
             NotHasKeyLike("na[ms]e").toOverpassString()
@@ -118,6 +118,10 @@ class ElementFilterOverpassKtTest {
             "['wid th'](if: number(t['wid th']) < 3.5)",
             HasTagLessThan("wid th", 3.5f).toOverpassString()
         )
+        assertEquals(
+            "[width](if: number(t['width']) < 3)",
+            HasTagLessThan("width", 3f).toOverpassString()
+        )
     }
 
     @Test fun hasTagLessOrEqualThan() {
@@ -128,6 +132,10 @@ class ElementFilterOverpassKtTest {
         assertEquals(
             "['wid th'](if: number(t['wid th']) <= 3.5)",
             HasTagLessOrEqualThan("wid th", 3.5f).toOverpassString()
+        )
+        assertEquals(
+            "[width](if: number(t['width']) <= 3)",
+            HasTagLessOrEqualThan("width", 3f).toOverpassString()
         )
     }
 
@@ -140,6 +148,10 @@ class ElementFilterOverpassKtTest {
             "['wid th'](if: number(t['wid th']) > 3.5)",
             HasTagGreaterThan("wid th", 3.5f).toOverpassString()
         )
+        assertEquals(
+            "[width](if: number(t['width']) > 3)",
+            HasTagGreaterThan("width", 3f).toOverpassString()
+        )
     }
 
     @Test fun hasTagGreaterOrEqualThan() {
@@ -150,6 +162,10 @@ class ElementFilterOverpassKtTest {
         assertEquals(
             "['wid th'](if: number(t['wid th']) >= 3.5)",
             HasTagGreaterOrEqualThan("wid th", 3.5f).toOverpassString()
+        )
+        assertEquals(
+            "[width](if: number(t['width']) >= 3)",
+            HasTagGreaterOrEqualThan("width", 3f).toOverpassString()
         )
     }
 

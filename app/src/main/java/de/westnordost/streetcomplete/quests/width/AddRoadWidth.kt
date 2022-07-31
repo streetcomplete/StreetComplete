@@ -22,7 +22,7 @@ class AddRoadWidth(
             and (lane_markings = no or lanes < 2)
           ) or (
             highway = residential
-            and (maxspeed <= 30 or maxspeed ~ "([1-9]|1[0-9]|20) mph")
+            and maxspeed < 33
             and lane_markings != yes and (!lanes or lanes < 2)
           )
           or highway = living_street

@@ -3704,10 +3704,6 @@
                 "shop/wine": {
                     "name": "Prodavaonica vina"
                 },
-                "tourism/alpine_hut": {
-                    "name": "Planinarski dom",
-                    "terms": "planinarska kuća,planinarski dom,dom"
-                },
                 "tourism/apartment": {
                     "name": "Turistički apartman"
                 },

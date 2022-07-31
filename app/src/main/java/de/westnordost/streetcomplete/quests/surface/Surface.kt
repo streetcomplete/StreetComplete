@@ -39,7 +39,6 @@ enum class Surface(val osmValue: String) {
     COMPACTED("compacted"),
     DIRT("dirt"),
     SETT("sett"),
-    // https://forum.openstreetmap.org/viewtopic.php?id=61042
     UNHEWN_COBBLESTONE("unhewn_cobblestone"),
     GRASS_PAVER("grass_paver"),
     WOOD("wood"),

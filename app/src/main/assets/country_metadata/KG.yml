@@ -5,5 +5,6 @@ livingStreetSignStyle: russia
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
 popularReligions: [muslim]
+postboxesHaveCollectionTimes: true
 atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, РСК, DemirBank, КБ Кыргызстан, Халык Банк, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Коммерческий банк Кыргызстан]
 orchardProduces: [apple, tomato, apricot, hazelnut, grape, pear, peach, plum, walnut, cherry, raspberry, pistachio, almond, chilli_pepper, sweet_pepper, strawberry]

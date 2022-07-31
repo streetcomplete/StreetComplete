@@ -5,5 +5,6 @@ mobileCountryCode: 537
 noParkingSignStyle: australia
 noStoppingSignStyle: australia
 officialLanguages: [tpi, en, ho]
+postboxesHaveCollectionTimes: true
 atmOperators: [BSP, ANZ Bank]
 orchardProduces: [coconut, cacao, banana, coffee, rubber, tea, vanilla, pineapple, nutmeg, tomato, chilli_pepper, sweet_pepper]

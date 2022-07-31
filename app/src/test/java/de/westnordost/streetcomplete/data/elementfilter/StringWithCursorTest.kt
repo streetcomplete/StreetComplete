@@ -20,21 +20,36 @@ class StringWithCursorTest {
         try {
             x.advance()
             fail()
-        } catch (ignore: IndexOutOfBoundsException) {
-        }
+        } catch (ignore: IndexOutOfBoundsException) {}
     }
 
     @Test fun advanceBy() {
         val x = StringWithCursor("wundertuete")
         assertEquals("wunder", x.advanceBy(6))
+        assertEquals(6, x.cursorPos)
         assertEquals("", x.advanceBy(0))
+        assertEquals(6, x.cursorPos)
         try {
             x.advanceBy(-1)
             fail()
-        } catch (ignore: IndexOutOfBoundsException) {
-        }
+        } catch (ignore: IndexOutOfBoundsException) {}
 
         assertEquals("tuete", x.advanceBy(99999))
+        assertEquals(11, x.cursorPos)
+        assertTrue(x.isAtEnd())
+    }
+
+    @Test fun retreatBy() {
+        val x = StringWithCursor("wundertuete")
+        x.advanceBy(6)
+        x.retreatBy(999)
+        assertEquals("wunder", x.advanceBy(6))
+        x.retreatBy(3)
+        assertEquals("dertue", x.advanceBy(6))
+        try {
+            x.retreatBy(-1)
+            fail()
+        } catch (ignore: IndexOutOfBoundsException) {}
     }
 
     @Test fun nextIsAndAdvance() {
@@ -58,28 +73,41 @@ class StringWithCursorTest {
         assertEquals(5, x.cursorPos)
     }
 
-    @Test fun nextIsAndAdvanceIgnoreCase() {
-        val x = StringWithCursor("test123")
-        assertTrue(x.nextIsAndAdvanceIgnoreCase("TE"))
-        assertTrue(x.nextIsAndAdvanceIgnoreCase("st"))
-    }
-
     @Test fun findNext() {
         val x = StringWithCursor("abc abc")
-        assertEquals("abc abc".length.toLong(), x.findNext("wurst").toLong())
+        assertEquals("abc abc".length, x.findNext("wurst"))
 
-        assertEquals(0, x.findNext("abc").toLong())
+        assertEquals(0, x.findNext("abc"))
         x.advance()
-        assertEquals(3, x.findNext("abc").toLong())
+        assertEquals(3, x.findNext("abc"))
     }
 
     @Test fun findNextChar() {
         val x = StringWithCursor("abc abc")
-        assertEquals("abc abc".length.toLong(), x.findNext('x').toLong())
+        assertEquals("abc abc".length, x.findNext('x'))
 
-        assertEquals(0, x.findNext('a').toLong())
+        assertEquals(0, x.findNext('a'))
         x.advance()
-        assertEquals(3, x.findNext('a').toLong())
+        assertEquals(3, x.findNext('a'))
+    }
+
+    @Test fun findNextRegex() {
+        val x = StringWithCursor("abc abc")
+        assertEquals("abc abc".length, x.findNext("x".toRegex()))
+        assertEquals(0, x.findNext("[a-z]{3}".toRegex()))
+        x.advance()
+        assertEquals(3, x.findNext("[a-z]{3}".toRegex()))
+    }
+
+    @Test fun isAtEnd() {
+        val x = StringWithCursor("abc")
+        assertFalse(x.isAtEnd(2))
+        assertTrue(x.isAtEnd(3))
+        assertTrue(x.isAtEnd(4))
+        x.advanceBy(3)
+        assertFalse(x.isAtEnd(-1))
+        assertTrue(x.isAtEnd(0))
+        assertTrue(x.isAtEnd(1))
     }
 
     @Test fun nextIsChar() {
@@ -102,6 +130,7 @@ class StringWithCursorTest {
         x.advance()
         assertTrue(x.nextIs("bc"))
         x.advance()
+        assertTrue(x.nextIs("c"))
         x.advance()
         assertFalse(x.nextIs("c"))
     }
@@ -116,9 +145,22 @@ class StringWithCursorTest {
         assertNotNull(x.nextMatches(Regex("bc[0-9]")))
     }
 
-    @Test fun nextIsStringIgnoreCase() {
-        val x = StringWithCursor("abc")
-        assertTrue(x.nextIsIgnoreCase("A"))
-        assertTrue(x.nextIsIgnoreCase("a"))
+    @Test fun nextMatchesStringAndAdvance() {
+        val x = StringWithCursor("abc123")
+        assertNotNull(x.nextMatchesAndAdvance(Regex("abc[0-9]")))
+        assertEquals(4, x.cursorPos)
+        assertNull(x.nextMatchesAndAdvance(Regex("[a-z]")))
+        assertNull(x.nextMatchesAndAdvance(Regex("[0-9]{3}")))
+        assertNotNull(x.nextMatchesAndAdvance(Regex("[0-9]{2}")))
+        assertTrue(x.isAtEnd())
+    }
+
+    @Test fun toStringMethod() {
+        val x = StringWithCursor("ab")
+        assertEquals("►ab", x.toString())
+        x.advance()
+        assertEquals("a►b", x.toString())
+        x.advance()
+        assertEquals("ab►", x.toString())
     }
 }
