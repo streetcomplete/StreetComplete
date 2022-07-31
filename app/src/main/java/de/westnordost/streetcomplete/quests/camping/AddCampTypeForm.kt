@@ -13,8 +13,8 @@ class AddCampTypeForm : AListQuestForm<CampType>() {
 
     override val items = listOf(
         TextItem(TENTS_AND_CARAVANS, R.string.quest_camp_type_tents_and_caravans),
-        TextItem(CARAVANS_ONLY, R.string.quest_camp_type_caravans_only),
         TextItem(TENTS_ONLY, R.string.quest_camp_type_tents_only),
+        TextItem(CARAVANS_ONLY, R.string.quest_camp_type_caravans_only),
     )
 
     override val otherAnswers get() = listOfNotNull(
