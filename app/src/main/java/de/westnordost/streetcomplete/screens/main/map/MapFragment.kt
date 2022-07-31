@@ -80,6 +80,7 @@ open class MapFragment :
     var show3DBuildings: Boolean = true
         set(value) {
             if (field == value) return
+            if (sceneMapComponent?.isAerialView == true) return
             field = value
 
             val toggle = if (value) "true" else "false"
@@ -155,6 +156,7 @@ open class MapFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if (key == Prefs.THEME_BACKGROUND) {
             sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
+            viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
         }
     }
 

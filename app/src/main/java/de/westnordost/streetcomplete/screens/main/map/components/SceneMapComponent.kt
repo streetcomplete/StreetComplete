@@ -29,6 +29,9 @@ class SceneMapComponent(
         set(value) {
             field = value
             aerialViewChanged = true
+            if (value)
+            // remove keys referring to layers that don't exist in aerial view
+                sceneUpdates.keys.removeAll { it.startsWith("layers.buildings") }
         }
     private var aerialViewChanged: Boolean = false
 

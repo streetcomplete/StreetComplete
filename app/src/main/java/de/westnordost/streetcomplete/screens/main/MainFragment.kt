@@ -26,6 +26,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.edit
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
@@ -662,17 +663,14 @@ class MainFragment :
         val popupMenu = PopupMenu(requireContext(), binding.quickSettingsButton)
         popupMenu.menu.add(Menu.NONE, 1, Menu.NONE, R.string.quick_switch_preset)
         popupMenu.menu.add(Menu.NONE, 2, Menu.NONE, R.string.level_filter)
-        popupMenu.menu.add(Menu.NONE, 3, Menu.NONE,
-            if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
-        // aerial background currently crashing, thus disabled
-//        val aerial = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != "MAP"
-//        popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, "Switch to ${if (aerial) "map" else "aerial"} background")
+        popupMenu.menu.add(Menu.NONE, 3, Menu.NONE, if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
+        popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, R.string.quick_switch_map_background)
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 1 -> showProfileSelector()
                 2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
                 3 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
-//                4 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (aerial) "MAP" else "AERIAL") }
+                4 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
             }
             true
         }

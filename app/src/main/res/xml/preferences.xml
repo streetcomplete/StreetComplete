@@ -63,14 +63,14 @@
             android:defaultValue=""
             android:persistent="true" />
 
-        <!-- <ListPreference
+        <ListPreference
             android:key="theme.background_type"
             android:title="@string/pref_background_type_select"
             app:useSimpleSummaryProvider="true"
             android:defaultValue="MAP"
             android:entries="@array/pref_entries_background_type_select"
             android:entryValues="@array/pref_entryvalues_background_type_select"
-            android:persistent="true" /> -->
+            android:persistent="true" />
 
     </PreferenceCategory>
 
