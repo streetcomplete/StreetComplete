@@ -52,7 +52,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
         holder.isSelected = selectedItem?.let { _items.lastIndexOf(it) == position } == true
-        holder.isGroupExpanded = getGroup(selectedIndex) == position
+        holder.isGroupExpanded = getGroupIndex(selectedIndex) == position
     }
 
     private fun toggle(index: Int) {
@@ -68,9 +68,9 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
             val prevSelectedIndex = _items.lastIndexOf(prevSelectedItem)
             notifyItemChanged(prevSelectedIndex)
 
-            val previousGroupIndex = getGroup(prevSelectedIndex)
+            val previousGroupIndex = getGroupIndex(prevSelectedIndex)
             if (previousGroupIndex != -1) {
-                if (selectedItem == null || previousGroupIndex != getGroup(_items.lastIndexOf(selectedItem))) {
+                if (selectedItem == null || previousGroupIndex != getGroupIndex(_items.lastIndexOf(selectedItem))) {
                     retractGroup(previousGroupIndex)
                 }
             }
@@ -80,7 +80,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
             notifyItemChanged(selectedIndex)
 
             if (selectedItem.isGroup) {
-                if (prevSelectedItem == null || getGroup(_items.lastIndexOf(prevSelectedItem)) != selectedIndex) {
+                if (prevSelectedItem == null || getGroupIndex(_items.lastIndexOf(prevSelectedItem)) != selectedIndex) {
                     expandGroup(selectedIndex)
                 }
             }
@@ -90,7 +90,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         }
     }
 
-    private fun getGroup(index: Int): Int {
+    private fun getGroupIndex(index: Int): Int {
         for (i in index downTo 0) {
             if (_items[i].isGroup) return i
         }
