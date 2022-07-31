@@ -18,7 +18,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         set(value) {
             _items.clear()
             _items.addAll(value)
-            selectedItem = null
+            selectedIndex = -1
             for (listener in listeners) {
                 listener(null)
             }
@@ -27,9 +27,10 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         get() = _items.toList().reversed()
 
     var selectedItem: GroupableDisplayItem<T>? = null
+        get() = if (selectedIndex == -1) { null } else { _items[selectedIndex] }
         private set
 
-    private val selectedIndex get() = selectedItem?.let { _items.lastIndexOf(it) } ?: -1
+    private var selectedIndex = -1
 
     val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
 
@@ -51,42 +52,42 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedItem?.let { _items.lastIndexOf(it) == position } == true
+        holder.isSelected = selectedItem?.let { selectedIndex == position } == true
         holder.isGroupExpanded = getGroup(selectedIndex) == position
     }
 
     private fun toggle(index: Int) {
         val prevSelectedItem = selectedItem
+        val prevSelectedIndex = selectedIndex
         if (selectedItem == null || prevSelectedItem !== _items[index]) {
-            selectedItem = _items[index]
+            selectedIndex = index
         } else {
-            selectedItem = null
+            selectedIndex = -1
         }
 
-        val selectedItem = selectedItem
+        val selectedItemSaved = selectedItem // what is the point of that duplicating variable?
+        val selectedIndexSaved = selectedIndex
         if (prevSelectedItem != null) {
-            val prevSelectedIndex = _items.lastIndexOf(prevSelectedItem)
             notifyItemChanged(prevSelectedIndex)
 
             val previousGroupIndex = getGroup(prevSelectedIndex)
             if (previousGroupIndex != -1) {
-                if (selectedItem == null || previousGroupIndex != getGroup(_items.lastIndexOf(selectedItem))) {
+                if (selectedItemSaved == null || previousGroupIndex != getGroup(selectedIndexSaved)) {
                     retractGroup(previousGroupIndex)
                 }
             }
         }
-        if (selectedItem != null) {
-            val selectedIndex = _items.lastIndexOf(selectedItem)
+        if (selectedIndex != -1) {
             notifyItemChanged(selectedIndex)
 
-            if (selectedItem.isGroup) {
-                if (prevSelectedItem == null || getGroup(_items.lastIndexOf(prevSelectedItem)) != selectedIndex) {
+            if (selectedItemSaved!!.isGroup) {
+                if (prevSelectedItem == null || getGroup(prevSelectedIndex) != selectedIndex) {
                     expandGroup(selectedIndex)
                 }
             }
         }
         for (listener in listeners) {
-            listener(selectedItem)
+            listener(selectedItemSaved)
         }
     }
 
