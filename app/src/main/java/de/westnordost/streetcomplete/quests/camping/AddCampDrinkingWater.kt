@@ -12,10 +12,15 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
 
+    /* We only resurvey drinking_water = yes and drinking_water = no, as it might have more detailed 
+     * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism = camp_site
-          and (!drinking_water or drinking_water older today -4 years)
+        nodes, ways with
+          tourism = camp_site and (
+            !drinking_water
+            or drinking_water older today -4 years and drinking_water ~ yes|no
+          )
     """
     override val changesetComment = "Specify whether there is drinking water at camp site"
     override val wikiLink = "Key:drinking_water"
