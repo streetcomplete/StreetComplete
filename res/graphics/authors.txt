@@ -557,7 +557,7 @@ sport/
     sepak_takraw.svg
     shooting.svg                     modified from Twemoji: U+1F52B
     skateboard.svg
-    skating.svg
+    roller_skating.svg
     soccer.svg                       EmojiOne 2: U+26BD
     softball.svg
     squash.svg                       modified from EmojiOne 2: U+1F3F8
