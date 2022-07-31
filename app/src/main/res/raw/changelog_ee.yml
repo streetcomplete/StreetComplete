@@ -1,6 +1,8 @@
 v45.2_ee: |
   <ul>
   <li>Slightly adjust colors for nearby quests</li>
+  <li>Allow switching to aerial view</li>
+  <li>Allow adding lane count if lanes are not marked (by @matkoniecz)</li>
   </ul>
 
 v45.1_ee: |
