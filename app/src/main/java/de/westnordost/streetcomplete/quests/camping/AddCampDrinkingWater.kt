@@ -17,7 +17,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
           tourism = camp_site
           and (!drinking_water or drinking_water older today -4 years)
     """
-    override val changesetComment = "Specify whether there is drinking water in camp site"
+    override val changesetComment = "Specify whether there is drinking water at camp site"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

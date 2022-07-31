@@ -843,8 +843,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camera_type_panning">Panning</string>
 
     <string name="quest_camp_drinking_water_title">Is drinking water available to all customers here?</string>
-    <string name="quest_camp_shower_title">Does it have showers?</string>
-    <string name="quest_camp_power_supply_title">Can any customer charge their phone/laptop here?</string>
+    <string name="quest_camp_shower_title">Are there showers here?</string>
+    <string name="quest_camp_power_supply_title">Can customers charge their phone/laptop here?</string>
     <string name="quest_camp_type_title">Who may camp here?</string>
     <string name="quest_camp_type_tents_and_caravans">Both tents and caravans</string>
     <string name="quest_camp_type_caravans_only">Only caravans</string>
