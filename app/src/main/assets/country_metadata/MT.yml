@@ -10,5 +10,5 @@ postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 postboxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true
-atmOperators: [BOV, HSBC, Euronet, Bank of Valletta, Bank of Valleta, APS]
 orchardProduces: [grape]
+atmOperators: [BOV, HSBC, Euronet, Bank of Valletta, Bank of Valleta, APS]

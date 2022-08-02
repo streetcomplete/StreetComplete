@@ -2,5 +2,5 @@
 hasNoStandingSign: true
 noStandingSignStyle: mutcd text standing
 officialLanguages: [en]
-chargingStationOperators: [Flo, Tesla, Expressway Ford, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Tesla Motors Inc., Tesla Motors, Sun Country, FLO, Electric Circuit, City of Waterloo, City of Stratford, Chargepoint, Cadillac Fairview, Bingemans, Bank of Nova Scotia]
 clothesContainerOperators: [Canadian Diabetes]
+chargingStationOperators: [Flo, Tesla, Expressway Ford, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Tesla Motors Inc., Tesla Motors, Sun Country, FLO, Electric Circuit, City of Waterloo, City of Stratford, Chargepoint, Cadillac Fairview, Bingemans, Bank of Nova Scotia]

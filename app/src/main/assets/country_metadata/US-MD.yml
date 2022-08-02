@@ -1,4 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 noStoppingLineStyle: yellow on curb
-chargingStationOperators: [Tesla Motors, Volta, ChargePoint, SemaCharge, BGE, SemaConnect, EV Institute, Chargepoint, BWI Airport]
 clothesContainerOperators: [Planet Aid, JJ Recycling]
+chargingStationOperators: [Tesla Motors, Volta, ChargePoint, SemaCharge, BGE, SemaConnect, EV Institute, Chargepoint, BWI Airport]

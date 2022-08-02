@@ -3,5 +3,5 @@ mobileCountryCode: 615
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr]
-atmOperators: [Ecobank, BTCI]
 orchardProduces: [coffee, cacao, chilli_pepper, sweet_pepper, cashew_nut, coconut, orange, banana, tomato, pineapple, nutmeg]
+atmOperators: [Ecobank, BTCI]

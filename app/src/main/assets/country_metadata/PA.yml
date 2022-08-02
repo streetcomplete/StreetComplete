@@ -6,5 +6,5 @@ noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
 popularSports: [soccer, basketball, baseball, tennis]
-atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]
 orchardProduces: [coffee, cacao, banana, orange, coconut, pineapple, avocado, guava, mango, mangosteen, tomato, papaya, chilli_pepper, sweet_pepper]
+atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]

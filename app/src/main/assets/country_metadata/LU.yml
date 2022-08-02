@@ -9,6 +9,6 @@ officialLanguages: [fr, de, lb]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
-atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]
-chargingStationOperators: [Chargy, Enovos]
 orchardProduces: [grape, apple, plum, pear, walnut, strawberry]
+chargingStationOperators: [Chargy, Enovos]
+atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]

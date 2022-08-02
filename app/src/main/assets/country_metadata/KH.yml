@@ -9,6 +9,6 @@ noStoppingLineStyle: red-white on curb
 officialLanguages: [km]
 popularReligions: [buddhist, muslim]
 postboxesHaveCollectionTimes: true
-atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, AMK, Sathapana]
-chargingStationOperators: [Green E-Bike]
 orchardProduces: [rubber, banana, chilli_pepper, sweet_pepper, coconut, orange, guava, mango, mangosteen, pineapple, coffee, pepper, grapefruit, lemon, lime]
+chargingStationOperators: [Green E-Bike]
+atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, AMK, Sathapana]

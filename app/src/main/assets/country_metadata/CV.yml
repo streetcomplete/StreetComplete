@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 625
 officialLanguages: [pt, kea]
-atmOperators: [Caixa]
 orchardProduces: [coconut, tomato, banana, coffee, chilli_pepper, sweet_pepper, guava, mango, mangosteen]
+atmOperators: [Caixa]

@@ -5,6 +5,6 @@ noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, Itaú, Servipag, banco chile, Transbank]
-chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
 orchardProduces: [grape, walnut, cherry, apple, avocado, hazelnut, olive, cranberry, plum, peach, tomato, almond, kiwi, pear, lemon, lime]
+chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
+atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, Itaú, Servipag, banco chile, Transbank]

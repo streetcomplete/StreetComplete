@@ -5,5 +5,5 @@ mobileCountryCode: 630
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, mkw, ln, lua, sw]
-atmOperators: [Rawbank, Raw Bank, BIAC]
 orchardProduces: [banana, coffee, rubber, cacao, guava, mango, mangosteen, papaya, orange, chilli_pepper, sweet_pepper, tea, avocado, pineapple, tomato, grapefruit, lemon, lime]
+atmOperators: [Rawbank, Raw Bank, BIAC]

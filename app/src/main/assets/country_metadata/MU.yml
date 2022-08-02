@@ -12,5 +12,5 @@ officialLanguages: [en, fr, mfe]
 popularReligions: [hindu, christian, muslim]
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE
-atmOperators: [SBM, MCB, Mauritius Commercial Bank, Barclays, HSBC, MCB ATM]
 orchardProduces: [tea, tomato, banana, pineapple, chilli_pepper, sweet_pepper, coconut]
+atmOperators: [SBM, MCB, Mauritius Commercial Bank, Barclays, HSBC, MCB ATM]

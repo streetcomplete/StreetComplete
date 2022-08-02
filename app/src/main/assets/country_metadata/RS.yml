@@ -10,6 +10,6 @@ officialLanguages: [sr]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА
-atmOperators: [Комерцијална банка, Banca Intesa, Komercijalna banka, Raiffeisen Bank, TEB, Poštanska Štedionica, NLB Banka, Eurobank, AIK Banka, Raiffeisen, Erste bank, NLB, OTP Bank, BKT, TEB Bank, Bankomat, Hypo Alpe Adria, Telenor, Postanska stedionica, Pcb, Erste, Credit Agricole, BPB, OTP Banka, ProCredit Bank, Банка Поштанска штедионица, Bank Intesa, Addiko bank, Banka Intesa, NLB Bank, Поштанска штедионица, Banka Ekonomike]
-chargingStationOperators: [putevi srbije]
 orchardProduces: [plum, apple, raspberry, grape, cherry, tomato, peach, strawberry, apricot, chilli_pepper, sweet_pepper, pear, hazelnut, walnut, hop]
+chargingStationOperators: [putevi srbije]
+atmOperators: [Комерцијална банка, Banca Intesa, Komercijalna banka, Raiffeisen Bank, TEB, Poštanska Štedionica, NLB Banka, Eurobank, AIK Banka, Raiffeisen, Erste bank, NLB, OTP Bank, BKT, TEB Bank, Bankomat, Hypo Alpe Adria, Telenor, Postanska stedionica, Pcb, Erste, Credit Agricole, BPB, OTP Banka, ProCredit Bank, Банка Поштанска штедионица, Bank Intesa, Addiko bank, Banka Intesa, NLB Bank, Поштанска штедионица, Banka Ekonomike]

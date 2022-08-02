@@ -5,5 +5,5 @@ mobileCountryCode: 706
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-atmOperators: [Banco Agrícola, Banco de América Central, Banco Cuscatlan, Scotiabank, Caja de Crédito, Davivienda]
 orchardProduces: [coffee, apple, olive, agave, guava, mango, mangosteen, coconut, orange, cashew_nut, lemon, lime, avocado, banana, cacao, tomato, tea, chilli_pepper, sweet_pepper]
+atmOperators: [Banco Agrícola, Banco de América Central, Banco Cuscatlan, Scotiabank, Caja de Crédito, Davivienda]

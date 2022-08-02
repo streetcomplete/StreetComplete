@@ -3,5 +3,5 @@ mobileCountryCode: 612
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, dyu, bci, any]
-atmOperators: [NSIA Banque, BNI]
 orchardProduces: [cacao, cashew_nut, coffee, rubber, guava, mango, mangosteen, kola_nut, coconut, chilli_pepper, sweet_pepper, banana, papaya, avocado, tomato, grapefruit, orange, almond]
+atmOperators: [NSIA Banque, BNI]

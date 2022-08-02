@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 548
 officialLanguages: [en, rar]
-atmOperators: [ANZ, BSP]
 orchardProduces: [coconut, papaya, guava, mango, mangosteen, tomato, pineapple, avocado, banana, orange, coffee]
+atmOperators: [ANZ, BSP]

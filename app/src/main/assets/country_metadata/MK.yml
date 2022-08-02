@@ -9,6 +9,6 @@ officialLanguages: [mk, sq]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА
-atmOperators: [Охридска Банка, Шпаркасе, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Stopanska Banka, Комерцијална Банка АД Скопје, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
-chargingStationOperators: [EVN]
 orchardProduces: [grape, apple, walnut, plum, olive, tomato, pear, cherry, peach, chestnut, strawberry, chilli_pepper, sweet_pepper, apricot, almond, raspberry]
+chargingStationOperators: [EVN]
+atmOperators: [Охридска Банка, Шпаркасе, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Stopanska Banka, Комерцијална Банка АД Скопје, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]
