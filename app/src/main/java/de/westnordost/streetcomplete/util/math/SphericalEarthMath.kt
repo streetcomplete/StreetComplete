@@ -576,7 +576,7 @@ private fun Double.toRadians() = this / 180.0 * PI
 private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
-    var normalizedLon = lon % 360 // lon is now -360..360
+    var normalizedLon = lon % 360 // normalizedLon is -360..360
     if (normalizedLon < -180) normalizedLon += 360
     else if (normalizedLon > 180) normalizedLon -= 360
     return normalizedLon
