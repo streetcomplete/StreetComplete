@@ -84,7 +84,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         } else {
             selectedItemGroup = _items[foundGroupIndex]
         }
-        if (selectedItem == null || previousSelectedItem !== _items[index]) {
+        if (previousSelectedItem == null || previousSelectedItem !== _items[index]) {
             selectedItem = _items[index]
         } else {
             selectedItem = null
