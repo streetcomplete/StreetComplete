@@ -22,6 +22,8 @@ class AddRoofShape(
           and !roof:shape and !3dr:type and !3dr:roof
           and building
           and building !~ no|construction
+          and location != underground
+          and ruins != yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify roof shapes"
