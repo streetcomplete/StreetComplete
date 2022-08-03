@@ -25,6 +25,7 @@ class CheckExistence(
             or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
             or amenity = parcel_locker
             or amenity = public_bookcase
+            or barrier = log
           )
           and (${lastChecked(2.0)})
         ) or (
