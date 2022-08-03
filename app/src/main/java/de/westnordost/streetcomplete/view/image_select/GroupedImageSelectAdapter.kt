@@ -31,14 +31,14 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     // group is also remembered as item may be appearing
     // once outside any groups and again in the group
-    var selectedGroup: GroupableDisplayItem<T>? = null
+    var selectedItemGroup: GroupableDisplayItem<T>? = null
         private set
 
     private fun selectedIndex(): Int {
         return if (selectedItem == null) {
             -1
         } else {
-            indexOfItemGivenGroupMembership(selectedItem!!, selectedGroup)
+            indexOfItemGivenGroupMembership(selectedItem!!, selectedItemGroup)
         }
     }
 
@@ -81,13 +81,13 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     private fun toggle(index: Int) {
         val previousSelectedItem = selectedItem
-        val previousSelectedGroup = selectedGroup
+        val previousSelectedItemGroup = selectedItemGroup
 
         val foundGroupIndex = getGroupIndex(index)
         if (foundGroupIndex == -1) {
-            selectedGroup = null
+            selectedItemGroup = null
         } else {
-            selectedGroup = _items[foundGroupIndex]
+            selectedItemGroup = _items[foundGroupIndex]
         }
         if (selectedItem == null || previousSelectedItem !== _items[index]) {
             selectedItem = _items[index]
@@ -96,11 +96,11 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         }
 
         if (previousSelectedItem != null) {
-            val previousItemIndex = indexOfItemGivenGroupMembership(previousSelectedItem, previousSelectedGroup)
+            val previousItemIndex = indexOfItemGivenGroupMembership(previousSelectedItem, previousSelectedItemGroup)
             val previousGroupIndex = getGroupIndex(previousItemIndex)
             notifyItemChanged(previousItemIndex)
-            if (previousSelectedGroup != null) {
-                if (selectedItem == null || previousSelectedGroup != selectedGroup) {
+            if (previousSelectedItemGroup != null) {
+                if (selectedItem == null || previousSelectedItemGroup != selectedItemGroup) {
                     retractGroup(previousGroupIndex)
                 }
             }
@@ -109,7 +109,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
             notifyItemChanged(selectedIndex())
 
             if (selectedItem!!.isGroup) {
-                if (previousSelectedItem == null || previousSelectedGroup != selectedGroup) {
+                if (previousSelectedItem == null || previousSelectedItemGroup != selectedItemGroup) {
                     expandGroup(selectedIndex())
                 }
             }
