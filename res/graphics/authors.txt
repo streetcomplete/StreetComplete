@@ -202,7 +202,7 @@ living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     australia.svg                                    Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     france.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
-    portrait.svg                                     Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    russia.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     sadc.svg                                         Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
 
 max height/
