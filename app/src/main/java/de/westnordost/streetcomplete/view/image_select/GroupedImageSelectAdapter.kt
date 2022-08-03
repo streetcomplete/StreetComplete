@@ -31,16 +31,9 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     // group is also remembered as item may be appearing
     // once outside any groups and again in the group
-    var selectedItemGroup: GroupableDisplayItem<T>? = null
-        private set
+    private var selectedItemGroup: GroupableDisplayItem<T>? = null
 
-    private fun selectedIndex(): Int {
-        return if (selectedItem == null) {
-            -1
-        } else {
-            indexOfItemGivenGroupMembership(selectedItem!!, selectedItemGroup)
-        }
-    }
+    private val selectedIndex get() = selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
 
     private fun indexOfItemGivenGroupMembership(item: GroupableDisplayItem<T>, group: GroupableDisplayItem<T>?): Int {
         var currentGroup: GroupableDisplayItem<T> ? = null
@@ -75,8 +68,8 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedIndex() == position
-        holder.isGroupExpanded = getGroupIndex(selectedIndex()) == position
+        holder.isSelected = selectedIndex == position
+        holder.isGroupExpanded = getGroupIndex(selectedIndex) == position
     }
 
     private fun toggle(index: Int) {
@@ -105,12 +98,13 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
                 }
             }
         }
-        if (selectedItem != null) {
-            notifyItemChanged(selectedIndex())
+        val copyOfSelectedItem = selectedItem
+        if (copyOfSelectedItem != null) {
+            notifyItemChanged(selectedIndex)
 
-            if (selectedItem!!.isGroup) {
+            if (copyOfSelectedItem.isGroup) {
                 if (previousSelectedItem == null || previousSelectedItemGroup != selectedItemGroup) {
-                    expandGroup(selectedIndex())
+                    expandGroup(selectedIndex)
                 }
             }
         }
