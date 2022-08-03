@@ -138,6 +138,9 @@ building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
+camping/
+    camp.svg                    https://commons.wikimedia.org/wiki/File:Noun_camp_2695642.svg, Bluerasberry CC-BY 4.0
+
 cycleway/
     bus_lane.svg
     bus_lane_l.svg
