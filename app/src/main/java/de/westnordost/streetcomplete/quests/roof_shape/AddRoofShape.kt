@@ -39,9 +39,9 @@ class AddRoofShape(
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
             filter.matches(element) && (
-                element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
-                || roofsAreUsuallyFlatAt(element, mapData) == false
-            )
+                (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) > 0f
+                    || roofsAreUsuallyFlatAt(element, mapData) == false
+                )
         }
 
     override fun isApplicableTo(element: Element): Boolean? {
@@ -49,7 +49,7 @@ class AddRoofShape(
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether
            the element is in a certain country cannot be ascertained without the element's geometry */
-        if (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f == 0f) return null
+        if ((element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) == 0f) return null
         return true
     }
 
