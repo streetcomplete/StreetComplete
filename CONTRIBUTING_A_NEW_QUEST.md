@@ -317,7 +317,20 @@ Note that there are some graphics which haven't been used yet, created for propo
 
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what was used so far.
 
-Keep similar style to existing ones and app in general. Once the quest icon is ready:
+Keep similar style to existing ones and app in general. Note the background color of the icon marks its relation group:
+- magenta: bicycle traffic
+- blue: pedestrian traffic
+- green: pedestrian misc (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, summits, AED, toilets, backrest ...)
+- yellow: motor vehicles (car, motorcycles)
+
+FIXME:
+- gold: stile type/steps, trees/orchads
+- peach: survelience(?) and shop/money related (laundry, opening hours, shop types/seating, shop/atm names, shop level, aircondition, smoking, wlan, bicycle repair/shops, food, payment) 
+- grey: building type/height/entrances/roof/address, power poles, briges, fire hydrants
+
+- why is "Do you need to pay to enter here?" green instead of peach (it is about money)
+
+Once the quest icon is ready:
 
 - when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
