@@ -53,7 +53,7 @@ class CheckExistence(
             amenity = bench
             or amenity = lounger
             or amenity = waste_basket
-            or traffic_calming ~ bump|hump|island|cushion|choker|rumble_strip|chicane|dip
+            or traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
             or traffic_calming = table and !highway and !crossing
             or amenity = recycling and recycling_type = container
             or amenity = toilets
