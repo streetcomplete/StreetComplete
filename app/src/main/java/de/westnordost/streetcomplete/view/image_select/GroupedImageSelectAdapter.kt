@@ -33,7 +33,9 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     // once outside any groups and again in the group
     private var selectedItemGroup: GroupableDisplayItem<T>? = null
 
-    private val selectedIndex get() = selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
+    private fun selectedIndex(): Int {
+        return selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
+    }
 
     private fun indexOfItemGivenGroupMembership(item: GroupableDisplayItem<T>, group: GroupableDisplayItem<T>?): Int {
         var currentGroup: GroupableDisplayItem<T> ? = null
@@ -68,8 +70,8 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedIndex == position
-        holder.isGroupExpanded = getGroupIndex(selectedIndex) == position
+        holder.isSelected = selectedIndex() == position
+        holder.isGroupExpanded = getGroupIndex(selectedIndex()) == position
     }
 
     private fun toggle(index: Int) {
@@ -100,11 +102,11 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         }
         val copyOfSelectedItem = selectedItem
         if (copyOfSelectedItem != null) {
-            notifyItemChanged(selectedIndex)
+            notifyItemChanged(selectedIndex())
 
             if (copyOfSelectedItem.isGroup) {
                 if (previousSelectedItem == null || previousSelectedItemGroup != selectedItemGroup) {
-                    expandGroup(selectedIndex)
+                    expandGroup(selectedIndex())
                 }
             }
         }
