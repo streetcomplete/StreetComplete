@@ -75,7 +75,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedItem?.let { _items.lastIndexOf(it) == position } == true
+        holder.isSelected = selectedIndex() ==position
         holder.isGroupExpanded = getGroupIndex(selectedIndex()) == position
     }
 
