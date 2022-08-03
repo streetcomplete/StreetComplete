@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="16dp"
                 android:src="@drawable/pin"
-                android:layout_gravity="right"
                 tools:ignore="RtlSymmetry"/>
 
             <ImageView
