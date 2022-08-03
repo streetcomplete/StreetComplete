@@ -62,8 +62,8 @@ class EditHistoryPinsManager(
     }
 
     private fun stop() {
-        pinsMapComponent.clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
+        viewLifecycleScope.launch { pinsMapComponent.clear() }
         editHistorySource.removeListener(editHistoryListener)
     }
 
