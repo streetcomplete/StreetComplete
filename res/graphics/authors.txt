@@ -222,6 +222,7 @@ max weight/
 pins/
     bicycle_parking.svg
     bicycle_pump.svg
+    bin.svg                         Flo Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
     bench.svg
     car_air_compressor.svg
     car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
