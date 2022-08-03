@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 import java.util.concurrent.FutureTask
 
@@ -18,7 +19,8 @@ class AddRoofShape(
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
-        ways, relations with (building:levels or roof:levels)
+        ways, relations with
+          ((building:levels or roof:levels) or (building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}))
           and !roof:shape and !3dr:type and !3dr:roof
           and building
           and building !~ no|construction
