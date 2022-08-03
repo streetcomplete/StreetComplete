@@ -257,11 +257,13 @@ quest/
     bench_public_transport.svg
     bicycle.svg
     bicycle_parking.svg
+    bicycle_parking_access.svg       Flo Edelmann merged bicycle_parking.svg by Tobias Zwick (CC-BY-SA 4.0) with parking_access.svg made by Tobias Zwick with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     bicycle_parking_capacity.svg
     bicycle_parking_cover.svg
     bicycle_parking_fee.svg          Flo Edelmann merged bicycle_parking.svg and fee.svg, both made by Tobias Zwick (CC-BY-SA 4.0)
     bicycle_pump.svg
     bicycle_rental.svg
+    bicycle_rental_capacity.svg      Flo Edelmann edited bicycle_rental.svg made by Tobias Zwick (CC-BY-SA 4.0)
     bicycle_repair.svg
     bicycle_second_hand.svg
     bicycleway.svg
@@ -351,6 +353,7 @@ quest/
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
+    picnic_table_cover.svg           Flo Edelmann (CC0)
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg

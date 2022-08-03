@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.Tags
@@ -32,7 +33,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface
-    override val achievements = listOf(CAR)
+    override val achievements = listOf(CAR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["area"] == "yes") R.string.quest_streetSurface_square_title
