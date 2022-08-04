@@ -322,7 +322,7 @@ Keep similar style to existing ones and app in general. Note the background colo
 - blue: pedestrian traffic
 - yellow: motor vehicles (car, motorcycles)
 - grey: contructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- peach: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, survelience) 
+- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, survelience) 
 - green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
 - brown: nature-related (stile type/steps, trees/orchads)
 
