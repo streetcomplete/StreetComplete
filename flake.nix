@@ -11,7 +11,6 @@
         checks = { };
         devShell = import ./shell.nix {
           inherit pkgs;
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
         };
       });
 }
