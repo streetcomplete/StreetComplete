@@ -323,12 +323,8 @@ Keep similar style to existing ones and app in general. Note the background colo
 - yellow: motor vehicles (car, motorcycles)
 - grey: contructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
 - peach: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, survelience) 
-- green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest...)
-
-FIXME:
-- gold: stile type/steps, trees/orchads
-
-- why is "Do you need to pay to enter here?" green instead of peach (it is about money)
+- green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
+- brown: nature-related (stile type/steps, trees/orchads)
 
 Once the quest icon is ready:
 
