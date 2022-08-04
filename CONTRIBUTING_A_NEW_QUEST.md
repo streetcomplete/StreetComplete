@@ -317,12 +317,12 @@ Note that there are some graphics which haven't been used yet, created for propo
 
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what was used so far.
 
-Keep similar style to existing ones and app in general. Note the background color of the icon marks its relation group:
+Keep similar style to existing ones and app in general. Note that the background color of the icon marks its relation group:
 - magenta: bicycle traffic
 - blue: pedestrian traffic
 - yellow: motor vehicles (car, motorcycles)
-- grey: contructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, survelience) 
+- grey: constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
+- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, surveillance) 
 - green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
 - brown: nature-related (stile type/steps, trees/orchads)
 
