@@ -320,13 +320,13 @@ A new icon can reuse the content of [other quest icons](res/graphics/quest), it 
 Keep similar style to existing ones and app in general. Note the background color of the icon marks its relation group:
 - magenta: bicycle traffic
 - blue: pedestrian traffic
-- green: pedestrian misc (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, summits, AED, toilets, backrest...)
 - yellow: motor vehicles (car, motorcycles)
 - grey: contructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
+- peach: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, survelience) 
+- green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest...)
 
 FIXME:
 - gold: stile type/steps, trees/orchads
-- peach: survelience(?) and shop/money related (laundry, opening hours, shop types/seating, shop/atm names, shop level, aircondition, smoking, wlan, bicycle repair/shops, food, payment) 
 
 - why is "Do you need to pay to enter here?" green instead of peach (it is about money)
 
