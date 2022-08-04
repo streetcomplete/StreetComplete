@@ -148,15 +148,17 @@ class AddHousenumberTest {
         assertTrue("1234/a".matches(r))
         assertTrue("1234 / a".matches(r))
         assertTrue("1234 / A".matches(r))
+        assertTrue("1234/ab".matches(r))
         assertTrue("1234A".matches(r))
         assertTrue("1234/9".matches(r))
         assertTrue("1234 / 9".matches(r))
+        assertTrue("1234/55".matches(r))
 
         assertTrue("12345".matches(r))
+
+        assertTrue("1234AB".matches(r))
         assertFalse("123456".matches(r))
         assertFalse("1234 5".matches(r))
-        assertFalse("1234/55".matches(r))
-        assertFalse("1234AB".matches(r))
     }
 
     @Test fun `blocknumber regex`() {
