@@ -138,6 +138,9 @@ building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
+charging station capacity/
+    electric_car.svg            parts taken from Twemoji: U+1F698 and U+1F50C
+
 cycleway/
     bus_lane.svg
     bus_lane_l.svg
