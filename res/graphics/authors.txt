@@ -609,6 +609,8 @@ mail.svg
 
 osm_anon_avatar.svg
 
+overlay.svg
+
 ../../app/src/test/resources/
     hai_phong_street.jpg
     mandalay_market.jpg
