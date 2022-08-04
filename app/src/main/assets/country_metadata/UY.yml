@@ -5,6 +5,6 @@ noEntrySignStyle: default
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-orchardProduces: [olive, grape, orange, lemon, lime, apple, peach, pear, tomato, plum, chilli_pepper, sweet_pepper, grapefruit]
-chargingStationOperators: [UTE]
 atmOperators: [Banco República, BROU, Santander, Itaú, Banred, BBVA, Devoto Pando, Scotiabank, Casa de Cambio, RedBROU]
+chargingStationOperators: [UTE]
+orchardProduces: [olive, grape, orange, lemon, lime, apple, peach, pear, tomato, plum, chilli_pepper, sweet_pepper, grapefruit]

@@ -7,5 +7,5 @@ mobileCountryCode: 631
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [pt]
-orchardProduces: [banana, coffee, pineapple, tomato, cacao, cashew_nut, sisal]
 atmOperators: [Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco BIC Angola, Banco Keve]
+orchardProduces: [banana, coffee, pineapple, tomato, cacao, cashew_nut, sisal]

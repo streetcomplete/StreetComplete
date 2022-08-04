@@ -10,7 +10,7 @@ officialLanguages: [et]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA
-orchardProduces: [strawberry, apple, raspberry, plum, tomato]
-clothesContainerOperators: [Tallinna Jäätmekeskus]
-chargingStationOperators: [Elmo, ELMO]
 atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
+chargingStationOperators: [Elmo, ELMO]
+clothesContainerOperators: [Tallinna Jäätmekeskus]
+orchardProduces: [strawberry, apple, raspberry, plum, tomato]

@@ -2168,6 +2168,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_seating_indoor_only">"Istumapaikat vain sisällä"</string>
     <string name="quest_seating_outdoor_only">"Istumapaikat vain ulkona"</string>
     <string name="quest_seating_indoor_and_outdoor">"Istumapaikkoja sisällä ja ulkona"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"Tämä kyselytyyppi on poistettu oletuksena käytöstä, koska se saattaa vaatia tietyn vuodenajan ulkoistumapaikkojen varmistamiseksi."</string>
     <string name="no_camera_permission_toast">"Kameran käyttöoikeutta ei ole"</string>
 
     <!-- Quests
@@ -2196,6 +2197,9 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Onko tällä pysäkillä katosta?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä taktiilista päällystettä?"</string>
     <string name="quest_dietType_halal_name_title2">"Saako täältä halal-tuotteita?"</string>
     <string name="quest_dietType_kosher_name_title2">"Saako täältä kosher-tuotteita?"</string>
     <string name="quest_dietType_vegan_title2">"Onko ruokalistalla vegaanituotteita?"</string>

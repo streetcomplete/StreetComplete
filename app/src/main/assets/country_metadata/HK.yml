@@ -9,5 +9,5 @@ popularReligions: [chinese_folk, taoist, buddhist]
 postboxesHaveCollectionTimes: true
 postboxesHaveRoyalCypher: true
 workweekDays: 6
-orchardProduces: [tomato]
 chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
+orchardProduces: [tomato]

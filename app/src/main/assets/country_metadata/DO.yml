@@ -5,5 +5,5 @@ noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
 popularSports: [baseball, basketball, tennis]
-orchardProduces: [cacao, coffee, coconut, avocado, banana, lemon, lime, orange, papaya, cashew_nut, pineapple, chilli_pepper, sweet_pepper, tomato, guava, mango, mangosteen, grapefruit, sisal]
 atmOperators: [Banco Popular, Popular, BanReservas, BHD, Banco BHD Leon, Banco BHD, Banco de Reservas, Banco BHD León, Banca Popular, BPD]
+orchardProduces: [cacao, coffee, coconut, avocado, banana, lemon, lime, orange, papaya, cashew_nut, pineapple, chilli_pepper, sweet_pepper, tomato, guava, mango, mangosteen, grapefruit, sisal]

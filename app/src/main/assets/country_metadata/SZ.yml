@@ -6,5 +6,5 @@ isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 653
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date]
 atmOperators: [Standard Bank, FNB, Nedbank, First National Bank]
+orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date]

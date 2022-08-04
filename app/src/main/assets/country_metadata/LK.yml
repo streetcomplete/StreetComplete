@@ -10,6 +10,6 @@ popularReligions: [buddhist, hindu, christian, muslim]
 popularSports: [soccer, tennis, cricket]
 postboxesHaveCollectionTimes: true
 postboxesHaveRoyalCypher: true
-orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg]
-chargingStationOperators: [Spark EV]
 atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial Bank of Ceylon PLC, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
+chargingStationOperators: [Spark EV]
+orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg]

@@ -13,6 +13,6 @@ officialLanguages: [lv]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA
-orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]
-chargingStationOperators: [CSDD, Elektrum]
 atmOperators: [Swedbank, SEB, Citadele, Luminor, DNB, Nordea, DnB Nord, PrivatBank, Hipotēku banka, DNB banka, SEB Unibanka, BlueOrange]
+chargingStationOperators: [CSDD, Elektrum]
+orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]

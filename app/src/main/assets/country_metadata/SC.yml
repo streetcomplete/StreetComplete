@@ -6,5 +6,5 @@ mobileCountryCode: 633
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [en, fr, crs]
-orchardProduces: [coconut, banana, tomato, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple, avocado]
 atmOperators: [Barclays, Nouvobanq, MCB]
+orchardProduces: [coconut, banana, tomato, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple, avocado]

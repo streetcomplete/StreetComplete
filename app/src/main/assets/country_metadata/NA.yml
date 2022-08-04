@@ -9,5 +9,5 @@ noParkingSignStyle: sadc
 noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, af]
-orchardProduces: [grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen]
 atmOperators: [FNB, Bank Windhoek, Standard Bank, Nedbank, First National Bank, FNB Namibia]
+orchardProduces: [grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen]

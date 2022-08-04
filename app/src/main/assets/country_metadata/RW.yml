@@ -5,5 +5,5 @@ mobileCountryCode: 635
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [rw, en, fr]
-orchardProduces: [banana, tea, coffee, tomato, pineapple, orange, chilli_pepper, sweet_pepper, lemon, lime, pepper, guava, mango, mangosteen, avocado, papaya]
 atmOperators: [Bank of Kigali, Ecobank]
+orchardProduces: [banana, tea, coffee, tomato, pineapple, orange, chilli_pepper, sweet_pepper, lemon, lime, pepper, guava, mango, mangosteen, avocado, papaya]

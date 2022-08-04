@@ -10,6 +10,6 @@ noStoppingSignStyle: mutcd
 officialLanguages: [es]
 popularSports: [soccer, basketball, baseball, tennis]
 workweekDays: 6
-orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]
-chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
 atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, Scotiabank, Bansi, BBVA Bancomer, BBVA, Banjercito, Interacciones, Banco Azteca, Inbursa, Afirme, Citibanamex, Coppel, Banco Santander, Multiva, 'BBVA Bancomer, S.A.', Banco Multiva, CIBanco, Santander Serfin, CFE, Bancomer BBVA, Banco del Bajío, 'Santander Consumo, S.A. de C.V.', Bancoppel]
+chargingStationOperators: [Servicio de Transportes Eléctricos de la Ciudad de México]
+orchardProduces: [coffee, orange, avocado, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper, coconut, walnut, tomato, banana, cacao, apple, grape, rubber, peach]

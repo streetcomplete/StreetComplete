@@ -8,5 +8,5 @@ mobileCountryCode: 643
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [pt]
-orchardProduces: [cashew_nut, banana, coconut, tea, tomato, pineapple, guava, mango, mangosteen, papaya, grapefruit, sisal, lemon, lime, coffee, orange]
 atmOperators: [BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza]
+orchardProduces: [cashew_nut, banana, coconut, tea, tomato, pineapple, guava, mango, mangosteen, papaya, grapefruit, sisal, lemon, lime, coffee, orange]

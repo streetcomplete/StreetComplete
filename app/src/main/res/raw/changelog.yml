@@ -1,14 +1,14 @@
 v45.2: |
   <ul>
   <li>Fix rare crash when phone is low on memory (#4221)</li>
+  <li>Fix rare crash when closing or sending the app to background (#4259)</li>
   <li>Fix drawing order of bridges and tunnels, by @matkoniecz</li>
   <li>Fix a layout issue for right-to-left locales (#4260)</li>
   <li>Max weight: Fix input field not showing more than one digit (#4216)</li>
-  <li>Check existence: Adjust for which map elements it is asked (#4242, #4249)</li>
-  <li>House numbers: Do not warn about a house number format common in Australia (#4196, #4251)</li>
+  <li>House numbers: Do not warn about a house number format being unusual that is common in Australia (#4196, #4251)</li>
   <li>Roof shape: Do not ask for ruins and underground buildings, by @matkoniecz</li>
   <li>Roof shape: For certain building types, even ask when building and roof levels have not been recorded yet (#4261), by @matkoniecz</li>
-  <li>More minor enhancements (#4160, #4241, #4243, #4246...), thanks @Helium314, @matkoniecz</li>
+  <li>More minor enhancements (#4160, #4241, #4243, #4246, #4242, #4249...), thanks @Helium314, @matkoniecz</li>
   </ul>
 
 v45.1: |

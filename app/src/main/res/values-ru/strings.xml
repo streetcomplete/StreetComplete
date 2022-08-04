@@ -2034,4 +2034,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Освещено днём и ночью"</string>
     <string name="lit_value_automatic">"Освещено, когда кто-то проходит мимо"</string>
     <string name="overlay_sidewalk">"Тротуары"</string>
+    <string name="quest_generic_answer_is_indoors">"Это в помещении"</string>
+    <string name="quest_summit_cross_title">"Здесь есть крест на вершине?"</string>
+    <string name="quest_entrance_reference">"Что обозначено на подъезде?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Номер подъезда и номера квартир"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Номера квартир"</string>
+    <string name="quest_entrance_reference_select_code_only">"Номер подъезда"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Ничего не обозначено"</string>
+    <string name="quest_entrance_reference_reference_label">"Номер подъезда:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Номера квартир:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"—"</string>
 </resources>

@@ -10,7 +10,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
 postboxesHaveCollectionTimes: true
-orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
-clothesContainerOperators: [UAB „VAATC“]
-chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
 atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB "Swedbank", AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
+chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
+clothesContainerOperators: [UAB „VAATC“]
+orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]

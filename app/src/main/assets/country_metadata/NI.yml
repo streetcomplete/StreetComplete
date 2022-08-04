@@ -5,5 +5,5 @@ noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
 popularSports: [basketball, baseball, soccer]
-orchardProduces: [coffee, orange, cacao, agave, pineapple, banana, tomato, coconut, chilli_pepper, sweet_pepper]
 atmOperators: [BAC, Banpro, LAFISE, BDF, Bancentro, Banco de América Central, Bampro, La Fise - Bancentro, ATM BAC, BAC Credomatic, VISA ATM]
+orchardProduces: [coffee, orange, cacao, agave, pineapple, banana, tomato, coconut, chilli_pepper, sweet_pepper]

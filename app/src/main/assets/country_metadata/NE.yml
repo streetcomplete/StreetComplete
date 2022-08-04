@@ -7,5 +7,5 @@ noStoppingSignStyle: vienna
 officialLanguages: [fr, ha]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-orchardProduces: [guava, mango, mangosteen, chilli_pepper, sweet_pepper, tomato, date, pepper]
 atmOperators: [BIA, Nita]
+orchardProduces: [guava, mango, mangosteen, chilli_pepper, sweet_pepper, tomato, date, pepper]
