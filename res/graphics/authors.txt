@@ -604,7 +604,8 @@ tutorial/
     logo_osm_map_lighting.svg           modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
 
-create_note_black_24dp.svg
+note/
+    create_note_black_24dp.svg
 
 lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 
