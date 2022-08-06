@@ -13,10 +13,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         ways with
           (
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
-            or highway = residential and (
-              maxspeed > 30
-              or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
-            )
+            or highway = residential and maxspeed > 33
           )
           and area != yes
           and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})

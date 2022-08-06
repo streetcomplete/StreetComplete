@@ -66,13 +66,7 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            var deleted = false
-            synchronized(questsInView) {
-                added.forEach { questsInView[it.key] = createQuestPins(it) }
-                removed.forEach { if (questsInView.remove(it) != null) deleted = true }
-            }
-            if (added.isNotEmpty() || deleted)
-            updatePins()
+            viewLifecycleScope.launch { updateQuestPins(added, removed) }
         }
 
         override fun onVisibleQuestsInvalidated() {
@@ -103,8 +97,8 @@ class QuestPinsManager(
     }
 
     private fun stop() {
-        clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
+        clear()
         visibleQuestsSource.removeListener(visibleQuestsListener)
         questTypeOrderSource.removeListener(questTypeOrderListener)
     }
@@ -117,7 +111,7 @@ class QuestPinsManager(
     private fun clear() {
         synchronized(questsInView) { questsInView.clear() }
         lastDisplayedRect = null
-        pinsMapComponent.clear()
+        viewLifecycleScope.launch { pinsMapComponent.clear() }
     }
 
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
@@ -141,16 +135,25 @@ class QuestPinsManager(
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
-            synchronized(questsInView) {
-                questsInView.clear()
-                quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            }
-            updatePins()
+            setQuestPins(quests)
         }
     }
 
-    private fun updatePins() {
-        val pins = synchronized(questsInView) { questsInView.values.flatten() }
+    private fun setQuestPins(quests: List<Quest>) {
+        val pins = synchronized(questsInView) {
+            questsInView.clear()
+            quests.forEach { questsInView[it.key] = createQuestPins(it) }
+            questsInView.values.flatten()
+        }
+        pinsMapComponent.set(pins)
+    }
+
+    private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
+        val pins = synchronized(questsInView) {
+            added.forEach { questsInView[it.key] = createQuestPins(it) }
+            removed.forEach { questsInView.remove(it) }
+            questsInView.values.flatten()
+        }
         pinsMapComponent.set(pins)
     }
 

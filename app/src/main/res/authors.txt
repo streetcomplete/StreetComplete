@@ -129,8 +129,8 @@ memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.w
 memorial_type_stele_stone.jpg  CC-BY-SA 4.0      Alta Falisa https://commons.wikimedia.org/wiki/File:18_June_1815_%E2%80%93_Waterloo_%E2%80%93_27th_(Inniskilling)_Regiment_of_Foot,_stele.jpg modified by Matija Nalis to remove wreath
 memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
 
-location_nyan.png              fair use
-car_nyan.png                   fair use
+location_nyan.png              fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
+car_nyan.png                   fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
 
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg

@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import java.util.LinkedList
-
 abstract class BooleanExpression<I : Matcher<T>, T> {
     var parent: Chain<I, T>? = null
         internal set
@@ -10,7 +8,7 @@ abstract class BooleanExpression<I : Matcher<T>, T> {
 }
 
 abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
-    protected val nodes: LinkedList<BooleanExpression<I, T>> = LinkedList()
+    protected val nodes = ArrayList<BooleanExpression<I, T>>()
 
     val children: List<BooleanExpression<I, T>> get() = nodes.toList()
 
@@ -58,7 +56,7 @@ abstract class Chain<I : Matcher<T>, T> : BooleanExpression<I, T>() {
         while (it.hasNext()) {
             val child = it.next() as? Chain ?: continue
             if (child.nodes.size == 1) {
-                replaceChildAt(it, child.nodes.first)
+                replaceChildAt(it, child.nodes.first())
                 it.previous() // = the just replaced node will be checked again
             } else {
                 child.removeEmptyNodes()

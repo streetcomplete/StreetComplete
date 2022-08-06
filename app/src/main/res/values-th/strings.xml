@@ -1499,7 +1499,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopBin_title2">"มีถังขยะรึเปล่า?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopLit_title2">"มีไฟส่องสว่างรึเปล่า"</string>
+    <string name="quest_busStopLit_title2">"ป้ายหยุดนี้มีไฟส่องสว่างรึเปล่า"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"ป้ายมีชื่อว่าอะไร?"</string>
@@ -1574,6 +1574,7 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
     <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
     <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
+    <string name="split_way">"แยกทางเป็นสองส่วน"</string>
     <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
     <string name="quest_memorialType_statue">"อนุสาวรีย์"</string>
     <string name="overlay_none">"ไม่มี"</string>

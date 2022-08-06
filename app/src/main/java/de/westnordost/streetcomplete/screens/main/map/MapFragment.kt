@@ -82,6 +82,7 @@ open class MapFragment :
             if (field == value) return
             if (sceneMapComponent?.isAerialView == true) return
             field = value
+            if (sceneMapComponent?.isAerialView == true) return
 
             val toggle = if (value) "true" else "false"
 

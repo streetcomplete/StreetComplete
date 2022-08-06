@@ -143,11 +143,7 @@ class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<Si
             ways with
               highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-              and (
-                !maxspeed
-                or maxspeed > 8
-                or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
-              )
+              and (!maxspeed or maxspeed > 9)
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
               and (
                 lit = yes

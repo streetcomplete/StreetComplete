@@ -6,7 +6,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    kotlin("plugin.serialization") version "1.5.0"
+    kotlin("plugin.serialization") version "1.7.10"
 }
 
 android {
@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4503
-        versionName = "45.1_ee"
+        versionCode = 4504
+        versionName = "45.2_ee"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -120,9 +120,9 @@ configurations {
 }
 
 dependencies {
-    val kotlinVersion = "1.6.21"
+    val kotlinVersion = "1.7.10"
     val mockitoVersion = "3.12.4"
-    val kotlinxCoroutinesVersion = "1.6.2"
+    val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.0"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")

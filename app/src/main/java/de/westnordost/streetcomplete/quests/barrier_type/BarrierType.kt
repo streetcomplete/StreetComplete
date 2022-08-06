@@ -45,5 +45,8 @@ fun BarrierType.applyTo(tags: Tags) {
             tags["stile"] = "stepover"
             tags["material"] = "stone"
         }
+        else -> {
+            // nothing
+        }
     }
 }

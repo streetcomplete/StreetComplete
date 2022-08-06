@@ -239,13 +239,13 @@ layers:
                     interactive: true
                     color: function() { return feature.color; }
                     width: function() { return feature.width; }
-                    order: 801
+                    order: function() { return 851 + Number(feature.layer); }
                     cap: round
                     join: round
                     outline:
                         color: function() { return feature.strokeColor; }
                         width: 1m
-                        order: 800
+                        order: function() { return 850 + Number(feature.layer); }
         line-left:
             filter: { type: [line], colorLeft: true }
             draw:
@@ -253,7 +253,7 @@ layers:
                     interactive: true
                     color: function() { return feature.colorLeft; }
                     width: function() { return feature.width * 2.0 + 4.0; }
-                    order: 802
+                    order: function() { return 852 + Number(feature.layer); }
                     join: round
         line-right:
             filter: { type: [line], colorRight: true }

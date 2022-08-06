@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.junit.Assert.assertEquals
-import org.junit.Assert.fail
 import org.junit.Test
-import java.text.ParseException
 
-/** Integration test for the filter parser, filter expression and creator, the whole way from parsing
- * the tag filters expression to returning it as a OQL string. More convenient this way since the
- * easiest way to create a filter expressions is to parse it from string.  */
+/** Integration test for the filter parser, filter expression and creator, the whole way from
+ *  parsing the tag filters expression to returning it as a OQL string. More convenient this way
+ *  since the easiest way to create a filter expressions is to parse it from string.  */
 class ElementFiltersParserAndOverpassQueryCreatorTest {
     @Test fun node() {
         check("nodes", "node;")
@@ -24,136 +22,13 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `multiple element types`() {
         check("nodes, ways, relations", "nwr;")
-        check("nodes ,ways", "nw;")
-        check("nodes , ways", "nw;")
-        check("relations , ways", "wr;")
-    }
-
-    @Test fun `any quote`() {
-        check("nodes with 'shop'", "node[shop];")
-        check("nodes with \"shop\"", "node[shop];")
-        check("nodes with \"shoppin'\"", "node['shoppin\''];")
-        check("nodes with '\"shop\"ping'", "node['\"shop\"ping'];")
+        check("nodes, ways", "nw;")
+        check("relations, ways", "wr;")
     }
 
     @Test fun `multiple element types with tag`() {
         check("nodes, ways, relations with shop", "nwr[shop];")
         check("nodes, relations with shop", "node[shop]->.n1;rel[shop]->.r1;(.n1;.r1;);")
-    }
-
-    @Test fun `whitespace in front is okay`() {
-        check("\t\n nodes", "node;")
-    }
-
-    @Test fun `fail if invalid element declaration in front`() {
-        shouldFail("butter")
-    }
-
-    @Test fun `fail if element declaration in front is duplicate`() {
-        shouldFail("nodes, nodes")
-    }
-
-    @Test fun `fail if any element declaration in front is invalid`() {
-        shouldFail("nodes, butter")
-    }
-
-    @Test fun `fail if no whitespace between reserved words`() {
-        shouldFail("nodeswith")
-        shouldFail("nodes withhighway")
-    }
-
-    @Test fun `fail if tag key is like reserved word`() {
-        shouldFail("nodes with with")
-        shouldFail("nodes with or")
-        shouldFail("nodes with and")
-        shouldFail("nodes with older")
-        shouldFail("nodes with with = abc")
-        shouldFail("nodes with or = abc")
-        shouldFail("nodes with and = abc")
-    }
-
-    @Test fun `tag key like reserved word in quotation marks is ok`() {
-        check("nodes with \"with\"", "node[with];")
-        check("nodes with \"with\"=\"with\"", "node[with = with];")
-    }
-
-    @Test fun `tag may start with reserved word`() {
-        check("nodes with withdrawn = with", "node[withdrawn = with];")
-        check("nodes with orchard = or", "node[orchard = or];")
-        check("nodes with android = and", "node[android = and];")
-    }
-
-    @Test fun `tag key with quotation marks is ok`() {
-        check(
-            "nodes with \"highway = residential or bla\"",
-            "node['highway = residential or bla'];"
-        )
-    }
-
-    @Test fun `tag value with quotation marks is ok`() {
-        check(
-            "nodes with highway = \"residential or bla\"",
-            "node[highway = 'residential or bla'];"
-        )
-    }
-
-    @Test fun `tag value garbage`() {
-        check("nodes with highway = §$%&%/??", "node[highway = '§$%&%/??'];")
-    }
-
-    @Test fun `fail if tag key quotation marks not closed`() {
-        shouldFail("nodes with \"highway = residential or bla")
-    }
-
-    @Test fun `fail if tag value quotation marks not closed`() {
-        shouldFail("nodes with highway = \"residential or bla")
-    }
-
-    @Test fun `tag key`() {
-        val expect = "node[highway];"
-
-        check("nodes with highway", expect)
-        check("nodes with(highway)", expect)
-        check("nodes with (highway)", expect)
-        check("nodes with ( highway)", expect)
-        check("nodes with( highway)", expect)
-        check("nodes with(highway )", expect)
-        check("nodes with(highway ) ", expect)
-        check("nodes with(highway) ", expect)
-    }
-
-    @Test fun `fail on dangling operator`() {
-        shouldFail("nodes with highway=")
-    }
-
-    @Test fun `fail on dangling boolean operator`() {
-        shouldFail("nodes with highway and")
-        shouldFail("nodes with highway or ")
-    }
-
-    @Test fun `fail if bracket not closed`() {
-        shouldFail("nodes with (highway")
-    }
-
-    @Test fun `failed if too many brackets closed`() {
-        shouldFail("nodes with highway)")
-    }
-
-    @Test fun `fail on unknown thing after tag`() {
-        shouldFail("nodes with highway what is this")
-    }
-
-    @Test fun `tag negation`() {
-        check("nodes with !highway", "node[!highway];")
-    }
-
-    @Test fun `tag operator whitespaces allowed everywhere`() {
-        val expect = "node[highway = residential];"
-
-        check("nodes with highway=residential", expect)
-        check("nodes with highway =residential", expect)
-        check("nodes with highway= residential", expect)
-        check("nodes with highway = residential", expect)
     }
 
     @Test fun `tag operator`() {
@@ -163,6 +38,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         check("nodes with ~highway~residential", "node[~'^(highway)$' ~ '^(residential)$'];")
         check("nodes with highway!~residential", "node[highway !~ '^(residential)$'];")
         check("nodes with ~highway", "node[~'^(highway)$' ~ '.*'];")
+        check("nodes with !~highway", "node[!~'^(highway)$' ~ '.*'];")
     }
 
     @Test fun `tag value comparison operator`() {
@@ -170,13 +46,6 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         check("nodes with width>=5", "node[width](if:number(t['width']) >= 5);")
         check("nodes with width<5", "node[width](if:number(t['width']) < 5);")
         check("nodes with width<=5", "node[width](if:number(t['width']) <= 5);")
-    }
-
-    @Test fun `fail if neither a number nor a date is used for comparison`() {
-        shouldFail("nodes with width > x")
-        shouldFail("nodes with width >=x ")
-        shouldFail("nodes with width < x")
-        shouldFail("nodes with width <=x")
     }
 
     @Test fun `tag date comparison operator`() {
@@ -203,6 +72,7 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
         val date = dateDaysAgo(14f).toCheckDateString()
         check("nodes with older today -14 days", "node(if: date(timestamp()) < date('$date'));")
     }
+
     @Test fun `element newer x days`() {
         val date = dateDaysAgo(-14f).toCheckDateString()
         check("nodes with newer today + 14 days", "node(if: date(timestamp()) > date('$date'));")
@@ -232,13 +102,6 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
                 "date(t['surface:last_checked']) > date('$date') ||" +
                 "date(t['last_checked:surface']) > date('$date')" +
                 ");")
-    }
-
-    @Test fun `tag negation not combinable with operator`() {
-        shouldFail("nodes with !highway=residential")
-        shouldFail("nodes with !highway!=residential")
-        shouldFail("nodes with !highway~residential")
-        shouldFail("nodes with !highway!~residential")
     }
 
     @Test fun and() {
@@ -381,14 +244,6 @@ class ElementFiltersParserAndOverpassQueryCreatorTest {
             node.n1[highway];
             """
         )
-    }
-
-    private fun shouldFail(input: String) {
-        try {
-            input.toElementFilterExpression()
-            fail()
-        } catch (ignore: ParseException) {
-        }
     }
 
     private fun check(input: String, output: String) {

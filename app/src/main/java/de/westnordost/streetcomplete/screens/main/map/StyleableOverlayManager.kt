@@ -54,7 +54,7 @@ class StyleableOverlayManager(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            updateStyledElements(updated, deleted)
+            viewLifecycleScope.launch { updateStyledElements(updated, deleted) }
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
@@ -90,15 +90,9 @@ class StyleableOverlayManager(
     }
 
     private fun hide() {
-        clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
+        clear()
         mapDataSource.removeListener(mapDataListener)
-    }
-
-    private fun clear() {
-        synchronized(mapDataInView) { mapDataInView.clear() }
-        lastDisplayedRect = null
-        mapComponent.clear()
     }
 
     fun onNewScreenPosition() {
@@ -121,6 +115,12 @@ class StyleableOverlayManager(
             val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
             setStyledElements(mapData)
         }
+    }
+
+    private fun clear() {
+        synchronized(mapDataInView) { mapDataInView.clear() }
+        lastDisplayedRect = null
+        viewLifecycleScope.launch { mapComponent.clear() }
     }
 
     private fun setStyledElements(mapData: MapDataWithGeometry) {
