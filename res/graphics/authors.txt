@@ -37,6 +37,7 @@ app icon/
     appicon_fancy.svg           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_flat.svg            https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_fancy-debug.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
+    appicon_fancy-rect.svg      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_flat-debug.svg      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
@@ -138,6 +139,9 @@ building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
+charging station capacity/
+    electric_car.svg            parts taken from Twemoji: U+1F698 and U+1F50C
+
 cycleway/
     bus_lane.svg
     bus_lane_l.svg
@@ -202,7 +206,7 @@ living street/
     default.svg                                      Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     australia.svg                                    Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     france.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
-    portrait.svg                                     Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
+    russia.svg                                       Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
     sadc.svg                                         Tobias Zwick CC-BY-SA 4.0 (based on public domain traffic sign design)
 
 max height/
@@ -222,6 +226,8 @@ max weight/
 pins/
     bicycle_parking.svg
     bicycle_pump.svg
+    bicycle_rental.svg
+    bin.svg                         Flo Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
     bench.svg
     car_air_compressor.svg
     car_charger.svg                 parts taken from Twemoji: U+1F698 and U+1F50C
@@ -237,6 +243,7 @@ pins/
     recycling_container.svg         modified from Twemoji: U+267B
     surveillance_camera.svg
     toilets.svg
+    water.svg                       Flo Edelmann, parts from https://www.svgrepo.com/svg/24753/drop (License: CC0 1.0)
 
 italian police type/
     carabinieri.svg                 modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_carabinieri.svg, Gigillo83, License: CC-BY-SA 3.0
@@ -257,11 +264,13 @@ quest/
     bench_public_transport.svg
     bicycle.svg
     bicycle_parking.svg
+    bicycle_parking_access.svg       Flo Edelmann merged bicycle_parking.svg by Tobias Zwick (CC-BY-SA 4.0) with parking_access.svg made by Tobias Zwick with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     bicycle_parking_capacity.svg
     bicycle_parking_cover.svg
     bicycle_parking_fee.svg          Flo Edelmann merged bicycle_parking.svg and fee.svg, both made by Tobias Zwick (CC-BY-SA 4.0)
     bicycle_pump.svg
     bicycle_rental.svg
+    bicycle_rental_capacity.svg      Flo Edelmann edited bicycle_rental.svg made by Tobias Zwick (CC-BY-SA 4.0)
     bicycle_repair.svg
     bicycle_second_hand.svg
     bicycleway.svg
@@ -307,7 +316,6 @@ quest/
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
     fuel.svg
-    guidepost.svg
     housenumber.svg
     housenumber_street.svg
     information.svg
@@ -352,6 +360,7 @@ quest/
     pedestrian_crossing.svg
     pedestrian_crossing_island.svg   2020 Kai Michael Poppe and Tobias Zwick
     phone.svg
+    picnic_table_cover.svg           Flo Edelmann (CC0)
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg
@@ -500,7 +509,7 @@ royal cypher/
     EVIIR.svg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)
     GR.svg                                  http://www.bechler.free-online.co.uk/gc/RoyalCyphers2.jpg (adapted)
     GVIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_George_VI_of_Great_Britain.svg (adapted)
-    Scottish Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
+    Scottish_Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
     VR.svg                Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
 
 sidewalk/
@@ -557,7 +566,7 @@ sport/
     sepak_takraw.svg
     shooting.svg                     modified from Twemoji: U+1F52B
     skateboard.svg
-    skating.svg
+    roller_skating.svg
     soccer.svg                       EmojiOne 2: U+26BD
     softball.svg
     squash.svg                       modified from EmojiOne 2: U+1F3F8
@@ -568,7 +577,6 @@ sport/
 steps incline/
     up.svg
     up_reversed.svg
-    unknown.svg
 
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
@@ -596,13 +604,16 @@ tutorial/
     logo_osm_map_lighting.svg           modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
 
-create_note_black_24dp.svg
+note/
+    create_note_black_24dp.svg
 
 lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 
 mail.svg
 
 osm_anon_avatar.svg
+
+overlay.svg
 
 ../../app/src/test/resources/
     hai_phong_street.jpg

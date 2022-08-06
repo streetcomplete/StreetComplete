@@ -13,8 +13,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          (name or brand)
-          and access !~ no|private
+          access !~ no|private
           and !wheelchair
           and (
             shop and shop !~ no|vacant

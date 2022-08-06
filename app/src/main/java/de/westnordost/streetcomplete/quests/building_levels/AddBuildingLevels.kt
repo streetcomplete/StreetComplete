@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
@@ -32,11 +33,3 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
         answer.roofLevels?.let { tags["roof:levels"] = it.toString() }
     }
 }
-
-private val BUILDINGS_WITH_LEVELS = arrayOf(
-    "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
-    "semidetached_house", "bungalow", "school", "civic", "college", "university", "public",
-    "hospital", "kindergarten", "transportation", "train_station", "hotel", "retail",
-    "commercial", "office", "manufacture", "parking", "farm", "farm_auxiliary",
-    "cabin"
-)

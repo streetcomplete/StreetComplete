@@ -27,7 +27,7 @@ fun String.withOptionalUnitToDoubleOrNull(): Double? {
 private val feetInchRegex = Regex("([0-9]+)\\s*(?:'|ft)\\s*([0-9]+)\\s*(?:\"|in)")
 private val withUnitRegex = Regex("([0-9]+|[0-9]*\\.[0-9]+)\\s*([a-z/'\"]+)")
 
-private fun toStandardUnitsFactor(unit: String): Double? = when(unit) {
+private fun toStandardUnitsFactor(unit: String): Double? = when (unit) {
     // speed: to kilometers per hour
     "km/h", "kph" -> 1.0
     "mph" -> 1.609344

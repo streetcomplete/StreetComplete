@@ -556,8 +556,8 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_cars">"För bilar"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"tak för en bil"</string>
-    <string name="quest_buildingType_garage">"Garage för en bil"</string>
-    <string name="quest_buildingType_garages">"Flera garage"</string>
+    <string name="quest_buildingType_garage">"Garage"</string>
+    <string name="quest_buildingType_garages">"Garagelänga"</string>
     <string name="quest_buildingType_parking">"Parkeringshus"</string>
     <string name="quest_buildingType_farm">"På en bondgård"</string>
     <string name="quest_buildingType_farmhouse">"Manbyggnad"</string>

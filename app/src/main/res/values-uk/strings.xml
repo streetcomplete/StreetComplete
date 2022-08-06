@@ -1481,7 +1481,12 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Вхід до магазину"</string>
     <string name="quest_building_entrance_yes">"Інший тип входу"</string>
     <string name="quest_building_entrance_dead_end">"Глухий кут, входу немає"</string>
+    <string name="action_overlays">"Накладні шари"</string>
     <string name="quest_memorialType_sculpture">"Інша скульптура"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Виберіть накладний шар"</string>
+    <string name="overlay_none">"Без шарів"</string>
     <string name="overlay_lit">"Вуличне освітлення"</string>
     <string name="lit_value_yes">"Освітлено"</string>
     <string name="lit_value_no">"Неосвітлено"</string>

@@ -35,7 +35,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
-            if(element.tags["layer"] in listOf("-5", "-4", "-3", "-2", "-1", "1", "2", "3", "4", "5")) {
+            if (element.tags["layer"] in listOf("-5", "-4", "-3", "-2", "-1", "1", "2", "3", "4", "5")) {
                 props["layer"] = element.tags["layer"]!!
             } else {
                 props["layer"] = "0"

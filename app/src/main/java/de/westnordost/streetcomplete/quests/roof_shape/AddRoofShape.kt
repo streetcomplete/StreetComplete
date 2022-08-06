@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
+import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 import java.util.concurrent.FutureTask
 
@@ -18,10 +19,13 @@ class AddRoofShape(
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
-        ways, relations with (building:levels or roof:levels)
+        ways, relations with
+          ((building:levels or roof:levels) or (building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}))
           and !roof:shape and !3dr:type and !3dr:roof
           and building
           and building !~ no|construction
+          and location != underground
+          and ruins != yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify roof shapes"
@@ -37,9 +41,9 @@ class AddRoofShape(
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
             filter.matches(element) && (
-                element.tags["roof:levels"]?.toFloatOrNull() ?: 0f > 0f
-                || roofsAreUsuallyFlatAt(element, mapData) == false
-            )
+                (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) > 0f
+                    || roofsAreUsuallyFlatAt(element, mapData) == false
+                )
         }
 
     override fun isApplicableTo(element: Element): Boolean? {
@@ -47,7 +51,7 @@ class AddRoofShape(
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether
            the element is in a certain country cannot be ascertained without the element's geometry */
-        if (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f == 0f) return null
+        if ((element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) == 0f) return null
         return true
     }
 
