@@ -577,7 +577,6 @@ sport/
 steps incline/
     up.svg
     up_reversed.svg
-    unknown.svg
 
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
