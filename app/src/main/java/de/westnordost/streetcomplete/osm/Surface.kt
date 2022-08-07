@@ -1,10 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-import android.util.Log
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.surface.asItem
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.Item
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
@@ -41,6 +37,7 @@ enum class Surface(val osmValue: String) {
         val surfaceReplacements: Map<String, String?> = mapOf(
             // that is intended for presentation of data
             // not for automatic bot replacements
+            // what about mud and metal_grid? Maybe start supporting as a full blown value TODO
             "cobblestone" to null,
             "earth" to "dirt",
             "paving_stones:30" to "paving_stones",
@@ -53,15 +50,44 @@ enum class Surface(val osmValue: String) {
     }
 }
 
-fun createSurfaceStatus(tags: Map<String, String>): Surface? {
-    if ("surface" !in tags) {
-        return null
+sealed class SurfaceInfo
+
+data class SingleSurface(val surface: Surface) : SurfaceInfo()
+data class CyclewayFootwaySurfaces(val main: Surface?, val cycleway: Surface?, val footway: Surface?) : SurfaceInfo()
+class SurfaceMissing : SurfaceInfo()
+
+fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
+    val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
+    val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
+    val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
+    if (cyclewaySurface != null || footwaySurface != null ) {
+        return CyclewayFootwaySurfaces(surface, cyclewaySurface, footwaySurface)
     }
-    var surface = tags["surface"]
-    if(surface in Surface.surfaceReplacements) {
-        surface = Surface.surfaceReplacements[surface]
+    if (surface != null) {
+        return SingleSurface(surface)
     }
-    return Surface.values().find { it.osmValue == surface }
+    return SurfaceMissing()
+}
+
+fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
+    var surfaceValue = providedSurfaceValue
+    if (surfaceValue in Surface.surfaceReplacements) {
+        surfaceValue = Surface.surfaceReplacements[surfaceValue]
+    }
+    return Surface.values().find { it.osmValue == surfaceValue }
+}
+
+fun commonSurfaceDescription(surfaceA: String, surfaceB: String): String? {
+    if (surfaceA == surfaceB) {
+        return surfaceA
+    }
+    if (surfaceA in ANYTHING_PAVED && surfaceB in ANYTHING_PAVED) {
+        return "paved"
+    }
+    if (surfaceA in ANYTHING_UNPAVED && surfaceB in ANYTHING_UNPAVED) {
+        return "unpaved"
+    }
+    return null
 }
 
 val ANYTHING_UNPAVED = setOf(
