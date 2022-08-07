@@ -36,7 +36,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     override fun createForm() = AddSeatingForm()
 
     override fun applyAnswerTo(answer: Seating, tags: Tags, timestampEdited: Long) {
-        if (answer == Seating.NO) tags["takeaway"] = "only"
+        if (answer == Seating.TAKEAWAY_ONLY) tags["takeaway"] = "only"
         tags["outdoor_seating"] = answer.hasOutdoorSeating.toYesNo()
         tags["indoor_seating"] = answer.hasIndoorSeating.toYesNo()
     }

@@ -237,5 +237,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="export_warning_db_version">Warning: database version unknown, import may not work</string>
     <string name="quest_lanes_answer_noLanes_known_count">No markings, obvious lane count</string>
     <string name="quick_switch_map_background">Toggle aerial / map background</string>
+    <string name="quest_seating_no">No seating, but not takeout only</string>
 
 </resources>
