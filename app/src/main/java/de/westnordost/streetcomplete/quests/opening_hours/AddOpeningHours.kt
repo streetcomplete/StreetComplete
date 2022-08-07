@@ -169,6 +169,7 @@ class AddOpeningHours(
             tags.updateWithCheckDate("opening_hours", openingHoursString)
             if (tags["opening_hours:signed"] == "no") {
                 tags.remove("opening_hours:signed")
+                tags.remove("check_date:opening_hours:signed")
             }
         }
     }
