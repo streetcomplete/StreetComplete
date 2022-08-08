@@ -24,10 +24,10 @@ class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
     """
 
     override val changesetComment = "Specify whether bicycle shops offer repairs"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val wikiLink = "Key:service:bicycle:repair"
     override val icon = R.drawable.ic_quest_bicycle_repair
     override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_shop_repair_title
 
