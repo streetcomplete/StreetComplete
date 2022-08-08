@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
@@ -130,23 +131,30 @@ class QuestPinsManager(
         // area too big -> skip (performance)
         if (tilesRect.size > 16) return
         if (lastDisplayedRect?.contains(tilesRect) != true) {
+            // only load tiles we don't already have
+            val oldTiles = lastDisplayedRect?.asTilePosSequence()?.toList()
+            val requiredTilesRect = tilesRect.asTilePosSequence().filterNot { oldTiles?.contains(it) == true }.toList().minTileRect()
             lastDisplayedRect = tilesRect
-            onNewTilesRect(tilesRect)
+            onNewTilesRect(requiredTilesRect ?: tilesRect)
         }
     }
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         viewLifecycleScope.launch {
-            val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
-            setQuestPins(quests)
+            val newQuests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
+            setQuestPins(newQuests)
         }
     }
 
-    private fun setQuestPins(quests: List<Quest>) {
+    private fun setQuestPins(newQuests: List<Quest>) {
+        val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         pinsToSet = synchronized(questsInView) {
-            questsInView.clear()
-            quests.forEach { questsInView[it.key] = createQuestPins(it) }
+            // remove only quests without visible pins, because
+            //  now newQuests are only quests we might not have had in questsInView
+            //  we don't want to remove quests for long ways only because the center is not visible
+            questsInView.values.removeAll { pins -> pins.none { bbox?.contains(it.position) != false } }
+            newQuests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
         setPins()
