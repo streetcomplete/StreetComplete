@@ -17,6 +17,16 @@ class ElementEditsController(
 
     private val listeners: MutableList<ElementEditsSource.Listener> = CopyOnWriteArrayList()
 
+    // todo: trimmer (though the cache will be small, and will fill up again quickly, so trim / clear might not be necessary)
+    private val editCache = HashSet<ElementEdit>()
+
+    // full elementIdProvider cache didn't work as expected, so only store empty idPoviders (resp. their ids)
+    // this is still very useful, because
+    //  most are actually empty (edit tags action)
+    //  on rebuildLocalChanges idProviders of all edits are queried, so the cache saves many db queries
+    //    each query is fast, but for many unsynced edits this is a clear improvement
+    private val emptyIdProviderCache = HashSet<Long>()
+
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
     /** Add new unsynced edit to the to-be-uploaded queue */
@@ -31,19 +41,25 @@ class ElementEditsController(
     }
 
     fun get(id: Long): ElementEdit? =
-        editsDB.get(id)
+        getAll().firstOrNull { it.id == id }
 
-    fun getAll(): List<ElementEdit> =
-        editsDB.getAll()
+    fun getAll(): List<ElementEdit> = synchronized(editCache) {
+        if (editCache.isEmpty()) editCache.addAll(editsDB.getAll())
+        return editCache.toList()
+    }
 
     fun getAllUnsynced(): List<ElementEdit> =
-        editsDB.getAllUnsynced()
+        getAll().filterNot { it.isSynced }
 
     fun getOldestUnsynced(): ElementEdit? =
-        editsDB.getOldestUnsynced()
+        getAllUnsynced().minByOrNull { it.createdTimestamp }
 
-    fun getIdProvider(id: Long): ElementIdProvider =
-        elementIdProviderDB.get(id)
+    fun getIdProvider(id: Long): ElementIdProvider = synchronized(emptyIdProviderCache) {
+        if (emptyIdProviderCache.contains(id)) return ElementIdProvider(emptyList())
+        val p = elementIdProviderDB.get(id)
+        if (p.isEmpty()) emptyIdProviderCache.add(id)
+        return p
+    }
 
     /** Delete old synced (aka uploaded) edits older than the given timestamp. Used to clear
      *  the undo history */
@@ -60,10 +76,10 @@ class ElementEditsController(
     }
 
     override fun getUnsyncedCount(): Int =
-        editsDB.getUnsyncedCount()
+        getAllUnsynced().size
 
     override fun getPositiveUnsyncedCount(): Int {
-        val unsynced = editsDB.getAllUnsynced().map { it.action }
+        val unsynced = getAllUnsynced().map { it.action }
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
@@ -79,6 +95,7 @@ class ElementEditsController(
 
         /* must be deleted after the callback because the callback might want to get the id provider
            for that edit */
+        synchronized(emptyIdProviderCache) { emptyIdProviderCache.remove(edit.id) }
         elementIdProviderDB.delete(edit.id)
     }
 
@@ -140,14 +157,20 @@ class ElementEditsController(
 
         /* must be deleted after the callback because the callback might want to get the id provider
            for that edit */
+        synchronized(emptyIdProviderCache) { ids.forEach { emptyIdProviderCache.remove(it) } }
         elementIdProviderDB.deleteAll(ids)
     }
 
     private fun getEditsBasedOnElementsCreatedByEdit(edit: ElementEdit): List<ElementEdit> {
         val result = mutableListOf<ElementEdit>()
-
-        val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
-        val editsBasedOnThese = createdElementKeys.flatMap { editsDB.getByElement(it.type, it.id) }
+        val createdElementKeys = getIdProvider(edit.id).getAll()
+        val editsBasedOnThese = synchronized(editCache) { // synchronized so there is no need to acquire a lock for each "getAll"
+            createdElementKeys.flatMap {
+                // copy of db ordering behavior: first synced, then unsynced, and each part sorted by timestamp
+                getAll().filter { edit -> edit.elementId == it.id && edit.elementType == it.type }
+                    .sortedBy { it.createdTimestamp }.sortedBy { it.isSynced }
+            }
+        }
         for (e in editsBasedOnThese) {
             result += getEditsBasedOnElementsCreatedByEdit(e)
         }
@@ -168,14 +191,20 @@ class ElementEditsController(
 
     private fun onAddedEdit(edit: ElementEdit) {
         lastEditTimeStore.touch()
+        synchronized(editCache) { editCache.add(edit) }
         listeners.forEach { it.onAddedEdit(edit) }
     }
 
     private fun onSyncedEdit(edit: ElementEdit) {
+        synchronized(editCache) {
+            editCache.add(edit.copy(isSynced = true))
+            editCache.remove(edit)
+        }
         listeners.forEach { it.onSyncedEdit(edit) }
     }
 
     private fun onDeletedEdits(edits: List<ElementEdit>) {
+        synchronized(editCache) { editCache.removeAll(edits) }
         listeners.forEach { it.onDeletedEdits(edits) }
     }
 }

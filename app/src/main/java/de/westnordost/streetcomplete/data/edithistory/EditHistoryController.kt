@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import java.lang.System.currentTimeMillis
+import java.util.TreeSet
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
@@ -53,6 +54,11 @@ class EditHistoryController(
         override fun onUnhidAll() { onInvalidated() }
     }
 
+    // todo: trimmer (though the cache will be small, and will fill up again quickly, so trim / clear might not be necessary)
+    private val cache = TreeSet<Edit> { t, t2 ->
+        t2.createdTimestamp.compareTo(t.createdTimestamp)
+    }
+
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
@@ -75,19 +81,16 @@ class EditHistoryController(
         elementEditsController.deleteSyncedOlderThan(timestamp) +
         noteEditsController.deleteSyncedOlderThan(timestamp)
 
-    override fun get(key: EditKey): Edit? = when (key) {
-        is ElementEditKey -> elementEditsController.get(key.id)
-        is NoteEditKey -> noteEditsController.get(key.id)
-        is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
-        is OsmQuestHiddenKey -> osmQuestController.getHidden(key.osmQuestKey)
-    }
+    override fun get(key: EditKey): Edit? = getAll().firstOrNull { it.key == key }
 
     override fun getMostRecentUndoable(): Edit? =
         // this could be optimized later by not querying all. Though, the amount that is queried
         // from database should never be that big anyway...
         getAll().firstOrNull { it.isUndoable }
 
-    override fun getAll(): List<Edit> {
+    override fun getAll(): List<Edit> = synchronized(cache) {
+        if (cache.isNotEmpty()) return cache.toList() // TreeSet is already sorted!
+
         val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
 
         val result = ArrayList<Edit>()
@@ -95,14 +98,14 @@ class EditHistoryController(
         result += noteEditsController.getAll()
         result += noteQuestController.getAllHiddenNewerThan(maxAge)
         result += osmQuestController.getAllHiddenNewerThan(maxAge)
+        cache.addAll(result)
 
-        result.sortByDescending { it.createdTimestamp }
-        return result
+        return cache.toList()
     }
 
     override fun getCount(): Int =
         // could be optimized later too...
-        getAll().size
+        cache.size
 
     override fun addListener(listener: EditHistorySource.Listener) {
         listeners.add(listener)
@@ -112,15 +115,23 @@ class EditHistoryController(
     }
 
     private fun onAdded(edit: Edit) {
+        synchronized(cache) { cache.add(edit) }
         listeners.forEach { it.onAdded(edit) }
     }
     private fun onSynced(edit: Edit) {
+        synchronized(cache) {
+            if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
+            if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
+            cache.remove(edit) // can't be called for (un)hiding, so no need to care about it
+        }
         listeners.forEach { it.onSynced(edit) }
     }
     private fun onDeleted(edits: List<Edit>) {
+        synchronized(cache) { cache.removeAll(edits) }
         listeners.forEach { it.onDeleted(edits) }
     }
     private fun onInvalidated() {
+        synchronized(cache) { cache.clear() }
         listeners.forEach { it.onInvalidated() }
     }
 }

@@ -6,6 +6,7 @@ v45.2_ee: |
   <li>Add "no seating, but not takeaway only" answer for seating quest</li>
   <li>Improve performance when setting / updating quest pins</li>
   <li>Keep showing quests for long ways as long as at least one quest pin is visible</li>
+  <li>Add caches for edits, improves performance in edit history and when uploading</li>
   </ul>
 
 v45.1_ee: |
