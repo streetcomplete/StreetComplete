@@ -1,13 +1,12 @@
-{ pkgs ? import <nixpkgs> { config.android_sdk.accept_license = true; } }:
+{ pkgs, androidSdk }:
 
-let androidSdk = pkgs.androidenv.androidPkgs_9_0.androidsdk;
-in pkgs.mkShell {
+pkgs.mkShell {
   buildInputs = with pkgs; [
     android-udev-rules
     androidenv.androidPkgs_9_0.platform-tools
+    androidSdk
     kotlin
     gradle
   ];
-  GRADLE_OPTS =
-    "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidSdk}/libexec/android-sdk/build-tools/28.0.3/aapt2";
+  ANDROID_HOME = "${androidSdk}/share/android-sdk";
 }
