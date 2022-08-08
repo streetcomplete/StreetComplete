@@ -73,6 +73,7 @@ internal class SpatialCacheTest {
         cache.update(updatedOrAdded = listOf(movedNode))
         assertEquals(cache.get(node.id), movedNode)
         assertEquals(cache.get(movedNodeTile.asBoundingBox(16)), listOf(movedNode))
+        assertEquals(emptyList<Node>(), cache.get(nodeTile.asBoundingBox(16)))
     }
 
     @Test fun `get fetches data that is not in cache`() {
