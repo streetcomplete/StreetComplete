@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
 open class TestQuestType : OsmElementQuestType<String> {
