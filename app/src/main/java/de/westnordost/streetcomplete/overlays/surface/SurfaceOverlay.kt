@@ -52,7 +52,7 @@ class SurfaceOverlay : Overlay {
 
     private val parentQuest = AddRoadSurface()
     override val title = R.string.overlay_surface
-    override val icon = parentQuest.icon
+    override val icon = parentQuest.icon // use some icon which has mix of colours in background? TODO
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink
     override val achievements = parentQuest.achievements
@@ -62,7 +62,7 @@ class SurfaceOverlay : Overlay {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
         return mapData
            .filter( """ways, relations with
-               surface or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+               (surface and highway != construction) or leisure ~ pitch|playground or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
                and !surface:note and !note:surface
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
@@ -120,7 +120,7 @@ private fun getStyle(element: Element): Style {
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element))
+    val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
     val label = element.tags[keyOfDominatingSurface]
     return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
