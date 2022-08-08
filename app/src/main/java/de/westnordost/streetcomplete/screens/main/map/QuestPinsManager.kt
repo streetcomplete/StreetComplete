@@ -52,6 +52,10 @@ class QuestPinsManager(
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
     var reversedOrder = false
         private set
+    // list of pins to set, stored in a var as an attempt to avoid setting outdated pins
+    // is volatile actually helping here?
+    @Volatile private var pinsToSet = emptyList<Pin>()
+
 
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
@@ -61,8 +65,7 @@ class QuestPinsManager(
         set(value) {
             if (field == value) return
             field = value
-            if (value) start() else stop()
-        }
+            if (value) start() else stop() }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
@@ -140,21 +143,29 @@ class QuestPinsManager(
     }
 
     private fun setQuestPins(quests: List<Quest>) {
-        val pins = synchronized(questsInView) {
+        pinsToSet = synchronized(questsInView) {
             questsInView.clear()
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
-        pinsMapComponent.set(pins)
+        setPins()
     }
 
     private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val pins = synchronized(questsInView) {
+        pinsToSet = synchronized(questsInView) {
             added.forEach { questsInView[it.key] = createQuestPins(it) }
             removed.forEach { questsInView.remove(it) }
             questsInView.values.flatten()
         }
-        pinsMapComponent.set(pins)
+        setPins()
+    }
+
+    private fun setPins() {
+        val pins = pinsToSet // copy list for later comparison
+        synchronized(pinsMapComponent) { // waiting may take considerable time
+            if (pins !== pinsToSet) return // list of pins was changed while waiting for synchronized
+            pinsMapComponent.set(pins)
+        }
     }
 
     fun reverseQuestOrder() {
