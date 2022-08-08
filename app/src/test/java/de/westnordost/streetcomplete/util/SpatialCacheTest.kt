@@ -67,12 +67,12 @@ internal class SpatialCacheTest {
         )
         cache.get(nodeTile.asBoundingBox(16))
         cache.update(updatedOrAdded = listOf(node))
-        assertEquals(cache.get(node.id), node)
+        assertEquals(node, cache.get(node.id))
 
-        assertEquals(cache.get(movedNodeTile.asBoundingBox(16)), emptyList<Node>())
+        assertEquals(emptyList<Node>(), cache.get(movedNodeTile.asBoundingBox(16)), )
         cache.update(updatedOrAdded = listOf(movedNode))
-        assertEquals(cache.get(node.id), movedNode)
-        assertEquals(cache.get(movedNodeTile.asBoundingBox(16)), listOf(movedNode))
+        assertEquals(movedNode, cache.get(node.id))
+        assertEquals(listOf(movedNode), cache.get(movedNodeTile.asBoundingBox(16)))
         assertEquals(emptyList<Node>(), cache.get(nodeTile.asBoundingBox(16)))
     }
 
@@ -85,7 +85,7 @@ internal class SpatialCacheTest {
         val cache = SpatialCache<Long, Node>(
             16, 4, null, { nodeDB.getAll(it) }, Node::id, Node::position
         )
-        assertEquals(cache.get(LatLon(1.0, 1.0).enclosingBoundingBox(0.0)), listOf(node))
+        assertEquals(listOf(node), cache.get(LatLon(1.0, 1.0).enclosingBoundingBox(0.0)))
         verify(nodeDB).getAll(nodeBBox)
     }
 
@@ -126,8 +126,8 @@ internal class SpatialCacheTest {
         val tileList = fullBBox.enclosingTilesRect(16).asTilePosSequence().toList()
         val topHalf = tileList.subList(0, 2) // top/bottom relies on the order in TilesRect.asTilePosSequence
         val bottomHalf = tileList.subList(2, 4)
-        assertEquals(topHalf.size, 2) // subList with exclusive indexTo is a bit counter-intuitive
-        assertEquals(bottomHalf.size, 2)
+        assertEquals(2, topHalf.size) // subList with exclusive indexTo is a bit counter-intuitive
+        assertEquals(2, bottomHalf.size)
 
         val nodeDB: NodeDao = mock()
         on(nodeDB.getAll(any<BoundingBox>())).thenReturn(listOf())
@@ -197,7 +197,7 @@ internal class SpatialCacheTest {
         cache.replaceAllInBBox(emptyList(), LatLon(0.0, 0.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(1.0, 1.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(-1.0, -1.0).enclosingTilePos(16).asBoundingBox(16))
-        assertEquals(cache.getTiles().size, 2)
+        assertEquals(2, cache.getTiles().size)
     }
 
 }
