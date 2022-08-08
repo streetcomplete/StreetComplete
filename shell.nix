@@ -5,6 +5,8 @@ in pkgs.mkShell {
   buildInputs = with pkgs; [
     android-udev-rules
     androidenv.androidPkgs_9_0.platform-tools
+    kotlin
+    gradle
   ];
   GRADLE_OPTS =
     "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidSdk}/libexec/android-sdk/build-tools/28.0.3/aapt2";
