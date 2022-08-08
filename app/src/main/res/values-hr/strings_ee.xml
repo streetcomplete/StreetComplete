@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_category_mods">"Izmjene"</string>
+    <string name="pref_3d_buildings_title">"Prikaži 3D zgrade"</string>
+    <string name="pref_auto_download_title">"Automatsko preuzimanje"</string>
+    <string name="copy_preset_new">"Nemoj kopirati"</string>
+    <string name="quest_osmose_settings_enable">"Omogući preuzimanja"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_osmose_settings_disable">"Zabrani preuzimanja (default)"</string>
+    <string name="pref_select_first_edit_summary">"Omogućuje brže poništavanje, ali automatski pomiče kameru"</string>
+    <string name="pref_delete_old_data_after">"Izbriši stare podatke nakon"</string>
+    <string name="pref_delete_old_data_after_summary">"%d dana"</string>
+    <string name="quest_way_private">"To je privatno"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_metal_grid">"Metalna rešetka"</string>
+    <string name="quest_smoothness_generic_surface_yes">"Sve površine"</string>
+    <string name="pref_recent_answers_first_min_lines">"Premjesti nedavne odgovore na početak"</string>
+    <string name="show_nearby_quests_disable">"Ne prikazuj zadatke u blizini"</string>
+
+    <!-- Fuzzy -->
+    <string name="show_nearby_quests_visible">"Prikaži samo omogućene vrste zadataka"</string>
+    <string name="show_nearby_quests_all_types">"Prikaži sve vrste zadataka"</string>
+    <string name="show_nearby_quests_even_hidden">"Prikaži sve vrste zadataka i skrivene zadatke"</string>
+    <string name="quest_benchMaterial_title">"Od čega je ovo napravljeno?"</string>
+    <string name="quest_benchMaterial_wood">"Drvo"</string>
+    <string name="quest_benchMaterial_metal">"Metal"</string>
+    <string name="quest_benchMaterial_plastic">"Plastika"</string>
+    <string name="quest_benchMaterial_concrete">"Beton"</string>
+    <string name="quest_benchMaterial_stone">"Kamen"</string>
+    <string name="quest_benchMaterial_brick">"Cigle"</string>
+</resources>
