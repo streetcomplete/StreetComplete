@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -398,7 +399,12 @@ class MapDataWithEditsSource internal constructor(
             val key = ElementKey(element.type, element.id)
             deletedElements.remove(key)
             updatedElements[key] = element
-            updatedGeometries[key] = createGeometry(element)
+            updatedGeometries[key] = if (element !is Node && edit.action is UpdateElementTagsAction && updates.size == 1)
+                    // fetch geometry if only tags were updated (size == 1 should always be true, but better be safe)
+                    // but don't fetch if it's a node, because fetching usually isn't faster than creating, unless we have a node geometry cache
+                    getGeometry(element.type, element.id)
+                else
+                    createGeometry(element)
         }
         return MapDataUpdates(updated = updates, deleted = deletedKeys)
     }
