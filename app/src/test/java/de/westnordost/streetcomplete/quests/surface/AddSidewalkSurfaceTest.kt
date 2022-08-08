@@ -10,6 +10,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
+import de.westnordost.streetcomplete.osm.Surface
 
 class AddSidewalkSurfaceTest {
     private val questType = AddSidewalkSurface()
