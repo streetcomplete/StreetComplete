@@ -13,19 +13,22 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.android_sdk.accept_license = true;
+        config = {
+          allowUnfree = true;
+          android_sdk.accept_license = true;
+        };
       };
-      androidSdk = android-nixpkgs.sdk (sdkPkgs:
+      androidSdk = android-nixpkgs.sdk.${system} (sdkPkgs:
         with sdkPkgs; [
           cmdline-tools-latest
-          build-tools-32-0-0
+          build-tools-30-0-3
           platform-tools
           platforms-android-31
           emulator
         ]);
     in {
       checks = { };
-      devShell."${system}" = import ./shell.nix {
+      devShell.${system} = import ./shell.nix {
         inherit pkgs;
         inherit androidSdk;
       };

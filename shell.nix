@@ -3,10 +3,12 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     android-udev-rules
-    androidenv.androidPkgs_9_0.platform-tools
     androidSdk
     kotlin
     gradle
+    jdk11
   ];
   ANDROID_HOME = "${androidSdk}/share/android-sdk";
+  ANDROID_SDK_ROOT = "${androidSdk}/share/android-sdk";
+  JAVA_HOME = pkgs.jdk11.home;
 }
