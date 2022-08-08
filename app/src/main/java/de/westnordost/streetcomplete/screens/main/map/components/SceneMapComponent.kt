@@ -29,10 +29,6 @@ class SceneMapComponent(
         set(value) {
             field = value
             aerialViewChanged = true
-            if (value) {
-                // remove keys referring to layers that don't exist in aerial view
-                sceneUpdates.keys.removeAll { it.startsWith("layers.buildings") }
-            }
         }
     private var aerialViewChanged: Boolean = false
 
@@ -67,7 +63,10 @@ class SceneMapComponent(
     }
 
     private fun getAllSceneUpdates(): List<SceneUpdate> =
-        getBaseSceneUpdates() + sceneUpdates.map { SceneUpdate(it.key, it.value) }
+        getBaseSceneUpdates() + sceneUpdates.mapNotNull {
+            if (isAerialView && it.key.startsWith("layers.buildings")) null
+            else SceneUpdate(it.key, it.value)
+        }
 
     private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(
         SceneUpdate("global.language", Locale.getDefault().language),
