@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.isDay
+import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -152,15 +153,20 @@ class QuestPinsManager(
     }
 
     private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        pinsToSet = synchronized(questsInView) {
-            added.forEach { questsInView[it.key] = createQuestPins(it) }
-            removed.forEach { questsInView.remove(it) }
-            questsInView.values.flatten()
+        val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        val add = added.filter { bbox?.contains(it.position) != false }
+        synchronized(questsInView) {
+            add.forEach { questsInView[it.key] = createQuestPins(it) }
+            var deleted = false
+            removed.forEach { if (questsInView.remove(it) != null) deleted = true }
+            if (add.isEmpty() && !deleted) return // don't set pins if nothing has changed
+            pinsToSet = questsInView.values.flatten()
         }
         setPins()
     }
 
     private fun setPins() {
+        if (pinsToSet.isEmpty()) return
         val pins = pinsToSet // copy list for later comparison
         synchronized(pinsMapComponent) { // waiting may take considerable time
             if (pins !== pinsToSet) return // list of pins was changed while waiting for synchronized

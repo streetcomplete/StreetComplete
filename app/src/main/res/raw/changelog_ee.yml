@@ -3,6 +3,8 @@ v45.2_ee: |
   <li>Slightly adjust colors for nearby quests</li>
   <li>Allow switching to aerial view</li>
   <li>Allow adding lane count if lanes are not marked (by @matkoniecz)</li>
+  <li>Add "no seating, but not takeaway only" answer for seating quest</li>
+  <li>Improve performance when setting / updating quest pins</li>
   </ul>
 
 v45.1_ee: |
