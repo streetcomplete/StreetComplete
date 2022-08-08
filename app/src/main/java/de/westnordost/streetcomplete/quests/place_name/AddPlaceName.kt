@@ -93,7 +93,7 @@ class AddPlaceName(
             "healthcare" to arrayOf(
                 // common
                 "audiologist", "optometrist", "counselling", "speech_therapist",
-                "sample_collection", "blood_donation",
+                "sample_collection", "blood_donation", "laboratory",
 
                 // name & opening hours
                 "physiotherapist", "podiatrist",

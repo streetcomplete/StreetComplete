@@ -21,7 +21,6 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
           and !wheelchair
           and (
             shop and shop !~ no|vacant
-            or amenity = parking and parking = multi-storey
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
             or tourism = information and information = office
@@ -120,7 +119,7 @@ private val WHEELCHAIR_PLACES = mapOf(
     "healthcare" to arrayOf(
         // common
         "audiologist", "optometrist", "counselling", "speech_therapist",
-        "sample_collection", "blood_donation",
+        "sample_collection", "blood_donation", "laboratory",
     ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
 
