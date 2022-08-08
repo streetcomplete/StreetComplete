@@ -89,7 +89,7 @@ class SurfaceOverlay : Overlay {
         "surface:colour", //  12K - remove on change? Ignore support?
     )
 
-    val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
+    private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter
     )
 
