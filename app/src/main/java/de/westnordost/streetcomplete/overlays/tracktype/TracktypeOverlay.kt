@@ -46,6 +46,12 @@ private fun getStyle(element: Element): Style {
 }
 
 private val Tracktype?.color get() = when (this) {
+    // TODO fix colour scale
+    //  no red/purple/pink
+    //  clear colour progression
+    //  clearly distinct colours
+    //  ideally: colour-blind friendly
+    //  https://ux.stackexchange.com/questions/144093/colorblindness-friendly-color-scale-with-a-clear-progression-without-using-red
     Tracktype.GRADE1 -> "#33ff00"
     Tracktype.GRADE2 -> "#ccff00"
     Tracktype.GRADE3 -> "#00eeff"
