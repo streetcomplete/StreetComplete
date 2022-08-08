@@ -18,8 +18,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
@@ -36,6 +39,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -47,6 +51,8 @@ import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosin
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.elementfilter.ParseException
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -64,6 +70,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -79,6 +86,7 @@ import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -665,16 +673,83 @@ class MainFragment :
         popupMenu.menu.add(Menu.NONE, 2, Menu.NONE, R.string.level_filter)
         popupMenu.menu.add(Menu.NONE, 3, Menu.NONE, if (mapFragment?.isOrderReversed() == true) R.string.quest_order_normal else R.string.quest_order_reverse)
         popupMenu.menu.add(Menu.NONE, 4, Menu.NONE, R.string.quick_switch_map_background)
+        popupMenu.menu.add(Menu.NONE, 5, Menu.NONE, R.string.custom_overlay_title) // todo: can i add some settings symbol to overlay selection dialog? would be better there...
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 1 -> showProfileSelector()
                 2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
                 3 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
                 4 -> prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+                5 -> { showOverlayCustomizer() }
             }
             true
         }
         popupMenu.show()
+    }
+
+    private fun showOverlayCustomizer() {
+        val c = context?: return
+        var d: AlertDialog? = null
+
+        val overlay = prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.split(" with ")?.takeIf { it.size == 2 }
+        val nodes = CheckBox(c).apply {
+            text = "nodes (currently not working)"
+            isChecked = overlay?.get(0)?.contains("nodes") ?: true
+            isEnabled = false // todo: enable once it's working
+        }
+        val ways = CheckBox(c).apply {
+            text = "ways"
+            isChecked = overlay?.get(0)?.contains("ways") ?: true
+        }
+        val relations = CheckBox(c).apply {
+            text = "relations"
+            isChecked = overlay?.get(0)?.contains("relations") ?: true
+        }
+        val tag = EditText(c).apply {
+            setHint(R.string.custom_overlay_hint)
+            setText(overlay?.get(1) ?: "")
+        }
+        fun filterString(): String {
+            val types = listOfNotNull(
+                if (nodes.isChecked) "nodes" else null,
+                if (ways.isChecked) "ways" else null,
+                if (relations.isChecked) "relations" else null,
+            ).joinToString(", ")
+            return "$types with ${tag.text}"
+        }
+        tag.addTextChangedListener {
+            try {
+                filterString().toElementFilterExpression()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.apply { isEnabled = true }
+            }
+            catch (e: ParseException) {
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                d?.getButton(AlertDialog.BUTTON_POSITIVE)?.apply { isEnabled = tag.text.isEmpty() }
+            }
+        }
+        val linearLayout = LinearLayout(c).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(nodes)
+            addView(ways)
+            addView(relations)
+            addView(tag)
+            setPadding(30,10,30,10)
+        }
+        d = AlertDialog.Builder(c)
+            .setTitle(R.string.custom_overlay_title)
+            .setView(linearLayout)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                prefs.edit { putString(Prefs.CUSTOM_OVERLAY_FILTER, filterString()) }
+                if (selectedOverlaySource.selectedOverlay?.name == CustomOverlay::class.simpleName)
+                    (selectedOverlaySource as? SelectedOverlayController)?.apply { // trigger reload
+                        val temp = selectedOverlay
+                        selectedOverlay = null
+                        selectedOverlay = temp
+                }
+            }
+            .create()
+        d.show()
     }
 
     private fun showProfileSelector() {

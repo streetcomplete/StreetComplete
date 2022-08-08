@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.location.Location
@@ -148,7 +149,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
-        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags() })
+        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags(element, context) { viewLifecycleScope.launch { solve(it) } } })
 
         if (element.isSplittable()) {
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
@@ -314,65 +315,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
          and !ski
     """.toElementFilterExpression() }
 
-    private fun onClickEditTags() {
-        val tags = element.tags
-        context?.let { c ->
-
-            var dialog: AlertDialog? = null
-            val editField = EditText(c)
-            editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            editField.setText(tags.map { "${it.key}=${it.value}" }.sorted().joinToString("\n"))
-            editField.addTextChangedListener { text ->
-                var enabled = true
-                val keys = mutableSetOf<String>()
-                val tagsNew = mutableMapOf<String, String>()
-                text.toString().split("\n").forEach {
-                    if (it.isBlank()) return@forEach // allow empty lines
-                    if (!it.contains("=") // no key-value separator
-                        || it.count { it == '=' } > 1 // more than one equals sign
-                        || it.substringBefore("=").isBlank() // no key
-                        || it.substringAfter("=").isBlank() // no value
-                        || !keys.add(it.substringBefore("="))) { // key already exists
-                        enabled = false
-                        return@forEach
-                    }
-                    tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
-                }
-                if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
-                    enabled = false // tags not changed
-                dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
-            }
-
-            dialog = AlertDialog.Builder(c)
-                .setTitle(R.string.quest_edit_tags_title)
-                .setView(editField)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->
-                    // validity of tags already checked, and tags have changed
-                    val updatedTags = mutableMapOf<String, String>()
-                    editField.text.toString().split("\n").forEach {
-                        if (it.isBlank()) return@forEach
-                        updatedTags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
-                    }
-                    viewLifecycleScope.launch {
-                        val builder = StringMapChangesBuilder(element.tags)
-                        for (key in element.tags.keys) {
-                            if (!updatedTags.containsKey(key))
-                                builder.remove(key)
-                        }
-                        for ((key, value) in updatedTags) {
-                            if (tags[key] == value) continue
-                            builder[key] = value
-                        }
-                        solve(UpdateElementTagsAction(builder.create()))
-                    }
-                }
-                .create()
-            dialog.show()
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
-        }
-    }
-
     private suspend fun solve(action: ElementEditAction) {
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
@@ -404,5 +346,62 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun createArguments(element: Element) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element)
         )
+    }
+}
+
+fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditAction) -> Unit) {
+    val tags = element.tags
+    context?.let { c ->
+
+        var dialog: AlertDialog? = null
+        val editField = EditText(c)
+        editField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS// or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        editField.setText(tags.map { "${it.key}=${it.value}" }.sorted().joinToString("\n"))
+        editField.addTextChangedListener { text ->
+            var enabled = true
+            val keys = mutableSetOf<String>()
+            val tagsNew = mutableMapOf<String, String>()
+            text.toString().split("\n").forEach {
+                if (it.isBlank()) return@forEach // allow empty lines
+                if (!it.contains("=") // no key-value separator
+                    || it.count { it == '=' } > 1 // more than one equals sign
+                    || it.substringBefore("=").isBlank() // no key
+                    || it.substringAfter("=").isBlank() // no value
+                    || !keys.add(it.substringBefore("="))) { // key already exists
+                    enabled = false
+                    return@forEach
+                }
+                tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+            }
+            if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
+                enabled = false // tags not changed
+            dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
+        }
+
+        dialog = AlertDialog.Builder(c)
+            .setTitle(R.string.quest_edit_tags_title)
+            .setView(editField)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->
+                // validity of tags already checked, and tags have changed
+                val updatedTags = mutableMapOf<String, String>()
+                editField.text.toString().split("\n").forEach {
+                    if (it.isBlank()) return@forEach
+                    updatedTags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+                }
+                val builder = StringMapChangesBuilder(element.tags)
+                for (key in element.tags.keys) {
+                    if (!updatedTags.containsKey(key))
+                        builder.remove(key)
+                }
+                for ((key, value) in updatedTags) {
+                    if (tags[key] == value) continue
+                    builder[key] = value
+                }
+                onSolved(UpdateElementTagsAction(builder.create()))
+            }
+            .create()
+        dialog.show()
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
     }
 }

@@ -238,5 +238,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_lanes_answer_noLanes_known_count">No markings, obvious lane count</string>
     <string name="quick_switch_map_background">Toggle aerial / map background</string>
     <string name="quest_seating_no">No seating, but not takeout only</string>
+    <string name="custom_overlay_title">Custom overlay</string>
+    <string name="custom_overlay_hint">Element selection goes here</string>
 
 </resources>
