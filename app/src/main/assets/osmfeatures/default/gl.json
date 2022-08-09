@@ -2159,17 +2159,7 @@
                     "placeholder": "Excelente, bo, malo..."
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotransformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Conversor",
-                        "distribution": "Distribución",
-                        "generator": "Xerador",
-                        "phase_angle_regulator": "Desfasador",
-                        "traction": "Tracción",
-                        "yes": "Descoñecido"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Árbores"
@@ -4504,9 +4494,6 @@
                     "name": "Área perigosa",
                     "terms": "zona de perigo,bombas,minas,munición,explosivo,militar,exército,forza aérea,mariña,armada,forza naval,área perigosa,zona de exclusión"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Base naval"
-                },
                 "landuse/military/range": {
                     "name": "Campo de tiro militar"
                 },
@@ -6477,9 +6464,6 @@
                 },
                 "tourism": {
                     "name": "Elemento de turismo"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Refuxio de montaña"
                 },
                 "tourism/apartment": {
                     "name": "Apartamento de hóspedes"

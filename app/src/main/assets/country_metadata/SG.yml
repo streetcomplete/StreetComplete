@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 525
@@ -7,6 +7,8 @@ noStandingLineStyle: yellow zig-zags
 noStoppingLineStyle: double yellow zig-zags
 officialLanguages: [en, ms, zh, ta]
 popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
 atmOperators: [UOB, POSB, OCBC, DBS, Citibank, OCBC Bank, HSBC, SAM, DBS/POSB, Standard Chartered, AXS, UOB ATM]
 chargingStationOperators: [Greenlots]
 orchardProduces: [coconut, tomato]

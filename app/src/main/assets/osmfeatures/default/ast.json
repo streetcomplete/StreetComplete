@@ -1122,17 +1122,7 @@
                     "placeholder": "Escelente, bonu, malu..."
                 },
                 "transformer": {
-                    "label": "Tipu",
-                    "options": {
-                        "auto": "Autotresformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Convertidor",
-                        "distribution": "Distribución",
-                        "generator": "Xenerador",
-                        "phase_angle_regulator": "Regulador d'ángulu de fase",
-                        "traction": "Tracción",
-                        "yes": "Desconocíu"
-                    }
+                    "label": "Tipu"
                 },
                 "trees": {
                     "label": "Árboles"
@@ -2254,10 +2244,6 @@
                 "landuse/military/danger_area": {
                     "name": "Área de peligru"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Base naval",
-                    "terms": "arsenal"
-                },
                 "landuse/military/range": {
                     "name": "Campu de tiru"
                 },
@@ -3074,9 +3060,6 @@
                 },
                 "shop/wine": {
                     "name": "Bodega"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Refuxu d'alpinismu"
                 },
                 "tourism/aquarium": {
                     "name": "Acuariu"

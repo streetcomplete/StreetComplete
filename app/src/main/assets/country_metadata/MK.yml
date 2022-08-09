@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -6,6 +6,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 294
 officialLanguages: [mk, sq]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА
 atmOperators: [Охридска Банка, Шпаркасе, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, Комерцијална Банка, Уни Банка, НЛБ - Тутунска Банка, Stopanska Banka, Комерцијална Банка АД Скопје, NLB, Halkbank, Стопанска Банка Битола, Central Cooperative Bank]

@@ -24,15 +24,11 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Można zostawić publiczną notatkę w tym miejscu, którą inne osoby będą mogły skomentować i uzupełnić, lub ukryć to zadanie tylko dla siebie"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"OK"</string>
+    <string name="quest_leave_new_note_yes">"Dodaj notatkę"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Nie, ukryj"</string>
     <string name="quest_streetName_title">"Jaka jest nazwa tej drogi?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_description">"Tak jak napisane na znaku, skróty są rozwijane:"</string>
 
     <!-- Fuzzy -->
@@ -68,12 +64,8 @@
     <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Włączyć ją w ustawieniach?"</string>
     <string name="no_location_permission_warning">"Potrzebuję dostępu do lokalizacji, żeby poszukać zadań w okolicy."</string>
     <string name="about_title_authors">"Autorzy"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Tobias Zwick i współautorzy"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
+    <string name="about_title_repository">"Strona projektu"</string>
     <string name="about_summary_repository">"na GitHubie"</string>
     <string name="about_title_report_error">"Zgłoś błąd"</string>
     <string name="about_title_feedback">"Przekaż opinię"</string>
@@ -89,8 +81,6 @@
     <string name="later">"Później"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Po prostu łączy dwie drogi"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Inne (zostaw notatkę)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Polityka prywatności"</string>
     <string name="about_summary_privacy_statement">"i wykorzystanie danych"</string>
 
@@ -164,8 +154,6 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_sand">"piaskowa"</string>
     <string name="quest_surface_value_sett">"nierówne kamienie"</string>
     <string name="quest_surface_value_wood">"drewniana"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Czy ta ulica ma chodnik?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Gdzie jest ta ulica?"</string>
     <string name="quest_oneway_title">"Czy jest to ulica jednokierunkowa?"</string>
@@ -186,8 +174,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_name_answer_noName_confirmation_title">"Naprawdę nie ma nazwy własnej?"</string>
     <string name="quest_name_noName_confirmation_positive">"Tak, nie ma nazwy własnej"</string>
     <string name="quest_openingHours_add_times">"Dodaj godziny otwarcia"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"Wysłać zgłoszenie o błędzie do autora aplikacji?"</string>
     <string name="crash_title">"O nie, ostatnie użycie StreetComplete zakończyło się błędem!"</string>
     <string name="crash_compose_email">"Napisz maila"</string>
@@ -199,8 +185,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Tak"</string>
     <string name="quest_generic_hasFeature_no">"Nie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Ile rowerów można tu zaparkować?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ten numer budynku wygląda bardzo dziwnie."</string>
     <string name="quest_sport_title">"Jaki sport się tu uprawia?"</string>
@@ -254,7 +238,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="dialog_session_dont_show_again">"Nie pokazuj więcej w tej sesji"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"To ograniczenie prędkości nie wygląda wiarygodnie."</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"To ograniczenie prędkości wygląda podejrzanie."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Na pewno nie ma znaku ograniczenia prędkości?"</string>
 
     <!-- Fuzzy -->
@@ -688,7 +672,7 @@ Na przykład 1,3 lub 2–6."</string>
     <string name="quest_construction_building_title">"Czy ten budynek jest ukończony?"</string>
 
     <!-- Fuzzy -->
-    <string name="questList_disabled_in_country">"Nigdy wyswietlane w %s"</string>
+    <string name="questList_disabled_in_country">"Wyłączone w %s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Wybierz najbardziej szczegółowa opcje która pasuje:"</string>
@@ -928,7 +912,7 @@ Na przykład 1,3 lub 2–6."</string>
     <string name="quest_maxheight_title">"Jakie jest tutaj ograniczenie wysokości?"</string>
     <string name="quest_maxheight_answer_noSign">"Nie ma znaku…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Czy jest tutaj wystarczająco dużo miejsca na przejazd najwyższych ciężarówek (co najmniej 4.5m / 15 stóp)?"</string>
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Ta wysokość wygląda na nieprawdopodobną. Jesteś pewien, że jest poprawna?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Ta wysokość wygląda podejrzanie. Jesteś pewien, że jest poprawna?"</string>
 
     <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -1163,7 +1147,7 @@ Podzielić?"</string>
     <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Witaj w OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"wolnej wiki-mapie świata"</string>
-    <string name="tutorial_intro">"StreetComplete to prosty sposób na współtworzenie OpenStreetMap. Automatycznie wyświetla braki szczegółów w Twej okolicy, dotyczące m.in.: ścieżek rowerowych, numerów domów, godzin otwarcia…"</string>
+    <string name="tutorial_intro">"StreetComplete to prosty sposób na współtworzenie OpenStreetMap. Automatycznie znajduje co można uzupełnić w Twojej okolicy, dotyczące m.in.: dróg rowerowych, adresów, godzin otwarcia i wielu innych…"</string>
 
     <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Wykryte braki pojawią się na Twojej mapie jako zadania.
@@ -1701,7 +1685,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_buildingType_semi_detached_description2">"Dom-bliźniak / domy-bliźniaki"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests2">"Wybór zadań i kolejność ich wyświetlania na mapie"</string>
+    <string name="pref_title_quests2">"Wybór zadań i priorytet ich wyświetlania na mapie"</string>
     <string name="pref_subtitle_quests">"%1$d z %2$d jest włączonych"</string>
     <string name="no_location_permission_warning_title">"Dostęp do położenia"</string>
     <string name="quest_surface_value_woodchips">"Zrębki (ścinki drewniane)"</string>
@@ -1742,7 +1726,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_bollard_type_foldable2">"Składany (z kluczem lub bez)"</string>
     <string name="no_search_results">"Brak wyników"</string>
     <string name="quest_selection_hint_title">"Zbyt dużo do zrobienia?"</string>
-    <string name="quest_selection_hint_message">"Wkład powinien być przede wszystkim zabawą!  Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz dostroić, które zadania są wyświetlane i w jakiej kolejności w ustawieniach."</string>
+    <string name="quest_selection_hint_message">"Wkład powinien być przede wszystkim zabawą!  Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz wybrać w ustawieniach które zadania są pokazane i w jakiej kolejności."</string>
 
     <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Dodaj zestaw"</string>
@@ -1833,7 +1817,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
 
     <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Na jezdni tylko w wyznaczonych miejscach"</string>
-    <string name="street_parking_separate">"Parking wyświetlany osobno na mapie"</string>
+    <string name="street_parking_separate">"Parking pokazany osobno na mapie"</string>
     <string name="street_parking_no">"Nie ma tu parkingu / parkowanie nie jest dozwolone"</string>
     <string name="street_parking_prohibited">"Zakaz parkowania"</string>
     <string name="street_stopping_prohibited">"Zakaz zatrzymania"</string>
@@ -1918,7 +1902,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza barierę tutaj?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sidewalk_value_separate">"wyświetlane osobno na mapie"</string>
+    <string name="quest_sidewalk_value_separate">"pokazane osobno na mapie"</string>
     <string name="quest_shoulder_value_yes">"pobocze/pas awaryjny"</string>
     <string name="quest_shoulder_value_no">"brak pobocza"</string>
     <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
@@ -1958,7 +1942,7 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
 
     <!-- Fuzzy -->
-    <string name="about_description_donate_google_play2">"Dziękujemy za chęć wsparcia tej aplikacji! Niestety, ze względu na zasady Sklepu Google Play, żadne linki prowadzące do darowizn nie mogą byc wyświetlone. W tym kontekście, nawet link do strony domowej naszego projektu jest wzbronione."</string>
+    <string name="about_description_donate_google_play2">"Dziękujemy za chęć wsparcia tej aplikacji! Niestety, ze względu na zasady Sklepu Google Play, żadne linki prowadzące do darowizn nie mogą byc prezentowane. W tym kontekście, nawet link do strony domowej naszego projektu jest wzbronione."</string>
     <string name="link_osmand_description">"Mobilna aplikacja do przeglądania map i navigacji online albo offline"</string>
     <string name="link_sunders_description">"Mapa kamer i sprzętu inwigilacyjnego"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Trzymaj się bliżej strzałki ale uważaj na ruch drogowy!"</string>
@@ -2034,7 +2018,7 @@ sorted alphabetically by title -->
     <string name="quest_level_title2">"Na którym poziomie jest to miejce pomieszczone?"</string>
     <string name="quest_lit_title">"Czy jest tutaj te miejsce oświetlone?"</string>
     <string name="quest_openingHours_title">"Jakie są tutaj godziny otwarcia?"</string>
-    <string name="quest_openingHours_signed_title">"Czy są tutaj godziny otwarcia wyświetlone?"</string>
+    <string name="quest_openingHours_signed_title">"Czy jest tutaj informacja o godzinach otwarcia?"</string>
     <string name="quest_openingHours_resurvey_title">"Czy tę godziny otwarcia są dalej poprawne?"</string>
     <string name="quest_placeName_title">"Jaka jest nazwa tego miejsca?"</string>
     <string name="quest_shop_type_title2">"Jaki jest to za rodzaj sklepu?"</string>
@@ -2051,6 +2035,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Czy na pewno rowerzyści nie mogą korzystać z tej drogi jednokierunkowej w obu kierunkach? W razie wątpliwości sprawdź znak na końcu ulicy."</string>
+    <string name="link_valhalla_description">"Silnik routingu o bardzo małej ilości pamięci, routing multimodalny, izochrony i nie tylko."</string>
     <string name="link_backofyourhand_description">"Jak dobrze znasz swoją okolicę? Sprawdź swoją wiedzę, lokalizując ulice."</string>
 
     <!-- Fuzzy -->
@@ -2073,4 +2058,64 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Tylko liczba kroków, aby dotrzeć na szczyt. Jeśli liczba kroków różni się z każdej strony, podaj wyższą liczbę."</string>
+    <string name="quest_shoulder_explanation2">"Pas poboczny lub awaryjny to wyraźnie oznaczony pas awaryjnego zatrzymania. Obszar oznaczony jako pobocze niekoniecznie musi być utwardzony na całej jego szerokości i niekoniecznie na tyle szeroki, aby samochód mógł całkowicie zatrzymać się poza pasem ruchu."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"brak, zakaz jazdy na rowerze w tym kierunku"</string>
+    <string name="map_btn_create_track">"Stwórz nowe nagranie"</string>
+    <string name="map_btn_stop_track">"Przestań nagrywać"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Ile jest tu rowerów do wypożyczenia?"</string>
+    <string name="quest_bicycle_rental_type_title">"Co to za wypożyczalnia rowerów?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Stacja do blokowania rowerów"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Wyznaczone miejsce (rowery blokowane pojedynczo)"</string>
+    <string name="quest_bicycle_rental_type_human">"Wypożyczalnia rowerów z obsługą"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Sklep rowerowy, który również je wypożycza"</string>
+    <string name="quest_bicycle_shop_repair_title">"Czy można tu naprawić rower?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Czy są tu sprzedawane rowery używane?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nie, tylko nowe"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Tak, oprócz nowych"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Tak, tylko używane"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"W ogóle nie sprzedaje się tu rowerów"</string>
+    <string name="quest_building_entrance_title">"Co to za wejście do budynku?"</string>
+    <string name="quest_building_entrance_main">"Główne wejście"</string>
+    <string name="quest_building_entrance_staircase">"Wejście na klatkę schodową (np. w bloku)"</string>
+    <string name="quest_building_entrance_service">"Wejście dla personelu"</string>
+    <string name="quest_building_entrance_exit">"Wyłącznie wyjście"</string>
+    <string name="quest_building_entrance_emergency_exit">"Wyjście ewakuacyjne"</string>
+    <string name="quest_building_entrance_shop">"Wejście do sklepu"</string>
+    <string name="quest_building_entrance_yes">"Inny rodzaj wejścia"</string>
+    <string name="quest_building_entrance_dead_end">"Ślepa ścieżka, brak wejścia"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Dotknij ekranu, aby rozpocząć pomiar"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Czy jest tu publiczna pompka rowerowa?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Czy jest tu działająca pompka rowerowa?"</string>
+    <string name="action_overlays">"Nakładki"</string>
+    <string name="split_way">"Podziel drogę"</string>
+    <string name="quest_memorialType_title">"Co to za pomnik?"</string>
+    <string name="quest_memorialType_statue">"Statua"</string>
+    <string name="quest_memorialType_bust">"Popiersie"</string>
+    <string name="quest_memorialType_plaque">"Plakieta"</string>
+    <string name="quest_memorialType_war_memorial">"Pomnik wojenny"</string>
+    <string name="quest_memorialType_stone">"Kamień"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Stela drewniana (płyta pamiątkowa)"</string>
+    <string name="quest_memorialType_stele_stone">"Stela kamienna (płyta pamiątkowa)"</string>
+    <string name="quest_memorialType_sculpture">"Inna rzeźba"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Wybierz nakładkę"</string>
+    <string name="overlay_none">"Żadna"</string>
+    <string name="overlay_lit">"Oświetlenie"</string>
+    <string name="lit_value_yes">"Oświetlony"</string>
+    <string name="lit_value_no">"Nieświetlony"</string>
+    <string name="lit_value_24_7">"Oświetlony w dzień i w nocy"</string>
+    <string name="lit_value_automatic">"Oświetlony po wykryciu ruchu"</string>
+    <string name="overlay_sidewalk">"Chodniki"</string>
+    <string name="quest_generic_answer_is_indoors">"To jest wewnątrz"</string>
+    <string name="quest_summit_cross_title">"Czy na szczycie jest krzyż?"</string>
+    <string name="quest_entrance_reference">"Co jest napisane przy tym wejściu?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Numer ganku i numery mieszkań"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Numery mieszkań"</string>
+    <string name="quest_entrance_reference_select_code_only">"Numer ganku"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Brak znaku z numerem ganku czy numerami mieszkań"</string>
+    <string name="quest_entrance_reference_reference_label">"Numer ganku:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Numery mieszkań:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"do"</string>
 </resources>

@@ -1442,9 +1442,6 @@
                 "landuse/military/danger_area": {
                     "name": "Zonă de Pericol"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Bază Navală"
-                },
                 "landuse/military/range": {
                     "name": "Gamă Militară"
                 },
@@ -2066,9 +2063,6 @@
                 },
                 "shop/wine": {
                     "name": "Magazin de Vinuri"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Cabană"
                 },
                 "tourism/apartment": {
                     "name": "Apartament de Închiriat"

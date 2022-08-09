@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
 hasAdvisorySpeedLimitSign: true
@@ -9,6 +9,7 @@ noStandingSignStyle: mutcd text waiting
 noStoppingSignStyle: mutcd
 officialLanguages: [en, fil, es, ceb, ilo, hil]
 popularSports: [basketball, tennis, soccer, volleyball]
+postboxesHaveCollectionTimes: true
 workweekDays: 6
 atmOperators: [BPI, BDO, Bank of the Philippine Islands, Metrobank, Landbank, Land Bank of the Philippines, BDO Unibank, RCBC, PNB, Philippine National Bank, Metropolitan Bank and Trust Company, Security Bank, China Bank, Landbank of the Philippines, Luzon Development Bank, DBP, 'BDO Unibank, Inc.', PSBank, Philippine Savings Bank, Rizal Commercial Banking Corporation, Development Bank of the Philippines, Land Bank, Banco de Oro, Security Bank Corporation, Chinabank, UCPB, Allied Bank, One Network Bank, China Banking Corporation, East West Banking Corporation, Bank of Commerce, Union Bank of the Philippines, Land Bank ATM, EastWest Unibank, First Consolidated Bank, Bank of the Philippine Island, Philippine Business Bank, AUB, DBP ATM, Euronet, PS Bank, United Coconut Planters Bank, Veterans Bank, Maybank, Citibank, 'China Bank Savings, Inc.', Unionbank, LBP, Metrobank ATM, Union Bank, PBCom, Various Banks, City Savings Bank, BDO Network Bank, Veteran's Bank, Asia United Bank, Chinabank ATM, CitySavings Bank, BDO ATM, UCPB Savings Bank, Robinsons Bank Corporation, CARD Bank, Gretchen R. Leonardo, BDO Bank, Landbank ATM, BPI Family Savings Bank]
 orchardProduces: [coconut, rubber, guava, mango, mangosteen, banana, coffee, pineapple, cacao, cashew_nut, tomato, papaya, chilli_pepper, sweet_pepper, avocado, grapefruit, agave, pepper]

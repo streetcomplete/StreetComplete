@@ -34,6 +34,7 @@
             android:textStyle="bold"
             android:textColor="@color/traffic_black"
             android:textSize="36dp"
+            android:maxLines="1"
             tools:text="8"
             tools:ignore="SpUsage" />
 

@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
@@ -7,6 +7,7 @@ mobileCountryCode: 220
 noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [sr]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА
 atmOperators: [Комерцијална банка, Banca Intesa, Komercijalna banka, Raiffeisen Bank, TEB, Poštanska Štedionica, NLB Banka, Eurobank, AIK Banka, Raiffeisen, Erste bank, NLB, OTP Bank, BKT, TEB Bank, Bankomat, Hypo Alpe Adria, Telenor, Postanska stedionica, Pcb, Erste, Credit Agricole, BPB, OTP Banka, ProCredit Bank, Банка Поштанска штедионица, Bank Intesa, Addiko bank, Banka Intesa, NLB Bank, Поштанска штедионица, Banka Ekonomike]

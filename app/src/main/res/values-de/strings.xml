@@ -924,7 +924,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="default_disabled_msg_go_inside_regional_warning">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten muss, um die Aufgabe lösen zu können."</string>
     <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Kein Radweg vorhanden"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite der Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite.
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite des Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite.
 
 Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtlich, z. B. eine Einbahnstraße, die für Fahrradfahrer beidseitig befahrbar ist!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Auswählen, dass kein Radweg existiert"</string>
@@ -1126,7 +1126,7 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_address_house_number_label">"Hausnummer:"</string>
     <string name="quest_shoulder_title">"Hat diese Straße einen Seitenstreifen?"</string>
     <string name="quest_fireHydrant_position_title">"Wo befindet sich dieser Hydrant?"</string>
-    <string name="quest_fireHydrant_position_green">"Im Gras, Dreck oder Gebüsch"</string>
+    <string name="quest_fireHydrant_position_green">"Im Gras, Erde oder Gebüsch"</string>
     <string name="quest_fireHydrant_position_lane">"Auf der Straße"</string>
     <string name="quest_fireHydrant_position_sidewalk">"Auf einem Fußweg"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Auf einem Parkplatz"</string>
@@ -1296,7 +1296,7 @@ sorted alphabetically by title -->
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
     <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
-    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
+    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden."</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1361,7 +1361,13 @@ sorted alphabetically by title -->
     <string name="lit_value_automatic">"Beleuchtet, wenn jemand vorbeikommt"</string>
     <string name="overlay_sidewalk">"Bürgersteige"</string>
     <string name="quest_generic_answer_is_indoors">"Ist in einem Gebäude"</string>
-    <string name="quest_summit_cross_title">"Ist hier ein Gipfelkreuz?"</string>
+    <string name="quest_summit_cross_title">"Gibt es hier ein Gipfelkreuz?"</string>
     <string name="quest_entrance_reference">"Was für ein Schild ist an diesem Eingang angebracht?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Eingangsmarkierung und Wohnungsbereich"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Wohnungsbereich"</string>
+    <string name="quest_entrance_reference_select_code_only">"Eingangsmarkierung"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Kein Schild mit Markierung oder Wohnungsbereich"</string>
+    <string name="quest_entrance_reference_reference_label">"Eingangsmarkierung:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Wohnungsbereich:"</string>
     <string name="quest_entrance_reference_flat_range_to">"bis"</string>
 </resources>
