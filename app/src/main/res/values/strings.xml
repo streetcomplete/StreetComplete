@@ -844,7 +844,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_camp_drinking_water_title">Is drinking water freely available to customers here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
-    <string name="quest_camp_power_supply_title">Can customers charge their phone/laptop here?</string>
+    <string name="quest_camp_power_supply_title">Is there any way for customers to charge their phone or laptop here?</string>
     <string name="quest_camp_type_title">Who may camp here?</string>
     <string name="quest_camp_type_tents_and_caravans">Both tents and caravans</string>
     <string name="quest_camp_type_caravans_only">Only caravans</string>
