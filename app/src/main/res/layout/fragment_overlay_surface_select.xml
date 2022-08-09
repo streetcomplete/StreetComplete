@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="160dp">
+    android:minHeight="160dp"
+    android:orientation="vertical"><!-- TODO sane scaling with multiple surfaces shown-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/selectButtonMainSurface"
