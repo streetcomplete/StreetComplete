@@ -46,7 +46,7 @@ class AddRecyclingContainerMaterialsForm :
         Item(listOf(SCRAP_METAL),   R.drawable.ic_recycling_scrap_metal,   R.string.quest_recycling_type_scrap_metal),
         Item(listOf(CLOTHES),       R.drawable.ic_recycling_clothes,       R.string.quest_recycling_type_clothes),
         Item(listOf(SHOES),         R.drawable.ic_recycling_shoes,         R.string.quest_recycling_type_shoes),
-        Item(listOf(SMALL_ELECTRICAL_APPLIANCES), R.drawable.ic_recycling_small_electric_appliances, R.string.quest_recycling_type_electric_appliances),
+        Item(listOf(SMALL_ELECTRICAL_APPLIANCES), R.drawable.ic_recycling_small_electrical_appliances, R.string.quest_recycling_type_electric_appliances),
         Item(listOf(BATTERIES),     R.drawable.ic_recycling_batteries,     R.string.quest_recycling_type_batteries),
         Item(listOf(GREEN_WASTE),   R.drawable.ic_recycling_garden_waste,  R.string.quest_recycling_type_green_waste),
         Item(listOf(COOKING_OIL),   R.drawable.ic_recycling_cooking_oil,   R.string.quest_recycling_type_cooking_oil),

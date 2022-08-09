@@ -1,9 +1,10 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 401
 officialLanguages: [kk, ru]
 popularReligions: [muslim]
+postboxesHaveCollectionTimes: true
 atmOperators: [Jusan Bank, Народный банк Казахстана, 'Казкоммерцбанк, АО', Народный банк, Казкоммерцбанк, АО "Казкоммерцбанк", Kazkom, Halyk Bank, Сбербанк, Казком, Казкомерцбанк, Сбербанк России, Халык банк, Qazkom, Казкоммерцбанк банкомат, Халық банк, ForteBank, Альянс Банк, АТФ Банк, Народный банкомат, Евразийский банк, БТА банкомат, БТА, БТА банк, Halyk, Kaspi bank, KAZ KOM, Bank RBK, Банк России, Centercredit, Банкомат Народный банк, АО "Народный Банк", АльянсБанк, Банкомат БТА банка, АТФ банкомат, Казпочта, Bank CenterCredit, KazCom, Нурбанк, Казкомерц банк, Халық банкі, ДБ АО "Сбербанк", АО "Цесна банк", АТФ, HalykBank, QIWI, Kaspi Bank терминал, АО Казкоммерцбанк, Qazkom банкомат, Kaspi, KaspiBank, АО "Евразийский банк", Kaspi.kz]
 orchardProduces: [apple, tomato, grape, apricot, pear, plum, walnut, peach, strawberry, chilli_pepper, sweet_pepper, almond, cherry]

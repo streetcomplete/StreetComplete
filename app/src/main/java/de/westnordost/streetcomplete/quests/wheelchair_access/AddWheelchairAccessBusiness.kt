@@ -13,8 +13,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-          (name or brand)
-          and access !~ no|private
+          access !~ no|private
           and !wheelchair
           and (
             shop and shop !~ no|vacant
@@ -99,8 +98,8 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(WHEELCHAIR)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 

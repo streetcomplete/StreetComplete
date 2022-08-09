@@ -1,13 +1,16 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
-hasSlowZone: false
+hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 284
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [bg]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ЗОНА
 atmOperators: [Първа инвестиционна банка, УниКредит Булбанк, Банка ДСК, Обединена Българска Банка, Raiffeisenbank, Централна кооперативна Банка, Пощенска банка, ДСК, Общинска банка, Райфайзенбанк, Allianz, Piraeus Bank, Райфайзен Банк, Райфайзен]
 chargingStationOperators: [ОП „Общински паркинги и синя зона“ - Варна]
 clothesContainerOperators: [БЧК, texcycle]

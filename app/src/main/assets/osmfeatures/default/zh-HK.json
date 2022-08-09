@@ -2276,17 +2276,7 @@
                     "placeholder": "優良、好、差勁..."
                 },
                 "transformer": {
-                    "label": "種類",
-                    "options": {
-                        "auto": "自耦變壓器",
-                        "auxiliary": "輔助",
-                        "converter": "轉換器",
-                        "distribution": "配電器",
-                        "generator": "變電器",
-                        "phase_angle_regulator": "相位角整流器",
-                        "traction": " 牽引器",
-                        "yes": "未知"
-                    }
+                    "label": "種類"
                 },
                 "trees": {
                     "label": "樹"
@@ -4261,10 +4251,6 @@
                     "name": "危險區",
                     "terms": "danger area,危險地區,危險區域,危險範圍"
                 },
-                "landuse/military/naval_base": {
-                    "name": "海軍基地",
-                    "terms": "naval base,軍港,海軍基地"
-                },
                 "landuse/military/range": {
                     "name": "軍事靶場",
                     "terms": "military range,靶場,軍用靶場,射擊場"
@@ -5621,10 +5607,6 @@
                 },
                 "tourism": {
                     "name": "觀光特徽"
-                },
-                "tourism/alpine_hut": {
-                    "name": "高山小屋",
-                    "terms": "alpine hut,高山小屋,高山屋仔"
                 },
                 "tourism/apartment": {
                     "name": "民宿公寓 / 短租公寓",

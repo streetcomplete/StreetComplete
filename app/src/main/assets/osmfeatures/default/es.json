@@ -296,6 +296,13 @@
                 "barrier": {
                     "label": "Tipo"
                 },
+                "barrier_planter": {
+                    "label": "Barrera",
+                    "options": {
+                        "planter": "Sí",
+                        "undefined": "No"
+                    }
+                },
                 "basin": {
                     "label": "Tipo"
                 },
@@ -1001,7 +1008,8 @@
                     "label": "Tipo"
                 },
                 "entrance": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "terms": "tipo,tipos"
                 },
                 "except": {
                     "label": "Excepciones"
@@ -1419,6 +1427,10 @@
                 "landuse": {
                     "label": "Tipo"
                 },
+                "lane_markings": {
+                    "label": "Marcas de carril",
+                    "terms": "línea central,divisores de carril,línea de carril,línea a rayas,rayado,línea contínua,sin rayas"
+                },
                 "lanes": {
                     "label": "Carriles",
                     "placeholder": "1, 2, 3...",
@@ -1579,12 +1591,19 @@
                     "label": "Peso máximo",
                     "terms": "peso,máximo,límite,kilos,kilogramos,toneladas"
                 },
+                "maxwidth": {
+                    "label": "Ancho máximo",
+                    "terms": "ancho máximo,anchura máxima,máximo,ancho límite,anchura límite"
+                },
                 "memorial": {
                     "label": "Tipo"
                 },
                 "microbrewery": {
                     "label": "Microcervecería",
                     "terms": "microcervecería,cerveza artesanal"
+                },
+                "military_service": {
+                    "label": "Servicio militar"
                 },
                 "mimics": {
                     "label": "Mimetiza",
@@ -2457,6 +2476,15 @@
                         "multi": "Múltiple"
                     }
                 },
+                "sport_pub": {
+                    "label": "Deportes",
+                    "options": {
+                        "billiards": "Billar americano",
+                        "darts": "Dardos",
+                        "table_soccer": "Fútbol de mesa"
+                    },
+                    "terms": "deportes,deportivo"
+                },
                 "sport_racing_motor": {
                     "label": "Deportes",
                     "options": {
@@ -2784,17 +2812,7 @@
                     "terms": "visibilidad,sendero,caminata"
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotransformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Convertidor",
-                        "distribution": "Distribución",
-                        "generator": "Generador",
-                        "phase_angle_regulator": "Regulador de ángulo de fase",
-                        "traction": "Tracción",
-                        "yes": "Desconocido"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Árboles"
@@ -2996,6 +3014,13 @@
                     "label": "Bobinas",
                     "placeholder": "1, 2, 3...",
                     "terms": "bobinado,serpenteante,sinuoso,enrollar,envolver,solenoide,electrónica,electricidad"
+                },
+                "windings/auto": {
+                    "options": {
+                        "no": "No",
+                        "undefined": "Se asume que No",
+                        "yes": "Sí"
+                    }
                 },
                 "windings/configuration": {
                     "label": "Configuración de bobinas",
@@ -4196,6 +4221,18 @@
                     "name": "Control fronterizo",
                     "terms": "control fronterizo,control de fronteras,gestión de fronteras,vigilancia de fronteras,frontera"
                 },
+                "barrier/bump_gate": {
+                    "name": "Puerta de choque",
+                    "terms": "puerta de choque,puerta de golpe,puerta de paso"
+                },
+                "barrier/bus_trap": {
+                    "name": "Trampa de autobús",
+                    "terms": "trampa de autobus,trampa para automóviles,trampa para autos"
+                },
+                "barrier/cable_barrier": {
+                    "name": "Barrera de cable",
+                    "terms": "barrera de cable,barrera de seguridad de cable metálico"
+                },
                 "barrier/cattle_grid": {
                     "name": "Paso canadiense",
                     "terms": "paso con rejas para animales,paso canadiense,barrera canadiense,guardaganados,guarda ganados,rejilla de retención,paso de vehículo"
@@ -4235,6 +4272,9 @@
                     "name": "Guardarraíl",
                     "terms": "barrera de metal,quitamiedos,bionda,guardarraíl,guardarrail"
                 },
+                "barrier/handrail": {
+                    "name": "Pasamanos"
+                },
                 "barrier/hedge": {
                     "name": "Seto",
                     "terms": "cobertura,seto vivo,seto verde,defensa"
@@ -4242,6 +4282,10 @@
                 "barrier/height_restrictor": {
                     "name": "Restrictor de altura",
                     "terms": "reductor de altura"
+                },
+                "barrier/jersey_barrier": {
+                    "name": "Barrera Jersey",
+                    "terms": "barrera new jersey,barrera de jersey,pared de jersey,muro de jersey,barrera de hormigón"
                 },
                 "barrier/kerb": {
                     "name": "Bordillo",
@@ -4271,9 +4315,23 @@
                     "name": "Barrera levadiza",
                     "terms": "entrada,salida,paso,puerta,barrera,levadiza,pivote,acceso,control"
                 },
+                "barrier/log": {
+                    "name": "Árbol caído"
+                },
+                "barrier/motorcycle_barrier": {
+                    "name": "Barrera para motos",
+                    "terms": "barrera para motos,barrera de motos"
+                },
+                "barrier/planter": {
+                    "name": "Maceta (Barrera)"
+                },
                 "barrier/retaining_wall": {
                     "name": "Muro de contención",
                     "terms": "muro,pared,contención,retención,prevención,espolón"
+                },
+                "barrier/rope": {
+                    "name": "Barrera de soga",
+                    "terms": "barrera de cuerda,barrera de soga,valla de cuerda,valla de soga"
                 },
                 "barrier/sally_port": {
                     "name": "Poterna de acceso",
@@ -4306,6 +4364,10 @@
                 "barrier/wall/noise_barrier": {
                     "name": "Barrera de ruido",
                     "terms": "barrera acústica,muro de ruido,pared de ruido,barrera de sonido,berma de sonido,muro de sonido"
+                },
+                "barrier/wicket_gate": {
+                    "name": "Portillo peatonal",
+                    "terms": "portillo peatonal,puerta peatonal"
                 },
                 "boundary": {
                     "name": "Límite"
@@ -4411,6 +4473,10 @@
                 "building/garages": {
                     "name": "Garajes",
                     "terms": "garajes,cocheras"
+                },
+                "building/ger": {
+                    "name": "Yurta",
+                    "terms": "yurta"
                 },
                 "building/grandstand": {
                     "name": "Tribuna",
@@ -5067,9 +5133,9 @@
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
                 },
-                "highway/crossing/signals": {
+                "highway/crossing/traffic_signals": {
                     "name": "Cruce con señales para peatones",
-                    "terms": "semáforo para peatones,paso de peatones,paso de bicicletas"
+                    "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "Cruce peatonal marcado"
@@ -5104,6 +5170,10 @@
                     "name": "Cruce de ciclovía sin marcar",
                     "terms": "cruce de carril bici,cruce de ciclovía,cruce de bicicleta,cruce de bici"
                 },
+                "highway/cycleway/moped_link-NL": {
+                    "name": "Enlace de ciclomotor",
+                    "terms": "enlace,ciclomotor,motocicleta,moto,motoneta"
+                },
                 "highway/elevator": {
                     "name": "Ascensor",
                     "terms": "ascensor,elevador,montacargas"
@@ -5111,6 +5181,10 @@
                 "highway/elevator_line": {
                     "name": "Ascensor inclinado",
                     "terms": "teleférico,funicular aéreo,funicular de aire"
+                },
+                "highway/emergency_access_point": {
+                    "name": "Punto de acceso de emergencia",
+                    "terms": "rescate,emergencia,marcador de emergencia"
                 },
                 "highway/emergency_bay": {
                     "name": "Lugar de parada de emergencia",
@@ -5131,6 +5205,9 @@
                 "highway/footway/crossing": {
                     "name": "Cruce peatonal"
                 },
+                "highway/footway/informal": {
+                    "name": "Camino peatonal informal"
+                },
                 "highway/footway/marked": {
                     "name": "Cruce peatonal marcado",
                     "terms": "cebra,paso de cebra,cruce marcado,paso de peatones,cruce de peatones"
@@ -5139,9 +5216,9 @@
                     "name": "Acera",
                     "terms": "acera,vereda,banqueta,andén"
                 },
-                "highway/footway/signals": {
+                "highway/footway/traffic_signals": {
                     "name": "Cruce con señales para peatones",
-                    "terms": "semáforo para peatones,paso de peatones,paso de bicicletas,lomo de burro,lomada,bajar velocidad"
+                    "terms": "semáforo para peatones,señal para peatones,cruce de peatones,paso de peatones,paso de bicicletas"
                 },
                 "highway/footway/unmarked": {
                     "name": "Cruce sin marcar",
@@ -5285,6 +5362,10 @@
                 "highway/speed_camera": {
                     "name": "Radar de tráfico / Cámara de velocidad",
                     "terms": "cámara de velocidad,camara de velocidad,radar de velocidad,radares de tráfico,cámara,camara,radar,tráfico,trafico,trampa,cámara de policía de tráfico,cámara de luz roja,fotomulta,radar de foto,cámara de carril de autobús,límite velocidad,control velocidad,fotorradar"
+                },
+                "highway/speed_display": {
+                    "name": "Señal de velocidad por radar",
+                    "terms": "señal de retroalimentación al conductor,pantalla de velocidad dinámica,mensaje de velocidad,tablero de velocidad,señal de radar de velocidad,señal para calmar el tráfico,señal de velocidad"
                 },
                 "highway/steps": {
                     "name": "Escaleras",
@@ -5584,13 +5665,17 @@
                     "name": "Cuartel",
                     "terms": "barracas,albergue,tropa,soldados,militar,ejército,fuerza aérea,marina,armada,fuerza naval"
                 },
+                "landuse/military/base": {
+                    "name": "Base militar",
+                    "terms": "fuerza aérea,ejército,base,guardia fronteriza,guardia costera,lucha,fuerza,guardia,tropa,guerra"
+                },
+                "landuse/military/base/navy": {
+                    "name": "Base naval",
+                    "terms": "base,lucha,fuerza,guardia,marina,armada,barco,submarino,tropa,guerra"
+                },
                 "landuse/military/danger_area": {
                     "name": "Área de peligro",
                     "terms": "zona de peligro,bombas,minas,munición,explosivo,militar,ejército,fuerza aérea,marina,armada,fuerza naval"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Base naval",
-                    "terms": "base,buque naval,buque de guerra,buque militar,barco militar,puerto naval,submarino,anfibio,militar,ejército,fuerza aérea,marina,armada,fuerza naval"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Carrera de obstáculos militares",
@@ -5949,6 +6034,10 @@
                     "name": "Campo de softbol",
                     "terms": "campo,cancha,softball,diamante"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "Mesa de fútbol de mesa",
+                    "terms": "futbolín,futbolito,metegol,fulbito,futmesa,taca-taca,fulbatin,tacatocó,futillo,fulbacho x,canchitas,tiragol,fulbote"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "Mesa de ping pong",
                     "terms": "mesa,ping pong,tenis de mesa,pimpón"
@@ -6083,6 +6172,10 @@
                 "man_made/cairn": {
                     "name": "Mojón de piedras apiladas",
                     "terms": "pila de piedra,pila de piedras,càrn,cairn,montículo de piedras apiladas,mojón de piedras apiladas,hito de piedras apiladas"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Colgador de alfombras",
+                    "terms": "colgador de alfombras,soporte para alfombras,estante para alfombras"
                 },
                 "man_made/chimney": {
                     "name": "Chimenea",
@@ -6234,6 +6327,10 @@
                 "man_made/pipeline/valve": {
                     "name": "Válvula de tubería",
                     "terms": "petróleo,gas natural,agua,alcantarillado,aguas residuales"
+                },
+                "man_made/planter": {
+                    "name": "Maceta",
+                    "terms": "maceta,tiesto"
                 },
                 "man_made/pumping_station": {
                     "name": "Estación de bombeo",
@@ -7563,6 +7660,10 @@
                     "name": "Tienda de ropa de segunda mano",
                     "terms": "blusas,ropa,ropa usada,vestidos,pantalones,segunda mano,camisas,pantalones cortos,faldas,trajes,usados"
                 },
+                "shop/clothes/suits": {
+                    "name": "Tienda de trajes",
+                    "terms": "traje,corbata"
+                },
                 "shop/clothes/underwear": {
                     "name": "Tienda de ropa interior",
                     "terms": "boutique,sosten,sostenes,calzoncillos,boxers,moda,lencería,bragas,calzones,calcetines,medias,ropa interior"
@@ -7570,6 +7671,10 @@
                 "shop/clothes/wedding": {
                     "name": "Tienda de ropa para bodas",
                     "terms": "boutique,novia,novio,dama de honor,padrino de boda,esmoquin,vestido de novia"
+                },
+                "shop/clothes/workwear": {
+                    "name": "Tienda de ropa de trabajo",
+                    "terms": "artesano,calzado de seguridad"
                 },
                 "shop/coffee": {
                     "name": "Tienda de café",
@@ -8355,7 +8460,8 @@
                     "terms": "velocidad máxima,velocidad maxima,radar,cámara de velocidad,camara de velocidad"
                 },
                 "type/multipolygon": {
-                    "name": "Multipolígono"
+                    "name": "Multipolígono",
+                    "terms": "multipolígono,polígono,múltiple,multi-polígono"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "Grupo de área de parada de transporte",
@@ -8456,6 +8562,10 @@
                 "type/route/power": {
                     "name": "Ruta de red elécrica",
                     "terms": "línea de alta tensión,cable,electricidad,energía,red elećtrica,línea electrica"
+                },
+                "type/route/railway": {
+                    "name": "Ruta del ferrocarril",
+                    "terms": "ruta,ferrocarril,ferroviaria"
                 },
                 "type/route/road": {
                     "name": "Ruta de carretera",

@@ -6,11 +6,10 @@ import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.data.elementfilter.filters.toOverpassString
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import java.util.EnumSet
 
 /** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
-    elementTypes: EnumSet<ElementsTypeFilter>,
+    elementTypes: Set<ElementsTypeFilter>,
     private val expr: BooleanExpression<ElementFilter, Element>?
 ) {
     private val elementTypes = elementTypes.toOqlNames()
@@ -40,11 +39,11 @@ class OverpassQueryCreator(
         }
     }
 
-    private fun EnumSet<ElementsTypeFilter>.toOqlNames(): List<String> = when {
+    private fun Set<ElementsTypeFilter>.toOqlNames(): List<String> = when {
         containsAll(listOf(NODES, WAYS, RELATIONS)) ->  listOf("nwr")
         containsAll(listOf(NODES, WAYS)) ->             listOf("nw")
         containsAll(listOf(WAYS, RELATIONS)) ->         listOf("wr")
-        else -> map { when (it!!) {
+        else -> map { when (it) {
             NODES -> "node"
             WAYS -> "way"
             RELATIONS -> "rel"
@@ -150,3 +149,7 @@ class OverpassQueryCreator(
         override fun toString() = values.joinToString(" and ")
     }
 }
+
+/** @return this expression as a Overpass query string */
+fun ElementFilterExpression.toOverpassQLString(): String =
+    OverpassQueryCreator(elementsTypes, elementExprRoot).create()

@@ -28,8 +28,8 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val wikiLink = "Key:diet"
     override val icon = R.drawable.ic_quest_restaurant_vegetarian
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(VEG, CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegetarian_title2
 

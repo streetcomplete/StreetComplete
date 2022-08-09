@@ -1,6 +1,7 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 mobileCountryCode: 467
 officialLanguages: [ko]
+postboxesHaveCollectionTimes: true
 workweekDays: 6
 orchardProduces: [apple, chilli_pepper, sweet_pepper, peach, pear, tomato, chestnut, hop]

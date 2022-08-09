@@ -942,7 +942,7 @@
     <string name="quest_board_type_wildlife">"สัตว์ป่า"</string>
     <string name="quest_board_type_nature">"ธรรมชาติ (หลายหัวข้อ)"</string>
     <string name="quest_board_type_notice_board">"เป็นป้ายประกาศข่าวสาร"</string>
-    <string name="quest_board_type_public_transport">"ขนส่งสาธารนะ"</string>
+    <string name="quest_board_type_public_transport">"ขนส่งสาธารณะ"</string>
 
     <!-- Fuzzy -->
     <string name="quest_board_type_title">"หัวข้อของกระดานข้อมูลนี้คืออะไร?"</string>
@@ -1298,7 +1298,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"เวลาไขตู้ยังถูกรึเปล่า?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน๊ตไว้"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน้ตไว้"</string>
     <string name="quest_bicycle_barrier_type_title">"รั้วกั้นจักรยานเป็นแบบไหน?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"ทแยงมุมกับทาง"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ด้านบนแคบกว่าด้านล่าง คล้ายตัว A"</string>
@@ -1306,7 +1306,7 @@
     <string name="quest_barrier_bicycle_type_double">"ซิกแซก มีรั้วสองชั้น"</string>
     <string name="quest_barrier_bicycle_type_multiple">"ซิกแซก มีรั้วมากกว่าสองชั้น"</string>
     <string name="pref_title_language_select">"เลือกภาษา"</string>
-    <string name="language_default">"ค่าเริ่มต้น"</string>
+    <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
     <string name="on_floor">"บนชั้น %s"</string>
     <string name="quest_street_parking_title">"ตรงนี้จอดรถได้รึเปล่า?"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
@@ -1364,7 +1364,7 @@
     <string name="quest_smoothness_title_intermediate">"ขรุขระนิดหน่อย"</string>
     <string name="quest_smoothness_title_bad">"ขรุขระ"</string>
     <string name="quest_smoothness_title_very_bad">"ขรุขระมาก"</string>
-    <string name="quest_smoothness_title_horrible">"ขระขระมากและเอียง"</string>
+    <string name="quest_smoothness_title_horrible">"ขรุขระมากและเอียง"</string>
     <string name="quest_smoothness_title_very_horrible">"แทบจะขับผ่านไม่ได้"</string>
     <string name="quest_smoothness_title_impassable">"ขับผ่านไม่ได้"</string>
     <string name="quest_smoothness_description_excellent_paved">"ไม่มีหลุมหรือรอย"</string>
@@ -1450,8 +1450,8 @@
     <string name="quest_sidewalk_answer_none">"ไม่มีทางเท้า"</string>
 
     <!-- Fuzzy -->
-    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอพของเรา!
-แต่เสียดายที่กูเกิ้ลมีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอพ ลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
+    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอปของเรา!
+แต่เสียดายที่ Google Play มีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอป แม้กระทั่งลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
     <string name="link_osmand_description">"แอพสำหรับแผนที่ออนไลน์และออฟไลน์"</string>
     <string name="link_sunders_description">"แผนที่แสดงกล้องและอุปกรณ์สอดส่องดูแล"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"ขยับเข้าใกล้ลูกศรอีกนิด แต่ระวังรถด้วย!"</string>
@@ -1499,7 +1499,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopBin_title2">"มีถังขยะรึเปล่า?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopLit_title2">"มีไฟส่องสว่างรึเปล่า"</string>
+    <string name="quest_busStopLit_title2">"ป้ายหยุดนี้มีไฟส่องสว่างรึเปล่า"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"ป้ายมีชื่อว่าอะไร?"</string>
@@ -1574,4 +1574,15 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
     <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
     <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
+    <string name="split_way">"แยกทางเป็นสองส่วน"</string>
+    <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
+    <string name="quest_memorialType_statue">"อนุสาวรีย์"</string>
+    <string name="overlay_none">"ไม่มี"</string>
+    <string name="overlay_lit">"ไฟถนน"</string>
+    <string name="lit_value_yes">"มี"</string>
+    <string name="lit_value_no">"ไม่มี"</string>
+    <string name="lit_value_24_7">"ส่องสว่างทั้งกลางวันและกลางคืน"</string>
+    <string name="lit_value_automatic">"ส่องสว่างเฉพาะเมื่อมีคนผ่าน"</string>
+    <string name="overlay_sidewalk">"ทางเท้า"</string>
+    <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
 </resources>

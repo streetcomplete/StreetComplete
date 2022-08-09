@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 edgeLineStyle: white
 hasAdvisorySpeedLimitSign: true
@@ -11,6 +11,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [uk, ru]
 popularReligions: [christian, muslim, jewish]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ЗОНА
 atmOperators: [ПриватБанк, Альфа-Банк, Генбанк, РНКБ, Ощадбанк, Райффайзен Банк Аваль, УкрСиббанк, Райффайзен Банк, АБ Россия, ПУМБ, Укрексімбанк, Укргазбанк, Аваль, Кредобанк, Укрсоцбанк, Приват Банк, Privatbank, Euronet, Крайинвестбанк, Credit Agricole, Райфайзен Банк Аваль, UniCredit Bank, Севастопольский Морской Банк, ЧБРР, Россия, ПАТ "Укрсоцбанк", Промінвестбанк, Банк Россия, Правекс-Банк, Кредитпромбанк, Надра, Райффайзенбанк Аваль, Банк Південний, Полтава-Банк, Crédit Agricole, Банк Хрещатик, Приват, KredoBank, Індустріалбанк, Проминвестбанк, Банк Форум, Надра Банк, Брокбізнесбанк, Експрес-Банк, Сбербанк России, Raiffeisen Bank Aval, Universal Bank, партнер Укрсиббанку, Мегабанк, Приват-Банк, Raiffeisen Bank, Укрінбанк, UniCredit, Privat Bank, Сбербанк, АБ "УКРГАЗБАНК", АБ Россия (ограниченный доступ), ЦРБ, Експрес Банк, Индустриалбанк, Правекс Банк, Банк Січ, АТ "ПРАВЕКС БАНК", РайфайзенБанк Аваль, Райфайзен банк, '"ПриватБанк"', Raiffeisen, Креді Агріколь Банк, Райфайзен, Фінанси і кредит, PromInvestBank, VAB, Банк «КЛІРИНГОВИЙ ДІМ», UniCreditBank, ВТБ Банк, УкрСіббанк, Південний, OTP Bank, Экспресс-банк, Ukrsibbank, Euronet партнер Укрсиббанку, Таскомбанк, Ощад, Райффайзен, '"Ощадбанк"', Oschadbank, VAB Банк, ПАО "ПриватБанк", Надрабанк, Эксимбанк, Брокбизнесбанк, Пивденный, Aval, Укрпромбанк, Індекс Банк, Банк "Аваль", Marfinbank, ВТБ, АТМ, Банк Аккордбанк, Marfin Bank, Сбербанк Росії, Банк Кредит Дніпро, Unex Bank, АТ Ощадбанк, ProCredit Bank, Индустриал банк, ПриваБанк, Приват банкомат, АБ "Експрес-Банк", Банк РОССИИ, ПАТ КБ "ПриватБанк", Oshchadbank, Терминал Приватбанк, АкордБанк, UkrEximBank, Рублев, UKR Exim Bank, Центральный Республиканский Банк, ПАО "РНКБ", Банк ЧБРР, 'Ощадбанк, ПАТ', Альфа Банк, РНКБ Банк (ПАО), MTB Bank, Exim-банк, Термінал, ГосБанк]

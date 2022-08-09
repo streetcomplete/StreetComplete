@@ -135,11 +135,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
             ways with
               highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-              and (
-                !maxspeed
-                or maxspeed > 8
-                or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
-              )
+              and (!maxspeed or maxspeed > 9)
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
               and (
                 lit = yes

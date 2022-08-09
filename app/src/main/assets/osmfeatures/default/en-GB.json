@@ -1397,17 +1397,7 @@
                     "placeholder": "Excellent, Good, Bad..."
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "auto": "Autotransformer",
-                        "auxiliary": "Auxiliary",
-                        "converter": "Converter",
-                        "distribution": "Distribution",
-                        "generator": "Generator",
-                        "phase_angle_regulator": "Phase Angle Regulator",
-                        "traction": "Traction",
-                        "yes": "Unknown"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Trees"
@@ -2716,9 +2706,6 @@
                 "landuse/military/danger_area": {
                     "name": "Danger Area"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Naval Base"
-                },
                 "landuse/military/range": {
                     "name": "Military Range"
                 },
@@ -3869,9 +3856,6 @@
                 },
                 "shop/wine": {
                     "name": "Wine Shop"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Alpine Hut"
                 },
                 "tourism/apartment": {
                     "name": "Guest Apartment / Condo"

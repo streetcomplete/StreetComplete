@@ -97,6 +97,7 @@
                         }
                     },
                     "placeholder": "Не указано",
+                    "terms": "можно,доступно,пускают,открыто,свободно,закрыто,по пропускам,частный,по приглашению",
                     "types": {
                         "access": "Всем",
                         "bicycle": "Велосипедистам",
@@ -2293,17 +2294,7 @@
                     "placeholder": "Отличная, хорошая, плохая…"
                 },
                 "transformer": {
-                    "label": "Тип",
-                    "options": {
-                        "auto": "Автотрансформатор",
-                        "auxiliary": "Вспомогательный",
-                        "converter": "Конвертер",
-                        "distribution": "Распределительный",
-                        "generator": "Генератор",
-                        "phase_angle_regulator": "Фазоповоротный",
-                        "traction": "Тяговый",
-                        "yes": "Неизвестный"
-                    }
+                    "label": "Тип"
                 },
                 "trees": {
                     "label": "Деревья"
@@ -4216,9 +4207,6 @@
                 "landuse/military/danger_area": {
                     "name": "Опасная зона"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Военно-морская база"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Армейская полоса препятствий"
                 },
@@ -6088,10 +6076,6 @@
                 },
                 "tourism": {
                     "name": "Туризм"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Горный приют",
-                    "terms": "убежище,горы,домик"
                 },
                 "tourism/apartment": {
                     "name": "Гостевые апартаменты/квартира"

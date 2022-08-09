@@ -2237,17 +2237,7 @@
                     "placeholder": "Çok iyi, İyi, Kötü"
                 },
                 "transformer": {
-                    "label": "Tür",
-                    "options": {
-                        "auto": "Otomatik dönüştürücü",
-                        "auxiliary": "Yardımcı",
-                        "converter": "Dönüştürücü",
-                        "distribution": "Dağıtım",
-                        "generator": "Üreteç",
-                        "phase_angle_regulator": "Faz Açısı Düzenleyici",
-                        "traction": "Çekme",
-                        "yes": "Bilinmiyor"
-                    }
+                    "label": "Tür"
                 },
                 "trees": {
                     "label": "Ağaçlar"
@@ -4626,10 +4616,6 @@
                     "name": "Tehlikeli Bölge",
                     "terms": "tehlikeli bölge"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Deniz Üssü",
-                    "terms": "deniz üssü"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Askeri Engel Sahası"
                 },
@@ -6723,10 +6709,6 @@
                 },
                 "tourism": {
                     "name": "Turizm Özelliği"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Dağ Evi",
-                    "terms": "dağ evi,dağ kulübesi,baraka"
                 },
                 "tourism/apartment": {
                     "name": "Misafir Apartmanı",

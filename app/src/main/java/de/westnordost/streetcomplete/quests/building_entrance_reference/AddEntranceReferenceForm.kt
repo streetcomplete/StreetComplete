@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import androidx.core.view.isInvisible
@@ -68,6 +69,10 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
         selectNothingSigned?.setOnClickListener { onNothingSigned() }
 
         initKeyboardButton()
+
+        if (flatRangeStartInput != null) {
+            referenceCodeInput?.imeOptions = EditorInfo.IME_ACTION_NEXT
+        }
 
         listOfNotNull(
             referenceCodeInput, flatRangeStartInput, flatRangeEndInput,

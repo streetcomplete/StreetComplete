@@ -1572,12 +1572,19 @@
                     "options": {
                         "carports": "Otvorený prístrešok pre autá",
                         "garage_boxes": "Garáže",
-                        "lane": "Postranné",
+                        "lane": "Postranný pruh",
                         "multi-storey": "Viacúrovňové",
                         "rooftop": "Na streche",
                         "sheds": "Šopy",
                         "surface": "Povrchové",
                         "underground": "Podzemné"
+                    }
+                },
+                "parking/orientation": {
+                    "options": {
+                        "diagonal": "Diagonálne",
+                        "parallel": "Paralelné",
+                        "perpendicular": "Kolmé"
                     }
                 },
                 "parking_entrance": {
@@ -2048,7 +2055,7 @@
                     "placeholder": "2, 4, 6..."
                 },
                 "second_hand": {
-                    "label": "Predaj použitého oblečenia",
+                    "label": "Predaj použitého tovaru",
                     "options": {
                         "no": "Nie",
                         "only": "Iba",
@@ -2272,9 +2279,8 @@
                     "options": {
                         "artificial_turf": "Umelý trávnik",
                         "asphalt": "Asfalt",
-                        "compacted": "Kompaktný",
+                        "compacted": "Kompaktný (makadam)",
                         "concrete": "Betón",
-                        "dirt": "Špina",
                         "grass": "Tráva",
                         "gravel": "Štrk",
                         "ground": "Zem",
@@ -2431,17 +2437,7 @@
                     "placeholder": "Výborná, dobrá, zlá..."
                 },
                 "transformer": {
-                    "label": "Typ",
-                    "options": {
-                        "auto": "Auto-transformátor",
-                        "auxiliary": "Pomocný",
-                        "converter": "Menič",
-                        "distribution": "Distribúcia",
-                        "generator": "Generátor",
-                        "phase_angle_regulator": "Fázový regulátor",
-                        "traction": "Pohon",
-                        "yes": "Neznáme"
-                    }
+                    "label": "Typ"
                 },
                 "trees": {
                     "label": "Stromy"
@@ -3015,8 +3011,8 @@
                     "name": "Trajektový terminál"
                 },
                 "amenity/fire_station": {
-                    "name": "Požiarna stanica",
-                    "terms": "hasici,poziarnici,hasicska zbrojnica,hasiči,požiarnici,hasičská zbrojnica"
+                    "name": "Hasičská stanica",
+                    "terms": "hasici,poziarnici,hasicska zbrojnica,hasiči,požiarnici,hasičská zbrojnica,požiarna zbrojnica,poziarna zbrojnica,hasicska stanica"
                 },
                 "amenity/food_court": {
                     "name": "Stravovacia zóna",
@@ -3137,6 +3133,10 @@
                 "amenity/parking/park_ride": {
                     "name": "Odstavné parkovisko",
                     "terms": "park & ride,park&ride,p&r,p & r,p+r,p + r"
+                },
+                "amenity/parking/street-side": {
+                    "name": "Postranné",
+                    "terms": "postranne"
                 },
                 "amenity/parking/underground": {
                     "name": "Podzemné parkovisko"
@@ -4837,10 +4837,6 @@
                 "landuse/military/danger_area": {
                     "name": "Nebezpečná zóna"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Námorná základňa",
-                    "terms": "namorna zakladna"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Vojenská prekážková dráha"
                 },
@@ -4982,7 +4978,8 @@
                     "terms": "hyperextenzna lavicka,hyperextenzia,chrbát,chrbat"
                 },
                 "leisure/fitness_station/parallel_bars": {
-                    "name": "Bradlá"
+                    "name": "Bradlá",
+                    "terms": "bradla"
                 },
                 "leisure/fitness_station/push-up": {
                     "name": "Zariadenie na kľuky"
@@ -5793,7 +5790,8 @@
                     "name": "Kancelária súkromného detektíva"
                 },
                 "office/religion": {
-                    "name": "Náboženský úrad"
+                    "name": "Náboženský úrad",
+                    "terms": "nabozensky urad,farský úrad,farsky urad,fara"
                 },
                 "office/research": {
                     "name": "Výskum a vývoj - kancelária",
@@ -6809,10 +6807,6 @@
                 },
                 "tourism": {
                     "name": "Turistický objeky"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Vysokohorská chata",
-                    "terms": "vysokohorska chata,horska chata,horská chata,chata,nocľah,noclah,prenocovanie"
                 },
                 "tourism/apartment": {
                     "name": "Dovolenkový apartmán"

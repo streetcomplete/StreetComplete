@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
@@ -7,6 +7,7 @@ noStoppingLineStyle: red-white on curb
 officialLanguages: [my]
 popularReligions: [buddhist, christian, muslim, hindu]
 popularSports: [soccer, tennis, sepak_takraw]
+postboxesHaveCollectionTimes: true
 speedUnits: [kilometers per hour, miles per hour]
 atmOperators: [KBZ, KBZ Bank, CB Bank, AGD Bank, AYA Bank, a, CB, MAB, AGD, AYA, C B Bank, UAB Bank, UAB, KBZ ATM, AYA ATM, CB Bank ATM, MAB Bank, Aya Bank ATM, Ayeyarwaddy Bank, MAB ATM, aa, CB ATM, ATM, ကမ္ဘောဇဘဏ် KBZ Bank, Myanma Apex Bank, 1, MCB, ယူနိုက်တက်အမရာဘဏ် UAB ATM]
 orchardProduces: [rubber, chilli_pepper, sweet_pepper, tea, areca_nut, coconut, coffee, cashew_nut, guava, mango, mangosteen]

@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true
@@ -7,6 +7,8 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 230
 officialLanguages: [cs]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZÓNA
 atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Pharro, 'MONETA Money Bank, a.s.', Euronet, Raiffeisenbank, Air Bank, KB, GE Money Bank, UniCredit Bank, Moneta, MONETA Money Bank, 'Česká spořitelna, a.s.', Fio banka, CSOB, 'Komerční banka, a.s.', AirBank, 'Československá obchodní banka, a. s.', GE Money, Česká spořitelna a.s., Komerční banka a.s., Sberbank, Poštovní spořitelna, Citibank, Moneta Bank, ČS, Komeční banka, Raiffeisen Bank, Travelex, Fio, GE, MONETA Money Bank a.s., Era, Oberbank, 'Česká spořitelna, a. s.', UniCreditBank, www.wbtcb.com, České spořitelny, mBank, Raiffeisen, Česká spořitelna a. s., OK Point, Airbank a.s., Česká spořítelna]

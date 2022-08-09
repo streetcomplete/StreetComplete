@@ -296,6 +296,13 @@
                 "barrier": {
                     "label": "Type"
                 },
+                "barrier_planter": {
+                    "label": "Barrière",
+                    "options": {
+                        "planter": "Ja",
+                        "undefined": "Nee"
+                    }
+                },
                 "basin": {
                     "label": "Type"
                 },
@@ -1419,6 +1426,9 @@
                 "landuse": {
                     "label": "Type"
                 },
+                "lane_markings": {
+                    "label": "Rijstrookmarkering"
+                },
                 "lanes": {
                     "label": "Rijstroken",
                     "placeholder": "1, 2, 3 …",
@@ -1579,6 +1589,9 @@
                 "maxweight_bridge": {
                     "label": "Max. gewicht",
                     "terms": "maximum gewicht,mtm,gewichtsbeperking,tonnagepebeperking,tonnagelimiet"
+                },
+                "maxwidth": {
+                    "label": "Maximale breedte"
                 },
                 "memorial": {
                     "label": "Type"
@@ -2456,6 +2469,14 @@
                         "multi": "Meerdere"
                     }
                 },
+                "sport_pub": {
+                    "label": "Sporten",
+                    "options": {
+                        "billiards": "Biljart",
+                        "darts": "Darts",
+                        "table_soccer": "Tafelvoetbal"
+                    }
+                },
                 "sport_racing_motor": {
                     "label": "Sporten",
                     "options": {
@@ -2783,17 +2804,7 @@
                     "terms": "zichtbaarheid pad"
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "auto": "Auto-/Spaartransformator",
-                        "auxiliary": "Hulptransformator",
-                        "converter": "HVDC-converter",
-                        "distribution": "Distributie",
-                        "generator": "Generator",
-                        "phase_angle_regulator": "Dwarsregeltransformator",
-                        "traction": "Tractie",
-                        "yes": "Onbekend"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Bomen"
@@ -2994,6 +3005,13 @@
                     "label": "Wikkelingen",
                     "placeholder": "1, 2, 3 …",
                     "terms": "windingen,transormator,transfo,spoel"
+                },
+                "windings/auto": {
+                    "options": {
+                        "no": "Nee",
+                        "undefined": "Aangenomen van niet",
+                        "yes": "Ja"
+                    }
                 },
                 "windings/configuration": {
                     "label": "Wikkelingconfiguratie",
@@ -4165,6 +4183,15 @@
                     "name": "Grenscontrole",
                     "terms": "douane"
                 },
+                "barrier/bump_gate": {
+                    "name": "Duwhek"
+                },
+                "barrier/bus_trap": {
+                    "name": "Bussluis"
+                },
+                "barrier/cable_barrier": {
+                    "name": "Kabelbarrière"
+                },
                 "barrier/cattle_grid": {
                     "name": "Wildrooster",
                     "terms": "koeienrooster"
@@ -4377,6 +4404,10 @@
                 "building/garages": {
                     "name": "Garages (privéstalling voor voertuigen)",
                     "terms": "autogarage"
+                },
+                "building/ger": {
+                    "name": "Joert",
+                    "terms": "yurt,ger"
                 },
                 "building/grandstand": {
                     "name": "Overdekte tribune",
@@ -5028,10 +5059,6 @@
                     "name": "Gemarkeerde Voetgangersoversteekplaats",
                     "terms": "oversteekplaats,zebrapad,voetganger,gemarkeerde"
                 },
-                "highway/crossing/signals": {
-                    "name": "Kruispunt met signalen voor voetgangers",
-                    "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
-                },
                 "highway/crossing/uncontrolled": {
                     "name": "Gemarkeerde voetgangersoversteekplaats"
                 },
@@ -5073,6 +5100,9 @@
                     "name": "Hellende lift",
                     "terms": "schuine lift,hellende lift,onder hoek"
                 },
+                "highway/emergency_access_point": {
+                    "name": "Reddingspunt"
+                },
                 "highway/emergency_bay": {
                     "name": "Vluchthaven",
                     "terms": "nooddienst,spoed"
@@ -5091,6 +5121,9 @@
                 "highway/footway/crossing": {
                     "name": "Voetgangersoversteekplaats"
                 },
+                "highway/footway/informal": {
+                    "name": "Informeel voetpad"
+                },
                 "highway/footway/marked": {
                     "name": "Gemarkeerde Voetgangersoversteekplaats",
                     "terms": "zebrapad,oversteekplaats,gemarkeerde,aangeduide,voetganger"
@@ -5098,10 +5131,6 @@
                 "highway/footway/sidewalk": {
                     "name": "Stoep",
                     "terms": "voetpad,trottoir"
-                },
-                "highway/footway/signals": {
-                    "name": "Kruispunt met signalen voor voetgangers",
-                    "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
                 },
                 "highway/footway/unmarked": {
                     "name": "Ongemarkeerde Voetgangersoversteekplaats",
@@ -5244,6 +5273,9 @@
                 "highway/speed_camera": {
                     "name": "Flitspaal",
                     "terms": "snelheidscamera,flitser,flitskast,vogelkotje,nestkastje,vogelkastje"
+                },
+                "highway/speed_display": {
+                    "name": "Snelheidsdisplay"
                 },
                 "highway/steps": {
                     "name": "Trap",
@@ -5542,10 +5574,6 @@
                 "landuse/military/danger_area": {
                     "name": "Militaire gevarenzone",
                     "terms": "bommen,munitie,leger,gevarenzone,geen toegang,ontruimingszone,militaire ontruimingszone"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Marinebasis",
-                    "terms": "militair,leger,zeemacht"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Militair hindernissenparcours"
@@ -5886,6 +5914,9 @@
                 "leisure/pitch/softball": {
                     "name": "Softbalveld"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "Tafelvoetbaltafel"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "Pingpongtafel",
                     "terms": "tafeltennistafel"
@@ -6008,6 +6039,9 @@
                 },
                 "man_made/cairn": {
                     "name": "Cairn (steengraf)"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Tapijtrek"
                 },
                 "man_made/chimney": {
                     "name": "Industriële schoorsteen",
@@ -7405,6 +7439,9 @@
                     "name": "Tweedehands kledingwinkel",
                     "terms": "kledij,tweedehands"
                 },
+                "shop/clothes/suits": {
+                    "name": "Pakkenwinkel"
+                },
                 "shop/clothes/underwear": {
                     "name": "Winkel voor ondergoed",
                     "terms": "onderboek,bh,slip"
@@ -7412,6 +7449,9 @@
                 "shop/clothes/wedding": {
                     "name": "Trouwkledingwinkel",
                     "terms": "trouwkleed,pak,huwelijk"
+                },
+                "shop/clothes/workwear": {
+                    "name": "Werkkledingwinkel"
                 },
                 "shop/coffee": {
                     "name": "Koffiewinkel",
@@ -7959,8 +7999,7 @@
                     "name": "Toerisme-object"
                 },
                 "tourism/alpine_hut": {
-                    "name": "Berghut",
-                    "terms": "hut"
+                    "name": "Berghut"
                 },
                 "tourism/apartment": {
                     "name": "Vakantieappartement",
@@ -7979,7 +8018,7 @@
                     "terms": "figuur"
                 },
                 "tourism/artwork/graffiti": {
-                    "name": "Graffitie",
+                    "name": "Graffiti",
                     "terms": "streetart"
                 },
                 "tourism/artwork/installation": {
@@ -8300,6 +8339,9 @@
                 "type/route/power": {
                     "name": "Elektriciteitsleidingstraject",
                     "terms": "elektriciteitslijnroute,elektriciteitslijntraject,elektriciteitsleidingsroute"
+                },
+                "type/route/railway": {
+                    "name": "Spoorwegroute"
                 },
                 "type/route/road": {
                     "name": "Autoroute",

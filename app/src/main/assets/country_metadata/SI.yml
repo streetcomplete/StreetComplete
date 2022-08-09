@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -10,6 +10,7 @@ noStoppingLineStyle: yellow
 officialLanguages: [sl]
 popularReligions: [christian, muslim]
 popularSports: [soccer, basketball, tennis, golf, boules, equestrian]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: CONA
 atmOperators: [NLB, NKBM, Abanka, Nova KBM, SKB, Gorenjska banka, Banka Koper, NKBM d.d., UniCredit Bank, Delavska hranilnica, Banka Celje, Bitnik d.o.o., Euronet, Nova Ljubljanska banka, SKB banka, Nova Ljubljanska banka d.d., NLB d. d., NovaKBM, Addiko Bank, A banka, Bitnik, Intesa San Paolo, Hypo Alpe-Adria-Bank d.d.]

@@ -82,7 +82,7 @@ class AddCyclewayTest {
         ))
         val p1 = p(0.0, 0.0)
         val p2 = p1.translate(50.0, 45.0)
-        val p3 = p1.translate(13.0, 135.0)
+        val p3 = p1.translate(12.999, 135.0)
         val p4 = p3.translate(50.0, 45.0)
 
         mapData.wayGeometriesById[1L] = ElementPolylinesGeometry(listOf(listOf(p1, p2)), p1)

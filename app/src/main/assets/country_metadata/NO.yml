@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: white
 centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
@@ -7,6 +7,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 242
 officialLanguages: [nb, nn, no]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: Sone
 atmOperators: [Nordea, DNB, Sparebanken Sør, Sandnes Sparebank, Nokas, Sparebanken Vest, DnB NOR, Sparebank1, Sparebanken Sogn og Fjordane, Haugesund Sparebank, SpareBank 1, Danske Bank, Sparebanken Møre, Sparebank1 SR-Bank, SpareBank 1 SMN, SpareBank 1 SR-Bank, Helgeland Sparebank, Tinn Sparebank, Sparebank1 Nord-Norge, SpareBank, Sparebanken Øst]
