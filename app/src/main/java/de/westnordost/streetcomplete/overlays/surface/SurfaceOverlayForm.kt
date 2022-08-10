@@ -1,3 +1,4 @@
+// TODO switching between surface and cycleway:surface / footway:surface modes
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
