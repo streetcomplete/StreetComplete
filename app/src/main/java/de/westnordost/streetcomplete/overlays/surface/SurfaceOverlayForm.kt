@@ -178,8 +178,8 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             is CyclewayFootwaySurfaces ->
                 selectedStatusForCyclewaySurface?.value != status.cycleway || selectedStatusForFootwaySurface?.value != status.footway
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
-            null -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
-            is SurfaceMissing -> false
+            is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            null -> throw Exception("null pointer exceeeeeeeeeeption (should be impossible)")
         }
     }
 
