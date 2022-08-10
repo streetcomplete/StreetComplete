@@ -86,6 +86,10 @@ class MapDataCache(
                     }
                 }
                 way.nodeIds.forEach {
+                    // only put if the node is in spatial cache, or if we're trying to put it there
+                    // todo: why not for all nodes?
+                    //  if the check is not done, put is faster
+                    //  maybe we have some unnecessary entries in cache, but it's not going to be much
                     if (it in nodeIds)
                         wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
                 }

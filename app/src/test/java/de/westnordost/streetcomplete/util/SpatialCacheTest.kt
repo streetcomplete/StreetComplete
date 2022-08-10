@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.intersect
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
