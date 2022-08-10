@@ -74,7 +74,17 @@ fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
     if (surfaceValue in Surface.surfaceReplacements) {
         surfaceValue = Surface.surfaceReplacements[surfaceValue]
     }
-    return Surface.values().find { it.osmValue == surfaceValue }
+    val foundSurface = Surface.values().find { it.osmValue == surfaceValue }
+
+    // PAVED_AREA and UNPAVED_AREA are more geenric - and this can be also asked
+    // for objects which are not roads
+    if (foundSurface == Surface.PAVED_ROAD) {
+        return Surface.PAVED_AREA
+    }
+    if (foundSurface == Surface.UNPAVED_ROAD) {
+        return Surface.UNPAVED_AREA
+    }
+    return foundSurface
 }
 
 fun commonSurfaceDescription(surfaceA: String, surfaceB: String): String? {
