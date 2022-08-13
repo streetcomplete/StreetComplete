@@ -59,8 +59,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply description answer when it was not signed but already had an opening hours`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "my opening hours"),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "my opening hours",
+                "opening_hours:signed" to "no"
+            ),
             DescribeOpeningHours("my cool \"opening\" hours"),
             StringMapEntryModify("opening_hours", "my opening hours", "\"my cool opening hours\""),
             StringMapEntryDelete("opening_hours:signed")
@@ -69,8 +71,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply same description answer again when it was not signed before`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "\"oh\""),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "\"oh\"",
+                "opening_hours:signed" to "no"
+            ),
             DescribeOpeningHours("oh"),
             StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
             StringMapEntryDelete("opening_hours:signed")
@@ -138,8 +142,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply always open answer when it was not signed but present before`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "24/7"),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "no"
+            ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
             StringMapEntryDelete("opening_hours:signed")
@@ -148,8 +154,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply always open answer when it was not signed but there was a different answer before`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "34/3"),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "34/3",
+                "opening_hours:signed" to "no"
+            ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "34/3", "24/7"),
             StringMapEntryDelete("opening_hours:signed")
@@ -249,8 +257,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply opening hours answer when it was not signed but there was a different one before`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "hohoho"),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "hohoho",
+                "opening_hours:signed" to "no"
+            ),
             RegularOpeningHours(OpeningHoursRuleList(listOf(
                 Rule().apply {
                     days = listOf(WeekDayRange().also {
@@ -269,8 +279,10 @@ class AddOpeningHoursTest {
 
     @Test fun `apply opening hours answer when it was not signed but there was the same one before`() {
         questType.verifyAnswer(
-            mapOf("opening_hours" to "Mo 10:00-12:00"),
-            mapOf("opening_hours:signed" to "no"),
+            mapOf(
+                "opening_hours" to "Mo 10:00-12:00",
+                "opening_hours:signed" to "no"
+            ),
             RegularOpeningHours(OpeningHoursRuleList(listOf(
                 Rule().apply {
                     days = listOf(WeekDayRange().also {
