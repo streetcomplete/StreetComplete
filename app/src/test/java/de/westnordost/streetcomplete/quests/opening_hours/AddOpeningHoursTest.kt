@@ -77,6 +77,7 @@ class AddOpeningHoursTest {
             ),
             DescribeOpeningHours("oh"),
             StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
@@ -148,6 +149,7 @@ class AddOpeningHoursTest {
             ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
@@ -295,6 +297,7 @@ class AddOpeningHoursTest {
                 })
             )),
             StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
             StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
