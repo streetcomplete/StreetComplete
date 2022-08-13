@@ -53,7 +53,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours:signed" to "no"),
             DescribeOpeningHours("my cool \"opening\" hours"),
             StringMapEntryAdd("opening_hours", "\"my cool opening hours\""),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -65,7 +65,7 @@ class AddOpeningHoursTest {
             ),
             DescribeOpeningHours("my cool \"opening\" hours"),
             StringMapEntryModify("opening_hours", "my opening hours", "\"my cool opening hours\""),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -77,7 +77,7 @@ class AddOpeningHoursTest {
             ),
             DescribeOpeningHours("oh"),
             StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -136,7 +136,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours:signed" to "no"),
             AlwaysOpen,
             StringMapEntryAdd("opening_hours", "24/7"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -148,7 +148,7 @@ class AddOpeningHoursTest {
             ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -160,7 +160,7 @@ class AddOpeningHoursTest {
             ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "34/3", "24/7"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -251,7 +251,7 @@ class AddOpeningHoursTest {
                 })
             )),
             StringMapEntryAdd("opening_hours", "Mo 10:00-12:00; Tu 12:00-24:00"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -273,7 +273,7 @@ class AddOpeningHoursTest {
                 })
             )),
             StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
@@ -295,7 +295,7 @@ class AddOpeningHoursTest {
                 })
             )),
             StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
-            StringMapEntryDelete("opening_hours:signed")
+            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
