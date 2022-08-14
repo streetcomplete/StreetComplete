@@ -261,4 +261,27 @@ class AddOpeningHoursTest {
             timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
         )))
     }
+
+    @Test fun `isApplicableTo returns false if the opening hours are not signed`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
+    }
+    
+    @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "no"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
+    }
 }
