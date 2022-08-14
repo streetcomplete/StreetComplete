@@ -65,6 +65,30 @@ class CheckOpeningHoursSignedTest {
         )
     }
 
+    @Test fun `apply yes answer with no prior check date and existing opening hours via other means`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "my opening hours",
+                "opening_hours:signed" to "no"
+            ),
+            true,
+            StringMapEntryDelete("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", "1970-01-01"),
+        )
+    }
+
+    @Test fun `apply yes answer with prior check date and existing opening hours via other means`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "\"oh\"",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to "2020-03-04"
+            ),
+            true,
+            StringMapEntryDelete("opening_hours:signed", "no"),
+        )
+    }
+
     @Test fun `apply no answer`() {
         questType.verifyAnswer(
             mapOf("opening_hours:signed" to "no"),
@@ -77,6 +101,31 @@ class CheckOpeningHoursSignedTest {
     @Test fun `apply no answer with prior check date`() {
         questType.verifyAnswer(
             mapOf(
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to "2020-03-04"
+            ),
+            false,
+            StringMapEntryModify("opening_hours:signed", "no", "no"),
+            StringMapEntryModify("check_date:opening_hours", "2020-03-04", LocalDate.now().toCheckDateString()),
+        )
+    }
+    
+    @Test fun `apply no answer with existing opening hours via other means`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "no"
+            ),
+            false,
+            StringMapEntryModify("opening_hours:signed", "no", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
+        )
+    }
+
+    @Test fun `apply no answer with prior check date and existing opening hours via other means`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "Mo 10:00-12:00",
                 "opening_hours:signed" to "no",
                 "check_date:opening_hours" to "2020-03-04"
             ),
