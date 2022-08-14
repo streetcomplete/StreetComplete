@@ -48,40 +48,6 @@ class AddOpeningHoursTest {
         )
     }
 
-    @Test fun `apply description answer when it was not signed before`() {
-        questType.verifyAnswer(
-            mapOf("opening_hours:signed" to "no"),
-            DescribeOpeningHours("my cool \"opening\" hours"),
-            StringMapEntryAdd("opening_hours", "\"my cool opening hours\""),
-            StringMapEntryDelete("opening_hours:signed", "no")
-        )
-    }
-
-    @Test fun `apply description answer when it was not signed but already had an opening hours`() {
-        questType.verifyAnswer(
-            mapOf(
-                "opening_hours" to "my opening hours",
-                "opening_hours:signed" to "no"
-            ),
-            DescribeOpeningHours("my cool \"opening\" hours"),
-            StringMapEntryModify("opening_hours", "my opening hours", "\"my cool opening hours\""),
-            StringMapEntryDelete("opening_hours:signed", "no")
-        )
-    }
-
-    @Test fun `apply same description answer again when it was not signed before`() {
-        questType.verifyAnswer(
-            mapOf(
-                "opening_hours" to "\"oh\"",
-                "opening_hours:signed" to "no"
-            ),
-            DescribeOpeningHours("oh"),
-            StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
-            StringMapEntryDelete("opening_hours:signed", "no")
-        )
-    }
-
     @Test fun `apply no opening hours sign answer`() {
         questType.verifyAnswer(
             NoOpeningHoursSign,
@@ -226,79 +192,6 @@ class AddOpeningHoursTest {
             )),
             StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
-        )
-    }
-
-    @Test fun `apply opening hours answer when it was not signed before`() {
-        questType.verifyAnswer(
-            mapOf("opening_hours:signed" to "no"),
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                },
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.TU
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 12
-                        it.end = 60 * 24
-                    })
-                })
-            )),
-            StringMapEntryAdd("opening_hours", "Mo 10:00-12:00; Tu 12:00-24:00"),
-            StringMapEntryDelete("opening_hours:signed", "no")
-        )
-    }
-
-    @Test fun `apply opening hours answer when it was not signed but there was a different one before`() {
-        questType.verifyAnswer(
-            mapOf(
-                "opening_hours" to "hohoho",
-                "opening_hours:signed" to "no"
-            ),
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                })
-            )),
-            StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00"),
-            StringMapEntryDelete("opening_hours:signed", "no")
-        )
-    }
-
-    @Test fun `apply opening hours answer when it was not signed but there was the same one before`() {
-        questType.verifyAnswer(
-            mapOf(
-                "opening_hours" to "Mo 10:00-12:00",
-                "opening_hours:signed" to "no"
-            ),
-            RegularOpeningHours(OpeningHoursRuleList(listOf(
-                Rule().apply {
-                    days = listOf(WeekDayRange().also {
-                        it.startDay = WeekDay.MO
-                    })
-                    times = listOf(TimeSpan().also {
-                        it.start = 60 * 10
-                        it.end = 60 * 12
-                    })
-                })
-            )),
-            StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString()),
-            StringMapEntryDelete("opening_hours:signed", "no")
         )
     }
 
