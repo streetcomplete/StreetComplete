@@ -45,6 +45,30 @@ class CheckOpeningHoursSignedTest {
         ))))
     }
 
+    @Test fun `is applicable to old place with existing opening hours via other means`() {
+        assertTrue(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
+            "name" to "XYZ",
+            "opening_hours" to "24/7",
+            "opening_hours:signed" to "no"
+        ))))
+    }
+
+    @Test fun `is not applicable to old place with signed hours`() {
+        assertFalse(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
+            "name" to "XYZ",
+            "opening_hours:signed" to "yes"
+        ))))
+    }
+
+
+    @Test fun `is not applicable to old place with signed hours with hours specified`() {
+        assertFalse(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
+            "name" to "XYZ",
+            "opening_hours" to "Mo 10:00-12:00",
+            "opening_hours:signed" to "yes"
+        ))))
+    }
+
     @Test fun `apply yes answer with no prior check date`() {
         questType.verifyAnswer(
             mapOf("opening_hours:signed" to "no"),
