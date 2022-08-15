@@ -1,6 +1,6 @@
 v46.0-beta1: |
   <ul>
-  <li>Road surface: Ask for confirmation when selection contradicts a previous selection (#4105, #662 #4063), by @matkoniecz</li>
+  <li>Road surface: Ask for confirmation when selection contradicts surface firmness info (tracktype), ask surface question where such conflict is present (#4105, #662 #4063), by @matkoniecz</li>
   <li>Disable some quests by default: orchard produce, building levels (#4264), @matkoniecz</li>
   <li>Fix: Was unable to edit tunnels in overlays (#4269), thanks @matkoniecz</li>
   </ul>
