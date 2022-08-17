@@ -70,7 +70,7 @@ private val streetParkingTaggingNotExpected by lazy { """
 """.toElementFilterExpression() }
 
 
-private val parkingLotStyle = PolygonStyle("#00CCCC")
+private val parkingLotStyle = PolygonStyle(Color.BLUE)
 
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)
@@ -89,19 +89,19 @@ private fun getStreetParkingStyle(element: Element): Style {
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {
-    // https://davidmathlogic.com/colorblind/#%23FF0099-%239900FF-%2300CCCC-%2399DD00-%23FF8800-%23555555
     is StreetParkingPositionAndOrientation -> when (position) {
-        ON_STREET -> StrokeStyle("#FF8800", dashed = false)
-        PAINTED_AREA_ONLY -> StrokeStyle("#FF8800", dashed = true)
-        HALF_ON_KERB -> StrokeStyle("#99DD00")
-        ON_KERB -> StrokeStyle("#00CCCC", dashed = false)
-        STREET_SIDE -> StrokeStyle("#00CCCC", dashed = true)
+        ON_STREET ->         StrokeStyle(Color.GOLD, dashed = false)
+        PAINTED_AREA_ONLY -> StrokeStyle(Color.GOLD, dashed = true)
+        HALF_ON_KERB ->      StrokeStyle(Color.AQUAMARINE)
+        ON_KERB ->           StrokeStyle(Color.BLUE, dashed = false)
+        STREET_SIDE ->       StrokeStyle(Color.BLUE, dashed = true)
     }
-    NoStreetParking,
+    NoStreetParking ->          StrokeStyle(Color.BLACK, dashed = true)
     StreetStandingProhibited,
     StreetParkingProhibited,
-    StreetStoppingProhibited -> StrokeStyle("#555555")
-    StreetParkingSeparate -> StrokeStyle(Color.INVISIBLE)
-    UnknownStreetParking -> StrokeStyle(Color.UNSUPPORTED)
-    IncompleteStreetParking, null -> StrokeStyle(Color.UNSPECIFIED)
+    StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
+    StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
+    UnknownStreetParking ->     StrokeStyle(Color.CRIMSON, dashed = true)
+    IncompleteStreetParking,
+    null ->                     StrokeStyle(Color.CRIMSON)
 }

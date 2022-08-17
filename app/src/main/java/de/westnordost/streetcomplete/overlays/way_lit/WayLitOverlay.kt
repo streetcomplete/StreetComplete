@@ -46,11 +46,11 @@ private fun getStyle(element: Element): Style {
 
 private val LitStatus?.color get() = when (this) {
     LitStatus.YES,
-    LitStatus.UNSUPPORTED ->   "#ccff00"
-    LitStatus.NIGHT_AND_DAY -> "#33ff00"
-    LitStatus.AUTOMATIC ->     "#00eeff"
-    LitStatus.NO ->            "#555555"
-    null ->                    Color.UNSPECIFIED
+    LitStatus.UNSUPPORTED ->   Color.LIME
+    LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
+    LitStatus.AUTOMATIC ->     Color.SKY
+    LitStatus.NO ->            Color.BLACK
+    null ->                    Color.CRIMSON
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

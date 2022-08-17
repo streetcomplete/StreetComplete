@@ -38,7 +38,7 @@ class SidewalkOverlay : Overlay {
               highway ~ footway|steps
               or highway ~ path|bridleway|cycleway and foot ~ yes|designated
             ) and area != yes
-        """).map { it to PolylineStyle(StrokeStyle("#33cc00")) }
+        """).map { it to PolylineStyle(StrokeStyle(Color.SKY)) }
 
     override fun createForm(element: Element): AbstractOverlayForm? =
         if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
@@ -65,8 +65,8 @@ private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
     tags["highway"] == "living_street" || tags["highway"] == "pedestrian" || tags["highway"] == "service"
 
 private val Sidewalk?.style get() = StrokeStyle(when (this) {
-    Sidewalk.YES           -> "#33cc00"
-    Sidewalk.NO            -> "#555555"
+    Sidewalk.YES           -> Color.SKY
+    Sidewalk.NO            -> Color.BLACK
     Sidewalk.SEPARATE      -> Color.INVISIBLE
-    Sidewalk.INVALID, null -> Color.UNSPECIFIED
+    Sidewalk.INVALID, null -> Color.CRIMSON
 })
