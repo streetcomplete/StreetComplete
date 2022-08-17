@@ -52,6 +52,10 @@ styles:
     map_data-lines:
         base: lines
         blend: translucent
+    map_data-lines-dashed:
+        base: lines
+        blend: translucent
+        dash: [2]
     map_data-polygons:
         base: polygons
         blend: translucent
@@ -66,7 +70,8 @@ styles:
         shaders:
             blocks:
                 color: |
-                    color.a = color.a * smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * x;
     map_data-lines-left:
         base: lines
         blend: inlay
@@ -74,7 +79,28 @@ styles:
         shaders:
             blocks:
                 color: |
-                    color.a = color.a * smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * x;
+    map_data-lines-right-dashed:
+      base: lines
+      blend: inlay
+      texcoords: true
+      shaders:
+          blocks:
+              color: |
+                  float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                  float y = step(0.5, mod(v_texcoord.y, 1.0));
+                  color.a = color.a * x * y;
+    map_data-lines-left-dashed:
+      base: lines
+      blend: inlay
+      texcoords: true
+      shaders:
+          blocks:
+              color: |
+                  float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                  float y = step(0.5, mod(v_texcoord.y, 1.0));
+                  color.a = color.a * x * y;
 
 layers:
     streetcomplete_selected_pins:
@@ -195,7 +221,7 @@ layers:
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
         line:
-            filter: { type: [line], color: true }
+            filter: { type: [line], color: true, dashed: false }
             draw:
                 map_data-lines:
                     interactive: true
@@ -208,8 +234,22 @@ layers:
                         color: function() { return feature.strokeColor; }
                         width: 1m
                         order: function() { return 850 + Number(feature.layer); }
+        line-dashed:
+            filter: { type: [line], color: true, dashed: true }
+            draw:
+              map_data-lines-dashed:
+                    interactive: true
+                    color: function() { return feature.color; }
+                    width: function() { return feature.width; }
+                    order: function() { return 851 + Number(feature.layer); }
+                    cap: round
+                    join: round
+                    outline:
+                        color: function() { return feature.strokeColor; }
+                        width: 1m
+                        order: function() { return 850 + Number(feature.layer); }
         line-left:
-            filter: { type: [line], colorLeft: true }
+            filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:
                 map_data-lines-left:
                     interactive: true
@@ -218,9 +258,27 @@ layers:
                     order: function() { return 852 + Number(feature.layer); }
                     join: round
         line-right:
-            filter: { type: [line], colorRight: true }
+            filter: { type: [line], colorRight: true, dashedRight: false }
             draw:
                 map_data-lines-right:
+                    interactive: true
+                    color: function() { return feature.colorRight; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: function() { return 852 + Number(feature.layer); }
+                    join: round
+        line-left-dashed:
+            filter: { type: [line], colorLeft: true, dashedLeft: true }
+            draw:
+                map_data-lines-left-dashed:
+                    interactive: true
+                    color: function() { return feature.colorLeft; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: function() { return 852 + Number(feature.layer); }
+                    join: round
+        line-right-dashed:
+            filter: { type: [line], colorRight: true, dashedRight: true }
+            draw:
+                map_data-lines-right-dashed:
                     interactive: true
                     color: function() { return feature.colorRight; }
                     width: function() { return feature.width * 2.0 + 4.0; }
@@ -232,11 +290,11 @@ layers:
                 map_data-polygons:
                     interactive: true
                     color: function() { return feature.color; }
-                    order: 800
+                    order: function() { return 851 + Number(feature.layer); }
                     extrude: function() { return feature.height; }
                 map_data-lines:
                     color: function() { return feature.strokeColor; }
-                    order: 801
+                    order: function() { return 852 + Number(feature.layer); }
                     extrude: function() { return feature.height; }
                     width: 1m
                     cap: round

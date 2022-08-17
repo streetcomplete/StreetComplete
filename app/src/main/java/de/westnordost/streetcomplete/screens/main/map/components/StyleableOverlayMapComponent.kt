@@ -47,12 +47,19 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 }
                 is PolylineStyle -> {
                     props["width"] = getLineWidth(element.tags).toString()
-                    style.colorLeft?.let { props["colorLeft"] = it }
-                    style.colorRight?.let { props["colorRight"] = it }
-                    if (style.color != null) {
-                        props["color"] = style.color
-                        props["strokeColor"] = getDarkenedColor(style.color)
-                    } else if (style.colorLeft != null || style.colorRight != null) {
+                    style.strokeLeft?.let {
+                        if (it.dashed) props["dashedLeft"] = "1"
+                        props["colorLeft"] = it.color
+                    }
+                    style.strokeRight?.let {
+                        if (it.dashed) props["dashedRight"] = "1"
+                        props["colorRight"] = it.color
+                    }
+                    if (style.stroke != null) {
+                        if (style.stroke.dashed) props["dashed"] = "1"
+                        props["color"] = style.stroke.color
+                        props["strokeColor"] = getDarkenedColor(style.stroke.color)
+                    } else if (style.strokeLeft != null || style.strokeRight != null) {
                         // must have a color for the center if left or right is defined because
                         // there are really ugly overlaps in tangram otherwise
                         props["color"] = resources.getString(R.string.road_color)

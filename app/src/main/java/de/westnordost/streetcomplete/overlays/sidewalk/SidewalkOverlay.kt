@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 
 class SidewalkOverlay : Overlay {
@@ -37,7 +38,7 @@ class SidewalkOverlay : Overlay {
               highway ~ footway|steps
               or highway ~ path|bridleway|cycleway and foot ~ yes|designated
             ) and area != yes
-        """).map { it to PolylineStyle("#33cc00") }
+        """).map { it to PolylineStyle(StrokeStyle("#33cc00")) }
 
     override fun createForm(element: Element): AbstractOverlayForm? =
         if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
@@ -49,23 +50,23 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
     // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
     if (sidewalkSides == null) {
         if (sidewalkTaggingNotExpected(element.tags) || isPrivateOnFoot(element)) {
-            return PolylineStyle(Color.INVISIBLE)
+            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
         }
     }
 
     return PolylineStyle(
-        color = null,
-        colorLeft = sidewalkSides?.left.color,
-        colorRight = sidewalkSides?.right.color
+        stroke = null,
+        strokeLeft = sidewalkSides?.left.style,
+        strokeRight = sidewalkSides?.right.style
     )
 }
 
 private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
     tags["highway"] == "living_street" || tags["highway"] == "pedestrian" || tags["highway"] == "service"
 
-private val Sidewalk?.color get() = when (this) {
+private val Sidewalk?.style get() = StrokeStyle(when (this) {
     Sidewalk.YES           -> "#33cc00"
     Sidewalk.NO            -> "#555555"
     Sidewalk.SEPARATE      -> Color.INVISIBLE
     Sidewalk.INVALID, null -> Color.UNSPECIFIED
-}
+})

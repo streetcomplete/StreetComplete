@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 
 class StreetParkingOverlay : Overlay {
@@ -76,30 +77,31 @@ private fun getStreetParkingStyle(element: Element): Style {
     // not set but private or not expected to have a sidewalk -> do not highlight as missing
     if (parking == null) {
         if (isPrivateOnFoot(element) || streetParkingTaggingNotExpected.matches(element)) {
-            return PolylineStyle(Color.INVISIBLE)
+            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
         }
     }
 
     return PolylineStyle(
-        color = null,
-        colorLeft = parking?.left.color,
-        colorRight = parking?.right.color
+        stroke = null,
+        strokeLeft = parking?.left.style,
+        strokeRight = parking?.right.style
     )
 }
 
-private val StreetParking?.color get() = when (this) {
+private val StreetParking?.style: StrokeStyle get() = when (this) {
     // https://davidmathlogic.com/colorblind/#%23FF0099-%239900FF-%2300CCCC-%2399DD00-%23FF8800-%23555555
-    // TODO could need dashed style to further distinguish...
     is StreetParkingPositionAndOrientation -> when (position) {
-        ON_STREET, PAINTED_AREA_ONLY -> "#FF8800"
-        HALF_ON_KERB -> "#99DD00"
-        ON_KERB, STREET_SIDE -> "#00CCCC"
+        ON_STREET -> StrokeStyle("#FF8800", dashed = false)
+        PAINTED_AREA_ONLY -> StrokeStyle("#FF8800", dashed = true)
+        HALF_ON_KERB -> StrokeStyle("#99DD00")
+        ON_KERB -> StrokeStyle("#00CCCC", dashed = false)
+        STREET_SIDE -> StrokeStyle("#00CCCC", dashed = true)
     }
     NoStreetParking,
     StreetStandingProhibited,
     StreetParkingProhibited,
-    StreetStoppingProhibited -> "#555555"
-    StreetParkingSeparate -> Color.INVISIBLE
-    UnknownStreetParking -> Color.UNSUPPORTED
-    IncompleteStreetParking, null -> Color.UNSPECIFIED
+    StreetStoppingProhibited -> StrokeStyle("#555555")
+    StreetParkingSeparate -> StrokeStyle(Color.INVISIBLE)
+    UnknownStreetParking -> StrokeStyle(Color.UNSUPPORTED)
+    IncompleteStreetParking, null -> StrokeStyle(Color.UNSPECIFIED)
 }

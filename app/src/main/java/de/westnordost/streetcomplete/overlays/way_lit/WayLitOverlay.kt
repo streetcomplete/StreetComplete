@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 
@@ -39,7 +40,8 @@ private fun getStyle(element: Element): Style {
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color, null) else PolylineStyle(color)
+    return if (element.tags["area"] == "yes")
+        PolygonStyle(color, null) else PolylineStyle(StrokeStyle(color))
 }
 
 private val LitStatus?.color get() = when (this) {
