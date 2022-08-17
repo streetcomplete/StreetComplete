@@ -843,6 +843,15 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_shower_title">Are there showers here?</string>
+    <string name="quest_camp_power_supply_title">Is there any way for customers to charge their phone, laptop etc. here?</string>
+    <string name="quest_camp_type_title">Who may camp here?</string>
+    <string name="quest_camp_type_tents_and_caravans">Both tents and RVs</string>
+    <string name="quest_camp_type_caravans_only">Only RVs</string>
+    <string name="quest_camp_type_tents_only">Only tents</string>
+    <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
+
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self-service</string>
