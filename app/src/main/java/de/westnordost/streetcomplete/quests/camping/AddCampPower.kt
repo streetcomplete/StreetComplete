@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampPower : OsmFilterQuestType<Boolean>() {
 
-    /* We only resurvey power_supply = yes and power_supply = no, as it might have more detailed 
+    /* We only resurvey power_supply = yes and power_supply = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
@@ -23,7 +23,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     """
     override val changesetComment = "Specify whether there is electricity available at camp site"
     override val wikiLink = "Key:power_supply"
-    override val icon = R.drawable.ic_quest_camp_power_supply
+    override val icon = R.drawable.ic_quest_camp_power
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(OUTDOORS)
 

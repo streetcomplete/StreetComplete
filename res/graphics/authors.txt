@@ -139,9 +139,6 @@ building levels/
     building_levels_icon.svg
     building_levels_illustration.svg
 
-camping/
-    camp.svg                    https://commons.wikimedia.org/wiki/File:Noun_camp_2695642.svg, sbts2018 (https://thenounproject.com/sbts2018/) CC-BY 4.0
-
 charging station capacity/
     electric_car.svg            parts taken from Twemoji: U+1F698 and U+1F50C
 
@@ -296,6 +293,7 @@ quest/
     bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
+    camp_power.svg
     car.svg                          modified from Twemoji: U+1F698
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
@@ -382,6 +380,7 @@ quest/
     road_construction.svg
     roof_shape.svg
     seating.svg
+    shower.svg
     sidewalk.svg
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
@@ -401,6 +400,7 @@ quest/
     summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
     surveillance.svg
     surveillance_camera.svg
+    tent.svg                        
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
