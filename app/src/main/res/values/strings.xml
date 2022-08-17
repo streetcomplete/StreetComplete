@@ -1433,6 +1433,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of on- or off-street parking. Additional restrictions can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
+    <string name="street_parking_street_width">Street width: %s</string>
 
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>

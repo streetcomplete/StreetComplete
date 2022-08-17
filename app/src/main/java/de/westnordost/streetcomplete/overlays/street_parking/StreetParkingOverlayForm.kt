@@ -55,8 +55,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-// TODO should display road width if available in form
-
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     private var currentParking: LeftAndRightStreetParking? = null
@@ -78,6 +76,12 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
         streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+
+        val width = element.tags["width"]
+        binding.hintTextView.text = if (width != null) {
+            val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
+            getString(R.string.street_parking_street_width, widthFormatted)
+        } else null
 
         if (savedInstanceState == null) {
             initStateFromTags()
