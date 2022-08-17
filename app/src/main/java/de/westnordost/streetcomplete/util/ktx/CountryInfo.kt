@@ -39,7 +39,7 @@ val CountryInfo.noStandingSignDrawableResId: Int? get() = when (noStandingSignSt
 
 val CountryInfo.noParkingSignDrawableResId: Int get() = when (noParkingSignStyle) {
     "vienna"             -> R.drawable.ic_no_parking
-    "vienna variant"     -> R.drawable.ic_no_parking_vienna
+    "vienna variant"     -> R.drawable.ic_no_parking_vienna_variant
     "mutcd"              -> R.drawable.ic_no_parking_mutcd
     "mutcd text"         -> R.drawable.ic_no_parking_mutcd_text
     "mutcd latin"        -> R.drawable.ic_no_parking_mutcd_latin_america

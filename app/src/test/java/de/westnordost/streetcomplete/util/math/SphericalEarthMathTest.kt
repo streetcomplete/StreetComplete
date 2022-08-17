@@ -272,7 +272,7 @@ class SphericalEarthMathTest {
     @Test fun `enclosingbbox for points difficult to represent exactly with floating point numbers`() {
         val p1 = p(0.1, 0.2)
         val p2 = p(0.4, 0.1)
-        val bbox = listOf(p1,p2).enclosingBoundingBox()
+        val bbox = listOf(p1, p2).enclosingBoundingBox()
         assertEquals(
             BoundingBox(0.1, 0.1, 0.2, 0.4),
             bbox

@@ -417,5 +417,5 @@ private fun String.stripAndUnescapeQuotes(): String {
     return unescaped
 }
 
-class ParseException(message: String?, val errorOffset: Int)
-    : RuntimeException("At position $errorOffset: $message")
+class ParseException(message: String?, val errorOffset: Int) :
+    RuntimeException("At position $errorOffset: $message")

@@ -43,9 +43,9 @@ class StringWithCursorTest {
         val x = StringWithCursor("wundertuete")
         x.advanceBy(6)
         x.retreatBy(999)
-        assertEquals("wunder",x.advanceBy(6))
+        assertEquals("wunder", x.advanceBy(6))
         x.retreatBy(3)
-        assertEquals("dertue",x.advanceBy(6))
+        assertEquals("dertue", x.advanceBy(6))
         try {
             x.retreatBy(-1)
             fail()

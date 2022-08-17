@@ -55,6 +55,7 @@ class StringWithCursor(private val string: String) {
      * @throws IndexOutOfBoundsException if cursor is already at the end
      */
     fun advance(): Char {
+        if (isAtEnd()) throw IndexOutOfBoundsException()
         val result = string[cursorPos]
         cursorPos = min(string.length, cursorPos + 1)
         return result

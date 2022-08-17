@@ -107,6 +107,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_no_ar">You need a tape measure to solve this quest because measuring with the camera is not supported on this device.</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">This quest type is disabled by default because it is either time-consuming or difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data.</string>
+    <string name="default_disabled_msg_overlay">This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data.</string>
 
 
     <!-- Quest interface -->
@@ -842,6 +843,15 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camera_type_fixed">Fixed</string>
     <string name="quest_camera_type_panning">Panning</string>
 
+    <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
+    <string name="quest_camp_shower_title">Are there showers here?</string>
+    <string name="quest_camp_power_supply_title">Is there any way for customers to charge their phone, laptop etc. here?</string>
+    <string name="quest_camp_type_title">Who may camp here?</string>
+    <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, travel trailers, …</string>
+    <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
+    <string name="quest_camp_type_tents_only">Only tents</string>
+    <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
+
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self-service</string>
@@ -1462,6 +1472,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
     <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
     <string name="quest_surface_detailed_answer_impossible_title">Describe surface</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">This answer is not matching what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?</string>
 
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile paving on both sides?"</string>
     <string name="quest_tactilePaving_incorrect">"Only on one side"</string>

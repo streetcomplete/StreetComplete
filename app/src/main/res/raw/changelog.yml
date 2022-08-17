@@ -1,3 +1,38 @@
+v46.0-beta1: |
+  <h3>New Quests</h3>
+  <p>Asked for campsites (#4213), by @mnalis:</p>
+  <ul>
+  <li><i>Who may camp here?</i></li>
+  <li><i>Are there showers here?</i></li>
+  <li><i>Is drinking water available here?</i></li>
+  <li><i>Is there any power supply here?</i></li>
+  </ul>
+  <h3>Quests disabled by default</h3>
+  <p>Some (more) quests are now disabled by default in order to not overwhelm users (#4264,...). You can always enable them again in the settings, thanks @matkoniecz</p>
+  <ul>
+  <li>Orchard produce - difficult to answer</li>
+  <li>Building levels - spammy, at times difficult to answer and little information value</li>
+  <li>Sidewalks and Lit roads - more effectively and efficiently done with the destinated overlays</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
+  <li>Fix: Was unable to edit tunnels in overlays (#4269), thanks @matkoniecz</li>
+  </ul>
+
+v45.2: |
+  <ul>
+  <li>Fix rare crash when phone is low on memory (#4221)</li>
+  <li>Fix rare crash when closing or sending the app to background (#4259)</li>
+  <li>Fix drawing order of bridges and tunnels, by @matkoniecz</li>
+  <li>Fix a layout issue for right-to-left locales (#4260)</li>
+  <li>Max weight: Fix input field not showing more than one digit (#4216)</li>
+  <li>House numbers: Do not warn about a house number format being unusual that is common in Australia (#4196, #4251)</li>
+  <li>Roof shape: Do not ask for ruins and underground buildings, by @matkoniecz</li>
+  <li>Roof shape: For certain building types, even ask when building and roof levels have not been recorded yet (#4261), by @matkoniecz</li>
+  <li>More minor enhancements (#4160, #4241, #4243, #4246, #4242, #4249...), thanks @Helium314, @matkoniecz</li>
+  </ul>
+
 v45.1: |
   <ul>
   <li>Fix the same recorded GPS tracks was attached to subsequently created notes (#4199, #4204), by @goldbattle</li>

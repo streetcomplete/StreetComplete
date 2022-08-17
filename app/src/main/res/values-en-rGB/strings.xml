@@ -258,7 +258,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"So, there is a sign like this?"</string>
 
     <!-- Do we want to change this to "grown" like the default? -->
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"What’s being grown here?"</string>
     <string name="produce_grapes">"Grapes"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -337,14 +336,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_levelsLabel2">"regular levels (not counting the roof)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Differs per building part"</string>
     <string name="quest_buildingLevels_answer_description">"In this case, simply input the values of the highest building part."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Are the carriageways of this road physically separated by a physical barrier or green space? The default speed limit depends on whether this is the case."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Attach photo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Do you want to delete this picture?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"sidepath or protected cycle lane"</string>
     <string name="quest_cycleway_value_lane">"cycle lane"</string>
     <string name="quest_cycleway_value_none">"none"</string>
@@ -353,8 +348,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_sidewalk">"explicitly shared-use pavement"</string>
     <string name="quest_leave_new_note_create_image_error">"Unable to create file for photo"</string>
     <string name="quest_cycleway_value_lane_dual">"cycle lane, both directions"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"sidepath or protected cycle lane, both directions"</string>
     <string name="pref_category_advanced">"Advanced"</string>
     <string name="quest_enabled">"Enabled"</string>
@@ -392,8 +385,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
     <string name="quest_generic_looks_like_this">"Usually looks like this:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Is there a cycle lane or path here? What type?"</string>
     <string name="quest_bridge_structure_title">"What’s the structure of this bridge?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
@@ -603,9 +594,7 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="create_new_note_hint">"Ideally, write the note in the locally spoken language, or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leaf_type_broadleaved">"Broadleaved"</string>
+    <string name="quest_leaf_type_broadleaved">"Leaves"</string>
     <string name="quest_leaf_type_mixed">"Both are present"</string>
     <string name="quest_cyclewayPartSurface_title">"What’s the surface of the cycle path here?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
@@ -623,9 +612,7 @@ Split it now?"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="quest_postboxRef_title">"What’s the reference number of this postbox?"</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as on the map at the location of the pin."</string>
+    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as its center on the map."</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
     <string name="quest_recycling_materials_note">"If anything not listed can be recycled here, please leave a note instead."</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
@@ -686,15 +673,12 @@ Finally, remember to stay safe: Be aware of your surroundings and don’t enter 
 
     <!-- Links screen -->
     <string name="links_empty">"You have no links yet"</string>
-
-    <!-- Fuzzy -->
-    <string name="quests_empty">"You have published no quest answers yet"</string>
+    <string name="quests_empty">"You have published no edits yet"</string>
     <string name="unsynced_quests_description">"plus %d not yet published changes."</string>
     <string name="unsynced_quests_not_logged_in_description">"You have %d not yet published changes. You need to login to have them uploaded."</string>
 
     <!-- User screen -->
-    <!-- Fuzzy -->
-    <string name="user_quests_title">"Solved Quests"</string>
+    <string name="user_quests_title">"Edits"</string>
     <string name="user_achievements_title">"Achievements"</string>
     <string name="user_links_title">"Link Collection"</string>
     <string name="user_profile_title">"Profile"</string>
@@ -788,9 +772,7 @@ Note that this app asks for the house number of a building only after its type h
     <string name="user_statistics_country_rank">"Rank in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapping Portal %s"</string>
     <string name="user_statistics_filter_by_country">"by country"</string>
-
-    <!-- Fuzzy -->
-    <string name="user_statistics_filter_by_quest_type">"by quest type"</string>
+    <string name="user_statistics_filter_by_quest_type">"by type"</string>
     <string name="user_profile_global_rank">"Global
 rank"</string>
     <string name="user_profile_local_rank">"Rank in
@@ -858,8 +840,7 @@ levels"</string>
     <string name="quest_steps_ramp_wheelchair">"Wheelchair ramp"</string>
 
     <!-- I think we need to be explicit that we're asking for the operator, not the brand.  I'll find the ticket/PR and check… -->
-    <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"What’s the name of the bank for this cash machine?"</string>
+    <string name="quest_atm_operator_title">"Which bank operates this cash machine?"</string>
     <string name="quest_clothes_container_operator_title">"Who accepts donations for this clothing bin?"</string>
     <string name="quest_charging_station_operator_title">"Who is the operator of this charging station?"</string>
     <string name="link_indoorequal_description">"Discover indoor maps of malls, railway stations etc."</string>
@@ -899,8 +880,6 @@ levels"</string>
     <string name="quest_kerb_height_lowered">"A bit higher than road surface"</string>
     <string name="quest_kerb_height_raised">"High kerb"</string>
     <string name="quest_kerb_height_lowered_ramp">"Kerb ramp"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Specify the total number of marked lanes (both directions) usable by car traffic. Lanes dedicated to bicycles or parking don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. Lanes dedicated to bicycles or parking don’t count.
@@ -930,16 +909,12 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.
 
 Note all the available options: some cases are not obvious, like a one way road that allows cyclists in both directions!"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecting that there is no cycle lane or path"</string>
     <string name="quest_construction_completed_at_known_date">"Will be finished at date…"</string>
     <string name="quest_construction_completion_date_title">"When will it be complete?"</string>
     <string name="quest_surface_value_clay">"Clay court"</string>
     <string name="quest_surface_value_artificial_turf">"Astroturf"</string>
     <string name="quest_surface_value_tartan">"Tartan Track"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Do you have to pay to park a bicycle here?"</string>
     <string name="quest_buildingType_house_description2">"not detached single-family home, e.g. a single row house"</string>
     <string name="quest_drinking_water_potable_signed">"Drinking water (with a sign)"</string>
@@ -949,14 +924,10 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_postboxRoyalCypher_title">"What’s the royal cypher on this postbox?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"No royal cypher is visible"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"The Crown of Scotland"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_fire_station">"Fire station"</string>
+    <string name="quest_buildingType_fire_station">"Fire station building"</string>
     <string name="quest_recycling_type_beverage_cartons">"Drinks cartons only"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
-
-    <!-- Fuzzy -->
-    <string name="team_mode">"Team Mode"</string>
+    <string name="team_mode">"Enter Team Mode"</string>
 
     <!-- Team mode -->
     <string name="team_mode_exit">"Exit Team Mode"</string>
@@ -990,7 +961,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_barrier_type_title">"What type of barrier is this?"</string>
 
     <!-- Heard this called lift gate and arm gate before, but never boom barrier! -->
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_lift_gate">"Boom barrier"</string>
     <string name="quest_barrier_type_bollard">"Bollard(s)"</string>
     <string name="quest_barrier_type_chain">"Chain"</string>
@@ -1144,17 +1114,11 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Both a house number and a name…"</string>
     <string name="quest_address_house_number_label">"House number:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shoulder_title">"Does this road have a shoulder?"</string>
+    <string name="quest_shoulder_title">"Does this road have a shoulder or breakdown lane?"</string>
     <string name="quest_fireHydrant_position_title">"Where is this fire hydrant located?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_green">"In grass or dirt"</string>
+    <string name="quest_fireHydrant_position_green">"In grass, dirt or shrubbery"</string>
     <string name="quest_fireHydrant_position_lane">"On the carriageway"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_sidewalk">"On the pavement"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"On a walkway"</string>
     <string name="quest_fireHydrant_position_parking_lot">"In a parking spot"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Yes (leave note)"</string>
     <string name="quest_smoothness_square_title">"What’s the surface quality of this square?"</string>
@@ -1197,8 +1161,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="achievement_lifesaver_solved_X">"You solved %d quests that help emergency services and first responders!"</string>
 
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
-    <!-- Fuzzy -->
-    <string name="quest_fuelSelfService_title">"Can you pump fuel yourself here?"</string>
+    <string name="quest_fuelSelfService_title">"Does this fuel station allow self-service?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"This quest type is disabled by default because it is quite time-consuming and often difficult to make the right choice. Only enable this quest type if you are really committed to adding this kind of data."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Hard-packed, very little loose gravel or sand"</string>
     <string name="quest_barrier_path_intersection">"How does this path cross the barrier here?"</string>
@@ -1207,8 +1170,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_shoulder_value_yes">"shoulder"</string>
     <string name="quest_shoulder_value_no">"no shoulder"</string>
     <string name="no_camera_permission_warning_title">"Camera permission"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"The permission is required to take photos and measure distances with the camera."</string>
     <string name="ar_core_error_sdk_too_old">"This app is too old, try updating."</string>
     <string name="ar_core_tracking_error_bad_state">"Something went wrong. Try restarting the measuring."</string>
@@ -1227,19 +1188,13 @@ Do the same for the other side if present."</string>
     <string name="ar_measure">"Measure"</string>
 
     <!-- "Too steep an angle"? "Step back"? -->
-    <!-- Fuzzy -->
-    <string name="ar_core_tracking_error_too_steep_angle">"Too steep angle, step away a bit"</string>
+    <string name="ar_core_tracking_error_too_steep_angle">"Too steep of an angle, step away a bit"</string>
     <string name="default_disabled_msg_no_ar">"You need a tape measure to solve this quest because measuring with the camera is not supported on this device."</string>
 
     <!-- Cycle path? -->
-    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"How wide is the cycleway here?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_title">"How wide is the road here?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface, including on-street parking or cycle lanes but excludes anything beyond it like cycle paths or parking beside the carriageway."</string>
+    <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface, including on-street parking or cycle lanes but excludes anything beyond the kerb like pavements, off-street parking or adjacent cycle paths."</string>
     <string name="quest_sidewalk_answer_none">"No pavement at all"</string>
     <string name="about_description_donate_google_play2">"Thank you for considering supporting this app!
 Unfortunately, due to Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
@@ -1290,8 +1245,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
-    <string name="quest_busStopRef_title2">"What’s the reference number of this stop?"</string>
+    <string name="quest_busStopRef_title2">"What number or code identifies this stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
@@ -1330,15 +1284,11 @@ sorted alphabetically by title -->
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Are credit or debit cards accepted here?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Both debit and credit cards"</string>
     <string name="quest_accepts_cards_credit_only">"Only credit cards"</string>
     <string name="quest_accepts_cards_dedit_only">"Only debit cards"</string>
     <string name="quest_accepts_cards_unavailable">"Neither debit nor credit cards"</string>
     <string name="quest_barrier_type_gate_any_size">"Gate, any size"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_air_pump_compressor_title">"Is there an air compressor available here?"</string>
     <string name="quest_step_count_stile_hint">"Just the number of steps to reach the top. If the step count differs on each side, give the higher number."</string>
     <string name="quest_shoulder_explanation2">"A shoulder or breakdown lane is a clearly marked emergency stopping lane. The area designated as the shoulder is not necessarily paved over its entire width and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
@@ -1347,24 +1297,17 @@ sorted alphabetically by title -->
     <string name="map_btn_stop_track">"Stop recording track"</string>
 
     <!-- Hire or rental? -->
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_capacity_title">"How many rental bicycle spaces are here?"</string>
 
     <!-- Again, hire or rental? -->
     <string name="quest_bicycle_rental_type_title">"What type of bicycle rental is this?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_docking_station">"Docking station which locks bicycles"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_dropoff_point">"Designated spot (bicycles locked individually)"</string>
 
     <!-- Staffed? -->
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_human">"Staffed bicycle rental"</string>
 
     <!-- Rents out? -->
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_shop_with_rental">"Bicycle shop that also rents bicycles"</string>
     <string name="quest_bicycle_shop_repair_title">"Are bicycle repair services offered here?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Are second-hand bicycles sold here?"</string>
@@ -1374,8 +1317,6 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"No bicycles sold at all"</string>
     <string name="quest_building_entrance_title">"What kind of building entrance is this?"</string>
     <string name="quest_building_entrance_main">"Main entrance of a public building"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_entrance_staircase">"Stairwell entrance (e.g. to a block of flats)"</string>
 
     <!-- Not 100% sure on what these are / are called… -->
@@ -1413,4 +1354,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Lit night and day"</string>
     <string name="lit_value_automatic">"Lit when someone passes by"</string>
     <string name="overlay_sidewalk">"Pavement"</string>
+    <string name="quest_generic_answer_is_indoors">"This is indoors"</string>
+    <string name="quest_summit_cross_title">"Is there a summit cross here?"</string>
+    <string name="quest_entrance_reference">"What is signed at this entrance?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Entrance label and range of flats"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Range of flats"</string>
+    <string name="quest_entrance_reference_select_code_only">"Entrance label"</string>
+    <string name="quest_entrance_reference_nothing_signed">"No sign with label or flat range"</string>
+    <string name="quest_entrance_reference_reference_label">"Entrance label:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Flat range:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"to"</string>
 </resources>

@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
+import kotlin.math.absoluteValue
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
@@ -35,6 +36,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
+            val layer = element.tags["layer"]?.toIntOrNull()
+            if (layer != null && layer.absoluteValue <= 20) {
+                props["layer"] = layer.toString()
+            }
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }

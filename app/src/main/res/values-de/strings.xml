@@ -1296,7 +1296,7 @@ sorted alphabetically by title -->
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
     <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
-    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
+    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden."</string>
 
     <!-- Quests
 sorted alphabetically by title -->
