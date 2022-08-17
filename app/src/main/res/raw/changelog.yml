@@ -1,7 +1,14 @@
 v46.0-beta1: |
+  <h3>Quests disabled by default</h3>
+  <p>Some (more) quests are now disabled by default in order to not overwhelm users (#4264,...), thanks @matkoniecz</p>
   <ul>
-  <li>Road surface: Ask for confirmation when selection contradicts a previous selection (#4105, #662 #4063), by @matkoniecz</li>
-  <li>Disable some quests by default: orchard produce, building levels (#4264), @matkoniecz</li>
+  <li>Orchard produce - difficult to answer</li>
+  <li>Building levels - spammy, at times difficult to answer and little information value</li>
+  <li>Sidewalks and Lit roads - more effectively and efficiently done with the destinated overlays</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
   <li>Fix: Was unable to edit tunnels in overlays (#4269), thanks @matkoniecz</li>
   </ul>
 
