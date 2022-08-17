@@ -37,9 +37,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
             val layer = element.tags["layer"]?.toIntOrNull()
-            if (layer != null && layer.absoluteValue <= 20) {
-                props["layer"] = layer.toString()
-            }
+            props["layer"] = if (layer != null && layer.absoluteValue <= 20) layer.toString() else "0"
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
