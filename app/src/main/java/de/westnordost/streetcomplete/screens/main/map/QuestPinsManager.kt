@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -140,11 +141,16 @@ class QuestPinsManager(
     }
 
     private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
+        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
+        var deletedAny = false
         val pins = synchronized(questsInView) {
-            added.forEach { questsInView[it.key] = createQuestPins(it) }
-            removed.forEach { questsInView.remove(it) }
+            addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
+            removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
             questsInView.values.flatten()
         }
+        if (!deletedAny && addedInView.isEmpty())
+            return
         pinsMapComponent.set(pins)
     }
 
