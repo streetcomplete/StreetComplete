@@ -3,9 +3,9 @@ v46.0-beta1: |
   <p>Asked for campsites (#4213), by @mnalis:</p>
   <ul>
   <li><i>Who may camp here?</i></li>
-  <li><i>Are there showers here?</i></li>
-  <li><i>Is drinking water available here?</i></li>
-  <li><i>Is there any power supply here?</i></li>
+  <li><i>Are there showers here? (disabled by default)</i></li>
+  <li><i>Is drinking water available here? (disabled by default)</i></li>
+  <li><i>Is there any power supply here? (disabled by default)</i></li>
   </ul>
   <h3>Quests disabled by default</h3>
   <p>Some (more) quests are now disabled by default in order to not overwhelm users (#4264,...). You can always enable them again in the settings, thanks @matkoniecz</p>
