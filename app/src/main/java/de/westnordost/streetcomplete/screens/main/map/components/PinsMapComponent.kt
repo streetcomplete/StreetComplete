@@ -37,7 +37,7 @@ class PinsMapComponent(ctrl: KtMapController) {
             properties.putAll(pin.properties)
             Point(pin.position.toLngLat(), properties)
         })
-        val questGeometries = pins.mapNotNull { it.geometry?.toTangramGeometry() }.flatten()
+        val questGeometries = pins.mapNotNull { it.geometry }.toHashSet().map { it.toTangramGeometry() }.flatten()
         questsGeometryLayer.setFeatures(questGeometries)
     }
 
