@@ -142,7 +142,7 @@ class NoteEditsController(
         val oldText = gpxFile.readText(Charsets.UTF_8).dropLast(6)
         // save image file names (this is not nice, but better than not keeping any reference to them
         val imageText = if (imagePaths.isEmpty()) "" else
-            "\n images used: ${imagePaths.joinToString(", ")}"
+            "\n images used: ${imagePaths.joinToString(", ") { it.substringAfterLast(File.separator) }}"
         val trackFile: File?
         if (recordedTrack != null && recordedTrack.isNotEmpty()) {
             var i = 1
