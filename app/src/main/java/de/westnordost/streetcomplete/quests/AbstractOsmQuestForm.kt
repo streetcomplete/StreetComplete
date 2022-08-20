@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.quests
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.icu.text.DateFormat.getDateTimeInstance
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.view.Menu
@@ -53,6 +55,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.util.Date
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
@@ -378,8 +381,13 @@ fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditA
             dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
         }
 
+        val date = Date(element.timestampEdited)
+        val timestamp = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            getDateTimeInstance().format(date)
+        else
+            date.toString()
         dialog = AlertDialog.Builder(c)
-            .setTitle(R.string.quest_edit_tags_title)
+            .setTitle(c.getString(R.string.quest_edit_tags_title, timestamp))
             .setView(editField)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_edit_tags_save) { _,_ ->

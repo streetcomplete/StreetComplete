@@ -98,7 +98,7 @@
     <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
     <string name="quest_buildingType_answer_demolished">It’s demolished (traces visible)</string>
     <string name="quest_generic_answer_show_edit_tags">Show/edit tags</string>
-    <string name="quest_edit_tags_title">Edit tags</string>
+    <string name="quest_edit_tags_title">Edit tags (%s)</string>
     <string name="quest_edit_tags_save">Save</string>
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
     <string name="pref_show_gpx_button_summary">Contrary to OSM notes, adding a GPX not will not hide any quest at the affected location</string>
