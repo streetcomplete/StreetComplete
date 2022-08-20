@@ -27,11 +27,14 @@ import de.westnordost.streetcomplete.util.isDay
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -54,13 +57,10 @@ class QuestPinsManager(
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
     var reversedOrder = false
         private set
-    // list of pins to set, stored in a var as an attempt to avoid setting outdated pins
-    // is volatile actually helping here?
-    @Volatile private var pinsToSet = emptyList<Pin>()
-
-
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+
+    private var pinsUpdateJob: Job? = null
 
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
@@ -71,7 +71,8 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            viewLifecycleScope.launch { updateQuestPins(added, removed) }
+            pinsUpdateJob?.cancel()
+            pinsUpdateJob = viewLifecycleScope.launch { updateQuestPins(added, removed) }
         }
 
         override fun onVisibleQuestsInvalidated() {
@@ -141,15 +142,23 @@ class QuestPinsManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        viewLifecycleScope.launch {
-            val newQuests = withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
-            setQuestPins(newQuests)
+        pinsUpdateJob?.cancel()
+        pinsUpdateJob = viewLifecycleScope.launch {
+            val quests = withContext(Dispatchers.IO) {
+                synchronized(visibleQuestsSource) {
+                    if (!coroutineContext.isActive)
+                    // can't return@launch here, so return null and then @launch
+                        return@synchronized null
+                    visibleQuestsSource.getAllVisible(bbox)
+                }
+            } ?: return@launch
+            setQuestPins(quests)
         }
     }
 
-    private fun setQuestPins(newQuests: List<Quest>) {
+    private suspend fun setQuestPins(newQuests: List<Quest>) {
         val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        pinsToSet = synchronized(questsInView) {
+        val pins = synchronized(questsInView) {
             // remove only quests without visible pins, because
             //  now newQuests are only quests we might not have had in questsInView
             //  we don't want to remove quests for long ways only because the center is not visible
@@ -157,28 +166,26 @@ class QuestPinsManager(
             newQuests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
-        setPins()
-    }
-
-    private fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        val add = added.filter { bbox?.contains(it.position) != false }
-        synchronized(questsInView) {
-            add.forEach { questsInView[it.key] = createQuestPins(it) }
-            var deleted = false
-            removed.forEach { if (questsInView.remove(it) != null) deleted = true }
-            if (add.isEmpty() && !deleted) return // don't set pins if nothing has changed
-            pinsToSet = questsInView.values.flatten()
+        synchronized(pinsMapComponent) {
+            if (coroutineContext.isActive)
+                pinsMapComponent.set(pins)
         }
-        setPins()
     }
 
-    private fun setPins() {
-        if (pinsToSet.isEmpty()) return
-        val pins = pinsToSet // copy list for later comparison
-        synchronized(pinsMapComponent) { // waiting may take considerable time
-            if (pins !== pinsToSet) return // list of pins was changed while waiting for synchronized
-            pinsMapComponent.set(pins)
+    private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
+        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
+        var deletedAny = false
+        val pins = synchronized(questsInView) {
+            addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
+            removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
+            questsInView.values.flatten()
+        }
+        if (!deletedAny && addedInView.isEmpty())
+            return
+        synchronized(pinsMapComponent) {
+            if (coroutineContext.isActive)
+                pinsMapComponent.set(pins)
         }
     }
 
