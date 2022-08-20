@@ -48,8 +48,7 @@ class AddRoofShape(
             filter.matches(element) && (
                 (element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) > 0f
                     || roofsAreUsuallyFlatAt(element, mapData) == false
-                ) && (element.tags["building:levels"]?.toIntOrNull() ?: 0) +
-                    (element.tags["roof:levels"]?.toIntOrNull() ?: 0) <= prefs.getInt(questPrefix(prefs) + PREF_ROOF_SHAPE_MAX_LEVELS, 99)
+                ) && levelsOk(element)
         }
 
     override fun isApplicableTo(element: Element): Boolean? {
@@ -58,8 +57,12 @@ class AddRoofShape(
            the quest should only be shown in certain countries. But whether
            the element is in a certain country cannot be ascertained without the element's geometry */
         if ((element.tags["roof:levels"]?.toFloatOrNull() ?: 0f) == 0f) return null
-        return true
+        return levelsOk(element)
     }
+
+    private fun levelsOk(element: Element): Boolean =
+        ((element.tags["building:levels"]?.toIntOrNull() ?: 0) -
+            (element.tags["roof:levels"]?.toIntOrNull() ?: 0)) <= prefs.getInt(questPrefix(prefs) + PREF_ROOF_SHAPE_MAX_LEVELS, 99)
 
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
