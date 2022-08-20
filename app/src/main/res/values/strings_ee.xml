@@ -240,5 +240,9 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_seating_no">No seating, but not takeout only</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
+    <string name="quest_settings_osmose_level_title">Select downloaded issue severity levels</string>
+    <string name="quest_settings_osmose_level_high">High priority (default)</string>
+    <string name="quest_settings_osmose_level_high_and_normal">High and normal priority</string>
+    <string name="quest_settings_osmose_level_all">All</string>
 
 </resources>

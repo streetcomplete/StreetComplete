@@ -169,7 +169,7 @@ class AddLevel(
         return AlertDialog.Builder(context)
             .setTitle(R.string.quest_settings_level_title)
             .setNegativeButton(android.R.string.cancel, null)
-            .setItems(R.array.pref_quest_settings_levels) { _, i ->
+            .setItems(R.array.pref_quest_settings_level_quest) { _, i ->
                 prefs.edit().putBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, i == 1).apply()
                 SettingsFragment.restartNecessary = true
             }

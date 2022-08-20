@@ -34,8 +34,8 @@ class OsmoseDao(
         // replace bbox
         // try parsing result lines, split each by ','
         val csvUrl = "https://osmose.openstreetmap.fr/en/issues/open.csv"
-        val zoom = 17 // what is the use?
-        val level = 1 // what is the use?
+        val zoom = 16 // what is the use?
+        val level = sharedPrefs.getString(questPrefix(sharedPrefs) + PREF_OSMOSE_LEVEL, "1")
         val request = Request.Builder()
             .url("$csvUrl?zoom=$zoom&item=xxxx&level=$level&limit=500&bbox=${bbox.min.longitude}%2C${bbox.min.latitude}%2C${bbox.max.longitude}%2C${bbox.max.latitude}")
             .header("User-Agent", USER_AGENT)
@@ -47,35 +47,31 @@ class OsmoseDao(
             // drop first, it's just column names
             // drop last, it's an empty line (for some reason the size < 14 check didn't work in a test)
             // trim each line because there was some additional newline in logs (maybe windows line endings?)
-            val bodylines = body.string().split("\n").drop(1).dropLast(1).map { it.trim().split(",") }
+            val bodylines = body.string().split("\n").drop(1).dropLast(1)
             Log.i(TAG, "got ${bodylines.size} problems")
-            // TODO 1: problem: title/subtitle can contain ',', messing up the simple csv structure
-            //  either parse while checking quotes, or switch to other download format
-            // TODO 2: of multiple elements there is a similar problem in the user column, fixed same way
-            //  and the element string needs to be split by '_'
-            // currently both are not parsed and thus skipped
-            // multiple elements: use the first, and the others only for highlighting geometry
+            // TODO: if multiple elements currently there is a parsing error -> better store them
+            //  and highlight them (quest for first element only), so multi-element issues can be shown
+            // todo: keep item type and level and block according quests immediately?
+            //  level is split[4]
             val blockedItems = sharedPrefs.getString(questPrefix(sharedPrefs) + PREF_OSMOSE_ITEMS, "")!!.split(',')
             db.replaceMany(NAME,
                 arrayOf(UUID, ITEM, TITLE, SUBTITLE, ELEMENT_TYPE, ELEMENT_ID, FALSE_POSITIVE),
                 bodylines.mapNotNull {
-                    if (it.size != 14) {
-                        Log.i(TAG, "skip line: not split into 14 items: $it")
+                    val split = it.trim().split(splitRegex) // from https://stackoverflow.com/questions/53997728/parse-csv-to-kotlin-list
+                    if (split.size != 14) {
+                        Log.i(TAG, "skip line: not split into 14 items: $split")
                         null
-                    }
-                    else {
-                        val key = parseElementKey(it[13])
+                    } else {
+                        val key = parseElementKey(split[13])
                         if (key == null) {
-                            Log.i(TAG, "skip line: element parse error for ${it[13]}, line: $it")
+                            Log.i(TAG, "skip line: element parse error for ${split[13]}, line: $it")
                             null
-                        }
-                        else if (blockedItems.contains(it[2])) {
-                            Log.i(TAG, "skip line: item type ${it[2]} blocked, line: $it")
+                        } else if (blockedItems.contains(split[2])) {
+                            Log.i(TAG, "skip line: item type ${split[2]} blocked, line: $it")
                             null
-                        }
-                        else {
-                            Log.i(TAG, "inserting: ${it[0]}, ${it[2]}, ${it[5]}, ${it[6]}, ${key.type}, ${key.id}")
-                            arrayOf(it[0], it[2], it[5], it[6], key.type.toString(), key.id, 0)
+                        } else {
+                            Log.i(TAG, "inserting: ${split[0]}, ${split[2]}, ${split[5]}, ${split[6]}, ${key.type}, ${key.id}")
+                            arrayOf(split[0], split[2], split[5], split[6], key.type.toString(), key.id, 0)
                         }
                     }
                 }
@@ -231,3 +227,5 @@ object OsmoseTable {
     """
 
 }
+
+private val splitRegex = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)".toRegex()

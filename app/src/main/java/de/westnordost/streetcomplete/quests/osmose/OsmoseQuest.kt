@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.osmose
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.widget.SwitchCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -49,22 +50,47 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
     override val hasQuestSettings = true
 
     // actual ignoring of stuff happens when downloading
-    override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        AlertDialog.Builder(context)
+    override fun getQuestSettingsDialog(context: Context): AlertDialog {
+        val enable = SwitchCompat(context).apply {
+            setText(R.string.quest_osmose_settings_enable)
+            isChecked = prefs.getBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false)
+            setOnCheckedChangeListener { _, b ->
+                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, b).apply()
+            }
+        }
+        enable.setPadding(30,10,30,10)
+
+        return AlertDialog.Builder(context)
             .setTitle(R.string.quest_osmose_settings_what)
-            .setNeutralButton(R.string.quest_osmose_settings_items) { _,_ ->
+            .setView(enable)
+            .setNegativeButton(R.string.quest_osmose_settings_items) { _,_ ->
                 singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
                     .show()
             }
-            .setNegativeButton(R.string.quest_osmose_settings_disable) { _, _ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false).apply()
-            }
-            .setPositiveButton(R.string.quest_osmose_settings_enable) { _, _ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, true).apply()
+            .setNeutralButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.quest_settings_osmose_level_title) { _, _ ->
+                showLevelDialog(context)
             }
             .create()
+    }
+
+    private fun showLevelDialog(context: Context) {
+        AlertDialog.Builder(context)
+            .setTitle(R.string.quest_settings_osmose_level_title)
+            .setItems(R.array.pref_quest_settings_osmose_levels) { _, i ->
+                val levelString = when (i) {
+                    1 -> "1%2C2"
+                    2 -> "1%2C2%2C3"
+                    else -> "1"
+                }
+                prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, levelString).apply()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
 
 }
 
 const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"
 const val PREF_OSMOSE_ENABLE_DOWNLOAD = "qs_OsmoseQuest_enable_download"
+const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
