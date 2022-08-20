@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.osm.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 
@@ -32,9 +33,15 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
             and !surface:note
             and !note:surface
           )
+          ${INVALID_SURFACES_FOR_TRACKTYPES.map{tracktypeConflictClause(it)}.joinToString("\n")}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
+
+    private fun tracktypeConflictClause(conflictEntry: Map.Entry<String, Set<String>>): String {
+        return "          or tracktype = " + conflictEntry.key + " and surface ~ ${conflictEntry.value.joinToString("|")}"
+    }
+
     override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface

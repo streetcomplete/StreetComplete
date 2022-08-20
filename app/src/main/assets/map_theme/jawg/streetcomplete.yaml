@@ -262,7 +262,7 @@ layers:
                     interactive: true
                     color: function() { return feature.colorRight; }
                     width: function() { return feature.width * 2.0 + 4.0; }
-                    order: 802
+                    order: function() { return 852 + Number(feature.layer); }
                     join: round
         area:
             filter: { type: [poly] }
