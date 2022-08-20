@@ -29,5 +29,12 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
         tags.updateWithCheckDate("wheelchair", answer.osmValue)
+        answer.updatedDescriptions?.forEach { (language, description) ->
+            // language already contains the colon, or may be empty
+            if (description.isEmpty())
+                tags.remove("wheelchair:description$language")
+            else
+                tags["wheelchair:description$language"] = description
+        }
     }
 }

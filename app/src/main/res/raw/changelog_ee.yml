@@ -1,3 +1,15 @@
+v46.0_ee: |
+  <ul>
+  <li>Allow adding description when answering wheelchair quests</li>
+  <li>Allow selecting Osmose severity levels for Osmose quest</li>
+  <li>Fix Osmose download after API change, thanks @amenk and @frodrigo</li>
+  <li>Improve performance when showing overlays</li>
+  <li>Don't obscure view with popups for tree, healthcare and cuisine quests</li>
+  <li>Show last edited date when editing tags</li>
+  <li>Add overlay with customizable tag selection, though currently without showing nodes (customize in quick settings menu)</li>
+  <li>Add partial Croatian translation by @mnalis</li>
+  </ul>
+
 v45.2_ee: |
   <ul>
   <li>Slightly adjust colors for nearby quests</li>

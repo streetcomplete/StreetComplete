@@ -240,9 +240,13 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_seating_no">No seating, but not takeout only</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
-    <string name="quest_settings_osmose_level_title">Select downloaded issue severity levels</string>
+    <string name="quest_settings_osmose_level_title">Select issue severity levels to download</string>
     <string name="quest_settings_osmose_level_high">High priority (default)</string>
     <string name="quest_settings_osmose_level_high_and_normal">High and normal priority</string>
     <string name="quest_settings_osmose_level_all">All</string>
+    <string name="quest_wheelchair_description_answer">Add description</string>
+    <string name="quest_wheelchair_description_title">Fill in at least one language</string>
+    <string name="quest_wheelchair_description_too_long">Description is too long</string>
+    <string name="quest_wheelchair_description_no_language">no language specified</string>
 
 </resources>
