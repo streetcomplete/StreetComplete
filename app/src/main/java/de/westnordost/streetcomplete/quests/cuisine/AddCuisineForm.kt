@@ -48,7 +48,6 @@ class AddCuisineForm : AbstractOsmQuestForm<String>() {
                 binding.cuisineInput.showDropDown()
             }
         }
-        binding.cuisineInput.showDropDown()
     }
 
     override fun onClickOk() {

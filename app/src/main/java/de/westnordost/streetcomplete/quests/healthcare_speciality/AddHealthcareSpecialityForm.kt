@@ -50,7 +50,6 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
             }
         }
         binding.addCuisineButton.setText(R.string.quest_healthcare_speciality_add_more)
-        binding.cuisineInput.showDropDown()
     }
 
     override fun onClickOk() {

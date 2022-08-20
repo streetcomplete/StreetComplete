@@ -113,7 +113,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 15, first = 1)
+            .mostCommonWithin(target = 3, historyCount = 15, first = 1)
             .toList()
     }
 
