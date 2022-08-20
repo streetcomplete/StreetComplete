@@ -132,11 +132,8 @@ class QuestPinsManager(
         // area too big -> skip (performance)
         if (tilesRect.size > 16) return
         if (lastDisplayedRect?.contains(tilesRect) != true) {
-            // only load tiles we don't already have
-            val oldTiles = lastDisplayedRect?.asTilePosSequence()?.toList()
-            val requiredTilesRect = tilesRect.asTilePosSequence().filterNot { oldTiles?.contains(it) == true }.toList().minTileRect()
             lastDisplayedRect = tilesRect
-            onNewTilesRect(requiredTilesRect ?: tilesRect)
+            onNewTilesRect(tilesRect)
         }
     }
 
