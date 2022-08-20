@@ -30,10 +30,9 @@ class OsmoseDao(
 
     fun download(bbox: BoundingBox) {
         if (!sharedPrefs.getBoolean(questPrefix(sharedPrefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false)) return
-        // http://osmose.openstreetmap.fr/en/issues/open.csv?zoom=17&item=xxxx&level=1&limit=500&bbox=16.40570998191834%2C48.179314880149114%2C16.41987204551697%2C48.18563147705161
+        // https://osmose.openstreetmap.fr/api/0.3/issues.csv?zoom=18&item=xxxx&level=1&limit=500&bbox=16.412324309349064%2C48.18403988244578%2C16.41940534114838%2C48.1871908341706
         // replace bbox
-        // try parsing result lines, split each by ','
-        val csvUrl = "https://osmose.openstreetmap.fr/en/issues/open.csv"
+        val csvUrl = "https://osmose.openstreetmap.fr/api/0.3/issues.csv"
         val zoom = 16 // what is the use?
         val level = sharedPrefs.getString(questPrefix(sharedPrefs) + PREF_OSMOSE_LEVEL, "1")
         val request = Request.Builder()
@@ -45,7 +44,7 @@ class OsmoseDao(
             val response = client.newCall(request).execute()
             val body = response.body() ?: return
             // drop first, it's just column names
-            // drop last, it's an empty line (for some reason the size < 14 check didn't work in a test)
+            // drop last, it's an empty line
             // trim each line because there was some additional newline in logs (maybe windows line endings?)
             val bodylines = body.string().split("\n").drop(1).dropLast(1)
             Log.i(TAG, "got ${bodylines.size} problems")
