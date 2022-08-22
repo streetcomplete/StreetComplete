@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="160dp"
@@ -131,4 +132,22 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_surface_detailed_answer_impossible_description"/>
+
+    <EditText
+        android:id="@+id/explanationInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:minLines="3"
+        tools:text="Surface is a mosaic of paving stones, wood and metal."
+        android:maxLength="255"
+        android:scrollHorizontally="false"
+        />
+
 </LinearLayout>

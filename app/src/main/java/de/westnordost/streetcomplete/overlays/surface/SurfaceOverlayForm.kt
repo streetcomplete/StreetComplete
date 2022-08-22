@@ -2,6 +2,7 @@
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.children
@@ -12,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
+import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.SurfaceInfo
 import de.westnordost.streetcomplete.osm.SurfaceMissing
@@ -113,6 +115,10 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             is SingleSurface -> {
                 selectedStatusForMainSurface = status.surface.asItem()
             }
+            is SingleSurfaceWithNote -> {
+                binding.explanationInput.text = SpannableStringBuilder(status.note)
+                selectedStatusForMainSurface = status.surface.asItem()
+            }
             is SurfaceMissing -> {
                 // nothing to do
             }
@@ -173,17 +179,36 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         private const val SELECTED_FOOTWAY_SURFACE_INDEX = "selected_footway_surface_index"
     }
 
+    fun noteText(): String {
+        return binding.explanationInput.text.toString().trim()
+    }
+
     override fun hasChanges(): Boolean {
         return when (val status = currentStatus) {
             is CyclewayFootwaySurfaces ->
                 selectedStatusForCyclewaySurface?.value != status.cycleway || selectedStatusForFootwaySurface?.value != status.footway
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
+            is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
             null -> throw Exception("null pointer exceeeeeeeeeeption (should be impossible)")
         }
     }
 
     override fun onClickOk() {
+        val note = noteText()
+        if (note == "") {
+            if (currentStatus is SingleSurfaceWithNote) {
+                applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+                    it.remove("surface:note")
+                }.create()))
+            }
+        } else {
+            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+                it["surface:note"] = note
+            }.create()))
+        }
+
+        // TODO actually look through what can change and how
         if (selectedStatusForMainSurface != null) {
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
                 it.updateWithCheckDate("surface", selectedStatusForMainSurface!!.value!!.osmValue)

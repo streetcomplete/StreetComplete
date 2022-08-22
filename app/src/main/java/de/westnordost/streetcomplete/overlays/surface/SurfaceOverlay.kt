@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
+import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.Surface.ARTIFICIAL_TURF
 import de.westnordost.streetcomplete.osm.Surface.ASPHALT
@@ -63,7 +64,6 @@ class SurfaceOverlay : Overlay {
         return mapData
            .filter( """ways, relations with
                (surface and highway != construction) or leisure ~ pitch|playground or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-               and !surface:note and !note:surface
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
                """)
@@ -87,6 +87,7 @@ class SurfaceOverlay : Overlay {
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
         "surface:colour", //  12K - remove on change? Ignore support? TODO
+        "surface:note" // "note:surface" is not supported. TODO: actually support
     )
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
@@ -102,6 +103,13 @@ private fun getStyle(element: Element): Style {
     var dominatingSurface: Surface? = null
     var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
+        is SingleSurfaceWithNote -> {
+            // TODO special styling needed I guess...
+            // as it should not get pinking "no data"...
+            // use dashes?
+            dominatingSurface = surfaceStatus.surface
+            keyOfDominatingSurface = "surface"
+        }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
             keyOfDominatingSurface = "surface"
