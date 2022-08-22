@@ -122,8 +122,11 @@ private fun getStyle(element: Element): Style {
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
-    val label = element.tags[keyOfDominatingSurface]
-    return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(color, null, null)
+
+    // label for debugging
+    //val label = element.tags[keyOfDominatingSurface]
+    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private val Surface?.color get() = when (this) {
