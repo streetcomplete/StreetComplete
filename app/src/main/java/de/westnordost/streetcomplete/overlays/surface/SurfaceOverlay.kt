@@ -84,9 +84,9 @@ class SurfaceOverlay : Overlay {
 
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf("surface", "footway:surface", "cycleway:surface",
-        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported
-        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change
-        "surface:colour", //  12K - remove on change? Ignore support?
+        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
+        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
+        "surface:colour", //  12K - remove on change? Ignore support? TODO
     )
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
