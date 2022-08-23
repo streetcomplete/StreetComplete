@@ -20,7 +20,6 @@
       };
       devShell.${system} = import ./nix/shell.nix {
         inherit pkgs;
-        androidSdk = android.androidsdk;
       };
     };
 }
