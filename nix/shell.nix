@@ -6,9 +6,9 @@ pkgs.mkShell {
     androidSdk
     kotlin
     gradle
-    jdk11
+    jdk8
   ];
   ANDROID_HOME = "${androidSdk}/share/android-sdk";
   ANDROID_SDK_ROOT = "${androidSdk}/share/android-sdk";
-  JAVA_HOME = pkgs.jdk11.home;
+  JAVA_HOME = pkgs.jdk8.home;
 }

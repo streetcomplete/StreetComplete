@@ -21,7 +21,7 @@
       androidSdk = android-nixpkgs.sdk.${system} (sdkPkgs:
         with sdkPkgs; [
           cmdline-tools-latest
-          build-tools-30
+          build-tools-30-0-3
           platform-tools
           platforms-android-30
           emulator
