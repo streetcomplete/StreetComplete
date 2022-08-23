@@ -31,7 +31,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bench_backrest_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bench or leisure = picnic_table")
+        getMapData().filter("nodes, ways with amenity = bench or leisure = picnic_table or amenity = lounger")
 
     override fun createForm() = AddBenchBackrestForm()
 

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.util.getNameLabel
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
         "atm" -> return R.drawable.ic_pin_money
-        "bench" -> return R.drawable.ic_pin_bench
+        "bench", "lounger" -> return R.drawable.ic_pin_bench
         "bicycle_parking" -> return R.drawable.ic_pin_bicycle_parking
         "bicycle_rental" -> return R.drawable.ic_pin_bicycle_rental
         "bicycle_repair_station" -> {

@@ -25,7 +25,7 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_benchMaterial_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bench or leisure = picnic_table")
+        getMapData().filter("nodes, ways with amenity = bench or leisure = picnic_table or amenity = lounger")
 
     override fun createForm() = AddBenchMaterialForm()
 
