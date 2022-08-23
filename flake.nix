@@ -28,7 +28,10 @@
         ]);
     in {
       checks = { };
-      devShell.${system} = import ./shell.nix {
+      packages.${system} = {
+        android-emulator = import ./nix/android-emulator.nix { inherit pkgs; };
+      };
+      devShell.${system} = import ./nix/shell.nix {
         inherit pkgs;
         inherit androidSdk;
       };
