@@ -1,3 +1,6 @@
-{ androidenv }:
+{ pkgs }:
 
-androidenv.buildApp { }
+pkgs.androidenv.buildApp {
+  name = "StreetComplete";
+  src = ../.;
+}
