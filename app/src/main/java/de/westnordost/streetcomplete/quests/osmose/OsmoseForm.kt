@@ -64,11 +64,16 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>
             )
         }
         if (issue != null)
-            // TODO: dialog that warns that there is no undo
             buttonPanelAnswers.add(AnswerItem(R.string.quest_osmose_false_positive) {
-                db.setAsFalsePositive(issue?.uuid ?: "", questKey)
-                // remove quest from db
-                osmQuestController.delete(questKey as OsmQuestKey)
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.quest_osmose_false_positive)
+                    .setMessage(R.string.quest_osmose_no_undo)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
+                        db.setAsFalsePositive(issue?.uuid ?: "", questKey)
+                        // remove quest from db
+                        osmQuestController.delete(questKey as OsmQuestKey)
+                    }
             } )
         updateButtonPanel()
     }

@@ -248,5 +248,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="quest_wheelchair_description_title">Fill in at least one language</string>
     <string name="quest_wheelchair_description_too_long">Description is too long</string>
     <string name="quest_wheelchair_description_no_language">no language specified</string>
+    <string name="quest_osmose_no_undo">Are you sure? This cannot be undone!</string>
 
 </resources>
