@@ -10,7 +10,7 @@ let
       cmake = "3.18.1";
       emulator = "30.9.0";
     };
-    platforms = [ "28" "29" "30" ];
+    platforms = [ "31" ];
     abis = [ "x86_64" ];
     extras = [ "extras;google;gcm" ];
     imageTypes = [ "google_apis_playstore" ];
@@ -61,7 +61,6 @@ in pkgs.mkShell rec {
   LC_ALL = "C.UTF-8";
   JAVA_HOME = jdk.home;
 
-  # Note: ANDROID_HOME is deprecated. Use ANDROID_SDK_ROOT.
   ANDROID_SDK_ROOT = "${androidSdk}/libexec/android-sdk";
   ANDROID_NDK_ROOT = "${ANDROID_SDK_ROOT}/ndk-bundle";
 
