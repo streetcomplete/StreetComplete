@@ -3,12 +3,11 @@
 let
   fhsUserEnv = pkgs.buildFHSUserEnv {
     name = "android-env";
-    targetPkgs = pkgs:
-      (with pkgs; [ android-udev-rules androidSdk kotlin gradle jdk8 ]);
+    targetPkgs = pkgs: (with pkgs; [ androidSdk kotlin gradle jdk ]);
     profile = ''
-      export ANDROID_HOME="${androidSdk}/share/android-sdk"
-      export ANDROID_SDK_ROOT="${androidSdk}/share/android-sdk"
-      export JAVA_HOME="${pkgs.jdk8.home}"
+      export ANDROID_HOME="${androidSdk}/libexec/android-sdk"
+      export ANDROID_JAVA_HOME="${pkgs.jdk.home}"
+      export ANDROID_AVD_HOME="${toString ./.}/.android/avd"
     '';
   };
 in fhsUserEnv.env

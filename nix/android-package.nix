@@ -1,0 +1,3 @@
+{ androidenv }:
+
+androidenv.buildApp { }
