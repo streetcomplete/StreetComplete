@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -71,12 +72,13 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** mimics width of line as seen in Streetomplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-        "motorway", "trunk" -> 20f
-        "primary", "secondary" -> 12f
-        "service", "track" -> 4f
-        "path", "cycleway", "footway", "bridleway", "steps" -> 2f
+        "motorway", "trunk" -> 16f
+        "motorway_link", "trunk_link" -> 9f
+        "primary", "secondary", "tertiary" -> 9f
+        "service", "track" -> 3f
+        "path", "cycleway", "footway", "bridleway", "steps" -> 1f
         null -> 3f
-        else -> 8f
+        else -> 6f
     }
 
     /** estimates height of thing */
