@@ -932,7 +932,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
 
     <string name="quest_fireHydrant_diameter_title">What diameter is specified on the sign for this fire hydrant?</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">This diameter looks implausible.</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">This diameter looks implausible, it is usually between %1$d and %2$d.</string>
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
 
     <string name="quest_fireHydrant_position_title">Where is this fire hydrant located?</string>
