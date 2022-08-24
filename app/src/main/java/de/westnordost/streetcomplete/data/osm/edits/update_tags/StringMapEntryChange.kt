@@ -11,6 +11,7 @@ sealed class StringMapEntryChange {
     abstract fun conflictsWith(map: Map<String, String>): Boolean
     abstract fun applyTo(map: MutableMap<String, String>)
     abstract fun reversed(): StringMapEntryChange
+    abstract fun isValid(): Boolean
 }
 
 @Serializable
@@ -20,6 +21,7 @@ data class StringMapEntryAdd(override val key: String, val value: String) : Stri
     override fun conflictsWith(map: Map<String, String>) = map.containsKey(key) && map[key] != value
     override fun applyTo(map: MutableMap<String, String>) { map[key] = value }
     override fun reversed() = StringMapEntryDelete(key, value)
+    override fun isValid() = key.length <= 255 && value.length <= 255
 }
 
 @Serializable
@@ -29,6 +31,7 @@ data class StringMapEntryModify(override val key: String, val valueBefore: Strin
     override fun conflictsWith(map: Map<String, String>) = map[key] != valueBefore && map[key] != value
     override fun applyTo(map: MutableMap<String, String>) { map[key] = value }
     override fun reversed() = StringMapEntryModify(key, value, valueBefore)
+    override fun isValid() = key.length <= 255 && value.length <= 255
 }
 
 @Serializable
@@ -38,4 +41,5 @@ data class StringMapEntryDelete(override val key: String, val valueBefore: Strin
     override fun conflictsWith(map: Map<String, String>) = map.containsKey(key) && map[key] != valueBefore
     override fun applyTo(map: MutableMap<String, String>) { map.remove(key) }
     override fun reversed() = StringMapEntryAdd(key, valueBefore)
+    override fun isValid() = key.length <= 255
 }
