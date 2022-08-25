@@ -5,6 +5,7 @@ pkgs.androidenv.emulateApp {
   platformVersion = "31";
   abiVersion = "x86_64";
   systemImageType = "default";
-  app = pkgs.callPackage ./android-package.nix { };
-  package = "StreetComplete";
+  app = import ./android-package.nix { };
+  package = "com.ngi.streetcomplete";
+  enableGPU = true;
 }
