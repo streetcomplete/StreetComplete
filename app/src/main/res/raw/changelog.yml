@@ -11,13 +11,22 @@ v46.0-beta1: |
   <p>Some (more) quests are now disabled by default in order to not overwhelm users (#4264,...). You can always enable them again in the settings, thanks @matkoniecz</p>
   <ul>
   <li>Orchard produce - difficult to answer</li>
-  <li>Building levels - spammy, at times difficult to answer and little information value</li>
-  <li>Sidewalks and Lit roads - more effectively and efficiently done with the designated overlays</li>
+  <li>Building levels - spammy, little information value</li>
+  <li>Sidewalks and lit roads - more effective and efficient with the designated overlays</li>
+  </ul>
+  <h3>Enhancements on quests</h3>
+  <ul>
+  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
+  <li>Opening hours: Months and weekdays are now (also) shown in the local language</li>
+  <li>Road width: Also ask for the max width of chokers and chicanes (#3258)</li>
+  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, .../li>
   </ul>
   <h3>Other enhancements and fixes</h3>
   <ul>
-  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
   <li>Fix: Was unable to edit tunnels in overlays (#4269), thanks @matkoniecz</li>
+  <li>Fix error when uploading too long opening hours (#3471)</li>
+  <li>Performance improvement on uploading (#4297), by @Helium314</li>
+  <li>More minor enhancements (#4158, #4226, #4307...), thanks @peternewman</li>
   </ul>
 
 v45.2: |
