@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
@@ -25,6 +26,7 @@ import kotlinx.coroutines.withContext
 
 class ElementEditsUploader(
     private val elementEditsController: ElementEditsController,
+    private val noteEditsController: NoteEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
@@ -57,6 +59,7 @@ class ElementEditsUploader(
 
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
+            noteEditsController.updateElementIds(updates.idUpdates)
 
             if (edit.action is IsRevertAction) {
                 statisticsController.subtractOne(edit.type.name, edit.position)
