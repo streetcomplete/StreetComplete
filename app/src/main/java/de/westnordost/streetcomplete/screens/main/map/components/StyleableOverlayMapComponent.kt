@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -16,6 +17,7 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
+import kotlin.math.absoluteValue
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
@@ -35,11 +37,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
-            if (element.tags["layer"] in listOf("-5", "-4", "-3", "-2", "-1", "1", "2", "3", "4", "5")) {
-                props["layer"] = element.tags["layer"]!!
-            } else {
-                props["layer"] = "0"
-            }
+            val layer = element.tags["layer"]?.toIntOrNull()
+            props["layer"] = if (layer != null && layer.absoluteValue <= 20) layer.toString() else "0"
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
@@ -73,12 +72,13 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** mimics width of line as seen in Streetomplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-        "motorway", "trunk" -> 20f
-        "primary", "secondary" -> 12f
-        "service", "track" -> 4f
-        "path", "cycleway", "footway", "bridleway", "steps" -> 2f
+        "motorway", "trunk" -> 16f
+        "motorway_link", "trunk_link" -> 9f
+        "primary", "secondary", "tertiary" -> 9f
+        "service", "track" -> 3f
+        "path", "cycleway", "footway", "bridleway", "steps" -> 1f
         null -> 3f
-        else -> 8f
+        else -> 6f
     }
 
     /** estimates height of thing */

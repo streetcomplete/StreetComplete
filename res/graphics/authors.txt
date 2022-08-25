@@ -37,6 +37,7 @@ app icon/
     appicon_fancy.svg           https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_flat.svg            https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_fancy-debug.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
+    appicon_fancy-rect.svg      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     appicon_flat-debug.svg      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
     feature_graphic.xcf         parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
     launcher_foreground.svg     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0)
@@ -292,6 +293,7 @@ quest/
     bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
+    camp_power.svg
     car.svg                          modified from Twemoji: U+1F698
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
@@ -378,6 +380,7 @@ quest/
     road_construction.svg
     roof_shape.svg
     seating.svg
+    shower.svg
     sidewalk.svg
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
@@ -397,6 +400,7 @@ quest/
     summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
     surveillance.svg
     surveillance_camera.svg
+    tent.svg                        
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
@@ -508,7 +512,7 @@ royal cypher/
     EVIIR.svg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)
     GR.svg                                  http://www.bechler.free-online.co.uk/gc/RoyalCyphers2.jpg (adapted)
     GVIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_George_VI_of_Great_Britain.svg (adapted)
-    Scottish Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
+    Scottish_Crown.svg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Crown_of_Scotland_(Heraldry).svg (adapted)
     VR.svg                Public Domain     https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Victoria.svg (adapted)
 
 sidewalk/
@@ -576,7 +580,6 @@ sport/
 steps incline/
     up.svg
     up_reversed.svg
-    unknown.svg
 
 street parking/no stopping sign/
     mutcd_text_spanish.svg              modified from https://commons.wikimedia.org/wiki/File:MUTCD-PR_R7-4.svg, License: Public Domain
@@ -604,7 +607,8 @@ tutorial/
     logo_osm_map_lighting.svg           modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
                                                   (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
 
-create_note_black_24dp.svg
+note/
+    create_note_black_24dp.svg
 
 lab_flask.svg                           from https://www.svgrepo.com/svg/353167/lab-flask (c) geakstr, License: CC-BY
 

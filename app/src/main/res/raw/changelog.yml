@@ -1,3 +1,34 @@
+v46.0-beta1: |
+  <h3>New Quests</h3>
+  <p>Asked for campsites (#4213), by @mnalis:</p>
+  <ul>
+  <li><i>Who may camp here?</i></li>
+  <li><i>Are there showers here? (disabled by default)</i></li>
+  <li><i>Is drinking water available here? (disabled by default)</i></li>
+  <li><i>Is there any power supply here? (disabled by default)</i></li>
+  </ul>
+  <h3>Quests disabled by default</h3>
+  <p>Some (more) quests are now disabled by default in order to not overwhelm users (#4264,...). You can always enable them again in the settings, thanks @matkoniecz</p>
+  <ul>
+  <li>Orchard produce - difficult to answer</li>
+  <li>Building levels - spammy, little information value</li>
+  <li>Sidewalks and lit roads - more effective and efficient with the designated overlays</li>
+  </ul>
+  <h3>Enhancements on quests</h3>
+  <ul>
+  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
+  <li>Opening hours: Months and weekdays are now (also) shown in the local language</li>
+  <li>Road width: Also ask for the max width of chokers and chicanes (#3258)</li>
+  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, .../li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Fix: Was unable to edit tunnels in overlays (#4269), thanks @matkoniecz</li>
+  <li>Fix error when uploading too long opening hours (#3471)</li>
+  <li>Performance improvement on uploading (#4297), by @Helium314</li>
+  <li>More minor enhancements (#4158, #4226, #4307...), thanks @peternewman</li>
+  </ul>
+
 v45.2: |
   <ul>
   <li>Fix rare crash when phone is low on memory (#4221)</li>
