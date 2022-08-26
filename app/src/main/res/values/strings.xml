@@ -831,6 +831,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_busStopName_title2">"What’s the name of this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"What number or code identifies this stop?"</string>
+    <string name="quest_railStopRef_title2">"What number or code identifies this rail platform?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Is there a shelter at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
