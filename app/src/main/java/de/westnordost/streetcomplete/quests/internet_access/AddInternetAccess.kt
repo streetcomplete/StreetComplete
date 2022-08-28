@@ -12,7 +12,8 @@ class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
         nodes, ways, relations with
         (
           amenity ~ library|community_centre|youth_centre
-          or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|camp_site|caravan_site|chalet
+          or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet
+          or tourism = camp_site and backcountry != yes and camp_site != basic
         )
         and access !~ no|private
         and (
