@@ -218,8 +218,8 @@ surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/w
 surface_ground.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
 surface_paved.jpg              CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
-path_surface_paved.jpg         CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
-path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+path_surface_paved.jpg         CC-BY 4.0         https://github.com/streetcomplete/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+path_surface_unpaved.jpg       CC-BY 4.0         https://github.com/streetcomplete/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_rock.jpg               CC0               Elliot Plack
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
@@ -279,10 +279,10 @@ traffic_calming_rumble_strip...CC-BY-SA 3.0      Koolah https://commons.wikimedi
 traffic_calming_table.jpg      CC-BY-SA 2.5      noebse https://commons.wikimedia.org/wiki/File%3ABremsschwelle%2EJPG
 
 
-tracktype_grade1.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
-tracktype_grade2.jpg           CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+tracktype_grade1.jpg           Public Domain     https://github.com/streetcomplete/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade2.jpg           CC-BY 4.0         https://github.com/streetcomplete/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 tracktype_grade3.jpg           CC-BY-SA 2.0?     https://wiki.openstreetmap.org/wiki/File:Tracktype.jpg (unconfirmed author)
-tracktype_grade4.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade4.jpg           Public Domain     https://github.com/streetcomplete/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade5.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Tracktype_grade5.jpg (unconfirmed author)
 
 leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
