@@ -80,7 +80,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         view.respectSystemInsets {
             scrollViewChild.updatePadding(bottom = it.bottom)
             bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
-            floatingBottomView?.updateMargins(bottom = it.bottom + context.dpToPx(8).toInt())
+            floatingBottomView?.updateMargins(bottom = it.bottom)
 
             // expanding bottom sheet when keyboard is opened
             if (minBottomInset < it.bottom) expand()

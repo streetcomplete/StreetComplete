@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -14,10 +15,19 @@ fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
     val osmValue = value.osmValue
     val previousOsmValue = tags[key]
 
+    val replacesTracktype = tags.containsKey("tracktype")
+        && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
+
+    if (replacesTracktype) {
+        tags.remove("tracktype")
+        tags.removeCheckDatesForKey("tracktype")
+    }
+
     // update surface + check date
     tags.updateWithCheckDate(key, osmValue)
     // remove smoothness tag if surface was changed
-    if (previousOsmValue != null && previousOsmValue != osmValue) {
+    // or surface can be treated as outdated
+    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
         tags.remove("smoothness")
         tags.remove("smoothness:date")
         tags.removeCheckDatesForKey("smoothness")

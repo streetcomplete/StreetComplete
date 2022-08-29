@@ -118,7 +118,8 @@ class QuestPinsManager(
     fun onNewScreenPosition() {
         if (!isActive) return
         val zoom = ctrl.cameraPosition.zoom
-        if (zoom < TILES_ZOOM) return
+        // require zoom >= 14, which is the lowest zoom level where quests are shown
+        if (zoom < 14) return
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
@@ -166,11 +167,11 @@ class QuestPinsManager(
             removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
             questsInView.values.flatten()
         }
-        if (!deletedAny && addedInView.isEmpty())
-            return
-        synchronized(pinsMapComponent) {
-            if (coroutineContext.isActive)
-                pinsMapComponent.set(pins)
+        if (deletedAny || addedInView.isNotEmpty()) {
+            synchronized(pinsMapComponent) {
+                if (coroutineContext.isActive)
+                    pinsMapComponent.set(pins)
+            }
         }
     }
 
