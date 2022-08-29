@@ -91,6 +91,30 @@ class ElementEditsController(
             }
             syncSuccess = editsDB.markSynced(edit.id)
         }
+        synchronized(editCache) {
+            // alternatively i could just clear editCache if idUpdates is not empty...
+            // safer and most of the cache benefit remains, since most edits don't have idUpdates
+            val editsToRemove = hashSetOf<ElementEdit>()
+            val editsToAdd = hashSetOf<ElementEdit>()
+            for (update in elementUpdates.idUpdates) {
+                editCache.forEach {
+                    if (it.elementType == edit.elementType && it.elementId == update.oldElementId) {
+                        // it.elementId = update.newElementId // if it only was that simple...
+                        editsToRemove.add(it)
+                        editsToAdd.add(it.copy(elementId = update.newElementId))
+                    }
+                }
+            }
+            editCache.removeAll(editsToRemove)
+            editCache.addAll(editsToAdd)
+
+            if (syncSuccess) {
+                if (!editCache.remove(edit))
+                    editCache.removeAll { it.id == edit.id } // todo: does this ever trigger?
+                editCache.add(edit)
+            }
+        }
+
         if (syncSuccess) onSyncedEdit(edit)
 
         /* must be deleted after the callback because the callback might want to get the id provider
@@ -191,15 +215,10 @@ class ElementEditsController(
 
     private fun onAddedEdit(edit: ElementEdit) {
         lastEditTimeStore.touch()
-        synchronized(editCache) { editCache.add(edit) }
         listeners.forEach { it.onAddedEdit(edit) }
     }
 
     private fun onSyncedEdit(edit: ElementEdit) {
-        synchronized(editCache) {
-            editCache.add(edit.copy(isSynced = true))
-            editCache.remove(edit)
-        }
         listeners.forEach { it.onSyncedEdit(edit) }
     }
 

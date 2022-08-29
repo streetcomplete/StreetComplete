@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
@@ -120,9 +121,17 @@ class EditHistoryController(
     }
     private fun onSynced(edit: Edit) {
         synchronized(cache) {
-            if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
-            if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
-            cache.remove(edit) // can't be called for (un)hiding, so no need to care about it
+            if (edit is ElementEdit && edit.action !is UpdateElementTagsAction)
+                // clear / reload cache, because element ids of multiple edits may have changed after this
+                // todo: could probably allow more edit actions, like revert and deleteNode
+                // or maybe remove this cache and do separate caches for all controllers?
+                cache.clear()
+            else {
+                cache.remove(edit) // remove first is really important!
+                if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
+                if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
+                // can't be called for (un)hiding, so no need to care about it
+            }
         }
         listeners.forEach { it.onSynced(edit) }
     }
