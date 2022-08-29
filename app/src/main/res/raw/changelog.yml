@@ -17,7 +17,7 @@ v46.0-beta1: |
   <ul>
   <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
   <li>Opening hours: Months and weekdays are now (also) shown in the local language</li>
-  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, .../li>
+  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, ...</li>
   <li>Road width: Also ask for the max width of chokers and chicanes (#3258)</li>
   <li>Internet access: Do not ask for backcountry campsites</li>
   <li>Steps incline: Fix display issue on Android 5 (#4317)</li>
@@ -25,7 +25,7 @@ v46.0-beta1: |
   <h3>Other enhancements and fixes</h3>
   <ul>
   <li>Fix editing tunnels in overlays (#4269), thanks @matkoniecz</li>
-  <li>Fix error when uploading too long opening hours (#3471)</li>
+  <li>Fix rare error when uploading too long opening hours (#3471)</li>
   <li>Fix rare faulty links in notes (#4312, #4309)</li>
   <li>Improved map style clarity, especially in regard to overlays (#4291, #4310, ...)</li>
   <li>Performance improvement on uploading (#4297), by @Helium314</li>
