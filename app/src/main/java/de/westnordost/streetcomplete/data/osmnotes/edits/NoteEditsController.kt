@@ -118,8 +118,8 @@ class NoteEditsController(
         for (idUpdate in idUpdates) {
             val elementType = idUpdate.elementType.name.lowercase()
             editsDB.replaceTextInUnsynced(
-                "osm.org/$elementType/${idUpdate.oldElementId}",
-                "osm.org/$elementType/${idUpdate.newElementId}",
+                "osm.org/$elementType/${idUpdate.oldElementId} ",
+                "osm.org/$elementType/${idUpdate.newElementId} ",
             )
         }
     }
