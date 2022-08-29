@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -111,6 +112,16 @@ class NoteEditsController(
             return false
         }
         return true
+    }
+
+    fun updateElementIds(idUpdates: Collection<ElementIdUpdate>) {
+        for (idUpdate in idUpdates) {
+            val elementType = idUpdate.elementType.name.lowercase()
+            editsDB.replaceTextInUnsynced(
+                "osm.org/$elementType/${idUpdate.oldElementId} ",
+                "osm.org/$elementType/${idUpdate.newElementId} ",
+            )
+        }
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */
