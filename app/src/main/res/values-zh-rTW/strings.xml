@@ -2486,4 +2486,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"晚上與白天都有照明"</string>
     <string name="lit_value_automatic">"只有在人通過時才有照明"</string>
     <string name="overlay_sidewalk">"人行道"</string>
+    <string name="quest_generic_answer_is_indoors">"這邊是室內"</string>
+    <string name="quest_summit_cross_title">"這裡有山頂十字架嗎？"</string>
+    <string name="quest_entrance_reference">"這個入口的標誌是什麼？"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"入口標示與房間概況"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"房間概況"</string>
+    <string name="quest_entrance_reference_select_code_only">"入口標示"</string>
+    <string name="quest_entrance_reference_nothing_signed">"沒有標示或房間概況"</string>
+    <string name="quest_entrance_reference_reference_label">"入口標示："</string>
+    <string name="quest_entrance_reference_flat_range_label">"房間概況："</string>
+    <string name="quest_entrance_reference_flat_range_to">"到那裡"</string>
 </resources>

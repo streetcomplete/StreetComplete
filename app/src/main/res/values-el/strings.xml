@@ -2480,4 +2480,36 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Πατήστε την οθόνη για έναρξη μέτρησης"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Υπάρχει δημόσια αντλία ποδηλάτου εδώ (όταν είναι ανοιχτά);"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Υπάρχει λειτουργική αντλία ποδηλάτου εδώ;"</string>
+    <string name="action_overlays">"Επικαλύψεις"</string>
+    <string name="split_way">"Διαίρεση διαδρομής"</string>
+    <string name="quest_memorialType_title">"Τι είδους μνημείο είναι αυτό;"</string>
+    <string name="quest_memorialType_statue">"Άγαλμα"</string>
+    <string name="quest_memorialType_bust">"Προτομή"</string>
+    <string name="quest_memorialType_plaque">"Πλακέτα"</string>
+    <string name="quest_memorialType_war_memorial">"Μνημείο πολέμου"</string>
+    <string name="quest_memorialType_stone">"Πέτρα"</string>
+    <string name="quest_memorialType_obelisk">"Οβελίσκος"</string>
+    <string name="quest_memorialType_stele_wooden">"Ξύλινη στήλη (αναμνηστική πλάκα)"</string>
+    <string name="quest_memorialType_stele_stone">"Λίθινη στήλη (αναμνηστική πλάκα)"</string>
+    <string name="quest_memorialType_sculpture">"Άλλο γλυπτό"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Επιλογή Επικάλυψης"</string>
+    <string name="overlay_none">"Καμία"</string>
+    <string name="overlay_lit">"Φωτισμός δρόμου"</string>
+    <string name="lit_value_yes">"Φωτισμένο"</string>
+    <string name="lit_value_no">"Αφώτιστο"</string>
+    <string name="lit_value_24_7">"Φωτισμένο μέρα και νύχτα"</string>
+    <string name="lit_value_automatic">"Φωτισμένο όταν περάσει κάποιος"</string>
+    <string name="overlay_sidewalk">"Πεζοδρόμια"</string>
+    <string name="quest_generic_answer_is_indoors">"Αυτό είναι σε εσωτερικούς χώρους"</string>
+    <string name="quest_summit_cross_title">"Υπάρχει σταυρός κορυφής εδώ;"</string>
+    <string name="quest_entrance_reference">"Τι γράφει σε αυτή την είσοδο;"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ταμπέλα εισόδου και σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_select_code_only">"Ταμπέλα εισόδου"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Κανένα σημάδι με ταμπέλα ή σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_reference_label">"Ταμπέλα εισόδου:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Σειρά διαμερισμάτων:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"προς"</string>
 </resources>

@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
 import java.util.Locale
 
 object MonthsPickerDialog {

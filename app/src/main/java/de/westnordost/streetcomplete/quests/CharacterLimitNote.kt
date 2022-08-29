@@ -17,7 +17,7 @@ fun createNoteTextForTooLongTags(
     "for https://osm.org/${elementType.name.lowercase()}/$elementId " +
     "via ${ApplicationConstants.USER_AGENT}:\n\n" +
     "One of the tags in the attempted edit exceeds the 255 character limit - \n\n" +
-    changes.joinToString("\n") { when(it) {
+    changes.joinToString("\n") { when (it) {
         is StringMapEntryAdd -> "${it.key}=${it.value}"
         is StringMapEntryModify -> "${it.key}=${it.value}"
         is StringMapEntryDelete -> "delete ${it.key}"

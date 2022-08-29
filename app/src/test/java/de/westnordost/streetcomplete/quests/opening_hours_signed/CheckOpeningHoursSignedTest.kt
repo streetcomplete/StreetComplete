@@ -60,7 +60,6 @@ class CheckOpeningHoursSignedTest {
         ))))
     }
 
-
     @Test fun `is not applicable to old place with signed hours with hours specified`() {
         assertFalse(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
             "name" to "XYZ",
@@ -133,7 +132,7 @@ class CheckOpeningHoursSignedTest {
             StringMapEntryModify("check_date:opening_hours", "2020-03-04", LocalDate.now().toCheckDateString()),
         )
     }
-    
+
     @Test fun `apply no answer with existing opening hours via other means`() {
         questType.verifyAnswer(
             mapOf(
