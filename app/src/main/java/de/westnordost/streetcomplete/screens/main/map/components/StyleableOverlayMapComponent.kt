@@ -49,7 +49,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 is PolylineStyle -> {
                     val width = getLineWidth(element.tags)
                     // thin lines should be rendered on top (see #4291)
-                    props["layer"] = (layer + 1).toString()
+                    if (width <= 2f) props["layer"] = (layer + 1).toString()
                     props["width"] = width.toString()
                     style.colorLeft?.let { props["colorLeft"] = it }
                     style.colorRight?.let { props["colorRight"] = it }
