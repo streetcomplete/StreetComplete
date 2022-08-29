@@ -150,8 +150,9 @@ class QuestPinsManager(
             removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
             questsInView.values.flatten()
         }
-        if (deletedAny || addedInView.isNotEmpty())
+        if (deletedAny || addedInView.isNotEmpty()) {
             pinsMapComponent.set(pins)
+        }
     }
 
     private fun initializeQuestTypeOrders() {

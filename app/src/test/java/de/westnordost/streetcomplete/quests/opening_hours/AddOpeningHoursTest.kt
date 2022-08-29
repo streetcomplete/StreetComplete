@@ -5,7 +5,6 @@ import ch.poole.openinghoursparser.TimeSpan
 import ch.poole.openinghoursparser.WeekDay
 import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.toCheckDate
@@ -269,7 +268,7 @@ class AddOpeningHoursTest {
             timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
         )))
     }
-    
+
     @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
         assertFalse(questType.isApplicableTo(node(
             tags = mapOf(
