@@ -112,7 +112,8 @@ class QuestPinsManager(
     fun onNewScreenPosition() {
         if (!isActive) return
         val zoom = ctrl.cameraPosition.zoom
-        if (zoom < TILES_ZOOM) return
+        // require zoom >= 14, which is the lowest zoom level where quests are shown
+        if (zoom < 14) return
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
