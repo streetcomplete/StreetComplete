@@ -166,7 +166,7 @@ produce_jojoba.jpg             CC-BY 2.0         https://commons.wikimedia.org/w
 produce_kiwi.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Actinidia_chinensis4.jpg
 produce_kola_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruits_of_Cola_nitida.JPG
 produce_lemon.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Limonu.jpg
-produce_lime.jpg               CC-BY 2.0         https://www.flickr.com/photos/tanaka_juuyoh/4918425731
+produce_lime.jpg               CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Key_Lime_Citris_aurantifolia.jpg
 produce_mango.jpg              CC0               https://pixabay.com/de/mango-mangifera-indica-%C3%BCber-reif-321071/
 produce_mangosteen.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruit_of_Garcinia_mangostana.JPG
 produce_mate.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Yerba_Mate.jpg
@@ -184,7 +184,7 @@ produce_pistachio.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_plum.jpg               CC0               https://commons.wikimedia.org/wiki/File:Pflaumen.JPG
 produce_raspberry.jpg          CC0               https://pixabay.com/de/obst-himbeeren-garten-2292701/
 produce_rubber.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Latex_-_Hevea_-_Cameroun.JPG
-produce_sisal.jpg              CC-BY 2.0         https://www.flickr.com/photos/agecombahia/5189770130
+produce_sisal.jpg              CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Sisal_baiano_recebe_certifica%C3%A7%C3%A3o_internacional.jpg
 produce_strawberry.jpg         CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Strawberries.JPG
 produce_tea.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Camellia_sinensis_(Boltz_Conservatory).JPG
 produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
@@ -197,7 +197,7 @@ ramp_stroller.jpg              CC0               Mateusz Konieczny
 ramp_wheelchair.jpg            CC0               Mateusz Konieczny
 ramp_bicycle.jpg               CC0               Mateusz Konieczny
 
-recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
+recycling_centre.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Forklift_carrying_bail_of_cardboard_for_recycling,_under_a_giant_sign_of_recycling_center.JPG
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 
@@ -206,7 +206,7 @@ snip.wav                       CC0               https://freesound.org/people/Go
 
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg (E.mil.mil)
-surface_compacted.jpg          CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321 (Ian Munroe)
+surface_compacted.jpg          CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Dirt_road_in_countryside.jpg (Ian Munroe)
 surface_concrete.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_concrete_plates.jpg    CC-BY-SA 2.0      https://www.geograph.org.uk/photo/3131358 (Richard Humphrey)
 surface_concrete_lanes.jpg     CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:%D0%91%D0%B5%D1%82%D0%BE%D0%BD%D0%BD%D0%B0_%D0%B2%D1%96%D0%B9%D1%81%D1%8C%D0%BA%D0%BE%D0%B2%D0%B0_%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%B0_%D0%BD%D0%B0_%D0%9F%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D1%83_%D0%A0%D1%83%D0%BD%D1%83.jpg (Maximym44)
