@@ -37,8 +37,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
-            val layer = element.tags["layer"]?.toIntOrNull()
-            props["layer"] = if (layer != null && layer.absoluteValue <= 20) layer.toString() else "0"
+            val layer = element.tags["layer"]?.toIntOrNull()?.takeIf { it.absoluteValue <= 20 } ?: 0
+            props["layer"] = layer.toString()
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
@@ -47,7 +47,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
-                    props["width"] = getLineWidth(element.tags).toString()
+                    val width = getLineWidth(element.tags)
+                    // thin lines should be rendered on top (see #4291)
+                    props["layer"] = (layer + 1).toString()
+                    props["width"] = width.toString()
                     style.colorLeft?.let { props["colorLeft"] = it }
                     style.colorRight?.let { props["colorRight"] = it }
                     if (style.color != null) {

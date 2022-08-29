@@ -61,7 +61,7 @@ styles:
         blend_order: 1
     map_data-lines-right:
         base: lines
-        blend: inlay
+        blend: translucent
         texcoords: true
         shaders:
             blocks:
@@ -69,7 +69,7 @@ styles:
                     color.a = color.a * smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
     map_data-lines-left:
         base: lines
-        blend: inlay
+        blend: translucent
         texcoords: true
         shaders:
             blocks:
