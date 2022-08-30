@@ -20,6 +20,7 @@ class AddRoadWidth(
        nodes with
          traffic_calming ~ ${ROAD_NARROWERS.joinToString("|")}
          and (!width or source:width ~ ".*estimat.*")
+         and (!maxwidth or source:maxwidth ~ ".*estimat.*")
     """.toElementFilterExpression() }
 
     private val wayFilter by lazy { """
