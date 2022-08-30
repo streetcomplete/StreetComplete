@@ -5,13 +5,14 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
 class AddRoadSmoothnessTest {
-    private val questType = AddRoadSmoothness()
+    private val questType = AddRoadSmoothness(mock())
 
     @Test fun `apply smoothness answer`() {
         questType.verifyAnswer(

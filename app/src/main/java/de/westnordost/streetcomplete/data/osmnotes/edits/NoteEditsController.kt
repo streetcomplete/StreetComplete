@@ -133,6 +133,8 @@ class NoteEditsController(
                 "osm.org/$elementType/${idUpdate.newElementId} ",
             )
         }
+    }
+
     // there is some xmlwriter, and even gpxTrackWriter
     // maybe use this instead of the current ugly things, probably less prone to bugs caused by weird characters
     private fun createGpxNote(note: String, imagePaths: List<String>, position: LatLon, recordedTrack: List<Trackpoint>?, context: Context?) {

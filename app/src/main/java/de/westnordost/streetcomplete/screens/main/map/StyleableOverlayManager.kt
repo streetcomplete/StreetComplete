@@ -144,10 +144,8 @@ class StyleableOverlayManager(
                     mapDataInView[key] = styledElement
                 }
             }
-            synchronized(mapComponent) {
-                if (coroutineContext.isActive)
-                    mapComponent.set(mapDataInView.values)
-            }
+            if (coroutineContext.isActive)
+                mapComponent.set(mapDataInView.values)
         }
     }
 
@@ -165,7 +163,6 @@ class StyleableOverlayManager(
             }
             deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
             if (changedAnything) {
-            synchronized(mapComponent) {
                 if (coroutineContext.isActive)
                     mapComponent.set(mapDataInView.values)
             }

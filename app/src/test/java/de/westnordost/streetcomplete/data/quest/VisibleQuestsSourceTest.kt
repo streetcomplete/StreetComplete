@@ -85,7 +85,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySourc, levelFilter, dayNightFilter)
+        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource, levelFilter, dayNightFilter, mock())
 
         listener = mock()
         source.addListener(listener)

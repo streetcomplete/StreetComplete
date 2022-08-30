@@ -178,8 +178,7 @@
             android:scaleType="centerInside"
             style="@style/RoundAccentButton"
             android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:padding="20dp"/>
+            android:layout_height="72dp"/>
 
     </RelativeLayout>
 
@@ -196,6 +195,7 @@
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:alpha="0"/>
+
     <View
         android:id="@+id/glassPane"
         android:layout_width="match_parent"

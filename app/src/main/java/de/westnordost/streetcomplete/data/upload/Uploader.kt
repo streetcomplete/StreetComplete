@@ -76,7 +76,7 @@ class Uploader(
         mutex.withLock {
             // element edit and note edit uploader must run in sequence because the notes may need
             // to be updated if the element edit uploader creates new elements to which notes refer
-            elementEditsUploader.upload()
+            elementEditsUploader.upload(context)
             noteEditsUploader.upload()
             osmoseDao.reportChanges()
         }

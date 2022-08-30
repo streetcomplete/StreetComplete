@@ -3,13 +3,14 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddRoadSurfaceTest {
-    private val questType = AddRoadSurface()
+    private val questType = AddRoadSurface(mock())
 
     @Test fun `verify simple name adding`() {
         questType.verifyAnswer(
