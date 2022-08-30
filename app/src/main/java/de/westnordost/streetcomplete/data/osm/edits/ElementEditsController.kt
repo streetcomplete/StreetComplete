@@ -110,8 +110,8 @@ class ElementEditsController(
 
             if (syncSuccess) {
                 if (!editCache.remove(edit))
-                    editCache.removeAll { it.id == edit.id } // todo: does this ever trigger?
-                editCache.add(edit)
+                    editCache.removeAll { it.id == edit.id } // looks like this never triggers, but better be safe
+                editCache.add(edit.copy(isSynced = true))
             }
         }
 
