@@ -1215,6 +1215,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
     <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
     <string name="quest_recycling_type_beverage_cartons">Beverage cartons only</string>
+    <string name="quest_recycling_type_pet">PET only</string>
     <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastic bottles and cartons only</string>
     <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
