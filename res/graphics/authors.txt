@@ -317,6 +317,8 @@ quest/
     fire_hydrant.svg
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
+    footway_surface.svg
+    footway_surface_detail.svg
     fuel.svg
     housenumber.svg
     housenumber_street.svg
