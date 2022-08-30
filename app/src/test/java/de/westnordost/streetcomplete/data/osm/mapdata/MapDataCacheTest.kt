@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.verify
 
@@ -85,10 +87,7 @@ internal class MapDataCacheTest {
         assertNull(cache.getElement(ElementType.WAY, 2L) { _,_ -> null })
     }
 
-    @Test fun getWaysForNode() {
-        val node1 = node(1)
-        val node2 = node(2)
-        val node3 = node(3)
+    @Test fun `getWaysForNode caches from db`() {
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
         val way3 = way(3, nodes = listOf(3L, 2L))
@@ -97,23 +96,78 @@ internal class MapDataCacheTest {
         val wayDB: WayDao = mock()
         on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1, way2)).thenThrow(IllegalStateException())
         // fetches from cache if we didn't put the node
-        //  todo: add comment to cache why... or adjust the cache
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
         verify(wayDB).getAllForNode(1L)
         // now we have it cached
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
+    }
 
-        cache.clear()
-        // if we at least tried to put the node,
-        cache.update(addedOrUpdatedElements = listOf(node2, way1, way2, way3))
-        assertTrue(cache.getWaysForNode(2L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way3)))
+    @Test fun `getWaysForNode gets filled inside bbox`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(addedOrUpdatedElements = listOf(node1, node2, node3, way1, way2, way3), bbox = nodesRect.asBoundingBox(16))
+
+        assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
+        assertTrue(cache.getWaysForNode(2L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way3)))
+        assertTrue(cache.getWaysForNode(2L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way3)))
+    }
+
+    @Test fun `update affects wayIdsByNodeIdCache`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(addedOrUpdatedElements = listOf(node1, node2, node3, way1, way2, way3), bbox = nodesRect.asBoundingBox(16))
+        assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
+
+        val way3updated = way(3, nodes = listOf(3L, 2L, 1L))
+        cache.update(addedOrUpdatedElements = listOf(way3updated))
+        assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2, way3updated)))
+    }
+
+    @Test fun `trim removes everything not referenced by spatialCache`() {
+        // todo: relations!
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodes = listOf(node1, node2, node3)
+        val outsideNode = node(4, LatLon(1.0, 1.0))
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L, 4L))
+        val ways = listOf(way1, way2, way3)
+        val outsideWay = way(4, nodes = listOf(4L, 5L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(addedOrUpdatedElements = nodes + ways +listOf(outsideNode, outsideWay), bbox = nodesRect.asBoundingBox(16))
+        val expectedMapData = MutableMapDataWithGeometry(nodes + ways, emptyList())
+        // node geometries get created when getting the data
+        nodes.forEach { expectedMapData.putGeometry(it.type, it.id, ElementPointGeometry(it.position)) }
+        // way geometries are also put, though null
+        ways.forEach { expectedMapData.putGeometry(it.type, it.id, null) }
+        expectedMapData.boundingBox = nodesRect.asBoundingBox(16)
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesRect.asBoundingBox(16)))
+
+        assertEquals(null, cache.getNode(4L)) // node not in spatialCache
+        assertEquals(outsideWay, cache.getElement(ElementType.WAY, 4L) { _,_ -> null }) // way cached
+        cache.trim(4)
+        assertEquals(null, cache.getElement(ElementType.WAY, 4L) { _,_ -> null }) // way removed after trim
     }
 
     // todo: further tests
-    //  trim, especially non-spatial caches (should remove stuff that does not contain nodes in spatial cache)
-    //  wayIdsByNodeIdCache should be updated if a way changes, same for relations
-    //  geometry
-    @Test fun `update affects wayIdsByNodeIdCache`() {
-        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
-    }
+    //  relationIdsByElementKeyCache (like wayIdsByNodeIdCache)
+    //  anything regarding geometry?
 }
