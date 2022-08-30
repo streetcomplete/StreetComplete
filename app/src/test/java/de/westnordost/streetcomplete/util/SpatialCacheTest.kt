@@ -55,7 +55,7 @@ internal class SpatialCacheTest {
         assertEquals(cache.get(node.id), node)
     }
 
-    @Test fun `update replaces item`() {
+    @Test fun `position update replaces item`() {
         val node = node(1, LatLon(1.0, 0.0))
 
         val nodeTile = node.position.enclosingTilePos(16)
@@ -68,11 +68,28 @@ internal class SpatialCacheTest {
         cache.update(updatedOrAdded = listOf(node))
         assertEquals(node, cache.get(node.id))
 
-        assertEquals(emptyList<Node>(), cache.get(movedNodeTile.asBoundingBox(16)), )
+        assertEquals(emptyList<Node>(), cache.get(movedNodeTile.asBoundingBox(16)))
         cache.update(updatedOrAdded = listOf(movedNode))
         assertEquals(movedNode, cache.get(node.id))
         assertEquals(listOf(movedNode), cache.get(movedNodeTile.asBoundingBox(16)))
         assertEquals(emptyList<Node>(), cache.get(nodeTile.asBoundingBox(16)))
+    }
+
+    @Test fun `tag update replaces item`() {
+        val node = node(1, LatLon(1.0, 0.0))
+
+        val nodeTile = node.position.enclosingTilePos(16)
+        val cache = SpatialCache<Long, Node>(
+            16, 4, null, { emptyList() }, Node::id, Node::position
+        )
+        cache.get(nodeTile.asBoundingBox(16))
+        cache.update(updatedOrAdded = listOf(node))
+        assertEquals(node, cache.get(node.id))
+
+        val updatedNode = node.copy(tags = hashMapOf("a" to "b"))
+        cache.update(updatedOrAdded = listOf(updatedNode))
+        assertEquals(updatedNode, cache.get(node.id))
+        assertEquals(listOf(updatedNode), cache.get(nodeTile.asBoundingBox(16)))
     }
 
     @Test fun `get fetches data that is not in cache`() {
