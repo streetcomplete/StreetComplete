@@ -18,7 +18,7 @@ class AddRecyclingContainerMaterialsForm :
         AnswerItem(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
     )
 
-    override val items get() = RecyclingMaterial.selectableValues.map { it.toItem() }
+    override val items get() = RecyclingMaterial.selectableValues.map { it.asItem() }
 
     override val maxSelectableItems = -1
 
@@ -32,9 +32,9 @@ class AddRecyclingContainerMaterialsForm :
                 val value = imageSelector.items[index].value!!
 
                 if (value in RecyclingMaterial.selectablePlasticValues) {
-                    showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectablePlasticValues.map { it.toItem() })
+                    showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectablePlasticValues.map { it.asItem() })
                 } else if (isAnyGlassRecycleable && value in RecyclingMaterial.selectableGlassValues) {
-                    showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectableGlassValues.map { it.toItem() })
+                    showPickItemForItemAtIndexDialog(index, RecyclingMaterial.selectableGlassValues.map { it.asItem() })
                 }
             }
 
