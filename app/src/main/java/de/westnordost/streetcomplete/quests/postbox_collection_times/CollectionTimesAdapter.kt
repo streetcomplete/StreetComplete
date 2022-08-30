@@ -102,7 +102,8 @@ class CollectionTimesAdapter(
             if (previousTimes != null && times.weekdays == previousTimes.weekdays) {
                 binding.weekdaysLabel.text = ""
             } else {
-                binding.weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources)
+                val locale = countryInfo.officialLanguages.firstOrNull()?.let { Locale(it) } ?: Locale.getDefault()
+                binding.weekdaysLabel.text = times.weekdays.toLocalizedString(context.resources, locale)
             }
 
             binding.weekdaysLabel.setOnClickListener {
@@ -139,7 +140,8 @@ class CollectionTimesAdapter(
     }
 
     private fun openSetWeekdaysDialog(weekdays: Weekdays, callback: (weekdays: Weekdays) -> Unit) {
-        WeekdaysPickerDialog.show(context, weekdays, callback)
+        val locale = countryInfo.officialLanguages.firstOrNull()?.let { Locale(it) } ?: Locale.getDefault()
+        WeekdaysPickerDialog.show(context, weekdays, locale, callback)
     }
 
     private fun openSetTimeDialog(minutes: Int, callback: (minutes: Int) -> Unit) {

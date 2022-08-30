@@ -16,8 +16,6 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -76,12 +74,11 @@ class Uploader(
         Log.i(TAG, "Starting upload")
 
         mutex.withLock {
-            coroutineScope {
-                // uploaders can run concurrently
-                launch { noteEditsUploader.upload() }
-                launch { elementEditsUploader.upload(context) }
-                launch { osmoseDao.reportChanges() }
-            }
+            // element edit and note edit uploader must run in sequence because the notes may need
+            // to be updated if the element edit uploader creates new elements to which notes refer
+            elementEditsUploader.upload()
+            noteEditsUploader.upload()
+            osmoseDao.reportChanges()
         }
 
         Log.i(TAG, "Finished upload")

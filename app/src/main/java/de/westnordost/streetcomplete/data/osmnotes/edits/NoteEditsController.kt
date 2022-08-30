@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import android.content.Context
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -124,6 +125,14 @@ class NoteEditsController(
         return true
     }
 
+    fun updateElementIds(idUpdates: Collection<ElementIdUpdate>) {
+        for (idUpdate in idUpdates) {
+            val elementType = idUpdate.elementType.name.lowercase()
+            editsDB.replaceTextInUnsynced(
+                "osm.org/$elementType/${idUpdate.oldElementId} ",
+                "osm.org/$elementType/${idUpdate.newElementId} ",
+            )
+        }
     // there is some xmlwriter, and even gpxTrackWriter
     // maybe use this instead of the current ugly things, probably less prone to bugs caused by weird characters
     private fun createGpxNote(note: String, imagePaths: List<String>, position: LatLon, recordedTrack: List<Trackpoint>?, context: Context?) {

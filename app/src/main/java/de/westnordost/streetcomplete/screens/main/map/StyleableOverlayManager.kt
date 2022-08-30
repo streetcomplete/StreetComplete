@@ -159,12 +159,12 @@ class StyleableOverlayManager(
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
                 if (styledElement != null) mapDataInView[key] = styledElement
                 else                       mapDataInView.remove(key)
-                if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false)
+                if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
                     changedAnything = true
+                }
             }
             deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
-            if (!changedAnything)
-                return
+            if (changedAnything) {
             synchronized(mapComponent) {
                 if (coroutineContext.isActive)
                     mapComponent.set(mapDataInView.values)

@@ -965,6 +965,7 @@ class MainFragment :
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         clearHighlighting()
+        mapFragment?.clearFocus()
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 

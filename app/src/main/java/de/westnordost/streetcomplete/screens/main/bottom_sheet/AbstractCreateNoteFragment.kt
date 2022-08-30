@@ -18,6 +18,7 @@ import org.koin.android.ext.android.inject
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     protected abstract val noteInput: EditText
+    protected abstract val okButtonContainer: View
     protected abstract val okButton: View
     protected abstract val gpxButton: View
 
@@ -53,11 +54,11 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     private fun updateOkButtonEnablement() {
         if (noteText.isNotEmpty()) {
-            okButton.popIn()
+            okButtonContainer.popIn()
             if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
                 gpxButton.popIn()
         } else {
-            okButton.popOut()
+            okButtonContainer.popOut()
             if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
                 gpxButton.popOut()
         }

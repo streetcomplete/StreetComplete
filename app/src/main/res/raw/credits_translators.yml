@@ -16,14 +16,14 @@ ast:
    Víctor Suárez: 12019
    Xuacu Saturio: 840
 bg: 
-   Plamen: 31347
+   Plamen: 32380
    Dimitar: 2080
    Kalin: 927
    Rhhsmits: 202
 bs: 
    OSMcontributorBH: 37976
 ca: 
-   Pau Nofuentes Sendra: 13703
+   Pau Nofuentes Sendra: 14334
    jmaspons: 12754
    Joan Montané: 10186
    Josep: 1914
@@ -55,10 +55,10 @@ da:
    Pelle Rosenbeck Gøeg: 145
    Youri Lima: 13
 de: 
-   Flo Edelmann: 17037
-   legofahrrad: 1454
+   Flo Edelmann: 16832
+   legofahrrad: 1647
+   Andre Thum: 1451
    papojari: 766
-   Andre Thum: 662
    Lenni: 530
    Heslant: 271
    Claudius Henrichs: 173
@@ -82,7 +82,7 @@ de:
    rugk: 11
    mrab: 9
 el: 
-   makmar: 35166
+   makmar: 35715
    jimkats: 9408
    Nelli.k.21: 613
    tinigrillion: 186
@@ -113,12 +113,13 @@ en-GB:
    Volker: 7
    Ferdi: 5
 eo: 
-   Jolesh: 17053
+   Jolesh: 17003
    Jan: 6626
    Martin Constantino-Bodin: 3468
    Robin van der Vliet: 659
    Hendursaga: 594
    Fabio: 429
+   Hanna: 181
    Ralf Kleiner: 52
    Voltinus: 6
 es: 
@@ -174,9 +175,9 @@ fi:
    Toni: 176
 fr: 
    Florian Stosse: 5631
-   David Chionne: 4589
+   David Chionne: 4571
    rouelibre: 2771
-   Binnette: 1976
+   Binnette: 1937
    Obny: 1443
    Ceciestunepoubelle: 1105
    Frédéric Bourgeon: 930
@@ -186,9 +187,10 @@ fr:
    whatismoss: 623
    Paul: 508
    Alex: 459
+   Julien: 355
    Nicomem: 288
    Jean-Baptiste Holcroft: 286
-   Jamie Nadeau: 259
+   Jamie Nadeau: 257
    gendy54: 242
    Anthony C.: 155
    lvgx: 152
@@ -206,12 +208,12 @@ fr:
    Misc: 45
    Kokou Elolo AMEGAYIBO: 40
    Martin Constantino-Bodin: 34
-   Bruno. baguette: 25
    Coucouf: 25
    Super. mapper. osm: 23
    Benoit.maggi: 22
    Idrizza: 14
    Lulucmy: 11
+   Bruno. baguette: 8
    fabrice: 6
    vicnet: 6
 gl: 
@@ -223,8 +225,8 @@ hr:
    Mario: 9
 hu: 
    Zachár Benjámin: 19019
-   Gábor Babos: 13231
-   Hungarian_user: 5218
+   Gábor Babos: 13245
+   Hungarian_user: 5204
    Meskó Balázs: 1636
    ursus: 680
    Máté: 380
@@ -280,7 +282,6 @@ ko:
    Jin: 48
 lt: 
    Tomas: 20351
-   geduxazz: 17994
    Vaidas: 639
    Jurkis: 449
    Ignas Kiela: 278
@@ -297,7 +298,7 @@ ml:
    Dharwish: 450
    Mujeeb rahman k: 398
 nb: 
-   Mats Randgaard: 29300
+   Mats Randgaard: 29754
    Trond S: 3168
    Simen Heggestøyl: 1748
    Syver: 1638
@@ -335,24 +336,24 @@ nn:
    Karl Ove Hufthammer: 32997
    10992: 12
 pl: 
-   Mateusz Konieczny: 15232
-   Tomasz Maciejewski: 5100
-   Konrad W: 3267
+   Mateusz Konieczny: 16253
+   Tomasz Maciejewski: 4793
+   Konrad W: 3069
    Marek-M: 2289
    skepticalknowledge: 1896
-   Dominik Danelski: 1864
-   Damndog: 1840
-   Kamil: 1604
-   Krzysztof Krasoń: 1256
+   Dominik Danelski: 1855
+   Damndog: 1764
+   Kamil: 1504
    Angielski: 1253
    Michał 'kwiateusz' Kwiatek: 1244
+   Krzysztof Krasoń: 1206
    Krystian Biesaga: 1039
    M1roN: 832
    Garbulix: 496
    Daniel Koć: 433
    Jan: 392
    Paba22: 314
-   Czapkofan: 312
+   Czapkofan: 269
    rmikke: 201
    Saibamen: 172
    psokol: 98
@@ -455,7 +456,7 @@ sv:
    Landrash: 30
    Elin Henrikson: 7
 th: 
-   Mishari: 22370
+   Mishari: 22394
    Tucking Spearhead: 5486
    PPNplus: 3708
    Kamthorn: 708
@@ -501,7 +502,7 @@ zh:
    Mumulhl: 40
    Minecraftis1st: 9
 zh-TW: 
-   Supaplex: 7876
+   Supaplex: 7941
    Kagami: 2710
    Sean Young: 824
    typebrook: 177

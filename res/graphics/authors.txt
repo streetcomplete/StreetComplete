@@ -276,6 +276,7 @@ quest/
     bicycle_second_hand.svg
     bicycleway.svg
     bicycleway_surface.svg
+    bicycleway_surface_detail.svg
     bicycleway_width.svg
     bin_public_transport.svg         Flo Edelmann, parts from https://www.svgrepo.com/svg/187115/trash (License: CC0 1.0)
     blind.svg
@@ -401,7 +402,7 @@ quest/
     summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
     surveillance.svg
     surveillance_camera.svg
-    tent.svg                        
+    tent.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
@@ -447,6 +448,7 @@ recycling/
     glass_bottles.svg
     newspaper.svg                    modified from EmojiOne 2: U+1F4F0
     paper.svg
+    pet.svg
     plastic.svg
     plastic_bottles.svg
     plastic_packaging.svg

@@ -256,9 +256,9 @@ abstract class AbstractOverlayForm :
     protected fun checkIsFormComplete() {
         binding.okButton.isEnabled = hasChanges()
         if (isFormComplete()) {
-            binding.okButton.popIn()
+            binding.okButtonContainer.popIn()
         } else {
-            binding.okButton.popOut()
+            binding.okButtonContainer.popOut()
         }
     }
 

@@ -37,6 +37,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
@@ -64,6 +66,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
+    private val noteEditsController: NoteEditsController by inject()
     private val osmQuestController: OsmQuestController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
@@ -337,7 +340,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             }
         } else {
             withContext(Dispatchers.IO) {
+            if (action is UpdateElementTagsAction && !action.changes.isValid()) {
+                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+                val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
+                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
+            } else {
                 addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            }
             }
             listener?.onEdited(osmElementQuestType, element, geometry)
         }

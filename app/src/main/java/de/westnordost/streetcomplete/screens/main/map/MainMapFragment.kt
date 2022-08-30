@@ -172,6 +172,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMapComponent?.beginFocusGeometry(geometry, offset)
     }
 
+    /** End the focussing but do not return to position before focussing */
+    fun clearFocus() {
+        geometryMapComponent?.clearFocusGeometry()
+        centerCurrentPositionIfFollowing()
+    }
+
     /** return to the position before focussing */
     fun endFocus() {
         viewLifecycleScope.launch {

@@ -151,16 +151,14 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <TextView
-        android:id="@+id/okButton"
-        app:drawableBottomCompat="@drawable/ic_check_48dp"
-        android:scaleType="centerInside"
-        style="@style/RoundAccentButton"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+    <RelativeLayout
+        android:id="@+id/okButtonContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="gone"
         android:scaleX="0.5"
         android:scaleY="0.5"
@@ -168,7 +166,22 @@
         tools:alpha="1"
         tools:visibility="visible"
         tools:scaleX="1"
-        tools:scaleY="1"/>
+        tools:scaleY="1"
+        android:paddingTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingBottom="8dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/okButton"
+            app:drawableBottomCompat="@drawable/ic_check_48dp"
+            android:scaleType="centerInside"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="20dp"/>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/hideButton"
@@ -183,7 +196,6 @@
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:alpha="0"/>
-
     <View
         android:id="@+id/glassPane"
         android:layout_width="match_parent"
