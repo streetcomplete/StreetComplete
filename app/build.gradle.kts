@@ -97,12 +97,6 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    maven {
-        url = uri("https://jcenter.bintray.com/")
-        content {
-            includeGroup("org.sufficientlysecure")
-        }
-    }
 }
 
 configurations {
@@ -182,8 +176,6 @@ dependencies {
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("me.grantland:autofittextview:0.2.1")
-    // html-textview not maintained anymore, only available on jcenter - should be replaced in the long term
-    implementation("org.sufficientlysecure:html-textview:3.9")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // box2d view
