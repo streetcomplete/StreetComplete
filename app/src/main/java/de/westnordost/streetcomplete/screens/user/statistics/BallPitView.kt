@@ -59,6 +59,7 @@ class BallPitView @JvmOverloads constructor(
     private lateinit var worldBounds: RectF
 
     private var isSceneSetup = false
+    private val sceneSetupLock = Any()
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
@@ -115,7 +116,7 @@ class BallPitView @JvmOverloads constructor(
     }
 
     fun setViews(viewsAndSizes: List<Pair<View, Int>>) {
-        synchronized(isSceneSetup) {
+        synchronized(sceneSetupLock) {
             check(!isSceneSetup) { "Views can only be set once!" }
             isSceneSetup = true
         }
