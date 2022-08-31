@@ -51,6 +51,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val floatingBottomView get() = bottomSheetBinding.okButton
     override val backButton get() = bottomSheetBinding.closeButton
     override val okButton get() = bottomSheetBinding.okButton
+    override val okButtonContainer get() = bottomSheetBinding.okButtonContainer
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 

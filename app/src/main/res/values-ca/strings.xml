@@ -231,7 +231,7 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
 Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminats."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap cartell."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap senyal"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les vies urbanes tenen límits de velocitat diferents que els vies rurals."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora del nucli urbà"</string>
@@ -1581,10 +1581,12 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Estàs segur que els ciclistes no poden utilitzar els dos sentits d'aquest carrer unidireccional? En cas de dubte, mira si hi ha algun senyal al final del carrer."</string>
+    <string name="link_valhalla_description">"Motor d'enrrutament amb una empremta de memòria molt petita, enrutament multimodal, isòcrones i molt més."</string>
     <string name="link_backofyourhand_description">"Com de bé coneixes la teva zona? Prova el teu coneixement localitzant carrers."</string>
 
     <!-- Fuzzy -->
     <string name="link_thenandnow_description">"Exploreu com semblava OSM en els primers dies en comparació amb com es veu ara!"</string>
+    <string name="link_notesreview_description">"Veure, filtrar i comentar convenientment les notes creades per tu i altres. Moltes notes es poden resoldre posant la informació que hi contenen al mapa amb iD o JOSM"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1598,12 +1600,14 @@ sorted alphabetically by title -->
     <string name="quest_barrier_type_gate_any_size">"Porta, qualsevol mida"</string>
     <string name="quest_air_pump_compressor_title">"Ací hi ha un compressor d'aire?"</string>
     <string name="quest_step_count_stile_hint">"Només el nombre de passos per arribar a dalt. Si el recompte de passos difereix en cada costat, dona el nombre més alt."</string>
+    <string name="quest_shoulder_explanation2">"Un voral és un carril de parada d'emergència clarament marcat. L'àrea designada com a voral no ha d'estar necessàriament pavimentada en tota la seva amplada ni necessàriament prou ampla perquè un cotxe s'aturi completament fora del carril de circulació."</string>
     <string name="quest_cycleway_value_none_and_oneway">"no, no es permeten bicicletes en aquesta direcció"</string>
     <string name="map_btn_create_track">"Crear nou recorregut per enregistrar"</string>
     <string name="map_btn_stop_track">"Aturar l'enregistrament del recorregut"</string>
     <string name="quest_bicycle_rental_capacity_title">"Quants llocs per bicicletes de lloguer hi ha?"</string>
     <string name="quest_bicycle_rental_type_title">"Quin tipus de lloguer de bicicletes és?"</string>
     <string name="quest_bicycle_rental_type_dropoff_point">"Lloc designat (bicicletes bloquejades individualment)"</string>
+    <string name="quest_bicycle_rental_type_human">"Lloguer de bicicletes amb personal"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Botiga de bicicletes que a més les lloga"</string>
     <string name="quest_bicycle_shop_repair_title">"S'ofereixen serveis de reparació?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Es venen bicicletes de segona mà?"</string>
@@ -1613,9 +1617,13 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"No es venen bicicletes"</string>
     <string name="quest_building_entrance_title">"Quin tipus d'entrada a l'edifici és?"</string>
     <string name="quest_building_entrance_main">"Entrada principal a l'edifici"</string>
+    <string name="quest_building_entrance_staircase">"Entrada de l'escala (p. ex., a un edifici d'apartaments)"</string>
     <string name="quest_building_entrance_service">"Entrada de servei"</string>
     <string name="quest_building_entrance_exit">"Només sortida"</string>
     <string name="quest_building_entrance_emergency_exit">"Només sortida d'emergència"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_building_entrance_shop">"Entrada d’una botiga"</string>
     <string name="quest_building_entrance_yes">"Altres tipus d'entrada"</string>
     <string name="quest_building_entrance_dead_end">"Cul de sac, no hi ha entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toca la pantalla per iniciar el mesurament"</string>

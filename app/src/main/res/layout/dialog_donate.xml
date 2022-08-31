@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/dialog_horizontal_margin"
     android:paddingRight="@dimen/dialog_horizontal_margin"
     android:paddingBottom="@dimen/dialog_vertical_margin"
+    android:paddingTop="@dimen/dialog_vertical_margin"
     android:showDividers="middle"
     android:divider="@drawable/space_8dp"
     >

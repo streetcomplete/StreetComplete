@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdk = 31
+    compileSdk = 33
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,9 +34,9 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 31
-        versionCode = 4504
-        versionName = "45.2"
+        targetSdk = 33
+        versionCode = 4600
+        versionName = "46.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -97,12 +97,6 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    maven {
-        url = uri("https://jcenter.bintray.com/")
-        content {
-            includeGroup("org.sufficientlysecure")
-        }
-    }
 }
 
 configurations {
@@ -125,7 +119,7 @@ dependencies {
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.0"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -143,12 +137,12 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.4.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.0")
+    implementation("androidx.fragment:fragment-ktx:1.5.2")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -182,16 +176,14 @@ dependencies {
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("me.grantland:autofittextview:0.2.1")
-    // html-textview not maintained anymore, only available on jcenter - should be replaced in the long term
-    implementation("org.sufficientlysecure:html-textview:3.9")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
-    implementation("com.charleskorn.kaml:kaml:0.45.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("com.charleskorn.kaml:kaml:0.47.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
@@ -200,7 +192,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.32.0")
+    implementation("com.google.ar:core:1.33.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 

@@ -380,7 +380,7 @@ private fun SceneError.toException() =
 suspend fun MapView.initMap(
     httpHandler: HttpHandler? = null,
     glViewHolderFactory: GLViewHolderFactory = GLSurfaceViewHolderFactory()
-) = suspendCancellableCoroutine<KtMapController?> { cont ->
+): KtMapController? = suspendCancellableCoroutine { cont ->
     getMapAsync({ mapController ->
         cont.resume(mapController?.let {
             KtMapController(it, context.contentResolver)

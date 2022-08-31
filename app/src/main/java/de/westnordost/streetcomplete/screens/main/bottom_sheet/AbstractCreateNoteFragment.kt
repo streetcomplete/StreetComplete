@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.popOut
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     protected abstract val noteInput: EditText
+    protected abstract val okButtonContainer: View
     protected abstract val okButton: View
 
     private val attachPhotoFragment: AttachPhotoFragment?
@@ -48,9 +49,9 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     private fun updateOkButtonEnablement() {
         if (noteText.isNotEmpty()) {
-            okButton.popIn()
+            okButtonContainer.popIn()
         } else {
-            okButton.popOut()
+            okButtonContainer.popOut()
         }
     }
 

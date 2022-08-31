@@ -232,7 +232,7 @@
     <string name="quest_tactilePaving_title_crosswalk">"ทางข้ามที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดทั้งสองข้างหรือไม่?"</string>
     <string name="quest_source_dialog_title">"แน่ใจหรือเปล่าว่าคุณได้ตรวจสอบในสถานที่จริง?"</string>
     <string name="quest_source_dialog_note">"ควรป้อนเฉพาะข้อมูลที่ถูกค้นพบในการสำรวจ"</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"ที่จอดรถจักรยานนี้ครอบคลุม (ป้องกันฝน) หรือไม่?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"ที่จอดรถจักรยานนี้มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
     <string name="dialog_session_dont_show_again">"อย่าแสดงอีกในวาระนี้"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"ความเร็วจำกัดนี้ดูไม่สมเหตุสมผล"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"คุณแน่ใจหรือไม่ว่าไม่มีป้ายจำกัดความเร็ว?"</string>
@@ -426,7 +426,7 @@
     <string name="quest_openingHours_emptyAnswer">"คุณต้องบรรยายสิ่งที่อยู่บนป้าย หากไม่มีป้ายให้ถามเวลาทำการด้านใน"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ไม่มี แต่นักปั่นใช้ถนนได้ทั้งสองทิศทาง"</string>
     <string name="quest_streetName_answer_noName_question">"ทำไมถึงไม่มีชื่อ?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"มีลักษณะเหมือนถนนโครงการหรือที่จอดรถ"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"มีลักษณะเหมือนถนนโครงการหรือถนนในลานจอดรถ"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"เป็นเส้นทางการเกษตรหรือป่าไม้"</string>
     <string name="quest_streetName_answer_noName_noname">"ไม่มีคำตอบที่ถูกต้อง มันแค่ไม่มีชื่อเฉย ๆ"</string>
     <string name="quest_wheelchairAccess_description_toilets">"อาจมีป้ายรถเข็นแบบนี้ถ้าห้องน้ำสามารถใช้รถเข็นเข้าถึงได้
@@ -673,7 +673,7 @@
     <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"หมายเลขบ้าน"</string>
     <string name="label_blocknumber">"หมายเลขช่วงตึก"</string>
-    <string name="quest_busStopShelter_covered">"ครอบคลุมพื้นที่ป้ายทั้งหมด"</string>
+    <string name="quest_busStopShelter_covered">"มีหลังคาคลุมพื้นที่ป้ายทั้งหมด"</string>
     <string name="quest_ferry_pedestrian_title">"เรือข้ามฟากนี้ขนส่งคนเดินเท้าหรือไม่?"</string>
     <string name="quest_ferry_motor_vehicle_title">"เรือข้ามฟากนี้ขนส่งยานยนต์หรือไม่?"</string>
 
@@ -1003,7 +1003,7 @@
     <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"ตู้เอทีเอ็มนี้เป็นของธนาคารอะไร"</string>
     <string name="quest_clothes_container_operator_title">"ใครรับบริจาคถังเสื้อผ้านี้บ้าง?"</string>
-    <string name="quest_charging_station_operator_title">"ใครเป็นผู้ดำเนินการสถานีชาร์จนี้?"</string>
+    <string name="quest_charging_station_operator_title">"ใครเป็นผู้ดำเนินการสถานีอัดประจุไฟฟ้านี้?"</string>
     <string name="link_indoorequal_description">"ค้นพบแผนที่ภายในอาคารของห้าง สถานีรถไฟ ฯลฯ"</string>
     <string name="achievement_rare_title">"ล่าสมบัติ"</string>
 
@@ -1266,7 +1266,7 @@
     <string name="quest_buildingType_bridge">"สะพานเชื่อมอาคาร (โพยมวิถี)"</string>
     <string name="quest_laundrySelfService_title2">"ร้านซักรีดมีบริการตนเองหรือไม่?"</string>
     <string name="quest_dietType_explanation_halal">"ผลิตภัณฑ์ฮาลาลเป็นผลิตภัณฑ์ที่ถูกควบคุมตามบทบัญญัติของศาสนาอิสลาม และต้องได้รับการรับรองจากหน่วยงานที่รับผิดชอบ"</string>
-    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีการคลุม (กันฝน) หรือไม่?"</string>
+    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีหลังคาคลุม (กันฝน) หรือไม่?"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <!-- Fuzzy -->

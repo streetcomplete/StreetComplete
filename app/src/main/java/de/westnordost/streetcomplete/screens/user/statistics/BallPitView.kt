@@ -59,6 +59,7 @@ class BallPitView @JvmOverloads constructor(
     private lateinit var worldBounds: RectF
 
     private var isSceneSetup = false
+    private val sceneSetupLock = Any()
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
@@ -115,7 +116,7 @@ class BallPitView @JvmOverloads constructor(
     }
 
     fun setViews(viewsAndSizes: List<Pair<View, Int>>) {
-        synchronized(isSceneSetup) {
+        synchronized(sceneSetupLock) {
             check(!isSceneSetup) { "Views can only be set once!" }
             isSceneSetup = true
         }
@@ -180,12 +181,12 @@ class BallPitView @JvmOverloads constructor(
 
         startInflatingAnimation(view, size, position.y)
         view.setOnTouchListener(object : SimpleGestureListener(view) {
-            override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+            override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
                 view.performClick()
                 return true
             }
 
-            override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+            override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
                 val a = view.rotation / 180.0 * PI
                 val vx = (cos(a) * velocityX - sin(a) * velocityY).toFloat()
                 val vy = (cos(a) * velocityY + sin(a) * velocityX).toFloat()
@@ -247,8 +248,8 @@ private open class SimpleGestureListener(private val view: View) : GestureDetect
     private val gestureDetector = GestureDetector(view.context, this)
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when (event?.actionMasked) {
+    override fun onTouch(v: View?, event: MotionEvent): Boolean {
+        when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> view.isPressed = true
             MotionEvent.ACTION_UP -> view.isPressed = false
         }
@@ -256,5 +257,5 @@ private open class SimpleGestureListener(private val view: View) : GestureDetect
         return gestureDetector.onTouchEvent(event)
     }
 
-    override fun onDown(e: MotionEvent?): Boolean = true
+    override fun onDown(e: MotionEvent): Boolean = true
 }
