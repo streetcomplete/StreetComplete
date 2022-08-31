@@ -13,14 +13,14 @@ import java.util.concurrent.TimeUnit
  *  integrated into the normal map download process */
 class MapTilesDownloadCacheConfig(context: Context) {
 
-    val cacheControl = CacheControl.Builder()
+    val cacheControl: CacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
         .maxStale(DELETE_OLD_DATA_AFTER.toInt(), TimeUnit.MILLISECONDS)
         .build()
 
     /* use separate cache control for tangram with large maxStale value to always show available
     *  map tiles when panning the map, even without (or with bad) internet connection */
-    val tangramCacheControl = CacheControl.Builder()
+    val tangramCacheControl: CacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
         .maxStale(10 * 365, TimeUnit.DAYS) // ten years
         .build()

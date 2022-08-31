@@ -14,7 +14,7 @@ class ActivityForResultLauncher<I, O> (
     private var continuation: CancellableContinuation<O>? = null
     private val launcher = caller.registerForActivityResult(contract) { continuation?.resume(it) }
 
-    suspend operator fun invoke(input: I) = suspendCancellableCoroutine<O> {
+    suspend operator fun invoke(input: I): O = suspendCancellableCoroutine {
         continuation?.cancel()
         continuation = it
         launcher.launch(input)

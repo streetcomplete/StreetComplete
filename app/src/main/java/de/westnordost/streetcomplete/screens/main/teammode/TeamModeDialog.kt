@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogTeamModeBinding
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircleView.Companion.MAX_TEAM_SIZE
 

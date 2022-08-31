@@ -141,7 +141,7 @@ class NotesWithEditsSource(
 
     private fun NoteEdit.createNoteComment(action: NoteComment.Action = NoteComment.Action.COMMENTED): NoteComment {
         var commentText = text ?: ""
-        if (!imagePaths.isNullOrEmpty()) {
+        if (imagePaths.isNotEmpty()) {
             commentText += "\n\n(Photo(s) will be attached on upload)"
         }
 
