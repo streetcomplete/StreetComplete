@@ -335,6 +335,7 @@ quest/
     mail_ref.svg
     max_width.svg
     max_height.svg
+    max_height_measure.svg
     max_speed.svg
     max_weight.svg
     memorial.svg
