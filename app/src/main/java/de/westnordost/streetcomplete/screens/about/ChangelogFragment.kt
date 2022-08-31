@@ -101,6 +101,6 @@ private fun addedLinks(description: String): String {
         }
         .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
             val contributor = matchResult.groupValues[1]
-            "<a href=\"https://github.com/$contributor\">@$contributor</a>"
+            "<a href=\"https://github.com/$contributor\">$contributor</a>"
         }
 }
