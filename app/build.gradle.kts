@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdk = 31
+    compileSdk = 33
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,7 +34,7 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 33
         versionCode = 4600
         versionName = "46.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -143,7 +143,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
