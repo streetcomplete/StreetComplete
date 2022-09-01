@@ -100,11 +100,11 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
                 }
             }
         }
-        val copyOfSelectedItem = selectedItem
-        if (copyOfSelectedItem != null) {
+        val selectedItemSaved = selectedItem
+        if (selectedItemSaved != null) {
             notifyItemChanged(selectedIndex())
 
-            if (copyOfSelectedItem.isGroup) {
+            if (selectedItemSaved.isGroup) {
                 if (previousSelectedItem == null || previousSelectedItemGroup != selectedItemGroup) {
                     expandGroup(selectedIndex())
                 }
