@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdk = 31
+    compileSdk = 33
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,7 +34,7 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 33
         versionCode = 4600
         versionName = "46.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -97,12 +97,6 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     google()
     mavenCentral()
-    maven {
-        url = uri("https://jcenter.bintray.com/")
-        content {
-            includeGroup("org.sufficientlysecure")
-        }
-    }
 }
 
 configurations {
@@ -125,7 +119,7 @@ dependencies {
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.0"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.2")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -143,7 +137,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -182,8 +176,6 @@ dependencies {
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("me.grantland:autofittextview:0.2.1")
-    // html-textview not maintained anymore, only available on jcenter - should be replaced in the long term
-    implementation("org.sufficientlysecure:html-textview:3.9")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // box2d view
