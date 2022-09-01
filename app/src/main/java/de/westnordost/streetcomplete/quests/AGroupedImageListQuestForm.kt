@@ -77,7 +77,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         imageSelector.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
-                scrollTo(positionStart)
+                scrollTo(positionStart - 1)
             }
         })
         checkIsFormComplete()
@@ -87,16 +87,14 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     }
 
     private fun scrollTo(index: Int) {
-        val item = imageSelector.gridLayoutManager.getChildAt(max(0, index - 1))
-        if (item != null) {
-            val itemPos = IntArray(2)
-            item.getLocationInWindow(itemPos)
-            val scrollViewPos = IntArray(2)
-            scrollView.getLocationInWindow(scrollViewPos)
+        val item = imageSelector.gridLayoutManager.findViewByPosition(index) ?: return
+        val itemPos = IntArray(2)
+        item.getLocationInWindow(itemPos)
+        val scrollViewPos = IntArray(2)
+        scrollView.getLocationInWindow(scrollViewPos)
 
-            scrollView.postDelayed(250) {
-                scrollView.smoothScrollTo(0, itemPos[1] - scrollViewPos[1])
-            }
+        scrollView.postDelayed(250) {
+            scrollView.smoothScrollTo(0, itemPos[1] - scrollViewPos[1])
         }
     }
 
