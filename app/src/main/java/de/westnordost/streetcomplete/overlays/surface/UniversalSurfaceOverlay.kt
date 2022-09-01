@@ -52,7 +52,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 class UniversalSurfaceOverlay : Overlay {
 
     private val parentQuest = AddRoadSurface()
-    override val title = R.string.overlay_surface
+    override val title = R.string.overlay_universal_surface
     override val icon = parentQuest.icon // use some icon which has mix of colours in background? TODO
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink

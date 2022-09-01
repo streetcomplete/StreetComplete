@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.databinding.FragmentOverlayRoadSurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
+import de.westnordost.streetcomplete.osm.SingleSurfaceInfo
 import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.SurfaceInfo
@@ -30,26 +31,16 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class RoadSurfaceOverlayForm : AbstractOverlayForm() {
-    override val contentLayoutResId = R.layout.fragment_overlay_path_surface_select
+    override val contentLayoutResId = R.layout.fragment_overlay_road_surface_select
     private val binding by contentViewBinding(FragmentOverlayRoadSurfaceSelectBinding::bind)
 
     private val itemsPerRow = 3 // TODO: maybe 2 for normal user?
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
-    private var currentStatus: SurfaceInfo? = null
+    private var currentStatus: SingleSurfaceInfo? = null
 
     private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
-        set(value) {
-            field = value
-            updateSelectedCell()
-        }
-    private var selectedStatusForCyclewaySurface: DisplayItem<Surface>? = null
-        set(value) {
-            field = value
-            updateSelectedCell()
-        }
-    private var selectedStatusForFootwaySurface: DisplayItem<Surface>? = null
         set(value) {
             field = value
             updateSelectedCell()
@@ -125,9 +116,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
-    override fun isFormComplete() = (selectedStatusForMainSurface != null).xor(
-        (selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null)
-    )
+    override fun isFormComplete() = selectedStatusForMainSurface != null
 
     companion object {
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
@@ -139,11 +128,9 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun hasChanges(): Boolean {
         return when (val status = currentStatus) {
-            is CyclewayFootwaySurfaces ->
-                selectedStatusForCyclewaySurface?.value != status.cycleway || selectedStatusForFootwaySurface?.value != status.footway
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
-            is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            is SurfaceMissing -> selectedStatusForMainSurface?.value != null
             null -> throw Exception("null pointer exceeeeeeeeeeption (should be impossible)")
         }
     }
@@ -151,6 +138,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     override fun onClickOk() {
         val note = noteText()
         if (note == "") {
+            // TODO handle it robustly and move to path/universal overlays
+            // TODO do not allow to remove surface:note if surface=paved/unpaved is set
             if (currentStatus is SingleSurfaceWithNote) {
                 applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
                     it.remove("surface:note")
@@ -162,30 +151,10 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             }.create()))
         }
 
-        // TODO actually look through what can change and how
         if (selectedStatusForMainSurface != null) {
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
                 it.updateWithCheckDate("surface", selectedStatusForMainSurface!!.value!!.osmValue)
             }.create()))
-        } else if (selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null) {
-            val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!.osmValue
-            val footwaySurface = selectedStatusForFootwaySurface!!.value!!.osmValue
-            val mainSurface = commonSurfaceDescription(cyclewaySurface, footwaySurface)
-            if (mainSurface == null) {
-                applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-                    it.remove("surface")
-                    it.updateWithCheckDate("cycleway:surface", cyclewaySurface)
-                    it.updateWithCheckDate("footway:surface", footwaySurface)
-                }.create()))
-            } else {
-                applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-                    it.updateWithCheckDate("surface", mainSurface)
-                    it.updateWithCheckDate("cycleway:surface", cyclewaySurface)
-                    it.updateWithCheckDate("footway:surface", footwaySurface)
-                    it.removeCheckDatesForKey("cycleway:surface")
-                    it.removeCheckDatesForKey("footway:surface")
-                }.create()))
-            }
         }
     }
 }

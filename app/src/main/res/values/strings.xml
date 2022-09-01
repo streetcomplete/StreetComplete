@@ -1550,6 +1550,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_tracktype">Track firmess</string>
     <string name="overlay_surface">Surface info</string>
     <string name="overlay_path_surface">Path surface</string>
+    <string name="overlay_universal_surface">All and any surface</string>
 
 
 </resources>
