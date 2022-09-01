@@ -30,9 +30,9 @@
         tools:text="@string/street_parking_street_width"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:shadowColor="#fff"
-        android:shadowRadius="3.0"
+        android:textColor="#fff"
+        android:shadowColor="#000"
+        android:shadowRadius="6.0"
         android:layout_marginBottom="@dimen/quest_form_vertical_padding"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true" />

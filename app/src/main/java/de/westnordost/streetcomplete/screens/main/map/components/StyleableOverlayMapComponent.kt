@@ -73,6 +73,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 }
                 is PointStyle -> {
                     style.label?.let { props["text"] = it }
+                    style.icon?.let { props["icon"] = it }
                 }
             }
 

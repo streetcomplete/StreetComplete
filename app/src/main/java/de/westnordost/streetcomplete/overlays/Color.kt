@@ -7,7 +7,7 @@ package de.westnordost.streetcomplete.overlays
  *  - Blue-yellow color blindness (but not as good): Tritan (~0.01% of population)
  *
  *   See the palette here (update link if colors are updated!):
- *   https://davidmathlogic.com/colorblind/#%23444444-%23D00055-%23007EEC-%2329AFEF-%2306CCC0-%2305A980-%23FD7E15-%23F7CE04-%23B9F522
+ *   https://davidmathlogic.com/colorblind/#%23444444-%23D00055-%231887E8-%2326B0F1-%2337DAF5-%2306CCC0-%2305A980-%23FD7E15-%23F7C204-%23B9F522
  *
  *   The palette is loosely based on Color Universal Design (CUD) by Masataka Okabe and Kei Ito's
  *   color palette (https://jfly.uni-koeln.de/color/), compare:
@@ -19,23 +19,26 @@ package de.westnordost.streetcomplete.overlays
  *   - balanced to not be too close to the colors used on the background map
  *
  *   Also, it has been made so that black and crimson stand out, because these two are reserved in
- *   all overlays as having a special meaning: crimson for "data is unspecified" and black for
- *   "(feature) does not exist" (e.g. not lit, no sidewalk, ...)
+ *   all overlays as having a special meaning
  *  */
 object Color {
-    const val INVISIBLE = "#00000000"
-    const val BLACK = "#444444"
-    const val CRIMSON = "#D00055"
+    // colors with reserved meanings
+    const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"
+    const val BLACK = "#444444" // "no" / "does not exist"
+    const val CRIMSON = "#D00055" // "not mapped" / "incomplete/invalid"
+
     // blue
     const val BLUE = "#007EEC"
     const val SKY = "#29AFEF"
+    const val CYAN = "#37DAF5"
+    // green-ish
+    const val AQUAMARINE = "#03C3B8"
+    const val TEAL = "#029E77"
     // orange-yellow
-    const val ORANGE = "#FD7E15"
-    const val GOLD = "#F7CE04"
+    const val ORANGE = "#FB892C"
+    const val GOLD = "#F7C204"
     const val LIME = "#B9F522"
 
-    // these colors are quite close to the blue colors for blue-yellow blindness, Teal is
-    // additionally quite close to crimson for red-blue blindness
-    const val AQUAMARINE = "#06CCC0"
-    const val TEAL = "#05A980"
+    // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
+    // (~0.01% of population)
 }

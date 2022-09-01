@@ -28,6 +28,8 @@ data class PolygonStyle(
 ) : Style
 
 data class PointStyle(
+    /** icon name to show on the point */
+    val icon: String?,
     /** label to show on the point */
-    val label: String?
+    val label: String? = null,
 ) : Style

@@ -23,4 +23,5 @@ val mapModule = module {
     }
 
     single { TangramPinsSpriteSheet(get(), get(), get(), get()) }
+    single { TangramIconsSpriteSheet(get(), get()) }
 }

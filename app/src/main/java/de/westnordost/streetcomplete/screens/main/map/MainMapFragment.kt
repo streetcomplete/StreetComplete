@@ -32,7 +32,8 @@ import org.koin.android.ext.android.inject
  *  geometry, overlays... */
 class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
-    private val spriteSheet: TangramPinsSpriteSheet by inject()
+    private val questPinsSpriteSheet: TangramPinsSpriteSheet by inject()
+    private val iconsSpriteSheet: TangramIconsSpriteSheet by inject()
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
@@ -100,8 +101,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override suspend fun onBeforeLoadScene() {
         super.onBeforeLoadScene()
-        val questSceneUpdates = withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
-        sceneMapComponent?.putSceneUpdates(questSceneUpdates)
+        val sceneUpdates = withContext(Dispatchers.IO) {
+            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
+        }
+        sceneMapComponent?.putSceneUpdates(sceneUpdates)
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */

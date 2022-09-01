@@ -11,6 +11,9 @@ import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
@@ -22,6 +25,7 @@ import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
@@ -44,13 +48,12 @@ class StreetParkingOverlay : Overlay {
         // separate parking
         mapData.filter(
             "ways with amenity = parking"
-        ).map { it to parkingLotStyle } /*+
-        TODO: needs icons(?)
+        ).map { it to parkingLotStyle } +
         // chokers
         mapData.filter(
             "nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table"
         ).map { it to chokerStyle }
-*/
+
     override fun createForm(element: Element) =
         if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes")
             StreetParkingOverlayForm()
@@ -72,6 +75,8 @@ private val streetParkingTaggingNotExpected by lazy { """
 
 private val parkingLotStyle = PolygonStyle(Color.BLUE)
 
+private val chokerStyle = PointStyle("ic_pin_choker")
+
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)
     // not set but private or not expected to have a sidewalk -> do not highlight as missing
@@ -88,20 +93,30 @@ private fun getStreetParkingStyle(element: Element): Style {
     )
 }
 
+private val ParkingPosition.isDashed: Boolean get() = when (this) {
+    STREET_SIDE, PAINTED_AREA_ONLY -> true
+    else -> false
+}
+
+private val ParkingPosition.color: String get() = when (this) {
+    ON_STREET, PAINTED_AREA_ONLY -> Color.GOLD
+    HALF_ON_KERB ->                 Color.AQUAMARINE
+    ON_KERB, STREET_SIDE ->         Color.BLUE
+}
+
 private val StreetParking?.style: StrokeStyle get() = when (this) {
-    is StreetParkingPositionAndOrientation -> when (position) {
-        ON_STREET ->         StrokeStyle(Color.GOLD, dashed = false)
-        PAINTED_AREA_ONLY -> StrokeStyle(Color.GOLD, dashed = true)
-        HALF_ON_KERB ->      StrokeStyle(Color.AQUAMARINE)
-        ON_KERB ->           StrokeStyle(Color.BLUE, dashed = false)
-        STREET_SIDE ->       StrokeStyle(Color.BLUE, dashed = true)
-    }
-    NoStreetParking ->          StrokeStyle(Color.BLACK, dashed = true)
+    is StreetParkingPositionAndOrientation ->
+                                StrokeStyle(position.color, position.isDashed)
+
+    NoStreetParking ->          StrokeStyle(Color.BLACK, true)
+
     StreetStandingProhibited,
     StreetParkingProhibited,
     StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
+
     StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
-    UnknownStreetParking ->     StrokeStyle(Color.CRIMSON, dashed = true)
+
+    UnknownStreetParking,
     IncompleteStreetParking,
     null ->                     StrokeStyle(Color.CRIMSON)
 }
