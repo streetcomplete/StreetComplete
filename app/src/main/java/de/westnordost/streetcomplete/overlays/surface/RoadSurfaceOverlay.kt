@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
@@ -52,7 +51,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 class RoadSurfaceOverlay : Overlay {
 
     private val parentQuest = AddRoadSurface()
-    override val title = R.string.overlay_surface
+    override val title = R.string.overlay_road_surface
     override val icon = parentQuest.icon // use some icon which has mix of colours in background? TODO
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink
