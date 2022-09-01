@@ -51,11 +51,12 @@ enum class Surface(val osmValue: String) {
 }
 
 sealed class SurfaceInfo
+sealed class SingleSurfaceInfo : SurfaceInfo()
 
-data class SingleSurface(val surface: Surface) : SurfaceInfo()
-data class SingleSurfaceWithNote(val surface: Surface, val note: String) : SurfaceInfo()
+data class SingleSurface(val surface: Surface) : SingleSurfaceInfo()
+data class SingleSurfaceWithNote(val surface: Surface, val note: String) : SingleSurfaceInfo()
+object SurfaceMissing : SingleSurfaceInfo()
 data class CyclewayFootwaySurfaces(val main: Surface?, val cycleway: Surface?, val footway: Surface?) : SurfaceInfo()
-class SurfaceMissing : SurfaceInfo()
 
 fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
@@ -63,7 +64,7 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
     val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
     // TODO
-    //  what about surface:note wthout surface?
+    //  what about surface:note without surface? (see also below for this one)
     //  what about surface:note and cycleway:surface or footway:surface?
     //  ignore this? check and fix outside StreetComplete from time to time?
     //  skip such ways? present as missing data and throw away surface notes?
@@ -76,7 +77,20 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     if (surface != null) {
         return SingleSurface(surface)
     }
-    return SurfaceMissing()
+    return SurfaceMissing
+}
+
+fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
+    val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
+    val surfaceNote = tags["surface:note"]
+    // TODO what about surface:note without surface? (see also above)
+    if (surface != null && surfaceNote != null ) {
+        return SingleSurfaceWithNote(surface, surfaceNote)
+    }
+    if (surface != null) {
+        return SingleSurface(surface)
+    }
+    return SurfaceMissing
 }
 
 fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {

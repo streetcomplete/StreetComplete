@@ -10,7 +10,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayPathSurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
 import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
@@ -28,10 +28,10 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class SurfaceOverlayForm : AbstractOverlayForm() {
+class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
     // TODO allow switching to "cycleway and footway have different surfaces"
-    override val contentLayoutResId = R.layout.fragment_overlay_surface_select
-    private val binding by contentViewBinding(FragmentOverlaySurfaceSelectBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_path_surface_select
+    private val binding by contentViewBinding(FragmentOverlayPathSurfaceSelectBinding::bind)
 
     private val itemsPerRow = 3 // TODO: maybe 2 for normal user?
     /** items to display. May not be accessed before onCreate */

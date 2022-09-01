@@ -49,7 +49,7 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
-class SurfaceOverlay : Overlay {
+class UniversalSurfaceOverlay : Overlay {
 
     private val parentQuest = AddRoadSurface()
     override val title = R.string.overlay_surface
@@ -63,7 +63,7 @@ class SurfaceOverlay : Overlay {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
         return mapData
            .filter( """ways, relations with
-               (surface and highway != construction) or leisure ~ pitch|playground or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+               ((surface and highway != construction) or leisure ~ pitch|playground or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} or aeroway ~ taxiway|runway|helipad|apron|taxilane)
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
                """)
@@ -94,7 +94,7 @@ class SurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = SurfaceOverlayForm()
+    override fun createForm(element: Element) = UniversalSurfaceOverlayForm()
 }
 
 private fun getStyle(element: Element): Style {
