@@ -66,11 +66,6 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.layoutManager = imageSelector.gridLayoutManager
         binding.list.isNestedScrollingEnabled = false
 
-        binding.showMoreButton.setOnClickListener {
-            imageSelector.items = allItems
-            binding.showMoreButton.visibility = View.GONE
-        }
-
         binding.selectHintLabel.setText(R.string.quest_select_hint_most_specific)
 
         imageSelector.listeners.add { checkIsFormComplete() }
@@ -82,7 +77,8 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         })
         checkIsFormComplete()
 
-        imageSelector.items = getInitialItems()
+        imageSelector.items = getInitialItems() + allItems
+
         binding.list.adapter = imageSelector
     }
 
