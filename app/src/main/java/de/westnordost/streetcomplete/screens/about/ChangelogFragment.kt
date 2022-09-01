@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.view.setHtml
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -100,6 +101,6 @@ private fun addedLinks(description: String): String {
         }
         .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
             val contributor = matchResult.groupValues[1]
-            "<a href=\"https://github.com/$contributor\">@$contributor</a>"
+            "<a href=\"https://github.com/$contributor\">$contributor</a>"
         }
 }

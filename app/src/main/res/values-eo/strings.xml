@@ -411,6 +411,7 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="produce_hops">"Lupolo"</string>
     <string name="produce_jojoba">"Jojobo"</string>
     <string name="produce_kiwis">"Kivo"</string>
+    <string name="produce_kola_nuts">"Kolanuksoj"</string>
 
     <!-- Fuzzy -->
     <string name="produce_lemons">"Citronoj"</string>
@@ -1137,7 +1138,7 @@ aktiva"</string>
     <string name="quest_buildingType_abandoned">"Forlasita"</string>
     <string name="quest_buildingType_abandoned_description">"neuzata konstruaĵo kies origina funkcio aŭ celo estas nekonataj"</string>
     <string name="quest_buildingType_ruins">"Ruinoj"</string>
-    <string name="quest_charging_station_capacity_title">"Kiom da aŭtoj povas esti akuzitaj ĉi tie samtempe?"</string>
+    <string name="quest_charging_station_capacity_title">"Kiom da aŭtoj povas ŝargi ĉi tie samtempe?"</string>
     <string name="quest_lanes_title">"Kiom da veturkoridoroj estas en tiu vojo?"</string>
     <string name="quest_lanes_answer_lanes">"Markitaj koridoroj"</string>
     <string name="quest_lanes_answer_noLanes">"Neniu markita koridoro"</string>
@@ -1553,4 +1554,17 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_yes">"Alia enira tipo"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Ĉu estas publike alirebla bicikla pumpilo tie (almenaŭ dum ĝi malfermas)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Ĉu estas bicikla pumpilo kiu funkcias tie?"</string>
+    <string name="quest_memorialType_title">"Kia memorigaĵo estas tiu?"</string>
+    <string name="quest_memorialType_statue">"Statuo"</string>
+    <string name="quest_memorialType_bust">"Busto"</string>
+    <string name="quest_memorialType_plaque">"Plateto"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_memorialType_war_memorial">"Memormonumento pri militmortintoj"</string>
+    <string name="quest_memorialType_stone">"Ŝtono"</string>
+    <string name="quest_memorialType_obelisk">"Obelisko"</string>
+    <string name="quest_memorialType_stele_wooden">"Ligna steleo"</string>
+    <string name="quest_memorialType_stele_stone">"Ŝtona steleo"</string>
+    <string name="quest_memorialType_sculpture">"Alia skulpturo"</string>
+    <string name="quest_entrance_reference_flat_range_to">"al"</string>
 </resources>

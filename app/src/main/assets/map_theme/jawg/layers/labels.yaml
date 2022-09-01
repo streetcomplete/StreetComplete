@@ -25,7 +25,7 @@ layers:
             text:
                 text_source: global.name_source
                 buffer: 12px
-                priority: function() { 20 + return feature.scalerank }
+                priority: function() { return 20 + feature.scalerank }
                 font:
                     family: global.text_font_family
                     fill: global.text_water_color

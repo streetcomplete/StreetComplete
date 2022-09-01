@@ -38,9 +38,10 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override val scrollViewChild get() = binding.scrollViewChild
     override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
     override val bottomSheetContent get() = binding.speechbubbleContentContainer
-    override val floatingBottomView get() = binding.okButton
+    override val floatingBottomView get() = binding.okButtonContainer
     override val backButton get() = binding.closeButton
     override val okButton get() = binding.okButton
+    override val okButtonContainer get() = binding.okButtonContainer
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 

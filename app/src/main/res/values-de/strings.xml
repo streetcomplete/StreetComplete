@@ -666,8 +666,8 @@ Jetzt aufspalten?"</string>
     <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"Willkommen bei OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"der freien Wiki-Weltkarte"</string>
-    <string name="tutorial_intro">"Mit StreetComplete kannst du einfach einen Beitrag zur OpenStreetMap leisten.
-Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und vieles mehr …"</string>
+    <string name="tutorial_intro">"Mit StreetComplete kannst du einfach bei OpenStreetMap mitwirken.
+Die App sucht automatisch nach fehlenden Details in deiner Nähe: Fahrradstreifen, Hausnummern, Öffnungszeiten und vielem mehr …"</string>
     <string name="tutorial_solving_quests">"Sobald sie gefunden wurden, tauchen die fehlenden Details als Aufgaben auf deiner Karte auf.
 
 Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einloggen, um deine Antworten zu veröffentlichen."</string>
@@ -1296,7 +1296,7 @@ sorted alphabetically by title -->
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
     <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
-    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden"</string>
+    <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden."</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1370,4 +1370,15 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Eingangsmarkierung:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Wohnungsbereich:"</string>
     <string name="quest_entrance_reference_flat_range_to">"bis"</string>
+    <string name="default_disabled_msg_overlay">"Diese Aufgabe ist standardmäßig deaktiviert, da es bereits ein Overlay gibt, mit dem die Eingabe und Aktualisierung dieser Daten effektiver und effizienter ist."</string>
+    <string name="quest_camp_drinking_water_title">"Ist Trinkwasser für Camper hier frei verfügbar?"</string>
+    <string name="quest_camp_shower_title">"Gibt es hier Duschen?"</string>
+    <string name="quest_camp_power_supply_title">"Gibt es eine Möglichkeit für Kunden, ihr Telefon, ihren Laptop usw. hier aufzuladen?"</string>
+    <string name="quest_camp_type_title">"Wer darf hier campen?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Sowohl Zelte als auch Wohnmobile und Wohnwagen."</string>
+    <string name="quest_camp_type_caravans_only">"Nur Wohnmobile und Wohnwagen."</string>
+    <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
+    <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht unplausibel aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass sie zur richtigen Straße antworten? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
 </resources>

@@ -109,7 +109,7 @@ class ArCoreSessionCreator(
         ArCoreApk.getInstance().requestInstall(activity, true)
 
     private suspend fun awaitArCoreInstallation() {
-        suspendCoroutine<Unit> {
+        suspendCoroutine {
             val observer = object : DefaultLifecycleObserver {
                 override fun onResume(lifecycleOwner: LifecycleOwner) {
                     try {

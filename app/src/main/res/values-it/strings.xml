@@ -23,15 +23,9 @@
     <string name="quest_generic_confirmation_yes">"Sì, confermo"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica qui in modo che altri possano commentare e auspicabilmente risolvere altrimenti puoi nascondere questa missione solo per te"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"OK"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_no">"No, semplicemente nascondi"</string>
+    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica per altre persone che mappano in modo che possano risolvere, oppure puoi nascondere questa missione solo per te"</string>
+    <string name="quest_leave_new_note_yes">"Scrivi nota"</string>
+    <string name="quest_leave_new_note_no">"Nascondi"</string>
     <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
     <string name="quest_streetName_description">"come riportato sul cartello stradale, le abbreviazioni vanno scritte per esteso:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Spesso il segnale stradale si trova soltanto ad un'estremità della strada. Potrebbero inoltre non essere presenti ulteriori cartelli stradali nelle vie laterali che fanno parte di una strada più grande. In generale tutte le strade con abitazioni hanno un nome."</string>
@@ -56,8 +50,7 @@
     <string name="action_upload">"Carica risposte"</string>
 
     <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
-    <string name="no_changes">"Non hai dato alcuna risposta"</string>
+    <string name="no_changes">"Non hai fornito una risposta"</string>
     <string name="close">"chiudi"</string>
     <string name="download_error">"Errore durante la ricerca di missioni"</string>
     <string name="upload_error">"Errore durante il caricamento delle risposte"</string>
@@ -115,23 +108,22 @@
     <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy. Bello! Penso di avere solo buone notizie per te:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap.&lt;br/&gt;
+&lt;p&gt;Prima di tutto, va detto che con questa applicazione, tu dai dei contributi effettivi e diretti a OpenStreetMap (OSM).&lt;br/&gt;
 Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM.
 &lt;/p&gt;
 &lt;p&gt;
-La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modifiche apportate sono effettuate con l'account utente OSM, il che significa che il contenuto e la posizione delle modifiche apportate alla mappa sono visibili pubblicamente sul sito web di OpenStreetMap e tali modifiche sono attribuibili al tuo account.
+La modifica anonima in OpenStreetMap non è possibile. Tutte le modifiche apportate (e la loro data e posizione) sono attribuite al tuo account utente OSM e sono visibili pubblicamente sul sito web openstreetmap.org. Siccome StreetComplete dovrebbe essere usata soltanto per perlustrazioni sul posto, questo rivela dove sei e quando stai usando l'app.
 &lt;/p&gt;
 
-&lt;b&gt;Posizione geografica&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Posizione&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Questa app non condivide la tua posizione GPS con nessuno. Essa viene utilizzata solo per la ricerca automatica di missioni nei tuoi dintorni (e quindi scaricare) e per centrare la mappa dove ti trovi. 
+Quest'app non condivide la tua posizione GPS con nessuno. Essa viene utilizzata solo per cercare e scaricare automaticamente le missioni nei tuoi dintorni e per centrare la mappa dove ti trovi. 
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt; Utilizzo dei Dati&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Come accennato, l’applicazione comunica direttamente con l’infrastruttura OSM. 
-Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; nel mio server per controllare se le è stato vietato il caricamento di modifiche. Si tratta di una misura precauzionale che impedisce ad alcune versioni dell’app contenenti bug critici di danneggiare i dati OSM&lt;br/&gt;
-&lt;/p&gt;"</string>
+L’app comunica direttamente con l’infrastruttura OSM.&lt;br /&gt;
+Prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; nel mio server per assicurarsi che alla tua versione dell'app non sia stato proibito il caricamento delle modifiche. Si tratta di una misura precauzionale che impedisce alle versioni dell'app contenenti bug critici di caricare dati danneggiati in OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Attiva"</string>
     <string name="autosync_only_on_wifi">"Solo con Wi-Fi"</string>
     <string name="autosync_off">"Disattiva"</string>
@@ -172,9 +164,7 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_name_answer_noName_confirmation_title">"Confermi la mancanza di un nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Confermo. Nessun nome"</string>
     <string name="quest_openingHours_add_times">"Aggiungi orari di apertura"</string>
-
-    <!-- Fuzzy -->
-    <string name="crash_message">"Vorresti inviare il report dell'errore allo sviluppatore?"</string>
+    <string name="crash_message">"Inviare segnalazione dell'errore allo sviluppatore?"</string>
     <string name="crash_title">"Oh no, l'ultima volta StreetComplete è crashato!"</string>
     <string name="crash_compose_email">"Scrivi una email"</string>
     <string name="no_email_client">"Non hai installato un client di posta elettronica."</string>
@@ -185,8 +175,6 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Sì"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Quante bici si possono parcheggiate qui?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Questo numero civico sembra molto insolito."</string>
     <string name="quest_sport_title">"Quale sport viene praticato qui?"</string>
@@ -259,8 +247,9 @@ Se non ci sono cartelli lungo tutta la strada nel tratto evidenziato allora si a
     <string name="quest_bikeParkingCapacity_hint">"Va tenuto presente che spesso gli stalli delle bici possono essere usati da entrambi i lati per il parcheggio."</string>
     <string name="quest_sport_roller_skating">"Pattinaggio a rotelle"</string>
 
+    <!-- Metto "e non troppo alto" invece che letteralmente "alto fino alla caviglia" siccome non ho riscontro di questa cosa della caviglia nel wiki, e siccome non era mai stata citata prima questa cosa. Invito ad aggiornare a chi è più informato. -->
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"Parzialmente significa che c'è al massimo un gradino per entrare nel locale e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Parzialmente significa che c'è al massimo un gradino (e non troppo alto) per entrare nel locale e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Parzialmente\" significa che c'è al massimo un solo gradino di accesso."</string>
@@ -607,7 +596,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_segregated_title">"Come sono disposte  le corsie pedonali e ciclabili?"</string>
+    <string name="quest_segregated_title">"Come sono disposte le corsie pedonali e ciclabili?"</string>
     <string name="dialog_tutorial_upload">"Per caricare manualmente le tue modifiche, usa il pulsante simile a questo nella barra degli strumenti."</string>
     <string name="quest_segregated_separated">"Separati tra loro"</string>
     <string name="quest_segregated_mixed">"Ciclisti e pedoni condividono lo stesso spazio"</string>
@@ -958,9 +947,7 @@ riconoscimento"</string>
     <string name="quest_board_type_nature">"Natura (più argomenti)"</string>
     <string name="quest_board_type_notice_board">"È una bacheca informazioni"</string>
     <string name="quest_board_type_public_transport">"Trasporto pubblico"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_board_type_title">"Qual è lo scopo di questa bacheca informazioni?"</string>
+    <string name="quest_board_type_title">"Qual è l'argomento in questa bacheca informazioni?"</string>
     <string name="quest_board_type_map">"È una mappa"</string>
     <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
     <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>
@@ -1330,9 +1317,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - più di due barriere"</string>
     <string name="pref_title_language_select">"Seleziona lingua"</string>
     <string name="language_default">"Predefinito di sistema"</string>
-
-    <!-- Fuzzy -->
-    <string name="on_floor">"al piano %s:"</string>
+    <string name="on_floor">"al piano %s"</string>
     <string name="quest_street_parking_title">"Come possono parcheggiare la auto qua?"</string>
     <string name="select_street_parking_orientation">"Seleziona l'orientamento rispetto alla strada:"</string>
     <string name="select_street_parking_position">"Seleziona la posizione:"</string>
@@ -1485,9 +1470,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="link_osmand_description">"App per visualizzazione mappe e navigazione sia online che offline"</string>
     <string name="link_sunders_description">"Una mappa che mostra le telecamere e i dispositivi di sorveglianza"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Avvicinati alla freccia ma attenzione al traffico!"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sidewalk_surface_title">"Qual è la pavimentazione del maricapiede qui?"</string>
+    <string name="quest_sidewalk_surface_title">"Qual è la pavimentazione del marciapiede qui?"</string>
     <string name="quest_tactilePaving_incorrect">"Solo su un lato"</string>
 
     <!-- Fuzzy -->
@@ -1584,7 +1567,7 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Qui accettano carte di credito o debito?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accepts_cards_debit_and_credit">"Entrambi"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Sia le carte di credito che di debito"</string>
     <string name="quest_accepts_cards_credit_only">"Solo carte di credito"</string>
     <string name="quest_accepts_cards_dedit_only">"Solo carte di debito"</string>
     <string name="quest_accepts_cards_unavailable">"Ne carte di debito o credito"</string>

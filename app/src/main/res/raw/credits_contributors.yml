@@ -1,18 +1,18 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 366070
-  linesOfInterfaceMarkupChanged: 134224
-  assetFilesChanged: 1711
+  linesOfCodeChanged: 368263
+  linesOfInterfaceMarkupChanged: 134408
+  assetFilesChanged: 1715
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16822
+  linesOfCodeChanged: 16868
   linesOfInterfaceMarkupChanged: 1888
   assetFilesChanged: 151
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 13476
-  linesOfInterfaceMarkupChanged: 3545
-  assetFilesChanged: 547
+  linesOfCodeChanged: 13979
+  linesOfInterfaceMarkupChanged: 3584
+  assetFilesChanged: 551
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -23,7 +23,7 @@
   linesOfCodeChanged: 3950
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 3342
+  linesOfCodeChanged: 3372
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "arrival-spring"
@@ -43,15 +43,15 @@
   linesOfCodeChanged: 1639
   linesOfInterfaceMarkupChanged: 262
   assetFilesChanged: 48
+- name: "Matija Nalis"
+  githubUsername: "mnalis"
+  linesOfCodeChanged: 1558
+  linesOfInterfaceMarkupChanged: 229
+  assetFilesChanged: 13
 - name: "smichel17"
   githubUsername: "smichel17"
   linesOfCodeChanged: 1327
   linesOfInterfaceMarkupChanged: 45
-- name: "Matija Nalis"
-  githubUsername: "mnalis"
-  linesOfCodeChanged: 1318
-  linesOfInterfaceMarkupChanged: 98
-  assetFilesChanged: 12
 - name: "Patrick Geneva"
   githubUsername: "goldbattle"
   linesOfCodeChanged: 1123
@@ -65,15 +65,15 @@
   linesOfCodeChanged: 918
   linesOfInterfaceMarkupChanged: 106
   assetFilesChanged: 12
+- name: "Peter Newman"
+  githubUsername: "peternewman"
+  linesOfCodeChanged: 903
 - name: "Krzysztof Krason"
   linesOfCodeChanged: 738
   assetFilesChanged: 22
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
-- name: "Peter Newman"
-  githubUsername: "peternewman"
-  linesOfCodeChanged: 484
 - name: "naposm"
   githubUsername: "naposm"
   linesOfCodeChanged: 399
@@ -106,6 +106,10 @@
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
+- name: "TacoTheDank"
+  githubUsername: "TacoTheDank"
+  linesOfCodeChanged: 176
+  linesOfInterfaceMarkupChanged: 131
 - name: "Binnette"
   githubUsername: "Binnette"
   linesOfCodeChanged: 149
@@ -135,10 +139,6 @@
 - name: "RiffLord"
   githubUsername: "RiffLord"
   linesOfCodeChanged: 69
-- name: "TacoTheDank"
-  githubUsername: "TacoTheDank"
-  linesOfCodeChanged: 59
-  linesOfInterfaceMarkupChanged: 131
 - name: "Daniel Lublin"
   githubUsername: "quite"
   linesOfCodeChanged: 56

@@ -15,6 +15,7 @@ open class DrawableWrapper(val drawable: Drawable) : Drawable(), Drawable.Callba
     override fun onBoundsChange(bounds: Rect) { drawable.bounds = bounds }
     override fun setChangingConfigurations(configs: Int) { drawable.changingConfigurations = configs }
     override fun getChangingConfigurations(): Int = drawable.changingConfigurations
+    @Deprecated("Deprecated in Java")
     override fun setDither(dither: Boolean) { drawable.setDither(dither) }
     override fun setFilterBitmap(filter: Boolean) { drawable.isFilterBitmap = filter }
     override fun setAlpha(alpha: Int) { drawable.alpha = alpha }
@@ -26,6 +27,7 @@ open class DrawableWrapper(val drawable: Drawable) : Drawable(), Drawable.Callba
     override fun getCurrent(): Drawable = drawable.current
     override fun setVisible(visible: Boolean, restart: Boolean): Boolean =
         super.setVisible(visible, restart) || drawable.setVisible(visible, restart)
+    @Deprecated("Deprecated in Java")
     override fun getOpacity(): Int = drawable.getOpacity()
     override fun getTransparentRegion(): Region? = drawable.transparentRegion
     override fun getIntrinsicWidth(): Int = drawable.intrinsicWidth

@@ -11,6 +11,8 @@ class StringMapChanges(val changes: Set<StringMapEntryChange>) {
 
     fun isEmpty() = changes.isEmpty()
 
+    fun isValid(): Boolean = changes.all { it.isValid() }
+
     /** @return a StringMapChanges that exactly reverses this StringMapChanges */
     fun reversed() = StringMapChanges(changes.map { it.reversed() })
 
