@@ -23,6 +23,7 @@ v46.0: |
   <li>Tactile paving quests now enabled in Portugal (#4325)</li>
   <li>Internet access: Do not ask for backcountry campsites</li>
   <li>Steps incline: Fix display issue on Android 5 (#4317)</li>
+  <li>Buildings: Remove "show more" button (#3387, #4215), by @matkoniecz</li>
   </ul>
   <h3>Other enhancements and fixes</h3>
   <ul>
