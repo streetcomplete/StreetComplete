@@ -24,7 +24,6 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Specify whether there is electricity available at camp site"
     override val wikiLink = "Key:power_supply"
     override val icon = R.drawable.ic_quest_camp_power
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_power_supply_title
