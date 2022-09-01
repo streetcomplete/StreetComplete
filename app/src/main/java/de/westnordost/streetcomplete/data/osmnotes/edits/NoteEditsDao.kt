@@ -110,6 +110,13 @@ class NoteEditsDao(private val db: Database) {
     fun markImagesActivated(id: Long): Boolean =
         db.update(NAME, listOf(IMAGES_NEED_ACTIVATION to 0), "$ID = $id") == 1
 
+    fun replaceTextInUnsynced(text: String, replacement: String) {
+        db.exec(
+            "UPDATE $NAME SET $TEXT = replace($TEXT, ?, ?) WHERE $IS_SYNCED = 0",
+            arrayOf(text, replacement)
+        )
+    }
+
     private fun inBoundsSql(bbox: BoundingBox): String = """
         ($LATITUDE BETWEEN ${bbox.min.latitude} AND ${bbox.max.latitude}) AND
         ($LONGITUDE BETWEEN ${bbox.min.longitude} AND ${bbox.max.longitude})

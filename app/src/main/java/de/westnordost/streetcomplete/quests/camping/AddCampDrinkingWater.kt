@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
 
-    /* We only resurvey drinking_water = yes and drinking_water = no, as it might have more detailed 
+    /* We only resurvey drinking_water = yes and drinking_water = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with

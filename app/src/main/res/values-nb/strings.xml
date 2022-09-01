@@ -2209,4 +2209,40 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Trykk på skjermen for å begynne å måle"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er det en offentilg tilgjengelig sykkelpumpe her (i hverfall når det er åpent)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Er det en fungerende sykkelpumpe her?"</string>
+    <string name="action_overlays">"Kartlag"</string>
+    <string name="split_way">"Del veien"</string>
+    <string name="quest_memorialType_title">"Hva slags minnesmerke er dette?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Byste"</string>
+    <string name="quest_memorialType_plaque">"Plakett"</string>
+    <string name="quest_memorialType_war_memorial">"Krigsminnesmerke"</string>
+    <string name="quest_memorialType_stone">"Stein"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Trestele (minnesmerke)"</string>
+    <string name="quest_memorialType_stele_stone">"Steinstele (minnesmerke)"</string>
+    <string name="quest_memorialType_sculpture">"Annen skulptur"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Velg kartlag"</string>
+    <string name="overlay_none">"Ingen"</string>
+    <string name="overlay_lit">"Gatebelysning"</string>
+    <string name="lit_value_yes">"Belyst"</string>
+    <string name="lit_value_no">"Ikke belyst"</string>
+    <string name="lit_value_24_7">"Belyst hele døgnet"</string>
+    <string name="lit_value_automatic">"Belyst når noen passerer"</string>
+    <string name="overlay_sidewalk">"Fortau"</string>
+    <string name="quest_generic_answer_is_indoors">"Det er innendørs"</string>
+
+    <!-- Is this only used for a cross (christian) or "Various other forms of marking or symbol such as cairns, prayer flags or ovoos may be found around the world on passes and hills, in particular on sacred mountains. In the Italian Alps a Madonna is sometimes placed at the summit instead of a cross." (ref. Wikipedia article about "Summit cross") -->
+    <string name="quest_summit_cross_title">"Er det et kors på toppen?"</string>
+    <string name="quest_entrance_reference">"Hva er skiltet ved inngangen?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"inngangsmerke og leilighetsnumre"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Leilighetsnumre"</string>
+    <string name="quest_entrance_reference_select_code_only">"Inngangsmerke"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Ingen skilt med merke eller leilighetsnumre"</string>
+    <string name="quest_entrance_reference_reference_label">"Inngangsmerke:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Leilighetsnumre:"</string>
+
+    <!-- Could you please explain the context and maybe give an example? -->
+    <string name="quest_entrance_reference_flat_range_to">"til"</string>
 </resources>

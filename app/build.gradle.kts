@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 31
-        versionCode = 4504
-        versionName = "45.2"
+        versionCode = 4600
+        versionName = "46.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -125,7 +125,7 @@ dependencies {
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.0"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.2")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -145,10 +145,10 @@ dependencies {
     // Android stuff
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.appcompat:appcompat:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.4.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.0")
+    implementation("androidx.fragment:fragment-ktx:1.5.2")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -190,8 +190,8 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
-    implementation("com.charleskorn.kaml:kaml:0.45.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("com.charleskorn.kaml:kaml:0.47.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
@@ -200,7 +200,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.32.0")
+    implementation("com.google.ar:core:1.33.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 

@@ -38,7 +38,7 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         }
 
         if (isUnusualDiameter(diameter)) {
-            confirmUnusualInput { applyAnswer(diameter) }
+            confirmUnusualInput(diameter.unit) { applyAnswer(diameter) }
         } else {
             applyAnswer(diameter)
         }
@@ -52,10 +52,19 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         }
     }
 
-    private fun confirmUnusualInput(onConfirmed: () -> Unit) {
+    private fun confirmUnusualInput(
+        unit: FireHydrantDiameterMeasurementUnit,
+        onConfirmed: () -> Unit
+    ) {
+        val min = if (unit == MILLIMETER) 80 else 3
+        val max = if (unit == MILLIMETER) 300 else 12
+        val msg = getString(
+            R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description2,
+            min, max
+        )
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_fireHydrant_diameter_unusualInput_confirmation_description)
+            .setMessage(msg)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -36,8 +37,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             val props = HashMap<String, String>()
             props[ELEMENT_ID] = element.id.toString()
             props[ELEMENT_TYPE] = element.type.name
-            val layer = element.tags["layer"]?.toIntOrNull()
-            props["layer"] = if (layer != null && layer.absoluteValue <= 20) layer.toString() else "0"
+            val layer = element.tags["layer"]?.toIntOrNull()?.takeIf { it.absoluteValue <= 20 } ?: 0
+            props["layer"] = layer.toString()
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
@@ -46,7 +47,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
-                    props["width"] = getLineWidth(element.tags).toString()
+                    val width = getLineWidth(element.tags)
+                    // thin lines should be rendered on top (see #4291)
+                    if (width <= 2f) props["layer"] = (layer + 1).toString()
+                    props["width"] = width.toString()
                     style.colorLeft?.let { props["colorLeft"] = it }
                     style.colorRight?.let { props["colorRight"] = it }
                     if (style.color != null) {
@@ -71,12 +75,13 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** mimics width of line as seen in Streetomplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-        "motorway", "trunk" -> 20f
-        "primary", "secondary" -> 12f
-        "service", "track" -> 4f
-        "path", "cycleway", "footway", "bridleway", "steps" -> 2f
+        "motorway", "trunk" -> if (!isOneway(tags)) 20f else 10f
+        "motorway_link", "trunk_link" -> 6f
+        "primary", "secondary", "tertiary" -> if (!isOneway(tags)) 9f else 6f
+        "service", "track" -> 3f
+        "path", "cycleway", "footway", "bridleway", "steps" -> 1f
         null -> 3f
-        else -> 8f
+        else -> if (!isOneway(tags)) 6f else 3f
     }
 
     /** estimates height of thing */
