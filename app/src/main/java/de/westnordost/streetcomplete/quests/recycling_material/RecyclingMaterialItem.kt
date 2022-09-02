@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
-fun RecyclingMaterial.toItem(): Item<List<RecyclingMaterial>> =
+fun RecyclingMaterial.asItem(): Item<List<RecyclingMaterial>> =
     Item(listOf(this), iconResId, titleResId)
 
-fun List<RecyclingMaterial>.toItem(): Item<List<RecyclingMaterial>> =
+fun List<RecyclingMaterial>.asItem(): Item<List<RecyclingMaterial>> =
     Item(this, iconResId, titleResId)
 
 private val RecyclingMaterial.iconResId: Int get() = when (this) {

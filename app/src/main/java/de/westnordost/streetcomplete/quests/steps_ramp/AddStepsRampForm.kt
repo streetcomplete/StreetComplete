@@ -10,17 +10,10 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
-    override val items = listOf(
-        Item(NONE,       R.drawable.ramp_none,       R.string.quest_steps_ramp_none),
-        Item(BICYCLE,    R.drawable.ramp_bicycle,    R.string.quest_steps_ramp_bicycle),
-        Item(STROLLER,   R.drawable.ramp_stroller,   R.string.quest_steps_ramp_stroller),
-        Item(WHEELCHAIR, R.drawable.ramp_wheelchair, R.string.quest_steps_ramp_wheelchair)
-    )
-
+    override val items = StepsRamp.values().map { it.asItem() }
     override val itemsPerRow = 2
     override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
@@ -84,5 +77,3 @@ class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
             .show()
     }
 }
-
-enum class StepsRamp { NONE, BICYCLE, STROLLER, WHEELCHAIR }
