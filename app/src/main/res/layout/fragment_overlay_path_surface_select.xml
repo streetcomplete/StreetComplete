@@ -65,6 +65,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_surface_detailed_answer_impossible_description"/>
+
+        <EditText
+            android:id="@+id/explanation_input_main_surface"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:minLines="3"
+            tools:text="Surface is a mosaic of paving stones, wood and metal."
+            android:maxLength="255"
+            android:scrollHorizontally="false"
+            />
+
         <!--TODO Cycleway hardcoded-->
         <TextView
             android:id="@+id/selectTextViewCyclewaySurface"
@@ -90,6 +108,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_surface_detailed_answer_impossible_description"/>
+
+    <EditText
+        android:id="@+id/explanation_input_cycleway_surface"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:minLines="3"
+        tools:text="Surface is a mosaic of paving stones, wood and metal."
+        android:maxLength="255"
+        android:scrollHorizontally="false"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/selectButtonFootwaySurface"
@@ -139,7 +174,7 @@
         android:text="@string/quest_surface_detailed_answer_impossible_description"/>
 
     <EditText
-        android:id="@+id/explanation_input_main_surface"
+        android:id="@+id/explanation_input_footway_surface"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -150,5 +185,6 @@
         android:maxLength="255"
         android:scrollHorizontally="false"
         />
+
 
 </LinearLayout>

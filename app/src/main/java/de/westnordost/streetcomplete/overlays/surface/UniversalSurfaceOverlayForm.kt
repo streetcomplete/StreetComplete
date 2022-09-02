@@ -177,6 +177,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
         if (cyclewaySurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
+            binding.explanationInputCyclewaySurface.isVisible = cyclewaySurfaceItem.value?.shouldBeDescribed ?: false
         }
 
         val footwaySurfaceItem = selectedStatusForFootwaySurface
@@ -184,6 +185,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
         if (footwaySurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
+            binding.explanationInputFootwaySurface.isVisible = footwaySurfaceItem.value?.shouldBeDescribed ?: false
         }
     }
 
@@ -194,11 +196,15 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
         val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
         val selectedCyclewaySurfaceIndex = inState.getInt(SELECTED_CYCLEWAY_SURFACE_INDEX)
+        val selectedCyclewaySurfaceNoteText = inState.getString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT)
         val selectedFootwaySurfaceIndex = inState.getInt(SELECTED_FOOTWAY_SURFACE_INDEX)
+        val selectedFootwaySurfaceNoteText = inState.getString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT)
         selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
         binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
         selectedStatusForCyclewaySurface = if (selectedCyclewaySurfaceIndex != -1) items[selectedCyclewaySurfaceIndex] else null
+        binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
         selectedStatusForFootwaySurface = if (selectedFootwaySurfaceIndex != -1) items[selectedFootwaySurfaceIndex] else null
+        binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -206,7 +212,9 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
         outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
         outState.putInt(SELECTED_CYCLEWAY_SURFACE_INDEX, items.indexOf(selectedStatusForCyclewaySurface))
+        outState.putString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT, noteText())
         outState.putInt(SELECTED_FOOTWAY_SURFACE_INDEX, items.indexOf(selectedStatusForFootwaySurface))
+        outState.putString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT, noteText())
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
