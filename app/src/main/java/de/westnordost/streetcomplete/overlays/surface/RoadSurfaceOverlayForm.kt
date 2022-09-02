@@ -63,6 +63,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewMainSurface, true)
         binding.selectedCellViewMainSurface.children.first().background = null
 
+        // TODO remove in PR
         // if answer not selected already: open it immediately - user will confirm it later
         // so it should fine even in case of a missclick
         /*
