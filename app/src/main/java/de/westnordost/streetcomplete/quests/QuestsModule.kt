@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
-import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashin
+import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
@@ -352,7 +352,7 @@ fun questTypeRegistry(
     AddBicyclePump(), // visible from the outside, but only during opening hours
 
     AddAtmOperator(),
-    AddAtmCashin(),
+    AddAtmCashIn(),
 
     AddClothingBinOperator(),
 
