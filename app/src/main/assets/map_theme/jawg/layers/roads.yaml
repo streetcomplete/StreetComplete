@@ -17,7 +17,7 @@ layers:
 
     highway:
         data: { source: jawg, layer: road }
-        filter: [ class: [ motorway, motorway_link ], { class: main, type: trunk } ]
+        filter: [ class: [ motorway, motorway_link ], { class: main, type: trunk }, { class: street, type: trunk_link } ]
         draw:
             lines-highway-style:
                 order: 34
