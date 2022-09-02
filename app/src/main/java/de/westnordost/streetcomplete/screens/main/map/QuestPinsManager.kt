@@ -63,8 +63,9 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
+            val oldPinsUpdateJob = pinsUpdateJob
             pinsUpdateJob = viewLifecycleScope.launch {
-                pinsUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
+                oldPinsUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
                 updateQuestPins(added, removed)
             }
         }
