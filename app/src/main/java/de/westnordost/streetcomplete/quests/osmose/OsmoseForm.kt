@@ -74,6 +74,7 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>
                         // remove quest from db
                         osmQuestController.delete(questKey as OsmQuestKey)
                     }
+                    .show()
             } )
         updateButtonPanel()
     }
