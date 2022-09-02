@@ -1,4 +1,3 @@
-// TODO switching between surface and cycleway:surface / footway:surface modes
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
@@ -19,11 +18,11 @@ import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.SurfaceInfo
 import de.westnordost.streetcomplete.osm.SurfaceMissing
 import de.westnordost.streetcomplete.osm.commonSurfaceDescription
-import de.westnordost.streetcomplete.osm.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.asItem
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
@@ -59,182 +58,212 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             updateSelectedCell()
         }
 
-    // TODO where this functions should be placed?
-    override val otherAnswers = if(isSegregatedLayout) {
-            listOf(
-                AnswerItem(R.string.overlay_path_surface_not_segregated) { switchToUnifiedSurfaceLayout() }
-            )
-        } else {
-            listOf(
-                AnswerItem(R.string.overlay_path_surface_segregated) { switchToFootwayCyclewaySurfaceLayout() }
-            )
-        }
-
-    private fun switchToUnifiedSurfaceLayout() {
-        isSegregatedLayout = false
-        binding.selectButtonMainSurface.isVisible = true
-        binding.selectButtonCyclewaySurface.isVisible = false
-        binding.selectButtonFootwaySurface.isVisible = false
-    }
-
-    private fun switchToFootwayCyclewaySurfaceLayout() {
-        isSegregatedLayout = true
-        binding.selectButtonMainSurface.isVisible = false
-        binding.selectButtonCyclewaySurface.isVisible = true
-        binding.selectButtonFootwaySurface.isVisible = true
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.selectButtonMainSurface.setOnClickListener {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedStatusForMainSurface) {
-                    selectedStatusForMainSurface = item
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-        binding.selectButtonCyclewaySurface.setOnClickListener {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedStatusForCyclewaySurface) {
-                    selectedStatusForCyclewaySurface = item
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-        binding.selectButtonFootwaySurface.setOnClickListener {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedStatusForFootwaySurface) {
-                    selectedStatusForFootwaySurface = item
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-
-        if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
-
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewMainSurface, true)
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewCyclewaySurface, true)
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewFootwaySurface, true)
-        binding.selectedCellViewMainSurface.children.first().background = null
-        binding.selectedCellViewCyclewaySurface.children.first().background = null
-        binding.selectedCellViewFootwaySurface.children.first().background = null
-
-        // TODO remove in PR
-        // if answer not selected already: open it immediately - user will confirm it later
-        // so it should fine even in case of a missclick
-        /*
-        if (selectedStatusForMainSurface?.value == null) {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedStatusForMainSurface) {
-                    selectedStatusForMainSurface = item
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-         */
-
-        val status = createSurfaceStatus(element.tags)
-        currentStatus = status
-        when (status) {
-            is CyclewayFootwaySurfaces -> {
-                selectedStatusForCyclewaySurface = status.cycleway?.asItem()
-                selectedStatusForFootwaySurface = status.footway?.asItem()
-                switchToFootwayCyclewaySurfaceLayout()
+        // TODO where this functions should be placed within file?
+        override val otherAnswers: List<AnswerItem> get() {
+            return if (isSegregatedLayout) {
+                listOf(
+                    AnswerItem(R.string.overlay_path_surface_not_segregated) { switchToUnifiedSurfaceLayout() }
+                )
+            } else {
+                listOf(
+                    AnswerItem(R.string.overlay_path_surface_segregated) { switchToFootwayCyclewaySurfaceLayout() }
+                )
             }
-            is SingleSurface -> {
-                selectedStatusForMainSurface = status.surface.asItem()
-                switchToUnifiedSurfaceLayout()
-            }
-            is SingleSurfaceWithNote -> {
-                binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-                selectedStatusForMainSurface = status.surface.asItem()
-                switchToUnifiedSurfaceLayout()
-            }
-            is SurfaceMissing -> {
-                if (element.tags["segregated"] == "yes") {
-                    switchToFootwayCyclewaySurfaceLayout()
+        }
+
+        private fun switchToUnifiedSurfaceLayout() {
+            isSegregatedLayout = false
+            binding.mainSurfaceContainer.isVisible = true
+            binding.cyclewaySurfaceContainer.isVisible = false
+            binding.footwaySurfaceContainer.isVisible = false
+        }
+
+        private fun switchToFootwayCyclewaySurfaceLayout() {
+            isSegregatedLayout = true
+            binding.mainSurfaceContainer.isVisible = false
+            binding.cyclewaySurfaceContainer.isVisible = true
+            binding.footwaySurfaceContainer.isVisible = true
+        }
+
+        sealed class SingleSurfaceItemInfo
+        data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
+        data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
+
+        private fun collectData(callback: (SingleSurfaceItemInfo) -> Unit) {
+            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+                val value = item.value
+                if (value != null && value.shouldBeDescribed) {
+                    DescribeGenericSurfaceDialog(requireContext()) { description ->
+                        callback(SingleSurfaceItemWithNote(item, description))
+                    }.show()
                 } else {
+                    callback(SingleSurfaceItem(item))
+                }
+            }.show()
+        }
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+
+            binding.selectButtonMainSurface.setOnClickListener {
+                ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+                    val value = item.value
+                    if (item != selectedStatusForMainSurface) {
+                        selectedStatusForMainSurface = item
+                    }
+                    if (value != null && value.shouldBeDescribed) {
+                        DescribeGenericSurfaceDialog(requireContext()) { description ->
+                            binding.explanationInputMainSurface.text = SpannableStringBuilder(description)
+                        }.show()
+                    }
+                    checkIsFormComplete()
+                }.show()
+            }
+            binding.selectButtonCyclewaySurface.setOnClickListener {
+                collectData { gathered: SingleSurfaceItemInfo ->
+                    when(gathered) {
+                        is SingleSurfaceItem -> {
+                            selectedStatusForCyclewaySurface = gathered.surface
+                        }
+                        is SingleSurfaceItemWithNote -> {
+                            selectedStatusForCyclewaySurface = gathered.surface
+                            binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
+                        }
+                    }
+                    checkIsFormComplete()
+                }
+            }
+            binding.selectButtonFootwaySurface.setOnClickListener {
+                ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+                    if (item != selectedStatusForFootwaySurface) {
+                        selectedStatusForFootwaySurface = item
+                        checkIsFormComplete()
+                    }
+                }.show()
+            }
+
+            if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
+
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewMainSurface, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewCyclewaySurface, true)
+            LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectedCellViewFootwaySurface, true)
+            binding.selectedCellViewMainSurface.children.first().background = null
+            binding.selectedCellViewCyclewaySurface.children.first().background = null
+            binding.selectedCellViewFootwaySurface.children.first().background = null
+
+            // TODO remove in PR
+            // if answer not selected already: open it immediately - user will confirm it later
+            // so it should fine even in case of a missclick
+            /*
+            if (selectedStatusForMainSurface?.value == null) {
+                ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+                    if (item != selectedStatusForMainSurface) {
+                        selectedStatusForMainSurface = item
+                        checkIsFormComplete()
+                    }
+                }.show()
+            }
+             */
+
+            val status = createSurfaceStatus(element.tags)
+            currentStatus = status
+            when (status) {
+                is CyclewayFootwaySurfaces -> {
+                    selectedStatusForCyclewaySurface = status.cycleway?.asItem()
+                    selectedStatusForFootwaySurface = status.footway?.asItem()
+                    switchToFootwayCyclewaySurfaceLayout()
+                }
+                is SingleSurface -> {
+                    selectedStatusForMainSurface = status.surface.asItem()
                     switchToUnifiedSurfaceLayout()
                 }
+                is SingleSurfaceWithNote -> {
+                    binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
+                    selectedStatusForMainSurface = status.surface.asItem()
+                    switchToUnifiedSurfaceLayout()
+                }
+                is SurfaceMissing -> {
+                    if (element.tags["segregated"] == "yes") {
+                        switchToFootwayCyclewaySurfaceLayout()
+                    } else {
+                        switchToUnifiedSurfaceLayout()
+                    }
+                }
+            }
+            updateSelectedCell()
+        }
+
+        private fun updateSelectedCell() {
+            val mainSurfaceItem = selectedStatusForMainSurface
+            binding.selectTextViewMainSurface.isGone = mainSurfaceItem != null
+            binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
+            if (mainSurfaceItem != null) {
+                ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
+                binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
+            }
+
+            val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
+            binding.selectTextViewCyclewaySurface.isGone = cyclewaySurfaceItem != null
+            binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
+            if (cyclewaySurfaceItem != null) {
+                ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
+                binding.explanationInputCyclewaySurfaceContainer.isVisible = cyclewaySurfaceItem.value?.shouldBeDescribed ?: false
+            }
+
+            val footwaySurfaceItem = selectedStatusForFootwaySurface
+            binding.selectTextViewFootwaySurface.isGone = footwaySurfaceItem != null
+            binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
+            if (footwaySurfaceItem != null) {
+                ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
+                binding.explanationInputFootwaySurfaceContainer.isVisible = footwaySurfaceItem.value?.shouldBeDescribed ?: false
             }
         }
-        updateSelectedCell()
-    }
 
-    private fun updateSelectedCell() {
-        val mainSurfaceItem = selectedStatusForMainSurface
-        binding.selectTextViewMainSurface.isGone = mainSurfaceItem != null
-        binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
-        if (mainSurfaceItem != null) {
-            ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
-            binding.explanationInputMainSurface.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
+        /* ------------------------------------- instance state ------------------------------------- */
+
+        private fun onLoadInstanceState(inState: Bundle) {
+            val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
+            val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
+            val selectedCyclewaySurfaceIndex = inState.getInt(SELECTED_CYCLEWAY_SURFACE_INDEX)
+            val selectedCyclewaySurfaceNoteText = inState.getString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT)
+            val selectedFootwaySurfaceIndex = inState.getInt(SELECTED_FOOTWAY_SURFACE_INDEX)
+            val selectedFootwaySurfaceNoteText = inState.getString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT)
+            selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
+            binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+            selectedStatusForCyclewaySurface = if (selectedCyclewaySurfaceIndex != -1) items[selectedCyclewaySurfaceIndex] else null
+            binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
+            selectedStatusForFootwaySurface = if (selectedFootwaySurfaceIndex != -1) items[selectedFootwaySurfaceIndex] else null
+            binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
         }
 
-        val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
-        binding.selectTextViewCyclewaySurface.isGone = cyclewaySurfaceItem != null
-        binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
-        if (cyclewaySurfaceItem != null) {
-            ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
-            binding.explanationInputCyclewaySurface.isVisible = cyclewaySurfaceItem.value?.shouldBeDescribed ?: false
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
+            outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
+            outState.putInt(SELECTED_CYCLEWAY_SURFACE_INDEX, items.indexOf(selectedStatusForCyclewaySurface))
+            outState.putString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT, noteText())
+            outState.putInt(SELECTED_FOOTWAY_SURFACE_INDEX, items.indexOf(selectedStatusForFootwaySurface))
+            outState.putString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT, noteText())
         }
 
-        val footwaySurfaceItem = selectedStatusForFootwaySurface
-        binding.selectTextViewFootwaySurface.isGone = footwaySurfaceItem != null
-        binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
-        if (footwaySurfaceItem != null) {
-            ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
-            binding.explanationInputFootwaySurface.isVisible = footwaySurfaceItem.value?.shouldBeDescribed ?: false
+        /* -------------------------------------- apply answer -------------------------------------- */
+
+        override fun isFormComplete(): Boolean {
+            if (selectedStatusForMainSurface == null) {
+                return selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null
+            }
+            val surfaceValue = selectedStatusForMainSurface!!.value
+            val note = noteText()
+            if (surfaceValue == null) {
+                return false
+            }
+            if (surfaceValue.shouldBeDescribed) {
+                return note != ""
+            }
+            return true
         }
-    }
 
-
-    /* ------------------------------------- instance state ------------------------------------- */
-
-    private fun onLoadInstanceState(inState: Bundle) {
-        val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
-        val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
-        val selectedCyclewaySurfaceIndex = inState.getInt(SELECTED_CYCLEWAY_SURFACE_INDEX)
-        val selectedCyclewaySurfaceNoteText = inState.getString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT)
-        val selectedFootwaySurfaceIndex = inState.getInt(SELECTED_FOOTWAY_SURFACE_INDEX)
-        val selectedFootwaySurfaceNoteText = inState.getString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT)
-        selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
-        binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
-        selectedStatusForCyclewaySurface = if (selectedCyclewaySurfaceIndex != -1) items[selectedCyclewaySurfaceIndex] else null
-        binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
-        selectedStatusForFootwaySurface = if (selectedFootwaySurfaceIndex != -1) items[selectedFootwaySurfaceIndex] else null
-        binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
-        outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
-        outState.putInt(SELECTED_CYCLEWAY_SURFACE_INDEX, items.indexOf(selectedStatusForCyclewaySurface))
-        outState.putString(SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT, noteText())
-        outState.putInt(SELECTED_FOOTWAY_SURFACE_INDEX, items.indexOf(selectedStatusForFootwaySurface))
-        outState.putString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT, noteText())
-    }
-
-    /* -------------------------------------- apply answer -------------------------------------- */
-
-    override fun isFormComplete(): Boolean {
-        if (selectedStatusForMainSurface == null) {
-            return selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null
-        }
-        val surfaceValue = selectedStatusForMainSurface!!.value
-        val note = noteText()
-        if (surfaceValue == null) {
-            return false
-        }
-        if (surfaceValue.shouldBeDescribed) {
-            return note != ""
-        }
-        return true
-    }
-
-    companion object {
+        companion object {
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
         private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
         private const val SELECTED_CYCLEWAY_SURFACE_INDEX = "selected_cycleway_surface_index"

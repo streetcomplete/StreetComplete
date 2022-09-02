@@ -1,4 +1,3 @@
-// TODO switching between surface and cycleway:surface / footway:surface modes
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
@@ -12,17 +11,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.databinding.FragmentOverlayRoadSurfaceSelectBinding
-import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.SingleSurface
 import de.westnordost.streetcomplete.osm.SingleSurfaceInfo
 import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.Surface
-import de.westnordost.streetcomplete.osm.SurfaceInfo
 import de.westnordost.streetcomplete.osm.SurfaceMissing
-import de.westnordost.streetcomplete.osm.commonSurfaceDescription
 import de.westnordost.streetcomplete.osm.createMainSurfaceStatus
-import de.westnordost.streetcomplete.osm.createSurfaceStatus
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
@@ -102,7 +96,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
         if (mainSurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
-            binding.explanationInputMainSurface.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
+            binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
         }
     }
 

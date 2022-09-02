@@ -48,22 +48,28 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/explanation_input_main_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_surface_detailed_answer_impossible_description"/>
-
-    <EditText
-        android:id="@+id/explanation_input_main_surface"
         android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:gravity="top|start"
-        android:minLines="3"
-        tools:text="Surface is a mosaic of paving stones, wood and metal."
-        android:maxLength="255"
-        android:scrollHorizontally="false"
-        />
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_surface_detailed_answer_impossible_description"/>
+
+        <EditText
+            android:id="@+id/explanation_input_main_surface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:minLines="3"
+            tools:text="Surface is a mosaic of paving stones, wood and metal."
+            android:maxLength="255"
+            android:scrollHorizontally="false"
+            />
+    </FrameLayout>
 
 </LinearLayout>
