@@ -5,6 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -55,9 +58,10 @@ class EditHistoryController(
         override fun onUnhidAll() { onInvalidated() }
     }
 
-    // todo: trimmer (though the cache will be small, and will fill up again quickly, so trim / clear might not be necessary)
-    private val cache = TreeSet<Edit> { t, t2 ->
-        t2.createdTimestamp.compareTo(t.createdTimestamp)
+    private val cache by lazy {
+        TreeSet<Edit> { t, t2 ->
+            t2.createdTimestamp.compareTo(t.createdTimestamp)
+        }.apply { addAll(fetchAll()) }
     }
 
     init {
@@ -78,9 +82,26 @@ class EditHistoryController(
         }
     }
 
-    fun deleteSyncedOlderThan(timestamp: Long): Int =
-        elementEditsController.deleteSyncedOlderThan(timestamp) +
-        noteEditsController.deleteSyncedOlderThan(timestamp)
+    private fun fetchAll(): List<Edit> {
+        val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
+
+        val result = ArrayList<Edit>()
+        result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
+        result += noteEditsController.getAll()
+        result += noteQuestController.getAllHiddenNewerThan(maxAge)
+        result += osmQuestController.getAllHiddenNewerThan(maxAge)
+        return result
+    }
+
+    fun deleteSyncedOlderThan(timestamp: Long): Int {
+        val r = elementEditsController.deleteSyncedOlderThan(timestamp) +
+            noteEditsController.deleteSyncedOlderThan(timestamp)
+        synchronized(cache) { // just reset the cache, this doesn't happen often anyway
+            cache.clear()
+            cache.addAll(fetchAll())
+        }
+        return r
+    }
 
     override fun get(key: EditKey): Edit? = getAll().firstOrNull { it.key == key }
 
@@ -89,20 +110,9 @@ class EditHistoryController(
         // from database should never be that big anyway...
         getAll().firstOrNull { it.isUndoable }
 
-    override fun getAll(): List<Edit> = synchronized(cache) {
-        if (cache.isNotEmpty()) return cache.toList() // TreeSet is already sorted!
-
-        val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
-
-        val result = ArrayList<Edit>()
-        result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
-        result += noteEditsController.getAll()
-        result += noteQuestController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestController.getAllHiddenNewerThan(maxAge)
-        cache.addAll(result)
-
-        return cache.toList()
-    }
+    // difference to upstream: may contain older hidden quests
+    // but that really doesn't matter
+    override fun getAll(): List<Edit> = synchronized(cache) { cache.toList() }
 
     override fun getCount(): Int =
         // could be optimized later too...
@@ -121,13 +131,19 @@ class EditHistoryController(
     }
     private fun onSynced(edit: Edit) {
         synchronized(cache) {
-            if (edit is ElementEdit && edit.action !is UpdateElementTagsAction)
-                // clear / reload cache, because element ids of multiple edits may have changed after this
-                // todo: could probably allow more edit actions, like revert and deleteNode
+            if (edit is ElementEdit && edit.action in noIdModifyActions) {
+                // reload, because element ids of multiple edits may have changed after split way
+                // this should never happen for other edit types, as they don't affect more than
+                // a single element
                 // or maybe remove this cache and do separate caches for all controllers?
-                cache.clear()
-            else {
-                cache.remove(edit) // remove first is really important!
+                cache.apply {
+                    removeAll { it is ElementEdit }
+                    addAll(elementEditsController.getAll())
+                }
+                Unit // make compiler happy
+            } else {
+                if (!cache.remove(edit)) // remove first is really important!
+                    cache.removeAll { it.key == edit.key } // fallback, never found it triggered
                 if (edit is ElementEdit) cache.add(edit.copy(isSynced = true))
                 if (edit is NoteEdit) cache.add(edit.copy(isSynced = true))
                 // can't be called for (un)hiding, so no need to care about it
@@ -136,7 +152,8 @@ class EditHistoryController(
         listeners.forEach { it.onSynced(edit) }
     }
     private fun onDeleted(edits: List<Edit>) {
-        synchronized(cache) { cache.removeAll(edits) }
+        val keys = edits.map { it.key }.toHashSet()
+        synchronized(cache) { cache.removeAll { it.key in keys } }
         listeners.forEach { it.onDeleted(edits) }
     }
     private fun onInvalidated() {
@@ -144,3 +161,5 @@ class EditHistoryController(
         listeners.forEach { it.onInvalidated() }
     }
 }
+
+private val noIdModifyActions = setOf(UpdateElementTagsAction, DeletePoiNodeAction, RevertDeletePoiNodeAction, RevertUpdateElementTagsAction)

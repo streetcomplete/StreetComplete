@@ -17,8 +17,10 @@ class ElementEditsController(
 
     private val listeners: MutableList<ElementEditsSource.Listener> = CopyOnWriteArrayList()
 
-    // todo: trimmer (though the cache will be small, and will fill up again quickly, so trim / clear might not be necessary)
-    private val editCache = HashSet<ElementEdit>()
+    private val editCache by lazy {
+        val c = hashMapOf<Long, ElementEdit>()
+        editsDB.getAll().associateByTo(c) { it.id }
+    }
 
     // full elementIdProvider cache didn't work as expected, so only store empty idPoviders (resp. their ids)
     // this is still very useful, because
@@ -43,10 +45,7 @@ class ElementEditsController(
     fun get(id: Long): ElementEdit? =
         getAll().firstOrNull { it.id == id }
 
-    fun getAll(): List<ElementEdit> = synchronized(editCache) {
-        if (editCache.isEmpty()) editCache.addAll(editsDB.getAll())
-        return editCache.toList()
-    }
+    fun getAll(): List<ElementEdit> = synchronized(this) { editCache.values.toList() }
 
     fun getAllUnsynced(): List<ElementEdit> =
         getAll().filterNot { it.isSynced }
@@ -70,6 +69,7 @@ class ElementEditsController(
             deleteEdits = editsDB.getSyncedOlderThan(timestamp)
             if (deleteEdits.isEmpty()) return 0
             deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
+            editCache.values.removeAll { it.isSynced && it.createdTimestamp < timestamp }
         }
         onDeletedEdits(deleteEdits)
         return deletedCount
@@ -90,29 +90,17 @@ class ElementEditsController(
                 editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
             }
             syncSuccess = editsDB.markSynced(edit.id)
-        }
-        synchronized(editCache) {
-            // alternatively i could just clear editCache if idUpdates is not empty...
-            // safer and most of the cache benefit remains, since most edits don't have idUpdates
-            val editsToRemove = hashSetOf<ElementEdit>()
-            val editsToAdd = hashSetOf<ElementEdit>()
+
+            // now adjust cached edits, and update involved ids
+            // alternatively (simpler, safer and slower): just reload editCache if idUpdates is not empty
             for (update in elementUpdates.idUpdates) {
-                editCache.forEach {
-                    if (it.elementType == edit.elementType && it.elementId == update.oldElementId) {
-                        // it.elementId = update.newElementId // if it only was that simple...
-                        editsToRemove.add(it)
-                        editsToAdd.add(it.copy(elementId = update.newElementId))
-                    }
+                for (entry in editCache) {
+                    if (entry.value.elementType == edit.elementType && entry.value.elementId == update.oldElementId)
+                        entry.setValue(entry.value.copy(elementId = update.newElementId))
                 }
             }
-            editCache.removeAll(editsToRemove)
-            editCache.addAll(editsToAdd)
-
-            if (syncSuccess) {
-                if (!editCache.remove(edit))
-                    editCache.removeAll { it.id == edit.id } // looks like this never triggers, but better be safe
-                editCache.add(edit.copy(isSynced = true))
-            }
+            if (syncSuccess)
+                editCache[edit.id] = edit.copy(isSynced = true)
         }
 
         if (syncSuccess) onSyncedEdit(edit)
@@ -161,6 +149,7 @@ class ElementEditsController(
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
+            editCache[edit.id] = edit
         }
         onAddedEdit(edit)
     }
@@ -175,6 +164,7 @@ class ElementEditsController(
             ids = edits.map { it.id }
 
             editsDB.deleteAll(ids)
+            editCache.keys.removeAll(ids)
         }
 
         onDeletedEdits(edits)
@@ -223,7 +213,6 @@ class ElementEditsController(
     }
 
     private fun onDeletedEdits(edits: List<ElementEdit>) {
-        synchronized(editCache) { editCache.removeAll(edits) }
         listeners.forEach { it.onDeletedEdits(edits) }
     }
 }
