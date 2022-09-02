@@ -12,11 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAtmCashin : OsmFilterQuestType<Boolean>() {
 
-    override val elementFilter = """
-        nodes with
-         amenity = atm
-         and !cash_in
-    """
+    override val elementFilter = "nodes with amenity = atm and !cash_in"
     override val changesetComment = "Determine whether ATM allows depositing cash"
     override val wikiLink = "Key:cash_in"
     override val icon = R.drawable.ic_quest_money
