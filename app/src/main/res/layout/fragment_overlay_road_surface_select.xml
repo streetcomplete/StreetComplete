@@ -54,7 +54,8 @@
         android:text="@string/quest_surface_detailed_answer_impossible_description"/>
 
     <EditText
-        android:id="@+id/explanationInput"
+        android:id="@+id/explanation_input_main_surface"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"

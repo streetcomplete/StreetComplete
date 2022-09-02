@@ -53,7 +53,7 @@ class PathSurfaceOverlay : Overlay {
 
     private val parentQuest = AddPathSurface()
     override val title = R.string.overlay_path_surface
-    override val icon = parentQuest.icon // use some icon which has mix of colours in background? TODO
+    override val icon = parentQuest.icon
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink
     override val achievements = parentQuest.achievements

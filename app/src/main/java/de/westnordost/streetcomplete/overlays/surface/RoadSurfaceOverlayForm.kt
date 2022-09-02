@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -26,6 +27,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.asItem
+import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
@@ -84,7 +86,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
                 selectedStatusForMainSurface = status.surface.asItem()
             }
             is SingleSurfaceWithNote -> {
-                binding.explanationInput.text = SpannableStringBuilder(status.note)
+                binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
                 selectedStatusForMainSurface = status.surface.asItem()
             }
             is SurfaceMissing -> {
@@ -100,6 +102,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
         if (mainSurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
+            binding.explanationInputMainSurface.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
         }
     }
 
@@ -107,24 +110,41 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private fun onLoadInstanceState(inState: Bundle) {
         val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
+        val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
         selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
+        binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(SELECTED_MAIN_SURFACE_INDEX, items.indexOf(selectedStatusForMainSurface))
+        outState.putString(SELECTED_MAIN_SURFACE_NOTE_TEXT, noteText())
     }
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
-    override fun isFormComplete() = selectedStatusForMainSurface != null
+    override fun isFormComplete(): Boolean {
+        if (selectedStatusForMainSurface == null) {
+            return false
+        }
+        val surfaceValue = selectedStatusForMainSurface!!.value
+        val note = noteText()
+        if (surfaceValue == null) {
+            return false
+        }
+        if (surfaceValue.shouldBeDescribed) {
+            return note != ""
+        }
+        return true
+    }
 
     companion object {
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
+        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
     }
 
     fun noteText(): String {
-        return binding.explanationInput.text.toString().trim()
+        return binding.explanationInputMainSurface.text.toString().trim()
     }
 
     override fun hasChanges(): Boolean {
@@ -132,30 +152,22 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null
-            null -> throw Exception("null pointer exceeeeeeeeeeption (should be impossible)")
+            null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
         }
     }
 
     override fun onClickOk() {
         val note = noteText()
-        if (note == "") {
-            // TODO handle it robustly and move to path/universal overlays
-            // TODO do not allow to remove surface:note if surface=paved/unpaved is set
-            if (currentStatus is SingleSurfaceWithNote) {
-                applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-                    it.remove("surface:note")
-                }.create()))
-            }
-        } else {
-            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+        val surfaceObject = selectedStatusForMainSurface!!.value!!
+        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+            it.updateWithCheckDate("surface", surfaceObject.osmValue)
+            if (surfaceObject.shouldBeDescribed) {
                 it["surface:note"] = note
-            }.create()))
-        }
-
-        if (selectedStatusForMainSurface != null) {
-            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-                it.updateWithCheckDate("surface", selectedStatusForMainSurface!!.value!!.osmValue)
-            }.create()))
-        }
+            } else {
+                if (element.tags.containsKey("surface:note")) {
+                    it.remove("surface:note")
+                }
+            }
+        }.create()))
     }
 }

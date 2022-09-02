@@ -68,7 +68,7 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     //  what about surface:note and cycleway:surface or footway:surface?
     //  ignore this? check and fix outside StreetComplete from time to time?
     //  skip such ways? present as missing data and throw away surface notes?
-    if (cyclewaySurface != null || footwaySurface != null ) {
+    if (cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes") {
         return CyclewayFootwaySurfaces(surface, cyclewaySurface, footwaySurface)
     }
     if (surface != null && surfaceNote != null ) {
@@ -111,7 +111,10 @@ fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
     return foundSurface
 }
 
-fun commonSurfaceDescription(surfaceA: String, surfaceB: String): String? {
+fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
+    if (surfaceA == null || surfaceB == null) {
+        return null
+    }
     if (surfaceA == surfaceB) {
         return surfaceA
     }
@@ -122,6 +125,20 @@ fun commonSurfaceDescription(surfaceA: String, surfaceB: String): String? {
         return "unpaved"
     }
     return null
+}
+
+fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
+    val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
+    if (shared == "paved") {
+        return Surface.UNPAVED_AREA
+    }
+    if (shared == "unpaved") {
+        return Surface.UNPAVED_AREA
+    }
+    if (shared == "ground") {
+        return Surface.GROUND_AREA
+    }
+    return Surface.values().filter { it.osmValue == shared }.firstOrNull()
 }
 
 val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
