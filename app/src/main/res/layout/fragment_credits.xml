@@ -30,7 +30,7 @@
                 android:text="@string/credits_author_title"
                 android:textAppearance="@style/TextAppearance.Title"/>
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:id="@+id/authorText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                 android:orientation="vertical"
                 android:animateLayoutChanges="true"/>
 
-            <org.sufficientlysecure.htmltextview.HtmlTextView
+            <TextView
                 android:id="@+id/contributorMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

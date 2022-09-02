@@ -192,7 +192,7 @@ class OsmQuestController internal constructor(
             scope.async {
                 /* shortcut: if the element has no tags, it is just part of the geometry of another
                 *  element, so no need to check for quests for that element */
-                if (element.tags.isNullOrEmpty()) return@async null
+                if (element.tags.isEmpty()) return@async null
 
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {

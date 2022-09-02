@@ -24,7 +24,6 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Specify whether there are showers available at camp site"
     override val wikiLink = "Key:shower"
     override val icon = R.drawable.ic_quest_shower
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_shower_title

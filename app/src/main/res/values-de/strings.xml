@@ -1344,7 +1344,9 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_statue">"Statue"</string>
     <string name="quest_memorialType_bust">"Büste"</string>
     <string name="quest_memorialType_plaque">"Plakette"</string>
-    <string name="quest_memorialType_war_memorial">"Kriegsdenkmal"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_memorialType_war_memorial">"Kriegerdenkmal"</string>
     <string name="quest_memorialType_stone">"Fels"</string>
     <string name="quest_memorialType_obelisk">"Obelisk"</string>
     <string name="quest_memorialType_stele_wooden">"Hölzerne Stele"</string>
@@ -1375,10 +1377,11 @@ sorted alphabetically by title -->
     <string name="quest_camp_shower_title">"Gibt es hier Duschen?"</string>
     <string name="quest_camp_power_supply_title">"Gibt es eine Möglichkeit für Kunden, ihr Telefon, ihren Laptop usw. hier aufzuladen?"</string>
     <string name="quest_camp_type_title">"Wer darf hier campen?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Sowohl Zelte als auch Wohnmobile und Wohnwagen."</string>
-    <string name="quest_camp_type_caravans_only">"Nur Wohnmobile und Wohnwagen."</string>
+    <string name="quest_camp_type_tents_and_caravans">"Sowohl Zelte als auch Wohnmobile, Wohnwagen, …"</string>
+    <string name="quest_camp_type_caravans_only">"Nur Wohnmobile, Wohnwagen, …"</string>
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht unplausibel aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass sie zur richtigen Straße antworten? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
+    <string name="quest_recycling_type_pet">"Nur PET"</string>
 </resources>

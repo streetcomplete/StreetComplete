@@ -29,8 +29,8 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     var currentWeekdays: WeekDayRangesAndHolidays? = null
     var currentTimeSpans: MutableList<TimeSpan> = mutableListOf()
 
-    for (row in this) {
-        if (row is OpeningMonthsRow) {
+    for (row in this) when (row) {
+        is OpeningMonthsRow -> {
             val dateRanges = row.months.toDateRanges()
 
             // new rule if we were constructing one
@@ -41,7 +41,8 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
             }
 
             currentDateRanges = dateRanges
-        } else if (row is OpeningWeekdaysRow) {
+        }
+        is OpeningWeekdaysRow -> {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
                 if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekDayRangesAndHolidays()
@@ -55,7 +56,8 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
 
             currentTimeSpans.add(timeSpan)
             currentWeekdays = weekdays
-        } else if (row is OffDaysRow) {
+        }
+        is OffDaysRow -> {
             // new rule if we were constructing one
             if (currentWeekdays != null) {
                 rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))

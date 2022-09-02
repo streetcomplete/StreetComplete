@@ -6,8 +6,9 @@ v46.0_ee: |
   <li>Ask before reporting Osmose issue as false positive</li>
   <li>Don't obscure view with popups for tree, healthcare and cuisine quests</li>
   <li>Show last edited date when editing tags</li>
-  <li>Add overlay with customizable tag selection, though currently without showing nodes (customize in quick settings menu)</li>
+  <li>Add overlay with customizable tag selection, though currently nodes cannot be displayed</li>
   <li>Add partial Croatian translation by @mnalis</li>
+  <li>Ask for contact of camp sites, by @mnalis</li>
   <li>Bug fixes</li>
   </ul>
 

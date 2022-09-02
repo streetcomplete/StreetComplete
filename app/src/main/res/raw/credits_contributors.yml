@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 368263
-  linesOfInterfaceMarkupChanged: 134408
-  assetFilesChanged: 1715
+  linesOfCodeChanged: 368729
+  linesOfInterfaceMarkupChanged: 134543
+  assetFilesChanged: 1716
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 16868
@@ -10,8 +10,8 @@
   assetFilesChanged: 151
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 13979
-  linesOfInterfaceMarkupChanged: 3584
+  linesOfCodeChanged: 14213
+  linesOfInterfaceMarkupChanged: 3591
   assetFilesChanged: 551
 - name: "ENT8R"
   githubUsername: "ENT8R"
@@ -45,12 +45,12 @@
   assetFilesChanged: 48
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 1558
+  linesOfCodeChanged: 1562
   linesOfInterfaceMarkupChanged: 229
   assetFilesChanged: 13
 - name: "smichel17"
   githubUsername: "smichel17"
-  linesOfCodeChanged: 1327
+  linesOfCodeChanged: 1332
   linesOfInterfaceMarkupChanged: 45
 - name: "Patrick Geneva"
   githubUsername: "goldbattle"

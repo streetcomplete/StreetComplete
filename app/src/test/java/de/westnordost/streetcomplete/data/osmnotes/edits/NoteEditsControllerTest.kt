@@ -75,8 +75,8 @@ class NoteEditsControllerTest {
             ElementIdUpdate(ElementType.RELATION, 8, 234),
         ))
 
-        verify(db).replaceTextInUnsynced("osm.org/node/-9", "osm.org/node/1234")
-        verify(db).replaceTextInUnsynced("osm.org/way/4", "osm.org/way/999")
-        verify(db).replaceTextInUnsynced("osm.org/relation/8", "osm.org/relation/234")
+        verify(db).replaceTextInUnsynced("osm.org/node/-9 ", "osm.org/node/1234 ")
+        verify(db).replaceTextInUnsynced("osm.org/way/4 ", "osm.org/way/999 ")
+        verify(db).replaceTextInUnsynced("osm.org/relation/8 ", "osm.org/relation/234 ")
     }
 }

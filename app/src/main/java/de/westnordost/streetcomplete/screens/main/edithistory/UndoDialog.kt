@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseQuest
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.setHtml
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,12 +49,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.sufficientlysecure.htmltextview.HtmlTextView
 import java.util.MissingFormatArgumentException
 
 class UndoDialog(
     context: Context,
-    private val edit: Edit
+    private val edit: Edit,
 ) : AlertDialog(context), KoinComponent {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
@@ -149,8 +149,8 @@ class UndoDialog(
         return txt
     }
 
-    private fun createListOfTagUpdates(changes: Collection<StringMapEntryChange>): HtmlTextView {
-        val txt = HtmlTextView(context)
+    private fun createListOfTagUpdates(changes: Collection<StringMapEntryChange>): TextView {
+        val txt = TextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 
         txt.setHtml(changes.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { change ->
