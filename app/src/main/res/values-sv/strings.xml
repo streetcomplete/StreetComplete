@@ -1616,4 +1616,16 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Ingångsnummer:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Lägenhetsnr:"</string>
     <string name="quest_entrance_reference_flat_range_to">"till"</string>
+    <string name="default_disabled_msg_overlay">"Uppdragstypen är inaktiverad som standard eftersom det finns en lagervy där det går mycket snabbare och enklare att lägga in data."</string>
+    <string name="quest_camp_drinking_water_title">"Finns det gratis tillgång till dricksvatten för campare här?"</string>
+    <string name="quest_camp_shower_title">"Finns det duschar här?"</string>
+    <string name="quest_camp_power_supply_title">"Kan kunder ladda sin mobil, dator, m.m. här?"</string>
+    <string name="quest_camp_type_title">"Hur får man campa här?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Både tält och husvagn/husbil"</string>
+    <string name="quest_camp_type_caravans_only">"Bara husvagn/husbil"</string>
+    <string name="quest_camp_type_tents_only">"Bara med tält"</string>
+    <string name="quest_camp_type_backcountry">"Vildmarkscamping (inga faciliteter)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ditt svar skiljer sig från vad som redan är kartlagt. Är du säker på att ditt svar är för just denna väg? Har du själv gått hela längs hela vägen och säkerställt att det du skriver in stämmer?"</string>
+    <string name="quest_recycling_type_pet">"Endast PET"</string>
 </resources>

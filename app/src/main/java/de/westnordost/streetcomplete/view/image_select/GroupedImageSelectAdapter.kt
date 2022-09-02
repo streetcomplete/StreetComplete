@@ -29,7 +29,25 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     var selectedItem: GroupableDisplayItem<T>? = null
         private set
 
-    private val selectedIndex get() = selectedItem?.let { _items.indexOf(it) } ?: -1
+    // group is also remembered as item may be appearing
+    // once outside any groups and again in the group
+    private var selectedItemGroup: GroupableDisplayItem<T>? = null
+
+    private val selectedIndex: Int get() =
+        selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
+
+    private fun indexOfItemGivenGroupMembership(item: GroupableDisplayItem<T>, group: GroupableDisplayItem<T>?): Int {
+        var currentGroup: GroupableDisplayItem<T> ? = null
+        for (i in 0 until _items.size) {
+            if (_items[i].isGroup) {
+                currentGroup = _items[i]
+            }
+            if (item == _items[i] && group == currentGroup) {
+                return i
+            }
+        }
+        return -1
+    }
 
     val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
 
@@ -51,36 +69,36 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(_items[position])
-        holder.isSelected = selectedItem?.let { _items.indexOf(it) == position } == true
-        holder.isGroupExpanded = getGroup(selectedIndex) == position
+        val selectedIndex = selectedIndex
+        holder.isSelected = selectedIndex == position
+        holder.isGroupExpanded = getGroupIndex(selectedIndex) == position
     }
 
     private fun toggle(index: Int) {
-        val prevSelectedItem = selectedItem
-        if (selectedItem == null || prevSelectedItem !== _items[index]) {
-            selectedItem = _items[index]
-        } else {
-            selectedItem = null
-        }
+        val previousItem = selectedItem
+        val previousGroup = selectedItemGroup
 
-        val selectedItem = selectedItem
-        if (prevSelectedItem != null) {
-            val prevSelectedIndex = _items.indexOf(prevSelectedItem)
-            notifyItemChanged(prevSelectedIndex)
+        val foundGroupIndex = getGroupIndex(index)
+        selectedItemGroup = if (foundGroupIndex == -1) null else _items[foundGroupIndex]
+        selectedItem = _items[index]
 
-            val previousGroupIndex = getGroup(prevSelectedIndex)
-            if (previousGroupIndex != -1) {
-                if (selectedItem == null || previousGroupIndex != getGroup(_items.indexOf(selectedItem))) {
+        if (previousItem != null) {
+            val previousItemIndex = indexOfItemGivenGroupMembership(previousItem, previousGroup)
+            val previousGroupIndex = getGroupIndex(previousItemIndex)
+            notifyItemChanged(previousItemIndex)
+            if (previousGroup != null) {
+                if (selectedItem == null || previousGroup != selectedItemGroup) {
                     retractGroup(previousGroupIndex)
                 }
             }
         }
+        val selectedItem = selectedItem
         if (selectedItem != null) {
-            val selectedIndex = _items.indexOf(selectedItem)
+            val selectedIndex = selectedIndex
             notifyItemChanged(selectedIndex)
 
             if (selectedItem.isGroup) {
-                if (prevSelectedItem == null || getGroup(_items.indexOf(prevSelectedItem)) != selectedIndex) {
+                if (previousItem == null || previousGroup != selectedItemGroup) {
                     expandGroup(selectedIndex)
                 }
             }
@@ -90,7 +108,7 @@ class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
         }
     }
 
-    private fun getGroup(index: Int): Int {
+    private fun getGroupIndex(index: Int): Int {
         for (i in index downTo 0) {
             if (_items[i].isGroup) return i
         }

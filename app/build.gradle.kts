@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4600
-        versionName = "46.0-beta1"
+        versionCode = 4601
+        versionName = "46.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -205,7 +205,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20220711"
+val nsiVersion = "v6.0.20220829"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v3.4.2"
 

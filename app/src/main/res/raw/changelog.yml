@@ -1,6 +1,6 @@
 v46.0: |
   <h3>New Quests</h3>
-  <p>Asked for campsites (#4213), by @mnalis. All but the first are disabled by default:</p>
+  <p>Asked for campsites (#4213), by @mnalis:</p>
   <ul>
   <li><i>Who may camp here?</i></li>
   <li><i>Are there showers here?</i></li>
@@ -17,12 +17,14 @@ v46.0: |
   <ul>
   <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
   <li>Opening hours: Months and weekdays are now (also) shown in the local language</li>
-  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, ...</li>
+  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, ... (#3374)</li>
   <li>Road width: Also ask for the max width of chokers and chicanes (#3258, #4323)</li>
   <li>Recycling: Support PET as selectable choice (#2885)</li>
   <li>Tactile paving quests now enabled in Portugal (#4325)</li>
   <li>Internet access: Do not ask for backcountry campsites</li>
+  <li>Toilet availability: Ask for campsites, too (#4330), by @mnalis</li>
   <li>Steps incline: Fix display issue on Android 5 (#4317)</li>
+  <li>Buildings: Remove "show more" button (#3387, #4215), by @matkoniecz</li>
   </ul>
   <h3>Other enhancements and fixes</h3>
   <ul>
