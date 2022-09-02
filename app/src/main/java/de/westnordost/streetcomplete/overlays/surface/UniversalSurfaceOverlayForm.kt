@@ -72,14 +72,14 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
 
     private fun switchToUnifiedSurfaceLayout() {
         isSegregatedLayout = false
-        // binding.selectButtonMainSurface.isVisible = true // TODO - consider, likely better than what is now in setting surface values
+        binding.selectButtonMainSurface.isVisible = true
         binding.selectButtonCyclewaySurface.isVisible = false
         binding.selectButtonFootwaySurface.isVisible = false
     }
 
-    private fun switchToFootwayCyclewaySurfaceLayout() { // TODO - consider, likely better than what is now in setting surface values
+    private fun switchToFootwayCyclewaySurfaceLayout() {
         isSegregatedLayout = true
-        // binding.selectButtonMainSurface.isVisible = false
+        binding.selectButtonMainSurface.isVisible = false
         binding.selectButtonCyclewaySurface.isVisible = true
         binding.selectButtonFootwaySurface.isVisible = true
     }
@@ -177,14 +177,6 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
         if (cyclewaySurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
-            val cycleway = selectedStatusForCyclewaySurface
-            val footway = selectedStatusForFootwaySurface
-            if (cycleway != null && footway != null) {
-                val mainSurface = commonSurfaceObject(cycleway.value?.osmValue, footway.value?.osmValue)
-                if (mainSurface != null ) {
-                    ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurface.asItem())
-                }
-            }
         }
 
         val footwaySurfaceItem = selectedStatusForFootwaySurface
@@ -192,14 +184,6 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
         if (footwaySurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
-            val cycleway = selectedStatusForCyclewaySurface
-            val footway = selectedStatusForFootwaySurface
-            if(cycleway != null && footway != null) {
-                val mainSurface = commonSurfaceObject(cycleway.value?.osmValue, footway.value?.osmValue)
-                if (mainSurface != null ) {
-                    ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurface.asItem())
-                }
-            }
         }
     }
 
