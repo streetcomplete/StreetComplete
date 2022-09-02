@@ -1413,7 +1413,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>
     <string name="select_street_parking_no">"Any sign or road marking here?"</string>
@@ -1435,6 +1434,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of on- or off-street parking. Additional restrictions can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
+    <string name="street_parking_street_width">Street width: %s</string>
 
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
@@ -1548,5 +1548,5 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_sidewalk">Sidewalks</string>
 
-
+    <string name="overlay_street_parking">Street parking</string>
 </resources>

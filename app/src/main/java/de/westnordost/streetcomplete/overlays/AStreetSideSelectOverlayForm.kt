@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.ResImage
+import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
 import org.koin.android.ext.android.inject
@@ -18,7 +19,7 @@ import org.koin.android.ext.android.inject
 abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override val contentLayoutResId = R.layout.fragment_overlay_street_side_puzzle_with_last_answer_button
-    private val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
+    protected val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     private val prefs: SharedPreferences by inject()
 
