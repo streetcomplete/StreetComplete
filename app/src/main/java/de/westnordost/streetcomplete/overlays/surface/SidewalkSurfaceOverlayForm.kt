@@ -51,6 +51,16 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             else -> return
         }
         // actually init surface....
+        val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
+        val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
+        val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
+        val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
+        if(leftSurfaceObject != null) {
+            streetSideSelect.replacePuzzleSide(leftSurfaceObject.asStreetSideItem(resources), false)
+        }
+        if(rightSurfaceObject != null) {
+            streetSideSelect.replacePuzzleSide(rightSurfaceObject.asStreetSideItem(resources), true)
+        }
     }
 
     override fun onClickSide(isRight: Boolean) {
