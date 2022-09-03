@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.android.ext.android.inject
 
 class ExternalForm(private val externalList: ExternalList) : AbstractOsmQuestForm<Boolean>() {
@@ -22,7 +23,6 @@ class ExternalForm(private val externalList: ExternalList) : AbstractOsmQuestFor
         AnswerItem(R.string.quest_external_remove) {
             val key = ElementKey(element.type, element.id)
             externalList.remove(key)
-            // OsmQuestKey(key.type, key.id, "ExternalQuest")
             osmQuestController.delete(questKey as OsmQuestKey)
         }
     )
@@ -31,9 +31,12 @@ class ExternalForm(private val externalList: ExternalList) : AbstractOsmQuestFor
         super.onViewCreated(view, savedInstanceState)
         val key = ElementKey(element.type, element.id)
         val text = externalList.questsMap[key]
-        binding.description.text =
-            if (text == null) resources.getString(R.string.quest_external_osmose_not_found)
-            else resources.getString(R.string.quest_external_message_for_element, text)
+        if (text == null) {
+            context?.toast(R.string.quest_external_osmose_not_found)
+            osmQuestController.delete(questKey as OsmQuestKey)
+            return
+        }
+        setTitle(resources.getString(R.string.quest_external_title, text))
     }
 
 }

@@ -150,8 +150,8 @@
     <string name="quest_osmose_false_positive">Report false positive</string>
     <string name="quest_osmose_modify_tag">Modify tag</string>
     <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if enabled in quest settings. The message is displayed with the quest, and for some issues a tag can be edited, which also reports the issue as solved. It is also possible to report the problem as false positive. Reporting the issue as solved or false positive cannot be undone.</string>
-    <string name="quest_external_osmose_not_found">Entry for this element has been removed since creation of this quest</string>
-    <string name="quest_osmose_message_for_element">Message for this element (item type %1$s): %2$s</string>
+    <string name="quest_external_osmose_not_found">Entry deleted or ignored, removing quest</string>
+    <string name="quest_osmose_message_for_element">Item type %1$s: %2$s</string>
     <string name="quest_osmose_set_value">Set new value for tag</string>
     <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated</string>
     <string name="quest_osmose_settings_what">What to do?</string>
@@ -191,7 +191,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
-    <string name="quest_osmose_hide_type">Ignore issues of this type when scanning</string>
+    <string name="quest_osmose_hide_type">Ignore issues of this type when creating quests</string>
     <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
     <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Traffic lights and zebra</string>

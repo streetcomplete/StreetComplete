@@ -17,8 +17,7 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_osmose_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> =
-        arrayOf(tags.map { "${it.key}=${it.value}" }.sorted().toString())
+    override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
 
     override val changesetComment = "Fix osmose issues"
     override val wikiLink = "Osmose"
