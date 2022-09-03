@@ -59,7 +59,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    enum class PinMode { NONE, QUESTS, EDITS }
+    enum class PinMode { NONE, QUESTS, EDITS, HIDDEN_QUESTS }
     var pinMode: PinMode = PinMode.QUESTS
         set(value) {
             if (field == value) return
@@ -83,7 +83,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
-        editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
+        editHistoryPinsManager!!.isActive = when (pinMode) {
+            PinMode.EDITS -> 1
+            PinMode.HIDDEN_QUESTS -> 2
+            else -> 0
+        }
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
@@ -121,7 +125,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                             return@launch
                         }
                     }
-                    PinMode.EDITS -> {
+                    PinMode.EDITS, PinMode.HIDDEN_QUESTS -> {
                         val props = controller?.pickLabel(x, y)?.properties
                         val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
                         if (editKey != null) {
@@ -253,16 +257,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
          */
         when (pinMode) {
             PinMode.QUESTS -> {
-                editHistoryPinsManager?.isActive = false
+                editHistoryPinsManager?.isActive = 0
                 questPinsManager?.isActive = true
             }
             PinMode.EDITS -> {
                 questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = true
+                editHistoryPinsManager?.isActive = 1
+            }
+            PinMode.HIDDEN_QUESTS -> {
+                questPinsManager?.isActive = false
+                editHistoryPinsManager?.isActive = 2
             }
             else -> {
                 questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = false
+                editHistoryPinsManager?.isActive = 0
             }
         }
     }

@@ -12,7 +12,7 @@ interface EditHistorySource {
 
     fun getMostRecentUndoable(): Edit?
 
-    fun getAll(): List<Edit>
+    fun getAll(allHidden: Boolean = false): List<Edit>
     fun getCount(): Int
 
     fun addListener(listener: Listener)

@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 /** Shows a list of the edit history */
-class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
+class EditHistoryFragment(private val allHidden: Boolean = false) : Fragment(R.layout.fragment_edit_history_list) {
 
     private val editHistorySource: EditHistorySource by inject()
     private val prefs: SharedPreferences by inject()
@@ -71,7 +71,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
             updatePadding(left = it.left, top = it.top, bottom = it.bottom + initialPaddingBottom)
         }
         viewLifecycleScope.launch {
-            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
+            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(allHidden) }
             adapter.setEdits(edits)
             val first = edits.firstOrNull { it.isUndoable }
             if (first != null && prefs.getBoolean(Prefs.SELECT_FIRST_EDIT, true)) {

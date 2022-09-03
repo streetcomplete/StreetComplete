@@ -6,6 +6,7 @@ Notable changes:
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest.
 * More customization of UI and what is displayed
 * Configurable quests
+* Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics
   * Used in notes and changesets: StreetComplete_ee
 

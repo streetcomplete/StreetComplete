@@ -112,7 +112,11 @@ class EditHistoryController(
 
     // difference to upstream: may contain older hidden quests
     // but that really doesn't matter
-    override fun getAll(): List<Edit> = synchronized(cache) { cache.toList() }
+    override fun getAll(allHidden: Boolean): List<Edit> =
+        if (allHidden)
+            (noteQuestController.getAllHiddenNewerThan(0L) + osmQuestController.getAllHiddenNewerThan(0L))
+                .sortedByDescending { it.createdTimestamp }
+        else synchronized(cache) { cache.toList() }
 
     override fun getCount(): Int =
         // could be optimized later too...

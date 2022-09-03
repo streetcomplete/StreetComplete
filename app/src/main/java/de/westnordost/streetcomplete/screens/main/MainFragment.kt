@@ -448,8 +448,8 @@ class MainFragment :
 
     /* ------------------------------ UndoButtonFragment.Listener ------------------------------- */
 
-    override fun onClickShowEditHistory() {
-        showEditHistorySidebar()
+    override fun onClickShowEditHistory(allHidden: Boolean) {
+        showEditHistorySidebar(allHidden)
     }
 
     //endregion
@@ -881,16 +881,16 @@ class MainFragment :
 
     //region Edit History Sidebar
 
-    private fun showEditHistorySidebar() {
+    private fun showEditHistorySidebar(allHidden: Boolean) {
         val appearAnim = R.animator.edit_history_sidebar_appear
         val disappearAnim = R.animator.edit_history_sidebar_disappear
         childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-            replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
+            replace(R.id.edit_history_container, EditHistoryFragment(allHidden), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
         }
         mapFragment?.hideOverlay()
-        mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
+        mapFragment?.pinMode = if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else MainMapFragment.PinMode.EDITS
     }
 
     private fun closeEditHistorySidebar() {

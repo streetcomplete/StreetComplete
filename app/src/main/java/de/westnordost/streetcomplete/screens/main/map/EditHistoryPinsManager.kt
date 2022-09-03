@@ -35,11 +35,11 @@ class EditHistoryPinsManager(
 ) : DefaultLifecycleObserver {
 
     /** Switch active-ness of edit history pins layer */
-    var isActive: Boolean = false
+    var isActive: Int = 0
         set(value) {
             if (field == value) return
             field = value
-            if (value) start() else stop()
+            if (value != 0) start(value == 2) else stop()
         }
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
@@ -56,8 +56,8 @@ class EditHistoryPinsManager(
         viewLifecycleScope.cancel()
     }
 
-    private fun start() {
-        updatePins()
+    private fun start(allHidden: Boolean) {
+        updatePins(allHidden)
         editHistorySource.addListener(editHistoryListener)
     }
 
@@ -70,10 +70,10 @@ class EditHistoryPinsManager(
     fun getEditKey(properties: Map<String, String>): EditKey? =
         properties.toEditKey()
 
-    private fun updatePins() {
+    private fun updatePins(allHidden: Boolean = false) {
         viewLifecycleScope.launch {
-            if (this@EditHistoryPinsManager.isActive) {
-                val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
+            if (this@EditHistoryPinsManager.isActive != 0) {
+                val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(allHidden) }
                 val pins = createEditPins(edits)
                 pinsMapComponent.set(pins)
             }

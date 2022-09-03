@@ -28,7 +28,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     private val undoButton get() = view as ImageButton
 
     interface Listener {
-        fun onClickShowEditHistory()
+        fun onClickShowEditHistory(allHidden: Boolean = false)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -55,6 +55,10 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         undoButton.setOnClickListener {
             showEditHistory()
         }
+        undoButton.setOnLongClickListener {
+            showEditHistory(true)
+            true
+        }
     }
 
     override fun onStart() {
@@ -73,8 +77,8 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun showEditHistory() {
-        listener?.onClickShowEditHistory()
+    private fun showEditHistory(allHidden: Boolean = false) {
+        listener?.onClickShowEditHistory(allHidden)
     }
 
     private suspend fun updateUndoButtonVisibility() {
