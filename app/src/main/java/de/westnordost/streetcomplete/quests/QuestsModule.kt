@@ -381,7 +381,7 @@ fun questTypeRegistry(
     CheckOpeningHoursSigned(featureDictionaryFuture),
     SpecifyShopType(), // above add place name as some brand presets will set the name too
     CheckShopType(),
-    AddPlaceName(featureDictionaryFuture),
+    AddPlaceName(featureDictionaryFuture, prefs),
     AddOpeningHours(featureDictionaryFuture),
     AddSeating(), // easily visible from outside, but only seasonally
     AddBicyclePump(), // visible from the outside, but only during opening hours
