@@ -1,3 +1,10 @@
+v47.0_ee: |
+  <ul>
+  <li>Show all hidden quests on long press on undo icon (works only for downloaded areas)</li>
+  <li>Show description instead of tags in Osmose and external quests, fixes buttons being inaccessible if element has too many tags</li>
+  <li>Remove Osmose quests on open if item type has been hidden after quest was created</li>
+  </ul>
+
 v46.0_ee: |
   <ul>
   <li>Allow adding description when answering wheelchair quests</li>
