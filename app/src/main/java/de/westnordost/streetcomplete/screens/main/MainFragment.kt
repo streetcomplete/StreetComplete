@@ -1050,13 +1050,13 @@ class MainFragment :
                             questView.scaleType = ImageView.ScaleType.FIT_CENTER
                             questView.adjustViewBounds = true
                             questView.setOnClickListener {
-                                binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
                                 binding.otherQuestsLayout.removeAllViews()
                                 viewLifecycleScope.launch { showQuestDetails(osmQuest) }
                             }
                             binding.otherQuestsLayout.addView(questView)
                         }
                     }
+                    binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
                     binding.otherQuestsScrollView.visibility = View.VISIBLE
                 }
 
