@@ -40,6 +40,7 @@ object Prefs {
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
+    const val HAS_SHOWN_TUTORIAL_FOR_OVERLAYS = "hasShownTutorialForOverlays"
     const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
     const val SELECTED_OVERLAY = "selectedOverlay"
 
