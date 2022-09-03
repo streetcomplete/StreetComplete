@@ -5,9 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
-import de.westnordost.streetcomplete.osm.SingleSurface
-import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.Surface
 import de.westnordost.streetcomplete.osm.Surface.ARTIFICIAL_TURF
 import de.westnordost.streetcomplete.osm.Surface.ASPHALT
@@ -37,22 +34,19 @@ import de.westnordost.streetcomplete.osm.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.Surface.WOOD
 import de.westnordost.streetcomplete.osm.Surface.WOODCHIPS
-import de.westnordost.streetcomplete.osm.SurfaceMissing
-import de.westnordost.streetcomplete.osm.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
-import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
 
 class SidewalkSurfaceOverlay : Overlay {
 
     private val parentQuest = AddSidewalkSurface()
-    override val title = R.string.overlay_road_surface
+    override val title = R.string.overlay_sidewalk_surface
     override val icon = parentQuest.icon
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink
@@ -65,11 +59,12 @@ class SidewalkSurfaceOverlay : Overlay {
            .filter( """ways, relations with
                highway ~ ${(ALL_ROADS).joinToString("|")}
                and (sidewalk=both or sidewalk=left or sidewalk=right or sidewalk:left=yes or sidewalk:right=yes)
-               and (!sidewalk:both or sidewalk:both ~ ${handledSurfaces.joinToString("|") })
-               and (!sidewalk:left or sidewalk:left ~ ${handledSurfaces.joinToString("|") })
-               and (!sidewalk:right or sidewalk:right ~ ${handledSurfaces.joinToString("|") })
+               and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
+               and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
+               and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
                """)
-           .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
+            // TODO exclude say sidewalk=gibberish sidewalk:left=yes ways?
+           .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getSidewalkStyle(it) }
     }
 
     private fun tagsHaveOnlyAllowedSurfaceKeys(tags: Map<String, String>): Boolean {
@@ -78,14 +73,13 @@ class SidewalkSurfaceOverlay : Overlay {
         }
     }
     // https://taginfo.openstreetmap.org/search?q=surface
-    // Maybe should be supportedd?
-    // sidewalk:both:surface
-    // sidewalk:right:surface
-    // sidewalk:left:surface
-    // sidewalk:surface
+    val supportedSurfaceKeys = listOf(
+        // supported in this overlay, but not all
+        "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface",
+        // "sidewalk:surface" - not supported here
 
-    // https://taginfo.openstreetmap.org/search?q=surface
-    val supportedSurfaceKeys = listOf("surface", "footway:surface", "cycleway:surface",
+        // supported in all surface overlay
+        "surface", "footway:surface", "cycleway:surface",
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
         "surface:colour", //  12K - remove on change? Ignore support? TODO
@@ -96,48 +90,34 @@ class SidewalkSurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = RoadSurfaceOverlayForm()
+    override fun createForm(element: Element) = SidewalkSurfaceOverlayForm()
 }
 
-private fun getStyle(element: Element): Style {
-    val surfaceStatus = createSurfaceStatus(element.tags)
-    val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
-    var dominatingSurface: Surface? = null
-    var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
-    when (surfaceStatus) {
-        is SingleSurfaceWithNote -> {
-            // TODO special styling needed I guess...
-            // as it should not get pinking "no data"...
-            // use dashes?
-            dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
-        }
-        is SingleSurface -> {
-            dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
-        }
-        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in badSurfaces) {
-            dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
-        } else {
-            // cycleway is arbitrarily taken as dominating here
-            // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
-        }
-        is SurfaceMissing -> {
-            // no action needed
+private fun getSidewalkStyle(element: Element): PolylineStyle {
+    val sidewalkSides = createSidewalkSides(element.tags)
+    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
+    if (sidewalkSides == null) {
+        if (sidewalkTaggingNotExpected(element.tags) || isPrivateOnFoot(element)) {
+            return PolylineStyle(Color.INVISIBLE)
         }
     }
-    // not set but indoor or private -> do not highlight as missing
-    val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
-    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(color, null, null)
 
-    // label for debugging
-    //val label = element.tags[keyOfDominatingSurface]
-    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
+    val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
+    val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
+    val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
+    return PolylineStyle(
+        color = null,
+        colorLeft = leftSurfaceObject.color,
+        colorRight = rightSurfaceObject.color
+    )
 }
+
+// TODO share into more general tagging?
+// rught now duplicates SidewalkOverlay code
+private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
+    tags["highway"] == "living_street" || tags["highway"] == "pedestrian" || tags["highway"] == "service"
+
 
 private val Surface?.color get() = when (this) {
     // design ideas:
