@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.osm.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.Surface.WOOD
 import de.westnordost.streetcomplete.osm.Surface.WOODCHIPS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -96,20 +97,28 @@ class SidewalkSurfaceOverlay : Overlay {
 private fun getSidewalkStyle(element: Element): PolylineStyle {
     val sidewalkSides = createSidewalkSides(element.tags)
     // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
-    if (sidewalkSides == null) {
-        if (sidewalkTaggingNotExpected(element.tags) || isPrivateOnFoot(element)) {
-            return PolylineStyle(Color.INVISIBLE)
-        }
+    if (sidewalkSides == null || isPrivateOnFoot(element)) {
+        return PolylineStyle(Color.INVISIBLE)
     }
 
     val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
     val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
     val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
     val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
+    val leftColor = if (sidewalkSides.left != Sidewalk.YES) {
+        Color.INVISIBLE
+    } else {
+        leftSurfaceObject.color
+    }
+    val rightColor = if (sidewalkSides.right != Sidewalk.YES) {
+        Color.INVISIBLE
+    } else {
+        rightSurfaceObject.color
+    }
     return PolylineStyle(
         color = null,
-        colorLeft = leftSurfaceObject.color,
-        colorRight = rightSurfaceObject.color
+        colorLeft = leftColor,
+        colorRight = rightColor
     )
 }
 
