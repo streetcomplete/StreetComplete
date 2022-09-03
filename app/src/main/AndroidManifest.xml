@@ -79,6 +79,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name="de.westnordost.streetcomplete.screens.measure.MeasureActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"

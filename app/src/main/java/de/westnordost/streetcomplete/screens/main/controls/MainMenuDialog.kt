@@ -8,6 +8,7 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
 import de.westnordost.streetcomplete.screens.about.AboutActivity
+import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionActivity
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.UserActivity
@@ -19,7 +20,6 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    onClickOverlays: () -> Unit,
 ) : AlertDialog(context) {
     init {
         val binding = DialogMainMenuBinding.inflate(LayoutInflater.from(context))
@@ -53,7 +53,8 @@ class MainMenuDialog(
         }
 
         binding.overlaysButton.setOnClickListener {
-            onClickOverlays()
+            val intent = Intent(context, OverlaySelectionActivity::class.java)
+            context.startActivity(intent)
             dismiss()
         }
 

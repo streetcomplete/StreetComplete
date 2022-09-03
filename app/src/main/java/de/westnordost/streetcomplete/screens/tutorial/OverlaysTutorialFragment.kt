@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
@@ -63,6 +64,13 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 step2Transition()
             }
             MAX_PAGE_INDEX -> {
+                Log.wtf("AAAAAAAAAAAAAA", "listener?.onTutorialFinished()")
+                Log.wtf("AAAAAAAAAAAAAA", "listener == null " + (listener == null).toString())
+                Log.wtf("AAAAAAAAAAAAAA", "listener " + listener?.javaClass)
+                Log.wtf("AAAAAAAAAAAAAA", "parentFragment " + parentFragment)
+                if(listener == null) {
+                    Log.wtf("AAAAAAAAAAAAAA", "stuck in tutorial")
+                }
                 listener?.onTutorialFinished()
             }
         }

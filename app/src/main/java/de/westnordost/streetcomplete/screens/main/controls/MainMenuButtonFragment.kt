@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.controls
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,6 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDialog
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -28,8 +28,7 @@ import org.koin.android.ext.android.inject
 
 /** Fragment that shows the main menu button and manages its logic */
 class MainMenuButtonFragment :
-    Fragment(R.layout.fragment_main_menu_button),
-    OverlaysTutorialFragment.Listener {
+    Fragment(R.layout.fragment_main_menu_button) {
 
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
@@ -81,14 +80,17 @@ class MainMenuButtonFragment :
             this::onClickDownload,
             teamModeQuestFilter::enableTeamMode,
             teamModeQuestFilter::disableTeamMode,
-            this::onClickOverlays,
         ).show()
     }
 
+    /*
     private fun onClickOverlays() {
         val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, false)
         if (!hasShownTutorial) {
 
+            // childFragmentManager parentFragmentManager fragmentManager requireFragmentManager()
+            // try
+            //
             (activity as AppCompatActivity).supportFragmentManager.commit {
                 setReorderingAllowed(true)
                 setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
@@ -101,6 +103,7 @@ class MainMenuButtonFragment :
     }
 
     override fun onTutorialFinished() {
+        Log.wtf("AAAAAAAAAAAAAAAAAAA", "onTutorialFinished triggered")
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, true) }
 
         val tutorialFragment = (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.fragment_container)
@@ -112,6 +115,7 @@ class MainMenuButtonFragment :
         }
         OverlaySelectionDialog(requireContext()).show()
     }
+     */
 
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {
