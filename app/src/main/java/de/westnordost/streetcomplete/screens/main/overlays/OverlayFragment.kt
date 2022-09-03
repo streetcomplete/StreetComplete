@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.overlays
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -58,26 +59,23 @@ class OverlayFragment :
         }
         setView(binding.root)
          */
-    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, false)
         if (!hasShownTutorial) {
-
-            // childFragmentManager parentFragmentManager fragmentManager requireFragmentManager()
-            // try
-            //
-            (activity as AppCompatActivity).supportFragmentManager.commit {
+            binding.overlaysListContainer.visibility = View.GONE
+            binding.fragmentContainerInOverlaySelection.visibility = View.VISIBLE
+            childFragmentManager.commit {
                 setReorderingAllowed(true)
                 setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                add(R.id.fragment_container, OverlaysTutorialFragment()) //id.fragment_container ???
+                replace(R.id.fragment_container_in_overlay_selection, OverlaysTutorialFragment()) //id.fragment_container ???
                 addToBackStack("tutorial")
             }
         }
     }
 
     override fun onTutorialFinished() {
-        TODO("Not yet implemented")
+        binding.fragmentContainerInOverlaySelection.visibility = View.GONE
+        binding.overlaysListContainer.visibility = View.VISIBLE
+        Log.wtf("AAAAAAAAAAAAAAAAAAA", "onTutorialFinished() in overlay fragment")
     }
 }
