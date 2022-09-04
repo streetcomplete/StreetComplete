@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.Surface
-import de.westnordost.streetcomplete.osm.isSurfaceAndTracktypeMismatching
+import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeMismatching
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAnswer>() {

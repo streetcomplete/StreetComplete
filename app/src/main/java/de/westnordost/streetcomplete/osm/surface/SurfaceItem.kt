@@ -1,10 +1,7 @@
-package de.westnordost.streetcomplete.quests.surface
+package de.westnordost.streetcomplete.osm.surface
 
 import android.content.res.Resources
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.Surface
-import de.westnordost.streetcomplete.osm.iconResId
-import de.westnordost.streetcomplete.osm.titleResId
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -26,3 +23,4 @@ fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surfac
         ResImage(iconResId),
         DrawableImage(RotatedCircleDrawable(resources.getDrawable(iconResId)))
     )
+

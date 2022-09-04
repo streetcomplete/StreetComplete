@@ -5,45 +5,22 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.CyclewayFootwaySurfaces
-import de.westnordost.streetcomplete.osm.SingleSurface
-import de.westnordost.streetcomplete.osm.SingleSurfaceWithNote
-import de.westnordost.streetcomplete.osm.Surface
-import de.westnordost.streetcomplete.osm.Surface.ARTIFICIAL_TURF
-import de.westnordost.streetcomplete.osm.Surface.ASPHALT
-import de.westnordost.streetcomplete.osm.Surface.CLAY
-import de.westnordost.streetcomplete.osm.Surface.COMPACTED
-import de.westnordost.streetcomplete.osm.Surface.CONCRETE
-import de.westnordost.streetcomplete.osm.Surface.CONCRETE_LANES
-import de.westnordost.streetcomplete.osm.Surface.CONCRETE_PLATES
-import de.westnordost.streetcomplete.osm.Surface.DIRT
-import de.westnordost.streetcomplete.osm.Surface.FINE_GRAVEL
-import de.westnordost.streetcomplete.osm.Surface.GRASS
-import de.westnordost.streetcomplete.osm.Surface.GRASS_PAVER
-import de.westnordost.streetcomplete.osm.Surface.GRAVEL
-import de.westnordost.streetcomplete.osm.Surface.GROUND_AREA
-import de.westnordost.streetcomplete.osm.Surface.GROUND_ROAD
-import de.westnordost.streetcomplete.osm.Surface.METAL
-import de.westnordost.streetcomplete.osm.Surface.PAVED_AREA
-import de.westnordost.streetcomplete.osm.Surface.PAVED_ROAD
-import de.westnordost.streetcomplete.osm.Surface.PAVING_STONES
-import de.westnordost.streetcomplete.osm.Surface.PEBBLES
-import de.westnordost.streetcomplete.osm.Surface.ROCK
-import de.westnordost.streetcomplete.osm.Surface.SAND
-import de.westnordost.streetcomplete.osm.Surface.SETT
-import de.westnordost.streetcomplete.osm.Surface.TARTAN
-import de.westnordost.streetcomplete.osm.Surface.UNHEWN_COBBLESTONE
-import de.westnordost.streetcomplete.osm.Surface.UNPAVED_AREA
-import de.westnordost.streetcomplete.osm.Surface.UNPAVED_ROAD
-import de.westnordost.streetcomplete.osm.Surface.WOOD
-import de.westnordost.streetcomplete.osm.Surface.WOODCHIPS
-import de.westnordost.streetcomplete.osm.SurfaceMissing
-import de.westnordost.streetcomplete.osm.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
+import de.westnordost.streetcomplete.osm.surface.SingleSurface
+import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
+import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
+import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_AREA
+import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
+import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
+import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
+import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
@@ -126,7 +103,7 @@ private fun getStyle(element: Element): Style {
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(color, null, null)
+    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
 
     // label for debugging
     //val label = element.tags[keyOfDominatingSurface]

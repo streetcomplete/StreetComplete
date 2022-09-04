@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.osm.Tracktype
 import de.westnordost.streetcomplete.osm.createTracktypeStatus
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 
 class TracktypeOverlay : Overlay {
 
@@ -42,7 +43,7 @@ private fun getStyle(element: Element): Style {
     } else {
         null
     }
-    return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(StrokeStyle(color), null, null, label)
 }
 
 private val Tracktype?.color get() = when (this) {
@@ -57,5 +58,5 @@ private val Tracktype?.color get() = when (this) {
     Tracktype.GRADE3 -> "#00eeff"
     Tracktype.GRADE4 -> "#f59709"
     Tracktype.GRADE5 -> "#dd1111"
-    null ->             Color.UNSPECIFIED
+    null ->             Color.CRIMSON // TODO get back to proper one
 }
