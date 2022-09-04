@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.SurfaceMissing
 import de.westnordost.streetcomplete.osm.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.asItem
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
@@ -42,16 +43,39 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             updateSelectedCell()
         }
 
+    sealed class SingleSurfaceItemInfo
+    data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
+    data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
+
+    fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
+        ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+            val value = item.value
+            if (value != null && value.shouldBeDescribed) {
+                DescribeGenericSurfaceDialog(requireContext()) { description ->
+                    callback(SingleSurfaceItemWithNote(item, description))
+                }.show()
+            } else {
+                callback(SingleSurfaceItem(item))
+            }
+        }.show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.selectButtonMainSurface.setOnClickListener {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                if (item != selectedStatusForMainSurface) {
-                    selectedStatusForMainSurface = item
-                    checkIsFormComplete()
+            collectSurfaceData { gathered: SingleSurfaceItemInfo ->
+                when (gathered) {
+                    is SingleSurfaceItem -> {
+                        selectedStatusForMainSurface = gathered.surface
+                    }
+                    is SingleSurfaceItemWithNote -> {
+                        selectedStatusForMainSurface = gathered.surface
+                        binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
+                    }
                 }
-            }.show()
+                checkIsFormComplete()
+            }
         }
 
         if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)

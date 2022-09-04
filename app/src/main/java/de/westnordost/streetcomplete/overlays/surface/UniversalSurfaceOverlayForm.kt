@@ -89,7 +89,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
         data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
 
-        private fun collectData(callback: (SingleSurfaceItemInfo) -> Unit) {
+        fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
             ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
                 val value = item.value
                 if (value != null && value.shouldBeDescribed) {
@@ -106,40 +106,46 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             super.onViewCreated(view, savedInstanceState)
 
             binding.selectButtonMainSurface.setOnClickListener {
-                ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                    val value = item.value
-                    if (item != selectedStatusForMainSurface) {
-                        selectedStatusForMainSurface = item
-                    }
-                    if (value != null && value.shouldBeDescribed) {
-                        DescribeGenericSurfaceDialog(requireContext()) { description ->
-                            binding.explanationInputMainSurface.text = SpannableStringBuilder(description)
-                        }.show()
-                    }
-                    checkIsFormComplete()
-                }.show()
-            }
-            binding.selectButtonCyclewaySurface.setOnClickListener {
-                collectData { gathered: SingleSurfaceItemInfo ->
-                    when(gathered) {
+                collectSurfaceData { gathered: SingleSurfaceItemInfo ->
+                    when (gathered) {
                         is SingleSurfaceItem -> {
-                            selectedStatusForCyclewaySurface = gathered.surface
+                            selectedStatusForMainSurface = gathered.surface
                         }
                         is SingleSurfaceItemWithNote -> {
-                            selectedStatusForCyclewaySurface = gathered.surface
+                            selectedStatusForMainSurface = gathered.surface
                             binding.explanationInputMainSurface.text = SpannableStringBuilder(gathered.note)
                         }
                     }
                     checkIsFormComplete()
                 }
             }
-            binding.selectButtonFootwaySurface.setOnClickListener {
-                ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
-                    if (item != selectedStatusForFootwaySurface) {
-                        selectedStatusForFootwaySurface = item
-                        checkIsFormComplete()
+            binding.selectButtonCyclewaySurface.setOnClickListener {
+                collectSurfaceData { gathered: SingleSurfaceItemInfo ->
+                    when (gathered) {
+                        is SingleSurfaceItem -> {
+                            selectedStatusForCyclewaySurface = gathered.surface
+                        }
+                        is SingleSurfaceItemWithNote -> {
+                            selectedStatusForCyclewaySurface = gathered.surface
+                            binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(gathered.note)
+                        }
                     }
-                }.show()
+                    checkIsFormComplete()
+                }
+            }
+            binding.selectButtonFootwaySurface.setOnClickListener {
+                collectSurfaceData { gathered: SingleSurfaceItemInfo ->
+                    when (gathered) {
+                        is SingleSurfaceItem -> {
+                            selectedStatusForFootwaySurface = gathered.surface
+                        }
+                        is SingleSurfaceItemWithNote -> {
+                            selectedStatusForFootwaySurface = gathered.surface
+                            binding.explanationInputFootwaySurface.text = SpannableStringBuilder(gathered.note)
+                        }
+                    }
+                    checkIsFormComplete()
+                }
             }
 
             if (savedInstanceState != null) onLoadInstanceState(savedInstanceState)
