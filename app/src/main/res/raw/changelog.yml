@@ -1,3 +1,13 @@
+v47.0-alpha1: |
+  <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
+  <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
+     Be warned, of the overlays so far, this is the most complex one and the first that does not
+     replace a pre-existing quest 🙂</p>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
+  </ul>
+
 v46.0: |
   <h3>New Quests</h3>
   <p>Asked for campsites (#4213), by @mnalis:</p>

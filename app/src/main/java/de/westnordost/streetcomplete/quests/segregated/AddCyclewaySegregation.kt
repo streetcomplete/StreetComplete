@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
+class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
     override val elementFilter = """
         ways with
@@ -34,7 +34,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = AddCyclewaySegregationForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-        tags.updateWithCheckDate("segregated", answer.toYesNo())
+    override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, timestampEdited: Long) {
+        tags.updateWithCheckDate("segregated", answer.value.toYesNo())
     }
 }

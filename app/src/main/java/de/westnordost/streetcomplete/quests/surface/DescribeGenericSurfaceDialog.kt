@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestSurfaceDetailedAnswerImpossibleBinding
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 class DescribeGenericSurfaceDialog(
     context: Context,
@@ -34,6 +35,8 @@ class DescribeGenericSurfaceDialog(
             context.getString(android.R.string.cancel),
             null as DialogInterface.OnClickListener?
         )
+        binding.explanationInput.requestFocus()
+        binding.explanationInput.showKeyboard()
         setView(binding.root)
     }
 }
