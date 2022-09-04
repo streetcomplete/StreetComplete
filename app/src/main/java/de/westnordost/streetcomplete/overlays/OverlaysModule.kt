@@ -15,9 +15,9 @@ val overlaysModule = module {
         WayLitOverlay(),
         SidewalkOverlay(),
         TracktypeOverlay(),
-        SidewalkSurfaceOverlay(),
         RoadSurfaceOverlay(),
         PathSurfaceOverlay(),
+        SidewalkSurfaceOverlay(),
         UniversalSurfaceOverlay(),
     )) }
 }
