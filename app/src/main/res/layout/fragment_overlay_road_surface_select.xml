@@ -48,11 +48,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/explanation_input_main_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:orientation="vertical"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -70,6 +71,6 @@
             android:maxLength="255"
             android:scrollHorizontally="false"
             />
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

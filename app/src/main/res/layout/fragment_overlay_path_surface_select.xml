@@ -7,11 +7,12 @@
     android:minHeight="160dp"
     android:orientation="vertical"><!-- TODO sane scaling with multiple surfaces shown-->
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/main_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/selectButtonMainSurface"
             android:layout_width="wrap_content"
@@ -52,12 +53,15 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <FrameLayout
+
+        <LinearLayout
             android:id="@+id/explanation_input_main_surface_container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:visibility="gone"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,11 +76,10 @@
                 tools:text="Surface is a mosaic of paving stones, wood and metal."
                 android:maxLength="255"
                 android:scrollHorizontally="false"
-                />
-        </FrameLayout>
-    </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/cycleway_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -124,10 +127,11 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/explanation_input_cycleway_surface_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:visibility="gone"
             >
             <TextView
@@ -146,10 +150,10 @@
                 android:maxLength="255"
                 android:scrollHorizontally="false"
                 />
-        </FrameLayout>
-    </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/footway_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,6 +205,7 @@
             android:id="@+id/explanation_input_footway_surface_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:visibility="gone"
             >
             <TextView
@@ -220,6 +225,6 @@
                 android:scrollHorizontally="false"
                 />
         </FrameLayout>
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>
