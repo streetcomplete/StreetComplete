@@ -1,7 +1,15 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.*
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.BUST
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.OBELISK
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.PLAQUE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.SCULPTURE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STATUE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.STONE_STELE
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WAR_MEMORIAL
+import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.WOODEN_STELE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun MemorialType.asItem() = Item(this, iconResId, titleResId)

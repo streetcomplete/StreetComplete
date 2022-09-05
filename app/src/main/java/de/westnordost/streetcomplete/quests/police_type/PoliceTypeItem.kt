@@ -1,8 +1,13 @@
 package de.westnordost.streetcomplete.quests.police_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.CARABINIERI
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.GUARDIA_COSTIERA
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.GUARDIA_DI_FINANZA
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.POLIZIA_DI_STATO
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.POLIZIA_LOCALE
+import de.westnordost.streetcomplete.quests.police_type.PoliceType.POLIZIA_MUNICIPALE
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.police_type.PoliceType.*
 
 fun PoliceType.asItem() = Item(this, iconResId, titleResId)
 

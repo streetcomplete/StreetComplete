@@ -11,10 +11,12 @@ import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited

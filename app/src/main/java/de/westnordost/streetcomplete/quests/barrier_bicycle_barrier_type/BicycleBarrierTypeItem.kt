@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.*
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DIAGONAL
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.DOUBLE
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.SINGLE
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TILTED
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.TRIPLE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun BicycleBarrierType.asItem() = Item(this, iconResId, titleResId)

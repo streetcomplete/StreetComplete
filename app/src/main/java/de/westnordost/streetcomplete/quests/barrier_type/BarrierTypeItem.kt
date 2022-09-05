@@ -1,7 +1,29 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.*
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BICYCLE_BARRIER
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BLOCK
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.BOLLARD
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.CATTLE_GRID
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.CHAIN
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.DEBRIS_PILE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.FULL_HEIGHT_TURNSTILE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.GATE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.HEIGHT_RESTRICTOR
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.JERSEY_BARRIER
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.KERB
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.KISSING_GATE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.LIFT_GATE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.LOG
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.PASSAGE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.ROPE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.STILE_LADDER
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.STILE_SQUEEZER
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.STILE_STEPOVER_STONE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.STILE_STEPOVER_WOODEN
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.SWING_GATE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.TURNSTILE
+import de.westnordost.streetcomplete.quests.barrier_type.BarrierType.WIRE_GATE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun BarrierType.asItem() = Item(this, iconResId, titleResId)

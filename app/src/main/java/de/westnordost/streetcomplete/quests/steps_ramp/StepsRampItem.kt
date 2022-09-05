@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun StepsRamp.asItem() = Item(this, iconResId, titleResId)

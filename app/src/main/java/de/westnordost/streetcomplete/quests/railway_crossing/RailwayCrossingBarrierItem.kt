@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.*
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.CHICANE
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.DOUBLE_HALF
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.FULL
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.GATE
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.HALF
+import de.westnordost.streetcomplete.quests.railway_crossing.RailwayCrossingBarrier.NO
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun RailwayCrossingBarrier.asItem(isLeftHandTraffic: Boolean): Item<RailwayCrossingBarrier> =
