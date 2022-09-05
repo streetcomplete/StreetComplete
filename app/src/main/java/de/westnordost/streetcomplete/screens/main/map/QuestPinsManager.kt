@@ -139,10 +139,8 @@ class QuestPinsManager(
         pinsUpdateJob = viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) {
                 synchronized(visibleQuestsSource) {
-                    if (!coroutineContext.isActive)
-                        // can't return@launch here, so return null and then @launch
-                        return@synchronized null
-                    visibleQuestsSource.getAllVisible(bbox)
+                    if (!coroutineContext.isActive) null
+                    else visibleQuestsSource.getAllVisible(bbox)
                 }
             } ?: return@launch
             setQuestPins(quests)
