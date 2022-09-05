@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.housenumber.VALID_BLOCK_NUMBER_REGEX
+import de.westnordost.streetcomplete.osm.housenumber.VALID_HOUSE_NUMBER_REGEX
 import de.westnordost.streetcomplete.quests.createMapData
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.member
@@ -140,7 +142,7 @@ class AddHousenumberTest {
     }
 
     @Test fun `housenumber regex`() {
-        val r = VALID_HOUSENUMBER_REGEX
+        val r = VALID_HOUSE_NUMBER_REGEX
         assertTrue("1".matches(r))
         assertTrue("1234".matches(r))
 
@@ -162,7 +164,7 @@ class AddHousenumberTest {
     }
 
     @Test fun `blocknumber regex`() {
-        val r = VALID_BLOCKNUMBER_REGEX
+        val r = VALID_BLOCK_NUMBER_REGEX
         assertTrue("1".matches(r))
         assertTrue("1234".matches(r))
         assertFalse("12345".matches(r))

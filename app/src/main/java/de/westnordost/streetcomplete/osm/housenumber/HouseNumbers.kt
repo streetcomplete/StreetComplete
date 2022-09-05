@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.housenumber
 
+/** Structured representation of a addr:housenumber string */
 data class HouseNumbers(val list: List<HouseNumbersPart>) {
     override fun toString() = list.joinToString(",")
 }

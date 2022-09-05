@@ -14,12 +14,15 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.housenumber.ConscriptionNumber
+import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -136,7 +139,7 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is HouseNumberAndHouseName -> {
                 val name = answer.name
