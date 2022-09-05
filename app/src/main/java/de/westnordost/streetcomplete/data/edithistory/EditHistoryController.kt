@@ -135,7 +135,7 @@ class EditHistoryController(
     }
     private fun onSynced(edit: Edit) {
         synchronized(cache) {
-            if (edit is ElementEdit && edit.action in noIdModifyActions) {
+            if (edit is ElementEdit && edit.action !in noIdModifyActions) {
                 // reload, because element ids of multiple edits may have changed after split way
                 // this should never happen for other edit types, as they don't affect more than
                 // a single element
