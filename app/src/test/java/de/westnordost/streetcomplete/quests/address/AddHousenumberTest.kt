@@ -7,8 +7,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.osm.housenumber.VALID_BLOCK_NUMBER_REGEX
-import de.westnordost.streetcomplete.osm.housenumber.VALID_HOUSE_NUMBER_REGEX
+import de.westnordost.streetcomplete.osm.housenumber.ConscriptionNumber
+import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
 import de.westnordost.streetcomplete.quests.createMapData
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.member
@@ -17,9 +18,7 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddHousenumberTest {
@@ -141,38 +140,6 @@ class AddHousenumberTest {
         assertNull(questType.isApplicableTo(building))
     }
 
-    @Test fun `housenumber regex`() {
-        val r = VALID_HOUSE_NUMBER_REGEX
-        assertTrue("1".matches(r))
-        assertTrue("1234".matches(r))
-
-        assertTrue("1234a".matches(r))
-        assertTrue("1234/a".matches(r))
-        assertTrue("1234 / a".matches(r))
-        assertTrue("1234 / A".matches(r))
-        assertTrue("1234/ab".matches(r))
-        assertTrue("1234A".matches(r))
-        assertTrue("1234/9".matches(r))
-        assertTrue("1234 / 9".matches(r))
-        assertTrue("1234/55".matches(r))
-
-        assertTrue("12345".matches(r))
-
-        assertTrue("1234AB".matches(r))
-        assertFalse("123456".matches(r))
-        assertFalse("1234 5".matches(r))
-    }
-
-    @Test fun `blocknumber regex`() {
-        val r = VALID_BLOCK_NUMBER_REGEX
-        assertTrue("1".matches(r))
-        assertTrue("1234".matches(r))
-        assertFalse("12345".matches(r))
-
-        assertTrue("1234a".matches(r))
-        assertTrue("1234 a".matches(r))
-        assertFalse("1234 ab".matches(r))
-    }
 
     @Test fun `apply house number answer`() {
         questType.verifyAnswer(

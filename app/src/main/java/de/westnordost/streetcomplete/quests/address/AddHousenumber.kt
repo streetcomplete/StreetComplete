@@ -14,9 +14,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.housenumber.ConscriptionNumber
-import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
+import de.westnordost.streetcomplete.osm.housenumber.applyTo
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
@@ -132,10 +130,11 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""nodes, ways, relations with
+        getMapData().filter("""
+            nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref
-            """.toElementFilterExpression())
+        """.toElementFilterExpression())
 
     override fun createForm() = AddHousenumberForm()
 
@@ -145,25 +144,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
                 val name = answer.name
                 val number = answer.number
 
-                when (number) {
-                    is ConscriptionNumber -> {
-                        tags["addr:conscriptionnumber"] = number.conscriptionNumber
-                        if (number.streetNumber != null) {
-                            tags["addr:streetnumber"] = number.streetNumber
-                            tags["addr:housenumber"] = number.streetNumber
-                        } else {
-                            tags["addr:housenumber"] = number.conscriptionNumber
-                        }
-                    }
-                    is HouseAndBlockNumber -> {
-                        tags["addr:housenumber"] = number.houseNumber
-                        tags["addr:block_number"] = number.blockNumber
-                    }
-                    is HouseNumber -> {
-                        tags["addr:housenumber"] = number.houseNumber
-                    }
-                    null -> {}
-                }
+                number?.applyTo(tags)
 
                 if (name != null) {
                     tags["addr:housename"] = name
