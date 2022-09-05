@@ -39,7 +39,7 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
         ignoreRelationTypes: Set<String?>
     ) = wrapExceptions {
         try {
-            val handler = UpdatedElementsHandler()
+            val handler = UpdatedElementsHandler(ignoreRelationTypes)
             api.uploadChanges(changesetId, changes.toOsmApiElements()) {
                 handler.handle(it.toDiffElement())
             }
