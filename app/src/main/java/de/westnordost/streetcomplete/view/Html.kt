@@ -62,8 +62,18 @@ class NonUglyBulletSpan(private val radius: Float) : LeadingMarginSpan {
     override fun getLeadingMargin(first: Boolean): Int = (5 * radius).toInt()
 
     override fun drawLeadingMargin(
-        canvas: Canvas, paint: Paint, x: Int, dir: Int, top: Int, baseline: Int, bottom: Int,
-        text: CharSequence, start: Int, end: Int, first: Boolean, layout: Layout?,
+        canvas: Canvas,
+        paint: Paint,
+        x: Int,
+        dir: Int,
+        top: Int,
+        baseline: Int,
+        bottom: Int,
+        text: CharSequence,
+        start: Int,
+        end: Int,
+        first: Boolean,
+        layout: Layout?,
     ) {
         if ((text as Spanned).getSpanStart(this) != start) return
 

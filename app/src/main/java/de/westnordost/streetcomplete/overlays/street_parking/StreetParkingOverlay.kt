@@ -57,9 +57,11 @@ class StreetParkingOverlay : Overlay {
         ).map { it to chokerStyle }
 
     override fun createForm(element: Element) =
-        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes")
+        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
-        else null
+        } else {
+            null
+        }
 }
 
 private val streetParkingTaggingNotExpected by lazy { """
@@ -73,7 +75,6 @@ private val streetParkingTaggingNotExpected by lazy { """
       or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*rural.*
       or maxspeed >= 70
 """.toElementFilterExpression() }
-
 
 private val parkingLotStyle = PolygonStyle(Color.BLUE)
 

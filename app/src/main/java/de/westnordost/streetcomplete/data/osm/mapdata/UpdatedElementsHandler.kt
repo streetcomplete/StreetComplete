@@ -19,8 +19,9 @@ class UpdatedElementsHandler(val ignoreRelationTypes: Set<String?> = emptySet())
         val deletedElementKeys = mutableListOf<ElementKey>()
         val idUpdates = mutableListOf<ElementIdUpdate>()
         for (element in elements) {
-            if (element is Relation && element.tags["type"] in ignoreRelationTypes)
+            if (element is Relation && element.tags["type"] in ignoreRelationTypes) {
                 continue
+            }
             val diff = getDiff(element.type, element.id) ?: continue
             if (diff.serverId != null && diff.serverVersion != null) {
                 updatedElements.add(createUpdatedElement(element, diff.serverId, diff.serverVersion))
