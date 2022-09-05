@@ -124,6 +124,15 @@ private val links = listOf(
         R.string.link_openstreetcam_description
     ),
 
+    Link(
+        "ohsomehex",
+        "https://hex.ohsome.org",
+        "OSM History eXplorer",
+        LinkCategory.INTRO,
+        R.drawable.ic_link_ohsomehex,
+        R.string.link_ohsomehex_description
+    ),
+
     /* --------------------------------------- Editors ---------------------------------------*/
     Link(
         "pic4review",
@@ -422,13 +431,13 @@ private val links = listOf(
         R.string.link_backofyourhand_description
     ),
     Link(
-        "thenandnow",
-        "https://mvexel.github.io/thenandnow/",
-        "OSM Then and Now",
+        "opencampingmap",
+        "https://opencampingmap.org/",
+        "Open Camping Map",
         LinkCategory.GOODIES,
-        R.drawable.ic_link_thenandnow,
-        R.string.link_thenandnow_description
-    ),
+        R.drawable.ic_link_opencampingmap,
+        R.string.link_opencampingmap_description
+    )
 )
 
 private val linksById = links.associateBy { it.id }
@@ -492,7 +501,7 @@ private val achievements = listOf(
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
             7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
-            8 to links("thenandnow"),
+            8 to links("ohsomehex"),
             9 to links("notesreview"),
         )
     ),
@@ -652,7 +661,8 @@ private val achievements = listOf(
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
-            1 to links("openorienteeringmap")
+            1 to links("openorienteeringmap"),
+            4 to links("opencampingmap")
         )
     ),
 
