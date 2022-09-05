@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.*
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.PILLAR
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.POND
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.UNDERGROUND
+import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.WALL
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun FireHydrantType.asItem() = Item(this, iconResId, titleResId)

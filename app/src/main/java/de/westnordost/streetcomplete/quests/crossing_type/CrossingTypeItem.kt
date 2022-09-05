@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.crossing_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.*
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.UNMARKED
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun CrossingType.asItem() = Item(this, iconResId, titleResId)

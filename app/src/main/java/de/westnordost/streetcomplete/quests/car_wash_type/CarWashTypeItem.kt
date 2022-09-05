@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*
+import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
+import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
+import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SERVICE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun CarWashType.asItem() = Item(this, iconResId, titleResId)
