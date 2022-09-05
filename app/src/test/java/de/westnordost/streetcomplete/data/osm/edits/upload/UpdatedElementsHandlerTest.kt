@@ -185,6 +185,15 @@ class UpdatedElementsHandlerTest {
             ElementKey(NODE, -2)
         ))
     }
+
+    @Test fun `does nothing with ignored relation types`() {
+        val elements = listOf(rel(-4, listOf(), tags = mapOf("type" to "route")))
+        val ignoredRelationTypes = setOf("route")
+        val handler = UpdatedElementsHandler(ignoredRelationTypes)
+        handler.handle(DiffElement(RELATION, -4, 44))
+        val updates = handler.getElementUpdates(elements)
+        assertTrue(updates.idUpdates.isEmpty())
+    }
 }
 
 private fun UpdatedElementsHandler.handleAll(vararg diffs: DiffElement) {
