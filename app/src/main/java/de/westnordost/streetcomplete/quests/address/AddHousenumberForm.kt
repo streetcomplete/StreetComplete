@@ -188,13 +188,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 
     private val InterfaceMode.layout get() = when (this) {
-        InterfaceMode.HOUSENUMBER -> when (countryInfo.countryCode) {
-            "JP" -> R.layout.quest_housenumber_japan
-            "CZ" -> R.layout.quest_housenumber_czechia
-            "SK" -> R.layout.quest_housenumber_slovakia
-            else -> R.layout.quest_housenumber
-        }
-        InterfaceMode.HOUSENAME ->                 R.layout.quest_housename
+        InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+        InterfaceMode.HOUSENAME -> R.layout.quest_housename
         InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
     }
 
