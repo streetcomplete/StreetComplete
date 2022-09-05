@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
 import de.westnordost.streetcomplete.osm.housenumber.HouseNumbersPartsRange
 import de.westnordost.streetcomplete.osm.housenumber.SingleHouseNumbersPart
+import de.westnordost.streetcomplete.osm.housenumber.addToHouseNumber
 import de.westnordost.streetcomplete.osm.housenumber.looksInvalid
 import de.westnordost.streetcomplete.osm.housenumber.parseHouseNumbers
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -186,8 +187,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     private fun addToHouseNumberInput(add: Int) {
         val input = houseNumberInput ?: return
-        val prev = input.text.toString().ifBlank { lastHouseNumber }
-        val newHouseNumber = prev?.addToHouseNumber(add) ?: return
+        val prev = input.text.toString().ifBlank { lastHouseNumber } ?: return
+        val newHouseNumber = addToHouseNumber(prev, add) ?: return
         input.setText(newHouseNumber)
         input.setSelection(newHouseNumber.length)
     }
@@ -307,29 +308,4 @@ private val AddressNumber.houseNumber: String? get() = when (this) {
     is HouseAndBlockNumber -> houseNumber
     // not conscription number because there is no logical succession
     else -> null
-}
-
-private fun String.addToHouseNumber(add: Int): String? {
-    val parsed = parseHouseNumbers(this) ?: return null
-    when {
-        add == 0 -> return this
-        add > 0 -> {
-            val max = when (val it = parsed.list.maxOrNull()) {
-                is HouseNumbersPartsRange -> maxOf(it.start, it.end)
-                is SingleHouseNumbersPart -> it.single
-                null -> return null
-            }
-            return (max.number + add).toString()
-        }
-        add < 0 -> {
-            val min = when (val it = parsed.list.minOrNull()) {
-                is HouseNumbersPartsRange -> minOf(it.start, it.end)
-                is SingleHouseNumbersPart -> it.single
-                null -> return null
-            }
-            val result = min.number + add
-            return if (result < 1) null else result.toString()
-        }
-        else -> return null
-    }
 }
