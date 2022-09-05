@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.address
+package de.westnordost.streetcomplete.osm.housenumber
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -6,7 +6,7 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class HousenumberParserKtTest {
+class HouseNumbersParserKtTest {
 
     @Test
     fun `test all, I am lazy today`() {
@@ -103,9 +103,9 @@ private fun single(s: StructuredHouseNumber) =
     SingleHouseNumbersPart(s)
 
 private fun assertParses(str: String) {
-    assertEquals(str, parseHouseNumber(str).toString())
+    assertEquals(str, parseHouseNumbers(str).toString())
 }
 
 private fun assertParsingFails(str: String) {
-    assertNull(parseHouseNumber(str))
+    assertNull(parseHouseNumbers(str))
 }

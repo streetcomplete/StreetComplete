@@ -12,6 +12,9 @@ import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
+import de.westnordost.streetcomplete.osm.housenumber.HouseNumbersPartsRange
+import de.westnordost.streetcomplete.osm.housenumber.SingleHouseNumbersPart
+import de.westnordost.streetcomplete.osm.housenumber.parseHouseNumbers
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
@@ -302,7 +305,7 @@ private val AddressNumber.houseNumber: String? get() = when (this) {
 }
 
 private fun String.addToHouseNumber(add: Int): String? {
-    val parsed = parseHouseNumber(this) ?: return null
+    val parsed = parseHouseNumbers(this) ?: return null
     when {
         add == 0 -> return this
         add > 0 -> {
