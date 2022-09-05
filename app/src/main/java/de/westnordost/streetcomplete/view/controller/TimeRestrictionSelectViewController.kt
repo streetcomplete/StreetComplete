@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAd
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
+import java.util.Locale
 
 /** Manages inputting a time restriction, either inclusive or exclusive, based on opening hours.
  *
@@ -35,6 +36,10 @@ class TimeRestrictionSelectViewController(
     var regularShoppingDays: Int
         set(value) { timesAdapter.regularShoppingDays = value }
         get() = timesAdapter.regularShoppingDays
+
+    var locale: Locale
+        set(value) { timesAdapter.locale = value }
+        get() = timesAdapter.locale
 
     /** which time restrictions are selectable for the user */
     var selectableTimeRestrictions: List<TimeRestriction> = TimeRestriction.values().toList()
@@ -68,6 +73,8 @@ class TimeRestrictionSelectViewController(
         timesAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { onInputChanged?.invoke() })
         timesAdapter.firstDayOfWorkweek = firstDayOfWorkweek
         timesAdapter.regularShoppingDays = regularShoppingDays
+        timesAdapter.locale = locale
+
         timesList.adapter = timesAdapter
         addTimesButton.setOnClickListener { timesAdapter.addNewWeekdays() }
 

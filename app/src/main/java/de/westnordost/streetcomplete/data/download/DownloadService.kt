@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.download
 
 import android.app.ForegroundServiceStartNotAllowedException
-import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
@@ -34,8 +33,6 @@ import org.koin.android.ext.android.inject
 class DownloadService : CoroutineIntentService(TAG) {
     private val downloader: Downloader by inject()
 
-    private lateinit var notification: Notification
-
     // interface
     private val binder = Interface()
 
@@ -55,11 +52,6 @@ class DownloadService : CoroutineIntentService(TAG) {
             field = value
             updateShowNotification()
         }
-
-    override fun onCreate() {
-        super.onCreate()
-        notification = createSyncNotification(this)
-    }
 
     override fun onBind(intent: Intent): IBinder {
         return binder
@@ -103,7 +95,7 @@ class DownloadService : CoroutineIntentService(TAG) {
 
     private fun updateShowNotification() {
         if (!showNotification || !isDownloading) stopForeground(true)
-        else startForeground(NOTIFICATIONS_ID_SYNC, notification)
+        else startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
     }
 
     /** Public interface to classes that are bound to this service  */

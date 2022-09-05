@@ -77,15 +77,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 />
 
-            <ImageView
-                android:id="@+id/okButton"
-                android:src="@drawable/ic_check_48dp"
-                android:scaleType="centerInside"
-                style="@style/RoundAccentButton"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:padding="20dp"
-                android:layout_marginEnd="4dp"
+            <RelativeLayout
+                android:id="@+id/okButtonContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="true"
+                android:focusable="true"
                 android:visibility="gone"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
@@ -94,8 +93,20 @@
                 tools:visibility="visible"
                 tools:scaleX="1"
                 tools:scaleY="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:paddingTop="20dp"
+                android:paddingStart="20dp"
+                tools:ignore="RtlSymmetry">
+
+                <ImageView
+                    android:id="@+id/okButton"
+                    android:src="@drawable/ic_check_48dp"
+                    android:scaleType="centerInside"
+                    style="@style/RoundAccentButton"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:padding="20dp"/>
+
+            </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

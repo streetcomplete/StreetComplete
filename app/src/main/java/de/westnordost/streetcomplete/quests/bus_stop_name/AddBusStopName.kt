@@ -11,15 +11,14 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override val elementFilter = """
         nodes with
         (
-          (public_transport = platform and ~bus|trolleybus|tram ~ yes)
-          or
-          (highway = bus_stop and public_transport != stop_position)
+          public_transport = platform
+          or (highway = bus_stop and public_transport != stop_position)
         )
         and !name and noname != yes and name:signed != no
     """
 
     override val enabledInCountries = AllCountriesExcept("US", "CA")
-    override val changesetComment = "Determine bus/tram stop names"
+    override val changesetComment = "Determine public transport stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
     override val achievements = listOf(PEDESTRIAN)

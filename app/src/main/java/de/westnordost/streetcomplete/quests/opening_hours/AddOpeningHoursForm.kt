@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import java.util.Locale
 
 class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
@@ -57,6 +58,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
         openingHoursAdapter = OpeningHoursAdapter(requireContext())
         openingHoursAdapter.firstDayOfWorkweek = countryInfo.firstDayOfWorkweek
         openingHoursAdapter.regularShoppingDays = countryInfo.regularShoppingDays
+        openingHoursAdapter.locale = countryInfo.officialLanguages.firstOrNull()?.let { Locale(it) } ?: Locale.getDefault()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

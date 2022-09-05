@@ -81,7 +81,7 @@ abstract class AbstractOverlayForm :
         }
     protected val countryInfo get() = _countryInfo!!
 
-    // only used for testing / only used for ShowQuestFormsActvitiy! Found no better way to do this
+    // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 
     // view / state
@@ -252,9 +252,9 @@ abstract class AbstractOverlayForm :
     protected fun checkIsFormComplete() {
         binding.okButton.isEnabled = hasChanges()
         if (isFormComplete()) {
-            binding.okButton.popIn()
+            binding.okButtonContainer.popIn()
         } else {
-            binding.okButton.popOut()
+            binding.okButtonContainer.popOut()
         }
     }
 

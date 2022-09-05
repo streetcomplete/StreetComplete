@@ -26,7 +26,6 @@ class AddStreetParking : OsmFilterQuestType<LeftAndRightStreetParking>() {
                 sidewalk ~ both|left|right|yes|separate
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
                 or maxspeed <= 60
-                or maxspeed ~ "([1-9]|[1-2][0-9]|3[0-5]) mph"
               )
             )
           )

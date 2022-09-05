@@ -42,8 +42,8 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val wikiLink = "Key:smoking"
     override val icon = R.drawable.ic_quest_smoking
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoking_title2
 

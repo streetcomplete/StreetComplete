@@ -26,7 +26,6 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
             sidewalk ~ both|left|right|yes|separate
             or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
             or maxspeed <= 60
-            or maxspeed ~ "([1-9]|[1-2][0-9]|3[0-5]) mph"
           )
           or highway ~ ${LIT_WAYS.joinToString("|")}
           or highway = path and (foot = designated or bicycle = designated)
@@ -45,6 +44,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val achievements = listOf(PEDESTRIAN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_lit_title
 

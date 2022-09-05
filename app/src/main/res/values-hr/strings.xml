@@ -1885,4 +1885,16 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_entrance_reference_flat_range_label">"Raspon stanova:"</string>
     <string name="quest_entrance_reference_flat_range_to">"do"</string>
+    <string name="default_disabled_msg_overlay">"Ova vrsta zadatka je inicijalno onemogućena jer već postoji nadsloj s kojim je efikasnije i učinkovitije unositi i ažurirati ove podatke."</string>
+    <string name="quest_camp_drinking_water_title">"Je li pitka voda ovdje besplatno dostupna kamperima?"</string>
+    <string name="quest_camp_shower_title">"Ima li ovdje tuševa?"</string>
+    <string name="quest_camp_power_supply_title">"Postoji li način da korisnici ovdje napune svoj telefon, prijenosno računalo itd.?"</string>
+    <string name="quest_camp_type_title">"Tko ovdje može kampirati?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"I šatori i motorne kuće/prikolice/…"</string>
+    <string name="quest_camp_type_caravans_only">"Samo motorne kuće/prikolice/…"</string>
+    <string name="quest_camp_type_tents_only">"Samo šatori"</string>
+    <string name="quest_camp_type_backcountry">"Zabačeno kampiranje (bez objekata)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Toliki promjer izgleda nerealno; obično je između %1$d i %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ovaj se odgovor ne podudara s onim što je već uneseno o ovoj cesti. Jeste li sigurni da rješavate ispravnu cestu? Jeste li sigurni da ste osobno izmjerili po cijeloj dužini, kao što je uvijek potrebno?"</string>
+    <string name="quest_recycling_type_pet">"Samo PET"</string>
 </resources>

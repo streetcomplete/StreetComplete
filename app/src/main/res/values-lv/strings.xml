@@ -1082,13 +1082,9 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
     <string name="quest_address_house_number_label">"Mājas numurs:"</string>
     <string name="quest_shoulder_title">"Vai šim ceļam ir nomale?"</string>
     <string name="quest_fireHydrant_position_title">"Kur ir novietots ugunsdzēsības hidrants?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_green">"Uz zāles vai zemes"</string>
+    <string name="quest_fireHydrant_position_green">"Uz zāles, zemes vai krūmā"</string>
     <string name="quest_fireHydrant_position_lane">"Uz ceļa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_sidewalk">"Uz trotuāra"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Uz takas"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Stāvvietā"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Jā (atstāt piezīmi)"</string>
     <string name="quest_smoothness_square_title">"Kāda ir virsmas kvalitāte šim laukumam?"</string>
@@ -1315,4 +1311,16 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Ieejas marķējums:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Dzīvokļu intervāls:"</string>
     <string name="quest_entrance_reference_flat_range_to">"līdz"</string>
+    <string name="default_disabled_msg_overlay">"Šāda veida uzdevums pēc noklusējuma ir izslēgts, jo jau eksistē pārklājums, kas ir daudz efektīvāks šāda veida datu ievadīšanai un atjaunināšanai."</string>
+    <string name="quest_camp_drinking_water_title">"Vai šeit ir brīvi pieejams dzeramais ūdens?"</string>
+    <string name="quest_camp_shower_title">"Vai šeit ir dušas?"</string>
+    <string name="quest_camp_power_supply_title">"Vai klientiem šeit ir iespēja uzlādēt tālruņus, klēpjdatorus utt.?"</string>
+    <string name="quest_camp_type_title">"Kas var šeit apmesties?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Gan teltis gan treileri, motormājas, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Tikai motormājas, treileri, ..."</string>
+    <string name="quest_camp_type_tents_only">"Tikai teltis"</string>
+    <string name="quest_camp_type_backcountry">"Nomaļš kempings (nav labiekārtots)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Atbilde neatbilst tam, kas jau ir kartēts par šo ceļu. Vai esat pārliecināts, ka šī atbilde ir par pareizo ceļu? Vai tiešām jūs personīgi apsekojāt visā tā garumā, kā tas vienmēr jādara?"</string>
+    <string name="quest_recycling_type_pet">"Tikai PET"</string>
 </resources>

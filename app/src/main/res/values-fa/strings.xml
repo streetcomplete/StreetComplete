@@ -2678,4 +2678,16 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"برچسب ورودی:"</string>
     <string name="quest_entrance_reference_flat_range_label">"محدوده مسطح:"</string>
     <string name="quest_entrance_reference_flat_range_to">"به"</string>
+    <string name="default_disabled_msg_overlay">"این نوع جستجو به‌طور پیش‌فرض غیرفعال است، زیرا در حال حاضر پوششی وجود دارد که وارد کردن و به‌روزرسانی این داده‌ها با آن مؤثرتر و کارآمدتر است."</string>
+    <string name="quest_camp_drinking_water_title">"آیا در اینجا آب آشامیدنی به صورت رایگان در اختیار کمپینگ/چادر داران قرار می‌گیرد؟"</string>
+    <string name="quest_camp_shower_title">"آیا اینجا دوش وجود دارد؟"</string>
+    <string name="quest_camp_power_supply_title">"آیا راهی وجود دارد که مشتریان بتوانند تلفن، لپ‌تاپ و... خود را در اینجا شارژ کنند؟"</string>
+    <string name="quest_camp_type_title">"چه کسی می‌تواند در اینجا کمپ/چادر بزند؟"</string>
+    <string name="quest_camp_type_tents_and_caravans">"هم چادرها و هم موتورخانه‌ها، تریلرهای مسافرتی و…"</string>
+    <string name="quest_camp_type_caravans_only">"فقط موتورخانه، تریلر مسافرتی،…"</string>
+    <string name="quest_camp_type_tents_only">"فقط چادر"</string>
+    <string name="quest_camp_type_backcountry">"کمپینگ در مناطق مسکونی (بدون امکانات)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"این قطر غیر قابل قبول به نظر می‌رسد، معمولاً اندازه آن بین %1$d و %2$d است."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"این پاسخ با آنچه که قبلاً در مورد این جاده ترسیم شده است مطابقت ندارد. آیا مطمئن هستید که در مورد جاده درست پاسخ می‌دهید؟ آیا مطمئن هستید که شخصاً در تمام طول، همانطور که همیشه لازم بود، نظرسنجی کرده‌اید؟"</string>
+    <string name="quest_recycling_type_pet">"فقط حیوان‌خانگی"</string>
 </resources>
