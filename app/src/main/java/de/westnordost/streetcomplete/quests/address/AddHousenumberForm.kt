@@ -16,11 +16,8 @@ import de.westnordost.streetcomplete.osm.housenumber.AddressNumber
 import de.westnordost.streetcomplete.osm.housenumber.ConscriptionNumber
 import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
-import de.westnordost.streetcomplete.osm.housenumber.HouseNumbersPartsRange
-import de.westnordost.streetcomplete.osm.housenumber.SingleHouseNumbersPart
 import de.westnordost.streetcomplete.osm.housenumber.addToHouseNumber
 import de.westnordost.streetcomplete.osm.housenumber.looksInvalid
-import de.westnordost.streetcomplete.osm.housenumber.parseHouseNumbers
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
@@ -290,7 +287,12 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 
     private val InterfaceMode.layout get() = when (this) {
-        InterfaceMode.HOUSENUMBER -> R.layout.quest_housenumber
+        InterfaceMode.HOUSENUMBER -> when (countryInfo.countryCode) {
+            "JP" -> R.layout.quest_housenumber_japan
+            "CZ" -> R.layout.quest_housenumber_czechia
+            "SK" -> R.layout.quest_housenumber_slovakia
+            else -> R.layout.quest_housenumber
+        }
         InterfaceMode.HOUSENAME -> R.layout.quest_housename
         InterfaceMode.HOUSENUMBER_AND_HOUSENAME -> R.layout.quest_housename_and_housenumber
     }
