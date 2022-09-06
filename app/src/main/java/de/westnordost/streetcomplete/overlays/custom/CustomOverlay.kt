@@ -15,12 +15,13 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
 import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
+import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
     override val title = R.string.custom_overlay_title
-    override val icon = R.drawable.ic_quest_poi_fixme
+    override val icon = R.drawable.ic_custom_overlay_poi
     override val changesetComment = "Edit user-defined element selection"
     override val wikiLink: String = "Tags"
 
@@ -37,9 +38,9 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 }
 
 private fun getStyle(element: Element): Style {
-    val color = "#ccff00"
+    val color = Color.LIME
     return when {
-        element is Node -> PointStyle("ic_pin_choker", element.tags["name"])
+        element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"])
         IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, null)
         else -> PolylineStyle(StrokeStyle(color))
     }

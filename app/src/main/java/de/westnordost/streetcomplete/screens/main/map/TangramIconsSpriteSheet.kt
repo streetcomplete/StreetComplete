@@ -71,7 +71,8 @@ class TangramIconsSpriteSheet(
     companion object {
         private const val ICONS_FILE = "icons.png"
         private val ICONS = listOf(
-            R.drawable.ic_pin_choker
+            R.drawable.ic_pin_choker,
+            R.drawable.ic_custom_overlay_poi
         )
     }
 }
