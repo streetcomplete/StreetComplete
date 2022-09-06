@@ -22,7 +22,7 @@ private val CrossingType.titleResId: Int get() = when (this) {
 
 private val CrossingType.iconResId: Int get() = when (this) {
     TRAFFIC_SIGNALS -> R.drawable.crossing_type_signals
-    MARKED ->          R.drawable.crossing_type_zebra
+    MARKED ->          R.drawable.crossing_type_marked
     UNMARKED ->        R.drawable.crossing_type_unmarked
     TRAFFIC_SIGNALS_ZEBRA -> R.drawable.crossing_type_signals_zebra
     ZEBRA ->           R.drawable.crossing_type_zebra
