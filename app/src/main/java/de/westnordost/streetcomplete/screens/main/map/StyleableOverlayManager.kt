@@ -60,9 +60,9 @@ class StyleableOverlayManager(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val oldSUpdateJob = updateJob
+            val oldUpdateJob = updateJob
             updateJob = viewLifecycleScope.launch {
-                oldSUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
+                oldUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
                 updateStyledElements(updated, deleted)
             }
         }
