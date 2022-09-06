@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.ApplicationConstants.EDIT_ACTIONS_NOT_ALLOW
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
@@ -12,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.util.ktx.copy
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
@@ -25,8 +23,8 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
     fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
-        val remoteChanges by lazy { edit.action.createUpdates(edit.originalElement, edit.fetchElement(mapDataApi), mapDataApi, idProvider) }
-        val localChanges by lazy { edit.action.createUpdates(edit.originalElement, edit.fetchElement(mapDataController), mapDataController, idProvider) }
+        val remoteChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataApi.fetch(edit.elementType, edit.elementId), mapDataApi, idProvider) }
+        val localChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataController.fetch(edit.elementType, edit.elementId), mapDataController, idProvider) }
 
         return if (edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES) {
             try {
@@ -56,7 +54,7 @@ class ElementEditUploader(
         return mapDataApi.uploadChanges(changesetId, mapDataChanges)
     }
 
-    private fun MapDataRepository.get(elementType: ElementType, elementId: Long) = when (elementType) {
+    private fun MapDataRepository.fetch(elementType: ElementType, elementId: Long) = when (elementType) {
         ElementType.NODE     -> getNode(elementId)
         ElementType.WAY      -> getWay(elementId)
         ElementType.RELATION -> getRelation(elementId)
