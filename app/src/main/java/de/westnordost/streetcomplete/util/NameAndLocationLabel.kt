@@ -119,6 +119,22 @@ fun getHouseNumberLabel(tags: Map<String, String>, resources: Resources): String
     return null
 }
 
+fun getShortHouseNumber(map: Map<String, String>): String? {
+    val houseName = map["addr:housename"]
+    val conscriptionNumber = map["addr:conscriptionnumber"]
+    val streetNumber = map["addr:streetnumber"]
+    val houseNumber = map["addr:housenumber"]
+
+    return when {
+        houseName != null -> houseName
+        conscriptionNumber != null && streetNumber != null -> "$conscriptionNumber / $streetNumber"
+        conscriptionNumber != null -> conscriptionNumber
+        houseNumber != null -> houseNumber
+        else -> null
+    }
+}
+
+
 private fun String.inBold(): String = "<b>${Html.escapeHtml(this)}</b>"
 private fun String.inItalics(): String = "<i>${Html.escapeHtml(this)}</i>"
 
