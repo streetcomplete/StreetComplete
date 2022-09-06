@@ -119,5 +119,5 @@ private val StreetParking?.style: StrokeStyle get() = when (this) {
 
     UnknownStreetParking,
     IncompleteStreetParking,
-    null ->                     StrokeStyle(Color.CRIMSON)
+    null ->                     StrokeStyle(Color.DATA_REQUESTED)
 }
