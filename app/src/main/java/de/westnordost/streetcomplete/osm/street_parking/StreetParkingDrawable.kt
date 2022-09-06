@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.street_parking
+package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,11 +8,9 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.core.graphics.withSave
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET

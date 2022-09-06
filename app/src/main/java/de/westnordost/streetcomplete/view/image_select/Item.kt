@@ -10,7 +10,7 @@ data class Item<T>(
     val drawableId: Int? = null,
     val titleId: Int? = null,
     val descriptionId: Int? = null,
-    override val items: List<Item<T>>? = null
+    override val items: List<GroupableDisplayItem<T>>? = null
 ) : GroupableDisplayItem<T> {
 
     override val image: Image? get() = drawableId?.let { ResImage(it) }

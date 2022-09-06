@@ -10,7 +10,7 @@ import kotlin.math.PI
 class AddStepsInclineForm : AImageListQuestForm<StepsIncline, StepsIncline>() {
 
     override val items get() =
-        StepsIncline.values().map { it.toItem(requireContext(), wayRotation + mapRotation) }
+        StepsIncline.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
 
     override val itemsPerRow = 2
 

@@ -24,6 +24,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
               highway ~ trunk|primary|secondary|tertiary|unclassified
               and (
                 motorroad = yes
+                or expressway = yes
                 or tunnel ~ yes|building_passage|avalanche_protector
                 or (bridge and bridge != no)
                 or sidewalk ~ no|none

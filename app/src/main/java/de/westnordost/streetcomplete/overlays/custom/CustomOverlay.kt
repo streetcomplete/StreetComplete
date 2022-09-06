@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
+import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 
 class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
@@ -37,8 +39,8 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 private fun getStyle(element: Element): Style {
     val color = "#ccff00"
     return when {
-        element is Node -> PointStyle(element.tags["name"])
-        element.tags["area"] == "yes" -> PolygonStyle(color, null)
-        else -> PolylineStyle(color)
+        element is Node -> PointStyle("ic_pin_choker", element.tags["name"])
+        IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, null)
+        else -> PolylineStyle(StrokeStyle(color))
     }
 }

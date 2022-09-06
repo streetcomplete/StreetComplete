@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.street_parking
+package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import android.graphics.Canvas

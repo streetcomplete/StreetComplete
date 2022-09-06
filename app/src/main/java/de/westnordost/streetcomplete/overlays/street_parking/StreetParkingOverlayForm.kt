@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.street_parking
+package de.westnordost.streetcomplete.overlays.street_parking
 
 import android.content.Context
 import android.os.Bundle
@@ -6,28 +6,37 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.street_parking.DISPLAYED_PARKING_POSITIONS
 import de.westnordost.streetcomplete.osm.street_parking.LeftAndRightStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
+import de.westnordost.streetcomplete.osm.street_parking.StreetParkingDrawable
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
-import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.IMPLICIT
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_PARKING
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_STANDING
-import de.westnordost.streetcomplete.quests.street_parking.NoParkingSelection.NO_STOPPING
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.DIAGONAL
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.NO
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PARALLEL
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.PERPENDICULAR
-import de.westnordost.streetcomplete.quests.street_parking.ParkingSelection.SEPARATE
+import de.westnordost.streetcomplete.osm.street_parking.WithFootnoteDrawable
+import de.westnordost.streetcomplete.osm.street_parking.applyTo
+import de.westnordost.streetcomplete.osm.street_parking.asItem
+import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
+import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
+import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.IMPLICIT
+import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.NO_PARKING
+import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.NO_STANDING
+import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.NO_STOPPING
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.DIAGONAL
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.NO
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.PARALLEL
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.PERPENDICULAR
+import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.SEPARATE
 import de.westnordost.streetcomplete.util.ktx.noParkingLineStyleResId
 import de.westnordost.streetcomplete.util.ktx.noParkingSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.noStandingLineStyleResId
@@ -46,7 +55,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class AddStreetParkingForm : AStreetSideSelectForm<StreetParking, LeftAndRightStreetParking>() {
+class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
+
+    private var currentParking: LeftAndRightStreetParking? = null
 
     private val isRightSideUpsideDown get() =
         !isForwardOneway && (isReversedOneway || isLeftHandTraffic)
@@ -65,7 +76,28 @@ class AddStreetParkingForm : AStreetSideSelectForm<StreetParking, LeftAndRightSt
 
         streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
+
+        val width = element.tags["width"]
+        binding.hintTextView.text = if (width != null) {
+            val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
+            getString(R.string.street_parking_street_width, widthFormatted)
+        } else null
+
+        if (savedInstanceState == null) {
+            initStateFromTags()
+        }
     }
+
+    private fun initStateFromTags() {
+        val parking = createStreetParkingSides(element.tags)
+        currentParking = parking
+        streetSideSelect.setPuzzleSide(parking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
+        streetSideSelect.setPuzzleSide(parking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
+    }
+
+    override fun hasChanges(): Boolean =
+        streetSideSelect.left?.value != currentParking?.left ||
+        streetSideSelect.right?.value != currentParking?.right
 
     override fun serialize(item: StreetSideDisplayItem<StreetParking>, isRight: Boolean): String =
         Json.encodeToString(item.value)
@@ -140,7 +172,9 @@ class AddStreetParkingForm : AStreetSideSelectForm<StreetParking, LeftAndRightSt
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        applyAnswer(LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value))
+        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+            LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value).applyTo(it)
+        }.create()))
     }
 }
 

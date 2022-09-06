@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
@@ -84,7 +85,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
 
     private fun onNoHouseNumber() {
         val buildingValue = element.tags["building"]!!
-        val buildingType = BuildingType.getByTag("building", buildingValue)
+        val buildingType = BuildingType.getByTag("building", buildingValue)?.asItem()
         if (buildingType != null) {
             showNoHousenumberDialog(buildingType)
         } else {
@@ -94,9 +95,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HousenumberAnswer>() {
         }
     }
 
-    private fun showNoHousenumberDialog(buildingType: BuildingType) {
+    private fun showNoHousenumberDialog(buildingType: DisplayItem<BuildingType>) {
         val dialogBinding = DialogQuestAddressNoHousenumberBinding.inflate(layoutInflater)
-        ItemViewHolder(dialogBinding.root).bind(buildingType.asItem())
+        ItemViewHolder(dialogBinding.root).bind(buildingType)
 
         AlertDialog.Builder(requireContext())
             .setView(dialogBinding.root)

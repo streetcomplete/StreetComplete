@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
@@ -27,7 +28,7 @@ class ElementEditUploader(
             mapDataApi.uploadChanges(changesetId, mapDataChanges)
         } catch (e: ConflictException) {
             val changesetId = changesetManager.createChangeset(edit.type, edit.source)
-            mapDataApi.uploadChanges(changesetId, mapDataChanges)
+            mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
         }
     }
 

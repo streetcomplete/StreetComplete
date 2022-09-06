@@ -2,28 +2,17 @@ package de.westnordost.streetcomplete.quests.crossing_type
 
 import android.os.Bundle
 import android.view.View
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.RAISED
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS_ZEBRA
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.UNMARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.ZEBRA
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddCrossingTypeForm : AImageListQuestForm<CrossingType, CrossingType>() {
 
-    val crossingItems = listOf(
-        Item(TRAFFIC_SIGNALS, R.drawable.crossing_type_signals, R.string.quest_crossing_type_signals_controlled),
-        Item(TRAFFIC_SIGNALS_ZEBRA, R.drawable.crossing_type_signals_zebra, R.string.quest_crossing_type_signals_controlled_zebra),
-        Item(ZEBRA, R.drawable.crossing_type_zebra, R.string.quest_crossing_type_zebra),
-        Item(MARKED, R.drawable.crossing_type_marked, R.string.quest_crossing_type_marked),
-        Item(UNMARKED, R.drawable.crossing_type_unmarked, R.string.quest_crossing_type_unmarked)
-    )
+    val crossingItems = CrossingType.values().filterNot { it == RAISED }.map { it.asItem() }
 
-    val raisedItem = Item(RAISED, R.drawable.traffic_calming_table, R.string.quest_crossing_type_raised)
+    val raisedItem = RAISED.asItem()
 
     override val items = crossingItems + raisedItem
 

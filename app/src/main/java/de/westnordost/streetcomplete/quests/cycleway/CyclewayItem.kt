@@ -76,56 +76,56 @@ private fun Cycleway.getIconResId(isLeftHandTraffic: Boolean): Int =
     if (isLeftHandTraffic) getLeftHandTrafficIconResId() else getRightHandTrafficIconResId()
 
 private fun Cycleway.getRightHandTrafficIconResId(): Int = when (this) {
-    UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane
-    EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane
-    ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane
-    SUGGESTION_LANE -> R.drawable.ic_cycleway_suggestion_lane
-    TRACK -> R.drawable.ic_cycleway_track
-    NONE -> R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_none_no_oneway
-    PICTOGRAMS -> R.drawable.ic_cycleway_pictograms
+    UNSPECIFIED_LANE ->  R.drawable.ic_cycleway_lane
+    EXCLUSIVE_LANE ->    R.drawable.ic_cycleway_lane
+    ADVISORY_LANE ->     R.drawable.ic_cycleway_shared_lane
+    SUGGESTION_LANE ->   R.drawable.ic_cycleway_suggestion_lane
+    TRACK ->             R.drawable.ic_cycleway_track
+    NONE ->              R.drawable.ic_cycleway_none
+    NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway
+    PICTOGRAMS ->        R.drawable.ic_cycleway_pictograms
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
-    DUAL_LANE -> R.drawable.ic_cycleway_lane_dual
-    DUAL_TRACK -> R.drawable.ic_cycleway_track_dual
-    BUSWAY -> R.drawable.ic_cycleway_bus_lane
-    SEPARATE -> R.drawable.ic_cycleway_none
+    DUAL_LANE ->         R.drawable.ic_cycleway_lane_dual
+    DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual
+    BUSWAY ->            R.drawable.ic_cycleway_bus_lane
+    SEPARATE ->          R.drawable.ic_cycleway_none
     else -> 0
 }
 
 private fun Cycleway.getLeftHandTrafficIconResId(): Int = when (this) {
-    UNSPECIFIED_LANE -> R.drawable.ic_cycleway_lane_l
-    EXCLUSIVE_LANE -> R.drawable.ic_cycleway_lane_l
-    ADVISORY_LANE -> R.drawable.ic_cycleway_shared_lane_l
-    SUGGESTION_LANE -> R.drawable.ic_cycleway_suggestion_lane
-    TRACK -> R.drawable.ic_cycleway_track_l
-    NONE -> R.drawable.ic_cycleway_none
-    NONE_NO_ONEWAY -> R.drawable.ic_cycleway_none_no_oneway_l
-    PICTOGRAMS -> R.drawable.ic_cycleway_pictograms_l
+    UNSPECIFIED_LANE ->  R.drawable.ic_cycleway_lane_l
+    EXCLUSIVE_LANE ->    R.drawable.ic_cycleway_lane_l
+    ADVISORY_LANE ->     R.drawable.ic_cycleway_shared_lane_l
+    SUGGESTION_LANE ->   R.drawable.ic_cycleway_suggestion_lane
+    TRACK ->             R.drawable.ic_cycleway_track_l
+    NONE ->              R.drawable.ic_cycleway_none
+    NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway_l
+    PICTOGRAMS ->        R.drawable.ic_cycleway_pictograms_l
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
-    DUAL_LANE -> R.drawable.ic_cycleway_lane_dual_l
-    DUAL_TRACK -> R.drawable.ic_cycleway_track_dual_l
-    BUSWAY -> R.drawable.ic_cycleway_bus_lane_l
-    SEPARATE -> R.drawable.ic_cycleway_none
+    DUAL_LANE ->         R.drawable.ic_cycleway_lane_dual_l
+    DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual_l
+    BUSWAY ->            R.drawable.ic_cycleway_bus_lane_l
+    SEPARATE ->          R.drawable.ic_cycleway_none
     else -> 0
 }
 
 private fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (this) {
-    UNSPECIFIED_LANE -> R.string.quest_cycleway_value_lane
-    EXCLUSIVE_LANE -> R.string.quest_cycleway_value_lane
-    ADVISORY_LANE -> R.string.quest_cycleway_value_lane_soft
-    SUGGESTION_LANE -> R.string.quest_cycleway_value_suggestion_lane
-    TRACK -> R.string.quest_cycleway_value_track
+    UNSPECIFIED_LANE ->  R.string.quest_cycleway_value_lane
+    EXCLUSIVE_LANE ->    R.string.quest_cycleway_value_lane
+    ADVISORY_LANE ->     R.string.quest_cycleway_value_lane_soft
+    SUGGESTION_LANE ->   R.string.quest_cycleway_value_suggestion_lane
+    TRACK ->             R.string.quest_cycleway_value_track
     NONE -> {
         if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
-        else R.string.quest_cycleway_value_none
+        else                      R.string.quest_cycleway_value_none
     }
-    NONE_NO_ONEWAY -> R.string.quest_cycleway_value_none_but_no_oneway
-    PICTOGRAMS -> R.string.quest_cycleway_value_shared
+    NONE_NO_ONEWAY ->    R.string.quest_cycleway_value_none_but_no_oneway
+    PICTOGRAMS ->        R.string.quest_cycleway_value_shared
     SIDEWALK_EXPLICIT -> R.string.quest_cycleway_value_sidewalk
-    DUAL_LANE -> R.string.quest_cycleway_value_lane_dual
-    DUAL_TRACK -> R.string.quest_cycleway_value_track_dual
-    BUSWAY -> R.string.quest_cycleway_value_bus_lane
-    SEPARATE -> R.string.quest_cycleway_value_separate
+    DUAL_LANE ->         R.string.quest_cycleway_value_lane_dual
+    DUAL_TRACK ->        R.string.quest_cycleway_value_track_dual
+    BUSWAY ->            R.string.quest_cycleway_value_bus_lane
+    SEPARATE ->          R.string.quest_cycleway_value_separate
     else -> 0
 }
 

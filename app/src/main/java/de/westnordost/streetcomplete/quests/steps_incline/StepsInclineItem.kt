@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.view.RotatedCircleDrawable
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun StepsIncline.toItem(context: Context, rotation: Float): DisplayItem<StepsIncline> {
+fun StepsIncline.asItem(context: Context, rotation: Float): DisplayItem<StepsIncline> {
     val drawable = RotatedCircleDrawable(context.getDrawable(iconResId)!!)
     drawable.rotation = rotation
     return Item2(this, DrawableImage(drawable), ResText(R.string.quest_steps_incline_up))

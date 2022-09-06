@@ -120,7 +120,7 @@ class SidewalkKtTest {
     }
 }
 
-fun verifyAnswer(tags: Map<String, String>, answer: SidewalkSides, expectedChanges: Array<StringMapEntryChange>) {
+private fun verifyAnswer(tags: Map<String, String>, answer: SidewalkSides, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
     val changes = cb.create().changes

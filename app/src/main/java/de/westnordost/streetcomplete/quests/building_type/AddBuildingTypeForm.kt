@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType?, BuildingType>() {
+class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType, BuildingType>() {
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
@@ -14,9 +14,9 @@ class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType?, BuildingTy
         AnswerItem(R.string.quest_buildingType_answer_demolished) { applyAnswer(BuildingType.DEMOLISHED) }
     )
 
-    override val topItems = topBuildingTypes.toItems()
+    override val topItems = BuildingType.topSelectableValues.toItems()
 
-    override val allItems = buildingCategories.toItems()
+    override val allItems = BuildingTypeCategory.values().toItems()
 
     override val itemsPerRow = 1
 
@@ -26,10 +26,8 @@ class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType?, BuildingTy
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_with_description
     }
 
-    override fun onClickOk(value: BuildingType?) {
-        // we can be sure that `value` is not null here because
-        // AGroupedImageListQuestAnswerFragment.onClickOk checks for that case
-        applyAnswer(value!!)
+    override fun onClickOk(value: BuildingType) {
+        applyAnswer(value)
     }
 
     private fun showMultipleTypesHint() {

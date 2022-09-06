@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswe
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)

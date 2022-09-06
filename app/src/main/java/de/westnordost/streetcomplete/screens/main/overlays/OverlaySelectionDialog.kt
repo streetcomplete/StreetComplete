@@ -61,9 +61,8 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
 
         val overlay = prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.split(" with ")?.takeIf { it.size == 2 }
         val nodes = CheckBox(c).apply {
-            text = "nodes (currently not working)"
+            text = "nodes"
             isChecked = overlay?.get(0)?.contains("nodes") ?: true
-            isEnabled = false // todo: enable once it's working
         }
         val ways = CheckBox(c).apply {
             text = "ways"
