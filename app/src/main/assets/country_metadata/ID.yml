@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 510
@@ -7,5 +7,6 @@ noStoppingSignStyle: australia
 officialLanguages: [id, ms, jv, su, mad, min]
 popularReligions: [muslim, christian, hindu, buddhist, chinese_folk]
 popularSports: [soccer, tennis, basketball, volleyball, badminton]
+postboxesHaveCollectionTimes: true
 atmOperators: [BNI, BCA, BRI, Mandiri, Bank Mandiri, Bank BRI, BANK RAKYAT INDONESIA, BANK NASIONAL INDONESIA, 'BCA, Mandiri', CIMB, DKI, Bank BNI, BANK CENTRAL ASIA, 'BNI, Mandiri', 'BCA, BRI', Danamon, Bank BCA, 'BCA, BRI, Mandiri', ATM BNI, Bank Jatim, BANK TABUNGAN NEGARA, 'BRI, Mandiri', CIMB Niaga, ATM BCA, 'BCA, BNI', ATM BRI, PT Bank Rakyat Indonesia, BANK BENGKULU, Maybank, 'BNI, BRI', 'CIMB, Mandiri', Bank Negara Indonesia, BANK DANAMON, Link, 'BCA, CIMB', ATM Mandiri, Bank Muamalat, Panin, PermataBank, 'BNI, CIMB, Mandiri', 'BCA, BNI, Mandiri', Permata Bank, ATM bank, NIAGA, 'BNI, CIMB', BJB, ATM, Bank NTT, 'BNI, BCA, Mandiri', Permata, Bank BTN, Bank Central Asia (BCA), ATM Center, Mandiri Bank, BPD, PT Bank Central Asia, Bank Jateng, Bank BPD DIY, Bank Jabar Banten, HSBC, ATM Bank BRI, Sinarmas, Danamon ATM, Bank DKI, 'BCA, CIMB, Mandiri', 'BNI, BRI, CIMB, Mandiri', 'BCA, BNI, BRI, CIMB, Mandiri', Commonwealth Bank, UOB, Bank Sumsel Babel, BNI46, ATM BNI 46, ATM Bank Mandiri, Bank Nagari, BANK SYARIAH MANDIRI, BNI 46, Bank Negara Indonesia 46, PT Bank Negara Indonesia, Bank Panin, BANK INTERNASIONAL INDONESIA, Bank CIMB Niaga, Bank Kalsel KCPS Kedai Syariah Pelaihari, May bank, BRI & BNI, BRI Bank, Bank NTB, ATM Bank BCA, Bersama, Muamalat, DBS, BTN, 'BCA, DKI', 'BCA, BNI, BRI', 'BCA, BNI, BRI, DKI, Mandiri', 'BNI, BRI, Mandiri', 'BRI, BTN', 'Bukopin, CIMB', 'BCA, BRI, CIMB', desa oti, ds labean, desa samalili, desa bou, desa lembah mukti, desa saojo, taripa, buntongi, tuntung, ATM CIMB NIAGA, OCBC, ATM BNI Batui, 'PT Bank Mandiri (Persero),Tbk']
 orchardProduces: [rubber, coconut, cacao, coffee, cashew_nut, chilli_pepper, sweet_pepper, guava, mango, mangosteen, nutmeg, pepper, banana, areca_nut, tea, orange, tomato, avocado]

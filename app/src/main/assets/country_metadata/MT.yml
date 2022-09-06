@@ -1,10 +1,14 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 edgeLineStyle: white
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 278
+noParkingLineStyle: yellow
 noStoppingLineStyle: double yellow
 officialLanguages: [mt, en]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
+postboxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true
 atmOperators: [BOV, HSBC, Euronet, Bank of Valletta, Bank of Valleta, APS]
 orchardProduces: [grape]

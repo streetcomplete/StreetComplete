@@ -1510,7 +1510,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja älä mene yksityisalueill
     <string name="achievement_surveyor_title">"Maanmittaaja"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_surveyor_solved_X">"Ratkaisit %d kysymystä! Jatka edelleen saavuttaakseen seuraava taso OSM liittyen ja muiden kartoittusprojektien parissa!"</string>
+    <string name="achievement_surveyor_solved_X">"Ratkaisit %d kysymystä! Jatka edelleen saavuttaaksesi seuraava taso OSM liittyen ja muiden kartoitusprojektien parissa!"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_regular_title">"Tavallinen"</string>
@@ -1534,9 +1534,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja älä mene yksityisalueill
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Monikerroksinen"</string>
-
-    <!-- Fuzzy -->
-    <string name="achievement_building_solved_X">"Ratkaisit %d rakennuksiin liittyvä kysymystä. Huomio, että sovellus kysy talonumeroa vasta talotyyppin määrittelelyn jälkeen."</string>
+    <string name="achievement_building_solved_X">"Ratkaisit %d rakennuksiin liittyvää kysymystä. Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkeen."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_blind_title">"Kuudes Aisti"</string>
@@ -1548,7 +1546,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja älä mene yksityisalueill
     <string name="achievement_pedestrian_title">"Juoksija"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_pedestrian_solved_X">"Ratkaisit %d kysymystä helpottamaan jalankulkijoita"</string>
+    <string name="achievement_pedestrian_solved_X">"Ratkaisit %d kysymystä helpottamaan jalankulkijoita!"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_veg_title">"Eläinten ystävä"</string>
@@ -2170,6 +2168,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_seating_indoor_only">"Istumapaikat vain sisällä"</string>
     <string name="quest_seating_outdoor_only">"Istumapaikat vain ulkona"</string>
     <string name="quest_seating_indoor_and_outdoor">"Istumapaikkoja sisällä ja ulkona"</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"Tämä kyselytyyppi on poistettu oletuksena käytöstä, koska se saattaa vaatia tietyn vuodenajan ulkoistumapaikkojen varmistamiseksi."</string>
     <string name="no_camera_permission_toast">"Kameran käyttöoikeutta ei ole"</string>
 
     <!-- Quests
@@ -2198,6 +2197,9 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Onko tällä pysäkillä katosta?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Onko tällä pysäkillä taktiilista päällystettä?"</string>
     <string name="quest_dietType_halal_name_title2">"Saako täältä halal-tuotteita?"</string>
     <string name="quest_dietType_kosher_name_title2">"Saako täältä kosher-tuotteita?"</string>
     <string name="quest_dietType_vegan_title2">"Onko ruokalistalla vegaanituotteita?"</string>
@@ -2268,10 +2270,12 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_war_memorial">"Sotamuistomerkki"</string>
     <string name="quest_memorialType_obelisk">"Obeliski"</string>
     <string name="quest_memorialType_sculpture">"Muu veistos"</string>
+    <string name="overlay_none">"Ei mitään"</string>
     <string name="overlay_lit">"Katuvalaistus"</string>
     <string name="lit_value_yes">"Valaistu"</string>
     <string name="lit_value_no">"Ei valaistu"</string>
     <string name="lit_value_24_7">"Valaistu ympärivuorokautisesti"</string>
     <string name="lit_value_automatic">"Valaistu kun joku kulkee ohi"</string>
     <string name="overlay_sidewalk">"Jalkakäytävät"</string>
+    <string name="quest_generic_answer_is_indoors">"Tämä on sisätiloissa"</string>
 </resources>

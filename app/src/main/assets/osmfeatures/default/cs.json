@@ -296,6 +296,13 @@
                 "barrier": {
                     "label": "Typ"
                 },
+                "barrier_planter": {
+                    "label": "Zábrana",
+                    "options": {
+                        "planter": "Ano",
+                        "undefined": "Ne"
+                    }
+                },
                 "basin": {
                     "label": "Typ"
                 },
@@ -1119,11 +1126,11 @@
                     "label": "Druh"
                 },
                 "frequency": {
-                    "label": "Pracovní frekvence",
+                    "label": "Provozní frekvence",
                     "terms": "provozní frekvence,frekvence,hz,mhz,kmitočet,hertz,proud,střídavý"
                 },
                 "frequency_electrified": {
-                    "label": "Pracovní frekvence",
+                    "label": "Provozní frekvence",
                     "terms": "provozní frekvence,frekvence,hz,mhz,kmitočet,hertz,proud,střídavý"
                 },
                 "from": {
@@ -1417,6 +1424,9 @@
                 "landuse": {
                     "label": "Typ"
                 },
+                "lane_markings": {
+                    "label": "Značení jízdních pruhů"
+                },
                 "lanes": {
                     "label": "Pruhů",
                     "placeholder": "1, 2, 3...",
@@ -1578,12 +1588,18 @@
                     "label": "Maximální hmotnost",
                     "terms": "maximální hmotnost,povolená hmotnost,limit,váha,povolení,omezení,hmotnost,nosnost,zátěž"
                 },
+                "maxwidth": {
+                    "label": "Maximální šířka"
+                },
                 "memorial": {
                     "label": "Typ"
                 },
                 "microbrewery": {
                     "label": "Minipivovar",
                     "terms": "minipivovar,mini pivovar,mini-pivovar,malý pivovar,drobný pivovar,místní pivovar,vaření piva,pivo,lokální"
+                },
+                "military_service": {
+                    "label": "Vojenská služba"
                 },
                 "mimics": {
                     "label": "Kamuflovaný vysílač",
@@ -2454,6 +2470,14 @@
                         "multi": "Více sportů"
                     }
                 },
+                "sport_pub": {
+                    "label": "Sporty",
+                    "options": {
+                        "billiards": "Kulečník",
+                        "darts": "Šipky",
+                        "table_soccer": "Stolní fotbal"
+                    }
+                },
                 "sport_racing_motor": {
                     "label": "Sporty",
                     "options": {
@@ -2780,17 +2804,7 @@
                     "terms": "viditelnost cesty,jasnost trasy,čitelnost,snadnost,orientace,nápadnost"
                 },
                 "transformer": {
-                    "label": "Typ",
-                    "options": {
-                        "auto": "Autotransformátor",
-                        "auxiliary": "Pomocný",
-                        "converter": "Převodník",
-                        "distribution": "Distribuční",
-                        "generator": "Generátor",
-                        "phase_angle_regulator": "Regulátor fázového úhlu",
-                        "traction": "Trakční",
-                        "yes": "Neznámé"
-                    }
+                    "label": "Typ"
                 },
                 "trees": {
                     "label": "Stromy"
@@ -4185,6 +4199,15 @@
                     "name": "Hraniční kontrola",
                     "terms": "kontrolní bod,clo,mezinárodní hranice,pasová kontrola,přístav vstupu,vízum"
                 },
+                "barrier/bump_gate": {
+                    "name": "Příčný práh"
+                },
+                "barrier/bus_trap": {
+                    "name": "Past na autobusy"
+                },
+                "barrier/cable_barrier": {
+                    "name": "Kabelová zábrana"
+                },
                 "barrier/cattle_grid": {
                     "name": "Přejezdový rošt",
                     "terms": "mříž proti pohybu dobytka,mříž,příkop,krávy"
@@ -4222,6 +4245,9 @@
                     "name": "Svodidlo",
                     "terms": "zábradlí,dopravní bariéra,svodidlo,střední bariéra,silniční bariéra,armco bariéra"
                 },
+                "barrier/handrail": {
+                    "name": "Zábradlí"
+                },
                 "barrier/hedge": {
                     "name": "Živý plot",
                     "terms": "živý plot,keříky,křoví,okrasný plot"
@@ -4229,6 +4255,9 @@
                 "barrier/height_restrictor": {
                     "name": "Omezovač výšky",
                     "terms": "výšková bariéra,bariéra s omezením výšky,maximální výška,měřič maximální výšky"
+                },
+                "barrier/jersey_barrier": {
+                    "name": "Zábrana Jersey"
                 },
                 "barrier/kerb": {
                     "name": "Obrubník"
@@ -4257,9 +4286,21 @@
                     "name": "Závora",
                     "terms": "závora výložníku,brána výložníku,zdvih výložníku,sklopná tyč,otočný sloup"
                 },
+                "barrier/log": {
+                    "name": "Spadlý strom"
+                },
+                "barrier/motorcycle_barrier": {
+                    "name": "Zábrana proti motorkám"
+                },
+                "barrier/planter": {
+                    "name": "Plantážník (Zábrana)"
+                },
                 "barrier/retaining_wall": {
                     "name": "Opěrná zeď",
                     "terms": "opěrná zeď"
+                },
+                "barrier/rope": {
+                    "name": "Provazový plot"
                 },
                 "barrier/sally_port": {
                     "name": "výpadová brána skrze opevnění",
@@ -4291,6 +4332,9 @@
                 "barrier/wall/noise_barrier": {
                     "name": "Protihluková bariéra",
                     "terms": "akustická bariéra,protihluková stěna,protihluková bariéra,zvuková bariéra,zvuková zeď,zvuková stěna,stěna proti zvuku"
+                },
+                "barrier/wicket_gate": {
+                    "name": "Branka"
                 },
                 "boundary": {
                     "name": "Hranice"
@@ -4392,6 +4436,9 @@
                 "building/garages": {
                     "name": "Budova soukromých garáží",
                     "terms": "garáž,garáže,parkování,kryté parkování"
+                },
+                "building/ger": {
+                    "name": "Jurta"
                 },
                 "building/grandstand": {
                     "name": "tribuna",
@@ -5037,9 +5084,8 @@
                     "name": "Označený přechod",
                     "terms": "přechod,zebra,označený přechod,značený přechod,přechod pro chodce,chodci"
                 },
-                "highway/crossing/signals": {
-                    "name": "Přechod se semaforem pro chodce",
-                    "terms": "semafor pro chodce,semafory pro chodce,přechod pro chodce (světelný),přechod pro cyklisty (světelný),přechod pro chodce (se semafory),plochý vršek,hrb,rychlost,pomalu"
+                "highway/crossing/traffic_signals": {
+                    "name": "Přechod se semaforem pro chodce"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "Označený přechod pro chodce"
@@ -5074,6 +5120,9 @@
                     "name": "Neoznačený přejezd pro cyklisty",
                     "terms": "přejezd pro cyklisty,neoznačený přejezd pro cyklisty,cyklo přejezd,cyklopřejezd,cyklistický přejezd,přejíždění cyklistů,cyklistický,cyklotrasa,cyklostezka,stezka pro cyklisty"
                 },
+                "highway/cycleway/moped_link-NL": {
+                    "name": "Stezka pro mopedy"
+                },
                 "highway/elevator": {
                     "name": "Výtah",
                     "terms": "vlek"
@@ -5081,6 +5130,9 @@
                 "highway/elevator_line": {
                     "name": "Pozemní lanová dráha",
                     "terms": "šikmý výtah,lanová dráha,pozemní lanovka,pozemní lanová dráha,šikmá kolejová dráha,lanovka na petřín"
+                },
+                "highway/emergency_access_point": {
+                    "name": "Místo vjezdu záchranných vozidel"
                 },
                 "highway/emergency_bay": {
                     "name": "Místo nouzového zastavení",
@@ -5101,6 +5153,9 @@
                 "highway/footway/crossing": {
                     "name": "Přechod pro chodce"
                 },
+                "highway/footway/informal": {
+                    "name": "Neformální chodník/stezka pro pěší"
+                },
                 "highway/footway/marked": {
                     "name": "Označený přechod pro chodce",
                     "terms": "označený,zebra,přechod,přechod pro chodce,chodec,chodci,značený přechod,křížení"
@@ -5109,9 +5164,8 @@
                     "name": "Chodník podél vozovky",
                     "terms": "chodník,pěší cesta,pěší stezka,pro pěší,chodec,chodci,pro chodce,stezka pro chodce"
                 },
-                "highway/footway/signals": {
-                    "name": "Přechod se semaforem pro chodce",
-                    "terms": "semafor pro chodce,semafory pro chodce,přechod pro chodce (světelný),přechod pro cyklisty (světelný),přechod pro chodce (se semafory),plochý vršek,hrb,rychlost,pomalu"
+                "highway/footway/traffic_signals": {
+                    "name": "Přechod se semaforem pro chodce"
                 },
                 "highway/footway/unmarked": {
                     "name": "Neoznačený přechod",
@@ -5148,7 +5202,7 @@
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/motorway_link-US-CA": {
-                    "name": "Dálnice - nájezd",
+                    "name": "Dálnice – nájezd",
                     "terms": "na rampě,mimo rampu,rampa,silnice,ulice"
                 },
                 "highway/passing_place": {
@@ -5180,11 +5234,11 @@
                     "terms": "silnice,ulice"
                 },
                 "highway/primary_link": {
-                    "name": "Silnice 1. třídy - nájezd",
+                    "name": "Silnice 1. třídy – nájezd",
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/primary_link-US-CA": {
-                    "name": "Silnice 1. třídy - nájezd",
+                    "name": "Silnice 1. třídy – nájezd",
                     "terms": "na rampě,mimo rampu,rampa,silnice,ulice"
                 },
                 "highway/raceway": {
@@ -5220,7 +5274,7 @@
                     "terms": "silnice,ulice"
                 },
                 "highway/secondary_link": {
-                    "name": "Silnice 2. třídy - nájezd",
+                    "name": "Silnice 2. třídy – nájezd",
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/service": {
@@ -5252,6 +5306,9 @@
                     "name": "Rychlostní kamera",
                     "terms": "rychlostní kamera,radar,kamera s omezením rychlosti,omezovač rychlosti,dopravní kamera"
                 },
+                "highway/speed_display": {
+                    "name": "Značka rychlostního radaru"
+                },
                 "highway/steps": {
                     "name": "Schody",
                     "terms": "schody,schodiště"
@@ -5273,7 +5330,7 @@
                     "terms": "silnice,ulice"
                 },
                 "highway/tertiary_link": {
-                    "name": "Silnice 3. třídy - nájezd",
+                    "name": "Silnice 3. třídy – nájezd",
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/toll_gantry": {
@@ -5300,11 +5357,11 @@
                     "terms": "rychlostní komunikace,vícepruhá komunikace"
                 },
                 "highway/trunk_link": {
-                    "name": "Víceproudá silnice - nájezd",
+                    "name": "Víceproudá silnice – nájezd",
                     "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
                 },
                 "highway/trunk_link-US-CA": {
-                    "name": "Víceproudá silnice - nájezd",
+                    "name": "Víceproudá silnice – nájezd",
                     "terms": "na rampě,mimo rampu,rampa,silnice,ulice"
                 },
                 "highway/turning_circle": {
@@ -5547,13 +5604,15 @@
                     "name": "Kasárna",
                     "terms": "letectvo,armáda,základna,boj,námořnictvo,válka"
                 },
+                "landuse/military/base": {
+                    "name": "Vojenská základna"
+                },
+                "landuse/military/base/navy": {
+                    "name": "Námořní základna"
+                },
                 "landuse/military/danger_area": {
                     "name": "Nebezpečné území",
                     "terms": "letectvo,armáda,námořnictvo,válka,výbuch,exploze"
-                },
-                "landuse/military/naval_base": {
-                    "name": "Námořní základna",
-                    "terms": "základna,boj,námořnictvo,loď,ponorka,válka"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Vojenská překážková dráha",
@@ -5906,6 +5965,9 @@
                     "name": "Softballové hřiště",
                     "terms": "baseball,diamant,softball"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "Stůl na stolní fotbal"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "Pingpongový stůl",
                     "terms": "stolní tenis,ping pong"
@@ -6037,6 +6099,9 @@
                 "man_made/cairn": {
                     "name": "mohyla",
                     "terms": "skalní hromada,kamenná hromada,kamenná kopa,carn"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Věšák na koberce"
                 },
                 "man_made/chimney": {
                     "name": "Komín",
@@ -6173,6 +6238,9 @@
                 },
                 "man_made/pipeline/valve": {
                     "name": "potrubní ventil"
+                },
+                "man_made/planter": {
+                    "name": "Plantážník"
                 },
                 "man_made/pumping_station": {
                     "name": "Čerpací stanice",
@@ -7360,11 +7428,17 @@
                 "shop/clothes/second_hand": {
                     "name": "second-hand oblečení"
                 },
+                "shop/clothes/suits": {
+                    "name": "Obleky"
+                },
                 "shop/clothes/underwear": {
                     "name": "prodejna spodního prádla"
                 },
                 "shop/clothes/wedding": {
                     "name": "obchod se svatebním oblečením"
+                },
+                "shop/clothes/workwear": {
+                    "name": "Pracovní oděvy"
                 },
                 "shop/coffee": {
                     "name": "Obchod s kávou",
@@ -7872,8 +7946,7 @@
                     "name": "prvek pro turisty"
                 },
                 "tourism/alpine_hut": {
-                    "name": "Horská chata",
-                    "terms": "horská chata,alpská chata,chata,noclehárna,horská bouda,bouda"
+                    "name": "Horský srub"
                 },
                 "tourism/apartment": {
                     "name": "Byt/apartmán k pronájmu",
@@ -8178,6 +8251,9 @@
                 "type/route/power": {
                     "name": "Elektrická trasa",
                     "terms": "trasa elektrického vedení,elektrické vedení,elektrika,napětí,vysoké napětí,drát,dráty,kabel,kabely"
+                },
+                "type/route/railway": {
+                    "name": "Železniční trasa"
                 },
                 "type/route/road": {
                     "name": "Silniční trasa",

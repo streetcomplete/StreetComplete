@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.util.ktx.truncate
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -127,7 +128,7 @@ class NoteEditsUploader(
         noteText: String?
     ): String {
         if (trackpoints.isEmpty()) return ""
-        val trackId = tracksApi.create(trackpoints, noteText)
+        val trackId = tracksApi.create(trackpoints, noteText?.truncate(255))
         val encodedUsername = URLEncoder.encode(userDataSource.userName, "utf-8").replace("+", "%20")
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/$trackId\n"
     }

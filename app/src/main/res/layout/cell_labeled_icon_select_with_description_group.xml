@@ -5,11 +5,19 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground">
 
+    <View
+        android:id="@+id/topDivider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/divider"/>
+
     <RelativeLayout
         android:id="@+id/group_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/topDivider"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="1dp"
         android:padding="4dp"
         android:background="@drawable/image_select_cell_rounded">
 
@@ -57,10 +65,4 @@
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_below="@id/group_container"
-        android:background="@color/divider"/>
 </RelativeLayout>

@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 edgeLineStyle: white
 hasLivingStreet: true
@@ -8,5 +8,6 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [mn]
 popularReligions: [buddhist, chinese_folk, taoist]
+postboxesHaveCollectionTimes: true
 atmOperators: [Хаан банк, Хаан, Хаанбанк, Голомт, Golomt Bank, АТМ, Голомт банк, Төрийн банк, khaan bank, Khan Bank, ХХБ, Худалдаа хөгжлийн банк, atm, Хаан банк АТМ, Ger, Aa, zam, khaanbank]
 orchardProduces: [hazelnut]

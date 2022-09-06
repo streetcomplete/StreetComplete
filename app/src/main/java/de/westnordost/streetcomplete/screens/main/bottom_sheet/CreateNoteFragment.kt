@@ -51,6 +51,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val floatingBottomView get() = bottomSheetBinding.okButton
     override val backButton get() = bottomSheetBinding.closeButton
     override val okButton get() = bottomSheetBinding.okButton
+    override val okButtonContainer get() = bottomSheetBinding.okButtonContainer
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 
@@ -152,7 +153,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                val recordedTrack = listener?.getRecordedTrack().orEmpty()
+                val recordedTrack =
+                    if (hasGpxAttached) listener?.getRecordedTrack().orEmpty() else emptyList()
                 noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, recordedTrack)
             }
         }

@@ -296,6 +296,13 @@
                 "barrier": {
                     "label": "種類"
                 },
+                "barrier_planter": {
+                    "label": "屏障物",
+                    "options": {
+                        "planter": "有",
+                        "undefined": "無"
+                    }
+                },
                 "basin": {
                     "label": "種類"
                 },
@@ -1001,7 +1008,8 @@
                     "label": "類型"
                 },
                 "entrance": {
-                    "label": "種類"
+                    "label": "種類",
+                    "terms": "類別,類型,種類"
                 },
                 "except": {
                     "label": "例外"
@@ -1390,7 +1398,7 @@
                     "terms": "路口編號"
                 },
                 "junction_line": {
-                    "label": "連接點",
+                    "label": "交叉口",
                     "options": {
                         "circular": "號誌圓環",
                         "jughandle": "槽化車道",
@@ -1418,6 +1426,10 @@
                 },
                 "landuse": {
                     "label": "種類"
+                },
+                "lane_markings": {
+                    "label": "車道標示",
+                    "terms": "車道標記"
                 },
                 "lanes": {
                     "label": "車線數目",
@@ -1580,12 +1592,19 @@
                     "label": "最大重量",
                     "terms": "最高承重"
                 },
+                "maxwidth": {
+                    "label": "最大寬度",
+                    "terms": "最大允許寬度"
+                },
                 "memorial": {
                     "label": "類型"
                 },
                 "microbrewery": {
                     "label": "微釀啤酒作坊",
                     "terms": "私釀酒"
+                },
+                "military_service": {
+                    "label": "軍事服務"
                 },
                 "mimics": {
                     "label": "偽裝",
@@ -2108,6 +2127,9 @@
                     "label": "跑道編號",
                     "placeholder": "範例：01L/19R"
                 },
+                "ref_sector": {
+                    "label": "區塊號碼"
+                },
                 "ref_stop_position": {
                     "label": "站體編號"
                 },
@@ -2320,6 +2342,10 @@
                     "placeholder": "可以, 不行, 只能",
                     "terms": "販售二手貨"
                 },
+                "sector/name": {
+                    "label": "名稱",
+                    "placeholder": "專用名稱（如果有）"
+                },
                 "segregated": {
                     "label": "自行車行人分隔"
                 },
@@ -2457,6 +2483,15 @@
                         "ice_stock": "冰上滑盤",
                         "multi": "多重"
                     }
+                },
+                "sport_pub": {
+                    "label": "運動",
+                    "options": {
+                        "billiards": "撞球",
+                        "darts": "飛鏢",
+                        "table_soccer": "桌上足球"
+                    },
+                    "terms": "運動"
                 },
                 "sport_racing_motor": {
                     "label": "運動",
@@ -2785,17 +2820,7 @@
                     "terms": "路跡可見度"
                 },
                 "transformer": {
-                    "label": "類型",
-                    "options": {
-                        "auto": "自動變壓",
-                        "auxiliary": "輔助",
-                        "converter": "變流器",
-                        "distribution": "分配",
-                        "generator": "發電機",
-                        "phase_angle_regulator": "相角調節器",
-                        "traction": "牽引",
-                        "yes": "未知"
-                    }
+                    "label": "類型"
                 },
                 "trees": {
                     "label": "樹"
@@ -2997,6 +3022,15 @@
                     "label": "線圈",
                     "placeholder": "1, 2, 3...",
                     "terms": "曲折,彎曲"
+                },
+                "windings/auto": {
+                    "label": "自耦變壓器",
+                    "options": {
+                        "no": "否",
+                        "undefined": "假設為否",
+                        "yes": "是"
+                    },
+                    "terms": "自耦變壓器"
                 },
                 "windings/configuration": {
                     "label": "繞組設定",
@@ -3973,6 +4007,10 @@
                     "name": "自動販賣機",
                     "terms": "自動販賣機,販賣機"
                 },
+                "amenity/vending_machine/bicycle_tube": {
+                    "name": "腳踏車內胎自動販賣機",
+                    "terms": "腳踏車內胎自動販賣機"
+                },
                 "amenity/vending_machine/bottle_return": {
                     "name": "瓶罐回收機",
                     "terms": "瓶罐回收裝置"
@@ -4040,6 +4078,10 @@
                 "amenity/vending_machine/parking_tickets": {
                     "name": "停車場繳費機",
                     "terms": "停車場自動繳費機,停車場收費機,販賣機"
+                },
+                "amenity/vending_machine/pizza": {
+                    "name": "披薩自動販賣機",
+                    "terms": "披薩自動販賣機"
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "車票販賣機",
@@ -4192,6 +4234,18 @@
                     "name": "國境口岸",
                     "terms": "出入境管制站,邊境管制站,口岸,國境管制站"
                 },
+                "barrier/bump_gate": {
+                    "name": "防撞門",
+                    "terms": "防撞門"
+                },
+                "barrier/bus_trap": {
+                    "name": "巴士陷阱",
+                    "terms": "巴士阻礙"
+                },
+                "barrier/cable_barrier": {
+                    "name": "鋼纜柵欄",
+                    "terms": "鋼纜柵欄"
+                },
                 "barrier/cattle_grid": {
                     "name": "防畜欄",
                     "terms": "攔畜溝柵,攔牛木柵"
@@ -4223,6 +4277,10 @@
                     "name": "欄杆",
                     "terms": "欄杆"
                 },
+                "barrier/full-height_turnstile": {
+                    "name": "全高度旋轉門",
+                    "terms": "全高度旋轉門"
+                },
                 "barrier/gate": {
                     "name": "閘門",
                     "terms": "閘門"
@@ -4231,6 +4289,13 @@
                     "name": "護欄",
                     "terms": "護軌"
                 },
+                "barrier/hampshire_gate": {
+                    "name": "鐵絲門",
+                    "terms": "鐵絲門"
+                },
+                "barrier/handrail": {
+                    "name": "扶手"
+                },
                 "barrier/hedge": {
                     "name": "樹籬",
                     "terms": "樹籬"
@@ -4238,6 +4303,10 @@
                 "barrier/height_restrictor": {
                     "name": "限高器",
                     "terms": "限高器"
+                },
+                "barrier/jersey_barrier": {
+                    "name": "紐澤西護欄",
+                    "terms": "紐澤西護欄,紐澤西式護欄"
                 },
                 "barrier/kerb": {
                     "name": "路緣",
@@ -4267,9 +4336,23 @@
                     "name": "道閘",
                     "terms": "閘門"
                 },
+                "barrier/log": {
+                    "name": "倒塌的樹木"
+                },
+                "barrier/motorcycle_barrier": {
+                    "name": "機車障礙物",
+                    "terms": "機車車擋,機車障礙"
+                },
+                "barrier/planter": {
+                    "name": "花盆屏障"
+                },
                 "barrier/retaining_wall": {
                     "name": "擋土牆",
                     "terms": "護土牆"
+                },
+                "barrier/rope": {
+                    "name": "繩索柵欄",
+                    "terms": "繩索柵欄"
                 },
                 "barrier/sally_port": {
                     "name": "出擊口",
@@ -4301,6 +4384,10 @@
                 "barrier/wall/noise_barrier": {
                     "name": "隔音牆",
                     "terms": "隔音牆"
+                },
+                "barrier/wicket_gate": {
+                    "name": "小門",
+                    "terms": "小門"
                 },
                 "boundary": {
                     "name": "邊界"
@@ -4407,6 +4494,10 @@
                     "name": "車庫",
                     "terms": "車庫"
                 },
+                "building/ger": {
+                    "name": "Yurt",
+                    "terms": "yurt"
+                },
                 "building/grandstand": {
                     "name": "正面看臺",
                     "terms": "正面看臺,看臺"
@@ -4446,6 +4537,9 @@
                 "building/kindergarten": {
                     "name": "幼兒園建築物",
                     "terms": "幼稚園建築物,幼兒園建築物"
+                },
+                "building/manufacture": {
+                    "name": "工業生產建築物"
                 },
                 "building/mosque": {
                     "name": "清真寺建築",
@@ -4543,6 +4637,10 @@
                 },
                 "building_point": {
                     "name": "建築物"
+                },
+                "cemetery/sector": {
+                    "name": "墓地區塊",
+                    "terms": "墓地區塊"
                 },
                 "club": {
                     "name": "俱樂部",
@@ -5056,9 +5154,9 @@
                     "name": "標記人行穿越道",
                     "terms": "有斑馬線穿越道"
                 },
-                "highway/crossing/signals": {
-                    "name": "行人燈號交叉路口",
-                    "terms": "行人燈號交叉路口"
+                "highway/crossing/traffic_signals": {
+                    "name": "有行人燈號的十字路口",
+                    "terms": "有行人燈號的十字路口"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "標記人行穿越道"
@@ -5093,6 +5191,10 @@
                     "name": "沒有標記的單車穿越道",
                     "terms": "沒有標記的腳踏車穿越道"
                 },
+                "highway/cycleway/moped_link-NL": {
+                    "name": "輕便摩托車聯絡道",
+                    "terms": "輕便摩托車聯絡道"
+                },
                 "highway/elevator": {
                     "name": "電梯",
                     "terms": "電梯,升降梯"
@@ -5100,6 +5202,10 @@
                 "highway/elevator_line": {
                     "name": "斜行升降機",
                     "terms": "斜行升降機"
+                },
+                "highway/emergency_access_point": {
+                    "name": "緊急通道入口",
+                    "terms": "緊急通道入口"
                 },
                 "highway/emergency_bay": {
                     "name": "避車彎",
@@ -5120,6 +5226,9 @@
                 "highway/footway/crossing": {
                     "name": "行人穿越道"
                 },
+                "highway/footway/informal": {
+                    "name": "非正式的步行路徑"
+                },
                 "highway/footway/marked": {
                     "name": "有標記人行穿越道",
                     "terms": "有斑馬線穿越道"
@@ -5128,9 +5237,9 @@
                     "name": "路邊人行道",
                     "terms": "人行道"
                 },
-                "highway/footway/signals": {
-                    "name": "行人燈號交叉路口",
-                    "terms": "行人燈號交叉路口"
+                "highway/footway/traffic_signals": {
+                    "name": "有行人燈號的十字路口",
+                    "terms": "有行人燈號的十字路口"
                 },
                 "highway/footway/unmarked": {
                     "name": "無標記人行穿越道",
@@ -5161,7 +5270,7 @@
                 },
                 "highway/motorway_junction": {
                     "name": "交流道/出口",
-                    "terms": "高速公路交流道/出口,高速公路交匯處/出口,快速道路交流道/出口"
+                    "terms": "高速公路,交流道,出口,交匯處,快速道路"
                 },
                 "highway/motorway_link": {
                     "name": "高速公路聯絡道",
@@ -5274,6 +5383,10 @@
                 "highway/speed_camera": {
                     "name": "測速照相機",
                     "terms": "測速攝影機,測速照相機,測速照相,測速攝影"
+                },
+                "highway/speed_display": {
+                    "name": "雷達速度標誌",
+                    "terms": "雷達速度標誌"
                 },
                 "highway/steps": {
                     "name": "階梯",
@@ -5571,13 +5684,17 @@
                     "name": "軍事建築",
                     "terms": "營房,軍營,營舍"
                 },
+                "landuse/military/base": {
+                    "name": "軍事基地",
+                    "terms": "陸軍基地"
+                },
+                "landuse/military/base/navy": {
+                    "name": "海軍基地",
+                    "terms": "海軍基地"
+                },
                 "landuse/military/danger_area": {
                     "name": "危險區",
                     "terms": "危險地區,危險區域,危險區,禁區"
-                },
-                "landuse/military/naval_base": {
-                    "name": "海軍基地",
-                    "terms": "軍港,海軍基地"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "軍事障礙課程",
@@ -5936,6 +6053,10 @@
                     "name": "壘球場",
                     "terms": "壘球場"
                 },
+                "leisure/pitch/table_soccer": {
+                    "name": "桌上足球台",
+                    "terms": "桌上足球台"
+                },
                 "leisure/pitch/table_tennis": {
                     "name": "乒乓球桌",
                     "terms": "乒乓球桌,桌球桌"
@@ -6070,6 +6191,10 @@
                 "man_made/cairn": {
                     "name": "石標",
                     "terms": "石標"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "地毯衣架",
+                    "terms": "地毯衣架"
                 },
                 "man_made/chimney": {
                     "name": "煙囪",
@@ -6221,6 +6346,10 @@
                 "man_made/pipeline/valve": {
                     "name": "管道閥門",
                     "terms": "管道閥門"
+                },
+                "man_made/planter": {
+                    "name": "花盆",
+                    "terms": "花盆"
                 },
                 "man_made/pumping_station": {
                     "name": "抽水站",
@@ -7530,6 +7659,10 @@
                     "name": "二手服飾店",
                     "terms": "二手服飾店,二手服裝店"
                 },
+                "shop/clothes/suits": {
+                    "name": "套裝服飾店",
+                    "terms": "套裝店"
+                },
                 "shop/clothes/underwear": {
                     "name": "內衣店",
                     "terms": "內衣店"
@@ -7537,6 +7670,10 @@
                 "shop/clothes/wedding": {
                     "name": "婚紗店",
                     "terms": "婚紗店"
+                },
+                "shop/clothes/workwear": {
+                    "name": "工作服服飾店",
+                    "terms": "套裝服店"
                 },
                 "shop/coffee": {
                     "name": "咖啡店",
@@ -8082,8 +8219,8 @@
                     "name": "旅遊圖徽"
                 },
                 "tourism/alpine_hut": {
-                    "name": "高山小屋",
-                    "terms": "高山小屋"
+                    "name": "山中小屋",
+                    "terms": "山中小屋,山小屋"
                 },
                 "tourism/apartment": {
                     "name": "假日公寓",
@@ -8319,7 +8456,8 @@
                     "terms": "法定速限"
                 },
                 "type/multipolygon": {
-                    "name": "多重多邊形"
+                    "name": "多重多邊形",
+                    "terms": "多邊形"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "大眾運輸區域群組"
@@ -8412,6 +8550,10 @@
                 "type/route/power": {
                     "name": "供電路線",
                     "terms": "輸電線路"
+                },
+                "type/route/railway": {
+                    "name": "鐵路路線",
+                    "terms": "鐵路線"
                 },
                 "type/route/road": {
                     "name": "道路路線",

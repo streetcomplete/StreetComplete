@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
 import android.app.ForegroundServiceStartNotAllowedException
-import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
@@ -18,8 +17,6 @@ import org.koin.android.ext.android.inject
  * notes and quests he answered  */
 class UploadService : CoroutineIntentService(TAG) {
     private val uploader: Uploader by inject()
-
-    private lateinit var notification: Notification
 
     // interface
     private val binder = Interface()
@@ -54,11 +51,6 @@ class UploadService : CoroutineIntentService(TAG) {
         uploader.uploadedChangeListener = uploadedChangeRelay
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        notification = createSyncNotification(this)
-    }
-
     override fun onBind(intent: Intent): IBinder {
         return binder
     }
@@ -84,7 +76,7 @@ class UploadService : CoroutineIntentService(TAG) {
 
     private fun updateShowNotification() {
         if (!showNotification || !isUploading) stopForeground(true)
-        else startForeground(NOTIFICATIONS_ID_SYNC, notification)
+        else startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
     }
 
     /** Public interface to classes that are bound to this service  */

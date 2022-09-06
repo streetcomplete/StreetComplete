@@ -25,11 +25,12 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
         and access !~ private|no
         """
 
-    override val changesetComment = "Add whether bicycle shop sells second-hand bicycles"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val changesetComment = "Survey whether bicycle shop sells second-hand bicycles"
     override val wikiLink = "Tag:service:bicycle:second_hand"
     override val icon = R.drawable.ic_quest_bicycle_second_hand
+    override val isReplaceShopEnabled = true
     override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_shop_second_hand_title
 

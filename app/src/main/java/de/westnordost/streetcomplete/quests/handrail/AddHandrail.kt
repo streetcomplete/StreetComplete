@@ -24,7 +24,7 @@ class AddHandrail : OsmFilterQuestType<Boolean>() {
          )
     """
 
-    override val changesetComment = "Add whether steps have a handrail"
+    override val changesetComment = "Specify whether steps have handrails"
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.ic_quest_steps_handrail
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)

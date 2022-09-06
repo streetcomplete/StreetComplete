@@ -7,7 +7,7 @@ layers:
                 order: 32
                 color: global.railway_color
                 join: round
-                width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
+                width: [[10, 0.5px], [12, 0.75px], [13, 1.5px], [18, 2m]]
         # jawg: no filtering between service rail and other possible
         bridges:
             filter: { structure: bridge }
@@ -24,7 +24,7 @@ layers:
                 join: round
                 cap: round
                 color: global.highway_color
-                width: [[8, 1px], [14, 5px], [15, 20m]]
+                width: [[8, 1px], [14, 8px], [18, 20m]]
                 outline:
                     color: global.highway_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
@@ -34,7 +34,13 @@ layers:
             filter: [ class: motorway_link, { class: street, type: trunk_link } ]
             draw:
                 lines-highway-style:
-                    width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
+                    width: [[10, 1px], [14, 3px], [18, 6m]]
+
+        oneway:
+            filter: function () { return feature.oneway == true; }
+            draw:
+                lines-highway-style:
+                    width: [[10, 2px], [14, 4px], [18, 10m]]
 
         bridges:
             filter: { structure: bridge }
@@ -62,7 +68,7 @@ layers:
                 join: miter
                 cap: round
                 color: global.road_color
-                width: 80m
+                width: 40m
 
     roads:
         data: { source: jawg, layer: road }
@@ -73,25 +79,35 @@ layers:
                 join: round
                 cap: round
                 color: global.road_color
-                width: [[5, 1px], [12, 2px], [16, 5px], [17, 8m]]
+                width: [[5, 1px], [12, 2px], [16, 4px], [18, 6m]]
 
         major_road:
-            filter: { class: main, type: [primary, secondary] }
+            filter: { class: main }
             draw:
                 lines-road-style:
-                    width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
+                    width: [[9, 1px], [14, 2px], [16, 5px], [19, 9m]]
+            oneway:
+                filter: function () { return feature.oneway == true; }
+                draw:
+                    lines-road-style:
+                        width: [[9, 0.75px], [14, 1.5px], [16, 3px], [19, 6m]]
 
         minor_road:
-            filter: [ class: street, {class: main, type: tertiary} ]
+            filter: { class: street }
             draw:
                 lines-road-style:
-                    width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
+                    width: [[11, 0.5px], [12, 0.75px], [14, 1.0px], [15, 2.0px], [16, 6m]]
+            oneway:
+                filter: function () { return feature.oneway == true; }
+                draw:
+                    lines-road-style:
+                        width: [[11, 0.25px], [12, 0.5px], [14, 0.5px], [15, 1px], [16, 3m]]
 
         service_road:
             filter: { class: [service, driveway] } # jawg: tracks are in service
             draw:
                 lines-road-style:
-                    width: [[13, 0.5px], [17, 3px], [18, 4m]]
+                    width: [[13, 0.5px], [17, 2.5px], [18, 3m]]
 
         path:
             # jawg: not possible to filter out indoor paths
@@ -99,7 +115,7 @@ layers:
             draw:
                 lines-road-style:
                     color: global.path_color
-                    width: [[14, 0.5px], [15, 1px], [19, 2m]]
+                    width: [[14, 0.5px], [15, 1px], [19, 1m]]
             path-tunnel:
                 filter: { structure: tunnel }
                 draw:
@@ -107,18 +123,26 @@ layers:
                         style: tunnel-way
                         color: global.tunnel_color
             steps:
-                filter: { type: steps }
+                filter: { type: steps, not: { structure: tunnel } }
                 draw:
                     step_dashes:
                         order: 31
                         cap: butt
                         color: global.path_color
-                        width: [[14, 0.5px], [15, 1px], [19, 2m]]
+                        width: [[14, 0.5px], [15, 1px], [19, 1m]]
                 bridge-steps:
                     filter: { structure: bridge }
                     draw:
                         step_dashes:
                             order: 41
+            steps-tunnel:
+                filter: { type: steps, structure: tunnel }
+                draw:
+                    step_dashes:
+                        order: 21
+                        cap: butt
+                        color: global.tunnel_color
+                        width: [[14, 0.5px], [15, 1px], [19, 1m]]
 
         road-outline:
             filter: { $zoom: { min: 15 } }
@@ -146,7 +170,7 @@ layers:
                         style: private-way
 
         oneway:
-            filter: { oneway: [true] , $zoom: { min: 17 } }
+            filter: function () { return $zoom >= 17 && feature.oneway == true; }
             draw:
                 oneway-arrow:
                     flat: true
@@ -154,7 +178,7 @@ layers:
                     color: global.oneway_arrow_color
                     size: [[17, [6px, auto]], [20, [18px, auto]]]
                     placement: spaced
-                    placement_spacing: [[17, 64px], [20, 256px]]
+                    placement_spacing: [[17, 64px], [20, 128px]]
                     angle: auto
                     text:
                         visible: false

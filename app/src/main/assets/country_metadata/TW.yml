@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 centerLineStyle: yellow
 mobileCountryCode: 466
@@ -8,6 +8,7 @@ noStoppingSignStyle: vienna
 officialLanguages: [zh]
 popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]
+postboxesHaveCollectionTimes: true
 atmOperators: [華南銀行, 中華郵政, 國泰世華銀行, 中華郵政股份有限公司, 臺灣銀行, 土地銀行, 郵局, 玉山銀行, 高雄銀行, 台新銀行, 彰化銀行, 中國信託, Cathay United Bank, post, 兆豐國際商業銀行, 中國信託商業銀行, 永豐銀行, 合作金庫銀行, 臺灣土地銀行, CTBC, 兆豐銀行, 國泰世華商業銀行, taiwan cooperative, 國泰世華, 永豐商業銀行, First Bank, 台灣銀行, 上海商銀, 元大商業銀行, 聯邦銀行, Union Bank, 台北富邦銀行, 玉山商業銀行, 聯邦商業銀行]
 chargingStationOperators: [英屬開曼群島商睿能新動力股份有限公司台灣分公司, 睿能創意股份有限公司, Gogoro Inc., gogoro, Gogoro, Gogoro Taiwan, 台灣城市動力股份有限公司]
 clothesContainerOperators: [高雄市方舟就業服務協會]

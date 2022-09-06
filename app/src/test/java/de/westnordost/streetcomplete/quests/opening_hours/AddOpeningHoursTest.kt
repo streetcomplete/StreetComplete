@@ -64,6 +64,15 @@ class AddOpeningHoursTest {
         )
     }
 
+    @Test fun `apply no opening hours sign answer when there was an always open answer before`() {
+        questType.verifyAnswer(
+            mapOf("opening_hours" to "24/7"),
+            NoOpeningHoursSign,
+            StringMapEntryAdd("opening_hours:signed", "no"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+        )
+    }
+
     @Test fun `apply always open answer`() {
         questType.verifyAnswer(
             AlwaysOpen,
@@ -85,6 +94,37 @@ class AddOpeningHoursTest {
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
             StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+        )
+    }
+
+    @Test fun `apply always open answer when it was explicitly signed before`() {
+        questType.verifyAnswer(
+            mapOf("opening_hours:signed" to "yes"),
+            AlwaysOpen,
+            StringMapEntryAdd("opening_hours", "24/7")
+        )
+    }
+
+    @Test fun `apply always open answer when it was explicitly signed and present before`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "yes"
+            ),
+            AlwaysOpen,
+            StringMapEntryModify("opening_hours", "24/7", "24/7"),
+            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+        )
+    }
+
+    @Test fun `apply always open answer when it was explicitly signed but there was a different answer before`() {
+        questType.verifyAnswer(
+            mapOf(
+                "opening_hours" to "34/3",
+                "opening_hours:signed" to "yes"
+            ),
+            AlwaysOpen,
+            StringMapEntryModify("opening_hours", "34/3", "24/7")
         )
     }
 
@@ -213,6 +253,29 @@ class AddOpeningHoursTest {
                 "shop" to "supermarket",
                 "name" to "Supi",
                 "opening_hours" to "1998 Mo-Fr 18:00-20:00"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false if the opening hours are not signed`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "no"
             ),
             timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
         )))

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete
 import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -138,7 +139,7 @@ class StreetCompleteApplication : Application() {
 
         val lastVersion = prefs.getString(Prefs.LAST_VERSION_DATA, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit().putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME).apply()
+            prefs.edit { putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME) }
             if (lastVersion != null) {
                 onNewVersion()
             }

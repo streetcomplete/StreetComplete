@@ -41,7 +41,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway ~ yes|-1 or bridge = yes or tunnel = yes or bicycle ~ no|use_sidepath )"
 
-    override val changesetComment = "Add whether roads are prohibited for pedestrians"
+    override val changesetComment = "Specify whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val achievements = listOf(PEDESTRIAN)

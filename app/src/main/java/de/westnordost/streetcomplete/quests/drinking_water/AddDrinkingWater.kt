@@ -20,7 +20,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
         and (!seasonal or seasonal = no)
     """
-    override val changesetComment = "Add whether water is drinkable"
+    override val changesetComment = "Specify whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.ic_quest_drinking_water
     override val isDeleteElementEnabled = true

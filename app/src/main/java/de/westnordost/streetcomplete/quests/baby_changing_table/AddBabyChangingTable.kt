@@ -20,12 +20,12 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
         )
         and !diaper and !changing_table
     """
-    override val changesetComment = "Add baby changing table"
+    override val changesetComment = "Survey availability of baby changing tables"
     override val wikiLink = "Key:changing_table"
     override val icon = R.drawable.ic_quest_baby
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
     override val isReplaceShopEnabled = true
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_baby_changing_table_title2
 

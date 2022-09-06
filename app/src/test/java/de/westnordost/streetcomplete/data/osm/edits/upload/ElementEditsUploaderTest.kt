@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
@@ -30,6 +31,7 @@ class ElementEditsUploaderTest {
 
     private lateinit var elementEditsController: ElementEditsController
     private lateinit var mapDataController: MapDataController
+    private lateinit var noteEditsController: NoteEditsController
     private lateinit var singleUploader: ElementEditUploader
     private lateinit var mapDataApi: MapDataApi
     private lateinit var statisticsController: StatisticsController
@@ -40,13 +42,15 @@ class ElementEditsUploaderTest {
     @Before fun setUp() {
         elementEditsController = mock()
         mapDataController = mock()
+        noteEditsController = mock()
+
         singleUploader = mock()
         mapDataApi = mock()
         statisticsController = mock()
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, mapDataController, singleUploader, mapDataApi, statisticsController)
+        uploader = ElementEditsUploader(elementEditsController, noteEditsController, mapDataController, singleUploader, mapDataApi, statisticsController)
         uploader.uploadedChangeListener = listener
     }
 
@@ -72,6 +76,7 @@ class ElementEditsUploaderTest {
         verify(singleUploader).upload(edit, idProvider)
         verify(listener).onUploaded(any(), any())
         verify(elementEditsController).markSynced(edit, updates)
+        verify(noteEditsController).updateElementIds(any())
         verify(mapDataController).updateAll(updates)
 
         verify(statisticsController).addOne(any(), any())

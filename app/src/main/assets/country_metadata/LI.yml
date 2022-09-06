@@ -1,9 +1,10 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasSlowZone: true
 mobileCountryCode: 295
 noParkingLineStyle: dashed yellow line with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
 atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]

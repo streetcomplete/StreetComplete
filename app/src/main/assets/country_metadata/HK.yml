@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 edgeLineStyle: two yellow lines
 isLeftHandTraffic: true
@@ -6,6 +6,8 @@ mobileCountryCode: 454
 noStoppingLineStyle: double yellow
 officialLanguages: [en, zh]
 popularReligions: [chinese_folk, taoist, buddhist]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: true
 workweekDays: 6
 chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
 orchardProduces: [tomato]

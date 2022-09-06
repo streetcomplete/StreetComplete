@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CLOTHES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PAPER
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
@@ -80,6 +81,17 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
+            StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
+            StringMapEntryAdd("recycling:plastic", "no")
+        )
+    }
+
+    @Test fun `apply answer with PET`() {
+        questType.verifyAnswer(
+            RecyclingMaterials(listOf(PET)),
+            StringMapEntryAdd("recycling:PET", "yes"),
+            StringMapEntryAdd("recycling:plastic_bottles", "no"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
             StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryAdd("recycling:plastic", "no")

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.messages
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserDataController
@@ -65,7 +66,7 @@ class MessagesSource(
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
-            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
+            prefs.edit { putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME) }
         }
 
         var messages = 0
@@ -80,7 +81,7 @@ class MessagesSource(
 
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
+            prefs.edit { putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME) }
             if (lastVersion != null) {
                 onNumberOfMessagesUpdated()
                 return NewVersionMessage("v$lastVersion")

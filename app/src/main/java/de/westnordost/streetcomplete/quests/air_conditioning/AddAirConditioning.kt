@@ -22,13 +22,12 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
         and takeaway != only
         and !air_conditioning
     """
-    override val changesetComment = "Add air conditioning"
+    override val changesetComment = "Survey availability of air conditioning"
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_snow_poi
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
-
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_airConditioning_title
 

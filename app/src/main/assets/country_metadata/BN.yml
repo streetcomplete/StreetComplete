@@ -1,9 +1,10 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 edgeLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 528
 officialLanguages: [ms, en]
 popularReligions: [muslim]
+postboxesHaveCollectionTimes: true
 atmOperators: [BIBD, Baiduri Bank, Standard Chartered, TAIB, Maybank]
 orchardProduces: [rubber, banana, coconut, pineapple, pepper, orange, chilli_pepper, sweet_pepper, lemon, lime, tomato]

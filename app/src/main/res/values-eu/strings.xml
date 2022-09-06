@@ -2574,4 +2574,80 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ziur al zaude txirrindulariek ezin dutela noranzko bakarreko kale hau bi noranzkoetan erabili? Zalantzarik izanez gero, egiaztatu kalearen amaieran seinalerik dagoen."</string>
+    <string name="link_valhalla_description">"Bideratze-motorra memoria-aztarna oso txikiarekin, bideratze multimodalarekin, isokroniak eta abar."</string>
+    <string name="link_backofyourhand_description">"Ondo ezagutzen duzu zure zona? Probatu zure ezagutza kaleak kokatuz."</string>
+    <string name="link_thenandnow_description">"Alderatu OSM nola ikusten zen lehen egunetan eta nola ikusten den orain!"</string>
+    <string name="link_notesreview_description">"Ikusi, iragazi eta komentatu zuk eta besteek sortutako oharrak. Ohar asko ebatzi daitezke haietan jasotako informazioa mapan jarrita iD edo JOSMren bidez"</string>
+
+    <!-- Quests
+sorted alphabetically by title -->
+    <string name="quest_accepts_cards">"Kreditu- edo zordunketa-txartelak onartzen al dira hemen?"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Zordunketa zein kreditu txartelak"</string>
+    <string name="quest_accepts_cards_credit_only">"Bakarrik kreditu-txartelak"</string>
+    <string name="quest_accepts_cards_dedit_only">"Bakarrik zordunketa-txartelak"</string>
+    <string name="quest_accepts_cards_unavailable">"Ez zordunketa ez kreditu-txartelak"</string>
+    <string name="quest_barrier_type_gate_any_size">"Atea, edozein tamainakoa"</string>
+    <string name="quest_air_pump_compressor_title">"Ba al dago aire konpresorerik hemen?"</string>
+    <string name="quest_step_count_stile_hint">"Gora iristeko urrats kopurua besterik ez. Pausoen zenbaketa alde bakoitzean desberdina bada, eman zenbaki altuena."</string>
+    <string name="quest_shoulder_explanation2">"Bazterbidea argi markatutako larrialdi-geldialdietarako erreia da. Bazterbide gisa izendatutako eremua ez da zertan zolatuta egon bere zabalera osoan eta ez da zertan kotxe bat zirkulazio-erreitik kanpo guztiz gelditzeko adinako zabalera.
+"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"bat ere ez, norabide honetan bizikletaz ibiltzea debekatuta dago"</string>
+    <string name="map_btn_create_track">"Sortu arrasto grabazio berria"</string>
+    <string name="map_btn_stop_track">"Gelditu arrastoaren grabazioa"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Zenbat bizikleta alokatzeko leku daude hemen?"</string>
+    <string name="quest_bicycle_rental_type_title">"Zein motatako bizikleta alokairua da hau?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Bizikletak giltzapetzen dituen aparkalekua"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Leku izendatua (bizikletak banan-banan blokeatuta)"</string>
+    <string name="quest_bicycle_rental_type_human">"Arreta duen bizikleta alokairua"</string>
+    <string name="quest_bicycle_rental_type_shop_with_rental">"Bizikletak alokatzen dituen bizikleta denda"</string>
+    <string name="quest_bicycle_shop_repair_title">"Bizikletak konpontzeko zerbitzuak eskaintzen al dira hemen?"</string>
+    <string name="quest_bicycle_shop_second_hand_title">"Bigarren eskuko bizikletak saltzen al dira hemen?"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Ez, bakarrik berriak"</string>
+    <string name="quest_bicycle_shop_second_hand_new_and_used">"Bai, berriekin batera"</string>
+    <string name="quest_bicycle_shop_second_hand_only_used">"Bai, bigarren eskukoak bakarrik"</string>
+    <string name="quest_bicycle_shop_second_hand_no_bicycles">"Ez da bizikletarik saltzen"</string>
+    <string name="quest_building_entrance_title">"Nolako eraikinaren sarrera da hau?"</string>
+    <string name="quest_building_entrance_main">"Eraikin publiko baten sarrera nagusia"</string>
+    <string name="quest_building_entrance_staircase">"Eskailera-sarrera (adibidez, etxebizitza-eraikin batera)"</string>
+    <string name="quest_building_entrance_service">"Zerbitzuko sarrera"</string>
+    <string name="quest_building_entrance_exit">"Irteera bakarrik"</string>
+    <string name="quest_building_entrance_emergency_exit">"Larrialdi irteera bakarrik"</string>
+    <string name="quest_building_entrance_shop">"Dendaren sarrera"</string>
+    <string name="quest_building_entrance_yes">"Beste sarrera mota bat"</string>
+    <string name="quest_building_entrance_dead_end">"Irteerarik gabeko kalea"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Sakatu pantaila hasteko idazten"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"Badago hemen bizikleta-ponpa publikorik (irekita dagoenean behintzat)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Badago hemen funtzionatzen duen bizikleta ponparik?"</string>
+    <string name="action_overlays">"Gainjartzeak"</string>
+    <string name="split_way">"Bide zatitua"</string>
+    <string name="quest_memorialType_title">"Nolako oroigarria da hau?"</string>
+    <string name="quest_memorialType_statue">"Estatua"</string>
+    <string name="quest_memorialType_bust">"Bustoa"</string>
+    <string name="quest_memorialType_plaque">"Plaka"</string>
+    <string name="quest_memorialType_war_memorial">"Gerra oroigarria"</string>
+    <string name="quest_memorialType_stone">"Harria"</string>
+    <string name="quest_memorialType_obelisk">"Obeliskoa"</string>
+    <string name="quest_memorialType_stele_wooden">"Egurrezko estela"</string>
+    <string name="quest_memorialType_stele_stone">"Harrizko estela"</string>
+    <string name="quest_memorialType_sculpture">"Bestelako eskultura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Hautatu gainjartzea"</string>
+    <string name="overlay_none">"Batere ez"</string>
+    <string name="overlay_lit">"Kale argiteria"</string>
+    <string name="lit_value_yes">"Argiztatua"</string>
+    <string name="lit_value_no">"Ez argiztatua"</string>
+    <string name="lit_value_24_7">"Argiztatua gau eta egun"</string>
+    <string name="lit_value_automatic">"Argiztatua norbait ingurutik pasatzean"</string>
+    <string name="overlay_sidewalk">"Espaloiak"</string>
+    <string name="quest_generic_answer_is_indoors">"Barrualdean dago"</string>
+    <string name="quest_summit_cross_title">"Ba dago tontorreko gurutzerik hemen?"</string>
+    <string name="quest_entrance_reference">"Zer markatzen du sarrera honetan?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Sarrerako etiketa eta solairu kopurua"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Solairu kopurua"</string>
+    <string name="quest_entrance_reference_select_code_only">"Sarrerako etiketa"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Ez etiketarik ez eta solairu kopurua"</string>
+    <string name="quest_entrance_reference_reference_label">"Sarrerako etiketa:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Solairu kopurua:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"nora"</string>
 </resources>

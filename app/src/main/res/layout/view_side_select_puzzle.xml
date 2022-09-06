@@ -62,11 +62,11 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:textSize="10sp"
-                android:textColor="#404040"
-                android:shadowColor="#fff"
-                android:shadowRadius="2.0"
+                android:textColor="#fff"
+                android:shadowColor="#000"
+                android:shadowRadius="4.0"
                 app:orientationRight="true"
-                tools:text="Sidewalk"/>
+                tools:text="Sidewalk" />
 
         </RelativeLayout>
 
@@ -112,12 +112,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textSize="10sp"
-                android:textColor="#404040"
-                android:shadowColor="#fff"
-                android:shadowRadius="2.0"
+                android:textColor="#fff"
+                android:shadowColor="#000"
+                android:shadowRadius="4.0"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                tools:text="Sidewalk"/>
+                tools:text="Sidewalk" />
 
         </RelativeLayout>
 

@@ -23,7 +23,7 @@ interface MapDataApi : MapDataRepository {
      *
      * @return the updated elements
      */
-    fun uploadChanges(changesetId: Long, changes: MapDataChanges): MapDataUpdates
+    fun uploadChanges(changesetId: Long, changes: MapDataChanges, ignoreRelationTypes: Set<String?> = emptySet()): MapDataUpdates
 
     /**
      * Open a new changeset with the given tags

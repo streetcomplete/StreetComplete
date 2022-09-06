@@ -49,13 +49,13 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
         """
     }
 
-    override val changesetComment = "Add whether this place accepts cash as payment"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val changesetComment = "Survey whether payment with cash is accepted"
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
     override val enabledInCountries = NoCountriesExcept("SE")
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 

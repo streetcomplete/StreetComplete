@@ -16,7 +16,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
           and !self_service
           and !automated
     """
-    override val changesetComment = "Add self service information to fuel station"
+    override val changesetComment = "Survey whether fuel stations provide self-service"
     override val wikiLink = "Key:self_service"
     override val icon = R.drawable.ic_quest_fuel_self_service
     override val achievements = listOf(CAR)

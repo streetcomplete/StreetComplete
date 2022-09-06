@@ -28,10 +28,11 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
     """.toElementFilterExpression() }
     // highway=construction included, as situation often changes during and after construction
 
-    override val changesetComment = "Add whether there are sidewalks"
+    override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val achievements = listOf(PEDESTRIAN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -135,11 +136,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
             ways with
               highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-              and (
-                !maxspeed
-                or maxspeed > 8
-                or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
-              )
+              and (!maxspeed or maxspeed > 9)
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
               and (
                 lit = yes

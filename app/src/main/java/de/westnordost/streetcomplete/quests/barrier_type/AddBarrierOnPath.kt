@@ -26,7 +26,7 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add how path and barrier intersect"
+    override val changesetComment = "Specify how paths and barriers intersect"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_barrier_on_path
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)

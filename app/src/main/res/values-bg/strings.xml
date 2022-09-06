@@ -1327,7 +1327,7 @@
     <string name="quest_parking_access_title2">"За кого е позволено да паркира тук? Паркирането може да бъде безплатно или платено."</string>
     <string name="quest_access_yes">"Обществен"</string>
     <string name="quest_access_customers">"Само за посетители (клиенти)"</string>
-    <string name="quest_access_private">"Само с разрешително (служебен паркинг)"</string>
+    <string name="quest_access_private">"Само с разрешително"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Времената за събиране още ли са актуални за тази пощенска кутия?"</string>
@@ -1577,6 +1577,9 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Сигурни ли сте, че велосипедистите не могат да ползват тази еднопосочна улица и двете направления? Ако се съмнявате, проверете дали има знаци за това."</string>
+    <string name="link_valhalla_description">"Маршрутизатор с ниски изисквания за памет и добри възможности."</string>
+    <string name="link_backofyourhand_description">"Колко добре познавате вашия район? Проверете знанията си, като откриете улиците."</string>
+    <string name="link_thenandnow_description">"Вижте как е изглеждал OSM в началото в сравнение със сега!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1585,7 +1588,17 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards_credit_only">"Само кредитни карти"</string>
     <string name="quest_accepts_cards_dedit_only">"Сано дебитни карти"</string>
     <string name="quest_accepts_cards_unavailable">"Не се приемат карти"</string>
+    <string name="quest_barrier_type_gate_any_size">"Порта, без значение от размера"</string>
     <string name="quest_air_pump_compressor_title">"Има ли въздушен компресор тук?"</string>
+    <string name="quest_step_count_stile_hint">"Брой стъпала до върха. Ако е различен от другата страна въведете по-големия брой."</string>
+    <string name="quest_shoulder_explanation2">"Аварийна лента, която е обозначена. Не е задължително да е асфалтирана или да е широка колкото нормална пътна лента."</string>
+    <string name="quest_cycleway_value_none_and_oneway">"Няма, не е разрешено с велосипед в тази посока"</string>
+    <string name="map_btn_create_track">"Нов запис на маршрут"</string>
+    <string name="map_btn_stop_track">"Край на записа"</string>
+    <string name="quest_bicycle_rental_type_title">"Как се отдават велосипеди под наем тук?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Заключващ стенд за велосипедите"</string>
+    <string name="quest_bicycle_rental_type_dropoff_point">"Индивидуални места за заключване"</string>
+    <string name="quest_bicycle_rental_type_human">"Има обслужващ персонал"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Магазин за велосипеди, предлага и под наем"</string>
     <string name="quest_bicycle_shop_repair_title">"Ремонтират ли се велосипеди тук?"</string>
     <string name="quest_bicycle_shop_second_hand_title">"Продават ли се велосипеди втора ръка?"</string>
@@ -1599,9 +1612,41 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_service">"Сервизен вход"</string>
     <string name="quest_building_entrance_exit">"Изход"</string>
     <string name="quest_building_entrance_emergency_exit">"Авариен изход"</string>
+    <string name="quest_building_entrance_shop">"Вход за клиенти"</string>
     <string name="quest_building_entrance_yes">"Друг вид вход"</string>
     <string name="quest_building_entrance_dead_end">"Не е вход"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Докоснете екрана за да започнете измерване"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Има ли достъпна помпа за велосипеди (или поне докато е отворено)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Тук има ли работеща помпа за велосипеди?"</string>
+    <string name="action_overlays">"Слоеве"</string>
+    <string name="split_way">"Разделяне на път"</string>
+    <string name="quest_memorialType_title">"Какъв паметник е това?"</string>
+    <string name="quest_memorialType_statue">"Статуя"</string>
+    <string name="quest_memorialType_bust">"Бюст"</string>
+    <string name="quest_memorialType_plaque">"Плакет"</string>
+    <string name="quest_memorialType_war_memorial">"Военен мемориал"</string>
+    <string name="quest_memorialType_stone">"Камък"</string>
+    <string name="quest_memorialType_obelisk">"Обелиск"</string>
+    <string name="quest_memorialType_stele_wooden">"Дървен мемориал"</string>
+    <string name="quest_memorialType_stele_stone">"Каменен мемориал "</string>
+    <string name="quest_memorialType_sculpture">"Друго"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Изберете слой"</string>
+    <string name="overlay_none">"Без"</string>
+    <string name="overlay_lit">"Улично осветление "</string>
+    <string name="lit_value_yes">"Осветено"</string>
+    <string name="lit_value_no">"Неосветено"</string>
+    <string name="lit_value_24_7">"Постояно включено осветление"</string>
+    <string name="lit_value_automatic">"Осветление само когато минава някой"</string>
+    <string name="overlay_sidewalk">"Тротоари"</string>
+    <string name="quest_generic_answer_is_indoors">"Това е вътре"</string>
+    <string name="quest_entrance_reference">"Какъв надпис има ма входа?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Номер на вход и номера на апаттаменти"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Номера на апартаменти"</string>
+    <string name="quest_entrance_reference_select_code_only">"Номер на вход"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Няма надписи"</string>
+    <string name="quest_entrance_reference_reference_label">"Надпис на входа:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Номера апартаменти:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"към"</string>
 </resources>

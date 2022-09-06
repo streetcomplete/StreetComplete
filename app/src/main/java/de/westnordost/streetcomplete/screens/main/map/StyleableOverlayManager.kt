@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.util.math.intersect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -54,7 +55,7 @@ class StyleableOverlayManager(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            updateStyledElements(updated, deleted)
+            viewLifecycleScope.launch { updateStyledElements(updated, deleted) }
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
@@ -90,15 +91,9 @@ class StyleableOverlayManager(
     }
 
     private fun hide() {
-        clear()
         viewLifecycleScope.coroutineContext.cancelChildren()
+        clear()
         mapDataSource.removeListener(mapDataListener)
-    }
-
-    private fun clear() {
-        synchronized(mapDataInView) { mapDataInView.clear() }
-        lastDisplayedRect = null
-        mapComponent.clear()
     }
 
     fun onNewScreenPosition() {
@@ -123,6 +118,12 @@ class StyleableOverlayManager(
         }
     }
 
+    private fun clear() {
+        synchronized(mapDataInView) { mapDataInView.clear() }
+        lastDisplayedRect = null
+        viewLifecycleScope.launch { mapComponent.clear() }
+    }
+
     private fun setStyledElements(mapData: MapDataWithGeometry) {
         val layer = overlay ?: return
         synchronized(mapDataInView) {
@@ -138,13 +139,20 @@ class StyleableOverlayManager(
 
     private fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val layer = overlay ?: return
+        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        var changedAnything = false
         synchronized(mapDataInView) {
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
                 if (styledElement != null) mapDataInView[key] = styledElement
                 else                       mapDataInView.remove(key)
+                if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
+                    changedAnything = true
+                }
             }
-            deleted.forEach { mapDataInView.remove(it) }
-            mapComponent.set(mapDataInView.values)
+            deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
+            if (changedAnything) {
+                mapComponent.set(mapDataInView.values)
+            }
         }
     }
 

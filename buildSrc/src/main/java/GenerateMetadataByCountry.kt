@@ -57,7 +57,7 @@ open class GenerateMetadataByCountry : DefaultTask() {
         for ((countryCode, valuesByProperty) in metadataByCountry) {
             val targetFile = File(targetDir, "$countryCode.yml")
             val fileWriter = targetFile.writer()
-            fileWriter.write("# Do not edit. Source files are in /res/country_metadata\n")
+            fileWriter.write("# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata\n")
             for ((property, value) in valuesByProperty) {
                 val str = StringWriter()
                 val writer = YamlWriter(str, config)

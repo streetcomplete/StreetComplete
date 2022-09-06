@@ -28,8 +28,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagNewerThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.toCheckDate
-import java.text.ParseException
-import java.util.EnumSet
 import kotlin.math.min
 
 /**
@@ -39,11 +37,8 @@ import kotlin.math.min
  * <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> (finds all
  * residential and tertiary roads that have no name)
  */
-
 fun String.toElementFilterExpression(): ElementFilterExpression {
-    // convert all white-spacey things to whitespaces so we do not have to deal with them later
-    val cursor = StringWithCursor(replace("\\s".toRegex(), " "))
-
+    val cursor = StringWithCursor(this)
     return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
 }
 
@@ -73,13 +68,13 @@ private const val MINUS = "-"
 
 private val RESERVED_WORDS = arrayOf(WITH, OR, AND)
 private val QUOTATION_MARKS = charArrayOf('"', '\'')
-private val KEY_VALUE_OPERATORS = arrayOf(EQUALS, NOT_EQUALS, LIKE, NOT_LIKE)
-private val COMPARISON_OPERATORS = arrayOf(
+private val KEY_VALUE_OPERATORS = setOf(EQUALS, NOT_EQUALS, LIKE, NOT_LIKE)
+private val COMPARISON_OPERATORS = setOf(
     GREATER_THAN, GREATER_OR_EQUAL_THAN,
     LESS_THAN, LESS_OR_EQUAL_THAN
 )
 // must be in that order because if ">=" would be after ">", parser would match ">" also when encountering ">="
-private val OPERATORS = arrayOf(
+private val OPERATORS = linkedSetOf(
     GREATER_OR_EQUAL_THAN,
     LESS_OR_EQUAL_THAN,
     GREATER_THAN,
@@ -92,27 +87,21 @@ private val OPERATORS = arrayOf(
     NEWER
 )
 
-private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:$| |\\))")
+private val NUMBER_WITH_OPTIONAL_UNIT_REGEX = Regex("[0-9]+'[0-9]+\"|(?:[0-9]*\\.[0-9]+|[0-9]+)[a-z/'\"]*")
+private val ESCAPED_QUOTE_REGEX = Regex("\\\\(['\"])")
+private val WHITESPACE_REGEX = Regex("\\s")
+private val WHITESPACES_REGEX = Regex("\\s*")
 
-private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
-
-private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFilter> {
-    val result = ArrayList<ElementsTypeFilter>()
-    result.add(parseElementDeclaration())
-    while (nextIsAndAdvance(',')) {
+private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
+    val result = LinkedHashSet<ElementsTypeFilter>()
+    do {
         val element = parseElementDeclaration()
         if (result.contains(element)) {
             throw ParseException("Mentioned the same element type $element twice", cursorPos)
         }
         result.add(element)
-    }
-    // a little odd interface of EnumSet here
-    return when (result.size) {
-        1 -> EnumSet.of(result[0])
-        2 -> EnumSet.of(result[0], result[1])
-        3 -> EnumSet.of(result[0], result[1], result[2])
-        else -> throw IllegalStateException()
-    }
+    } while (nextIsAndAdvance(','))
+    return result
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
@@ -128,10 +117,7 @@ private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
             return t
         }
     }
-    throw ParseException(
-        "Expected element types. Any of: nodes, ways or relations, separated by ','",
-        cursorPos
-    )
+    throw ParseException("Expected element types. Any of: nodes, ways or relations, separated by ','", cursorPos)
 }
 
 private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Element>? {
@@ -147,16 +133,13 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
 
     do {
         // if it has no bracket, there must be at least one whitespace
-        if (!parseBrackets('(', builder)) {
+        if (!parseBracketsAndSpaces('(', builder)) {
             throw ParseException("Expected a whitespace or bracket before the tag", cursorPos)
         }
 
         builder.addValue(parseTag())
 
-        // parseTag() might have "eaten up" a whitespace after the key in expectation of an
-        // operator.
-        var separated = previousIs(' ')
-        separated = separated or parseBrackets(')', builder)
+        val separated = parseBracketsAndSpaces(')', builder)
 
         if (isAtEnd()) break
 
@@ -181,11 +164,11 @@ private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Eleme
     }
 }
 
-private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
-    var characterCount = expectAnyNumberOfSpaces()
-    var previousCharacterCount: Int
+private fun StringWithCursor.parseBracketsAndSpaces(bracket: Char, expr: BooleanExpressionBuilder<*, *>): Boolean {
+    val initialCursorPos = cursorPos
     do {
-        previousCharacterCount = characterCount
+        val loopStartCursorPos = cursorPos
+        expectAnyNumberOfSpaces()
         if (nextIsAndAdvance(bracket)) {
             try {
                 if (bracket == '(')      expr.addOpenBracket()
@@ -193,21 +176,19 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
             } catch (e: IllegalStateException) {
                 throw ParseException(e.message, cursorPos)
             }
-
-            characterCount++
         }
-        characterCount += expectAnyNumberOfSpaces()
-    } while (characterCount > previousCharacterCount)
-
-    return characterCount > 0
+    } while (loopStartCursorPos < cursorPos)
+    expectAnyNumberOfSpaces()
+    return initialCursorPos < cursorPos
 }
 
 private fun StringWithCursor.parseTag(): ElementFilter {
     if (nextIsAndAdvance(NOT)) {
-        expectAnyNumberOfSpaces()
         if (nextIsAndAdvance(LIKE)) {
+            expectAnyNumberOfSpaces()
             return NotHasKeyLike(parseKey())
         } else {
+            expectAnyNumberOfSpaces()
             return NotHasKey(parseKey())
         }
     }
@@ -215,12 +196,10 @@ private fun StringWithCursor.parseTag(): ElementFilter {
     if (nextIsAndAdvance(LIKE)) {
         expectAnyNumberOfSpaces()
         val key = parseKey()
-        expectAnyNumberOfSpaces()
-        val operator = parseOperator()
+        val operator = parseOperatorWithSurroundingSpaces()
         if (operator == null) {
             return HasKeyLike(key)
         } else if (LIKE == operator) {
-            expectAnyNumberOfSpaces()
             return HasTagLike(key, parseQuotableWord())
         }
         throw ParseException("Unexpected operator '$operator': The key prefix operator '$LIKE' must be used together with the binary operator '$LIKE'", cursorPos)
@@ -236,22 +215,17 @@ private fun StringWithCursor.parseTag(): ElementFilter {
     }
 
     val key = parseKey()
-    expectAnyNumberOfSpaces()
-    val operator = parseOperator() ?: return HasKey(key)
+    val operator = parseOperatorWithSurroundingSpaces() ?: return HasKey(key)
 
     if (operator == OLDER) {
-        expectOneOrMoreSpaces()
         return CombineFilters(HasKey(key), TagOlderThan(key, parseDate()))
     }
     if (operator == NEWER) {
-        expectOneOrMoreSpaces()
         return CombineFilters(HasKey(key), TagNewerThan(key, parseDate()))
     }
 
-    if (KEY_VALUE_OPERATORS.contains(operator)) {
-        expectAnyNumberOfSpaces()
+    if (operator in KEY_VALUE_OPERATORS) {
         val value = parseQuotableWord()
-
         when (operator) {
             EQUALS       -> return HasTag(key, value)
             NOT_EQUALS   -> return NotHasTag(key, value)
@@ -260,10 +234,13 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         }
     }
 
-    if (COMPARISON_OPERATORS.contains(operator)) {
-        expectAnyNumberOfSpaces()
-        if (nextMatches(NUMBER_WORD_REGEX) != null) {
-            val value = parseNumber()
+    if (operator in COMPARISON_OPERATORS) {
+        // we need to decide beforehand what to parse here: a number with optional unit or a date
+        val numberWithUnit = nextMatches(NUMBER_WITH_OPTIONAL_UNIT_REGEX)?.value
+        if (numberWithUnit != null && findWordLength() == numberWithUnit.length) {
+            advanceBy(numberWithUnit.length)
+            val value = numberWithUnit.withOptionalUnitToDoubleOrNull()?.toFloat()
+                ?: throw ParseException("must be a number or a number with a known unit", cursorPos)
             when (operator) {
                 GREATER_THAN          -> return HasTagGreaterThan(key, value)
                 GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
@@ -279,7 +256,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
                 LESS_OR_EQUAL_THAN    -> return HasDateTagLessOrEqualThan(key, value)
             }
         }
-        throw ParseException("must either be a number or a (relative) date", cursorPos)
+        throw ParseException("must either be a number (with optional unit) or a (relative) date", cursorPos)
     }
     throw ParseException("Unknown operator '$operator'", cursorPos)
 }
@@ -294,11 +271,18 @@ private fun StringWithCursor.parseKey(): String {
     if (length == 0) {
         throw ParseException("Missing key (dangling prefix operator)", cursorPos)
     }
-    return advanceBy(length).stripQuotes()
+    return advanceBy(length).stripAndUnescapeQuotes()
 }
 
-private fun StringWithCursor.parseOperator(): String? {
-    return OPERATORS.firstOrNull { nextIsAndAdvance(it) }
+private fun StringWithCursor.parseOperatorWithSurroundingSpaces(): String? {
+    val spaces = expectAnyNumberOfSpaces()
+    val result = OPERATORS.firstOrNull { nextIsAndAdvance(it) }
+    if (result == null) {
+        retreatBy(spaces)
+        return null
+    }
+    expectAnyNumberOfSpaces()
+    return result
 }
 
 private fun StringWithCursor.parseQuotableWord(): String {
@@ -306,7 +290,7 @@ private fun StringWithCursor.parseQuotableWord(): String {
     if (length == 0) {
         throw ParseException("Missing value (dangling operator)", cursorPos)
     }
-    return advanceBy(length).stripQuotes()
+    return advanceBy(length).stripAndUnescapeQuotes()
 }
 
 private fun StringWithCursor.parseWord(): String {
@@ -334,7 +318,7 @@ private fun StringWithCursor.parseDate(): DateFilter {
     val word = advanceBy(length)
     if (word == TODAY) {
         var deltaDays = 0f
-        if (nextIsAndAdvance(' ')) {
+        if (nextMatchesAndAdvance(WHITESPACE_REGEX) != null) {
             expectAnyNumberOfSpaces()
             deltaDays = parseDeltaDurationInDays()
         }
@@ -350,14 +334,14 @@ private fun StringWithCursor.parseDate(): DateFilter {
 }
 
 private fun StringWithCursor.parseDeltaDurationInDays(): Float {
-    return when {
+    when {
         nextIsAndAdvance(PLUS) -> {
             expectAnyNumberOfSpaces()
-            +parseDurationInDays()
+            return +parseDurationInDays()
         }
         nextIsAndAdvance(MINUS) -> {
             expectAnyNumberOfSpaces()
-            -parseDurationInDays()
+            return -parseDurationInDays()
         }
         else -> throw ParseException("Expected $PLUS or $MINUS", cursorPos)
     }
@@ -375,23 +359,19 @@ private fun StringWithCursor.parseDurationInDays(): Float {
     }
 }
 
-private fun StringWithCursor.expectAnyNumberOfSpaces(): Int {
-    var count = 0
-    while (nextIsAndAdvance(' ')) count++
-    return count
-}
+private fun StringWithCursor.expectAnyNumberOfSpaces(): Int =
+    nextMatchesAndAdvance(WHITESPACES_REGEX)?.value?.length ?: 0
 
 private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
-    if (!nextIsAndAdvance(' ')) {
+    if (nextMatchesAndAdvance(WHITESPACE_REGEX) == null) {
         throw ParseException("Expected a whitespace", cursorPos)
     }
     return expectAnyNumberOfSpaces() + 1
 }
 
 private fun StringWithCursor.nextIsReservedWord(): String? {
-    return RESERVED_WORDS.firstOrNull {
-        nextIsIgnoreCase(it) && (isAtEnd(it.length) || findNext(' ', it.length) == it.length)
-    }
+    val wordLength = findWordLength()
+    return RESERVED_WORDS.firstOrNull { nextIs(it) && wordLength == it.length }
 }
 
 private fun StringWithCursor.findKeyLength(): Int {
@@ -407,7 +387,7 @@ private fun StringWithCursor.findKeyLength(): Int {
 }
 
 private fun StringWithCursor.findWordLength(): Int =
-    min(findNext(' '), findNext(')'))
+    min(findNext(WHITESPACE_REGEX), findNext(')'))
 
 private fun StringWithCursor.findQuotableWordLength(): Int =
     findQuotationLength() ?: findWordLength()
@@ -415,13 +395,27 @@ private fun StringWithCursor.findQuotableWordLength(): Int =
 private fun StringWithCursor.findQuotationLength(): Int? {
     for (quot in QUOTATION_MARKS) {
         if (nextIs(quot)) {
-            val length = findNext(quot, 1)
-            if (isAtEnd(length)) {
-                throw ParseException("Did not close quotation marks", cursorPos - 1)
+            var length = 0
+            while (true) {
+                length = findNext(quot, 1 + length)
+                if (isAtEnd(length)) {
+                    throw ParseException("Did not close quotation marks", cursorPos - 1)
+                }
+                // ignore escaped
+                if (get(cursorPos + length - 1) == '\\') continue
+                // +1 because we want to include the closing quotation mark
+                return length + 1
             }
-            // +1 because we want to include the closing quotation mark
-            return length + 1
         }
     }
     return null
 }
+
+private fun String.stripAndUnescapeQuotes(): String {
+    val trimmed = if (startsWith('\'') || startsWith('"')) substring(1, length - 1) else this
+    val unescaped = trimmed.replace(ESCAPED_QUOTE_REGEX) { it.groupValues[1] }
+    return unescaped
+}
+
+class ParseException(message: String?, val errorOffset: Int) :
+    RuntimeException("At position $errorOffset: $message")

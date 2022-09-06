@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 edgeLineStyle: white dashes
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
@@ -7,6 +7,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 274
 noEntrySignStyle: yellow
 officialLanguages: [is]
+postboxesHaveCollectionTimes: true
 atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
 chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
 clothesContainerOperators: [Sorpa]

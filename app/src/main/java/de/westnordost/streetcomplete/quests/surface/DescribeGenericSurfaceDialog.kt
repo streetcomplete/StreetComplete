@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestSurfaceDetailedAnswerImpossibleBinding
+import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 class DescribeGenericSurfaceDialog(
     context: Context,
@@ -16,7 +17,7 @@ class DescribeGenericSurfaceDialog(
 
         setTitle(context.resources.getString(R.string.quest_surface_detailed_answer_impossible_title))
 
-        setButton(DialogInterface.BUTTON_POSITIVE, context.getString(android.R.string.yes)) { _, _ ->
+        setButton(DialogInterface.BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             val txt = binding.explanationInput.text.toString().trim()
 
             if (txt.isEmpty()) {
@@ -34,6 +35,8 @@ class DescribeGenericSurfaceDialog(
             context.getString(android.R.string.cancel),
             null as DialogInterface.OnClickListener?
         )
+        binding.explanationInput.requestFocus()
+        binding.explanationInput.showKeyboard()
         setView(binding.root)
     }
 }

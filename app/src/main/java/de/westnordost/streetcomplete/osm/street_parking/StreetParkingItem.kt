@@ -1,23 +1,13 @@
-package de.westnordost.streetcomplete.quests.street_parking
+package de.westnordost.streetcomplete.osm.street_parking
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
-import de.westnordost.streetcomplete.osm.street_parking.StreetParking
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
-import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.util.ktx.noParkingLineStyleResId
 import de.westnordost.streetcomplete.util.ktx.noParkingSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.noStandingLineStyleResId

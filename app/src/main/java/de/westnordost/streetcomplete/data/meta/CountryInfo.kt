@@ -66,6 +66,9 @@ data class IncompleteCountryInfo(
     val orchardProduces: List<String>? = null,
     val popularReligions: List<String>? = null,
     val popularSports: List<String>? = null,
+    val postboxesHaveCollectionTimes: Boolean? = null,
+    val postboxesHaveRef: Boolean? = null,
+    val postboxesHaveRoyalCypher: Boolean? = null,
     val regularShoppingDays: Int? = null,
     val roofsAreUsuallyFlat: Boolean? = null,
     val slowZoneLabelPosition: String? = null,
@@ -117,6 +120,12 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.officialLanguages }
     val popularReligions: List<String>
         get() = infos.firstNotNullOf { it.popularReligions }
+    val postboxesHaveCollectionTimes: Boolean
+        get() = infos.firstNotNullOf { it.postboxesHaveCollectionTimes }
+    val postboxesHaveRef: Boolean
+        get() = infos.firstNotNullOf { it.postboxesHaveRef }
+    val postboxesHaveRoyalCypher: Boolean
+        get() = infos.firstNotNullOf { it.postboxesHaveRoyalCypher }
     val regularShoppingDays: Int
         get() = infos.firstNotNullOf { it.regularShoppingDays }
     val roofsAreUsuallyFlat: Boolean

@@ -1,6 +1,7 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [gv, en]
+postboxesHaveRef: true
 speedUnits: [miles per hour, kilometers per hour]
 atmOperators: [HSBC, Barclays Bank PLC, Royal Bank of Scotland]

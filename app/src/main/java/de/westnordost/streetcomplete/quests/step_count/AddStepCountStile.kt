@@ -37,7 +37,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!stileNodeFilter.matches(element)) false else null
 
-    override val changesetComment = "Add step count to stiles"
+    override val changesetComment = "Specify stiles step count"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.ic_quest_steps_count_brown
     override val achievements = listOf(OUTDOORS)

@@ -23,14 +23,14 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>() {
          and area != yes
          and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add speed limits"
+    override val changesetComment = "Specify speed limits"
     override val wikiLink = "Key:maxspeed"
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true
     // see #813: US has different rules for each different state which need to be respected
     override val enabledInCountries = AllCountriesExcept("US")
-    override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
     override val achievements = listOf(CAR)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_maxspeed_title_short2
 

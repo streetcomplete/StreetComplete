@@ -48,7 +48,7 @@ class AddCycleway(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
 ) : OsmElementQuestType<CyclewayAnswer> {
 
-    override val changesetComment = "Add whether there are cycleways"
+    override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
@@ -332,11 +332,7 @@ class AddCycleway(
         private val untaggedRoadsFilter by lazy { """
             ways with (
                 highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or highway = residential and (
-                  maxspeed > 30
-                  or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
-                  or $notIn30ZoneOrLess
-                )
+                or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
               )
               and !cycleway
               and !cycleway:left
@@ -349,7 +345,6 @@ class AddCycleway(
               and (
                 !maxspeed
                 or maxspeed > 20
-                or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-2]) mph")
                 or $notIn30ZoneOrLess
               )
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}

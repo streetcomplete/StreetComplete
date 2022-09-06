@@ -37,7 +37,7 @@ class ElementEditUploaderTest {
     fun `throws deleted exception if node is no more`() {
         on(mapDataApi.getNode(12)).thenReturn(null)
         on(mapDataController.getNode(12)).thenReturn(node(12))
-        on(mapDataApi.uploadChanges(anyLong(), any())).thenThrow(ConflictException())
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
         uploader.upload(edit(element = node(12)), mock())
     }
 
@@ -45,7 +45,7 @@ class ElementEditUploaderTest {
     fun `throws deleted exception if way is no more`() {
         on(mapDataApi.getWay(12)).thenReturn(null)
         on(mapDataController.getWay(12)).thenReturn(way(12))
-        on(mapDataApi.uploadChanges(anyLong(), any())).thenThrow(ConflictException())
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
         uploader.upload(edit(element = way(12)), mock())
     }
 
@@ -53,7 +53,7 @@ class ElementEditUploaderTest {
     fun `throws deleted exception if relation is no more`() {
         on(mapDataApi.getRelation(12)).thenReturn(null)
         on(mapDataApi.getRelation(12)).thenReturn(rel(12))
-        on(mapDataApi.uploadChanges(anyLong(), any())).thenThrow(ConflictException())
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
         uploader.upload(edit(element = rel(12)), mock())
     }
 
@@ -68,7 +68,7 @@ class ElementEditUploaderTest {
     fun `downloads element on exception`() {
         on(mapDataApi.getNode(12)).thenReturn(node(12))
         on(mapDataController.getNode(12)).thenReturn(node(12))
-        on(mapDataApi.uploadChanges(anyLong(), any())).thenThrow(ConflictException()).thenReturn(null)
+        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException()).thenReturn(null)
         uploader.upload(edit(element = node(12)), mock())
         verify(mapDataController).getNode(12)
         verify(mapDataApi).getNode(12)
@@ -81,7 +81,7 @@ class ElementEditUploaderTest {
         on(mapDataController.getNode(anyLong())).thenReturn(node)
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
-        on(mapDataApi.uploadChanges(anyLong(), any()))
+        on(mapDataApi.uploadChanges(anyLong(), any(), any()))
             .thenThrow(ConflictException())
             .thenThrow(ConflictException())
 
@@ -95,7 +95,7 @@ class ElementEditUploaderTest {
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         doThrow(ConflictException()).doAnswer { MapDataUpdates() }
-            .on(mapDataApi).uploadChanges(anyLong(), any())
+            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
 
         uploader.upload(edit(element = node(1)), mock())
     }

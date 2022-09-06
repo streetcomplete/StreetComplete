@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
 
     override val elementFilter = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
-    override val changesetComment = "Add fire hydrant type"
+    override val changesetComment = "Specify fire hydrant types"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
     override val isDeleteElementEnabled = true

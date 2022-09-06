@@ -27,6 +27,7 @@ class RelativeDate(val deltaDays: Float) : DateFilter {
     }
 }
 
+/** A fixed date */
 class FixedDate(override val date: LocalDate) : DateFilter {
     override fun toString() = date.toString()
 }

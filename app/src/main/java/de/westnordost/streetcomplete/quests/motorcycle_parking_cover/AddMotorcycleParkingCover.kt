@@ -18,7 +18,7 @@ class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>() {
         and !covered
         and motorcycle_parking !~ shed|garage_boxes|building
     """
-    override val changesetComment = "Add motorcycle parkings cover"
+    override val changesetComment = "Specify motorcycle parkings covers"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.ic_quest_motorcycle_parking_cover
     override val isDeleteElementEnabled = true

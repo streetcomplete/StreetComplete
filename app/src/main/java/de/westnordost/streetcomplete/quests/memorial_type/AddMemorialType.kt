@@ -13,7 +13,7 @@ class AddMemorialType : OsmFilterQuestType<MemorialType>() {
           and (!memorial or memorial=yes)
           and !memorial:type
     """
-    override val changesetComment = "Add memorial type"
+    override val changesetComment = "Specify memorial types"
     override val wikiLink = "Key:memorial"
     override val icon = R.drawable.ic_quest_memorial
     override val achievements = listOf(CITIZEN)

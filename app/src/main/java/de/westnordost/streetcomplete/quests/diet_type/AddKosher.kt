@@ -24,12 +24,12 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
           or diet:kosher != only and diet:kosher older today -4 years
         )
     """
-    override val changesetComment = "Add kosher status"
+    override val changesetComment = "Specify whether places are kosher"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.ic_quest_kosher
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title2
 

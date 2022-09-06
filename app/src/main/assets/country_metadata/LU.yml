@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -6,6 +6,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
 atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]

@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
+import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
@@ -42,6 +43,10 @@ import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
+import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
+import de.westnordost.streetcomplete.quests.camping.AddCampPower
+import de.westnordost.streetcomplete.quests.camping.AddCampShower
+import de.westnordost.streetcomplete.quests.camping.AddCampType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
@@ -347,6 +352,7 @@ fun questTypeRegistry(
     AddBicyclePump(), // visible from the outside, but only during opening hours
 
     AddAtmOperator(),
+    AddAtmCashIn(),
 
     AddClothingBinOperator(),
 
@@ -399,6 +405,12 @@ fun questTypeRegistry(
 
     AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
 
+    // inside camping sites
+    AddCampType(),
+    AddCampDrinkingWater(),
+    AddCampShower(),
+    AddCampPower(),
+
     // toilets
     AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
     AddToiletsFee(), // used by OsmAnd in the object description
@@ -428,8 +440,7 @@ fun questTypeRegistry(
     AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-    // AddStreetParking(),
-    AddShoulder(), // needs minimal thinking, but after AddStreetParking because a parking lane can be/look very similar to a shoulder
+    AddShoulder(), // needs minimal thinking
     AddRoadWidth(arSupportChecker),
     AddRoadSmoothness(),
     AddPathSmoothness(),

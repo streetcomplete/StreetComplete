@@ -25,7 +25,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             or smoothness:date < today -4 years
           )
     """
-    override val changesetComment = "Add path smoothness"
+    override val changesetComment = "Specify paths smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_way_surface_detail
     override val achievements = listOf(WHEELCHAIR, BICYCLIST)

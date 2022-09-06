@@ -12,10 +12,11 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
         and !trees and !produce and !crop
         and orchard != meadow_orchard
     """
-    override val changesetComment = "Add orchard produces"
+    override val changesetComment = "Specify orchard produces"
     override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
     override val achievements = listOf(OUTDOORS)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title
 

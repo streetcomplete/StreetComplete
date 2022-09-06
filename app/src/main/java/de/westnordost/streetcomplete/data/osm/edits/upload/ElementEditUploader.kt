@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
@@ -26,7 +26,7 @@ class ElementEditUploader(
         val remoteChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataApi.fetch(edit.elementType, edit.elementId), mapDataApi, idProvider) }
         val localChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataController.fetch(edit.elementType, edit.elementId), mapDataController, idProvider) }
 
-        return if (edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES) {
+        return if (edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES) {
             try {
                 uploadChanges(edit, remoteChanges, false)
             } catch (e: ConflictException) {
@@ -51,7 +51,7 @@ class ElementEditUploader(
     private fun uploadChanges(edit: ElementEdit, mapDataChanges: MapDataChanges, newChangeset: Boolean): MapDataUpdates {
         val changesetId = if (newChangeset) changesetManager.createChangeset(edit.type, edit.source)
             else changesetManager.getOrCreateChangeset(edit.type, edit.source)
-        return mapDataApi.uploadChanges(changesetId, mapDataChanges)
+        return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
     }
 
     private fun MapDataRepository.fetch(elementType: ElementType, elementId: Long) = when (elementType) {
