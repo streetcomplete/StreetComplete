@@ -477,7 +477,7 @@ fun questTypeRegistry(
     AddCycleway(countryInfos, countryBoundariesFuture, prefs), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
     AddShoulder(), // needs minimal thinking
-    AddRoadWidth(arSupportChecker),
+    AddRoadWidth(arSupportChecker, prefs),
     AddRoadSmoothness(prefs),
     AddPathSmoothness(prefs),
 
