@@ -57,9 +57,9 @@ class ElementEditUploader(
         return mapDataApi.uploadChanges(changesetId, mapDataChanges)
     }
 
-    private fun ElementEdit.fetchElement(mapDataRepository: MapDataRepository) = when (elementType) {
-        ElementType.NODE     -> mapDataRepository.getNode(elementId)
-        ElementType.WAY      -> mapDataRepository.getWay(elementId)
-        ElementType.RELATION -> mapDataRepository.getRelation(elementId)
+    private fun MapDataRepository.get(elementType: ElementType, elementId: Long) = when (elementType) {
+        ElementType.NODE     -> getNode(elementId)
+        ElementType.WAY      -> getWay(elementId)
+        ElementType.RELATION -> getRelation(elementId)
     }
 }
