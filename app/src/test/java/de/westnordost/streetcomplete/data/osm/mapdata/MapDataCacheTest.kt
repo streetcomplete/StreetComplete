@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -146,13 +147,14 @@ internal class MapDataCacheTest {
         val outsideNode = node(4, LatLon(1.0, 1.0))
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
+
         val way1 = way(1, nodes = listOf(1L, 2L))
         val way2 = way(2, nodes = listOf(3L, 1L))
         val way3 = way(3, nodes = listOf(3L, 2L, 4L))
         val ways = listOf(way1, way2, way3)
         val outsideWay = way(4, nodes = listOf(4L, 5L))
         val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
-        cache.update(addedOrUpdatedElements = nodes + ways +listOf(outsideNode, outsideWay), bbox = nodesRect.asBoundingBox(16))
+        cache.update(addedOrUpdatedElements = nodes + ways + listOf(outsideNode, outsideWay), bbox = nodesRect.asBoundingBox(16))
         val expectedMapData = MutableMapDataWithGeometry(nodes + ways, emptyList())
         // node geometries get created when getting the data
         nodes.forEach { expectedMapData.putGeometry(it.type, it.id, ElementPointGeometry(it.position)) }
@@ -167,6 +169,22 @@ internal class MapDataCacheTest {
         assertEquals(null, cache.getElement(ElementType.WAY, 4L) { _,_ -> null }) // way removed after trim
     }
 
+    @Test fun `add relation with members already in spatial cache`() {
+        val node = node(1, LatLon(0.0, 0.0))
+        val nodeRectBbox = node.position.enclosingBoundingBox(0.1).asBoundingBoxOfEnclosingTiles(16)
+
+        val way = way(1, nodes = listOf(1L, 2L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(addedOrUpdatedElements = listOf(way, node), bbox = nodeRectBbox)
+
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1, "")))
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1, "")))
+
+        cache.update(addedOrUpdatedElements = listOf(rel1, rel2))
+
+        assertEquals(listOf(rel1), cache.getRelationsForNode(1) { throw(IllegalStateException()) })
+        assertEquals(listOf(rel2), cache.getRelationsForWay(1) { throw(IllegalStateException()) })
+    }
     // todo: further tests
     //  relationIdsByElementKeyCache (like wayIdsByNodeIdCache)
     //  anything regarding geometry?

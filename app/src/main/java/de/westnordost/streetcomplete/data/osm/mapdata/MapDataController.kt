@@ -67,7 +67,7 @@ class MapDataController internal constructor(
                 geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
             }
 
-            // todo: use cache? but then it's likely the data will be loaded into cache just to be replaced right after
+            // don't use cache here, because if not everything is already cached, db call will be faster
             oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
             for (element in mapData) {
                 oldElementKeys.remove(ElementKey(element.type, element.id))
@@ -75,6 +75,7 @@ class MapDataController internal constructor(
 
             cache.update(oldElementKeys, mapData, geometryEntries, bbox) // use bbox, and not of the padded mapData.boundingBox
 
+            // todo: this could be done async if the cache is guaranteed to hold all data until db operations are finished
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
             geometryDB.putAll(geometryEntries)
@@ -113,10 +114,6 @@ class MapDataController internal constructor(
 
             cache.update(deletedKeys, elements, geometryEntries)
 
-            // todo: async!
-            //  but this should block db (or rather table) accesses while in operation
-            //  write operations lock the db in SQLite, but it might happen that another thread
-            //  accesses the db between any two of the 4 operations?
             elementDB.deleteAll(deletedKeys)
             geometryDB.deleteAll(deletedKeys)
             geometryDB.putAll(geometryEntries)
@@ -279,7 +276,7 @@ class MapDataController internal constructor(
 }
 
 // zoom 16 is typically on the higher end when editing elements in SC
-// todo: cache might profit from switching zoom to 17, as this means less data is loaded when not using overlays
+// todo: switch to zoom 17 or 18 in the end? it's noticeably faster for other things than overlay
 private const val SPATIAL_CACHE_TILE_ZOOM = 16
 // twice the maximum tiles that can be loaded at once in StyleableOverlayManager (at same zoom),
 // as we don't want to drop tiles from cache already when scrolling the map a bit
