@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.*
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.BUILDING
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.HANDLEBAR_HOLDER
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.LOCKERS
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.SHED
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.STANDS
+import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.WALL_LOOPS
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun BikeParkingType.asItem() = Item(this, iconResId, titleResId)

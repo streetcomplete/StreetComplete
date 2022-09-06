@@ -33,9 +33,13 @@ class MapDataApiImpl(osm: OsmConnection) : MapDataApi {
 
     private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 
-    override fun uploadChanges(changesetId: Long, changes: MapDataChanges) = wrapExceptions {
+    override fun uploadChanges(
+        changesetId: Long,
+        changes: MapDataChanges,
+        ignoreRelationTypes: Set<String?>
+    ) = wrapExceptions {
         try {
-            val handler = UpdatedElementsHandler()
+            val handler = UpdatedElementsHandler(ignoreRelationTypes)
             api.uploadChanges(changesetId, changes.toOsmApiElements()) {
                 handler.handle(it.toDiffElement())
             }

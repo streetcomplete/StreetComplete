@@ -1,7 +1,15 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.*
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.ARCH
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.BEAM
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.CABLE_STAYED
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.FLOATING
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.HUMPBACK
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.SIMPLE_SUSPENSION
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.SUSPENSION
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.TIED_ARCH
+import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.TRUSS
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun BridgeStructure.asItem() = Item(this, iconResId)

@@ -11,10 +11,12 @@ import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation
-import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
@@ -55,9 +57,11 @@ class StreetParkingOverlay : Overlay {
         ).map { it to chokerStyle }
 
     override fun createForm(element: Element) =
-        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes")
+        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
-        else null
+        } else {
+            null
+        }
 }
 
 private val streetParkingTaggingNotExpected by lazy { """
@@ -66,12 +70,9 @@ private val streetParkingTaggingNotExpected by lazy { """
       or motorroad = yes
       or expressway = yes
       or junction = roundabout
-      or tunnel and tunnel != no
-      or bridge and bridge != no
       or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*rural.*
       or maxspeed >= 70
 """.toElementFilterExpression() }
-
 
 private val parkingLotStyle = PolygonStyle(Color.BLUE)
 

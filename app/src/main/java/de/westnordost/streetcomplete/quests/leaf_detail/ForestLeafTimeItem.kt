@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.BROADLEAVED
+import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.MIXED
+import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.NEEDLELEAVED
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.leaf_detail.ForestLeafType.*
 
 fun ForestLeafType.asItem() = Item(this, iconResId, titleResId)
 

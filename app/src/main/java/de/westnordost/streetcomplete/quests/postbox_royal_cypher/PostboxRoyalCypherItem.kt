@@ -1,7 +1,14 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.*
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.EDWARD_VII
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.EDWARD_VIII
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.ELIZABETH_II
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.GEORGE_V
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.GEORGE_VI
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.NONE
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.SCOTTISH_CROWN
+import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.VICTORIA
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 

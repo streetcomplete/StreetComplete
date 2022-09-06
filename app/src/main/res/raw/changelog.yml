@@ -1,3 +1,19 @@
+v47.0-beta1: |
+  <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
+  <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
+     Be warned, of the overlays so far, this is the most complex one and the first that does not
+     replace a pre-existing quest 🙂</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Can you deposit cash at this ATM?</i> (#4292, #4333), by @mnalis</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
+  <li>Several performance improvements and reduced network traffic on uploading (#4078, #4202, #4319, #4339), by @Helium314</li>
+  <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
+  </ul>
+
 v47.0-alpha1: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
