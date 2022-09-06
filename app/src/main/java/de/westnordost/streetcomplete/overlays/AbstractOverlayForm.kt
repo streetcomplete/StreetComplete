@@ -152,7 +152,9 @@ abstract class AbstractOverlayForm :
             cornerRadius, margin, margin, margin, margin
         )
 
-        binding.titleHintLabel.text = getNameAndLocationLabelString(element.tags, resources, featureDictionary)
+        val nameAndLocationLabel = getNameAndLocationLabelString(element.tags, resources, featureDictionary)
+        binding.titleHintLabel.text = nameAndLocationLabel
+        binding.titleHintLabel.isGone = nameAndLocationLabel == null
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
