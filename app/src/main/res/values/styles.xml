@@ -81,7 +81,7 @@
         <item name="android:inputType">number</item>
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
-        <item name="android:minHeight">52dp</item>
+        <item name="android:minHeight">60dp</item>
         <item name="android:background">@null</item>
     </style>
 
