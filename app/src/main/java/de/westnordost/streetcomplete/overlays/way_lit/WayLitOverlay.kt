@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
+import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 
@@ -39,16 +40,17 @@ private fun getStyle(element: Element): Style {
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color, null) else PolylineStyle(color)
+    return if (element.tags["area"] == "yes") PolygonStyle(color, null)
+        else PolylineStyle(StrokeStyle(color))
 }
 
 private val LitStatus?.color get() = when (this) {
     LitStatus.YES,
-    LitStatus.UNSUPPORTED ->   "#ccff00"
-    LitStatus.NIGHT_AND_DAY -> "#33ff00"
-    LitStatus.AUTOMATIC ->     "#00eeff"
-    LitStatus.NO ->            "#555555"
-    null ->                    Color.UNSPECIFIED
+    LitStatus.UNSUPPORTED ->   Color.LIME
+    LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
+    LitStatus.AUTOMATIC ->     Color.SKY
+    LitStatus.NO ->            Color.BLACK
+    null ->                    Color.CRIMSON
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

@@ -19,7 +19,7 @@ class MapDataController internal constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator,
     private val createdElementsController: CreatedElementsController
-) {
+) : MapDataRepository {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -185,9 +185,9 @@ class MapDataController internal constructor(
         )
     }
 
-    fun getNode(id: Long): Node? = get(ElementType.NODE, id) as? Node
-    fun getWay(id: Long): Way? = get(ElementType.WAY, id) as? Way
-    fun getRelation(id: Long): Relation? = get(ElementType.RELATION, id) as? Relation
+    override fun getNode(id: Long): Node? = get(ElementType.NODE, id) as? Node
+    override fun getWay(id: Long): Way? = get(ElementType.WAY, id) as? Way
+    override fun getRelation(id: Long): Relation? = get(ElementType.RELATION, id) as? Relation
 
     fun getAll(elementKeys: Collection<ElementKey>): List<Element> =
         cache.getElements(elementKeys, elementDB::getAll)
@@ -196,10 +196,26 @@ class MapDataController internal constructor(
     fun getWays(ids: Collection<Long>): List<Way> = cache.getWays(ids, wayDB::getAll)
     fun getRelations(ids: Collection<Long>): List<Relation> = cache.getRelations(ids, relationDB::getAll)
 
-    fun getWaysForNode(id: Long): List<Way> = cache.getWaysForNode(id, wayDB::getAllForNode)
-    fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForNode(id, relationDB::getAllForNode)
-    fun getRelationsForWay(id: Long): List<Relation> = cache.getRelationsForWay(id, relationDB::getAllForWay)
-    fun getRelationsForRelation(id: Long): List<Relation> = cache.getRelationsForRelation(id, relationDB::getAllForRelation)
+    override fun getWaysForNode(id: Long): List<Way> = cache.getWaysForNode(id, wayDB::getAllForNode)
+    override fun getRelationsForNode(id: Long): List<Relation> = cache.getRelationsForNode(id, relationDB::getAllForNode)
+    override fun getRelationsForWay(id: Long): List<Relation> = cache.getRelationsForWay(id, relationDB::getAllForWay)
+    override fun getRelationsForRelation(id: Long): List<Relation> = cache.getRelationsForRelation(id, relationDB::getAllForRelation)
+
+    override fun getWayComplete(id: Long): MapData? {
+        val way = getWay(id) ?: return null
+        val nodeIds = way.nodeIds.toSet()
+        val nodes = getNodes(nodeIds)
+        if (nodes.size < nodeIds.size) return null
+        return MutableMapData(nodes + way)
+    }
+
+    override fun getRelationComplete(id: Long): MapData? {
+        val relation = getRelation(id) ?: return null
+        val elementKeys = relation.members.map { ElementKey(it.type, it.ref) }.toSet()
+        val elements = getAll(elementKeys)
+        if (elements.size < elementKeys.size) return null
+        return MutableMapData(elements + relation)
+    }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val elements: List<ElementKey>

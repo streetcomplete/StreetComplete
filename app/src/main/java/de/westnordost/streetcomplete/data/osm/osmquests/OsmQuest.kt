@@ -46,5 +46,5 @@ data class OsmQuest(
     }
 }
 
-const val MAXIMUM_MARKER_DISTANCE = 500
+const val MAXIMUM_MARKER_DISTANCE = 400
 const val MARKER_FROM_END_DISTANCE = 15
