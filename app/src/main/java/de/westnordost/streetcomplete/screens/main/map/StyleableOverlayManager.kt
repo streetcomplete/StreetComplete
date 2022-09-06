@@ -43,7 +43,7 @@ class StyleableOverlayManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    private var mapDataUpdateJob: Job? = null
+    private var updateJob: Job? = null
 
     private var overlay: Overlay? = null
     set(value) {
@@ -60,7 +60,11 @@ class StyleableOverlayManager(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            viewLifecycleScope.launch { updateStyledElements(updated, deleted) }
+            val oldUpdateJob = updateJob
+            updateJob = viewLifecycleScope.launch {
+                oldUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
+                updateStyledElements(updated, deleted)
+            }
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
@@ -117,12 +121,12 @@ class StyleableOverlayManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        mapDataUpdateJob?.cancel()
-        mapDataUpdateJob = viewLifecycleScope.launch {
+        updateJob?.cancel()
+        updateJob = viewLifecycleScope.launch {
             val mapData = withContext(Dispatchers.IO) {
                 synchronized(mapDataSource) {
-                    if (!coroutineContext.isActive) return@synchronized null
-                    mapDataSource.getMapDataWithGeometry(bbox)
+                    if (!coroutineContext.isActive) null
+                    else mapDataSource.getMapDataWithGeometry(bbox)
                 }
             } ?: return@launch
             setStyledElements(mapData)
@@ -162,9 +166,8 @@ class StyleableOverlayManager(
                 }
             }
             deleted.forEach { if (mapDataInView.remove(it) != null) changedAnything = true }
-            if (changedAnything) {
-                if (coroutineContext.isActive)
-                    mapComponent.set(mapDataInView.values)
+            if (changedAnything && coroutineContext.isActive) {
+                mapComponent.set(mapDataInView.values)
             }
         }
     }

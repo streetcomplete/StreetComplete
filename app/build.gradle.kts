@@ -103,13 +103,6 @@ configurations {
     all {
         // it's already included in Android
         exclude(group = "net.sf.kxml", module = "kxml2")
-
-        // TODO remove substitution when `kaml` dependency uses newer version of `org.snakeyaml:snakeyaml-engine`
-        resolutionStrategy.dependencySubstitution {
-            substitute(module("org.snakeyaml:snakeyaml-engine:2.3"))
-                .using(module("org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484"))
-                .because("https://github.com/streetcomplete/StreetComplete/issues/3889")
-        }
     }
 }
 
@@ -183,7 +176,7 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    implementation("com.charleskorn.kaml:kaml:0.47.0")
+    implementation("com.charleskorn.kaml:kaml:0.48.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")

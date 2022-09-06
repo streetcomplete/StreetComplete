@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
@@ -60,19 +59,23 @@ class QuestPinsManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    private var pinsUpdateJob: Job? = null
+    private var updateJob: Job? = null
 
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) start() else stop() }
+            if (value) start() else stop()
+        }
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            pinsUpdateJob?.cancel()
-            pinsUpdateJob = viewLifecycleScope.launch { updateQuestPins(added, removed) }
+            val oldUpdateJob = updateJob
+            updateJob = viewLifecycleScope.launch {
+                oldUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
+                updateQuestPins(added, removed)
+            }
         }
 
         override fun onVisibleQuestsInvalidated() {
@@ -140,14 +143,12 @@ class QuestPinsManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        pinsUpdateJob?.cancel()
-        pinsUpdateJob = viewLifecycleScope.launch {
+        updateJob?.cancel()
+        updateJob = viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) {
                 synchronized(visibleQuestsSource) {
-                    if (!coroutineContext.isActive)
-                    // can't return@launch here, so return null and then @launch
-                        return@synchronized null
-                    visibleQuestsSource.getAllVisible(bbox)
+                    if (!coroutineContext.isActive) null
+                    else visibleQuestsSource.getAllVisible(bbox)
                 }
             } ?: return@launch
             setQuestPins(quests)
