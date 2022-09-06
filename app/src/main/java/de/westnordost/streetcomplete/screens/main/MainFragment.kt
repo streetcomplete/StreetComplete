@@ -106,7 +106,6 @@ import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.math.area
-import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
