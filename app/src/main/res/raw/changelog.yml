@@ -1,3 +1,10 @@
+v46.1: |
+  <ul>
+  <li>Enable public transport stop quests also when they are mapped as areas (#4341)</li>
+  <li>Fix trunk link roads were not displayed</li>
+  <li>Other minor enhancements (#4348,...)</li>
+  </ul>
+
 v46.0: |
   <h3>New Quests</h3>
   <p>Asked for campsites (#4213), by @mnalis:</p>
