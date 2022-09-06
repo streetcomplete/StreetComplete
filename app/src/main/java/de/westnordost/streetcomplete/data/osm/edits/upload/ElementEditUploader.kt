@@ -27,20 +27,19 @@ class ElementEditUploader(
     fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
         val remoteChanges by lazy { edit.action.createUpdates(edit.originalElement, edit.fetchElement(mapDataApi), mapDataApi, idProvider) }
         val localChanges by lazy { edit.action.createUpdates(edit.originalElement, edit.fetchElement(mapDataController), mapDataController, idProvider) }
-        val useRemoteChanges = edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
 
-        return try {
-            if (useRemoteChanges)
+        return if (edit.action::class in EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES) {
+            try {
                 uploadChanges(edit, remoteChanges, false)
-            else
-                uploadChanges(edit, localChanges, false)
-        } catch (e: ConflictException) {
-            // either changeset was closed, or element modified, or local element was cleaned from db
-            if (useRemoteChanges) {
+            } catch (e: ConflictException) {
                 // probably changeset closed
                 uploadChanges(edit, remoteChanges, true)
-            } else {
-                // anything of the 3 may be the problem, try again with remote changes
+            }
+        } else {
+            try {
+                uploadChanges(edit, localChanges, false)
+            } catch (e: ConflictException) {
+                // either changeset was closed, or element modified, or local element was cleaned from db
                 try {
                     uploadChanges(edit, remoteChanges, false)
                 } catch (e: ConflictException) {
