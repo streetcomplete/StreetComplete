@@ -43,7 +43,7 @@ class StyleableOverlayManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    private var styledElementsUpdateJob: Job? = null
+    private var updateJob: Job? = null
 
     private var overlay: Overlay? = null
     set(value) {
@@ -60,9 +60,9 @@ class StyleableOverlayManager(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val oldStyledElementsUpdateJob = styledElementsUpdateJob
-            styledElementsUpdateJob = viewLifecycleScope.launch {
-                oldStyledElementsUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
+            val oldSUpdateJob = updateJob
+            updateJob = viewLifecycleScope.launch {
+                oldSUpdateJob?.join() // don't cancel, as updateStyledElements only updates existing data
                 updateStyledElements(updated, deleted)
             }
         }
@@ -121,8 +121,8 @@ class StyleableOverlayManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        styledElementsUpdateJob?.cancel()
-        styledElementsUpdateJob = viewLifecycleScope.launch {
+        updateJob?.cancel()
+        updateJob = viewLifecycleScope.launch {
             val mapData = withContext(Dispatchers.IO) {
                 synchronized(mapDataSource) {
                     if (!coroutineContext.isActive) null

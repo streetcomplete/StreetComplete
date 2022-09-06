@@ -51,7 +51,7 @@ class QuestPinsManager(
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
-    private var pinsUpdateJob: Job? = null
+    private var updateJob: Job? = null
 
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
@@ -63,9 +63,9 @@ class QuestPinsManager(
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            val oldPinsUpdateJob = pinsUpdateJob
-            pinsUpdateJob = viewLifecycleScope.launch {
-                oldPinsUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
+            val oldUpdateJob = updateJob
+            updateJob = viewLifecycleScope.launch {
+                oldUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
                 updateQuestPins(added, removed)
             }
         }
@@ -135,8 +135,8 @@ class QuestPinsManager(
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-        pinsUpdateJob?.cancel()
-        pinsUpdateJob = viewLifecycleScope.launch {
+        updateJob?.cancel()
+        updateJob = viewLifecycleScope.launch {
             val quests = withContext(Dispatchers.IO) {
                 synchronized(visibleQuestsSource) {
                     if (!coroutineContext.isActive) null
