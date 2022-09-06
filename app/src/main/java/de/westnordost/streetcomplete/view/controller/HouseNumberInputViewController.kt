@@ -13,7 +13,11 @@ import de.westnordost.streetcomplete.osm.housenumber.addToHouseNumber
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
-/** Manages inputting a house number with optional block number (Japan) */
+/** Manages inputting a house number with optional block number (Japan).
+ *  The [lastHouseNumber] is shown as a hint and the user can use the [addButton] or
+ *  [subtractButton] to count up or down from the previous value without having to open the
+ *  keyboard for [houseNumberInput].
+ *  The [lastBlockNumber] is used to prefill the [blockNumberInput]. */
 class HouseNumberInputViewController(
     activity: Activity,
     private val houseNumberInput: EditText,
@@ -29,7 +33,7 @@ class HouseNumberInputViewController(
 
     private var houseNumberInputTextColors: ColorStateList? = null
     // because the hint is implemented as a hack: it is actually the text proper but colored in light-gray
-    private val houseNumberInputText: String? =
+    private val houseNumberInputText: String? get() =
         houseNumberInput.nonBlankTextOrNull?.takeIf { houseNumberInputTextColors == null }
 
     var onInputChanged: (() -> Unit)? = null
