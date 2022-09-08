@@ -75,15 +75,6 @@ class MapDataCache(
             val updatedWays = addedOrUpdatedElements.filterIsInstance<Way>()
             val updatedRelations = addedOrUpdatedElements.filterIsInstance<Relation>()
 
-            if (updatedWays.isEmpty() && updatedRelations.isEmpty())
-                return
-
-            // todo: getting all nodes may take up to half the time of updating
-            //  can we limit nodes to a bbox?
-            //  or if we don't have a bbox, we usually have few elements only... so we could just
-            //   fetch every single node to check whether it's in spatialCache
-            val nodeIdsFromSpatialCache = spatialCache.getKeys().toHashSet()
-
             // add ways to wayRelationCache
             // and to wayIdsByNodeIdCache if nodeId is in spatialCache, because if not then we
             // can't be sure to have all ways for that node, which may give wrong entries in wayIdsByNodeIdCache
@@ -100,7 +91,7 @@ class MapDataCache(
 
                 way.nodeIds.forEach {
                     // add to wayIdsByNodeIdCache if node is in spatialCache
-                    if (it in nodeIdsFromSpatialCache)
+                    if (spatialCache.get(it) != null)
                         wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
                     else
                     // But if we already have an entry for that nodeId (cached from getWaysForNode),
@@ -115,14 +106,14 @@ class MapDataCache(
             // for adding relations to relationIdsByElementKeyCache we want the element to be
             // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
             val wayIdsWithNodesInSpatialCache = wayRelationCache.values.mapNotNull { element ->
-                if (element is Way && element.nodeIds.any { it in nodeIdsFromSpatialCache })
+                if (element is Way && element.nodeIds.any { spatialCache.get(it) != null })
                     element.id
                 else null
             }.toHashSet()
 
             val relationIdsWithElementsInSpatialCache = wayRelationCache.values.mapNotNull {
                 if (it is Relation && it.members.any { member ->
-                        (member.type == ElementType.NODE && member.ref in nodeIdsFromSpatialCache)
+                        (member.type == ElementType.NODE && spatialCache.get(member.ref) != null)
                             || (member.type == ElementType.WAY && member.ref in wayIdsWithNodesInSpatialCache)
                     })
                     it.id
@@ -142,7 +133,7 @@ class MapDataCache(
 
                 relation.members.forEach {
                     val memberKey = ElementKey(it.type, it.ref)
-                    if ((it.ref in nodeIdsFromSpatialCache && it.type == ElementType.NODE)
+                    if ((it.type == ElementType.NODE && spatialCache.get(it.ref) != null)
                             || (it.ref in wayIdsWithNodesInSpatialCache && it.type == ElementType.WAY)
                             || (it.ref in relationIdsWithElementsInSpatialCache && it.type == ElementType.RELATION)) // todo: this is unpredictable... what do?
                         relationIdsByElementKeyCache.getOrPut(memberKey) { ArrayList(2) }.add(relation.id)
@@ -309,6 +300,7 @@ class MapDataCache(
             relationIds.forEach {
                 val key = ElementKey(ElementType.RELATION, it)
                 result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+                // todo: what about relations of relations?
             }
         }
 
@@ -336,41 +328,44 @@ class MapDataCache(
 
     private fun trimNonSpatialCaches() {
         synchronized(this) {
-            val cachedNodeIds = spatialCache.getKeys().toHashSet()
             // ways with at least one node in cache should not be removed
-            val wayIdsWithCachedNode = HashSet<Long>(cachedNodeIds.size / 2)
+            val wayIdsWithNodesInSpatialCache = wayRelationCache.values.mapNotNull { element ->
+                if (element is Way && element.nodeIds.any { spatialCache.get(it) != null })
+                    element.id
+                else null
+            }.toHashSet()
+
             // relations with at least one element in cache should not be removed
-            val relationIdsWithCachedElement = HashSet<Long>(cachedNodeIds.size / 10)
-            cachedNodeIds.forEach { nodeId ->
-                wayIdsByNodeIdCache[nodeId]?.let { wayIdsWithCachedNode.addAll(it) }
-                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, nodeId)]?.let { relationIdsWithCachedElement.addAll(it) }
-            }
-            wayIdsWithCachedNode.forEach { wayId ->
-                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIdsWithCachedElement.addAll(it) }
-            }
+            val relationIdsWithElementsInSpatialCache = wayRelationCache.values.mapNotNull {
+                if (it is Relation && it.members.any { member ->
+                        (member.type == ElementType.NODE && spatialCache.get(member.ref) != null)
+                            || (member.type == ElementType.WAY && member.ref in wayIdsWithNodesInSpatialCache)
+                    })
+                    it.id
+                else null
+            }.toHashSet()
+
             wayRelationCache.keys.retainAll {
                 if (it.type == ElementType.RELATION)
-                    it.id in relationIdsWithCachedElement
-                else it.id in wayIdsWithCachedNode
+                    it.id in relationIdsWithElementsInSpatialCache
+                else it.id in wayIdsWithNodesInSpatialCache
             }
             wayRelationGeometryCache.keys.retainAll {
                 if (it.type == ElementType.RELATION)
-                    it.id in relationIdsWithCachedElement
-                else it.id in wayIdsWithCachedNode
+                    it.id in relationIdsWithElementsInSpatialCache
+                else it.id in wayIdsWithNodesInSpatialCache
             }
 
             // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
-            wayIdsByNodeIdCache.keys.retainAll { it in cachedNodeIds }
+            wayIdsByNodeIdCache.keys.retainAll { spatialCache.get(it) != null }
             relationIdsByElementKeyCache.keys.retainAll {
-                (it.type == ElementType.NODE && it.id in cachedNodeIds)
-                    || (it.type == ElementType.WAY && it.id in wayIdsWithCachedNode)
+                (it.type == ElementType.NODE && spatialCache.get(it.id) != null)
+                    || (it.type == ElementType.WAY && it.id in wayIdsWithNodesInSpatialCache)
+                // todo: what about relations of relations?
             }
         }
     }
 
-    // todo: really use? because actually we could also cache "not existing" response and use getOrPut
-    //  would mean that caches (except spatial) would need to switch to allow null
-    //  but need to consider that when filling MapDataWithGeometry, and maybe somewhere else
     private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
         val v = get(key)
         if (v == null)
