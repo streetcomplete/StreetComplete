@@ -202,7 +202,7 @@ class MapDataCache(
         getElements(ids.map { ElementKey(ElementType.WAY, it) }) { keys -> fetch(keys.map { it.id }) }
             .filterIsInstance<Way>()
     fun getRelations(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Relation>): List<Relation> =
-        getElements(ids.map { ElementKey(ElementType.WAY, it) }) { keys -> fetch(keys.map { it.id }) }
+        getElements(ids.map { ElementKey(ElementType.RELATION, it) }) { keys -> fetch(keys.map { it.id }) }
             .filterIsInstance<Relation>()
 
     fun getGeometries(
