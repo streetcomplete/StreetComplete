@@ -28,6 +28,7 @@ class SpatialCache<K, T>(
 ) {
     private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles/0.75).toInt(), 0.75f, true)
     private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
+    val size get() = byTile.size
 
     /** @return a new list of all keys in the cache */
     fun getKeys(): List<K> = synchronized(this) { byKey.keys.toList() }

@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.SpatialCache
  */
 class MapDataCache(
     private val tileZoom: Int,
-    maxTiles: Int,
+    val maxTiles: Int,
     initialCapacity: Int,
     private val fetchMapData: (BoundingBox) -> Pair<Collection<Element>, Collection<ElementGeometryEntry>>, // used if the tile is not contained
 ) {
@@ -67,8 +67,21 @@ class MapDataCache(
                 relationIdsByElementKeyCache.remove(key)
             }
             // then add
+            addedOrUpdatedGeometries.forEach {
+                if (it.elementType != ElementType.NODE)
+                    wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
+            }
+
             val updatedWays = addedOrUpdatedElements.filterIsInstance<Way>()
             val updatedRelations = addedOrUpdatedElements.filterIsInstance<Relation>()
+
+            if (updatedWays.isEmpty() && updatedRelations.isEmpty())
+                return
+
+            // todo: getting all nodes may take up to half the time of updating
+            //  can we limit nodes to a bbox?
+            //  or if we don't have a bbox, we usually have few elements only... so we could just
+            //   fetch every single node to check whether it's in spatialCache
             val nodeIdsFromSpatialCache = spatialCache.getKeys().toHashSet()
 
             // add ways to wayRelationCache
@@ -95,6 +108,9 @@ class MapDataCache(
                         wayIdsByNodeIdCache[it]?.add(way.id)
                 }
             }
+
+            if (updatedRelations.isEmpty())
+                return
 
             // for adding relations to relationIdsByElementKeyCache we want the element to be
             // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
@@ -135,11 +151,6 @@ class MapDataCache(
                     // we definitely need to add the updated relation
                         relationIdsByElementKeyCache[memberKey]?.add(relation.id)
                 }
-            }
-
-            addedOrUpdatedGeometries.forEach {
-                if (it.elementType != ElementType.NODE)
-                    wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
             }
         }
 
@@ -276,7 +287,13 @@ class MapDataCache(
             nodes = spatialCache.get(bbox)
         }
 
-        nodes.forEach { result.put(it, ElementPointGeometry(it.position)) } // create a new geometry, as it's not cached (this is the slowest part in loading from cache)
+        // todo: in my "other" cache putting nodes+geometries is much faster... why?
+        //  tried giving each node a fixed .geometry val -> difference NOT caused by creating geometries
+        //  in "other" cache, for 1 z16 tile, entire getMapDataWithGeometry is twice as fast as this line
+        //  ... but that doesn't make sense, as it's also simply putting all elements + geometries
+        //   into MutableMapDataWithGeometry using put(element, geometry)
+        nodes.forEach { result.put(it, ElementPointGeometry(it.position)) }
+
         synchronized(this) {
             val wayIds = HashSet<Long>(nodes.size / 5)
             val relationIds = HashSet<Long>(nodes.size / 10)
@@ -285,12 +302,9 @@ class MapDataCache(
                 relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
             }
             wayIds.forEach { wayId ->
-                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
-            }
-
-            wayIds.forEach {
-                val key = ElementKey(ElementType.WAY, it)
+                val key = ElementKey(ElementType.WAY, wayId)
                 result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
             }
             relationIds.forEach {
                 val key = ElementKey(ElementType.RELATION, it)
@@ -298,10 +312,10 @@ class MapDataCache(
             }
         }
 
-        // todo: call trimNonSpatialCaches if tilesToFetch.isNotEmpty()?
-        //  we just added a lot of data to cache, so maybe we should drop something?
-        //  or maybe first check whether spatialCache is full?
-
+        // finally trim if we fetched new data, and spatialCache is full
+        // trim to 90%, so trim is (probably) not immediately called on next fetch
+        if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty())
+            trim((maxTiles * 9) / 10)
         return result
     }
 
