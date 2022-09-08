@@ -42,6 +42,8 @@ class EditHistoryPinsManager(
             if (value != 0) start(value == 2) else stop()
         }
 
+    private var showAllHiddenQuests = false
+
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
     private val editHistoryListener = object : EditHistorySource.Listener {
@@ -57,7 +59,8 @@ class EditHistoryPinsManager(
     }
 
     private fun start(allHidden: Boolean) {
-        updatePins(allHidden)
+        showAllHiddenQuests = allHidden
+        updatePins()
         editHistorySource.addListener(editHistoryListener)
     }
 
@@ -70,10 +73,10 @@ class EditHistoryPinsManager(
     fun getEditKey(properties: Map<String, String>): EditKey? =
         properties.toEditKey()
 
-    private fun updatePins(allHidden: Boolean = false) {
+    private fun updatePins() {
         viewLifecycleScope.launch {
             if (this@EditHistoryPinsManager.isActive != 0) {
-                val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(allHidden) }
+                val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(showAllHiddenQuests) }
                 val pins = createEditPins(edits)
                 pinsMapComponent.set(pins)
             }

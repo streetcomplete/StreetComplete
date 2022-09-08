@@ -103,7 +103,15 @@ class EditHistoryController(
         return r
     }
 
-    override fun get(key: EditKey): Edit? = getAll().firstOrNull { it.key == key }
+    override fun get(key: EditKey): Edit? {
+        val edit = getAll().firstOrNull { it.key == key }
+        if (edit != null) return edit
+        if (key is OsmQuestHiddenKey)
+            return osmQuestController.getHidden(key.osmQuestKey)
+        if (key is OsmNoteQuestHiddenKey)
+            return noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
+        return null
+    }
 
     override fun getMostRecentUndoable(): Edit? =
         // this could be optimized later by not querying all. Though, the amount that is queried
