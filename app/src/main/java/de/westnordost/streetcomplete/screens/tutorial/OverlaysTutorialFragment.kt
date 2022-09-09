@@ -21,7 +21,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /** Shows a short tutorial for first-time users of overlay functionality */
-class OverlaysTutorialFragment : Fragment(R.layout.fragment_tutorial) {
+class OverlaysTutorialFragment : Fragment(R.layout.fragment_tutorial_overlay) {
 
     private var currentPage: Int = 0
 
