@@ -1578,7 +1578,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_surface_value_concrete_plates">"Betónové panely"</string>
     <string name="quest_surface_value_concrete_lanes">"Betónové pruhy"</string>
     <string name="quest_fireHydrant_diameter_title">"Aký priemer je uvedený na značke tohto hydrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Tento priemer vyzerá zvláštne."</string>
     <string name="quest_fireHydrant_confirmation_title">"Naozaj? Niekedy sa dá priemer nájsť priamo na samotnom hydrante."</string>
     <string name="quest_diet_answer_no_food">"Nemá žiadne jedlá"</string>
     <string name="short_no_answer_on_button">"Nie"</string>
@@ -1605,7 +1604,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
 
     <!-- Fuzzy -->
     <string name="on_floor">"na poschodí %s:"</string>
-    <string name="quest_street_parking_title">"Ako tu môžu parkovať autá, pokiaľ je to možné?"</string>
     <string name="select_street_parking_orientation">"Vyberte orientáciu vzhľadom na cestu:"</string>
     <string name="select_street_parking_position">"Vyberte pozíciu:"</string>
     <string name="select_street_parking_no">"Sú tu nejaké dopravné značky alebo značenie?"</string>

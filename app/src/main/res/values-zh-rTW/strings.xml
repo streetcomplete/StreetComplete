@@ -2154,7 +2154,6 @@
     <string name="quest_surface_value_concrete_plates">"混凝土板 "</string>
     <string name="quest_surface_value_concrete_lanes">"混凝土巷道"</string>
     <string name="quest_fireHydrant_diameter_title">"這個消防栓的標誌上顯示的直徑是多少？ "</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"這直徑數值看來不可能。"</string>
     <string name="quest_fireHydrant_confirmation_title">"你確定嗎？有時候能直接在消防栓找到直徑的資訊。"</string>
     <string name="quest_diet_answer_no_food">"這裡沒有食物"</string>
     <string name="short_no_answer_on_button">"沒有"</string>
@@ -2181,7 +2180,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"在樓層 %s："</string>
-    <string name="quest_street_parking_title">"車子如何在這裡停靠，如果可以的話？"</string>
     <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
     <string name="select_street_parking_position">"選擇位置："</string>
     <string name="select_street_parking_no">"這裡有任何路牌或是道路標示嗎？"</string>

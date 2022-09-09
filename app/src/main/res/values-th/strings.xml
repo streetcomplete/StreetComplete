@@ -1285,7 +1285,6 @@
     <string name="quest_surface_value_concrete_plates">"แผ่นคอนกรีต"</string>
     <string name="quest_surface_value_concrete_lanes">"ช่องคอนกรีต"</string>
     <string name="quest_fireHydrant_diameter_title">"หัวจ่ายมีเส้นผ่านศูนย์กลางเท่าไหร่ที่ระบุบนป้าย?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"เส้นผ่านศูนย์กลางที่ระบุไม่น่าจะถูกต้อง"</string>
     <string name="quest_fireHydrant_confirmation_title">"แน่ใจนะ? บางครั้งเส้นผ่านศูนย์อาจจะเขียนบนหัวจ่าย"</string>
     <string name="quest_diet_answer_no_food">"ไม่ขายอาหาร"</string>
     <string name="short_no_answer_on_button">"ไม่"</string>
@@ -1308,7 +1307,6 @@
     <string name="pref_title_language_select">"เลือกภาษา"</string>
     <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
     <string name="on_floor">"บนชั้น %s"</string>
-    <string name="quest_street_parking_title">"ตรงนี้จอดรถได้รึเปล่า?"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
     <string name="select_street_parking_position">"เลือกตำแหน่ง:"</string>
     <string name="select_street_parking_no">"มีป้ายหรือสัญลักษณ์บนถนนรึเปล่า?"</string>

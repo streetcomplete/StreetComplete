@@ -1021,7 +1021,6 @@
     <string name="quest_generic_answer_is_actually_steps">"Dette er ei trapp"</string>
     <string name="quest_barrier_type_passage_conversion">"Gjort om til ei opning gjennom mur, gjerde e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Gjort om til ein port"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameteren verkar usannsynleg."</string>
     <string name="short_no_answer_on_button">"Nei"</string>
     <string name="restore_confirmation">"Gjenopprett"</string>
     <string name="restore_dialog_message">"Vil du gjenoppretta alle oppdraga du tidlegare har gøymt?"</string>

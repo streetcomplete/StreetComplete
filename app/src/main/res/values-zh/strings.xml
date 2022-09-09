@@ -2304,7 +2304,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"这个消火栓的标志上规定的直径是多少？"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"这个直径令人难以置信"</string>
     <string name="quest_fireHydrant_confirmation_title">"你确定吗？有时可以在它本身上找到直径"</string>
 
     <!-- Fuzzy -->
@@ -2345,9 +2344,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="on_floor">"在楼层 %s:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_parking_title">"如果有的话，汽车该如何停在这里？"</string>
 
     <!-- Fuzzy -->
     <string name="select_street_parking_orientation">"选择朝向道路的方向："</string>

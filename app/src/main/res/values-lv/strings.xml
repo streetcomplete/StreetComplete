@@ -1035,7 +1035,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_surface_value_concrete_plates">"Betona plāksnes"</string>
     <string name="quest_surface_value_concrete_lanes">"Betona sliedes"</string>
     <string name="quest_fireHydrant_diameter_title">"Kāds diametrs ir norādīts uz zīmes šim ugunsdzēsības hidrantam?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Šis diametrs izskatās neticams."</string>
     <string name="quest_fireHydrant_confirmation_title">"Vai tiešām? Dažkārt tas ir atrodams uz paša hidranta."</string>
     <string name="quest_diet_answer_no_food">"Tajā nav ēdiens"</string>
     <string name="short_no_answer_on_button">"Nē"</string>
@@ -1056,7 +1055,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="pref_title_language_select">"Izvēlieties valodu"</string>
     <string name="language_default">"Sistēmas noklusējuma"</string>
     <string name="on_floor">"stāvā %s"</string>
-    <string name="quest_street_parking_title">"Cik auto šeit var novietot, ja vispār?"</string>
     <string name="select_street_parking_orientation">"Izvēlieties orientāciju pret autoceļu:"</string>
     <string name="select_street_parking_position">"Izvēlieties novietojumu:"</string>
     <string name="select_street_parking_no">"Vai šeit ir kādas zīmes vai ceļa marķējums?"</string>
@@ -1323,4 +1321,6 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Atbilde neatbilst tam, kas jau ir kartēts par šo ceļu. Vai esat pārliecināts, ka šī atbilde ir par pareizo ceļu? Vai tiešām jūs personīgi apsekojāt visā tā garumā, kā tas vienmēr jādara?"</string>
     <string name="quest_recycling_type_pet">"Tikai PET"</string>
+    <string name="street_parking_street_width">"Ielas platums: %s"</string>
+    <string name="overlay_street_parking">"Stāvvieta pie ielas"</string>
 </resources>

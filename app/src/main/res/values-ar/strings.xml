@@ -1305,7 +1305,6 @@
     <string name="quest_surface_value_concrete_plates">"ألواح خرسانية"</string>
     <string name="quest_surface_value_concrete_lanes">"مسارات خرسانية"</string>
     <string name="quest_fireHydrant_diameter_title">"ما القطر المحدد على علامة صنبور إطفاء الحرائق هذا؟"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"هذا القطرغير واقعي ويبدو بأنه غير قابل للتصديق."</string>
     <string name="quest_fireHydrant_confirmation_title">"هل أنت واثق؟ في بعض الأحيان يمكن العثور على القطر على صنبور المياه نفسه."</string>
     <string name="quest_diet_answer_no_food">"ليس لديها طعام"</string>
     <string name="short_no_answer_on_button">"لا"</string>
@@ -1327,7 +1326,6 @@
     <string name="language_default">"حسب إعدادات النظام الافتراضية"</string>
     <string name="on_floor">"على الدور %s
 "</string>
-    <string name="quest_street_parking_title">"كيف يمكن للسيارات أن تقف هنا ، على كل حال؟"</string>
     <string name="select_street_parking_orientation">"حدد الاتجاه نحو الطريق:"</string>
     <string name="select_street_parking_position">"حدد الموضع:"</string>
     <string name="select_street_parking_no">"أي علامة مرورية أو علامة طريق هنا؟"</string>

@@ -1063,7 +1063,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_surface_value_concrete_plates">"Concrete plates"</string>
     <string name="quest_surface_value_concrete_lanes">"Concrete lanes"</string>
     <string name="quest_fireHydrant_diameter_title">"What diameter is specified on the sign for this fire hydrant?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"This diameter looks implausible."</string>
     <string name="quest_fireHydrant_confirmation_title">"Are you sure? Sometimes the diameter can be found on the hydrant itself."</string>
     <string name="quest_diet_answer_no_food">"It has no food"</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1084,7 +1083,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="pref_title_language_select">"Select language"</string>
     <string name="language_default">"System default"</string>
     <string name="on_floor">"on floor %s"</string>
-    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
     <string name="select_street_parking_orientation">"Select orientation toward carriageway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>
     <string name="select_street_parking_no">"Any sign or road marking here?"</string>
@@ -1320,7 +1318,6 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_staircase">"Stairwell entrance (e.g. to a block of flats)"</string>
 
     <!-- Not 100% sure on what these are / are called… -->
-    <!-- Fuzzy -->
     <string name="quest_building_entrance_service">"Service entrance"</string>
     <string name="quest_building_entrance_exit">"Exit only"</string>
     <string name="quest_building_entrance_emergency_exit">"Emergency exit only"</string>
@@ -1364,4 +1361,18 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Entrance label:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Flat range:"</string>
     <string name="quest_entrance_reference_flat_range_to">"to"</string>
+    <string name="default_disabled_msg_overlay">"This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data."</string>
+    <string name="quest_camp_drinking_water_title">"Is drinking water freely available to campers here?"</string>
+    <string name="quest_camp_shower_title">"Are there showers here?"</string>
+    <string name="quest_camp_power_supply_title">"Is there any way for customers to charge their phone, laptop etc. here?"</string>
+    <string name="quest_camp_type_title">"Who may camp here?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Both tents and motor homes, travel trailers, …"</string>
+    <string name="quest_camp_type_caravans_only">"Only motor homes, travel trailers, …"</string>
+    <string name="quest_camp_type_tents_only">"Only tents"</string>
+    <string name="quest_camp_type_backcountry">"Backcountry camping (no facilities)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"This answer is not matching what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?"</string>
+    <string name="quest_recycling_type_pet">"PET only"</string>
+    <string name="street_parking_street_width">"Street width: %s"</string>
+    <string name="overlay_street_parking">"Street parking"</string>
 </resources>

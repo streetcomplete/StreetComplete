@@ -2154,7 +2154,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_surface_value_concrete_plates">"Placas de concreto"</string>
     <string name="quest_surface_value_concrete_lanes">"Pistas de concreto"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece implausível."</string>
     <string name="quest_fireHydrant_confirmation_title">"Você tem certeza? Às vezes, o diâmetro pode ser encontrado no próprio hidrante."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
@@ -2181,7 +2180,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
 
     <!-- Fuzzy -->
     <string name="on_floor">"no andar %s:"</string>
-    <string name="quest_street_parking_title">"Como os carros estacionam aqui, se permitidos?"</string>
     <string name="select_street_parking_orientation">"Selecione a orientação para a estrada:"</string>
     <string name="select_street_parking_position">"Selecione a posição:"</string>
     <string name="select_street_parking_no">"Algum sinal ou marcação de estrada aqui?"</string>

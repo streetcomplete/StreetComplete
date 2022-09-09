@@ -2269,7 +2269,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_surface_value_concrete_plates">"Betono plokštės"</string>
     <string name="quest_surface_value_concrete_lanes">"Betono juostos"</string>
     <string name="quest_fireHydrant_diameter_title">"Koks šio gaisrinio hidranto skersmuo nurodytas ženkle?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Šis skersmuo atrodo neįtikėtinas."</string>
     <string name="quest_fireHydrant_confirmation_title">"Ar tikrai? Kartais skersmuo nurodomas ant paties hidranto."</string>
     <string name="quest_diet_answer_no_food">"Jame nėra maisto"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
@@ -2290,7 +2289,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="pref_title_language_select">"Pasirinkite kalbą"</string>
     <string name="language_default">"Sistemos numatytieji nustatymai"</string>
     <string name="on_floor">"ant grindų %s"</string>
-    <string name="quest_street_parking_title">"Kaip čia galima statyti automobilius, jei apskritai galima?"</string>
     <string name="select_street_parking_orientation">"Pasirinkite orientaciją į važiuojamąją dalį:"</string>
     <string name="select_street_parking_position">"Pasirinkite poziciją:"</string>
     <string name="select_street_parking_no">"Ar čia yra koks nors kelio ženklas ar ženklinimas?"</string>

@@ -1077,7 +1077,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_surface_value_concrete_plates">"Betonplatten"</string>
     <string name="quest_surface_value_concrete_lanes">"Fahrspuren aus Beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Dieser Durchmesser sieht ungewöhnlich aus."</string>
     <string name="quest_fireHydrant_confirmation_title">"Bist du sicher? Manchmal steht der Durchmesser auf dem Hydranten selbst."</string>
     <string name="quest_diet_answer_no_food">"Hier gibt es nichts zu essen"</string>
     <string name="short_no_answer_on_button">"Nein"</string>
@@ -1098,13 +1097,12 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
     <string name="on_floor">"in Stockwerk %s"</string>
-    <string name="quest_street_parking_title">"Wie kann hier geparkt werden (falls überhaupt)?"</string>
     <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Straße:"</string>
     <string name="select_street_parking_position">"Wähle Position:"</string>
     <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
-    <string name="street_parking_perpendicular">"Im rechten Winkel"</string>
+    <string name="street_parking_perpendicular">"senkrecht"</string>
     <string name="street_parking_on_street">"Auf der Straße"</string>
     <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
@@ -1344,8 +1342,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_statue">"Statue"</string>
     <string name="quest_memorialType_bust">"Büste"</string>
     <string name="quest_memorialType_plaque">"Plakette"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_memorialType_war_memorial">"Kriegerdenkmal"</string>
     <string name="quest_memorialType_stone">"Fels"</string>
     <string name="quest_memorialType_obelisk">"Obelisk"</string>
@@ -1384,4 +1380,6 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht unplausibel aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
+    <string name="street_parking_street_width">"Straßenbreite: %s"</string>
+    <string name="overlay_street_parking">"Parkstreifen"</string>
 </resources>

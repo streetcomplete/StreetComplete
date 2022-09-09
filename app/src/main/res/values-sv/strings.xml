@@ -1252,7 +1252,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_surface_value_concrete_plates">"Betongplattor"</string>
     <string name="quest_surface_value_concrete_lanes">"Betongkörspår"</string>
     <string name="quest_fireHydrant_diameter_title">"Vilken diameter står angiven för denna brandpost?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den diametern verkar osannolik."</string>
     <string name="quest_fireHydrant_confirmation_title">"Är du säker? Ibland kan diametern stå angiven på själva brandposten."</string>
 
     <!-- Fuzzy -->
@@ -1279,7 +1278,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="pref_title_language_select">"Välj språk"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"på våning %s:"</string>
-    <string name="quest_street_parking_title">"Hur kan bilar parkera här, om alls?"</string>
     <string name="select_street_parking_orientation">"Välj orientering mot väg:"</string>
     <string name="select_street_parking_position">"Välj position:"</string>
     <string name="select_street_parking_no">"Någon skylt eller vägmarkering här?"</string>
@@ -1628,4 +1626,6 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ditt svar skiljer sig från vad som redan är kartlagt. Är du säker på att ditt svar är för just denna väg? Har du själv gått hela längs hela vägen och säkerställt att det du skriver in stämmer?"</string>
     <string name="quest_recycling_type_pet">"Endast PET"</string>
+    <string name="street_parking_street_width">"Gatubredd: %s"</string>
+    <string name="overlay_street_parking">"Gatuparkering"</string>
 </resources>

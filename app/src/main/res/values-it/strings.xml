@@ -1291,7 +1291,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Questo diametro sembra implausibile."</string>
     <string name="quest_fireHydrant_confirmation_title">"Sei Sicuro? Delle volte il diametro può essere trovato sull'idrante stesso."</string>
     <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1318,7 +1317,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="pref_title_language_select">"Seleziona lingua"</string>
     <string name="language_default">"Predefinito di sistema"</string>
     <string name="on_floor">"al piano %s"</string>
-    <string name="quest_street_parking_title">"Come possono parcheggiare la auto qua?"</string>
     <string name="select_street_parking_orientation">"Seleziona l'orientamento rispetto alla strada:"</string>
     <string name="select_street_parking_position">"Seleziona la posizione:"</string>
     <string name="select_street_parking_no">"Sono presenti cartelli o strisce qua?"</string>

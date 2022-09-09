@@ -2763,9 +2763,6 @@
     <string name="quest_fireHydrant_diameter_title">"Ինչ տրամագիծ է նշվում այս հրդեհի հիդրանտի նշանի վրա:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Այս տրամագիծը անհասկանալի է թվում:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_confirmation_title">"Համոզված ես? Երբեմն տրամագիծը կարելի է գտնել հիդրանտի վրա:"</string>
 
     <!-- Fuzzy -->
@@ -2824,9 +2821,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"Հատակի վրա %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_street_parking_title">"Ինչպես կարող են մեքենաներ կայանել այստեղ, եթե ընդհանրապես:"</string>
 
     <!-- Fuzzy -->
     <string name="select_street_parking_orientation">"Ընտրեք կողմնորոշումը դեպի ճանապարհը."</string>
