@@ -3,21 +3,15 @@ package de.westnordost.streetcomplete.screens.main.controls
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
-import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -32,7 +26,6 @@ class MainMenuButtonFragment :
 
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
-    private val prefs: SharedPreferences by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -82,40 +75,6 @@ class MainMenuButtonFragment :
             teamModeQuestFilter::disableTeamMode,
         ).show()
     }
-
-    /*
-    private fun onClickOverlays() {
-        val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, false)
-        if (!hasShownTutorial) {
-
-            // childFragmentManager parentFragmentManager fragmentManager requireFragmentManager()
-            // try
-            //
-            (activity as AppCompatActivity).supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                add(R.id.fragment_container, OverlaysTutorialFragment())
-                addToBackStack("tutorial")
-            }
-        } else {
-            OverlaySelectionDialog(requireContext()).show()
-        }
-    }
-
-    override fun onTutorialFinished() {
-        Log.wtf("AAAAAAAAAAAAAAAAAAA", "onTutorialFinished triggered")
-        prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, true) }
-
-        val tutorialFragment = (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (tutorialFragment != null) {
-            (activity as AppCompatActivity).supportFragmentManager.commit {
-                setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                remove(tutorialFragment)
-            }
-        }
-        OverlaySelectionDialog(requireContext()).show()
-    }
-     */
 
     private fun setTeamMode(enabled: Boolean) {
         if (enabled) {

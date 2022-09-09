@@ -2,11 +2,7 @@ package de.westnordost.streetcomplete.screens.main.overlays
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +14,9 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
-import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.viewBinding
 import org.koin.android.ext.android.inject
 
-/** Shows the viewpager with the user profile, user statistics, achievements and links */
 class OverlayFragment :
     Fragment(R.layout.fragment_overlay_selection),
     OverlaysTutorialFragment.Listener,
@@ -67,7 +61,7 @@ class OverlayFragment :
             childFragmentManager.commit {
                 setReorderingAllowed(true)
                 setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                replace(R.id.fragment_container_in_overlay_selection, OverlaysTutorialFragment()) //id.fragment_container ???
+                replace(R.id.fragment_container_in_overlay_selection, OverlaysTutorialFragment()) // id.fragment_container ???
                 addToBackStack("tutorial")
             }
         }
@@ -76,6 +70,5 @@ class OverlayFragment :
     override fun onTutorialFinished() {
         binding.fragmentContainerInOverlaySelection.visibility = View.GONE
         binding.overlaysListContainer.visibility = View.VISIBLE
-        Log.wtf("AAAAAAAAAAAAAAAAAAA", "onTutorialFinished() in overlay fragment")
     }
 }

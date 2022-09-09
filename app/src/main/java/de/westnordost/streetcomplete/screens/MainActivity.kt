@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
@@ -334,7 +333,6 @@ class MainActivity :
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
 
     override fun onTutorialFinished() {
-        Log.wtf("AAAAAAAAAAAAAAAAAAA", "onTutorialFinished triggered in mainactivite")
         lifecycleScope.launch {
             val hasLocation = requestLocation()
             // if denied first time after exiting tutorial: ask again once (i.e. show rationale and ask again)

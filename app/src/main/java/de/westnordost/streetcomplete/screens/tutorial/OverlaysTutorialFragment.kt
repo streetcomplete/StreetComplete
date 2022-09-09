@@ -4,14 +4,12 @@ import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.FragmentTutorialBinding
 import de.westnordost.streetcomplete.databinding.FragmentTutorialOverlayBinding
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -53,7 +51,7 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
 
     private fun nextStep() {
-        //disableNextButton()
+        disableNextButton()
         when (currentPage) {
             0 -> {
                 currentPage = 1
@@ -64,13 +62,6 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 step2Transition()
             }
             MAX_PAGE_INDEX -> {
-                Log.wtf("AAAAAAAAAAAAAA", "listener?.onTutorialFinished()")
-                Log.wtf("AAAAAAAAAAAAAA", "listener == null " + (listener == null).toString())
-                Log.wtf("AAAAAAAAAAAAAA", "listener " + listener?.javaClass)
-                Log.wtf("AAAAAAAAAAAAAA", "parentFragment " + parentFragment)
-                if(listener == null) {
-                    Log.wtf("AAAAAAAAAAAAAA", "stuck in tutorial")
-                }
                 listener?.onTutorialFinished()
             }
         }
