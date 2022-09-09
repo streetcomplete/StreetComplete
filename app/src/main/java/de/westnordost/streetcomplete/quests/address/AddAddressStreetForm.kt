@@ -10,13 +10,16 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.osm.address.PlaceName
+import de.westnordost.streetcomplete.osm.address.StreetName
+import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
-class AddAddressStreetForm : AbstractOsmQuestForm<AddressStreetAnswer>() {
+class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
     private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
@@ -37,7 +40,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<AddressStreetAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
-        setLayout(if (isPlaceName) R.layout.quest_housenumber_place else R.layout.quest_housenumber_street)
+        setLayout(if (isPlaceName) R.layout.quest_address_place else R.layout.quest_address_street)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -132,7 +135,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<AddressStreetAnswer>() {
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
-        setLayout(R.layout.quest_housenumber_place)
+        setLayout(R.layout.quest_address_place)
         placeNameInput?.requestFocus()
     }
 

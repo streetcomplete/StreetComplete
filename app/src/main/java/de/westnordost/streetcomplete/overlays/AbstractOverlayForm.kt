@@ -266,7 +266,7 @@ abstract class AbstractOverlayForm :
 
     protected open fun onDiscard() {}
 
-    protected open fun isFormComplete(): Boolean = false
+    protected abstract fun isFormComplete(): Boolean
 
     protected abstract fun onClickOk()
 

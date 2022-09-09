@@ -7,9 +7,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.osm.housenumber.ConscriptionNumber
-import de.westnordost.streetcomplete.osm.housenumber.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.housenumber.HouseNumber
+import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
+import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.quests.createMapData
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.member

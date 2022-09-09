@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/space_8dp">
+
+    <Spinner
+        android:id="@+id/streetOrPlaceSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"/>
+
+    <me.grantland.widget.AutofitLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/placeNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_rectangular_sign_white"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textSize="@dimen/large_input"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:textColor="#000"
+            tools:text="Großweilerburghausenfurt" />
+
+        <EditText
+            android:id="@+id/streetNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_rectangular_sign_blue"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:textSize="@dimen/large_input"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:textColor="#fff"
+            android:textColorHint="#66ffffff"
+            android:hint="@string/quest_address_street_hint"
+            />
+
+    </me.grantland.widget.AutofitLayout>
+
+    <include
+        android:id="@+id/addressNumberOrNameContainer"
+        layout="@layout/view_address_number_or_name_input"/>
+
+</LinearLayout>

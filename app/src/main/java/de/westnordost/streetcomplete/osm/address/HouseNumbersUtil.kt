@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm.housenumber
+package de.westnordost.streetcomplete.osm.address
 
 fun addToHouseNumber(houseNumber: String, add: Int): String? {
     val parsed = parseHouseNumbers(houseNumber) ?: return null

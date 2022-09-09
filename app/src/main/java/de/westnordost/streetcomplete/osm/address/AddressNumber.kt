@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm.housenumber
+package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
 
@@ -32,3 +32,20 @@ fun AddressNumber.applyTo(tags: Tags) {
     }
 }
 
+fun createAddressNumber(tags: Map<String, String>): AddressNumber? {
+    val conscriptionNumber = tags["addr:conscriptionnumber"]
+    if (conscriptionNumber != null) {
+        val streetNumber = tags["addr:streetnumber"]
+        return ConscriptionNumber(conscriptionNumber, streetNumber)
+    }
+    val houseNumber = tags["addr:housenumber"]
+    if (houseNumber != null) {
+        val blockNumber = tags["addr:block_number"]
+        if (blockNumber != null) {
+            return HouseAndBlockNumber(houseNumber, blockNumber)
+        } else {
+            return HouseNumber(houseNumber)
+        }
+    }
+    return null
+}

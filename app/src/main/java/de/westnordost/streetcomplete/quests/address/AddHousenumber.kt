@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.housenumber.applyTo
+import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
@@ -140,18 +140,14 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is HouseNumberAndHouseName -> {
-                val name = answer.name
-                val number = answer.number
-
-                number?.applyTo(tags)
-
-                if (name != null) {
-                    tags["addr:housename"] = name
-                }
-
-                if (name == null && number == null) {
+            is AddressNumberOrName -> {
+                if (answer.number == null && answer.name == null) {
                     tags["nohousenumber"] = "yes"
+                } else {
+                    answer.number?.applyTo(tags)
+                    if (answer.name != null) {
+                        tags["addr:housename"] = name
+                    }
                 }
             }
             WrongBuildingType -> {

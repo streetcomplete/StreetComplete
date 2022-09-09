@@ -48,7 +48,7 @@ class SwitchKeyboardButtonViewController(
         }
     }
 
-    fun updateVisibility() {
+    private fun updateVisibility() {
         button.isInvisible = targets.none { it.hasFocus() }
     }
 }

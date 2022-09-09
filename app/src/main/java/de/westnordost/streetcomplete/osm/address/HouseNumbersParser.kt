@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm.housenumber
+package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.data.elementfilter.StringWithCursor
 

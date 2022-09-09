@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="@drawable/background_roadname_indented"
+        android:background="@drawable/background_rectangular_sign_blue_indented"
         tools:listitem="@layout/quest_roadname_row" />
 
     <ImageButton

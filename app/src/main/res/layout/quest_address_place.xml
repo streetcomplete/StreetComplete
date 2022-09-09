@@ -12,18 +12,16 @@
         android:layout_height="wrap_content"
         android:text="@string/quest_address_street_place_name_label"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_placename"
-        android:orientation="vertical"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp">
+        android:background="@drawable/background_rectangular_sign_white"
+        android:orientation="vertical">
 
         <me.grantland.widget.AutofitLayout
+            android:id="@+id/placeNameInputContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/placeNameInput"
@@ -33,10 +31,14 @@
                 android:inputType="text"
                 android:imeOptions="actionDone"
                 android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="72dp"
                 android:maxLines="1"
                 android:textColor="#000"
-                android:textSize="@dimen/x_large_input"
-                tools:text="The cool place" />
+                android:textSize="@dimen/large_input"
+                tools:text="Großweilerburghausenfurt" />
 
         </me.grantland.widget.AutofitLayout>
 
@@ -45,8 +47,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_town_silhouette"
             android:paddingBottom="4dp"
+            android:layout_alignBottom="@id/placeNameInputContainer"
             android:scaleType="center"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

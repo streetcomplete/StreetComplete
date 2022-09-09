@@ -2,24 +2,11 @@
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/gridLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:rowCount="2"
-    android:columnCount="2"
-    android:useDefaultMargins="true"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintRight_toLeftOf="@+id/toggleKeyboardButton"
-    app:layout_constraintLeft_toLeftOf="parent">
-
-    <TextView
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:text="@string/quest_housenumber_conscription_number"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center" />
+    android:columnCount="2">
 
     <me.grantland.widget.AutofitLayout
         android:layout_width="96dp"
@@ -35,19 +22,23 @@
             android:background="@drawable/background_rectangular_sign_red"
             android:minHeight="68dp"
             android:textSize="@dimen/large_input"
-            android:textColorHint="#2fff"
             android:padding="12dp"
             android:imeOptions="actionNext"
             tools:text="1234"
             android:digits="0123456789.,- /"
-            style="@style/HousenumberEditText" />
+            style="@style/HouseNumberEditText" />
 
     </me.grantland.widget.AutofitLayout>
 
     <TextView
-        android:layout_width="128dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_housenumber_street_number_optional"
+        android:maxWidth="128dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/conscriptionNumberInput"
+        android:text="@string/quest_housenumber_conscription_number"
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
 
@@ -66,12 +57,23 @@
             android:minHeight="68dp"
             android:textSize="@dimen/large_input"
             android:imeOptions="actionDone"
-            android:textColorHint="#2fff"
             android:padding="12dp"
             tools:text="12"
             android:digits="0123456789.,- /"
-            style="@style/HousenumberEditText" />
+            style="@style/HouseNumberEditText" />
 
     </me.grantland.widget.AutofitLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="128dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/streetNumberInput"
+        android:text="@string/quest_housenumber_street_number_optional"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" />
 
 </GridLayout>

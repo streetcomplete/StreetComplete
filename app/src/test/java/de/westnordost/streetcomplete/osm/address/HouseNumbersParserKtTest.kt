@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm.housenumber
+package de.westnordost.streetcomplete.osm.address
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
