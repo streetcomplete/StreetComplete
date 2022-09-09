@@ -26,7 +26,7 @@ import org.koin.android.ext.android.inject
 
 class OverlaySelectionActivity :
     //     FragmentContainerActivity(R.layout.dialog_overlay_selection),
-    FragmentContainerActivity(R.layout.activity_user) { // TODO how this even works?
+    FragmentContainerActivity(R.layout.activity_user) { // TODO how this even works? This layout goes to AppCompatActivity but is apparently somehow ignored and does not matter?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,8 @@ class OverlaySelectionActivity :
         }
     }
 
+    // TODO maybe this should be used instead to swap between tutorial and actual menu?
+    //   not the current solution? Or something else is the proper way to achieve this?
     private fun replaceMainFragment(fragment: Fragment) {
         supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
         supportFragmentManager.commit {
