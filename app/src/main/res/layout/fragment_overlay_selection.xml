@@ -11,26 +11,25 @@
     android:divider="@drawable/space_8dp"
     >
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/overlaysListContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overlaysList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="8"
+                tools:listitem="@layout/row_overlay_selection" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/overlaysList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:itemCount="8"
-            tools:listitem="@layout/row_overlay_selection" />
-
-        <Button
-            android:id="@+id/applyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/ok"
-            />
-    </FrameLayout>
+            <Button
+                android:id="@+id/applyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@android:string/ok"
+                />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container_in_overlay_selection"
