@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.testutils.way
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.doThrow
+import org.mockito.Mockito.verify
 
 class ElementEditUploaderTest {
 

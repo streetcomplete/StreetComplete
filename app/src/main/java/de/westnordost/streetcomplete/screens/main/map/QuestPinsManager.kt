@@ -154,8 +154,9 @@ class QuestPinsManager(
             questsInView.values.flatten()
         }
         synchronized(pinsMapComponent) {
-            if (coroutineContext.isActive)
+            if (coroutineContext.isActive) {
                 pinsMapComponent.set(pins)
+            }
         }
     }
 
@@ -170,8 +171,9 @@ class QuestPinsManager(
         }
         if (deletedAny || addedInView.isNotEmpty()) {
             synchronized(pinsMapComponent) {
-                if (coroutineContext.isActive)
+                if (coroutineContext.isActive) {
                     pinsMapComponent.set(pins)
+                }
             }
         }
     }
