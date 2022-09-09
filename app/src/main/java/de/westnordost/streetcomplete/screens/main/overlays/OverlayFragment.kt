@@ -38,22 +38,18 @@ class OverlayFragment :
         val adapter = OverlaySelectionAdapter()
         adapter.overlays = overlayRegistry
         adapter.selectedOverlay = selectedOverlayController.selectedOverlay
-        adapter.onSelectedOverlay = { selectedOverlay = it }
+        adapter.onSelectedOverlay = {
+            selectedOverlay = it
+            changeEnabledOverlayToSelected()
+            requireActivity().finish() // switch overlay without an extra confirmation step
+        }
         binding.overlaysList.adapter = adapter
         binding.overlaysList.layoutManager = LinearLayoutManager(context)
 
-        // TODO: remove it, just switch as user clicks in the list
         binding.applyButton.setOnClickListener {
-            selectedOverlayController.selectedOverlay = selectedOverlay
-            // getActivity().finish()
+            // TODO: consider removing this button
+            changeEnabledOverlayToSelected()
         }
-        /*
-        setButton(AlertDialog.BUTTON_POSITIVE, context.resources.getText(android.R.string.ok)) { _, _ ->
-            selectedOverlayController.selectedOverlay = selectedOverlay
-            dismiss()
-        }
-        setView(binding.root)
-         */
 
         val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, false)
         if (!hasShownTutorial) {
@@ -72,5 +68,9 @@ class OverlayFragment :
         binding.fragmentContainerInOverlaySelection.visibility = View.GONE
         binding.overlaysListContainer.visibility = View.VISIBLE
         prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, true) }
+    }
+
+    fun changeEnabledOverlayToSelected() {
+        selectedOverlayController.selectedOverlay = selectedOverlay
     }
 }
