@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.overlays
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,5 +71,6 @@ class OverlayFragment :
     override fun onTutorialFinished() {
         binding.fragmentContainerInOverlaySelection.visibility = View.GONE
         binding.overlaysListContainer.visibility = View.VISIBLE
+        prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL_FOR_OVERLAYS, true) }
     }
 }
