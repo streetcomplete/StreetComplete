@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
@@ -35,6 +36,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<AddressStreetAnswer>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary, alwaysShowHouseNumber = true))
 
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
         setLayout(if (isPlaceName) R.layout.quest_housenumber_place else R.layout.quest_housenumber_street)
