@@ -26,7 +26,7 @@ import org.koin.android.ext.android.inject
 
 class OverlaySelectionActivity :
     //     FragmentContainerActivity(R.layout.dialog_overlay_selection),
-    FragmentContainerActivity(R.layout.activity_user) {
+    FragmentContainerActivity(R.layout.activity_user) { // TODO how this even works?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
