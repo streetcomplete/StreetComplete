@@ -145,7 +145,7 @@ fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     if (shared == "ground") {
         return Surface.GROUND_AREA
     }
-    return Surface.values().filter { it.osmValue == shared }.firstOrNull()
+    return Surface.values().firstOrNull { it.osmValue == shared }
 }
 
 val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
