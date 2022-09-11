@@ -137,7 +137,7 @@ fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
 fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
     if (shared == "paved") {
-        return Surface.UNPAVED_AREA
+        return Surface.PAVED_AREA
     }
     if (shared == "unpaved") {
         return Surface.UNPAVED_AREA
