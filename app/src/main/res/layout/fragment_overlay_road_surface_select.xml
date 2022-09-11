@@ -62,9 +62,9 @@
             android:inputType="textMultiLine"
             android:gravity="top|start"
             android:minLines="3"
+            android:maxLines="6"
             tools:text="Surface is a mosaic of paving stones, wood and metal."
             android:maxLength="255"
-            android:scrollHorizontally="false"
             android:scrollbars = "vertical"
             />
     </LinearLayout>
