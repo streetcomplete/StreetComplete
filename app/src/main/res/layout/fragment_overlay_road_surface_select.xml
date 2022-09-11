@@ -65,6 +65,7 @@
             tools:text="Surface is a mosaic of paving stones, wood and metal."
             android:maxLength="255"
             android:scrollHorizontally="false"
+            android:scrollbars = "vertical"
             />
     </LinearLayout>
 

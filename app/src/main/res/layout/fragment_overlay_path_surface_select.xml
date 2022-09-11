@@ -72,6 +72,7 @@
                 tools:text="Surface is a mosaic of paving stones, wood and metal."
                 android:maxLength="255"
                 android:scrollHorizontally="false"
+                android:scrollbars = "vertical"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -98,8 +99,6 @@
             android:id="@+id/cycleway_surface_input_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            tools:visibility="visible"
             android:orientation="horizontal"
             >
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,6 +159,7 @@
                     tools:text="Surface is a mosaic of paving stones, wood and metal."
                     android:maxLength="255"
                     android:scrollHorizontally="false"
+                    android:scrollbars = "vertical"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -188,8 +188,6 @@
             android:id="@+id/cycleway_footway_input_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            tools:visibility="visible"
             android:orientation="horizontal"
             >
                 <androidx.constraintlayout.widget.ConstraintLayout
