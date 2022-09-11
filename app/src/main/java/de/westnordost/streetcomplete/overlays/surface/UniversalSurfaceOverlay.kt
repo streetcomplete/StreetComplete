@@ -112,6 +112,7 @@ private fun getStyle(element: Element): Style {
             // though for bicycles surface is a bit more important
             dominatingSurface = surfaceStatus.cycleway
             keyOfDominatingSurface = "cycleway:surface"
+            noteProvided = surfaceStatus.cyclewayNote
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface

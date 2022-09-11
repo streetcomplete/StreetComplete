@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceDescription
+import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -192,9 +193,11 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     }
                     if (status.cyclewayNote != null) {
                         binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(status.cyclewayNote)
+                        selectedStatusForCyclewaySurface = cyclewaySurface?.asItem()
                     }
                     if (status.footwayNote != null) {
                         binding.explanationInputFootwaySurface.text = SpannableStringBuilder(status.footwayNote)
+                        selectedStatusForFootwaySurface = footwaySurface?.asItem()
                     }
                     switchToFootwayCyclewaySurfaceLayout()
                 }
@@ -206,7 +209,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                 }
                 is SingleSurfaceWithNote -> {
                     binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-                    selectedStatusForMainSurface = status.surface.asItem()
+                    selectedStatusForMainSurface = status.surface.asItem() // even if paved/unpaved
                 }
                 is SurfaceMissing -> {
                     if (element.tags["segregated"] == "yes") {
@@ -302,16 +305,28 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text" // this also needs support! TODO
     }
 
-    fun noteText(): String {
-        return binding.explanationInputMainSurface.text.toString().trim()
+    fun noteText(): String? {
+        val note = binding.explanationInputMainSurface.text.toString().trim()
+        if (note == "") {
+            return null
+        }
+        return note
     }
 
-    fun cyclewayNoteText(): String {
-        return binding.explanationInputCyclewaySurface.text.toString().trim()
+    fun cyclewayNoteText(): String? {
+        val note = binding.explanationInputCyclewaySurface.text.toString().trim()
+        if (note == "") {
+            return null
+        }
+        return note
     }
 
-    fun footwayNoteText(): String {
-        return binding.explanationInputFootwaySurface.text.toString().trim()
+    fun footwayNoteText(): String? {
+        val note = binding.explanationInputFootwaySurface.text.toString().trim()
+        if (note == "") {
+            return null
+        }
+        return note
     }
 
     override fun hasChanges(): Boolean {
@@ -330,39 +345,51 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         }
     }
 
+    private fun applyNoteAsNeeded(tags: StringMapChangesBuilder, noteTag: String, noteText: String?, surface: Surface?){
+        if (surface == null) {
+            if (tags.containsKey(noteTag)) {
+                tags.remove(noteTag)
+            }
+            return
+        }
+        if (surface.shouldBeDescribed) {
+            tags[noteTag] = noteText!!
+        } else {
+            if (element.tags.containsKey(noteTag)) {
+                tags.remove(noteTag)
+            }
+        }
+    }
+
     override fun onClickOk() {
         if (selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null) {
-            val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!.osmValue
-            val footwaySurface = selectedStatusForFootwaySurface!!.value!!.osmValue
-            // TODO: support cycleway:surface:note
-            // TODO: support footway:surface:note
-            val mainSurface = commonSurfaceDescription(cyclewaySurface, footwaySurface)
+            val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
+            val footwaySurface = selectedStatusForFootwaySurface!!.value!!
+            val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+                // main surface cannot have note specified here
+                // TODO what if it originally had one? figure out how to display it? skip such rare objects?
+                applyNoteAsNeeded(it, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
+                applyNoteAsNeeded(it, "footway:surface:note", footwayNoteText(), footwaySurface)
                 if (mainSurface == null) {
                     if(it.containsKey("surface")) {
                         it.remove("surface")
                     }
-                    it["cycleway:surface"] = cyclewaySurface
-                    it["footway:surface"] = footwaySurface
+                    it["cycleway:surface"] = cyclewaySurface.osmValue
+                    it["footway:surface"] = footwaySurface.osmValue
                 } else {
-                    it["surface"] = mainSurface
-                    it["cycleway:surface"] = cyclewaySurface
-                    it["footway:surface"] = footwaySurface
+                    it["surface"] = mainSurface.osmValue
+                    it["cycleway:surface"] = cyclewaySurface.osmValue
+                    it["footway:surface"] = footwaySurface.osmValue
                 }
             }.create()))
         } else {
             // like RoadSurfaceOverlayForm is doing this
-            val note = noteText()
             val surfaceObject = selectedStatusForMainSurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
                 it.updateWithCheckDate("surface", surfaceObject.osmValue)
-                if (surfaceObject.shouldBeDescribed) {
-                    it["surface:note"] = note
-                } else {
-                    if (element.tags.containsKey("surface:note")) {
-                        it.remove("surface:note")
-                    }
-                }
+                applyNoteAsNeeded(it, "surface:note", noteText(), surfaceObject)
+
             }.create()))
         }
     }
