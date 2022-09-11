@@ -342,12 +342,12 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     if(it.containsKey("surface")) {
                         it.remove("surface")
                     }
-                    it.updateWithCheckDate("cycleway:surface", cyclewaySurface)
-                    it.updateWithCheckDate("footway:surface", footwaySurface)
+                    it["cycleway:surface"] = cyclewaySurface
+                    it["footway:surface"] = footwaySurface
                 } else {
-                    it.updateWithCheckDate("surface", mainSurface)
-                    it.updateWithCheckDate("cycleway:surface", cyclewaySurface)
-                    it.updateWithCheckDate("footway:surface", footwaySurface)
+                    it["surface"] = mainSurface
+                    it["cycleway:surface"] = cyclewaySurface
+                    it["footway:surface"] = footwaySurface
                 }
             }.create()))
         } else {
