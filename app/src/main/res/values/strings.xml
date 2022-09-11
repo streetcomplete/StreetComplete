@@ -1555,6 +1555,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="lit_value_24_7">Lit night and day</string>
     <string name="lit_value_automatic">Lit when someone passes by</string>
 
+    <string name="overlay_cycleway_label">Cycleway:</string>
+    <string name="overlay_footway_label">Footway:</string>
     <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
     <string name="overlay_path_surface_not_segregated">Single surface</string>
 
