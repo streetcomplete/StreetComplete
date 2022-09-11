@@ -3,104 +3,83 @@ package de.westnordost.streetcomplete.quests.address
 import android.os.Bundle
 import android.text.Html
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.databinding.QuestAddressStreetBinding
+import de.westnordost.streetcomplete.osm.address.AddressStreetNameInputViewController
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import org.koin.android.ext.android.inject
-import java.util.Locale
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
+    override val contentLayoutResId = R.layout.quest_address_street
+    private val binding by contentViewBinding(QuestAddressStreetBinding::bind)
+
     private val abbreviationsByLocale: AbbreviationsByLocale by inject()
     private val roadNameSuggestionsSource: RoadNameSuggestionsSource by inject()
 
-    private var streetNameInput: EditText? = null
-    private var placeNameInput: EditText? = null
+    private lateinit var streetNameInputCtrl: AddressStreetNameInputViewController
 
     private var isPlaceName = false
-    private var selectedStreetName: String? = null
-
-    private val streetName: String get() = streetNameInput?.text?.toString().orEmpty().trim()
-    private val placeName: String get() = placeNameInput?.text?.toString().orEmpty().trim()
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
+        AnswerItem(R.string.quest_address_street_no_named_streets) { switchToPlaceName() }
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
-        setLayout(if (isPlaceName) R.layout.quest_address_place else R.layout.quest_address_street)
+        isPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: false
+
+        streetNameInputCtrl = AddressStreetNameInputViewController(
+            streetNameInput = binding.streetNameInput,
+            roadNameSuggestionsSource = roadNameSuggestionsSource,
+            abbreviationsByLocale = abbreviationsByLocale,
+            countryLocale = countryInfo.locale
+        )
+        binding.placeNameInput.doAfterTextChanged { checkIsFormComplete() }
+
+        updateVisibilities()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_PLACENAME, isPlaceName)
+        outState.putBoolean(IS_PLACE_NAME, isPlaceName)
     }
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         if (isPlaceName) return super.onClickMapAt(position, clickAreaSizeInMeters)
 
-        val dist = clickAreaSizeInMeters + 5
-        val namesByLocale = roadNameSuggestionsSource.getNames(listOf(position), dist).firstOrNull()
-        if (namesByLocale != null) {
-            // why using .keys.firstOrNull { Locale(it).language == XXX } instead of .containsKey(XXX):
-            // ISO 639 is an unstable standard. For example, id == in. If the comparisons are made
-            // with the Locale class, that takes care of it
-
-            val countryLanguage = countryInfo.locale.language
-            val defaultName = namesByLocale[""]
-            if (defaultName != null) {
-                // name=A -> name=A, name:de=A (in Germany)
-                if (namesByLocale.keys.firstOrNull { Locale(it).language == countryLanguage } == null) {
-                    namesByLocale[countryLanguage] = defaultName
-                }
-            }
-
-            // if available, display the selected street name in the user's locale
-            val userLanguage = Locale.getDefault().language
-            val lang = namesByLocale.keys.firstOrNull { Locale(it).language == userLanguage }
-            if (lang != null) {
-                streetNameInput?.setText(namesByLocale[lang])
-            } else {
-                streetNameInput?.setText(namesByLocale[""])
-            }
-            selectedStreetName = namesByLocale[""]
-        }
-
+        streetNameInputCtrl.selectStreetAt(position, clickAreaSizeInMeters)
         return true
     }
 
     override fun onClickOk() {
         if (isPlaceName) {
-            applyAnswer(PlaceName(placeName))
+            applyAnswer(PlaceName(binding.placeNameInput.nonBlankTextOrNull!!))
         } else {
-            if (selectedStreetName != null) {
-                applyAnswer(StreetName(selectedStreetName!!))
+            val name = streetNameInputCtrl.streetName!!
+            if (isAbbreviation(streetNameInputCtrl.streetName!!)) {
+                confirmPossibleAbbreviation(name) { applyAnswer(StreetName(name)) }
             } else {
-                // only for user-input, check for possible abbreviations
-                val abbr = abbreviationsByLocale.get(countryInfo.locale)
-                val name = streetName
-                val containsAbbreviations = abbr?.containsAbbreviations(name) == true
-
-                if (name.contains(".") || containsAbbreviations) {
-                    confirmPossibleAbbreviation(name) { applyAnswer(StreetName(name)) }
-                } else {
-                    applyAnswer(StreetName(name))
-                }
+                applyAnswer(StreetName(name))
             }
         }
     }
+
+    private fun isAbbreviation(name: String): Boolean =
+        name.contains(".")
+        || abbreviationsByLocale[countryInfo.locale]?.containsAbbreviations(name) == true
 
     private fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
         val title = resources.getString(
@@ -116,30 +95,23 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             .show()
     }
 
-    override fun isFormComplete(): Boolean =
-        if (isPlaceName) placeName.isNotEmpty() else streetName.isNotEmpty()
-
-    private fun setLayout(layoutResourceId: Int) {
-        val view = setContentView(layoutResourceId)
-
-        val onChanged = {
-            checkIsFormComplete()
-            // if the user changed the text, it is now his custom input
-            selectedStreetName = null
-        }
-        streetNameInput = view.findViewById(R.id.streetNameInput)
-        placeNameInput = view.findViewById(R.id.placeNameInput)
-        streetNameInput?.doAfterTextChanged { onChanged() }
-        placeNameInput?.doAfterTextChanged { onChanged() }
+    private fun updateVisibilities() {
+        binding.placeNameInput.isGone = !isPlaceName
+        binding.streetNameInput.isGone = isPlaceName
     }
 
-    private fun switchToPlaceNameLayout() {
+    override fun isFormComplete(): Boolean =
+        if (isPlaceName) binding.placeNameInput.nonBlankTextOrNull != null
+        else             streetNameInputCtrl.streetName != null
+
+
+    private fun switchToPlaceName() {
         isPlaceName = true
-        setLayout(R.layout.quest_address_place)
-        placeNameInput?.requestFocus()
+        updateVisibilities()
+        binding.placeNameInput.requestFocus()
     }
 
     companion object {
-        private const val IS_PLACENAME = "is_placename"
+        private const val IS_PLACE_NAME = "is_place_name"
     }
 }

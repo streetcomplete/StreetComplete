@@ -9,8 +9,13 @@ import de.westnordost.streetcomplete.util.ktx.nonBlankHintOrNull
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.controller.SwitchKeyboardButtonViewController
 
-/** Manages inputting a house number with optional block number (Japan) or a
- * conscription number with optional street number.  */
+/** Manages the UI for inputting EITHER:
+ *  - a house number,
+ *  - a house number with block number (as used in Japan) or a
+ *  - conscription number with optional street (=orientation) number (as used in Czechia, Slovakia)
+ *
+ *  Which "mode" is being used depends on which inputs are not null.
+ *  */
 class AddressNumberInputViewController(
     activity: Activity,
     private val houseNumberInput: EditText?,

@@ -16,8 +16,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
-import de.westnordost.streetcomplete.osm.address.AddressNumberInputViewController
-import de.westnordost.streetcomplete.osm.address.AddressNumberOrNameInputViewController
+import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
@@ -33,29 +32,28 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     )
 
     private var isShowingHouseName: Boolean = false
-    private lateinit var addressOrNameInputCtrl: AddressNumberOrNameInputViewController
+    private lateinit var addressOrNameInputCtrl: AddressNumberAndNameInputViewController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val numberView = layoutInflater.inflate(getAddressNumberLayoutResId(countryInfo.countryCode), binding.countrySpecificContainer)
-        val addressNumberCtrl = AddressNumberInputViewController(
-            requireActivity(),
-            numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
-            numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
-            numberView.findViewById(R.id.conscriptionNumberInput),
-            numberView.findViewById(R.id.streetNumberInput),
-            binding.toggleKeyboardButton,
-            numberView.findViewById(R.id.addButton),
-            numberView.findViewById(R.id.subtractButton),
+        val numberView = layoutInflater.inflate(
+            getAddressNumberLayoutResId(countryInfo.countryCode),
+            binding.countrySpecificContainer
         )
-
-        addressOrNameInputCtrl = AddressNumberOrNameInputViewController(
-            binding.toggleHouseNameButton,
-            binding.houseNameInput,
-            binding.toggleAddressNumberButton,
-            binding.addressNumberContainer,
-            addressNumberCtrl
+        addressOrNameInputCtrl = AddressNumberAndNameInputViewController(
+            toggleHouseNameButton = binding.toggleHouseNameButton,
+            houseNameInput = binding.houseNameInput,
+            toggleAddressNumberButton = binding.toggleAddressNumberButton,
+            addressNumberContainer = binding.addressNumberContainer,
+            activity = requireActivity(),
+            houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
+            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
+            conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
+            streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
+            toggleKeyboardButton = binding.toggleKeyboardButton,
+            addButton = numberView.findViewById(R.id.addButton),
+            subtractButton = numberView.findViewById(R.id.subtractButton),
         )
         addressOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
 

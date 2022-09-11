@@ -1,25 +1,38 @@
 package de.westnordost.streetcomplete.osm.address
 
 import android.content.res.Resources
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController.StreetOrPlace.*
+import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
+import java.util.Locale
 
-//TODO click on map magic / road name suggestions...
-
-/** Manages the input of a street name or alternatively (if not available) a place name. (Only one
- *  of the two can be set at a time) */
+/** Manages the input of a street name or alternatively (if not available) a place name.
+ *
+ *  Only one of the two can be set at a time. While there is text in either input field, the user
+ *  cannot switch to the other input field. */
 class StreetOrPlaceNameViewController(
     private val select: Spinner,
-    private val streetNameInput: EditText,
-    private val placeNameInput: EditText
+    private val placeNameInput: EditText,
+    private val streetNameInputView: View,
+    streetNameInput: EditText,
+    roadNameSuggestionsSource: RoadNameSuggestionsSource,
+    abbreviationsByLocale: AbbreviationsByLocale,
+    countryLocale: Locale
 ) {
+    private val streetNameInputCtrl = AddressStreetNameInputViewController(
+        streetNameInput, roadNameSuggestionsSource, abbreviationsByLocale, countryLocale
+    )
+
     var onInputChanged: (() -> Unit)? = null
 
     var streetOrPlaceName: StreetOrPlaceName?
@@ -31,16 +44,16 @@ class StreetOrPlaceNameViewController(
                 }
                 is StreetName -> {
                     spinnerSelection = STREET
-                    streetNameInput.setText(value.name)
+                    streetNameInputCtrl.streetName = value.name
                 }
                 null -> {
-                    streetNameInput.text = null
+                    streetNameInputCtrl.streetName = null
                     placeNameInput.text = null
                 }
             }
         }
         get() = when (spinnerSelection) {
-            STREET -> streetNameInput.nonBlankTextOrNull?.let { StreetName(it) }
+            STREET -> streetNameInputCtrl.streetName?.let { StreetName(it) }
             PLACE ->  placeNameInput.nonBlankTextOrNull?.let { PlaceName(it) }
         }
 
@@ -56,23 +69,39 @@ class StreetOrPlaceNameViewController(
         )
 
         select.onItemSelectedListener = OnAdapterItemSelectedListener {
-            updateInputs()
+            updateInputVisibilities()
             onInputChanged?.invoke()
         }
 
-        streetNameInput.doAfterTextChanged { onInputChanged?.invoke() }
-        placeNameInput.doAfterTextChanged { onInputChanged?.invoke() }
+        placeNameInput.doAfterTextChanged {
+            updateSpinnerEnablement()
+            onInputChanged?.invoke()
+        }
+        streetNameInputCtrl.onInputChanged = {
+            updateSpinnerEnablement()
+            onInputChanged?.invoke()
+        }
 
-        updateInputs()
+        updateInputVisibilities()
     }
 
-    private fun updateInputs() {
-        val selection = spinnerSelection
-        when (selection) {
-            STREET -> placeNameInput.text = null
-            PLACE ->  streetNameInput.text = null
+    fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
+        if (spinnerSelection != STREET) return false
+
+        streetNameInputCtrl.selectStreetAt(position, radiusInMeters)
+        return true
+    }
+
+    private fun updateSpinnerEnablement() {
+        select.isEnabled = when (spinnerSelection) {
+            STREET -> streetNameInputCtrl.streetName == null
+            PLACE -> placeNameInput.nonBlankTextOrNull == null
         }
-        streetNameInput.isGone = selection != STREET
+    }
+
+    private fun updateInputVisibilities() {
+        val selection = spinnerSelection
+        streetNameInputView.isGone = selection != STREET
         placeNameInput.isGone = selection != PLACE
     }
 
