@@ -84,6 +84,8 @@
         android:id="@+id/cycleway_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/selectButtonCyclewaySurface"
@@ -158,6 +160,8 @@
         android:id="@+id/footway_surface_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -61,21 +61,12 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         // TODO where this functions should be placed within file?
         override val otherAnswers: List<AnswerItem> get() {
             return if (isSegregatedLayout) {
-                listOf(
-                    AnswerItem(R.string.overlay_path_surface_not_segregated) { switchToUnifiedSurfaceLayout() }
-                )
+                listOf() // removing info about separate cycleway (or maybe ven removing info about supposed cycleway!) is requiring a note
             } else {
                 listOf(
                     AnswerItem(R.string.overlay_path_surface_segregated) { switchToFootwayCyclewaySurfaceLayout() }
                 )
             }
-        }
-
-        private fun switchToUnifiedSurfaceLayout() {
-            isSegregatedLayout = false
-            binding.mainSurfaceContainer.isVisible = true
-            binding.cyclewaySurfaceContainer.isVisible = false
-            binding.footwaySurfaceContainer.isVisible = false
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
@@ -181,18 +172,14 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                 }
                 is SingleSurface -> {
                     selectedStatusForMainSurface = status.surface.asItem()
-                    switchToUnifiedSurfaceLayout()
                 }
                 is SingleSurfaceWithNote -> {
                     binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
                     selectedStatusForMainSurface = status.surface.asItem()
-                    switchToUnifiedSurfaceLayout()
                 }
                 is SurfaceMissing -> {
                     if (element.tags["segregated"] == "yes") {
                         switchToFootwayCyclewaySurfaceLayout()
-                    } else {
-                        switchToUnifiedSurfaceLayout()
                     }
                 }
             }
