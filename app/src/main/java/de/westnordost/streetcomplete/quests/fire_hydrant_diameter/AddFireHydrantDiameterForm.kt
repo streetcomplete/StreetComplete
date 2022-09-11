@@ -1,16 +1,24 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
+import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterLastPickedButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
@@ -23,9 +31,33 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
     private val diameterValue get() = binding.diameterInput.intOrNull ?: 0
 
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
+            .sorted()
+            .toList()
+    }
+
+    private lateinit var favs: LastPickedValuesStore<Int>
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.toString() },
+            deserialize = { it.toInt() }
+        )
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.diameterInput.doAfterTextChanged { checkIsFormComplete() }
+
+        binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
+    }
+
+    private fun onLastPickedButtonClicked(position: Int) {
+        binding.diameterInput.setText(lastPickedAnswers[position].toString())
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -38,8 +70,12 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         }
 
         if (isUnusualDiameter(diameter)) {
-            confirmUnusualInput(diameter.unit) { applyAnswer(diameter) }
+            confirmUnusualInput(diameter.unit) {
+                favs.add(diameterValue)
+                applyAnswer(diameter)
+            }
         } else {
+            favs.add(diameterValue)
             applyAnswer(diameter)
         }
     }
@@ -79,4 +115,36 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             .show()
         }
     }
+}
+
+private class LastPickedAdapter(
+    private val lastPickedAnswers: List<Int>,
+    private val onItemClicked: (position: Int) -> Unit
+) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
+
+    class ViewHolder(
+        private val binding: QuestFireHydrantDiameterLastPickedButtonBinding,
+        private val onItemClicked: (position: Int) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
+        }
+
+        fun onBind(item: Int) {
+            binding.lastDiameterLabel.text = item.toString()
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = QuestFireHydrantDiameterLastPickedButtonBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding, onItemClicked)
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.onBind(lastPickedAnswers[position])
+    }
+
+    override fun getItemCount() = lastPickedAnswers.size
 }
