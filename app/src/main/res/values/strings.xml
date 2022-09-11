@@ -1541,21 +1541,21 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="select_overlay">Select Overlay</string>
 
     <string name="overlay_none">None</string>
-
     <string name="overlay_lit">Street lighting</string>
+    <string name="overlay_sidewalk">Sidewalks</string>
+    <string name="overlay_street_parking">Street parking</string>
+    <string name="overlay_tracktype">Track firmess</string>
+    <string name="overlay_road_surface">Road surface</string>
+    <string name="overlay_path_surface">Path surface</string>
+    <string name="overlay_sidewalk_surface">Sidewalk surface info (when tagged on road)</string>
+    <string name="overlay_universal_surface">All and any surface</string>
+
     <string name="lit_value_yes">Lit</string>
     <string name="lit_value_no">Not lit</string>
     <string name="lit_value_24_7">Lit night and day</string>
     <string name="lit_value_automatic">Lit when someone passes by</string>
 
-    <string name="overlay_sidewalk">Sidewalks</string>
-    <string name="overlay_tracktype">Track firmess</string>
-    <string name="overlay_road_surface">Road surface</string>
-    <string name="overlay_sidewalk_surface">Sidewalk surface info (when tagged on road)</string>
-    <string name="overlay_path_surface">Path surface</string>
     <string name="overlay_path_surface_segregated">Split into cycling and walking parts</string>
     <string name="overlay_path_surface_not_segregated">Single surface</string>
-    <string name="overlay_universal_surface">All and any surface</string>
 
-    <string name="overlay_street_parking">Street parking</string>
 </resources>
