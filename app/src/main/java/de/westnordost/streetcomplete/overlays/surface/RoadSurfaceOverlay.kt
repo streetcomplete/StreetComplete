@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
+import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -55,12 +56,15 @@ class RoadSurfaceOverlay : Overlay {
         // supported in this overlay, but not in all overlays
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
+        // this is not a valid tag on road and therefore not supported here
+        // "footway:surface", "cycleway:surface",
+
         // supported in all surface overlay
-        "surface", "footway:surface", "cycleway:surface",
+        "surface",
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
-        "surface:colour", //  12K - remove on change? Ignore support? TODO
-        "surface:note" // "note:surface" is not supported. TODO: actually support
+        "surface:colour", //  verify that it is removed on change TODO
+        // "surface:note" // TODO: test support
     )
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
@@ -87,17 +91,14 @@ private fun getStyle(element: Element): Style {
             dominatingSurface = surfaceStatus.surface
             keyOfDominatingSurface = "surface"
         }
-        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in badSurfaces) {
-            dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
-        } else {
-            // cycleway is arbitrarily taken as dominating here
-            // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
+        is CyclewayFootwaySurfaces -> {
+            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface and footway:surface")
         }
         is SurfaceMissing -> {
             // no action needed
+        }
+        is CyclewayFootwaySurfacesWithNote -> {
+            throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface:note and footway:surface:note")
         }
     }
     // not set but indoor or private -> do not highlight as missing

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
+import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -47,6 +48,8 @@ class UniversalSurfaceOverlay : Overlay {
                     or aeroway ~ taxiway|runway|helipad|apron|taxilane
                 )
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
+               and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
+               and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
                """)
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
@@ -59,15 +62,20 @@ class UniversalSurfaceOverlay : Overlay {
     }
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
+        // supported here
+        "footway:surface", "cycleway:surface", // TODO what about roads with THAT tags?
+        // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
+        "cycleway:surface:note", "footway:surface:note", // TODO: verify support
+
         // supported in this overlay, but not in all overlays
         // or more specifically: it can be safely ignored here, I think
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
-        "surface", "footway:surface", "cycleway:surface",
+        "surface",
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
-        "surface:colour", //  12K - remove on change? Ignore support? TODO
-        "surface:note" // "note:surface" is not supported. TODO: actually support
+        "surface:colour", //  verify that it is removed on change TODO
+        "surface:note" // TODO: verify support
     )
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
@@ -81,14 +89,29 @@ private fun getStyle(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
+    var noteProvided: String? = null
     var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
-            // TODO special styling needed I guess...
-            // as it should not get pinking "no data"...
-            // use dashes?
             dominatingSurface = surfaceStatus.surface
+            noteProvided = surfaceStatus.note
             keyOfDominatingSurface = "surface"
+        }
+        is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in badSurfaces && surfaceStatus.cyclewayNote == null) {
+            // the worst case: so lets present it
+            dominatingSurface = surfaceStatus.cycleway
+            noteProvided = surfaceStatus.cyclewayNote
+            keyOfDominatingSurface = "cycleway:surface"
+        } else if (surfaceStatus.footway in badSurfaces) {
+            // cycleway surface either has as bad data (also bad surface) or a bit better (bad surface with note)
+            dominatingSurface = surfaceStatus.footway
+            keyOfDominatingSurface = "footway:surface"
+            noteProvided = surfaceStatus.footwayNote
+        } else {
+            // cycleway is arbitrarily taken as dominating here
+            // though for bicycles surface is a bit more important
+            dominatingSurface = surfaceStatus.cycleway
+            keyOfDominatingSurface = "cycleway:surface"
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
@@ -108,13 +131,21 @@ private fun getStyle(element: Element): Style {
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
-    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
-    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
+    val isNotSet = dominatingSurface in badSurfaces
+    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
+
+    val color = if (isNotSetButThatsOkay) {
+        Color.INVISIBLE
+    } else if (isNotSet && noteProvided != null) {
+        Color.BLACK // special styling needed for case where note is provided... - TODO test it in action
+    } else {
+        dominatingSurface.color
+    }
+    return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 
     // label for debugging
-    // val label = element.tags[keyOfDominatingSurface]
-    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(StrokeStyle(color), null, null, label)
+    //val label = element.tags[keyOfDominatingSurface]
+    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

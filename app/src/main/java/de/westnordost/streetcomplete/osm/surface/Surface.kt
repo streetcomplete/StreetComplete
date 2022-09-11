@@ -57,18 +57,25 @@ data class SingleSurface(val surface: Surface) : SingleSurfaceInfo()
 data class SingleSurfaceWithNote(val surface: Surface, val note: String) : SingleSurfaceInfo()
 object SurfaceMissing : SingleSurfaceInfo()
 data class CyclewayFootwaySurfaces(val main: Surface?, val cycleway: Surface?, val footway: Surface?) : SurfaceInfo()
+data class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?, val cycleway: Surface?, val cyclewayNote: String?, val footway: Surface?, val footwayNote: String?) : SurfaceInfo()
 
 fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
+    val cyclewaySurfaceNote = tags["cycleway:surface:note"]
+    val footwaySurfaceNote = tags["footway:surface:note"]
     val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
     val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
+    val hasDedicatedFootwayCyclewayData = cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes" || cyclewaySurfaceNote != null || footwaySurfaceNote != null
     // TODO
     //  what about surface:note without surface? (see also below for this one)
     //  what about surface:note and cycleway:surface or footway:surface?
     //  ignore this? check and fix outside StreetComplete from time to time?
     //  skip such ways? present as missing data and throw away surface notes?
-    if (cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes") {
+    if (cyclewaySurfaceNote != null || footwaySurfaceNote != null || (hasDedicatedFootwayCyclewayData && surfaceNote != null)) {
+        return CyclewayFootwaySurfacesWithNote(surface, surfaceNote, cyclewaySurface, cyclewaySurfaceNote, footwaySurface, footwaySurfaceNote)
+    }
+    if (hasDedicatedFootwayCyclewayData) {
         return CyclewayFootwaySurfaces(surface, cyclewaySurface, footwaySurface)
     }
     if (surface != null && surfaceNote != null ) {

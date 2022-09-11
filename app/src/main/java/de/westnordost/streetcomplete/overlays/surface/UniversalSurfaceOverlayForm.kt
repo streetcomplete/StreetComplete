@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPathSurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
+import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -165,13 +166,37 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             val status = createSurfaceStatus(element.tags)
             currentStatus = status
             when (status) {
+                // surface=unpaved / surface=paved without note is treated as missing one
                 is CyclewayFootwaySurfaces -> {
-                    selectedStatusForCyclewaySurface = status.cycleway?.asItem()
-                    selectedStatusForFootwaySurface = status.footway?.asItem()
+                    val cyclewaySurface = status.cycleway
+                    val footwaySurface = status.footway
+                    if (cyclewaySurface != null && !cyclewaySurface.shouldBeDescribed) {
+                        selectedStatusForCyclewaySurface = cyclewaySurface.asItem()
+                    }
+                    if (footwaySurface != null && !footwaySurface.shouldBeDescribed) {
+                        selectedStatusForFootwaySurface = footwaySurface.asItem()
+                    }
+                    switchToFootwayCyclewaySurfaceLayout()
+                }
+                is CyclewayFootwaySurfacesWithNote -> {
+                    val cyclewaySurface = status.cycleway
+                    val footwaySurface = status.footway
+                    if (cyclewaySurface != null && !cyclewaySurface.shouldBeDescribed) {
+                        selectedStatusForCyclewaySurface = cyclewaySurface.asItem()
+                    }
+                    if (footwaySurface != null && !footwaySurface.shouldBeDescribed) {
+                        selectedStatusForFootwaySurface = footwaySurface.asItem()
+                    }
+                    binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
+                    binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(status.cyclewayNote)
+                    binding.explanationInputFootwaySurface.text = SpannableStringBuilder(status.footwayNote)
                     switchToFootwayCyclewaySurfaceLayout()
                 }
                 is SingleSurface -> {
-                    selectedStatusForMainSurface = status.surface.asItem()
+                    val surface = status.surface
+                    if (!surface.shouldBeDescribed) {
+                        selectedStatusForMainSurface = status.surface.asItem()
+                    }
                 }
                 is SingleSurfaceWithNote -> {
                     binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
@@ -269,6 +294,14 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         return binding.explanationInputMainSurface.text.toString().trim()
     }
 
+    fun cyclewayNoteText(): String {
+        return binding.explanationInputCyclewaySurface.text.toString().trim()
+    }
+
+    fun footwayNoteText(): String {
+        return binding.explanationInputFootwaySurface.text.toString().trim()
+    }
+
     override fun hasChanges(): Boolean {
         return when (val status = currentStatus) {
             is CyclewayFootwaySurfaces ->
@@ -276,6 +309,11 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            is CyclewayFootwaySurfacesWithNote -> {
+                selectedStatusForMainSurface?.value != status.main || noteText() != status.note ||
+                selectedStatusForCyclewaySurface?.value != status.main || cyclewayNoteText() != status.cyclewayNote ||
+                selectedStatusForFootwaySurface?.value != status.main || footwayNoteText() != status.footwayNote
+            }
             null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
         }
     }
