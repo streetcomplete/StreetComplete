@@ -40,7 +40,12 @@ class UniversalSurfaceOverlay : Overlay {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
         return mapData
            .filter( """ways, relations with
-               ((surface and highway != construction) or leisure ~ pitch|playground or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} or aeroway ~ taxiway|runway|helipad|apron|taxilane)
+               (
+                    (surface and highway != construction)
+                    or leisure ~ pitch|playground
+                    or highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+                    or aeroway ~ taxiway|runway|helipad|apron|taxilane
+                )
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
                """)
@@ -53,14 +58,12 @@ class UniversalSurfaceOverlay : Overlay {
         }
     }
     // https://taginfo.openstreetmap.org/search?q=surface
-    // Maybe should be supportedd?
-    // sidewalk:both:surface
-    // sidewalk:right:surface
-    // sidewalk:left:surface
-    // sidewalk:surface
+    val supportedSurfaceKeys = listOf(
+        // supported in this overlay, but not in all overlays
+        // or more specifically: it can be safely ignored here, I think
+        "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
-    // https://taginfo.openstreetmap.org/search?q=surface
-    val supportedSurfaceKeys = listOf("surface", "footway:surface", "cycleway:surface",
+        "surface", "footway:surface", "cycleway:surface",
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
         "surface:colour", //  12K - remove on change? Ignore support? TODO

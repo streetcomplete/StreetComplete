@@ -52,7 +52,7 @@ class RoadSurfaceOverlay : Overlay {
     }
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
-        // supported in this overlay, but not all
+        // supported in this overlay, but not in all overlays
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
         // supported in all surface overlay
