@@ -130,7 +130,9 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         val selectedMainSurfaceIndex = inState.getInt(SELECTED_MAIN_SURFACE_INDEX)
         val selectedMainSurfaceNoteText = inState.getString(SELECTED_MAIN_SURFACE_NOTE_TEXT)
         selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
-        binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+        if (selectedMainSurfaceNoteText != null) {
+            binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -187,9 +187,15 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     if (footwaySurface != null && !footwaySurface.shouldBeDescribed) {
                         selectedStatusForFootwaySurface = footwaySurface.asItem()
                     }
-                    binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
-                    binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(status.cyclewayNote)
-                    binding.explanationInputFootwaySurface.text = SpannableStringBuilder(status.footwayNote)
+                    if (status.note != null) {
+                        binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
+                    }
+                    if (status.cyclewayNote != null) {
+                        binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(status.cyclewayNote)
+                    }
+                    if (status.footwayNote != null) {
+                        binding.explanationInputFootwaySurface.text = SpannableStringBuilder(status.footwayNote)
+                    }
                     switchToFootwayCyclewaySurfaceLayout()
                 }
                 is SingleSurface -> {
@@ -247,11 +253,17 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             val selectedFootwaySurfaceIndex = inState.getInt(SELECTED_FOOTWAY_SURFACE_INDEX)
             val selectedFootwaySurfaceNoteText = inState.getString(SELECTED_FOOTWAY_SURFACE_NOTE_TEXT)
             selectedStatusForMainSurface = if (selectedMainSurfaceIndex != -1) items[selectedMainSurfaceIndex] else null
-            binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+            if (selectedMainSurfaceNoteText != null) {
+                binding.explanationInputMainSurface.text = SpannableStringBuilder(selectedMainSurfaceNoteText)
+            }
             selectedStatusForCyclewaySurface = if (selectedCyclewaySurfaceIndex != -1) items[selectedCyclewaySurfaceIndex] else null
-            binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
+            if (selectedCyclewaySurfaceNoteText != null) {
+                binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(selectedCyclewaySurfaceNoteText)
+            }
             selectedStatusForFootwaySurface = if (selectedFootwaySurfaceIndex != -1) items[selectedFootwaySurfaceIndex] else null
-            binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
+            if (selectedFootwaySurfaceNoteText != null) {
+                binding.explanationInputFootwaySurface.text = SpannableStringBuilder(selectedFootwaySurfaceNoteText)
+            }
         }
 
         override fun onSaveInstanceState(outState: Bundle) {
