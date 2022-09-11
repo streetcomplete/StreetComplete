@@ -55,11 +55,6 @@
         android:visibility="gone"
         android:orientation="vertical"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quest_surface_detailed_answer_impossible_description"/>
-
         <EditText
             android:id="@+id/explanation_input_main_surface"
             android:layout_width="match_parent"

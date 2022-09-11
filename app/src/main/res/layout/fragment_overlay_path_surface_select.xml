@@ -62,10 +62,6 @@
             android:visibility="gone"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quest_surface_detailed_answer_impossible_description"/>
             <EditText
                 android:id="@+id/explanation_input_main_surface"
                 android:layout_width="match_parent"
@@ -137,11 +133,6 @@
             android:orientation="vertical"
             android:visibility="gone"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quest_surface_detailed_answer_impossible_description"/>
-
             <EditText
                 android:id="@+id/explanation_input_cycleway_surface"
                 android:layout_width="match_parent"
@@ -213,11 +204,6 @@
             android:orientation="vertical"
             android:visibility="gone"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quest_surface_detailed_answer_impossible_description"/>
-
             <EditText
                 android:id="@+id/explanation_input_footway_surface"
                 android:layout_width="match_parent"
