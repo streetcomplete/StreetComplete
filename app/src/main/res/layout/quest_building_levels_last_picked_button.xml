@@ -5,8 +5,6 @@
     style="@style/Widget.AppCompat.Button.Small"
     android:layout_width="wrap_content"
     android:layout_height="51dp"
-    android:layout_alignBottom="@id/buildingImage"
-    android:layout_alignParentRight="true"
     tools:ignore="RtlHardcoded">
 
     <ImageView
