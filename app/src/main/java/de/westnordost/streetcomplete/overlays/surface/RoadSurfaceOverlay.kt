@@ -64,7 +64,7 @@ class RoadSurfaceOverlay : Overlay {
         "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
         "surface:colour", //  verify that it is removed on change TODO
-        // "surface:note" // TODO: test support
+        "surface:note" // TODO: test support
     )
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
