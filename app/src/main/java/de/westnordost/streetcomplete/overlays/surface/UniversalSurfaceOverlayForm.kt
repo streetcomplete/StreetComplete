@@ -339,7 +339,9 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             val mainSurface = commonSurfaceDescription(cyclewaySurface, footwaySurface)
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
                 if (mainSurface == null) {
-                    it.remove("surface")
+                    if(it.containsKey("surface")) {
+                        it.remove("surface")
+                    }
                     it.updateWithCheckDate("cycleway:surface", cyclewaySurface)
                     it.updateWithCheckDate("footway:surface", footwaySurface)
                 } else {
