@@ -20,7 +20,7 @@ class MapDataController internal constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator,
     private val createdElementsController: CreatedElementsController
-) {
+) : MapDataRepository {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -175,9 +175,9 @@ class MapDataController internal constructor(
         )
     }
 
-    fun getNode(id: Long): Node? = nodeDB.get(id)
-    fun getWay(id: Long): Way? = wayDB.get(id)
-    fun getRelation(id: Long): Relation? = relationDB.get(id)
+    override fun getNode(id: Long): Node? = nodeDB.get(id)
+    override fun getWay(id: Long): Way? = wayDB.get(id)
+    override fun getRelation(id: Long): Relation? = relationDB.get(id)
 
     fun getAll(elementKeys: Collection<ElementKey>): List<Element> = elementDB.getAll(elementKeys)
 
@@ -185,10 +185,26 @@ class MapDataController internal constructor(
     fun getWays(ids: Collection<Long>): List<Way> = wayDB.getAll(ids)
     fun getRelations(ids: Collection<Long>): List<Relation> = relationDB.getAll(ids)
 
-    fun getWaysForNode(id: Long): List<Way> = wayDB.getAllForNode(id)
-    fun getRelationsForNode(id: Long): List<Relation> = relationDB.getAllForNode(id)
-    fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
-    fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
+    override fun getWaysForNode(id: Long): List<Way> = wayDB.getAllForNode(id)
+    override fun getRelationsForNode(id: Long): List<Relation> = relationDB.getAllForNode(id)
+    override fun getRelationsForWay(id: Long): List<Relation> = relationDB.getAllForWay(id)
+    override fun getRelationsForRelation(id: Long): List<Relation> = relationDB.getAllForRelation(id)
+
+    override fun getWayComplete(id: Long): MapData? {
+        val way = getWay(id) ?: return null
+        val nodeIds = way.nodeIds.toSet()
+        val nodes = getNodes(nodeIds)
+        if (nodes.size < nodeIds.size) return null
+        return MutableMapData(nodes + way)
+    }
+
+    override fun getRelationComplete(id: Long): MapData? {
+        val relation = getRelation(id) ?: return null
+        val elementKeys = relation.members.map { ElementKey(it.type, it.ref) }.toSet()
+        val elements = getAll(elementKeys)
+        if (elements.size < elementKeys.size) return null
+        return MutableMapData(elements + relation)
+    }
 
     fun deleteOlderThan(timestamp: Long, limit: Int? = null): Int {
         val elements: List<ElementKey>

@@ -25,7 +25,8 @@ object Color {
     // colors with reserved meanings
     const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"
     const val BLACK = "#444444" // "no" / "does not exist"
-    const val CRIMSON = "#D00055" // "not mapped" / "incomplete/invalid"
+    private const val CRIMSON = "#D00055" // reserved
+    const val DATA_REQUESTED = CRIMSON // "not mapped" / "incomplete/invalid" / "data missing"
 
     // blue
     const val BLUE = "#007EEC"

@@ -102,5 +102,5 @@ out geom meta;
     Surface.CLAY -> "#ccff00" // TODO
     Surface.TARTAN -> "#ccff00" // TODO
     Surface.GROUND_ROAD, Surface.GROUND_AREA -> "#ccff00" // greenish
-    Surface.PAVED_ROAD, Surface.PAVED_AREA, Surface.UNPAVED_ROAD, Surface.UNPAVED_AREA, null -> Color.CRIMSON // TOOD: switch once upstream is merged
+    Surface.PAVED_ROAD, Surface.PAVED_AREA, Surface.UNPAVED_ROAD, Surface.UNPAVED_AREA, null -> Color.DATA_REQUESTED
 }

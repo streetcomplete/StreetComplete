@@ -40,8 +40,8 @@ private fun getStyle(element: Element): Style {
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color
-    return if (element.tags["area"] == "yes")
-        PolygonStyle(color, null) else PolylineStyle(StrokeStyle(color))
+    return if (element.tags["area"] == "yes") PolygonStyle(color, null)
+        else PolylineStyle(StrokeStyle(color))
 }
 
 private val LitStatus?.color get() = when (this) {
@@ -50,7 +50,7 @@ private val LitStatus?.color get() = when (this) {
     LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
     LitStatus.AUTOMATIC ->     Color.SKY
     LitStatus.NO ->            Color.BLACK
-    null ->                    Color.CRIMSON
+    null ->                    Color.DATA_REQUESTED
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

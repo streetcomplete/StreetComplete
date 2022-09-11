@@ -1,7 +1,14 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.*
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.BUMP
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHICANE
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CHOKER
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.CUSHION
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.HUMP
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.ISLAND
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.RUMBLE_STRIP
+import de.westnordost.streetcomplete.quests.traffic_calming_type.TrafficCalmingType.TABLE
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun TrafficCalmingType.asItem() = Item(this, iconResId, titleResId)

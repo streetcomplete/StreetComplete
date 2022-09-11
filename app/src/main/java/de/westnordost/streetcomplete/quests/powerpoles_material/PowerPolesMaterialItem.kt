@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.*
+import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.CONCRETE
+import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.STEEL
+import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.WOOD
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun PowerPolesMaterial.asItem() = Item(this, iconResId, titleResId)

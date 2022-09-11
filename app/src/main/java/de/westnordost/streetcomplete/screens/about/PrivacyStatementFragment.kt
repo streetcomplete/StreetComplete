@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentShowHtmlBinding
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.viewBinding
-import org.koin.android.ext.android.inject
 import de.westnordost.streetcomplete.view.setHtml
+import org.koin.android.ext.android.inject
 
 /** Shows the privacy statement */
 class PrivacyStatementFragment : Fragment(R.layout.fragment_show_html) {

@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
-import kotlin.math.max
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.

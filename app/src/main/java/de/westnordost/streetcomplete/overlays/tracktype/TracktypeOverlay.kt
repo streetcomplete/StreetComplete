@@ -58,5 +58,5 @@ private val Tracktype?.color get() = when (this) {
     Tracktype.GRADE3 -> "#00eeff"
     Tracktype.GRADE4 -> "#f59709"
     Tracktype.GRADE5 -> "#dd1111"
-    null ->             Color.CRIMSON // TODO get back to proper one
+    null ->             Color.DATA_REQUESTED
 }

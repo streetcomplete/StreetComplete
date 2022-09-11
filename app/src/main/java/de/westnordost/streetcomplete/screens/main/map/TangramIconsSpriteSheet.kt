@@ -64,7 +64,7 @@ class TangramIconsSpriteSheet(
     }
 
     private fun createSceneUpdates(pinSprites: String): List<Pair<String, String>> = listOf(
-        "textures.icons.url" to "file://${context.filesDir}/${ICONS_FILE}",
+        "textures.icons.url" to "file://${context.filesDir}/$ICONS_FILE",
         "textures.icons.sprites" to pinSprites
     )
 
