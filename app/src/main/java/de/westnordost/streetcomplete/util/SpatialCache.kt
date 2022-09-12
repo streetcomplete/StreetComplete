@@ -77,8 +77,7 @@ class SpatialCache<K, T>(
      */
     fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) = synchronized(this) {
         val tiles = bbox.asListOfEnclosingTilePos()
-        val completelyContainedTiles = tiles.filter { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
-        val incompleteTiles = tiles.filter { !it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
+        val (completelyContainedTiles, incompleteTiles) = tiles.partition { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
         if (incompleteTiles.isNotEmpty()) {
             Log.w(TAG, "bbox does not align with tiles, clearing incomplete tiles from cache")
             for (tile in incompleteTiles) {
@@ -97,16 +96,10 @@ class SpatialCache<K, T>(
             removeTile(tile)
             byTile[tile] = HashSet()
         }
-        // put only what is inside tiles
-        val bboxByTile = tiles.associateWith { it.asBoundingBox(tileZoom) }
         entries@for (item in items) {
-            val pos = item.getPosition()
-            for (tile in tiles) {
-                if (pos in bboxByTile[tile]!!) {
-                    byTile[tile]!!.add(item)
-                    byKey[item.getKey()] = item
-                    continue@entries
-                }
+            byTile[item.getTilePos()]?.let {
+                it.add(item)
+                byKey[item.getKey()] = item
             }
         }
     }
