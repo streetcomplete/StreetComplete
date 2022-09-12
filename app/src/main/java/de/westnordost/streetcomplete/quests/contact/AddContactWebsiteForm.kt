@@ -21,7 +21,14 @@ class AddContactWebsiteForm : AbstractOsmQuestForm<String>() {
         binding.nameInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_URI
 
         binding.nameInput.setText(prefill)
-        binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
+        binding.nameInput.doAfterTextChanged {
+            val s = binding.nameInput.selectionStart
+            if (binding.nameInput.text.toString().any { it.isUpperCase() }) {
+                binding.nameInput.setText(binding.nameInput.text.toString().lowercase())
+                binding.nameInput.setSelection(s)
+            }
+            checkIsFormComplete()
+        }
     }
 
     override fun onClickOk() {
