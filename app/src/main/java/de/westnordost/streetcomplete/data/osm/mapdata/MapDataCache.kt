@@ -40,113 +40,107 @@ class MapDataCache(
         addedOrUpdatedElements: Iterable<Element> = emptyList(),
         addedOrUpdatedGeometries: Iterable<ElementGeometryEntry> = emptyList(),
         bbox: BoundingBox? = null
-    ) {
+    ) = synchronized(this) {
         if (bbox == null)
             spatialCache.update(
                 updatedOrAdded = addedOrUpdatedElements.filterIsInstance<Node>(),
                 deleted = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
             )
         else {
-            // really need to remove things here? everything inside bbox is replaced anyway, so it
-            // can only affect nodes outside the bbox
-            // but since the mapdata actually comes from a padded bbox, this might actually be relevant
             if (deletedKeys.isNotEmpty()) spatialCache.update(deleted = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null })
             spatialCache.replaceAllInBBox(addedOrUpdatedElements.filterIsInstance<Node>(), bbox)
         }
 
-        synchronized(this) {
-            // first delete
-            deletedKeys.forEach { key ->
-                val oldElement = wayRelationCache.remove(key)
-                wayRelationGeometryCache.remove(key)
-                if (key.type == ElementType.NODE) wayIdsByNodeIdCache.remove(key.id)
-                if (oldElement is Way)
-                    oldElement.nodeIds.forEach { wayIdsByNodeIdCache[it]?.remove(key.id) }
-                else if (oldElement is Relation)
-                    oldElement.members.forEach { relationIdsByElementKeyCache[ElementKey(it.type, it.ref)]?.remove(key.id) }
-                relationIdsByElementKeyCache.remove(key)
-            }
-            // then add
-            addedOrUpdatedGeometries.forEach {
-                if (it.elementType != ElementType.NODE)
-                    wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
-            }
+        // first delete
+        deletedKeys.forEach { key ->
+            val oldElement = wayRelationCache.remove(key)
+            wayRelationGeometryCache.remove(key)
+            if (key.type == ElementType.NODE) wayIdsByNodeIdCache.remove(key.id)
+            if (oldElement is Way)
+                oldElement.nodeIds.forEach { wayIdsByNodeIdCache[it]?.remove(key.id) }
+            else if (oldElement is Relation)
+                oldElement.members.forEach { relationIdsByElementKeyCache[ElementKey(it.type, it.ref)]?.remove(key.id) }
+            relationIdsByElementKeyCache.remove(key)
+        }
+        // then add
+        addedOrUpdatedGeometries.forEach {
+            if (it.elementType != ElementType.NODE)
+                wayRelationGeometryCache[ElementKey(it.elementType, it.elementId)] = it.geometry
+        }
 
-            val updatedWays = addedOrUpdatedElements.filterIsInstance<Way>()
-            val updatedRelations = addedOrUpdatedElements.filterIsInstance<Relation>()
+        val updatedWays = addedOrUpdatedElements.filterIsInstance<Way>()
+        val updatedRelations = addedOrUpdatedElements.filterIsInstance<Relation>()
 
-            // add ways to wayRelationCache
-            // and to wayIdsByNodeIdCache if nodeId is in spatialCache, because if not then we
-            // can't be sure to have all ways for that node, which may give wrong entries in wayIdsByNodeIdCache
-            updatedWays.forEach { way ->
-                val key = ElementKey(ElementType.WAY, way.id)
-                wayRelationCache[key]?.let { oldWay ->
-                    // remove old way from wayIdsByNodeIdCache
-                    (oldWay as Way).nodeIds.forEach {
-                        wayIdsByNodeIdCache[it]?.remove(way.id)
-                    }
-                }
-                // update/add way
-                wayRelationCache[key] = way
-
-                way.nodeIds.forEach {
-                    // add to wayIdsByNodeIdCache if node is in spatialCache
-                    if (spatialCache.get(it) != null)
-                        wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
-                    else
-                    // But if we already have an entry for that nodeId (cached from getWaysForNode),
-                    // we definitely need to add the updated way
-                        wayIdsByNodeIdCache[it]?.add(way.id)
+        // add ways to wayRelationCache
+        // and to wayIdsByNodeIdCache if nodeId is in spatialCache, because if not then we
+        // can't be sure to have all ways for that node, which may give wrong entries in wayIdsByNodeIdCache
+        updatedWays.forEach { way ->
+            val key = ElementKey(ElementType.WAY, way.id)
+            wayRelationCache[key]?.let { oldWay ->
+                // remove old way from wayIdsByNodeIdCache
+                (oldWay as Way).nodeIds.forEach {
+                    wayIdsByNodeIdCache[it]?.remove(way.id)
                 }
             }
+            // update/add way
+            wayRelationCache[key] = way
 
-            if (updatedRelations.isEmpty())
-                return
-
-            // for adding relations to relationIdsByElementKeyCache we want the element to be
-            // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
-            val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
-
-            updatedRelations.forEach { relation ->
-                val key = ElementKey(ElementType.RELATION, relation.id)
-                wayRelationCache[key]?.let { oldRelation ->
-                    // remove old relation from relationIdsByElementKeyCache
-                    (oldRelation as Relation).members.forEach {
-                        relationIdsByElementKeyCache[ElementKey(it.type, it.ref)]?.remove(relation.id)
-                    }
-                }
-                // update/add relation
-                wayRelationCache[key] = relation
-
-                relation.members.forEach {
-                    val memberKey = ElementKey(it.type, it.ref)
-                    if ((it.type == ElementType.NODE && spatialCache.get(it.ref) != null)
-                            || (it.ref in wayIds && it.type == ElementType.WAY)
-                            || (it.ref in relationIds && it.type == ElementType.RELATION))
-                        relationIdsByElementKeyCache.getOrPut(memberKey) { ArrayList(2) }.add(relation.id)
-                    else
-                    // But if we already have an entry for that elementKey (cached from getRelationsForElement),
-                    // we definitely need to add the updated relation
-                        relationIdsByElementKeyCache[memberKey]?.add(relation.id)
-                }
+            way.nodeIds.forEach {
+                // add to wayIdsByNodeIdCache if node is in spatialCache
+                if (spatialCache.get(it) != null)
+                    wayIdsByNodeIdCache.getOrPut(it) { ArrayList(2) }.add(way.id)
+                else
+                // But if we already have an entry for that nodeId (cached from getWaysForNode),
+                // we definitely need to add the updated way
+                    wayIdsByNodeIdCache[it]?.add(way.id)
             }
         }
 
+        if (updatedRelations.isEmpty())
+            return
+
+        // for adding relations to relationIdsByElementKeyCache we want the element to be
+        // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
+        val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
+
+        updatedRelations.forEach { relation ->
+            val key = ElementKey(ElementType.RELATION, relation.id)
+            wayRelationCache[key]?.let { oldRelation ->
+                // remove old relation from relationIdsByElementKeyCache
+                (oldRelation as Relation).members.forEach {
+                    relationIdsByElementKeyCache[ElementKey(it.type, it.ref)]?.remove(relation.id)
+                }
+            }
+            // update/add relation
+            wayRelationCache[key] = relation
+
+            relation.members.forEach {
+                val memberKey = ElementKey(it.type, it.ref)
+                if ((it.type == ElementType.NODE && spatialCache.get(it.ref) != null)
+                        || (it.ref in wayIds && it.type == ElementType.WAY)
+                        || (it.ref in relationIds && it.type == ElementType.RELATION))
+                    relationIdsByElementKeyCache.getOrPut(memberKey) { ArrayList(2) }.add(relation.id)
+                else
+                // But if we already have an entry for that elementKey (cached from getRelationsForElement),
+                // we definitely need to add the updated relation
+                    relationIdsByElementKeyCache[memberKey]?.add(relation.id)
+            }
+        }
     }
 
-    fun getElement(type: ElementType, id: Long, fetch: (ElementType, Long) -> Element?): Element? {
+    fun getElement(type: ElementType, id: Long, fetch: (ElementType, Long) -> Element?): Element? = synchronized(this) {
         val element =
             if (type == ElementType.NODE) spatialCache.get(id)
-            else synchronized(this) { wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) } }
+            else wayRelationCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) }
         return element ?: fetch(type, id)
     }
 
-    fun getNode(id: Long): Node? = spatialCache.get(id)
+    fun getNode(id: Long): Node? = synchronized(this) { spatialCache.get(id) }
 
-    fun getGeometry(type: ElementType, id: Long, fetch: (ElementType, Long) -> ElementGeometry?): ElementGeometry? {
+    fun getGeometry(type: ElementType, id: Long, fetch: (ElementType, Long) -> ElementGeometry?): ElementGeometry? =synchronized(this)  {
         val geometry = if (type == ElementType.NODE) spatialCache.get(id)
             ?.let { ElementPointGeometry(it.position) }
-        else synchronized(this) { wayRelationGeometryCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) } }
+        else wayRelationGeometryCache.getOrPutIfNotNull(ElementKey(type, id)) { fetch(type, id) }
         return geometry ?: fetch(type, id)
     }
 
@@ -168,7 +162,7 @@ class MapDataCache(
         }
     }
 
-    fun getNodes(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Node>): List<Node> {
+    fun getNodes(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Node>): List<Node> = synchronized(this) {
         val nodes = spatialCache.getAll(ids)
         return if (ids.size == nodes.size) nodes
         else {
@@ -186,7 +180,7 @@ class MapDataCache(
     fun getGeometries(
         keys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<ElementGeometryEntry>
-    ): List<ElementGeometryEntry> = synchronized(this){
+    ): List<ElementGeometryEntry> = synchronized(this) {
         val geometries = spatialCache.getAll(keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null } )
             .map { it.toElementGeometryEntry() } +
             keys.mapNotNull { key ->
@@ -229,7 +223,7 @@ class MapDataCache(
         return relationIds.map { wayRelationCache[ElementKey(ElementType.RELATION, it)] as Relation }
     }
 
-    fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
+    fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry = synchronized(this) {
         // fetch non-cached tiles and put to caches
         val requiredTiles = bbox.enclosingTilesRect(tileZoom).asTilePosSequence().toList()
         val cachedTiles = spatialCache.getTiles()
@@ -272,25 +266,23 @@ class MapDataCache(
         //   into MutableMapDataWithGeometry using put(element, geometry)
         nodes.forEach { result.put(it, ElementPointGeometry(it.position)) }
 
-        synchronized(this) {
-            val wayIds = HashSet<Long>(nodes.size / 5)
-            val relationIds = HashSet<Long>(nodes.size / 10)
-            nodes.forEach { node ->
-                wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
-                relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
-            }
-            wayIds.forEach { wayId ->
-                val key = ElementKey(ElementType.WAY, wayId)
-                result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
-                relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
-            }
-            relationIds.forEach { relationId ->
-                val key = ElementKey(ElementType.RELATION, relationId)
-                result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
-                relationIdsByElementKeyCache[key]?.forEach { otherRelationId ->
-                    val otherKey = ElementKey(ElementType.RELATION, otherRelationId)
-                    wayRelationCache[otherKey]?.let { result.put(it, wayRelationGeometryCache[otherKey]) }
-                }
+        val wayIds = HashSet<Long>(nodes.size / 5)
+        val relationIds = HashSet<Long>(nodes.size / 10)
+        nodes.forEach { node ->
+            wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
+            relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
+        }
+        wayIds.forEach { wayId ->
+            val key = ElementKey(ElementType.WAY, wayId)
+            result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+            relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
+        }
+        relationIds.forEach { relationId ->
+            val key = ElementKey(ElementType.RELATION, relationId)
+            result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
+            relationIdsByElementKeyCache[key]?.forEach { otherRelationId ->
+                val otherKey = ElementKey(ElementType.RELATION, otherRelationId)
+                wayRelationCache[otherKey]?.let { result.put(it, wayRelationGeometryCache[otherKey]) }
             }
         }
 
@@ -301,17 +293,15 @@ class MapDataCache(
         return result
     }
 
-    fun clear() {
-        synchronized(this) {
-            wayIdsByNodeIdCache.clear()
-            relationIdsByElementKeyCache.clear()
-            wayRelationCache.clear()
-            wayRelationGeometryCache.clear()
-            spatialCache.clear()
-        }
+    fun clear() = synchronized(this) {
+        spatialCache.clear()
+        wayRelationCache.clear()
+        wayRelationGeometryCache.clear()
+        wayIdsByNodeIdCache.clear()
+        relationIdsByElementKeyCache.clear()
     }
 
-    fun trim(size: Int) {
+    fun trim(size: Int) = synchronized(this) {
         spatialCache.trim(size)
         trimNonSpatialCaches()
     }
@@ -342,7 +332,7 @@ class MapDataCache(
         }
     }
 
-    private fun getWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> {
+    private fun getWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> = synchronized(this) {
         val wayIds = wayRelationCache.values.mapNotNull { element ->
             if (element is Way && element.nodeIds.any { spatialCache.get(it) != null })
                 element.id
@@ -363,7 +353,7 @@ class MapDataCache(
                 element.id
             else null
         }.toHashSet()
-        return wayIds to relationIds
+        wayIds to relationIds
     }
 
     private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
