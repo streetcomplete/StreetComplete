@@ -8,8 +8,8 @@ class CacheTrimmer(
     private val mapDataController: MapDataController,
 ) {
     fun trimCaches() {
-        visibleQuestsSource.trimCache()
         mapDataController.trimCache()
+        visibleQuestsSource.trimCache()
     }
 
     fun clearCaches() {
