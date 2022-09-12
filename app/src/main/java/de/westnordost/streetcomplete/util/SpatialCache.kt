@@ -126,12 +126,14 @@ class SpatialCache<K, T>(
         return items
     }
 
-    /** Reduces cache size to the given number of [tiles].  */
+    /** Reduces cache size to the given number of non-empty [tiles].
+     *  Empty tiles are kept, as the barely use memory. This avoids empty tiles pushing other
+     *  tiles out of the cache and thus may avoid database fetches. */
     fun trim(tiles: Int = maxTiles) = synchronized(this) {
-        if (byTile.size <= tiles) return
+        if (byTile.count { it.value.isNotEmpty() } <= tiles) return
 
-        while (byTile.size > tiles) {
-            removeTile(byTile.keys.first())
+        while (byTile.count { it.value.isNotEmpty() } > tiles) {
+            removeTile(byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: byTile.keys.first())
         }
     }
 
