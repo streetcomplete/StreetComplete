@@ -275,11 +275,13 @@ class MapDataController internal constructor(
     }
 }
 
-// zoom 16 is typically on the higher end when editing elements in SC
-// todo: switch to zoom 17 or 18 in the end? it's noticeably faster for other things than overlay
-private const val SPATIAL_CACHE_TILE_ZOOM = 16
-// twice the maximum tiles that can be loaded at once in StyleableOverlayManager (at same zoom),
-// as we don't want to drop tiles from cache already when scrolling the map a bit
-private const val SPATIAL_CACHE_TILES = 32
-// in a city this is the approximate number of nodes in ~4-8 tiles
+// StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db fetches for
+// typical getMapDataWithGeometry calls noticeably faster than z16, as they usually only require a small area.
+private const val SPATIAL_CACHE_TILE_ZOOM = 17
+
+// Twice the maximum number of tiles that can be loaded at once in StyleableOverlayManager (translated from z16 tiles).
+// We don't want to drop tiles from cache already when scrolling the map just a bit!
+private const val SPATIAL_CACHE_TILES = 128
+
+// In a city this is the approximate number of nodes in ~4-8 z16 tiles
 private const val SPATIAL_CACHE_INITIAL_CAPACITY = 20000
