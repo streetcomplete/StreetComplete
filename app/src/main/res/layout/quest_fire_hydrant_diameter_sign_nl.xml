@@ -33,18 +33,4 @@
         app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
         tools:ignore="RtlHardcoded,SpUsage" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lastPickedButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="6"
-        tools:listitem="@layout/quest_fire_hydrant_diameter_last_picked_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fireHydrantSign"
-        android:padding="4dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

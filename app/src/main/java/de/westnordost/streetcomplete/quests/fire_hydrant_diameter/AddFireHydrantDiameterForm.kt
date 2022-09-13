@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
@@ -28,8 +29,9 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
     override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
     private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
+    private val diameterInput by lazy { binding.root.findViewById<EditText>(R.id.diameterInput) }
 
-    private val diameterValue get() = binding.diameterInput.intOrNull ?: 0
+    private val diameterValue get() = diameterInput.intOrNull ?: 0
 
     private val lastPickedAnswers by lazy {
         favs.get()
@@ -49,15 +51,21 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             deserialize = { it.toInt() }
         )
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.doAfterTextChanged { checkIsFormComplete() }
+        layoutInflater.inflate(
+            getHydrantDiameterSignLayoutResId(countryInfo.countryCode),
+            view.findViewById(R.id.countrySign),
+        )
+
+        diameterInput.doAfterTextChanged { checkIsFormComplete() }
 
         binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
     }
 
     private fun onLastPickedButtonClicked(position: Int) {
-        binding.diameterInput.setText(lastPickedAnswers[position].toString())
+        diameterInput.setText(lastPickedAnswers[position].toString())
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -115,6 +123,15 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             .show()
         }
     }
+}
+
+private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "DE" -> R.layout.quest_fire_hydrant_diameter_sign_de
+    "FI" -> R.layout.quest_fire_hydrant_diameter_sign_fi
+    "NL" -> R.layout.quest_fire_hydrant_diameter_sign_nl
+    "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl
+    "UK" -> R.layout.quest_fire_hydrant_diameter_sign_uk
+    else -> R.layout.quest_fire_hydrant_diameter_sign_generic
 }
 
 private class LastPickedAdapter(

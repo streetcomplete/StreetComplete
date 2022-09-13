@@ -7,33 +7,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/countrySign"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/diameterInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            android:maxLength="4"
-            android:ems="4"
-            android:textSize="@dimen/x_large_input"
-            tools:text="1600" />
-
-        <TextView
-            android:id="@+id/diameterInputUnit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mm"
-            android:textSize="@dimen/x_large_input"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lastPickedButtons"
