@@ -146,7 +146,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
                 } else {
                     answer.number?.applyTo(tags)
                     if (answer.name != null) {
-                        tags["addr:housename"] = name
+                        tags["addr:housename"] = answer.name
                     }
                 }
             }

@@ -50,6 +50,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale
         )
+        streetNameInputCtrl.onInputChanged = { checkIsFormComplete() }
         binding.placeNameInput.doAfterTextChanged { checkIsFormComplete() }
 
         updateVisibilities()
