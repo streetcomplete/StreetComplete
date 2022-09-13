@@ -28,7 +28,8 @@ class LastPickedValuesStore<T : Any>(
     private fun getKey() = Prefs.LAST_PICKED_PREFIX + key
 }
 
-/** Returns the [target] most-common non-null items in the first [historyCount]
+/**
+ * Returns the [target] most-common non-null items in the first [historyCount]
  *  items of the sequence, in their original order.
  * If there are fewer than [target] unique items, continues counting items
  *  until that many are found, or the end of the sequence is reached.
