@@ -62,8 +62,8 @@ class AddressOverlayForm : AbstractOverlayForm() {
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale
         )
-        streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
         streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName
+        streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
 
         val numberOrNameBinding = binding.addressNumberOrNameContainer
         val numberView = layoutInflater.inflate(
@@ -84,9 +84,9 @@ class AddressOverlayForm : AbstractOverlayForm() {
             addButton = numberView.findViewById(R.id.addButton),
             subtractButton = numberView.findViewById(R.id.subtractButton),
         )
-        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
         numberOrNameInputCtrl.addressNumber = addressNumber
         numberOrNameInputCtrl.houseName = houseName
+        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
