@@ -24,6 +24,14 @@ v47.0-alpha1: |
   <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
   </ul>
 
+v46.1: |
+  <ul>
+  <li>Enable public transport stop quests also when they are mapped as areas (#4341)</li>
+  <li>Fix trunk link roads were not displayed on map</li>
+  <li>Do not ask about lanes for inaccessible private roads (#4359)</li>
+  <li>Other minor enhancements (#4348, #4356...)</li>
+  </ul>
+
 v46.0: |
   <h3>New Quests</h3>
   <p>Asked for campsites (#4213), by @mnalis:</p>

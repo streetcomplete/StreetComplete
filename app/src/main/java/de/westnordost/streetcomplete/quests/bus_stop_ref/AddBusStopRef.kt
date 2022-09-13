@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)
           or

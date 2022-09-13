@@ -21,6 +21,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
           and placement != transition
+          and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"

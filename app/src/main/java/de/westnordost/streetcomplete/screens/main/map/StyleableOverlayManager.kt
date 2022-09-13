@@ -148,8 +148,9 @@ class StyleableOverlayManager(
                     mapDataInView[key] = styledElement
                 }
             }
-            if (coroutineContext.isActive)
+            if (coroutineContext.isActive) {
                 mapComponent.set(mapDataInView.values)
+            }
         }
     }
 
