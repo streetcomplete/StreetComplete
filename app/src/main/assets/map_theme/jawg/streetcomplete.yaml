@@ -330,7 +330,7 @@ layers:
                 text:
                     interactive: true
                     text_source: text
-                    priority: 10
+                    priority: 1
                     font:
                         family: global.text_font_family
                         fill: global.text_fill_color
