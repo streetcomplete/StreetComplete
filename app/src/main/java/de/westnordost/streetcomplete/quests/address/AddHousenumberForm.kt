@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
+import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.overlays.address.AddressOverlayForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
@@ -123,8 +125,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
             applyAnswer(AddressNumberOrName(number, addressOrNameInputCtrl.houseName))
-            (number as? HouseAndBlockNumber)?.blockNumber?.let { lastBlockNumber = it }
-            number?.houseNumber?.let { lastHouseNumber = it }
+            if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+            number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
     }
 
@@ -151,13 +153,6 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
         private const val SHOW_HOUSE_NAME = "show_house_name"
     }
-}
-
-private val AddressNumber.houseNumber: String? get() = when (this) {
-    is HouseNumber -> houseNumber
-    is HouseAndBlockNumber -> houseNumber
-    // not conscription number because there is no logical succession
-    else -> null
 }
 
 private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {

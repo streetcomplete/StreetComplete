@@ -100,8 +100,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     }
 
     private fun updateVisibilities() {
-        binding.placeNameInput.isGone = !isPlaceName
-        binding.streetNameInput.isGone = isPlaceName
+        binding.placeNameContainer.isGone = !isPlaceName
+        binding.streetNameContainer.isGone = isPlaceName
     }
 
     override fun isFormComplete(): Boolean =
@@ -113,6 +113,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         isPlaceName = true
         updateVisibilities()
         binding.placeNameInput.requestFocus()
+        checkIsFormComplete()
     }
 
     companion object {

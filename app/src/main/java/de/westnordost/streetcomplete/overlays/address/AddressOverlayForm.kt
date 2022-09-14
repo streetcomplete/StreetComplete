@@ -14,10 +14,12 @@ import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.osm.address.createAddressNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
+import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
+import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import org.koin.android.ext.android.inject
 
@@ -55,9 +57,10 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(
             select = binding.streetOrPlaceSelect,
-            placeNameInput = binding.streetNameInput,
-            streetNameInputView = binding.placeNameInput,
-            streetNameInput = binding.placeNameInput,
+            placeNameInputContainer = binding.placeNameInputContainer,
+            placeNameInput = binding.placeNameInput.apply { hint = lastPlaceName },
+            streetNameInputContainer = binding.streetNameInputContainer,
+            streetNameInput = binding.streetNameInput,
             roadNameSuggestionsSource = roadNameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale
@@ -77,7 +80,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
             addressNumberContainer = numberOrNameBinding.addressNumberContainer,
             activity = requireActivity(),
             houseNumberInput = numberView.findViewById<EditText?>(R.id.houseNumberInput)?.apply { hint = lastHouseNumber },
-            blockNumberInput = numberView.findViewById(R.id.blockNumberInput),
+            blockNumberInput = numberView.findViewById<EditText?>(R.id.blockNumberInput)?.apply { hint = lastBlockNumber },
             conscriptionNumberInput = numberView.findViewById(R.id.conscriptionNumberInput),
             streetNumberInput = numberView.findViewById(R.id.streetNumberInput),
             toggleKeyboardButton = numberOrNameBinding.toggleKeyboardButton,
@@ -86,7 +89,12 @@ class AddressOverlayForm : AbstractOverlayForm() {
         )
         numberOrNameInputCtrl.addressNumber = addressNumber
         numberOrNameInputCtrl.houseName = houseName
-        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+        numberOrNameInputCtrl.onInputChanged = {
+            if (lastPlaceName != null) {
+                streetOrPlaceCtrl.applyPlaceNameHint()
+            }
+            checkIsFormComplete()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -104,18 +112,30 @@ class AddressOverlayForm : AbstractOverlayForm() {
         || streetOrPlaceCtrl.streetOrPlaceName != streetOrPlaceName
 
     override fun isFormComplete(): Boolean =
-        numberOrNameInputCtrl.isComplete && streetOrPlaceName != null
+        numberOrNameInputCtrl.isComplete && streetOrPlaceCtrl.streetOrPlaceName != null
+        // can also be empty to delete the address tagging
+        || numberOrNameInputCtrl.isEmpty && streetOrPlaceCtrl.streetOrPlaceName == null
 
     override fun onClickOk() {
+        val number = numberOrNameInputCtrl.addressNumber
+        val houseName = numberOrNameInputCtrl.houseName
+        val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName
+
+        if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+        number?.streetHouseNumber?.let { lastHouseNumber = it }
+        lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
+
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also { tags ->
-            numberOrNameInputCtrl.addressNumber?.applyTo(tags)
-            numberOrNameInputCtrl.houseName?.let { tags["addr:housename"] = it }
-            streetOrPlaceCtrl.streetOrPlaceName?.applyTo(tags)
+            number?.applyTo(tags)
+            houseName?.let { tags["addr:housename"] = it }
+            streetOrPlaceName?.applyTo(tags)
         }.create()))
     }
 
     companion object {
+        private var lastBlockNumber: String? = null
         private var lastHouseNumber: String? = null
+        private var lastPlaceName: String? = null
 
         private const val IS_PLACENAME = "is_placename"
     }

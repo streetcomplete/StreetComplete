@@ -22,8 +22,9 @@ import java.util.Locale
  *  cannot switch to the other input field. */
 class StreetOrPlaceNameViewController(
     private val select: Spinner,
+    private val placeNameInputContainer: View,
     private val placeNameInput: EditText,
-    private val streetNameInputView: View,
+    private val streetNameInputContainer: View,
     streetNameInput: EditText,
     roadNameSuggestionsSource: RoadNameSuggestionsSource,
     abbreviationsByLocale: AbbreviationsByLocale,
@@ -47,6 +48,7 @@ class StreetOrPlaceNameViewController(
                     streetNameInputCtrl.streetName = value.name
                 }
                 null -> {
+                    spinnerSelection = STREET
                     streetNameInputCtrl.streetName = null
                     placeNameInput.text = null
                 }
@@ -67,6 +69,7 @@ class StreetOrPlaceNameViewController(
             R.layout.spinner_item_centered,
             StreetOrPlace.values().map { it.toLocalizedString(select.context.resources) }
         )
+        spinnerSelection = STREET
 
         select.onItemSelectedListener = OnAdapterItemSelectedListener {
             updateInputVisibilities()
@@ -83,6 +86,7 @@ class StreetOrPlaceNameViewController(
         }
 
         updateInputVisibilities()
+        updateSpinnerEnablement()
     }
 
     fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
@@ -90,6 +94,13 @@ class StreetOrPlaceNameViewController(
 
         streetNameInputCtrl.selectStreetAt(position, radiusInMeters)
         return true
+    }
+
+    fun applyPlaceNameHint() {
+        if (spinnerSelection != PLACE) return
+        if (placeNameInput.nonBlankTextOrNull == null && placeNameInput.hint != null) {
+            placeNameInput.setText(placeNameInput.hint)
+        }
     }
 
     private fun updateSpinnerEnablement() {
@@ -101,8 +112,8 @@ class StreetOrPlaceNameViewController(
 
     private fun updateInputVisibilities() {
         val selection = spinnerSelection
-        streetNameInputView.isGone = selection != STREET
-        placeNameInput.isGone = selection != PLACE
+        streetNameInputContainer.isGone = selection != STREET
+        placeNameInputContainer.isGone = selection != PLACE
     }
 
     private enum class StreetOrPlace { STREET, PLACE }
@@ -111,4 +122,5 @@ class StreetOrPlaceNameViewController(
         STREET -> resources.getString(R.string.quest_address_street_street_name_label)
         PLACE -> resources.getString(R.string.quest_address_street_place_name_label)
     }
+
 }

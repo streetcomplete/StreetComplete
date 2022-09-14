@@ -31,6 +31,5 @@ class AddressOverlay : Overlay {
             ways, relations with building
         """).map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }
 
-    override fun createForm(element: Element): AbstractOverlayForm? =
-        AddressOverlayForm()
+    override fun createForm(element: Element) = AddressOverlayForm()
 }

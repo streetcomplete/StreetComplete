@@ -24,7 +24,7 @@ android {
         }
     }
 
-    compileSdk = 33
+    compileSdk = 32
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -34,7 +34,7 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 32
         versionCode = 4700
         versionName = "47.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

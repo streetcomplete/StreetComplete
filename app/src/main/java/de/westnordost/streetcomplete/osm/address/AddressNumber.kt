@@ -10,6 +10,13 @@ data class HouseNumber(val houseNumber: String) : AddressNumber
 data class ConscriptionNumber(val conscriptionNumber: String, val streetNumber: String? = null) : AddressNumber
 data class HouseAndBlockNumber(val houseNumber: String, val blockNumber: String) : AddressNumber
 
+val AddressNumber.streetHouseNumber: String? get() = when (this) {
+    is HouseNumber -> houseNumber
+    is HouseAndBlockNumber -> houseNumber
+    // not conscription number because there is no logical succession
+    else -> null
+}
+
 fun AddressNumber.applyTo(tags: Tags) {
     when (this) {
         is ConscriptionNumber -> {
