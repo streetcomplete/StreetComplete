@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -21,6 +20,10 @@ class AddressOverlay : Overlay {
     override val wikiLink: String = "Key:addr"
     override val achievements = listOf(POSTMAN)
     override val hidesQuestTypes = setOf(AddHousenumber::class.simpleName!!)
+
+    override val sceneUpdates = listOf(
+        "layers.housenumber-labels.enabled" to "false"
+    )
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""

@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -27,13 +28,14 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of styled map data in the map view:
- *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the map
+ *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
  *  data for the bbox surrounding the area from database and holds it in memory. */
 class StyleableOverlayManager(
     private val ctrl: KtMapController,
     private val mapComponent: StyleableOverlayMapComponent,
     private val mapDataSource: MapDataWithEditsSource,
-    private val selectedOverlaySource: SelectedOverlaySource
+    private val selectedOverlaySource: SelectedOverlaySource,
+    private val sceneMapComponent: SceneMapComponent
 ) : DefaultLifecycleObserver {
 
     // last displayed rect of (zoom 16) tiles
@@ -48,7 +50,17 @@ class StyleableOverlayManager(
     private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
+        var doSceneUpdate = false
+        field?.let {
+            removeOverlaySceneUpdates(it)
+            doSceneUpdate = true
+        }
         field = value
+        field?.let {
+            addOverlaySceneUpdates(it)
+            doSceneUpdate = true
+        }
+        if (doSceneUpdate) applySceneUpdates()
         if (value != null) show() else hide()
     }
 
@@ -103,6 +115,22 @@ class StyleableOverlayManager(
         viewLifecycleScope.coroutineContext.cancelChildren()
         clear()
         mapDataSource.removeListener(mapDataListener)
+    }
+
+    private fun addOverlaySceneUpdates(overlay: Overlay) {
+        val updates = overlay.sceneUpdates
+        if (updates.isEmpty()) return
+        sceneMapComponent.addSceneUpdates(overlay.sceneUpdates)
+    }
+
+    private fun removeOverlaySceneUpdates(overlay: Overlay) {
+        val updates = overlay.sceneUpdates
+        if (updates.isEmpty()) return
+        sceneMapComponent.removeSceneUpdates(overlay.sceneUpdates)
+    }
+
+    private fun applySceneUpdates() {
+        viewLifecycleScope.launch { sceneMapComponent.loadScene() }
     }
 
     fun onNewScreenPosition() {

@@ -85,7 +85,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
-        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, sceneMapComponent!!)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         super.onMapReady()
@@ -104,7 +104,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         val sceneUpdates = withContext(Dispatchers.IO) {
             questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
         }
-        sceneMapComponent?.putSceneUpdates(sceneUpdates)
+        sceneMapComponent?.addSceneUpdates(sceneUpdates)
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */

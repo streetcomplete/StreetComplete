@@ -11,6 +11,9 @@ interface Overlay : ElementEditType {
     /** which quest types (by name) should not be visible when this overlay is active */
     val hidesQuestTypes: Set<String> get() = emptySet()
 
+    /** scene updates that should be applied to the map when this overlay is active */
+    val sceneUpdates: List<Pair<String, String>> get() = emptyList()
+
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
 
