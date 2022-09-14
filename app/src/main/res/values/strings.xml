@@ -1612,7 +1612,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="tutorial_overlays_welcome_subtitle">you found a new way to edit</string>
     <string name="tutorial_overlays_intro">You can now view data, spot wrong entries and fix them without waiting for a quest. Overlays are showing a full overview, not just a few objects where survey is obviously needed.</string>
     <string name="tutorial_overlays_display">Data is shown by a colourful overlay. You can switch between overlays or keep them disabled.</string>
-    <string name="tutorial_overlays_display_legend">Missing data is shown as crimson and already entered data in colouring specific to the selected overlay.</string>
+    <string name="tutorial_overlays_display_legend">Missing data is shown as red and already entered data in colouring specific to the selected overlay.</string>
     <string name="tutorial_overlays_solving">To edit wrong or missing data:\ntap on coloured line\ntap again on data presented in the shown entry, then confirm.\nYou can also split way or report notes, as with quests.</string>
     <string name="tutorial_overlays_happy_mapping">Happy Mapping! Good luck with hunting for wrong data!</string>
 </resources>
