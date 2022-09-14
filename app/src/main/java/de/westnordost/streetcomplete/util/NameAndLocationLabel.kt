@@ -8,33 +8,34 @@ import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.toList
+import de.westnordost.streetcomplete.util.ShowHouseNumber.*
 import java.util.Locale
 
 fun getNameAndLocationLabelString(
     tags: Map<String, String>,
     resources: Resources,
     featureDictionary: FeatureDictionary,
-    alwaysShowHouseNumber: Boolean = false
+    showHouseNumber: ShowHouseNumber = DEFAULT
 ): Spanned? {
     val localeList = ConfigurationCompat.getLocales(resources.configuration).toList()
     val feature = getFeatureName(tags, featureDictionary, localeList)
         ?.withNonBreakingSpaces()?.inItalics()
     val name = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
     val level = getLevelLabel(tags, resources)
-    val houseNumber = getHouseNumberLabel(tags, resources)
+    val houseNumber = if (showHouseNumber != NEVER) getHouseNumberLabel(tags, resources) else null
     // only show house number if there is neither name nor level information
-    val location = level ?: if (name == null || alwaysShowHouseNumber) houseNumber else null
+    val location = level ?: if (name == null || showHouseNumber == ALWAYS) houseNumber else null
 
     return if (location != null) {
-        val showHouseNumber = alwaysShowHouseNumber && (houseNumber != null && houseNumber != location)
+        val showHouseNumberSeparately = showHouseNumber == ALWAYS && (houseNumber != null && houseNumber != location)
         if (name != null && feature != null) {
-            if (showHouseNumber) {
+            if (showHouseNumberSeparately) {
                 resources.getString(R.string.label_housenumber_location_name_feature, houseNumber, location, name, feature)
             } else {
                 resources.getString(R.string.label_location_name_feature, location, name, feature)
             }
         } else if (name != null || feature != null) {
-            if (showHouseNumber) {
+            if (showHouseNumberSeparately) {
                 resources.getString(R.string.label_housenumber_location_name, houseNumber, location, name ?: feature)
             } else {
                 resources.getString(R.string.label_location_name, location, name ?: feature)
@@ -50,6 +51,8 @@ fun getNameAndLocationLabelString(
         }
     }?.parseAsHtml()
 }
+
+enum class ShowHouseNumber { DEFAULT, ALWAYS, NEVER }
 
 private fun getFeatureName(
     tags: Map<String, String>,

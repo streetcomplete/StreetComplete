@@ -21,6 +21,8 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
+import de.westnordost.streetcomplete.util.ShowHouseNumber
+import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.koin.android.ext.android.inject
 
 class AddressOverlayForm : AbstractOverlayForm() {
@@ -43,7 +45,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
+        isPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: false
 
         addressNumber = createAddressNumber(element.tags)
         houseName = element.tags["addr:housename"]
@@ -54,6 +56,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setTitleHintLabel(getNameAndLocationLabelString(
+            element.tags, resources, featureDictionary,
+            showHouseNumber = ShowHouseNumber.NEVER
+        ))
 
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(
             select = binding.streetOrPlaceSelect,
@@ -99,7 +106,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_PLACENAME, isPlaceName)
+        outState.putBoolean(IS_PLACE_NAME, isPlaceName)
     }
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -137,7 +144,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         private var lastHouseNumber: String? = null
         private var lastPlaceName: String? = null
 
-        private const val IS_PLACENAME = "is_placename"
+        private const val IS_PLACE_NAME = "is_place_name"
     }
 }
 

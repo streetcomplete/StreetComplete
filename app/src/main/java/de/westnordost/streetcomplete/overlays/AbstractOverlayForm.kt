@@ -152,9 +152,7 @@ abstract class AbstractOverlayForm :
             cornerRadius, margin, margin, margin, margin
         )
 
-        val nameAndLocationLabel = getNameAndLocationLabelString(element.tags, resources, featureDictionary)
-        binding.titleHintLabel.text = nameAndLocationLabel
-        binding.titleHintLabel.isGone = nameAndLocationLabel == null
+        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
@@ -223,6 +221,11 @@ abstract class AbstractOverlayForm :
     }
 
     /* ------------------------------- Interface for subclasses  ------------------------------- */
+
+    protected fun setTitleHintLabel(text: CharSequence?) {
+        binding.titleHintLabel.text = text
+        binding.titleHintLabelContainer.isGone = text == null
+    }
 
     /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
