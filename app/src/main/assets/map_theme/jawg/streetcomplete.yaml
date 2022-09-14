@@ -325,14 +325,15 @@ layers:
                     cap: round
                     join: round
         label:
-            filter: { text: true }
+            filter: { text: true, $zoom: { min: 18 } }
             draw:
                 text:
                     interactive: true
                     text_source: text
+                    collide: false
                     priority: 1
                     font:
                         family: global.text_font_family
-                        fill: global.text_fill_color
+                        fill: "#000"
                         size: global.text_size
-                        stroke: global.text_stroke
+                        stroke: { color: "#fff", width: 3.5px }
