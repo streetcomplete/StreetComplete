@@ -181,17 +181,19 @@ internal class SpatialCacheTest {
         assertFalse(cache.getKeys().contains(nodeOutside.id))
     }
 
-    @Test fun replaceAllInBBoxButPartialTileSupplied() { // TODO
+    @Test fun `bbox that is not fully in a tile is not put`() {
         val nodeInside = node(1)
         val nodeTile = nodeInside.position.enclosingTilePos(16)
+        val nodeBBox = nodeTile.asBoundingBox(16)
         val nodeOutside = node(2, LatLon(1.0, 1.0))
         val cache = SpatialCache<Long, Node>(
             16, 4, null, { emptyList() }, Node::id, Node::position
         )
-        cache.replaceAllInBBox(listOf(nodeInside, nodeOutside), nodeTile.asBoundingBox(16))
+        cache.replaceAllInBBox(listOf(nodeInside, nodeOutside), BoundingBox(nodeBBox.min, nodeBBox.max.copy(latitude = nodeBBox.max.latitude - 0.0001)))
 
-        assertTrue(cache.getKeys().contains(nodeInside.id))
+        assertFalse(cache.getKeys().contains(nodeInside.id))
         assertFalse(cache.getKeys().contains(nodeOutside.id))
+        assertTrue(cache.getTiles().isEmpty())
     }
 
     @Test fun remove() {
