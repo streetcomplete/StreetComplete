@@ -109,8 +109,7 @@ private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParkingPositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    NoStreetParking ->          StrokeStyle(Color.BLACK, true)
-
+    NoStreetParking,
     StreetStandingProhibited,
     StreetParkingProhibited,
     StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
