@@ -33,7 +33,7 @@ class AddContactPhoneForm : AbstractOsmQuestForm<String>() {
     }
 
 
-    override fun isFormComplete() = contact.isNotEmpty() && contact != prefill
+    override fun isFormComplete() = contact.isNotEmpty() && binding.nameInput.text?.toString().orEmpty() != prefill
 
     companion object {
         private var prefill = "+"
