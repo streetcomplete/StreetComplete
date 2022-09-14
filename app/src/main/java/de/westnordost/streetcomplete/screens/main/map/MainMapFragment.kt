@@ -136,8 +136,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
             if (styleableOverlayMapComponent?.isVisible == true) {
                 if (selectedOverlaySource.selectedOverlay != null) {
-                    val props = controller?.pickFeature(x, y)?.properties
-                        ?: controller?.pickLabel(x, y)?.properties
+                    val props = controller?.pickLabel(x, y)?.properties
+                        ?: controller?.pickFeature(x, y)?.properties
                     val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }
                     if (elementKey != null) {
                         listener?.onClickedElement(elementKey)
