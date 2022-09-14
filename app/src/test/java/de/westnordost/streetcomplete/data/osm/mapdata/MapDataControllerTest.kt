@@ -71,7 +71,7 @@ class MapDataControllerTest {
 
     @Test fun getMapDataWithGeometry() {
         val bbox = bbox()
-        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(17)
         val geomEntries = listOf(
             ElementGeometryEntry(NODE, 1L, pGeom()),
             ElementGeometryEntry(NODE, 2L, pGeom()),

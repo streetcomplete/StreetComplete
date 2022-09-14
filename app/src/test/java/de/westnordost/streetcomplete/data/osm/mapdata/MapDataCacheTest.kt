@@ -104,7 +104,7 @@ internal class MapDataCacheTest {
     }
 
     @Test fun `getWaysForNode gets filled inside bbox`() {
-        val node1 = node(1, LatLon(0.00001, 0.00001))
+        val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val node3 = node(3, LatLon(0.0002, 0.0002))
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
@@ -121,7 +121,7 @@ internal class MapDataCacheTest {
     }
 
     @Test fun `update affects wayIdsByNodeIdCache`() {
-        val node1 = node(1, LatLon(0.00001, 0.00001))
+        val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val node3 = node(3, LatLon(0.0002, 0.0002))
         val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
@@ -139,7 +139,7 @@ internal class MapDataCacheTest {
     }
 
     @Test fun `update affects relationIdsByElementKeyCache`() {
-        val node1 = node(1, LatLon(0.00001, 0.00001))
+        val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val nodesRect = listOf(node1.position, node2.position).enclosingBoundingBox().enclosingTilesRect(16)
         assertTrue(nodesRect.size <= 4) // fits in cache
@@ -158,7 +158,7 @@ internal class MapDataCacheTest {
     }
 
     @Test fun `trim removes everything not referenced by spatialCache`() {
-        val node1 = node(1, LatLon(0.00001, 0.00001))
+        val node1 = node(1, LatLon(0.0, 0.0))
         val node2 = node(2, LatLon(0.0001, 0.0001))
         val node3 = node(3, LatLon(0.0002, 0.0002))
         val nodes = listOf(node1, node2, node3)
