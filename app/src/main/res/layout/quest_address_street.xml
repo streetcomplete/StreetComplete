@@ -27,10 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_rectangular_sign_blue"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
                 android:inputType="text"
                 android:imeOptions="actionDone"
                 android:textSize="@dimen/large_input"
@@ -50,7 +46,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:divider="@drawable/space_8dp"
         android:showDividers="middle">
 
@@ -63,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_rectangular_sign_white"
+            android:paddingBottom="0dp"
             android:orientation="vertical">
 
             <me.grantland.widget.AutofitLayout
@@ -78,10 +74,7 @@
                     android:inputType="text"
                     android:imeOptions="actionDone"
                     android:textAlignment="center"
-                    android:paddingTop="8dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="72dp"
+                    android:paddingBottom="70dp"
                     android:maxLines="1"
                     android:textColor="#000"
                     android:textSize="@dimen/large_input"

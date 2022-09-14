@@ -22,7 +22,6 @@
             android:background="@drawable/background_rectangular_sign_red"
             android:minHeight="68dp"
             android:textSize="@dimen/large_input"
-            android:padding="12dp"
             android:imeOptions="actionNext"
             tools:text="1234"
             android:digits="0123456789.,- /"
@@ -57,7 +56,6 @@
             android:minHeight="68dp"
             android:textSize="@dimen/large_input"
             android:imeOptions="actionDone"
-            android:padding="12dp"
             tools:text="12"
             android:digits="0123456789.,- /"
             style="@style/HouseNumberEditText" />
