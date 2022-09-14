@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
+import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
@@ -33,7 +34,8 @@ class StyleableOverlayManager(
     private val ctrl: KtMapController,
     private val mapComponent: StyleableOverlayMapComponent,
     private val mapDataSource: MapDataWithEditsSource,
-    private val selectedOverlaySource: SelectedOverlaySource
+    private val selectedOverlaySource: SelectedOverlaySource,
+    private val levelFilter: LevelFilter,
 ) : DefaultLifecycleObserver {
 
     // last displayed rect of (zoom 16) tiles
@@ -144,6 +146,7 @@ class StyleableOverlayManager(
         synchronized(mapDataInView) {
             mapDataInView.clear()
             createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
+                if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
                 if (styledElement != null) {
                     mapDataInView[key] = styledElement
                 }
@@ -159,6 +162,7 @@ class StyleableOverlayManager(
         var changedAnything = false
         synchronized(mapDataInView) {
             createStyledElementsByKey(layer, updated).forEach { (key, styledElement) ->
+                if (!levelFilter.levelAllowed(styledElement?.element)) return@forEach
                 if (styledElement != null) mapDataInView[key] = styledElement
                 else                       mapDataInView.remove(key)
                 if (!changedAnything && styledElement != null && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {

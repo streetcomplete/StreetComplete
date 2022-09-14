@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -41,8 +42,11 @@ class LevelFilter internal constructor(
         !isEnabled ||
             (quest is OsmQuest && quest.levelAllowed())
 
-    private fun OsmQuest.levelAllowed(): Boolean {
-        val tags = mapDataController.get(this.elementType, this.elementId)?.tags ?: return true
+    private fun OsmQuest.levelAllowed(): Boolean =
+        levelAllowed(mapDataController.get(this.elementType, this.elementId))
+
+    fun levelAllowed(element: Element?): Boolean {
+        val tags = element?.tags ?: return true
         val levelTags = tags.filterKeys { allowedLevelTags.contains(it) }
         if (levelTags.isEmpty()) return allowedLevel == null
         if (allowedLevel == null) return false // level tags not empty

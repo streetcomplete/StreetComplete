@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
@@ -42,6 +43,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val prefs: SharedPreferences by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val levelFilter: LevelFilter by inject()
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -91,7 +93,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
-        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, levelFilter)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         super.onMapReady()

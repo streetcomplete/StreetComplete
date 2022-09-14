@@ -6,6 +6,8 @@ v47.0_ee: |
   <li>Make nodes work for custom overlays</li>
   <li>Add element selection for name quest</li>
   <li>Add element selection for road width quest (#389)</li>
+  <li>Add transit shelter to building types</li>
+  <li>Level filter now works on overlays too/li>
   </ul>
 
 v46.0_ee: |
