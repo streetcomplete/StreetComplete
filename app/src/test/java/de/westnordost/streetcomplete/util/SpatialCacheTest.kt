@@ -206,14 +206,27 @@ internal class SpatialCacheTest {
         assertNull(cache.get(node.id))
     }
 
-    @Test fun automaticTrim() {
+    @Test fun `empty tiles are not trimmed`() {
         val cache = SpatialCache<Long, Node>(
             16, 2, null, { emptyList() }, Node::id, Node::position
         )
         cache.replaceAllInBBox(emptyList(), LatLon(0.0, 0.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(1.0, 1.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(-1.0, -1.0).enclosingTilePos(16).asBoundingBox(16))
-        assertEquals(2, cache.getTiles().size)
+        assertEquals(3, cache.size)
+    }
+
+    @Test fun `non-empty tiles are trimmed`() {
+        val cache = SpatialCache<Long, Node>(
+            16, 2, null, { emptyList() }, Node::id, Node::position
+        )
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(1.0, 1.0))
+        val node3 = node(3, LatLon(-1.0, -1.0))
+        cache.replaceAllInBBox(listOf(node1), node1.position.enclosingTilePos(16).asBoundingBox(16))
+        cache.replaceAllInBBox(listOf(node2), node2.position.enclosingTilePos(16).asBoundingBox(16))
+        cache.replaceAllInBBox(listOf(node3), node3.position.enclosingTilePos(16).asBoundingBox(16))
+        assertEquals(2, cache.size)
     }
 
 }
