@@ -15,23 +15,23 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
+import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 
 /** Controller for filtering all quests that are hidden because they are on the wrong level */
 class LevelFilter internal constructor(
     private val sharedPrefs: SharedPreferences,
-    private val mapDataController: MapDataController,
-    private val visibleQuestTypeController: VisibleQuestTypeController
+    private val mapDataController: MapDataController, // we'd rather want MapDataWithEditsSource, but this just crashes on start...
+    private val visibleQuestTypeController: VisibleQuestTypeController,
+    private val selectedOverlaySource: SelectedOverlaySource,
 ) {
-
     var isEnabled = false
         private set
     private var allowedLevel: String? = null
     private lateinit var allowedLevelTags: List<String>
 
-    init {
-        reload()
-    }
+    init { reload() }
 
     private fun reload() {
         allowedLevel = sharedPrefs.getString(Prefs.ALLOWED_LEVEL, "").let { if (it.isNullOrBlank()) null else it.trim() }
@@ -46,6 +46,7 @@ class LevelFilter internal constructor(
         levelAllowed(mapDataController.get(this.elementType, this.elementId))
 
     fun levelAllowed(element: Element?): Boolean {
+        if (!isEnabled) return true
         val tags = element?.tags ?: return true
         val levelTags = tags.filterKeys { allowedLevelTags.contains(it) }
         if (levelTags.isEmpty()) return allowedLevel == null
@@ -131,6 +132,12 @@ class LevelFilter internal constructor(
             reload()
 
             visibleQuestTypeController.setAllVisible(listOf(), true) // trigger reload
+
+            // reload overlay (if enabled)
+            val overlayController = selectedOverlaySource as? SelectedOverlayController
+            val tempOverlay = overlayController?.selectedOverlay
+            overlayController?.selectedOverlay = null
+            overlayController?.selectedOverlay = tempOverlay
         }
         builder.show()
     }
