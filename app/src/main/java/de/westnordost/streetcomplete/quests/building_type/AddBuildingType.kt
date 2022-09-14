@@ -65,6 +65,9 @@ fun applyBuildingAnswer(answer: BuildingType, tags: Tags, timestampEdited: Long)
         if (answer == BuildingType.RUINS && tags["abandoned"] == "no") {
             tags.remove("abandoned")
         }
+        if (answer == BuildingType.TRANSIT_SHELTER) {
+            tags["shelter_type"] = "public_transport"
+        }
     } else {
         tags["building"] = answer.osmValue
     }

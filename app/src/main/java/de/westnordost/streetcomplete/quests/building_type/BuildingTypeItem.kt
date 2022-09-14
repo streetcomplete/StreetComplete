@@ -69,6 +69,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.TEMPLE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TERRACE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TOILETS
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRAIN_STATION
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSIT_SHELTER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSFORMER_TOWER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORTATION
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
@@ -110,6 +111,7 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     STADIUM ->         R.string.quest_buildingType_stadium
     GRANDSTAND ->      R.string.quest_buildingType_grandstand
     TRAIN_STATION ->   R.string.quest_buildingType_train_station
+    TRANSIT_SHELTER -> R.string.quest_buildingType_transit_shelter
     TRANSPORTATION ->  R.string.quest_buildingType_transportation
     FIRE_STATION ->    R.string.quest_buildingType_fire_station
     UNIVERSITY ->      R.string.quest_buildingType_university
@@ -211,6 +213,7 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     GRANDSTAND ->      R.drawable.ic_sport_volleyball
     TRAIN_STATION ->   R.drawable.ic_building_train_station
     TRANSPORTATION ->  R.drawable.ic_building_transportation
+    TRANSIT_SHELTER -> R.drawable.ic_building_transportation
     FIRE_STATION ->    R.drawable.ic_building_fire_truck
     UNIVERSITY ->      R.drawable.ic_building_university
     GOVERNMENT ->      R.drawable.ic_building_historic

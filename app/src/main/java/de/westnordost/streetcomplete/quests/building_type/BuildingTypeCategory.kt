@@ -67,6 +67,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.TERRACE
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TOILETS
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRAIN_STATION
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSFORMER_TOWER
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSIT_SHELTER
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORTATION
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.WAREHOUSE
@@ -81,7 +82,7 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
     )),
     CIVIC(BuildingType.CIVIC, listOf(
         SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION, TRANSPORTATION,
-        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND, SPORTS_HALL,
+        COLLEGE, GOVERNMENT, STADIUM, FIRE_STATION, OFFICE, GRANDSTAND, SPORTS_HALL, TRANSIT_SHELTER
     )),
     RELIGIOUS(BuildingType.RELIGIOUS, listOf(
         CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE, PRESBYTERY

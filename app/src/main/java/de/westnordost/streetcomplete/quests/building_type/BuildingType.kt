@@ -29,6 +29,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     GRANDSTAND      ("building", "grandstand"),
     TRAIN_STATION   ("building", "train_station"),
     TRANSPORTATION  ("building", "transportation"),
+    TRANSIT_SHELTER ("amenity", "shelter"),
     FIRE_STATION    ("building", "fire_station"),
     UNIVERSITY      ("building", "university"),
     GOVERNMENT      ("building", "government"),

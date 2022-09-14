@@ -114,6 +114,7 @@
     <string name="quest_buildingType_riding_hall">Riding hall</string>
     <string name="quest_buildingType_digester">Digester (bioreactor)</string>
     <string name="quest_buildingType_transformer_tower">Transformer tower</string>
+    <string name="quest_buildingType_transit_shelter">Transit shelter</string>
     <string name="quest_poi_seating_title">POI: Seating</string>
     <string name="default_disabled_msg_poi_bench">This \'quest\' shows POIs like benches or picnic tables as brown dots. Click to see the type.</string>
     <string name="quest_poi_cycling_title">POI: Cycling</string>
@@ -191,7 +192,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
-    <string name="quest_osmose_hide_type">Ignore issues of this type when creating quests</string>
+    <string name="quest_osmose_hide_type">Ignore future issues of this type</string>
     <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
     <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Traffic lights and zebra</string>
