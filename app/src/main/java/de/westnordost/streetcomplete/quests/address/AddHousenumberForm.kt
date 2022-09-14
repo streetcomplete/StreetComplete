@@ -8,9 +8,7 @@ import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQuestAddressNoHousenumberBinding
 import de.westnordost.streetcomplete.databinding.ViewAddressNumberOrNameInputBinding
-import de.westnordost.streetcomplete.osm.address.AddressNumber
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
-import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -18,7 +16,6 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
-import de.westnordost.streetcomplete.overlays.address.AddressOverlayForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
@@ -34,7 +31,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     )
 
     private var isShowingHouseName: Boolean = false
-    private lateinit var addressOrNameInputCtrl: AddressNumberAndNameInputViewController
+    private lateinit var numberOrNameInputCtrl: AddressNumberAndNameInputViewController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,7 +40,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             getAddressNumberLayoutResId(countryInfo.countryCode),
             binding.countrySpecificContainer
         )
-        addressOrNameInputCtrl = AddressNumberAndNameInputViewController(
+        numberOrNameInputCtrl = AddressNumberAndNameInputViewController(
             toggleHouseNameButton = binding.toggleHouseNameButton,
             houseNameInput = binding.houseNameInput,
             toggleAddressNumberButton = binding.toggleAddressNumberButton,
@@ -57,12 +54,11 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             addButton = numberView.findViewById(R.id.addButton),
             subtractButton = numberView.findViewById(R.id.subtractButton),
         )
-        addressOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
+        numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
 
         // initially do not show any house number / house name UI
         binding.toggleAddressNumberButton.isGone = true
         binding.toggleHouseNameButton.isGone = true
-        binding.houseNameInput.isGone = true
         if (savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) == true) {
             showHouseName()
         }
@@ -114,17 +110,17 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         isShowingHouseName = true
         binding.toggleAddressNumberButton.isGone = false
         binding.toggleHouseNameButton.isGone = false
-        addressOrNameInputCtrl.setHouseNameViewExpanded(true)
+        numberOrNameInputCtrl.setHouseNameViewExpanded(true)
         binding.houseNameInput.requestFocus()
     }
 
     /* ----------------------------------- Commit answer ---------------------------------------- */
 
     override fun onClickOk() {
-        val number = addressOrNameInputCtrl.addressNumber
+        val number = numberOrNameInputCtrl.addressNumber
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
-            applyAnswer(AddressNumberOrName(number, addressOrNameInputCtrl.houseName))
+            applyAnswer(AddressNumberOrName(number, numberOrNameInputCtrl.houseName))
             if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
@@ -143,9 +139,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             onConfirmed()
         }
     }
-    override fun isFormComplete(): Boolean = addressOrNameInputCtrl.isComplete
+    override fun isFormComplete(): Boolean = numberOrNameInputCtrl.isComplete
 
-    override fun isRejectingClose(): Boolean = !addressOrNameInputCtrl.isEmpty
+    override fun isRejectingClose(): Boolean = !numberOrNameInputCtrl.isEmpty
 
     companion object {
         private var lastBlockNumber: String? = null
