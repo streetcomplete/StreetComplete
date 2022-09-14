@@ -73,6 +73,7 @@ class StreetOrPlaceNameViewController(
 
         select.onItemSelectedListener = OnAdapterItemSelectedListener {
             updateInputVisibilities()
+            updateSpinnerEnablement()
             onInputChanged?.invoke()
         }
 
@@ -94,6 +95,10 @@ class StreetOrPlaceNameViewController(
 
         streetNameInputCtrl.selectStreetAt(position, radiusInMeters)
         return true
+    }
+
+    fun selectPlaceName() {
+        spinnerSelection = PLACE
     }
 
     fun applyPlaceNameHint() {
@@ -122,5 +127,4 @@ class StreetOrPlaceNameViewController(
         STREET -> resources.getString(R.string.quest_address_street_street_name_label)
         PLACE -> resources.getString(R.string.quest_address_street_place_name_label)
     }
-
 }

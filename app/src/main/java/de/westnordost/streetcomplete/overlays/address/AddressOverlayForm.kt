@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.address
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -20,6 +21,7 @@ import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.ShowHouseNumber
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
@@ -40,18 +42,25 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private var houseName: String? = null
     private var streetOrPlaceName: StreetOrPlaceName? = null
 
-    private var isPlaceName = false
+    private var isShowingHouseName: Boolean = false
+    private var isShowingPlaceName = false
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
+        AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        isPlaceName = savedInstanceState?.getBoolean(IS_PLACE_NAME) ?: false
-
         addressNumber = createAddressNumber(element.tags)
         houseName = element.tags["addr:housename"]
-        streetOrPlaceName =
-            if (isPlaceName) element.tags["addr:place"]?.let { PlaceName(it) }
-            else             element.tags["addr:street"]?.let { StreetName(it) }
+        val placeName = element.tags["addr:place"]
+        val streetName = element.tags["addr:street"]
+        streetOrPlaceName = streetName?.let { StreetName(it) } ?: placeName?.let { PlaceName(it) }
+
+        isShowingPlaceName = savedInstanceState?.getBoolean(SHOW_PLACE_NAME) ?: (placeName != null)
+        isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) ?: (houseName != null)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,6 +83,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
         )
         streetOrPlaceCtrl.streetOrPlaceName = streetOrPlaceName
         streetOrPlaceCtrl.onInputChanged = { checkIsFormComplete() }
+
+        // initially do not show the select for place name
+        if (!isShowingPlaceName) {
+            binding.streetOrPlaceSelect.isGone = true
+        }
 
         val numberOrNameBinding = binding.addressNumberOrNameContainer
         val numberView = layoutInflater.inflate(
@@ -102,11 +116,18 @@ class AddressOverlayForm : AbstractOverlayForm() {
             }
             checkIsFormComplete()
         }
+
+        // initially do not show any house number / house name UI
+        if (!isShowingHouseName) {
+            numberOrNameBinding.toggleAddressNumberButton.isGone = true
+            numberOrNameBinding.toggleHouseNameButton.isGone = true
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(IS_PLACE_NAME, isPlaceName)
+        outState.putBoolean(SHOW_PLACE_NAME, isShowingPlaceName)
+        outState.putBoolean(SHOW_HOUSE_NAME, isShowingHouseName)
     }
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -139,12 +160,29 @@ class AddressOverlayForm : AbstractOverlayForm() {
         }.create()))
     }
 
+    /* ------------------------------ Show house name / place name ------------------------------ */
+
+    private fun showHouseName() {
+        isShowingHouseName = true
+        binding.addressNumberOrNameContainer.toggleAddressNumberButton.isGone = false
+        binding.addressNumberOrNameContainer.toggleHouseNameButton.isGone = false
+        numberOrNameInputCtrl.setHouseNameViewExpanded(true)
+        binding.addressNumberOrNameContainer.houseNameInput.requestFocus()
+    }
+
+    private fun showPlaceName() {
+        isShowingPlaceName = true
+        binding.streetOrPlaceSelect.isGone = false
+        streetOrPlaceCtrl.selectPlaceName()
+    }
+
     companion object {
         private var lastBlockNumber: String? = null
         private var lastHouseNumber: String? = null
         private var lastPlaceName: String? = null
 
-        private const val IS_PLACE_NAME = "is_place_name"
+        private const val SHOW_PLACE_NAME = "show_place_name"
+        private const val SHOW_HOUSE_NAME = "show_house_name"
     }
 }
 

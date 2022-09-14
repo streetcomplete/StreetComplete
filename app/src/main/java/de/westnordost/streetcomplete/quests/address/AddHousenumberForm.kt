@@ -57,10 +57,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         numberOrNameInputCtrl.onInputChanged = { checkIsFormComplete() }
 
         // initially do not show any house number / house name UI
-        binding.toggleAddressNumberButton.isGone = true
-        binding.toggleHouseNameButton.isGone = true
-        if (savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) == true) {
-            showHouseName()
+        isShowingHouseName = savedInstanceState?.getBoolean(SHOW_HOUSE_NAME) == true
+        if (!isShowingHouseName) {
+            binding.toggleAddressNumberButton.isGone = true
+            binding.toggleHouseNameButton.isGone = true
         }
 
         checkIsFormComplete()
@@ -104,7 +104,7 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
             .show()
     }
 
-    /* ------------------------------------ Show housename -------------------------------------- */
+    /* ----------------------------------- Show house name -------------------------------------- */
 
     private fun showHouseName() {
         isShowingHouseName = true
