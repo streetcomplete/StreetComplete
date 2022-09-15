@@ -34,7 +34,10 @@ class AddressOverlay : Overlay {
         """).map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags)) } +
         mapData.filter("""
             ways, relations with building
-        """).map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }
+        """).map {
+            // TODO needs workaround due to duplicate labels: https://github.com/tangrams/tangram-es/issues/2332
+            it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
+        }
 
     override fun createForm(element: Element) = AddressOverlayForm()
 }

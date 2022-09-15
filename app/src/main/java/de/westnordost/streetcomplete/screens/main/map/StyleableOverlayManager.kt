@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -34,8 +33,7 @@ class StyleableOverlayManager(
     private val ctrl: KtMapController,
     private val mapComponent: StyleableOverlayMapComponent,
     private val mapDataSource: MapDataWithEditsSource,
-    private val selectedOverlaySource: SelectedOverlaySource,
-    private val sceneMapComponent: SceneMapComponent
+    private val selectedOverlaySource: SelectedOverlaySource
 ) : DefaultLifecycleObserver {
 
     // last displayed rect of (zoom 16) tiles
@@ -50,18 +48,8 @@ class StyleableOverlayManager(
     private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
-        var doSceneUpdate = false
-        field?.let {
-            removeOverlaySceneUpdates(it)
-            doSceneUpdate = true
-        }
-        field = value
-        field?.let {
-            addOverlaySceneUpdates(it)
-            doSceneUpdate = true
-        }
-        if (doSceneUpdate) applySceneUpdates()
         if (value != null) show() else hide()
+        field = value
     }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
@@ -115,22 +103,6 @@ class StyleableOverlayManager(
         viewLifecycleScope.coroutineContext.cancelChildren()
         clear()
         mapDataSource.removeListener(mapDataListener)
-    }
-
-    private fun addOverlaySceneUpdates(overlay: Overlay) {
-        val updates = overlay.sceneUpdates
-        if (updates.isEmpty()) return
-        sceneMapComponent.addSceneUpdates(overlay.sceneUpdates)
-    }
-
-    private fun removeOverlaySceneUpdates(overlay: Overlay) {
-        val updates = overlay.sceneUpdates
-        if (updates.isEmpty()) return
-        sceneMapComponent.removeSceneUpdates(overlay.sceneUpdates)
-    }
-
-    private fun applySceneUpdates() {
-        viewLifecycleScope.launch { sceneMapComponent.loadScene() }
     }
 
     fun onNewScreenPosition() {

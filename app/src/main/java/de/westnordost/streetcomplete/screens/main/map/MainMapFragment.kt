@@ -66,6 +66,37 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             updatePinMode()
         }
 
+    private var overlaySceneUpdates: List<Pair<String, String>>? = null
+
+    private val overlayListener = object : SelectedOverlaySource.Listener {
+        override fun onSelectedOverlayChanged() {
+            val new = selectedOverlaySource.selectedOverlay?.sceneUpdates
+            val old = overlaySceneUpdates
+            if (old == new) return
+
+            old?.let { sceneMapComponent?.removeSceneUpdates(it) }
+            new?.let { sceneMapComponent?.addSceneUpdates(it) }
+
+            if (old != null || new != null) {
+                viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
+            }
+            overlaySceneUpdates = new
+        }
+    }
+
+    /* ------------------------------------- Map setup ------------------------------------------ */
+
+    override suspend fun onBeforeLoadScene() {
+        super.onBeforeLoadScene()
+        val sceneUpdates = withContext(Dispatchers.IO) {
+            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
+        }
+        sceneMapComponent?.addSceneUpdates(sceneUpdates)
+
+        overlaySceneUpdates = selectedOverlaySource.selectedOverlay?.sceneUpdates
+        overlaySceneUpdates?.let { sceneMapComponent?.addSceneUpdates(it) }
+    }
+
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady() {
@@ -85,8 +116,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
-        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, sceneMapComponent!!)
+        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
+
+        selectedOverlaySource.addListener(overlayListener)
 
         super.onMapReady()
     }
@@ -97,14 +130,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayManager?.onNewScreenPosition()
     }
 
-    /* ------------------------------------- Map setup ------------------------------------------ */
-
-    override suspend fun onBeforeLoadScene() {
-        super.onBeforeLoadScene()
-        val sceneUpdates = withContext(Dispatchers.IO) {
-            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
-        }
-        sceneMapComponent?.addSceneUpdates(sceneUpdates)
+    override fun onDestroy() {
+        super.onDestroy()
+        selectedOverlaySource.removeListener(overlayListener)
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
