@@ -34,17 +34,4 @@ class OverlaySelectionActivity :
             mainFragment = OverlayFragment()
         }
     }
-
-    // TODO maybe this should be used instead to swap between tutorial and actual menu?
-    //   not the current solution? Or something else is the proper way to achieve this?
-    private fun replaceMainFragment(fragment: Fragment) {
-        supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        supportFragmentManager.commit {
-            setCustomAnimations(
-                R.anim.fade_in_from_bottom, R.anim.fade_out_to_top,
-                R.anim.fade_in_from_bottom, R.anim.fade_out_to_top
-            )
-            replace(R.id.fragment_container, fragment)
-        }
-    }
 }
