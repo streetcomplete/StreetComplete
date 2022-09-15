@@ -10,7 +10,7 @@ class OverlaySelectionActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            mainFragment = OverlayFragment()
+            mainFragment = OverlayFragment() // TODO - is it just making layout specified to AppCompatActivity irrelevant?
         }
     }
 }
