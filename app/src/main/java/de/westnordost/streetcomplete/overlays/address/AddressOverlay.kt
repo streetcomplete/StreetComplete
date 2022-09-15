@@ -22,7 +22,9 @@ class AddressOverlay : Overlay {
     override val hidesQuestTypes = setOf(AddHousenumber::class.simpleName!!)
 
     override val sceneUpdates = listOf(
-        "layers.housenumber-labels.enabled" to "false"
+        "layers.housenumber-labels.enabled" to "false",
+        "layers.buildings.draw.buildings-style.extrude" to "false",
+        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
     )
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
