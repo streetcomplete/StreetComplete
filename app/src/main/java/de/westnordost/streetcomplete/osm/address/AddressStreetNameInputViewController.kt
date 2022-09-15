@@ -11,11 +11,7 @@ import java.util.Locale
 
 /** Manages inputting a street name associated with an address. The user can either select it via a
  *  coordinate (see [selectStreetAt]) or by typing a name. If the name is an abbreviation, it is
- *  automatically expanded, e.g. "Main st" becomes "Main street".
- *
- *  When selecting the street via a coordinate, the street name is shown in the user's locale if
- *  available in the UI (e.g. `name:en`) to mimic how the street is displayed on the map, but the
- *  default name (`name`) will be returned from [streetName]. */
+ *  automatically expanded, e.g. "Main st" becomes "Main street" */
 class AddressStreetNameInputViewController(
     private val streetNameInput: EditText,
     private val roadNameSuggestionsSource: RoadNameSuggestionsSource,
@@ -23,26 +19,18 @@ class AddressStreetNameInputViewController(
     private val countryLocale: Locale
 ) {
     private val autoCorrectAbbreviationsViewController: AutoCorrectAbbreviationsViewController
-    private var selectedStreetName: String? = null
 
     var onInputChanged: (() -> Unit)? = null
 
     var streetName: String?
-        set(value) {
-            selectedStreetName = null
-            streetNameInput.setText(value)
-        }
-        get() = selectedStreetName ?: streetNameInput.nonBlankTextOrNull
+        set(value) { streetNameInput.setText(value) }
+        get() = streetNameInput.nonBlankTextOrNull
 
     init {
         autoCorrectAbbreviationsViewController = AutoCorrectAbbreviationsViewController(streetNameInput)
         autoCorrectAbbreviationsViewController.abbreviations = abbreviationsByLocale[countryLocale]
 
-        streetNameInput.doAfterTextChanged {
-            // if the user changed the text, it is now his custom input
-            selectedStreetName = null
-            onInputChanged?.invoke()
-        }
+        streetNameInput.doAfterTextChanged { onInputChanged?.invoke() }
     }
 
     /** select the name of the street near the given [position] (ast most [radiusInMeters] from it)
@@ -61,17 +49,7 @@ class AddressStreetNameInputViewController(
                 namesByLocale[countryLocale.language] = defaultName
             }
         }
-
-        // if available, display the selected street name in the user's locale
-        val userLanguage = Locale.getDefault().language
-        val lang = namesByLocale.keys.firstOrNull { Locale(it).language == userLanguage }
-        if (lang != null) {
-            streetNameInput.setText(namesByLocale[lang])
-        } else {
-            streetNameInput.setText(namesByLocale[""])
-        }
-        selectedStreetName = namesByLocale[""]
-        onInputChanged?.invoke()
+        streetNameInput.setText(namesByLocale[""])
 
         return true
     }

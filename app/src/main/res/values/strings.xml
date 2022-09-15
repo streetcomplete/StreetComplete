@@ -601,8 +601,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_street_name_label">Street name:</string>
-    <string name="quest_address_street_hint">Tap road on map</string>
-    <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
+    <string name="quest_address_street_hint2">Tap street on map to select it</string>
 
     <string name="quest_airConditioning_title">"Is this place air-conditioned?"</string>
 

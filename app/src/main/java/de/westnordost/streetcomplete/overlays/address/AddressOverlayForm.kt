@@ -71,12 +71,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
             showHouseNumber = ShowHouseNumber.NEVER
         ))
 
+        val streetOrPlaceBinding = binding.streetOrPlaceNameContainer
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(
-            select = binding.streetOrPlaceSelect,
-            placeNameInputContainer = binding.placeNameInputContainer,
-            placeNameInput = binding.placeNameInput.apply { hint = lastPlaceName },
-            streetNameInputContainer = binding.streetNameInputContainer,
-            streetNameInput = binding.streetNameInput,
+            select = streetOrPlaceBinding.streetOrPlaceSelect,
+            placeNameInputContainer = streetOrPlaceBinding.placeNameInputContainer,
+            placeNameInput = streetOrPlaceBinding.placeNameInput.apply { hint = lastPlaceName },
+            streetNameInputContainer = streetOrPlaceBinding.streetNameInputContainer,
+            streetNameInput = streetOrPlaceBinding.streetNameInput.apply { hint = lastStreetName },
             roadNameSuggestionsSource = roadNameSuggestionsSource,
             abbreviationsByLocale = abbreviationsByLocale,
             countryLocale = countryInfo.locale
@@ -86,7 +87,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         // initially do not show the select for place name
         if (!isShowingPlaceName) {
-            binding.streetOrPlaceSelect.isGone = true
+            streetOrPlaceBinding.streetOrPlaceSelect.isGone = true
         }
 
         val numberOrNameBinding = binding.addressNumberOrNameContainer
@@ -111,9 +112,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         numberOrNameInputCtrl.addressNumber = addressNumber
         numberOrNameInputCtrl.houseName = houseName
         numberOrNameInputCtrl.onInputChanged = {
-            if (lastPlaceName != null) {
-                streetOrPlaceCtrl.applyPlaceNameHint()
-            }
+            streetOrPlaceCtrl.applyHint()
             checkIsFormComplete()
         }
 
@@ -152,6 +151,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
         number?.streetHouseNumber?.let { lastHouseNumber = it }
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
+        lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also { tags ->
             number?.applyTo(tags)
@@ -172,7 +172,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
     private fun showPlaceName() {
         isShowingPlaceName = true
-        binding.streetOrPlaceSelect.isGone = false
+        binding.streetOrPlaceNameContainer.streetOrPlaceSelect.isGone = false
         streetOrPlaceCtrl.selectPlaceName()
     }
 
@@ -180,6 +180,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         private var lastBlockNumber: String? = null
         private var lastHouseNumber: String? = null
         private var lastPlaceName: String? = null
+        private var lastStreetName: String? = null
 
         private const val SHOW_PLACE_NAME = "show_place_name"
         private const val SHOW_HOUSE_NAME = "show_house_name"

@@ -25,7 +25,7 @@ class StreetOrPlaceNameViewController(
     private val placeNameInputContainer: View,
     private val placeNameInput: EditText,
     private val streetNameInputContainer: View,
-    streetNameInput: EditText,
+    private val streetNameInput: EditText,
     roadNameSuggestionsSource: RoadNameSuggestionsSource,
     abbreviationsByLocale: AbbreviationsByLocale,
     countryLocale: Locale
@@ -99,12 +99,19 @@ class StreetOrPlaceNameViewController(
 
     fun selectPlaceName() {
         spinnerSelection = PLACE
+        placeNameInput.requestFocus()
     }
 
-    fun applyPlaceNameHint() {
-        if (spinnerSelection != PLACE) return
-        if (placeNameInput.nonBlankTextOrNull == null && placeNameInput.hint != null) {
-            placeNameInput.setText(placeNameInput.hint)
+    fun applyHint() {
+        when (spinnerSelection) {
+            STREET -> {
+                if (streetNameInput.hint != null && streetNameInput.nonBlankTextOrNull == null)
+                    streetNameInput.setText(streetNameInput.hint)
+            }
+            PLACE -> {
+                if (placeNameInput.hint != null && placeNameInput.nonBlankTextOrNull == null)
+                    placeNameInput.setText(placeNameInput.hint)
+            }
         }
     }
 
