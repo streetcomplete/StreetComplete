@@ -66,7 +66,7 @@ class StreetOrPlaceNameViewController(
     init {
         select.adapter = ArrayAdapter(
             select.context,
-            R.layout.spinner_item_centered,
+            R.layout.spinner_item,
             StreetOrPlace.values().map { it.toLocalizedString(select.context.resources) }
         )
         spinnerSelection = STREET
