@@ -280,10 +280,7 @@ class MapDataCache(
         relationIds.forEach { relationId ->
             val key = ElementKey(ElementType.RELATION, relationId)
             result.put(wayRelationCache[key]!!, wayRelationGeometryCache[key])
-            relationIdsByElementKeyCache[key]?.forEach { otherRelationId ->
-                val otherKey = ElementKey(ElementType.RELATION, otherRelationId)
-                wayRelationCache[otherKey]?.let { result.put(it, wayRelationGeometryCache[otherKey]) }
-            }
+            // don't add relations of relations, because elementDao.getAll(bbox) also isn't doing that
         }
 
         // finally trim if we fetched new data, and spatialCache is full
