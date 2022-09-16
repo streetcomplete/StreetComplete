@@ -13,6 +13,8 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
           (highway = emergency_access_point)
           or
           (emergency = access_point)
+          or
+          (emergency = assembly_point)
         )
         and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
@@ -31,6 +33,11 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
         when (answer) {
             is NoAccessPointRef -> tags["noref"] = "yes"
             is AccessPointRef ->   tags["ref"] = answer.ref
+            is IsAssemblyPointAnswer -> {
+                tags["emergency"] = "assembly_point"
+                // TODO: This will remove any highway-tag! To be refined to highway=emergency_access_point only.
+                tags.remove("highway")
+            }
         }
     }
 }

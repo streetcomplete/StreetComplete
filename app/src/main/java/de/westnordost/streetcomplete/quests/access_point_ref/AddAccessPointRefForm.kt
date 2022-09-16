@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -14,8 +15,9 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
     override val contentLayoutResId = R.layout.quest_ref
     private val binding by contentViewBinding(QuestRefBinding::bind)
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() }
+    override val otherAnswers get() = listOfNotNull(
+        AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() },
+        createTagAsAssemblyPointAnswer(),
     )
 
     private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
@@ -39,4 +41,13 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
     }
 
     override fun isFormComplete() = ref.isNotEmpty()
+
+    private fun createTagAsAssemblyPointAnswer(): AnswerItem? {
+        val node = element as? Node ?: return null
+        if (node.tags["emergency"] == "assembly_point") return null
+
+        return AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) {
+            applyAnswer(IsAssemblyPointAnswer)
+        }
+    }
 }
