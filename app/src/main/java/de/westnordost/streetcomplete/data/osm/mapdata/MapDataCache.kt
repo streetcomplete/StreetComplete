@@ -372,16 +372,16 @@ class MapDataCache(
 
         val wayIds = HashSet<Long>(nodes.size / 5)
         val relationIds = HashSet<Long>(nodes.size / 10)
-        nodes.forEach { node ->
+        for (node in nodes) {
             wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
             relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
             result.put(node, ElementPointGeometry(node.position))
         }
-        wayIds.forEach { wayId ->
+        for (wayId in wayIds) {
             result.put(wayCache[wayId]!!, wayGeometryCache[wayId])
             relationIdsByElementKeyCache[ElementKey(ElementType.WAY, wayId)]?.let { relationIds.addAll(it) }
         }
-        relationIds.forEach { relationId ->
+        for (relationId in relationIds) {
             result.put(relationCache[relationId]!!, relationGeometryCache[relationId])
             // don't add relations of relations, because elementDao.getAll(bbox) also isn't doing that
         }
