@@ -50,12 +50,12 @@ class MapDataCache(
         updatedGeometries: Iterable<ElementGeometryEntry> = emptyList(),
         bbox: BoundingBox? = null
     ) = synchronized(this) {
-        if (bbox == null)
+        if (bbox == null) {
             spatialCache.update(
                 updatedOrAdded = updatedElements.filterIsInstance<Node>(),
                 deleted = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
             )
-        else {
+        } else {
             if (deletedKeys.isNotEmpty()) spatialCache.update(deleted = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null })
             spatialCache.replaceAllInBBox(updatedElements.filterIsInstance<Node>(), bbox)
         }
@@ -142,7 +142,11 @@ class MapDataCache(
      * Gets element from cache. If element is not cached, [fetch] is called, and the result is
      * cached and then returned.
      */
-    fun getElement(type: ElementType, id: Long, fetch: (ElementType, Long) -> Element?): Element? = synchronized(this) {
+    fun getElement(
+        type: ElementType,
+        id: Long,
+        fetch: (ElementType, Long) -> Element?
+    ): Element? = synchronized(this) {
         val element = when (type) {
             ElementType.NODE -> spatialCache.get(id)
             ElementType.WAY -> wayCache.getOrPutIfNotNull(id) { fetch(type, id) as? Way }
@@ -155,7 +159,11 @@ class MapDataCache(
      * Gets geometry from cache. If geometry is not cached, [fetch] is called, and the result is
      * cached and then returned.
      */
-    fun getGeometry(type: ElementType, id: Long, fetch: (ElementType, Long) -> ElementGeometry?): ElementGeometry? =synchronized(this)  {
+    fun getGeometry(
+        type: ElementType,
+        id: Long,
+        fetch: (ElementType, Long) -> ElementGeometry?
+    ): ElementGeometry? = synchronized(this)  {
         val geometry = when (type) {
             ElementType.NODE -> spatialCache.get(id)?.let { ElementPointGeometry(it.position) }
             ElementType.WAY -> wayGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
