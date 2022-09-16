@@ -283,8 +283,8 @@ class MapDataCache(
     }
 
     /**
-     * Gets all ways for node [id] from cache. If the list of ways is not known, or any way is
-     * missing in cache, [fetch] is called and the fetched list of ways and all ways are put to cache.
+     * Gets all ways for the node with the given [id] from cache. If the list of ways is not known,
+     * or any way is missing in cache, [fetch] is called and the result cached.
      */
     fun getWaysForNode(id: Long, fetch: (Long) -> List<Way>): List<Way> = synchronized(this) {
         val wayIds = wayIdsByNodeIdCache.getOrPut(id) {
@@ -296,23 +296,22 @@ class MapDataCache(
     }
 
     /**
-     * Gets all relations for node [id] from cache. If the list of relations is not known, or any
-     * relations is missing in cache, [fetch] is called and the fetched list of relations and
-     * all relations are put to cache.
+     * Gets all relations for the node with the given [id] from cache. If the list of relations is
+     * not known, or any relation is missing in cache, [fetch] is called and the result cached.
      */
     fun getRelationsForNode(id: Long, fetch: (Long) -> List<Relation>) =
         getRelationsForElement(ElementType.NODE, id) { fetch(id) }
+
     /**
-     * Gets all relations for way [id] from cache. If the list of relations is not known, or any
-     * relations is missing in cache, [fetch] is called and the fetched list of relations and
-     * all relations are put to cache.
+     * Gets all relations for way with the given [id] from cache. If the list of relations is not
+     * known, or any relation is missing in cache, [fetch] is called and the result cached.
      */
     fun getRelationsForWay(id: Long, fetch: (Long) -> List<Relation>) =
         getRelationsForElement(ElementType.WAY, id) { fetch(id) }
+
     /**
-     * Gets all relations for relation [id] from cache. If the list of relations is not known, or any
-     * relations is missing in cache, [fetch] is called and the fetched list of relations and
-     * all relations are put to cache.
+     * Gets all relations for way with the given [id] from cache. If the list of relations is not
+     * known, or any relation is missing in cache, [fetch] is called and the result cached.
      */
     fun getRelationsForRelation(id: Long, fetch: (Long) -> List<Relation>) =
         getRelationsForElement(ElementType.RELATION, id) { fetch(id) }
