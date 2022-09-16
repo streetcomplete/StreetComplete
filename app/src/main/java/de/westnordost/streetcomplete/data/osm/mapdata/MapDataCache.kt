@@ -323,7 +323,7 @@ class MapDataCache(
     ): List<Relation> = synchronized(this) {
         val relationIds = relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
             val relations = fetch()
-            relations.forEach { relationCache[it.id] = it }
+            for (relation in relations) { relationCache[relation.id] = relation }
             relations.map { it.id }.toMutableList()
         }
         return relationIds.mapNotNull { relationCache[it] }
