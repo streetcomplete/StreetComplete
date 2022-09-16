@@ -2,26 +2,27 @@ package de.westnordost.streetcomplete.quests.incline_direction
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.incline_direction.InclineDirection.UP
 import de.westnordost.streetcomplete.quests.incline_direction.InclineDirection.UP_REVERSED
 
-class AddStepsIncline : OsmFilterQuestType<InclineDirection>() {
+class AddBicycleIncline : OsmFilterQuestType<InclineDirection>() {
 
     override val elementFilter = """
-        ways with highway = steps
+        ways with mtb:scale:uphill
+         and highway ~ footway|cycleway|path|bridleway|track
          and (!indoor or indoor = no)
          and area != yes
          and access !~ private|no
          and !incline
     """
-    override val changesetComment = "Specify which way leads up for steps"
+    override val changesetComment = "Specify which way leads up (where mtb:scale:uphill is present)"
     override val wikiLink = "Key:incline"
-    override val icon = R.drawable.ic_quest_steps
-    override val achievements = listOf(PEDESTRIAN)
+    override val icon = R.drawable.ic_quest_bicycle_incline
+    override val achievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_incline_title
 
     override fun createForm() = AddInclineForm()
 

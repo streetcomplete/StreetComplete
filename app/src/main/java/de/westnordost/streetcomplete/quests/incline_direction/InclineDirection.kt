@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
-enum class StepsIncline {
+enum class InclineDirection {
     UP, UP_REVERSED
 }
