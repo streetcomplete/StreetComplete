@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
+import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
@@ -466,4 +467,7 @@ fun questTypeRegistry(
 
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     AddWayLit(),
+
+    /* added it at the end because it could be not easy to understand this quest */
+    AddAccessPointRef(),
 ))
