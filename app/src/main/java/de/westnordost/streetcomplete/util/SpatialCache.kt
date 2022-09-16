@@ -147,7 +147,8 @@ class SpatialCache<K, T>(
         if (byTile.count { it.value.isNotEmpty() } <= tiles) return
 
         while (byTile.count { it.value.isNotEmpty() } > tiles) {
-            removeTile(byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: byTile.keys.first())
+            val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
+            removeTile(firstNonEmptyTile)
         }
     }
 
