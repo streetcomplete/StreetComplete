@@ -199,8 +199,8 @@ class MapDataCache(
 
         // otherwise, fetch the rest & save to cache
         val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
-        val missingKeys = keys.filterNot { it in cachedKeys }
-        val fetchedElements = fetch(missingKeys)
+        val keysToFetch = keys.filterNot { it in cachedKeys }
+        val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
             when (element.type) {
                 ElementType.WAY -> wayCache[element.id] = element as Way
@@ -270,8 +270,8 @@ class MapDataCache(
 
         // otherwise, fetch the rest & save to cache
         val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
-        val missingKeys = keys.filterNot { it in cachedKeys }
-        val fetchedEntries = fetch(missingKeys)
+        val keysToFetch = keys.filterNot { it in cachedKeys }
+        val fetchedEntries = fetch(keysToFetch)
         for (entry in fetchedEntries) {
             when (entry.elementType) {
                 ElementType.WAY -> wayGeometryCache[entry.elementId] = entry.geometry
@@ -332,7 +332,7 @@ class MapDataCache(
     /**
      * Gets all elements and geometries inside [bbox]. This returns all nodes, all ways containing
      * at least one of the nodes, and all relations containing at least one of the ways or nodes,
-     * and the geometries.
+     * and their geometries.
      * If data is not cached, tiles containing the [bbox] are fetched from database and cached.
      */
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry = synchronized(this) {
@@ -404,7 +404,7 @@ class MapDataCache(
     }
 
     /** Reduces cache size to the given number of non-empty [tiles], and removes all data
-     * not contained in the remaining tiles.
+     *  not contained in the remaining tiles.
      */
     fun trim(tiles: Int) = synchronized(this) {
         spatialCache.trim(tiles)
