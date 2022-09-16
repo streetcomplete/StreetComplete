@@ -28,10 +28,7 @@ data class OsmQuest(
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
             // a polyline will have multiple markers if it is over a certain length
-            val minLengthForMultiMarkers =
-                if (type.hasMarkersAtEnds) 4 * MARKER_FROM_END_DISTANCE
-                else MAXIMUM_MARKER_DISTANCE + 2 * MARKER_FROM_END_DISTANCE
-            if (length > minLengthForMultiMarkers) {
+            if (length > minLengthForMultiMarkers(type.hasMarkersAtEnds)) {
                 val count = 2 + (length / MAXIMUM_MARKER_DISTANCE).toInt()
                 val between = (length - (2 * MARKER_FROM_END_DISTANCE)) / (count - 1)
                 // space markers `between` apart, starting with `MARKER_FROM_END_DISTANCE` (the
@@ -43,6 +40,13 @@ data class OsmQuest(
         }
         // fall through to a single marker in the middle
         return listOf(position)
+    }
+
+    companion object {
+        fun minLengthForMultiMarkers(hasMarkersAtEnds: Boolean): Int {
+            return if (hasMarkersAtEnds) 4 * MARKER_FROM_END_DISTANCE
+            else MAXIMUM_MARKER_DISTANCE + 2 * MARKER_FROM_END_DISTANCE
+        }
     }
 }
 
