@@ -122,6 +122,7 @@ open class LocationAwareMapFragment : MapFragment() {
                 }
             }
         }
+        restoreMapState() // load previous follow mode as early as possible, allows mainFragment to initialize it properly
     }
 
     override fun onStart() {
@@ -141,7 +142,6 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override suspend fun onMapReady() {
         super.onMapReady()
-        restoreMapState()
 
         val ctrl = controller ?: return
         val ctx = context ?: return

@@ -211,6 +211,7 @@ open class MapFragment :
         if (ctrl == null) return
         lifecycle.addObserver(ctrl)
         registerResponders(ctrl)
+        restoreMapState() // load previous camera position as early as possible
 
         sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider, sharedPrefs)
         sceneMapComponent?.isAerialView = sharedPrefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "AERIAL"
@@ -268,7 +269,6 @@ open class MapFragment :
     /* ----------------------------- Overridable map callbacks --------------------------------- */
 
     @CallSuper protected open suspend fun onMapReady() {
-        restoreMapState()
     }
 
     @CallSuper protected open suspend fun onBeforeLoadScene() {}

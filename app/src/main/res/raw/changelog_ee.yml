@@ -8,6 +8,7 @@ v47.0_ee: |
   <li>Add element selection for road width quest (#389)</li>
   <li>Add transit shelter to building types</li>
   <li>Level filter now works on overlays too/li>
+  <li>Prevent short scroll to user location at app start when map was at a different position/li>
   </ul>
 
 v46.0_ee: |
