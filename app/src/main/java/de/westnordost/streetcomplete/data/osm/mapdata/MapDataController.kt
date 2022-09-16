@@ -50,8 +50,8 @@ class MapDataController internal constructor(
         elements to elementGeometries
     }
 
-    /** update element data because in the given bounding box, fresh data from the OSM API has been
-     *  downloaded */
+    /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
+     *  downloaded) */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
         val time = currentTimeMillis()
 
@@ -73,7 +73,9 @@ class MapDataController internal constructor(
                 oldElementKeys.remove(ElementKey(element.type, element.id))
             }
 
-            cache.update(oldElementKeys, mapData, geometryEntries, bbox) // use bbox, and not of the padded mapData.boundingBox
+            // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
+            // see comment for QUEST_FILTER_PADDING
+            cache.update(oldElementKeys, mapData, geometryEntries, bbox)
 
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
@@ -92,6 +94,7 @@ class MapDataController internal constructor(
         onReplacedForBBox(bbox, mapDataWithGeometry)
     }
 
+    /** incorporate the [mapDataUpdates] (data has been updated after upload) */
     fun updateAll(mapDataUpdates: MapDataUpdates) {
         val elements = mapDataUpdates.updated
         // need mapData in order to create (updated) geometry
