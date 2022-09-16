@@ -139,8 +139,8 @@ class MapDataCache(
     }
 
     /**
-     * Gets element from cache. If element is not cached, [fetch] is called, and the result is
-     * cached and then returned.
+     * Gets the element with the given [type] and [id] from cache. If the element is not cached,
+     * [fetch] is called, and the result is cached and then returned.
      */
     fun getElement(
         type: ElementType,
@@ -156,8 +156,8 @@ class MapDataCache(
     }
 
     /**
-     * Gets geometry from cache. If geometry is not cached, [fetch] is called, and the result is
-     * cached and then returned.
+     * Gets the geometry of the element with the given [type] and [id] from cache. If the geometry
+     * is not cached, [fetch] is called, and the result is cached and then returned.
      */
     fun getGeometry(
         type: ElementType,
@@ -173,18 +173,19 @@ class MapDataCache(
     }
 
     /**
-     * Gets elements from cache. If any of the elements is not cached, [fetch] is called for the
-     * missing elements. The fetched elements are cached and the complete list is returned. The
-     * elements are returned in no particular order
+     * Gets the elements with the given [keys] from cache. If any of the elements are not
+     * cached, [fetch] is called for the missing elements. The fetched elements are cached and the
+     * complete list is returned.
+     * Note that the elements are returned in no particular order.
      */
     fun getElements(
-        elementKeys: Collection<ElementKey>,
+        keys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<Element>
     ): List<Element> = synchronized(this) {
-        val nodeIds = elementKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
+        val nodeIds = keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
 
         val cachedNodes = spatialCache.getAll(nodeIds)
-        val cachedWaysAndRelations = elementKeys.mapNotNull { key ->
+        val cachedWaysAndRelations = keys.mapNotNull { key ->
             when (key.type) {
                 ElementType.WAY -> wayCache[key.id]
                 ElementType.RELATION -> relationCache[key.id]
@@ -194,12 +195,12 @@ class MapDataCache(
         val cachedElements = cachedNodes + cachedWaysAndRelations
 
         // exit early if everything is cached
-        if (elementKeys.size == cachedElements.size) return cachedElements
+        if (keys.size == cachedElements.size) return cachedElements
 
         // otherwise, fetch the rest & save to cache
-        val cachedElementKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
-        val missingElementKeys = elementKeys.filterNot { it in cachedElementKeys }
-        val fetchedElements = fetch(missingElementKeys)
+        val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
+        val missingKeys = keys.filterNot { it in cachedKeys }
+        val fetchedElements = fetch(missingKeys)
         for (element in fetchedElements) {
             when (element.type) {
                 ElementType.WAY -> wayCache[element.id] = element as Way
@@ -210,51 +211,75 @@ class MapDataCache(
         return cachedElements + fetchedElements
     }
 
+    /** Gets the nodes with the given [ids] from cache. If any of the nodes are not cached, [fetch]
+     *  is called for the missing nodes. */
     fun getNodes(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Node>): List<Node> = synchronized(this) {
-        val nodes = spatialCache.getAll(ids)
-        return if (ids.size == nodes.size) nodes
-        else {
-            val cachedNodeIds = nodes.map { it.id }
-            nodes + fetch(ids.filterNot { it in cachedNodeIds })
-        }
+        val cachedNodes = spatialCache.getAll(ids)
+        if (ids.size == cachedNodes.size) return cachedNodes
+
+        // not all in cache: must fetch the rest from db
+        val cachedNodeIds = cachedNodes.map { it.id }.toSet()
+        val missingNodeIds = ids.filterNot { it in cachedNodeIds }
+        val fetchedNodes = fetch(missingNodeIds)
+        return cachedNodes + fetchedNodes
     }
-    fun getWays(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Way>): List<Way> =
-        getElements(ids.map { ElementKey(ElementType.WAY, it) }) { keys -> fetch(keys.map { it.id }) }
-            .filterIsInstance<Way>()
-    fun getRelations(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Relation>): List<Relation> =
-        getElements(ids.map { ElementKey(ElementType.RELATION, it) }) { keys -> fetch(keys.map { it.id }) }
-            .filterIsInstance<Relation>()
+
+    /** Gets the ways with the given [ids] from cache. If any of the ways are not cached, [fetch]
+     *  is called for the missing ways. The fetched ways are cached and the complete list is
+     *  returned. */
+    fun getWays(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Way>): List<Way> {
+        val wayKeys = ids.map { ElementKey(ElementType.WAY, it) }
+        return getElements(wayKeys) { keys -> fetch(keys.map { it.id }) }.filterIsInstance<Way>()
+    }
+
+    /** Gets the relations with the given [ids] from cache. If any of the relations are not cached,
+     *  [fetch] is called for the missing relations. The fetched relations are cached and the
+     *  complete list is returned. */
+    fun getRelations(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Relation>): List<Relation> {
+        val relationKeys = ids.map { ElementKey(ElementType.RELATION, it) }
+        return getElements(relationKeys) { keys -> fetch(keys.map { it.id }) }.filterIsInstance<Relation>()
+    }
 
     /**
-     * Gets geometries from cache. If any of the geometries is not cached, [fetch] is called for the
-     * missing geometries. The fetched geometries are cached and the complete list is returned.
+     * Gets the geometries of the elements with the given [keys] from cache. If any of the
+     * geometries are not cached, [fetch] is called for the missing geometries. The fetched
+     * geometries are cached and the complete list is returned.
+     * Note that the elements are returned in no particular order.
      */
     fun getGeometries(
         keys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<ElementGeometryEntry>
     ): List<ElementGeometryEntry> = synchronized(this) {
-        val geometries = spatialCache.getAll(keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null } )
-            .map { it.toElementGeometryEntry() } +
-            keys.mapNotNull { key ->
-                when (key.type) {
-                    ElementType.WAY -> wayGeometryCache[key.id]?.let { ElementGeometryEntry(key.type, key.id, it) }
-                    ElementType.RELATION -> relationGeometryCache[key.id]?.let { ElementGeometryEntry(key.type, key.id, it) }
-                    else -> null
-                }
-            }
-        return if (keys.size == geometries.size) geometries
-        else {
-            val cachedKeys = geometries.map { ElementKey(it.elementType, it.elementId) }
-            val fetchedGeometries = fetch(keys.filterNot { it in cachedKeys })
-            fetchedGeometries.forEach {
-                when (it.elementType) {
-                    ElementType.WAY -> wayGeometryCache[it.elementId] = it.geometry
-                    ElementType.RELATION -> relationGeometryCache[it.elementId] = it.geometry
-                    else -> Unit
-                }
-            }
-            geometries + fetchedGeometries
+        // the implementation here is quite identical to the implementation in getElements, only
+        // that geometries and not elements are returned and thus different caches are accessed
+
+        val nodeIds = keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
+
+        val cachedNodeEntries = spatialCache.getAll(nodeIds).map { it.toElementGeometryEntry() }
+        val cachedWayAndRelationEntries = keys.mapNotNull { key ->
+            when (key.type) {
+                ElementType.WAY -> wayGeometryCache[key.id]
+                ElementType.RELATION -> relationGeometryCache[key.id]
+                else -> null
+            }?.let { ElementGeometryEntry(key.type, key.id, it) }
         }
+        val cachedEntries = cachedNodeEntries + cachedWayAndRelationEntries
+
+        // exit early if everything is cached
+        if (keys.size == cachedEntries.size) return cachedEntries
+
+        // otherwise, fetch the rest & save to cache
+        val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
+        val missingKeys = keys.filterNot { it in cachedKeys }
+        val fetchedEntries = fetch(missingKeys)
+        for (entry in fetchedEntries) {
+            when (entry.elementType) {
+                ElementType.WAY -> wayGeometryCache[entry.elementId] = entry.geometry
+                ElementType.RELATION -> relationGeometryCache[entry.elementId] = entry.geometry
+                else -> Unit
+            }
+        }
+        return cachedEntries + fetchedEntries
     }
 
     /**
