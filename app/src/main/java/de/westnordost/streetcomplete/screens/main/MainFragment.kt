@@ -1114,6 +1114,7 @@ class MainFragment :
     //region Animation - Animation(s) for when a quest is solved
 
     private fun showQuestSolvedAnimation(iconResId: Int, position: LatLon) {
+        if (!prefs.getBoolean(Prefs.SHOW_SOLVED_ANIMATION, true)) return
         val ctx = context ?: return
         val offset = view?.getLocationInWindow() ?: return
         val startPos = mapFragment?.getPointOf(position) ?: return

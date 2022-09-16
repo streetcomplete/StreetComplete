@@ -76,6 +76,7 @@ object Prefs {
     const val SHOW_NEARBY_QUESTS_DISTANCE = "show_nearby_quests_distance"
     const val CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING = "close_form_immediately"
     const val CUSTOM_OVERLAY_FILTER = "custom_overlay_filter"
+    const val SHOW_SOLVED_ANIMATION = "show_solved_animation"
 
     enum class Autosync {
         ON, WIFI, OFF

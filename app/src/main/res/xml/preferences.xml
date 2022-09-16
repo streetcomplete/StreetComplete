@@ -200,6 +200,12 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="show_solved_animation"
+            android:title="@string/pref_show_solved_animation"
+            android:defaultValue="true"
+            android:persistent="true" />
+
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="gps_interval"
             android:title="@string/pref_gps_interval_title"
