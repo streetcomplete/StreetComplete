@@ -75,7 +75,6 @@ class MapDataController internal constructor(
 
             cache.update(oldElementKeys, mapData, geometryEntries, bbox) // use bbox, and not of the padded mapData.boundingBox
 
-            // todo: this could be done async if the cache is guaranteed to hold all data until db operations are finished
             elementDB.deleteAll(oldElementKeys)
             geometryDB.deleteAll(oldElementKeys)
             geometryDB.putAll(geometryEntries)
