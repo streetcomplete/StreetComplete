@@ -263,6 +263,7 @@ quest/
     bench_poi.svg
     bench_public_transport.svg
     bicycle.svg
+    bicycle_incline.svg              Tobias Zwick (CC-BY-SA 4.0) for used graphic elements, minor rearranging by Mateusz Konieczny
     bicycle_parking.svg
     bicycle_parking_access.svg       Flo Edelmann merged bicycle_parking.svg by Tobias Zwick (CC-BY-SA 4.0) with parking_access.svg made by Tobias Zwick with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     bicycle_parking_capacity.svg
