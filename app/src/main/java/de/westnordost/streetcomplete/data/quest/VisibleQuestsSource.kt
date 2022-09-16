@@ -146,7 +146,8 @@ class VisibleQuestsSource(
     }
 }
 
-// same tile zoom as used in QuestPinsManager which is the only caller of getAllVisible
+// same tile zoom as used in QuestPinsManager which is the only caller of getAllVisible and only
+// ever queries tiles in that zoom
 private const val SPATIAL_CACHE_TILE_ZOOM = 16
 // set a large number of tiles, as the cache is not large in memory and it allows
 // better UX when scrolling the map
