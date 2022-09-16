@@ -32,6 +32,7 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirection> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // sadly for very long ways shape may be complex and it may be confusing which answer should be given
+        // once multiple quest markers are appearing it becomes completely unclear
         // see for example https://www.openstreetmap.org/way/437205914
         return mapData
             .filter { tagFilter.matches(it) }
