@@ -353,8 +353,8 @@ class MapDataCache(
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
-            nodes = HashSet<Node>().apply { addAll(spatialCache.get(bbox)) }
 
+            nodes = HashSet<Node>(spatialCache.get(bbox))
             update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
 
             // return data if we need exactly what was just fetched
