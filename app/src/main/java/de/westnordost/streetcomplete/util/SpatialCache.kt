@@ -51,8 +51,7 @@ class SpatialCache<K, T>(
      * Puts the [updatedOrAdded] items into cache only if the containing tile is already cached
      */
     fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) = synchronized(this) {
-        val deleteKeys = deleted.asSequence() + updatedOrAdded.map { it.getKey() }
-        for (key in deleteKeys) {
+        for (key in deleted) {
             val item = byKey.remove(key) ?: continue
             byTile[item.getTilePos()]?.remove(item)
         }
