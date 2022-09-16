@@ -247,9 +247,9 @@ class MapDataController internal constructor(
         onCleared()
     }
 
-    fun clearCache() = cache.clear()
+    fun clearCache() = synchronized(this) { cache.clear() }
 
-    fun trimCache() = cache.trim(SPATIAL_CACHE_TILES / 3)
+    fun trimCache() = synchronized(this) { cache.trim(SPATIAL_CACHE_TILES / 3) }
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
