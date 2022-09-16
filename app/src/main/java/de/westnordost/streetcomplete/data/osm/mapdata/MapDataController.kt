@@ -238,10 +238,12 @@ class MapDataController internal constructor(
     }
 
     fun clear() {
-        clearCache()
-        elementDB.clear()
-        geometryDB.clear()
-        createdElementsController.clear()
+        synchronized(this) {
+            clearCache()
+            elementDB.clear()
+            geometryDB.clear()
+            createdElementsController.clear()
+        }
         onCleared()
     }
 
