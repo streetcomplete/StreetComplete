@@ -13,8 +13,6 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
           (highway = emergency_access_point)
           or
           (emergency = access_point)
-          or
-          (emergency = assembly_point)
         )
         and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
