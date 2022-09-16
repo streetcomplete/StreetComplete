@@ -77,7 +77,7 @@ class VisibleQuestsSource(
         SPATIAL_CACHE_TILE_ZOOM,
         SPATIAL_CACHE_TILES,
         SPATIAL_CACHE_INITIAL_CAPACITY,
-        { getAllVisibleForCache(it) },
+        { getAllVisibleFromDatabase(it) },
         Quest::key, Quest::position
     )
     init {
@@ -92,10 +92,8 @@ class VisibleQuestsSource(
         cache.get(bbox)
 
     /** Retrieve all visible quests in the given bounding box from local database */
-    private fun getAllVisibleForCache(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypeNames = questTypeRegistry
-            .filter { isVisible(it) }
-            .map { it.name }
+    private fun getAllVisibleFromDatabase(bbox: BoundingBox): List<Quest> {
+        val visibleQuestTypeNames = questTypeRegistry.filter { isVisible(it) }.map { it.name }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
