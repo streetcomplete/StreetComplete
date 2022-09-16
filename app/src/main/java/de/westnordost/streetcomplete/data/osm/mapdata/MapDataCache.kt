@@ -316,7 +316,11 @@ class MapDataCache(
     fun getRelationsForRelation(id: Long, fetch: (Long) -> List<Relation>) =
         getRelationsForElement(ElementType.RELATION, id) { fetch(id) }
 
-    private fun getRelationsForElement(type: ElementType, id: Long, fetch: () -> List<Relation>): List<Relation> = synchronized(this) {
+    private fun getRelationsForElement(
+        type: ElementType,
+        id: Long,
+        fetch: () -> List<Relation>
+    ): List<Relation> = synchronized(this) {
         val relationIds = relationIdsByElementKeyCache.getOrPut(ElementKey(type, id)) {
             val relations = fetch()
             relations.forEach { relationCache[it.id] = it }
