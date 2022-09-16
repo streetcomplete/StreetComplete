@@ -56,16 +56,13 @@ class MapDataController internal constructor(
         val time = currentTimeMillis()
 
         val oldElementKeys: Set<ElementKey>
-        val geometryEntries: List<ElementGeometryEntry>
+        val geometryEntries: Collection<ElementGeometryEntry>
         synchronized(this) {
             // for incompletely downloaded relations, complete the map data (as far as possible) with
             // local data, i.e. with local nodes and ways (still) in local storage
             completeMapData(mapData)
 
-            geometryEntries = mapData.mapNotNull { element ->
-                val geometry = elementGeometryCreator.create(element, mapData, true)
-                geometry?.let { ElementGeometryEntry(element.type, element.id, it) }
-            }
+            geometryEntries = createGeometries(mapData, mapData)
 
             // don't use cache here, because if not everything is already cached, db call will be faster
             oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
@@ -101,14 +98,11 @@ class MapDataController internal constructor(
         val mapData = MutableMapData(elements)
 
         val deletedKeys: List<ElementKey>
-        val geometryEntries: List<ElementGeometryEntry>
+        val geometryEntries: Collection<ElementGeometryEntry>
         synchronized(this) {
             completeMapData(mapData)
 
-            geometryEntries = elements.mapNotNull { element ->
-                val geometry = elementGeometryCreator.create(element, mapData, true)
-                geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
-            }
+            geometryEntries = createGeometries(elements, mapData)
 
             val newElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.newElementId) }
             val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
@@ -128,6 +122,13 @@ class MapDataController internal constructor(
 
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
     }
+
+    /** Create ElementGeometryEntries for [elements] using [mapData] to supply the necessary geometry */
+    private fun createGeometries(elements: Iterable<Element>, mapData: MapData): Collection<ElementGeometryEntry> =
+        elements.mapNotNull { element ->
+            val geometry = elementGeometryCreator.create(element, mapData, true)
+            geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
+        }
 
     private fun completeMapData(mapData: MutableMapData) {
         val missingNodeIds = mutableListOf<Long>()
