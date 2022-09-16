@@ -72,7 +72,9 @@ class SpatialCache<K, T>(
     }
 
     /**
-     * Replaces all tiles fully contained in the bounding box.
+     * Replaces all tiles fully contained in the [bbox] with the given [items].
+     * Any tile only partially contained in the [bbox] is removed (because all tiles cached must be
+     * complete).
      * If the number of tiles exceeds maxTiles, only the first maxSize tiles are cached.
      */
     fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) = synchronized(this) {
