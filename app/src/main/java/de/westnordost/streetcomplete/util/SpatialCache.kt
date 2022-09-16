@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.util.math.isCompletelyInside
  * Spatial cache containing items of type T that each must have an id of type K and a position
  * (LatLon). See [getKey] and [getPosition].
  *
- * @fetch needs get data from db and fill other caches, e.g. questKey -> Quest
+ * @fetch needs to get data from db and fill other caches, e.g. questKey -> Quest
  *
  * the bbox queried in get() must fit in cache, i.e. may not be larger than maxTiles at tileZoom.
  */
@@ -51,22 +51,23 @@ class SpatialCache<K, T>(
      * Puts the [updatedOrAdded] items into cache only if the containing tile is already cached
      */
     fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) = synchronized(this) {
-        for (key in deleted) {
+        val deleteKeys = deleted.asSequence() + updatedOrAdded.map { it.getKey() }
+        for (key in deleteKeys) {
             val item = byKey.remove(key) ?: continue
             byTile[item.getTilePos()]?.remove(item)
         }
+        // items must be removed before they are re-added because e.g. position may have changed
         for (item in updatedOrAdded) {
-            val key = item.getKey()
-            // remove item if it exists
-            byKey[item.getKey()]?.let {
-                byTile[it.getTilePos()]!!.remove(it)
-            }
+            val oldItem = byKey.remove(item.getKey()) ?: continue
+            byTile[oldItem.getTilePos()]?.remove(oldItem)
+        }
+        // items are only added if the tile they would be sorted into is already cached, because all
+        // tiles that are in cache must be complete
+        for (item in updatedOrAdded) {
             val tile = byTile[item.getTilePos()]
             if (tile != null) {
                 tile.add(item)
-                byKey[key] = item
-            } else {
-                byKey.remove(key)
+                byKey[item.getKey()] = item
             }
         }
     }
@@ -139,10 +140,10 @@ class SpatialCache<K, T>(
         return items
     }
 
-    /** Reduces cache size to the given number of non-empty [tiles].
-     *  Empty tiles are kept, as the barely use memory. This avoids empty tiles pushing other
-     *  tiles out of the cache and thus may avoid database fetches. */
+    /** Reduces cache size to the given number of non-empty [tiles]. */
     fun trim(tiles: Int = maxTiles) = synchronized(this) {
+        // Empty tiles are kept, as the barely use memory. This avoids empty tiles pushing other
+        // tiles out of the cache and thus may avoid database fetches.
         if (byTile.count { it.value.isNotEmpty() } <= tiles) return
 
         while (byTile.count { it.value.isNotEmpty() } > tiles) {
