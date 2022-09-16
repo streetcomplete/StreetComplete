@@ -17,7 +17,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() },
-        createTagAsAssemblyPointAnswer(),
+        createMarkAsAssemblyPointAnswer()
     )
 
     private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
@@ -42,7 +42,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
     override fun isFormComplete() = ref.isNotEmpty()
 
-    private fun createTagAsAssemblyPointAnswer(): AnswerItem? {
+    private fun createMarkAsAssemblyPointAnswer(): AnswerItem? {
         val node = element as? Node ?: return null
         if (node.tags["emergency"] == "assembly_point") return null
 
