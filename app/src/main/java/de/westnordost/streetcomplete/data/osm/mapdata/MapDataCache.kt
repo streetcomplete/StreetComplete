@@ -359,7 +359,8 @@ class MapDataCache(
 
             // return data if we need exactly what was just fetched
             if (fetchBBox == bbox) {
-                result.putAll(elements, geometries + elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() })
+                val nodeGeometryEntries = elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() }
+                result.putAll(elements, geometries + nodeGeometryEntries)
                 return result
             }
 
