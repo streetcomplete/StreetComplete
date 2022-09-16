@@ -8,10 +8,13 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.util.SpatialCache
 
 /**
- * Cache for MapDataController using SpatialCache for nodes
- * caches data returned by db, except for nodes
- * for tiles in spatial cache all elements and geometries are cached,
- * way and relation data outside the cached tiles may be cached, but will be removed on any trim
+ * Cache for MapDataController that uses SpatialCache for nodes (i.e. geometry) and hash maps
+ * for ways, relations and their geometry.
+ *
+ * The [initialCapacity] is the initial capacity for nodes, the initial capacities for the other
+ * element types are derived from that because the ratio is usually similar.
+ *
+ * Way and relation data outside the cached tiles may be cached, but will be removed on any trim
  */
 class MapDataCache(
     private val tileZoom: Int,
@@ -38,9 +41,8 @@ class MapDataCache(
     private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>(initialCapacity / 10)
 
     /**
-     * Removes elements and geometries with keys in [deletedKeys] from cache.
-     * Puts the [updatedElements] and [updatedGeometries] into cache. Nodes are handled by
-     * [spatialCache] and may not be put.
+     * Removes elements and geometries with keys in [deletedKeys] from cache and puts the
+     * [updatedElements] and [updatedGeometries] into cache.
      */
     fun update(
         deletedKeys: Collection<ElementKey> = emptyList(),
