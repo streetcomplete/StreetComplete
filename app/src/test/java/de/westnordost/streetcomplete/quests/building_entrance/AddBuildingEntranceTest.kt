@@ -22,7 +22,7 @@ class AddBuildingEntranceTest {
                 node(4),
                 node(30),
                 way(1L, listOf(1, 2, 3, 4), mapOf(
-                    "building" to "apartments"
+                    "building" to "apartments",
                 )),
                 way(2L, listOf(1, 3), mapOf(
                     "highway" to "footway",
@@ -46,7 +46,7 @@ class AddBuildingEntranceTest {
                 node(4),
                 node(30),
                 way(1L, listOf(1, 2, 3, 4), mapOf(
-                    "building" to "apartments"
+                    "building" to "apartments",
                 )),
                 way(2L, listOf(1, 3), mapOf(
                     "highway" to "footway",
@@ -70,7 +70,7 @@ class AddBuildingEntranceTest {
                 node(4),
                 node(30),
                 way(1L, listOf(1, 2, 3, 4), mapOf(
-                    "building" to "apartments"
+                    "building" to "apartments",
                 )),
                 way(2L, listOf(1, 3), mapOf(
                     "highway" to "footway",
@@ -94,7 +94,7 @@ class AddBuildingEntranceTest {
                 node(4),
                 node(30),
                 way(1L, listOf(1, 2, 3, 4), mapOf(
-                    "building" to "apartments"
+                    "building" to "apartments",
                 )),
                 way(2L, listOf(3, 30), mapOf(
                     "highway" to "footway",
