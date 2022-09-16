@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.steps_incline
+package de.westnordost.streetcomplete.quests.incline_direction
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
