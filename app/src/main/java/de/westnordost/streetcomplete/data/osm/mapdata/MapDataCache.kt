@@ -339,13 +339,14 @@ class MapDataCache(
         val requiredTiles = bbox.enclosingTilesRect(tileZoom).asTilePosSequence().toList()
         val cachedTiles = spatialCache.getTiles()
         val tilesToFetch = requiredTiles.filterNot { it in cachedTiles }
+        val tilesRectToFetch = tilesToFetch.minTileRect()
 
         val result = MutableMapDataWithGeometry()
         result.boundingBox = bbox
         val nodes: Collection<Node>
-        if (tilesToFetch.isNotEmpty()) {
+        if (tilesRectToFetch != null) {
             // fetch needed data
-            val fetchBBox = tilesToFetch.minTileRect()!!.asBoundingBox(tileZoom)
+            val fetchBBox = tilesRectToFetch.asBoundingBox(tileZoom)
             val (elements, geometries) = fetchMapData(fetchBBox)
 
             // get nodes from spatial cache
