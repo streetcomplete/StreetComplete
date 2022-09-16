@@ -174,33 +174,40 @@ class MapDataCache(
 
     /**
      * Gets elements from cache. If any of the elements is not cached, [fetch] is called for the
-     * missing elements. The fetched elements are cached and the complete list is returned.
+     * missing elements. The fetched elements are cached and the complete list is returned. The
+     * elements are returned in no particular order
      */
     fun getElements(
         elementKeys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<Element>
     ): List<Element> = synchronized(this) {
-        val elements = spatialCache.getAll(elementKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null } ) +
-            elementKeys.mapNotNull {
-                when (it.type) {
-                    ElementType.WAY -> wayCache[it.id]
-                    ElementType.RELATION -> relationCache[it.id]
-                    else -> null
-                }
+        val nodeIds = elementKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
+
+        val cachedNodes = spatialCache.getAll(nodeIds)
+        val cachedWaysAndRelations = elementKeys.mapNotNull { key ->
+            when (key.type) {
+                ElementType.WAY -> wayCache[key.id]
+                ElementType.RELATION -> relationCache[key.id]
+                else -> null
             }
-        return if (elementKeys.size == elements.size) elements
-        else {
-            val cachedElementKeys = elements.map { ElementKey(it.type, it.id) }
-            val fetchedElements = fetch(elementKeys.filterNot { it in cachedElementKeys })
-            fetchedElements.forEach {
-                when (it.type) {
-                    ElementType.WAY -> wayCache[it.id] = it as Way
-                    ElementType.RELATION -> relationCache[it.id] = it as Relation
-                    else -> Unit
-                }
-            }
-            elements + fetchedElements
         }
+        val cachedElements = cachedNodes + cachedWaysAndRelations
+
+        // exit early if everything is cached
+        if (elementKeys.size == cachedElements.size) return cachedElements
+
+        // otherwise, fetch the rest & save to cache
+        val cachedElementKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
+        val missingElementKeys = elementKeys.filterNot { it in cachedElementKeys }
+        val fetchedElements = fetch(missingElementKeys)
+        for (element in fetchedElements) {
+            when (element.type) {
+                ElementType.WAY -> wayCache[element.id] = element as Way
+                ElementType.RELATION -> relationCache[element.id] = element as Relation
+                else -> Unit
+            }
+        }
+        return cachedElements + fetchedElements
     }
 
     fun getNodes(ids: Collection<Long>, fetch: (Collection<Long>) -> List<Node>): List<Node> = synchronized(this) {
