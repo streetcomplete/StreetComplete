@@ -150,5 +150,5 @@ private const val SPATIAL_CACHE_TILE_ZOOM = 16
 // set a large number of tiles, as the cache is not large in memory and it allows
 // better UX when scrolling the map
 private const val SPATIAL_CACHE_TILES = 128
-// in a city this is the approximate number of quests in ~10 tiles on default visibilities
-private const val SPATIAL_CACHE_INITIAL_CAPACITY = 3000
+// in a city this is the approximate number of quests in ~30 tiles on default visibilities
+private const val SPATIAL_CACHE_INITIAL_CAPACITY = 10000

@@ -288,5 +288,5 @@ private const val SPATIAL_CACHE_TILE_ZOOM = 17
 // We don't want to drop tiles from cache already when scrolling the map just a bit!
 private const val SPATIAL_CACHE_TILES = 128
 
-// In a city this is the approximate number of nodes in ~4-8 z16 tiles
-private const val SPATIAL_CACHE_INITIAL_CAPACITY = 20000
+// In a city this is roughly the number of nodes in ~20-40 z16 tiles
+private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000
