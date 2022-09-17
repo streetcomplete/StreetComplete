@@ -124,7 +124,7 @@ class MapDataCache(
 
             // for adding relations to relationIdsByElementKeyCache we want the element to be
             // in spatialCache, or have a node / member in spatialCache (same reasoning as for ways)
-            val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
+            val (wayIds, relationIds) = determineWayAndRelationIdsWithElementsInSpatialCache()
 
             for (relation in updatedRelations) {
                 // old relation may now have different members, so they need to be removed first
@@ -469,7 +469,7 @@ class MapDataCache(
 
     private fun trimNonSpatialCaches() {
         // ways and relations with at least one element in cache should not be removed
-        val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
+        val (wayIds, relationIds) = determineWayAndRelationIdsWithElementsInSpatialCache()
 
         wayCache.keys.retainAll { it in wayIds }
         relationCache.keys.retainAll { it in relationIds }
@@ -487,26 +487,35 @@ class MapDataCache(
         }
     }}
 
-    private fun getWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> = synchronized(this) {
+    /** return the ids of all ways whose nodes are in the spatial cache plus as all ids of
+     *  relations referred to by those ways or nodes that are in the spatial cache */
+    private fun determineWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> {
+
+        // note: wayIdsByNodeIdCache and relationIdsByElementKeyCache cannot be used here to get the
+        // result because this method is called in places where the spatial cache has been updated
+        // and now the other caches are outdated. So this method exists to find those elements that
+        // are STILL referred to directly or indirectly by the spatial cache.
+
         val wayIds = HashSet<Long>(wayCache.size)
         for (way in wayCache.values) {
-            if (way != null && way.nodeIds.any { spatialCache.get(it) != null })
+            if (way != null && way.nodeIds.any { spatialCache.get(it) != null }) {
                 wayIds.add(way.id)
+            }
         }
 
         fun RelationMember.isCachedWayOrNode(): Boolean =
             type == ElementType.NODE && spatialCache.get(ref) != null
                 || type == ElementType.WAY && ref in wayIds
+
         fun RelationMember.hasCachedMembers(): Boolean =
             type == ElementType.RELATION
                 && relationCache[ref]?.members?.any { it.isCachedWayOrNode() } == true
 
         val relationIds = HashSet<Long>(relationCache.size)
         for (relation in relationCache.values) {
-            if (relation != null && relation.members.any { member ->
-                    member.isCachedWayOrNode() || member.hasCachedMembers()
-            })
+            if (relation != null && relation.members.any { it.isCachedWayOrNode() || it.hasCachedMembers() }) {
                 relationIds.add(relation.id)
+            }
         }
         return wayIds to relationIds
     }
