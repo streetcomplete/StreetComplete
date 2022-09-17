@@ -456,25 +456,27 @@ class MapDataCache(
     }
 
     private fun getWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> = synchronized(this) {
-        val wayIds = wayCache.values.mapNotNull { way ->
-            if (way != null && way.nodeIds.any { spatialCache.get(it) != null }) way.id
-            else null
-        }.toHashSet()
+        val wayIds = HashSet<Long>(wayCache.size)
+        for (way in wayCache.values) {
+            if (way != null && way.nodeIds.any { spatialCache.get(it) != null })
+                wayIds.add(way.id)
+        }
 
-        fun RelationMember.isCached(): Boolean =
+        fun RelationMember.isCachedWayOrNode(): Boolean =
             type == ElementType.NODE && spatialCache.get(ref) != null
                 || type == ElementType.WAY && ref in wayIds
+        fun RelationMember.hasCachedMembers(): Boolean =
+            type == ElementType.RELATION
+                && relationCache[ref]?.members?.any { it.isCachedWayOrNode() } == true
 
-        val relationIds = relationCache.values.mapNotNull { relation ->
+        val relationIds = HashSet<Long>(relationCache.size)
+        for (relation in relationCache.values) {
             if (relation != null && relation.members.any { member ->
-                    member.isCached()
-                        || (member.type == ElementType.RELATION // relation of relations
-                        && (relationCache[member.ref])?.members?.any { it.isCached() } == true)
-                })
-                relation.id
-            else null
-        }.toHashSet()
-        wayIds to relationIds
+                    member.isCachedWayOrNode() || member.hasCachedMembers()
+            })
+                relationIds.add(relation.id)
+        }
+        return wayIds to relationIds
     }
 
     private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
