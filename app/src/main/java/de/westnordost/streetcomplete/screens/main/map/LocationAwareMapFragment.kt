@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import com.google.ar.core.Track
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
@@ -23,6 +24,9 @@ import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.math.translate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.math.PI
 
@@ -43,7 +47,7 @@ open class LocationAwareMapFragment : MapFragment() {
         private set
 
     /** The GPS trackpoints the user has walked */
-    private var tracks: MutableList<ArrayList<Location>>
+    private var tracks: ArrayList<ArrayList<Trackpoint>>
 
     /** If we are actively recording track history */
     var isRecordingTracks = false
@@ -109,15 +113,7 @@ open class LocationAwareMapFragment : MapFragment() {
         if (savedInstanceState != null) {
             displayedLocation = savedInstanceState.getParcelable(DISPLAYED_LOCATION)
             isRecordingTracks = savedInstanceState.getBoolean(TRACKS_IS_RECORDING)
-            val nullTerminatedTracks = savedInstanceState.getParcelableArrayList<Location?>(TRACKS) as ArrayList<Location?>?
-            if (nullTerminatedTracks != null) {
-                tracks = nullTerminatedTracks.unflattenNullTerminated()
-                // unflattenNullTerminated creates an empty list item (i.e. a new track) at the end.
-                // This is fine if the track is not being recorded.
-                if (isRecordingTracks) {
-                    tracks.removeLastOrNull()
-                }
-            }
+            tracks = Json.decodeFromString(savedInstanceState.getString(TRACKS)!!)
         }
     }
 
@@ -146,7 +142,8 @@ open class LocationAwareMapFragment : MapFragment() {
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)
-        tracksMapComponent?.setTracks(tracks, isRecordingTracks)
+        val positionsLists = tracks.map { track -> track.map { it.position } }
+        tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
         centerCurrentPositionIfFollowing()
     }
@@ -192,16 +189,7 @@ open class LocationAwareMapFragment : MapFragment() {
     fun stopPositionTrackRecording() {
         isRecordingTracks = false
         _recordedTracks.clear()
-        tracks.last().forEach {
-            _recordedTracks.add(
-                Trackpoint(
-                    LatLon(it.latitude, it.longitude),
-                    it.time, // in milliseconds
-                    it.accuracy,
-                    it.altitude.toFloat() // always zero in emulator: https://stackoverflow.com/q/65325665
-                )
-            )
-        }
+        _recordedTracks.addAll(tracks.last())
         tracks.add(ArrayList())
         tracksMapComponent?.startNewTrack(false)
     }
@@ -270,15 +258,16 @@ open class LocationAwareMapFragment : MapFragment() {
                 tracksMapComponent?.startNewTrack(false)
             }
         }
+        val trackpoint = Trackpoint(location.toLatLon(), location.time, location.accuracy, location.altitude.toFloat())
 
-        tracks.last().add(location)
+        tracks.last().add(trackpoint)
         // delay update by 600 ms because the animation to the new location takes that long
         // in rare cases, onLocationChanged may already be called before the view has been created
         // so we need to check that first
         if (view != null) {
             viewLifecycleScope.launch {
                 delay(600)
-                tracksMapComponent?.addToCurrentTrack(location)
+                tracksMapComponent?.addToCurrentTrack(trackpoint.position)
             }
         }
     }
@@ -307,9 +296,14 @@ open class LocationAwareMapFragment : MapFragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable(DISPLAYED_LOCATION, displayedLocation)
-        outState.putParcelableArrayList(TRACKS, tracks.flattenToNullTerminated())
+        /* tracks can theoretically grow indefinitely, but one cannot put an indefinite amount of
+         * data into the saved instance state. Apparently only half an MB (~5000 trackpoints). So
+         * let's cut off at 1000 points to be on the safe side... (I don't know if the limit is
+         * for all of the app or just one fragment) */
+        outState.putString(TRACKS, Json.encodeToString(tracks.takeLastNested(1000)))
         outState.putBoolean(TRACKS_IS_RECORDING, isRecordingTracks)
     }
+
 
     companion object {
         private const val PREF_FOLLOWING = "map_following"
@@ -324,20 +318,16 @@ open class LocationAwareMapFragment : MapFragment() {
     }
 }
 
-private fun <T> List<List<T>>.flattenToNullTerminated(): ArrayList<T?> =
-    ArrayList(flatMap { it + null })
-
-private fun <T> List<T?>.unflattenNullTerminated(): ArrayList<ArrayList<T>> {
-    val result = ArrayList<ArrayList<T>>()
-    var current = ArrayList<T>()
-    for (it in this) {
-        if (it != null) {
-            current.add(it)
-        } else {
-            result.add(current)
-            current = ArrayList()
+private fun <T> ArrayList<ArrayList<T>>.takeLastNested(n: Int): ArrayList<ArrayList<T>> {
+    var sum = 0
+    for (i in lastIndex downTo 0) {
+        val s = get(i).size
+        if (sum + s > n) {
+            val result = ArrayList(subList(i + 1, size))
+            if (sum > n) result.add(0, ArrayList(get(i).takeLast(n - sum)))
+            return result
         }
+        sum += s
     }
-    result.add(current)
-    return result
+    return this
 }
