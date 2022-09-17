@@ -49,7 +49,7 @@ class MapDataCache(
         updatedElements: Iterable<Element> = emptyList(),
         updatedGeometries: Iterable<ElementGeometryEntry> = emptyList(),
         bbox: BoundingBox? = null
-    ) = synchronized(this) {
+    ) { synchronized(this) {
 
         // TODO explain (bbox) behavior here, best (also) in doc comment
         val updatedNodes = updatedElements.filterIsInstance<Node>()
@@ -157,7 +157,7 @@ class MapDataCache(
                 }
             }
         }
-    }
+    }}
 
     /**
      * Gets the element with the given [type] and [id] from cache. If the element is not cached,
@@ -449,7 +449,7 @@ class MapDataCache(
     }
 
     /** Clears the cache */
-    fun clear() = synchronized(this) {
+    fun clear() { synchronized(this) {
         spatialCache.clear()
         wayCache.clear()
         relationCache.clear()
@@ -457,12 +457,12 @@ class MapDataCache(
         relationGeometryCache.clear()
         wayIdsByNodeIdCache.clear()
         relationIdsByElementKeyCache.clear()
-    }
+    }}
 
     /** Reduces cache size to the given number of non-empty [tiles], and removes all data
      *  not contained in the remaining tiles.
      */
-    fun trim(tiles: Int) = synchronized(this) {
+    fun trim(tiles: Int) { synchronized(this) {
         spatialCache.trim(tiles)
         trimNonSpatialCaches()
     }
@@ -485,7 +485,7 @@ class MapDataCache(
                 ElementType.RELATION -> it.id in relationIds
             }
         }
-    }
+    }}
 
     private fun getWayAndRelationIdsWithElementsInSpatialCache(): Pair<Set<Long>, Set<Long>> = synchronized(this) {
         val wayIds = HashSet<Long>(wayCache.size)

@@ -50,7 +50,7 @@ class SpatialCache<K, T>(
      * Removes the keys in [deleted] from cache
      * Puts the [updatedOrAdded] items into cache only if the containing tile is already cached
      */
-    fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) = synchronized(this) {
+    fun update(updatedOrAdded: Iterable<T> = emptyList(), deleted: Iterable<K> = emptyList()) { synchronized(this) {
         for (key in deleted) {
             val item = byKey.remove(key) ?: continue
             byTile[item.getTilePos()]?.remove(item)
@@ -69,7 +69,7 @@ class SpatialCache<K, T>(
                 byKey[item.getKey()] = item
             }
         }
-    }
+    }}
 
     /**
      * Replaces all tiles fully contained in the [bbox] with the given [items].
@@ -77,7 +77,7 @@ class SpatialCache<K, T>(
      * complete).
      * If the number of tiles exceeds maxTiles, only the first maxSize tiles are cached.
      */
-    fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) = synchronized(this) {
+    fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) { synchronized(this) {
         val tiles = bbox.asListOfEnclosingTilePos()
         val (completelyContainedTiles, incompleteTiles) = tiles.partition { it.asBoundingBox(tileZoom).isCompletelyInside(bbox) }
         if (incompleteTiles.isNotEmpty()) {
@@ -89,7 +89,7 @@ class SpatialCache<K, T>(
         replaceAllInTiles(items, completelyContainedTiles)
 
         trim()
-    }
+    }}
 
     // may add tiles, but does not call trim()
     private fun replaceAllInTiles(items: Collection<T>, tiles: Collection<TilePos>) {
@@ -136,7 +136,7 @@ class SpatialCache<K, T>(
     }
 
     /** Reduces cache size to the given number of non-empty [tiles]. */
-    fun trim(tiles: Int = maxTiles) = synchronized(this) {
+    fun trim(tiles: Int = maxTiles) { synchronized(this) {
         // Empty tiles are kept, as the barely use memory. This avoids empty tiles pushing other
         // tiles out of the cache and thus may avoid database fetches.
         if (byTile.count { it.value.isNotEmpty() } <= tiles) return
@@ -145,7 +145,7 @@ class SpatialCache<K, T>(
             val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
             removeTile(firstNonEmptyTile)
         }
-    }
+    }}
 
     private fun removeTile(tilePos: TilePos) {
         val removedItems = byTile.remove(tilePos)
@@ -157,10 +157,10 @@ class SpatialCache<K, T>(
     }
 
     /** Clears the cache */
-    fun clear() = synchronized(this) {
+    fun clear() { synchronized(this) {
         byKey.clear()
         byTile.clear()
-    }
+    }}
 
     private fun T.getTilePos(): TilePos =
         getPosition().enclosingTilePos(tileZoom)
