@@ -207,30 +207,48 @@ class MapDataCache(
         keys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<Element>
     ): List<Element> = synchronized(this) {
-        val nodeIds = keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
-
-        val cachedNodes = spatialCache.getAll(nodeIds)
-        val cachedWaysAndRelations = keys.mapNotNull { key ->
-            when (key.type) {
+        val keysToFetch = mutableListOf<ElementKey>()
+        val cachedElements = mutableListOf<Element>()
+        for (key in keys) {
+            val element = when (key.type) {
+                ElementType.NODE -> spatialCache.get(key.id)
                 ElementType.WAY -> wayCache[key.id]
                 ElementType.RELATION -> relationCache[key.id]
-                else -> null
+            }
+
+            if (element != null) {
+                cachedElements.add(element)
+            } else {
+                val cachedButNull = when (key.type) {
+                    ElementType.WAY -> wayCache.containsKey(key.id)
+                    ElementType.RELATION -> relationCache.containsKey(key.id)
+                    else -> false
+                }
+                if (!cachedButNull)
+                    keysToFetch.add(key)
             }
         }
-        val cachedElements = cachedNodes + cachedWaysAndRelations
 
         // exit early if everything is cached
-        if (keys.size == cachedElements.size) return cachedElements
+        if (keysToFetch.isEmpty()) return cachedElements
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
-        val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
             when (element.type) {
                 ElementType.WAY -> wayCache[element.id] = element as Way
                 ElementType.RELATION -> relationCache[element.id] = element as Relation
                 else -> Unit
+            }
+        }
+        if (fetchedElements.size != keysToFetch.size) {
+            // some keysToFetch were not fetched, thus the elements are not in database
+            // cache null for all those keys
+            for (key in keysToFetch) {
+                if (key.type == ElementType.WAY)
+                    wayCache.getOrPut(key.id) { null }
+                else if (key.type == ElementType.RELATION)
+                    relationCache.getOrPut(key.id) { null }
             }
         }
         return cachedElements + fetchedElements
@@ -278,30 +296,48 @@ class MapDataCache(
         // the implementation here is quite identical to the implementation in getElements, only
         // that geometries and not elements are returned and thus different caches are accessed
 
-        val nodeIds = keys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
-
-        val cachedNodeEntries = spatialCache.getAll(nodeIds).map { it.toElementGeometryEntry() }
-        val cachedWayAndRelationEntries = keys.mapNotNull { key ->
-            when (key.type) {
+        val keysToFetch = mutableListOf<ElementKey>()
+        val cachedEntries = mutableListOf<ElementGeometryEntry>()
+        for (key in keys) {
+            val geometry = when (key.type) {
+                ElementType.NODE -> spatialCache.get(key.id)?.let { ElementPointGeometry(it.position) }
                 ElementType.WAY -> wayGeometryCache[key.id]
                 ElementType.RELATION -> relationGeometryCache[key.id]
-                else -> null
-            }?.let { ElementGeometryEntry(key.type, key.id, it) }
+            }
+
+            if (geometry != null) {
+                cachedEntries.add(ElementGeometryEntry(key.type, key.id, geometry))
+            } else {
+                val cachedButNull = when (key.type) {
+                    ElementType.WAY -> wayGeometryCache.containsKey(key.id)
+                    ElementType.RELATION -> relationGeometryCache.containsKey(key.id)
+                    else -> false
+                }
+                if (!cachedButNull)
+                    keysToFetch.add(key)
+            }
         }
-        val cachedEntries = cachedNodeEntries + cachedWayAndRelationEntries
 
         // exit early if everything is cached
-        if (keys.size == cachedEntries.size) return cachedEntries
+        if (keysToFetch.isEmpty()) return cachedEntries
 
         // otherwise, fetch the rest & save to cache
-        val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
-        val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedEntries = fetch(keysToFetch)
         for (entry in fetchedEntries) {
             when (entry.elementType) {
                 ElementType.WAY -> wayGeometryCache[entry.elementId] = entry.geometry
                 ElementType.RELATION -> relationGeometryCache[entry.elementId] = entry.geometry
                 else -> Unit
+            }
+        }
+        if (fetchedEntries.size != keysToFetch.size) {
+            // some keysToFetch were not fetched, thus the geometries are not in database
+            // cache null for all those keys
+            for (key in keysToFetch) {
+                if (key.type == ElementType.WAY)
+                    wayGeometryCache.getOrPut(key.id) { null }
+                else if (key.type == ElementType.RELATION)
+                    relationGeometryCache.getOrPut(key.id) { null }
             }
         }
         return cachedEntries + fetchedEntries
