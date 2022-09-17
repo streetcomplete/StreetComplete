@@ -98,11 +98,7 @@ class SpatialCache<K, T>(
             removeTile(tile)
             byTile[tile] = HashSet()
         }
-/*        for (item in items) {
-            val tile = byTile[item.getTilePos()] ?: continue
-            tile.add(item)
-            byKey[item.getKey()] = item
-        }*/
+
         val bboxByTile = byTile.keys.associateWith { it.asBoundingBox(tileZoom) }
         items@for (item in items) {
             val pos = item.getPosition()
