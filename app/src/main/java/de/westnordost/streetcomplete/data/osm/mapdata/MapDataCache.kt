@@ -168,12 +168,11 @@ class MapDataCache(
         id: Long,
         fetch: (ElementType, Long) -> Element?
     ): Element? = synchronized(this) {
-        val element = when (type) {
-            ElementType.NODE -> spatialCache.get(id)
-            ElementType.WAY -> wayCache.getOrPutIfNotNull(id) { fetch(type, id) as? Way }
-            ElementType.RELATION -> relationCache.getOrPutIfNotNull(id) { fetch(type, id) as? Relation }
+        return when (type) {
+            ElementType.NODE -> spatialCache.get(id) ?: fetch(type, id)
+            ElementType.WAY -> wayCache.getOrPutNullable(id) { fetch(type, id) as? Way }
+            ElementType.RELATION -> relationCache.getOrPutNullable(id) { fetch(type, id) as? Relation }
         }
-        return element ?: fetch(type, id)
     }
 
     /**
@@ -184,13 +183,18 @@ class MapDataCache(
         type: ElementType,
         id: Long,
         fetch: (ElementType, Long) -> ElementGeometry?
-    ): ElementGeometry? = synchronized(this)  {
-        val geometry = when (type) {
-            ElementType.NODE -> spatialCache.get(id)?.let { ElementPointGeometry(it.position) }
-            ElementType.WAY -> wayGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
-            ElementType.RELATION -> relationGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
+    ): ElementGeometry? = synchronized(this) {
+        return when (type) {
+            ElementType.NODE -> {
+                val cachedNode = spatialCache.get(id)
+                if (cachedNode != null)
+                    ElementPointGeometry(cachedNode.position)
+                else
+                    fetch(type, id)
+            }
+            ElementType.WAY -> wayGeometryCache.getOrPutNullable(id) { fetch(type, id) }
+            ElementType.RELATION -> relationGeometryCache.getOrPutNullable(id) { fetch(type, id) }
         }
-        return geometry ?: fetch(type, id)
     }
 
     /**
@@ -479,13 +483,14 @@ class MapDataCache(
         return wayIds to relationIds
     }
 
-    private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
-        val v = get(key)
-        if (v != null) return v
-
-        val computed = valueOrNull()
-        if (computed != null) put(key, computed)
-        return computed
+    private fun <K, V> MutableMap<K, V?>.getOrPutNullable(key: K, defaultValue: () -> V?): V? {
+        val value = get(key)
+        return if (value == null && !containsKey(key)) {
+            val computed = defaultValue()
+            put(key, computed)
+            computed
+        } else
+            value
     }
 
     private fun Node.toElementGeometryEntry() =
