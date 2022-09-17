@@ -464,10 +464,7 @@ class MapDataCache(
      */
     fun trim(tiles: Int) { synchronized(this) {
         spatialCache.trim(tiles)
-        trimNonSpatialCaches()
-    }
 
-    private fun trimNonSpatialCaches() {
         // ways and relations with at least one element in cache should not be removed
         val (wayIds, relationIds) = determineWayAndRelationIdsWithElementsInSpatialCache()
 
