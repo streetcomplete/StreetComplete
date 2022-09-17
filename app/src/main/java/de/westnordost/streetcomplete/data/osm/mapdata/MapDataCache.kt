@@ -185,13 +185,7 @@ class MapDataCache(
         fetch: (ElementType, Long) -> ElementGeometry?
     ): ElementGeometry? = synchronized(this) {
         return when (type) {
-            ElementType.NODE -> {
-                val cachedNode = spatialCache.get(id)
-                if (cachedNode != null)
-                    ElementPointGeometry(cachedNode.position)
-                else
-                    fetch(type, id)
-            }
+            ElementType.NODE -> spatialCache.get(id)?.let { ElementPointGeometry(it.position) } ?: fetch(type, id)
             ElementType.WAY -> wayGeometryCache.getOrPutNullable(id) { fetch(type, id) }
             ElementType.RELATION -> relationGeometryCache.getOrPutNullable(id) { fetch(type, id) }
         }
