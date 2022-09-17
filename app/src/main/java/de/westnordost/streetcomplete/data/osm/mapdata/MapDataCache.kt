@@ -43,6 +43,8 @@ class MapDataCache(
     /**
      * Removes elements and geometries with keys in [deletedKeys] from cache and puts the
      * [updatedElements] and [updatedGeometries] into cache.
+     * If a [bbox] is provided, all tiles that make up the bbox are added to spatialCache,
+     * or cleared if they already exist.
      */
     fun update(
         deletedKeys: Collection<ElementKey> = emptyList(),
@@ -51,12 +53,13 @@ class MapDataCache(
         bbox: BoundingBox? = null
     ) { synchronized(this) {
 
-        // TODO explain (bbox) behavior here, best (also) in doc comment
         val updatedNodes = updatedElements.filterIsInstance<Node>()
         val deletedNodeIds = deletedKeys.mapNotNull { if (it.type == ElementType.NODE) it.id else null }
         if (bbox == null) {
+            // just update nodes if the containing tile
             spatialCache.update(updatedOrAdded = updatedNodes, deleted = deletedNodeIds)
         } else {
+            // delete first, then put bbox and nodes to spatialCache (adds/clears tiles in bbox)
             spatialCache.update(deleted = deletedNodeIds)
             spatialCache.replaceAllInBBox(updatedNodes, bbox)
         }
@@ -97,7 +100,7 @@ class MapDataCache(
         // update ways
         val updatedWays = updatedElements.filterIsInstance<Way>()
         for (way in updatedWays) {
-            // old way may now have different node ids, so they need to be removed first
+            // updated way may have different node ids than old one, so those need to be removed first
             val oldWay = wayCache[way.id]
             if (oldWay != null) {
                 for (oldNodeId in oldWay.nodeIds) {
@@ -108,11 +111,17 @@ class MapDataCache(
             /// ...and then the new node ids added
             for (nodeId in way.nodeIds) {
                 // only if the node is already in spatial cache, the way ids it refers to must be known:
-                // TODO explain why
+                // wayIdsByNodeIdCache is required for getMapDataWithGeometry(bbox), because a way is
+                // inside the bbox if it contains a node inside the bbox.
+                // But when adding a new entry to wayIdsByNodeIdCache, we must be sure to have ALL
+                // way(Id)s for that node cached. This is only possible if the node is in spatialCache,
+                // or if an entry for that node already exists (cached from getWaysForNode).
+                // Otherwise the cache may return an incomplete list of ways in getWaysForNode,
+                // instead of fetching the correct list.
                 val wayIdsReferredByNode = if (spatialCache.get(nodeId) != null) {
                     wayIdsByNodeIdCache.getOrPut(nodeId) { ArrayList(2) }
                 } else {
-                    wayIdsByNodeIdCache.get(nodeId)
+                    wayIdsByNodeIdCache[nodeId]
                 }
                 wayIdsReferredByNode?.add(way.id)
             }
@@ -142,7 +151,14 @@ class MapDataCache(
                     val memberKey = ElementKey(member.type, member.ref)
                     // only if the node member is already in the spatial cache or any node of a member
                     // is, the relation ids it refers to must be known:
-                    // TODO explain why
+                    // relationIdsByElementKeyCache is required for getMapDataWithGeometry(bbox),
+                    // because a relation is inside the bbox if it contains a member inside the bbox.
+                    // But when adding a new entry to relationIdsByElementKeyCache, we must be sure
+                    // to have ALL relation(Id)s for that member cached. This is only possible if an
+                    // entry for that member already exists, or the member is in or has nodes in
+                    // spatialCache.
+                    // Otherwise the cache may return an incomplete list of relations in
+                    // getElementsForRelation, instead of fetching the correct list.
                     val isInSpatialCache = when (member.type) {
                         ElementType.NODE -> spatialCache.get(member.ref) != null
                         ElementType.WAY -> member.ref in wayIds
@@ -517,7 +533,7 @@ class MapDataCache(
         return wayIds to relationIds
     }
 
-    private fun <K, V> MutableMap<K, V?>.getOrPutNullable(key: K, defaultValue: () -> V?): V? {
+    private fun <K, V> MutableMap<K, V>.getOrPutNullable(key: K, defaultValue: () -> V): V? {
         val value = get(key)
         return if (value == null && !containsKey(key)) {
             val computed = defaultValue()
