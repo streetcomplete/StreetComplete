@@ -16,7 +16,10 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     """.toElementFilterExpression() }
 
     private val buildingWaysFilter by lazy { """
-        ways, relations with building and building !~ yes|no|service|shed|house|detached|terrace|semi|semidetached_house|roof|carport|construction and location!=underground and (layer !~ -[0-9]+ or location)
+        ways, relations with
+          building and building !~ yes|no|service|shed|house|detached|terrace|semi|semidetached_house|roof|carport|construction
+          and location != underground
+          and (layer !~ -[0-9]+ or location)
     """.toElementFilterExpression() }
 
     private val incomingWaysFilter by lazy { """
