@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
@@ -153,7 +154,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             return false
         }
         if (surfaceValue.shouldBeDescribed) {
-            return note != ""
+            return note != null
         }
         return true
     }
@@ -163,8 +164,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
     }
 
-    fun noteText(): String {
-        return binding.explanationInputMainSurface.text.toString().trim()
+    fun noteText(): String? {
+        return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
 
     override fun hasChanges(): Boolean {
@@ -182,7 +183,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
             it.updateWithCheckDate("surface", surfaceObject.osmValue)
             if (surfaceObject.shouldBeDescribed) {
-                it["surface:note"] = note
+                it["surface:note"] = note!!
             } else {
                 if (element.tags.containsKey("surface:note")) {
                     it.remove("surface:note")

@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
@@ -291,7 +292,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                 return false
             }
             if (surfaceValue.shouldBeDescribed) {
-                return note != ""
+                return note != null
             }
             return true
         }
@@ -306,27 +307,15 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
     }
 
     fun noteText(): String? {
-        val note = binding.explanationInputMainSurface.text.toString().trim()
-        if (note == "") {
-            return null
-        }
-        return note
+        return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
 
     fun cyclewayNoteText(): String? {
-        val note = binding.explanationInputCyclewaySurface.text.toString().trim()
-        if (note == "") {
-            return null
-        }
-        return note
+        return binding.explanationInputCyclewaySurface.nonBlankTextOrNull
     }
 
     fun footwayNoteText(): String? {
-        val note = binding.explanationInputFootwaySurface.text.toString().trim()
-        if (note == "") {
-            return null
-        }
-        return note
+        return binding.explanationInputFootwaySurface.nonBlankTextOrNull
     }
 
     override fun hasChanges(): Boolean {
