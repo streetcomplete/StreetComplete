@@ -152,13 +152,8 @@ class MapDataCache(
                     // only if the node member is already in the spatial cache or any node of a member
                     // is, the relation ids it refers to must be known:
                     // relationIdsByElementKeyCache is required for getMapDataWithGeometry(bbox),
-                    // because a relation is inside the bbox if it contains a member inside the bbox.
-                    // But when adding a new entry to relationIdsByElementKeyCache, we must be sure
-                    // to have ALL relation(Id)s for that member cached. This is only possible if an
-                    // entry for that member already exists, or the member is in or has nodes in
-                    // spatialCache.
-                    // Otherwise the cache may return an incomplete list of relations in
-                    // getElementsForRelation, instead of fetching the correct list.
+                    // because a relation is inside the bbox if it contains a member inside the bbox,
+                    // see comment above for wayIdsReferredByNode
                     val isInSpatialCache = when (member.type) {
                         ElementType.NODE -> spatialCache.get(member.ref) != null
                         ElementType.WAY -> member.ref in wayIds
