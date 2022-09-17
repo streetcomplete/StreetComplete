@@ -28,7 +28,10 @@ class SpatialCache<K, T>(
 ) {
     private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles/0.75).toInt(), 0.75f, true)
     private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
-    val size get() = byTile.size
+
+    /** Number of tiles containing at least one item. Empty tiles are disregarded, as
+     *  they barely use memory, and keeping them may avoid unnecessary fetches from database */
+    val size get() = byTile.count { it.value.isNotEmpty() }
 
     /** @return a new list of all keys in the cache */
     fun getKeys(): List<K> = synchronized(this) { byKey.keys.toList() }
@@ -137,11 +140,7 @@ class SpatialCache<K, T>(
 
     /** Reduces cache size to the given number of non-empty [tiles]. */
     fun trim(tiles: Int = maxTiles) { synchronized(this) {
-        // Empty tiles are kept, as the barely use memory. This avoids empty tiles pushing other
-        // tiles out of the cache and thus may avoid database fetches.
-        if (byTile.count { it.value.isNotEmpty() } <= tiles) return
-
-        while (byTile.count { it.value.isNotEmpty() } > tiles) {
+        while (size > tiles) {
             val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
             removeTile(firstNonEmptyTile)
         }

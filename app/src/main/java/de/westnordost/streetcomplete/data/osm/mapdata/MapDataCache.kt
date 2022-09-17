@@ -444,7 +444,7 @@ class MapDataCache(
         // trim if we fetched new data, and spatialCache is full
         // trim to 90%, so trim is (probably) not immediately called on next fetch
         if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty())
-            trim((maxTiles * 9) / 10)
+            trim((maxTiles * 2) / 3)
         return result
     }
 
