@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map.tangram
 
 import android.graphics.PointF
 import android.graphics.RectF
-import android.location.Location
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.geometry.Geometry
 import com.mapzen.tangram.geometry.Point
@@ -39,8 +38,6 @@ fun ElementGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap
 fun LngLat.toLatLon(): LatLon = LatLon(latitude, longitude)
 
 fun LatLon.toLngLat(): LngLat = LngLat(longitude, latitude)
-
-fun Location.toLngLat(): LngLat = LngLat(longitude, latitude)
 
 fun KtMapController.screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
     val p = PointF()

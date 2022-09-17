@@ -411,7 +411,7 @@ private val links = listOf(
         "https://oomap.co.uk/global/",
         "OpenOrienteeringMap",
         LinkCategory.GOODIES,
-        null,
+        R.drawable.ic_link_openorienteeringmap,
         R.string.link_openorienteeringmap_description
     ),
     Link(

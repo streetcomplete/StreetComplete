@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.location.Location
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.initialBearingTo
 
-/** Utility functions to estimate current bearing from a track. This is necessary because
- *  Location.bearingAccuracy doesn't exist on Android versions below Android API 26
- *  (Build.VERSION_CODES.O) , otherwise a solution based on this would be less code. E.g. take
- *  bearing if accuracy < X */
-
-fun getTrackBearing(track: List<Location>): Float? {
-    val last = track.lastOrNull() ?: return null
-    val point = track.findLast { it.distanceTo(last) > MIN_TRACK_DISTANCE_FOR_BEARING } ?: return null
-    return point.bearingTo(last)
+/** Utility function to estimate current bearing from a track */
+fun getTrackBearing(track: List<Trackpoint>): Double? {
+    val last = track.lastOrNull()?.position ?: return null
+    val point = track.findLast { it.position.distanceTo(last) > MIN_TRACK_DISTANCE_FOR_BEARING }?.position ?: return null
+    return point.initialBearingTo(last)
 }
 
 private const val MIN_TRACK_DISTANCE_FOR_BEARING = 15f // 15 meters
