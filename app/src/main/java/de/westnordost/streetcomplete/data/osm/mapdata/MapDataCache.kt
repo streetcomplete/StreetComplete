@@ -468,23 +468,21 @@ class MapDataCache(
     }
 
     private fun trimNonSpatialCaches() {
-        synchronized(this) {
-            // ways and relations with at least one element in cache should not be removed
-            val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
+        // ways and relations with at least one element in cache should not be removed
+        val (wayIds, relationIds) = getWayAndRelationIdsWithElementsInSpatialCache()
 
-            wayCache.keys.retainAll { it in wayIds }
-            relationCache.keys.retainAll { it in relationIds }
-            wayGeometryCache.keys.retainAll { it in wayIds }
-            relationGeometryCache.keys.retainAll { it in relationIds }
+        wayCache.keys.retainAll { it in wayIds }
+        relationCache.keys.retainAll { it in relationIds }
+        wayGeometryCache.keys.retainAll { it in wayIds }
+        relationGeometryCache.keys.retainAll { it in relationIds }
 
-            // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
-            wayIdsByNodeIdCache.keys.retainAll { spatialCache.get(it) != null }
-            relationIdsByElementKeyCache.keys.retainAll {
-                when (it.type) {
-                    ElementType.NODE -> spatialCache.get(it.id) != null
-                    ElementType.WAY -> it.id in wayIds
-                    ElementType.RELATION -> it.id in relationIds
-                }
+        // now clean up wayIdsByNodeIdCache and relationIdsByElementKeyCache
+        wayIdsByNodeIdCache.keys.retainAll { spatialCache.get(it) != null }
+        relationIdsByElementKeyCache.keys.retainAll {
+            when (it.type) {
+                ElementType.NODE -> spatialCache.get(it.id) != null
+                ElementType.WAY -> it.id in wayIds
+                ElementType.RELATION -> it.id in relationIds
             }
         }
     }
