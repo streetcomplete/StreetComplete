@@ -44,9 +44,6 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
     override fun isFormComplete() = ref != null
 
     private fun createMarkAsAssemblyPointAnswer(): AnswerItem? {
-        val node = element as? Node ?: return null
-        if (node.tags["emergency"] == "assembly_point") return null
-
         return AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) {
             applyAnswer(IsAssemblyPointAnswer)
         }
