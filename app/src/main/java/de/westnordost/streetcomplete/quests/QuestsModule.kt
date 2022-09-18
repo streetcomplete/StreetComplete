@@ -364,6 +364,8 @@ fun questTypeRegistry(
     AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
     AddPostboxRef(), // requires text input and to be very close to the collection plate
 
+    AddAccessPointRef(), // requires text input and to be very close to the collection plate
+
     AddWheelchairAccessOutside(),
 
     // road but information is visible usually at the beginning of the marked stretch of way
@@ -467,7 +469,4 @@ fun questTypeRegistry(
 
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     AddWayLit(),
-
-    /* added it at the end because it could be not easy to understand this quest */
-    AddAccessPointRef(),
 ))
