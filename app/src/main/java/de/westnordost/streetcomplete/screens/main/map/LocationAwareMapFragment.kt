@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
-import com.google.ar.core.Track
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
@@ -303,7 +302,6 @@ open class LocationAwareMapFragment : MapFragment() {
         outState.putString(TRACKS, Json.encodeToString(tracks.takeLastNested(1000)))
         outState.putBoolean(TRACKS_IS_RECORDING, isRecordingTracks)
     }
-
 
     companion object {
         private const val PREF_FOLLOWING = "map_following"
