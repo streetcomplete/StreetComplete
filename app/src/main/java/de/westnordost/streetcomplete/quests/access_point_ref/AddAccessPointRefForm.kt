@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
 class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
@@ -20,7 +21,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
         createMarkAsAssemblyPointAnswer()
     )
 
-    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +30,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(AccessPointRef(ref))
+        applyAnswer(AccessPointRef(ref!!))
     }
 
     private fun confirmNoRef() {
