@@ -7,6 +7,6 @@ class AddAtmOperatorForm : ANameWithSuggestionsForm<String>() {
     override val suggestions: List<String>? get() = countryInfo.atmOperators
 
     override fun onClickOk() {
-        applyAnswer(name)
+        applyAnswer(name!!)
     }
 }
