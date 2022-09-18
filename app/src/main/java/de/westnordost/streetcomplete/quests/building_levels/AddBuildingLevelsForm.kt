@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedBu
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
@@ -27,8 +27,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = binding.levelsInput.nonBlankTextOrNull?.toInt()
-    private val roofLevels get() = binding.roofLevelsInput.nonBlankTextOrNull?.toInt()
+    private val levels get() = binding.levelsInput.intOrNull
+    private val roofLevels get() = binding.roofLevelsInput.intOrNull
 
     private val lastPickedAnswers by lazy {
         favs.get()
