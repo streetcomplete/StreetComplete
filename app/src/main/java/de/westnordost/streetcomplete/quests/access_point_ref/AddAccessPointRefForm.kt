@@ -41,7 +41,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
             .show()
     }
 
-    override fun isFormComplete() = ref.isNotEmpty()
+    override fun isFormComplete() = ref != null
 
     private fun createMarkAsAssemblyPointAnswer(): AnswerItem? {
         val node = element as? Node ?: return null
