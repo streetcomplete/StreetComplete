@@ -1433,7 +1433,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="street_standing_prohibited">No standing</string>
     <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
     <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
-    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of on- or off-street parking. Additional restrictions can be specified later.
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="street_parking_street_width">Street width: %s</string>

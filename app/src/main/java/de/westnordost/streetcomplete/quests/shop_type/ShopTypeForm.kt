@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 
 class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
@@ -24,7 +25,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
     private lateinit var radioButtons: List<RadioButton>
     private var selectedRadioButtonId: Int = 0
 
-    private val shopTypeText get() = binding.presetsEditText.text?.toString().orEmpty().trim()
+    private val shopTypeText get() = binding.presetsEditText.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +60,7 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
     override fun isFormComplete() = when (selectedRadioButtonId) {
         R.id.vacantRadioButton    -> true
         R.id.leaveNoteRadioButton -> true
-        R.id.replaceRadioButton   -> shopTypeText.isNotEmpty()
+        R.id.replaceRadioButton   -> shopTypeText != null
         else                      -> false
     }
 

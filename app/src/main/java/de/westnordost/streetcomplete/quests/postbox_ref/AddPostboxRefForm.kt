@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
 class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
 
@@ -18,7 +19,7 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
         AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
-    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,7 +27,7 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(Ref(ref))
+        applyAnswer(Ref(ref!!))
     }
 
     private fun confirmNoRef() {
@@ -38,5 +39,5 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
             .show()
     }
 
-    override fun isFormComplete() = ref.isNotEmpty()
+    override fun isFormComplete() = ref != null
 }
