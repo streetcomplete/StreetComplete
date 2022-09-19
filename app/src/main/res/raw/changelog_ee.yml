@@ -10,6 +10,7 @@ v47.0_ee: |
   <li>Level filter now works on overlays too/li>
   <li>Prevent short scroll to user location at app start when map was at a different position/li>
   <li>Make animation when solving a quest optional/li>
+  <li>Optionally store map tiles on external SD card if available/li>
   </ul>
 
 v46.0_ee: |
