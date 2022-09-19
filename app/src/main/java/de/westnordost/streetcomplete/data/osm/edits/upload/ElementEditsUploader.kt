@@ -40,19 +40,19 @@ class ElementEditsUploader(
     suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
             val edit = elementEditsController.getOldestUnsynced() ?: break
-            val idProvider = elementEditsController.getIdProvider(edit.id)
+            val getIdProvider: () -> ElementIdProvider = { elementEditsController.getIdProvider(edit.id) }
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
-            withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
+            withContext(scope.coroutineContext) { uploadEdit(edit, getIdProvider) }
         }
     } }
 
-    private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
+    private suspend fun uploadEdit(edit: ElementEdit, getIdProvider: () -> ElementIdProvider) {
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
-            val updates = singleUploader.upload(edit, idProvider)
+            val updates = singleUploader.upload(edit, getIdProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(edit.type.name, edit.position)

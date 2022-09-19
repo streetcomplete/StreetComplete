@@ -103,7 +103,7 @@ class MapDataController internal constructor(
             createdElementsController.putAll(newElementKeys)
         }
 
-        val mapDataWithGeom = MutableMapDataWithGeometry(mapData, geometryEntries)
+        val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
