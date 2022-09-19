@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
@@ -87,6 +88,7 @@ class SettingsFragment :
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val dayNightQuestFilter: DayNightQuestFilter by inject()
     private val db: Database by inject()
+    private val cleaner: Cleaner by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -718,6 +720,9 @@ class SettingsFragment :
             Prefs.QUEST_SETTINGS_PER_PRESET -> {
                 prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)).commit()
                 restartApp()
+            }
+            Prefs.DATA_RETAIN_TIME -> {
+                cleaner.clean()
             }
         }
     }
