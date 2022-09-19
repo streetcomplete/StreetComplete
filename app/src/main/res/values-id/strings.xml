@@ -1239,7 +1239,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_buildingType_bridge">"Jembatan di antara bangunan (skyway)"</string>
     <string name="quest_dietType_explanation_halal">"Produk-produk Halal harus disiapkan dengan aturan khusus, dengan lembaga sertifikasi Halal menandai bahwa produk sesuai."</string>
     <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameter ini terlihat tidak masuk akal."</string>
     <string name="quest_fireHydrant_confirmation_title">"Apa kamu yakin? Kadang diameternya dapat ditemukan pada hidran itu sendiri."</string>
     <string name="short_no_answer_on_button">"Tidak"</string>
     <string name="restore_confirmation">"Pulihkan"</string>
@@ -1252,7 +1251,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="pref_title_language_select">"Pilih bahasa"</string>
     <string name="language_default">"Default Sistem"</string>
     <string name="on_floor">"pada lantai %s"</string>
-    <string name="quest_street_parking_title">"Jika bisa, bagaimana mobil dapat diparkir di sini?"</string>
     <string name="select_street_parking_position">"Pilih posisi:"</string>
     <string name="street_parking_parallel">"Paralel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
@@ -1353,9 +1351,6 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Apakah tersedia kamar kecil di sini?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Apakah kamar kecil pada tempat ini ramah kursi roda?"</string>
     <string name="link_backofyourhand_description">"Sebaik apa kamu mengenal daerahmu? Uji pengetahuanmu dengan memposisikan jalanan."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Jelajahi bagaimana OSM dahulu saat baru dimulai dibandingkan bagaimana OSM terlihat sekarang!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->

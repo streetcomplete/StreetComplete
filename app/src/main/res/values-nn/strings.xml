@@ -350,10 +350,10 @@
     <string name="quest_carWashType_service">"Tilsette vaskar bilen"</string>
     <string name="enable_quest_confirmation_title">"Vil du visa denne oppdragstypen?"</string>
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
-    <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
@@ -1021,7 +1021,6 @@
     <string name="quest_generic_answer_is_actually_steps">"Dette er ei trapp"</string>
     <string name="quest_barrier_type_passage_conversion">"Gjort om til ei opning gjennom mur, gjerde e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Gjort om til ein port"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameteren verkar usannsynleg."</string>
     <string name="short_no_answer_on_button">"Nei"</string>
     <string name="restore_confirmation">"Gjenopprett"</string>
     <string name="restore_dialog_message">"Vil du gjenoppretta alle oppdraga du tidlegare har gøymt?"</string>
@@ -1098,7 +1097,6 @@ sorted alphabetically by title -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er toalettet her tilgjengeleg med rullestol?"</string>
     <string name="link_valhalla_description">"Ruteplanleggjar som krev svært lite minne og som støttar ulike reisemåtar, isokron­kart, meir meir."</string>
     <string name="link_backofyourhand_description">"Kor godt kjenner du nærmiljøet ditt? Test deg sjølv ved å finna gater."</string>
-    <string name="link_thenandnow_description">"Utforsk korleis OSM såg ut før, samanlikna med no!"</string>
     <string name="link_notesreview_description">"Sjå, filtrer og kommenter på merknadar du òg andre har lagt att. Mange merknadar kan lukkast ved å leggja inn informasjonen som står i dei, ved hjelp av programma iD eller JOSM."</string>
 
     <!-- Quests

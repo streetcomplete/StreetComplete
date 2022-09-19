@@ -2154,7 +2154,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_surface_value_concrete_plates">"Placas de concreto"</string>
     <string name="quest_surface_value_concrete_lanes">"Pistas de concreto"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece implausível."</string>
     <string name="quest_fireHydrant_confirmation_title">"Você tem certeza? Às vezes, o diâmetro pode ser encontrado no próprio hidrante."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
@@ -2181,7 +2180,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
 
     <!-- Fuzzy -->
     <string name="on_floor">"no andar %s:"</string>
-    <string name="quest_street_parking_title">"Como os carros estacionam aqui, se permitidos?"</string>
     <string name="select_street_parking_orientation">"Selecione a orientação para a estrada:"</string>
     <string name="select_street_parking_position">"Selecione a posição:"</string>
     <string name="select_street_parking_no">"Algum sinal ou marcação de estrada aqui?"</string>
@@ -2419,9 +2417,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Você tem certeza de que os ciclistas não estão autorizados a usar esta via de mão única em ambas as direções? Na dúvida, verifique se há placa no final da rua"</string>
     <string name="link_valhalla_description">"Mecanismo de roteamento com uma pegada de memória muito pequena, roteamento multimodal, isócronas e muito mais."</string>
     <string name="link_backofyourhand_description">"Quão bem você conhece sua área? Teste seus conhecimentos localizando ruas."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Explore a aparência do OSM nos primeiros dias em comparação com a aparência atual!"</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"Veja, filtre e comente convenientemente as notas criadas por você e outras pessoas. Muitas notas podem ser resolvidas colocando as informações nelas contidas no mapa com iD ou JOSM"</string>

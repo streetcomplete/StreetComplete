@@ -2311,7 +2311,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_surface_value_concrete_plates">"Porlanezko plakak"</string>
     <string name="quest_surface_value_concrete_lanes">"Porlanezko errailak"</string>
     <string name="quest_fireHydrant_diameter_title">"Zein da ur-hargune honetan aipatzen den diametroa?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diametro horrek ez du oso logikoa ematen."</string>
     <string name="quest_fireHydrant_confirmation_title">"Ziur zaude? Batzuetan diametroa ur-hargunean bertan agertzen da."</string>
     <string name="quest_diet_answer_no_food">"Ez du janaririk"</string>
     <string name="short_no_answer_on_button">"Ez"</string>
@@ -2340,7 +2339,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
 
     <!-- Fuzzy -->
     <string name="on_floor">"%s solairuan:"</string>
-    <string name="quest_street_parking_title">"Nola aparkatu daitezke autoak hemen?"</string>
     <string name="select_street_parking_orientation">"Hautatu errepideren noranzkoa:"</string>
     <string name="select_street_parking_position">"Aukeratu kokapena:"</string>
     <string name="select_street_parking_no">"Ba al dago seinale edo markarik hemen?"</string>
@@ -2576,7 +2574,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ziur al zaude txirrindulariek ezin dutela noranzko bakarreko kale hau bi noranzkoetan erabili? Zalantzarik izanez gero, egiaztatu kalearen amaieran seinalerik dagoen."</string>
     <string name="link_valhalla_description">"Bideratze-motorra memoria-aztarna oso txikiarekin, bideratze multimodalarekin, isokroniak eta abar."</string>
     <string name="link_backofyourhand_description">"Ondo ezagutzen duzu zure zona? Probatu zure ezagutza kaleak kokatuz."</string>
-    <string name="link_thenandnow_description">"Alderatu OSM nola ikusten zen lehen egunetan eta nola ikusten den orain!"</string>
     <string name="link_notesreview_description">"Ikusi, iragazi eta komentatu zuk eta besteek sortutako oharrak. Ohar asko ebatzi daitezke haietan jasotako informazioa mapan jarrita iD edo JOSMren bidez"</string>
 
     <!-- Quests

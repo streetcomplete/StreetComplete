@@ -1644,7 +1644,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Jaka średnica jest na znaku tego hydrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ta średnica wydaje się być podejrzana."</string>
     <string name="quest_fireHydrant_confirmation_title">"Jesteś pewien? Czasem średnica jest też podana na samym hydrancie."</string>
     <string name="quest_diet_answer_no_food">"Nie ma jedzenia"</string>
     <string name="short_no_answer_on_button">"Nie"</string>
@@ -1673,7 +1672,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
 
     <!-- Fuzzy -->
     <string name="on_floor">"na %s piętrze:"</string>
-    <string name="quest_street_parking_title">"Jak mogą tu parkować samochody, jeśli w ogóle?"</string>
     <string name="select_street_parking_orientation">"Wybierz orientację na jezdnię:"</string>
     <string name="select_street_parking_position">"Wybierz pozycję:"</string>
     <string name="select_street_parking_no">"Czy jest tu jakiś znak lub oznaczenie drogowe?"</string>
@@ -1915,9 +1913,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Czy na pewno rowerzyści nie mogą korzystać z tej drogi jednokierunkowej w obu kierunkach? W razie wątpliwości sprawdź znak na końcu ulicy."</string>
     <string name="link_valhalla_description">"Silnik routingu o bardzo małej ilości pamięci, routing multimodalny, izochrony i nie tylko."</string>
     <string name="link_backofyourhand_description">"Jak dobrze znasz swoją okolicę? Sprawdź swoją wiedzę, lokalizując ulice."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Zobacz, jak OSM wyglądał na początku w porównaniu do tego, jak wygląda teraz!"</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"Wygodnie przeglądaj, filtruj i komentuj notatki stworzone przez Ciebie i innych. Wiele notatek można rozwiązać umieszczając informacje w nich zawarte na mapie za pomocą iD lub JOSM"</string>

@@ -1278,7 +1278,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Toca la carretera en el mapa"</string>
+    <string name="quest_address_street_hint">"Toca la calle en el mapa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Cruce marcado"</string>
@@ -1495,7 +1495,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <!-- https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete:lanes -->
     <string name="quest_surface_value_concrete_lanes">"Roderas de cemento u hormigón para vehículos"</string>
     <string name="quest_fireHydrant_diameter_title">"¿Qué diámetro de toma está especificado en esta boca de incendio?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"El diámetro que has puesto parece poco realista."</string>
     <string name="quest_fireHydrant_confirmation_title">"¿Seguro? A veces el diámetro está marcado en la propia boca."</string>
     <string name="quest_diet_answer_no_food">"No tiene comida."</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1522,7 +1521,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="pref_title_language_select">"Elige un idioma"</string>
     <string name="language_default">"Idioma del sistema"</string>
     <string name="on_floor">"En el piso %s:"</string>
-    <string name="quest_street_parking_title">"¿Cómo se puede aparcar aquí? Si es que se puede."</string>
     <string name="select_street_parking_orientation">"Elige la orientación hacia la vía:"</string>
     <string name="select_street_parking_position">"Elige la posición:"</string>
     <string name="select_street_parking_no">"¿Ves alguna señal o marca en el suelo?"</string>
@@ -1764,7 +1762,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"¿Estás seguro de que los ciclistas no pueden usar esta calle de sentido único en ambas direcciones? Si tienes dudas mira si hay señales al final de la calle."</string>
     <string name="link_valhalla_description">"Motor de enrutamiento múltiple con un consumo muy pequeño de memoria, cálculo isócrono y más cosas."</string>
     <string name="link_backofyourhand_description">"¿Cómo de bien conoces tu área? Pon a prueba tus conocimientos localizando calles."</string>
-    <string name="link_thenandnow_description">"Mira las diferencias entre el OSM de hace unos años y el de ahora."</string>
     <string name="link_notesreview_description">"Vea, filtre y comente cómodamente las notas creadas por usted y otros. Muchas notas se pueden resolver añadiendo la información que contienen en el mapa con iD o JOSM"</string>
 
     <!-- Quests

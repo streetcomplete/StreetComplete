@@ -1191,7 +1191,6 @@
     <string name="quest_surface_value_concrete_plates">"Плочасти бетон"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонске саобраћ. траке"</string>
     <string name="quest_fireHydrant_diameter_title">"Који је пречник написан на знаку хидранта?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Чини се да је пречник невероватан."</string>
     <string name="quest_fireHydrant_confirmation_title">"Да ли сте сигурни? Понекад се пречник може наћи на самом хидранту."</string>
     <string name="quest_diet_answer_no_food">"Нема хране"</string>
     <string name="short_no_answer_on_button">"Не"</string>
@@ -1214,7 +1213,6 @@
     <string name="pref_title_language_select">"Одабери језик"</string>
     <string name="language_default">"Исти као уређај"</string>
     <string name="on_floor">"на спрату %s"</string>
-    <string name="quest_street_parking_title">"Како се возила овде паркирају, ако уопште могу?"</string>
     <string name="select_street_parking_orientation">"Одаберите смер у односу на пут"</string>
     <string name="select_street_parking_position">"Одаберите позицију паркинга"</string>
     <string name="select_street_parking_no">"Да ли овде постоји знак или ознака на улици?"</string>
@@ -1448,9 +1446,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Да ли сте сигурни да бициклисти не смеју да користе ову једносмерну улицу у оба смера? Ако нисте сигурни, проверите да ли има саобраћајног знака на крају улице."</string>
     <string name="link_valhalla_description">"Механизам за рутирање са алоцираном малом меморијом, алтернативним маршрутама, изохроне и др."</string>
     <string name="link_backofyourhand_description">"Колико добро познајете свој крај? Тестирајте се проналажењем улица."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Истражите како је OSM изгледао на почетку у поређењу са данашњим подацима!"</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"Згодан начин приказа, филтрирање и коментарисање напомена које сте направили ви и други. Многе напомене могу бити решене додавањем информација на карти путем iD или JOSM"</string>

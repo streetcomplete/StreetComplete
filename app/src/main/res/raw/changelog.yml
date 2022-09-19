@@ -13,7 +13,7 @@ v47.0-beta1: |
   <li>Several performance improvements and reduced network traffic on uploading (#4078, #4202, #4319, #4339), by @Helium314</li>
   <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
   <li>Refine when the entrance type quest is asked (#4372, #4380), by @matkoniecz</li>
-  <li>Other minor enhancements (#4380, #4381), thanks @matkoniecz, @HolgerJeromin</li>
+  <li>Other minor enhancements (#4380, #4381, #4393), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
