@@ -77,6 +77,7 @@ object Prefs {
     const val CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING = "close_form_immediately"
     const val CUSTOM_OVERLAY_FILTER = "custom_overlay_filter"
     const val SHOW_SOLVED_ANIMATION = "show_solved_animation"
+    const val PREFER_EXTERNAL_SD = "prefer_external_sd"
 
     enum class Autosync {
         ON, WIFI, OFF

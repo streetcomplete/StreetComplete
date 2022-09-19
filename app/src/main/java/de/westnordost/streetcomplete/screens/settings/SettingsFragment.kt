@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Environment
 import android.text.InputType
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -724,6 +725,38 @@ class SettingsFragment :
             Prefs.DATA_RETAIN_TIME -> {
                 cleaner.clean()
             }
+            Prefs.PREFER_EXTERNAL_SD -> {
+                val sd = requireContext().externalCacheDirs
+                    .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: return
+                val default = requireContext().externalCacheDir ?: return
+
+                // move to preferred storage
+                val sdPreferred = prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)
+                var d: AlertDialog? = null
+                if (sdPreferred) {
+                    if (!default.exists()) return
+                    sd.mkdirs()
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        default.copyRecursively(sd, false)
+                        default.deleteRecursively()
+                        d?.dismiss()
+                    }
+                } else {
+                    if (!sd.exists()) return
+                    default.mkdirs()
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        sd.copyRecursively(default, false)
+                        sd.deleteRecursively()
+                        d?.dismiss()
+                    }
+                }
+                restartNecessary = true
+                d = AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.moving)
+                    .setMessage(R.string.pref_use_sd_summary)
+                    .setCancelable(false)
+                    .show()
+            }
         }
     }
 
@@ -745,7 +778,7 @@ class SettingsFragment :
     }
 
     private suspend fun deleteTiles() = withContext(Dispatchers.IO) {
-        context?.externalCacheDir?.purge()
+        context?.externalCacheDirs?.forEach { it.purge() }
     }
     private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
         osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
