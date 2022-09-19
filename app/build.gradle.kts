@@ -239,6 +239,12 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 //     targetDir = "$projectDir/src/main/assets/osmfeatures/brands"
 // }
 
+tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
+    group = "streetcomplete"
+    version = presetsVersion
+    targetDir = "$projectDir/src/main/assets/osmfeatures/icons"
+}
+
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
