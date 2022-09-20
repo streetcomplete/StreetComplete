@@ -372,10 +372,10 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_carWashType_service">"keine Selbstbedienung"</string>
     <string name="enable_quest_confirmation_title">"Diesen Aufgabentyp aktivieren?"</string>
     <string name="default_disabled_msg_go_inside">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können."</string>
-    <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskriptions-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orientierungs-nummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Radweg auch auf anderer Seite …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Radfahrer dürfen in beide Richtungen fahren"</string>
@@ -1077,7 +1077,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_surface_value_concrete_plates">"Betonplatten"</string>
     <string name="quest_surface_value_concrete_lanes">"Fahrspuren aus Beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Welcher Durchmesser steht auf dem Schild für diesen Hydranten?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Dieser Durchmesser sieht ungewöhnlich aus."</string>
     <string name="quest_fireHydrant_confirmation_title">"Bist du sicher? Manchmal steht der Durchmesser auf dem Hydranten selbst."</string>
     <string name="quest_diet_answer_no_food">"Hier gibt es nichts zu essen"</string>
     <string name="short_no_answer_on_button">"Nein"</string>
@@ -1098,13 +1097,12 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="pref_title_language_select">"Sprache auswählen"</string>
     <string name="language_default">"Systemvorgabe"</string>
     <string name="on_floor">"in Stockwerk %s"</string>
-    <string name="quest_street_parking_title">"Wie kann hier geparkt werden (falls überhaupt)?"</string>
     <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Straße:"</string>
     <string name="select_street_parking_position">"Wähle Position:"</string>
     <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
-    <string name="street_parking_perpendicular">"Im rechten Winkel"</string>
+    <string name="street_parking_perpendicular">"senkrecht"</string>
     <string name="street_parking_on_street">"Auf der Straße"</string>
     <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
@@ -1119,7 +1117,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_standing_prohibited">"Warteverbot"</string>
     <string name="street_parking_conditional_restrictions">"Parken / Halten ist bedingt eingeschränkt"</string>
     <string name="street_parking_no_other_reasons">"Kein explizites Schild / Parken nicht möglich"</string>
-    <string name="street_parking_conditional_restrictions_hint">"Wenn es überhaupt möglich ist, hier zu parken oder zu halten, beantworte erst, wie hier geparkt wird. Welche Einschränkungen genau gelten, kann später angegeben werden.
+    <string name="street_parking_conditional_restrictions_hint">"Wenn es überhaupt möglich ist, hier zu parken oder zu halten, beantworte zunächst, wie diejenigen, die es dürfen, hier parken. Welche Einschränkungen genau gelten, kann später hinzugefügt werden.
 
 Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Hausnummer und -name …"</string>
@@ -1216,7 +1214,7 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="about_description_donate_google_play2">"Danke, dass du diese App unterstützen möchtest!
 Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die zu Spenden führen, in der App angezeigt werden. Sogar die Verlinkung zu unserer Projektseite ist in diesem Zusammenhang nicht erlaubt."</string>
     <string name="link_osmand_description">"App für Online- und Offline-Kartenansicht und Navigation"</string>
-    <string name="link_sunders_description">"Eine Karte von Kameras und Überwachungstechnik"</string>
+    <string name="link_sunders_description">"Eine Karte für Kameras und Überwachungstechnik"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Bleib dichter am Pfeil, aber achte dabei auf den Verkehr!"</string>
     <string name="quest_sidewalk_surface_title">"Welche Oberfläche hat der Bürgersteig hier?"</string>
     <string name="quest_tactilePaving_incorrect">"Nur auf einer Seite"</string>
@@ -1295,7 +1293,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Sicher, dass es Radfahrern nicht erlaubt ist, die Einbahnstraße in beide Richtungen zu nutzen? Im Zweifel schaue lieber am Ende der Straße nach einem Schild."</string>
     <string name="link_valhalla_description">"Routenplanung mit sehr geringem Speicherbedarf, multimodalem Routing, Isochronen und mehr."</string>
     <string name="link_backofyourhand_description">"Wie gut kennst du deine Nachbarschaft? Teste Dein Wissen!"</string>
-    <string name="link_thenandnow_description">"Erkunde, wie OSM früher einmal im Vergleich zu heute aussah!"</string>
     <string name="link_notesreview_description">"Bequemes Anzeigen, Filtern und Kommentieren von Hinweisen, die von dir und anderen erstellt wurden. Viele Hinweise können gelöst werden, indem die darin enthaltenen Informationen mit iD oder JOSM in die Karte eingetragen werden."</string>
 
     <!-- Quests
@@ -1344,8 +1341,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_statue">"Statue"</string>
     <string name="quest_memorialType_bust">"Büste"</string>
     <string name="quest_memorialType_plaque">"Plakette"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_memorialType_war_memorial">"Kriegerdenkmal"</string>
     <string name="quest_memorialType_stone">"Fels"</string>
     <string name="quest_memorialType_obelisk">"Obelisk"</string>
@@ -1384,4 +1379,9 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht unplausibel aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du persönlich die gesamte Länge vermessen hast, wie es immer erforderlich ist?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
+    <string name="street_parking_street_width">"Straßenbreite: %s"</string>
+    <string name="overlay_street_parking">"Parkstreifen"</string>
+    <string name="link_ohsomehex_description">"Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit"</string>
+    <string name="link_opencampingmap_description">"Eine Weltkarte der Campingplätze"</string>
+    <string name="quest_atm_cashin_title">"Kann man an diesem Geldautomaten Bargeld einzahlen?"</string>
 </resources>

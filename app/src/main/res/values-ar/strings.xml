@@ -1305,7 +1305,6 @@
     <string name="quest_surface_value_concrete_plates">"ألواح خرسانية"</string>
     <string name="quest_surface_value_concrete_lanes">"مسارات خرسانية"</string>
     <string name="quest_fireHydrant_diameter_title">"ما القطر المحدد على علامة صنبور إطفاء الحرائق هذا؟"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"هذا القطرغير واقعي ويبدو بأنه غير قابل للتصديق."</string>
     <string name="quest_fireHydrant_confirmation_title">"هل أنت واثق؟ في بعض الأحيان يمكن العثور على القطر على صنبور المياه نفسه."</string>
     <string name="quest_diet_answer_no_food">"ليس لديها طعام"</string>
     <string name="short_no_answer_on_button">"لا"</string>
@@ -1327,7 +1326,6 @@
     <string name="language_default">"حسب إعدادات النظام الافتراضية"</string>
     <string name="on_floor">"على الدور %s
 "</string>
-    <string name="quest_street_parking_title">"كيف يمكن للسيارات أن تقف هنا ، على كل حال؟"</string>
     <string name="select_street_parking_orientation">"حدد الاتجاه نحو الطريق:"</string>
     <string name="select_street_parking_position">"حدد الموضع:"</string>
     <string name="select_street_parking_no">"أي علامة مرورية أو علامة طريق هنا؟"</string>
@@ -1347,6 +1345,8 @@
     <string name="street_parking_conditional_restrictions">"وقوف السيارات مقيد بشروط"</string>
     <string name="street_parking_no_other_reasons">"لا توجد علامة صريحة / وقوف السيارات غير ممكن
 "</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"إذا كان من الممكن التوقف بشكل مطلق هنا ، حدد نوع موقف السيارات هل هو على الشارع أو بعيدًا عنه، كما يمكن تحديد قيود إضافية لاحقًا.
 
 كما يمكنك ترك ملاحظة بدلاً من ذلك (مع صورة)."</string>
@@ -1517,7 +1517,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"هل أنت متأكد من عدم السماح لراكبي الدراجات بكلا الاتجاهين باستخدام هذا الشارع الذي هو باتجاه واحد؟ إذا كنت غير متأكدًا، فابحث عن لافتة في نهاية الشارع."</string>
     <string name="link_valhalla_description">"محرك توجيه بمساحة ذاكرة صغيرة جدًا وتوجيه متعدد الوسائط ومتساوي الزمان والمزيد."</string>
     <string name="link_backofyourhand_description">"ما مدى معرفتك بمنطقتك؟ اختبر معلوماتك من خلال تحديد نوع وتصنيف الشوارع."</string>
-    <string name="link_thenandnow_description">"اكتشف كيف كانت خريطة الشارع المفتوحة تبدوا في الأيام الأولى مقارنة بالشكل التي تبدو عليه الآن!"</string>
     <string name="link_notesreview_description">"يمكنك مشاهدة الملاحظات التي أنشأتها أنت والآخرون بسهولة وتصفيتها والتعليق عليها، كما يمكن حل العديد من الملاحظات عن طريق وضع المعلومات الواردة فيها على الخريطة باستخدام محررات أخرى مثل iD أو JOSM"</string>
 
     <!-- Quests

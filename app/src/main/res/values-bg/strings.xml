@@ -24,9 +24,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Можете да оставите публично видима бележка за това място, която други картографи могат да коментират и да разрешат, или пък просто да скриете въпроса."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"Добре"</string>
+    <string name="quest_leave_new_note_yes">"Ще оставя бележка"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Не, просто да се скрие"</string>
@@ -43,7 +41,7 @@
     <string name="quest_openingHours_add_hours">"Добавете часове"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_add_weekdays">"Добавете дни от седмицата"</string>
+    <string name="quest_openingHours_add_weekdays">"Добавяне дни от седмицата"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Изберете месеци"</string>
 
     <!-- Fuzzy -->
@@ -68,14 +66,14 @@
     <string name="turn_on_location_request">"Местоположението е изключено. Да се отворят ли Настройки, за включване?"</string>
 
     <!-- Fuzzy -->
-    <string name="no_location_permission_warning">"Местоположението ти е нужно за сканиране за въпроси наблизо."</string>
+    <string name="no_location_permission_warning">"Местоположението ви е нужно за сканиране за въпроси наблизо."</string>
     <string name="about_title_authors">"Автор(и)"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s Тобиас Цвик и други"</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_repository">"Източник"</string>
+    <string name="about_title_repository">"Страница на проекта"</string>
     <string name="about_summary_repository">"в GitHub"</string>
     <string name="about_title_report_error">"Докладвай грешка"</string>
     <string name="about_title_feedback">"Дай обратна връзка"</string>
@@ -1316,7 +1314,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Този размер изглежда нереален."</string>
     <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>
     <string name="quest_diet_answer_no_food">"Без храна"</string>
     <string name="short_no_answer_on_button">"Не"</string>
@@ -1345,7 +1342,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"на етаж %s:"</string>
-    <string name="quest_street_parking_title">"Как се паркира тук, ако е разрешено изобщо?"</string>
     <string name="select_street_parking_orientation">"Изберете ориентацията спрямо пътното платно:"</string>
     <string name="select_street_parking_position">"Изберете позиция:"</string>
     <string name="select_street_parking_no">"Има ли пътен знак или маркировка?"</string>
@@ -1579,7 +1575,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Сигурни ли сте, че велосипедистите не могат да ползват тази еднопосочна улица и двете направления? Ако се съмнявате, проверете дали има знаци за това."</string>
     <string name="link_valhalla_description">"Маршрутизатор с ниски изисквания за памет и добри възможности."</string>
     <string name="link_backofyourhand_description">"Колко добре познавате вашия район? Проверете знанията си, като откриете улиците."</string>
-    <string name="link_thenandnow_description">"Вижте как е изглеждал OSM в началото в сравнение със сега!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1649,4 +1644,17 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Надпис на входа:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Номера апартаменти:"</string>
     <string name="quest_entrance_reference_flat_range_to">"към"</string>
+    <string name="default_disabled_msg_overlay">"Този тип задачи са изключени по подразбиране, понеже вече има отделен слой за тях, където въвеждането е по-лесно."</string>
+    <string name="quest_camp_drinking_water_title">"Достъпна ли е питева вода за кемперите?"</string>
+    <string name="quest_camp_shower_title">"Има ли тук душове?"</string>
+    <string name="quest_camp_power_supply_title">"Възможно ли е зареждането на телефони, лаптопи и др.?"</string>
+    <string name="quest_camp_type_title">"Кой може да къмпингува тук?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Може и на палатка и с кемпер."</string>
+    <string name="quest_camp_type_caravans_only">"Само моторизирани кемпери и каравани."</string>
+    <string name="quest_camp_type_tents_only">"Само на палатки"</string>
+    <string name="quest_camp_type_backcountry">"Няма удобства"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Вашият отговор не съответства на съществуващите данни за този път. Сигурни ли сте, че въвеждате за сътветния път? Сигурни ли сте, че лично сте проверили по цялата дължина на пътя, както се изисква?"</string>
+    <string name="quest_recycling_type_pet">"Само PET"</string>
+    <string name="street_parking_street_width">"Ширина на пътя: %s"</string>
+    <string name="overlay_street_parking">"Паркиране на улицата"</string>
 </resources>

@@ -15,8 +15,8 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
     override val suggestions: List<String> get() = (lastPickedAnswers + OPERATORS).distinct()
 
     override fun onClickOk() {
-        favs.add(name)
-        applyAnswer(name)
+        favs.add(name!!)
+        applyAnswer(name!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

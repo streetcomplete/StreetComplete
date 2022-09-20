@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedBu
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
@@ -26,8 +27,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = binding.levelsInput.text?.toString().orEmpty().trim()
-    private val roofLevels get() = binding.roofLevelsInput.text?.toString().orEmpty().trim()
+    private val levels get() = binding.levelsInput.intOrNull
+    private val roofLevels get() = binding.roofLevelsInput.intOrNull
 
     private val lastPickedAnswers by lazy {
         favs.get()
@@ -66,8 +67,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     }
 
     override fun onClickOk() {
-        val roofLevelsNumber = if (roofLevels.isEmpty()) null else roofLevels.toInt()
-        val answer = BuildingLevelsAnswer(levels.toInt(), roofLevelsNumber)
+        val answer = BuildingLevelsAnswer(levels!!, roofLevels)
         favs.add(answer)
         applyAnswer(answer)
     }
@@ -82,8 +82,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
     override fun isFormComplete() =
         // levels must be an int >= 0. IF roof levels is specified, it must also be an int >= 0
-        levels.toIntOrNull()?.let { it >= 0 } ?: false
-        && (roofLevels.isEmpty() || roofLevels.toIntOrNull()?.let { it >= 0 } ?: false)
+        levels?.let { it >= 0 } ?: false
+        && (roofLevels == null || roofLevels?.let { it >= 0 } ?: false)
 }
 
 private class LastPickedAdapter(

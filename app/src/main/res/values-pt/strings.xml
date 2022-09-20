@@ -1058,7 +1058,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_surface_value_concrete_plates">"Placas de cimento"</string>
     <string name="quest_surface_value_concrete_lanes">"2 faixas de cimento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual é o diâmetro especificado nesta boca de incêndio?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece ser engano."</string>
     <string name="quest_fireHydrant_confirmation_title">"Tem a certeza? Por vezes o diâmetro pode ser encontrado na boca de incêndio."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
@@ -1079,7 +1078,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="pref_title_language_select">"Idioma"</string>
     <string name="language_default">"Definido no sistema"</string>
     <string name="on_floor">"no piso %s"</string>
-    <string name="quest_street_parking_title">"Como é que as viaturas podem estacionar aqui, caso possam?"</string>
     <string name="select_street_parking_orientation">"Selecione a orientação em relação à estrada;"</string>
     <string name="select_street_parking_position">"Selecionar posição:"</string>
     <string name="select_street_parking_no">"Algum sinal ou marca na estrada aqui?"</string>
@@ -1098,6 +1096,8 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="street_standing_prohibited">"Proibido ficar à espera (não utilizado em países lusófonos)"</string>
     <string name="street_parking_conditional_restrictions">"Estacionamento / paragem restritos condicionalmente"</string>
     <string name="street_parking_no_other_reasons">"Sem sinal explícito / não é possível estacionar"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Se é possível estacionar ou parar aqui. Indique o tipo de estacionamento na estrada ou fora da estrada. As restrições adicionais podem ser especificadas mais tarde.
 
 Como alternativa, pode deixar uma nota (com uma fotografia)"</string>
@@ -1262,7 +1262,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Tem a certeza de que os ciclistas não estão autorizados a utilizar esta via de sentido único em ambas as direções? Se não tiver certeza, verifique se existe um sinal no outro extremo da rua."</string>
     <string name="link_valhalla_description">"Motor de roteamento com utilização reduzida da memória, rotas multimodais, isócrones e muito mais."</string>
     <string name="link_backofyourhand_description">"Até que ponto conhece bem a sua área? Teste os seus conhecimentos através da localização de ruas."</string>
-    <string name="link_thenandnow_description">"Veja a aparência do OpenStreetMap nos primórdios em comparação com a atual!"</string>
     <string name="link_notesreview_description">"Veja, filtre e comente as notas criadas por si e por outros. Muitas notas podem ser resolvidas colocando a informação destas no mapa com o editor iD ou o JOSM"</string>
 
     <!-- Quests
@@ -1341,4 +1340,18 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Nº de porta:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Intervalo de apartamentos:"</string>
     <string name="quest_entrance_reference_flat_range_to">"a"</string>
+    <string name="default_disabled_msg_overlay">"Este tipo de missão está desativada de origem porque já existe uma camada com a qual é mais eficaz e eficiente introduzir e atualizar estes dados."</string>
+    <string name="quest_camp_drinking_water_title">"Está disponível água potável para os campistas aqui?"</string>
+    <string name="quest_camp_shower_title">"Existem aqui chuveiros?"</string>
+    <string name="quest_camp_power_supply_title">"Existe forma dos clientes carregarem o telemóvel, portátil, etc. aqui?"</string>
+    <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Tendas, caravanas, autocaravanas…"</string>
+    <string name="quest_camp_type_caravans_only">"Apenas caravanas, autocaravanas…"</string>
+    <string name="quest_camp_type_tents_only">"Apenas tendas"</string>
+    <string name="quest_camp_type_backcountry">"Campismo remoto (sem instalações)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro não parece plausível, normalmente é entre %1$d e %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não corresponde ao que já está mapeado sobre esta estrada. Tem a certeza de que está a responder sobre a estrada correta? Tem a certeza que confirmou longo de toda a extensão da estrada?"</string>
+    <string name="quest_recycling_type_pet">"Apenas PET"</string>
+    <string name="street_parking_street_width">"Largura da estrada: %s"</string>
+    <string name="overlay_street_parking">"Estacionamento na estrada"</string>
 </resources>

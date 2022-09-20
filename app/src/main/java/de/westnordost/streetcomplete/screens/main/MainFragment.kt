@@ -63,6 +63,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -118,6 +120,7 @@ import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -172,6 +175,7 @@ class MainFragment :
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val soundFx: SoundFx by inject()
@@ -963,6 +967,16 @@ class MainFragment :
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
         val mapFragment = mapFragment ?: return
+
+        // open note if it is blocking element
+        val center = geometry.center
+        val note = withContext(Dispatchers.IO) {
+            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+        }
+        if (note != null) {
+            showQuestDetails(OsmNoteQuest(note.id, note.position))
+            return
+        }
 
         val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) } ?: return
         val f = overlay.createForm(element) ?: return

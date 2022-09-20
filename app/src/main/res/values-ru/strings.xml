@@ -1664,7 +1664,6 @@
     <string name="quest_surface_value_concrete_plates">"Бетонные плиты"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонные дорожки"</string>
     <string name="quest_fireHydrant_diameter_title">"Какой диаметр указан на табличке для данного пожарного гидранта?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Этот диаметр выглядит неправдоподобным."</string>
     <string name="quest_fireHydrant_confirmation_title">"Вы уверены? Иногда диаметр можно найти на самом гидранте."</string>
     <string name="quest_diet_answer_no_food">"У него нет еды"</string>
     <string name="short_no_answer_on_button">"Нет"</string>
@@ -1695,7 +1694,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"на этаже %s:"</string>
-    <string name="quest_street_parking_title">"Как здесь могут парковаться машины, если это разрешено?"</string>
     <string name="select_street_parking_orientation">"Выберите ориентацию по отношению к проезжей части:"</string>
     <string name="select_street_parking_position">"Выберите позицию:"</string>
     <string name="select_street_parking_no">"Здесь есть какой-нибудь знак или дорожная разметка?"</string>
@@ -1949,9 +1947,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Насколько хорошо вы знаете свой район? Проверьте свои знания, определяя улицы."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Узнайте, как OSM выглядел в первые дни, по сравнению с тем, как он выглядит сейчас!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Удобный просмотр, фильтрация и комментирование замечаний созданных вами и другими. Многие замечания могут быть устранены в iD или JOSM благодаря информации, содержащейся в них"</string>
 
     <!-- Quests
@@ -2044,4 +2039,18 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Номер подъезда:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Номера квартир:"</string>
     <string name="quest_entrance_reference_flat_range_to">"—"</string>
+    <string name="default_disabled_msg_overlay">"Этот тип квеста по умолчанию отключён, поскольку уже существует наложение, с помощью которого более эффективно вводить и обновлять эти данные."</string>
+    <string name="quest_camp_drinking_water_title">"Есть ли здесь в свободном доступе питьевая вода для отдыхающих?"</string>
+    <string name="quest_camp_shower_title">"Здесь есть душевые?"</string>
+    <string name="quest_camp_power_supply_title">"Есть ли какой-либо способ для клиентов зарядить свой телефон, ноутбук и т.п. здесь?"</string>
+    <string name="quest_camp_type_title">"Кто может разбить здесь лагерь?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Как палатки, так и дома на колёсах, туристические трейлеры, …"</string>
+    <string name="quest_camp_type_caravans_only">"Только дома на колёсах, туристические трейлеры, …"</string>
+    <string name="quest_camp_type_tents_only">"Только палатки"</string>
+    <string name="quest_camp_type_backcountry">"Кемпинг в сельской местности (без удобств)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Этот диаметр выглядит неправдоподобным, обычно он находится между %1$d и %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Этот ответ не соответствует тому, что уже нанесено на карту об этой дороге. Вы уверены, что отвечаете о правильной дороге? Вы точно обследовали лично её по всей длине, как это всегда требуется?"</string>
+    <string name="quest_recycling_type_pet">"только ПЭТ"</string>
+    <string name="street_parking_street_width">"Ширина улицы: %s"</string>
+    <string name="overlay_street_parking">"Уличная парковка"</string>
 </resources>

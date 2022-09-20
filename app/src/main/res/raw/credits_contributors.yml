@@ -1,16 +1,16 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 368729
-  linesOfInterfaceMarkupChanged: 134543
-  assetFilesChanged: 1716
+  linesOfCodeChanged: 372817
+  linesOfInterfaceMarkupChanged: 134615
+  assetFilesChanged: 1719
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16868
+  linesOfCodeChanged: 16881
   linesOfInterfaceMarkupChanged: 1888
   assetFilesChanged: 151
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 14213
+  linesOfCodeChanged: 14377
   linesOfInterfaceMarkupChanged: 3591
   assetFilesChanged: 551
 - name: "ENT8R"
@@ -21,9 +21,9 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
-- name: "Helium314"
+- name: "Helium"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 3372
+  linesOfCodeChanged: 3757
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "arrival-spring"
@@ -45,7 +45,7 @@
   assetFilesChanged: 48
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 1562
+  linesOfCodeChanged: 1612
   linesOfInterfaceMarkupChanged: 229
   assetFilesChanged: 13
 - name: "smichel17"
@@ -215,6 +215,13 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
+- name: "mcliquid"
+  githubUsername: "mcliquid"
+  linesOfCodeChanged: 2
+- name: "Holger Jeromin"
+  githubUsername: "HolgerJeromin"
+  linesOfCodeChanged: 2
+  assetFilesChanged: 4
 - name: "riQQ"
   githubUsername: "riQQ"
   linesOfCodeChanged: 2
@@ -231,9 +238,6 @@
   linesOfCodeChanged: 2
 - name: "Christian Paul"
   githubUsername: "jaller94"
-  linesOfCodeChanged: 2
-- name: "Holger Jeromin"
-  githubUsername: "HolgerJeromin"
   linesOfCodeChanged: 2
 - name: "John Kastner"
   githubUsername: "john-h-kastner"

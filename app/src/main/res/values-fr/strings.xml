@@ -1317,7 +1317,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_surface_value_concrete_plates">"Plaques de béton"</string>
     <string name="quest_surface_value_concrete_lanes">"Voies en béton"</string>
     <string name="quest_fireHydrant_diameter_title">"Quel est le diamètre indiqué sur le panneau de cette bouche d’incendie ?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ce diamètre semble peu plausible."</string>
     <string name="quest_fireHydrant_confirmation_title">"Êtes-vous sûr ? Parfois, le diamètre peut être trouvé sur la bouche d’incendie elle-même."</string>
     <string name="quest_diet_answer_no_food">"Pas de nourriture"</string>
     <string name="short_no_answer_on_button">"Non"</string>
@@ -1342,7 +1341,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
 
     <!-- Fuzzy -->
     <string name="on_floor">"à l’étage %s :"</string>
-    <string name="quest_street_parking_title">"Comment les véhicules se garent-ils ici, si c’est possible ?"</string>
     <string name="select_street_parking_orientation">"Sélectionnez l’orientation vers la chaussée :"</string>
     <string name="select_street_parking_position">"Sélectionnez la position :"</string>
     <string name="select_street_parking_no">"Panneau ou marquage au sol ici ?"</string>
@@ -1592,9 +1590,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Connaissez vous bien votre secteur ? Testez votre connaissance en localisant les rues."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Explorez les évolutions visuelles d’OSM, des premiers jours jusqu’à aujourd’hui !"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Trouvez, filtrez et commentez facilement vos notes et celles des autres. Beaucoup de notes peuvent être résolues en reportant leurs informations sur la carte via iD ou JOSM"</string>
 
     <!-- Quests
@@ -1681,15 +1676,17 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_flat_range_label">"Rangée d’appartements :"</string>
     <string name="quest_entrance_reference_flat_range_to">"à"</string>
     <string name="default_disabled_msg_overlay">"Cette quête est désactivée par défaut car il en existe une autre la recouvrant qui est plus facile à réaliser et plus efficace pour mettre à jour ces données."</string>
-    <string name="quest_camp_drinking_water_title">"L'eau potable est elle disponible librement aux campeurs ici ?"</string>
-    <string name="quest_camp_shower_title">"Il y a-t-il une douche ici ?"</string>
-    <string name="quest_camp_power_supply_title">"Y a-t-il la possibilité pour le client de recharger sont téléphone, son ordinateur potable, etc. ici ?"</string>
+    <string name="quest_camp_drinking_water_title">"L’eau potable est elle disponible librement aux campeurs ici ?"</string>
+    <string name="quest_camp_shower_title">"Y a-t-il des douches ici ?"</string>
+    <string name="quest_camp_power_supply_title">"Y a-t-il la possibilité pour les clients de recharger leur téléphone, ordinateur portable, etc. ici ?"</string>
     <string name="quest_camp_type_title">"Qui peut camper ici ?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Tentes et camping-cars, caravanes, ..."</string>
     <string name="quest_camp_type_caravans_only">"Seulement les camping-cars, caravanes, ..."</string>
     <string name="quest_camp_type_tents_only">"Tentes seulement"</string>
     <string name="quest_camp_type_backcountry">"Camping sauvage (sans commodités)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ce diamètre ne paraît pas correct. En général, il est compris entre %1$d et %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Cette réponse ne correspond pas à ce qui est généralement renseigné sur cette route. Êtes-vous certain que  vous répondez pour la bonne route ? Êtes-vous sûr d'avoir parcouru toute la longueur de la route comme il est recommandé ?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Cette réponse ne correspond pas à ce qui est généralement renseigné sur cette route. Êtes-vous certain que vous répondez pour la bonne route ? Êtes-vous sûr d’avoir parcouru toute la longueur de la route comme il est recommandé ?"</string>
     <string name="quest_recycling_type_pet">"Seulement PET"</string>
+    <string name="street_parking_street_width">"Largeur de la rue : %s"</string>
+    <string name="overlay_street_parking">"Parking dans la rue"</string>
 </resources>

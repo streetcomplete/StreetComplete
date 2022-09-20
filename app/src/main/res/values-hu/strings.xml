@@ -2117,7 +2117,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_surface_value_concrete_plates">"Betonlapok"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonsávok"</string>
     <string name="quest_fireHydrant_diameter_title">"Milyen átmérő van megadva a tűzcsap tábláján?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Ez az átmérő valószínűtlen."</string>
     <string name="quest_fireHydrant_confirmation_title">"Biztos? Néha az átmérő értéke a tűzcsapra rá van írva."</string>
     <string name="quest_diet_answer_no_food">"Nincs étel"</string>
     <string name="short_no_answer_on_button">"Nem"</string>
@@ -2144,7 +2143,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
 
     <!-- Fuzzy -->
     <string name="on_floor">"%s. emeleten:"</string>
-    <string name="quest_street_parking_title">"Hogyan parkorhatnak itt az autók, ha egyáltalán?"</string>
     <string name="select_street_parking_orientation">"Az úttesthez viszonyított irányultság kiválasztása:"</string>
     <string name="select_street_parking_position">"Helyzet kiválasztása:"</string>
     <string name="select_street_parking_no">"Van-e itt jelzés vagy útburkolati jel?"</string>
@@ -2382,9 +2380,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Biztos, hogy a kerékpárosok nem használhatják ezt az egyirányú utcát mindkét irányban? Kétség esetén nézd meg, hogy van-e engedélyező tábla az utca végén."</string>
     <string name="link_valhalla_description">"Nagyon kis memóriaigényű útválasztó motor, multimodális útválasztás, izokronok és még sok más."</string>
     <string name="link_backofyourhand_description">"Mennyire ismered jól a területet? Teszteld tudásodat az utcák megkeresésével."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Fedezd fel, hogyan nézett ki az OSM a kezdeti időkben, és hogyan néz ki most!"</string>
     <string name="link_notesreview_description">"Kényelmesen láthatja, szűrheti és kommentálhatja az Ön és mások által készített jegyzeteket. Sok jegyzet megoldható a bennük szereplő információknak az iD vagy a JOSM segítségével történő térképre helyezésével."</string>
 
     <!-- Quests
@@ -2461,4 +2456,21 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Házszám:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Lakásszámok:"</string>
     <string name="quest_entrance_reference_flat_range_to">"eddig:"</string>
+    <string name="default_disabled_msg_overlay">"Ez a küldetéstípus alapértelmezés szerint ki van kapcsolva, mivel már létezik  kiemelés, amellyel hatékonyabb ilyen adatok bevitele és frissítése."</string>
+    <string name="quest_camp_drinking_water_title">"Az ivóvíz szabadon hozzáférhető a táborozók számára?"</string>
+    <string name="quest_camp_shower_title">"Vannak itt zuhanyzók?"</string>
+    <string name="quest_camp_power_supply_title">"Van mód arra, hogy az ügyfelek itt feltölthessék telefonjukat, laptopjukat stb.?"</string>
+    <string name="quest_camp_type_title">"Kik táborozhatnak itt?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Sátrak, lakóautók, lakókocsik, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Csak lakóautók, lakókocsik, ..."</string>
+    <string name="quest_camp_type_tents_only">"Csak sátrak"</string>
+    <string name="quest_camp_type_backcountry">"Természetjárók kempingje (létesítmények nélkül)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ez az átmérő valószínűtlennek tűnik, általában %1$d és %2$d között szokott lenni."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ez a válasz nem felel meg annak, amit már feltérképeztek erről az útról. Biztos benne, hogy a helyes útról válaszol? Biztos benne, hogy személyesen felmérte a teljes hosszát, ahogyan az mindig szükséges?"</string>
+    <string name="quest_recycling_type_pet">"Csak PET"</string>
+    <string name="street_parking_street_width">"Az utca szélessége: %s"</string>
+    <string name="overlay_street_parking">"Közúti parkolás"</string>
+    <string name="link_ohsomehex_description">"Az OSM-adatok feltárása a teljes képtől az egyes objektumokig terjedő léptékekben, térben és időben"</string>
+    <string name="link_opencampingmap_description">"Kempingek térképe"</string>
+    <string name="quest_atm_cashin_title">"Lehet készpénzt befizetni ezen az ATM-en?"</string>
 </resources>

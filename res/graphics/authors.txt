@@ -419,6 +419,10 @@ quest/
     wheelchair_shop.svg
     wheelchair_crossing.svg
 
+links/
+    link_neis_one.svg
+    link_openorienteeringmap.svg
+
 lit/
     24_7.svg
     automatic.svg

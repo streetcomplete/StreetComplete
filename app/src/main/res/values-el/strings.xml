@@ -2161,7 +2161,6 @@
     <string name="quest_surface_value_concrete_plates">"Πλάκες από μπετόν"</string>
     <string name="quest_surface_value_concrete_lanes">"Λωρίδες από μπετόν"</string>
     <string name="quest_fireHydrant_diameter_title">"Ποια διάμετρος καθορίζεται στην πινακίδα για αυτόν τον πυροσβεστικό κρουνό;"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Αυτή η διάμετρος φαίνεται απίθανη."</string>
     <string name="quest_fireHydrant_confirmation_title">"Είσαι σίγουρος? Μερικές φορές η διάμετρος μπορεί να βρεθεί στον ίδιο τον κρουνό."</string>
     <string name="quest_diet_answer_no_food">"Δεν έχει φαγητό"</string>
     <string name="short_no_answer_on_button">"Όχι"</string>
@@ -2188,7 +2187,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"στον όροφο %s:"</string>
-    <string name="quest_street_parking_title">"Πώς μπορούν να παρκάρουν τα αυτοκίνητα εδώ, αν υπάρχουν;"</string>
     <string name="select_street_parking_orientation">"Επιλέξτε προσανατολισμό προς το δρόμο:"</string>
     <string name="select_street_parking_position">"Επιλέξτε θέση:"</string>
     <string name="select_street_parking_no">"Υπάρχει κάποια πινακίδα ή οδική σήμανση εδώ;"</string>
@@ -2431,9 +2429,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Πόσο καλά γνωρίζετε την περιοχή σας; Δοκιμάστε τις γνώσεις σας εντοπίζοντας δρόμους."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Εξερευνήστε πώς έμοιαζε το OSM τις πρώτες μέρες σε σύγκριση με το πώς φαίνεται τώρα!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Δείτε, φιλτράρετε και σχολιάστε εύκολα στις σημειώσεις που έχετε δημιουργήσει εσείς και άλλοι. Πολλές σημειώσεις μπορούν να λυθούν βάζοντας τις πληροφορίες που περιέχουν μέσα στον χάρτη με το iD ή το JOSM"</string>
 
     <!-- Quests
@@ -2524,4 +2519,9 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Αυτή η απάντηση δεν ταιριάζει με αυτό που έχει ήδη χαρτογραφηθεί για αυτόν τον δρόμο. Είστε σίγουροι ότι απαντάτε για τον σωστό δρόμο; Είστε βέβαιοι ότι κάνατε προσωπική έρευνα σε όλο το μήκος, όπως πάντα χρειάζεται;"</string>
     <string name="quest_recycling_type_pet">"Κατοικίδια μόνο"</string>
+    <string name="street_parking_street_width">"Πλάτος δρόμου: %s"</string>
+    <string name="overlay_street_parking">"Πάρκινγκ στο δρόμο"</string>
+    <string name="link_ohsomehex_description">"Εξερευνήστε OSM δεδομένα σε κλίμακες από τη μεγάλη εικόνα έως μεμονωμένα αντικείμενα στο χώρο και στο χρόνο"</string>
+    <string name="link_opencampingmap_description">"Χάρτης με κάμπινγκ"</string>
+    <string name="quest_atm_cashin_title">"Μπορείτε να καταθέσετε μετρητά σε αυτό το ΑΤΜ;"</string>
 </resources>

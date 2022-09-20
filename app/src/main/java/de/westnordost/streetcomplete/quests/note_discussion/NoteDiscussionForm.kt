@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -60,7 +61,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
-    private val noteText: String get() = binding.noteInput.text?.toString().orEmpty().trim()
+    private val noteText: String? get() = binding.noteInput.nonBlankTextOrNull
 
     private val noteId: Long get() = (questKey as OsmNoteQuestKey).noteId
 
@@ -117,7 +118,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onClickOk() {
-        require(noteText.isNotEmpty()) { "NoteQuest has been answered with an empty comment!" }
+        require(noteText != null ) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
@@ -144,9 +145,9 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun isRejectingClose(): Boolean =
-        noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
+        noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
-    override fun isFormComplete(): Boolean = noteText.isNotEmpty()
+    override fun isFormComplete(): Boolean = noteText != null
 
     private inner class NoteCommentListAdapter(list: List<NoteComment>) : ListAdapter<NoteComment>(list) {
 

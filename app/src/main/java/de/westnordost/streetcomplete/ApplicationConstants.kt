@@ -67,7 +67,7 @@ object ApplicationConstants {
     )
 
     val EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES = setOf(
-        /* because this action may edit route relations but route relations are not persisted 
+        /* because this action may edit route relations but route relations are not persisted
            locally for performance reasons */
         SplitWayAction::class
     )

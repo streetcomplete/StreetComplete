@@ -28,7 +28,7 @@ barrier_bicycle_barrier.jpg    CC0               DerDings https://commons.wikime
 barrier_bicycle_barrier_dia... CC0               DerDings https://commons.wikimedia.org/wiki/File%3ABicycle%5Fbarrier%2EJPG
 barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier2.jpg
 barrier_bicycle_barrier_dou... CC-BY-SA 4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
-barrier_bicycle_barrier_tri... CC-BY 4.0         GeoJ https://wiki.openstreetmap.org/wiki/File:Barrier1.jpg
+barrier_bicycle_barrier_tri... CC-BY-SA 4.0      HolgerJeromin https://commons.wikimedia.org/wiki/File:Umlaufgitter_Schatten_hoch.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
 
 bench_concrete.jpg             CC-BY-SA 4.0      AgainErick https://commons.wikimedia.org/wiki/File:Street_bench_-_Diergaarde_Blijdorp_-_Rotterdam_-_Concrete.jpg

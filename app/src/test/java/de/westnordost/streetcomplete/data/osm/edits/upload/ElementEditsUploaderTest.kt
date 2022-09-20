@@ -74,7 +74,7 @@ class ElementEditsUploaderTest {
 
         uploader.upload(mock())
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(eq(edit), any())
         verify(listener).onUploaded(any(), any())
         verify(elementEditsController).markSynced(edit, updates)
         verify(noteEditsController).updateElementIds(any())
@@ -95,7 +95,7 @@ class ElementEditsUploaderTest {
 
         uploader.upload(mock())
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(eq(edit), any())
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
@@ -119,7 +119,7 @@ class ElementEditsUploaderTest {
 
         uploader.upload(mock())
 
-        verify(singleUploader).upload(edit, idProvider)
+        verify(singleUploader).upload(eq(edit), any())
         verify(listener).onDiscarded(any(), any())
 
         verify(elementEditsController).markSyncFailed(edit)
