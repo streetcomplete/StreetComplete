@@ -58,27 +58,28 @@ class SpatialCache<K, T>(
             val item = byKey.remove(key) ?: continue
             byTile[item.getTilePos()]?.remove(item)
         }
-        // items must be removed before they are re-added because e.g. position may have changed
+
         for (item in updatedOrAdded) {
-            val oldItem = byKey.remove(item.getKey()) ?: continue
-            byTile[oldItem.getTilePos()]?.remove(oldItem)
-        }
-        // items are only added if the tile they would be sorted into is already cached, because all
-        // tiles that are in cache must be complete
-        for (item in updatedOrAdded) {
-            val tile = byTile[item.getTilePos()]
-            if (tile != null) {
-                tile.add(item)
-                byKey[item.getKey()] = item
-            }
+            // items must be removed before they are re-added because e.g. position may have changed
+            val oldItem = byKey.remove(item.getKey())
+            if (oldItem != null)
+                byTile[oldItem.getTilePos()]?.remove(oldItem)
+
+            // items are only added if the tile they would be sorted into is already cached,
+            // because all tiles that are in cache must be complete
+            val tile = byTile[item.getTilePos()] ?: continue
+            tile.add(item)
+            byKey[item.getKey()] = item
         }
     }}
 
     /**
-     * Replaces all tiles fully contained in the [bbox] with the given [items].
+     * Replaces all tiles fully contained in the [bbox] with empty tiles.
      * Any tile only partially contained in the [bbox] is removed (because all tiles cached must be
      * complete).
-     * If the number of tiles exceeds maxTiles, only the first maxSize tiles are cached.
+     * The given [items] are added to cache if the containing tile is cached. Note that for putting
+     * and item, it does not have to be inside the [bbox].
+     * If the number of tiles exceeds maxTiles, only maxSize tiles are cached.
      */
     fun replaceAllInBBox(items: Collection<T>, bbox: BoundingBox) { synchronized(this) {
         val tiles = bbox.asListOfEnclosingTilePos()
@@ -94,7 +95,7 @@ class SpatialCache<K, T>(
         trim()
     }}
 
-    // may add tiles, but does not call trim()
+    /** replaces [tiles] with empty tiles and calls [update] for [items] */
     private fun replaceAllInTiles(items: Collection<T>, tiles: Collection<TilePos>) {
         // create / replace tiles
         for (tile in tiles) {
@@ -102,17 +103,8 @@ class SpatialCache<K, T>(
             byTile[tile] = HashSet()
         }
 
-        val bboxByTile = byTile.keys.associateWith { it.asBoundingBox(tileZoom) }
-        items@for (item in items) {
-            val pos = item.getPosition()
-            for (tile in tiles) {
-                if (pos in bboxByTile[tile]!!) {
-                    byTile[tile]!!.add(item)
-                    byKey[item.getKey()] = item
-                    continue@items
-                }
-            }
-        }
+        // put items if tile is cached (not limited to collection of tiles to replace)
+        update(updatedOrAdded = items)
     }
 
     /** @return all items inside [bbox], items will be loaded if necessary via [fetch] */

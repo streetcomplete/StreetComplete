@@ -215,7 +215,7 @@ internal class SpatialCacheTest {
         cache.replaceAllInBBox(emptyList(), LatLon(0.0, 0.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(1.0, 1.0).enclosingTilePos(16).asBoundingBox(16))
         cache.replaceAllInBBox(emptyList(), LatLon(-1.0, -1.0).enclosingTilePos(16).asBoundingBox(16))
-        assertEquals(3, cache.size)
+        assertEquals(3, cache.getTiles().size)
     }
 
     @Test fun `non-empty tiles are trimmed`() {
