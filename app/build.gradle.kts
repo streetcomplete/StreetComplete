@@ -242,7 +242,9 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/main/assets/osmfeatures/icons"
+    targetDir = "$projectDir/src/main/res/drawable/"
+    iconSize = 34
+    transformName = { "ic_preset_" + it.replace('-','_') }
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {

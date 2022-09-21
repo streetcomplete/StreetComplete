@@ -11,13 +11,3 @@ map_theme/*.*               GPL-3.0-only    from https://github.com/streetcomple
 osmfeatures/brands/*.*      BSD-3-Clause    from https://github.com/osmlab/name-suggestion-index/tree/main/dist/presets
 
 osmfeatures/default/*.*     ISC             from https://github.com/openstreetmap/id-tagging-schema/tree/main/dist
-
-osmfeatures/icons/far-*     CC-BY-4.0       from https://fontawesome.com/license/free
-osmfeatures/icons/fas-*        and
-osmfeatures/icons/fab-*     SIL OFL 1.1
-
-osmfeatures/icons/iD-*      ISC license     from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
-
-osmfeatures/icons/maki-*    CC0-1.0         from https://github.com/mapbox/maki/tree/main/icons
-
-osmfeatures/icons/temaki-*  CC0 1.0         from https://github.com/ideditor/temaki/tree/main/icons

@@ -21,6 +21,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     @get:Input var targetDir: String? = null
     @get:Input var version: String? = null
     @get:Input var iconSize: Int = 14
+    @get:Input var transformName: (String) -> String = { it }
 
     @TaskAction fun run() {
         val targetDir = targetDir ?: return
@@ -30,7 +31,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         for (icon in icons) {
             val url = getDownloadUrl(icon) ?: continue
 
-            val targetFile = File("$targetDir/$icon.xml")
+            val targetFile = File("$targetDir/${ transformName(icon) }.xml")
             targetFile.parentFile.mkdirs()
 
             try {
@@ -125,7 +126,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     private fun writeXml(xml: Document, targetFile: File) {
         FileOutputStream(targetFile).use { output ->
             val transformer = TransformerFactory.newInstance().newTransformer()
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes")
             val source = DOMSource(xml)
             val result = StreamResult(output)
             transformer.transform(source, result)
