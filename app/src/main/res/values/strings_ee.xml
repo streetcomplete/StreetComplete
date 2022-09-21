@@ -253,6 +253,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_show_solved_animation">Show animation after solving a quest</string>
     <string name="pref_use_sd">Use external SD card for storing map tiles</string>
     <string name="pref_use_sd_summary">Changing this setting will move the data, which may take a while</string>
-    <string name="moving">Moving…</string>
+    <string name="moving">Moving tiles…</string>
 
 </resources>

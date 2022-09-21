@@ -59,12 +59,17 @@ import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.IOException
+import java.nio.file.Files
 import java.util.Locale
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
@@ -729,31 +734,45 @@ class SettingsFragment :
                 val sd = requireContext().externalCacheDirs
                     .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: return
                 val default = requireContext().externalCacheDir ?: return
+                val sdCache = File(sd, "tile_cache")
+                val defaultCache = File(default, "tile_cache")
 
                 // move to preferred storage
                 val sdPreferred = prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)
                 var d: AlertDialog? = null
-                if (sdPreferred) {
-                    if (!default.exists()) return
-                    sd.mkdirs()
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        default.copyRecursively(sd, false)
-                        default.deleteRecursively()
-                        d?.dismiss()
+                val target = if (sdPreferred) sdCache else defaultCache
+                val source = if (sdPreferred) defaultCache else sdCache
+                if (!source.exists()) return
+                target.mkdirs()
+                val moveJob = lifecycleScope.launch(Dispatchers.IO) {
+                    // copyRecursively would be easier, but crashes with FileNotFoundException (even if I tell it to skip in that case, wtf?)
+                    val files = source.listFiles() ?: return@launch
+                    val size = files.size
+                    var i = 0
+                    for (f in files) {
+                        i++
+                        if (!f.exists() || f.isDirectory) continue
+                        val dstFile = File(target, f.toRelativeString(source))
+                        if (!coroutineContext.isActive) break
+                        if (i % 100 == 0)
+                            activity?.runOnUiThread { d?.setMessage("$i / $size") }
+                        if (dstFile.exists()) continue
+                        try {
+                            f.inputStream().use { input -> dstFile.outputStream().use { input.copyTo(it) } }
+                            dstFile.setLastModified(f.lastModified())
+                        } catch (e: IOException) {
+                            continue
+                        }
                     }
-                } else {
-                    if (!sd.exists()) return
-                    default.mkdirs()
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        sd.copyRecursively(default, false)
-                        sd.deleteRecursively()
-                        d?.dismiss()
-                    }
+                    yield() // don't delete if moving was canceled
+                    kotlin.runCatching { source.deleteRecursively() }
+                    d?.dismiss()
+                    restartApp() // necessary for really changing cache directory
                 }
-                restartNecessary = true
                 d = AlertDialog.Builder(requireContext())
                     .setTitle(R.string.moving)
-                    .setMessage(R.string.pref_use_sd_summary)
+                    .setMessage("0 / ?")
+                    .setNegativeButton(android.R.string.cancel) { _,_ -> moveJob.cancel() }
                     .setCancelable(false)
                     .show()
             }
