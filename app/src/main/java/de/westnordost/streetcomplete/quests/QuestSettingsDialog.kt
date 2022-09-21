@@ -76,16 +76,19 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     val textInput = EditText(context)
     textInput.addTextChangedListener {
         val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
+        val isValidFilterExpression by lazy {
+            try {"nodes with $it".toElementFilterExpression()
+                true
+            } catch(e: ParseException) {
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                false
+            }
+        }
         button?.isEnabled = textInput.text.toString().let {
             it.lowercase().matches(elementSelectionRegex)
                 && it.count { c -> c == '('} == it.count { c -> c == ')'}
                 && (it.contains('=') || it.contains('~'))
-                && try {"nodes with $it".toElementFilterExpression()
-                true }
-            catch(e: ParseException) {
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-                false
-            }
+                && isValidFilterExpression
         }
     }
 
