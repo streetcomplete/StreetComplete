@@ -339,7 +339,8 @@ class MainFragment :
         binding.compassView.rotationX = (180 * tilt / PI).toFloat()
 
         val margin = 2 * PI / 180
-        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
+        binding.compassView.isInvisible = binding.otherQuestsScrollView.visibility == View.VISIBLE
+            || (abs(rotation) < margin && tilt < margin)
 
         updateLocationPointerPin()
 
