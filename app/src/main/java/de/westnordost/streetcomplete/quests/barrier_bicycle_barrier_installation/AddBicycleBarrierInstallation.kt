@@ -24,7 +24,7 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_barrier_installation_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with barrier=cycle_barrier")
+        getMapData().filter("nodes, ways with barrier = cycle_barrier")
 
     override fun createForm() = AddBicycleBarrierInstallationForm()
 
