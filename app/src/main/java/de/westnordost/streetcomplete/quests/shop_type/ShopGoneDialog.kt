@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
-import androidx.core.os.ConfigurationCompat
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.util.ktx.toList
-import de.westnordost.streetcomplete.view.controller.PresetSelectViewController
+import de.westnordost.streetcomplete.view.controller.FeatureViewController
+import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
 class ShopGoneDialog(
     context: Context,
@@ -28,12 +28,9 @@ class ShopGoneDialog(
 ) : AlertDialog(context) {
 
     private val binding: ViewShopTypeBinding
-
     private val radioButtons: List<RadioButton>
-
+    private val featureCtrl: FeatureViewController
     private var selectedRadioButtonId: Int = 0
-
-    private val presetSelectCtrl: PresetSelectViewController
 
     init {
         val dialogBinding = DialogShopGoneBinding.inflate(LayoutInflater.from(context))
@@ -44,18 +41,22 @@ class ShopGoneDialog(
             radioButton.setOnClickListener { selectRadioButton(it) }
         }
 
-        presetSelectCtrl = PresetSelectViewController(featureDictionary, binding.presetEditText, binding.presetText)
-        presetSelectCtrl.countryOrSubdivisionCode = countryCode
-        presetSelectCtrl.locales = ConfigurationCompat.getLocales(context.resources.configuration).toList()
-        presetSelectCtrl.geometryType = geometryType
-        presetSelectCtrl.onInputChanged = { updateOkButtonEnablement() }
-        presetSelectCtrl.filter = { feature ->
-            val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-            IS_SHOP_EXPRESSION.matches(fakeElement)
-        }
+        featureCtrl = FeatureViewController(featureDictionary, binding.featureView.textView, binding.featureView.iconView)
+        featureCtrl.countryOrSubdivisionCode = countryCode
 
-        binding.presetEditText.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) selectRadioButton(binding.replaceRadioButton)
+        binding.featureView.root.background = null
+        binding.featureContainer.setOnClickListener {
+            selectRadioButton(binding.replaceRadioButton)
+
+            SearchFeaturesDialog(
+                context,
+                featureDictionary,
+                geometryType,
+                countryCode,
+                featureCtrl.feature?.name,
+                ::filterOnlyShops,
+                ::onSelectedFeature
+            ).show()
         }
 
         setButton(
@@ -63,10 +64,21 @@ class ShopGoneDialog(
             context.resources.getText(android.R.string.ok),
             null as DialogInterface.OnClickListener?
         )
-        updateOkButtonEnablement()
 
         setTitle(context.getString(R.string.quest_shop_gone_title))
         setView(dialogBinding.root)
+
+        updateOkButtonEnablement()
+    }
+
+    private fun filterOnlyShops(feature: Feature): Boolean {
+        val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
+        return IS_SHOP_EXPRESSION.matches(fakeElement)
+    }
+
+    private fun onSelectedFeature(feature: Feature?) {
+        featureCtrl.feature = feature
+        updateOkButtonEnablement()
     }
 
     override fun show() {
@@ -75,7 +87,7 @@ class ShopGoneDialog(
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
                 R.id.vacantRadioButton ->    onSelectedFeature(mapOf("disused:shop" to "yes"))
-                R.id.replaceRadioButton ->   onSelectedFeature(presetSelectCtrl.feature!!.addTags)
+                R.id.replaceRadioButton ->   onSelectedFeature(featureCtrl.feature!!.addTags)
                 R.id.leaveNoteRadioButton -> onLeaveNote()
             }
             dismiss()
@@ -83,7 +95,13 @@ class ShopGoneDialog(
     }
 
     private fun updateOkButtonEnablement() {
-        getButton(BUTTON_POSITIVE).isEnabled = false
+        getButton(BUTTON_POSITIVE)?.isEnabled =
+            when (selectedRadioButtonId) {
+                R.id.vacantRadioButton,
+                R.id.leaveNoteRadioButton->  true
+                R.id.replaceRadioButton ->   featureCtrl.feature != null
+                else ->                      false
+            }
     }
 
     private fun selectRadioButton(radioButton: View) {

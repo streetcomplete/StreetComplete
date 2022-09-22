@@ -1,50 +1,79 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.SearchView.OnQueryTextListener
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.ConfigurationCompat
+import androidx.core.view.isGone
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
+import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
-import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.util.ktx.toList
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
+import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.view.controller.FeatureViewController
+import de.westnordost.streetcomplete.view.setText
 
 /** Search and select a preset */
-class SearchPresetDialog(
+class SearchFeaturesDialog(
     context: Context,
     private val featureDictionary: FeatureDictionary,
-    private val geometryType: GeometryType?,
-    private val countryOrSubdivisionCode: String?,
-    private val filter: (Feature) -> Boolean
+    private val geometryType: GeometryType? = null,
+    private val countryOrSubdivisionCode: String? = null,
+    text: String? = null,
+    private val filterFn: (Feature) -> Boolean = { true },
+    private val onSelectedFeatureFn: (Feature?) -> Unit
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
     private val locales = ConfigurationCompat.getLocales(context.resources.configuration).toTypedArray()
-    private val adapter = PresetsAdapter(context)
+    private val adapter = FeaturesAdapter()
+
+    private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
+
+    private val defaultFeatures: List<Feature> by lazy {
+        listOf(
+            "amenity/restaurant",
+            "shop/convenience",
+            "amenity/cafe",
+            "shop/supermarket",
+            "amenity/fast_food",
+            "amenity/pharmacy",
+            "shop/clothes",
+            "shop/hairdresser"
+        ).mapNotNull {
+            featureDictionary
+                .byId(it)
+                .forLocale(*locales)
+                .inCountry(countryOrSubdivisionCode).get()
+        }
+    }
 
     init {
+        binding.searchEditText.setText(text)
+        binding.searchEditText.selectAll()
         binding.searchEditText.requestFocus()
-        binding.searchEditText.setOnQueryTextListener(object : OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = false
-            override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.items = newText?.trim()?.let { getFeatures(it) } ?: emptyList()
-                return false
-            }
-        })
+        binding.searchEditText.doAfterTextChanged { updateSearchResults() }
 
         binding.searchResultsList.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.searchResultsList.adapter = adapter
         binding.searchResultsList.isNestedScrollingEnabled = true
-    }
 
+        setOnCancelListener { onSelectedFeatureFn(null) }
+
+        setView(binding.root)
+
+        window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
+        updateSearchResults()
+    }
 
     private fun getFeatures(startsWith: String): List<Feature> =
         featureDictionary
@@ -53,35 +82,35 @@ class SearchPresetDialog(
             .inCountry(countryOrSubdivisionCode)
             .forLocale(*locales)
             .find()
-            .filter(filter)
-}
+            .filter(filterFn)
 
-private class PresetsAdapter(
-    private val context: Context
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    var items: List<Feature> = emptyList()
-    set(value) {
-        if (field == value) return
-        field = value
-        notifyDataSetChanged()
+    private fun updateSearchResults() {
+        val text = searchText
+        val list = if (text == null) defaultFeatures else getFeatures(text)
+        adapter.list = list.toMutableList()
+        binding.noResultsText.isGone = list.isNotEmpty()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("Not yet implemented")
+    private inner class FeaturesAdapter : ListAdapter<Feature>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+            ViewHolder(ViewFeatureBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
+        inner class ViewHolder(val binding: ViewFeatureBinding) : ListAdapter.ViewHolder<Feature>(binding) {
+            private val viewCtrl: FeatureViewController
+
+            init {
+                viewCtrl = FeatureViewController(featureDictionary, binding.textView, binding.iconView)
+                viewCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
+            }
+
+            override fun onBind(with: Feature) {
+                binding.root.setOnClickListener {
+                    onSelectedFeatureFn(with)
+                    dismiss()
+                }
+                viewCtrl.searchText = searchText
+                viewCtrl.feature = with
+            }
+        }
     }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getItemCount() = items.size
-}
-
-private fun Feature.getIconDrawable(context: Context): Drawable? {
-    if (icon == null) return null
-    val resName = "ic_preset_${icon.replace('-','_')}"
-    val id = context.resources.getIdentifier(resName, "drawable", context.packageName)
-    if (id == 0) return null
-    return context.getDrawable(id)
 }
