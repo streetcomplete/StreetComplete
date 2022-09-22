@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestInstallation
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBicycleBarrierInstallation : OsmFilterQuestInstallation<BicycleBarrierInstallationAnswer>() {
+class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>() {
 
     override val elementFilter = "nodes with barrier = cycle_barrier and cycle_barrier and !cycle_barrier=tilted and !cycle_barrier:installation"
     override val changesetComment = "Specify cycle barrier installation"
