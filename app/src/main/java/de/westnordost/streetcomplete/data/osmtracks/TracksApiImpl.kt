@@ -36,7 +36,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
                 OsmLatLon(it.position.latitude, it.position.longitude),
                 Instant.ofEpochMilli(it.time),
                 idx == 0,
-                it.horizontalDilutionOfPrecision,
+                it.accuracy,
                 it.elevation
             )
         }

@@ -55,6 +55,10 @@
                 "access": {
                     "label": "Vjazd/vstup povolený",
                     "options": {
+                        "customers": {
+                            "description": "Vyhradené pre zákazníkov cieľového miesta",
+                            "title": "Zákazníci"
+                        },
                         "designated": {
                             "description": "Vstup/vjazd povolený vzhľadom na značky alebo špecifické miestné zákony",
                             "title": "Vyznačené"
@@ -73,7 +77,7 @@
                         },
                         "permissive": {
                             "description": "Vjazd/vstup povolený pokiaľ ho majiteľ nezakáže",
-                            "title": "Povolený"
+                            "title": "Zhovievavé"
                         },
                         "permit": {
                             "description": "Vjazd/vstup povolený len s platným povolením",
@@ -82,6 +86,10 @@
                         "private": {
                             "description": "Vjazd/vstup povolený len so súhlasom vlasníka alebo len individuálne",
                             "title": "Súkromné"
+                        },
+                        "unknown": {
+                            "description": "Podmienky prístupnosti sú neznáme alebo nejasné",
+                            "title": "Neznáme"
                         },
                         "yes": {
                             "description": "Vjazd/vstup zákonom povolený; právo na cestu",
@@ -106,20 +114,22 @@
                     "options": {
                         "customers": "Len pre zákazníkov",
                         "no": "Neprístupné",
-                        "permissive": "Prístupné",
+                        "permissive": "Zhovievavé",
                         "permit": "Len s povolením",
                         "private": "Súkromné ",
+                        "unknown": "Neznáme",
                         "yes": "Verejné"
                     },
                     "terms": "vstup povolený,vjazd povolený,vstup povoleny,vjazd povoleny"
                 },
                 "activity": {
+                    "label": "Aktivita",
                     "options": {
-                        "Ski": "Lyžovanie",
                         "bicycle": "Cyklistika",
                         "hiking": "Turistika",
                         "horse": "Jazda na koni",
-                        "mtb": "Horská cyklistika"
+                        "mtb": "Horská cyklistika",
+                        "ski": "Lyžovanie"
                     }
                 },
                 "addr/interpolation": {
@@ -146,10 +156,10 @@
                         "county!jp": "Distrikt",
                         "district": "Okres",
                         "district!cn": "Okres/Kraj/Administratívny celok",
-                        "district!vn": "Arrondissement/Mesto/Okres",
+                        "district!vn": "Subdivízia/Mesto/Okres",
                         "floor": "Poschodie",
                         "hamlet": "Osada/Samota",
-                        "housename": "Meno domu",
+                        "housename": "Názov budovy",
                         "housenumber": "123",
                         "housenumber!jp": "Budova číslo/Miesto čislo",
                         "neighbourhood": "Susedstvo",
@@ -903,6 +913,11 @@
                     "label": "Priemer (mm, in, alebo písmena)",
                     "terms": "priemer (mm,in,alebo znaky)"
                 },
+                "fire_hydrant/position": {
+                    "options": {
+                        "sidewalk": "Chodník"
+                    }
+                },
                 "fire_hydrant/pressure": {
                     "label": "Tlak (bar)",
                     "terms": "tlak (bar)"
@@ -1556,8 +1571,8 @@
                     "terms": "prírodné produkty,organické produkty,bioprodukty,prirodne produkty,organicke produkty"
                 },
                 "outdoor_seating": {
-                    "label": "Vonkajšie sedenie",
-                    "terms": "vonkajšie sedenie,vonkajsie sedenie,vonkajšie posedenie,vonkajsie posedenie,exteriérové sedenie,exterierove sedenie"
+                    "label": "Vonkajšie sedenie (terasa)",
+                    "terms": "vonkajsie sedenie,vonkajšie posedenie,vonkajsie posedenie,exteriérové sedenie,exterierove sedenie,terasa"
                 },
                 "par": {
                     "label": "Par",
@@ -2821,8 +2836,8 @@
                     "terms": "stojan s naradim na opravu bicyklov,bicykel,oprava,naradie,náradie"
                 },
                 "amenity/biergarten": {
-                    "name": "Letná záhrada",
-                    "terms": "pivo,bar,terasa,alkohol,beergarden"
+                    "name": "Pivná záhrada",
+                    "terms": "pivna zahrada,záhradná piváreň,zahradna pivaren,pivo,beergarden"
                 },
                 "amenity/binoculars": {
                     "name": "Stojanový ďalekohľad",
@@ -2972,7 +2987,7 @@
                 },
                 "amenity/fast_food": {
                     "name": "Rýchle občerstvenie",
-                    "terms": "rychle obcerstvenie,rýchle občerstvenie,fastfood,fast food"
+                    "terms": "rychle obcerstvenie,fastfood,fast food,bufet"
                 },
                 "amenity/fast_food/burger": {
                     "name": "Rýchle občerstvenie - hamburgery"
@@ -3647,6 +3662,10 @@
                 "barrier/border_control": {
                     "name": "Hraničná kontrola"
                 },
+                "barrier/cable_barrier": {
+                    "name": "Káblová bariéra",
+                    "terms": "kablova bariera,drôtená bariéra,drotena bariera,lanová bariéra,lanova bariera"
+                },
                 "barrier/cattle_grid": {
                     "name": "Mreža proti prechodu dobytka/zveri",
                     "terms": "mreza proti pohybu dobytka,mreza,priekopa,kravy"
@@ -3689,6 +3708,10 @@
                 },
                 "barrier/height_restrictor": {
                     "name": "Obmedzovač výšky"
+                },
+                "barrier/jersey_barrier": {
+                    "name": "Bariéra (prefabrikovaná)",
+                    "terms": "bariéra,bariera,prefabrikovaná bariéra,prefabrikovana bariera,betónová bariéra,betonova bariera,plastová bariéra,plastova bariera"
                 },
                 "barrier/kerb": {
                     "name": "Obrubník"
@@ -4441,7 +4464,7 @@
                     "name": "Núdzová odstavná plocha"
                 },
                 "highway/footway": {
-                    "name": "Chodník",
+                    "name": "Oddelený chodník",
                     "terms": "cesta,cestička,chodník,turistický chodník,horská cesta,chodníček,cesta pre peších,cesticka,chodnik,horska cesta,chodnicek,cesta pre pesich"
                 },
                 "highway/footway/access_aisle": {
@@ -4457,7 +4480,7 @@
                     "name": "Značený priechod pre chodcov"
                 },
                 "highway/footway/sidewalk": {
-                    "name": "Chodník"
+                    "name": "Chodník pri ceste"
                 },
                 "highway/footway/unmarked": {
                     "name": "Neznačený priechod pre chodcov"
@@ -4609,6 +4632,10 @@
                 },
                 "highway/toll_gantry": {
                     "name": "Mýtny portál"
+                },
+                "highway/track": {
+                    "name": "Neudržiavaná lesná/poľná cesta",
+                    "terms": "neudržiavaná lesná cesta,neudržiavaná poľná cesta,lesná cesta,lesna cesta,poľná cesta,polna cesta"
                 },
                 "highway/traffic_mirror": {
                     "name": "Dopravné zrkadlo"
@@ -5202,9 +5229,6 @@
                     "name": "Čiara",
                     "terms": "ciara,cesta,trat,kanal,trasa,trať"
                 },
-                "man_made": {
-                    "name": "Objekt vyrobený človekom"
-                },
                 "man_made/adit": {
                     "name": "Štôlňa",
                     "terms": "stolna,štóla,stola,vchod,vchod do bane"
@@ -5230,6 +5254,10 @@
                 },
                 "man_made/cairn": {
                     "name": "Kamenný mužík"
+                },
+                "man_made/carpet_hanger": {
+                    "name": "Stojan na koberce",
+                    "terms": "prašák,prasak"
                 },
                 "man_made/chimney": {
                     "name": "Komín"
@@ -5842,7 +5870,7 @@
                 },
                 "place/isolated_dwelling": {
                     "name": "Samota",
-                    "terms": "osamoteny dom,chata,drevenica"
+                    "terms": "osamotený dom,osamoteny dom"
                 },
                 "place/locality": {
                     "name": "Lokalita",
@@ -6193,10 +6221,6 @@
                 "shop/anime": {
                     "name": "Obchod s anime/manga predmetmi"
                 },
-                "shop/antiques": {
-                    "name": "Obchod so starožitnosťami",
-                    "terms": "obchod so starozitnostami,starozitnosti,starožitnosti,starý nábytok,stary nabytok"
-                },
                 "shop/appliance": {
                     "name": "Obchod s domácimi spotrebičmi"
                 },
@@ -6248,10 +6272,6 @@
                 "shop/bookmaker": {
                     "name": "Stávková kancelária",
                     "terms": "stavkova kancelaria,stavky,tipos,sportka,bingo,stavka,stávka,kurz"
-                },
-                "shop/books": {
-                    "name": "Kníhkupectvo",
-                    "terms": "knihkupectvo,knihy,kniha,obchod s knihami"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -6352,9 +6372,6 @@
                     "name": "Obchod s kozmetikou",
                     "terms": "kozmetika,drogeria"
                 },
-                "shop/country_store": {
-                    "name": "Vidiecky obchod (UK)"
-                },
                 "shop/craft": {
                     "name": "Obchod s umeleckými a remeselnými potrebami",
                     "terms": "obchod s umeleckymi a remeselnymi potrebami,umelecky obchod,umelecký obchod"
@@ -6366,10 +6383,6 @@
                 "shop/dairy": {
                     "name": "Obchod s mliečnymi výrobkami",
                     "terms": "obchod s mliecnymi vyrobkami,mlieko,jogurt,jogurty,smotana,syr,syry"
-                },
-                "shop/deli": {
-                    "name": "Delikatesy",
-                    "terms": "deli"
                 },
                 "shop/department_store": {
                     "name": "Obchodný dom",
@@ -6477,9 +6490,6 @@
                     "name": "Železiarstvo",
                     "terms": "zeleziarstvo,baumax,hornbach,náradie,naradie,predajna nárradia,predajna naradia"
                 },
-                "shop/health_food": {
-                    "name": "Obchod so zdravými potravinami"
-                },
                 "shop/hearing_aids": {
                     "name": "Obchod s načúvacími prístrojmi",
                     "terms": "obchod s nacuvacimi pristrojmi,nacuvaci pristroj,načúvací prístroj"
@@ -6583,10 +6593,6 @@
                     "name": "Obchod s hudobnými nástrojmi",
                     "terms": "obchod s hudobnymi nastrojmi,hudobne nastroje,hudobné nástroje"
                 },
-                "shop/newsagent": {
-                    "name": "Obchod s novinami/časopismi",
-                    "terms": "obchod s novinami/casopismi,noviny,casopisy,časopisy"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Obchod s výživovými doplnkami"
                 },
@@ -6607,10 +6613,6 @@
                 },
                 "shop/pastry": {
                     "name": "Cukráreň"
-                },
-                "shop/pawnbroker": {
-                    "name": "Záložňa",
-                    "terms": "zalozna"
                 },
                 "shop/perfumery": {
                     "name": "Parfuméria"
@@ -6663,10 +6665,6 @@
                 "shop/seafood": {
                     "name": "Obchod s morskými špecialitami",
                     "terms": "obchod s morskymi specialitami,plody mora,ryby,morské ryby,morske ryby,kreverty,treska,tuniak"
-                },
-                "shop/second_hand": {
-                    "name": "Second hand",
-                    "terms": "z druhej ruky"
                 },
                 "shop/sewing": {
                     "name": "Galantéria"
@@ -6758,10 +6756,6 @@
                     "name": "Obchod s vysavačmi",
                     "terms": "bchod s vysavacmi,vysavače,vysavace,vysavač,vysavac"
                 },
-                "shop/variety_store": {
-                    "name": "Obchod so zmiešaným tovarom",
-                    "terms": "obchod so zmiesanym tovarom,rozlicny tovar,rozličný tovar"
-                },
                 "shop/video": {
                     "name": "Videopožičovňa",
                     "terms": "videopozicovna,dvd,cd,vhs,blue-ray,blueray,blue ray,video"
@@ -6807,6 +6801,10 @@
                 },
                 "tourism": {
                     "name": "Turistický objeky"
+                },
+                "tourism/alpine_hut": {
+                    "name": "Vysokohorská chata",
+                    "terms": "vysokohorska chata,horská chata,horska chata"
                 },
                 "tourism/apartment": {
                     "name": "Dovolenkový apartmán"

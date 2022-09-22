@@ -147,6 +147,10 @@ layers:
         data: { source: jawg, layer: structure }
         filter: { class: bridge }
         draw:
+            lines:
+                order: 9
+                width: 4
+                color: global.building_outline_color
             polygons:
                 order: 10
                 color: global.building_outline_color

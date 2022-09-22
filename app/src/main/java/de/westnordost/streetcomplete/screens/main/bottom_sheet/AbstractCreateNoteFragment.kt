@@ -8,6 +8,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 
@@ -21,7 +22,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment?
 
-    private val noteText get() = noteInput.text?.toString().orEmpty().trim()
+    private val noteText get() = noteInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +38,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
 
     private fun onClickOk() {
-        onComposedNote(noteText, attachPhotoFragment?.imagePaths.orEmpty())
+        onComposedNote(noteText!!, attachPhotoFragment?.imagePaths.orEmpty())
     }
 
     override fun onDiscard() {
@@ -45,10 +46,10 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
 
     override fun isRejectingClose() =
-        noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
+        noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateOkButtonEnablement() {
-        if (noteText.isNotEmpty()) {
+        if (noteText != null ) {
             okButtonContainer.popIn()
         } else {
             okButtonContainer.popOut()

@@ -1,0 +1,486 @@
+{
+    "en-CA": {
+        "presets": {
+            "categories": {
+                "category-barrier": {
+                    "name": "Barrier Features"
+                },
+                "category-building": {
+                    "name": "Building Features"
+                },
+                "category-golf": {
+                    "name": "Golf Features"
+                },
+                "category-landuse": {
+                    "name": "Land Use Features"
+                },
+                "category-natural": {
+                    "name": "Natural Features"
+                },
+                "category-path": {
+                    "name": "Paths"
+                },
+                "category-playground": {
+                    "name": "Playground Equipment"
+                },
+                "category-rail": {
+                    "name": "Rails"
+                },
+                "category-restriction": {
+                    "name": "Restriction Features"
+                },
+                "category-road_major": {
+                    "name": "Major Roads"
+                },
+                "category-road_minor": {
+                    "name": "Minor Roads"
+                },
+                "category-road_service": {
+                    "name": "Service Roads"
+                },
+                "category-route": {
+                    "name": "Route Features"
+                },
+                "category-utility": {
+                    "name": "Utility Features"
+                },
+                "category-water": {
+                    "name": "Water Bodies"
+                },
+                "category-waterway": {
+                    "name": "Waterways"
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "Allowed Access",
+                    "options": {
+                        "customers": {
+                            "description": "Restricted to customers at the destination",
+                            "title": "Customers"
+                        },
+                        "designated": {
+                            "description": "Access allowed according to signs or specific local laws",
+                            "title": "Designated"
+                        },
+                        "destination": {
+                            "description": "Access allowed only to reach a destination",
+                            "title": "Destination"
+                        },
+                        "dismount": {
+                            "description": "Access allowed but rider must dismount",
+                            "title": "Dismount"
+                        },
+                        "no": {
+                            "description": "Access not allowed to the general public",
+                            "title": "Prohibited"
+                        },
+                        "permissive": {
+                            "description": "Access allowed until such time as the owner revokes the permission",
+                            "title": "Permissive"
+                        },
+                        "permit": {
+                            "description": "Access allowed only with a valid permit or license",
+                            "title": "Permit"
+                        },
+                        "private": {
+                            "description": "Access allowed only with permission of the owner on an individual basis",
+                            "title": "Private"
+                        },
+                        "unknown": {
+                            "description": "Access conditions are unknown or unclear",
+                            "title": "Unknown"
+                        },
+                        "yes": {
+                            "description": "Access allowed by law; a right of way",
+                            "title": "Allowed"
+                        }
+                    },
+                    "placeholder": "Not Specified",
+                    "types": {
+                        "access": "All",
+                        "bicycle": "Bicycles",
+                        "foot": "Foot",
+                        "horse": "Horses",
+                        "motor_vehicle": "Motor Vehicles"
+                    }
+                },
+                "access_aisle": {
+                    "label": "Type"
+                },
+                "access_simple": {
+                    "label": "Allowed Access",
+                    "options": {
+                        "customers": "Customers Only",
+                        "no": "None",
+                        "permissive": "Permissive",
+                        "permit": "By Permit Only",
+                        "private": "Private",
+                        "unknown": "Unknown",
+                        "yes": "Public"
+                    }
+                },
+                "activity": {
+                    "label": "Activity",
+                    "options": {
+                        "bicycle": "Cycling",
+                        "hiking": "Hiking",
+                        "horse": "Horseback Riding",
+                        "mtb": "Mountain Biking",
+                        "ski": "Skiing"
+                    }
+                },
+                "addr/interpolation": {
+                    "label": "Type",
+                    "options": {
+                        "all": "All",
+                        "alphabetic": "Alphabetic",
+                        "even": "Even",
+                        "odd": "Odd"
+                    }
+                },
+                "address": {
+                    "label": "Address",
+                    "placeholders": {
+                        "block_number": "Block Number",
+                        "block_number!jp": "Block No.",
+                        "city": "City",
+                        "city!cn": "City/Prefecture/League",
+                        "city!jp": "City/Town/Village/Tokyo Special Ward",
+                        "city!vn": "City/Town",
+                        "conscriptionnumber": "123",
+                        "country": "Country",
+                        "county": "County",
+                        "county!jp": "District",
+                        "district": "District",
+                        "district!cn": "District/County/Banner",
+                        "district!vn": "Arrondissement/Town/District",
+                        "floor": "Floor",
+                        "hamlet": "Hamlet",
+                        "housename": "Housename",
+                        "housenumber": "123",
+                        "housenumber!jp": "Building No./Lot No.",
+                        "neighbourhood": "Neighbourhood",
+                        "neighbourhood!jp": "Chōme/Aza/Koaza",
+                        "place": "Place",
+                        "postcode": "Postcode",
+                        "province": "Province",
+                        "province!cn": "Province/Municipality/AR/SAR",
+                        "province!jp": "Prefecture",
+                        "quarter": "Quarter",
+                        "quarter!jp": "Ōaza/Machi",
+                        "state": "State",
+                        "street": "Street",
+                        "subdistrict": "Subdistrict",
+                        "subdistrict!vn": "Ward/Commune/Townlet",
+                        "suburb": "Suburb",
+                        "suburb!jp": "Ward",
+                        "unit": "Unit"
+                    }
+                },
+                "admin_level": {
+                    "label": "Admin Level"
+                },
+                "aerialway": {
+                    "label": "Type"
+                },
+                "aerialway/access": {
+                    "label": "Access",
+                    "options": {
+                        "both": "Both",
+                        "entry": "Entry",
+                        "exit": "Exit"
+                    }
+                },
+                "aerialway/bubble": {
+                    "label": "Bubble"
+                },
+                "aerialway/capacity": {
+                    "label": "Capacity (per hour)",
+                    "placeholder": "500, 2500, 5000..."
+                },
+                "aerialway/duration": {
+                    "label": "Duration (minutes)",
+                    "placeholder": "1, 2, 3..."
+                },
+                "aerialway/heating": {
+                    "label": "Heated"
+                },
+                "aerialway/occupancy": {
+                    "label": "Occupancy",
+                    "placeholder": "2, 4, 8..."
+                },
+                "aerialway/summer/access": {
+                    "label": "Access (summer)",
+                    "options": {
+                        "entry": "Entry",
+                        "exit": "Exit"
+                    }
+                },
+                "aeroway": {
+                    "label": "Type"
+                },
+                "agrarian": {
+                    "label": "Products"
+                },
+                "air_conditioning": {
+                    "label": "Air Conditioning",
+                    "terms": "ac,a/c"
+                },
+                "amenity": {
+                    "label": "Type"
+                },
+                "animal_boarding": {
+                    "label": "For Animals"
+                },
+                "architect": {
+                    "label": "Architect"
+                },
+                "area/highway": {
+                    "label": "Type"
+                },
+                "artist": {
+                    "label": "Artist"
+                },
+                "artwork_type": {
+                    "label": "Type"
+                },
+                "ascent": {
+                    "label": "Total Ascent"
+                },
+                "atm": {
+                    "label": "ATM"
+                },
+                "attraction": {
+                    "label": "Type"
+                },
+                "automated": {
+                    "label": "Automated"
+                },
+                "baby_feeding": {
+                    "label": "Baby Nursing Area",
+                    "options": {
+                        "no": "None",
+                        "room": "Dedicated Room",
+                        "yes": "Marked Space"
+                    }
+                },
+                "baby_seat": {
+                    "label": "Baby Seat"
+                },
+                "backcountry": {
+                    "label": "Backcountry",
+                    "terms": "boonies"
+                },
+                "backrest": {
+                    "label": "Backrest"
+                },
+                "bar": {
+                    "label": "Bar"
+                },
+                "barrier": {
+                    "label": "Type"
+                },
+                "barrier_planter": {
+                    "label": "Barrier",
+                    "options": {
+                        "planter": "Yes",
+                        "undefined": "No"
+                    }
+                },
+                "basin": {
+                    "label": "Type"
+                },
+                "bath/open_air": {
+                    "label": "Open Air"
+                },
+                "beauty": {
+                    "options": {
+                        "cosmetics": "Cosmetics",
+                        "hair_removal": "Hair Removal",
+                        "nails": "Manicure / Pedicure",
+                        "skin_care": "Skin Care",
+                        "spa": "Day Spa",
+                        "tanning": "Tanning",
+                        "waxing": "Waxing"
+                    }
+                },
+                "bench": {
+                    "label": "Bench"
+                },
+                "bicycle_parking": {
+                    "label": "Type"
+                },
+                "bin": {
+                    "label": "Garbage Bin"
+                },
+                "blind": {
+                    "label": "Blind Person Access",
+                    "options": {
+                        "limited": "Limited",
+                        "no": "No",
+                        "yes": "Yes"
+                    }
+                },
+                "blood_components": {
+                    "label": "Blood Components",
+                    "options": {
+                        "plasma": "plasma",
+                        "platelets": "platelets",
+                        "stemcells": "stem cell samples",
+                        "whole": "whole blood"
+                    }
+                },
+                "branch_brand": {
+                    "label": "Branch"
+                },
+                "brand": {
+                    "label": "Brand"
+                },
+                "brewery": {
+                    "terms": "on tap"
+                },
+                "building": {
+                    "label": "Building"
+                },
+                "building/flats": {
+                    "label": "Units",
+                    "placeholder": "2, 4, 6, 8..."
+                },
+                "building/levels": {
+                    "label": "Levels",
+                    "placeholder": "2, 4, 6...",
+                    "terms": "stories"
+                },
+                "building/levels/underground": {
+                    "label": "Underground Levels",
+                    "placeholder": "2, 4, 6..."
+                },
+                "building/levels_building": {
+                    "label": "Building Levels"
+                },
+                "cash_in": {
+                    "label": "Cash Deposits"
+                },
+                "charge_fee": {
+                    "placeholder": "1 EUR, 5 USD, 10 CAD…"
+                },
+                "colour": {
+                    "label": "Colour"
+                },
+                "contact/webcam": {
+                    "placeholder": "https://example.com/"
+                },
+                "covered_no": {
+                    "options": {
+                        "undefined": "Assumed to be No"
+                    }
+                },
+                "departures_board": {
+                    "label": "Departures Board"
+                },
+                "direction_point": {
+                    "placeholder": "45, 90, 180, 270"
+                },
+                "drive_through": {
+                    "terms": "drive-through,drive through,drive thru,drive-thru"
+                },
+                "ele": {
+                    "terms": "altitude,height"
+                },
+                "frequency": {
+                    "terms": "hertz,hz"
+                },
+                "internet_access/ssid": {
+                    "terms": "ssid"
+                },
+                "junction_line": {
+                    "terms": "intersection"
+                },
+                "parking": {
+                    "options": {
+                        "sheds": "Sheds"
+                    }
+                },
+                "payment_multi": {
+                    "terms": "payment methods"
+                },
+                "phone": {
+                    "label": "Telephone",
+                    "terms": "phone,phone number"
+                },
+                "piste/difficulty_nordic": {
+                    "options": {
+                        "advanced": "Advanced - Narrow, steep or icy section, sharp turn"
+                    }
+                },
+                "recycling_type": {
+                    "options": {
+                        "centre": "Centre"
+                    },
+                    "placeholder": "Container, Centre"
+                },
+                "roof/colour": {
+                    "label": "Roof Colour"
+                },
+                "seamark/beacon_lateral/colour": {
+                    "label": "Colour"
+                },
+                "seamark/buoy_lateral/colour": {
+                    "label": "Colour"
+                },
+                "tee": {
+                    "label": "Tee Colour/Type"
+                }
+            },
+            "presets": {
+                "amenity/arts_centre": {
+                    "name": "Arts Centre"
+                },
+                "amenity/community_centre": {
+                    "name": "Community Centre"
+                },
+                "amenity/community_centre/lgbtq": {
+                    "name": "LGBTQ+ Community Centre"
+                },
+                "amenity/community_centre/youth_centre": {
+                    "name": "Youth Centre"
+                },
+                "amenity/conference_centre": {
+                    "name": "Convention Centre"
+                },
+                "amenity/dive_centre": {
+                    "name": "Dive Centre"
+                },
+                "amenity/exhibition_centre": {
+                    "name": "Exposition Centre"
+                },
+                "amenity/parking": {
+                    "name": "Parking Lot"
+                },
+                "amenity/payment_centre": {
+                    "name": "Payment Centre"
+                },
+                "amenity/telephone": {
+                    "name": "Telephone"
+                },
+                "amenity/toilets": {
+                    "name": "Washroom",
+                    "aliases": "Bathroom"
+                },
+                "building/grandstand": {
+                    "name": "Grandstand"
+                },
+                "highway/footway/informal": {
+                    "name": "Informal Foot Path"
+                },
+                "highway/tertiary_link": {
+                    "name": "Tertiary Link"
+                },
+                "leisure/bleachers": {
+                    "name": "Bleachers"
+                }
+            }
+        }
+    }
+}

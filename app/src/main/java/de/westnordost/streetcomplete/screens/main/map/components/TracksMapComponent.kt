@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import android.location.Location
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.geometry.Polyline
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
 import kotlin.math.max
@@ -25,7 +25,7 @@ class TracksMapComponent(ctrl: KtMapController) {
     private var tracks: MutableList<Track> = arrayListOf(Track(ArrayList(), false))
 
     /** Add a point to the current track */
-    fun addToCurrentTrack(pos: Location) {
+    fun addToCurrentTrack(pos: LatLon) {
         val track = tracks.last()
         track.trackpoints.add(pos.toLngLat())
         val trackpoints = track.trackpoints
@@ -45,10 +45,10 @@ class TracksMapComponent(ctrl: KtMapController) {
     }
 
     /** Set all the tracks (when re-initializing), if recording the last track is the only recording */
-    fun setTracks(tracks: List<List<Location>>, isRecording: Boolean) {
-        this.tracks = tracks.mapIndexed { it, track ->
+    fun setTracks(tracks: List<List<LatLon>>, isRecording: Boolean) {
+        this.tracks = tracks.mapIndexed { index, track ->
             var recording = false
-            if (isRecording && it == tracks.size - 1) {
+            if (isRecording && index == tracks.size - 1) {
                 recording = true
             }
             Track(track.map { it.toLngLat() }.toMutableList(), recording)

@@ -1285,7 +1285,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_surface_value_concrete_plates">"Plaques de formigó"</string>
     <string name="quest_surface_value_concrete_lanes">"Línies de formigó"</string>
     <string name="quest_fireHydrant_diameter_title">"Quin és el diàmetre d'aquesta boca d'incendis?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"El diàmetre no pareix plausible"</string>
     <string name="quest_fireHydrant_confirmation_title">"Estàs segur? Moltes vegades el diametre es pot trobar al propi hidrant."</string>
     <string name="quest_diet_answer_no_food">"No té menjar"</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1314,7 +1313,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
 
     <!-- Fuzzy -->
     <string name="on_floor">"al pis %s:"</string>
-    <string name="quest_street_parking_title">"Com poden estacionar aquí els cotxes, si és que ho poden fer?"</string>
     <string name="select_street_parking_orientation">"Seleccioneu l'orientació cap a la carretera:"</string>
     <string name="select_street_parking_position">"Selecciona posició:"</string>
     <string name="select_street_parking_no">"Algun senyal o marca vial ací?"</string>
@@ -1583,9 +1581,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Estàs segur que els ciclistes no poden utilitzar els dos sentits d'aquest carrer unidireccional? En cas de dubte, mira si hi ha algun senyal al final del carrer."</string>
     <string name="link_valhalla_description">"Motor d'enrrutament amb una empremta de memòria molt petita, enrutament multimodal, isòcrones i molt més."</string>
     <string name="link_backofyourhand_description">"Com de bé coneixes la teva zona? Prova el teu coneixement localitzant carrers."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Exploreu com semblava OSM en els primers dies en comparació amb com es veu ara!"</string>
     <string name="link_notesreview_description">"Veure, filtrar i comentar convenientment les notes creades per tu i altres. Moltes notes es poden resoldre posant la informació que hi contenen al mapa amb iD o JOSM"</string>
 
     <!-- Quests
@@ -1655,4 +1650,7 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_select_code_only">"Nom de l'entrada"</string>
     <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
     <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
+    <string name="quest_camp_shower_title">"Hi ha dutxes aquí?"</string>
+    <string name="quest_camp_type_title">"Qui hi pot acampar aquí?"</string>
+    <string name="quest_recycling_type_pet">"Només PET"</string>
 </resources>

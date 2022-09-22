@@ -888,11 +888,11 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="default_disabled_msg_go_inside">"Dit type vragen is standaard uitgeschakeld omdat je voor het antwoord waarschijnlijk de locatie moet binnengaan."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_conscription_number">"Conscriptienummer (Tsjechië en Slowakije)"</string>
+    <string name="quest_housenumber_conscription_number">"Conscriptie-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Oriëntatienummer (Tsjechië en Slowakije)"</string>
+    <string name="quest_housenumber_street_number_optional">"Oriëntatie-nummer (optioneel)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant…"</string>
@@ -1537,7 +1537,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_recycling_materials_title">"Wat kan hier achtergelaten worden voor recycling?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_materials_note">"Als iets anders dan hier aakiesbaar gerecycled kan worden, geef dan een notitie."</string>
+    <string name="quest_recycling_materials_note">"Als iets anders dan hier aankiesbaar gerecycled kan worden, geef dan een notitie."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Batterijen"</string>
@@ -2328,7 +2328,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_surface_value_concrete_plates">"Betonnen platen"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonnen stroken"</string>
     <string name="quest_fireHydrant_diameter_title">"Welke diameter wordt aangegeven op het bord voor deze brandkraan?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Deze diameter lijkt onwaarschijnlijk."</string>
     <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
     <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
     <string name="short_no_answer_on_button">"Nee"</string>
@@ -2355,7 +2354,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
 
     <!-- Fuzzy -->
     <string name="on_floor">"op verdieping %s"</string>
-    <string name="quest_street_parking_title">"Hoe kunnen auto's hier parkeren, of helemaal niet?"</string>
     <string name="select_street_parking_orientation">"Selecteer de postitie ten op zichte van de rijbaan:"</string>
     <string name="select_street_parking_position">"Selecteer positie:"</string>
     <string name="select_street_parking_no">"Zijn er hier borden of weg makeringen?"</string>
@@ -2601,9 +2599,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Hoe goed ken je je omgeving? Test je kennis door straten te zoeken."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Ontdek hoe het uitzicht van OSM doorheen de jaren geëvolueerd is!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Bekijk, filter en reageer eenvoudig op opmerkingen van jou en anderen. Veel opmerkingen kunnen worden opgelost door hun informatie via iD of JOSM op de kaart te zetten"</string>
 
     <!-- Quests
@@ -2708,4 +2703,21 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_entrance_reference_flat_range_label">"Appartementen volgorde:"</string>
     <string name="quest_entrance_reference_flat_range_to">"naar"</string>
+    <string name="default_disabled_msg_overlay">"Dit type vraag is standaard uitgeschakeld omdat er al een overlay is waarmee het effectiever en efficiënter is om deze gegevens in te voeren en bij te werken."</string>
+    <string name="quest_camp_drinking_water_title">"Is drinkwater gratis beschikbaar voor kampeerders hier?"</string>
+    <string name="quest_camp_shower_title">"Zijn er hier douches?"</string>
+    <string name="quest_camp_power_supply_title">"Zijn er hier oplaadpunten voor telefoons, laptops e.d.?"</string>
+    <string name="quest_camp_type_title">"Mag je hier kamperen?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Zowel tenten, caravans als campers."</string>
+    <string name="quest_camp_type_caravans_only">"Alleen caravans en campers."</string>
+    <string name="quest_camp_type_tents_only">"Alleen tenten."</string>
+    <string name="quest_camp_type_backcountry">"Kampeer gelegenheid zonder faciliteiten"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
+    <string name="quest_recycling_type_pet">"Alleen plastic"</string>
+    <string name="street_parking_street_width">"Straatbreedte: %s"</string>
+    <string name="overlay_street_parking">"Parkeren op straat."</string>
+    <string name="link_ohsomehex_description">"Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd"</string>
+    <string name="link_opencampingmap_description">"Een kaart met campings"</string>
+    <string name="quest_atm_cashin_title">"Kan je bij deze geldautomaat ook geld storten?"</string>
 </resources>

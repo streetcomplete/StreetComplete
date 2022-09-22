@@ -1303,7 +1303,6 @@
     <string name="quest_surface_value_concrete_plates">"Бетонні плити"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонні доріжки"</string>
     <string name="quest_fireHydrant_diameter_title">"Який діаметр вказаний на знаку для цього пожежного гідранта?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Цей діаметр виглядає неправдоподібним."</string>
     <string name="quest_fireHydrant_confirmation_title">"Ви впевнені?  Іноді діаметр можна знайти на самому гідранті."</string>
     <string name="quest_diet_answer_no_food">"У ньому немає їжі"</string>
     <string name="short_no_answer_on_button">"Ні"</string>
@@ -1330,7 +1329,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"на поверсі %s:"</string>
-    <string name="quest_street_parking_title">"Як тут можна припаркувати машину?"</string>
     <string name="select_street_parking_orientation">"Оберіть орієнтацію відносно дороги:"</string>
     <string name="select_street_parking_position">"Вибрати місце"</string>
     <string name="select_street_parking_no">"Чи є тут знак чи дорожня розмітка?"</string>
