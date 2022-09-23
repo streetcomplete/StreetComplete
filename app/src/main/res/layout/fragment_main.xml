@@ -148,17 +148,6 @@
 
         </LinearLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/quest_download_progress_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.DownloadProgressFragment"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            tools:layout="@layout/fragment_download_progress"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
-            />
-
         <View
             android:id="@+id/contextMenuView"
             android:layout_width="0dp"
