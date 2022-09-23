@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -45,7 +44,12 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
     private fun createMarkAsAssemblyPointAnswer(): AnswerItem? {
         return AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) {
-            applyAnswer(IsAssemblyPointAnswer)
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setView(R.layout.dialog_confirm_assembly_point)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsAssemblyPointAnswer) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
         }
     }
 }
