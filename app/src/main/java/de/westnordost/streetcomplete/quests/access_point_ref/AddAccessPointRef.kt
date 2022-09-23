@@ -17,7 +17,7 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
     """
 
     override val changesetComment = "Determine emergency access point refs"
-    override val wikiLink = "Tag:emergency=access_point"
+    override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_access_point
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
     override val isDeleteElementEnabled = true
