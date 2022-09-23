@@ -12,7 +12,7 @@
                     "name": "Elementi del golf"
                 },
                 "category-landuse": {
-                    "name": "Utilizzo del terreno"
+                    "name": "Uso del suolo"
                 },
                 "category-natural": {
                     "name": "Elementi naturali"
@@ -125,7 +125,6 @@
                 "activity": {
                     "label": "Attività",
                     "options": {
-                        "Ski": "Sci",
                         "bicycle": "Ciclismo",
                         "hiking": "Escursionismo",
                         "horse": "Cavalcata"
@@ -3275,7 +3274,7 @@
                     "name": "Ufficio di smistamento postale"
                 },
                 "amenity/post_office": {
-                    "name": "Ufficio Postale",
+                    "name": "Ufficio postale",
                     "terms": "ufficio postale,lettere,spedizione,pacco,poste"
                 },
                 "amenity/prep_school": {
@@ -3495,6 +3494,10 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Anfiteatro"
+                },
+                "amenity/toilets": {
+                    "name": "Servizi igienici",
+                    "terms": "bagno,bagni,bagno pubblico,bagni pubblici,toilet,wc,gabinetto,vespasiano,cesso"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "Sciacquone",
@@ -3908,7 +3911,7 @@
                 },
                 "building/commercial": {
                     "name": "Edificio commerciale",
-                    "terms": "edificio commerciale"
+                    "terms": "uffici,servizi"
                 },
                 "building/construction": {
                     "name": "Edificio in costruzione",
@@ -3988,7 +3991,7 @@
                     "terms": "moschea,moschee,islam,sala della preghiera,preghiera,minareto"
                 },
                 "building/office": {
-                    "name": "Edificio per Uffici"
+                    "name": "Edificio per uffici"
                 },
                 "building/pavilion": {
                     "name": "Edificio primario servizi di campi sportivi",
@@ -4965,6 +4968,10 @@
                     "name": "Cantiere",
                     "terms": "scavo,cantiere,construction,costruzione"
                 },
+                "landuse/education": {
+                    "name": "Polo educativo",
+                    "terms": "campus scolastico,campus educativo,scuola,educazione"
+                },
                 "landuse/farm": {
                     "name": "Terreno agricolo"
                 },
@@ -5401,9 +5408,6 @@
                     "name": "Linea",
                     "terms": "linea"
                 },
-                "man_made": {
-                    "name": "Elemento creato dall'uomo"
-                },
                 "man_made/adit": {
                     "name": "Cunicolo",
                     "terms": "adito,miniera,ingresso"
@@ -5617,8 +5621,8 @@
                     "name": "Torre per telecomunicazioni"
                 },
                 "man_made/tower/cooling": {
-                    "name": "Torre di Raffreddamento",
-                    "terms": "torre di raffreddamento"
+                    "name": "Torre di raffreddamento",
+                    "terms": "raffreddamento,produzione energia"
                 },
                 "man_made/tower/defensive": {
                     "name": "Torre fortificata"
@@ -5638,7 +5642,7 @@
                     "name": "Area del tunnel"
                 },
                 "man_made/utility_pole": {
-                    "name": "Palo di Servizi Pubblici"
+                    "name": "Palo per utenze pubbliche"
                 },
                 "man_made/wastewater_plant": {
                     "name": "Impianto di depurazione delle acque",
@@ -5924,7 +5928,7 @@
                     "terms": "ditta di consulenza,consulenza"
                 },
                 "office/coworking": {
-                    "name": "Ufficio in Coworking",
+                    "name": "Ufficio in coworking",
                     "terms": "collaborazione,open,space,coworking"
                 },
                 "office/diplomatic": {
@@ -6040,7 +6044,7 @@
                     "terms": "ufficio ricerca,ufficio di ricerca"
                 },
                 "office/security": {
-                    "name": "Ufficio della Vigilanza",
+                    "name": "Ufficio della vigilanza",
                     "terms": "ufficio di guardie giurate private"
                 },
                 "office/surveyor": {
@@ -6588,10 +6592,6 @@
                 "shop/anime": {
                     "name": "Negozio di Anime / Manga"
                 },
-                "shop/antiques": {
-                    "name": "Antiquario",
-                    "terms": "antichità,mobili antichi"
-                },
                 "shop/appliance": {
                     "name": "Negozio di elettrodomestici",
                     "terms": "condizionatori,apparecchi,lavatrici,asciugatori,freezer,frigo,congelatori"
@@ -6646,10 +6646,6 @@
                 "shop/bookmaker": {
                     "name": "Agenzia di scommesse",
                     "terms": "scommesse,puntate,allibratore"
-                },
-                "shop/books": {
-                    "name": "Libreria",
-                    "terms": "negozio di libri"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -6754,9 +6750,6 @@
                     "name": "Negozio di cosmetici",
                     "terms": "cosmetica,negozio di cosmetica,profumeria"
                 },
-                "shop/country_store": {
-                    "name": "Negozio locale di articoli vari"
-                },
                 "shop/craft": {
                     "name": "Negozio di arti e mestieri"
                 },
@@ -6767,10 +6760,6 @@
                 "shop/dairy": {
                     "name": "Negozio di latticini",
                     "terms": "latte,uova,formaggio,cacio"
-                },
-                "shop/deli": {
-                    "name": "Gastronomia",
-                    "terms": "cibi e bevande pregiate"
                 },
                 "shop/department_store": {
                     "name": "Grande magazzino",
@@ -6894,10 +6883,6 @@
                     "name": "Ferramenta",
                     "terms": "negozio di ferramenta"
                 },
-                "shop/health_food": {
-                    "name": "Prodotti per il benessere",
-                    "terms": "prodotti genuini,benessere,negozio di prodotti biologici,negozio di prodotti per la salute,prodotti per la salute"
-                },
                 "shop/hearing_aids": {
                     "name": "Negozio di apparecchi acustici",
                     "terms": "apparecchi acustici,negozio di apparecchi acustici"
@@ -7007,10 +6992,6 @@
                     "name": "Negozio di strumenti musicali",
                     "terms": "strumenti musicali"
                 },
-                "shop/newsagent": {
-                    "name": "Edicola",
-                    "terms": "edicola"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Negozio di integratori alimentari",
                     "terms": "negozio di integratori"
@@ -7036,10 +7017,6 @@
                 "shop/pastry": {
                     "name": "Pasticceria",
                     "terms": "patisserie,torteria,torte,paste,pasticcini"
-                },
-                "shop/pawnbroker": {
-                    "name": "Banco dei pegni",
-                    "terms": "banco dei pegni,monte dei pegni"
                 },
                 "shop/perfumery": {
                     "name": "Profumeria",
@@ -7093,10 +7070,6 @@
                 "shop/seafood": {
                     "name": "Pescheria",
                     "terms": "pesce fresco,ittica"
-                },
-                "shop/second_hand": {
-                    "name": "Negozio di articoli usati",
-                    "terms": "seconda mano,rivendita,risparmio,usato,mercatino"
                 },
                 "shop/sewing": {
                     "name": "Merceria",
@@ -7189,10 +7162,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Negozio di aspirapolveri",
                     "terms": "aspirapolveri,aspirapolvere"
-                },
-                "shop/variety_store": {
-                    "name": "Negozio a prezzo fisso",
-                    "terms": "articoli a basso costo,tutto a"
                 },
                 "shop/video": {
                     "name": "Videoteca",
@@ -7586,7 +7555,7 @@
                     "terms": "darsena,cantiere,bache"
                 },
                 "waterway/canal": {
-                    "name": "Canale (navigabile)",
+                    "name": "Canale",
                     "terms": "canale"
                 },
                 "waterway/canal/lock": {

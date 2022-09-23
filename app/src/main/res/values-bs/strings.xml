@@ -1289,7 +1289,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_surface_value_concrete_plates">"Betonske ploče"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske trake"</string>
     <string name="quest_fireHydrant_diameter_title">"Koji je promjer označen na ovom vatrogasnom hidrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Toliki promjer izgleda nerealno."</string>
     <string name="quest_fireHydrant_confirmation_title">"Jeste li sigurni? Ponekad je promjer označen i na samom hidrantu."</string>
     <string name="quest_diet_answer_no_food">"Nema nikakve hrane"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
@@ -1314,7 +1313,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
 
     <!-- Fuzzy -->
     <string name="on_floor">"na katu %s:"</string>
-    <string name="quest_street_parking_title">"Kako automobili mogu parkirati ovdje, ako uopće mogu?"</string>
     <string name="select_street_parking_orientation">"Odaberite orijentaciju u odnosu na mjesto:"</string>
     <string name="select_street_parking_position">"Odaberite poziciju parkinga:"</string>
     <string name="select_street_parking_no">"Ima li ovdje prometnih znakova ili oznaka na cesti?"</string>

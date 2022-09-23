@@ -2730,9 +2730,6 @@
                     "name": "Llicorería",
                     "terms": "bodega"
                 },
-                "shop/antiques": {
-                    "name": "Anticuariu"
-                },
                 "shop/art": {
                     "name": "Galería d'arte",
                     "terms": "marchante d'arte"
@@ -2751,9 +2748,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Encuadernador"
-                },
-                "shop/books": {
-                    "name": "Llibrería"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -2808,9 +2802,6 @@
                 },
                 "shop/dairy": {
                     "name": "Llechería"
-                },
-                "shop/deli": {
-                    "name": "Gourmet"
                 },
                 "shop/department_store": {
                     "name": "Grandes almacenes"
@@ -2925,10 +2916,6 @@
                     "name": "Instrumentos musicales",
                     "terms": "luthier"
                 },
-                "shop/newsagent": {
-                    "name": "Prensa y revistes",
-                    "terms": "puestu de periódicos"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Tienda de suplementos nutritivos"
                 },
@@ -2945,10 +2932,6 @@
                 },
                 "shop/pastry": {
                     "name": "Pastelería"
-                },
-                "shop/pawnbroker": {
-                    "name": "Casa d'empeños",
-                    "terms": "monte de piedá"
                 },
                 "shop/perfumery": {
                     "name": "Perfumería"
@@ -2976,9 +2959,6 @@
                 "shop/seafood": {
                     "name": "Mariscos",
                     "terms": "pescadería"
-                },
-                "shop/second_hand": {
-                    "name": "Reventa d'empeños"
                 },
                 "shop/shoes": {
                     "name": "Zapatería"
@@ -3036,9 +3016,6 @@
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Tienda d'aspiradores"
-                },
-                "shop/variety_store": {
-                    "name": "Bazar"
                 },
                 "shop/video": {
                     "name": "Tienda de videos"

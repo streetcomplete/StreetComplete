@@ -1291,7 +1291,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Questo diametro sembra implausibile."</string>
     <string name="quest_fireHydrant_confirmation_title">"Sei Sicuro? Delle volte il diametro può essere trovato sull'idrante stesso."</string>
     <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1318,7 +1317,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="pref_title_language_select">"Seleziona lingua"</string>
     <string name="language_default">"Predefinito di sistema"</string>
     <string name="on_floor">"al piano %s"</string>
-    <string name="quest_street_parking_title">"Come possono parcheggiare la auto qua?"</string>
     <string name="select_street_parking_orientation">"Seleziona l'orientamento rispetto alla strada:"</string>
     <string name="select_street_parking_position">"Seleziona la posizione:"</string>
     <string name="select_street_parking_no">"Sono presenti cartelli o strisce qua?"</string>
@@ -1557,9 +1555,6 @@ sorted alphabetically by title -->
 "</string>
     <string name="link_valhalla_description">"Motore di navigazione con una ridotta occupazione della memoria, routing muti-modale, isocrone e altro ancora."</string>
     <string name="link_backofyourhand_description">"Quanto conosci la tua area ? Metti alla prova individuando le strade"</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Esplora come OSM si presentava all'inizio confrontato a come è oggi!"</string>
     <string name="link_notesreview_description">"Visualizza, filtra e commenta in maniera immediata le note create da te o da altri. Molte di queste possono essere risolte inserendo sulla mappa le informazioni che contengono usando iD oppure JOSM."</string>
 
     <!-- Quests
@@ -1636,4 +1631,15 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Etichetta dell’ingresso:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Intervallo degli appartamenti:"</string>
     <string name="quest_entrance_reference_flat_range_to">"fino a"</string>
+    <string name="default_disabled_msg_overlay">"Questo tipo di missione è disabilitata di default perché c'è già un livello sovrapposto col quale è più efficace ed efficiente inserire ed aggiornare questi dati."</string>
+    <string name="quest_camp_drinking_water_title">"L'acqua potabile è disponibile gratuitamente per i camper qui?"</string>
+    <string name="quest_camp_shower_title">"Ci sono docce qui?"</string>
+    <string name="quest_camp_power_supply_title">"I clienti possono caricare i propri telefoni, portatili, ecc. qui?"</string>
+    <string name="quest_camp_type_title">"Chi può campeggiare qui?"</string>
+    <string name="quest_camp_type_tents_only">"Solo tende"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver misurato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
+    <string name="quest_recycling_type_pet">"Solo PET"</string>
+    <string name="street_parking_street_width">"Larghezza strada: %s"</string>
+    <string name="overlay_street_parking">"Parcheggio in strada"</string>
 </resources>

@@ -125,13 +125,12 @@
                 "activity": {
                     "label": "Aktivitet",
                     "options": {
-                        "Ski": "Skidåkning",
                         "bicycle": "Cykling",
                         "hiking": "Vanding",
                         "horse": "Hästridning",
-                        "mtb": "Bergscykling"
-                    },
-                    "terms": "aktivitet,aktiviteter"
+                        "mtb": "Bergscykling",
+                        "ski": "Skidåkning"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Typ",
@@ -423,9 +422,15 @@
                     "label": "Material",
                     "terms": "material,tillverkat av"
                 },
+                "building/part": {
+                    "label": "Byggnadsdel"
+                },
                 "building_area": {
                     "label": "Byggnad",
                     "terms": "byggnad,hus,konstruktion,byggnadsverk,bygge,anläggning,fastighet,kåk"
+                },
+                "building_area_yes": {
+                    "label": "Byggnad"
                 },
                 "bunker_type": {
                     "label": "Typ"
@@ -732,6 +737,10 @@
                             "description": "Cykelfil som går i motsatt riktning mot övrig trafik",
                             "title": "Motriktad cykelfil"
                         },
+                        "separate": {
+                            "description": "Indikerar att cykelväg var kartlagd som en separat geometri",
+                            "title": "Cykelväg kartlagd separat"
+                        },
                         "share_busway": {
                             "description": "Cykelfil delad med bussfil",
                             "title": "Cykelfil delad med buss"
@@ -944,6 +953,10 @@
                 "drinking_water": {
                     "label": "Drickbart",
                     "terms": "dricksvatten,drickbart,drickbar"
+                },
+                "drinking_water_available": {
+                    "label": "Dricksvatten tillgängligt",
+                    "terms": "dricksvatten tillgängligt,dricksvatten,vatten,vattenkran,drickbart vatten"
                 },
                 "drive_through": {
                     "label": "Genomkörning (Drive-through)",
@@ -1411,6 +1424,10 @@
                 "kerb/height": {
                     "label": "Höjd"
                 },
+                "kitchen": {
+                    "label": "Kök",
+                    "terms": "kök,matlagning,spis,pentry,kokplatta,kokvrå,kabyss"
+                },
                 "kneipp_water_cure_multi": {
                     "label": "Bassängtyper"
                 },
@@ -1485,7 +1502,8 @@
                     "label": "Typ"
                 },
                 "length": {
-                    "label": "Längd (meter)"
+                    "label": "Längd (meter)",
+                    "terms": "längd,meter,höjd,avstånd,bredd"
                 },
                 "level": {
                     "label": "Våning",
@@ -1561,6 +1579,10 @@
                     "label": "Material",
                     "terms": "material,tillverkad av"
                 },
+                "mattress": {
+                    "label": "Madrasser tillgängliga",
+                    "terms": "madrasser tillgängliga,madrasser,sängar,sängplatser,liggunderlag,bolster,resårmadrass,skumgummimadrass,latexmadrass,resårbotten,bäddmadrass,plastmadrass,galonmadrass,åkmadrass"
+                },
                 "max_age": {
                     "label": "Maxålder",
                     "terms": "maxålder,högsta ålder,ålder,åldersgräns,åldersbegränsning,övre åldersgräns"
@@ -1578,6 +1600,11 @@
                     "label": "Rekommenderad högsta hastighet",
                     "placeholder": "40, 50, 60...",
                     "terms": "rekommenderad högsta hastighet,rekommenderad hastighet,rekommenderad fart,rekommendation,hastighet,fart"
+                },
+                "maxspeed/hgv": {
+                    "label": "Hastighetsbegränsning för lastbil",
+                    "placeholder": "40, 50, 60...",
+                    "terms": "hastighetsbegränsning för lastbil,lastbildhastighet,fart för lastbil,lastbildsfart"
                 },
                 "maxstay": {
                     "label": "Maxtid",
@@ -2087,6 +2114,10 @@
                     "label": "Referenskod",
                     "terms": "referenskod,referens,kod"
                 },
+                "ref/FR/siret-FR": {
+                    "label": "SIRET-nummer",
+                    "terms": "siret-nummer. siret-referens,siret"
+                },
                 "ref/isil": {
                     "label": "ISIL-kod"
                 },
@@ -2125,6 +2156,9 @@
                 "ref_runway": {
                     "label": "Nummer på start- och landningsbana",
                     "placeholder": "t.ex. 01L/19R"
+                },
+                "ref_sector": {
+                    "label": "Sektionsnummer"
                 },
                 "ref_stop_position": {
                     "label": "Hållplatsnummer"
@@ -2561,6 +2595,14 @@
                 "studio": {
                     "label": "Typ"
                 },
+                "subject": {
+                    "label": "Ämne",
+                    "terms": "ämne,typ,tema,motiv,fråga,problem,fack,område,läroämne,gren,disciplin"
+                },
+                "subject/wikidata": {
+                    "label": "Ämnets Wikidata",
+                    "terms": "ämnets wikidata,ämnets wikisida,ämneswiki,wiki,wikipedia,wikidata"
+                },
                 "substance": {
                     "label": "Substans"
                 },
@@ -2674,6 +2716,9 @@
                     "label": "Taxon",
                     "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
                     "terms": "taxon,taxa,enheter,avdelningar"
+                },
+                "tee": {
+                    "label": "Tee-färg/typ"
                 },
                 "telecom": {
                     "label": "Typ"
@@ -2812,7 +2857,11 @@
                     "terms": "synlighet,tydlighet,följbarhet"
                 },
                 "transformer": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "phase_angle_regulator": "Fasvinkelregulator",
+                        "yes": "Okänd roll"
+                    }
                 },
                 "trees": {
                     "label": "Träd"
@@ -2830,6 +2879,9 @@
                 },
                 "tunnel_combo": {
                     "label": "Typ"
+                },
+                "turning_circle": {
+                    "label": "Form"
                 },
                 "usage_rail": {
                     "label": "Användningsområde",
@@ -3014,6 +3066,13 @@
                     "label": "Lindningar",
                     "placeholder": "1, 2, 3...",
                     "terms": "lindningar,lindning"
+                },
+                "windings/auto": {
+                    "options": {
+                        "no": "Nej",
+                        "undefined": "Förväntas vara Nej",
+                        "yes": "Ja"
+                    }
                 },
                 "windings/configuration": {
                     "label": "Lindningskonfiguration",
@@ -7541,10 +7600,6 @@
                     "name": "Sminkaffär",
                     "terms": "sminkaffär,smink,kosmetika,kosmetikaffär"
                 },
-                "shop/country_store": {
-                    "name": "Lanthandel",
-                    "terms": "lanthandel,landet"
-                },
                 "shop/craft": {
                     "name": "Konst- & hantverksbutik",
                     "terms": "konst,konsthantverk,konstverk,hantverk,slöjd"
@@ -7683,10 +7738,6 @@
                 "shop/hardware": {
                     "name": "Järnaffär",
                     "terms": "järnaffär,järnhandlare,skruv,skruvar,bult,bultar,spik,krokar,järnbeslag,järntillbehör,metallverktyg,verktyg,bygg,el,vvs,trädgårdsredskap,redskap,handverktyg,elverktyg,köksutrustning,badrum,kök,hushållsprodukter,lås,nycklar,nyckeltillverkning"
-                },
-                "shop/health_food": {
-                    "name": "Hälsokostbutik",
-                    "terms": "hälsokostbutik,hälsokost,hälsomat,organisk,organist,vitaminer,vegetarian,vegan,naturligt,kosttillskott,köttersättning,mjölkersättning"
                 },
                 "shop/hearing_aids": {
                     "name": "Hörapparater",

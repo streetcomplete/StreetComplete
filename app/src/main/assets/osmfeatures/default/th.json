@@ -8,43 +8,96 @@
                 "category-building": {
                     "name": "คุณลักษณะอาคาร"
                 },
+                "category-golf": {
+                    "name": "คุณลักษณะกีฬากอล์ฟ"
+                },
                 "category-landuse": {
                     "name": "คุณลักษณะที่ดิน"
+                },
+                "category-natural": {
+                    "name": "คุณลักษณะธรรมชาติ"
+                },
+                "category-path": {
+                    "name": "ทาง"
+                },
+                "category-playground": {
+                    "name": "อุปกรณ์สนามเด็กเล่น"
+                },
+                "category-rail": {
+                    "name": "ราง"
                 },
                 "category-restriction": {
                     "name": "คุณลักษณะการปิดกั้น"
                 },
+                "category-road_major": {
+                    "name": "ถนนสายหลัก"
+                },
+                "category-road_minor": {
+                    "name": "ถนนสายรอง"
+                },
+                "category-road_service": {
+                    "name": "ถนนบริการ"
+                },
                 "category-route": {
                     "name": "คุณลักษณะสายเดินรถ"
+                },
+                "category-utility": {
+                    "name": "คุณลักษณะสาธารนูประโภค"
+                },
+                "category-water": {
+                    "name": "ผืนน้ำ"
+                },
+                "category-waterway": {
+                    "name": "เส้นทางน้ำ"
                 }
             },
             "fields": {
                 "access": {
                     "label": "อนุญาตการเข้าถึง",
                     "options": {
+                        "customers": {
+                            "description": "อนุญาตให้ลูกค้าของปลายทาง",
+                            "title": "ลูกค้า"
+                        },
                         "designated": {
+                            "description": "อนุญาตให้เข้าถึงได้ตามป้ายหรือกฎหมายท้องถิ่นเฉพาะ",
                             "title": "กำหนดแล้ว"
                         },
                         "destination": {
+                            "description": "อนุญาตให้เข้าได้เฉพาะเพื่อไปถึงปลายทาง",
                             "title": "ปลายทาง"
                         },
                         "dismount": {
+                            "description": "อนุญาตให้เข้าได้แต่ต้องลงจากยานพาหนะ",
                             "title": "ต้องลงจากยานพาหนะ"
                         },
                         "no": {
+                            "description": "การเข้าถึงที่ไม่ได้รับอนุญาตให้กับบุคคลทั่วไป",
                             "title": "หวงห้าม"
                         },
                         "permissive": {
+                            "description": "อนุญาตให้เข้าถึงได้จนถึงเวลาที่เจ้าของเพิกถอนการอนุญาต",
                             "title": "ต้องได้รับอนุญาต"
                         },
+                        "permit": {
+                            "description": "อนุญาตการเข้าถึงด้วยใบอนุญาตที่ถูกต้องเท่านั้น",
+                            "title": "ใบอนุญาต"
+                        },
                         "private": {
+                            "description": "อนุญาตการเข้าถึงโดยได้รับอนุญาตจากเจ้าของเป็นรายบุคคลเท่านั้น",
                             "title": "ส่วนบุคคล"
                         },
+                        "unknown": {
+                            "description": "ไม่ทราบเงื่อนไขการเข้าถึงหรือไม่ชัดเจน",
+                            "title": "ไม่ทราบ"
+                        },
                         "yes": {
+                            "description": "การเข้าถึงได้รับอนุญาตตามกฎหมาย เป็นทางที่ชอบด้วยกฎหมาย",
                             "title": "ได้รับอนุญาต"
                         }
                     },
                     "placeholder": "ไม่ได้กำหนด",
+                    "terms": "ได้รับอนุญาต,มีสิทธิ์เข้าถึง,อนุญาตการเข้าถึง",
                     "types": {
                         "access": "ทั้งหมด",
                         "bicycle": "จักรยาน",
@@ -53,8 +106,39 @@
                         "motor_vehicle": "ยานยนต์"
                     }
                 },
+                "access_aisle": {
+                    "label": "ประเภท"
+                },
                 "access_simple": {
-                    "label": "อนุญาตการเข้าถึง"
+                    "label": "อนุญาตการเข้าถึง",
+                    "options": {
+                        "customers": "ลูกค้าเท่านั้น",
+                        "no": "ไม่มี",
+                        "permissive": "เข้าได้โดยผ่อนผัน",
+                        "permit": "โดยอนุญาตเท่านั้น",
+                        "private": "ส่วนบุคคล",
+                        "unknown": "ไม่ทราบ",
+                        "yes": "สาธารนะ"
+                    },
+                    "terms": "ได้รับอนุญาต,มีสิทธิ์เข้าถึง,อนุญาตการเข้าถึง"
+                },
+                "activity": {
+                    "label": "กิจกรรม",
+                    "options": {
+                        "bicycle": "ปั่นจักรยาน",
+                        "hiking": "เดินป่า",
+                        "horse": "ขี่ม้า",
+                        "mtb": "ปั่นจักรยานเสือภูเขา"
+                    }
+                },
+                "addr/interpolation": {
+                    "label": "ประเภท",
+                    "options": {
+                        "all": "ทุกประเภท",
+                        "alphabetic": "ตามตัวอักษร",
+                        "even": "เลขคู่",
+                        "odd": "เลขคี่"
+                    }
                 },
                 "address": {
                     "label": "ที่อยู่",
@@ -67,6 +151,7 @@
                         "hamlet": "ชุมชน",
                         "housename": "ชื่อบ้าน",
                         "housenumber": "123",
+                        "housenumber!jp": "หมายเลขอาคาร",
                         "place": "สถานที่",
                         "postcode": "รหัสไปรษณีย์",
                         "province": "จังหวัด",
@@ -98,8 +183,30 @@
                     "label": "ระยะเวลา (นาที)",
                     "placeholder": "1, 2, 3..."
                 },
+                "aerialway/summer/access": {
+                    "options": {
+                        "entry": "ทางเข้า",
+                        "exit": "ทางออก"
+                    }
+                },
+                "air_conditioning": {
+                    "terms": "ปรับอากาศ\nทำความเย็น\nติดแอร์"
+                },
                 "atm": {
                     "label": "เครื่องรับจ่ายเงินอัตโนมัติ"
+                },
+                "barrier": {
+                    "label": "ชนิด"
+                },
+                "barrier_planter": {
+                    "label": "สิ่งกีดขวาง"
+                },
+                "bench": {
+                    "label": "ม้านั่ง",
+                    "terms": "ม้านั่ง,ที่นั่ง,เก้าอี้"
+                },
+                "bin": {
+                    "label": "ถังขยะ"
                 },
                 "blood_components": {
                     "label": "องค์ประกอบของเลือด",
@@ -110,17 +217,112 @@
                         "whole": "เลือดล้วนๆ"
                     }
                 },
+                "bollard": {
+                    "label": "ประเภทของอุปสรรคเสา"
+                },
+                "building": {
+                    "label": "อาคาร",
+                    "terms": "สิ่งปลูกสร้าง,ตึก,อาคาร"
+                },
+                "building/levels_building": {
+                    "label": "ชั้นอาคาร"
+                },
+                "building/part": {
+                    "label": "ส่วนอาคาร"
+                },
+                "building_area": {
+                    "label": "อาคาร",
+                    "terms": "ตึก,อาคาร,สิ่งปลูกสร้าง"
+                },
+                "capacity": {
+                    "label": "ความจุ",
+                    "terms": "ปริมาตร,ความจุ,จำนวนรองรับ"
+                },
+                "capacity/caravans": {
+                    "label": "ความจุ (คาราวาน)"
+                },
+                "capacity/persons": {
+                    "label": "ความจุ (คน)"
+                },
+                "capacity/tents": {
+                    "label": "ความจุ (เต๊นท์)"
+                },
+                "capacity_volume": {
+                    "label": "ความจุ (ลูกบาศก์เมตร)"
+                },
                 "contact/webcam": {
                     "placeholder": "http://example.com/"
+                },
+                "covered": {
+                    "label": "หลังคาคลุม",
+                    "terms": "หลังคาคลุม"
+                },
+                "covered_no": {
+                    "label": "หลังคาคลุม",
+                    "terms": "หลังคาคลุม"
+                },
+                "craft": {
+                    "label": "ประเภท\nชนิด"
+                },
+                "crossing": {
+                    "label": "ประเภท"
+                },
+                "crossing/barrier": {
+                    "label": "ไม้กั้น",
+                    "options": {
+                        "double_half": "ไม้กั้นแบบครึ่งสองฝั่ง",
+                        "full": "เต็ม",
+                        "half": "ครึ่ง",
+                        "no": "ไม่",
+                        "yes": "ใช่"
+                    }
+                },
+                "crossing/bell": {
+                    "label": "เสียงเตือนเวลาข้าม"
+                },
+                "crossing/island": {
+                    "label": "เกาะสำหรับคนข้าม"
+                },
+                "crossing/light": {
+                    "label": "ไฟ"
+                },
+                "cuisine": {
+                    "options": {
+                        "coffee_shop": "ร้านกาแฟ"
+                    }
                 },
                 "currency_multi": {
                     "label": "ชนิดเงินตรา"
                 },
                 "cycleway": {
-                    "label": "เลนจักรยาน"
+                    "label": "เลนจักรยาน",
+                    "options": {
+                        "share_busway": {
+                            "description": "ทางจักรยานที่ใช้ร่วมกับทางรถประจำทาง",
+                            "title": "ทางจักรยานที่ใช้ร่วมกับรถประจำทาง"
+                        }
+                    }
+                },
+                "disused/shop": {
+                    "label": "ประเภท\nชนิด"
+                },
+                "drinking_water_available": {
+                    "label": "มีน้ำดื่ม"
                 },
                 "emergency": {
                     "label": "ฉุกเฉิน"
+                },
+                "fire_hydrant/position": {
+                    "options": {
+                        "parking_lot": "ลานจอดรถ",
+                        "sidewalk": "ทางเท้า"
+                    }
+                },
+                "fuel": {
+                    "label": "เชื้อเพลิง"
+                },
+                "fuel_multi": {
+                    "label": "ประเภทเชื้อเพลิง"
                 },
                 "gender": {
                     "label": "เพศ",
@@ -134,28 +336,2766 @@
                 "generator/source": {
                     "label": "แหล่งที่มา"
                 },
-                "internet_access": {
+                "height_building": {
+                    "label": "ความสูงอาคาร (เมตร)"
+                },
+                "highway_cartpath": {
+                    "label": "ประเภทของทาง",
                     "options": {
-                        "wired": "ใช้สาย",
-                        "wlan": "ไร้สาย"
+                        "service": "ถนนบริการ"
                     }
+                },
+                "horse_riding": {
+                    "label": "การขี่ม้า"
+                },
+                "horse_scale": {
+                    "options": {
+                        "critical": "ก้ำกึ่ง: ผ่านได้เฉพาะผู้ขี่และม้าที่มีประสบการณ์เท่านั้น มีอุปสรรค ควรจะตรวจสอบสะพานอย่างรอบคอบ",
+                        "impossible": "ผ่านไม่ได้: ม้าไม่สามารถผ่านทางหรือสะพานได้ แคบเกินไป โครงสร้างรองรับไม่เพียงพอ สิ่งกีดขวางเหมือนบันได อันตรายถึงชีวิต"
+                    }
+                },
+                "horse_stables": {
+                    "label": "คอกม้า"
+                },
+                "hot_water": {
+                    "label": "น้ำร้อน"
+                },
+                "internet_access": {
+                    "label": "บริการอินเทอร์เน็ต",
+                    "options": {
+                        "no": "ไม่มี",
+                        "terminal": "เครื่องปลายทาง",
+                        "wired": "ใช้สาย",
+                        "wlan": "ไร้สาย",
+                        "yes": "ใช่"
+                    }
+                },
+                "lanes": {
+                    "label": "ช่องทาง",
+                    "terms": "ช่องทาง,ช่องจราจร,เลน"
+                },
+                "location_pool": {
+                    "options": {
+                        "roof": "ดาดฟ้า"
+                    }
+                },
+                "maxspeed": {
+                    "label": "จำกัดความเร็ว"
+                },
+                "natural": {
+                    "label": "ธรรมชาติ"
+                },
+                "network": {
+                    "label": "เครือข่าย"
+                },
+                "note": {
+                    "label": "หมายเหตุ"
+                },
+                "office": {
+                    "label": "ประเภท"
+                },
+                "oneway": {
+                    "label": "ทางเดียว"
+                },
+                "oneway/bicycle": {
+                    "label": "ทางเดียว (จักรยาน)"
+                },
+                "opening_hours": {
+                    "label": "เวลาทำการ"
+                },
+                "operator": {
+                    "label": "ผู้ให้บริการ"
+                },
+                "parking": {
+                    "options": {
+                        "rooftop": "ดาดฟ้า",
+                        "sheds": "เพิง",
+                        "street_side": "ริมถนน"
+                    }
+                },
+                "parking/orientation": {
+                    "options": {
+                        "diagonal": "เป็นเส้นทแยงมุมกับถนน",
+                        "parallel": "ขนานกับถนน",
+                        "perpendicular": "ตั้งฉากกับถนน"
+                    }
+                },
+                "phone": {
+                    "label": "โทรศัพท์"
+                },
+                "place": {
+                    "label": "ประเภท"
+                },
+                "post": {
+                    "label": "ที่อยู่สำหรับส่งของ"
+                },
+                "railway": {
+                    "label": "ประเภท"
+                },
+                "religion": {
+                    "label": "ศาสนา"
+                },
+                "roof/colour": {
+                    "label": "สีหลังคา"
+                },
+                "seamark/beacon_lateral/category": {
+                    "options": {
+                        "waterway_left": "เส้นทางน้ำด้านซ้าย",
+                        "waterway_right": "เส้นทางน้ำด้านขวา"
+                    }
+                },
+                "seamark/buoy_lateral/category": {
+                    "options": {
+                        "waterway_left": "เส้นทางน้ำด้านซ้าย",
+                        "waterway_right": "เส้นทางน้ำด้านขวา"
+                    }
+                },
+                "service": {
+                    "label": "ประเภท",
+                    "options": {
+                        "alley": "ตรอก",
+                        "driveway": "ทางรถ",
+                        "parking_aisle": "ถนนลานจอดรถ"
+                    }
+                },
+                "service/bicycle": {
+                    "label": "บริการด้านจักรยาน"
+                },
+                "service_rail": {
+                    "options": {
+                        "crossover": "ทางรถไฟที่เปลี่ยนสาย",
+                        "siding": "รางข้าง",
+                        "yard": "สถานที่เก็บรถไฟ"
+                    }
+                },
+                "service_times": {
+                    "label": "เวลาบริการ"
+                },
+                "shop": {
+                    "label": "ประเภท\nชนิด"
+                },
+                "source": {
+                    "label": "แหล่งที่มา"
+                },
+                "sport": {
+                    "label": "กีฬา"
+                },
+                "structure": {
+                    "options": {
+                        "bridge": "สะพาน"
+                    }
+                },
+                "surface": {
+                    "label": "พื้นผิว",
+                    "options": {
+                        "asphalt": "ลาดยาง",
+                        "concrete": "คอนกรีต",
+                        "paved": "ปรับผิว",
+                        "unpaved": "ไม่ปรับผิว"
+                    }
+                },
+                "tourism": {
+                    "label": "ประเภท"
+                },
+                "usage_rail": {
+                    "options": {
+                        "tourism": "การท่องเที่ยว"
+                    }
+                },
+                "vehicles": {
+                    "options": {
+                        "bus": "ระประจำทาง"
+                    }
+                },
+                "water_point": {
+                    "label": "จุดเติมน้ำดื่ม"
+                },
+                "water_source": {
+                    "label": "แหล่งน้ำ"
+                },
+                "water_volume": {
+                    "label": "ปริมาณน้ำสำรอง (ลูกบาศก์เมตร)"
+                },
+                "website": {
+                    "label": "เว็บไซต์"
+                },
+                "wikipedia": {
+                    "label": "วิกิพีเดีย"
                 }
             },
             "presets": {
+                "address": {
+                    "name": "ที่อยู่"
+                },
+                "aeroway/aerodrome": {
+                    "name": "สนามบิน"
+                },
+                "amenity": {
+                    "name": "สิ่งอำนวยความสะดวก"
+                },
+                "amenity/animal_boarding": {
+                    "name": "ศูนย์ดูแลสัตว์"
+                },
+                "amenity/animal_breeding": {
+                    "name": "ศูนย์เพาะพันธุ์สัตว์"
+                },
+                "amenity/animal_shelter": {
+                    "name": "ศูนย์พักพิงสัตว์",
+                    "aliases": "ที่พักพิงสัตว์"
+                },
+                "amenity/arts_centre": {
+                    "name": "ศูนย์ศิลปะ"
+                },
+                "amenity/atm": {
+                    "name": "เครื่องรับจ่ายเงินอัตโนมัติ",
+                    "aliases": "ตู้เอทีเอ็ม"
+                },
+                "amenity/bank": {
+                    "name": "ธนาคาร"
+                },
+                "amenity/bar": {
+                    "name": "บาร์"
+                },
+                "amenity/bar/lgbtq": {
+                    "name": "บาร์สำหรับกลุ่ม LGBTQ+"
+                },
+                "amenity/bbq": {
+                    "name": "เตาย่าง",
+                    "aliases": "เตาบาร์บีคิว"
+                },
+                "amenity/bench": {
+                    "name": "ม้านั่ง"
+                },
+                "amenity/bicycle_parking": {
+                    "name": "ที่จอดจักรยาน"
+                },
+                "amenity/bicycle_parking/building": {
+                    "name": "โรงจอดจักรยาน"
+                },
+                "amenity/bicycle_parking/lockers": {
+                    "name": "ตู้เก็บจักรยาน"
+                },
+                "amenity/bicycle_parking/shed": {
+                    "name": "เพิงจอดจักรยาน",
+                    "aliases": "โรงจอดจักรยานเปิดข้าง"
+                },
+                "amenity/bicycle_rental": {
+                    "name": "เช่าจักรยาน"
+                },
+                "amenity/bicycle_repair_station": {
+                    "name": "จุดบริการเครื่องมือซ่อมจักรยาน"
+                },
+                "amenity/biergarten": {
+                    "name": "ลานเบียร์"
+                },
+                "amenity/boat_rental": {
+                    "name": "ศูนย์เรือเช่า"
+                },
+                "amenity/boat_storage": {
+                    "name": "โกดังเก็บเรือ"
+                },
+                "amenity/bureau_de_change": {
+                    "name": "จุดแลกเปลี่ยนเงินตรา"
+                },
+                "amenity/bus_station": {
+                    "name": "สถานี/อู่รถประจำทาง"
+                },
+                "amenity/cafe": {
+                    "name": "คาเฟ่"
+                },
+                "amenity/cafe/bubble_tea": {
+                    "name": "คาเฟ่ชานมไข่มุก"
+                },
+                "amenity/cafe/coffee_shop": {
+                    "name": "ร้านกาแฟ"
+                },
+                "amenity/car_rental": {
+                    "name": "ศูนย์รถเช่า"
+                },
+                "amenity/car_wash": {
+                    "name": "สถานที่บริการล้างรถ"
+                },
+                "amenity/casino": {
+                    "name": "บ่อนการพนัน",
+                    "aliases": "บ่อนคาสิโน"
+                },
+                "amenity/childcare": {
+                    "name": "สถานรับเลี้ยงเด็ก",
+                    "aliases": "สถานบริบาลทารก"
+                },
+                "amenity/cinema": {
+                    "name": "โรงภาพยนตร์"
+                },
+                "amenity/clinic": {
+                    "name": "คลินิก",
+                    "aliases": "สถานพยาบาล"
+                },
+                "amenity/clinic/abortion": {
+                    "name": "คลินิกทำแท้ง"
+                },
+                "amenity/clinic/fertility": {
+                    "name": "คลินิกการเจริญพันธุ์"
+                },
+                "amenity/clock": {
+                    "name": "นาฬิกา"
+                },
+                "amenity/clock/sundial": {
+                    "name": "นาฬิกาแดด"
+                },
+                "amenity/college": {
+                    "name": "พื้นที่ที่เป็นที่ตั้งของมหาวิทยาลัย"
+                },
+                "amenity/community_centre": {
+                    "name": "ศูนย์ชุมชน"
+                },
+                "amenity/community_centre/lgbtq": {
+                    "name": "ศูนย์ชุมชนกลุ่ม LGBTQ+"
+                },
+                "amenity/community_centre/youth_centre": {
+                    "name": "ศูนย์เยาวชน"
+                },
+                "amenity/compressed_air": {
+                    "name": "ระบบอัดอากาศ"
+                },
+                "amenity/conference_centre": {
+                    "name": "ศูนย์การประชุม"
+                },
+                "amenity/courthouse": {
+                    "name": "ศาล"
+                },
+                "amenity/coworking_space": {
+                    "name": "พื้นที่ทำงานร่วมกัน"
+                },
+                "amenity/crematorium": {
+                    "name": "เมรุ"
+                },
+                "amenity/dentist": {
+                    "name": "ทันตแพทย์",
+                    "aliases": "หมอฟัน"
+                },
+                "amenity/dive_centre": {
+                    "name": "ศูนย์ดำน้ำ"
+                },
+                "amenity/doctors": {
+                    "name": "แพทย์",
+                    "aliases": "หมอ"
+                },
+                "amenity/doctors/gynaecology": {
+                    "name": "นรีแพทย์",
+                    "aliases": "แพทย์ผู้ชำนาญโรคสตรี"
+                },
+                "amenity/dojo": {
+                    "name": "โรงเรียนสอนศิลปะป้องกันตัว",
+                    "aliases": "สถาบันศิลปะการป้องกันตัว"
+                },
+                "amenity/dressing_room": {
+                    "name": "ห้องเปลี่ยนเสื้อผ้า"
+                },
+                "amenity/drinking_water": {
+                    "name": "น้ำดื่ม"
+                },
+                "amenity/driving_school": {
+                    "name": "โรงเรียนสอนขับรถ"
+                },
+                "amenity/embassy": {
+                    "name": "สถานเอกอัครราชฑูต"
+                },
+                "amenity/events_venue": {
+                    "name": "สถานที่จัดงาน",
+                    "aliases": "สถานที่จัดกิจกรรม"
+                },
+                "amenity/exhibition_centre": {
+                    "name": "ศูนย์นิทรรศการ"
+                },
+                "amenity/fast_food": {
+                    "name": "ฟาสต์ฟู้ด"
+                },
+                "amenity/fast_food/burger": {
+                    "name": "ร้านเบอร์เกอร์"
+                },
+                "amenity/fast_food/chicken": {
+                    "name": "ร้านไก่ทอด"
+                },
+                "amenity/fast_food/donut": {
+                    "name": "ร้านโดนัท"
+                },
+                "amenity/fast_food/fish_and_chips": {
+                    "name": "ร้านฟิชแอนด์ชิปส์"
+                },
+                "amenity/fast_food/hot_dog": {
+                    "name": "ร้านฮอทดอก"
+                },
+                "amenity/fast_food/ice_cream": {
+                    "name": "ร้านไอศครีม"
+                },
+                "amenity/fast_food/juice": {
+                    "name": "ร้านน้ำผลไม้"
+                },
+                "amenity/fast_food/kebab": {
+                    "name": "ร้านเคบับ"
+                },
+                "amenity/fast_food/mexican": {
+                    "name": "ร้านอาหารเม็กซิกัน"
+                },
+                "amenity/fast_food/pizza": {
+                    "name": "ร้านพิซซ่า"
+                },
+                "amenity/fast_food/sandwich": {
+                    "name": "ร้านแซนวิช"
+                },
+                "amenity/ferry_terminal": {
+                    "name": "ท่าเรือ"
+                },
+                "amenity/fire_station": {
+                    "name": "สถานีดับเพลิง"
+                },
+                "amenity/food_court": {
+                    "name": "ศูนย์อาหาร"
+                },
+                "amenity/fountain": {
+                    "name": "น้ำพุ"
+                },
+                "amenity/fuel": {
+                    "name": "สถานีบริการน้ำมัน"
+                },
+                "amenity/gambling": {
+                    "name": "ห้องเล่นการพนัน",
+                    "aliases": "โถงเล่นการพนัน"
+                },
+                "amenity/grave_yard": {
+                    "name": "สุสาน"
+                },
+                "amenity/hospital": {
+                    "name": "พื้นที่โรงพยาบาล"
+                },
+                "amenity/ice_cream": {
+                    "name": "ร้านไอศกรีม"
+                },
+                "amenity/internet_cafe": {
+                    "name": "ร้านอินเตอร์เน็ต"
+                },
+                "amenity/karaoke_box": {
+                    "name": "กล่องคาราโอเกะ",
+                    "aliases": "เครื่องเล่นคาราโอเกะ"
+                },
+                "amenity/kindergarten": {
+                    "name": "โรงเรียนอนุบาล"
+                },
+                "amenity/language_school": {
+                    "name": "โรงเรียนสอนภาษา"
+                },
+                "amenity/lavoir": {
+                    "name": "สถานที่สาธารณะที่จัดไว้สำหรับซักเสื้อผ้า"
+                },
+                "amenity/letter_box": {
+                    "name": "กล่องจดหมาย"
+                },
+                "amenity/library": {
+                    "name": "ห้องสมุด"
+                },
+                "amenity/loading_dock": {
+                    "name": "ท่าเรือขนถ่ายสินค้า"
+                },
+                "amenity/lounger": {
+                    "name": "เลานจ์"
+                },
+                "amenity/love_hotel": {
+                    "name": "ม่านรูด"
+                },
+                "amenity/marketplace": {
+                    "name": "ตลาด"
+                },
+                "amenity/monastery": {
+                    "name": "พื้นที่บริเวณวัดหรือโบสถ์"
+                },
+                "amenity/mortuary": {
+                    "name": "ห้องเก็บศพ"
+                },
+                "amenity/motorcycle_parking": {
+                    "name": "ที่จอดจักรยานยนต์"
+                },
+                "amenity/motorcycle_rental": {
+                    "name": "ร้านเช่าจักรยานยนต์"
+                },
+                "amenity/music_school": {
+                    "name": "โรงเรียนสอนดนตรี"
+                },
+                "amenity/nightclub": {
+                    "name": "สถานที่เที่ยวกลางคืน",
+                    "aliases": "ไนต์คลับ"
+                },
+                "amenity/nightclub/lgbtq": {
+                    "name": "สถานที่เที่ยวกลางคืนสำหรับ LGBTQ+",
+                    "aliases": "ไนต์คลับสำหรับ LGBTQ+"
+                },
+                "amenity/nursing_home": {
+                    "name": "บ้านพักคนชรา"
+                },
+                "amenity/parcel_locker": {
+                    "name": "ตู้ล็อกเกอร์รับฝากสัมภาระ"
+                },
+                "amenity/parking": {
+                    "name": "ลานจอดรถ"
+                },
+                "amenity/parking/multi-storey": {
+                    "name": "โรงจอดรถหลายชั้น"
+                },
+                "amenity/parking/park_ride": {
+                    "name": "ลานจอดรถ"
+                },
+                "amenity/parking/street-side": {
+                    "name": "ที่จอดรถริมถนน"
+                },
+                "amenity/parking/underground": {
+                    "name": "ที่จอดรถใต้ดิน"
+                },
+                "amenity/parking_entrance": {
+                    "name": "ทางเข้า/ออก โรงจอดรถ"
+                },
+                "amenity/parking_space": {
+                    "name": "Parking Space"
+                },
+                "amenity/parking_space/disabled": {
+                    "name": "ช่องจอดรถสำหรับคนพิการ"
+                },
+                "amenity/payment_centre": {
+                    "name": "ศูนย์การชำระเงิน"
+                },
+                "amenity/payment_terminal": {
+                    "name": "เครื่องชำระเงิน"
+                },
+                "amenity/pharmacy": {
+                    "name": "เคาน์เตอร์เภสัชกร"
+                },
+                "amenity/photo_booth": {
+                    "name": "บูธถ่ายภาพ",
+                    "aliases": "บูธถ่ายรูป"
+                },
+                "amenity/place_of_worship": {
+                    "name": "ศาสนสถาน",
+                    "aliases": "สถานที่ศักดิ์สิทธิ์"
+                },
+                "amenity/place_of_worship/buddhist": {
+                    "name": "โบสถ์"
+                },
+                "amenity/place_of_worship/christian": {
+                    "name": "คริสตจักร"
+                },
+                "amenity/place_of_worship/muslim": {
+                    "name": "มัสยิด",
+                    "aliases": "สุเหร่า"
+                },
+                "amenity/planetarium": {
+                    "name": "ท้องฟ้าจำลอง"
+                },
+                "amenity/police": {
+                    "name": "ตำรวจ"
+                },
+                "amenity/polling_station": {
+                    "name": "หน่วยเลือกตั้ง",
+                    "aliases": "สถานที่เลือกตั้ง"
+                },
+                "amenity/post_box": {
+                    "name": "ตู้ไปรษณีย์"
+                },
+                "amenity/post_depot": {
+                    "name": "ที่ทำการไปรษณีย์"
+                },
+                "amenity/post_office": {
+                    "name": "สำนักงานไปรษณีย์"
+                },
+                "amenity/prep_school": {
+                    "name": "โรงเรียนกวดวิชา"
+                },
+                "amenity/prison": {
+                    "name": "เรือนจำ"
+                },
+                "amenity/pub": {
+                    "name": "ผับ"
+                },
+                "amenity/pub/lgbtq": {
+                    "name": "ผับ LGBTQ+"
+                },
+                "amenity/pub/microbrewery": {
+                    "name": "ผับเบียร์"
+                },
+                "amenity/public_bath": {
+                    "name": "ห้องอาบน้ำสาธารณะ"
+                },
+                "amenity/public_bookcase": {
+                    "name": "ตู้หนังสือสาธารณะ"
+                },
+                "amenity/recycling": {
+                    "name": "การรีไซเคิล",
+                    "aliases": "การทำให้นำมาใช้ประโยชน์ได้อีกครั้ง"
+                },
+                "amenity/recycling/container/electrical_items": {
+                    "name": "ภาชนะบรรจุขยะอิเล็กทรอนิกส์"
+                },
+                "amenity/recycling/container/green_waste": {
+                    "name": "ถังขยะสีเขียว"
+                },
+                "amenity/recycling_centre": {
+                    "name": "ศูนย์รีไซเคิล"
+                },
+                "amenity/recycling_container": {
+                    "name": "ถังขยะรีไซเคิล"
+                },
+                "amenity/refugee_site": {
+                    "name": "ค่ายผู้ลี้ภัย"
+                },
+                "amenity/research_institute": {
+                    "name": "พื้นที่ของสถาบันวิจัย"
+                },
+                "amenity/restaurant": {
+                    "name": "ร้านอาหาร"
+                },
+                "amenity/restaurant/american": {
+                    "name": "ร้านอาหารอเมริกัน"
+                },
+                "amenity/restaurant/asian": {
+                    "name": "ร้านอาหารเอเชีย"
+                },
+                "amenity/restaurant/barbeque": {
+                    "name": "ร้านอาหารบาร์บีคิว",
+                    "aliases": "ร้านปิ้งย่าง"
+                },
+                "amenity/restaurant/chinese": {
+                    "name": "ร้านอาหารจีน"
+                },
+                "amenity/restaurant/french": {
+                    "name": "ร้านอาหารฝรั่งเศส"
+                },
+                "amenity/restaurant/german": {
+                    "name": "ร้านอาหารเยอรมัน"
+                },
+                "amenity/restaurant/greek": {
+                    "name": "ร้านอาหารกรีก"
+                },
+                "amenity/restaurant/indian": {
+                    "name": "ร้านอาหารอินเดีย"
+                },
+                "amenity/restaurant/italian": {
+                    "name": "ร้านอาหารอิตาลี"
+                },
+                "amenity/restaurant/japanese": {
+                    "name": "ร้านอาหารญี่ปุ่น"
+                },
+                "amenity/restaurant/mexican": {
+                    "name": "ร้านอาหารเม็กซิกัน"
+                },
+                "amenity/restaurant/noodle": {
+                    "name": "ร้านก๋วยเตี๋ยว"
+                },
+                "amenity/restaurant/pizza": {
+                    "name": "ร้านพิซซ่า"
+                },
+                "amenity/restaurant/seafood": {
+                    "name": "ร้านอาหารทะเล",
+                    "aliases": "ร้านอาหารซีฟู้ด"
+                },
+                "amenity/restaurant/steakhouse": {
+                    "name": "ร้านสเต๊ก"
+                },
+                "amenity/restaurant/sushi": {
+                    "name": "ร้านซูชิ"
+                },
+                "amenity/restaurant/thai": {
+                    "name": "ร้านอาหารไทย"
+                },
+                "amenity/restaurant/turkish": {
+                    "name": "ร้านอาหารตุรกี"
+                },
+                "amenity/restaurant/vietnamese": {
+                    "name": "ร้านอาหารเวียดนาม"
+                },
+                "amenity/sanitary_dump_station": {
+                    "name": "ห้องน้ำเคลื่อนที่"
+                },
+                "amenity/school": {
+                    "name": "พื้นที่โรงเรียน"
+                },
+                "amenity/shelter": {
+                    "name": "ที่พัก, ที่หลบภัย"
+                },
+                "amenity/shelter/gazebo": {
+                    "name": "ศาลา"
+                },
+                "amenity/shelter/lean_to": {
+                    "name": "เพิงหมาแหงน"
+                },
+                "amenity/shelter/picnic_shelter": {
+                    "name": "ที่สำหรับปิคนิค",
+                    "aliases": "ศาลาปิคนิค"
+                },
+                "amenity/shelter/public_transport": {
+                    "name": "ที่พักผู้โดยสาร"
+                },
+                "amenity/shower": {
+                    "name": "การอาบน้ำฝักบัว"
+                },
+                "amenity/smoking_area": {
+                    "name": "พื้นที่สูบบุหรี่"
+                },
+                "amenity/social_centre": {
+                    "name": "ศูนย์ชุมชน"
+                },
+                "amenity/social_facility": {
+                    "name": "สิ่งอำนวยความสะดวกทางสังคม"
+                },
+                "amenity/social_facility/ambulatory_care": {
+                    "name": "การดูแลผู้ป่วยนอก"
+                },
+                "amenity/social_facility/food_bank": {
+                    "name": "คลังอาหาร"
+                },
+                "amenity/social_facility/group_home": {
+                    "name": "บ้านกลุ่มผู้สูงอายุ"
+                },
+                "amenity/social_facility/homeless_shelter": {
+                    "name": "ศูนย์พักพิงคนไร้บ้าน"
+                },
+                "amenity/social_facility/nursing_home": {
+                    "name": "บ้านพักคนชรา"
+                },
+                "amenity/studio": {
+                    "name": "สตูดิโอ"
+                },
+                "amenity/studio/audio": {
+                    "name": "ห้องอัดเสียง"
+                },
+                "amenity/studio/radio": {
+                    "name": "สถานีวิทยุ"
+                },
+                "amenity/studio/television": {
+                    "name": "สถานีโทรทัศน์"
+                },
+                "amenity/studio/video": {
+                    "name": "สตูดิโอภาพยนตร์"
+                },
+                "amenity/taxi": {
+                    "name": "ป้ายรอแท็กซี่"
+                },
+                "amenity/telephone": {
+                    "name": "โทรศัพท์"
+                },
+                "amenity/theatre": {
+                    "name": "โรงภาพยนตร์",
+                    "aliases": "โรงหนัง"
+                },
+                "amenity/theatre/type/amphi": {
+                    "name": "อัฒจันทร์"
+                },
+                "amenity/ticket_validator": {
+                    "name": "เครื่องตรวจสอบตั๋ว"
+                },
+                "amenity/toilets": {
+                    "name": "ห้องน้ำ"
+                },
+                "amenity/toilets/disposal/flush": {
+                    "name": "ชักโครก"
+                },
+                "amenity/toilets/portable": {
+                    "name": "สุขาเคลื่อนที่",
+                    "aliases": "ห้องน้ำแบบพกพา"
+                },
+                "amenity/townhall": {
+                    "name": "ศาลากลาง"
+                },
+                "amenity/townhall/city": {
+                    "name": "ศาลากลางจังหวัด"
+                },
+                "amenity/toy_library": {
+                    "name": "ห้องของเล่น"
+                },
+                "amenity/trolley_bay": {
+                    "name": "ที่เก็บรถเข็น"
+                },
+                "amenity/university": {
+                    "name": "พื้นที่มหาวิทยาลัย"
+                },
+                "amenity/vehicle_inspection": {
+                    "name": "สถานตรวจสภาพรถ"
+                },
+                "amenity/vending_machine": {
+                    "name": "ตู้หยอดเหรีญ",
+                    "aliases": "เครื่องหยอดเหรียญ"
+                },
+                "amenity/vending_machine/bicycle_tube": {
+                    "name": "ตู้จำหน่ายยางในจักรยานอัตโนมัติ"
+                },
+                "amenity/vending_machine/bread": {
+                    "name": "ตู้จำหน่ายขนมปัง"
+                },
+                "amenity/vending_machine/cigarettes": {
+                    "name": "ตู้จำหน่ายบุหรี่อัตโนมัติ"
+                },
+                "amenity/vending_machine/coffee": {
+                    "name": "ตู้จำหน่ายกาแฟ"
+                },
+                "amenity/vending_machine/condoms": {
+                    "name": "เครื่องจำหน่ายถุงยางอนามัย"
+                },
+                "amenity/vending_machine/drinks": {
+                    "name": "ตู้จำหน่ายเครื่องดื่มอัตโนมัติ"
+                },
+                "amenity/vending_machine/eggs": {
+                    "name": "ตู้จำหน่ายไข่"
+                },
+                "amenity/vending_machine/electronics": {
+                    "name": "ตู้จำหน่ายสินค้าอิเล็กทรอนิกส์"
+                },
+                "amenity/vending_machine/elongated_coin": {
+                    "name": "ตู้หยอดเหรียญอัตโนมัติ"
+                },
+                "amenity/vending_machine/feminine_hygiene": {
+                    "name": "ตู้จำหน่ายสินค้าสุขอนามัยสำหรับผู้หญิง"
+                },
+                "amenity/vending_machine/food": {
+                    "name": "ตู้จำหน่ายอาหารอัตโนมัติ"
+                },
+                "amenity/vending_machine/fuel": {
+                    "name": "ปั๊มแก๊ส"
+                },
+                "amenity/vending_machine/ice_cream": {
+                    "name": "ตู้จำหน่ายไอศครีมอัตโนมัติ"
+                },
+                "amenity/vending_machine/ice_cubes": {
+                    "name": "ตู้จำหน่ายน้ำแข็งอัตโนมัติ"
+                },
+                "amenity/vending_machine/newspapers": {
+                    "name": "ตู้จำหน่ายหนังสือพิมพ์"
+                },
+                "amenity/vending_machine/parking_tickets": {
+                    "name": "ตู้จำหน่ายบัตรจอดรถอัตโนมัติ"
+                },
+                "amenity/vending_machine/pizza": {
+                    "name": "เครื่องจำหน่ายพิซซ่า"
+                },
+                "amenity/vending_machine/public_transport_tickets": {
+                    "name": "เครื่องจำหน่ายบัตรโดยสาร"
+                },
+                "amenity/vending_machine/stamps": {
+                    "name": "ตู้จำหน่ายไปรษณีย์อัตโนมัติ"
+                },
+                "amenity/vending_machine/sweets": {
+                    "name": "เครื่องจำหน่ายขนมอัตโนมัติ"
+                },
+                "amenity/veterinary": {
+                    "name": "สัตวแพทย์"
+                },
+                "amenity/waste/dog_excrement": {
+                    "name": "ถังขยะสำหรับสุนัข"
+                },
+                "amenity/waste_basket": {
+                    "name": "ตะกร้าใส่ขยะ"
+                },
+                "amenity/waste_disposal": {
+                    "name": "ถังขยะ"
+                },
+                "amenity/waste_transfer_station": {
+                    "name": "สถานีขนถ่ายขยะ"
+                },
+                "amenity/water_point": {
+                    "name": "น้ำดื่มสำหรับรถบ้าน"
+                },
+                "amenity/watering_place": {
+                    "name": "น้ำสำหรับสัตว์"
+                },
+                "amenity/weighbridge": {
+                    "name": "เครื่องชั่งรถบรรทุก"
+                },
                 "area": {
                     "name": "พื้นที่"
+                },
+                "attraction/water_slide": {
+                    "name": "สไลด์น้ำ"
+                },
+                "barrier/block": {
+                    "name": "เครื่องกีดขวาง",
+                    "aliases": "บล็อก"
+                },
+                "barrier/bollard": {
+                    "name": "อุปสรรคเสา"
+                },
+                "barrier/bollard_line": {
+                    "name": "อุปสรรคเสาเรียงแถว"
+                },
+                "barrier/border_control": {
+                    "name": "การควบคุมเขตแดน"
+                },
+                "barrier/bump_gate": {
+                    "name": "ประตูกันกระแทก"
+                },
+                "barrier/cable_barrier": {
+                    "name": "ที่กั้นไหล่ทางแบบเคเบิ้ล"
+                },
+                "barrier/cattle_grid": {
+                    "name": "ตะแกรงกันสัตว์ข้าม"
+                },
+                "barrier/city_wall": {
+                    "name": "กำแพงเมือง"
+                },
+                "barrier/cycle_barrier": {
+                    "name": "ที่กั้นจักรยาน"
+                },
+                "barrier/ditch": {
+                    "name": "คู"
+                },
+                "barrier/entrance": {
+                    "name": "ทางเข้า"
+                },
+                "barrier/fence": {
+                    "name": "รั้ว"
+                },
+                "barrier/fence/railing": {
+                    "name": "ราวบันได",
+                    "aliases": "ราว"
+                },
+                "barrier/full-height_turnstile": {
+                    "name": "ประตูหมุน"
+                },
+                "barrier/gate": {
+                    "name": "ประตูรั้ว"
+                },
+                "barrier/guard_rail": {
+                    "name": "ราวกันตก"
+                },
+                "barrier/hampshire_gate": {
+                    "name": "รั้วเหล็ก"
+                },
+                "barrier/handrail": {
+                    "name": "ราวจับ"
+                },
+                "barrier/hedge": {
+                    "name": "แนวพุ่มไม้"
+                },
+                "barrier/height_restrictor": {
+                    "name": "ที่กั้นจำกัดความสูง"
+                },
+                "barrier/jersey_barrier": {
+                    "name": "ราวกั้นเกาะกลางถนน"
+                },
+                "barrier/kerb": {
+                    "name": "ขอบทางเดิน"
+                },
+                "barrier/kissing_gate": {
+                    "name": "ประตูกั้นปศุสัตว์"
+                },
+                "barrier/lift_gate": {
+                    "name": "ประตูกั้นแบบยกขึ้น"
+                },
+                "barrier/motorcycle_barrier": {
+                    "name": "ที่กั้นจักรยานยนต์"
+                },
+                "barrier/retaining_wall": {
+                    "name": "กำแพงกันดิน"
+                },
+                "barrier/rope": {
+                    "name": "รั้วเชือก"
+                },
+                "barrier/swing_gate": {
+                    "name": "ประตูกั้นแบบเปิดสวิง"
+                },
+                "barrier/toll_booth": {
+                    "name": "ตู้เก็บค่าผ่านทาง"
+                },
+                "barrier/turnstile": {
+                    "name": "ประตูหมุน"
+                },
+                "barrier/wall": {
+                    "name": "กำแพง"
+                },
+                "barrier/wall/noise_barrier": {
+                    "name": "ผนังกันเสียง"
+                },
+                "bridge/support": {
+                    "name": "โครงสร้างสนับสนุนสะพาน"
+                },
+                "bridge/support/pier": {
+                    "name": "สะพานลอยน้ำ"
+                },
+                "building": {
+                    "name": "อาคาร"
+                },
+                "building/allotment_house": {
+                    "name": "บ้านจัดสรร"
+                },
+                "building/apartments": {
+                    "name": "อาคารที่อยู่อาศัย",
+                    "aliases": "คอนโดมิเนียม\nอะพาร์ตเมนท์"
+                },
+                "building/barn": {
+                    "name": "โรงนา",
+                    "aliases": "ยุ้งข้าว"
+                },
+                "building/boathouse": {
+                    "name": "อู่เรือ"
+                },
+                "building/bungalow": {
+                    "name": "บังกะโล"
+                },
+                "building/bunker": {
+                    "name": "หลุมหลบภัย"
+                },
+                "building/cabin": {
+                    "name": "กระท่อม"
+                },
+                "building/carport": {
+                    "name": "ที่จอดรถ",
+                    "aliases": "โรงจอดรถ"
+                },
+                "building/cathedral": {
+                    "name": "อาคารมหาวิหาร"
+                },
+                "building/chapel": {
+                    "name": "อาคารโบสถ์เล็ก"
+                },
+                "building/church": {
+                    "name": "อาคารโบสถ์"
+                },
+                "building/civic": {
+                    "name": "อาคารราชการ"
+                },
+                "building/college": {
+                    "name": "อาคารสถานที่การศึกษา"
+                },
+                "building/commercial": {
+                    "name": "อาคารพาณิชย์"
+                },
+                "building/construction": {
+                    "name": "อาคารกำลังก่อสร้าง"
+                },
+                "building/cowshed": {
+                    "name": "คอกวัว"
+                },
+                "building/detached": {
+                    "name": "บ้านเดี่ยว"
+                },
+                "building/dormitory": {
+                    "name": "หอพัก"
+                },
+                "building/entrance": {
+                    "name": "ทางเข้า / ทางออก"
+                },
+                "building/farm": {
+                    "name": "โรงนา",
+                    "aliases": "บ้านไร่"
+                },
+                "building/farm_auxiliary": {
+                    "name": "สิ่งปลูกสร้างในฟาร์ม"
+                },
+                "building/garage": {
+                    "name": "โรงรถ"
+                },
+                "building/garages": {
+                    "name": "โรงรถ"
+                },
+                "building/ger": {
+                    "name": "เต้นท์มองโกเลีย",
+                    "aliases": "กระโจมมองโกเลีย"
+                },
+                "building/grandstand": {
+                    "name": "อัฒจรรย์"
+                },
+                "building/greenhouse": {
+                    "name": "เรือนกระจก"
+                },
+                "building/hangar": {
+                    "name": "โรงเก็บเครื่องบิน"
+                },
+                "building/hospital": {
+                    "name": "อาคารพยาบาล",
+                    "aliases": "อาคารสาธารนสุข\nอาคารทางการแพทย์"
+                },
+                "building/hotel": {
+                    "name": "อาคารโรงแรม",
+                    "aliases": "ตึกโรงแรม"
+                },
+                "building/house": {
+                    "name": "บ้าน"
+                },
+                "building/houseboat": {
+                    "name": "เรือนแพ"
+                },
+                "building/hut": {
+                    "name": "กระท่อม"
+                },
+                "building/industrial": {
+                    "name": "อาคารอุตสาหกรรม"
+                },
+                "building/kindergarten": {
+                    "name": "อาคารโรงเรียนอนุบาล"
+                },
+                "building/manufacture": {
+                    "name": "อาคารผลิตสินค้าอุตสาหกรรม"
+                },
+                "building/mosque": {
+                    "name": "อาคารสุเหร่า",
+                    "aliases": "อาคารมัสยิด"
+                },
+                "building/office": {
+                    "name": "อาคารออฟฟิศ",
+                    "aliases": "อาคารสำนักงาน"
+                },
+                "building/outbuilding": {
+                    "name": "สิ่งปลูกสร้างด้านนอก",
+                    "aliases": "เรือนนอก\nตึกนอก"
+                },
+                "building/pavilion": {
+                    "name": "อาคารแสดงสินค้า",
+                    "aliases": "อาคารพลับพลา\nอาคารศาลา"
+                },
+                "building/public": {
+                    "name": "อาคารสาธารนะ"
+                },
+                "building/residential": {
+                    "name": "อาคารที่อยู่อาศัย"
+                },
+                "building/retail": {
+                    "name": "อาคารขายปลีก"
+                },
+                "building/roof": {
+                    "name": "หลังคา"
+                },
+                "building/ruins": {
+                    "name": "สถานที่ปรักหักพัง"
+                },
+                "building/school": {
+                    "name": "อาคารโรงเรียน"
+                },
+                "building/semidetached_house": {
+                    "name": "บ้านแฝด"
+                },
+                "building/service": {
+                    "name": "อาคารบริการ"
+                },
+                "building/shed": {
+                    "name": "เพิง"
+                },
+                "building/stable": {
+                    "name": "มั่นคง",
+                    "aliases": "เสถียร"
+                },
+                "building/stadium": {
+                    "name": "อาคารสนามกีฬา"
+                },
+                "building/sty": {
+                    "name": "คอกหมู",
+                    "aliases": "เล้าหมู"
+                },
+                "building/synagogue": {
+                    "name": "โบสถ์ของศาสนายิว"
+                },
+                "building/temple": {
+                    "name": "อาคารวัด",
+                    "aliases": "อาคารโบสถ์"
+                },
+                "building/terrace": {
+                    "name": "บ้านแดว"
+                },
+                "building/train_station": {
+                    "name": "อาคารสถานทีรถไฟ"
+                },
+                "building/transportation": {
+                    "name": "อาคารสถานีขนส่ง"
+                },
+                "building/university": {
+                    "name": "อาคารมหาวิทยาลัย",
+                    "aliases": "อาคารอุดมศึกษา"
+                },
+                "building/warehouse": {
+                    "name": "คลังสินค้า",
+                    "aliases": "โกดัง"
+                },
+                "building_part": {
+                    "name": "ส่วนอาคาร"
+                },
+                "building_point": {
+                    "name": "อาคาร",
+                    "aliases": "ตึก"
+                },
+                "craft": {
+                    "name": "หัตถกรรม",
+                    "aliases": "งานฝีมือ"
+                },
+                "craft/agricultural_engines": {
+                    "name": "เครื่องจักรกลเกษตร"
+                },
+                "craft/basket_maker": {
+                    "name": "ช่างจักสาน",
+                    "aliases": "ช่างทำตะกร้า"
+                },
+                "craft/beekeeper": {
+                    "name": "คนเลี้ยงผึ้ง"
+                },
+                "craft/blacksmith": {
+                    "name": "ช่างตีเหล็ก"
+                },
+                "craft/boatbuilder": {
+                    "name": "ช่างต่อเรือ"
+                },
+                "craft/bookbinder": {
+                    "name": "คนเย็บเล่มหนังสือ"
+                },
+                "craft/brewery": {
+                    "name": "โรงเบียร์"
+                },
+                "craft/carpenter": {
+                    "name": "ช่างไม้"
+                },
+                "craft/carpet_layer": {
+                    "name": "ช่างปูพรม"
+                },
+                "craft/caterer": {
+                    "name": "ผู้ให้บริการจัดเลี้ยง",
+                    "aliases": "บริษัทจัดเลี้ยง"
+                },
+                "craft/chimney_sweeper": {
+                    "name": "คนทำความสะอาดปล่องไฟ"
+                },
+                "craft/cleaning": {
+                    "name": "บริการทำความสะอาด"
+                },
+                "craft/clockmaker": {
+                    "name": "ช่างทำนาฬิกา"
+                },
+                "craft/confectionery": {
+                    "name": "คนทำขนม",
+                    "aliases": "เครื่องทำขนม"
+                },
+                "craft/distillery": {
+                    "name": "โรงกลั่นสุรา"
+                },
+                "craft/dressmaker": {
+                    "name": "ช่างตัดเสื้อ"
+                },
+                "craft/electrician": {
+                    "name": "ช่างไฟฟ้า"
+                },
+                "craft/electronics_repair": {
+                    "name": "ร้านซ่อมอุปกรณ์ไฟฟ้า"
+                },
+                "craft/floorer": {
+                    "name": "ช่างปูพื้น"
+                },
+                "craft/gardener": {
+                    "name": "ชาวสวน",
+                    "aliases": "คนสวน\nคนทำสวน"
+                },
+                "craft/glaziery": {
+                    "name": "งานติดตั้งกระจก"
+                },
+                "craft/handicraft": {
+                    "name": "พื้นที่ทำงานหัตถกรรม"
+                },
+                "craft/hvac": {
+                    "name": "ห้องที่มีระบบปรับอากาศภายใน",
+                    "aliases": "ห้องที่มีระบบควบคุมสภาพแวดล้อมภายใน"
+                },
+                "craft/insulator": {
+                    "name": "ฉนวน",
+                    "aliases": "ฉนวนกันความร้อน"
+                },
+                "craft/joiner": {
+                    "name": "ช่างไม้",
+                    "aliases": "ผู้เข้าร่วม"
+                },
+                "craft/key_cutter": {
+                    "name": "เครื่องตัดกุญแจ"
+                },
+                "craft/locksmith": {
+                    "name": "ช่างกุญแจ",
+                    "aliases": "ช่างทำกุญแจ"
+                },
+                "craft/metal_construction": {
+                    "name": "ช่างโลหะ"
+                },
+                "craft/painter": {
+                    "name": "จิตรกร"
+                },
+                "craft/parquet_layer": {
+                    "name": "ช่างปูพื้นไม้ปาร์เก้"
+                },
+                "craft/photographer": {
+                    "name": "ช่างภาพ",
+                    "aliases": "ช่างถ่ายรูป"
+                },
+                "craft/photographic_laboratory": {
+                    "name": "ห้องล้างรูป",
+                    "aliases": "ห้องมืด"
+                },
+                "craft/plasterer": {
+                    "name": "ช่างปูน"
+                },
+                "craft/plumber": {
+                    "name": "ช่างประปา"
+                },
+                "craft/pottery": {
+                    "name": "ช่างปั้นเครื่องปั้นดินเผา"
+                },
+                "craft/rigger": {
+                    "name": "ช่างขึงใบเรือ"
+                },
+                "craft/roofer": {
+                    "name": "คนทำหลังคา"
+                },
+                "craft/saddler": {
+                    "name": "คนขายอุปกรณ์เครื่องหนัง",
+                    "aliases": "คนทำอานม้า"
+                },
+                "craft/sailmaker": {
+                    "name": "ช่างทำเรือใบ"
+                },
+                "craft/sawmill": {
+                    "name": "โรงเลื่อย"
+                },
+                "craft/scaffolder": {
+                    "name": "นั่งร้าน"
+                },
+                "craft/sculptor": {
+                    "name": "ประติมากร"
+                },
+                "craft/shoemaker": {
+                    "name": "ช่างทำรองเท้า"
+                },
+                "craft/signmaker": {
+                    "name": "ช่างทำป้าย"
+                },
+                "craft/stonemason": {
+                    "name": "ช่างหิน"
+                },
+                "craft/tailor": {
+                    "name": "ช่างตัดเสื้อ"
+                },
+                "craft/tiler": {
+                    "name": "ช่างปูกระเบื้อง"
+                },
+                "craft/tinsmith": {
+                    "name": "ช่างบัดกรี"
+                },
+                "craft/upholsterer": {
+                    "name": "ช่างทำเบาะ",
+                    "aliases": "ช่างทำเก้าอี้"
+                },
+                "craft/watchmaker": {
+                    "name": "ช่างซ่อมนาฬิกา"
+                },
+                "craft/window_construction": {
+                    "name": "การติดหน้าต่าง"
+                },
+                "craft/winery": {
+                    "name": "โรงกลั่นเหล้าองุ่น",
+                    "aliases": "โรงกลั่นไวน์"
+                },
+                "demolished/building": {
+                    "name": "อาคารเพิ่งถูกรื้อถอน"
+                },
+                "disused/amenity": {
+                    "name": "สิ่งอำนวยความสะดวกที่ไม่ได้ใช้งานแล้ว"
+                },
+                "disused/shop": {
+                    "name": "ร้านที่ปิดกิจการไปแล้ว"
+                },
+                "emergency/water_reservoir": {
+                    "name": "อ่างเก็บน้ำฉุกเฉิน"
+                },
+                "emergency/water_reservoir_covered": {
+                    "name": "อ่างเก็บน้ำฉุกเฉิน (ใต้ดิน)"
+                },
+                "emergency/water_tank": {
+                    "name": "แท้งค์เก็บน้ำฉุกเฉิน"
+                },
+                "entrance": {
+                    "name": "ทางเข้า / ทางออก"
+                },
+                "entrance/emergency": {
+                    "name": "ทางออกฉุกเฉิน"
+                },
+                "entrance/main": {
+                    "name": "ทางเข้าหลัก"
+                },
+                "highway/bus_stop": {
+                    "name": "ป้ายรถประจำทาง",
+                    "aliases": "ป้ายรถเมล์"
+                },
+                "highway/crossing": {
+                    "name": "ทางข้าม"
+                },
+                "highway/crossing/marked": {
+                    "name": "ทางข้ามมีเครื่องหมายจราจร"
+                },
+                "highway/crossing/traffic_signals": {
+                    "name": "ทางข้ามมีไฟจราจร"
+                },
+                "highway/crossing/uncontrolled": {
+                    "name": "ทางข้ามที่มีเครื่องหมายจราจร"
+                },
+                "highway/crossing/unmarked": {
+                    "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
+                },
+                "highway/crossing/zebra": {
+                    "name": "ทางข้ามที่มีเครื่องหมายจราจร"
+                },
+                "highway/cycleway": {
+                    "name": "ทางจักรยาน"
+                },
+                "highway/cycleway/crossing": {
+                    "name": "ทางข้ามจักรยาน"
+                },
+                "highway/cycleway/crossing/bicycle_foot": {
+                    "name": "ทางข้ามจักรยานกับคนเดิน"
+                },
+                "highway/cycleway/crossing/marked": {
+                    "name": "ทางข้ามจักรยานมีเครื่องหมายจราจร"
+                },
+                "highway/cycleway/crossing/unmarked": {
+                    "name": "ทางข้ามจักรยานไม่มีเครื่องหมายจราจร"
+                },
+                "highway/footway": {
+                    "name": "ทางเดิน"
+                },
+                "highway/footway/crossing": {
+                    "name": "ทางข้ามคนเดิน"
+                },
+                "highway/footway/informal": {
+                    "name": "ทางเดินไม่เป็นทางการ"
+                },
+                "highway/footway/marked": {
+                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
+                },
+                "highway/footway/sidewalk": {
+                    "name": "ทางเท้า",
+                    "aliases": "ทางเดิน"
+                },
+                "highway/footway/traffic_signals": {
+                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
+                },
+                "highway/footway/unmarked": {
+                    "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
+                },
+                "highway/footway/zebra": {
+                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
+                },
+                "highway/motorway_junction": {
+                    "name": "ทางแยก / ทางออก ทางพิเศษ"
+                },
+                "highway/path": {
+                    "name": "ทางแคบ"
+                },
+                "highway/path/informal": {
+                    "name": "ทางไม่เป็นทางการ"
+                },
+                "highway/pedestrian_line": {
+                    "name": "ถนนคนเดิน"
+                },
+                "highway/residential": {
+                    "name": "ถนนชุมชน"
+                },
+                "highway/road/bridge": {
+                    "name": "สะพานถนนไม่ทราบประเภท"
+                },
+                "highway/service": {
+                    "name": "ถนนบริการ"
+                },
+                "highway/service/alley": {
+                    "name": "ตรอก"
+                },
+                "highway/service/drive-through": {
+                    "name": "ขับรถผ่าน"
+                },
+                "highway/service/driveway": {
+                    "name": "ทางรถ"
+                },
+                "highway/service/parking_aisle": {
+                    "name": "ถนนลานจอดรถ"
+                },
+                "highway/street_lamp": {
+                    "name": "ไฟถนน"
+                },
+                "highway/track": {
+                    "name": "ทางเกวียน"
+                },
+                "historic/building": {
+                    "name": "อาคารทางประวัติศาสตร์"
+                },
+                "historic/manor": {
+                    "name": "คฤหาสน์"
+                },
+                "internet_access/wlan": {
+                    "name": "วายฟาย",
+                    "aliases": "อินเทอร์เน็ตไร้สาย"
+                },
+                "landuse/commercial": {
+                    "name": "พื้นที่เชิงพาณิชย์"
+                },
+                "landuse/greenhouse_horticulture": {
+                    "name": "พืชสวนเรือนกระจก"
+                },
+                "landuse/industrial": {
+                    "name": "พื้นที่อุตสาหกรรม"
+                },
+                "landuse/industrial/slaughterhouse": {
+                    "name": "โรงฆ่าสัตว์"
+                },
+                "landuse/military/base/navy": {
+                    "name": "ฐานทัพเรือ"
+                },
+                "landuse/residential": {
+                    "name": "พื้นที่อยู่อาศัย"
+                },
+                "leisure/adult_gaming_centre": {
+                    "name": "ศูนย์เกมสำหรับผู้ใหญ่"
+                },
+                "leisure/amusement_arcade": {
+                    "name": "ร้านเกมตู้"
+                },
+                "leisure/bandstand": {
+                    "name": "ศาลา"
+                },
+                "leisure/beach_resort": {
+                    "name": "รีสอร์ทริมชายหาด"
+                },
+                "leisure/bleachers": {
+                    "name": "อัฒจันทร์กลางแจ้ง"
+                },
+                "leisure/bowling_alley": {
+                    "name": "ลานโบว์ลิ่ง"
+                },
+                "leisure/common": {
+                    "name": "ทั่วไป"
+                },
+                "leisure/dance": {
+                    "name": "ลานเต้นรำ"
+                },
+                "leisure/dancing_school": {
+                    "name": "โรงเรียนสอนเต้น"
+                },
+                "leisure/disc_golf_course": {
+                    "name": "สนามดิสก์กอล์ฟ"
+                },
+                "leisure/dog_park": {
+                    "name": "สวนสาธารณะสำหรับสุนัข"
+                },
+                "leisure/firepit": {
+                    "name": "กองไฟ"
+                },
+                "leisure/fishing": {
+                    "name": "จุดตกปลา"
+                },
+                "leisure/fitness_centre": {
+                    "name": "ยิม",
+                    "aliases": "ฟิตเนส\nศูนย์ออกกำลังกาย"
+                },
+                "leisure/fitness_centre/yoga": {
+                    "name": "สตูดิโอโยคะ"
+                },
+                "leisure/fitness_station": {
+                    "name": "สถานที่ออกกำลังกายกลางแจ้ง"
+                },
+                "leisure/fitness_station/balance_beam": {
+                    "name": "คานทรงตัวสำหรับออกกำลังกาย"
+                },
+                "leisure/fitness_station/box": {
+                    "name": "กล่องออกกำลังกาย",
+                    "aliases": "กล่องสำหรับออกกำลังกาย"
+                },
+                "leisure/fitness_station/horizontal_bar": {
+                    "name": "บาร์เดี่ยว"
+                },
+                "leisure/fitness_station/horizontal_ladder": {
+                    "name": "ราวโหน"
+                },
+                "leisure/fitness_station/parallel_bars": {
+                    "name": "บาร์คู่"
+                },
+                "leisure/fitness_station/push-up": {
+                    "name": "เครื่องออกกำลังกายวิดพื้น",
+                    "aliases": "อุปกรณ์ออกกำลังกายวิดพื้น"
+                },
+                "leisure/fitness_station/rings": {
+                    "name": "ห่วงสำหรับออกกำลังกาย"
+                },
+                "leisure/fitness_station/sign": {
+                    "name": "ป้ายแนะนำการออกกำลังกาย"
+                },
+                "leisure/fitness_station/sit-up": {
+                    "name": "เครื่องออกกำลังกายซิทอัพ"
+                },
+                "leisure/fitness_station/stairs": {
+                    "name": "บันไดออกกำลังกาย"
+                },
+                "leisure/garden": {
+                    "name": "สวนหย่อม"
+                },
+                "leisure/garden/botanical": {
+                    "name": "สวนพฤกษศาสตร์"
+                },
+                "leisure/garden/community": {
+                    "name": "สวนชุมชน"
+                },
+                "leisure/golf_course": {
+                    "name": "สนามกอล์ฟ"
+                },
+                "leisure/horse_riding": {
+                    "name": "ศูนย์ขี่ม้า"
+                },
+                "leisure/ice_rink": {
+                    "name": "ลานสเก็ตน้ำแข็ง"
+                },
+                "leisure/indoor_play": {
+                    "name": "สนามเด็กเล่นในร่ม"
+                },
+                "leisure/marina": {
+                    "name": "ท่าเรือ"
+                },
+                "leisure/miniature_golf": {
+                    "name": "มินิกอล์ฟ"
+                },
+                "leisure/nature_reserve": {
+                    "name": "เขตอนุรักษ์ธรรมชาติ"
+                },
+                "leisure/outdoor_seating": {
+                    "name": "บริเวณที่นั่งกลางแจ้ง"
+                },
+                "leisure/park": {
+                    "name": "สวนสาธารณะ"
+                },
+                "leisure/picnic_table": {
+                    "name": "โต๊ะปิคนิค"
+                },
+                "leisure/picnic_table/chess": {
+                    "name": "โต๊ะหมากรุก"
+                },
+                "leisure/pitch": {
+                    "name": "สนามกีฬา"
+                },
+                "leisure/pitch/american_football": {
+                    "name": "สนามอเมริกันฟุตบอล"
+                },
+                "leisure/pitch/archery": {
+                    "name": "สนามยิงธนู"
+                },
+                "leisure/pitch/australian_football": {
+                    "name": "สนามฟุตบอลออสเตรเลีย"
+                },
+                "leisure/pitch/badminton": {
+                    "name": "สนามแบดมินตัน"
+                },
+                "leisure/pitch/baseball": {
+                    "name": "สนามเบสบอล"
+                },
+                "leisure/pitch/basketball": {
+                    "name": "สนามบาสเกตบอล"
+                },
+                "leisure/pitch/beachvolleyball": {
+                    "name": "สนามวอลเลย์บอลชายหาด"
+                },
+                "leisure/pitch/boules": {
+                    "name": "สนามเปตอง"
+                },
+                "leisure/pitch/chess": {
+                    "name": "กระดานหมากรุกยักษ์"
+                },
+                "leisure/pitch/cricket": {
+                    "name": "สนามคริกเก็ต"
+                },
+                "leisure/pitch/equestrian": {
+                    "name": "สนามม้า",
+                    "aliases": "สนามขี่ม้า"
+                },
+                "leisure/pitch/field_hockey": {
+                    "name": "สนามฮอกกี้"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "สนามฟุตซอล"
+                },
+                "leisure/pitch/netball": {
+                    "name": "สนามเน็ทบอล"
+                },
+                "leisure/pitch/padel": {
+                    "name": "สนามพาเดล"
+                },
+                "leisure/pitch/paintball": {
+                    "name": "สนามเพ้นท์บอล"
+                },
+                "leisure/pitch/pickleball": {
+                    "name": "สนามพิคเคิลบอล"
+                },
+                "leisure/pitch/rugby_league": {
+                    "name": "สนามรักบี้ลีค"
+                },
+                "leisure/pitch/rugby_union": {
+                    "name": "สนามรักบี้ยูเนี่ยน"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "สนามยิงปืน"
+                },
+                "leisure/pitch/shuffleboard": {
+                    "name": "สนามชัฟเฟิลบอร์ด"
+                },
+                "leisure/pitch/skateboard": {
+                    "name": "ลานสเก็ต"
+                },
+                "leisure/pitch/soccer": {
+                    "name": "สนามฟุตบอล"
+                },
+                "leisure/pitch/softball": {
+                    "name": "สนามซอฟต์บอล"
+                },
+                "leisure/pitch/table_soccer": {
+                    "name": "ฟุตบอลโต๊ะ"
+                },
+                "leisure/pitch/table_tennis": {
+                    "name": "โต๊ะปิงปอง"
+                },
+                "leisure/pitch/tennis": {
+                    "name": "สนามเทนนิส"
+                },
+                "leisure/pitch/volleyball": {
+                    "name": "สนามวอลเลย์บอล"
+                },
+                "leisure/playground": {
+                    "name": "สนามเด็กเล่น"
+                },
+                "leisure/playground/indoor": {
+                    "name": "สนามเด็กเล่นในร่ม"
+                },
+                "leisure/resort": {
+                    "name": "รีสอร์ท"
+                },
+                "leisure/sauna": {
+                    "name": "ซาวน่า"
+                },
+                "leisure/slipway": {
+                    "name": "ลานสำหรับกว้านเรือ"
+                },
+                "leisure/slipway_drivable": {
+                    "name": "ทางลาดกว้านเรือขึ้นลง (ขับลงได้)"
+                },
+                "leisure/sports_centre": {
+                    "name": "ศูนย์กีฬา"
+                },
+                "leisure/sports_centre/climbing": {
+                    "name": "สถานที่ปีนผาจำลอง"
+                },
+                "leisure/sports_centre/horse_racing": {
+                    "name": "สนามม้า",
+                    "aliases": "สนามแข่งม้า"
+                },
+                "leisure/water_park": {
+                    "name": "สวนน้ำ"
                 },
                 "line": {
                     "name": "เส้น"
                 },
+                "man_made/breakwater": {
+                    "name": "กำแพงกันคลื่น"
+                },
+                "man_made/bridge": {
+                    "name": "พื้นที่สะพาน"
+                },
+                "man_made/lighthouse": {
+                    "name": "ประภาคาร"
+                },
+                "man_made/manhole/water": {
+                    "name": "บ่อตรวจการประปา",
+                    "aliases": "ช่องขึ้นลงการประปา"
+                },
+                "man_made/reservoir_covered": {
+                    "name": "อ่างน้ำที่มีการคลุม"
+                },
+                "man_made/storage_tank/water": {
+                    "name": "ถังเก็บน้ำ"
+                },
+                "man_made/wastewater_plant": {
+                    "name": "โรงบำบัดน้ำเสีย"
+                },
+                "man_made/water_tap": {
+                    "name": "ก๊อกน้ำ"
+                },
+                "man_made/water_tower": {
+                    "name": "หอแทงค์เก็บน้ำ"
+                },
+                "man_made/water_well": {
+                    "name": "บ่อบาดาล"
+                },
+                "man_made/water_works": {
+                    "name": "การประปา"
+                },
+                "man_made/watermill": {
+                    "name": "โรงสีพลังน้ำ"
+                },
+                "natural/water": {
+                    "name": "น้ำ"
+                },
+                "natural/water/wastewater": {
+                    "name": "อ่างเก็บน้ำเสีย"
+                },
+                "noexit/yes": {
+                    "name": "ไม่มีทางออก",
+                    "aliases": "ไม่ใช่ทางออก"
+                },
+                "office": {
+                    "name": "สำนักงาน",
+                    "aliases": "บริษัท"
+                },
+                "office/accountant": {
+                    "name": "สำนักงานบัญชี"
+                },
+                "office/administrative": {
+                    "name": "สำนักงานบริหาร"
+                },
+                "office/adoption_agency": {
+                    "name": "หน่วยงานรับเลี้ยงบุตรบุญธรรม"
+                },
+                "office/advertising_agency": {
+                    "name": "ตัวแทนโฆษณา"
+                },
+                "office/architect": {
+                    "name": "สำนักงานสถาปนิก"
+                },
+                "office/association": {
+                    "name": "องค์กรที่ไม่แสวงหาผลกำไร"
+                },
+                "office/bail_bond_agent-US-PH": {
+                    "name": "ตัวแทนค้ำประกัน"
+                },
+                "office/charity": {
+                    "name": "สำนักงานการกุศล"
+                },
+                "office/company": {
+                    "name": "บริษัท",
+                    "aliases": "สำนักงาน"
+                },
+                "office/consulting": {
+                    "name": "สำนักงานที่ปรึกษา"
+                },
+                "office/coworking": {
+                    "name": "พื้นที่ทำงานร่วมกันกับผู้อื่น"
+                },
+                "office/diplomatic": {
+                    "name": "สถานฑูต"
+                },
+                "office/diplomatic/consulate": {
+                    "name": "สถานกงสุล"
+                },
+                "office/diplomatic/embassy": {
+                    "name": "สถานฑูต"
+                },
+                "office/diplomatic/liaison": {
+                    "name": "สำนักงานประสานงาน"
+                },
+                "office/educational_institution": {
+                    "name": "สถาบันการศึกษา"
+                },
+                "office/employment_agency": {
+                    "name": "สำนักงานจัดหางาน"
+                },
+                "office/energy_supplier": {
+                    "name": "สำนักงานจัดหาพลังงาน",
+                    "aliases": "บริษัทจัดหาพลังงาน"
+                },
+                "office/estate_agent": {
+                    "name": "สำนักงานอสังหาริมทรัพย์"
+                },
+                "office/financial": {
+                    "name": "สำนักงานการเงิน"
+                },
+                "office/financial_advisor": {
+                    "name": "ที่ปรึกษาทางการเงิน"
+                },
+                "office/forestry": {
+                    "name": "สำนักงานป่าไม้"
+                },
+                "office/foundation": {
+                    "name": "มูลนิธิ"
+                },
+                "office/government": {
+                    "name": "หน่วยงานราชการ"
+                },
+                "office/government/prosecutor": {
+                    "name": "สำนักงานอัยการ"
+                },
+                "office/government/register_office": {
+                    "name": "สำนักทะเบียน",
+                    "aliases": "สำนักงานทะเบียน"
+                },
+                "office/government/tax": {
+                    "name": "สำนักงานภาษีและสรรพากร"
+                },
+                "office/guide": {
+                    "name": "สำนักงานมัคคุเทศก์"
+                },
+                "office/insurance": {
+                    "name": "สำนักงานประกันภัย"
+                },
+                "office/it": {
+                    "name": "สำนักงานเทคโนโลยีสารสนเทศ"
+                },
+                "office/lawyer": {
+                    "name": "สำนักงานกฎหมาย"
+                },
+                "office/lawyer/notary": {
+                    "name": "บริษัทรับรองเอกสาร",
+                    "aliases": "สำนักงานรับรองเอกสาร"
+                },
+                "office/moving_company": {
+                    "name": "บริษัทขนย้าย"
+                },
+                "office/newspaper": {
+                    "name": "บริษัทหนังสือพิมพ์"
+                },
+                "office/ngo": {
+                    "name": "บริษัทเอกชน"
+                },
+                "office/notary": {
+                    "name": "บริษัทรับรองเอกสาร",
+                    "aliases": "สำนักงานรับรองเอกสาร"
+                },
+                "office/physician": {
+                    "name": "หมอ",
+                    "aliases": "แพทย์"
+                },
+                "office/political_party": {
+                    "name": "สำนักงานพรรคการเมือง"
+                },
+                "office/private_investigator": {
+                    "name": "นักสืบเอชน"
+                },
+                "office/quango": {
+                    "name": "บริษัทกึ่งรัฐวิสาหกิจกึ่งเอกชน"
+                },
+                "office/religion": {
+                    "name": "สำนักงานศาสนา"
+                },
+                "office/research": {
+                    "name": "หน่วยงานวิจัย",
+                    "aliases": "บริษัทวิจัย"
+                },
+                "office/security": {
+                    "name": "สำนักงานรักษาความปลอดภัย"
+                },
+                "office/surveyor": {
+                    "name": "สำนักงานสำรวจ"
+                },
+                "office/tax_advisor": {
+                    "name": "สำนักงานปรึกษาภาษี"
+                },
+                "office/telecommunication": {
+                    "name": "สำนักงานโทรคมนาคม"
+                },
+                "office/travel_agent": {
+                    "name": "นายหน้าท่องเที่ยว"
+                },
+                "office/water_utility": {
+                    "name": "สำนักงานการประปา"
+                },
+                "office/yes": {
+                    "name": "สำนักงาน (ไม่ระบุประเภท)"
+                },
+                "place": {
+                    "name": "สถานที่"
+                },
+                "place/city": {
+                    "name": "เมือง"
+                },
+                "place/farm": {
+                    "name": "ฟาร์ม",
+                    "aliases": "ไร่\nนา"
+                },
+                "place/hamlet": {
+                    "name": "หมู่บ้านขนาดเล็ก"
+                },
+                "place/island": {
+                    "name": "เกาะ"
+                },
+                "place/neighbourhood": {
+                    "name": "ชุมชน",
+                    "aliases": "ย่าน"
+                },
+                "place/quarter": {
+                    "name": "แขวง"
+                },
+                "place/square": {
+                    "name": "จตุรัส"
+                },
+                "place/suburb": {
+                    "name": "เขต"
+                },
+                "place/town": {
+                    "name": "เทศบาลเมือง",
+                    "aliases": "เทศบาลตำบล"
+                },
+                "place/village": {
+                    "name": "หมู่บ้าน",
+                    "aliases": "หมู่"
+                },
+                "playground/bridge": {
+                    "name": "สะพานเด็กเล่น"
+                },
+                "playground/water": {
+                    "name": "ปั๊มป์น้ำเด็กเล่น"
+                },
                 "point": {
                     "name": "จุด"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "แผงโซลาร์ติดหลังคา"
+                },
+                "power/generator/source/hydro": {
+                    "name": "กังหันน้ำ"
+                },
+                "power/tower": {
+                    "name": "เสาไฟฟ้าแรงสูง"
+                },
+                "public_transport/platform": {
+                    "name": "ชานชลา"
+                },
+                "public_transport/platform/bus": {
+                    "name": "ชานชลารถโดยสาร"
+                },
+                "public_transport/platform/bus_point": {
+                    "name": "ป้ายหยุดรถโดยสาร"
+                },
+                "public_transport/platform/bus_tram_point": {
+                    "name": "ชานชลารถประจำทางและรถราง"
+                },
+                "public_transport/platform/ferry": {
+                    "name": "ชานชลาเรือโดยสาร"
+                },
+                "public_transport/platform/ferry_point": {
+                    "name": "ที่หยุด/ชานชลาเรือโดยสาร"
+                },
+                "public_transport/platform/subway": {
+                    "name": "ชานชลารถไฟรางหนัก",
+                    "aliases": "ชานชลารถไฟฟ้า\nชานชลารถไฟใต้ดิน"
+                },
+                "public_transport/platform/subway_point": {
+                    "name": "ที่หยุด/ชานชลารถไฟรางหนัก",
+                    "aliases": "ที่หยุด/ชานชลารถไฟฟ้า\nที่หยุด/ชานชลารถไฟใต้ดิน"
+                },
+                "public_transport/platform/train": {
+                    "name": "ชานชลารถไฟ"
+                },
+                "public_transport/platform/train_point": {
+                    "name": "ที่หยุด/ชานชลารถไฟ"
+                },
+                "public_transport/station_bus": {
+                    "name": "สถานี/อู่รถประจำทาง"
+                },
+                "public_transport/station_ferry": {
+                    "name": "อาคารโดยสารเรือโดยสาร"
+                },
+                "public_transport/station_light_rail": {
+                    "name": "สถานีรถไฟรางเบา"
+                },
+                "public_transport/station_monorail": {
+                    "name": "สถานีรถไฟโมโนเรล",
+                    "aliases": "สถานีรถไฟรางเดี่ยว"
+                },
+                "public_transport/station_subway": {
+                    "name": "สถานีรถไฟฟ้า",
+                    "aliases": "สถานีรถไฟใต้ดิน"
+                },
+                "public_transport/station_train": {
+                    "name": "สถานีรถไฟ"
+                },
+                "public_transport/stop_position_bus": {
+                    "name": "ตำแหน่งจอดรถประจำทาง"
+                },
+                "railway/crossing": {
+                    "name": "ทางเดินข้ามทางรถไฟ-ทางเดิน"
+                },
+                "railway/level_crossing": {
+                    "name": "ทางข้ามทางรถไฟ-ถนน"
+                },
+                "railway/railway_crossing": {
+                    "name": "ทางข้ามรถไฟ-รถไฟ"
+                },
+                "railway/tram_crossing": {
+                    "name": "ทางข้ามทางรถไฟ-รถราง"
+                },
+                "railway/tram_level_crossing": {
+                    "name": "ทางข้ามทางรถไฟ-ถนน"
+                },
+                "shop": {
+                    "name": "ร้านค้า"
+                },
+                "shop/agrarian": {
+                    "name": "ร้านอุปกรณ์เกษตร"
+                },
+                "shop/alcohol": {
+                    "name": "ร้านขายเหล้า",
+                    "aliases": "ร้านเหล้า"
+                },
+                "shop/anime": {
+                    "name": "ร้านหนังสือการ์ตูน"
+                },
+                "shop/antiques": {
+                    "name": "ร้านขายของโบราณ"
+                },
+                "shop/appliance": {
+                    "name": "ร้านขายเครื่องมือ",
+                    "aliases": "ร้านขายอุปกรณ์"
+                },
+                "shop/art": {
+                    "name": "ร้านขายงานศิลปะ"
+                },
+                "shop/baby_goods": {
+                    "name": "ร้านสินค้าสำหรับแม่และเด็ก",
+                    "aliases": "ร้านสินค้าเด็กอ่อน"
+                },
+                "shop/bag": {
+                    "name": "ร้านกระเป๋า"
+                },
+                "shop/bakery": {
+                    "name": "ร้านขายขนมปัง",
+                    "aliases": "เบเกอรี่"
+                },
+                "shop/bathroom_furnishing": {
+                    "name": "ร้านอุปกรณ์อาบน้ำ"
+                },
+                "shop/beauty": {
+                    "name": "ร้านเสริมสวย"
+                },
+                "shop/beauty/nails": {
+                    "name": "ร้านทำเล็บ"
+                },
+                "shop/beauty/tanning": {
+                    "name": "ร้านทำผิวสีแทน"
+                },
+                "shop/bed": {
+                    "name": "ร้านขายที่นอน",
+                    "aliases": "ร้านขายฟูก"
+                },
+                "shop/beverages": {
+                    "name": "ร้านเครื่องดื่ม"
+                },
+                "shop/bicycle": {
+                    "name": "ร้านจักรยาน"
+                },
+                "shop/boat": {
+                    "name": "ร้านขายเรือ"
+                },
+                "shop/bookmaker": {
+                    "name": "คนทำหนังสือ"
+                },
+                "shop/books": {
+                    "name": "ร้านหนังสือ"
+                },
+                "shop/boutique": {
+                    "name": "ร้านขายเสื้อผ้าและเครื่องประดับ"
+                },
+                "shop/brewing_supplies": {
+                    "name": "ร้านอุปกรณ์ผลิตเบียร์"
+                },
+                "shop/butcher": {
+                    "name": "คนขายเนื้อ"
+                },
+                "shop/camera": {
+                    "name": "ร้านอุปกรณ์กล้อง"
+                },
+                "shop/candles": {
+                    "name": "ร้านเทียน"
+                },
+                "shop/cannabis": {
+                    "name": "ร้านกัญชา"
+                },
+                "shop/car": {
+                    "name": "ตัวแทนจำหน่ายรถยนต์"
+                },
+                "shop/car/second_hand": {
+                    "name": "ตัวแทนจำหน่ายรถมือสอง"
+                },
+                "shop/car_parts": {
+                    "name": "ร้านอะไหล่รถยนต์"
+                },
+                "shop/car_repair": {
+                    "name": "อู่ซ่อมรถ"
+                },
+                "shop/caravan": {
+                    "name": "ตัวแทนจำหน่ายรถบ้าน"
+                },
+                "shop/carpet": {
+                    "name": "ร้านขายพรม"
+                },
+                "shop/catalogue": {
+                    "name": "ร้านค้าที่ใช้แคตตาล็อก"
+                },
+                "shop/charity": {
+                    "name": "ร้านการกุศล"
+                },
+                "shop/cheese": {
+                    "name": "ร้านชีส"
+                },
+                "shop/chemist": {
+                    "name": "ร้านขายยา"
+                },
+                "shop/chocolate": {
+                    "name": "ร้านช็อคโกแลต"
+                },
+                "shop/clothes": {
+                    "name": "ร้านเสื้อผ้า"
+                },
+                "shop/clothes/second_hand": {
+                    "name": "ร้านเสื้อผ้ามือสอง"
+                },
+                "shop/clothes/suits": {
+                    "name": "ร้านขายชุดสูท"
+                },
+                "shop/clothes/underwear": {
+                    "name": "ร้านขายชุดชั้นใน"
+                },
+                "shop/clothes/wedding": {
+                    "name": "ร้านชุดแต่งงาน",
+                    "aliases": "ร้านชุดวิวาห์"
+                },
+                "shop/clothes/workwear": {
+                    "name": "ร้านชุดทำงาน"
+                },
+                "shop/coffee": {
+                    "name": "ร้านกาแฟ"
+                },
+                "shop/collector": {
+                    "name": "ร้านขายของสะสม"
+                },
+                "shop/computer": {
+                    "name": "ร้านคอมพิวเตอร์"
+                },
+                "shop/confectionery": {
+                    "name": "ร้านขนมหวาน",
+                    "aliases": "ร้านขายขนม"
+                },
+                "shop/convenience": {
+                    "name": "ร้านสะดวกซื้อ"
+                },
+                "shop/copyshop": {
+                    "name": "ร้านถ่ายเอกสาร"
+                },
+                "shop/cosmetics": {
+                    "name": "ร้านเครื่องสำอาง"
+                },
+                "shop/country_store": {
+                    "name": "ร้านค้าชนบท",
+                    "aliases": "ร้านค้าในชนบท"
+                },
+                "shop/craft": {
+                    "name": "ร้านขายงานศิลปะและงานฝีมือ"
+                },
+                "shop/curtain": {
+                    "name": "ร้านผ้าม่าน"
+                },
+                "shop/dairy": {
+                    "name": "ร้านขายนม"
+                },
+                "shop/deli": {
+                    "name": "อาหารสำเร็จรูป"
+                },
+                "shop/department_store": {
+                    "name": "ห้างสรรพสินค้า"
+                },
+                "shop/doityourself": {
+                    "name": "ร้านขายของทำมือ"
+                },
+                "shop/doors": {
+                    "name": "ร้านขายประตู"
+                },
+                "shop/dry_cleaning": {
+                    "name": "ร้านซักรีด",
+                    "aliases": "ร้านซักแห้ง"
+                },
+                "shop/e-cigarette": {
+                    "name": "ร้านบุหรี่ไฟฟ้า"
+                },
+                "shop/electrical": {
+                    "name": "ร้านเครื่องใช้ไฟฟ้า"
+                },
+                "shop/electronics": {
+                    "name": "ร้านเครื่องใช้ไฟฟ้า"
+                },
+                "shop/erotic": {
+                    "name": "ร้านขายของเล่นผู้ใหญ่"
+                },
+                "shop/erotic/lgbtq": {
+                    "name": "ร้านขายของเล่นผู้ใหญ่สำหรับ LGBTQ+"
+                },
+                "shop/fabric": {
+                    "name": "ร้านขายผ้า"
+                },
+                "shop/farm": {
+                    "name": "แผงลอยสำหรับวางสินค้า"
+                },
+                "shop/fashion": {
+                    "name": "ร้านเสื้อผ้าแฟชั่น"
+                },
+                "shop/fashion_accessories": {
+                    "name": "ร้านขายเครื่องประดับแฟชั่น"
+                },
+                "shop/fishing": {
+                    "name": "ร้านขายอุปกรณ์ตกปลา"
+                },
+                "shop/flooring": {
+                    "name": "ร้านจำหน่ายวัสดุปูพื้น"
+                },
+                "shop/florist": {
+                    "name": "ร้านขายดอกไม้",
+                    "aliases": "คนขายดอกไม้\nคนปลูกดอกไม้"
+                },
+                "shop/frame": {
+                    "name": "ร้านทำกรอบรูป"
+                },
+                "shop/frozen_food": {
+                    "name": "ร้านอาหารแช่แข็ง"
+                },
+                "shop/fuel": {
+                    "name": "ร้านขายเชื้อเพลิง"
+                },
+                "shop/funeral_directors": {
+                    "name": "งานศพ"
+                },
+                "shop/furniture": {
+                    "name": "ร้านเฟอร์นิเจอร์"
+                },
+                "shop/games": {
+                    "name": "ร้านบอร์ดเกมส์"
+                },
+                "shop/garden_centre": {
+                    "name": "ตลาดต้นไม้"
+                },
+                "shop/gas": {
+                    "name": "ร้านแก็สหุงต้ม",
+                    "aliases": "ร้านก๊าซหุงต้ม"
+                },
+                "shop/general": {
+                    "name": "ร้านค้าทั่วไป"
+                },
+                "shop/gift": {
+                    "name": "ร้านของฝาก"
+                },
+                "shop/greengrocer": {
+                    "name": "คนขายผักและผลไม้"
+                },
+                "shop/hairdresser": {
+                    "name": "ช่างทำผม"
+                },
+                "shop/hairdresser_supply": {
+                    "name": "ร้านอุปกรณ์ทำผม"
+                },
+                "shop/hardware": {
+                    "name": "ร้านขายเหล็ก",
+                    "aliases": "ร้านขายโลหะ"
+                },
+                "shop/health_food": {
+                    "name": "ร้านอาหารเพื่อสุขภาพ"
+                },
+                "shop/hearing_aids": {
+                    "name": "ร้านขายเครื่องช่วยฟัง"
+                },
+                "shop/herbalist": {
+                    "name": "นักสมุนไพร"
+                },
+                "shop/hifi": {
+                    "name": "ร้านขายเครื่องเสียง"
+                },
+                "shop/hobby": {
+                    "name": "ร้านขายของสำหรับงานอดิเรก"
+                },
+                "shop/houseware": {
+                    "name": "ร้านขายของใช้ในบ้าน"
+                },
+                "shop/hunting": {
+                    "name": "ร้านอุปกรณ์ล่าสัตว์"
+                },
+                "shop/interior_decoration": {
+                    "name": "ร้านตกแต่งภายใน"
+                },
+                "shop/jewelry": {
+                    "name": "ร้านจิวเวลรี่",
+                    "aliases": "ร้านเครื่องประดับ"
+                },
+                "shop/kiosk": {
+                    "name": "ร้านค้าขนาดเล็ก"
+                },
+                "shop/laundry": {
+                    "name": "ร้านซักรีด"
+                },
+                "shop/laundry/self_service": {
+                    "name": "ร้านซักผ้าแบบช่วยตัวเอง"
+                },
+                "shop/leather": {
+                    "name": "ร้านเครื่องหนัง"
+                },
+                "shop/lighting": {
+                    "name": "ร้านโคมไฟ"
+                },
+                "shop/locksmith": {
+                    "name": "ช่างทำกุญแจ"
+                },
+                "shop/lottery": {
+                    "name": "ร้านขายหวย"
+                },
+                "shop/mall": {
+                    "name": "ห้างสรรพสินค้า"
+                },
+                "shop/massage": {
+                    "name": "ร้านนวด"
+                },
+                "shop/medical_supply": {
+                    "name": "ร้านเวชภัณฑ์"
+                },
+                "shop/military_surplus": {
+                    "name": "ร้านขายอุปกรณ์ทางทหาร"
+                },
+                "shop/mobile_phone": {
+                    "name": "ร้านโทรศัพท์มือถือ"
+                },
+                "shop/model": {
+                    "name": "ร้านโมเดล"
+                },
+                "shop/money_lender": {
+                    "name": "ผู้ให้กู้ยืมเงิน"
+                },
+                "shop/motorcycle": {
+                    "name": "ร้านขายจักรยานยนต์"
+                },
+                "shop/motorcycle_repair": {
+                    "name": "ร้านซ่อมจักรยานยนต์"
+                },
+                "shop/music": {
+                    "name": "ร้านเครื่องดนตรี"
+                },
+                "shop/musical_instrument": {
+                    "name": "ร้านเครื่องดนตรี",
+                    "aliases": "ร้านอุปกรณ์ดนตรี"
+                },
+                "shop/newsagent": {
+                    "name": "แผงหนังสือ"
+                },
+                "shop/nutrition_supplements": {
+                    "name": "ร้านอาหารเสริม"
+                },
+                "shop/optician": {
+                    "name": "ช่างทำแว่นตา",
+                    "aliases": "คนขายแว่นตา"
+                },
+                "shop/outdoor": {
+                    "name": "ร้านค้ากลางแจ้ง"
+                },
+                "shop/paint": {
+                    "name": "ร้านขายสี"
+                },
+                "shop/party": {
+                    "name": "ร้านอุปกรณ์ปาร์ตี้"
+                },
+                "shop/pastry": {
+                    "name": "ร้านขนมอบ"
+                },
+                "shop/pawnbroker": {
+                    "name": "โรงรับจำนำ"
+                },
+                "shop/perfumery": {
+                    "name": "ร้านน้ำหอม"
+                },
+                "shop/pet": {
+                    "name": "ร้านสัตว์เลี้ยง"
+                },
+                "shop/pet_grooming": {
+                    "name": "ร้านตัดแต่งขนสัตว์เลี้ยง"
+                },
+                "shop/photo": {
+                    "name": "ร้านถ่ายรูป"
+                },
+                "shop/pottery": {
+                    "name": "ร้านเครื่องปั้นดินเผา"
+                },
+                "shop/printer_ink": {
+                    "name": "ร้านหมึกพิมพ์"
+                },
+                "shop/psychic": {
+                    "name": "เกี่ยวกับจิตใจ",
+                    "aliases": "เกี่ยวกับจิตวิญญาณ"
+                },
+                "shop/pyrotechnics": {
+                    "name": "ร้านดอกไม้ไฟ"
+                },
+                "shop/radiotechnics": {
+                    "name": "ร้านวิทยุ/อุปกรณ์อิเล็กทรอนิกส์"
+                },
+                "shop/religion": {
+                    "name": "ร้านขายของทางศาสนา"
+                },
+                "shop/rental": {
+                    "name": "ร้านเช่า"
+                },
+                "shop/repair": {
+                    "name": "ร้านซ่อม"
+                },
+                "shop/scuba_diving": {
+                    "name": "ร้านอุปกรณ์ดำน้ำ"
+                },
+                "shop/seafood": {
+                    "name": "ร้านอาหารทะเล"
+                },
+                "shop/second_hand": {
+                    "name": "ร้านขายของมือสอง"
+                },
+                "shop/sewing": {
+                    "name": "ร้านอุปกรณ์เย็บผ้า"
+                },
+                "shop/shoe_repair": {
+                    "name": "ร้านซ่อมรองเท้า"
+                },
+                "shop/shoes": {
+                    "name": "ร้านรองเท้า"
+                },
+                "shop/spices": {
+                    "name": "ร้านเครื่องเทศ"
+                },
+                "shop/sports": {
+                    "name": "ร้านอุปกรณ์กีฬา"
+                },
+                "shop/stationery": {
+                    "name": "ร้านเครื่องเขียน"
+                },
+                "shop/storage_rental": {
+                    "name": "ห้องเช่าสำหรับเก็บของ"
+                },
+                "shop/supermarket": {
+                    "name": "ซูเปอร์มาร์เก็ต"
+                },
+                "shop/supermarket/organic": {
+                    "name": "ซูเปอร์มาร์เก็ตที่ขายสินค้าออร์แกนิค"
+                },
+                "shop/swimming_pool": {
+                    "name": "ร้านจำหน่ายอุปกรณ์สระว่ายน้ำ"
+                },
+                "shop/tailor": {
+                    "name": "ช่างตัดเสื้อ"
+                },
+                "shop/tattoo": {
+                    "name": "ร้านสักลาย"
+                },
+                "shop/tea": {
+                    "name": "ร้านชา"
+                },
+                "shop/telecommunication": {
+                    "name": "ร้านให้บริการโทรคมนาคม"
+                },
+                "shop/ticket": {
+                    "name": "คนขายตั๋ว"
+                },
+                "shop/tiles": {
+                    "name": "ร้านกระเบื้อง"
+                },
+                "shop/tobacco": {
+                    "name": "ร้านยาสูบ"
+                },
+                "shop/tool_hire": {
+                    "name": "ร้านเช่าอุปกรณ์"
+                },
+                "shop/toys": {
+                    "name": "ร้านของเล่น"
+                },
+                "shop/trade": {
+                    "name": "ร้านขายของ",
+                    "aliases": "ร้านขายสินค้า"
+                },
+                "shop/travel_agency": {
+                    "name": "นายหน้าท่องเที่ยว"
+                },
+                "shop/trophy": {
+                    "name": "ร้านถ้วยรางวัล"
+                },
+                "shop/tyres": {
+                    "name": "ร้านขายยางรถยนต์"
+                },
+                "shop/vacant": {
+                    "name": "ร้านว่าง"
+                },
+                "shop/vacuum_cleaner": {
+                    "name": "ร้านเครื่องดูดฝุ่น"
+                },
+                "shop/variety_store": {
+                    "name": "ร้านขายสินค้าราคาถูก"
+                },
+                "shop/video": {
+                    "name": "ร้านวิดีโอ"
+                },
+                "shop/video_games": {
+                    "name": "ร้านวิดีโอเกมส์"
+                },
+                "shop/watches": {
+                    "name": "ร้านนาฬิกา"
+                },
+                "shop/water": {
+                    "name": "ร้านน้ำดื่ม"
+                },
+                "shop/water_sports": {
+                    "name": "ร้านกีฬาทางน้ำ/ว่ายน้ำ"
+                },
+                "shop/weapons": {
+                    "name": "ร้านอาวุธ"
+                },
+                "shop/wholesale": {
+                    "name": "ร้านขายส่ง"
+                },
+                "shop/wigs": {
+                    "name": "ร้านวิกผม",
+                    "aliases": "ร้านผมปลอม"
+                },
+                "shop/window_blind": {
+                    "name": "ร้านขายบานเกล็ดหน้าต่าง"
+                },
+                "shop/wine": {
+                    "name": "ร้านไวน์"
+                },
+                "shop/yes": {
+                    "name": "ร้าน (ไม่ระบุประเภท)"
+                },
+                "tourism/alpine_hut": {
+                    "name": "บ้านพักบนภูเขา"
+                },
+                "tourism/aquarium": {
+                    "name": "พิพิธภัณฑ์สัตว์น้ำ"
+                },
+                "tourism/artwork": {
+                    "name": "งานด้านศิลปะ"
+                },
+                "tourism/artwork/bust": {
+                    "name": "รูปสลักครึ่งตัว"
+                },
+                "tourism/artwork/graffiti": {
+                    "name": "การวาดภาพหรือเขียนบนกำแพงในที่สาธารณะ"
+                },
+                "tourism/artwork/mural": {
+                    "name": "จิตรกรรมฝาผนัง"
+                },
+                "tourism/artwork/sculpture": {
+                    "name": "ประติมากรรม"
+                },
+                "tourism/artwork/statue": {
+                    "name": "รูปปั้น"
+                },
+                "tourism/attraction": {
+                    "name": "สถานที่ท่องเที่ยว"
+                },
+                "tourism/camp_pitch": {
+                    "name": "จุดกางเต็นท์"
+                },
+                "tourism/camp_site": {
+                    "name": "ลานกางเต็นท์"
+                },
+                "tourism/caravan_site": {
+                    "name": "ลานจอดรถบ้าน"
+                },
+                "tourism/chalet": {
+                    "name": "บ้านพักตากอากาศ"
+                },
+                "tourism/gallery": {
+                    "name": "หอศิลป์"
+                },
+                "tourism/guest_house": {
+                    "name": "เกสต์เฮาส์"
+                },
+                "tourism/hostel": {
+                    "name": "โฮสเทล"
+                },
+                "tourism/hotel": {
+                    "name": "โรงแรม"
+                },
+                "tourism/information": {
+                    "name": "ประชาสัมพันธ์"
+                },
+                "tourism/information/board": {
+                    "name": "กระดานประชาสัมพันธ์"
+                },
+                "tourism/information/board/welcome_sign": {
+                    "name": "ป้ายต้อนรับ"
+                },
+                "tourism/information/guidepost": {
+                    "name": "ป้ายบอกทาง"
+                },
+                "tourism/information/map": {
+                    "name": "แผนที่"
+                },
+                "tourism/information/office": {
+                    "name": "ศูนย์ช่วยเหลือนักท่องเที่ยว"
+                },
+                "tourism/information/route_marker": {
+                    "name": "ป้ายบอกทาง"
+                },
+                "tourism/motel": {
+                    "name": "โมเต็ล"
+                },
+                "tourism/museum": {
+                    "name": "พิพิธภัณฑ์"
+                },
+                "tourism/museum/history": {
+                    "name": "พิพิธภัณฑ์ประวัติศาสตร์"
+                },
+                "tourism/picnic_site": {
+                    "name": "จุดปิกนิก"
+                },
+                "tourism/theme_park": {
+                    "name": "สวนสนุก"
+                },
+                "tourism/trail_riding_station": {
+                    "name": "สนามขี่ม้า"
+                },
+                "tourism/viewpoint": {
+                    "name": "จุดชมวิว"
+                },
+                "tourism/wilderness_hut": {
+                    "name": "กระท่อมกลางป่า"
+                },
+                "tourism/zoo": {
+                    "name": "สวนสัตว์"
+                },
+                "tourism/zoo/petting": {
+                    "name": "สวนสัตว์เลี้ยง"
+                },
+                "tourism/zoo/safari": {
+                    "name": "สวนสัตว์เปิดซาฟารีปาร์ค"
+                },
+                "tourism/zoo/wildlife": {
+                    "name": "อุทยานสัตว์ป่า"
+                },
+                "type/route/bicycle": {
+                    "name": "เส้นทางปั่นจักรยาน"
+                },
+                "type/route/bus": {
+                    "name": "เส้นทางรถประจำทาง"
+                },
+                "type/route/foot": {
+                    "name": "เส้นทางเดิน"
+                },
+                "type/waterway": {
+                    "name": "ทางน้ำ"
+                },
+                "waterway": {
+                    "name": "คุณสมบัติของทางน้ำ"
+                },
+                "waterway/canal": {
+                    "name": "คลอง"
+                },
+                "waterway/dam": {
+                    "name": "เขื่อน"
                 },
                 "waterway/drain": {
                     "name": "ลำราง/ทางระบายน้ำ"
                 },
+                "waterway/fuel": {
+                    "name": "ร้านขายเชื้อเพลิงสำหรับพานะทางน้ำ"
+                },
+                "waterway/milestone": {
+                    "name": "หลักหินบอกระยะทางน้ำ"
+                },
                 "waterway/river": {
                     "name": "แม่น้ำ"
+                },
+                "waterway/water_point": {
+                    "name": "น้ำดื่มสำหรับเรือ"
                 },
                 "waterway/waterfall": {
                     "name": "น้ำตก"

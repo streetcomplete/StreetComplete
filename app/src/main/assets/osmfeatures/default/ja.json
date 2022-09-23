@@ -124,13 +124,11 @@
                 "activity": {
                     "label": "アクティビティ",
                     "options": {
-                        "Ski": "スキー",
                         "bicycle": "サイクリング",
                         "hiking": "ハイキング",
                         "horse": "乗馬",
                         "mtb": "マウンテンバイク"
-                    },
-                    "terms": "アクティビティ,活動,体験"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "補間の種類",
@@ -2661,7 +2659,15 @@
                     "terms": "ハイキングコース,見つけやすさ,難易度"
                 },
                 "transformer": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "auxiliary": "補助変圧器",
+                        "converter": "交直変換用変圧器",
+                        "distribution": "配電用変圧器",
+                        "generator": "発電用変圧器",
+                        "main": "系統用変圧器",
+                        "phase_angle_regulator": "位相調整変圧器"
+                    }
                 },
                 "trees": {
                     "label": "樹種"
@@ -3342,8 +3348,8 @@
                     "terms": "幼稚園の敷地,保育園の敷地,保育園,幼稚園,教育,学校,育児"
                 },
                 "amenity/kneipp_water_cure": {
-                    "name": "足浴場（ヨーロッパ）",
-                    "terms": "足浴場（ヨーロッパ）,足浴,水浴,足湯"
+                    "name": "歩行プール",
+                    "terms": "歩行プール,水中ウォーキング,水治療法,足浴場,足浴,水浴,足湯"
                 },
                 "amenity/language_school": {
                     "name": "外国語教室",
@@ -3563,7 +3569,7 @@
                 },
                 "amenity/public_bath": {
                     "name": "公衆浴場",
-                    "terms": "銭湯,大衆浴場,温泉,休憩,娯楽,お風呂,風呂,レジャー"
+                    "terms": "公衆浴場,大衆浴場,銭湯,外湯,温泉,露天風呂,お風呂,風呂,休憩,娯楽,レジャー"
                 },
                 "amenity/public_bookcase": {
                     "name": "公共の本棚",
@@ -3738,7 +3744,7 @@
                 },
                 "amenity/social_facility/nursing_home": {
                     "name": "介護付き老人ホーム",
-                    "terms": "介護施設,老人ホーム,福祉"
+                    "terms": "特別養護老人ホーム,老人ホーム,介護施設,福祉"
                 },
                 "amenity/studio": {
                     "name": "スタジオ",
@@ -4744,7 +4750,7 @@
                     "name": "洗い越し"
                 },
                 "golf/bunker": {
-                    "name": "サンドトラップ",
+                    "name": "バンカー",
                     "terms": "サンドトラップ,バンカー,ゴルフ"
                 },
                 "golf/cartpath": {
@@ -4896,6 +4902,10 @@
                     "name": "横断歩道（マークあり）",
                     "terms": "横断歩道（マークあり）,横断歩道,歩道"
                 },
+                "highway/crossing/traffic_signals": {
+                    "name": "横断歩道（歩行者用信号あり）",
+                    "terms": "横断歩道,信号機,信号,歩行者信号機,歩行者用信号機"
+                },
                 "highway/crossing/unmarked": {
                     "name": "横断歩道（マークなし）",
                     "terms": "横断歩道（マークなし）,横断歩道,歩道"
@@ -4951,7 +4961,7 @@
                     "terms": "動く歩道,歩道,水平型エスカレーター,オートウォーク,ムービングウォーク,トラベレーター,ムービングサイドウォーク,オートスロープ,エスカレータ,ベルトコンベア"
                 },
                 "highway/footway/crossing": {
-                    "name": "歩行者用横断歩道"
+                    "name": "横断歩道"
                 },
                 "highway/footway/marked": {
                     "name": "横断歩道（マークあり）",
@@ -4960,6 +4970,10 @@
                 "highway/footway/sidewalk": {
                     "name": "歩道（車道の脇）",
                     "terms": "歩道（車道の脇）,歩道"
+                },
+                "highway/footway/traffic_signals": {
+                    "name": "横断歩道（歩行者用信号あり）",
+                    "terms": "横断歩道,信号機,信号,歩行者信号機,歩行者用信号機"
                 },
                 "highway/footway/unmarked": {
                     "name": "横断歩道（マークなし）",
@@ -5129,6 +5143,10 @@
                 "highway/toll_gantry": {
                     "name": "フリーフローETC",
                     "terms": "フリーフローetc,料金ガントリー,自動通行料金徴収装置,道路通行料,自動徴収"
+                },
+                "highway/track": {
+                    "name": "農道・林道（自動車通行可）",
+                    "terms": "未舗装農道,農道,未舗装林道,林道,獣道,けもの道,酷道,腐道,険道,死道,損道,道路,わだち,轍,車道,トラック,生活道路"
                 },
                 "highway/traffic_mirror": {
                     "name": "カーブミラー",
@@ -5604,6 +5622,9 @@
                     "name": "ハッカースペース",
                     "terms": "ハッカースペース,ハックラボ,ハックスペース,メーカースペース,ファブラボ,fablab"
                 },
+                "leisure/horse_riding": {
+                    "name": "乗馬施設"
+                },
                 "leisure/ice_rink": {
                     "name": "アイススケート場",
                     "terms": "アイススケート,アイススケート場,アイススケートリンク,スケートリンク,スポーツ,運動,娯楽,レジャー"
@@ -5687,6 +5708,9 @@
                 "leisure/pitch/cricket": {
                     "name": "クリケット場",
                     "terms": "クリケット場,スポーツ,運動,競技"
+                },
+                "leisure/pitch/equestrian": {
+                    "name": "乗馬場"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "フィールドホッケー場",
@@ -5814,6 +5838,9 @@
                     "name": "自転車競技場",
                     "terms": "自転車競技場,自転車,自転車トラック,自転車レース場"
                 },
+                "leisure/track/horse_racing": {
+                    "name": "競馬トラック"
+                },
                 "leisure/track/running": {
                     "name": "ランニングトラック",
                     "terms": "ランニングトラック,ランニング用周回走路,トラック,周回走路,競技トラック,スポーツ"
@@ -5831,7 +5858,7 @@
                     "terms": "線,ライン,ウェイ"
                 },
                 "man_made": {
-                    "name": "人工物関連"
+                    "name": "人工物関連の地物"
                 },
                 "man_made/adit": {
                     "name": "坑口",
@@ -6216,8 +6243,8 @@
                     "terms": "荒地,植物"
                 },
                 "natural/hot_spring": {
-                    "name": "温泉（日本国外）",
-                    "terms": "温泉（日本国外）,温泉"
+                    "name": "温泉の湧出",
+                    "terms": "自然湧出,泉源,源泉,温泉"
                 },
                 "natural/mud": {
                     "name": "泥地",
@@ -6713,6 +6740,10 @@
                     "name": "ブランコ",
                     "terms": "ブランコ,ぶらんこ,遊具"
                 },
+                "playground/trampoline": {
+                    "name": "トランポリン",
+                    "terms": "トランポリン"
+                },
                 "playground/zipwire": {
                     "name": "ジップライン",
                     "terms": "ジップライン,ロープ,アウトドア,遊具"
@@ -7170,10 +7201,6 @@
                     "name": "アニメショップ",
                     "terms": "アニメショップ,娯楽,アニメ,コスプレ,マンガ,まんが,アニメ店"
                 },
-                "shop/antiques": {
-                    "name": "古美術品店",
-                    "terms": "古美術品店,アンティークショップ,美術,アート,古美術,骨董品店"
-                },
                 "shop/appliance": {
                     "name": "白物家電販売店（大型製品）",
                     "terms": "家電販売店,家電量販店,電器屋,買い物,ショッピング,白物家電,白物,生活家電,冷蔵庫,洗濯機,電機屋"
@@ -7229,10 +7256,6 @@
                 "shop/bookmaker": {
                     "name": "公営競技投票券売り場",
                     "terms": "公営競技投票券売り場,馬券売り場,車券売り場,舟券売り場,ギャンブル,アダルト"
-                },
-                "shop/books": {
-                    "name": "本屋",
-                    "terms": "本屋,ブックストア,古書店,古書,書籍販売,書店,本"
                 },
                 "shop/boutique": {
                     "name": "ブティック"
@@ -7345,10 +7368,6 @@
                     "name": "化粧品店",
                     "terms": "化粧品,美容,コスメ"
                 },
-                "shop/country_store": {
-                    "name": "よろずや",
-                    "terms": "よろずや,万屋,店舗,お店,ショッピング,小売"
-                },
                 "shop/craft": {
                     "name": "美術・工芸用品店",
                     "terms": "アートショップ,工芸用品,画材,絵の具,美術用品,クラフト"
@@ -7360,10 +7379,6 @@
                 "shop/dairy": {
                     "name": "乳製品店",
                     "terms": "乳製品店,食品,食べ物,牛乳,チーズ,バター,食料品,店舗,お店"
-                },
-                "shop/deli": {
-                    "name": "惣菜屋",
-                    "terms": "惣菜屋,弁当屋,デリカ,食品,食べ物,おかず,豆腐,蒟蒻,食料品,店舗,お店"
                 },
                 "shop/department_store": {
                     "name": "百貨店",
@@ -7488,10 +7503,6 @@
                     "name": "金物屋",
                     "terms": "金物屋,金物店"
                 },
-                "shop/health_food": {
-                    "name": "健康食品店",
-                    "terms": "健康食品店,健康,食品,食べ物,サプリ,ビタミン,栄養剤,店舗,お店"
-                },
                 "shop/hearing_aids": {
                     "name": "補聴器店",
                     "terms": "補聴器店"
@@ -7566,7 +7577,7 @@
                 },
                 "shop/massage": {
                     "name": "マッサージ店",
-                    "terms": "マッサージ店,マッサージ,あんま,指圧,健康"
+                    "terms": "マッサージ店,マッサージ,あんま,指圧,整骨院,健康"
                 },
                 "shop/medical_supply": {
                     "name": "健康・医療器具店",
@@ -7604,10 +7615,6 @@
                     "name": "楽器店",
                     "terms": "楽器店,音楽"
                 },
-                "shop/newsagent": {
-                    "name": "新聞・雑誌店",
-                    "terms": "新聞,雑誌,マガジン,ニュース,スタンド"
-                },
                 "shop/nutrition_supplements": {
                     "name": "栄養サプリ販売店",
                     "terms": "栄養サプリメント販売店,サプリ専門店,サプリメント専門店,健康"
@@ -7635,10 +7642,6 @@
                 "shop/pastry": {
                     "name": "焼菓子（ペイストリー）店",
                     "terms": "焼菓子店,ケーキ屋,食品,パイ,ビスケット,洋菓子,ペイストリー,ペストリー,お菓子,食べ物,食料品,店舗,お店"
-                },
-                "shop/pawnbroker": {
-                    "name": "質店",
-                    "terms": "質屋,質店,お金,金融"
                 },
                 "shop/perfumery": {
                     "name": "香水店",
@@ -7695,10 +7698,6 @@
                 "shop/seafood": {
                     "name": "魚屋",
                     "terms": "海鮮食品店,魚屋,魚市場,食品,魚介,食べ物,干物,昆布,イカ,タコ,海苔,食料品,店舗,お店"
-                },
-                "shop/second_hand": {
-                    "name": "リサイクルショップ",
-                    "terms": "古物商,リユースショップ,中古,リサイクルショップ,中古屋,リサイクル,リユース"
                 },
                 "shop/sewing": {
                     "name": "手芸用品店",
@@ -7799,10 +7798,6 @@
                     "name": "掃除機店",
                     "terms": "掃除機店"
                 },
-                "shop/variety_store": {
-                    "name": "雑貨店（低価格）",
-                    "terms": "雑貨店,100円ショップ,バラエティストア,百均,日用雑貨,買い物,ショッピング,ディスカウント,100均"
-                },
                 "shop/video": {
                     "name": "ビデオソフト店",
                     "terms": "ビデオソフト店,dvd店,娯楽"
@@ -7856,6 +7851,10 @@
                 },
                 "tourism": {
                     "name": "旅行関連"
+                },
+                "tourism/alpine_hut": {
+                    "name": "山小屋",
+                    "terms": "山小屋"
                 },
                 "tourism/apartment": {
                     "name": "リゾートマンション",
@@ -8094,7 +8093,8 @@
                     "terms": "交通取締り,取締り,交通安全,交通違反取締り,レーダー,速度制限"
                 },
                 "type/multipolygon": {
-                    "name": "マルチポリゴン"
+                    "name": "マルチポリゴン",
+                    "terms": "マルチポリゴン"
                 },
                 "type/public_transport/stop_area_group": {
                     "name": "公共交通の停車エリアグループ",
@@ -8168,6 +8168,10 @@
                     "name": "ハイキングルート",
                     "terms": "ハイキングルート,ハイキングコース"
                 },
+                "type/route/horse": {
+                    "name": "乗馬ルート",
+                    "terms": "乗馬ルート"
+                },
                 "type/route/light_rail": {
                     "name": "ライトレール・ルート",
                     "terms": "ライトレール・ルート,軽便鉄道ルート"
@@ -8191,6 +8195,10 @@
                 "type/route/power": {
                     "name": "電力線ルート",
                     "terms": "電力線ルート"
+                },
+                "type/route/railway": {
+                    "name": "鉄道路線ルート",
+                    "terms": "鉄道,鉄道路線,線路,電車"
                 },
                 "type/route/road": {
                     "name": "道路ルート",

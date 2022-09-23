@@ -1247,7 +1247,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_surface_value_concrete_plates">"Placas de cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Rodeiras de cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Que diametro se especifica no letreiro desta boca de incendios?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diámetro non parece estar ben."</string>
     <string name="quest_fireHydrant_confirmation_title">"Seguro? Algunhas veces o díametro está especificado na propia boca de incendios."</string>
     <string name="quest_diet_answer_no_food">"Non ofrece comida"</string>
     <string name="short_no_answer_on_button">"Non"</string>
@@ -1270,7 +1269,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="pref_title_language_select">"Elexir idioma"</string>
     <string name="language_default">"Por defecto no sistema"</string>
     <string name="on_floor">"na planta %s"</string>
-    <string name="quest_street_parking_title">"De que xeito estacionan aquí os coches, se teñen permiso."</string>
     <string name="select_street_parking_orientation">"Elixe orientación respecto da estrada:"</string>
     <string name="select_street_parking_position">"Elixe posición:"</string>
     <string name="select_street_parking_no">"Hai algún sinal ou marcas na estrada?"</string>
