@@ -33,10 +33,10 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirection> {
         // once multiple quest markers are appearing it becomes completely unclear
         // see for example https://www.openstreetmap.org/way/437205914
         return mapData
-            .filter { tagFilter.matches(it) }
-            .filter {
-                val geometry = mapData.getGeometry(it.type, it.id) as? ElementPolylinesGeometry
-                val overlyLong = geometry?.polylines?.filter { it.measuredLength() > OsmQuest.minLengthForMultiMarkers(false) }
+            .filter { element -> tagFilter.matches(element) }
+            .filter { element ->
+                val geometry = mapData.getGeometry(element.type, element.id) as? ElementPolylinesGeometry
+                val overlyLong = geometry?.polylines?.filter { it.measuredLength() > 200 }
                 overlyLong?.size == 0
             }
     }
