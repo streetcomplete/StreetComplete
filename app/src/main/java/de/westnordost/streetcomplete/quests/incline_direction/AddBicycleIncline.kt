@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.incline_direction.InclineDirection.UP
-import de.westnordost.streetcomplete.quests.incline_direction.InclineDirection.UP_REVERSED
 import de.westnordost.streetcomplete.util.math.measuredLength
 
 class AddBicycleIncline : OsmElementQuestType<InclineDirection> {
@@ -53,10 +51,6 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirection> {
 
     override fun createForm() = AddInclineForm()
 
-    override fun applyAnswerTo(answer: InclineDirection, tags: Tags, timestampEdited: Long) {
-        tags["incline"] = when (answer) {
-            UP -> "up"
-            UP_REVERSED -> "down"
-        }
-    }
+    override fun applyAnswerTo(answer: InclineDirection, tags: Tags, timestampEdited: Long) =
+        answer.applyTo(tags)
 }
