@@ -143,21 +143,21 @@ class AddHousenumberTest {
 
     @Test fun `apply house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(HouseNumber("99b"), null),
+            AddressNumberOrName(HouseNumber("99b"), null),
             StringMapEntryAdd("addr:housenumber", "99b")
         )
     }
 
     @Test fun `apply house name answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(null, "La Escalera"),
+            AddressNumberOrName(null, "La Escalera"),
             StringMapEntryAdd("addr:housename", "La Escalera")
         )
     }
 
     @Test fun `apply conscription number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(ConscriptionNumber("I.123"), null),
+            AddressNumberOrName(ConscriptionNumber("I.123"), null),
             StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
             StringMapEntryAdd("addr:housenumber", "I.123")
         )
@@ -165,7 +165,7 @@ class AddHousenumberTest {
 
     @Test fun `apply conscription and street number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(ConscriptionNumber("I.123", "12b"), null),
+            AddressNumberOrName(ConscriptionNumber("I.123", "12b"), null),
             StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
             StringMapEntryAdd("addr:streetnumber", "12b"),
             StringMapEntryAdd("addr:housenumber", "12b")
@@ -174,7 +174,7 @@ class AddHousenumberTest {
 
     @Test fun `apply block and house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(HouseAndBlockNumber("12A", "123"), null),
+            AddressNumberOrName(HouseAndBlockNumber("12A", "123"), null),
             StringMapEntryAdd("addr:block_number", "123"),
             StringMapEntryAdd("addr:housenumber", "12A")
         )
@@ -182,7 +182,7 @@ class AddHousenumberTest {
 
     @Test fun `apply no house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(null, null),
+            AddressNumberOrName(null, null),
             StringMapEntryAdd("nohousenumber", "yes")
         )
     }
