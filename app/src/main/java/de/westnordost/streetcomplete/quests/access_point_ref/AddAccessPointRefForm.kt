@@ -17,7 +17,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() },
-        createMarkAsAssemblyPointAnswer()
+        AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) { AssemblyPointAnswer() }
     )
 
     private val ref get() = binding.refInput.nonBlankTextOrNull
@@ -40,16 +40,14 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
             .show()
     }
 
-    override fun isFormComplete() = ref != null
-
-    private fun createMarkAsAssemblyPointAnswer(): AnswerItem? {
-        return AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setView(R.layout.dialog_confirm_assembly_point)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsAssemblyPointAnswer) }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
-        }
+    private fun AssemblyPointAnswer() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setView(R.layout.dialog_confirm_assembly_point)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsAssemblyPointAnswer) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
     }
+
+    override fun isFormComplete() = ref != null
 }
