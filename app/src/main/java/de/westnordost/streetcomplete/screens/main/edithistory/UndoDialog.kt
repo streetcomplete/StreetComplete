@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
+import de.westnordost.streetcomplete.osm.isTagValueFromWellDefinedSet
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -151,7 +152,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
+               "<tt>" + change.tagString() + "</tt>"
            ) +
            "</li>"
         })
@@ -159,10 +160,22 @@ class UndoDialog(
     }
 }
 
-private val StringMapEntryChange.tagString: String get() = when (this) {
-    is StringMapEntryAdd -> "$key = $value"
-    is StringMapEntryModify -> "$key = $value"
-    is StringMapEntryDelete -> "$key = $valueBefore"
+fun StringMapEntryChange.tagString(): String {
+    val keyText = key
+    val escapedKey = Html.escapeHtml(keyText)
+    val valueText = when (this) {
+        is StringMapEntryAdd -> value
+        is StringMapEntryModify -> value
+        is StringMapEntryDelete -> valueBefore
+    }
+    val escapedValue = Html.escapeHtml(valueText)
+    val shownKey = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
+    val shownValue = if (isTagValueFromWellDefinedSet(keyText, valueText)) {
+            escapedValue
+        } else {
+            "<a href=\"https://wiki.openstreetmap.org/wiki/Tag:$escapedKey=$escapedValue\">$escapedValue</a>"
+        }
+    return "$shownKey = $shownValue"
 }
 
 private val StringMapEntryChange.titleResId: Int get() = when (this) {
