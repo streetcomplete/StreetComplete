@@ -1554,5 +1554,5 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="quest_accessPointRef_title">What’s the identification number here?</string>
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
-    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Emergency Assembly Point is where people assemble in case of an emergency. Mostly it’s signed like this:</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Emergency Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 </resources>
