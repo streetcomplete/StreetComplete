@@ -7,7 +7,7 @@ package de.westnordost.streetcomplete.overlays
  *  - Blue-yellow color blindness (but not as good): Tritan (~0.01% of population)
  *
  *   See the palette here (update link if colors are updated!):
- *   https://davidmathlogic.com/colorblind/#%23444444-%23D00055-%231887E8-%2326B0F1-%2337DAF5-%2306CCC0-%2305A980-%23FD7E15-%23F7C204-%23B9F522
+ *   https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28
  *
  *   The palette is loosely based on Color Universal Design (CUD) by Masataka Okabe and Kei Ito's
  *   color palette (https://jfly.uni-koeln.de/color/), compare:
@@ -25,19 +25,20 @@ object Color {
     // colors with reserved meanings
     const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"
     const val BLACK = "#444444" // "no" / "does not exist"
-    const val CRIMSON = "#D00055" // "not mapped" / "incomplete/invalid"
+    private const val RED = "#FF0000" // reserved
+    const val DATA_REQUESTED = RED // "not mapped" / "incomplete/invalid" / "data missing" / "outdated"
 
     // blue
-    const val BLUE = "#007EEC"
-    const val SKY = "#29AFEF"
-    const val CYAN = "#37DAF5"
+    const val BLUE = "#1A87E6"
+    const val SKY = "#2FACE8"
+    const val CYAN = "#30D4EE"
     // green-ish
-    const val AQUAMARINE = "#03C3B8"
-    const val TEAL = "#029E77"
+    const val AQUAMARINE = "#10C1B8"
+    const val TEAL = "#0DA082"
     // orange-yellow
-    const val ORANGE = "#FB892C"
-    const val GOLD = "#F7C204"
-    const val LIME = "#B9F522"
+    const val ORANGE = "#F37D1E"
+    const val GOLD = "#EEBD0D"
+    const val LIME = "#B6EF28"
 
     // note that AQUAMARINE and TEAL look like SKY and BLUE for Blue-yellow color blind people
     // (~0.01% of population)

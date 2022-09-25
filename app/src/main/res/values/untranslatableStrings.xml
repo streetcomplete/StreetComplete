@@ -3,7 +3,9 @@
     <string name="app_name" translatable="false">Street­Complete</string>
 
     <string name="label_location_name">%1$s: %2$s</string>
+    <string name="label_housenumber_location_name">%1$s - %2$s: %3$s</string>
     <string name="label_location_name_feature">%1$s: %2$s (%3$s)</string>
+    <string name="label_housenumber_location_name_feature">%1$s - %2$s: %3$s (%4$s)</string>
     <string name="label_name_feature">%1$s (%2$s)</string>
 
     <!-- Placeholders: e.g. "it - Italian" -->

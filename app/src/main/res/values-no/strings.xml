@@ -693,11 +693,11 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen blir normalt ikke vist da du vanligvis må gå inn på stedet for å kunne svare på spørsmålet."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
@@ -1896,7 +1896,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_surface_value_concrete_plates">"Betongelementer"</string>
     <string name="quest_surface_value_concrete_lanes">"Spor med betongplater"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er dokumentert på selve brannhydranten?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den oppgitte diameteren virker ikke å være rett."</string>
     <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Som oftest kan diameter-informasjon være beskrevet på selve brannhydranten."</string>
     <string name="quest_diet_answer_no_food">"Ingen servering"</string>
     <string name="short_no_answer_on_button">"Nei"</string>
@@ -1923,7 +1922,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
     <!-- Could you please give examples of what %s could be? -->
     <string name="on_floor">"i etasje %s"</string>
-    <string name="quest_street_parking_title">"På hvilken måte kan biler parkere her?"</string>
     <string name="select_street_parking_orientation">"Velg orientering i forhold til veien:"</string>
     <string name="select_street_parking_position">"Velg posisjon:"</string>
     <string name="select_street_parking_no">"Skilt eller oppmerking her?"</string>
@@ -2162,9 +2160,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Hvor godt kjenner du nabolaget ditt? Test dine kunnskaper ved å lokalisere veiene."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Se hvordan OSM så ut i starten, sammenlignet med hvordan det ser ut nå!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Enkelt se, filtrere og kommentere merknader laget av deg selv og andre. Mange merknader kan løses ved å legge inn den oppgitte informasjonen i kartet med iD eller JOSM"</string>
 
     <!-- Quests
@@ -2245,4 +2240,16 @@ sorted alphabetically by title -->
 
     <!-- Could you please explain the context and maybe give an example? -->
     <string name="quest_entrance_reference_flat_range_to">"til"</string>
+    <string name="quest_camp_drinking_water_title">"Er drikkevann fritt tilgjengelig for campere her?"</string>
+    <string name="quest_camp_shower_title">"Er det dusjer her?"</string>
+    <string name="quest_camp_power_supply_title">"Er det mulig for kunder å lade telefon, laptop ol. her?"</string>
+    <string name="quest_camp_type_title">"Hvem kan campe her?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Både telt og bobiler, campingvogner, …"</string>
+    <string name="quest_camp_type_caravans_only">"Kun bobiler, campingvogner, …"</string>
+    <string name="quest_camp_type_tents_only">"Kun telt"</string>
+    <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
+    <string name="quest_recycling_type_pet">"Kun PET"</string>
+    <string name="street_parking_street_width">"Gatebredde: %s"</string>
+    <string name="overlay_street_parking">"Gateparkering"</string>
 </resources>

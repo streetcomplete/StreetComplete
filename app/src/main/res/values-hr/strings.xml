@@ -1385,7 +1385,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Koji je promjer označen na ovom vatrogasnom hidrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Toliki promjer izgleda nerealno."</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_confirmation_title">"Jeste li sigurni? Ponekad je promjer označen i na samom hidrantu."</string>
@@ -1432,7 +1431,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="pref_title_language_select">"Odaberite jezik"</string>
     <string name="language_default">"Isti kao i sustav"</string>
     <string name="on_floor">"na katu %s"</string>
-    <string name="quest_street_parking_title">"Kako automobili mogu parkirati ovdje, ako uopće mogu?"</string>
     <string name="select_street_parking_orientation">"Odaberite orijentaciju u odnosu na cestu:"</string>
     <string name="select_street_parking_position">"Odaberite poziciju parkinga:"</string>
     <string name="select_street_parking_no">"Ima li ovdje prometnih znakova ili oznaka na cesti?"</string>
@@ -1756,9 +1754,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Koliko dobro poznajete svoj okoliš? Provjerite svoje znanje pronalazeći ulice."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Istražite kako je OSM izgledao u ranim danima u odnosu na to kako izgleda sada!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Jednostavno pregledajte, filtrirajte i komentirajte bilješke koje ste stvorili vi i drugi. Mnoge bilješke se mogu riješiti stavljanjem informacija sadržanih u njima na kartu koristeći iD ili JOSM"</string>
 
     <!-- Quests
@@ -1897,4 +1892,6 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Toliki promjer izgleda nerealno; obično je između %1$d i %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ovaj se odgovor ne podudara s onim što je već uneseno o ovoj cesti. Jeste li sigurni da rješavate ispravnu cestu? Jeste li sigurni da ste osobno izmjerili po cijeloj dužini, kao što je uvijek potrebno?"</string>
     <string name="quest_recycling_type_pet">"Samo PET"</string>
+    <string name="street_parking_street_width">"Širina ulice: %s"</string>
+    <string name="overlay_street_parking">"Ulični parking"</string>
 </resources>

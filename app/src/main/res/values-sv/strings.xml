@@ -407,10 +407,10 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_carWashType_service">"Anställda tvättar bilen"</string>
     <string name="enable_quest_confirmation_title">"Aktivera det här uppdraget?"</string>
     <string name="default_disabled_msg_go_inside">"Uppdragstypen är inaktiverad som standard eftersom du troligtvis behöver gå inomhus för att kunna besvara den."</string>
-    <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskriptions-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Även cykelbana på andra sidan…"</string>
@@ -1252,7 +1252,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_surface_value_concrete_plates">"Betongplattor"</string>
     <string name="quest_surface_value_concrete_lanes">"Betongkörspår"</string>
     <string name="quest_fireHydrant_diameter_title">"Vilken diameter står angiven för denna brandpost?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den diametern verkar osannolik."</string>
     <string name="quest_fireHydrant_confirmation_title">"Är du säker? Ibland kan diametern stå angiven på själva brandposten."</string>
 
     <!-- Fuzzy -->
@@ -1279,7 +1278,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="pref_title_language_select">"Välj språk"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"på våning %s:"</string>
-    <string name="quest_street_parking_title">"Hur kan bilar parkera här, om alls?"</string>
     <string name="select_street_parking_orientation">"Välj orientering mot väg:"</string>
     <string name="select_street_parking_position">"Välj position:"</string>
     <string name="select_street_parking_no">"Någon skylt eller vägmarkering här?"</string>
@@ -1517,9 +1515,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Hur väl känner du till ditt område? Testa din kunskap genom att hitta gator."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Utforska hur OSM såg ut i början jämfört med nu!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Se, filtrera eller kommentera på ett bekvämt sätt på anteckningar som du eller andra har skapat. Många anteckningar kan lösas genom att med iD eller JOSM kartlägga det som beskrivs"</string>
 
     <!-- Quests
@@ -1628,4 +1623,6 @@ sorted alphabetically by title -->
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ditt svar skiljer sig från vad som redan är kartlagt. Är du säker på att ditt svar är för just denna väg? Har du själv gått hela längs hela vägen och säkerställt att det du skriver in stämmer?"</string>
     <string name="quest_recycling_type_pet">"Endast PET"</string>
+    <string name="street_parking_street_width">"Gatubredd: %s"</string>
+    <string name="overlay_street_parking">"Gatuparkering"</string>
 </resources>

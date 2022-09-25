@@ -124,7 +124,6 @@
                 "activity": {
                     "label": "Activitat",
                     "options": {
-                        "Ski": "Esquí",
                         "bicycle": "Ciclisme",
                         "hiking": "Senderisme",
                         "horse": "Equitació",
@@ -4158,9 +4157,6 @@
                     "name": "Línia",
                     "terms": "línia"
                 },
-                "man_made": {
-                    "name": "Objecte fet per l'home"
-                },
                 "man_made/adit": {
                     "name": "Entrada"
                 },
@@ -4906,9 +4902,6 @@
                 "shop/anime": {
                     "name": "Botiga de manga / anime"
                 },
-                "shop/antiques": {
-                    "name": "Botiga d'antiguitats"
-                },
                 "shop/art": {
                     "name": "Botiga d'art"
                 },
@@ -4950,9 +4943,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Casa d'apostes"
-                },
-                "shop/books": {
-                    "name": "Llibreria"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -5032,9 +5022,6 @@
                 },
                 "shop/dairy": {
                     "name": "Botiga de productes làctics"
-                },
-                "shop/deli": {
-                    "name": "Botiga de comestibles"
                 },
                 "shop/department_store": {
                     "name": "Grans magatzems"
@@ -5193,9 +5180,6 @@
                 "shop/musical_instrument": {
                     "name": "Botiga d'instruments musicals"
                 },
-                "shop/newsagent": {
-                    "name": "Botiga de diaris i revistes"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Botiga de suplements nutricionals"
                 },
@@ -5210,9 +5194,6 @@
                 },
                 "shop/pastry": {
                     "name": "Pastisseria"
-                },
-                "shop/pawnbroker": {
-                    "name": "Botiga d'empenyoraments"
                 },
                 "shop/perfumery": {
                     "name": "Botiga de perfums",
@@ -5244,9 +5225,6 @@
                 },
                 "shop/seafood": {
                     "name": "Marisqueria"
-                },
-                "shop/second_hand": {
-                    "name": "Consigna"
                 },
                 "shop/sewing": {
                     "name": "Merceria"
@@ -5317,10 +5295,6 @@
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Botiga d'aspiradors"
-                },
-                "shop/variety_store": {
-                    "name": "Botiga de tot a 100",
-                    "terms": "basar"
                 },
                 "shop/video": {
                     "name": "Botiga de vídeos",

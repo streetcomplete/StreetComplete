@@ -68,5 +68,5 @@ private val Sidewalk?.style get() = StrokeStyle(when (this) {
     Sidewalk.YES           -> Color.SKY
     Sidewalk.NO            -> Color.BLACK
     Sidewalk.SEPARATE      -> Color.INVISIBLE
-    Sidewalk.INVALID, null -> Color.CRIMSON
+    Sidewalk.INVALID, null -> Color.DATA_REQUESTED
 })

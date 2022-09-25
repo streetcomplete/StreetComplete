@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.testutils.way
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.doThrow
+import org.mockito.Mockito.verify
 
 class ElementEditUploaderTest {
 
@@ -38,7 +38,7 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(12)).thenReturn(null)
         on(mapDataController.getNode(12)).thenReturn(node(12))
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
-        uploader.upload(edit(element = node(12)), mock())
+        uploader.upload(edit(element = node(12)), { mock() })
     }
 
     @Test(expected = ConflictException::class)
@@ -46,7 +46,7 @@ class ElementEditUploaderTest {
         on(mapDataApi.getWay(12)).thenReturn(null)
         on(mapDataController.getWay(12)).thenReturn(way(12))
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
-        uploader.upload(edit(element = way(12)), mock())
+        uploader.upload(edit(element = way(12)), { mock() })
     }
 
     @Test(expected = ConflictException::class)
@@ -54,14 +54,14 @@ class ElementEditUploaderTest {
         on(mapDataApi.getRelation(12)).thenReturn(null)
         on(mapDataApi.getRelation(12)).thenReturn(rel(12))
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
-        uploader.upload(edit(element = rel(12)), mock())
+        uploader.upload(edit(element = rel(12)), { mock() })
     }
 
     @Test
     fun `doesn't download element if no exception`() {
         on(mapDataApi.getNode(12)).thenThrow(NullPointerException()) // ConflictException is handled!
         on(mapDataController.getNode(12)).thenReturn(node(12))
-        uploader.upload(edit(element = node(12)), mock())
+        uploader.upload(edit(element = node(12)), { mock() })
     }
 
     @Test
@@ -69,7 +69,7 @@ class ElementEditUploaderTest {
         on(mapDataApi.getNode(12)).thenReturn(node(12))
         on(mapDataController.getNode(12)).thenReturn(node(12))
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException()).thenReturn(null)
-        uploader.upload(edit(element = node(12)), mock())
+        uploader.upload(edit(element = node(12)), { mock() })
         verify(mapDataController).getNode(12)
         verify(mapDataApi).getNode(12)
     }
@@ -85,7 +85,7 @@ class ElementEditUploaderTest {
             .thenThrow(ConflictException())
             .thenThrow(ConflictException())
 
-        uploader.upload(edit(element = node(1)), mock())
+        uploader.upload(edit(element = node(1)), { mock() })
     }
 
     @Test fun `handles changeset conflict exception`() {
@@ -97,6 +97,6 @@ class ElementEditUploaderTest {
         doThrow(ConflictException()).doAnswer { MapDataUpdates() }
             .on(mapDataApi).uploadChanges(anyLong(), any(), any())
 
-        uploader.upload(edit(element = node(1)), mock())
+        uploader.upload(edit(element = node(1)), { mock() })
     }
 }
