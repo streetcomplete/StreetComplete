@@ -17,7 +17,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() },
-        AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) { AssemblyPointAnswer() }
+        AnswerItem(R.string.quest_accessPointRef_answer_assembly_point) { confirmAssemblyPoint() }
     )
 
     private val ref get() = binding.refInput.nonBlankTextOrNull
@@ -40,7 +40,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
             .show()
     }
 
-    private fun AssemblyPointAnswer() {
+    private fun confirmAssemblyPoint() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
             .setView(R.layout.dialog_confirm_assembly_point)
