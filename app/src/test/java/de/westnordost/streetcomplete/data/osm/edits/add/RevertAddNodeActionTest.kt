@@ -47,4 +47,12 @@ class RevertAddNodeActionTest {
             node, node.copy(position = p(1.0, 1.0)), repos, provider
         )
     }
+
+    @Test(expected = ConflictException::class)
+    fun `tags changed on element creates conflict`() {
+        val node = node()
+        RevertAddNodeAction.createUpdates(
+            node, node.copy(tags = mapOf("something" to "else")), repos, provider
+        )
+    }
 }
