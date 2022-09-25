@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.edits.add.AddNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.add.RevertAddNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -80,6 +82,22 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_SplitWayEdit() {
         val edit = splitWay()
+        dao.add(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_AddNodeEdit() {
+        val edit = addNode()
+        dao.add(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_RevertAddNodeEdit() {
+        val edit = revertAddNode()
         dao.add(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -319,7 +337,33 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     )
 )
 
-private val p = LatLon(0.0, 0.0)
+private fun addNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    node.type,
+    node.id,
+    node,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    AddNodeAction(p, mapOf("shop" to "supermarket"))
+)
+
+private fun revertAddNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    node.type,
+    node.id,
+    node,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    RevertAddNodeAction
+)
+
+private val p = LatLon(56.7, 89.10)
 private val node = Node(1, p)
 private val geom = ElementPointGeometry(p)
 

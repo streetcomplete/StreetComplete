@@ -18,7 +18,7 @@ data class ElementEdit(
     /** element type this edit refers to */
     val elementType: ElementType,
     /** element id this edit refers to. Unlike element.id, this field may change when the OSM API
-     *  returns element ID updates */
+     *  returns element ID updates. Use 0 for newly created elements */
     val elementId: Long,
     /** original element this edit was made on */
     val originalElement: Element,
