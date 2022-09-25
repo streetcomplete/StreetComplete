@@ -81,6 +81,7 @@ android {
         )
         abortOnError = false
     }
+    namespace = "de.westnordost.streetcomplete"
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
