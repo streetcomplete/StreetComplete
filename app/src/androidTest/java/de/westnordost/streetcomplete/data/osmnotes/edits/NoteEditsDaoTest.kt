@@ -272,8 +272,8 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
 
         dao.replaceTextInUnsynced("123", "456")
 
-        assertEquals("test456 jo mama", dao.get(1L))
-        assertEquals("test123 jo mama", dao.get(2L))
+        assertEquals("test456 jo mama", dao.get(1L)?.text)
+        assertEquals("test123 jo mama", dao.get(2L)?.text)
     }
 }
 
