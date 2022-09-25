@@ -14,6 +14,8 @@ interface Overlay : ElementEditType {
     /** scene updates that should be applied to the map when this overlay is active */
     val sceneUpdates: List<Pair<String, String>>? get() = null
 
+    val isCreateNodeEnabled: Boolean get() = false
+
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>>
 

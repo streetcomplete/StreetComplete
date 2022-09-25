@@ -20,6 +20,7 @@ class AddressOverlay : Overlay {
     override val wikiLink: String = "Key:addr"
     override val achievements = listOf(POSTMAN)
     override val hidesQuestTypes = setOf(AddHousenumber::class.simpleName!!)
+    override val isCreateNodeEnabled = true
 
     override val sceneUpdates = listOf(
         "layers.housenumber-labels.enabled" to "false",
