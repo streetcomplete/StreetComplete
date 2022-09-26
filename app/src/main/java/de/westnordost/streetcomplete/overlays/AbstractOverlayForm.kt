@@ -96,7 +96,7 @@ abstract class AbstractOverlayForm :
     protected lateinit var geometry: ElementGeometry private set
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    override val elementKey: ElementKey get() = ElementKey(element.type, element.id)
+    override val elementKey: ElementKey? get() = element?.let { ElementKey(it.type, it.id) }
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null

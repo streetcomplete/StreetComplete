@@ -548,13 +548,13 @@ class MainFragment :
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         val f = bottomSheetFragment
-        if (f is IsShowingElement) {
-            viewLifecycleScope.launch {
-                val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(f.elementKey.type, f.elementKey.id) }
-                // open element does not exist anymore after download
-                if (openElement == null) {
-                    closeBottomSheet()
-                }
+        if (f !is IsShowingElement) return
+        val elementKey = f.elementKey ?: return
+        viewLifecycleScope.launch {
+            val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
+            // open element does not exist anymore after download
+            if (openElement == null) {
+                closeBottomSheet()
             }
         }
     }
@@ -931,8 +931,11 @@ class MainFragment :
         mapFragment.hideNonHighlightedPins()
     }
 
-    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean =
-        (bottomSheetFragment as? IsShowingElement)?.elementKey == elementKey
+    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean {
+        val f = bottomSheetFragment
+        if (f !is IsShowingElement) return false
+        return f.elementKey == elementKey
+    }
 
     private suspend fun showQuestDetails(questKey: QuestKey) {
         val quest = visibleQuestsSource.get(questKey)
