@@ -53,10 +53,10 @@ class AddressOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        addressNumber = createAddressNumber(element.tags)
-        houseName = element.tags["addr:housename"]
-        val placeName = element.tags["addr:place"]
-        val streetName = element.tags["addr:street"]
+        addressNumber = element?.tags?.let { createAddressNumber(it) }
+        houseName = element?.tags?.get("addr:housename")
+        val placeName = element?.tags?.get("addr:place")
+        val streetName = element?.tags?.get("addr:street")
         streetOrPlaceName = streetName?.let { StreetName(it) } ?: placeName?.let { PlaceName(it) }
 
         isShowingPlaceName = savedInstanceState?.getBoolean(SHOW_PLACE_NAME) ?: (placeName != null)
@@ -66,10 +66,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitleHintLabel(getNameAndLocationLabelString(
-            element.tags, resources, featureDictionary,
-            showHouseNumber = ShowHouseNumber.NEVER
-        ))
+        val tags = element?.tags
+        if (tags != null) {
+            setTitleHintLabel(getNameAndLocationLabelString(
+                tags, resources, featureDictionary,
+                showHouseNumber = ShowHouseNumber.NEVER
+            ))
+        }
 
         val streetOrPlaceBinding = binding.streetOrPlaceNameContainer
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(
@@ -153,11 +156,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also { tags ->
-            number?.applyTo(tags)
-            houseName?.let { tags["addr:housename"] = it }
-            streetOrPlaceName?.applyTo(tags)
-        }.create()))
+        val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
+
+        number?.applyTo(tagChanges)
+        houseName?.let { tagChanges["addr:housename"] = it }
+        streetOrPlaceName?.applyTo(tagChanges)
+
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     /* ------------------------------ Show house name / place name ------------------------------ */

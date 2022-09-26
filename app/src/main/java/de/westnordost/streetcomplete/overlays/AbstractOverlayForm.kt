@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
@@ -92,7 +93,8 @@ abstract class AbstractOverlayForm :
 
     // passed in parameters
     protected lateinit var overlay: Overlay private set
-    protected lateinit var element: Element private set
+    protected var element: Element? = null
+        private set
     protected lateinit var geometry: ElementGeometry private set
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
@@ -125,7 +127,7 @@ abstract class AbstractOverlayForm :
 
         val args = requireArguments()
         overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!!
-        element = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
+        element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
@@ -152,7 +154,10 @@ abstract class AbstractOverlayForm :
             cornerRadius, margin, margin, margin, margin
         )
 
-        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
+        val tags = element?.tags
+        if (tags != null) {
+            setTitleHintLabel(getNameAndLocationLabelString(tags, resources, featureDictionary))
+        }
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
@@ -299,21 +304,24 @@ abstract class AbstractOverlayForm :
     private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
-        answers.add(AnswerItem(R.string.leave_note) { composeNote() })
+        val element = element
+        if (element != null) {
+            answers.add(AnswerItem(R.string.leave_note) { composeNote(element) })
 
-        if (element.isSplittable()) {
-            answers.add(AnswerItem(R.string.split_way) { splitWay() })
+            if (element.isSplittable()) {
+                answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
+            }
         }
 
         answers.addAll(otherAnswers)
         return answers
     }
 
-    protected fun splitWay() {
+    protected fun splitWay(element: Element) {
         listener?.onSplitWay(overlay, element as Way, geometry as ElementPolylinesGeometry)
     }
 
-    protected fun composeNote() {
+    protected fun composeNote(element: Element) {
         val overlayTitle = requireContext().getString(overlay.title)
         val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
@@ -327,6 +335,10 @@ abstract class AbstractOverlayForm :
             setLocked(false)
             return
         }
+
+        // use dummy element if element is null
+        val element = element ?: Node(0, geometry.center)
+
         withContext(Dispatchers.IO) {
             addElementEditsController.add(overlay, element, geometry, "survey", action)
         }
@@ -344,8 +356,8 @@ abstract class AbstractOverlayForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(overlay: Overlay, element: Element, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
-            ARG_ELEMENT to Json.encodeToString(element),
+        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
+            ARG_ELEMENT to element?.let { Json.encodeToString(it) },
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_OVERLAY to overlay.name,
             ARG_MAP_ROTATION to rotation,
