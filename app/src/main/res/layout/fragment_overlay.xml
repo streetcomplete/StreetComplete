@@ -10,6 +10,10 @@
     android:id="@+id/bottomSheetContainer"
     tools:ignore="RtlHardcoded">
 
+    <include
+        android:id="@+id/markerCreateLayout"
+        layout="@layout/marker_create_note"/>
+
     <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
         android:id="@+id/titleHintLabelContainer"
         android:layout_width="wrap_content"

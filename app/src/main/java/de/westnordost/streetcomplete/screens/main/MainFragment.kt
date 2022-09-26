@@ -221,6 +221,8 @@ class MainFragment :
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
+        binding.addButton.isGone = selectedOverlaySource.selectedOverlay == null
+
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
@@ -694,6 +696,7 @@ class MainFragment :
     }
 
     private fun onClickAddButton() {
+        showOverlayFormForNewElement()
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
@@ -898,6 +901,24 @@ class MainFragment :
 
     //region Bottom sheets
 
+    @UiThread
+    private fun showOverlayFormForNewElement() {
+        val overlay = selectedOverlaySource.selectedOverlay ?: return
+        val mapFragment = mapFragment ?: return
+
+        val f = overlay.createForm(null) ?: return
+        if (f.arguments == null) f.arguments = bundleOf()
+        val camera = mapFragment.cameraPosition
+        val rotation = camera?.rotation ?: 0f
+        val tilt = camera?.tilt ?: 0f
+        val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation, tilt)
+        f.requireArguments().putAll(args)
+
+        showInBottomSheet(f)
+        mapFragment.hideNonHighlightedPins()
+    }
+
+    @UiThread
     private suspend fun showElementDetails(elementKey: ElementKey) {
         if (isElementCurrentlyDisplayed(elementKey)) return
         val overlay = selectedOverlaySource.selectedOverlay ?: return

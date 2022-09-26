@@ -6,6 +6,7 @@ import android.widget.EditText
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -73,6 +74,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
                 showHouseNumber = ShowHouseNumber.NEVER
             ))
         }
+        setMarkerIcon(R.drawable.ic_quest_housenumber)
 
         val streetOrPlaceBinding = binding.streetOrPlaceNameContainer
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(
@@ -162,7 +164,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
         houseName?.let { tagChanges["addr:housename"] = it }
         streetOrPlaceName?.applyTo(tagChanges)
 
-        applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        if (element != null) {
+            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        } else {
+            applyEdit(CreateNodeAction(geometry.center, tagChanges))
+        }
     }
 
     /* ------------------------------ Show house name / place name ------------------------------ */
