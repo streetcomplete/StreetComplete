@@ -184,6 +184,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="hid_action_description">You hid it</string>
     <string name="split_way_action_description">You split the way</string>
     <string name="deleted_poi_action_description">You deleted it</string>
+    <string name="create_node_action_description">You created a node at %s with …</string>
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>

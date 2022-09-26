@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -26,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
@@ -34,6 +36,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -113,8 +116,9 @@ class UndoDialog(
         is ElementEdit -> {
             when (action) {
                 is UpdateElementTagsAction -> createListOfTagUpdates(action.changes.changes)
-                is DeletePoiNodeAction -> createTextView(ResText(R.string.deleted_poi_action_description))
-                is SplitWayAction -> createTextView(ResText(R.string.split_way_action_description))
+                is DeletePoiNodeAction ->     createTextView(ResText(R.string.deleted_poi_action_description))
+                is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
+                is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
                 else -> throw IllegalArgumentException()
             }
         }
@@ -155,6 +159,21 @@ class UndoDialog(
            ) +
            "</li>"
         })
+        return txt
+    }
+
+    private fun createCreateNodeDescriptionView(position: LatLon, tags: Map<String, String>): TextView {
+        val txt = TextView(context)
+        txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+
+        val posString = position.latitude.format(7) + ", " + position.longitude.format(7)
+
+        txt.setHtml(
+            context.resources.getString(R.string.create_node_action_description, posString) +
+            tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
+                "<li><tt>" + Html.escapeHtml("$key = $value") + "</tt></li>"
+            }
+        )
         return txt
     }
 }
