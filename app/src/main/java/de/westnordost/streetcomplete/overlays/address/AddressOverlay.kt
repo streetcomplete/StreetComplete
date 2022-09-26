@@ -40,5 +40,5 @@ class AddressOverlay : Overlay {
             it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
         }
 
-    override fun createForm(element: Element) = AddressOverlayForm()
+    override fun createForm(element: Element?) = AddressOverlayForm()
 }
