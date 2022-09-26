@@ -133,6 +133,8 @@ import kotlin.random.Random
  *  class implements all the listeners of its child fragments.
  *
  *  This class does not contain so much logic itself, it delegates most of it to its children.
+ *  Think of it as the wiring that binds all the components together.
+ *
  *  Still, as this is by far the largest in terms of lines of code. For easier reading, in
  *  IntelliJ, you can collapse sections of this class that start with "//region" using the little
  *  [-] icon next to it.
@@ -156,6 +158,7 @@ class MainFragment :
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
+    SelectedOverlaySource.Listener,
     // rest
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
@@ -225,6 +228,7 @@ class MainFragment :
         binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
+        binding.addButton.setOnClickListener { onClickAddButton() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateOffsetWithOpenBottomSheet()
@@ -248,6 +252,7 @@ class MainFragment :
         super.onStart()
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
+        selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
     }
@@ -276,6 +281,7 @@ class MainFragment :
         visibleQuestsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         mapDataWithEditsSource.removeListener(this)
+        selectedOverlaySource.removeListener(this)
         locationManager.removeUpdates()
     }
 
@@ -499,6 +505,12 @@ class MainFragment :
 
     //region Data Updates - Callbacks for when data changed in the local database
 
+    /* ------------------------------ SelectedOverlaySource.Listener -----------------------------*/
+
+    override fun onSelectedOverlayChanged() {
+        binding.addButton.isGone = selectedOverlaySource.selectedOverlay == null
+    }
+
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
     @AnyThread
@@ -679,6 +691,9 @@ class MainFragment :
                 setIsNavigationMode(!mapFragment.isNavigationMode)
             }
         }
+    }
+
+    private fun onClickAddButton() {
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {

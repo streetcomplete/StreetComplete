@@ -148,6 +148,19 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/addButton"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/ic_add_48dp"
+            android:padding="20dp" />
+
         <View
             android:id="@+id/contextMenuView"
             android:layout_width="0dp"
