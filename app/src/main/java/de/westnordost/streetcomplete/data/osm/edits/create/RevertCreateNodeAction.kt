@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.edits.add
+package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
  *  If the node has been touched at all in the meantime (node moved or tags changed), there'll be
  *  a conflict. */
 @Serializable
-object RevertAddNodeAction : ElementEditAction, IsRevertAction {
+object RevertCreateNodeAction : ElementEditAction, IsRevertAction {
 
     override fun createUpdates(
         originalElement: Element,

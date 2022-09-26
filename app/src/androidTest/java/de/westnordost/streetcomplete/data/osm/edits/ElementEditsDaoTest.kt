@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.edits.add.AddNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.add.RevertAddNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -347,7 +347,7 @@ private fun addNode(timestamp: Long = 123L, isSynced: Boolean = false) = Element
     "survey",
     timestamp,
     isSynced,
-    AddNodeAction(p, mapOf("shop" to "supermarket"))
+    CreateNodeAction(p, mapOf("shop" to "supermarket"))
 )
 
 private fun revertAddNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -360,7 +360,7 @@ private fun revertAddNode(timestamp: Long = 123L, isSynced: Boolean = false) = E
     "survey",
     timestamp,
     isSynced,
-    RevertAddNodeAction
+    RevertCreateNodeAction
 )
 
 private val p = LatLon(56.7, 89.10)

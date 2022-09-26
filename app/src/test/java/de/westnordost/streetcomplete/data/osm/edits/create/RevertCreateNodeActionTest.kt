@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.edits.add
+package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -13,7 +13,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class RevertAddNodeActionTest {
+class RevertCreateNodeActionTest {
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
@@ -26,7 +26,7 @@ class RevertAddNodeActionTest {
     @Test
     fun `revert add node`() {
         val node = node(123, LatLon(12.0, 34.0), mapOf("amenity" to "atm"), 1)
-        val data = RevertAddNodeAction.createUpdates(node, node, repos, provider)
+        val data = RevertCreateNodeAction.createUpdates(node, node, repos, provider)
 
         assertTrue(data.creations.isEmpty())
         assertTrue(data.modifications.isEmpty())
@@ -37,13 +37,13 @@ class RevertAddNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict revert add node when already deleted`() {
-        RevertAddNodeAction.createUpdates(node(), null, repos, provider)
+        RevertCreateNodeAction.createUpdates(node(), null, repos, provider)
     }
 
     @Test(expected = ConflictException::class)
     fun `moved element creates conflict`() {
         val node = node()
-        RevertAddNodeAction.createUpdates(
+        RevertCreateNodeAction.createUpdates(
             node, node.copy(position = p(1.0, 1.0)), repos, provider
         )
     }
@@ -51,7 +51,7 @@ class RevertAddNodeActionTest {
     @Test(expected = ConflictException::class)
     fun `tags changed on element creates conflict`() {
         val node = node()
-        RevertAddNodeAction.createUpdates(
+        RevertCreateNodeAction.createUpdates(
             node, node.copy(tags = mapOf("something" to "else")), repos, provider
         )
     }

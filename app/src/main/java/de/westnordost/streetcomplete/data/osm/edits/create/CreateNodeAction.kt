@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.edits.add
+package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
@@ -14,7 +14,7 @@ import java.time.Instant
 
 /** Action that creates a (free-floating) node. */
 @Serializable
-data class AddNodeAction(
+data class CreateNodeAction(
     val position: LatLon,
     val tags: Map<String, String>
 ) : ElementEditAction, IsActionRevertable {
@@ -31,5 +31,5 @@ data class AddNodeAction(
         return MapDataChanges(creations = listOf(node))
     }
 
-    override fun createReverted(): ElementEditAction = RevertAddNodeAction
+    override fun createReverted(): ElementEditAction = RevertCreateNodeAction
 }

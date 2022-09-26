@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.edits.add
+package de.westnordost.streetcomplete.data.osm.edits.create
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -13,7 +13,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-internal class AddNodeActionTest {
+internal class CreateNodeActionTest {
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
@@ -28,7 +28,7 @@ internal class AddNodeActionTest {
         val tags = mapOf("amenity" to "atm")
         val position = LatLon(12.0, 34.0)
         val dummyNode = node(0, position, tags, 1)
-        val action = AddNodeAction(position, tags)
+        val action = CreateNodeAction(position, tags)
 
         val data = action.createUpdates(dummyNode, null, repos, provider)
 

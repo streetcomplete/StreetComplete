@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.LO
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.NAME
-import de.westnordost.streetcomplete.data.osm.edits.add.AddNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.add.RevertAddNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
@@ -46,8 +46,8 @@ class ElementEditsDao(
                 subclass(SplitWayAction::class)
                 subclass(DeletePoiNodeAction::class)
                 subclass(RevertDeletePoiNodeAction::class)
-                subclass(AddNodeAction::class)
-                subclass(RevertAddNodeAction::class)
+                subclass(CreateNodeAction::class)
+                subclass(RevertCreateNodeAction::class)
             }
         }
     }
