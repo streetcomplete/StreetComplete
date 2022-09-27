@@ -92,7 +92,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
                 binding.rotateContainer.layoutParams = params
             }
 
-            val streetWidth = if (onlyShowingOneSide) width *2/3 else width / 2
+            val streetWidth = if (onlyShowingOneSide) width * 2 / 3 else width / 2
             val leftImage = leftImage
             if (!isLeftImageSet && leftImage != null) {
                 setStreetDrawable(leftImage, streetWidth, binding.leftSideImage, true)
@@ -189,7 +189,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         onlyShowingOneSide = true
         binding.leftSideContainer.isGone = true
         binding.rightSideContainer.isGone = false
-        binding.strut.updateLayoutParams<ConstraintLayout.LayoutParams> { guidePercent = 1/3f }
+        binding.strut.updateLayoutParams<ConstraintLayout.LayoutParams> { guidePercent = 1 / 3f }
     }
 
     fun showOnlyLeftSide() {
@@ -197,7 +197,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         onlyShowingOneSide = true
         binding.leftSideContainer.isGone = false
         binding.rightSideContainer.isGone = true
-        binding.strut.updateLayoutParams<ConstraintLayout.LayoutParams> { guidePercent = 2/3f }
+        binding.strut.updateLayoutParams<ConstraintLayout.LayoutParams> { guidePercent = 2 / 3f }
     }
 
     fun showBothSides() {
@@ -211,7 +211,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     private fun replace(image: Image?, imgView: ImageView, flip180Degrees: Boolean) {
         val width = binding.rotateContainer.width
-        val streetWidth = if (onlyShowingOneSide) width *2/3 else width / 2
+        val streetWidth = if (onlyShowingOneSide) width * 2 / 3 else width / 2
         if (streetWidth == 0) return
         setStreetDrawable(image, streetWidth, imgView, flip180Degrees)
     }
