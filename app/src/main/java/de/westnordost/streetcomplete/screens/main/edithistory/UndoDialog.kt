@@ -165,11 +165,10 @@ fun StringMapEntryChange.tagString(): String {
         is StringMapEntryModify -> value
         is StringMapEntryDelete -> valueBefore
     }
+    val escapedKey = Html.escapeHtml(key)
     val escapedValue = Html.escapeHtml(valueText)
-    val keyText = key
-    val escapedKey = Html.escapeHtml(keyText)
-    val shownKey = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
-    return "$shownKey = $escapedValue"
+    val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
+    return "$keyLink = $escapedValue"
 }
 
 private val StringMapEntryChange.titleResId: Int get() = when (this) {
