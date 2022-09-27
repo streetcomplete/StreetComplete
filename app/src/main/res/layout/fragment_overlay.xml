@@ -58,67 +58,73 @@
             android:layout_marginBottom="4dp"
             android:elevation="@dimen/speech_bubble_elevation">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:id="@+id/content"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="@dimen/quest_form_horizontal_padding"
-                    android:paddingEnd="@dimen/quest_form_horizontal_padding"
-                    android:paddingTop="@dimen/quest_form_vertical_padding"
-                    android:paddingBottom="@dimen/quest_form_vertical_padding"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/moreButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_more_24dp"
-                    android:padding="12dp"
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-
-                <RelativeLayout
-                    android:id="@+id/okButtonContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:visibility="gone"
-                    android:scaleX="0.5"
-                    android:scaleY="0.5"
-                    android:alpha="0"
-                    tools:alpha="1"
-                    tools:visibility="visible"
-                    tools:scaleX="1"
-                    tools:scaleY="1"
-                    android:paddingTop="20dp"
-                    android:paddingStart="20dp"
-                    tools:ignore="RtlSymmetry">
+                    <FrameLayout
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/quest_form_horizontal_padding"
+                        android:paddingEnd="@dimen/quest_form_horizontal_padding"
+                        android:paddingTop="@dimen/quest_form_vertical_padding"
+                        android:paddingBottom="@dimen/quest_form_vertical_padding"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                     <ImageView
-                        android:id="@+id/okButton"
-                        android:src="@drawable/ic_check_48dp"
-                        android:scaleType="centerInside"
-                        style="@style/RoundAccentButton"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:padding="20dp"/>
+                        android:id="@+id/moreButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_more_24dp"
+                        android:padding="12dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/okButtonContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="gone"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:alpha="0"
+                        tools:alpha="1"
+                        tools:visibility="visible"
+                        tools:scaleX="1"
+                        tools:scaleY="1"
+                        android:paddingTop="20dp"
+                        android:paddingStart="20dp"
+                        tools:ignore="RtlSymmetry">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/okButton"
+                            android:src="@drawable/ic_check_48dp"
+                            android:scaleType="centerInside"
+                            style="@style/RoundAccentButton"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:padding="20dp"/>
+
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
 
         </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
