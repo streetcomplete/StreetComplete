@@ -517,6 +517,7 @@ roof shape/
     skillion_west.svg
 
 royal cypher/
+    CIIIR.svg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_King_Charles_III.svg (adapted)
     EIIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (adapted)
     EVIIIR.svg            Public Domain     https://commons.wikimedia.org/wiki/File:EVIIIR.PNG (adapted)
     EVIIR.svg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)

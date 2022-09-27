@@ -280,12 +280,12 @@ Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, ud
     <string name="quest_source_dialog_note">"Kun information som blev fundet ved en undersøgelse, bør indberettes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse ser urealistisk ud."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en fartgrænse?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne hastighedsgrænse ser urealistisk ud."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en hastighedsgrænse?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tjekkede du for enden af vejen?
 Hvis der ikke er skilte langs vejen som gælder for den fremhævede strækning, gælder standard hastighedsbegrænsninger."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, ingen skilte"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har en lavere standardfartgrænse end landeveje."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har som standard en lavere hastighedsgrænse end landeveje."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Byområde"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Landområde"</string>
 
@@ -768,7 +768,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_maxspeed_answer_sign">"Et skilt"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav fart) zone"</string>
+    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav hastighed) zone"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Intet skilt, standardgrænser gælder"</string>
@@ -1254,7 +1254,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe til kørestol"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne hæveautomat?"</string>
+    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne pengeautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
     <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation?"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
@@ -1889,5 +1889,5 @@ sorted alphabetically by title -->
     <string name="overlay_street_parking">"Gadeparkering"</string>
     <string name="link_ohsomehex_description">"Udforsk OSM-data på tværs af skalaer fra det store billede til individuelle objekter over rum og tid"</string>
     <string name="link_opencampingmap_description">"Et kort over campingpladser"</string>
-    <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne hæveautomat?"</string>
+    <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne pengeautomat?"</string>
 </resources>

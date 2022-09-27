@@ -1090,7 +1090,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Perpendicular"</string>
     <string name="street_parking_on_street">"On the carriageway"</string>
-    <string name="street_parking_half_on_kerb">"Is this place air-conditioned?"</string>
+    <string name="street_parking_half_on_kerb">"Partially on carriageway"</string>
     <string name="street_parking_on_kerb">"Yes,…"</string>
 
     <!-- Not sure if we want commas… -->
@@ -1373,4 +1373,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"PET only"</string>
     <string name="street_parking_street_width">"Street width: %s"</string>
     <string name="overlay_street_parking">"Street parking"</string>
+    <string name="link_ohsomehex_description">"Explore OSM data across scales from the big picture up to individual objects over space and time"</string>
+    <string name="link_opencampingmap_description">"A map of campsites"</string>
+    <string name="quest_atm_cashin_title">"Can you deposit cash at this cash machine?"</string>
 </resources>
