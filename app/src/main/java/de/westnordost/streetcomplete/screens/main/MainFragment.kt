@@ -307,6 +307,7 @@ class MainFragment :
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
+        mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it) }
         listener?.onMapInitialized()
     }
 
@@ -318,6 +319,7 @@ class MainFragment :
         binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
 
         updateLocationPointerPin()
+        updateCreateButtonEnablement(zoom)
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
@@ -700,8 +702,13 @@ class MainFragment :
     }
 
     private fun updateCreateButtonVisibility() {
-        binding.createButton.isGone = selectedOverlaySource.selectedOverlay == null
+        binding.createButton.isGone = selectedOverlaySource.selectedOverlay?.isCreateNodeEnabled != true
     }
+
+    private fun updateCreateButtonEnablement(zoom: Float) {
+        binding.createButton.isEnabled = zoom >= 18f
+    }
+
     private fun setIsNavigationMode(navigation: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isNavigationMode = navigation
