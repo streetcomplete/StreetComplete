@@ -17,7 +17,6 @@ private val DrinkingWaterType.titleResId: Int get() = when (this) {
     WATER_FOUNTAIN_JET -> R.string.quest_drinking_water_type_jet_water_fountain
     WATER_FOUNTAIN_BOTTLE_REFILL_ONLY -> R.string.quest_drinking_water_type_bottle_refill_only_fountain
     WATER_TAP -> R.string.quest_drinking_water_type_tap
-    //WATER_TAP_UNDRINKABLE -> R.string.quest_drinking_water_type_tap_without_drinking_water
     WATER_WELL -> R.string.quest_drinking_water_type_water_well
     SPRING -> R.string.quest_drinking_water_type_spring
     DISUSED_DRINKING_WATER -> R.string.quest_drinking_water_type_disused
@@ -28,7 +27,6 @@ private val DrinkingWaterType.iconResId: Int get() = when (this) {
     WATER_FOUNTAIN_JET -> R.drawable.drinking_water_type_jet_water_fountain
     WATER_FOUNTAIN_BOTTLE_REFILL_ONLY -> R.drawable.drinking_water_type_bottle_refill_only_fountain
     WATER_TAP -> R.drawable.drinking_water_type_tap
-    //WATER_TAP_UNDRINKABLE -> R.drawable.drinking_water_type_tap_without_drinking_water
     WATER_WELL -> R.drawable.drinking_water_type_water_well
     SPRING -> R.drawable.drinking_water_type_spring
     DISUSED_DRINKING_WATER -> R.drawable.drinking_water_type_disused

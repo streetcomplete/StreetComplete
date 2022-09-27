@@ -7,7 +7,6 @@ enum class DrinkingWaterType(val osmKey: String, val osmValue: String, val provi
     WATER_FOUNTAIN_JET("fountain", "bubbler"),
     WATER_FOUNTAIN_BOTTLE_REFILL_ONLY("fountain", "bottle_refill"),
     WATER_TAP("man_made", "water_tap"),
-    //WATER_TAP_UNDRINKABLE("man_made", "water_tap", false),
     WATER_WELL("man_made", "water_well"),
     SPRING("natural", "spring"),
     DISUSED_DRINKING_WATER("disued:amenity", "drinking_water", false),

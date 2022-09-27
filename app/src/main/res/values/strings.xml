@@ -934,7 +934,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_drinking_water_type_tap">Water tap</string>
     <string name="quest_drinking_water_type_water_well">Water well</string>
     <string name="quest_drinking_water_type_spring">Spring</string>
-    <string name="quest_drinking_water_type_tap_without_drinking_water">Water tap, has no drinking water</string>
     <string name="quest_drinking_water_type_disused">Disused drinking water object</string>
 
     <string name="quest_existence_title2">Is this still here?</string>
