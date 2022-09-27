@@ -8,11 +8,11 @@ package de.westnordost.streetcomplete.osm
  *  Note that freeform tags where SC is using dedicated subset of values but tag is completely freeform
  *  for example source:maxheight where sole value set by StreetComplete is "ARCore"
  * */
-fun isTagValueFromWellDefinedSet(key: String, value: String): Boolean {
+fun isTagValueLinkableToWiki(key: String, value: String): Boolean {
     if (";" in value) {
         // sport=soccer;volleyball is fully valid but given free reordering is effectively freeform
         // similarly produce tag fits here
-        return true
+        return false
     }
     // most have own syntax and limitations obeyed by SC
     if (key in listOf("name", "int_name", "ref",
@@ -30,31 +30,31 @@ fun isTagValueFromWellDefinedSet(key: String, value: String): Boolean {
             "operator", // technically not fully, but does not make sense to list all that autocomplete values
             "brand",
         )) {
-        return true
+        return false
     }
     if (SURVEY_MARK_KEY in key) {
-        return true
+        return false
     }
     if (key.endsWith(":note")) {
-        return true
+        return false
     }
     if (key.endsWith(":conditional")) {
-        return true
+        return false
     }
     if (key.endsWith(":wikidata")) {
-        return true
+        return false
     }
     if (key.endsWith(":wikipedia")) {
-        return true
+        return false
     }
     if (key.startsWith("lanes:")) {
-        return true
+        return false
     }
     if (key.startsWith("name:")) {
-        return true
+        return false
     }
     if (key.startsWith("source:")) {
-        return true
+        return false
     }
-    return false
+    return true
 }
