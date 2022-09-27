@@ -221,7 +221,7 @@ class MainFragment :
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
-        binding.addButton.isGone = selectedOverlaySource.selectedOverlay == null
+        updateCreateButtonVisibility()
 
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
@@ -230,7 +230,7 @@ class MainFragment :
         binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
-        binding.addButton.setOnClickListener { onClickAddButton() }
+        binding.createButton.setOnClickListener { onClickCreateButton() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateOffsetWithOpenBottomSheet()
@@ -510,7 +510,7 @@ class MainFragment :
     /* ------------------------------ SelectedOverlaySource.Listener -----------------------------*/
 
     override fun onSelectedOverlayChanged() {
-        binding.addButton.isGone = selectedOverlaySource.selectedOverlay == null
+        updateCreateButtonVisibility()
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -695,10 +695,13 @@ class MainFragment :
         }
     }
 
-    private fun onClickAddButton() {
+    private fun onClickCreateButton() {
         showOverlayFormForNewElement()
     }
 
+    private fun updateCreateButtonVisibility() {
+        binding.createButton.isGone = selectedOverlaySource.selectedOverlay == null
+    }
     private fun setIsNavigationMode(navigation: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isNavigationMode = navigation
