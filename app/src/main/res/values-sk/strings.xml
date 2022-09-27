@@ -1909,4 +1909,10 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Osvetlené v noci aj cez deň"</string>
     <string name="lit_value_automatic">"Osvetlené, keď je niekto na blízku (senzor)"</string>
     <string name="overlay_sidewalk">"Chodníky"</string>
+    <string name="quest_camp_drinking_water_title">"Je tu voľne dostupná pitná voda pre kemperov?"</string>
+    <string name="quest_camp_shower_title">"Sú tu sprchy?"</string>
+    <string name="quest_camp_type_title">"Kto tu môže kempovať?"</string>
+    <string name="quest_camp_type_tents_only">"Iba stany"</string>
+    <string name="street_parking_street_width">"Šírka ulice: %s"</string>
+    <string name="link_opencampingmap_description">"Mapa kempovísk"</string>
 </resources>

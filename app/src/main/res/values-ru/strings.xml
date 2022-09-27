@@ -2053,4 +2053,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"только ПЭТ"</string>
     <string name="street_parking_street_width">"Ширина улицы: %s"</string>
     <string name="overlay_street_parking">"Уличная парковка"</string>
+    <string name="link_ohsomehex_description">"Изучайте данные OSM в масштабе всего мира или отдельных объектов в пространстве и времени."</string>
+    <string name="link_opencampingmap_description">"Карта кемпингов"</string>
+    <string name="quest_atm_cashin_title">"Принимает ли банкомат наличные?"</string>
 </resources>
