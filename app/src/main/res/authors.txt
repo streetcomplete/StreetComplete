@@ -57,6 +57,10 @@ crossing_type_signals.jpg      CC-BY-SA 3.0      Bjørn Erik Pedersen https://co
 crossing_type_unmarked.jpg     CC0               Mateusz Konieczny
 crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 
+drinking_water_type_water_well.jpg CC-BY-SA 3.0  ŠJů, Wikimedia Commons https://commons.wikimedia.org/wiki/File:Liboc,_V_domc%C3%ADch_17,_pumpa.jpg
+drinking_water_type_tap.jpg    CC-BY-SA 3.0      Photo by CEphoto, Uwe Aranas / CC-BY-SA-3.0 https://wiki.openstreetmap.org/wiki/File:Le_Mont-Saint-Michel_France_Water-tap-01.jpg
+
+
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      Jwh https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
 fire_hydrant_pond.jpg          CC-BY-SA 3.0      KeepOnTruckin https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
 fire_hydrant_underground.jpg   CC-BY 3.0         Panek https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg

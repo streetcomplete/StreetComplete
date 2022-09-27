@@ -927,6 +927,16 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
 
+    <string name="quest_drinking_water_type_title">How drinking water is provided here?</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">Other water fountain</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">Water fountain emitting small jet of water</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">Refilling bottles only</string>
+    <string name="quest_drinking_water_type_tap">Water tap</string>
+    <string name="quest_drinking_water_type_water_well">Water well</string>
+    <string name="quest_drinking_water_type_spring">Spring</string>
+    <string name="quest_drinking_water_type_tap_without_drinking_water">Water tap, has no drinking water</string>
+    <string name="quest_drinking_water_type_disused">Disused drinking water object</string>
+
     <string name="quest_existence_title2">Is this still here?</string>
 
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
