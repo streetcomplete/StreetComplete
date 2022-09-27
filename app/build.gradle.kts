@@ -42,8 +42,8 @@ android {
 
     buildTypes {
         all {
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -52,8 +52,6 @@ android {
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
         }
         getByName("debug") {
-            isMinifyEnabled = true
-            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
@@ -70,13 +68,13 @@ android {
 
     bundle {
         language {
-            enableSplit = false
+            enableSplit = false // because language is selectable in-app
         }
     }
 
     lint {
         disable += listOf(
-            "MissingTranslation",
+            "MissingTranslation", // crowd-contributed translations are incomplete all the time
             "UseCompatLoadingForDrawables" // doesn't make sense for minSdk >= 21
         )
         abortOnError = false
