@@ -254,5 +254,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_use_sd">Use external SD card for storing map tiles</string>
     <string name="pref_use_sd_summary">Changing this setting will move the data, which may take a while</string>
     <string name="moving">Moving tiles…</string>
+    <string name="pref_show_next_quest_title">Show next quest immediately</string>
+    <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
 
 </resources>

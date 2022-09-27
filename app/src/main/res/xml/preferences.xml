@@ -118,6 +118,13 @@
             android:title="@string/pref_show_nearby_quests_title"
             android:summary="@string/pref_show_nearby_quests_summary" />
 
+        <SwitchPreference
+            android:key="show_next_quest_immediately"
+            android:title="@string/pref_show_next_quest_title"
+            android:summary="@string/pref_show_next_quest_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
         <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
             android:key="favs_first_min_lines"
             android:title="@string/pref_recent_answers_first_min_lines"

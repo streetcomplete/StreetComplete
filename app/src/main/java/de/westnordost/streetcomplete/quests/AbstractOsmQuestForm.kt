@@ -327,7 +327,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             setLocked(false)
             return
         }
-        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
+        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             viewLifecycleScope.launch {
                 // Only listener is mainFragment for closing bottom sheet and showing the quest
                 // solved animation, so it's ok to call even though the edit was not done yet.
@@ -340,13 +340,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             }
         } else {
             withContext(Dispatchers.IO) {
-            if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
-                val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
-                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
-            } else {
-                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
-            }
+                if (action is UpdateElementTagsAction && !action.changes.isValid()) {
+                    val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+                    val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
+                    noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
+                } else {
+                    addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+                }
             }
             listener?.onEdited(osmElementQuestType, element, geometry)
         }

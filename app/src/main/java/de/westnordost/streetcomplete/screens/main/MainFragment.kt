@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
@@ -126,6 +127,7 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import kotlin.math.PI
@@ -461,6 +463,13 @@ class MainFragment :
 
     override fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry) {
         showQuestSolvedAnimation(editType.icon, geometry.center)
+        if (editType is OsmElementQuestType<*> && prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
+            visibleQuestsSource.getAllVisible(geometry.center.enclosingBoundingBox(1.0))
+                .filterIsInstance<OsmQuest>()
+                .firstOrNull { it.elementType == element.type && it.elementId == element.id }
+                ?.let { runBlocking { viewLifecycleScope.launch { showQuestDetails(it) } } }
+                ?: closeBottomSheet()
+        }
         closeBottomSheet()
     }
 
