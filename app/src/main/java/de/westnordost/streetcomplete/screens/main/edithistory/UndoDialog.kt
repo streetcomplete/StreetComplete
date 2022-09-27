@@ -93,7 +93,7 @@ class UndoDialog(
 
     private suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
-            if (type is QuestType) getQuestTitle(type, originalElement)
+            if (type is QuestType) getQuestTitle(type, originalElement.tags)
             else context.resources.getText(type.title)
         }
         is NoteEdit -> {
@@ -104,7 +104,7 @@ class UndoDialog(
         }
         is OsmQuestHidden -> {
             val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
-            getQuestTitle(questType, element)
+            getQuestTitle(questType, element?.tags.orEmpty())
         }
         is OsmNoteQuestHidden -> {
             context.resources.getText(R.string.quest_noteDiscussion_title)
@@ -128,9 +128,9 @@ class UndoDialog(
         else -> throw IllegalArgumentException()
     }
 
-    private fun getQuestTitle(questType: QuestType, element: Element?): CharSequence =
+    private fun getQuestTitle(questType: QuestType, tags: Map<String, String>): CharSequence =
         try {
-            context.resources.getHtmlQuestTitle(questType, element)
+            context.resources.getHtmlQuestTitle(questType, tags)
         } catch (e: MissingFormatArgumentException) {
             /* The exception happens when the number of format strings in the quest title
              * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?
