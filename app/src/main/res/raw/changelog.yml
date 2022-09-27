@@ -14,7 +14,7 @@ v47.0: |
   <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
   <li>Refine when the entrance type quest is asked (#4372, #4380), by @matkoniecz</li>
   <li>Postbox Cyphers: Now possible to select the cypher for Charles III (#4420)</li>
-  <li>Other minor enhancements (#4380, #4381, #4393, #4402), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
+  <li>Other minor enhancements (#4380, #4381, #4393, #4402, #4413, #4416), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
   </ul>
   <h3>Fixes</h3>
   <ul>

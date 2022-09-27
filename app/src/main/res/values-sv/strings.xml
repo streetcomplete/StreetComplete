@@ -1625,4 +1625,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Endast PET"</string>
     <string name="street_parking_street_width">"Gatubredd: %s"</string>
     <string name="overlay_street_parking">"Gatuparkering"</string>
+    <string name="link_ohsomehex_description">"Utforska OSM-data från stort till smått och genom tid och rum"</string>
+    <string name="link_opencampingmap_description">"En karta som visar campingplatser"</string>
+    <string name="quest_atm_cashin_title">"Kan man sätta in pengar i denna bankomat?"</string>
 </resources>
