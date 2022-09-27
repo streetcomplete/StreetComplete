@@ -9,11 +9,31 @@ package de.westnordost.streetcomplete.osm
  *  for example source:maxheight where sole value set by StreetComplete is "ARCore"
  * */
 fun isTagValueLinkableToWiki(key: String, value: String): Boolean {
+    if (value in listOf(null, "no", "yes", "only")) {
+        // sometimes page may exist, sometimes it does not
+        return false
+    }
+    if ( key == "fire_hydrant:type") {
+        return false
+    }
+    if (key in listOf("crossing:barrier", "bicycle_rental", "roof:shape", "material", "royal_cypher", "camera:type",
+            "bollard", "board_type", "cycle_barrier", "bicycle_parking", "location", "stile", "shoulder",
+            "toilets:wheelchair", "ramp:wheelchair", "smoking")) {
+        // in this cases values are not getting own wiki pages, but it can change in future
+        return false
+    }
+    if (key.startsWith("recycling:") || key.startsWith("parking:")
+        || key.startsWith("cycleway:") || key.startsWith("footway:")) {
+        // tag families with manu, many subvariants
+        return false
+    }
+
     if (";" in value) {
         // sport=soccer;volleyball is fully valid but given free reordering is effectively freeform
         // similarly produce tag fits here
         return false
     }
+
     // most have own syntax and limitations obeyed by SC
     if (key in listOf("name", "int_name", "ref",
             "addr:flats", "addr:housenumber", "addr:street", "addr:place", "addr:block_number", "addr:streetnumber",
