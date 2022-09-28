@@ -933,6 +933,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">Refilling bottles only</string>
     <string name="quest_drinking_water_type_tap">Water tap</string>
     <string name="quest_drinking_water_type_hand_pump">Hand pump</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">Water well without pump</string>
     <string name="quest_drinking_water_type_spring">Spring</string>
     <string name="quest_drinking_water_type_disused">Disused drinking water object</string>
 
