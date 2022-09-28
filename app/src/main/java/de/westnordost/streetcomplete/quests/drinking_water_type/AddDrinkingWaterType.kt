@@ -15,7 +15,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
             (disused:amenity = drinking_water and !amenity and older today -1 years)
         )
         and (!seasonal or seasonal = no)
-        and !man_made and !natural and !fountain"""
+        and !man_made and !natural and !fountain and !pump"""
 
     override val changesetComment = "Specify drinking water types"
     override val wikiLink = "Tag:amenity=drinking_water"
