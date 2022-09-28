@@ -99,6 +99,14 @@ class ElementEditsDao(
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
 
+    fun updateElementId(id: Long, newElementId: Long): Int =
+        db.update(
+            NAME,
+            values = listOf(ELEMENT_ID to newElementId),
+            where = "$ID = ?",
+            args = arrayOf(id)
+        )
+
     fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
         db.update(
             NAME,

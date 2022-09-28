@@ -89,7 +89,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_AddNodeEdit() {
-        val edit = addNode()
+        val edit = createNode()
         dao.add(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -97,7 +97,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addGet_RevertAddNodeEdit() {
-        val edit = revertAddNode()
+        val edit = revertCreateNode()
         dao.add(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -242,6 +242,13 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(-5, dao.get(e3.id)!!.elementId)
         assertEquals(-3, dao.get(e4.id)!!.elementId)
     }
+
+    @Test fun updateElementId2() {
+        val e1 = createNode()
+        dao.add(e1)
+        dao.updateElementId(e1.id, -123)
+        val edit = dao.get(e1.id)!!
+    }
 }
 
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
@@ -337,7 +344,7 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     )
 )
 
-private fun addNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
     node.type,
@@ -350,7 +357,7 @@ private fun addNode(timestamp: Long = 123L, isSynced: Boolean = false) = Element
     CreateNodeAction(p, mapOf("shop" to "supermarket"))
 )
 
-private fun revertAddNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
     node.type,
@@ -372,7 +379,7 @@ private val TEST_QUEST_TYPE2 = TestQuestType2()
 
 private object TestOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, Style>>()
-    override fun createForm(element: Element) = null
+    override fun createForm(element: Element?) = null
     override val changesetComment = "bla"
     override val icon = 0
     override val title = 0
