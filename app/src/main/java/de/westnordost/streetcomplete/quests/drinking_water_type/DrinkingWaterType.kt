@@ -33,7 +33,9 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
         SPRING -> tags["natural"] = "spring"
         DISUSED_DRINKING_WATER -> {
             tags.remove("amenity")
-            tags["disused:amenity"] = "drinking_water"
+            if (tags["disused:amenity"] != "drinking_water") {
+                tags["disused:amenity"] = "drinking_water"
+            }
             if (!tags.hasChanges || tags.hasCheckDate()) {
                 // may happen if it was disused and now is still disused
                 tags.updateCheckDate()
@@ -44,7 +46,7 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
     // handle change from disused:amenity=drinking_water to amenity=drinking_water
     if (this != DISUSED_DRINKING_WATER) {
         tags.remove("disused:amenity")
-        if(tags["amenity"] != "drinking_water") {
+        if (tags["amenity"] != "drinking_water") {
             tags["amenity"] = "drinking_water"
         }
     }
