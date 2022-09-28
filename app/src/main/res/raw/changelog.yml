@@ -9,8 +9,9 @@ v48.0-alpha1: |
   </ul>
   <h3>Other enhancements</h3>
   <ul>
-  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
   </ul>
 
 v47.0: |
