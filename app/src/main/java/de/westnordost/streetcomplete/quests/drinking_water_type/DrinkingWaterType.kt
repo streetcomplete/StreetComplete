@@ -44,6 +44,8 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
     // handle change from disused:amenity=drinking_water to amenity=drinking_water
     if (this != DISUSED_DRINKING_WATER) {
         tags.remove("disused:amenity")
-        tags["amenity"] = "drinking_water"
+        if(tags["amenity"] != "drinking_water") {
+            tags["amenity"] = "drinking_water"
+        }
     }
 }
