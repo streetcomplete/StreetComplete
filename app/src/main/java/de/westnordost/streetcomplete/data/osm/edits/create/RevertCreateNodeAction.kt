@@ -24,14 +24,21 @@ object RevertCreateNodeAction : ElementEditAction, IsRevertAction {
         idProvider: ElementIdProvider
     ): MapDataChanges {
         val node = element as? Node ?: throw ConflictException("Element deleted")
-        val originalNode = originalElement as? Node ?: throw IllegalArgumentException()
+        /* Independent of whether it makes sense or not to check for conflicts on reverting the
+           creating (=deleting), it is not possible to check for conflicts between element and
+           originalElement (tags changed, position changed) technically:
 
-        if (node.tags != originalNode.tags) {
-            throw ConflictException("Element tags changed")
-        }
-        if (node.position != originalNode.position) {
-            throw ConflictException("Element position changed")
-        }
+           On reverting, the "originalElement" from the edit that is being reverted is copied to
+           this edit in ElementEditsController::undo. However, that "originalElement" of the
+           "CreateNodeAction" is just an empty (dummy) element with no tags since that element did
+           not exist yet.
+
+           ElementEditsController would need to use the element as used currently in the app (from
+           MapDataWithEditsSource) as basis for the "originalElement" but to not create a cyclic
+           dependency, users of EditHistoryController would have to pass in the current element +
+           geometry into ElementEditsController::undo.
+           Instead, let's just not check for conflicts here.
+         */
         return MapDataChanges(deletions = listOf(node))
     }
 }

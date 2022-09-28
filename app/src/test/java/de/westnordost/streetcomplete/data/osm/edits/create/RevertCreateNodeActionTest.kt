@@ -39,20 +39,4 @@ class RevertCreateNodeActionTest {
     fun `conflict revert add node when already deleted`() {
         RevertCreateNodeAction.createUpdates(node(), null, repos, provider)
     }
-
-    @Test(expected = ConflictException::class)
-    fun `moved element creates conflict`() {
-        val node = node()
-        RevertCreateNodeAction.createUpdates(
-            node, node.copy(position = p(1.0, 1.0)), repos, provider
-        )
-    }
-
-    @Test(expected = ConflictException::class)
-    fun `tags changed on element creates conflict`() {
-        val node = node()
-        RevertCreateNodeAction.createUpdates(
-            node, node.copy(tags = mapOf("something" to "else")), repos, provider
-        )
-    }
 }
