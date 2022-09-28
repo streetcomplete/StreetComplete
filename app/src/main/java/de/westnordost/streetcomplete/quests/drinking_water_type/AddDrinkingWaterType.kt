@@ -11,7 +11,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
     override val elementFilter = """
         nodes with
         (
-            amenity = drinking_water
+            (amenity = drinking_water and !disused:amenity)
             or
             (disused:amenity = drinking_water and !amenity and older today -1 years)
         )
