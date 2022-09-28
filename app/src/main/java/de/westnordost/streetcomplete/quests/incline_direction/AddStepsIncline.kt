@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddStepsIncline : OsmFilterQuestType<InclineDirection>() {
+class AddStepsIncline : OsmFilterQuestType<InclineDirectionAnswer>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -23,6 +23,6 @@ class AddStepsIncline : OsmFilterQuestType<InclineDirection>() {
 
     override fun createForm() = AddInclineForm()
 
-    override fun applyAnswerTo(answer: InclineDirection, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: InclineDirectionAnswer, tags: Tags, timestampEdited: Long) =
         answer.applyTo(tags)
 }

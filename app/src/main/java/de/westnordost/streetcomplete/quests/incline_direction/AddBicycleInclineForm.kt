@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import kotlin.math.PI
 
-class AddBicycleInclineForm : AImageListQuestForm<InclineDirection, InclineDirection>() {
+class AddBicycleInclineForm : AImageListQuestForm<RegularInclineDirection, InclineDirectionAnswer>() {
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
     )
 
     override val items get() =
-        InclineDirection.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
+        RegularInclineDirection.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
 
     override val itemsPerRow = 2
 
@@ -38,12 +38,12 @@ class AddBicycleInclineForm : AImageListQuestForm<InclineDirection, InclineDirec
         AlertDialog.Builder(ctx)
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(
-                InclineDirection.UP_AND_DOWN) }
+                UpdAndDownHopsAnswer) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
 
-    override fun onClickOk(selectedItems: List<InclineDirection>) {
-        applyAnswer(selectedItems.first())
+    override fun onClickOk(selectedItems: List<RegularInclineDirection>) {
+        applyAnswer(RegularInclineDirectionAnswer(selectedItems.first()))
     }
 }
