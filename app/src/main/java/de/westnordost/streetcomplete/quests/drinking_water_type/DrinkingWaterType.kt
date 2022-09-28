@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.drinking_water_type.DrinkingWaterType.*
 
 enum class DrinkingWaterType {
-    WATER_FOUNTAIN_GENERIC,
+    WATER_TAP,
     WATER_FOUNTAIN_JET,
     WATER_FOUNTAIN_BOTTLE_REFILL_ONLY,
-    WATER_TAP,
+    WATER_FOUNTAIN_GENERIC,
     HAND_PUMP,
     WATER_WELL_WITHOUT_PUMP,
     SPRING,
