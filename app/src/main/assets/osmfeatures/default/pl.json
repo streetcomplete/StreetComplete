@@ -125,7 +125,6 @@
                 "activity": {
                     "label": "Aktywność",
                     "options": {
-                        "Ski": "Jazda na nartach",
                         "bicycle": "Jazda na rowerze",
                         "hiking": "Wspinaczka",
                         "horse": "Jeżdżenie na koniu",
@@ -1143,7 +1142,7 @@
                     "options": {
                         "female": "Kobieta",
                         "male": "Mężczyzna",
-                        "unisex": "Dla obu płci"
+                        "unisex": "Unisex"
                     },
                     "placeholder": "Nieznana",
                     "terms": "płeć"
@@ -2318,10 +2317,6 @@
                     "placeholder": "Tak, Nie, Tylko",
                     "terms": "sprzedaż używanych"
                 },
-                "sector/name": {
-                    "label": "Nazwa",
-                    "placeholder": "Dedykowana nazwa (jeśli istnieje)"
-                },
                 "segregated": {
                     "label": "Rozdzielona"
                 },
@@ -2777,7 +2772,14 @@
                     "terms": "widoczność szlaku"
                 },
                 "transformer": {
-                    "label": "Rodzaj transformatora"
+                    "label": "Rodzaj transformatora",
+                    "options": {
+                        "auxiliary": "Pomocniczy: Zasila systemy wewnętrzne w podstacjach",
+                        "converter": "Konwerter: zasila konwertery mocy",
+                        "distribution": "Dystrybucja: Zasila odbiorców końcowych, instalowana poza podstacjami",
+                        "generator": "Generator: Podwyższa napięcie w elektrowniach",
+                        "yes": "Nieznana rola"
+                    }
                 },
                 "trees": {
                     "label": "Drzewa"
@@ -2927,6 +2929,10 @@
                         "bog": "Bagno",
                         "fen": "Bagnisko",
                         "mangrove": "Namorzyny",
+                        "marsh": "Bagno",
+                        "reedbed": "Szuwary",
+                        "saltmarsh": "Przybrzeżne bagno solne",
+                        "string_bog": "Torfowisko aapa",
                         "swamp": "Bagna",
                         "wet_meadow": "Mokra łąka"
                     }
@@ -2966,6 +2972,7 @@
                     "terms": "liczba uzwojeń"
                 },
                 "windings/auto": {
+                    "label": "Autotransformator",
                     "options": {
                         "no": "Nie",
                         "undefined": "Zakłada się, że Nie",
@@ -3540,7 +3547,7 @@
                     "terms": "inpost,orlen paczka,aliexpress,cainiao,allegro,automat przesyłkowy,automat paczkowy"
                 },
                 "amenity/parking": {
-                    "name": "Parking samochodowy",
+                    "name": "Parkirišče",
                     "terms": "parking"
                 },
                 "amenity/parking/multi-storey": {
@@ -3943,6 +3950,9 @@
                     "name": "Automat sprzedający",
                     "terms": "automat do sprzedaży,mlekomat"
                 },
+                "amenity/vending_machine/bicycle_tube": {
+                    "name": "Automat sprzedający dętki rowerowe"
+                },
                 "amenity/vending_machine/bottle_return": {
                     "name": "Automat na butelki",
                     "terms": "automat na butelki,butelki zwrotne"
@@ -4164,6 +4174,12 @@
                     "name": "Kontrola graniczna",
                     "terms": "kontrola graniczna,granica,bariera"
                 },
+                "barrier/bump_gate": {
+                    "name": "Brama kontaktowa"
+                },
+                "barrier/bus_trap": {
+                    "name": "Pułapka autobusowa"
+                },
                 "barrier/cable_barrier": {
                     "name": "Ogrodzenie linkowe"
                 },
@@ -4205,6 +4221,9 @@
                 "barrier/guard_rail": {
                     "name": "Barierka",
                     "terms": "barierka,bariera ochronna,bariera drogowa,bariera energochłonna,bariera armco"
+                },
+                "barrier/handrail": {
+                    "name": "Poręcz"
                 },
                 "barrier/hedge": {
                     "name": "Żywopłot",
@@ -4534,6 +4553,9 @@
                 },
                 "building_point": {
                     "name": "Budynek"
+                },
+                "cemetery/grave": {
+                    "name": "Grób"
                 },
                 "cemetery/sector": {
                     "name": "Sekcja cmentarza"
@@ -5990,9 +6012,6 @@
                     "name": "Linia",
                     "terms": "linia,lina"
                 },
-                "man_made": {
-                    "name": "Konstrukcja"
-                },
                 "man_made/adit": {
                     "name": "Sztolnia",
                     "terms": "tunel kopalniany"
@@ -7351,10 +7370,6 @@
                     "name": "Sklep z mangą i anime",
                     "terms": "anime,manga,cosplay"
                 },
-                "shop/antiques": {
-                    "name": "Antykwariat",
-                    "terms": "sklep z antykami,antyki"
-                },
                 "shop/appliance": {
                     "name": "Sklep z AGD",
                     "terms": "sklep z agd,agd,artykuły gospodarstwa domowego,klimatyzatory,kuchenki,lodówki,mikrofalówki,miksery,odkurzacze,pralki,roboty kuchenne,suszarki,wentylatory,zamrażarki,zmywarki"
@@ -7410,10 +7425,6 @@
                 "shop/bookmaker": {
                     "name": "Zakład bukmacherski",
                     "terms": "zakład bukmacherski,bukmacher,zakłady sportowe,hazard"
-                },
-                "shop/books": {
-                    "name": "Księgarnia",
-                    "terms": "księgarnia,książki,komiksy,antykwariat"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -7532,10 +7543,6 @@
                     "name": "Sklep z kosmetykami",
                     "terms": "kosmetyki,makijaż,make-up,sephora,inglot,ziaja"
                 },
-                "shop/country_store": {
-                    "name": "Country Store",
-                    "terms": "country store"
-                },
                 "shop/craft": {
                     "name": "Sklep z artykułami dla artystów",
                     "terms": "sklep z artykułami dla artystów,artykuły dla artystów,artykuły dla plastyków,farby,sztalugi,papiery,kartony,tektury,płótna,pastele,pędzle,ramy,ramki,drewno,narzędzia,papierniczy,sklep papierniczy"
@@ -7547,10 +7554,6 @@
                 "shop/dairy": {
                     "name": "Sklep z nabiałem",
                     "terms": "nabiał"
-                },
-                "shop/deli": {
-                    "name": "Ekskluzywne delikatesy",
-                    "terms": "wyroby delikatesowe,wykwintne artykuły spożywcze,specjały,rarytasy"
                 },
                 "shop/department_store": {
                     "name": "Dom towarowy",
@@ -7675,10 +7678,6 @@
                     "name": "Sklep z narzędziami",
                     "terms": "sklep narzędziowy,narzędzia,elektronarzędzia,gwoździe,śruby,uszczelki,kable"
                 },
-                "shop/health_food": {
-                    "name": "Sklep ze zdrową żywnością",
-                    "terms": "zdrowa żywność,żywność ekologiczna,żywność regionalna,produkty regionalne"
-                },
                 "shop/hearing_aids": {
                     "name": "Sklep z aparatami słuchowymi",
                     "terms": "aparaty słuchowe"
@@ -7791,10 +7790,6 @@
                     "name": "Sklep z instrumentami muzycznymi",
                     "terms": "instrumenty muzyczne,sklep muzyczny"
                 },
-                "shop/newsagent": {
-                    "name": "Sklep z prasą",
-                    "terms": "salonik prasowy,kiosk,prasa,gazety,czasopisma,lotto,kolporter,inmedio,ruch"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Sklep z suplementami diety",
                     "terms": "suplementy diety,odżywki dla sportowców"
@@ -7822,10 +7817,6 @@
                 "shop/pastry": {
                     "name": "Cukiernia",
                     "terms": "cukiernia,pączkarnia,ciastkarnia,piekarnia,wypieki,ciasta,torty,pączki,precle"
-                },
-                "shop/pawnbroker": {
-                    "name": "Lombard",
-                    "terms": "lombard"
                 },
                 "shop/perfumery": {
                     "name": "Perfumeria",
@@ -7882,10 +7873,6 @@
                 "shop/seafood": {
                     "name": "Sklep z rybami i owocami morza",
                     "terms": "sklep rybny,ryby,owoce morza"
-                },
-                "shop/second_hand": {
-                    "name": "Sklep z rzeczami używanymi",
-                    "terms": "second hand,komis,używane rzeczy,rzeczy używane"
                 },
                 "shop/sewing": {
                     "name": "Pasmanteria",
@@ -7985,10 +7972,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Sklep z odkurzaczami",
                     "terms": "odkurzacze"
-                },
-                "shop/variety_store": {
-                    "name": "Sklep z różnościami",
-                    "terms": "sklep z różnościami,różności,bibeloty,pamiątki,prezenty,gadżety"
                 },
                 "shop/video": {
                     "name": "Sklep/wypożyczalnia z filmami wideo/dvd",

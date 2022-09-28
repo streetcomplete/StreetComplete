@@ -1,4 +1,4 @@
-v47.0-beta1: |
+v47.0: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
      Be warned, of the overlays so far, this is the most complex one and the first that does not
@@ -7,21 +7,19 @@ v47.0-beta1: |
   <ul>
   <li><i>Can you deposit cash at this ATM?</i> (#4292, #4333), by @mnalis</li>
   </ul>
-  <h3>Other enhancements and fixes</h3>
+  <h3>Other enhancements</h3>
   <ul>
   <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
   <li>Several performance improvements and reduced network traffic on uploading (#4078, #4202, #4319, #4339), by @Helium314</li>
   <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
+  <li>Refine when the entrance type quest is asked (#4372, #4380), by @matkoniecz</li>
+  <li>Postbox Cyphers: Now possible to select the cypher for Charles III (#4420)</li>
+  <li>Other minor enhancements (#4380, #4381, #4393, #4402, #4413, #4416), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
   </ul>
-
-v47.0-alpha1: |
-  <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
-  <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
-     Be warned, of the overlays so far, this is the most complex one and the first that does not
-     replace a pre-existing quest 🙂</p>
-  <h3>Other enhancements and fixes</h3>
+  <h3>Fixes</h3>
   <ul>
-  <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
+  <li>Fix sometimes quests would vanish after uploading (#4371)</li>
+  <li>Fix common crash when using the app for a long time, then sending it to background</li>
   </ul>
 
 v46.1: |

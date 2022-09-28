@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.police_type
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.quests.leaf_detail.asItem
 
 class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
 

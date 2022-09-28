@@ -1580,7 +1580,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_surface_value_concrete_plates">"콘크리트 판"</string>
     <string name="quest_surface_value_concrete_lanes">"콘크리트 차로"</string>
     <string name="quest_fireHydrant_diameter_title">"이 소화전의 지름이 얼마로 표기되어 있나요?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"지름이 현실적인 것 같지 않습니다."</string>
     <string name="quest_fireHydrant_confirmation_title">"확실한가요? 소화전 겉면에 지름이 적혀 있는 경우도 있습니다."</string>
     <string name="quest_diet_answer_no_food">"음식이 없음"</string>
     <string name="short_no_answer_on_button">"아니오"</string>
@@ -1607,7 +1606,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="on_floor">"%s이(가) 위치한 층수:"</string>
-    <string name="quest_street_parking_title">"이곳에 차량이 주정차할 수 있다면, 어떤 형태로 가능한가요?"</string>
     <string name="select_street_parking_orientation">"도로에서 볼 때의 주차 방향을 선택하세요:"</string>
     <string name="select_street_parking_position">"주차 장소를 선택하세요:"</string>
     <string name="select_street_parking_no">"이곳에 표지판이나 도로 표식이 있나요?"</string>
@@ -1835,7 +1833,6 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"이 일방통행로에서 자전거 양방향 통행이 불가능한 게 맞나요? 확실하지 않으면, 도로 끝에 표지판이 있는지 확인하세요."</string>
     <string name="link_backofyourhand_description">"당신은 당신의 동네를 얼마나 알고계신가요? 길을 가보면서 당신의 지식을 시험해보세요."</string>
-    <string name="link_thenandnow_description">"OSM의 초기 모습과 지금의 모습을 비교해보세요!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->

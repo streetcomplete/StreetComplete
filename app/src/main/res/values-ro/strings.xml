@@ -1463,7 +1463,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_surface_value_concrete_plates">"Plăci de beton"</string>
     <string name="quest_surface_value_concrete_lanes">"Alei de beton"</string>
     <string name="quest_fireHydrant_diameter_title">"Ce diametru este specificat pe semnul pentru acest hidrant de incendiu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Acest diametru pare a fi neplauzibil."</string>
     <string name="quest_fireHydrant_confirmation_title">"Sunteți sigur(ă)? Uneori diametrul este specificat chiar pe hidrant."</string>
     <string name="quest_diet_answer_no_food">"Nu are mâncare"</string>
     <string name="short_no_answer_on_button">"Nu"</string>
@@ -1487,7 +1486,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
     <string name="pref_title_language_select">"Selectați limba"</string>
     <string name="language_default">"Limba dispozitivului"</string>
-    <string name="quest_street_parking_title">"În ce mod se poate parca aici, dacă este permis?"</string>
     <string name="select_street_parking_position">"Selectați poziția:"</string>
     <string name="select_street_parking_no">"Există semne sau marcaje aici?"</string>
     <string name="street_parking_parallel">"Paralel"</string>

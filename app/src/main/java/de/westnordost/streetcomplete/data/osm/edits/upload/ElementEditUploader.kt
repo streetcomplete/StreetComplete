@@ -15,18 +15,26 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
     private val mapDataApi: MapDataApi,
-    private val mapDataController: MapDataController,
+    private val mapDataController: MapDataController
 ) {
 
     /** Apply the given change to the given element and upload it
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
-    fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
-        val remoteChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataApi.fetch(edit.elementType, edit.elementId), mapDataApi, idProvider) }
-        val localChanges by lazy { edit.action.createUpdates(edit.originalElement, mapDataController.fetch(edit.elementType, edit.elementId), mapDataController, idProvider) }
+    fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
+        val remoteChanges by lazy {
+            val element = mapDataApi.fetch(edit.elementType, edit.elementId)
+            edit.action.createUpdates(edit.originalElement, element, mapDataApi, getIdProvider())
+        }
+        val localChanges by lazy {
+            val element = mapDataController.fetch(edit.elementType, edit.elementId)
+            edit.action.createUpdates(edit.originalElement, element, mapDataController, getIdProvider())
+        }
 
-        return if (edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES) {
+        val mustUseRemoteData = edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
+
+        return if (mustUseRemoteData) {
             try {
                 uploadChanges(edit, remoteChanges, false)
             } catch (e: ConflictException) {
@@ -49,8 +57,9 @@ class ElementEditUploader(
     }
 
     private fun uploadChanges(edit: ElementEdit, mapDataChanges: MapDataChanges, newChangeset: Boolean): MapDataUpdates {
-        val changesetId = if (newChangeset) changesetManager.createChangeset(edit.type, edit.source)
-            else changesetManager.getOrCreateChangeset(edit.type, edit.source)
+        val changesetId =
+            if (newChangeset) changesetManager.createChangeset(edit.type, edit.source)
+            else              changesetManager.getOrCreateChangeset(edit.type, edit.source)
         return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
     }
 
