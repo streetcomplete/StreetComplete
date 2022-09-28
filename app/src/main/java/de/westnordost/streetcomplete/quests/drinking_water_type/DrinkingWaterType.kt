@@ -34,7 +34,7 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
         DISUSED_DRINKING_WATER -> {
             tags.remove("amenity")
             tags["disused:amenity"] = "drinking_water"
-            if (!tags.hasChanges() || tags.hasCheckDate()) {
+            if (!tags.hasChanges || tags.hasCheckDate()) {
                 tags.updateCheckDate()
             }
         }
