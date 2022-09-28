@@ -386,6 +386,7 @@ quest/
     seating.svg
     shower.svg
     sidewalk.svg
+    sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD
