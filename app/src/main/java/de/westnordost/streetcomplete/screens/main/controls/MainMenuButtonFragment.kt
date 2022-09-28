@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.KeyEvent
@@ -8,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -28,6 +30,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
+    private val prefs: SharedPreferences by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -69,14 +72,24 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     /* ------------------------------------------------------------------------------------------ */
 
     internal fun onClickMainMenu() {
-        val d = MainMenuDialog(
-            requireContext(),
-            if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
-            this::onClickDownload,
-            teamModeQuestFilter::enableTeamMode,
-            teamModeQuestFilter::disableTeamMode,
-            this::onClickOverlays,
-        )
+        val d = if (prefs.getBoolean(Prefs.MAIN_MENU_FULL_GRID, false))
+            MainMenuGridDialog(
+                requireContext(),
+                if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+                this::onClickDownload,
+                teamModeQuestFilter::enableTeamMode,
+                teamModeQuestFilter::disableTeamMode,
+                this::onClickOverlays,
+            )
+        else
+            MainMenuDialog(
+                requireContext(),
+                if (teamModeQuestFilter.isEnabled) teamModeQuestFilter.indexInTeam else null,
+                this::onClickDownload,
+                teamModeQuestFilter::enableTeamMode,
+                teamModeQuestFilter::disableTeamMode,
+                this::onClickOverlays,
+            )
         d.setOnKeyListener { _, _, keyEvent ->
             if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
                 val intent = Intent(requireContext(), SettingsActivity::class.java)

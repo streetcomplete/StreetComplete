@@ -140,6 +140,12 @@
             android:negativeButtonText="@android:string/cancel" />
 
         <SwitchPreference
+            android:key="main_menu_full_grid"
+            android:title="@string/pref_main_menu_grid"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <SwitchPreference
             android:key="show_hide_button"
             android:title="@string/pref_hide_button_title"
             android:summary="@string/pref_hide_button_summary"

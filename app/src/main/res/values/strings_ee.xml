@@ -256,5 +256,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="moving">Moving tiles…</string>
     <string name="pref_show_next_quest_title">Show next quest immediately</string>
     <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
+    <string name="pref_main_menu_grid">Show all main menu items as grid</string>
 
 </resources>

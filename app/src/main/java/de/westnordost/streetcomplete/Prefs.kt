@@ -79,6 +79,7 @@ object Prefs {
     const val SHOW_SOLVED_ANIMATION = "show_solved_animation"
     const val PREFER_EXTERNAL_SD = "prefer_external_sd"
     const val SHOW_NEXT_QUEST_IMMEDIATELY = "show_next_quest_immediately"
+    const val MAIN_MENU_FULL_GRID = "main_menu_full_grid"
 
     enum class Autosync {
         ON, WIFI, OFF
