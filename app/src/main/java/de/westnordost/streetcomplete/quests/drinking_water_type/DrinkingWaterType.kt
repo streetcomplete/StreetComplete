@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.drinking_water_type
 import de.westnordost.streetcomplete.osm.Tags
 
 enum class DrinkingWaterType(val osmKey: String, val osmValue: String, val providesDrinkingWater: Boolean = true) {
-    WATER_FOUNTAIN_GENERIC("man_made", "drinking_fountain"),
+    WATER_FOUNTAIN_GENERIC("fountain", "drinking"),
     WATER_FOUNTAIN_JET("fountain", "bubbler"),
     WATER_FOUNTAIN_BOTTLE_REFILL_ONLY("fountain", "bottle_refill"),
     WATER_TAP("man_made", "water_tap"),
@@ -14,9 +14,6 @@ enum class DrinkingWaterType(val osmKey: String, val osmValue: String, val provi
 
 fun DrinkingWaterType.applyTo(tags: Tags) {
     tags[this.osmKey] = this.osmValue
-    if (this == DrinkingWaterType.WATER_FOUNTAIN_JET || this == DrinkingWaterType.WATER_FOUNTAIN_GENERIC) {
-        tags["man_made"] = "drinking_fountain"
-    }
     if (this.providesDrinkingWater) {
         if (tags["disused:amenity"] == "drinking_water") {
             tags.remove("disused:amenity")
