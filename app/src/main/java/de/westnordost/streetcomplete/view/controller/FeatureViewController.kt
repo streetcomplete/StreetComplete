@@ -52,7 +52,6 @@ class FeatureViewController(
             textView.setHint(R.string.quest_select_hint)
             iconView.setImageDrawable(null)
         } else if (feature.isSuggestion) {
-            R.color.hint_text
             val parentFeature = getParentFeature(feature)
             val text = SpannableStringBuilder()
             text.italic { appendName(textView.context, feature, searchText) }

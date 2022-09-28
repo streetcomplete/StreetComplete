@@ -40,6 +40,7 @@ class SearchFeaturesDialog(
 
     private val defaultFeatures: List<Feature> by lazy {
         listOf(
+            // ordered by usage number according to taginfo
             "amenity/restaurant",
             "shop/convenience",
             "amenity/cafe",
