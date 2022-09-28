@@ -18,10 +18,10 @@ enum class DrinkingWaterType {
 
 fun DrinkingWaterType.applyTo(tags: Tags) {
     when (this) {
-        WATER_FOUNTAIN_GENERIC -> tags["fountain"] == "drinking"
-        WATER_FOUNTAIN_JET -> tags["fountain"] == "bubbler"
-        WATER_FOUNTAIN_BOTTLE_REFILL_ONLY -> tags["fountain"] == "bottle_refill"
-        WATER_TAP -> tags["man_made"] == "water_tap"
+        WATER_FOUNTAIN_GENERIC -> tags["fountain"] = "drinking"
+        WATER_FOUNTAIN_JET -> tags["fountain"] = "bubbler"
+        WATER_FOUNTAIN_BOTTLE_REFILL_ONLY -> tags["fountain"] = "bottle_refill"
+        WATER_TAP -> tags["man_made"] = "water_tap"
         HAND_PUMP -> {
             tags["man_made"] = "water_well"
             tags["pump"] = "manual"
@@ -30,7 +30,7 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
             tags["man_made"] = "water_well"
             tags["pump"] = "no"
         }
-        SPRING -> tags["natural"] == "spring"
+        SPRING -> tags["natural"] = "spring"
         DISUSED_DRINKING_WATER -> {
             var changed = false
             if (tags["amenity"] == "drinking_water") {
