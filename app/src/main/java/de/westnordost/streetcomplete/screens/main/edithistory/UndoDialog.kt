@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
@@ -36,7 +35,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -166,10 +164,8 @@ class UndoDialog(
         val txt = TextView(context)
         txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
 
-        val posString = position.latitude.format(7) + ", " + position.longitude.format(7)
-
         txt.setHtml(
-            context.resources.getString(R.string.create_node_action_description, posString) +
+            context.resources.getString(R.string.create_node_action_description) +
             tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
                 "<li><tt>" + Html.escapeHtml("$key = $value") + "</tt></li>"
             }
