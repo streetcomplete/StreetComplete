@@ -139,7 +139,6 @@ class ElementEditsController(
         val ids: List<Long>
         synchronized(this) {
             edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
-            edits.add(edit)
 
             ids = edits.map { it.id }
 
@@ -157,12 +156,15 @@ class ElementEditsController(
         val result = mutableListOf<ElementEdit>()
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
-        val editsBasedOnThese = createdElementKeys.flatMap { editsDB.getByElement(it.type, it.id) }
+        val editsBasedOnThese = createdElementKeys
+            .flatMap { editsDB.getByElement(it.type, it.id) }
+            .filter { it.id != edit.id }
+
+        // deep first
         for (e in editsBasedOnThese) {
             result += getEditsBasedOnElementsCreatedByEdit(e)
         }
-        // deep first
-        result += editsBasedOnThese
+        result += edit
 
         return result
     }
