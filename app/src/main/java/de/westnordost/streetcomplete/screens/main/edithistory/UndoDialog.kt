@@ -151,7 +151,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>" + Html.escapeHtml(change.tagString) + "</tt>"
+               "<tt>" + change.tagString() + "</tt>"
            ) +
            "</li>"
         })
@@ -159,10 +159,16 @@ class UndoDialog(
     }
 }
 
-private val StringMapEntryChange.tagString: String get() = when (this) {
-    is StringMapEntryAdd -> "$key = $value"
-    is StringMapEntryModify -> "$key = $value"
-    is StringMapEntryDelete -> "$key = $valueBefore"
+fun StringMapEntryChange.tagString(): String {
+    val valueText = when (this) {
+        is StringMapEntryAdd -> value
+        is StringMapEntryModify -> value
+        is StringMapEntryDelete -> valueBefore
+    }
+    val escapedKey = Html.escapeHtml(key)
+    val escapedValue = Html.escapeHtml(valueText)
+    val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
+    return "$keyLink = $escapedValue"
 }
 
 private val StringMapEntryChange.titleResId: Int get() = when (this) {

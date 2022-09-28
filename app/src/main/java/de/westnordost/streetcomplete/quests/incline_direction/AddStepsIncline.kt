@@ -1,13 +1,11 @@
-package de.westnordost.streetcomplete.quests.steps_incline
+package de.westnordost.streetcomplete.quests.incline_direction
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP
-import de.westnordost.streetcomplete.quests.steps_incline.StepsIncline.UP_REVERSED
 
-class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
+class AddStepsIncline : OsmFilterQuestType<InclineDirectionAnswer>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -23,12 +21,8 @@ class AddStepsIncline : OsmFilterQuestType<StepsIncline>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
 
-    override fun createForm() = AddStepsInclineForm()
+    override fun createForm() = AddInclineForm()
 
-    override fun applyAnswerTo(answer: StepsIncline, tags: Tags, timestampEdited: Long) {
-        tags["incline"] = when (answer) {
-            UP -> "up"
-            UP_REVERSED -> "down"
-        }
-    }
+    override fun applyAnswerTo(answer: InclineDirectionAnswer, tags: Tags, timestampEdited: Long) =
+        answer.applyTo(tags)
 }

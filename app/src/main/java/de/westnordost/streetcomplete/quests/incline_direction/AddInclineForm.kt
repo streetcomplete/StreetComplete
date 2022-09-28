@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.steps_incline
+package de.westnordost.streetcomplete.quests.incline_direction
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
@@ -7,10 +7,9 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import kotlin.math.PI
 
-class AddStepsInclineForm : AImageListQuestForm<StepsIncline, StepsIncline>() {
-
+class AddInclineForm : AImageListQuestForm<RegularInclineDirection, InclineDirectionAnswer>() {
     override val items get() =
-        StepsIncline.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
+        RegularInclineDirection.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
 
     override val itemsPerRow = 2
 
@@ -28,7 +27,7 @@ class AddStepsInclineForm : AImageListQuestForm<StepsIncline, StepsIncline>() {
         imageSelector.items = items
     }
 
-    override fun onClickOk(selectedItems: List<StepsIncline>) {
-        applyAnswer(selectedItems.first())
+    override fun onClickOk(selectedItems: List<RegularInclineDirection>) {
+        applyAnswer(RegularInclineDirectionAnswer(selectedItems.first()))
     }
 }

@@ -653,6 +653,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
+    <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
+    <string name="quest_bicycle_incline_up_and_down">Up and down hops</string>
+
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
 
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
@@ -1561,4 +1564,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <string name="quest_accessPointRef_title">What’s the identification number here?</string>
+    <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 </resources>
