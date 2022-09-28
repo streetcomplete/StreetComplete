@@ -1,3 +1,18 @@
+v48.0-alpha1: |
+  <h3>1️⃣️️ Addresses Overlay</h3>
+  <p>This now is the most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
+   You can add addresses to buildings, edit existing addresses and also add addresses at any position, using the same sleek UI as for the address quests.</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
+  <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
+  </ul>
+
 v47.0: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
