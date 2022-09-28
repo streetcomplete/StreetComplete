@@ -35,6 +35,7 @@ fun DrinkingWaterType.applyTo(tags: Tags) {
             tags.remove("amenity")
             tags["disused:amenity"] = "drinking_water"
             if (!tags.hasChanges || tags.hasCheckDate()) {
+                // may happen if it was disused and now is still disused
                 tags.updateCheckDate()
             }
         }
