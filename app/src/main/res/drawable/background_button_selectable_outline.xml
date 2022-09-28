@@ -3,7 +3,7 @@
     <item>
         <shape>
             <corners android:radius="@dimen/rounded_selection_radius" />
-            <stroke android:color="@color/divider" android:width="2dp"/>
+            <stroke android:color="@color/divider" android:width="1dp"/>
         </shape>
     </item>
     <item>

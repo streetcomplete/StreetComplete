@@ -65,8 +65,8 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     private val isLeftSideUpsideDown get() =
         !isReversedOneway && (isForwardOneway || isLeftHandTraffic)
 
-    private val isForwardOneway get() = isForwardOneway(element.tags)
-    private val isReversedOneway get() = isReversedOneway(element.tags)
+    private val isForwardOneway get() = isForwardOneway(element!!.tags)
+    private val isReversedOneway get() = isReversedOneway(element!!.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
@@ -77,7 +77,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 
-        val width = element.tags["width"]
+        val width = element!!.tags["width"]
         binding.hintTextView.text = if (width != null) {
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             getString(R.string.street_parking_street_width, widthFormatted)
@@ -89,7 +89,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun initStateFromTags() {
-        val parking = createStreetParkingSides(element.tags)
+        val parking = createStreetParkingSides(element!!.tags)
         currentParking = parking
         streetSideSelect.setPuzzleSide(parking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
         streetSideSelect.setPuzzleSide(parking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
@@ -172,9 +172,10 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value).applyTo(it)
-        }.create()))
+        val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        parking.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 }
 

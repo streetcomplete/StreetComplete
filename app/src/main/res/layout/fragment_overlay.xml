@@ -1,126 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.westnordost.streetcomplete.view.SlidingRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_alignParentLeft="true"
-    android:layout_width="@dimen/quest_form_width"
-    android:layout_height="match_parent"
-    tools:layout_width="300dp"
-    android:id="@+id/bottomSheetContainer"
-    tools:ignore="RtlHardcoded">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/speech_bubble_none"
-        android:layout_above="@id/speechbubbleContentContainer"
-        android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
-        android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
-        android:layout_marginBottom="4dp"
-        android:elevation="@dimen/speech_bubble_elevation">
+    <include
+        android:id="@+id/markerCreateLayout"
+        layout="@layout/marker_create_note"/>
 
-        <TextView
-            android:id="@+id/titleHintLabel"
+    <de.westnordost.streetcomplete.view.SlidingRelativeLayout
+        android:layout_alignParentLeft="true"
+        android:layout_width="@dimen/quest_form_width"
+        android:layout_height="match_parent"
+        tools:layout_width="300dp"
+        android:id="@+id/bottomSheetContainer"
+        tools:ignore="RtlHardcoded">
+
+
+        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+            android:id="@+id/titleHintLabelContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingStart="@dimen/quest_form_horizontal_padding"
-            android:paddingEnd="@dimen/quest_form_horizontal_padding"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textAppearance="@style/TextAppearance.Title.Hint"/>
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/speech_bubble_none"
+            android:layout_above="@id/speechbubbleContentContainer"
+            android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+            android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
+            android:layout_marginBottom="4dp"
+            android:elevation="@dimen/speech_bubble_elevation">
 
-    </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
-
-    <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/speechbubbleContentContainer"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/speech_bubble_none"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2.5dp"
-        android:layout_marginEnd="-2.5dp"
-        android:layout_marginBottom="4dp"
-        android:elevation="@dimen/speech_bubble_elevation">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <FrameLayout
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingStart="@dimen/quest_form_horizontal_padding"
-                android:paddingEnd="@dimen/quest_form_horizontal_padding"
-                android:paddingTop="@dimen/quest_form_vertical_padding"
-                android:paddingBottom="@dimen/quest_form_vertical_padding"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <ImageView
-                android:id="@+id/moreButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_more_24dp"
-                android:padding="12dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-
-            <RelativeLayout
-                android:id="@+id/okButtonContainer"
+            <TextView
+                android:id="@+id/titleHintLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:clickable="true"
-                android:focusable="true"
-                android:visibility="gone"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:alpha="0"
-                tools:alpha="1"
-                tools:visibility="visible"
-                tools:scaleX="1"
-                tools:scaleY="1"
-                android:paddingTop="20dp"
-                android:paddingStart="20dp"
-                tools:ignore="RtlSymmetry">
+                android:layout_gravity="center"
+                android:paddingStart="@dimen/quest_form_horizontal_padding"
+                android:paddingEnd="@dimen/quest_form_horizontal_padding"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textAppearance="@style/TextAppearance.Title.Hint"/>
 
-                <ImageView
-                    android:id="@+id/okButton"
-                    android:src="@drawable/ic_check_48dp"
-                    android:scaleType="centerInside"
-                    style="@style/RoundAccentButton"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:padding="20dp"/>
+        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
-            </RelativeLayout>
+        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/speechbubbleContentContainer"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/speech_bubble_none"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-2.5dp"
+            android:layout_marginEnd="-2.5dp"
+            android:layout_marginBottom="4dp"
+            android:elevation="@dimen/speech_bubble_elevation">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/glassPane"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        />
+                    <FrameLayout
+                        android:id="@+id/content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/quest_form_horizontal_padding"
+                        android:paddingEnd="@dimen/quest_form_horizontal_padding"
+                        android:paddingTop="@dimen/quest_form_vertical_padding"
+                        android:paddingBottom="@dimen/quest_form_vertical_padding"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
-</de.westnordost.streetcomplete.view.SlidingRelativeLayout>
+                    <ImageView
+                        android:id="@+id/moreButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_more_24dp"
+                        android:padding="12dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
+                    <RelativeLayout
+                        android:id="@+id/okButtonContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="gone"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        android:alpha="0"
+                        tools:alpha="1"
+                        tools:visibility="visible"
+                        tools:scaleX="1"
+                        tools:scaleY="1"
+                        android:paddingTop="20dp"
+                        android:paddingStart="20dp"
+                        tools:ignore="RtlSymmetry">
 
+                        <ImageView
+                            android:id="@+id/okButton"
+                            android:src="@drawable/ic_check_48dp"
+                            android:scaleType="centerInside"
+                            style="@style/RoundAccentButton"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:padding="20dp"/>
+
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+
+        <View
+            android:id="@+id/glassPane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            />
+
+    </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
+
+</RelativeLayout>

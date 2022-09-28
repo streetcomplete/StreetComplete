@@ -4,15 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.RelativeLayout">
 
-    <ProgressBar
-        android:id="@+id/progressView"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
-
     <ImageView
         android:id="@+id/iconView"
         android:layout_width="wrap_content"

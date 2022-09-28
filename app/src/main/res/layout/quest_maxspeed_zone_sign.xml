@@ -6,7 +6,6 @@
     android:layout_height="118dp"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
     android:background="@drawable/background_rectangular_sign_white">
 
     <TextView

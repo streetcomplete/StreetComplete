@@ -29,7 +29,6 @@
             android:layout_centerInParent="true"
             android:orientation="horizontal"
             android:background="@drawable/background_rectangular_sign_yellow"
-            android:padding="16dp"
             android:id="@+id/feetInputSign">
 
             <EditText
@@ -89,7 +88,6 @@
             android:gravity="center"
             android:layout_centerInParent="true"
             android:background="@drawable/background_rectangular_sign_yellow"
-            android:padding="16dp"
             android:orientation="horizontal"
             android:id="@+id/meterInputSign">
 

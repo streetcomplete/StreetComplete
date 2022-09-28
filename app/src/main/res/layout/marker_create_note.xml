@@ -31,6 +31,7 @@
                 tools:ignore="RtlSymmetry"/>
 
             <ImageView
+                android:id="@+id/createNoteIconView"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="7dp"

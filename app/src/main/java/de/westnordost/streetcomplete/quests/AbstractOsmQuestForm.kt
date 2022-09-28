@@ -110,7 +110,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element))
+        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
         setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
     }
 
@@ -212,7 +212,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
         val leaveNoteContext = "Unable to answer \"$questTitle\""
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
@@ -269,7 +269,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {
