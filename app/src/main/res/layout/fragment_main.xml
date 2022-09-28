@@ -13,6 +13,19 @@
         tools:layout="@layout/fragment_map"
         />
 
+    <ImageView
+        android:id="@+id/crosshairView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/quest_form_topOffset"
+        android:paddingBottom="@dimen/quest_form_bottomOffset"
+        android:paddingLeft="@dimen/quest_form_leftOffset"
+        android:paddingRight="@dimen/quest_form_rightOffset"
+        android:layout_centerInParent="true"
+        android:src="@drawable/crosshair"
+        android:alpha="0.6"
+        tools:ignore="RtlHardcoded" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mapControls"
         android:layout_width="match_parent"

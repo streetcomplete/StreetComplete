@@ -247,6 +247,12 @@ class MainFragment :
         if (bottomSheetFragment != null) {
             mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
         }
+        binding.crosshairView.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
         updateLocationPointerPin()
     }
 
@@ -702,7 +708,9 @@ class MainFragment :
     }
 
     private fun updateCreateButtonVisibility() {
-        binding.createButton.isGone = selectedOverlaySource.selectedOverlay?.isCreateNodeEnabled != true
+        val isCreateNodeEnabled = selectedOverlaySource.selectedOverlay?.isCreateNodeEnabled == true
+        binding.createButton.isGone = !isCreateNodeEnabled
+        binding.crosshairView.isGone = !isCreateNodeEnabled
     }
 
     private fun updateCreateButtonEnablement(zoom: Float) {
