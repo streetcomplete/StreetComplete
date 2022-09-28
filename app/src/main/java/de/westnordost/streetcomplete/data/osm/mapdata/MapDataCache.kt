@@ -33,10 +33,10 @@ class MapDataCache(
     //  approximately 80% of all elements were found to be nodes
     //  approximately every second node is part of a way
     //  more than 90% of elements are not part of a relation
-    private val wayCache = HashMap<Long, Way?>(initialCapacity / 6)
-    private val relationCache = HashMap<Long, Relation?>(initialCapacity / 10)
-    private val wayGeometryCache = HashMap<Long, ElementGeometry?>(initialCapacity / 6)
-    private val relationGeometryCache = HashMap<Long, ElementGeometry?>(initialCapacity / 10)
+    private val wayCache = HashMap<Long, Way>(initialCapacity / 6)
+    private val relationCache = HashMap<Long, Relation>(initialCapacity / 10)
+    private val wayGeometryCache = HashMap<Long, ElementGeometry>(initialCapacity / 6)
+    private val relationGeometryCache = HashMap<Long, ElementGeometry>(initialCapacity / 10)
     private val wayIdsByNodeIdCache = HashMap<Long, MutableList<Long>>(initialCapacity / 2)
     private val relationIdsByElementKeyCache = HashMap<ElementKey, MutableList<Long>>(initialCapacity / 10)
 
@@ -181,8 +181,8 @@ class MapDataCache(
     ): Element? = synchronized(this) {
         return when (type) {
             ElementType.NODE -> spatialCache.get(id) ?: fetch(type, id)
-            ElementType.WAY -> wayCache.getOrPutNullable(id) { fetch(type, id) as? Way }
-            ElementType.RELATION -> relationCache.getOrPutNullable(id) { fetch(type, id) as? Relation }
+            ElementType.WAY -> wayCache.getOrPutIfNotNull(id) { fetch(type, id) as? Way }
+            ElementType.RELATION -> relationCache.getOrPutIfNotNull(id) { fetch(type, id) as? Relation }
         }
     }
 
@@ -197,8 +197,8 @@ class MapDataCache(
     ): ElementGeometry? = synchronized(this) {
         return when (type) {
             ElementType.NODE -> spatialCache.get(id)?.let { ElementPointGeometry(it.position) } ?: fetch(type, id)
-            ElementType.WAY -> wayGeometryCache.getOrPutNullable(id) { fetch(type, id) }
-            ElementType.RELATION -> relationGeometryCache.getOrPutNullable(id) { fetch(type, id) }
+            ElementType.WAY -> wayGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
+            ElementType.RELATION -> relationGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
         }
     }
 
@@ -212,48 +212,26 @@ class MapDataCache(
         keys: Collection<ElementKey>,
         fetch: (Collection<ElementKey>) -> List<Element>
     ): List<Element> = synchronized(this) {
-        val keysToFetch = mutableListOf<ElementKey>()
-        val cachedElements = mutableListOf<Element>()
-        for (key in keys) {
-            val element = when (key.type) {
+        val cachedElements = keys.mapNotNull { key ->
+            when (key.type) {
                 ElementType.NODE -> spatialCache.get(key.id)
                 ElementType.WAY -> wayCache[key.id]
                 ElementType.RELATION -> relationCache[key.id]
             }
-
-            if (element != null) {
-                cachedElements.add(element)
-            } else {
-                val cachedButNull = when (key.type) {
-                    ElementType.WAY -> wayCache.containsKey(key.id)
-                    ElementType.RELATION -> relationCache.containsKey(key.id)
-                    else -> false
-                }
-                if (!cachedButNull)
-                    keysToFetch.add(key)
-            }
         }
 
         // exit early if everything is cached
-        if (keysToFetch.isEmpty()) return cachedElements
+        if (keys.size == cachedElements.size) return cachedElements
 
         // otherwise, fetch the rest & save to cache
+        val cachedKeys = cachedElements.map { ElementKey(it.type, it.id) }.toSet()
+        val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedElements = fetch(keysToFetch)
         for (element in fetchedElements) {
             when (element.type) {
                 ElementType.WAY -> wayCache[element.id] = element as Way
                 ElementType.RELATION -> relationCache[element.id] = element as Relation
                 else -> Unit
-            }
-        }
-        if (fetchedElements.size != keysToFetch.size) {
-            // some keysToFetch were not fetched, thus the elements are not in database
-            // cache null for all those keys
-            for (key in keysToFetch) {
-                if (key.type == ElementType.WAY)
-                    wayCache.getOrPut(key.id) { null }
-                else if (key.type == ElementType.RELATION)
-                    relationCache.getOrPut(key.id) { null }
             }
         }
         return cachedElements + fetchedElements
@@ -300,49 +278,26 @@ class MapDataCache(
     ): List<ElementGeometryEntry> = synchronized(this) {
         // the implementation here is quite identical to the implementation in getElements, only
         // that geometries and not elements are returned and thus different caches are accessed
-
-        val keysToFetch = mutableListOf<ElementKey>()
-        val cachedEntries = mutableListOf<ElementGeometryEntry>()
-        for (key in keys) {
-            val geometry = when (key.type) {
+        val cachedEntries = keys.mapNotNull { key ->
+            when (key.type) {
                 ElementType.NODE -> spatialCache.get(key.id)?.let { ElementPointGeometry(it.position) }
                 ElementType.WAY -> wayGeometryCache[key.id]
                 ElementType.RELATION -> relationGeometryCache[key.id]
-            }
-
-            if (geometry != null) {
-                cachedEntries.add(ElementGeometryEntry(key.type, key.id, geometry))
-            } else {
-                val cachedButNull = when (key.type) {
-                    ElementType.WAY -> wayGeometryCache.containsKey(key.id)
-                    ElementType.RELATION -> relationGeometryCache.containsKey(key.id)
-                    else -> false
-                }
-                if (!cachedButNull)
-                    keysToFetch.add(key)
-            }
+            }?.let { ElementGeometryEntry(key.type, key.id, it) }
         }
 
         // exit early if everything is cached
-        if (keysToFetch.isEmpty()) return cachedEntries
+        if (keys.size == cachedEntries.size) return cachedEntries
 
         // otherwise, fetch the rest & save to cache
+        val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
+        val keysToFetch = keys.filterNot { it in cachedKeys }
         val fetchedEntries = fetch(keysToFetch)
         for (entry in fetchedEntries) {
             when (entry.elementType) {
                 ElementType.WAY -> wayGeometryCache[entry.elementId] = entry.geometry
                 ElementType.RELATION -> relationGeometryCache[entry.elementId] = entry.geometry
                 else -> Unit
-            }
-        }
-        if (fetchedEntries.size != keysToFetch.size) {
-            // some keysToFetch were not fetched, thus the geometries are not in database
-            // cache null for all those keys
-            for (key in keysToFetch) {
-                if (key.type == ElementType.WAY)
-                    wayGeometryCache.getOrPut(key.id) { null }
-                else if (key.type == ElementType.RELATION)
-                    relationGeometryCache.getOrPut(key.id) { null }
             }
         }
         return cachedEntries + fetchedEntries
@@ -506,7 +461,7 @@ class MapDataCache(
 
         val wayIds = HashSet<Long>(wayCache.size)
         for (way in wayCache.values) {
-            if (way != null && way.nodeIds.any { spatialCache.get(it) != null }) {
+            if (way.nodeIds.any { spatialCache.get(it) != null }) {
                 wayIds.add(way.id)
             }
         }
@@ -521,21 +476,20 @@ class MapDataCache(
 
         val relationIds = HashSet<Long>(relationCache.size)
         for (relation in relationCache.values) {
-            if (relation != null && relation.members.any { it.isCachedWayOrNode() || it.hasCachedMembers() }) {
+            if (relation.members.any { it.isCachedWayOrNode() || it.hasCachedMembers() }) {
                 relationIds.add(relation.id)
             }
         }
         return wayIds to relationIds
     }
 
-    private fun <K, V> MutableMap<K, V>.getOrPutNullable(key: K, defaultValue: () -> V): V? {
-        val value = get(key)
-        return if (value == null && !containsKey(key)) {
-            val computed = defaultValue()
-            put(key, computed)
-            computed
-        } else
-            value
+    private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
+        val v = get(key)
+        if (v != null) return v
+
+        val computed = valueOrNull()
+        if (computed != null) put(key, computed)
+        return computed
     }
 
     private fun Node.toElementGeometryEntry() =
