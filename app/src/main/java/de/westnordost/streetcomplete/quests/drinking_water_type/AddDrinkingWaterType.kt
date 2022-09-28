@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
 
-    override val elementFilter = """nodes with
+    override val elementFilter = """
+        nodes with
         (
             amenity = drinking_water
             or
