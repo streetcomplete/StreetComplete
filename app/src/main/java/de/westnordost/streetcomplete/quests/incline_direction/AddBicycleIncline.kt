@@ -35,8 +35,7 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirectionAnswer> {
             .filter { element -> tagFilter.matches(element) }
             .filter { element ->
                 val geometry = mapData.getGeometry(element.type, element.id) as? ElementPolylinesGeometry
-                val overlyLong = geometry?.polylines?.filter { it.measuredLength() > 200 }
-                overlyLong?.size == 0
+                geometry?.polylines?.all { it.measuredLength() < 200 } == true
             }
     }
 
