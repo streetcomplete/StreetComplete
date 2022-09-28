@@ -7,9 +7,9 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import kotlin.math.PI
 
-class AddInclineForm : AImageListQuestForm<RegularInclineDirection, InclineDirectionAnswer>() {
+class AddInclineForm : AImageListQuestForm<Incline, Incline>() {
     override val items get() =
-        RegularInclineDirection.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
+        Incline.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
 
     override val itemsPerRow = 2
 
@@ -27,7 +27,7 @@ class AddInclineForm : AImageListQuestForm<RegularInclineDirection, InclineDirec
         imageSelector.items = items
     }
 
-    override fun onClickOk(selectedItems: List<RegularInclineDirection>) {
-        applyAnswer(RegularInclineDirectionAnswer(selectedItems.first()))
+    override fun onClickOk(selectedItems: List<Incline>) {
+        applyAnswer(selectedItems.first())
     }
 }

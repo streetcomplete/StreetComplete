@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.util.math.measuredLength
 
-class AddBicycleIncline : OsmElementQuestType<InclineDirectionAnswer> {
+class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     private val tagFilter by lazy { """
         ways with mtb:scale:uphill
@@ -49,6 +49,6 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirectionAnswer> {
 
     override fun createForm() = AddBicycleInclineForm()
 
-    override fun applyAnswerTo(answer: InclineDirectionAnswer, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, timestampEdited: Long) =
         answer.applyTo(tags)
 }
