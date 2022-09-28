@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
+import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
@@ -362,6 +363,8 @@ fun questTypeRegistry(
     // postboxes (collection times are further up, see comment)
     AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
     AddPostboxRef(), // requires text input and to be very close to the collection plate
+
+    AddAccessPointRef(), // requires text input and to be very close to the collection plate
 
     AddWheelchairAccessOutside(),
 
