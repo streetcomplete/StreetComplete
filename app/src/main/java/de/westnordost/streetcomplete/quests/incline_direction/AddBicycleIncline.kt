@@ -48,7 +48,7 @@ class AddBicycleIncline : OsmElementQuestType<InclineDirection> {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_incline_title
 
-    override fun createForm() = AddInclineForm()
+    override fun createForm() = AddBicycleInclineForm()
 
     override fun applyAnswerTo(answer: InclineDirection, tags: Tags, timestampEdited: Long) =
         answer.applyTo(tags)
