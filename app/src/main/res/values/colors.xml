@@ -33,6 +33,8 @@
 
     <color name="disabled_text">#6666</color>
 
+    <color name="matched_search_text">#6000</color>
+
     <color name="button_white">#fff</color>
 
     <color name="greyed_out">#66999999</color>
