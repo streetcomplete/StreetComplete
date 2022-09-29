@@ -44,6 +44,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
                     props["color"] = style.color
                     props["strokeColor"] = getDarkenedColor(style.color)
+                    style.icon?.let { props["icon"] = it }
                     style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
