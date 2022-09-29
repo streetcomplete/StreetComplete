@@ -384,6 +384,7 @@ quest/
     road_construction.svg
     roof_shape.svg
     seating.svg
+    shelter_type.svg                modified from https://wiki.openstreetmap.org/wiki/File:Shelter-14.svg
     shower.svg
     sidewalk.svg
     smoking.svg
