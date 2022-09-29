@@ -105,7 +105,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
             key = javaClass.simpleName,
             serialize = { it },
             deserialize = { it },
-            maxEntries = 15
+            maxEntries = 25
         )
     }
 
@@ -113,7 +113,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 3, historyCount = 15, first = 1)
+            .mostCommonWithin(target = 3, historyCount = 25, first = 1)
             .toList()
     }
 

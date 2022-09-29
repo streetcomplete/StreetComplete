@@ -12,7 +12,24 @@ class LastPickedValuesStore<T : Any>(
     private val maxEntries: Int = 50
 ) {
     fun add(newValues: Iterable<T>) {
-        val lastValues = newValues.asSequence().map(serialize) + getRaw()
+        // only allow up to maxCount consecutive entries
+        // this reduces rare entries getting pushed out of the list by very common entries
+        // e.g. 50 consecutive asphalt surface answers would remove the second most common surface
+        var previous = ""
+        var previousCount = 1
+        val maxCount = 2
+        val lastValues = newValues.asSequence().map(serialize) + getRaw().filter {
+            if (it != previous) {
+                previous = it
+                previousCount = 1
+                true
+            } else if (previousCount <= maxCount) {
+                previousCount++
+                true
+            } else {
+                false
+            }
+        }
         prefs.edit {
             putString(getKey(), lastValues.take(maxEntries).joinToString(","))
         }

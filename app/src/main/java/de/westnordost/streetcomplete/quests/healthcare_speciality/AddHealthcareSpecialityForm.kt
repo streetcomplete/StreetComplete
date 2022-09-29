@@ -74,7 +74,6 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
             key = javaClass.simpleName,
             serialize = { it },
             deserialize = { it },
-            maxEntries = 10
         )
     }
 
@@ -82,7 +81,7 @@ class AddHealthcareSpecialityForm : AbstractOsmQuestForm<String>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 10, first = 1)
+            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
             .toList()
     }
 

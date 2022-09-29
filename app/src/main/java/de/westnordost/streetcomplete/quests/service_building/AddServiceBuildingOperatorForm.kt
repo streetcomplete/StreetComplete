@@ -31,7 +31,6 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
             key = javaClass.simpleName,
             serialize = { it },
             deserialize = { it },
-            maxEntries = 10
         )
     }
 
@@ -39,7 +38,7 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
 
     private val lastPickedAnswers by lazy {
         favs.get()
-            .mostCommonWithin(target = 10, historyCount = 15, first = 1)
+            .mostCommonWithin(target = 10, historyCount = 50, first = 1)
             .toList()
     }
 }
