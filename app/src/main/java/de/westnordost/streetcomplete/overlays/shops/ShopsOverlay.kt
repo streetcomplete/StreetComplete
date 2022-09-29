@@ -55,3 +55,8 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
 
     override fun createForm(element: Element?) = ShopsOverlayForm()
 }
+
+// TODO 3d-shadow for icons?
+// TODO Icons cannot overlap
+// TODO text is directly on top of icons
+// TODO icons are shown on every corner!
