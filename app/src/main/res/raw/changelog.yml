@@ -4,6 +4,7 @@ v48.0-alpha1: |
    You can add addresses to buildings, edit existing addresses and also add addresses at any position, using the same sleek UI as for the address quests.</p>
   <h3>New Quests</h3>
   <ul>
+  <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
   <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
   <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
   </ul>
@@ -12,6 +13,7 @@ v48.0-alpha1: |
   <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
   </ul>
 
 v47.0: |
