@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.shops
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.ConfigurationCompat
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -16,6 +17,7 @@ import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -28,6 +30,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     private lateinit var featureCtrl: FeatureViewController
 
     private var feature: Feature? = null
+    private var name: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,17 +39,17 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         if (element != null) {
             val locales = ConfigurationCompat.getLocales(resources.configuration).toTypedArray()
 
-            val features = featureDictionary
+            feature = featureDictionary
                 .byTags(element.tags)
                 .forLocale(*locales)
                 .forGeometry(element.geometryType)
                 .inCountry(countryOrSubdivisionCode)
                 .find()
-
-            feature = features.firstOrNull() // TODO what if there are several?!
+                .firstOrNull()
         } else {
             feature = null
         }
+        name = element?.tags?.get("name")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +75,8 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             ).show()
         }
 
-        // TODO name view
+        updateNameInputFromFeature(feature)
+        binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     private fun filterOnlyShops(feature: Feature): Boolean {
@@ -82,14 +86,21 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private fun onSelectedFeature(feature: Feature?) {
         featureCtrl.feature = feature
+        updateNameInputFromFeature(feature)
         checkIsFormComplete()
     }
 
+    private fun updateNameInputFromFeature(feature: Feature?) {
+        val name = feature?.addTags?.get("name")
+        binding.nameInput.setText(name)
+        binding.nameInput.isEnabled = name == null
+    }
+
     override fun hasChanges(): Boolean =
-        feature != featureCtrl.feature
+        feature != featureCtrl.feature || name != binding.nameInput.nonBlankTextOrNull
 
     override fun isFormComplete(): Boolean =
-        featureCtrl.feature != null
+        featureCtrl.feature != null // name is not necessary
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
@@ -99,6 +110,12 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             tagChanges.replaceShop(tags)
         }
 
+        val newName = binding.nameInput.nonBlankTextOrNull
+        if (name != newName) {
+            if (newName != null) tagChanges["name"] = newName
+            else tagChanges.remove("name")
+        }
+
         if (element != null) {
             applyEdit(UpdateElementTagsAction(tagChanges.create()))
         } else {
@@ -106,3 +123,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         }
     }
 }
+
+// TODO need "is vacant" option
+// TODO need "no name" option?
+// TODO multi-language-name?
