@@ -40,7 +40,10 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
             .map { element ->
-                val feature = featureDictionaryFuture.get().byTags(element.tags).find().firstOrNull()
+                val feature = featureDictionaryFuture.get()
+                    .byTags(element.tags)
+                    .isSuggestion(false) // no suggestions because we just want the icon
+                    .find().firstOrNull()
 
                 val icon = "ic_preset_" + (feature?.icon ?: "maki-circle" ).replace('-','_')
                 val label = getNameLabel(element.tags)
