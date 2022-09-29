@@ -130,7 +130,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 
 ### Created for StreetComplete
 
-* [StreetCompleteJSON](https://github.com/goldfndr/StreetCompleteJSON) by [@goldfndr](https://github.com/goldfndr) listing all tags edited by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete)
+* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
 * [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
 * [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
@@ -139,7 +139,6 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
 * [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Shop.kt#L6)
-* [Listing of tags added by StreetComplete](https://taginfo.openstreetmap.org/projects/streetcomplete#tags) - which is entirely unofficial and [separately maintained](https://github.com/matkoniecz/Zazolc/tree/taginfo)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 
