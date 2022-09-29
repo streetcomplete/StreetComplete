@@ -106,5 +106,3 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         }
     }
 }
-
-// TODO "?" icon for when preset view shows nothing(?)

@@ -50,7 +50,9 @@ class FeatureViewController(
         if (feature == null) {
             textView.text = null
             textView.setHint(R.string.quest_select_hint)
-            iconView.setImageDrawable(null)
+            val questionDrawable = iconView.context.getDrawable(R.drawable.ic_question_24dp)
+            questionDrawable?.alpha = 64
+            iconView.setImageDrawable(questionDrawable)
         } else if (feature.isSuggestion) {
             val parentFeature = getParentFeature(feature)
             val text = SpannableStringBuilder()
