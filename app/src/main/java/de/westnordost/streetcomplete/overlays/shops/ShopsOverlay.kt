@@ -16,8 +16,9 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
+import java.util.concurrent.FutureTask
 
-class ShopsOverlay(private val featureDictionary: FeatureDictionary): Overlay {
+class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>): Overlay {
 
     override val title = R.string.overlay_shops
     override val icon = R.drawable.ic_quest_shop
@@ -35,7 +36,7 @@ class ShopsOverlay(private val featureDictionary: FeatureDictionary): Overlay {
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
             .map { element ->
-                val feature = featureDictionary.byTags(element.tags).find().firstOrNull()
+                val feature = featureDictionaryFuture.get().byTags(element.tags).find().firstOrNull()
 
                 val icon = feature?.icon ?: "ic_preset_make_shop" // TODO or dot
                 val label = getNameLabel(element.tags)

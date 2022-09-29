@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val overlaysModule = module {
@@ -14,6 +15,6 @@ val overlaysModule = module {
         SidewalkOverlay(),
         StreetParkingOverlay(),
         AddressOverlay(),
-        ShopsOverlay(),
+        ShopsOverlay(get(named("FeatureDictionaryFuture"))),
     )) }
 }
