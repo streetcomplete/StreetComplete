@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays
 
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
+import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
@@ -12,6 +13,7 @@ val overlaysModule = module {
         WayLitOverlay(),
         SidewalkOverlay(),
         StreetParkingOverlay(),
-        AddressOverlay()
+        AddressOverlay(),
+        ShopsOverlay(),
     )) }
 }

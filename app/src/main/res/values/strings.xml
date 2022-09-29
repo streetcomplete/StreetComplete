@@ -1555,6 +1555,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_addresses">Addresses</string>
 
+    <string name="overlay_shops">Shops</string>
+
     <string name="overlay_street_parking">Street parking</string>
 
     <string name="quest_accessPointRef_title">What’s the identification number here?</string>
