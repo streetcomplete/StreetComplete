@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.ShowHouseNumber
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.koin.android.ext.android.inject
 
@@ -71,7 +70,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         if (tags != null) {
             setTitleHintLabel(getNameAndLocationLabelString(
                 tags, resources, featureDictionary,
-                showHouseNumber = ShowHouseNumber.NEVER
+                showHouseNumber = false
             ))
         }
         setMarkerIcon(R.drawable.ic_quest_housenumber)
