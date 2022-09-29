@@ -42,11 +42,11 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
             .map { element ->
                 val feature = featureDictionaryFuture.get().byTags(element.tags).find().firstOrNull()
 
-                val icon = feature?.icon ?: "ic_preset_make_shop" // TODO or dot
+                val icon = "ic_preset_" + (feature?.icon ?: "maki-circle" ).replace('-','_')
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {
-                    PointStyle(icon, name)
+                    PointStyle(icon, label)
                 } else {
                     PolygonStyle(Color.INVISIBLE, icon, label)
                 }
