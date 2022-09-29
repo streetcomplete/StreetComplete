@@ -201,6 +201,16 @@ recycling_centre.jpg           Public Domain     https://commons.wikimedia.org/w
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 
+shelter_type_public_transpor…  CC-BY-SA 4.0      Silar https://wiki.openstreetmap.org/wiki/File:02019_1048_(2)_Bus_station,_%C5%BBywiecka_street,_Bia%C5%82a.jpg
+shelter_type_picnic_shelter.…  CC-BY-SA 3.0      B.navez https://wiki.openstreetmap.org/wiki/File:R%C3%A9union_Ma%C3%AFdo_kiosque_pique-nique.JPG
+shelter_type_gazebo.jpg        CC-BY 4.0         ermell https://wiki.openstreetmap.org/wiki/File:Bamberg-Hain-Pavillion-P1180860.jpg
+shelter_type_weather_shelter…                    Fröstel https://wiki.openstreetmap.org/wiki/File:German-shelter-harz.jpg
+shelter_type_lean_to.jpg       CC-BY-SA 3.0      Mwanner https://wiki.openstreetmap.org/wiki/File:Adirondack_Lean-to.jpg
+shelter_type_pavilion.jpg      CC-BY-SA 4.0      Bwag https://wiki.openstreetmap.org/wiki/File:Obersiebenbrunn_-_Schloss,_Gartenpavillon.JPG
+shelter_type_basic_hut.jpg     CC-BY-SA 3.0      Luca Bergamasco https://wiki.openstreetmap.org/wiki/File:BivaccoBertoglioNebbia.jpg
+shelter_type_sun_shelter.jpg   CC-BY-SA 2.0      S2374 https://wiki.openstreetmap.org/wiki/File:Shelter_Providing_Shade_from_the_Sun.jpg
+shelter_type_field_shelter…    PB                Imagic https://wiki.openstreetmap.org/wiki/File:Field_shelter.jpg
+
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
