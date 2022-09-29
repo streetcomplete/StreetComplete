@@ -32,6 +32,10 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
     )
     override val isCreateNodeEnabled = true
 
+    override val sceneUpdates = listOf(
+        "layers.housenumber-labels.enabled" to "false" // because they often overlap with shop names
+    )
+
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
