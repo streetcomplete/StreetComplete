@@ -25,7 +25,7 @@ global:
     town_color: '#000000'
 
     building_color: [0.16, 0.36, 0.36, 0.35]
-    building_outline_color: [0.26, 0.6, 0.6, 0.7]
+    building_outline_color: [0.26, 0.6, 0.6, 0.4]
 
     boundary_color: '#e72'
 
