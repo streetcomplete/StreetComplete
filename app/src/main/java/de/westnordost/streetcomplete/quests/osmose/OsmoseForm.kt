@@ -88,6 +88,10 @@ class OsmoseForm(private val db: OsmoseDao) : AbstractOsmQuestForm<OsmoseAnswer>
             prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString(", ")).apply()
             db.reloadIgnoredItems()
             osmQuestController.delete(questKey as OsmQuestKey)
+        },
+        AnswerItem(R.string.quest_osmose_delete_this_issue) {
+            db.delete(ElementKey(element.type, element.id))
+            osmQuestController.delete(questKey as OsmQuestKey)
         }
     ) }
 

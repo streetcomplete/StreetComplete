@@ -66,6 +66,7 @@ class MapDataController internal constructor(
             geometryDB.deleteAll(oldElementKeys)
             geometryDB.putAll(geometryEntries)
             elementDB.putAll(mapData)
+            osmoseDao.deleteAll(oldElementKeys)
         }
 
         Log.i(TAG,
@@ -103,6 +104,7 @@ class MapDataController internal constructor(
             geometryDB.putAll(geometryEntries)
             elementDB.putAll(elements)
             createdElementsController.putAll(newElementKeys)
+            osmoseDao.deleteAll(deletedKeys)
         }
 
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)

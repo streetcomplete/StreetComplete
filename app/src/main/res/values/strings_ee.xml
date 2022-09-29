@@ -193,6 +193,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
     <string name="quest_osmose_hide_type">Ignore future issues of this type</string>
+    <string name="quest_osmose_delete_this_issue">Remove this issue</string>
     <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
     <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Traffic lights and zebra</string>
