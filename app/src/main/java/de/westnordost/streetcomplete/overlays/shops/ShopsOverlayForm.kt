@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.shops
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isInvisible
@@ -33,15 +34,6 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private var feature: Feature? = null
     private var name: String? = null
-    private var isVacant: Boolean = false
-
-    private val vacantFeature: Feature by lazy {
-        featureDictionary
-            .byTags(mapOf("shop" to "vacant"))
-            .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
-            .find()
-            .first()
-    }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() }
@@ -51,11 +43,9 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         super.onCreate(savedInstanceState)
 
         val element = element
-        if (element != null) {
-            isVacant = IS_DISUSED_SHOP_EXPRESSION.matches(element)
-
-            feature = if (isVacant) {
-                vacantFeature
+        feature = element?.let {
+            if (IS_DISUSED_SHOP_EXPRESSION.matches(element)) {
+                createVacantShop(requireContext().resources)
             } else {
                 featureDictionary
                     .byTags(element.tags)
@@ -64,10 +54,14 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                     .inCountry(countryOrSubdivisionCode)
                     .find()
                     .firstOrNull()
+                // if not found anything in the iD presets, it's a shop type unknown to iD presets
+                ?: DummyFeature(
+                    "shop/unknown",
+                    requireContext().getString(R.string.unknown_shop_title),
+                    "maki-shop",
+                    element.tags
+                )
             }
-        } else {
-            isVacant = false
-            feature = null
         }
         name = element?.tags?.get("name")
     }
@@ -108,20 +102,14 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
-        isVacant = false
-        binding.nameInput.setText(feature?.addTags?.get("name"))
+        binding.nameInput.setText(feature.addTags?.get("name"))
 
         updateNameInputVisibility()
         checkIsFormComplete()
     }
 
-
     private fun setVacant() {
-        featureCtrl.feature = vacantFeature
-        isVacant = true
-        binding.nameInput.text = null
-        updateNameInputVisibility()
-        checkIsFormComplete()
+        onSelectedFeature(createVacantShop(requireContext().resources))
     }
 
     private fun updateNameInputVisibility() {
@@ -130,26 +118,30 @@ class ShopsOverlayForm : AbstractOverlayForm() {
            and if that feature doesn't already set a name (i.e. is a brand)
          */
         binding.nameInputContainer.isInvisible =
-            isVacant || selectedFeature == null || selectedFeature.addTags?.get("name") != null
+            selectedFeature == null ||
+            selectedFeature.isSuggestion && selectedFeature.addTags?.get("name") != null ||
+            selectedFeature.id == "shop/vacant"
     }
 
     override fun hasChanges(): Boolean =
         feature != featureCtrl.feature || name != binding.nameInput.nonBlankTextOrNull
 
     override fun isFormComplete(): Boolean =
-        featureCtrl.feature != null || isVacant // name is not necessary
+        featureCtrl.feature != null // name is not necessary
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-        if (isVacant) {
-            tagChanges.replaceShop(mapOf("disused:shop" to "yes"))
+        /* always replace the feature, even if just the name changed, because it could still be
+           e.g. an amenity=cafe (no change) but a different owner, so a completely different
+           café,
+           EXCEPT if just the name was added and before there was not any name. Then, it is very
+           likely that it is the same shop, only before the info was incomplete */
+        val newName = binding.nameInput.nonBlankTextOrNull
+        if (name == null && newName != null && featureCtrl.feature == feature) {
+            tagChanges["name"] = newName
         } else {
-            /* always replace the feature, even if just the name changed, because it could still be
-               e.g. an amenity=cafe (no change) but a different owner, so a completely different
-               café */
             tagChanges.replaceShop(featureCtrl.feature!!.addTags)
-            val newName = binding.nameInput.nonBlankTextOrNull
             if (newName != null) tagChanges["name"] = newName
         }
 
@@ -161,10 +153,17 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     }
 }
 
+private fun createVacantShop(resources: Resources) = DummyFeature(
+    "shop/vacant",
+    resources.getString(R.string.vacant_shop_title),
+    "maki-shop",
+    mapOf("disused:shop" to "yes")
+)
+
 // TODO update "KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED"?
-// TODO how to deal with places not in iD presets? (e.g. gitarrenbauer)
 
-// TODO add "no name" option?
-// TODO add multi-language-name feature?
+// TODO update check date if set? Or only if nothing changed?
+
+// TODO add "no name" option (analogous to AddPlaceName quest)?
+// TODO add multi-language-name feature (analogous to AddPlaceName quest)?
 // TODO not always replace all tags / also replace all tags on name change? -> ask user instead? -> each time??
-
