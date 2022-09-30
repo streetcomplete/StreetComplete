@@ -381,7 +381,7 @@ internal class MapDataCacheTest {
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
         verify(wayDB).getAllForNode(1L)
         // now we have it cached
-        assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
+        assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
     }
 
     @Test fun `getWaysForNode is cached for nodes inside bbox after updating with bbox`() {
@@ -453,11 +453,32 @@ internal class MapDataCacheTest {
         assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
         assertTrue(cache.getWaysForNode(3L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way2)))
 
-        val way2updated = way(2, nodes = listOf(3L, 2L))
+        val way2updated = way(2, nodes = listOf(3L, 2L, 1L))
+        cache.update(updatedElements = listOf(way2updated))
+        assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2updated)))
+        assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2updated)))
+        assertTrue(cache.getWaysForNode(3L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way2updated)))
+    }
+
+    @Test fun `getWaysForNode doesn't return updated way that used to contain the node before but now it doesn't`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(node1, node2, node3, way1, way2), bbox = nodesRect.asBoundingBox(16))
+        assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
+        assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
+        assertTrue(cache.getWaysForNode(3L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way2)))
+
+        val way2updated = way(2, nodes = listOf(2L))
         cache.update(updatedElements = listOf(way2updated))
         assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
         assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2updated)))
-        assertTrue(cache.getWaysForNode(3L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way2updated)))
+        assertTrue(cache.getWaysForNode(3L) { throw IllegalStateException() }.isEmpty())
     }
 
     @Test fun `getRelationsForNode and Way returns correct relations`() {
@@ -514,6 +535,26 @@ internal class MapDataCacheTest {
         cache.update(updatedElements = listOf(rel1updated))
         assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1updated)))
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel2, rel1updated)))
+    }
+
+    @Test fun `getRelationsForNode and Way doesn't return updated relation that used to contain the element before but now it doesn't`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val nodesRect = listOf(node1.position, node2.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, ""), RelationMember(ElementType.WAY, 1L, "")))
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, ""), RelationMember(ElementType.NODE, 1L, "")))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(node1, node2, way1, rel1, rel2), bbox = nodesRect.asBoundingBox(16))
+        assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
+        assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
+
+        val rel1updated = rel(1, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
+        val rel2updated = rel(2, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
+        cache.update(updatedElements = listOf(rel1updated, rel2updated))
+        assertTrue(cache.getRelationsForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel2updated)))
+        assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1updated)))
     }
 
     @Test fun `trim removes everything not referenced by spatialCache`() {
@@ -586,5 +627,112 @@ internal class MapDataCacheTest {
         cache.clear()
         assertEquals(emptyList<Relation>(), cache.getRelationsForNode(1L) { emptyList() })
         assertEquals(emptyList<Element>(), cache.getElements(listOf(node1, node2, way1, rel1, rel2).map { ElementKey(it.type, it.id) }) { emptyList() })
+    }
+
+    @Test fun `update doesn't create waysByNodeId entry if node is not in spatialCache`() {
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(way1))
+
+        val wayDB: WayDao = mock()
+        on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1))
+        assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
+        verify(wayDB).getAllForNode(1L) // was fetched from cache
+
+        on(wayDB.getAllForNode(2L)).thenReturn(listOf(way1))
+        assertTrue(cache.getWaysForNode(2L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
+        verify(wayDB).getAllForNode(2L) // was fetched from cache
+    }
+
+    @Test fun `update does create waysByNodeId entry if node is in spatialCache`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodes = listOf(node1, node2, node3)
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
+
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        cache.update(updatedElements = listOf(way1))
+
+        assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
+        assertTrue(cache.getWaysForNode(2L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1)))
+    }
+
+    @Test fun `update does add way to waysByNodeId entry if entry already exists`() {
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(way1))
+
+        val wayDB: WayDao = mock()
+        on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1))
+        assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
+        verify(wayDB).getAllForNode(1L) // was fetched from cache
+
+        val way2 = way(2, nodes = listOf(1L, 2L))
+        cache.update(updatedElements = listOf(way2))
+        assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
+
+        on(wayDB.getAllForNode(2L)).thenReturn(listOf(way1, way2))
+        assertTrue(cache.getWaysForNode(2L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
+        verify(wayDB).getAllForNode(2L) // was fetched from cache
+    }
+
+    @Test fun `update doesn't create relationsByElementKey entry if element is not referenced by spatialCache`() {
+        val node1 = node(1)
+        val node2 = node(2)
+        val way1 = way(1, nodes = listOf(1L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 2L, ""), RelationMember(ElementType.WAY, 1L, "")))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(node1, node2, way1, rel1))
+
+        val relationDB: RelationDao = mock()
+        on(relationDB.getAllForNode(2L)).thenReturn(listOf(rel1))
+        on(relationDB.getAllForWay(1L)).thenReturn(listOf(rel1))
+        assertTrue(cache.getRelationsForNode(2L) { relationDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(rel1)))
+        verify(relationDB).getAllForNode(2L) // was fetched from cache
+        assertTrue(cache.getRelationsForWay(1L) { relationDB.getAllForWay(it) }.containsExactlyInAnyOrder(listOf(rel1)))
+        verify(relationDB).getAllForWay(1L) // was fetched from cache
+    }
+
+    @Test fun `update does create relationsByElementKey entry if element is referenced by spatialCache`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(0.0002, 0.0002))
+        val nodes = listOf(node1, node2, node3)
+        val nodesRect = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox().enclosingTilesRect(16)
+        assertTrue(nodesRect.size <= 4) // fits in cache
+
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
+
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 3L, ""), RelationMember(ElementType.WAY, 1L, "")))
+        cache.update(updatedElements = listOf(way1, rel1))
+
+        assertTrue(cache.getRelationsForNode(3L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1)))
+        assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1)))
+    }
+
+    @Test fun `update does add way to relationsByElementKey entry if entry already exists`() {
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+        cache.update(updatedElements = listOf(rel1))
+
+        val relationDB: RelationDao = mock()
+        on(relationDB.getAllForWay(1L)).thenReturn(listOf(rel1))
+        assertTrue(cache.getRelationsForWay(1L) { relationDB.getAllForWay(it) }.containsExactlyInAnyOrder(listOf(rel1)))
+        verify(relationDB).getAllForWay(1L) // was fetched from cache
+
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.NODE, 3L, ""), RelationMember(ElementType.WAY, 1L, "")))
+        cache.update(updatedElements = listOf(rel2))
+        assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
+
+        on(relationDB.getAllForNode(3L)).thenReturn(listOf(rel2))
+        assertTrue(cache.getRelationsForNode(3L) { relationDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(rel2)))
+        verify(relationDB).getAllForNode(3L) // was fetched from cache
     }
 }
