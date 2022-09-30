@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
+import de.westnordost.streetcomplete.util.SpatialCache
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Access and listen to quests visible on the map */
@@ -72,6 +73,13 @@ class VisibleQuestsSource(
         }
     }
 
+    private val cache = SpatialCache(
+        SPATIAL_CACHE_TILE_ZOOM,
+        SPATIAL_CACHE_TILES,
+        SPATIAL_CACHE_INITIAL_CAPACITY,
+        { getAllVisibleFromDatabase(it) },
+        Quest::key, Quest::position
+    )
     init {
         osmQuestSource.addListener(osmQuestSourceListener)
         osmNoteQuestSource.addListener(osmNoteQuestSourceListener)
@@ -80,11 +88,12 @@ class VisibleQuestsSource(
         selectedOverlaySource.addListener(selectedOverlayListener)
     }
 
+    fun getAllVisible(bbox: BoundingBox): List<Quest> =
+        cache.get(bbox)
+
     /** Retrieve all visible quests in the given bounding box from local database */
-    fun getAllVisible(bbox: BoundingBox): List<Quest> {
-        val visibleQuestTypeNames = questTypeRegistry
-            .filter { isVisible(it) }
-            .map { it.name }
+    private fun getAllVisibleFromDatabase(bbox: BoundingBox): List<Quest> {
+        val visibleQuestTypeNames = questTypeRegistry.filter { isVisible(it) }.map { it.name }
         if (visibleQuestTypeNames.isEmpty()) return listOf()
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
@@ -97,7 +106,7 @@ class VisibleQuestsSource(
         }
     }
 
-    fun get(questKey: QuestKey): Quest? = when (questKey) {
+    fun get(questKey: QuestKey): Quest? = cache.get(questKey) ?: when (questKey) {
         is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
         is OsmQuestKey -> osmQuestSource.get(questKey)
     }?.takeIf { isVisible(it) }
@@ -119,12 +128,27 @@ class VisibleQuestsSource(
         listeners.remove(listener)
     }
 
+    fun clearCache() = cache.clear()
+
+    fun trimCache() = cache.trim(SPATIAL_CACHE_TILES / 3)
+
     private fun updateVisibleQuests(addedQuests: Collection<Quest>, deletedQuestKeys: Collection<QuestKey>) {
         if (addedQuests.isEmpty() && deletedQuestKeys.isEmpty()) return
+        cache.update(addedQuests, deletedQuestKeys)
         listeners.forEach { it.onUpdatedVisibleQuests(addedQuests, deletedQuestKeys) }
     }
 
     private fun invalidate() {
+        clearCache()
         listeners.forEach { it.onVisibleQuestsInvalidated() }
     }
 }
+
+// same tile zoom as used in QuestPinsManager which is the only caller of getAllVisible and only
+// ever queries tiles in that zoom
+private const val SPATIAL_CACHE_TILE_ZOOM = 16
+// set a large number of tiles, as the cache is not large in memory and it allows
+// better UX when scrolling the map
+private const val SPATIAL_CACHE_TILES = 128
+// in a city this is the approximate number of quests in ~30 tiles on default visibilities
+private const val SPATIAL_CACHE_INITIAL_CAPACITY = 10000
