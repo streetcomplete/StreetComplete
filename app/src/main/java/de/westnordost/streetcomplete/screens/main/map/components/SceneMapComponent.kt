@@ -69,7 +69,7 @@ class SceneMapComponent(
 
     private fun getAllSceneUpdates(): List<SceneUpdate> =
         getBaseSceneUpdates() + sceneUpdates.flatten().mapNotNull {
-            if (isAerialView && it.key.startsWith("layers.buildings")) null
+            if (isAerialView && it.first.startsWith("layers.buildings")) null
             else SceneUpdate(it.first, it.second)
         }
 

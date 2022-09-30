@@ -194,9 +194,8 @@ class ElementEditsController(
                     .sortedBy { it.createdTimestamp }.sortedBy { it.isSynced }
             }.filter { it.id != edit.id }
         }
-        
+
         // deep first
-        
         for (e in editsBasedOnThese) {
             result += getEditsBasedOnElementsCreatedByEdit(e)
         }

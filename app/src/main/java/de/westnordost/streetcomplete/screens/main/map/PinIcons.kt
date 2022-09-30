@@ -83,8 +83,6 @@ fun getTitle(map: Map<String, String>): String? {
     return getNameLabel(map) ?: getShortHouseNumber(map) ?: getTreeGenus(map)
 }
 
-}
-
 fun getTreeGenus(map: Map<String, String>): String? {
     if (map["natural"] != "tree") return null
     map["species"]?.let { return it }
@@ -94,3 +92,4 @@ fun getTreeGenus(map: Map<String, String>): String? {
             return map[it]
     }
     return null
+}

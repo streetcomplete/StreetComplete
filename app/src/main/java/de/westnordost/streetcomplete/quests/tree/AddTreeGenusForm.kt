@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.quests.tree
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.TextView
 import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
-import de.westnordost.streetcomplete.quests.shop_type.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.map.getTreeGenus
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -126,7 +130,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
             context?.getExternalFilesDir(null)?.let { dir ->
                 treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(it.substringBefore(" (").contains(" ")) })
             }
-        } catch (e: IOException) { } // file may not exist, so an exception is no surprise
+        } catch (_: IOException) { } // file may not exist, so an exception is no surprise
 
         // load from other data, assuming format: <Genus> (<localName>) or <Species> (<localName>)
         treeSet.addAll(otherDataGenus.split("\n").mapNotNull { it.toTree(false) })
@@ -152,6 +156,52 @@ private fun String.toTree(isSpecies: Boolean): Tree? {
         null
     else
         Tree(line.substringBefore(" ("), isSpecies, line.substringAfter("(").substringBeforeLast(")"))
+}
+
+// search adapter was removed, but we still want to use it here, because:
+// 1. tree species are not part of iD presets
+// 2. adjusting the code is more work that bluntly copying the removed search adapter
+private class SearchAdapter<T>(
+    private val context: Context,
+    private val filterQuery: (term: String) -> List<T>,
+    private val convertToString: (T) -> String
+) : BaseAdapter(), Filterable {
+
+    private val filter = SearchFilter()
+
+    private var items: List<T> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    override fun getCount(): Int = items.size
+    override fun getItem(position: Int): T = items[position]
+    override fun getItemId(position: Int): Long = position.toLong()
+    override fun getFilter() = filter
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view = convertView ?: LayoutInflater.from(context).inflate(android.R.layout.simple_dropdown_item_1line, parent, false)
+        (view as TextView).text = filter.convertResultToString(getItem(position))
+        return view
+    }
+
+    inner class SearchFilter : Filter() {
+        override fun performFiltering(constraint: CharSequence?) = FilterResults().also {
+            val term = constraint?.toString() ?: ""
+            val results = filterQuery(term)
+            it.count = results.size
+            it.values = results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults) {
+            items = results.values as List<T>
+        }
+
+        override fun convertResultToString(resultValue: Any?): CharSequence {
+            return (resultValue as? T?)?.let(convertToString) ?: super.convertResultToString(resultValue)
+        }
+    }
 }
 
 private const val otherDataGenus = """

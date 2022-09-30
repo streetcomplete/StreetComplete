@@ -6,5 +6,7 @@ class CustomOverlayForm : AbstractOverlayForm() {
 
     override fun hasChanges() = false
 
+    override fun isFormComplete() = false
+
     override fun onClickOk() {}
 }

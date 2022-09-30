@@ -335,8 +335,8 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
+            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags(element, context) { viewLifecycleScope.launch { solve(it) } } })
         }
-        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags(element, context) { viewLifecycleScope.launch { solve(it) } } })
 
         answers.addAll(otherAnswers)
         return answers

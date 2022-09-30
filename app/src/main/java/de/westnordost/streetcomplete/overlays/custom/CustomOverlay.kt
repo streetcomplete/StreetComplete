@@ -34,7 +34,7 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
             .map { it to getStyle(it) }
     }
 
-    override fun createForm(element: Element) = CustomOverlayForm()
+    override fun createForm(element: Element?) = CustomOverlayForm()
 }
 
 private fun getStyle(element: Element): Style {
