@@ -32,8 +32,9 @@ class TangramIconsSpriteSheet(
 
     private fun createSpritesheet(): String {
         val background = context.getDrawable(R.drawable.preset_pin)!!
-        val backgroundWidth = context.dpToPx(36).toInt()
-        val backgroundHeight = context.dpToPx(30).toInt()
+        val pad = 1
+        val backgroundWidth = context.dpToPx(36).toInt() + pad
+        val backgroundHeight = context.dpToPx(30).toInt() + pad
 
         val iconResIds = ICONS.toSortedSet()
         val iconSize = context.dpToPx(24).toInt()
@@ -55,7 +56,7 @@ class TangramIconsSpriteSheet(
             if (iconName.startsWith("ic_preset_")) {
                 icon.setTint(Color.BLACK)
             }
-            background.setBounds(x, y, x + backgroundWidth, y + backgroundHeight)
+            background.setBounds(x, y, x + backgroundWidth - pad, y + backgroundHeight - pad)
             background.draw(canvas)
             val iconX = x + context.dpToPx(8 + 2).toInt()
             val iconY = y + context.dpToPx(2 + 2).toInt()

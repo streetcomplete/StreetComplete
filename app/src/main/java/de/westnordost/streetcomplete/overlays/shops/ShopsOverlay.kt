@@ -58,6 +58,3 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
 
     override fun createForm(element: Element?) = ShopsOverlayForm()
 }
-
-// TODO Icons cannot overlap
-// TODO text is directly on top of icons

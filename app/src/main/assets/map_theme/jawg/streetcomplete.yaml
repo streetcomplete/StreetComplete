@@ -236,15 +236,63 @@ layers:
     # styled map data shown in overlays
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
-        icon:
-            filter: { $zoom: { min: 18 } }
+        # if the icons do not collide, it will get too busy
+        point-collide:
+            filter: { icon: true, $zoom: { min: 18, max: 19.999 } }
             draw:
                 map_data-icons:
                     interactive: true
                     priority: 1
+                    collide: true
                     size: [36px,30px]
                     sprite: function() { return feature.icon }
-
+                    offset: [-4px,-2px]
+                    text:
+                        anchor: [right]
+                        optional: true
+                        text_source: text
+                        max_lines: 2
+                        font:
+                            family: global.text_font_family
+                            fill: global.text_fill_color
+                            size: global.text_size
+                            stroke: { color: global.text_stroke_color, width: 4px }
+        # same as above but with collide=false, at ~max zoom
+        point-no-collide:
+            filter: { icon: true, $zoom: { min: 20 } }
+            draw:
+                map_data-icons:
+                    interactive: true
+                    priority: 1
+                    collide: false
+                    size: [36px,30px]
+                    sprite: function() { return feature.icon }
+                    offset: [-4px,-2px]
+                    text:
+                        anchor: [right]
+                        optional: true
+                        text_source: text
+                        max_lines: 2
+                        font:
+                            family: global.text_font_family
+                            fill: global.text_fill_color
+                            size: global.text_size
+                            stroke: { color: global.text_stroke_color, width: 4px }
+        # pure labels without icons do not render if specified in point style in tangram. Pure
+        # text labels shall never collide
+        label-no-icon:
+            filter: { text: true, icon: false, $zoom: { min: 18 } }
+            draw:
+                text:
+                    interactive: true
+                    priority: 1
+                    collide: false
+                    text_source: text
+                    font:
+                        family: global.text_font_family
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: { color: global.text_stroke_color, width: 4px }
         line:
             filter: { type: [line], color: true, dashed: false }
             draw:
@@ -324,16 +372,3 @@ layers:
                     width: 1m
                     cap: round
                     join: round
-        label:
-            filter: { text: true, $zoom: { min: 18 } }
-            draw:
-                text:
-                    interactive: true
-                    text_source: text
-                    collide: false
-                    priority: 1
-                    font:
-                        family: global.text_font_family
-                        fill: "#000"
-                        size: global.text_size
-                        stroke: { color: "#fff", width: 3.5px }
