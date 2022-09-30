@@ -153,7 +153,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>" + change.tagString() + "</tt>"
+               "<tt>" + change.toLinkedTagString() + "</tt>"
            ) +
            "</li>"
         })
@@ -167,21 +167,23 @@ class UndoDialog(
         txt.setHtml(
             context.resources.getString(R.string.create_node_action_description) +
             tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
-                "<li><tt>" + Html.escapeHtml("$key = $value") + "</tt></li>"
+                "<li><tt>" + linkedTagString(key, value) + "</tt></li>"
             }
         )
         return txt
     }
 }
 
-fun StringMapEntryChange.tagString(): String {
-    val valueText = when (this) {
+private fun StringMapEntryChange.toLinkedTagString(): String =
+    linkedTagString(key, when (this) {
         is StringMapEntryAdd -> value
         is StringMapEntryModify -> value
         is StringMapEntryDelete -> valueBefore
-    }
+    })
+
+private fun linkedTagString(key: String, value: String): String {
     val escapedKey = Html.escapeHtml(key)
-    val escapedValue = Html.escapeHtml(valueText)
+    val escapedValue = Html.escapeHtml(value)
     val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
     return "$keyLink = $escapedValue"
 }
