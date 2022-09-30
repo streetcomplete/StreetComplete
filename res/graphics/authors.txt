@@ -106,6 +106,7 @@ building/
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
     greenhouse.svg
+    guardhouse.svg
     hangar.svg
     historic.svg
     hospital.svg
