@@ -27,7 +27,8 @@ class SearchFeaturesDialog(
     private val countryOrSubdivisionCode: String? = null,
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
-    private val onSelectedFeatureFn: (Feature) -> Unit
+    private val onSelectedFeatureFn: (Feature) -> Unit,
+    private val preSelect: Collection<Feature>? = null
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
@@ -83,7 +84,7 @@ class SearchFeaturesDialog(
 
     private fun updateSearchResults() {
         val text = searchText
-        val list = if (text == null) defaultFeatures else getFeatures(text)
+        val list = if (text == null) preSelect ?: defaultFeatures else getFeatures(text)
         adapter.list = list.toMutableList()
         binding.noResultsText.isGone = list.isNotEmpty()
     }

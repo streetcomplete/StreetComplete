@@ -40,6 +40,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -47,6 +51,7 @@ import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosin
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -59,6 +64,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -78,6 +84,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -89,6 +96,7 @@ import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
@@ -124,12 +132,15 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.concurrent.FutureTask
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -170,6 +181,7 @@ class MainFragment :
     EditHistoryFragment.Listener,
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
+    CreatePoiFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -187,6 +199,8 @@ class MainFragment :
     private val prefs: SharedPreferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
 
     private lateinit var requestLocation: LocationRequester
     private lateinit var locationManager: FineLocationManager
@@ -832,6 +846,7 @@ class MainFragment :
                 R.id.action_create_note -> onClickCreateNote(position)
                 R.id.action_create_track -> onClickCreateTrack()
                 R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
+                R.id.action_create_poi -> onClickAddPoi(position)
             }
             true
         }
@@ -866,6 +881,60 @@ class MainFragment :
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
         val mapFragment = mapFragment ?: return
         showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
+
+        mapFragment.show3DBuildings = false
+        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
+        mapFragment.updateCameraPosition { position = offsetPos }
+    }
+
+    private fun onClickAddPoi(pos: LatLon) {
+        if ((mapFragment?.cameraPosition?.zoom ?: 0f) < ApplicationConstants.NOTE_MIN_ZOOM) {
+            context?.toast(R.string.create_new_note_unprecise)
+            return
+        }
+
+        val f = bottomSheetFragment
+        if (f is IsCloseableBottomSheet) f.onClickClose { selectPoiType(pos) }
+        else selectPoiType(pos)
+    }
+
+    private fun selectPoiType(pos: LatLon) {
+        SearchFeaturesDialog(
+            requireContext(),
+            featureDictionaryFuture.get(),
+            GeometryType.POINT,
+            countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull(),
+            null, // pre-fill
+            { true }, // filter, but we want everything
+            { addPoi(pos, it) },
+            CreatePoiFragment.recentFeatures.takeIf { it.isNotEmpty() }
+        ).show()
+    }
+
+    private fun addPoi(pos: LatLon, feature: Feature?) {
+        val mapFragment = mapFragment ?: return
+        showInBottomSheet(CreatePoiFragment.create(feature))
+
+        if (feature != null)
+            viewLifecycleScope.launch {
+                val bbox = pos.enclosingBoundingBox(50.0)
+                val data = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
+                val filter = if (IS_SHOP_EXPRESSION.matches(Node(0L, pos, feature.addTags))) IS_SHOP_EXPRESSION
+                else "nodes, ways, relations with ${feature.tags
+                        .map { if (it.value == "*") it.key else it.key + "=" + it.value }
+                        .joinToString(" and ")}".toElementFilterExpression()
+                val elements = data.filter { filter.matches(it) }
+
+                for (e in elements) {
+                    // include only elements that fit with the currently active level filter
+                    if (!levelFilter.levelAllowed(e)) continue
+
+                    val geometry = data.getGeometry(e.type, e.id) ?: continue
+                    val icon = getPinIcon(e.tags)
+                    val title = getTitle(e.tags)
+                    putMarkerForCurrentHighlighting(geometry, icon, title)
+                }
+            }
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)

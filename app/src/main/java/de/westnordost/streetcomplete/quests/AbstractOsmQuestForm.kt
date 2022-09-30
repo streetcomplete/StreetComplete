@@ -371,20 +371,11 @@ fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditA
         editField.setText(tags.map { "${it.key}=${it.value}" }.sorted().joinToString("\n"))
         editField.addTextChangedListener { text ->
             var enabled = true
-            val keys = mutableSetOf<String>()
-            val tagsNew = mutableMapOf<String, String>()
-            text.toString().split("\n").forEach {
-                if (it.isBlank()) return@forEach // allow empty lines
-                if (!it.contains("=") // no key-value separator
-                    || it.count { it == '=' } > 1 // more than one equals sign
-                    || it.substringBefore("=").isBlank() // no key
-                    || it.substringAfter("=").isBlank() // no value
-                    || !keys.add(it.substringBefore("="))) { // key already exists
-                    enabled = false
-                    return@forEach
-                }
-                tagsNew[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+            if (!tagsOk(text.toString())) {
+                dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
+                return@addTextChangedListener
             }
+            val tagsNew = text.toString().toTags()
             if (tags.entries.containsAll(tagsNew.entries) && tagsNew.entries.containsAll(tags.entries))
                 enabled = false // tags not changed
             dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = enabled
@@ -421,4 +412,28 @@ fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditA
         dialog.show()
         dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = false
     }
+}
+
+fun tagsOk(text: String): Boolean {
+    val keys = mutableSetOf<String>()
+    text.split("\n").forEach {
+        if (it.isBlank()) return@forEach // allow empty lines
+        if (!it.contains("=") // no key-value separator
+            || it.count { it == '=' } > 1 // more than one equals sign
+            || it.substringBefore("=").isBlank() // no key
+            || it.substringAfter("=").isBlank() // no value
+            || !keys.add(it.substringBefore("="))) { // key already exists
+            return false
+        }
+    }
+    return true
+}
+
+fun String.toTags(): Map<String, String> {
+    val tags = mutableMapOf<String, String>()
+    split("\n").forEach {
+        if (it.isBlank()) return@forEach // allow empty lines
+        tags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+    }
+    return tags
 }

@@ -258,5 +258,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="pref_show_next_quest_title">Show next quest immediately</string>
     <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
     <string name="pref_main_menu_grid">Show all main menu items as grid</string>
+    <string name="create_poi_enter_tags">Enter tags</string>
+    <string name="create_poi">Add POI</string>
 
 </resources>

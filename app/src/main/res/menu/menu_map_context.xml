@@ -13,4 +13,8 @@
         android:title="@string/action_open_location"
         android:icon="@drawable/ic_open_in_browser_24dp"
         android:orderInCategory="3" />
+    <item android:id="@+id/action_create_poi"
+        android:title="@string/create_poi"
+        android:icon="@drawable/ic_create_note_24dp"
+        android:orderInCategory="4" />
 </menu>
