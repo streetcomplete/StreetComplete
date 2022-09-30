@@ -228,3 +228,10 @@ val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
 /** Expression to see if an element is some kind active, non-vacant shop */
 val IS_SHOP_EXPRESSION =
     "nodes, ways, relations with ${isShopExpressionFragment()}".toElementFilterExpression()
+
+/** Expression to see if an element is some kind of vacant shop */
+val IS_DISUSED_SHOP_EXPRESSION = """
+    nodes, ways, relations with
+      ${isShopExpressionFragment("disused")}
+      or shop = vacant
+""".toElementFilterExpression()
