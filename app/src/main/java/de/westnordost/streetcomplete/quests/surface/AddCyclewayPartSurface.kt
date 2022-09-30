@@ -25,6 +25,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
             and !note:cycleway:surface
           )
         )
+        and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val changesetComment = "Specify cycleway path surfaces"
     override val wikiLink = "Key:surface"
