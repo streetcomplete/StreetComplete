@@ -76,6 +76,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         }
 
         updateNameInputFromFeature(feature)
+        binding.nameInput.setText(name)
         binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
