@@ -242,7 +242,7 @@ layers:
                 map_data-icons:
                     interactive: true
                     priority: 1
-                    size: 28px
+                    size: [36px,30px]
                     sprite: function() { return feature.icon }
 
         line:

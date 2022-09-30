@@ -31,32 +31,38 @@ class TangramIconsSpriteSheet(
     }
 
     private fun createSpritesheet(): String {
-        val background = context.getDrawable(R.drawable.background_pin)!!
-        val backgroundSize = context.dpToPx(28).toInt()
+        val background = context.getDrawable(R.drawable.preset_pin)!!
+        val backgroundWidth = context.dpToPx(36).toInt()
+        val backgroundHeight = context.dpToPx(30).toInt()
 
         val iconResIds = ICONS.toSortedSet()
         val iconSize = context.dpToPx(24).toInt()
-        val iconOffset = (backgroundSize - iconSize)/2
 
         val spriteSheetEntries: MutableList<String> = ArrayList(iconResIds.size)
         val sheetSideLength = ceil(sqrt(iconResIds.size.toDouble())).toInt()
-        val bitmapLength = sheetSideLength * backgroundSize
-        val spriteSheet = Bitmap.createBitmap(bitmapLength, bitmapLength, Bitmap.Config.ARGB_8888)
+        val spriteSheet = Bitmap.createBitmap(
+            backgroundWidth * sheetSideLength,
+            backgroundHeight * sheetSideLength,
+            Bitmap.Config.ARGB_8888
+        )
         val canvas = Canvas(spriteSheet)
 
         for ((i, iconResId) in iconResIds.withIndex()) {
-            val x = i % sheetSideLength * backgroundSize
-            val y = i / sheetSideLength * backgroundSize
+            val x = i % sheetSideLength * backgroundWidth
+            val y = i / sheetSideLength * backgroundHeight
+            val iconName = context.resources.getResourceEntryName(iconResId)
             val icon = context.getDrawable(iconResId)!!
-            icon.setTint(Color.BLACK)
-            background.setBounds(x, y, x + backgroundSize, y + backgroundSize)
+            if (iconName.startsWith("ic_preset_")) {
+                icon.setTint(Color.BLACK)
+            }
+            background.setBounds(x, y, x + backgroundWidth, y + backgroundHeight)
             background.draw(canvas)
-            val iconX = x + iconOffset
-            val iconY = y + iconOffset
+            val iconX = x + context.dpToPx(8 + 2).toInt()
+            val iconY = y + context.dpToPx(2 + 2).toInt()
             icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
             icon.draw(canvas)
-            val iconName = context.resources.getResourceEntryName(iconResId)
-            spriteSheetEntries.add("$iconName: [$x,$y,$backgroundSize,$backgroundSize]")
+
+            spriteSheetEntries.add("$iconName: [$x,$y,$backgroundWidth,$backgroundHeight]")
         }
 
         context.deleteFile(ICONS_FILE)
