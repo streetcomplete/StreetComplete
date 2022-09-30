@@ -40,8 +40,8 @@ class SidewalkOverlay : Overlay {
             ) and area != yes
         """).map { it to PolylineStyle(StrokeStyle(Color.SKY)) }
 
-    override fun createForm(element: Element): AbstractOverlayForm? =
-        if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
         else null
 }
 

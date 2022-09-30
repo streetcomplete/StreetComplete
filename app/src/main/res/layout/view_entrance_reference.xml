@@ -11,12 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:background="@drawable/background_housenumber_sign"
         android:imeOptions="actionDone"
-        android:textColorHint="#2fff"
         tools:text="VII"
-        android:padding="8dp"
-        style="@style/HousenumberEditText"
+        style="@style/HouseNumberEditText"
         />
 
 </me.grantland.widget.AutofitLayout>

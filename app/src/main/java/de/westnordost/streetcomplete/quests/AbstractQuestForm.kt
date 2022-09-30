@@ -163,9 +163,7 @@ abstract class AbstractQuestForm :
 
     protected fun setTitleHintLabel(text: CharSequence?) {
         binding.titleHintLabel.isGone = text == null
-        if (text != null) {
-            binding.titleHintLabel.text = text
-        }
+        binding.titleHintLabel.text = text
     }
 
     /** Inflate given layout resource id into the content view and return the inflated view */

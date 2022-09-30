@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.annotation.DrawableRes
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 @DrawableRes fun getPinIcon(map: Map<String, String>): Int? {
     when (map["amenity"]) {
@@ -72,29 +73,16 @@ import de.westnordost.streetcomplete.util.getNameLabel
         "choked_island" ->      return R.drawable.ic_pin_choker
         "island" ->             return R.drawable.ic_pin_island
     }
-    if (getHouseNumber(map) != null && getNameLabel(map) == null) {
+    if (getShortHouseNumber(map) != null && getNameLabel(map) == null) {
         return R.drawable.ic_none
     }
     return null
 }
 
 fun getTitle(map: Map<String, String>): String? {
-    return getNameLabel(map) ?: getHouseNumber(map) ?: getTreeGenus(map)
+    return getNameLabel(map) ?: getShortHouseNumber(map) ?: getTreeGenus(map)
 }
 
-private fun getHouseNumber(map: Map<String, String>): String? {
-    val houseName = map["addr:housename"]
-    val conscriptionNumber = map["addr:conscriptionnumber"]
-    val streetNumber = map["addr:streetnumber"]
-    val houseNumber = map["addr:housenumber"]
-
-    return when {
-        houseName != null -> houseName
-        conscriptionNumber != null && streetNumber != null -> "$conscriptionNumber / $streetNumber"
-        conscriptionNumber != null -> conscriptionNumber
-        houseNumber != null -> houseNumber
-        else -> null
-    }
 }
 
 fun getTreeGenus(map: Map<String, String>): String? {
@@ -106,4 +94,3 @@ fun getTreeGenus(map: Map<String, String>): String? {
             return map[it]
     }
     return null
-}

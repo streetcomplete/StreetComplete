@@ -21,13 +21,10 @@
             android:id="@+id/flatRangeStartInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_housenumber_sign"
             android:imeOptions="actionNext"
-            android:textColorHint="#2fff"
             android:digits="0123456789"
             tools:text="1"
-            android:padding="8dp"
-            style="@style/HousenumberEditText"
+            style="@style/HouseNumberEditText"
             />
 
     </me.grantland.widget.AutofitLayout>
@@ -52,13 +49,10 @@
             android:id="@+id/flatRangeEndInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_housenumber_sign"
             android:imeOptions="actionDone"
-            android:textColorHint="#2fff"
             android:digits="0123456789"
             tools:text="123"
-            android:padding="8dp"
-            style="@style/HousenumberEditText"
+            style="@style/HouseNumberEditText"
             />
 
     </me.grantland.widget.AutofitLayout>

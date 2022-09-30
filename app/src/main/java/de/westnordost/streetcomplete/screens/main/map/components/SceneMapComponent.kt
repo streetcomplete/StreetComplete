@@ -20,7 +20,7 @@ class SceneMapComponent(
     private val vectorTileProvider: VectorTileProvider,
     private val prefs: SharedPreferences,
 ) {
-    private var sceneUpdates: MutableMap<String, String> = mutableMapOf()
+    private var sceneUpdates: MutableSet<List<Pair<String, String>>> = mutableSetOf()
 
     private var loadedSceneFilePath: String? = null
     private var loadedSceneUpdates: List<String>? = null
@@ -38,8 +38,13 @@ class SceneMapComponent(
      *
      *  It does NOT reload the scene, you need to call loadScene yourself to reload. Why? Because
      *  you might want to bundle scene updates before you triggere a (re)load of the scene. */
-    fun putSceneUpdates(updates: List<Pair<String, String>>) {
-        sceneUpdates.putAll(updates)
+    fun addSceneUpdates(updates: List<Pair<String, String>>) {
+        sceneUpdates.add(updates)
+    }
+
+    /** Remove the given scene updates */
+    fun removeSceneUpdates(updates: List<Pair<String, String>>) {
+        sceneUpdates.remove(updates)
     }
 
     /** (Re)load the scene.
@@ -63,9 +68,9 @@ class SceneMapComponent(
     }
 
     private fun getAllSceneUpdates(): List<SceneUpdate> =
-        getBaseSceneUpdates() + sceneUpdates.mapNotNull {
+        getBaseSceneUpdates() + sceneUpdates.flatten().mapNotNull {
             if (isAerialView && it.key.startsWith("layers.buildings")) null
-            else SceneUpdate(it.key, it.value)
+            else SceneUpdate(it.first, it.second)
         }
 
     private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(

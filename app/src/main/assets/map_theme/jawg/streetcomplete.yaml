@@ -96,25 +96,25 @@ styles:
                     float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
                     color.a = color.a * x;
     map_data-lines-right-dashed:
-      base: lines
-      blend: inlay
-      texcoords: true
-      shaders:
-          blocks:
-              color: |
-                  float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
-                  float y = step(0.4, mod(v_texcoord.y, 1.0));
-                  color.a = color.a * x * y;
+        base: lines
+        blend: inlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float y = step(0.4, mod(v_texcoord.y, 1.0));
+                    color.a = color.a * x * y;
     map_data-lines-left-dashed:
-      base: lines
-      blend: inlay
-      texcoords: true
-      shaders:
-          blocks:
-              color: |
-                  float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
-                  float y = step(0.4, mod(v_texcoord.y, 1.0));
-                  color.a = color.a * x * y;
+        base: lines
+        blend: inlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float y = step(0.4, mod(v_texcoord.y, 1.0));
+                    color.a = color.a * x * y;
 
 layers:
     # quest pins & dots
@@ -363,14 +363,15 @@ layers:
                     cap: round
                     join: round
         label:
-            filter: { text: true }
+            filter: { text: true, $zoom: { min: 18 } }
             draw:
                 text:
                     interactive: true
                     text_source: text
-                    priority: 10
+                    collide: false
+                    priority: 1
                     font:
                         family: global.text_font_family
-                        fill: global.text_fill_color
+                        fill: "#000"
                         size: global.text_size
-                        stroke: global.text_stroke
+                        stroke: { color: "#fff", width: 3.5px }

@@ -71,6 +71,9 @@ app icon/
     ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
     ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
 
+assembly_point/
+    assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
+
 bridge structure/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0
@@ -253,6 +256,7 @@ italian police type/
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
+    access_point.svg
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
@@ -264,6 +268,7 @@ quest/
     bench_material.svg               modified from bench_poi.svg by Matija Nalis
     bench_public_transport.svg
     bicycle.svg
+    bicycle_incline.svg              Tobias Zwick (CC-BY-SA 4.0) for used graphic elements, minor rearranging by Mateusz Konieczny
     bicycle_parking.svg
     bicycle_parking_access.svg       Flo Edelmann merged bicycle_parking.svg by Tobias Zwick (CC-BY-SA 4.0) with parking_access.svg made by Tobias Zwick with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     bicycle_parking_capacity.svg
@@ -387,6 +392,7 @@ quest/
     seating.svg
     shower.svg
     sidewalk.svg
+    sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD

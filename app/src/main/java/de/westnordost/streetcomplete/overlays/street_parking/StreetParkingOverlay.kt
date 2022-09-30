@@ -56,8 +56,8 @@ class StreetParkingOverlay : Overlay {
             "nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table"
         ).map { it to chokerStyle }
 
-    override fun createForm(element: Element) =
-        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
         } else {
             null

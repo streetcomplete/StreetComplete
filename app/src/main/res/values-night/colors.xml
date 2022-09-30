@@ -16,6 +16,8 @@
     <color name="title_text_next_to_image">#fff</color>
     <color name="description_text_next_to_image">#fff</color>
 
+    <color name="matched_search_text">#6fff</color>
+
     <color name="smoothness_vehicle_tyre">#70808b</color>
 
     <!-- because on dark background, normal blue doesn't work well -->

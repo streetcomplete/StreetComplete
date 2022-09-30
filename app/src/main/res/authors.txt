@@ -64,6 +64,15 @@ crossing_type_signals.jpg      CC-BY-SA 3.0      Bjørn Erik Pedersen https://co
 crossing_type_unmarked.jpg     CC0               Mateusz Konieczny
 crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 
+drinking_water_type_jet_water… CC-BY-SA 3.0      crop of image by Sulfur https://commons.wikimedia.org/wiki/File:Bubbler.jpg
+drinking_water_type_generic... CC-BY-SA-4.0      crop of image by Basotxerri https://commons.wikimedia.org/wiki/File:Bielerh%C3%B6he_-_Barbarakapelle_-_Brunnen_01.jpg
+drinking_water_type_bottle_re… CC-BY-SA-4.0      crop of image by Fantaglobe11 https://commons.wikimedia.org/wiki/File:Station_Alkmaar_watertappunt.jpg
+drinking_water_type_tap.jpg    CC-BY-SA 3.0      crop of image by Photo by CEphoto, Uwe Aranas / CC-BY-SA-3.0 https://wiki.openstreetmap.org/wiki/File:Le_Mont-Saint-Michel_France_Water-tap-01.jpg
+drinking_water_type_hand_pump.jpg CC-BY-SA 3.0   crop of image by ŠJů, Wikimedia Commons https://commons.wikimedia.org/wiki/File:Liboc,_V_domc%C3%ADch_17,_pumpa.jpg
+drinking_water_type_disused... CC-BY-SA-4.0      crop of image by Kolforn (Wikimedia) https://commons.wikimedia.org/wiki/File:2018-02-01_Disused_drinking_fountain_at_the_rear_of_Praia_da_Gal%C3%A9_(East),_Albufeira.JPG
+drinking_water_type_spring.jpg CC-BY-SA-4.0      crop of image by Dampftrain https://commons.wikimedia.org/wiki/File:Erdbachquelle.JPG
+drinking_water_type_water_wel… CC-BY-SA 3.0      crop of image by Honza Groh (Jagro) https://commons.wikimedia.org/wiki/File:Zmiennica,_studna.jpg
+
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      Jwh https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
 fire_hydrant_pond.jpg          CC-BY-SA 3.0      KeepOnTruckin https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
 fire_hydrant_underground.jpg   CC-BY 3.0         Panek https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
@@ -112,6 +121,16 @@ ic_link_osrm.png               fair use          used while linking and promotin
 ic_link_wiki.png               fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/File:Wikilogo.png
 ic_link_graphhopper.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
 ic_link_organic_maps.png       fair use          used while linking and promoting this project
+
+ic_preset_far-*                CC-BY-4.0         from https://fontawesome.com/license/free
+ic_preset_fas-*                  and
+ic_preset_fab-*                SIL OFL 1.1
+
+ic_preset_iD-*                 ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
+
+ic_preset_maki-*               CC0-1.0           from https://github.com/mapbox/maki/tree/main/icons
+
+ic_preset_temaki-*             CC0 1.0           from https://github.com/ideditor/temaki/tree/main/icons
 
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)

@@ -490,7 +490,7 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
 }
 
 /** returns whether this bounding box contains the given position */
-fun BoundingBox.contains(pos: LatLon): Boolean {
+operator fun BoundingBox.contains(pos: LatLon): Boolean {
     return if (crosses180thMeridian) {
         splitAt180thMeridian().any { it.containsCanonical(pos) }
     } else {
