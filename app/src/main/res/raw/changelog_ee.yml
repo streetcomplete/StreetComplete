@@ -1,3 +1,8 @@
+v48.0_ee: |
+  <ul>
+  <li>Allow switching main menu to a full grid (larger buttons!)</li>
+  </ul>
+
 v47.0_ee: |
   <ul>
   <li>Show all hidden quests on long press on undo icon (works only for downloaded areas)</li>

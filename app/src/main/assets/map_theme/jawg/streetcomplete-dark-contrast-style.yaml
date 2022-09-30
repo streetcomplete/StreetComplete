@@ -9,7 +9,7 @@ global:
     text_fill_color: '#ccf'
     text_water_color: '#ccf'
 
-    railway_color: '#703'
+    railway_color: '#727'
     road_color: '#559'
     road_outline_color: '#99f'
     highway_color: '#447'
@@ -18,8 +18,8 @@ global:
     path_outline_color: '#547'
     square_color: global.road_color
 
-    earth_color: '#232338'
-    water_color: '#006'
+    earth_color: '#151525'
+    water_color: '#000060'
     green_color: '#375935'
     forest_color: '#293f28'
     town_color: '#000000'
