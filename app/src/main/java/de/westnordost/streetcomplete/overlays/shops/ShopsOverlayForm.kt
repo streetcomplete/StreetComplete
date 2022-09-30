@@ -162,8 +162,6 @@ private fun createVacantShop(resources: Resources) = DummyFeature(
 
 // TODO update "KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED"?
 
-// TODO update check date if set? Or only if nothing changed?
-
 // TODO add "no name" option (analogous to AddPlaceName quest)?
 // TODO add multi-language-name feature (analogous to AddPlaceName quest)?
 // TODO not always replace all tags / also replace all tags on name change? -> ask user instead? -> each time??
