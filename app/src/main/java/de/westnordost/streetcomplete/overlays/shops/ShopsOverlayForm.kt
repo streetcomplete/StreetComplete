@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.overlays.shops
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.ConfigurationCompat
+import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
@@ -12,13 +12,15 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayShopsBinding
+import de.westnordost.streetcomplete.osm.IS_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
@@ -31,22 +33,40 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private var feature: Feature? = null
     private var name: String? = null
+    private var isVacant: Boolean = false
+
+    private val vacantFeature: Feature by lazy {
+        featureDictionary
+            .byTags(mapOf("shop" to "vacant"))
+            .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
+            .find()
+            .first()
+    }
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val element = element
         if (element != null) {
-            val locales = ConfigurationCompat.getLocales(resources.configuration).toTypedArray()
+            isVacant = IS_DISUSED_SHOP_EXPRESSION.matches(element)
 
-            feature = featureDictionary
-                .byTags(element.tags)
-                .forLocale(*locales)
-                .forGeometry(element.geometryType)
-                .inCountry(countryOrSubdivisionCode)
-                .find()
-                .firstOrNull()
+            feature = if (isVacant) {
+                vacantFeature
+            } else {
+                featureDictionary
+                    .byTags(element.tags)
+                    .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
+                    .forGeometry(element.geometryType)
+                    .inCountry(countryOrSubdivisionCode)
+                    .find()
+                    .firstOrNull()
+            }
         } else {
+            isVacant = false
             feature = null
         }
         name = element?.tags?.get("name")
@@ -75,9 +95,10 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             ).show()
         }
 
-        updateNameInputFromFeature(feature)
         binding.nameInput.setText(name)
         binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
+
+        updateNameInputVisibility()
     }
 
     private fun filterOnlyShops(feature: Feature): Boolean {
@@ -87,34 +108,49 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private fun onSelectedFeature(feature: Feature?) {
         featureCtrl.feature = feature
-        updateNameInputFromFeature(feature)
+        isVacant = false
+        binding.nameInput.setText(feature?.addTags?.get("name"))
+
+        updateNameInputVisibility()
         checkIsFormComplete()
     }
 
-    private fun updateNameInputFromFeature(feature: Feature?) {
-        val name = feature?.addTags?.get("name")
-        binding.nameInput.setText(name)
-        binding.nameInput.isEnabled = name == null
+
+    private fun setVacant() {
+        featureCtrl.feature = vacantFeature
+        isVacant = true
+        binding.nameInput.text = null
+        updateNameInputVisibility()
+        checkIsFormComplete()
+    }
+
+    private fun updateNameInputVisibility() {
+        val selectedFeature = featureCtrl.feature
+        /* the name input is only visible if the place is not vacant, if a feature has been selected
+           and if that feature doesn't already set a name (i.e. is a brand)
+         */
+        binding.nameInputContainer.isInvisible =
+            isVacant || selectedFeature == null || selectedFeature.addTags?.get("name") != null
     }
 
     override fun hasChanges(): Boolean =
         feature != featureCtrl.feature || name != binding.nameInput.nonBlankTextOrNull
 
     override fun isFormComplete(): Boolean =
-        featureCtrl.feature != null // name is not necessary
+        featureCtrl.feature != null || isVacant // name is not necessary
 
     override fun onClickOk() {
         val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-        if (feature != featureCtrl.feature) {
-            val tags = featureCtrl.feature!!.addTags
-            tagChanges.replaceShop(tags)
-        }
-
-        val newName = binding.nameInput.nonBlankTextOrNull
-        if (name != newName) {
+        if (isVacant) {
+            tagChanges.replaceShop(mapOf("disused:shop" to "yes"))
+        } else {
+            /* always replace the feature, even if just the name changed, because it could still be
+               e.g. an amenity=cafe (no change) but a different owner, so a completely different
+               café */
+            tagChanges.replaceShop(featureCtrl.feature!!.addTags)
+            val newName = binding.nameInput.nonBlankTextOrNull
             if (newName != null) tagChanges["name"] = newName
-            else tagChanges.remove("name")
         }
 
         if (element != null) {
@@ -125,6 +161,10 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     }
 }
 
-// TODO need "is vacant" option
-// TODO need "no name" option?
-// TODO multi-language-name?
+// TODO update "KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED"?
+// TODO how to deal with places not in iD presets? (e.g. gitarrenbauer)
+
+// TODO add "no name" option?
+// TODO add multi-language-name feature?
+// TODO not always replace all tags / also replace all tags on name change? -> ask user instead? -> each time??
+

@@ -55,11 +55,31 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/nameInput"
+    <LinearLayout
+        android:id="@+id/nameInputContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Das fröhliche Backhaus"
-        app:layout_constraintTop_toBottomOf="@+id/featureView" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:showDividers="middle"
+        android:divider="@drawable/space_8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/overlay_shops_shop_name"/>
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:selectAllOnFocus="true"
+            android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
+            tools:text="Das fröhliche Backhaus" />
+
+    </LinearLayout>
 
 </LinearLayout>
