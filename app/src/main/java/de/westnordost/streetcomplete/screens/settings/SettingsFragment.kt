@@ -728,7 +728,7 @@ class SettingsFragment :
                 restartApp()
             }
             Prefs.DATA_RETAIN_TIME -> {
-                cleaner.clean()
+                lifecycleScope.launch(Dispatchers.IO) { cleaner.clean() }
             }
             Prefs.PREFER_EXTERNAL_SD -> {
                 val sd = requireContext().externalCacheDirs
