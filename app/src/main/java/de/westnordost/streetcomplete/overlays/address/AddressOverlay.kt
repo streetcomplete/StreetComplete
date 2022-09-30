@@ -36,7 +36,6 @@ class AddressOverlay : Overlay {
         mapData.filter("""
             ways, relations with building
         """).map {
-            // TODO needs workaround due to duplicate labels: https://github.com/tangrams/tangram-es/issues/2332
             it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags))
         }
 
