@@ -658,7 +658,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
-    <string name="quest_bicycle_incline_up_and_down">It\'s up and down hops</string>
+    <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
 
