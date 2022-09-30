@@ -18,10 +18,10 @@ class RoadNameSuggestionsSource(
     fun getNames(points: List<LatLon>, maxDistance: Double): List<MutableMap<String, String>> {
         if (points.isEmpty()) return emptyList()
 
-        /* add 50m radius for bbox query because roads will only be included in the result that have
+        /* add 100m radius for bbox query because roads will only be included in the result that have
            at least one node in the bounding box around the tap position. This is a problem for long
            straight roads (#3797). This doesn't completely solve this issue but mitigates it */
-        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 50)
+        val bbox = points.enclosingBoundingBox().enlargedBy(maxDistance + 100)
         val mapData = mapDataSource.getMapDataWithGeometry(bbox)
         val roadsWithNames = mapData.ways.filter { it.isRoadWithName() }
 
