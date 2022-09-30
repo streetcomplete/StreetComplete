@@ -106,7 +106,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         return IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(fakeElement)
     }
 
-    private fun onSelectedFeature(feature: Feature?) {
+    private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
         isVacant = false
         binding.nameInput.setText(feature?.addTags?.get("name"))

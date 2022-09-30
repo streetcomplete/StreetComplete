@@ -76,7 +76,7 @@ class ShopGoneDialog(
         return IS_SHOP_EXPRESSION.matches(fakeElement)
     }
 
-    private fun onSelectedFeature(feature: Feature?) {
+    private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
         updateOkButtonEnablement()
     }
