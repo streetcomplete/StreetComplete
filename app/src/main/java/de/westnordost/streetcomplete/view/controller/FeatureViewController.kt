@@ -13,6 +13,7 @@ import androidx.core.text.italic
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.presetIconIndex
 
@@ -22,7 +23,7 @@ class FeatureViewController(
     private val textView: TextView,
     private val iconView: ImageView
 ) {
-    private val locales = ConfigurationCompat.getLocales(textView.resources.configuration).toTypedArray()
+    private val locales = getLocalesForFeatureDictionary(textView.resources.configuration)
 
     var countryOrSubdivisionCode: String? = null
 

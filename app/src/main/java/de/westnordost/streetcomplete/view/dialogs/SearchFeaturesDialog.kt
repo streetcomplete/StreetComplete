@@ -15,6 +15,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -33,7 +34,7 @@ class SearchFeaturesDialog(
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
-    private val locales = ConfigurationCompat.getLocales(context.resources.configuration).toTypedArray()
+    private val locales = getLocalesForFeatureDictionary(context.resources.configuration)
     private val adapter = FeaturesAdapter()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull

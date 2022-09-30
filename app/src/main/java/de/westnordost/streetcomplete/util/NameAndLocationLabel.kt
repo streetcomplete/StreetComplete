@@ -3,11 +3,9 @@ package de.westnordost.streetcomplete.util
 import android.content.res.Resources
 import android.text.Html
 import android.text.Spanned
-import androidx.core.os.ConfigurationCompat
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.toList
 import java.util.Locale
 
 fun getNameAndLocationLabelString(
@@ -16,8 +14,8 @@ fun getNameAndLocationLabelString(
     featureDictionary: FeatureDictionary,
     showHouseNumber: Boolean? = null
 ): Spanned? {
-    val localeList = ConfigurationCompat.getLocales(resources.configuration).toList()
-    val feature = getFeatureName(tags, featureDictionary, localeList)
+    val locales = getLocalesForFeatureDictionary(resources.configuration)
+    val feature = getFeatureName(tags, featureDictionary, locales)
         ?.withNonBreakingSpaces()
         ?.inItalics()
     val name = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
@@ -63,25 +61,16 @@ fun getLocationLabel(
 private fun getFeatureName(
     tags: Map<String, String>,
     featureDictionary: FeatureDictionary,
-    localeList: List<Locale>
-): String? {
-    val locales = localeList.toMutableList()
-    /* add fallback to English if (some) English is not part of the locale list already as the
-       fallback for text is also always English in this app (strings.xml) independent of, or rather
-       additionally to what is in the user's LocaleList. */
-    if (locales.none { it.language == Locale.ENGLISH.language }) {
-        locales.add(Locale.ENGLISH)
-    }
-    return featureDictionary
+    locales: Array<Locale?>
+): String? = featureDictionary
         .byTags(tags)
         // not for geometry because at this point we cannot tell apart points and vertices
         // .forGeometry(element?.geometryType)
         .isSuggestion(false)
-        .forLocale(*locales.toTypedArray())
+        .forLocale(*locales)
         .find()
         .firstOrNull()
         ?.name
-}
 
 /** Returns a text that identifies the feature by name, ref, brand or whatever, e.g. "The Leaky Cauldron" */
 fun getNameLabel(tags: Map<String, String>): String? {
