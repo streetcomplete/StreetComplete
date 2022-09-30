@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.ShowHouseNumber
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.koin.android.ext.android.inject
 
@@ -42,7 +41,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
 
         setTitleHintLabel(getNameAndLocationLabelString(
             element.tags, resources, featureDictionary,
-            showHouseNumber = ShowHouseNumber.ALWAYS
+            showHouseNumber = true
         ))
 
         streetOrPlaceCtrl = StreetOrPlaceNameViewController(

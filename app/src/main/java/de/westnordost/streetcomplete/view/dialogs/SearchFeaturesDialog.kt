@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
-import androidx.core.os.ConfigurationCompat
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,11 +14,10 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
-import de.westnordost.streetcomplete.view.setText
 
 /** Search and select a preset */
 class SearchFeaturesDialog(
@@ -29,11 +27,11 @@ class SearchFeaturesDialog(
     private val countryOrSubdivisionCode: String? = null,
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
-    private val onSelectedFeatureFn: (Feature?) -> Unit
+    private val onSelectedFeatureFn: (Feature) -> Unit
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
-    private val locales = ConfigurationCompat.getLocales(context.resources.configuration).toTypedArray()
+    private val locales = getLocalesForFeatureDictionary(context.resources.configuration)
     private val adapter = FeaturesAdapter()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
@@ -66,8 +64,6 @@ class SearchFeaturesDialog(
         binding.searchResultsList.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.searchResultsList.adapter = adapter
         binding.searchResultsList.isNestedScrollingEnabled = true
-
-        setOnCancelListener { onSelectedFeatureFn(null) }
 
         setView(binding.root)
 

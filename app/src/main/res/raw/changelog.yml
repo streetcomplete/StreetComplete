@@ -4,7 +4,9 @@ v48.0-alpha1: |
   <h3>1️⃣️️ Addresses Overlay</h3>
   <p>The most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
   You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
-  <h3>HUGE performance improvements (#4079, #4125), by @Helium314</h3>
+  <h3>🛍️ Shops Overlay</h3>
+  <p>Easily map and check what shops exist in your local shopping area!</p>
+  <h3>🚀 HUGE performance improvements (#4079, #4125), by @Helium314</h3>
   <p>The app is now more responsive during normal use thanks to extensive caching, in particular, roughly:</p>
   <ul>
   <li>2x to 8x times faster display of quest pins and overlays</li>

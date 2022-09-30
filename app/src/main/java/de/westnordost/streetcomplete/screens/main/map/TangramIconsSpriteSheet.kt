@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
@@ -16,11 +18,10 @@ import kotlin.math.sqrt
  *  the scene updates for tangram to access this sprite sheet  */
 class TangramIconsSpriteSheet(
     private val context: Context,
-    private val prefs: SharedPreferences
+    private val prefs: SharedPreferences,
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
-
         val spriteSheet = when {
             !isSpriteSheetCurrent || BuildConfig.DEBUG -> createSpritesheet()
             else -> prefs.getString(Prefs.ICON_SPRITES, "")!!
@@ -30,22 +31,39 @@ class TangramIconsSpriteSheet(
     }
 
     private fun createSpritesheet(): String {
+        val background = context.getDrawable(R.drawable.preset_pin)!!
+        val pad = 1
+        val backgroundWidth = context.dpToPx(36).toInt() + pad
+        val backgroundHeight = context.dpToPx(30).toInt() + pad
+
         val iconResIds = ICONS.toSortedSet()
-        val iconSize = context.dpToPx(40).toInt()
+        val iconSize = context.dpToPx(24).toInt()
+
         val spriteSheetEntries: MutableList<String> = ArrayList(iconResIds.size)
         val sheetSideLength = ceil(sqrt(iconResIds.size.toDouble())).toInt()
-        val bitmapLength = sheetSideLength * iconSize
-        val spriteSheet = Bitmap.createBitmap(bitmapLength, bitmapLength, Bitmap.Config.ARGB_8888)
+        val spriteSheet = Bitmap.createBitmap(
+            backgroundWidth * sheetSideLength,
+            backgroundHeight * sheetSideLength,
+            Bitmap.Config.ARGB_8888
+        )
         val canvas = Canvas(spriteSheet)
 
         for ((i, iconResId) in iconResIds.withIndex()) {
-            val x = i % sheetSideLength * iconSize
-            val y = i / sheetSideLength * iconSize
-            val icon = context.getDrawable(iconResId)!!
-            icon.setBounds(x, y, x + iconSize, y + iconSize)
-            icon.draw(canvas)
+            val x = i % sheetSideLength * backgroundWidth
+            val y = i / sheetSideLength * backgroundHeight
             val iconName = context.resources.getResourceEntryName(iconResId)
-            spriteSheetEntries.add("$iconName: [$x,$y,$iconSize,$iconSize]")
+            val icon = context.getDrawable(iconResId)!!
+            if (iconName.startsWith("ic_preset_")) {
+                icon.setTint(Color.BLACK)
+            }
+            background.setBounds(x, y, x + backgroundWidth - pad, y + backgroundHeight - pad)
+            background.draw(canvas)
+            val iconX = x + context.dpToPx(8 + 2).toInt()
+            val iconY = y + context.dpToPx(2 + 2).toInt()
+            icon.setBounds(iconX, iconY, iconX + iconSize, iconY + iconSize)
+            icon.draw(canvas)
+
+            spriteSheetEntries.add("$iconName: [$x,$y,$backgroundWidth,$backgroundHeight]")
         }
 
         context.deleteFile(ICONS_FILE)
@@ -71,7 +89,7 @@ class TangramIconsSpriteSheet(
     companion object {
         private const val ICONS_FILE = "icons.png"
         private val ICONS = listOf(
-            R.drawable.ic_pin_choker
-        )
+            R.drawable.ic_pin_choker_borderless
+        )  + presetIconIndex.values
     }
 }
