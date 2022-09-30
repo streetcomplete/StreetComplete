@@ -927,6 +927,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Lakóhajó"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Kunyhó"</string>
 
     <!-- Fuzzy -->
@@ -952,6 +954,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Raktár"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Trafik"</string>
 
     <!-- Fuzzy -->
@@ -2473,4 +2477,22 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Az OSM-adatok feltárása a teljes képtől az egyes objektumokig terjedő léptékekben, térben és időben"</string>
     <string name="link_opencampingmap_description">"Kempingek térképe"</string>
     <string name="quest_atm_cashin_title">"Lehet készpénzt befizetni ezen az ATM-en?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Gyülekezőhely"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"A gyülekezési pont az a hely, ahol az emberek vészhelyzet esetén összegyűlnek. Általában ehhez hasonlóan néz ki:"</string>
+    <string name="quest_address_street_street_name_label">"Utcanév:"</string>
+    <string name="quest_address_street_hint2">"Koppints az utcára a kiválasztáshoz"</string>
+    <string name="quest_bicycle_incline_title">"Melyik irány vezet felfelé?"</string>
+    <string name="quest_drinking_water_type_title">"Mi adja az ivóvizet?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Más vízforrás"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Kis vízsugarat kibocsátó szökőkút"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Csak palacktöltés"</string>
+    <string name="quest_drinking_water_type_tap">"Vízcsap"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Kézi szivattyú"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Szivattyú nélküli kút"</string>
+    <string name="quest_drinking_water_type_spring">"Forrás"</string>
+    <string name="quest_drinking_water_type_disused">"Nem használt vízforrás"</string>
+
+    <!-- Azért fordítottam egyes számmal, mert a korábbi, többi fordítás is így van. -->
+    <string name="overlay_addresses">"Cím"</string>
+    <string name="overlay_shops">"Üzlet"</string>
 </resources>

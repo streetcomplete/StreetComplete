@@ -1158,6 +1158,8 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Ontzi etxea"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -1183,6 +1185,8 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Biltegia"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kioskoa"</string>
 
     <!-- Fuzzy -->

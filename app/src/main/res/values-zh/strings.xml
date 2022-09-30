@@ -1117,6 +1117,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"船屋"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
@@ -1142,6 +1144,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"仓库"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"售货亭"</string>
 
     <!-- Fuzzy -->

@@ -517,8 +517,12 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_semi_detached">"Casa semi-indipendente"</string>
     <string name="quest_buildingType_terrace_description">"case a schiera"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitorio"</string>
     <string name="quest_buildingType_houseboat">"Casa galleggiante"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Caravan fisso"</string>
     <string name="quest_buildingType_commercial">"Edificio commerciale"</string>
@@ -533,18 +537,32 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Negozi(o)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Magazzino"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Chiosco"</string>
     <string name="quest_buildingType_storage_tank">"Serbatoio"</string>
     <string name="quest_buildingType_religious">"Edificio religioso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Chiesa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Cappella"</string>
     <string name="quest_buildingType_cathedral">"Cattedrale"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moschea"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempio"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edificio civico"</string>
     <string name="quest_buildingType_civic_description">"edificio pubblico che ospita servizi ai cittadini"</string>
@@ -581,6 +599,8 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Non ha un numero civico…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Edicola votiva"</string>
 
     <!-- Fuzzy -->
@@ -1636,10 +1656,16 @@ sorted alphabetically by title -->
     <string name="quest_camp_shower_title">"Ci sono docce qui?"</string>
     <string name="quest_camp_power_supply_title">"I clienti possono caricare i propri telefoni, portatili, ecc. qui?"</string>
     <string name="quest_camp_type_title">"Chi può campeggiare qui?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Sia tende che camper, roulotte, etc."</string>
+    <string name="quest_camp_type_caravans_only">"Solo camper, roulotte, etc."</string>
     <string name="quest_camp_type_tents_only">"Solo tende"</string>
+    <string name="quest_camp_type_backcountry">"Campeggio fuoripista (niente strutture)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver misurato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
     <string name="quest_recycling_type_pet">"Solo PET"</string>
     <string name="street_parking_street_width">"Larghezza strada: %s"</string>
     <string name="overlay_street_parking">"Parcheggio in strada"</string>
+    <string name="link_ohsomehex_description">"Esplora i dati OSM dai singoli oggetti all’intera mappa spostandoti nello spazio e nel tempo"</string>
+    <string name="link_opencampingmap_description">"Una mappa dei campeggi"</string>
+    <string name="quest_atm_cashin_title">"Puoi fare un versamento di contanti a questo bancomat?"</string>
 </resources>

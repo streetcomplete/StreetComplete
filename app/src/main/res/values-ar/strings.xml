@@ -534,8 +534,12 @@
     <string name="quest_buildingType_semi_detached">"منزل شبه مفصول"</string>
     <string name="quest_buildingType_terrace_description">"صف من المنازل العائلية المتماثلة التي تكون على شكل خطي"</string>
     <string name="quest_buildingType_hotel">"مبنى فندق"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"سكن جامعي"</string>
     <string name="quest_buildingType_houseboat">"المركب - منزل عائم"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"بيت من طابق واحد"</string>
     <string name="quest_buildingType_static_caravan">"منزل متنقل موجود في مكانه لفترة"</string>
     <string name="quest_buildingType_commercial">"مبنى تجاري"</string>
@@ -550,18 +554,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"محل (محلات)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"مستودع"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"كشك"</string>
     <string name="quest_buildingType_storage_tank">"خزان سوائل أو غاز (فوق الأرض)"</string>
     <string name="quest_buildingType_religious">"مبنى ديني"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"كنيسة"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"كنيسة صغيرة"</string>
     <string name="quest_buildingType_cathedral">"كاتدرائية"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"مسجد أو جامع"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"معبد"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"باغودة"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"كنيس - مجمع يهودي"</string>
     <string name="quest_buildingType_civic">"مبنى مرافق مدنية"</string>
     <string name="quest_buildingType_civic_description">"عادة ما يضم خدمة عامة (دورات مياه عامة ، مبنى بلدية ، وما إلى ذلك)."</string>
@@ -600,6 +618,8 @@
     <string name="quest_buildingType_bunker">"ملجأ محصّن"</string>
     <string name="quest_address_answer_no_housenumber">"لا يوجد رقم للمنزل…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"تم وضع وسم على المبنى على أنه:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"مزار"</string>
 
     <!-- Fuzzy -->
