@@ -1791,9 +1791,6 @@
                     "name": "Magazin de Băuturi Alcoolice",
                     "terms": "g"
                 },
-                "shop/antiques": {
-                    "name": "Anticariat"
-                },
                 "shop/appliance": {
                     "name": "Magazin de Electrocasnice"
                 },
@@ -1832,9 +1829,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Atelier de Cărți"
-                },
-                "shop/books": {
-                    "name": "Magazin de Cărți"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -1971,9 +1965,6 @@
                 "shop/musical_instrument": {
                     "name": "Magazin de Instrumente Muzicale"
                 },
-                "shop/newsagent": {
-                    "name": "Magazin de Ziare"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Magazin de Suplimente Nutritive"
                 },
@@ -2006,9 +1997,6 @@
                 },
                 "shop/seafood": {
                     "name": "Magazin de Fructe de Mare"
-                },
-                "shop/second_hand": {
-                    "name": "Magazin de Depozite"
                 },
                 "shop/shoes": {
                     "name": "Magazin de Ghete"
@@ -2045,9 +2033,6 @@
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Magazin de Aspiratoare"
-                },
-                "shop/variety_store": {
-                    "name": "Magazin de Varietăți"
                 },
                 "shop/video": {
                     "name": "Magazin Video"

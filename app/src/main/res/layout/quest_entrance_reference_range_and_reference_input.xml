@@ -49,7 +49,7 @@
         android:layout_width="64dp"
         android:layout_height="56dp"
         tools:text="abc"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         tools:ignore="RtlHardcoded"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

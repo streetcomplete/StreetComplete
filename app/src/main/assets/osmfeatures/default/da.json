@@ -125,13 +125,11 @@
                 "activity": {
                     "label": "Aktivitet",
                     "options": {
-                        "Ski": "Skiløb",
                         "bicycle": "Cykling",
                         "hiking": "Vandring",
                         "horse": "Ridning",
                         "mtb": "Mountainbiking"
-                    },
-                    "terms": "udøvelse,handling"
+                    }
                 },
                 "addr/interpolation": {
                     "label": "Type",
@@ -4629,9 +4627,6 @@
                     "name": "Linje",
                     "terms": "linje"
                 },
-                "man_made": {
-                    "name": "Menneskeskabt objekt"
-                },
                 "man_made/adit": {
                     "name": "Mineindgang",
                     "terms": "mineindgang"
@@ -5414,10 +5409,6 @@
                     "name": "Vinforhandler",
                     "terms": "vinforhandler,vinbutik,vinforretning"
                 },
-                "shop/antiques": {
-                    "name": "Antikvitetsforretning",
-                    "terms": "antikvitetsforretning,antikvitetsbutik"
-                },
                 "shop/appliance": {
                     "name": "Hvidevareforretning",
                     "terms": "hvidevare,køleskab,ovn,vaskemaskine"
@@ -5473,10 +5464,6 @@
                 "shop/bookmaker": {
                     "name": "Bookmaker",
                     "terms": "bookmaker"
-                },
-                "shop/books": {
-                    "name": "Boghandler",
-                    "terms": "boghandler"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -5584,10 +5571,6 @@
                 "shop/dairy": {
                     "name": "Ismejeri",
                     "terms": "ismejeri,mejeri,ostemejeri"
-                },
-                "shop/deli": {
-                    "name": "Deli",
-                    "terms": "deli,delikatesse"
                 },
                 "shop/department_store": {
                     "name": "Stormagasin",
@@ -5764,10 +5747,6 @@
                     "name": "Musikinstrumentbutik",
                     "terms": "musikinstrumentbutik,musikinstrumentforretning"
                 },
-                "shop/newsagent": {
-                    "name": "Avis/Bladforhandler",
-                    "terms": "avis/bladforhandler"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Helsekostbutik",
                     "terms": "helsekostbutik,helsekostforretning"
@@ -5787,10 +5766,6 @@
                 "shop/pastry": {
                     "name": "Konditori",
                     "terms": "konditori"
-                },
-                "shop/pawnbroker": {
-                    "name": "Panteudlåner",
-                    "terms": "panteudlåner"
                 },
                 "shop/perfumery": {
                     "name": "Parfumebutik",
@@ -5827,10 +5802,6 @@
                 "shop/seafood": {
                     "name": "Fiskehandler",
                     "terms": "fiskehandler,fiskebutik"
-                },
-                "shop/second_hand": {
-                    "name": "Genbrugsbutik",
-                    "terms": "velgørenhedsbutik,velgørenhedsforretning,genbrugsbutik"
                 },
                 "shop/sewing": {
                     "name": "Syforretning",
@@ -5909,10 +5880,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Støvsugerforhandler",
                     "terms": "støvsugerforhandler"
-                },
-                "shop/variety_store": {
-                    "name": "Spøg og skæmtbutik",
-                    "terms": "spøg og skæmtbutik"
                 },
                 "shop/video": {
                     "name": "Videobutik",

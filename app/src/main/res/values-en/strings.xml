@@ -410,6 +410,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
+    <string name="link_ohsomehex_description">Explore OSM data across scales from the "big picture" up to individual objects over space and time</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openrouteservice_wheelchair_description">Turn-by-turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
@@ -423,6 +424,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_valhalla_description">Routing engine with a very small memory footprint, multi-modal routing, isochrones and more.</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
+    <string name="link_opencampingmap_description">A map of campsites</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
@@ -434,7 +436,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_sunders_description">A map of cameras and surveillance equipment</string>
     <string name="link_osmhydrant_description">"Lookup, add and edit fire stations and fire hydrants"</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
-    <string name="link_thenandnow_description">Explore how OSM looked in the early days compared to how it looks now!</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
 
     <!-- Achievement screen -->
@@ -605,6 +606,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_airConditioning_title">"Is this place air-conditioned?"</string>
 
+    <string name="quest_atm_cashin_title">"Can you deposit cash at this ATM?"</string>
     <string name="quest_atm_operator_title">"Which bank operates this ATM?"</string>
 
     <string name="quest_baby_changing_table_title2">"Does this place have a baby changing table?"</string>
@@ -1413,7 +1415,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="quest_street_parking_title">"How can cars park here, if at all?"</string>
     <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
     <string name="select_street_parking_position">"Select position:"</string>
     <string name="select_street_parking_no">"Any sign or road marking here?"</string>
@@ -1432,9 +1433,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="street_standing_prohibited">No standing</string>
     <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
     <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
-    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of on- or off-street parking. Additional restrictions can be specified later.
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
+    <string name="street_parking_street_width">Street width: %s</string>
 
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
@@ -1548,5 +1550,5 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_sidewalk">Sidewalks</string>
 
-
+    <string name="overlay_street_parking">Street parking</string>
 </resources>

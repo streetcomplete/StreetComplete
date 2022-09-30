@@ -777,9 +777,6 @@
                 "shop/convenience": {
                     "name": "便利店"
                 },
-                "shop/deli": {
-                    "name": "熟食店"
-                },
                 "shop/department_store": {
                     "name": "百货店"
                 },
@@ -857,9 +854,6 @@
                 },
                 "shop/vacant": {
                     "name": "空置铺位"
-                },
-                "shop/variety_store": {
-                    "name": "杂货店"
                 },
                 "shop/video": {
                     "name": "影像店"

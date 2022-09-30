@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.FrameLayout">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rotateContainer"
         android:background="#3666"
         android:layout_width="280dp"
@@ -12,11 +12,12 @@
         android:layout_gravity="center"
         tools:rotation="0">
 
-        <View
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/strut"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_centerHorizontal="true"/>
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
 
         <RelativeLayout
             android:id="@+id/leftSideContainer"
@@ -24,9 +25,9 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_marginLeft="0.5dp"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/strut"
-            android:layout_width="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/strut"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:ignore="RtlHardcoded">
 
@@ -76,9 +77,9 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_marginLeft="-0.5dp"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/strut"
-            android:layout_width="match_parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/strut"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:ignore="RtlHardcoded">
 
@@ -121,6 +122,6 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>

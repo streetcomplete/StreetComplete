@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <Spinner
+        android:id="@+id/streetOrPlaceSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="32sp"
+        android:padding="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/streetNameInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:divider="@drawable/space_4dp">
+
+        <me.grantland.widget.AutofitLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/streetNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_rectangular_sign_blue"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:textSize="@dimen/large_input"
+                android:textAlignment="center"
+                android:maxLines="1"
+                android:textColor="#fff"
+                android:textColorHint="#66ffffff"
+                />
+
+        </me.grantland.widget.AutofitLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_address_street_hint2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/placeNameInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rectangular_sign_white"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_town_silhouette"
+            app:tint="#e0e0e0"
+            android:layout_marginTop="-24dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_alignBottom="@+id/placeNameInputAutofitLayout"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="8dp"
+            android:scaleType="centerInside"/>
+
+        <me.grantland.widget.AutofitLayout
+            android:id="@+id/placeNameInputAutofitLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <EditText
+                android:id="@+id/placeNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000ff"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:textAlignment="center"
+                android:maxLines="1"
+                android:textColor="#000"
+                android:textSize="@dimen/large_input"
+                tools:text="Großweilerburghausenfurt" />
+
+        </me.grantland.widget.AutofitLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

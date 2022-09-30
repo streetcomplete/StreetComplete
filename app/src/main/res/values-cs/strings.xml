@@ -2305,7 +2305,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Jaký průměr je uveden na značce tohoto hydrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Tento průměr vypadá nevědohodně."</string>
     <string name="quest_fireHydrant_confirmation_title">"Opravdu? Někdy lze průměr najít přímo na samotném hydrantu."</string>
     <string name="quest_diet_answer_no_food">"Nemá žádná jídla"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
@@ -2335,7 +2334,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="on_floor">"ve %s patře:"</string>
-    <string name="quest_street_parking_title">"Jak zde mohou parkovat auta, pokud je to možné?"</string>
     <string name="select_street_parking_orientation">"Vyberte orientaci směrem k cestě:"</string>
     <string name="select_street_parking_position">"Vyberte polohu:"</string>
     <string name="select_street_parking_no">"Jsou tu nějaké dopravní značky nebo značení?"</string>
@@ -2585,9 +2583,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Jak dobře znáte vaše okolí? Otestujte si své znalosti lokalizací ulic."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Porovnejte, jak OSM vypadala v prvních dnech provozu a jak vypadá teď!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Prohlížejte, filtrujte a pište komentáře k poznámkám, které jste vytvořili vy nebo ostatní uživatelé. Mnoho poznámek lze vyřešit tak, že jejich informace zadáte do mapy v iD nebo JOSMu"</string>
 
     <!-- Quests
@@ -2680,4 +2675,18 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Jmenovka:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Seznam bytů:"</string>
     <string name="quest_entrance_reference_flat_range_to">"na"</string>
+    <string name="default_disabled_msg_overlay">"Tento typ úkolu je ve výchozím nastavení zakázán, protože již existuje překryvná aplikace, pomocí které je zadávání a aktualizace těchto údajů efektivnější a účinnější."</string>
+    <string name="quest_camp_drinking_water_title">"Mají zde táborníci volně k dispozici pitnou vodu?"</string>
+    <string name="quest_camp_shower_title">"Jsou zde sprchy?"</string>
+    <string name="quest_camp_power_supply_title">"Mohou si zde zákazníci nabíjet telefon, notebook apod.?"</string>
+    <string name="quest_camp_type_title">"Kdo zde může tábořit?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Jak stany, tak obytné vozy, cestovní přívěsy, …"</string>
+    <string name="quest_camp_type_caravans_only">"Pouze obytné vozy, cestovní přívěsy, …"</string>
+    <string name="quest_camp_type_tents_only">"Pouze stany"</string>
+    <string name="quest_camp_type_backcountry">"Táboření v přírodě (bez zázemí)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravdopodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tato odpověď neodpovídá tomu, co je o této silnici již zmapováno. Jste si jisti, že odpovídáte o správné silnici? Jste si jisti, že jste osobně provedli průzkum po celé délce, jak je vždy potřeba?"</string>
+    <string name="quest_recycling_type_pet">"Jen PET"</string>
+    <string name="street_parking_street_width">"Šířka ulice: %s"</string>
+    <string name="overlay_street_parking">"Parkování na ulici"</string>
 </resources>

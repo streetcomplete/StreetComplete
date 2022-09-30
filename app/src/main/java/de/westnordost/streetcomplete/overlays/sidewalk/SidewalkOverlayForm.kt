@@ -31,7 +31,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     private fun initStateFromTags() {
-        val sidewalk = createSidewalkSides(element.tags)
+        val sidewalk = createSidewalkSides(element!!.tags)
         currentSidewalk = sidewalk
         streetSideSelect.setPuzzleSide(sidewalk?.left?.asStreetSideItem(), false)
         streetSideSelect.setPuzzleSide(sidewalk?.right?.asStreetSideItem(), true)
@@ -46,9 +46,10 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value).applyTo(it)
-        }.create()))
+        val sidewalks = SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value)
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        sidewalks.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     override fun hasChanges(): Boolean =

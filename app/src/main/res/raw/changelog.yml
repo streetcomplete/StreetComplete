@@ -1,4 +1,22 @@
-v47.0-beta1: |
+v48.0-alpha1: |
+  <h3>1️⃣️️ Addresses Overlay</h3>
+  <p>This now is the most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
+   You can add addresses to buildings, edit existing addresses and also add addresses at any position, using the same sleek UI as for the address quests.</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
+  <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
+  <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
+  <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  </ul>
+
+v47.0: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
      Be warned, of the overlays so far, this is the most complex one and the first that does not
@@ -13,22 +31,13 @@ v47.0-beta1: |
   <li>Several performance improvements and reduced network traffic on uploading (#4078, #4202, #4319, #4339), by @Helium314</li>
   <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
   <li>Refine when the entrance type quest is asked (#4372, #4380), by @matkoniecz</li>
-  <li>Other minor enhancements (#4380, #4381), thanks @matkoniecz, @HolgerJeromin</li>
+  <li>Postbox Cyphers: Now possible to select the cypher for Charles III (#4420)</li>
+  <li>Other minor enhancements (#4380, #4381, #4393, #4402, #4413, #4416), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>Fix sometimes quests would vanish after uploading (#4371)</li>
   <li>Fix common crash when using the app for a long time, then sending it to background</li>
-  </ul>
-
-v47.0-alpha1: |
-  <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
-  <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
-     Be warned, of the overlays so far, this is the most complex one and the first that does not
-     replace a pre-existing quest 🙂</p>
-  <h3>Other enhancements and fixes</h3>
-  <ul>
-  <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
   </ul>
 
 v46.1: |

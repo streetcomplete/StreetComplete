@@ -10,8 +10,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
+import de.westnordost.streetcomplete.osm.address.applyTo
 
-class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
+class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     private val filter by lazy { """
         nodes, ways, relations with
@@ -60,12 +62,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun applyAnswerTo(answer: AddressStreetAnswer, tags: Tags, timestampEdited: Long) {
-        val key = when (answer) {
-            is StreetName -> "addr:street"
-            is PlaceName -> "addr:place"
-        }
-        tags[key] = answer.name
+    override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags)
     }
 }
 

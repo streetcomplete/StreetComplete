@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="@dimen/dialog_horizontal_margin">
+
+    <TextView
+        android:text="@string/quest_accessPointRef_detailed_answer_impossible_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog" />
+
+    <ImageView
+        android:id="@+id/assemblyPointImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_assembly_point"
+        android:contentDescription="@string/quest_accessPointRef_answer_assembly_point" />
+
+</LinearLayout>

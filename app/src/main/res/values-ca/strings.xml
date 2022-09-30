@@ -1285,7 +1285,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_surface_value_concrete_plates">"Plaques de formigó"</string>
     <string name="quest_surface_value_concrete_lanes">"Línies de formigó"</string>
     <string name="quest_fireHydrant_diameter_title">"Quin és el diàmetre d'aquesta boca d'incendis?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"El diàmetre no pareix plausible"</string>
     <string name="quest_fireHydrant_confirmation_title">"Estàs segur? Moltes vegades el diametre es pot trobar al propi hidrant."</string>
     <string name="quest_diet_answer_no_food">"No té menjar"</string>
     <string name="short_no_answer_on_button">"No"</string>
@@ -1314,7 +1313,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
 
     <!-- Fuzzy -->
     <string name="on_floor">"al pis %s:"</string>
-    <string name="quest_street_parking_title">"Com poden estacionar aquí els cotxes, si és que ho poden fer?"</string>
     <string name="select_street_parking_orientation">"Seleccioneu l'orientació cap a la carretera:"</string>
     <string name="select_street_parking_position">"Selecciona posició:"</string>
     <string name="select_street_parking_no">"Algun senyal o marca vial ací?"</string>
@@ -1339,7 +1337,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_separate">"Estacionament mostrat separat al mapa"</string>
     <string name="street_parking_no">"No estacionar ací / No permès"</string>
     <string name="street_parking_prohibited">"Prohibit estacionar"</string>
-    <string name="street_stopping_prohibited">"Prohibit parar"</string>
+    <string name="street_stopping_prohibited">"Prohibit parar i estacionar"</string>
     <string name="street_standing_prohibited">"Sense detenció"</string>
     <string name="street_parking_conditional_restrictions">"Es pot estacionar / Sols es pot parar en certs casos"</string>
     <string name="street_parking_no_other_reasons">"Sense senyal que ho indiqui / no es pot estacionar"</string>
@@ -1583,9 +1581,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Estàs segur que els ciclistes no poden utilitzar els dos sentits d'aquest carrer unidireccional? En cas de dubte, mira si hi ha algun senyal al final del carrer."</string>
     <string name="link_valhalla_description">"Motor d'enrrutament amb una empremta de memòria molt petita, enrutament multimodal, isòcrones i molt més."</string>
     <string name="link_backofyourhand_description">"Com de bé coneixes la teva zona? Prova el teu coneixement localitzant carrers."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Exploreu com semblava OSM en els primers dies en comparació amb com es veu ara!"</string>
     <string name="link_notesreview_description">"Veure, filtrar i comentar convenientment les notes creades per tu i altres. Moltes notes es poden resoldre posant la informació que hi contenen al mapa amb iD o JOSM"</string>
 
     <!-- Quests
@@ -1606,6 +1601,7 @@ sorted alphabetically by title -->
     <string name="map_btn_stop_track">"Aturar l'enregistrament del recorregut"</string>
     <string name="quest_bicycle_rental_capacity_title">"Quants llocs per bicicletes de lloguer hi ha?"</string>
     <string name="quest_bicycle_rental_type_title">"Quin tipus de lloguer de bicicletes és?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Estació d'acoblament que bloqueja les bicicletes"</string>
     <string name="quest_bicycle_rental_type_dropoff_point">"Lloc designat (bicicletes bloquejades individualment)"</string>
     <string name="quest_bicycle_rental_type_human">"Lloguer de bicicletes amb personal"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Botiga de bicicletes que a més les lloga"</string>
@@ -1630,7 +1626,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_shop_title">"Hi ha una manxa d'inflar bicicletes pública aquí? (almenys quan és obert)"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Hi ha una manxa de bicicletes que funcioni aquí?"</string>
     <string name="action_overlays">"Superposicions"</string>
-    <string name="split_way">"Tallar via"</string>
+    <string name="split_way">"Divideix la via"</string>
     <string name="quest_memorialType_title">"Quin tipus de memorial és?"</string>
     <string name="quest_memorialType_statue">"Estàtua"</string>
     <string name="quest_memorialType_bust">"Bust"</string>
@@ -1655,4 +1651,22 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_select_code_only">"Nom de l'entrada"</string>
     <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
     <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
+    <string name="default_disabled_msg_overlay">"Aquest tipus de missió està desactivada per defecte perquè ja hi ha una capa superposada amb la qual és més eficaç i eficient introduir i actualitzar aquestes dades."</string>
+    <string name="quest_camp_drinking_water_title">"Els campistes poden beure aigua debades?"</string>
+    <string name="quest_camp_shower_title">"Hi ha dutxes aquí?"</string>
+    <string name="quest_camp_power_supply_title">"Els clients poden carregar ací el seu mòbil, portàtil, etc.?"</string>
+    <string name="quest_camp_type_title">"Qui hi pot acampar aquí?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Tant tendes com autocaravanes, caravanes, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Només autocaravanes, caravanes, ..."</string>
+    <string name="quest_camp_type_tents_only">"Només tendes"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Aquesta resposta no concorda amb el que ja està mapejat sobre aquesta carretera. Està segur que està responent sobre la via correcta? Estàs segur que has recorregut tota la via, com sempre cal?"</string>
+    <string name="quest_recycling_type_pet">"Només PET"</string>
+    <string name="street_parking_street_width">"Amplada del carrer: %s"</string>
+    <string name="overlay_street_parking">"Aparcament al carrer
+"</string>
+    <string name="link_ohsomehex_description">"Explora les dades d'OSM a través de les escales des de la imatge gran fins als objectes individuals sobre l'espai i el temps
+"</string>
+    <string name="link_opencampingmap_description">"Un mapa de llocs d'acampada"</string>
+    <string name="quest_atm_cashin_title">"Pots dipositar diners en aquest caixer?"</string>
 </resources>

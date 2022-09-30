@@ -2154,7 +2154,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="quest_surface_value_concrete_plates">"Placas de concreto"</string>
     <string name="quest_surface_value_concrete_lanes">"Pistas de concreto"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual diâmetro está especificado no sinal para este hidrante?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diâmetro parece implausível."</string>
     <string name="quest_fireHydrant_confirmation_title">"Você tem certeza? Às vezes, o diâmetro pode ser encontrado no próprio hidrante."</string>
     <string name="quest_diet_answer_no_food">"Não tem comida"</string>
     <string name="short_no_answer_on_button">"Não"</string>
@@ -2181,7 +2180,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
 
     <!-- Fuzzy -->
     <string name="on_floor">"no andar %s:"</string>
-    <string name="quest_street_parking_title">"Como os carros estacionam aqui, se permitidos?"</string>
     <string name="select_street_parking_orientation">"Selecione a orientação para a estrada:"</string>
     <string name="select_street_parking_position">"Selecione a posição:"</string>
     <string name="select_street_parking_no">"Algum sinal ou marcação de estrada aqui?"</string>
@@ -2421,9 +2419,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Quão bem você conhece sua área? Teste seus conhecimentos localizando ruas."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Explore a aparência do OSM nos primeiros dias em comparação com a aparência atual!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Veja, filtre e comente convenientemente as notas criadas por você e outras pessoas. Muitas notas podem ser resolvidas colocando as informações nelas contidas no mapa com iD ou JOSM"</string>
 
     <!-- Quests
@@ -2504,4 +2499,16 @@ Que tipo de memorial é esse?"</string>
     <string name="quest_entrance_reference_reference_label">"Etiqueta de entrada:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Gama de apartamentos:"</string>
     <string name="quest_entrance_reference_flat_range_to">"para"</string>
+    <string name="default_disabled_msg_overlay">"Este tipo de missão está desabilitado por padrão porque já existe uma sobreposição com a qual é mais eficaz e eficiente inserir e atualizar esses dados."</string>
+    <string name="quest_camp_drinking_water_title">"A água potável está disponível gratuitamente para os campistas aqui?"</string>
+    <string name="quest_camp_shower_title">"Há chuveiros aqui?"</string>
+    <string name="quest_camp_power_supply_title">"Existe alguma maneira de os clientes carregarem seus telefones, laptops etc. aqui?"</string>
+    <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
+    <string name="quest_camp_type_backcountry">"Camping no interior (sem instalações)"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não está de acordo com o que já está mapeado sobre esta estrada. Tem certeza de que está respondendo sobre a estrada correta? Você tem certeza de que pesquisou pessoalmente ao longo de todo o comprimento, como sempre necessário?"</string>
+    <string name="street_parking_street_width">"Largura da rua: %s"</string>
+    <string name="overlay_street_parking">"Estacionamento na rua"</string>
+    <string name="link_ohsomehex_description">"Explore os dados do OSM em escalas desde o panorama geral até objetos individuais no espaço e no tempo"</string>
+    <string name="link_opencampingmap_description">"Um mapa de acampamentos"</string>
+    <string name="quest_atm_cashin_title">"Você pode depositar dinheiro neste caixa eletrônico?"</string>
 </resources>
