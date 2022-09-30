@@ -1095,7 +1095,7 @@ class MainFragment :
 
             if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
                 viewLifecycleScope.launch { // do concurrently with showing highlighted quests
-                    val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble())
+                    val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
                         .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
                         .sortedBy { it.elementId != quest.elementId || it.elementType != quest.elementType } // other quests for current element go first
                     if (quests.isEmpty()) return@launch

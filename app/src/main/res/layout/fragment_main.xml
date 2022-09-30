@@ -50,14 +50,14 @@
             tools:layout="@layout/fragment_answers_counter"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
-            
+
         <ScrollView
             android:id="@+id/otherQuestsScrollView"
             android:visibility="gone"
-            android:layout_below="@id/answers_counter_fragment"
-            android:layout_alignParentRight="true"
             android:layout_width="80dp"
-            android:layout_height="330dp">
+            android:layout_height="330dp"
+            app:layout_constraintTop_toBottomOf="@+id/answers_counter_fragment"
+            app:layout_constraintRight_toRightOf="parent" >
 
             <LinearLayout
                 android:id="@+id/otherQuestsLayout"
