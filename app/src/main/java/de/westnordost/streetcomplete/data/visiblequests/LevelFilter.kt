@@ -131,13 +131,15 @@ class LevelFilter internal constructor(
             isEnabled = enable.isChecked
             reload()
 
-            visibleQuestTypeController.setAllVisible(listOf(), true) // trigger reload
-
-            // reload overlay (if enabled)
             val overlayController = selectedOverlaySource as? SelectedOverlayController
             val tempOverlay = overlayController?.selectedOverlay
-            overlayController?.selectedOverlay = null
-            overlayController?.selectedOverlay = tempOverlay
+            if (tempOverlay != null) {
+                // reload overlay (if enabled), also triggers quest reload
+                overlayController.selectedOverlay = null
+                overlayController.selectedOverlay = tempOverlay
+            } else {
+                visibleQuestTypeController.setAllVisible(listOf(), true) // trigger reload
+            }
         }
         builder.show()
     }
