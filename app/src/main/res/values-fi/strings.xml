@@ -863,10 +863,14 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rivi samankaltaisia yhden perheen koteja"</string>
     <string name="quest_buildingType_hotel">"Hotellirakennus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Asuntola"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Asuntolaiva"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Vapaa-ajan asunto"</string>
     <string name="quest_buildingType_static_caravan">"Asuntovaunu"</string>
 
@@ -888,6 +892,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Varastorakennus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kioski"</string>
 
     <!-- Fuzzy -->
@@ -913,6 +919,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagodi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagoga"</string>
 
     <!-- Fuzzy -->
@@ -1001,6 +1009,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Rakennus on merkattu seuraavasti:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Pyhäkkö"</string>
 
     <!-- Fuzzy -->

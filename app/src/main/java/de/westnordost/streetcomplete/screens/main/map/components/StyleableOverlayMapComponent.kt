@@ -5,6 +5,7 @@ import android.graphics.Color
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -44,7 +45,6 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
                     props["color"] = style.color
                     props["strokeColor"] = getDarkenedColor(style.color)
-                    style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
                     val width = getLineWidth(element.tags)
@@ -78,10 +78,23 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             }
 
             geometry.toTangramGeometry(props)
-        })
+        } + // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
+            // issue that icons for polygons are shown on every single vertex
+            features
+            .filter { it.style is PolygonStyle && (it.style.icon != null || it.style.label != null) }
+            .flatMap { (element, geometry, style) ->
+                val props = HashMap<String, String>(4)
+                val polygonStyle = style as PolygonStyle
+                props[ELEMENT_ID] = element.id.toString()
+                props[ELEMENT_TYPE] = element.type.name
+                polygonStyle.icon?.let { props["icon"] = it }
+                polygonStyle.label?.let { props["text"] = it }
+                ElementPointGeometry(geometry.center).toTangramGeometry(props)
+            }
+        )
     }
 
-    /** mimics width of line as seen in Streetomplete map style (or otherwise 3m) */
+    /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
         "motorway", "trunk" -> if (!isOneway(tags)) 20f else 10f
         "motorway_link", "trunk_link" -> 6f

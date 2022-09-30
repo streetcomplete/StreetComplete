@@ -1086,6 +1086,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Hausbót"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
 
     <!-- Fuzzy -->
@@ -1111,6 +1113,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Sklad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosek"</string>
 
     <!-- Fuzzy -->

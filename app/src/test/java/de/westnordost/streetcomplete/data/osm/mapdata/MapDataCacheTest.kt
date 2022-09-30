@@ -333,18 +333,18 @@ internal class MapDataCacheTest {
         // now we have nodeTile cached
         cache.update(updatedElements = listOf(node))
         assertTrue(cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).nodes.containsExactlyInAnyOrder(listOf(node)))
-        assertEquals(node, cache.getElement(ElementType.NODE, 1L) { _,_ -> null })
+        assertEquals(node, cache.getElement(ElementType.NODE, 1L) { _, _ -> null })
 
         val otherNode = node(2, LatLon(0.0, 1.0))
         val otherNodeTile = otherNode.position.enclosingTilePos(16)
         cache.update(updatedElements = listOf(otherNode))
-        assertNull(cache.getElement(ElementType.NODE, 2L) { _,_ -> null })
+        assertNull(cache.getElement(ElementType.NODE, 2L) { _, _ -> null })
         assertTrue(cache.getMapDataWithGeometry(otherNodeTile.asBoundingBox(16)).nodes.isEmpty())
 
         val movedNode = node(1, LatLon(1.0, 0.0))
         val movedNodeTile = movedNode.position.enclosingTilePos(16)
         cache.update(updatedElements = listOf(movedNode))
-        assertNull(cache.getElement(ElementType.NODE, 1L) { _,_ -> null })
+        assertNull(cache.getElement(ElementType.NODE, 1L) { _, _ -> null })
         assertTrue(cache.getMapDataWithGeometry(movedNodeTile.asBoundingBox(16)).nodes.isEmpty())
         assertTrue(cache.getMapDataWithGeometry(nodeTile.asBoundingBox(16)).nodes.isEmpty())
     }
@@ -364,9 +364,9 @@ internal class MapDataCacheTest {
                 .containsExactlyInAnyOrder(listOf(node, way, rel))
         )
         cache.update(deletedKeys = listOf(nodeKey, wayKey, relationKey))
-        assertNull(cache.getElement(ElementType.NODE, 1L) { _,_ -> null })
-        assertNull(cache.getElement(ElementType.WAY, 2L) { _,_ -> null })
-        assertNull(cache.getElement(ElementType.RELATION, 3L) { _,_ -> null })
+        assertNull(cache.getElement(ElementType.NODE, 1L) { _, _ -> null })
+        assertNull(cache.getElement(ElementType.WAY, 2L) { _, _ -> null })
+        assertNull(cache.getElement(ElementType.RELATION, 3L) { _, _ -> null })
     }
 
     @Test fun `getWaysForNode caches from db`() {
@@ -586,13 +586,13 @@ internal class MapDataCacheTest {
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesRect.asBoundingBox(16)))
 
         assertEquals(null, cache.getElement(ElementType.NODE, 4L) { _, _ -> null }) // node not in spatialCache
-        assertEquals(outsideWay, cache.getElement(ElementType.WAY, 4L) { _,_ -> null })
-        assertEquals(outsideRel, cache.getElement(ElementType.RELATION, 2L) { _,_ -> null })
+        assertEquals(outsideWay, cache.getElement(ElementType.WAY, 4L) { _, _ -> null })
+        assertEquals(outsideRel, cache.getElement(ElementType.RELATION, 2L) { _, _ -> null })
         cache.trim(4)
         // outside way and relation removed
-        assertEquals(null, cache.getElement(ElementType.WAY, 4L) { _,_ -> null })
-        assertEquals(null, cache.getElement(ElementType.RELATION, 2L) { _,_ -> null })
-        assertEquals(rel1, cache.getElement(ElementType.RELATION, 1L) { _,_ -> null })
+        assertEquals(null, cache.getElement(ElementType.WAY, 4L) { _, _ -> null })
+        assertEquals(null, cache.getElement(ElementType.RELATION, 2L) { _, _ -> null })
+        assertEquals(rel1, cache.getElement(ElementType.RELATION, 1L) { _, _ -> null })
     }
 
     @Test fun `add relation with members already in spatial cache`() {

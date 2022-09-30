@@ -701,8 +701,12 @@
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 줄지어 있는 단독주택"</string>
     <string name="quest_buildingType_hotel">"호텔 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"기숙사"</string>
     <string name="quest_buildingType_houseboat">"선상 가옥"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"방갈로"</string>
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
     <string name="quest_buildingType_commercial">"상업 건물"</string>
@@ -717,18 +721,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"상점"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"창고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"키오스크"</string>
     <string name="quest_buildingType_storage_tank">"저장 탱크"</string>
     <string name="quest_buildingType_religious">"종교 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"교회"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"예배당"</string>
     <string name="quest_buildingType_cathedral">"대성당"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"모스크"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"사원"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"사찰 탑"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"유대교 회당"</string>
     <string name="quest_buildingType_civic">"공공 건물"</string>
     <string name="quest_buildingType_civic_description">"대개 편의시설을 갖춘 공공 건물"</string>
@@ -773,6 +791,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"성지"</string>
     <string name="quest_maxspeed_title_short2">"이 거리의 속도 제한은 얼마인가요?"</string>
     <string name="quest_maxspeed_answer_sign">"표지판"</string>

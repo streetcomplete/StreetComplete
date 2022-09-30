@@ -90,6 +90,12 @@ abstract class AbstractOverlayForm :
         }
     protected val countryInfo get() = _countryInfo!!
 
+    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
+    protected val countryOrSubdivisionCode: String? get() {
+        val latLon = geometry.center
+        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+    }
+
     // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 

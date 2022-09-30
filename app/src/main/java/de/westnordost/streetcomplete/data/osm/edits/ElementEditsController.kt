@@ -128,7 +128,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type,edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry,edit.source, currentTimeMillis(), false, action.createReverted()))
+            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
         }
         // not uploaded yet
         else {

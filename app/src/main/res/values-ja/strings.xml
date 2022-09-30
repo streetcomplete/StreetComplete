@@ -1098,6 +1098,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_detached">"一軒家"</string>
     <string name="quest_buildingType_detached_description">"独立した１世帯用の一軒家"</string>
     <string name="quest_buildingType_hotel">"宿泊施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"寮"</string>
     <string name="quest_buildingType_houseboat">"ハウスボート"</string>
 
@@ -1116,18 +1118,32 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"店舗"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"倉庫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"キオスク"</string>
     <string name="quest_buildingType_storage_tank">"貯蔵タンク"</string>
     <string name="quest_buildingType_religious">"宗教施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"教会"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"礼拝所"</string>
     <string name="quest_buildingType_cathedral">"聖堂"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"モスク"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"寺院"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"寺院の塔"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
     <string name="quest_buildingType_civic">"公共施設"</string>
     <string name="quest_buildingType_civic_description">"公共のための建築物"</string>
@@ -1164,6 +1180,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_bunker">"シェルター"</string>
     <string name="quest_address_answer_no_housenumber">"住居番号は無い…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"建物は次のようにタグ付けされています:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"神社"</string>
 
     <!-- Fuzzy -->

@@ -447,8 +447,12 @@
     <string name="quest_buildingType_semi_detached">"Tomannsbustad"</string>
     <string name="quest_buildingType_terrace_description">"ei rekkje hus tett inntil kvarandre"</string>
     <string name="quest_buildingType_hotel">"Hotellbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentby/internat"</string>
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Campingvogn"</string>
     <string name="quest_buildingType_commercial">"Forretningsbygg"</string>
@@ -459,16 +463,32 @@
     <string name="quest_buildingType_industrial_description">"for eksempel ein fabrikk, ein maskinhall eller ein verkstad"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butikk(ar)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lager"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Frittståande kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Lagertank"</string>
     <string name="quest_buildingType_religious">"Religionsbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kyrkje"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapell"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moské"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagode"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagoge"</string>
     <string name="quest_buildingType_civic">"Samfunnsbygning"</string>
     <string name="quest_buildingType_civic_description">"offentleg bygning der ein tilbyr ei teneste"</string>
@@ -505,6 +525,8 @@
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Det har ikkje noko husnummer …"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen vart definert som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Heilagstad"</string>
     <string name="quest_maxspeed_title_short2">"Kva er fartsgrensa for denne gata?"</string>
     <string name="quest_maxspeed_answer_sign">"Eit skilt"</string>

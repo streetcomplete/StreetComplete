@@ -40,6 +40,11 @@
         <item name="android:letterSpacing">-0.01</item>
     </style>
 
+    <style name="Dialog.OutlinedButton.WithNightModeSupport" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/text_based_on_main_colors</item>
+    </style>
+
+
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
 
     <style name="TimesField">

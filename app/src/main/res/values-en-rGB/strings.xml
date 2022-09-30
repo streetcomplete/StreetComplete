@@ -455,8 +455,11 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_hotel">"Hotel building"</string>
 
     <!-- In the UK, we call this "halls of residence" - often just halls for short -->
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Halls of residence"</string>
     <string name="quest_buildingType_houseboat">"Houseboat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Static caravan"</string>
     <string name="quest_buildingType_commercial">"Commercial building"</string>
@@ -465,16 +468,32 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_industrial_description">"e.g. a factory, workshop, car repair garage,…"</string>
     <string name="quest_buildingType_office">"Office building"</string>
     <string name="quest_buildingType_retail">"Retail building"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Warehouse"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Storage tank"</string>
     <string name="quest_buildingType_religious">"Religious building"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Church"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Chapel"</string>
     <string name="quest_buildingType_cathedral">"Cathedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mosque"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Temple"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagogue"</string>
     <string name="quest_buildingType_civic">"Civic building"</string>
     <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
@@ -511,6 +530,8 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"It has no house number…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"The building was tagged as:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Shrine"</string>
     <string name="quest_maxspeed_title_short2">"What’s the speed limit for this street?"</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>

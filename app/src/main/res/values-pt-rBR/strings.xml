@@ -1135,6 +1135,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Casa-barco"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
 
     <!-- Fuzzy -->
@@ -1160,6 +1162,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depósito"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosque"</string>
 
     <!-- Fuzzy -->

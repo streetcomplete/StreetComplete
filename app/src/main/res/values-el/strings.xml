@@ -1156,6 +1156,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Πλωτό σπίτι"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"μπανγκαλόου"</string>
 
     <!-- Fuzzy -->
@@ -1181,6 +1183,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Αποθήκη"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Περίπτερο"</string>
 
     <!-- Fuzzy -->

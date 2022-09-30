@@ -444,8 +444,12 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_semi_detached">"Dvīņu māja"</string>
     <string name="quest_buildingType_terrace_description">"rinda ar līdzīgām savrupmājām"</string>
     <string name="quest_buildingType_hotel">"Viesnīcas ēka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dienesta viesnīca"</string>
     <string name="quest_buildingType_houseboat">"Peldoša māja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Vasarnīca"</string>
     <string name="quest_buildingType_static_caravan">"Mobilā māja"</string>
     <string name="quest_buildingType_commercial">"Komercēka"</string>
@@ -454,16 +458,32 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_industrial_description">"piem., rūpnīca, darbnīca, autoserviss,…"</string>
     <string name="quest_buildingType_office">"Biroju ēka"</string>
     <string name="quest_buildingType_retail">"Tirdzniecības ēka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Noliktava"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosks"</string>
     <string name="quest_buildingType_storage_tank">"Glabāšanas tvertne"</string>
     <string name="quest_buildingType_religious">"Reliģiskā celtne"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Baznīca"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrāle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mošeja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Padoga"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Sabiedriskā ēka"</string>
     <string name="quest_buildingType_civic_description">"sabiedriskā ēka, kurā parasti ir labiekārtojums"</string>
@@ -500,6 +520,8 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_bunker">"Bunkurs"</string>
     <string name="quest_address_answer_no_housenumber">"Tam nav ēkas numurs…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Ēka tika atzīmēta kā:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svētnīca"</string>
     <string name="quest_maxspeed_title_short2">"Kāds ātruma ierobežojums uz šīs ielas?"</string>
     <string name="quest_maxspeed_answer_sign">"Zīme"</string>

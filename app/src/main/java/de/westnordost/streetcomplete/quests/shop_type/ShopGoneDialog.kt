@@ -76,7 +76,7 @@ class ShopGoneDialog(
         return IS_SHOP_EXPRESSION.matches(fakeElement)
     }
 
-    private fun onSelectedFeature(feature: Feature?) {
+    private fun onSelectedFeature(feature: Feature) {
         featureCtrl.feature = feature
         updateOkButtonEnablement()
     }
@@ -98,7 +98,7 @@ class ShopGoneDialog(
         getButton(BUTTON_POSITIVE)?.isEnabled =
             when (selectedRadioButtonId) {
                 R.id.vacantRadioButton,
-                R.id.leaveNoteRadioButton->  true
+                R.id.leaveNoteRadioButton -> true
                 R.id.replaceRadioButton ->   featureCtrl.feature != null
                 else ->                      false
             }

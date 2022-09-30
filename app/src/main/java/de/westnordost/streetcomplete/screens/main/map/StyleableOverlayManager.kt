@@ -50,8 +50,8 @@ class StyleableOverlayManager(
     private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
-        if (value != null) show() else hide()
         field = value
+        if (value != null) show() else hide()
     }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {

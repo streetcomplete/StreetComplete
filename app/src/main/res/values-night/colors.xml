@@ -9,6 +9,7 @@
     <color name="background">#121212</color>
     <color name="background_transparent">#00121212</color>
     <color name="text">#ddd</color>
+    <color name="text_based_on_main_colors">@color/accent</color>
     <color name="monochrome_icon">#ccc</color>
 
     <color name="hint_text">#bbb</color>
