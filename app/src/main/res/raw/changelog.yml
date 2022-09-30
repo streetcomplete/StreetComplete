@@ -1,7 +1,16 @@
 v48.0-alpha1: |
+  <h2>M-M-M-Mega Update!</h2>
+  <p>A few things came together... this update contains what would usually be in 3 or 4 releases! Have fun!</p>
   <h3>1️⃣️️ Addresses Overlay</h3>
-  <p>This now is the most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
-   You can add addresses to buildings, edit existing addresses and also add addresses at any position, using the same sleek UI as for the address quests.</p>
+  <p>The most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
+  You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
+  <h3>HUGE performance improvements (#4079, #4125), by @Helium314</h3>
+  <p>The app is now more responsive during normal use thanks to extensive caching, in particular, roughly:</p>
+  <ul>
+  <li>2x to 8x times faster display of quest pins and overlays</li>
+  <li>2x to 3x times faster showing of quest details</li>
+  <li>up to 2x times faster solving of a quests</li>
+  </ul>
   <h3>New Quests</h3>
   <ul>
   <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
@@ -12,8 +21,9 @@ v48.0-alpha1: |
   <ul>
   <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
-  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  <li>Other small enhancements (#4431, #4429, 4424), thanks @matkoniecz, @mcliquid</li>
   </ul>
 
 v47.0: |
