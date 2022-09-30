@@ -1,6 +1,6 @@
 v48.0-alpha1: |
   <h2>M-M-M-Mega Update!</h2>
-  <p>A few things came together... this update contains what would usually be in 3 or 4 releases! Have fun!</p>
+  <p>A few things came together... this update contains what would usually be in 3 or 4 releases! Enjoy!</p>
   <h3>1️⃣️️ Addresses Overlay</h3>
   <p>The most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
   You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
@@ -25,7 +25,7 @@ v48.0-alpha1: |
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
-  <li>Other small enhancements and fixes (#4431, #4429, 4424, #4435...), thanks @matkoniecz, @mcliquid, @Helium314</li>
+  <li>Other small enhancements and fixes (#4431, #4429, #4424, #4435...), thanks @matkoniecz, @mcliquid, @Helium314</li>
   </ul>
 
 v47.0: |
