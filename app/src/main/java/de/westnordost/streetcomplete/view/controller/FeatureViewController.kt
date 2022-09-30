@@ -6,7 +6,6 @@ import android.text.SpannableStringBuilder
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.os.ConfigurationCompat
 import androidx.core.text.bold
 import androidx.core.text.color
 import androidx.core.text.italic
@@ -14,7 +13,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
-import de.westnordost.streetcomplete.util.ktx.toTypedArray
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 /** Just displays a OSM feature */
