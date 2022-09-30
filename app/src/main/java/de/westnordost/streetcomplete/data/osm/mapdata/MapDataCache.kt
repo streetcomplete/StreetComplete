@@ -108,7 +108,7 @@ class MapDataCache(
                 }
             }
             wayCache[way.id] = way
-            /// ...and then the new node ids added
+            // ...and then the new node ids added
             for (nodeId in way.nodeIds) {
                 // only if the node is already in spatial cache, the way ids it refers to must be known:
                 // wayIdsByNodeIdCache is required for getMapDataWithGeometry(bbox), because a way is
@@ -146,7 +146,7 @@ class MapDataCache(
                 }
                 relationCache[relation.id] = relation
 
-                /// ...and then the new members added
+                // ...and then the new members added
                 for (member in relation.members) {
                     val memberKey = ElementKey(member.type, member.ref)
                     // only if the node member is already in the spatial cache or any node of a member
@@ -168,7 +168,7 @@ class MapDataCache(
                 }
             }
         }
-    }}
+    } }
 
     /**
      * Gets the element with the given [type] and [id] from cache. If the element is not cached,
@@ -409,8 +409,9 @@ class MapDataCache(
 
         // trim if we fetched new data, and spatialCache is full
         // trim to 90%, so trim is (probably) not immediately called on next fetch
-        if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty())
+        if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
             trim((maxTiles * 2) / 3)
+        }
         return result
     }
 
@@ -423,7 +424,7 @@ class MapDataCache(
         relationGeometryCache.clear()
         wayIdsByNodeIdCache.clear()
         relationIdsByElementKeyCache.clear()
-    }}
+    } }
 
     /** Reduces cache size to the given number of non-empty [tiles], and removes all data
      *  not contained in the remaining tiles.
@@ -448,7 +449,7 @@ class MapDataCache(
                 ElementType.RELATION -> it.id in relationIds
             }
         }
-    }}
+    } }
 
     /** return the ids of all ways whose nodes are in the spatial cache plus as all ids of
      *  relations referred to by those ways or nodes that are in the spatial cache */
@@ -483,7 +484,7 @@ class MapDataCache(
         return wayIds to relationIds
     }
 
-    private fun <K,V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
+    private fun <K, V> HashMap<K, V>.getOrPutIfNotNull(key: K, valueOrNull: () -> V?): V? {
         val v = get(key)
         if (v != null) return v
 

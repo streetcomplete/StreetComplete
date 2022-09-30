@@ -94,7 +94,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         require(root.tagName  == "svg") { "Root must be <svg>" }
 
         val viewBox = root.getAttribute("viewBox")
-        require(viewBox.isNotEmpty()) { "viewBox is missing"}
+        require(viewBox.isNotEmpty()) { "viewBox is missing" }
         val rect = viewBox.split(' ')
 
         require(rect.size == 4) { "Expected viewBox to have 4 values" }
@@ -106,7 +106,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val x = root.getAttribute("x")
         require(x == "" || x == "0" || x == "0px") { "x must be 0" }
         val y = root.getAttribute("y")
-        require(y == "" || y == "0" || y == "0px") { "y must be 0"}
+        require(y == "" || y == "0" || y == "0px") { "y must be 0" }
 
         val width2 = root.getAttribute("width")
         val height2 = root.getAttribute("height")
@@ -175,7 +175,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     private fun getDownloadUrl(icon: String): String? {
         val prefix = icon.substringBefore('-', "")
         val file = icon.substringAfter('-')
-        return when(prefix) {
+        return when (prefix) {
             "iD" -> "https://raw.githubusercontent.com/openstreetmap/iD/develop/svg/iD-sprite/presets/$file.svg"
             "maki" -> "https://raw.githubusercontent.com/mapbox/maki/main/icons/$file.svg"
             "temaki" -> "https://raw.githubusercontent.com/ideditor/temaki/main/icons/$file.svg"

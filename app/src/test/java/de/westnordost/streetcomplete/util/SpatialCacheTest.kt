@@ -230,5 +230,4 @@ internal class SpatialCacheTest {
         cache.replaceAllInBBox(listOf(node3), node3.position.enclosingTilePos(16).asBoundingBox(16))
         assertEquals(2, cache.size)
     }
-
 }

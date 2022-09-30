@@ -7,8 +7,8 @@ import androidx.core.os.ConfigurationCompat
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.toList
 import de.westnordost.streetcomplete.util.ShowHouseNumber.*
+import de.westnordost.streetcomplete.util.ktx.toList
 import java.util.Locale
 
 fun getNameAndLocationLabelString(
@@ -146,7 +146,6 @@ fun getShortHouseNumber(map: Map<String, String>): String? {
         else -> null
     }
 }
-
 
 private fun String.inBold(): String = "<b>${Html.escapeHtml(this)}</b>"
 private fun String.inItalics(): String = "<i>${Html.escapeHtml(this)}</i>"

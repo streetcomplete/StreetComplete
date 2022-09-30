@@ -243,7 +243,7 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     version = presetsVersion
     targetDir = "$projectDir/src/main/res/drawable/"
     iconSize = 34
-    transformName = { "ic_preset_" + it.replace('-','_') }
+    transformName = { "ic_preset_" + it.replace('-', '_') }
     indexFile = "$projectDir/src/main/java/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
 }
 

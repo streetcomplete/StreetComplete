@@ -26,7 +26,7 @@ class SpatialCache<K, T>(
     private val getKey: T.() -> K,
     private val getPosition: T.() -> LatLon,
 ) {
-    private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles/0.75).toInt(), 0.75f, true)
+    private val byTile = LinkedHashMap<TilePos, HashSet<T>>((maxTiles / 0.75).toInt(), 0.75f, true)
     private val byKey = initialCapacity?.let { HashMap<K, T>(it) } ?: HashMap<K, T>()
 
     /** Number of tiles containing at least one item. Empty tiles are disregarded, as
@@ -62,8 +62,9 @@ class SpatialCache<K, T>(
         for (item in updatedOrAdded) {
             // items must be removed before they are re-added because e.g. position may have changed
             val oldItem = byKey.remove(item.getKey())
-            if (oldItem != null)
+            if (oldItem != null) {
                 byTile[oldItem.getTilePos()]?.remove(oldItem)
+            }
 
             // items are only added if the tile they would be sorted into is already cached,
             // because all tiles that are in cache must be complete
@@ -71,7 +72,7 @@ class SpatialCache<K, T>(
             tile.add(item)
             byKey[item.getKey()] = item
         }
-    }}
+    } }
 
     /**
      * Replaces all tiles fully contained in the [bbox] with empty tiles.
@@ -93,7 +94,7 @@ class SpatialCache<K, T>(
         replaceAllInTiles(items, completelyContainedTiles)
 
         trim()
-    }}
+    } }
 
     /** replaces [tiles] with empty tiles and calls [update] for [items] */
     private fun replaceAllInTiles(items: Collection<T>, tiles: Collection<TilePos>) {
@@ -119,10 +120,11 @@ class SpatialCache<K, T>(
         }
 
         val items = requiredTiles.flatMap { tile ->
-            if (tile.asBoundingBox(tileZoom).isCompletelyInside(bbox))
+            if (tile.asBoundingBox(tileZoom).isCompletelyInside(bbox)) {
                 byTile[tile]!!
-            else
+            } else {
                 byTile[tile]!!.filter { it.getPosition() in bbox }
+            }
         }
 
         trim()
@@ -136,7 +138,7 @@ class SpatialCache<K, T>(
             val firstNonEmptyTile = byTile.entries.firstOrNull { it.value.isNotEmpty() }?.key ?: return
             removeTile(firstNonEmptyTile)
         }
-    }}
+    } }
 
     private fun removeTile(tilePos: TilePos) {
         val removedItems = byTile.remove(tilePos)
@@ -151,7 +153,7 @@ class SpatialCache<K, T>(
     fun clear() { synchronized(this) {
         byKey.clear()
         byTile.clear()
-    }}
+    } }
 
     private fun T.getTilePos(): TilePos =
         getPosition().enclosingTilePos(tileZoom)

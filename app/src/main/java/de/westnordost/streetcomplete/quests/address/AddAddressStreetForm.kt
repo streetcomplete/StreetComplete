@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.ShowHouseNumber
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
-import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import org.koin.android.ext.android.inject
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {

@@ -72,7 +72,6 @@ class FeatureViewController(
             .get()
 }
 
-
 private fun SpannableStringBuilder.appendName(context: Context, feature: Feature, searchText: String?): SpannableStringBuilder {
     if (searchText == null) {
         bold { append(feature.name) }

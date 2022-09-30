@@ -98,7 +98,7 @@ class ShopGoneDialog(
         getButton(BUTTON_POSITIVE)?.isEnabled =
             when (selectedRadioButtonId) {
                 R.id.vacantRadioButton,
-                R.id.leaveNoteRadioButton->  true
+                R.id.leaveNoteRadioButton -> true
                 R.id.replaceRadioButton ->   featureCtrl.feature != null
                 else ->                      false
             }

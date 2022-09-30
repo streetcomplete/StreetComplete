@@ -140,7 +140,6 @@ class AddHousenumberTest {
         assertNull(questType.isApplicableTo(building))
     }
 
-
     @Test fun `apply house number answer`() {
         questType.verifyAnswer(
             AddressNumberOrName(HouseNumber("99b"), null),

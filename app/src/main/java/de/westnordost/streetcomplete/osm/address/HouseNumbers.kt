@@ -43,7 +43,6 @@ private fun sign(vararg numbers: Int): Int = when {
     else -> 0
 }
 
-
 /** e.g. 5a-12, 100-20/1*/
 data class HouseNumbersPartsRange(
     val start: StructuredHouseNumber,
