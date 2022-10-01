@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
@@ -36,8 +35,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
-import de.westnordost.streetcomplete.quests.osmose.OsmoseQuest
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -59,7 +56,6 @@ class UndoDialog(
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val editHistoryController: EditHistoryController by inject()
-    private val osmoseDao: OsmoseDao by inject()
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 
@@ -77,8 +73,6 @@ class UndoDialog(
         setView(binding.root)
         setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ ->
             scope.launch(Dispatchers.IO) { editHistoryController.undo(edit) }
-            if ((edit is ElementEdit) && edit.type.changesetComment == "Fix osmose issues") // todo: this is actually horrible, but... how to access quest type from here?
-                osmoseDao.setNothing(ElementKey(edit.elementType, edit.elementId))
         }
         setButton(BUTTON_NEGATIVE, context.getText(R.string.undo_confirm_negative), null, null)
     }

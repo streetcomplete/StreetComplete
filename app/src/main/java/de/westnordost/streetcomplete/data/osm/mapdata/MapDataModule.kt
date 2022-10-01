@@ -9,5 +9,5 @@ val mapDataModule = module {
     factory { RelationDao(get()) }
     factory { WayDao(get()) }
 
-    single { MapDataController(get(), get(), get(), get(), get(), get(), get(), get()) }
+    single { MapDataController(get(), get(), get(), get(), get(), get(), get()) }
 }

@@ -794,6 +794,7 @@ class SettingsFragment :
         downloadedTilesDao.removeAll()
         mapDataController.clear()
         noteController.clear()
+        questTypeRegistry.forEach { it.deleteMetadataOlderThan(System.currentTimeMillis()) }
     }
 
     private suspend fun deleteTiles() = withContext(Dispatchers.IO) {

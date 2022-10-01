@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
+import de.westnordost.streetcomplete.data.othersource.OsmoseTable
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
@@ -26,8 +27,6 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
-import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
-import de.westnordost.streetcomplete.quests.osmose.OsmoseTable
 
 class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     SQLiteOpenHelper(context, dbName, null, DB_VERSION) {
@@ -99,7 +98,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         // create osmose table if not existing
         // this is to avoid actual db upgrade to keep compatibility with upstream
         writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
-        writableDatabase.execSQL(OsmoseTable.CREATE_ELEMENT_INDEX_IF_NOT_EXISTS)
+        writableDatabase.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
+
+        // delete previous version of osmose db
+        writableDatabase.execSQL("DROP TABLE IF EXISTS osmose_issues;")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

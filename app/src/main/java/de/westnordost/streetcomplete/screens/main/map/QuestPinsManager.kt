@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.DayNightCycle
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -258,9 +259,12 @@ private const val MARKER_ELEMENT_TYPE = "element_type"
 private const val MARKER_ELEMENT_ID = "element_id"
 private const val MARKER_QUEST_TYPE = "quest_type"
 private const val MARKER_NOTE_ID = "note_id"
+private const val MARKER_OTHER_ID = "other_id"
+private const val MARKER_OTHER_SOURCE = "other_source"
 
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
+private const val QUEST_GROUP_OTHER = "other"
 
 private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
     is OsmNoteQuestKey -> listOf(
@@ -273,6 +277,11 @@ private fun QuestKey.toProperties(): List<Pair<String, String>> = when (this) {
         MARKER_ELEMENT_ID to elementId.toString(),
         MARKER_QUEST_TYPE to questTypeName
     )
+    is OtherSourceQuestKey -> listOf(
+        MARKER_QUEST_GROUP to QUEST_GROUP_OTHER,
+        MARKER_OTHER_ID to id,
+        MARKER_OTHER_SOURCE to source,
+    )
 }
 
 private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST_GROUP)) {
@@ -284,5 +293,7 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )
+    QUEST_GROUP_OTHER ->
+        OtherSourceQuestKey(getValue(MARKER_OTHER_ID), getValue(MARKER_OTHER_SOURCE))
     else -> null
 }

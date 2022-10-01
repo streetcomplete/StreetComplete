@@ -327,6 +327,15 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             setLocked(false)
             return
         }
+        fun doThatStuff() {
+            if (action is UpdateElementTagsAction && !action.changes.isValid()) {
+                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
+                val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
+                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
+            } else {
+                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            }
+        }
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             viewLifecycleScope.launch {
                 // Only listener is mainFragment for closing bottom sheet and showing the quest
@@ -335,19 +344,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             }
             // hides the quest pin immediately (and would close bottom sheet without solved animation)
             hideOsmQuestController.tempHide(questKey as OsmQuestKey)
-            withContext(Dispatchers.IO) {
-                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
-            }
+            withContext(Dispatchers.IO) { doThatStuff() }
         } else {
-            withContext(Dispatchers.IO) {
-                if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                    val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
-                    val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
-                    noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
-                } else {
-                    addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
-                }
-            }
+            withContext(Dispatchers.IO) { doThatStuff() }
             listener?.onEdited(osmElementQuestType, element, geometry)
         }
     }

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -182,11 +183,13 @@ class MapDataCache(
         id: Long,
         fetch: (ElementType, Long) -> Element?
     ): Element? = synchronized(this) {
-        return when (type) {
+        val a = when (type) {
             ElementType.NODE -> spatialCache.get(id) ?: nodeCache.getOrPutIfNotNull(id) { fetch(type, id) as? Node }
             ElementType.WAY -> wayCache.getOrPutIfNotNull(id) { fetch(type, id) as? Way }
             ElementType.RELATION -> relationCache.getOrPutIfNotNull(id) { fetch(type, id) as? Relation }
         }
+        if (a == null) Log.i("cachetest", "getElement $type $id returned null")
+        return a
     }
 
     /**
@@ -198,11 +201,13 @@ class MapDataCache(
         id: Long,
         fetch: (ElementType, Long) -> ElementGeometry?
     ): ElementGeometry? = synchronized(this) {
-        return when (type) {
+        val a = when (type) {
             ElementType.NODE -> (spatialCache.get(id) ?: nodeCache[id])?.let { ElementPointGeometry(it.position) } ?: fetch(type, id)
             ElementType.WAY -> wayGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
             ElementType.RELATION -> relationGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
         }
+        if (a == null) Log.i("cachetest", "getGeometry $type $id returned null")
+        a
     }
 
     /**
@@ -237,6 +242,8 @@ class MapDataCache(
                 ElementType.RELATION -> relationCache[element.id] = element as Relation
             }
         }
+        if ((cachedElements.size + fetchedElements.size) < keys.size)
+            Log.i("cachetest", "getElements missing: ${keys.toHashSet().apply { removeAll { it in (cachedElements + fetchedElements).map { ElementKey(it.type, it.id) } } }}")
         return cachedElements + fetchedElements
     }
 
@@ -251,6 +258,8 @@ class MapDataCache(
         val missingNodeIds = ids.filterNot { it in cachedNodeIds }
         val fetchedNodes = fetch(missingNodeIds)
         fetchedNodes.forEach { nodeCache[it.id] = it }
+        if ((cachedNodes.size + fetchedNodes.size) < ids.size)
+            Log.i("cachetest", "getElements missing: ${ids.toHashSet().apply { removeAll { it in (cachedNodes + fetchedNodes).map { it.id } } }}")
         return cachedNodes + fetchedNodes
     }
 
@@ -304,6 +313,8 @@ class MapDataCache(
                 else -> Unit
             }
         }
+        if ((cachedEntries.size + fetchedEntries.size) < keys.size)
+            Log.i("cachetest", "getElements missing: ${keys.toHashSet().apply { removeAll { it in (cachedEntries + fetchedEntries).map { ElementKey(it.elementType, it.elementId) } } }}")
         return cachedEntries + fetchedEntries
     }
 

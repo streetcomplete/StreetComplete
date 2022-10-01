@@ -1,50 +1,37 @@
-package de.westnordost.streetcomplete.quests.osmose
+package de.westnordost.streetcomplete.data.othersource
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.widget.SwitchCompat
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
-class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreferences) : OsmElementQuestType<OsmoseAnswer> {
+class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPreferences) : OtherSourceQuestType {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_osmose_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
+    override fun download(bbox: BoundingBox) = osmoseDao.download(bbox)
+
+    override fun upload() = osmoseDao.reportChanges()
+
+    override fun deleteMetadataOlderThan(timestamp: Long) = osmoseDao.deleteOlderThan(timestamp)
+
+    override fun getQuests(bbox: BoundingBox) = osmoseDao.getAllQuests(bbox)
+
+    override val enabledInCountries: Countries
+        get() = super.enabledInCountries
 
     override val changesetComment = "Fix osmose issues"
     override val wikiLink = "Osmose"
     override val icon = R.drawable.ic_quest_osmose
     override val defaultDisabledMessage = R.string.quest_osmose_message
+    override val source = Companion.source
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val elements = mutableListOf<Element>()
-        val map = db.getAll()
-        mapData.forEach {
-            if (map.contains(ElementKey(it.type, it.id)))
-                elements.add(it)
-        }
-        return elements
-    }
-
-    override fun isApplicableTo(element: Element): Boolean =
-        db.get(ElementKey(element.type, element.id)) != null
-
-    override fun createForm() = OsmoseForm(db)
-
-    override fun applyAnswerTo(answer: OsmoseAnswer, tags: Tags, timestampEdited: Long) {
-        if (answer is AdjustTagAnswer) {
-            tags[answer.tag] = answer.newValue
-            db.setDone(answer.uuid)
-        }
-    }
+    override fun createForm() = OsmoseForm(osmoseDao)
 
     override val hasQuestSettings = true
 
@@ -88,6 +75,9 @@ class OsmoseQuest(private val db: OsmoseDao, private val prefs: SharedPreference
             .show()
     }
 
+    companion object {
+        const val source = "osmose" // todo: this is ugly...
+    }
 }
 
 const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"

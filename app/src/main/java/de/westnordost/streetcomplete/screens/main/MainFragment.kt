@@ -73,8 +73,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.othersource.AbstractOtherQuestForm
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -182,6 +185,7 @@ class MainFragment :
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
     CreatePoiFragment.Listener,
+    AbstractOtherQuestForm.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -522,6 +526,9 @@ class MainFragment :
             closeBottomSheet()
         }
 
+    override fun onQuestHidden(questKey: OtherSourceQuestKey) {
+        closeBottomSheet()
+    }
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
@@ -1206,6 +1213,7 @@ class MainFragment :
             showHighlightedElements(quest, element)
         } else {
             showInBottomSheet(f)
+            showHighlightedElements(quest)
         }
 
         mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
@@ -1215,8 +1223,12 @@ class MainFragment :
         mapFragment.hideOverlay()
     }
 
-    private fun showHighlightedElements(quest: OsmQuest, element: Element) {
-        val bbox = quest.geometry.center.enclosingBoundingBox(quest.type.highlightedElementsRadius)
+    private fun showHighlightedElements(quest: Quest, element: Element? = null) {
+        val bbox = when (quest) {
+            is OsmQuest -> quest.geometry.center.enclosingBoundingBox(quest.type.highlightedElementsRadius)
+            is OtherSourceQuest -> quest.type.highlightedElementsRadius?.let { quest.position.enclosingBoundingBox(it) } ?: return
+            else -> return
+        }
         var mapData: MapDataWithGeometry? = null
 
         fun getMapData(): MapDataWithGeometry {
@@ -1231,11 +1243,15 @@ class MainFragment :
             return data
         }
 
-        val levels = createLevelsOrNull(element.tags)
+        val levels = element?.let { createLevelsOrNull(it.tags) }
 
         viewLifecycleScope.launch {
             val elements = withContext(Dispatchers.IO) {
-                quest.type.getHighlightedElements(element, ::getMapData)
+                when (quest) {
+                    is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
+                    is OtherSourceQuest -> quest.type.getHighlightedElements(::getMapData)
+                    else -> emptySequence()
+                }
             }
             for (e in elements) {
                 // don't highlight "this" element
@@ -1244,7 +1260,7 @@ class MainFragment :
                 val eLevels = createLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
-                if (element.tags["layer"] != e.tags["layer"]) continue
+                if (element?.tags?.get("layer") != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)

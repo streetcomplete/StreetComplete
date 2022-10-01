@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -20,7 +19,6 @@ class MapDataController internal constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator,
     private val createdElementsController: CreatedElementsController,
-    private val osmoseDao: OsmoseDao,
 ) : MapDataRepository {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -80,7 +78,6 @@ class MapDataController internal constructor(
             geometryDB.deleteAll(oldElementKeys)
             geometryDB.putAll(geometryEntries)
             elementDB.putAll(mapData)
-            osmoseDao.deleteAll(oldElementKeys)
         }
 
         Log.i(TAG,
@@ -118,7 +115,6 @@ class MapDataController internal constructor(
             geometryDB.putAll(geometryEntries)
             elementDB.putAll(elements)
             createdElementsController.putAll(newElementKeys)
-            osmoseDao.deleteAll(deletedKeys)
         }
 
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
@@ -233,7 +229,6 @@ class MapDataController internal constructor(
             elementCount = elementDB.deleteAll(elements)
             geometryCount = geometryDB.deleteAll(elements)
             createdElementsController.deleteAll(elements)
-            osmoseDao.deleteAll(elements)
         }
         Log.i(TAG, "Deleted $elementCount old elements and $geometryCount geometries")
 
@@ -248,7 +243,6 @@ class MapDataController internal constructor(
             elementDB.clear()
             geometryDB.clear()
             createdElementsController.clear()
-            osmoseDao.clear()
         }
         onCleared()
     }
