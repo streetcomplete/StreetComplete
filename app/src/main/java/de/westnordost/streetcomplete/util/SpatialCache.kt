@@ -4,7 +4,7 @@ import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.download.tiles.minTileRect
+import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.contains
@@ -113,10 +113,9 @@ class SpatialCache<K, T>(
         val requiredTiles = bbox.asListOfEnclosingTilePos()
 
         val tilesToFetch = requiredTiles.filterNot { byTile.containsKey(it) }
-        val tilesRectToFetch = tilesToFetch.minTileRect()
-        if (tilesRectToFetch != null) {
-            val newItems = fetch(tilesRectToFetch.asBoundingBox(tileZoom))
-            replaceAllInTiles(newItems, tilesToFetch)
+        tilesToFetch.upToTwoMinTileRects()?.forEach { tilesRect ->
+            val newItems = fetch(tilesRect.asBoundingBox(tileZoom))
+            replaceAllInTiles(newItems, tilesRect.asTilePosSequence().toList())
         }
 
         val items = requiredTiles.flatMap { tile ->
