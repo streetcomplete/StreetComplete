@@ -929,6 +929,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Yüzer ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Durağan karavan"</string>
 
@@ -952,6 +954,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -974,6 +978,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"İbadethane"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
 
     <!-- Fuzzy -->

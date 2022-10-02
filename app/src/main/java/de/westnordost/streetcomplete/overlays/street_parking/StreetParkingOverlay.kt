@@ -76,7 +76,7 @@ private val streetParkingTaggingNotExpected by lazy { """
 
 private val parkingLotStyle = PolygonStyle(Color.BLUE)
 
-private val chokerStyle = PointStyle("ic_pin_choker")
+private val chokerStyle = PointStyle("ic_pin_choker_borderless")
 
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)

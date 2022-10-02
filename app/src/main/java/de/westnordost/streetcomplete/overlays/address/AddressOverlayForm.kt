@@ -12,19 +12,18 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
-import de.westnordost.streetcomplete.osm.address.applyTo
-import de.westnordost.streetcomplete.osm.address.createAddressNumber
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
+import de.westnordost.streetcomplete.osm.address.applyTo
+import de.westnordost.streetcomplete.osm.address.createAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.ShowHouseNumber
 import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
 import org.koin.android.ext.android.inject
 
@@ -71,7 +70,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         if (tags != null) {
             setTitleHintLabel(getNameAndLocationLabelString(
                 tags, resources, featureDictionary,
-                showHouseNumber = ShowHouseNumber.NEVER
+                showHouseNumber = false
             ))
         }
         setMarkerIcon(R.drawable.ic_quest_housenumber)

@@ -522,8 +522,12 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_semi_detached">"Dvojna kuća"</string>
     <string name="quest_buildingType_terrace_description">"linearni niz sličnih obiteljskih kuća"</string>
     <string name="quest_buildingType_hotel">"Hotelska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentski dom"</string>
     <string name="quest_buildingType_houseboat">"Kuća na splavu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilna kućica"</string>
     <string name="quest_buildingType_commercial">"Komercijalna zgrada"</string>
@@ -538,18 +542,32 @@ Na primjer 1,3 ili 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Trgovina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Skladište"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Spremnik"</string>
     <string name="quest_buildingType_religious">"Vjerska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Crkva"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrala"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Džamija"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Hram"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Zgrada za javnost"</string>
     <string name="quest_buildingType_civic_description">"zgrada za javnost koja obično pruža neku uslugu"</string>
@@ -586,6 +604,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nema kućnog broja…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Zgrada je označena kao:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svetište"</string>
 
     <!-- Fuzzy -->

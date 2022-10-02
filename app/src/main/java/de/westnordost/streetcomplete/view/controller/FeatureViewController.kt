@@ -6,14 +6,13 @@ import android.text.SpannableStringBuilder
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.os.ConfigurationCompat
 import androidx.core.text.bold
 import androidx.core.text.color
 import androidx.core.text.italic
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.toTypedArray
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 /** Just displays a OSM feature */
@@ -22,7 +21,7 @@ class FeatureViewController(
     private val textView: TextView,
     private val iconView: ImageView
 ) {
-    private val locales = ConfigurationCompat.getLocales(textView.resources.configuration).toTypedArray()
+    private val locales = getLocalesForFeatureDictionary(textView.resources.configuration)
 
     var countryOrSubdivisionCode: String? = null
 
@@ -50,7 +49,9 @@ class FeatureViewController(
         if (feature == null) {
             textView.text = null
             textView.setHint(R.string.quest_select_hint)
-            iconView.setImageDrawable(null)
+            val questionDrawable = iconView.context.getDrawable(R.drawable.ic_question_24dp)
+            questionDrawable?.alpha = 64
+            iconView.setImageDrawable(questionDrawable)
         } else if (feature.isSuggestion) {
             val parentFeature = getParentFeature(feature)
             val text = SpannableStringBuilder()
@@ -71,7 +72,6 @@ class FeatureViewController(
             .forLocale(*locales)
             .get()
 }
-
 
 private fun SpannableStringBuilder.appendName(context: Context, feature: Feature, searchText: String?): SpannableStringBuilder {
     if (searchText == null) {

@@ -132,7 +132,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="autosync_off">"Wyłącz"</string>
     <string name="quest_streetSurface_title">"Jaką nawierzchnię ma ten fragment drogi?"</string>
     <string name="quest_surface_value_paved">"twarda, typu asfalt czy beton (ogólnie)"</string>
-    <string name="quest_surface_value_unpaved">"miękka lub utwardzona (ogólnie)"</string>
+    <string name="quest_surface_value_unpaved">"nie ma twardej nawierzchni (ogólnie)"</string>
     <string name="quest_surface_value_ground">"gruntowa (ogólnie)"</string>
     <string name="quest_surface_value_asphalt">"asfaltowa"</string>
     <string name="quest_surface_value_compacted">"tłuczniowa rolowana"</string>
@@ -670,10 +670,13 @@ Na przykład 1,3 lub 2–6."</string>
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rząd podobnych budynków jednorodzinnych"</string>
     <string name="quest_buildingType_hotel">"Budynek hotelu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Budynek akademik"</string>
     <string name="quest_buildingType_houseboat">"Łodź mieszkalna"</string>
 
     <!-- It is not for a single-floor building (I fixed Polish translation and was not looking at other)! -->
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Dom letniskowy"</string>
 
     <!-- Fuzzy -->
@@ -692,7 +695,11 @@ Na przykład 1,3 lub 2–6."</string>
     <!-- "biurowiec" nie jest idealne bo to się za bardzo kojarzy z wieżowcem. A https://wiki.openstreetmap.org/wiki/File:Budynek_biurowy_filtr%C3%B3w_wodoci%C4%85g%C3%B3w_Krakowskich_-_Krak%C3%B3w_-_Filtrowa_1.jpg to też building=office ( https://lists.openstreetmap.org/pipermail/tagging/2021-August/thread.html#62184 ) -->
     <string name="quest_buildingType_office">"Budynek biurowy"</string>
     <string name="quest_buildingType_retail">"Budynek sklepowy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Budynek magazynu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -843,8 +850,8 @@ Na przykład 1,3 lub 2–6."</string>
     <string name="quest_openingHours_timeSelect_next">"Dalej"</string>
     <string name="quest_tracktype_title">"Jaka jest twardość powierzchni tej drogi?"</string>
     <string name="quest_tracktype_grade1">"Twarda nawierzchnia typu asfalt/beton"</string>
-    <string name="quest_tracktype_grade4">"Głównie miękka"</string>
-    <string name="quest_tracktype_grade5">"Miękka"</string>
+    <string name="quest_tracktype_grade4">"Słabo utwardzona"</string>
+    <string name="quest_tracktype_grade5">"Nieutwardzona"</string>
     <string name="quest_building_underground_title">"Czy ten budynek znajduje się całkowicie pod ziemią?"</string>
 
     <!-- Fuzzy -->
@@ -912,7 +919,7 @@ Na przykład 1,3 lub 2–6."</string>
     <string name="quest_cyclewayPartSurface_title">"Jaka jest nawierzchnia części będącej drogą dla rowerów?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"Zmienia się…"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Różne odcinki mają różną odpowiedź…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Jeśli sytuacja jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
@@ -1991,4 +1998,9 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Kod klatki schodowej:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Numery mieszkań:"</string>
     <string name="quest_entrance_reference_flat_range_to">"do"</string>
+    <string name="quest_camp_shower_title">"Czy są tutaj prysznice?"</string>
+    <string name="quest_camp_type_tents_only">"Tylko namioty"</string>
+    <string name="quest_recycling_type_pet">"Tylko PET"</string>
+    <string name="overlay_street_parking">"Parkowanie na ulicy"</string>
+    <string name="link_opencampingmap_description">"Mapa kempingów i pól namiotowych"</string>
 </resources>

@@ -23,6 +23,7 @@
         android:paddingRight="@dimen/quest_form_rightOffset"
         android:layout_centerInParent="true"
         android:src="@drawable/crosshair"
+        app:tint="@color/monochrome_icon"
         android:alpha="0.6"
         tools:ignore="RtlHardcoded" />
 

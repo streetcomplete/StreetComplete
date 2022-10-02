@@ -9,6 +9,7 @@
     <color name="on_secondary">#fff</color>
 
     <color name="text">#000</color>
+    <color name="text_based_on_main_colors">@color/primary</color>
     <color name="monochrome_icon">#333</color>
     <color name="inverted_background">#666</color>
 

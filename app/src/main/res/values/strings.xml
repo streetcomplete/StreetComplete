@@ -658,7 +658,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
-    <string name="quest_bicycle_incline_up_and_down">It\'s up and down hops</string>
+    <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
 
@@ -758,9 +758,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_terrace2">Row houses</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
-    <string name="quest_buildingType_dormitory">Dormitory</string>
+    <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
-    <string name="quest_buildingType_bungalow">Bungalow</string>
+    <string name="quest_buildingType_bungalow">Bungalow building</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin…)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
     <string name="quest_buildingType_commercial">Commercial building</string>
@@ -770,18 +770,18 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Retail building</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores…</string>
-    <string name="quest_buildingType_warehouse">Warehouse</string>
-    <string name="quest_buildingType_kiosk">Kiosk</string>
+    <string name="quest_buildingType_warehouse">Warehouse building</string>
+    <string name="quest_buildingType_kiosk">Kiosk building</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
     <string name="quest_buildingType_religious">Religious building</string>
-    <string name="quest_buildingType_church">Church</string>
-    <string name="quest_buildingType_chapel">Chapel</string>
+    <string name="quest_buildingType_church">Church building</string>
+    <string name="quest_buildingType_chapel">Chapel building</string>
     <string name="quest_buildingType_cathedral">Cathedral</string>
-    <string name="quest_buildingType_mosque">Mosque</string>
-    <string name="quest_buildingType_temple">Temple</string>
-    <string name="quest_buildingType_pagoda">Pagoda</string>
-    <string name="quest_buildingType_synagogue">Synagogue</string>
-    <string name="quest_buildingType_shrine">Shrine</string>
+    <string name="quest_buildingType_mosque">Mosque building</string>
+    <string name="quest_buildingType_temple">Temple building</string>
+    <string name="quest_buildingType_pagoda">Pagoda building</string>
+    <string name="quest_buildingType_synagogue">Synagogue building</string>
+    <string name="quest_buildingType_shrine">Shrine building</string>
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>
     <string name="quest_buildingType_kindergarten">Kindergarten building</string>
@@ -830,6 +830,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
+    <string name="quest_buildingType_guardhouse">Guardhouse</string>
+
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -1570,6 +1572,11 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_addresses">Addresses</string>
+
+    <string name="overlay_shops">Shops</string>
+    <string name="name_label">Name:</string>
+    <string name="vacant_shop_title">Vacant shop</string>
+    <string name="unknown_shop_title">Unknown kind of place</string>
 
     <string name="overlay_street_parking">Street parking</string>
 </resources>

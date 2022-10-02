@@ -513,8 +513,12 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_semi_detached">"Casa aparellada"</string>
     <string name="quest_buildingType_terrace_description">"una filera de cases unifamiliars similars"</string>
     <string name="quest_buildingType_hotel">"Edifici hoteler"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitori"</string>
     <string name="quest_buildingType_houseboat">"Casa flotant"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalou"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estàtica"</string>
     <string name="quest_buildingType_commercial">"Edifici comercial"</string>
@@ -529,18 +533,32 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Botigues"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Magatzem"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosc"</string>
     <string name="quest_buildingType_storage_tank">"Tanc d'emmagatzematge"</string>
     <string name="quest_buildingType_religious">"Edifici religiós"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Església"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capella"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Temple"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifici públic"</string>
     <string name="quest_buildingType_civic_description">"edifici públic que habitualment ofereix algun servei"</string>
@@ -577,6 +595,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"No té número de casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuari"</string>
 
     <!-- Fuzzy -->
@@ -1634,6 +1654,8 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
     <string name="quest_memorialType_stone">"Pedra"</string>
     <string name="quest_memorialType_obelisk">"Obelisc"</string>
+    <string name="quest_memorialType_stele_wooden">"Estela de fusta (làpida commemorativa)"</string>
+    <string name="quest_memorialType_stele_stone">"Estela de pedra (làpida commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altres escultures"</string>
 
     <!-- Overlays -->
@@ -1659,6 +1681,7 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_tents_and_caravans">"Tant tendes com autocaravanes, caravanes, ..."</string>
     <string name="quest_camp_type_caravans_only">"Només autocaravanes, caravanes, ..."</string>
     <string name="quest_camp_type_tents_only">"Només tendes"</string>
+    <string name="quest_camp_type_backcountry">"Zona d'acampada lliure (sense instal·lacions)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Aquesta resposta no concorda amb el que ja està mapejat sobre aquesta carretera. Està segur que està responent sobre la via correcta? Estàs segur que has recorregut tota la via, com sempre cal?"</string>
     <string name="quest_recycling_type_pet">"Només PET"</string>

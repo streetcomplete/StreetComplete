@@ -1137,6 +1137,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Woonboot"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -1162,6 +1164,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Opslagloods"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->

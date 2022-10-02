@@ -105,12 +105,14 @@ class StreetOrPlaceNameViewController(
     fun applyHint() {
         when (spinnerSelection) {
             STREET -> {
-                if (streetNameInput.hint != null && streetNameInput.nonBlankTextOrNull == null)
+                if (streetNameInput.hint != null && streetNameInput.nonBlankTextOrNull == null) {
                     streetNameInput.setText(streetNameInput.hint)
+                }
             }
             PLACE -> {
-                if (placeNameInput.hint != null && placeNameInput.nonBlankTextOrNull == null)
+                if (placeNameInput.hint != null && placeNameInput.nonBlankTextOrNull == null) {
                     placeNameInput.setText(placeNameInput.hint)
+                }
             }
         }
     }
