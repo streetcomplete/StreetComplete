@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.download.tiles
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.splitAt180thMeridian
-import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import kotlinx.serialization.Serializable
 import kotlin.math.PI
 import kotlin.math.asinh
