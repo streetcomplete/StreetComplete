@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.widget.SwitchCompat
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.quest.Countries
+import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
@@ -22,6 +24,21 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
 
     override fun getQuests(bbox: BoundingBox) = osmoseDao.getAllQuests(bbox)
 
+    override fun get(id: String): OtherSourceQuest? = osmoseDao.getQuest(id)
+
+    override fun deleteQuest(id: String): Boolean = osmoseDao.delete(id)
+
+    override fun onDeletedEdit(edit: ElementEdit, id: String?) {
+        if (id == null)
+            osmoseDao.setFromDoneToNotAnsweredNear(edit.position)
+        else
+            osmoseDao.setNotAnswered(id)
+    }
+
+    override fun onSyncedEdit(edit: ElementEdit, id: String?) {
+        // todo: either report change here instead of in upload, or ignore it...
+    }
+
     override val enabledInCountries: Countries
         get() = super.enabledInCountries
 
@@ -31,7 +48,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
     override val defaultDisabledMessage = R.string.quest_osmose_message
     override val source = "osmose"
 
-    override fun createForm() = OsmoseForm(osmoseDao)
+    override fun createForm() = OsmoseForm()
 
     override val hasQuestSettings = true
 

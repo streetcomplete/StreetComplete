@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.othersource.OsmoseTable
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
@@ -95,11 +96,16 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
     }
 
     init {
-        // create osmose table if not existing
+        // create some EE tables if not existing
         // this is to avoid actual db upgrade to keep compatibility with upstream
+
+        // create other source tables
+        writableDatabase.execSQL(OtherSourceQuestTables.CREATE_HIDDEN)
+        writableDatabase.execSQL(OtherSourceQuestTables.CREATE_EDITS)
+
+        // create osmose table
         writableDatabase.execSQL(OsmoseTable.CREATE_IF_NOT_EXISTS)
         writableDatabase.execSQL(OsmoseTable.CREATE_SPATIAL_INDEX_IF_NOT_EXISTS)
-
         // delete previous version of osmose db
         writableDatabase.execSQL("DROP TABLE IF EXISTS osmose_issues;")
     }

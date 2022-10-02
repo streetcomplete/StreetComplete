@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
@@ -59,7 +60,6 @@ import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -67,9 +67,7 @@ import kotlinx.coroutines.yield
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileInputStream
-import java.io.FileNotFoundException
 import java.io.IOException
-import java.nio.file.Files
 import java.util.Locale
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
@@ -95,6 +93,7 @@ class SettingsFragment :
     private val dayNightQuestFilter: DayNightQuestFilter by inject()
     private val db: Database by inject()
     private val cleaner: Cleaner by inject()
+    private val otherSourceQuestController: OtherSourceQuestController by inject()
 
     interface Listener {
         fun onClickedQuestSelection()
@@ -801,7 +800,7 @@ class SettingsFragment :
         context?.externalCacheDirs?.forEach { it.purge() }
     }
     private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
-        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll()
+        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll() + otherSourceQuestController.unhideAll()
     }
 
     private fun getQuestPreferenceSummary(): String {

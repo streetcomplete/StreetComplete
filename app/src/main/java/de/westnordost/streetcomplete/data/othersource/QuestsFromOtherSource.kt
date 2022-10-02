@@ -1,8 +1,11 @@
 package de.westnordost.streetcomplete.data.othersource
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.OtherSourceQuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -13,6 +16,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.intersects
@@ -24,7 +28,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
 val otherSourceModule = module {
-    single { OtherSourceQuestController(get(named("CountryBoundariesFuture")), get(), get()) }
+    single { OtherSourceQuestController(get(named("CountryBoundariesFuture")), get(), get(), get()) }
     single { OsmoseDao(get(), get()) }
 }
 
@@ -32,55 +36,62 @@ val otherSourceModule = module {
 //  external: allow specifying coordinates instead of element, though not sure what to do them
 //   just show message, and maybe allow creating a node with pre-defined tags?
 
-// currently does more than the others, maybe split later
+// maybe split into more classes?
 class OtherSourceQuestController(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     questTypeRegistry: QuestTypeRegistry,
-    private val osmoseDao: OsmoseDao,
+    private val otherSourceDao: OtherSourceDao,
+    elementEditsController: ElementEditsController,
 ) : ElementEditsSource.Listener {
-    interface Listener {
+
+    private val hiddenCache = otherSourceDao.getAllHidden().toHashSet()
+
+    interface QuestListener {
         fun onUpdated(addedQuests: Collection<OtherSourceQuest> = emptyList(), deletedQuestKeys: Collection<OtherSourceQuestKey> = emptyList())
         fun onInvalidate()
     }
-    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
-    fun addListener(listener: Listener) {
-        listeners.add(listener)
+    private val questListeners: MutableList<QuestListener> = CopyOnWriteArrayList()
+    fun addQuestListener(questListener: QuestListener) {
+        questListeners.add(questListener)
     }
-    fun removeListener(listener: Listener) {
-        listeners.remove(listener)
+    fun removeQuestListener(questListener: QuestListener) {
+        questListeners.remove(questListener)
     }
 
-    private val questTypes = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
+    private val questTypes = questTypeRegistry.filterIsInstance<OtherSourceQuestType>().associateBy { it.source }
+    init {
+        if (questTypes.size != questTypeRegistry.filterIsInstance<OtherSourceQuestType>().size)
+            throw IllegalStateException("source values must be unique")
+        elementEditsController.addListener(this)
+    }
 
     fun delete(key: OtherSourceQuestKey) {
-        if (key.source == osmoseDao.type.source && osmoseDao.delete(key.id)) {
-            listeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
-        }
+        val type = questTypes[key.source] ?: return
+        if (type.deleteQuest(key.id))
+            questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
     fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypeNames: List<String>? = null): List<OtherSourceQuest> {
-        val quests = if (visibleQuestTypeNames == null || OsmoseQuest::class.simpleName in visibleQuestTypeNames)
-                osmoseDao.getAllQuests(bbox)
-            else emptyList()
-        return quests
-        // todo: once hiding is done
-//        val hiddenKeys = getAllHidden().toHashSet()
-//        return quests.filterNot { it.key in hiddenKeys }
+        val quests = (visibleQuestTypeNames?.filterIsInstance<OtherSourceQuestType>() ?: questTypes.values).flatMap {
+            it.getQuests(bbox)
+        }
+        return quests.filterNot { it.key in hiddenCache }
     }
 
-    fun get(key: OtherSourceQuestKey): OtherSourceQuest? =
-        if (key.source == osmoseDao.type.source)
-            osmoseDao.getQuest(key.id)
-        else null
+    fun get(key: OtherSourceQuestKey): OtherSourceQuest? {
+        if (key in hiddenCache) return null
+        val type = questTypes[key.source] ?: return null
+        return type.get(key.id)
+    }
 
-    // each dao / controller is responsible for persisting data and then creating quests
+    /** calls [download] for each [OtherSourceQuestType] enabled in this country, thus may take long */
     suspend fun download(bbox: BoundingBox) {
         withContext(Dispatchers.IO) {
             val countryBoundaries = countryBoundariesFuture.get()
             val obsoleteQuestKeys = mutableListOf<OtherSourceQuestKey>()
             val newQuests = mutableListOf<OtherSourceQuest>()
 
-            questTypes.forEach { type -> // todo: maybe do parallel once we have more sources
+            questTypes.values.forEach { type ->
                 if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@forEach
                 val previousQuests = type.getQuests(bbox).map { it.key }
                 val quests = type.download(bbox)
@@ -88,90 +99,115 @@ class OtherSourceQuestController(
                 val questKeys = HashSet<OtherSourceQuestKey>(quests.size).apply { quests.forEach { add(it.key) } }
                 obsoleteQuestKeys.addAll(previousQuests.filterNot { it in questKeys })
             }
-            listeners.forEach { it.onUpdated(newQuests, obsoleteQuestKeys) }
+            questListeners.forEach { it.onUpdated(newQuests, obsoleteQuestKeys) }
         }
     }
 
-    fun upload() {
-        questTypes.forEach { // todo: maybe do parallel once we have more sources
-            it.upload()
-        }
-    }
+    /** calls [upload] for each [OtherSourceQuestType], thus may take long */
+    fun upload() = questTypes.values.forEach { it.upload() }
 
-    fun invalidate() = listeners.forEach { it.onInvalidate() }
+    fun invalidate() = questListeners.forEach { it.onInvalidate() }
 
 
-    // hiding / unhiding... todo: do it later
-    // this is also used so pins actually disappear when quest is solved
+    // hiding / unhiding
+
+    // tempHide is not really hiding, and is also used so pins actually disappear when quest is solved
     fun tempHide(key: OtherSourceQuestKey) {
-        listeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
+        questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
-/*
-    // todo: simple table with id, source, timestamp
-    //  check hidden when getAllVisibleInBBox
-    //  add the class
-    //  dao with functionality similar to noteQuestsHiddenDao
-    interface HideOtherSourceQuestListener {
+    interface HideQuestListener {
         fun onHid(edit: OtherSourceQuestHidden)
         fun onUnhid(edit: OtherSourceQuestHidden)
         fun onUnhidAll()
     }
-    private val hideListeners: MutableList<HideOtherSourceQuestListener> = CopyOnWriteArrayList()
+    private val hideListeners: MutableList<HideQuestListener> = CopyOnWriteArrayList()
+    fun addHideListener(hideQuestListener: HideQuestListener) {
+        hideListeners.add(hideQuestListener)
+    }
+    fun removeHideListener(hideQuestListener: HideQuestListener) {
+        hideListeners.remove(hideQuestListener)
+    }
 
     fun hide(key: OtherSourceQuestKey) {
-
+        val type = questTypes[key.source] ?: return
+        val quest = get(key) ?: return
+        hiddenCache.add(key)
+        val timestamp = otherSourceDao.hide(key)
+        if (timestamp > 0) {
+            val hiddenQuest = OtherSourceQuestHidden(key.id, type, quest.position, timestamp)
+            hideListeners.forEach { it.onHid(hiddenQuest) }
+        }
     }
 
-    fun unhide(key: OtherSourceQuestKey) {
-
+    fun unhide(key: OtherSourceQuestKey): Boolean {
+        if (!hiddenCache.remove(key)) return false
+        val hiddenQuest = getHidden(key) ?: return false
+        if (!otherSourceDao.unhide(key)) return false
+        hideListeners.forEach { it.onHid(hiddenQuest) }
+        return true
     }
 
-    fun unhideAll() {
-
+    fun unhideAll(): Int {
+        val count = otherSourceDao.unhideAll()
+        hideListeners.forEach { it.onUnhidAll() }
+        return count
     }
-*/
-    override fun onAddedEdit(edit: ElementEdit) {}
+
+    fun getHidden(key: OtherSourceQuestKey, timestamp: Long? = null): OtherSourceQuestHidden? {
+        val ts = timestamp ?: otherSourceDao.getHiddenTimestamp(key) ?: return null
+        val quest = questTypes[key.source]?.get(key.id) ?: return null
+        return OtherSourceQuestHidden(quest.id, quest.type, quest.position, ts)
+    }
+
+    fun getAllHiddenNewerThan(timestamp: Long): List<OtherSourceQuestHidden> {
+        val hiddenKeys = otherSourceDao.getAllHiddenNewerThan(timestamp)
+        return hiddenKeys.mapNotNull { getHidden(it.first, it.second) }
+    }
+
+    // ElementEditsListener
+
+    override fun onAddedEdit(edit: ElementEdit) {} // ignore, and actually this should never be called
+
+    override fun onAddedEdit(edit: ElementEdit, key: QuestKey) {
+        if (key is OtherSourceQuestKey)
+            otherSourceDao.addElementEdit(key, edit.id)
+    }
 
     override fun onSyncedEdit(edit: ElementEdit) {
-//        getQuestKey(edit.id)...
+        val type = edit.type as? OtherSourceQuestType ?: return
+        val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        type.onSyncedEdit(edit, key?.id)
     }
 
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
-        edits.forEach {
-            if (it.type is OsmoseQuest) {
-                // how to identify? id / quest key is not stored in edit
-                // do i really need a separate edit type, even if it's an elementEdit?
-                // for now do some crude workaround that should be find most of the time
-                osmoseDao.setFromDoneToNotAnsweredNear(it.position)
-            }
+        for (edit in edits) {
+            val type = edit.type as? OtherSourceQuestType ?: continue
+            val key = otherSourceDao.getKeyForElementEdit(edit.id)
+            type.onDeletedEdit(edit, key?.id)
         }
     }
 }
 
-/* todo: is this necessary for anything? -> yes, for proper undo...
-    but then it need to duplicate the whole elementEdits db -> not worth it currently
-    and maybe also necessary for new edit types
+// todo: if a quest doesn't lead to an elementEdit, currently there is no way to undo
+//  -> implement for things like undo reportFalsePositive
+/*
+class OtherSourceEditKey(val source: String, val id: Long) : EditKey() // have a key for each source that needs it?
 data class OtherSourceEdit(
     override val position: LatLon,
     override val isSynced: Boolean?,
     val action: Unit, // depending on the source and what was done, need some type...
-                      //  osmose may edit several elements, or maybe delete a node... how to do? simply allow a list of elementEdits?
 ) : Edit {
-    override val key: OtherSourceEditKey // add some key
-        get() = TODO("Not yet implemented")
+    override val key: OtherSourceEditKey
     override val createdTimestamp: Long
-        get() = TODO("Not yet implemented")
     override val isUndoable: Boolean
-        get() = TODO("Not yet implemented")
-
 }
-
-class OtherSourceEditKey(val source: String, val id: Long) : EditKey() // better have a key for each source instead of this
 */
+
 data class OtherSourceQuest(
-    val id: String, // string because e.g. osmose uses uuid and not number
+    /** Each quest must be uniquely identified by the [id] and [source] */
+    val id: String,
     override val geometry: ElementGeometry,
     override val type: OtherSourceQuestType,
     ) : Quest {
@@ -184,19 +220,66 @@ data class OtherSourceQuest(
 // do it very similar to OsmElementQuestType
 // for cleanup, each quest type should override deleteMetadataOlderThan, or old data will remain
 interface OtherSourceQuestType : QuestType, ElementEditType {
+    // like for OsmQuestType
     override val title: Int get() = getTitle(emptyMap())
     fun getTitle(tags: Map<String, String>): Int
     fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
-    // how to do it with the answer? might edit tags on an element, might create node, might not interact with osm at all...
-    val source: String
-    fun download(bbox: BoundingBox): Collection<OtherSourceQuest> // should download and return all quests in the downloaded area
-    fun upload() // simply upload...
-    fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest>
     val highlightedElementsRadius: Double? get() = null
     fun getHighlightedElements(getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
-
-    // necessary to clean old data, will be called with (nearly) current time for clearing the stored data
-    override fun deleteMetadataOlderThan(timestamp: Long)
-
     val enabledInCountries: Countries get() = AllCountries
+
+    /** Unique string for each source (app will crash on start if sources are not unique). */
+    val source: String
+
+    /** Download and persist data, create quests inside the given bbox and return the new quests. */
+    fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
+
+    /**
+     *  Upload changes to the server. Uploaded quests should not be created again on [download].
+     *  Note that on each individual upload, [onSyncedEdit] will be called if there is a connected
+     *  ElementEdit.
+     */
+    fun upload()
+
+    /** Return all quests inside the given [bbox]. */
+    fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest>
+
+    /** Return quest with the given [id], or null. */
+    fun get(id: String): OtherSourceQuest?
+
+    /** Called if the ElementEdit done as part of quest with the given [id] was deleted (undone)
+     *  [id] can be null in case edit was not properly associated with id.
+     */
+    fun onDeletedEdit(edit: ElementEdit, id: String?)
+
+    /**
+     *  Called if the ElementEdit done as part of quest with the given [id] was synced (uploaded).
+     *  [id] can be null in case edit was not properly associated with id.
+     *  Note that [upload] will also be called (before the first edit upload).
+     */
+    fun onSyncedEdit(edit: ElementEdit, id: String?)
+
+    /**
+     * Removes the quest with the given [id]. What happens internally doesn't matter, as long as
+     * the quest doesn't show up again when using [get] or [getQuests].
+     */
+    fun deleteQuest(id: String): Boolean
+
+    /**
+     * Necessary to clean old data.
+     * Will be called with (nearly) current time when clearing all stored data is desired.
+    */
+    override fun deleteMetadataOlderThan(timestamp: Long)
+}
+
+data class OtherSourceQuestHidden(
+    val id: String,
+    val questType: OtherSourceQuestType,
+    override val position: LatLon,
+    override val createdTimestamp: Long
+) : Edit {
+    val questKey get() = OtherSourceQuestKey(id, questType.source)
+    override val key: OtherSourceQuestHiddenKey get() = OtherSourceQuestHiddenKey(questKey)
+    override val isUndoable: Boolean get() = true
+    override val isSynced: Boolean? get() = null
 }

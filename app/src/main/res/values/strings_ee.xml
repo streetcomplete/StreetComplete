@@ -152,7 +152,7 @@
     <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if enabled in quest settings. The message is displayed with the quest, editing tags reports the issue as solved. It is also possible to report the problem as false positive. Reporting the issue as solved or false positive cannot be undone.</string>
     <string name="quest_external_osmose_not_found">Entry deleted or ignored, removing quest</string>
     <string name="quest_osmose_message_for_element">Item type %1$s: %2$s</string>
-    <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated</string>
+    <string name="quest_osmose_settings">Set Osmose item types (numbers) to hide, comma separated. Also item/class can be used to hide only specific classes, e.g. 8280/11</string>
     <string name="quest_osmose_settings_what">What to do?</string>
     <string name="quest_osmose_settings_items">Select item types to hide</string>
     <string name="quest_osmose_settings_enable">Enable downloading</string>

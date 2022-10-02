@@ -16,6 +16,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
 import java.lang.System.currentTimeMillis
 import java.util.TreeSet
 import java.util.concurrent.CopyOnWriteArrayList
@@ -25,7 +27,8 @@ class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val noteQuestController: OsmNoteQuestController,
-    private val osmQuestController: OsmQuestController
+    private val osmQuestController: OsmQuestController,
+    private val otherSourceQuestController: OtherSourceQuestController,
 ) : EditHistorySource {
     private val listeners: MutableList<EditHistorySource.Listener> = CopyOnWriteArrayList()
 
@@ -57,6 +60,11 @@ class EditHistoryController(
         override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
+    private val otherSourceQuestHiddenListener = object : OtherSourceQuestController.HideQuestListener {
+        override fun onHid(edit: OtherSourceQuestHidden) { onAdded(edit) }
+        override fun onUnhid(edit: OtherSourceQuestHidden) { onDeleted(listOf(edit)) }
+        override fun onUnhidAll() { onInvalidated() }
+    }
 
     private val cache by lazy {
         TreeSet<Edit> { t, t2 ->
@@ -69,6 +77,7 @@ class EditHistoryController(
         noteEditsController.addListener(osmNoteEditsListener)
         noteQuestController.addHideQuestsListener(osmNoteQuestHiddenListener)
         osmQuestController.addHideQuestsListener(osmQuestHiddenListener)
+        otherSourceQuestController.addHideListener(otherSourceQuestHiddenListener)
     }
 
     fun undo(edit: Edit): Boolean {
@@ -78,6 +87,7 @@ class EditHistoryController(
             is NoteEdit -> noteEditsController.undo(edit)
             is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
             is OsmQuestHidden -> osmQuestController.unhide(edit.questKey)
+            is OtherSourceQuestHidden -> otherSourceQuestController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
@@ -90,6 +100,7 @@ class EditHistoryController(
         result += noteEditsController.getAll()
         result += noteQuestController.getAllHiddenNewerThan(maxAge)
         result += osmQuestController.getAllHiddenNewerThan(maxAge)
+        result += otherSourceQuestController.getAllHiddenNewerThan(maxAge)
         return result
     }
 
@@ -106,11 +117,12 @@ class EditHistoryController(
     override fun get(key: EditKey): Edit? {
         val edit = getAll().firstOrNull { it.key == key }
         if (edit != null) return edit
-        if (key is OsmQuestHiddenKey)
-            return osmQuestController.getHidden(key.osmQuestKey)
-        if (key is OsmNoteQuestHiddenKey)
-            return noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
-        return null
+        return when (key) {
+            is OsmQuestHiddenKey -> osmQuestController.getHidden(key.osmQuestKey)
+            is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
+            is OtherSourceQuestHiddenKey -> otherSourceQuestController.getHidden(key.otherSourceQuestKey)
+            else -> null
+        }
     }
 
     override fun getMostRecentUndoable(): Edit? =
@@ -121,9 +133,12 @@ class EditHistoryController(
     // difference to upstream: may contain older hidden quests
     // but that really doesn't matter
     override fun getAll(allHidden: Boolean): List<Edit> =
+
         if (allHidden)
-            (noteQuestController.getAllHiddenNewerThan(0L) + osmQuestController.getAllHiddenNewerThan(0L))
-                .sortedByDescending { it.createdTimestamp }
+            (noteQuestController.getAllHiddenNewerThan(0L)
+                + osmQuestController.getAllHiddenNewerThan(0L)
+                + otherSourceQuestController.getAllHiddenNewerThan(0L)
+            ).sortedByDescending { it.createdTimestamp }
         else synchronized(cache) { cache.toList() }
 
     override fun getCount(): Int =

@@ -84,7 +84,7 @@ class VisibleQuestsSource(
         }
     }
 
-    private val otherQuestListener = object : OtherSourceQuestController.Listener {
+    private val otherQuestListener = object : OtherSourceQuestController.QuestListener {
         override fun onUpdated(addedQuests: Collection<OtherSourceQuest>, deletedQuestKeys: Collection<OtherSourceQuestKey>) {
             updateVisibleQuests(addedQuests.filter(::isVisible), deletedQuestKeys)
         }
@@ -104,7 +104,7 @@ class VisibleQuestsSource(
         visibleQuestTypeSource.addListener(visibleQuestTypeSourceListener)
         teamModeQuestFilter.addListener(teamModeQuestFilterListener)
         selectedOverlaySource.addListener(selectedOverlayListener)
-        otherSourceQuestController.addListener(otherQuestListener)
+        otherSourceQuestController.addQuestListener(otherQuestListener)
     }
 
     fun getAllVisible(bbox: BoundingBox): List<Quest> =

@@ -19,7 +19,9 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class OsmoseForm(private val osmoseDao: OsmoseDao) : AbstractOtherQuestForm() {
+class OsmoseForm : AbstractOtherQuestForm() {
+
+    private val osmoseDao: OsmoseDao by inject()
 
     private lateinit var issue: OsmoseIssue
 
