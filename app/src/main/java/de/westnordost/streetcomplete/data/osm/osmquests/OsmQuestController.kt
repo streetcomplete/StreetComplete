@@ -5,11 +5,9 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
@@ -67,6 +65,8 @@ class OsmQuestController internal constructor(
 
     private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
         .sortedBy { it.chonkerIndex }
+
+    private val hiddenCache = hiddenDB.getAllIds().toHashSet()
 
     private val mapDataSourceListener = object : MapDataWithEditsSource.Listener {
 
@@ -301,12 +301,14 @@ class OsmQuestController internal constructor(
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
         pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
-    private fun getHiddenQuests(): Set<OsmQuestKey> =
-        hiddenDB.getAllIds().toSet()
+    private fun getHiddenQuests(): Set<OsmQuestKey> = synchronized(this) { hiddenCache.toHashSet() } // not a good idea, better check hiddenCache directly
 
     /** Mark the quest as hidden by user interaction */
     override fun hide(key: OsmQuestKey) {
-        synchronized(this) { hiddenDB.add(key) }
+        synchronized(this) {
+            hiddenCache.add(key)
+            hiddenDB.add(key)
+        }
 
         val hidden = getHidden(key)
         if (hidden != null) onHid(hidden)
@@ -320,7 +322,8 @@ class OsmQuestController internal constructor(
     fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
         synchronized(this) {
-            if (!hiddenDB.delete(key)) return false
+            if (!hiddenCache.remove(key)) return false
+            hiddenDB.delete(key)
         }
         if (hidden != null) onUnhid(hidden)
         val quest = get(key)
@@ -330,7 +333,10 @@ class OsmQuestController internal constructor(
 
     /** Un-hides all previously hidden quests by user interaction */
     fun unhideAll(): Int {
-        val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
+        val unhidCount = synchronized(this) {
+            hiddenCache.clear()
+            hiddenDB.deleteAll()
+        }
         onUnhidAll()
         onInvalidated()
         return unhidCount
@@ -381,10 +387,9 @@ class OsmQuestController internal constructor(
         if (added.isEmpty() && deletedKeys.isEmpty()) return
 
         val visibleAdded = if (added.isNotEmpty()) {
-            val hiddenIds = getHiddenQuests()
             val bbox = added.map { it.position }.enclosingBoundingBox()
             val hiddenPositions = getBlacklistedPositions(bbox)
-            added.filter { it.key !in hiddenIds && it.position.truncateTo5Decimals() !in hiddenPositions }
+            synchronized(this) { added.filter { it.key !in hiddenCache && it.position.truncateTo5Decimals() !in hiddenPositions } }
         } else {
             added
         }
