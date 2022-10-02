@@ -66,7 +66,7 @@ class EditHistoryControllerTest {
             Unit
         }
 
-        ctrl = EditHistoryController(elementEditsController, noteEditsController, osmNoteQuestController, osmQuestController)
+        ctrl = EditHistoryController(elementEditsController, noteEditsController, osmNoteQuestController, osmQuestController, mock())
         ctrl.addListener(listener)
     }
 

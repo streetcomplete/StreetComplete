@@ -64,8 +64,8 @@ internal class MapDataCacheTest {
         // getting a second time fetches again
         val elementDB2: ElementDao = mock()
         on(elementDB2.get(ElementType.NODE, 1L)).thenReturn(node).thenReturn(null)
-        assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB2.get(type, id) })
-        verify(elementDB2).get(ElementType.NODE, 1L)
+        assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> throw IllegalStateException() })
+//        verify(elementDB2).get(ElementType.NODE, 1L // no interaction because of nodeCache)
     }
 
     @Test fun `getElement fetches and caches way`() {
@@ -228,8 +228,8 @@ internal class MapDataCacheTest {
 
         // check whether elements except node1 are cached now
         on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
-        assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id)))
+        assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { throw IllegalStateException() }.containsExactlyInAnyOrder(elements))
+//        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id))) // no interaction because of nodeCache
     }
 
     @Test fun `getElements fetches all elements if none are cached`() {
@@ -251,8 +251,8 @@ internal class MapDataCacheTest {
 
         // check whether elements except node1 are cached now
         on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
-        assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id)))
+        assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { throw IllegalStateException() }.containsExactlyInAnyOrder(elements))
+//        verify(elementDB).getAll(listOf(ElementKey(node1.type, node1.id))) // no interaction because of nodeCache
     }
 
     @Test fun `getGeometries doesn't fetch cached geometries`() {

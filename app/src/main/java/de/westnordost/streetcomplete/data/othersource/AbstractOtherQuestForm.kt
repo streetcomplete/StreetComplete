@@ -64,11 +64,10 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
             floatingBottomView2.setOnClickListener {
                 tempHideQuest()
             }
-            // todo: implement hide
-//            floatingBottomView2.setOnLongClickListener {
-//                hideQuest()
-//                true
-//            }
+            floatingBottomView2.setOnLongClickListener {
+                hideQuest()
+                true
+            }
         }
     }
 
@@ -122,7 +121,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         context?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> tempHideQuest() } // todo: implement proper hide
+            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
             .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
             .show()
         }
@@ -134,21 +133,20 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         listener?.onComposeNote(questType as OtherSourceQuestType, element ?: dummyElement, geometry, leaveNoteContext)
     }
 
-    // todo: implement hiding
     protected fun tempHideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { otherQuestController.tempHide(questKey as OtherSourceQuestKey) }
             listener?.onQuestHidden(questKey as OtherSourceQuestKey)
         }
     }
-/*
+
     protected fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { hideOtherQuestController.hide(questKey as OtherQuestKey) }
+            withContext(Dispatchers.IO) { otherQuestController.hide(questKey as OtherSourceQuestKey) }
             listener?.onQuestHidden(questKey as OtherSourceQuestKey)
         }
     }
-*/
+
     protected suspend fun editElement(element: Element, action: ElementEditAction) {
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {

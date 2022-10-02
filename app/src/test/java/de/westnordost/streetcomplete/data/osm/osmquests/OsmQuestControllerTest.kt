@@ -195,6 +195,7 @@ class OsmQuestControllerTest {
     @Test fun unhide() {
         val quest = osmQuest(questType = ApplicableQuestType)
 
+        ctrl.hide(quest.key) // necessary because of cache
         on(hiddenDB.delete(quest.key)).thenReturn(true)
         on(hiddenDB.getTimestamp(eq(quest.key))).thenReturn(555)
         on(mapDataSource.getGeometry(quest.elementType, quest.elementId)).thenReturn(pGeom())
@@ -340,6 +341,7 @@ class OsmQuestControllerTest {
         on(hiddenDB.getAllIds()).thenReturn(listOf(
             OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
         ))
+        ctrl.hide(OsmQuestKey(NODE, 3L, "ApplicableQuestType2")) // necessary because of cache
 
         mapDataListener.onReplacedForBBox(bbox, mapData)
 
