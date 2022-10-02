@@ -1,3 +1,9 @@
+v47.1: |
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>Other minor enhancements and fixes (#4424, #4429, #4435, #4447), thanks @mcliquid, @Helium314</li>
+  </ul>
+
 v47.0: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
