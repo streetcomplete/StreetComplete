@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.util.ktx.alpha
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 import kotlin.math.absoluteValue
@@ -25,6 +26,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 
     private val darkenedColors = HashMap<String, String>()
+    private val transparentColors = HashMap<String, String>()
 
     /** Shows/hides the map data */
     var isVisible: Boolean
@@ -42,8 +44,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
-                    props["color"] = style.color
-                    props["strokeColor"] = getDarkenedColor(style.color)
+                    props["color"] = getColorWithSomeTransparency(style.color)
+                    props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
                     style.label?.let { props["text"] = it }
                 }
                 is PolylineStyle -> {
@@ -105,6 +107,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
         darkenedColors.getOrPut(color) { toARGBString(darken(Color.parseColor(color), 0.67f)) }
+
+    private fun getColorWithSomeTransparency(color: String): String =
+        // alpha is actually double of what is specified https://github.com/tangrams/tangram-es/issues/2333
+        transparentColors.getOrPut(color) { toARGBString(alpha(Color.parseColor(color), 0.4f)) }
 
     /** Clear map data */
     fun clear() {
