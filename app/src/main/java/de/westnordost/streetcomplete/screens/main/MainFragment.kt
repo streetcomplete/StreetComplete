@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
@@ -1162,59 +1163,20 @@ class MainFragment :
         val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
         f.requireArguments().putAll(args)
 
+        val element = if (quest is OsmQuest) withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
+            else null
         if (quest is OsmQuest) {
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestForm.createArguments(element)
+            val osmArgs = AbstractOsmQuestForm.createArguments(element!!)
             f.requireArguments().putAll(osmArgs)
 
             showInBottomSheet(f)
-
-            if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
-                viewLifecycleScope.launch { // do concurrently with showing highlighted quests
-                    val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
-                        .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
-                        .sortedBy { it.elementId != quest.elementId || it.elementType != quest.elementType } // other quests for current element go first
-                    if (quests.isEmpty()) return@launch
-                    binding.compassView.isInvisible = true
-                    val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<OsmQuest>>>()
-                    val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.BLUE, ColorUtils.blendARGB(Color.RED, Color.YELLOW, 0.5f))
-                    var iter = colors.iterator()
-                    quests.forEach {
-                        questsAndColorByElement.getOrPut(ElementKey(it.elementType, it.elementId)) {
-                            val color = if (it.elementType == quest.elementType && it.elementId == quest.elementId)
-                                    Color.WHITE
-                                else iter.next()
-                            if (!iter.hasNext()) iter = colors.iterator() // cycle through colors
-                            if (color != Color.WHITE)
-                                mapFragment.putColoredGeometry(it.geometry, color)
-                            Pair(color, mutableListOf())
-                        }.second.add(it)
-                    }
-                    questsAndColorByElement.values.forEach {
-                        val color = it.first
-                        it.second.forEach { osmQuest ->
-                            val questView = ImageButton(context)
-                            questView.setImageResource(osmQuest.type.icon)
-                            questView.setBackgroundColor(Color.TRANSPARENT)
-                            questView.setColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.4f), PorterDuff.Mode.MULTIPLY)
-                            questView.scaleType = ImageView.ScaleType.FIT_CENTER
-                            questView.adjustViewBounds = true
-                            questView.setOnClickListener {
-                                binding.otherQuestsLayout.removeAllViews()
-                                viewLifecycleScope.launch { showQuestDetails(osmQuest) }
-                            }
-                            binding.otherQuestsLayout.addView(questView)
-                        }
-                    }
-                    binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
-                    binding.otherQuestsScrollView.visibility = View.VISIBLE
-                }
-
-            showHighlightedElements(quest, element)
         } else {
             showInBottomSheet(f)
-            showHighlightedElements(quest)
         }
+        if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
+            viewLifecycleScope.launch { showOtherQuests(quest) } // do concurrently with showing highlighted quests
+
+        showHighlightedElements(quest, element)
 
         mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
         mapFragment.highlightGeometry(quest.geometry)
@@ -1268,6 +1230,50 @@ class MainFragment :
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
         }
+    }
+
+    private fun showOtherQuests(quest: Quest) {
+        fun Quest.thatKey() = if (this is OsmQuest) ElementKey(elementType, elementId)
+        else ElementKey(ElementType.values()[abs(key.hashCode() % 3)], -abs(7*key.hashCode()).toLong())
+
+        val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
+            .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
+            .sortedBy { it.thatKey() != quest.thatKey() }
+        if (quests.isEmpty()) return
+        binding.compassView.isInvisible = true
+
+        val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<Quest>>>()
+        val colors = arrayOf(Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA, Color.BLUE, ColorUtils.blendARGB(Color.RED, Color.YELLOW, 0.5f))
+        var iter = colors.iterator()
+        quests.forEach {
+            questsAndColorByElement.getOrPut(it.thatKey()) {
+                val color = if (it.thatKey() == quest.thatKey())
+                    Color.WHITE
+                else iter.next()
+                if (!iter.hasNext()) iter = colors.iterator() // cycle through colors
+                if (color != Color.WHITE)
+                    mapFragment?.putColoredGeometry(it.geometry, color)
+                Pair(color, mutableListOf())
+            }.second.add(it)
+        }
+        questsAndColorByElement.values.forEach {
+            val color = it.first
+            it.second.forEach { q ->
+                val questView = ImageButton(context)
+                questView.setImageResource(q.type.icon)
+                questView.setBackgroundColor(Color.TRANSPARENT)
+                questView.setColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.4f), PorterDuff.Mode.MULTIPLY)
+                questView.scaleType = ImageView.ScaleType.FIT_CENTER
+                questView.adjustViewBounds = true
+                questView.setOnClickListener {
+                    binding.otherQuestsLayout.removeAllViews()
+                    viewLifecycleScope.launch { showQuestDetails(q) }
+                }
+                binding.otherQuestsLayout.addView(questView)
+            }
+        }
+        binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
+        binding.otherQuestsScrollView.visibility = View.VISIBLE
     }
 
     private fun isQuestDetailsCurrentlyDisplayedFor(questKey: QuestKey): Boolean {

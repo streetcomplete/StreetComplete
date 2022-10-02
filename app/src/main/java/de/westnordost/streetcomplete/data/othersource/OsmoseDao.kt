@@ -37,7 +37,7 @@ class OsmoseDao(
     private val prefs: SharedPreferences,
 ) : KoinComponent {
     private val client = OkHttpClient()
-    private val type = OsmoseQuest(this, prefs) // ugly, but at least it works...
+    val type = OsmoseQuest(this, prefs) // ugly, but at least it works...
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
@@ -101,10 +101,9 @@ class OsmoseDao(
                             Log.i(TAG, "skip line, could not parse some numbers: $split")
                             return@mapNotNull null
                         }
-                        if (item in ignoredItems || "$item/$itemClass" in ignoredItemClassCombinations) {
-                            Log.i(TAG, "skip line, item or class are ignored: $split")
+                        // don't create quest for ignored items. this is less flexible than
+                        if (item in ignoredItems || "$item/$itemClass" in ignoredItemClassCombinations)
                             return@mapNotNull null
-                        }
                         issues.add(OsmoseIssue(
                             split[0], item, itemClass, itemLevel, split[5], split[6], LatLon(lat, lon), parseElementKeys(split[13])
                         ))
@@ -123,7 +122,7 @@ class OsmoseDao(
         db.queryOne(NAME, where = "$UUID = '$uuid' AND $ANSWERED = 0") { it.toOsmoseIssue().toQuest() }
 
     fun getIssue(uuid: String): OsmoseIssue? =
-        db.queryOne(NAME, where = "$UUID = '$uuid' AND $ANSWERED = 0") { it.toOsmoseIssue().takeIf { !it.isIgnored() } }
+        db.queryOne(NAME, where = "$UUID = '$uuid' AND $ANSWERED = 0") { c -> c.toOsmoseIssue().takeIf { !it.isIgnored() } }
 
     fun getAllQuests(bbox: BoundingBox): List<OtherSourceQuest> =
         db.query(NAME, where = "${inBoundsSql(bbox)} AND $ANSWERED = 0") {
@@ -229,11 +228,11 @@ private fun CursorPosition.toOsmoseIssue() = OsmoseIssue(
 
 private fun parseElementKeys(elementString: String): List<ElementKey> {
     return try {
-        elementString.split("_").mapNotNull {
+        elementString.split("_").mapNotNull { e ->
             when {
-                elementString.startsWith("node") -> elementString.substringAfter("node").toLongOrNull()?.let { ElementKey(ElementType.NODE, it) }
-                elementString.startsWith("way") -> elementString.substringAfter("way").toLongOrNull()?.let { ElementKey(ElementType.WAY, it) }
-                elementString.startsWith("relation") -> elementString.substringAfter("relation").toLongOrNull()?.let { ElementKey(ElementType.RELATION, it) }
+                e.startsWith("node") -> e.substringAfter("node").toLongOrNull()?.let { ElementKey(ElementType.NODE, it) }
+                e.startsWith("way") -> e.substringAfter("way").toLongOrNull()?.let { ElementKey(ElementType.WAY, it) }
+                e.startsWith("relation") -> e.substringAfter("relation").toLongOrNull()?.let { ElementKey(ElementType.RELATION, it) }
                 else -> null
             }
         }

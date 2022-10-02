@@ -415,23 +415,18 @@ class OsmQuestController internal constructor(
     }
 
     // gets also hidden quests!
-    override fun getAllNearbyQuests(quest: OsmQuest, distance: Double): List<OsmQuest> {
-        val entries = db.getAllInBBox(quest.position.enclosingBoundingBox(distance))
-        val neededGeometries = HashSet<ElementKey>()
-        entries.mapNotNullTo(neededGeometries) {
-            if ((it.elementType == quest.elementType && it.elementId == quest.elementId) || it.elementType == ElementType.NODE)
-                null
-            else
-                ElementKey(it.elementType, it.elementId)
-        }
+    override fun getAllNearbyQuests(position: LatLon, distance: Double): List<OsmQuest> {
+        val entries = db.getAllInBBox(position.enclosingBoundingBox(distance))
 
-        val geometriesByKey = HashMap<ElementKey, ElementGeometry>()
-        mapDataSource.getGeometries(neededGeometries)
-            .associateTo(geometriesByKey) { ElementKey(it.elementType, it.elementId) to it.geometry }
-        geometriesByKey[ElementKey(quest.elementType, quest.elementId)] = quest.geometry
+        val elementKeys = HashSet<ElementKey>()
+        entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
+
+        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
+            .associateBy { ElementKey(it.elementType, it.elementId) }
 
         return entries.mapNotNull { entry ->
-            createOsmQuest(entry, geometriesByKey[ElementKey(entry.elementType, entry.elementId)] ?: ElementPointGeometry(entry.position))
+            val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
+            createOsmQuest(entry, geometryEntry?.geometry)
         }
     }
 

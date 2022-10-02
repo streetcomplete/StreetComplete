@@ -29,13 +29,12 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
     override val wikiLink = "Osmose"
     override val icon = R.drawable.ic_quest_osmose
     override val defaultDisabledMessage = R.string.quest_osmose_message
-    override val source = Companion.source
+    override val source = "osmose"
 
     override fun createForm() = OsmoseForm(osmoseDao)
 
     override val hasQuestSettings = true
 
-    // actual ignoring of stuff happens when downloading
     override fun getQuestSettingsDialog(context: Context): AlertDialog {
         val enable = SwitchCompat(context).apply {
             setText(R.string.quest_osmose_settings_enable)
@@ -50,7 +49,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
             .setTitle(R.string.quest_osmose_settings_what)
             .setView(enable)
             .setNegativeButton(R.string.quest_osmose_settings_items) { _,_ ->
-                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings)
+                singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_OSMOSE_ITEMS, "", R.string.quest_osmose_settings, false)
                     .show()
             }
             .setNeutralButton(android.R.string.cancel, null)
@@ -73,10 +72,6 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
-    }
-
-    companion object {
-        const val source = "osmose" // todo: this is ugly...
     }
 }
 

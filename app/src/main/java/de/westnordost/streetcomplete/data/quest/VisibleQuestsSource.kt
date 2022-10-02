@@ -142,10 +142,14 @@ class VisibleQuestsSource(
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
-    fun getNearbyQuests(quest: OsmQuest, distance: Double) = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
-        1 -> getAllVisible(quest.position.enclosingBoundingBox(distance)).filterIsInstance<OsmQuest>()
-        2 -> osmQuestSource.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance), null)
-        3 -> osmQuestSource.getAllNearbyQuests(quest, distance)
+    fun getNearbyQuests(quest: Quest, distance: Double) = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
+        1 -> getAllVisible(quest.position.enclosingBoundingBox(distance))
+        2 -> osmQuestSource.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance)) +
+            otherSourceQuestController.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance))
+        3 -> {
+            osmQuestSource.getAllNearbyQuests(quest.position, distance) +
+                otherSourceQuestController.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance)) // todo: also the hidden ones
+        }
         else -> emptyList()
     }
 

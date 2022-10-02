@@ -53,19 +53,23 @@ class OtherSourceQuestController(
     private val questTypes = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
 
     fun delete(key: OtherSourceQuestKey) {
-        if (key.source == OsmoseQuest.source && osmoseDao.delete(key.id)) {
+        if (key.source == osmoseDao.type.source && osmoseDao.delete(key.id)) {
             listeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
         }
     }
 
-    fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypeNames: List<String>): List<OtherSourceQuest> {
-        return if (OsmoseQuest::class.simpleName in visibleQuestTypeNames)
-            osmoseDao.getAllQuests(bbox)
-        else emptyList()
+    fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypeNames: List<String>? = null): List<OtherSourceQuest> {
+        val quests = if (visibleQuestTypeNames == null || OsmoseQuest::class.simpleName in visibleQuestTypeNames)
+                osmoseDao.getAllQuests(bbox)
+            else emptyList()
+        return quests
+        // todo: once hiding is done
+//        val hiddenKeys = getAllHidden().toHashSet()
+//        return quests.filterNot { it.key in hiddenKeys }
     }
 
     fun get(key: OtherSourceQuestKey): OtherSourceQuest? =
-        if (key.source == OsmoseQuest.source)
+        if (key.source == osmoseDao.type.source)
             osmoseDao.getQuest(key.id)
         else null
 
@@ -104,6 +108,10 @@ class OtherSourceQuestController(
     }
 
 /*
+    // todo: simple table with id, source, timestamp
+    //  check hidden when getAllVisibleInBBox
+    //  add the class
+    //  dao with functionality similar to noteQuestsHiddenDao
     interface HideOtherSourceQuestListener {
         fun onHid(edit: OtherSourceQuestHidden)
         fun onUnhid(edit: OtherSourceQuestHidden)
@@ -125,7 +133,9 @@ class OtherSourceQuestController(
 */
     override fun onAddedEdit(edit: ElementEdit) {}
 
-    override fun onSyncedEdit(edit: ElementEdit) {}
+    override fun onSyncedEdit(edit: ElementEdit) {
+//        getQuestKey(edit.id)...
+    }
 
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
@@ -171,9 +181,6 @@ data class OtherSourceQuest(
     val source get() = type.source
 }
 
-// object for note, class for other quest types... probably because they have more internal stuff
-// actually i should have (at least) one quest type per source
-
 // do it very similar to OsmElementQuestType
 // for cleanup, each quest type should override deleteMetadataOlderThan, or old data will remain
 interface OtherSourceQuestType : QuestType, ElementEditType {
@@ -192,6 +199,4 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     override fun deleteMetadataOlderThan(timestamp: Long)
 
     val enabledInCountries: Countries get() = AllCountries
-
-    override val wikiLink: String? get() = null
 }

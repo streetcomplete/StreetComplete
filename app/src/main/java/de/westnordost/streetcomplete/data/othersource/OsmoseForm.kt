@@ -53,9 +53,8 @@ class OsmoseForm(private val osmoseDao: OsmoseDao) : AbstractOtherQuestForm() {
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
                     osmoseDao.setAsFalsePositive(issue.uuid)
-                    // remove quest from db
-                    // todo: no! this will also delete the false positive... better temp hide, or even better make sth that can be undone
-                    questController.delete(key)
+                    tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that
+                    // todo: do some kind of edit, so it can be undone? could be deleted on sync
                 }
                 .show()
         } )
@@ -69,7 +68,6 @@ class OsmoseForm(private val osmoseDao: OsmoseDao) : AbstractOtherQuestForm() {
         issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }.mapNotNull { e -> mapDataSource.getGeometry(e.type, e.id)?.let { e to it } }.forEach {
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(it.second, null, "${it.first.type} ${it.first.id}")
         }
-
     }
 
     override val otherAnswers: List<AnswerItem> by lazy { listOfNotNull(
@@ -80,25 +78,28 @@ class OsmoseForm(private val osmoseDao: OsmoseDao) : AbstractOtherQuestForm() {
             else
                 AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) }
         }
-        else
-            AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
-                val l = LinearLayout(requireContext()).apply {
-                    orientation = LinearLayout.VERTICAL
-                    setPadding(30,10,30,10)
+        else {
+            val elements = issue.elements.mapNotNull { mapDataSource.get(it.type, it.id) }
+            if (elements.isEmpty()) null
+            else
+                AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
+                    val l = LinearLayout(requireContext()).apply {
+                        orientation = LinearLayout.VERTICAL
+                        setPadding(30, 10, 30, 10)
+                    }
+                    elements.forEach { e ->
+                        l.addView(Button(requireContext()).apply {
+                            text = "${e.type} ${e.id}"
+                            setOnClickListener { editTags(e) }
+                        })
+                    }
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.quest_osmose_select_element)
+                        .setView(l)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
                 }
-                issue.elements.forEach {
-                    val e = mapDataSource.get(it.type, it.id) ?: return@forEach
-                    l.addView(Button(requireContext()).apply {
-                        text = "${it.type} ${it.id}"
-                        setOnClickListener { editTags(e) }
-                    })
-                }
-                AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.quest_osmose_select_element)
-                    .setView(l)
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
-            },
+        },
         AnswerItem(R.string.quest_osmose_hide_type_specific) {
             val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!
                 .split(",")

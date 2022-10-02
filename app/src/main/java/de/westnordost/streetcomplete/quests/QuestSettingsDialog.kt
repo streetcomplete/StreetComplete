@@ -13,13 +13,11 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import java.text.ParseException
 
-// restarts are necessary on changes of element selection because the filter is created by lazy,
-//  and I have no idea how to reset this any other way
-
+// restarts are typically necessary on changes of element selection because the filter is created by lazy
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
 
-// for setting values of a single key, comma separated
-fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int): AlertDialog {
+/** for setting values of a single key, comma separated */
+fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int, needsRestart: Boolean = true): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
@@ -33,16 +31,19 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
-            SettingsFragment.restartNecessary = true
+            if (needsRestart)
+                SettingsFragment.restartNecessary = true
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            SettingsFragment.restartNecessary = true
+            if (needsRestart)
+                SettingsFragment.restartNecessary = true
         }
         .create()
     return dialog
 }
 
+/** for setting values of a single number */
 fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: Int, messageId: Int): AlertDialog {
     var dialog: AlertDialog? = null
     val numberInput = EditText(context)
@@ -69,8 +70,9 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
     return dialog
 }
 
-// for setting full element selection
-// this will check validity of input and only allow saving if parsing works without error
+/** For setting full element selection.
+ *  This will check validity of input and only allow saving selection can be parsed.
+ */
 fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
@@ -116,7 +118,7 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
         .setNegativeButton(android.R.string.cancel, null)
 }
 
-fun getStringFor(prefs: SharedPreferences, pref: String) = prefs.getString(pref, "")?.let { if (it.isEmpty()) "" else "or $it"}
+//fun getStringFor(prefs: SharedPreferences, pref: String) = prefs.getString(pref, "")?.let { if (it.isEmpty()) "" else "or $it"}
 
 fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
