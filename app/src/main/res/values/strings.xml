@@ -966,6 +966,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fireHydrant_type_wall">Wall</string>
     <string name="quest_fireHydrant_type_pond">Pond</string>
 
+    <string name="quest_fireHydrantRef_title">What’s the identification number here?</string>
+
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?</string>
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
