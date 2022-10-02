@@ -2,23 +2,24 @@ package de.westnordost.streetcomplete.util
 
 import android.content.res.Resources
 import android.text.Html
-import android.text.Spanned
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import java.util.Locale
 
-fun getNameAndLocationLabelString(
+fun getNameAndLocationLabel(
     tags: Map<String, String>,
     resources: Resources,
     featureDictionary: FeatureDictionary,
     showHouseNumber: Boolean? = null
-): Spanned? {
+): CharSequence? {
     val locales = getLocalesForFeatureDictionary(resources.configuration)
     val feature = getFeatureName(tags, featureDictionary, locales)
         ?.withNonBreakingSpaces()
         ?.inItalics()
-    val name = getNameLabel(tags)?.withNonBreakingSpaces()?.inBold()
+    val name = getNameLabel(tags)
+        ?.withNonBreakingSpaces()
+        ?.inBold()
 
     val nameAndFeatureName = if (name != null && feature != null) {
         resources.getString(R.string.label_name_feature, name, feature)
@@ -27,7 +28,7 @@ fun getNameAndLocationLabelString(
     }
 
     // only show house number if there is no name information
-    val location = getLocationLabel(tags, resources, showHouseNumber =
+    val location = getLocationHtml(tags, resources, showHouseNumber =
         if (showHouseNumber == null && nameAndFeatureName != null) false else showHouseNumber
     )
 
@@ -45,10 +46,17 @@ fun getLocationLabel(
     tags: Map<String, String>,
     resources: Resources,
     showHouseNumber: Boolean? = null
+): CharSequence? =
+    getLocationHtml(tags, resources, showHouseNumber)?.parseAsHtml()
+
+private fun getLocationHtml(
+    tags: Map<String, String>,
+    resources: Resources,
+    showHouseNumber: Boolean? = null
 ): String? {
     val level = getLevelLabel(tags, resources)
     // by default only show house number if no level is given
-    val houseNumber = if (showHouseNumber ?: (level == null)) getHouseNumberLabel(tags, resources) else null
+    val houseNumber = if (showHouseNumber ?: (level == null)) getHouseNumberHtml(tags, resources) else null
 
     return if (level != null && houseNumber != null) {
         resources.getString(R.string.label_housenumber_location, houseNumber, level)
@@ -111,7 +119,10 @@ fun getLevelLabel(tags: Map<String, String>, resources: Resources): String? {
 }
 
 /** Returns a text that describes the house number, e.g. "house number 123" */
-fun getHouseNumberLabel(tags: Map<String, String>, resources: Resources): String? {
+fun getHouseNumberLabel(tags: Map<String, String>, resources: Resources): CharSequence? =
+    getHouseNumberHtml(tags, resources)?.parseAsHtml()
+
+private fun getHouseNumberHtml(tags: Map<String, String>, resources: Resources): String? {
     val houseName = tags["addr:housename"]
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     val streetNumber = tags["addr:streetnumber"]

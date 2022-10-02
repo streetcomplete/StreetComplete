@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import org.koin.android.ext.android.inject
 
 class AddressOverlayForm : AbstractOverlayForm() {
@@ -68,7 +68,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         val tags = element?.tags
         if (tags != null) {
-            setTitleHintLabel(getNameAndLocationLabelString(
+            setTitleHintLabel(getNameAndLocationLabel(
                 tags, resources, featureDictionary,
                 showHouseNumber = false
             ))
