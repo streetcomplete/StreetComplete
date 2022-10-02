@@ -40,7 +40,7 @@ class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_PHONE_ELEMENTS, R.string.quest_settings_contact, PLACES_FOR_CONTACT_QUESTS)
+        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_PHONE_ELEMENTS, R.string.quest_settings_element_selection, PLACES_FOR_CONTACT_QUESTS)
 
 }
 

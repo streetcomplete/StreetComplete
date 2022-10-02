@@ -2,6 +2,7 @@ v48.0_ee: |
   <ul>
   <li>Allow switching main menu to a full grid (larger buttons!)</li>
   <li>Add POIs using the long press menu</li>
+  <li>Show all Osmose quests, even if they are not connected to exactly one element</li>
   </ul>
 
 v47.0_ee: |

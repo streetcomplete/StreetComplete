@@ -149,6 +149,7 @@ class OtherSourceQuestController(
     }
 
     fun unhideAll(): Int {
+        hiddenCache.clear()
         val count = otherSourceDao.unhideAll()
         hideListeners.forEach { it.onUnhidAll() }
         return count

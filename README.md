@@ -2,13 +2,17 @@ StreetComplete expert edition is a modified version of StreetComplete with enhan
 
 Notable changes:
 * Option to directly edit tags
+* Create nodes from iD presets anywhere
+* Quick settings, e.g. for fast switch of preset
 * Ability to create notes in a GPX file
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest.
+* More answers for some vanilla quests
 * More customization of UI and what is displayed
 * Configurable quests
+* Quests based on custom data sources (currently available: Osmose and CSV file)
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
-* Different app name, which means edits made with this version will not be counted in StreetComplete statistics
-  * Used in notes and changesets: StreetComplete_ee
+* Performance improvements (balanced by more data to process, so don't expect an improvement over StreetComplete)
+* Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
 A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml)
 

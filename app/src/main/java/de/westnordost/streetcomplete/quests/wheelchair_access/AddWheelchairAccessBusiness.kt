@@ -61,7 +61,7 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ELEMENTS, R.string.quest_settings_contact, WHEELCHAIR_PLACES)
+        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ELEMENTS, R.string.quest_settings_element_selection, WHEELCHAIR_PLACES)
 }
 
 private val WHEELCHAIR_PLACES = mapOf(

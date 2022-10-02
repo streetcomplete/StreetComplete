@@ -79,7 +79,7 @@ class AddRoadWidth(
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ROAD_WIDTH_ELEMENTS, R.string.quest_settings_contact, ROAD_SELECTION.trimIndent())
+        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ROAD_WIDTH_ELEMENTS, R.string.quest_settings_element_selection, ROAD_SELECTION.trimIndent())
 }
 
 private val ROAD_NARROWERS = setOf("choker", "chicane", "choked_table")

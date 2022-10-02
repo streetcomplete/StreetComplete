@@ -83,7 +83,7 @@ class AddPlaceName(
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ELEMENTS, R.string.quest_settings_contact, NAME_PLACES)
+        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ELEMENTS, R.string.quest_settings_element_selection, NAME_PLACES)
 }
 
 private val NAME_PLACES = mapOf(
