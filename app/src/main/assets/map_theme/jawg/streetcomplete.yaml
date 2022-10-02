@@ -300,13 +300,13 @@ layers:
                     interactive: true
                     color: function() { return feature.color; }
                     width: function() { return feature.width; }
-                    order: function() { return 703 + Number(feature.layer)*5; }
+                    order: function() { return 701 + Number(feature.layer)*5; }
                     cap: round
                     join: round
                     outline:
                         color: function() { return feature.strokeColor; }
                         width: 1m
-                        order: function() { return 704 + Number(feature.layer)*5; }
+                        order: function() { return 702 + Number(feature.layer)*5; }
         line-dashed:
             filter: { type: [line], color: true, dashed: true }
             draw:
@@ -314,13 +314,13 @@ layers:
                       interactive: true
                       color: function() { return feature.color; }
                       width: function() { return feature.width; }
-                      order: function() { return 703 + Number(feature.layer)*5; }
+                      order: function() { return 701 + Number(feature.layer)*5; }
                       cap: round
                       join: round
                       outline:
                           color: function() { return feature.strokeColor; }
                           width: 1m
-                          order: function() { return 704 + Number(feature.layer)*5; }
+                          order: function() { return 702 + Number(feature.layer)*5; }
         line-left:
             filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:
@@ -363,11 +363,11 @@ layers:
                 map_data-polygons:
                     interactive: true
                     color: function() { return feature.color; }
-                    order: function() { return 701 + Number(feature.layer)*5; }
+                    order: function() { return 703 + Number(feature.layer)*5; }
                     extrude: function() { return feature.height; }
                 map_data-lines:
                     color: function() { return feature.strokeColor; }
-                    order: function() { return 702 + Number(feature.layer)*5; }
+                    order: function() { return 704 + Number(feature.layer)*5; }
                     extrude: function() { return feature.height; }
                     width: 1m
                     cap: round
