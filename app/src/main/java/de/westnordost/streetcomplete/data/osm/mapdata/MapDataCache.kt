@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -360,13 +359,12 @@ class MapDataCache(
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry = synchronized(this) {
         val requiredTiles = bbox.enclosingTilesRect(tileZoom).asTilePosSequence().toList()
         val cachedTiles = spatialCache.getTiles()
-        val tilesToFetch = requiredTiles.filterNot { it in cachedTiles }
-        val tilesRectToFetch = tilesToFetch.minTileRect()
+        val tilesRectsToFetch = requiredTiles.filterNot { it in cachedTiles }.upToTwoMinTileRects()
 
         val result = MutableMapDataWithGeometry()
         result.boundingBox = bbox
         val nodes: Collection<Node>
-        if (tilesRectToFetch != null) {
+        if (tilesRectsToFetch != null) {
             // get nodes from spatial cache
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
@@ -374,7 +372,7 @@ class MapDataCache(
             nodes = HashSet<Node>(spatialCache.get(bbox))
 
             // fetch needed data and put it to cache
-            tilesToFetch.upToTwoMinTileRects()?.forEach { tilesRect ->
+            tilesRectsToFetch.forEach { tilesRect ->
                 val fetchBBox = tilesRect.asBoundingBox(tileZoom)
                 val (elements, geometries) = fetchMapData(fetchBBox)
                 update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
@@ -409,7 +407,7 @@ class MapDataCache(
 
         // trim if we fetched new data, and spatialCache is full
         // trim to 90%, so trim is (probably) not immediately called on next fetch
-        if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
+        if (spatialCache.size >= maxTiles && tilesRectsToFetch != null) {
             trim((maxTiles * 2) / 3)
         }
         return result
