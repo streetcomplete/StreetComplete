@@ -223,6 +223,7 @@ val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
       ${isShopExpressionFragment()}
       or ${isShopExpressionFragment("disused")}
       or shop = vacant
+      of office = vacant
 """.toElementFilterExpression()
 
 /** Expression to see if an element is some kind active, non-vacant shop */
