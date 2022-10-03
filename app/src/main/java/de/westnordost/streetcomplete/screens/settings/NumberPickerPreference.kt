@@ -44,6 +44,7 @@ class NumberPickerPreference @JvmOverloads constructor(
 
     override fun createDialog() = NumberPickerPreferenceDialog()
 
+    @Deprecated("Deprecated in Java")
     override fun onSetInitialValue(restorePersistedValue: Boolean, defaultValue: Any?) {
         val defaultInt = defaultValue as? Int ?: DEFAULT_VALUE
         _value = if (restorePersistedValue) getPersistedInt(defaultInt) else defaultInt

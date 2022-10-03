@@ -29,7 +29,13 @@ abstract class CoroutineIntentService(name: String) : Service() {
     private var currentJob: Job? = null
     private val mutex = Mutex()
 
-    override fun onStart(intent: Intent?, startId: Int) {
+    /**
+     * You should not override this method for your SingleIntentService. Instead,
+     * override [.onHandleIntent], which the system calls when the IntentService
+     * receives a start request.
+     * @see android.app.Service.onStartCommand
+     */
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val cancelPreviousIntent = intent?.getBooleanExtra(ARG_PREVIOUS_CANCEL, false) ?: false
         scope.launch {
             mutex.withLock {
@@ -42,16 +48,6 @@ abstract class CoroutineIntentService(name: String) : Service() {
                 }
             }
         }
-    }
-
-    /**
-     * You should not override this method for your SingleIntentService. Instead,
-     * override [.onHandleIntent], which the system calls when the IntentService
-     * receives a start request.
-     * @see android.app.Service.onStartCommand
-     */
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        onStart(intent, startId)
         return START_NOT_STICKY
     }
 
