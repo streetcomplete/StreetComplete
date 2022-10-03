@@ -24,6 +24,7 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
     override val icon = R.drawable.ic_custom_overlay_poi
     override val changesetComment = "Edit user-defined element selection"
     override val wikiLink: String = "Tags"
+    override val isCreateNodeEnabled = true
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
         val filter = try {

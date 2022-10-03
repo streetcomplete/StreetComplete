@@ -93,6 +93,7 @@ import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -927,30 +928,29 @@ class MainFragment :
         ).show()
     }
 
-    private fun addPoi(pos: LatLon, feature: Feature?) {
+    private fun addPoi(pos: LatLon, feature: Feature) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(CreatePoiFragment.create(feature))
+        showInBottomSheet(CreatePoiFragment.createFromFeature(feature))
 
-        if (feature != null)
-            viewLifecycleScope.launch {
-                val bbox = pos.enclosingBoundingBox(50.0)
-                val data = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
-                val filter = if (IS_SHOP_EXPRESSION.matches(Node(0L, pos, feature.addTags))) IS_SHOP_EXPRESSION
-                else "nodes, ways, relations with ${feature.tags
-                        .map { if (it.value == "*") it.key else it.key + "=" + it.value }
-                        .joinToString(" and ")}".toElementFilterExpression()
-                val elements = data.filter { filter.matches(it) }
+        viewLifecycleScope.launch {
+            val bbox = pos.enclosingBoundingBox(50.0)
+            val data = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
+            val filter = if (IS_SHOP_EXPRESSION.matches(Node(0L, pos, feature.addTags))) IS_SHOP_EXPRESSION
+            else "nodes, ways, relations with ${feature.tags
+                    .map { if (it.value == "*") it.key else it.key + "=" + it.value }
+                    .joinToString(" and ")}".toElementFilterExpression()
+            val elements = data.filter { filter.matches(it) }
 
-                for (e in elements) {
-                    // include only elements that fit with the currently active level filter
-                    if (!levelFilter.levelAllowed(e)) continue
+            for (e in elements) {
+                // include only elements that fit with the currently active level filter
+                if (!levelFilter.levelAllowed(e)) continue
 
-                    val geometry = data.getGeometry(e.type, e.id) ?: continue
-                    val icon = getPinIcon(e.tags)
-                    val title = getTitle(e.tags)
-                    putMarkerForCurrentHighlighting(geometry, icon, title)
-                }
+                val geometry = data.getGeometry(e.type, e.id) ?: continue
+                val icon = getPinIcon(e.tags)
+                val title = getTitle(e.tags)
+                putMarkerForCurrentHighlighting(geometry, icon, title)
             }
+        }
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
@@ -1097,6 +1097,10 @@ class MainFragment :
     private fun showOverlayFormForNewElement() {
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val mapFragment = mapFragment ?: return
+        if (overlay is CustomOverlay) {
+            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with")))
+            mapFragment.show3DBuildings = false
+        }
 
         val f = overlay.createForm(null) ?: return
         if (f.arguments == null) f.arguments = bundleOf()

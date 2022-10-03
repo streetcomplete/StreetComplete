@@ -70,7 +70,7 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetBinding.titleLabel.text = arguments?.getString(ARG_NAME)
+        bottomSheetBinding.titleLabel.text = arguments?.getString(ARG_NAME) ?: ""
         arguments?.getString(ARG_ID)?.let {
             val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableSet()
             if (recentFeatureIds.add(it))
@@ -120,9 +120,12 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
         private const val ARG_NAME = "feature_name"
         private const val ARG_ID = "feature_id"
 
-        fun create(feature: Feature?) = CreatePoiFragment().also {
+        fun createFromFeature(feature: Feature?) = CreatePoiFragment().also {
             val tagText = feature?.addTags?.map { it.key + "=" + it.value }?.joinToString("\n")
             it.arguments = bundleOf(ARG_PREFILLED_TAGS to tagText, ARG_NAME to feature?.name, ARG_ID to feature?.id)
+        }
+        fun createWithPrefill(prefill: String) = CreatePoiFragment().also {
+            it.arguments = bundleOf(ARG_PREFILLED_TAGS to prefill)
         }
     }
 }
