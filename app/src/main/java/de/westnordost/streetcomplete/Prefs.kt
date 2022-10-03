@@ -80,6 +80,7 @@ object Prefs {
     const val PREFER_EXTERNAL_SD = "prefer_external_sd"
     const val SHOW_NEXT_QUEST_IMMEDIATELY = "show_next_quest_immediately"
     const val MAIN_MENU_FULL_GRID = "main_menu_full_grid"
+    const val CREATE_POI_RECENT_FEATURE_IDS = "create_poi_recent_feature_ids"
 
     enum class Autosync {
         ON, WIFI, OFF

@@ -118,6 +118,7 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
+import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -907,15 +908,22 @@ class MainFragment :
     }
 
     private fun selectPoiType(pos: LatLon) {
+        val fd = featureDictionaryFuture.get()
+        val country = countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull()
+        val locales = getLocalesForFeatureDictionary(requireContext().resources.configuration)
+        val defaultFeatures = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
+            .split("§").map { fd.byId(it).forLocale(*locales).inCountry(country).get() }
+            .takeIf { it.isNotEmpty() }
+
         SearchFeaturesDialog(
             requireContext(),
-            featureDictionaryFuture.get(),
+            fd,
             GeometryType.POINT,
-            countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull(),
-            null, // pre-fill
+            country,
+            null, // pre-filled search text
             { true }, // filter, but we want everything
             { addPoi(pos, it) },
-            CreatePoiFragment.recentFeatures.takeIf { it.isNotEmpty() }
+            defaultFeatures // features shown without entering textx
         ).show()
     }
 

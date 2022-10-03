@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -51,7 +52,6 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
     private val tagsInput get() = contentBinding.noteInput
     private val tagsText get() = tagsInput.nonBlankTextOrNull
-    private var tempText = ""
 
     // keep the names from note, there is nothing note-specific happening anyway
     interface Listener {
@@ -60,11 +60,6 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
         fun onCreatedNote(position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        tempText = arguments?.getString(ARG_PREFILLED_TAGS) ?: ""
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
@@ -76,8 +71,14 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         bottomSheetBinding.titleLabel.text = arguments?.getString(ARG_NAME)
+        arguments?.getString(ARG_ID)?.let {
+            val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableSet()
+            if (recentFeatureIds.add(it))
+                prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.take(8).joinToString("§")).apply()
+        }
+
         contentBinding.hintLabel.setText(R.string.create_poi_enter_tags)
-        tagsInput.setText(tempText)
+        tagsInput.setText(arguments?.getString(ARG_PREFILLED_TAGS) ?: "")
         tagsInput.doAfterTextChanged { updateOkButtonEnablement() }
         okButton.setOnClickListener { onClickOk() }
 
@@ -117,13 +118,12 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
     companion object {
         private const val ARG_PREFILLED_TAGS = "prefilled_tags"
         private const val ARG_NAME = "feature_name"
+        private const val ARG_ID = "feature_id"
 
         fun create(feature: Feature?) = CreatePoiFragment().also {
-            feature?.let { recentFeatures.add(it) }
             val tagText = feature?.addTags?.map { it.key + "=" + it.value }?.joinToString("\n")
-            it.arguments = bundleOf(ARG_PREFILLED_TAGS to tagText, ARG_NAME to feature?.name)
+            it.arguments = bundleOf(ARG_PREFILLED_TAGS to tagText, ARG_NAME to feature?.name, ARG_ID to feature?.id)
         }
-        val recentFeatures = linkedSetOf<Feature>()
     }
 }
 
