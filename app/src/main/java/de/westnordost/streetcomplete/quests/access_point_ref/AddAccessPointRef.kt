@@ -22,7 +22,7 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
     override val isDeleteElementEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accessPointRef_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun createForm() = AddAccessPointRefForm()
 

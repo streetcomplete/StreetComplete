@@ -23,7 +23,7 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
         "CH", "FR", "AT"
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrantRef_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun createForm() = AddFireHydrantRefForm()
 
