@@ -20,7 +20,7 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
     override val achievements = listOf(EditTypeAchievement.LIFESAVER)
     override val isDeleteElementEnabled = true
     override val enabledInCountries = NoCountriesExcept(
-        "CH", "FR", "AT"
+        "CH", "FR"
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
