@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import android.graphics.Color
+import android.graphics.Color.argb
 import androidx.annotation.ColorInt
 import androidx.core.graphics.alpha
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import kotlin.math.max
 
 fun darken(color: Int, by: Float): Int {
     val hsv = FloatArray(3)
@@ -14,8 +16,8 @@ fun darken(color: Int, by: Float): Int {
     return Color.HSVToColor(color.alpha, hsv)
 }
 
-fun alpha(@ColorInt color: Int, alpha: Float): Int =
-    Color.argb((alpha.coerceIn(0f, 1f)*255).toInt(), color.red, color.green, color.blue)
+fun addTransparency(@ColorInt color: Int, by: Float): Int =
+    argb(max(0, color.alpha - (by * 255).toInt()), color.red, color.green, color.blue)
 
 fun toARGBString(color: Int): String =
     "#" + color.alpha.toString(16).padStart(2, '0') +

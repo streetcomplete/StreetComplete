@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
-import de.westnordost.streetcomplete.util.ktx.alpha
+import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 import kotlin.math.absoluteValue
@@ -110,7 +110,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     private fun getColorWithSomeTransparency(color: String): String =
         // alpha is actually double of what is specified https://github.com/tangrams/tangram-es/issues/2333
-        transparentColors.getOrPut(color) { toARGBString(alpha(Color.parseColor(color), 0.4f)) }
+        transparentColors.getOrPut(color) { toARGBString(addTransparency(Color.parseColor(color), 0.6f)) }
 
     /** Clear map data */
     fun clear() {
