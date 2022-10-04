@@ -22,6 +22,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
            or compressed_air older today -6 years
        )
        and access !~ private|no
+       and waterway != fuel
     """
 
     override val changesetComment = "Survey availability of air compressors"
