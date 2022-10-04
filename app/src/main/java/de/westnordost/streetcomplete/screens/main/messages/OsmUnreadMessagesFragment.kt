@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
@@ -45,12 +46,13 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         binding.unreadMessagesTextView.text = getString(R.string.unread_messages_message, unreadMessagesCount)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        dialog?.setOnShowListener { startAnimation() }
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        dialog.setOnShowListener { startAnimation() }
         // we want to show a highly custom dialog here with no frame. Without this, the dialog's
         // content is restricted to wrap content, but we want to use whole screen here (for animation)
-        dialog?.window?.setLayout(MATCH_PARENT, MATCH_PARENT)
+        dialog.window?.setLayout(MATCH_PARENT, MATCH_PARENT)
+        return dialog
     }
 
     private fun startAnimation() {

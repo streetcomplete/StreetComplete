@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -111,7 +111,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
-        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
+        setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
     }
 
     override fun onStart() {
