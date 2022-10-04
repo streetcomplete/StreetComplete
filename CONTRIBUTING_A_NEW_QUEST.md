@@ -21,13 +21,13 @@ Reading the text below is not necessary to create a new quest. Duplicating an ex
 - [setup an emulator in Android Studio](https://developer.android.com/studio/run/emulator#install) (you can also [connect to a real device via USB](https://developer.android.com/studio/run/device), this can replace using the emulator)
 - run StreetComplete in the emulator (to verify that everything was setup as required)
 
+If you are doing it for the first time, don't worry if there is an error to solve along the way, this is typical for setting up an Android development environment. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
+
 ## Alternative to Android Studio
 
-- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Simply click on `Actions` / `Build debug apk` on your GitHub fork, and after about 15 minutes download ready-made `.apk` file to install on your phone manually.
-  Such debug build of StreetComplete can be installed alongside the official version.
-- one can also use pen icon on files in Github file view, thus avoiding the need for local git client and doing all the changes on the web
-
-If you are doing it for the first time, don't worry if there is an error to solve along the way, this is typical for setting up an Android development environment. See [CONTRIBUTING file](CONTRIBUTING.md#development) which has some links to information about the setup.
+- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Click on `Actions` > `Build debug apk` on your GitHub fork, and after about 15 minutes, download the ready-made `.apk` file to install on your phone manually.
+  This debug build of StreetComplete can be installed alongside the official version.
+- One can also edit files online in the GitHub file view via the pen icon, thus avoiding the need for a local git client and doing all the changes on the web.
 
 # Invent a new quest
 
