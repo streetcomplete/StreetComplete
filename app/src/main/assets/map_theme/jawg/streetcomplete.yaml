@@ -244,9 +244,8 @@ layers:
                     interactive: true
                     priority: 1
                     collide: true
-                    size: [36px,30px]
+                    size: 34px
                     sprite: function() { return feature.icon }
-                    offset: [-4px,-2px]
                     text:
                         anchor: [right]
                         optional: true
@@ -265,9 +264,8 @@ layers:
                     interactive: true
                     priority: 1
                     collide: false
-                    size: [36px,30px]
+                    size: 34px
                     sprite: function() { return feature.icon }
-                    offset: [-4px,-2px]
                     text:
                         anchor: [right]
                         optional: true
