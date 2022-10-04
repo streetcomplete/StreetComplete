@@ -14,7 +14,14 @@ Notable changes:
 * Performance improvements (balanced by more data to process, so don't expect an improvement over StreetComplete)
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)
 
-A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml)
+A more detailed list of changes can be found in the [changelog](app/src/main/res/raw/changelog_ee.yml).
+
+Translations for strings only available in expert edition can be done [on POEditor](https://poeditor.com/join/project/iAUihUmKW7).
+
+The original [contributing guidelines](#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
+* Creation and deletion of nodes is possible (currently no moving)
+* Guidelines are useful suggestions, but not enforced.
+* Quests may be based on external sources, not just on element selection.
 
 # original readme
 

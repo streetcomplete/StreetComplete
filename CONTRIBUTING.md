@@ -20,7 +20,7 @@ You can translate StreetComplete at POEditor. You can add missing translations a
 
 The only required skills here are ability to read English text and write in your own language.
 
-Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
+Follow [**this link**](https://poeditor.com/join/project/iAUihUmKW7) to improve the translations only available in StreetComplete expert edition, or click the image below to improve translations for StreetComplete (also used in expert edition):
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
