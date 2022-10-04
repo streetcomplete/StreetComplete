@@ -164,6 +164,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         private var continuation: Continuation<String>? = null
         suspend fun awaitOAuthCallback(): String = suspendCoroutine { continuation = it }
 
+        @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
             val uri = url?.toUri() ?: return false
             if (!uri.isHierarchical) return false
@@ -179,6 +180,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
             return true
         }
 
+        @Deprecated("Deprecated in Java")
         override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
             continuation?.resumeWithException(
                 OAuthCommunicationException("Error for URL $url", "$description")

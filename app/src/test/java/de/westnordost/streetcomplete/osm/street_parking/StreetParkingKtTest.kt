@@ -159,6 +159,31 @@ class StreetParkingTest {
             )
         )
     }
+
+    @Test fun `tag only on one side`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(
+                null,
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:right", "diagonal"),
+                StringMapEntryAdd("parking:lane:right:diagonal", "on_street")
+            )
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                null
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street")
+            )
+        )
+    }
 }
 
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightStreetParking, expectedChanges: Array<StringMapEntryChange>) {

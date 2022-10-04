@@ -45,7 +45,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottom
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -175,7 +175,7 @@ abstract class AbstractOverlayForm :
         )
 
         setTitleHintLabel(
-            element?.tags?.let { getNameAndLocationLabelString(it, resources, featureDictionary) }
+            element?.tags?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
         )
 
         binding.moreButton.setOnClickListener {

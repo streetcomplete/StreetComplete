@@ -15,21 +15,20 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
         )
         and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
-
     override val changesetComment = "Determine emergency access point refs"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_access_point
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
     override val isDeleteElementEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accessPointRef_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun createForm() = AddAccessPointRefForm()
 
     override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is NoAccessPointRef -> tags["ref:signed"] = "no"
-            is AccessPointRef ->   tags["ref"] = answer.ref
+            is NoVisibleAccessPointRef -> tags["ref:signed"] = "no"
+            is AccessPointRef ->          tags["ref"] = answer.ref
             is IsAssemblyPointAnswer -> {
                 tags["emergency"] = "assembly_point"
                 if (tags["highway"] == "emergency_access_point") {

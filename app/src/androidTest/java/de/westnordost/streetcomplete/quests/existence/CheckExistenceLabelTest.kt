@@ -5,7 +5,7 @@ import android.content.res.Resources
 import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Locale
@@ -85,5 +85,5 @@ class CheckExistenceLabelTest {
     }
 
     private fun getQuestLabel(tags: Map<String, String>): String? =
-        getNameAndLocationLabelString(tags, englishResources, featureDictionaryFuture.get())?.toString()
+        getNameAndLocationLabel(tags, englishResources, featureDictionaryFuture.get())?.toString()
 }

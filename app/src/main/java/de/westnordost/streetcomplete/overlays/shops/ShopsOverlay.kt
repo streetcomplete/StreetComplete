@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 import java.util.concurrent.FutureTask
 
-class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>): Overlay {
+class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictionary>) : Overlay {
 
     override val title = R.string.overlay_shops
     override val icon = R.drawable.ic_quest_shop
@@ -45,7 +45,7 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
                     .isSuggestion(false) // no suggestions because we just want the icon
                     .find().firstOrNull()
 
-                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop" ).replace('-','_')
+                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop" ).replace('-', '_')
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {

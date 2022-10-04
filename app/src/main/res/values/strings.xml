@@ -576,7 +576,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
 
-    <string name="quest_accessPointRef_title">What’s the identification number here?</string>
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
@@ -830,6 +829,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
+    <string name="quest_buildingType_guardhouse">Guardhouse</string>
+
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -971,6 +972,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
+    <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
@@ -1200,7 +1202,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
-    <string name="quest_postboxRef_title">What’s the identification number of this collection box?</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
 
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
@@ -1572,7 +1573,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>
     <string name="vacant_shop_title">Vacant shop</string>
-    <string name="unknown_shop_title">Unknown kind of place</string>
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">Other kind of place</string>
 
     <string name="overlay_street_parking">Street parking</string>
 </resources>

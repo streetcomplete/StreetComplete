@@ -113,19 +113,19 @@ fun isShopExpressionFragment(prefix: String? = null): String {
         "leisure" to listOf(
             "adult_gaming_centre",
             "amusement_arcade",
-            //"bowling_alley", // purpose-built
+            // "bowling_alley", // purpose-built
             "dance", // not necessarily purpose-built, see fitness centre
             "dancing_school",
             "escape_game",
-            //"ice_rink", // purpose-built
+            // "ice_rink", // purpose-built
             "indoor_play",
             "fitness_centre", // not necessarily purpose-built, esp. the smaller ones
             "hackerspace",
             "sauna",
-            //"sports_centre", // purpose-built
+            // "sports_centre", // purpose-built
             "tanning_salon",
-            //"trampoline_park", // see sports centre
-            //"water_park" // purpose-built
+            // "trampoline_park", // see sports centre
+            // "water_park" // purpose-built
         ),
         "tourism" to listOf(
             // tourism = information only if it is an office, see above
@@ -206,12 +206,12 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             // fire stations, police stations, townhalls etc. are purpose-built
 
             /* other */
-            //"animal_boarding", // all three are usually purpose-built
-            //"animal_breeding",
-            //"animal_shelter",
+            // "animal_boarding", // all three are usually purpose-built
+            // "animal_breeding",
+            // "animal_shelter",
             "coworking_space", // basically an office
-            //"embassy", // usually purpose-built / not a normal commercial room
-            //"place_of_worship" // usually-purpose-built
+            // "embassy", // usually purpose-built / not a normal commercial room
+            // "place_of_worship" // usually-purpose-built
         )
     ).map { p + it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n"
     ).trimIndent()
@@ -223,6 +223,7 @@ val IS_SHOP_OR_DISUSED_SHOP_EXPRESSION = """
       ${isShopExpressionFragment()}
       or ${isShopExpressionFragment("disused")}
       or shop = vacant
+      or office = vacant
 """.toElementFilterExpression()
 
 /** Expression to see if an element is some kind active, non-vacant shop */

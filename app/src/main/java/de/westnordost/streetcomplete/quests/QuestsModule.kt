@@ -81,6 +81,7 @@ import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
+import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -367,6 +368,7 @@ fun questTypeRegistry(
     AddFireHydrantType(),
     AddFireHydrantPosition(),
     AddFireHydrantDiameter(),
+    AddFireHydrantRef(),
 
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 

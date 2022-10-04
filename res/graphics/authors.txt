@@ -106,6 +106,7 @@ building/
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
     greenhouse.svg
+    guardhouse.svg
     hangar.svg
     historic.svg
     hospital.svg
@@ -323,6 +324,7 @@ quest/
     fire_hydrant.svg
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
+    fire_hydrant_ref.svg             modified from fire_hydrant.svg, label.svg and mail_ref.svg by mcliquid
     footway_surface.svg
     footway_surface_detail.svg
     fuel.svg

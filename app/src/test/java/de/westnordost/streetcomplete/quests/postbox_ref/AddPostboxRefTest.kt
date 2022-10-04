@@ -10,14 +10,14 @@ class AddPostboxRefTest {
 
     @Test fun `apply no ref answer`() {
         questType.verifyAnswer(
-            NoRefVisible,
+            NoVisiblePostboxRef,
             StringMapEntryAdd("ref:signed", "no")
         )
     }
 
     @Test fun `apply ref answer`() {
         questType.verifyAnswer(
-            Ref("12d"),
+            PostboxRef("12d"),
             StringMapEntryAdd("ref", "12d")
         )
     }

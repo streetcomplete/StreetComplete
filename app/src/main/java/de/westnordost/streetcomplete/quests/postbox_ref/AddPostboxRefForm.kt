@@ -27,14 +27,14 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(Ref(ref!!))
+        applyAnswer(PostboxRef(ref!!))
     }
 
     private fun confirmNoRef() {
         val ctx = context ?: return
         AlertDialog.Builder(ctx)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoRefVisible) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoVisiblePostboxRef) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
