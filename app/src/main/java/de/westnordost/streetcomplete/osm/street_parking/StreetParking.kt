@@ -71,7 +71,7 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     val currentParking = createStreetParkingSides(tags)
 
-    // was set before and changed: may be incorrect now - remove!
+    // was set before and changed: may be incorrect now - remove subtags!
     if (currentParking?.left != null && currentParking.left != left ||
         currentParking?.right != null && currentParking.right != right) {
         /* This includes removing any parking:condition:*, which is a bit peculiar because most
@@ -88,25 +88,25 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     }
 
     // parking:lane:<left/right/both>
-    val laneRight = right!!.toOsmLaneValue() ?: throw IllegalArgumentException()
-    val laneLeft = left!!.toOsmLaneValue() ?: throw IllegalArgumentException()
+    val laneRight = right?.toOsmLaneValue()
+    val laneLeft = left?.toOsmLaneValue()
 
     if (laneLeft == laneRight) {
-        tags["parking:lane:both"] = laneLeft
+        if (laneLeft != null) tags["parking:lane:both"] = laneLeft
     } else {
-        tags["parking:lane:left"] = laneLeft
-        tags["parking:lane:right"] = laneRight
+        if (laneLeft != null) tags["parking:lane:left"] = laneLeft
+        if (laneRight != null) tags["parking:lane:right"] = laneRight
     }
 
     // parking:condition:<left/right/both>
-    val conditionRight = right.toOsmConditionValue()
-    val conditionLeft = left.toOsmConditionValue()
+    val conditionRight = right?.toOsmConditionValue()
+    val conditionLeft = left?.toOsmConditionValue()
 
     if (conditionLeft == conditionRight) {
-        conditionLeft?.let { tags["parking:condition:both"] = it }
+        if (conditionLeft != null) tags["parking:condition:both"] = conditionLeft
     } else {
-        conditionLeft?.let { tags["parking:condition:left"] = it }
-        conditionRight?.let { tags["parking:condition:right"] = it }
+        if (conditionLeft != null) tags["parking:condition:left"] = conditionLeft
+        if (conditionRight != null) tags["parking:condition:right"] = conditionRight
     }
 
     // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular>

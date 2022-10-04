@@ -84,7 +84,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected abstract fun onClickSide(isRight: Boolean)
 
-    override fun isFormComplete() = streetSideSelect.isComplete
+    override fun isFormComplete() = streetSideSelect.left != null || streetSideSelect.right != null
 
     companion object {
         private const val SHOW_SIDES = "show_sides"

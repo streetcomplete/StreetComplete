@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.asItem
 import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
@@ -46,9 +45,10 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value).applyTo(it)
-        }.create()))
+        val sidewalks = LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val tagChanges = StringMapChangesBuilder(element.tags)
+        sidewalks.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     override fun hasChanges(): Boolean =

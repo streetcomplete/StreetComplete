@@ -17,12 +17,11 @@ import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
-class AddSidewalk : OsmElementQuestType<SidewalkSides> {
+class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
         ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }
@@ -98,7 +97,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkSides, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 
