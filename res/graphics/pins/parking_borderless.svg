@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+ <path d="m6.3207-1e-7h27.397c2.3356 0 4.282 1.9412 4.282 4.3074v31.789c0 2.3661-1.9463 3.9032-4.282 3.9032h-27.397c-2.3356 0-4.3207-1.5371-4.3207-3.9032v-31.789c0-2.3661 1.985-4.3074 4.3207-4.3074z" fill="#495aad" stroke-width="3.579"/>
+ <path d="m14 32v-24h7s7 0 7 7-7 7-7 7h-7" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="6"/>
+</svg>
