@@ -163,11 +163,11 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
             }
             // don't hide quest here, this could be different for each type
             withContext(Dispatchers.IO) {
-                elementEditsController.add(qt, element, geometry, "survey", action)
+                elementEditsController.add(qt, element, geometry, "survey", action, questKey)
             }
         } else {
             withContext(Dispatchers.IO) {
-                elementEditsController.add(qt, element, geometry, "survey", action)
+                elementEditsController.add(qt, element, geometry, "survey", action, questKey)
             }
             listener?.onEdited(qt, element, geometry)
         }

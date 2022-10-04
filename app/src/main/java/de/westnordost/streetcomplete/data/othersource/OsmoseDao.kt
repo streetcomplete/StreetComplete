@@ -142,7 +142,7 @@ class OsmoseDao(
     fun setFromDoneToNotAnsweredNear(position: LatLon) {
         db.update(NAME,
             values = listOf(ANSWERED to -1),
-            where = "${inBoundsSql(position.enclosingBoundingBox(0.01))} AND $ANSWERED = -1",
+            where = "${inBoundsSql(position.enclosingBoundingBox(1.0))} AND $ANSWERED = -1",
             conflictAlgorithm = ConflictAlgorithm.IGNORE
         )
     }

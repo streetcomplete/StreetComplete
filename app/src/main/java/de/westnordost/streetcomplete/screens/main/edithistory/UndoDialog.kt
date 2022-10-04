@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
@@ -107,6 +108,9 @@ class UndoDialog(
         is OsmNoteQuestHidden -> {
             context.resources.getText(R.string.quest_noteDiscussion_title)
         }
+        is OtherSourceQuestHidden -> {
+            getQuestTitle(questType, emptyMap())
+        }
         else -> throw IllegalArgumentException()
     }
 
@@ -122,7 +126,7 @@ class UndoDialog(
         }
         is NoteEdit -> createTextView(text?.let { CharSequenceText(it) })
         is OsmQuestHidden -> createTextView(ResText(R.string.hid_action_description))
-        is OsmNoteQuestHidden -> createTextView(ResText(R.string.hid_action_description))
+        is OsmNoteQuestHidden, is OtherSourceQuestHidden -> createTextView(ResText(R.string.hid_action_description))
         else -> throw IllegalArgumentException()
     }
 

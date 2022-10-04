@@ -30,6 +30,7 @@ import java.util.concurrent.FutureTask
 val otherSourceModule = module {
     single { OtherSourceQuestController(get(named("CountryBoundariesFuture")), get(), get(), get()) }
     single { OsmoseDao(get(), get()) }
+    single { OtherSourceDao(get()) }
 }
 
 // todo: for a start, add external and osmose quests here!
@@ -71,8 +72,8 @@ class OtherSourceQuestController(
             questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
-    fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypeNames: List<String>? = null): List<OtherSourceQuest> {
-        val quests = (visibleQuestTypeNames?.filterIsInstance<OtherSourceQuestType>() ?: questTypes.values).flatMap {
+    fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null): List<OtherSourceQuest> {
+        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes.values).flatMap {
             it.getQuests(bbox)
         }
         return quests.filterNot { it.key in hiddenCache }
@@ -137,6 +138,7 @@ class OtherSourceQuestController(
         if (timestamp > 0) {
             val hiddenQuest = OtherSourceQuestHidden(key.id, type, quest.position, timestamp)
             hideListeners.forEach { it.onHid(hiddenQuest) }
+            questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
         }
     }
 
@@ -144,7 +146,8 @@ class OtherSourceQuestController(
         if (!hiddenCache.remove(key)) return false
         val hiddenQuest = getHidden(key) ?: return false
         if (!otherSourceDao.unhide(key)) return false
-        hideListeners.forEach { it.onHid(hiddenQuest) }
+        hideListeners.forEach { it.onUnhid(hiddenQuest) }
+        get(key)?.let { q -> questListeners.forEach { it.onUpdated(addedQuests = listOf(q)) } }
         return true
     }
 
@@ -152,6 +155,7 @@ class OtherSourceQuestController(
         hiddenCache.clear()
         val count = otherSourceDao.unhideAll()
         hideListeners.forEach { it.onUnhidAll() }
+        // no need to call onInvalidated on the listeners, OsmQuestController is already doing this
         return count
     }
 
@@ -170,7 +174,7 @@ class OtherSourceQuestController(
 
     override fun onAddedEdit(edit: ElementEdit) {} // ignore, and actually this should never be called
 
-    override fun onAddedEdit(edit: ElementEdit, key: QuestKey) {
+    override fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
         if (key is OtherSourceQuestKey)
             otherSourceDao.addElementEdit(key, edit.id)
     }
@@ -178,16 +182,21 @@ class OtherSourceQuestController(
     override fun onSyncedEdit(edit: ElementEdit) {
         val type = edit.type as? OtherSourceQuestType ?: return
         val key = otherSourceDao.getKeyForElementEdit(edit.id)
+        // don't delete synced edits, this will be done by ElementEditsController (using onDeletedEdits)
         type.onSyncedEdit(edit, key?.id)
     }
 
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
-        for (edit in edits) {
-            val type = edit.type as? OtherSourceQuestType ?: continue
+        val restoredQuests = edits.mapNotNull { edit ->
+            val type = edit.type as? OtherSourceQuestType ?: return@mapNotNull null
             val key = otherSourceDao.getKeyForElementEdit(edit.id)
+            otherSourceDao.deleteElementEdit(edit.id)
             type.onDeletedEdit(edit, key?.id)
+            if (key == null) null
+            else get(key)
         }
+        questListeners.forEach { it.onUpdated(addedQuests = restoredQuests) }
     }
 }
 
@@ -232,7 +241,10 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     /** Unique string for each source (app will crash on start if sources are not unique). */
     val source: String
 
-    /** Download and persist data, create quests inside the given bbox and return the new quests. */
+    /**
+     *  Download and persist data, create quests inside the given bbox and return the new quests.
+     *  Download date should be stored for each entry to allow cleanup of old data.
+     */
     fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
 
     /**
@@ -248,7 +260,8 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     /** Return quest with the given [id], or null. */
     fun get(id: String): OtherSourceQuest?
 
-    /** Called if the ElementEdit done as part of quest with the given [id] was deleted (undone)
+    /**
+     *  Called if the ElementEdit done as part of quest with the given [id] was deleted (undone).
      *  [id] can be null in case edit was not properly associated with id.
      */
     fun onDeletedEdit(edit: ElementEdit, id: String?)
@@ -261,14 +274,14 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     fun onSyncedEdit(edit: ElementEdit, id: String?)
 
     /**
-     * Removes the quest with the given [id]. What happens internally doesn't matter, as long as
-     * the quest doesn't show up again when using [get] or [getQuests].
+     *  Removes the quest with the given [id]. What happens internally doesn't matter, as long as
+     *  the quest doesn't show up again when using [get] or [getQuests].
      */
     fun deleteQuest(id: String): Boolean
 
     /**
-     * Necessary to clean old data.
-     * Will be called with (nearly) current time when clearing all stored data is desired.
+     *  Necessary to clean old data.
+     *  Will be called with (nearly) current time when clearing all stored data is desired.
     */
     override fun deleteMetadataOlderThan(timestamp: Long)
 }

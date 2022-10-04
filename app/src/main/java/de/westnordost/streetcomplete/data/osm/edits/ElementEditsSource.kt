@@ -6,7 +6,7 @@ interface ElementEditsSource {
     /** Interface to be notified of new or updated OSM elements */
     interface Listener {
         fun onAddedEdit(edit: ElementEdit)
-        fun onAddedEdit(edit: ElementEdit, key: QuestKey) = onAddedEdit(edit) // need to do it this weird way, otherwise must change everything that implement listener
+        fun onAddedEdit(edit: ElementEdit, key: QuestKey?) = onAddedEdit(edit) // need to do it this weird way, otherwise must change everything that implement listener
         fun onSyncedEdit(edit: ElementEdit)
         // may be several because deleting one element edit leads to the deletion of all edits that
         // are based on that edit. E.g. splitting a way, then editing the newly created way segments

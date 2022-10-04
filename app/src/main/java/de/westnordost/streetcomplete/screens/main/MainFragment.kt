@@ -912,9 +912,9 @@ class MainFragment :
         val fd = featureDictionaryFuture.get()
         val country = countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull()
         val locales = getLocalesForFeatureDictionary(requireContext().resources.configuration)
-        val defaultFeatures = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
-            .split("§").map { fd.byId(it).forLocale(*locales).inCountry(country).get() }
-            .takeIf { it.isNotEmpty() }
+        val defaultFeatures: List<Feature>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
+            .split("§").mapNotNull { fd.byId(it).forLocale(*locales).inCountry(country).get() }
+            .ifEmpty { null } // null will show defaults, while empty list will not
 
         SearchFeaturesDialog(
             requireContext(),
@@ -924,7 +924,7 @@ class MainFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { addPoi(pos, it) },
-            defaultFeatures // features shown without entering textx
+            defaultFeatures?.reversed() // features shown without entering text
         ).show()
     }
 
@@ -1098,8 +1098,9 @@ class MainFragment :
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val mapFragment = mapFragment ?: return
         if (overlay is CustomOverlay) {
-            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with")))
+            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with ")))
             mapFragment.show3DBuildings = false
+            return
         }
 
         val f = overlay.createForm(null) ?: return

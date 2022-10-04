@@ -72,9 +72,11 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
 
         bottomSheetBinding.titleLabel.text = arguments?.getString(ARG_NAME) ?: ""
         arguments?.getString(ARG_ID)?.let {
-            val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableSet()
-            if (recentFeatureIds.add(it))
-                prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.take(8).joinToString("§")).apply()
+            val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
+            if (recentFeatureIds.lastOrNull() == it) return@let
+            recentFeatureIds.remove(it)
+            recentFeatureIds.add(it)
+            prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
         }
 
         contentBinding.hintLabel.setText(R.string.create_poi_enter_tags)

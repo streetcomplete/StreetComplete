@@ -5,8 +5,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -44,7 +42,7 @@ class ElementEditsController(
         action: ElementEditAction,
         key: QuestKey?
     ) {
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action), key)
     }
 
     fun get(id: Long): ElementEdit? =
@@ -165,10 +163,7 @@ class ElementEditsController(
             }
             editCache[edit.id] = edit
         }
-        if (key != null)
-            onAddedEdit(edit, key)
-        else
-            onAddedEdit(edit)
+        onAddedEdit(edit, key)
     }
 
     private fun delete(edit: ElementEdit) {
@@ -220,12 +215,7 @@ class ElementEditsController(
         listeners.remove(listener)
     }
 
-    private fun onAddedEdit(edit: ElementEdit) {
-        lastEditTimeStore.touch()
-        listeners.forEach { it.onAddedEdit(edit) }
-    }
-
-    private fun onAddedEdit(edit: ElementEdit, key: QuestKey) {
+    private fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
         lastEditTimeStore.touch()
         listeners.forEach { it.onAddedEdit(edit, key) }
     }
