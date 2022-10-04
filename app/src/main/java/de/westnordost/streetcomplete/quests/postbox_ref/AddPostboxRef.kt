@@ -31,8 +31,8 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is NoRefVisible -> tags["ref:signed"] = "no"
-            is Ref ->          tags["ref"] = answer.ref
+            is NoVisiblePostboxRef -> tags["ref:signed"] = "no"
+            is PostboxRef ->          tags["ref"] = answer.ref
         }
     }
 }

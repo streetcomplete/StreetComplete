@@ -28,8 +28,8 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
 
     override fun applyAnswerTo(answer: FireHydrantRefAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is NoFireHydrantRef -> tags["ref:signed"] = "no"
-            is FireHydrantRef ->   tags["ref"] = answer.ref
+            is NoVisibleFireHydrantRef -> tags["ref:signed"] = "no"
+            is FireHydrantRef ->          tags["ref"] = answer.ref
         }
     }
 }

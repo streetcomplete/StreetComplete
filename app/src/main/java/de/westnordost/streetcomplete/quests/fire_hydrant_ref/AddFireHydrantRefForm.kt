@@ -34,7 +34,7 @@ class AddFireHydrantRefForm : AbstractOsmQuestForm<FireHydrantRefAnswer>() {
     private fun confirmNoRef() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoFireHydrantRef) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoVisibleFireHydrantRef) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
