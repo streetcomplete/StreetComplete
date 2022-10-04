@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.p
@@ -194,48 +194,48 @@ class AddSidewalkTest {
 
     @Test fun `apply no sidewalk answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = NO, right = NO),
+            LeftAndRightSidewalk(left = NO, right = NO),
             StringMapEntryAdd("sidewalk", "no")
         )
     }
 
     @Test fun `apply sidewalk left answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = YES, right = NO),
+            LeftAndRightSidewalk(left = YES, right = NO),
             StringMapEntryAdd("sidewalk", "left")
         )
     }
 
     @Test fun `apply sidewalk right answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = NO, right = YES),
+            LeftAndRightSidewalk(left = NO, right = YES),
             StringMapEntryAdd("sidewalk", "right")
         )
     }
 
     @Test fun `apply sidewalk on both sides answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = YES, right = YES),
+            LeftAndRightSidewalk(left = YES, right = YES),
             StringMapEntryAdd("sidewalk", "both")
         )
     }
 
     @Test fun `apply separate sidewalk answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = SEPARATE, right = SEPARATE),
+            LeftAndRightSidewalk(left = SEPARATE, right = SEPARATE),
             StringMapEntryAdd("sidewalk", "separate")
         )
     }
 
     @Test fun `apply separate sidewalk on one side answer`() {
         questType.verifyAnswer(
-            SidewalkSides(left = YES, right = SEPARATE),
+            LeftAndRightSidewalk(left = YES, right = SEPARATE),
             StringMapEntryAdd("sidewalk:left", "yes"),
             StringMapEntryAdd("sidewalk:right", "separate"),
         )
 
         questType.verifyAnswer(
-            SidewalkSides(left = SEPARATE, right = NO),
+            LeftAndRightSidewalk(left = SEPARATE, right = NO),
             StringMapEntryAdd("sidewalk:left", "separate"),
             StringMapEntryAdd("sidewalk:right", "no"),
         )
@@ -244,13 +244,13 @@ class AddSidewalkTest {
     @Test fun `replace incomplete sidewalk tagging`() {
         questType.verifyAnswer(
             mapOf("sidewalk:left" to "yes"),
-            SidewalkSides(left = YES, right = NO),
+            LeftAndRightSidewalk(left = YES, right = NO),
             StringMapEntryAdd("sidewalk", "left"),
             StringMapEntryDelete("sidewalk:left", "yes")
         )
         questType.verifyAnswer(
             mapOf("sidewalk:left" to "yes"),
-            SidewalkSides(left = YES, right = SEPARATE),
+            LeftAndRightSidewalk(left = YES, right = SEPARATE),
             StringMapEntryModify("sidewalk:left", "yes", "yes"),
             StringMapEntryAdd("sidewalk:right", "separate"),
         )
