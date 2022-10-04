@@ -23,7 +23,7 @@ Reading the text below is not necessary to create a new quest. Duplicating an ex
 
 ## Alternative to Android Studio
 
-- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Simply click on `Actions` / `Build debug apk` on your GitHub fork, and after about 15 minutes download ready-made `.apk` file to install on your phone manually.
+- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Simply click on `Actions` / `Build debug apk` on your GitHub fork, and after about 15 minutes download ready-made `debug-apk.zip` which contains `.apk` file to install on your phone manually.
   Such debug build of StreetComplete can be installed alongside the official version.
 - one can also use pen icon on files in Github file view, thus avoiding the need for local git client and doing all the changes on the web
 
