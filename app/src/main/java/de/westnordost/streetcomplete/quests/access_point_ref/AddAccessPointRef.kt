@@ -15,7 +15,6 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
         )
         and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
-
     override val changesetComment = "Determine emergency access point refs"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.ic_quest_access_point
