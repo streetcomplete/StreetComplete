@@ -1202,7 +1202,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
-    <string name="quest_postboxRef_title">What’s the identification number of this collection box?</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
 
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>

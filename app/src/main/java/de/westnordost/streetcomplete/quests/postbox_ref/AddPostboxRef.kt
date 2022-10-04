@@ -22,7 +22,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
         "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxRef_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = post_box")
