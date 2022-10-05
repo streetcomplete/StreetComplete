@@ -102,26 +102,8 @@ class OsmoseForm : AbstractOtherQuestForm() {
                         .show()
                 }
         },
-        AnswerItem(R.string.quest_osmose_hide_type_specific) {
-            val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!
-                .split(",")
-                .mapNotNull { if (it.isNotBlank()) it.trim() else null }
-                .toMutableSet()
-            types.add(issue.item.toString())
-            prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString(", ")).apply()
-            osmoseDao.reloadIgnoredItems()
-            questController.invalidate()
-        },
-        AnswerItem(R.string.quest_osmose_hide_type_generic) {
-            val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!
-                .split(",")
-                .mapNotNull { if (it.isNotBlank()) it.trim() else null }
-                .toMutableSet()
-            types.add("${issue.item}/${issue.itemClass}")
-            prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString(", ")).apply()
-            osmoseDao.reloadIgnoredItems()
-            questController.invalidate()
-        },
+        AnswerItem(R.string.quest_osmose_hide_type_specific) { addToIgnorelist("${issue.item}/${issue.itemClass}") },
+        AnswerItem(R.string.quest_osmose_hide_type_generic) { addToIgnorelist(issue.item.toString()) },
         AnswerItem(R.string.quest_osmose_delete_this_issue) {
             questController.delete(questKey as OtherSourceQuestKey)
         },
@@ -134,5 +116,16 @@ class OsmoseForm : AbstractOtherQuestForm() {
             tempHideQuest()
             editElement(e, it)
         } }
+    }
+
+    private fun addToIgnorelist(item: String) {
+        val types = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_ITEMS, "")!!
+            .split(",")
+            .mapNotNull { if (it.isNotBlank()) it.trim() else null }
+            .toMutableSet()
+        types.add(item)
+        prefs.edit().putString(questPrefix(prefs) + PREF_OSMOSE_ITEMS,types.sorted().joinToString(", ")).apply()
+        osmoseDao.reloadIgnoredItems()
+        questController.invalidate()
     }
 }
