@@ -149,11 +149,14 @@ class OtherSourceQuestController(
 
     // ElementEditsListener
 
-    override fun onAddedEdit(edit: ElementEdit) {} // ignore, and actually this should never be called
+    // ignore, and actually this should never be called for OtherSourceQuestType
+    override fun onAddedEdit(edit: ElementEdit) {}
 
     override fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
-        if (key is OtherSourceQuestKey)
+        if (key is OtherSourceQuestKey) {
+            questTypes[key.source]?.onAddedEdit(edit, key.id)
             otherSourceDao.addElementEdit(key, edit.id)
+        }
     }
 
     override fun onSyncedEdit(edit: ElementEdit) {

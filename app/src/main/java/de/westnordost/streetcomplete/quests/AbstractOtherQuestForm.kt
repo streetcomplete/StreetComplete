@@ -13,8 +13,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
@@ -88,14 +90,28 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
 
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
         val e = element
-        if (e != null && otherAnswers.filter { it.titleResourceId == R.string.quest_generic_answer_show_edit_tags }.isEmpty())
-            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) {
-                onClickEditTags(e, context) { viewLifecycleScope.launch { editElement(e, it) } }
-            })
-
+        if (e != null) {
+            if (otherAnswers.none { it.titleResourceId == R.string.quest_generic_answer_show_edit_tags })
+                answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
+            if (e.type == ElementType.NODE)
+                answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })
+        }
         answers.addAll(otherAnswers)
         return answers
     }
+
+    protected fun deletePoiNode(element: Element) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.osm_element_gone_description)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed(element) }
+            .setNeutralButton(R.string.leave_note) { _, _ -> composeNote() }
+            .show()
+    }
+
+    private fun onDeletePoiNodeConfirmed(element: Element) {
+        viewLifecycleScope.launch { editElement(element, DeletePoiNodeAction) }
+    }
+
 
     private fun showOtherAnswers() {
         val otherAnswersButton = view?.findViewById<ViewGroup>(R.id.buttonPanel)?.children?.firstOrNull() ?: return
@@ -144,6 +160,8 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         }
     }
 
+    protected fun editTags(e: Element) = onClickEditTags(e, context) { viewLifecycleScope.launch { editElement(e, it) } }
+
     protected suspend fun editElement(element: Element, action: ElementEditAction) {
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
@@ -151,6 +169,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
             return
         }
         val qt = questType as OtherSourceQuestType
+        tempHideQuest() // make it disappear. the questType should take care the quest does not appear again
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(
                 Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             viewLifecycleScope.launch {

@@ -52,6 +52,12 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     fun get(id: String): OtherSourceQuest?
 
     /**
+     *  Called if an ElementEdit was done as part of solving the quest with the given [id].
+     *  Actions should be taken so the quest for [id] does not appear again.
+     */
+    fun onAddedEdit(edit: ElementEdit, id: String)
+
+    /**
      *  Called if the ElementEdit done as part of quest with the given [id] was deleted (undone).
      *  [id] can be null in case edit was not properly associated with id.
      */

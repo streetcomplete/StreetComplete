@@ -29,6 +29,8 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPre
 
     override fun deleteQuest(id: String): Boolean = osmoseDao.delete(id)
 
+    override fun onAddedEdit(edit: ElementEdit, id: String) = osmoseDao.setDone(id)
+
     override fun onDeletedEdit(edit: ElementEdit, id: String?) {
         if (id == null)
             osmoseDao.setFromDoneToNotAnsweredNear(edit.position)

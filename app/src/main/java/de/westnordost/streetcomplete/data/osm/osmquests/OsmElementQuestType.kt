@@ -47,7 +47,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  ...should be deletable.
      *
      *  By default: false.*/
-    val isDeleteElementEnabled: Boolean get() = false
+    val isDeleteElementEnabled: Boolean get() = true
 
     /** Whether the user should be able to replace this element with another preset. Only
      *  elements that are expected to be some kind of shop/amenity should be replaceable this way,

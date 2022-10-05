@@ -7,13 +7,11 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.onClickEditTags
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -110,14 +108,6 @@ class OsmoseForm : AbstractOtherQuestForm() {
             questController.delete(questKey as OtherSourceQuestKey)
         },
     )
-    }
-
-    private fun editTags(e: Element) {
-        onClickEditTags(e, context) { viewLifecycleScope.launch {
-            osmoseDao.setDone(issue.uuid)
-            tempHideQuest()
-            editElement(e, it)
-        } }
     }
 
     private fun addToIgnorelist(item: String) {

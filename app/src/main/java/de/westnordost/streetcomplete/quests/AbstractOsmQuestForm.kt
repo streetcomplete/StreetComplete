@@ -171,13 +171,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val isDeletePoiEnabled = osmElementQuestType.isDeleteElementEnabled && element.type == ElementType.NODE
         val isReplaceShopEnabled = osmElementQuestType.isReplaceShopEnabled
         if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
-        check(!(isDeletePoiEnabled && isReplaceShopEnabled)) {
-            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
-        }
 
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
-            if (isDeletePoiEnabled) deletePoiNode()
-            else if (isReplaceShopEnabled) replaceShop()
+            if (isReplaceShopEnabled) replaceShop() // allow both being enabled, but prefer replace over delete
+            else deletePoiNode()
         }
     }
 
