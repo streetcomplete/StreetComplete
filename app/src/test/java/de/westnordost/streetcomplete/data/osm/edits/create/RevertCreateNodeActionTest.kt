@@ -25,7 +25,7 @@ class RevertCreateNodeActionTest {
     @Test
     fun `revert add node`() {
         val node = node(123, LatLon(12.0, 34.0), mapOf("amenity" to "atm"), 1)
-        val data = RevertCreateNodeAction.createUpdates(node, node, repos, provider)
+        val data = RevertCreateNodeAction().createUpdates(node, node, repos, provider)
 
         assertTrue(data.creations.isEmpty())
         assertTrue(data.modifications.isEmpty())
@@ -36,6 +36,6 @@ class RevertCreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict revert add node when already deleted`() {
-        RevertCreateNodeAction.createUpdates(node(), null, repos, provider)
+        RevertCreateNodeAction().createUpdates(node(), null, repos, provider)
     }
 }

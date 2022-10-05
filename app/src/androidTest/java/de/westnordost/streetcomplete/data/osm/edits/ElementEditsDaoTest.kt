@@ -367,7 +367,7 @@ private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) 
     "survey",
     timestamp,
     isSynced,
-    RevertCreateNodeAction
+    RevertCreateNodeAction()
 )
 
 private val p = LatLon(56.7, 89.10)

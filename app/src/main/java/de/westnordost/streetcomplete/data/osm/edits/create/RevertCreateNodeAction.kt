@@ -15,7 +15,9 @@ import kotlinx.serialization.Serializable
  *  If the node has been touched at all in the meantime (node moved or tags changed), there'll be
  *  a conflict. */
 @Serializable
-object RevertCreateNodeAction : ElementEditAction, IsRevertAction {
+data class RevertCreateNodeAction(
+    val unused: List<Long> = emptyList() // to be forward-compatible with a possible extension (see create-vertices branch)
+) : ElementEditAction, IsRevertAction {
 
     override fun createUpdates(
         originalElement: Element,

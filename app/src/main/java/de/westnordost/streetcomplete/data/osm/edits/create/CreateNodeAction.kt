@@ -31,5 +31,5 @@ data class CreateNodeAction(
         return MapDataChanges(creations = listOf(node))
     }
 
-    override fun createReverted(): ElementEditAction = RevertCreateNodeAction
+    override fun createReverted(): ElementEditAction = RevertCreateNodeAction()
 }
