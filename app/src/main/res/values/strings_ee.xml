@@ -61,8 +61,11 @@
     <string name="import_export_presets">Presets</string>
     <string name="import_export_settings">App settings</string>
     <string name="import_export_hidden_quests">Hidden quests</string>
+    <string name="import_warning">Importing app settings will overwrite all current settings</string>
+    <string name="import_presets_message">Add imported presets or replace existing?</string>
+    <string name="import_presets_add">Add</string>
+    <string name="import_presets_replace">Replace</string>
     <string name="import_error">Import error</string>
-    <string name="import_warning">This will overwrite your settings or quest presets (depending on choice below)</string>
     <string name="import_error_db_version">Import error: unknown version</string>
     <string name="export_warning_db_version">Warning: database version unknown, import may not work</string>
     <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>

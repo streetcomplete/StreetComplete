@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.text.InputType
@@ -40,6 +41,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
@@ -49,6 +51,8 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeControll
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
+import de.westnordost.streetcomplete.quests.external.FILENAME_EXTERNAL
+import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.measure.MeasureActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
@@ -102,6 +106,7 @@ class SettingsFragment :
 
     override val title: String get() = getString(R.string.action_settings)
 
+    @SuppressLint("ResourceType") // for nearby quests... though it could probably be done in a nicer way
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
         addPreferencesFromResource(R.xml.preferences)
@@ -271,7 +276,7 @@ class SettingsFragment :
                 .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("trees") }
                 .show()
 
-            val treesFile = File(context?.getExternalFilesDir(null), "trees.csv")
+            val treesFile = File(context?.getExternalFilesDir(null), FILENAME_TREES)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
 
             true
@@ -286,7 +291,7 @@ class SettingsFragment :
                 .setPositiveButton(R.string.tree_external_export)  { _,_ -> export("external") }
                 .show()
 
-            val treesFile = File(context?.getExternalFilesDir(null), "external.csv")
+            val treesFile = File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
 
             true
@@ -390,79 +395,85 @@ class SettingsFragment :
             REQUEST_CODE_SETTINGS_EXPORT -> {
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
                 if (!f.exists()) return
-                val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
-                val lines = f.readLines().filterNot {
-                    it.contains("TangramPinsSpriteSheet") || it.contains("oauth.") || it.contains("osm.")
+                activity?.contentResolver?.openOutputStream(uri)?.use { os ->
+                    val lines = f.readLines().filterNot {
+                        it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") || it.contains("oauth.") || it.contains("osm.")
+                    }
+                    os.bufferedWriter().use { it.write(lines.joinToString("\n")) }
                 }
-                os.write(lines.joinToString("\n"))
-                os.close()
                 // there is some SharedPreferencesBackupHelper, but can't access this without some app backup thing apparently
             }
             REQUEST_CODE_HIDDEN_EXPORT -> {
-                val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
-                val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (version > LAST_KNOWN_DB_VERSION)
-                    context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
+                activity?.contentResolver?.openOutputStream(uri)?.use { os ->
+                    val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                    if (version > LAST_KNOWN_DB_VERSION)
+                        context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
 
-                val hiddenQuests = db.query(OsmQuestsHiddenTable.NAME) { c ->
-                    c.getLong(OsmQuestsHiddenTable.Columns.ELEMENT_ID).toString() + "," +
-                    c.getString(OsmQuestsHiddenTable.Columns.ELEMENT_TYPE) + "," +
-                    c.getString(OsmQuestsHiddenTable.Columns.QUEST_TYPE) + "," +
-                    c.getLong(OsmQuestsHiddenTable.Columns.TIMESTAMP)
-                }
-                val hiddenNotes = db.query(NoteQuestsHiddenTable.NAME) { c->
-                    c.getLong(NoteQuestsHiddenTable.Columns.NOTE_ID).toString() + "," +
-                    c.getLong(NoteQuestsHiddenTable.Columns.TIMESTAMP)
-                }
+                    val hiddenOsmQuests = db.query(OsmQuestsHiddenTable.NAME) { c ->
+                        c.getLong(OsmQuestsHiddenTable.Columns.ELEMENT_ID).toString() + "," +
+                            c.getString(OsmQuestsHiddenTable.Columns.ELEMENT_TYPE) + "," +
+                            c.getString(OsmQuestsHiddenTable.Columns.QUEST_TYPE) + "," +
+                            c.getLong(OsmQuestsHiddenTable.Columns.TIMESTAMP)
+                    }
+                    val hiddenNotes = db.query(NoteQuestsHiddenTable.NAME) { c->
+                        c.getLong(NoteQuestsHiddenTable.Columns.NOTE_ID).toString() + "," +
+                            c.getLong(NoteQuestsHiddenTable.Columns.TIMESTAMP)
+                    }
+                    val hiddenOtherSourceQuests = db.query(OtherSourceQuestTables.NAME_HIDDEN) { c ->
+                        c.getString(OtherSourceQuestTables.Columns.SOURCE) + "," +
+                            c.getString(OtherSourceQuestTables.Columns.ID) + "," +
+                            c.getLong(OtherSourceQuestTables.Columns.TIMESTAMP)
+                    }
 
-                os.use {
-                    it.write(version.toString())
-                    it.write("\nquests\n")
-                    it.write(hiddenQuests.joinToString("\n"))
-                    it.write("\nnotes\n")
-                    it.write(hiddenNotes.joinToString("\n"))
+                    os.bufferedWriter().use {
+                        it.write(version.toString())
+                        it.write("\n$BACKUP_HIDDEN_OSM_QUESTS\n")
+                        it.write(hiddenOsmQuests.joinToString("\n"))
+                        it.write("\n$BACKUP_HIDDEN_NOTES\n")
+                        it.write(hiddenNotes.joinToString("\n"))
+                        it.write("\n$BACKUP_HIDDEN_OTHER_QUESTS\n")
+                        it.write(hiddenOtherSourceQuests.joinToString("\n"))
+                    }
                 }
-                os.close()
             }
             REQUEST_CODE_PRESETS_EXPORT -> {
-                val os = activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter() ?: return
-                val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (version > LAST_KNOWN_DB_VERSION)
-                    context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
+                activity?.contentResolver?.openOutputStream(uri)?.use { os ->
+                    val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+                    if (version > LAST_KNOWN_DB_VERSION)
+                        context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
 
-                val presets = db.query(QuestPresetsTable.NAME) { c ->
-                    c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                    c.getString(QuestPresetsTable.Columns.QUEST_PRESET_NAME)
-                }
-                val orders = db.query(QuestTypeOrderTable.NAME) { c->
-                    c.getLong(QuestTypeOrderTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                    c.getString(QuestTypeOrderTable.Columns.BEFORE) + "," +
-                    c.getString(QuestTypeOrderTable.Columns.AFTER)
-                }
-                val visibities = db.query(VisibleQuestTypeTable.NAME) { c ->
-                    c.getLong(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                    c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
-                    c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
-                }
+                    val presets = db.query(QuestPresetsTable.NAME) { c ->
+                        c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                            c.getString(QuestPresetsTable.Columns.QUEST_PRESET_NAME)
+                    }
+                    val orders = db.query(QuestTypeOrderTable.NAME) { c->
+                        c.getLong(QuestTypeOrderTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                            c.getString(QuestTypeOrderTable.Columns.BEFORE) + "," +
+                            c.getString(QuestTypeOrderTable.Columns.AFTER)
+                    }
+                    val visibilities = db.query(VisibleQuestTypeTable.NAME) { c ->
+                        c.getLong(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                            c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
+                            c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
+                    }
 
-                os.use {
-                    it.write(version.toString())
-                    it.write("\npresets\n")
-                    it.write(presets.joinToString("\n"))
-                    it.write("\norders\n")
-                    it.write(orders.joinToString("\n"))
-                    it.write("\nvisibilities\n")
-                    it.write(visibities.joinToString("\n"))
+                    os.bufferedWriter().use {
+                        it.write(version.toString())
+                        it.write("\n$BACKUP_PRESETS\n")
+                        it.write(presets.joinToString("\n"))
+                        it.write("\n$BACKUP_PRESETS_ORDERS\n")
+                        it.write(orders.joinToString("\n"))
+                        it.write("\n$BACKUP_PRESETS_VISIBILITIES\n")
+                        it.write(visibilities.joinToString("\n"))
+                    }
                 }
-                os.close()
             }
             REQUEST_CODE_SETTINGS_IMPORT -> {
                 // how to make sure shared prefs are re-read from the new file?
                 // probably need to restart app on import
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                val inputStream = activity?.contentResolver?.openInputStream(uri) ?: return
-                val t = inputStream.reader().readText()
-                if (!t.startsWith("<?xml version")) {
+                val t = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readText() }
+                if (t == null || !t.startsWith("<?xml version")) {
                     context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
                     return
                 }
@@ -471,33 +482,26 @@ class SettingsFragment :
                 restartApp()
             }
             REQUEST_CODE_HIDDEN_IMPORT -> {
-                // do not delete existing hidden quests
-                val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
-                val fileVersion = input.readLine().toLongOrNull()
-                if (input.readLine() != "quests" || fileVersion == null) {
-                    context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
-                    return
-                }
-                val dbVersion = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (fileVersion != dbVersion && (fileVersion > LAST_KNOWN_DB_VERSION || dbVersion > LAST_KNOWN_DB_VERSION)) {
-                    context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
-                    return
-                }
-                val lines = input.readLines()
+                // do not delete existing hidden quests; this can be done manually anyway
+                val lines = importLinesAndCheck(uri, BACKUP_HIDDEN_OSM_QUESTS)
 
                 val quests = mutableListOf<Array<Any?>>()
                 val notes = mutableListOf<Array<Any?>>()
-                var currentThing = "quests"
+                val otherSourceQuests = mutableListOf<Array<Any?>>()
+                var currentThing = BACKUP_HIDDEN_OSM_QUESTS
                 for (line in lines) {
-                    if (line == "notes") {
-                        currentThing = "notes"
+
+                    if (line.isEmpty()) continue // happens if a section is completely empty
+                    if (line == BACKUP_HIDDEN_NOTES || line == BACKUP_HIDDEN_OTHER_QUESTS) {
+                        currentThing = line
                         continue
                     }
                     val split = line.split(",")
                     if (split.size < 2) break
                     when (currentThing) {
-                        "quests" -> quests.add(arrayOf(split[0].toLong(), split[1], split[2], split[3].toLong()))
-                        "notes" -> notes.add(arrayOf(split[0].toLong(), split[1].toLong()))
+                        BACKUP_HIDDEN_OSM_QUESTS -> quests.add(arrayOf(split[0].toLong(), split[1], split[2], split[3].toLong()))
+                        BACKUP_HIDDEN_NOTES -> notes.add(arrayOf(split[0].toLong(), split[1].toLong()))
+                        BACKUP_HIDDEN_OTHER_QUESTS -> otherSourceQuests.add(arrayOf(split[0], split[1], split[2].toLong()))
                     }
                 }
 
@@ -515,94 +519,72 @@ class SettingsFragment :
                     notes,
                     conflictAlgorithm = ConflictAlgorithm.REPLACE
                 )
+                db.insertMany(OtherSourceQuestTables.NAME_HIDDEN,
+                    arrayOf(OtherSourceQuestTables.Columns.SOURCE,
+                        OtherSourceQuestTables.Columns.ID,
+                        OtherSourceQuestTables.Columns.TIMESTAMP),
+                    otherSourceQuests,
+                    conflictAlgorithm = ConflictAlgorithm.REPLACE
+                )
 
                 // definitely need to reset visible quests
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
-                // maybe more?
+                // imported hidden osmquests are applied, but don't show up in edit history
+                // imported other quests are not even applied
             }
             REQUEST_CODE_PRESETS_IMPORT -> {
-                val input = activity?.contentResolver?.openInputStream(uri)?.bufferedReader() ?: return
-                val fileVersion = input.readLine().toLongOrNull()
-                if (input.readLine() != "presets" || fileVersion == null) {
+                val lines = importLinesAndCheck(uri, BACKUP_PRESETS)
+                if (lines.isEmpty()) {
                     context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
                     return
                 }
-                val dbVersion = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                if (fileVersion != dbVersion && (fileVersion > LAST_KNOWN_DB_VERSION || dbVersion > LAST_KNOWN_DB_VERSION)) {
-                    context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
-                    return
-                }
-                val lines = input.readLines()
-
-                val presets = mutableListOf<Array<Any?>>()
-                val orders = mutableListOf<Array<Any?>>()
-                val visibilities = mutableListOf<Array<Any?>>()
-                var currentThing = "presets"
-                for (line in lines) {
-                    when (line) {
-                        "orders" -> {currentThing = "orders"; continue}
-                        "visibilities" -> {currentThing = "visibilities"; continue}
-                    }
-                    val split = line.split(",")
-                    if (split.size < 2) break
-                    when (currentThing) {
-                        "presets" -> presets.add(arrayOf(split[0].toLong(), split[1]))
-                        "orders" -> orders.add(arrayOf(split[0].toLong(), split[1], split[2]))
-                        "visibilities" -> visibilities.add(arrayOf(split[0].toLong(), split[1], split[2].toLong()))
-                    }
-                }
-
-                // delete existing data in both tables
-                db.delete(QuestPresetsTable.NAME)
-                db.delete(QuestTypeOrderTable.NAME)
-                db.delete(VisibleQuestTypeTable.NAME)
-
-                db.insertMany(QuestPresetsTable.NAME,
-                    arrayOf(QuestPresetsTable.Columns.QUEST_PRESET_ID, QuestPresetsTable.Columns.QUEST_PRESET_NAME),
-                    presets
-                )
-                db.insertMany(QuestTypeOrderTable.NAME,
-                    arrayOf(QuestTypeOrderTable.Columns.QUEST_PRESET_ID,
-                        QuestTypeOrderTable.Columns.BEFORE,
-                        QuestTypeOrderTable.Columns.AFTER),
-                    orders
-                )
-                db.insertMany(VisibleQuestTypeTable.NAME,
-                    arrayOf(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID,
-                        VisibleQuestTypeTable.Columns.QUEST_TYPE,
-                        VisibleQuestTypeTable.Columns.VISIBILITY),
-                    visibilities
-                )
-
-                // set selected preset to default
-                prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).apply()
-                visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
-                // TODO: also allow adding the profile with new id(s)
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.pref_import)
+                    .setMessage(R.string.import_presets_message)
+                    .setPositiveButton(R.string.import_presets_replace) { _, _ -> importPresets(lines, true) }
+                    .setNeutralButton(R.string.import_presets_add) { _, _ -> importPresets(lines, false) }
+                    .show()
             }
             REQUEST_CODE_EXTERNAL_IMPORT -> {
-                val text = activity?.contentResolver?.openInputStream(uri)?.bufferedReader()?.readText() ?: return
-                File(context?.getExternalFilesDir(null), "external.csv").writeText(text)
+                activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
+                    File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL).writeText(reader.readText())
+                } }
             }
             REQUEST_CODE_EXTERNAL_EXPORT -> {
-                val text = File(context?.getExternalFilesDir(null), "external.csv").readText()
-                activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter()?.apply {
-                    write(text)
-                    close()
-                }
+                val text = File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL).readText()
+                activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
+                    writer.write(text)
+                } }
             }
             REQUEST_CODE_TREES_IMPORT -> {
-                val text = activity?.contentResolver?.openInputStream(uri)?.bufferedReader()?.readText() ?: return
-                File(context?.getExternalFilesDir(null), "trees.csv").writeText(text)
+                activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
+                    File(context?.getExternalFilesDir(null), FILENAME_TREES).writeText(reader.readText())
+                } }
             }
             REQUEST_CODE_TREES_EXPORT -> {
-                val text = File(context?.getExternalFilesDir(null), "trees.csv").readText()
-                activity?.contentResolver?.openOutputStream(uri)?.bufferedWriter()?.apply {
-                    write(text)
-                    close()
-                }
+                val text = File(context?.getExternalFilesDir(null), FILENAME_TREES).readText()
+                activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
+                    writer.write(text)
+                } }
             }
         }
     }
+
+    /** @returns the lines after [checkLine], which is expected to be the second line */
+    private fun importLinesAndCheck(uri: Uri, checkLine: String): List<String> =
+        activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { input ->
+            val fileVersion = input.readLine().toLongOrNull()
+            if (fileVersion == null || input.readLine() != checkLine) {
+                context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
+                return emptyList()
+            }
+            val dbVersion = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+            if (fileVersion != dbVersion && (fileVersion > LAST_KNOWN_DB_VERSION || dbVersion > LAST_KNOWN_DB_VERSION)) {
+                context?.toast(getString(R.string.import_error_db_version), Toast.LENGTH_LONG)
+                return emptyList()
+            }
+            input.readLines()
+        } } ?: emptyList()
 
     private fun restartApp() {
         // exitProcess does actually restart with the activity below, which should always be MainActivity.
@@ -611,9 +593,78 @@ class SettingsFragment :
         exitProcess(0)
     }
 
+    private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean) {
+        val presets = mutableListOf<Array<Any?>>()
+        val orders = mutableListOf<Array<Any?>>()
+        val visibilities = mutableListOf<Array<Any?>>()
+        var currentThing = BACKUP_PRESETS
+        val profileIdMap = mutableMapOf(0L to 0L) // "default" is not in the presets section
+        for (line in lines) { // go through list of presets
+            val split = line.split(",")
+            if (split.size < 2) break // happens if we come to the next category
+            val id = split[0].toLong()
+            profileIdMap[id] = id
+        }
+        if (!replaceExistingPresets) {
+            // map profile ids to ids greater than existing maximum
+            val max = db.query(QuestPresetsTable.NAME) { it.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID) }.maxOrNull() ?: 0L
+            val keys = profileIdMap.keys.toList()
+            keys.forEachIndexed { i, id ->
+                profileIdMap[id] = max + i + 1L
+            }
+            // consider that profile 0 has no name, as it's the "default"
+            presets.add(arrayOf(profileIdMap[0L]!!, "Default"))
+        }
+
+        for (line in lines) {
+            if (line.isEmpty()) continue // happens if a section is completely empty
+            if (line == BACKUP_PRESETS_ORDERS || line == BACKUP_PRESETS_VISIBILITIES) {
+                currentThing = line
+                continue
+            }
+            val split = line.split(",")
+            if (split.size < 2) break
+            val id = profileIdMap[split[0].toLong()]!!
+            when (currentThing) {
+                BACKUP_PRESETS -> presets.add(arrayOf(id, split[1]))
+                BACKUP_PRESETS_ORDERS -> orders.add(arrayOf(id, split[1], split[2]))
+                BACKUP_PRESETS_VISIBILITIES -> visibilities.add(arrayOf(id, split[1], split[2].toLong()))
+            }
+        }
+
+        if (replaceExistingPresets) {
+            // delete existing data in both tables
+            db.delete(QuestPresetsTable.NAME)
+            db.delete(QuestTypeOrderTable.NAME)
+            db.delete(VisibleQuestTypeTable.NAME)
+        }
+
+        db.insertMany(QuestPresetsTable.NAME,
+            arrayOf(QuestPresetsTable.Columns.QUEST_PRESET_ID, QuestPresetsTable.Columns.QUEST_PRESET_NAME),
+            presets
+        )
+        db.insertMany(QuestTypeOrderTable.NAME,
+            arrayOf(QuestTypeOrderTable.Columns.QUEST_PRESET_ID,
+                QuestTypeOrderTable.Columns.BEFORE,
+                QuestTypeOrderTable.Columns.AFTER),
+            orders
+        )
+        db.insertMany(VisibleQuestTypeTable.NAME,
+            arrayOf(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID,
+                VisibleQuestTypeTable.Columns.QUEST_TYPE,
+                VisibleQuestTypeTable.Columns.VISIBILITY),
+            visibilities
+        )
+
+        if (replaceExistingPresets) // set selected preset to default, because previously selected may not exist any more
+            prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).apply()
+        visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+    }
+
     private fun saveGpx(data: Intent) {
         val uri = data.data ?: return
-        val os = activity?.contentResolver?.openOutputStream(uri)?.buffered() ?: return
+        val output = activity?.contentResolver?.openOutputStream(uri) ?: return
+        val os = output.buffered()
         try {
             // read gpx and extract images
             val filesDir = requireContext().getExternalFilesDir(null)
@@ -643,11 +694,12 @@ class SettingsFragment :
                 zipStream.closeEntry()
             }
             zipStream.close()
-            os.close()
             files.forEach { it.delete() }
         } catch (e: IOException) {
             context?.toast(getString(R.string.pref_save_gpx_error), Toast.LENGTH_LONG)
         }
+        os.close()
+        output.close()
     }
 
     private fun buildLanguageSelector() {
@@ -692,7 +744,7 @@ class SettingsFragment :
         prefs.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "ApplySharedPref")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
             Prefs.AUTOSYNC -> {
@@ -723,6 +775,7 @@ class SettingsFragment :
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
             Prefs.QUEST_SETTINGS_PER_PRESET -> {
+                // need to commit, because otherwise setting change is lost after the immediate restart
                 prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)).commit()
                 restartApp()
             }
@@ -816,7 +869,8 @@ class SettingsFragment :
     }
 
     companion object {
-        private var c: Context? = null // android studio complains, but actually this is set to null when exiting settings
+        @SuppressLint("StaticFieldLeak")
+        private var c: Context? = null // this is set to null when exiting settings
         var restartNecessary = false
             set(value) {
                 field = value
@@ -837,4 +891,11 @@ private const val REQUEST_CODE_TREES_EXPORT = 5332
 private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333
 private const val REQUEST_CODE_EXTERNAL_EXPORT = 5334
 
-private const val LAST_KNOWN_DB_VERSION = 6L // TODO: adjust this once the version changes and handle chnages
+private const val LAST_KNOWN_DB_VERSION = 6L // TODO: adjust this once the version changes and handle changes
+
+private const val BACKUP_HIDDEN_OSM_QUESTS = "quests"
+private const val BACKUP_HIDDEN_NOTES = "notes"
+private const val BACKUP_HIDDEN_OTHER_QUESTS = "other_source_quests"
+private const val BACKUP_PRESETS = "presets"
+private const val BACKUP_PRESETS_ORDERS = "orders"
+private const val BACKUP_PRESETS_VISIBILITIES = "visibilities"

@@ -128,7 +128,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         //  assume species if it contains a space character
         try {
             context?.getExternalFilesDir(null)?.let { dir ->
-                treeSet.addAll(File(dir, "trees.csv").readLines().mapNotNull { it.toTree(it.substringBefore(" (").contains(" ")) })
+                treeSet.addAll(File(dir, FILENAME_TREES).readLines().mapNotNull { it.toTree(it.substringBefore(" (").contains(" ")) })
             }
         } catch (_: IOException) { } // file may not exist, so an exception is no surprise
 
@@ -157,6 +157,8 @@ private fun String.toTree(isSpecies: Boolean): Tree? {
     else
         Tree(line.substringBefore(" ("), isSpecies, line.substringAfter("(").substringBeforeLast(")"))
 }
+
+const val FILENAME_TREES = "trees.csv"
 
 // search adapter was removed, but we still want to use it here, because:
 // 1. tree species are not part of iD presets

@@ -14,7 +14,7 @@ class ExternalList(context: Context) {
     init { reload() }
 
     fun reload() {
-        val file = File(path, "external.csv")
+        val file = File(path, FILENAME_EXTERNAL)
         questsMap.clear()
         if (!file.exists()) return
         questsMap.putAll(file.readLines().mapNotNull {
@@ -37,7 +37,7 @@ class ExternalList(context: Context) {
 
     fun remove(key: ElementKey) {
         questsMap.remove(key)
-        val file = File(path, "external.csv")
+        val file = File(path, FILENAME_EXTERNAL)
         val lines = file.readLines().toMutableList()
         lines.removeAll { line ->
             if (!line.contains(','))
@@ -50,3 +50,5 @@ class ExternalList(context: Context) {
         file.writeText(lines.joinToString("\n"))
     }
 }
+
+const val FILENAME_EXTERNAL = "external.csv"
