@@ -157,7 +157,6 @@
     <string name="quest_osmose_settings_what">What to do?</string>
     <string name="quest_osmose_settings_items">Select item types to hide</string>
     <string name="quest_osmose_settings_enable">Enable downloading</string>
-    <string name="quest_osmose_settings_disable">Disable downloading (default)</string>
     <string name="quest_osmose_hide_type_specific">Ignore similar issues (item and class)</string>
     <string name="quest_osmose_hide_type_generic">Ignore similar issues (osmose item)</string>
     <string name="quest_osmose_delete_this_issue">Remove this issue</string>
@@ -169,7 +168,6 @@
     <string name="quest_external_title">External quest: %s</string>
     <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, load a file in the main settings menu, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
     <string name="quest_external_remove">Remove from list</string>
-    <string name="quest_external_message_for_element">Message for this element: %s</string>
 
     <!-- bench material -->
     <string name="quest_benchMaterial_title">What’s this made of?</string>
