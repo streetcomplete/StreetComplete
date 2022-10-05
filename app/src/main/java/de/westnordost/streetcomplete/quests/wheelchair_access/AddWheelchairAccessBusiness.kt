@@ -15,6 +15,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
         nodes, ways, relations with
           access !~ no|private
           and !wheelchair
+          and (name or brand or name:signed = no)
           and (
             shop and shop !~ no|vacant
             or amenity = parking and parking = multi-storey
