@@ -74,7 +74,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.othersource.AbstractOtherQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey

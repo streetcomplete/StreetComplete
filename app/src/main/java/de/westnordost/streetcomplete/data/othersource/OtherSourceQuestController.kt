@@ -1,43 +1,20 @@
 package de.westnordost.streetcomplete.data.othersource
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.OtherSourceQuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
-import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.intersects
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.koin.core.qualifier.named
-import org.koin.dsl.module
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
-val otherSourceModule = module {
-    single { OtherSourceQuestController(get(named("CountryBoundariesFuture")), get(), get(), get()) }
-    single { OsmoseDao(get(), get()) }
-    single { OtherSourceDao(get()) }
-}
-
-// todo: for a start, add external and osmose quests here!
-//  external: allow specifying coordinates instead of element, though not sure what to do them
-//   just show message, and maybe allow creating a node with pre-defined tags?
-
-// maybe split into more classes?
 class OtherSourceQuestController(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     questTypeRegistry: QuestTypeRegistry,
@@ -200,100 +177,3 @@ class OtherSourceQuestController(
     }
 }
 
-// todo: if a quest doesn't lead to an elementEdit, currently there is no way to undo
-//  -> implement for things like undo reportFalsePositive
-/*
-class OtherSourceEditKey(val source: String, val id: Long) : EditKey() // have a key for each source that needs it?
-data class OtherSourceEdit(
-    override val position: LatLon,
-    override val isSynced: Boolean?,
-    val action: Unit, // depending on the source and what was done, need some type...
-) : Edit {
-    override val key: OtherSourceEditKey
-    override val createdTimestamp: Long
-    override val isUndoable: Boolean
-}
-*/
-
-data class OtherSourceQuest(
-    /** Each quest must be uniquely identified by the [id] and [source] */
-    val id: String,
-    override val geometry: ElementGeometry,
-    override val type: OtherSourceQuestType,
-    ) : Quest {
-    override val key by lazy { OtherSourceQuestKey(id, source) }
-    override val markerLocations: Collection<LatLon> get() = listOf(geometry.center)
-    override val position: LatLon get() = geometry.center
-    val source get() = type.source
-}
-
-// do it very similar to OsmElementQuestType
-// for cleanup, each quest type should override deleteMetadataOlderThan, or old data will remain
-interface OtherSourceQuestType : QuestType, ElementEditType {
-    // like for OsmQuestType
-    override val title: Int get() = getTitle(emptyMap())
-    fun getTitle(tags: Map<String, String>): Int
-    fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
-    val highlightedElementsRadius: Double? get() = null
-    fun getHighlightedElements(getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
-    val enabledInCountries: Countries get() = AllCountries
-
-    /** Unique string for each source (app will crash on start if sources are not unique). */
-    val source: String
-
-    /**
-     *  Download and persist data, create quests inside the given bbox and return the new quests.
-     *  Download date should be stored for each entry to allow cleanup of old data.
-     */
-    fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
-
-    /**
-     *  Upload changes to the server. Uploaded quests should not be created again on [download].
-     *  Note that on each individual upload, [onSyncedEdit] will be called if there is a connected
-     *  ElementEdit.
-     */
-    fun upload()
-
-    /** Return all quests inside the given [bbox]. */
-    fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest>
-
-    /** Return quest with the given [id], or null. */
-    fun get(id: String): OtherSourceQuest?
-
-    /**
-     *  Called if the ElementEdit done as part of quest with the given [id] was deleted (undone).
-     *  [id] can be null in case edit was not properly associated with id.
-     */
-    fun onDeletedEdit(edit: ElementEdit, id: String?)
-
-    /**
-     *  Called if the ElementEdit done as part of quest with the given [id] was synced (uploaded).
-     *  [id] can be null in case edit was not properly associated with id.
-     *  Note that [upload] will also be called (before the first edit upload).
-     */
-    fun onSyncedEdit(edit: ElementEdit, id: String?)
-
-    /**
-     *  Removes the quest with the given [id]. What happens internally doesn't matter, as long as
-     *  the quest doesn't show up again when using [get] or [getQuests].
-     */
-    fun deleteQuest(id: String): Boolean
-
-    /**
-     *  Necessary to clean old data.
-     *  Will be called with (nearly) current time when clearing all stored data is desired.
-    */
-    override fun deleteMetadataOlderThan(timestamp: Long)
-}
-
-data class OtherSourceQuestHidden(
-    val id: String,
-    val questType: OtherSourceQuestType,
-    override val position: LatLon,
-    override val createdTimestamp: Long
-) : Edit {
-    val questKey get() = OtherSourceQuestKey(id, questType.source)
-    override val key: OtherSourceQuestHiddenKey get() = OtherSourceQuestHiddenKey(questKey)
-    override val isUndoable: Boolean get() = true
-    override val isSynced: Boolean? get() = null
-}

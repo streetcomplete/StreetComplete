@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.quests.osmose
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
@@ -7,8 +7,9 @@ import androidx.appcompat.widget.SwitchCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.quest.Countries
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 

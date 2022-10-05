@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.quests.osmose
 
 import android.content.SharedPreferences
 import android.util.Log
@@ -12,18 +12,19 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.CLASS
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.ELEMENTS
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.ANSWERED
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.ITEM
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.LATITUDE
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.LEVEL
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.LONGITUDE
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.SUBTITLE
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.TIMESTAMP
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.TITLE
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.Columns.UUID
-import de.westnordost.streetcomplete.data.othersource.OsmoseTable.NAME
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.CLASS
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENTS
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ANSWERED
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ITEM
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.LATITUDE
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.LEVEL
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.LONGITUDE
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.SUBTITLE
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.TIMESTAMP
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.TITLE
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.UUID
+import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import okhttp3.OkHttpClient

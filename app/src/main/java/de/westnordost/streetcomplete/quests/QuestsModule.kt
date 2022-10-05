@@ -5,8 +5,8 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
-import de.westnordost.streetcomplete.data.othersource.OsmoseDao
-import de.westnordost.streetcomplete.data.othersource.OsmoseQuest
+import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
+import de.westnordost.streetcomplete.quests.osmose.OsmoseQuest
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
@@ -197,6 +197,7 @@ val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
     factory { WayTrafficFlowDao(get()) }
     single { ExternalList(androidContext()) }
+    single { OsmoseDao(get(), get()) }
 
     single { questTypeRegistry(
         get(),

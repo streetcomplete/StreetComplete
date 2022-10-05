@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.quests
 
 import android.location.Location
 import android.os.Bundle
@@ -17,12 +17,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
-import de.westnordost.streetcomplete.quests.AbstractQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
-import de.westnordost.streetcomplete.quests.getQuestTitle
-import de.westnordost.streetcomplete.quests.onClickEditTags
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope

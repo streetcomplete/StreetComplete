@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.othersource
+package de.westnordost.streetcomplete.quests.osmose
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.databinding.QuestOsmoseExternalBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
