@@ -323,6 +323,7 @@ class MainFragment :
      *  Returns true if the event should be consumed. */
     override fun onBackPressed(): Boolean {
         if (editHistoryFragment != null) {
+            mapFragment?.endFocus(0L)
             closeEditHistorySidebar()
             return true
         }

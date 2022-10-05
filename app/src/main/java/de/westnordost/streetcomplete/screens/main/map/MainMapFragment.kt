@@ -216,14 +216,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     /** return to the position before focussing */
-    fun endFocus() {
+    fun endFocus(delay: Long = 75L) {
         viewLifecycleScope.launch {
             /* small delay to wait for other animations when ending focus on quest to be done first
                Most specifically, the map is being updated after a quest is solved, if the zoom
                out animation already starts while the map is being updated, there can be a little
                lag/jump which is not visually pleasing.
              */
-            delay(150)
+            delay(delay)
             geometryMapComponent?.endFocusGeometry()
         }
         centerCurrentPositionIfFollowing()
