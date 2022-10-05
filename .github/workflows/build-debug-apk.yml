@@ -30,4 +30,4 @@ jobs:
       with: 
         name: debug-apk
         path: app/build/outputs/apk/debug/*.apk
-        retention-days: 1
+        retention-days: 30
