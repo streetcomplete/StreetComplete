@@ -12,9 +12,8 @@ class AddTreeGenus : OsmFilterQuestType<Tree>() {
     override val elementFilter = """
         nodes with
           natural = tree
-          and !genus and !~"genus:.*"
-          and !species and !~"species:.*"
-          and !taxon and !~"taxon:.*"
+          and !genus and !species and !taxon
+          and !~"genus:.*" and !~"species:.*" and !~"taxon:.*"
     """
     override val changesetComment = "Add tree genus/species"
     override val defaultDisabledMessage = R.string.quest_tree_disabled_msg

@@ -17,9 +17,7 @@ import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddLevel(
-    private val prefs: SharedPreferences
-) : OsmElementQuestType<String> {
+class AddLevel(private val prefs: SharedPreferences) : OsmElementQuestType<String> {
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/
@@ -38,7 +36,7 @@ class AddLevel(
         ${if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) """
         and (
           amenity ~ doctors|dentist
-          or healthcare ~ psychotherapist|physiotherapist
+          or healthcare ~ doctor|dentist|psychotherapist|physiotherapist
         ) """
         else ""}
     """.toElementFilterExpression() }
@@ -93,13 +91,11 @@ class AddLevel(
             // add doctors, independent of the building they're in
             // and remove them from shops without level
             shopsWithoutLevel.removeAll {
-                if (it.isDoctor()) {
-                    result.add(it)
-                    true
-                } else
-                    false
+                if (it.isDoctor()) result.add(it)
+                else false
             }
         }
+        if (shopsWithoutLevel.isEmpty()) return emptyList()
 
         // get geometry of all malls (or buildings) in the area
         val mallGeometries = mapData
@@ -155,7 +151,7 @@ class AddLevel(
         return null
     }
 
-    private fun Element.isDoctor() = tags["amenity"] == "doctors" || tags["amenity"] == "dentist" || tags["healthcare"] in listOf("psychotherapist", "physiotherapist")
+    private fun Element.isDoctor() = tags["amenity"] in doctorAmenity || tags["healthcare"] in doctorHealthcare
 
     override fun createForm() = AddLevelForm()
 
@@ -165,8 +161,8 @@ class AddLevel(
 
     override val hasQuestSettings = true
 
-    override fun getQuestSettingsDialog(context: Context): AlertDialog {
-        return AlertDialog.Builder(context)
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        AlertDialog.Builder(context)
             .setTitle(R.string.quest_settings_level_title)
             .setNegativeButton(android.R.string.cancel, null)
             .setItems(R.array.pref_quest_settings_level_quest) { _, i ->
@@ -174,8 +170,10 @@ class AddLevel(
                 SettingsFragment.restartNecessary = true
             }
             .create()
-    }
 
 }
+
+private val doctorAmenity = setOf("doctors", "dentist")
+private val doctorHealthcare = setOf("doctor", "dentist", "psychotherapist", "physiotherapist")
 
 private const val PREF_MORE_LEVELS = "qs_AddLevel_more_levels"

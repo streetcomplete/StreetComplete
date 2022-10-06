@@ -96,8 +96,8 @@ class CheckExistence(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
-    override fun isApplicableTo(element: Element) =
-        (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
+    override fun isApplicableTo(element: Element) = lastCheckFilter.matches(element)
+        && (nodesFilter.matches(element) || nodesWaysFilter.matches(element))
         && hasAnyName(element.tags)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
@@ -117,6 +117,9 @@ class CheckExistence(
     override fun applyAnswerTo(answer: Unit, tags: Tags, timestampEdited: Long) {
         tags.updateCheckDate()
     }
+
+    // useless for the logic, but checked first and thus returns no already before doing the full check
+    private val lastCheckFilter = "nodes, ways with ${lastChecked(2.0)}".toElementFilterExpression()
 
     private fun lastChecked(yearsAgo: Double): String = """
         older today -$yearsAgo years

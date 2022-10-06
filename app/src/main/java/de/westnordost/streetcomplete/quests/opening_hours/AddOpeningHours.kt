@@ -27,6 +27,12 @@ class AddOpeningHours(
     private val filter by lazy { ("""
         nodes, ways, relations with
         (
+          name or brand or noname = yes or name:signed = no
+          or barrier
+          or amenity ~ toilets|bicycle_rental
+        )
+        and
+        (
           (
             (
               shop and shop !~ no|vacant
@@ -107,11 +113,6 @@ class AddOpeningHours(
           )
         )
         and access !~ private|no
-        and (
-          name or brand or noname = yes or name:signed = no
-          or barrier
-          or amenity ~ toilets|bicycle_rental
-        )
         and opening_hours:signed != no
     """).toElementFilterExpression() }
 
@@ -136,8 +137,6 @@ class AddOpeningHours(
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
         val tags = element.tags
-        // only show places that can be named somehow
-        if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
         val oh = tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a

@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -63,8 +66,11 @@ class OsmQuestController internal constructor(
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
+    private val allQuestTypes = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
         .sortedBy { it.chonkerIndex }
+
+    private val wayOnlyFilterQuests = allQuestTypes.filterIsInstance<OsmFilterQuestType<*>>().filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }.toSet()
+    private val questsRequiringElementsWithoutTags = setOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance")
 
     private val hiddenCache = hiddenDB.getAllIds().toHashSet()
 
@@ -147,18 +153,26 @@ class OsmQuestController internal constructor(
         val time = currentTimeMillis()
 
         val countryBoundaries = countryBoundariesFuture.get()
+        val mapDataWithTags = MutableMapDataWithGeometry().apply {
+            mapDataWithGeometry.forEach { if (it.tags.isNotEmpty()) put(it, mapDataWithGeometry.getGeometry(it.type, it.id)) }
+            boundingBox = mapDataWithGeometry.boundingBox
+        }
+        val waysWithTags = MutableMapDataWithGeometry(mapDataWithTags.filter { it.type == ElementType.WAY }, emptyList())
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType.name
+                val mapDataToUse = if (questType in wayOnlyFilterQuests) waysWithTags
+                    else if (questType.name in questsRequiringElementsWithoutTags) mapDataWithGeometry
+                    else mapDataWithTags
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
-                    for (element in questType.getApplicableElements(mapDataWithGeometry)) {
+                    for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
                         if (!mayCreateQuest(questType, geometry, bbox)) continue
@@ -193,6 +207,7 @@ class OsmQuestController internal constructor(
                 /* shortcut: if the element has no tags, it is just part of the geometry of another
                 *  element, so no need to check for quests for that element */
                 if (element.tags.isEmpty()) return@async null
+                if (!mayCreateQuest(questType, geometry, null)) return@async null // exit before checking if disabled in country
 
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
@@ -203,11 +218,7 @@ class OsmQuestController internal constructor(
                 }
                 if (!appliesToElement) return@async null
 
-                if (mayCreateQuest(questType, geometry, null)) {
-                    OsmQuest(questType, element.type, element.id, geometry)
-                } else {
-                    null
-                }
+                OsmQuest(questType, element.type, element.id, geometry)
             }
         }
     }
