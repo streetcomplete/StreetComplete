@@ -45,6 +45,16 @@ enum class ParkingPosition {
     PAINTED_AREA_ONLY
 }
 
+fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
+    if (left?.isValid != false && right?.isValid != false) return this
+    return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
+}
+
+private val StreetParking.isValid: Boolean get() = when(this) {
+    IncompleteStreetParking, UnknownStreetParking -> false
+    else -> true
+}
+
 val StreetParking.estimatedWidthOnRoad: Float get() = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.estimatedWidth * position.estimatedWidthOnRoadFactor
     else -> 0f // otherwise let's assume it's not on the street itself
@@ -88,8 +98,16 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     }
 
     // parking:lane:<left/right/both>
-    val laneRight = right?.toOsmLaneValue()
-    val laneLeft = left?.toOsmLaneValue()
+    val laneRight = if (right != null) {
+        right.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
+    } else {
+        null
+    }
+    val laneLeft = if (left != null) {
+        left.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
+    } else {
+        null
+    }
 
     if (laneLeft == laneRight) {
         if (laneLeft != null) tags["parking:lane:both"] = laneLeft

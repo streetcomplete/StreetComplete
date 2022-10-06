@@ -4,10 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
-import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
-import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
-import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
+import de.westnordost.streetcomplete.osm.lit.LitStatus.*
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
@@ -21,6 +18,11 @@ class LitStatusKtTest {
         verifyAnswer(mapOf(), NO, arrayOf(StringMapEntryAdd("lit", "no")))
         verifyAnswer(mapOf(), AUTOMATIC, arrayOf(StringMapEntryAdd("lit", "automatic")))
         verifyAnswer(mapOf(), NIGHT_AND_DAY, arrayOf(StringMapEntryAdd("lit", "24/7")))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid throws exception`() {
+        UNSUPPORTED.applyTo(StringMapChangesBuilder(mapOf()))
     }
 
     @Test fun `apply updates check date`() {
