@@ -19,6 +19,7 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
         nodes, ways, relations with
           access !~ no|private
           and !wheelchair
+          and (name or brand or name:signed = no)
           and (
             shop and shop !~ no|vacant
             or amenity = recycling and recycling_type = centre
