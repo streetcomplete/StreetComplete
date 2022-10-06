@@ -49,7 +49,7 @@ class ElementEditsControllerTest {
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
-        verify(listener).onAddedEdit(any())
+        verify(listener).onAddedEdit(any(), any()) // onAdded(edit, key) redirects to onAdded(edit) if not overridden, but mock() apparently doesn't do that
         verify(lastEditTimeStore).touch()
     }
 
@@ -155,7 +155,7 @@ class ElementEditsControllerTest {
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 0, 0, 0)
-        verify(listener).onAddedEdit(any())
+        verify(listener).onAddedEdit(any(), any())
         verify(lastEditTimeStore).touch()
     }
 }

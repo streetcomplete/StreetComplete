@@ -307,14 +307,15 @@ class OsmQuestControllerTest {
 
     @Test fun `updates quests on map data listener replace for bbox`() {
 
+        // need tags, because elements without tags get kicked out early except for specific quest types that actually use them
         val elements = listOf(
-            node(1),
+            node(1, tags = mapOf("a" to "b")),
             // missing geometry
-            node(2),
+            node(2, tags = mapOf("a" to "b")),
             // hidden for ApplicableQuestType2
-            node(3),
+            node(3, tags = mapOf("a" to "b")),
             // at note position
-            node(4),
+            node(4, tags = mapOf("a" to "b")),
         )
         val geom = pGeom(0.0, 0.0)
         val notePos = p(0.5, 0.5)
