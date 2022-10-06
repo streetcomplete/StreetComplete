@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDate
 
@@ -133,6 +134,31 @@ class SidewalkKtTest {
             arrayOf(
                 StringMapEntryAdd("sidewalk:right", "no")
             )
+        )
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid left throws exception`() {
+        LeftAndRightSidewalk(Sidewalk.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid right throws exception`() {
+        LeftAndRightSidewalk(null, Sidewalk.INVALID).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test fun validOrNullValues() {
+        assertEquals(
+            LeftAndRightSidewalk(null, null),
+            LeftAndRightSidewalk(Sidewalk.INVALID, Sidewalk.INVALID).validOrNullValues()
+        )
+        assertEquals(
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            LeftAndRightSidewalk(Sidewalk.NO, Sidewalk.INVALID).validOrNullValues()
+        )
+        assertEquals(
+            LeftAndRightSidewalk(null, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.INVALID, Sidewalk.NO).validOrNullValues()
         )
     }
 }

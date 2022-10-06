@@ -18,26 +18,34 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideItem2
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
 /** Functions to display a (parsed) street parking in the UI */
 
-fun StreetParking.asItem(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean) =
-    Item2(
-        this,
-        getDialogIcon(context, countryInfo, isUpsideDown),
-        titleResId?.let { ResText(it) }
-    )
+fun StreetParking.asItem(
+    context: Context,
+    countryInfo: CountryInfo,
+    isUpsideDown: Boolean
+): DisplayItem<StreetParking> = Item2(
+    this,
+    getDialogIcon(context, countryInfo, isUpsideDown),
+    titleResId?.let { ResText(it) }
+)
 
-fun StreetParking.asStreetSideItem(context: Context, countryInfo: CountryInfo, isUpsideDown: Boolean) =
-    StreetSideItem2(
-        this,
-        getIcon(context, countryInfo, isUpsideDown),
-        null,
-        getDialogIcon(context, countryInfo, isUpsideDown),
-        getFloatingIcon(countryInfo)
-    )
+fun StreetParking.asStreetSideItem(
+    context: Context,
+    countryInfo: CountryInfo,
+    isUpsideDown: Boolean
+): StreetSideDisplayItem<StreetParking> = StreetSideItem2(
+    this,
+    getIcon(context, countryInfo, isUpsideDown),
+    null,
+    getDialogIcon(context, countryInfo, isUpsideDown),
+    getFloatingIcon(countryInfo)
+)
 
 private val StreetParking.titleResId: Int? get() = when (this) {
     NoStreetParking -> R.string.street_parking_no
