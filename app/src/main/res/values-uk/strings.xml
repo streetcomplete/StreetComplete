@@ -529,8 +529,12 @@
     <string name="quest_buildingType_semi_detached">"Напівособняк"</string>
     <string name="quest_buildingType_terrace_description">"лінійний ряд подібних односімейних будинків"</string>
     <string name="quest_buildingType_hotel">"Готель"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Гуртожиток"</string>
     <string name="quest_buildingType_houseboat">"Дім на воді"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
     <string name="quest_buildingType_static_caravan">"Житловий трейлер"</string>
     <string name="quest_buildingType_commercial">"Комерційна будівля"</string>
@@ -545,18 +549,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Магазин(и)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Склад"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Кіоск"</string>
     <string name="quest_buildingType_storage_tank">"Резервуар для зберігання"</string>
     <string name="quest_buildingType_religious">"Релігійна будівля"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Церква"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Каплиця"</string>
     <string name="quest_buildingType_cathedral">"Собор"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Мечеть"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Храм"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Пагода"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Синагога"</string>
     <string name="quest_buildingType_civic">"Громадська будівля"</string>
     <string name="quest_buildingType_civic_description">"муніципальна будівля, яка зазвичай надає державні послуги"</string>
@@ -593,6 +611,8 @@
     <string name="quest_buildingType_bunker">"Бункер"</string>
     <string name="quest_address_answer_no_housenumber">"Не має номеру дому…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Будинок позначено як:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Святиня"</string>
 
     <!-- Fuzzy -->

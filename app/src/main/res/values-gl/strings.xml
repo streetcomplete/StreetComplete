@@ -512,8 +512,12 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_semi_detached">"Casa semi-adosada"</string>
     <string name="quest_buildingType_terrace_description">"unha ringleira de vivendas adosadas unifamiliares"</string>
     <string name="quest_buildingType_hotel">"Edificio de hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Residencia ou dormitorio"</string>
     <string name="quest_buildingType_houseboat">"Casa flotante"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
     <string name="quest_buildingType_commercial">"Edificio comercial"</string>
@@ -528,18 +532,32 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Tenda(s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Almacén"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosco"</string>
     <string name="quest_buildingType_storage_tank">"Tanque de almacenaxe"</string>
     <string name="quest_buildingType_religious">"Edificio relixioso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Igrexa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capela"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edificio público"</string>
     <string name="quest_buildingType_civic_description">"edificio aberto ó público no que se adoitan desenvolver unha ou varias actividades"</string>
@@ -576,6 +594,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"Non ten número da casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"O edificio foi etiquetado como:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
 
     <!-- Fuzzy -->

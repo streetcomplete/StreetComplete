@@ -32,7 +32,7 @@
     <string name="quest_leave_new_note_no">"Ne, samo sakrij"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_title">"Kako se zove ova cesta?"</string>
+    <string name="quest_streetName_title">"Kako se zove ova ulica?"</string>
     <string name="quest_streetName_description">"onako kako je napisano na uličnom znaku (proširite skraćenice):"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Ponekad se ulični znak nalazi samo na jednom kraju ulice. Također imajte na umu da možda neće biti dodatnih uličnih znakova za sporedne ulice koje pripadaju većoj ulici. Obično svaka ulica s kućama ima naziv."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ako naziv može biti napisan bez skraćenica, onda bi ga trebalo unjeti u proširenom obliku. Neke uobičajene kratice automatski se proširuju dok tipkate, ali vjerojatno ne sve."</string>
@@ -536,6 +536,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentski dom"</string>
     <string name="quest_buildingType_houseboat">"Kuća na splavu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilna kućica"</string>
     <string name="quest_buildingType_commercial">"Komercijalna zgrada"</string>
@@ -550,18 +552,32 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Trgovina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Skladište"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Spremnik"</string>
     <string name="quest_buildingType_religious">"Vjerska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Crkva"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrala"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Džamija"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Hram"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
 
     <!-- Fuzzy -->
@@ -602,6 +618,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nema kućnog broja…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Zgrada je označena kao:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svetište"</string>
     <string name="quest_maxspeed_title_short2">"Koje je ograničenje brzine za ovu ulicu?"</string>
     <string name="quest_maxspeed_answer_sign">"Prometnim znakom"</string>
@@ -1897,4 +1915,49 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Istražite OSM podatke kroz prostor i vrijeme u različitim mjerilima, od velike slike do pojedinačnih objekata"</string>
     <string name="link_opencampingmap_description">"Karta kampova"</string>
     <string name="quest_atm_cashin_title">"Možete li položiti gotovinu u ovoj bankomat?"</string>
+    <string name="create_node_action_description">"Napravili ste točku s …"</string>
+    <string name="quest_accessPointRef_title">"Koji je referentni broj ovdje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_answer_assembly_point">"To je sabirna točka"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Sabirna točka je mjesto gdje se ljudi okupljaju u slučaju nužde. Obično izgleda ovako:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_answer_house_name2">"Kuća ima naziv…"</string>
+    <string name="quest_address_street_street_name_label">"Naziv ulice:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_hint2">"Dotaknite ulicu na karti da ju odaberete"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_title">"Koji smjer vodi prema gore odavde?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_up_and_down">"Svako malo ide gore-dolje"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_title">"Na koji način je ovdje dostupna pitka voda?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Neka druga vrsta"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vodoskok sa malim mlazom vode"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Samo za punjenje boca"</string>
+    <string name="quest_drinking_water_type_tap">"Slavina za vodu"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Ručna crpka"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Bunar za vodu bez pumpe"</string>
+    <string name="quest_drinking_water_type_spring">"Izvor"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_disused">"Zapušteno; nema pitke vode"</string>
+
+    <!-- Fuzzy -->
+    <string name="overlay_addresses">"Adrese"</string>
+    <string name="overlay_shops">"Trgovine"</string>
+
+    <!-- Fuzzy -->
+    <string name="name_label">"Naziv:"</string>
+
+    <!-- Fuzzy -->
+    <string name="vacant_shop_title">"Upražnjena trgovina"</string>
+    <string name="unknown_shop_title">"Nepoznata vrsta trgovine"</string>
 </resources>

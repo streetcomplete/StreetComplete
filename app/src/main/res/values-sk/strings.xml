@@ -493,8 +493,12 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_semi_detached">"Čiastočne spojený dom (dvojdom)"</string>
     <string name="quest_buildingType_terrace_description">"radová zástavba rodinných domov"</string>
     <string name="quest_buildingType_hotel">"Hotelová budova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Internát"</string>
     <string name="quest_buildingType_houseboat">"Hausbót"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilný dom"</string>
     <string name="quest_buildingType_commercial">"Komerčná budova"</string>
@@ -507,18 +511,34 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Obchod(y)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Sklad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Skladovacia nádrž"</string>
     <string name="quest_buildingType_religious">"Náboženská budova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kostol"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kaplnka"</string>
     <string name="quest_buildingType_cathedral">"Katedrála"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mešita"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Chrám"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagóga"</string>
     <string name="quest_buildingType_civic">"Verejná budova"</string>
     <string name="quest_buildingType_civic_description">"verejná budova občianskeho vybavenia"</string>
@@ -577,6 +597,8 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Nemá číslo domu…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Táto budova bola označená ako:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svätyňa"</string>
     <string name="quest_maxspeed_title_short2">"Aký je rýchlostný limit na tejto ceste?"</string>
     <string name="quest_maxspeed_answer_sign">"Značka"</string>

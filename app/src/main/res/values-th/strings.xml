@@ -520,8 +520,12 @@
     <string name="quest_buildingType_semi_detached">"บ้านแฝด"</string>
     <string name="quest_buildingType_terrace_description">"แถวเชิงเส้นของบ้านเดี่ยวที่คล้ายกัน"</string>
     <string name="quest_buildingType_hotel">"อาคารโรงแรม"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"หอพัก"</string>
     <string name="quest_buildingType_houseboat">"เรือนแพ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"บังกะโล"</string>
     <string name="quest_buildingType_static_caravan">"บ้านเคลื่อนที่"</string>
     <string name="quest_buildingType_commercial">"อาคารเชิงพาณิชย์"</string>
@@ -536,18 +540,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"ร้านค้า"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"โกดัง"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"ซุ้ม"</string>
     <string name="quest_buildingType_storage_tank">"ถังเก็บ"</string>
     <string name="quest_buildingType_religious">"อาคารทางศาสนา"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"โบสถ์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"โบสถ์"</string>
     <string name="quest_buildingType_cathedral">"มหาวิหาร"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"มัสยิด"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"อาคารวัด"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"เจดีย์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"โบสถ์ยิว"</string>
     <string name="quest_buildingType_civic">"อาคารราชการ"</string>
     <string name="quest_buildingType_civic_description">"อาคารสาธารณะซึ่งมักเป็นที่อำนวยความสะดวกต่างๆ"</string>
@@ -584,6 +602,8 @@
     <string name="quest_buildingType_bunker">"บังเกอร์"</string>
     <string name="quest_address_answer_no_housenumber">"ไม่มีเลขที่บ้าน…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"อาคารถูกแท็กเป็น:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"ศาลเจ้า"</string>
 
     <!-- Fuzzy -->

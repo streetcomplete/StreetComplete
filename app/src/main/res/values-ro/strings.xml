@@ -660,8 +660,12 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_buildingType_semi_detached">"Casă semi-independentă"</string>
     <string name="quest_buildingType_terrace_description">"un rând liniar de case unifamiliale similare"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormutir"</string>
     <string name="quest_buildingType_houseboat">"Casă pe apă"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalou"</string>
     <string name="quest_buildingType_static_caravan">"Rulotă"</string>
     <string name="quest_buildingType_commercial">"Clădire cu destinație comercială"</string>
@@ -676,18 +680,32 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Magazin(e)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depozit"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Chioşc"</string>
     <string name="quest_buildingType_storage_tank">"Rezervor de stocare"</string>
     <string name="quest_buildingType_religious">"Clădire de cult religios"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Biserică"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capelă"</string>
     <string name="quest_buildingType_cathedral">"Catedrală"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moschee"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagodă"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagogă"</string>
     <string name="quest_buildingType_civic">"Clădire publică"</string>
     <string name="quest_buildingType_civic_description">"clădirea publică găzduiește de obicei o amenajare"</string>

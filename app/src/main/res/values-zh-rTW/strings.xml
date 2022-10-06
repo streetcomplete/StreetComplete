@@ -1157,6 +1157,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"船屋"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
@@ -1182,6 +1184,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"倉庫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"售貨亭"</string>
 
     <!-- Fuzzy -->

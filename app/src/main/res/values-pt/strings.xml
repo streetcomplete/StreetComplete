@@ -453,8 +453,12 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_semi_detached">"Casa semi-separada"</string>
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em banda com paredes partilhadas"</string>
     <string name="quest_buildingType_hotel">"Edifício de um hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
     <string name="quest_buildingType_commercial">"Edifício comercial"</string>
@@ -463,16 +467,32 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_industrial_description">"por ex. uma fábrica, oficina, serralharia…"</string>
     <string name="quest_buildingType_office">"Edifício de escritórios"</string>
     <string name="quest_buildingType_retail">"Edifício comercial"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Armazém"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosque"</string>
     <string name="quest_buildingType_storage_tank">"Tanque de armazenamento"</string>
     <string name="quest_buildingType_religious">"Edifício religioso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Igreja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capela"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagode"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifício público"</string>
     <string name="quest_buildingType_civic_description">"onde se encontra normalmente um organismo/serviço público"</string>
@@ -511,6 +531,8 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"Não tem número de porta…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"O edifício foi etiquetado como:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuário"</string>
     <string name="quest_maxspeed_title_short2">"Qual é o limite de velocidade desta rua?"</string>
     <string name="quest_maxspeed_answer_sign">"Um sinal de limite de velocidade"</string>

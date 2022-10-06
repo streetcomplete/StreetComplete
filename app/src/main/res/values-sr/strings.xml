@@ -495,8 +495,12 @@
     <string name="quest_buildingType_semi_detached">"Полу-издвојена кућа"</string>
     <string name="quest_buildingType_terrace_description">"низ типских породичних кућа"</string>
     <string name="quest_buildingType_hotel">"Хотелски објекат"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Студентски дом"</string>
     <string name="quest_buildingType_houseboat">"Кућа на сплаву"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Бунгалов"</string>
     <string name="quest_buildingType_static_caravan">"Камп-приколица"</string>
     <string name="quest_buildingType_commercial">"Пословни објекат"</string>
@@ -511,18 +515,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Продавница/е"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Складиште"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Киоск"</string>
     <string name="quest_buildingType_storage_tank">"Резервоар"</string>
     <string name="quest_buildingType_religious">"Верски објекат"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Црква"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Капела"</string>
     <string name="quest_buildingType_cathedral">"Катедрала"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Џамија"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Храм"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Пагода"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Синагога"</string>
     <string name="quest_buildingType_civic">"Јавна институција"</string>
     <string name="quest_buildingType_civic_description">"објекат који пружа неку јавну услугу"</string>
@@ -559,6 +577,8 @@
     <string name="quest_buildingType_bunker">"Бункер"</string>
     <string name="quest_address_answer_no_housenumber">"Нема кућног броја…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Објекат је означен као:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Храм"</string>
     <string name="quest_maxspeed_title_short2">"Које је ограничење брзине ове улице?"</string>
     <string name="quest_maxspeed_answer_sign">"Саобраћајни знак"</string>
@@ -1526,4 +1546,30 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Натпис на улазу:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Опсег станова:"</string>
     <string name="quest_entrance_reference_flat_range_to">"до"</string>
+    <string name="quest_camp_drinking_water_title">"Да ли је пијаћа вода бесплатно доступна камперима?"</string>
+    <string name="quest_camp_shower_title">"Постоје ли тушеви?"</string>
+    <string name="quest_camp_type_title">"Ко овде може да кампује?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"И шатори и кампери, камп приколице, …"</string>
+    <string name="quest_camp_type_caravans_only">"Само кампери, камп приколице, …"</string>
+    <string name="quest_camp_type_tents_only">"Само шатори"</string>
+    <string name="quest_recycling_type_pet">"Само PET амбалажа"</string>
+    <string name="street_parking_street_width">"Ширина улице: %s"</string>
+    <string name="overlay_street_parking">"Паркинг на улици"</string>
+    <string name="quest_atm_cashin_title">"Можете ли извшити уплату на овом банкомату?"</string>
+    <string name="create_node_action_description">"Додали сте тачку са…"</string>
+    <string name="quest_accessPointRef_title">"Који је овде идентификациони број?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Ово је место окупљања"</string>
+    <string name="quest_address_answer_house_name2">"Објекат има свој назив…"</string>
+    <string name="quest_address_street_street_name_label">"Назив улице:"</string>
+    <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
+    <string name="quest_drinking_water_type_tap">"Водом из чесме"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Ручном пумпом"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Водом из цеви без пумпе"</string>
+    <string name="quest_drinking_water_type_spring">"Извором"</string>
+    <string name="quest_drinking_water_type_disused">"Место на ком је некада постојала пијаћа вода"</string>
+    <string name="overlay_addresses">"Адресе"</string>
+    <string name="overlay_shops">"Продавнице"</string>
+    <string name="name_label">"Назив:"</string>
+    <string name="vacant_shop_title">"Празан локал"</string>
+    <string name="unknown_shop_title">"Непозната намена локала"</string>
 </resources>
