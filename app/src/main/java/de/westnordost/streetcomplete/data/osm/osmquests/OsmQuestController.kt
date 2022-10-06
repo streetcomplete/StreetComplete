@@ -146,7 +146,12 @@ class OsmQuestController internal constructor(
         val time = currentTimeMillis()
 
         val countryBoundaries = countryBoundariesFuture.get()
-        val elementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
+
+        // Remove elements without tags, to be used for quests that are never applicable without
+        // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
+        // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
+        // This shortcut reduces time for creating quests by ~15-30%.
+        val onlyElementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
@@ -158,8 +163,8 @@ class OsmQuestController internal constructor(
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
-                    val mapDataToUse = if (questType is OsmFilterQuestType)
-                            elementsWithTags
+                    val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags)
+                            onlyElementsWithTags
                         else
                             mapDataWithGeometry
                     for (element in questType.getApplicableElements(mapDataToUse)) {
