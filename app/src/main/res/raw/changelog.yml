@@ -28,6 +28,16 @@ v48.0-beta1: |
   <li>Other small enhancements and fixes (#4431...), thanks @matkoniecz</li>
   </ul>
 
+v47.1: |
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>Do not show quests for kind of shops that cannot be referred to by name or type (#4448)</li>
+  <li>Sidewalk and street parking overlays: Allow to only specify the situation on one side (#4427)</li>
+  <li>Street parking overlay: Show parking areas semi-transparent in front of street side parkings</li>
+  <li>Overlays: Fix possible crash when editing roads with incomplete or invalid tagging</li>
+  <li>Other minor enhancements, fixes and crash fixes (#4424, #4429, #4435, #4447, ...), thanks @mcliquid, @Helium314</li>
+  </ul>
+
 v47.0: |
   <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
   <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
