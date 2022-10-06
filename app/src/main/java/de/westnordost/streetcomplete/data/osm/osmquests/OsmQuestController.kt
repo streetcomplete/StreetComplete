@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -145,6 +146,7 @@ class OsmQuestController internal constructor(
         val time = currentTimeMillis()
 
         val countryBoundaries = countryBoundariesFuture.get()
+        val elementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
@@ -156,7 +158,11 @@ class OsmQuestController internal constructor(
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
-                    for (element in questType.getApplicableElements(mapDataWithGeometry)) {
+                    val mapDataToUse = if (questType is OsmFilterQuestType)
+                            elementsWithTags
+                        else
+                            mapDataWithGeometry
+                    for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
                         if (!mayCreateQuest(questType, geometry, bbox)) continue
