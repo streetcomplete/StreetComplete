@@ -40,7 +40,6 @@ import de.westnordost.streetcomplete.quests.building_entrance.AddEntrance
 import de.westnordost.streetcomplete.quests.building_entrance_reference.AddEntranceReference
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
-import de.westnordost.streetcomplete.quests.building_type.AddBuildingWithAddressType
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground
 import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusStop
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
@@ -523,7 +522,6 @@ fun questTypeRegistry(
     AddServiceBuildingOperator(),
     AddOutdoorSeatingType(),
     AddTreeGenus(),
-    AddBuildingWithAddressType(),
     // POI quests
     ShowBicycleStuff(),
     ShowSeating(),
