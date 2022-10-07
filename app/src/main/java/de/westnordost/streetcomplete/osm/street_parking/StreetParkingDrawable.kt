@@ -34,6 +34,7 @@ class StreetParkingDrawable(
     override fun setAlpha(alpha: Int) {}
     override fun setColorFilter(colorFilter: ColorFilter?) {}
 
+    @Deprecated("Deprecated in Java")
     override fun getOpacity() = PixelFormat.TRANSLUCENT
 
     override fun getIntrinsicWidth(): Int = (width * context.resources.displayMetrics.density).toInt()

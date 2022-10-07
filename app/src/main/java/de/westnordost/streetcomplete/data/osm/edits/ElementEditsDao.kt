@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.LO
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.NAME
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
@@ -44,6 +46,8 @@ class ElementEditsDao(
                 subclass(SplitWayAction::class)
                 subclass(DeletePoiNodeAction::class)
                 subclass(RevertDeletePoiNodeAction::class)
+                subclass(CreateNodeAction::class)
+                subclass(RevertCreateNodeAction::class)
             }
         }
     }
@@ -94,6 +98,14 @@ class ElementEditsDao(
 
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
+
+    fun updateElementId(id: Long, newElementId: Long): Int =
+        db.update(
+            NAME,
+            values = listOf(ELEMENT_ID to newElementId),
+            where = "$ID = ?",
+            args = arrayOf(id)
+        )
 
     fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
         db.update(

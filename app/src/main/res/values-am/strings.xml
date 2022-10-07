@@ -514,8 +514,12 @@
     <string name="quest_buildingType_semi_detached">"ከፊል የተላቀቀ ቤት"</string>
     <string name="quest_buildingType_terrace_description">"ተመሳሳይ ባለ አንድ ቤተሰብ ቤቶች ቀጥተኛ ረድፍ"</string>
     <string name="quest_buildingType_hotel">"የሆቴል ሕንፃ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"ማደሪያ"</string>
     <string name="quest_buildingType_houseboat">"የጀልባ ቤት"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"የብዙ ሰዉ ማደሪያ"</string>
     <string name="quest_buildingType_static_caravan">"ተንቀሳቃሽ ቤት"</string>
     <string name="quest_buildingType_commercial">"የንግድ ሕንፃ"</string>
@@ -530,18 +534,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"ሱቅ (ሱቆች)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"መጋዘን"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"ኪዮስክ"</string>
     <string name="quest_buildingType_storage_tank">"የማጠራቀሚያ ታንክ"</string>
     <string name="quest_buildingType_religious">"የሃይማኖት ህንፃ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"ቤተክርስቲያን"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"የጸሎት ቤት"</string>
     <string name="quest_buildingType_cathedral">"ካቴድራል"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"መስጊድ"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"መቅደስ ህንፃ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"ምኩራብ"</string>
     <string name="quest_buildingType_civic">"የህዝብ ህንፃ"</string>
     <string name="quest_buildingType_civic_description">"የሕዝብ ህንፃ አብዛኛውን ጊዜ ምቹ መገልገያዎችን ይይዛል"</string>
@@ -578,6 +596,8 @@
     <string name="quest_buildingType_bunker">"የአደጋ ግዜ መጠለያ"</string>
     <string name="quest_address_answer_no_housenumber">"የቤት ቁጥር የለውም…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"ህንፃው የሚል መለያ ተሰጥቶታል"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"መቅደስ"</string>
 
     <!-- Fuzzy -->

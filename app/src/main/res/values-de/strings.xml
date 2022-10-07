@@ -464,9 +464,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
-    <string name="quest_buildingType_dormitory">"Wohnheim"</string>
+    <string name="quest_buildingType_dormitory">"Wohnheim-Gebäude"</string>
     <string name="quest_buildingType_houseboat">"Hausboot"</string>
-    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow-Gebäude"</string>
     <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
     <string name="quest_buildingType_commercial">"Gewerbliches Gebäude"</string>
     <string name="quest_buildingType_commercial_generic_description">"Gebäude, in dem Leute arbeiten, einkaufen oder anderen gewerblichen Aktivitäten nachgehen"</string>
@@ -474,17 +474,17 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_industrial_description">"z. B. eine Fabrik, ein Betrieb, eine Autowerkstatt, …"</string>
     <string name="quest_buildingType_office">"Bürogebäude"</string>
     <string name="quest_buildingType_retail">"Laden / Läden"</string>
-    <string name="quest_buildingType_warehouse">"Lagerhaus"</string>
-    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_warehouse">"Lagerhaus-Gebäude"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk-Gebäude"</string>
     <string name="quest_buildingType_storage_tank">"Tank"</string>
     <string name="quest_buildingType_religious">"Religiöses Gebäude"</string>
-    <string name="quest_buildingType_church">"Kirche"</string>
-    <string name="quest_buildingType_chapel">"Kapelle"</string>
+    <string name="quest_buildingType_church">"Kirchengebäude"</string>
+    <string name="quest_buildingType_chapel">"Kapellen-Gebäude"</string>
     <string name="quest_buildingType_cathedral">"Kathedrale"</string>
-    <string name="quest_buildingType_mosque">"Moschee"</string>
-    <string name="quest_buildingType_temple">"Tempel"</string>
-    <string name="quest_buildingType_pagoda">"Pagode"</string>
-    <string name="quest_buildingType_synagogue">"Synagoge"</string>
+    <string name="quest_buildingType_mosque">"Moschee-Gebäude"</string>
+    <string name="quest_buildingType_temple">"Tempel-Gebäude"</string>
+    <string name="quest_buildingType_pagoda">"Pagoden-Gebäude"</string>
+    <string name="quest_buildingType_synagogue">"Synagogen-Gebäude"</string>
     <string name="quest_buildingType_civic">"Öffentliches Gebäude"</string>
     <string name="quest_buildingType_civic_description">"Gebäude für öffentliche Einrichtungen"</string>
     <string name="quest_buildingType_kindergarten">"Gebäude eines Kindergartens"</string>
@@ -522,7 +522,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Hat keine Hausnummer …"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Das Gebäude wurde bestimmt als:"</string>
-    <string name="quest_buildingType_shrine">"Schrein"</string>
+    <string name="quest_buildingType_shrine">"Schrein-Gebäude"</string>
     <string name="quest_maxspeed_title_short2">"Welche Geschwindigkeitsbegrenzung gilt hier?"</string>
     <string name="quest_maxspeed_answer_sign">"Ein Schild"</string>
     <string name="quest_maxspeed_answer_zone2">"Ist innerhalb einer Tempo-(30-)Zone"</string>
@@ -795,7 +795,7 @@ Rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Level aller
 Erfolge"</string>
-    <string name="quest_address_street_no_named_streets">"Zu keiner mit Namen"</string>
+    <string name="quest_address_street_no_named_streets">"Gehört zu keiner Straße mit Namen"</string>
     <string name="quest_address_street_place_name_label">"Ortsname:"</string>
     <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
     <string name="quest_recycling_type_cooking_oil">"Speiseöl"</string>
@@ -1102,7 +1102,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="select_street_parking_no">"Irgendein Schild oder Markierung hier?"</string>
     <string name="street_parking_parallel">"Parallel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
-    <string name="street_parking_perpendicular">"senkrecht"</string>
+    <string name="street_parking_perpendicular">"Senkrecht"</string>
     <string name="street_parking_on_street">"Auf der Straße"</string>
     <string name="street_parking_half_on_kerb">"Teilweise auf der Straße"</string>
     <string name="street_parking_on_kerb">"Neben der Straße"</string>
@@ -1384,4 +1384,28 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Erkunde OSM-Daten in verschiedenen Maßstäben, vom Gesamtbild bis hin zu einzelnen Objekten in Raum und Zeit"</string>
     <string name="link_opencampingmap_description">"Eine Weltkarte der Campingplätze"</string>
     <string name="quest_atm_cashin_title">"Kann man an diesem Geldautomaten Bargeld einzahlen?"</string>
+    <string name="create_node_action_description">"Du hast einen Punkt erstellt mit …"</string>
+    <string name="quest_accessPointRef_title">"Was ist die Referenznummer hier?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Es ist ein Sammelplatz"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Ein Sammelplatz ist ein Ort, an dem sich Menschen im Notfall versammeln. Er sieht meist ähnlich aus wie dieser:"</string>
+    <string name="quest_address_answer_house_name2">"Es hat einen Hausnamen …"</string>
+    <string name="quest_address_street_street_name_label">"Straßenname:"</string>
+    <string name="quest_address_street_hint2">"Straße auf der Karte antippen, um sie auszuwählen"</string>
+    <string name="quest_bicycle_incline_title">"Welche Richtung führt hier nach oben?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_up_and_down">"Es geht rauf und runter"</string>
+    <string name="quest_drinking_water_type_title">"Wie wird das Trinkwasser hier bereitgestellt?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Anderer Trinkwasserbrunnen"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_jet_water_fountain">"Brunnen, der kleinen Wasserstrahl ausstößt"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Nur Flaschen nachfüllen"</string>
+    <string name="quest_drinking_water_type_tap">"Wasserhahn"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Brunnen ohne Pumpe"</string>
+    <string name="quest_drinking_water_type_spring">"Quelle"</string>
+    <string name="quest_drinking_water_type_disused">"Stillgelegtes Trinkwasserobjekt"</string>
+    <string name="overlay_addresses">"Adressen"</string>
+    <string name="overlay_shops">"Geschäfte"</string>
 </resources>

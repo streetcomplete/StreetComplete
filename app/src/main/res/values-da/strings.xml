@@ -280,12 +280,12 @@ Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, ud
     <string name="quest_source_dialog_note">"Kun information som blev fundet ved en undersøgelse, bør indberettes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse ser urealistisk ud."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en fartgrænse?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne hastighedsgrænse ser urealistisk ud."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en hastighedsgrænse?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tjekkede du for enden af vejen?
 Hvis der ikke er skilte langs vejen som gælder for den fremhævede strækning, gælder standard hastighedsbegrænsninger."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, ingen skilte"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har en lavere standardfartgrænse end landeveje."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har som standard en lavere hastighedsgrænse end landeveje."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Byområde"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Landområde"</string>
 
@@ -671,8 +671,12 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"en lineær række af ens enfamiliehuse"</string>
     <string name="quest_buildingType_hotel">"Hotelbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Kollegium"</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -691,7 +695,11 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_industrial_description">"f.eks. en fabrik, værksted, …"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butik(ker)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lagerbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -699,10 +707,18 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Religiøs bygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kirke"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapel"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moske"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempel"</string>
 
     <!-- Fuzzy -->
@@ -761,6 +777,8 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Der er intet husnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen var markeret som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helligdom"</string>
 
     <!-- Fuzzy -->
@@ -768,7 +786,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_maxspeed_answer_sign">"Et skilt"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav fart) zone"</string>
+    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav hastighed) zone"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Intet skilt, standardgrænser gælder"</string>
@@ -1254,7 +1272,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe til kørestol"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne hæveautomat?"</string>
+    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne pengeautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
     <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation?"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
@@ -1889,5 +1907,27 @@ sorted alphabetically by title -->
     <string name="overlay_street_parking">"Gadeparkering"</string>
     <string name="link_ohsomehex_description">"Udforsk OSM-data på tværs af skalaer fra det store billede til individuelle objekter over rum og tid"</string>
     <string name="link_opencampingmap_description">"Et kort over campingpladser"</string>
-    <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne hæveautomat?"</string>
+    <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne pengeautomat?"</string>
+    <string name="create_node_action_description">"Du oprettede et punkt med …"</string>
+    <string name="quest_accessPointRef_title">"Hvilket identifikationsnummer er der her?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Det er et samlingssted"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Et samlingssted er et sted, hvor folk samles i tilfælde af en nødsituation. Det ligner normalt dette:"</string>
+    <string name="quest_address_answer_house_name2">"Det har et husnavn …"</string>
+    <string name="quest_address_street_street_name_label">"Gadenavn:"</string>
+    <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
+    <string name="quest_bicycle_incline_title">"Hvilken retning fører opad her?"</string>
+    <string name="quest_drinking_water_type_title">"Hvordan leveres drikkevand her?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Anden vandfontæne"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vandfontæne, der udsender en lille vandstråle"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun genopfyldning af flasker"</string>
+    <string name="quest_drinking_water_type_tap">"Vandhane"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Håndpumpe"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Brønd uden pumpe"</string>
+    <string name="quest_drinking_water_type_spring">"Kilde"</string>
+    <string name="quest_drinking_water_type_disused">"Nedlagt drikkevandsobjekt"</string>
+    <string name="overlay_addresses">"Adresser"</string>
+    <string name="overlay_shops">"Butikker"</string>
+    <string name="name_label">"Navn:"</string>
+    <string name="vacant_shop_title">"Tom butik"</string>
+    <string name="unknown_shop_title">"Ukendt type sted"</string>
 </resources>

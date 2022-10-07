@@ -27,7 +27,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of styled map data in the map view:
- *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the map
+ *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
  *  data for the bbox surrounding the area from database and holds it in memory. */
 class StyleableOverlayManager(
     private val ctrl: KtMapController,

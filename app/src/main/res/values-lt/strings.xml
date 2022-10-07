@@ -1157,6 +1157,8 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Namas ant vandens"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Vasarnamis"</string>
 
     <!-- Fuzzy -->
@@ -1182,6 +1184,8 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Sandėlys"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kioskas"</string>
 
     <!-- Fuzzy -->

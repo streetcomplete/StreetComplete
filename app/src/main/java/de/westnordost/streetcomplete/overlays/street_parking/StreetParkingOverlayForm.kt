@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.osm.street_parking.applyTo
 import de.westnordost.streetcomplete.osm.street_parking.asItem
 import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
 import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.IMPLICIT
@@ -65,8 +66,8 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     private val isLeftSideUpsideDown get() =
         !isReversedOneway && (isForwardOneway || isLeftHandTraffic)
 
-    private val isForwardOneway get() = isForwardOneway(element.tags)
-    private val isReversedOneway get() = isReversedOneway(element.tags)
+    private val isForwardOneway get() = isForwardOneway(element!!.tags)
+    private val isReversedOneway get() = isReversedOneway(element!!.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
@@ -77,7 +78,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         streetSideSelect.defaultPuzzleImageLeft = ResImage(if (isLeftSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
         streetSideSelect.defaultPuzzleImageRight = ResImage(if (isRightSideUpsideDown) R.drawable.ic_street_side_unknown_l else R.drawable.ic_street_side_unknown)
 
-        val width = element.tags["width"]
+        val width = element!!.tags["width"]
         binding.hintTextView.text = if (width != null) {
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             getString(R.string.street_parking_street_width, widthFormatted)
@@ -89,10 +90,9 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun initStateFromTags() {
-        val parking = createStreetParkingSides(element.tags)
-        currentParking = parking
-        streetSideSelect.setPuzzleSide(parking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
-        streetSideSelect.setPuzzleSide(parking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
+        currentParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
+        streetSideSelect.setPuzzleSide(currentParking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
+        streetSideSelect.setPuzzleSide(currentParking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
     }
 
     override fun hasChanges(): Boolean =
@@ -171,10 +171,11 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        streetSideSelect.saveLastSelection()
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value).applyTo(it)
-        }.create()))
+        if (streetSideSelect.isComplete) streetSideSelect.saveLastSelection()
+        val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        parking.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 }
 

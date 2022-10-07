@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -40,8 +39,8 @@ class SidewalkOverlay : Overlay {
             ) and area != yes
         """).map { it to PolylineStyle(StrokeStyle(Color.SKY)) }
 
-    override fun createForm(element: Element): AbstractOverlayForm? =
-        if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
         else null
 }
 

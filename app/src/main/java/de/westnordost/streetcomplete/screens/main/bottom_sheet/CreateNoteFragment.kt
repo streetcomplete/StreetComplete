@@ -141,11 +141,9 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
            the position of the note he placed */
         if (contentBinding.noteInput.hideKeyboard() == true) return
 
-        val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
-        screenPos.offset(
-            binding.markerCreateLayout.createNoteMarker.width / 2,
-            binding.markerCreateLayout.createNoteMarker.height / 2
-        )
+        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val screenPos = createNoteMarker.getLocationInWindow()
+        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos) ?: return
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE

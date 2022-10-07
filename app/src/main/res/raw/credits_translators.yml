@@ -23,15 +23,15 @@ bg:
 bs: 
    OSMcontributorBH: 37891
 ca: 
-   Pau Nofuentes Sendra: 14163
-   jmaspons: 12754
+   Pau Nofuentes Sendra: 15113
+   jmaspons: 12875
    Joan Montané: 10186
    Josep: 1914
-   el_libre: 1409
+   el_libre: 1399
    JOAQUIN: 980
    Jose Luis Infante: 836
    pataquets: 718
-   Gabriel Fernández Fernández: 67
+   Gabriel Fernández Fernández: 53
 cs: 
    leschek: 28195
    Lukáš Jelínek: 5493
@@ -43,9 +43,9 @@ cs:
    MartinPulec: 150
    Vladankudlac: 19
 da: 
-   ERyPTION: 24679
+   ERyPTION: 25262
    Dennis Kjær Jensen: 6649
-   Soren: 3925
+   Soren: 3893
    Leonora: 2785
    Jens Hyllegaard: 916
    Jonas Storgaard: 746
@@ -56,7 +56,7 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 17003
+   Flo Edelmann: 17742
    legofahrrad: 1699
    Andre Thum: 1139
    papojari: 766
@@ -94,14 +94,14 @@ en-AU:
    Peter Newman: 53
 en-GB: 
    Oliver Hawes: 6996
-   10992: 5483
+   10992: 5453
    Peter Newman: 3030
    arrival-spring: 2995
    Jay Turner: 1093
    legofahrrad: 756
    Andrew: 488
    Ian Rutson: 285
-   Huyaqoob+toolforge: 251
+   عثمان: 251
    James. mcmahon: 168
    xing: 142
    Daniel: 133
@@ -176,7 +176,7 @@ fi:
    Vepa: 204
    Toni: 176
 fr: 
-   Florian Stosse: 5959
+   Florian Stosse: 6053
    David Chionne: 4571
    rouelibre: 2771
    Binnette: 1937
@@ -225,12 +225,12 @@ gl:
    ccpr1l: 14543
    Xose M.: 2189
 hr: 
-   Matija Nalis: 42981
+   Matija Nalis: 43147
    Mario: 9
 hu: 
    Zachár Benjámin: 18944
    Gábor Babos: 13245
-   Hungarian_user: 6057
+   Hungarian_user: 6413
    Meskó Balázs: 1636
    ursus: 680
    Máté: 380
@@ -247,7 +247,7 @@ id:
    Suryamudti0128: 17
 it: 
    Mannivu: 12133
-   Marco: 9099
+   Marco: 9369
    napo: 7391
    Valerio Bozzolan: 3131
    Mirco Zorzo: 2655
@@ -317,10 +317,10 @@ nb:
    Borge: 25
    Martin Moen: 13
 nl: 
-   Alert Bouterse: 11633
-   Peter: 10026
+   Alert Bouterse: 11511
+   Peter: 9895
+   Daniel: 4315
    Rhhsmits: 4238
-   Daniel: 3630
    Richard: 2303
    Pander: 1498
    Olivier: 1486
@@ -341,7 +341,7 @@ nn:
    Karl Ove Hufthammer: 32869
    10992: 12
 pl: 
-   Mateusz Konieczny: 16215
+   Mateusz Konieczny: 16380
    Tomasz Maciejewski: 4793
    Konrad W: 3069
    Marek-M: 2289
@@ -352,7 +352,7 @@ pl:
    Angielski: 1253
    Michał 'kwiateusz' Kwiatek: 1244
    Krzysztof Krasoń: 1206
-   Krystian Biesaga: 1039
+   Krystian Biesaga: 1019
    M1roN: 786
    Garbulix: 496
    Daniel Koć: 433
@@ -376,8 +376,8 @@ pt:
    Alexandre de Menezes: 54
    Pedro: 31
 pt-BR: 
+   Eduardo Addad de Oliviera: 11060
    Suburbanno: 10956
-   Eduardo Addad de Oliviera: 10222
    Alexandre de Menezes: 7666
    Patrick: 3326
    Rodrigo Tavares: 2752
@@ -413,12 +413,12 @@ ru:
    Astra: 342
    Андрей: 326
    Vano111ru: 325
+   Roman. deev06: 294
    XnL: 233
    Vlad: 226
    dbf: 205
    k03mad: 190
    Barsuk452: 174
-   Roman. deev06: 158
    Евгений: 154
    Dmitriy: 153
    Artem: 149
@@ -438,7 +438,7 @@ ru:
 sk: 
    Aiqo: 12665
    Martin: 12507
-   Vlado Jendrol: 9819
+   Vlado Jendrol: 9936
    segi: 3335
    Andrej Shadura: 218
    Zaijo: 198
@@ -449,7 +449,7 @@ sr-cyrl:
    Branko Kokanovic: 8794
    Nikola: 192
 sv: 
-   riiga: 21953
+   riiga: 22088
    Jonatan Nyberg: 8637
    rindlerblabla: 6207
    Erik: 1145

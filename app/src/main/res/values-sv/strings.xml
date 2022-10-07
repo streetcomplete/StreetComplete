@@ -511,8 +511,12 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_semi_detached">"Kedjehus"</string>
     <string name="quest_buildingType_terrace_description">"flera bredvid varandra liggande enfamiljshus"</string>
     <string name="quest_buildingType_hotel">"Hotellbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studenthem/internat"</string>
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Stående husvagn"</string>
     <string name="quest_buildingType_commercial">"Kommersiell byggnad"</string>
@@ -527,18 +531,32 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Affär(er)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lagerbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Fristående kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Lagringstank"</string>
     <string name="quest_buildingType_religious">"Religiös byggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kyrka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapell"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moské"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempelbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagod"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagoga"</string>
     <string name="quest_buildingType_civic">"Offentlig byggnad"</string>
 
@@ -577,6 +595,8 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Den har inget husnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Byggnaden är definierad som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helgedom"</string>
     <string name="quest_maxspeed_title_short2">"Vad har den här gatan för hastighetsbegränsning?"</string>
     <string name="quest_maxspeed_answer_sign">"En skylt"</string>
@@ -1625,4 +1645,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Endast PET"</string>
     <string name="street_parking_street_width">"Gatubredd: %s"</string>
     <string name="overlay_street_parking">"Gatuparkering"</string>
+    <string name="link_ohsomehex_description">"Utforska OSM-data från stort till smått och genom tid och rum"</string>
+    <string name="link_opencampingmap_description">"En karta som visar campingplatser"</string>
+    <string name="quest_atm_cashin_title">"Kan man sätta in pengar i denna bankomat?"</string>
 </resources>

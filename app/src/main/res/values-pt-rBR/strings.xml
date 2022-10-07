@@ -1135,6 +1135,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Casa-barco"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
 
     <!-- Fuzzy -->
@@ -1160,6 +1162,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depósito"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosque"</string>
 
     <!-- Fuzzy -->
@@ -2499,4 +2503,16 @@ Que tipo de memorial é esse?"</string>
     <string name="quest_entrance_reference_reference_label">"Etiqueta de entrada:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Gama de apartamentos:"</string>
     <string name="quest_entrance_reference_flat_range_to">"para"</string>
+    <string name="default_disabled_msg_overlay">"Este tipo de missão está desabilitado por padrão porque já existe uma sobreposição com a qual é mais eficaz e eficiente inserir e atualizar esses dados."</string>
+    <string name="quest_camp_drinking_water_title">"A água potável está disponível gratuitamente para os campistas aqui?"</string>
+    <string name="quest_camp_shower_title">"Há chuveiros aqui?"</string>
+    <string name="quest_camp_power_supply_title">"Existe alguma maneira de os clientes carregarem seus telefones, laptops etc. aqui?"</string>
+    <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
+    <string name="quest_camp_type_backcountry">"Camping no interior (sem instalações)"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não está de acordo com o que já está mapeado sobre esta estrada. Tem certeza de que está respondendo sobre a estrada correta? Você tem certeza de que pesquisou pessoalmente ao longo de todo o comprimento, como sempre necessário?"</string>
+    <string name="street_parking_street_width">"Largura da rua: %s"</string>
+    <string name="overlay_street_parking">"Estacionamento na rua"</string>
+    <string name="link_ohsomehex_description">"Explore os dados do OSM em escalas desde o panorama geral até objetos individuais no espaço e no tempo"</string>
+    <string name="link_opencampingmap_description">"Um mapa de acampamentos"</string>
+    <string name="quest_atm_cashin_title">"Você pode depositar dinheiro neste caixa eletrônico?"</string>
 </resources>

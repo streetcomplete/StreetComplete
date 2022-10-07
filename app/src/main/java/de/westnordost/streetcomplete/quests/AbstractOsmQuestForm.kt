@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -110,8 +110,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element))
-        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
+        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
+        setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
     }
 
     override fun onStart() {
@@ -212,7 +212,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
         val leaveNoteContext = "Unable to answer \"$questTitle\""
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
@@ -269,7 +269,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {

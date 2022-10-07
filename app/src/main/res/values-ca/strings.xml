@@ -513,8 +513,12 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_semi_detached">"Casa aparellada"</string>
     <string name="quest_buildingType_terrace_description">"una filera de cases unifamiliars similars"</string>
     <string name="quest_buildingType_hotel">"Edifici hoteler"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitori"</string>
     <string name="quest_buildingType_houseboat">"Casa flotant"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalou"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estàtica"</string>
     <string name="quest_buildingType_commercial">"Edifici comercial"</string>
@@ -529,18 +533,32 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Botigues"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Magatzem"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosc"</string>
     <string name="quest_buildingType_storage_tank">"Tanc d'emmagatzematge"</string>
     <string name="quest_buildingType_religious">"Edifici religiós"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Església"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capella"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Temple"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifici públic"</string>
     <string name="quest_buildingType_civic_description">"edifici públic que habitualment ofereix algun servei"</string>
@@ -577,6 +595,8 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"No té número de casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuari"</string>
 
     <!-- Fuzzy -->
@@ -1337,7 +1357,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_separate">"Estacionament mostrat separat al mapa"</string>
     <string name="street_parking_no">"No estacionar ací / No permès"</string>
     <string name="street_parking_prohibited">"Prohibit estacionar"</string>
-    <string name="street_stopping_prohibited">"Prohibit parar"</string>
+    <string name="street_stopping_prohibited">"Prohibit parar i estacionar"</string>
     <string name="street_standing_prohibited">"Sense detenció"</string>
     <string name="street_parking_conditional_restrictions">"Es pot estacionar / Sols es pot parar en certs casos"</string>
     <string name="street_parking_no_other_reasons">"Sense senyal que ho indiqui / no es pot estacionar"</string>
@@ -1601,6 +1621,7 @@ sorted alphabetically by title -->
     <string name="map_btn_stop_track">"Aturar l'enregistrament del recorregut"</string>
     <string name="quest_bicycle_rental_capacity_title">"Quants llocs per bicicletes de lloguer hi ha?"</string>
     <string name="quest_bicycle_rental_type_title">"Quin tipus de lloguer de bicicletes és?"</string>
+    <string name="quest_bicycle_rental_type_docking_station">"Estació d'acoblament que bloqueja les bicicletes"</string>
     <string name="quest_bicycle_rental_type_dropoff_point">"Lloc designat (bicicletes bloquejades individualment)"</string>
     <string name="quest_bicycle_rental_type_human">"Lloguer de bicicletes amb personal"</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">"Botiga de bicicletes que a més les lloga"</string>
@@ -1625,7 +1646,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_shop_title">"Hi ha una manxa d'inflar bicicletes pública aquí? (almenys quan és obert)"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Hi ha una manxa de bicicletes que funcioni aquí?"</string>
     <string name="action_overlays">"Superposicions"</string>
-    <string name="split_way">"Tallar via"</string>
+    <string name="split_way">"Divideix la via"</string>
     <string name="quest_memorialType_title">"Quin tipus de memorial és?"</string>
     <string name="quest_memorialType_statue">"Estàtua"</string>
     <string name="quest_memorialType_bust">"Bust"</string>
@@ -1633,6 +1654,8 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
     <string name="quest_memorialType_stone">"Pedra"</string>
     <string name="quest_memorialType_obelisk">"Obelisc"</string>
+    <string name="quest_memorialType_stele_wooden">"Estela de fusta (làpida commemorativa)"</string>
+    <string name="quest_memorialType_stele_stone">"Estela de pedra (làpida commemorativa)"</string>
     <string name="quest_memorialType_sculpture">"Altres escultures"</string>
 
     <!-- Overlays -->
@@ -1650,7 +1673,23 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_select_code_only">"Nom de l'entrada"</string>
     <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
     <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
+    <string name="default_disabled_msg_overlay">"Aquest tipus de missió està desactivada per defecte perquè ja hi ha una capa superposada amb la qual és més eficaç i eficient introduir i actualitzar aquestes dades."</string>
+    <string name="quest_camp_drinking_water_title">"Els campistes poden beure aigua debades?"</string>
     <string name="quest_camp_shower_title">"Hi ha dutxes aquí?"</string>
+    <string name="quest_camp_power_supply_title">"Els clients poden carregar ací el seu mòbil, portàtil, etc.?"</string>
     <string name="quest_camp_type_title">"Qui hi pot acampar aquí?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Tant tendes com autocaravanes, caravanes, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Només autocaravanes, caravanes, ..."</string>
+    <string name="quest_camp_type_tents_only">"Només tendes"</string>
+    <string name="quest_camp_type_backcountry">"Zona d'acampada lliure (sense instal·lacions)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Aquesta resposta no concorda amb el que ja està mapejat sobre aquesta carretera. Està segur que està responent sobre la via correcta? Estàs segur que has recorregut tota la via, com sempre cal?"</string>
     <string name="quest_recycling_type_pet">"Només PET"</string>
+    <string name="street_parking_street_width">"Amplada del carrer: %s"</string>
+    <string name="overlay_street_parking">"Aparcament al carrer
+"</string>
+    <string name="link_ohsomehex_description">"Explora les dades d'OSM a través de les escales des de la imatge gran fins als objectes individuals sobre l'espai i el temps
+"</string>
+    <string name="link_opencampingmap_description">"Un mapa de llocs d'acampada"</string>
+    <string name="quest_atm_cashin_title">"Pots dipositar diners en aquest caixer?"</string>
 </resources>

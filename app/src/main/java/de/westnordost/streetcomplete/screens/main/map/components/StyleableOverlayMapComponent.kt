@@ -5,6 +5,7 @@ import android.graphics.Color
 import com.mapzen.tangram.MapData
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -15,6 +16,7 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
+import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 import kotlin.math.absoluteValue
@@ -25,6 +27,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 
     private val darkenedColors = HashMap<String, String>()
+    private val transparentColors = HashMap<String, String>()
 
     /** Shows/hides the map data */
     var isVisible: Boolean
@@ -42,9 +45,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             when (style) {
                 is PolygonStyle -> {
                     getHeight(element.tags)?.let { props["height"] = it.toString() }
-                    props["color"] = style.color
-                    props["strokeColor"] = getDarkenedColor(style.color)
-                    style.label?.let { props["text"] = it }
+                    props["color"] = getColorWithSomeTransparency(style.color)
+                    props["strokeColor"] = getColorWithSomeTransparency(getDarkenedColor(style.color))
                 }
                 is PolylineStyle -> {
                     val width = getLineWidth(element.tags)
@@ -78,10 +80,23 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
             }
 
             geometry.toTangramGeometry(props)
-        })
+        } + // workaround for https://github.com/tangrams/tangram-es/issues/2332 and an unreported
+            // issue that icons for polygons are shown on every single vertex
+            features
+            .filter { it.style is PolygonStyle && (it.style.icon != null || it.style.label != null) }
+            .flatMap { (element, geometry, style) ->
+                val props = HashMap<String, String>(4)
+                val polygonStyle = style as PolygonStyle
+                props[ELEMENT_ID] = element.id.toString()
+                props[ELEMENT_TYPE] = element.type.name
+                polygonStyle.icon?.let { props["icon"] = it }
+                polygonStyle.label?.let { props["text"] = it }
+                ElementPointGeometry(geometry.center).toTangramGeometry(props)
+            }
+        )
     }
 
-    /** mimics width of line as seen in Streetomplete map style (or otherwise 3m) */
+    /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
         "motorway", "trunk" -> if (!isOneway(tags)) 20f else 10f
         "motorway_link", "trunk_link" -> 6f
@@ -105,6 +120,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
         darkenedColors.getOrPut(color) { toARGBString(darken(Color.parseColor(color), 0.67f)) }
+
+    private fun getColorWithSomeTransparency(color: String): String =
+        // alpha is actually double of what is specified https://github.com/tangrams/tangram-es/issues/2333
+        transparentColors.getOrPut(color) { toARGBString(addTransparency(Color.parseColor(color), 0.6f)) }
 
     /** Clear map data */
     fun clear() {

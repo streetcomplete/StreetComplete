@@ -71,6 +71,9 @@ app icon/
     ic_launcher.png             https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
     ic_launcher_round.png       https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free (GPL 2.0) with trivial changes by Mateusz Konieczny (recolour)
 
+assembly_point/
+    assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
+
 bridge structure/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0
@@ -103,6 +106,7 @@ building/
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
     greenhouse.svg
+    guardhouse.svg
     hangar.svg
     historic.svg
     hospital.svg
@@ -253,6 +257,7 @@ italian police type/
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
+    access_point.svg
     apple.svg
     baby.svg                         modified from Twemoji: U+1F6BC
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
@@ -263,6 +268,7 @@ quest/
     bench_poi.svg
     bench_public_transport.svg
     bicycle.svg
+    bicycle_incline.svg              Tobias Zwick (CC-BY-SA 4.0) for used graphic elements, minor rearranging by Mateusz Konieczny
     bicycle_parking.svg
     bicycle_parking_access.svg       Flo Edelmann merged bicycle_parking.svg by Tobias Zwick (CC-BY-SA 4.0) with parking_access.svg made by Tobias Zwick with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     bicycle_parking_capacity.svg
@@ -317,6 +323,7 @@ quest/
     fire_hydrant.svg
     fire_hydrant_diameter.svg
     fire_hydrant_grass.svg
+    fire_hydrant_ref.svg             modified from fire_hydrant.svg, label.svg and mail_ref.svg by mcliquid
     footway_surface.svg
     footway_surface_detail.svg
     fuel.svg
@@ -386,6 +393,7 @@ quest/
     seating.svg
     shower.svg
     sidewalk.svg
+    sidewalk_surface.svg             @krisdoodle45 (based on way_surface.svg)
     smoking.svg
     snow_poi.svg                     Scott de Jonge from https://commons.wikimedia.org/wiki/File:Map_icons_by_Scott_de_Jonge_-_snow.svg (License: CC-BY-3.0)
     sport.svg                        modified from EmojiOne 2: U+26BD
@@ -516,6 +524,7 @@ roof shape/
     skillion_west.svg
 
 royal cypher/
+    CIIIR.svg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_King_Charles_III.svg (adapted)
     EIIR.svg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Royal_Cypher_of_Queen_Elizabeth_II.svg (adapted)
     EVIIIR.svg            Public Domain     https://commons.wikimedia.org/wiki/File:EVIIIR.PNG (adapted)
     EVIIR.svg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Royal_Monogram_of_King_Edward_VII_of_Great_Britain_goldenrod.svg (adapted)

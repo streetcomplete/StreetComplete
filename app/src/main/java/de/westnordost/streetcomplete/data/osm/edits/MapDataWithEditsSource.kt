@@ -374,7 +374,7 @@ class MapDataWithEditsSource internal constructor(
 
     private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
         val idProvider = elementEditsController.getIdProvider(edit.id)
-        val editElement = get(edit.elementType, edit.elementId) ?: return null
+        val editElement = get(edit.elementType, edit.elementId)
 
         val mapDataChanges: MapDataChanges
         try {

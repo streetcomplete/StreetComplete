@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
+import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
@@ -64,16 +65,20 @@ import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
+import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
+import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.handrail.AddHandrail
+import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
+import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
@@ -129,7 +134,6 @@ import de.westnordost.streetcomplete.quests.smoothness.AddRoadSmoothness
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.step_count.AddStepCount
 import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
-import de.westnordost.streetcomplete.quests.steps_incline.AddStepsIncline
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.summit.AddSummitCross
 import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
@@ -254,6 +258,8 @@ fun questTypeRegistry(
     AddStepsRamp(),
     AddStepsIncline(), // can be gathered while walking perpendicular to the way e.g. the other side of the road or when running/cycling past, confuses some people, so not as high as it theoretically should be
 
+    AddBicycleIncline(),
+
     AddMemorialType(), // sometimes a bit hard to decide between the different types (something something sculpture)
 
     AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
@@ -322,12 +328,14 @@ fun questTypeRegistry(
     AddGeneralFee(),
 
     AddDrinkingWater(), // used by AnyFinder
+    AddDrinkingWaterType(),
 
     AddCameraType(),
 
     AddFireHydrantType(),
     AddFireHydrantPosition(),
     AddFireHydrantDiameter(),
+    AddFireHydrantRef(),
 
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
@@ -364,6 +372,8 @@ fun questTypeRegistry(
     // postboxes (collection times are further up, see comment)
     AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
     AddPostboxRef(), // requires text input and to be very close to the collection plate
+
+    AddAccessPointRef(), // requires text input and to be very close to the collection plate
 
     AddWheelchairAccessOutside(),
 

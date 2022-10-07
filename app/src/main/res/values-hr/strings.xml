@@ -536,6 +536,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentski dom"</string>
     <string name="quest_buildingType_houseboat">"Kuća na splavu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilna kućica"</string>
     <string name="quest_buildingType_commercial">"Komercijalna zgrada"</string>
@@ -550,18 +552,32 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Trgovina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Skladište"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Spremnik"</string>
     <string name="quest_buildingType_religious">"Vjerska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Crkva"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrala"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Džamija"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Hram"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
 
     <!-- Fuzzy -->
@@ -602,6 +618,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nema kućnog broja…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Zgrada je označena kao:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svetište"</string>
     <string name="quest_maxspeed_title_short2">"Koje je ograničenje brzine za ovu ulicu?"</string>
     <string name="quest_maxspeed_answer_sign">"Prometnim znakom"</string>
@@ -1894,4 +1912,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Samo PET"</string>
     <string name="street_parking_street_width">"Širina ulice: %s"</string>
     <string name="overlay_street_parking">"Ulični parking"</string>
+    <string name="link_ohsomehex_description">"Istražite OSM podatke kroz prostor i vrijeme u različitim mjerilima, od velike slike do pojedinačnih objekata"</string>
+    <string name="link_opencampingmap_description">"Karta kampova"</string>
+    <string name="quest_atm_cashin_title">"Možete li položiti gotovinu u ovoj bankomat?"</string>
 </resources>

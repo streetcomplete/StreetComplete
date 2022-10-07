@@ -547,8 +547,12 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_semi_detached">"Maison jumelée"</string>
     <string name="quest_buildingType_terrace_description">"une ligne de maisons unifamiliales similaires"</string>
     <string name="quest_buildingType_hotel">"Hôtel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
@@ -563,16 +567,32 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Magasin(s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Entrepôt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
     <string name="quest_buildingType_religious">"Bâtiment religieux"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Église"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Chapelle"</string>
     <string name="quest_buildingType_cathedral">"Cathédrale"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mosquée"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Temple"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagode"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagogue"</string>
     <string name="quest_buildingType_civic">"Bâtiment public"</string>
     <string name="quest_buildingType_civic_description">"abrite d’ordinaire un service public"</string>
@@ -621,6 +641,8 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Pas de numéro…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Le bâtiment a été marqué comme :"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Sanctuaire"</string>
     <string name="quest_maxspeed_title_short2">"Quelle est la limite de vitesse pour ce tronçon ?"</string>
     <string name="quest_maxspeed_answer_sign">"Un panneau"</string>
@@ -1689,4 +1711,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Seulement PET"</string>
     <string name="street_parking_street_width">"Largeur de la rue : %s"</string>
     <string name="overlay_street_parking">"Parking dans la rue"</string>
+    <string name="link_ohsomehex_description">"Explorez les données d’OSM à différentes échelles, du plan large jusqu’aux objets individuels, à travers le temps et l’espace"</string>
+    <string name="link_opencampingmap_description">"Une carte des terrains de camping"</string>
+    <string name="quest_atm_cashin_title">"Est-il possible de déposer de l’argent dans ce distributeur ?"</string>
 </resources>

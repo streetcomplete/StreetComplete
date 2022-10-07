@@ -1151,6 +1151,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"ഹൗസ് ബോട്ട്"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"ബംഗ്ലാവ്"</string>
 
     <!-- Fuzzy -->
@@ -1176,6 +1178,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"പണ്ടകശാല"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"വഴിയോരകട"</string>
 
     <!-- Fuzzy -->

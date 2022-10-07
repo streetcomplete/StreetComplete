@@ -17,6 +17,7 @@ import org.koin.dsl.module
 
 val osmApiModule = module {
     factory { Cleaner(get(), get(), get()) }
+    factory { CacheTrimmer(get(), get()) }
     factory<MapDataApi> { MapDataApiImpl(get()) }
     factory<NotesApi> { NotesApiImpl(get()) }
     factory<TracksApi> { TracksApiImpl(get()) }

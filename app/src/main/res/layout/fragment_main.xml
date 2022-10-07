@@ -13,7 +13,21 @@
         tools:layout="@layout/fragment_map"
         />
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/crosshairView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/quest_form_topOffset"
+        android:paddingBottom="@dimen/quest_form_bottomOffset"
+        android:paddingLeft="@dimen/quest_form_leftOffset"
+        android:paddingRight="@dimen/quest_form_rightOffset"
+        android:layout_centerInParent="true"
+        android:src="@drawable/crosshair"
+        app:tint="@color/monochrome_icon"
+        android:alpha="0.6"
+        tools:ignore="RtlHardcoded" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mapControls"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +40,8 @@
             android:layout_height="48dp"
             app:iconSrc="@drawable/location_dot_small"
             android:elevation="4dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/answers_counter_fragment"
@@ -34,9 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_answers_counter"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/upload_button_fragment"
@@ -44,8 +58,8 @@
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_upload_button"
-            android:layout_toLeftOf="@id/main_menu_button_fragment"
-            />
+            app:layout_constraintRight_toLeftOf="@+id/main_menu_button_fragment"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_menu_button_fragment"
@@ -53,15 +67,17 @@
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_main_menu_button"
-            android:layout_alignParentRight="true" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/messages_button_fragment"
             android:name="de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            android:layout_toLeftOf="@id/upload_button_fragment"
-            tools:layout="@layout/fragment_messages_button" />
+            tools:layout="@layout/fragment_messages_button"
+            app:layout_constraintRight_toLeftOf="@+id/upload_button_fragment"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- note the other compass in quest_street_side_puzzle -->
         <ImageView
@@ -69,22 +85,23 @@
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             android:background="@drawable/round_white_button"
-            android:layout_below="@id/main_menu_button_fragment"
-            android:layout_alignParentRight="true"
             android:elevation="2dp"
             android:padding="14dp"
-            android:src="@drawable/ic_compass_needle_48dp"/>
+            android:src="@drawable/ic_compass_needle_48dp"
+            app:layout_constraintTop_toBottomOf="@+id/messages_button_fragment"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <LinearLayout
             android:id="@+id/rightSideContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="22dp"
             android:orientation="vertical"
             android:clipToPadding="false"
-            tools:ignore="RtlHardcoded,RtlSymmetry">
+
+            android:layout_marginBottom="22dp"
+            tools:ignore="RtlHardcoded,RtlSymmetry"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageButton
                 android:id="@+id/stop_tracks_button"
@@ -95,7 +112,7 @@
                 android:scaleType="center"
                 android:src="@drawable/ic_stop_recording_24dp"
                 android:visibility="gone"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ImageButton
                 android:id="@+id/zoomInButton"
@@ -104,7 +121,7 @@
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_add_24dp"
-                android:contentDescription="@string/map_btn_zoom_in"/>
+                android:contentDescription="@string/map_btn_zoom_in" />
 
             <ImageButton
                 android:id="@+id/zoomOutButton"
@@ -113,7 +130,7 @@
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_subtract_24dp"
-                android:contentDescription="@string/map_btn_zoom_out"/>
+                android:contentDescription="@string/map_btn_zoom_out" />
 
             <de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
                 android:id="@+id/gpsTrackingButton"
@@ -123,7 +140,7 @@
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_location_state_24dp"
                 app:tint="@color/activated_tint"
-                android:contentDescription="@string/map_btn_gps_tracking"/>
+                android:contentDescription="@string/map_btn_gps_tracking" />
 
         </LinearLayout>
 
@@ -131,40 +148,53 @@
             android:id="@+id/leftSideContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:orientation="vertical"
-            android:layout_marginBottom="22dp"
             android:clipToPadding="false"
-            tools:ignore="RtlHardcoded,RtlSymmetry">
+            tools:ignore="RtlHardcoded,RtlSymmetry"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/undo_button_fragment"
                 android:name="de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"
-                tools:layout="@layout/fragment_undo_button"
-                />
+                tools:layout="@layout/fragment_undo_button" />
 
         </LinearLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/quest_download_progress_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.DownloadProgressFragment"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            tools:layout="@layout/fragment_download_progress"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
-            />
+        <ImageButton
+            android:id="@+id/createButton"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_add_48dp"
+            android:padding="20dp"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <View
             android:id="@+id/contextMenuView"
             android:layout_width="0dp"
-            android:layout_height="0dp"/>
+            android:layout_height="0dp"
+            tools:ignore="MissingConstraints" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/edit_history_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="1dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
     <RelativeLayout
@@ -176,10 +206,5 @@
     </RelativeLayout>
 
     <!-- it is relative layout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
-    <RelativeLayout
-        android:id="@+id/edit_history_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false"/>
 
 </RelativeLayout>

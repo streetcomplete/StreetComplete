@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 372817
-  linesOfInterfaceMarkupChanged: 134615
-  assetFilesChanged: 1719
+  linesOfCodeChanged: 380215
+  linesOfInterfaceMarkupChanged: 139695
+  assetFilesChanged: 1728
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 16881
@@ -10,9 +10,14 @@
   assetFilesChanged: 151
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 14377
-  linesOfInterfaceMarkupChanged: 3591
-  assetFilesChanged: 551
+  linesOfCodeChanged: 15265
+  linesOfInterfaceMarkupChanged: 3639
+  assetFilesChanged: 584
+- name: "Helium"
+  githubUsername: "Helium314"
+  linesOfCodeChanged: 9355
+  linesOfInterfaceMarkupChanged: 532
+  assetFilesChanged: 69
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -21,11 +26,6 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
-- name: "Helium"
-  githubUsername: "Helium314"
-  linesOfCodeChanged: 3757
-  linesOfInterfaceMarkupChanged: 532
-  assetFilesChanged: 69
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 2627
@@ -103,6 +103,11 @@
   linesOfCodeChanged: 200
   linesOfInterfaceMarkupChanged: 203
   assetFilesChanged: 44
+- name: "mcliquid"
+  githubUsername: "mcliquid"
+  linesOfCodeChanged: 185
+  linesOfInterfaceMarkupChanged: 164
+  assetFilesChanged: 4
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -149,9 +154,6 @@
 - name: "xuiqzy"
   githubUsername: "xuiqzy"
   linesOfCodeChanged: 48
-- name: "Hsieh Chin Fan"
-  githubUsername: "typebrook"
-  linesOfCodeChanged: 43
 - name: "Muhammad Usama"
   githubUsername: "SMUsamaShah"
   linesOfCodeChanged: 39
@@ -159,6 +161,8 @@
 - name: "Sven Fischer"
   githubUsername: "Strubbl"
   linesOfCodeChanged: 28
+- name: "Hsieh Chin Fan"
+  linesOfCodeChanged: 27
 - name: "Jeffrey Yasskin"
   githubUsername: "jyasskin"
   linesOfCodeChanged: 24
@@ -171,6 +175,8 @@
 - name: "Jeroen Hoek"
   githubUsername: "jdhoek"
   linesOfCodeChanged: 17
+- name: "typebrook"
+  linesOfCodeChanged: 16
 - name: "Nils Rokita"
   githubUsername: "Akasch"
   linesOfCodeChanged: 16
@@ -196,6 +202,9 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "riQQ"
+  githubUsername: "riQQ"
+  linesOfCodeChanged: 4
 - name: "Brian Sperlongano"
   githubUsername: "ZeLonewolf"
   linesOfCodeChanged: 4
@@ -212,19 +221,13 @@
 - name: "Varun Talwar"
   githubUsername: "tallytalwar"
   linesOfCodeChanged: 4
+- name: "Holger Jeromin"
+  githubUsername: "HolgerJeromin"
+  linesOfCodeChanged: 3
+  assetFilesChanged: 4
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
-- name: "mcliquid"
-  githubUsername: "mcliquid"
-  linesOfCodeChanged: 2
-- name: "Holger Jeromin"
-  githubUsername: "HolgerJeromin"
-  linesOfCodeChanged: 2
-  assetFilesChanged: 4
-- name: "riQQ"
-  githubUsername: "riQQ"
-  linesOfCodeChanged: 2
 - name: "gileri"
   linesOfCodeChanged: 2
 - name: "Dmitry Gurovich"
@@ -242,6 +245,9 @@
 - name: "John Kastner"
   githubUsername: "john-h-kastner"
   linesOfCodeChanged: 1
+- name: "Wouter van der Wal"
+  githubUsername: "wjtje"
+  assetFilesChanged: 1
 - name: "Peter Storch"
   githubUsername: "pstorch"
   linesOfInterfaceMarkupChanged: 92

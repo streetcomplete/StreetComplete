@@ -727,10 +727,14 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Гостиница"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Общежитие"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Плавучий дом"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
 
     <!-- Fuzzy -->
@@ -750,17 +754,29 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Складское здание"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Киоск"</string>
     <string name="quest_buildingType_storage_tank">"Резервуар"</string>
     <string name="quest_buildingType_religious">"Религиозное здание"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Церковь"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Часовня"</string>
     <string name="quest_buildingType_cathedral">"Собор"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Мечеть"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Храм"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Пагода"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Синагога"</string>
     <string name="quest_buildingType_civic">"Общественное здание"</string>
 
@@ -827,6 +843,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Строению были добавлены теги:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Святыня"</string>
 
     <!-- Fuzzy -->
@@ -2053,4 +2071,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"только ПЭТ"</string>
     <string name="street_parking_street_width">"Ширина улицы: %s"</string>
     <string name="overlay_street_parking">"Уличная парковка"</string>
+    <string name="link_ohsomehex_description">"Изучайте данные OSM в масштабе всего мира или отдельных объектов в пространстве и времени."</string>
+    <string name="link_opencampingmap_description">"Карта кемпингов"</string>
+    <string name="quest_atm_cashin_title">"Принимает ли банкомат наличные?"</string>
 </resources>

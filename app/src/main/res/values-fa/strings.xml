@@ -1103,6 +1103,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"خانه قایقی"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"بنگالو/کلبه"</string>
 
     <!-- Fuzzy -->
@@ -1128,6 +1130,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"انبار"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"دکه، کیوسک"</string>
 
     <!-- Fuzzy -->

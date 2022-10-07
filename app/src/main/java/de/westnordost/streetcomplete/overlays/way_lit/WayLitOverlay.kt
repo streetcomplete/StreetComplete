@@ -32,7 +32,7 @@ class WayLitOverlay : Overlay {
             .filter("ways, relations with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
             .map { it to getStyle(it) }
 
-    override fun createForm(element: Element) = WayLitOverlayForm()
+    override fun createForm(element: Element?) = WayLitOverlayForm()
 }
 
 private fun getStyle(element: Element): Style {

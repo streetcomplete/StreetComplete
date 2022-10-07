@@ -24,8 +24,9 @@ global:
     forest_color: '#403962'
     town_color: '#3d364e'
 
-    building_color: [0.16, 0.36, 0.36, 0.75]
-    building_outline_color: [0.12, 0.32, 0.32, 0.75]
+    # alpha is shown as double of what is specified https://github.com/tangrams/tangram-es/issues/2333
+    building_color: [0.16, 0.36, 0.36, 0.4]
+    building_outline_color: [0.12, 0.32, 0.32, 0.4]
 
     boundary_color: '#e72'
 

@@ -1,19 +1,16 @@
 package de.westnordost.streetcomplete.quests.building_entrance_reference
 
 import android.os.Bundle
-import android.text.InputType
-import android.text.method.DigitsKeyListener
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.view.isInvisible
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.showKeyboard
+import de.westnordost.streetcomplete.view.controller.SwitchKeyboardButtonViewController
 
 class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
 
@@ -28,7 +25,8 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
     private var selectFlatRange: Button? = null
     private var selectCode: Button? = null
     private var selectNothingSigned: Button? = null
-    private var toggleKeyboardButton: Button? = null
+
+    private var switchKeyboardButtonViewController: SwitchKeyboardButtonViewController? = null
 
     enum class InterfaceMode {
         FLAT_RANGE, ENTRANCE_REFERENCE, FLAT_RANGE_AND_ENTRANCE_REFERENCE, SELECTING
@@ -55,7 +53,7 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
     }
 
     private fun onContentViewCreated(view: View) {
-        toggleKeyboardButton = view.findViewById(R.id.toggleKeyboardButton)
+        val toggleKeyboardButton: Button? = view.findViewById(R.id.toggleKeyboardButton)
         referenceCodeInput = view.findViewById(R.id.referenceCodeInput)
         flatRangeStartInput = view.findViewById(R.id.flatRangeStartInput)
         flatRangeEndInput = view.findViewById(R.id.flatRangeEndInput)
@@ -68,7 +66,13 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
         selectNothingSigned = view.findViewById(R.id.nothing_signed)
         selectNothingSigned?.setOnClickListener { onNothingSigned() }
 
-        initKeyboardButton()
+        switchKeyboardButtonViewController = if (toggleKeyboardButton != null) {
+            SwitchKeyboardButtonViewController(
+                requireActivity(),
+                toggleKeyboardButton,
+                setOfNotNull(referenceCodeInput, flatRangeStartInput, flatRangeEndInput)
+            )
+        } else null
 
         if (flatRangeStartInput != null) {
             referenceCodeInput?.imeOptions = EditorInfo.IME_ACTION_NEXT
@@ -85,47 +89,6 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceAnswer>() {
 
     private fun onNothingSigned() {
         applyAnswer(Unsigned)
-    }
-
-    /* ------------------------------------- Change mode ---------------------------------------- */
-
-    private fun initKeyboardButton() {
-        toggleKeyboardButton?.text = "abc"
-        toggleKeyboardButton?.setOnClickListener {
-            val focus = requireActivity().currentFocus
-            if (focus != null && focus is EditText) {
-                val start = focus.selectionStart
-                val end = focus.selectionEnd
-                if (focus.inputType and InputType.TYPE_CLASS_NUMBER != 0) {
-                    focus.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
-                    toggleKeyboardButton?.text = "123"
-                } else {
-                    focus.inputType = InputType.TYPE_CLASS_NUMBER
-                    focus.keyListener = DigitsKeyListener.getInstance("0123456789.,- /")
-                    toggleKeyboardButton?.text = "abc"
-                }
-                // for some reason, the cursor position gets lost first time the input type is set (#1093)
-                focus.setSelection(start, end)
-                focus.showKeyboard()
-            }
-        }
-        updateKeyboardButtonVisibility()
-
-        val onFocusChange = View.OnFocusChangeListener { v, hasFocus ->
-            updateKeyboardButtonVisibility()
-            if (hasFocus) v.showKeyboard()
-        }
-        referenceCodeInput?.onFocusChangeListener = onFocusChange
-        flatRangeStartInput?.onFocusChangeListener = onFocusChange
-        flatRangeEndInput?.onFocusChangeListener = onFocusChange
-    }
-
-    private fun updateKeyboardButtonVisibility() {
-        toggleKeyboardButton?.isInvisible = !(
-            referenceCodeInput?.hasFocus() == true
-                || flatRangeStartInput?.hasFocus() == true
-                || flatRangeEndInput?.hasFocus() == true
-            )
     }
 
     /* ----------------------------------- Commit answer ---------------------------------------- */

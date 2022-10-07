@@ -628,8 +628,12 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_semi_detached">"Rumah semi terpisah"</string>
     <string name="quest_buildingType_terrace_description">"Barisan rumah yang mirip untuk rumah satu keluarga"</string>
     <string name="quest_buildingType_hotel">"Bangunan hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Asrama"</string>
     <string name="quest_buildingType_houseboat">"Rumah kapal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalo"</string>
     <string name="quest_buildingType_static_caravan">"Karavan Statik"</string>
     <string name="quest_buildingType_commercial">"Bangunan komersil"</string>
@@ -644,18 +648,32 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Toko"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Gudang"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kios/Warung"</string>
     <string name="quest_buildingType_storage_tank">"Tangki penyimpanan"</string>
     <string name="quest_buildingType_religious">"Bangunan religius"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Gereja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapel"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesjid"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Bangunan kuil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagog"</string>
     <string name="quest_buildingType_civic">"Bangunan negara"</string>
     <string name="quest_buildingType_civic_description">"Bangunan publik biasanya memiliki fasilitas"</string>
@@ -692,6 +710,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Tidak punya no. rumah…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bangunan ini ditandai sebagai:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Kuil"</string>
 
     <!-- Fuzzy -->

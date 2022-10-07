@@ -627,8 +627,12 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"forma parte de una fila o hilera de viviendas unifamiliares muy parecidas, sin espacio entre sí"</string>
     <string name="quest_buildingType_hotel">"Edificio de hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitorio o residencia"</string>
     <string name="quest_buildingType_houseboat">"Casa flotante"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
     <string name="quest_buildingType_static_caravan">"Caravana fija"</string>
     <string name="quest_buildingType_commercial">"Edificio comercial"</string>
@@ -650,21 +654,31 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Almacén"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosco"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Tanque de almacenamiento"</string>
     <string name="quest_buildingType_religious">"Edificio religioso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Iglesia"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capilla"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mezquita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
 
     <!-- Fuzzy -->
@@ -751,6 +765,8 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_buildingType_bunker">"Búnker"</string>
     <string name="quest_address_answer_no_housenumber">"No tiene número de puerta…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"El edificio fue etiquetado como:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
     <string name="quest_maxspeed_title_short2">"¿Cuál es el límite de velocidad de esta calle?"</string>
     <string name="quest_maxspeed_answer_sign">"Una señal"</string>

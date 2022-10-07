@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDate
 
@@ -158,6 +159,68 @@ class StreetParkingTest {
                 StringMapEntryDelete("parking:condition:right", "customers"),
             )
         )
+    }
+
+    @Test fun `tag only on one side`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(
+                null,
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:right", "diagonal"),
+                StringMapEntryAdd("parking:lane:right:diagonal", "on_street")
+            )
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                null
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street")
+            )
+        )
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying incomplete left throws exception`() {
+        LeftAndRightStreetParking(IncompleteStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying incomplete right throws exception`() {
+        LeftAndRightStreetParking(null, IncompleteStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying unknown left throws exception`() {
+        LeftAndRightStreetParking(UnknownStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying unknown right throws exception`() {
+        LeftAndRightStreetParking(null, UnknownStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test fun validOrNullValues() {
+        for (invalidParking in listOf(IncompleteStreetParking, UnknownStreetParking)) {
+            assertEquals(
+                LeftAndRightStreetParking(null, null),
+                LeftAndRightStreetParking(invalidParking, invalidParking).validOrNullValues()
+            )
+            assertEquals(
+                LeftAndRightStreetParking(StreetParkingProhibited, null),
+                LeftAndRightStreetParking(StreetParkingProhibited, invalidParking).validOrNullValues()
+            )
+            assertEquals(
+                LeftAndRightStreetParking(null, StreetParkingProhibited),
+                LeftAndRightStreetParking(invalidParking, StreetParkingProhibited).validOrNullValues()
+            )
+        }
     }
 }
 

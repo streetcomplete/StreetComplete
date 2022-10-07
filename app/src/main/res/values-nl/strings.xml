@@ -864,7 +864,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, vis, melkproducten, eieren, …)."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees, vis en gevogelte"</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees, vis en gevogelte."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Antwoord alleen \"ja\" als deze plek voldoende hoofdgerechten biedt voor dit dieet."</string>
@@ -916,7 +916,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heeft gewoon geen naam"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, …)"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, …)."</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
@@ -1137,6 +1137,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Woonboot"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -1162,6 +1164,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Opslagloods"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -1886,7 +1890,7 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
 
     <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Je hebt geholpen %d adressen te lokaliseren!
-Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem"</string>
+Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Hoogbouw"</string>
@@ -1937,7 +1941,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="privacy_html_statistics">"&lt;p&gt;De gegevens die in je profiel worden weergegeven, worden samengevoegd uit je publiek beschikbare bijdragegeschiedenis aan OpenStreetMap en vervolgens gehost op mijn server.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen"</string>
+    <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen."</string>
 
     <!-- Can i think with Art, contributors about those whom made the illustrations? -->
     <!-- Fuzzy -->
@@ -2280,7 +2284,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="action_manage_presets">"Voorinstellingen beheren"</string>
 
     <!-- Fuzzy -->
-    <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders mobieltje"</string>
+    <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders mobieltje."</string>
     <string name="team_mode_choose_color2">"Nu moet ieder persoon een verschillende kleur kiezen. Kies de jouwe:"</string>
     <string name="link_organic_maps_description">"Kaart-app voor reizigers, wandelaars en fietsers die off-line werkt"</string>
     <string name="quest_kerb_height_no">"Helemaal geen rand"</string>
@@ -2712,7 +2716,7 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_caravans_only">"Alleen caravans en campers."</string>
     <string name="quest_camp_type_tents_only">"Alleen tenten."</string>
     <string name="quest_camp_type_backcountry">"Kampeer gelegenheid zonder faciliteiten"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
     <string name="quest_recycling_type_pet">"Alleen plastic"</string>
     <string name="street_parking_street_width">"Straatbreedte: %s"</string>

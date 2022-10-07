@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -48,16 +49,17 @@ class StreetParkingOverlay : Overlay {
             and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking
-        mapData.filter(
-            "ways with amenity = parking"
-        ).map { it to parkingLotStyle } +
+        mapData.filter("""
+            nodes, ways, relations with
+            amenity = parking
+        """).map { it to if (it is Node) parkingLotPointStyle else parkingLotAreaStyle } +
         // chokers
         mapData.filter(
             "nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table"
         ).map { it to chokerStyle }
 
-    override fun createForm(element: Element) =
-        if (element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
         } else {
             null
@@ -74,9 +76,10 @@ private val streetParkingTaggingNotExpected by lazy { """
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
-private val parkingLotStyle = PolygonStyle(Color.BLUE)
+private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
+private val parkingLotPointStyle = PointStyle("ic_pin_parking_borderless")
 
-private val chokerStyle = PointStyle("ic_pin_choker")
+private val chokerStyle = PointStyle("ic_pin_choker_borderless")
 
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)

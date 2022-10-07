@@ -455,8 +455,11 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_hotel">"Hotel building"</string>
 
     <!-- In the UK, we call this "halls of residence" - often just halls for short -->
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Halls of residence"</string>
     <string name="quest_buildingType_houseboat">"Houseboat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Static caravan"</string>
     <string name="quest_buildingType_commercial">"Commercial building"</string>
@@ -465,16 +468,32 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_industrial_description">"e.g. a factory, workshop, car repair garage,…"</string>
     <string name="quest_buildingType_office">"Office building"</string>
     <string name="quest_buildingType_retail">"Retail building"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Warehouse"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Storage tank"</string>
     <string name="quest_buildingType_religious">"Religious building"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Church"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Chapel"</string>
     <string name="quest_buildingType_cathedral">"Cathedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mosque"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Temple"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagogue"</string>
     <string name="quest_buildingType_civic">"Civic building"</string>
     <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
@@ -511,6 +530,8 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"It has no house number…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"The building was tagged as:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Shrine"</string>
     <string name="quest_maxspeed_title_short2">"What’s the speed limit for this street?"</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
@@ -1090,7 +1111,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_diagonal">"Diagonal"</string>
     <string name="street_parking_perpendicular">"Perpendicular"</string>
     <string name="street_parking_on_street">"On the carriageway"</string>
-    <string name="street_parking_half_on_kerb">"Is this place air-conditioned?"</string>
+    <string name="street_parking_half_on_kerb">"Partially on carriageway"</string>
     <string name="street_parking_on_kerb">"Yes,…"</string>
 
     <!-- Not sure if we want commas… -->
@@ -1373,4 +1394,7 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"PET only"</string>
     <string name="street_parking_street_width">"Street width: %s"</string>
     <string name="overlay_street_parking">"Street parking"</string>
+    <string name="link_ohsomehex_description">"Explore OSM data across scales from the big picture up to individual objects over space and time"</string>
+    <string name="link_opencampingmap_description">"A map of campsites"</string>
+    <string name="quest_atm_cashin_title">"Can you deposit cash at this cash machine?"</string>
 </resources>

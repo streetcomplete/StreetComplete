@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
@@ -98,7 +99,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(edit.type, edit.originalElement, edit.originalGeometry, edit.source, action.createReverted())
+            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
         }
         // not uploaded yet
         else {
@@ -120,6 +121,15 @@ class ElementEditsController(
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
+            // set proper assigned id of the new element
+            val hasDummyElement = edit.elementId == 0L
+            if (hasDummyElement) {
+                if (edit.elementType != ElementType.NODE) {
+                    throw IllegalStateException("Element creation only supported for nodes")
+                }
+                val idProvider = elementIdProviderDB.get(id)
+                editsDB.updateElementId(id, idProvider.nextNodeId())
+            }
         }
         onAddedEdit(edit)
     }
@@ -129,7 +139,6 @@ class ElementEditsController(
         val ids: List<Long>
         synchronized(this) {
             edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
-            edits.add(edit)
 
             ids = edits.map { it.id }
 
@@ -147,12 +156,15 @@ class ElementEditsController(
         val result = mutableListOf<ElementEdit>()
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
-        val editsBasedOnThese = createdElementKeys.flatMap { editsDB.getByElement(it.type, it.id) }
+        val editsBasedOnThese = createdElementKeys
+            .flatMap { editsDB.getByElement(it.type, it.id) }
+            .filter { it.id != edit.id }
+
+        // deep first
         for (e in editsBasedOnThese) {
             result += getEditsBasedOnElementsCreatedByEdit(e)
         }
-        // deep first
-        result += editsBasedOnThese
+        result += edit
 
         return result
     }
