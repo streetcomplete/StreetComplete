@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -71,8 +70,8 @@ class MapDataWithEditsSource internal constructor(
                  *    rebuildLocalChanges, except for the timestamp (expected to have few ms
                  *    difference) and version (never updated locally).
                  */
-                val deletedUnchanged = deletedElements.containsAll(deleted)
-                val elementsThatMightHaveChanged = updated.mapNotNull { element ->
+                val deletedIsUnchanged = deletedElements.containsAll(deleted)
+                val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
                     val key = ElementKey(element.type, element.id)
                     if (element.isEqualExceptVersionAndTimestamp(updatedElements[key]))
                         null // we already have the updated version, so this element is unchanged
@@ -82,11 +81,11 @@ class MapDataWithEditsSource internal constructor(
 
                 rebuildLocalChanges()
 
-                val nothingChanged = deletedUnchanged && elementsThatMightHaveChanged.all {
-                        val updatedElement = get(it.first.type, it.first.id)
-                        // old and new elements are equal except version and timestamp, or both are null
-                        it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
-                    }
+                val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
+                    val updatedElement = get(it.first.type, it.first.id)
+                    // old and new elements are equal except version and timestamp, or both are null
+                    it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
+                }
                 if (nothingChanged)
                     return
 
@@ -466,4 +465,8 @@ class MapDataWithEditsSource internal constructor(
 }
 
 private fun Element.isEqualExceptVersionAndTimestamp(element: Element?): Boolean =
-    element?.copy(timestampEdited = timestampEdited, version = version) == this
+    id == element?.id && tags == element.tags && type == element.type && when (this) {
+        is Node -> position == (element as Node).position
+        is Way -> nodeIds == (element as Way).nodeIds
+        is Relation -> members == (element as Relation).members
+    }
