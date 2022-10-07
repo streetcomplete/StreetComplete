@@ -657,7 +657,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_installation_fixed">Fixed (not removable)</string>
     <string name="quest_barrier_bicycle_installation_openable">Openable (swing gate or hinged upwards)</string>
     <string name="quest_barrier_bicycle_installation_removable">Removable (with or without key)</string>
-    <string name="quest_barrier_bicycle_installation_foldable">Foldable (with or without key)</string>
 
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
 

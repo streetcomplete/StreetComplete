@@ -6,7 +6,6 @@ enum class BicycleBarrierInstallation(val osmValue: String) : BicycleBarrierInst
     FIXED("fixed"),
     OPENABLE("openable"),
     REMOVABLE("removable"),
-    FOLDABLE("foldable"),
 }
 
 object BarrierTypeIsNotBicycleBarrier : BicycleBarrierInstallationAnswer
