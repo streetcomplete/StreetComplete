@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.asItem
 import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -30,10 +31,9 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     private fun initStateFromTags() {
-        val sidewalk = createSidewalkSides(element!!.tags)
-        currentSidewalk = sidewalk
-        streetSideSelect.setPuzzleSide(sidewalk?.left?.asStreetSideItem(), false)
-        streetSideSelect.setPuzzleSide(sidewalk?.right?.asStreetSideItem(), true)
+        currentSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
+        streetSideSelect.setPuzzleSide(currentSidewalk?.left?.asStreetSideItem(), false)
+        streetSideSelect.setPuzzleSide(currentSidewalk?.right?.asStreetSideItem(), true)
     }
 
     override fun onClickSide(isRight: Boolean) {

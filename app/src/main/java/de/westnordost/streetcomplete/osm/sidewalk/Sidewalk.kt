@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.*
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 data class LeftAndRightSidewalk(val left: Sidewalk?, val right: Sidewalk?)
@@ -16,24 +14,9 @@ enum class Sidewalk {
     INVALID
 }
 
-/** Value for the sidewalk=* key. Returns null for combinations that can't be expressed with the
- *  sidewalk=* key. */
-private val LeftAndRightSidewalk.simpleOsmValue: String? get() = when {
-    left == YES && right == YES -> "both"
-    left == YES && right == NO ->  "left"
-    left == NO && right == YES ->  "right"
-    left == NO && right == NO ->   "no"
-    left == SEPARATE && right == SEPARATE -> "separate"
-    else -> null
-}
-
-private val Sidewalk.osmValue: String get() = when (this) {
-    YES -> "yes"
-    NO -> "no"
-    SEPARATE -> "separate"
-    else -> {
-        throw IllegalStateException("Attempting to tag invalid sidewalk")
-    }
+fun LeftAndRightSidewalk.validOrNullValues(): LeftAndRightSidewalk {
+    if (left != INVALID && right != INVALID) return this
+    return LeftAndRightSidewalk(left?.takeIf { it != INVALID }, right?.takeIf { it != INVALID })
 }
 
 fun LeftAndRightSidewalk.applyTo(tags: Tags) {
@@ -67,5 +50,25 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
 
     if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {
         tags.updateCheckDateForKey("sidewalk")
+    }
+}
+
+/** Value for the sidewalk=* key. Returns null for combinations that can't be expressed with the
+ *  sidewalk=* key. */
+private val LeftAndRightSidewalk.simpleOsmValue: String? get() = when {
+    left == YES && right == YES -> "both"
+    left == YES && right == NO ->  "left"
+    left == NO && right == YES ->  "right"
+    left == NO && right == NO ->   "no"
+    left == SEPARATE && right == SEPARATE -> "separate"
+    else -> null
+}
+
+private val Sidewalk.osmValue: String get() = when (this) {
+    YES -> "yes"
+    NO -> "no"
+    SEPARATE -> "separate"
+    else -> {
+        throw IllegalArgumentException("Attempting to tag invalid sidewalk")
     }
 }

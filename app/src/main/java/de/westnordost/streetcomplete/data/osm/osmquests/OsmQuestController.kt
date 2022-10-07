@@ -161,25 +161,32 @@ class OsmQuestController internal constructor(
         val time = currentTimeMillis()
 
         val countryBoundaries = countryBoundariesFuture.get()
-        val mapDataWithTags = MutableMapDataWithGeometry().apply {
+
+        // Remove elements without tags, to be used for quests that are never applicable without
+        // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
+        // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
+        // This shortcut reduces time for creating quests by ~15-30%.
+        val onlyMapDataWithTags = MutableMapDataWithGeometry().apply {
             mapDataWithGeometry.forEach { if (it.tags.isNotEmpty()) put(it, mapDataWithGeometry.getGeometry(it.type, it.id)) }
             boundingBox = mapDataWithGeometry.boundingBox
         }
-        val waysWithTags = MutableMapDataWithGeometry(mapDataWithTags.filter { it.type == ElementType.WAY }, emptyList())
+        val onlyWaysWithTags = MutableMapDataWithGeometry(onlyMapDataWithTags.filter { it.type == ElementType.WAY }, emptyList())
 
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType.name
-                val mapDataToUse = if (questType.name in wayOnlyFilterQuestTypes) waysWithTags
-                    else if (questType.name in questsRequiringElementsWithoutTags) mapDataWithGeometry
-                    else mapDataWithTags
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
+                    val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags) {
+                        if (questType.name in wayOnlyFilterQuestTypes) onlyWaysWithTags
+                        else onlyMapDataWithTags
+                    } else if (questType.name in questsRequiringElementsWithoutTags) mapDataWithGeometry
+                    else onlyMapDataWithTags
                     for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
