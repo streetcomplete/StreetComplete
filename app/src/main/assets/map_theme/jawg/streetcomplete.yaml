@@ -276,7 +276,7 @@ layers:
         data: { source: streetcomplete_map_data }
         # if the icons do not collide, it will get too busy
         point-collide:
-            filter: { icon: true, $zoom: { min: 18, max: 19.999 } }
+            filter: { icon: true, $zoom: { min: 16, max: 18.999 } }
             draw:
                 map_data-icons:
                     interactive: true
@@ -296,7 +296,7 @@ layers:
                             stroke: { color: global.text_stroke_color, width: 4px }
         # same as above but with collide=false, at ~max zoom
         point-no-collide:
-            filter: { icon: true, $zoom: { min: 20 } }
+            filter: { icon: true, $zoom: { min: 19 } }
             draw:
                 map_data-icons:
                     interactive: true
