@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoMoreInteractions
 
 internal class MapDataCacheTest {
 
@@ -750,7 +751,7 @@ internal class MapDataCacheTest {
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
         val elementsInsideBBox = listOf(node1, node2, node3, way1, way2, way3, rel1, rel2)
         val elementDB: ElementDao = mock()
-        on(elementDB.getAll(nodesRect.asBoundingBox(16))).thenReturn(elementsInsideBBox).thenThrow(IllegalStateException())
+        on(elementDB.getAll(nodesRect.asBoundingBox(16))).thenReturn(elementsInsideBBox)
         val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
 
         val expectedMapData = MutableMapDataWithGeometry().apply {
@@ -762,6 +763,7 @@ internal class MapDataCacheTest {
         verify(elementDB).getAll(nodesRect.asBoundingBox(16))
         // second time it's cached
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getMapDataWithGeometry fetches only part if something is already cached`() {
@@ -779,7 +781,7 @@ internal class MapDataCacheTest {
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
         val elementDB: ElementDao = mock()
-        on(elementDB.getAll(node1rect.asBoundingBox(16))).thenReturn(listOf(node1, node3, way2, way3, rel1)).thenThrow(IllegalStateException())
+        on(elementDB.getAll(node1rect.asBoundingBox(16))).thenReturn(listOf(node1, node3, way2, way3, rel1))
         val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
 
         cache.update(updatedElements = listOf(node2, way1, rel2), bbox = node2rect.asBoundingBox(16))
@@ -793,6 +795,7 @@ internal class MapDataCacheTest {
         verify(elementDB).getAll(node1rect.asBoundingBox(16))
         // second time it's cached
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getMapDataWithGeometry fetches nothing if all is cached`() {
