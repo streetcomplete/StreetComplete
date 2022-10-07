@@ -17,7 +17,7 @@ import java.util.concurrent.FutureTask
 
 class OtherSourceQuestController(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    questTypeRegistry: QuestTypeRegistry,
+    private val questTypeRegistry: QuestTypeRegistry,
     private val otherSourceDao: OtherSourceDao,
     elementEditsController: ElementEditsController,
 ) : ElementEditsSource.Listener {
@@ -36,7 +36,8 @@ class OtherSourceQuestController(
         questListeners.remove(questListener)
     }
 
-    private val questTypes = questTypeRegistry.filterIsInstance<OtherSourceQuestType>().associateBy { it.source }
+    private val questTypeNamesBySource = questTypeRegistry.filterIsInstance<OtherSourceQuestType>().associate { it.source to it.name }
+    private val questTypes get() = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
     init {
         if (questTypes.size != questTypeRegistry.filterIsInstance<OtherSourceQuestType>().size)
             throw IllegalStateException("source values must be unique")
@@ -44,13 +45,12 @@ class OtherSourceQuestController(
     }
 
     fun delete(key: OtherSourceQuestKey) {
-        val type = questTypes[key.source] ?: return
-        if (type.deleteQuest(key.id))
+        if (getQuestType(key)?.deleteQuest(key.id) == true)
             questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
     fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null): List<OtherSourceQuest> {
-        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes.values).flatMap {
+        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes).flatMap {
             it.getQuests(bbox)
         }
         return quests.filterNot { it.key in hiddenCache }
@@ -58,8 +58,7 @@ class OtherSourceQuestController(
 
     fun get(key: OtherSourceQuestKey): OtherSourceQuest? {
         if (key in hiddenCache) return null
-        val type = questTypes[key.source] ?: return null
-        return type.get(key.id)
+        return getQuestType(key)?.get(key.id)
     }
 
     /** calls [download] for each [OtherSourceQuestType] enabled in this country, thus may take long */
@@ -69,7 +68,7 @@ class OtherSourceQuestController(
             val obsoleteQuestKeys = mutableListOf<OtherSourceQuestKey>()
             val newQuests = mutableListOf<OtherSourceQuest>()
 
-            questTypes.values.forEach { type ->
+            questTypes.forEach { type ->
                 if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@forEach
                 val previousQuests = type.getQuests(bbox).map { it.key }
                 val quests = type.download(bbox)
@@ -82,7 +81,7 @@ class OtherSourceQuestController(
     }
 
     /** calls [upload] for each [OtherSourceQuestType], thus may take long */
-    fun upload() = questTypes.values.forEach { it.upload() }
+    fun upload() = questTypes.forEach { it.upload() }
 
     fun invalidate() = questListeners.forEach { it.onInvalidate() }
 
@@ -108,7 +107,7 @@ class OtherSourceQuestController(
     }
 
     fun hide(key: OtherSourceQuestKey) {
-        val type = questTypes[key.source] ?: return
+        val type = getQuestType(key) ?: return
         val quest = get(key) ?: return
         hiddenCache.add(key)
         val timestamp = otherSourceDao.hide(key)
@@ -138,7 +137,7 @@ class OtherSourceQuestController(
 
     fun getHidden(key: OtherSourceQuestKey, timestamp: Long? = null): OtherSourceQuestHidden? {
         val ts = timestamp ?: otherSourceDao.getHiddenTimestamp(key) ?: return null
-        val quest = questTypes[key.source]?.get(key.id) ?: return null
+        val quest = getQuestType(key)?.get(key.id) ?: return null
         return OtherSourceQuestHidden(quest.id, quest.type, quest.position, ts)
     }
 
@@ -154,7 +153,7 @@ class OtherSourceQuestController(
 
     override fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
         if (key is OtherSourceQuestKey) {
-            questTypes[key.source]?.onAddedEdit(edit, key.id)
+            getQuestType(key)?.onAddedEdit(edit, key.id)
             otherSourceDao.addElementEdit(key, edit.id)
         }
     }
@@ -178,5 +177,9 @@ class OtherSourceQuestController(
         }
         questListeners.forEach { it.onUpdated(addedQuests = restoredQuests) }
     }
-}
 
+    private fun getQuestType(key: OtherSourceQuestKey): OtherSourceQuestType? {
+        val questTypeName = questTypeNamesBySource[key.source] ?: return null
+        return questTypeRegistry.getByName(questTypeName) as? OtherSourceQuestType
+    }
+}

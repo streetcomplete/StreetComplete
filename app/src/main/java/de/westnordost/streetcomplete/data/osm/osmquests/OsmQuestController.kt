@@ -66,10 +66,13 @@ class OsmQuestController internal constructor(
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    private val allQuestTypes = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
+    private val allQuestTypes get() = questTypeRegistry.filterIsInstance<OsmElementQuestType<*>>()
         .sortedBy { it.chonkerIndex }
 
-    private val wayOnlyFilterQuests = allQuestTypes.filterIsInstance<OsmFilterQuestType<*>>().filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }.toSet()
+    private val wayOnlyFilterQuestTypes = questTypeRegistry.filterIsInstance<OsmFilterQuestType<*>>()
+        .filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }
+        .map { it.name }.toSet() // technically those could change if questTypeRegistry is reloaded, but that's unlikely enough to ignore it
+    // must be valid names!
     private val questsRequiringElementsWithoutTags = setOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance")
 
     private val hiddenCache = hiddenDB.getAllIds().toHashSet()
@@ -163,7 +166,7 @@ class OsmQuestController internal constructor(
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
                 val questTypeName = questType.name
-                val mapDataToUse = if (questType in wayOnlyFilterQuests) waysWithTags
+                val mapDataToUse = if (questType.name in wayOnlyFilterQuestTypes) waysWithTags
                     else if (questType.name in questsRequiringElementsWithoutTags) mapDataWithGeometry
                     else mapDataWithTags
                 if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {

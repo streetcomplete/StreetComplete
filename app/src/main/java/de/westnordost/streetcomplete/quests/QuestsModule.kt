@@ -221,7 +221,28 @@ fun questTypeRegistry(
     prefs: SharedPreferences,
     osmoseDao: OsmoseDao,
     externalList: ExternalList,
-) = QuestTypeRegistry(listOf(
+) = QuestTypeRegistry(
+    trafficFlowSegmentsApi,
+    trafficFlowDao,
+    featureDictionaryFuture,
+    countryInfos,
+    countryBoundariesFuture,
+    arSupportChecker,
+    prefs,
+    osmoseDao,
+    externalList,
+)
+fun getQuestTypeList(
+    trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
+    trafficFlowDao: WayTrafficFlowDao,
+    featureDictionaryFuture: FutureTask<FeatureDictionary>,
+    countryInfos: CountryInfos,
+    countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    arSupportChecker: ArSupportChecker,
+    prefs: SharedPreferences,
+    osmoseDao: OsmoseDao,
+    externalList: ExternalList,
+) = listOf(
 
     /* The quest types are primarily sorted by how easy they can be solved:
     1. quests that are solvable from a distance or while passing by (fast)
@@ -535,4 +556,4 @@ fun questTypeRegistry(
     ShowFixme(prefs),
     OsmoseQuest(osmoseDao, prefs),
     ExternalQuest(externalList),
-))
+)
