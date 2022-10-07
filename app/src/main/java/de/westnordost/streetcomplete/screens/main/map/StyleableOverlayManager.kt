@@ -22,9 +22,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of styled map data in the map view:
@@ -43,9 +45,10 @@ class StyleableOverlayManager(
     // map data in current view: key -> [pin, ...]
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var updateJob: Job? = null
+    private val m = Mutex()
 
     private var overlay: Overlay? = null
     set(value) {
@@ -125,12 +128,9 @@ class StyleableOverlayManager(
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
-            val mapData = withContext(Dispatchers.IO) {
-                synchronized(mapDataSource) {
-                    if (!coroutineContext.isActive) null
-                    else mapDataSource.getMapDataWithGeometry(bbox)
-                }
-            } ?: return@launch
+            while (m.isLocked) { delay(50) }
+            if (!coroutineContext.isActive) return@launch
+            val mapData = m.withLock { mapDataSource.getMapDataWithGeometry(bbox) }
             setStyledElements(mapData)
         }
     }

@@ -1225,14 +1225,13 @@ class MainFragment :
 
         val levels = element?.let { createLevelsOrNull(it.tags) }
 
-        viewLifecycleScope.launch {
-            val elements = withContext(Dispatchers.IO) {
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            val elements =
                 when (quest) {
                     is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
                     is OtherSourceQuest -> quest.type.getHighlightedElements(::getMapData)
                     else -> emptySequence()
                 }
-            }
             for (e in elements) {
                 // don't highlight "this" element
                 if (element == e) continue

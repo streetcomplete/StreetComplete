@@ -31,9 +31,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of quest pins in the map view:
@@ -58,9 +60,10 @@ class QuestPinsManager(
     var reversedOrder = false
         private set
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var updateJob: Job? = null
+    private val m = Mutex()
 
     /** Switch active-ness of quest pins layer */
     var isActive: Boolean = false
@@ -146,12 +149,9 @@ class QuestPinsManager(
         val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
-            val quests = withContext(Dispatchers.IO) {
-                synchronized(visibleQuestsSource) {
-                    if (!coroutineContext.isActive) null
-                    else visibleQuestsSource.getAllVisible(bbox)
-                }
-            } ?: return@launch
+            while (m.isLocked) { delay(50) }
+            if (!coroutineContext.isActive) return@launch
+            val quests = m.withLock { visibleQuestsSource.getAllVisible(bbox) }
             setQuestPins(quests)
         }
     }

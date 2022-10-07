@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.download.tiles.minTileRect
+import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -374,30 +374,28 @@ class MapDataCache(
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry = synchronized(this) {
         val requiredTiles = bbox.enclosingTilesRect(tileZoom).asTilePosSequence().toList()
         val cachedTiles = spatialCache.getTiles()
-        val tilesToFetch = requiredTiles.filterNot { it in cachedTiles }
-        val tilesRectToFetch = tilesToFetch.minTileRect()
+        val tilesRectsToFetch = requiredTiles.filterNot { it in cachedTiles }.upToTwoMinTileRects()
 
         val result = MutableMapDataWithGeometry()
         result.boundingBox = bbox
         val nodes: Collection<Node>
-        if (tilesRectToFetch != null) {
-            // fetch needed data
-            val fetchBBox = tilesRectToFetch.asBoundingBox(tileZoom)
-            val (elements, geometries) = fetchMapData(fetchBBox)
-
+        if (tilesRectsToFetch != null) {
             // get nodes from spatial cache
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
-
             nodes = HashSet<Node>(spatialCache.get(bbox))
-            update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
 
-            // return data if we need exactly what was just fetched
-            if (fetchBBox == bbox) {
-                val nodeGeometryEntries = elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() }
-                result.putAll(elements, geometries + nodeGeometryEntries)
-                return result
+            // fetch needed data and put it to cache
+            tilesRectsToFetch.forEach { tilesRect ->
+                val fetchBBox = tilesRect.asBoundingBox(tileZoom)
+                val (elements, geometries) = fetchMapData(fetchBBox)
+                update(updatedElements = elements, updatedGeometries = geometries, bbox = fetchBBox)
+                if (fetchBBox == bbox) {
+                    // return data if we need exactly the bbox that was just fetched
+                    result.putAll(elements, geometries + elements.filterIsInstance<Node>().map { it.toElementGeometryEntry() })
+                    return result
+                }
             }
 
             // get nodes again, this contains the newly added nodes, but maybe not the old ones if cache was trimmed
@@ -424,7 +422,7 @@ class MapDataCache(
 
         // trim if we fetched new data, and spatialCache is full
         // trim to 90%, so trim is (probably) not immediately called on next fetch
-        if (spatialCache.size >= maxTiles && tilesToFetch.isNotEmpty()) {
+        if (spatialCache.size >= maxTiles && tilesRectsToFetch != null) {
             trim((maxTiles * 2) / 3)
         }
         return result

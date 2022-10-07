@@ -3,6 +3,9 @@ v48.0_ee: |
   <li>Allow switching main menu to a full grid (larger buttons!)</li>
   <li>Add POIs using the long press menu</li>
   <li>Show all Osmose quests, even if they are not connected to exactly one element</li>
+  <li>Restart in no longer necessary for applying changed quest settings</li>
+  <li>Option to dynamically create quests (will immediately apply changed quest settings)</li>
+  <li>Some performance improvements</li>
   </ul>
 
 v47.0_ee: |
