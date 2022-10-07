@@ -81,6 +81,8 @@ class MapDataWithEditsSource internal constructor(
 
                 rebuildLocalChanges()
 
+                /* nothingChanged can be false at this point when e.g. there are two edits on the 
+                   same element, and onUpdated is called after the first edit is uploaded. */
                 val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
                     val updatedElement = get(it.first.type, it.first.id)
                     // old and new elements are equal except version and timestamp, or both are null
