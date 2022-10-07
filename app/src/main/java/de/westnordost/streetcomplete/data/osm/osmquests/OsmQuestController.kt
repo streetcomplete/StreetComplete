@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import android.content.SharedPreferences
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -16,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
@@ -49,7 +52,8 @@ class OsmQuestController internal constructor(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val prefs: SharedPreferences,
 ) : OsmQuestSource, HideOsmQuestController {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -146,6 +150,7 @@ class OsmQuestController internal constructor(
     init {
         mapDataSource.addListener(mapDataSourceListener)
         notesSource.addListener(notesSourceListener)
+        instance = this
     }
 
     private fun createQuestsForBBox(
@@ -280,9 +285,14 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<String>?): List<OsmQuest> {
+    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<QuestType>?): Collection<OsmQuest> {
         val hiddenPositions = getBlacklistedPositions(bbox)
-        val entries = db.getAllInBboxIfNotHidden(bbox, questTypes).filter {
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
+            val mapData = mapDataSource.getMapDataWithGeometry(bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING))
+            val quests = createQuestsForBBox(bbox, mapData, questTypes?.filterIsInstance<OsmElementQuestType<*>>() ?: allQuestTypes)
+            return quests.filterNot { it.key in hiddenCache }
+        }
+        val entries = db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
             it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
@@ -434,8 +444,13 @@ class OsmQuestController internal constructor(
     }
 
     // gets also hidden quests!
-    override fun getAllNearbyQuests(position: LatLon, distance: Double): List<OsmQuest> {
-        val entries = db.getAllInBBox(position.enclosingBoundingBox(distance))
+    override fun getAllNearbyQuests(position: LatLon, distance: Double): Collection<OsmQuest> {
+        val bbox = position.enclosingBoundingBox(distance)
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
+            val mapData = mapDataSource.getMapDataWithGeometry(bbox)
+            return createQuestsForBBox(bbox, mapData, allQuestTypes)
+        }
+        val entries = db.getAllInBBox(bbox)
 
         val elementKeys = HashSet<ElementKey>()
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
@@ -449,8 +464,15 @@ class OsmQuestController internal constructor(
         }
     }
 
+    private fun reloadQuestTypes() {
+        questTypeRegistry.reload()
+        onInvalidated()
+    }
+
     companion object {
         private const val TAG = "OsmQuestController"
+        private var instance: OsmQuestController? = null
+        fun reloadQuestTypes() = instance?.reloadQuestTypes()
     }
 }
 

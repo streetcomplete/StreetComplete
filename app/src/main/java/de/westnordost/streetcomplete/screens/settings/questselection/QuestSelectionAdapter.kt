@@ -54,7 +54,7 @@ class QuestSelectionAdapter(
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
     countryBoundaries: FutureTask<CountryBoundaries>,
-    prefs: SharedPreferences
+    private val prefs: SharedPreferences
 ) : RecyclerView.Adapter<QuestSelectionAdapter.QuestVisibilityViewHolder>(), DefaultLifecycleObserver {
 
     private val currentCountryCodes: List<String>
@@ -274,7 +274,8 @@ class QuestSelectionAdapter(
             binding.questSettings.setOnClickListener {
                 val settings = item.questType.getQuestSettingsDialog(it.context)
                 settings?.show()
-                context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
+                if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                    context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
             }
             binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
 

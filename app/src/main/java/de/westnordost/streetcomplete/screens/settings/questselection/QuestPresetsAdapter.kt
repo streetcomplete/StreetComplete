@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
@@ -98,7 +98,7 @@ class QuestPresetsAdapter(
                 questPresetsController.selectedId = presetId
             }
             if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
-                QuestTypeRegistry.reload()
+                OsmQuestController.reloadQuestTypes()
         }
 
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {

@@ -113,10 +113,9 @@ class VisibleQuestsSource(
     /** Retrieve all visible quests in the given bounding box from local database */
     private fun getAllVisibleFromDatabase(bbox: BoundingBox): List<Quest> {
         val visibleQuestTypes = questTypeRegistry.filter { isVisible(it) }
-        val visibleQuestTypeNames = visibleQuestTypes.map { it.name }
-        if (visibleQuestTypeNames.isEmpty()) return listOf()
+        if (visibleQuestTypes.isEmpty()) return emptyList()
 
-        val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
+        val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypes)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
         val otherSourceQuests = otherSourceQuestController.getAllVisibleInBBox(bbox, visibleQuestTypes)
 
@@ -143,7 +142,7 @@ class VisibleQuestsSource(
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
-    fun getNearbyQuests(quest: Quest, distance: Double) = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
+    fun getNearbyQuests(quest: Quest, distance: Double): Collection<Quest> = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
         1 -> getAllVisible(quest.position.enclosingBoundingBox(distance))
         2 -> osmQuestSource.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance)) +
             otherSourceQuestController.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance))

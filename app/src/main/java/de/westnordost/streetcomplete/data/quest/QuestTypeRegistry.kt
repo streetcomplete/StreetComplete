@@ -32,12 +32,9 @@ class QuestTypeRegistry(
 
     private val typeMap = mutableMapOf<String, QuestType>()
 
-    init {
-        instance = this
-        reload()
-    }
+    init { reload() }
 
-    private fun reload() {
+    fun reload() {
         quests.clear()
         quests.addAll(getQuestTypeList(
             trafficFlowSegmentsApi,
@@ -62,10 +59,5 @@ class QuestTypeRegistry(
 
     fun getByName(typeName: String): QuestType? {
         return typeMap[typeName]
-    }
-
-    companion object {
-        private var instance: QuestTypeRegistry? = null
-        fun reload() = instance?.reload()
     }
 }

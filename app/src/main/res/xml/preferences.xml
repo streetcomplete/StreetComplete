@@ -307,6 +307,13 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="dynamic_quest_creation"
+            android:title="@string/pref_dynamic_quest_creation_title"
+            android:summary="@string/pref_dynamic_quest_creation_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
         <Preference
             android:key="trees"
             android:title="@string/pref_trees_title" />

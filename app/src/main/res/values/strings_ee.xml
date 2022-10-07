@@ -68,7 +68,9 @@
     <string name="import_error_db_version">Import error: unknown version</string>
     <string name="export_warning_db_version">Warning: database version unknown, import may not work</string>
     <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
-    <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
+    <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset</string>
+    <string name="pref_dynamic_quest_creation_title">Create quests dynamically</string>
+    <string name="pref_dynamic_quest_creation_summary">Quests are created when loading the viewed area. Somewhat slow, but immediately applies changed quest settings.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
     <string name="quest_settings_per_preset_rescan">For properly applying all changed per-preset quest settings, re-scanning for quests is necessary.</string>

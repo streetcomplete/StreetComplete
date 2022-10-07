@@ -10,8 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.screens.settings.SettingsFragment
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import java.text.ParseException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -33,12 +32,12 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
             if (needsReload)
-                QuestTypeRegistry.reload()
+                OsmQuestController.reloadQuestTypes()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
             if (needsReload)
-                QuestTypeRegistry.reload()
+                OsmQuestController.reloadQuestTypes()
         }
         .create()
     return dialog
@@ -98,11 +97,11 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
-            QuestTypeRegistry.reload()
+            OsmQuestController.reloadQuestTypes()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            QuestTypeRegistry.reload()
+            OsmQuestController.reloadQuestTypes()
         }
         .create()
     return dialog
@@ -114,11 +113,11 @@ fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref:
         .setNeutralButton(android.R.string.cancel, null)
         .setPositiveButton(R.string.quest_smoothness_generic_surface_yes) { _,_ ->
             prefs.edit().putBoolean(pref, true).apply()
-            QuestTypeRegistry.reload()
+            OsmQuestController.reloadQuestTypes()
         }
         .setNegativeButton(R.string.quest_smoothness_generic_surface_no) { _,_ ->
             prefs.edit().putBoolean(pref, false).apply()
-            QuestTypeRegistry.reload()
+            OsmQuestController.reloadQuestTypes()
         }
         .create()
 

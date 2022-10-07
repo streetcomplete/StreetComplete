@@ -70,6 +70,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
@@ -82,7 +83,6 @@ import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -756,8 +756,9 @@ class MainFragment :
             .setTitle(R.string.quest_presets_preset_name)
             .setSingleChoiceItems(array, selected) { _, i ->
                 if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)) {
-                    QuestTypeRegistry.reload()
-                    context?.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
+                    OsmQuestController.reloadQuestTypes()
+                    if (!prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                        context?.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
                 }
                 questPresetsController.selectedId = presets[i].id
                 dialog?.dismiss()
