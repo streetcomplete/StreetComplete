@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import kotlin.system.measureTimeMillis
 
 /** Deletes old unused data in the background */
 class Cleaner(
@@ -15,15 +16,14 @@ class Cleaner(
     private val questTypeRegistry: QuestTypeRegistry
 ) {
     fun clean() {
-        val time = nowAsEpochMilliseconds()
-
-        val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
-        noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
-        mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
-        /* do this after cleaning map data and notes, because some metadata rely on map data */
-        questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
-
-        Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
+        val execTimeMs = measureTimeMillis {
+            val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
+            noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
+            mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
+            /* do this after cleaning map data and notes, because some metadata rely on map data */
+            questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
+        }
+        Log.i(TAG, "Cleaning took ${(execTimeMs / 1000.0).format(1)}s")
     }
 
     companion object {

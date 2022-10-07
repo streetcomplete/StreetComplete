@@ -38,6 +38,9 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
+import kotlin.system.measureTimeMillis
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
@@ -138,53 +141,52 @@ class OsmQuestController internal constructor(
         notesSource.addListener(notesSourceListener)
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun createQuestsForBBox(
         bbox: BoundingBox,
         mapDataWithGeometry: MapDataWithGeometry,
         questTypes: Collection<OsmElementQuestType<*>>,
     ): Collection<OsmQuest> {
-        val time = nowAsEpochMilliseconds()
+        val (quests, execDuration) = measureTimedValue {
+            val countryBoundaries = countryBoundariesFuture.get()
 
-        val countryBoundaries = countryBoundariesFuture.get()
+            // Remove elements without tags, to be used for quests that are never applicable without
+            // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
+            // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
+            // This shortcut reduces time for creating quests by ~15-30%.
+            val onlyElementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
 
-        // Remove elements without tags, to be used for quests that are never applicable without
-        // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
-        // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
-        // This shortcut reduces time for creating quests by ~15-30%.
-        val onlyElementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
-
-        val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
-            scope.async {
-                val questsForType = ArrayList<OsmQuest>()
-                val questTypeName = questType.name
-                if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
-                    Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
-                    emptyList()
-                } else {
-                    val questTime = nowAsEpochMilliseconds()
-                    var questCount = 0
-                    val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags)
-                            onlyElementsWithTags
-                        else
-                            mapDataWithGeometry
-                    for (element in questType.getApplicableElements(mapDataToUse)) {
-                        val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
-                            ?: continue
-                        if (!mayCreateQuest(questType, geometry, bbox)) continue
-                        questsForType.add(OsmQuest(questType, element.type, element.id, geometry))
-                        questCount++
+            val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
+                scope.async {
+                    val questsForType = ArrayList<OsmQuest>()
+                    val questTypeName = questType.name
+                    if (!countryBoundaries.intersects(bbox, questType.enabledInCountries)) {
+                        Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
+                        emptyList()
+                    } else {
+                        var questCount = 0
+                        val questSeconds = measureTimeMillis {
+                            val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags)
+                                onlyElementsWithTags
+                            else
+                                mapDataWithGeometry
+                            for (element in questType.getApplicableElements(mapDataToUse)) {
+                                val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
+                                    ?: continue
+                                if (!mayCreateQuest(questType, geometry, bbox)) continue
+                                questsForType.add(OsmQuest(questType, element.type, element.id, geometry))
+                                questCount++
+                            }
+                        }
+                        Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
+                        questsForType
                     }
-
-                    val questSeconds = nowAsEpochMilliseconds() - questTime
-                    Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
-                    questsForType
                 }
             }
+            runBlocking { deferredQuests.awaitAll().flatten() }
         }
-        val quests = runBlocking { deferredQuests.awaitAll().flatten() }
 
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
-        Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
+        Log.i(TAG, "Created ${quests.size} quests for bbox in ${(execDuration.inWholeMilliseconds / 1000.0).format(1)}s")
 
         return quests
     }
@@ -233,13 +235,11 @@ class OsmQuestController internal constructor(
     }
 
     private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
-        val time = nowAsEpochMilliseconds()
-
-        db.deleteAll(obsoleteQuestKeys)
-        db.putAll(questsNow)
-
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
-        Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
+        val execTimeMs = measureTimeMillis {
+            db.deleteAll(obsoleteQuestKeys)
+            db.putAll(questsNow)
+        }
+        Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${(execTimeMs / 1000.0).format(1)}s")
     }
 
     private fun mayCreateQuest(

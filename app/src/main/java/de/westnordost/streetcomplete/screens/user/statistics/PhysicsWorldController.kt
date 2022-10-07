@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.os.Handler
 import android.os.HandlerThread
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.android.asCoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.jbox2d.collision.shapes.Shape
@@ -11,6 +10,7 @@ import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.World
 import kotlin.math.max
+import kotlin.system.measureTimeMillis
 
 /** Contains the physics simulation world and the physics simulation loop */
 class PhysicsWorldController(gravity: Vec2) {
@@ -65,12 +65,10 @@ class PhysicsWorldController(gravity: Vec2) {
     }
 
     private fun loop() {
-        val startTime = nowAsEpochMilliseconds()
-        world.step(DELAY / 1000f, 6, 2)
-        val executionTime = nowAsEpochMilliseconds() - startTime
+        val execTimeMs = measureTimeMillis { world.step(DELAY / 1000f, 6, 2) }
         listener?.onWorldStep()
         if (isRunning) {
-            handler.postDelayed(this::loop, max(0, DELAY - executionTime))
+            handler.postDelayed(this::loop, (DELAY - execTimeMs).coerceAtLeast(0L))
         }
     }
 

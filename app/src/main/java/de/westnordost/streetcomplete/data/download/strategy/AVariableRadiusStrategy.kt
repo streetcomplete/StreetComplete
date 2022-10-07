@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.PI
-import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
@@ -79,8 +78,8 @@ abstract class AVariableRadiusStrategy(
 
     /** return if data in the given tiles rect that hasn't been downloaded yet */
     private suspend fun hasMissingDataFor(tilesRect: TilesRect): Boolean {
-        val dataExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
-        val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - dataExpirationTime)
+        val ignoreOlderThan = (nowAsEpochMilliseconds() - ApplicationConstants.REFRESH_DATA_AFTER)
+            .coerceAtLeast(0L)
         val downloadedTiles =
             withContext(Dispatchers.IO) { downloadedTilesDao.get(tilesRect, ignoreOlderThan) }
         return !downloadedTiles.contains(DownloadedTilesType.ALL)
