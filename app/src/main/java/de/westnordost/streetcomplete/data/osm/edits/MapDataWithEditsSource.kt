@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.math.intersect
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -62,7 +63,32 @@ class MapDataWithEditsSource internal constructor(
             val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
             val modifiedDeleted = ArrayList<ElementKey>()
             synchronized(this) {
+                /* We don't want to callOnUpdated if none of the changes affects map data provided
+                 * by MapDataWithEditsSource.
+                 * This is the case if
+                 *  * All keys in deleted are already in deletedElements.
+                 *  * The modified versions of all elements in updated are the same before and after
+                 *    rebuildLocalChanges, except for the timestamp (expected to have few ms
+                 *    difference) and version (never updated locally).
+                 */
+                val deletedUnchanged = deletedElements.containsAll(deleted)
+                val elementsThatMightHaveChanged = updated.mapNotNull { element ->
+                    val key = ElementKey(element.type, element.id)
+                    if (element.isEqualExceptVersionAndTimestamp(updatedElements[key]))
+                        null // we already have the updated version, so this element is unchanged
+                    else
+                        key to get(element.type, element.id) // elementKey and element as provided by MapDataWithEditsSource
+                }
+
                 rebuildLocalChanges()
+
+                val nothingChanged = deletedUnchanged && elementsThatMightHaveChanged.all {
+                        val updatedElement = get(it.first.type, it.first.id)
+                        // old and new elements are equal except version and timestamp, or both are null
+                        it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
+                    }
+                if (nothingChanged)
+                    return
 
                 for (element in updated) {
                     val key = ElementKey(element.type, element.id)
@@ -438,3 +464,6 @@ class MapDataWithEditsSource internal constructor(
         listeners.forEach { it.onCleared() }
     }
 }
+
+private fun Element.isEqualExceptVersionAndTimestamp(element: Element?): Boolean =
+    element?.copy(timestampEdited = timestampEdited, version = version) == this
