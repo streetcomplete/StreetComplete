@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import java.text.ParseException
 
@@ -17,7 +18,7 @@ import java.text.ParseException
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
 
 /** for setting values of a single key, comma separated */
-fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int, needsRestart: Boolean = true): AlertDialog {
+fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int, needsReload: Boolean = true): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
     textInput.addTextChangedListener {
@@ -31,13 +32,13 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue)?.replace("|",", ") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString().split(",").joinToString("|") { it.trim() }).apply()
-            if (needsRestart)
-                SettingsFragment.restartNecessary = true
+            if (needsReload)
+                QuestTypeRegistry.reload()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            if (needsRestart)
-                SettingsFragment.restartNecessary = true
+            if (needsReload)
+                QuestTypeRegistry.reload()
         }
         .create()
     return dialog
@@ -97,15 +98,29 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
-            SettingsFragment.restartNecessary = true
+            QuestTypeRegistry.reload()
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
-            SettingsFragment.restartNecessary = true
+            QuestTypeRegistry.reload()
         }
         .create()
     return dialog
 }
+
+fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int): AlertDialog =
+    AlertDialog.Builder(context)
+        .setMessage(messageId)
+        .setNeutralButton(android.R.string.cancel, null)
+        .setPositiveButton(R.string.quest_smoothness_generic_surface_yes) { _,_ ->
+            prefs.edit().putBoolean(pref, true).apply()
+            QuestTypeRegistry.reload()
+        }
+        .setNegativeButton(R.string.quest_smoothness_generic_surface_no) { _,_ ->
+            prefs.edit().putBoolean(pref, false).apply()
+            QuestTypeRegistry.reload()
+        }
+        .create()
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE

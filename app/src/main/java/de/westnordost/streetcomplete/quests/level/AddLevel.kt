@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isShopExpressionFragment
 import de.westnordost.streetcomplete.quests.questPrefix
-import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -167,7 +167,7 @@ class AddLevel(private val prefs: SharedPreferences) : OsmElementQuestType<Strin
             .setNegativeButton(android.R.string.cancel, null)
             .setItems(R.array.pref_quest_settings_level_quest) { _, i ->
                 prefs.edit().putBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, i == 1).apply()
-                SettingsFragment.restartNecessary = true
+                QuestTypeRegistry.reload()
             }
             .create()
 

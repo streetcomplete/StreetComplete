@@ -274,7 +274,7 @@ class QuestSelectionAdapter(
             binding.questSettings.setOnClickListener {
                 val settings = item.questType.getQuestSettingsDialog(it.context)
                 settings?.show()
-                context.toast(R.string.quest_settings_restart, Toast.LENGTH_LONG)
+                context.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
             }
             binding.questSettings.setImageResource(R.drawable.ic_settings_48dp) // for some reason it's not displayed when it's just in the xml
 

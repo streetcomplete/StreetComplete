@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.osm.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.screens.settings.SettingsFragment
+import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 
 class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceAnswer>() {
 
@@ -59,20 +59,8 @@ class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
 
     override val hasQuestSettings = true
 
-    override fun getQuestSettingsDialog(context: Context): AlertDialog {
-        return AlertDialog.Builder(context)
-            .setMessage(R.string.quest_generic_surface_message)
-            .setNeutralButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, true).apply()
-                SettingsFragment.restartNecessary = true
-            }
-            .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false).apply()
-                SettingsFragment.restartNecessary = true
-            }
-            .create()
-    }
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD, R.string.quest_generic_surface_message)
 }
 
 private const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"

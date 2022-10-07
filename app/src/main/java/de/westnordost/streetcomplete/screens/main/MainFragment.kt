@@ -82,6 +82,7 @@ import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -754,10 +755,12 @@ class MainFragment :
         val builder = AlertDialog.Builder(c)
             .setTitle(R.string.quest_presets_preset_name)
             .setSingleChoiceItems(array, selected) { _, i ->
+                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)) {
+                    QuestTypeRegistry.reload()
+                    context?.toast(R.string.quest_settings_per_preset_rescan, Toast.LENGTH_LONG)
+                }
                 questPresetsController.selectedId = presets[i].id
                 dialog?.dismiss()
-                if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
-                    context?.toast(R.string.quest_settings_per_preset_restart, Toast.LENGTH_LONG)
             }
             .setNegativeButton(android.R.string.cancel, null)
         dialog = builder.create()

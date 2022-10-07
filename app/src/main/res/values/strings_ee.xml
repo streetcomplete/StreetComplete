@@ -52,7 +52,6 @@
     <string name="day_night_ignore">Ignore</string>
     <string name="day_night_priority">Increase priority of certain quests</string>
     <string name="day_night_visibility">Don’t show certain quests</string>
-    <string name="quest_settings_restart">Usually re-scanning for quests and sometimes a restart of the app (happens automatically) is required to apply changed quest settings.</string>
     <string name="pref_save_gpx">Get GPX notes and attached photos</string>
     <string name="pref_save_gpx_not_found">No GPX notes found</string>
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
@@ -72,8 +71,7 @@
     <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset. Changing this setting will restart the app.</string>
     <string name="pref_hide_button_title">Show hide button</string>
     <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
-    <string name="quest_settings_per_preset_restart">For properly applying per-preset quest settings after switching preset, a restart may be necessary.</string>
-    <string name="restart_toast">App will be restarted when returning to settings screen. This is necessary on change of certain settings.</string>
+    <string name="quest_settings_per_preset_rescan">For properly applying all changed per-preset quest settings, re-scanning for quests is necessary.</string>
     <string name="pref_trees_title">Load tree quest file</string>
     <string name="pref_external_title">Load external quest file</string>
     <string name="tree_external_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.screens.settings.SettingsFragment
+import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 
 class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
@@ -60,20 +60,8 @@ class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<
 
     override val hasQuestSettings = true
 
-    override fun getQuestSettingsDialog(context: Context): AlertDialog {
-        return AlertDialog.Builder(context)
-            .setMessage(R.string.quest_generic_surface_message)
-            .setNeutralButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.quest_generic_surface_yes) { _,_ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, true).apply()
-                SettingsFragment.restartNecessary = true
-            }
-            .setNegativeButton(R.string.quest_generic_surface_no) { _,_ ->
-                prefs.edit().putBoolean(questPrefix(prefs) + ALLOW_GENERIC_PATH, false).apply()
-                SettingsFragment.restartNecessary = true
-            }
-            .create()
-    }
+    override fun getQuestSettingsDialog(context: Context): AlertDialog =
+        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_PATH, R.string.quest_generic_surface_message)
 }
 
 private const val ALLOW_GENERIC_PATH = "qs_AddPathSurface_allow_generic"

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.content.SharedPreferences
-import android.util.Log
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -108,11 +107,8 @@ class VisibleQuestsSource(
         otherSourceQuestController.addQuestListener(otherQuestListener)
     }
 
-    fun getAllVisible(bbox: BoundingBox): List<Quest> {
-        val l =cache.get(bbox)
-        Log.i("test_", "get allvisible: got ${l.size}")
-        return l
-    }
+    fun getAllVisible(bbox: BoundingBox): List<Quest> =
+        cache.get(bbox)
 
     /** Retrieve all visible quests in the given bounding box from local database */
     private fun getAllVisibleFromDatabase(bbox: BoundingBox): List<Quest> {
@@ -123,7 +119,6 @@ class VisibleQuestsSource(
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypeNames)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
         val otherSourceQuests = otherSourceQuestController.getAllVisibleInBBox(bbox, visibleQuestTypes)
-        Log.i("test_", "get allvisible for cache: got ${osmQuests.size} + ${osmNoteQuests.size} + ${otherSourceQuests.size}")
 
         return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {
             osmQuests.filter(::isVisibleInTeamMode) + osmNoteQuests.filter(::isVisibleInTeamMode) + otherSourceQuests.filter(::isVisibleInTeamMode)

@@ -729,14 +729,10 @@ class SettingsFragment :
     override fun onResume() {
         super.onResume()
         prefs.registerOnSharedPreferenceChangeListener(this)
-        c = context
-        if (restartNecessary)
-            restartApp()
     }
 
     override fun onDetach() {
         super.onDetach()
-        c = null
     }
 
     override fun onPause() {
@@ -866,16 +862,6 @@ class SettingsFragment :
         val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 
         return presetStr + enabledStr
-    }
-
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        private var c: Context? = null // this is set to null when exiting settings
-        var restartNecessary = false
-            set(value) {
-                field = value
-                c?.let { it.toast(it.getString(R.string.restart_toast), Toast.LENGTH_LONG) }
-            }
     }
 }
 

@@ -11,12 +11,11 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
-import de.westnordost.streetcomplete.screens.main.MainFragment
-import de.westnordost.streetcomplete.screens.settings.SettingsFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -99,7 +98,7 @@ class QuestPresetsAdapter(
                 questPresetsController.selectedId = presetId
             }
             if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
-                SettingsFragment.restartNecessary = true
+                QuestTypeRegistry.reload()
         }
 
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {

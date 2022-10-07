@@ -33,8 +33,9 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     val source: String
 
     /**
-     *  Download and persist data, create quests inside the given bbox and return the new quests.
+     *  Download and persist data, create quests inside the given [bbox] and return the new quests.
      *  Download date should be stored for each entry to allow cleanup of old data.
+     *  It's probably a good idea to remove old data inside the [bbox] before inserting updates.
      */
     fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
 
