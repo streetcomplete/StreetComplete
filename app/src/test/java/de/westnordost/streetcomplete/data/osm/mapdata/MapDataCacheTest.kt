@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoMoreInteractions
 
 internal class MapDataCacheTest {
 
@@ -734,5 +735,88 @@ internal class MapDataCacheTest {
         on(relationDB.getAllForNode(3L)).thenReturn(listOf(rel2))
         assertTrue(cache.getRelationsForNode(3L) { relationDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(rel2)))
         verify(relationDB).getAllForNode(3L) // was fetched from cache
+    }
+
+    @Test fun `getMapDataWithGeometry fetches all and caches if nothing is cached`() {
+        val node1 = node(1, LatLon(0.0, 0.0)) // TilePos(x=32768, y=32768)
+        val node2 = node(2, LatLon(0.0001, 0.0001)) // TilePos(x=32768, y=32767)
+        val node3 = node(3, LatLon(-0.0001, 0.0001)) // TilePos(x=32768, y=32768)
+        val nodesBBox = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox()
+        val nodesRect = nodesBBox.enclosingTilesRect(16)
+        assertTrue(nodesRect.size == 2)
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
+        val elementsInsideBBox = listOf(node1, node2, node3, way1, way2, way3, rel1, rel2)
+        val elementDB: ElementDao = mock()
+        on(elementDB.getAll(nodesRect.asBoundingBox(16))).thenReturn(elementsInsideBBox)
+        val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
+
+        val expectedMapData = MutableMapDataWithGeometry().apply {
+            listOf(node1, node2, node3).forEach { put(it, ElementPointGeometry(it.position)) }
+            listOf(way1, way2, way3, rel1, rel2).forEach { put(it, null) }
+            boundingBox = nodesBBox
+        }
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verify(elementDB).getAll(nodesRect.asBoundingBox(16))
+        // second time it's cached
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verifyNoMoreInteractions(elementDB)
+    }
+
+    @Test fun `getMapDataWithGeometry fetches only part if something is already cached`() {
+        val node1 = node(1, LatLon(0.0, 0.0)) // TilePos(x=32768, y=32768)
+        val node2 = node(2, LatLon(0.0001, 0.0001)) // TilePos(x=32768, y=32767)
+        val node3 = node(3, LatLon(-0.0001, 0.0001)) // TilePos(x=32768, y=32768)
+        val nodesBBox = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox()
+        val nodesRect = nodesBBox.enclosingTilesRect(16)
+        val node1rect = node1.position.enclosingTilePos(16)
+        val node2rect = node2.position.enclosingTilePos(16)
+        assertTrue(nodesRect.size == 2)
+        val way1 = way(1, nodes = listOf(2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
+        val elementDB: ElementDao = mock()
+        on(elementDB.getAll(node1rect.asBoundingBox(16))).thenReturn(listOf(node1, node3, way2, way3, rel1))
+        val cache = MapDataCache(16, 4, 10) { elementDB.getAll(it) to emptyList() }
+
+        cache.update(updatedElements = listOf(node2, way1, rel2), bbox = node2rect.asBoundingBox(16))
+
+        val expectedMapData = MutableMapDataWithGeometry().apply {
+            listOf(node1, node2, node3).forEach { put(it, ElementPointGeometry(it.position)) }
+            listOf(way1, way2, way3, rel1, rel2).forEach { put(it, null) }
+            boundingBox = nodesBBox
+        }
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verify(elementDB).getAll(node1rect.asBoundingBox(16))
+        // second time it's cached
+        assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
+        verifyNoMoreInteractions(elementDB)
+    }
+
+    @Test fun `getMapDataWithGeometry fetches nothing if all is cached`() {
+        val node1 = node(1, LatLon(0.0, 0.0))
+        val node2 = node(2, LatLon(0.0001, 0.0001))
+        val node3 = node(3, LatLon(-0.0001, 0.0001))
+        val nodesBBox = listOf(node1.position, node2.position, node3.position).enclosingBoundingBox()
+        val nodesRect = nodesBBox.enclosingTilesRect(16)
+        assertEquals(2, nodesRect.size)
+        val way1 = way(1, nodes = listOf(1L, 2L))
+        val way2 = way(2, nodes = listOf(3L, 1L))
+        val way3 = way(3, nodes = listOf(3L, 2L))
+        val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
+        val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
+        val elementsInsideBBox = listOf(node1, node2, node3, way1, way2, way3, rel1, rel2)
+        val outsideNode = node(4, LatLon(1.0, 1.0))
+        val outsideWay = way(4)
+        val outsideRel = rel(3)
+        val cache = MapDataCache(16, 4, 10) { emptyList<Element>() to emptyList() }
+
+        cache.update(updatedElements = elementsInsideBBox + outsideNode + outsideWay + outsideRel, bbox = nodesRect.asBoundingBox(16))
+        assertTrue(cache.getMapDataWithGeometry(nodesBBox).toList().containsExactlyInAnyOrder(elementsInsideBBox))
     }
 }
