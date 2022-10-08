@@ -117,7 +117,7 @@ class VisibleQuestsSource(
 
         val osmQuests = osmQuestSource.getAllVisibleInBBox(bbox, visibleQuestTypes)
         val osmNoteQuests = osmNoteQuestSource.getAllVisibleInBBox(bbox)
-        val otherSourceQuests = otherSourceQuestController.getAllVisibleInBBox(bbox, visibleQuestTypes)
+        val otherSourceQuests = otherSourceQuestController.getAllInBBox(bbox, visibleQuestTypes)
 
         return if (teamModeQuestFilter.isEnabled || levelFilter.isEnabled || dayNightQuestFilter.isEnabled) {
             osmQuests.filter(::isVisibleInTeamMode) + osmNoteQuests.filter(::isVisibleInTeamMode) + otherSourceQuests.filter(::isVisibleInTeamMode)
@@ -142,15 +142,16 @@ class VisibleQuestsSource(
     private fun isVisibleInTeamMode(quest: Quest): Boolean =
         teamModeQuestFilter.isVisible(quest) && levelFilter.isVisible(quest) && dayNightQuestFilter.isVisible(quest)
 
-    fun getNearbyQuests(quest: Quest, distance: Double): Collection<Quest> = when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
-        1 -> getAllVisible(quest.position.enclosingBoundingBox(distance))
-        2 -> osmQuestSource.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance)) +
-            otherSourceQuestController.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance))
-        3 -> {
-            osmQuestSource.getAllNearbyQuests(quest.position, distance) +
-                otherSourceQuestController.getAllVisibleInBBox(quest.position.enclosingBoundingBox(distance)) // todo: also the hidden ones
+    fun getNearbyQuests(quest: Quest, distance: Double): Collection<Quest> {
+        val bbox = quest.position.enclosingBoundingBox(distance)
+        return when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
+            1 -> getAllVisible(bbox)
+            2 -> osmQuestSource.getAllVisibleInBBox(bbox) +
+                otherSourceQuestController.getAllInBBox(bbox)
+            3 -> osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
+                otherSourceQuestController.getAllInBBox(bbox, getHidden = true)
+            else -> emptyList()
         }
-        else -> emptyList()
     }
 
 

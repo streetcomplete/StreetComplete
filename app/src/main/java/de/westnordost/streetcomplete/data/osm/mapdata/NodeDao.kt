@@ -88,7 +88,7 @@ class NodeDao(private val db: Database) {
     }
 
     fun getAll(bbox: BoundingBox): List<Node> =
-        db.query(NAME, where = inBoundsSql(bbox)) { it.toNode() }
+        db.query(NAME, columns = arrayOf(ID, LATITUDE, LONGITUDE, TAGS, VERSION, TIMESTAMP), where = inBoundsSql(bbox)) { it.toNode() }
 }
 
 private fun CursorPosition.toNode() = Node(

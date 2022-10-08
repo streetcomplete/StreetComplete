@@ -61,7 +61,7 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
             val fullChangelog = readChangelog(context.resources)
             var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
             // if version not found, just show the last one
-            if (currentVersionIndex == -1) currentVersionIndex = 1
+            if (currentVersionIndex == -1) currentVersionIndex = 2
             val changelog = fullChangelog.subList(0, currentVersionIndex)
 
             binding.changelogList.adapter = ChangelogAdapter(changelog)

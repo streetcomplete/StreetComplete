@@ -160,8 +160,7 @@ open class LocationAwareMapFragment : MapFragment() {
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
         locationMapComponent?.isVisible = true
-        val minGpsTime = prefs.getInt(Prefs.GPS_INTERVAL, 2).coerceAtLeast(0) * 1000L
-        locationManager.requestUpdates(prefs.getInt(Prefs.GPS_INTERVAL, 0)*1000L, prefs.getInt(Prefs.NETWORK_INTERVAL, 5)*1000L, 1f)
+        locationManager.requestUpdates(prefs.getInt(Prefs.GPS_INTERVAL, 0) * 1000L, prefs.getInt(Prefs.NETWORK_INTERVAL, 5) * 1000L, 1f)
     }
 
     fun stopPositionTracking() {

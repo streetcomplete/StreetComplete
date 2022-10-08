@@ -292,14 +292,15 @@ class OsmQuestController internal constructor(
         return createOsmQuest(entry, geometry)
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<QuestType>?): Collection<OsmQuest> {
+    override fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<QuestType>?, getHidden: Boolean): Collection<OsmQuest> {
         val hiddenPositions = getBlacklistedPositions(bbox)
         if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
             val mapData = mapDataSource.getMapDataWithGeometry(bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING))
             val quests = createQuestsForBBox(bbox, mapData, questTypes?.filterIsInstance<OsmElementQuestType<*>>() ?: allQuestTypes)
-            return quests.filterNot { it.key in hiddenCache }
+            return if (getHidden) quests else quests.filterNot { it.key in hiddenCache || it.position.truncateTo5Decimals() in hiddenPositions }
         }
-        val entries = db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
+        val entries = if (getHidden) db.getAllInBBox(bbox, questTypes?.map { it.name })
+        else db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
             it.position.truncateTo5Decimals() !in hiddenPositions
         }
 
@@ -448,27 +449,6 @@ class OsmQuestController internal constructor(
     }
     private fun onUnhidAll() {
         hideListeners.forEach { it.onUnhidAll() }
-    }
-
-    // gets also hidden quests!
-    override fun getAllNearbyQuests(position: LatLon, distance: Double): Collection<OsmQuest> {
-        val bbox = position.enclosingBoundingBox(distance)
-        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
-            val mapData = mapDataSource.getMapDataWithGeometry(bbox)
-            return createQuestsForBBox(bbox, mapData, allQuestTypes)
-        }
-        val entries = db.getAllInBBox(bbox)
-
-        val elementKeys = HashSet<ElementKey>()
-        entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
-
-        val geometriesByKey = mapDataSource.getGeometries(elementKeys)
-            .associateBy { ElementKey(it.elementType, it.elementId) }
-
-        return entries.mapNotNull { entry ->
-            val geometryEntry = geometriesByKey[ElementKey(entry.elementType, entry.elementId)]
-            createOsmQuest(entry, geometryEntry?.geometry)
-        }
     }
 
     private fun reloadQuestTypes() {

@@ -66,7 +66,7 @@ class WayDao(private val db: Database) {
 
         return db.transaction {
             val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
-            db.query(NAME_NODES, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX") { c ->
+            db.query(NAME_NODES, where = "$ID IN ($idsString)", orderBy = "$ID, $INDEX", columns = arrayOf(ID, NODE_ID)) { c ->
                 val nodeIds = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
                 nodeIds.add(c.getLong(NODE_ID))
             }
@@ -103,8 +103,30 @@ class WayDao(private val db: Database) {
     fun getAllForNode(nodeId: Long): List<Way> =
         getAllForNodes(listOf(nodeId))
 
-    fun getAllForNodes(nodeIds: Collection<Long>): List<Way> =
-        getAll(getAllIdsForNodes(nodeIds).toSet())
+    // longer code, but 10-20% faster
+    fun getAllForNodes(nodeIds: Collection<Long>): List<Way> {
+        if (nodeIds.isEmpty()) return emptyList()
+        val idsString = nodeIds.joinToString(",")
+
+        return db.transaction {
+            val nodeIdsByWayId = mutableMapOf<Long, MutableList<Long>>()
+            db.query(NAME_NODES, where = "$ID IN (SELECT $ID FROM $NAME_NODES WHERE $NODE_ID IN ($idsString))", orderBy = "$ID, $INDEX", columns = arrayOf(ID, NODE_ID)) { c ->
+                val nodeIds2 = nodeIdsByWayId.getOrPut(c.getLong(ID)) { ArrayList() }
+                nodeIds2.add(c.getLong(NODE_ID))
+            }
+
+            db.query(NAME, where = "$ID IN (${nodeIdsByWayId.keys.joinToString(",")})") { cursor ->
+                Way(
+                    cursor.getLong(ID),
+                    nodeIdsByWayId.getValue(cursor.getLong(ID)),
+                    cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) }
+                        ?: emptyMap(),
+                    cursor.getInt(VERSION),
+                    cursor.getLong(TIMESTAMP)
+                )
+            }
+        }
+    }
 
     fun getAllIdsForNodes(nodeIds: Collection<Long>): List<Long> {
         if (nodeIds.isEmpty()) return emptyList()

@@ -36,10 +36,10 @@ class OtherSourceQuestController(
         questListeners.remove(questListener)
     }
 
-    private val questTypeNamesBySource = questTypeRegistry.filterIsInstance<OtherSourceQuestType>().associate { it.source to it.name }
     private val questTypes get() = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
+    private val questTypeNamesBySource = questTypes.associate { it.source to it.name }
     init {
-        if (questTypes.size != questTypeRegistry.filterIsInstance<OtherSourceQuestType>().size)
+        if (questTypes.size != questTypeNamesBySource.size)
             throw IllegalStateException("source values must be unique")
         elementEditsController.addListener(this)
     }
@@ -49,11 +49,11 @@ class OtherSourceQuestController(
             questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
     }
 
-    fun getAllVisibleInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null): List<OtherSourceQuest> {
+    fun getAllInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null, getHidden: Boolean = false): List<OtherSourceQuest> {
         val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes).flatMap {
             it.getQuests(bbox)
         }
-        return quests.filterNot { it.key in hiddenCache }
+        return if (getHidden) quests else quests.filterNot { it.key in hiddenCache }
     }
 
     fun get(key: OtherSourceQuestKey): OtherSourceQuest? {
