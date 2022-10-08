@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
@@ -10,7 +9,7 @@ import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddBuildingLevels(private val prefs: SharedPreferences) : OsmFilterQuestType<BuildingLevelsAnswer>() {
+class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override val elementFilter = """
         ways, relations with
@@ -43,6 +42,5 @@ class AddBuildingLevels(private val prefs: SharedPreferences) : OsmFilterQuestTy
     override fun getQuestSettingsDialog(context: Context) =
         singleTypeElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_BUILDING_LEVELS_SELECTION, BUILDINGS_WITH_LEVELS.joinToString("|"), R.string.quest_settings_building_levels_message)
 }
-
 
 private const val PREF_BUILDING_LEVELS_SELECTION = "qs_AddBuildingLevels_element_selection"

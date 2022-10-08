@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.step_count
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -14,7 +13,7 @@ import de.westnordost.streetcomplete.quests.numberSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.measuredLength
 
-class AddStepCount(private val prefs: SharedPreferences) : OsmElementQuestType<Int> {
+class AddStepCount : OsmElementQuestType<Int> {
 
     val elementFilter by lazy { """
         ways with highway = steps

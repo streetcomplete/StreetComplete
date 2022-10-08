@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.quest
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
+import android.content.SharedPreferences
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 
@@ -14,6 +16,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
  *  Most QuestType inherit from [OsmElementQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType] */
 interface QuestType : EditType {
 
+    val prefs: SharedPreferences get() = StreetCompleteApplication.preferences
     /** the string resource id that explains why this quest is disabled by default or zero if it is
      *  not disabled by default.
      *

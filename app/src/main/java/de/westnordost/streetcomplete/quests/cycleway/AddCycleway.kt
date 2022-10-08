@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -50,7 +49,6 @@ import java.util.concurrent.FutureTask
 class AddCycleway(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val prefs: SharedPreferences,
 ) : OsmElementQuestType<CyclewayAnswer> {
 
     override val changesetComment = "Specify whether there are cycleways"

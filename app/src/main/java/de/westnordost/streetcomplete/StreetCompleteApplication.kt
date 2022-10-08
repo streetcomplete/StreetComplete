@@ -129,6 +129,8 @@ class StreetCompleteApplication : Application() {
 
         setDefaultLocales()
 
+        preferences = prefs
+
         crashReportExceptionHandler.install()
 
         applicationScope.launch {
@@ -197,5 +199,9 @@ class StreetCompleteApplication : Application() {
                 1, TimeUnit.DAYS,
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
+    }
+
+    companion object {
+        lateinit var preferences: SharedPreferences
     }
 }

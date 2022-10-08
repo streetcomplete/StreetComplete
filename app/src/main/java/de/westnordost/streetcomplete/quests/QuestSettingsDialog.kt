@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.ParseException
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
-import java.text.ParseException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
@@ -76,10 +76,12 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
 fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, defaultValue: String? = null): AlertDialog {
     var dialog: AlertDialog? = null
     val textInput = EditText(context)
+    val checkPrefix = if (pref.endsWith("_full_element_selection")) "" else "nodes with "
     textInput.addTextChangedListener {
         val button = dialog?.getButton(AlertDialog.BUTTON_POSITIVE)
         val isValidFilterExpression by lazy {
-            try {"nodes with $it".toElementFilterExpression()
+            try {
+                (checkPrefix + it).toElementFilterExpression()
                 true
             } catch(e: ParseException) {
                 Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
@@ -94,7 +96,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
         }
     }
 
-    dialog = dialog(context, messageId, prefs.getString(pref, defaultValue ?: "") ?: "", textInput)
+    dialog = dialog(context, messageId, prefs.getString(pref, defaultValue?.trimIndent() ?: "") ?: "", textInput)
         .setPositiveButton(android.R.string.ok) { _, _ ->
             prefs.edit().putString(pref, textInput.text.toString()).apply()
             OsmQuestController.reloadQuestTypes()
@@ -140,4 +142,4 @@ else
     ""
 
 private val valueRegex = "[a-z0-9_?,\\s]+".toRegex()
-private val elementSelectionRegex = "[a-z0-9_=!~()|:<>\\s+-]+".toRegex()
+private val elementSelectionRegex = "[a-z0-9_=!~()|:,<>\\s+-]+".toRegex()

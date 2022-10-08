@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -13,7 +12,7 @@ import de.westnordost.streetcomplete.osm.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 
-class AddRoadSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceAnswer>() {
+class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override val elementFilter = """
         ways with (

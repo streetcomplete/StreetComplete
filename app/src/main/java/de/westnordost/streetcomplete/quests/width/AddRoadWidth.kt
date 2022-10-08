@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.width
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -18,7 +17,6 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker,
-    private val prefs: SharedPreferences
 ) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """

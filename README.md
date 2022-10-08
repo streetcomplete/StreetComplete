@@ -4,16 +4,15 @@ It can be installed alongside origninal StreetComplete without any issues.
 Notable changes:
 * Option to directly edit tags
 * Quick settings, e.g. for fast switch of preset
-* More customizble behavior
+* More customizable behavior, including settings for many quests
 * Import / export for settings, quest presets and hidden quests
 * Show all quests for the selected element at once
 * Level filter (available in quick settings menu)
 * Create nodes from iD presets anywhere
 * Ability to create personal notes in a GPX file instead of uploading them to OSM
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
-* More answers for some quests
-* Configurable quests
 * Quests based on custom data sources (currently available: Osmose and CSV file)
+* More answers for some quests
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Performance improvements (balanced by more data to process, so don't expect an improvement over StreetComplete)
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -17,7 +16,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddPathSmoothness(private val prefs: SharedPreferences) : OsmFilterQuestType<SmoothnessAnswer>() {
+class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val elementFilter = """
         ways with

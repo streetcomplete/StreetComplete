@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.sidewalk
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -27,7 +26,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
-class AddSidewalk(private val prefs: SharedPreferences) : OsmElementQuestType<LeftAndRightSidewalk> {
+class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
         ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }

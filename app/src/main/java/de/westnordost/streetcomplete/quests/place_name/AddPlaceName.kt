@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.place_name
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -18,7 +17,6 @@ import java.util.concurrent.FutureTask
 
 class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
-    private val prefs: SharedPreferences,
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.CLASS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENTS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ANSWERED
@@ -38,9 +39,10 @@ class OsmoseDao(
     private val prefs: SharedPreferences,
 ) : KoinComponent {
     private val client = OkHttpClient()
-    val type = OsmoseQuest(this, prefs) // ugly, but at least it works...
+    val type = OsmoseQuest(this) // ugly, but at least it works...
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     private val ignoredItems = hashSetOf<Int>()
     private val ignoredItemClassCombinations = hashSetOf<String>()

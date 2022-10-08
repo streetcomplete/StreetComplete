@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -9,11 +7,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFilterQuestType<WheelchairAccess>() {
+class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -22,6 +18,7 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
           and (name or brand or name:signed = no)
           and (
             shop and shop !~ no|vacant
+            or amenity = parking and parking = multi-storey
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
             or tourism = information and information = office
@@ -31,7 +28,71 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
         // Independent tags can by added in the "wheelchair only" tab.
 
-        prefs.getString(questPrefix(prefs) + PREF_ELEMENTS, WHEELCHAIR_PLACES) +
+        mapOf(
+            "amenity" to arrayOf(
+                // common
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
+                "cinema", "planetarium", "casino",                                                                     // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "car_wash", "car_rental", "fuel",                                                                      // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",                                                                                     // work
+
+                // name & wheelchair only
+                "theatre",                             // culture
+                "conference_centre", "arts_centre",    // events
+                "police", "ranger_station",            // civic
+                "ferry_terminal",                      // transport
+                "place_of_worship",                    // religious
+                "hospital"                             // health care
+            ),
+            "tourism" to arrayOf(
+                // common
+                "zoo", "aquarium", "theme_park", "gallery", "museum",
+
+                // name & wheelchair
+                "attraction",
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+
+                // wheelchair only
+                "viewpoint"
+
+                // and tourism = information, see above
+            ),
+            "leisure" to arrayOf(
+                // common
+                "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+
+                // name & wheelchair
+                "sports_centre", "stadium"
+            ),
+            "office" to arrayOf(
+                // common
+                "insurance", "government", "travel_agent", "tax_advisor", "religion",
+                "employment_agency", "diplomatic", "coworking",
+                "estate_agent", "lawyer", "telecommunication", "educational_institution",
+                "association", "ngo", "it", "accountant",
+
+                // name & wheelchair
+                "political_party", "therapist"
+            ),
+            "craft" to arrayOf(
+                // common
+                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+                "electronics_repair", "key_cutter", "stonemason",
+
+                // name & wheelchair
+                "winery"
+            ),
+            "healthcare" to arrayOf(
+                // common
+                "audiologist", "optometrist", "counselling", "speech_therapist",
+                "sample_collection", "blood_donation",
+            ),
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "  \n)"
 
     override val changesetComment = "Survey wheelchair accessibility of places"
@@ -58,77 +119,4 @@ class AddWheelchairAccessBusiness(private val prefs: SharedPreferences) : OsmFil
                 tags["wheelchair:description$language"] = description
         }
     }
-
-    override val hasQuestSettings = true
-
-    override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_ELEMENTS, R.string.quest_settings_element_selection, WHEELCHAIR_PLACES)
 }
-
-private val WHEELCHAIR_PLACES = mapOf(
-    "amenity" to arrayOf(
-        // common
-        "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-        "cinema", "planetarium", "casino",                                                                     // amenities
-        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-        "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-        "car_wash", "car_rental", "fuel",                                                                      // car stuff
-        "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-        "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-        "coworking_space",                                                                                     // work
-
-        // name & wheelchair only
-        "theatre",                             // culture
-        "conference_centre", "arts_centre",    // events
-        "police", "ranger_station",            // civic
-        "ferry_terminal",                      // transport
-        "place_of_worship",                    // religious
-        "hospital"                             // health care
-    ),
-    "tourism" to arrayOf(
-        // common
-        "zoo", "aquarium", "theme_park", "gallery", "museum",
-
-        // name & wheelchair
-        "attraction",
-        "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
-
-        // wheelchair only
-        "viewpoint"
-
-        // and tourism = information, see above
-    ),
-    "leisure" to arrayOf(
-        // common
-        "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-        "amusement_arcade", "adult_gaming_centre", "tanning_salon",
-
-        // name & wheelchair
-        "sports_centre", "stadium"
-    ),
-    "office" to arrayOf(
-        // common
-        "insurance", "government", "travel_agent", "tax_advisor", "religion",
-        "employment_agency", "diplomatic", "coworking",
-        "estate_agent", "lawyer", "telecommunication", "educational_institution",
-        "association", "ngo", "it", "accountant",
-
-        // name & wheelchair
-        "political_party", "therapist"
-    ),
-    "craft" to arrayOf(
-        // common
-        "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-        "electronics_repair", "key_cutter", "stonemason",
-
-        // name & wheelchair
-        "winery"
-    ),
-    "healthcare" to arrayOf(
-        // common
-        "audiologist", "optometrist", "counselling", "speech_therapist",
-        "sample_collection", "blood_donation", "laboratory",
-    ),
-).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
-
-private const val PREF_ELEMENTS = "qs_AddWheelchairAccessBusiness_element_selection"

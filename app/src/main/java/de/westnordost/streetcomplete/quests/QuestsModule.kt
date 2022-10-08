@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -207,7 +206,6 @@ val questsModule = module {
         get(),
         get(),
         get(),
-        get(),
     ) }
 }
 
@@ -218,7 +216,6 @@ fun questTypeRegistry(
     countryInfos: CountryInfos,
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
-    prefs: SharedPreferences,
     osmoseDao: OsmoseDao,
     externalList: ExternalList,
 ) = QuestTypeRegistry(
@@ -228,7 +225,6 @@ fun questTypeRegistry(
     countryInfos,
     countryBoundariesFuture,
     arSupportChecker,
-    prefs,
     osmoseDao,
     externalList,
 )
@@ -239,7 +235,6 @@ fun getQuestTypeList(
     countryInfos: CountryInfos,
     countryBoundariesFuture: FutureTask<CountryBoundaries>,
     arSupportChecker: ArSupportChecker,
-    prefs: SharedPreferences,
     osmoseDao: OsmoseDao,
     externalList: ExternalList,
 ) = listOf(
@@ -410,7 +405,7 @@ fun getQuestTypeList(
     CheckOpeningHoursSigned(featureDictionaryFuture),
     SpecifyShopType(), // above add place name as some brand presets will set the name too
     CheckShopType(),
-    AddPlaceName(featureDictionaryFuture, prefs),
+    AddPlaceName(featureDictionaryFuture),
     AddOpeningHours(featureDictionaryFuture),
     AddSeating(), // easily visible from outside, but only seasonally
     AddBicyclePump(), // visible from the outside, but only during opening hours
@@ -459,7 +454,7 @@ fun getQuestTypeList(
 
     AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
-    AddLevel(prefs), // requires to search for the place on several levels (or at least find a mall map)
+    AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
 
     AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
@@ -491,7 +486,7 @@ fun getQuestTypeList(
     AddVegan(),
     AddHalal(), // there are ~ 100 times more Muslims than Jews
     AddKosher(),
-    AddWheelchairAccessBusiness(prefs), // used by wheelmap, OsmAnd, Organic Maps
+    AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
     AddInternetAccess(), // used by OsmAnd
     AddAcceptsCards(), // this will often involve going inside and near the till
     AddAcceptsCash(),
@@ -501,18 +496,18 @@ fun getQuestTypeList(
     /* ↓ 5.quests that are very numerous ---------------------------------------------------- */
 
     // roads
-    AddSidewalk(prefs), // for any pedestrian routers, needs minimal thinking
-    AddRoadSurface(prefs), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
+    AddSidewalk(), // for any pedestrian routers, needs minimal thinking
+    AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
-    AddCycleway(countryInfos, countryBoundariesFuture, prefs), // for any cyclist routers (and cyclist maps)
+    AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
     AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
     AddShoulder(), // needs minimal thinking
-    AddRoadWidth(arSupportChecker, prefs),
-    AddRoadSmoothness(prefs),
-    AddPathSmoothness(prefs),
+    AddRoadWidth(arSupportChecker),
+    AddRoadSmoothness(),
+    AddPathSmoothness(),
 
     // footways
-    AddPathSurface(prefs), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
+    AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
     AddFootwayPartSurface(),
     AddCyclewayPartSurface(),
@@ -525,17 +520,17 @@ fun getQuestTypeList(
 
     // buildings
     AddBuildingType(),
-    AddBuildingLevels(prefs),
-    AddRoofShape(countryInfos, countryBoundariesFuture, prefs),
+    AddBuildingLevels(),
+    AddRoofShape(countryInfos, countryBoundariesFuture),
 
-    AddStepCount(prefs), // can only be gathered when walking along this way, also needs the most effort and least useful
+    AddStepCount(), // can only be gathered when walking along this way, also needs the most effort and least useful
 
     /* at the very last because it can be difficult to ascertain during day. used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details) */
     AddWayLit(),
 
     // quests added in modified version
-    AddContactPhone(prefs),
-    AddContactWebsite(prefs),
+    AddContactPhone(),
+    AddContactWebsite(),
     RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
     AddCuisine(),
     AddHealthcareSpeciality(),
@@ -553,7 +548,7 @@ fun getQuestTypeList(
     ShowMachine(),
     ShowVacant(),
     ShowCamera(),
-    ShowFixme(prefs),
-    OsmoseQuest(osmoseDao, prefs),
+    ShowFixme(),
+    OsmoseQuest(osmoseDao),
     ExternalQuest(externalList),
 )

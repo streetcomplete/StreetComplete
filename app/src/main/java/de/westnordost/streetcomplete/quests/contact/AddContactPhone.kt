@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.contact
 
-import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -9,17 +7,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
-import de.westnordost.streetcomplete.quests.questPrefix
 
-class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType<String>() {
+class AddContactPhone : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways, relations with
         (
          tourism = information and information = office
          or """.trimIndent() +
-         prefs.getString(questPrefix(prefs) + PREF_PHONE_ELEMENTS, PLACES_FOR_CONTACT_QUESTS) +
+         PLACES_FOR_CONTACT_QUESTS +
         "\n) and !phone and !contact:phone and !contact:mobile and !brand and name"
 
     override val changesetComment = "Add phone number"
@@ -36,11 +32,6 @@ class AddContactPhone(private val prefs: SharedPreferences) : OsmFilterQuestType
     override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
         tags["phone"] = answer
     }
-
-    override val hasQuestSettings = true
-
-    override fun getQuestSettingsDialog(context: Context) =
-        fullElementSelectionDialog(context, prefs, questPrefix(prefs) + PREF_PHONE_ELEMENTS, R.string.quest_settings_element_selection, PLACES_FOR_CONTACT_QUESTS)
 
 }
 
@@ -68,5 +59,3 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
     ),
     "healthcare" to arrayOf("psychotherapist", "physiotherapist", "laboratory")
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
-
-private const val PREF_PHONE_ELEMENTS = "qs_AddContactPhone_element_selection"

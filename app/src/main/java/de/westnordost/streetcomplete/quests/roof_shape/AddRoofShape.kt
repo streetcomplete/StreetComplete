@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -20,7 +19,6 @@ import java.util.concurrent.FutureTask
 class AddRoofShape(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val prefs: SharedPreferences,
 ) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """

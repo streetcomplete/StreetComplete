@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.quest
 
-import android.content.SharedPreferences
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -24,7 +23,6 @@ class QuestTypeRegistry(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
     private val arSupportChecker: ArSupportChecker,
-    private val prefs: SharedPreferences,
     private val osmoseDao: OsmoseDao,
     private val externalList: ExternalList,
     private val quests: MutableList<QuestType> = mutableListOf()
@@ -43,7 +41,6 @@ class QuestTypeRegistry(
             countryInfos,
             countryBoundariesFuture,
             arSupportChecker,
-            prefs,
             osmoseDao,
             externalList,
         ))

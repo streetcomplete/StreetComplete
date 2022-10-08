@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 
-class AddPathSurface(private val prefs: SharedPreferences) : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
+class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps

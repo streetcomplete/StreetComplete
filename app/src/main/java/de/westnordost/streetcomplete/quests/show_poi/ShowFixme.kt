@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
-class ShowFixme(private val prefs: SharedPreferences) : OsmFilterQuestType<Boolean>() {
+class ShowFixme : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways, relations with
           (fixme or FIXME)

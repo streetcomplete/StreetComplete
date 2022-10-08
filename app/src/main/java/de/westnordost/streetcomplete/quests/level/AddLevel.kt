@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.level
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -17,7 +16,7 @@ import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddLevel(private val prefs: SharedPreferences) : OsmElementQuestType<String> {
+class AddLevel : OsmElementQuestType<String> {
 
     /* including any kind of public transport station because even really large bus stations feel
      * like small airport terminals, like Mo Chit 2 in Bangkok*/

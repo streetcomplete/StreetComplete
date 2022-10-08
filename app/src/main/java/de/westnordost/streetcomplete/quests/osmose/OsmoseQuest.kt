@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.osmose
 
 import androidx.appcompat.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.widget.SwitchCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -13,7 +12,7 @@ import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
-class OsmoseQuest(private val osmoseDao: OsmoseDao, private val prefs: SharedPreferences) : OtherSourceQuestType {
+class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_osmose_title
 
