@@ -45,10 +45,11 @@ class TracksMapComponent(ctrl: KtMapController) {
     }
 
     /** Set all the tracks (when re-initializing), if recording the last track is the only recording */
-    fun setTracks(tracks: List<List<LatLon>>, isRecording: Boolean) {
-        this.tracks = tracks.mapIndexed { index, track ->
+    fun setTracks(pointsList: List<List<LatLon>>, isRecording: Boolean) {
+        require(pointsList.isNotEmpty())
+        tracks = pointsList.mapIndexed { index, track ->
             var recording = false
-            if (isRecording && index == tracks.size - 1) {
+            if (isRecording && index == pointsList.size - 1) {
                 recording = true
             }
             Track(track.map { it.toLngLat() }.toMutableList(), recording)

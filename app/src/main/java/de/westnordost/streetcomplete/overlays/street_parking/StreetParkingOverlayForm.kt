@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.osm.street_parking.applyTo
 import de.westnordost.streetcomplete.osm.street_parking.asItem
 import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.CONDITIONAL_RESTRICTIONS
 import de.westnordost.streetcomplete.overlays.street_parking.NoParkingSelection.IMPLICIT
@@ -89,10 +90,9 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun initStateFromTags() {
-        val parking = createStreetParkingSides(element!!.tags)
-        currentParking = parking
-        streetSideSelect.setPuzzleSide(parking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
-        streetSideSelect.setPuzzleSide(parking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
+        currentParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
+        streetSideSelect.setPuzzleSide(currentParking?.left?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(false)), false)
+        streetSideSelect.setPuzzleSide(currentParking?.right?.asStreetSideItem(requireContext(), countryInfo, isUpsideDown(true)), true)
     }
 
     override fun hasChanges(): Boolean =

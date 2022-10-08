@@ -7,17 +7,19 @@ v48.0-beta1: |
   <h3>🛍️ Shops Overlay</h3>
   <p>Easily map and check what shops exist in your local shopping area!</p>
   <h3>🚀 HUGE performance improvements (#4079, #4125), by @Helium314</h3>
-  <p>The app is now more responsive during normal use thanks to extensive caching, in particular, roughly:</p>
+  <p>The app is now more responsive during normal use thanks to extensive caching and other improvements, in particular, roughly:</p>
   <ul>
   <li>2x to 8x times faster display of quest pins and overlays</li>
   <li>2x to 3x times faster showing of quest details</li>
   <li>up to 2x times faster solving of a quests</li>
+  <li>slightly faster download (#4469)</li>
   </ul>
   <h3>New Quests</h3>
   <ul>
   <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
   <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
   <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
+  <li><i>What’s the identification number here?</i>, asked for fire hydrants (#3059, #4386), by @mcliquid</li>
   </ul>
   <h3>Other enhancements</h3>
   <ul>
@@ -25,7 +27,17 @@ v48.0-beta1: |
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
-  <li>Other small enhancements and fixes (#4431...), thanks @matkoniecz</li>
+  <li>Other small enhancements and fixes (#4431, #4453...), thanks @matkoniecz</li>
+  </ul>
+
+v47.1: |
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>Do not show quests for kind of shops that cannot be referred to by name or type (#4448)</li>
+  <li>Sidewalk and street parking overlays: Allow to only specify the situation on one side (#4427)</li>
+  <li>Street parking overlay: Show parking areas semi-transparent in front of street side parkings</li>
+  <li>Overlays: Fix possible crash when editing roads with incomplete or invalid tagging</li>
+  <li>Other minor enhancements, fixes and crash fixes (#4424, #4429, #4435, #4447, ...), thanks @mcliquid, @Helium314</li>
   </ul>
 
 v47.0: |

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -146,6 +147,12 @@ class OsmQuestController internal constructor(
 
         val countryBoundaries = countryBoundariesFuture.get()
 
+        // Remove elements without tags, to be used for quests that are never applicable without
+        // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
+        // guarantees we can skip elements without tags completely. Also those quests don't use geometry.
+        // This shortcut reduces time for creating quests by ~15-30%.
+        val onlyElementsWithTags = MutableMapDataWithGeometry(mapDataWithGeometry.filter { it.tags.isNotEmpty() }, emptyList())
+
         val deferredQuests: List<Deferred<List<OsmQuest>>> = questTypes.map { questType ->
             scope.async {
                 val questsForType = ArrayList<OsmQuest>()
@@ -156,7 +163,11 @@ class OsmQuestController internal constructor(
                 } else {
                     val questTime = currentTimeMillis()
                     var questCount = 0
-                    for (element in questType.getApplicableElements(mapDataWithGeometry)) {
+                    val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags)
+                            onlyElementsWithTags
+                        else
+                            mapDataWithGeometry
+                    for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)
                             ?: continue
                         if (!mayCreateQuest(questType, geometry, bbox)) continue
