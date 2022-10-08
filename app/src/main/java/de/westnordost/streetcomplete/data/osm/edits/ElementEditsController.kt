@@ -23,12 +23,11 @@ class ElementEditsController(
     /** Add new unsynced edit to the to-be-uploaded queue */
     override fun add(
         type: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, geometry, source, currentTimeMillis(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -99,7 +98,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
         }
         // not uploaded yet
         else {

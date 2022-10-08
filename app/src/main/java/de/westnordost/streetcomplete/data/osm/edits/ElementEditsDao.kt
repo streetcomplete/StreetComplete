@@ -4,9 +4,6 @@ import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.CREATED_TIMESTAMP
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT_ID
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.GEOMETRY
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ID
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.IS_SYNCED
@@ -117,9 +114,6 @@ class ElementEditsDao(
 
     private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOf(
         QUEST_TYPE to type.name,
-        ELEMENT_TYPE to elementType.name,
-        ELEMENT_ID to elementId,
-        ELEMENT to json.encodeToString(originalElement),
         GEOMETRY to json.encodeToString(originalGeometry),
         SOURCE to source,
         LATITUDE to position.latitude,
@@ -133,9 +127,6 @@ class ElementEditsDao(
         getLong(ID),
         questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
             ?: overlayRegistry.getByName(getString(QUEST_TYPE))!!,
-        ElementType.valueOf(getString(ELEMENT_TYPE)),
-        getLong(ELEMENT_ID),
-        json.decodeFromString(getString(ELEMENT)),
         json.decodeFromString(getString(GEOMETRY)),
         getString(SOURCE),
         getLong(CREATED_TIMESTAMP),

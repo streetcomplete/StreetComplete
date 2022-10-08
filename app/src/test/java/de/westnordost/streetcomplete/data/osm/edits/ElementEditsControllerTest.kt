@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import org.junit.Before
@@ -45,7 +44,7 @@ class ElementEditsControllerTest {
         val action = mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1, 2, 3))
 
-        ctrl.add(QUEST_TYPE, node(1), pGeom(), "test", action)
+        ctrl.add(QUEST_TYPE, pGeom(), "test", action)
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)

@@ -261,9 +261,6 @@ private fun updateTags(
 ) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    element.type,
-    element.id,
-    element,
     geometry,
     "survey",
     timestamp,
@@ -280,9 +277,6 @@ private fun updateTags(
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
@@ -299,9 +293,6 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
@@ -312,9 +303,6 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
 private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
@@ -325,9 +313,6 @@ private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) =
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    ElementType.WAY,
-    1,
-    Way(1, listOf(0, 1)),
     ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0, 1.0))), LatLon(0.5, 0.5)),
     "survey",
     timestamp,
@@ -347,9 +332,6 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
 private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
@@ -360,9 +342,6 @@ private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = Elem
 private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
