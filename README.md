@@ -1,13 +1,17 @@
 StreetComplete expert edition is a modified version of StreetComplete with enhanced capabilities.
+It can be installed alongside origninal StreetComplete without any issues.
 
 Notable changes:
 * Option to directly edit tags
-* Create nodes from iD presets anywhere
 * Quick settings, e.g. for fast switch of preset
-* Ability to create notes in a GPX file
-* Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest.
-* More answers for some vanilla quests
-* More customization of UI and what is displayed
+* More customizble behavior
+* Import / export for settings, quest presets and hidden quests
+* Show all quests for the selected element at once
+* Level filter (available in quick settings menu)
+* Create nodes from iD presets anywhere
+* Ability to create personal notes in a GPX file instead of uploading them to OSM
+* Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
+* More answers for some quests
 * Configurable quests
 * Quests based on custom data sources (currently available: Osmose and CSV file)
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
