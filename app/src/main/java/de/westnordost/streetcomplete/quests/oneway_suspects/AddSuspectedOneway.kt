@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects
 
 import android.util.Log
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -43,6 +44,11 @@ class AddSuspectedOneway(
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return emptyList()
+
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false)) {
+            // avoid downloading over and over again if dynamic quest creation is enabled
+            return mapData.filter { element -> filter.matches(element) && db.isForward(element.id) != null }
+        }
 
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
