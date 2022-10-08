@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -341,8 +340,7 @@ class SettingsFragment :
             builder.setView(linearLayout)
             builder.setPositiveButton(android.R.string.ok) { _, _ ->
                 distance.text.toString().toFloatOrNull()?.let {
-                    if (it in 0.0..10.0)
-                        prefs.edit { putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it) }
+                    prefs.edit { putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it.coerceAtLeast(0.0f).coerceAtMost(10.0f)) }
                 }
             }
             builder.show()
@@ -394,9 +392,12 @@ class SettingsFragment :
             GPX_REQUEST_CODE -> saveGpx(data)
             REQUEST_CODE_SETTINGS_EXPORT -> {
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                if (!f.exists()) return
+                if (!f.exists()) {
+                    context?.toast(R.string.export_error_no_settings_file, Toast.LENGTH_LONG)
+                    return
+                }
                 activity?.contentResolver?.openOutputStream(uri)?.use { os ->
-                    val lines = f.readLines().filterNot {
+                    val lines = f.readLines().filterNot { // ignore login data and sprite sheets
                         it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") || it.contains("oauth.") || it.contains("osm.")
                     }
                     os.bufferedWriter().use { it.write(lines.joinToString("\n")) }
@@ -469,8 +470,6 @@ class SettingsFragment :
                 }
             }
             REQUEST_CODE_SETTINGS_IMPORT -> {
-                // how to make sure shared prefs are re-read from the new file?
-                // probably need to restart app on import
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
                 val t = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readText() }
                 if (t == null || !t.startsWith("<?xml version")) {
@@ -478,7 +477,7 @@ class SettingsFragment :
                     return
                 }
                 f.writeText(t)
-
+                // need to immediately restart the app to avoid current settings writing to new file
                 restartApp()
             }
             REQUEST_CODE_HIDDEN_IMPORT -> {
@@ -545,28 +544,10 @@ class SettingsFragment :
                     .setNeutralButton(R.string.import_presets_add) { _, _ -> importPresets(lines, false) }
                     .show()
             }
-            REQUEST_CODE_EXTERNAL_IMPORT -> {
-                activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
-                    File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL).writeText(reader.readText())
-                } }
-            }
-            REQUEST_CODE_EXTERNAL_EXPORT -> {
-                val text = File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL).readText()
-                activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
-                    writer.write(text)
-                } }
-            }
-            REQUEST_CODE_TREES_IMPORT -> {
-                activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
-                    File(context?.getExternalFilesDir(null), FILENAME_TREES).writeText(reader.readText())
-                } }
-            }
-            REQUEST_CODE_TREES_EXPORT -> {
-                val text = File(context?.getExternalFilesDir(null), FILENAME_TREES).readText()
-                activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
-                    writer.write(text)
-                } }
-            }
+            REQUEST_CODE_EXTERNAL_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_EXTERNAL) }
+            REQUEST_CODE_EXTERNAL_EXPORT -> { writeFromExternalFileToUri(FILENAME_EXTERNAL, uri) }
+            REQUEST_CODE_TREES_IMPORT -> { readFromUriToExternalFile(uri, FILENAME_TREES) }
+            REQUEST_CODE_TREES_EXPORT -> { writeFromExternalFileToUri(FILENAME_TREES, uri) }
         }
     }
 
@@ -661,6 +642,16 @@ class SettingsFragment :
         visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
     }
 
+    private fun readFromUriToExternalFile(uri: Uri, filename: String) =
+        activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { reader ->
+            File(context?.getExternalFilesDir(null), filename).writeText(reader.readText())
+        } }
+
+    private fun writeFromExternalFileToUri(filename: String, uri: Uri) =
+        activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
+            writer.write(File(context?.getExternalFilesDir(null), filename).readText())
+        } }
+
     private fun saveGpx(data: Intent) {
         val uri = data.data ?: return
         val output = activity?.contentResolver?.openOutputStream(uri) ?: return
@@ -684,11 +675,11 @@ class SettingsFragment :
                     files.add(it)
             }
 
-            // write to zip
+            // write files to zip
             val zipStream = ZipOutputStream(os)
             files.forEach {
                 val fileStream = FileInputStream(it).buffered()
-                zipStream.putNextEntry(ZipEntry(it.name)) // is name the right thing?
+                zipStream.putNextEntry(ZipEntry(it.name))
                 fileStream.copyTo(zipStream, 1024)
                 fileStream.close()
                 zipStream.closeEntry()
@@ -731,16 +722,12 @@ class SettingsFragment :
         prefs.registerOnSharedPreferenceChangeListener(this)
     }
 
-    override fun onDetach() {
-        super.onDetach()
-    }
-
     override fun onPause() {
         super.onPause()
         prefs.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    @SuppressLint("InflateParams", "ApplySharedPref")
+    @SuppressLint("InflateParams")
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
             Prefs.AUTOSYNC -> {
@@ -760,70 +747,17 @@ class SettingsFragment :
                 setDefaultLocales(getSelectedLocales(requireContext()))
                 activity?.let { ActivityCompat.recreate(it) }
             }
-            Prefs.RESURVEY_INTERVALS -> {
-                resurveyIntervalsUpdater.update()
-            }
-            Prefs.QUEST_GEOMETRIES -> {
+            Prefs.RESURVEY_INTERVALS -> { resurveyIntervalsUpdater.update() }
+            Prefs.QUEST_GEOMETRIES, Prefs.DYNAMIC_QUEST_CREATION -> {
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
             Prefs.DAY_NIGHT_BEHAVIOR -> {
                 dayNightQuestFilter.reload()
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }
-            Prefs.QUEST_SETTINGS_PER_PRESET -> {
-                // need to commit, because otherwise setting change is lost after the immediate restart
-                prefs.edit().putBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false)).commit()
-                restartApp()
-            }
-            Prefs.DATA_RETAIN_TIME -> {
-                lifecycleScope.launch(Dispatchers.IO) { cleaner.clean() }
-            }
-            Prefs.PREFER_EXTERNAL_SD -> {
-                val sd = requireContext().externalCacheDirs
-                    .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: return
-                val default = requireContext().externalCacheDir ?: return
-                val sdCache = File(sd, "tile_cache")
-                val defaultCache = File(default, "tile_cache")
-
-                // move to preferred storage
-                val sdPreferred = prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)
-                var d: AlertDialog? = null
-                val target = if (sdPreferred) sdCache else defaultCache
-                val source = if (sdPreferred) defaultCache else sdCache
-                if (!source.exists()) return
-                target.mkdirs()
-                val moveJob = lifecycleScope.launch(Dispatchers.IO) {
-                    // copyRecursively would be easier, but crashes with FileNotFoundException (even if I tell it to skip in that case, wtf?)
-                    val files = source.listFiles() ?: return@launch
-                    val size = files.size
-                    var i = 0
-                    for (f in files) {
-                        i++
-                        if (!f.exists() || f.isDirectory) continue
-                        val dstFile = File(target, f.toRelativeString(source))
-                        if (!coroutineContext.isActive) break
-                        if (i % 100 == 0)
-                            activity?.runOnUiThread { d?.setMessage("$i / $size") }
-                        if (dstFile.exists()) continue
-                        try {
-                            f.inputStream().use { input -> dstFile.outputStream().use { input.copyTo(it) } }
-                            dstFile.setLastModified(f.lastModified())
-                        } catch (e: IOException) {
-                            continue
-                        }
-                    }
-                    yield() // don't delete if moving was canceled
-                    kotlin.runCatching { source.deleteRecursively() }
-                    d?.dismiss()
-                    restartApp() // necessary for really changing cache directory
-                }
-                d = AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.moving)
-                    .setMessage("0 / ?")
-                    .setNegativeButton(android.R.string.cancel) { _,_ -> moveJob.cancel() }
-                    .setCancelable(false)
-                    .show()
-            }
+            Prefs.QUEST_SETTINGS_PER_PRESET -> { OsmQuestController.reloadQuestTypes() }
+            Prefs.DATA_RETAIN_TIME -> { lifecycleScope.launch(Dispatchers.IO) { cleaner.clean() } }
+            Prefs.PREFER_EXTERNAL_SD -> { moveMapTilesToCurrentLocation() }
         }
     }
 
@@ -862,6 +796,53 @@ class SettingsFragment :
         val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
 
         return presetStr + enabledStr
+    }
+
+    private fun moveMapTilesToCurrentLocation() {
+        val sd = requireContext().externalCacheDirs
+            .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: return
+        val default = requireContext().externalCacheDir ?: return
+        val sdCache = File(sd, "tile_cache")
+        val defaultCache = File(default, "tile_cache")
+
+        // move to preferred storage
+        val sdPreferred = prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)
+        var d: AlertDialog? = null
+        val target = if (sdPreferred) sdCache else defaultCache
+        val source = if (sdPreferred) defaultCache else sdCache
+        if (!source.exists()) return
+        target.mkdirs()
+        val moveJob = lifecycleScope.launch(Dispatchers.IO) {
+            // copyRecursively would be easier, but crashes with FileNotFoundException (even if I tell it to skip in that case, wtf?)
+            val files = source.listFiles() ?: return@launch
+            val size = files.size
+            var i = 0
+            for (f in files) {
+                i++
+                if (!f.exists() || f.isDirectory) continue
+                val dstFile = File(target, f.toRelativeString(source))
+                if (!coroutineContext.isActive) break
+                if (i % 100 == 0)
+                    activity?.runOnUiThread { d?.setMessage("$i / $size") }
+                if (dstFile.exists()) continue
+                try {
+                    f.inputStream().use { input -> dstFile.outputStream().use { input.copyTo(it) } }
+                    dstFile.setLastModified(f.lastModified())
+                } catch (e: IOException) {
+                    continue
+                }
+            }
+            yield() // don't delete if moving was canceled
+            kotlin.runCatching { source.deleteRecursively() }
+            d?.dismiss()
+            restartApp() // necessary for really changing cache directory
+        }
+        d = AlertDialog.Builder(requireContext())
+            .setTitle(R.string.moving)
+            .setMessage("0 / ?")
+            .setNegativeButton(android.R.string.cancel) { _,_ -> moveJob.cancel() }
+            .setCancelable(false)
+            .show()
     }
 }
 

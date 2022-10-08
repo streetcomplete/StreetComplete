@@ -66,7 +66,8 @@
     <string name="import_presets_replace">Replace</string>
     <string name="import_error">Import error</string>
     <string name="import_error_db_version">Import error: unknown version</string>
-    <string name="export_warning_db_version">Warning: database version unknown, import may not work</string>
+    <string name="export_warning_db_version">Warning: database version unknown, import may not work. Please ask for the app to be updated.</string>
+    <string name="export_error_no_settings_file">Error: settings file not found</string>
     <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
     <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset</string>
     <string name="pref_dynamic_quest_creation_title">Create quests dynamically</string>
