@@ -25,7 +25,7 @@ If you are doing it for the first time, don't worry if there is an error to solv
 
 ## Alternative to Android Studio
 
-- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Click on `Actions` > `Build debug apk` on your GitHub fork, and after about 15 minutes, download the ready-made `debug-apk.zip` which contains an `.apk` file to install on your phone manually.
+- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Click on `Actions` > `Build debug apk` on your GitHub fork, make sure you select correct branch with your changes when clicking `Run workflow`, and after about 15 minutes, download the ready-made `debug-apk.zip` which contains an `.apk` file to install on your phone manually.
   This debug build of StreetComplete can be installed alongside the official version.
 - One can also edit files online in the GitHub file view via the pen icon, thus avoiding the need for a local git client and doing all the changes on the web.
 
