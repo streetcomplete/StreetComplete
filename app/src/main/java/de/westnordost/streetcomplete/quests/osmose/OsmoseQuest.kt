@@ -16,6 +16,8 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_osmose_title
 
+    override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
+
     override fun download(bbox: BoundingBox) = osmoseDao.download(bbox)
 
     override fun upload() = osmoseDao.reportChanges()

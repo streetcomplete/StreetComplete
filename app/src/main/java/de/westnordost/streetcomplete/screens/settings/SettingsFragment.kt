@@ -471,12 +471,12 @@ class SettingsFragment :
             }
             REQUEST_CODE_SETTINGS_IMPORT -> {
                 val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                val t = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readText() }
-                if (t == null || !t.startsWith("<?xml version")) {
+                val t = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() }
+                if (t == null || t.firstOrNull()?.startsWith("<?xml version") != true) {
                     context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
                     return
                 }
-                f.writeText(t)
+                f.writeText(t.filterNot { it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") }.joinToString("\n"))
                 // need to immediately restart the app to avoid current settings writing to new file
                 restartApp()
             }
@@ -747,7 +747,11 @@ class SettingsFragment :
                 setDefaultLocales(getSelectedLocales(requireContext()))
                 activity?.let { ActivityCompat.recreate(it) }
             }
-            Prefs.RESURVEY_INTERVALS -> { resurveyIntervalsUpdater.update() }
+            Prefs.RESURVEY_INTERVALS -> {
+                resurveyIntervalsUpdater.update()
+                if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                    OsmQuestController.reloadQuestTypes()
+            }
             Prefs.QUEST_GEOMETRIES, Prefs.DYNAMIC_QUEST_CREATION -> {
                 visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
             }

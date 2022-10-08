@@ -162,9 +162,9 @@ class MapDataController internal constructor(
 
     fun get(type: ElementType, id: Long): Element? = cache.getElement(type, id, elementDB::get)
 
-    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = cache.getGeometry(type, id, geometryDB::get)
+    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = cache.getGeometry(type, id, geometryDB::get, nodeDB::get)
 
-    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries)
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries, nodeDB::getAll)
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
         val time = currentTimeMillis()
@@ -249,7 +249,7 @@ class MapDataController internal constructor(
 
     fun clearCache() = synchronized(this) { cache.clear() }
 
-    fun trimCache() = synchronized(this) { cache.trim(SPATIAL_CACHE_TILES / 3) }
+    fun trimCache() = synchronized(this) { cache.trim(SPATIAL_CACHE_TILES / 4) }
 
     fun addListener(listener: Listener) {
         listeners.add(listener)
@@ -287,7 +287,7 @@ private const val SPATIAL_CACHE_TILE_ZOOM = 18
 // Three times the maximum number of tiles that can be loaded at once in StyleableOverlayManager (translated from z16 tiles).
 // We don't want to drop tiles from cache already when scrolling the map just a bit, especially
 // considering automatic trim may temporarily reduce cache size to 2/3 of maximum.
-private const val SPATIAL_CACHE_TILES = 48 * 4 * 4 // 48 z16 tiles, but 2 zoom levels higher
+private const val SPATIAL_CACHE_TILES = 64 * 4 * 4 // 48 z16 tiles, but 2 zoom levels higher
 
 // In a city this is roughly the number of nodes in ~20-40 z16 tiles
 private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000

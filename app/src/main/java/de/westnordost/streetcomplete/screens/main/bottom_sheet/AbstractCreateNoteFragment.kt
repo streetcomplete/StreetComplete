@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -13,7 +12,6 @@ import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
-import org.koin.android.ext.android.inject
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
@@ -57,11 +55,11 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         if (noteText != null ) {
             okButtonContainer.popIn()
             if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
-                gpxButton.popIn()
+                floatingBottomView2?.popIn()
         } else {
             okButtonContainer.popOut()
             if (prefs.getBoolean(Prefs.GPX_BUTTON, false))
-                gpxButton.popOut()
+                floatingBottomView2?.popOut()
         }
     }
 

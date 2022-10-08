@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Bundle
@@ -93,6 +94,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import android.util.Log
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -183,13 +182,11 @@ class MapDataCache(
         id: Long,
         fetch: (ElementType, Long) -> Element?
     ): Element? = synchronized(this) {
-        val a = when (type) {
+        when (type) {
             ElementType.NODE -> spatialCache.get(id) ?: nodeCache.getOrPutIfNotNull(id) { fetch(type, id) as? Node }
             ElementType.WAY -> wayCache.getOrPutIfNotNull(id) { fetch(type, id) as? Way }
             ElementType.RELATION -> relationCache.getOrPutIfNotNull(id) { fetch(type, id) as? Relation }
         }
-        if (a == null) Log.i("cachetest", "getElement $type $id returned null")
-        return a
     }
 
     /**
@@ -199,15 +196,14 @@ class MapDataCache(
     fun getGeometry(
         type: ElementType,
         id: Long,
-        fetch: (ElementType, Long) -> ElementGeometry?
+        fetch: (ElementType, Long) -> ElementGeometry?,
+        fetchNode: (Long) -> Node?
     ): ElementGeometry? = synchronized(this) {
-        val a = when (type) {
-            ElementType.NODE -> (spatialCache.get(id) ?: nodeCache[id])?.let { ElementPointGeometry(it.position) } ?: fetch(type, id)
+        when (type) {
+            ElementType.NODE -> (spatialCache.get(id) ?: nodeCache.getOrPutIfNotNull(id) { fetchNode(id) })?.let { ElementPointGeometry(it.position) }
             ElementType.WAY -> wayGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
             ElementType.RELATION -> relationGeometryCache.getOrPutIfNotNull(id) { fetch(type, id) }
         }
-        if (a == null) Log.i("cachetest", "getGeometry $type $id returned null")
-        a
     }
 
     /**
@@ -242,8 +238,6 @@ class MapDataCache(
                 ElementType.RELATION -> relationCache[element.id] = element as Relation
             }
         }
-        if ((cachedElements.size + fetchedElements.size) < keys.size)
-            Log.i("cachetest", "getElements missing: ${keys.toHashSet().apply { removeAll { it in (cachedElements + fetchedElements).map { ElementKey(it.type, it.id) } } }}")
         return cachedElements + fetchedElements
     }
 
@@ -258,8 +252,6 @@ class MapDataCache(
         val missingNodeIds = ids.filterNot { it in cachedNodeIds }
         val fetchedNodes = fetch(missingNodeIds)
         fetchedNodes.forEach { nodeCache[it.id] = it }
-        if ((cachedNodes.size + fetchedNodes.size) < ids.size)
-            Log.i("cachetest", "getElements missing: ${ids.toHashSet().apply { removeAll { it in (cachedNodes + fetchedNodes).map { it.id } } }}")
         return cachedNodes + fetchedNodes
     }
 
@@ -287,7 +279,8 @@ class MapDataCache(
      */
     fun getGeometries(
         keys: Collection<ElementKey>,
-        fetch: (Collection<ElementKey>) -> List<ElementGeometryEntry>
+        fetch: (Collection<ElementKey>) -> List<ElementGeometryEntry>,
+        fetchNodes: (Collection<Long>) -> List<Node>
     ): List<ElementGeometryEntry> = synchronized(this) {
         // the implementation here is quite identical to the implementation in getElements, only
         // that geometries and not elements are returned and thus different caches are accessed
@@ -305,7 +298,7 @@ class MapDataCache(
         // otherwise, fetch the rest & save to cache
         val cachedKeys = cachedEntries.map { ElementKey(it.elementType, it.elementId) }.toSet()
         val keysToFetch = keys.filterNot { it in cachedKeys }
-        val fetchedEntries = fetch(keysToFetch)
+        val fetchedEntries = fetch(keysToFetch.filterNot { it.type == ElementType.NODE }) // only fetch non-nodes
         for (entry in fetchedEntries) {
             when (entry.elementType) {
                 ElementType.WAY -> wayGeometryCache[entry.elementId] = entry.geometry
@@ -313,9 +306,10 @@ class MapDataCache(
                 else -> Unit
             }
         }
-        if ((cachedEntries.size + fetchedEntries.size) < keys.size)
-            Log.i("cachetest", "getElements missing: ${keys.toHashSet().apply { removeAll { it in (cachedEntries + fetchedEntries).map { ElementKey(it.elementType, it.elementId) } } }}")
-        return cachedEntries + fetchedEntries
+        // now fetch the nodes separately and add them to nodeCache
+        val nodes = fetchNodes(keysToFetch.mapNotNull { if (it.type == ElementType.NODE) it.id else null })
+        nodes.forEach { nodeCache[it.id] = it }
+        return cachedEntries + fetchedEntries + nodes.map { it.toElementGeometryEntry() }
     }
 
     /**

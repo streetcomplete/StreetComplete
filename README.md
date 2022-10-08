@@ -13,6 +13,7 @@ Notable changes:
 * Additional quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
 * Quests based on custom data sources (currently available: Osmose and CSV file)
 * More answers for some quests
+* Customizable overlay: enter a filter and highlight anything that matches
 * Show all hidden quests on long press on undo icon (works only for downloaded areas)
 * Performance improvements (balanced by more data to process, so don't expect an improvement over StreetComplete)
 * Different app name, which means edits made with this version will not be counted in StreetComplete statistics (used in notes and changesets: StreetComplete_ee)

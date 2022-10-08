@@ -24,6 +24,8 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     // like for OsmQuestType
     override val title: Int get() = getTitle(emptyMap())
     fun getTitle(tags: Map<String, String>): Int
+    // getTitleArgs must contain the necessary amount of placeholders for the title string!
+    // so override it if your title string contains %s, even if you replace the title in the form
     fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
     val highlightedElementsRadius: Double? get() = null
     fun getHighlightedElements(getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()

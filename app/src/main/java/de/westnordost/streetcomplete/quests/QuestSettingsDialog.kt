@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
 // quests settings should follow the pattern: qs_<quest_name>_<something>, e.g. "qs_AddLevel_more_levels"
+// when to call reloadQuestTypes: if whatever is changed is not read from settings every time, or if dynamic quest creation is enabled
 
 /** for setting values of a single key, comma separated */
 fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences, pref: String, defaultValue: String, messageId: Int, needsReload: Boolean = true): AlertDialog {
@@ -40,6 +41,7 @@ fun singleTypeElementSelectionDialog(context: Context, prefs: SharedPreferences,
                 OsmQuestController.reloadQuestTypes()
         }
         .create()
+    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
     return dialog
 }
 
@@ -61,12 +63,17 @@ fun numberSelectionDialog(context: Context, prefs: SharedPreferences, pref: Stri
         .setPositiveButton(android.R.string.ok) { _,_ ->
             numberInput.text.toString().toIntOrNull()?.let {
                 prefs.edit().putInt(pref, it).apply()
+                if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                    OsmQuestController.reloadQuestTypes()
             }
         }
         .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
             prefs.edit().remove(pref).apply()
+            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+                OsmQuestController.reloadQuestTypes()
         }
         .create()
+    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
     return dialog
 }
 
@@ -106,6 +113,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             OsmQuestController.reloadQuestTypes()
         }
         .create()
+    dialog.setOnShowListener { dialog.getButton(AlertDialog.BUTTON_NEUTRAL)?.isEnabled = prefs.contains(pref) }
     return dialog
 }
 
