@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -39,6 +40,7 @@ import org.mockito.Mockito.verifyNoInteractions
 class MapDataWithEditsSourceTest {
 
     private lateinit var editsCtrl: ElementEditsController
+    private lateinit var createdElementsSource: CreatedElementsSource
     private lateinit var mapDataCtrl: MapDataController
     private val geometryCreator = ElementGeometryCreator()
 
@@ -51,6 +53,7 @@ class MapDataWithEditsSourceTest {
     fun setUp() {
         editsCtrl = mock()
         mapDataCtrl = mock()
+        createdElementsSource = mock()
         mapData = MutableMapDataWithGeometry()
         // a trick to get the edit action to apply to anything
         mapData.putElement(node(-1, pos = p(60.0, 60.0)))
@@ -1053,7 +1056,7 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
-    private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator)
+    private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator, createdElementsSource)
 
     /** Feed mock MapDataController the data */
     private fun originalGeometriesAre(vararg elementGeometryEntries: ElementGeometryEntry) {
@@ -1083,7 +1086,7 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(
             element = node(-1),
             action = action
@@ -1100,7 +1103,7 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
         editsListener.onAddedEdit(edit(
             element = node(-1),
             action = action

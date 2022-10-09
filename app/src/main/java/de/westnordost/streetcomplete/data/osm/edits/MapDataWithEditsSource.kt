@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
+import de.westnordost.streetcomplete.data.osm.created_elements.MapDataRepositoryWithUpdatedIds
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -32,7 +34,8 @@ import java.util.concurrent.CopyOnWriteArrayList
 class MapDataWithEditsSource internal constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,
-    private val elementGeometryCreator: ElementGeometryCreator
+    private val elementGeometryCreator: ElementGeometryCreator,
+    private val createdElementsSource: CreatedElementsSource
 ) : MapDataRepository {
 
     /** Interface to be notified of new or updated OSM elements */
@@ -170,7 +173,7 @@ class MapDataWithEditsSource internal constructor(
         elementEditsController.addListener(elementEditsListener)
     }
 
-    fun get(type: ElementType, id: Long): Element? = synchronized(this) {
+    override fun get(type: ElementType, id: Long): Element? = synchronized(this) {
         val key = ElementKey(type, id)
         if (deletedElements.contains(key)) return null
 
@@ -377,7 +380,8 @@ class MapDataWithEditsSource internal constructor(
 
         val mapDataChanges: MapDataChanges
         try {
-            mapDataChanges = edit.action.createUpdates(this, idProvider)
+            val repo = MapDataRepositoryWithUpdatedIds(createdElementsSource, this)
+            mapDataChanges = edit.action.createUpdates(repo, idProvider)
         } catch (e: ConflictException) {
             return null
         }

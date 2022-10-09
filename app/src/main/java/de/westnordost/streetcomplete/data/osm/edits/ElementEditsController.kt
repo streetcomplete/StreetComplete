@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -66,14 +64,8 @@ class ElementEditsController(
         return unsynced.filter { it !is IsRevertAction }.size - unsynced.filter { it is IsRevertAction }.size
     }
 
-    fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
-        val syncSuccess: Boolean
-        synchronized(this) {
-            for (update in elementUpdates.idUpdates) {
-                editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
-            }
-            syncSuccess = editsDB.markSynced(edit.id)
-        }
+    fun markSynced(edit: ElementEdit) {
+        val syncSuccess = synchronized(this) { editsDB.markSynced(edit.id) }
         if (syncSuccess) onSyncedEdit(edit)
 
         /* must be deleted after the callback because the callback might want to get the id provider
@@ -119,15 +111,6 @@ class ElementEditsController(
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
-            // set proper assigned id of the new element
-            val hasDummyElement = edit.elementId == 0L
-            if (hasDummyElement) {
-                if (edit.elementType != ElementType.NODE) {
-                    throw IllegalStateException("Element creation only supported for nodes")
-                }
-                val idProvider = elementIdProviderDB.get(id)
-                editsDB.updateElementId(id, idProvider.nextNodeId())
-            }
         }
         onAddedEdit(edit)
     }
@@ -148,23 +131,6 @@ class ElementEditsController(
         /* must be deleted after the callback because the callback might want to get the id provider
            for that edit */
         elementIdProviderDB.deleteAll(ids)
-    }
-
-    private fun getEditsBasedOnElementsCreatedByEdit(edit: ElementEdit): List<ElementEdit> {
-        val result = mutableListOf<ElementEdit>()
-
-        val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
-        val editsBasedOnThese = createdElementKeys
-            .flatMap { editsDB.getByElement(it.type, it.id) }
-            .filter { it.id != edit.id }
-
-        // deep first
-        for (e in editsBasedOnThese) {
-            result += getEditsBasedOnElementsCreatedByEdit(e)
-        }
-        result += edit
-
-        return result
     }
 
     /* ------------------------------------ Listeners ------------------------------------------- */

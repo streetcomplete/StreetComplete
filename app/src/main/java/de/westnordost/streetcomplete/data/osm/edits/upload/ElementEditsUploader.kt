@@ -57,7 +57,7 @@ class ElementEditsUploader(
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(edit.type.name, edit.position)
 
-            elementEditsController.markSynced(edit, updates)
+            elementEditsController.markSynced(edit)
             mapDataController.updateAll(updates)
             noteEditsController.updateElementIds(updates.idUpdates)
 

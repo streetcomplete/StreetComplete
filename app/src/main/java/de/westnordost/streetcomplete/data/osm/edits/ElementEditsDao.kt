@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAc
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -57,13 +56,6 @@ class ElementEditsDao(
     fun get(id: Long): ElementEdit? =
         db.queryOne(NAME, where = "$ID = $id") { it.toElementEdit() }
 
-    fun getByElement(elementType: ElementType, elementId: Long): List<ElementEdit> =
-        db.query(NAME,
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(elementType.name, elementId),
-            orderBy = "$IS_SYNCED, $CREATED_TIMESTAMP"
-        ) { it.toElementEdit() }
-
     fun getOldestUnsynced(): ElementEdit? =
         db.queryOne(NAME,
             where = "$IS_SYNCED = 0",
@@ -95,22 +87,6 @@ class ElementEditsDao(
 
     fun getSyncedOlderThan(timestamp: Long): List<ElementEdit> =
         db.query(NAME, where = "$IS_SYNCED = 1 AND $CREATED_TIMESTAMP < $timestamp") { it.toElementEdit() }
-
-    fun updateElementId(id: Long, newElementId: Long): Int =
-        db.update(
-            NAME,
-            values = listOf(ELEMENT_ID to newElementId),
-            where = "$ID = ?",
-            args = arrayOf(id)
-        )
-
-    fun updateElementId(elementType: ElementType, oldElementId: Long, newElementId: Long): Int =
-        db.update(
-            NAME,
-            values = listOf(ELEMENT_ID to newElementId),
-            where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?",
-            args = arrayOf(elementType.name, oldElementId)
-        )
 
     private fun ElementEdit.toPairs(): List<Pair<String, Any?>> = listOf(
         QUEST_TYPE to type.name,

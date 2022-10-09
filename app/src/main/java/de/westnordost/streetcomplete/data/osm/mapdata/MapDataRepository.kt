@@ -13,9 +13,9 @@ interface MapDataRepository {
     fun getRelationsForWay(id: Long): Collection<Relation>
     fun getRelationsForRelation(id: Long): Collection<Relation>
 
-    fun get(elementType: ElementType, elementId: Long) = when (elementType) {
-        ElementType.NODE     -> getNode(elementId)
-        ElementType.WAY      -> getWay(elementId)
-        ElementType.RELATION -> getRelation(elementId)
+    fun get(type: ElementType, id: Long) = when (type) {
+        ElementType.NODE     -> getNode(id)
+        ElementType.WAY      -> getWay(id)
+        ElementType.RELATION -> getRelation(id)
     }
 }
