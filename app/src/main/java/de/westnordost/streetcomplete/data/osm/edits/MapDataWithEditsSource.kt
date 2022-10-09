@@ -62,46 +62,7 @@ class MapDataWithEditsSource internal constructor(
     private val mapDataListener = object : MapDataController.Listener {
 
         override fun onUpdated(updated: MutableMapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
-            val modifiedDeleted = ArrayList<ElementKey>()
-            synchronized(this) {
-                rebuildLocalChanges()
-
-                for (element in updated) {
-                    val key = ElementKey(element.type, element.id)
-                    // an element contained in the update that was deleted by an edit shall be deleted
-                    if (deletedElements.contains(key)) {
-                        modifiedDeleted.add(key)
-                    }
-                    // otherwise, update if it was modified at all
-                    else {
-                        val modifiedElement = updatedElements[key] ?: element
-                        val modifiedGeometry = updatedGeometries[key] ?: updated.getGeometry(key.type, key.id)
-                        modifiedElements.add(Pair(modifiedElement, modifiedGeometry))
-                    }
-                }
-
-                for (key in deleted) {
-                    val modifiedElement = updatedElements[key]
-                    // en element that was deleted shall not be deleted but instead added to the updates if it was updated by an edit
-                    if (modifiedElement != null) {
-                        modifiedElements.add(Pair(modifiedElement, updatedGeometries[key]))
-                    }
-                    // otherwise, pass it through
-                    else {
-                        modifiedDeleted.add(key)
-                    }
-                }
-
-                for ((element, geometry) in modifiedElements) {
-                    updated.put(element, geometry)
-                }
-                for (key in modifiedDeleted) {
-                    updated.remove(key.type, key.id)
-                }
-            }
-
-            callOnUpdated(updated = updated, deleted = modifiedDeleted)
+            rebuildLocalChangesAndCallOnUpdated()
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
@@ -145,25 +106,7 @@ class MapDataWithEditsSource internal constructor(
         }
 
         override fun onDeletedEdits(edits: List<ElementEdit>) {
-            val mapData = MutableMapDataWithGeometry()
-            val elementsToDelete: MutableList<ElementKey>
-            synchronized(this) {
-                rebuildLocalChanges()
-
-                elementsToDelete = edits.flatMap { elementEditsController.getIdProvider(it.id).getAll() }.toMutableList()
-
-                for (edit in edits) {
-                    val element = get(edit.elementType, edit.elementId)
-                    if (element != null) {
-                        mapData.put(element, getGeometry(edit.elementType, edit.elementId))
-                    } else {
-                        // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
-                        elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
-                    }
-                }
-            }
-
-            callOnUpdated(updated = mapData, deleted = elementsToDelete)
+            rebuildLocalChangesAndCallOnUpdated()
         }
     }
 
@@ -370,6 +313,31 @@ class MapDataWithEditsSource internal constructor(
         }
     }
 
+    private fun rebuildLocalChangesAndCallOnUpdated() {
+        val mapData = MutableMapDataWithGeometry()
+        val elementsDeletedNow: Collection<ElementKey>
+        synchronized(this) {
+            val previousDeletedElements = HashSet(deletedElements)
+            val previousUpdatedElements = HashMap(updatedElements)
+
+            rebuildLocalChanges()
+
+            elementsDeletedNow = deletedElements - previousDeletedElements
+            val elementsNotDeletedAnymore = previousDeletedElements - deletedElements
+
+            val changedElements = (
+                elementsNotDeletedAnymore +
+                    (updatedElements.keys + previousUpdatedElements.keys).filterNot {
+                        previousUpdatedElements[it] equalsIgnoringVersioning updatedElements[it]
+                    }
+                ).toSet()
+
+            mapData.putAll(getAll(changedElements), getGeometries(changedElements))
+        }
+
+        callOnUpdated(updated = mapData, deleted = elementsDeletedNow)
+    }
+
     private fun rebuildLocalChanges() = synchronized(this) {
         deletedElements.clear()
         updatedElements.clear()
@@ -383,9 +351,9 @@ class MapDataWithEditsSource internal constructor(
     private fun applyEdit(edit: ElementEdit): MapDataUpdates? = synchronized(this) {
         val idProvider = elementEditsController.getIdProvider(edit.id)
 
+        val repo = MapDataRepositoryWithUpdatedIds(createdElementsSource, this)
         val mapDataChanges: MapDataChanges
         try {
-            val repo = MapDataRepositoryWithUpdatedIds(createdElementsSource, this)
             mapDataChanges = edit.action.createUpdates(repo, idProvider)
         } catch (e: ConflictException) {
             return null
@@ -446,3 +414,14 @@ class MapDataWithEditsSource internal constructor(
         listeners.forEach { it.onCleared() }
     }
 }
+
+private infix fun Element?.equalsIgnoringVersioning(other: Element?): Boolean =
+    if (this == null)
+        other == null
+    else {
+        id == other?.id && tags == other.tags && type == other.type && when (this) {
+            is Node -> position == (other as Node).position
+            is Way -> nodeIds == (other as Way).nodeIds
+            is Relation -> members == (other as Relation).members
+        }
+    }
