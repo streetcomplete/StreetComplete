@@ -166,7 +166,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
         streetOrPlaceName?.applyTo(tagChanges)
 
         if (element != null) {
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+            applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
         } else {
             applyEdit(CreateNodeAction(geometry.center, tagChanges))
         }
@@ -201,7 +201,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private fun removeAddress() {
         val element = element!!
         if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
-            applyEdit(DeletePoiNodeAction)
+            applyEdit(DeletePoiNodeAction(element))
         } else {
             val tagChanges = StringMapChangesBuilder(element.tags)
             for (tag in tagChanges) {
@@ -209,7 +209,7 @@ class AddressOverlayForm : AbstractOverlayForm() {
                     tagChanges.remove(tag.key)
                 }
             }
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+            applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
         }
     }
 
