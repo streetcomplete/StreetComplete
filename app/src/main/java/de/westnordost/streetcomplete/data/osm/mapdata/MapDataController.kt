@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementKey
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
@@ -104,7 +105,8 @@ class MapDataController internal constructor(
 
             geometryEntries = createGeometries(elements, mapData)
 
-            val newElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.newElementId) }
+            val createdElementsKeys = mapDataUpdates.idUpdates
+                .map { CreatedElementKey(it.elementType, it.oldElementId, it.newElementId) }
             val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
             deletedKeys = mapDataUpdates.deleted + oldElementKeys
 
@@ -114,7 +116,7 @@ class MapDataController internal constructor(
             geometryDB.deleteAll(deletedKeys)
             geometryDB.putAll(geometryEntries)
             elementDB.putAll(elements)
-            createdElementsController.putAll(newElementKeys)
+            createdElementsController.putAll(createdElementsKeys)
         }
 
         val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)

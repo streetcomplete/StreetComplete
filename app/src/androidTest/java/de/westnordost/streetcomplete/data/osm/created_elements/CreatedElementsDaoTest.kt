@@ -15,13 +15,13 @@ class CreatedElementsDaoTest : ApplicationDbTestCase() {
         dao = CreatedElementsDao(database)
     }
 
-    @Test fun addGetDelete() {
+    @Test fun putGetDelete() {
         assertTrue(dao.getAll().isEmpty())
 
         val elements = listOf(
-            ElementKey(ElementType.NODE, 1),
-            ElementKey(ElementType.WAY, 1),
-            ElementKey(ElementType.NODE, 3),
+            CreatedElementKey(ElementType.NODE, 1, null),
+            CreatedElementKey(ElementType.WAY, 1, 123),
+            CreatedElementKey(ElementType.NODE, 3, 456),
         )
 
         dao.putAll(elements)
@@ -30,14 +30,27 @@ class CreatedElementsDaoTest : ApplicationDbTestCase() {
 
         dao.deleteAll(listOf(
             ElementKey(ElementType.WAY, 1),
-            ElementKey(ElementType.NODE, 3),
+            ElementKey(ElementType.NODE, 456),
         ))
 
-        assertEquals(listOf(ElementKey(ElementType.NODE, 1)), dao.getAll())
+        assertEquals(listOf(CreatedElementKey(ElementType.NODE, 1, null)), dao.getAll())
+    }
+
+    @Test fun putReplaces() {
+        dao.putAll(listOf(
+            CreatedElementKey(ElementType.NODE, 1, null)
+        ))
+        dao.putAll(listOf(
+            CreatedElementKey(ElementType.NODE, 1, 123)
+        ))
+        assertEquals(
+            listOf(CreatedElementKey(ElementType.NODE, 1, 123)),
+            dao.getAll()
+        )
     }
 
     @Test fun clear() {
-        dao.putAll(listOf(ElementKey(ElementType.NODE, 1)))
+        dao.putAll(listOf(CreatedElementKey(ElementType.NODE, 1, 123)))
         dao.clear()
         assertTrue(dao.getAll().isEmpty())
     }
