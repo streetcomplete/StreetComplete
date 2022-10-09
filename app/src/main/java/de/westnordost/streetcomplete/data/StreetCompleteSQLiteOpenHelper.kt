@@ -178,11 +178,12 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             db.execSQL("DROP INDEX osm_element_edits_index")
             db.execSQL("ALTER TABLE ${CreatedElementsTable.NAME} ADD COLUMN ${CreatedElementsTable.Columns.NEW_ELEMENT_ID} int")
             db.execSQL(CreatedElementsTable.NEW_ID_INDEX_CREATE)
+
+            // TODO upgrade database: ElementEditsTable different now (no element type, id, element) but this is in the actions now
         }
     }
 }
 
 private const val DB_VERSION = 7
 
-// TODO upgrade database:
-// ElementEditsTable different now (no element type, id, element) but this is in the actions now
+
