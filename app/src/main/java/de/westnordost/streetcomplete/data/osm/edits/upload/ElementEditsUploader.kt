@@ -71,14 +71,6 @@ class ElementEditsUploader(
             uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
 
             elementEditsController.markSyncFailed(edit)
-
-            val mapData = fetchElementComplete(edit.elementType, edit.elementId)
-            if (mapData != null) {
-                mapDataController.updateAll(MapDataUpdates(updated = mapData.toList()))
-            } else {
-                val elementKey = ElementKey(edit.elementType, edit.elementId)
-                mapDataController.updateAll(MapDataUpdates(deleted = listOf(elementKey)))
-            }
         }
     }
 
