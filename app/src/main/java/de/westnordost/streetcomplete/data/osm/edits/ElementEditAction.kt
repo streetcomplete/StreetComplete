@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 
@@ -15,8 +14,6 @@ interface ElementEditAction {
      * when applied to the given element or throw a ElementConflictException
      * */
     fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges

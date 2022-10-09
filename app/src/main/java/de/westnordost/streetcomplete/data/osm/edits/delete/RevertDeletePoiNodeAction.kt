@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -15,29 +14,29 @@ import java.lang.System.currentTimeMillis
 /** Action that restores a POI node to the previous state before deletion/clearing of tags
  */
 @Serializable
-object RevertDeletePoiNodeAction : ElementEditAction, IsRevertAction {
+data class RevertDeletePoiNodeAction(
+    private val originalNode: Node
+) : ElementEditAction, IsRevertAction {
 
     /** No "new" elements are created, instead, an old one is being revived */
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        if (originalElement !is Node) throw ConflictException()
+        val newVersion = originalNode.version + 1
+        val currentNode = mapDataRepository.getNode(originalNode.id)
 
-        val newVersion = originalElement.version + 1
         // already has been restored apparently
-        if (element != null && element.version > newVersion) {
+        if (currentNode != null && currentNode.version > newVersion) {
             throw ConflictException("Element has been restored already")
         }
 
-        val newElement = originalElement.copy(
+        val restoredNode = originalNode.copy(
             version = newVersion,
             timestampEdited = currentTimeMillis()
         )
-        return MapDataChanges(modifications = listOf(newElement))
+        return MapDataChanges(modifications = listOf(restoredNode))
     }
 }

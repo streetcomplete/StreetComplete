@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.util.ktx.copy
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -29,19 +30,20 @@ class RevertDeletePoiNodeActionTest {
                 version = 3,
                 timestampEdited = 0
             ),
-            RevertDeletePoiNodeAction.createUpdates(e, null, repos, provider).modifications
+            RevertDeletePoiNodeAction(e).createUpdates(repos, provider).modifications
                 .single()
                 .copy(timestampEdited = 0)
         )
     }
 
     @Test fun `restore element with cleared tags`() {
+        on(repos.getNode(1)).thenReturn(e.copy(version = 3))
         assertEquals(
             e.copy(
                 version = 3,
                 timestampEdited = 0
             ),
-            RevertDeletePoiNodeAction.createUpdates(e, e.copy(version = 3), repos, provider).modifications
+            RevertDeletePoiNodeAction(e).createUpdates(repos, provider).modifications
                 .single()
                 .copy(timestampEdited = 0)
         )
@@ -49,7 +51,8 @@ class RevertDeletePoiNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict if there is already a newer version`() {
+        on(repos.getNode(1)).thenReturn(e.copy(version = 4))
         // version 3 would be the deletion
-        RevertDeletePoiNodeAction.createUpdates(e, e.copy(version = 4), repos, provider)
+        RevertDeletePoiNodeAction(e).createUpdates(repos, provider)
     }
 }

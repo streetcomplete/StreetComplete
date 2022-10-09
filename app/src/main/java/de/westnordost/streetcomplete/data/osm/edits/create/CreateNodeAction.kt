@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -27,8 +26,6 @@ data class CreateNodeAction(
     override val newElementsCount get() = NewElementsCount(1, 0, 0)
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {

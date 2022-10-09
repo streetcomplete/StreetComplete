@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.create
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -15,21 +14,29 @@ import java.lang.System.currentTimeMillis
 /** Action reverts creation of a node */
 @Serializable
 data class RevertCreateNodeAction(
-    val insertedIntoWayIds: List<Long> = emptyList()
+    private val originalNode: Node,
+    private val insertedIntoWayIds: List<Long> = emptyList()
 ) : ElementEditAction, IsRevertAction {
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val node = element as? Node ?: throw ConflictException("Element deleted")
+        val currentNode = mapDataRepository.getNode(originalNode.id)
+            ?: throw ConflictException("Element deleted")
 
-        if (mapDataRepository.getRelationsForNode(node.id).isNotEmpty()) {
+        if (originalNode.position != currentNode.position) {
+            throw ConflictException("Node position changed")
+        }
+
+        if (originalNode.tags != currentNode.tags) {
+            throw ConflictException("Some tags have already been changed")
+        }
+
+        if (mapDataRepository.getRelationsForNode(currentNode.id).isNotEmpty()) {
             throw ConflictException("Node is now member of a relation")
         }
-        val waysById = mapDataRepository.getWaysForNode(node.id).associateBy { it.id }
+        val waysById = mapDataRepository.getWaysForNode(currentNode.id).associateBy { it.id }
         if (waysById.keys.any { it !in insertedIntoWayIds }) {
             throw ConflictException("Node is now also part of another way")
         }
@@ -39,27 +46,12 @@ data class RevertCreateNodeAction(
             // if the node is not part of the way it was initially in anymore, that's fine
             val way = waysById[wayId] ?: continue
 
-            val nodeIds = way.nodeIds.filter { it != node.id }
+            val nodeIds = way.nodeIds.filter { it != currentNode.id }
 
             editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = currentTimeMillis()))
         }
 
-        /* Independent of whether it makes sense or not to check for conflicts on reverting the
-           creating (=deleting), it is not possible to check for conflicts between element and
-           originalElement (tags changed, position changed) technically:
-
-           On reverting, the "originalElement" from the edit that is being reverted is copied to
-           this edit in ElementEditsController::undo. However, that "originalElement" of the
-           "CreateNodeAction" is just an empty (dummy) element with no tags since that element did
-           not exist yet.
-
-           ElementEditsController would need to use the element as used currently in the app (from
-           MapDataWithEditsSource) as basis for the "originalElement" but to not create a cyclic
-           dependency, users of EditHistoryController would have to pass in the current element +
-           geometry into ElementEditsController::undo.
-           Instead, let's just not check for conflicts here.
-         */
-        return MapDataChanges(modifications = editedWays, deletions = listOf(node))
+        return MapDataChanges(modifications = editedWays, deletions = listOf(currentNode))
     }
 }
 

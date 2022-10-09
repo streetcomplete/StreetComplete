@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.isGeometrySubstantiallyDifferent
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
@@ -31,7 +30,10 @@ import java.lang.System.currentTimeMillis
  *  end, it is not considered compatible anymore
  *  */
 @Serializable
-data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : ElementEditAction {
+data class SplitWayAction(
+    private val originalWay: Way,
+    private val splits: List<SplitPolylineAtPosition>
+) : ElementEditAction {
 
     override val newElementsCount get() = NewElementsCount(
         nodes = splits.count { it is SplitAtLinePosition },
@@ -40,20 +42,18 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
     )
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val way = element as? Way ?: throw ConflictException("Element deleted")
-        val originalWay = originalElement as Way
-        val completeWay = mapDataRepository.getWayComplete(way.id)
+        val currentWay = mapDataRepository.getWay(originalWay.id)
+            ?: throw ConflictException("Element deleted")
+        val completeWay = mapDataRepository.getWayComplete(currentWay.id)
 
-        var updatedWay = completeWay?.getWay(way.id)
-            ?: throw ConflictException("Way #${way.id} has been deleted")
+        var updatedWay = completeWay?.getWay(currentWay.id)
+            ?: throw ConflictException("Way #${currentWay.id} has been deleted")
 
         if (isGeometrySubstantiallyDifferent(originalWay, updatedWay)) {
-            throw ConflictException("Way #${way.id} has been changed and the conflict cannot be solved automatically")
+            throw ConflictException("Way #${currentWay.id} has been changed and the conflict cannot be solved automatically")
         }
 
         if (updatedWay.isClosed && splits.size < 2) {
