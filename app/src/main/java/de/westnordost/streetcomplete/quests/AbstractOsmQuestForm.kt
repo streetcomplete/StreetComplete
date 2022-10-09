@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -197,7 +198,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun applyAnswer(answer: T) {
         viewLifecycleScope.launch {
-            solve(UpdateElementTagsAction(createQuestChanges(answer)))
+            solve(UpdateElementTagsAction(element, createQuestChanges(answer)))
         }
     }
 
@@ -243,7 +244,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
             builder.replaceShop(tags)
-            solve(UpdateElementTagsAction(builder.create()))
+            solve(UpdateElementTagsAction(element, builder.create()))
         }
     }
 
@@ -257,7 +258,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun onDeletePoiNodeConfirmed() {
         viewLifecycleScope.launch {
-            solve(DeletePoiNodeAction)
+            solve(DeletePoiNodeAction(element as Node))
         }
     }
 
@@ -273,7 +274,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {
-                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+                addElementEditsController.add(osmElementQuestType, geometry, "survey", action)
             }
         }
         listener?.onEdited(osmElementQuestType, element, geometry)
