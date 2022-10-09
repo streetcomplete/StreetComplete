@@ -116,13 +116,9 @@ class ElementEditsController(
     }
 
     private fun delete(edit: ElementEdit) {
-        val edits = mutableListOf<ElementEdit>()
-        val ids: List<Long>
+        val edits = listOf(edit)
+        val ids = listOf(edit.id)
         synchronized(this) {
-            edits.addAll(getEditsBasedOnElementsCreatedByEdit(edit))
-
-            ids = edits.map { it.id }
-
             editsDB.deleteAll(ids)
         }
 
