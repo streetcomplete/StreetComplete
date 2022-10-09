@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 interface AddElementEditsController {
     fun add(
         type: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction

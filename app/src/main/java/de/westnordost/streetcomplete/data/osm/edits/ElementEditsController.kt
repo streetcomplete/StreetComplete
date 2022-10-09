@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import java.lang.System.currentTimeMillis
