@@ -207,9 +207,9 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
             edit(element = nd, action = action2),
             edit(element = nd, action = action3),
@@ -238,7 +238,7 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(eq(nd), eq(nd), any(), any())).thenThrow(ConflictException())
+        on(action.createUpdates(any(), any())).thenThrow(ConflictException())
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(element = nd, action = action)))
 
         val s = create()
@@ -308,9 +308,9 @@ class MapDataWithEditsSourceTest {
         originalGeometriesAre(ElementGeometryEntry(NODE, 1, p))
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
             edit(element = nd, action = action2),
             edit(element = nd, action = action3)
