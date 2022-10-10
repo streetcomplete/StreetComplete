@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.testutils
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -110,7 +113,7 @@ fun edit(
     element: Element = node(),
     geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L,
-    action: ElementEditAction = DeletePoiNodeAction(element as Node),
+    action: ElementEditAction = UpdateElementTagsAction(element, StringMapChanges(setOf(StringMapEntryAdd("hey", "ho")))),
     isSynced: Boolean = false
 ) = ElementEdit(
     id,

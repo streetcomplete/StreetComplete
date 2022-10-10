@@ -34,8 +34,8 @@ internal class CreatedElementsControllerTest {
         on(db.getAll()).thenReturn(listOf(
             CreatedElementKey(ElementType.NODE, 1, 123)
         ))
-        assertEquals(123, ctrl.getId(ElementType.NODE, 1))
-        assertEquals(123, ctrl.getId(ElementType.NODE, 123))
+        assertEquals(123L, ctrl.getId(ElementType.NODE, 1))
+        assertEquals(123L, ctrl.getId(ElementType.NODE, 123))
         assertNull(ctrl.getId(ElementType.NODE, 124))
         assertNull(ctrl.getId(ElementType.WAY, 1))
     }
