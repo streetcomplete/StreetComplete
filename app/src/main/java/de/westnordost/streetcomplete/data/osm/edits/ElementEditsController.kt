@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val lastEditTimeStore: LastEditTimeStore,
+    private val lastEditTimeStore: LastEditTimeStore
 ) : ElementEditsSource, AddElementEditsController {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
