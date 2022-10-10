@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.osm.created_elements
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 
+/** A wrapper around a MapDataRepository that makes sure that if an element is queried over a
+ *  temporary/old id, it is redirected to the current id */
 class MapDataRepositoryWithUpdatedIds(
     private val createdElementsSource: CreatedElementsSource,
     private val mapDataRepository: MapDataRepository
