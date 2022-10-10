@@ -19,7 +19,7 @@ class CreatedElementsDao(private val db: Database) {
         db.replaceMany(
             NAME,
             arrayOf(ELEMENT_TYPE, ELEMENT_ID, NEW_ELEMENT_ID),
-            entries.map { arrayOf(it.elementType, it.elementId, it.newElementId) }
+            entries.map { arrayOf(it.elementType.name, it.elementId, it.newElementId) }
         )
     }
 
