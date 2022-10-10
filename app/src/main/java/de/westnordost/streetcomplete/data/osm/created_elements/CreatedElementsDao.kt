@@ -33,7 +33,7 @@ class CreatedElementsDao(private val db: Database) {
                 db.delete(
                     NAME,
                     where = "$ELEMENT_TYPE = ? AND ($ELEMENT_ID = ? OR $NEW_ELEMENT_ID = ?)",
-                    args = arrayOf(entry.type.name, entry.id)
+                    args = arrayOf(entry.type.name, entry.id, entry.id)
                 )
             }
         }
