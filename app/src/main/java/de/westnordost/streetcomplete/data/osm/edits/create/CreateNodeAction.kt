@@ -62,8 +62,11 @@ data class CreateNodeAction(
         return MapDataChanges(creations = listOf(newNode), modifications = editedWays)
     }
 
-    override fun createReverted(): ElementEditAction =
-        RevertCreateNodeAction(insertIntoWays.map { it.wayId })
+    override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
+        RevertCreateNodeAction(
+            Node(idProvider.nextNodeId(), position, tags, 1, Instant.now().toEpochMilli()),
+            insertIntoWays.map { it.wayId }
+        )
 }
 
 /** Inserting the node into the given [wayId] in between the nodes at the given positions

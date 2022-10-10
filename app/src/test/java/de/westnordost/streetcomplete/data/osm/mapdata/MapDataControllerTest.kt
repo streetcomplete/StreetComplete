@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementKey
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
@@ -120,7 +121,8 @@ class MapDataControllerTest {
         verify(elementDB).deleteAll(expectedDeleteKeys)
         verify(elementDB).putAll(elements)
         verify(geometryDB).putAll(eq(geomEntries))
-        verify(createdElementsController).putAll(eq(idUpdates.map { ElementKey(it.elementType, it.newElementId) }))
+        val createdElements = idUpdates.map { CreatedElementKey(it.elementType, it.oldElementId, it.newElementId) }
+        verify(createdElementsController).putAll(eq(createdElements))
 
         sleep(100)
         verify(listener).onUpdated(any(), eq(expectedDeleteKeys))

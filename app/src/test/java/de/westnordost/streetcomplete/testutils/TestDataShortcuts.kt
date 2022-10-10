@@ -110,14 +110,11 @@ fun edit(
     element: Element = node(),
     geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L,
-    action: ElementEditAction = DeletePoiNodeAction,
+    action: ElementEditAction = DeletePoiNodeAction(element as Node),
     isSynced: Boolean = false
 ) = ElementEdit(
     id,
     QUEST_TYPE,
-    element.type,
-    element.id,
-    element,
     geometry,
     "survey",
     timestamp,

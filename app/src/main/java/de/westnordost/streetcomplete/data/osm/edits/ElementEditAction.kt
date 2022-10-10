@@ -22,6 +22,6 @@ interface ElementEditAction {
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)
 
 interface IsActionRevertable {
-    fun createReverted(): ElementEditAction
+    fun createReverted(idProvider: ElementIdProvider): ElementEditAction
 }
 interface IsRevertAction

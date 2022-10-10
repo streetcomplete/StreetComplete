@@ -40,7 +40,7 @@ data class UpdateElementTagsAction(
         return MapDataChanges(modifications = listOf(currentElement.changesApplied(changes)))
     }
 
-    override fun createReverted(): ElementEditAction =
+    override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
         RevertUpdateElementTagsAction(originalElement, changes.reversed())
 
     fun isReverseOf(other: UpdateElementTagsAction): Boolean =

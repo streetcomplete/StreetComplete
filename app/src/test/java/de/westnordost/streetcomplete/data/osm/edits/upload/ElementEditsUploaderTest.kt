@@ -75,7 +75,7 @@ class ElementEditsUploaderTest {
 
         verify(singleUploader).upload(eq(edit), any())
         verify(listener).onUploaded(any(), any())
-        verify(elementEditsController).markSynced(edit, updates)
+        verify(elementEditsController).markSynced(edit)
         verify(noteEditsController).updateElementIds(any())
         verify(mapDataController).updateAll(updates)
 

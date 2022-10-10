@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val lastEditTimeStore: LastEditTimeStore
+    private val lastEditTimeStore: LastEditTimeStore,
 ) : ElementEditsSource, AddElementEditsController {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -89,7 +89,8 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
+            val reverted = action.createReverted(getIdProvider(edit.id))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, currentTimeMillis(), false, reverted))
         }
         // not uploaded yet
         else {

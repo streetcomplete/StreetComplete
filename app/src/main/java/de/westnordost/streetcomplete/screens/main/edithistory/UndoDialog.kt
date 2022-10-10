@@ -91,7 +91,7 @@ class UndoDialog(
 
     private suspend fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
-            if (type is QuestType) getQuestTitle(type, originalElement.tags)
+            if (type is QuestType) getQuestTitle(type, emptyMap())
             else context.resources.getText(type.title)
         }
         is NoteEdit -> {

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
@@ -23,14 +24,16 @@ class ElementEditUploaderTest {
     private lateinit var changesetManager: OpenChangesetsManager
     private lateinit var mapDataApi: MapDataApi
     private lateinit var mapDataController: MapDataController
+    private lateinit var createdElementsSource: CreatedElementsSource
     private lateinit var uploader: ElementEditUploader
 
     @Before fun setUp() {
         changesetManager = mock()
         mapDataApi = mock()
         mapDataController = mock()
+        createdElementsSource = mock()
 
-        uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataController)
+        uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataController, createdElementsSource)
     }
 
     @Test(expected = ConflictException::class)
