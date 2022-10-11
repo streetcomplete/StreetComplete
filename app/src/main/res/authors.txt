@@ -30,9 +30,9 @@ barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap
 barrier_bicycle_barrier_dou... CC-BY-SA 4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
 barrier_bicycle_barrier_tri... CC-BY-SA 4.0      HolgerJeromin https://commons.wikimedia.org/wiki/File:Umlaufgitter_Schatten_hoch.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
-barrier_bicycle_installation_fixed.jpg          CC0 LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_fixed.jpg
-barrier_bicycle_installation_openable.jpg       CC-BY-SA 4.0 Ellievking1 https://commons.wikimedia.org/wiki/File:Barrier_on_Formartine_and_Buchan_cycle_route_at_Auchnagatt.jpg
-barrier_bicycle_installation_removable.jpg      CC0 LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_removable_detail.jpg
+barrier_bicycle_installation_f CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_fixed.jpg
+barrier_bicycle_installation_o CC-BY-SA 4.0      Ellievking1 https://commons.wikimedia.org/wiki/File:Barrier_on_Formartine_and_Buchan_cycle_route_at_Auchnagatt.jpg
+barrier_bicycle_installation_r CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_removable_detail.jpg
 
 bicycle_parking_type_buildi... CC-BY-SA 3.0      Visitor7 https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      Rept0n1x https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
