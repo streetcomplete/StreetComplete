@@ -8,7 +8,7 @@ class AddBicycleBarrierInstallationForm :
     AImageListQuestForm<BicycleBarrierInstallation, BicycleBarrierInstallationAnswer>() {
 
     override val items = BicycleBarrierInstallation.values().map { it.asItem() }
-    override val itemsPerRow = 2
+    override val itemsPerRow = 3
     override val moveFavoritesToFront = false
 
     override fun onClickOk(selectedItems: List<BicycleBarrierInstallation>) {
