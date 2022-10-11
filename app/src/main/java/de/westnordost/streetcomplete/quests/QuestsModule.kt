@@ -456,8 +456,8 @@ fun questTypeRegistry(
     AddPathSmoothness(),
 
     // footways
-    AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     AddCyclewaySegregation(), // Cyclosm, Valhalla, Bike Citizens Bicycle Navigation...
+    AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...
     AddFootwayPartSurface(),
     AddCyclewayPartSurface(),
     AddSidewalkSurface(),
