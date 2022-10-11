@@ -19,26 +19,29 @@ import kotlinx.serialization.Serializable
  *  the tag update made may not be correct anymore, so that is considered a conflict.
  *  */
 @Serializable
-data class UpdateElementTagsAction(val changes: StringMapChanges) : ElementEditAction, IsActionRevertable {
+data class UpdateElementTagsAction(
+    val originalElement: Element,
+    val changes: StringMapChanges
+) : ElementEditAction, IsActionRevertable {
 
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        if (element == null) throw ConflictException("Element deleted")
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        val currentElement = mapDataRepository.get(originalElement.type, originalElement.id)
+            ?: throw ConflictException("Element deleted")
+
+        if (isGeometrySubstantiallyDifferent(originalElement, currentElement)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
-        return MapDataChanges(modifications = listOf(element.changesApplied(changes)))
+        return MapDataChanges(modifications = listOf(currentElement.changesApplied(changes)))
     }
 
-    override fun createReverted(): ElementEditAction =
-        RevertUpdateElementTagsAction(changes.reversed())
+    override fun createReverted(idProvider: ElementIdProvider): ElementEditAction =
+        RevertUpdateElementTagsAction(originalElement, changes.reversed())
 
     fun isReverseOf(other: UpdateElementTagsAction): Boolean =
         changes.reversed() == other.changes

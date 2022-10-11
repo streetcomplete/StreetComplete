@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 data class ElementEdit(
@@ -15,13 +13,6 @@ data class ElementEdit(
      *  associated with the quest type. A changeset gets its comment from the quest type */
     val type: ElementEditType,
 
-    /** element type this edit refers to */
-    val elementType: ElementType,
-    /** element id this edit refers to. Unlike element.id, this field may change when the OSM API
-     *  returns element ID updates. Use 0 for newly created elements */
-    val elementId: Long,
-    /** original element this edit was made on */
-    val originalElement: Element,
     /** original geometry of element this edit refers to */
     val originalGeometry: ElementGeometry,
 

@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.math.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
@@ -30,7 +31,8 @@ class RevertCreateNodeActionTest {
     @Test
     fun `revert add node`() {
         val node = node(123, LatLon(12.0, 34.0), mapOf("amenity" to "atm"), 1)
-        val data = RevertCreateNodeAction(listOf()).createUpdates(node, node, repos, provider)
+        on(repos.getNode(node.id)).thenReturn(node)
+        val data = RevertCreateNodeAction(node, listOf()).createUpdates(repos, provider)
 
         assertTrue(data.creations.isEmpty())
         assertTrue(data.modifications.isEmpty())
@@ -41,37 +43,65 @@ class RevertCreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict when node already deleted`() {
-        RevertCreateNodeAction(listOf()).createUpdates(node(), null, repos, provider)
+        on(repos.getNode(1)).thenReturn(null)
+        RevertCreateNodeAction(node(1), listOf()).createUpdates(repos, provider)
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict when node is now member of a relation`() {
         val node = node(1)
 
+        on(repos.getNode(node.id)).thenReturn(node)
         on(repos.getWaysForNode(1)).thenReturn(emptyList())
         on(repos.getRelationsForNode(1)).thenReturn(listOf(rel()))
 
-        RevertCreateNodeAction(listOf()).createUpdates(node, node, repos, provider)
+        RevertCreateNodeAction(node, listOf()).createUpdates(repos, provider)
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict when node is part of more ways than initially`() {
         val node = node(1)
 
+        on(repos.getNode(node.id)).thenReturn(node)
         on(repos.getWaysForNode(1)).thenReturn(listOf(way(1), way(2), way(3)))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        RevertCreateNodeAction(listOf(1,2)).createUpdates(node, node, repos, provider)
+        RevertCreateNodeAction(node, listOf(1,2)).createUpdates(repos, provider)
+    }
+
+
+    @Test(expected = ConflictException::class)
+    fun `conflict when node was moved at all`() {
+        val node = node(1)
+        val movedNode = node.copy(position = node.position.translate(10.0, 0.0))
+
+        on(repos.getNode(1)).thenReturn(movedNode)
+        on(repos.getWaysForNode(1)).thenReturn(emptyList())
+        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+
+        RevertCreateNodeAction(node).createUpdates(repos, provider)
+    }
+
+    @Test(expected = ConflictException::class)
+    fun `conflict when tags changed on node at all`() {
+        val node = node(1)
+
+        on(repos.getNode(1)).thenReturn(node.copy(tags = mapOf("different" to "tags")))
+        on(repos.getWaysForNode(1)).thenReturn(emptyList())
+        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+
+        RevertCreateNodeAction(node).createUpdates(repos, provider)
     }
 
     @Test
     fun `no conflict when node is part of less ways than initially`() {
         val node = node(1)
 
+        on(repos.getNode(node.id)).thenReturn(node)
         on(repos.getWaysForNode(1)).thenReturn(listOf(way(1)))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        RevertCreateNodeAction(listOf(1,2)).createUpdates(node, node, repos, provider)
+        RevertCreateNodeAction(node, listOf(1,2)).createUpdates(repos, provider)
     }
 
     @Test
@@ -81,10 +111,11 @@ class RevertCreateNodeActionTest {
         val way1 = way(1, nodes = listOf(1,2,3), timestamp = 0)
         val way2 = way(2, nodes = listOf(4,1,6), timestamp = 0)
 
+        on(repos.getNode(node.id)).thenReturn(node)
         on(repos.getWaysForNode(1)).thenReturn(listOf(way1, way2))
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
-        val data = RevertCreateNodeAction(listOf(1,2,3)).createUpdates(node, node, repos, provider)
+        val data = RevertCreateNodeAction(node, listOf(1,2,3)).createUpdates(repos, provider)
 
         assertEquals(2, data.modifications.size)
         val updatedWays = data.modifications.toList()

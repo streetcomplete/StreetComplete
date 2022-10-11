@@ -12,21 +12,24 @@ import kotlinx.serialization.Serializable
 
 /** Contains the information necessary to apply a revert of tag changes made on an element */
 @Serializable
-data class RevertUpdateElementTagsAction(private val changes: StringMapChanges) : ElementEditAction, IsRevertAction {
+data class RevertUpdateElementTagsAction(
+    private val originalElement: Element,
+    private val changes: StringMapChanges
+) : ElementEditAction, IsRevertAction {
 
     override val newElementsCount get() = NewElementsCount(0, 0, 0)
 
     override fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        if (element == null) throw ConflictException("Element deleted")
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
+        val currentElement = mapDataRepository.get(originalElement.type, originalElement.id)
+            ?: throw ConflictException("Element deleted")
+
+        if (isGeometrySubstantiallyDifferent(originalElement, currentElement)) {
             throw ConflictException("Element geometry changed substantially")
         }
 
-        return MapDataChanges(modifications = listOf(element.changesApplied(changes)))
+        return MapDataChanges(modifications = listOf(currentElement.changesApplied(changes)))
     }
 }

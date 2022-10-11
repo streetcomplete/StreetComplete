@@ -147,7 +147,6 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         f.addElementEditsController = object : AddElementEditsController {
             override fun add(
                 type: ElementEditType,
-                element: Element,
                 geometry: ElementGeometry,
                 source: String,
                 action: ElementEditAction,

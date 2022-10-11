@@ -126,11 +126,7 @@ class MapDataWithEditsSourceTest {
                     WAY -> mapData.getWayGeometry(key.id)
                     RELATION -> mapData.getRelationGeometry(key.id)
                 }?.let {
-                    ElementGeometryEntry(
-                        key.type,
-                        key.id,
-                        it
-                    )
+                    ElementGeometryEntry(key.type, key.id, it)
                 }
             }
         }
@@ -161,7 +157,7 @@ class MapDataWithEditsSourceTest {
         }
     }
 
-    //region get
+    //region get and getAll
 
     @Test
     fun `get returns nothing`() {
@@ -170,6 +166,7 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.get(NODE, 1))
+        assertEquals(emptyList<Element>(), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -181,6 +178,7 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
+        assertEquals(listOf(nd), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -193,6 +191,7 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertEquals(nd2, s.get(NODE, 1))
+        assertEquals(listOf(nd2), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -204,16 +203,17 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3),
+            edit(action = action2),
+            edit(action = action3),
         ))
 
         val s = create()
         assertEquals(nd3, s.get(NODE, 1))
+        assertEquals(listOf(nd3), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -226,6 +226,7 @@ class MapDataWithEditsSourceTest {
 
         val s = create()
         assertNull(s.get(NODE, 1))
+        assertEquals(listOf<Element>(), s.getAll(listOf(ElementKey(NODE, 1))))
     }
 
     @Test
@@ -235,16 +236,33 @@ class MapDataWithEditsSourceTest {
         originalElementsAre(nd)
 
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(eq(nd), eq(nd), any(), any())).thenThrow(ConflictException())
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(element = nd, action = action)))
+        on(action.createUpdates(any(), any())).thenThrow(ConflictException())
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
+        assertEquals(listOf(nd), s.getAll(listOf(ElementKey(NODE, 1))))
+    }
+
+    @Test
+    fun `getAll returns mix of original and updated elements`() {
+        val nd = node(1)
+        val nd2 = node(2)
+
+        originalElementsAre(nd)
+        mapDataChangesAre(modifications = listOf(nd2))
+
+        val s = create()
+
+        assertEquals(
+            setOf(nd, nd2),
+            s.getAll(listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))).toSet()
+        )
     }
 
     //endregion
 
-    //region getGeometry
+    //region getGeometry and getGeometries
 
     @Test
     fun `getGeometry returns nothing`() {
@@ -305,12 +323,12 @@ class MapDataWithEditsSourceTest {
         originalGeometriesAre(ElementGeometryEntry(NODE, 1, p))
 
         val action2 = mock<ElementEditAction>()
-        on(action2.createUpdates(any(), eq(nd), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
+        on(action2.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd2)))
         val action3 = mock<ElementEditAction>()
-        on(action3.createUpdates(any(), eq(nd2), any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
+        on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3)
+            edit(action = action2),
+            edit(action = action3)
         ))
 
         val s = create()
@@ -1083,11 +1101,8 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(
-            element = node(-1),
-            action = action
-        )))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
     }
 
     private fun thereAreNoMapDataChanges() {
@@ -1100,11 +1115,8 @@ class MapDataWithEditsSourceTest {
         deletions: Collection<Element> = emptyList()
     ) {
         val action = mock<ElementEditAction>()
-        on(action.createUpdates(any(), any(), any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        editsListener.onAddedEdit(edit(
-            element = node(-1),
-            action = action
-        ))
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
+        editsListener.onAddedEdit(edit(action = action))
     }
 
     private fun editsControllerNotifiesDeletedEdit(element: Element, createdElementKeys: List<ElementKey>) {

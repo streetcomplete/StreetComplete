@@ -366,7 +366,7 @@ abstract class AbstractOverlayForm :
         val element = element ?: Node(0, geometry.center)
 
         withContext(Dispatchers.IO) {
-            addElementEditsController.add(overlay, element, geometry, "survey", action)
+            addElementEditsController.add(overlay, geometry, "survey", action)
         }
         listener?.onEdited(overlay, element, geometry)
     }

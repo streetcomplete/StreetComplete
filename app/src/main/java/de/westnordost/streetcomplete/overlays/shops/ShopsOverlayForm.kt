@@ -146,7 +146,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         }
 
         if (element != null) {
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+            applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
         } else {
             applyEdit(CreateNodeAction(geometry.center, tagChanges))
         }

@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -23,12 +20,11 @@ class ElementEditsController(
     /** Add new unsynced edit to the to-be-uploaded queue */
     override fun add(
         type: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction
     ) {
-        add(ElementEdit(0, type, element.type, element.id, element, geometry, source, currentTimeMillis(), false, action))
+        add(ElementEdit(0, type, geometry, source, currentTimeMillis(), false, action))
     }
 
     fun get(id: Long): ElementEdit? =
@@ -99,7 +95,8 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.elementType, edit.elementId, edit.originalElement, edit.originalGeometry, edit.source, currentTimeMillis(), false, action.createReverted()))
+            val reverted = action.createReverted(getIdProvider(edit.id))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, currentTimeMillis(), false, reverted))
         }
         // not uploaded yet
         else {
@@ -121,15 +118,6 @@ class ElementEditsController(
                 createdElementsCount.ways,
                 createdElementsCount.relations
             )
-            // set proper assigned id of the new element
-            val hasDummyElement = edit.elementId == 0L
-            if (hasDummyElement) {
-                if (edit.elementType != ElementType.NODE) {
-                    throw IllegalStateException("Element creation only supported for nodes")
-                }
-                val idProvider = elementIdProviderDB.get(id)
-                editsDB.updateElementId(id, idProvider.nextNodeId())
-            }
         }
         onAddedEdit(edit)
     }

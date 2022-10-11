@@ -646,14 +646,15 @@ class SplitWayActionTest {
         vararg splits: SplitPolylineAtPosition = arrayOf(split),
         originalWay: Way = way
     ): MapData {
-        val action = SplitWayAction(ArrayList(splits.toList()))
+        val action = SplitWayAction(originalWay, ArrayList(splits.toList()))
         val counts = action.newElementsCount
         val elementKeys = ArrayList<ElementKey>()
         for (i in 1L..counts.nodes) { elementKeys.add(ElementKey(NODE, -i)) }
         for (i in 1L..counts.ways) { elementKeys.add(ElementKey(WAY, -i)) }
         for (i in 1L..counts.relations) { elementKeys.add(ElementKey(RELATION, -i)) }
         val provider = ElementIdProvider(elementKeys)
-        val data = action.createUpdates(originalWay, way, repos, provider)
+        on(repos.getWay(way.id)).thenReturn(way)
+        val data = action.createUpdates(repos, provider)
         return MutableMapData(data.creations + data.modifications)
     }
 

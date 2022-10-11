@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -102,19 +101,6 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
         assertEquals(edit, dbEdit)
-    }
-
-    @Test fun getByElement() {
-        val e1 = updateTags(element = Node(123, p))
-        val e2 = updateTags(element = Node(123, p))
-        val e3 = updateTags(element = Way(123, listOf()))
-        val e4 = updateTags(element = Node(124, p))
-        dao.addAll(e1, e2, e3, e4)
-
-        val edits = dao.getByElement(ElementType.NODE, 123L)
-
-        assertEquals(2, edits.size)
-        assertTrue(edits.all { it.elementType == ElementType.NODE && it.elementId == 123L })
     }
 
     @Test fun addGetDelete() {
@@ -224,31 +210,6 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(listOf(oldEnough), dao.getSyncedOlderThan(1000))
     }
-
-    @Test fun updateElementId() {
-        assertEquals(0, dao.updateElementId(ElementType.NODE, -5, 6))
-
-        val e1 = updateTags(element = Node(-5, p))
-        val e2 = updateTags(element = Node(-5, p))
-        val e3 = updateTags(element = Way(-5, listOf()))
-        val e4 = updateTags(element = Node(-3, p))
-
-        dao.addAll(e1, e2, e3, e4)
-
-        assertEquals(2, dao.updateElementId(ElementType.NODE, -5, 6))
-
-        assertEquals(6, dao.get(e1.id)!!.elementId)
-        assertEquals(6, dao.get(e2.id)!!.elementId)
-        assertEquals(-5, dao.get(e3.id)!!.elementId)
-        assertEquals(-3, dao.get(e4.id)!!.elementId)
-    }
-
-    @Test fun updateElementId2() {
-        val e1 = createNode()
-        dao.add(e1)
-        dao.updateElementId(e1.id, -123)
-        val edit = dao.get(e1.id)!!
-    }
 }
 
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
@@ -261,14 +222,12 @@ private fun updateTags(
 ) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    element.type,
-    element.id,
-    element,
     geometry,
     "survey",
     timestamp,
     isSynced,
     UpdateElementTagsAction(
+        element,
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
@@ -280,14 +239,12 @@ private fun updateTags(
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
     isSynced,
     RevertUpdateElementTagsAction(
+        node,
         StringMapChanges(listOf(
             StringMapEntryAdd("a", "b"),
             StringMapEntryModify("c", "d", "e"),
@@ -299,40 +256,32 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
     isSynced,
-    DeletePoiNodeAction
+    DeletePoiNodeAction(node)
 )
 
 private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
     isSynced,
-    RevertDeletePoiNodeAction
+    RevertDeletePoiNodeAction(node)
 )
 
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    ElementType.WAY,
-    1,
-    Way(1, listOf(0, 1)),
     ElementPolylinesGeometry(listOf(listOf(LatLon(0.0, 0.0), LatLon(1.0, 1.0))), LatLon(0.5, 0.5)),
     "survey",
     timestamp,
     isSynced,
     SplitWayAction(
+        Way(1, listOf(0, 1)),
         arrayListOf(
             SplitAtPoint(LatLon(0.0, 0.0)),
             SplitAtLinePosition(
@@ -347,9 +296,6 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
 private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
@@ -360,14 +306,11 @@ private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = Elem
 private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
     0,
     TEST_QUEST_TYPE,
-    node.type,
-    node.id,
-    node,
     geom,
     "survey",
     timestamp,
     isSynced,
-    RevertCreateNodeAction
+    RevertCreateNodeAction(node)
 )
 
 private val p = LatLon(56.7, 89.10)

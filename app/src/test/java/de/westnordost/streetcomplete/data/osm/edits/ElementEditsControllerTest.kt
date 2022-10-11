@@ -45,7 +45,7 @@ class ElementEditsControllerTest {
         val action = mock<ElementEditAction>()
         on(action.newElementsCount).thenReturn(NewElementsCount(1, 2, 3))
 
-        ctrl.add(QUEST_TYPE, node(1), pGeom(), "test", action)
+        ctrl.add(QUEST_TYPE, pGeom(), "test", action)
 
         verify(db).add(any())
         verify(idProvider).assign(0L, 1, 2, 3)
@@ -84,8 +84,9 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo unsynced`() {
+        val node = node()
         val edit = edit(
-            action = UpdateElementTagsAction(StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
+            action = UpdateElementTagsAction(node, StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
             isSynced = false
         )
 
@@ -137,8 +138,9 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo synced`() {
+        val node = node()
         val edit = edit(
-            action = UpdateElementTagsAction(StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
+            action = UpdateElementTagsAction(node, StringMapChanges(listOf(StringMapEntryAdd("a", "b")))),
             isSynced = true
         )
 

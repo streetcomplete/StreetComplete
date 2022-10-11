@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 
@@ -15,8 +14,6 @@ interface ElementEditAction {
      * when applied to the given element or throw a ElementConflictException
      * */
     fun createUpdates(
-        originalElement: Element,
-        element: Element?,
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges
@@ -25,6 +22,6 @@ interface ElementEditAction {
 data class NewElementsCount(val nodes: Int, val ways: Int, val relations: Int)
 
 interface IsActionRevertable {
-    fun createReverted(): ElementEditAction
+    fun createReverted(idProvider: ElementIdProvider): ElementEditAction
 }
 interface IsRevertAction

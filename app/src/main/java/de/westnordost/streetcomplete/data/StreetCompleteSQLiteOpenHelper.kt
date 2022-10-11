@@ -59,7 +59,6 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
 
         // changes made on OSM map data
         db.execSQL(ElementEditsTable.CREATE)
-        db.execSQL(ElementEditsTable.ELEMENT_INDEX_CREATE)
         db.execSQL(ElementIdProviderTable.CREATE)
         db.execSQL(ElementIdProviderTable.INDEX_CREATE)
 
@@ -174,7 +173,14 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 5 && newVersion > 5) {
             db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
+        if (oldVersion <= 6 && newVersion > 6) {
+            db.execSQL("DROP INDEX osm_element_edits_index")
+
+            // TODO upgrade database: ElementEditsTable different now (no element type, id, element) but this is in the actions now
+        }
     }
 }
 
-private const val DB_VERSION = 6
+private const val DB_VERSION = 7
+
+
