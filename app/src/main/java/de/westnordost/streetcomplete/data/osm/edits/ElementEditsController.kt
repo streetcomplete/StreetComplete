@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -67,9 +68,7 @@ class ElementEditsController(
     fun markSynced(edit: ElementEdit, elementUpdates: MapDataUpdates) {
         val syncSuccess: Boolean
         synchronized(this) {
-            for (update in elementUpdates.idUpdates) {
-                editsDB.updateElementId(update.elementType, update.oldElementId, update.newElementId)
-            }
+            TODO("update element ids in editsDB...")
             syncSuccess = editsDB.markSynced(edit.id)
         }
         if (syncSuccess) onSyncedEdit(edit)
@@ -145,7 +144,7 @@ class ElementEditsController(
 
         val createdElementKeys = elementIdProviderDB.get(edit.id).getAll()
         val editsBasedOnThese = createdElementKeys
-            .flatMap { editsDB.getByElement(it.type, it.id) }
+            .flatMap { TODO("get all edits that act on element with key $it") }
             .filter { it.id != edit.id }
 
         // deep first
