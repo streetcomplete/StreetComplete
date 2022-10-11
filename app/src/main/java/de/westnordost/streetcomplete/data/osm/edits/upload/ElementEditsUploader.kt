@@ -5,12 +5,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -73,15 +71,6 @@ class ElementEditsUploader(
             elementEditsController.markSyncFailed(edit)
         }
     }
-
-    private suspend fun fetchElementComplete(elementType: ElementType, elementId: Long): MapData? =
-        withContext(Dispatchers.IO) {
-            when (elementType) {
-                ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-                ElementType.WAY -> mapDataApi.getWayComplete(elementId)
-                ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
-            }
-        }
 
     companion object {
         private const val TAG = "ElementEditsUploader"

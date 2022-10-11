@@ -129,11 +129,7 @@ class MapDataWithEditsSourceTest {
                     WAY -> mapData.getWayGeometry(key.id)
                     RELATION -> mapData.getRelationGeometry(key.id)
                 }?.let {
-                    ElementGeometryEntry(
-                        key.type,
-                        key.id,
-                        it
-                    )
+                    ElementGeometryEntry(key.type, key.id, it)
                 }
             }
         }
@@ -260,7 +256,11 @@ class MapDataWithEditsSourceTest {
         mapDataChangesAre(modifications = listOf(nd2))
 
         val s = create()
-        assertEquals(listOf(nd, nd2), s.getAll(listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))))
+
+        assertEquals(
+            setOf(nd, nd2),
+            s.getAll(listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))).toSet()
+        )
     }
 
     //endregion
@@ -880,44 +880,44 @@ class MapDataWithEditsSourceTest {
 
     @Test
     fun `onDeletedEdit relays updated element`() {
+        val n = node(1, p(0.0, 0.0))
+        val g = ElementGeometryEntry(NODE, 1, pGeom(0.0, 0.0))
+        originalElementsAre(n)
+        originalGeometriesAre(g)
+
+        val n2 = node(1, p(1.0, 2.0))
+        mapDataChangesAre(modifications = listOf(n2))
+
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0, 10.0))
-        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0, 10.0))
-
-        mapDataChangesAre(modifications = listOf(n))
-
-        editsControllerNotifiesDeletedEdit(n, listOf())
+        thereAreNoMapDataChanges()
+        editsControllerNotifiesDeletedEdit()
 
         verify(listener).onUpdated(
-            updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
-            deleted = eq(listOf())
+            updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(g))),
+            deleted = eq(setOf())
         )
     }
 
     @Test
-    fun `onDeletedEdit relays elements created by edit as deleted elements`() {
+    fun `onDeletedEdit relays element created by edit as deleted element`() {
+        val n = node(1, p(0.0, 0.0))
+        val g = ElementGeometryEntry(NODE, 1, pGeom(0.0, 0.0))
+
+        mapDataChangesAre(modifications = listOf(n))
+
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        val n = node(1, p(1.0, 10.0))
-        val p = ElementGeometryEntry(NODE, 1, pGeom(1.0, 10.0))
-
-        val delElements = listOf(
-            ElementKey(NODE, -10),
-            ElementKey(WAY, -10),
-            ElementKey(RELATION, -10),
-        )
-
-        mapDataChangesAre(modifications = listOf(n))
-        editsControllerNotifiesDeletedEdit(n, delElements)
+        thereAreNoMapDataChanges()
+        editsControllerNotifiesDeletedEdit()
 
         verify(listener).onUpdated(
-            updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
-            deleted = eq(delElements)
+            updated = eq(MutableMapDataWithGeometry(listOf(), listOf())),
+            deleted = eq(setOf(ElementKey(NODE, 1)))
         )
     }
 
@@ -943,14 +943,7 @@ class MapDataWithEditsSourceTest {
         )
         mapDataListener.onUpdated(updatedMapData, deletions)
 
-        val expectedMapDataWithGeometry = MutableMapDataWithGeometry(
-            elements = listOf(ndNewOriginal),
-            geometryEntries = listOf(pNew),
-        )
-        val expectedDeletions = listOf(
-            ElementKey(NODE, 2)
-        )
-        verify(listener).onUpdated(eq(expectedMapDataWithGeometry), eq(expectedDeletions))
+        verify(listener).onUpdated(eq(updatedMapData), eq(deletions))
     }
 
     @Test
@@ -1122,8 +1115,7 @@ class MapDataWithEditsSourceTest {
         editsListener.onAddedEdit(edit(action = action))
     }
 
-    private fun editsControllerNotifiesDeletedEdit(element: Element, createdElementKeys: List<ElementKey>) {
-        on(editsCtrl.getIdProvider(anyLong())).thenReturn(ElementIdProvider(createdElementKeys))
-        editsListener.onDeletedEdits(listOf(edit(element = element)))
+    private fun editsControllerNotifiesDeletedEdit() {
+        editsListener.onDeletedEdits(listOf())
     }
 }

@@ -322,17 +322,22 @@ class MapDataWithEditsSource internal constructor(
 
             rebuildLocalChanges()
 
-            elementsDeletedNow = deletedElements - previousDeletedElements
-            val elementsNotDeletedAnymore = previousDeletedElements - deletedElements
+            val elementKeysNotDeletedAnymore = previousDeletedElements - deletedElements
 
-            val changedElements = (
-                elementsNotDeletedAnymore +
-                    (updatedElements.keys + previousUpdatedElements.keys).filterNot {
-                        previousUpdatedElements[it] equalsIgnoringVersioning updatedElements[it]
-                    }
-                ).toSet()
+            val changedElementKeys = (
+                elementKeysNotDeletedAnymore +
+                (updatedElements.keys + previousUpdatedElements.keys).filterNot {
+                    previousUpdatedElements[it] equalsIgnoringVersioning updatedElements[it]
+                }
+            ).toSet()
 
-            mapData.putAll(getAll(changedElements), getGeometries(changedElements))
+            val changedElements = getAll(changedElementKeys)
+
+            val missingElementKeys = changedElementKeys - changedElements.map { ElementKey(it.type, it.id) }
+
+            elementsDeletedNow = deletedElements - previousDeletedElements + missingElementKeys
+
+            mapData.putAll(changedElements, getGeometries(changedElementKeys))
         }
 
         callOnUpdated(updated = mapData, deleted = elementsDeletedNow)
