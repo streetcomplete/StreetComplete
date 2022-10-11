@@ -214,8 +214,8 @@ class MapDataWithEditsSourceTest {
         val action3 = mock<ElementEditAction>()
         on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3),
+            edit(action = action2),
+            edit(action = action3),
         ))
 
         val s = create()
@@ -244,7 +244,7 @@ class MapDataWithEditsSourceTest {
 
         val action = mock<ElementEditAction>()
         on(action.createUpdates(any(), any())).thenThrow(ConflictException())
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(element = nd, action = action)))
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
@@ -330,8 +330,8 @@ class MapDataWithEditsSourceTest {
         val action3 = mock<ElementEditAction>()
         on(action3.createUpdates(any(), any())).thenReturn(MapDataChanges(modifications = listOf(nd3)))
         on(editsCtrl.getAllUnsynced()).thenReturn(listOf(
-            edit(element = nd, action = action2),
-            edit(element = nd, action = action3)
+            edit(action = action2),
+            edit(action = action3)
         ))
 
         val s = create()
@@ -1105,10 +1105,7 @@ class MapDataWithEditsSourceTest {
     ) {
         val action = mock<ElementEditAction>()
         on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(
-            element = node(-1),
-            action = action
-        )))
+        on(editsCtrl.getAllUnsynced()).thenReturn(listOf(edit(action = action)))
     }
 
     private fun thereAreNoMapDataChanges() {
@@ -1122,10 +1119,7 @@ class MapDataWithEditsSourceTest {
     ) {
         val action = mock<ElementEditAction>()
         on(action.createUpdates(any(), any())).thenReturn(MapDataChanges(creations, modifications, deletions))
-        editsListener.onAddedEdit(edit(
-            element = node(-1),
-            action = action
-        ))
+        editsListener.onAddedEdit(edit(action = action))
     }
 
     private fun editsControllerNotifiesDeletedEdit(element: Element, createdElementKeys: List<ElementKey>) {

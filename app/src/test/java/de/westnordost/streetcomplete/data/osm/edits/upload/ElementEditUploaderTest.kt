@@ -1,8 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
@@ -35,36 +38,41 @@ class ElementEditUploaderTest {
 
     @Test(expected = ConflictException::class)
     fun `passes on conflict exception`() {
-        val node = node(1)
-        on(mapDataApi.getNode(anyLong())).thenReturn(node)
-        on(mapDataController.getNode(anyLong())).thenReturn(node)
+        val edit: ElementEdit = mock()
+        val action: ElementEditAction = mock()
+        on(edit.action).thenReturn(action)
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
         on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
-        uploader.upload(edit(element = node(1)), { mock() })
+        uploader.upload(edit, { mock() })
     }
 
     @Test(expected = ConflictException::class)
     fun `passes on element conflict exception`() {
-        val node = node(1)
-        on(mapDataApi.getNode(anyLong())).thenReturn(node)
-        on(mapDataController.getNode(anyLong())).thenReturn(node)
+        val edit: ElementEdit = mock()
+        val action: ElementEditAction = mock()
+        on(edit.action).thenReturn(action)
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
+
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         on(mapDataApi.uploadChanges(anyLong(), any(), any()))
             .thenThrow(ConflictException())
             .thenThrow(ConflictException())
 
-        uploader.upload(edit(element = node(1)), { mock() })
+        uploader.upload(edit, { mock() })
     }
 
     @Test fun `handles changeset conflict exception`() {
-        val node = node(1)
-        on(mapDataApi.getNode(anyLong())).thenReturn(node)
-        on(mapDataController.getNode(anyLong())).thenReturn(node)
+        val edit: ElementEdit = mock()
+        val action: ElementEditAction = mock()
+        on(edit.action).thenReturn(action)
+        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
+
         on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
         on(changesetManager.createChangeset(any(), any())).thenReturn(1)
         doThrow(ConflictException()).doAnswer { MapDataUpdates() }
             .on(mapDataApi).uploadChanges(anyLong(), any(), any())
 
-        uploader.upload(edit(element = node(1)), { mock() })
+        uploader.upload(edit, { mock() })
     }
 }

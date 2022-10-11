@@ -110,10 +110,9 @@ fun noteEdit(
 
 fun edit(
     id: Long = 1L,
-    element: Element = node(),
     geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L,
-    action: ElementEditAction = UpdateElementTagsAction(element, StringMapChanges(setOf(StringMapEntryAdd("hey", "ho")))),
+    action: ElementEditAction = UpdateElementTagsAction(node(), StringMapChanges(setOf(StringMapEntryAdd("hey", "ho")))),
     isSynced: Boolean = false
 ) = ElementEdit(
     id,

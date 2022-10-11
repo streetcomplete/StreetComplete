@@ -108,7 +108,7 @@ class ElementEditsUploaderTest {
     }
 
     @Test fun `upload catches deleted element exception`() = runBlocking {
-        val edit = edit(element = node(1))
+        val edit = edit()
         val idProvider = mock<ElementIdProvider>()
         val node = node(1)
 
