@@ -41,9 +41,11 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             is SmoothnessValueAnswer -> {
                 tags.updateWithCheckDate("smoothness", answer.value.osmValue)
                 tags.remove("smoothness:date")
+                tags.remove("surface:grade")
             }
             is WrongSurfaceAnswer -> {
                 tags.remove("surface")
+                tags.remove("surface:grade")
                 tags.remove("smoothness")
                 tags.remove("smoothness:date")
                 tags.removeCheckDatesForKey("smoothness")
