@@ -54,19 +54,3 @@ data class RevertCreateNodeAction(
         return MapDataChanges(modifications = editedWays, deletions = listOf(currentNode))
     }
 }
-
-// TODO id updates?!: way ids in CreateNodeAction.insertIntoWays and RevertCreateNodeAction.insertedIntoWayIds
-/* need to be updated... when a way with e.g. id=-1 has been uploaded
- ..but they are somewhere in the action (persisted as json), not in the edit...
-
- in current architecture, what would need to be done is to fetch every element edit and ask its
- action to update the ids...
-
- possible solutions:
-
- - maintain a "dictionary" of negative ids to real ids; use that dictionary at a critical point to
-   translate the old ids to the new ids - i.e. do not even change the ids in the database
-
- - make element edits dao into two tables, so that it is possible that several different element id+types
-   refer to the same edit(?)
-*/
