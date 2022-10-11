@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
@@ -44,8 +43,8 @@ class RevertCreateNodeActionTest {
 
     @Test(expected = ConflictException::class)
     fun `conflict when node already deleted`() {
-        on(repos.getNode(any())).thenReturn(null)
-        RevertCreateNodeAction(node(), listOf()).createUpdates(repos, provider)
+        on(repos.getNode(1)).thenReturn(null)
+        RevertCreateNodeAction(node(1), listOf()).createUpdates(repos, provider)
     }
 
     @Test(expected = ConflictException::class)
@@ -74,8 +73,9 @@ class RevertCreateNodeActionTest {
     @Test(expected = ConflictException::class)
     fun `conflict when node was moved at all`() {
         val node = node(1)
+        val movedNode = node.copy(position = node.position.translate(10.0, 0.0))
 
-        on(repos.getNode(1)).thenReturn(node.copy(position = node.position.translate(10.0, 0.0)))
+        on(repos.getNode(1)).thenReturn(movedNode)
         on(repos.getWaysForNode(1)).thenReturn(emptyList())
         on(repos.getRelationsForNode(1)).thenReturn(emptyList())
 
