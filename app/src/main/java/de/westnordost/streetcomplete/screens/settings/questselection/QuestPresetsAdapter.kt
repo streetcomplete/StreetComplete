@@ -96,7 +96,7 @@ class QuestPresetsAdapter(
 
         private fun onClickMenuButton(preset: QuestPreset) {
             val popup = PopupMenu(context, binding.menuButton)
-
+            popup.setForceShowIcon(true)
             val renameItem = popup.menu.add(R.string.quest_presets_rename)
             renameItem.setIcon(R.drawable.ic_edit_24dp)
             renameItem.setOnMenuItemClickListener { onClickRenamePreset(preset); true }
