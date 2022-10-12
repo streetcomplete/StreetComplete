@@ -564,6 +564,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
 
+    <string name="quest_presets_rename">Rename</string>
+    <string name="quest_presets_share">Share</string>
+    <string name="quest_presets_delete">Delete</string>
 
     <!-- Quests -->
     <!-- sorted alphabetically by title -->

@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
@@ -84,15 +84,41 @@ class QuestPresetsAdapter(
             binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) onSelectQuestPreset(with.id)
             }
-            binding.deleteButton.isEnabled = true
-            binding.deleteButton.isInvisible = with.id == 0L
-            binding.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
+            binding.menuButton.isEnabled = true
+            binding.menuButton.setOnClickListener { onClickMenuButton(with) }
         }
 
         private fun onSelectQuestPreset(presetId: Long) {
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.selectedId = presetId
             }
+        }
+
+        private fun onClickMenuButton(preset: QuestPreset) {
+            val popup = PopupMenu(context, binding.menuButton)
+
+            val renameItem = popup.menu.add(R.string.quest_presets_rename)
+            renameItem.setIcon(R.drawable.ic_edit_24dp)
+            renameItem.setOnMenuItemClickListener { onClickRenamePreset(preset); true }
+
+            val shareItem = popup.menu.add(R.string.quest_presets_share)
+            shareItem.setIcon(R.drawable.ic_share_24dp)
+            shareItem.setOnMenuItemClickListener { onClickSharePreset(preset); true }
+
+            if (preset.id != 0L) {
+                val deleteItem = popup.menu.add(R.string.quest_presets_delete)
+                deleteItem.setOnMenuItemClickListener { onClickDeleteQuestPreset(preset); true }
+            }
+
+            popup.show()
+        }
+
+        private fun onClickRenamePreset(preset: QuestPreset) {
+            TODO()
+        }
+
+        private fun onClickSharePreset(preset: QuestPreset) {
+            TODO()
         }
 
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {
@@ -104,7 +130,6 @@ class QuestPresetsAdapter(
         }
 
         private fun deleteQuestPreset(presetId: Long) {
-            binding.deleteButton.isEnabled = false
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.delete(presetId)
             }
