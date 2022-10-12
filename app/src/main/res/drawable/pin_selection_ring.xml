@@ -2,8 +2,10 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android">
     <shape android:shape="oval">
         <stroke
-            android:width="5dp"
+            android:width="7dp"
             android:color="@color/quest_selection_frame"/>
+        <solid
+            android:color="#00000000"/>
         <size
             android:width="58dp"
             android:height="58dp"/>

@@ -9,8 +9,10 @@ import android.graphics.Color
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.Rect
 import android.graphics.RectF
+import android.graphics.drawable.LayerDrawable
 import android.location.Location
 import android.os.Bundle
 import android.view.Menu
@@ -142,6 +144,7 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -547,9 +550,10 @@ class MainFragment :
     override fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
-        title: String?
+        title: String?,
+        color: Int?
     ) {
-        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title)
+        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title, color)
     }
 
     override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
@@ -1183,6 +1187,8 @@ class MainFragment :
 
         val element = if (quest is OsmQuest) withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
             else null
+        val highlightedElementMarkers = viewLifecycleScope.async(Dispatchers.IO) { getHighlightedElements(quest, element) }
+        val otherQuestMarkers = viewLifecycleScope.async { showOtherQuests(quest) }
         if (quest is OsmQuest) {
             val osmArgs = AbstractOsmQuestForm.createArguments(element!!)
             f.requireArguments().putAll(osmArgs)
@@ -1191,25 +1197,41 @@ class MainFragment :
         } else {
             showInBottomSheet(f)
         }
-        if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) != 0)
-            viewLifecycleScope.launch { showOtherQuests(quest) } // do concurrently with showing highlighted quests
-
-        showHighlightedElements(quest, element)
 
         mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
         mapFragment.highlightGeometry(quest.geometry)
         mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
         mapFragment.hideNonHighlightedPins()
         mapFragment.hideOverlay()
+
+        val markers = mergeMarkersAtSamePosition(highlightedElementMarkers.await(), otherQuestMarkers.await())
+        markers.forEach { mapFragment.putMarkerForCurrentHighlighting(it.geometry, it.drawableResId, it.title, it.color) }
     }
 
-    private fun showHighlightedElements(quest: Quest, element: Element? = null) {
+    // if quest and highlight marker at same position, set color of highlight marker to quest color
+    private fun mergeMarkersAtSamePosition(highlightMarkers: List<Marker>, questMarkers: List<Marker>): List<Marker> {
+        // creating a map of possibly many markers may not be the fastest thing... but still ok i guess
+        val m = hashMapOf<LatLon, Marker>()
+        highlightMarkers.associateByTo(m) { it.geometry.center }
+        questMarkers.forEach { questMarker ->
+            val highlightMarker = m[questMarker.geometry.center]
+            if (highlightMarker == null) {
+                m[questMarker.geometry.center] = questMarker
+                return@forEach
+            }
+            m[questMarker.geometry.center] = highlightMarker.copy(color = questMarker.color)
+        }
+        return m.values.toList()
+    }
+
+    private fun getHighlightedElements(quest: Quest, element: Element? = null): List<Marker> {
         val bbox = when (quest) {
             is OsmQuest -> quest.geometry.center.enclosingBoundingBox(quest.type.highlightedElementsRadius)
-            is OtherSourceQuest -> quest.type.highlightedElementsRadius?.let { quest.position.enclosingBoundingBox(it) } ?: return
-            else -> return
+            is OtherSourceQuest -> quest.type.highlightedElementsRadius?.let { quest.position.enclosingBoundingBox(it) } ?: return emptyList()
+            else -> return emptyList()
         }
         var mapData: MapDataWithGeometry? = null
+        val markers = mutableListOf<Marker>()
 
         fun getMapData(): MapDataWithGeometry {
             val data = mapDataWithEditsSource.getMapDataWithGeometry(bbox)
@@ -1225,7 +1247,6 @@ class MainFragment :
 
         val levels = element?.let { createLevelsOrNull(it.tags) }
 
-        viewLifecycleScope.launch(Dispatchers.IO) {
             val elements =
                 when (quest) {
                     is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
@@ -1244,19 +1265,21 @@ class MainFragment :
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(e.tags)
                 val title = getTitle(e.tags)
-                putMarkerForCurrentHighlighting(geometry, icon, title)
+                markers.add(Marker(geometry, icon, title))
             }
-        }
+        return markers
     }
 
-    private fun showOtherQuests(quest: Quest) {
+    private fun showOtherQuests(quest: Quest): List<Marker> {
+        if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) == 0) return emptyList()
         fun Quest.thatKey() = if (this is OsmQuest) ElementKey(elementType, elementId)
-        else ElementKey(ElementType.values()[abs(key.hashCode() % 3)], -abs(7*key.hashCode()).toLong())
+            else ElementKey(ElementType.values()[abs(key.hashCode() % 3)], -abs(7 * key.hashCode()).toLong())
+        val markers = mutableListOf<Marker>()
 
         val quests = visibleQuestsSource.getNearbyQuests(quest, prefs.getFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, 0.0f).toDouble() + 0.01)
             .filterNot { it == quest || it.type.dotColor != "no" } // ignore current quest and poi dots
             .sortedBy { it.thatKey() != quest.thatKey() }
-        if (quests.isEmpty()) return
+        if (quests.isEmpty()) return emptyList()
         binding.compassView.isInvisible = true
 
         val questsAndColorByElement = mutableMapOf<ElementKey, Pair<Int, MutableList<Quest>>>()
@@ -1269,28 +1292,36 @@ class MainFragment :
                 else iter.next()
                 if (!iter.hasNext()) iter = colors.iterator() // cycle through colors
                 if (color != Color.WHITE)
-                    mapFragment?.putColoredGeometry(it.geometry, color)
+                    markers.add(Marker(it.geometry, color = color))
                 Pair(color, mutableListOf())
             }.second.add(it)
         }
         questsAndColorByElement.values.forEach {
             val color = it.first
             it.second.forEach { q ->
-                val questView = ImageButton(context)
-                questView.setImageResource(q.type.icon)
-                questView.setBackgroundColor(Color.TRANSPARENT)
-                questView.setColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.4f), PorterDuff.Mode.MULTIPLY)
-                questView.scaleType = ImageView.ScaleType.FIT_CENTER
-                questView.adjustViewBounds = true
-                questView.setOnClickListener {
-                    binding.otherQuestsLayout.removeAllViews()
-                    viewLifecycleScope.launch { showQuestDetails(q) }
+                val questView = ImageButton(context).apply {
+                    setBackgroundColor(Color.TRANSPARENT)
+                    scaleType = ImageView.ScaleType.FIT_CENTER
+                    adjustViewBounds = true
+                    setOnClickListener {
+                        binding.otherQuestsLayout.removeAllViews()
+                        viewLifecycleScope.launch { showQuestDetails(q) }
+                    }
+                    // create drawable from quest icon and ring
+                    val ring = resources.getDrawable(R.drawable.pin_selection_ring)
+                    ring.colorFilter = if (color == Color.WHITE) null
+                        else PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
+                    val icon = resources.getDrawable(q.type.icon)
+                    icon.colorFilter = PorterDuffColorFilter(ColorUtils.blendARGB(color, Color.WHITE, 0.8f), PorterDuff.Mode.MULTIPLY)
+                    val ld = LayerDrawable(arrayOf(icon, ring))
+                    setImageDrawable(ld)
                 }
                 binding.otherQuestsLayout.addView(questView)
             }
         }
         binding.otherQuestsScrollView.fullScroll(View.FOCUS_UP)
         binding.otherQuestsScrollView.visibility = View.VISIBLE
+        return markers
     }
 
     private fun isQuestDetailsCurrentlyDisplayedFor(questKey: QuestKey): Boolean {
@@ -1381,3 +1412,10 @@ class MainFragment :
         private const val EDIT_HISTORY = "edit_history"
     }
 }
+
+private data class Marker(
+    val geometry: ElementGeometry,
+    val drawableResId: Int? = null,
+    val title: String? = null,
+    val color: Int? = null,
+)

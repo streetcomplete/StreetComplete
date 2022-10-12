@@ -7,7 +7,8 @@ interface ShowsGeometryMarkers {
     fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
-        title: String?
+        title: String?,
+        color: Int? = null
     )
     fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry)
 

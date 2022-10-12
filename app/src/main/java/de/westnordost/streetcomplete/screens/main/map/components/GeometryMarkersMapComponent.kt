@@ -23,7 +23,6 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
     // markers: LatLon -> Marker Id
     private val markerIdsByPosition: MutableMap<LatLon, List<Long>> = HashMap()
-    private val colorMarkerIds = hashSetOf<Long>()
 
     // cache for all drawable res ids supplied so far
     private val drawables: MutableMap<Int, BitmapDrawable> = HashMap()
@@ -31,7 +30,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
     @Synchronized fun put(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int? = null,
-        title: String? = null
+        title: String? = null,
+        questColor: Int? = null
     ) {
         val center = geometry.center
         delete(geometry)
@@ -47,10 +47,10 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 val drawable = getBitmapDrawable(drawableResId)
                 marker.setDrawable(drawable)
                 iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
-                color = "white"
+                color = questColor?.let { "#" + Integer.toHexString(ColorUtils.blendARGB(it, Color.WHITE, 0.7f)) } ?: "white"
             } else {
                 iconSize = pointSize
-                color = pointColor
+                color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 100)) } ?: pointColor
             }
             marker.setStylingFromString("""
             {
@@ -101,10 +101,11 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
             if (geometry is ElementPolygonsGeometry) {
                 val marker = ctrl.addMarker()
+                val color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 50)) } ?: areaColor
                 marker.setStylingFromString("""
                 {
                     style: 'geometry-polygons',
-                    color: '$areaColor',
+                    color: '$color',
                     order: 2000,
                     collide: false
                 }
@@ -119,11 +120,12 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
              *  limitation in tangram-es, these have to be actually two markers then. */
             for (polyline in positions) {
                 val marker = ctrl.addMarker()
+                val color = questColor?.let { "#" + Integer.toHexString(ColorUtils.setAlphaComponent(it, 75)) } ?: lineColor
                 marker.setStylingFromString("""
                 {
                     style: 'geometry-lines',
                     width: ${lineWidth}px,
-                    color: '$lineColor',
+                    color: '$color',
                     order: 2000,
                     collide: false,
                     cap: round,
@@ -138,75 +140,6 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         markerIdsByPosition[center] = markers.map { it.markerId }
     }
 
-    @Synchronized fun putColored(geometry: ElementGeometry, color: Int) {
-
-        val markers = mutableListOf<Marker>()
-
-        // point / icon marker
-        if (geometry is ElementPointGeometry) {
-            val marker = ctrl.addMarker()
-            val colorString = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 100))
-            marker.setStylingFromString("""
-            {
-                style: 'geometry-points',
-                color: '$colorString',
-                size: ${pointSize}px,
-                collide: false
-            }
-            """.trimIndent())
-            marker.setPoint(geometry.center)
-            markers.add(marker)
-        }
-
-        // polygon / polylines marker(s)
-        if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-            val positions = when (geometry) {
-                is ElementPolygonsGeometry -> geometry.polygons
-                is ElementPolylinesGeometry -> geometry.polylines
-                else -> throw IllegalStateException()
-            }
-
-            val colorStringLine = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 75))
-            val colorStringArea = "#" + Integer.toHexString(ColorUtils.setAlphaComponent(color, 50))
-            if (geometry is ElementPolygonsGeometry) {
-                val marker = ctrl.addMarker()
-                marker.setStylingFromString("""
-                {
-                    style: 'geometry-polygons',
-                    color: '$colorStringArea',
-                    order: 2000,
-                    collide: false
-                }
-                """.trimIndent())
-                marker.setPolygon(Polygon(
-                    positions.map { polygon -> polygon.map { it.toLngLat() } }, null
-                ))
-                markers.add(marker)
-            }
-
-            /* Polygons should be styled to have a more opaque outline. Due to a technical
-             *  limitation in tangram-es, these have to be actually two markers then. */
-            for (polyline in positions) {
-                val marker = ctrl.addMarker()
-                marker.setStylingFromString("""
-                {
-                    style: 'geometry-lines',
-                    width: ${lineWidth}px,
-                    color: '$colorStringLine',
-                    order: 2000,
-                    collide: false,
-                    cap: round,
-                    join: round
-                }
-                """.trimIndent())
-                marker.setPolyline(Polyline(polyline.map { it.toLngLat() }, null))
-                markers.add(marker)
-            }
-        }
-
-        markers.forEach { colorMarkerIds.add(it.markerId) }
-    }
-
     @Synchronized fun delete(geometry: ElementGeometry) {
         val pos = geometry.center
         val markerIds = markerIdsByPosition[pos] ?: return
@@ -218,9 +151,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         markerIdsByPosition.values.forEach { markerIds ->
             markerIds.forEach { ctrl.removeMarker(it) }
         }
-        colorMarkerIds.forEach { ctrl.removeMarker(it) }
         markerIdsByPosition.clear()
-        colorMarkerIds.clear()
     }
 
     private fun getBitmapDrawable(@DrawableRes drawableResId: Int): BitmapDrawable {
