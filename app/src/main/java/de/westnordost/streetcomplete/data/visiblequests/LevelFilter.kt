@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.text.InputType
@@ -12,24 +13,25 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 /** Controller for filtering all quests that are hidden because they are on the wrong level */
-class LevelFilter internal constructor(
-    private val sharedPrefs: SharedPreferences,
-    private val mapDataController: MapDataController, // we'd rather want MapDataWithEditsSource, but this just crashes on start...
-    private val visibleQuestTypeController: VisibleQuestTypeController,
-    private val selectedOverlaySource: SelectedOverlaySource,
-) {
+class LevelFilter internal constructor(private val sharedPrefs: SharedPreferences) : KoinComponent {
     var isEnabled = false
         private set
     private var allowedLevel: String? = null
     private lateinit var allowedLevelTags: List<String>
+
+    private val mapDataSource: MapDataWithEditsSource by inject()
+    private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val selectedOverlaySource: SelectedOverlaySource by inject()
 
     init { reload() }
 
@@ -39,11 +41,11 @@ class LevelFilter internal constructor(
     }
 
     fun isVisible(quest: Quest): Boolean =
-        !isEnabled ||
-            (quest is OsmQuest && quest.levelAllowed())
+        !isEnabled
+            || (quest is OsmQuest && quest.levelAllowed())
 
     private fun OsmQuest.levelAllowed(): Boolean =
-        levelAllowed(mapDataController.get(this.elementType, this.elementId))
+        levelAllowed(mapDataSource.get(this.elementType, this.elementId))
 
     fun levelAllowed(element: Element?): Boolean {
         if (!isEnabled) return true
@@ -73,6 +75,7 @@ class LevelFilter internal constructor(
         return false
     }
 
+    @SuppressLint("SetTextI18n") // tags should not be translated
     fun showLevelFilterDialog(context: Context) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(R.string.level_filter_title)

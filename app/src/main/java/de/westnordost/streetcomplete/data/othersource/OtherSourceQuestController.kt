@@ -32,9 +32,6 @@ class OtherSourceQuestController(
     fun addQuestListener(questListener: QuestListener) {
         questListeners.add(questListener)
     }
-    fun removeQuestListener(questListener: QuestListener) {
-        questListeners.remove(questListener)
-    }
 
     private val questTypes get() = questTypeRegistry.filterIsInstance<OtherSourceQuestType>()
     private val questTypeNamesBySource = questTypes.associate { it.source to it.name }
@@ -50,9 +47,8 @@ class OtherSourceQuestController(
     }
 
     fun getAllInBBox(bbox: BoundingBox, visibleQuestTypes: List<QuestType>? = null, getHidden: Boolean = false): List<OtherSourceQuest> {
-        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes).flatMap {
-            it.getQuests(bbox)
-        }
+        val quests = (visibleQuestTypes?.filterIsInstance<OtherSourceQuestType>() ?: questTypes)
+            .flatMap { it.getQuests(bbox) }
         return if (getHidden) quests else quests.filterNot { it.key in hiddenCache }
     }
 
@@ -85,7 +81,6 @@ class OtherSourceQuestController(
     fun upload() = questTypes.forEach { it.upload() }
 
     fun invalidate() = questListeners.forEach { it.onInvalidate() }
-
 
     // hiding / unhiding
 
