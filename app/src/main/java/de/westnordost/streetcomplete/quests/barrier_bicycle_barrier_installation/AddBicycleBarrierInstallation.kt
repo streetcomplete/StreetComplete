@@ -11,7 +11,12 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>() {
 
-    override val elementFilter = "nodes, ways with barrier = cycle_barrier and cycle_barrier and cycle_barrier != tilted and !cycle_barrier:installation"
+    override val elementFilter = """
+        nodes, ways with barrier = cycle_barrier
+         and cycle_barrier
+         and cycle_barrier != tilted
+         and !cycle_barrier:installation
+    """
     override val changesetComment = "Specify cycle barrier installation"
     override val wikiLink = "Key:cycle_barrier:installation"
     override val icon = R.drawable.ic_quest_no_bicycles
