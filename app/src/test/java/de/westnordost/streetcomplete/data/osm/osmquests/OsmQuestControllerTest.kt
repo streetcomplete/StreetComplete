@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.on
@@ -81,7 +82,7 @@ class OsmQuestControllerTest {
 
         listener = mock()
         hideListener = mock()
-        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
+        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask, mockPrefs())
         ctrl.addListener(listener)
         ctrl.addHideQuestsListener(hideListener)
     }
@@ -132,11 +133,6 @@ class OsmQuestControllerTest {
         val expectedQuests = listOf(
             OsmQuest(ApplicableQuestType, NODE, 1, geoms[0]),
         )
-        println(ctrl.getAllVisibleInBBox(bbox, null))
-        println(expectedQuests)
-        println(hiddenDB.getAllIds())
-        println(db.getAllInBBox(bbox, null))
-        println(db.getAllInBboxIfNotHidden(bbox, null))
         assertTrue(ctrl.getAllVisibleInBBox(bbox, null).containsExactlyInAnyOrder(expectedQuests))
     }
 

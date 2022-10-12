@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -52,12 +53,13 @@ class AddCyclewayTest {
         val countryBoundaries: CountryBoundaries = mock()
         val futureTask = FutureTask { countryBoundaries }
         futureTask.run()
+        StreetCompleteApplication.preferences = mockPrefs()
 
         countryInfo = mock()
         countryInfos = mock()
         on(countryInfos.getByLocation(countryBoundaries, anyDouble(), anyDouble())).thenReturn(countryInfo)
 
-        questType = AddCycleway(countryInfos, futureTask, mockPrefs())
+        questType = AddCycleway(countryInfos, futureTask)
     }
 
     @Test fun `applicable to road with missing cycleway`() {

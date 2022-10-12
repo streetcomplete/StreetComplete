@@ -21,7 +21,7 @@ import org.junit.Test
 
 class AddSidewalkTest {
 
-    private val questType = AddSidewalk(mockPrefs())
+    private val questType = AddSidewalk()
 
     @Test fun `not applicable to road with sidewalk`() {
         val road = way(tags = mapOf(

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Test
 
 class AddRoadWidthTest {
-    private val quest = AddRoadWidth(mock(), mock())
+    private val quest = AddRoadWidth(mock())
 
     @Test fun `apply to street`() {
         quest.verifyAnswer(

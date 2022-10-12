@@ -10,7 +10,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddRoadSurfaceTest {
-    private val questType = AddRoadSurface(mock())
+    private val questType = AddRoadSurface()
 
     @Test fun `verify simple name adding`() {
         questType.verifyAnswer(

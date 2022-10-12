@@ -1,16 +1,23 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mockPrefs
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 
 class AddBuildingLevelsTest {
 
-    private val questType = AddBuildingLevels(mockPrefs())
+    private lateinit var questType: AddBuildingLevels
+
+    @Before fun setUp() {
+        StreetCompleteApplication.preferences = mockPrefs()
+        questType = AddBuildingLevels()
+    }
 
     @Test fun `apply building levels answer`() {
         questType.verifyAnswer(

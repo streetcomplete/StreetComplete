@@ -65,7 +65,6 @@ class OsmoseDao(
     }
 
     fun download(bbox: BoundingBox): List<OtherSourceQuest> {
-        if (!prefs.getBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false)) return emptyList()
         // https://osmose.openstreetmap.fr/api/0.3/issues.csv?zoom=18&item=xxxx&level=1&limit=500&bbox=16.412324309349064%2C48.18403988244578%2C16.41940534114838%2C48.1871908341706
         // replace bbox
         val csvUrl = "https://osmose.openstreetmap.fr/api/0.3/issues.csv"

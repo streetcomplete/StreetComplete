@@ -55,14 +55,14 @@ class MapDataControllerTest {
 
     @Test fun getGeometry() {
         val pGeom = pGeom()
-        on(geometryDB.get(NODE, 5L)).thenReturn(pGeom)
+        on(nodeDB.get(5L)).thenReturn(node(5L, pGeom.center))
         assertEquals(pGeom, controller.getGeometry(NODE, 5L))
     }
 
     @Test fun getGeometries() {
         val pGeom = ElementGeometryEntry(NODE, 1, pGeom())
         val keys = listOf(ElementKey(NODE, 1))
-        on(geometryDB.getAllEntries(keys)).thenReturn(listOf(pGeom))
+        on(nodeDB.getAll(keys.map { it.id })).thenReturn(listOf(node(1, pGeom.geometry.center)))
         assertEquals(
             listOf(pGeom),
             controller.getGeometries(keys)
@@ -71,7 +71,7 @@ class MapDataControllerTest {
 
     @Test fun getMapDataWithGeometry() {
         val bbox = bbox()
-        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(17)
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(18)
         val geomEntries = listOf(
             ElementGeometryEntry(NODE, 1L, pGeom()),
             ElementGeometryEntry(NODE, 2L, pGeom()),

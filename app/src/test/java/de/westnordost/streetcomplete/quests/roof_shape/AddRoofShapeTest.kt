@@ -30,7 +30,7 @@ class AddRoofShapeTest {
         futureTask.run()
 
         countryInfos = mock()
-        questType = AddRoofShape(countryInfos, futureTask, mockPrefs())
+        questType = AddRoofShape(countryInfos, futureTask)
     }
 
     @Test fun `not applicable to roofs with shapes already set`() {

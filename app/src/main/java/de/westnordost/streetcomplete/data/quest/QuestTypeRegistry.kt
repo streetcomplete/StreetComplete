@@ -17,22 +17,37 @@ import java.util.concurrent.FutureTask
  */
 
 class QuestTypeRegistry(
-    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
-    private val trafficFlowDao: WayTrafficFlowDao,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
-    private val countryInfos: CountryInfos,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val arSupportChecker: ArSupportChecker,
-    private val osmoseDao: OsmoseDao,
-    private val externalList: ExternalList,
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi? = null,
+    private val trafficFlowDao: WayTrafficFlowDao? = null,
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>? = null,
+    private val countryInfos: CountryInfos? = null,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>? = null,
+    private val arSupportChecker: ArSupportChecker? = null,
+    private val osmoseDao: OsmoseDao? = null,
+    private val externalList: ExternalList? = null,
     private val quests: MutableList<QuestType> = mutableListOf()
 ) : List<QuestType> by quests {
+
+    // the nullable stuff is just to allow creating a QuestTypeRegistry from a list as it's done in tests
+    constructor(questList: List<QuestType>) : this(quests = questList.toMutableList()) {
+        for (questType in this) {
+            val questTypeName = questType.name
+            require(!typeMap.containsKey(questTypeName)) {
+                "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
+            }
+            typeMap[questTypeName] = questType
+        }
+    }
 
     private val typeMap = mutableMapOf<String, QuestType>()
 
     init { reload() }
 
     fun reload() {
+        if (trafficFlowSegmentsApi == null || trafficFlowDao == null || featureDictionaryFuture == null
+            || countryInfos == null || countryBoundariesFuture == null || arSupportChecker == null
+            || osmoseDao == null || externalList == null)
+            return
         quests.clear()
         quests.addAll(getQuestTypeList(
             trafficFlowSegmentsApi,

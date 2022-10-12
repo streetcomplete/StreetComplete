@@ -12,7 +12,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class AddLevelTest {
-    private val questType = AddLevel(mockPrefs())
+    private val questType = AddLevel()
 
     @Test fun `does not create quest for shop`() {
         val mapData = createMapData(mapOf(shopWithoutLevel()))

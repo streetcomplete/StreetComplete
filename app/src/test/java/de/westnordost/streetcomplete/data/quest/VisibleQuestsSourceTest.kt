@@ -100,7 +100,7 @@ class VisibleQuestsSourceTest {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
         val noteQuests = listOf(OsmNoteQuest(0L, LatLon(0.0, 0.0)), OsmNoteQuest(1L, LatLon(1.0, 1.0)))
-        on(osmQuestSource.getAllVisibleInBBox(bboxCacheWillRequest, questTypeNames)).thenReturn(osmQuests)
+        on(osmQuestSource.getAllVisibleInBBox(bboxCacheWillRequest, questTypes)).thenReturn(osmQuests)
         on(osmNoteQuestSource.getAllVisibleInBBox(bboxCacheWillRequest)).thenReturn(noteQuests)
 
         val quests = source.getAllVisible(bbox)
@@ -110,7 +110,7 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `getAllVisible does not return those that are invisible in team mode`() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypeNames)).thenReturn(listOf(mock()))
+        on(osmQuestSource.getAllVisibleInBBox(bbox, questTypes)).thenReturn(listOf(mock()))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox)).thenReturn(listOf(mock()))
         on(teamModeQuestFilter.isVisible(any())).thenReturn(false)
         on(teamModeQuestFilter.isEnabled).thenReturn(true)
@@ -120,7 +120,8 @@ class VisibleQuestsSourceTest {
     }
 
     @Test fun `getAllVisible does not return those that are invisible because of an overlay`() {
-        on(osmQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16), listOf("TestQuestTypeA")))
+        val qta = questTypes.first() // we need the same instance as in the registry
+        on(osmQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16), listOf(qta)))
             .thenReturn(listOf(OsmQuest(TestQuestTypeA(), ElementType.NODE, 1, ElementPointGeometry(bbox.min))))
         on(osmNoteQuestSource.getAllVisibleInBBox(bbox.asBoundingBoxOfEnclosingTiles(16))).thenReturn(listOf())
 

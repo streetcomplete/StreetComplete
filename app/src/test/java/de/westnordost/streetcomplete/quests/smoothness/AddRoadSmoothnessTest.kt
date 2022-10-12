@@ -12,7 +12,7 @@ import org.junit.Test
 import java.time.LocalDate
 
 class AddRoadSmoothnessTest {
-    private val questType = AddRoadSmoothness(mock())
+    private val questType = AddRoadSmoothness()
 
     @Test fun `apply smoothness answer`() {
         questType.verifyAnswer(
