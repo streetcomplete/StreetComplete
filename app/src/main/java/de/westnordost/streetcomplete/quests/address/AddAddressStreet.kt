@@ -17,8 +17,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number
-          or addr:streetnumber and !addr:street
+          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number and !addr:substreet and !addr:parentstreet
+          or addr:streetnumber and !addr:street and !addr:substreet and !addr:parentstreet
     """.toElementFilterExpression() }
 
     // #2112 - exclude indirect addr:street
