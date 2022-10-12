@@ -64,7 +64,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             }
             2 -> {
                 AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.tutorial_info_fork_title)
+                    .setTitle(R.string.warning)
                     .setMessage(R.string.tutorial_info_fork_message)
                     .setCancelable(false)
                     .setPositiveButton(android.R.string.ok) { _,_ ->

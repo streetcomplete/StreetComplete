@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -31,6 +34,7 @@ import org.koin.android.ext.android.inject
 class CreatePoiFragment : AbstractBottomSheetFragment() {
 
     private val elementEditsController: ElementEditsController by inject()
+    private val tilesDao: DownloadedTilesDao by inject()
 
     private val okButtonContainer: View get() = bottomSheetBinding.okButtonContainer
     private val okButton: View get() = bottomSheetBinding.okButton
@@ -100,10 +104,21 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos) ?: return
-
-        // need some editType
-        elementEditsController.add(CreatePoiEditType(), Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, tags))
-        listener?.onCreatedNote(position)
+        if (tilesDao.get(position.enclosingTilePos(16).toTilesRect(), 0L).isEmpty())
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.warning)
+                .setMessage(R.string.outside_downloaded_area)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    elementEditsController.add(CreatePoiEditType(), Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, tags))
+                    listener?.onCreatedNote(position)
+                }
+                .setCancelable(false)
+                .show()
+        else {
+            elementEditsController.add(CreatePoiEditType(), Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, tags))
+            listener?.onCreatedNote(position)
+        }
     }
 
     override fun isRejectingClose() =
