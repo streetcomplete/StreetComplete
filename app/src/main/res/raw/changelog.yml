@@ -30,6 +30,14 @@ v48.0-beta1: |
   <li>Other small enhancements and fixes (#4431, #4453...), thanks @matkoniecz</li>
   </ul>
 
+v47.2: |
+  <ul>
+  <li>Fix notes questions asked in notes would not show up if that note contained several paragraphs (#4482)</li>
+  <li>Do not ask for surfaces of private cycleways and footways (#4434, #4433), by @legofahrrad</li>
+  <li>Also ask for bus stop identification numbers in Australia (#4487), by @andrewharvey</li>
+  <li>Other minor enhancements (#4486, #4475...), thanks @mnalis</li>
+  </ul>
+
 v47.1: |
   <ul>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
