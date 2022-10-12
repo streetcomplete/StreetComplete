@@ -9,12 +9,14 @@ import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+/* Each overlay is assigned an ordinal. This is used for serialization and is thus never changed,
+*  even if the order of overlays is changed.  */
 val overlaysModule = module {
     single { OverlayRegistry(listOf(
-        WayLitOverlay(),
-        SidewalkOverlay(),
-        StreetParkingOverlay(),
-        AddressOverlay(),
-        ShopsOverlay(get(named("FeatureDictionaryFuture"))),
+        0 to WayLitOverlay(),
+        1 to SidewalkOverlay(),
+        2 to StreetParkingOverlay(),
+        3 to AddressOverlay(),
+        4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
     )) }
 }
