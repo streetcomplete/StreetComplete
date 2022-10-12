@@ -30,18 +30,29 @@ class AddRoadSmoothnessTest {
         )
     }
 
+    @Test fun `deletes surface-grade`() {
+        questType.verifyAnswer(
+            mapOf("smoothness" to "excellent", "surface:grade" to "3"),
+            SmoothnessValueAnswer(Smoothness.HORRIBLE),
+            StringMapEntryModify("smoothness", "excellent", "horrible"),
+            StringMapEntryDelete("surface:grade", "3"),
+        )
+    }
+
     @Test fun `on wrong surface, deletes everything smoothness-related`() {
         questType.verifyAnswer(
             mapOf(
                 "smoothness" to "excellent",
                 "smoothness:date" to "2000-10-10",
                 "surface" to "asphalt",
+                "surface:grade" to "3",
                 "check_date:smoothness" to "2000-10-10",
             ),
             WrongSurfaceAnswer,
             StringMapEntryDelete("smoothness", "excellent"),
             StringMapEntryDelete("smoothness:date", "2000-10-10"),
             StringMapEntryDelete("surface", "asphalt"),
+            StringMapEntryDelete("surface:grade", "3"),
             StringMapEntryDelete("check_date:smoothness", "2000-10-10"),
         )
     }
