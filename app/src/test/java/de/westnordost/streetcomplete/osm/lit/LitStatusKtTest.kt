@@ -88,7 +88,7 @@ class LitStatusKtTest {
     }
 }
 
-fun verifyAnswer(tags: Map<String, String>, answer: LitStatus, expectedChanges: Array<StringMapEntryChange>) {
+private fun verifyAnswer(tags: Map<String, String>, answer: LitStatus, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
     val changes = cb.create().changes
