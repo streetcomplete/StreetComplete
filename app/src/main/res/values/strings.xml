@@ -657,6 +657,11 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
+    <string name="quest_bicycle_barrier_installation_title">Can this cycle barrier be opened?</string>
+    <string name="quest_barrier_bicycle_installation_fixed">Fixed</string>
+    <string name="quest_barrier_bicycle_installation_openable">Openable</string>
+    <string name="quest_barrier_bicycle_installation_removable">Removable</string>
+
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
     <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
