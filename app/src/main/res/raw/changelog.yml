@@ -11,7 +11,7 @@ v48.0-beta1: |
   <ul>
   <li>2x to 8x times faster display of quest pins and overlays</li>
   <li>2x to 3x times faster showing of quest details</li>
-  <li>up to 2x times faster solving of a quests</li>
+  <li>up to 2x times faster solving of quests</li>
   <li>slightly faster download (#4469)</li>
   </ul>
   <h3>New Quests</h3>
