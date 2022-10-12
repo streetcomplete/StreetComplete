@@ -69,6 +69,7 @@ class OtherSourceQuestController(
             val newQuests = mutableListOf<OtherSourceQuest>()
 
             questTypes.forEach { type ->
+                if (!type.downloadEnabled) return@forEach
                 if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@forEach
                 val previousQuests = type.getQuests(bbox).map { it.key }
                 val quests = type.download(bbox)

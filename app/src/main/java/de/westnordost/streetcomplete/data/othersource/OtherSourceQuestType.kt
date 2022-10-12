@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.othersource
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -8,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.quests.questPrefix
 
 /**
  * Very similar to OsmElementQuestType.
@@ -38,6 +41,8 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
      *  Download and persist data, create quests inside the given [bbox] and return the new quests.
      *  Download date should be stored for each entry to allow cleanup of old data.
      *  It's probably a good idea to remove old data inside the [bbox] before inserting updates.
+     *
+     *  Download will only happen if [downloadEnabled] is true.
      */
     fun download(bbox: BoundingBox): Collection<OtherSourceQuest>
 
@@ -84,5 +89,16 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
      *  Will be called with (nearly) current time when clearing all stored data is desired.
      */
     override fun deleteMetadataOlderThan(timestamp: Long)
-}
 
+    /** quest settings should always exist, at least to control [downloadEnabled] */
+    override val hasQuestSettings get() = true
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog?
+
+    /** quest settings should always exist, at least to disable downloading */
+    var downloadEnabled: Boolean
+        get() = prefs.getBoolean(downloadPref, false)
+        set(value) = prefs.edit().putBoolean(downloadPref, value).apply()
+
+    private val downloadPref get() = questPrefix(prefs) + "qs_${name}_enable_download"
+}

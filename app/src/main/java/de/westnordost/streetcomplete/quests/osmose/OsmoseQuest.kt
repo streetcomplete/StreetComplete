@@ -54,14 +54,12 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 
     override fun createForm() = OsmoseForm()
 
-    override val hasQuestSettings = true
-
     override fun getQuestSettingsDialog(context: Context): AlertDialog {
         val enable = SwitchCompat(context).apply {
             setText(R.string.quest_osmose_settings_enable)
-            isChecked = prefs.getBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, false)
+            isChecked = downloadEnabled
             setOnCheckedChangeListener { _, b ->
-                prefs.edit().putBoolean(questPrefix(prefs) + PREF_OSMOSE_ENABLE_DOWNLOAD, b).apply()
+                downloadEnabled = b
             }
         }
         enable.setPadding(30,10,30,10)
@@ -97,5 +95,4 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
 }
 
 const val PREF_OSMOSE_ITEMS = "qs_OsmoseQuest_blocked_items"
-const val PREF_OSMOSE_ENABLE_DOWNLOAD = "qs_OsmoseQuest_enable_download"
 const val PREF_OSMOSE_LEVEL = "qs_OsmoseQuest_level"
