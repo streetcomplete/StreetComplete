@@ -147,9 +147,11 @@ class VisibleQuestsSource(
         return when (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0)) {
             1 -> getAllVisible(bbox)
             2 -> osmQuestSource.getAllVisibleInBBox(bbox) +
-                otherSourceQuestController.getAllInBBox(bbox)
+                otherSourceQuestController.getAllInBBox(bbox) +
+                osmNoteQuestSource.getAllVisibleInBBox(bbox)
             3 -> osmQuestSource.getAllVisibleInBBox(bbox, getHidden = true) +
-                otherSourceQuestController.getAllInBBox(bbox, getHidden = true)
+                otherSourceQuestController.getAllInBBox(bbox, getHidden = true) +
+                osmNoteQuestSource.getAllVisibleInBBox(bbox, getHidden = true)
             else -> emptyList()
         }
     }
