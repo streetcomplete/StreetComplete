@@ -16,6 +16,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -41,11 +43,11 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
     }
 
     fun isVisible(quest: Quest): Boolean =
-        !isEnabled
-            || (quest is OsmQuest && quest.levelAllowed())
-
-    private fun OsmQuest.levelAllowed(): Boolean =
-        levelAllowed(mapDataSource.get(this.elementType, this.elementId))
+        !isEnabled || when (quest) {
+            is OsmQuest -> levelAllowed(mapDataSource.get(quest.elementType, quest.elementId))
+            is OtherSourceQuest -> levelAllowed(quest.elementKey?.let { mapDataSource.get(it.type, it.id) })
+            else -> true
+        }
 
     fun levelAllowed(element: Element?): Boolean {
         if (!isEnabled) return true

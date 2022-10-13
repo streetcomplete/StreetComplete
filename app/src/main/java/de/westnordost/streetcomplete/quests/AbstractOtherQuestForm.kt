@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -36,6 +37,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
     open val buttonPanelAnswers = listOf<AnswerItem>()
     private val elementEditsController: ElementEditsController by inject()
     private val otherQuestController: OtherSourceQuestController by inject()
+    protected val mapDataSource: MapDataWithEditsSource by inject()
 
     protected var element: Element? = null
     private val dummyElement by lazy { Node(0, LatLon(0.0, 0.0)) }
@@ -67,6 +69,10 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
                 hideQuest()
                 true
             }
+        }
+        // set element if available
+        otherQuestController.get(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
+            mapDataSource.get(key.type, key.id)?.let { element = it }
         }
     }
 

@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
@@ -26,7 +25,6 @@ class OsmoseForm : AbstractOtherQuestForm() {
     private lateinit var issue: OsmoseIssue
 
     private val questController: OtherSourceQuestController by inject()
-    private val mapDataSource: MapDataWithEditsSource by inject()
 
     override val buttonPanelAnswers = mutableListOf<AnswerItem>()
 
@@ -61,7 +59,6 @@ class OsmoseForm : AbstractOtherQuestForm() {
                 .show()
         } )
 
-        if (issue.elements.size == 1) element = mapDataSource.get(issue.elements.single().type, issue.elements.single().id)
         if (issue.elements.size > 1) viewLifecycleScope.launch { highlightElements() }
         updateButtonPanel()
     }

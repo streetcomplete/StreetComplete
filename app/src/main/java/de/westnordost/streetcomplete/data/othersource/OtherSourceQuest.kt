@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.othersource
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.OtherSourceQuestHiddenKey
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -17,6 +18,9 @@ data class OtherSourceQuest(
     override val markerLocations: Collection<LatLon> get() = listOf(geometry.center)
     override val position: LatLon get() = geometry.center
     val source get() = type.source
+
+    /** an element can be linked to the quest, but this is not necessary */
+    var elementKey: ElementKey? = null
 }
 
 data class OtherSourceQuestHidden(

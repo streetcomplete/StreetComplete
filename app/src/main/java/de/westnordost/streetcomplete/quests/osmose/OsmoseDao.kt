@@ -42,7 +42,6 @@ class OsmoseDao(
     val type = OsmoseQuest(this) // ugly, but at least it works...
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val questTypeRegistry: QuestTypeRegistry by inject()
 
     private val ignoredItems = hashSetOf<Int>()
     private val ignoredItemClassCombinations = hashSetOf<String>()
@@ -139,7 +138,7 @@ class OsmoseDao(
                 if (elements.size == 1) mapDataWithEditsSource.getGeometry(elements.single().type, elements.single().id) ?: ElementPointGeometry(position)
                 else ElementPointGeometry(position),
                 type
-        )
+        ).apply { if (elements.size == 1) elementKey = elements.single() }
 
     fun setFromDoneToNotAnsweredNear(position: LatLon) {
         db.update(NAME,
