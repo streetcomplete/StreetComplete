@@ -13,14 +13,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
-import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
@@ -42,7 +39,6 @@ import org.koin.android.ext.android.inject
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     private val noteEditsController: NoteEditsController by inject()
-    private val tilesDao: DownloadedTilesDao by inject()
 
     private var _binding: FragmentCreateNoteBinding? = null
     private val binding: FragmentCreateNoteBinding get() = _binding!!
@@ -165,18 +161,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos) ?: return
-        if (tilesDao.get(position.enclosingTilePos(16).toTilesRect(), 0L).isEmpty())
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.warning)
-                .setMessage(R.string.outside_downloaded_area)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok) { _, _ -> reallyCreateNote(text, imagePaths, isGpxNote, position) }
-                .setCancelable(false)
-                .show()
-        else reallyCreateNote(text, imagePaths, isGpxNote, position)
-    }
 
-    private fun reallyCreateNote(text: String, imagePaths: List<String>, isGpxNote: Boolean, position: LatLon) {
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
 
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
