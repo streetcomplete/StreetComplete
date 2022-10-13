@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellImageThumbnailBinding
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
+import de.westnordost.streetcomplete.util.getRotationMatrix
 import de.westnordost.streetcomplete.view.ListAdapter
 import java.io.File
 
@@ -23,7 +27,7 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
         init {
             binding.imageView.setOnClickListener {
                 val index = adapterPosition
-                if (index > -1) onClickDelete(index)
+                if (index > -1) onClickImage(index)
             }
         }
 
@@ -35,11 +39,24 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
         }
     }
 
-    private fun onClickDelete(index: Int) {
+    private fun onClickImage(index: Int) {
+        val imagePath = list[index]
+        val image = File(imagePath)
+        if (!image.exists()) return // delete from list?
+        val v = ImageView(context).apply {
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            val bitmap = BitmapFactory.decodeFile(imagePath)
+            val matrix = getRotationMatrix(imagePath)
+            val result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+            if (result != bitmap) {
+                bitmap.recycle()
+            }
+            setImageBitmap(result)
+        }
         AlertDialog.Builder(context)
-            .setMessage(R.string.quest_leave_new_note_photo_delete_title)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ -> delete(index) }
+            .setView(v)
+            .setNegativeButton(R.string.attach_photo_delete) { _, _ -> delete(index) }
+            .setPositiveButton(android.R.string.ok, null)
             .show()
     }
 

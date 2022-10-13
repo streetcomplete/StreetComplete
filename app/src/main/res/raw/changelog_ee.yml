@@ -6,6 +6,8 @@ v48.0_ee: |
   <li>Restart in no longer necessary for applying changed quest settings</li>
   <li>Option to dynamically create quests (will immediately apply changed quest settings)</li>
   <li>Full element selection for all filter type quests (via quest settings). Quest settings for phone, website and wheelchair quests have been reset to work with the new style</li>
+  <li>Some improvements when showing nearby quests</li>
+  <li>Allow viewing photos when creating a note</li>
   <li>Some performance improvements</li>
   </ul>
 

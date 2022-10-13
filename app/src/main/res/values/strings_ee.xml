@@ -292,5 +292,6 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
+    <string name="attach_photo_delete">Delete</string>
 
 </resources>
