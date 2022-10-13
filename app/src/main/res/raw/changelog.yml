@@ -1,6 +1,6 @@
 v47.2: |
   <ul>
-  <li>Fix notes questions asked in notes would not show up if that note contained several paragraphs (#4482)</li>
+  <li>Fix note quests by default would not show up if that note contained several paragraphs (#4482)</li>
   <li>Do not ask for surfaces of private cycleways and footways (#4434, #4433), by @legofahrrad</li>
   <li>Also ask for bus stop identification numbers in Australia and Turkey (#4487, #4489), thanks @andrewharvey</li>
   <li>Other minor enhancements (#4486, #4475, #4490...), thanks @mnalis</li>
