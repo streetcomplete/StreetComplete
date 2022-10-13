@@ -21,6 +21,7 @@ class VisibleQuestTypeController(
                 onQuestTypeVisibilitiesChanged()
             }
             override fun onAddedQuestPreset(preset: QuestPreset) {}
+            override fun onRenamedQuestPreset(preset: QuestPreset) {}
             override fun onDeletedQuestPreset(presetId: Long) {
                 visibleQuestTypeDao.clear(presetId)
             }

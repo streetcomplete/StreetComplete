@@ -4,6 +4,7 @@ interface QuestPresetsSource {
     interface Listener {
         fun onSelectedQuestPresetChanged()
         fun onAddedQuestPreset(preset: QuestPreset)
+        fun onRenamedQuestPreset(preset: QuestPreset)
         fun onDeletedQuestPreset(presetId: Long)
     }
 

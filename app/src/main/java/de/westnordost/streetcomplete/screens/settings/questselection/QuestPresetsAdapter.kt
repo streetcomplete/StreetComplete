@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
+import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -38,6 +39,14 @@ class QuestPresetsAdapter(
         override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
             presets.add(preset)
             notifyItemInserted(presets.size - 1)
+        } }
+
+        override fun onRenamedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
+            val index = presets.indexOfFirst { it.id == preset.id }
+            if (index != -1) {
+                presets[index] = preset
+                notifyItemChanged(index)
+            }
         } }
 
         override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
@@ -95,7 +104,7 @@ class QuestPresetsAdapter(
         }
 
         private fun onClickMenuButton(preset: QuestPreset) {
-            val popup = PopupMenu(context, binding.menuButton)
+            val popup = PopupMenu(itemView.context, binding.menuButton)
             popup.setForceShowIcon(true)
             if (preset.id != 0L) {
                 val renameItem = popup.menu.add(R.string.quest_presets_rename)
@@ -109,6 +118,7 @@ class QuestPresetsAdapter(
 
             if (preset.id != 0L) {
                 val deleteItem = popup.menu.add(R.string.quest_presets_delete)
+                deleteItem.setIcon(R.drawable.ic_delete_24dp)
                 deleteItem.setOnMenuItemClickListener { onClickDeleteQuestPreset(preset); true }
             }
 
@@ -116,7 +126,18 @@ class QuestPresetsAdapter(
         }
 
         private fun onClickRenamePreset(preset: QuestPreset) {
-            TODO()
+            val ctx = itemView.context
+            EditTextDialog(ctx,
+                title = ctx.getString(R.string.quest_presets_rename),
+                text = preset.name,
+                callback = { name -> renameQuestPreset(preset.id, name) }
+            ).show()
+        }
+
+        private fun renameQuestPreset(presetId: Long, name: String) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                questPresetsController.rename(presetId, name)
+            }
         }
 
         private fun onClickSharePreset(preset: QuestPreset) {
@@ -124,7 +145,7 @@ class QuestPresetsAdapter(
         }
 
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {
-            AlertDialog.Builder(itemView.context, R.style.Theme_Bubble_Dialog_Alert)
+            AlertDialog.Builder(itemView.context)
                 .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
                 .setPositiveButton(R.string.delete_confirmation) { _, _ -> deleteQuestPreset(preset.id) }
                 .setNegativeButton(android.R.string.cancel, null)
