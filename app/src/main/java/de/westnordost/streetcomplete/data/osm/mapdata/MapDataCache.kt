@@ -372,13 +372,12 @@ class MapDataCache(
 
         val result = MutableMapDataWithGeometry()
         result.boundingBox = bbox
-        val nodes: Collection<Node>
         if (tilesRectsToFetch != null) {
             // get nodes from spatial cache
             // this may not contain all nodes, but tiles that were cached initially might
             // get dropped when the caches are updated
             // duplicate fetch might be unnecessary in many cases, but it's very fast anyway
-            nodes = HashSet<Node>(spatialCache.get(bbox))
+            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
 
             // fetch needed data and put it to cache
             tilesRectsToFetch.forEach { tilesRect ->
@@ -393,17 +392,16 @@ class MapDataCache(
             }
 
             // get nodes again, this contains the newly added nodes, but maybe not the old ones if cache was trimmed
-            nodes.addAll(spatialCache.get(bbox))
+            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
         } else {
-            nodes = spatialCache.get(bbox)
+            spatialCache.get(bbox).forEach { result.put(it, ElementPointGeometry(it.position)) }
         }
 
-        val wayIds = HashSet<Long>(nodes.size / 5)
-        val relationIds = HashSet<Long>(nodes.size / 10)
-        for (node in nodes) {
+        val wayIds = HashSet<Long>(result.nodes.size / 5)
+        val relationIds = HashSet<Long>(result.nodes.size / 10)
+        for (node in result.nodes) {
             wayIdsByNodeIdCache[node.id]?.let { wayIds.addAll(it) }
             relationIdsByElementKeyCache[ElementKey(ElementType.NODE, node.id)]?.let { relationIds.addAll(it) }
-            result.put(node, ElementPointGeometry(node.position))
         }
         for (wayId in wayIds) {
             result.put(wayCache[wayId]!!, wayGeometryCache[wayId])
