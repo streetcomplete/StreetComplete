@@ -946,6 +946,8 @@
     <string name="user_profile_days_active">"จำนวนวันที่"</string>
     <string name="user_profile_achievement_levels">"ระดับ
 ความสำเร็จ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
     <string name="quest_address_street_description">"แตะถนนที่เป็นที่ตั้งบนแผนที่หรือป้อนโดยไม่มีตัวย่อในช่องด้านล่าง:"</string>

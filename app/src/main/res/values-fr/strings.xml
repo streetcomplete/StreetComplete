@@ -996,6 +996,8 @@ global"</string>
 actifs"</string>
     <string name="user_profile_achievement_levels">"Niveaux
 accomplis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
     <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez son nom sans abréviations dans le champ ci-dessous :"</string>
@@ -1734,5 +1736,8 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Magasins"</string>
     <string name="name_label">"Nom :"</string>
     <string name="vacant_shop_title">"Emplacement vacant"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Type de lieu inconnu"</string>
 </resources>

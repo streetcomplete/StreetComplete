@@ -1922,6 +1922,8 @@
     <string name="user_profile_local_rank">"رتبه‌بندی در %s"</string>
     <string name="user_profile_days_active">"روزهای فعالیت"</string>
     <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
     <string name="quest_address_street_description">"روی جاده‌ای که به آن تعلق دارد ضربه بزنید یا در بخش ذیل آن را بطور کامل وارد نمایید:"</string>
@@ -2693,4 +2695,5 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید"</string>
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
+    <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
 </resources>

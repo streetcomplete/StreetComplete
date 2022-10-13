@@ -931,6 +931,8 @@ rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestations-
 nivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
     <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
@@ -1670,5 +1672,8 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Butiker"</string>
     <string name="name_label">"Namn:"</string>
     <string name="vacant_shop_title">"Tom butikslokal"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Okänd slags plats"</string>
 </resources>

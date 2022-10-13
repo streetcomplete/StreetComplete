@@ -1512,6 +1512,8 @@ plassering"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestasjons-
 nivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
     <string name="quest_address_street_description">"Trykk på veien på kartet eller legg det til uten forkortelser i feltet nedenfor:"</string>

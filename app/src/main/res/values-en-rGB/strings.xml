@@ -782,7 +782,7 @@ rank"</string>
 active"</string>
     <string name="user_profile_achievement_levels">"Achievement
 levels"</string>
-    <string name="quest_address_street_no_named_streets">"It does not belong to a named street"</string>
+    <string name="quest_address_street_no_named_streets">"It does not belong to a named street…"</string>
     <string name="quest_address_street_place_name_label">"Place name:"</string>
     <string name="quest_address_street_description">"Tap the road it belongs to on the map or enter it without abbreviations in the field below:"</string>
     <string name="quest_recycling_type_cooking_oil">"Cooking Oil"</string>
@@ -1108,8 +1108,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_no_other_reasons">"No explicit sign / parking not possible"</string>
 
     <!-- I think this is where we want carriageway, rather than street. -->
-    <!-- Fuzzy -->
-    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of parking (either on or off the carriageway).  Additional restrictions can be specified later.
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Both a house number and a name…"</string>
@@ -1399,5 +1398,14 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
     <string name="vacant_shop_title">"Vacant shop"</string>
-    <string name="unknown_shop_title">"Unknown kind of place"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Other kind of place"</string>
+    <string name="quest_address_answer_no_address">"No address here"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Removable"</string>
+    <string name="quest_buildingType_guardhouse">"Guardhouse"</string>
+    <string name="quest_genericRef_title">"What’s the reference number here?"</string>
 </resources>

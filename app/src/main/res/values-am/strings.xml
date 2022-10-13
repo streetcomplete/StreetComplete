@@ -944,6 +944,8 @@
 የነቃ"</string>
     <string name="user_profile_achievement_levels">"ስኬት
 ደረጃዎች"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"እሱ በተሰየመ ጎዳና ውስጥ አይደለም"</string>
     <string name="quest_address_street_place_name_label">"የቦታ ስም"</string>
     <string name="quest_address_street_description">"የእሱ የሆነውን መንገድ በካርታው ላይ ነካ ያድርጉ ወይም ከዚህ በታች ባለው መስክ ያለ አህጽሮተ ቃላት ያስገቡ-"</string>

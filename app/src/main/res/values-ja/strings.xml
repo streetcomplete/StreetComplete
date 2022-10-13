@@ -1430,6 +1430,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"実績
 レベル"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"名前の付いた通りには属していません"</string>
     <string name="quest_address_street_place_name_label">"地名："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>

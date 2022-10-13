@@ -960,6 +960,8 @@ rang"</string>
 aktivnosti"</string>
     <string name="user_profile_achievement_levels">"Razine
 postignuća"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ne pripada ulici sa imenom"</string>
 
     <!-- is this "place name" as in "village / town / city / square name" or as in "cafe / pub / restaurant name"? -->
@@ -1959,5 +1961,15 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="vacant_shop_title">"Upražnjena trgovina"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Nepoznata vrsta trgovine"</string>
+    <string name="quest_address_answer_no_address">"Nema adrese ovdje"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Može li se ova biciklistička barijera otvoriti?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Ne, fiksna je"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Može se otvoriti"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Uklonjiva je"</string>
+    <string name="quest_buildingType_guardhouse">"Stražarnica"</string>
+    <string name="quest_genericRef_title">"Koji je referentni broj ovdje?"</string>
 </resources>

@@ -1760,6 +1760,8 @@ napok"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Kitüntetés
 szintek"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
     <string name="quest_address_street_description">"Koppints a térképen a hozzátartozó útra vagy add meg rövidítések nélkül az alábbi mezőben:"</string>
@@ -2497,5 +2499,8 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Üzlet"</string>
     <string name="name_label">"Név:"</string>
     <string name="vacant_shop_title">"Üres üzlethelyiség"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
 </resources>

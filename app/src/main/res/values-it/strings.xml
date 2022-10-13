@@ -950,6 +950,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
 attivo"</string>
     <string name="user_profile_achievement_levels">"Livelli di
 riconoscimento"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non appartiene ad una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
     <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
@@ -1690,5 +1692,8 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Negozi"</string>
     <string name="name_label">"Nome:"</string>
     <string name="vacant_shop_title">"Negozio vuoto"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
 </resources>

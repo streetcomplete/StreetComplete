@@ -950,6 +950,8 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="user_profile_local_rank">"rang u %s"</string>
     <string name="user_profile_days_active">"Dani aktivnosti"</string>
     <string name="user_profile_achievement_levels">"Razine postignuća"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ne pripada ulici sa imenom"</string>
     <string name="quest_address_street_place_name_label">"Unesite naziv mjesta:"</string>
     <string name="quest_address_street_description">"Dotaknite cestu kojoj pripada na karti ili je unesite bez kratica u polje ispod:"</string>

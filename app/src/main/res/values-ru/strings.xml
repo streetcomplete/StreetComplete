@@ -1289,6 +1289,8 @@
 дней"</string>
     <string name="user_profile_achievement_levels">"Уровень
 достижений"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Не принадлежит названной улице"</string>
     <string name="quest_address_street_place_name_label">"Название места:"</string>
     <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>

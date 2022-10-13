@@ -1159,6 +1159,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Logros y niveles"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
     <string name="quest_address_street_description">"Toca la vía a la que pertenece en el mapa o escríbela sin abreviaturas en el siguiente campo:"</string>

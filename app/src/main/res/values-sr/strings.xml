@@ -892,6 +892,8 @@
 дани"</string>
     <string name="user_profile_achievement_levels">"Нивои
 у достигнућима"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Не припада улици са именом"</string>
     <string name="quest_address_street_place_name_label">"Назив места:"</string>
     <string name="quest_address_street_description">"Додирните пут на карти коме кућни број припада или упишите, без скраћеница, у поље испод:"</string>
@@ -1571,5 +1573,8 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Продавнице"</string>
     <string name="name_label">"Назив:"</string>
     <string name="vacant_shop_title">"Празан локал"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Непозната намена локала"</string>
 </resources>

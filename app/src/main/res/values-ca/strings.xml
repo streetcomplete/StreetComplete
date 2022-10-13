@@ -933,6 +933,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_profile_days_active">"Dies actiu"</string>
     <string name="user_profile_achievement_levels">"Nivells
 d'acompliment"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"No pertany a cap carrer que tingui nom"</string>
     <string name="quest_address_street_place_name_label">"Nom del lloc:"</string>
     <string name="quest_address_street_description">"Toqueu el camí al qual pertany al mapa o introduïu-lo sense abreviatures en el camp següent:"</string>
@@ -1344,17 +1346,17 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_on_street">"A la via"</string>
 
     <!-- Fuzzy -->
-    <string name="street_parking_half_on_kerb">"Parcialment a la via"</string>
+    <string name="street_parking_half_on_kerb">"Parcialment a la vorera"</string>
 
     <!-- Fuzzy -->
-    <string name="street_parking_on_kerb">"Adjacent a la via"</string>
+    <string name="street_parking_on_kerb">"A la vorera"</string>
 
     <!-- Fuzzy -->
     <string name="street_parking_street_side">"Adjacent a la via només en espais dedicats"</string>
 
     <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"A la via en espais dedicats"</string>
-    <string name="street_parking_separate">"Estacionament mostrat separat al mapa"</string>
+    <string name="street_parking_separate">"Estacionament mostrat separadament al mapa"</string>
     <string name="street_parking_no">"No estacionar ací / No permès"</string>
     <string name="street_parking_prohibited">"Prohibit estacionar"</string>
     <string name="street_stopping_prohibited">"Prohibit parar i estacionar"</string>
@@ -1714,12 +1716,15 @@ sorted alphabetically by title -->
     <string name="quest_drinking_water_type_tap">"Aixeta d'aigua
 "</string>
     <string name="quest_drinking_water_type_hand_pump">"Bomba manual"</string>
-    <string name="quest_drinking_water_type_water_well_no_pump">"Water well without pump"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Pou d'aigua sense bomba"</string>
     <string name="quest_drinking_water_type_spring">"Brollador"</string>
     <string name="quest_drinking_water_type_disused">"Objecte per a veure en desús"</string>
     <string name="overlay_addresses">"Adreces"</string>
     <string name="overlay_shops">"Botigues"</string>
     <string name="name_label">"Nom:"</string>
     <string name="vacant_shop_title">"Local vacant"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
 </resources>

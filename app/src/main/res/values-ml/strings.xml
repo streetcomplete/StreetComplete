@@ -1775,6 +1775,8 @@
 റാങ്ക്"</string>
     <string name="user_profile_local_rank">"%s യിലെ റാങ്ക്"</string>
     <string name="user_profile_days_active">"സജീവമായ ദിവസങ്ങൾ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ഈ തെരുവിന് പേരില്ല"</string>
     <string name="quest_address_street_place_name_label">"സ്ഥലപ്പേര്"</string>
     <string name="quest_recycling_type_cooking_oil">"പാചക എണ്ണ"</string>

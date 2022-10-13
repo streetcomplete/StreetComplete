@@ -962,6 +962,8 @@
 ناشط"</string>
     <string name="user_profile_achievement_levels">"الإنجازات
 المستويات"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"إنه لا ينتمي إلى شارع مسمى"</string>
     <string name="quest_address_street_place_name_label">"اسم مكان:"</string>
     <string name="quest_address_street_description">"اضغط على الطريق التي ينتمي إليه على الخريطة أو أدخل اسمه الكامل وغير المختصر في الحقل أدناه:"</string>
