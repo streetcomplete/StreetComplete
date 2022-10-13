@@ -207,7 +207,8 @@ layers:
             filter: { old: [true] }
             draw:
                 track-lines:
-                    color: global.old_track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.old_track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
@@ -228,7 +229,8 @@ layers:
             filter: { old: [true] }
             draw:
                 track-lines:
-                    color: global.old_track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.old_track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
