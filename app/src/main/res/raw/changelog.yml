@@ -6,12 +6,13 @@ v48.0-beta1: |
   You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
   <h3>🛍️ Shops Overlay</h3>
   <p>Easily map and check what shops exist in your local shopping area!</p>
-  <h3>🚀 HUGE performance improvements (#4079, #4125), by @Helium314</h3>
+  <h3>🚀 HUGE performance improvements (#4079, #4125), all by @Helium314</h3>
   <p>The app is now more responsive during normal use thanks to extensive caching and other improvements, in particular, roughly:</p>
   <ul>
   <li>2x to 8x times faster display of quest pins and overlays</li>
   <li>2x to 3x times faster showing of quest details</li>
   <li>up to 2x times faster solving of quests</li>
+  <li>up to 2x faster upload and thus another 2x faster solving of quests if auto-sync is on (#4077, #4472)</li>
   <li>slightly faster download (#4469)</li>
   </ul>
   <h3>New Quests</h3>
@@ -28,7 +29,7 @@ v48.0-beta1: |
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
-  <li>Other small enhancements and fixes (#4431, #4453...), thanks @matkoniecz</li>
+  <li>Other small enhancements and fixes (#4431, #4453, #4496...), thanks @matkoniecz, @Helium314</li>
   </ul>
 
 v47.2: |
