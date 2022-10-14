@@ -82,7 +82,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
             (estimateCycleTrackWidth(tags) ?: 0f) +
-            1.8f    // usual minimum sidewalk width
+            1f    // absolute minimum legal sidewalk width is usually above 1.5m, but be even more pessimistic
         ) / 2f +
         4f // + generous buffer for possible grass verge
 

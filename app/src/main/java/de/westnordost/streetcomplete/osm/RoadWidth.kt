@@ -113,6 +113,7 @@ private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): 
     return leftWidth + rightWidth
 }
 
-private const val BROAD_LANE = 4f
-private const val LANE = 3f
+// those values are pessimistic by design, they should not be realistic
+private const val BROAD_LANE = 3f
+private const val LANE = 2f
 private const val SHOULDER = 2f
