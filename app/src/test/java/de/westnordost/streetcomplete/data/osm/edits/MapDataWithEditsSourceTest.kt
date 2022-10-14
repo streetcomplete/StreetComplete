@@ -1020,12 +1020,18 @@ class MapDataWithEditsSourceTest {
         val ndModified4 = node(4, p(0.5, 0.4))
         val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
 
+        thereAreNoOriginalElements()
         mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
 
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
+        // simulating that an edit that modifies node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified))
+        // 2. update map data
+        originalElementsAre(ndModified, ndModified4)
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndModified, ndModified4),
             geometryEntries = listOf(pModified, pModified4)
@@ -1045,14 +1051,18 @@ class MapDataWithEditsSourceTest {
         val ndModifiedWithVersion = node(1, p(0.3, 0.0), version = 2)
         val ndModified4WithTimestamp = node(4, p(0.5, 0.4), timestamp = 123L)
 
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        editsControllerNotifiesMapDataChangesAdded(modifications = listOf(ndModified, ndModified4))
+        // simulating that an edit that modifies node 1 and node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        thereAreNoMapDataChanges()
+        // 2. update map data
         originalElementsAre(ndModifiedWithVersion, ndModified4WithTimestamp)
-        verify(listener).onUpdated(any(), any())
-
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndModifiedWithVersion, ndModified4WithTimestamp),
             geometryEntries = listOf(pModified, pModified4)
@@ -1071,15 +1081,18 @@ class MapDataWithEditsSourceTest {
         val ndModifiedMoved = node(1, p(0.3, 0.1))
         val pModifiedMoved = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.1))
 
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
         val s = create()
         val listener = mock<MapDataWithEditsSource.Listener>()
         s.addListener(listener)
 
-        editsControllerNotifiesMapDataChangesAdded(modifications = listOf(ndModified, ndModified4))
+        // simulating that an edit that modifies node 1 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified4))
+        // 2. update map data
         originalElementsAre(ndModifiedMoved, ndModified4)
-        verify(listener).onUpdated(any(), any())
-
-        originalElementsAre(ndModified4, ndModifiedMoved)
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndModifiedMoved, ndModified4),
             geometryEntries = listOf(pModifiedMoved, pModified4)
