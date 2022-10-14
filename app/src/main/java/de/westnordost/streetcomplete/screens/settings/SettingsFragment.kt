@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.text.InputType
@@ -61,6 +62,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
@@ -762,6 +764,16 @@ class SettingsFragment :
             Prefs.QUEST_SETTINGS_PER_PRESET -> { OsmQuestController.reloadQuestTypes() }
             Prefs.DATA_RETAIN_TIME -> { lifecycleScope.launch(Dispatchers.IO) { cleaner.clean() } }
             Prefs.PREFER_EXTERNAL_SD -> { moveMapTilesToCurrentLocation() }
+            Prefs.QUEST_MONITOR -> {
+                // Q introduces background location permission, but only R+ need it for foreground service
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && prefs.getBoolean(key, false)) {
+                    val requester = LocationRequester(requireActivity(), this)
+                    lifecycleScope.launch {
+                        if (!requester.requestBackgroundLocationPermission())
+                            prefs.edit { putBoolean(key, false) }
+                    }
+                }
+            }
         }
     }
 

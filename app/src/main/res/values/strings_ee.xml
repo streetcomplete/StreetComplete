@@ -108,6 +108,7 @@
     <string name="copy_preset_new">Don’t copy</string>
     <string name="pref_quest_monitor_title">Notify about nearby quests</string>
     <string name="pref_quest_monitor_summary">Monitors location when app is in background</string>
+    <string name="quest_monitor_permission_warning">Background location permission is required for the nearby quest monitor to work</string>
 
 
     <!-- quest settings -->

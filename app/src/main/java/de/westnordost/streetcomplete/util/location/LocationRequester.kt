@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.util.location
 
+import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
 import android.content.Intent
 import android.content.IntentFilter
 import android.location.LocationManager
+import android.os.Build
 import android.provider.Settings
 import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +17,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.ktx.awaitReceiverCall
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
+import de.westnordost.streetcomplete.util.ktx.hasPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -57,6 +60,19 @@ class LocationRequester(private val activity: Activity, activityResultCaller: Ac
         return result
     }
 
+    suspend fun requestBackgroundLocationPermission(): Boolean {
+        if (activity.hasPermission(ACCESS_BACKGROUND_LOCATION) || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return true
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, ACCESS_BACKGROUND_LOCATION)) {
+            if (!askUserToAcknowledgeLocationPermissionRationale()) {
+                return false
+            }
+        }
+        val result = requestPermission(ACCESS_BACKGROUND_LOCATION)
+        /* There is no Android system broadcast when a permission is granted or declined, so we create an own one */
+        broadcastPermissionRequestResult(result)
+        return result
+    }
+
     private suspend fun requestEnableLocation(): Boolean = coroutineScope {
         /* the user may turn on location in the pull-down-overlay, without actually going into
            settings screen, so checking for updated location-enablement must be done in parallel with
@@ -82,11 +98,11 @@ class LocationRequester(private val activity: Activity, activityResultCaller: Ac
     private suspend fun launchLocationSettings() =
         startActivityForResult(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
 
-    private suspend fun askUserToAcknowledgeLocationPermissionRationale(): Boolean =
+    private suspend fun askUserToAcknowledgeLocationPermissionRationale(background: Boolean = false): Boolean =
         suspendCancellableCoroutine { cont ->
             val dlg = AlertDialog.Builder(activity)
                 .setTitle(R.string.no_location_permission_warning_title)
-                .setMessage(R.string.no_location_permission_warning)
+                .setMessage(if (background) R.string.quest_monitor_permission_warning else R.string.no_location_permission_warning)
                 .setPositiveButton(android.R.string.ok) { _, _ -> cont.resume(true) }
                 .setNegativeButton(android.R.string.cancel) { _, _ -> cont.resume(false) }
                 .setOnCancelListener { cont.resume(false) }
