@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
+import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
@@ -367,6 +368,7 @@ fun getQuestTypeList(
     AddBarrierOnPath(),
     AddBarrierOnRoad(),
     AddBicycleBarrierType(),
+    AddBicycleBarrierInstallation(),
     AddStileType(),
     AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
 

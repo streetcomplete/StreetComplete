@@ -11,8 +11,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 
@@ -56,24 +54,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     }
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            is SmoothnessValueAnswer -> {
-                tags.updateWithCheckDate("smoothness", answer.value.osmValue)
-                tags.remove("smoothness:date")
-            }
-            is WrongSurfaceAnswer -> {
-                tags.remove("surface")
-                tags.remove("smoothness")
-                tags.remove("smoothness:date")
-                tags.removeCheckDatesForKey("smoothness")
-            }
-            is IsActuallyStepsAnswer -> {
-                tags["highway"] = "steps"
-                tags.remove("smoothness")
-                tags.remove("smoothness:date")
-                tags.removeCheckDatesForKey("smoothness")
-            }
-        }
+        answer.applyTo(tags)
     }
 
     override val hasQuestSettings = true

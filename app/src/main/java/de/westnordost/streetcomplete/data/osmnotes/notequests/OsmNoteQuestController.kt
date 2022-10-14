@@ -249,7 +249,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
     val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
 
     val text = comments.firstOrNull()?.text
-    return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
+    return text?.matches(Regex(".*$questionMarksAroundTheWorld.*", RegexOption.DOT_MATCHES_ALL)) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =

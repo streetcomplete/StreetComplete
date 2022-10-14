@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -77,7 +78,7 @@ class OsmQuestController internal constructor(
         .filter { it.filter.elementsTypes.size == 1 && it.filter.elementsTypes.single() == ElementsTypeFilter.WAYS }
         .map { it.name }.toSet() // technically those could change if questTypeRegistry is reloaded, but that's unlikely enough to ignore it
     // must be valid names!
-    private val questsRequiringElementsWithoutTags = setOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance")
+    private val questsRequiringElementsWithoutTags = hashSetOf("AddBarrierOnRoad", "AddBarrierOnPath", "AddCrossing", "AddMaxHeight", "AddEntrance")
 
     private val hiddenCache = hiddenDB.getAllIds().toHashSet()
 
@@ -219,11 +220,8 @@ class OsmQuestController internal constructor(
 
         return questTypes.map { questType ->
             scope.async {
-                /* shortcut: if the element has no tags, it is just part of the geometry of another
-                *  element, so no need to check for quests for that element */
-                if (element.tags.isEmpty()) return@async null
-                if (!mayCreateQuest(questType, geometry, null)) return@async null // exit before checking if disabled in country
-
+                if (element.tags.isEmpty() && questType.name !in questsRequiringElementsWithoutTags) return@async null
+                if (questType.enabledInCountries != AllCountries && !mayCreateQuest(questType, geometry, null)) return@async null // check whether it's disabled before creating the quest
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
                     Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
