@@ -38,27 +38,44 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun createForm() = AddSidewalkSurfaceForm()
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
-        val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
+       when (answer) {
+            is SidewalkIsDifferent -> {
+                deleteSmoothnessKeys(Side.LEFT, tags)
+                deleteSmoothnessKeys(Side.RIGHT, tags)
+                deleteSmoothnessKeys(Side.BOTH, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+                tags.remove("sidewalk:left")
+                tags.remove("sidewalk:right")
+                tags.remove("sidewalk:both")
+                tags.remove("sidewalk")
+            }
+            else -> {
+                val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
+                val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
-        if (leftChanged == true) {
-            deleteSmoothnessKeys(Side.LEFT, tags)
-            deleteSmoothnessKeys(Side.BOTH, tags)
-        }
-        if (rightChanged == true) {
-            deleteSmoothnessKeys(Side.RIGHT, tags)
-            deleteSmoothnessKeys(Side.BOTH, tags)
+                if (leftChanged == true) {
+                    deleteSmoothnessKeys(Side.LEFT, tags)
+                    deleteSmoothnessKeys(Side.BOTH, tags)
+                }
+                if (rightChanged == true) {
+                    deleteSmoothnessKeys(Side.RIGHT, tags)
+                    deleteSmoothnessKeys(Side.BOTH, tags)
+                }
+
+                if (answer.left == answer.right) {
+                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
+                    deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+                    deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
+                } else {
+                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
+                    answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
+                    deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+                }
+            }
         }
 
-        if (answer.left == answer.right) {
-            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
-            deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-        } else {
-            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
-            answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
-            deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-        }
         deleteSidewalkSurfaceAnswerIfExists(null, tags)
 
         // only set the check date if nothing was changed or if check date was already set
@@ -66,6 +83,10 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             tags.updateCheckDateForKey("sidewalk:surface")
         }
     }
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
+    )
 
     private enum class Side(val value: String) {
         LEFT("left"), RIGHT("right"), BOTH("both")
