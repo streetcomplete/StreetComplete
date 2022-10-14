@@ -199,10 +199,6 @@ class OsmQuestController internal constructor(
 
         return questTypes.map { questType ->
             scope.async {
-                /* shortcut: if the element has no tags, it is just part of the geometry of another
-                *  element, so no need to check for quests for that element */
-                if (element.tags.isEmpty()) return@async null
-
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
                     Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
