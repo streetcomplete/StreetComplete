@@ -1221,6 +1221,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
 레벨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
     <string name="quest_address_street_place_name_label">"장소명:"</string>
     <string name="quest_address_street_description">"건물 번호가 속한 도로를 지도에서 선택하거나 도로명을 아래에 직접 풀어서 입력하세요:"</string>

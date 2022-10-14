@@ -1760,6 +1760,8 @@ napok"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Kitüntetés
 szintek"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
     <string name="quest_address_street_description">"Koppints a térképen a hozzátartozó útra vagy add meg rövidítések nélkül az alábbi mezőben:"</string>
@@ -2477,6 +2479,7 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Az OSM-adatok feltárása a teljes képtől az egyes objektumokig terjedő léptékekben, térben és időben"</string>
     <string name="link_opencampingmap_description">"Kempingek térképe"</string>
     <string name="quest_atm_cashin_title">"Lehet készpénzt befizetni ezen az ATM-en?"</string>
+    <string name="quest_accessPointRef_title">"Mi az azonosítószám?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Gyülekezőhely"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"A gyülekezési pont az a hely, ahol az emberek vészhelyzet esetén összegyűlnek. Általában ehhez hasonlóan néz ki:"</string>
     <string name="quest_address_street_street_name_label">"Utcanév:"</string>
@@ -2495,4 +2498,16 @@ sorted alphabetically by title -->
     <!-- Azért fordítottam egyes számmal, mert a korábbi, többi fordítás is így van. -->
     <string name="overlay_addresses">"Cím"</string>
     <string name="overlay_shops">"Üzlet"</string>
+    <string name="name_label">"Név:"</string>
+    <string name="vacant_shop_title">"Üres üzlethelyiség"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Ismeretlen hely"</string>
+    <string name="quest_address_answer_no_address">"Nincs cím"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a bicikliakadályt?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Rögzített"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Nyitható"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Mozgatható"</string>
+    <string name="quest_genericRef_title">"Mi az azonosítószám?"</string>
 </resources>

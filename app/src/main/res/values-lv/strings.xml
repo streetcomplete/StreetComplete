@@ -783,6 +783,8 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
 aktīvas"</string>
     <string name="user_profile_achievement_levels">"Sasniegumu
 līmeņi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Tas nepiederas pie nosauktas ielas"</string>
     <string name="quest_address_street_place_name_label">"Vietas nosaukums:"</string>
     <string name="quest_address_street_description">"Kartē uzspiediet uz ceļa, kam tas pieder, ai arī ievadiet to bez saīsinājumiem šajā laukā:"</string>

@@ -1761,6 +1761,8 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="user_profile_local_rank">"在%s排名"</string>
     <string name="user_profile_days_active">"活跃天数"</string>
     <string name="user_profile_achievement_levels">"成就等级"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"它不属于某个以命名街道"</string>
     <string name="quest_address_street_place_name_label">"地点名称："</string>
     <string name="quest_address_street_description">"在地图上点击它所属的道路，或者在下面输入不带缩写的名称"</string>

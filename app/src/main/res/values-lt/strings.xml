@@ -1983,6 +1983,8 @@ pasaulyje"</string>
     <string name="user_profile_days_active">"Aktyvumo
 dienų"</string>
     <string name="user_profile_achievement_levels">"Pasiekimų lygis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepriklauso gatvei su pavadinimu"</string>
     <string name="quest_address_street_place_name_label">"Vietos pavadinimas:"</string>
     <string name="quest_address_street_description">"Paspauskite ant kelio, kuriam jis priklauso, žemėlapyje arba įveskite be sutrumpinimų lauke žemiau:"</string>

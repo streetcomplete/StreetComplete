@@ -1466,6 +1466,8 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"görev türüne göre"</string>
     <string name="user_profile_global_rank">"Küresel sıralama"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Adlandırılmış bir sokağa ait değil"</string>
     <string name="quest_address_street_place_name_label">"Yer adı:"</string>
     <string name="quest_address_street_description">"Haritadaki ait olduğu yola dokunun veya aşağıdaki alana kısaltma olmadan girin:"</string>

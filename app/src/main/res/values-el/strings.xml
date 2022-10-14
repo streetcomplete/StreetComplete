@@ -1798,6 +1798,8 @@
     <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
     <string name="user_profile_days_active">"Ενεργές ημέρες"</string>
     <string name="user_profile_achievement_levels">"Επίπεδα επιτευγμάτων"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
     <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
     <string name="quest_address_street_description">"Πατήστε τον δρόμο στον οποίο ανήκει ο χάρτης ή εισαγάγετέ τον χωρίς συντομογραφίες στο παρακάτω πεδίο:"</string>

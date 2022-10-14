@@ -1202,6 +1202,8 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <string name="user_profile_days_active">"Dage
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Præstationsniveau"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det tilhører ikke en gade/vej med navn"</string>
     <string name="quest_address_street_place_name_label">"Stednavn:"</string>
     <string name="quest_address_street_description">"Tryk på vejen det hører til på kortet, ellers skriv det uden forkortelser i feltet herunder:"</string>
@@ -1916,6 +1918,7 @@ sorted alphabetically by title -->
     <string name="quest_address_street_street_name_label">"Gadenavn:"</string>
     <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
     <string name="quest_bicycle_incline_title">"Hvilken retning fører opad her?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Det er op og ned hop"</string>
     <string name="quest_drinking_water_type_title">"Hvordan leveres drikkevand her?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Anden vandfontæne"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandfontæne, der udsender en lille vandstråle"</string>
@@ -1929,5 +1932,15 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
     <string name="vacant_shop_title">"Tom butik"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Ukendt type sted"</string>
+    <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Kan åbnes"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Kan fjernes"</string>
+    <string name="quest_buildingType_guardhouse">"Vagtbygning"</string>
+    <string name="quest_genericRef_title">"Hvilket identifikationsnummer er der her?"</string>
 </resources>

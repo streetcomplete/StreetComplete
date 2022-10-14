@@ -1793,6 +1793,8 @@ global"</string>
 ativos"</string>
     <string name="user_profile_achievement_levels">"Níveis de
 conquista"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua nomeada"</string>
     <string name="quest_address_street_place_name_label">"Coloque o nome:"</string>
     <string name="quest_address_street_description">"Toque na estrada à qual pertence no mapa ou digite-a sem abreviações no campo abaixo:"</string>

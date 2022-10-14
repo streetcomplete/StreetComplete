@@ -458,9 +458,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Halls of residence"</string>
     <string name="quest_buildingType_houseboat">"Houseboat"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow building"</string>
     <string name="quest_buildingType_static_caravan">"Static caravan"</string>
     <string name="quest_buildingType_commercial">"Commercial building"</string>
     <string name="quest_buildingType_commercial_generic_description">"building where people work, shop or do any other commercial activities"</string>
@@ -468,33 +466,17 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_industrial_description">"e.g. a factory, workshop, car repair garage,…"</string>
     <string name="quest_buildingType_office">"Office building"</string>
     <string name="quest_buildingType_retail">"Retail building"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_warehouse">"Warehouse"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_warehouse">"Warehouse building"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk building"</string>
     <string name="quest_buildingType_storage_tank">"Storage tank"</string>
     <string name="quest_buildingType_religious">"Religious building"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_church">"Church"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_chapel">"Chapel"</string>
+    <string name="quest_buildingType_church">"Church building"</string>
+    <string name="quest_buildingType_chapel">"Chapel building"</string>
     <string name="quest_buildingType_cathedral">"Cathedral"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_mosque">"Mosque"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_temple">"Temple"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_pagoda">"Pagoda"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_synagogue">"Synagogue"</string>
+    <string name="quest_buildingType_mosque">"Mosque building"</string>
+    <string name="quest_buildingType_temple">"Temple building"</string>
+    <string name="quest_buildingType_pagoda">"Pagoda building"</string>
+    <string name="quest_buildingType_synagogue">"Synagogue building"</string>
     <string name="quest_buildingType_civic">"Civic building"</string>
     <string name="quest_buildingType_civic_description">"public building usually housing an amenity"</string>
     <string name="quest_buildingType_kindergarten">"Nursery school building"</string>
@@ -530,9 +512,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"It has no house number…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"The building was tagged as:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_shrine">"Shrine"</string>
+    <string name="quest_buildingType_shrine">"Shrine building"</string>
     <string name="quest_maxspeed_title_short2">"What’s the speed limit for this street?"</string>
     <string name="quest_maxspeed_answer_sign">"A sign"</string>
     <string name="quest_maxspeed_answer_zone2">"It’s within a (slow) zone"</string>
@@ -802,7 +782,7 @@ rank"</string>
 active"</string>
     <string name="user_profile_achievement_levels">"Achievement
 levels"</string>
-    <string name="quest_address_street_no_named_streets">"It does not belong to a named street"</string>
+    <string name="quest_address_street_no_named_streets">"It does not belong to a named street…"</string>
     <string name="quest_address_street_place_name_label">"Place name:"</string>
     <string name="quest_address_street_description">"Tap the road it belongs to on the map or enter it without abbreviations in the field below:"</string>
     <string name="quest_recycling_type_cooking_oil">"Cooking Oil"</string>
@@ -1128,8 +1108,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_no_other_reasons">"No explicit sign / parking not possible"</string>
 
     <!-- I think this is where we want carriageway, rather than street. -->
-    <!-- Fuzzy -->
-    <string name="street_parking_conditional_restrictions_hint">"If it is possible to park or stop at all here, indicate the type of parking (either on or off the carriageway).  Additional restrictions can be specified later.
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
     <string name="quest_address_answer_house_name_and_housenumber">"Both a house number and a name…"</string>
@@ -1397,4 +1376,36 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Explore OSM data across scales from the big picture up to individual objects over space and time"</string>
     <string name="link_opencampingmap_description">"A map of campsites"</string>
     <string name="quest_atm_cashin_title">"Can you deposit cash at this cash machine?"</string>
+    <string name="create_node_action_description">"You created a node with …"</string>
+    <string name="quest_accessPointRef_title">"What’s the reference number here?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"It’s an Assembly Point"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:"</string>
+    <string name="quest_address_answer_house_name2">"It has a house name…"</string>
+    <string name="quest_address_street_street_name_label">"Street name:"</string>
+    <string name="quest_address_street_hint2">"Tap street on map to select it"</string>
+    <string name="quest_bicycle_incline_title">"Which direction leads upwards here?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"It’s up and down hops"</string>
+    <string name="quest_drinking_water_type_title">"How is drinking water provided here?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Other water fountain"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Water fountain emitting small jet of water"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Refilling bottles only"</string>
+    <string name="quest_drinking_water_type_tap">"Water tap"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Hand pump"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Water well without pump"</string>
+    <string name="quest_drinking_water_type_spring">"Spring"</string>
+    <string name="quest_drinking_water_type_disused">"Disused drinking water object"</string>
+    <string name="overlay_addresses">"Addresses"</string>
+    <string name="overlay_shops">"Shops"</string>
+    <string name="name_label">"Name:"</string>
+    <string name="vacant_shop_title">"Vacant shop"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Other kind of place"</string>
+    <string name="quest_address_answer_no_address">"No address here"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Removable"</string>
+    <string name="quest_buildingType_guardhouse">"Guardhouse"</string>
+    <string name="quest_genericRef_title">"What’s the reference number here?"</string>
 </resources>

@@ -1970,6 +1970,8 @@ rankinga"</string>
 aktibo"</string>
     <string name="user_profile_achievement_levels">"Lorpen
 mailak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ez dago izena duen kale batekin lotuta"</string>
     <string name="quest_address_street_place_name_label">"Toki izena:"</string>
     <string name="quest_address_street_description">"Ukitu mapan zein kale edo bideri dagokion edo idatzi laburdurarik gabe beheko eremuan:"</string>
