@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util.urlconfig
+package de.westnordost.streetcomplete.data.urlconfig
 
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

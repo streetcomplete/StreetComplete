@@ -1,26 +1,8 @@
-package de.westnordost.streetcomplete.util.urlconfig
+package de.westnordost.streetcomplete.data.urlconfig
 
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import java.math.BigInteger
-
-fun visibleQuestTypesToString(
-    visibleQuestTypes: Collection<QuestType>,
-    questTypeRegistry: QuestTypeRegistry,
-): String =
-    Ordinals(visibleQuestTypes.mapNotNull { questTypeRegistry.getOrdinalOf(it) }.toSet())
-        .toBooleanArray()
-        .toBigInteger()
-        .toString(10)
-
-fun stringToVisibleQuestTypes(
-    string: String,
-    questTypeRegistry: QuestTypeRegistry,
-): Collection<QuestType> =
-    BigInteger(string, 10)
-        .toBooleanArray()
-        .toOrdinals()
-        .mapNotNull { questTypeRegistry.getByOrdinal(it) }
 
 @JvmInline
 value class Ordinals(private val value: Set<Int>): Set<Int> by value
