@@ -139,14 +139,14 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     private fun resetQuestVisibilitiesAndOrder() {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.clear()
+            visibleQuestTypeController.clearVisibilities()
             questTypeOrderController.clear()
         }
     }
 
     private fun deselectAllQuests() {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.setAllVisible(questTypeRegistry, false)
+            visibleQuestTypeController.setVisibilities(questTypeRegistry.associateWith { false })
         }
     }
 

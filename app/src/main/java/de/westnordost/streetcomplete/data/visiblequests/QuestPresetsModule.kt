@@ -17,5 +17,5 @@ val questPresetsModule = module {
     single { TeamModeQuestFilter(get(), get()) }
 
     single<VisibleQuestTypeSource> { get<VisibleQuestTypeController>() }
-    single { VisibleQuestTypeController(get(), get()) }
+    single { VisibleQuestTypeController(get(), get(), get()) }
 }

@@ -11,6 +11,7 @@ interface QuestPresetsSource {
     val selectedId: Long
     val selectedQuestPresetName: String?
 
+    fun getName(presetId: Long): String?
     fun getAll(): List<QuestPreset>
 
     fun addListener(listener: Listener)
