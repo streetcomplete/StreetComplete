@@ -464,7 +464,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_semi_detached">"Doppelhaus(-hälfte)"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
-    <string name="quest_buildingType_dormitory">"Wohnheim-Gebäude"</string>
+    <string name="quest_buildingType_dormitory">"Wohnheims-Gebäude"</string>
     <string name="quest_buildingType_houseboat">"Hausboot"</string>
     <string name="quest_buildingType_bungalow">"Bungalow-Gebäude"</string>
     <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
@@ -795,7 +795,7 @@ Rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Level aller
 Erfolge"</string>
-    <string name="quest_address_street_no_named_streets">"Gehört zu keiner Straße mit Namen"</string>
+    <string name="quest_address_street_no_named_streets">"Gehört zu keiner Straße mit Namen …"</string>
     <string name="quest_address_street_place_name_label">"Ortsname:"</string>
     <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
     <string name="quest_recycling_type_cooking_oil">"Speiseöl"</string>
@@ -1392,14 +1392,10 @@ sorted alphabetically by title -->
     <string name="quest_address_street_street_name_label">"Straßenname:"</string>
     <string name="quest_address_street_hint2">"Straße auf der Karte antippen, um sie auszuwählen"</string>
     <string name="quest_bicycle_incline_title">"Welche Richtung führt hier nach oben?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_incline_up_and_down">"Es geht rauf und runter"</string>
     <string name="quest_drinking_water_type_title">"Wie wird das Trinkwasser hier bereitgestellt?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Anderer Trinkwasserbrunnen"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_drinking_water_type_jet_water_fountain">"Brunnen, der kleinen Wasserstrahl ausstößt"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Trinkbrunnen mit kleinem Wasserstrahl"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Nur Flaschen nachfüllen"</string>
     <string name="quest_drinking_water_type_tap">"Wasserhahn"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>
@@ -1408,4 +1404,16 @@ sorted alphabetically by title -->
     <string name="quest_drinking_water_type_disused">"Stillgelegtes Trinkwasserobjekt"</string>
     <string name="overlay_addresses">"Adressen"</string>
     <string name="overlay_shops">"Geschäfte"</string>
+    <string name="name_label">"Name:"</string>
+    <string name="vacant_shop_title">"Leerstehendes Geschäft"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Anderer Ortstyp"</string>
+    <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fest"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Öffnen möglich"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Entfernbar"</string>
+    <string name="quest_buildingType_guardhouse">"Wachhaus"</string>
+    <string name="quest_genericRef_title">"Was ist die Referenznummer hier?"</string>
 </resources>

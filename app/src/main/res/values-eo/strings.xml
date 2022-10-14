@@ -1086,6 +1086,8 @@ rango"</string>
     <string name="user_profile_days_active">"Tagoj
 aktiva"</string>
     <string name="user_profile_achievement_levels">"Niveloj de atingoj"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ĝi ne apartenas al nomita strato"</string>
     <string name="quest_address_street_place_name_label">"Loknomo:"</string>
     <string name="quest_address_street_description">"Frapu la vojon al kiu ĝi apartenas sur la mapo aŭ enigu ĝin sen mallongigoj en la suban kampon:"</string>
@@ -1361,6 +1363,10 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_bicycle_barrier_type_title">"Kia bicikla barilo estas ĉi tio?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala al la vojo"</string>
     <string name="quest_barrier_bicycle_type_single">"Trairejo inter bariloj"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_barrier_bicycle_type_double">"Baro - baroj de ambaŭ flankoj unu post la alia"</string>
+    <string name="quest_barrier_bicycle_type_multiple">"Baro - pli ol du baroj"</string>
     <string name="pref_title_language_select">"Elekti lingvon"</string>
     <string name="language_default">"Sistema defaŭlto"</string>
     <string name="on_floor">"sur la etaĝo %s"</string>
@@ -1656,4 +1662,12 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Strata larĝo: %s"</string>
     <string name="overlay_street_parking">"Strata parkado"</string>
+    <string name="quest_address_answer_house_name2">"Ĝi havas domnumero ..."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_street_name_label">"Nomo de la strato:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
+    <string name="overlay_addresses">"Adresoj"</string>
 </resources>

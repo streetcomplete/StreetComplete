@@ -1922,6 +1922,8 @@
     <string name="user_profile_local_rank">"رتبه‌بندی در %s"</string>
     <string name="user_profile_days_active">"روزهای فعالیت"</string>
     <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
     <string name="quest_address_street_description">"روی جاده‌ای که به آن تعلق دارد ضربه بزنید یا در بخش ذیل آن را بطور کامل وارد نمایید:"</string>
@@ -2693,4 +2695,37 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید"</string>
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان تجمع است"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطه تجمع جایی است که افراد در مواقع اضطراری در آن جمع می‌شوند. معمولاً شبیه این به نظر می‌رسد:"</string>
+    <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_hint2">"برای انتخاب خیابان روی نقشه ضربه بزنید"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_title">"کدام جهت در اینجا به سمت بالا منتهی می‌شود؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"فقط پر کردن بطری‌ها"</string>
+    <string name="quest_drinking_water_type_tap">"شیرآب"</string>
+    <string name="quest_drinking_water_type_hand_pump">"پمپ دستی"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"آب چاه بدون پمپ"</string>
+    <string name="quest_drinking_water_type_spring">"چشمه"</string>
+    <string name="overlay_addresses">"آدرس‌ها"</string>
+    <string name="overlay_shops">"فروشگاه‌ها"</string>
+    <string name="name_label">"نام:"</string>
+    <string name="vacant_shop_title">"مغازه خالی"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"قابل باز شدن"</string>
+    <string name="quest_buildingType_guardhouse">"نگهبانی"</string>
+    <string name="quest_genericRef_title">"شماره شناسایی اینجا چیست؟"</string>
 </resources>

@@ -791,6 +791,8 @@
     <string name="user_profile_local_rank">"Rangering i %s"</string>
     <string name="user_profile_days_active">"Aktive dagar"</string>
     <string name="user_profile_achievement_levels">"Bragd- nivå"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
     <string name="quest_address_street_description">"Trykk på gata/vegen som det høyrer til, eller skriv inn namnet utan forkortingar nedanfor:"</string>

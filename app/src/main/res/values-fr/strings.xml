@@ -769,9 +769,7 @@ Découper maintenant ?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Souhaitez-vous laisser une note ? Une note avec une photo permettra à d’autres cartographes de s’en occuper."</string>
     <string name="quest_handrail_title">"Ces marches ont-elles une main courante ?"</string>
     <string name="about_summary_current_version">"Version actuelle : %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Quel est le numéro de référence de cette boîte aux lettres ?"</string>
+    <string name="quest_postboxRef_title">"Quel est le numéro d'identification de cette boîte aux lettres ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
@@ -998,6 +996,8 @@ global"</string>
 actifs"</string>
     <string name="user_profile_achievement_levels">"Niveaux
 accomplis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
     <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez son nom sans abréviations dans le champ ci-dessous :"</string>
@@ -1714,4 +1714,37 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Explorez les données d’OSM à différentes échelles, du plan large jusqu’aux objets individuels, à travers le temps et l’espace"</string>
     <string name="link_opencampingmap_description">"Une carte des terrains de camping"</string>
     <string name="quest_atm_cashin_title">"Est-il possible de déposer de l’argent dans ce distributeur ?"</string>
+    <string name="create_node_action_description">"Vous avez crée un noeud avec ..."</string>
+    <string name="quest_accessPointRef_title">"Quel est le numéro d’identification ici ?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"C’est un point de rassemblement"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un point de rassemblement est un endroit où les gens se regroupent en cas d’urgence. Cela ressemble généralement à ceci :"</string>
+    <string name="quest_address_answer_house_name2">"La maison possède un nom..."</string>
+    <string name="quest_address_street_street_name_label">"Nom de rue :"</string>
+    <string name="quest_address_street_hint2">"Touchez la rue sur la carte pour la sélectionner"</string>
+    <string name="quest_bicycle_incline_title">"Dans quelle direction cela monte t’il ?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Alternance de montées et descentes"</string>
+    <string name="quest_drinking_water_type_title">"De quelle façon est distribuée l’eau potable ici ?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Autre type de fontaine"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fontaine avec un petit jet"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Remplissage de bouteilles uniquement"</string>
+    <string name="quest_drinking_water_type_tap">"Robinet"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Pompe à main"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Puit sans pompe"</string>
+    <string name="quest_drinking_water_type_spring">"Source"</string>
+    <string name="quest_drinking_water_type_disused">"Objet abandonné"</string>
+    <string name="overlay_addresses">"Adresses"</string>
+    <string name="overlay_shops">"Magasins"</string>
+    <string name="name_label">"Nom :"</string>
+    <string name="vacant_shop_title">"Emplacement vacant"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Type de lieu inconnu"</string>
+    <string name="quest_address_answer_no_address">"Pas d'adresse ici"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos ?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixe"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Ouvrable"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Amovible"</string>
+    <string name="quest_buildingType_guardhouse">"Poste de garde"</string>
+    <string name="quest_genericRef_title">"Quel est le numéro d'identification ici ?"</string>
 </resources>

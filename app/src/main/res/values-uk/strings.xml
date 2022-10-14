@@ -960,6 +960,8 @@
 %s"</string>
     <string name="user_profile_days_active">"Активних днів"</string>
     <string name="user_profile_achievement_levels">"Рівень досягнень"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Вона не належить до названої вулиці"</string>
     <string name="quest_address_street_place_name_label">"Назва місця:"</string>
     <string name="quest_address_street_description">"Торкніться дороги, якій вона належить, на мапі, або введіть її без скорочень у поле нижче:"</string>

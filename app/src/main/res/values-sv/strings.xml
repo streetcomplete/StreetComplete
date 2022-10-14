@@ -931,6 +931,8 @@ rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestations-
 nivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
     <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
@@ -1648,4 +1650,30 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Utforska OSM-data från stort till smått och genom tid och rum"</string>
     <string name="link_opencampingmap_description">"En karta som visar campingplatser"</string>
     <string name="quest_atm_cashin_title">"Kan man sätta in pengar i denna bankomat?"</string>
+    <string name="create_node_action_description">"Du skapade en nod med …"</string>
+    <string name="quest_accessPointRef_title">"Vad har återsamlingsplatsen för beteckning?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Det är en återsamlingsplats"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En återsamlingsplats är en skyltad plats där man samlas vid en nödsituation. Vanligen ser de ut så här:"</string>
+    <string name="quest_address_answer_house_name2">"Den har ett husnamn…"</string>
+    <string name="quest_address_street_street_name_label">"Gatunamn:"</string>
+    <string name="quest_address_street_hint2">"Tryck på gatan för att välja den"</string>
+    <string name="quest_bicycle_incline_title">"Vilken riktning leder uppåt här?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Korta backar både upp och ner"</string>
+    <string name="quest_drinking_water_type_title">"Hur kan man få tag på dricksvatten här?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Annan sorts dricksfontän"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vattenstråle"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Flaskpåfyllning"</string>
+    <string name="quest_drinking_water_type_tap">"Vattenkran"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Handpump"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Vattenbrunn utan pump"</string>
+    <string name="quest_drinking_water_type_spring">"Källa"</string>
+    <string name="quest_drinking_water_type_disused">"Övergiven dricksfontän"</string>
+    <string name="overlay_addresses">"Adresser"</string>
+    <string name="overlay_shops">"Butiker"</string>
+    <string name="name_label">"Namn:"</string>
+    <string name="vacant_shop_title">"Tom butikslokal"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Okänd slags plats"</string>
 </resources>

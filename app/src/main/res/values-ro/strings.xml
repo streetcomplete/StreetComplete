@@ -1118,6 +1118,8 @@ global"</string>
 activitate"</string>
     <string name="user_profile_achievement_levels">"Niveluri
 de realizări"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nu aparține unei străzi anume"</string>
     <string name="quest_address_street_place_name_label">"Numele locului:"</string>
     <string name="quest_address_street_description">"Atingeți pe hartă strada de care aparține sau introduceți-l fără abrevieri în câmpul de mai jos:"</string>

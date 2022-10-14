@@ -1617,6 +1617,8 @@ päiviä"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Saavutus-
 taso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
     <string name="quest_address_street_description">"Napauta kartalla tietä, jolle se kuuluu tai kirjoitta ilman lyhenteitä alla olevaan kenttään:"</string>
@@ -2156,7 +2158,7 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Kyllä, ..."</string>
-    <string name="quest_fee_answer_no_but_maxstay">"Ei, mutta tässä on maksimipituus..."</string>
+    <string name="quest_fee_answer_no_but_maxstay">"Ei, mutta tässä on maksimiaika..."</string>
     <string name="unit_days">"päivää"</string>
     <string name="unit_hours">"tuntia"</string>
     <string name="unit_minutes">"minuuttia"</string>
@@ -2274,7 +2276,9 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_repair_station_title">"Onko täällä toimivaa pyöränpumppua?"</string>
     <string name="quest_memorialType_title">"Minkälainen muistomerkki tämä on?"</string>
     <string name="quest_memorialType_statue">"Patsas"</string>
+    <string name="quest_memorialType_plaque">"Kyltti"</string>
     <string name="quest_memorialType_war_memorial">"Sotamuistomerkki"</string>
+    <string name="quest_memorialType_stone">"Muistokivi"</string>
     <string name="quest_memorialType_obelisk">"Obeliski"</string>
     <string name="quest_memorialType_sculpture">"Muu veistos"</string>
     <string name="overlay_none">"Ei mitään"</string>
@@ -2285,4 +2289,28 @@ sorted alphabetically by title -->
     <string name="lit_value_automatic">"Valaistu kun joku kulkee ohi"</string>
     <string name="overlay_sidewalk">"Jalkakäytävät"</string>
     <string name="quest_generic_answer_is_indoors">"Tämä on sisätiloissa"</string>
+    <string name="quest_camp_drinking_water_title">"Onko juomavesi ilmaista leiriytyjille täällä?"</string>
+    <string name="quest_camp_shower_title">"Onko täällä suihkuja?"</string>
+    <string name="quest_camp_power_supply_title">"Voivatko asiakkaat ladata heidän puhelimiaan, tietokoneita jne täällä?"</string>
+    <string name="quest_camp_type_title">"Kuka saa leiriytyä täällä?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Sekä teltat että matkailuautot, matkailuvaunut, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Vain matkailuautot, matkailuvaunut, ..."</string>
+    <string name="quest_camp_type_tents_only">"Vain teltat"</string>
+    <string name="link_opencampingmap_description">"Kartta leirintäalueista"</string>
+    <string name="quest_atm_cashin_title">"Voiko tähän pankkiautomaattiin tallentaa rahaa?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Tämä on kokoontumispaikka"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Kokoontumispaikka on paikka johon ihmiset voivat kokoontua hätätilanteissa. Se näyttää yleensä tältä:"</string>
+    <string name="quest_address_street_street_name_label">"Kadun nimi:"</string>
+    <string name="quest_address_street_hint2">"Napauta katua valitaksesi sen"</string>
+    <string name="quest_drinking_water_type_title">"Kuinka juomavettä saa tästä?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Muu vesilähde"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vesilähde josta suihkuaa pieni vesisuihku"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Vain pullojen täyttö"</string>
+    <string name="quest_drinking_water_type_tap">"Vesihana"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Käsipumppu"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Lähden ilman pumppua"</string>
+    <string name="quest_drinking_water_type_spring">"Lähde"</string>
+    <string name="overlay_addresses">"Osoitteet"</string>
+    <string name="overlay_shops">"Kaupat"</string>
+    <string name="name_label">"Nimi:"</string>
 </resources>

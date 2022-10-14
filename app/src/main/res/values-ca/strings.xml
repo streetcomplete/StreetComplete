@@ -933,6 +933,8 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="user_profile_days_active">"Dies actiu"</string>
     <string name="user_profile_achievement_levels">"Nivells
 d'acompliment"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"No pertany a cap carrer que tingui nom"</string>
     <string name="quest_address_street_place_name_label">"Nom del lloc:"</string>
     <string name="quest_address_street_description">"Toqueu el camí al qual pertany al mapa o introduïu-lo sense abreviatures en el camp següent:"</string>
@@ -1344,17 +1346,17 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_on_street">"A la via"</string>
 
     <!-- Fuzzy -->
-    <string name="street_parking_half_on_kerb">"Parcialment a la via"</string>
+    <string name="street_parking_half_on_kerb">"Parcialment a la vorera"</string>
 
     <!-- Fuzzy -->
-    <string name="street_parking_on_kerb">"Adjacent a la via"</string>
+    <string name="street_parking_on_kerb">"A la vorera"</string>
 
     <!-- Fuzzy -->
     <string name="street_parking_street_side">"Adjacent a la via només en espais dedicats"</string>
 
     <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"A la via en espais dedicats"</string>
-    <string name="street_parking_separate">"Estacionament mostrat separat al mapa"</string>
+    <string name="street_parking_separate">"Estacionament mostrat separadament al mapa"</string>
     <string name="street_parking_no">"No estacionar ací / No permès"</string>
     <string name="street_parking_prohibited">"Prohibit estacionar"</string>
     <string name="street_stopping_prohibited">"Prohibit parar i estacionar"</string>
@@ -1540,7 +1542,7 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_seating_outdoor_only">"Només seients exteriors"</string>
     <string name="quest_seating_indoor_and_outdoor">"Els dos, interior i exterior"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Aquesta missió està desactivat per defecte perquè pot requerir la comprovació durant una part específica de l'any per tal de verificar els seients a l'aire lliure."</string>
-    <string name="no_camera_permission_toast">"No hi ha permís per a la càmera"</string>
+    <string name="no_camera_permission_toast">"No hi ha permís per a fer servir la càmera"</string>
 
     <!-- Quests
 sorted alphabetically by title -->
@@ -1608,7 +1610,7 @@ sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Ací s'accepten targetes de crèdit o dèbit?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accepts_cards_debit_and_credit">"Ambdós"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Ambdues opcions"</string>
     <string name="quest_accepts_cards_credit_only">"Només targetes de crèdit"</string>
     <string name="quest_accepts_cards_dedit_only">"Només targetes de dèbit"</string>
     <string name="quest_accepts_cards_unavailable">"Cap de les dues"</string>
@@ -1670,8 +1672,12 @@ sorted alphabetically by title -->
     <string name="quest_generic_answer_is_indoors">"Això és interior"</string>
     <string name="quest_summit_cross_title">"Hi ha una creu de la cimera ací?"</string>
     <string name="quest_entrance_reference">"Què hi posa a l'entrada?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta d'entrada i rang de pisos"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Rang de pisos"</string>
     <string name="quest_entrance_reference_select_code_only">"Nom de l'entrada"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Cap rètol amb etiqueta o rang de pisos"</string>
     <string name="quest_entrance_reference_reference_label">"Nom de l'entrada:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Rang de pisos:"</string>
     <string name="quest_entrance_reference_flat_range_to">"cap a"</string>
     <string name="default_disabled_msg_overlay">"Aquest tipus de missió està desactivada per defecte perquè ja hi ha una capa superposada amb la qual és més eficaç i eficient introduir i actualitzar aquestes dades."</string>
     <string name="quest_camp_drinking_water_title">"Els campistes poden beure aigua debades?"</string>
@@ -1692,4 +1698,33 @@ sorted alphabetically by title -->
 "</string>
     <string name="link_opencampingmap_description">"Un mapa de llocs d'acampada"</string>
     <string name="quest_atm_cashin_title">"Pots dipositar diners en aquest caixer?"</string>
+    <string name="create_node_action_description">"Has creat un node amb ..."</string>
+    <string name="quest_accessPointRef_title">"Quin és el número d'identificació?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"És un Punt de Trobada"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un Punt de Trobada és on la gent es reuneix en cas d'emegència. Normalment té aquest aspecte:"</string>
+    <string name="quest_address_answer_house_name2">"La casa té un nom..."</string>
+    <string name="quest_address_street_street_name_label">"Nom del carrer:"</string>
+    <string name="quest_address_street_hint2">"Toqueu el carrer al mapa per seleccionar-lo"</string>
+    <string name="quest_bicycle_incline_title">"Quina direcció va cap amunt aquí?
+"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Són salts de pujada i baixada "</string>
+    <string name="quest_drinking_water_type_title">"Com es proporciona l'aigua potable aquí?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Altres fonts d'aigua
+"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Font que emet un petit raig d'aigua"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Només per a omplir ampolles"</string>
+    <string name="quest_drinking_water_type_tap">"Aixeta d'aigua
+"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Bomba manual"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Pou d'aigua sense bomba"</string>
+    <string name="quest_drinking_water_type_spring">"Brollador"</string>
+    <string name="quest_drinking_water_type_disused">"Objecte per a veure en desús"</string>
+    <string name="overlay_addresses">"Adreces"</string>
+    <string name="overlay_shops">"Botigues"</string>
+    <string name="name_label">"Nom:"</string>
+    <string name="vacant_shop_title">"Local vacant"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
 </resources>

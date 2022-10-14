@@ -804,6 +804,8 @@ global"</string>
 ativo"</string>
     <string name="user_profile_achievement_levels">"Níveis de
 conquista"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua com nome"</string>
     <string name="quest_address_street_place_name_label">"Nome do lugar:"</string>
     <string name="quest_address_street_description">"Toque na estrada à qual ela pertence no mapa ou insira-a sem abreviaturas no campo abaixo:"</string>

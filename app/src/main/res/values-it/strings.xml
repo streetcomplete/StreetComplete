@@ -950,6 +950,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
 attivo"</string>
     <string name="user_profile_achievement_levels">"Livelli di
 riconoscimento"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non appartiene ad una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
     <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
@@ -1668,4 +1670,36 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Esplora i dati OSM dai singoli oggetti all’intera mappa spostandoti nello spazio e nel tempo"</string>
     <string name="link_opencampingmap_description">"Una mappa dei campeggi"</string>
     <string name="quest_atm_cashin_title">"Puoi fare un versamento di contanti a questo bancomat?"</string>
+    <string name="create_node_action_description">"Hai creato un nodo con…"</string>
+    <string name="quest_accessPointRef_title">"Qual è il numero di identificazione qua?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"È un punto di raccolta"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un punto di raccolta è dove la popolazione può radunarsi in caso di emergenza. In genere assomiglia a questo:"</string>
+    <string name="quest_address_answer_house_name2">"La casa ha un nome…"</string>
+    <string name="quest_address_street_street_name_label">"Nome della strada:"</string>
+    <string name="quest_address_street_hint2">"Premi sulla strada nella mappa per selezionarla"</string>
+    <string name="quest_bicycle_incline_title">"In quale direzione si sale qua?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"È un saliscendi"</string>
+    <string name="quest_drinking_water_type_title">"Come viene fornita l’acqua potabile qua?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Un’altra fontanella"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"La fontanella emette un piccolo getto d’acqua"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Solo per riempire le bottiglie"</string>
+    <string name="quest_drinking_water_type_tap">"Rubinetto"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Pompa a mano"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Pozzo senza pompa"</string>
+    <string name="quest_drinking_water_type_spring">"Sorgiva"</string>
+    <string name="quest_drinking_water_type_disused">"Fontanella dismessa"</string>
+    <string name="overlay_addresses">"Indirizzi"</string>
+    <string name="overlay_shops">"Negozi"</string>
+    <string name="name_label">"Nome:"</string>
+    <string name="vacant_shop_title">"Negozio vuoto"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
+    <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fisso"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Apribile"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Smontabile"</string>
+    <string name="quest_buildingType_guardhouse">"Guardiola"</string>
 </resources>

@@ -35,6 +35,11 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val indexTargetFile = File(indexFile)
         indexTargetFile.parentFile.mkdirs()
 
+        val prefix = transformName("")
+        for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
+            file.delete()
+        }
+
         for (icon in icons) {
             val url = getDownloadUrl(icon) ?: continue
 
@@ -140,7 +145,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
 
             val path = drawable.createElement("path")
             path.setAttribute("android:fillColor", "@android:color/white")
-            path.setAttribute("android:pathData", d)
+            path.setAttribute("android:pathData", makePathCompatible(d))
             vector.appendChild(path)
         }
 
@@ -148,6 +153,25 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     }
 
     private val supportedPathAttributes = setOf("d", "id")
+
+    private fun makePathCompatible(path: String): String {
+        val scientificNotation = Regex("\\d*\\.\\d+e-\\d+")
+        // likely only used for very small numbers, just round to 0
+        var result = scientificNotation.replace(path, "0")
+
+        val zeroBeforeDot = Regex("(?<before>[- ,a-zA-Z])\\.")
+        result = zeroBeforeDot.replace(result, "\${before}0.")
+
+        val spaceAfterDecimal = Regex("(\\d+\\.\\d+)\\.")
+        var i = 0
+        var previousPath: String
+        do {
+            if (i++ > 3) throw IllegalStateException()
+            previousPath = result
+            result = spaceAfterDecimal.replace(previousPath, "\$1 0.")
+        } while (result != previousPath)
+        return result
+    }
 
     private fun writeXml(xml: Document, targetFile: File) {
         FileOutputStream(targetFile).use { output ->

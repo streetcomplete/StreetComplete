@@ -1799,6 +1799,8 @@
     <string name="user_profile_local_rank">"在 %s 的排名"</string>
     <string name="user_profile_days_active">"天有效"</string>
     <string name="user_profile_achievement_levels">"成就等級"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"它並沒有依靠在有名稱的街道上"</string>
     <string name="quest_address_street_place_name_label">"地點名稱："</string>
     <string name="quest_address_street_description">"點擊在地圖上的道路或是在下方輸入沒有縮寫的名稱："</string>

@@ -1067,6 +1067,8 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="user_profile_local_rank">"Peringkat di %s"</string>
     <string name="user_profile_days_active">"Hari aktif"</string>
     <string name="user_profile_achievement_levels">"Level pencapaian"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
     <string name="quest_address_street_description">"Tekan jalan di mana ia berada di peta atau masukkan tanpa singkatan pada kolom di bawah:"</string>
