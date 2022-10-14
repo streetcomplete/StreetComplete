@@ -45,32 +45,34 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+            deleteSidewalkSurfaceAnswerIfExists(null, tags)
             tags.remove("sidewalk:left")
             tags.remove("sidewalk:right")
             tags.remove("sidewalk:both")
             tags.remove("sidewalk")
+            return
+        }
+
+        val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
+        val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
+
+        if (leftChanged == true) {
+            deleteSmoothnessKeys(Side.LEFT, tags)
+            deleteSmoothnessKeys(Side.BOTH, tags)
+        }
+        if (rightChanged == true) {
+            deleteSmoothnessKeys(Side.RIGHT, tags)
+            deleteSmoothnessKeys(Side.BOTH, tags)
+        }
+
+        if (answer.left == answer.right) {
+            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
+            deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+            deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
         } else {
-            val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
-            val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
-
-            if (leftChanged == true) {
-                deleteSmoothnessKeys(Side.LEFT, tags)
-                deleteSmoothnessKeys(Side.BOTH, tags)
-            }
-            if (rightChanged == true) {
-                deleteSmoothnessKeys(Side.RIGHT, tags)
-                deleteSmoothnessKeys(Side.BOTH, tags)
-            }
-
-            if (answer.left == answer.right) {
-                answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
-                deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-                deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-            } else {
-                answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
-                answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
-                deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-            }
+            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
+            answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
+            deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
         }
 
         deleteSidewalkSurfaceAnswerIfExists(null, tags)
