@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.screens
 
+import android.content.ComponentName
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.os.IBinder
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
 import android.view.KeyEvent
@@ -40,6 +43,7 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.NearbyQuestMonitor
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
@@ -190,6 +194,28 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false) && !NearbyQuestMonitor.running)
+            bindService(Intent(this, NearbyQuestMonitor::class.java), questMonitorConnection, BIND_AUTO_CREATE)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (prefs.getBoolean(Prefs.QUEST_MONITOR, false))
+            try { unbindService(questMonitorConnection) } catch (e: IllegalArgumentException) {
+                // wtf is going on? it's not destroyed, but not registered?
+                // anyway, this check whether service is running doesn't work properly -> try every time, not just if running
+            }
+    }
+
+    private val questMonitorConnection: ServiceConnection by lazy { object : ServiceConnection {
+        override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {}
+        override fun onServiceDisconnected(p0: ComponentName?) {}
+    } }
+
+    override fun onNewIntent(newIntent: Intent?) {
+        super.onNewIntent(newIntent)
+        intent = newIntent
+        handleGeoUri()
     }
 
     public override fun onStop() {
@@ -205,6 +231,7 @@ class MainActivity :
         super.onDestroy()
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
+        try { unbindService(questMonitorConnection) } catch (_: IllegalArgumentException) { }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="22" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     <uses-feature android:name="android.hardware.screen.portrait" />
@@ -43,6 +45,7 @@
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.screens.MainActivity"
             android:configChanges="orientation|screenSize"
+            android:launchMode= "singleInstance"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -88,6 +91,9 @@
         <service
             android:name="de.westnordost.streetcomplete.data.upload.UploadService"
             android:foregroundServiceType="dataSync" />
+        <service
+            android:name="de.westnordost.streetcomplete.screens.main.NearbyQuestMonitor"
+            android:foregroundServiceType="location" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="@string/fileprovider_authority"

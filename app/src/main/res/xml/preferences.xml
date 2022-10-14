@@ -314,6 +314,13 @@
             android:defaultValue="false"
             android:persistent="true" />
 
+        <SwitchPreference
+            android:key="quest_monitor"
+            android:title="@string/pref_quest_monitor_title"
+            android:summary="@string/pref_quest_monitor_summary"
+            android:defaultValue="false"
+            android:persistent="true" />
+
         <Preference
             android:key="trees"
             android:title="@string/pref_trees_title" />

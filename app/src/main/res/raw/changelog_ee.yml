@@ -8,6 +8,7 @@ v48.0_ee: |
   <li>Full element selection for all filter type quests (via quest settings). Quest settings for phone, website and wheelchair quests have been reset to work with the new style</li>
   <li>Some improvements when showing nearby quests</li>
   <li>Allow viewing photos when creating a note</li>
+  <li>Option to show a notification when the app is in background and a quest is nearby</li>
   <li>Some performance improvements</li>
   </ul>
 

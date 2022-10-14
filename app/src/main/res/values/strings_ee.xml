@@ -106,6 +106,8 @@
     <string name="pref_main_menu_grid">Show all main menu items as grid</string>
     <string name="copy_preset_title">Copy from another preset?</string>
     <string name="copy_preset_new">Don’t copy</string>
+    <string name="pref_quest_monitor_title">Notify about nearby quests</string>
+    <string name="pref_quest_monitor_summary">Monitors location when app is in background</string>
 
 
     <!-- quest settings -->
@@ -293,5 +295,10 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
     <string name="attach_photo_delete">Delete</string>
+    <string name="quest_monitor_found">%d quests nearby, closest:</string>
+    <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>
+    <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
+    <string name="quest_monitor_passive">Monitoring locations</string>
+    <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
 
 </resources>
