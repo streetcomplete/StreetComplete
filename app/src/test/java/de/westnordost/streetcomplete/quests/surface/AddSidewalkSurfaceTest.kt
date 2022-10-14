@@ -122,6 +122,25 @@ class AddSidewalkSurfaceTest {
         )
     }
 
+    @Test fun `remove all sidewalk information`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk:left:surface" to "asphalt",
+                "sidewalk:right:surface" to "concrete",
+                "sidewalk:left:smoothness" to "excellent",
+                "sidewalk:right:smoothness" to "good",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            SidewalkSurfaceAnswer(SidewalkIsDifferent),
+            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
+            StringMapEntryDelete("sidewalk:right:surface", "concrete"),
+            StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
+            StringMapEntryDelete("sidewalk:right:smoothness", "good"),
+            StringMapEntryDelete("sidewalk:left", "yes"),
+            StringMapEntryDelete("sidewalk:right", "yes")
+        )
+    }
+
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }
