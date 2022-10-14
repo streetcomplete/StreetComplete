@@ -83,10 +83,6 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
         }
     }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
-    )
-
     private enum class Side(val value: String) {
         LEFT("left"), RIGHT("right"), BOTH("both")
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
@@ -17,6 +18,10 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
 
     private var leftNote: String? = null
     private var rightNote: String? = null
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_sidewalk_answer_different) { applyAnswer(SidewalkIsDifferent) }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
