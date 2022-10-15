@@ -142,6 +142,7 @@ class ElementEditsController(
     /* ------------------------------------ add/sync/delete ------------------------------------- */
 
     private fun add(edit: ElementEdit, key: QuestKey? = null) {
+        val newEdit: ElementEdit // elementId might change, but upstream this happens only in database
         synchronized(this) {
             editsDB.add(edit)
             val id = edit.id
@@ -159,11 +160,13 @@ class ElementEditsController(
                     throw IllegalStateException("Element creation only supported for nodes")
                 }
                 val idProvider = elementIdProviderDB.get(id)
-                editsDB.updateElementId(id, idProvider.nextNodeId())
-            }
-            editCache[edit.id] = edit
+                val newElementId = idProvider.nextNodeId()
+                editsDB.updateElementId(id, newElementId)
+                newEdit = edit.copy(elementId = newElementId) // updating the id in the edit is important for proper caching
+            } else newEdit = edit
+            editCache[edit.id] = newEdit
         }
-        onAddedEdit(edit, key)
+        onAddedEdit(newEdit, key)
     }
 
     private fun delete(edit: ElementEdit) {

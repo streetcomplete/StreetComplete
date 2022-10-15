@@ -32,7 +32,7 @@ import org.koin.core.component.inject
 // will be created every time the app is put to background... actually that's not good
 class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
-    private val locationManager: LocationManager by lazy { applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager }
+    private val locationManager: LocationManager = applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager
 
     private fun getQuestFoundNotification(size: Int, closest: Quest): Notification =
         NotificationCompat.Builder(this, FOUND_CHANNEL_ID)
@@ -99,7 +99,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         // check if we have nearby quests
         if (location.accuracy > 100) return
         val loc = location.toLatLon()
-        val q = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(50.0))
+        val q = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(50.0)).filterNot { it.type.dotColor == "no" }
         if (q.isEmpty()) return // todo (later): optionally download
         val closest = q.minBy { loc.distanceTo(it.position) } // this is not efficient, simple lat/lon distance would be sufficient for minimum
         val n = getQuestFoundNotification(q.size, closest)
