@@ -113,7 +113,7 @@ private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): 
     return leftWidth + rightWidth
 }
 
-// when estimating, use lowest probable width to no over-estimate the road width
-private const val BROAD_LANE = 3.5f
-private const val LANE = 2.5f
+// rather under-estimate then over-estimate the road width
+private const val BROAD_LANE = 3.75f // standard interstate/motorway width
+private const val LANE = 2.75f // widest trucks are about 2.6m
 private const val SHOULDER = 2f
