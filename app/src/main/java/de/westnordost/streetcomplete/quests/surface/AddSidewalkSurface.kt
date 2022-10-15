@@ -38,21 +38,20 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun createForm() = AddSidewalkSurfaceForm()
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        /*if (answer is SidewalkIsDifferent) {
+       when (answer) {
+            is SidewalkIsDifferent -> {
             deleteSmoothnessKeys(Side.LEFT, tags)
             deleteSmoothnessKeys(Side.RIGHT, tags)
             deleteSmoothnessKeys(Side.BOTH, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
             deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-            deleteSidewalkSurfaceAnswerIfExists(null, tags)
             tags.remove("sidewalk:left")
             tags.remove("sidewalk:right")
             tags.remove("sidewalk:both")
             tags.remove("sidewalk")
-            return
-        }*/
-
+            }
+            else -> {
         val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
         val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
@@ -73,6 +72,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
             answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
             deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+        }
+            }
         }
 
         deleteSidewalkSurfaceAnswerIfExists(null, tags)
