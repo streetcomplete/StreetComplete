@@ -40,39 +40,39 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
        when (answer) {
             is SidewalkIsDifferent -> {
-            deleteSmoothnessKeys(Side.LEFT, tags)
-            deleteSmoothnessKeys(Side.RIGHT, tags)
-            deleteSmoothnessKeys(Side.BOTH, tags)
-            deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-            tags.remove("sidewalk:left")
-            tags.remove("sidewalk:right")
-            tags.remove("sidewalk:both")
-            tags.remove("sidewalk")
+                deleteSmoothnessKeys(Side.LEFT, tags)
+                deleteSmoothnessKeys(Side.RIGHT, tags)
+                deleteSmoothnessKeys(Side.BOTH, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
+                deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+                tags.remove("sidewalk:left")
+                tags.remove("sidewalk:right")
+                tags.remove("sidewalk:both")
+                tags.remove("sidewalk")
             }
             else -> {
-        val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
-        val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
+                val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
+                val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
-        if (leftChanged == true) {
-            deleteSmoothnessKeys(Side.LEFT, tags)
-            deleteSmoothnessKeys(Side.BOTH, tags)
-        }
-        if (rightChanged == true) {
-            deleteSmoothnessKeys(Side.RIGHT, tags)
-            deleteSmoothnessKeys(Side.BOTH, tags)
-        }
+                if (leftChanged == true) {
+                    deleteSmoothnessKeys(Side.LEFT, tags)
+                    deleteSmoothnessKeys(Side.BOTH, tags)
+                }
+                if (rightChanged == true) {
+                    deleteSmoothnessKeys(Side.RIGHT, tags)
+                    deleteSmoothnessKeys(Side.BOTH, tags)
+                }
 
-        if (answer.left == answer.right) {
-            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
-            deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
-            deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
-        } else {
-            answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
-            answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
-            deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
-        }
+                if (answer.left == answer.right) {
+                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.BOTH, tags) }
+                    deleteSidewalkSurfaceAnswerIfExists(Side.LEFT, tags)
+                    deleteSidewalkSurfaceAnswerIfExists(Side.RIGHT, tags)
+                } else {
+                    answer.left?.let { applySidewalkSurfaceAnswerTo(it, Side.LEFT, tags) }
+                    answer.right?.let { applySidewalkSurfaceAnswerTo(it, Side.RIGHT, tags) }
+                    deleteSidewalkSurfaceAnswerIfExists(Side.BOTH, tags)
+                }
             }
         }
 
