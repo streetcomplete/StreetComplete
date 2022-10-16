@@ -1226,8 +1226,8 @@ class MainFragment :
 
     private fun getHighlightedElements(quest: Quest, element: Element? = null): List<Marker> {
         val bbox = when (quest) {
-            is OsmQuest -> quest.geometry.center.enclosingBoundingBox(quest.type.highlightedElementsRadius)
-            is OtherSourceQuest -> quest.type.highlightedElementsRadius?.let { quest.position.enclosingBoundingBox(it) } ?: return emptyList()
+            is OsmQuest -> quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
+            is OtherSourceQuest -> quest.geometry.getBounds().enlargedBy(quest.type.highlightedElementsRadius)
             else -> return emptyList()
         }
         var mapData: MapDataWithGeometry? = null
@@ -1245,28 +1245,28 @@ class MainFragment :
             return data
         }
 
-        val levels = element?.let { createLevelsOrNull(it.tags) }
-
-            val elements =
-                when (quest) {
-                    is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
-                    is OtherSourceQuest -> quest.type.getHighlightedElements(::getMapData)
-                    else -> emptySequence()
-                }
-            for (e in elements) {
-                // don't highlight "this" element
-                if (element == e) continue
-                // include only elements with the same (=intersecting) level, if any
-                val eLevels = createLevelsOrNull(e.tags)
-                if (!levels.levelsIntersect(eLevels)) continue
-                // include only elements with the same layer, if any
-                if (element?.tags?.get("layer") != e.tags["layer"]) continue
-
-                val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(e.tags)
-                val title = getTitle(e.tags)
-                markers.add(Marker(geometry, icon, title))
+        val elements =
+            when (quest) {
+                is OsmQuest -> element?.let { quest.type.getHighlightedElements(it, ::getMapData) } ?: emptySequence()
+                is OtherSourceQuest -> quest.type.getHighlightedElements(::getMapData)
+                else -> emptySequence()
             }
+        if (elements == emptySequence<Element>()) return emptyList()
+        val levels = element?.let { createLevelsOrNull(it.tags) }
+        for (e in elements) {
+            // don't highlight "this" element
+            if (element == e) continue
+            // include only elements with the same (=intersecting) level, if any
+            val eLevels = createLevelsOrNull(e.tags)
+            if (!levels.levelsIntersect(eLevels)) continue
+            // include only elements with the same layer, if any
+            if (element?.tags?.get("layer") != e.tags["layer"]) continue
+
+            val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
+            val icon = getPinIcon(e.tags)
+            val title = getTitle(e.tags)
+            markers.add(Marker(geometry, icon, title))
+        }
         return markers
     }
 
