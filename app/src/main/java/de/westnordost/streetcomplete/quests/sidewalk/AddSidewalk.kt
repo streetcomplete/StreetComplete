@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
@@ -28,7 +29,7 @@ import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
 class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
-        ways with highway ~ path|footway|cycleway|construction
+        ways with highway ~ path|footway|cycleway|construction and foot != no and access !~ no|private
     """.toElementFilterExpression() }
     // highway=construction included, as situation often changes during and after construction
 
@@ -105,6 +106,9 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(maybeSeparatelyMappedSidewalksFilter)
 
     companion object {
         // streets that may have sidewalk tagging

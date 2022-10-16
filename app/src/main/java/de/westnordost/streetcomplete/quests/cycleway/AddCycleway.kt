@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -190,6 +191,9 @@ class AddCycleway(
             tags.updateCheckDateForKey("cycleway")
         }
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("ways with highway = cycleway or (highway ~ path|footway and bicycle ~ yes|designated) or (highway=construction and construction ~ cycleway)")
 
     /** Just add a sidewalk if we implicitly know from the answer that there is one */
     private fun applySidewalkAnswerTo(cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, tags: Tags) {
