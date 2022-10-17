@@ -49,10 +49,10 @@ fun parseConfigUrl(
     val questTypeOrders = parameters[PARAM_SORT_QUESTS]
         ?.split('-')
         ?.mapNotNull {
-            val pair = it.split('x')
+            val pair = it.split('.')
             if (pair.size != 2) return null
-            val firstOrdinal = pair[0].toIntOrNull() ?: return null
-            val secondOrdinal = pair[1].toIntOrNull() ?: return null
+            val firstOrdinal = pair[0].toIntOrNull(36) ?: return null
+            val secondOrdinal = pair[1].toIntOrNull(36) ?: return null
             if (firstOrdinal == secondOrdinal) return null
             val first = questTypeRegistry.getByOrdinal(firstOrdinal)
             val second = questTypeRegistry.getByOrdinal(secondOrdinal)
@@ -75,10 +75,10 @@ fun createConfigUrl(
     // TODO limit quest type orders length?!
     if (urlConfig.questTypeOrders.isNotEmpty()) {
         val sortOrders = urlConfig.questTypeOrders.mapNotNull { (first, second) ->
-            val ordinal1 = questTypeRegistry.getOrdinalOf(first)
-            val ordinal2 = questTypeRegistry.getOrdinalOf(second)
+            val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(36)
+            val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(36)
             if (ordinal1 != null && ordinal2 != null) ordinal1 to ordinal2 else null
-        }.joinToString("-") { (first, second) -> "${first}x${second}" }
+        }.joinToString("-") { (first, second) -> "${first}.${second}" }
 
         parameters.add(PARAM_SORT_QUESTS to sortOrders)
     }
@@ -98,13 +98,13 @@ private fun questTypesToString(
     Ordinals(questTypes.mapNotNull { questTypeRegistry.getOrdinalOf(it) }.toSet())
         .toBooleanArray()
         .toBigInteger()
-        .toString(10)
+        .toString(36)
 
 private fun stringToQuestTypes(
     string: String,
     questTypeRegistry: QuestTypeRegistry,
 ): Collection<QuestType>? =
-    string.toBigIntegerOrNull(10)
+    string.toBigIntegerOrNull(36)
         ?.toBooleanArray()
         ?.toOrdinals()
         ?.mapNotNull { questTypeRegistry.getByOrdinal(it) }

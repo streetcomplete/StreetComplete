@@ -33,21 +33,21 @@ internal class UrlConfigKtTest {
     @Test fun `parse simple config`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=d", quests, overlays)
         )
     }
 
     @Test fun `parse config with overlay`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1),
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&o=1", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&o=1", quests, overlays)
         )
     }
 
     @Test fun `upper case is fine`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
-            parseConfigUrl("HTTPS://streetcomplete.app/?N=Test&Q=13", quests, overlays)
+            parseConfigUrl("HTTPS://streetcomplete.app/?N=Test&Q=D", quests, overlays)
         )
     }
 
@@ -61,7 +61,7 @@ internal class UrlConfigKtTest {
     @Test fun `parse config with quest sort orders`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q0), null),
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1-3x0", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1-3.0", quests, overlays)
         )
     }
 
@@ -69,33 +69,33 @@ internal class UrlConfigKtTest {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), listOf(q1 to q3), null),
             // i.e. ordinal 4 is ignored
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=29&s=0x4-1x3", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=t&s=0.4-1.3", quests, overlays)
         )
     }
 
     @Test fun `reject wrong domain`() {
-        assertNull(parseConfigUrl("https://blorb.io/?n=Test&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://blorb.io/?n=Test&q=d", quests, overlays))
     }
 
     @Test fun `reject misformed parameters`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test=Wrong&q=13", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n==Wrong&q=13", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&s&q=13", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test=Wrong&q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n==Wrong&q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&s&q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&&q=d", quests, overlays))
 
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1--1x2", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1-1x2-", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0xx1", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x0", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1--1.2", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1-1.2-", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0..1", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.0", quests, overlays))
     }
 
     @Test fun `reject if name is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/?q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?q=d", quests, overlays))
     }
 
     @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.app/?q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?q=d", quests, overlays))
     }
 
     //endregion
@@ -104,21 +104,21 @@ internal class UrlConfigKtTest {
 
     @Test fun `create simple url`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=13",
+            "https://streetcomplete.app/?n=Test&q=d",
             createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null), quests, overlays),
         )
     }
 
     @Test fun `create url with overlay`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=13&o=1",
+            "https://streetcomplete.app/?n=Test&q=d&o=1",
             createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1), quests, overlays),
         )
     }
 
     @Test fun `create url with quest type orders`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=13&s=0x1-3x2",
+            "https://streetcomplete.app/?n=Test&q=d&s=0.1-3.2",
             createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q2), null), quests, overlays),
         )
     }
@@ -132,7 +132,7 @@ internal class UrlConfigKtTest {
 
     @Test fun `create url ignores unknown quests`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=1&s=3x2",
+            "https://streetcomplete.app/?n=Test&q=1&s=3.2",
             createConfigUrl(UrlConfig("Test", listOf(q0, qUnknown), listOf(q0 to qUnknown, q3 to q2), null), quests, overlays),
         )
     }
