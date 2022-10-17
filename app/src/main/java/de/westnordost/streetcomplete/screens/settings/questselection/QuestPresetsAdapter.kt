@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
+import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
@@ -127,11 +128,13 @@ class QuestPresetsAdapter(
 
         private fun onClickRenamePreset(preset: QuestPreset) {
             val ctx = itemView.context
-            EditTextDialog(ctx,
+            val dialog = EditTextDialog(ctx,
                 title = ctx.getString(R.string.quest_presets_rename),
                 text = preset.name,
                 callback = { name -> renameQuestPreset(preset.id, name) }
-            ).show()
+            )
+            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(40))
+            dialog.show()
         }
 
         private fun renameQuestPreset(presetId: Long, name: String) {

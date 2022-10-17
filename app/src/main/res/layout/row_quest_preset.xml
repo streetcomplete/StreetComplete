@@ -19,7 +19,7 @@
         android:textSize="18sp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        tools:text="@string/quest_presets_default_name"/>
+        tools:text="This is a long preset name!"/>
 
     <ImageView
         android:id="@+id/menuButton"

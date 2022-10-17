@@ -69,9 +69,11 @@ fun createConfigUrl(
     questTypeRegistry: QuestTypeRegistry,
     overlayRegistry: OverlayRegistry
 ): String {
-    // TODO limit name length?!
+    val name = urlConfig.presetName
+    val shortenedName = if (name.length > 40) name.substring(0, 39) + "…" else name
+
     val parameters = mutableListOf(
-        PARAM_NAME to URLEncoder.encode(urlConfig.presetName, "UTF-8"),
+        PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"),
         PARAM_QUESTS to questTypesToString(urlConfig.questTypes, questTypeRegistry)
     )
     // TODO limit quest type orders length?!
