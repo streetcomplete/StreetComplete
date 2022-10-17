@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:key="quick_settings"
+        android:title="@string/pref_show_quick_settings_title"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="show_next_quest_immediately"
+        android:title="@string/pref_show_next_quest_title"
+        android:summary="@string/pref_show_next_quest_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <Preference
+        android:key="show_nearby_quests"
+        android:title="@string/pref_show_nearby_quests_title"
+        android:summary="@string/pref_show_nearby_quests_summary" />
+
+    <SwitchPreference
+        android:key="show_hide_button"
+        android:title="@string/pref_hide_button_title"
+        android:summary="@string/pref_hide_button_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="volume_button_zoom"
+        android:title="@string/pref_volume_zoom_title"
+        android:summary="@string/pref_volume_zoom_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="select_first_edit"
+        android:title="@string/pref_select_first_edit_title"
+        android:summary="@string/pref_select_first_edit_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        android:key="favs_first_min_lines"
+        android:title="@string/pref_recent_answers_first_min_lines"
+        android:summary="@string/pref_recent_answers_first_min_lines_summary"
+        android:defaultValue="1"
+        android:persistent="true"
+        app:minValue="0"
+        app:maxValue="10"
+        app:step="1"
+        android:dialogMessage="@string/pref_recent_answers_first_min_lines_message"
+        android:dialogLayout="@layout/dialog_number_picker_preference"
+        android:positiveButtonText="@android:string/ok"
+        android:negativeButtonText="@android:string/cancel" />
+
+    <SwitchPreference
+        android:key="main_menu_full_grid"
+        android:title="@string/pref_main_menu_grid"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+</PreferenceScreen>

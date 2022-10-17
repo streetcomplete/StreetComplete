@@ -9,52 +9,63 @@
      -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- used in settings -->
-    <string name="pref_category_mods">Modifications</string>
-    <string name="pref_volume_zoom_title">Volume button zoom</string>
-    <string name="pref_volume_zoom_summary">Zoom using volume buttons</string>
-    <string name="pref_3d_buildings_title">Show 3D buildings</string>
-    <string name="pref_quest_geometries_title">Display quest geometries</string>
-    <string name="pref_quest_geometries_summary">Highlight ways and areas that have quests</string>
-    <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>
-    <string name="delete_confirmation_tiles">Map tiles</string>
-    <string name="delete_confirmation_data">OSM &amp; quest data</string>
-    <string name="delete_confirmation_both">Both</string>
-    <string name="pref_auto_download_title">"Auto download"</string>
-    <string name="pref_auto_download_summary">Automatically download data in the nearby area</string>
-    <string name="pref_gps_interval_title">GPS location update interval</string>
-    <string name="pref_network_interval_title">"Network location update interval"</string>
-    <string name="pref_interval_summary">%d seconds</string>
-    <string name="pref_interval_message">Update interval in seconds</string>
+    <!-- settings -->
+    <string name="pref_category_mods">EE settings</string>
+
+    <!-- notes settings -->
+    <string name="pref_screen_notes">Notes</string>
     <string name="pref_hide_notes_title">Hide notes by specific users</string>
     <string name="pref_hide_notes_hint">Use comma to separate user names or IDs</string>
     <string name="pref_hide_notes_message">Enter user names or IDs to ignore</string>
-    <string name="theme_dark_contrast">Dark (increased contrast)</string>
-    <string name="resurvey_intervals_even_less_often">Ask even less often</string>
-    <string name="pref_manual_download_cache_title">Always re-download data</string>
-    <string name="pref_manual_download_cache_summary">When disabled, data will not be re-downloaded on manual download unless it’s older than 12 hours</string>
-    <string name="pref_show_quick_settings_title">Show quick settings button</string>
-    <string name="pref_offset_fix_title">Remove quest marker offsets</string>
-    <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
-    <string name="pref_advanced_resurvey_title">Advanced resurvey</string>
-    <string name="pref_advanced_resurvey_summary">Force resurvey for selected tags</string>
-    <string name="advanced_resurvey_title">Set resurvey date and keys</string>
-    <string name="advanced_resurvey_message_keys">Always resurvey these keys if there is no check date key. Check date will always be added on answering related quests</string>
-    <string name="advanced_resurvey_message_date">Instead of using resurvey intervals, resurvey above keys if check date older than:</string>
-    <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
-    <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
     <string name="pref_show_gpx_button_title">Show GPX note button</string>
     <string name="pref_show_gpx_button_summary">Contrary to OSM notes, adding a GPX not will not hide any quest at the affected location</string>
     <string name="pref_swap_gpx_note_button">Swap OSM and GPX note buttons</string>
     <string name="pref_hide_keyboard_title">Hide keyboard before creating note</string>
     <string name="pref_hide_keyboard_summary">Hides the keyboard when open before the note is actually created (to allow re-view of position)</string>
-    <string name="pref_day_night_title">Daytime quest filter</string>
-    <string name="day_night_ignore">Ignore daytime</string>
-    <string name="day_night_priority">Increase priority of quests suitable for current daytime</string>
-    <string name="day_night_visibility">Don’t show quests unsuitable for current daytime</string>
     <string name="pref_save_gpx">Get GPX notes and attached photos and tracks</string>
     <string name="pref_save_gpx_not_found">No GPX notes found</string>
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
+
+    <!-- display settings -->
+    <string name="pref_screen_display">Display</string>
+    <string name="pref_3d_buildings_title">Show 3D buildings</string>
+    <string name="pref_quest_geometries_title">Display quest geometries</string>
+    <string name="pref_quest_geometries_summary">Highlight ways and areas that have quests</string>
+    <string name="pref_offset_fix_title">Remove quest marker offsets</string>
+    <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
+    <string name="pref_show_solved_animation">Show animation after solving a quest</string>
+    <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
+    <string name="pref_close_forms_immediately_summary">Closes the form before the change is processed, so further quests may take a short time to show up</string>
+
+    <!-- ui settings -->
+    <string name="pref_screen_ui">UI</string>
+    <string name="pref_volume_zoom_title">Volume button zoom</string>
+    <string name="pref_volume_zoom_summary">Zoom using volume buttons</string>
+    <string name="pref_show_quick_settings_title">Show quick settings button</string>
+    <string name="pref_select_first_edit_title">Select first edit on opening history</string>
+    <string name="pref_select_first_edit_summary">Allows for quicker undo, but moves camera automatically</string>
+    <string name="pref_main_menu_grid">Show all main menu items as grid</string>
+    <string name="pref_show_next_quest_title">Show next quest immediately</string>
+    <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
+    <string name="pref_hide_button_title">Show hide button</string>
+    <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
+    <string name="pref_recent_answers_first_min_lines">Move recent answers to front</string>
+    <string name="pref_recent_answers_first_min_lines_summary">if form has more than %d lines</string>
+    <string name="pref_recent_answers_first_min_lines_message">Move recent answers to front if the quest answer form has more than this many lines of images</string>
+    <string name="pref_show_nearby_quests_title">Show nearby quests</string>
+    <string name="pref_show_nearby_quests_summary">Allows switching nearby quests when a quest form is shown</string>
+    <string name="show_nearby_quests_disable">Don’t show nearby quests</string>
+    <string name="show_nearby_quests_visible">Show only enabled quests types</string>
+    <string name="show_nearby_quests_all_types">Show all quest types</string>
+    <string name="show_nearby_quests_even_hidden">Show all types and hidden quests</string>
+    <string name="show_nearby_quests_distance">Show quests within this distance (limited to 10 meters)</string>
+
+    <!-- data management settings -->
+    <string name="pref_screen_data_management">Data management</string>
+    <string name="pref_auto_download_title">Auto download</string>
+    <string name="pref_auto_download_summary">Automatically download data in the nearby area</string>
+    <string name="pref_manual_download_cache_title">Always re-download data</string>
+    <string name="pref_manual_download_cache_summary">When disabled, data will not be re-downloaded on manual download unless it’s older than 12 hours</string>
     <string name="pref_export">Export settings</string>
     <string name="pref_import">Import settings</string>
     <string name="import_export_presets">Presets</string>
@@ -68,47 +79,53 @@
     <string name="import_error_db_version">Import error: unknown version</string>
     <string name="export_warning_db_version">Warning: database version unknown, import may not work. Please ask for the app to be updated.</string>
     <string name="export_error_no_settings_file">Error: settings file not found</string>
-    <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
-    <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset</string>
-    <string name="pref_dynamic_quest_creation_title">Create quests dynamically</string>
-    <string name="pref_dynamic_quest_creation_summary">Quests are created when loading the viewed area. Somewhat slow, but immediately applies changed quest settings.</string>
-    <string name="pref_hide_button_title">Show hide button</string>
-    <string name="pref_hide_button_summary">Click hides quest temporarily, long click hides permanently</string>
-    <string name="quest_settings_per_preset_rescan">For properly applying all changed per-preset quest settings, re-scanning for quests is necessary.</string>
+    <string name="pref_delete_old_data_after">Delete old data after</string>
+    <string name="pref_delete_old_data_after_message">Remove downloaded OSM data if older than this many days</string>
+    <string name="pref_delete_old_data_after_summary">%d days</string>
+    <string name="pref_use_sd">Use external SD card for storing map tiles</string>
+    <string name="pref_use_sd_summary">Changing this setting will move the data, which may take a while</string>
+    <string name="moving">Moving tiles…</string>
     <string name="pref_trees_title">Load tree quest file</string>
     <string name="pref_external_title">Load external quest file</string>
     <string name="tree_external_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>
     <string name="tree_external_import">Provide</string>
     <string name="tree_external_export">Get</string>
-    <string name="pref_select_first_edit_title">Select first edit on opening history</string>
-    <string name="pref_select_first_edit_summary">Allows for quicker undo, but moves camera automatically</string>
-    <string name="pref_delete_old_data_after">Delete old data after</string>
-    <string name="pref_delete_old_data_after_message">Remove downloaded OSM data if older than this many days</string>
-    <string name="pref_delete_old_data_after_summary">%d days</string>
-    <string name="pref_recent_answers_first_min_lines">Move recent answers to front</string>
-    <string name="pref_recent_answers_first_min_lines_summary">if form has more than %d lines</string>
-    <string name="pref_recent_answers_first_min_lines_message">Move recent answers to front if the quest answer form has more than this many lines of images</string>
-    <string name="pref_show_nearby_quests_title">Show nearby quests</string>
-    <string name="pref_show_nearby_quests_summary">Allows switching nearby quests when a quest form is shown</string>
-    <string name="show_nearby_quests_disable">Don’t show nearby quests</string>
-    <string name="show_nearby_quests_visible">Show only enabled quests types</string>
-    <string name="show_nearby_quests_all_types">Show all quest types</string>
-    <string name="show_nearby_quests_even_hidden">Show all types and hidden quests</string>
-    <string name="show_nearby_quests_distance">Show quests within this distance (limited to 10 meters)</string>
-    <string name="pref_close_forms_immediately_title">Close form immediately after solving</string>
-    <string name="pref_close_forms_immediately_summary">Closes the form before the change is processed, so further quests may take a short time to show up</string>
-    <string name="pref_show_solved_animation">Show animation after solving a quest</string>
-    <string name="pref_use_sd">Use external SD card for storing map tiles</string>
-    <string name="pref_use_sd_summary">Changing this setting will move the data, which may take a while</string>
-    <string name="moving">Moving tiles…</string>
-    <string name="pref_show_next_quest_title">Show next quest immediately</string>
-    <string name="pref_show_next_quest_summary">Display further quest for same element right after solving</string>
-    <string name="pref_main_menu_grid">Show all main menu items as grid</string>
-    <string name="copy_preset_title">Copy from another preset?</string>
-    <string name="copy_preset_new">Don’t copy</string>
+
+    <!-- quests settings -->
+    <string name="pref_screen_quests">Quests</string>
+    <string name="pref_advanced_resurvey_title">Advanced resurvey</string>
+    <string name="pref_advanced_resurvey_summary">Force resurvey for selected tags</string>
+    <string name="advanced_resurvey_title">Set resurvey date and keys</string>
+    <string name="advanced_resurvey_message_keys">Always resurvey these keys if there is no check date key. Check date will always be added on answering related quests</string>
+    <string name="advanced_resurvey_message_date">Instead of using resurvey intervals, resurvey above keys if check date older than:</string>
+    <string name="advanced_resurvey_hint_keys">Separate multiple keys using comma</string>
+    <string name="advanced_resurvey_hint_date">Use format: YYYY-MM-DD</string>
+    <string name="pref_day_night_title">Daytime quest filter</string>
+    <string name="day_night_ignore">Ignore daytime</string>
+    <string name="day_night_priority">Increase priority of quests suitable for current daytime</string>
+    <string name="day_night_visibility">Don’t show quests unsuitable for current daytime</string>
+    <string name="pref_quest_settings_preset_title">Per-preset quest settings</string>
+    <string name="pref_quest_settings_preset_summary">When enabled, quest settings are only valid for the current quest preset</string>
+    <string name="pref_dynamic_quest_creation_title">Create quests dynamically</string>
+    <string name="pref_dynamic_quest_creation_summary">Quests are created when loading the viewed area. Somewhat slow, but immediately applies changed quest settings.</string>
+    <string name="quest_settings_per_preset_rescan">For properly applying all changed per-preset quest settings, re-scanning for quests is necessary.</string>
     <string name="pref_quest_monitor_title">Notify about nearby quests</string>
     <string name="pref_quest_monitor_summary">Monitors location when app is in background</string>
     <string name="quest_monitor_permission_warning">Background location permission is required for the nearby quest monitor to work</string>
+
+    <!-- other settings -->
+    <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>
+    <string name="delete_confirmation_tiles">Map tiles</string>
+    <string name="delete_confirmation_data">OSM &amp; quest data</string>
+    <string name="delete_confirmation_both">Both</string>
+    <string name="theme_dark_contrast">Dark (increased contrast)</string>
+    <string name="resurvey_intervals_even_less_often">Ask even less often</string>
+    <string name="copy_preset_title">Copy from another preset?</string>
+    <string name="copy_preset_new">Don’t copy</string>
+    <string name="pref_gps_interval_title">GPS location update interval</string>
+    <string name="pref_network_interval_title">"Network location update interval"</string>
+    <string name="pref_interval_summary">%d seconds</string>
+    <string name="pref_interval_message">Update interval in seconds</string>
 
 
     <!-- quest settings -->
@@ -284,10 +301,10 @@
     <string name="quest_edit_tags_save">Save</string>
     <string name="tutorial_info_fork_title">Warning</string>
     <string name="tutorial_info_fork_message">This modified version of StreetComplete gives you more control, but also more responsibility.\n
-This especially applies for the possibility to modify tags arbitrarily, but also if you modify element selection, which is possible for some quests.
-Some of the quest added in this version may not be answerable in all cases. Please hide the quests when this happens and do not spam notes.\n
+This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.
+Quests added in this version may not be answerable in all cases. Please hide them when in this case, and do not spam notes.\n
 By default, this version is configured to behave very similar to normal StreetComplete.\n\n
-This version lets you access your user statistics, but any quests solved using this version will not be counted in the statistics.</string>
+This version lets you access your user statistics, but any quests solved using this version will not be counted.</string>
     <string name="fork_about_title_repository">Expert edition project Home</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>

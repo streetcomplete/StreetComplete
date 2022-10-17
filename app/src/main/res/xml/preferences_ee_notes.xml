@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="gpx_button"
+        android:title="@string/pref_show_gpx_button_title"
+        android:summary="@string/pref_show_gpx_button_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="swap_gpx_note_buttons"
+        android:title="@string/pref_swap_gpx_note_button"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="hide_keyboard_for_note"
+        android:title="@string/pref_hide_keyboard_title"
+        android:summary="@string/pref_hide_keyboard_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <Preference
+        android:key="hide_notes_by"
+        android:title="@string/pref_hide_notes_title" />
+
+    <Preference
+        android:key="get_gpx_notes"
+        android:title="@string/pref_save_gpx" />
+
+</PreferenceScreen>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:key="auto_download"
+        android:title="@string/pref_auto_download_title"
+        android:summary="@string/pref_auto_download_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="manual_download_override_cache"
+        android:title="@string/pref_manual_download_cache_title"
+        android:summary="@string/pref_manual_download_cache_summary"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        android:key="data_retain_time"
+        android:title="@string/pref_delete_old_data_after"
+        android:summary="@string/pref_delete_old_data_after_summary"
+        android:defaultValue="14"
+        android:persistent="true"
+        app:minValue="7"
+        app:maxValue="50"
+        app:step="1"
+        android:dialogMessage="@string/pref_delete_old_data_after_message"
+        android:dialogLayout="@layout/dialog_number_picker_preference"
+        android:positiveButtonText="@android:string/ok"
+        android:negativeButtonText="@android:string/cancel" />
+
+    <SwitchPreference
+        android:key="prefer_external_sd"
+        android:title="@string/pref_use_sd"
+        android:summary="@string/pref_use_sd_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <Preference
+        android:key="trees"
+        android:title="@string/pref_trees_title" />
+
+    <Preference
+        android:key="external"
+        android:title="@string/pref_external_title" />
+
+    <Preference
+        android:key="export"
+        android:title="@string/pref_export" />
+
+    <Preference
+        android:key="import"
+        android:title="@string/pref_import" />
+
+</PreferenceScreen>

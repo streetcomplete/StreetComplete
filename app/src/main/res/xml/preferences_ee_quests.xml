@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:key="day_night_behavior"
+        android:title="@string/pref_day_night_title"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="IGNORE"
+        android:entries="@array/pref_entries_day_night"
+        android:entryValues="@array/pref_entriyvalues_day_night"
+        android:persistent="true" />
+
+    <Preference
+        android:key="advanced_resurvey"
+        android:title="@string/pref_advanced_resurvey_title"
+        android:summary="@string/pref_advanced_resurvey_summary" />
+
+    <SwitchPreference
+        android:key="quest_settings_per_preset"
+        android:title="@string/pref_quest_settings_preset_title"
+        android:summary="@string/pref_quest_settings_preset_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="dynamic_quest_creation"
+        android:title="@string/pref_dynamic_quest_creation_title"
+        android:summary="@string/pref_dynamic_quest_creation_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="quest_monitor"
+        android:title="@string/pref_quest_monitor_title"
+        android:summary="@string/pref_quest_monitor_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+</PreferenceScreen>

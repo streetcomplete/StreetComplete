@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="3d_buildings"
+        android:title="@string/pref_3d_buildings_title"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="quest_geometries"
+        android:title="@string/pref_quest_geometries_title"
+        android:summary="@string/pref_quest_geometries_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="offset_fix"
+        android:title="@string/pref_offset_fix_title"
+        android:summary="@string/pref_offset_fix_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="show_solved_animation"
+        android:title="@string/pref_show_solved_animation"
+        android:defaultValue="true"
+        android:persistent="true" />
+
+    <SwitchPreference
+        android:key="close_form_immediately"
+        android:title="@string/pref_close_forms_immediately_title"
+        android:summary="@string/pref_close_forms_immediately_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
+</PreferenceScreen>
