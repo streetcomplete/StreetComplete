@@ -131,9 +131,10 @@ private fun getSplitWayAtIndices(
 
     return nodesChunks.mapIndexed { index, nodes ->
         if (index == indexOfChunkToKeep) {
-            Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
+            // keep the original timestampEdited, so resurvey quests are still shown after splitting
+            Way(originalWay.id, nodes, tags, originalWay.version, originalWay.timestampEdited)
         } else {
-            Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
+            Way(idProvider.nextWayId(), nodes, tags, 0, originalWay.timestampEdited)
         }
     }
 }
