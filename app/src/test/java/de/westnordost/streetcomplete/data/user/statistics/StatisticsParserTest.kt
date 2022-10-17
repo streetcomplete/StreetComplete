@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.OffsetDateTime
 
 class StatisticsParserTest {
 
@@ -24,7 +25,7 @@ class StatisticsParserTest {
             ),
             2345,
             78,
-            OffsetDateTime.parse("2007-12-03T10:15:30+01:00").toInstant().toEpochMilli(),
+            Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilli(),
             false
         ),
         StatisticsParser(listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse("""

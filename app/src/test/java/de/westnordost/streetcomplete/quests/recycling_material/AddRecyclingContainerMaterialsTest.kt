@@ -18,6 +18,9 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.Instant
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Clock
 
 class AddRecyclingContainerMaterialsTest {
 
@@ -52,7 +55,7 @@ class AddRecyclingContainerMaterialsTest {
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), timestamp = Instant.now().toEpochMilli())
+            ), timestamp = Clock.System.now().toEpochMilli())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -64,7 +67,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), timestamp = Instant.now().toEpochMilli())
+            ), timestamp = Clock.System.now().toEpochMilli())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }

@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import kotlinx.serialization.Serializable
 import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Clock
 
 /** Action that creates a (free-floating) node. */
 @Serializable
@@ -27,7 +29,7 @@ data class CreateNodeAction(
         mapDataRepository: MapDataRepository,
         idProvider: ElementIdProvider
     ): MapDataChanges {
-        val node = Node(idProvider.nextNodeId(), position, tags, 1, Instant.now().toEpochMilli())
+        val node = Node(idProvider.nextNodeId(), position, tags, 1, Clock.System.now().toEpochMilli())
         return MapDataChanges(creations = listOf(node))
     }
 

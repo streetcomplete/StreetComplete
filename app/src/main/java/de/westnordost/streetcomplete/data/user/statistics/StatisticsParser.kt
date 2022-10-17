@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import org.json.JSONObject
-import java.time.OffsetDateTime
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     fun parse(json: String): Statistics {
@@ -27,7 +28,7 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
-        val lastUpdate = OffsetDateTime.parse(obj.getString("lastUpdate")).toInstant()
+        val lastUpdate = Instant.parse(obj.getString("lastUpdate"))
         return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
     }
 

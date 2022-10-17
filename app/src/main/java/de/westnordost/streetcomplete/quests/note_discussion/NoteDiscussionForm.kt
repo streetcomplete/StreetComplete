@@ -41,6 +41,8 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
 import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Clock
 
 class NoteDiscussionForm : AbstractQuestForm() {
 
@@ -158,7 +160,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         override fun onBind(with: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, Instant.now().toEpochMilli(), MINUTE_IN_MILLIS)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, Clock.System.now().toEpochMilli(), MINUTE_IN_MILLIS)
             val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = with.action.actionResourceId

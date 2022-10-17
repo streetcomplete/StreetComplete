@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.Instant
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.ofEpochMilli
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String

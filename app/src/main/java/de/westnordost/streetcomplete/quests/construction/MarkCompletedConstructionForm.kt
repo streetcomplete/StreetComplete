@@ -6,6 +6,11 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.toInstant
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.monthValue
+import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.of
+import de.westnordost.streetcomplete.util.ktx.plusDays
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 
 class MarkCompletedConstructionForm : AbstractOsmQuestForm<CompletedConstructionAnswer>() {
 

@@ -6,6 +6,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.of
 
 class HasDateTagLessOrEqualThanTest {
     private val date = LocalDate.of(2000, 11, 11)

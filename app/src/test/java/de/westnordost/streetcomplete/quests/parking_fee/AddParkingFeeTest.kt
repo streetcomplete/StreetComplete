@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
 
 class AddParkingFeeTest {
 

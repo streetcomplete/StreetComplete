@@ -10,6 +10,7 @@ import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
 
 class SidewalkKtTest {
     @Test fun `apply simple values`() {

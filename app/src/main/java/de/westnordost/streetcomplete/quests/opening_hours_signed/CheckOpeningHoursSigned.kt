@@ -18,6 +18,10 @@ import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.Instant
 import de.westnordost.streetcomplete.util.ktx.LocalDateTime
 import de.westnordost.streetcomplete.util.ktx.ZoneId
+import de.westnordost.streetcomplete.util.ktx.ofEpochMilli
+import de.westnordost.streetcomplete.util.ktx.ofInstant
+import de.westnordost.streetcomplete.util.ktx.systemDefault
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import java.util.concurrent.FutureTask
 
 class CheckOpeningHoursSigned(

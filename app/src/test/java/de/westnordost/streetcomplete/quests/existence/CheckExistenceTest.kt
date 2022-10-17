@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
 
 class CheckExistenceTest {
     private val questType = CheckExistence(mock())

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_S
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
 
 class AddCrossingTypeTest {
 

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm
 
-import java.time.DateTimeException
 import de.westnordost.streetcomplete.util.ktx.LocalDate
-import java.time.format.DateTimeFormatter
+import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.of
 
 /** Returns all the known keys used for recording the date at which the tag with the given key
  *  should be checked again. */
@@ -20,8 +20,8 @@ val LAST_CHECK_DATE_KEYS = listOf(
     "survey_date"
 )
 
-fun LocalDate.toCheckDateString(): String =
-    DateTimeFormatter.ISO_LOCAL_DATE.format(this)
+@Suppress("NOTHING_TO_INLINE")
+inline fun LocalDate.toCheckDateString(): String = this.toString()
 
 fun String.toCheckDate(): LocalDate? {
     val groups = OSM_CHECK_DATE_REGEX.matchEntire(this)?.groupValues ?: return null
@@ -31,7 +31,7 @@ fun String.toCheckDate(): LocalDate? {
 
     return try {
         LocalDate.of(year, month, day)
-    } catch (e: DateTimeException) {
+    } catch (e: IllegalArgumentException) {
         null
     }
 }

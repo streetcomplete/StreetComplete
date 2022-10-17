@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.of
 
 class ElementFilterOverpassKtTest {
 

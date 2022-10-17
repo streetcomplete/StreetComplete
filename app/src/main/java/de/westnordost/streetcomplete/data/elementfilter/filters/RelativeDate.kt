@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.util.ktx.LocalDate
 import de.westnordost.streetcomplete.util.ktx.LocalDateTime
+import de.westnordost.streetcomplete.util.ktx.minusHours
+import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.plusHours
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlin.math.absoluteValue
 
 interface DateFilter {

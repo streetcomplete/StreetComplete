@@ -39,6 +39,9 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
 import de.westnordost.streetcomplete.util.ktx.Instant
 import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Clock
 import java.util.concurrent.FutureTask
 
 class AddCyclewayTest {
@@ -179,7 +182,7 @@ class AddCyclewayTest {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "track"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilli())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -191,7 +194,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "track",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilli())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -203,7 +206,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "whatsthis",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilli())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
