@@ -23,13 +23,14 @@ class UrlConfigController(
         visibleQuestTypeController.setVisibilities(questTypes, presetId)
         questPresetsController.selectedId = presetId
         selectedOverlayController.selectedOverlay = config.overlay
+        questTypeOrderController.setOrders(config.questTypeOrders, presetId)
     }
 
     fun get(presetId: Long, overlay: Overlay?): UrlConfig {
         return UrlConfig(
             presetName = questPresetsController.getName(presetId) ?: "Default",
             questTypes = visibleQuestTypeController.getVisible(presetId),
-            questTypeOrders = emptyList(),
+            questTypeOrders = questTypeOrderController.getOrders(presetId),
             overlay = overlay
         )
     }
