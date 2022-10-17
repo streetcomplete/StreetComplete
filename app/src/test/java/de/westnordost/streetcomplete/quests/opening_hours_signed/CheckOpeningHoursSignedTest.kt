@@ -3,15 +3,13 @@ package de.westnordost.streetcomplete.quests.opening_hours_signed
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import kotlinx.datetime.Clock
 
 class CheckOpeningHoursSignedTest {
     private val questType = CheckOpeningHoursSigned(mock())
@@ -41,7 +39,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is not applicable to place with new check_date`() {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",
-            "check_date:opening_hours" to Clock.System.now().toLocalDate().toCheckDateString(),
+            "check_date:opening_hours" to nowAsCheckDateString(),
             "opening_hours:signed" to "no"
         ))))
     }
@@ -118,7 +116,7 @@ class CheckOpeningHoursSignedTest {
             mapOf("opening_hours:signed" to "no"),
             false,
             StringMapEntryModify("opening_hours:signed", "no", "no"),
-            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString()),
+            StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
         )
     }
 
@@ -130,7 +128,7 @@ class CheckOpeningHoursSignedTest {
             ),
             false,
             StringMapEntryModify("opening_hours:signed", "no", "no"),
-            StringMapEntryModify("check_date:opening_hours", "2020-03-04", Clock.System.now().toLocalDate().toCheckDateString()),
+            StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
         )
     }
 
@@ -142,7 +140,7 @@ class CheckOpeningHoursSignedTest {
             ),
             false,
             StringMapEntryModify("opening_hours:signed", "no", "no"),
-            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString()),
+            StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
         )
     }
 
@@ -155,7 +153,7 @@ class CheckOpeningHoursSignedTest {
             ),
             false,
             StringMapEntryModify("opening_hours:signed", "no", "no"),
-            StringMapEntryModify("check_date:opening_hours", "2020-03-04", Clock.System.now().toLocalDate().toCheckDateString()),
+            StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
         )
     }
 }

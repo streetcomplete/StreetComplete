@@ -4,9 +4,9 @@ import android.app.DatePickerDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toInstant
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.plus
@@ -23,7 +23,7 @@ class MarkCompletedConstructionForm : AbstractOsmQuestForm<CompletedConstruction
     )
 
     private fun setFinishDate() {
-        val tomorrow = Clock.System.now().toLocalDate().plus(1, DateTimeUnit.DAY)
+        val tomorrow = systemTimeNow().toLocalDate().plus(1, DateTimeUnit.DAY)
         val dpd = DatePickerDialog(requireContext(), { _, year, month, day ->
             applyAnswer(OpeningDateAnswer(LocalDate(year, month + 1, day)))
         }, tomorrow.year, tomorrow.monthNumber - 1, tomorrow.dayOfMonth)

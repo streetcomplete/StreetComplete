@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.NOTE_ID
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.NAME
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Persists which note ids should be hidden (because the user selected so) in the note quest */
 class NoteQuestsHiddenDao(private val db: Database) {
@@ -13,7 +13,7 @@ class NoteQuestsHiddenDao(private val db: Database) {
     fun add(noteId: Long) {
         db.insert(NAME, listOf(
             NOTE_ID to noteId,
-            TIMESTAMP to currentTimeMillis()
+            TIMESTAMP to nowAsEpochMilliseconds()
         ))
     }
 

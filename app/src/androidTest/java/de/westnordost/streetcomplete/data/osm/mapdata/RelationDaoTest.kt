@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -148,13 +149,13 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun getUnusedAndOldIds() {
         dao.putAll(listOf(rel(1L), rel(2L), rel(3L)))
-        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
+        val unusedIds = dao.getIdsOlderThan(nowAsEpochMilliseconds() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
 
     @Test fun getUnusedAndOldIdsButAtMostX() {
         dao.putAll(listOf(rel(1L), rel(2L), rel(3L)))
-        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
+        val unusedIds = dao.getIdsOlderThan(nowAsEpochMilliseconds() + 10, 2)
         assertEquals(2, unusedIds.size)
     }
 

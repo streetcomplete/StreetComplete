@@ -24,12 +24,16 @@ fun Instant.toLocalDate(): LocalDate =
     this.toLocalDateTime(TimeZone.currentSystemDefault()).date
 
 fun isApril1st(): Boolean {
-    val now = Clock.System.now().toLocalDate()
+    val now = systemTimeNow().toLocalDate()
     return now.dayOfMonth == 1 && now.month == Month.APRIL
 }
 
+fun nowAsEpochMilliseconds(): Long = systemTimeNow().toEpochMilliseconds()
+
+fun systemTimeNow(): Instant = Clock.System.now()
+
 fun LocalDateTime.Companion.now(): LocalDateTime =
-    Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+    systemTimeNow().toLocalDateTime(TimeZone.currentSystemDefault())
 
 /** https://github.com/Kotlin/kotlinx-datetime#date--time-arithmetic */
 fun LocalDateTime.minusInSysTZ(value: Long, unit: DateTimeUnit): LocalDateTime =

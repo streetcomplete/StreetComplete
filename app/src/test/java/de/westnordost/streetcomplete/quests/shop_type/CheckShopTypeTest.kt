@@ -3,14 +3,12 @@ package de.westnordost.streetcomplete.quests.shop_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import kotlinx.datetime.Clock
 
 class CheckShopTypeTest {
     private val questType = CheckShopType()
@@ -54,7 +52,7 @@ class CheckShopTypeTest {
     @Test fun `apply shop vacant answer`() {
         questType.verifyAnswer(
             IsShopVacant,
-            StringMapEntryAdd("check_date", Clock.System.now().toLocalDate().toCheckDateString())
+            StringMapEntryAdd("check_date", nowAsCheckDateString())
         )
     }
 
@@ -62,7 +60,7 @@ class CheckShopTypeTest {
         questType.verifyAnswer(
             mapOf("check_date" to "already set"),
             IsShopVacant,
-            StringMapEntryModify("check_date", "already set", Clock.System.now().toLocalDate().toCheckDateString())
+            StringMapEntryModify("check_date", "already set", nowAsCheckDateString())
         )
     }
 
@@ -75,7 +73,7 @@ class CheckShopTypeTest {
                 "survey_date" to "d"
             ),
             IsShopVacant,
-            StringMapEntryAdd("check_date", Clock.System.now().toLocalDate().toCheckDateString()),
+            StringMapEntryAdd("check_date", nowAsCheckDateString()),
             StringMapEntryDelete("lastcheck", "a"),
             StringMapEntryDelete("last_checked", "b"),
             StringMapEntryDelete("survey:date", "c"),

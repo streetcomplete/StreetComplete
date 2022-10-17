@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Col
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable.NAME
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Persists which osm quests should be hidden (because the user selected so) */
 class OsmQuestsHiddenDao(private val db: Database) {
@@ -55,7 +55,7 @@ private fun OsmQuestKey.toPairs() = listOf(
     ELEMENT_TYPE to elementType.name,
     ELEMENT_ID to elementId,
     QUEST_TYPE to questTypeName,
-    TIMESTAMP to currentTimeMillis()
+    TIMESTAMP to nowAsEpochMilliseconds()
 )
 
 private fun CursorPosition.toOsmQuestKey() = OsmQuestKey(
