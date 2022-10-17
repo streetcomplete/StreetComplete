@@ -51,7 +51,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
                 tags.remove("sidewalk:both")
                 tags.remove("sidewalk")
             }
-            else -> {
+            is SidewalkSurface -> {
                 val leftChanged = answer.left?.let { sideSurfaceChanged(it, Side.LEFT, tags) }
                 val rightChanged = answer.right?.let { sideSurfaceChanged(it, Side.RIGHT, tags) }
 
