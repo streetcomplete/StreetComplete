@@ -130,10 +130,11 @@ private fun getSplitWayAtIndices(
     removeTagsThatArePotentiallyWrongAfterSplit(tags)
 
     return nodesChunks.mapIndexed { index, nodes ->
+        // keep the original timestampEdited, so resurvey quests are still shown after splitting (only when auto-sync is off)
         if (index == indexOfChunkToKeep) {
-            Way(originalWay.id, nodes, tags, originalWay.version, currentTimeMillis())
+            Way(originalWay.id, nodes, tags, originalWay.version, originalWay.timestampEdited)
         } else {
-            Way(idProvider.nextWayId(), nodes, tags, 0, currentTimeMillis())
+            Way(idProvider.nextWayId(), nodes, tags, 0, originalWay.timestampEdited)
         }
     }
 }
