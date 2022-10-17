@@ -17,7 +17,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.lang.System.currentTimeMillis
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class AddOpeningHoursTest {
 

@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.LocalDateTime
+import de.westnordost.streetcomplete.util.ktx.ZoneId
 import java.util.concurrent.FutureTask
 
 class CheckOpeningHoursSigned(

@@ -1,9 +1,18 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import java.time.Instant
-import java.time.LocalDate
-import java.time.Month
-import java.time.ZoneId
+typealias Instant = java.time.Instant
+
+typealias LocalDate = java.time.LocalDate
+
+typealias LocalDateTime = java.time.LocalDateTime
+
+typealias LocalTime = java.time.LocalTime
+
+typealias Month = java.time.Month
+
+typealias ZoneId = java.time.ZoneId
+
+typealias ZoneOffset = java.time.ZoneOffset
 
 fun LocalDate.toInstant(): Instant =
     this.atStartOfDay(ZoneId.systemDefault()).toInstant()

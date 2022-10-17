@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class AddSidewalkSurfaceTest {
     private val questType = AddSidewalkSurface()

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class StreetParkingTest {
 

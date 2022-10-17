@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleLi
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class AddParkingFeeTest {
 

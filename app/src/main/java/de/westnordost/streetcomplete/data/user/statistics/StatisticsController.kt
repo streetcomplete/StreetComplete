@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import java.time.Instant
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 

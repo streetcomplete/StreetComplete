@@ -16,7 +16,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class ResurveyUtilsTest {
     @Test fun toCheckDateString() {

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class AddCrossingTypeTest {
 

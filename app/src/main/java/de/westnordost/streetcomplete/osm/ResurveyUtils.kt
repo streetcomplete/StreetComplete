@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm
 
 import java.time.DateTimeException
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 import java.time.format.DateTimeFormatter
 
 /** Returns all the known keys used for recording the date at which the tag with the given key

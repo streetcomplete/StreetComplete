@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.util
 
 import java.text.DateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.ZoneId
+import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDateTime
+import de.westnordost.streetcomplete.util.ktx.LocalTime
+import de.westnordost.streetcomplete.util.ktx.ZoneId
 import java.util.Locale
 
 fun timeOfDayToString(locale: Locale, minutes: Int): String {

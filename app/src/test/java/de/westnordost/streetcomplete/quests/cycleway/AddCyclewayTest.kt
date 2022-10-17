@@ -37,8 +37,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
-import java.time.Instant
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 import java.util.concurrent.FutureTask
 
 class AddCyclewayTest {

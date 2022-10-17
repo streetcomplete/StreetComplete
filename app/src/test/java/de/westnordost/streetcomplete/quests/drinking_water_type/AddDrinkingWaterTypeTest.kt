@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.osm.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class AddDrinkingWaterTypeTest {
     private val questType = AddDrinkingWaterType()

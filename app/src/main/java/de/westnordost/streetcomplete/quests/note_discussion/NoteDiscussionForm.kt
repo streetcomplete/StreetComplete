@@ -40,7 +40,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
-import java.time.Instant
+import de.westnordost.streetcomplete.util.ktx.Instant
 
 class NoteDiscussionForm : AbstractQuestForm() {
 

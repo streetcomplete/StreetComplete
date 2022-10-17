@@ -12,8 +12,8 @@ import de.westnordost.osmapi.traces.GpsTrackpoint
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import java.time.Instant
-import java.time.ZoneOffset
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 class TracksApiImpl(osm: OsmConnection) : TracksApi {

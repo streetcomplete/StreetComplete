@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.toInstant
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 class MarkCompletedConstructionForm : AbstractOsmQuestForm<CompletedConstructionAnswer>() {
 

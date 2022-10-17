@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import java.time.Instant
-import java.time.LocalDate
+import de.westnordost.streetcomplete.util.ktx.Instant
+import de.westnordost.streetcomplete.util.ktx.LocalDate
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String

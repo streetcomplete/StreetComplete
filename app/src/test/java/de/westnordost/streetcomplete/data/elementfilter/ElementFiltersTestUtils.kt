@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.data.elementfilter
 import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
-import java.time.LocalDate
-import java.time.LocalDateTime
+import de.westnordost.streetcomplete.util.ktx.LocalDate
+import de.westnordost.streetcomplete.util.ktx.LocalDateTime
 
 /** Returns the date x days in the past */
 fun dateDaysAgo(daysAgo: Float): LocalDate =
