@@ -61,7 +61,7 @@ internal class UrlConfigKtTest {
     @Test fun `parse config with quest sort orders`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q0), null),
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1-3.0", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0.1-3.0", quests, overlays)
         )
     }
 
@@ -69,7 +69,7 @@ internal class UrlConfigKtTest {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), listOf(q1 to q3), null),
             // i.e. ordinal 4 is ignored
-            parseConfigUrl("https://streetcomplete.app/?n=Test&q=t&s=0.4-1.3", quests, overlays)
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=t&qo=0.4-1.3", quests, overlays)
         )
     }
 
@@ -80,14 +80,14 @@ internal class UrlConfigKtTest {
     @Test fun `reject misformed parameters`() {
         assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test=Wrong&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/?n==Wrong&q=d", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&s&q=d", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&qo&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&&q=d", quests, overlays))
 
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1--1.2", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.1-1.2-", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0..1", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&s=0.0", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0.1--1.2", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0.1-1.2-", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0..1", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=d&qo=0.0", quests, overlays))
     }
 
     @Test fun `reject if name is missing`() {
@@ -118,7 +118,7 @@ internal class UrlConfigKtTest {
 
     @Test fun `create url with quest type orders`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=d&s=0.1-3.2",
+            "https://streetcomplete.app/?n=Test&q=d&qo=0.1-3.2",
             createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q2), null), quests, overlays),
         )
     }
@@ -132,14 +132,14 @@ internal class UrlConfigKtTest {
 
     @Test fun `shorten name if too long`() {
         assertEquals(
-            "https://streetcomplete.app/?n=123456789012345678901234567890123456789...&q=1",
+            "https://streetcomplete.app/?n=1234567890123456789012345678901234567...&q=1",
             createConfigUrl(UrlConfig("1234567890123456789012345678901234567890X", listOf(q0), emptyList(), null), quests, overlays)
         )
     }
 
     @Test fun `create url ignores unknown quests`() {
         assertEquals(
-            "https://streetcomplete.app/?n=Test&q=1&s=3.2",
+            "https://streetcomplete.app/?n=Test&q=1&qo=3.2",
             createConfigUrl(UrlConfig("Test", listOf(q0, qUnknown), listOf(q0 to qUnknown, q3 to q2), null), quests, overlays),
         )
     }

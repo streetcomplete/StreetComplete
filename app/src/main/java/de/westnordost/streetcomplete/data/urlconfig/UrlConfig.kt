@@ -19,7 +19,7 @@ private const val DOMAIN_NAME = "https://streetcomplete.app/"
 private const val PARAM_NAME = "n"
 private const val PARAM_QUESTS = "q"
 private const val PARAM_OVERLAY = "o"
-private const val PARAM_SORT_QUESTS = "s"
+private const val PARAM_QUEST_ORDER = "qo"
 
 private const val ORDINAL_RADIX = 36
 
@@ -48,7 +48,7 @@ fun parseConfigUrl(
     val overlayOrdinal = parameters[PARAM_OVERLAY]?.toIntOrNull(ORDINAL_RADIX)
     val overlay = overlayOrdinal?.let { overlayRegistry.getByOrdinal(it) }
 
-    val questTypeOrders = parameters[PARAM_SORT_QUESTS]
+    val questTypeOrders = parameters[PARAM_QUEST_ORDER]
         ?.split('-')
         ?.mapNotNull {
             val pair = it.split('.')
@@ -70,7 +70,7 @@ fun createConfigUrl(
     overlayRegistry: OverlayRegistry
 ): String {
     val name = urlConfig.presetName
-    val shortenedName = if (name.length > 40) name.substring(0, 39) + "…" else name
+    val shortenedName = if (name.length > 40) name.substring(0, 37) + "..." else name
 
     val parameters = mutableListOf(
         PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"),
@@ -84,7 +84,7 @@ fun createConfigUrl(
             if (ordinal1 != null && ordinal2 != null) ordinal1 to ordinal2 else null
         }.joinToString("-") { (first, second) -> "${first}.${second}" }
 
-        parameters.add(PARAM_SORT_QUESTS to sortOrders)
+        parameters.add(PARAM_QUEST_ORDER to sortOrders)
     }
     if (urlConfig.overlay != null) {
         val ordinal = overlayRegistry.getOrdinalOf(urlConfig.overlay)?.toString(ORDINAL_RADIX)
