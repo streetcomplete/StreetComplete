@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddStepsRampTest {
 
@@ -52,7 +52,7 @@ class AddStepsRampTest {
             ),
             StringMapEntryModify("ramp", "yes", "yes"),
             StringMapEntryAdd("ramp:wheelchair", "yes"),
-            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date:ramp", Clock.System.now().toLocalDate().toCheckDateString()),
         )
     }
 
@@ -87,7 +87,7 @@ class AddStepsRampTest {
             StringMapEntryModify("ramp:bicycle", "yes", "yes"),
             StringMapEntryModify("ramp:stroller", "no", "yes"),
             StringMapEntryModify("ramp:wheelchair", "automatic", "yes"),
-            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date:ramp", Clock.System.now().toLocalDate().toCheckDateString()),
         )
     }
 
@@ -122,7 +122,7 @@ class AddStepsRampTest {
                 wheelchairRamp = WheelchairRampStatus.NO
             ),
             StringMapEntryModify("ramp", "yes", "yes"),
-            StringMapEntryAdd("check_date:ramp", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date:ramp", Clock.System.now().toLocalDate().toCheckDateString()),
             StringMapEntryAdd("ramp:bicycle", "no"),
             StringMapEntryAdd("ramp:stroller", "no"),
             StringMapEntryAdd("ramp:wheelchair", "no"),

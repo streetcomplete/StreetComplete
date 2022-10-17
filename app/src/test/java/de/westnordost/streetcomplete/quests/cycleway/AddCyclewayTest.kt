@@ -37,10 +37,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.Clock
 import java.util.concurrent.FutureTask
 
@@ -182,7 +179,7 @@ class AddCyclewayTest {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "track"
-        ), timestamp = Clock.System.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -194,7 +191,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "track",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Clock.System.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -206,7 +203,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "whatsthis",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Clock.System.now().toEpochMilli())
+        ), timestamp = Clock.System.now().toEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -601,7 +598,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both", "track", "track"),
-            StringMapEntryAdd("check_date:cycleway", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:cycleway", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -610,7 +607,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track", "check_date:cycleway" to "2000-11-11"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both", "track", "track"),
-            StringMapEntryModify("check_date:cycleway", "2000-11-11", LocalDate.now().toCheckDateString())
+            StringMapEntryModify("check_date:cycleway", "2000-11-11", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 

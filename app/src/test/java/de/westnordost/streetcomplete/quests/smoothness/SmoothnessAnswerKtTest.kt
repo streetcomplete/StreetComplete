@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class SmoothnessAnswerKtTest {
 
@@ -33,7 +33,7 @@ class SmoothnessAnswerKtTest {
                 StringMapEntryModify("smoothness", "excellent", "excellent"),
                 StringMapEntryDelete("smoothness:date", "2000-10-10"),
                 StringMapEntryDelete("surface:grade", "1"),
-                StringMapEntryAdd("check_date:smoothness", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:smoothness", Clock.System.now().toLocalDate().toCheckDateString())
             ),
         )
     }

@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 internal class SurfaceAnswerKtTest {
 
@@ -30,7 +30,7 @@ internal class SurfaceAnswerKtTest {
             SurfaceAnswer(Surface.ASPHALT),
             arrayOf(
                 StringMapEntryModify("surface", "asphalt", "asphalt"),
-                StringMapEntryAdd("check_date:surface", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:surface", Clock.System.now().toLocalDate().toCheckDateString())
             )
         )
     }

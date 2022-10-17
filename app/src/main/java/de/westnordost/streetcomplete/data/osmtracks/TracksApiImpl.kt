@@ -12,13 +12,11 @@ import de.westnordost.osmapi.traces.GpsTrackpoint
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.LocalDateTime
-import de.westnordost.streetcomplete.util.ktx.UTC
-import de.westnordost.streetcomplete.util.ktx.ZoneOffset
-import de.westnordost.streetcomplete.util.ktx.atZone
-import de.westnordost.streetcomplete.util.ktx.ofEpochMilli
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toJavaInstant
+import kotlinx.datetime.toLocalDateTime
 
 class TracksApiImpl(osm: OsmConnection) : TracksApi {
     private val api: GpsTracesApi = GpsTracesApi(osm)
@@ -26,7 +24,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
     override fun create(trackpoints: List<Trackpoint>, noteText: String?): Long = wrapExceptions {
         // Filename is just the start of the track
         // https://stackoverflow.com/a/49862573/7718197
-        val name = Instant.ofEpochMilli(trackpoints[0].time).atZone(ZoneOffset.UTC).toTrackFilename()
+        val name = Instant.fromEpochMilliseconds(trackpoints[0].time).toLocalDateTime(TimeZone.UTC).toTrackFilename()
         val visibility = GpsTraceDetails.Visibility.IDENTIFIABLE
         val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
         val tags = listOf(ApplicationConstants.NAME.lowercase())
@@ -35,7 +33,7 @@ class TracksApiImpl(osm: OsmConnection) : TracksApi {
         val history = trackpoints.mapIndexed { idx, it ->
             GpsTrackpoint(
                 OsmLatLon(it.position.latitude, it.position.longitude),
-                Instant.ofEpochMilli(it.time).toJavaInstant(),
+                Instant.fromEpochMilliseconds(it.time).toJavaInstant(),
                 idx == 0,
                 it.accuracy,
                 it.elevation

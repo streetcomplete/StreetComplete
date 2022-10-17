@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddSidewalkSurfaceTest {
     private val questType = AddSidewalkSurface()
@@ -75,7 +75,7 @@ class AddSidewalkSurfaceTest {
             mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:surface" to "2000-10-10"),
             SidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
             StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", Clock.System.now().toLocalDate().toCheckDateString()),
         )
     }
 

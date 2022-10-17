@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Instant
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -25,7 +24,7 @@ class StatisticsParserTest {
             ),
             2345,
             78,
-            Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilli(),
+            Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds(),
             false
         ),
         StatisticsParser(listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse("""

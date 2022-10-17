@@ -17,8 +17,8 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.lang.System.currentTimeMillis
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddOpeningHoursTest {
 
@@ -44,7 +44,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours" to "\"oh\""),
             DescribeOpeningHours("oh"),
             StringMapEntryModify("opening_hours", "\"oh\"", "\"oh\""),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -52,7 +52,7 @@ class AddOpeningHoursTest {
         questType.verifyAnswer(
             NoOpeningHoursSign,
             StringMapEntryAdd("opening_hours:signed", "no"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -61,7 +61,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours" to "oh"),
             NoOpeningHoursSign,
             StringMapEntryAdd("opening_hours:signed", "no"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -70,7 +70,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours" to "24/7"),
             NoOpeningHoursSign,
             StringMapEntryAdd("opening_hours:signed", "no"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -94,7 +94,7 @@ class AddOpeningHoursTest {
             mapOf("opening_hours" to "24/7"),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -114,7 +114,7 @@ class AddOpeningHoursTest {
             ),
             AlwaysOpen,
             StringMapEntryModify("opening_hours", "24/7", "24/7"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -188,7 +188,7 @@ class AddOpeningHoursTest {
                 })
             )),
             StringMapEntryModify("opening_hours", "Mo 10:00-12:00", "Mo 10:00-12:00"),
-            StringMapEntryAdd("check_date:opening_hours", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:opening_hours", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 

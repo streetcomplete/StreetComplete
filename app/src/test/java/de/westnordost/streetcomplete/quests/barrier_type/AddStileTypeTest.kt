@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddStileTypeTest {
     private val questType = AddStileType()
@@ -31,7 +31,7 @@ class AddStileTypeTest {
                 "stile" to "squeezer",
             ),
             StileType.SQUEEZER,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date", Clock.System.now().toLocalDate().toCheckDateString()),
             StringMapEntryModify("stile", "squeezer", "squeezer"),
         )
     }
@@ -122,7 +122,7 @@ class AddStileTypeTest {
                 "tag_not_in_list_for_removal" to "dummy_value",
             ),
             StileType.STEPOVER_WOODEN,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date", Clock.System.now().toLocalDate().toCheckDateString()),
             StringMapEntryModify("stile", "stepover", "stepover"),
             StringMapEntryModify("material", "wood", "wood"),
 

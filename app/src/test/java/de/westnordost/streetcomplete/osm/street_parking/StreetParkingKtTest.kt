@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class StreetParkingTest {
 
@@ -113,7 +113,7 @@ class StreetParkingTest {
             LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
             arrayOf(
                 StringMapEntryModify("parking:lane:both", "no", "no"),
-                StringMapEntryAdd("check_date:parking:lane", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:parking:lane", Clock.System.now().toLocalDate().toCheckDateString())
             )
         )
         verifyAnswer(
@@ -131,7 +131,7 @@ class StreetParkingTest {
                 StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
                 StringMapEntryModify("parking:lane:left:parallel", "half_on_kerb", "half_on_kerb"),
                 StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
-                StringMapEntryAdd("check_date:parking:lane", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:parking:lane", Clock.System.now().toLocalDate().toCheckDateString())
             )
         )
     }

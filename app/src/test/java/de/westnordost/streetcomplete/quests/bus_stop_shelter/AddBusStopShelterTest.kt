@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddBusStopShelterTest {
 
@@ -25,7 +25,7 @@ class AddBusStopShelterTest {
             mapOf("shelter" to "yes"),
             BusStopShelterAnswer.SHELTER,
             StringMapEntryModify("shelter", "yes", "yes"),
-            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -41,7 +41,7 @@ class AddBusStopShelterTest {
             mapOf("shelter" to "no"),
             BusStopShelterAnswer.NO_SHELTER,
             StringMapEntryModify("shelter", "no", "no"),
-            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 

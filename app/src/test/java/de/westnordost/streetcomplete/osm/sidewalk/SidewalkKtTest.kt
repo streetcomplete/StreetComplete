@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class SidewalkKtTest {
     @Test fun `apply simple values`() {
@@ -107,7 +107,7 @@ class SidewalkKtTest {
             LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.YES),
             arrayOf(
                 StringMapEntryModify("sidewalk", "both", "both"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", Clock.System.now().toLocalDate().toCheckDateString())
             )
         )
         verifyAnswer(
@@ -116,7 +116,7 @@ class SidewalkKtTest {
             arrayOf(
                 StringMapEntryModify("sidewalk:left", "separate", "separate"),
                 StringMapEntryModify("sidewalk:right", "no", "no"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", Clock.System.now().toLocalDate().toCheckDateString())
             )
         )
     }

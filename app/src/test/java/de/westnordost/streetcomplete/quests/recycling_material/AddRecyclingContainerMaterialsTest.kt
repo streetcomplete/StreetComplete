@@ -16,10 +16,7 @@ import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.Clock
 
 class AddRecyclingContainerMaterialsTest {
@@ -55,7 +52,7 @@ class AddRecyclingContainerMaterialsTest {
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), timestamp = Clock.System.now().toEpochMilli())
+            ), timestamp = Clock.System.now().toEpochMilliseconds())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -67,7 +64,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), timestamp = Clock.System.now().toEpochMilli())
+            ), timestamp = Clock.System.now().toEpochMilliseconds())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -203,7 +200,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("check_date:recycling", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -236,7 +233,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryModify("recycling:paper", "no", "yes"),
             StringMapEntryDelete("recycling:check_date", "2000-11-01"),
-            StringMapEntryModify("check_date:recycling", "2000-11-02", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:recycling", "2000-11-02", Clock.System.now().toLocalDate().toCheckDateString()),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
             StringMapEntryDelete("recycling:last_checked", "2000-11-05"),

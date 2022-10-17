@@ -5,12 +5,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.toInstant
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.monthValue
-import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.of
-import de.westnordost.streetcomplete.util.ktx.plusDays
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.plus
 
 class MarkCompletedConstructionForm : AbstractOsmQuestForm<CompletedConstructionAnswer>() {
 
@@ -24,12 +23,12 @@ class MarkCompletedConstructionForm : AbstractOsmQuestForm<CompletedConstruction
     )
 
     private fun setFinishDate() {
-        val tomorrow = LocalDate.now().plusDays(1)
+        val tomorrow = Clock.System.now().toLocalDate().plus(1, DateTimeUnit.DAY)
         val dpd = DatePickerDialog(requireContext(), { _, year, month, day ->
-            applyAnswer(OpeningDateAnswer(LocalDate.of(year, month + 1, day)))
-        }, tomorrow.year, tomorrow.monthValue - 1, tomorrow.dayOfMonth)
+            applyAnswer(OpeningDateAnswer(LocalDate(year, month + 1, day)))
+        }, tomorrow.year, tomorrow.monthNumber - 1, tomorrow.dayOfMonth)
         dpd.setTitle(resources.getString(R.string.quest_construction_completion_date_title))
-        dpd.datePicker.minDate = tomorrow.toInstant().toEpochMilli()
+        dpd.datePicker.minDate = tomorrow.toInstant().toEpochMilliseconds()
         dpd.show()
     }
 }

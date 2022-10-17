@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class AddCrossingTypeTest {
 
@@ -43,19 +43,19 @@ class AddCrossingTypeTest {
         questType.verifyAnswer(
             mapOf("crossing" to "zebra"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", Clock.System.now().toLocalDate().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "marked"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", Clock.System.now().toLocalDate().toCheckDateString())
         )
 
         questType.verifyAnswer(
             mapOf("crossing" to "uncontrolled"),
             MARKED,
-            StringMapEntryAdd("check_date:crossing", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:crossing", Clock.System.now().toLocalDate().toCheckDateString())
         )
 
         questType.verifyAnswer(

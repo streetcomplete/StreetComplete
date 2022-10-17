@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.of
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
 
 /** Returns all the known keys used for recording the date at which the tag with the given key
  *  should be checked again. */
@@ -30,7 +30,7 @@ fun String.toCheckDate(): LocalDate? {
     val day = groups[3].toIntOrNull() ?: 1
 
     return try {
-        LocalDate.of(year, month, day)
+        LocalDate(year, month, day)
     } catch (e: IllegalArgumentException) {
         null
     }
@@ -53,7 +53,7 @@ fun Tags.updateWithCheckDate(key: String, value: String) {
 /** Set/update solely the check date to today for the given key, this also removes other less
  *  preferred check date keys. */
 fun Tags.updateCheckDateForKey(key: String) {
-    setCheckDateForKey(key, LocalDate.now())
+    setCheckDateForKey(key, Clock.System.now().toLocalDate())
 }
 
 fun Tags.setCheckDateForKey(key: String, date: LocalDate) {
@@ -74,7 +74,7 @@ fun Tags.removeCheckDatesForKey(key: String) {
  *  preferred check date keys for the entire item. */
 fun Tags.updateCheckDate() {
     removeCheckDates()
-    set(SURVEY_MARK_KEY, LocalDate.now().toCheckDateString())
+    set(SURVEY_MARK_KEY, Clock.System.now().toLocalDate().toCheckDateString())
 }
 
 /** Return whether any check dates are set */

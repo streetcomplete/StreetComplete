@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import kotlinx.datetime.Instant
 import org.json.JSONObject
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
@@ -29,7 +28,7 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
         val lastUpdate = Instant.parse(obj.getString("lastUpdate"))
-        return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
+        return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilliseconds(), isAnalyzing)
     }
 
     private fun mergeTypeAliases(map: MutableMap<String, Int>) {

@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.*
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class LitStatusKtTest {
 
@@ -27,7 +27,7 @@ class LitStatusKtTest {
     }
 
     @Test fun `apply updates check date`() {
-        val today = LocalDate.now().toCheckDateString()
+        val today = Clock.System.now().toLocalDate().toCheckDateString()
         verifyAnswer(
             mapOf("lit" to "yes"),
             YES,
@@ -66,12 +66,12 @@ class LitStatusKtTest {
         verifyAnswer(
             mapOf("lit" to "limited"),
             YES,
-            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+            arrayOf(StringMapEntryAdd("check_date:lit", Clock.System.now().toLocalDate().toCheckDateString()))
         )
         verifyAnswer(
             mapOf("lit" to "22:00-05:00"),
             YES,
-            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+            arrayOf(StringMapEntryAdd("check_date:lit", Clock.System.now().toLocalDate().toCheckDateString()))
         )
     }
 

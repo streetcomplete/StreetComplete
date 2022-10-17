@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
 import org.junit.Test
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import kotlinx.datetime.Clock
 
 class CheckExistenceTest {
     private val questType = CheckExistence(mock())
@@ -16,7 +16,7 @@ class CheckExistenceTest {
     @Test fun `apply answer adds check date`() {
         questType.verifyAnswer(
             Unit,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date", Clock.System.now().toLocalDate().toCheckDateString())
         )
     }
 
@@ -30,7 +30,7 @@ class CheckExistenceTest {
                 "survey_date" to "d"
             ),
             Unit,
-            StringMapEntryModify("check_date", "1", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date", "1", Clock.System.now().toLocalDate().toCheckDateString()),
             StringMapEntryDelete("lastcheck", "a"),
             StringMapEntryDelete("last_checked", "b"),
             StringMapEntryDelete("survey:date", "c"),

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.LocalDateTime
-import de.westnordost.streetcomplete.util.ktx.minusHours
+import de.westnordost.streetcomplete.util.ktx.minusInSysTZ
 import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.plusHours
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import de.westnordost.streetcomplete.util.ktx.plusInSysTZ
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlin.math.absoluteValue
 
 interface DateFilter {
@@ -18,10 +18,10 @@ class RelativeDate(val deltaDays: Float) : DateFilter {
         val now = LocalDateTime.now()
         val plusHours = (deltaDays * MULTIPLIER * 24).toLong()
         val relativeDateTime = (
-            if (plusHours > 0) now.plusHours(plusHours)
-            else now.minusHours(plusHours.absoluteValue)
+            if (plusHours > 0) now.plusInSysTZ(plusHours, DateTimeUnit.HOUR)
+            else now.minusInSysTZ(plusHours.absoluteValue, DateTimeUnit.HOUR)
         )
-        return relativeDateTime.toLocalDate()
+        return relativeDateTime.date
     }
 
     override fun toString() = "$deltaDays days"

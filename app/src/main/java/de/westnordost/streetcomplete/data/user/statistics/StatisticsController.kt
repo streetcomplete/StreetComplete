@@ -9,12 +9,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.LocalDate
-import de.westnordost.streetcomplete.util.ktx.now
-import de.westnordost.streetcomplete.util.ktx.ofEpochMilli
-import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
@@ -133,9 +129,9 @@ class StatisticsController(
     }
 
     private fun updateDaysActive() {
-        val today = LocalDate.now()
-        val lastUpdateDate = Instant.ofEpochMilli(lastUpdate).toLocalDate()
-        lastUpdate = Clock.System.now().toEpochMilli()
+        val today = Clock.System.now().toLocalDate()
+        val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
+        lastUpdate = Clock.System.now().toEpochMilliseconds()
         if (today > lastUpdateDate) {
             daysActive++
             listeners.forEach { it.onUpdatedDaysActive() }

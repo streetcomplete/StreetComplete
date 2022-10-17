@@ -19,8 +19,7 @@ import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.util.ktx.Instant
-import de.westnordost.streetcomplete.util.ktx.ofEpochMilli
+import kotlinx.datetime.Instant
 import kotlinx.datetime.toJavaInstant
 import de.westnordost.osmapi.map.MapDataApi as OsmApiMapDataApi
 import de.westnordost.osmapi.map.changes.DiffElement as OsmApiDiffElement
@@ -159,7 +158,7 @@ private fun Node.toOsmApiNode() = OsmNode(
     OsmLatLon(position.latitude, position.longitude),
     tags,
     null,
-    Instant.ofEpochMilli(timestampEdited).toJavaInstant()
+    Instant.fromEpochMilliseconds(timestampEdited).toJavaInstant()
 )
 
 private fun Way.toOsmApiWay() = OsmWay(
@@ -168,7 +167,7 @@ private fun Way.toOsmApiWay() = OsmWay(
     nodeIds,
     tags,
     null,
-    Instant.ofEpochMilli(timestampEdited).toJavaInstant()
+    Instant.fromEpochMilliseconds(timestampEdited).toJavaInstant()
 )
 
 private fun Relation.toOsmApiRelation() = OsmRelation(
@@ -177,7 +176,7 @@ private fun Relation.toOsmApiRelation() = OsmRelation(
     members.map { it.toOsmRelationMember() },
     tags,
     null,
-    Instant.ofEpochMilli(timestampEdited).toJavaInstant()
+    Instant.fromEpochMilliseconds(timestampEdited).toJavaInstant()
 )
 
 private fun RelationMember.toOsmRelationMember() = OsmRelationMember(
