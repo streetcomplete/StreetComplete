@@ -10,6 +10,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
@@ -25,7 +26,8 @@ import kotlinx.coroutines.launch
  *  use. */
 class QuestPresetsAdapter(
     private val context: Context,
-    private val questPresetsController: QuestPresetsController
+    private val questPresetsController: QuestPresetsController,
+    private val urlConfigController: UrlConfigController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
@@ -144,7 +146,8 @@ class QuestPresetsAdapter(
         }
 
         private fun onClickSharePreset(preset: QuestPreset) {
-            TODO()
+            val url = urlConfigController.create(preset.id)
+            UrlConfigQRCodeDialog(context, url).show()
         }
 
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {
