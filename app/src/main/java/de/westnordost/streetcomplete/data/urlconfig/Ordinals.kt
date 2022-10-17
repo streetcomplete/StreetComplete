@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import java.math.BigInteger
 
 @JvmInline

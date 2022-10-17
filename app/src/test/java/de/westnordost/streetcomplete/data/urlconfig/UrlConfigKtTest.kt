@@ -19,6 +19,8 @@ internal class UrlConfigKtTest {
     private val q2 = TestQuestTypeC()
     private val q3 = TestQuestTypeD()
 
+    private val qUnknown = TestQuestTypeD()
+
     private val o0 = TestOverlayA()
     private val o1 = TestOverlayB()
 
@@ -30,29 +32,44 @@ internal class UrlConfigKtTest {
 
     @Test fun `parse simple config`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), null),
-            parseConfigUrl("https://streetcomplete.io/?n=Test&q=13", quests, overlays)
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13", quests, overlays)
         )
     }
 
     @Test fun `parse config with overlay`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), o1),
-            parseConfigUrl("https://streetcomplete.io/?n=Test&q=13&o=1", quests, overlays)
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1),
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&o=1", quests, overlays)
         )
     }
 
     @Test fun `upper case is fine`() {
         assertEquals(
-            UrlConfig("Test", listOf(q0, q2, q3), null),
-            parseConfigUrl("HTTPS://STREETCOMPLETE.IO/?N=Test&Q=13", quests, overlays)
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            parseConfigUrl("HTTPS://streetcomplete.app/?N=Test&Q=13", quests, overlays)
         )
     }
 
     @Test fun `url decode name`() {
         assertEquals(
-            UrlConfig("Hello Wörld", listOf(q0), null),
-            parseConfigUrl("https://streetcomplete.io/?n=Hello+W%C3%B6rld&q=1", quests, overlays)
+            UrlConfig("Hello Wörld", listOf(q0), emptyList(), null),
+            parseConfigUrl("https://streetcomplete.app/?n=Hello+W%C3%B6rld&q=1", quests, overlays)
+        )
+    }
+
+    @Test fun `parse config with quest sort orders`() {
+        assertEquals(
+            UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q0), null),
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1-3x0", quests, overlays)
+        )
+    }
+
+    @Test fun `parse ignores unknown ordinals`() {
+        assertEquals(
+            UrlConfig("Test", listOf(q0, q2, q3), listOf(q1 to q3), null),
+            // i.e. ordinal 4 is ignored
+            parseConfigUrl("https://streetcomplete.app/?n=Test&q=29&s=0x4-1x3", quests, overlays)
         )
     }
 
@@ -61,17 +78,24 @@ internal class UrlConfigKtTest {
     }
 
     @Test fun `reject misformed parameters`() {
-        assertNull(parseConfigUrl("https://streetcomplete.io/?n=Test=Wrong&q=13", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.io/?n=Test&s&q=13", quests, overlays))
-        assertNull(parseConfigUrl("https://streetcomplete.io/?n=Test&&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test=Wrong&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n==Wrong&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&s&q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&&q=13", quests, overlays))
+
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1--1x2", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x1-1x2-", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0xx1", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?n=Test&q=13&s=0x0", quests, overlays))
     }
 
     @Test fun `reject if name is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.io/?q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?q=13", quests, overlays))
     }
 
     @Test fun `reject if quests is missing`() {
-        assertNull(parseConfigUrl("https://streetcomplete.io/?q=13", quests, overlays))
+        assertNull(parseConfigUrl("https://streetcomplete.app/?q=13", quests, overlays))
     }
 
     //endregion
@@ -80,22 +104,36 @@ internal class UrlConfigKtTest {
 
     @Test fun `create simple url`() {
         assertEquals(
-            "https://streetcomplete.io/?n=Test&q=13",
-            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), null), quests, overlays),
+            "https://streetcomplete.app/?n=Test&q=13",
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null), quests, overlays),
         )
     }
 
     @Test fun `create url with overlay`() {
         assertEquals(
-            "https://streetcomplete.io/?n=Test&q=13&o=1",
-            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), o1), quests, overlays),
+            "https://streetcomplete.app/?n=Test&q=13&o=1",
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1), quests, overlays),
+        )
+    }
+
+    @Test fun `create url with quest type orders`() {
+        assertEquals(
+            "https://streetcomplete.app/?n=Test&q=13&s=0x1-3x2",
+            createConfigUrl(UrlConfig("Test", listOf(q0, q2, q3), listOf(q0 to q1, q3 to q2), null), quests, overlays),
         )
     }
 
     @Test fun `url encode name`() {
         assertEquals(
-            "https://streetcomplete.io/?n=Hello+W%C3%B6rld&q=1",
-            createConfigUrl(UrlConfig("Hello Wörld", listOf(q0), null), quests, overlays)
+            "https://streetcomplete.app/?n=Hello+W%C3%B6rld&q=1",
+            createConfigUrl(UrlConfig("Hello Wörld", listOf(q0), emptyList(), null), quests, overlays)
+        )
+    }
+
+    @Test fun `create url ignores unknown quests`() {
+        assertEquals(
+            "https://streetcomplete.app/?n=Test&q=1&s=3x2",
+            createConfigUrl(UrlConfig("Test", listOf(q0, qUnknown), listOf(q0 to qUnknown, q3 to q2), null), quests, overlays),
         )
     }
 
