@@ -1935,6 +1935,8 @@ It is not big issue, but it would be nice to have it correctly. -->
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspěchy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
     <string name="quest_address_street_description">"Klepněte na mapě na ulici, ke které patří, nebo ji zadejte bez zkratek do pole níže:"</string>

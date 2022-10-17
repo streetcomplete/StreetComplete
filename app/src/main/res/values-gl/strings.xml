@@ -926,6 +926,8 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="user_profile_days_active">"Días activo"</string>
     <string name="user_profile_achievement_levels">"Niveis dos
 logros"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non pertence a unha rúa con nome"</string>
     <string name="quest_address_street_place_name_label">"Nome:"</string>
     <string name="quest_address_street_description">"Preme a estrada á que pertence no mapa ou insírea sen abreviaturas no campo seguinte:"</string>

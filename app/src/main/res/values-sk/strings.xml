@@ -1238,6 +1238,8 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspechy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepatrí k žiadnej pomenovanej ulici"</string>
     <string name="quest_address_street_place_name_label">"Názov miesta:"</string>
     <string name="quest_address_street_description">"Kliknite na mape na ulicu ku ktorej patrí, alebo ju zadajte bez skratiek do poľa nižšie:"</string>

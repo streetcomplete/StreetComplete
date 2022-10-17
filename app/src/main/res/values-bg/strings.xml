@@ -946,6 +946,8 @@
     <string name="user_profile_local_rank">"Класиране в %s"</string>
     <string name="user_profile_days_active">"Дни активност"</string>
     <string name="user_profile_achievement_levels">"Постижения"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Няма определена улица"</string>
     <string name="quest_address_street_place_name_label">"Име на място:"</string>
     <string name="quest_address_street_description">"Докоснете пътя на картата, към който е адреса или изпишете името му без съкращения по-долу:"</string>

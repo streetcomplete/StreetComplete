@@ -288,7 +288,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_streetName_menuItem_nolanguage">"(nieokreślony)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_type_title">"Jaki rodzaj hydrantu pożarówego?"</string>
+    <string name="quest_fireHydrant_type_title">"Jaki to jest rodzaj hydrantu pożarowego?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"filarowy"</string>
@@ -1014,7 +1014,7 @@ Podzielić?"</string>
     <string name="quest_buildingType_garages_description">"Osobne miejsca dla różnych użytkowników."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_title">"Jaki rodzaj informacji turystycznej jest to?"</string>
+    <string name="quest_tourism_information_title">"Jaki to rodzaj informacji turystycznej?"</string>
     <string name="quest_tourism_information_office">"Biuro informacji turystycznej"</string>
     <string name="quest_tourism_information_board">"Tablica informacyjna"</string>
     <string name="quest_tourism_information_terminal">"Terminal informacyjny"</string>
@@ -1286,6 +1286,8 @@ I deliberately changed form rather than translating exactly. It is necessary as 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Poziomów
 osiągnięć"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
     <string name="quest_address_street_description">"Dotknij drogę na mapie, do której należy lub wpisz pełną nazwę w polu poniżej:"</string>
@@ -1856,7 +1858,7 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_seating_indoor_and_outdoor">"Siedzenia zarówno wewnątrz, jak i na zewnątrz"</string>
 
     <!-- Fuzzy -->
-    <string name="default_disabled_msg_summer_outdoor_seating">"Te zadanie jest zablokowane bo może potrzebuje sprawdzanie w specyficznej porze roku, aby sprawdzić siedzenia zewnętrzne."</string>
+    <string name="default_disabled_msg_summer_outdoor_seating">"To zadanie jest domyślnie nieaktywne, bo może potrzebować sprawdzania w specyficznej porze roku, aby sprawdzić siedzenia na zewnątrz."</string>
     <string name="no_camera_permission_toast">"Brak pozwolenia na dostęp do aparatu"</string>
 
     <!-- Quests
@@ -1904,7 +1906,7 @@ sorted alphabetically by title -->
     <string name="quest_openingHours_signed_title">"Czy jest tutaj informacja o godzinach otwarcia?"</string>
     <string name="quest_openingHours_resurvey_title">"Czy tę godziny otwarcia są dalej poprawne?"</string>
     <string name="quest_placeName_title">"Jaka jest nazwa tego miejsca?"</string>
-    <string name="quest_shop_type_title2">"Jaki jest to za rodzaj sklepu?"</string>
+    <string name="quest_shop_type_title2">"Jaki jest to rodzaj sklepu?"</string>
     <string name="quest_smoking_title2">"Czy palenie jest tutaj dozwolone?"</string>
     <string name="quest_smoothness_title">"Jaka jest tutaj jakość powierzchni?"</string>
 
@@ -2001,6 +2003,9 @@ sorted alphabetically by title -->
     <string name="quest_camp_shower_title">"Czy są tutaj prysznice?"</string>
     <string name="quest_camp_type_tents_only">"Tylko namioty"</string>
     <string name="quest_recycling_type_pet">"Tylko PET"</string>
+    <string name="street_parking_street_width">"Szerokość ulicy: %s"</string>
     <string name="overlay_street_parking">"Parkowanie na ulicy"</string>
     <string name="link_opencampingmap_description">"Mapa kempingów i pól namiotowych"</string>
+    <string name="quest_address_street_street_name_label">"Nazwa ulicy:"</string>
+    <string name="name_label">"Nazwa:"</string>
 </resources>
