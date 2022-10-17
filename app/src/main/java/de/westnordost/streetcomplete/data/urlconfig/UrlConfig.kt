@@ -21,6 +21,8 @@ private const val PARAM_QUESTS = "q"
 private const val PARAM_OVERLAY = "o"
 private const val PARAM_SORT_QUESTS = "s"
 
+private const val ORDINAL_RADIX = 36
+
 fun parseConfigUrl(
     url: String,
     questTypeRegistry: QuestTypeRegistry,
@@ -43,7 +45,7 @@ fun parseConfigUrl(
     val questTypesString = parameters[PARAM_QUESTS] ?: return null
     val questTypes = stringToQuestTypes(questTypesString, questTypeRegistry) ?: return null
 
-    val overlayOrdinal = parameters[PARAM_OVERLAY]?.toIntOrNull()
+    val overlayOrdinal = parameters[PARAM_OVERLAY]?.toIntOrNull(ORDINAL_RADIX)
     val overlay = overlayOrdinal?.let { overlayRegistry.getByOrdinal(it) }
 
     val questTypeOrders = parameters[PARAM_SORT_QUESTS]
@@ -51,8 +53,8 @@ fun parseConfigUrl(
         ?.mapNotNull {
             val pair = it.split('.')
             if (pair.size != 2) return null
-            val firstOrdinal = pair[0].toIntOrNull(36) ?: return null
-            val secondOrdinal = pair[1].toIntOrNull(36) ?: return null
+            val firstOrdinal = pair[0].toIntOrNull(ORDINAL_RADIX) ?: return null
+            val secondOrdinal = pair[1].toIntOrNull(ORDINAL_RADIX) ?: return null
             if (firstOrdinal == secondOrdinal) return null
             val first = questTypeRegistry.getByOrdinal(firstOrdinal)
             val second = questTypeRegistry.getByOrdinal(secondOrdinal)
@@ -75,15 +77,18 @@ fun createConfigUrl(
     // TODO limit quest type orders length?!
     if (urlConfig.questTypeOrders.isNotEmpty()) {
         val sortOrders = urlConfig.questTypeOrders.mapNotNull { (first, second) ->
-            val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(36)
-            val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(36)
+            val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(ORDINAL_RADIX)
+            val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(ORDINAL_RADIX)
             if (ordinal1 != null && ordinal2 != null) ordinal1 to ordinal2 else null
         }.joinToString("-") { (first, second) -> "${first}.${second}" }
 
         parameters.add(PARAM_SORT_QUESTS to sortOrders)
     }
     if (urlConfig.overlay != null) {
-        parameters.add(PARAM_OVERLAY to overlayRegistry.getOrdinalOf(urlConfig.overlay).toString())
+        val ordinal = overlayRegistry.getOrdinalOf(urlConfig.overlay)?.toString(ORDINAL_RADIX)
+        if (ordinal != null) {
+            parameters.add(PARAM_OVERLAY to ordinal)
+        }
     }
     val parameterString = parameters.joinToString("&") { (key, value) ->
         "$key=$value"
@@ -98,13 +103,13 @@ private fun questTypesToString(
     Ordinals(questTypes.mapNotNull { questTypeRegistry.getOrdinalOf(it) }.toSet())
         .toBooleanArray()
         .toBigInteger()
-        .toString(36)
+        .toString(ORDINAL_RADIX)
 
 private fun stringToQuestTypes(
     string: String,
     questTypeRegistry: QuestTypeRegistry,
 ): Collection<QuestType>? =
-    string.toBigIntegerOrNull(36)
+    string.toBigIntegerOrNull(ORDINAL_RADIX)
         ?.toBooleanArray()
         ?.toOrdinals()
         ?.mapNotNull { questTypeRegistry.getByOrdinal(it) }
