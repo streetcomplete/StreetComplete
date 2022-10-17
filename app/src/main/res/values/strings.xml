@@ -1586,4 +1586,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="unknown_shop_title">Other kind of place</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
+    <string name="urlconfig_as_url">Or as URL:</string>
 </resources>

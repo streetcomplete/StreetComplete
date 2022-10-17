@@ -173,6 +173,9 @@ dependencies {
     // box2d view
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
+    // sharing presets/settings via QR Code
+    implementation("com.google.zxing:core:3.5.0")
+
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     implementation("com.charleskorn.kaml:kaml:0.48.0")
