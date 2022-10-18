@@ -38,6 +38,8 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     /** Selection displayed in the last answer button and that is applied when pressed */
     private val lastSelectionLeft: StreetSideDisplayItem<I>?
     private val lastSelectionRight: StreetSideDisplayItem<I>?
+    private val lastSelectionOnlyLeft: StreetSideDisplayItem<I>?
+    private val lastSelectionOnlyRight: StreetSideDisplayItem<I>?
 
     /** Angle in degrees by which the street side select puzzle should be rotated from North */
     var offsetPuzzleRotation: Float = 0f
@@ -101,6 +103,8 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     init {
         lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { deserializeLastSelection(it, false) }
         lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { deserializeLastSelection(it, true) }
+        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.only_left", null)?.let { deserializeLastSelection(it, false) }
+        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.only_right", null)?.let { deserializeLastSelection(it, true) }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
@@ -171,18 +175,33 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val r = if (isUpsideDown) left else right
 
         prefs.edit {
-            putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it, false) })
-            putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it, true) })
+            when (showSides) {
+                Sides.BOTH -> {
+                    putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it, false) })
+                    putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it, true) })
+                }
+                Sides.LEFT -> putString("$lastSelectionPreferencePrefix.only_left", l?.let { serializeLastSelection(it, false) })
+                Sides.RIGHT -> putString("$lastSelectionPreferencePrefix.only_right", r?.let { serializeLastSelection(it, true) })
+            }
         }
     }
 
     private fun updateLastSelectionButton() {
         updateLastSelectionButtonVisibility()
-        if (showSides != Sides.RIGHT) {
-            lastSelectionLeft?.let { lastAnswerButtonBinding.leftSideImageView.setImage(it.icon) }
-        }
-        if (showSides != Sides.LEFT) {
-            lastSelectionRight?.let { lastAnswerButtonBinding.rightSideImageView.setImage(it.icon) }
+        when (showSides) {
+            Sides.BOTH -> {
+                lastSelectionLeft?.let { lastAnswerButtonBinding.leftSideImageView.setImage(it.icon) }
+                lastSelectionRight?.let { lastAnswerButtonBinding.rightSideImageView.setImage(it.icon) }
+            }
+            Sides.LEFT -> lastSelectionOnlyLeft?.let {
+                lastAnswerButtonBinding.leftSideImageView.setImage(it.icon)
+                lastAnswerButtonBinding.rightSideImageView.setImage(null)
+            }
+            Sides.RIGHT ->
+                lastSelectionOnlyRight?.let {
+                    lastAnswerButtonBinding.rightSideImageView.setImage(it.icon)
+                    lastAnswerButtonBinding.leftSideImageView.setImage(null)
+                }
         }
     }
 
@@ -190,19 +209,25 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         lastAnswerButtonBinding.root.isGone =
             when (showSides) {
                 Sides.BOTH -> lastSelectionLeft == null && lastSelectionRight == null
-                Sides.LEFT -> lastSelectionLeft == null
-                Sides.RIGHT -> lastSelectionRight == null
+                Sides.LEFT -> lastSelectionOnlyLeft == null
+                Sides.RIGHT -> lastSelectionOnlyRight == null
             } ||
             left != null ||
             right != null ||
-            showSides != Sides.BOTH ||
             !puzzleView.isEnabled
     }
 
     private fun applyLastSelection() {
         val isUpsideDown = isStreetDisplayedUpsideDown()
-        val l = if (isUpsideDown) lastSelectionRight else lastSelectionLeft
-        val r = if (isUpsideDown) lastSelectionLeft else lastSelectionRight
+        val l: StreetSideDisplayItem<I>?
+        val r: StreetSideDisplayItem<I>?
+        if (showSides == Sides.BOTH) {
+            l = if (isUpsideDown) lastSelectionRight else lastSelectionLeft
+            r = if (isUpsideDown) lastSelectionLeft else lastSelectionRight
+        } else {
+            l = if (isUpsideDown) lastSelectionOnlyRight else lastSelectionOnlyLeft
+            r = if (isUpsideDown) lastSelectionOnlyLeft else lastSelectionOnlyRight
+        }
         if (l != null && showSides != Sides.RIGHT) replacePuzzleSide(l, false)
         if (r != null && showSides != Sides.LEFT) replacePuzzleSide(r, true)
     }
