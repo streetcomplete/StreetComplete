@@ -11,6 +11,8 @@ v48.0_ee: |
   <li>Option to show a notification when the app is in background and a quest is nearby</li>
   <li>Some performance improvements</li>
   <li>Re-arrange settings</li>
+  <li>Highlight nearby cycleways and sidewalks for the respective quests</li>
+  <li>Allow displaying track from GPX file</li>
   </ul>
 
 v47.0_ee: |

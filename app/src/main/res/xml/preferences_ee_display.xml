@@ -34,4 +34,8 @@
         android:defaultValue="false"
         android:persistent="true" />
 
+    <Preference
+        android:key="display_gpx_track"
+        android:title="@string/pref_gpx_track_title" />
+
 </PreferenceScreen>

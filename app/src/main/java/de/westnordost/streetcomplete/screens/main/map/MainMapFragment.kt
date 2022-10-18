@@ -4,6 +4,8 @@ import android.content.SharedPreferences
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
+import com.mapzen.tangram.geometry.Polyline
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -21,6 +23,8 @@ import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
+import de.westnordost.streetcomplete.screens.main.map.tangram.toLngLat
+import de.westnordost.streetcomplete.screens.settings.loadGpxTrackPoints
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -88,6 +92,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
     }
 
+    private val gpxLayer by lazy { controller?.addDataLayer(GPX_TRACK_LAYER) }
+
     /* ------------------------------------- Map setup ------------------------------------------ */
 
     override suspend fun onBeforeLoadScene() {
@@ -128,6 +134,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
+        loadGpxTrack()
 
         super.onMapReady()
     }
@@ -141,6 +148,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onDestroy() {
         super.onDestroy()
         selectedOverlaySource.removeListener(overlayListener)
+    }
+
+    fun loadGpxTrack() {
+        gpxLayer?.visible = false
+        if (!prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)) return
+        val gpxPoints = loadGpxTrackPoints(requireContext()) ?: return
+
+        val tangramPolyline = Polyline(gpxPoints.map { it.toLngLat() }, null)
+        gpxLayer?.visible = true
+        gpxLayer?.setFeatures(listOf(tangramPolyline))
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
@@ -317,3 +334,5 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }
+
+private const val GPX_TRACK_LAYER = "streetcomplete_gpx_track"

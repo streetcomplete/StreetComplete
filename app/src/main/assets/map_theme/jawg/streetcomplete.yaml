@@ -6,6 +6,7 @@ global:
     track_color_record: '#44fe1616'
     old_track_color: '#22536dfe'
     quest_geometry_color: '#330092D1' # complementary to accent, a bit more transparent
+    gpx_track_color: '#4453fe70'
 
 textures:
     pins:
@@ -201,6 +202,16 @@ layers:
                     size: 24px
                     collide: false
                     order: 1000
+    streetcomplete_gpx_track:
+        data: { source: streetcomplete_gpx_track }
+        line:
+            draw:
+              geometry-lines:
+                    color: global.gpx_track_color
+                    width: [[14, 6px],[18, 12px]]
+                    collide: false
+                    join: round
+                    order: 900
     # streetcomplete_track and streetcomplete_track2 layers are exactly the same except the source.
     #  It is not possible in tangram to define a layer for several sources.
     streetcomplete_track:

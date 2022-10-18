@@ -83,6 +83,7 @@ object Prefs {
     const val CREATE_POI_RECENT_FEATURE_IDS = "create_poi_recent_feature_ids"
     const val DYNAMIC_QUEST_CREATION = "dynamic_quest_creation"
     const val QUEST_MONITOR = "quest_monitor"
+    const val SHOW_GPX_TRACK = "show_gpx_track"
 
     enum class Autosync {
         ON, WIFI, OFF
