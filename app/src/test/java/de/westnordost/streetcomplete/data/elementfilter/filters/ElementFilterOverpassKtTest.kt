@@ -4,11 +4,11 @@ import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 class ElementFilterOverpassKtTest {
 
-    private val date2000_11_11 = FixedDate(LocalDate.of(2000, 11, 11))
+    private val date2000_11_11 = FixedDate(LocalDate(2000, 11, 11))
 
     @Test fun tagOlderThan() {
         val date = dateDaysAgo(100f).toCheckDateString()

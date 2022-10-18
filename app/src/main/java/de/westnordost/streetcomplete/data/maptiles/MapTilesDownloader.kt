@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -19,7 +20,6 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.internal.Version
 import java.io.IOException
-import java.lang.System.currentTimeMillis
 import kotlin.coroutines.resume
 
 class MapTilesDownloader(
@@ -35,7 +35,7 @@ class MapTilesDownloader(
         var failureCount = 0
         var downloadedSize = 0
         var cachedSize = 0
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         coroutineScope {
             for (tile in getDownloadTileSequence(bbox)) {
@@ -56,7 +56,7 @@ class MapTilesDownloader(
                 }
             }
         }
-        val seconds = (currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
         Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
