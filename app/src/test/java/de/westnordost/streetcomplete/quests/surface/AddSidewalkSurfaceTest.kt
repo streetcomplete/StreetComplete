@@ -131,7 +131,7 @@ class AddSidewalkSurfaceTest {
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "yes",
             ),
-            SidewalkSurface(SidewalkIsDifferent),
+            SidewalkIsDifferent,
             StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
             StringMapEntryDelete("sidewalk:right:surface", "concrete"),
             StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
