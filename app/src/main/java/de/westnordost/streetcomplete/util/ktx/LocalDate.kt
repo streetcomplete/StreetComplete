@@ -36,13 +36,13 @@ fun LocalDateTime.Companion.now(): LocalDateTime =
     systemTimeNow().toLocalDateTime(TimeZone.currentSystemDefault())
 
 /** https://github.com/Kotlin/kotlinx-datetime#date--time-arithmetic */
-fun LocalDateTime.minusInSysTZ(value: Long, unit: DateTimeUnit): LocalDateTime =
-    TimeZone.currentSystemDefault().let { tz ->
-        this.toInstant(tz).minus(value, unit, tz).toLocalDateTime(tz)
-    }
+fun LocalDateTime.minusInSystemTimeZone(value: Long, unit: DateTimeUnit): LocalDateTime {
+    val tz = TimeZone.currentSystemDefault()
+    return toInstant(tz).minus(value, unit, tz).toLocalDateTime(tz)
+}
 
 /** https://github.com/Kotlin/kotlinx-datetime#date--time-arithmetic */
-fun LocalDateTime.plusInSysTZ(value: Long, unit: DateTimeUnit): LocalDateTime =
-    TimeZone.currentSystemDefault().let { tz ->
-        this.toInstant(tz).plus(value, unit, tz).toLocalDateTime(tz)
-    }
+fun LocalDateTime.plusInSystemTimeZone(value: Long, unit: DateTimeUnit): LocalDateTime {
+    val tz = TimeZone.currentSystemDefault()
+    return toInstant(tz).plus(value, unit, tz).toLocalDateTime(tz)
+}
