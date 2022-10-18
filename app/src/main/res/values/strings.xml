@@ -1589,4 +1589,5 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
     <string name="urlconfig_as_url">Or as URL:</string>
+    <string name="urlconfig_url_copied">URL copied to clipboard</string>
 </resources>

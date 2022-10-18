@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingTop="@dimen/dialog_vertical_margin"
     android:paddingLeft="@dimen/dialog_horizontal_margin"
     android:paddingRight="@dimen/dialog_horizontal_margin"
@@ -25,6 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/qrCodeViewLabel"
+        android:scaleType="fitXY"
         android:layout_marginTop="16dp"
          />
 
@@ -37,14 +38,17 @@
         app:layout_constraintTop_toBottomOf="@id/qrCodeView"
         android:layout_marginTop="16dp"/>
 
-    <EditText
+    <TextView
         android:id="@+id/urlView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="none"
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:textIsSelectable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/copyButton"
         app:layout_constraintTop_toBottomOf="@id/dataViewLabel"
+        style="@style/Widget.AppCompat.EditText"
         tools:ignore="TextFields" />
 
     <Button
