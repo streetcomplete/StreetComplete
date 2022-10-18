@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
@@ -352,6 +353,7 @@ class DataManagementSettingsFragment :
             input.readLines()
         } } ?: emptyList()
 
+    @SuppressLint("ApplySharedPref") // we want to commit, so that setting is written before the immediately following restart
     private fun importPresets(lines: List<String>, replaceExistingPresets: Boolean) {
         val presets = mutableListOf<Array<Any?>>()
         val orders = mutableListOf<Array<Any?>>()
@@ -416,8 +418,8 @@ class DataManagementSettingsFragment :
         )
 
         if (replaceExistingPresets) // set selected preset to default, because previously selected may not exist any more
-            prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).apply()
-        visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+            prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).commit()
+        restartApp() // restart, because otherwise presets look like they are not updated in settings
     }
 
     private fun readFromUriToExternalFile(uri: Uri, filename: String) =

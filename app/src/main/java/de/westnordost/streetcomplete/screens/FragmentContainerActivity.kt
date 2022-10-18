@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.LayoutRes
@@ -66,6 +67,8 @@ open class FragmentContainerActivity(
             supportFragmentManager.popBackStack()
             return
         }
+        // when switching to other app and back from sub-settings fragment, back button in settings closes the app, but we want to return to main activity
+        startActivity(Intent(this, MainActivity::class.java))
         super.onBackPressed()
     }
 

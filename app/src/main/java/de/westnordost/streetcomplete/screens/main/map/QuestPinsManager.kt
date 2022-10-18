@@ -198,7 +198,8 @@ class QuestPinsManager(
 
     private fun initializeQuestTypeOrders() {
         // this needs to be reinitialized when the quest order changes
-        val sortedQuestTypes = if (reversedOrder) questTypeRegistry.asReversed().toMutableList() else questTypeRegistry.toMutableList()
+        val sortedQuestTypes = questTypeRegistry.toMutableList()
+        questTypeOrderSource.sort(sortedQuestTypes)
         // move specific quest types to front if set by preference
         val moveToFront = if (Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")!!) == Prefs.DayNightBehavior.PRIORITY)
             if (isDay(ctrl.cameraPosition.position))
@@ -207,11 +208,11 @@ class QuestPinsManager(
                 sortedQuestTypes.filter { it.dayNightCycle == DayNightCycle.ONLY_NIGHT }
         else
             emptyList()
-        moveToFront.asReversed().forEach {
+        moveToFront.reversed().forEach { // reversed to keep order within moveToFront
             sortedQuestTypes.remove(it)
             sortedQuestTypes.add(0, it)
         }
-        questTypeOrderSource.sort(sortedQuestTypes)
+        if (reversedOrder) sortedQuestTypes.reverse() // invert only after doing the sorting changes
         synchronized(questTypeOrders) {
             questTypeOrders.clear()
             sortedQuestTypes.forEachIndexed { index, questType ->

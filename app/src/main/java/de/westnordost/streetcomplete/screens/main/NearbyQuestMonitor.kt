@@ -32,7 +32,7 @@ import org.koin.core.component.inject
 // will be created every time the app is put to background... actually that's not good
 class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
-    private val locationManager: LocationManager = applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager
+    private val locationManager: LocationManager by lazy { applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager }
 
     private fun getQuestFoundNotification(size: Int, closest: Quest): Notification =
         NotificationCompat.Builder(this, FOUND_CHANNEL_ID)
