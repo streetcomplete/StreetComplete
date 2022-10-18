@@ -483,6 +483,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_display">"Display"</string>
+    <string name="pref_category_quests_overlays">Quests &amp; Overlays</string>
 
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>

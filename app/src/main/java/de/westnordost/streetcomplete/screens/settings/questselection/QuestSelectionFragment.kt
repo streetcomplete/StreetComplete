@@ -46,11 +46,6 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     private lateinit var questSelectionAdapter: QuestSelectionAdapter
 
-    interface Listener {
-        fun onClickedQuestPresets()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     private val parentTitleContainer: DisplaysTitle? get() =
         parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
 
@@ -117,10 +112,6 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
                     .setPositiveButton(android.R.string.ok) { _, _ -> deselectAllQuests() }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()
-                return true
-            }
-            R.id.action_manage_presets -> {
-                listener?.onClickedQuestPresets()
                 return true
             }
         }

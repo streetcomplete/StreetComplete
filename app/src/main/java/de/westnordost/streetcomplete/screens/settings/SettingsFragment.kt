@@ -63,6 +63,7 @@ class SettingsFragment :
 
     interface Listener {
         fun onClickedQuestSelection()
+        fun onClickedQuestPresets()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -74,6 +75,11 @@ class SettingsFragment :
 
         findPreference<Preference>("quests")?.setOnPreferenceClickListener {
             listener?.onClickedQuestSelection()
+            true
+        }
+
+        findPreference<Preference>("quest_presets")?.setOnPreferenceClickListener {
+            listener?.onClickedQuestPresets()
             true
         }
 
@@ -151,6 +157,7 @@ class SettingsFragment :
     override fun onStart() {
         super.onStart()
         findPreference<Preference>("quests")?.summary = getQuestPreferenceSummary()
+        findPreference<Preference>("quest_presets")?.summary = getQuestPresetsPreferenceSummary()
     }
 
     override fun onResume() {
@@ -212,14 +219,13 @@ class SettingsFragment :
     }
 
     private fun getQuestPreferenceSummary(): String {
-        val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
-        val hasCustomPresets = questPresetsSource.getAll().isNotEmpty()
-        val presetStr = if (hasCustomPresets) getString(R.string.pref_subtitle_quests_preset_name, presetName) + "\n" else ""
-
         val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
         val totalCount = questTypeRegistry.size
-        val enabledStr = getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+        return getString(R.string.pref_subtitle_quests, enabledCount, totalCount)
+    }
 
-        return presetStr + enabledStr
+    private fun getQuestPresetsPreferenceSummary(): String {
+        val presetName = questPresetsSource.selectedQuestPresetName ?: getString(R.string.quest_presets_default_name)
+        return getString(R.string.pref_subtitle_quests_preset_name, presetName)
     }
 }
