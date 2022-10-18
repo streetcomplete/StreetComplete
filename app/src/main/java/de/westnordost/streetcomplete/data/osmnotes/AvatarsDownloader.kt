@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.data.osmnotes
 import android.util.Log
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.saveToFile
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import kotlin.system.measureTimeMillis
 
 /** Downloads and stores the OSM avatars of users */
 class AvatarsDownloader(
@@ -21,15 +21,15 @@ class AvatarsDownloader(
             return
         }
 
-        val execTimeMs = measureTimeMillis {
-            for (userId in userIds) {
-                val avatarUrl = getProfileImageUrl(userId)
-                if (avatarUrl != null) {
-                    download(userId, avatarUrl)
-                }
+        val time = nowAsEpochMilliseconds()
+        for (userId in userIds) {
+            val avatarUrl = getProfileImageUrl(userId)
+            if (avatarUrl != null) {
+                download(userId, avatarUrl)
             }
         }
-        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${(execTimeMs / 1000.0).format(1)}s")
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 
     private fun getProfileImageUrl(userId: Long): String? {

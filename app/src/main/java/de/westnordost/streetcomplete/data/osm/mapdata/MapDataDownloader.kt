@@ -4,30 +4,29 @@ import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
-import kotlin.time.ExperimentalTime
-import kotlin.time.measureTimedValue
 
 /** Takes care of downloading all note and osm quests */
 class MapDataDownloader(
     private val mapDataApi: MapDataApi,
     private val mapDataController: MapDataController
 ) {
-    @OptIn(ExperimentalTime::class)
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
-        val (mapData, execDuration) = measureTimedValue {
-            MutableMapData().also { mapData ->
-                val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-                getMapAndHandleTooBigQuery(expandedBBox, mapData)
-                /* The map data might be filled with several bboxes one after another if the download is
-                   split up in several, so lets set the bbox back to the bbox of the complete download */
-                mapData.boundingBox = expandedBBox
-            }
-        }
-        Log.i(TAG, "Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${(execDuration.inWholeMilliseconds / 1000.0).format(1)}s")
+        val time = nowAsEpochMilliseconds()
+
+        val mapData = MutableMapData()
+        val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+        getMapAndHandleTooBigQuery(expandedBBox, mapData)
+        /* The map data might be filled with several bboxes one after another if the download is
+           split up in several, so lets set the bbox back to the bbox of the complete download */
+        mapData.boundingBox = expandedBBox
+
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         yield()
 

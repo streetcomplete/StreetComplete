@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -20,7 +21,6 @@ import okhttp3.Response
 import okhttp3.internal.Version
 import java.io.IOException
 import kotlin.coroutines.resume
-import kotlin.system.measureTimeMillis
 
 class MapTilesDownloader(
     private val vectorTileProvider: VectorTileProvider,
@@ -35,29 +35,30 @@ class MapTilesDownloader(
         var failureCount = 0
         var downloadedSize = 0
         var cachedSize = 0
-        val execTimeMs = measureTimeMillis {
-            coroutineScope {
-                for (tile in getDownloadTileSequence(bbox)) {
-                    launch {
-                        val result = try {
-                            downloadTile(tile.zoom, tile.x, tile.y)
-                        } catch (e: Exception) {
-                            DownloadFailure
-                        }
-                        ++tileCount
-                        when (result) {
-                            is DownloadFailure -> ++failureCount
-                            is DownloadSuccess -> {
-                                if (result.alreadyCached) cachedSize += result.size
-                                else downloadedSize += result.size
-                            }
+        val time = nowAsEpochMilliseconds()
+
+        coroutineScope {
+            for (tile in getDownloadTileSequence(bbox)) {
+                launch {
+                    val result = try {
+                        downloadTile(tile.zoom, tile.x, tile.y)
+                    } catch (e: Exception) {
+                        DownloadFailure
+                    }
+                    ++tileCount
+                    when (result) {
+                        is DownloadFailure -> ++failureCount
+                        is DownloadSuccess -> {
+                            if (result.alreadyCached) cachedSize += result.size
+                            else downloadedSize += result.size
                         }
                     }
                 }
             }
         }
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         val failureText = if (failureCount > 0) ". $failureCount tiles failed to download" else ""
-        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${(execTimeMs / 1000.0).format(1)}s$failureText")
+        Log.i(TAG, "Downloaded $tileCount tiles (${downloadedSize / 1000}kB downloaded, ${cachedSize / 1000}kB already cached) in ${seconds.format(1)}s$failureText")
     }
 
     private fun getDownloadTileSequence(bbox: BoundingBox): Sequence<Tile> =

@@ -7,9 +7,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
-import kotlin.time.ExperimentalTime
-import kotlin.time.measureTimedValue
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 class MapDataController internal constructor(
@@ -53,39 +52,37 @@ class MapDataController internal constructor(
 
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
-    @OptIn(ExperimentalTime::class)
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
-        val (pair, execDuration) = measureTimedValue {
-            val oldElementKeys: Set<ElementKey>
-            val geometryEntries: Collection<ElementGeometryEntry>
-            synchronized(this) {
-                // for incompletely downloaded relations, complete the map data (as far as possible) with
-                // local data, i.e. with local nodes and ways (still) in local storage
-                completeMapData(mapData)
+        val time = nowAsEpochMilliseconds()
 
-                geometryEntries = createGeometries(mapData, mapData)
+        val oldElementKeys: Set<ElementKey>
+        val geometryEntries: Collection<ElementGeometryEntry>
+        synchronized(this) {
+            // for incompletely downloaded relations, complete the map data (as far as possible) with
+            // local data, i.e. with local nodes and ways (still) in local storage
+            completeMapData(mapData)
 
-                // don't use cache here, because if not everything is already cached, db call will be faster
-                oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
-                for (element in mapData) {
-                    oldElementKeys.remove(ElementKey(element.type, element.id))
-                }
+            geometryEntries = createGeometries(mapData, mapData)
 
-                // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
-                // see comment for QUEST_FILTER_PADDING
-                cache.update(oldElementKeys, mapData, geometryEntries, bbox)
-
-                elementDB.deleteAll(oldElementKeys)
-                geometryDB.deleteAll(oldElementKeys)
-                geometryDB.putAll(geometryEntries)
-                elementDB.putAll(mapData)
+            // don't use cache here, because if not everything is already cached, db call will be faster
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            for (element in mapData) {
+                oldElementKeys.remove(ElementKey(element.type, element.id))
             }
-            Pair(geometryEntries, oldElementKeys)
+
+            // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
+            // see comment for QUEST_FILTER_PADDING
+            cache.update(oldElementKeys, mapData, geometryEntries, bbox)
+
+            elementDB.deleteAll(oldElementKeys)
+            geometryDB.deleteAll(oldElementKeys)
+            geometryDB.putAll(geometryEntries)
+            elementDB.putAll(mapData)
         }
-        val (geometryEntries, oldElementKeys) = pair
+
         Log.i(TAG,
             "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-            " in ${(execDuration.inWholeMilliseconds / 1000.0).format(1)}s"
+            " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
         )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
@@ -169,10 +166,10 @@ class MapDataController internal constructor(
 
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries)
 
-    @OptIn(ExperimentalTime::class)
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
-        val (result, execDuration) = measureTimedValue { cache.getMapDataWithGeometry(bbox) }
-        Log.i(TAG, "Fetched ${result.size} elements and geometries in ${execDuration.inWholeMilliseconds}ms")
+        val time = nowAsEpochMilliseconds()
+        val result = cache.getMapDataWithGeometry(bbox)
+        Log.i(TAG, "Fetched ${result.size} elements and geometries in ${nowAsEpochMilliseconds() - time}ms")
 
         return result
     }

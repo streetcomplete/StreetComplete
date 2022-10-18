@@ -15,7 +15,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlin.system.measureTimeMillis
+import kotlin.math.max
 
 /** Downloads all the things */
 class Downloader(
@@ -36,23 +36,25 @@ class Downloader(
         }
         Log.i(TAG, "Starting download ($sqkm km², bbox: $bboxString)")
 
-        val execTimeMs = measureTimeMillis {
-            mutex.withLock {
-                coroutineScope {
-                    // all downloaders run concurrently
-                    launch { notesDownloader.download(bbox) }
-                    launch { mapDataDownloader.download(bbox) }
-                    launch { mapTilesDownloader.download(bbox) }
-                }
+        val time = nowAsEpochMilliseconds()
+
+        mutex.withLock {
+            coroutineScope {
+                // all downloaders run concurrently
+                launch { notesDownloader.download(bbox) }
+                launch { mapDataDownloader.download(bbox) }
+                launch { mapTilesDownloader.download(bbox) }
             }
-            putDownloadedAlready(tiles)
         }
-        Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${(execTimeMs / 1000.0).format(1)}s")
+        putDownloadedAlready(tiles)
+
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
     }
 
     private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
-        val ignoreOlderThan = (nowAsEpochMilliseconds() - ApplicationConstants.REFRESH_DATA_AFTER)
-            .coerceAtLeast(0L)
+        val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
+        val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - freshTime)
         return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 

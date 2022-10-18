@@ -4,8 +4,8 @@ import android.util.Log
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
-import kotlin.system.measureTimeMillis
 
 /** Manages access to the notes storage */
 class NoteController(
@@ -25,27 +25,29 @@ class NoteController(
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
+        val time = nowAsEpochMilliseconds()
+
         val oldNotesById = mutableMapOf<Long, Note>()
         val addedNotes = mutableListOf<Note>()
         val updatedNotes = mutableListOf<Note>()
-        val execTimeMs = measureTimeMillis {
-            synchronized(this) {
-                dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
+        synchronized(this) {
+            dao.getAll(bbox).associateByTo(oldNotesById) { it.id }
 
-                for (note in notes) {
-                    if (oldNotesById.containsKey(note.id)) {
-                        updatedNotes.add(note)
-                    } else {
-                        addedNotes.add(note)
-                    }
-                    oldNotesById.remove(note.id)
+            for (note in notes) {
+                if (oldNotesById.containsKey(note.id)) {
+                    updatedNotes.add(note)
+                } else {
+                    addedNotes.add(note)
                 }
-
-                dao.putAll(notes)
-                dao.deleteAll(oldNotesById.keys)
+                oldNotesById.remove(note.id)
             }
+
+            dao.putAll(notes)
+            dao.deleteAll(oldNotesById.keys)
         }
-        Log.i(TAG, "Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${(execTimeMs / 1000.0).format(1)}s")
+
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)
     }
