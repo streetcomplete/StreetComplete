@@ -16,9 +16,10 @@ class UrlConfigController(
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController
 ) {
-    fun apply(url: String): Boolean {
-        val config = parseConfigUrl(url, questTypeRegistry, overlayRegistry) ?: return false
+    fun parse(url: String): UrlConfig? =
+        parseConfigUrl(url, questTypeRegistry, overlayRegistry)
 
+    fun apply(config: UrlConfig) {
         // TODO what if preset by that name already exists?
         val presetId = questPresetsController.add(config.presetName)
 
@@ -29,8 +30,6 @@ class UrlConfigController(
         // set the current quest prest + overlay last, so the above do not trigger updates
         questPresetsController.selectedId = presetId
         selectedOverlayController.selectedOverlay = config.overlay
-
-        return true
     }
 
     fun create(presetId: Long): String {
