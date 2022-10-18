@@ -61,7 +61,7 @@ private inline fun <T> wrapExceptions(block: () -> T): T =
     }
 
 private fun LocalDateTime.toTrackFilename(): String {
-    fun Int.f(len: Int): String = this.toString().padStart(len, '0')
-    return ("${this.year.f(4)}_${this.monthNumber.f(2)}_${this.dayOfMonth.f(2)}"
-        + "T${this.hour.f(2)}_${this.minute.f(2)}_${this.second.f(2)}.${this.nanosecond.f(6)}Z.gpx")
+    fun Int.f(len: Int): String = toString().padStart(len, '0')
+    return ("${year.f(4)}_${monthNumber.f(2)}_${dayOfMonth.f(2)}"
+        + "T${hour.f(2)}_${minute.f(2)}_${second.f(2)}.${nanosecond.f(6)}Z.gpx")
 }
