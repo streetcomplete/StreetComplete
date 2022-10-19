@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import java.time.Instant
-import java.time.LocalDate
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String
@@ -124,7 +124,7 @@ class TagOlderThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
     override fun toString() = "$key older $dateFilter"
     override fun compareTo(tagValue: LocalDate) =
         if (resurveyDate != null && resurveyKeys.contains(key))
-            tagValue < resurveyDate
+            tagValue < resurveyDate!!
         else
             tagValue < dateFilter.date
 }
@@ -136,7 +136,7 @@ class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
     override fun matches(obj: Element): Boolean {
-        if (compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())) return true
+        if (compareTo(Instant.fromEpochMilliseconds(obj.timestampEdited).toLocalDate())) return true
         return if (resurveyKeys.contains(key)) {
             // if we have a tag in the resurvey list, interpret missing check date as match
             val l = getLastCheckDateKeys(key)
@@ -166,7 +166,7 @@ class ElementNewerThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
 
 abstract class CompareElementAge(val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
-    override fun matches(obj: Element) = compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())
+    override fun matches(obj: Element) = compareTo(Instant.fromEpochMilliseconds(obj.timestampEdited).toLocalDate())
 }
 
 class CombineFilters(vararg val filters: ElementFilter) : ElementFilter {

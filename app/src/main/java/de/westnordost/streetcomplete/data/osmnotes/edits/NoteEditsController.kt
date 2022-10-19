@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.io.File
-import java.lang.System.currentTimeMillis
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -38,7 +38,7 @@ class NoteEditsController(
             action,
             text,
             imagePaths,
-            currentTimeMillis(),
+            nowAsEpochMilliseconds(),
             false,
             imagePaths.isNotEmpty(),
             track,

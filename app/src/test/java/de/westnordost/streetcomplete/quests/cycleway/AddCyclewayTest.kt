@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.mock
@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.translate
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -39,8 +40,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyDouble
-import java.time.Instant
-import java.time.LocalDate
 import java.util.concurrent.FutureTask
 
 class AddCyclewayTest {
@@ -182,7 +181,7 @@ class AddCyclewayTest {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
             "cycleway" to "track"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = nowAsEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -194,7 +193,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "track",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = nowAsEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -206,7 +205,7 @@ class AddCyclewayTest {
             "highway" to "primary",
             "cycleway" to "whatsthis",
             "check_date:cycleway" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = nowAsEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -601,7 +600,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both", "track", "track"),
-            StringMapEntryAdd("check_date:cycleway", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString())
         )
     }
 
@@ -610,7 +609,7 @@ class AddCyclewayTest {
             mapOf("cycleway:both" to "track", "check_date:cycleway" to "2000-11-11"),
             bothSidesAnswer(TRACK),
             StringMapEntryModify("cycleway:both", "track", "track"),
-            StringMapEntryModify("check_date:cycleway", "2000-11-11", LocalDate.now().toCheckDateString())
+            StringMapEntryModify("check_date:cycleway", "2000-11-11", nowAsCheckDateString())
         )
     }
 

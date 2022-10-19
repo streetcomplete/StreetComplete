@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 import android.util.Log
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.saveToFile
 import java.io.File
 import java.io.IOException
@@ -20,14 +21,14 @@ class AvatarsDownloader(
             return
         }
 
-        val time = System.currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
         for (userId in userIds) {
             val avatarUrl = getProfileImageUrl(userId)
             if (avatarUrl != null) {
                 download(userId, avatarUrl)
             }
         }
-        val seconds = (System.currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 

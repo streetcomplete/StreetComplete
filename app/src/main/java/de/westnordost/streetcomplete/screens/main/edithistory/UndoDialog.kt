@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -67,7 +68,7 @@ class UndoDialog(
         val overlayResId = edit.overlayIcon
         if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
         binding.createdTimeText.text =
-            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
+            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, nowAsEpochMilliseconds(), DateUtils.MINUTE_IN_MILLIS)
         binding.descriptionContainer.addView(edit.descriptionView)
 
         setTitle(R.string.undo_confirm_title2)

@@ -16,9 +16,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestHidden
-import java.lang.System.currentTimeMillis
 import java.util.TreeSet
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -93,7 +93,7 @@ class EditHistoryController(
     }
 
     private fun fetchAll(): List<Edit> {
-        val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
+        val maxAge = nowAsEpochMilliseconds() - MAX_UNDO_HISTORY_AGE
 
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }

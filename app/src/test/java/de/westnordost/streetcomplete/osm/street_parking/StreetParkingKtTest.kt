@@ -5,11 +5,10 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
 
 class StreetParkingTest {
 
@@ -112,7 +111,7 @@ class StreetParkingTest {
             LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
             arrayOf(
                 StringMapEntryModify("parking:lane:both", "no", "no"),
-                StringMapEntryAdd("check_date:parking:lane", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:parking:lane", nowAsCheckDateString())
             )
         )
         verifyAnswer(
@@ -130,7 +129,7 @@ class StreetParkingTest {
                 StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
                 StringMapEntryModify("parking:lane:left:parallel", "half_on_kerb", "half_on_kerb"),
                 StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
-                StringMapEntryAdd("check_date:parking:lane", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:parking:lane", nowAsCheckDateString())
             )
         )
     }

@@ -18,8 +18,8 @@ import de.westnordost.streetcomplete.util.ktx.findNext
 import de.westnordost.streetcomplete.util.ktx.findPrevious
 import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import de.westnordost.streetcomplete.util.ktx.indexOfMaxBy
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
-import java.lang.System.currentTimeMillis
 
 /** Action that performs a split on a way.
  *
@@ -76,7 +76,7 @@ data class SplitWayAction(private val splits: List<SplitPolylineAtPosition>) : E
                     splitAtIndices.add(split.index + insertedNodeCount)
                 }
                 is SplitWayAtLinePosition -> {
-                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, currentTimeMillis())
+                    val splitNode = Node(idProvider.nextNodeId(), split.pos, emptyMap(), 1, nowAsEpochMilliseconds())
                     createdNodes.add(splitNode)
 
                     val nodeIndex = split.index2 + insertedNodeCount
@@ -198,7 +198,7 @@ private fun getUpdatedRelations(
         }
         result.add(relation.copy(
             members = updatedRelationMembers,
-            timestampEdited = currentTimeMillis()
+            timestampEdited = nowAsEpochMilliseconds()
         ))
     }
     return result

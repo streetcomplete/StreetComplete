@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables.Col
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables.NAME_EDITS
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables.NAME_HIDDEN
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 class OtherSourceDao(private val db: Database) {
 
@@ -28,7 +28,7 @@ class OtherSourceDao(private val db: Database) {
         db.delete(NAME_EDITS, where = "$EDIT_ID = $elementEditId") > 0
 
     fun hide(key: OtherSourceQuestKey): Long {
-        val timestamp = currentTimeMillis()
+        val timestamp = nowAsEpochMilliseconds()
         val inserted = db.insert(NAME_HIDDEN, listOf(
             ID to key.id,
             SOURCE to key.source,

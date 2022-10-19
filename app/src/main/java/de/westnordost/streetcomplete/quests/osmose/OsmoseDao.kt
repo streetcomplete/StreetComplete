@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.CLASS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENTS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ANSWERED
@@ -27,6 +26,7 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.TITLE
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.UUID
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
 import de.westnordost.streetcomplete.quests.questPrefix
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -84,7 +84,7 @@ class OsmoseDao(
             val bodylines = body.string().split("\n").drop(1).dropLast(1)
             Log.d(TAG, "got ${bodylines.size} problems")
 
-            val downloadTimestamp = System.currentTimeMillis()
+            val downloadTimestamp = nowAsEpochMilliseconds()
             db.replaceMany(NAME,
                 arrayOf(UUID, ITEM, CLASS, LEVEL, TITLE, SUBTITLE, LATITUDE, LONGITUDE, ELEMENTS, ANSWERED, TIMESTAMP),
                 bodylines.mapNotNull {

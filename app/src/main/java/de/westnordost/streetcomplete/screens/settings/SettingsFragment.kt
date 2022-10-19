@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivi
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.setDefaultLocales
@@ -212,7 +213,7 @@ class SettingsFragment :
         downloadedTilesDao.removeAll()
         mapDataController.clear()
         noteController.clear()
-        questTypeRegistry.forEach { it.deleteMetadataOlderThan(System.currentTimeMillis()) }
+        questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
     }
 
     private suspend fun deleteTiles() = withContext(Dispatchers.IO) {
