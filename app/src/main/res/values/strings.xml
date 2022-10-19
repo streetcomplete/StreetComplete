@@ -261,6 +261,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="about_category_feedback">Feedback</string>
 
+    <string name="about_title_get_involved">Get Involved</string>
+
     <string name="about_title_changelog">Version history</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="title_whats_new">What’s New?</string>
