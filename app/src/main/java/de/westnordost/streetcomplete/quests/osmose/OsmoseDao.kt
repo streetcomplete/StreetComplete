@@ -137,7 +137,8 @@ class OsmoseDao(
                 uuid,
                 if (elements.size == 1) mapDataWithEditsSource.getGeometry(elements.single().type, elements.single().id) ?: ElementPointGeometry(position)
                 else ElementPointGeometry(position),
-                type
+                type,
+                position
         ).apply { if (elements.size == 1) elementKey = elements.single() }
 
     fun setFromDoneToNotAnsweredNear(position: LatLon) {

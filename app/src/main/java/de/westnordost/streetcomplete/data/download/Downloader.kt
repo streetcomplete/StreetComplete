@@ -44,9 +44,12 @@ class Downloader(
             coroutineScope {
                 // all downloaders run concurrently
                 launch { notesDownloader.download(bbox) }
-                launch { mapDataDownloader.download(bbox) }
+                launch {
+                    mapDataDownloader.download(bbox)
+                    // download otherSource stuff after map data, because quest creation may depend on map data
+                    otherSourceQuestController.download(bbox)
+                }
                 launch { mapTilesDownloader.download(bbox) }
-                launch { otherSourceQuestController.download(bbox) }
             }
         }
         putDownloadedAlready(tiles)

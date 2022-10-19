@@ -13,10 +13,10 @@ data class OtherSourceQuest(
     val id: String,
     override val geometry: ElementGeometry,
     override val type: OtherSourceQuestType,
+    override val position: LatLon = geometry.center // allow setting position to arbitrary LatLon, because e.g. Osmose issues are often located at outline of building instead of in center
 ) : Quest {
     override val key by lazy { OtherSourceQuestKey(id, source) }
-    override val markerLocations: Collection<LatLon> get() = listOf(geometry.center)
-    override val position: LatLon get() = geometry.center
+    override val markerLocations: Collection<LatLon> get() = listOf(position)
     val source get() = type.source
 
     /** an element can be linked to the quest, but this is not necessary */
