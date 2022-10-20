@@ -14,12 +14,13 @@ data class UrlConfig(
     val overlay: Overlay?,
 )
 
-private const val DOMAIN_NAME = "https://streetcomplete.app/"
+private const val URL = "https://streetcomplete.app/s"
 
 private const val PARAM_NAME = "n"
 private const val PARAM_QUESTS = "q"
 private const val PARAM_OVERLAY = "o"
 private const val PARAM_QUEST_ORDER = "qo"
+private const val PARAM_OVERLAY_MAX_AGE_IN_DAYS = "od"
 
 private const val ORDINAL_RADIX = 36
 
@@ -28,7 +29,7 @@ fun parseConfigUrl(
     questTypeRegistry: QuestTypeRegistry,
     overlayRegistry: OverlayRegistry
 ): UrlConfig? {
-    val prefix = "$DOMAIN_NAME?"
+    val prefix = "$URL?"
     if (!url.startsWith(prefix, ignoreCase = true)) return null
 
     val parameters: Map<String, String> = url
@@ -95,7 +96,7 @@ fun createConfigUrl(
     val parameterString = parameters.joinToString("&") { (key, value) ->
         "$key=$value"
     }
-    return "$DOMAIN_NAME?$parameterString"
+    return "$URL?$parameterString"
 }
 
 private fun questTypesToString(
