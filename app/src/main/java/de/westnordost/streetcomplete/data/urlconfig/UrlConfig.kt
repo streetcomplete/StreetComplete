@@ -77,8 +77,11 @@ fun createConfigUrl(
         PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"),
         PARAM_QUESTS to questTypesToString(urlConfig.questTypes, questTypeRegistry)
     )
-    // TODO limit quest type orders length?!
-    if (urlConfig.questTypeOrders.isNotEmpty()) {
+    // Limiting to 100 quest type reorderings and omitting them completely if that limit is exceeded
+    // Reading the QR code that long becomes more and more difficult the bigger it gets, the limit
+    // needs to be somewhere and 100 reorderings are quite a lofty limit anyway
+    val questTypeOrders = urlConfig.questTypeOrders
+    if (questTypeOrders.isNotEmpty() && questTypeOrders.size <= 100) {
         val sortOrders = urlConfig.questTypeOrders.mapNotNull { (first, second) ->
             val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(ORDINAL_RADIX)
             val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(ORDINAL_RADIX)
