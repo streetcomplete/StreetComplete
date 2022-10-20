@@ -571,6 +571,17 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_presets_share">Share</string>
     <string name="quest_presets_delete">Delete</string>
 
+    <!-- Config via URL/QRCode -->
+
+    <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
+    <string name="urlconfig_as_url">Or as URL:</string>
+    <string name="urlconfig_url_copied">URL copied to clipboard</string>
+    <string name="urlconfig_apply_title">Apply Preset</string>
+    <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
+    <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
+    <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
+    <string name="urlconfig_scan_qr_code_again">After installing the app, scan the QR code again to apply the preset.</string>
+
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
 
@@ -1589,12 +1600,4 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="unknown_shop_title">Other kind of place</string>
 
     <string name="overlay_street_parking">Street parking</string>
-
-    <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
-    <string name="urlconfig_as_url">Or as URL:</string>
-    <string name="urlconfig_url_copied">URL copied to clipboard</string>
-    <string name="urlconfig_apply_title">Apply Preset</string>
-    <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
-    <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
-    <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
 </resources>
