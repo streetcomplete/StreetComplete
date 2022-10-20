@@ -45,6 +45,9 @@ class QuestPresetsController(
     override fun getAll(): List<QuestPreset> =
         questPresetsDao.getAll()
 
+    override fun getByName(name: String): QuestPreset? =
+        questPresetsDao.getAll().find { it.name == name }
+
     /* listeners */
 
     override fun addListener(listener: QuestPresetsSource.Listener) {

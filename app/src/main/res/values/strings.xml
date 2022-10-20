@@ -1595,5 +1595,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="urlconfig_url_copied">URL copied to clipboard</string>
     <string name="urlconfig_apply_title">Apply Preset</string>
     <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
+    <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
     <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
 </resources>

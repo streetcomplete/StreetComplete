@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
@@ -75,6 +76,7 @@ class MainActivity :
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val urlConfigController: UrlConfigController by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: SharedPreferences by inject()
 
     private val requestLocation = LocationRequester(this, this)
@@ -130,14 +132,22 @@ class MainActivity :
         val data = intent.data ?: return
         val config = urlConfigController.parse(data.toString()) ?: return
 
+        val alreadyExists = questPresetsSource.getByName(config.presetName) != null
+
         val name = "<i>" + Html.escapeHtml(config.presetName) + "</i>"
-        val text = getString(R.string.urlconfig_apply_message, name) +
-            "<br><br>" +
-            getString(R.string.urlconfig_switch_hint)
+        val text = StringBuilder()
+        text.append(getString(R.string.urlconfig_apply_message, name))
+        text.append("<br><br>")
+        if (alreadyExists) {
+            text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")
+            text.append("<br><br>")
+        } else {
+            text.append(getString(R.string.urlconfig_switch_hint))
+        }
 
         AlertDialog.Builder(this)
             .setTitle(R.string.urlconfig_apply_title)
-            .setMessage(text.parseAsHtml())
+            .setMessage(text.toString().parseAsHtml())
             .setPositiveButton(android.R.string.ok) { _,_ -> urlConfigController.apply(config) }
             .setNegativeButton(android.R.string.cancel) { _,_ -> }
             .show()

@@ -13,6 +13,7 @@ interface QuestPresetsSource {
 
     fun getName(presetId: Long): String?
     fun getAll(): List<QuestPreset>
+    fun getByName(name: String): QuestPreset?
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)

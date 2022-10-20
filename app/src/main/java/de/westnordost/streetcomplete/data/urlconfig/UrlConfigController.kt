@@ -20,14 +20,14 @@ class UrlConfigController(
         parseConfigUrl(url, questTypeRegistry, overlayRegistry)
 
     fun apply(config: UrlConfig) {
-        // TODO what if preset by that name already exists?
-        val presetId = questPresetsController.add(config.presetName)
+        val existingPreset = questPresetsController.getByName(config.presetName)
+        val presetId = existingPreset?.id ?: questPresetsController.add(config.presetName)
 
         val questTypes = questTypeRegistry.associateWith { it in config.questTypes }
         visibleQuestTypeController.setVisibilities(questTypes, presetId)
         questTypeOrderController.setOrders(config.questTypeOrders, presetId)
 
-        // set the current quest prest + overlay last, so the above do not trigger updates
+        // set the current quest preset + overlay last, so the above do not trigger updates
         questPresetsController.selectedId = presetId
         selectedOverlayController.selectedOverlay = config.overlay
     }
