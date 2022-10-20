@@ -42,7 +42,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
             callback = { name -> addQuestPreset(name) }
         )
         dialog.editText.hint = ctx.getString(R.string.quest_presets_preset_name)
-        dialog.editText.filters = arrayOf(InputFilter.LengthFilter(40))
+        dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
         dialog.show()
     }
 

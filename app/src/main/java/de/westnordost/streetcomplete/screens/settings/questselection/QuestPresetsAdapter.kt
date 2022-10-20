@@ -135,7 +135,7 @@ class QuestPresetsAdapter(
                 text = preset.name,
                 callback = { name -> renameQuestPreset(preset.id, name) }
             )
-            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(40))
+            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
             dialog.show()
         }
 

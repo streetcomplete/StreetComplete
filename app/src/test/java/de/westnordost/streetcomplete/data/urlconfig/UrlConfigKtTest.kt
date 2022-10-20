@@ -132,8 +132,8 @@ internal class UrlConfigKtTest {
 
     @Test fun `shorten name if too long`() {
         assertEquals(
-            "https://streetcomplete.app/s?n=1234567890123456789012345678901234567...&q=1",
-            createConfigUrl(UrlConfig("1234567890123456789012345678901234567890X", listOf(q0), emptyList(), null), quests, overlays)
+            "https://streetcomplete.app/s?n=123456789012345678901234567890123456789012345678901234567...&q=1",
+            createConfigUrl(UrlConfig("123456789012345678901234567890123456789012345678901234567890X", listOf(q0), emptyList(), null), quests, overlays)
         )
     }
 
