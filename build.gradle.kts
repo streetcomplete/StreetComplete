@@ -19,7 +19,7 @@ allprojects {
 
 tasks.register<UpdateWebsiteTranslationsTask>("updateWebsiteTranslations") {
     group = "streetcomplete"
-    targetDir = "$projectDir/../streetcomplete-website/strings"
+    targetDir = "$projectDir/../streetcomplete-website/res"
     apiToken = properties["POEditorAPIToken"] as String
 }
 

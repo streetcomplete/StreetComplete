@@ -37,7 +37,6 @@ open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
 
     @TaskAction fun run() {
         val targetDir = targetDir ?: return
-        File(targetDir).mkdirs()
 
         val languageCodes = fetchLocalizations { it["code"] as String }
         val json = Json {
@@ -54,7 +53,9 @@ open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
                     val strings = translations.filterKeys { it in keys || it in requiredKeys }
                     // only accept complete translations
                     if (requiredKeys.all { it in strings.keys }) {
-                        val file = File("$targetDir/$lang.json")
+                        val dir = File("$targetDir/$lang/")
+                        dir.mkdirs()
+                        val file = File(dir, "strings.json")
                         file.writeText(json.encodeToString(strings))
                     }
                 }
