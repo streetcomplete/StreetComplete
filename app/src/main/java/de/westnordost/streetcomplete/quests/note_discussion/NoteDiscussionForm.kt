@@ -66,14 +66,18 @@ class NoteDiscussionForm : AbstractQuestForm() {
     interface Listener {
         /** Called when the user successfully answered the quest */
         fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon)
+        /** Called when the user did not answer the quest but also did not hide it */
+        fun onNoteQuestClosed()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val alreadyHidden = osmNoteQuestController.getVisible(noteId) == null
         setButtonPanelAnswers(listOf(
-            AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            if (alreadyHidden) AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
+            else               AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
         ))
 
         binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
@@ -113,6 +117,10 @@ class NoteDiscussionForm : AbstractQuestForm() {
             }
             listener?.onNoteQuestSolved(questType, noteId, geometry.center)
         }
+    }
+
+    private fun closeQuest() {
+        listener?.onNoteQuestClosed()
     }
 
     private fun hideQuest() {
