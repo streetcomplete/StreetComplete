@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import kotlinx.datetime.Instant
 import org.json.JSONObject
-import java.time.OffsetDateTime
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     fun parse(json: String): Statistics {
@@ -27,8 +27,8 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
-        val lastUpdate = OffsetDateTime.parse(obj.getString("lastUpdate")).toInstant()
-        return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilli(), isAnalyzing)
+        val lastUpdate = Instant.parse(obj.getString("lastUpdate"))
+        return Statistics(typesStatistics, countriesStatistics, rank, daysActive, lastUpdate.toEpochMilliseconds(), isAnalyzing)
     }
 
     private fun mergeTypeAliases(map: MutableMap<String, Int>) {

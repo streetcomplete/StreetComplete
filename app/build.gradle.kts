@@ -149,6 +149,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$kotlinxCoroutinesVersion")
 
+    // Date/time
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+
     // scheduling background jobs
     implementation("androidx.work:work-runtime:2.7.1")
 

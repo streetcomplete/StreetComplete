@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -40,7 +41,6 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
-import java.time.Instant
 
 class NoteDiscussionForm : AbstractQuestForm() {
 
@@ -158,7 +158,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         override fun onBind(with: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, Instant.now().toEpochMilli(), MINUTE_IN_MILLIS)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, nowAsEpochMilliseconds(), MINUTE_IN_MILLIS)
             val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = with.action.actionResourceId

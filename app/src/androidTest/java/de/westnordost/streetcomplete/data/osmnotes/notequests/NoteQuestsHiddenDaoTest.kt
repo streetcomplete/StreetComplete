@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -42,7 +43,7 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
     @Test fun getNewerThan() = runBlocking {
         dao.add(1L)
         delay(200)
-        val time = System.currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
         dao.add(2L)
         val result = dao.getNewerThan(time - 100).single()
         assertEquals(2L, result.noteId)

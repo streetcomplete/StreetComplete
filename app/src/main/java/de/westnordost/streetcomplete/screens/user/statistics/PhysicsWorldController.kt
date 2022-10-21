@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.user.statistics
 
 import android.os.Handler
 import android.os.HandlerThread
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.android.asCoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.jbox2d.collision.shapes.Shape
@@ -64,9 +65,9 @@ class PhysicsWorldController(gravity: Vec2) {
     }
 
     private fun loop() {
-        val startTime = System.currentTimeMillis()
+        val startTime = nowAsEpochMilliseconds()
         world.step(DELAY / 1000f, 6, 2)
-        val executionTime = System.currentTimeMillis() - startTime
+        val executionTime = nowAsEpochMilliseconds() - startTime
         listener?.onWorldStep()
         if (isRunning) {
             handler.postDelayed(this::loop, max(0, DELAY - executionTime))

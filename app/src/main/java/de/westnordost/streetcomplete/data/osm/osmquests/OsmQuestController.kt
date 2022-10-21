@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -35,7 +36,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import java.lang.System.currentTimeMillis
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
@@ -73,7 +73,7 @@ class OsmQuestController internal constructor(
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val time = currentTimeMillis()
+            val time = nowAsEpochMilliseconds()
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
 
@@ -93,7 +93,7 @@ class OsmQuestController internal constructor(
                 // quests that refer to elements that have been deleted shall be deleted
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
-                val seconds = (currentTimeMillis() - time) / 1000.0
+                val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
                 Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
@@ -143,7 +143,7 @@ class OsmQuestController internal constructor(
         mapDataWithGeometry: MapDataWithGeometry,
         questTypes: Collection<OsmElementQuestType<*>>,
     ): Collection<OsmQuest> {
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         val countryBoundaries = countryBoundariesFuture.get()
 
@@ -161,7 +161,7 @@ class OsmQuestController internal constructor(
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
                 } else {
-                    val questTime = currentTimeMillis()
+                    val questTime = nowAsEpochMilliseconds()
                     var questCount = 0
                     val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags)
                             onlyElementsWithTags
@@ -175,7 +175,7 @@ class OsmQuestController internal constructor(
                         questCount++
                     }
 
-                    val questSeconds = currentTimeMillis() - questTime
+                    val questSeconds = nowAsEpochMilliseconds() - questTime
                     Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
                     questsForType
                 }
@@ -183,7 +183,7 @@ class OsmQuestController internal constructor(
         }
         val quests = runBlocking { deferredQuests.awaitAll().flatten() }
 
-        val seconds = (currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
         return quests
@@ -233,12 +233,12 @@ class OsmQuestController internal constructor(
     }
 
     private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         db.deleteAll(obsoleteQuestKeys)
         db.putAll(questsNow)
 
-        val seconds = (currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
     }
 

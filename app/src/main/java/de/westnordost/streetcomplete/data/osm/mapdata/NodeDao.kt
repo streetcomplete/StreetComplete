@@ -12,10 +12,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TAGS
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.lang.System.currentTimeMillis
 
 /** Stores OSM nodes */
 class NodeDao(private val db: Database) {
@@ -32,7 +32,7 @@ class NodeDao(private val db: Database) {
     fun putAll(nodes: Collection<Node>) {
         if (nodes.isEmpty()) return
 
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         db.replaceMany(NAME,
             arrayOf(ID, VERSION, LATITUDE, LONGITUDE, TAGS, TIMESTAMP, LAST_SYNC),

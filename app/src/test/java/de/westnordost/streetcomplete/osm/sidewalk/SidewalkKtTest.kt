@@ -5,11 +5,10 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
 
 class SidewalkKtTest {
     @Test fun `apply simple values`() {
@@ -106,7 +105,7 @@ class SidewalkKtTest {
             LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.YES),
             arrayOf(
                 StringMapEntryModify("sidewalk", "both", "both"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
             )
         )
         verifyAnswer(
@@ -115,7 +114,7 @@ class SidewalkKtTest {
             arrayOf(
                 StringMapEntryModify("sidewalk:left", "separate", "separate"),
                 StringMapEntryModify("sidewalk:right", "no", "no"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
             )
         )
     }

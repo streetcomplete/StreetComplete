@@ -13,10 +13,10 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.lang.System.currentTimeMillis
 
 /** Stores OSM notes */
 class NoteDao(private val db: Database) {
@@ -43,7 +43,7 @@ class NoteDao(private val db: Database) {
                 it.timestampCreated,
                 it.timestampClosed,
                 Json.encodeToString(it.comments),
-                currentTimeMillis()
+                nowAsEpochMilliseconds()
             ) }
         )
     }
@@ -88,7 +88,7 @@ class NoteDao(private val db: Database) {
         CREATED to timestampCreated,
         CLOSED to timestampClosed,
         COMMENTS to Json.encodeToString(comments),
-        LAST_SYNC to currentTimeMillis()
+        LAST_SYNC to nowAsEpochMilliseconds()
     )
 
     private fun CursorPosition.toNote() = Note(
