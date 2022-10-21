@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -64,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
+        app:tint="#fff"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         tools:ignore="HardcodedText"/>
 
