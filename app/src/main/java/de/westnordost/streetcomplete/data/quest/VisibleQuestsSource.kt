@@ -107,8 +107,8 @@ class VisibleQuestsSource(
     }
 
     fun get(questKey: QuestKey): Quest? = cache.get(questKey) ?: when (questKey) {
-        is OsmNoteQuestKey -> osmNoteQuestSource.get(questKey.noteId)
-        is OsmQuestKey -> osmQuestSource.get(questKey)
+        is OsmNoteQuestKey -> osmNoteQuestSource.getVisible(questKey.noteId)
+        is OsmQuestKey -> osmQuestSource.getVisible(questKey)
     }?.takeIf { isVisible(it) }
 
     private fun isVisible(questType: QuestType): Boolean =

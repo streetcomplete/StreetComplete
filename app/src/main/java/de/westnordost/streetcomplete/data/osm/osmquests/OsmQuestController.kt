@@ -264,7 +264,7 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key))
     }
 
-    override fun get(key: OsmQuestKey): OsmQuest? {
+    override fun getVisible(key: OsmQuestKey): OsmQuest? {
         val entry = db.get(key) ?: return null
         if (hiddenDB.contains(entry.key)) return null
         val geometry = mapDataSource.getGeometry(entry.elementType, entry.elementId) ?: return null
@@ -326,7 +326,7 @@ class OsmQuestController internal constructor(
             if (!hiddenDB.delete(key)) return false
         }
         if (hidden != null) onUnhid(hidden)
-        val quest = get(key)
+        val quest = getVisible(key)
         if (quest != null) onUpdated(added = listOf(quest))
         return true
     }
