@@ -35,6 +35,9 @@
                 "category-road_minor": {
                     "name": "비주요 도로"
                 },
+                "category-road_service": {
+                    "name": "서비스 도로"
+                },
                 "category-route": {
                     "name": "노선형 지물"
                 },
@@ -262,6 +265,7 @@
                     "label": "서비스",
                     "options": {
                         "cosmetics": "화장품",
+                        "skin_care": "스킨 케어",
                         "tanning": "태닝"
                     }
                 },
@@ -926,6 +930,11 @@
                 "highway": {
                     "label": "유형"
                 },
+                "highway_cartpath": {
+                    "options": {
+                        "service": "서비스 도로"
+                    }
+                },
                 "historic": {
                     "label": "유형"
                 },
@@ -967,7 +976,8 @@
                 "horse_scale": {
                     "label": "승마 난이도",
                     "options": {
-                        "common": "쉬움: 운행하는 데 아무 문제나 어려움이 없다. (기본값)"
+                        "common": "쉬움: 운행하는 데 아무 문제나 어려움이 없다. (기본값)",
+                        "critical": "경계선: 숙련된 라이더와 말만 통행할 수 있습니다. 주요 장애물. 교량을주의 깊게 검사해야합니다."
                     }
                 },
                 "horse_stables": {
@@ -1486,6 +1496,9 @@
                 "rating": {
                     "label": "정격 용량"
                 },
+                "real_fire-GB-IE": {
+                    "label": "실제 화재"
+                },
                 "recycling_accepts": {
                     "label": "종류",
                     "options": {
@@ -1880,6 +1893,9 @@
                 "studio": {
                     "label": "유형"
                 },
+                "subject": {
+                    "label": "주제"
+                },
                 "substance": {
                     "label": "물질"
                 },
@@ -1923,6 +1939,11 @@
                 },
                 "survey/date": {
                     "label": "마지막으로 확인한 날짜"
+                },
+                "survey_point/structure": {
+                    "options": {
+                        "bracket": "브라켓"
+                    }
                 },
                 "swimming_pool": {
                     "label": "유형"
@@ -2043,17 +2064,7 @@
                     "placeholder": "우수함, 좋음, 나쁨..."
                 },
                 "transformer": {
-                    "label": "변압기 유형",
-                    "options": {
-                        "auto": "단권변압기",
-                        "auxiliary": "보조변압기",
-                        "converter": "변환기 변압기",
-                        "distribution": "배전용 변압기",
-                        "generator": "발전기 변압기",
-                        "phase_angle_regulator": "이상변압기",
-                        "traction": "가공 전차선 변압기",
-                        "yes": "알 수 없음"
-                    }
+                    "label": "변압기 유형"
                 },
                 "trees": {
                     "label": "나무"
@@ -2655,7 +2666,8 @@
                     "name": "요양원"
                 },
                 "amenity/parking": {
-                    "name": "주차장"
+                    "name": "주차장",
+                    "terms": "주차장"
                 },
                 "amenity/parking/multi-storey": {
                     "name": "입체 주차장"
@@ -2677,7 +2689,8 @@
                     "name": "장애인 전용 주차 구역"
                 },
                 "amenity/pharmacy": {
-                    "name": "약국"
+                    "name": "약국",
+                    "terms": "약국 카운터"
                 },
                 "amenity/photo_booth": {
                     "name": "사진 부스"
@@ -2708,7 +2721,8 @@
                     "terms": "만디르"
                 },
                 "amenity/place_of_worship/jewish": {
-                    "name": "유대교 시너고그"
+                    "name": "유대교 시너고그",
+                    "terms": "유대 시나고규"
                 },
                 "amenity/place_of_worship/muslim": {
                     "name": "이슬람교 모스크"
@@ -2940,6 +2954,9 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "원형극장"
+                },
+                "amenity/toilets": {
+                    "name": "화장실"
                 },
                 "amenity/toilets/disposal/flush": {
                     "name": "수세식 화장실"
@@ -3981,8 +3998,8 @@
                     "terms": "2차 도로 연결로"
                 },
                 "highway/service": {
-                    "name": "접근 도로",
-                    "terms": "접근 도로"
+                    "name": "서비스 도로",
+                    "terms": "서비스 도로"
                 },
                 "highway/service/alley": {
                     "name": "골목",
@@ -4034,6 +4051,9 @@
                 "highway/tertiary_link": {
                     "name": "3차 도로 연결로",
                     "terms": "3차 도로 연결로"
+                },
+                "highway/track": {
+                    "name": "트랙 / 육로 접근 도로"
                 },
                 "highway/traffic_mirror": {
                     "name": "차량 거울",
@@ -4260,10 +4280,6 @@
                 "landuse/military/danger_area": {
                     "name": "위험 지역",
                     "terms": "위험 지역"
-                },
-                "landuse/military/naval_base": {
-                    "name": "해군 기지",
-                    "terms": "해군 기지"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "군용 장애물 코스"
@@ -4610,7 +4626,7 @@
                     "terms": "선"
                 },
                 "man_made": {
-                    "name": "인공 지물"
+                    "name": "사람이 만든 기능"
                 },
                 "man_made/adit": {
                     "name": "수평갱",
@@ -5619,7 +5635,8 @@
                     "name": "기차 차량 세척"
                 },
                 "railway/tram": {
-                    "name": "노면전차 궤도"
+                    "name": "노면전차 궤도",
+                    "terms": "트램 길"
                 },
                 "railway/tram_level_crossing": {
                     "name": "전차-도로 건널목"
@@ -5674,10 +5691,6 @@
                 "shop/anime": {
                     "name": "애니메이션/만화 가게",
                     "terms": "애니메이션/만화 상점"
-                },
-                "shop/antiques": {
-                    "name": "골동품 가게",
-                    "terms": "골동품 상점"
                 },
                 "shop/appliance": {
                     "name": "가전 제품 가게",
@@ -5734,10 +5747,6 @@
                 "shop/bookmaker": {
                     "name": "마권업자",
                     "terms": "마권업자"
-                },
-                "shop/books": {
-                    "name": "서점",
-                    "terms": "책방"
                 },
                 "shop/boutique": {
                     "name": "부티크"
@@ -5859,10 +5868,6 @@
                     "name": "유제품 가게",
                     "terms": "우유,달걀,계란,치즈"
                 },
-                "shop/deli": {
-                    "name": "델리",
-                    "terms": "점심,고기,샌드위치"
-                },
                 "shop/department_store": {
                     "name": "백화점",
                     "terms": "백화점"
@@ -5980,10 +5985,6 @@
                     "name": "철물점",
                     "terms": "철물점"
                 },
-                "shop/health_food": {
-                    "name": "건강식품 가게",
-                    "terms": "건강식품 상점"
-                },
                 "shop/hearing_aids": {
                     "name": "보청기 가게",
                     "terms": "보청기 상점"
@@ -6085,10 +6086,6 @@
                     "name": "악기 가게",
                     "terms": "악기 상점"
                 },
-                "shop/newsagent": {
-                    "name": "신문/잡지 가게",
-                    "terms": "신문/잡지 상점"
-                },
                 "shop/nutrition_supplements": {
                     "name": "영양 보조 식품 가게",
                     "terms": "영양 보조 식품 상점"
@@ -6115,9 +6112,6 @@
                 "shop/pastry": {
                     "name": "과자 가게",
                     "terms": "과자 상점"
-                },
-                "shop/pawnbroker": {
-                    "name": "전당포"
                 },
                 "shop/perfumery": {
                     "name": "향수 가게",
@@ -6171,9 +6165,6 @@
                 "shop/seafood": {
                     "name": "해산물 가게",
                     "terms": "해산물 상점"
-                },
-                "shop/second_hand": {
-                    "name": "위탁/중고품 할인 매장"
                 },
                 "shop/sewing": {
                     "name": "바느질 용품 가게",
@@ -6265,9 +6256,6 @@
                     "name": "진공청소기 가게",
                     "terms": "진공청소기 상점"
                 },
-                "shop/variety_store": {
-                    "name": "잡화점"
-                },
                 "shop/video": {
                     "name": "비디오 가게",
                     "terms": "dvd"
@@ -6313,7 +6301,7 @@
                     "name": "관광 지물"
                 },
                 "tourism/alpine_hut": {
-                    "name": "고산장"
+                    "name": "산악 루지"
                 },
                 "tourism/apartment": {
                     "name": "게스트 아파트 / 콘도",
@@ -6417,6 +6405,9 @@
                 "tourism/theme_park": {
                     "name": "놀이공원",
                     "terms": "테마파크,놀이동산"
+                },
+                "tourism/trail_riding_station": {
+                    "terms": "트레일 경주 스테이션"
                 },
                 "tourism/viewpoint": {
                     "name": "경승지"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.grantland.widget.AutofitLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/referenceCodeInputContainer"
+    android:layout_width="128dp"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/referenceCodeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        tools:text="VII"
+        style="@style/HouseNumberEditText"
+        />
+
+</me.grantland.widget.AutofitLayout>

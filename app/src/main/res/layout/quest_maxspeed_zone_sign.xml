@@ -3,10 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="112dp"
-    android:layout_height="118dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
     android:background="@drawable/background_rectangular_sign_white">
 
     <TextView
@@ -14,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="ZONE"
+        tools:visibility="visible"
         android:textStyle="bold"
         android:textSize="16dp"
         android:gravity="center"
@@ -62,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="ZONE"
+        tools:visibility="visible"
         android:textStyle="bold"
         android:textSize="16dp"
         android:gravity="center"

@@ -68,7 +68,7 @@ class CrashReportExceptionHandler(
             .setPositiveButton(R.string.crash_compose_email) { _, _ ->
                 activityCtx.sendEmail(mailReportTo, "Error Report", report)
             }
-            .setNegativeButton(android.R.string.no) { _, _ ->
+            .setNegativeButton(android.R.string.cancel) { _, _ ->
                 activityCtx.toast("\uD83D\uDE22")
             }
             .setCancelable(false)

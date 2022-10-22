@@ -232,7 +232,7 @@
     <string name="quest_tactilePaving_title_crosswalk">"ทางข้ามที่นี่มีกระเบื้องปูพื้นนำทางคนตาบอดทั้งสองข้างหรือไม่?"</string>
     <string name="quest_source_dialog_title">"แน่ใจหรือเปล่าว่าคุณได้ตรวจสอบในสถานที่จริง?"</string>
     <string name="quest_source_dialog_note">"ควรป้อนเฉพาะข้อมูลที่ถูกค้นพบในการสำรวจ"</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"ที่จอดรถจักรยานนี้ครอบคลุม (ป้องกันฝน) หรือไม่?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"ที่จอดรถจักรยานนี้มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
     <string name="dialog_session_dont_show_again">"อย่าแสดงอีกในวาระนี้"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"ความเร็วจำกัดนี้ดูไม่สมเหตุสมผล"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"คุณแน่ใจหรือไม่ว่าไม่มีป้ายจำกัดความเร็ว?"</string>
@@ -426,7 +426,7 @@
     <string name="quest_openingHours_emptyAnswer">"คุณต้องบรรยายสิ่งที่อยู่บนป้าย หากไม่มีป้ายให้ถามเวลาทำการด้านใน"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ไม่มี แต่นักปั่นใช้ถนนได้ทั้งสองทิศทาง"</string>
     <string name="quest_streetName_answer_noName_question">"ทำไมถึงไม่มีชื่อ?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"มีลักษณะเหมือนถนนโครงการหรือที่จอดรถ"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"มีลักษณะเหมือนถนนโครงการหรือถนนในลานจอดรถ"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"เป็นเส้นทางการเกษตรหรือป่าไม้"</string>
     <string name="quest_streetName_answer_noName_noname">"ไม่มีคำตอบที่ถูกต้อง มันแค่ไม่มีชื่อเฉย ๆ"</string>
     <string name="quest_wheelchairAccess_description_toilets">"อาจมีป้ายรถเข็นแบบนี้ถ้าห้องน้ำสามารถใช้รถเข็นเข้าถึงได้
@@ -520,8 +520,12 @@
     <string name="quest_buildingType_semi_detached">"บ้านแฝด"</string>
     <string name="quest_buildingType_terrace_description">"แถวเชิงเส้นของบ้านเดี่ยวที่คล้ายกัน"</string>
     <string name="quest_buildingType_hotel">"อาคารโรงแรม"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"หอพัก"</string>
     <string name="quest_buildingType_houseboat">"เรือนแพ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"บังกะโล"</string>
     <string name="quest_buildingType_static_caravan">"บ้านเคลื่อนที่"</string>
     <string name="quest_buildingType_commercial">"อาคารเชิงพาณิชย์"</string>
@@ -536,18 +540,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"ร้านค้า"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"โกดัง"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"ซุ้ม"</string>
     <string name="quest_buildingType_storage_tank">"ถังเก็บ"</string>
     <string name="quest_buildingType_religious">"อาคารทางศาสนา"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"โบสถ์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"โบสถ์"</string>
     <string name="quest_buildingType_cathedral">"มหาวิหาร"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"มัสยิด"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"อาคารวัด"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"เจดีย์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"โบสถ์ยิว"</string>
     <string name="quest_buildingType_civic">"อาคารราชการ"</string>
     <string name="quest_buildingType_civic_description">"อาคารสาธารณะซึ่งมักเป็นที่อำนวยความสะดวกต่างๆ"</string>
@@ -584,6 +602,8 @@
     <string name="quest_buildingType_bunker">"บังเกอร์"</string>
     <string name="quest_address_answer_no_housenumber">"ไม่มีเลขที่บ้าน…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"อาคารถูกแท็กเป็น:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"ศาลเจ้า"</string>
 
     <!-- Fuzzy -->
@@ -673,7 +693,7 @@
     <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"หมายเลขบ้าน"</string>
     <string name="label_blocknumber">"หมายเลขช่วงตึก"</string>
-    <string name="quest_busStopShelter_covered">"ครอบคลุมพื้นที่ป้ายทั้งหมด"</string>
+    <string name="quest_busStopShelter_covered">"มีหลังคาคลุมพื้นที่ป้ายทั้งหมด"</string>
     <string name="quest_ferry_pedestrian_title">"เรือข้ามฟากนี้ขนส่งคนเดินเท้าหรือไม่?"</string>
     <string name="quest_ferry_motor_vehicle_title">"เรือข้ามฟากนี้ขนส่งยานยนต์หรือไม่?"</string>
 
@@ -926,6 +946,8 @@
     <string name="user_profile_days_active">"จำนวนวันที่"</string>
     <string name="user_profile_achievement_levels">"ระดับ
 ความสำเร็จ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
     <string name="quest_address_street_description">"แตะถนนที่เป็นที่ตั้งบนแผนที่หรือป้อนโดยไม่มีตัวย่อในช่องด้านล่าง:"</string>
@@ -942,7 +964,7 @@
     <string name="quest_board_type_wildlife">"สัตว์ป่า"</string>
     <string name="quest_board_type_nature">"ธรรมชาติ (หลายหัวข้อ)"</string>
     <string name="quest_board_type_notice_board">"เป็นป้ายประกาศข่าวสาร"</string>
-    <string name="quest_board_type_public_transport">"ขนส่งสาธารนะ"</string>
+    <string name="quest_board_type_public_transport">"ขนส่งสาธารณะ"</string>
 
     <!-- Fuzzy -->
     <string name="quest_board_type_title">"หัวข้อของกระดานข้อมูลนี้คืออะไร?"</string>
@@ -1003,7 +1025,7 @@
     <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"ตู้เอทีเอ็มนี้เป็นของธนาคารอะไร"</string>
     <string name="quest_clothes_container_operator_title">"ใครรับบริจาคถังเสื้อผ้านี้บ้าง?"</string>
-    <string name="quest_charging_station_operator_title">"ใครเป็นผู้ดำเนินการสถานีชาร์จนี้?"</string>
+    <string name="quest_charging_station_operator_title">"ใครเป็นผู้ดำเนินการสถานีอัดประจุไฟฟ้านี้?"</string>
     <string name="link_indoorequal_description">"ค้นพบแผนที่ภายในอาคารของห้าง สถานีรถไฟ ฯลฯ"</string>
     <string name="achievement_rare_title">"ล่าสมบัติ"</string>
 
@@ -1266,7 +1288,7 @@
     <string name="quest_buildingType_bridge">"สะพานเชื่อมอาคาร (โพยมวิถี)"</string>
     <string name="quest_laundrySelfService_title2">"ร้านซักรีดมีบริการตนเองหรือไม่?"</string>
     <string name="quest_dietType_explanation_halal">"ผลิตภัณฑ์ฮาลาลเป็นผลิตภัณฑ์ที่ถูกควบคุมตามบทบัญญัติของศาสนาอิสลาม และต้องได้รับการรับรองจากหน่วยงานที่รับผิดชอบ"</string>
-    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีการคลุม (กันฝน) หรือไม่?"</string>
+    <string name="quest_picnicTableCover_title">"โต๊ะปิกนิกนี้มีหลังคาคลุม (กันฝน) หรือไม่?"</string>
 
     <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
     <!-- Fuzzy -->
@@ -1285,7 +1307,6 @@
     <string name="quest_surface_value_concrete_plates">"แผ่นคอนกรีต"</string>
     <string name="quest_surface_value_concrete_lanes">"ช่องคอนกรีต"</string>
     <string name="quest_fireHydrant_diameter_title">"หัวจ่ายมีเส้นผ่านศูนย์กลางเท่าไหร่ที่ระบุบนป้าย?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"เส้นผ่านศูนย์กลางที่ระบุไม่น่าจะถูกต้อง"</string>
     <string name="quest_fireHydrant_confirmation_title">"แน่ใจนะ? บางครั้งเส้นผ่านศูนย์อาจจะเขียนบนหัวจ่าย"</string>
     <string name="quest_diet_answer_no_food">"ไม่ขายอาหาร"</string>
     <string name="short_no_answer_on_button">"ไม่"</string>
@@ -1298,7 +1319,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"เวลาไขตู้ยังถูกรึเปล่า?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน๊ตไว้"</string>
+    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน้ตไว้"</string>
     <string name="quest_bicycle_barrier_type_title">"รั้วกั้นจักรยานเป็นแบบไหน?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"ทแยงมุมกับทาง"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ด้านบนแคบกว่าด้านล่าง คล้ายตัว A"</string>
@@ -1306,9 +1327,8 @@
     <string name="quest_barrier_bicycle_type_double">"ซิกแซก มีรั้วสองชั้น"</string>
     <string name="quest_barrier_bicycle_type_multiple">"ซิกแซก มีรั้วมากกว่าสองชั้น"</string>
     <string name="pref_title_language_select">"เลือกภาษา"</string>
-    <string name="language_default">"ค่าเริ่มต้น"</string>
+    <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
     <string name="on_floor">"บนชั้น %s"</string>
-    <string name="quest_street_parking_title">"ตรงนี้จอดรถได้รึเปล่า?"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
     <string name="select_street_parking_position">"เลือกตำแหน่ง:"</string>
     <string name="select_street_parking_no">"มีป้ายหรือสัญลักษณ์บนถนนรึเปล่า?"</string>
@@ -1364,7 +1384,7 @@
     <string name="quest_smoothness_title_intermediate">"ขรุขระนิดหน่อย"</string>
     <string name="quest_smoothness_title_bad">"ขรุขระ"</string>
     <string name="quest_smoothness_title_very_bad">"ขรุขระมาก"</string>
-    <string name="quest_smoothness_title_horrible">"ขระขระมากและเอียง"</string>
+    <string name="quest_smoothness_title_horrible">"ขรุขระมากและเอียง"</string>
     <string name="quest_smoothness_title_very_horrible">"แทบจะขับผ่านไม่ได้"</string>
     <string name="quest_smoothness_title_impassable">"ขับผ่านไม่ได้"</string>
     <string name="quest_smoothness_description_excellent_paved">"ไม่มีหลุมหรือรอย"</string>
@@ -1450,8 +1470,8 @@
     <string name="quest_sidewalk_answer_none">"ไม่มีทางเท้า"</string>
 
     <!-- Fuzzy -->
-    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอพของเรา!
-แต่เสียดายที่กูเกิ้ลมีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอพ ลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
+    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอปของเรา!
+แต่เสียดายที่ Google Play มีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอป แม้กระทั่งลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
     <string name="link_osmand_description">"แอพสำหรับแผนที่ออนไลน์และออฟไลน์"</string>
     <string name="link_sunders_description">"แผนที่แสดงกล้องและอุปกรณ์สอดส่องดูแล"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"ขยับเข้าใกล้ลูกศรอีกนิด แต่ระวังรถด้วย!"</string>
@@ -1499,7 +1519,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopBin_title2">"มีถังขยะรึเปล่า?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopLit_title2">"มีไฟส่องสว่างรึเปล่า"</string>
+    <string name="quest_busStopLit_title2">"ป้ายหยุดนี้มีไฟส่องสว่างรึเปล่า"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"ป้ายมีชื่อว่าอะไร?"</string>
@@ -1543,9 +1563,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"คุณรู้จักเมืองคุณดีแค่ไหน? ลองค้นหาถนนแถวบ้านดู"</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"ลองดูสิว่า OSM เปลี่ยนไปขนาดไหน!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"ดู กรอง และแสดงความเห็นบนโน๊ตได้อย่างง่ายดาย คุณสามารถแก้ปัญหาได้โดยการเติมข้อมูลลงไปในแผนที่ด้วยโปรแกรม iD หรือ JOSM"</string>
 
     <!-- Quests
@@ -1574,4 +1591,15 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"ไม่ขายจักรยาน"</string>
     <string name="quest_building_entrance_service">"ทางเข้าบำรุงรักษา"</string>
     <string name="quest_building_entrance_exit">"ทางออกเท่านั้น"</string>
+    <string name="split_way">"แยกทางเป็นสองส่วน"</string>
+    <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
+    <string name="quest_memorialType_statue">"อนุสาวรีย์"</string>
+    <string name="overlay_none">"ไม่มี"</string>
+    <string name="overlay_lit">"ไฟถนน"</string>
+    <string name="lit_value_yes">"มี"</string>
+    <string name="lit_value_no">"ไม่มี"</string>
+    <string name="lit_value_24_7">"ส่องสว่างทั้งกลางวันและกลางคืน"</string>
+    <string name="lit_value_automatic">"ส่องสว่างเฉพาะเมื่อมีคนผ่าน"</string>
+    <string name="overlay_sidewalk">"ทางเท้า"</string>
+    <string name="quest_generic_answer_is_indoors">"อยู่ในอาคาร"</string>
 </resources>

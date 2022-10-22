@@ -16,10 +16,11 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
         (
           shop ~ mall|department_store
           or highway ~ services|rest_area
+          or tourism ~ camp_site|caravan_site
         )
         and !toilets
     """
-    override val changesetComment = "Add toilet availability"
+    override val changesetComment = "Survey toilet availabilities"
     override val wikiLink = "Key:toilets"
     override val icon = R.drawable.ic_quest_toilets
     override val achievements = listOf(CITIZEN)

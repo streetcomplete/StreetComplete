@@ -22,7 +22,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
             or (!access and parking !~ street_side|lane)
         )
     """
-    override val changesetComment = "Add type of parking access"
+    override val changesetComment = "Specify parking access"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_access
     override val achievements = listOf(CAR)

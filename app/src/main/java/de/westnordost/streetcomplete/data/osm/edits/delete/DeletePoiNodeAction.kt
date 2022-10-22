@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
@@ -21,12 +22,6 @@ import kotlinx.serialization.Serializable
  *
  *  2. if that node is a vertex in a way or has a role in a relation, the node is not deleted but
  *     just "degraded" to be a vertex, i.e. the tags are cleared.
- *
- *  The original node version is passed because if the node changed in the meantime, it should be
- *  considered as a conflict. For example,
- *  the node may have been moved to the real location of the POI, the tagging may have been
- *  corrected to reflect what the POI really is, it may have been re-purposed to be something
- *  else now, etc.
  *  */
 @Serializable
 object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
@@ -53,7 +48,7 @@ object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
         else {
             MapDataChanges(modifications = listOf(node.copy(
                 tags = emptyMap(),
-                timestampEdited = System.currentTimeMillis()
+                timestampEdited = nowAsEpochMilliseconds()
             )))
         }
     }

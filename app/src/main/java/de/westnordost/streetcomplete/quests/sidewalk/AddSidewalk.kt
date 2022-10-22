@@ -17,21 +17,21 @@ import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 
-class AddSidewalk : OsmElementQuestType<SidewalkSides> {
+class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     private val maybeSeparatelyMappedSidewalksFilter by lazy { """
         ways with highway ~ path|footway|cycleway|construction
     """.toElementFilterExpression() }
     // highway=construction included, as situation often changes during and after construction
 
-    override val changesetComment = "Add whether there are sidewalks"
+    override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val achievements = listOf(PEDESTRIAN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -42,7 +42,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         /* Unfortunately, the filter above is not enough. In OSM, sidewalks may be mapped as
          * separate ways as well and it is not guaranteed that in this case, sidewalk = separate
          * (or foot = use_sidepath) is always tagged on the main road then. So, all roads should
-         * be excluded whose center is within of ~15 meters of a footway, to be on the safe side. */
+         * be excluded whose center is within several meters of a footway, to be on the safe side. */
 
         if (roadsWithMissingSidewalks.isNotEmpty()) {
 
@@ -75,11 +75,14 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
         return roadsWithMissingSidewalks + roadsWithInvalidSidewalkTags
     }
 
+    /* Calculate when footway is too far away from the road to be considered its sidewalk.
+       It is an estimate, and we deliberately err on the side of showing the quest too often. */
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
-            (estimateCycleTrackWidth(tags) ?: 0f)
+            (estimateCycleTrackWidth(tags) ?: 0f) +
+            1.5f    // assumed sidewalk width
         ) / 2f +
         4f // + generous buffer for possible grass verge
 
@@ -97,7 +100,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: SidewalkSides, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 
@@ -135,11 +138,7 @@ class AddSidewalk : OsmElementQuestType<SidewalkSides> {
             ways with
               highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
               and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-              and (
-                !maxspeed
-                or maxspeed > 8
-                or (maxspeed ~ ".*mph" and maxspeed !~ "[1-5] mph")
-              )
+              and (!maxspeed or maxspeed > 9)
               and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
               and (
                 lit = yes

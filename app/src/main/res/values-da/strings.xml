@@ -280,12 +280,12 @@ Informationerne du angiver sendes direkte til OpenStreetMap i dit brugernavn, ud
     <string name="quest_source_dialog_note">"Kun information som blev fundet ved en undersøgelse, bør indberettes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse ser urealistisk ud."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en fartgrænse?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne hastighedsgrænse ser urealistisk ud."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på, at der ikke er angivet en hastighedsgrænse?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tjekkede du for enden af vejen?
 Hvis der ikke er skilte langs vejen som gælder for den fremhævede strækning, gælder standard hastighedsbegrænsninger."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, ingen skilte"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har en lavere standardfartgrænse end landeveje."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Veje i byområder har som standard en lavere hastighedsgrænse end landeveje."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Byområde"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Landområde"</string>
 
@@ -500,7 +500,7 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Retningsnummer (valgfrit)"</string>
+    <string name="quest_housenumber_street_number_optional">"Retnings-nummer (valgfrit)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også cykelsti på den anden side…"</string>
@@ -671,8 +671,12 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"en lineær række af ens enfamiliehuse"</string>
     <string name="quest_buildingType_hotel">"Hotelbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Kollegium"</string>
     <string name="quest_buildingType_houseboat">"Husbåd"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -691,7 +695,11 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_industrial_description">"f.eks. en fabrik, værksted, …"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butik(ker)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lagerbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -699,10 +707,18 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Religiøs bygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kirke"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapel"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moske"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempel"</string>
 
     <!-- Fuzzy -->
@@ -761,6 +777,8 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Der er intet husnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen var markeret som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helligdom"</string>
 
     <!-- Fuzzy -->
@@ -768,7 +786,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_maxspeed_answer_sign">"Et skilt"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav fart) zone"</string>
+    <string name="quest_maxspeed_answer_zone2">"Det er inde i en (lav hastighed) zone"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Intet skilt, standardgrænser gælder"</string>
@@ -929,7 +947,7 @@ Opdel den nu?"</string>
     <string name="about_summary_current_version">"Nuværende version:  %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Hvad er postkassens referencenummer?"</string>
+    <string name="quest_postboxRef_title">"Hvad er identifikationsnummeret for denne postkasse?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Intet synligt referencenummer…"</string>
@@ -1062,7 +1080,7 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <!-- User screen -->
     <!-- Fuzzy -->
     <string name="user_quests_title">"Løste opgaver"</string>
-    <string name="user_achievements_title">"Præstationer"</string>
+    <string name="user_achievements_title">"Udmærkelser"</string>
     <string name="user_links_title">"Linksamling"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
@@ -1131,8 +1149,7 @@ Til sidst: husk på at passe på dig selv: Vær opmærksom på dine omgivelser o
     <string name="achievement_surveyor_title">"Landmåler"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_surveyor_solved_X">"Du har løst %d opgaver. Fortsæt endelig med at låse op for flere 
-præsentationer der indeholder links til OSM og andre kortorienteret apps og projekter!"</string>
+    <string name="achievement_surveyor_solved_X">"Du har løst %d opgaver! Fortsæt endelig med at låse op for flere udmærkelser, der indeholder links til OSM og andre kortorienteret apps og projekter!"</string>
     <string name="achievement_regular_title">"Stabil"</string>
     <string name="achievement_regular_description">"Du har bidraget %d dage til OSM med denne app. Regelmæssige bidragsydere er grundstenen i OSM, tak for din indsats ❤"</string>
     <string name="achievement_bicyclist_title">"Cyklist"</string>
@@ -1185,6 +1202,8 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <string name="user_profile_days_active">"Dage
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Præstationsniveau"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det tilhører ikke en gade/vej med navn"</string>
     <string name="quest_address_street_place_name_label">"Stednavn:"</string>
     <string name="quest_address_street_description">"Tryk på vejen det hører til på kortet, ellers skriv det uden forkortelser i feltet herunder:"</string>
@@ -1228,7 +1247,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="resurvey_intervals_less_often">"Spørg sjældnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spørg oftere"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i bygningen?"</string>
+    <string name="quest_is_defibrillator_inside_title">"Er hjertestarteren (AED) inde i en bygning?"</string>
     <string name="about_title_translate">"Hjælp med at oversætte denne app"</string>
     <string name="about_description_translate">"%1$s er %2$d%% oversat"</string>
     <string name="quest_oneway2_title">"Er denne vej ensrettet? I hvilken retning?"</string>
@@ -1255,9 +1274,9 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <string name="quest_steps_ramp_wheelchair">"Rampe til kørestol"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_atm_operator_title">"Hvilken bank driver denne hæveautomat?"</string>
+    <string name="quest_atm_operator_title">"Hvilken bank står for driften af denne pengeautomat?"</string>
     <string name="quest_clothes_container_operator_title">"Hvem modtager donationer til denne tøjindsamling?"</string>
-    <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation"</string>
+    <string name="quest_charging_station_operator_title">"Hvem er operatør af denne ladestation?"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
     <string name="achievement_rare_title">"Skattejagt"</string>
 
@@ -1342,13 +1361,13 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Hvad er der i stedet for her nu?"</string>
 
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_vacant_answer">"Det er sæsonlukket"</string>
+    <!-- Svar på spørgsmålet "Denne butik har stået tom. Hvad er her nu?" -->
+    <string name="quest_shop_gone_vacant_answer">"Den står tom"</string>
     <string name="quest_shop_gone_replaced_answer">"En/Et…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Indtast her hvilken slags sted"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_vacant_type_title">"Denne butik har været tom. Hvad er her nu?"</string>
+    <string name="quest_shop_vacant_type_title">"Denne butik har stået tom. Hvad er her nu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Antal vognbaner er forskellig for hver side"</string>
@@ -1539,7 +1558,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_surface_value_concrete_plates">"Betonplader"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonbaner"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er angivet for denne brandhane?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Denne diameterværdi virker usandsynlig."</string>
     <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Nogle gange kan diameteren findes på brandhanen selv"</string>
     <string name="quest_diet_answer_no_food">"Man kan ikke købe mad"</string>
     <string name="short_no_answer_on_button">"Nej"</string>
@@ -1562,7 +1580,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="pref_title_language_select">"Vælg sprog"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"på etage %s:"</string>
-    <string name="quest_street_parking_title">"Hvordan kan biler parkeres her, hvis det er muligt?"</string>
     <string name="select_street_parking_orientation">"Vælg orienteringen mod vejbanen:"</string>
     <string name="select_street_parking_position">"Vælg position:"</string>
     <string name="select_street_parking_no">"Nogen skilte eller vejmarkeringer her?"</string>
@@ -1757,7 +1774,7 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
-    <string name="quest_busStopRef_title2">"Hvad er referencenummeret på dette stop?"</string>
+    <string name="quest_busStopRef_title2">"Hvilket nummer eller hvilken kode identificerer dette stop?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Er der et læskur ved dette stop?"</string>
@@ -1792,9 +1809,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Er du sikker på, at cyklister ikke må benytte denne ensrettede vej i begge retninger? Hvis du er i tvivl, skal du tjekke, om der er et skilt for enden af gaden."</string>
     <string name="link_valhalla_description">"Ruteberegningsmotor med et meget lille hukommelsesaftryk, multimodal ruteberegning, isokroner og meget mere."</string>
     <string name="link_backofyourhand_description">"Hvor godt kender du dit område? Test din viden ved at finde gader."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Se hvordan OSM så ud i begyndelsen sammenlignet med, hvordan det ser ud nu!"</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"Du kan nemt se, filtrere og kommentere på noter, som du og andre har lavet. Mange noter kan løses ved at sætte de oplysninger, der er indeholdt i dem, på kortet med iD eller JOSM"</string>
@@ -1879,4 +1893,54 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Indgangsmærke:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Lejlighedsserie:"</string>
     <string name="quest_entrance_reference_flat_range_to">"til"</string>
+    <string name="default_disabled_msg_overlay">"Denne søgetype er som standard deaktiveret, fordi der allerede findes en overlejring, hvormed det er mere effektivt at indtaste og opdatere disse data."</string>
+    <string name="quest_camp_drinking_water_title">"Er der gratis drikkevand til rådighed for campister her?"</string>
+    <string name="quest_camp_shower_title">"Er der brusere her?"</string>
+    <string name="quest_camp_power_supply_title">"Kan kunder oplade deres telefon, bærbare computer osv. her?"</string>
+    <string name="quest_camp_type_title">"Hvem må campere her?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Både telte og autocampere, campingvogne, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Kun autocampere, campingvogne, ..."</string>
+    <string name="quest_camp_type_tents_only">"Kun telte"</string>
+    <string name="quest_camp_type_backcountry">"Primitiv lejrplads (ingen faciliteter)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Denne diameter ser usandsynlig ud, den er normalt mellem %1$d og %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dette svar stemmer ikke overens med det, der allerede er kortlagt for denne vej. Er du sikker på, at du giver et svar om den rigtige vej? Er du sikker på, at du personligt har undersøgt vejen i hele dens længde, som det altid er nødvendigt?"</string>
+    <string name="quest_recycling_type_pet">"Kun PET"</string>
+    <string name="street_parking_street_width">"Vejbredde: %s"</string>
+    <string name="overlay_street_parking">"Gadeparkering"</string>
+    <string name="link_ohsomehex_description">"Udforsk OSM-data på tværs af skalaer fra det store billede til individuelle objekter over rum og tid"</string>
+    <string name="link_opencampingmap_description">"Et kort over campingpladser"</string>
+    <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne pengeautomat?"</string>
+    <string name="create_node_action_description">"Du oprettede et punkt med …"</string>
+    <string name="quest_accessPointRef_title">"Hvilket identifikationsnummer er der her?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Det er et samlingssted"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Et samlingssted er et sted, hvor folk samles i tilfælde af en nødsituation. Det ligner normalt dette:"</string>
+    <string name="quest_address_answer_house_name2">"Det har et husnavn …"</string>
+    <string name="quest_address_street_street_name_label">"Gadenavn:"</string>
+    <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
+    <string name="quest_bicycle_incline_title">"Hvilken retning fører opad her?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Det er op og ned hop"</string>
+    <string name="quest_drinking_water_type_title">"Hvordan leveres drikkevand her?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Anden vandfontæne"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vandfontæne, der udsender en lille vandstråle"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun genopfyldning af flasker"</string>
+    <string name="quest_drinking_water_type_tap">"Vandhane"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Håndpumpe"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Brønd uden pumpe"</string>
+    <string name="quest_drinking_water_type_spring">"Kilde"</string>
+    <string name="quest_drinking_water_type_disused">"Nedlagt drikkevandsobjekt"</string>
+    <string name="overlay_addresses">"Adresser"</string>
+    <string name="overlay_shops">"Butikker"</string>
+    <string name="name_label">"Navn:"</string>
+    <string name="vacant_shop_title">"Tom butik"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Ukendt type sted"</string>
+    <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Kan åbnes"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Kan fjernes"</string>
+    <string name="quest_buildingType_guardhouse">"Vagtbygning"</string>
+    <string name="quest_genericRef_title">"Hvilket identifikationsnummer er der her?"</string>
 </resources>

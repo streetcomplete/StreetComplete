@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
 hasAdvisorySpeedLimitSign: true
@@ -14,6 +14,8 @@ noStoppingSignStyle: vienna
 officialLanguages: [en]
 popularReligions: [christian, hindu, buddhist]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]
+postboxesHaveCollectionTimes: true
+postboxesHaveRoyalCypher: true
 atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, Quick Cash, Quickcash, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
 chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid, Tesla, Powerco, Network Waitaki, Network Tasman]
 orchardProduces: [grape, kiwi, apple, avocado, cherry, blueberry, peach, orange, tomato, apricot, walnut, plum, hop, lemon, lime, pear]

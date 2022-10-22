@@ -512,8 +512,12 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_semi_detached">"Casa semi-adosada"</string>
     <string name="quest_buildingType_terrace_description">"unha ringleira de vivendas adosadas unifamiliares"</string>
     <string name="quest_buildingType_hotel">"Edificio de hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Residencia ou dormitorio"</string>
     <string name="quest_buildingType_houseboat">"Casa flotante"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungaló"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
     <string name="quest_buildingType_commercial">"Edificio comercial"</string>
@@ -528,18 +532,32 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Tenda(s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Almacén"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosco"</string>
     <string name="quest_buildingType_storage_tank">"Tanque de almacenaxe"</string>
     <string name="quest_buildingType_religious">"Edificio relixioso"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Igrexa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capela"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edificio público"</string>
     <string name="quest_buildingType_civic_description">"edificio aberto ó público no que se adoitan desenvolver unha ou varias actividades"</string>
@@ -576,6 +594,8 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"Non ten número da casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"O edificio foi etiquetado como:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Santuario"</string>
 
     <!-- Fuzzy -->
@@ -906,6 +926,8 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="user_profile_days_active">"Días activo"</string>
     <string name="user_profile_achievement_levels">"Niveis dos
 logros"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non pertence a unha rúa con nome"</string>
     <string name="quest_address_street_place_name_label">"Nome:"</string>
     <string name="quest_address_street_description">"Preme a estrada á que pertence no mapa ou insírea sen abreviaturas no campo seguinte:"</string>
@@ -1247,7 +1269,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_surface_value_concrete_plates">"Placas de cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Rodeiras de cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Que diametro se especifica no letreiro desta boca de incendios?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Este diámetro non parece estar ben."</string>
     <string name="quest_fireHydrant_confirmation_title">"Seguro? Algunhas veces o díametro está especificado na propia boca de incendios."</string>
     <string name="quest_diet_answer_no_food">"Non ofrece comida"</string>
     <string name="short_no_answer_on_button">"Non"</string>
@@ -1270,7 +1291,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="pref_title_language_select">"Elexir idioma"</string>
     <string name="language_default">"Por defecto no sistema"</string>
     <string name="on_floor">"na planta %s"</string>
-    <string name="quest_street_parking_title">"De que xeito estacionan aquí os coches, se teñen permiso."</string>
     <string name="select_street_parking_orientation">"Elixe orientación respecto da estrada:"</string>
     <string name="select_street_parking_position">"Elixe posición:"</string>
     <string name="select_street_parking_no">"Hai algún sinal ou marcas na estrada?"</string>

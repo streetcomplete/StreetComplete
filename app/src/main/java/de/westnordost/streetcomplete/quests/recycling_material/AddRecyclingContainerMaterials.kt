@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 
@@ -27,7 +27,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
           and access !~ private|no
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add recycled materials to container"
+    override val changesetComment = "Specify what can be recycled in recycling containers"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_container
     override val isDeleteElementEnabled = true
@@ -68,38 +68,42 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
             }
         }
 
+        // if the user chose deliberately not "all plastic", also tag it explicitly
+        if (materials.any { it in RecyclingMaterial.plastics }) {
+            for (plastic in RecyclingMaterial.plastics) {
+                tags.remove("recycling:${plastic.value}")
+            }
+            when {
+                PLASTIC_PACKAGING in materials -> {
+                    tags["recycling:plastic"] = "no"
+                }
+                BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
+                    tags["recycling:plastic_packaging"] = "no"
+                    tags["recycling:plastic"] = "no"
+                }
+                BEVERAGE_CARTONS in materials -> {
+                    tags["recycling:plastic_bottles"] = "no"
+                    tags["recycling:plastic_packaging"] = "no"
+                    tags["recycling:plastic"] = "no"
+                }
+                PLASTIC_BOTTLES in materials -> {
+                    tags["recycling:beverage_cartons"] = "no"
+                    tags["recycling:plastic_packaging"] = "no"
+                    tags["recycling:plastic"] = "no"
+                }
+                PET in materials -> {
+                    tags["recycling:plastic_bottles"] = "no"
+                    tags["recycling:beverage_cartons"] = "no"
+                    tags["recycling:plastic_packaging"] = "no"
+                    tags["recycling:plastic"] = "no"
+                }
+            }
+        }
+
         // set selected recycling:* taggings to "yes"
         val selectedMaterials = materials.map { "recycling:${it.value}" }
         for (material in selectedMaterials) {
             tags[material] = "yes"
-        }
-
-        // if the user chose deliberately not "all plastic", also tag it explicitly
-        when {
-            PLASTIC in materials -> {
-                tags.remove("recycling:plastic_packaging")
-                tags.remove("recycling:plastic_bottles")
-                tags.remove("recycling:beverage_cartons")
-            }
-            PLASTIC_PACKAGING in materials -> {
-                tags["recycling:plastic"] = "no"
-                tags.remove("recycling:plastic_bottles")
-                tags.remove("recycling:beverage_cartons")
-            }
-            BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
-                tags["recycling:plastic_packaging"] = "no"
-                tags["recycling:plastic"] = "no"
-            }
-            BEVERAGE_CARTONS in materials -> {
-                tags["recycling:plastic_bottles"] = "no"
-                tags["recycling:plastic_packaging"] = "no"
-                tags["recycling:plastic"] = "no"
-            }
-            PLASTIC_BOTTLES in materials -> {
-                tags["recycling:beverage_cartons"] = "no"
-                tags["recycling:plastic_packaging"] = "no"
-                tags["recycling:plastic"] = "no"
-            }
         }
 
         // only set the check date if nothing was changed

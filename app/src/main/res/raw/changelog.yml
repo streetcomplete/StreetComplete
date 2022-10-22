@@ -1,3 +1,149 @@
+v48.0-beta1: |
+  <h2>M-M-M-Mega Update!</h2>
+  <p>A few things came together... this update contains what would usually be in 3 or 4 releases! Enjoy!</p>
+  <h3>1️⃣️️ Addresses Overlay</h3>
+  <p>The most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
+  You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
+  <h3>🛍️ Shops Overlay</h3>
+  <p>Easily map and check what shops exist in your local shopping area!</p>
+  <h3>🚀 HUGE performance improvements (#4079, #4125), all by @Helium314</h3>
+  <p>The app is now more responsive during normal use thanks to extensive caching and other improvements, in particular, roughly:</p>
+  <ul>
+  <li>2x to 8x times faster display of quest pins and overlays</li>
+  <li>2x to 3x times faster showing of quest details</li>
+  <li>up to 2x times faster solving of quests</li>
+  <li>up to 2x faster upload and thus another 2x faster solving of quests if auto-sync is on (#4077, #4472)</li>
+  <li>slightly faster download (#4469)</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
+  <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
+  <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
+  <li><i>What’s the identification number here?</i>, asked for fire hydrants (#3059, #4386), by @mcliquid</li>
+  <li><i>Can this cycle barrier be opened?</i> (#4293, #4406), by @mnalis</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
+  <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  <li>Other small enhancements and fixes (#4431, #4453, #4496...), thanks @matkoniecz, @Helium314</li>
+  </ul>
+
+v47.2: |
+  <ul>
+  <li>Fix note quests by default would not show up if that note contained several paragraphs (#4482)</li>
+  <li>Do not ask for surfaces of private cycleways and footways (#4434, #4433), by @legofahrrad</li>
+  <li>Also ask for bus stop identification numbers in Australia and Turkey (#4487, #4489), thanks @andrewharvey</li>
+  <li>Other minor enhancements (#4486, #4475, #4490...), thanks @mnalis</li>
+  </ul>
+
+v47.1: |
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>Do not show quests for kind of shops that cannot be referred to by name or type (#4448)</li>
+  <li>Sidewalk and street parking overlays: Allow to only specify the situation on one side (#4427)</li>
+  <li>Street parking overlay: Show parking areas semi-transparent in front of street side parkings</li>
+  <li>Overlays: Fix possible crash when editing roads with incomplete or invalid tagging</li>
+  <li>Other minor enhancements, fixes and crash fixes (#4424, #4429, #4435, #4447, ...), thanks @mcliquid, @Helium314</li>
+  </ul>
+
+v47.0: |
+  <h3>🅿️ Street Parking Overlay (#4177, #4329)</h3>
+  <p>Comprehensively record the physical parking situation along the streets in your neighborhood!<br/>
+     Be warned, of the overlays so far, this is the most complex one and the first that does not
+     replace a pre-existing quest 🙂</p>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Can you deposit cash at this ATM?</i> (#4292, #4333), by @mnalis</li>
+  </ul>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>All overlays now use the same color-blind friendly color-palette for consistency</li>
+  <li>Several performance improvements and reduced network traffic on uploading (#4078, #4202, #4319, #4339), by @Helium314</li>
+  <li>Performance improvement when scrolling the map (#4283), by @Helium314</li>
+  <li>Refine when the entrance type quest is asked (#4372, #4380), by @matkoniecz</li>
+  <li>Postbox Cyphers: Now possible to select the cypher for Charles III (#4420)</li>
+  <li>Other minor enhancements (#4380, #4381, #4393, #4402, #4413, #4416), thanks @matkoniecz, @HolgerJeromin, @mcliquid</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix sometimes quests would vanish after uploading (#4371)</li>
+  <li>Fix common crash when using the app for a long time, then sending it to background</li>
+  </ul>
+
+v46.1: |
+  <ul>
+  <li>Enable public transport stop quests also when they are mapped as areas (#4341)</li>
+  <li>Fix trunk link roads were not displayed on map</li>
+  <li>Do not ask about lanes for inaccessible private roads (#4359)</li>
+  <li>Other minor enhancements (#4348, #4356...)</li>
+  </ul>
+
+v46.0: |
+  <h3>New Quests</h3>
+  <p>Asked for campsites (#4213), by @mnalis:</p>
+  <ul>
+  <li><i>Who may camp here?</i></li>
+  <li><i>Are there showers here?</i></li>
+  <li><i>Is drinking water available here?</i></li>
+  <li><i>Is there any power supply here?</i></li>
+  </ul>
+  <h3>Disabled Quests</h3>
+  <p><i>Orchard produce</i>, <i>Building levels</i>, <i>Sidewalks</i> and <i>Lit roads</i> are now
+  disabled by default because either they are replaced by designated overlays or they overwhelm
+  users (#4264,...).<br/>
+  You can enable them again in the settings at any time.
+  </p>
+  <h3>Enhancements on quests</h3>
+  <ul>
+  <li>Road surface: Ask for confirmation when selection contradicts a previous info (#4105, #662 #4063), by @matkoniecz</li>
+  <li>Opening hours: Months and weekdays are now (also) shown in the local language</li>
+  <li>All bus stop quests: Ask for any public transport stops, e.g. subway, train, ferry, ... (#3374)</li>
+  <li>Road width: Also ask for the max width of chokers and chicanes (#3258, #4323)</li>
+  <li>Recycling: Support PET as selectable choice (#2885)</li>
+  <li>Tactile paving quests now enabled in Portugal (#4325)</li>
+  <li>Internet access: Do not ask for backcountry campsites</li>
+  <li>Toilet availability: Ask for campsites, too (#4330), by @mnalis</li>
+  <li>Steps incline: Fix display issue on Android 5 (#4317)</li>
+  <li>Buildings: Remove "show more" button (#3387, #4215), by @matkoniecz</li>
+  </ul>
+  <h3>Other enhancements and fixes</h3>
+  <ul>
+  <li>Fix editing tunnels in overlays (#4269), thanks @matkoniecz</li>
+  <li>Fix rare error when uploading too long opening hours (#3471)</li>
+  <li>Fix rare faulty links in notes (#4312, #4309)</li>
+  <li>Improved map style clarity, especially in regard to overlays (#4291, #4310, ...)</li>
+  <li>Performance improvement on uploading (#4297), by @Helium314</li>
+  <li>Android 13: Only ask about notification permission when about to show one (#4294)</li>
+  <li>More minor enhancements and fixes (#4158, #4226, #4307, #4302, #4271...), thanks @Helium314, @peternewman</li>
+  </ul>
+
+v45.2: |
+  <ul>
+  <li>Fix rare crash when phone is low on memory (#4221)</li>
+  <li>Fix rare crash when closing or sending the app to background (#4259)</li>
+  <li>Fix drawing order of bridges and tunnels, by @matkoniecz</li>
+  <li>Fix a layout issue for right-to-left locales (#4260)</li>
+  <li>Max weight: Fix input field not showing more than one digit (#4216)</li>
+  <li>House numbers: Do not warn about a house number format being unusual that is common in Australia (#4196, #4251)</li>
+  <li>Roof shape: Do not ask for ruins and underground buildings, by @matkoniecz</li>
+  <li>Roof shape: For certain building types, even ask when building and roof levels have not been recorded yet (#4261), by @matkoniecz</li>
+  <li>More minor enhancements (#4160, #4241, #4243, #4246, #4242, #4249...), thanks @Helium314, @matkoniecz</li>
+  </ul>
+
+v45.1: |
+  <ul>
+  <li>Fix the same recorded GPS tracks was attached to subsequently created notes (#4199, #4204), by @goldbattle</li>
+  <li>Fix crash when trying to upload notes with a long description and attached GPS tracks (#4195)</li>
+  <li>Fix weird filenames for the GPS tracks uploaded (#4208), by @peternewman</li>
+  <li>Fix "keep screen on" option was not respected before app restart (#4189)</li>
+  <li>Fix sidewalk overlay should not ask whether to discard changes when there are none (#4206)</li>
+  <li>More minor enhancements (#4187, #4200, #4160...), thanks @matkoniecz, @peternewman</li>
+  </ul>
+
 v45.0: |
   <h3>🍰 Overlays!</h3>
   <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
@@ -18,40 +164,6 @@ v45.0: |
   <li>Ask about bus stop reference numbers in Ireland (#4161)</li>
   <li>Stop asking about toilet fees in US and Canada (#4174), by @matkoniecz</li>
   <li>Other small enhancements and performance improvements (#3919, #4120, #4138, #4181, #4184, #4180, #4183, #4164...), thanks @Helium314</li>
-  </ul>
-
-v45.0-beta1: |
-  <h3>🍰 Overlays!</h3>
-  <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
-  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
-  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
-  <h3>New Quests</h3>
-  <ul>
-  <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
-  <li><i>Is there a summit cross here?</i> (#4111, #4095), by @FloEdelmann</li>
-  <li><i>What is signed at this entrance?</i> (#4066, #3064), by @matkoniecz</li>
-  </ul>
-  <h3>Enhancements and Fixes</h3>
-  <ul>
-  <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
-  <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
-  <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
-  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
-  <li>Other small enhancements and performance improvements (#3919, #4120...)</li>
-  </ul>
-
-v45.0-alpha1: |
-  <h3>🍰 Overlays!</h3>
-  <p>Make every survey unique! How? Dedicate each to updating a different aspect of the map by activating a different overlay, respectively!</p>
-  <p>This is <b>for advanced users</b> who want to be more efficient in adding and maintaining certain data area-wide. Read more in <a href="https://www.openstreetmap.org/user/westnordost/diary/399378">this blog post</a>!</p>
-  <p>For now, there are only overlays for <i>street lighting</i> and for <i>sidewalks</i>, more will be added over time. 🎉 (#2461, #2506, #3920, #3644)</p>
-  <h3>New Quests</h3>
-  <ul>
-  <li><i>What kind of memorial is this?</i> (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann</li>
-  </ul>
-  <h3>Enhancements and Fixes</h3>
-  <ul>
-  <li>Other small enhancements (#3919, ...)</li>
   </ul>
 
 v44.1: |
@@ -814,33 +926,6 @@ v29.0: |
   <li>Fix sometimes the pin would not vanish after solving the quest (#2447)</li>
   <li>Fix crash when discarding the new mail dialog when it animates in (#2451)</li>
   <li>Fix that the counter on the upload button always showed a number that didn't go away after uploading all for some people (#2460)</li>
-  </ul>
-
-v29.0-beta1: |
-  <h3>🗺️ Map available offline!</h3>
-  <p>
-  In the area quests are downloaded, the background map is now also downloaded into the cache.
-  <br/><br/>
-  So, when you are offline later, you can continue to use this app in that area without any problem
-  because the background is also available (#122, #2428).
-  <br/><br/>
-  To download not at your current GPS location but somewhere else, just pan and zoom to
-  that location and tap "search for quests here" in the menu.</p>
-  <h3>New Quests</h3>
-  <ul>
-  <li><i>What surface does this sport field have?</i> (#1170, #2377), by @matkoniecz </li>
-  <li><i>Does ... offer kosher products?</i> (#639, #2244), disabled by default, by @matkoniecz </li>
-  </ul>
-  <h3>Enhanced Quests</h3>
-  <ul>
-  <li>Construction quest: Make it possible to select date at which construction will be finished (#1341, #2402), by @matkoniecz</li>
-  <li>Cycleways: Provide hint what to answer if there is no cycleway at all (#2285, #2405), by @matkoniecz</li>
-  <li>Housenumbers: Do not ask in France (#2427), by @matkoniecz</li>
-  </ul>
-  <h3>Fixes</h3>
-  <ul>
-  <li>Answer that a thing does not exist anymore, sometimes wasn't uploaded correctly (#2419)</li>
-  <li>Sometimes during download, some quests would appear and then vanish again (#2430)</li>
   </ul>
 
 v28.1: |

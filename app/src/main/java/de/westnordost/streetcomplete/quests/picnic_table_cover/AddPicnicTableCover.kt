@@ -19,7 +19,7 @@ class AddPicnicTableCover : OsmFilterQuestType<Boolean>() {
           and !covered
           and (!seasonal or seasonal = no)
     """
-    override val changesetComment = "Add picnic table cover"
+    override val changesetComment = "Specify whether picnic tables are covered"
     override val wikiLink = "Key:covered"
     override val icon = R.drawable.ic_quest_picnic_table_cover
     override val isDeleteElementEnabled = true

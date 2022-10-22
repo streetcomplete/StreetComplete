@@ -1,21 +1,25 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 class HasDateTagLessOrEqualThanTest {
-    private val date = LocalDate.of(2000, 11, 11)
+    private val date = LocalDate(2000, 11, 11)
+    private val c = HasDateTagLessOrEqualThan("check_date", FixedDate(date))
 
     @Test fun matches() {
-        val c = HasDateTagLessOrEqualThan("check_date", FixedDate(date))
-
         assertFalse(c.matches(mapOf()))
         assertFalse(c.matches(mapOf("check_date" to "bla")))
         assertFalse(c.matches(mapOf("check_date" to "2000-11-12")))
         assertTrue(c.matches(mapOf("check_date" to "2000-11-11")))
         assertTrue(c.matches(mapOf("check_date" to "2000-11-10")))
+    }
+
+    @Test fun toStringMethod() {
+        assertEquals("check_date <= $date", c.toString())
     }
 }

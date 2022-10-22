@@ -12,9 +12,8 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
         (
-          (public_transport = platform and (bus = yes or trolleybus = yes or tram = yes))
-          or
-          (highway = bus_stop and public_transport != stop_position)
+          public_transport = platform
+          or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
         and (
@@ -24,7 +23,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
           or tactile_paving = yes and tactile_paving older today -8 years
         )
     """
-    override val changesetComment = "Add tactile pavings on bus stops"
+    override val changesetComment = "Specify whether public transport stops have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON

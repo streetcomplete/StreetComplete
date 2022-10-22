@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.FrameLayout">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rotateContainer"
         android:background="#3666"
         android:layout_width="280dp"
@@ -12,21 +12,22 @@
         android:layout_gravity="center"
         tools:rotation="0">
 
-        <View
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/strut"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_centerHorizontal="true"/>
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
 
         <RelativeLayout
             android:id="@+id/leftSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginLeft="0.5dp"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/strut"
-            android:layout_width="match_parent"
+            android:layout_marginLeft="1dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/strut"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:ignore="RtlHardcoded">
 
@@ -62,11 +63,11 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:textSize="10sp"
-                android:textColor="#404040"
-                android:shadowColor="#fff"
-                android:shadowRadius="2.0"
+                android:textColor="#fff"
+                android:shadowColor="#000"
+                android:shadowRadius="4.0"
                 app:orientationRight="true"
-                tools:text="Sidewalk"/>
+                tools:text="Sidewalk" />
 
         </RelativeLayout>
 
@@ -75,10 +76,10 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginLeft="-0.5dp"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/strut"
-            android:layout_width="match_parent"
+            android:layout_marginLeft="-1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/strut"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             tools:ignore="RtlHardcoded">
 
@@ -112,15 +113,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textSize="10sp"
-                android:textColor="#404040"
-                android:shadowColor="#fff"
-                android:shadowRadius="2.0"
+                android:textColor="#fff"
+                android:shadowColor="#000"
+                android:shadowRadius="4.0"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                tools:text="Sidewalk"/>
+                tools:text="Sidewalk" />
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>

@@ -19,7 +19,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
         ways with natural = tree_row and !leaf_type
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add leaf type"
+    override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val achievements = listOf(OUTDOORS)

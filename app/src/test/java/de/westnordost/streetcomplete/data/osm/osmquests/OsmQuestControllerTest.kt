@@ -95,7 +95,7 @@ class OsmQuestControllerTest {
         on(mapDataSource.getGeometry(NODE, 1)).thenReturn(g)
 
         val expectedQuest = OsmQuest(ApplicableQuestType, NODE, 1, g)
-        assertEquals(expectedQuest, ctrl.get(key))
+        assertEquals(expectedQuest, ctrl.getVisible(key))
     }
 
     @Test fun getAllVisibleInBBox() {

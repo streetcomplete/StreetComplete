@@ -265,6 +265,16 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
         dao.add(e4)
         assertEquals(e4, dao.getOldestNeedingImagesActivation())
     }
+
+    @Test fun replaceTextInUnsynced() {
+        dao.add(edit(text = "test123 jo mama"))
+        dao.add(edit(text = "test123 jo mama", isSynced = true))
+
+        dao.replaceTextInUnsynced("123", "456")
+
+        assertEquals("test456 jo mama", dao.get(1L)?.text)
+        assertEquals("test123 jo mama", dao.get(2L)?.text)
+    }
 }
 
 private fun NoteEditsDao.addAll(vararg edits: NoteEdit) = edits.forEach { add(it) }

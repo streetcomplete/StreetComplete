@@ -701,8 +701,12 @@
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 줄지어 있는 단독주택"</string>
     <string name="quest_buildingType_hotel">"호텔 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"기숙사"</string>
     <string name="quest_buildingType_houseboat">"선상 가옥"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"방갈로"</string>
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
     <string name="quest_buildingType_commercial">"상업 건물"</string>
@@ -717,18 +721,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"상점"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"창고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"키오스크"</string>
     <string name="quest_buildingType_storage_tank">"저장 탱크"</string>
     <string name="quest_buildingType_religious">"종교 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"교회"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"예배당"</string>
     <string name="quest_buildingType_cathedral">"대성당"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"모스크"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"사원"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"사찰 탑"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"유대교 회당"</string>
     <string name="quest_buildingType_civic">"공공 건물"</string>
     <string name="quest_buildingType_civic_description">"대개 편의시설을 갖춘 공공 건물"</string>
@@ -773,6 +791,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"성지"</string>
     <string name="quest_maxspeed_title_short2">"이 거리의 속도 제한은 얼마인가요?"</string>
     <string name="quest_maxspeed_answer_sign">"표지판"</string>
@@ -1201,6 +1221,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
 레벨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
     <string name="quest_address_street_place_name_label">"장소명:"</string>
     <string name="quest_address_street_description">"건물 번호가 속한 도로를 지도에서 선택하거나 도로명을 아래에 직접 풀어서 입력하세요:"</string>
@@ -1580,7 +1602,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_surface_value_concrete_plates">"콘크리트 판"</string>
     <string name="quest_surface_value_concrete_lanes">"콘크리트 차로"</string>
     <string name="quest_fireHydrant_diameter_title">"이 소화전의 지름이 얼마로 표기되어 있나요?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"지름이 현실적인 것 같지 않습니다."</string>
     <string name="quest_fireHydrant_confirmation_title">"확실한가요? 소화전 겉면에 지름이 적혀 있는 경우도 있습니다."</string>
     <string name="quest_diet_answer_no_food">"음식이 없음"</string>
     <string name="short_no_answer_on_button">"아니오"</string>
@@ -1607,7 +1628,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="on_floor">"%s이(가) 위치한 층수:"</string>
-    <string name="quest_street_parking_title">"이곳에 차량이 주정차할 수 있다면, 어떤 형태로 가능한가요?"</string>
     <string name="select_street_parking_orientation">"도로에서 볼 때의 주차 방향을 선택하세요:"</string>
     <string name="select_street_parking_position">"주차 장소를 선택하세요:"</string>
     <string name="select_street_parking_no">"이곳에 표지판이나 도로 표식이 있나요?"</string>
@@ -1835,7 +1855,6 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"이 일방통행로에서 자전거 양방향 통행이 불가능한 게 맞나요? 확실하지 않으면, 도로 끝에 표지판이 있는지 확인하세요."</string>
     <string name="link_backofyourhand_description">"당신은 당신의 동네를 얼마나 알고계신가요? 길을 가보면서 당신의 지식을 시험해보세요."</string>
-    <string name="link_thenandnow_description">"OSM의 초기 모습과 지금의 모습을 비교해보세요!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->

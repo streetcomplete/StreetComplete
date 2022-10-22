@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.RevertDeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -80,6 +82,22 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGet_SplitWayEdit() {
         val edit = splitWay()
+        dao.add(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_AddNodeEdit() {
+        val edit = createNode()
+        dao.add(edit)
+        assertNotNull(edit.id)
+        val dbEdit = dao.get(edit.id)
+        assertEquals(edit, dbEdit)
+    }
+
+    @Test fun addGet_RevertAddNodeEdit() {
+        val edit = revertCreateNode()
         dao.add(edit)
         assertNotNull(edit.id)
         val dbEdit = dao.get(edit.id)
@@ -224,6 +242,13 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
         assertEquals(-5, dao.get(e3.id)!!.elementId)
         assertEquals(-3, dao.get(e4.id)!!.elementId)
     }
+
+    @Test fun updateElementId2() {
+        val e1 = createNode()
+        dao.add(e1)
+        dao.updateElementId(e1.id, -123)
+        val edit = dao.get(e1.id)!!
+    }
 }
 
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { add(it) }
@@ -319,7 +344,33 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
     )
 )
 
-private val p = LatLon(0.0, 0.0)
+private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    node.type,
+    node.id,
+    node,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    CreateNodeAction(p, mapOf("shop" to "supermarket"))
+)
+
+private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
+    0,
+    TEST_QUEST_TYPE,
+    node.type,
+    node.id,
+    node,
+    geom,
+    "survey",
+    timestamp,
+    isSynced,
+    RevertCreateNodeAction
+)
+
+private val p = LatLon(56.7, 89.10)
 private val node = Node(1, p)
 private val geom = ElementPointGeometry(p)
 
@@ -328,7 +379,7 @@ private val TEST_QUEST_TYPE2 = TestQuestType2()
 
 private object TestOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, Style>>()
-    override fun createForm(element: Element) = null
+    override fun createForm(element: Element?) = null
     override val changesetComment = "bla"
     override val icon = 0
     override val title = 0

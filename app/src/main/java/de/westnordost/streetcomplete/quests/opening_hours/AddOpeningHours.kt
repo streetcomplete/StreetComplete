@@ -115,7 +115,7 @@ class AddOpeningHours(
         and opening_hours:signed != no
     """).toElementFilterExpression() }
 
-    override val changesetComment = "Add opening hours"
+    override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override val isReplaceShopEnabled = true

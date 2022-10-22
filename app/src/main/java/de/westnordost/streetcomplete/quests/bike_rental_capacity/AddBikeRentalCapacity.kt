@@ -20,7 +20,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
          and (!capacity or capacity older today -6 years)
     """
 
-    override val changesetComment = "Add bicycle rental capacities"
+    override val changesetComment = "Specify bicycle rental capacities"
     override val wikiLink = "Tag:amenity=bicycle_rental"
     override val icon = R.drawable.ic_quest_bicycle_rental_capacity
     override val isDeleteElementEnabled = true

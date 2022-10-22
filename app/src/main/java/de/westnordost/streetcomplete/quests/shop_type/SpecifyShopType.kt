@@ -29,9 +29,9 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !tourism
         )
     """
-    override val changesetComment = "Specify shop type"
+    override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"
-    override val icon = R.drawable.ic_quest_check_shop
+    override val icon = R.drawable.ic_quest_shop
     override val isReplaceShopEnabled = true
     override val achievements = listOf(CITIZEN)
 

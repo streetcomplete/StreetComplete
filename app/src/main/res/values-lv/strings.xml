@@ -444,8 +444,12 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_semi_detached">"Dvīņu māja"</string>
     <string name="quest_buildingType_terrace_description">"rinda ar līdzīgām savrupmājām"</string>
     <string name="quest_buildingType_hotel">"Viesnīcas ēka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dienesta viesnīca"</string>
     <string name="quest_buildingType_houseboat">"Peldoša māja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Vasarnīca"</string>
     <string name="quest_buildingType_static_caravan">"Mobilā māja"</string>
     <string name="quest_buildingType_commercial">"Komercēka"</string>
@@ -454,16 +458,32 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_industrial_description">"piem., rūpnīca, darbnīca, autoserviss,…"</string>
     <string name="quest_buildingType_office">"Biroju ēka"</string>
     <string name="quest_buildingType_retail">"Tirdzniecības ēka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Noliktava"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosks"</string>
     <string name="quest_buildingType_storage_tank">"Glabāšanas tvertne"</string>
     <string name="quest_buildingType_religious">"Reliģiskā celtne"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Baznīca"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrāle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mošeja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Padoga"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Sabiedriskā ēka"</string>
     <string name="quest_buildingType_civic_description">"sabiedriskā ēka, kurā parasti ir labiekārtojums"</string>
@@ -500,6 +520,8 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_bunker">"Bunkurs"</string>
     <string name="quest_address_answer_no_housenumber">"Tam nav ēkas numurs…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Ēka tika atzīmēta kā:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svētnīca"</string>
     <string name="quest_maxspeed_title_short2">"Kāds ātruma ierobežojums uz šīs ielas?"</string>
     <string name="quest_maxspeed_answer_sign">"Zīme"</string>
@@ -761,6 +783,8 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
 aktīvas"</string>
     <string name="user_profile_achievement_levels">"Sasniegumu
 līmeņi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Tas nepiederas pie nosauktas ielas"</string>
     <string name="quest_address_street_place_name_label">"Vietas nosaukums:"</string>
     <string name="quest_address_street_description">"Kartē uzspiediet uz ceļa, kam tas pieder, ai arī ievadiet to bez saīsinājumiem šajā laukā:"</string>
@@ -1035,7 +1059,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_surface_value_concrete_plates">"Betona plāksnes"</string>
     <string name="quest_surface_value_concrete_lanes">"Betona sliedes"</string>
     <string name="quest_fireHydrant_diameter_title">"Kāds diametrs ir norādīts uz zīmes šim ugunsdzēsības hidrantam?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Šis diametrs izskatās neticams."</string>
     <string name="quest_fireHydrant_confirmation_title">"Vai tiešām? Dažkārt tas ir atrodams uz paša hidranta."</string>
     <string name="quest_diet_answer_no_food">"Tajā nav ēdiens"</string>
     <string name="short_no_answer_on_button">"Nē"</string>
@@ -1056,7 +1079,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="pref_title_language_select">"Izvēlieties valodu"</string>
     <string name="language_default">"Sistēmas noklusējuma"</string>
     <string name="on_floor">"stāvā %s"</string>
-    <string name="quest_street_parking_title">"Cik auto šeit var novietot, ja vispār?"</string>
     <string name="select_street_parking_orientation">"Izvēlieties orientāciju pret autoceļu:"</string>
     <string name="select_street_parking_position">"Izvēlieties novietojumu:"</string>
     <string name="select_street_parking_no">"Vai šeit ir kādas zīmes vai ceļa marķējums?"</string>
@@ -1075,6 +1097,8 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="street_standing_prohibited">"Stāvēt aizliegts"</string>
     <string name="street_parking_conditional_restrictions">"Auto novietošana / apturēšana ir ierobežota ar nosacījumiem"</string>
     <string name="street_parking_no_other_reasons">"Nav īpašas zīmes / novietot nav iespējams"</string>
+
+    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Ja šeit var novietot vai apturēt auto, norādiet, vai to var darīt uz ielas vai nost no tās. Papildu ierobežojumus varēsiet norādīt vēlāk.
 
 Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
@@ -1082,13 +1106,9 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
     <string name="quest_address_house_number_label">"Mājas numurs:"</string>
     <string name="quest_shoulder_title">"Vai šim ceļam ir nomale?"</string>
     <string name="quest_fireHydrant_position_title">"Kur ir novietots ugunsdzēsības hidrants?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_green">"Uz zāles vai zemes"</string>
+    <string name="quest_fireHydrant_position_green">"Uz zāles, zemes vai krūmā"</string>
     <string name="quest_fireHydrant_position_lane">"Uz ceļa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_sidewalk">"Uz trotuāra"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Uz takas"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Stāvvietā"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Jā (atstāt piezīmi)"</string>
     <string name="quest_smoothness_square_title">"Kāda ir virsmas kvalitāte šim laukumam?"</string>
@@ -1242,7 +1262,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Vai tiešām velosipēdisti nedrīkst izmantot šo vienvirziena ielu abos virzienos? Ja šaubāties, paskatieties, vai ielas galā nav zīme."</string>
     <string name="link_valhalla_description">"Maršruta veidošanas dzinis, kas aizņem ļoti maz atmiņās, multimodāla maršrutēšana, izohroni un vēl."</string>
     <string name="link_backofyourhand_description">"Cik labi jūs pārzināt savu apkārtni? Pārbaudi savas zināšanas, atrodot ielas."</string>
-    <string name="link_thenandnow_description">"Apskati, kā OSM izskatījās sākotnēji salīdzinot ar šodienu!"</string>
     <string name="link_notesreview_description">"Ērti apskatiet, filtrējiet un komentējiet piezīmes, ko jūs un citi ir atstājuši. Daudzas piezīmes var atrisināt, šeit esošo informāciju noliekot uz kartes ar iD vai JOSM"</string>
 
     <!-- Quests
@@ -1315,4 +1334,21 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Ieejas marķējums:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Dzīvokļu intervāls:"</string>
     <string name="quest_entrance_reference_flat_range_to">"līdz"</string>
+    <string name="default_disabled_msg_overlay">"Šāda veida uzdevums pēc noklusējuma ir izslēgts, jo jau eksistē pārklājums, kas ir daudz efektīvāks šāda veida datu ievadīšanai un atjaunināšanai."</string>
+    <string name="quest_camp_drinking_water_title">"Vai šeit ir brīvi pieejams dzeramais ūdens?"</string>
+    <string name="quest_camp_shower_title">"Vai šeit ir dušas?"</string>
+    <string name="quest_camp_power_supply_title">"Vai klientiem šeit ir iespēja uzlādēt tālruņus, klēpjdatorus utt.?"</string>
+    <string name="quest_camp_type_title">"Kas var šeit apmesties?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Gan teltis gan treileri, motormājas, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Tikai motormājas, treileri, ..."</string>
+    <string name="quest_camp_type_tents_only">"Tikai teltis"</string>
+    <string name="quest_camp_type_backcountry">"Nomaļš kempings (nav labiekārtots)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Atbilde neatbilst tam, kas jau ir kartēts par šo ceļu. Vai esat pārliecināts, ka šī atbilde ir par pareizo ceļu? Vai tiešām jūs personīgi apsekojāt visā tā garumā, kā tas vienmēr jādara?"</string>
+    <string name="quest_recycling_type_pet">"Tikai PET"</string>
+    <string name="street_parking_street_width">"Ielas platums: %s"</string>
+    <string name="overlay_street_parking">"Stāvvieta pie ielas"</string>
+    <string name="link_ohsomehex_description">"Izpētiet OSM datus dažādos mērogos — no lielās ainas līdz atsevišķiem objektiem telpā un laikā"</string>
+    <string name="link_opencampingmap_description">"Karte ar kempingiem"</string>
+    <string name="quest_atm_cashin_title">"Vai šajā bankomātā var iemaksāt skaidru naudu?"</string>
 </resources>

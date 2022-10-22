@@ -113,6 +113,9 @@
                     "name": "Barbeque/Grill",
                     "terms": "bbq,grill,barbecue"
                 },
+                "amenity/cafe": {
+                    "name": "Café"
+                },
                 "amenity/community_centre": {
                     "name": "Community Centre"
                 },
@@ -182,6 +185,9 @@
                     "name": "Long-drop Toilet",
                     "aliases": "Pit Latrine"
                 },
+                "amenity/trolley_bay": {
+                    "name": "Shopping Trolley Bay"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump",
                     "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel,gas pump"
@@ -203,6 +209,10 @@
                 "barrier/kerb": {
                     "name": "Kerb"
                 },
+                "building/pavilion": {
+                    "name": "Sports Pavilion",
+                    "terms": "sports,pavilion"
+                },
                 "building/terrace": {
                     "name": "Terraced Houses",
                     "terms": "home,terrace,terraced,brownstone,residence,dwelling,townhouse,townhouses,row house,row houses"
@@ -212,6 +222,9 @@
                 },
                 "healthcare/blood_donation": {
                     "name": "Blood Donation Centre"
+                },
+                "highway/footway/conveying": {
+                    "name": "Travelator"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign",
@@ -226,6 +239,9 @@
                 },
                 "landuse/construction": {
                     "name": "Construction Site"
+                },
+                "landuse/military/range": {
+                    "terms": "shooting range,shooting,range,gun,army,military,defence force"
                 },
                 "leisure/adult_gaming_centre": {
                     "name": "Adult Gaming Centre"
@@ -252,6 +268,9 @@
                 "leisure/sports_hall": {
                     "name": "Sports Hall"
                 },
+                "man_made": {
+                    "name": "Human-Made Feature"
+                },
                 "man_made/groyne": {
                     "name": "Groyne",
                     "terms": "groin"
@@ -259,12 +278,25 @@
                 "man_made/survey_point": {
                     "name": "Survey Marker"
                 },
+                "man_made/yes": {
+                    "name": "Human-Made Feature (Unspecified Type)"
+                },
                 "natural/cape": {
                     "terms": "point"
                 },
                 "natural/wetland/mangrove": {
                     "name": "Mangroves",
                     "terms": "mangrove"
+                },
+                "office/employment_agency": {
+                    "terms": "job,career,careers,vocational,vocation,occupation"
+                },
+                "office/it": {
+                    "name": "IT/Software Company",
+                    "terms": "computer,information,software,technology,tech,it,ict,information technology"
+                },
+                "office/lawyer": {
+                    "name": "Lawyer"
                 },
                 "place/suburb": {
                     "name": "Suburb"
@@ -284,6 +316,9 @@
                 "shop/chemist": {
                     "name": "Chemist"
                 },
+                "shop/coffee": {
+                    "name": "Coffee Ingredients Store"
+                },
                 "shop/convenience": {
                     "name": "Convenience Store / Dairy",
                     "terms": "dairy,superette,convenience store,convenience shop,corner store,corner shop"
@@ -293,9 +328,6 @@
                 },
                 "shop/garden_centre": {
                     "name": "Garden Centre"
-                },
-                "shop/second_hand": {
-                    "name": "Second Hand Shop"
                 },
                 "shop/tyres": {
                     "name": "Tyre Store"

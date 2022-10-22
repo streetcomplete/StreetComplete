@@ -44,6 +44,9 @@ object Prefs {
     const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
     const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
 
+    const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
+    const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
+
     enum class Autosync {
         ON, WIFI, OFF
     }

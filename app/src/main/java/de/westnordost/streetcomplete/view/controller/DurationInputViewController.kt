@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
-import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.numberOrNull
 import de.westnordost.streetcomplete.view.OnAdapterItemSelectedListener
@@ -36,7 +36,7 @@ class DurationInputViewController(
             onInputChanged?.invoke()
         }
         input.filters = arrayOf(acceptDecimalDigits(3, 1))
-        input.addTextChangedListener { onInputChanged?.invoke() }
+        input.doAfterTextChanged { onInputChanged?.invoke() }
     }
 }
 

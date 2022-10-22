@@ -23,12 +23,12 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
               highway ~ trunk|primary|secondary|tertiary|unclassified
               and (
                 motorroad = yes
+                or expressway = yes
                 or tunnel ~ yes|building_passage|avalanche_protector
                 or bridge = yes
                 or sidewalk ~ no|none
                 or !maxspeed and highway = trunk
                 or maxspeed > 50
-                or maxspeed ~ "(3[5-9]|[4-9][0-9]|1[0-9][0-9]) mph"
                 or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*(rural|trunk|motorway|nsl_single|nsl_dual)"
               )
             ) or (
@@ -51,7 +51,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
           and !shoulder:left and !shoulder:right and !shoulder:both
           and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add whether there are shoulders"
+    override val changesetComment = "Specify whether roads have shoulders"
     override val wikiLink = "Key:shoulder"
     override val icon = R.drawable.ic_quest_street_shoulder
     override val achievements = listOf(CAR)

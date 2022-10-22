@@ -123,15 +123,16 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 
 * [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
+* [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name
+* [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 
 ### Created for StreetComplete
 
-* [StreetCompleteJSON](https://github.com/goldfndr/StreetCompleteJSON) by [@goldfndr](https://github.com/goldfndr) listing all tags edited by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete)
+* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
 * [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
 * [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
-* [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement

@@ -35,18 +35,18 @@ layers:
                 cap: square
 
         river_lines:
-            filter: { class: [river, canal] }
+            filter: { class: [river, canal], $zoom: { min: 10 } }
             draw:
                 lines:
                     color: global.water_color
                     width: [[10, 1px], [17, 6px], [18, 12m]]
 
         stream_lines:
-            filter: { class: [stream, ditch, drain], $zoom: { min: 15 }}
+            filter: { class: [stream, ditch, drain], $zoom: { min: 16 }}
             draw:
                 lines:
                     color: global.water_color
-                    width: [[15, 1px], [17, 2px], [18, 5m]]
+                    width: [[16, 1px], [17, 2px], [18, 5m]]
 
     buildings:
         data: { source: jawg, layer: building }
@@ -147,6 +147,10 @@ layers:
         data: { source: jawg, layer: structure }
         filter: { class: bridge }
         draw:
+            lines:
+                order: 9
+                width: 4
+                color: global.building_outline_color
             polygons:
                 order: 10
                 color: global.building_outline_color

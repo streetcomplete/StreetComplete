@@ -108,7 +108,7 @@ class NotesWithEditsSource(
 
     /** returns collection with modified notes */
     private fun editsAppliedToNotes(originalNotes: Collection<Note>, noteEdits: List<NoteEdit>): Collection<Note> {
-        if (originalNotes.isEmpty()) return originalNotes
+        if (originalNotes.isEmpty() && noteEdits.isEmpty()) return originalNotes
 
         val notesById = HashMap<Long, Note>(originalNotes.size)
         originalNotes.associateByTo(notesById) { it.id }
@@ -141,7 +141,7 @@ class NotesWithEditsSource(
 
     private fun NoteEdit.createNoteComment(action: NoteComment.Action = NoteComment.Action.COMMENTED): NoteComment {
         var commentText = text ?: ""
-        if (!imagePaths.isNullOrEmpty()) {
+        if (imagePaths.isNotEmpty()) {
             commentText += "\n\n(Photo(s) will be attached on upload)"
         }
 

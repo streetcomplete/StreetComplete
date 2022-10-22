@@ -18,7 +18,7 @@ import org.koin.android.ext.android.inject
 abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override val contentLayoutResId = R.layout.fragment_overlay_street_side_puzzle_with_last_answer_button
-    private val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
+    protected val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
     private val prefs: SharedPreferences by inject()
 
@@ -84,7 +84,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected abstract fun onClickSide(isRight: Boolean)
 
-    override fun isFormComplete() = streetSideSelect.isComplete
+    override fun isFormComplete() = streetSideSelect.left != null || streetSideSelect.right != null
 
     companion object {
         private const val SHOW_SIDES = "show_sides"

@@ -10,13 +10,15 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
+import de.westnordost.streetcomplete.osm.address.applyTo
 
-class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
+class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number
-          or addr:streetnumber and !addr:street
+          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number and !addr:substreet and !addr:parentstreet
+          or addr:streetnumber and !addr:street and !addr:substreet and !addr:parentstreet
     """.toElementFilterExpression() }
 
     // #2112 - exclude indirect addr:street
@@ -25,7 +27,7 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
           addr:street and addr:interpolation
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add street/place names to address"
+    override val changesetComment = "Specify street/place names to addresses"
     override val icon = R.drawable.ic_quest_housenumber_street
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
@@ -60,12 +62,8 @@ class AddAddressStreet : OsmElementQuestType<AddressStreetAnswer> {
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun applyAnswerTo(answer: AddressStreetAnswer, tags: Tags, timestampEdited: Long) {
-        val key = when (answer) {
-            is StreetName -> "addr:street"
-            is PlaceName -> "addr:place"
-        }
-        tags[key] = answer.name
+    override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, timestampEdited: Long) {
+        answer.applyTo(tags)
     }
 }
 

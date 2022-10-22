@@ -1157,6 +1157,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"船屋"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"平房"</string>
 
     <!-- Fuzzy -->
@@ -1182,6 +1184,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"倉庫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"售貨亭"</string>
 
     <!-- Fuzzy -->
@@ -1795,6 +1799,8 @@
     <string name="user_profile_local_rank">"在 %s 的排名"</string>
     <string name="user_profile_days_active">"天有效"</string>
     <string name="user_profile_achievement_levels">"成就等級"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"它並沒有依靠在有名稱的街道上"</string>
     <string name="quest_address_street_place_name_label">"地點名稱："</string>
     <string name="quest_address_street_description">"點擊在地圖上的道路或是在下方輸入沒有縮寫的名稱："</string>
@@ -2154,7 +2160,6 @@
     <string name="quest_surface_value_concrete_plates">"混凝土板 "</string>
     <string name="quest_surface_value_concrete_lanes">"混凝土巷道"</string>
     <string name="quest_fireHydrant_diameter_title">"這個消防栓的標誌上顯示的直徑是多少？ "</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"這直徑數值看來不可能。"</string>
     <string name="quest_fireHydrant_confirmation_title">"你確定嗎？有時候能直接在消防栓找到直徑的資訊。"</string>
     <string name="quest_diet_answer_no_food">"這裡沒有食物"</string>
     <string name="short_no_answer_on_button">"沒有"</string>
@@ -2181,7 +2186,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"在樓層 %s："</string>
-    <string name="quest_street_parking_title">"車子如何在這裡停靠，如果可以的話？"</string>
     <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
     <string name="select_street_parking_position">"選擇位置："</string>
     <string name="select_street_parking_no">"這裡有任何路牌或是道路標示嗎？"</string>
@@ -2417,9 +2421,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"你對你所在的區域有多熟？來測試定位道路吧。"</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"探索早年 OSM 與現在的樣子的差異吧！"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"方便來檢索、過濾與回應由你或其他人產生的註解。可以透過 iD 或是 JOSM 編輯註解含有的資訊來解決註解"</string>
 
     <!-- Quests
@@ -2486,4 +2487,14 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"晚上與白天都有照明"</string>
     <string name="lit_value_automatic">"只有在人通過時才有照明"</string>
     <string name="overlay_sidewalk">"人行道"</string>
+    <string name="quest_generic_answer_is_indoors">"這邊是室內"</string>
+    <string name="quest_summit_cross_title">"這裡有山頂十字架嗎？"</string>
+    <string name="quest_entrance_reference">"這個入口的標誌是什麼？"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"入口標示與房間概況"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"房間概況"</string>
+    <string name="quest_entrance_reference_select_code_only">"入口標示"</string>
+    <string name="quest_entrance_reference_nothing_signed">"沒有標示或房間概況"</string>
+    <string name="quest_entrance_reference_reference_label">"入口標示："</string>
+    <string name="quest_entrance_reference_flat_range_label">"房間概況："</string>
+    <string name="quest_entrance_reference_flat_range_to">"到那裡"</string>
 </resources>

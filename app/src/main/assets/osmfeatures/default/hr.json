@@ -3330,9 +3330,6 @@
                     "name": "Prodavaonica alkoholnih pića",
                     "terms": "prodavaonica alkoholnih pića,diskont pića,dućan pića,dućan s pićem"
                 },
-                "shop/antiques": {
-                    "name": "Antikvarijat"
-                },
                 "shop/art": {
                     "name": "Trgovina umjetninama"
                 },
@@ -3375,9 +3372,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Kladioničar"
-                },
-                "shop/books": {
-                    "name": "Knjižara"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -3443,10 +3437,6 @@
                 },
                 "shop/dairy": {
                     "name": "Prodavaonica mliječnih proizvoda"
-                },
-                "shop/deli": {
-                    "name": "Prodavaonica delikatesa",
-                    "terms": "delikatesni dućan,trgovina delikatesama"
                 },
                 "shop/department_store": {
                     "name": "Robna kuća",
@@ -3578,9 +3568,6 @@
                     "name": "Trgovina glazbenih instrumenata",
                     "terms": "muzička trgovina,muzički dućan,gitare,bubnjevi"
                 },
-                "shop/newsagent": {
-                    "name": "Trgovina za novine i magazine"
-                },
                 "shop/optician": {
                     "name": "Optičar",
                     "terms": "optičar"
@@ -3595,9 +3582,6 @@
                 "shop/pastry": {
                     "name": "Slastičarna",
                     "terms": "slastice,kolači,kolačarnica,poslastičarna,slastičarnica,deserti,dućan s kolačima,kolač,torte,torta"
-                },
-                "shop/pawnbroker": {
-                    "name": "Zalagaonica"
                 },
                 "shop/perfumery": {
                     "name": "Parfimerija"
@@ -3679,10 +3663,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Trgovina za usisavače"
                 },
-                "shop/variety_store": {
-                    "name": "Prodavaonica mješovite robe",
-                    "terms": "prodavaonica mješovite robe,trgovina,prodavaonica,svaštara,dućan"
-                },
                 "shop/video": {
                     "name": "Videoteka",
                     "terms": "videoteka,video,video-kaseta,video kaseta,video kazeta,video-kazeta,iznajmljivanje video kazeta,iznajmljivanje dvda,iznajmljivanje dvd-a,dvd,blue ray,iznajmljivanje blue raya,blue-ray,iznajmljivanje blue-raya"
@@ -3703,10 +3683,6 @@
                 },
                 "shop/wine": {
                     "name": "Prodavaonica vina"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Planinarski dom",
-                    "terms": "planinarska kuća,planinarski dom,dom"
                 },
                 "tourism/apartment": {
                     "name": "Turistički apartman"

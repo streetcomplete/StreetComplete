@@ -5,8 +5,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -24,7 +22,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
           )
     """
 
-    override val changesetComment = "Add road smoothness"
+    override val changesetComment = "Specify road smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.ic_quest_street_surface_detail
     override val achievements = listOf(CAR, BICYCLIST)
@@ -37,19 +35,8 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun createForm() = AddSmoothnessForm()
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
-        when (answer) {
-            is SmoothnessValueAnswer -> {
-                tags.updateWithCheckDate("smoothness", answer.value.osmValue)
-                tags.remove("smoothness:date")
-            }
-            is WrongSurfaceAnswer -> {
-                tags.remove("surface")
-                tags.remove("smoothness")
-                tags.remove("smoothness:date")
-                tags.removeCheckDatesForKey("smoothness")
-            }
-            is IsActuallyStepsAnswer -> throw IllegalStateException()
-        }
+        if (answer is IsActuallyStepsAnswer) throw IllegalStateException()
+        answer.applyTo(tags)
     }
 }
 

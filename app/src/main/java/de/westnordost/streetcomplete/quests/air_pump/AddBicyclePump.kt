@@ -28,7 +28,7 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>() {
         )
         and access !~ private|no|customers
     """
-    override val changesetComment = "Add whether bicycle pump is available"
+    override val changesetComment = "Survey whether bicycle pumps are available"
     override val wikiLink = "Key:service:bicycle:pump"
     override val icon = R.drawable.ic_quest_bicycle_pump
     override val achievements = listOf(BICYCLIST)

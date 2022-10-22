@@ -11,12 +11,17 @@ textures:
         url: ''
         filtering: mipmap
         sprites: {}
+    icons:
+        url: ''
+        filtering: mipmap
+        sprites: { }
     pin_dot:
         url: images/pin_dot@2x.png
         filtering: mipmap
         density: 5
 
 styles:
+    # quest pins & dots
     pin-selection:
         base: points
         blend: overlay
@@ -36,6 +41,7 @@ styles:
         texture: pin_dot
         blend: overlay
         blend_order: 1
+    # highlighted geometry (when tapping on quest etc.)
     geometry-lines:
         base: lines
         blend: overlay
@@ -46,12 +52,23 @@ styles:
         base: points
         blend: overlay
         blend_order: 2
+    # GPS track
     track-lines:
         base: lines
         blend: overlay
+    # styled map data shown in overlays
+    map_data-icons:
+        base: points
+        texture: icons
+        blend: overlay
+        blend_order: 2
     map_data-lines:
         base: lines
         blend: translucent
+    map_data-lines-dashed:
+        base: lines
+        blend: translucent
+        dash: [2, 1.333]
     map_data-polygons:
         base: polygons
         blend: translucent
@@ -61,22 +78,45 @@ styles:
         blend_order: 1
     map_data-lines-right:
         base: lines
-        blend: inlay
+        blend: translucent
         texcoords: true
         shaders:
             blocks:
                 color: |
-                    color.a = color.a * smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * x;
     map_data-lines-left:
+        base: lines
+        blend: translucent
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    color.a = color.a * x;
+    map_data-lines-right-dashed:
         base: lines
         blend: inlay
         texcoords: true
         shaders:
             blocks:
                 color: |
-                    color.a = color.a * smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float x = smoothstep(0.49, 0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float y = step(0.4, mod(v_texcoord.y, 1.0));
+                    color.a = color.a * x * y;
+    map_data-lines-left-dashed:
+        base: lines
+        blend: inlay
+        texcoords: true
+        shaders:
+            blocks:
+                color: |
+                    float x = smoothstep(-0.49, -0.51, (v_texcoord.x - 0.5) * 2.0);
+                    float y = step(0.4, mod(v_texcoord.y, 1.0));
+                    color.a = color.a * x * y;
 
 layers:
+    # quest pins & dots
     streetcomplete_selected_pins:
         data: { source: streetcomplete_selected_pins }
         draw:
@@ -119,6 +159,7 @@ layers:
                     size: 16px
                     collide: true
                     offset: [-1.5px, -12px]
+    # highlighted geometry (when tapping on quest etc.)
     streetcomplete_geometry:
         data: { source: streetcomplete_geometry }
         line:
@@ -166,7 +207,8 @@ layers:
             filter: { old: [true] }
             draw:
                 track-lines:
-                    color: global.old_track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.old_track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
@@ -187,44 +229,133 @@ layers:
             filter: { old: [true] }
             draw:
                 track-lines:
-                    color: global.old_track_color
+                    color: |
+                        function() { return feature.record ? global.track_color_record : global.old_track_color }
                     width: [[14, 6px],[18, 12px]]
                     collide: false
                     join: round
                     order: 900
+    # styled map data shown in overlays
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
+        # if the icons do not collide, it will get too busy
+        point-collide:
+            filter: { icon: true, $zoom: { min: 18, max: 19.999 } }
+            draw:
+                map_data-icons:
+                    interactive: true
+                    priority: 1
+                    collide: true
+                    size: 34px
+                    sprite: function() { return feature.icon }
+                    text:
+                        anchor: [right]
+                        optional: true
+                        text_source: text
+                        max_lines: 2
+                        font:
+                            family: global.text_font_family
+                            fill: global.text_fill_color
+                            size: global.text_size
+                            stroke: { color: global.text_stroke_color, width: 4px }
+        # same as above but with collide=false, at ~max zoom
+        point-no-collide:
+            filter: { icon: true, $zoom: { min: 20 } }
+            draw:
+                map_data-icons:
+                    interactive: true
+                    priority: 1
+                    collide: false
+                    size: 34px
+                    sprite: function() { return feature.icon }
+                    text:
+                        anchor: [right]
+                        optional: true
+                        text_source: text
+                        max_lines: 2
+                        font:
+                            family: global.text_font_family
+                            fill: global.text_fill_color
+                            size: global.text_size
+                            stroke: { color: global.text_stroke_color, width: 4px }
+        # pure labels without icons do not render if specified in point style in tangram. Pure
+        # text labels shall never collide
+        label-no-icon:
+            filter: { text: true, icon: false, $zoom: { min: 18 } }
+            draw:
+                text:
+                    interactive: true
+                    priority: 1
+                    collide: false
+                    text_source: text
+                    font:
+                        family: global.text_font_family
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: { color: global.text_stroke_color, width: 4px }
         line:
-            filter: { type: [line], color: true }
+            filter: { type: [line], color: true, dashed: false }
             draw:
                 map_data-lines:
                     interactive: true
                     color: function() { return feature.color; }
                     width: function() { return feature.width; }
-                    order: 801
+                    order: function() { return 701 + Number(feature.layer)*5; }
                     cap: round
                     join: round
                     outline:
                         color: function() { return feature.strokeColor; }
                         width: 1m
-                        order: 800
+                        order: function() { return 702 + Number(feature.layer)*5; }
+        line-dashed:
+            filter: { type: [line], color: true, dashed: true }
+            draw:
+                map_data-lines-dashed:
+                      interactive: true
+                      color: function() { return feature.color; }
+                      width: function() { return feature.width; }
+                      order: function() { return 701 + Number(feature.layer)*5; }
+                      cap: round
+                      join: round
+                      outline:
+                          color: function() { return feature.strokeColor; }
+                          width: 1m
+                          order: function() { return 702 + Number(feature.layer)*5; }
         line-left:
-            filter: { type: [line], colorLeft: true }
+            filter: { type: [line], colorLeft: true, dashedLeft: false }
             draw:
                 map_data-lines-left:
                     interactive: true
                     color: function() { return feature.colorLeft; }
                     width: function() { return feature.width * 2.0 + 4.0; }
-                    order: 802
+                    order: function() { return 700 + Number(feature.layer)*5; }
                     join: round
         line-right:
-            filter: { type: [line], colorRight: true }
+            filter: { type: [line], colorRight: true, dashedRight: false }
             draw:
                 map_data-lines-right:
                     interactive: true
                     color: function() { return feature.colorRight; }
                     width: function() { return feature.width * 2.0 + 4.0; }
-                    order: 802
+                    order: function() { return 700 + Number(feature.layer)*5; }
+                    join: round
+        line-left-dashed:
+            filter: { type: [line], colorLeft: true, dashedLeft: true }
+            draw:
+                map_data-lines-left-dashed:
+                    interactive: true
+                    color: function() { return feature.colorLeft; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: function() { return 700 + Number(feature.layer)*5; }
+                    join: round
+        line-right-dashed:
+            filter: { type: [line], colorRight: true, dashedRight: true }
+            draw:
+                map_data-lines-right-dashed:
+                    interactive: true
+                    color: function() { return feature.colorRight; }
+                    width: function() { return feature.width * 2.0 + 4.0; }
+                    order: function() { return 700 + Number(feature.layer)*5; }
                     join: round
         area:
             filter: { type: [poly] }
@@ -232,24 +363,12 @@ layers:
                 map_data-polygons:
                     interactive: true
                     color: function() { return feature.color; }
-                    order: 800
+                    order: function() { return 703 + Number(feature.layer)*5; }
                     extrude: function() { return feature.height; }
                 map_data-lines:
                     color: function() { return feature.strokeColor; }
-                    order: 801
+                    order: function() { return 704 + Number(feature.layer)*5; }
                     extrude: function() { return feature.height; }
                     width: 1m
                     cap: round
                     join: round
-        label:
-            filter: { text: true }
-            draw:
-                text:
-                    interactive: true
-                    text_source: text
-                    priority: 10
-                    font:
-                        family: global.text_font_family
-                        fill: global.text_fill_color
-                        size: global.text_size
-                        stroke: global.text_stroke

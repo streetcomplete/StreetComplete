@@ -11,16 +11,15 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes with
+        nodes, ways with
         (
-          (public_transport = platform and ~bus|trolleybus|tram ~ yes)
-          or
-          (highway = bus_stop and public_transport != stop_position)
+          public_transport = platform
+          or (highway = bus_stop and public_transport != stop_position)
         )
         and physically_present != no and naptan:BusStopType != HAR
         and (!bench or bench older today -4 years)
     """
-    override val changesetComment = "Add whether a bus stop has a bench"
+    override val changesetComment = "Specify whether public transport stops have benches"
     override val wikiLink = "Key:bench"
     override val icon = R.drawable.ic_quest_bench_public_transport
     override val achievements = listOf(PEDESTRIAN)

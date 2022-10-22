@@ -14,12 +14,13 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
     override val changesetComment = "Add housenumbers"
     override val wikiLink = "Key:addr"
@@ -117,7 +118,7 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         for (areaWithAddress in areasWithAddresses + areasWithAddressesOnOutline) {
             val nearbyBuildings = buildingPositions.getAll(areaWithAddress.getBounds())
             val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
-            val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }
+            val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }.toSet()
 
             buildings.removeAll(buildingsInArea)
         }
@@ -129,45 +130,24 @@ class AddHousenumber : OsmElementQuestType<HousenumberAnswer> {
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""nodes, ways, relations with
+        getMapData().filter("""
+            nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref
-            """.toElementFilterExpression())
+        """.toElementFilterExpression())
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: HousenumberAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
-            is HouseNumberAndHouseName -> {
-                val name = answer.name
-                val number = answer.number
-
-                when (number) {
-                    is ConscriptionNumber -> {
-                        tags["addr:conscriptionnumber"] = number.conscriptionNumber
-                        if (number.streetNumber != null) {
-                            tags["addr:streetnumber"] = number.streetNumber
-                            tags["addr:housenumber"] = number.streetNumber
-                        } else {
-                            tags["addr:housenumber"] = number.conscriptionNumber
-                        }
-                    }
-                    is HouseAndBlockNumber -> {
-                        tags["addr:housenumber"] = number.houseNumber
-                        tags["addr:block_number"] = number.blockNumber
-                    }
-                    is HouseNumber -> {
-                        tags["addr:housenumber"] = number.houseNumber
-                    }
-                    null -> {}
-                }
-
-                if (name != null) {
-                    tags["addr:housename"] = name
-                }
-
-                if (name == null && number == null) {
+            is AddressNumberOrName -> {
+                if (answer.number == null && answer.name == null) {
                     tags["nohousenumber"] = "yes"
+                } else {
+                    answer.number?.applyTo(tags)
+                    if (answer.name != null) {
+                        tags["addr:housename"] = answer.name
+                    }
                 }
             }
             WrongBuildingType -> {

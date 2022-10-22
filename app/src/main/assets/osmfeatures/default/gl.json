@@ -2159,17 +2159,7 @@
                     "placeholder": "Excelente, bo, malo..."
                 },
                 "transformer": {
-                    "label": "Tipo",
-                    "options": {
-                        "auto": "Autotransformador",
-                        "auxiliary": "Auxiliar",
-                        "converter": "Conversor",
-                        "distribution": "Distribución",
-                        "generator": "Xerador",
-                        "phase_angle_regulator": "Desfasador",
-                        "traction": "Tracción",
-                        "yes": "Descoñecido"
-                    }
+                    "label": "Tipo"
                 },
                 "trees": {
                     "label": "Árbores"
@@ -4504,9 +4494,6 @@
                     "name": "Área perigosa",
                     "terms": "zona de perigo,bombas,minas,munición,explosivo,militar,exército,forza aérea,mariña,armada,forza naval,área perigosa,zona de exclusión"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Base naval"
-                },
                 "landuse/military/range": {
                     "name": "Campo de tiro militar"
                 },
@@ -4826,9 +4813,6 @@
                 },
                 "line": {
                     "name": "Liña"
-                },
-                "man_made": {
-                    "name": "Elemento feito polo home"
                 },
                 "man_made/adit": {
                     "name": "Entrada a mina",
@@ -5920,9 +5904,6 @@
                 "shop/anime": {
                     "name": "Tenda de anime / manga"
                 },
-                "shop/antiques": {
-                    "name": "Tenda de antigüidades"
-                },
                 "shop/appliance": {
                     "name": "Tenda de electrodomésticos"
                 },
@@ -5967,10 +5948,6 @@
                 "shop/bookmaker": {
                     "name": "Corredor de apostas",
                     "terms": "casa de apostas,casino,codere,luckia,apostas"
-                },
-                "shop/books": {
-                    "name": "Libraría",
-                    "terms": "libraría,venda de libros"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -6064,9 +6041,6 @@
                 "shop/cosmetics": {
                     "name": "Tenda de cosméticos"
                 },
-                "shop/country_store": {
-                    "name": "Tenda do agro ou campo"
-                },
                 "shop/craft": {
                     "name": "Tenda de artes e oficios"
                 },
@@ -6076,9 +6050,6 @@
                 "shop/dairy": {
                     "name": "Tenda de produtos frescos",
                     "terms": "produtos frescos,frescos,produtos,leite,lácteos,leitária,queixaría,central leiteira"
-                },
-                "shop/deli": {
-                    "name": "Delicatessen"
                 },
                 "shop/department_store": {
                     "name": "Grandes almacéns"
@@ -6179,9 +6150,6 @@
                 "shop/hardware": {
                     "name": "Ferraxaría"
                 },
-                "shop/health_food": {
-                    "name": "Tenda de produtos saudábeis"
-                },
                 "shop/hearing_aids": {
                     "name": "Tenda de audífonos"
                 },
@@ -6271,9 +6239,6 @@
                 "shop/musical_instrument": {
                     "name": "Tenda de instrumentos musicais"
                 },
-                "shop/newsagent": {
-                    "name": "Tenda de xornais/revistas"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Tenda de suplementos nutricionais"
                 },
@@ -6297,9 +6262,6 @@
                 "shop/pastry": {
                     "name": "Confeitaría ou pastelaría",
                     "terms": "confitaría,pastelaría,pasteis,tartas"
-                },
-                "shop/pawnbroker": {
-                    "name": "Casa de empeños"
                 },
                 "shop/perfumery": {
                     "name": "Perfumaría"
@@ -6345,9 +6307,6 @@
                 "shop/seafood": {
                     "name": "Peixaría",
                     "terms": "peixaría,peixería,peixeiro,peixe,marisco"
-                },
-                "shop/second_hand": {
-                    "name": "Tenda de segunda man"
                 },
                 "shop/sewing": {
                     "name": "Tenda de artigos de costura",
@@ -6430,10 +6389,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Tenda de aspiradoras"
                 },
-                "shop/variety_store": {
-                    "name": "Tenda de variedades ou bazar",
-                    "terms": "bazar,todo a cen,todo a 100,variedades"
-                },
                 "shop/video": {
                     "name": "Videoclube"
                 },
@@ -6477,9 +6432,6 @@
                 },
                 "tourism": {
                     "name": "Elemento de turismo"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Refuxio de montaña"
                 },
                 "tourism/apartment": {
                     "name": "Apartamento de hóspedes"

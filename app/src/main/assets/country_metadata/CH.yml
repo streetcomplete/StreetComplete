@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 hasSlowZone: true
@@ -8,6 +8,8 @@ noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de, fr, it, rm]
 popularSports: [soccer, tennis, basketball, shooting, equestrian]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
 atmOperators: [Raiffeisen, PostFinance, UBS, Credit Suisse, Zürcher Kantonalbank, Raiffeisenbank, BCV, Post, ZKB, Bank Cler, Migros Bank, Valiant, La Poste, UBS Switzerland, Thurgauer Kantonalbank, Graubündner Kantonalbank, Die Post, BEKB, Raiffeisen Schweiz, Luzerner Kantonalbank, Kantonalbank, Hypothekarbank Lenzburg, St. Galler Kantonalbank, Valiant Bank, Schwyzer Kantonalbank, PostFinance AG, Bity SA, Aargauische Kantonalbank, Poste, Basler Kantonalbank, Neue Aargauer Bank AG, Die Schweizerische Post, Zuger Kantonalbank, BCGE, Basellandschaftliche Kantonalbank, La Posta, Migrosbank, Glarner Kantonalbank, BCVS, Bank Linth, Neue Aargauer Bank, Crédit Suisse, UBS AG, Obwaldner Kantonalbank, Banque Raiffeisen, Bank Avera Genossenschaft, Bezirkssparkasse Uster, Schweizerische Post, BCN, Banque Cantonale du Valais, AEK, NAB, BKB, AKB, Post Finance, Bitcoin Suisse AG, TKB, Berner Kantonalbank, Valiant Bank AG, St.Galler Kantonalbank, Schaffhauser Kantonalbank, Raiffaisen, Bezirks-Sparkasse Dielsdorf, Nidwaldner Kantonalbank, BCF / FKB, Clientis, acrevis, Urner Kantonalbank, Walliser Kantonalbank, GKB, BCJ, Berner Kantonalbank AG, Banque Cantonale Neuchâteloise, Acrevis Bank, Raiffeisen AG, Kantonal Bank, Coop, Zürcher Landbank, Ersparniskasse Schaffhausen, Bezirkssparkasse Dielsdorf, Raifeisenbank, Glarner Regionalbank, Baloise Bank, Raffeisen, Post Finace, Banca Cantonale Grigione, Banque Cantonale de Fribourg, BPS, SGKB, Baloise Bank SoBa, PostFinance SA, AEK Thun, Bank Oberaargau, Raiffeisen Marbach-Rebstein, BCF, Bezirks-Sparkasse Dielsdorf (BSKD), Regiobank, Raiffeisen Bank, CLER, Graubündner Kanonalbank, Banque Cantonale du Valais (BCVs)]

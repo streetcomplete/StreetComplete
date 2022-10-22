@@ -3,20 +3,20 @@ package de.westnordost.streetcomplete.quests.recycling_material
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CLOTHES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PAPER
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SHOES
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.Instant
-import java.time.LocalDate
 
 class AddRecyclingContainerMaterialsTest {
 
@@ -51,7 +51,7 @@ class AddRecyclingContainerMaterialsTest {
                 "check_date:recycling" to "2001-01-01",
                 "recycling:plastic_packaging" to "yes",
                 "recycling:something_else" to "no"
-            ), timestamp = Instant.now().toEpochMilli())
+            ), timestamp = nowAsEpochMilliseconds())
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
@@ -63,7 +63,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling_type" to "container",
                 "check_date:recycling" to "2001-01-01",
                 "recycling:something_else" to "yes"
-            ), timestamp = Instant.now().toEpochMilli())
+            ), timestamp = nowAsEpochMilliseconds())
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
@@ -80,6 +80,17 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
+            StringMapEntryAdd("recycling:plastic_packaging", "no"),
+            StringMapEntryAdd("recycling:beverage_cartons", "no"),
+            StringMapEntryAdd("recycling:plastic", "no")
+        )
+    }
+
+    @Test fun `apply answer with PET`() {
+        questType.verifyAnswer(
+            RecyclingMaterials(listOf(PET)),
+            StringMapEntryAdd("recycling:PET", "yes"),
+            StringMapEntryAdd("recycling:plastic_bottles", "no"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
             StringMapEntryAdd("recycling:beverage_cartons", "no"),
             StringMapEntryAdd("recycling:plastic", "no")
@@ -188,7 +199,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("check_date:recycling", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", nowAsCheckDateString())
         )
     }
 
@@ -221,7 +232,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryModify("recycling:paper", "no", "yes"),
             StringMapEntryDelete("recycling:check_date", "2000-11-01"),
-            StringMapEntryModify("check_date:recycling", "2000-11-02", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:recycling", "2000-11-02", nowAsCheckDateString()),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
             StringMapEntryDelete("recycling:last_checked", "2000-11-05"),

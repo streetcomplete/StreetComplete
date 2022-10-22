@@ -218,22 +218,33 @@ fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
     var minLonOffset = 0.0
     var maxLatOffset = 0.0
     var maxLonOffset = 0.0
+    var minLat = origin.latitude
+    var minLon = origin.longitude
+    var maxLat = origin.latitude
+    var maxLon = origin.longitude
     while (it.hasNext()) {
         val pos = it.next()
         // calculate with offsets here to properly handle 180th meridian
-        val lat = pos.latitude - origin.latitude
-        val lon = normalizeLongitude(pos.longitude - origin.longitude)
-        if (lat < minLatOffset) minLatOffset = lat
-        if (lon < minLonOffset) minLonOffset = lon
-        if (lat > maxLatOffset) maxLatOffset = lat
-        if (lon > maxLonOffset) maxLonOffset = lon
+        val latOffset = pos.latitude - origin.latitude
+        val lonOffset = normalizeLongitude(pos.longitude - origin.longitude)
+        if (latOffset < minLatOffset) {
+            minLatOffset = latOffset
+            minLat = pos.latitude
+        }
+        if (lonOffset < minLonOffset) {
+            minLonOffset = lonOffset
+            minLon = pos.longitude
+        }
+        if (latOffset > maxLatOffset) {
+            maxLatOffset = latOffset
+            maxLat = pos.latitude
+        }
+        if (lonOffset > maxLonOffset) {
+            maxLonOffset = lonOffset
+            maxLon = pos.longitude
+        }
     }
-    return BoundingBox(
-        origin.latitude + minLatOffset,
-        normalizeLongitude(origin.longitude + minLonOffset),
-        origin.latitude + maxLatOffset,
-        normalizeLongitude(origin.longitude + maxLonOffset)
-    )
+    return BoundingBox(minLat, minLon, maxLat, maxLon)
 }
 
 /** Returns the distance covered by this polyline */
@@ -479,7 +490,7 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
 }
 
 /** returns whether this bounding box contains the given position */
-fun BoundingBox.contains(pos: LatLon): Boolean {
+operator fun BoundingBox.contains(pos: LatLon): Boolean {
     return if (crosses180thMeridian) {
         splitAt180thMeridian().any { it.containsCanonical(pos) }
     } else {
@@ -565,10 +576,10 @@ private fun Double.toRadians() = this / 180.0 * PI
 private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
-    var lon = lon % 360 // lon is now -360..360
-    lon = (lon + 360) % 360 // lon is now 0..360
-    if (lon > 180) lon -= 360 // lon is now -180..180
-    return lon
+    var normalizedLon = lon % 360 // normalizedLon is -360..360
+    if (normalizedLon < -180) normalizedLon += 360
+    else if (normalizedLon >= 180) normalizedLon -= 360
+    return normalizedLon
 }
 
 /* The following formulas have been adapted from this excellent source:

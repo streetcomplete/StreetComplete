@@ -929,6 +929,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Yüzer ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Durağan karavan"</string>
 
@@ -952,6 +954,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -974,6 +978,8 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"İbadethane"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
 
     <!-- Fuzzy -->
@@ -1460,6 +1466,8 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"görev türüne göre"</string>
     <string name="user_profile_global_rank">"Küresel sıralama"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Adlandırılmış bir sokağa ait değil"</string>
     <string name="quest_address_street_place_name_label">"Yer adı:"</string>
     <string name="quest_address_street_description">"Haritadaki ait olduğu yola dokunun veya aşağıdaki alana kısaltma olmadan girin:"</string>

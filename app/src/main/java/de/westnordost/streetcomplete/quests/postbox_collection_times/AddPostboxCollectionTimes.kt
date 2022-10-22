@@ -25,7 +25,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     /* Don't ask again for postboxes without signed collection times. This is very unlikely to
     *  change and problematic to tag clearly with the check date scheme */
 
-    override val changesetComment = "Add postbox collection times"
+    override val changesetComment = "Survey postbox collection times"
     override val wikiLink = "Key:collection_times"
     override val icon = R.drawable.ic_quest_mail
     override val isDeleteElementEnabled = true

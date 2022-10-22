@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
@@ -34,7 +35,7 @@ class OpenChangesetsManager(
     }
 
     fun closeOldChangesets() = synchronized(this) {
-        val timePassed = System.currentTimeMillis() - lastEditTimeStore.get()
+        val timePassed = nowAsEpochMilliseconds() - lastEditTimeStore.get()
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         for (info in openChangesetsDB.getAll()) {

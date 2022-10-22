@@ -13,10 +13,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
         ways with
           (
             highway ~ ${ROADS_WITH_LANES.joinToString("|")}
-            or highway = residential and (
-              maxspeed > 30
-              or (maxspeed ~ ".*mph" and maxspeed !~ "([1-9]|1[0-9]|20) mph")
-            )
+            or highway = residential and maxspeed > 33
           )
           and area != yes
           and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
@@ -24,8 +21,9 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no
           and placement != transition
+          and (access !~ private|no or (foot and foot !~ private|no))
     """
-    override val changesetComment = "Add road lanes"
+    override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.ic_quest_street_lanes
     override val achievements = listOf(CAR)

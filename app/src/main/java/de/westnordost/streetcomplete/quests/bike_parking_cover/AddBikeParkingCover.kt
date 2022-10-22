@@ -19,7 +19,7 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
          and !covered
          and bicycle_parking !~ shed|lockers|building
     """
-    override val changesetComment = "Add bicycle parkings cover"
+    override val changesetComment = "Specify bicycle parkings covers"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
     override val isDeleteElementEnabled = true

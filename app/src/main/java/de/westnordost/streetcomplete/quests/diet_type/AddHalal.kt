@@ -24,12 +24,12 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
           or diet:halal != only and diet:halal older today -4 years
         )
     """
-    override val changesetComment = "Add Halal status"
+    override val changesetComment = "Specify whether places are halal"
     override val wikiLink = "Key:diet:halal"
     override val icon = R.drawable.ic_quest_halal
     override val isReplaceShopEnabled = true
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_halal_name_title2
 

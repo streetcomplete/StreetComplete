@@ -27,7 +27,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
          and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
     """
-    override val changesetComment = "Add maximum allowed weight"
+    override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true

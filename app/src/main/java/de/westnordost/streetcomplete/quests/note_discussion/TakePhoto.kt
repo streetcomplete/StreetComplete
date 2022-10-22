@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ActivityForResultLauncher
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import de.westnordost.streetcomplete.util.ktx.hasCameraPermission
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -66,7 +67,7 @@ class TakePhoto(
 
     private fun createImageFile(context: Context): File {
         val directory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
+        val imageFileName = "photo_" + nowAsEpochMilliseconds() + ".jpg"
         val file = File(directory, imageFileName)
         if (!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
         return file

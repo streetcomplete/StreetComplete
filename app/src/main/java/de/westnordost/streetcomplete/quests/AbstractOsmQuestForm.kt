@@ -29,12 +29,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -54,12 +56,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
+    private val noteEditsController: NoteEditsController by inject()
     private val osmQuestController: OsmQuestController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
-    // only used for testing / only used for ShowQuestFormsActvitiy! Found no better way to do this
+    // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
     var hideOsmQuestController: HideOsmQuestController = osmQuestController
 
@@ -107,8 +110,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element))
-        setTitleHintLabel(getNameAndLocationLabelString(element.tags, resources, featureDictionary))
+        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
+        setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
     }
 
     override fun onStart() {
@@ -209,7 +212,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element)
+        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
         val leaveNoteContext = "Unable to answer \"$questTitle\""
         listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
@@ -265,7 +268,13 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             return
         }
         withContext(Dispatchers.IO) {
-            addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            if (action is UpdateElementTagsAction && !action.changes.isValid()) {
+                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
+                val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
+                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
+            } else {
+                addElementEditsController.add(osmElementQuestType, element, geometry, "survey", action)
+            }
         }
         listener?.onEdited(osmElementQuestType, element, geometry)
     }

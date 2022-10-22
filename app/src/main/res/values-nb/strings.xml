@@ -693,11 +693,11 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen blir normalt ikke vist da du vanligvis må gå inn på stedet for å kunne svare på spørsmålet."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
@@ -933,6 +933,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -958,6 +960,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lager"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Frittstående kiosk"</string>
 
     <!-- Fuzzy -->
@@ -1508,6 +1512,8 @@ plassering"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestasjons-
 nivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
     <string name="quest_address_street_description">"Trykk på veien på kartet eller legg det til uten forkortelser i feltet nedenfor:"</string>
@@ -1896,7 +1902,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_surface_value_concrete_plates">"Betongelementer"</string>
     <string name="quest_surface_value_concrete_lanes">"Spor med betongplater"</string>
     <string name="quest_fireHydrant_diameter_title">"Hvilken diameter er dokumentert på selve brannhydranten?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Den oppgitte diameteren virker ikke å være rett."</string>
     <string name="quest_fireHydrant_confirmation_title">"Er du sikker? Som oftest kan diameter-informasjon være beskrevet på selve brannhydranten."</string>
     <string name="quest_diet_answer_no_food">"Ingen servering"</string>
     <string name="short_no_answer_on_button">"Nei"</string>
@@ -1923,7 +1928,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
     <!-- Could you please give examples of what %s could be? -->
     <string name="on_floor">"i etasje %s"</string>
-    <string name="quest_street_parking_title">"På hvilken måte kan biler parkere her?"</string>
     <string name="select_street_parking_orientation">"Velg orientering i forhold til veien:"</string>
     <string name="select_street_parking_position">"Velg posisjon:"</string>
     <string name="select_street_parking_no">"Skilt eller oppmerking her?"</string>
@@ -2162,9 +2166,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Hvor godt kjenner du nabolaget ditt? Test dine kunnskaper ved å lokalisere veiene."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Se hvordan OSM så ut i starten, sammenlignet med hvordan det ser ut nå!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Enkelt se, filtrere og kommentere merknader laget av deg selv og andre. Mange merknader kan løses ved å legge inn den oppgitte informasjonen i kartet med iD eller JOSM"</string>
 
     <!-- Quests
@@ -2209,4 +2210,52 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Trykk på skjermen for å begynne å måle"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er det en offentilg tilgjengelig sykkelpumpe her (i hverfall når det er åpent)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Er det en fungerende sykkelpumpe her?"</string>
+    <string name="action_overlays">"Kartlag"</string>
+    <string name="split_way">"Del veien"</string>
+    <string name="quest_memorialType_title">"Hva slags minnesmerke er dette?"</string>
+    <string name="quest_memorialType_statue">"Statue"</string>
+    <string name="quest_memorialType_bust">"Byste"</string>
+    <string name="quest_memorialType_plaque">"Plakett"</string>
+    <string name="quest_memorialType_war_memorial">"Krigsminnesmerke"</string>
+    <string name="quest_memorialType_stone">"Stein"</string>
+    <string name="quest_memorialType_obelisk">"Obelisk"</string>
+    <string name="quest_memorialType_stele_wooden">"Trestele (minnesmerke)"</string>
+    <string name="quest_memorialType_stele_stone">"Steinstele (minnesmerke)"</string>
+    <string name="quest_memorialType_sculpture">"Annen skulptur"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Velg kartlag"</string>
+    <string name="overlay_none">"Ingen"</string>
+    <string name="overlay_lit">"Gatebelysning"</string>
+    <string name="lit_value_yes">"Belyst"</string>
+    <string name="lit_value_no">"Ikke belyst"</string>
+    <string name="lit_value_24_7">"Belyst hele døgnet"</string>
+    <string name="lit_value_automatic">"Belyst når noen passerer"</string>
+    <string name="overlay_sidewalk">"Fortau"</string>
+    <string name="quest_generic_answer_is_indoors">"Det er innendørs"</string>
+
+    <!-- Is this only used for a cross (christian) or "Various other forms of marking or symbol such as cairns, prayer flags or ovoos may be found around the world on passes and hills, in particular on sacred mountains. In the Italian Alps a Madonna is sometimes placed at the summit instead of a cross." (ref. Wikipedia article about "Summit cross") -->
+    <string name="quest_summit_cross_title">"Er det et kors på toppen?"</string>
+    <string name="quest_entrance_reference">"Hva er skiltet ved inngangen?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"inngangsmerke og leilighetsnumre"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Leilighetsnumre"</string>
+    <string name="quest_entrance_reference_select_code_only">"Inngangsmerke"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Ingen skilt med merke eller leilighetsnumre"</string>
+    <string name="quest_entrance_reference_reference_label">"Inngangsmerke:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Leilighetsnumre:"</string>
+
+    <!-- Could you please explain the context and maybe give an example? -->
+    <string name="quest_entrance_reference_flat_range_to">"til"</string>
+    <string name="quest_camp_drinking_water_title">"Er drikkevann fritt tilgjengelig for campere her?"</string>
+    <string name="quest_camp_shower_title">"Er det dusjer her?"</string>
+    <string name="quest_camp_power_supply_title">"Er det mulig for kunder å lade telefon, laptop ol. her?"</string>
+    <string name="quest_camp_type_title">"Hvem kan campe her?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Både telt og bobiler, campingvogner, …"</string>
+    <string name="quest_camp_type_caravans_only">"Kun bobiler, campingvogner, …"</string>
+    <string name="quest_camp_type_tents_only">"Kun telt"</string>
+    <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
+    <string name="quest_recycling_type_pet">"Kun PET"</string>
+    <string name="street_parking_street_width">"Gatebredde: %s"</string>
+    <string name="overlay_street_parking">"Gateparkering"</string>
 </resources>

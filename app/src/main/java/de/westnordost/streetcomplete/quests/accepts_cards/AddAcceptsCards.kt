@@ -20,13 +20,15 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         and !payment:credit_cards and !payment:debit_cards
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
+        and (name or brand or name:signed = no)
+        and access !~ private|no
     """
-    override val changesetComment = "Add whether cards are accepted"
-    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
+    override val changesetComment = "Survey whether payment with cards is accepted"
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_card
     override val isReplaceShopEnabled = true
     override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cards
 

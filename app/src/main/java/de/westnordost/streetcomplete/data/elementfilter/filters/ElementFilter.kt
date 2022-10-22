@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.Matcher
+import de.westnordost.streetcomplete.data.elementfilter.withOptionalUnitToDoubleOrNull
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import java.time.Instant
-import java.time.LocalDate
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String
@@ -36,7 +37,7 @@ class HasKeyLike(val key: String) : ElementFilter {
     private val regex = RegexOrSet.from(key)
 
     override fun toString() = "~$key"
-    override fun matches(obj: Element) = obj.tags.keys.find { regex.matches(it) } != null
+    override fun matches(obj: Element) = obj.tags.keys.any { regex.matches(it) }
 }
 
 class NotHasKeyLike(val key: String) : ElementFilter {
@@ -65,7 +66,6 @@ class HasTagLike(val key: String, val value: String) : ElementFilter {
     private val valueRegex = RegexOrSet.from(value)
 
     override fun toString() = "~$key ~ $value"
-
     override fun matches(obj: Element) =
         obj.tags.entries.any { keyRegex.matches(it.key) && valueRegex.matches(it.value) }
 }
@@ -90,7 +90,7 @@ class HasTagGreaterOrEqualThan(key: String, value: Float) : CompareTagValue(key,
 abstract class CompareTagValue(val key: String, val value: Float) : ElementFilter {
     abstract fun compareTo(tagValue: Float): Boolean
     override fun matches(obj: Element): Boolean {
-        val tagValue = obj.tags[key]?.toFloatOrNull() ?: return false
+        val tagValue = obj.tags[key]?.withOptionalUnitToDoubleOrNull()?.toFloat() ?: return false
         return compareTo(tagValue)
     }
 }
@@ -132,7 +132,7 @@ class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
     override fun matches(obj: Element): Boolean {
-        if (compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())) return true
+        if (compareTo(Instant.fromEpochMilliseconds(obj.timestampEdited).toLocalDate())) return true
         return getLastCheckDateKeys(key)
             .mapNotNull { obj.tags[it]?.toCheckDate() }
             .any { compareTo(it) }
@@ -150,7 +150,7 @@ class ElementNewerThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
 
 abstract class CompareElementAge(val dateFilter: DateFilter) : ElementFilter {
     abstract fun compareTo(tagValue: LocalDate): Boolean
-    override fun matches(obj: Element) = compareTo(Instant.ofEpochMilli(obj.timestampEdited).toLocalDate())
+    override fun matches(obj: Element) = compareTo(Instant.fromEpochMilliseconds(obj.timestampEdited).toLocalDate())
 }
 
 class CombineFilters(vararg val filters: ElementFilter) : ElementFilter {

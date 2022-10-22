@@ -1098,6 +1098,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_detached">"一軒家"</string>
     <string name="quest_buildingType_detached_description">"独立した１世帯用の一軒家"</string>
     <string name="quest_buildingType_hotel">"宿泊施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"寮"</string>
     <string name="quest_buildingType_houseboat">"ハウスボート"</string>
 
@@ -1116,18 +1118,32 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"店舗"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"倉庫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"キオスク"</string>
     <string name="quest_buildingType_storage_tank">"貯蔵タンク"</string>
     <string name="quest_buildingType_religious">"宗教施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"教会"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"礼拝所"</string>
     <string name="quest_buildingType_cathedral">"聖堂"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"モスク"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"寺院"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"寺院の塔"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
     <string name="quest_buildingType_civic">"公共施設"</string>
     <string name="quest_buildingType_civic_description">"公共のための建築物"</string>
@@ -1164,6 +1180,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_bunker">"シェルター"</string>
     <string name="quest_address_answer_no_housenumber">"住居番号は無い…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"建物は次のようにタグ付けされています:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"神社"</string>
 
     <!-- Fuzzy -->
@@ -1211,6 +1229,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="pref_title_quests_restore_hidden">"非表示にした探索を戻す"</string>
     <string name="restore_hidden_success">"非表示にした探索 %d 件を戻しました"</string>
 
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"レベル %s です"</string>
+
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
     <string name="underground">"地下"</string>
@@ -1235,6 +1259,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="label_housenumber">"住居番号(号)"</string>
     <string name="label_blocknumber">"街区符号(番)"</string>
     <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
+    <string name="quest_ferry_pedestrian_title">"このフェリー航路は歩行者を運びますか？"</string>
     <string name="quest_ferry_motor_vehicle_title">"このフェリールートでは自動車を移動できますか？"</string>
 
     <!-- Add note interface -->
@@ -1280,6 +1305,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"この図に示される道路はピンの位置での地図上の向きと同じように回転されています。"</string>
+    <string name="quest_recycling_materials_title">"ここに出せばリサイクルできるものは何ですか？"</string>
     <string name="quest_recycling_type_batteries">"電池"</string>
     <string name="quest_recycling_type_cans">"缶"</string>
     <string name="quest_recycling_type_clothes">"衣類"</string>
@@ -1341,24 +1367,56 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="user_quests_title">"解決済みの探索"</string>
     <string name="user_achievements_title">"実績"</string>
+    <string name="link_category_intro_title">"はじめに"</string>
+    <string name="link_category_intro_description">"OSMとそのコミュニティについて詳細を学ぶ"</string>
+    <string name="link_category_editors_title">"貢献度"</string>
+    <string name="link_category_editors_description">"編集とその他の方法によりOpenStreetMapへ貢献する"</string>
+    <string name="link_category_maps_title">"地図"</string>
+    <string name="link_category_maps_description">"OpenStreetMapベースの地図"</string>
+    <string name="link_category_showcase_title">"ショーケース"</string>
+    <string name="link_category_showcase_description">"OpenStreetMapベースのサービスとアプリ"</string>
     <string name="link_cyclosm_description">"サイクリストのための地図"</string>
+    <string name="link_wheelmap_description">"車椅子で入れる場所を探すための地図"</string>
+    <string name="link_osm_buildings_description">"建物を3D表示した地図"</string>
 
     <!-- Fuzzy -->
     <string name="link_openvegemap_description">"あなたの街のベジタリアンおよびヴィーガン向けレストランを発見する"</string>
+    <string name="link_vespucci_description">"Android用の高度なOSMエディタ"</string>
+    <string name="link_ideditor_description">"ブラウザ用のシンプルなOSMエディタです。デスクトップや大型のタブレットに最適化されています"</string>
+    <string name="link_umap_description">"カスタムデータを入れた地図をすばやく作成しあなたのサイトに埋め込むことができます"</string>
     <string name="link_opnvkarte_description">"公共交通機関の路線図と停留所地図"</string>
+    <string name="link_pic4review_description">"あなたの街の写真を見るだけでもOSMに貢献できます"</string>
+    <string name="link_wiki_description">"wikiはOpenStreetMapに関する全ての出発点です"</string>
     <string name="link_learnosm_description">"OpenStreetMapは初めてですか？初心者向けガイドはこちらです。"</string>
+    <string name="link_welcome_mat_description">"OpenStreetMapの一般情報および組織としてOSMと連携する方法"</string>
     <string name="link_openinframap_description">"電力、通信、ガス、石油インフラを示す地図"</string>
+    <string name="link_weeklyosm_description">"OpenStreetMapの世界で起きていることを伝える週刊ニュースブログ"</string>
+    <string name="achievement_first_edit_title">"最初の探求を解決した"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"OpenStreetMap コミュニティへようこそ! プロフィール画面では解決した探索タイプについての詳しい情報を確認することが出来ます。"</string>
+    <string name="achievement_surveyor_title">"測量士"</string>
+    <string name="achievement_regular_title">"常連"</string>
+    <string name="achievement_bicyclist_title">"自転車乗り"</string>
     <string name="achievement_bicyclist_solved_X">"サイクリストのための探索を %d 件解決しました!"</string>
+    <string name="achievement_wheelchair_title">"機動性"</string>
     <string name="achievement_wheelchair_solved_X">"車椅子の人が街を移動するのを手助けする探索を %d 件解決しました！"</string>
+    <string name="achievement_postman_title">"郵便屋"</string>
+    <string name="achievement_building_title">"高層ビル"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"建物に関する探索を %d 件解決しました。このアプリは建物の種類が分かっている場合のみ住居番号について質問することを留意してください。"</string>
+    <string name="achievement_blind_title">"第六感"</string>
     <string name="achievement_blind_solved_X">"視覚障害者のための探索を %d 件解決しました。"</string>
+    <string name="achievement_pedestrian_title">"走者"</string>
     <string name="achievement_pedestrian_solved_X">"歩行者のための探索を %d 件解決しました!"</string>
+    <string name="achievement_veg_title">"動物愛護"</string>
     <string name="achievement_veg_solved_X">"肉なしの食事で生活している人のための探索を %d 件解決しました！"</string>
+    <string name="achievement_car_title">"路上"</string>
+
+    <!-- Notifications -->
+    <string name="unread_messages_message">"受信トレイに %d 件の未読メッセージがあります"</string>
+    <string name="unread_messages_button">"受信トレイを開く"</string>
 
     <!-- Main menu -->
     <string name="action_about2">"アプリについて"</string>
@@ -1372,12 +1430,22 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"実績
 レベル"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_no_named_streets">"名前の付いた通りには属していません"</string>
     <string name="quest_address_street_place_name_label">"地名："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;地図を表示するためにベクタータイルを %1$s から取得します。詳しくは %1$s の &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; を参照してください。&lt;/p&gt;"</string>
     <string name="quest_board_type_history">"歴史"</string>
+    <string name="quest_board_type_plants">"植物"</string>
+    <string name="quest_board_type_wildlife">"野生生物"</string>
+    <string name="quest_board_type_nature">"自然（複数のトピック）"</string>
+    <string name="quest_board_type_notice_board">"それは掲示板です"</string>
     <string name="quest_board_type_public_transport">"公共交通機関"</string>
+    <string name="quest_board_type_title">"この掲示板の話題は何ですか？"</string>
+    <string name="quest_board_type_map">"それは地図です"</string>
+    <string name="quest_board_type_map_title">"それは地図のみの地図ですか？"</string>
     <string name="quest_surface_detailed_answer_impossible">"複数の路面…"</string>
 
     <!-- Fuzzy -->
@@ -1385,6 +1453,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"簡潔に表面の特徴を記してください。例えば \"ところどころ丸石混じりの砂\" など。文の長さは255文字に制限されています。"</string>
+    <string name="quest_streetName_menuItem_international">"国際的"</string>
     <string name="quest_buildingType_terrace2">"連棟住宅"</string>
 
     <!-- Fuzzy -->
@@ -1394,7 +1463,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="at_housenumber">"住居番号 %s"</string>
     <string name="quest_openingHours_add_off_days">"休業日の追加"</string>
     <string name="quest_openingHours_off_day">"休業日"</string>
+    <string name="quest_openingHours_unspecified_range">"指定なし"</string>
+    <string name="quest_cycleway_resurvey_title">"ここは今でも自転車が乗れる状況ですか？"</string>
     <string name="pref_title_resurvey_intervals">"再調査間隔"</string>
+    <string name="resurvey_intervals_less_often">"質問頻度を減らす"</string>
+    <string name="resurvey_intervals_default">"初期設定"</string>
+    <string name="resurvey_intervals_more_often">"質問頻度を増やす"</string>
     <string name="quest_is_defibrillator_inside_title">"この除細動器 (AED) は建物内にありますか?"</string>
     <string name="about_title_translate">"アプリの翻訳を手伝う"</string>
     <string name="about_description_translate">"%2$d%% が %1$s に翻訳されました"</string>
@@ -1412,6 +1486,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"小さな一軒家（サマーハウス、コテージ、キャビン…）"</string>
+    <string name="quest_railway_crossing_barrier_title2">"この踏切にはどのような障壁がありますか？"</string>
+    <string name="quest_railway_crossing_barrier_none2">"障壁なし"</string>
     <string name="quest_steps_ramp_title">"階段にはスロープがありますか? どんな種類ですか?"</string>
     <string name="quest_steps_ramp_none">"(有用な) スロープはない"</string>
     <string name="quest_steps_ramp_bicycle">"自転車用のスロープ"</string>
@@ -1422,6 +1498,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_atm_operator_title">"このATMを管理する銀行の名前は何ですか?"</string>
     <string name="quest_clothes_container_operator_title">"この衣類収集箱への寄付は誰が受け取りますか?"</string>
     <string name="quest_charging_station_operator_title">"この充電ステーションはどこが運営していますか?"</string>
+    <string name="achievement_rare_title">"宝探し"</string>
     <string name="achievement_citizen_solved_X">"街での日常生活に役立つ探索を %d 件解決しました！"</string>
     <string name="achievement_outdoors_solved_X">"アウトドア愛好家に役立つ探索を %d 件解決しました！"</string>
     <string name="quest_pedestrian_crossing_island">"横断歩道に交通島はありますか?"</string>
@@ -1469,6 +1546,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
+    <string name="quest_address_street_hint">"地図上の道路をタップする"</string>
     <string name="quest_crossing_type_marked">"横断歩道がある"</string>
 
     <!-- Fuzzy -->
@@ -1533,9 +1611,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
     <string name="quest_crossing_type_signals_controlled">"信号機が設置されている"</string>
+    <string name="undo_confirm_title2">"下記の編集を元に戻しますか？"</string>
 
     <!-- Fuzzy -->
     <string name="synced">"同期しました"</string>
+    <string name="toast_undo_unavailable">"この編集は既に同期されており、元に戻す事はできません"</string>
 
     <!-- Edit history sidebar -->
     <string name="created_note_action_title">"作成したメモ"</string>
@@ -1567,7 +1647,24 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_postboxCollectionTimes_resurvey_title">"この回収箱の集荷時間は今でも正しいですか？"</string>
     <string name="pref_title_language_select">"言語選択"</string>
     <string name="language_default">"システム規定値"</string>
+    <string name="select_street_parking_orientation">"車道に面する方向を選択して下さい："</string>
     <string name="select_street_parking_position">"位置を選択："</string>
+    <string name="select_street_parking_no">"ここに何らかの標識または路面標識がありますか？"</string>
+    <string name="street_parking_parallel">"平行"</string>
+    <string name="street_parking_diagonal">"斜め"</string>
+    <string name="street_parking_perpendicular">"垂直"</string>
+    <string name="street_parking_on_street">"路上"</string>
+    <string name="street_parking_half_on_kerb">"部分的に路上"</string>
+    <string name="street_parking_on_kerb">"道路に隣接"</string>
+
+    <!-- Fuzzy -->
+    <string name="street_parking_painted_area_only">"路上は専用区画のみ"</string>
+    <string name="street_parking_no">"駐車場なし／不可"</string>
+    <string name="street_parking_prohibited">"駐車禁止"</string>
+    <string name="street_stopping_prohibited">"停車禁止"</string>
+    <string name="street_standing_prohibited">"停車禁止"</string>
+    <string name="street_parking_conditional_restrictions">"駐車／停車は条件付きで制限されています"</string>
+    <string name="street_parking_no_other_reasons">"明確な標識なし／駐車不可"</string>
     <string name="quest_address_house_number_label">"家屋番号："</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"はい（メモを残す）"</string>
     <string name="quest_smoothness_description_excellent_paved">"デコボコやひび割れなし"</string>
@@ -1583,6 +1680,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"このサイクリングロードの道幅は？"</string>
     <string name="quest_road_width_title">"この道路の幅は？"</string>
+    <string name="unit_days">"日"</string>
+    <string name="unit_hours">"時間"</string>
+    <string name="unit_minutes">"分"</string>
     <string name="quest_smoking_no">"いいえ、禁止されています"</string>
     <string name="quest_smoking_outside">"屋外でのみ"</string>
 
@@ -1601,6 +1701,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Quests
 sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"ここは現金での支払いが可能ですか？"</string>
+    <string name="quest_address_street_title2">"ここは何通りにありますか？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"この場所は空調されていますか？"</string>
@@ -1659,4 +1760,11 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_and_oneway">"この向きでの自転車走行は禁止されている"</string>
+    <string name="action_overlays">"オーバーレイ"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"オーバーレイを選択"</string>
+    <string name="overlay_none">"なし"</string>
+    <string name="overlay_lit">"街灯"</string>
+    <string name="overlay_sidewalk">"歩道"</string>
 </resources>

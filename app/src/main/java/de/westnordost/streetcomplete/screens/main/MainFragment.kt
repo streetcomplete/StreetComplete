@@ -53,6 +53,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -105,6 +107,7 @@ import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequester
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -130,6 +133,8 @@ import kotlin.random.Random
  *  class implements all the listeners of its child fragments.
  *
  *  This class does not contain so much logic itself, it delegates most of it to its children.
+ *  Think of it as the wiring that binds all the components together.
+ *
  *  Still, as this is by far the largest in terms of lines of code. For easier reading, in
  *  IntelliJ, you can collapse sections of this class that start with "//region" using the little
  *  [-] icon next to it.
@@ -153,12 +158,14 @@ class MainFragment :
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
+    SelectedOverlaySource.Listener,
     // rest
     HandlesOnBackPressed,
     ShowsGeometryMarkers {
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val soundFx: SoundFx by inject()
@@ -214,6 +221,8 @@ class MainFragment :
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
+        updateCreateButtonVisibility()
+
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
         binding.compassView.setOnClickListener { onClickCompassButton() }
@@ -221,6 +230,7 @@ class MainFragment :
         binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
+        binding.createButton.setOnClickListener { onClickCreateButton() }
         binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateOffsetWithOpenBottomSheet()
@@ -237,6 +247,12 @@ class MainFragment :
         if (bottomSheetFragment != null) {
             mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
         }
+        binding.crosshairView.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
         updateLocationPointerPin()
     }
 
@@ -244,6 +260,7 @@ class MainFragment :
         super.onStart()
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
+        selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
     }
@@ -272,13 +289,14 @@ class MainFragment :
         visibleQuestsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         mapDataWithEditsSource.removeListener(this)
+        selectedOverlaySource.removeListener(this)
         locationManager.removeUpdates()
     }
 
     private fun updateOffsetWithOpenBottomSheet() {
         mapOffsetWithOpenBottomSheet = Rect(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            0,
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
         ).toRectF()
@@ -295,6 +313,7 @@ class MainFragment :
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
+        mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it) }
         listener?.onMapInitialized()
     }
 
@@ -306,6 +325,7 @@ class MainFragment :
         binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
 
         updateLocationPointerPin()
+        updateCreateButtonEnablement(zoom)
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
@@ -478,6 +498,10 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    override fun onNoteQuestClosed() {
+        closeBottomSheet()
+    }
+
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
@@ -494,6 +518,12 @@ class MainFragment :
     //endregion
 
     //region Data Updates - Callbacks for when data changed in the local database
+
+    /* ------------------------------ SelectedOverlaySource.Listener -----------------------------*/
+
+    override fun onSelectedOverlayChanged() {
+        updateCreateButtonVisibility()
+    }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
@@ -532,13 +562,13 @@ class MainFragment :
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         val f = bottomSheetFragment
-        if (f is IsShowingElement) {
-            viewLifecycleScope.launch {
-                val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(f.elementKey.type, f.elementKey.id) }
-                // open element does not exist anymore after download
-                if (openElement == null) {
-                    closeBottomSheet()
-                }
+        if (f !is IsShowingElement) return
+        val elementKey = f.elementKey ?: return
+        viewLifecycleScope.launch {
+            val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
+            // open element does not exist anymore after download
+            if (openElement == null) {
+                closeBottomSheet()
             }
         }
     }
@@ -675,6 +705,20 @@ class MainFragment :
                 setIsNavigationMode(!mapFragment.isNavigationMode)
             }
         }
+    }
+
+    private fun onClickCreateButton() {
+        showOverlayFormForNewElement()
+    }
+
+    private fun updateCreateButtonVisibility() {
+        val isCreateNodeEnabled = selectedOverlaySource.selectedOverlay?.isCreateNodeEnabled == true
+        binding.createButton.isGone = !isCreateNodeEnabled
+        binding.crosshairView.isGone = !isCreateNodeEnabled
+    }
+
+    private fun updateCreateButtonEnablement(zoom: Float) {
+        binding.createButton.isEnabled = zoom >= 18f
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
@@ -815,6 +859,7 @@ class MainFragment :
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         clearHighlighting()
+        mapFragment?.clearFocus()
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
     }
 
@@ -878,11 +923,39 @@ class MainFragment :
 
     //region Bottom sheets
 
+    @UiThread
+    private fun showOverlayFormForNewElement() {
+        val overlay = selectedOverlaySource.selectedOverlay ?: return
+        val mapFragment = mapFragment ?: return
+
+        val f = overlay.createForm(null) ?: return
+        if (f.arguments == null) f.arguments = bundleOf()
+        val camera = mapFragment.cameraPosition
+        val rotation = camera?.rotation ?: 0f
+        val tilt = camera?.tilt ?: 0f
+        val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation, tilt)
+        f.requireArguments().putAll(args)
+
+        showInBottomSheet(f)
+        mapFragment.hideNonHighlightedPins()
+    }
+
+    @UiThread
     private suspend fun showElementDetails(elementKey: ElementKey) {
         if (isElementCurrentlyDisplayed(elementKey)) return
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
         val mapFragment = mapFragment ?: return
+
+        // open note if it is blocking element
+        val center = geometry.center
+        val note = withContext(Dispatchers.IO) {
+            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+        }
+        if (note != null) {
+            showQuestDetails(OsmNoteQuest(note.id, note.position))
+            return
+        }
 
         val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) } ?: return
         val f = overlay.createForm(element) ?: return
@@ -901,8 +974,11 @@ class MainFragment :
         mapFragment.hideNonHighlightedPins()
     }
 
-    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean =
-        (bottomSheetFragment as? IsShowingElement)?.elementKey == elementKey
+    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean {
+        val f = bottomSheetFragment
+        if (f !is IsShowingElement) return false
+        return f.elementKey == elementKey
+    }
 
     private suspend fun showQuestDetails(questKey: QuestKey) {
         val quest = visibleQuestsSource.get(questKey)

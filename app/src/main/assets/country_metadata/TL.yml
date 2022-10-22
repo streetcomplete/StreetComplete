@@ -1,8 +1,9 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 514
 noStoppingSignStyle: australia
 officialLanguages: [tet, pt]
+postboxesHaveCollectionTimes: true
 atmOperators: [BNU, Mandiri, LOOS24, ANZ, ANZ Bank]
 orchardProduces: [coffee, coconut, cacao, guava, mango, mangosteen, banana, avocado, orange, tomato, papaya, pineapple]

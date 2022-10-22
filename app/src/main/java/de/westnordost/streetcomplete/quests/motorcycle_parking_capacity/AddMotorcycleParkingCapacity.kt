@@ -16,7 +16,7 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
          and access !~ private|no
          and (!capacity or capacity older today -4 years)
     """
-    override val changesetComment = "Add motorcycle parking capacities"
+    override val changesetComment = "Specify motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.ic_quest_motorcycle_parking_capacity
     override val isDeleteElementEnabled = true

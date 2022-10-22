@@ -32,7 +32,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
           and foot !~ yes|designated
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add whether traffic signals have tactile indication that it's safe to cross"
+    override val changesetComment = "Specify whether traffic signals have tactile indications that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
     override val achievements = listOf(BLIND)

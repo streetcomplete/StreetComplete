@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sr, it]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -9,6 +9,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [hr]
 popularSports: [soccer, tennis, basketball, boules, handball]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA
 atmOperators: [Zagrebačka banka, PBZ, Euronet, Privredna banka Zagreb, Erste, HPB, Erste Bank, Hrvatska poštanska banka, ZABA, OTP Bank, RBA, OTP Banka, OTP, Raiffeisen, Euronet Worldwide, Splitska Banka, Raiffeisen Bank, Addiko Bank, otpbanka, Auro Domus, Hypo, Raiffeisenbank Austria, Erste Banka, Raiffeisenbank, Addiko, Privredna banka, Karlovačka banka, Sberbank, Kreditna banka Zagreb, Zagrebacka banka, MoneyGet, Hypo Group, Erste Bank Croatia, Erste & Steiermärkische banka, Raiffaisen Bank, HypoGroup Alpe Adria, Zagrebačka banka d.d., Jadranska banka, Volksbank, Poštanska banka, Raiffeisen banka, Erste&Steiermärkische Bank, Societe Generale - Splitska banka, Erste & Steiermärkische Bank, Hypo Alpe Adria, OTP banka d.d., Addiko Banka, Euonet, Hypo Alpe Adria Bank, BSpend, optbanka, Payten]

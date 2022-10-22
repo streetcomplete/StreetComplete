@@ -77,20 +77,23 @@ open class MapFragment :
     var isMapInitialized: Boolean = false
         private set
 
+    private val hide3DBuildingsSceneUpdates = listOf(
+        "layers.buildings.draw.buildings-style.extrude" to "false",
+        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
+    )
     var show3DBuildings: Boolean = true
         set(value) {
             if (field == value) return
             field = value
+            if (sceneMapComponent?.isAerialView == true) return
 
-            val toggle = if (value) "true" else "false"
-
-            viewLifecycleScope.launch {
-                sceneMapComponent?.putSceneUpdates(listOf(
-                    "layers.buildings.draw.buildings-style.extrude" to toggle,
-                    "layers.buildings.draw.buildings-outline-style.extrude" to toggle
-                ))
-                sceneMapComponent?.loadScene()
+            if (value) {
+                sceneMapComponent?.removeSceneUpdates(hide3DBuildingsSceneUpdates)
+            } else {
+                sceneMapComponent?.addSceneUpdates(hide3DBuildingsSceneUpdates)
             }
+
+            viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
         }
 
     private val vectorTileProvider: VectorTileProvider by inject()
@@ -193,7 +196,11 @@ open class MapFragment :
 
     override fun onLowMemory() {
         super.onLowMemory()
-        binding.map.onLowMemory()
+        try {
+            binding.map.onLowMemory()
+        } catch (e: Exception) {
+            // ignore (see https://github.com/streetcomplete/StreetComplete/issues/4221)
+        }
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */

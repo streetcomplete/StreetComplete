@@ -522,8 +522,12 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_semi_detached">"Dvojna kuća"</string>
     <string name="quest_buildingType_terrace_description">"linearni niz sličnih obiteljskih kuća"</string>
     <string name="quest_buildingType_hotel">"Hotelska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentski dom"</string>
     <string name="quest_buildingType_houseboat">"Kuća na splavu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilna kućica"</string>
     <string name="quest_buildingType_commercial">"Komercijalna zgrada"</string>
@@ -538,18 +542,32 @@ Na primjer 1,3 ili 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Trgovina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Skladište"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Spremnik"</string>
     <string name="quest_buildingType_religious">"Vjerska zgrada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Crkva"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapela"</string>
     <string name="quest_buildingType_cathedral">"Katedrala"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Džamija"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Hram"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Zgrada za javnost"</string>
     <string name="quest_buildingType_civic_description">"zgrada za javnost koja obično pruža neku uslugu"</string>
@@ -586,6 +604,8 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nema kućnog broja…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Zgrada je označena kao:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svetište"</string>
 
     <!-- Fuzzy -->
@@ -930,6 +950,8 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="user_profile_local_rank">"rang u %s"</string>
     <string name="user_profile_days_active">"Dani aktivnosti"</string>
     <string name="user_profile_achievement_levels">"Razine postignuća"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ne pripada ulici sa imenom"</string>
     <string name="quest_address_street_place_name_label">"Unesite naziv mjesta:"</string>
     <string name="quest_address_street_description">"Dotaknite cestu kojoj pripada na karti ili je unesite bez kratica u polje ispod:"</string>
@@ -1289,7 +1311,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_surface_value_concrete_plates">"Betonske ploče"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonske trake"</string>
     <string name="quest_fireHydrant_diameter_title">"Koji je promjer označen na ovom vatrogasnom hidrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Toliki promjer izgleda nerealno."</string>
     <string name="quest_fireHydrant_confirmation_title">"Jeste li sigurni? Ponekad je promjer označen i na samom hidrantu."</string>
     <string name="quest_diet_answer_no_food">"Nema nikakve hrane"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
@@ -1314,7 +1335,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
 
     <!-- Fuzzy -->
     <string name="on_floor">"na katu %s:"</string>
-    <string name="quest_street_parking_title">"Kako automobili mogu parkirati ovdje, ako uopće mogu?"</string>
     <string name="select_street_parking_orientation">"Odaberite orijentaciju u odnosu na mjesto:"</string>
     <string name="select_street_parking_position">"Odaberite poziciju parkinga:"</string>
     <string name="select_street_parking_no">"Ima li ovdje prometnih znakova ili oznaka na cesti?"</string>

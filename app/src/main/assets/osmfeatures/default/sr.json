@@ -1830,17 +1830,7 @@
                     "placeholder": "Одлично, добро, лоше..."
                 },
                 "transformer": {
-                    "label": "Врста",
-                    "options": {
-                        "auto": "Ауто-трансформатор",
-                        "auxiliary": "Помоћни",
-                        "converter": "Конвертер",
-                        "distribution": "Пренос",
-                        "generator": "Генератор",
-                        "phase_angle_regulator": "Регулатор фазног угла",
-                        "traction": "Вуча",
-                        "yes": "Непознато"
-                    }
+                    "label": "Врста"
                 },
                 "trees": {
                     "label": "Дрвеће"
@@ -3374,9 +3364,6 @@
                     "name": "Опасна област",
                     "terms": "опасна област,опасна зона,опасност"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Поморска база"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Војни полигон са препрекама"
                 },
@@ -4253,10 +4240,6 @@
                 "shop/anime": {
                     "name": "Продавница манга и аниме"
                 },
-                "shop/antiques": {
-                    "name": "Антикварница",
-                    "terms": "антикварница,продавница антиквитета"
-                },
                 "shop/art": {
                     "name": "Продавница уметнина"
                 },
@@ -4289,9 +4272,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Кладионичар"
-                },
-                "shop/books": {
-                    "name": "Продавница књига"
                 },
                 "shop/boutique": {
                     "name": "Бутик"
@@ -4362,9 +4342,6 @@
                 },
                 "shop/dairy": {
                     "name": "Продавница млечних производа"
-                },
-                "shop/deli": {
-                    "name": "Деликатеси"
                 },
                 "shop/department_store": {
                     "name": "Робна кућа"
@@ -4512,9 +4489,6 @@
                 "shop/musical_instrument": {
                     "name": "Продавница музичких инструмената"
                 },
-                "shop/newsagent": {
-                    "name": "Дневне новине/часописи"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Продавница додатака исхрани"
                 },
@@ -4530,9 +4504,6 @@
                 "shop/pastry": {
                     "name": "Посластичарница",
                     "terms": "посластичарница,сластичарница,продавница слаткиша,продавница посластица"
-                },
-                "shop/pawnbroker": {
-                    "name": "Залагаоница"
                 },
                 "shop/perfumery": {
                     "name": "Парфемџиница",
@@ -4567,9 +4538,6 @@
                 },
                 "shop/seafood": {
                     "name": "Продавница морске хране"
-                },
-                "shop/second_hand": {
-                    "name": "Слање робе"
                 },
                 "shop/sewing": {
                     "name": "Продавница кројачке робе"
@@ -4643,9 +4611,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Продавница усисивача"
                 },
-                "shop/variety_store": {
-                    "name": "Продавница мешовите робе"
-                },
                 "shop/video": {
                     "name": "Видео-клуб"
                 },
@@ -4679,9 +4644,6 @@
                 },
                 "tourism": {
                     "name": "Туристичко обележје"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Планинарски дом"
                 },
                 "tourism/apartment": {
                     "name": "Гостински апартман"

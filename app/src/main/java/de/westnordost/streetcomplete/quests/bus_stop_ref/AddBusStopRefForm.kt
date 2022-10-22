@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestRefBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
 class AddBusStopRefForm : AbstractOsmQuestForm<BusStopRefAnswer>() {
 
@@ -18,7 +19,7 @@ class AddBusStopRefForm : AbstractOsmQuestForm<BusStopRefAnswer>() {
         AnswerItem(R.string.quest_ref_answer_noRef) { confirmNoRef() }
     )
 
-    private val ref get() = binding.refInput.text?.toString().orEmpty().trim()
+    private val ref get() = binding.refInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,16 +28,16 @@ class AddBusStopRefForm : AbstractOsmQuestForm<BusStopRefAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(BusStopRef(ref))
+        applyAnswer(BusStopRef(ref!!))
     }
 
     private fun confirmNoRef() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoBusStopRef) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoVisibleBusStopRef) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
 
-    override fun isFormComplete() = ref.isNotEmpty()
+    override fun isFormComplete() = ref != null
 }

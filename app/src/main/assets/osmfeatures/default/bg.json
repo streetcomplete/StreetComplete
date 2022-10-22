@@ -2,6 +2,9 @@
     "bg": {
         "presets": {
             "categories": {
+                "category-barrier": {
+                    "name": "Прегради"
+                },
                 "category-building": {
                     "name": "Сгради"
                 },
@@ -222,7 +225,9 @@
                 },
                 "beauty": {
                     "options": {
-                        "cosmetics": "Козметик"
+                        "cosmetics": "Козметик",
+                        "nails": "Маникюр / педикюр",
+                        "tanning": "Солариум"
                     }
                 },
                 "bench": {
@@ -309,8 +314,20 @@
                     "label": "Капацитет",
                     "placeholder": "50, 100, 200..."
                 },
+                "capacity/caravans": {
+                    "label": "Капацитет (каравани)"
+                },
+                "capacity/persons": {
+                    "label": "Капацитет (души)"
+                },
+                "capacity/tents": {
+                    "label": "Капацитет (палатки)"
+                },
                 "castle_type": {
-                    "label": "Вид"
+                    "label": "Вид",
+                    "options": {
+                        "palace": "Палат"
+                    }
                 },
                 "check_date": {
                     "placeholder": "ГГГГ-ММ-ДД"
@@ -341,10 +358,16 @@
                 "content": {
                     "label": "Съдържание"
                 },
+                "conveying_escalator": {
+                    "label": "Ескалатор"
+                },
                 "country": {
                     "label": "Държава"
                 },
                 "covered": {
+                    "label": "Покрит"
+                },
+                "covered_no": {
                     "label": "Покрит"
                 },
                 "craft": {
@@ -370,7 +393,43 @@
                 "cuisine": {
                     "label": "Кухня",
                     "options": {
-                        "coffee_shop": "Кафене"
+                        "american": "Американска",
+                        "asian": "Азиатска",
+                        "burger": "Бургери",
+                        "chicken": "Пиле",
+                        "chinese": "Китайско",
+                        "chocolate": "Шоколад",
+                        "coffee_shop": "Кафене",
+                        "donut": "Донати",
+                        "fish": "Риба",
+                        "french": "Френска",
+                        "german": "Немска",
+                        "greek": "Гръцка",
+                        "ice_cream": "Сладолед",
+                        "indian": "Индийска",
+                        "indonesian": "Индонезийска",
+                        "italian": "Италианска",
+                        "japanese": "Японска",
+                        "kebab": "Дюнери",
+                        "korean": "Корейска",
+                        "malaysian": "Малоазийска",
+                        "mexican": "Мексиканска",
+                        "pankcake": "Палачинки",
+                        "pasta": "Паста",
+                        "pizza": "Пица",
+                        "polish": "Полска",
+                        "portuguese": "Португалска",
+                        "regional": "Местна",
+                        "russian": "Руска",
+                        "salad": "Салати",
+                        "sandwich": "Сандвич",
+                        "seafood": "Морска храна",
+                        "spanish": "Испанска",
+                        "sushi": "Суши",
+                        "taiwanese": "Тайванска",
+                        "thai": "Тайландска",
+                        "turkish": "Турска",
+                        "vietnamese": "Виетнамска"
                     }
                 },
                 "currency_multi": {
@@ -449,6 +508,15 @@
                 "direction": {
                     "label": "Посока (Градуси по часовниковата стрелка)",
                     "placeholder": "45, 90, 180, 270"
+                },
+                "direction_cardinal-US-CA-NZ": {
+                    "label": "Посока",
+                    "options": {
+                        "east": "Изток",
+                        "north": "Север",
+                        "south": "Юг",
+                        "west": "Запад"
+                    }
                 },
                 "direction_clock": {
                     "label": "Посока",
@@ -592,6 +660,9 @@
                 },
                 "healthcare/speciality": {
                     "label": "Направления"
+                },
+                "heating": {
+                    "label": "Отопление"
                 },
                 "height": {
                     "label": "Височина (Метри)"
@@ -1285,14 +1356,78 @@
                 "amenity/pub": {
                     "name": "Пъб"
                 },
+                "amenity/refugee_site": {
+                    "name": "Бежански лагер"
+                },
                 "amenity/restaurant": {
                     "name": "Ресторант"
+                },
+                "amenity/restaurant/american": {
+                    "name": "Американски ресторант"
+                },
+                "amenity/restaurant/asian": {
+                    "name": "Азиатски ресторант"
+                },
+                "amenity/restaurant/chinese": {
+                    "name": "Китайски ресторант"
+                },
+                "amenity/restaurant/french": {
+                    "name": "Френски ресторант"
+                },
+                "amenity/restaurant/german": {
+                    "name": "Немски ресторант",
+                    "terms": "германски ресторант"
+                },
+                "amenity/restaurant/greek": {
+                    "name": "Гръцки ресторант"
+                },
+                "amenity/restaurant/indian": {
+                    "name": "Индийски ресторант"
+                },
+                "amenity/restaurant/italian": {
+                    "name": "Италиански ресторант"
+                },
+                "amenity/restaurant/japanese": {
+                    "name": "Японски ресторант"
+                },
+                "amenity/restaurant/mexican": {
+                    "name": "Мексикански ресторант"
+                },
+                "amenity/restaurant/steakhouse": {
+                    "name": "Стекхаус"
+                },
+                "amenity/restaurant/sushi": {
+                    "name": "Суши ресторант"
+                },
+                "amenity/restaurant/thai": {
+                    "name": "Тайландски ресторант"
+                },
+                "amenity/restaurant/turkish": {
+                    "name": "Турски ресторант"
+                },
+                "amenity/restaurant/vietnamese": {
+                    "name": "Виетнамски ресторант"
                 },
                 "amenity/school": {
                     "name": "Училище"
                 },
+                "amenity/shelter/gazebo": {
+                    "name": "Беседка"
+                },
+                "amenity/social_facility/ambulatory_care": {
+                    "name": "Амбулаторна грижа"
+                },
                 "amenity/social_facility/food_bank": {
                     "name": "Хранителна банка"
+                },
+                "amenity/social_facility/group_home": {
+                    "name": "Групов дом за възрастни хора"
+                },
+                "amenity/social_facility/homeless_shelter": {
+                    "name": "Дом за бездомни"
+                },
+                "amenity/social_facility/nursing_home": {
+                    "name": "Старчески дом"
                 },
                 "amenity/taxi": {
                     "name": "Такси стоянка"
@@ -1302,6 +1437,9 @@
                 },
                 "amenity/theatre": {
                     "name": "Театър"
+                },
+                "amenity/theatre/type/amphi": {
+                    "name": "Амфитеатър"
                 },
                 "amenity/townhall": {
                     "name": "Кметство"
@@ -1610,14 +1748,20 @@
                     "name": "Пешеходна пътека"
                 },
                 "highway/crossing/marked": {
-                    "name": "Пешеходна пътека \"Зебра\"",
-                    "terms": "маркирана пешеходна пътека"
+                    "name": "Пешеходна пътека Зебра",
+                    "terms": "маркирана пешеходна пътека,зебра"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Немаркирана пешеходна пътека"
                 },
                 "highway/cycleway": {
                     "name": "Велоалея"
+                },
+                "highway/cycleway/crossing/marked": {
+                    "name": "Маркирана велосипедна пътека"
+                },
+                "highway/cycleway/crossing/unmarked": {
+                    "name": "Немаркирана велосипедна пътека"
                 },
                 "highway/elevator": {
                     "name": "Асансьор"
@@ -1634,6 +1778,9 @@
                 },
                 "highway/footway/marked": {
                     "name": "Пешеходна пътека \"Зебра\""
+                },
+                "highway/footway/unmarked": {
+                    "name": "Немаркирана пешеходна пътека"
                 },
                 "highway/living_street": {
                     "name": "Улица в жилищна зона"
@@ -1825,9 +1972,6 @@
                 "landuse/military/barracks": {
                     "name": "Казарми"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Военноморска база"
-                },
                 "landuse/orchard": {
                     "name": "Овощна градина"
                 },
@@ -1856,11 +2000,29 @@
                 "leisure/golf_course": {
                     "name": "Голф игрище"
                 },
+                "leisure/ice_rink": {
+                    "name": "Ледена пързалка",
+                    "terms": "хокей,кънки,кърлинг"
+                },
                 "leisure/marina": {
                     "name": "Яхт клуб"
                 },
+                "leisure/miniature_golf": {
+                    "name": "Миниатюрен голф",
+                    "terms": "мини голф"
+                },
+                "leisure/nature_reserve": {
+                    "name": "Природен резерват"
+                },
                 "leisure/park": {
                     "name": "Парк"
+                },
+                "leisure/picnic_table": {
+                    "name": "Пикник маса"
+                },
+                "leisure/picnic_table/chess": {
+                    "name": "Шахматна маса",
+                    "terms": "маса за шах"
                 },
                 "leisure/pitch": {
                     "name": "Спортно игрище"
@@ -1868,14 +2030,41 @@
                 "leisure/pitch/american_football": {
                     "name": "Игрище за американски футбол"
                 },
+                "leisure/pitch/archery": {
+                    "name": "Стрелбище"
+                },
+                "leisure/pitch/australian_football": {
+                    "name": "Игрище за австралийски футбол"
+                },
+                "leisure/pitch/badminton": {
+                    "name": "Игрище за бадминтон"
+                },
+                "leisure/pitch/baseball": {
+                    "name": "Бейзболно игрище",
+                    "terms": "бейзбол"
+                },
                 "leisure/pitch/basketball": {
                     "name": "Баскетболно игрище"
+                },
+                "leisure/pitch/beachvolleyball": {
+                    "name": "Игрище за плажен волейбол"
+                },
+                "leisure/pitch/cricket": {
+                    "name": "Игрище за крикет",
+                    "terms": "поле за крикет"
+                },
+                "leisure/pitch/futsal": {
+                    "name": "Игрище за футзал"
                 },
                 "leisure/pitch/skateboard": {
                     "name": "Скейт парк"
                 },
                 "leisure/pitch/soccer": {
                     "name": "Футболно игрище"
+                },
+                "leisure/pitch/table_tennis": {
+                    "name": "Тенис маса",
+                    "terms": "тенис на маса,пинг понг"
                 },
                 "leisure/pitch/tennis": {
                     "name": "Тенис корт"
@@ -1926,6 +2115,9 @@
                 "man_made/pipeline": {
                     "name": "Тръбопровод"
                 },
+                "man_made/pumping_station": {
+                    "name": "Помпена станция"
+                },
                 "man_made/survey_point": {
                     "name": "Геодезическа точка"
                 },
@@ -1933,13 +2125,18 @@
                     "name": "Кула"
                 },
                 "man_made/wastewater_plant": {
-                    "name": "Пречиствателна станция"
+                    "name": "Пречиствателна станция за отпадни води",
+                    "terms": "псов"
                 },
                 "man_made/water_tower": {
                     "name": "Водна кула"
                 },
                 "man_made/water_works": {
-                    "name": "Помпена станция"
+                    "name": "Пречиствателна станция за питейна вода",
+                    "terms": "пспв"
+                },
+                "man_made/windmill": {
+                    "name": "Вятърна мелница"
                 },
                 "natural/bay": {
                     "name": "Залив"
@@ -2071,6 +2268,13 @@
                 "point": {
                     "name": "Точка"
                 },
+                "power/generator/method/photovoltaic": {
+                    "name": "Соларен панел",
+                    "terms": "слънчев панел,фотоволтаичен панел"
+                },
+                "power/generator/method/photovoltaic/location/roof": {
+                    "name": "Слънчеви панели на покрив"
+                },
                 "power/generator/source/hydro": {
                     "name": "Водна турбина"
                 },
@@ -2090,10 +2294,12 @@
                     "name": "АЕЦ"
                 },
                 "power/plant/source/solar": {
-                    "name": "Фото-волтаична станция"
+                    "name": "Фото-волтаична станция",
+                    "terms": "соларна ферма,фотоволтаична инсталация,фотоволтаична станция,соларна станция,слънчева централа,слънчева станция"
                 },
                 "power/plant/source/wind": {
-                    "name": "ВяЕЦ"
+                    "name": "ВяЕЦ",
+                    "terms": "вятърна ферма,вятърна електроцентрала"
                 },
                 "power/pole": {
                     "name": "Електрически стълб"
@@ -2168,9 +2374,6 @@
                 "shop/bicycle": {
                     "name": "Магазин за велосипеди"
                 },
-                "shop/books": {
-                    "name": "Книжарница"
-                },
                 "shop/boutique": {
                     "name": "Бутик"
                 },
@@ -2185,6 +2388,9 @@
                 },
                 "shop/car_repair": {
                     "name": "Сервиз автомобили"
+                },
+                "shop/carpet": {
+                    "name": "Магазин за килими"
                 },
                 "shop/chemist": {
                     "name": "Дрогерия"
@@ -2201,9 +2407,6 @@
                 },
                 "shop/convenience": {
                     "name": "Магазин за хранителни стоки"
-                },
-                "shop/deli": {
-                    "name": "Магазин за деликатеси"
                 },
                 "shop/department_store": {
                     "name": "Универсален магазин"
@@ -2271,9 +2474,6 @@
                 "shop/optician": {
                     "name": "Оптика"
                 },
-                "shop/pawnbroker": {
-                    "name": "Заложна къща"
-                },
                 "shop/perfumery": {
                     "name": "Парфюмерия"
                 },
@@ -2308,14 +2508,12 @@
                 "shop/vacant": {
                     "name": "Свободна търговска площ"
                 },
-                "shop/variety_store": {
-                    "name": "Смесен магазин"
-                },
                 "shop/video": {
                     "name": "Видеотека"
                 },
-                "tourism/alpine_hut": {
-                    "name": "Хижа"
+                "shop/window_blind": {
+                    "name": "Магазин за щори",
+                    "terms": "ролетни щори"
                 },
                 "tourism/aquarium": {
                     "name": "Аквариум"

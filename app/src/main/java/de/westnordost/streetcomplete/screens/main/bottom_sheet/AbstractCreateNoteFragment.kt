@@ -8,6 +8,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
+import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 
@@ -15,12 +16,13 @@ import de.westnordost.streetcomplete.util.ktx.popOut
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     protected abstract val noteInput: EditText
+    protected abstract val okButtonContainer: View
     protected abstract val okButton: View
 
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment?
 
-    private val noteText get() = noteInput.text?.toString().orEmpty().trim()
+    private val noteText get() = noteInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +38,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
 
     private fun onClickOk() {
-        onComposedNote(noteText, attachPhotoFragment?.imagePaths.orEmpty())
+        onComposedNote(noteText!!, attachPhotoFragment?.imagePaths.orEmpty())
     }
 
     override fun onDiscard() {
@@ -44,13 +46,13 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
 
     override fun isRejectingClose() =
-        noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
+        noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateOkButtonEnablement() {
-        if (noteText.isNotEmpty()) {
-            okButton.popIn()
+        if (noteText != null ) {
+            okButtonContainer.popIn()
         } else {
-            okButton.popOut()
+            okButtonContainer.popOut()
         }
     }
 

@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
 
 class AddSidewalkSurfaceTest {
     private val questType = AddSidewalkSurface()
@@ -46,14 +45,14 @@ class AddSidewalkSurfaceTest {
 
     @Test fun `apply asphalt surface on both sides`() {
         questType.verifyAnswer(
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
+            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
             StringMapEntryAdd("sidewalk:both:surface", "asphalt")
         )
     }
 
     @Test fun `apply different surface on each side`() {
         questType.verifyAnswer(
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.PAVING_STONES)),
+            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.PAVING_STONES)),
             StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
             StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
         )
@@ -61,7 +60,7 @@ class AddSidewalkSurfaceTest {
 
     @Test fun `apply generic surface on both sides`() {
         questType.verifyAnswer(
-            SidewalkSurfaceAnswer(
+            SidewalkSurface(
                 SurfaceAnswer(Surface.PAVED_ROAD, "note"),
                 SurfaceAnswer(Surface.PAVED_ROAD, "note")),
             StringMapEntryAdd("sidewalk:both:surface", "paved"),
@@ -72,16 +71,16 @@ class AddSidewalkSurfaceTest {
     @Test fun `updates check_date`() {
         questType.verifyAnswer(
             mapOf("sidewalk:both:surface" to "asphalt", "check_date:sidewalk:surface" to "2000-10-10"),
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
+            SidewalkSurface(SurfaceAnswer(Surface.ASPHALT), SurfaceAnswer(Surface.ASPHALT)),
             StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
         )
     }
 
     @Test fun `sidewalk surface changes to be the same on both sides`() {
         questType.verifyAnswer(
             mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.CONCRETE)),
+            SidewalkSurface(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.CONCRETE)),
             StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
             StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
             StringMapEntryAdd("sidewalk:both:surface", "concrete")
@@ -91,7 +90,7 @@ class AddSidewalkSurfaceTest {
     @Test fun `sidewalk surface changes on each side`() {
         questType.verifyAnswer(
             mapOf("sidewalk:left:surface" to "asphalt", "sidewalk:right:surface" to "paving_stones"),
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.GRAVEL)),
+            SidewalkSurface(SurfaceAnswer(Surface.CONCRETE), SurfaceAnswer(Surface.GRAVEL)),
             StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
             StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
         )
@@ -100,7 +99,7 @@ class AddSidewalkSurfaceTest {
     @Test fun `smoothness tag removed when surface changes, same on both sides`() {
         questType.verifyAnswer(
             mapOf("sidewalk:both:surface" to "asphalt", "sidewalk:both:smoothness" to "excellent"),
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            SidewalkSurface(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
             StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
             StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
         )
@@ -113,12 +112,31 @@ class AddSidewalkSurfaceTest {
                 "sidewalk:left:smoothness" to "excellent",
                 "sidewalk:right:smoothness" to "good"
             ),
-            SidewalkSurfaceAnswer(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
+            SidewalkSurface(SurfaceAnswer(Surface.PAVING_STONES), SurfaceAnswer(Surface.PAVING_STONES)),
             StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
             StringMapEntryDelete("sidewalk:right:surface", "concrete"),
             StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
             StringMapEntryDelete("sidewalk:right:smoothness", "good"),
             StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
+        )
+    }
+
+    @Test fun `remove all sidewalk information`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk:left:surface" to "asphalt",
+                "sidewalk:right:surface" to "concrete",
+                "sidewalk:left:smoothness" to "excellent",
+                "sidewalk:right:smoothness" to "good",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            SidewalkIsDifferent,
+            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
+            StringMapEntryDelete("sidewalk:right:surface", "concrete"),
+            StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
+            StringMapEntryDelete("sidewalk:right:smoothness", "good"),
+            StringMapEntryDelete("sidewalk:left", "yes"),
+            StringMapEntryDelete("sidewalk:right", "yes")
         )
     }
 

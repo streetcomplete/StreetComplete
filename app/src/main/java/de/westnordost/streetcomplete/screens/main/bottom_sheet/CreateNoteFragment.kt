@@ -51,6 +51,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val floatingBottomView get() = bottomSheetBinding.okButton
     override val backButton get() = bottomSheetBinding.closeButton
     override val okButton get() = bottomSheetBinding.okButton
+    override val okButtonContainer get() = bottomSheetBinding.okButtonContainer
 
     private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
 
@@ -140,11 +141,9 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
            the position of the note he placed */
         if (contentBinding.noteInput.hideKeyboard() == true) return
 
-        val screenPos = binding.markerCreateLayout.createNoteMarker.getLocationInWindow()
-        screenPos.offset(
-            binding.markerCreateLayout.createNoteMarker.width / 2,
-            binding.markerCreateLayout.createNoteMarker.height / 2
-        )
+        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val screenPos = createNoteMarker.getLocationInWindow()
+        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos) ?: return
 
         binding.markerCreateLayout.markerLayoutContainer.visibility = View.INVISIBLE
@@ -152,7 +151,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val fullText = "$text\n\nvia ${ApplicationConstants.USER_AGENT}"
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                val recordedTrack = listener?.getRecordedTrack().orEmpty()
+                val recordedTrack =
+                    if (hasGpxAttached) listener?.getRecordedTrack().orEmpty() else emptyList()
                 noteEditsController.add(0, NoteEditAction.CREATE, position, fullText, imagePaths, recordedTrack)
             }
         }

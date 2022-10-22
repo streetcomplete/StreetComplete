@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 centerLineStyle: white
 edgeLineStyle: yellow
@@ -7,6 +7,7 @@ isLeftHandTraffic: true
 mobileCountryCode: 455
 officialLanguages: [zh, pt]
 popularReligions: [chinese_folk, taoist, bhuddist]
+postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA
 orchardProduces: [pepper]

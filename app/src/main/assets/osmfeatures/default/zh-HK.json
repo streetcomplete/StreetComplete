@@ -118,7 +118,6 @@
                 "activity": {
                     "label": "活動",
                     "options": {
-                        "Ski": "滑雪",
                         "bicycle": "騎單車",
                         "hiking": "遠足",
                         "horse": "騎馬",
@@ -2276,17 +2275,7 @@
                     "placeholder": "優良、好、差勁..."
                 },
                 "transformer": {
-                    "label": "種類",
-                    "options": {
-                        "auto": "自耦變壓器",
-                        "auxiliary": "輔助",
-                        "converter": "轉換器",
-                        "distribution": "配電器",
-                        "generator": "變電器",
-                        "phase_angle_regulator": "相位角整流器",
-                        "traction": " 牽引器",
-                        "yes": "未知"
-                    }
+                    "label": "種類"
                 },
                 "trees": {
                     "label": "樹"
@@ -4261,10 +4250,6 @@
                     "name": "危險區",
                     "terms": "danger area,危險地區,危險區域,危險範圍"
                 },
-                "landuse/military/naval_base": {
-                    "name": "海軍基地",
-                    "terms": "naval base,軍港,海軍基地"
-                },
                 "landuse/military/range": {
                     "name": "軍事靶場",
                     "terms": "military range,靶場,軍用靶場,射擊場"
@@ -5135,10 +5120,6 @@
                 "shop/anime": {
                     "name": "動畫／漫畫店"
                 },
-                "shop/antiques": {
-                    "name": "古董店",
-                    "terms": "古董店,古玩店"
-                },
                 "shop/appliance": {
                     "name": "電器店",
                     "terms": "appliance store,家電店,家用電器店"
@@ -5193,10 +5174,6 @@
                 "shop/bookmaker": {
                     "name": "投注站",
                     "terms": "投注站,收受賭注者"
-                },
-                "shop/books": {
-                    "name": "書店",
-                    "terms": "書局"
                 },
                 "shop/boutique": {
                     "name": "時裝店"
@@ -5282,10 +5259,6 @@
                 "shop/dairy": {
                     "name": "奶製品店",
                     "terms": "奶品店,乳品店,乳製品店"
-                },
-                "shop/deli": {
-                    "name": "食肆",
-                    "terms": "deli,熟食店,美食店,食肆"
                 },
                 "shop/department_store": {
                     "name": "百貨公司",
@@ -5374,9 +5347,6 @@
                     "name": "五金店",
                     "terms": "hardware store,五金店,五金舖"
                 },
-                "shop/health_food": {
-                    "name": "健康食品店"
-                },
                 "shop/hearing_aids": {
                     "name": "助聽器店",
                     "terms": "助聽器商店,耳聾機"
@@ -5452,10 +5422,6 @@
                     "name": "樂器店",
                     "terms": "樂器行,樂器店"
                 },
-                "shop/newsagent": {
-                    "name": "報紙/雜誌店",
-                    "terms": "報刊檔,報刊商店"
-                },
                 "shop/nutrition_supplements": {
                     "name": "營養補充品店",
                     "terms": "營養補充品店"
@@ -5475,10 +5441,6 @@
                 "shop/pastry": {
                     "name": "榚點店",
                     "terms": "pastry shop,西餅店,榚餅店,榚點店"
-                },
-                "shop/pawnbroker": {
-                    "name": "當舖",
-                    "terms": "大押,押,當押"
                 },
                 "shop/perfumery": {
                     "name": "香水店",
@@ -5520,10 +5482,6 @@
                 "shop/seafood": {
                     "name": "海鮮店",
                     "terms": "海產店"
-                },
-                "shop/second_hand": {
-                    "name": "寄賣/二手店",
-                    "terms": "格仔店,二手店"
                 },
                 "shop/shoes": {
                     "name": "鞋舖",
@@ -5584,10 +5542,6 @@
                     "name": "吸塵機店",
                     "terms": "吸塵器店"
                 },
-                "shop/variety_store": {
-                    "name": "十蚊店",
-                    "terms": "variety store,雜貨店,雜貨舖"
-                },
                 "shop/video": {
                     "name": "影視店",
                     "terms": "video store,影像店,影碟店,影視店"
@@ -5621,10 +5575,6 @@
                 },
                 "tourism": {
                     "name": "觀光特徽"
-                },
-                "tourism/alpine_hut": {
-                    "name": "高山小屋",
-                    "terms": "alpine hut,高山小屋,高山屋仔"
                 },
                 "tourism/apartment": {
                     "name": "民宿公寓 / 短租公寓",

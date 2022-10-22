@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.util.math
 
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.testutils.bbox
 import org.junit.Assert.assertEquals
@@ -19,7 +20,7 @@ class SphericalEarthMathTest {
         checkHamburgTo(52.4, 13.4, 259, 117, 120)
     }
 
-    @Test fun `distance to Lübeck`() {
+    @Test fun `distance to Luebeck`() {
         checkHamburgTo(53.85, 10.68, 59, 49, 49)
     }
 
@@ -259,13 +260,23 @@ class SphericalEarthMathTest {
         listOf<LatLon>().enclosingBoundingBox()
     }
 
-    @Test fun `enclosingbbox for line`() {
+    @Test fun `enclosingbbox for points`() {
         val positions = listOf(p(0.0, -4.0), p(3.0, 12.0), p(16.0, 1.0), p(-6.0, 0.0))
         val bbox = positions.enclosingBoundingBox()
-        assertEquals(-4.0, bbox.min.latitude, 0.0)
-        assertEquals(12.0, bbox.max.latitude, 0.0)
-        assertEquals(16.0, bbox.max.longitude, 0.0)
-        assertEquals(-6.0, bbox.min.longitude, 0.0)
+        assertEquals(
+            BoundingBox(-4.0, -6.0, 12.0, 16.0),
+            bbox
+        )
+    }
+
+    @Test fun `enclosingbbox for points difficult to represent exactly with floating point numbers`() {
+        val p1 = p(0.1, 0.2)
+        val p2 = p(0.4, 0.1)
+        val bbox = listOf(p1, p2).enclosingBoundingBox()
+        assertEquals(
+            BoundingBox(0.1, 0.1, 0.2, 0.4),
+            bbox
+        )
     }
 
     @Test fun `enclosingbbox for line crosses 180th meridian`() {
@@ -548,11 +559,11 @@ class SphericalEarthMathTest {
     @Test fun `pointsOnPolylineFromStart for polyline`() {
         val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
         assertEquals(
-            listOf(p(2.5, 0.0), p(6.0, 0.0), p(7.5, 0.0)),
+            listOf(p(2.5, 0.0), p(5.5, 0.0), p(7.5, 0.0)),
             list.pointsOnPolylineFromStart(listOf(
                 list.measuredLength() * 0.25,
                 list.measuredLength() * 0.75, // unsorted order
-                list.measuredLength() * 0.60, // 0.60 amd 0.75 are in the same segment
+                list.measuredLength() * 0.55, // 0.55 amd 0.75 are in the same segment
             ))
         )
     }

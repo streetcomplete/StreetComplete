@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.streetcomplete.data.elementfilter.matches
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -37,5 +38,9 @@ class HasTagValueLikeTest {
         assertFalse(f.matches(mapOf("maxspeed" to "45 mph")))
         assertFalse(f.matches(mapOf("maxspeed" to "135 mph")))
         assertFalse(f.matches(mapOf()))
+    }
+
+    @Test fun toStringMethod() {
+        assertEquals("highway ~ .esidential", HasTagValueLike("highway", ".esidential").toString())
     }
 }

@@ -1094,14 +1094,6 @@
                 "traffic_signals": {
                     "label": "Tips"
                 },
-                "transformer": {
-                    "options": {
-                        "auto": "Autotransformātors",
-                        "converter": "Pārveidotājs",
-                        "generator": "Ģenerātors",
-                        "yes": "Nezināms"
-                    }
-                },
                 "trees": {
                     "label": "Koki"
                 },
@@ -1995,9 +1987,6 @@
                 "landuse/military/barracks": {
                     "name": "Kazarmas"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Ūdensspēku bāze"
-                },
                 "landuse/quarry": {
                     "name": "Karjers"
                 },
@@ -2349,9 +2338,6 @@
                 "shop/alcohol": {
                     "name": "Alkoholisko dzērienu veikals"
                 },
-                "shop/antiques": {
-                    "name": "Antikvariāts"
-                },
                 "shop/art": {
                     "name": "Mākslas veikals"
                 },
@@ -2381,9 +2367,6 @@
                 "shop/bicycle": {
                     "name": "Velo veikals",
                     "terms": "velosipēdu,remonts,remonta"
-                },
-                "shop/books": {
-                    "name": "Grāmatu veikals"
                 },
                 "shop/boutique": {
                     "name": "Veikals"
@@ -2444,9 +2427,6 @@
                 },
                 "shop/dairy": {
                     "name": "Piena veikals"
-                },
-                "shop/deli": {
-                    "name": "Delikateses"
                 },
                 "shop/department_store": {
                     "name": "Lielveikals"
@@ -2539,17 +2519,11 @@
                 "shop/musical_instrument": {
                     "name": "Mūzikas instrumentu veikals"
                 },
-                "shop/newsagent": {
-                    "name": "Avīžu / Žurnālu veikals"
-                },
                 "shop/optician": {
                     "name": "Optometrists"
                 },
                 "shop/paint": {
                     "name": "Krāsu veikals"
-                },
-                "shop/pawnbroker": {
-                    "name": "Lombards"
                 },
                 "shop/pet": {
                     "name": "Dzīvnieku veikals"

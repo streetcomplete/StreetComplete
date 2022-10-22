@@ -44,7 +44,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     private val bridgeFilter by lazy { """
         ways with (
             highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-            or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular
+            or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
           ) and (
             bridge and bridge != no
             or man_made = pipeline and location = overhead
@@ -52,7 +52,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           and layer
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add maximum heights"
+    override val changesetComment = "Specify maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val achievements = listOf(CAR)

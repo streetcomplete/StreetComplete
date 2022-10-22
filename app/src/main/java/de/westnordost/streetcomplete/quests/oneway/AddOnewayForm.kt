@@ -10,7 +10,7 @@ import kotlin.math.PI
 class AddOnewayForm : AImageListQuestForm<OnewayAnswer, OnewayAnswer>() {
 
     override val items get() =
-        OnewayAnswer.values().map { it.toItem(requireContext(), wayRotation + mapRotation) }
+        OnewayAnswer.values().map { it.asItem(requireContext(), wayRotation + mapRotation) }
 
     override val itemsPerRow = 3
 

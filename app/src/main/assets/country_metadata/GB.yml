@@ -1,4 +1,4 @@
-# Do not edit. Source files are in /res/country_metadata
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [cy, gd]
 advisorySpeedLimitSignStyle: white
 hasAdvisorySpeedLimitSign: true
@@ -13,6 +13,9 @@ noStoppingLineStyle: double red
 officialLanguages: [en]
 popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
+postboxesHaveRoyalCypher: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE
 speedUnits: [miles per hour]

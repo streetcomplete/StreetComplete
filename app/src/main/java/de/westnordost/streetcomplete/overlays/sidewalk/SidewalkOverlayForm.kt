@@ -10,11 +10,11 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.osm.sidewalk.SidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.asItem
 import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -31,10 +31,9 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     private fun initStateFromTags() {
-        val sidewalk = createSidewalkSides(element.tags)
-        currentSidewalk = sidewalk
-        streetSideSelect.setPuzzleSide(sidewalk?.left?.asStreetSideItem(), false)
-        streetSideSelect.setPuzzleSide(sidewalk?.right?.asStreetSideItem(), true)
+        currentSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
+        streetSideSelect.setPuzzleSide(currentSidewalk?.left?.asStreetSideItem(), false)
+        streetSideSelect.setPuzzleSide(currentSidewalk?.right?.asStreetSideItem(), true)
     }
 
     override fun onClickSide(isRight: Boolean) {
@@ -46,13 +45,15 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onClickOk() {
         streetSideSelect.saveLastSelection()
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            SidewalkSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value).applyTo(it)
-        }.create()))
+        val sidewalks = LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        sidewalks.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
     override fun hasChanges(): Boolean =
-        LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value) != currentSidewalk
+        streetSideSelect.left?.value != currentSidewalk?.left ||
+        streetSideSelect.right?.value != currentSidewalk?.right
 
     override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
         item.value.name

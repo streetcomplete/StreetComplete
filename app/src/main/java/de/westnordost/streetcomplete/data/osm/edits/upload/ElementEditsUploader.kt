@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
@@ -25,6 +26,7 @@ import kotlinx.coroutines.withContext
 
 class ElementEditsUploader(
     private val elementEditsController: ElementEditsController,
+    private val noteEditsController: NoteEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
@@ -38,25 +40,26 @@ class ElementEditsUploader(
     suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
             val edit = elementEditsController.getOldestUnsynced() ?: break
-            val idProvider = elementEditsController.getIdProvider(edit.id)
+            val getIdProvider: () -> ElementIdProvider = { elementEditsController.getIdProvider(edit.id) }
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
-            withContext(scope.coroutineContext) { uploadEdit(edit, idProvider) }
+            withContext(scope.coroutineContext) { uploadEdit(edit, getIdProvider) }
         }
     } }
 
-    private suspend fun uploadEdit(edit: ElementEdit, idProvider: ElementIdProvider) {
+    private suspend fun uploadEdit(edit: ElementEdit, getIdProvider: () -> ElementIdProvider) {
         val editActionClassName = edit.action::class.simpleName!!
 
         try {
-            val updates = singleUploader.upload(edit, idProvider)
+            val updates = singleUploader.upload(edit, getIdProvider)
 
             Log.d(TAG, "Uploaded a $editActionClassName")
             uploadedChangeListener?.onUploaded(edit.type.name, edit.position)
 
             elementEditsController.markSynced(edit, updates)
             mapDataController.updateAll(updates)
+            noteEditsController.updateElementIds(updates.idUpdates)
 
             if (edit.action is IsRevertAction) {
                 statisticsController.subtractOne(edit.type.name, edit.position)

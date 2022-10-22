@@ -7,6 +7,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
+import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
+import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.quests.createMapData
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.member
@@ -15,9 +18,7 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AddHousenumberTest {
@@ -139,54 +140,23 @@ class AddHousenumberTest {
         assertNull(questType.isApplicableTo(building))
     }
 
-    @Test fun `housenumber regex`() {
-        val r = VALID_HOUSENUMBER_REGEX
-        assertTrue("1".matches(r))
-        assertTrue("1234".matches(r))
-
-        assertTrue("1234a".matches(r))
-        assertTrue("1234/a".matches(r))
-        assertTrue("1234 / a".matches(r))
-        assertTrue("1234 / A".matches(r))
-        assertTrue("1234A".matches(r))
-        assertTrue("1234/9".matches(r))
-        assertTrue("1234 / 9".matches(r))
-
-        assertTrue("12345".matches(r))
-        assertFalse("123456".matches(r))
-        assertFalse("1234 5".matches(r))
-        assertFalse("1234/55".matches(r))
-        assertFalse("1234AB".matches(r))
-    }
-
-    @Test fun `blocknumber regex`() {
-        val r = VALID_BLOCKNUMBER_REGEX
-        assertTrue("1".matches(r))
-        assertTrue("1234".matches(r))
-        assertFalse("12345".matches(r))
-
-        assertTrue("1234a".matches(r))
-        assertTrue("1234 a".matches(r))
-        assertFalse("1234 ab".matches(r))
-    }
-
     @Test fun `apply house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(HouseNumber("99b"), null),
+            AddressNumberOrName(HouseNumber("99b"), null),
             StringMapEntryAdd("addr:housenumber", "99b")
         )
     }
 
     @Test fun `apply house name answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(null, "La Escalera"),
+            AddressNumberOrName(null, "La Escalera"),
             StringMapEntryAdd("addr:housename", "La Escalera")
         )
     }
 
     @Test fun `apply conscription number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(ConscriptionNumber("I.123"), null),
+            AddressNumberOrName(ConscriptionNumber("I.123"), null),
             StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
             StringMapEntryAdd("addr:housenumber", "I.123")
         )
@@ -194,7 +164,7 @@ class AddHousenumberTest {
 
     @Test fun `apply conscription and street number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(ConscriptionNumber("I.123", "12b"), null),
+            AddressNumberOrName(ConscriptionNumber("I.123", "12b"), null),
             StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
             StringMapEntryAdd("addr:streetnumber", "12b"),
             StringMapEntryAdd("addr:housenumber", "12b")
@@ -203,7 +173,7 @@ class AddHousenumberTest {
 
     @Test fun `apply block and house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(HouseAndBlockNumber("12A", "123"), null),
+            AddressNumberOrName(HouseAndBlockNumber("12A", "123"), null),
             StringMapEntryAdd("addr:block_number", "123"),
             StringMapEntryAdd("addr:housenumber", "12A")
         )
@@ -211,7 +181,7 @@ class AddHousenumberTest {
 
     @Test fun `apply no house number answer`() {
         questType.verifyAnswer(
-            HouseNumberAndHouseName(null, null),
+            AddressNumberOrName(null, null),
             StringMapEntryAdd("nohousenumber", "yes")
         )
     }

@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTagValueLike
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import java.util.EnumSet
 
 /** Represents the parse result of a string in filter syntax, e.g.
  *
@@ -41,7 +40,9 @@ import java.util.EnumSet
  *  | `shop ~ car|boat`              | has a tag whose key is `shop` and whose value matches the regex `car|boat`    |
  *  | `shop !~ car|boat`             | doesn't have a tag whose key is `shop` and value matches the regex `car|boat` |
  *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value `car|boat` (both regexes)  |
- *  | `foo < 2.5`                    | has a tag with key `foo` whose value is a number and smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 3.3`                    | has a tag with key `foo` whose value is smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 3.3ft`                  | same as above but value is smaller than 3.3 feet (~1 meter)<br/>This works for other units as well (mph, st, lbs, yds...) |
+ *  | `foo < 3'4"`                   | same as above but value is smaller than 3 feet, 4 inches (~1 meter)           |
  *  | `foo < 2012-10-01`             | same as above but value is a date older than Oct 1st 2012                     |
  *  | `foo < today -1.5 years`       | same as above but value is a date older than 1.5 years<br/>In place of `years`, `months`, `weeks` or `days` work |
  *  | `shop newer today -99 days`    | has a tag with key `shop` which has been modified in the last 99 days.<br/>Absolute dates work too. |
@@ -60,11 +61,11 @@ import java.util.EnumSet
  *  | `!(amenity and craft)`         | **<error>** (negation of expression not supported)       |
  *  */
 class ElementFilterExpression(
-    private val elementsTypes: EnumSet<ElementsTypeFilter>,
-    private val elementExprRoot: BooleanExpression<ElementFilter, Element>?
+    internal val elementsTypes: Set<ElementsTypeFilter>,
+    internal val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
     /* Performance improvement: Allows to skip early on elements that have no tags at all */
-    private val mayEvaluateToTrueWithNoTags = elementExprRoot?.mayEvaluateToTrueWithNoTags ?: true
+    val mayEvaluateToTrueWithNoTags = elementExprRoot?.mayEvaluateToTrueWithNoTags ?: true
 
     /** returns whether the given element is found through (=matches) this expression */
     fun matches(element: Element): Boolean =
@@ -77,9 +78,6 @@ class ElementFilterExpression(
         ElementType.WAY -> elementsTypes.contains(WAYS)
         ElementType.RELATION -> elementsTypes.contains(RELATIONS)
     }
-
-    /** returns this expression as a Overpass query string */
-    fun toOverpassQLString(): String = OverpassQueryCreator(elementsTypes, elementExprRoot).create()
 }
 
 /** Enum that specifies which type(s) of elements to retrieve  */

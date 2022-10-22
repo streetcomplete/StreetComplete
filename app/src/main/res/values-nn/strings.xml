@@ -350,10 +350,10 @@
     <string name="quest_carWashType_service">"Tilsette vaskar bilen"</string>
     <string name="enable_quest_confirmation_title">"Vil du visa denne oppdragstypen?"</string>
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
-    <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
@@ -447,8 +447,12 @@
     <string name="quest_buildingType_semi_detached">"Tomannsbustad"</string>
     <string name="quest_buildingType_terrace_description">"ei rekkje hus tett inntil kvarandre"</string>
     <string name="quest_buildingType_hotel">"Hotellbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studentby/internat"</string>
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Campingvogn"</string>
     <string name="quest_buildingType_commercial">"Forretningsbygg"</string>
@@ -459,16 +463,32 @@
     <string name="quest_buildingType_industrial_description">"for eksempel ein fabrikk, ein maskinhall eller ein verkstad"</string>
     <string name="quest_buildingType_office">"Kontorbygning"</string>
     <string name="quest_buildingType_retail">"Butikk(ar)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lager"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Frittståande kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Lagertank"</string>
     <string name="quest_buildingType_religious">"Religionsbygning"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kyrkje"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapell"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moské"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagode"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagoge"</string>
     <string name="quest_buildingType_civic">"Samfunnsbygning"</string>
     <string name="quest_buildingType_civic_description">"offentleg bygning der ein tilbyr ei teneste"</string>
@@ -505,6 +525,8 @@
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Det har ikkje noko husnummer …"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen vart definert som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Heilagstad"</string>
     <string name="quest_maxspeed_title_short2">"Kva er fartsgrensa for denne gata?"</string>
     <string name="quest_maxspeed_answer_sign">"Eit skilt"</string>
@@ -769,6 +791,8 @@
     <string name="user_profile_local_rank">"Rangering i %s"</string>
     <string name="user_profile_days_active">"Aktive dagar"</string>
     <string name="user_profile_achievement_levels">"Bragd- nivå"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
     <string name="quest_address_street_description">"Trykk på gata/vegen som det høyrer til, eller skriv inn namnet utan forkortingar nedanfor:"</string>
@@ -1021,7 +1045,6 @@
     <string name="quest_generic_answer_is_actually_steps">"Dette er ei trapp"</string>
     <string name="quest_barrier_type_passage_conversion">"Gjort om til ei opning gjennom mur, gjerde e.l."</string>
     <string name="quest_barrier_type_gate_conversion">"Gjort om til ein port"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameteren verkar usannsynleg."</string>
     <string name="short_no_answer_on_button">"Nei"</string>
     <string name="restore_confirmation">"Gjenopprett"</string>
     <string name="restore_dialog_message">"Vil du gjenoppretta alle oppdraga du tidlegare har gøymt?"</string>
@@ -1098,7 +1121,6 @@ sorted alphabetically by title -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Er toalettet her tilgjengeleg med rullestol?"</string>
     <string name="link_valhalla_description">"Ruteplanleggjar som krev svært lite minne og som støttar ulike reisemåtar, isokron­kart, meir meir."</string>
     <string name="link_backofyourhand_description">"Kor godt kjenner du nærmiljøet ditt? Test deg sjølv ved å finna gater."</string>
-    <string name="link_thenandnow_description">"Utforsk korleis OSM såg ut før, samanlikna med no!"</string>
     <string name="link_notesreview_description">"Sjå, filtrer og kommenter på merknadar du òg andre har lagt att. Mange merknadar kan lukkast ved å leggja inn informasjonen som står i dei, ved hjelp av programma iD eller JOSM."</string>
 
     <!-- Quests

@@ -1,43 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<include
+    android:layout_width="128dp"
     android:layout_height="wrap_content"
-    android:divider="@drawable/space_8dp"
-    android:showDividers="middle">
+    android:layout_centerInParent="true"
+    layout="@layout/view_entrance_reference"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/quest_entrance_reference_reference_label"/>
-    <me.grantland.widget.AutofitLayout
-        android:id="@+id/referenceCodeInputContainer"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_white_corners"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        >
+<Button
+    android:id="@+id/toggleKeyboardButton"
+    android:layout_width="64dp"
+    android:layout_height="56dp"
+    tools:text="abc"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    tools:ignore="RtlHardcoded"
+    android:layout_alignParentRight="true"/>
 
-        <EditText
-            android:id="@+id/referenceCodeInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:background="@drawable/background_rectangular_sign_blue"
-            android:imeOptions="actionDone"
-            android:textColorHint="#2fff"
-            tools:text="VII"
-            android:padding="12dp"
-            style="@style/HousenumberEditText"
-            />
-        <!--android:inputType="text|number|numberSigned|numberDecimal" is treated as number-->
-
-    </me.grantland.widget.AutofitLayout>
-</LinearLayout>
+</RelativeLayout>

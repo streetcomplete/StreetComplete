@@ -12,23 +12,26 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     private val withoutEntranceFilter by lazy { """
         nodes with
-          !entrance and !barrier and noexit != yes
+          !entrance and !barrier and noexit != yes and !railway
     """.toElementFilterExpression() }
 
     private val buildingWaysFilter by lazy { """
-        ways, relations with building and building !~ yes|no|service|shed|house|detached|terrace|semi|semidetached_house|roof|carport
+        ways, relations with
+          building and building !~ yes|no|service|shed|house|detached|terrace|semi|semidetached_house|roof|carport|construction
+          and location != underground
+          and (layer !~ -[0-9]+ or location)
     """.toElementFilterExpression() }
 
     private val incomingWaysFilter by lazy { """
         ways with
-          highway ~ path|footway and area != yes and access !~ private|no
+          highway ~ path|footway|steps|cycleway and area != yes and access !~ private|no
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with (tunnel and tunnel != no) or (covered and covered != no)
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Add entrance info"
+    override val changesetComment = "Specify type of entrances"
     override val wikiLink = "Key:entrance"
     override val icon = R.drawable.ic_quest_door
     override val achievements = listOf(PEDESTRIAN)

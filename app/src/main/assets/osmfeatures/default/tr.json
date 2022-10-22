@@ -2237,17 +2237,7 @@
                     "placeholder": "Çok iyi, İyi, Kötü"
                 },
                 "transformer": {
-                    "label": "Tür",
-                    "options": {
-                        "auto": "Otomatik dönüştürücü",
-                        "auxiliary": "Yardımcı",
-                        "converter": "Dönüştürücü",
-                        "distribution": "Dağıtım",
-                        "generator": "Üreteç",
-                        "phase_angle_regulator": "Faz Açısı Düzenleyici",
-                        "traction": "Çekme",
-                        "yes": "Bilinmiyor"
-                    }
+                    "label": "Tür"
                 },
                 "trees": {
                     "label": "Ağaçlar"
@@ -4626,10 +4616,6 @@
                     "name": "Tehlikeli Bölge",
                     "terms": "tehlikeli bölge"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Deniz Üssü",
-                    "terms": "deniz üssü"
-                },
                 "landuse/military/obstacle_course": {
                     "name": "Askeri Engel Sahası"
                 },
@@ -4975,9 +4961,6 @@
                 "line": {
                     "name": "Çizgi",
                     "terms": "çizgi"
-                },
-                "man_made": {
-                    "name": "İnsan Yapımı Özellik"
                 },
                 "man_made/adit": {
                     "name": "Tünel Girişi",
@@ -6096,10 +6079,6 @@
                 "shop/anime": {
                     "name": "Anime / Manga Dükkanı"
                 },
-                "shop/antiques": {
-                    "name": "Antika Dükkanı",
-                    "terms": "antika dükkanı"
-                },
                 "shop/appliance": {
                     "name": "Beyaz Eşya Mağazası",
                     "terms": "beyaz eşya mağazası"
@@ -6154,10 +6133,6 @@
                 "shop/bookmaker": {
                     "name": "Bahis Merkezi",
                     "terms": "bahis merkezi"
-                },
-                "shop/books": {
-                    "name": "Kitapçı",
-                    "terms": "kitapçı"
                 },
                 "shop/boutique": {
                     "name": "Butik Mağaza"
@@ -6260,9 +6235,6 @@
                     "name": "Kozmetik Mağazası",
                     "terms": "kozmetik mağazası"
                 },
-                "shop/country_store": {
-                    "name": "Köy Mağazası"
-                },
                 "shop/craft": {
                     "name": "El Sanatları Mağazası"
                 },
@@ -6273,10 +6245,6 @@
                 "shop/dairy": {
                     "name": "Süt Mağazası",
                     "terms": "süt mağazası"
-                },
-                "shop/deli": {
-                    "name": "Şarküteri",
-                    "terms": "şarküteri"
                 },
                 "shop/department_store": {
                     "name": "Mağaza",
@@ -6389,9 +6357,6 @@
                     "name": "Donanım Mağazası",
                     "terms": "donanım mağazası"
                 },
-                "shop/health_food": {
-                    "name": "Sağlıklı Yiyecek Mağazası"
-                },
                 "shop/hearing_aids": {
                     "name": "İşitme Cihazı Mağazası",
                     "terms": "i̇şitme cihazı mağazası"
@@ -6494,10 +6459,6 @@
                     "name": "Müzik Aletleri Mağazası",
                     "terms": "müzik aletleri mağazası"
                 },
-                "shop/newsagent": {
-                    "name": "Gazete Bayii",
-                    "terms": "gazete bayii"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Gıda Takviye Ürünleri Mağazası",
                     "terms": "gıda takviye ürünleri mağazası,enerji takviye ürünleri mağazası"
@@ -6523,10 +6484,6 @@
                 "shop/pastry": {
                     "name": "Pastane",
                     "terms": "pastane"
-                },
-                "shop/pawnbroker": {
-                    "name": "İkinciel Alım Satım Mağazası",
-                    "terms": "i̇kinciel alım satım mağazası"
                 },
                 "shop/perfumery": {
                     "name": "Parfümeri",
@@ -6577,10 +6534,6 @@
                 "shop/seafood": {
                     "name": "Deniz Ürünleri Mağazası",
                     "terms": "deniz ürünleri mağazası"
-                },
-                "shop/second_hand": {
-                    "name": "Bit Pazarı",
-                    "terms": "bit pazarı"
                 },
                 "shop/sewing": {
                     "name": "Dikiş Malzemeleri Dükkanı"
@@ -6671,10 +6624,6 @@
                     "name": "Elektrikli Süpürge Mağazası",
                     "terms": "elektrikli süpürge mağazası"
                 },
-                "shop/variety_store": {
-                    "name": "Herşey 1 TL Mağazası",
-                    "terms": "herşey 1 tl mağazası"
-                },
                 "shop/video": {
                     "name": "Film - Video Mağazası",
                     "terms": "film - video mağazası"
@@ -6723,10 +6672,6 @@
                 },
                 "tourism": {
                     "name": "Turizm Özelliği"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Dağ Evi",
-                    "terms": "dağ evi,dağ kulübesi,baraka"
                 },
                 "tourism/apartment": {
                     "name": "Misafir Apartmanı",

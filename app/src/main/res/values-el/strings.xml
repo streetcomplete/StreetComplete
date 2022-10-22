@@ -1156,6 +1156,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Πλωτό σπίτι"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"μπανγκαλόου"</string>
 
     <!-- Fuzzy -->
@@ -1181,6 +1183,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Αποθήκη"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Περίπτερο"</string>
 
     <!-- Fuzzy -->
@@ -1794,6 +1798,8 @@
     <string name="user_profile_local_rank">"Κατάταξη σε %s"</string>
     <string name="user_profile_days_active">"Ενεργές ημέρες"</string>
     <string name="user_profile_achievement_levels">"Επίπεδα επιτευγμάτων"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
     <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
     <string name="quest_address_street_description">"Πατήστε τον δρόμο στον οποίο ανήκει ο χάρτης ή εισαγάγετέ τον χωρίς συντομογραφίες στο παρακάτω πεδίο:"</string>
@@ -2161,7 +2167,6 @@
     <string name="quest_surface_value_concrete_plates">"Πλάκες από μπετόν"</string>
     <string name="quest_surface_value_concrete_lanes">"Λωρίδες από μπετόν"</string>
     <string name="quest_fireHydrant_diameter_title">"Ποια διάμετρος καθορίζεται στην πινακίδα για αυτόν τον πυροσβεστικό κρουνό;"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Αυτή η διάμετρος φαίνεται απίθανη."</string>
     <string name="quest_fireHydrant_confirmation_title">"Είσαι σίγουρος? Μερικές φορές η διάμετρος μπορεί να βρεθεί στον ίδιο τον κρουνό."</string>
     <string name="quest_diet_answer_no_food">"Δεν έχει φαγητό"</string>
     <string name="short_no_answer_on_button">"Όχι"</string>
@@ -2188,7 +2193,6 @@
 
     <!-- Fuzzy -->
     <string name="on_floor">"στον όροφο %s:"</string>
-    <string name="quest_street_parking_title">"Πώς μπορούν να παρκάρουν τα αυτοκίνητα εδώ, αν υπάρχουν;"</string>
     <string name="select_street_parking_orientation">"Επιλέξτε προσανατολισμό προς το δρόμο:"</string>
     <string name="select_street_parking_position">"Επιλέξτε θέση:"</string>
     <string name="select_street_parking_no">"Υπάρχει κάποια πινακίδα ή οδική σήμανση εδώ;"</string>
@@ -2431,9 +2435,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Πόσο καλά γνωρίζετε την περιοχή σας; Δοκιμάστε τις γνώσεις σας εντοπίζοντας δρόμους."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Εξερευνήστε πώς έμοιαζε το OSM τις πρώτες μέρες σε σύγκριση με το πώς φαίνεται τώρα!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Δείτε, φιλτράρετε και σχολιάστε εύκολα στις σημειώσεις που έχετε δημιουργήσει εσείς και άλλοι. Πολλές σημειώσεις μπορούν να λυθούν βάζοντας τις πληροφορίες που περιέχουν μέσα στον χάρτη με το iD ή το JOSM"</string>
 
     <!-- Quests
@@ -2480,4 +2481,53 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Πατήστε την οθόνη για έναρξη μέτρησης"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Υπάρχει δημόσια αντλία ποδηλάτου εδώ (όταν είναι ανοιχτά);"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Υπάρχει λειτουργική αντλία ποδηλάτου εδώ;"</string>
+    <string name="action_overlays">"Επικαλύψεις"</string>
+    <string name="split_way">"Διαίρεση διαδρομής"</string>
+    <string name="quest_memorialType_title">"Τι είδους μνημείο είναι αυτό;"</string>
+    <string name="quest_memorialType_statue">"Άγαλμα"</string>
+    <string name="quest_memorialType_bust">"Προτομή"</string>
+    <string name="quest_memorialType_plaque">"Πλακέτα"</string>
+    <string name="quest_memorialType_war_memorial">"Μνημείο πολέμου"</string>
+    <string name="quest_memorialType_stone">"Πέτρα"</string>
+    <string name="quest_memorialType_obelisk">"Οβελίσκος"</string>
+    <string name="quest_memorialType_stele_wooden">"Ξύλινη στήλη (αναμνηστική πλάκα)"</string>
+    <string name="quest_memorialType_stele_stone">"Λίθινη στήλη (αναμνηστική πλάκα)"</string>
+    <string name="quest_memorialType_sculpture">"Άλλο γλυπτό"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Επιλογή Επικάλυψης"</string>
+    <string name="overlay_none">"Καμία"</string>
+    <string name="overlay_lit">"Φωτισμός δρόμου"</string>
+    <string name="lit_value_yes">"Φωτισμένο"</string>
+    <string name="lit_value_no">"Αφώτιστο"</string>
+    <string name="lit_value_24_7">"Φωτισμένο μέρα και νύχτα"</string>
+    <string name="lit_value_automatic">"Φωτισμένο όταν περάσει κάποιος"</string>
+    <string name="overlay_sidewalk">"Πεζοδρόμια"</string>
+    <string name="quest_generic_answer_is_indoors">"Αυτό είναι σε εσωτερικούς χώρους"</string>
+    <string name="quest_summit_cross_title">"Υπάρχει σταυρός κορυφής εδώ;"</string>
+    <string name="quest_entrance_reference">"Τι γράφει σε αυτή την είσοδο;"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ταμπέλα εισόδου και σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_select_code_only">"Ταμπέλα εισόδου"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Κανένα σημάδι με ταμπέλα ή σειρά διαμερισμάτων"</string>
+    <string name="quest_entrance_reference_reference_label">"Ταμπέλα εισόδου:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Σειρά διαμερισμάτων:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"προς"</string>
+    <string name="default_disabled_msg_overlay">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή επειδή υπάρχει ήδη μια επικάλυψη με την οποία είναι πιο αποτελεσματική και αποδοτική η εισαγωγή και η ενημέρωση αυτών των δεδομένων."</string>
+    <string name="quest_camp_drinking_water_title">"Είναι το πόσιμο νερό ελεύθερα διαθέσιμο για τους κατασκηνωτές εδώ;"</string>
+    <string name="quest_camp_shower_title">"Υπάρχουν ντους εδώ;"</string>
+    <string name="quest_camp_power_supply_title">"Υπάρχει τρόπος να φορτίσουν οι πελάτες το τηλέφωνό τους, το λάπτοπ τους κ.λπ. εδώ;"</string>
+    <string name="quest_camp_type_title">"Ποιος μπορεί να κατασκηνώσει εδώ;"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Τόσο σκηνές όσο και αυτοκινούμενα σπίτια, τροχόσπιτα, ..."</string>
+    <string name="quest_camp_type_caravans_only">"Μόνο αυτοκινούμενα σπίτια, τροχόσπιτα, ..."</string>
+    <string name="quest_camp_type_tents_only">"Μόνο σκηνές"</string>
+    <string name="quest_camp_type_backcountry">"Υπαίθριο κάμπινγκ (χωρίς εγκαταστάσεις)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Αυτή η απάντηση δεν ταιριάζει με αυτό που έχει ήδη χαρτογραφηθεί για αυτόν τον δρόμο. Είστε σίγουροι ότι απαντάτε για τον σωστό δρόμο; Είστε βέβαιοι ότι κάνατε προσωπική έρευνα σε όλο το μήκος, όπως πάντα χρειάζεται;"</string>
+    <string name="quest_recycling_type_pet">"Κατοικίδια μόνο"</string>
+    <string name="street_parking_street_width">"Πλάτος δρόμου: %s"</string>
+    <string name="overlay_street_parking">"Πάρκινγκ στο δρόμο"</string>
+    <string name="link_ohsomehex_description">"Εξερευνήστε OSM δεδομένα σε κλίμακες από τη μεγάλη εικόνα έως μεμονωμένα αντικείμενα στο χώρο και στο χρόνο"</string>
+    <string name="link_opencampingmap_description">"Χάρτης με κάμπινγκ"</string>
+    <string name="quest_atm_cashin_title">"Μπορείτε να καταθέσετε μετρητά σε αυτό το ΑΤΜ;"</string>
 </resources>

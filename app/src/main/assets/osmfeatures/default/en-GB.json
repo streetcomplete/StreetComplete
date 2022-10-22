@@ -1397,17 +1397,7 @@
                     "placeholder": "Excellent, Good, Bad..."
                 },
                 "transformer": {
-                    "label": "Type",
-                    "options": {
-                        "auto": "Autotransformer",
-                        "auxiliary": "Auxiliary",
-                        "converter": "Converter",
-                        "distribution": "Distribution",
-                        "generator": "Generator",
-                        "phase_angle_regulator": "Phase Angle Regulator",
-                        "traction": "Traction",
-                        "yes": "Unknown"
-                    }
+                    "label": "Type"
                 },
                 "trees": {
                     "label": "Trees"
@@ -2716,9 +2706,6 @@
                 "landuse/military/danger_area": {
                     "name": "Danger Area"
                 },
-                "landuse/military/naval_base": {
-                    "name": "Naval Base"
-                },
                 "landuse/military/range": {
                     "name": "Military Range"
                 },
@@ -2938,6 +2925,10 @@
                 },
                 "leisure/sports_centre": {
                     "name": "Sports Centre / Complex"
+                },
+                "leisure/sports_centre/horse_racing": {
+                    "name": "Horse Racecourse",
+                    "aliases": "Hippodrome"
                 },
                 "leisure/sports_centre/swimming": {
                     "name": "Swimming Pool Facility"
@@ -3510,9 +3501,6 @@
                     "name": "Off licence (Alcohol shop)",
                     "terms": "alcohol,beer,booze,wine,off licence,off license"
                 },
-                "shop/antiques": {
-                    "name": "Antiques Shop"
-                },
                 "shop/appliance": {
                     "name": "Appliance Shop"
                 },
@@ -3551,9 +3539,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Bookmaker"
-                },
-                "shop/books": {
-                    "name": "Book Shop"
                 },
                 "shop/boutique": {
                     "name": "Boutique"
@@ -3618,9 +3603,6 @@
                 "shop/dairy": {
                     "name": "Dairy Shop"
                 },
-                "shop/deli": {
-                    "name": "Deli"
-                },
                 "shop/department_store": {
                     "name": "Department Store"
                 },
@@ -3678,9 +3660,6 @@
                 },
                 "shop/hardware": {
                     "name": "Hardware Shop"
-                },
-                "shop/health_food": {
-                    "name": "Health Food Shop"
                 },
                 "shop/hearing_aids": {
                     "name": "Hearing Aids Shop"
@@ -3741,9 +3720,6 @@
                 "shop/musical_instrument": {
                     "name": "Musical Instrument Shop"
                 },
-                "shop/newsagent": {
-                    "name": "Newspaper/Magazine Shop"
-                },
                 "shop/nutrition_supplements": {
                     "name": "Nutrition Supplements Shop"
                 },
@@ -3758,9 +3734,6 @@
                 },
                 "shop/pastry": {
                     "name": "Pastry Shop"
-                },
-                "shop/pawnbroker": {
-                    "name": "Pawn Shop"
                 },
                 "shop/perfumery": {
                     "name": "Perfume Shop"
@@ -3788,9 +3761,6 @@
                 },
                 "shop/seafood": {
                     "name": "Seafood Shop"
-                },
-                "shop/second_hand": {
-                    "name": "Second Hand Shop"
                 },
                 "shop/shoes": {
                     "name": "Shoe Shop"
@@ -3843,9 +3813,6 @@
                 "shop/vacuum_cleaner": {
                     "name": "Hoover Shop"
                 },
-                "shop/variety_store": {
-                    "name": "Variety Store"
-                },
                 "shop/video": {
                     "name": "Video/DVD Shop"
                 },
@@ -3869,9 +3836,6 @@
                 },
                 "shop/wine": {
                     "name": "Wine Shop"
-                },
-                "tourism/alpine_hut": {
-                    "name": "Alpine Hut"
                 },
                 "tourism/apartment": {
                     "name": "Guest Apartment / Condo"

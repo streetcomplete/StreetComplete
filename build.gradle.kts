@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.6.21"
-        classpath("com.android.tools.build:gradle:7.2.1")
+        val kotlinVersion = "1.7.10"
+        classpath("com.android.tools.build:gradle:7.3.1")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
@@ -14,8 +14,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // TODO remove when dependency to org.bitbucket.snakeyaml:snakeyaml-engine:8209bb9484 is no longer needed
-        maven { url = java.net.URI("https://jitpack.io") }
     }
 }
 
@@ -107,6 +105,7 @@ tasks.register("updateStreetCompleteData") {
         "app:updateMapStyle",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",
-        "app:updateAvailableLanguages"
+        "app:updateAvailableLanguages",
+        "app:downloadAndConvertPresetIcons"
     )
 }

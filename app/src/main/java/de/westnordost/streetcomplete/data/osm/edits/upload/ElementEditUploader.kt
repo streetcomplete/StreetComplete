@@ -1,39 +1,71 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
-    private val mapDataApi: MapDataApi
+    private val mapDataApi: MapDataApi,
+    private val mapDataController: MapDataController
 ) {
 
     /** Apply the given change to the given element and upload it
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
-    fun upload(edit: ElementEdit, idProvider: ElementIdProvider): MapDataUpdates {
-        val element = edit.fetchElement()
+    fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
+        val remoteChanges by lazy {
+            val element = mapDataApi.fetch(edit.elementType, edit.elementId)
+            edit.action.createUpdates(edit.originalElement, element, mapDataApi, getIdProvider())
+        }
+        val localChanges by lazy {
+            val element = mapDataController.fetch(edit.elementType, edit.elementId)
+            edit.action.createUpdates(edit.originalElement, element, mapDataController, getIdProvider())
+        }
 
-        val mapDataChanges = edit.action.createUpdates(edit.originalElement, element, mapDataApi, idProvider)
+        val mustUseRemoteData = edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES
 
-        return try {
-            val changesetId = changesetManager.getOrCreateChangeset(edit.type, edit.source)
-            mapDataApi.uploadChanges(changesetId, mapDataChanges)
-        } catch (e: ConflictException) {
-            val changesetId = changesetManager.createChangeset(edit.type, edit.source)
-            mapDataApi.uploadChanges(changesetId, mapDataChanges)
+        return if (mustUseRemoteData) {
+            try {
+                uploadChanges(edit, remoteChanges, false)
+            } catch (e: ConflictException) {
+                // probably changeset closed
+                uploadChanges(edit, remoteChanges, true)
+            }
+        } else {
+            try {
+                uploadChanges(edit, localChanges, false)
+            } catch (e: ConflictException) {
+                // either changeset was closed, or element modified, or local element was cleaned from db
+                try {
+                    uploadChanges(edit, remoteChanges, false)
+                } catch (e: ConflictException) {
+                    // probably changeset closed
+                    uploadChanges(edit, remoteChanges, true)
+                }
+            }
         }
     }
 
-    private fun ElementEdit.fetchElement() = when (elementType) {
-        ElementType.NODE     -> mapDataApi.getNode(elementId)
-        ElementType.WAY      -> mapDataApi.getWay(elementId)
-        ElementType.RELATION -> mapDataApi.getRelation(elementId)
+    private fun uploadChanges(edit: ElementEdit, mapDataChanges: MapDataChanges, newChangeset: Boolean): MapDataUpdates {
+        val changesetId =
+            if (newChangeset) changesetManager.createChangeset(edit.type, edit.source)
+            else              changesetManager.getOrCreateChangeset(edit.type, edit.source)
+        return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
+    }
+
+    private fun MapDataRepository.fetch(elementType: ElementType, elementId: Long) = when (elementType) {
+        ElementType.NODE     -> getNode(elementId)
+        ElementType.WAY      -> getWay(elementId)
+        ElementType.RELATION -> getRelation(elementId)
     }
 }

@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val elementEditsModule = module {
     factory { ChangesetAutoCloser(get()) }
-    factory { ElementEditUploader(get(), get()) }
+    factory { ElementEditUploader(get(), get(), get()) }
 
     factory { ElementEditsDao(get(), get(), get()) }
     factory { ElementIdProviderDao(get()) }
@@ -21,7 +21,7 @@ val elementEditsModule = module {
 
     single { OpenChangesetsManager(get(), get(), get(), get()) }
 
-    single { ElementEditsUploader(get(), get(), get(), get(), get()) }
+    single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
     single { ElementEditsController(get(), get(), get()) }
