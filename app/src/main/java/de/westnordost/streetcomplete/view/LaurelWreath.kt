@@ -20,7 +20,6 @@ below: no decorative styling at all
  */
 class LaurelWreath(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
     private val laurelLeafOnStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
-    private val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
     private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
     private val antiAliasPaint: Paint = Paint().apply {
