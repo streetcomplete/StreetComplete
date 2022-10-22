@@ -40,7 +40,7 @@ class AddContactWebsiteForm : AbstractOsmQuestForm<String>() {
     }
 
 
-    override fun isFormComplete() = contact.isNotEmpty() && contact != prefill
+    override fun isFormComplete() = contact.isNotEmpty() && contact != prefill && contact.contains('.')
 
     companion object {
         private var prefill = "http://"
