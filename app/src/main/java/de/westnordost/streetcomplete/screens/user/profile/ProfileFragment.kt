@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
-import de.westnordost.streetcomplete.view.LaurelWreath
+import de.westnordost.streetcomplete.view.LaurelWreathDrawable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -150,7 +150,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
-        binding.daysActiveText.background = LaurelWreath(resources, min(daysActive + 20, 100))
+        binding.daysActiveText.background = LaurelWreathDrawable(resources, min(daysActive + 20, 100))
     }
 
     private fun updateGlobalRankText() {
@@ -164,7 +164,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val rankEnoughToStartGrowingReward = 3800
         val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
         val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
-        binding.globalRankText.background = LaurelWreath(resources, min(scaledRank, 100))
+        binding.globalRankText.background = LaurelWreathDrawable(resources, min(scaledRank, 100))
     }
 
     private suspend fun updateLocalRankText() {
@@ -179,7 +179,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             if (shouldShow) {
                 binding.localRankText.text = "#${statistics.rank}"
                 binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
-                binding.localRankText.background = LaurelWreath(resources, min(100 - statistics.rank!!, 100))
+                binding.localRankText.background = LaurelWreathDrawable(resources, min(100 - statistics.rank!!, 100))
             }
         }
     }
@@ -188,7 +188,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val levels = withContext(Dispatchers.IO) { achievementsSource.getAchievements().sumOf { it.second } }
         binding.achievementLevelsContainer.isGone = levels <= 0
         binding.achievementLevelsText.text = "$levels"
-        binding.achievementLevelsText.background = LaurelWreath(resources, min(levels / 2, 100))
+        binding.achievementLevelsText.background = LaurelWreathDrawable(resources, min(levels / 2, 100))
     }
 
     private fun openUrl(url: String): Boolean {
