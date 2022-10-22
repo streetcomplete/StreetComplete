@@ -52,7 +52,7 @@ class LaurelWreathDrawable(val resources: Resources, private val percentageOfGro
         stalkPaint.setARGB(255, 0, 106, 0)
         stalkPaint.style = Paint.Style.STROKE
         stalkPaint.strokeWidth = 2.5f
-        val stalkCircleSize = circleRadius * locationBetweenCenterAndEdge * 1.1f
+        val stalkCircleSize = circleRadius * locationBetweenCenterAndEdge * 0.96f
         val frame = RectF(canvasWidth.toFloat() / 2 - stalkCircleSize, canvasHeight.toFloat() / 2 - stalkCircleSize, canvasWidth.toFloat() / 2 + stalkCircleSize, canvasHeight.toFloat() / 2 + stalkCircleSize)
         val stalkLengthInDegrees = 180f * percentageOfGrowth / 100f - 15f
         canvas.drawArc(frame, 90f, stalkLengthInDegrees, false, stalkPaint )
