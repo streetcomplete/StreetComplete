@@ -19,9 +19,9 @@ Drawable providing decoration, suitable for a circular background
 below: no decorative styling at all
  */
 class LaurelWreath(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
-    val laurelLeafOnStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
-    val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
-    val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
+    private val laurelLeafOnStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_rotated)
+    private val laurelStalk = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_stalk)
+    private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
 
     private val antiAliasPaint: Paint = Paint().apply {
         isAntiAlias = true
