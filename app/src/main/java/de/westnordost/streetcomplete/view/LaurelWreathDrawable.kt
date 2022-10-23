@@ -5,7 +5,6 @@ import android.graphics.Canvas
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
-import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.withRotation
 import de.westnordost.streetcomplete.R
@@ -46,18 +45,6 @@ class LaurelWreathDrawable(val resources: Resources, private val percentageOfGro
         val circleCenterX = canvasWidth / 2f
         val shownSegments = ((regularSegmentCount - 1) * percentageOfGrowth / 100).toInt()
         val locationBetweenCenterAndEdge = 0.78f
-
-        val stalkPaint = Paint()
-        stalkPaint.isAntiAlias = true
-        stalkPaint.setARGB(255, 0, 106, 0)
-        stalkPaint.style = Paint.Style.STROKE
-        stalkPaint.strokeWidth = 2.5f
-        val stalkCircleSize = circleRadius * locationBetweenCenterAndEdge * 0.96f
-        val frame = RectF(canvasWidth.toFloat() / 2 - stalkCircleSize, canvasHeight.toFloat() / 2 - stalkCircleSize, canvasWidth.toFloat() / 2 + stalkCircleSize, canvasHeight.toFloat() / 2 + stalkCircleSize)
-        val stalkLengthInDegrees = 180f * percentageOfGrowth / 100f - 15f
-        canvas.drawArc(frame, 90f, stalkLengthInDegrees, false, stalkPaint )
-        val upperLimitOfRightStalk = (90f - stalkLengthInDegrees + 360) % 360
-        canvas.drawArc(frame, upperLimitOfRightStalk, stalkLengthInDegrees, false, stalkPaint )
 
         for (i in 1..shownSegments) {
             // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
