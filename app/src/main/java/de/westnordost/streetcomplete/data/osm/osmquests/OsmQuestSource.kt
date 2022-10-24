@@ -12,8 +12,8 @@ interface OsmQuestSource {
         fun onInvalidated()
     }
 
-    /** get single quest by id */
-    fun get(key: OsmQuestKey): OsmQuest?
+    /** get single quest by id if not hidden by user */
+    fun getVisible(key: OsmQuestKey): OsmQuest?
 
     /** Get all quests of optionally the given types in given bounding box */
     fun getAllVisibleInBBox(bbox: BoundingBox, questTypes: Collection<QuestType>? = null, getHidden: Boolean = false): Collection<OsmQuest>

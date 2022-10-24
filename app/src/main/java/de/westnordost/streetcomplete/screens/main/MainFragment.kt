@@ -596,6 +596,10 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    override fun onNoteQuestClosed() {
+        closeBottomSheet()
+    }
+
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {

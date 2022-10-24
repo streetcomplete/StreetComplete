@@ -1311,6 +1311,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_sidewalk_value_separate">sidewalk, but displayed separately on map</string>
+    <string name="quest_sidewalk_answer_different">Sidewalk situation is different</string>
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
     <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.\nDo the same for the other side if present.</string>

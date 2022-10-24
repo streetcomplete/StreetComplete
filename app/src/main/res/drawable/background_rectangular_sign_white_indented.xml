@@ -13,11 +13,6 @@
                 android:color="@color/traffic_black"
                 android:width="4dp"/>
             <corners android:radius="4dp" />
-            <padding
-                android:bottom="12dp"
-                android:left="16dp"
-                android:right="16dp"
-                android:top="12dp" />
         </shape>
     </item>
 </layer-list>

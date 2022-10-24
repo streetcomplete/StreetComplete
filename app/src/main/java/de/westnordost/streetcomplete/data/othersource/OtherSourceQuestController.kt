@@ -52,7 +52,7 @@ class OtherSourceQuestController(
         return if (getHidden) quests else quests.filterNot { it.key in hiddenCache }
     }
 
-    fun get(key: OtherSourceQuestKey): OtherSourceQuest? {
+    fun getVisible(key: OtherSourceQuestKey): OtherSourceQuest? {
         if (key in hiddenCache) return null
         return getQuestType(key)?.get(key.id)
     }
@@ -104,7 +104,7 @@ class OtherSourceQuestController(
 
     fun hide(key: OtherSourceQuestKey) {
         val type = getQuestType(key) ?: return
-        val quest = get(key) ?: return
+        val quest = getVisible(key) ?: return
         hiddenCache.add(key)
         val timestamp = otherSourceDao.hide(key)
         if (timestamp > 0) {
@@ -119,7 +119,7 @@ class OtherSourceQuestController(
         val hiddenQuest = getHidden(key) ?: return false
         if (!otherSourceDao.unhide(key)) return false
         hideListeners.forEach { it.onUnhid(hiddenQuest) }
-        get(key)?.let { q -> questListeners.forEach { it.onUpdated(addedQuests = listOf(q)) } }
+        getVisible(key)?.let { q -> questListeners.forEach { it.onUpdated(addedQuests = listOf(q)) } }
         return true
     }
 
@@ -169,7 +169,7 @@ class OtherSourceQuestController(
             otherSourceDao.deleteElementEdit(edit.id)
             type.onDeletedEdit(edit, key?.id)
             if (key == null) null
-            else get(key)
+            else getVisible(key)
         }
         questListeners.forEach { it.onUpdated(addedQuests = restoredQuests) }
     }

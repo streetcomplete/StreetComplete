@@ -56,7 +56,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
             }
         }
         // set element if available
-        otherQuestController.get(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
+        otherQuestController.getVisible(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
             mapDataSource.get(key.type, key.id)?.let { element = it }
         }
     }
