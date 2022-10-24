@@ -316,6 +316,9 @@ class StreetParkingTest {
                 StringMapEntryAdd("parking:lane:left:diagonal", "on_street")
             )
         )
+    }
+
+    @Test fun `tagging on one side only does not touch tags only tagged for the other side`() {
         verifyAnswer(
             mapOf(
                 "parking:condition:right" to "unhandled_value"
@@ -327,6 +330,54 @@ class StreetParkingTest {
             arrayOf(
                 StringMapEntryAdd("parking:lane:left", "diagonal"),
                 StringMapEntryAdd("parking:lane:left:diagonal", "on_street")
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:condition:left" to "unhandled_value"
+            ),
+            LeftAndRightStreetParking(
+                null,
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:right", "diagonal"),
+                StringMapEntryAdd("parking:lane:right:diagonal", "on_street")
+            )
+        )
+    }
+
+    @Test fun `tagging on one side only removes tags tagged for both sides`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "diagonal",
+                "parking:condition:both" to "no_parking",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                null
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street"),
+                StringMapEntryDelete( "parking:condition:both", "no_parking"),
+                StringMapEntryDelete( "parking:lane:both", "diagonal"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "diagonal",
+                "parking:condition:both" to "no_parking",
+            ),
+            LeftAndRightStreetParking(
+                null,
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:right", "diagonal"),
+                StringMapEntryAdd("parking:lane:right:diagonal", "on_street"),
+                StringMapEntryDelete( "parking:condition:both", "no_parking"),
+                StringMapEntryDelete( "parking:lane:both", "diagonal"),
             )
         )
     }
