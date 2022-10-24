@@ -81,19 +81,32 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     val currentParking = createStreetParkingSides(tags)
 
-    // was set before and changed: may be incorrect now - remove subtags!
-    if (currentParking?.left != null && currentParking.left != left ||
-        currentParking?.right != null && currentParking.right != right) {
-        /* This includes removing any parking:condition:*, which is a bit peculiar because most
-         * values are not even set in this function. But on the other hand, when the physical layout
-         * of the parking changes (=redesign of the street layout and furniture), the condition may
-         * very well change too, so better delete it to be on the safe side. (It is better to have
-         * no data than to have wrong data.) */
-        val parkingLaneSubtagging = Regex("^parking:(lane|condition):.*")
-        for (key in tags.keys) {
-            if (key.matches(parkingLaneSubtagging)) {
-                tags.remove(key)
+    // parking:condition:<left/right/both>
+    val conditionRight = right?.toOsmConditionValue()
+    val conditionLeft = left?.toOsmConditionValue()
+
+    /* Clean up previous parking tags when the associated side is changed. This can include removing
+     * parking:condition:*, which is a bit peculiar because most values are not even set in this
+     * function. But on the other hand, when the physical layout of the parking changes (=redesign
+     * of the street layout and furniture), the condition may very well change too, so better delete
+     * it to be on the safe side. (It is better to have no data than to have wrong data.) */
+    val keysToRemove = buildList {
+        if (right == left) {
+            add(Regex("^parking:lane:.*"))
+            if (conditionLeft != null && conditionRight == conditionLeft) {
+                add(Regex("^parking:condition:.*"))
             }
+        } else if (currentParking?.right != right && currentParking?.left != left) {
+            add(Regex("^parking:(lane|condition):.*"))
+        } else if (currentParking?.right != right) {
+            add(Regex("^parking:(lane|condition):(both|right).*"))
+        } else if (currentParking?.left != left) {
+            add(Regex("^parking:(lane|condition):(both|left).*"))
+        }
+    }
+    if (keysToRemove.isNotEmpty()) {
+        for (key in tags.keys) {
+            if (keysToRemove.any { it.matches(key) }) tags.remove(key)
         }
     }
 
@@ -115,10 +128,6 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
         if (laneLeft != null) tags["parking:lane:left"] = laneLeft
         if (laneRight != null) tags["parking:lane:right"] = laneRight
     }
-
-    // parking:condition:<left/right/both>
-    val conditionRight = right?.toOsmConditionValue()
-    val conditionLeft = left?.toOsmConditionValue()
 
     if (conditionLeft == conditionRight) {
         if (conditionLeft != null) tags["parking:condition:both"] = conditionLeft

@@ -160,6 +160,139 @@ class StreetParkingTest {
         )
     }
 
+    @Test fun `add side not specified before while keeping non-both tags of already specified side`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "parallel",
+                "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:right" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street"),
+                StringMapEntryModify("parking:lane:right", "parallel", "parallel"),
+                StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "parallel",
+                "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingProhibited,
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "no"),
+                StringMapEntryAdd("parking:condition:left", "no_parking"),
+                StringMapEntryModify("parking:lane:right", "parallel", "parallel"),
+                StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
+                StringMapEntryDelete("parking:condition:both", "customers"),
+            )
+        )
+    }
+
+    @Test fun `add same tags to side not specified before as already specified side`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "parallel",
+                "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:right" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:both", "parallel"),
+                StringMapEntryAdd("parking:lane:both:parallel", "on_kerb"),
+                StringMapEntryDelete("parking:lane:right", "parallel"),
+                StringMapEntryDelete("parking:lane:right:parallel", "on_kerb"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "no",
+                "parking:condition:right" to "no_stopping",
+            ),
+            LeftAndRightStreetParking(
+                StreetStoppingProhibited,
+                StreetStoppingProhibited
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:both", "no"),
+                StringMapEntryAdd("parking:condition:both", "no_stopping"),
+                StringMapEntryDelete("parking:lane:right", "no"),
+                StringMapEntryDelete("parking:condition:right", "no_stopping"),
+            )
+        )
+    }
+
+    @Test fun `change one side while only keeping non-both tags of other side`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "parallel",
+                "parking:lane:both:parallel" to "on_street",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
+                StringMapEntryAdd("parking:lane:right:parallel", "on_kerb"),
+                StringMapEntryDelete("parking:lane:both:parallel", "on_street"),
+                StringMapEntryDelete("parking:condition:both", "customers"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "parallel",
+                "parking:lane:left:parallel" to "on_kerb",
+                "parking:lane:right:parallel" to "on_street",
+                "parking:condition:right" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:right", "parallel"),
+                StringMapEntryDelete("parking:lane:both", "parallel"),
+                StringMapEntryDelete("parking:lane:left:parallel", "on_kerb"),
+                StringMapEntryModify("parking:lane:right:parallel", "on_street", "on_street"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "parallel",
+                "parking:lane:left:parallel" to "on_street",
+                "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:right" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET)
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:both:parallel", "on_street"),
+                StringMapEntryDelete("parking:lane:left:parallel", "on_street"),
+                StringMapEntryDelete("parking:lane:right:parallel", "on_kerb"),
+            )
+        )
+    }
+
     @Test fun `tag only on one side`() {
         verifyAnswer(
             mapOf(),
@@ -174,6 +307,19 @@ class StreetParkingTest {
         )
         verifyAnswer(
             mapOf(),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
+                null
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "diagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_street")
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:condition:right" to "unhandled_value"
+            ),
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, ParkingPosition.ON_STREET),
                 null
