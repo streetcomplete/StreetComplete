@@ -37,10 +37,12 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddPathPartSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        if (tags["footway:surface"] == tags["cycleway:surface"] {
-            tags["surface"] = tags["cycleway:surface"]
-        } else {
-            tags.remove("surface")
+        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
+            if (tags["footway:surface"] == tags["cycleway:surface"]) {
+                tags["surface"] = tags["cycleway:surface"]
+            } else {
+                tags.remove("surface")
+            }
         }
         answer.applyTo(tags, "cycleway:surface")
     }
