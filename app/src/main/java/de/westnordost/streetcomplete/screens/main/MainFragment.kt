@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -77,11 +78,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.quests.AbstractOtherQuestForm
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -101,6 +99,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
+import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
@@ -192,8 +191,6 @@ class MainFragment :
     EditHistoryFragment.Listener,
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
-    CreatePoiFragment.Listener,
-    AbstractOtherQuestForm.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -337,14 +334,27 @@ class MainFragment :
             return true
         }
 
-        val f = bottomSheetFragment
+        if (childFragmentManager.fragments.isEmpty()) return false
+        val f = childFragmentManager.fragments.last()
         if (f is IsCloseableBottomSheet) {
-            f.onClickClose { closeBottomSheet() }
+            val action = getFragmentCloseAction(f)
+            f.onClickClose { action() }
             return true
         }
 
         return false
     }
+
+    private fun getFragmentCloseAction(f: Fragment) =
+        when {
+            f != bottomSheetFragment && f is AbstractOsmQuestForm<*> -> fun() { TagEditor.changes = StringMapChanges(emptySet()) }
+            f == bottomSheetFragment -> ::closeBottomSheet // quest, overlay, create poi fragment
+            f is TagEditor -> fun() {
+                binding.otherQuestsScrollView.visibility = View.VISIBLE
+                childFragmentManager.popBackStack()
+            }
+            else -> fun() { } // this should never occur, but no need to crash or anything
+        }
 
     override fun onStop() {
         super.onStop()
@@ -442,11 +452,13 @@ class MainFragment :
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
-        val f = bottomSheetFragment
+        // close only one fragment! may not be convenient, but simpler to implement
+        if (childFragmentManager.fragments.isEmpty()) return
+        val f = childFragmentManager.fragments.last()
         if (f is IsCloseableBottomSheet) {
-            if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
-                f.onClickClose { closeBottomSheet() }
-            }
+            val action = getFragmentCloseAction(f)
+            if (!f.onClickMapAt(position, clickAreaSizeInMeters))
+                f.onClickClose { action() }
         } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
@@ -535,12 +547,20 @@ class MainFragment :
         mapFragment.hideOverlay()
     }
 
-    override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
-            closeBottomSheet()
-        }
-
-    override fun onQuestHidden(questKey: OtherSourceQuestKey) {
+    override fun onQuestHidden(questKey: QuestKey) {
         closeBottomSheet()
+    }
+
+    override fun onEditTags(element: Element, geometry: ElementGeometry) {
+        val f = TagEditor()
+        if (f.arguments == null) f.arguments = bundleOf()
+        val args = TagEditor.createArguments(element, geometry, mapFragment?.cameraPosition?.rotation, mapFragment?.cameraPosition?.tilt)
+        f.requireArguments().putAll(args)
+        binding.otherQuestsScrollView.visibility = View.GONE
+        childFragmentManager.commit(true) {
+            replace(R.id.map_bottom_sheet_container, f, null) // null because we don't want to replace the quest in back stack
+            addToBackStack(null)
+        }
     }
 
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
@@ -944,8 +964,10 @@ class MainFragment :
 
     private fun addPoi(pos: LatLon, feature: Feature) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(CreatePoiFragment.createFromFeature(feature))
+        showInBottomSheet(CreatePoiFragment.createFromFeature(feature, pos))
+        mapFragment.hideNonHighlightedPins()
 
+        // actually this could run again if tags are changed
         viewLifecycleScope.launch {
             val bbox = pos.enclosingBoundingBox(50.0)
             val data = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
@@ -1111,15 +1133,16 @@ class MainFragment :
     private fun showOverlayFormForNewElement() {
         val overlay = selectedOverlaySource.selectedOverlay ?: return
         val mapFragment = mapFragment ?: return
+        val camera = mapFragment.cameraPosition
         if (overlay is CustomOverlay) {
-            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with ")))
+            val pos = camera?.position ?: return
+            showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")!!.substringAfter("with "), pos))
             mapFragment.show3DBuildings = false
             return
         }
 
         val f = overlay.createForm(null) ?: return
         if (f.arguments == null) f.arguments = bundleOf()
-        val camera = mapFragment.cameraPosition
         val rotation = camera?.rotation ?: 0f
         val tilt = camera?.tilt ?: 0f
         val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation, tilt)

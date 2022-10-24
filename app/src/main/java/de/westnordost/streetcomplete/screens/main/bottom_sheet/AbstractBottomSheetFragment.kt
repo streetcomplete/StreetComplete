@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPS
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.updateMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -164,7 +165,8 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
      * requires user confirmation if any changes have been made  */
     @UiThread
     override fun onClickClose(onConfirmed: () -> Unit) {
-        if (!isRejectingClose()) {
+        // changes != null means we just answered a quest inside tag editor
+        if (TagEditor.changes != null || !isRejectingClose()) {
             onDiscard()
             onConfirmed()
         } else {

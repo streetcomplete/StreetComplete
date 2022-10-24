@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-import android.location.Location
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -11,11 +10,10 @@ import androidx.core.view.children
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -42,20 +40,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
     protected var element: Element? = null
     private val dummyElement by lazy { Node(0, LatLon(0.0, 0.0)) }
 
-    interface Listener {
-        /** The GPS position at which the user is displayed at */
-        val displayedMapLocation: Location?
-
-        /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, element: Element, geometry: ElementGeometry)
-
-        /** Called when the user chose to leave a note instead */
-        fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
-
-        /** Called when the user chose to hide the quest instead */
-        fun onQuestHidden(questKey: OtherSourceQuestKey)
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+    private val listener: AbstractOsmQuestForm.Listener? get() = parentFragment as? AbstractOsmQuestForm.Listener ?: activity as? AbstractOsmQuestForm.Listener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -155,18 +140,21 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
     protected fun tempHideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { otherQuestController.tempHide(questKey as OtherSourceQuestKey) }
-            listener?.onQuestHidden(questKey as OtherSourceQuestKey)
+            listener?.onQuestHidden(questKey)
         }
     }
 
     protected fun hideQuest() {
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) { otherQuestController.hide(questKey as OtherSourceQuestKey) }
-            listener?.onQuestHidden(questKey as OtherSourceQuestKey)
+            listener?.onQuestHidden(questKey)
         }
     }
 
-    protected fun editTags(e: Element) = onClickEditTags(e, context) { viewLifecycleScope.launch { editElement(e, it) } }
+    protected fun editTags(e: Element) {
+        val geo = if (e is Node) ElementPointGeometry(e.position) else mapDataSource.getGeometry(e.type, e.id) ?: return
+        listener?.onEditTags(e, geo)
+    }
 
     protected suspend fun editElement(element: Element, action: ElementEditAction) {
         setLocked(true)

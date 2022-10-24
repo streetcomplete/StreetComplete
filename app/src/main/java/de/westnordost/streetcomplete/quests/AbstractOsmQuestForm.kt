@@ -1,22 +1,16 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.icu.text.DateFormat.getDateTimeInstance
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
-import android.text.InputType
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.children
-import androidx.core.widget.addTextChangedListener
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -40,6 +34,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
@@ -57,7 +52,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.Date
 import java.util.Locale
 import java.util.concurrent.FutureTask
 
@@ -92,7 +86,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     open val otherAnswers = listOf<AnswerItem>()
     open val buttonPanelAnswers = listOf<AnswerItem>()
 
-    interface Listener {
+    interface Listener { // this is also used in AbstractOtherQuestForm for convenience
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
 
@@ -106,7 +100,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
 
         /** Called when the user chose to hide the quest instead */
-        fun onQuestHidden(osmQuestKey: OsmQuestKey)
+        fun onQuestHidden(questKey: QuestKey)
+
+        /** Called when the user chose to edit tags */
+        fun onEditTags(element: Element, geometry: ElementGeometry) // better than the static thing i guess
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -123,7 +120,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
         setTitleHintLabel(getNameAndLocationLabel(element.tags, resources, featureDictionary))
 
-        if (prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
+        if (!TagEditor.showingTagEditor && prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
             floatingBottomView2.popIn()
             floatingBottomView2.setOnClickListener {
                 tempHideQuest()
@@ -142,6 +139,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun updateButtonPanel() {
         val answers = assembleOtherAnswers()
+        if (answers.isEmpty()) {
+            setButtonPanelAnswers(buttonPanelAnswers)
+            return
+        }
         val otherAnswersItem = if (answers.size == 1) {
             answers.single()
         } else {
@@ -153,9 +154,15 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
+        if (TagEditor.showingTagEditor) {
+            // only allow few of the quest specific other answers in tag edit mode
+            createItsPrivateAnswer()?.let { answers.add(it) }
+            answers.addAll(otherAnswers)
+            return answers
+        }
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
-        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags(element, context) { viewLifecycleScope.launch { solve(it) } } })
+        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
 
         if (element.isSplittable()) {
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
@@ -218,7 +225,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun applyAnswer(answer: T) {
         viewLifecycleScope.launch {
-            solve(UpdateElementTagsAction(createQuestChanges(answer)))
+            if (TagEditor.showingTagEditor) {
+                val changesBuilder = StringMapChangesBuilder(element.tags)
+                osmElementQuestType.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
+                TagEditor.changes = changesBuilder.create()
+            } else
+                solve(UpdateElementTagsAction(createQuestChanges(answer)))
         }
     }
 
@@ -319,6 +331,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     """.toElementFilterExpression() }
 
     private suspend fun solve(action: ElementEditAction) {
+        if (TagEditor.showingTagEditor) return
         setLocked(true)
         if (!checkIsSurvey(requireContext(), geometry, listOfNotNull(listener?.displayedMapLocation))) {
             setLocked(false)
@@ -356,7 +369,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         )
     }
 }
-
+/*
 fun onClickEditTags(element: Element, context: Context?, onSolved: (ElementEditAction) -> Unit) {
     val tags = element.tags
     context?.let { c ->
@@ -424,12 +437,13 @@ fun tagsOk(text: String): Boolean {
     }
     return true
 }
-
+*/
 fun String.toTags(): Map<String, String> {
     val tags = mutableMapOf<String, String>()
     split("\n").forEach {
         if (it.isBlank()) return@forEach // allow empty lines
-        tags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
+        if (it.count { it == '=' } == 1)
+            tags[it.substringBefore("=").trim()] = it.substringAfter("=").trim()
     }
     return tags
 }

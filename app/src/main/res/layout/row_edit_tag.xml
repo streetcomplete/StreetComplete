@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    tools:ignore="RtlSymmetry">
+
+    <EditText
+        android:id="@+id/keyText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:textSize="18sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <EditText
+        android:id="@+id/valueText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:textSize="18sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <ImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="6dp"
+        android:focusable="true" />
+
+</LinearLayout>

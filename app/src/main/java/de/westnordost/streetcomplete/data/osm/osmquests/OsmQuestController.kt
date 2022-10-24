@@ -236,6 +236,10 @@ class OsmQuestController internal constructor(
         }
     }
 
+    suspend fun createNonPoiQuestsForElement(element: Element, geometry: ElementGeometry): List<OsmQuest> {
+        return createQuestsForElementDeferred(element, geometry, allQuestTypes.filter { it.dotColor == "no" }).awaitAll().filterNotNull()
+    }
+
     private fun getObsoleteQuestKeys(
         questsNow: Collection<OsmQuest>,
         questsPreviously: Collection<OsmQuestDaoEntry>,

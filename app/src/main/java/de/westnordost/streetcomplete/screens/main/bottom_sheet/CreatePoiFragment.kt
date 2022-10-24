@@ -1,76 +1,46 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.graphics.Point
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.core.os.bundleOf
-import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
-import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
-import de.westnordost.streetcomplete.quests.tagsOk
+import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.popIn
-import de.westnordost.streetcomplete.util.ktx.popOut
-import de.westnordost.streetcomplete.util.viewBinding
-import org.koin.android.ext.android.inject
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import kotlinx.coroutines.launch
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
-class CreatePoiFragment : AbstractBottomSheetFragment() {
+class CreatePoiFragment : TagEditor() {
 
-    private val elementEditsController: ElementEditsController by inject()
+    // keep the listener from note fragment, there is nothing note-specific happening anyway
+    private val listener: CreateNoteFragment.Listener? get() = parentFragment as? CreateNoteFragment.Listener ?: activity as? CreateNoteFragment.Listener
 
-    private val okButtonContainer: View get() = bottomSheetBinding.okButtonContainer
-    private val okButton: View get() = bottomSheetBinding.okButton
-
-    private var _binding: FragmentCreateNoteBinding? = null
-    private val binding: FragmentCreateNoteBinding get() = _binding!!
-
-    private val bottomSheetBinding get() = binding.questAnswerLayout
-
-    override val bottomSheetContainer get() = bottomSheetBinding.bottomSheetContainer
-    override val bottomSheet get() = bottomSheetBinding.bottomSheet
-    override val scrollViewChild get() = bottomSheetBinding.scrollViewChild
-    override val bottomSheetTitle get() = bottomSheetBinding.speechBubbleTitleContainer
-    override val bottomSheetContent get() = bottomSheetBinding.speechbubbleContentContainer
-    override val floatingBottomView get() = bottomSheetBinding.okButton
-    override val floatingBottomView2 get() = bottomSheetBinding.hideButton
-    override val backButton get() = bottomSheetBinding.closeButton
-
-    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
-    private val tagsInput get() = contentBinding.noteInput
-    private val tagsText get() = tagsInput.nonBlankTextOrNull
-
-    // keep the names from note, there is nothing note-specific happening anyway
-    interface Listener {
-        fun getMapPositionAt(screenPos: Point): LatLon?
-
-        fun onCreatedNote(position: LatLon)
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentCreateNoteBinding.inflate(inflater, container, false)
-        inflater.inflate(R.layout.form_leave_note, bottomSheetBinding.content)
-        return binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tagsText = arguments?.getString(ARG_PREFILLED_TAGS) ?: ""
+        newTags.putAll(tagsText.toTags())
+        tagList.clear()
+        tagList.addAll(newTags.toList())
+        tagList.sortBy { it.first }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetBinding.titleLabel.text = arguments?.getString(ARG_NAME) ?: ""
+        binding.lastEditDate.text = arguments?.getString(ARG_NAME) ?: ""
+        // set editorContainer top margin so the marker is always visible
+        val p = binding.editorContainer.layoutParams as RelativeLayout.LayoutParams
+        p.topMargin = (resources.displayMetrics.heightPixels - resources.getDimensionPixelOffset(R.dimen.quest_form_bottomOffset)) * 2 / 3
+
         arguments?.getString(ARG_ID)?.let {
             val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
             if (recentFeatureIds.lastOrNull() == it) return@let
@@ -79,41 +49,23 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
             prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(10).joinToString("§")).apply()
         }
 
-        contentBinding.hintLabel.setText(R.string.create_poi_enter_tags)
-        tagsInput.setText(arguments?.getString(ARG_PREFILLED_TAGS) ?: "")
-        tagsInput.doAfterTextChanged { updateOkButtonEnablement() }
-        okButton.setOnClickListener { onClickOk() }
+        binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_custom_overlay_poi)
+        binding.markerCreateLayout.root.visibility = View.VISIBLE
 
-        updateOkButtonEnablement()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private fun onClickOk() {
-        if (tagsText?.let { tagsOk(it) } != true) return
-        val tags = tagsText!!.toTags()
-
+    override fun applyEdit() {
         val createNoteMarker = binding.markerCreateLayout.createNoteMarker
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos) ?: return
 
-        // need some editType
-        elementEditsController.add(CreatePoiEditType(), Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, tags))
-        listener?.onCreatedNote(position)
-    }
-
-    override fun isRejectingClose() =
-        tagsText != null
-
-    private fun updateOkButtonEnablement() {
-        if (tagsText != null && tagsOk(tagsText!!)) {
-            okButtonContainer.popIn()
+        if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
+            listener?.onCreatedNote(position)
+            viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags)) }
         } else {
-            okButtonContainer.popOut()
+            elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags))
+            listener?.onCreatedNote(position)
         }
     }
 
@@ -122,19 +74,25 @@ class CreatePoiFragment : AbstractBottomSheetFragment() {
         private const val ARG_NAME = "feature_name"
         private const val ARG_ID = "feature_id"
 
-        fun createFromFeature(feature: Feature?) = CreatePoiFragment().also {
+        fun createFromFeature(feature: Feature?, pos: LatLon) = CreatePoiFragment().also {
             val tagText = feature?.addTags?.map { it.key + "=" + it.value }?.joinToString("\n")
             it.arguments = bundleOf(ARG_PREFILLED_TAGS to tagText, ARG_NAME to feature?.name, ARG_ID to feature?.id)
+            // tag editor arguments are actually unnecessary here, but we still need an original element
+            it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
         }
-        fun createWithPrefill(prefill: String) = CreatePoiFragment().also {
+        fun createWithPrefill(prefill: String, pos: LatLon) = CreatePoiFragment().also {
+            // this will only prefill now if there is one equals sign in the line
+            // todo: maybe this could be improved
             it.arguments = bundleOf(ARG_PREFILLED_TAGS to prefill)
+            it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
         }
     }
 }
 
-class CreatePoiEditType: ElementEditType {
-    override val icon: Int = R.drawable.ic_quest_create_note
+val createPoiEdit = object : ElementEditType {
+    override val icon: Int = R.drawable.ic_custom_overlay_poi
     override val title: Int = R.string.create_poi
     override val wikiLink: String? = null
     override val changesetComment: String = "Add node"
+    override val name: String = "CreatePoiEditType" // keep old class name to avoid crash on startup if edit is in database
 }

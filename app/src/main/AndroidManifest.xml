@@ -32,9 +32,17 @@
         </intent>
     </queries>
 
+    <!-- why was the appComponentFactory thing necessary? there was some crash...
+    test again without this, and write down what is going on
+        tools:remove="android:appComponentFactory"
+        tools:targetApi="p"
+        problem: java.lang.ClassNotFoundException: Didn't find class "androidx.core.app.CoreComponentFactory" on path: DexPathList[[],
+     -->
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         tools:replace="android:allowBackup"
+        tools:remove="android:appComponentFactory"
+        tools:targetApi="p"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

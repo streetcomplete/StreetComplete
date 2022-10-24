@@ -303,8 +303,9 @@
 
     <!-- other -->
     <string name="hide_button">Hide</string>
-    <string name="quest_edit_tags_title">Edit tags (%s)</string>
-    <string name="quest_edit_tags_save">Save</string>
+    <string name="tag_editor_last_edited">Last edited: %s</string>
+<!--    <string name="quest_edit_tags_title">Edit tags (%s)</string>
+    <string name="quest_edit_tags_save">Save</string> -->
     <string name="tutorial_info_fork_title">Warning</string>
     <string name="tutorial_info_fork_message">This modified version of StreetComplete gives you more control, but also more responsibility.\n
 This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.

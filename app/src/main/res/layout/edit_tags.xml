@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <!-- put the marker in here for creating POI and maybe move node (later) -->
+    <include android:id="@+id/markerCreateLayout"
+        layout="@layout/marker_create_note"
+        android:visibility="gone" />
+
+    <RelativeLayout
+    android:id="@+id/editorContainer"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="60dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <GridLayout
+            android:id="@+id/questsGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/background"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal" />
+
+        <!-- need to set height 0 and then to wrap_content later
+         otherwise it will be shown once at bottom and once where it should be -->
+        <TextView
+            android:id="@+id/lastEditDate"
+            android:textAppearance="@style/TextAppearance.Title.Hint"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/questsGrid"
+            android:background="@color/background"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/editTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/lastEditDate"
+            android:paddingBottom="2dp"
+            android:background="@color/background"
+            tools:listitem="@layout/row_edit_tag" />
+
+        <ImageView
+            android:id="@+id/okButton"
+            android:src="@drawable/ic_check_48dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:alpha="0"
+            tools:alpha="1"
+            tools:visibility="visible"
+            tools:scaleX="1"
+            tools:scaleY="1"
+            android:padding="20dp"
+            tools:ignore="RtlSymmetry"
+            android:scaleType="centerInside"
+            style="@style/RoundAccentButton" />
+
+    </RelativeLayout>
+</RelativeLayout>
