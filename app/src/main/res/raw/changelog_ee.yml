@@ -13,6 +13,7 @@ v48.0_ee: |
   <li>Re-arrange settings</li>
   <li>Highlight nearby cycleways and sidewalks for the respective quests</li>
   <li>Allow displaying track from GPX file</li>
+  <li>Replace simple text tag editing with tag editor</li>
   </ul>
 
 v47.0_ee: |

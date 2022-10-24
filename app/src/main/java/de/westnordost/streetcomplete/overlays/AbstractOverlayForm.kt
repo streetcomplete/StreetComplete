@@ -41,7 +41,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.onClickEditTags
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
@@ -146,6 +145,9 @@ abstract class AbstractOverlayForm :
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
 
         fun getMapPositionAt(screenPos: Point): LatLon?
+
+        /** Called when the user chose to edit tags */
+        fun onEditTags(element: Element, geometry: ElementGeometry) // better than the static thing i guess
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -351,7 +353,7 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
-            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { onClickEditTags(element, context) { viewLifecycleScope.launch { solve(it) } } })
+            answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
         }
 
         answers.addAll(otherAnswers)
