@@ -58,7 +58,6 @@ class StyleableOverlayManager(
         }
     }
 
-    private var mapDataListenerActive = false
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
             val oldUpdateJob = updateJob
@@ -82,44 +81,28 @@ class StyleableOverlayManager(
         super.onStart(owner)
         overlay = selectedOverlaySource.selectedOverlay
         selectedOverlaySource.addListener(overlayListener)
-        startListeningToMapData()
     }
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
+        overlay = null
         selectedOverlaySource.removeListener(overlayListener)
-        stopListeningToMapData()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        hide()
         viewLifecycleScope.cancel()
     }
 
     private fun show() {
         clear()
         onNewScreenPosition()
-        startListeningToMapData()
+        mapDataSource.addListener(mapDataListener)
     }
 
     private fun hide() {
         viewLifecycleScope.coroutineContext.cancelChildren()
         clear()
-        stopListeningToMapData()
-    }
-
-    private fun startListeningToMapData() {
-        if (!mapDataListenerActive && overlay != null) {
-            mapDataSource.addListener(mapDataListener)
-            mapDataListenerActive = true
-        }
-    }
-
-    private fun stopListeningToMapData() {
-        if (mapDataListenerActive) {
-            mapDataSource.removeListener(mapDataListener)
-            mapDataListenerActive = false
-        }
+        mapDataSource.removeListener(mapDataListener)
     }
 
     fun onNewScreenPosition() {
