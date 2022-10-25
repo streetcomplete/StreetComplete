@@ -123,160 +123,36 @@ class StreetParkingParserKtTest {
     }
 
     @Test fun `no parking`() {
+        // old style tagging
 
-        val conditions = listOf(
-            "no" to NoStreetParking,
-            "no_stopping" to StreetStoppingProhibited,
-            "no_standing" to StreetStandingProhibited,
-            "no_parking" to StreetParkingProhibited
-        )
-
-        for ((conditionStr, conditionValue) in conditions) {
-
-            // old style tagging
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, null),
-                createStreetParkingSides(mapOf("parking:lane:left" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(null, conditionValue),
-                createStreetParkingSides(mapOf("parking:lane:right" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf("parking:lane:both" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:left" to conditionStr,
-                    "parking:lane:right" to conditionStr,
-                ))
-            )
-
-            // old style tagging without explicit sides
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf("parking:lane" to conditionStr))
-            )
-
-            // new style tagging (condition only)
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, null),
-                createStreetParkingSides(mapOf("parking:condition:left" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(null, conditionValue),
-                createStreetParkingSides(mapOf("parking:condition:right" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf("parking:condition:both" to conditionStr))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:condition:left" to conditionStr,
-                    "parking:condition:right" to conditionStr,
-                ))
-            )
-
-            // new style tagging (condition only) without explicit sides
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf("parking:condition" to conditionStr))
-            )
-
-            // new style tagging (full)
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, null),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:left" to "no",
-                    "parking:condition:left" to conditionStr
-                ))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(null, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:right" to "no",
-                    "parking:condition:right" to conditionStr
-                ))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:both" to "no",
-                    "parking:condition:both" to conditionStr
-                ))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:both" to "no",
-                    "parking:condition:left" to conditionStr,
-                    "parking:condition:right" to conditionStr,
-                ))
-            )
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane:left" to "no",
-                    "parking:lane:right" to "no",
-                    "parking:condition:both" to conditionStr,
-                ))
-            )
-
-            // new style tagging (full) without explicit sides
-
-            assertEquals(
-                LeftAndRightStreetParking(conditionValue, conditionValue),
-                createStreetParkingSides(mapOf(
-                    "parking:lane" to "no",
-                    "parking:condition" to conditionStr
-                ))
-            )
-        }
-    }
-
-    @Test fun `no parking where condition differs per side`() {
         assertEquals(
-            LeftAndRightStreetParking(StreetStandingProhibited, StreetParkingProhibited),
-            createStreetParkingSides(mapOf(
-                "parking:lane:left" to "no_standing",
-                "parking:lane:right" to "no_parking",
-            ))
+            LeftAndRightStreetParking(NoStreetParking, null),
+            createStreetParkingSides(mapOf("parking:lane:left" to "no"))
         )
 
         assertEquals(
-            LeftAndRightStreetParking(StreetStandingProhibited, StreetParkingProhibited),
-            createStreetParkingSides(mapOf(
-                "parking:lane:both" to "no",
-                "parking:condition:left" to "no_standing",
-                "parking:condition:right" to "no_parking",
-            ))
+            LeftAndRightStreetParking(null, NoStreetParking),
+            createStreetParkingSides(mapOf("parking:lane:right" to "no"))
         )
 
         assertEquals(
-            LeftAndRightStreetParking(NoStreetParking, StreetParkingProhibited),
+            LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
+            createStreetParkingSides(mapOf("parking:lane:both" to "no"))
+        )
+
+        assertEquals(
+            LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
             createStreetParkingSides(mapOf(
-                "parking:lane:both" to "no",
-                "parking:condition:right" to "no_parking",
+                "parking:lane:left" to "no",
+                "parking:lane:right" to "no",
             ))
+        )
+
+        // old style tagging without explicit sides
+
+        assertEquals(
+            LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
+            createStreetParkingSides(mapOf("parking:lane" to "no"))
         )
     }
 

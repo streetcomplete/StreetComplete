@@ -17,9 +17,6 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 
 @Serializable sealed class StreetParking
 
-@Serializable object StreetParkingProhibited : StreetParking()
-@Serializable object StreetStandingProhibited : StreetParking()
-@Serializable object StreetStoppingProhibited : StreetParking()
 @Serializable object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
 @Serializable object UnknownStreetParking : StreetParking()
@@ -116,17 +113,6 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
         if (laneRight != null) tags["parking:lane:right"] = laneRight
     }
 
-    // parking:condition:<left/right/both>
-    val conditionRight = right?.toOsmConditionValue()
-    val conditionLeft = left?.toOsmConditionValue()
-
-    if (conditionLeft == conditionRight) {
-        if (conditionLeft != null) tags["parking:condition:both"] = conditionLeft
-    } else {
-        if (conditionLeft != null) tags["parking:condition:left"] = conditionLeft
-        if (conditionRight != null) tags["parking:condition:right"] = conditionRight
-    }
-
     // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular>
     val positionRight = (right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
     val positionLeft = (left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
@@ -146,16 +132,9 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
 /** get the OSM value for the parking:lane key */
 private fun StreetParking.toOsmLaneValue(): String? = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
-    NoStreetParking, StreetParkingProhibited, StreetStandingProhibited, StreetStoppingProhibited -> "no"
+    NoStreetParking -> "no"
     StreetParkingSeparate -> "separate"
     UnknownStreetParking, IncompleteStreetParking -> null
-}
-
-private fun StreetParking.toOsmConditionValue(): String? = when (this) {
-    StreetParkingProhibited -> "no_parking"
-    StreetStandingProhibited -> "no_standing"
-    StreetStoppingProhibited -> "no_stopping"
-    else -> null
 }
 
 private fun ParkingPosition.toOsmValue() = when (this) {

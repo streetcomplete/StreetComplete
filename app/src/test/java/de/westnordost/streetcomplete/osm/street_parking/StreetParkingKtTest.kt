@@ -22,18 +22,6 @@ class StreetParkingTest {
         )
     }
 
-    @Test fun `apply different no parking on different sides`() {
-        verifyAnswer(
-            mapOf(),
-            LeftAndRightStreetParking(StreetStoppingProhibited, StreetStandingProhibited),
-            arrayOf(
-                StringMapEntryAdd("parking:lane:both", "no"),
-                StringMapEntryAdd("parking:condition:left", "no_stopping"),
-                StringMapEntryAdd("parking:condition:right", "no_standing"),
-            )
-        )
-    }
-
     @Test fun `apply separate parking answer`() {
         verifyAnswer(
             mapOf(),
@@ -212,12 +200,12 @@ class StreetParkingTest {
                 LeftAndRightStreetParking(invalidParking, invalidParking).validOrNullValues()
             )
             assertEquals(
-                LeftAndRightStreetParking(StreetParkingProhibited, null),
-                LeftAndRightStreetParking(StreetParkingProhibited, invalidParking).validOrNullValues()
+                LeftAndRightStreetParking(NoStreetParking, null),
+                LeftAndRightStreetParking(NoStreetParking, invalidParking).validOrNullValues()
             )
             assertEquals(
-                LeftAndRightStreetParking(null, StreetParkingProhibited),
-                LeftAndRightStreetParking(invalidParking, StreetParkingProhibited).validOrNullValues()
+                LeftAndRightStreetParking(null, NoStreetParking),
+                LeftAndRightStreetParking(invalidParking, NoStreetParking).validOrNullValues()
             )
         }
     }
