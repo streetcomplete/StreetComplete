@@ -24,8 +24,31 @@ class AddCyclewayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "no")
     }
 
-    @Test fun `not applicable to cycleway with specific surface`() {
-        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "asphalt")
+    @Test fun `not applicable to cycleway with surface`() {
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "asphalt")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
+    }
+
+    @Test fun `applicable to cycleway with unspecific surface and note`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
+    }
+
+    @Test fun `not applicable to access-restricted cycleways`() {
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "no")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private")
+    }
+
+    @Test fun `applicable to old enough cycleway with surface`() {
+        val way = way(1L, listOf(1, 2, 3), mapOf(
+            "highway" to "cycleway",
+            "segregated" to "yes",
+            "cycleway:surface" to "asphalt",
+            "check_date:cycleway:surface" to "2001-01-01"
+        ), timestamp = Instant.now().toEpochMilli())
+        val mapData = TestMapDataWithGeometry(listOf(way))
+
+        assertEquals(1, questType.getApplicableElements(mapData).toList().size)
+        assertTrue(questType.isApplicableTo(way)!!)
     }
 
 
