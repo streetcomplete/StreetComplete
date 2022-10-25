@@ -105,6 +105,25 @@ class StreetParkingTest {
         )
     }
 
+    @Test fun `apply same tags to side not specified before as already specified side`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "no",
+                "parking:condition:right" to "no_stopping",
+            ),
+            LeftAndRightStreetParking(
+                StreetStoppingProhibited,
+                StreetStoppingProhibited
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:both", "no"),
+                StringMapEntryAdd("parking:condition:both", "no_stopping"),
+                StringMapEntryDelete("parking:lane:right", "no"),
+                StringMapEntryDelete("parking:condition:right", "no_stopping"),
+            )
+        )
+    }
+
     @Test fun `updates check date`() {
         verifyAnswer(
             mapOf("parking:lane:both" to "no"),
@@ -160,7 +179,7 @@ class StreetParkingTest {
         )
     }
 
-    @Test fun `add side not specified before while keeping non-both tags of already specified side`() {
+    @Test fun `applying does not remove properties of the side that did not change`() {
         verifyAnswer(
             mapOf(
                 "parking:lane:right" to "parallel",
@@ -182,27 +201,6 @@ class StreetParkingTest {
             mapOf(
                 "parking:lane:right" to "parallel",
                 "parking:lane:right:parallel" to "on_kerb",
-                "parking:condition:both" to "customers",
-            ),
-            LeftAndRightStreetParking(
-                StreetParkingProhibited,
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
-            ),
-            arrayOf(
-                StringMapEntryAdd("parking:lane:left", "no"),
-                StringMapEntryAdd("parking:condition:left", "no_parking"),
-                StringMapEntryModify("parking:lane:right", "parallel", "parallel"),
-                StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
-                StringMapEntryDelete("parking:condition:both", "customers"),
-            )
-        )
-    }
-
-    @Test fun `add same tags to side not specified before as already specified side`() {
-        verifyAnswer(
-            mapOf(
-                "parking:lane:right" to "parallel",
-                "parking:lane:right:parallel" to "on_kerb",
                 "parking:condition:right" to "customers",
             ),
             LeftAndRightStreetParking(
@@ -214,43 +212,6 @@ class StreetParkingTest {
                 StringMapEntryAdd("parking:lane:both:parallel", "on_kerb"),
                 StringMapEntryDelete("parking:lane:right", "parallel"),
                 StringMapEntryDelete("parking:lane:right:parallel", "on_kerb"),
-            )
-        )
-        verifyAnswer(
-            mapOf(
-                "parking:lane:right" to "no",
-                "parking:condition:right" to "no_stopping",
-            ),
-            LeftAndRightStreetParking(
-                StreetStoppingProhibited,
-                StreetStoppingProhibited
-            ),
-            arrayOf(
-                StringMapEntryAdd("parking:lane:both", "no"),
-                StringMapEntryAdd("parking:condition:both", "no_stopping"),
-                StringMapEntryDelete("parking:lane:right", "no"),
-                StringMapEntryDelete("parking:condition:right", "no_stopping"),
-            )
-        )
-    }
-
-    @Test fun `change one side while only keeping non-both tags of other side`() {
-        verifyAnswer(
-            mapOf(
-                "parking:lane:both" to "parallel",
-                "parking:lane:both:parallel" to "on_street",
-                "parking:condition:both" to "customers",
-            ),
-            LeftAndRightStreetParking(
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
-                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
-            ),
-            arrayOf(
-                StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
-                StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
-                StringMapEntryAdd("parking:lane:right:parallel", "on_kerb"),
-                StringMapEntryDelete("parking:lane:both:parallel", "on_street"),
-                StringMapEntryDelete("parking:condition:both", "customers"),
             )
         )
         verifyAnswer(
@@ -273,6 +234,48 @@ class StreetParkingTest {
                 StringMapEntryAdd("parking:lane:left:diagonal", "on_street"),
             )
         )
+    }
+
+    @Test fun `applying removes properties specified for both sides if one side changed`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "parallel",
+                "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingProhibited,
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "no"),
+                StringMapEntryAdd("parking:condition:left", "no_parking"),
+                StringMapEntryModify("parking:lane:right", "parallel", "parallel"),
+                StringMapEntryModify("parking:lane:right:parallel", "on_kerb", "on_kerb"),
+                StringMapEntryDelete("parking:condition:both", "customers"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "parallel",
+                "parking:lane:both:parallel" to "on_street",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
+                StringMapEntryAdd("parking:lane:right:parallel", "on_kerb"),
+                StringMapEntryDelete("parking:lane:both:parallel", "on_street"),
+                StringMapEntryDelete("parking:condition:both", "customers"),
+            )
+        )
+    }
+
+    @Test fun `applying removes properties specified for side that changed`() {
         verifyAnswer(
             mapOf(
                 "parking:lane:both" to "parallel",
@@ -293,7 +296,7 @@ class StreetParkingTest {
         )
     }
 
-    @Test fun `tag only on one side`() {
+    @Test fun `applying only on one side`() {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(
@@ -318,7 +321,7 @@ class StreetParkingTest {
         )
     }
 
-    @Test fun `tagging on one side only does not touch tags only tagged for the other side`() {
+    @Test fun `applying only one side does not touch properties specified for the other side`() {
         verifyAnswer(
             mapOf(
                 "parking:condition:right" to "unhandled_value"
@@ -347,7 +350,7 @@ class StreetParkingTest {
         )
     }
 
-    @Test fun `tagging on one side only removes tags tagged for both sides`() {
+    @Test fun `applying only one side removes properties specified for both sides`() {
         verifyAnswer(
             mapOf(
                 "parking:lane:both" to "diagonal",
