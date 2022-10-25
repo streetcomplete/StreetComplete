@@ -29,8 +29,10 @@ class AddFootwayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "no")
     }
 
-    @Test fun `not applicable to non-foot path`() {
+    @Test fun `not applicable to non-foot path1`() {
         assertIsNotApplicable("highway" to "bridleway", "segregated" to "yes")
+    }
+    @Test fun `not applicable to non-foot path2`() {
         assertIsNotApplicable("highway" to "path", "foot" to "no", "segregated" to "yes")
     }
 
@@ -124,7 +126,7 @@ class AddFootwayPartSurfaceTest {
             mapOf(
                 "surface" to "paving_stones",
                 "footway:surface" to "paving_stones",
-                "cyclewayway:surface" to "concrete",
+                "cycleway:surface" to "concrete",
             ),
             SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
