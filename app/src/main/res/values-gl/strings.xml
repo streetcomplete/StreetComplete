@@ -359,7 +359,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_powerPolesMaterial_metal">"Aceiro"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento ou formigón"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Só sinala a velocidade máxima aconsellada…"</string>
-    <string name="quest_address_answer_house_name">"Só ten nome, non hai número…"</string>
     <string name="quest_address_house_name_label">"Nome da casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"andares do tellado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"andares (sen conta-lo tellado)"</string>
@@ -726,9 +725,6 @@ Queres dividila agora?"</string>
     <string name="about_summary_current_version">"Versión actual: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Cal é o número de referencia desta caixa do correo?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel…"</string>
 
     <!-- Fuzzy -->
@@ -930,7 +926,6 @@ logros"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non pertence a unha rúa con nome"</string>
     <string name="quest_address_street_place_name_label">"Nome:"</string>
-    <string name="quest_address_street_description">"Preme a estrada á que pertence no mapa ou insírea sen abreviaturas no campo seguinte:"</string>
     <string name="quest_recycling_type_cooking_oil">"Aceite de cociña"</string>
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Unha extensión independente para Nominatim, con procura dinámica mentres escribes"</string>
@@ -1064,9 +1059,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_surface_value_rock">"Rocha"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Os camións altos poden pasar"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Os camións altos non caben"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Preme a estrada no mapa"</string>
     <string name="quest_crossing_type_marked">"Con marcas viarias"</string>
 
     <!-- Fuzzy -->
@@ -1281,7 +1273,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Son correctas as horas de recollida desta caixa de correo?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Non se recoñece. Proba a escribir o tipo de sitio, por exemplo: \"panadería\". Senón, considera deixar unha nota."</string>
     <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira para bicicletas é esta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal á ruta"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Paso estreito, máis aínda na parte superior"</string>
@@ -1313,7 +1304,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Na calzada só en espazos dedicados"</string>
     <string name="street_parking_separate">"O estacionamento móstrase no mapa de maneira separada"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Ten tanto un número coma un nome"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
 
     <!-- Fuzzy -->

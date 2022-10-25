@@ -330,7 +330,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_powerPolesMaterial_metal">"Steel"</string>
     <string name="quest_powerPolesMaterial_concrete">"Concrete"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Just an advisory speed limit…"</string>
-    <string name="quest_address_answer_house_name">"No house number but a name…"</string>
     <string name="quest_address_house_name_label">"House name:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"levels in the roof"</string>
     <string name="quest_buildingLevels_levelsLabel2">"regular levels (not counting the roof)"</string>
@@ -611,7 +610,6 @@ Split it now?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Would you like to leave a note? A note with a photo will enable other mappers to take care of it."</string>
     <string name="quest_handrail_title">"Do these steps have a handrail?"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
-    <string name="quest_postboxRef_title">"What’s the reference number of this postbox?"</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
     <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as its center on the map."</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
@@ -784,7 +782,6 @@ active"</string>
 levels"</string>
     <string name="quest_address_street_no_named_streets">"It does not belong to a named street…"</string>
     <string name="quest_address_street_place_name_label">"Place name:"</string>
-    <string name="quest_address_street_description">"Tap the road it belongs to on the map or enter it without abbreviations in the field below:"</string>
     <string name="quest_recycling_type_cooking_oil">"Cooking Oil"</string>
     <string name="quest_recycling_type_engine_oil">"Engine Oil"</string>
     <string name="link_photon_description">"A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type"</string>
@@ -888,7 +885,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_surface_value_rock">"Rock"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Tall lorries can pass through"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Tall lorries don’t fit"</string>
-    <string name="quest_address_street_hint">"Tap the road on the map"</string>
     <string name="quest_crossing_type_marked">"Marked"</string>
     <string name="quest_parkingType_street_side">"Parking adjacent to the carriageway"</string>
     <string name="quest_parkingType_lane">"Parking on carriageway"</string>
@@ -1074,7 +1070,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_access_customers">"Any person visiting a specific place (e.g. customers only)"</string>
     <string name="quest_access_private">"Only individual(s) with permission"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Are the collection times of this postbox still correct?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Not recognized. Try entering the type of place, for example “bakery”. Otherwise, consider leaving a note."</string>
     <string name="quest_bicycle_barrier_type_title">"What type of bicycle barrier is this?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal to the path"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Narrow passage, smaller toward top"</string>
@@ -1111,7 +1106,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
 
 Alternatively, you can leave a note (with a photo)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Both a house number and a name…"</string>
     <string name="quest_address_house_number_label">"House number:"</string>
     <string name="quest_shoulder_title">"Does this road have a shoulder or breakdown lane?"</string>
     <string name="quest_fireHydrant_position_title">"Where is this fire hydrant located?"</string>
@@ -1377,7 +1371,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"A map of campsites"</string>
     <string name="quest_atm_cashin_title">"Can you deposit cash at this cash machine?"</string>
     <string name="create_node_action_description">"You created a node with …"</string>
-    <string name="quest_accessPointRef_title">"What’s the reference number here?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"It’s an Assembly Point"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:"</string>
     <string name="quest_address_answer_house_name2">"It has a house name…"</string>

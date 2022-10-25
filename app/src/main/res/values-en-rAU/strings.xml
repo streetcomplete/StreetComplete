@@ -1,9 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorisation server"</string>
     <string name="oauth_failed_permissions">"Authorisation failed: All listed permissions need to be granted"</string>
+
+    <!-- Settings screen -->
+    <string name="pref_category_communication">"Communication"</string>
+    <string name="pref_category_display">"Display"</string>
+    <string name="pref_tilecache_size_summary">"%d MB"</string>
+    <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Also showing notes not phrased as questions"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
+    <string name="pref_title_map_cache">"Map cache size"</string>
+    <string name="map_btn_gps_tracking">"Follow me"</string>
+    <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
+    <string name="quest_generic_otherAnswers">"Other answers..."</string>
+    <string name="quest_generic_answer_notApplicable">"Can't say..."</string>
+    <string name="quest_generic_confirmation_title">"Are you sure?"</string>
+    <string name="quest_generic_confirmation_yes">"Yes, I am sure"</string>
+    <string name="quest_generic_confirmation_no">"I will check"</string>
+    <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
+    <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only"</string>
+    <string name="quest_leave_new_note_yes">"Leave note"</string>
+    <string name="quest_leave_new_note_no">"Hide"</string>
+    <string name="quest_streetName_title">"What's the name of this street?"</string>
+    <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
+    <string name="quest_openingHours_start_time">"opening time"</string>
+    <string name="quest_openingHours_end_time">"closing time"</string>
+    <string name="quest_openingHours_add_months">"Add months"</string>
+    <string name="quest_openingHours_add_hours">"Add hours"</string>
+    <string name="quest_openingHours_add_weekdays">"Add days of the week"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Select days of the week"</string>
+    <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
+    <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
+    <string name="quest_noteDiscussion_no">"No, hide"</string>
+    <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
+    <string name="confirmation_discard_title">"Discard input?"</string>
+    <string name="confirmation_discard_positive">"Discard"</string>
+    <string name="action_download">"Scan for quests here"</string>
+    <string name="action_upload">"Upload answers"</string>
+
+    <!-- when the user left the answer form empty -->
+    <string name="no_changes">"You did not give an answer"</string>
+    <string name="close">"close"</string>
+    <string name="download_error">"Error while scanning for quests"</string>
+    <string name="upload_error">"Error while uploading answers"</string>
+    <string name="download_area_too_big">"Please zoom in further"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
+    <string name="turn_on_location_request">"Location is off. Open settings to turn it on now?"</string>
+    <string name="no_location_permission_warning">"Location permission is needed to show your position on the map and scan for quests in your vicinity."</string>
+    <string name="about_title_authors">"Credits"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
+    <string name="about_title_repository">"Project Home"</string>
+    <string name="about_summary_repository">"on GitHub"</string>
+    <string name="about_title_report_error">"Report error"</string>
+    <string name="about_title_feedback">"Give Feedback"</string>
+    <string name="about_title_license">"Licence"</string>
+    <string name="about_summary_license">"GNU General Public License"</string>
+
+    <!-- Error messages and crash report -->
+    <string name="offline">"You are offline"</string>
     <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
     <string name="not_authorized">"Not authorised"</string>
+    <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
+    <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
+    <string name="later">"Later"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
+    <string name="about_title_privacy_statement">"Privacy statemenr"</string>
+    <string name="about_summary_privacy_statement">"and data usage"</string>
+    <string name="quest_openingHours_public_holidays">"Public holidays"</string>
+    <string name="quest_openingHours_public_holidays_short">"PH"</string>
+    <string name="quest_openingHours_open_end">"open end"</string>
+    <string name="quest_openingHours_answer_247">"Open 24/7"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Diggers by month..."</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours..."</string>
+    <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
+    <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
+    <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
+
+    <!-- As in: "select ONE of the pictures below" -->
+    <string name="quest_roofShape_select_one">"Select one:"</string>
+
+    <!-- As in: "show more of those pictures to select an answer from -->
+    <string name="quest_roofShape_show_more">"Show more..."</string>
+
+    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
+    <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
     <string name="quest_surface_value_paved">"Sealed (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unsealed (generic)"</string>
     <string name="quest_surface_value_asphalt">"Bitumen"</string>
@@ -18,7 +106,6 @@
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Does this crossing have tactile paving on both sides?"</string>
     <string name="recycling_centre">"Centre"</string>
-    <string name="quest_address_answer_house_name">"No address number but a name…"</string>
     <string name="quest_address_house_name_label">"Building or house name:"</string>
     <string name="quest_cycleway_value_sidewalk">"explicitly shared footpath"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural, forest road or fire trail"</string>
@@ -57,7 +144,6 @@ Note that this app asks for the address number of a building only after its type
     <string name="at_housenumber">"address number %s"</string>
     <string name="quest_openingHours_add_off_days">"Add closed days"</string>
     <string name="quest_openingHours_off_day">"Closed"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Both an address number and a name..."</string>
     <string name="quest_address_house_number_label">"Address number:"</string>
 
     <!-- Fuzzy -->
@@ -73,4 +159,20 @@ Note that this app asks for the address number of a building only after its type
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"Is there any toilet here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is the toilet at this place wheelchair accessible?"</string>
+    <string name="quest_drinking_water_type_spring">"Spring"</string>
+    <string name="quest_drinking_water_type_disused">"Disused drinking water object"</string>
+    <string name="overlay_addresses">"Addresses"</string>
+    <string name="overlay_shops">"Shops"</string>
+    <string name="name_label">"Name:"</string>
+    <string name="vacant_shop_title">"Vacant shop"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Other kind of place"</string>
+    <string name="quest_address_answer_no_address">"No address here"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Removable"</string>
+    <string name="quest_buildingType_guardhouse">"Guardhouse"</string>
+    <string name="quest_genericRef_title">"What's the identification number here?"</string>
 </resources>

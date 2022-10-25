@@ -806,9 +806,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Aholkatutako abiadura muga besterik ez…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Etxe zenbakirik ez baina bai izena…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Etxearen izena:"</string>
 
     <!-- Fuzzy -->
@@ -1550,9 +1547,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_summary_current_version">"Oraingo bertsioa: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Zein da postontzi honen erreferentzia zenbakia?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai…"</string>
 
     <!-- Fuzzy -->
@@ -1974,7 +1968,6 @@ mailak"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ez dago izena duen kale batekin lotuta"</string>
     <string name="quest_address_street_place_name_label">"Toki izena:"</string>
-    <string name="quest_address_street_description">"Ukitu mapan zein kale edo bideri dagokion edo idatzi laburdurarik gabe beheko eremuan:"</string>
     <string name="quest_recycling_type_cooking_oil">"Sukaldeko olioa"</string>
     <string name="quest_recycling_type_engine_oil">"Motoreen olioa"</string>
     <string name="link_photon_description">"Nominatim-erako gehigarri autonomoa, bilaketa lauso zein idatzi ahalako bilaketarako"</string>
@@ -2112,9 +2105,6 @@ Autobusentzako bat baldin badago, utzi ohar bat."</string>
     <string name="quest_surface_value_rock">"Arroka"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Kamioi altuak bertatik pasa daitezke"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Kamioi altuak ezin dira pasa"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ukitu errepidea mapan"</string>
     <string name="quest_crossing_type_marked">"Markatua"</string>
 
     <!-- Fuzzy -->
@@ -2331,7 +2321,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Postontzi honen jasotze orduak zuzenak al dira oraindik?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ezezaguna. Saiatu toki mota adierazten, adibidez \"okindegia\". Bestela, pentsatu ohar bat uztea."</string>
     <string name="quest_bicycle_barrier_type_title">"Zein motakoa da bizikletentzako hesi hau?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Bidearekiko diagonala"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Pasabide estua, estuagoa goiko aldean"</string>
@@ -2378,7 +2367,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="street_parking_conditional_restrictions_hint">"Hemen aparkatu edo gelditzea posible bada, lehenik eta behin erantzun baimenduta daudenei nola aparkatu hemen. Zehazki zer murrizketa aplikatzen diren geroago zehaztu daiteke.
 
 Bestela, ohar bat utz dezakezu (argazki batekin)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Etxeko zenbakia eta izena…"</string>
     <string name="quest_address_house_number_label">"Etxeko zenbakia:"</string>
 
     <!-- Fuzzy -->

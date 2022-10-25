@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 381447
-  linesOfInterfaceMarkupChanged: 139788
-  assetFilesChanged: 1734
+  linesOfCodeChanged: 381625
+  linesOfInterfaceMarkupChanged: 140428
+  assetFilesChanged: 1924
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 16895
@@ -15,7 +15,7 @@
   assetFilesChanged: 584
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 9652
+  linesOfCodeChanged: 9669
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "ENT8R"
@@ -31,15 +31,18 @@
   linesOfCodeChanged: 2627
   linesOfInterfaceMarkupChanged: 2180
   assetFilesChanged: 5
+- name: "Matija Nalis"
+  githubUsername: "mnalis"
+  linesOfCodeChanged: 2212
+  linesOfInterfaceMarkupChanged: 229
+  assetFilesChanged: 69
+- name: "YoshiRulz"
+  githubUsername: "YoshiRulz"
+  linesOfCodeChanged: 2078
 - name: "sumanabhi"
   githubUsername: "sumanabhi"
   linesOfCodeChanged: 2014
   linesOfInterfaceMarkupChanged: 3159
-- name: "Matija Nalis"
-  githubUsername: "mnalis"
-  linesOfCodeChanged: 1787
-  linesOfInterfaceMarkupChanged: 229
-  assetFilesChanged: 69
 - name: "Isira Seneviratne"
   githubUsername: "Isira-Seneviratne"
   linesOfCodeChanged: 1743
@@ -88,14 +91,15 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "Tim"
+  githubUsername: "tapetis"
+  linesOfCodeChanged: 334
+  linesOfInterfaceMarkupChanged: 4
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 286
   linesOfInterfaceMarkupChanged: 442
   assetFilesChanged: 8
-- name: "Tim"
-  githubUsername: "tapetis"
-  linesOfCodeChanged: 236
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230

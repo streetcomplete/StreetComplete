@@ -57,8 +57,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Ne, kaŝu ĝin"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"Sennome"</string>
 
     <!-- Fuzzy -->
@@ -149,25 +147,25 @@
     <string name="map_btn_zoom_in">"zomi"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ho, iu, kiu zorgas pri privateco, malaĉe! Mi pensas, ke mi havas nur bonajn novaĵoj por vi:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direktaj Kontribuoj&lt;/b&gt;&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ho, iu, kiu zorgas pri privateco, malaĉe! Mi pensas, ke mi havas nur bonajn novaĵojn por vi:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Rektaj kontribuoj&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Unue, komprenu, ke per ĉi tiu aplikaĵo vi vere kaj direkte kontribuas al OpenStreetMap.&lt;br/&gt;
-Io ajn, kion vi kontribuas en ĉi tiu aplikaĵo estas direkte aldonata al la mapo, ne estas ekstera aganto inter la aplikaĵo kaj infrastrukturo de OSM.
+Unue, komprenu, ke per ĉi tiu aplikaĵo vi vere kaj rekte kontribuas al OpenStreetMap (OSM).&lt;br/&gt;
+Ĉio ajn, kion vi kontribuas per ĉi tiu aplikaĵo estas rekte aldonata al la mapo, ne estas ekstera aganto inter la aplikaĵo kaj infrastrukturo de OSM.
 &lt;/p&gt;
 &lt;p&gt;
-Ne povas redakti OpenStreetMap anonime, do ajnaj ŝanĝoj, kiujn vi faras, estas farataj per via konto OSM. Ĉi tio signifas, ke la dato, enhavo kaj implice la loko de viaj ŝanĝoj estas videblaj publike je la OpenStreetMap retejo kaj estas atribueblaj al via konto.
+Ne eblas redakti OpenStreetMap anonime. Ĉiu ajn ŝanĝoj, kiujn vi faras, estas farataj per via konto de OSM. Tio signifas, ke la dato, enhavo kaj implice la loko de viaj ŝanĝoj estas videblaj publike je la OpenStreetMap retejo kaj estas atribueblaj al via konto.
 &lt;/p&gt;
 
 &lt;b&gt;Loko&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-La aplikaĵo ne kunhavigas vian GPS lokon kun iu ajn. Ĝi estas uzata po aŭtomate skani por taskoj ĉirkaŭ via areo kaj fokusi (kaj tial elŝuti) la mapon ĉirkaŭ via areo.
+La aplikaĵo ne donas vian GPS-lokon al iu ajn. La aplikaĵo uzas ĝin por aŭtomate serĉi ĉirkaŭajn taskojn kaj por fokusi (kaj tial elŝuti) la mapon ĉirkaŭ via areo.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Uzo de datumoj&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Kiel menciite, la aplikaĵo direkte komunikas kun infrastrukturo de OSM. &lt;br/&gt;
-Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; simpla tekstodosiero &lt;/a&gt; je mia servilo, ĉu ĝi estas forbarita je alŝuto de ajnaj ŝanĝoj. Tio estas antaŭzorga ago por bari versiojn de la aplikaĵo, en kiuj estas trovatataj kritikaj cimoj, de eble difekti OSM datumoj.&lt;/p&gt;"</string>
+Kiel menciite, la aplikaĵo rekte komunikas kun infrastrukturo de OSM. &lt;br/&gt;
+Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpla tekstodosiero&lt;/a&gt; je mia servilo, por scii ĉu ĉi tiu versio de la aplikaĵo malrajtas alŝuti ŝanĝojn. Tio estas antaŭzorga ago por povi bari versiojn de la aplikaĵo, en kiuj oni trovas kritikajn cimojn, kiuj difektus datumoj de OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Ŝaltita"</string>
     <string name="autosync_only_on_wifi">"Nur je Wi-Fi"</string>
     <string name="autosync_off">"Malŝaltita"</string>
@@ -502,7 +500,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_powerPolesMaterial_metal">"Ŝtalo"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betono"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur konsila rapidlimo…"</string>
-    <string name="quest_address_answer_house_name">"Ne estas domonombro sed nomo…"</string>
     <string name="quest_address_house_name_label">"Nomo de domo:"</string>
 
     <!-- Fuzzy -->
@@ -902,7 +899,6 @@ Dividi ĝin nun?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ĉu vi ŝatus lasi rimarkon? Rimarkon kun foto helpos aliajn mapistojn solvi ĝin."</string>
     <string name="quest_handrail_title">"Ĉu ĉi tiu ŝtuparo havas manrelon?"</string>
     <string name="about_summary_current_version">"Nuna versio: %s"</string>
-    <string name="quest_postboxRef_title">"Kiu estas la referencnumero de ĉi tiu poŝtkesto?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ne referencan numeron videblan…"</string>
@@ -940,6 +936,7 @@ Dividi ĝin nun?"</string>
     <string name="about_summary_donate">"Montru vian aprezon! ❤️"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Serĉi ĉi tie anstataŭe"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Daŭrigi nunan serĉadon"</string>
+    <string name="quest_tourism_information_title">"Kiaj turismaj informoj estas tio?"</string>
     <string name="quest_tourism_information_office">"Turisma informa oficejo"</string>
     <string name="quest_tourism_information_board">"Informtabulo"</string>
     <string name="quest_tourism_information_terminal">"Informoj stacio"</string>
@@ -987,6 +984,8 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"Malŝlosis ligon:"</string>
     <string name="achievements_unlocked_links">"Malŝlosis ligojn:"</string>
+
+    <!-- Fuzzy -->
     <string name="link_category_intro_title">"Iniciatado"</string>
     <string name="link_category_intro_description">"Lerni pli pri OSM kaj ĝia komunumo"</string>
     <string name="link_category_editors_title">"Contribuado"</string>
@@ -1020,7 +1019,7 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <string name="link_nominatim_description">"La geokodilo por OSM-datumoj, uzata de multaj aliaj servoj"</string>
 
     <!-- Fuzzy -->
-    <string name="link_city_roads_description">"Redonu ĉiujn vojojn de urbo, por presado sur T-ĉemizoj, mugoj, …"</string>
+    <string name="link_city_roads_description">"Bildigi ĉiujn vojojn de urbo, por presado sur T-ĉemizoj, tasoj, …"</string>
     <string name="link_myosmatic_description">"Generu preseblajn urbomapojn en kelkaj facilaj paŝoj, laŭvole kun stratadresaro"</string>
     <string name="link_show_me_the_way_description">"Rigardu OSM-redaktojn okazi en reala tempo"</string>
     <string name="link_osm_haiku_description">"Uzante OSM-datenojn por generi hajkon (formo de japana poezio)"</string>
@@ -1090,7 +1089,6 @@ aktiva"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Ĝi ne apartenas al nomita strato"</string>
     <string name="quest_address_street_place_name_label">"Loknomo:"</string>
-    <string name="quest_address_street_description">"Frapu la vojon al kiu ĝi apartenas sur la mapo aŭ enigu ĝin sen mallongigoj en la suban kampon:"</string>
     <string name="quest_recycling_type_cooking_oil">"Kuira Oleo"</string>
     <string name="quest_recycling_type_engine_oil">"Motora Oleo"</string>
     <string name="link_qwant_maps_description">"Mapo kun serĉeblaj lokoj kaj direktoj"</string>
@@ -1143,6 +1141,7 @@ aktiva"</string>
     <string name="quest_steps_ramp_title">"Ĉu ĉi tiuj ŝtuparoj havas ramplon? Kia?"</string>
     <string name="quest_steps_ramp_none">"Neniu (uzebla) ramplo"</string>
     <string name="quest_steps_ramp_bicycle">"Bicikla ramplo"</string>
+    <string name="quest_steps_ramp_stroller">"Ramplo por beboĉaretoj"</string>
     <string name="quest_steps_ramp_wheelchair">"Rulseĝa ramplo"</string>
     <string name="quest_clothes_container_operator_title">"Kiu akceptas donacojn por ĉi tiu vestujo?"</string>
     <string name="quest_charging_station_operator_title">"Kiu estas la funkciigisto de ĉi tiu ŝargstacio?"</string>
@@ -1191,9 +1190,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_surface_value_rock">"Roko"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Altaj kamionoj povas trapasi"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Altaj kamionoj ne taŭgas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Frapu vojon sur la mapo"</string>
     <string name="quest_crossing_type_marked">"Markita"</string>
     <string name="quest_parkingType_street_side">"Parkado apud la vojo"</string>
     <string name="quest_parkingType_lane">"Parkejo sur vojo"</string>
@@ -1359,7 +1355,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_access_customers">"Ĉiu persono vizitanta specifan lokon (ekz. nur klientoj)"</string>
     <string name="quest_access_private">"Nur individuo(j) kun permeso"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Ĉu la elektaj tempoj de ĉi tiu kolekto-skatolo ankoraŭ ĝustas?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ne agnoskita. Provu eniri la specon de loko, ekzemple \"bakejo\". Alie, pripensu lasi noton."</string>
     <string name="quest_bicycle_barrier_type_title">"Kia bicikla barilo estas ĉi tio?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala al la vojo"</string>
     <string name="quest_barrier_bicycle_type_single">"Trairejo inter bariloj"</string>
@@ -1401,7 +1396,6 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="street_parking_conditional_restrictions_hint">"Se eblas ĉi tie parki aŭ ĉesi ĉi tie, indiku la tipon de sur- aŭ ekster-strata parkado. Pliaj limigoj povas esti precizigitaj poste.
 
 Alternative, vi povas lasi noton (kun foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Kaj domnumero kaj -nomo ..."</string>
     <string name="quest_address_house_number_label">"Domnumero:"</string>
     <string name="quest_fireHydrant_position_title">"Kie troviĝas tiu ĉi fajrohidranto?"</string>
 
@@ -1534,14 +1528,14 @@ sorted alphabetically by title -->
     <string name="quest_busStopBin_title2">"Ĉu estas rubkorbo ĉe ĉi tiu haltejo?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopLit_title2">"Ĉu ĉi tiu halto estas lumigita?"</string>
+    <string name="quest_busStopLit_title2">"Ĉu ĉi tiu haltejo estas lumigita?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Kio estas la nomo de ĉi tiu haltejo?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
-    <string name="quest_busStopRef_title2">"Kio estas la referenca numero de ĉi tiu halto?"</string>
+    <string name="quest_busStopRef_title2">"Kio estas la referenca numero de ĉi tiu haltejo?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Ĉu estas ŝirmejo ĉe ĉi tiu haltejo?"</string>
@@ -1584,6 +1578,7 @@ sorted alphabetically by title -->
     <string name="quest_step_count_stile_hint">"Nur la nombro de ŝtupoj por atingi la supron. Se ne estas samkvante da ŝtupoj ambaŭflanke, indiku la plej altan nombron."</string>
     <string name="quest_cycleway_value_none_and_oneway">"neniu, neniu biciklado permesita en ĉi tiu direkto"</string>
     <string name="map_btn_create_track">"Kreu novan trakan registradon"</string>
+    <string name="map_btn_stop_track">"Haltu registri spuron"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_rental_capacity_title">"Kiom da luaj biciklaj spacoj estas ĉi tie?"</string>
@@ -1620,7 +1615,9 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Frapu ekranon por komenci mezuri"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Ĉu estas publike alirebla bicikla pumpilo tie (almenaŭ dum ĝi malfermas)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Ĉu estas bicikla pumpilo kiu funkcias tie?"</string>
-    <string name="action_overlays">"Interkovroj"</string>
+
+    <!-- Mi proponas uzi  "tavoloj" / "tavoloj de mapo"  simile kiel en la openstreetmap.org-retejo. -->
+    <string name="action_overlays">"Supertavoloj"</string>
     <string name="split_way">"Disigi vojon"</string>
     <string name="quest_memorialType_title">"Kia memorigaĵo estas tiu?"</string>
     <string name="quest_memorialType_statue">"Statuo"</string>
@@ -1636,7 +1633,7 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_sculpture">"Alia skulpturo"</string>
 
     <!-- Overlays -->
-    <string name="select_overlay">"Elekti interkovron"</string>
+    <string name="select_overlay">"Elekti supertavolon"</string>
     <string name="overlay_none">"Neniu"</string>
     <string name="overlay_lit">"Stratlumo"</string>
     <string name="lit_value_yes">"Lumigita"</string>
@@ -1653,15 +1650,27 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Enira etikedo:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Plata gamo:"</string>
     <string name="quest_entrance_reference_flat_range_to">"al"</string>
+
+    <!-- Fuzzy -->
+    <string name="default_disabled_msg_overlay">"Ĉi tiu tasko estas malebiligita defaŭlte ĉar jam ekzistas supertavolon per tio oni pli efike kaj kompetente povas enigi kaj ĝisdatigi tiajn datumojn."</string>
     <string name="quest_camp_drinking_water_title">"Ĉu trinkakvo estas libere havebla al kamploĝantoj ĉi tie?"</string>
     <string name="quest_camp_shower_title">"Ĉu estas duŝoj ĉi tie?"</string>
     <string name="quest_camp_power_supply_title">"Ĉu ekzistas iu maniero por klientoj ŝarĝi sian telefonon, tekkomputilon ktp ĉi tie?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_camp_type_title">"Kiu eble tendumos ĉi tie?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Kaj tendoj kaj kampadveturiloj, ruldomoj, …"</string>
+    <string name="quest_camp_type_caravans_only">"Nur kampadveturiloj, ruldomoj, …"</string>
     <string name="quest_camp_type_tents_only">"Nur tendoj"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_camp_type_backcountry">"Sovaĝa tendaro (sen servejoj)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ĉi tiu diametro aspektas neplaĉebla, ĝi kutime estas inter %1$d kaj %2$d."</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Strata larĝo: %s"</string>
     <string name="overlay_street_parking">"Strata parkado"</string>
+    <string name="link_opencampingmap_description">"Monda mapo de kampadejoj"</string>
+    <string name="quest_atm_cashin_title">"Ĉu oni povas enmeti monon per ĉi tiu bankaŭtomato?"</string>
     <string name="quest_address_answer_house_name2">"Ĝi havas domnumero ..."</string>
 
     <!-- Fuzzy -->
@@ -1669,5 +1678,23 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
+    <string name="quest_bicycle_incline_title">"Kiu direkto iras supren?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_title">"Kiel trinkakvo estas disponigita ĉi tie?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Alia fontano"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fontano kie elŝprucas akvoarketon"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Nur por plenigi botelojn"</string>
+    <string name="quest_drinking_water_type_tap">"Krano"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Pumpilo"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Puto sen pumpilo"</string>
+    <string name="quest_drinking_water_type_spring">"Fonto"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_disused">"Malzorgata trinkakvo-objekto"</string>
     <string name="overlay_addresses">"Adresoj"</string>
+    <string name="overlay_shops">"Vendejoj"</string>
+    <string name="name_label">"Nomo:"</string>
 </resources>

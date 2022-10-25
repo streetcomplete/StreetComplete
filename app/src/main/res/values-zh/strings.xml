@@ -766,9 +766,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_maxspeed_answer_advisory_speed_limit">"仅为建议的速度限制…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"没有门牌号码但有名字…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"房屋名称："</string>
 
     <!-- Fuzzy -->
@@ -1485,9 +1482,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"当前版本：%s"</string>
 
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"这个邮箱的参考编号是多少？"</string>
-
     <!-- Whats the "number" means -->
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到参考数字"</string>
@@ -1765,7 +1759,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"它不属于某个以命名街道"</string>
     <string name="quest_address_street_place_name_label">"地点名称："</string>
-    <string name="quest_address_street_description">"在地图上点击它所属的道路，或者在下面输入不带缩写的名称"</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"机油"</string>
 
@@ -1936,9 +1929,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_yes">"高的货车可通过"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"高的货车无法通过"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"点选地图上的道路"</string>
     <string name="quest_crossing_type_marked">"标线行人穿越道"</string>
 
     <!-- Fuzzy -->
@@ -2332,9 +2322,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_postboxCollectionTimes_resurvey_title">"此邮筒的收取时间仍然正确吗?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error2">"未被确认。请尝试报告此地的类型，例如\"面包店\"。否则,请考虑留下注解。"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_type_title">"这是什么类型的自行车护栏？"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"与小路成对角线"</string>
     <string name="quest_barrier_bicycle_type_tilted">"狭窄的通道，从底部朝顶部变小"</string>
@@ -2392,9 +2379,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 如果这里可以停车或驻车，首先要回答那些允许停车的人如何在这里停车。具体有哪些限制可以在之后说明。
 
 或者，你也可以留下一条注记（可附照片）。"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name_and_housenumber">"既有门牌号，又有名字……"</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_house_number_label">"门牌号："</string>

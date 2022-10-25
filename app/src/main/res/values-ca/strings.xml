@@ -358,7 +358,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_powerPolesMaterial_metal">"Acer"</string>
     <string name="quest_powerPolesMaterial_concrete">"Formigó"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Límit de velocitat aconsellable…"</string>
-    <string name="quest_address_answer_house_name">"Cap número de casa però un nom…"</string>
     <string name="quest_address_house_name_label">"Nom de la casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivells a la teulada"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
@@ -726,9 +725,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="about_summary_current_version">"Versió actual: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Quin és el número de referència d'aquesta bústia?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
 
     <!-- Fuzzy -->
@@ -937,7 +933,6 @@ d'acompliment"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"No pertany a cap carrer que tingui nom"</string>
     <string name="quest_address_street_place_name_label">"Nom del lloc:"</string>
-    <string name="quest_address_street_description">"Toqueu el camí al qual pertany al mapa o introduïu-lo sense abreviatures en el camp següent:"</string>
     <string name="quest_recycling_type_cooking_oil">"Oli de cuina"</string>
     <string name="quest_recycling_type_engine_oil">"Oli de motor"</string>
     <string name="link_photon_description">"Una extensió independent a Nominatim, que inclou cerques inexactes i cerca mentre teclegeu"</string>
@@ -1077,9 +1072,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Els camions alts no hi caben"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Feu un toc a una via del mapa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Pas de zebra"</string>
@@ -1319,7 +1311,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Encara són correctes els temps d'arreplega d'aquesta bústia?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"No reconegut. Proveu d'introduir el tipus de lloc, per exemple \"forn\". En cas contrari, considereu deixar una nota."</string>
     <string name="quest_bicycle_barrier_type_title">"Quin tipus de barrera per a bicicleta és aquesta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal al camí"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Pas estret, més petit a la part superior"</string>
@@ -1368,7 +1359,6 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="street_parking_conditional_restrictions_hint">"Si és possible estacionar o parar ací, primer contesta com pot fer-se. La restricció que s’aplica es pot contestar després.
 
 Alternativament, pots deixar una nota (amb foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Tant un número de casa com un nom…"</string>
     <string name="quest_address_house_number_label">"Número:"</string>
 
     <!-- Fuzzy -->
@@ -1699,7 +1689,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Un mapa de llocs d'acampada"</string>
     <string name="quest_atm_cashin_title">"Pots dipositar diners en aquest caixer?"</string>
     <string name="create_node_action_description">"Has creat un node amb ..."</string>
-    <string name="quest_accessPointRef_title">"Quin és el número d'identificació?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"És un Punt de Trobada"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un Punt de Trobada és on la gent es reuneix en cas d'emegència. Normalment té aquest aspecte:"</string>
     <string name="quest_address_answer_house_name2">"La casa té un nom..."</string>
@@ -1727,4 +1716,10 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
+    <string name="quest_address_answer_no_address">"No hi ha adreça"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Es pot obrir la barrera per a bicletes?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Es pot obrir"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Es pot llevar"</string>
+    <string name="quest_genericRef_title">"Ací quin és el nombre de referència?"</string>
 </resources>

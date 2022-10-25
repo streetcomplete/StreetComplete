@@ -18,7 +18,7 @@
     <string name="quest_generic_otherAnswers">"Други одговори…"</string>
     <string name="quest_generic_answer_notApplicable">"Не могу да кажем…"</string>
     <string name="quest_generic_confirmation_title">"Сигурни сте?"</string>
-    <string name="quest_generic_confirmation_yes">"Да, сигуран/на сам"</string>
+    <string name="quest_generic_confirmation_yes">"Да, сигуран сам"</string>
     <string name="quest_generic_confirmation_no">"Проверићу"</string>
     <string name="quest_leave_new_note_title">"Ипак оставити напомену?"</string>
 
@@ -26,10 +26,10 @@
     <string name="quest_leave_new_note_description">"Можете оставити јавну напомену на овој локацији како би други картографи могли да коментаришу и реше, или пак сакријте овај задатак од себе."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_yes">"У реду"</string>
+    <string name="quest_leave_new_note_yes">"Оставите напомену"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_no">"Не, само сакриј"</string>
+    <string name="quest_leave_new_note_no">"Сакриј"</string>
     <string name="quest_streetName_title">"Који назив носи овај пут?"</string>
     <string name="quest_streetName_description">"како је написано на знаку, скраћенице се уписују у пуном облику:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Понекад је улични знак само на једном крају улице. Имајте на уму да можда неће бити додатних знакова за споредне улице које припадају већој. Обично свака улица са кућама има име."</string>
@@ -112,7 +112,7 @@
 Шта год да директно додате на карту путем ове апликације, нема посредника између апликације и OSM инфраструктуре.
 &lt;/p&gt;
 &lt;p&gt;
-Анонимни допринос на OpenStreetMap није могућ. Све промене које направите (као и њихов датум и локација) су везани за Ваш OSM кориснички налог и јавно видљиве на openstreetmap.org сајту. Пошто се StreetComplete користи само на терену, овим се открива где и када сте користили апликацију.
+Анонимни допринос на OpenStreetMap није могућ. Све промене које направите (као и њихов датум и локација) су повезани са вашим OSM корисничким налогом и јавно видљиве на openstreetmap.org локацији. Пошто се StreetComplete користи само на терену, овим се открива где и када сте користили апликацију.
 &lt;/p&gt;
 
 &lt;b&gt;Локација&lt;/b&gt;&lt;br/&gt;
@@ -344,7 +344,6 @@
     <string name="quest_powerPolesMaterial_metal">"Челик"</string>
     <string name="quest_powerPolesMaterial_concrete">"Бетон"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Само препоручено ограничење брзине…"</string>
-    <string name="quest_address_answer_house_name">"Нема кућни број, само име…"</string>
     <string name="quest_address_house_name_label">"Назив куће:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"спратова у поткровљу"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обични спратови (не рачунајући поткровље)"</string>
@@ -692,9 +691,6 @@
     <string name="about_summary_current_version">"Тренутна верзија: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Који је референтни број овог поштанског сандучета?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Не види се референтни број…"</string>
 
     <!-- Fuzzy -->
@@ -783,13 +779,13 @@
     <string name="achievements_unlocked_link">"Откључана веза:"</string>
     <string name="achievements_unlocked_links">"Откључане везе:"</string>
     <string name="link_category_intro_title">"Увод"</string>
-    <string name="link_category_intro_description">"Научите више о OSM-у и његовој заједници"</string>
+    <string name="link_category_intro_description">"Сазнајте више о OSM платформи и заједници"</string>
     <string name="link_category_editors_title">"Допринос"</string>
-    <string name="link_category_editors_description">"Уредници и други начини да допринесете OSM-у"</string>
+    <string name="link_category_editors_description">"Уредници и други начини да доприносите на OpenStreetMap"</string>
     <string name="link_category_maps_title">"Карте"</string>
     <string name="link_category_maps_description">"Карте базиране на OpenStreetMap"</string>
     <string name="link_category_showcase_title">"Излог"</string>
-    <string name="link_category_showcase_description">"Услуге и програми базирани на OSM-у"</string>
+    <string name="link_category_showcase_description">"Услуге и апликације базиране на OpenStreetMap"</string>
     <string name="link_category_goodies_title">"Занимљивости"</string>
     <string name="link_category_goodies_description">"Занимљивости повезане с картама које можете да пробате"</string>
     <string name="link_cyclosm_description">"Карта за бициклисте"</string>
@@ -798,22 +794,22 @@
     <string name="link_wheelmap_description">"Пронађите места доступна за инвалидска колица"</string>
 
     <!-- Fuzzy -->
-    <string name="link_osm_buildings_description">"Карта која приказује грађевине у 3Д"</string>
+    <string name="link_osm_buildings_description">"Карта која приказује грађевине у 3D"</string>
     <string name="link_openvegemap_description">"Откријте вегетаријанске и веганске ресторане у вашем граду"</string>
     <string name="link_touch_mapper_description">"Лако направите тактилне карте за било коју адресу"</string>
-    <string name="link_mapy_tactile_description">"Тактилне карте за особе оштећеног вида у било којој размери"</string>
+    <string name="link_mapy_tactile_description">"Тактилне карте за слабовиде особе у различитим размерама"</string>
     <string name="link_josm_description">"Потпуно опремљени OSM уређивач за рачунаре. Ово је напредан алат за редовне сараднике."</string>
     <string name="link_vespucci_description">"Напредни OSM уређивач за Android"</string>
     <string name="link_ideditor_description">"Једноставни OSM уређивач за прегледач. Прилагођено за рачунаре и веће таблете"</string>
     <string name="link_umap_description">"Брзо направите карте са прилагођеним подацима и уградите их у ваш сајт"</string>
     <string name="link_opnvkarte_description">"Карта јавног превоза са рутама и стајалишта"</string>
-    <string name="link_pic4review_description">"Допринесите OSM-у гледајући фотографије вашег града"</string>
+    <string name="link_pic4review_description">"Допринесите на OSM посматрајући фотографије вашег града"</string>
     <string name="link_wiki_description">"Wiki је ваше полазиште за све што је везано за OpenStreetMap"</string>
-    <string name="link_learnosm_description">"Нови сте на OpenStreetMap-ама? Ово је водич за почетнике"</string>
+    <string name="link_learnosm_description">"Нови сте на OpenStreetMap? Ово је водич за почетнике"</string>
     <string name="link_neis_one_description">"Велика збирка статистика за OpenStreetMap сараднике, попут, како и где сте картирали, ко је у вашој околини, као и ранг листе"</string>
-    <string name="link_welcome_mat_description">"Опште информације о OpenStreetMap-у и како, као организација, радити са OSM-ом"</string>
-    <string name="link_mapillary_description">"Услуга и програм за дељење фотографија са улице, са изричитом дозволом да се користе за допринос OSM-у"</string>
-    <string name="link_openstreetcam_description">"Услуга и програм за дељење фотографија са улице, са изричитом дозволом да се користе за допринос OSM-у"</string>
+    <string name="link_welcome_mat_description">"Опште информације о OpenStreetMap платформи и како, као организација, радити са њом"</string>
+    <string name="link_mapillary_description">"Услуга и апликација за дељење фотографија из улица, са изричитом дозволом да се користе за побољшање OSM података"</string>
+    <string name="link_openstreetcam_description">"Услуга и апликација за дељење фотографија из улица, са изричитом дозволом да се користе за побољшање OSM података"</string>
 
     <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"Навигација корак по корак за инвалидска колица"</string>
@@ -837,9 +833,9 @@
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Добродошли у OpenStreetMap заједницу! У вашем профилу можете видети више информација о свакој врсти задатка који сте решили."</string>
     <string name="achievement_surveyor_title">"Геодет"</string>
-    <string name="achievement_surveyor_solved_X">"Решили сте %d задатака! Наставите тако и откључајте још достигнућа која садрже везе до OSM-а и других пројеката и програма везаних за карте!"</string>
+    <string name="achievement_surveyor_solved_X">"Решили сте %d задатака! Наставите тако и откључајте још достигнућа која садрже OSM везе и друге пројекате и програме у вези са картама!"</string>
     <string name="achievement_regular_title">"Редован сарадник"</string>
-    <string name="achievement_regular_description">"Доприносили сте %d дана OSM-у овим програмом! Редовни сарадници су темељ OSM-а, хвала вам на вашој преданости! ❤"</string>
+    <string name="achievement_regular_description">"Овом апликацијом сте доприносили %d дана на OSM! Редовни сарадници су основ OSM платформе, хвала вам на преданости! ❤"</string>
     <string name="achievement_bicyclist_title">"Бициклиста"</string>
     <string name="achievement_bicyclist_solved_X">"Решили сте %d задатака који помажу бициклистима!"</string>
     <string name="achievement_wheelchair_title">"Мобилност"</string>
@@ -852,7 +848,7 @@
     <string name="achievement_building_title">"Вишеспратница"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_building_solved_X">"Решили сте %d задатака везаних за грађевине.
+    <string name="achievement_building_solved_X">"Решили сте %d задатака у вези са грађевинама.
 Имајте на уму да овај програм пита за кућни број тек након што се одреди тип грађевине."</string>
     <string name="achievement_blind_title">"Шесто чуло"</string>
     <string name="achievement_blind_solved_X">"Решили сте %d задатака који су корисни слабовидим особама."</string>
@@ -864,7 +860,7 @@
     <string name="achievement_car_solved_X">"Решили сте %d задатака који унапређују детаље уличне инфраструктуре!"</string>
 
     <!-- Notifications -->
-    <string name="unread_messages_message">"Имате %d непрочитаних порука у сандучету"</string>
+    <string name="unread_messages_message">"Имате %d непрочитане поруке у сандучету"</string>
     <string name="unread_messages_button">"Отвори сандуче"</string>
 
     <!-- Main menu -->
@@ -895,7 +891,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Не припада улици са именом"</string>
     <string name="quest_address_street_place_name_label">"Назив места:"</string>
-    <string name="quest_address_street_description">"Додирните пут на карти коме кућни број припада или упишите, без скраћеница, у поље испод:"</string>
     <string name="quest_recycling_type_cooking_oil">"Јестиво уље"</string>
     <string name="quest_recycling_type_engine_oil">"Моторно уље"</string>
     <string name="link_photon_description">"Независно проширење Nominatima, које користи претрагу непотпуних података и претрагу док куцате"</string>
@@ -1015,9 +1010,6 @@
     <string name="quest_surface_value_rock">"Камење"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Високи камиони могу проћи"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могу проћи"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Додир. пут на карти"</string>
     <string name="quest_crossing_type_marked">"Обележени пешачки прелаз"</string>
     <string name="quest_parkingType_street_side">"Паркинг уз улицу"</string>
     <string name="quest_parkingType_lane">"Паркинг на путу"</string>
@@ -1219,12 +1211,11 @@
     <string name="restore_dialog_message">"Вратити све задатке које сте сакрили?"</string>
     <string name="quest_parking_access_title2">"Ко се овде сме паркирати? Да ли је са или без наплате?"</string>
     <string name="quest_access_yes">"Било ко"</string>
-    <string name="quest_access_customers">"Свака особа која посећује одређено место (нпр. само муштерије)"</string>
+    <string name="quest_access_customers">"Свако ко посећује ово место (нпр. само муштерије)"</string>
     <string name="quest_access_private">"Само особе са дозволом"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Да ли су времена прикупљања овог сандучета и даље исправна?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Није препознато. Пробајте унети врсту места, нпр. „пекара“, или размислите да оставите напомену."</string>
     <string name="quest_bicycle_barrier_type_title">"Која је врста ове бициклистичке препреке?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Дијагонална у односу на стазу"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Уски пролаз који се сужава ка врху"</string>
@@ -1267,7 +1258,6 @@
     <string name="street_parking_conditional_restrictions_hint">"Ако је овде уопште могуће паркирање или заустављање, прво одговорите како се паркирају они којима је дозвољено. Можете накнадно навести која се тачно ограничења примењују.
 
 Или, можете оставити напомену (са фотографијом)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Има и кућни број и назив…"</string>
     <string name="quest_address_house_number_label">"Кућни број:"</string>
 
     <!-- Fuzzy -->
@@ -1377,7 +1367,7 @@
 
     <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Хвала што желите да подржите ову апликацију!
-Нажалост, због политике Google продавнице, не смемо да прикажемо линк као донацијама унутар апликације. Штавише, не смемо да ставимо линк ни ка нашој главној веб страници."</string>
+Нажалост, због политике Google продавнице, не смемо да прикажемо везу ка донацијама унутар апликације. Штавише, не смемо да ставимо везу ни до нашег главног пројекта."</string>
     <string name="link_osmand_description">"Апликација за мобилни, за преглед карте и навигацију без интернета"</string>
     <string name="link_sunders_description">"Карта камера и опреме за надзор"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Држите близу стрелице, али пазите на саобраћај!"</string>
@@ -1530,8 +1520,8 @@ sorted alphabetically by title -->
 
     <!-- Overlays -->
     <string name="select_overlay">"Одаберите подлогу"</string>
-    <string name="overlay_none">"Никакво"</string>
-    <string name="overlay_lit">"Улично осветљење"</string>
+    <string name="overlay_none">"Ниједна"</string>
+    <string name="overlay_lit">"Улична расвета"</string>
     <string name="lit_value_yes">"Има га"</string>
     <string name="lit_value_no">"Нема га"</string>
     <string name="lit_value_24_7">"Осветљено и дању и ноћу"</string>
@@ -1547,23 +1537,35 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Натпис на улазу:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Опсег станова:"</string>
     <string name="quest_entrance_reference_flat_range_to">"до"</string>
+    <string name="default_disabled_msg_overlay">"Ова врста задатка је иницијално онемогућена јер већ постоји подлога са којом је ефикасније уносити и ажурирати ове податке."</string>
     <string name="quest_camp_drinking_water_title">"Да ли је пијаћа вода бесплатно доступна камперима?"</string>
     <string name="quest_camp_shower_title">"Постоје ли тушеви?"</string>
+    <string name="quest_camp_power_supply_title">"Постоји ли начин да корисници овде допуне свој телефон, лаптоп и сл.?"</string>
     <string name="quest_camp_type_title">"Ко овде може да кампује?"</string>
     <string name="quest_camp_type_tents_and_caravans">"И шатори и кампери, камп приколице, …"</string>
     <string name="quest_camp_type_caravans_only">"Само кампери, камп приколице, …"</string>
     <string name="quest_camp_type_tents_only">"Само шатори"</string>
+    <string name="quest_camp_type_backcountry">"Забачено камповање (без објеката)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Овај промер изгледа нереално, обично је између %1$d и %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Овај одговор се не подудара са оним што је већ унето о овом путу. Да ли сте сигурни да решавате исправн сегмент пута? Да ли сте сигурни да сте истражили читаву дужину, као што се и ради?"</string>
     <string name="quest_recycling_type_pet">"Само PET амбалажа"</string>
     <string name="street_parking_street_width">"Ширина улице: %s"</string>
     <string name="overlay_street_parking">"Паркинг на улици"</string>
+    <string name="link_ohsomehex_description">"Истражите OSM податке кроз простор из даљине, од велике слике до појединачних објеката"</string>
+    <string name="link_opencampingmap_description">"Карта места за камповање"</string>
     <string name="quest_atm_cashin_title">"Можете ли извшити уплату на овом банкомату?"</string>
     <string name="create_node_action_description">"Додали сте тачку са…"</string>
-    <string name="quest_accessPointRef_title">"Који је овде идентификациони број?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Ово је место окупљања"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Зборно место где се људи окупљају у случају нужде. Обично изгледа овако:"</string>
     <string name="quest_address_answer_house_name2">"Објекат има свој назив…"</string>
     <string name="quest_address_street_street_name_label">"Назив улице:"</string>
     <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
-    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само флашице за допуну"</string>
+    <string name="quest_bicycle_incline_title">"Који смер води нагоре одавде?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Иде горе-доле"</string>
+    <string name="quest_drinking_water_type_title">"На који начин је овде доступна вода за пиће?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Други тип фонтанице"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница са слабим водоскоком"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само за допуну флашица"</string>
     <string name="quest_drinking_water_type_tap">"Водом из чесме"</string>
     <string name="quest_drinking_water_type_hand_pump">"Ручном пумпом"</string>
     <string name="quest_drinking_water_type_water_well_no_pump">"Водом из цеви без пумпе"</string>
@@ -1583,4 +1585,5 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_openable">"Отвара се"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Уклоњива је"</string>
     <string name="quest_buildingType_guardhouse">"Пријавница"</string>
+    <string name="quest_genericRef_title">"Који је овде идентификациони број?"</string>
 </resources>

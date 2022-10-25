@@ -806,9 +806,6 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"沒有門牌號碼但有名字…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"房屋名稱："</string>
 
     <!-- Fuzzy -->
@@ -1550,9 +1547,6 @@
     <string name="about_summary_current_version">"目前版本：%s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"這個郵箱的編號是？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
 
     <!-- Fuzzy -->
@@ -1803,7 +1797,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"它並沒有依靠在有名稱的街道上"</string>
     <string name="quest_address_street_place_name_label">"地點名稱："</string>
-    <string name="quest_address_street_description">"點擊在地圖上的道路或是在下方輸入沒有縮寫的名稱："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"機油"</string>
     <string name="link_photon_description">"標準的Nominatim擴充，包含模糊搜尋和你自訂的搜尋。"</string>
@@ -1945,9 +1938,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"高的貨車無法通過"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"在地圖上按道路"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"標線行人穿越道"</string>
@@ -2172,7 +2162,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"這個郵筒的收件時間是否仍正確？"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"無法辨識。請試著輸入地點，像是「烘培坊」，不然的話留下註解。"</string>
     <string name="quest_bicycle_barrier_type_title">"這個是什麼類型的單車障礙？"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"對角線到路徑"</string>
     <string name="quest_barrier_bicycle_type_tilted">"窄通道，越到上面越小"</string>
@@ -2219,7 +2208,6 @@
     <string name="street_parking_conditional_restrictions_hint">"如果這邊可以停車或暫停，第一個答案應該回答停在這裡如何允許，再來講特定的限制條件。
 
 或者，你可以留註解 (拍照片)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"同時是門牌號碼與名稱…"</string>
     <string name="quest_address_house_number_label">"門牌號碼："</string>
 
     <!-- Fuzzy -->

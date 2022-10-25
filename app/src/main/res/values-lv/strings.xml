@@ -322,7 +322,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_powerPolesMaterial_metal">"No metāla"</string>
     <string name="quest_powerPolesMaterial_concrete">"No betona"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tikai ieteicamais ātrums…"</string>
-    <string name="quest_address_answer_house_name">"Nav mājas numurs, bet ir nosaukums…"</string>
     <string name="quest_address_house_name_label">"Mājas nosaukums:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"jumta stāvi"</string>
     <string name="quest_buildingLevels_levelsLabel2">"parastie stāvi (neskaitot jumtu)"</string>
@@ -613,7 +612,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vai vēlaties atstāt piezīmi? Piezīme ar fotogrāfiju palīdzēs citiem kartētājiem šo situāciju atrisināt."</string>
     <string name="quest_handrail_title">"Vai šiem pakāpieniem ir margas?"</string>
     <string name="about_summary_current_version">"Pašreizējā versija: %s"</string>
-    <string name="quest_postboxRef_title">"Kāds ir šīs pasta kastes identifikācijas numurs?"</string>
     <string name="quest_ref_answer_noRef">"Nav redzams numurs vai kods…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Attēlā ceļš ir pagriezts tāpat, kā tas ir pagriezts kartes centrā."</string>
     <string name="quest_recycling_materials_title">"Kādus izšķirotos atkritumus šeit var izmest?"</string>
@@ -787,7 +785,6 @@ līmeņi"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Tas nepiederas pie nosauktas ielas"</string>
     <string name="quest_address_street_place_name_label">"Vietas nosaukums:"</string>
-    <string name="quest_address_street_description">"Kartē uzspiediet uz ceļa, kam tas pieder, ai arī ievadiet to bez saīsinājumiem šajā laukā:"</string>
     <string name="quest_recycling_type_cooking_oil">"Cepamā eļļa"</string>
     <string name="quest_recycling_type_engine_oil">"Motoreļļa"</string>
     <string name="link_photon_description">"Standarta Nominatim paplašinājums, kurā ir aptuvenā meklēšana un meklēšana rakstīšanas laikā"</string>
@@ -889,7 +886,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_surface_value_rock">"Akmens"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Augstas kravas mašīnas var izbraukt cauri"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Augstas kravas mašīnas nevar izspraukties cauri"</string>
-    <string name="quest_address_street_hint">"Kartē spiediet uz ceļa"</string>
     <string name="quest_crossing_type_marked">"Marķēts"</string>
     <string name="quest_parkingType_street_side">"Auto novietošana pie ceļa"</string>
     <string name="quest_parkingType_lane">"Auto novietošana uz ceļa"</string>
@@ -1069,7 +1065,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_access_customers">"Jebkurš cilvēks, kur apmeklē šo vietu (piemēram, klients)"</string>
     <string name="quest_access_private">"Tikai ar atļauju"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Vai pasta ievākšanas laiks uz šīs pastkastes vēl aizvien ir pareizs?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nav atpazīts. Mēģiniet ievadīt vietas veidu, piemēram “bakery” vai “beķereja”. Citādi apsveriet iespēju atstāt piezīmi."</string>
     <string name="quest_bicycle_barrier_type_title">"Kāda veida velo barjera tā ir?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonāli pret celiņu."</string>
     <string name="quest_barrier_bicycle_type_tilted">"Šaura eja, ar sašaurinājumu augšpusē"</string>
@@ -1102,7 +1097,6 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="street_parking_conditional_restrictions_hint">"Ja šeit var novietot vai apturēt auto, norādiet, vai to var darīt uz ielas vai nost no tās. Papildu ierobežojumus varēsiet norādīt vēlāk.
 
 Vai arī atstājiet piezīmi (ar fotogrāfiju)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Ir gan mājas numurs, gan nosaukums…"</string>
     <string name="quest_address_house_number_label">"Mājas numurs:"</string>
     <string name="quest_shoulder_title">"Vai šim ceļam ir nomale?"</string>
     <string name="quest_fireHydrant_position_title">"Kur ir novietots ugunsdzēsības hidrants?"</string>

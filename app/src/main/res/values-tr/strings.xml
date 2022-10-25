@@ -625,9 +625,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tavsiye niteliğinde hız sınırı…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Kapı numarası yok ama ismi var…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Ev ismi:"</string>
 
     <!-- Fuzzy -->
@@ -1276,9 +1273,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="about_summary_current_version">"Mevcut sürüm:%s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Bu posta kutusunun referans numarası nedir?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Görünen referans numarası yok…"</string>
 
     <!-- Fuzzy -->
@@ -1470,7 +1464,6 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Adlandırılmış bir sokağa ait değil"</string>
     <string name="quest_address_street_place_name_label">"Yer adı:"</string>
-    <string name="quest_address_street_description">"Haritadaki ait olduğu yola dokunun veya aşağıdaki alana kısaltma olmadan girin:"</string>
     <string name="quest_recycling_type_cooking_oil">"Yemek yağı"</string>
     <string name="quest_recycling_type_engine_oil">"Motor yağı"</string>
     <string name="link_qwant_maps_description">"Aranabilir yerler ve yol tarifleri içeren bir harita"</string>
@@ -1572,9 +1565,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Uzun kamyonlar sığmaz"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Haritada yola dokunun"</string>
     <string name="quest_generic_answer_does_not_exist">"Böyle bir şey yok…"</string>
     <string name="osm_element_gone_confirmation">"Böyle bir şey yok"</string>
     <string name="leave_note">"Not bırak"</string>

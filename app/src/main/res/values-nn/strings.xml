@@ -305,7 +305,6 @@
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Berre ei tilrådd fartsgrense …"</string>
-    <string name="quest_address_answer_house_name">"Ikkje eit husnummer, men eit husnamn …"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"taketasjar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
@@ -624,7 +623,6 @@
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du leggja att ein merknad? Ein merknad med foto gjer at andre kart­leggjarar kan løysa problemet."</string>
     <string name="quest_handrail_title">"Har denne trappa rekkverk?"</string>
     <string name="about_summary_current_version">"Gjeldande versjon: %s"</string>
-    <string name="quest_postboxRef_title">"Kva er referansenummeret til denne postkassen?"</string>
     <string name="quest_ref_answer_noRef">"Manglar synleg referansenummer …"</string>
 
     <!-- Fuzzy -->
@@ -795,7 +793,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det høyrer ikkje til ei gate eller ein veg med namn"</string>
     <string name="quest_address_street_place_name_label">"Stadnamn:"</string>
-    <string name="quest_address_street_description">"Trykk på gata/vegen som det høyrer til, eller skriv inn namnet utan forkortingar nedanfor:"</string>
     <string name="quest_recycling_type_cooking_oil">"Mat­olje"</string>
     <string name="quest_recycling_type_engine_oil">"Motor­olje"</string>
     <string name="link_photon_description">"Ei frittståande utviding til Nominatim. Støttar omtrentlege søk og kontinuerleg vising av søkjeresultat."</string>
@@ -901,7 +898,6 @@
     <string name="quest_surface_value_rock">"Stein"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Høge vogntog kan passera"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Høge vogntog får ikkje plass"</string>
-    <string name="quest_address_street_hint">"Trykk på gata/vegen på kartet"</string>
     <string name="quest_crossing_type_marked">"Med vegmarkering"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
@@ -1051,7 +1047,6 @@
     <string name="pref_title_language_select">"Vel språk"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"i etasje %s"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Både husnummer og husnamn …"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (legg att ein merknad)"</string>
     <string name="link_osmhydrant_description">"Vis, legg til og rediger informasjon om brannstasjonar og brannhydrantar"</string>

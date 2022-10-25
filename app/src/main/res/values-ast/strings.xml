@@ -804,9 +804,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Namái señala la velocidá máxima aconseyada…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Namái tien nome, nun hai númberu…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Nome de la casa:"</string>
 
     <!-- Fuzzy -->
