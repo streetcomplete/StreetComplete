@@ -24,6 +24,10 @@ class AddCyclewayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "no")
     }
 
+    @Test fun `not applicable to cycleway with specific surface`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "asphalt")
+    }
+
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
