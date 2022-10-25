@@ -17,11 +17,17 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `applicable to segregated cycleway`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes")
         assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes")
+        assertIsApplicable("highway" to "bridleway", "bicycle" to "yes", "segregated" to "yes")
     }
 
     @Test fun `not applicable to non-segregated cycleway`() {
         assertIsNotApplicable("highway" to "cycleway")
         assertIsNotApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "no")
+    }
+
+    @Test fun `not applicable to non-bicycle path`() {
+        assertIsNotApplicable("highway" to "bridleway", "segregated" to "yes")
+        assertIsNotApplicable("highway" to "path", "bicycle" to "no", "segregated" to "yes")
     }
 
     @Test fun `not applicable to cycleway with surface`() {
@@ -31,11 +37,12 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `applicable to cycleway with unspecific surface and note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
+        assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved", "note:cycleway:surface" to "it's complicated")
     }
 
     @Test fun `not applicable to access-restricted cycleways`() {
-        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "no")
-        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "no")
     }
 
     @Test fun `applicable to old enough cycleway with surface`() {
