@@ -485,7 +485,7 @@ class StreetParkingTest {
         )
     }
 
-    fun `applying incomplete throws exception`() {
+    @Test fun `applying incomplete throws exception`() {
         for (incompleteParking in listOf(
             IncompleteStreetParking,
             StreetParkingPositionAndOrientation(null, null),
@@ -501,7 +501,7 @@ class StreetParkingTest {
         }
     }
 
-    fun `applying unknown throws exception`() {
+    @Test fun `applying unknown throws exception`() {
         for (unknownParking in listOf(
             UnknownStreetParking,
             StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.UNKNOWN_POSITION),
