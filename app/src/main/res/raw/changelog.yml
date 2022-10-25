@@ -28,7 +28,7 @@ v48.0: |
   <li>Enable quest that asks if cash is accepted in United Kingdom (#4517)</li>
   <li>Clarify some wordings for buildings (#4431), by @matkoniecz</li>
   <li>Do not ask for parking access if some access is already tagged (#4538, #4547), by @mnalis</li>
-  <li>Parking overlay: Simplify selecting that that there is no parking (#4534)</li>
+  <li>Parking overlay: Simplify selecting that there is no parking (#4534)</li>
   </ul>
   <h3>Other enhancements</h3>
   <ul>
