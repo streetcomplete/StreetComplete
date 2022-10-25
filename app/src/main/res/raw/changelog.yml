@@ -37,7 +37,7 @@ v48.0: |
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
   <li>Resurvey quests no longer vanish after splitting the way - only works if auto-sync is off (#3567, #4523), by @Helium314</li>
-  <li>Fix the parking overlay would unnecessarily remove some tags and not remove others it should remove when changing the answer (#4501, #4552), thanks @tapetis</li>
+  <li>Fix which tags the parking overlay removes when changing the answer (#4501, #4552), thanks @tapetis</li>
   <li>Other small enhancements and fixes (#4453, #4496, #4506, #4494, #4499, #4544, #4540...), thanks @Helium314, @tapetis, @mnalis</li>
   </ul>
 
