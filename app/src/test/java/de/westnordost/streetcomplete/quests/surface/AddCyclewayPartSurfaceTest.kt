@@ -58,6 +58,48 @@ class AddCyclewayPartSurfaceTest {
         assertTrue(questType.isApplicableTo(way)!!)
     }
 
+    @Test fun `apply asphalt surface`() {
+        questType.verifyAnswer(
+            SurfaceAnswer(Surface.ASPHALT),
+            StringMapEntryAdd("cycleway:surface", "asphalt")
+        )
+    }
+
+    @Test fun `apply generic surface`() {
+        questType.verifyAnswer(
+            SurfaceAnswer(Surface.PAVED_ROAD, "note"),
+            StringMapEntryAdd("cycleway:surface", "unpaved"),
+            StringMapEntryAdd("cycleway:surface:note", "note")
+        )
+    }
+
+    @Test fun `updates check_date`() {
+        questType.verifyAnswer(
+            mapOf("cycleway:surface" to "asphalt", "check_date:cycleway:surface" to "2000-10-10"),
+            SurfaceAnswer(Surface.ASPHALT),
+            StringMapEntryModify("cycleway:surface", "asphalt", "asphalt"),
+            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
+        )
+    }
+
+    @Test fun `smoothness tag removed when cycleway surface changes`() {
+        questType.verifyAnswer(
+            mapOf("cycleway:surface" to "asphalt", "smoothness" to "excellent"),
+            SurfaceAnswer(Surface.PAVING_STONES),
+            StringMapEntryDelete("smoothness", "excellent"),
+            StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
+        )
+    }
+
+    @Test fun `cycleway surface changes`() {
+        questType.verifyAnswer(
+            mapOf("cycleway:surface" to "asphalt"),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryModify("cycleway:surface", "asphalt", "concrete"),
+        )
+    }
+
+
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
