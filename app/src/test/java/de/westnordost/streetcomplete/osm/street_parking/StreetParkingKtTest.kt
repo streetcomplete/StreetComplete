@@ -292,6 +292,7 @@ class StreetParkingTest {
                 StringMapEntryAdd("parking:lane:both:parallel", "on_street"),
                 StringMapEntryDelete("parking:lane:left:parallel", "on_street"),
                 StringMapEntryDelete("parking:lane:right:parallel", "on_kerb"),
+                StringMapEntryDelete("parking:condition:right", "customers")
             )
         )
     }
