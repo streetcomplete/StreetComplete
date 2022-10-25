@@ -35,8 +35,13 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `not applicable to cycleway with surface`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "asphalt")
-        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
     }
+
+    @Test fun `not applicable to cycleway with sidewalk`() {
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "sidewalk" to "yes")
+    }
+
 
     @Test fun `applicable to cycleway with unspecific surface and note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
@@ -46,6 +51,7 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `not applicable to access-restricted cycleways`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "private")
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "no")
+        assertIsNotApplicable("highway" to "bridleway", "bicycle" to "designated", "segregated" to "yes", "access" to "private")
     }
 
     @Test fun `applicable to old enough cycleway with surface`() {
@@ -58,7 +64,7 @@ class AddCyclewayPartSurfaceTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way)!!)
+        assertTrue(questType.isApplicableTo(way))
     }
 
     @Test fun `apply asphalt surface`() {
@@ -70,7 +76,7 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `apply generic surface`() {
         questType.verifyAnswer(
-            SurfaceAnswer(Surface.PAVED_ROAD, "note"),
+            SurfaceAnswer(Surface.UNPAVED_ROAD, "note"),
             StringMapEntryAdd("cycleway:surface", "unpaved"),
             StringMapEntryAdd("cycleway:surface:note", "note")
         )
@@ -81,7 +87,7 @@ class AddCyclewayPartSurfaceTest {
             mapOf("cycleway:surface" to "asphalt", "check_date:cycleway:surface" to "2000-10-10"),
             SurfaceAnswer(Surface.ASPHALT),
             StringMapEntryModify("cycleway:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
+            StringMapEntryModify("check_date:cycleway:surface", "2000-10-10", LocalDate.now().toCheckDateString()),
         )
     }
 
@@ -99,6 +105,45 @@ class AddCyclewayPartSurfaceTest {
             mapOf("cycleway:surface" to "asphalt"),
             SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "asphalt", "concrete"),
+        )
+    }
+
+    @Test fun `surface changes when same for footway and cycleway`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "paving_stones",
+                "cycleway:surface" to "paving_stones",
+                "footway:surface" to "concrete",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryAdd("cycleway:surface", "concrete"),
+            StringMapEntryAdd("footway:surface", "concrete"),
+            StringMapEntryAdd("surface", "concrete")
+        )
+    }
+
+    @Test fun `surface removed when different for footway and cycleway`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "paving_stones",
+                "cycleway:surface" to "paving_stones",
+                "footway:surface" to "paving_stones",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryAdd("cycleway:surface", "concrete"),
+            StringMapEntryAdd("footway:surface", "paving_stones"),
+            StringMapEntryDelete("surface", "paving_stones")
+        )
+    }
+
+    @Test fun `surface not touched when footway surface missing`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "asphalt",
+                "cycleway:surface" to "paving_stones",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryAdd("cycleway:surface", "concrete")
         )
     }
 
