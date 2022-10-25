@@ -12,13 +12,21 @@ import org.junit.Test
 
 class StreetParkingTest {
 
-    @Test fun `apply no parking on both sides`() {
+    @Test fun `apply no parking`() {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
-            arrayOf(
-                StringMapEntryAdd("parking:lane:both", "no")
-            )
+            arrayOf(StringMapEntryAdd("parking:lane:both", "no"))
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(NoStreetParking, null),
+            arrayOf(StringMapEntryAdd("parking:lane:left", "no"))
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(null, NoStreetParking),
+            arrayOf(StringMapEntryAdd("parking:lane:right", "no"))
         )
     }
 
@@ -26,9 +34,17 @@ class StreetParkingTest {
         verifyAnswer(
             mapOf(),
             LeftAndRightStreetParking(StreetParkingSeparate, StreetParkingSeparate),
-            arrayOf(
-                StringMapEntryAdd("parking:lane:both", "separate")
-            )
+            arrayOf(StringMapEntryAdd("parking:lane:both", "separate"))
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(StreetParkingSeparate, null),
+            arrayOf(StringMapEntryAdd("parking:lane:left", "separate"))
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(null, StreetParkingSeparate),
+            arrayOf(StringMapEntryAdd("parking:lane:right", "separate"))
         )
     }
 
@@ -93,6 +109,37 @@ class StreetParkingTest {
         )
     }
 
+    @Test fun `applying one side combines with previous tagging of the other side to both-tag`() {
+        verifyAnswer(
+            mapOf("parking:lane:left" to "separate"),
+            LeftAndRightStreetParking(null, StreetParkingSeparate),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:both", "separate"),
+                StringMapEntryDelete("parking:lane:left", "separate"),
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:lane:right" to "separate"),
+            LeftAndRightStreetParking(StreetParkingSeparate, null),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:both", "separate"),
+                StringMapEntryDelete("parking:lane:right", "separate"),
+            )
+        )
+    }
+
+    @Test fun `changing one side replaces both-tag`() {
+        verifyAnswer(
+            mapOf("parking:lane:both" to "separate"),
+            LeftAndRightStreetParking(null, NoStreetParking),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "separate"),
+                StringMapEntryAdd("parking:lane:right", "no"),
+                StringMapEntryDelete("parking:lane:both", "separate"),
+            )
+        )
+    }
+
     @Test fun `updates check date`() {
         verifyAnswer(
             mapOf("parking:lane:both" to "no"),
@@ -128,8 +175,6 @@ class StreetParkingTest {
                 "parking:lane:both" to "parallel",
                 "parking:lane:left:parallel" to "half_on_kerb",
                 "parking:lane:right:parallel" to "on_kerb",
-                "parking:condition:left" to "free",
-                "parking:condition:right" to "customers",
             ),
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
@@ -142,8 +187,6 @@ class StreetParkingTest {
                 StringMapEntryModify("parking:lane:left:parallel", "half_on_kerb", "on_street"),
                 StringMapEntryDelete("parking:lane:right:parallel", "on_kerb"),
                 StringMapEntryAdd("parking:lane:right:diagonal", "on_street"),
-                StringMapEntryDelete("parking:condition:left", "free"),
-                StringMapEntryDelete("parking:condition:right", "customers"),
             )
         )
     }
