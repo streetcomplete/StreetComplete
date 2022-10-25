@@ -132,8 +132,11 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
     }
 
     protected fun composeNote() {
-        val questTitle = resources.getQuestTitle(questType, emptyMap())
-        val leaveNoteContext = "Unable to answer \"$questTitle\""
+        val questTitle = resources.getQuestTitle(questType, element?.tags ?: emptyMap())
+        val actualTitle = getCurrentTitle()
+        val show = if (actualTitle.startsWith(questTitle)) actualTitle
+            else "$questTitle / $actualTitle" // title for Osmose quest contains more information, and this might also be the case for future OtherSourceQuests
+        val leaveNoteContext = "Unable to answer \"$show\""
         listener?.onComposeNote(questType as OtherSourceQuestType, element ?: dummyElement, geometry, leaveNoteContext)
     }
 

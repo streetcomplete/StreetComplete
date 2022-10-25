@@ -63,6 +63,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     ALLOTMENT_HOUSE ("building", "allotment_house"),
     ROOF            ("building", "roof"),
     BRIDGE          ("building", "bridge"),
+    TENT            ("building", "tent"),
     TOILETS         ("building", "toilets"),
     SERVICE         ("building", "service"),
     TRANSFORMER_TOWER ("building", "transformer_tower"),

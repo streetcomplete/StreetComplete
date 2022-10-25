@@ -97,6 +97,7 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     STABLE ->          R.string.quest_buildingType_stable
     STY ->             R.string.quest_buildingType_sty
     TRANSFORMER_TOWER -> R.string.quest_buildingType_transformer_tower
+    TENT ->            R.string.quest_buildingType_tent
     CONSTRUCTION ->    null
     DEMOLISHED ->      null
 }
@@ -199,6 +200,7 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     STABLE ->          R.drawable.ic_building_barn
     STY ->             R.drawable.ic_building_barn
     TRANSFORMER_TOWER -> R.drawable.ic_building_service
+    TENT ->            R.drawable.ic_building_greenhouse
     CONSTRUCTION ->    null
     DEMOLISHED ->      null
 }

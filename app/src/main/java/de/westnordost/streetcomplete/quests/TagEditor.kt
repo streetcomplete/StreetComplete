@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -37,6 +35,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -57,6 +56,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import java.util.Date
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.min
 
 // todo: ideas for improvements
@@ -99,7 +99,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
-    protected val newTags = hashMapOf<String, String>()
+    protected val newTags = ConcurrentHashMap<String, String>()
     protected val tagList = mutableListOf<Pair<String, String>>() // sorted list of tags from newTags, need to keep in sync manually
     private lateinit var geometry: ElementGeometry
 
@@ -214,8 +214,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         f.requireArguments().putAll(args)
         val osmArgs = AbstractOsmQuestForm.createArguments(element)
         f.requireArguments().putAll(osmArgs)
+        activity?.currentFocus?.hideKeyboard()
         parentFragmentManager.commit { // in parent fragment, because this handles the callbacks
-//            replace(id, f, null) // replace this view, so editor is hidden while quest is shown -> no, this is not working well
             replace(R.id.editorContainer, f, null) // replace container, not this fragment! otherwise viewLifecycleScope gets canceled
             addToBackStack(null)
             binding.editTags.visibility = View.GONE

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -28,6 +29,7 @@ import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.NAME
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.koin.core.component.KoinComponent
@@ -140,6 +142,8 @@ class OsmoseDao(
                 type,
                 position
         ).apply { if (elements.size == 1) elementKey = elements.single() }
+                // same area limitation as AddForestLeafType
+                .takeIf { ((it.geometry as? ElementPolygonsGeometry)?.polygons?.measuredMultiPolygonArea() ?: 0.0) < 10000 }
 
     fun setFromDoneToNotAnsweredNear(position: LatLon) {
         db.update(NAME,
