@@ -109,20 +109,20 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     val rightSideChanged = right != null && !right.isSupplementingOrEqual(currentParking?.right)
     val leftSideChanged = left != null && !left.isSupplementingOrEqual(currentParking?.left)
 
-    val keysToRemove = buildList {
-        if (right == left) {
-            add(Regex("^parking:lane:.*"))
-            if (conditionLeft != null && conditionRight == conditionLeft) {
-                add(Regex("^parking:condition:.*"))
-            }
-        } else if (rightSideChanged && leftSideChanged) {
-            add(Regex("^parking:(lane|condition):.*"))
-        } else if (rightSideChanged) {
-            add(Regex("^parking:(lane|condition):(both|right).*"))
-        } else if (leftSideChanged) {
-            add(Regex("^parking:(lane|condition):(both|left).*"))
+    val keysToRemove = mutableListOf<Regex>()
+    if (right == left) {
+        keysToRemove.add(Regex("^parking:lane:.*"))
+        if (conditionLeft != null && conditionRight == conditionLeft) {
+            keysToRemove.add(Regex("^parking:condition:.*"))
         }
+    } else if (rightSideChanged && leftSideChanged) {
+        keysToRemove.add(Regex("^parking:(lane|condition):.*"))
+    } else if (rightSideChanged) {
+        keysToRemove.add(Regex("^parking:(lane|condition):(both|right).*"))
+    } else if (leftSideChanged) {
+        keysToRemove.add(Regex("^parking:(lane|condition):(both|left).*"))
     }
+
     if (keysToRemove.isNotEmpty()) {
         for (key in tags.keys) {
             if (keysToRemove.any { it.matches(key) }) tags.remove(key)
