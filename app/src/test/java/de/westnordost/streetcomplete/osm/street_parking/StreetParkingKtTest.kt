@@ -10,6 +10,7 @@ import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Test
 
 class StreetParkingTest {
@@ -388,24 +389,35 @@ class StreetParkingTest {
         )
     }
 
-    @Test(expected = IllegalArgumentException::class)
-    fun `applying incomplete left throws exception`() {
-        LeftAndRightStreetParking(IncompleteStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+    fun `applying incomplete throws exception`() {
+        for (incompleteParking in listOf(
+            IncompleteStreetParking,
+            StreetParkingPositionAndOrientation(null, null),
+            StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, null),
+            StreetParkingPositionAndOrientation(null, ParkingPosition.ON_STREET),
+        )) {
+            assertFails {
+                LeftAndRightStreetParking(incompleteParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+            }
+            assertFails {
+                LeftAndRightStreetParking(null, incompleteParking).applyTo(StringMapChangesBuilder(mapOf()))
+            }
+        }
     }
 
-    @Test(expected = IllegalArgumentException::class)
-    fun `applying incomplete right throws exception`() {
-        LeftAndRightStreetParking(null, IncompleteStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
-    }
-
-    @Test(expected = IllegalArgumentException::class)
-    fun `applying unknown left throws exception`() {
-        LeftAndRightStreetParking(UnknownStreetParking, null).applyTo(StringMapChangesBuilder(mapOf()))
-    }
-
-    @Test(expected = IllegalArgumentException::class)
-    fun `applying unknown right throws exception`() {
-        LeftAndRightStreetParking(null, UnknownStreetParking).applyTo(StringMapChangesBuilder(mapOf()))
+    fun `applying unknown throws exception`() {
+        for (unknownParking in listOf(
+            UnknownStreetParking,
+            StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.UNKNOWN_POSITION),
+            StreetParkingPositionAndOrientation(ParkingOrientation.UNKNOWN_ORIENTATION, ParkingPosition.ON_STREET),
+        )) {
+            assertFails {
+                LeftAndRightStreetParking(unknownParking, null).applyTo(StringMapChangesBuilder(mapOf()))
+            }
+            assertFails {
+                LeftAndRightStreetParking(null, unknownParking).applyTo(StringMapChangesBuilder(mapOf()))
+            }
+        }
     }
 
     @Test fun validOrNullValues() {
@@ -446,6 +458,11 @@ class StreetParkingTest {
             ParkingPosition.ON_KERB
         ).isValid)
     }
+}
+
+private fun assertFails(block: () -> Unit) {
+    try { block() } catch (e: Exception) { return }
+    fail()
 }
 
 private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightStreetParking, expectedChanges: Array<StringMapEntryChange>) {
