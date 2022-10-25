@@ -369,7 +369,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_powerPolesMaterial_metal">"Čelik"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Samo preporučeno ograničenje brzine…"</string>
-    <string name="quest_address_answer_house_name">"Nema kućni broj nego naziv…"</string>
     <string name="quest_address_house_name_label">"Naziv kuće:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"katovi u potkrovlju"</string>
     <string name="quest_buildingLevels_levelsLabel2">"obični katovi (ne računajući potkrovlje)"</string>
@@ -751,9 +750,6 @@ Razdvojiti put sada?"</string>
     <string name="about_summary_current_version">"Trenutna verzija: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Koji je referentni broj ovog poštanskog sandučića?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nema vidljivog referentnog broja…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraciji rotirana je isto kao njen centar na karti."</string>
     <string name="quest_recycling_materials_title">"Što se sve ovdje može ostaviti za recikliranje?"</string>
@@ -967,7 +963,6 @@ postignuća"</string>
     <!-- is this "place name" as in "village / town / city / square name" or as in "cafe / pub / restaurant name"? -->
     <!-- Fuzzy -->
     <string name="quest_address_street_place_name_label">"Naziv mjesta:"</string>
-    <string name="quest_address_street_description">"Dotaknite cestu kojoj pripada na karti ili je unesite bez kratica u polje ispod:"</string>
     <string name="quest_recycling_type_cooking_oil">"Jestivo ulje"</string>
     <string name="quest_recycling_type_engine_oil">"Motorno ulje"</string>
 
@@ -1107,9 +1102,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_surface_value_rock">"Kamenje"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Visoki kamioni mogu proći"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Visoki kamioni ne mogu proći"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Dotaknite cestu na karti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Samo označen (zebrom)"</string>
@@ -1431,9 +1423,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Jesu li vremena prikupljanja ovog poštanskog sandučića još uvijek ispravna?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error2">"Nije prepoznato. Pokušajte unijeti vrstu lokacije, na primjer “pekara”. Ili, razmislite o ostavljanju bilješke."</string>
     <string name="quest_bicycle_barrier_type_title">"Kakva je ovo vrsta biciklističke barijere?"</string>
 
     <!-- Fuzzy -->
@@ -1490,7 +1479,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci brišu 
     <string name="street_parking_conditional_restrictions_hint">"Ako je ovdje uopće moguće parkirati ili se zaustaviti, prvo odgovorite kako se parkiraju oni koji to smiju. Koja se ograničenja točno primjenjuju možete naknadno navesti.
 
 Alternativno, možete ostaviti bilješku (sa fotografijom)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Ima i kućni broj i naziv"</string>
     <string name="quest_address_house_number_label">"Kućni broj:"</string>
 
     <!-- Fuzzy -->
@@ -1918,7 +1906,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Karta kampova"</string>
     <string name="quest_atm_cashin_title">"Možete li položiti gotovinu u ovoj bankomat?"</string>
     <string name="create_node_action_description">"Napravili ste točku s …"</string>
-    <string name="quest_accessPointRef_title">"Koji je referentni broj ovdje?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_accessPointRef_answer_assembly_point">"To je sabirna točka"</string>

@@ -1,3 +1,2 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-officialLanguages: [pa, hi, en]
-popularReligions: [sikh, hindu, muslim, christian, jain]
+additionalStreetsignLanguages: [scl, bft, bsk, wbl]

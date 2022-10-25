@@ -477,7 +477,6 @@
     <!-- https://wiki.openstreetmap.org/wiki/Proposed_features/recommended_speed ? -->
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Есть знак рекомендуемой скорости…"</string>
-    <string name="quest_address_answer_house_name">"Номера нет, есть название…"</string>
     <string name="quest_address_house_name_label">"Название дома:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
@@ -1005,9 +1004,6 @@
     <string name="about_summary_current_version">"Текущая версия: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Какой номер у этого почтового ящика?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Номер не виден…"</string>
 
     <!-- Fuzzy -->
@@ -1293,7 +1289,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Не принадлежит названной улице"</string>
     <string name="quest_address_street_place_name_label">"Название места:"</string>
-    <string name="quest_address_street_description">"Нажмите на дорогу к которой относится объект или введите название улицы в поле ввода:"</string>
     <string name="quest_recycling_type_cooking_oil">"Растительное масло"</string>
     <string name="quest_recycling_type_engine_oil">"Моторное масло"</string>
     <string name="link_photon_description">"Автономное расширение для Nominatim с нечётким поиском и функцией поиска по мере ввода"</string>
@@ -1435,9 +1430,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Высокие грузовики не могут проехать"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Нажмите на дорогу на карте"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Переход с разметкой/знаком"</string>
@@ -1696,7 +1688,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Время сбора этого почтового ящика по-прежнему правильное?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Не распознан. Попробуйте ввести тип заведения, например “пекарня”. В противном случае подумайте о том, чтобы оставить заметку."</string>
     <string name="quest_bicycle_barrier_type_title">"Что это за велосипедный барьер?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"По диагонали к дорожке"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Узкий проход, уменьшающийся к вершине"</string>
@@ -1749,7 +1740,6 @@
     <string name="street_parking_conditional_restrictions_hint">"Если здесь можно припарковаться или вообще остановиться, сначала ответьте, как те, кому это разрешено, паркуются здесь. Какие именно ограничения применяются, можно уточнить позднее.
 
 В качестве альтернативы вы можете оставить заметку (с фотографией)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"И номер дома, и имя…"</string>
     <string name="quest_address_house_number_label">"Номер дома:"</string>
 
     <!-- Fuzzy -->

@@ -428,7 +428,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_powerPolesMaterial_metal">"Acero"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento u hormigón"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Sólo señala la velocidad máxima aconsejada…"</string>
-    <string name="quest_address_answer_house_name">"Sólo tiene nombre, no hay número…"</string>
     <string name="quest_address_house_name_label">"Nombre de la casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"plantas del tejado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"plantas (sin contar el tejado)"</string>
@@ -912,9 +911,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="about_summary_current_version">"Versión actual: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"¿Cuál es el número de referencia de este buzón?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"No veo ningún número de referencia…"</string>
 
     <!-- Fuzzy -->
@@ -1163,7 +1159,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
-    <string name="quest_address_street_description">"Toca la vía a la que pertenece en el mapa o escríbela sin abreviaturas en el siguiente campo:"</string>
     <string name="quest_recycling_type_cooking_oil">"Aceite de cocina"</string>
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Una extensión independiente para Nominatim, con búsqueda parcial y dinámica al escribir"</string>
@@ -1294,9 +1289,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Los camiones altos no caben"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Toca la calle en el mapa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Cruce marcado"</string>
@@ -1527,7 +1519,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"¿Las horas de recogida del correo de este buzón siguen bien puestas?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"No se entiende, prueba con el tipo de lugar, como «panadería», también puedes dejar una nota."</string>
     <string name="quest_bicycle_barrier_type_title">"¿Sabes qué tipo de obstáculo para el paso de bicis es?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Obstáculo diagonal en la vía"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Cruce estrecho, estrechándose por arriba"</string>
@@ -1572,7 +1563,6 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="street_parking_conditional_restrictions_hint">"Si se puede estacionar o detener el vehículo explica el cómo. No te preocupes por las restricciones de acceso de quién sí y quién no, eso vendrá después.
 
 También puedes dejar una nota (con foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Tiene número de puerta y nombre…"</string>
     <string name="quest_address_house_number_label">"Número de puerta:"</string>
 
     <!-- Fuzzy -->

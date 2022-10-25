@@ -337,7 +337,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit …"</string>
-    <string name="quest_address_answer_house_name">"Keine Nummer, aber ein Hausname …"</string>
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dach­geschosse"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Stockwerke (ohne Dach­geschosse)"</string>
@@ -616,7 +615,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen einen Hinweis hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
     <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
-    <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Postkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar …"</string>
     <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
@@ -797,7 +795,6 @@ aktiv"</string>
 Erfolge"</string>
     <string name="quest_address_street_no_named_streets">"Gehört zu keiner Straße mit Namen …"</string>
     <string name="quest_address_street_place_name_label">"Ortsname:"</string>
-    <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
     <string name="quest_recycling_type_cooking_oil">"Speiseöl"</string>
     <string name="quest_recycling_type_engine_oil">"Motoröl"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
@@ -903,7 +900,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_surface_value_rock">"Fels"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Hohe Lastwagen können hindurch"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
-    <string name="quest_address_street_hint">"Tippe auf die Straße"</string>
     <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
     <string name="quest_parkingType_street_side">"Parkbuchten am Straßenrand"</string>
     <string name="quest_parkingType_lane">"Parken auf der Straße"</string>
@@ -1087,7 +1083,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_access_customers">"Jede Person, die einen bestimmten Ort besucht (z. B. nur Kunden)"</string>
     <string name="quest_access_private">"Nur Einzelne mit Erlaubnis"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Stimmen diese Leerungszeiten für diesen Postkasten noch?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nicht erkannt. Versuche, die Art des Ortes einzugeben, z. B. „Bäckerei“. Andernfalls kannst du einen Hinweis hinterlassen."</string>
     <string name="quest_bicycle_barrier_type_title">"Was für ein Fahrradhindernis ist das?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal zum Weg"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Enger Durchgang, nach oben hin kleiner"</string>
@@ -1120,7 +1115,6 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="street_parking_conditional_restrictions_hint">"Wenn es überhaupt möglich ist, hier zu parken oder zu halten, beantworte zunächst, wie diejenigen, die es dürfen, hier parken. Welche Einschränkungen genau gelten, kann später hinzugefügt werden.
 
 Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Hausnummer und -name …"</string>
     <string name="quest_address_house_number_label">"Hausnummer:"</string>
     <string name="quest_shoulder_title">"Hat diese Straße einen Seitenstreifen?"</string>
     <string name="quest_fireHydrant_position_title">"Wo befindet sich dieser Hydrant?"</string>
@@ -1385,7 +1379,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Eine Weltkarte der Campingplätze"</string>
     <string name="quest_atm_cashin_title">"Kann man an diesem Geldautomaten Bargeld einzahlen?"</string>
     <string name="create_node_action_description">"Du hast einen Punkt erstellt mit …"</string>
-    <string name="quest_accessPointRef_title">"Was ist die Referenznummer hier?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Es ist ein Sammelplatz"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Ein Sammelplatz ist ein Ort, an dem sich Menschen im Notfall versammeln. Er sieht meist ähnlich aus wie dieser:"</string>
     <string name="quest_address_answer_house_name2">"Es hat einen Hausnamen …"</string>
@@ -1416,4 +1409,5 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Entfernbar"</string>
     <string name="quest_buildingType_guardhouse">"Wachhaus"</string>
     <string name="quest_genericRef_title">"Was ist die Referenznummer hier?"</string>
+    <string name="quest_sidewalk_answer_different">"Bürgersteige sind hier anders"</string>
 </resources>

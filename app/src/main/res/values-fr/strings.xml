@@ -382,7 +382,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_powerPolesMaterial_metal">"Acier"</string>
     <string name="quest_powerPolesMaterial_concrete">"Béton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Juste une limite de vitesse conseillée…"</string>
-    <string name="quest_address_answer_house_name">"Pas de numéro mais un nom…"</string>
     <string name="quest_address_house_name_label">"Nom de la maison :"</string>
 
     <!-- For the record https://wiki.openstreetmap.org/wiki/Simple_3D_buildings#Roof -->
@@ -769,7 +768,6 @@ Découper maintenant ?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Souhaitez-vous laisser une note ? Une note avec une photo permettra à d’autres cartographes de s’en occuper."</string>
     <string name="quest_handrail_title">"Ces marches ont-elles une main courante ?"</string>
     <string name="about_summary_current_version">"Version actuelle : %s"</string>
-    <string name="quest_postboxRef_title">"Quel est le numéro d'identification de cette boîte aux lettres ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
@@ -1000,7 +998,6 @@ accomplis"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Cela n’appartient pas à une rue précise"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
-    <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez son nom sans abréviations dans le champ ci-dessous :"</string>
     <string name="quest_recycling_type_cooking_oil">"Huile de friture"</string>
     <string name="quest_recycling_type_engine_oil">"Huile de moteur"</string>
     <string name="link_photon_description">"Une extension autonome à Nominatim, incluant une recherche approximative et une recherche au fur et à mesure de la frappe"</string>
@@ -1136,9 +1133,6 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_surface_value_rock">"Rocher"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Les grands camions peuvent passer"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Les grands camions ne rentrent pas"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tapez la rue sur le plan"</string>
     <string name="quest_crossing_type_marked">"Passage piéton marqué"</string>
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
@@ -1351,7 +1345,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Les horaires de levée de cette boîte aux lettres sont-ils toujours correctes ?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Non reconnu. Essayez d’entrer le type du lieu, par exemple \"boulangerie\". Sinon, vous pouvez laisser une note."</string>
     <string name="quest_bicycle_barrier_type_title">"Quel type de barrière à vélos est-ce ?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"En diagonal du chemin"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passage étroit, plus petit vers le haut"</string>
@@ -1396,7 +1389,6 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="street_parking_conditional_restrictions_hint">"S’il est possible de s’arrêter ou de stationner, indiquez d’abord de quelle manière cela est permis. Vous pourrez préciser les restrictions ensuite.
 
 En alternative, vous pouvez laisser une note (avec une photo)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"A la fois un numéro d’adresse et un nom …"</string>
     <string name="quest_address_house_number_label">"Numéro d’adresse :"</string>
 
     <!-- Fuzzy -->
@@ -1715,7 +1707,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Une carte des terrains de camping"</string>
     <string name="quest_atm_cashin_title">"Est-il possible de déposer de l’argent dans ce distributeur ?"</string>
     <string name="create_node_action_description">"Vous avez crée un noeud avec ..."</string>
-    <string name="quest_accessPointRef_title">"Quel est le numéro d’identification ici ?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"C’est un point de rassemblement"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un point de rassemblement est un endroit où les gens se regroupent en cas d’urgence. Cela ressemble généralement à ceci :"</string>
     <string name="quest_address_answer_house_name2">"La maison possède un nom..."</string>
@@ -1738,13 +1729,12 @@ sorted alphabetically by title -->
     <string name="vacant_shop_title">"Emplacement vacant"</string>
 
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
-    <!-- Fuzzy -->
-    <string name="unknown_shop_title">"Type de lieu inconnu"</string>
-    <string name="quest_address_answer_no_address">"Pas d'adresse ici"</string>
+    <string name="unknown_shop_title">"Type de lieu non non défini"</string>
+    <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
     <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos ?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixe"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Ouvrable"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Amovible"</string>
     <string name="quest_buildingType_guardhouse">"Poste de garde"</string>
-    <string name="quest_genericRef_title">"Quel est le numéro d'identification ici ?"</string>
+    <string name="quest_genericRef_title">"Quel est le numéro d’identification ici ?"</string>
 </resources>
