@@ -270,11 +270,58 @@ class StreetParkingTest {
         )
     }
 
+    @Test fun `supplementing one side does not remove properties specified for both sides`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane:right" to "parallel",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                null,
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:right", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:right:parallel", "on_kerb")
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:left" to "parallel",
+                "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB),
+                null
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:left", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:left:parallel", "on_kerb")
+            )
+        )
+    }
+
     @Test fun `supplementing both sides does not remove properties specified for both sides`() {
         verifyAnswer(
             mapOf(
                 "parking:lane:both" to "parallel",
                 "parking:condition:both" to "customers",
+            ),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
+                StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_KERB)
+            ),
+            arrayOf(
+                StringMapEntryModify("parking:lane:both", "parallel", "parallel"),
+                StringMapEntryAdd("parking:lane:left:parallel", "on_street"),
+                StringMapEntryAdd("parking:lane:right:parallel", "on_kerb"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "parking:lane:both" to "parallel",
+                "parking:condition:left" to "customers",
+                "parking:condition:right" to "residents",
             ),
             LeftAndRightStreetParking(
                 StreetParkingPositionAndOrientation(ParkingOrientation.PARALLEL, ParkingPosition.ON_STREET),
