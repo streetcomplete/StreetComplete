@@ -106,17 +106,20 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
      * function. But on the other hand, when the physical layout of the parking changes (=redesign
      * of the street layout and furniture), the condition may very well change too, so better delete
      * it to be on the safe side. (It is better to have no data than to have wrong data.) */
+    val rightSideChanged = right != null && !right.isSupplementingOrEqual(currentParking?.right)
+    val leftSideChanged = left != null && !left.isSupplementingOrEqual(currentParking?.left)
+
     val keysToRemove = buildList {
         if (right == left) {
             add(Regex("^parking:lane:.*"))
             if (conditionLeft != null && conditionRight == conditionLeft) {
                 add(Regex("^parking:condition:.*"))
             }
-        } else if (currentParking?.right != right && currentParking?.left != left) {
+        } else if (rightSideChanged && leftSideChanged) {
             add(Regex("^parking:(lane|condition):.*"))
-        } else if (currentParking?.right != right) {
+        } else if (rightSideChanged) {
             add(Regex("^parking:(lane|condition):(both|right).*"))
-        } else if (currentParking?.left != left) {
+        } else if (leftSideChanged) {
             add(Regex("^parking:(lane|condition):(both|left).*"))
         }
     }
@@ -159,6 +162,14 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
         tags.updateCheckDateForKey("parking:lane")
     }
 }
+
+private fun StreetParking.isSupplementingOrEqual(other: StreetParking?): Boolean =
+    this == other || (
+    this is StreetParkingPositionAndOrientation &&
+        other is StreetParkingPositionAndOrientation &&
+        (position == other.position || other.position == null) &&
+        (orientation == other.orientation || other.orientation == null)
+    )
 
 /** get the OSM value for the parking:lane key */
 private fun StreetParking.toOsmLaneValue(): String? = when (this) {
