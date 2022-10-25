@@ -284,6 +284,7 @@ class StreetParkingTest {
                 "parking:lane:both" to "parallel",
                 "parking:lane:left:parallel" to "on_street",
                 "parking:lane:right:parallel" to "on_kerb",
+                "parking:condition:left" to "customers",
                 "parking:condition:right" to "customers",
             ),
             LeftAndRightStreetParking(

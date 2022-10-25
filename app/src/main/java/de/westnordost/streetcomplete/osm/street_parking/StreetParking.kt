@@ -106,8 +106,8 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
      * function. But on the other hand, when the physical layout of the parking changes (=redesign
      * of the street layout and furniture), the condition may very well change too, so better delete
      * it to be on the safe side. (It is better to have no data than to have wrong data.) */
-    val rightSideChanged = right != null && !right.isSupplementingOrEqual(currentParking?.right)
-    val leftSideChanged = left != null && !left.isSupplementingOrEqual(currentParking?.left)
+    val rightSideChanged = !right.isSupplementingOrEqual(currentParking?.right)
+    val leftSideChanged = !left.isSupplementingOrEqual(currentParking?.left)
 
     val keysToRemove = mutableListOf<Regex>()
     if (right == left) {
@@ -115,7 +115,8 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
         if (conditionLeft != null && conditionRight == conditionLeft) {
             keysToRemove.add(Regex("^parking:condition:.*"))
         }
-    } else if (rightSideChanged && leftSideChanged) {
+    }
+    if (rightSideChanged && leftSideChanged) {
         keysToRemove.add(Regex("^parking:(lane|condition):.*"))
     } else if (rightSideChanged) {
         keysToRemove.add(Regex("^parking:(lane|condition):(both|right).*"))
@@ -163,7 +164,7 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     }
 }
 
-private fun StreetParking.isSupplementingOrEqual(other: StreetParking?): Boolean =
+private fun StreetParking?.isSupplementingOrEqual(other: StreetParking?): Boolean =
     this == other || (
     this is StreetParkingPositionAndOrientation &&
         other is StreetParkingPositionAndOrientation &&
