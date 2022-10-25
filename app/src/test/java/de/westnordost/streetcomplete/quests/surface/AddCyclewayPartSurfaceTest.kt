@@ -43,14 +43,23 @@ class AddCyclewayPartSurfaceTest {
     }
 
 
-    @Test fun `applicable to cycleway with unspecific surface and note`() {
-        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
-        assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved", "note:cycleway:surface" to "it's complicated")
+    @Test fun `applicable to cycleway with unspecific surface without note`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
+        assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved")
     }
 
-    @Test fun `not applicable to access-restricted cycleways`() {
+    @Test fun `not applicable to cycleway with unspecific surface and note`() {
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
+        assertIsNotApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved", "note:cycleway:surface" to "it's complicated")
+    }
+
+    @Test fun `not applicable to access-restricted cycleways1`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "private")
+    }
+    @Test fun `not applicable to access-restricted cycleways2`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "no")
+    }
+    @Test fun `not applicable to access-restricted cycleways3`() {
         assertIsNotApplicable("highway" to "bridleway", "bicycle" to "designated", "segregated" to "yes", "access" to "private")
     }
 
@@ -116,8 +125,19 @@ class AddCyclewayPartSurfaceTest {
                 "footway:surface" to "concrete",
             ),
             SurfaceAnswer(Surface.CONCRETE),
-            StringMapEntryAdd("cycleway:surface", "concrete"),
-            StringMapEntryAdd("footway:surface", "concrete"),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
+            StringMapEntryModify("surface", "paving_stones", "concrete")
+        )
+    }
+
+    @Test fun `surface added when same for footway and cycleway`() {
+        questType.verifyAnswer(
+            mapOf(
+                "cycleway:surface" to "paving_stones",
+                "footway:surface" to "concrete",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryAdd("surface", "concrete")
         )
     }
@@ -130,20 +150,29 @@ class AddCyclewayPartSurfaceTest {
                 "footway:surface" to "paving_stones",
             ),
             SurfaceAnswer(Surface.CONCRETE),
-            StringMapEntryAdd("cycleway:surface", "concrete"),
-            StringMapEntryAdd("footway:surface", "paving_stones"),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryDelete("surface", "paving_stones")
         )
     }
 
-    @Test fun `surface not touched when footway surface missing`() {
+    @Test fun `surface not touched on added cycleway surface when footway surface missing`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "asphalt",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryAdd("cycleway:surface", "concrete")
+        )
+    }
+
+    @Test fun `surface not touched on modified cycleway surface when footway surface missing`() {
         questType.verifyAnswer(
             mapOf(
                 "surface" to "asphalt",
                 "cycleway:surface" to "paving_stones",
             ),
             SurfaceAnswer(Surface.CONCRETE),
-            StringMapEntryAdd("cycleway:surface", "concrete")
+            StringMapEntryModify("cycleway:surface", "paving_stones", "concrete")
         )
     }
 
