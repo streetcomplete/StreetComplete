@@ -61,8 +61,11 @@ class OsmQuestControllerTest {
 
         notesSource = mock()
         questTypeRegistry = QuestTypeRegistry(listOf(
-            ApplicableQuestType, NotApplicableQuestType, ComplexQuestTypeApplicableToNode42,
-            ApplicableQuestTypeNotInAnyCountry, ApplicableQuestType2
+            0 to ApplicableQuestType,
+            1 to NotApplicableQuestType,
+            2 to ComplexQuestTypeApplicableToNode42,
+            3 to ApplicableQuestTypeNotInAnyCountry,
+            4 to ApplicableQuestType2
         ))
         countryBoundaries = mock()
 

@@ -32,6 +32,22 @@ class QuestTypeOrderDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.getAll(0).isEmpty())
     }
 
+    @Test fun setAllClearsPreviousOrders() {
+        dao.put(1, "a" to "b")
+        dao.setAll(1, emptyList())
+        assertTrue(dao.getAll(1).isEmpty())
+    }
+
+    @Test fun setAll() {
+        dao.setAll(1, listOf(
+            "a" to "b",
+            "d" to "e",
+            "x" to "y"
+        ))
+        assertEquals(listOf("a" to "b", "d" to "e", "x" to "y"), dao.getAll(1))
+        assertTrue(dao.getAll(0).isEmpty())
+    }
+
     @Test fun clear() {
         dao.put(0, "x" to "y")
         dao.put(1, "a" to "b")

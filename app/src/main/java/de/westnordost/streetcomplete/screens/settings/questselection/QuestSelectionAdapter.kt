@@ -315,7 +315,7 @@ class QuestSelectionAdapter(
             item.visible = b
             updateSelectionStatus()
             viewLifecycleScope.launch(Dispatchers.IO) {
-                visibleQuestTypeController.setVisible(item.questType, item.visible)
+                visibleQuestTypeController.setVisibility(item.questType, item.visible)
             }
         }
     }

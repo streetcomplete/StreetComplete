@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class QuestPresetDaoTest : ApplicationDbTestCase() {
+class QuestPresetsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: QuestPresetsDao
 
     @Before fun createDao() {
@@ -34,5 +34,12 @@ class QuestPresetDaoTest : ApplicationDbTestCase() {
             QuestPreset(1, "one"),
             QuestPreset(2, "two")
         ), dao.getAll())
+    }
+
+    @Test fun rename() {
+        val id = dao.add("one")
+        assertEquals("one", dao.getName(id))
+        dao.rename(id, "two")
+        assertEquals("two", dao.getName(id))
     }
 }

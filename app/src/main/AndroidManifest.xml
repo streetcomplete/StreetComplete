@@ -53,6 +53,20 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="geo" />
             </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="streetcomplete.app" />
+                <data android:path="/s" />
+                <!-- allow capital letters too -->
+                <data android:scheme="HTTP" tools:ignore="AppLinkUrlError" />
+                <data android:scheme="HTTPS" tools:ignore="AppLinkUrlError" />
+                <data android:host="STREETCOMPLETE.APP" tools:ignore="AppLinkUrlError" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.westnordost.streetcomplete.screens.settings.SettingsActivity"
@@ -97,7 +111,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <!-- Disable the Andriod WorkManager in favour of the org.koin.androidx.workmanager.koin.workManagerFactory -->
+        <!-- Disable the Android WorkManager in favour of the org.koin.androidx.workmanager.koin.workManagerFactory -->
         <!-- As per the Koin Work Manager instructions https://insert-koin.io/docs/reference/koin-android/workmanager -->
         <provider
             android:name="androidx.startup.InitializationProvider"
