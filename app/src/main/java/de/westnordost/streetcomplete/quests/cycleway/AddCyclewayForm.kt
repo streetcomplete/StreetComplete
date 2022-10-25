@@ -130,7 +130,7 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
         return values
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Cycleway>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Cycleway>) =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<Cycleway> =

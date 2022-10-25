@@ -41,7 +41,7 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() 
         applyAnswer(LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value))
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Sidewalk>) =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean) =
