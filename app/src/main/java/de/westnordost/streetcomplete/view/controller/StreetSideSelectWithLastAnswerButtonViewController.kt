@@ -103,8 +103,8 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     init {
         lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { deserializeLastSelection(it, false) }
         lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { deserializeLastSelection(it, true) }
-        lastSelectionOnlyLeft = prefs.getString(lastSelectionPreferencePrefix, null)?.let { deserializeLastSelection(it, false) }
-        lastSelectionOnlyRight = prefs.getString(lastSelectionPreferencePrefix, null)?.let { deserializeLastSelection(it, true) }
+        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { deserializeLastSelection(it, false) }
+        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { deserializeLastSelection(it, true) }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
@@ -179,7 +179,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
                 putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it) })
                 putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it) })
             } else {
-                (l ?: r)?.let { putString(lastSelectionPreferencePrefix, serializeLastSelection(it)) }
+                (l ?: r)?.let { putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it)) }
             }
         }
     }
