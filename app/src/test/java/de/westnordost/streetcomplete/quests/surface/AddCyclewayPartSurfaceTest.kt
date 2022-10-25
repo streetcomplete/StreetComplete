@@ -11,7 +11,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDate
 
-class AddSidewalkSurfaceTest {
+class AddCyclewayPartSurfaceTest {
     private val questType = AddCyclewayPartSurface()
 
     @Test fun `applicable to segregated cycleway`() {
