@@ -11,11 +11,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.UNKNOWN_ORIENTATION
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.UNKNOWN_POSITION
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
 import kotlin.math.round
@@ -105,13 +107,15 @@ private fun getStreetDrawableResId(orientation: ParkingOrientation, position: Pa
             PARALLEL -> R.drawable.ic_street_parking_bays_parallel
             DIAGONAL -> R.drawable.ic_street_parking_bays_diagonal
             PERPENDICULAR -> R.drawable.ic_street_parking_bays_perpendicular
+            UNKNOWN_ORIENTATION -> null
         }
         PAINTED_AREA_ONLY -> when (orientation) {
             PARALLEL -> R.drawable.ic_street_marked_parking_parallel
             DIAGONAL -> R.drawable.ic_street_marked_parking_diagonal
             PERPENDICULAR -> R.drawable.ic_street_marked_parking_perpendicular
+            UNKNOWN_ORIENTATION -> null
         }
-        null -> null
+        UNKNOWN_POSITION, null -> null
     }
 
 /** number of cars parked */
@@ -119,6 +123,7 @@ private val ParkingOrientation.carCount: Int get() = when (this) {
     PARALLEL -> 4
     DIAGONAL -> 6
     PERPENDICULAR -> 8
+    UNKNOWN_ORIENTATION -> throw IllegalArgumentException()
 }
 
 /** which car indices to not draw */
@@ -128,11 +133,13 @@ private fun getOmittedCarIndices(orientation: ParkingOrientation, position: Park
             PARALLEL -> listOf(1, 2)
             DIAGONAL -> listOf(2, 3)
             PERPENDICULAR -> listOf(0, 3, 4, 7)
+            UNKNOWN_ORIENTATION -> throw IllegalArgumentException()
         }
         PAINTED_AREA_ONLY -> when (orientation) {
             PARALLEL -> listOf(0, 3)
             DIAGONAL -> listOf(0, 1, 4, 5)
             PERPENDICULAR -> listOf(0, 1, 5, 6, 7)
+            UNKNOWN_ORIENTATION -> throw IllegalArgumentException()
         }
         else -> emptyList()
     }
@@ -142,6 +149,7 @@ private val ParkingOrientation.carsX: Float get() = when (this) {
     PARALLEL -> 0.44f
     DIAGONAL -> 0.50f
     PERPENDICULAR -> 0.50f
+    UNKNOWN_ORIENTATION -> throw IllegalArgumentException()
 }
 
 /** rotation of the cars */
@@ -149,6 +157,7 @@ private val ParkingOrientation.carsRotation: Float get() = when (this) {
     PARALLEL -> 0f
     DIAGONAL -> 55f
     PERPENDICULAR -> 90f
+    UNKNOWN_ORIENTATION -> throw IllegalArgumentException()
 }
 
 private val CAR_RES_IDS = listOf(

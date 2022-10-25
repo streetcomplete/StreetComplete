@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.UNKNOWN_POSITION
 import de.westnordost.streetcomplete.util.ktx.noParkingLineStyleResId
 import de.westnordost.streetcomplete.util.ktx.noParkingSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.noStandingLineStyleResId
@@ -49,7 +50,7 @@ fun StreetParking.asStreetSideItem(
 
 private val StreetParking.titleResId: Int? get() = when (this) {
     NoStreetParking -> R.string.street_parking_no
-    is StreetParkingPositionAndOrientation -> position.titleResId
+    is StreetParkingPositionAndOrientation -> position?.titleResId
     StreetParkingProhibited -> R.string.street_parking_prohibited
     StreetParkingSeparate -> R.string.street_parking_separate
     StreetStandingProhibited -> R.string.street_standing_prohibited
@@ -102,17 +103,17 @@ private fun StreetParking.getFloatingIcon(countryInfo: CountryInfo): Image? = wh
 }?.let { ResImage(it) }
 
 fun StreetParkingPositionAndOrientation.asItem(context: Context, isUpsideDown: Boolean) =
-    Item2(this, getDialogIcon(context, isUpsideDown), ResText(position.titleResId))
+    Item2(this, getDialogIcon(context, isUpsideDown), ResText(position!!.titleResId))
 
 /** An icon for a street parking is square and shows always the same car so it is easier to spot
  *  the variation that matters(on kerb, half on kerb etc) */
 private fun StreetParkingPositionAndOrientation.getDialogIcon(context: Context, isUpsideDown: Boolean): Image =
-    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 128, R.drawable.ic_car1))
+    DrawableImage(StreetParkingDrawable(context, orientation!!, position, isUpsideDown, 128, 128, R.drawable.ic_car1))
 
 /** An image for a street parking to be displayed shows a wide variety of different cars so that
  *  it looks nicer and/or closer to reality */
 private fun StreetParkingPositionAndOrientation.getIcon(context: Context, isUpsideDown: Boolean): Image =
-    DrawableImage(StreetParkingDrawable(context, orientation, position, isUpsideDown, 128, 512))
+    DrawableImage(StreetParkingDrawable(context, orientation!!, position, isUpsideDown, 128, 512))
 
 private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_STREET -> R.string.street_parking_on_street
@@ -120,6 +121,7 @@ private val ParkingPosition.titleResId: Int get() = when (this) {
     ON_KERB -> R.string.street_parking_on_kerb
     STREET_SIDE -> R.string.street_parking_street_side
     PAINTED_AREA_ONLY -> R.string.street_parking_painted_area_only
+    UNKNOWN_POSITION -> throw IllegalArgumentException()
 }
 
 val DISPLAYED_PARKING_POSITIONS: List<ParkingPosition> = listOf(

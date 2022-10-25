@@ -13,11 +13,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
@@ -26,6 +22,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.isValid
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -106,11 +103,13 @@ private val ParkingPosition.color: String get() = when (this) {
     ON_STREET, PAINTED_AREA_ONLY -> Color.GOLD
     HALF_ON_KERB ->                 Color.AQUAMARINE
     ON_KERB, STREET_SIDE ->         Color.BLUE
+    UNKNOWN_POSITION ->             Color.DATA_REQUESTED
 }
 
 private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParkingPositionAndOrientation ->
-                                StrokeStyle(position.color, position.isDashed)
+        if (!isValid || position == null) StrokeStyle(Color.DATA_REQUESTED)
+        else                              StrokeStyle(position.color, position.isDashed)
 
     NoStreetParking,
     StreetStandingProhibited,

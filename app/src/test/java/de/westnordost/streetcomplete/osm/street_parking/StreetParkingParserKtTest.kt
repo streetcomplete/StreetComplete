@@ -3,11 +3,13 @@ package de.westnordost.streetcomplete.osm.street_parking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.UNKNOWN_ORIENTATION
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.UNKNOWN_POSITION
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -340,16 +342,22 @@ class StreetParkingParserKtTest {
         )
     }
 
-    @Test fun `unknown orientation leads to unknown`() {
+    @Test fun `unknown orientation`() {
         assertEquals(
-            LeftAndRightStreetParking(UnknownStreetParking, null),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(UNKNOWN_ORIENTATION, null),
+                null
+            ),
             createStreetParkingSides(mapOf("parking:lane:left" to "something"))
         )
     }
 
-    @Test fun `unknown position leads to unknown`() {
+    @Test fun `unknown position`() {
         assertEquals(
-            LeftAndRightStreetParking(UnknownStreetParking, null),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(PARALLEL, UNKNOWN_POSITION),
+                null
+            ),
             createStreetParkingSides(mapOf(
                 "parking:lane:left" to "parallel",
                 "parking:lane:left:parallel" to "something"
@@ -357,18 +365,23 @@ class StreetParkingParserKtTest {
         )
     }
 
-    @Test fun `marked is interpreted as incomplete`() {
+    @Test fun `marked is interpreted as painted area only`() {
         assertEquals(
-            LeftAndRightStreetParking(IncompleteStreetParking, null),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(UNKNOWN_ORIENTATION, PAINTED_AREA_ONLY),
+                null
+            ),
             createStreetParkingSides(mapOf(
-                "parking:lane:left" to "marked",
-                "parking:lane:left:marked" to "on_kerb"
+                "parking:lane:left" to "marked"
             )))
     }
 
-    @Test fun `orientation without position is interpreted as incomplete`() {
+    @Test fun `orientation without position`() {
         assertEquals(
-            LeftAndRightStreetParking(IncompleteStreetParking, null),
+            LeftAndRightStreetParking(
+                StreetParkingPositionAndOrientation(DIAGONAL, null),
+                null
+            ),
             createStreetParkingSides(mapOf("parking:lane:left" to "diagonal")))
     }
 

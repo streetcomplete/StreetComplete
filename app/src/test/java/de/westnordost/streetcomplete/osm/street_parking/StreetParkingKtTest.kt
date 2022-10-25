@@ -8,6 +8,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class StreetParkingTest {
@@ -421,6 +423,28 @@ class StreetParkingTest {
                 LeftAndRightStreetParking(invalidParking, StreetParkingProhibited).validOrNullValues()
             )
         }
+    }
+
+    @Test fun isValid() {
+        assertFalse(IncompleteStreetParking.isValid)
+        assertFalse(UnknownStreetParking.isValid)
+        assertFalse(StreetParkingPositionAndOrientation(null, null).isValid)
+        assertFalse(StreetParkingPositionAndOrientation(ParkingOrientation.DIAGONAL, null).isValid)
+        assertFalse(StreetParkingPositionAndOrientation(null, ParkingPosition.ON_KERB).isValid)
+        assertFalse(StreetParkingPositionAndOrientation(
+            ParkingOrientation.UNKNOWN_ORIENTATION,
+            ParkingPosition.ON_KERB
+        ).isValid)
+        assertFalse(StreetParkingPositionAndOrientation(
+            ParkingOrientation.DIAGONAL,
+            ParkingPosition.UNKNOWN_POSITION
+        ).isValid)
+
+        assertTrue(NoStreetParking.isValid)
+        assertTrue(StreetParkingPositionAndOrientation(
+            ParkingOrientation.PARALLEL,
+            ParkingPosition.ON_KERB
+        ).isValid)
     }
 }
 

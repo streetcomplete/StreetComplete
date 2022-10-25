@@ -5,11 +5,13 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.UNKNOWN_ORIENTATION
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.UNKNOWN_POSITION
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import kotlinx.serialization.Serializable
 
@@ -23,18 +25,21 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 @Serializable object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
 @Serializable object UnknownStreetParking : StreetParking()
-/** When not both parking orientation and position have been specified*/
+/** When not both parking orientation and position have been specified */
 @Serializable object IncompleteStreetParking : StreetParking()
 /** There is street parking, but it is mapped as separate geometry */
 @Serializable object StreetParkingSeparate : StreetParking()
 
 @Serializable data class StreetParkingPositionAndOrientation(
-    val orientation: ParkingOrientation,
-    val position: ParkingPosition
+    val orientation: ParkingOrientation?,
+    val position: ParkingPosition?
 ) : StreetParking()
 
 enum class ParkingOrientation {
-    PARALLEL, DIAGONAL, PERPENDICULAR
+    PARALLEL,
+    DIAGONAL,
+    PERPENDICULAR,
+    UNKNOWN_ORIENTATION
 }
 
 enum class ParkingPosition {
@@ -42,7 +47,8 @@ enum class ParkingPosition {
     HALF_ON_KERB,
     ON_KERB,
     STREET_SIDE,
-    PAINTED_AREA_ONLY
+    PAINTED_AREA_ONLY,
+    UNKNOWN_POSITION
 }
 
 fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
@@ -50,8 +56,13 @@ fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
     return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
 }
 
-private val StreetParking.isValid: Boolean get() = when(this) {
+val StreetParking.isValid: Boolean get() = when(this) {
     IncompleteStreetParking, UnknownStreetParking -> false
+    is StreetParkingPositionAndOrientation ->
+        position != null &&
+        position != UNKNOWN_POSITION &&
+        orientation != null &&
+        orientation != UNKNOWN_ORIENTATION
     else -> true
 }
 
@@ -65,13 +76,14 @@ val StreetParking.estimatedWidthOffRoad: Float get() = when (this) {
     else -> 0f // otherwise let's assume it's not on the street itself
 }
 
-private val ParkingOrientation.estimatedWidth: Float get() = when (this) {
+private val ParkingOrientation?.estimatedWidth: Float get() = when (this) {
     PARALLEL -> 2f
     DIAGONAL -> 3f
     PERPENDICULAR -> 4f
+    else -> 2f
 }
 
-private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this) {
+private val ParkingPosition?.estimatedWidthOnRoadFactor: Float get() = when (this) {
     ON_STREET -> 1f
     HALF_ON_KERB -> 0.5f
     ON_KERB -> 0f
@@ -79,6 +91,10 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
 }
 
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
+    if (right?.isValid == false || left?.isValid == false) {
+        throw IllegalArgumentException("Attempting to tag parking with invalid values")
+    }
+
     val currentParking = createStreetParkingSides(tags)
 
     // parking:condition:<left/right/both>
@@ -111,16 +127,8 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     }
 
     // parking:lane:<left/right/both>
-    val laneRight = if (right != null) {
-        right.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
-    } else {
-        null
-    }
-    val laneLeft = if (left != null) {
-        left.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
-    } else {
-        null
-    }
+    val laneRight = right?.toOsmLaneValue()
+    val laneLeft = left?.toOsmLaneValue()
 
     if (laneLeft == laneRight) {
         if (laneLeft != null) tags["parking:lane:both"] = laneLeft
@@ -154,7 +162,8 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
 
 /** get the OSM value for the parking:lane key */
 private fun StreetParking.toOsmLaneValue(): String? = when (this) {
-    is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
+    is StreetParkingPositionAndOrientation -> orientation?.toOsmValue()
+        ?: throw IllegalArgumentException("Attempting to tag parking without orientation")
     NoStreetParking, StreetParkingProhibited, StreetStandingProhibited, StreetStoppingProhibited -> "no"
     StreetParkingSeparate -> "separate"
     UnknownStreetParking, IncompleteStreetParking -> null
@@ -173,10 +182,12 @@ private fun ParkingPosition.toOsmValue() = when (this) {
     ON_KERB -> "on_kerb"
     STREET_SIDE -> "street_side"
     PAINTED_AREA_ONLY -> "painted_area_only"
+    UNKNOWN_POSITION -> throw IllegalArgumentException("Attempting to tag invalid parking position")
 }
 
 private fun ParkingOrientation.toOsmValue() = when (this) {
     PARALLEL -> "parallel"
     DIAGONAL -> "diagonal"
     PERPENDICULAR -> "perpendicular"
+    UNKNOWN_ORIENTATION -> throw IllegalArgumentException("Attempting to tag invalid parking orientation")
 }

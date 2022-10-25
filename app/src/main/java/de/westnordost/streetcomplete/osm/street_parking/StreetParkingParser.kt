@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.street_parking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.DIAGONAL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PARALLEL
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.PERPENDICULAR
+import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.UNKNOWN_ORIENTATION
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_KERB
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
@@ -25,43 +26,42 @@ private fun createParkingForSide(tags: Map<String, String>, side: String?): Stre
 
     val parkingValue = tags["parking:lane$sideVal"]
 
+    // some kind of no parking
     when (parkingValue) {
         // old style tagging
         "no_parking" -> return StreetParkingProhibited
         "no_standing" -> return StreetStandingProhibited
         "no_stopping" -> return StreetStoppingProhibited
-        null, "no" -> return when (tags["parking:condition$sideVal"]) {
+        null, "no" -> when (tags["parking:condition$sideVal"]) {
             // new style tagging
-            "no_parking" -> StreetParkingProhibited
-            "no_standing" -> StreetStandingProhibited
-            "no_stopping" -> StreetStoppingProhibited
-            "no" -> NoStreetParking
-            null -> if (parkingValue == "no") NoStreetParking else null
-            else -> null
+            "no_parking" -> return StreetParkingProhibited
+            "no_standing" -> return StreetStandingProhibited
+            "no_stopping" -> return StreetStoppingProhibited
+            "no" -> return NoStreetParking
+            null -> if (parkingValue == "no") return NoStreetParking
         }
         "yes" -> return IncompleteStreetParking
         "separate" -> return StreetParkingSeparate
-        else -> {
-            val parkingOrientation = parkingValue.toParkingOrientation()
-                // regard parking:lanes:*=marked as incomplete (because position is missing implicitly)
-                ?: return if (parkingValue == "marked") IncompleteStreetParking else UnknownStreetParking
-
-            val parkingPositionValue = tags["parking:lane$sideVal:$parkingValue"]
-                // parking position is mandatory to be regarded as complete
-                ?: return IncompleteStreetParking
-
-            val parkingPosition = parkingPositionValue.toParkingPosition() ?: return UnknownStreetParking
-
-            return StreetParkingPositionAndOrientation(parkingOrientation, parkingPosition)
-        }
     }
+
+    // position + orientation parking
+    val parkingOrientation = parkingValue?.toParkingOrientation()
+
+    val parkingPositionValue = tags["parking:lane$sideVal:$parkingValue"]
+
+    val parkingPosition = parkingPositionValue?.toParkingPosition()
+        ?: if (parkingValue == "marked") PAINTED_AREA_ONLY else null
+
+    if (parkingPosition == null && parkingOrientation == null) return null
+
+    return StreetParkingPositionAndOrientation(parkingOrientation, parkingPosition)
 }
 
 private fun String.toParkingOrientation() = when (this) {
     "parallel" -> PARALLEL
     "diagonal" -> DIAGONAL
     "perpendicular" -> PERPENDICULAR
-    else -> null
+    else -> UNKNOWN_ORIENTATION
 }
 
 private fun String.toParkingPosition() = when (this) {
@@ -70,7 +70,7 @@ private fun String.toParkingPosition() = when (this) {
     "on_kerb" -> ON_KERB
     "painted_area_only", "marked" -> PAINTED_AREA_ONLY
     "lay_by", "street_side", "bays" -> STREET_SIDE
-    else -> null
+    else -> ParkingPosition.UNKNOWN_POSITION
 }
 
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {
