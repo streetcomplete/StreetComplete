@@ -16,6 +16,10 @@
         android:defaultValue="true"
         android:persistent="true" />
 
+    <Preference
+        android:key="raster_tile_url"
+        android:title="@string/pref_tile_source_title" />
+
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
         android:key="data_retain_time"
         android:title="@string/pref_delete_old_data_after"

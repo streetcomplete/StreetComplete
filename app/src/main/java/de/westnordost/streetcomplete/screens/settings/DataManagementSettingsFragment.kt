@@ -7,9 +7,15 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -105,6 +111,38 @@ class DataManagementSettingsFragment :
             val treesFile = File(context?.getExternalFilesDir(null), FILENAME_EXTERNAL)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = treesFile.exists()
 
+            true
+        }
+
+        findPreference<Preference>("raster_tile_url")?.setOnPreferenceClickListener {
+            var d: AlertDialog? = null
+            val currentUrl = prefs.getString(Prefs.RASTER_TILE_URL, "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}")!!
+            val urlText = EditText(requireContext()).apply {
+                setText(currentUrl)
+                doAfterTextChanged {
+                    val t = it.toString()
+                    d?.getButton(AlertDialog.BUTTON_POSITIVE)?.isEnabled = t.contains("{x}") && t.contains("{y}") && t.contains("{z}")
+                }
+            }
+            val layout = LinearLayout(requireContext()).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(30,10,30,10)
+                addView(TextView(requireContext()).apply { setText(R.string.pref_tile_source_message) })
+                addView(urlText)
+            }
+            d = AlertDialog.Builder(requireContext())
+                .setTitle(R.string.pref_tile_source_title)
+                .setView(layout)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setNeutralButton(R.string.action_reset) { _, _ ->
+                    prefs.edit { remove(Prefs.RASTER_TILE_URL) }
+                }
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    prefs.edit { putString(Prefs.RASTER_TILE_URL, urlText.text.toString()) }
+                    activity?.let { ActivityCompat.recreate(it) } // need to reload scene
+                }
+                .create()
+            d.show()
             true
         }
     }

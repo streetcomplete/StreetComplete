@@ -71,7 +71,12 @@ class SceneMapComponent(
         getBaseSceneUpdates() + sceneUpdates.flatten().mapNotNull {
             if (isAerialView && it.first.startsWith("layers.buildings")) null
             else SceneUpdate(it.first, it.second)
-        }
+        } + listOfNotNull(
+            if (isAerialView)
+                SceneUpdate("sources.raster.url", prefs.getString(Prefs.RASTER_TILE_URL, "https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"))
+            else null
+        )
+
 
     private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(
         SceneUpdate("global.language", Locale.getDefault().language),

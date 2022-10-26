@@ -14,6 +14,7 @@ v48.0_ee: |
   <li>Highlight nearby cycleways and sidewalks for the respective quests</li>
   <li>Allow displaying track from GPX file</li>
   <li>Replace simple text tag editing with tag editor</li>
+  <li>Allow changing URL for satellite images</li>
   </ul>
 
 v47.0_ee: |

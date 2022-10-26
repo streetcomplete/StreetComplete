@@ -96,6 +96,8 @@
     <string name="tree_external_import_export_message">Get or provide file? Check the corresponding quest enable message for details.</string>
     <string name="tree_external_import">Provide</string>
     <string name="tree_external_export">Get</string>
+    <string name="pref_tile_source_title">Tile source for satellite / aerial images</string>
+    <string name="pref_tile_source_message">Tile URL must contain {x}, {y} and {z}</string>
 
     <!-- quests settings -->
     <string name="pref_screen_quests">Quests</string>
