@@ -28,9 +28,9 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
-import java.lang.Math.max
-import java.lang.Math.min
 import java.util.Locale
+import kotlin.math.max
+import kotlin.math.min
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -171,7 +171,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val statistics = withContext(Dispatchers.IO) {
             statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount()
         }
-        if (statistics == null) binding.localRankContainer.isGone = true
+        if (statistics == null) {
+            binding.localRankContainer.isGone = true
+        }
         else {
             val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.count > 50
             val countryLocale = Locale("", statistics.countryCode)

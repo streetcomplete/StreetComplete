@@ -11,11 +11,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.flipHorizontally
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 
-/*
-Drawable providing decoration, suitable for a circular background
-100 and more: fully grown wreath with all pretty elements
-99 to 10: may be losing elements as it gets smaller
-below: no decorative styling at all
+/** Drawable providing decoration, suitable for a circular background
+    100 and more: fully grown wreath with all pretty elements
+    99 to 10: may be losing elements as it gets smaller
+    below: no decorative styling at all
  */
 class LaurelWreathDrawable(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
     private val pairOflaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)
@@ -34,9 +33,7 @@ class LaurelWreathDrawable(val resources: Resources, private val percentageOfGro
 
         canvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), circleRadius, niceSubtleGreen)
 
-        if (percentageOfGrowth < 10) {
-            return
-        }
+        if (percentageOfGrowth < 10) return
 
         val decorationSegmentImageWidth = pairOflaurelLeafs.intrinsicWidth // width is the same as intrinsicWidth
 
@@ -47,7 +44,6 @@ class LaurelWreathDrawable(val resources: Resources, private val percentageOfGro
         val howDistantIsDecorationFromCircleCenter = 0.78f
 
         for (i in 1..shownSegments) {
-            // https://developer.android.com/reference/kotlin/androidx/core/graphics/package-summary#(android.graphics.Canvas).withRotation(kotlin.Float,kotlin.Float,kotlin.Float,kotlin.Function1)
             var bitmap = pairOflaurelLeafs.bitmap
             if (i == shownSegments) {
                 bitmap = horizontalEndingLeaf.bitmap
@@ -75,7 +71,6 @@ class LaurelWreathDrawable(val resources: Resources, private val percentageOfGro
         // This method is required
     }
 
-    override fun getOpacity(): Int =
-        // Must be PixelFormat.UNKNOWN, TRANSLUCENT, TRANSPARENT, or OPAQUE
-        PixelFormat.OPAQUE
+    @Deprecated("Deprecated in Java")
+    override fun getOpacity(): Int = PixelFormat.OPAQUE
 }
