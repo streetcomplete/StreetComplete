@@ -733,9 +733,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Je tu jen doporučená rychlost…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Budova nemá číslo, ale jméno…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Jméno budovy:"</string>
 
     <!-- Fuzzy -->
@@ -1482,9 +1479,6 @@ Chcete cestu rozdělit?"</string>
     <string name="about_summary_current_version">"Aktuální verze: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Jaké je referenční číslo této poštovní schránky?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo…"</string>
 
     <!-- Fuzzy -->
@@ -1939,7 +1933,6 @@ It is not big issue, but it would be nice to have it correctly. -->
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
-    <string name="quest_address_street_description">"Klepněte na mapě na ulici, ke které patří, nebo ji zadejte bez zkratek do pole níže:"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej na smažení"</string>
     <string name="quest_recycling_type_engine_oil">"Motorový olej"</string>
     <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
@@ -2090,9 +2083,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ťukněte na cestu na mapě"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označený přechod"</string>
@@ -2325,7 +2315,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Jsou časy vybírání této poštovní poštovní schránky správné?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznáno. Zkuste zadat druh místa, např. „pekařství“. Jinak zvažte zanechání poznámky."</string>
     <string name="quest_bicycle_barrier_type_title">"Jaký je tohle druh překážky bránící cyklistům v průjezdu?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonální vzhledem k cestě"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený průjezd, menší nahoře"</string>
@@ -2373,7 +2362,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="street_parking_conditional_restrictions_hint">"Pokud je tu možné parkovat nebo zastavit, odpovězte nejprve, jak tu ti, kteří zde mohou parkovat, parkují. Jaká přesně omezení tu platí, může být upřesněno později.
 
 Také můžete napsat poznámku (s fotografií)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Má obojí, číslo domu i jméno…"</string>
     <string name="quest_address_house_number_label">"Číslo domu:"</string>
 
     <!-- Fuzzy -->

@@ -784,9 +784,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Apenas um limite de velocidade indicativo…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Sem o número da casa, mas um nome…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Nome da casa:"</string>
 
     <!-- Fuzzy -->
@@ -1531,9 +1528,6 @@ Dividir agora?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Qual o número de referência desta caixa de correio?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nenhum número de referencia é visível…"</string>
 
     <!-- Fuzzy -->
@@ -1797,7 +1791,6 @@ conquista"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua nomeada"</string>
     <string name="quest_address_street_place_name_label">"Coloque o nome:"</string>
-    <string name="quest_address_street_description">"Toque na estrada à qual pertence no mapa ou digite-a sem abreviações no campo abaixo:"</string>
     <string name="quest_recycling_type_cooking_oil">"Óleo de cozinha"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autônoma do Nominatim, com pesquisa difusa e pesquisa ao digitar"</string>
@@ -1941,9 +1934,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Cruzamento marcado"</string>
@@ -2172,7 +2162,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Os horários de coleta desta caixa de correio ainda estão corretos?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Não reconhecido. Tente digitar o tipo de lugar, por exemplo \"padaria\". Caso contrário, considere deixar uma nota."</string>
     <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira de bicicleta é essa?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal com o caminho"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passagem estreita, menor em direção ao topo"</string>
@@ -2219,7 +2208,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são exclu�
     <string name="street_parking_conditional_restrictions_hint">"Se for possível estacionar ou parar aqui, responda primeiro como os que estão autorizados a estacionar aqui. Quais restrições se aplicam exatamente irão ser especificadas posteriormente.
 
 Alternativamente, você pode deixar uma nota (com uma foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Tanto um número de casa quanto um nome…"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
 
     <!-- Fuzzy -->
@@ -2510,11 +2498,47 @@ Que tipo de memorial é esse?"</string>
     <string name="quest_camp_shower_title">"Há chuveiros aqui?"</string>
     <string name="quest_camp_power_supply_title">"Existe alguma maneira de os clientes carregarem seus telefones, laptops etc. aqui?"</string>
     <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Tanto barracas e motorhomes, trailers de viagem, …"</string>
+    <string name="quest_camp_type_caravans_only">"Apenas motorhomes, trailers de viagem, …"</string>
+    <string name="quest_camp_type_tents_only">"Apenas barracas"</string>
     <string name="quest_camp_type_backcountry">"Camping no interior (sem instalações)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro parece implausível, geralmente está entre %1$d e %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não está de acordo com o que já está mapeado sobre esta estrada. Tem certeza de que está respondendo sobre a estrada correta? Você tem certeza de que pesquisou pessoalmente ao longo de todo o comprimento, como sempre necessário?"</string>
+    <string name="quest_recycling_type_pet">"Apenas PET"</string>
     <string name="street_parking_street_width">"Largura da rua: %s"</string>
     <string name="overlay_street_parking">"Estacionamento na rua"</string>
     <string name="link_ohsomehex_description">"Explore os dados do OSM em escalas desde o panorama geral até objetos individuais no espaço e no tempo"</string>
     <string name="link_opencampingmap_description">"Um mapa de acampamentos"</string>
     <string name="quest_atm_cashin_title">"Você pode depositar dinheiro neste caixa eletrônico?"</string>
+    <string name="create_node_action_description">"Você criou um nó com…"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"É um ponto de encontro"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Um Ponto de Encontro é onde as pessoas se reúnem em caso de emergência. Geralmente se parece com isso:"</string>
+    <string name="quest_address_answer_house_name2">"Tem um nome de casa…"</string>
+    <string name="quest_address_street_street_name_label">"Nome da rua:"</string>
+    <string name="quest_address_street_hint2">"Toque na rua no mapa para selecioná-la"</string>
+    <string name="quest_bicycle_incline_title">"Qual direção leva para cima aqui?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"É saltos para cima e para baixo"</string>
+    <string name="quest_drinking_water_type_title">"Como a água potável é fornecida aqui?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Outra fonte de água"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fonte de água emitindo pequeno jato de água"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Apenas reabastecimento de garrafas"</string>
+    <string name="quest_drinking_water_type_tap">"Torneira"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Bomba manual"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Poço de água sem bomba"</string>
+    <string name="quest_drinking_water_type_spring">"Nascente"</string>
+    <string name="quest_drinking_water_type_disused">"Objeto de água potável em desuso"</string>
+    <string name="overlay_addresses">"Endereços"</string>
+    <string name="overlay_shops">"Shoppings"</string>
+    <string name="name_label">"Nome:"</string>
+    <string name="vacant_shop_title">"Loja desocupada"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Outro tipo de lugar"</string>
+    <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicleta pode ser aberta?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixo"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Aberto"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
+    <string name="quest_buildingType_guardhouse">"Guarita"</string>
+    <string name="quest_genericRef_title">"Qual é o número de identificação aqui?"</string>
 </resources>

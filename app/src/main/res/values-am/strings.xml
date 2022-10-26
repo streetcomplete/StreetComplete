@@ -361,7 +361,6 @@
     <string name="quest_powerPolesMaterial_metal">"ብረት"</string>
     <string name="quest_powerPolesMaterial_concrete">"ኮንክሪት"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"የፍጥነት ምክር ገደብ ብቻ…"</string>
-    <string name="quest_address_answer_house_name">"ከስም በስተቀር የቤት ቁጥር የለም…"</string>
     <string name="quest_address_house_name_label">"የቤት ስም"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"በጣሪያው ውስጥ ደረጃዎች"</string>
     <string name="quest_buildingLevels_levelsLabel2">"መደበኛ ደረጃዎች (ጣሪያውን ሳያካትት)"</string>
@@ -728,9 +727,6 @@
     <string name="about_summary_current_version">"የአሁኑ ስሪት:%s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"የዚህ የፖስታ ሳጥን የማጣቀሻ ቁጥር ምንድነው?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ምንም የማጣቀሻ ቁጥር አይታይም…"</string>
 
     <!-- Fuzzy -->
@@ -948,7 +944,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"እሱ በተሰየመ ጎዳና ውስጥ አይደለም"</string>
     <string name="quest_address_street_place_name_label">"የቦታ ስም"</string>
-    <string name="quest_address_street_description">"የእሱ የሆነውን መንገድ በካርታው ላይ ነካ ያድርጉ ወይም ከዚህ በታች ባለው መስክ ያለ አህጽሮተ ቃላት ያስገቡ-"</string>
     <string name="quest_recycling_type_cooking_oil">"የማብሰያ  ዘይት"</string>
     <string name="quest_recycling_type_engine_oil">"የሞተር ዘይት"</string>
     <string name="link_photon_description">"ጭጋጋማ ፍለጋን እና እንደ እርስዎ ዓይነት ፍለጋን ለይቶ ለብቻው ለኖሚናቲም ቅጥያ"</string>
@@ -1090,9 +1085,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"ረዥም የጭነት መኪናዎች አያልፍም"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"በካርታው ላይ መንገድ ይጫኑ"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"ምልክት የተደረገበት መሻገሪያ"</string>

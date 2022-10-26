@@ -461,7 +461,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_powerPolesMaterial_metal">"Stal"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tylko sugerowana prędkość maksymalna…"</string>
-    <string name="quest_address_answer_house_name">"Nie ma numeru, tylko nazwę…"</string>
     <string name="quest_address_house_name_label">"Nazwa budynku:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"kondygnacje w poddaszu"</string>
     <string name="quest_buildingLevels_levelsLabel2">"zwykłe kondygnacje (bez poddasza)"</string>
@@ -944,9 +943,6 @@ Podzielić?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Czy chciałbyś zostawić notatkę ze zdjęciem? Umożliwi to innym mapującym zaznaczyć ten przypadek."</string>
     <string name="quest_handrail_title">"Czy te schody mają poręcz?"</string>
     <string name="about_summary_current_version">"Aktualna wersja: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Jaki jest numer tej skrzynki pocztowej?"</string>
     <string name="quest_ref_answer_noRef">"Nie ma widocznego numeru czy kodu…"</string>
 
     <!-- Fuzzy -->
@@ -1290,7 +1286,6 @@ osiągnięć"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
-    <string name="quest_address_street_description">"Dotknij drogę na mapie, do której należy lub wpisz pełną nazwę w polu poniżej:"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej jadalny"</string>
     <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
     <string name="link_photon_description">"Wyszukiwarka będąca ulepszoną wersją Nominatim z wsparciem dla podpowiedzi w czasie pisania i z autokorektą"</string>
@@ -1431,9 +1426,6 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
     <string name="quest_surface_value_rock">"Kamień"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Wysokie ciężarówki mogą przejechać"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Wysokie ciężarówki nie mogą przejechać"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Dotknij drogę na mapie"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Wyznaczone przejście"</string>
@@ -1667,7 +1659,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Czy czasy odbioru tej skrzynki pocztowej są nadal poprawne?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nie rozpoznane. Spróbuj wpisać typ miejsca np. \"piekarnia\". Jak to się nie uda - zostaw notatkę."</string>
     <string name="quest_bicycle_barrier_type_title">"Jaki to rodzaj barierki rowerowej?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Ukośnie do ścieżki"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Wąskie przejście, węższe ku górze"</string>
@@ -1714,7 +1705,6 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="street_parking_conditional_restrictions_hint">"Jeśli w ogóle można tu zaparkować lub zatrzymać się, najpierw odpowiedz, jak ci, którym wolno, parkują tutaj.  Jakie dokładnie obowiązują ograniczenia, można określić później.
 
  Alternatywnie możesz zostawić notatkę (ze zdjęciem)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Zarówno numer domu, jak i nazwisko…"</string>
     <string name="quest_address_house_number_label">"Numer domu:"</string>
     <string name="quest_shoulder_title">"Czy ta droga ma pobocze lub pas awaryjny?"</string>
     <string name="quest_fireHydrant_position_title">"Gdzie znajduje się ten hydrant?"</string>

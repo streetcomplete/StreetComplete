@@ -328,7 +328,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_powerPolesMaterial_metal">"Aço"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cimento"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Apenas limite de velocidade recomendado…"</string>
-    <string name="quest_address_answer_house_name">"Não tem nº mas o edifício tem nome…"</string>
     <string name="quest_address_house_name_label">"Nome do edifício:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nº de pisos no telhado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nº de pisos (sem o telhado)"</string>
@@ -453,12 +452,8 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_semi_detached">"Casa semi-separada"</string>
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em banda com paredes partilhadas"</string>
     <string name="quest_buildingType_hotel">"Edifício de um hotel"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
     <string name="quest_buildingType_static_caravan">"Caravana estática"</string>
     <string name="quest_buildingType_commercial">"Edifício comercial"</string>
@@ -467,32 +462,16 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_industrial_description">"por ex. uma fábrica, oficina, serralharia…"</string>
     <string name="quest_buildingType_office">"Edifício de escritórios"</string>
     <string name="quest_buildingType_retail">"Edifício comercial"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Armazém"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Quiosque"</string>
     <string name="quest_buildingType_storage_tank">"Tanque de armazenamento"</string>
     <string name="quest_buildingType_religious">"Edifício religioso"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Igreja"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Capela"</string>
     <string name="quest_buildingType_cathedral">"Catedral"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesquita"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Templo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagode"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifício público"</string>
     <string name="quest_buildingType_civic_description">"onde se encontra normalmente um organismo/serviço público"</string>
@@ -531,9 +510,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_bunker">"Búnquer"</string>
     <string name="quest_address_answer_no_housenumber">"Não tem número de porta…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"O edifício foi etiquetado como:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_shrine">"Santuário"</string>
+    <string name="quest_buildingType_shrine">"Edifício de santuário"</string>
     <string name="quest_maxspeed_title_short2">"Qual é o limite de velocidade desta rua?"</string>
     <string name="quest_maxspeed_answer_sign">"Um sinal de limite de velocidade"</string>
     <string name="quest_maxspeed_answer_zone2">"Está dentro de uma zona de velocidade reduzida"</string>
@@ -629,7 +606,6 @@ Dividir agora?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Gostaria de deixar uma nota? Uma nota com uma fotografia permitirá a outros mapeadores corrigirem o problema."</string>
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
-    <string name="quest_postboxRef_title">"Qual é o número de referência desta caixa/marco de correio?"</string>
     <string name="quest_ref_answer_noRef">"Não tem nº de referência visível…"</string>
 
     <!-- Fuzzy -->
@@ -804,11 +780,8 @@ global"</string>
 ativo"</string>
     <string name="user_profile_achievement_levels">"Níveis de
 conquista"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_no_named_streets">"Não pertence a uma rua com nome"</string>
+    <string name="quest_address_street_no_named_streets">"Não pertence a uma rua com nome…"</string>
     <string name="quest_address_street_place_name_label">"Nome do lugar:"</string>
-    <string name="quest_address_street_description">"Toque na estrada à qual ela pertence no mapa ou insira-a sem abreviaturas no campo abaixo:"</string>
     <string name="quest_recycling_type_cooking_oil">"Óleo de cozinha"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autónoma do Nominatim, com pesquisa difusa e pesquisa à medida que escreve"</string>
@@ -908,7 +881,6 @@ conquista"</string>
     <string name="quest_surface_value_rock">"Pedra"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Camiões altos podem passar"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Camiões altos não cabem"</string>
-    <string name="quest_address_street_hint">"Toque na estrada no mapa"</string>
     <string name="quest_crossing_type_marked">"Passadeira com marcas pintadas"</string>
     <string name="quest_parkingType_street_side">"Estacionamento ao lado da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
@@ -1092,7 +1064,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_access_customers">"Qualquer pessoa que aceda ao local (p.ex. apenas clientes)"</string>
     <string name="quest_access_private">"Apenas pessoas com permissão"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"O horário de recolha desta caixa/marco de correio está correta?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Não reconhecido. Tente introduzir o tipo de local, por exemplo “padaria”. Se não funcionar tente deixar uma nota."</string>
     <string name="quest_bicycle_barrier_type_title">"Que tipo de barreira de bicicletas é esta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal ao caminho"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passagem estreita, mais estreita no fim"</string>
@@ -1120,12 +1091,9 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="street_standing_prohibited">"Proibido ficar à espera (não utilizado em países lusófonos)"</string>
     <string name="street_parking_conditional_restrictions">"Estacionamento / paragem restritos condicionalmente"</string>
     <string name="street_parking_no_other_reasons">"Sem sinal explícito / não é possível estacionar"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Se é possível estacionar ou parar aqui. Indique o tipo de estacionamento na estrada ou fora da estrada. As restrições adicionais podem ser especificadas mais tarde.
 
-Como alternativa, pode deixar uma nota (com uma fotografia)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"O edifício tem nº de porta e nome…"</string>
+Como alternativa, pode deixar uma nota (com uma fotografia)."</string>
     <string name="quest_address_house_number_label">"Número de porta:"</string>
     <string name="quest_shoulder_title">"Esta estrada tem berma?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está esta boca de incêndio?"</string>
@@ -1378,4 +1346,38 @@ sorted alphabetically by title -->
     <string name="quest_recycling_type_pet">"Apenas PET"</string>
     <string name="street_parking_street_width">"Largura da estrada: %s"</string>
     <string name="overlay_street_parking">"Estacionamento na estrada"</string>
+    <string name="link_ohsomehex_description">"Explore os dados OSM através de escalas desde a visão geral até aos objetos individuais no espaço e no tempo"</string>
+    <string name="link_opencampingmap_description">"Um mapa de parques de campismo"</string>
+    <string name="quest_atm_cashin_title">"Pode-se depositar dinheiro neste Multibanco?"</string>
+    <string name="create_node_action_description">"Criou uma nota com…"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"É um ponto de encontro"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Um ponto de encontro é um local para onde as pessoas se devem dirigir no caso de emergência. Normalmente parece-se com isto:"</string>
+    <string name="quest_address_answer_house_name2">"É o nome de um edifício…"</string>
+    <string name="quest_address_street_street_name_label">"Nome da rua:"</string>
+    <string name="quest_address_street_hint2">"Toque na rua no mapa para a selecionar"</string>
+    <string name="quest_bicycle_incline_title">"Qual é a direção para cima aqui?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"São saltos de altos e baixos"</string>
+    <string name="quest_drinking_water_type_title">"Como é que a água potável é fornecida aqui?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Outra fonte de água"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fonte de água que emite um pequeno jato de água"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Apenas para encher garrafas"</string>
+    <string name="quest_drinking_water_type_tap">"Torneira de água"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Bomba manual"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Poço de água sem bomba"</string>
+    <string name="quest_drinking_water_type_spring">"Nascente"</string>
+    <string name="quest_drinking_water_type_disused">"Ponto de água potável avariado"</string>
+    <string name="overlay_addresses">"Endereços"</string>
+    <string name="overlay_shops">"Lojas"</string>
+    <string name="name_label">"Nome:"</string>
+    <string name="vacant_shop_title">"Loja vaga"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Outro tipo de local"</string>
+    <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Pode ser aberta"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
+    <string name="quest_buildingType_guardhouse">"Edifício de porteiro"</string>
+    <string name="quest_genericRef_title">"Qual é o número de identificação aqui?"</string>
 </resources>

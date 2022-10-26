@@ -507,7 +507,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_powerPolesMaterial_metal">"Oțel"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Doar o limită de viteză informativă …"</string>
-    <string name="quest_address_answer_house_name">"Fără număr, doar cu nume…"</string>
     <string name="quest_address_house_name_label">"Numele casei:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivele în acoperiș"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivele normale (nenumarând acoperișul)"</string>
@@ -905,9 +904,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="about_summary_current_version">"Versiunea curentă: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Care este numărul de referință al acestei cutii poștale?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nici un număr de referință vizibil …"</string>
 
     <!-- Fuzzy -->
@@ -1122,7 +1118,6 @@ de realizări"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nu aparține unei străzi anume"</string>
     <string name="quest_address_street_place_name_label">"Numele locului:"</string>
-    <string name="quest_address_street_description">"Atingeți pe hartă strada de care aparține sau introduceți-l fără abrevieri în câmpul de mai jos:"</string>
     <string name="quest_recycling_type_cooking_oil">"Ulei de gătit"</string>
     <string name="quest_recycling_type_engine_oil">"Ulei de motor"</string>
     <string name="link_photon_description">"O extensie autonomă la Nominatim, care include căutare neclară și căutare după cum scrieți"</string>
@@ -1264,9 +1259,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Camioanele înalte nu pot trece"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Atingeți drumul pe hartă"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Trecere de pietoni marcată"</string>
@@ -1497,7 +1489,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Orele de colectare pentru această cutie poștală sunt încă corecte?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nerecunoscut. Încercați să introduceți tipul de loc, de exemplu „brutărie”. În caz contrar, luați în considerare să lăsați o notă."</string>
     <string name="quest_bicycle_barrier_type_title">"Ce tip de barieră pentru biciclete este aceasta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal pe sensul de mers"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Pasaj îngustat, mai mic în partea de sus"</string>

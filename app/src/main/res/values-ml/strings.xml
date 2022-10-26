@@ -800,9 +800,6 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"ഇത് നിർദേശ വേഗപരിധി മാത്രം"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"വീട്ട് നമ്പർ ഇല്ല പക്ഷേ പേര് ഉണ്ട…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"വീട്ടുപേര്:"</string>
 
     <!-- Fuzzy -->
@@ -1543,9 +1540,6 @@
     <string name="about_summary_current_version">"നിലവിലുള്ള വേർഷൻ: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"പോസ്റ്റ് ബോക്സ് നമ്പർ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"റഫറൻസ് നമ്പറുകളൊന്നും കാണുന്നില്ല…"</string>
 
     <!-- Fuzzy -->
@@ -1891,9 +1885,6 @@
     <string name="quest_surface_value_rock">"പാറക്കെട്ട്"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"ഉയരമുള്ള ട്രക്കുകൾ കടന്നുപോകാം"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"ഉയരമുള്ള ട്രക്കുകൾ കടന്ന് പോകില്ല"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"മാപ്പിലെ റോഡ് ടാപ്പുചെയ്യുക"</string>
     <string name="quest_crossing_type_marked">"അടയാളപ്പെടുത്തി"</string>
     <string name="quest_parkingType_street_side">"വഴിയിൽ നിന്ന് അല്പം മാറിയുള്ള പാർക്കിങ്"</string>
     <string name="quest_tracktype_grade3a">"കൂടുതലും ദൃഢമായത്"</string>

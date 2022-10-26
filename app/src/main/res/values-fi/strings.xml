@@ -560,9 +560,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Vain neuvoa antava nopeusrajoitus…"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Ei talonumeroa vaan nimi…"</string>
     <string name="quest_address_house_name_label">"Talon nimi:"</string>
 
     <!-- Fuzzy -->
@@ -1236,9 +1233,6 @@ Jaetaanko nyt?"</string>
     <string name="about_summary_current_version">"Nykyinen versio: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Mikä on tämän postilaatikon tunnistenumero?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ei tunnistenumeroa näkyvillä…"</string>
 
     <!-- Fuzzy -->
@@ -1621,7 +1615,6 @@ taso"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
-    <string name="quest_address_street_description">"Napauta kartalla tietä, jolle se kuuluu tai kirjoitta ilman lyhenteitä alla olevaan kenttään:"</string>
     <string name="quest_recycling_type_cooking_oil">"Keittoöljy"</string>
     <string name="quest_recycling_type_engine_oil">"Moottoriöljy"</string>
     <string name="link_photon_description">"Erillinen lisäosa nimihakuun, sisältäen haun kirjoittaessa sumean haun periaatteella"</string>
@@ -1764,9 +1757,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Korkeat kuorma-autot eivät mahdu"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Napauta tietä"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Merkitty suojatie"</string>
@@ -1994,7 +1984,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Ovatko tämän postilaatikon noutoajat edelleen oikein?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ei tunnistettu. Yritä kirjoittaa paikan tyyppi, esim. \"leipomo\". Muuten harkitse muistiinpanon jättämistä."</string>
     <string name="quest_bicycle_barrier_type_title">"Millainen polkupyörän este tämä on?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Vinottainen suhteessa polkuun"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Kapea käytävä, pienenee ylemmäs"</string>
@@ -2041,7 +2030,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="street_parking_conditional_restrictions_hint">"Jos täällä on mahdollista pysäköidä tai pysäköidä ollenkaan, vastaa ensin, miten ne, joilla on lupa, pysäköivät tänne. Mitä rajoituksia tarkalleen sovelletaan, voidaan tarkentaa myöhemmin.
 
 Vaihtoehtoisesti voit jättää muistiinpanon (kuvan kanssa)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Sekä asunnon numero ja nimi…"</string>
     <string name="quest_address_house_number_label">"Asunnon numero:"</string>
 
     <!-- Fuzzy -->

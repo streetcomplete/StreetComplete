@@ -20,10 +20,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
-import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
 import de.westnordost.streetcomplete.overlays.Color
@@ -112,10 +109,7 @@ private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParkingPositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    NoStreetParking,
-    StreetStandingProhibited,
-    StreetParkingProhibited,
-    StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
+    NoStreetParking ->          StrokeStyle(Color.BLACK)
 
     StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
 

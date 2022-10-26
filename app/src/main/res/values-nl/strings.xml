@@ -785,9 +785,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Alleen een adviessnelheids…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Naam van het gebouw:"</string>
 
     <!-- Fuzzy -->
@@ -1282,7 +1279,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"Gebouw met machines zoals pompen en transformatoren"</string>
-    <string name="quest_buildingType_hangar">"Hangaar"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"Opslag voor vliegtuigen, helikopters of ruimtevaartuigen"</string>
@@ -1527,9 +1524,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Huidige versie: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Wat is het referentienummer van deze brievenbus?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Geen referentienummer zichtbaar…"</string>
@@ -1970,7 +1964,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Het hoort niet bij een straat met een naam."</string>
     <string name="quest_address_street_place_name_label">"Plaatsnaam:"</string>
-    <string name="quest_address_street_description">"Tik op de kaart op de weg waartoe het behoort of voer deze zonder afkortingen in in het onderstaande veld:"</string>
     <string name="quest_recycling_type_cooking_oil">"Bakolie"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Een op zichzelf staande uitbreiding van Nominatim met algemeen zoeken en zoeken terwijl je typt"</string>
@@ -2115,9 +2108,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tik de weg aan op de kaart"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
@@ -2348,7 +2338,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Zijn de ophaaltijden van deze brievenbus nog steeds correct?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Niet herkend. Probeer de soort winkel in te voeren, bijvoorbeeld 'bakkerij'. Overweeg anders een notitie achter te laten."</string>
     <string name="quest_bicycle_barrier_type_title">"Welk soort fietssluis is dit?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonaal over het pad"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smalle doorgang, nauwer naar boven toe."</string>
@@ -2395,7 +2384,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="street_parking_conditional_restrictions_hint">"Als het mogelijk is om hier te parkeren of te stoppen, antwoord dan eerst hoe hier geparkeerd kan worden. Welke beperkingen er precies gelden, kunt u later specificeren.
 
 U kunt ook een notitie achterlaten (met een foto)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Zowel een huisnummer als een gebouwnaam"</string>
     <string name="quest_address_house_number_label">"Huisnummer:"</string>
 
     <!-- Fuzzy -->
@@ -2728,7 +2716,6 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd"</string>
     <string name="link_opencampingmap_description">"Een kaart met campings"</string>
     <string name="quest_atm_cashin_title">"Kan je bij deze geldautomaat ook geld storten?"</string>
-    <string name="quest_accessPointRef_title">"Wat is hier het identificatienummer?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Het is een verzamelplaats voor noodgevallen"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Een verzamelplaats voor noodgevallen is waar mensen samenkomen ten tijden van een noodgeval. Het ziet er doorgaans ongeveer zo uit:"</string>
     <string name="quest_address_answer_house_name2">"Het heeft een huisnaam…"</string>
@@ -2744,4 +2731,6 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"Winkels"</string>
     <string name="name_label">"Naam:"</string>
     <string name="vacant_shop_title">"Leegstaand winkelpand"</string>
+    <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Verwijderbaar"</string>
 </resources>

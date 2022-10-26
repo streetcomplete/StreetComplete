@@ -441,7 +441,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Kun en anbefalet hastighedsgrænse…"</string>
-    <string name="quest_address_answer_house_name">"Intet husnummer men et navn…"</string>
     <string name="quest_address_house_name_label">"Husnavn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"etager i taget"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normale etager (eksl. taget)"</string>
@@ -947,9 +946,6 @@ Opdel den nu?"</string>
     <string name="about_summary_current_version">"Nuværende version:  %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Hvad er identifikationsnummeret for denne postkasse?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Intet synligt referencenummer…"</string>
 
     <!-- Fuzzy -->
@@ -1206,7 +1202,6 @@ aktiv"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det tilhører ikke en gade/vej med navn"</string>
     <string name="quest_address_street_place_name_label">"Stednavn:"</string>
-    <string name="quest_address_street_description">"Tryk på vejen det hører til på kortet, ellers skriv det uden forkortelser i feltet herunder:"</string>
     <string name="quest_recycling_type_cooking_oil">"Madolie"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Selvstændig udvidelse til Nominatim som indeholder fuzzy søgning og søg-mens-du-taster funktion"</string>
@@ -1337,9 +1332,6 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høje lastbiler kan ikke passere"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tryk på vejen på kortet"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markeret fodgængerfelt"</string>
@@ -1570,7 +1562,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er tømningstider på denne postkasse stadigvæk korrekte?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ej genkendt. Prøv at indtaste typen af sted, f.eks. \"bageri\". Ellers overvej at efterlade en note."</string>
     <string name="quest_bicycle_barrier_type_title">"Hvilken type cykelchikane er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal i forhold til stien"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Snæver passage, smallere mod toppen"</string>
@@ -1613,7 +1604,6 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="street_parking_conditional_restrictions_hint">"Hvis det overhovedet er muligt at parkere eller standse her, skal du først svare på, hvordan de, der har lov til det, parkerer her. Hvilke begrænsninger der præcist gælder, kan specificeres senere.
 
 Alternativt kan du efterlade en note (med et foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Både et husnummer og et navn…"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
 
     <!-- Fuzzy -->
@@ -1911,7 +1901,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Et kort over campingpladser"</string>
     <string name="quest_atm_cashin_title">"Kan man indbetale kontanter i denne pengeautomat?"</string>
     <string name="create_node_action_description">"Du oprettede et punkt med …"</string>
-    <string name="quest_accessPointRef_title">"Hvilket identifikationsnummer er der her?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Det er et samlingssted"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Et samlingssted er et sted, hvor folk samles i tilfælde af en nødsituation. Det ligner normalt dette:"</string>
     <string name="quest_address_answer_house_name2">"Det har et husnavn …"</string>

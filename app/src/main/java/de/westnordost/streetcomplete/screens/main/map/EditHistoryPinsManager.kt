@@ -37,17 +37,19 @@ class EditHistoryPinsManager(
     private val resources: Resources
 ) : DefaultLifecycleObserver {
 
-    /** Switch active-ness of edit history pins layer */
-    var isActive: Int = 0
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+
+    /** Switch visibility of edit history pins layer */
+    var isVisible: Int = 0
         set(value) {
             if (field == value) return
             field = value
-            if (value != 0) start(value == 2) else stop()
+            if (value != 0) show(value == 2) else hide()
         }
 
     private var showAllHiddenQuests = false
+    private var isStarted: Boolean = false
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { updatePins() }
@@ -56,18 +58,30 @@ class EditHistoryPinsManager(
         override fun onInvalidated() { updatePins() }
     }
 
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+        isStarted = true
+        show(showAllHiddenQuests)
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+        isStarted = false
+        hide()
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
-        stop()
         viewLifecycleScope.cancel()
     }
 
-    private fun start(allHidden: Boolean) {
+    private fun show(allHidden: Boolean) {
+        if (!isStarted || isVisible == 0) return
         showAllHiddenQuests = allHidden
         updatePins()
         editHistorySource.addListener(editHistoryListener)
     }
 
-    private fun stop() {
+    private fun hide() {
         viewLifecycleScope.coroutineContext.cancelChildren()
         viewLifecycleScope.launch { pinsMapComponent.clear() }
         editHistorySource.removeListener(editHistoryListener)
@@ -78,7 +92,7 @@ class EditHistoryPinsManager(
 
     private fun updatePins() {
         viewLifecycleScope.launch {
-            if (this@EditHistoryPinsManager.isActive != 0) {
+            if (this@EditHistoryPinsManager.isVisible != 0) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(showAllHiddenQuests) }
                 val pins = createEditPins(edits)
                 pinsMapComponent.set(pins)

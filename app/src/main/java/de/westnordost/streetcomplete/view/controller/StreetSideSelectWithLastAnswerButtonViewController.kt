@@ -99,8 +99,12 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { deserializeLastSelection(it, false) }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { deserializeLastSelection(it, true) }
+        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { str ->
+            try { deserializeLastSelection(str, false) } catch (e: Exception) { null }
+        }
+        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { str ->
+            try { deserializeLastSelection(str, true) } catch (e: Exception) { null }
+        }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }

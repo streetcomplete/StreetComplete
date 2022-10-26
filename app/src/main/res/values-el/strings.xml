@@ -806,9 +806,6 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Απλά ένα συμβουλευτικό όριο ταχύτητας…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Δεν υπάρχει αριθμός οικίας, αλλά όνομα…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Όνομα οικίας:"</string>
 
     <!-- Fuzzy -->
@@ -1548,9 +1545,6 @@
     <string name="about_summary_current_version">"Τρέχουσα έκδοση: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Ποιος είναι ο αριθμός αναφοράς αυτού του γραμματοκιβώτιου;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Δεν εμφανίζεται αριθμός αναφοράς…"</string>
 
     <!-- Fuzzy -->
@@ -1802,7 +1796,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Δεν ανήκει σε ονομασμένο δρόμο"</string>
     <string name="quest_address_street_place_name_label">"Όνομα τοποθεσίας:"</string>
-    <string name="quest_address_street_description">"Πατήστε τον δρόμο στον οποίο ανήκει ο χάρτης ή εισαγάγετέ τον χωρίς συντομογραφίες στο παρακάτω πεδίο:"</string>
     <string name="quest_recycling_type_cooking_oil">"Μαγειρικό λάδι"</string>
     <string name="quest_recycling_type_engine_oil">"Λάδι μηχανής"</string>
     <string name="link_photon_description">"Μια αυτόνομη επέκταση στο Nominatim, με ασαφή αναζήτηση και αναζήτηση - όπως - εσείς - πληκτρολογείτε"</string>
@@ -1946,9 +1939,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Χτυπήστε το δρόμο στον χάρτη"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
@@ -2179,7 +2169,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Οι χρόνοι συλλογής αυτού του ταχυδρομικού κουτιού εξακολουθούν να είναι σωστές;"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Μη αναγνωρίσιμο. Δοκιμάστε να εισαγάγετε τον τύπο του μέρους, για παράδειγμα \"αρτοποιείο\". Αλλιώς, αφήσετε μια σημείωση."</string>
     <string name="quest_bicycle_barrier_type_title">"Τι είδους μπάρα για ποδήλατα είναι αυτή;"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Κάθετα προς το μονοπάτι"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Στενό πέρασμα, μικρότερο προς τα πάνω"</string>
@@ -2225,7 +2214,6 @@
     <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Εάν γίνεται να παρκάρετε ή να σταματήσετε εδώ, απαντήστε πρώτα πώς σταθμεύουν εδώ όσοι επιτρέπεται. Το ποιοι ακριβώς περιορισμοί ισχύουν μπορούν να καθοριστούν αργότερα.
 Εναλλακτικά, μπορείτε να αφήσετε μια σημείωση (με φωτογραφία)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Και αριθμός σπιτιού και ένα όνομα…"</string>
     <string name="quest_address_house_number_label">"Αριθμός σπιτιού:"</string>
 
     <!-- Fuzzy -->
@@ -2524,10 +2512,42 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_backcountry">"Υπαίθριο κάμπινγκ (χωρίς εγκαταστάσεις)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Αυτή η απάντηση δεν ταιριάζει με αυτό που έχει ήδη χαρτογραφηθεί για αυτόν τον δρόμο. Είστε σίγουροι ότι απαντάτε για τον σωστό δρόμο; Είστε βέβαιοι ότι κάνατε προσωπική έρευνα σε όλο το μήκος, όπως πάντα χρειάζεται;"</string>
-    <string name="quest_recycling_type_pet">"Κατοικίδια μόνο"</string>
+
+    <!-- PET stands for polyethylene terephthalate, and it's about specific plastic bottles/phials -->
+    <string name="quest_recycling_type_pet">"PET μόνο"</string>
     <string name="street_parking_street_width">"Πλάτος δρόμου: %s"</string>
     <string name="overlay_street_parking">"Πάρκινγκ στο δρόμο"</string>
     <string name="link_ohsomehex_description">"Εξερευνήστε OSM δεδομένα σε κλίμακες από τη μεγάλη εικόνα έως μεμονωμένα αντικείμενα στο χώρο και στο χρόνο"</string>
     <string name="link_opencampingmap_description">"Χάρτης με κάμπινγκ"</string>
     <string name="quest_atm_cashin_title">"Μπορείτε να καταθέσετε μετρητά σε αυτό το ΑΤΜ;"</string>
+    <string name="create_node_action_description">"Δημιουργήσατε έναν κόμβο με ..."</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Είναι Σημείο Συγκέντρωσης"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Ένα Σημείο Συγκέντρωσης είναι όπου οι άνθρωποι συγκεντρώνονται σε περίπτωσης έκτακτης ανάγκης. Συνήθως μοιάζει με:"</string>
+    <string name="quest_address_answer_house_name2">"Έχει όνομα σπιτιού..."</string>
+    <string name="quest_address_street_street_name_label">"Όνομα δρόμου:"</string>
+    <string name="quest_address_street_hint2">"Πατήστε το δρόμο στο χάρτη για να τον επιλέξετε"</string>
+    <string name="quest_bicycle_incline_title">"Ποιά κατεύθυνση οδηγεί προς τα πάνω;"</string>
+    <string name="quest_drinking_water_type_title">"Πώς προσφέρεται το πόσιμο νερό εδώ;"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Άλλη βρύση νερού"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Βρύση που αναδίδει πίδακα νερού"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Για γέμισμα μπουκαλιών μόνο"</string>
+    <string name="quest_drinking_water_type_tap">"Απλή βρύση"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Αντλία χειρός"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Πηγάδι χωρίς αντλία"</string>
+    <string name="quest_drinking_water_type_spring">"Πηγή"</string>
+    <string name="quest_drinking_water_type_disused">"Αχρησιμοποίητο αντικείμενο πόσιμου νερού"</string>
+    <string name="overlay_addresses">"Διευθύνσεις"</string>
+    <string name="overlay_shops">"Καταστήματα"</string>
+    <string name="name_label">"Όνομα:"</string>
+    <string name="vacant_shop_title">"Άδειο κατάστημα"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Άλλου είδους μέρος"</string>
+    <string name="quest_address_answer_no_address">"Καμία διεύθυνση εδώ"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Μπορεί να ανοίξει αυτό το εμπόδιο ποδηλάτων;"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Σταθερό"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Ανοιγόμενο"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Αφαιρούμενο"</string>
+    <string name="quest_buildingType_guardhouse">"Φυλάκιο"</string>
+    <string name="quest_genericRef_title">"Ποιος είναι ο αναγνωριστικός αριθμός εδώ;"</string>
 </resources>

@@ -373,7 +373,6 @@
     <string name="quest_powerPolesMaterial_metal">"فولاذ"</string>
     <string name="quest_powerPolesMaterial_concrete">"أسمنت"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"مجرد حد للسرعة الموصى بها …"</string>
-    <string name="quest_address_answer_house_name">"لا يوجد رقم للمنزل ولكن يوجد اسم …"</string>
     <string name="quest_address_house_name_label">"اسم المنزل:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"طوابق في السطح"</string>
     <string name="quest_buildingLevels_levelsLabel2">"الطوابق (لا تحسب السطح)"</string>
@@ -750,9 +749,6 @@
     <string name="about_summary_current_version">"الإصدار الحالي: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"ما هو الرقم المرجعي لصندوق البريد هذا؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"لا يوجد رقم مرجعي مرئي …"</string>
 
     <!-- Fuzzy -->
@@ -966,7 +962,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"إنه لا ينتمي إلى شارع مسمى"</string>
     <string name="quest_address_street_place_name_label">"اسم مكان:"</string>
-    <string name="quest_address_street_description">"اضغط على الطريق التي ينتمي إليه على الخريطة أو أدخل اسمه الكامل وغير المختصر في الحقل أدناه:"</string>
     <string name="quest_recycling_type_cooking_oil">"زيت الطهي"</string>
     <string name="quest_recycling_type_engine_oil">"زيت المحرك"</string>
     <string name="link_photon_description">"امتداد مستقل لـ Nominatim، بما في ذلك البحث التقريبي والبحث أثناء الكتابة"</string>
@@ -1108,9 +1103,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"الشاحنات الطويلة لا يمكنها المرور"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"اضغط على الطريق على الخريطة"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"معبر مشاة بعلامات ولافتات مرورية"</string>
@@ -1337,7 +1329,6 @@
     <string name="quest_access_customers">"أي شخص يزور مكانًا معينًا (مثل العملاء فقط)"</string>
     <string name="quest_access_private">"فقط الأفراد الحاصلين على إذن/تصريح"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"هل ما زالت أوقات الاستلام لصندوق التجميع هذا صحيحة؟"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ليست معروفة، حاول إدخال نوع المكان ، على سبيل المثال \"مخبز\"، إذا لم تعرف النوع الصحيح فكر في ترك ملاحظة."</string>
     <string name="quest_bicycle_barrier_type_title">"أي نوع من حواجز الدراجات هذا؟"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"قطري إلى المسار"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ممر ضيق ، أصغر باتجاه الأعلى"</string>
@@ -1372,7 +1363,6 @@
     <string name="street_parking_conditional_restrictions_hint">"إذا كان من الممكن التوقف بشكل مطلق هنا ، حدد نوع موقف السيارات هل هو على الشارع أو بعيدًا عنه، كما يمكن تحديد قيود إضافية لاحقًا.
 
 كما يمكنك ترك ملاحظة بدلاً من ذلك (مع صورة)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"كلاً من رقم المنزل والاسم ..."</string>
     <string name="quest_address_house_number_label">"رقم المنزل:"</string>
     <string name="quest_shoulder_title">"هل هذا الطريق به كتف أو مسار طوارئ؟"</string>
     <string name="quest_fireHydrant_position_title">"أين يقع صنبور الحريق هذا؟"</string>

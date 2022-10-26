@@ -119,11 +119,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource, prefs)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
-        questPinsManager!!.isActive = pinMode == PinMode.QUESTS
+        questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
-        editHistoryPinsManager!!.isActive = when (pinMode) {
+        editHistoryPinsManager!!.isVisible = when (pinMode) {
             PinMode.EDITS -> 1
             PinMode.HIDDEN_QUESTS -> 2
             else -> 0
@@ -305,20 +305,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
          */
         when (pinMode) {
             PinMode.QUESTS -> {
-                editHistoryPinsManager?.isActive = 0
-                questPinsManager?.isActive = true
+                editHistoryPinsManager?.isVisible = 0
+                questPinsManager?.isVisible = true
             }
             PinMode.EDITS -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = 1
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 1
             }
             PinMode.HIDDEN_QUESTS -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = 2
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 2
             }
             else -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = 0
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 0
             }
         }
     }
