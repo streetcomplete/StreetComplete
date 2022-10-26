@@ -21,12 +21,15 @@ import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.LaurelWreathDrawable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.io.File
+import java.lang.Math.max
+import java.lang.Math.min
 import java.util.Locale
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
@@ -147,12 +150,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val daysActive = statisticsSource.daysActive
         binding.daysActiveContainer.isGone = daysActive <= 0
         binding.daysActiveText.text = daysActive.toString()
+        binding.daysActiveText.background = LaurelWreathDrawable(resources, min(daysActive + 20, 100))
     }
 
     private fun updateGlobalRankText() {
+        // note that global rank merges multiple people with the same score
+        // in case that 1000 people made 11 edits all will have the same rank (say, 3814)
+        // in case that 1000 people made 10 edits all will have the same rank (in this case - 3815)
         val rank = statisticsSource.rank
         binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
         binding.globalRankText.text = "#$rank"
+        val rankEnoughForFullMarks = 1000
+        val rankEnoughToStartGrowingReward = 3800
+        val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
+        val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
+        binding.globalRankText.background = LaurelWreathDrawable(resources, min(scaledRank, 100))
     }
 
     private suspend fun updateLocalRankText() {
@@ -164,8 +176,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.count > 50
             val countryLocale = Locale("", statistics.countryCode)
             binding.localRankContainer.isGone = !shouldShow
-            binding.localRankText.text = "#${statistics.rank}"
-            binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+            if (shouldShow) {
+                binding.localRankText.text = "#${statistics.rank}"
+                binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+                binding.localRankText.background = LaurelWreathDrawable(resources, min(100 - statistics.rank!!, 100))
+            }
         }
     }
 
@@ -173,6 +188,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val levels = withContext(Dispatchers.IO) { achievementsSource.getAchievements().sumOf { it.second } }
         binding.achievementLevelsContainer.isGone = levels <= 0
         binding.achievementLevelsText.text = "$levels"
+        binding.achievementLevelsText.background = LaurelWreathDrawable(resources, min(levels / 2, 100))
     }
 
     private fun openUrl(url: String): Boolean {
