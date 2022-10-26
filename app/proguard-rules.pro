@@ -33,6 +33,9 @@
         public static final ** CREATOR;
 }
 
+# crashes when selecting some quests from tag editor
+-keep class androidx.core.app.CoreComponentFactory { *; }
+
 # kotlinx-serialization start ----------------------------------------------------------------------
 
 -keepattributes *Annotation*, InnerClasses

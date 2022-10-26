@@ -161,6 +161,8 @@ abstract class AbstractQuestForm :
         binding.titleLabel.text = text
     }
 
+    protected fun getCurrentTitle(): CharSequence = binding.titleLabel.text
+
     protected fun setTitleHintLabel(text: CharSequence?) {
         binding.titleHintLabel.isGone = text == null
         binding.titleHintLabel.text = text

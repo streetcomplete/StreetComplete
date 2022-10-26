@@ -96,7 +96,7 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
             }
         }
         button?.isEnabled = textInput.text.toString().let {
-            it.lowercase().matches(elementSelectionRegex)
+            (checkPrefix.isEmpty() || it.lowercase().matches(elementSelectionRegex))
                 && it.count { c -> c == '('} == it.count { c -> c == ')'}
                 && (it.contains('=') || it.contains('~'))
                 && isValidFilterExpression
@@ -141,8 +141,6 @@ private fun dialog(context: Context, messageId: Int, initialValue: String, input
         .setView(input)
         .setNegativeButton(android.R.string.cancel, null)
 }
-
-//fun getStringFor(prefs: SharedPreferences, pref: String) = prefs.getString(pref, "")?.let { if (it.isEmpty()) "" else "or $it"}
 
 fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"

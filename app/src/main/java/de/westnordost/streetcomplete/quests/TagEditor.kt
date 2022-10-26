@@ -74,17 +74,11 @@ import kotlin.math.min
 //  help when entering tags
 //   maybe adjust inputType?
 //   disable autocorrect? at least for key it might be useful, maybe for value too?
-//   suggestions? e.g. common keys, or common values for that key
+//   suggestions? e.g. common keys, or common values for that key, or last typed keys / values for that key
 //    how to show?
 //     autocompletetextview is the dropdown thing, but that might not always be convenient
 //     can i use the keyboard suggestions? should work, see e.g. TYPE_TEXT_FLAG_AUTO_COMPLETE
 //      if this works, it could also be done for tree quest
-// todo: can i disable keyboard autocorrect? and enforce (or better suggest only) lower case for key?
-//  try inputtype stuff... and play a bit
-//  and best: provide my own suggestions
-//  suggest values when editing tags (how to use? autocomplete in keyboard? or this suggestion stuff?)
-//   just store values for recently used keys, plus some defaults for each key?
-//   and recently manually added keys?
 
 open class TagEditor : Fragment(), IsCloseableBottomSheet {
     // too different from abstractbottomsheetfragment... though it would be nice to use it...
@@ -216,8 +210,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         f.requireArguments().putAll(osmArgs)
         activity?.currentFocus?.hideKeyboard()
         parentFragmentManager.commit { // in parent fragment, because this handles the callbacks
-            replace(R.id.editorContainer, f, null) // replace container, not this fragment! otherwise viewLifecycleScope gets canceled
+            add(id, f, null) // add the quest instead of replacing tag editor, so that changes aren't lost
             addToBackStack(null)
+            // but hide tag editor while quest is shown
             binding.editTags.visibility = View.GONE
             binding.questsGrid.visibility = View.GONE
             binding.okButton.visibility = View.GONE
@@ -226,23 +221,24 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         viewLifecycleScope.launch(Dispatchers.IO) {
             // this thread waits while the quest form is showing
+            // quest sets changes when answering, but does nothing else
             // when the quest form is closed without answer, changes are set to empty (in main fragment)
             changes = null
             while (changes == null) { delay(50) }
+            val ch = changes
+            ch?.applyTo(newTags) // apply before showOk() (though it works also when applying after, maybe onClickClose stuff gets executed in a different thread
             requireActivity().runOnUiThread {
                 binding.editTags.visibility = View.VISIBLE
                 binding.questsGrid.visibility = View.VISIBLE
                 binding.lastEditDate.visibility = View.VISIBLE
-
                 showOk()
                 f.onClickClose {
                     parentFragmentManager.popBackStack()
                     changes = null
                 }
             }
-            if (changes?.isEmpty() != false)
+            if (ch?.isEmpty() != false) // usually changes is set to null after this check, but better be safe
                 return@launch
-            changes?.applyTo(newTags)
             tagList.clear()
             tagList.addAll(newTags.toList())
             tagList.sortBy { it.first }

@@ -138,7 +138,7 @@ class QuestPinsManager(
         val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
+        if (tilesRect.size > 32) return
         if (lastDisplayedRect?.contains(tilesRect) != true) {
             lastDisplayedRect = tilesRect
             onNewTilesRect(tilesRect)
