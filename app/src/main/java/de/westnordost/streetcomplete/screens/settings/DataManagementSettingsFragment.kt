@@ -40,9 +40,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.IOException
+import java.io.OutputStream
 import kotlin.system.exitProcess
 
 class DataManagementSettingsFragment :
@@ -180,20 +184,7 @@ class DataManagementSettingsFragment :
             return
         val uri = data.data ?: return
         when (requestCode) {
-            REQUEST_CODE_SETTINGS_EXPORT -> {
-                val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                if (!f.exists()) {
-                    context?.toast(R.string.export_error_no_settings_file, Toast.LENGTH_LONG)
-                    return
-                }
-                activity?.contentResolver?.openOutputStream(uri)?.use { os ->
-                    val lines = f.readLines().filterNot { // ignore login data and sprite sheets
-                        it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") || it.contains("oauth.") || it.contains("osm.")
-                    }
-                    os.bufferedWriter().use { it.write(lines.joinToString("\n")) }
-                }
-                // there is some SharedPreferencesBackupHelper, but can't access this without some app backup thing apparently
-            }
+            REQUEST_CODE_SETTINGS_EXPORT -> exportSettings(uri)
             REQUEST_CODE_HIDDEN_EXPORT -> {
                 activity?.contentResolver?.openOutputStream(uri)?.use { os ->
                     val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
@@ -259,17 +250,7 @@ class DataManagementSettingsFragment :
                     }
                 }
             }
-            REQUEST_CODE_SETTINGS_IMPORT -> {
-                val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
-                val t = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() }
-                if (t == null || t.firstOrNull()?.startsWith("<?xml version") != true) {
-                    context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
-                    return
-                }
-                f.writeText(t.filterNot { it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") }.joinToString("\n"))
-                // need to immediately restart the app to avoid current settings writing to new file
-                restartApp()
-            }
+            REQUEST_CODE_SETTINGS_IMPORT -> if (!importSettings(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
             REQUEST_CODE_HIDDEN_IMPORT -> {
                 // do not delete existing hidden quests; this can be done manually anyway
                 val lines = importLinesAndCheck(uri, BACKUP_HIDDEN_OSM_QUESTS)
@@ -469,6 +450,82 @@ class DataManagementSettingsFragment :
         activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { writer ->
             writer.write(File(context?.getExternalFilesDir(null), filename).readText())
         } }
+
+    private fun exportSettings(uri: Uri) {
+        val perPresetQuestSetting = "[0-9]_qs_.+".toRegex()
+        val settings = prefs.all.filterKeys {
+            !it.contains("TangramPinsSpriteSheet") // this is huge and gets generated if missing anyway
+                && !it.contains("TangramIconsSpriteSheet") // this is huge and gets generated if missing anyway
+                && !it.contains("oauth.") // login data
+                && !it.contains("osm.") // login data
+                && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stores with presets, because preset id is never guaranteed to match
+        }
+        activity?.contentResolver?.openOutputStream(uri)?.use { settingsToJsonStream(settings, it) }
+    }
+
+    // this will ignore settings with value null
+    // it can be both string and string set, and i have no idea how to tell apart...
+    private fun settingsToJsonStream(settings: Map<String, Any?>, out: OutputStream) {
+        val booleans = settings.filterValues { it is Boolean } as Map<String, Boolean>
+        val ints = settings.filterValues { it is Int } as Map<String, Int>
+        val longs = settings.filterValues { it is Long } as Map<String, Long>
+        val floats = settings.filterValues { it is Float } as Map<String, Float>
+        val strings = settings.filterValues { it is String } as Map<String, String>
+        val stringSets = settings.filterValues { it is Set<*> } as Map<String, Set<String>>
+        // now write
+        out.writer().use {
+            it.appendLine("boolean settings")
+            it.appendLine( Json.encodeToString(booleans))
+            it.appendLine("int settings")
+            it.appendLine( Json.encodeToString(ints))
+            it.appendLine("long settings")
+            it.appendLine( Json.encodeToString(longs))
+            it.appendLine("float settings")
+            it.appendLine( Json.encodeToString(floats))
+            it.appendLine("sting settings")
+            it.appendLine( Json.encodeToString(strings))
+            it.appendLine("string set settings")
+            it.appendLine( Json.encodeToString(stringSets))
+        }
+    }
+
+    private fun importSettings(uri: Uri): Boolean {
+        val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines() } ?: return false
+        if (lines.firstOrNull()?.startsWith("<?xml version") == true) {
+            // we have an xml file, just replace current settings file
+            val f = File(context?.applicationInfo?.dataDir + File.separator + "shared_prefs" + File.separator + context?.applicationInfo?.packageName + "_preferences.xml")
+            if (!f.exists()) return false
+            f.writeText(lines.filterNot { it.contains("TangramPinsSpriteSheet") || it.contains("TangramIconsSpriteSheet") }.joinToString("\n"))
+            // need to immediately restart the app to avoid current settings writing to new file
+            restartApp()
+            return true
+        }
+        val r = readToSettings(lines)
+        preferenceScreen.removeAll()
+        onCreatePreferences(null, null)
+        return r
+    }
+
+    private fun readToSettings(list: List<String>): Boolean {
+        val i = list.iterator()
+        val e = prefs.edit()
+        try {
+            while (i.hasNext()) {
+                when (i.next()) {
+                    "boolean settings" -> Json.decodeFromString<Map<String, Boolean>>(i.next()).forEach { e.putBoolean(it.key, it.value) }
+                    "int settings" -> Json.decodeFromString<Map<String, Int>>(i.next()).forEach { e.putInt(it.key, it.value) }
+                    "long settings" -> Json.decodeFromString<Map<String, Long>>(i.next()).forEach { e.putLong(it.key, it.value) }
+                    "float settings" -> Json.decodeFromString<Map<String, Float>>(i.next()).forEach { e.putFloat(it.key, it.value) }
+                    "string settings" -> Json.decodeFromString<Map<String, String>>(i.next()).forEach { e.putString(it.key, it.value) }
+                    "string set settings" -> Json.decodeFromString<Map<String, Set<String>>>(i.next()).forEach { e.putStringSet(it.key, it.value) }
+                }
+            }
+            e.apply()
+            return true
+        } catch (e: Exception) {
+            return false
+        }
+    }
 
     private fun restartApp() {
         // exitProcess does actually restart with the activity below, which should always be MainActivity.

@@ -1,6 +1,6 @@
 v48.0_ee: |
   <ul>
-  <li>Allow switching main menu to a full grid (larger buttons!)</li>
+  <li>Allow switching main menu to a full grid (larger buttons!) (#388)</li>
   <li>Add POIs using the long press menu</li>
   <li>Show all Osmose quests, even if they are not connected to exactly one element</li>
   <li>Restart is no longer necessary for applying changed quest settings</li>
@@ -10,11 +10,11 @@ v48.0_ee: |
   <li>Allow viewing photos when creating a note</li>
   <li>Option to show a notification when the app is in background and a quest is nearby</li>
   <li>Some performance improvements</li>
-  <li>Re-arrange settings</li>
+  <li>Re-arrange settings (#396)</li>
   <li>Highlight nearby cycleways and sidewalks for the respective quests</li>
   <li>Allow displaying track from GPX file</li>
   <li>Replace simple text tag editing with tag editor</li>
-  <li>Allow changing URL for satellite images</li>
+  <li>Allow changing URL for satellite images (#398)</li>
   </ul>
 
 v47.0_ee: |
