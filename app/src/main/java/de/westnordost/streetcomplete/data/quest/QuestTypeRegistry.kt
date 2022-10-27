@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.ObjectTypeRegistry
+
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -13,10 +15,13 @@ import java.util.concurrent.FutureTask
 
 /** Every osm quest needs to be registered here.
  *
- * Could theoretically be done with Reflection, but that doesn't really work on Android
+ * Could theoretically be done with Reflection, but that doesn't really work on Android.
+ *
+ * It is also used to define a (display) order of the quest types and to assign an ordinal to each
+ * quest type for serialization.
  */
-
-class QuestTypeRegistry(
+class QuestTypeRegistry(ordinalsAndEntries: List<Pair<Int, QuestType>>) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries)
+class QuestTypeRegistry( // todo: below here there is nothing in upstream SC any more
     private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi? = null,
     private val trafficFlowDao: WayTrafficFlowDao? = null,
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>? = null,
@@ -27,7 +32,6 @@ class QuestTypeRegistry(
     private val externalList: ExternalList? = null,
     private val quests: MutableList<QuestType> = mutableListOf()
 ) : List<QuestType> by quests {
-
     // the nullable stuff is just to allow creating a QuestTypeRegistry from a list as it's done in tests
     constructor(questList: List<QuestType>) : this(quests = questList.toMutableList()) {
         for (questType in this) {
@@ -38,7 +42,6 @@ class QuestTypeRegistry(
             typeMap[questTypeName] = questType
         }
     }
-
     private val typeMap = mutableMapOf<String, QuestType>()
 
     init { reload() }

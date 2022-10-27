@@ -71,4 +71,6 @@ object ApplicationConstants {
            locally for performance reasons */
         SplitWayAction::class
     )
+
+    val EE_QUEST_OFFSET = 50000
 }

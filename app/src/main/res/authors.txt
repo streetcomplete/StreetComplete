@@ -47,6 +47,7 @@ bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikim
 bicycle_parking_type_stand.jpg CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheelb... CC-BY-SA 4.0      Joxemai https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 bicycle_parking_type_handle... CC-BY-SA 4.0      Hiddewie https://commons.wikimedia.org/wiki/File:Bicycle_parking_handlebar_holder.jpg
+bicycle_parking_type_two_ti... CC0               Bukk https://commons.wikimedia.org/wiki/File:Double_stack_bike_stand.jpg
 
 bicycle_rental_docking_stat... CC-BY-SA 3.0      Siyuwj https://commons.wikimedia.org/wiki/File:Bicycle_rental_site_of_Tiangongyuan_Station.JPG
 bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.wikimedia.org/wiki/File:Stuttgart-Vaihingen_Train_Station_Mobility_Hub_IMG_5767.jpg

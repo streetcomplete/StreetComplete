@@ -16,6 +16,16 @@ class QuestTypeOrderDao(private val db: Database) {
             cursor.getString(BEFORE) to cursor.getString(AFTER)
         }
 
+    fun setAll(presetId: Long, pairs: List<Pair<String, String>>) {
+        db.transaction {
+            clear(presetId)
+            db.insertMany(NAME,
+                columnNames = arrayOf(QUEST_PRESET_ID, BEFORE, AFTER),
+                valuesList = pairs.map { arrayOf(presetId, it.first, it.second) }
+            )
+        }
+    }
+
     fun put(presetId: Long, pair: Pair<String, String>) {
         db.insert(NAME, listOf(
             QUEST_PRESET_ID to presetId,

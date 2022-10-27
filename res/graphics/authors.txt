@@ -203,6 +203,10 @@ lanes/
     car4.svg
     car5.svg
 
+laurel_wreath/
+    laurel_leaf_rotated.svg        CC0               Mateusz Konieczny (if even copyright is applicable here)
+    laurel_leaf_ending.svg         CC0               Mateusz Konieczny (if even copyright is applicable here)
+
 links/
     link_neis_one.svg
 

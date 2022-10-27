@@ -61,8 +61,8 @@ class VisibleQuestsSourceTest {
         teamModeQuestFilter = mock()
         levelFilter = mock()
         selectedOverlaySource = mock()
+        questTypeRegistry = QuestTypeRegistry(questTypes.mapIndexed { index, questType -> index to questType })
         dayNightFilter = mock()
-        questTypeRegistry = QuestTypeRegistry(questTypes)
 
         on(visibleQuestTypeSource.isVisible(any())).thenReturn(true)
         on(teamModeQuestFilter.isVisible(any())).thenReturn(true)

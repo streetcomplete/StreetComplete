@@ -46,11 +46,6 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     private lateinit var questSelectionAdapter: QuestSelectionAdapter
 
-    interface Listener {
-        fun onClickedQuestPresets()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     private val parentTitleContainer: DisplaysTitle? get() =
         parentFragment as? DisplaysTitle ?: activity as? DisplaysTitle
 
@@ -119,10 +114,6 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
                     .show()
                 return true
             }
-            R.id.action_manage_presets -> {
-                listener?.onClickedQuestPresets()
-                return true
-            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -139,14 +130,14 @@ class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection), HasT
 
     private fun resetQuestVisibilitiesAndOrder() {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.clear()
+            visibleQuestTypeController.clearVisibilities()
             questTypeOrderController.clear()
         }
     }
 
     private fun deselectAllQuests() {
         viewLifecycleScope.launch(Dispatchers.IO) {
-            visibleQuestTypeController.setAllVisible(questTypeRegistry, false)
+            visibleQuestTypeController.setVisibilities(questTypeRegistry.associateWith { false })
         }
     }
 
