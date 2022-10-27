@@ -101,10 +101,18 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { deserializeLastSelection(it, false) }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { deserializeLastSelection(it, true) }
-        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { deserializeLastSelection(it, false) }
-        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { deserializeLastSelection(it, true) }
+        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { 
+            try { deserializeLastSelection(str, false) } catch (e: Exception) { null }
+        }
+        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { 
+            try { deserializeLastSelection(str, true) } catch (e: Exception) { null }
+        }
+        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { 
+            try { deserializeLastSelection(str, false) } catch (e: Exception) { null }
+        }
+        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { 
+            try { deserializeLastSelection(str, true) } catch (e: Exception) { null }
+        }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }

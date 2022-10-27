@@ -3,10 +3,9 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
 
 class AddBusStopShelterTest {
 
@@ -24,7 +23,7 @@ class AddBusStopShelterTest {
             mapOf("shelter" to "yes"),
             BusStopShelterAnswer.SHELTER,
             StringMapEntryModify("shelter", "yes", "yes"),
-            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
         )
     }
 
@@ -40,7 +39,7 @@ class AddBusStopShelterTest {
             mapOf("shelter" to "no"),
             BusStopShelterAnswer.NO_SHELTER,
             StringMapEntryModify("shelter", "no", "no"),
-            StringMapEntryAdd("check_date:shelter", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
         )
     }
 

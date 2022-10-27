@@ -358,7 +358,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Enbart rekommenderad hastighet…"</string>
-    <string name="quest_address_answer_house_name">"Inget husnummer men ett namn…"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (utan takvåningar)"</string>
@@ -718,9 +717,6 @@ Dela den nu?"</string>
     <string name="about_summary_current_version">"Aktuell version: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Vad är referensnumret för denna brevlåda?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns…"</string>
 
     <!-- Fuzzy -->
@@ -935,7 +931,6 @@ nivåer"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
-    <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
     <string name="quest_recycling_type_cooking_oil">"Matlagningsolja"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolja"</string>
     <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
@@ -1055,9 +1050,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tryck på vägen på kartan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
@@ -1288,7 +1280,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Stämmer tömningstiderna för denna brevlåda fortfarande?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Känns ej igen. Prova att ange vad för slags ställe detta är, t.ex. \"bageri\". Överväg annars att lämna en anteckning."</string>
     <string name="quest_bicycle_barrier_type_title">"Vad för slags cykelgrind är detta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala grindar"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Inåtlutande grindar"</string>
@@ -1333,7 +1324,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="street_parking_conditional_restrictions_hint">"Om det är möjligt att parkera eller stanna här, svara först på hur man får parkera här. Vilka regler som gäller kan anges senare.
 
 Du kan också lämna en anteckning (med bild)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Både ett husnummer och ett namn…"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
 
     <!-- Fuzzy -->
@@ -1651,7 +1641,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"En karta som visar campingplatser"</string>
     <string name="quest_atm_cashin_title">"Kan man sätta in pengar i denna bankomat?"</string>
     <string name="create_node_action_description">"Du skapade en nod med …"</string>
-    <string name="quest_accessPointRef_title">"Vad har återsamlingsplatsen för beteckning?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Det är en återsamlingsplats"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En återsamlingsplats är en skyltad plats där man samlas vid en nödsituation. Vanligen ser de ut så här:"</string>
     <string name="quest_address_answer_house_name2">"Den har ett husnamn…"</string>
@@ -1676,4 +1665,11 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Okänd slags plats"</string>
+    <string name="quest_address_answer_no_address">"Ingen adress här"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan den här cykelgrinden öppnas?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Öppningsbar"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Löstagbar"</string>
+    <string name="quest_buildingType_guardhouse">"Vaktkur"</string>
+    <string name="quest_genericRef_title">"Vad har detta för referensnummer?"</string>
 </resources>

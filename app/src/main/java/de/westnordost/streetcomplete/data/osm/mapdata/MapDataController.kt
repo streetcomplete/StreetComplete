@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.ktx.format
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
@@ -53,7 +53,7 @@ class MapDataController internal constructor(
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         val oldElementKeys: Set<ElementKey>
         val geometryEntries: Collection<ElementGeometryEntry>
@@ -82,7 +82,7 @@ class MapDataController internal constructor(
 
         Log.i(TAG,
             "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-            " in ${((currentTimeMillis() - time) / 1000.0).format(1)}s"
+            " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
         )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
@@ -167,9 +167,9 @@ class MapDataController internal constructor(
     fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries)
 
     fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
         val result = cache.getMapDataWithGeometry(bbox)
-        Log.i(TAG, "Fetched ${result.size} elements and geometries in ${currentTimeMillis() - time}ms")
+        Log.i(TAG, "Fetched ${result.size} elements and geometries in ${nowAsEpochMilliseconds() - time}ms")
 
         return result
     }

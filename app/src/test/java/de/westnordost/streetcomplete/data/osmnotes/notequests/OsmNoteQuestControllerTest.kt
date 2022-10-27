@@ -140,12 +140,12 @@ class OsmNoteQuestControllerTest {
     @Test fun `get hidden returns null`() {
         on(noteSource.get(1)).thenReturn(note(1))
         on(hiddenDB.contains(1)).thenReturn(true)
-        assertNull(ctrl.get(1))
+        assertNull(ctrl.getVisible(1))
     }
 
     @Test fun `get missing returns null`() {
         on(noteSource.get(1)).thenReturn(null)
-        assertNull(ctrl.get(1))
+        assertNull(ctrl.getVisible(1))
     }
 
     @Test fun `get note quest with comment from user returns null`() {
@@ -155,7 +155,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(userDataSource.userId).thenReturn(1)
 
-        assertNull(ctrl.get(1))
+        assertNull(ctrl.getVisible(1))
     }
 
     @Test fun `get note quest with comment from user that contains a survey required marker returns non-null`() {
@@ -165,7 +165,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(userDataSource.userId).thenReturn(1)
 
-        assertNotNull(ctrl.get(1))
+        assertNotNull(ctrl.getVisible(1))
     }
 
     @Test fun `get quest not phrased as question returns null`() {
@@ -174,7 +174,7 @@ class OsmNoteQuestControllerTest {
         )))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertNull(ctrl.get(1))
+        assertNull(ctrl.getVisible(1))
     }
 
     @Test fun `get quest phrased as question returns non-null`() {
@@ -185,7 +185,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
     }
 
     @Test fun `get quest with comment containing survey required marker returns non-null`() {
@@ -196,7 +196,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
     }
 
     @Test fun `get quest not phrased as question returns non-null by preference`() {
@@ -207,7 +207,7 @@ class OsmNoteQuestControllerTest {
         ))
         on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(false)
 
-        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.get(1))
+        assertEquals(OsmNoteQuest(1, p(1.0, 1.0)), ctrl.getVisible(1))
     }
 
     // not doing all the tests for getAll again because it uses the same functions

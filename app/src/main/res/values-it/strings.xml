@@ -362,7 +362,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_powerPolesMaterial_metal">"Acciaio"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Solo un limite di velocità consigliato…"</string>
-    <string name="quest_address_answer_house_name">"Nessun numero civico  ma un nome…"</string>
     <string name="quest_address_house_name_label">"Nome della casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"piani nel tetto"</string>
     <string name="quest_buildingLevels_levelsLabel2">"piani (senza contare il tetto)"</string>
@@ -731,9 +730,6 @@ Suddividere?"</string>
     <string name="about_summary_current_version">"Versione corrente: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Qual è il numero di matricola di questa cassetta postale?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile…"</string>
 
     <!-- Fuzzy -->
@@ -954,7 +950,6 @@ riconoscimento"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Non appartiene ad una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
-    <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
     <string name="quest_recycling_type_cooking_oil">"Oli alimentari"</string>
     <string name="quest_recycling_type_engine_oil">"Oli lubrificanti"</string>
     <string name="link_photon_description">"Un’estensione stand-alone di Nominatim con funzioni di ricerca fuzzy e cerca-mentre-scrivi"</string>
@@ -1090,9 +1085,6 @@ riconoscimento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"I camion alti non passano"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Premi la strada sulla mappa"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Attraversamento indicato"</string>
@@ -1327,7 +1319,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Gli orari di raccolta di questa cassetta postale sono ancora corretti?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Non riconosciuto. Prova a indicare un tipo di luogo, per esempio \"panetteria\". Altrimenti, lascia una nota."</string>
     <string name="quest_bicycle_barrier_type_title">"Che tipo di barriera per biciclette è questa?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"In diagonale"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Passaggio stretto, più piccolo in alto"</string>
@@ -1372,7 +1363,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="street_parking_conditional_restrictions_hint">"Se è possibile parcheggiare o sostare qui, prima rispondi su come parcheggiano le persone che ne hanno il permesso. Le restrizioni che vengono applicate possono essere specificate dopo.
 
 Altrimenti puoi lasciare una nota (con una foto)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Sia il numero civico che nome…"</string>
     <string name="quest_address_house_number_label">"Numero civico:"</string>
 
     <!-- Fuzzy -->
@@ -1671,7 +1661,6 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Una mappa dei campeggi"</string>
     <string name="quest_atm_cashin_title">"Puoi fare un versamento di contanti a questo bancomat?"</string>
     <string name="create_node_action_description">"Hai creato un nodo con…"</string>
-    <string name="quest_accessPointRef_title">"Qual è il numero di identificazione qua?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"È un punto di raccolta"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un punto di raccolta è dove la popolazione può radunarsi in caso di emergenza. In genere assomiglia a questo:"</string>
     <string name="quest_address_answer_house_name2">"La casa ha un nome…"</string>
@@ -1702,4 +1691,5 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_openable">"Apribile"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Smontabile"</string>
     <string name="quest_buildingType_guardhouse">"Guardiola"</string>
+    <string name="quest_genericRef_title">"Qual è il numero di identificazione qua?"</string>
 </resources>

@@ -111,10 +111,10 @@
     <string name="map_btn_zoom_in">"Forstørr"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern - flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ah, noen som bryr seg om personvern. Flott! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Merk først at du med denne appen gir faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;
+Merk først at du med denne appen gir faktiske, direkte bidrag til OpenStreetMap (OSM).&lt;br/&gt;
 Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
 &lt;/p&gt;
 &lt;p&gt;
@@ -180,7 +180,7 @@ Informasjonen du legger til blir automatisk lastet opp til OpenStreetMap i ditt 
     <string name="download_server_error">"Tilkoblingsfeil under leting etter oppdrag. Prøv igjen."</string>
 
     <!-- Fuzzy -->
-    <string name="upload_server_error">"Tilkoblingsfeil under opplasting av svar. Prøv igjen."</string>
+    <string name="upload_server_error">"Tilkoblingsfeil under opplasting av svar. Vennligst prøv igjen senere."</string>
 
     <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
@@ -314,7 +314,7 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="quest_sport_racquet">"Racquetball"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sport_ice_skating">"Skjøter"</string>
+    <string name="quest_sport_ice_skating">"Skøyter"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"Padeltennis"</string>
@@ -592,7 +592,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Bare en anbefalt fartsgrense…"</string>
-    <string name="quest_address_answer_house_name">"Ikke et husnummer, men et husnavn…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Husnavn:"</string>
@@ -668,7 +667,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_hasFeature_only">"Kun"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Veganmat inneholder ingen dyreprodukter (ikke kjøtt, fisk, melk, egg…)."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganmat inneholder ingen dyreprodukter (ikke kjøtt, fisk, fjørfe, melkeprodukter, egg, honning, etc)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneholder ikke kjøtt, fisk eller fjørfe."</string>
@@ -697,7 +696,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valgfritt)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
@@ -1302,9 +1301,6 @@ Vil du dele opp nå?"</string>
     <string name="about_summary_current_version">"Gjeldene versjon: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Hva er referansenummeret til denne postkassen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Mangler synlig referansenummer…"</string>
 
     <!-- Fuzzy -->
@@ -1516,7 +1512,6 @@ nivåer"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
-    <string name="quest_address_street_description">"Trykk på veien på kartet eller legg det til uten forkortelser i feltet nedenfor:"</string>
     <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
     <string name="link_photon_description">"En uavhengig utvidelse til Nominatim, som støtter omtrentlige søk og kontinuerlig visning av søkeresultater"</string>
@@ -1656,9 +1651,6 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</st
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Høye lastebiler får ikke plass"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Trykk på gaten/veien i kartet"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Overgang med oppmerking"</string>
@@ -1914,7 +1906,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er hentetidene for denne postkassa fortsatt korrekte?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Ukjent type forretning. Skriv på engelsk, for eksempel ”bakery”. Eller lag en merknad."</string>
     <string name="quest_bicycle_barrier_type_title">"Hvilken type sperring er dette?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonal over veien"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smal passasje, trangest øverst"</string>
@@ -1961,7 +1952,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="street_parking_conditional_restrictions_hint">"Hvis det i det hele tatt er mulig å parkere eller stoppe her, svar først hvordan man kan parkere, dersom man har tillatelse til det. Hvilke restriksjoner som gjelder kan oppgis senere.
 
 Alternativt, lag en merknad (med bilde)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Både et husnummer og et navn…"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
 
     <!-- Fuzzy -->
@@ -2246,6 +2236,7 @@ sorted alphabetically by title -->
 
     <!-- Could you please explain the context and maybe give an example? -->
     <string name="quest_entrance_reference_flat_range_to">"til"</string>
+    <string name="default_disabled_msg_overlay">"Denne oppdragstypen er i utgangspunktet deaktivert fordi det fins et tilsvarende kartlag som er enklere å bruke for å legge inn og oppdatere kartdata."</string>
     <string name="quest_camp_drinking_water_title">"Er drikkevann fritt tilgjengelig for campere her?"</string>
     <string name="quest_camp_shower_title">"Er det dusjer her?"</string>
     <string name="quest_camp_power_supply_title">"Er det mulig for kunder å lade telefon, laptop ol. her?"</string>
@@ -2255,7 +2246,41 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_tents_only">"Kun telt"</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dette svarer passer ikke med det som allerede er registrert for denne veien. Er du sikker på at du legger inn svar for riktig vei? Har du undersøkt hele veistrekket selv, slik du alltid skal?"</string>
     <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Gatebredde: %s"</string>
     <string name="overlay_street_parking">"Gateparkering"</string>
+    <string name="link_ohsomehex_description">"Utforsk OSM data fra det store bildet og ned til detaljene gjennom rom og tid"</string>
+    <string name="link_opencampingmap_description">"Et kart over campingsteder"</string>
+    <string name="quest_atm_cashin_title">"Kan du sette inn penger med denne bankautomaten?"</string>
+    <string name="create_node_action_description">"Du lagde en node med …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Det er en møteplass"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En møteplass er der man samles i en nødsituasjon. Det pleier å ligne på dette:"</string>
+    <string name="quest_address_answer_house_name2">"Det har et husnavn…"</string>
+    <string name="quest_address_street_street_name_label">"Gatenavn:"</string>
+    <string name="quest_address_street_hint2">"Trykk på gaten på kartet for å velge den"</string>
+    <string name="quest_bicycle_incline_title">"Hvilken retning går oppover her?"</string>
+    <string name="quest_drinking_water_type_title">"Hvordan tilbys drikkevann her?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Annen type vannfontene"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vannfontene med en tynn vannstråle"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun påfyll av flasker"</string>
+    <string name="quest_drinking_water_type_tap">"Vannkran"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Håndpumpe"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Vannkilde uten pumpe"</string>
+    <string name="quest_drinking_water_type_spring">"Kilde"</string>
+    <string name="quest_drinking_water_type_disused">"Nedlagt drikkevannskilde"</string>
+    <string name="overlay_addresses">"Adresser"</string>
+    <string name="overlay_shops">"Butikker"</string>
+    <string name="name_label">"Navn:"</string>
+    <string name="vacant_shop_title">"Tomt lokale"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Annet type sted"</string>
+    <string name="quest_address_answer_no_address">"Ingen adresse"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan denne sykkelbarrieren bli åpnet?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Mulig å åpne"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Mulig å fjerne"</string>
+    <string name="quest_buildingType_guardhouse">"Vakthus"</string>
+    <string name="quest_genericRef_title">"Hva er identifikasjonsnummeret her?"</string>
 </resources>

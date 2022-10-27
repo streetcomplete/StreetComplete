@@ -5,10 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.lit.LitStatus.*
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import java.time.LocalDate
 
 class LitStatusKtTest {
 
@@ -26,7 +25,7 @@ class LitStatusKtTest {
     }
 
     @Test fun `apply updates check date`() {
-        val today = LocalDate.now().toCheckDateString()
+        val today = nowAsCheckDateString()
         verifyAnswer(
             mapOf("lit" to "yes"),
             YES,
@@ -65,12 +64,12 @@ class LitStatusKtTest {
         verifyAnswer(
             mapOf("lit" to "limited"),
             YES,
-            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+            arrayOf(StringMapEntryAdd("check_date:lit", nowAsCheckDateString()))
         )
         verifyAnswer(
             mapOf("lit" to "22:00-05:00"),
             YES,
-            arrayOf(StringMapEntryAdd("check_date:lit", LocalDate.now().toCheckDateString()))
+            arrayOf(StringMapEntryAdd("check_date:lit", nowAsCheckDateString()))
         )
     }
 

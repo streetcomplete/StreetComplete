@@ -160,8 +160,6 @@ private fun createVacantShop(resources: Resources) = DummyFeature(
     mapOf("disused:shop" to "yes")
 )
 
-// TODO update "KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED"? https://github.com/mnalis/StreetComplete-taginfo-categorize/issues/11
-
 // TODO add "no name" option (analogous to AddPlaceName quest)?
 // TODO add multi-language-name feature (analogous to AddPlaceName quest)?
 // TODO not always replace all tags? -> ask user each time instead?

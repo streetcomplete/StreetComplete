@@ -367,7 +367,6 @@
     <string name="quest_powerPolesMaterial_metal">"เหล็ก"</string>
     <string name="quest_powerPolesMaterial_concrete">"คอนกรีต"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"เพียงคำแนะนำจำกัดความเร็ว…"</string>
-    <string name="quest_address_answer_house_name">"ไม่มีเลขที่บ้าน มีแต่ชื่อ…"</string>
     <string name="quest_address_house_name_label">"ชื่อบ้าน:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"ชั้นในหลังคา"</string>
     <string name="quest_buildingLevels_levelsLabel2">"ชั้นปกติ (ไม่นับหลังคา)"</string>
@@ -734,9 +733,6 @@
     <string name="about_summary_current_version">"เวอร์ชั่นปัจจุบัน: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"ตู้ไปรษณีย์นี้ มีหมายเลขอ้างอิงอะไร?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
 
     <!-- Fuzzy -->
@@ -950,7 +946,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
-    <string name="quest_address_street_description">"แตะถนนที่เป็นที่ตั้งบนแผนที่หรือป้อนโดยไม่มีตัวย่อในช่องด้านล่าง:"</string>
     <string name="quest_recycling_type_cooking_oil">"น้ำมันปรุงอาหาร"</string>
     <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
@@ -1092,9 +1087,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"รถบรรทุกสูงผ่านไม่ได้"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"แตะถนนบนแผนที่"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมายจราจร"</string>
@@ -1319,7 +1311,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"เวลาไขตู้ยังถูกรึเปล่า?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน้ตไว้"</string>
     <string name="quest_bicycle_barrier_type_title">"รั้วกั้นจักรยานเป็นแบบไหน?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"ทแยงมุมกับทาง"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ด้านบนแคบกว่าด้านล่าง คล้ายตัว A"</string>
@@ -1362,7 +1353,6 @@
     <string name="street_parking_conditional_restrictions_hint">"ถ้าจอดหรือหยุดรถตรงนี้ได้ กรุณาระบุเงื่อนไขอย่างคร่าว คุณสามารถระบุเงื่อนไขเพิ่มเติมได้ภายหลัง
 
 หรือสร้างโน๊ตไว้ (อาจจะแนบรูปด้วย)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"มีทั้งบ้านเลขที่และชื่ออาคาร"</string>
     <string name="quest_address_house_number_label">"บ้านเลขที่:"</string>
 
     <!-- Fuzzy -->

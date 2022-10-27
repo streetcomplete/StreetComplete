@@ -805,9 +805,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tik siūlomas greičio apribojimas…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Nėra namo numerio, tik pavadinimas…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Namo pavadinimas:"</string>
 
     <!-- Fuzzy -->
@@ -1549,9 +1546,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="about_summary_current_version">"Dabartinė versija: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Koks yra šios pašto dėžutės numeris?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nematyti jokio numerio…"</string>
 
     <!-- Fuzzy -->
@@ -1987,7 +1981,6 @@ dienų"</string>
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepriklauso gatvei su pavadinimu"</string>
     <string name="quest_address_street_place_name_label">"Vietos pavadinimas:"</string>
-    <string name="quest_address_street_description">"Paspauskite ant kelio, kuriam jis priklauso, žemėlapyje arba įveskite be sutrumpinimų lauke žemiau:"</string>
     <string name="quest_recycling_type_cooking_oil">"Aliejus"</string>
     <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
     <string name="link_photon_description">"Atskiras Nominatim plėtinys, leidžiantis apytikslę paiešką ir paiešką rašant"</string>
@@ -2103,7 +2096,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą."</string>
     <string name="quest_surface_value_rock">"Akmuo"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Aukšti sunkvežimiai gali pravažiuoti"</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Aukšti sunkvežimiai netelpa"</string>
-    <string name="quest_address_street_hint">"Bakstelėkite kelią žemėlapyje"</string>
     <string name="quest_crossing_type_marked">"Pažymėta"</string>
     <string name="quest_parkingType_street_side">"Automobilių stovėjimo aikštelė šalia kelio"</string>
     <string name="quest_parkingType_lane">"Parkavimas ant važiuojamosios dalies"</string>
@@ -2285,7 +2277,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_access_customers">"bet kuris asmuo, apsilankęs tam tikroje vietoje (pvz., tik klientai)"</string>
     <string name="quest_access_private">"Tik leidimą turintis (-ys) asmuo (-enys)"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Ar šios surinkimo dėžutės paėmimo laikas vis dar teisingas?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Neatpažįstama. Pabandykite įvesti vietos tipą, pavyzdžiui, \"kepykla\". Priešingu atveju apsvarstykite galimybę palikti užrašą."</string>
     <string name="quest_bicycle_barrier_type_title">"Kokio tipo dviračių užtvaras tai yra?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Įstrižainė į kelią"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Siauras praėjimas, mažėja link viršaus"</string>
@@ -2318,7 +2309,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="street_parking_conditional_restrictions_hint">"Jei čia galima pastatyti automobilį arba sustoti, nurodykite, kokia tai automobilių stovėjimo aikštelė gatvėje ar už jos ribų. Vėliau galima nurodyti papildomus apribojimus.
 
 Arba galite palikti pastabą (su nuotrauka)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Ir namo numeris, ir vardas..."</string>
     <string name="quest_address_house_number_label">"Namo numeris:"</string>
     <string name="quest_shoulder_title">"Ar šiame kelyje yra kelkraštis arba avarinė juosta?"</string>
     <string name="quest_fireHydrant_position_title">"Kur yra šis priešgaisrinis hidrantas?"</string>

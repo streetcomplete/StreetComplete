@@ -18,6 +18,7 @@ import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.runImmediate
 import kotlin.math.PI
 
@@ -155,7 +156,7 @@ class CameraManager(private val c: MapController, private val contentResolver: C
             unassignAnimation(animator)
         })
 
-        val endTime = System.currentTimeMillis() + duration
+        val endTime = nowAsEpochMilliseconds() + duration
         if (lastAnimatorEndTime < endTime) {
             lastAnimator?.removeAllUpdateListeners()
             lastAnimator = animator

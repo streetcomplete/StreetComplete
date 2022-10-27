@@ -808,9 +808,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_advisory_speed_limit">"忠告だけの速度制限…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"住居番号がなく名前…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"住居名:"</string>
 
     <!-- Fuzzy -->
@@ -1298,9 +1295,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="about_summary_current_version">"現在のバージョン: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"このポストのポスト番号は何ですか?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"番号は見当たらない…"</string>
 
     <!-- Fuzzy -->
@@ -1546,7 +1540,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
-    <string name="quest_address_street_hint">"地図上の道路をタップする"</string>
     <string name="quest_crossing_type_marked">"横断歩道がある"</string>
 
     <!-- Fuzzy -->
