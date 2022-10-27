@@ -308,6 +308,7 @@
     <!-- other -->
     <string name="hide_button">Hide</string>
     <string name="tag_editor_last_edited">Last edited: %s</string>
+    <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
 <!--    <string name="quest_edit_tags_title">Edit tags (%s)</string>
     <string name="quest_edit_tags_save">Save</string> -->
     <string name="tutorial_info_fork_title">Warning</string>

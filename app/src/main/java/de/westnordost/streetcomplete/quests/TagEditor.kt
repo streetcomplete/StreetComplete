@@ -13,6 +13,7 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
@@ -39,6 +40,7 @@ import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.updateMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -60,20 +62,15 @@ import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.min
 
 // todo: ideas for improvements
-//  less crappy icon
 //  opening tag editor loses state of quest below, probably because we're replacing the bottom sheet instead of adding
-//   either fix it, or also close the quest below
+//   either fix it, or also close the quest below when closing the editor
 //  ability to copy and paste everything (this is the only advantage of the old editor)
-//   button that copies all tags into clipboard
-//   or pastes clipboard into tags -> overwrite existing tags and add others, don't delete
-//  undo button, for undoing delete (and maybe other changes?)
-//  close all sheets that don't resist closing when tapping on map (instead of only the upmost)
-//   i.e. closes also the quest from which editor was started, unless ok button is showing
-//   but how?
+//   button that copies all tags into clipboard: tagsList.joinToString("\n")
+//   and one that pastes clipboard into tags: newTags.putAll(clipboard.toTags())
+//    overwrite existing tags and add others, don't delete
+//  undo button, for undoing delete or paste (and maybe other changes? but will not work well with typing)
 //  don't depend on that TagEditor.isShowing and TagEditor.changes in companion object
 //  help when entering tags
-//   maybe adjust inputType?
-//   disable autocorrect? at least for key it might be useful, maybe for value too?
 //   suggestions? e.g. common keys, or common values for that key, or last typed keys / values for that key
 //    how to show?
 //     autocompletetextview is the dropdown thing, but that might not always be convenient
@@ -278,7 +275,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 
     private fun tagsChangedAndOk(): Boolean =
-        newTags != originalElement.tags && !newTags.containsKey("") && !newTags.containsValue("") && newTags.keys.all { it.length < 255 } && newTags.values.all { it.length < 255 } && newTags.isNotEmpty()
+        newTags != originalElement.tags
+            && !newTags.containsKey("")
+            && !newTags.containsValue("")
+            && newTags.keys.all { it.length < 255 }
+            && newTags.values.all { it.length < 255 }
+            && newTags.isNotEmpty() // though this could be allowed...
+            && newTags.keys.none { problematicKeyCharacters.containsMatchIn(it) }
 
     private fun showOk() = requireActivity().runOnUiThread { if (tagsChangedAndOk()) binding.okButton.popIn() else binding.okButton.popOut() }
 
@@ -296,8 +299,9 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             }
             if (!isActive) return@launch
             requireActivity().runOnUiThread {
-                binding.questsGrid.removeViews(1, binding.questsGrid.childCount - 1)
-                q.forEach { binding.questsGrid.addView(it) }
+                // form might be closed while quests were created, so we better not crash on binding == null
+                _binding?.questsGrid?.removeViews(1, binding.questsGrid.childCount - 1)
+                q.forEach { _binding?.questsGrid?.addView(it) }
             }
         }
     }
@@ -355,10 +359,17 @@ private class EditTagsAdapter(
         val keyView: EditText = view.findViewById<EditText>(R.id.keyText).apply {
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
-                if (displaySet[position].first == it.toString()) return@doAfterTextChanged
+                val newKey = it.toString()
+                // do nothing if key is unchanged, happens when editTexts are filled by adaoter
+                if (displaySet[position].first == newKey) return@doAfterTextChanged
+                if (dataSet.containsKey(newKey)) {
+                    // don't store duplicate keys, user should rename or delete them
+                    context.toast(resources.getString(R.string.tag_editor_duplicate_key, newKey), Toast.LENGTH_LONG)
+                    return@doAfterTextChanged
+                }
                 val oldEntry = displaySet[position]
                 dataSet.remove(oldEntry.first)
-                val newEntry = it.toString() to oldEntry.second
+                val newEntry = newKey to oldEntry.second
                 dataSet[newEntry.first] = newEntry.second
                 displaySet[position] = newEntry
                 onDataChanged()
@@ -412,3 +423,6 @@ val tagEdit = object : ElementEditType {
 }
 
 private val emptyEntry = "" to ""
+
+// characters that should not be in keys, see https://taginfo.openstreetmap.org/reports/characters_in_keys
+private val problematicKeyCharacters = "[\\s=+/&<>;'\"?%#@,\\\\]".toRegex()
