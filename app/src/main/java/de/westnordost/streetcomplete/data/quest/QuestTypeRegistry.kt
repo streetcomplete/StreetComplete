@@ -11,6 +11,10 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.qualifier.named
+
 import java.util.concurrent.FutureTask
 
 /** Every osm quest needs to be registered here.
@@ -20,39 +24,19 @@ import java.util.concurrent.FutureTask
  * It is also used to define a (display) order of the quest types and to assign an ordinal to each
  * quest type for serialization.
  */
-class QuestTypeRegistry(ordinalsAndEntries: List<Pair<Int, QuestType>>) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries)
-class QuestTypeRegistry( // todo: below here there is nothing in upstream SC any more
-    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi? = null,
-    private val trafficFlowDao: WayTrafficFlowDao? = null,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>? = null,
-    private val countryInfos: CountryInfos? = null,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>? = null,
-    private val arSupportChecker: ArSupportChecker? = null,
-    private val osmoseDao: OsmoseDao? = null,
-    private val externalList: ExternalList? = null,
-    private val quests: MutableList<QuestType> = mutableListOf()
-) : List<QuestType> by quests {
-    // the nullable stuff is just to allow creating a QuestTypeRegistry from a list as it's done in tests
-    constructor(questList: List<QuestType>) : this(quests = questList.toMutableList()) {
-        for (questType in this) {
-            val questTypeName = questType.name
-            require(!typeMap.containsKey(questTypeName)) {
-                "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
-            }
-            typeMap[questTypeName] = questType
-        }
-    }
-    private val typeMap = mutableMapOf<String, QuestType>()
-
-    init { reload() }
+class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, private val ordinalsAndEntries: MutableList<Pair<Int, QuestType>> = initialOrdinalsAndEntries.toMutableList()) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries), KoinComponent {
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi by inject()
+    private val trafficFlowDao: WayTrafficFlowDao by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val countryInfos: CountryInfos by inject()
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val arSupportChecker: ArSupportChecker by inject()
+    private val osmoseDao: OsmoseDao by inject()
+    private val externalList: ExternalList by inject()
 
     fun reload() {
-        if (trafficFlowSegmentsApi == null || trafficFlowDao == null || featureDictionaryFuture == null
-            || countryInfos == null || countryBoundariesFuture == null || arSupportChecker == null
-            || osmoseDao == null || externalList == null)
-            return
-        quests.clear()
-        quests.addAll(getQuestTypeList(
+        ordinalsAndEntries.clear()
+        ordinalsAndEntries.addAll(getQuestTypeList(
             trafficFlowSegmentsApi,
             trafficFlowDao,
             featureDictionaryFuture,
@@ -62,17 +46,10 @@ class QuestTypeRegistry( // todo: below here there is nothing in upstream SC any
             osmoseDao,
             externalList,
         ))
-        typeMap.clear()
-        for (questType in this) {
-            val questTypeName = questType.name
-            require(!typeMap.containsKey(questTypeName)) {
-                "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
-            }
-            typeMap[questTypeName] = questType
-        }
-    }
-
-    fun getByName(typeName: String): QuestType? {
-        return typeMap[typeName]
+        byName.clear()
+        byOrdinal.clear()
+        ordinalByObject.clear()
+        objects.clear()
+        reloadInit()
     }
 }

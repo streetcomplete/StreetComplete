@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
@@ -61,16 +62,16 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     private fun onClickAddPreset(copyFrom: Long? = null) {
         val ctx = context ?: return
-        val dialog = EditTextDialog(ctx, // todo: do i need to modify this?
+        val dialog = EditTextDialog(ctx,
             title = ctx.getString(R.string.quest_presets_preset_add),
-            callback = { name -> addQuestPreset(name) }
+            callback = { name -> addQuestPreset(name, copyFrom) }
         )
         dialog.editText.hint = ctx.getString(R.string.quest_presets_preset_name)
         dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
         dialog.show()
     }
 
-    private fun addQuestPreset(name: String, copyFrom: Long? = null) { // todo: call it properly?
+    private fun addQuestPreset(name: String, copyFrom: Long?) {
         viewLifecycleScope.launch(Dispatchers.IO) {
                     if (copyFrom == null) questPresetsController.add(name)
                     else questPresetsController.add(name, copyFrom)

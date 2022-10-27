@@ -72,5 +72,5 @@ object ApplicationConstants {
         SplitWayAction::class
     )
 
-    val EE_QUEST_OFFSET = 50000
+    const val EE_QUEST_OFFSET = 2222
 }

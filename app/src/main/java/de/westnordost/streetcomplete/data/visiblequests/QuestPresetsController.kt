@@ -42,12 +42,9 @@ class QuestPresetsController(
     fun add(presetName: String, copyFromId: Long): Long {
         val presetId = questPresetsDao.add(presetName)
         val order = questTypeOrderDao.getAll(copyFromId)
-        order.forEach { questTypeOrderDao.put(presetId, it) }
+        questTypeOrderDao.setAll(presetId, order)
         val visibilities = visibleQuestTypeDao.getAll(copyFromId)
-        val enabledQuests = visibilities.filterValues { it }
-        val disabledQuests = visibilities.filterValues { !it }
-        visibleQuestTypeDao.put(presetId, enabledQuests.keys, true)
-        visibleQuestTypeDao.put(presetId, disabledQuests.keys, false)
+        visibleQuestTypeDao.putAll(presetId, visibilities)
         onAddedQuestPreset(presetId, presetName)
 
         val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${copyFromId}_qs_") }
@@ -60,8 +57,9 @@ class QuestPresetsController(
                     is String -> putString(newKey, value)
                     is Long -> putLong(newKey, value)
                     is Float -> putFloat(newKey, value)
+                    is Set<*> -> putStringSet(newKey, value.toSet() as? Set<String>)
                 }
-        }
+            }
         }
         return presetId
     }

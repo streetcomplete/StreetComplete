@@ -439,6 +439,7 @@ class DataManagementSettingsFragment :
         if (replaceExistingPresets) // set selected preset to default, because previously selected may not exist any more
             prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).commit()
         restartApp() // restart, because otherwise presets look like they are not updated in settings
+        // todo: use controllers instead of db and avoid restart? also controllers for export (but only if files can be re-used!)
     }
 
     private fun readFromUriToExternalFile(uri: Uri, filename: String) =

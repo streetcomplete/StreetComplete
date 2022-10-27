@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -143,7 +142,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
                 overlayController.selectedOverlay = null
                 overlayController.selectedOverlay = tempOverlay
             } else {
-                visibleQuestTypeController.setAllVisible(listOf(), true) // trigger reload
+                visibleQuestTypeController.setVisibilities(emptyMap()) // trigger reload
             }
         }
         builder.show()

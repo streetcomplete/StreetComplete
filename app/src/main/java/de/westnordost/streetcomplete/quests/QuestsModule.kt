@@ -220,7 +220,7 @@ fun questTypeRegistry(
     arSupportChecker: ArSupportChecker,
     osmoseDao: OsmoseDao,
     externalList: ExternalList,
-) = QuestTypeRegistry(
+) = QuestTypeRegistry(getQuestTypeList(
     trafficFlowSegmentsApi,
     trafficFlowDao,
     featureDictionaryFuture,
@@ -229,7 +229,8 @@ fun questTypeRegistry(
     arSupportChecker,
     osmoseDao,
     externalList,
-)
+))
+
 fun getQuestTypeList(
     trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     trafficFlowDao: WayTrafficFlowDao,
