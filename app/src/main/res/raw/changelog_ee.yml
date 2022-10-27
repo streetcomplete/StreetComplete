@@ -2,6 +2,7 @@ v48.1_ee: |
   <ul>
   <li>Fix crash and quest filter bug in nearby quests monitor (#399)</li>
   <li>Properly import/export settings instead of copying preferences file (#394)</li>
+  <li>Preset export file now contains per-preset quest settings</li>
   </ul>
 
 v48.0_ee: |

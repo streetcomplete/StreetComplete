@@ -28,6 +28,9 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestTables
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
+import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
@@ -44,9 +47,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import java.io.BufferedWriter
 import java.io.File
 import java.io.IOException
-import java.io.OutputStream
 import kotlin.system.exitProcess
 
 class DataManagementSettingsFragment :
@@ -58,6 +61,8 @@ class DataManagementSettingsFragment :
     private val db: Database by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val cleaner: Cleaner by inject()
+    private val urlConfigController: UrlConfigController by inject()
+    private val questPresetsController: QuestPresetsController by inject()
 
     override val title: String get() = getString(R.string.pref_screen_data_management)
 
@@ -219,36 +224,22 @@ class DataManagementSettingsFragment :
                 }
             }
             REQUEST_CODE_PRESETS_EXPORT -> {
-                activity?.contentResolver?.openOutputStream(uri)?.use { os ->
-                    val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
-                    if (version > LAST_KNOWN_DB_VERSION)
-                        context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
-
-                    val presets = db.query(QuestPresetsTable.NAME) { c ->
-                        c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                            c.getString(QuestPresetsTable.Columns.QUEST_PRESET_NAME)
+                val allPresets = mutableListOf<QuestPreset>()
+                allPresets.add(QuestPreset(0, requireContext().getString(R.string.quest_presets_default_name)))
+                allPresets.addAll(questPresetsController.getAll())
+                val array = allPresets.map { it.name }.toTypedArray()
+                val selectedPresets = mutableSetOf<Long>()
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.import_export_presets_select)
+                    .setMultiChoiceItems(array, null) { _, which, isChecked ->
+                        if (isChecked) selectedPresets.add(allPresets[which].id)
+                        else selectedPresets.remove(allPresets[which].id)
                     }
-                    val orders = db.query(QuestTypeOrderTable.NAME) { c->
-                        c.getLong(QuestTypeOrderTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                            c.getString(QuestTypeOrderTable.Columns.BEFORE) + "," +
-                            c.getString(QuestTypeOrderTable.Columns.AFTER)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        exportPresets(selectedPresets, uri)
                     }
-                    val visibilities = db.query(VisibleQuestTypeTable.NAME) { c ->
-                        c.getLong(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID).toString() + "," +
-                            c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
-                            c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
-                    }
-
-                    os.bufferedWriter().use {
-                        it.write(version.toString())
-                        it.write("\n$BACKUP_PRESETS\n")
-                        it.write(presets.joinToString("\n"))
-                        it.write("\n$BACKUP_PRESETS_ORDERS\n")
-                        it.write(orders.joinToString("\n"))
-                        it.write("\n$BACKUP_PRESETS_VISIBILITIES\n")
-                        it.write(visibilities.joinToString("\n"))
-                    }
-                }
+                    .show()
             }
             REQUEST_CODE_SETTINGS_IMPORT -> if (!importSettings(uri)) context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
             REQUEST_CODE_HIDDEN_IMPORT -> {
@@ -356,11 +347,11 @@ class DataManagementSettingsFragment :
         startActivityForResult(intent, requestCode)
     }
 
-    /** @returns the lines after [checkLine], which is expected to be the second line */
+    /** @returns the lines after [checkLine], which is expected to be the second or third line */
     private fun importLinesAndCheck(uri: Uri, checkLine: String): List<String> =
         activity?.contentResolver?.openInputStream(uri)?.use { it.bufferedReader().use { input ->
             val fileVersion = input.readLine().toLongOrNull()
-            if (fileVersion == null || input.readLine() != checkLine) {
+            if (fileVersion == null || (input.readLine() != checkLine && input.readLine() != checkLine)) {
                 context?.toast(getString(R.string.import_error), Toast.LENGTH_LONG)
                 return emptyList()
             }
@@ -402,6 +393,27 @@ class DataManagementSettingsFragment :
                 currentThing = line
                 continue
             }
+            if (line == BACKUP_PRESETS_QUEST_SETTINGS) {
+                try {
+                    // get remaining lines (they must be written if BACKUP_PRESETS_QUEST_SETTINGS is written)
+                    val l = lines.subList(lines.indexOf(line) + 1, lines.size)
+                    // replace per-preset quest settings preset ids
+                    val qs = "([0-9]+)_qs_".toRegex()
+                    val adjustedLines = l.map { it.replace(qs) { result ->
+                        if (result.groupValues.size > 1)
+                            "${result.groupValues[1].toLongOrNull()?.let { profileIdMap[it] }}_qs_"
+                        else throw (IllegalStateException())
+                    } }
+                    if (replaceExistingPresets) // remove all per-preset quest settings for proper replace
+                        prefs.edit { prefs.all.keys.filter { qs.containsMatchIn(it) }.forEach {
+                            remove(it)
+                        } }
+                    readToSettings(adjustedLines)
+                } catch (_: Exception){
+                    // do nothing if lines are broken somehow
+                }
+                break
+            }
             val split = line.split(",")
             if (split.size < 2) break
             val id = profileIdMap[split[0].toLong()]!!
@@ -438,8 +450,45 @@ class DataManagementSettingsFragment :
 
         if (replaceExistingPresets) // set selected preset to default, because previously selected may not exist any more
             prefs.edit().putLong(Prefs.SELECTED_QUESTS_PRESET, 0).commit()
-        restartApp() // restart, because otherwise presets look like they are not updated in settings
-        // todo: use controllers instead of db and avoid restart? also controllers for export (but only if files can be re-used!)
+        visibleQuestTypeController.setVisibilities(emptyMap()) // reload stuff
+    }
+
+    private fun exportPresets(ids: Collection<Long>, uri: Uri) {
+        activity?.contentResolver?.openOutputStream(uri)?.use { os ->
+            val version = db.rawQuery("PRAGMA user_version;") { c -> c.getLong("user_version") }.single()
+            if (version > LAST_KNOWN_DB_VERSION)
+                context?.toast(getString(R.string.export_warning_db_version), Toast.LENGTH_LONG)
+
+            val presetString = ids.joinToString(",")
+            val presets = db.query(QuestPresetsTable.NAME, where = "${QuestPresetsTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c ->
+                c.getLong(QuestPresetsTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                    c.getString(QuestPresetsTable.Columns.QUEST_PRESET_NAME)
+            }.map { "$it,${urlConfigController.create(it.substringBefore(',').toLong())}" }
+            val orders = db.query(QuestTypeOrderTable.NAME, where = "${QuestTypeOrderTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c->
+                c.getLong(QuestTypeOrderTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                    c.getString(QuestTypeOrderTable.Columns.BEFORE) + "," +
+                    c.getString(QuestTypeOrderTable.Columns.AFTER)
+            }
+            val visibilities = db.query(VisibleQuestTypeTable.NAME, where = "${VisibleQuestTypeTable.Columns.QUEST_PRESET_ID} IN ($presetString)") { c ->
+                c.getLong(VisibleQuestTypeTable.Columns.QUEST_PRESET_ID).toString() + "," +
+                    c.getString(VisibleQuestTypeTable.Columns.QUEST_TYPE) + "," +
+                    c.getLong(VisibleQuestTypeTable.Columns.VISIBILITY).toString()
+            }
+            val perPresetQuestSetting = "[0-9]_qs_.+".toRegex()
+            val questSettings = prefs.all.filterKeys { it.matches(perPresetQuestSetting) && it.substringBefore('_').toLongOrNull() in ids }
+
+            os.bufferedWriter().use {
+                it.appendLine(version.toString())
+                it.appendLine("\n$BACKUP_PRESETS")
+                it.appendLine(presets.joinToString("\n"))
+                it.appendLine("\n$BACKUP_PRESETS_ORDERS")
+                it.appendLine(orders.joinToString("\n"))
+                it.appendLine("\n$BACKUP_PRESETS_VISIBILITIES")
+                it.appendLine(visibilities.joinToString("\n"))
+                it.appendLine("\n$BACKUP_PRESETS_QUEST_SETTINGS")
+                settingsToJsonStream(questSettings, it)
+            }
+        }
     }
 
     private fun readFromUriToExternalFile(uri: Uri, filename: String) =
@@ -461,12 +510,13 @@ class DataManagementSettingsFragment :
                 && !it.contains("osm.") // login data
                 && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stores with presets, because preset id is never guaranteed to match
         }
-        activity?.contentResolver?.openOutputStream(uri)?.use { settingsToJsonStream(settings, it) }
+        activity?.contentResolver?.openOutputStream(uri)?.use { it.bufferedWriter().use { settingsToJsonStream(settings, it) } }
     }
 
     // this will ignore settings with value null
     // it can be both string and string set, and i have no idea how to tell apart...
-    private fun settingsToJsonStream(settings: Map<String, Any?>, out: OutputStream) {
+    @Suppress("UNCHECKED_CAST") // it is checked... but whatever (except string set, because can't check for that))
+    private fun settingsToJsonStream(settings: Map<String, Any?>, out: BufferedWriter) {
         val booleans = settings.filterValues { it is Boolean } as Map<String, Boolean>
         val ints = settings.filterValues { it is Int } as Map<String, Int>
         val longs = settings.filterValues { it is Long } as Map<String, Long>
@@ -474,20 +524,18 @@ class DataManagementSettingsFragment :
         val strings = settings.filterValues { it is String } as Map<String, String>
         val stringSets = settings.filterValues { it is Set<*> } as Map<String, Set<String>>
         // now write
-        out.writer().use {
-            it.appendLine("boolean settings")
-            it.appendLine( Json.encodeToString(booleans))
-            it.appendLine("int settings")
-            it.appendLine( Json.encodeToString(ints))
-            it.appendLine("long settings")
-            it.appendLine( Json.encodeToString(longs))
-            it.appendLine("float settings")
-            it.appendLine( Json.encodeToString(floats))
-            it.appendLine("sting settings")
-            it.appendLine( Json.encodeToString(strings))
-            it.appendLine("string set settings")
-            it.appendLine( Json.encodeToString(stringSets))
-        }
+        out.appendLine("boolean settings")
+        out.appendLine( Json.encodeToString(booleans))
+        out.appendLine("int settings")
+        out.appendLine( Json.encodeToString(ints))
+        out.appendLine("long settings")
+        out.appendLine( Json.encodeToString(longs))
+        out.appendLine("float settings")
+        out.appendLine( Json.encodeToString(floats))
+        out.appendLine("string settings")
+        out.appendLine( Json.encodeToString(strings))
+        out.appendLine("string set settings")
+        out.appendLine( Json.encodeToString(stringSets))
     }
 
     private fun importSettings(uri: Uri): Boolean {
@@ -602,3 +650,4 @@ private const val BACKUP_HIDDEN_OTHER_QUESTS = "other_source_quests"
 private const val BACKUP_PRESETS = "presets"
 private const val BACKUP_PRESETS_ORDERS = "orders"
 private const val BACKUP_PRESETS_VISIBILITIES = "visibilities"
+private const val BACKUP_PRESETS_QUEST_SETTINGS = "quest_settings"
