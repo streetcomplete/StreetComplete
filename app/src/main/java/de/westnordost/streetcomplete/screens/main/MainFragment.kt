@@ -523,6 +523,11 @@ class MainFragment :
 
     override fun onSelectedOverlayChanged() {
         updateCreateButtonVisibility()
+
+        val f = bottomSheetFragment
+        if (f is IsShowingElement) {
+            viewLifecycleScope.launch { closeBottomSheet() }
+        }
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
