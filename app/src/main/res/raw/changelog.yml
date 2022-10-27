@@ -1,3 +1,13 @@
+v49.0-beta1: |
+  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3481, #4537)</p>
+  <h3>Other enhancements</h3>
+  <ul>
+  <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
+  <li>Cycle lanes: Adapt appearance of cycle lanes, depending on the country one is mapping in (#4502)</li>
+  <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
+  <li>Added some nice graphics to the My Profile screen  (#3414, #4203), by @matkoniecz</li>
+  </ul>
+
 v48.0: |
   <h2>M-M-M-Mega Update!</h2>
   <p>A few things came together... this update contains what would usually be in 4 or so releases! Enjoy!</p>
