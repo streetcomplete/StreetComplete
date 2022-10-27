@@ -101,16 +101,16 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { 
+        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { str ->
             try { deserializeLastSelection(str, false) } catch (e: Exception) { null }
         }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { 
+        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { str ->
             try { deserializeLastSelection(str, true) } catch (e: Exception) { null }
         }
-        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { 
+        lastSelectionOnlyLeft = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { str ->
             try { deserializeLastSelection(str, false) } catch (e: Exception) { null }
         }
-        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { 
+        lastSelectionOnlyRight = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { str ->
             try { deserializeLastSelection(str, true) } catch (e: Exception) { null }
         }
 
