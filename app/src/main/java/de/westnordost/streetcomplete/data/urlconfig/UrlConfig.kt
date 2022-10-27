@@ -71,7 +71,7 @@ fun createConfigUrl(
     overlayRegistry: OverlayRegistry
 ): String {
     val name = urlConfig.presetName
-    val shortenedName = if (name.length > 60) name.substring(0, 37) + "..." else name
+    val shortenedName = if (name.length > 60) name.substring(0, 57) + "..." else name
 
     val parameters = mutableListOf(
         PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"),
