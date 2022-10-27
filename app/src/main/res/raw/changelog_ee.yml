@@ -1,3 +1,9 @@
+v48.1_ee: |
+  <ul>
+  <li>Fix crash and quest filter bug in nearby quests monitor (#399)</li>
+  <li>Properly import/export settings instead of copying preferences file (#394)</li>
+  </ul>
+
 v48.0_ee: |
   <ul>
   <li>Allow switching main menu to a full grid (larger buttons!) (#388)</li>

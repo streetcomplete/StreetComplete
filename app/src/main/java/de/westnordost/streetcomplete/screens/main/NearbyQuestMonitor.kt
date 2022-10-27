@@ -9,6 +9,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Binder
 import android.os.Build
+import android.os.Bundle
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationChannelCompat
@@ -99,12 +100,18 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         // check if we have nearby quests
         if (location.accuracy > 100) return
         val loc = location.toLatLon()
-        val q = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(50.0)).filterNot { it.type.dotColor == "no" }
+        val q = visibleQuestsSource.getAllVisible(loc.enclosingBoundingBox(50.0)).filter { it.type.dotColor == "no" }
         if (q.isEmpty()) return // todo (later): optionally download
-        val closest = q.minBy { loc.distanceTo(it.position) } // this is not efficient, simple lat/lon distance would be sufficient for minimum
+        val closest = q.minBy { loc.distanceTo(it.position) } // lat/lon distance would be sufficient for minimum, but current way is probably fast enough
         val n = getQuestFoundNotification(q.size, closest)
         NotificationManagerCompat.from(this).notify(FOUND_NOTIFICATION_ID, n)
     }
+
+    // not overriding those causes crashes on Android 10 (only?)
+    override fun onProviderDisabled(provider: String) {}
+    override fun onProviderEnabled(provider: String) {}
+    @Deprecated("Deprecated in Java")
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
 
     override fun onDestroy() {
         super.onDestroy()
