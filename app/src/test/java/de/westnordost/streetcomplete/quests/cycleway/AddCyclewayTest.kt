@@ -263,6 +263,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
         on(countryInfo.countryCode).thenReturn("DE")
+        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
@@ -277,6 +278,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
         on(countryInfo.countryCode).thenReturn("BE")
+        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium

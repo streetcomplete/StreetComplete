@@ -89,11 +89,74 @@ private val String?.asLineStyleResId: Int? get() = when (this) {
 }
 
 val CountryInfo.shoulderLineStyleResId: Int get() = when (edgeLineStyle) {
-    "white" -> R.drawable.ic_shoulder_white_line
-    "yellow" -> R.drawable.ic_shoulder_yellow_line
-    "short white dashes" -> R.drawable.ic_shoulder_short_white_dashes
-    "white dashes" -> R.drawable.ic_shoulder_white_dashes
+    "white" ->               R.drawable.ic_shoulder_white_line
+    "yellow" ->              R.drawable.ic_shoulder_yellow_line
+    "short white dashes" ->  R.drawable.ic_shoulder_short_white_dashes
+    "white dashes" ->        R.drawable.ic_shoulder_white_dashes
     "short yellow dashes" -> R.drawable.ic_shoulder_short_yellow_dashes
-    "two yellow lines" -> R.drawable.ic_shoulder_two_yellow_lines
-    else -> R.drawable.ic_shoulder_white_line
+    "two yellow lines" ->    R.drawable.ic_shoulder_two_yellow_lines
+    else ->                  R.drawable.ic_shoulder_white_line
+}
+
+fun CountryInfo.getExclusiveCycleLaneResId(isLeftHandedTraffic: Boolean): Int =
+    if (isLeftHandedTraffic) exclusiveCycleLaneLeftHandedTrafficResId else exclusiveCycleLaneResId
+
+private val CountryInfo.exclusiveCycleLaneResId: Int get() = when (exclusiveCycleLaneStyle) {
+    "white" ->                      R.drawable.ic_cycleway_lane_white
+    "yellow" ->                     R.drawable.ic_cycleway_lane_yellow
+    "white dots" ->                 R.drawable.ic_cycleway_lane_dotted_white
+    "white dashes" ->               R.drawable.ic_cycleway_lane_dashed_white
+    "white dashes on both sides" -> R.drawable.ic_cycleway_lane_dashed_both_white
+    "yellow dashes" ->              R.drawable.ic_cycleway_lane_dashed_yellow
+    else ->                         R.drawable.ic_cycleway_lane_white
+}
+
+private val CountryInfo.exclusiveCycleLaneLeftHandedTrafficResId: Int get() = when (exclusiveCycleLaneStyle) {
+    "white" ->                      R.drawable.ic_cycleway_lane_white_l
+    "yellow" ->                     R.drawable.ic_cycleway_lane_yellow_l
+    "white dots" ->                 R.drawable.ic_cycleway_lane_dotted_white_l
+    "white dashes" ->               R.drawable.ic_cycleway_lane_dashed_white_l
+    "white dashes on both sides" -> R.drawable.ic_cycleway_lane_dashed_both_white_l
+    "yellow dashes" ->              R.drawable.ic_cycleway_lane_dashed_yellow_l
+    else ->                         R.drawable.ic_cycleway_lane_white_l
+}
+
+fun CountryInfo.getDualCycleLaneResId(isLeftHandedTraffic: Boolean): Int =
+    if (isLeftHandedTraffic) dualCycleLaneLeftHandedTrafficResId else dualCycleLaneResId
+
+private val CountryInfo.dualCycleLaneResId: Int get() = when {
+    exclusiveCycleLaneStyle.startsWith("white") ->  R.drawable.ic_cycleway_lane_white_dual
+    exclusiveCycleLaneStyle.startsWith("yellow") -> R.drawable.ic_cycleway_lane_yellow_dual
+    else ->                                         R.drawable.ic_cycleway_lane_white_dual
+}
+
+private val CountryInfo.dualCycleLaneLeftHandedTrafficResId: Int get() = when {
+    exclusiveCycleLaneStyle.startsWith("white") ->  R.drawable.ic_cycleway_lane_white_dual_l
+    exclusiveCycleLaneStyle.startsWith("yellow") -> R.drawable.ic_cycleway_lane_yellow_dual_l
+    else ->                                         R.drawable.ic_cycleway_lane_white_dual_l
+}
+
+fun CountryInfo.getAdvisoryCycleLaneResId(isLeftHandedTraffic: Boolean): Int = when (advisoryCycleLaneStyle) {
+    "white dashes" ->
+        if (isLeftHandedTraffic)        R.drawable.ic_cycleway_shared_lane_white_dashed_l
+        else                            R.drawable.ic_cycleway_shared_lane_white_dashed
+    "white dashes without pictogram" -> R.drawable.ic_cycleway_shared_lane_no_pictograms
+    "ochre background" ->               R.drawable.ic_cycleway_shared_lane_orchre_background
+    else ->                             R.drawable.ic_cycleway_shared_lane_white_dashed
+}
+
+
+fun CountryInfo.getPictogramCycleLaneResId(isLeftHandedTraffic: Boolean): Int =
+    if (isLeftHandedTraffic) pictogramCycleLaneLeftHandedTrafficResId else pictogramCycleLaneResId
+
+private val CountryInfo.pictogramCycleLaneResId: Int get() = when(pictogramCycleLaneStyle) {
+    "white" ->  R.drawable.ic_cycleway_pictograms_white
+    "yellow" -> R.drawable.ic_cycleway_pictograms_yellow
+    else ->     R.drawable.ic_cycleway_pictograms_white
+}
+
+private val CountryInfo.pictogramCycleLaneLeftHandedTrafficResId: Int get() = when(pictogramCycleLaneStyle) {
+    "white" ->  R.drawable.ic_cycleway_pictograms_white_l
+    "yellow" -> R.drawable.ic_cycleway_pictograms_yellow_l
+    else ->     R.drawable.ic_cycleway_pictograms_white_l
 }

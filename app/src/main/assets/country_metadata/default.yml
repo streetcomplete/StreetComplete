@@ -2,7 +2,9 @@
 advisorySpeedLimitSignStyle: blue
 centerLineStyle: white
 edgeLineStyle: white
+exclusiveCycleLaneStyle: white
 firstDayOfWorkweek: Mo
+hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false
 hasBiWeeklyAlternateSideParkingSign: false
 hasCenterLeftTurnLane: false
@@ -17,6 +19,7 @@ noEntrySignStyle: default
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
+pictogramCycleLaneStyle: white
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
 postboxesHaveCollectionTimes: false

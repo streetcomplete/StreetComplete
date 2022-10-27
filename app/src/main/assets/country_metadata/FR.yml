@@ -1,6 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [oc, ca, br]
 additionalValidHousenumberRegex: \p{N}{1,4}\sbis
+advisoryCycleLaneStyle: white dashes without pictogram
+exclusiveCycleLaneStyle: white dashes
+hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
 hasLivingStreet: true
