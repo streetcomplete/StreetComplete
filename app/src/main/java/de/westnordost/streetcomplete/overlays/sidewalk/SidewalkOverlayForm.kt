@@ -55,7 +55,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
         streetSideSelect.left?.value != currentSidewalk?.left ||
         streetSideSelect.right?.value != currentSidewalk?.right
 
-    override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Sidewalk>) =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean) =

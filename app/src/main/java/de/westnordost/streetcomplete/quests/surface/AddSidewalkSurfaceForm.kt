@@ -107,7 +107,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
 
     /* ------------------------------------------------------------------------------------------ */
 
-    override fun serialize(item: StreetSideDisplayItem<Surface>, isRight: Boolean): String =
+    override fun serialize(item: StreetSideDisplayItem<Surface>): String =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<Surface> =
