@@ -10,23 +10,25 @@
     android:gravity="center_vertical"
     tools:ignore="RtlSymmetry">
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/keyText"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:textSize="18sp"
+        android:completionThreshold="0"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/valueText"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:textSize="18sp"
+        android:completionThreshold="0"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"/>
 

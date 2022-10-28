@@ -8,7 +8,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -34,6 +35,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
+import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -180,7 +182,14 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 if (tagList.lastOrNull() == emptyEntry) return@setOnClickListener
                 tagList.add(emptyEntry)
                 binding.editTags.adapter?.notifyItemInserted(tagList.lastIndex)
+                // clearing focus is necessary to avoid crash java.lang.IllegalArgumentException: Scrapped or attached views may not be recycled. isScrap:false isAttached:true androidx.recyclerview.widget.RecyclerView
+                activity?.currentFocus?.clearFocus()
                 binding.editTags.scrollToPosition(tagList.lastIndex)
+                binding.editTags.post {
+                    // focus new view (does not change keyboard state)
+                    // use post to avoid NPE because view does not exist: https://stackoverflow.com/a/54751851
+                    (binding.editTags.findViewHolderForAdapterPosition(tagList.lastIndex) as? EditTagsAdapter.ViewHolder)?.keyView?.requestFocus()
+                }
                 showOk()
             }
         })
@@ -356,11 +365,32 @@ private class EditTagsAdapter(
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val keyView: EditText = view.findViewById<EditText>(R.id.keyText).apply {
+        val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
+            // search adapter should return something if empty (recently added keys, keys fitting to other keys,...)
+            // if only one letter, maybe don't search because of performance?
+            // otherwise a simple startsWith filter for keys
+            // return only a limited number of results for performance reasons
+            //  thus the underlying list should be sorted by "importance" (maybe frequency of key, or of key combinations)
+            setAdapter(SearchAdapter(context, { search ->
+                // actually need a map<Key, List<Values>>
+                //  only return the first 10 results or so, for faster filter
+                //  actually is there a faster way of startsWith filtering?
+                //  for some keys, values could be shown on focus (e.g. if key is access, show yes, no, private, permissive)
+                // source: taginfo
+                //  keys: simply the 5k most spread? plus manually entered keys
+                //  values: everything in prevalent values for those keys, maybe with auto-popup and focus when key is added (using auto-complete)?
+                //  also suggest other keys when focusing a new key? data from key_combinations / tag_combinations table
+                //   though i'd need to understand how this is arranged with key1 and key2
+                listOf(search)
+            }, { it }))
+            setOnFocusChangeListener { _, focused -> if (focused) showDropDown() } // show dropdown immediately, even for empty text
+            onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
+                valueView.requestFocus() // move to value view if key is selected from suggestions
+            }
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
                 val newKey = it.toString()
-                // do nothing if key is unchanged, happens when editTexts are filled by adaoter
+                // do nothing if key is unchanged, happens when views are filled by EditTagsAdapter
                 if (displaySet[position].first == newKey) return@doAfterTextChanged
                 if (dataSet.containsKey(newKey)) {
                     // don't store duplicate keys, user should rename or delete them
@@ -375,7 +405,8 @@ private class EditTagsAdapter(
                 onDataChanged()
             }
         }
-        val valueView: EditText = view.findViewById<EditText>(R.id.valueText).apply {
+        val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
+            setOnFocusChangeListener { _, focused -> if (focused) showDropDown() }
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
                 if (displaySet[position].second == it.toString()) return@doAfterTextChanged
