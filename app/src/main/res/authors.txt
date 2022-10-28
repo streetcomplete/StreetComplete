@@ -336,3 +336,4 @@ crossing_type_signals_zebra... CC BY-SA 4.0      https://commons.wikimedia.org/w
 crossing_type_marked.jpg       CC BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Pedestrian_crossing_Gympie_Rd_and_Murphy_Rd_pedestrian_crossing_DSCF5782.jpg (John Robert McPherson)
 
 surface_metal_grid.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Press_grating.jpg (Belt777)
+surface_stepping_stones.jpg    CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Stepping_stones_-_geograph.org.uk_-_832601.jpg (Keith Evans)

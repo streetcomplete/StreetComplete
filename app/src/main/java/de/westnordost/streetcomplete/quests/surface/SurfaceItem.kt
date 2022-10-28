@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.quests.surface.Surface.PEBBLES
 import de.westnordost.streetcomplete.quests.surface.Surface.ROCK
 import de.westnordost.streetcomplete.quests.surface.Surface.SAND
 import de.westnordost.streetcomplete.quests.surface.Surface.SETT
+import de.westnordost.streetcomplete.quests.surface.Surface.STEPPING_STONES
 import de.westnordost.streetcomplete.quests.surface.Surface.TARTAN
 import de.westnordost.streetcomplete.quests.surface.Surface.UNHEWN_COBBLESTONE
 import de.westnordost.streetcomplete.quests.surface.Surface.UNPAVED_AREA
@@ -83,6 +84,7 @@ private val Surface.titleResId: Int get() = when (this) {
     PAVED_AREA ->      R.string.quest_surface_value_paved
     UNPAVED_AREA ->    R.string.quest_surface_value_unpaved
     GROUND_AREA ->     R.string.quest_surface_value_ground
+    STEPPING_STONES -> R.string.quest_surface_value_stepping_stones
 }
 
 private val Surface.iconResId: Int get() = when (this) {
@@ -115,4 +117,5 @@ private val Surface.iconResId: Int get() = when (this) {
     PAVED_AREA ->      R.drawable.surface_paved_area
     UNPAVED_AREA ->    R.drawable.surface_unpaved_area
     GROUND_AREA ->     R.drawable.surface_ground_area
+    STEPPING_STONES -> R.drawable.surface_stepping_stones
 }

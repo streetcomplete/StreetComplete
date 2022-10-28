@@ -280,6 +280,7 @@
     <string name="quest_smoothness_road_title2">What’s the surface quality of this %s road here?</string>
     <string name="quest_smoothness_title2">What’s the surface quality here (%s)?</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
+    <string name="quest_surface_value_stepping_stones">Stepping stones</string>
     <string name="quest_buildingType_answer_demolished">It’s demolished (traces visible)</string>
     <string name="quest_buildingType_presbytery">Presbytery</string>
     <string name="quest_buildingType_barn">Barn</string>

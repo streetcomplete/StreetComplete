@@ -60,6 +60,7 @@ enum class Surface(val osmValue: String) {
     UNPAVED_AREA("unpaved"),
     GROUND_AREA("ground"),
     METAL_GRID("metal_grid"),
+    STEPPING_STONES("stepping_stones"),
 }
 
 val PAVED_SURFACES = listOf(

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.util.ktx.isArea
 
 class AddPathSurfaceForm(private val allowGeneric: Boolean) : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
     override val items get() =
-        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
+        (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES + Surface.STEPPING_STONES).toItems()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
