@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -43,8 +42,8 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementEditsDao
 
     @Before fun createDao() {
-        val list = listOf<QuestType>(TEST_QUEST_TYPE, TEST_QUEST_TYPE2)
-        val list2 = listOf<Overlay>(TestOverlay)
+        val list = listOf(1 to TEST_QUEST_TYPE, 2 to TEST_QUEST_TYPE2)
+        val list2 = listOf(1 to TestOverlay)
         dao = ElementEditsDao(database, QuestTypeRegistry(list), OverlayRegistry(list2))
     }
 
