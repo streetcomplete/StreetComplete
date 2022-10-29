@@ -48,7 +48,7 @@ class LocalizedNameAdapter(
             notifyDataSetChanged()
         }
 
-    private var _names: MutableList<LocalizedName>
+    private var _names: MutableList<LocalizedName> = mutableListOf()
     private val listeners = mutableListOf<(LocalizedName) -> Unit>()
 
     /** list of maps consisting of key = language tag, value = name */
@@ -58,7 +58,6 @@ class LocalizedNameAdapter(
 
     init {
         names = initialNames
-        _names = initialNames.toMutableList()
 
         this.nameSuggestions = namesSuggestions?.map { localizedNames ->
             localizedNames.associate { it.languageTag to it.name }.toMutableMap()
