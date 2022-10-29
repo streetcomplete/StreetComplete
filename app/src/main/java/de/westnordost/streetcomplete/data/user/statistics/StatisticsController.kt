@@ -19,6 +19,8 @@ import java.util.concurrent.FutureTask
 class StatisticsController(
     private val editTypeStatisticsDao: EditTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
+    private val currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao,
+    private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     private val prefs: SharedPreferences,
     userLoginStatusSource: UserLoginStatusSource
@@ -43,6 +45,12 @@ class StatisticsController(
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         private set(value) {
             prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
+        }
+
+    override var currentWeekRank: Int
+        get() = prefs.getInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, -1)
+        private set(value) {
+            prefs.edit(true) { putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, value) }
         }
 
     override var isSynchronizing: Boolean
@@ -80,16 +88,36 @@ class StatisticsController(
     override fun getCountryStatisticsOfCountryWithBiggestSolvedCount() =
         countryStatisticsDao.getCountryWithBiggestSolvedCount()
 
+    override fun getCurrentWeekEditCount(): Int =
+        currentWeekEditTypeStatisticsDao.getTotalAmount()
+
+    override fun getCurrentWeekEditTypeStatistics(): List<EditTypeStatistics> =
+        currentWeekEditTypeStatisticsDao.getAll()
+
+    override fun getCurrentWeekCountryStatistics(): List<CountryStatistics> =
+        currentWeekCountryStatisticsDao.getAll()
+
+    override fun getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount(): CountryStatistics? =
+        currentWeekCountryStatisticsDao.getCountryWithBiggestSolvedCount()
+
     fun addOne(type: String, position: LatLon) {
         editTypeStatisticsDao.addOne(type)
-        getRealCountryCode(position)?.let { countryStatisticsDao.addOne(it) }
+        currentWeekEditTypeStatisticsDao.addOne(type)
+        getRealCountryCode(position)?.let {
+            countryStatisticsDao.addOne(it)
+            currentWeekCountryStatisticsDao.addOne(it)
+        }
         listeners.forEach { it.onAddedOne(type) }
         updateDaysActive()
     }
 
     fun subtractOne(type: String, position: LatLon) {
         editTypeStatisticsDao.subtractOne(type)
-        getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }
+        currentWeekEditTypeStatisticsDao.subtractOne(type)
+        getRealCountryCode(position)?.let {
+            countryStatisticsDao.subtractOne(it)
+            currentWeekCountryStatisticsDao.subtractOne(it)
+        }
         listeners.forEach { it.onSubtractedOne(type) }
         updateDaysActive()
     }
@@ -109,6 +137,9 @@ class StatisticsController(
 
         editTypeStatisticsDao.replaceAll(statistics.types.associate { it.type to it.count })
         countryStatisticsDao.replaceAll(statistics.countries)
+        currentWeekEditTypeStatisticsDao.replaceAll(statistics.currentWeekTypes.associate { it.type to it.count })
+        currentWeekCountryStatisticsDao.replaceAll(statistics.currentWeekCountries)
+        currentWeekRank = statistics.currentWeekRank
         rank = statistics.rank
         daysActive = statistics.daysActive
         lastUpdate = statistics.lastUpdate
@@ -119,10 +150,13 @@ class StatisticsController(
     private fun clear() {
         editTypeStatisticsDao.clear()
         countryStatisticsDao.clear()
+        currentWeekEditTypeStatisticsDao.clear()
+        currentWeekCountryStatisticsDao.clear()
         prefs.edit(true) {
             remove(Prefs.USER_DAYS_ACTIVE)
             remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
             remove(Prefs.USER_GLOBAL_RANK)
+            remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
             remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
         }
 

@@ -24,6 +24,7 @@ object Prefs {
     const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
     const val USER_DAYS_ACTIVE = "days_active"
     const val USER_GLOBAL_RANK = "user_global_rank"
+    const val USER_GLOBAL_RANK_CURRENT_WEEK = "user_global_rank_current_week"
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
     const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"

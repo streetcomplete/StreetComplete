@@ -22,10 +22,20 @@ class StatisticsParserTest {
                 CountryStatistics("DE", 8, null),
                 CountryStatistics("US", 7, 123),
             ),
-            2345,
-            78,
-            Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds(),
-            false
+            rank = 2345,
+            daysActive = 78,
+            currentWeekRank = 3,
+            currentWeekTypes = listOf(
+                EditTypeStatistics(questA, 9),
+                EditTypeStatistics(questB, 99),
+                EditTypeStatistics(questC, 999),
+            ),
+            currentWeekCountries = listOf(
+                CountryStatistics("AT", 5, 666),
+                CountryStatistics("IT", 4, null),
+            ),
+            lastUpdate = Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds(),
+            isAnalyzing = false
         ),
         StatisticsParser(listOf("TestQuestTypeCAlias" to "TestQuestTypeC")).parse("""
         {
@@ -42,6 +52,19 @@ class StatisticsParserTest {
                 "US": "123",
             },
             "rank": "2345",
+            "currentWeekRank": "3",
+            "currentWeekQuestTypes": {
+                "TestQuestTypeA": "9",
+                "TestQuestTypeB": "99",
+                "TestQuestTypeCAlias": "999",
+            },
+            "currentWeekCountries": {
+                "IT": 4,
+                "AT": 5,
+            },
+            "currentWeekCountryRanks": {
+                "AT": 666
+            },
             "daysActive": "78",
             "lastUpdate": "2007-12-03T10:15:30+01:00",
             "isAnalyzing": "false"

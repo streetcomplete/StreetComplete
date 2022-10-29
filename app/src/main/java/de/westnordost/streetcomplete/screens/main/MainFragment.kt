@@ -231,7 +231,6 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.createButton.setOnClickListener { onClickCreateButton() }
-        binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateOffsetWithOpenBottomSheet()
     }
@@ -741,10 +740,6 @@ class MainFragment :
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
-    fun starInfoMenu() {
-        val intent = Intent(requireContext(), UserActivity::class.java)
-        startActivity(intent)
-    }
     /* -------------------------------------- Context Menu -------------------------------------- */
 
     private fun showMapContextMenu(position: LatLon) {
