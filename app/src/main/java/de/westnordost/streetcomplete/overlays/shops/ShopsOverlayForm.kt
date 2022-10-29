@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.overlays.shops
 
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.edit
 import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -30,11 +33,14 @@ import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
 
 class ShopsOverlayForm : AbstractOverlayForm() {
 
     override val contentLayoutResId = R.layout.fragment_overlay_shops
     private val binding by contentViewBinding(FragmentOverlayShopsBinding::bind)
+
+    private val prefs: SharedPreferences by inject()
 
     private lateinit var featureCtrl: FeatureViewController
 
@@ -101,10 +107,18 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
         val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
 
+        val selectableLanguages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct().toMutableList()
+        val preferredLanguage = prefs.getString(PREFERRED_LANGUAGE_FOR_NAMES, null)
+        if (preferredLanguage != null) {
+            if (selectableLanguages.remove(preferredLanguage)) {
+                selectableLanguages.add(0, preferredLanguage)
+            }
+        }
+
         val adapter = LocalizedNameAdapter(
             persistedNames ?: names.map { it.copy() },
             requireContext(),
-            (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct(),
+            selectableLanguages,
             null,
             null,
             binding.nameContainer.addLanguageButton
@@ -180,6 +194,9 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         } else {
             applyEdit(CreateNodeAction(geometry.center, tagChanges))
         }
+
+        val firstLanguage = adapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
+        if (firstLanguage != null) prefs.edit { putString(PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage) }
     }
 
     companion object {
