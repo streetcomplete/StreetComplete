@@ -17,6 +17,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.view.controller.AutoCorrectAbbreviationsViewController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,35 +25,46 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.Serializable
 import java.util.Locale
 
-/** Carries the data language tag + name in that language  */
-@Serializable
-data class LocalizedName(var languageTag: String, var name: String)
-
-class AddLocalizedNameAdapter(
-    initialLocalizedNames: List<LocalizedName>,
+class LocalizedNameAdapter(
+    initialNames: List<LocalizedName>,
     private val context: Context,
     private val languageTags: List<String>,
     private val abbreviationsByLocale: AbbreviationsByLocale?,
-    private val localizedNameSuggestions: List<MutableMap<String, String>>?,
+    namesSuggestions: List<List<LocalizedName>>?,
     private val addLanguageButton: View,
-    private val rowLayoutResId: Int = R.layout.quest_localizedname_row
-) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>(), DefaultLifecycleObserver {
+    private val rowLayoutResId: Int = R.layout.row_localizedname
+) : RecyclerView.Adapter<LocalizedNameAdapter.ViewHolder>(), DefaultLifecycleObserver {
 
-    var localizedNames: MutableList<LocalizedName>
-        private set
+    var names: List<LocalizedName>
+        get() = _names.filter { it.name.isNotEmpty() }
+        set(value) {
+            _names = value.toMutableList()
+            if (_names.isEmpty()) {
+                val defaultLanguage = languageTags[0]
+                _names.add(LocalizedName(defaultLanguage, ""))
+            }
+            notifyDataSetChanged()
+        }
+
+    private var _names: MutableList<LocalizedName>
     private val listeners = mutableListOf<(LocalizedName) -> Unit>()
+
+    /** list of maps consisting of key = language tag, value = name */
+    private val nameSuggestions: List<MutableMap<String, String>>?
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     init {
-        localizedNames = initialLocalizedNames.toMutableList()
-        if (localizedNames.isEmpty()) {
-            localizedNames.add(LocalizedName(languageTags[0], ""))
+        names = initialNames
+        _names = initialNames.toMutableList()
+
+        this.nameSuggestions = namesSuggestions?.map { localizedNames ->
+            localizedNames.associate { it.languageTag to it.name }.toMutableMap()
         }
         putDefaultLocalizedNameSuggestion()
+
         addLanguageButton.setOnClickListener { v ->
             showLanguageSelectMenu(v, getNotAddedLanguageTags()) { add(it) }
         }
@@ -65,8 +77,10 @@ class AddLocalizedNameAdapter(
     }
 
     private fun getNotAddedLanguageTags(): List<String> {
+        if (languageTags.size == 1) return emptyList()
+
         val result = languageTags.toMutableList()
-        for (localizedName in localizedNames) {
+        for (localizedName in _names) {
             result.remove(localizedName.languageTag)
         }
         return result
@@ -81,8 +95,9 @@ class AddLocalizedNameAdapter(
      * name tag is. */
     private fun putDefaultLocalizedNameSuggestion() {
         val defaultLanguage = languageTags[0]
-        if (localizedNameSuggestions != null) {
-            for (names in localizedNameSuggestions) {
+        if (nameSuggestions != null) {
+            for (localizedNames in nameSuggestions) {
+                val names = localizedNames
                 val defaultName = names[""]
                 if (defaultName != null) {
                     // name=A -> name=A, name:de=A (in Germany)
@@ -100,10 +115,10 @@ class AddLocalizedNameAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.update(position, localizedNames[position])
+        holder.update(position, _names[position])
     }
 
-    override fun getItemCount() = localizedNames.size
+    override fun getItemCount() = _names.size
 
     private fun updateAddLanguageButtonVisibility() {
         addLanguageButton.isGone = getNotAddedLanguageTags().isEmpty()
@@ -111,7 +126,7 @@ class AddLocalizedNameAdapter(
 
     private fun remove(index: Int) {
         if (index < 1) return
-        localizedNames.removeAt(index)
+        _names.removeAt(index)
         notifyItemRemoved(index)
 
         updateAddLanguageButtonVisibility()
@@ -119,7 +134,7 @@ class AddLocalizedNameAdapter(
 
     private fun add(languageTag: String) {
         val insertIndex = itemCount
-        localizedNames.add(LocalizedName(languageTag, ""))
+        _names.add(LocalizedName(languageTag, ""))
         notifyItemInserted(insertIndex)
 
         updateAddLanguageButtonVisibility()
@@ -203,23 +218,24 @@ class AddLocalizedNameAdapter(
         popup.show()
     }
 
+    /** returns map of the name in the given language to map of language to name ??*/
     private fun getLocalizedNameSuggestionsByLanguageTag(languageTag: String): Map<String, Map<String, String>> {
         val localizedNameSuggestionsMap = mutableMapOf<String, Map<String, String>>()
-        if (localizedNameSuggestions != null) {
-            for (localizedNameSuggestion in localizedNameSuggestions) {
-                val name = localizedNameSuggestion[languageTag] ?: continue
+        if (nameSuggestions != null) {
+            for (namesByLanguageTag in nameSuggestions) {
+                val name = namesByLanguageTag[languageTag] ?: continue
 
                 // "unspecified language" suggestions
                 if (languageTag.isEmpty()) {
                     var defaultNameOccurrences = 0
-                    for (other in localizedNameSuggestion.values) {
+                    for (other in namesByLanguageTag.values) {
                         if (name == other) defaultNameOccurrences++
                     }
                     // name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
                     if (defaultNameOccurrences >= 2) continue
                     // only for name=A, name:de=B, name:en=C,...
                 }
-                localizedNameSuggestionsMap[name] = localizedNameSuggestion
+                localizedNameSuggestionsMap[name] = namesByLanguageTag
             }
         }
         return localizedNameSuggestionsMap
@@ -303,7 +319,7 @@ class AddLocalizedNameAdapter(
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->
-                    localizedNames = selection.toLocalizedNameList()
+                    _names = selection.toLocalizedNameList()
                     notifyDataSetChanged()
                     updateAddLanguageButtonVisibility()
                 }

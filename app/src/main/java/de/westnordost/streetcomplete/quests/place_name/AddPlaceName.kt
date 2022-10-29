@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -128,14 +129,7 @@ class AddPlaceName(
                 tags["name:signed"] = "no"
             }
             is PlaceName -> {
-                for ((languageTag, name) in answer.localizedNames) {
-                    val key = when (languageTag) {
-                        "" -> "name"
-                        "international" -> "int_name"
-                        else -> "name:$languageTag"
-                    }
-                    tags[key] = name
-                }
+                answer.localizedNames.applyTo(tags)
             }
         }
     }
