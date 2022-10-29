@@ -4,8 +4,12 @@ v49.0-beta1: |
   <ul>
   <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
   <li>Cycle lanes: Adapt appearance of cycle lanes, depending on the country one is mapping in (#4502)</li>
+  <li>Cycle lanes, sidewalk surface: Also remember and offer shortcut to apply last selection for roads on which only one side is to be defined (#4524, #4503), by @Helium314</li>
+  <li>Shop overlay: Disable 3D buildings for easier placement of new shops (#4563)</li>
+  <li>Shop overlay: Allow input of names in different languages (in countries where that's common)</li>
   <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
   <li>Added some nice graphics to the My Profile screen  (#3414, #4203), by @matkoniecz</li>
+  <li>Other small enhancements and fixes (#4559, #4560...)</li>
   </ul>
 
 v48.0: |
