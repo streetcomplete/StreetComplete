@@ -20,8 +20,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
-import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
-import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables
+import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
@@ -84,8 +84,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(DownloadedTilesTable.CREATE)
 
         // user statistics
-        db.execSQL(EditTypeStatisticsTable.CREATE)
-        db.execSQL(CountryStatisticsTable.CREATE)
+        db.execSQL(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME))
+        db.execSQL(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
+        db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME))
+        db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)
 
@@ -174,7 +176,11 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 5 && newVersion > 5) {
             db.execSQL("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
+        if (oldVersion <= 6 && newVersion > 6) {
+            db.execSQL(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
+            db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
+        }
     }
 }
 
-private const val DB_VERSION = 6
+private const val DB_VERSION = 7

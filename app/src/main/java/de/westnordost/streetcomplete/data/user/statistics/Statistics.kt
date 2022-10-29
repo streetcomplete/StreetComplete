@@ -5,8 +5,11 @@ data class Statistics(
     val countries: List<CountryStatistics>,
     val rank: Int,
     val daysActive: Int,
+    val currentWeekRank: Int,
+    val currentWeekTypes: List<EditTypeStatistics>,
+    val currentWeekCountries: List<CountryStatistics>,
     val lastUpdate: Long,
-    val isAnalyzing: Boolean
+    val isAnalyzing: Boolean,
 )
 
 data class CountryStatistics(val countryCode: String, val count: Int, val rank: Int?)

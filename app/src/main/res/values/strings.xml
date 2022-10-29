@@ -357,6 +357,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="user_profile_current_week_title">This week</string>
 
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>

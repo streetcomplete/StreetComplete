@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -14,7 +15,9 @@ import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.util.ktx.createBitmap
@@ -53,10 +56,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
     private val statisticsListener = object : StatisticsSource.Listener {
         override fun onAddedOne(type: String) {
-            viewLifecycleScope.launch { updateEditCountText() }
+            viewLifecycleScope.launch { updateEditCountTexts() }
         }
         override fun onSubtractedOne(type: String) {
-            viewLifecycleScope.launch { updateEditCountText() }
+            viewLifecycleScope.launch { updateEditCountTexts()  }
         }
         override fun onUpdatedAll() {
             viewLifecycleScope.launch { updateStatisticsTexts() }
@@ -66,6 +69,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
         override fun onUpdatedDaysActive() {
             viewLifecycleScope.launch { updateDaysActiveText() }
+        }
+    }
+    private val achievementsListener = object : AchievementsSource.Listener {
+        override fun onAchievementUnlocked(achievement: Achievement, level: Int) {
+            viewLifecycleScope.launch { updateAchievementLevelsText() }
+        }
+
+        override fun onAllAchievementsUpdated() {
+            viewLifecycleScope.launch { updateAchievementLevelsText() }
         }
     }
     private val userListener = object : UserDataSource.Listener {
@@ -99,14 +111,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userUpdater.addUserAvatarListener(userAvatarListener)
             statisticsSource.addListener(statisticsListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
+            achievementsSource.addListener(achievementsListener)
 
             updateUserName()
             updateAvatar()
-            updateEditCountText()
+            updateEditCountTexts()
             updateUnpublishedEditsText()
             updateDaysActiveText()
-            updateGlobalRankText()
-            updateLocalRankText()
+            updateGlobalRankTexts()
+            updateLocalRankTexts()
             updateAchievementLevelsText()
         }
     }
@@ -117,6 +130,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         statisticsSource.removeListener(statisticsListener)
         userDataSource.removeListener(userListener)
         userUpdater.removeUserAvatarListener(userAvatarListener)
+        achievementsSource.removeListener(achievementsListener)
     }
 
     private fun updateUserName() {
@@ -130,14 +144,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private suspend fun updateStatisticsTexts() {
-        updateEditCountText()
+        updateEditCountTexts()
         updateDaysActiveText()
-        updateGlobalRankText()
-        updateLocalRankText()
+        updateGlobalRankTexts()
+        updateLocalRankTexts()
     }
 
-    private suspend fun updateEditCountText() {
+    private suspend fun updateEditCountTexts() {
         binding.editCountText.text = withContext(Dispatchers.IO) { statisticsSource.getEditCount().toString() }
+        binding.currentWeekEditCountText.text = withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekEditCount().toString() }
     }
 
     private suspend fun updateUnpublishedEditsText() {
@@ -153,37 +168,62 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.daysActiveText.background = LaurelWreathDrawable(resources, min(daysActive + 20, 100))
     }
 
-    private fun updateGlobalRankText() {
+    private fun updateGlobalRankTexts() {
+        updateGlobalRankText(
+            statisticsSource.rank,
+            binding.globalRankContainer,
+            binding.globalRankText
+        )
+
+        updateGlobalRankText(
+            statisticsSource.currentWeekRank,
+            binding.currentWeekGlobalRankContainer,
+            binding.currentWeekGlobalRankText
+        )
+    }
+
+    private fun updateGlobalRankText(rank: Int, container: View, circle: TextView ) {
+        container.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
+        circle.text = "#$rank"
+        circle.background = LaurelWreathDrawable(resources, getScaledGlobalRank(rank))
+    }
+
+    /** Translate the user's actual rank to a value from 0 (bad) to 100 (good) */
+    private fun getScaledGlobalRank(rank: Int): Int {
         // note that global rank merges multiple people with the same score
         // in case that 1000 people made 11 edits all will have the same rank (say, 3814)
         // in case that 1000 people made 10 edits all will have the same rank (in this case - 3815)
-        val rank = statisticsSource.rank
-        binding.globalRankContainer.isGone = rank <= 0 || statisticsSource.getEditCount() <= 100
-        binding.globalRankText.text = "#$rank"
         val rankEnoughForFullMarks = 1000
         val rankEnoughToStartGrowingReward = 3800
         val ranksAboveThreshold = max(rankEnoughToStartGrowingReward - rank, 0)
-        val scaledRank = (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt()
-        binding.globalRankText.background = LaurelWreathDrawable(resources, min(scaledRank, 100))
+        return min(100, (ranksAboveThreshold * 100.0 / (rankEnoughToStartGrowingReward - rankEnoughForFullMarks)).toInt())
     }
 
-    private suspend fun updateLocalRankText() {
-        val statistics = withContext(Dispatchers.IO) {
-            statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount()
-        }
-        if (statistics == null) {
-            binding.localRankContainer.isGone = true
-        }
-        else {
-            val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.count > 50
-            val countryLocale = Locale("", statistics.countryCode)
-            binding.localRankContainer.isGone = !shouldShow
-            if (shouldShow) {
-                binding.localRankText.text = "#${statistics.rank}"
-                binding.localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
-                binding.localRankText.background = LaurelWreathDrawable(resources, min(100 - statistics.rank!!, 100))
-            }
-        }
+    private suspend fun updateLocalRankTexts() {
+        updateLocalRankText(
+            withContext(Dispatchers.IO) { statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount() },
+            50,
+            binding.localRankContainer,
+            binding.localRankLabel,
+            binding.localRankText
+        )
+
+        updateLocalRankText(
+            withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount() },
+            5,
+            binding.currentWeekLocalRankContainer,
+            binding.currentWeekLocalRankLabel,
+            binding.currentWeekLocalRankText
+        )
+    }
+
+    private fun updateLocalRankText(statistics: CountryStatistics?, min: Int, container: View, label: TextView, circle: TextView) {
+        val rank = statistics?.rank ?: 0
+        container.isGone = statistics == null || rank <= 0 || statistics.count <= min
+        circle.text = "#$rank"
+        val countryLocale = Locale("", statistics?.countryCode ?: "")
+        label.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+        circle.background = LaurelWreathDrawable(resources, min(100 - rank, 100))
     }
 
     private suspend fun updateAchievementLevelsText() {
