@@ -292,3 +292,10 @@ tasks.register("copyDefaultStringsToEnStrings") {
             .copyTo(File("$projectDir/src/main/res/values-en/strings.xml"), true)
     }
 }
+
+// this task is EE only, suggestions are used in the tag editor
+tasks.register<GenerateTagSuggestions>("generateTagSuggestions") {
+    group = "streetcomplete"
+    version = presetsVersion
+    targetDir = "$projectDir/src/main/assets/tag_editor"
+}

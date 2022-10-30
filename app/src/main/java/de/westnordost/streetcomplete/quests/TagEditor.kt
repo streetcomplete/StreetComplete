@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import android.app.ActionBar.LayoutParams
+import android.content.Context
 import android.content.SharedPreferences
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +18,15 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -38,6 +43,7 @@ import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -59,8 +65,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import java.util.Date
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.FutureTask
 import kotlin.math.min
 
 // todo: ideas for improvements
@@ -72,15 +80,8 @@ import kotlin.math.min
 //    overwrite existing tags and add others, don't delete
 //  undo button, for undoing delete or paste (and maybe other changes? but will not work well with typing)
 //  don't depend on that TagEditor.isShowing and TagEditor.changes in companion object
-//  help when entering tags
-//   suggestions? e.g. common keys, or common values for that key, or last typed keys / values for that key
-//    how to show?
-//     autocompletetextview is the dropdown thing, but that might not always be convenient
-//     can i use the keyboard suggestions? should work, see e.g. TYPE_TEXT_FLAG_AUTO_COMPLETE
-//      if this works, it could also be done for tree quest
 
 open class TagEditor : Fragment(), IsCloseableBottomSheet {
-    // too different from abstractbottomsheetfragment... though it would be nice to use it...
     private var _binding: EditTagsBinding? = null
     protected val binding: EditTagsBinding get() = _binding!!
     private var updateQuestsJob: Job? = null
@@ -89,6 +90,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private val osmQuestController: OsmQuestController by inject()
     protected val prefs: SharedPreferences by inject()
     protected val elementEditsController: ElementEditsController by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -119,6 +121,17 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        if (keySuggestionsForFeatureId.isEmpty() && valueSuggestionsByKey.isEmpty()) {
+            try {
+                val keySuggestions = resources.assets.open("tag_editor/keySuggestionsForFeature.json").reader().readText()
+                val valueSuggestions = resources.assets.open("tag_editor/valueSuggestionsByKey.json").reader().readText()
+                keySuggestionsForFeatureId.putAll(Json.decodeFromString(keySuggestions))
+                valueSuggestionsByKey.putAll(Json.decodeFromString(valueSuggestions))
+            } catch (e: Exception) {
+                Log.w("TagEditor", "failed to read and parse suggestions: ${e.message}")
+            }
+        }
+
         // definitely worth calling early! because it should be finished once we want to fill the quest list (in most cases)
         deferredQuests = viewLifecycleScope.async(Dispatchers.IO) {
             // create quests if we have dynamic quest creation on or a new POI, otherwise just load from db
@@ -162,7 +175,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
-        binding.editTags.adapter = EditTagsAdapter(tagList, newTags) {
+        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, featureDictionaryFuture.get(), requireContext()) {
             viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(1000) }
             showOk()
         }.apply { setHasStableIds(true) }
@@ -176,11 +189,12 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         binding.questsGrid.columnCount = resources.displayMetrics.widthPixels / (questIconWidth + 3 * (resources.displayMetrics.density * 2 + 0.5f).toInt()) // last part is for the margins of icons and view
         binding.questsGrid.addView(ImageButton(requireContext()).apply {
             setImageResource(R.drawable.ic_add_24dp)
-            setBackgroundColor(resources.getColor(R.color.background))
+            setBackgroundColor(ContextCompat.getColor(context, R.color.background))
             layoutParams = questIconParameters
             setOnClickListener {
                 if (tagList.lastOrNull() == emptyEntry) return@setOnClickListener
                 tagList.add(emptyEntry)
+                newTags[""] = ""
                 binding.editTags.adapter?.notifyItemInserted(tagList.lastIndex)
                 // clearing focus is necessary to avoid crash java.lang.IllegalArgumentException: Scrapped or attached views may not be recycled. isScrap:false isAttached:true androidx.recyclerview.widget.RecyclerView
                 activity?.currentFocus?.clearFocus()
@@ -360,30 +374,30 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 private class EditTagsAdapter(
     private val displaySet: MutableList<Pair<String, String>>,
     private val dataSet: MutableMap<String, String>,
+    private val featureDictionary: FeatureDictionary,
+    context: Context,
     private val onDataChanged: () -> Unit
 ) :
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
+    val initialTags = dataSet.toMap()
+
+    val keySearchAdapter = SearchAdapter(context, { search ->
+        // don't suggest anything if nothing has changed, because on start a search is added for all fields
+        Log.i("test_", "key search")
+        if (dataSet == initialTags) return@SearchAdapter emptyList() // focus check not possible outside viewHolder (no adapter position)
+        Log.i("test_", "key search actually happening")
+        val feature = featureDictionary.byTags(dataSet).find().firstOrNull()
+            ?: return@SearchAdapter emptyList()
+        Log.i("test_", "feature found")
+        getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
+    }, { it })
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
-            // search adapter should return something if empty (recently added keys, keys fitting to other keys,...)
-            // if only one letter, maybe don't search because of performance?
-            // otherwise a simple startsWith filter for keys
-            // return only a limited number of results for performance reasons
-            //  thus the underlying list should be sorted by "importance" (maybe frequency of key, or of key combinations)
-            setAdapter(SearchAdapter(context, { search ->
-                // actually need a map<Key, List<Values>>
-                //  only return the first 10 results or so, for faster filter
-                //  actually is there a faster way of startsWith filtering?
-                //  for some keys, values could be shown on focus (e.g. if key is access, show yes, no, private, permissive)
-                // source: taginfo
-                //  keys: simply the 5k most spread? plus manually entered keys
-                //  values: everything in prevalent values for those keys, maybe with auto-popup and focus when key is added (using auto-complete)?
-                //  also suggest other keys when focusing a new key? data from key_combinations / tag_combinations table
-                //   though i'd need to understand how this is arranged with key1 and key2
-                listOf(search)
-            }, { it }))
-            setOnFocusChangeListener { _, focused -> if (focused) showDropDown() } // show dropdown immediately, even for empty text
+            setAdapter(keySearchAdapter)
+            setOnFocusChangeListener { _, focused -> if (focused)
+                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+            }
             onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
                 valueView.requestFocus() // move to value view if key is selected from suggestions
             }
@@ -405,8 +419,16 @@ private class EditTagsAdapter(
                 onDataChanged()
             }
         }
+
         val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
-            setOnFocusChangeListener { _, focused -> if (focused) showDropDown() }
+            setOnFocusChangeListener { _, focused -> if (focused)
+                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+            }
+            setAdapter(SearchAdapter(context, { search ->
+                if (!isFocused) return@SearchAdapter emptyList()
+                val key = displaySet[absoluteAdapterPosition].first
+                valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) }
+            }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
                 if (displaySet[position].second == it.toString()) return@doAfterTextChanged
@@ -417,6 +439,7 @@ private class EditTagsAdapter(
                 onDataChanged()
             }
         }
+
         val delete: ImageView = view.findViewById<ImageView>(R.id.deleteButton).apply {
             setOnClickListener {
                 val position = absoluteAdapterPosition
@@ -457,3 +480,38 @@ private val emptyEntry = "" to ""
 
 // characters that should not be in keys, see https://taginfo.openstreetmap.org/reports/characters_in_keys
 private val problematicKeyCharacters = "[\\s=+/&<>;'\"?%#@,\\\\]".toRegex()
+
+private val keySuggestionsForFeatureId = hashMapOf<String, Pair<List<String>?, List<String>?>>()
+private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
+
+private fun getSuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
+    val fields = getMainSuggestions(featureId)
+    val moreFields = getSecondarySuggestions(featureId)
+    val suggestions = mutableSetOf<String>()
+    fields.forEach {
+        if (it.startsWith('{'))
+            suggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
+        else suggestions.add(it)
+    }
+    moreFields.forEach {
+        if (it.startsWith('{'))
+            suggestions.addAll(getSecondarySuggestions(it.substringAfter('{').substringBefore('}')))
+        else suggestions.add(it)
+    }
+    suggestions.removeAll(tags.keys)
+    // suggestions should not be cluttered with all those address tags
+    val moveToEnd = suggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
+    suggestions.removeAll(moveToEnd)
+    suggestions.addAll(moveToEnd)
+    return suggestions
+}
+
+private fun getMainSuggestions(featureId: String): List<String> {
+    val suggestions = keySuggestionsForFeatureId[featureId]?.first
+    return suggestions ?: if (featureId.contains('/')) getMainSuggestions(featureId.substringBeforeLast('/')) else emptyList()
+}
+
+private fun getSecondarySuggestions(featureId: String): List<String> {
+    val suggestions = keySuggestionsForFeatureId[featureId]?.second
+    return suggestions ?: if (featureId.contains('/')) getSecondarySuggestions(featureId.substringBeforeLast('/')) else emptyList()
+}
