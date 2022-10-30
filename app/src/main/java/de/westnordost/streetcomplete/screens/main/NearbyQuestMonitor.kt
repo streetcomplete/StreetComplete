@@ -71,6 +71,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             manager.createNotificationChannel(
                 NotificationChannelCompat.Builder(FOUND_CHANNEL_ID, NotificationManagerCompat.IMPORTANCE_HIGH)
                     .setName(getString(R.string.quest_monitor_channel_name_found))
+                    .setVibrationEnabled(true)
                     .build()
             )
         try {

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -121,6 +122,19 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
     override fun createForm() = AddMaxHeightForm()
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+        val mapData = getMapData()
+        val bridges = mapData.ways.filter { bridgeFilter.matches(it) }
+        val layer = element.tags["layer"]?.toIntOrNull() ?: 0
+        val geometry = mapData.getWayGeometry(element.id) as? ElementPolylinesGeometry ?: return emptySequence()
+        return bridges.filter { bridge ->
+            val bridgeGeometry = mapData.getWayGeometry(bridge.id) as? ElementPolylinesGeometry ?: return@filter false
+            (bridge.tags["layer"]?.toIntOrNull() ?: 0) > layer
+                && !bridge.nodeIds.toSet().containsAny((element as Way).nodeIds)
+                && bridgeGeometry.intersects(geometry)
+        }.asSequence()
+    }
 
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {

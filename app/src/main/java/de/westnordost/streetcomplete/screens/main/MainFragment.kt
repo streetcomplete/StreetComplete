@@ -1291,8 +1291,8 @@ class MainFragment :
             // include only elements with the same (=intersecting) level, if any
             val eLevels = createLevelsOrNull(e.tags)
             if (!levels.levelsIntersect(eLevels)) continue
-            // include only elements with the same layer, if any
-            if (element?.tags?.get("layer") != e.tags["layer"]) continue
+            // include only elements with the same layer, if any (except for bridges)
+            if (element?.tags?.get("layer") != e.tags["layer"] && e.tags["bridge"] == null) continue
 
             val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
             val icon = getPinIcon(e.tags)

@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.screens.main.overlays
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
@@ -13,13 +15,13 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.ParseException
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.databinding.DialogOverlaySelectionBinding
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
+import de.westnordost.streetcomplete.view.setHtml
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -56,6 +58,7 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         setView(binding.root)
     }
 
+    @SuppressLint("SetTextI18n") // this is about element type, don't want translation here
     private fun showOverlayCustomizer(c: Context) {
         var d: AlertDialog? = null
 
@@ -89,13 +92,14 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
                 filterString().toElementFilterExpression()
                 d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = true }
             }
-            catch (e: ParseException) {
+            catch (e: Exception) { // for some reason catching import de.westnordost.streetcomplete.data.elementfilter.ParseException is not enough (#386), though I cannot reproduce it
                 Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                 d?.getButton(BUTTON_POSITIVE)?.apply { isEnabled = tag.text.isEmpty() }
             }
         }
         val linearLayout = LinearLayout(c).apply {
             orientation = LinearLayout.VERTICAL
+            addView(TextView(context).apply { setHtml(resources.getString(R.string.custom_overlay_message)) })
             addView(nodes)
             addView(ways)
             addView(relations)
