@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.view
 
 import android.content.res.Resources
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
@@ -10,41 +11,46 @@ import androidx.core.graphics.withRotation
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.flipHorizontally
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import kotlin.math.min
 
 /** Drawable providing decoration, suitable for a circular background
     100 and more: fully grown wreath with all pretty elements
     99 to 10: may be losing elements as it gets smaller
     below: no decorative styling at all
  */
-class LaurelWreathDrawable(val resources: Resources, private val percentageOfGrowth: Int) : Drawable() {
-    private val pairOflaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)
+class LaurelWreathDrawable(val resources: Resources) : Drawable() {
+    private val pairOfLaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)
     private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
-    private val niceSubtleGreen: Paint = Paint().apply { setARGB(255, 152, 184, 126) }
+    private val backgroundPaint = Paint()
 
     private val antiAliasPaint: Paint = Paint().apply {
         isAntiAlias = true
         isFilterBitmap = true
     }
 
+    override fun onLevelChange(level: Int) = true
+
     override fun draw(canvas: Canvas) {
         val canvasWidth: Int = bounds.width()
         val canvasHeight: Int = bounds.height()
-        val circleRadius: Float = Math.min(canvasWidth, canvasHeight).toFloat() / 2f
+        val circleRadius: Float = min(canvasWidth, canvasHeight).toFloat() / 2f
 
-        canvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), circleRadius, niceSubtleGreen)
+        backgroundPaint.color = Color.HSVToColor(floatArrayOf(93f, level/10000f * 0.5f, 0.72f))
 
-        if (percentageOfGrowth < 10) return
+        canvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), circleRadius, backgroundPaint)
 
-        val decorationSegmentImageWidth = pairOflaurelLeafs.intrinsicWidth // width is the same as intrinsicWidth
+        if (level < 1000) return
+
+        val decorationSegmentImageWidth = pairOfLaurelLeafs.intrinsicWidth // width is the same as intrinsicWidth
 
         val maximumDecorationSegmentCount = 11f
 
         val circleCenterX = canvasWidth / 2f
-        val shownSegments = ((maximumDecorationSegmentCount - 1) * percentageOfGrowth / 100).toInt()
+        val shownSegments = ((maximumDecorationSegmentCount - 1) * level / 10000).toInt()
         val howDistantIsDecorationFromCircleCenter = 0.78f
 
         for (i in 1..shownSegments) {
-            var bitmap = pairOflaurelLeafs.bitmap
+            var bitmap = pairOfLaurelLeafs.bitmap
             if (i == shownSegments) {
                 bitmap = horizontalEndingLeaf.bitmap
             }
