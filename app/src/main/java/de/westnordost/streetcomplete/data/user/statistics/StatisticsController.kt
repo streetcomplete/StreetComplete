@@ -56,7 +56,7 @@ class StatisticsController(
         }
 
     override var activeDatesRange: Int
-        get() = prefs.getInt(Prefs.ACTIVE_DATES_RANGE, 90)
+        get() = prefs.getInt(Prefs.ACTIVE_DATES_RANGE, 100)
         private set(value) {
             prefs.edit(true) { putInt(Prefs.ACTIVE_DATES_RANGE, value) }
         }
