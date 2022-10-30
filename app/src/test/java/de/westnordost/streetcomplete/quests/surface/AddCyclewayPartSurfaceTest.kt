@@ -31,6 +31,7 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `not applicable to non-bicycle path`() {
         assertIsNotApplicable("highway" to "bridleway", "segregated" to "yes")
+        assertIsNotApplicable("highway" to "footway", "segregated" to "yes")
         assertIsNotApplicable("highway" to "path", "bicycle" to "no", "segregated" to "yes")
     }
 
