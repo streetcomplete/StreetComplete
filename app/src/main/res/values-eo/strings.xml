@@ -1135,6 +1135,12 @@ aktiva"</string>
     <string name="quest_traffic_signals_sound_title">"Ĉu estas sona signalo por blinduloj ĉi tie?"</string>
 
     <!-- Fuzzy -->
+    <string name="quest_traffic_signals_vibrate_title">"Ĉu ĉi tiuj semaforoj havas palpeblajn indikilojn kiu signalas kiam blinduloj povas sekure transiĝi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_signals_vibrate_description">"Avizo: Ofte tio estas vibra butono aŭ rotacia konuso sur la subaĵo de la buton-kesto."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"malgranda aparta domo (somera domo, feridometo, kabano …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Kiuj bariloj estas uzataj ĉe ĉi tiu fervoja transirejo?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Neniuj bariloj"</string>
@@ -1181,8 +1187,16 @@ aktiva"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ĉu ĉi tio estas ĝusta?"</string>
     <string name="quest_maxheight_below_bridge_title">"Kio estas la alteca limo sub la ponto?"</string>
     <string name="quest_maxheight_split_way_hint">"Se ĝi ne validas por la tuta vojo, konsideru respondi \"%s\"."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactile_paving_kerb_title">"Ĉu ĉi tiu trotuarrando havas specialajn kahelojn helpema por blinduloj?"</string>
+    <string name="quest_kerb_height_title">"Kiom alta estas ĉi tiu trotuarrando?"</string>
     <string name="quest_kerb_height_flush">"Sama nivelo kiel vojsurfaco"</string>
     <string name="quest_kerb_height_lowered">"Iom pli alta ol vojsurfaco"</string>
+    <string name="quest_kerb_height_raised">"alta trotuarrando"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_kerb_height_lowered_ramp">"malaltigita trotuarrando"</string>
     <string name="quest_lanes_answer_lanes_description2">"Specifu la tutan nombron de markitaj vojeroj (ambaŭ direktoj) uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
 Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specifu la tutan nombron de markitaj vojeroj uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
@@ -1279,6 +1293,7 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_barrier_type_cattle_grid">"Krado blokanta brutaron de promenado supren"</string>
     <string name="quest_barrier_type_block">"Granda senmova objekto"</string>
     <string name="quest_barrier_type_log">"Ŝtipo"</string>
+    <string name="quest_barrier_type_kerb">"trotuarrando"</string>
     <string name="quest_barrier_type_height_restrictor">"Alteca barilo"</string>
     <string name="quest_barrier_type_debris_pile">"Amaso da forĵetaĵoj"</string>
     <string name="quest_barrier_type_bicycle_barrier">"Bicikla baro"</string>
@@ -1299,7 +1314,11 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="about_title_faq">"Oftaj Demandoj"</string>
     <string name="quest_buildingLevels_title2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵo?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Kiom da niveloj super la kelo havas ĉi tiu konstruaĵparto?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_crossing_title">"Ĉu estas trotuarrando kie la vojo kunigas kun la strato? Kia?"</string>
     <string name="pref_subtitle_quests_preset_name">"Antaŭdifino: %s"</string>
+    <string name="quest_religion_animist">"Animismo"</string>
     <string name="quest_construction_steps_title">"Ĉu ĉi tiuj paŝoj estas finitaj?"</string>
     <string name="pref_quests_deselect_all">"Ĉu malelekti ĉiujn taskojn?"</string>
     <string name="quest_buildingType_boathouse">"Boatdomo"</string>
@@ -1310,6 +1329,9 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="team_mode_team_size_label2">"Kiom da homoj mapas? Enigu la saman numeron en la telefono de ĉiuj."</string>
     <string name="team_mode_choose_color2">"Poste, ĉiu persono devas elekti malsaman koloron. Elektu vian:"</string>
     <string name="link_organic_maps_description">"Mapa apliko por vojaĝantoj kaj biciklantoj, kiu funkcias eksterrete"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_kerb_height_no">"Ne estas trotuarrando"</string>
     <string name="quest_bollard_type_removable">"Forprenebla (kun aŭ sen ŝlosilo)"</string>
     <string name="quest_bollard_type_foldable2">"Faldebla (kun aŭ sen ŝlosilo)"</string>
     <string name="no_search_results">"Nenio trovita"</string>
@@ -1337,11 +1359,18 @@ Datumoj estas refreŝigitaj post %1$s tagoj kaj neuzataj datumoj aŭtomate estas
     <string name="quest_generic_answer_is_actually_steps">"Ĉi tiu parto estas ŝtuparo"</string>
     <string name="quest_barrier_type_gate_conversion">"Konvertita en pordegon"</string>
     <string name="quest_traffic_calming_type_title">"Kia tipo de trankviliga trafiko estas ĉi tio?"</string>
+    <string name="quest_traffic_calming_type_bump">"Stratĝibo (mallonga)"</string>
     <string name="quest_traffic_calming_type_hump">"Ĝibo (pli longa)"</string>
     <string name="quest_traffic_calming_type_table">"Tablo (plata supro)"</string>
     <string name="quest_traffic_calming_type_cushion">"Kuseno (ne fuŝa por larĝaj veturiloj)"</string>
     <string name="quest_traffic_calming_type_choker">"Mallarĝigita vojo"</string>
     <string name="quest_traffic_calming_type_island">"Insulo"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_chicane">"Devigita(j) kurbo(j)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_traffic_calming_type_rumble_strip">"Skuiĝa(j) stripo(j)"</string>
     <string name="quest_surface_value_concrete_plates">"Konkretaj platoj"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonaj vojeroj"</string>
     <string name="quest_fireHydrant_diameter_title">"Kiu diametro estas specifita sur la signo por ĉi tiu fajra hidranto?"</string>
@@ -1635,7 +1664,7 @@ sorted alphabetically by title -->
     <!-- Overlays -->
     <string name="select_overlay">"Elekti supertavolon"</string>
     <string name="overlay_none">"Neniu"</string>
-    <string name="overlay_lit">"Stratlumo"</string>
+    <string name="overlay_lit">"Stratlumoj"</string>
     <string name="lit_value_yes">"Lumigita"</string>
     <string name="lit_value_no">"Ne lumigita"</string>
     <string name="lit_value_24_7">"Lumigita nokte kaj tage"</string>
@@ -1697,4 +1726,13 @@ sorted alphabetically by title -->
     <string name="overlay_addresses">"Adresoj"</string>
     <string name="overlay_shops">"Vendejoj"</string>
     <string name="name_label">"Nomo:"</string>
+    <string name="vacant_shop_title">"Vaka vendejo"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Alia kategorio"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_genericRef_title">"Kio estas la identiga numero ĉi tie?"</string>
+    <string name="pref_category_quests_overlays">"Taskoj &amp; supertavoloj"</string>
 </resources>

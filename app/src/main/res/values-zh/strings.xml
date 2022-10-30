@@ -2708,4 +2708,58 @@ sorted alphabetically by title -->
     <string name="overlay_sidewalk">"人行道"</string>
     <string name="quest_generic_answer_is_indoors">"这是室内的"</string>
     <string name="quest_summit_cross_title">"这里有一个山顶十字架吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_entrance_reference">"这个入口处的门牌写着什么？"</string>
+    <string name="quest_entrance_reference_flat_range_to">"到"</string>
+    <string name="default_disabled_msg_overlay">"这种探索类型在默认情况下是禁用的，因为已经有一个更加高效的覆盖层来输入和更新这些数据。"</string>
+    <string name="quest_camp_drinking_water_title">"这里的露营者可以自由获取饮用水吗？"</string>
+    <string name="quest_camp_shower_title">"这里有淋浴设施吗？"</string>
+    <string name="quest_camp_power_supply_title">"这里有办法能为顾客的手机和手提电脑充电吗？"</string>
+    <string name="quest_camp_type_title">"谁被允许在这露营？"</string>
+    <string name="quest_camp_type_tents_and_caravans">"帐篷和自走房车、拖挂房车等皆可"</string>
+    <string name="quest_camp_type_caravans_only">"仅自走房车、拖挂房车等…"</string>
+    <string name="quest_camp_type_tents_only">"仅帐篷"</string>
+    <string name="quest_camp_type_backcountry">"偏远地区露营（无基础设施）"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"这个直径看起来难以置信，它通常介于 %1$d 和 %2$d 之间。"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"这个答案与已经绘制的关于这条路的地图不匹配。您确定您正在回答正确的道路吗？您确定您有亲自沿着整个路段上进行过调查吗？"</string>
+    <string name="quest_drinking_water_type_title">"这里是如何提供饮用水的？"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"其它饮水装置"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"冒出小水柱的喷水机"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"仅限再灌装瓶"</string>
+    <string name="quest_drinking_water_type_tap">"水龙头"</string>
+    <string name="quest_drinking_water_type_hand_pump">"手摇水泵"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"不带泵的水井"</string>
+    <string name="quest_drinking_water_type_spring">"泉水"</string>
+    <string name="quest_drinking_water_type_disused">"废弃的饮水设备"</string>
+    <string name="overlay_addresses">"地址"</string>
+    <string name="overlay_shops">"商店"</string>
+    <string name="name_label">"名称："</string>
+    <string name="vacant_shop_title">"闲置商铺"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"其他类型的场所"</string>
+    <string name="quest_address_answer_no_address">"这里没有地址"</string>
+    <string name="quest_genericRef_title">"这里的识别号码是什么？"</string>
+    <string name="quest_sidewalk_answer_different">"人行道的情况有所不同"</string>
+    <string name="about_title_get_involved">"参与其中"</string>
+    <string name="pref_category_quests_overlays">"任务和叠加层"</string>
+    <string name="quest_presets_rename">"重命名"</string>
+    <string name="quest_presets_share">"分享"</string>
+    <string name="quest_presets_delete">"删除"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"让别人扫描这个二维码来分享你的预设。"</string>
+    <string name="urlconfig_as_url">"或作为网址："</string>
+    <string name="urlconfig_url_copied">"URL已复制到剪贴板"</string>
+    <string name="urlconfig_apply_title">"应用预设"</string>
+    <string name="urlconfig_apply_message">"应用并选择预设 %1$s？"</string>
+    <string name="urlconfig_apply_message_overwrite">"注意：你的同名预设将被覆盖！"</string>
+    <string name="urlconfig_switch_hint">"你可以在任何时候切换设置中的预设。"</string>
+    <string name="urlconfig_scan_qr_code_again">"安装应用程序后，再次扫描QR码以应用预设值。"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"双层自行车架"</string>
 </resources>

@@ -2277,10 +2277,24 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Annet type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Kan denne sykkelbarrieren bli åpnet?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Mulig å åpne"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Mulig å fjerne"</string>
     <string name="quest_buildingType_guardhouse">"Vakthus"</string>
     <string name="quest_genericRef_title">"Hva er identifikasjonsnummeret her?"</string>
+    <string name="quest_sidewalk_answer_different">"Fortauet er endret"</string>
+    <string name="about_title_get_involved">"Bidra"</string>
+    <string name="pref_category_quests_overlays">"Oppdrag og lag"</string>
+    <string name="quest_presets_rename">"Nytt navn"</string>
+    <string name="quest_presets_share">"Del"</string>
+    <string name="quest_presets_delete">"Slett"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"La andre scanne QR-koden for å dele mal"</string>
+    <string name="urlconfig_as_url">"Eller som en URL"</string>
+    <string name="urlconfig_url_copied">"URL kopiert til utklippstavlen"</string>
+    <string name="urlconfig_apply_title">"Bruk mal"</string>
 </resources>

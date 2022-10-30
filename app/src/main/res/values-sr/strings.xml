@@ -20,7 +20,7 @@
     <string name="quest_generic_confirmation_title">"Сигурни сте?"</string>
     <string name="quest_generic_confirmation_yes">"Да, сигуран сам"</string>
     <string name="quest_generic_confirmation_no">"Проверићу"</string>
-    <string name="quest_leave_new_note_title">"Ипак оставити напомену?"</string>
+    <string name="quest_leave_new_note_title">"А да се ипак стави напомена?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Можете оставити јавну напомену на овој локацији како би други картографи могли да коментаришу и реше, или пак сакријте овај задатак од себе."</string>
@@ -92,7 +92,7 @@
     <string name="quest_roofShape_title">"Ког основног облика је кров ове грађевине?"</string>
 
     <!-- As in: "select ONE of the pictures below" -->
-    <string name="quest_roofShape_select_one">"Одабери један:"</string>
+    <string name="quest_roofShape_select_one">"Одаберите једно:"</string>
 
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Прикажи више…"</string>
@@ -932,7 +932,7 @@
     <string name="quest_oneway2_title">"Да ли је ово једносмерна улица? У ком смеру?"</string>
     <string name="quest_oneway2_dir">"Једносмерна у овом смеру"</string>
     <string name="quest_oneway2_no_oneway">"Није једносмерна"</string>
-    <string name="quest_maxweight_select_sign">"Одабери знак"</string>
+    <string name="quest_maxweight_select_sign">"Одаберите знак"</string>
     <string name="quest_steps_incline_title">"Који смер води узбрдо за ове степенице?"</string>
     <string name="quest_steps_incline_up">"Овај смер је узбрдо"</string>
     <string name="quest_step_count_title">"Колико овде има степеника?"</string>
@@ -1222,7 +1222,7 @@
     <string name="quest_barrier_bicycle_type_single">"Пролаз између две препреке"</string>
     <string name="quest_barrier_bicycle_type_double">"Намерно скретање (шикана) – препрека са обе стране"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Намерно скретање (шикана) – више од две препреке"</string>
-    <string name="pref_title_language_select">"Одабери језик"</string>
+    <string name="pref_title_language_select">"Одаберите језик"</string>
     <string name="language_default">"Исти као уређај"</string>
     <string name="on_floor">"на спрату %s"</string>
     <string name="select_street_parking_orientation">"Одаберите смер у односу на пут"</string>
@@ -1562,14 +1562,14 @@ sorted alphabetically by title -->
     <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
     <string name="quest_bicycle_incline_title">"Који смер води нагоре одавде?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Иде горе-доле"</string>
-    <string name="quest_drinking_water_type_title">"На који начин је овде доступна вода за пиће?"</string>
+    <string name="quest_drinking_water_type_title">"Како је овде доступна вода за пиће?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Други тип фонтанице"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница са слабим водоскоком"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само за допуну флашица"</string>
-    <string name="quest_drinking_water_type_tap">"Водом из чесме"</string>
-    <string name="quest_drinking_water_type_hand_pump">"Ручном пумпом"</string>
-    <string name="quest_drinking_water_type_water_well_no_pump">"Водом из цеви без пумпе"</string>
-    <string name="quest_drinking_water_type_spring">"Извором"</string>
+    <string name="quest_drinking_water_type_tap">"Вода из чесме"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Ручна пумпа"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Вода из бунара без пумпе"</string>
+    <string name="quest_drinking_water_type_spring">"Извор"</string>
     <string name="quest_drinking_water_type_disused">"Место на ком је некада постојала пијаћа вода"</string>
     <string name="overlay_addresses">"Адресе"</string>
     <string name="overlay_shops">"Продавнице"</string>
@@ -1580,10 +1580,29 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Непозната намена локала"</string>
     <string name="quest_address_answer_no_address">"Овде нема адресе"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Може ли се ова бициклистичка баријера померити?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Фиксна је"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Отвара се"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Уклоњива је"</string>
     <string name="quest_buildingType_guardhouse">"Пријавница"</string>
     <string name="quest_genericRef_title">"Који је овде идентификациони број?"</string>
+    <string name="quest_sidewalk_answer_different">"Стање са пешачким је другачије"</string>
+    <string name="about_title_get_involved">"Укључите се"</string>
+    <string name="pref_category_quests_overlays">"Задаци и подлоге"</string>
+    <string name="quest_presets_rename">"Преименуј"</string>
+    <string name="quest_presets_share">"Подели"</string>
+    <string name="quest_presets_delete">"Избриши"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Нека други очитају овај QR кôд како би делили ваше предлошке."</string>
+    <string name="urlconfig_as_url">"или путем URL адресе:"</string>
+    <string name="urlconfig_url_copied">"URL је копиран у оставу"</string>
+    <string name="urlconfig_apply_title">"Примени предложак"</string>
+    <string name="urlconfig_apply_message">"Желите ли да примените и одаберете предложак %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Напомена: Ваш истоимени предложак биће замењен!"</string>
+    <string name="urlconfig_switch_hint">"Можете било кад да промените предлошке у поставкама."</string>
+    <string name="urlconfig_scan_qr_code_again">"Након инсталирања апликације, очитајте QR кôд како бисте применили предложак."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Паркинг клацкалица за бицикле"</string>
 </resources>

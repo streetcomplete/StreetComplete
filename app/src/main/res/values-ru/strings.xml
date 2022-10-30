@@ -2066,4 +2066,9 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Изучайте данные OSM в масштабе всего мира или отдельных объектов в пространстве и времени."</string>
     <string name="link_opencampingmap_description">"Карта кемпингов"</string>
     <string name="quest_atm_cashin_title">"Принимает ли банкомат наличные?"</string>
+    <string name="create_node_action_description">"Вы создали точку с …"</string>
+    <string name="quest_drinking_water_type_spring">"Родник"</string>
+    <string name="overlay_addresses">"Адреса"</string>
+    <string name="overlay_shops">"Магазины"</string>
+    <string name="name_label">"Название"</string>
 </resources>

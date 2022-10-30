@@ -1,21 +1,21 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 381625
-  linesOfInterfaceMarkupChanged: 140428
-  assetFilesChanged: 1924
+  linesOfCodeChanged: 384812
+  linesOfInterfaceMarkupChanged: 141659
+  assetFilesChanged: 1947
+- name: "Mateusz Konieczny"
+  githubUsername: "matkoniecz"
+  linesOfCodeChanged: 17085
+  linesOfInterfaceMarkupChanged: 4943
+  assetFilesChanged: 610
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
   linesOfCodeChanged: 16895
   linesOfInterfaceMarkupChanged: 1888
   assetFilesChanged: 151
-- name: "Mateusz Konieczny"
-  githubUsername: "matkoniecz"
-  linesOfCodeChanged: 15265
-  linesOfInterfaceMarkupChanged: 3639
-  assetFilesChanged: 584
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 9669
+  linesOfCodeChanged: 9796
   linesOfInterfaceMarkupChanged: 532
   assetFilesChanged: 69
 - name: "ENT8R"

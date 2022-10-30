@@ -1953,10 +1953,39 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Nepoznata vrsta trgovine"</string>
     <string name="quest_address_answer_no_address">"Nema adrese ovdje"</string>
-    <string name="quest_bicycle_barrier_installation_title">"Može li se ova biciklistička barijera otvoriti?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_barrier_installation_title">"Može li se ova biciklistička barijera otvoriti (sa ili bez ključa)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Ne, fiksna je"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Može se otvoriti"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Uklonjiva je"</string>
     <string name="quest_buildingType_guardhouse">"Stražarnica"</string>
     <string name="quest_genericRef_title">"Koji je referentni broj ovdje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sidewalk_answer_different">"Nogostupi su drugačije postavljeni"</string>
+    <string name="about_title_get_involved">"Uključi se"</string>
+    <string name="pref_category_quests_overlays">"Zadaci i Nadslojevi"</string>
+    <string name="quest_presets_rename">"Preimenuj"</string>
+    <string name="quest_presets_share">"Podijeli"</string>
+    <string name="quest_presets_delete">"Obriši"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Dopustite drugima da skeniraju ovaj QR kod kako bi podijelili vašu grupu zadataka."</string>
+    <string name="urlconfig_as_url">"Ili kao URL:"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_url_copied">"URL kopiran u međuspremnik"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_apply_title">"Primjeni ovu Grupu zadataka"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_apply_message">"Primjeni i odaberi grupu zadataka %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Upozorenje: Vaša grupa zadataka s istim nazivom će biti prebrisana!"</string>
+    <string name="urlconfig_switch_hint">"Možete promijeniti Grupe zadataka u postavkama u bilo kojem trenutku."</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_scan_qr_code_again">"Nakon instaliranja aplikacije, ponovno skenirajte QR kod da biste primijenili tu Grupu zadataka."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
 </resources>

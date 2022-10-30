@@ -2535,6 +2535,8 @@ Que tipo de memorial é esse?"</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Outro tipo de lugar"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicleta pode ser aberta?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixo"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Aberto"</string>

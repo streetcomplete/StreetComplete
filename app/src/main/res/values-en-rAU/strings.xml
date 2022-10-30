@@ -169,6 +169,8 @@ Note that this app asks for the address number of a building only after its type
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>

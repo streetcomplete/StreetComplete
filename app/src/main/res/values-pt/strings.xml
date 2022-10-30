@@ -1374,10 +1374,29 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Outro tipo de local"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Pode ser aberta"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
     <string name="quest_buildingType_guardhouse">"Edifício de porteiro"</string>
     <string name="quest_genericRef_title">"Qual é o número de identificação aqui?"</string>
+    <string name="quest_sidewalk_answer_different">"A situação do passeio é diferente"</string>
+    <string name="about_title_get_involved">"Contribua"</string>
+    <string name="pref_category_quests_overlays">"Missões e camadas"</string>
+    <string name="quest_presets_rename">"Alterar nome"</string>
+    <string name="quest_presets_share">"Partilhar"</string>
+    <string name="quest_presets_delete">"Eliminar"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Deixe outros digitalizar este código QR para partilhar o seu presente."</string>
+    <string name="urlconfig_as_url">"Ou como um URL:"</string>
+    <string name="urlconfig_url_copied">"URL copiado para a área de transferência"</string>
+    <string name="urlconfig_apply_title">"Aplicar modelo"</string>
+    <string name="urlconfig_apply_message">"Aplicar e selecionar o modelo %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Nota: o seu modelo com o mesmo nome será substituído!"</string>
+    <string name="urlconfig_switch_hint">"Pode mudar de modelos nas configurações em qualquer altura."</string>
+    <string name="urlconfig_scan_qr_code_again">"Após instalar a aplicação, digitalize o código QR novamente para aplicar o modelo."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Suporte de bicicletas de dois níveis"</string>
 </resources>
