@@ -12,7 +12,8 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val elementFilter = """
         ways with (
           highway = footway
-          or (highway ~ path|cycleway|bridleway and foot != no)
+          or highway = path and foot != no
+          or (highway ~ cycleway|bridleway and foot and foot != no)
         )
         and segregated = yes
         and !sidewalk

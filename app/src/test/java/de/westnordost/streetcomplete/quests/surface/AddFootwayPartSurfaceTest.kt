@@ -20,6 +20,7 @@ class AddFootwayPartSurfaceTest {
     @Test fun `applicable to segregated footway`() {
         assertIsApplicable("highway" to "footway", "segregated" to "yes")
         assertIsApplicable("highway" to "path", "foot" to "designated", "segregated" to "yes")
+        assertIsApplicable("highway" to "path", "segregated" to "yes")
         assertIsApplicable("highway" to "bridleway", "foot" to "yes", "segregated" to "yes")
         assertIsApplicable("highway" to "cycleway", "foot" to "designated", "segregated" to "yes")
     }
