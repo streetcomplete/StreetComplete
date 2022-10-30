@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
+import kotlinx.datetime.LocalDate
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -21,6 +22,7 @@ class StatisticsControllerTest {
     private lateinit var countryStatisticsDao: CountryStatisticsDao
     private lateinit var currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao
     private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
+    private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var prefs: SharedPreferences
     private lateinit var loginStatusSource: UserLoginStatusSource
@@ -37,6 +39,7 @@ class StatisticsControllerTest {
         countryStatisticsDao = mock()
         currentWeekEditTypeStatisticsDao = mock()
         currentWeekCountryStatisticsDao = mock()
+        activeDatesDao = mock()
         countryBoundaries = mock()
         prefs = mock()
         on(prefs.edit()).thenReturn(mock())
@@ -54,6 +57,7 @@ class StatisticsControllerTest {
         statisticsController = StatisticsController(
             editTypeStatisticsDao, countryStatisticsDao,
             currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
+            activeDatesDao,
             ft, prefs, loginStatusSource
         )
         statisticsController.addListener(listener)
@@ -75,6 +79,7 @@ class StatisticsControllerTest {
         verify(countryStatisticsDao).addOne("US")
         verify(currentWeekEditTypeStatisticsDao).addOne("TestQuestTypeA")
         verify(currentWeekCountryStatisticsDao).addOne("US")
+        verify(activeDatesDao).addToday()
         verify(listener).onAddedOne(questA)
     }
 
@@ -85,6 +90,7 @@ class StatisticsControllerTest {
 
         verify(editTypeStatisticsDao).addOne("TestQuestTypeA")
         verify(currentWeekEditTypeStatisticsDao).addOne("TestQuestTypeA")
+        verify(activeDatesDao).addToday()
         verify(listener).onAddedOne(questA)
         verify(listener).onUpdatedDaysActive()
     }
@@ -97,6 +103,7 @@ class StatisticsControllerTest {
         verify(countryStatisticsDao).subtractOne("US")
         verify(currentWeekEditTypeStatisticsDao).subtractOne("TestQuestTypeA")
         verify(currentWeekCountryStatisticsDao).subtractOne("US")
+        verify(activeDatesDao).addToday()
         verify(listener).onSubtractedOne(questA)
     }
 
@@ -107,6 +114,7 @@ class StatisticsControllerTest {
 
         verify(editTypeStatisticsDao).subtractOne("TestQuestTypeA")
         verify(currentWeekEditTypeStatisticsDao).subtractOne("TestQuestTypeA")
+        verify(activeDatesDao).addToday()
         verify(listener).onSubtractedOne(questA)
         verify(listener).onUpdatedDaysActive()
     }
@@ -121,6 +129,7 @@ class StatisticsControllerTest {
         verify(countryStatisticsDao).clear()
         verify(currentWeekCountryStatisticsDao).clear()
         verify(currentWeekEditTypeStatisticsDao).clear()
+        verify(activeDatesDao).clear()
         verify(editor).remove(Prefs.USER_DAYS_ACTIVE)
         verify(editor).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
         verify(editor).remove(Prefs.USER_GLOBAL_RANK)
@@ -153,6 +162,11 @@ class StatisticsControllerTest {
                 CountryStatistics("AT", 999, 88),
                 CountryStatistics("IT", 99, null),
             ),
+            activeDatesRange = 12,
+            activeDates = listOf(
+                LocalDate.parse("1999-04-08"),
+                LocalDate.parse("1888-01-02"),
+            ),
             lastUpdate = 9999999,
             isAnalyzing = false
         ))
@@ -172,6 +186,11 @@ class StatisticsControllerTest {
             CountryStatistics("AT", 999, 88),
             CountryStatistics("IT", 99, null),
         ))
+        verify(activeDatesDao).replaceAll(listOf(
+            LocalDate.parse("1999-04-08"),
+            LocalDate.parse("1888-01-02")
+        ))
+        verify(editor).putInt(Prefs.ACTIVE_DATES_RANGE, 12)
         verify(editor).putInt(Prefs.USER_DAYS_ACTIVE, 333)
         verify(editor).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
         verify(editor).putInt(Prefs.USER_GLOBAL_RANK, 999)

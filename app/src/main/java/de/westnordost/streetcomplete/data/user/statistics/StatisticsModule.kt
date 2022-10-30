@@ -12,6 +12,8 @@ val statisticsModule = module {
     factory(named("EditTypeStatisticsCurrentWeek")) { EditTypeStatisticsDao(get(), EditTypeStatisticsTables.NAME_CURRENT_WEEK) }
     factory(named("CountryStatisticsCurrentWeek")) { CountryStatisticsDao(get(), CountryStatisticsTables.NAME_CURRENT_WEEK) }
 
+    factory { ActiveDatesDao(get()) }
+
     factory { StatisticsDownloader(STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
@@ -21,6 +23,7 @@ val statisticsModule = module {
         countryStatisticsDao = get(named("CountryStatistics")),
         currentWeekEditTypeStatisticsDao = get(named("EditTypeStatisticsCurrentWeek")),
         currentWeekCountryStatisticsDao = get(named("CountryStatisticsCurrentWeek")),
+        activeDatesDao = get(),
         countryBoundaries = get(named("CountryBoundariesFuture")),
         prefs = get(),
         userLoginStatusSource = get()

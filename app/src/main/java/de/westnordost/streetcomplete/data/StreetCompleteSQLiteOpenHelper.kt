@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
+import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
@@ -90,6 +91,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)
+        db.execSQL(ActiveDaysTable.CREATE)
 
         // quest specific tables
         db.execSQL(WayTrafficFlowTable.CREATE)
@@ -179,6 +181,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
         if (oldVersion <= 6 && newVersion > 6) {
             db.execSQL(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
             db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
+            db.execSQL(ActiveDaysTable.CREATE)
         }
     }
 }

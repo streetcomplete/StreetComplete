@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -34,6 +35,10 @@ class StatisticsParserTest {
                 CountryStatistics("AT", 5, 666),
                 CountryStatistics("IT", 4, null),
             ),
+            activeDatesRange = 45,
+            activeDates = listOf(
+                LocalDate.parse("2011-08-07"), LocalDate.parse("2012-12-09")
+            ),
             lastUpdate = Instant.parse("2007-12-03T10:15:30+01:00").toEpochMilliseconds(),
             isAnalyzing = false
         ),
@@ -66,6 +71,8 @@ class StatisticsParserTest {
                 "AT": 666
             },
             "daysActive": "78",
+            "activeDatesRange": "45",
+            "activeDates": ["2011-08-07", "2012-12-09"],
             "lastUpdate": "2007-12-03T10:15:30+01:00",
             "isAnalyzing": "false"
         }

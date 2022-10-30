@@ -21,6 +21,8 @@ import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.util.ktx.createBitmap
+import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.spToPx
 import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
@@ -121,6 +123,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             updateGlobalRankTexts()
             updateLocalRankTexts()
             updateAchievementLevelsText()
+            updateDatesActiveView()
         }
     }
 
@@ -148,6 +151,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         updateDaysActiveText()
         updateGlobalRankTexts()
         updateLocalRankTexts()
+        updateDatesActiveView()
+    }
+
+    private suspend fun updateDatesActiveView() {
+        val context = context ?: return
+
+        val datesActive = withContext(Dispatchers.IO) { statisticsSource.getActiveDates() }.toSet()
+        binding.datesActiveView.setImageDrawable(DatesActiveDrawable(
+            datesActive,
+            statisticsSource.activeDatesRange,
+            context.dpToPx(18),
+            context.dpToPx(2),
+            context.dpToPx(4),
+            context.resources.getColor(R.color.hint_text)
+        ))
+
     }
 
     private suspend fun updateEditCountTexts() {

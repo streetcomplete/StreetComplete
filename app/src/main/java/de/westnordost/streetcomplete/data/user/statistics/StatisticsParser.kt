@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import org.json.JSONObject
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
@@ -24,6 +25,13 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
             obj.getJSONObject("currentWeekCountryRanks")
         )
 
+        val activeDatesRange = obj.getInt("activeDatesRange")
+        val activeDatesJson = obj.getJSONArray("activeDates")
+        val activeDates = ArrayList<LocalDate>(activeDatesJson.length())
+        for (i in 0 until activeDatesJson.length()) {
+            activeDates.add(LocalDate.parse(activeDatesJson.getString(i)))
+        }
+
         return Statistics(
             typesStatistics,
             countriesStatistics,
@@ -32,6 +40,8 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
             currentWeekRank,
             currentWeekTypesStatistics,
             currentWeekCountriesStatistics,
+            activeDatesRange,
+            activeDates,
             lastUpdate.toEpochMilliseconds(),
             isAnalyzing,
         )
