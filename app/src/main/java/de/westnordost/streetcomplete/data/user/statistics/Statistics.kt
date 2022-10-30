@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Statistics(
     val types: List<EditTypeStatistics>,
     val countries: List<CountryStatistics>,
@@ -16,6 +18,8 @@ data class Statistics(
     val isAnalyzing: Boolean,
 )
 
+@Serializable
 data class CountryStatistics(val countryCode: String, val count: Int, val rank: Int?)
 
+@Serializable
 data class EditTypeStatistics(val type: String, val count: Int)

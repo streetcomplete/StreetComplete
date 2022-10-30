@@ -51,6 +51,11 @@ object Prefs {
 
     const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
 
+    const val LAST_SHOWN_USER_GLOBAL_RANK = "last_shown.user_global_rank"
+    const val LAST_SHOWN_USER_LOCAL_RANK = "last_shown.user_local_rank"
+    const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
+    const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
+
     enum class Autosync {
         ON, WIFI, OFF
     }
