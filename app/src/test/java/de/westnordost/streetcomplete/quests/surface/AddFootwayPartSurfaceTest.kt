@@ -25,7 +25,7 @@ class AddFootwayPartSurfaceTest {
     }
 
     @Test fun `not applicable to non-segregated footway`() {
-        assertIsNotApplicable("highway" to "footwayway")
+        assertIsNotApplicable("highway" to "footway")
         assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "no")
     }
 
