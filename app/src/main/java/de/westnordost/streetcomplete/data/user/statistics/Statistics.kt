@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import kotlinx.datetime.LocalDate
+
 data class Statistics(
     val types: List<EditTypeStatistics>,
     val countries: List<CountryStatistics>,
@@ -8,6 +10,8 @@ data class Statistics(
     val currentWeekRank: Int,
     val currentWeekTypes: List<EditTypeStatistics>,
     val currentWeekCountries: List<CountryStatistics>,
+    val activeDatesRange: Int,
+    val activeDates: List<LocalDate>,
     val lastUpdate: Long,
     val isAnalyzing: Boolean,
 )

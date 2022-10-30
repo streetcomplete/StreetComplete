@@ -26,6 +26,7 @@ object Prefs {
     const val USER_GLOBAL_RANK = "user_global_rank"
     const val USER_GLOBAL_RANK_CURRENT_WEEK = "user_global_rank_current_week"
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
+    const val ACTIVE_DATES_RANGE = "active_days_range"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
     const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"
     const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
