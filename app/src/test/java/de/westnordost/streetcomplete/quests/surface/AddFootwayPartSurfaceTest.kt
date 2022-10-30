@@ -59,8 +59,9 @@ class AddFootwayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "yes", "footway:surface" to "unpaved", "note:footway:surface" to "it's complicated")
     }
 
-    @Test fun `applicable to private footways`() {
-        assertIsApplicable("highway" to "footway", "segregated" to "yes", "foot" to "private")
+    @Test fun `not applicable to private footways`() {
+        assertIsNotApplicable("highway" to "footway", "segregated" to "yes", "foot" to "private")
+        assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private")
     }
 
     @Test fun `not applicable to access-restricted footways`() {
