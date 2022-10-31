@@ -8,9 +8,11 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -21,16 +23,22 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.screens.main.MainFragment
+import de.westnordost.streetcomplete.screens.main.map.getPinIcon
+import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
@@ -44,6 +52,8 @@ class MoveNodeFragment :
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
     override val elementKey: ElementKey by lazy { ElementKey(node.type, node.id) }
 
@@ -80,6 +90,20 @@ class MoveNodeFragment :
         okButton.setOnClickListener { onClickOk() }
         okButtonContainer.popIn()
         okButton.popIn()
+        highlightSimilarElements()
+    }
+
+    private fun highlightSimilarElements() {
+        val feature = featureDictionaryFuture.get().byTags(node.tags).isSuggestion(false).find().firstOrNull()
+        val tagsToFind = feature?.tags ?: node.tags
+        val mapData = mapDataWithEditsSource.getMapDataWithGeometry(node.position.enclosingBoundingBox(30.0))
+        mapData.filter { e -> e != node && tagsToFind.all { e.tags[it.key] == it.value } }
+            .forEach { e ->
+                val icon = getPinIcon(e.tags)
+                val title = getTitle(e.tags)
+                val geometry = mapData.getGeometry(e.type, e.id) ?: return@forEach
+                (parentFragment as? MainFragment)?.putMarkerForCurrentHighlighting(geometry, icon, title)
+            }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
