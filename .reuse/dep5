@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: StreetComplete
+Upstream-Contact: Mateusz Konieczny <matkoniecz@gmail.com>
+Source: https://github.com/streetcomplete/StreetComplete
+
+Files: *.github/images/* *res/graphics/street parking/* *res/graphics/roof shape/* *res/graphics/religion/* *res/graphics/sport/* *res/graphics/smoothness/* *res/graphics/recycling/* *res/graphics/railway crossing/* *res/graphics/royal cypher/* *res/graphics/shoulder/* *res/graphics/sidewalk/* *res/graphics/speech bubbles/* *res/graphics/surveillance/* *res/graphics/tutorials/* *res/graphics/undo/* *res/graphics/quest/* *res/graphics/pins/* *res/graphics/oneway/* *res/graphics/cycleway/* *res/graphics/pin/* *res/graphics/traffic lights blind features/* *res/graphics/tutorial/* *res/graphics/fire hydrant diameter/* *res/graphics/building/* *res/graphics/bridge structure/* *res/graphics/building levels/* *res/graphics/italian police type/* *res/graphics/lanes/* *res/graphics/kerbs/* *res/graphics/achievement/* *res/graphics/app icon/* *res/graphics/ar/* *res/graphics/cycleway segregation/* *res/graphics/livin street/* *res/graphics/links/* *res/graphics/housenumber/* *res/graphics/max speed/* *res/graphics/max weight/* *res/graphics/slow zone* *res/graphics/split way/* *res/graphics/step count/* *res/graphics/steps incline/* *res/graphics/* *app/src/main/res/* *metadata/ru/images/* *metadata/pl/images* *metadata/it/images* *metadata/fr/images* *metadata/es/images* *metadata/en/images* *metadata/de/images* *app/src/debug/res/mipmap-xxxhdpi/* *app/src/debug/res/mipmap-xxhdpi/* *app/src/debug/res/mipmap-hdpi/*
+Copyright: 2016 StreetComplete
+License: GPL-3.0-only
