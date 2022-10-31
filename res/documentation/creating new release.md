@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2016 2016 Mateusz Konieczny, <matkoniecz@gmail.com> et al.
+
+SPDX-License-Identifier: GPL-3.0-only
+-->
+
 # Checklist for creating a release
 
 ### (optional:) Maintenance
