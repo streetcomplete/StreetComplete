@@ -98,13 +98,13 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
     private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-        "motorway", "trunk" -> if (!isOneway(tags)) 20f else 10f
-        "motorway_link", "trunk_link" -> 6f
-        "primary", "secondary", "tertiary" -> if (!isOneway(tags)) 9f else 6f
+        "motorway" -> if (!isOneway(tags)) 15f else 7.5f
+        "motorway_link" -> 4.5f
+        "trunk", "primary", "secondary", "tertiary" -> if (!isOneway(tags)) 7.5f else 4.5f
         "service", "track" -> 3f
         "path", "cycleway", "footway", "bridleway", "steps" -> 1f
         null -> 3f
-        else -> if (!isOneway(tags)) 6f else 3f
+        else -> if (!isOneway(tags)) 5.5f else 3f
     }
 
     /** estimates height of thing */
