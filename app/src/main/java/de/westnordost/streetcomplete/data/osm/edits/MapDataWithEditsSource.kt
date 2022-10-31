@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -82,7 +83,7 @@ class MapDataWithEditsSource internal constructor(
 
                 rebuildLocalChanges()
 
-                /* nothingChanged can be false at this point when e.g. there are two edits on the 
+                /* nothingChanged can be false at this point when e.g. there are two edits on the
                    same element, and onUpdated is called after the first edit is uploaded. */
                 val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
                     val updatedElement = get(it.first.type, it.first.id)
@@ -185,6 +186,15 @@ class MapDataWithEditsSource internal constructor(
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
                         elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
                     }
+                    // this is actually removing the quests for affected ways... why?
+                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
+                        val waysContainingNode = getWaysForNode(edit.elementId)
+                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
+                        for (elem in waysContainingNode + affectedRelations) {
+                            mapData.put(elem, getGeometry(edit.elementType, edit.elementId))
+                        }
+                    }
+
                 }
             }
 
@@ -431,7 +441,7 @@ class MapDataWithEditsSource internal constructor(
 
         // get affected ways and relations and update geometries if a node was moved
         val elementsWithChangedGeometry = mutableListOf<Element>()
-        if (edit.action is MoveNodeAction) {
+        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
             val waysContainingNode = getWaysForNode(edit.elementId)
             val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
             for (element in waysContainingNode + affectedRelations) {
