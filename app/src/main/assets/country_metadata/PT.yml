@@ -1,7 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
 hasSlowZone: true
 mobileCountryCode: 268
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
 officialLanguages: [pt]
 popularReligions: [christian, jewish, muslim]
 postboxesHaveCollectionTimes: true

@@ -31,7 +31,7 @@ class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
         applyAnswer(ShoulderSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value))
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Boolean>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Boolean>) =
         if (item.value) "yes" else "no"
 
     override fun deserialize(str: String, isRight: Boolean) =

@@ -26,7 +26,6 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -43,7 +42,6 @@ import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.ktx.copy
-import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -383,12 +381,9 @@ private class EditTagsAdapter(
 
     val keySearchAdapter = SearchAdapter(context, { search ->
         // don't suggest anything if nothing has changed, because on start a search is added for all fields
-        Log.i("test_", "key search")
         if (dataSet == initialTags) return@SearchAdapter emptyList() // focus check not possible outside viewHolder (no adapter position)
-        Log.i("test_", "key search actually happening")
         val feature = featureDictionary.byTags(dataSet).find().firstOrNull()
             ?: return@SearchAdapter emptyList()
-        Log.i("test_", "feature found")
         getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
     }, { it })
 

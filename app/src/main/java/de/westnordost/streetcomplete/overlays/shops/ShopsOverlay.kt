@@ -33,7 +33,10 @@ class ShopsOverlay(private val featureDictionaryFuture: FutureTask<FeatureDictio
     override val isCreateNodeEnabled = true
 
     override val sceneUpdates = listOf(
-        "layers.housenumber-labels.enabled" to "false" // because they often overlap with shop names
+        "layers.housenumber-labels.enabled" to "false", // because they often overlap with shop names
+        // because it is difficult to place the POI correctly with 3D buildings enabled
+        "layers.buildings.draw.buildings-style.extrude" to "false",
+        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
     )
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =

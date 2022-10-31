@@ -1395,10 +1395,29 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removable"</string>
     <string name="quest_buildingType_guardhouse">"Guardhouse"</string>
     <string name="quest_genericRef_title">"What’s the reference number here?"</string>
+    <string name="quest_sidewalk_answer_different">"Pavement situation is different"</string>
+    <string name="about_title_get_involved">"Get Involved"</string>
+    <string name="pref_category_quests_overlays">"Quests &amp; Overlays"</string>
+    <string name="quest_presets_rename">"Rename"</string>
+    <string name="quest_presets_share">"Share"</string>
+    <string name="quest_presets_delete">"Delete"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Let others scan this QR code to share your preset."</string>
+    <string name="urlconfig_as_url">"Or as URL:"</string>
+    <string name="urlconfig_url_copied">"URL copied to clipboard"</string>
+    <string name="urlconfig_apply_title">"Apply Preset"</string>
+    <string name="urlconfig_apply_message">"Apply and select preset %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Note: Your preset with the same name will be overwritten!"</string>
+    <string name="urlconfig_switch_hint">"You can switch presets in the settings at any time."</string>
+    <string name="urlconfig_scan_qr_code_again">"After installing the app, scan the QR code again to apply the preset."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Two-tier bike rack"</string>
 </resources>

@@ -2717,20 +2717,31 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Een kaart met campings"</string>
     <string name="quest_atm_cashin_title">"Kan je bij deze geldautomaat ook geld storten?"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Het is een verzamelplaats voor noodgevallen"</string>
-    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Een verzamelplaats voor noodgevallen is waar mensen samenkomen ten tijden van een noodgeval. Het ziet er doorgaans ongeveer zo uit:"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Een verzamelplaats voor noodgevallen is waar mensen samenkomen tijdens een noodsituatie. Het ziet er meestal ongeveer zo uit:"</string>
     <string name="quest_address_answer_house_name2">"Het heeft een huisnaam…"</string>
     <string name="quest_address_street_street_name_label">"Straatnaam:"</string>
     <string name="quest_address_street_hint2">"Tik op een straat om deze te selecteren"</string>
+    <string name="quest_bicycle_incline_title">"In welke richting gaat het hier naar boven?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Het gaat op en neer"</string>
     <string name="quest_drinking_water_type_title">"Hoe wordt hier drinkwater aangeboden?"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Alleen flesjes bijvullen"</string>
     <string name="quest_drinking_water_type_tap">"Waterkraan"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpomp"</string>
     <string name="quest_drinking_water_type_water_well_no_pump">"Waterbron zonder pomp"</string>
     <string name="quest_drinking_water_type_spring">"Bron"</string>
+    <string name="quest_drinking_water_type_disused">"Drinkwater werkt niet meer"</string>
     <string name="overlay_addresses">"Adressen"</string>
     <string name="overlay_shops">"Winkels"</string>
     <string name="name_label">"Naam:"</string>
-    <string name="vacant_shop_title">"Leegstaand winkelpand"</string>
+    <string name="vacant_shop_title">"Leegstaande winkel"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Ander soort winkel"</string>
     <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Vast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Te openen"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Verwijderbaar"</string>
+    <string name="quest_genericRef_title">"Wat is het identificatienummer hier?"</string>
+    <string name="quest_presets_share">"Delen"</string>
+    <string name="quest_presets_delete">"Verwijderen"</string>
 </resources>

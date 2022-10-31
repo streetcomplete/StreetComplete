@@ -2418,7 +2418,7 @@ sorted alphabetically by title -->
     <string name="ar_core_tracking_hint_tap_to_measure">"Érintsd meg a képernyőt a mérés megkezdéséhez"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (amikor nyitva van az üzlet)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Van itt működő kerékpárpumpa?"</string>
-    <string name="action_overlays">"Kiemelő"</string>
+    <string name="action_overlays">"Kiemelés"</string>
     <string name="split_way">"Osztott út"</string>
     <string name="quest_memorialType_title">"Milyen típusú emlékmű ez?"</string>
     <string name="quest_memorialType_statue">"Szobor"</string>
@@ -2432,7 +2432,7 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_sculpture">"Más szobor"</string>
 
     <!-- Overlays -->
-    <string name="select_overlay">"Válassz kiemelőt"</string>
+    <string name="select_overlay">"Válassz kiemelést"</string>
     <string name="overlay_none">"Nincs"</string>
     <string name="overlay_lit">"Utcai világítás"</string>
     <string name="lit_value_yes">"Megvilágítva"</string>
@@ -2495,6 +2495,8 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
     <string name="quest_address_answer_no_address">"Nincs cím"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a kerékpárakadályt?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Rögzített"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Nyitható"</string>

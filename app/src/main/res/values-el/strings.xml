@@ -2544,6 +2544,8 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Άλλου είδους μέρος"</string>
     <string name="quest_address_answer_no_address">"Καμία διεύθυνση εδώ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Μπορεί να ανοίξει αυτό το εμπόδιο ποδηλάτων;"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Σταθερό"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Ανοιγόμενο"</string>

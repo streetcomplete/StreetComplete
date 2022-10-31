@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
@@ -17,14 +17,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         android:background="@drawable/background_rectangular_sign_blue_indented"
         tools:listitem="@layout/quest_roadname_row" />
 
-    <ImageButton
+    <Button
         android:id="@+id/addLanguageButton"
-        android:layout_width="50dp"
+        android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_24dp"
+        app:icon="@drawable/ic_add_24dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         tools:ignore="HardcodedText" />
 
 </LinearLayout>

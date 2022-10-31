@@ -2,28 +2,27 @@ package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable.Columns.ELEMENT_EDIT_TYPE
-import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable.Columns.SUCCEEDED
-import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable.NAME
+import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables.Columns.ELEMENT_EDIT_TYPE
+import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables.Columns.SUCCEEDED
 
 /** Stores how many edits of which element type the user did */
-class EditTypeStatisticsDao(private val db: Database) {
+class EditTypeStatisticsDao(private val db: Database, private val name: String) {
 
     fun getTotalAmount(): Int =
-        db.queryOne(NAME, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0
+        db.queryOne(name, arrayOf("total($SUCCEEDED) as count")) { it.getInt("count") } ?: 0
 
     fun getAll(): List<EditTypeStatistics> =
-        db.query(NAME) { it.toEditTypeStatistics() }
+        db.query(name) { it.toEditTypeStatistics() }
 
     fun clear() {
-        db.delete(NAME)
+        db.delete(name)
     }
 
     fun replaceAll(amounts: Map<String, Int>) {
         db.transaction {
-            db.delete(NAME)
+            db.delete(name)
             if (amounts.isNotEmpty()) {
-                db.replaceMany(NAME,
+                db.replaceMany(name,
                     arrayOf(ELEMENT_EDIT_TYPE, SUCCEEDED),
                     amounts.map { arrayOf(it.key, it.value) }
                 )
@@ -34,22 +33,22 @@ class EditTypeStatisticsDao(private val db: Database) {
     fun addOne(type: String) {
         db.transaction {
             // first ensure the row exists
-            db.insertOrIgnore(NAME, listOf(
+            db.insertOrIgnore(name, listOf(
                 ELEMENT_EDIT_TYPE to type,
                 SUCCEEDED to 0
             ))
 
             // then increase by one
-            db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $ELEMENT_EDIT_TYPE = ?", arrayOf(type))
+            db.exec("UPDATE $name SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $ELEMENT_EDIT_TYPE = ?", arrayOf(type))
         }
     }
 
     fun subtractOne(type: String) {
-        db.exec("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $ELEMENT_EDIT_TYPE = ?", arrayOf(type))
+        db.exec("UPDATE $name SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $ELEMENT_EDIT_TYPE = ?", arrayOf(type))
     }
 
     fun getAmount(type: String): Int =
-        db.queryOne(NAME,
+        db.queryOne(name,
             columns = arrayOf(SUCCEEDED),
             where = "$ELEMENT_EDIT_TYPE = ?",
             args = arrayOf(type)
@@ -57,7 +56,7 @@ class EditTypeStatisticsDao(private val db: Database) {
 
     fun getAmount(type: List<String>): Int {
         val questionMarks = Array(type.size) { "?" }.joinToString(",")
-        return db.queryOne(NAME,
+        return db.queryOne(name,
             columns = arrayOf("total($SUCCEEDED) as count"),
             where = "$ELEMENT_EDIT_TYPE in ($questionMarks)",
             args = type.toTypedArray()

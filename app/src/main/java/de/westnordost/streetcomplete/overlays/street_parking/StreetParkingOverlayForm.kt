@@ -82,7 +82,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         streetSideSelect.left?.value != currentParking?.left ||
         streetSideSelect.right?.value != currentParking?.right
 
-    override fun serialize(item: StreetSideDisplayItem<StreetParking>, isRight: Boolean): String =
+    override fun serialize(item: StreetSideDisplayItem<StreetParking>): String =
         Json.encodeToString(item.value)
 
     override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<StreetParking> =

@@ -1823,4 +1823,99 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_shop">"Entrada de establecimiento"</string>
     <string name="quest_building_entrance_yes">"Otro tipo de entrada"</string>
     <string name="quest_building_entrance_dead_end">"Entrada sin salida"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Toque la pantalla para comenzar a medir"</string>
+    <string name="quest_air_pump_bicycle_shop_title">"¿Hay una bomba de bicicleta pública aquí (al menos cuando está abierta)?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"¿Hay una bomba de bicicleta que funcione aquí?"</string>
+    <string name="action_overlays">"Superposiciones"</string>
+    <string name="split_way">"Vía dividida"</string>
+    <string name="quest_memorialType_title">"¿Qué clase de monumento es este?"</string>
+    <string name="quest_memorialType_statue">"Estatua"</string>
+    <string name="quest_memorialType_bust">"Busto"</string>
+    <string name="quest_memorialType_plaque">"Placa"</string>
+    <string name="quest_memorialType_war_memorial">"Memorial de guerra"</string>
+    <string name="quest_memorialType_stone">"Piedra"</string>
+    <string name="quest_memorialType_obelisk">"Obelisco"</string>
+    <string name="quest_memorialType_stele_wooden">"Estela de madera (losa conmemorativa)"</string>
+    <string name="quest_memorialType_stele_stone">"Estela de piedra (losa conmemorativa)"</string>
+    <string name="quest_memorialType_sculpture">"Otra escultura"</string>
+
+    <!-- Overlays -->
+    <string name="select_overlay">"Seleccionar superposición"</string>
+    <string name="overlay_none">"Ninguna"</string>
+    <string name="overlay_lit">"Alumbrado público"</string>
+    <string name="lit_value_yes">"Iluminado"</string>
+    <string name="lit_value_no">"No iluminado"</string>
+    <string name="lit_value_24_7">"Iluminado de noche y de día"</string>
+    <string name="lit_value_automatic">"Se ilumina cuando alguien pasa"</string>
+    <string name="overlay_sidewalk">"Aceras"</string>
+    <string name="quest_entrance_reference">"¿Qué está señalizado en esta entrada?"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta de entrada y rango de pisos"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Rango de pisos"</string>
+    <string name="quest_entrance_reference_select_code_only">"Etiqueta de entrada"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Sin señal con etiqueta o rango de piso"</string>
+    <string name="quest_entrance_reference_reference_label">"Etiqueta de entrada:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Rango planta:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"a"</string>
+    <string name="default_disabled_msg_overlay">"Este tipo de búsqueda está deshabilitado de forma predeterminada porque ya existe una superposición con la que es más efectivo y eficiente agregar y actualizar estos datos."</string>
+    <string name="quest_camp_shower_title">"¿Hay duchas aquí?"</string>
+    <string name="quest_camp_power_supply_title">"¿Hay alguna forma de que los clientes carguen su teléfono, computadora portátil, etc. aquí?"</string>
+    <string name="quest_camp_type_title">"¿Quién puede acampar aquí?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Tanto tiendas de campaña como autocaravanas, caravanas, …"</string>
+    <string name="quest_camp_type_caravans_only">"Solo autocaravanas, caravanas, ..."</string>
+    <string name="quest_camp_type_tents_only">"Solo tiendas de campaña"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro parece inverosímil, por lo general está entre %1$d y %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta respuesta no coincide con lo que ya está mapeado sobre este camino. ¿Estás seguro de que estás respondiendo sobre el camino correcto? ¿Está seguro de que usted personalmente inspeccionó a lo largo de toda la longitud, como siempre es necesario?"</string>
+    <string name="quest_recycling_type_pet">"Solo PET"</string>
+    <string name="street_parking_street_width">"Ancho de calle: %s"</string>
+    <string name="overlay_street_parking">"Aparcamientos en la calle"</string>
+    <string name="link_opencampingmap_description">"Un mapa de campings"</string>
+    <string name="quest_atm_cashin_title">"¿Se puede depositar efectivo en este cajero automático?"</string>
+    <string name="create_node_action_description">"Ha creado un nodo con …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Es un punto de encuentro"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un punto de reunión es donde las personas se reúnen en caso de una emergencia. Por lo general, se parece a esto:"</string>
+    <string name="quest_address_answer_house_name2">"Tiene un nombre de casa..."</string>
+    <string name="quest_address_street_street_name_label">"Nombre de calle:"</string>
+    <string name="quest_address_street_hint2">"Toque la calle en el mapa para seleccionarla"</string>
+    <string name="quest_bicycle_incline_title">"¿Qué dirección conduce hacia arriba aquí?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Son saltos arriba y abajo"</string>
+    <string name="quest_drinking_water_type_title">"¿Cómo se proporciona el agua potable aquí?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Otra fuente de agua"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fuente de agua que emite un pequeño chorro de agua"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Solo recarga de botellas"</string>
+    <string name="quest_drinking_water_type_tap">"Grifo de agua"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Bomba de mano"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Pozo de agua sin bomba"</string>
+    <string name="quest_drinking_water_type_spring">"Manantial"</string>
+    <string name="quest_drinking_water_type_disused">"Objeto de agua potable en desuso"</string>
+    <string name="overlay_addresses">"Direcciones"</string>
+    <string name="overlay_shops">"Tiendas"</string>
+    <string name="name_label">"Nombre:"</string>
+    <string name="vacant_shop_title">"Tienda libre"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Otro tipo de lugar"</string>
+    <string name="quest_address_answer_no_address">"No hay dirección aquí"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_barrier_installation_title">"¿Se puede abrir esta barrera de bicicleta?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fijado"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Abertible"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Retirable"</string>
+    <string name="quest_buildingType_guardhouse">"Caseta de vigilancia"</string>
+    <string name="quest_genericRef_title">"¿Cuál es el número de identificación aquí?"</string>
+    <string name="quest_sidewalk_answer_different">"La situación de la acera es diferente"</string>
+    <string name="pref_category_quests_overlays">"Tareas &amp; Superposiciones"</string>
+    <string name="quest_presets_rename">"Renombrar"</string>
+    <string name="quest_presets_share">"Compartir"</string>
+    <string name="quest_presets_delete">"Borrar"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Permita que otros escaneen este código QR para compartir su preset."</string>
+    <string name="urlconfig_as_url">"O como URL:"</string>
+    <string name="urlconfig_url_copied">"URL copiada al portapapeles"</string>
+    <string name="urlconfig_apply_title">"Aplicar Preajuste"</string>
+    <string name="urlconfig_apply_message">"¿Aplicar y seleccionar el ajuste preestablecido %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
+    <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
+    <string name="urlconfig_scan_qr_code_again">"Después de instalar la aplicación, escanee el código QR nuevamente para aplicar el ajuste preestablecido."</string>
 </resources>

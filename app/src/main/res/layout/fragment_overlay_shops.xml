@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:showDividers="middle"
-    android:divider="@drawable/space_8dp"
     android:paddingBottom="32dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,31 +53,20 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/nameInputContainer"
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/name_label"/>
+
+    <!-- extra padding because the OK button overlaps with the delete-button for the lowermost
+         item if the "add language" button is not shown anymore -->
+    <include
+        android:id="@+id/nameContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:showDividers="middle"
-        android:divider="@drawable/space_8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name_label"/>
-
-        <EditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:selectAllOnFocus="true"
-            android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
-            tools:text="Das fröhliche Backhaus" />
-
-    </LinearLayout>
+        android:layout_marginBottom="16dp"
+        layout="@layout/quest_localizedname" />
 
 </LinearLayout>

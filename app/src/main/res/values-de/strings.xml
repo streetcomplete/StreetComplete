@@ -371,10 +371,10 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_carWashType_service">"keine Selbstbedienung"</string>
     <string name="enable_quest_confirmation_title">"Diesen Aufgabentyp aktivieren?"</string>
     <string name="default_disabled_msg_go_inside">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können."</string>
-    <string name="quest_housenumber_conscription_number">"Konskriptions-nummer"</string>
+    <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <string name="quest_housenumber_street_number_optional">"Orientierungs-nummer (optional)"</string>
+    <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Radweg auch auf anderer Seite …"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest du drinnen nach den Öffnungszeiten fragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Radfahrer dürfen in beide Richtungen fahren"</string>
@@ -477,7 +477,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_kiosk">"Kiosk-Gebäude"</string>
     <string name="quest_buildingType_storage_tank">"Tank"</string>
     <string name="quest_buildingType_religious">"Religiöses Gebäude"</string>
-    <string name="quest_buildingType_church">"Kirchengebäude"</string>
+    <string name="quest_buildingType_church">"Kirchen-Gebäude"</string>
     <string name="quest_buildingType_chapel">"Kapellen-Gebäude"</string>
     <string name="quest_buildingType_cathedral">"Kathedrale"</string>
     <string name="quest_buildingType_mosque">"Moschee-Gebäude"</string>
@@ -1403,6 +1403,8 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Anderer Ortstyp"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fest"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Öffnen möglich"</string>
@@ -1410,4 +1412,25 @@ sorted alphabetically by title -->
     <string name="quest_buildingType_guardhouse">"Wachhaus"</string>
     <string name="quest_genericRef_title">"Was ist die Referenznummer hier?"</string>
     <string name="quest_sidewalk_answer_different">"Bürgersteige sind hier anders"</string>
+    <string name="about_title_get_involved">"Mitmachen"</string>
+    <string name="pref_category_quests_overlays">"Aufgaben &amp; Overlays"</string>
+    <string name="quest_presets_rename">"Umbenennen"</string>
+    <string name="quest_presets_share">"Teilen"</string>
+    <string name="quest_presets_delete">"Löschen"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Lass andere diesen QR-Code scannen, um deine Voreinstellung mit ihnen zu teilen."</string>
+    <string name="urlconfig_as_url">"Oder als URL:"</string>
+    <string name="urlconfig_url_copied">"URL in die Zwischenablage kopiert"</string>
+    <string name="urlconfig_apply_title">"Voreinstellung anwenden"</string>
+    <string name="urlconfig_apply_message">"Voreinstellung %1$s anwenden und auswählen?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Hinweis: Deine Voreinstellung mit dem selben Namen wird überschrieben!"</string>
+    <string name="urlconfig_switch_hint">"Du kannst die Voreinstellungen in den Einstellungen jederzeit ändern."</string>
+    <string name="urlconfig_scan_qr_code_again">"Scanne den QR-Code nach der Installation der App erneut, um die Voreinstellung zu übernehmen."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Doppelstock-Fahrradständer"</string>
+    <string name="user_profile_current_week_title">"Diese Woche"</string>
+    <string name="user_profile_dates_mapped">"Wann Du in letzter Zeit gemappt hast"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"Schutzstreifen"</string>
 </resources>

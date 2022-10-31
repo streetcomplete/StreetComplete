@@ -1926,10 +1926,31 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Ukendt type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Kan åbnes"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Kan fjernes"</string>
     <string name="quest_buildingType_guardhouse">"Vagtbygning"</string>
     <string name="quest_genericRef_title">"Hvilket identifikationsnummer er der her?"</string>
+    <string name="quest_sidewalk_answer_different">"Fortovet er anderledes"</string>
+    <string name="about_title_get_involved">"Deltag i arbejdet"</string>
+    <string name="pref_category_quests_overlays">"Opgaver og overlejringer"</string>
+    <string name="quest_presets_rename">"Omdøb"</string>
+    <string name="quest_presets_share">"Del"</string>
+    <string name="quest_presets_delete">"Slet"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Del din forudindstilling ved at lade andre scanne denne QR-kode."</string>
+    <string name="urlconfig_as_url">"Eller som URL:"</string>
+    <string name="urlconfig_url_copied">"URL kopieret til udklipsholder"</string>
+    <string name="urlconfig_apply_title">"Anvend forudindstilling"</string>
+    <string name="urlconfig_apply_message">"Anvend og vælg forudindstilling %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Bemærk: Din forudindstilling med samme navn vil blive overskrevet!"</string>
+    <string name="urlconfig_switch_hint">"Du kan til enhver tid skifte forindstillinger i indstillingerne."</string>
+    <string name="urlconfig_scan_qr_code_again">"Når du har installeret appen, skal du scanne QR-koden igen for at anvende forudindstillingen."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Cykelstativ i to niveauer"</string>
+    <string name="user_profile_current_week_title">"Denne uge"</string>
+    <string name="user_profile_dates_mapped">"Dage, hvor du har kortlagt for nylig"</string>
 </resources>

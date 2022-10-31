@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
-import de.westnordost.streetcomplete.osm.cycleway.isAvailableAsSelection
+import de.westnordost.streetcomplete.osm.cycleway.getSelectableCyclewaysInCountry
+import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
@@ -79,10 +80,9 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
     }
 
     private fun initStateFromTags() {
-        val countryCode = countryInfo.countryCode
         val sides = createCyclewaySides(element.tags, isLeftHandTraffic)
-        val left = sides?.left?.takeIf { it.isAvailableAsSelection(countryCode) }
-        val right = sides?.right?.takeIf { it.isAvailableAsSelection(countryCode) }
+        val left = sides?.left?.takeIf { !it.isAmbiguous(countryInfo) && !it.isInvalid && !it.isUnknown }
+        val right = sides?.right?.takeIf { !it.isAmbiguous(countryInfo) && !it.isInvalid && !it.isUnknown }
         val bothSidesWereDefinedBefore = sides?.left != null && sides.right != null
         val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
         val noEntrySignResId = countryInfo.noEntrySignDrawableResId
@@ -92,10 +92,10 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
             isLeftHandTraffic -> LEFT
             else -> RIGHT
         }
-        val leftItem = left?.asStreetSideItem(isLeftHandTraffic, isContraflowInOneway(false), noEntrySignResId)
+        val leftItem = left?.asStreetSideItem(countryInfo, isContraflowInOneway(false), noEntrySignResId)
         streetSideSelect.setPuzzleSide(leftItem, false)
 
-        val rightItem = right?.asStreetSideItem(isLeftHandTraffic, isContraflowInOneway(true), noEntrySignResId)
+        val rightItem = right?.asStreetSideItem(countryInfo, isContraflowInOneway(true), noEntrySignResId)
         streetSideSelect.setPuzzleSide(rightItem, true)
 
         // only show as re-survey (yes/no button) if the previous tagging was complete
@@ -107,11 +107,11 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
     override fun onClickSide(isRight: Boolean) {
         val isContraflowInOneway = isContraflowInOneway(isRight)
         val dialogItems = getSelectableCycleways(isRight)
-            .map { it.asDialogItem(requireContext(), isLeftHandTraffic, isContraflowInOneway) }
+            .map { it.asDialogItem(requireContext(), countryInfo, isContraflowInOneway) }
 
         ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
             val streetSideItem = item.value!!.asStreetSideItem(
-                isLeftHandTraffic,
+                countryInfo,
                 isContraflowInOneway,
                 countryInfo.noEntrySignDrawableResId
             )
@@ -120,8 +120,7 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
     }
 
     private fun getSelectableCycleways(isRight: Boolean): List<Cycleway> {
-        val country = countryInfo.countryCode
-        val values = DISPLAYED_CYCLEWAY_ITEMS.filter { it.isAvailableAsSelection(country) }.toMutableList()
+        val values = getSelectableCyclewaysInCountry(countryInfo).toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
         if (isOneway && isReverseSideRight == isRight) {
             values.remove(Cycleway.PICTOGRAMS)
@@ -130,12 +129,12 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
         return values
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Cycleway>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Cycleway>) =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<Cycleway> =
         Cycleway.valueOf(str).asStreetSideItem(
-            isLeftHandTraffic,
+            countryInfo,
             isContraflowInOneway(isRight),
             countryInfo.noEntrySignDrawableResId
         )

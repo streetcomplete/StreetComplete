@@ -37,8 +37,12 @@ class AddressStreetNameInputViewController(
      *  instead of typing it in the edit text */
     fun selectStreetAt(position: LatLon, radiusInMeters: Double): Boolean {
         val dist = radiusInMeters + 5
-        val namesByLocale = roadNameSuggestionsSource.getNames(listOf(position), dist).firstOrNull()
+        val namesByLocale = roadNameSuggestionsSource
+            .getNames(listOf(position), dist)
+            .firstOrNull()
+            ?.associate { it.languageTag to it.name }?.toMutableMap()
             ?: return false
+
         // why using .keys.firstOrNull { Locale(it).language == XXX } instead of .containsKey(XXX):
         // ISO 639 is an unstable standard. For example, id == in. If the comparisons are made
         // with the Locale class, that takes care of it

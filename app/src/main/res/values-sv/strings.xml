@@ -1666,10 +1666,31 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Okänd slags plats"</string>
     <string name="quest_address_answer_no_address">"Ingen adress här"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Kan den här cykelgrinden öppnas?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Öppningsbar"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Löstagbar"</string>
     <string name="quest_buildingType_guardhouse">"Vaktkur"</string>
     <string name="quest_genericRef_title">"Vad har detta för referensnummer?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sidewalk_answer_different">"Trottoarerna skiljer sig"</string>
+    <string name="about_title_get_involved">"Hjälp till"</string>
+    <string name="pref_category_quests_overlays">"Uppdrag &amp; extralager"</string>
+    <string name="quest_presets_rename">"Byt namn"</string>
+    <string name="quest_presets_share">"Dela"</string>
+    <string name="quest_presets_delete">"Radera"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Dela den här QR-koden för att låta andra använda din grupp."</string>
+    <string name="urlconfig_as_url">"Eller som URL:"</string>
+    <string name="urlconfig_url_copied">"URL kopierad till urklipp"</string>
+    <string name="urlconfig_apply_title">"Aktivera grupp"</string>
+    <string name="urlconfig_apply_message">"Aktivera och välj grupp %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Obs: Nuvarande grupp med samma namn kommer att skrivas över!"</string>
+    <string name="urlconfig_switch_hint">"Du kan växla aktiv grupp i inställningarna när du vill."</string>
+    <string name="urlconfig_scan_qr_code_again">"När du har installerat appen så skanna QR-koden igen för att aktivera gruppen."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Tvåvåningsställ"</string>
 </resources>

@@ -1717,6 +1717,8 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
     <string name="quest_address_answer_no_address">"No hi ha adreça"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Es pot obrir la barrera per a bicletes?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Es pot obrir"</string>

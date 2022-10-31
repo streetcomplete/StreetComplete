@@ -1627,6 +1627,8 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Щось інше"</string>
     <string name="quest_address_answer_no_address">"Тут немає адреси"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Цей велобарʼєр відчиняється?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Нерухомий"</string>
     <string name="quest_buildingType_guardhouse">"Будинок охоронця"</string>

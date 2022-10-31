@@ -271,7 +271,6 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.createButton.setOnClickListener { onClickCreateButton() }
-        binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
         binding.quickSettingsButton.visibility = if (prefs.getBoolean(Prefs.QUICK_SETTINGS, false))
             View.VISIBLE
         else
@@ -621,6 +620,11 @@ class MainFragment :
 
     override fun onSelectedOverlayChanged() {
         updateCreateButtonVisibility()
+
+        val f = bottomSheetFragment
+        if (f is IsShowingElement) {
+            viewLifecycleScope.launch { closeBottomSheet() }
+        }
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -880,10 +884,6 @@ class MainFragment :
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
-    fun starInfoMenu() {
-        val intent = Intent(requireContext(), UserActivity::class.java)
-        startActivity(intent)
-    }
     /* -------------------------------------- Context Menu -------------------------------------- */
 
     private fun showMapContextMenu(position: LatLon) {

@@ -261,6 +261,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="about_category_feedback">Feedback</string>
 
+    <string name="about_title_get_involved">Get Involved</string>
+
     <string name="about_title_changelog">Version history</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="title_whats_new">What’s New?</string>
@@ -355,6 +357,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="user_profile_current_week_title">This week</string>
+
+    <string name="user_profile_dates_mapped">Days you\'ve mapped recently</string>
 
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>
@@ -483,6 +488,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_display">"Display"</string>
+    <string name="pref_category_quests_overlays">Quests &amp; Overlays</string>
 
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>
@@ -564,6 +570,20 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
 
+    <string name="quest_presets_rename">Rename</string>
+    <string name="quest_presets_share">Share</string>
+    <string name="quest_presets_delete">Delete</string>
+
+    <!-- Config via URL/QRCode -->
+
+    <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
+    <string name="urlconfig_as_url">Or as URL:</string>
+    <string name="urlconfig_url_copied">URL copied to clipboard</string>
+    <string name="urlconfig_apply_title">Apply Preset</string>
+    <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
+    <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
+    <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
+    <string name="urlconfig_scan_qr_code_again">After installing the app, scan the QR code again to apply the preset.</string>
 
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
@@ -657,7 +677,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
-    <string name="quest_bicycle_barrier_installation_title">Can this cycle barrier be opened?</string>
+    <string name="quest_bicycle_barrier_installation_title">Can this cycle barrier be opened (with or without a key)?</string>
     <string name="quest_barrier_bicycle_installation_fixed">Fixed</string>
     <string name="quest_barrier_bicycle_installation_openable">Openable</string>
     <string name="quest_barrier_bicycle_installation_removable">Removable</string>
@@ -678,6 +698,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
+    <string name="quest_bicycle_parking_type_two_tier">Two-tier bike rack</string>
 
 
     <string name="quest_bicycle_rental_capacity_title">How many rental bicycle spaces are here?</string>
@@ -900,10 +921,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
     <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
-    <string name="quest_cycleway_value_lane_soft">bicycle lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>

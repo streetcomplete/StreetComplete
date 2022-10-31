@@ -500,7 +500,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_housenumber_multiple_numbers">"Il y a plusieurs numéros de maison"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_multiple_numbers_description">"Vous pouvez simplement saisir des numéros séparés par des virgules, ou des intervalles.\nPar exemple : 1,3 ou 2–6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Vous pouvez simplement saisir des numéros séparés par des virgules, ou des intervalles.\nPar exemple : 1,3 ou 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Arceaux (soutient le cadre du vélo)"</string>
@@ -632,7 +632,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_hut_description">"petite hutte, simple habitation ou abri"</string>
     <string name="quest_buildingType_roof">"Toit"</string>
     <string name="quest_buildingType_service">"Bâtiment de service"</string>
-    <string name="quest_buildingType_service_description">"bâtiment avec une machine comme une pompe, un transformateur, etc."</string>
+    <string name="quest_buildingType_service_description">"bâtiment avec une machine comme une pompe, un transformateur, etc"</string>
     <string name="quest_buildingType_hangar">"Hangar (aviation)"</string>
     <string name="quest_buildingType_hangar_description">"hangar pour avions, hélicoptères ou fusées"</string>
 
@@ -888,7 +888,7 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="link_vespucci_description">"Éditeur OSM avancé pour Android"</string>
     <string name="link_ideditor_description">"Éditeur OSM simple, accessible depuis un navigateur internet. Optimisé pour les ordinateurs ou les grandes tablettes"</string>
     <string name="link_umap_description">"Créez rapidement des cartes avec vos données et intégrez-les dans votre site web"</string>
-    <string name="link_opnvkarte_description">"Une carte des itinéraires et des arrêts des transports en commun."</string>
+    <string name="link_opnvkarte_description">"Une carte des itinéraires et des arrêts des transports en commun"</string>
     <string name="link_pic4review_description">"Contribuez simplement à OSM en visionnant des photos de votre ville"</string>
 
     <!-- Fuzzy -->
@@ -1109,7 +1109,7 @@ accomplis"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Il y a une voie à double sens pour le tourne-à-gauche"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Est-ce correct ?"</string>
     <string name="quest_maxheight_below_bridge_title">"Quelle est la limite de hauteur sous le pont ?"</string>
-    <string name="quest_maxheight_split_way_hint">"Si ça ne concerne pas la totalité de la voie, vous pouvez répondre « %s »."</string>
+    <string name="quest_maxheight_split_way_hint">"Si cela ne concerne pas la totalité de la voie, vous pouvez répondre « %s »."</string>
     <string name="quest_tactile_paving_kerb_title">"Y a t-il un revêtement podotactile à cet endroit ?"</string>
     <string name="quest_kerb_height_title">"Quelle est la hauteur de ce ressaut ?"</string>
 
@@ -1388,7 +1388,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"S’il est possible de s’arrêter ou de stationner, indiquez d’abord de quelle manière cela est permis. Vous pourrez préciser les restrictions ensuite.
 
-En alternative, vous pouvez laisser une note (avec une photo)"</string>
+Alternativement, vous pouvez laisser une note (avec une photo)."</string>
     <string name="quest_address_house_number_label">"Numéro d’adresse :"</string>
 
     <!-- Fuzzy -->
@@ -1488,7 +1488,8 @@ En alternative, vous pouvez laisser une note (avec une photo)"</string>
     <string name="quest_sidewalk_answer_none_title">"Sélectionner que les trottoirs sont manquants"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_side_select_interface_explanation">"Sélectionnez un côté et précisez sa situation. Faites la même chose pour l’autre côté, si présent."</string>
+    <string name="quest_side_select_interface_explanation">"Sélectionnez un côté et précisez sa situation.
+Faites la même chose pour l’autre côté, si présent."</string>
 
     <!-- AR Measure screen -->
     <string name="ar_measure">"Mesure"</string>
@@ -1706,10 +1707,10 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Explorez les données d’OSM à différentes échelles, du plan large jusqu’aux objets individuels, à travers le temps et l’espace"</string>
     <string name="link_opencampingmap_description">"Une carte des terrains de camping"</string>
     <string name="quest_atm_cashin_title">"Est-il possible de déposer de l’argent dans ce distributeur ?"</string>
-    <string name="create_node_action_description">"Vous avez crée un noeud avec ..."</string>
+    <string name="create_node_action_description">"Vous avez crée un noeud avec …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"C’est un point de rassemblement"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un point de rassemblement est un endroit où les gens se regroupent en cas d’urgence. Cela ressemble généralement à ceci :"</string>
-    <string name="quest_address_answer_house_name2">"La maison possède un nom..."</string>
+    <string name="quest_address_answer_house_name2">"La maison possède un nom…"</string>
     <string name="quest_address_street_street_name_label">"Nom de rue :"</string>
     <string name="quest_address_street_hint2">"Touchez la rue sur la carte pour la sélectionner"</string>
     <string name="quest_bicycle_incline_title">"Dans quelle direction cela monte t’il ?"</string>
@@ -1731,10 +1732,29 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Type de lieu non non défini"</string>
     <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos ?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixe"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Ouvrable"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Amovible"</string>
     <string name="quest_buildingType_guardhouse">"Poste de garde"</string>
     <string name="quest_genericRef_title">"Quel est le numéro d’identification ici ?"</string>
+    <string name="quest_sidewalk_answer_different">"La situation du trottoir est différente"</string>
+    <string name="about_title_get_involved">"Participer"</string>
+    <string name="pref_category_quests_overlays">"Quêtes et surcouches"</string>
+    <string name="quest_presets_rename">"Renommer"</string>
+    <string name="quest_presets_share">"Partager"</string>
+    <string name="quest_presets_delete">"Supprimer"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Partagez vos préréglages en partageant ce QR code."</string>
+    <string name="urlconfig_as_url">"Ou avec une URL :"</string>
+    <string name="urlconfig_url_copied">"URL copiée dans le presse-papier"</string>
+    <string name="urlconfig_apply_title">"Appliquer le préréglage"</string>
+    <string name="urlconfig_apply_message">"Appliquer et sélectionner le préréglage %1$s ?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Note : un préréglage existant avec le même nom sera écrasé !"</string>
+    <string name="urlconfig_switch_hint">"Vous pouvez changer de préréglage dans les paramètres à tout moment."</string>
+    <string name="urlconfig_scan_qr_code_again">"Après avoir installé l’application, rescannez le code QR pour appliquer le préréglage."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Support pour vélos à deux étages"</string>
 </resources>

@@ -1,3 +1,20 @@
+v49.0-beta1: |
+  <h3>QR Codes</h3>
+  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3481, #4537)</p>
+  <h3>My Profile screen</h3>
+  <p>The My Profile screen is now more interesting and engaging! New graphics, new animations, weekly ranks and a calendar of your recent activity! (#2946, #3230, #4572, #4569, #3414, #4203), by @matkoniecz</p>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
+  <li>Cycle lanes: Adapt appearance of cycle lanes, depending on the country one is mapping in (#4502)</li>
+  <li>Cycle lanes, sidewalk surface: Also remember and offer shortcut to apply last selection for roads on which only one side is to be defined (#4524, #4503), by @Helium314</li>
+  <li>Shop overlay: Disable 3D buildings for easier placement of new shops (#4563)</li>
+  <li>Shop overlay: Allow input of names in different languages (in countries where that's common)</li>
+  <li>Shop overlay, Bus stop names, place names...: Remember user's choice about which primary language to use for multilingual names (#4257)</li>
+  <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
+  <li>Other small enhancements and fixes (#4559, #4560...)</li>
+  </ul>
+
 v48.0: |
   <h2>M-M-M-Mega Update!</h2>
   <p>A few things came together... this update contains what would usually be in 4 or so releases! Enjoy!</p>
