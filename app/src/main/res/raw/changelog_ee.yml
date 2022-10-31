@@ -1,4 +1,4 @@
-v49.0-beta1_ee: |
+v49.0_ee: |
   <ul>
   <li>Fix crash and quest filter bug in nearby quests monitor (#399)</li>
   <li>Properly import/export settings instead of copying preferences file (#394)</li>

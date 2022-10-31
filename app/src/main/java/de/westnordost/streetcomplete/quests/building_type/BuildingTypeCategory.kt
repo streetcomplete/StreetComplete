@@ -35,6 +35,6 @@ enum class BuildingTypeCategory(val type: BuildingType?, val subTypes: List<Buil
     )),
     OTHER(null, listOf(
         SHED, ROOF, BRIDGE, ALLOTMENT_HOUSE, SERVICE, TRANSFORMER_TOWER, HUT, TENT, TOILETS, HANGAR, BUNKER, HISTORIC, BOATHOUSE,
-        ABANDONED, RUINS, RIDING_HALL, ABANDONED, RUINS
+        RIDING_HALL, ABANDONED, RUINS
     )),
 }

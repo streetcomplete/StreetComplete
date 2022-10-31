@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnsw
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.EXIT
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.GENERIC
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.MAIN
+import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.PARKING
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SERVICE
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.SHOP
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceExistsAnswer.STAIRCASE
@@ -19,6 +20,7 @@ class AddEntranceForm : AListQuestForm<EntranceAnswer>() {
         TextItem(EXIT, R.string.quest_building_entrance_exit),
         TextItem(EMERGENCY_EXIT, R.string.quest_building_entrance_emergency_exit),
         TextItem(SHOP, R.string.quest_building_entrance_shop),
+        TextItem(PARKING, R.string.quest_building_entrance_parking),
         TextItem(GENERIC, R.string.quest_building_entrance_yes),
         TextItem(DeadEnd, R.string.quest_building_entrance_dead_end),
     )

@@ -7,6 +7,7 @@ import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ import de.westnordost.streetcomplete.databinding.EditTagsBinding
 import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.ktx.copy
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -377,25 +379,31 @@ private class EditTagsAdapter(
     private val onDataChanged: () -> Unit
 ) :
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
-    val initialTags = dataSet.toMap()
-
-    val keySearchAdapter = SearchAdapter(context, { search ->
-        // don't suggest anything if nothing has changed, because on start a search is added for all fields
-        if (dataSet == initialTags) return@SearchAdapter emptyList() // focus check not possible outside viewHolder (no adapter position)
-        val feature = featureDictionary.byTags(dataSet).find().firstOrNull()
-            ?: return@SearchAdapter emptyList()
-        getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
-    }, { it })
+    val suggestionHeight = TypedValue().apply { context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, this, false) }
+        .getDimension(context.resources.displayMetrics)
+    val suggestionMaxHeight = context.resources.displayMetrics.heightPixels - context.dpToPx(100)
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
-            setAdapter(keySearchAdapter)
             setOnFocusChangeListener { _, focused -> if (focused)
                 setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
             }
             onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
                 valueView.requestFocus() // move to value view if key is selected from suggestions
             }
+            setAdapter(SearchAdapter(context, { search ->
+                if (!isFocused) return@SearchAdapter emptyList() // don't search if the field is not focused
+                val feature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
+                    ?: return@SearchAdapter emptyList()
+                val s = getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
+                val h = TypedValue()
+                context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
+                // limit the height of suggestions, because when all are shown the ones on top are hard to reach
+                val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
+                    else 0
+                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
+                s
+            }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
                 val newKey = it.toString()
@@ -422,7 +430,11 @@ private class EditTagsAdapter(
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList()
                 val key = displaySet[absoluteAdapterPosition].first
-                valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) }
+                val s = valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) }
+                val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
+                    else 0
+                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
+                s
             }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition

@@ -26,7 +26,20 @@ class OsmoseForm : AbstractOtherQuestForm() {
 
     private val questController: OtherSourceQuestController by inject()
 
-    override val buttonPanelAnswers = mutableListOf<AnswerItem>()
+    override val buttonPanelAnswers by lazy {
+        listOf(AnswerItem(R.string.quest_osmose_false_positive) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.quest_osmose_false_positive)
+                .setMessage(R.string.quest_osmose_no_undo)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
+                    osmoseDao.setAsFalsePositive(issue.uuid)
+                    tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that any more
+                    // todo: do some kind of edit, so it can be undone? could be deleted on sync
+                }
+                .show()
+        } )
+    }
 
     override val contentLayoutResId = R.layout.quest_osmose_external
     private val binding by contentViewBinding(QuestOsmoseExternalBinding::bind)
@@ -46,18 +59,6 @@ class OsmoseForm : AbstractOtherQuestForm() {
         issue = i
         setTitle(resources.getString(R.string.quest_osmose_title, issue.title))
         binding.description.text = resources.getString(R.string.quest_osmose_message_for_element, "${issue.item}/${issue.itemClass}", issue.subtitle)
-        buttonPanelAnswers.add(AnswerItem(R.string.quest_osmose_false_positive) {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_osmose_false_positive)
-                .setMessage(R.string.quest_osmose_no_undo)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _,_ ->
-                    osmoseDao.setAsFalsePositive(issue.uuid)
-                    tempHideQuest() // will still not be shown again, as osmoseDao doesn't create a quest from that
-                    // todo: do some kind of edit, so it can be undone? could be deleted on sync
-                }
-                .show()
-        } )
 
         if (issue.elements.size > 1) viewLifecycleScope.launch { highlightElements() }
         updateButtonPanel()
@@ -86,17 +87,22 @@ class OsmoseForm : AbstractOtherQuestForm() {
                         orientation = LinearLayout.VERTICAL
                         setPadding(30, 10, 30, 10)
                     }
+                    var d: AlertDialog? = null
                     elements.forEach { e ->
                         l.addView(Button(requireContext()).apply {
                             text = "${e.type} ${e.id}"
-                            setOnClickListener { editTags(e) }
+                            setOnClickListener {
+                                editTags(e)
+                                d?.dismiss()
+                            }
                         })
                     }
-                    AlertDialog.Builder(requireContext())
+                    d = AlertDialog.Builder(requireContext())
                         .setTitle(R.string.quest_osmose_select_element)
                         .setView(l)
                         .setNegativeButton(android.R.string.cancel, null)
-                        .show()
+                        .create()
+                    d.show()
                 }
         },
         AnswerItem(R.string.quest_osmose_hide_type_specific) { addToIgnorelist("${issue.item}/${issue.itemClass}") },

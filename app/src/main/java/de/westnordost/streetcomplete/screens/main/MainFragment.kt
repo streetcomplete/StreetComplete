@@ -633,7 +633,7 @@ class MainFragment :
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
         val f = bottomSheetFragment
         // open quest has been deleted
-        if (f is IsShowingQuestDetails && f.questKey in removed) {
+        if (f is IsShowingQuestDetails && f.view != null && f.questKey in removed) {
             viewLifecycleScope.launch { closeBottomSheet() }
         }
     }

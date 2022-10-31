@@ -11,5 +11,6 @@ enum class EntranceExistsAnswer(val osmValue: String) : EntranceAnswer {
     EMERGENCY_EXIT("emergency"),
     EXIT("exit"),
     SHOP("shop"),
+    PARKING("parking"),
     GENERIC("yes"),
 }
