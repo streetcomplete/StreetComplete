@@ -394,7 +394,7 @@ private class EditTagsAdapter(
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList() // don't search if the field is not focused
                 val feature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
-                    ?: return@SearchAdapter emptyList()
+                    ?: return@SearchAdapter defaultKeyList
                 val s = getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
                 val h = TypedValue()
                 context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
@@ -490,6 +490,7 @@ private val problematicKeyCharacters = "[\\s=+/&<>;'\"?%#@,\\\\]".toRegex()
 
 private val keySuggestionsForFeatureId = hashMapOf<String, Pair<List<String>?, List<String>?>>()
 private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
+private val defaultKeyList = listOf("amenity", "shop", "name", "man_made", "emergency", "natural", "office", "leisure", "tourism", "historic", "attraction")
 
 private fun getSuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
     val fields = getMainSuggestions(featureId)
