@@ -186,7 +186,7 @@ class MapDataWithEditsSource internal constructor(
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
                         elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
                     }
-                    // this is actually removing the quests for affected ways... why?
+
                     if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
                         val waysContainingNode = getWaysForNode(edit.elementId)
                         val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
