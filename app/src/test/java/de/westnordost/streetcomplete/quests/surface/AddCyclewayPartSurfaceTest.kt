@@ -56,18 +56,18 @@ class AddCyclewayPartSurfaceTest {
     }
 
     @Test fun `not applicable to private cycleways`() {
-        assertIsNotApplicable("highway" to "path", "segregated" to "yes", "bicycle" to "private")
-        assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private")
-        assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "yes", "bicycle" to "private")
-        assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private", "bicycle" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "yes", "bicycle" to "private")
+        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private", "bicycle" to "private")
     }
 
-    @Test fun `applicable to access-restricted but cycle allowed path`() {
-        assertIsApplicable("highway" to "path", "segregated" to "yes")
-        assertIsApplicable("highway" to "path", "segregated" to "yes", "bicycle" to "permissive")
-        assertIsApplicable("highway" to "path", "segregated" to "yes", "access" to "yes")
-        assertIsApplicable("highway" to "path", "segregated" to "yes", "access" to "yes", "bicycle" to "permissive")
-        assertIsApplicable("highway" to "path", "segregated" to "yes", "access" to "no", "bicycle" to "yes")
+    @Test fun `applicable to access-restricted but cycle allowed cycleway`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes")
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "permissive")
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "yes")
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "yes", "bicycle" to "permissive")
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "no", "bicycle" to "yes")
     }
 
     @Test fun `applicable to access-restricted but bicycle designated cycleway`() {
