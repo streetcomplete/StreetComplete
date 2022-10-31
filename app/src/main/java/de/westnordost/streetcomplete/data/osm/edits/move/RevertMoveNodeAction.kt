@@ -22,9 +22,6 @@ object RevertMoveNodeAction : ElementEditAction, IsRevertAction {
         idProvider: ElementIdProvider
     ): MapDataChanges {
         val node = element as? Node ?: throw ConflictException("Element deleted")
-        if (isGeometrySubstantiallyDifferent(originalElement, element)) {
-            throw ConflictException("Element geometry changed substantially")
-        }
         return MapDataChanges(modifications = listOf(node.copy(position = (originalElement as Node).position)))
     }
 }
