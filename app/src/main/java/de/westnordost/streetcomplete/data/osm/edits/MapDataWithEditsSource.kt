@@ -191,7 +191,7 @@ class MapDataWithEditsSource internal constructor(
                         val waysContainingNode = getWaysForNode(edit.elementId)
                         val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
                         for (elem in waysContainingNode + affectedRelations) {
-                            mapData.put(elem, getGeometry(edit.elementType, edit.elementId))
+                            mapData.put(elem, getGeometry(elem.type, elem.id))
                         }
                     }
 
