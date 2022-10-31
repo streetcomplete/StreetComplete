@@ -30,13 +30,9 @@ class AddFootwayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "no")
     }
 
-    @Test fun `not applicable to non-foot path1`() {
+    @Test fun `not applicable to non-foot path`() {
         assertIsNotApplicable("highway" to "bridleway", "bicycle" to "designated", "segregated" to "yes")
-    }
-    @Test fun `not applicable to non-foot path2`() {
         assertIsNotApplicable("highway" to "path", "foot" to "no", "segregated" to "yes")
-    }
-    @Test fun `not applicable to non-foot path3`() {
         assertIsNotApplicable("highway" to "cycleway", "bicycle" to "designated", "segregated" to "yes")
     }
 
@@ -59,8 +55,10 @@ class AddFootwayPartSurfaceTest {
         assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "yes", "footway:surface" to "unpaved", "note:footway:surface" to "it's complicated")
     }
 
-    @Test fun `not applicable to private footways`() {
+    @Test fun `not applicable to private footways2`() {
         assertIsNotApplicable("highway" to "footway", "segregated" to "yes", "foot" to "private")
+    }
+    @Test fun `not applicable to private footways2`() {
         assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private")
     }
 
