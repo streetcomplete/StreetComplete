@@ -25,6 +25,6 @@ object RevertMoveNodeAction : ElementEditAction, IsRevertAction {
         if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }
-        return MapDataChanges(deletions = listOf(node.copy(position = (originalElement as Node).position)))
+        return MapDataChanges(modifications = listOf(node.copy(position = (originalElement as Node).position)))
     }
 }
