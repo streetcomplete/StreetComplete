@@ -189,7 +189,7 @@
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.Headline"
-                        android:text="@string/tutorial_welcome_to_osm"/>
+                        android:text="@string/tutorial_overlays_welcome"/>
 
                     <TextView
                         android:id="@+id/subtitleTextView"
@@ -199,7 +199,7 @@
                         android:gravity="center"
                         android:layout_below="@id/titleTextView"
                         android:textAppearance="@style/TextAppearance.Subhead"
-                        android:text="@string/tutorial_welcome_to_osm_subtitle"/>
+                        android:text="@string/tutorial_overlays_welcome_subtitle"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                         android:layout_marginTop="24dp"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.BigBody"
-                        android:text="@string/tutorial_intro"/>
+                        android:text="@string/tutorial_overlays_intro"/>
 
                 </RelativeLayout>
 
@@ -235,7 +235,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.BigBody"
-                        android:text="@string/tutorial_solving_quests"/>
+                        android:text="@string/tutorial_overlays_display"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -243,7 +243,7 @@
                         android:gravity="center"
                         android:layout_marginTop="24dp"
                         android:textAppearance="@style/TextAppearance.BigBody"
-                        android:text="@string/no_location_permission_warning"/>
+                        android:text="@string/tutorial_overlays_display_legend"/>
 
                 </LinearLayout>
 
@@ -270,7 +270,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.BigBody"
-                        android:text="@string/tutorial_stay_safe"/>
+                        android:text="@string/tutorial_overlays_solving"/>
 
                     <TextView
                         android:id="@+id/happyMappingTextView"
@@ -281,7 +281,7 @@
                         android:layout_marginTop="24dp"
                         android:gravity="center"
                         android:textAppearance="@style/TextAppearance.Headline"
-                        android:text="@string/tutorial_happy_mapping"/>
+                        android:text="@string/tutorial_overlays_happy_mapping"/>
 
                 </RelativeLayout>
 
