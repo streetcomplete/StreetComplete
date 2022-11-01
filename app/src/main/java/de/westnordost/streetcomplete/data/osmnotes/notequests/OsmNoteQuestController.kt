@@ -148,7 +148,7 @@ class OsmNoteQuestController(
     }
 
     private fun isHidden(questId: Long): Boolean = hiddenDB.contains(questId)
-    
+
     private fun getHiddenIds(): Set<Long> = hiddenDB.getAllIds().toSet()
 
     /* ---------------------------------------- Listener ---------------------------------------- */

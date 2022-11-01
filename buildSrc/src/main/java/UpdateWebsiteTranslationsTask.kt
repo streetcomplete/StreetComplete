@@ -1,9 +1,9 @@
-import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.TaskAction
-import java.io.File
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.TaskAction
+import java.io.File
 
 /** Update the metadata that contain the store descriptions for the app (for F-Droid) */
 open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {

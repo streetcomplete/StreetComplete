@@ -73,23 +73,25 @@ class MapDataWithEditsSource internal constructor(
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
                 val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
                     val key = ElementKey(element.type, element.id)
-                    if (element.isEqualExceptVersionAndTimestamp(updatedElements[key]))
+                    if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
                         null // we already have the updated version, so this element is unchanged
-                    else
+                    } else {
                         key to get(element.type, element.id) // elementKey and element as provided by MapDataWithEditsSource
+                    }
                 }
 
                 rebuildLocalChanges()
 
-                /* nothingChanged can be false at this point when e.g. there are two edits on the 
+                /* nothingChanged can be false at this point when e.g. there are two edits on the
                    same element, and onUpdated is called after the first edit is uploaded. */
                 val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
                     val updatedElement = get(it.first.type, it.first.id)
                     // old and new elements are equal except version and timestamp, or both are null
                     it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
                 }
-                if (nothingChanged)
+                if (nothingChanged) {
                     return
+                }
 
                 for (element in updated) {
                     val key = ElementKey(element.type, element.id)

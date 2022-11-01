@@ -86,7 +86,7 @@ fun createConfigUrl(
             val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(ORDINAL_RADIX)
             val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(ORDINAL_RADIX)
             if (ordinal1 != null && ordinal2 != null) ordinal1 to ordinal2 else null
-        }.joinToString("-") { (first, second) -> "${first}.${second}" }
+        }.joinToString("-") { (first, second) -> "$first.$second" }
 
         parameters.add(PARAM_QUEST_ORDER to sortOrders)
     }
