@@ -8,9 +8,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestRoadnameBinding
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.LocalizedName
 import org.koin.android.ext.android.inject
 import java.lang.IllegalStateException
 import java.util.LinkedList
@@ -36,7 +36,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun getAbbreviationsByLocale(): AbbreviationsByLocale = abbrByLocale
 
-    override fun getLocalizedNameSuggestions(): List<MutableMap<String, String>> {
+    override fun getLocalizedNameSuggestions(): List<List<LocalizedName>> {
         val polyline = when (val geom = geometry) {
             is ElementPolylinesGeometry -> geom.polylines.first()
             is ElementPolygonsGeometry -> geom.polygons.first()
@@ -50,7 +50,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
-        for ((languageTag, name) in adapter?.localizedNames.orEmpty()) {
+        for ((languageTag, name) in adapter?.names.orEmpty()) {
             val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale.forLanguageTag(languageTag)
             val abbr = abbrByLocale.get(locale)
             val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true

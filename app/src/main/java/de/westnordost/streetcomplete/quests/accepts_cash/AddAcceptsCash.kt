@@ -46,6 +46,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
               or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
             )
             and !payment:cash and !payment:coins and !payment:notes
+            and (name or brand or name:signed = no)
         """
     }
 
@@ -53,7 +54,10 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-    override val enabledInCountries = NoCountriesExcept("SE")
+    override val enabledInCountries = NoCountriesExcept(
+        "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
+        "SE"
+    )
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

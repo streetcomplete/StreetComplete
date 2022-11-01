@@ -1,16 +1,17 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
-import de.westnordost.streetcomplete.databinding.DialogInputTextBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestPresetsBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -20,6 +21,7 @@ import org.koin.android.ext.android.inject
 class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle {
 
     private val questPresetsController: QuestPresetsController by inject()
+    private val urlConfigController: UrlConfigController by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 
@@ -27,7 +29,7 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController)
+        val adapter = QuestPresetsAdapter(requireContext(), questPresetsController, urlConfigController)
         lifecycle.addObserver(adapter)
         binding.questPresetsList.adapter = adapter
         binding.addPresetButton.setOnClickListener { onClickAddPreset() }
@@ -35,20 +37,18 @@ class QuestPresetsFragment : Fragment(R.layout.fragment_quest_presets), HasTitle
 
     private fun onClickAddPreset() {
         val ctx = context ?: return
+        val dialog = EditTextDialog(ctx,
+            title = ctx.getString(R.string.quest_presets_preset_add),
+            callback = { name -> addQuestPreset(name) }
+        )
+        dialog.editText.hint = ctx.getString(R.string.quest_presets_preset_name)
+        dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
+        dialog.show()
+    }
 
-        val dialogBinding = DialogInputTextBinding.inflate(layoutInflater)
-        dialogBinding.editText.hint = ctx.getString(R.string.quest_presets_preset_name)
-
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.quest_presets_preset_add)
-            .setView(dialogBinding.root)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                val name = dialogBinding.editText.text.toString().trim()
-                viewLifecycleScope.launch(Dispatchers.IO) {
-                    questPresetsController.add(name)
-                }
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+    private fun addQuestPreset(name: String) {
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            questPresetsController.add(name)
+        }
     }
 }

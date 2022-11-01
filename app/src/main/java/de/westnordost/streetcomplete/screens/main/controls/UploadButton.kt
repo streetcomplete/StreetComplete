@@ -29,12 +29,6 @@ class UploadButton @JvmOverloads constructor(
         binding.iconView.alpha = if (enabled) 1f else 0.5f
     }
 
-    var showProgress: Boolean = false
-        set(value) {
-            field = value
-            binding.progressView.isInvisible = !value
-        }
-
     init {
         clipToPadding = false
     }

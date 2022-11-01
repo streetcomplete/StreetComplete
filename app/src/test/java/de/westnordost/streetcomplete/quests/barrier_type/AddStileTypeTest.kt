@@ -3,10 +3,9 @@ package de.westnordost.streetcomplete.quests.barrier_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
 
 class AddStileTypeTest {
     private val questType = AddStileType()
@@ -30,7 +29,7 @@ class AddStileTypeTest {
                 "stile" to "squeezer",
             ),
             StileType.SQUEEZER,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date", nowAsCheckDateString()),
             StringMapEntryModify("stile", "squeezer", "squeezer"),
         )
     }
@@ -121,7 +120,7 @@ class AddStileTypeTest {
                 "tag_not_in_list_for_removal" to "dummy_value",
             ),
             StileType.STEPOVER_WOODEN,
-            StringMapEntryAdd("check_date", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date", nowAsCheckDateString()),
             StringMapEntryModify("stile", "stepover", "stepover"),
             StringMapEntryModify("material", "wood", "wood"),
 

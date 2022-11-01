@@ -81,13 +81,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     }
 
     private fun updateProgress(isUploadInProgress: Boolean) {
-        if (isUploadInProgress) {
-            uploadButton.isEnabled = false
-            uploadButton.showProgress = true
-        } else {
-            uploadButton.isEnabled = true
-            uploadButton.showProgress = false
-        }
+        uploadButton.isEnabled = !isUploadInProgress
     }
 
     private fun uploadChanges() {

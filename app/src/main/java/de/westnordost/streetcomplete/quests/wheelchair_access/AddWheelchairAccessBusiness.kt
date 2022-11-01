@@ -15,6 +15,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
         nodes, ways, relations with
           access !~ no|private
           and !wheelchair
+          and (name or brand or name:signed = no)
           and (
             shop and shop !~ no|vacant
             or amenity = parking and parking = multi-storey
@@ -30,14 +31,16 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",                                                                                     // work
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & wheelchair only
                 "theatre",                             // culture

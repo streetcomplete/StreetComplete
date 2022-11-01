@@ -808,9 +808,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_advisory_speed_limit">"忠告だけの速度制限…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"住居番号がなく名前…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"住居名:"</string>
 
     <!-- Fuzzy -->
@@ -1098,6 +1095,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_detached">"一軒家"</string>
     <string name="quest_buildingType_detached_description">"独立した１世帯用の一軒家"</string>
     <string name="quest_buildingType_hotel">"宿泊施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"寮"</string>
     <string name="quest_buildingType_houseboat">"ハウスボート"</string>
 
@@ -1116,18 +1115,32 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"店舗"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"倉庫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"キオスク"</string>
     <string name="quest_buildingType_storage_tank">"貯蔵タンク"</string>
     <string name="quest_buildingType_religious">"宗教施設"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"教会"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"礼拝所"</string>
     <string name="quest_buildingType_cathedral">"聖堂"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"モスク"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"寺院"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"寺院の塔"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
     <string name="quest_buildingType_civic">"公共施設"</string>
     <string name="quest_buildingType_civic_description">"公共のための建築物"</string>
@@ -1164,6 +1177,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_bunker">"シェルター"</string>
     <string name="quest_address_answer_no_housenumber">"住居番号は無い…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"建物は次のようにタグ付けされています:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"神社"</string>
 
     <!-- Fuzzy -->
@@ -1278,9 +1293,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxweight_unsupported_sign_request_photo">"メモを残しますか？写真付きのメモを残せば、他のマッパーの助けになります"</string>
     <string name="quest_handrail_title">"この階段に手すりはありますか?"</string>
     <string name="about_summary_current_version">"現在のバージョン: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"このポストのポスト番号は何ですか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"番号は見当たらない…"</string>
@@ -1412,6 +1424,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"実績
 レベル"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"名前の付いた通りには属していません"</string>
     <string name="quest_address_street_place_name_label">"地名："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
@@ -1526,7 +1540,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりにノートを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
-    <string name="quest_address_street_hint">"地図上の道路をタップする"</string>
     <string name="quest_crossing_type_marked">"横断歩道がある"</string>
 
     <!-- Fuzzy -->

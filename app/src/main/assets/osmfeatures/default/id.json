@@ -2112,9 +2112,6 @@
                     "name": "Garis",
                     "terms": "garis"
                 },
-                "man_made": {
-                    "name": "Fitur Buatan Manusia"
-                },
                 "man_made/breakwater": {
                     "name": "Pemecah Gelombang",
                     "terms": "pemecah ombak,tembok laut"
@@ -2367,9 +2364,6 @@
                 "shop/alcohol": {
                     "name": "Toko Minuman"
                 },
-                "shop/antiques": {
-                    "name": "Toko Barang Antik"
-                },
                 "shop/baby_goods": {
                     "name": "Toko Perlengkapan Bayi"
                 },
@@ -2398,9 +2392,6 @@
                 "shop/bookmaker": {
                     "name": "Juru Taruh",
                     "terms": "tukang taruh,taruhan,judi"
-                },
-                "shop/books": {
-                    "name": "Toko Buku"
                 },
                 "shop/boutique": {
                     "name": "Butik"
@@ -2453,10 +2444,6 @@
                 },
                 "shop/dairy": {
                     "name": "Toko Susu"
-                },
-                "shop/deli": {
-                    "name": "Delikatesen",
-                    "aliases": "Deli"
                 },
                 "shop/department_store": {
                     "name": "Pasar Swalayan"
@@ -2571,9 +2558,6 @@
                 "shop/musical_instrument": {
                     "name": "Toko Alat Musik"
                 },
-                "shop/newsagent": {
-                    "name": "Toko Majalah/Koran"
-                },
                 "shop/optician": {
                     "name": "Optik",
                     "terms": "mata"
@@ -2583,9 +2567,6 @@
                 },
                 "shop/paint": {
                     "name": "Toko Cat"
-                },
-                "shop/pawnbroker": {
-                    "name": "Pegadaian"
                 },
                 "shop/pet": {
                     "name": "Toko Peliharaan"
@@ -2607,10 +2588,6 @@
                 },
                 "shop/seafood": {
                     "name": "Toko HIdangan Laut"
-                },
-                "shop/second_hand": {
-                    "name": "Jual Titip/Pasar Loak",
-                    "terms": "konsinyasi/toko barang bekas"
                 },
                 "shop/shoes": {
                     "name": "Toko Sepatu"
@@ -2656,9 +2633,6 @@
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Toko Pengisap Debu"
-                },
-                "shop/variety_store": {
-                    "name": "Toserba"
                 },
                 "shop/video": {
                     "name": "Toko Video",

@@ -16,7 +16,7 @@
     android:layout_width="64dp"
     android:layout_height="56dp"
     tools:text="abc"
-    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
     tools:ignore="RtlHardcoded"
     android:layout_alignParentRight="true"/>
 

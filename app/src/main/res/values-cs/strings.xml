@@ -733,9 +733,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Je tu jen doporučená rychlost…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Budova nemá číslo, ale jméno…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Jméno budovy:"</string>
 
     <!-- Fuzzy -->
@@ -1086,6 +1083,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Hausbót"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
 
     <!-- Fuzzy -->
@@ -1111,6 +1110,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Sklad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosek"</string>
 
     <!-- Fuzzy -->
@@ -1476,9 +1477,6 @@ Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Aktuální verze: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Jaké je referenční číslo této poštovní schránky?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo…"</string>
@@ -1931,9 +1929,10 @@ It is not big issue, but it would be nice to have it correctly. -->
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspěchy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
-    <string name="quest_address_street_description">"Klepněte na mapě na ulici, ke které patří, nebo ji zadejte bez zkratek do pole níže:"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej na smažení"</string>
     <string name="quest_recycling_type_engine_oil">"Motorový olej"</string>
     <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
@@ -2084,9 +2083,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ťukněte na cestu na mapě"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označený přechod"</string>
@@ -2305,7 +2301,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_diameter_title">"Jaký průměr je uveden na značce tohoto hydrantu?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Tento průměr vypadá nevědohodně."</string>
     <string name="quest_fireHydrant_confirmation_title">"Opravdu? Někdy lze průměr najít přímo na samotném hydrantu."</string>
     <string name="quest_diet_answer_no_food">"Nemá žádná jídla"</string>
     <string name="short_no_answer_on_button">"Ne"</string>
@@ -2320,7 +2315,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Jsou časy vybírání této poštovní poštovní schránky správné?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznáno. Zkuste zadat druh místa, např. „pekařství“. Jinak zvažte zanechání poznámky."</string>
     <string name="quest_bicycle_barrier_type_title">"Jaký je tohle druh překážky bránící cyklistům v průjezdu?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonální vzhledem k cestě"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený průjezd, menší nahoře"</string>
@@ -2335,7 +2329,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
     <!-- Fuzzy -->
     <string name="on_floor">"ve %s patře:"</string>
-    <string name="quest_street_parking_title">"Jak zde mohou parkovat auta, pokud je to možné?"</string>
     <string name="select_street_parking_orientation">"Vyberte orientaci směrem k cestě:"</string>
     <string name="select_street_parking_position">"Vyberte polohu:"</string>
     <string name="select_street_parking_no">"Jsou tu nějaké dopravní značky nebo značení?"</string>
@@ -2369,7 +2362,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="street_parking_conditional_restrictions_hint">"Pokud je tu možné parkovat nebo zastavit, odpovězte nejprve, jak tu ti, kteří zde mohou parkovat, parkují. Jaká přesně omezení tu platí, může být upřesněno později.
 
 Také můžete napsat poznámku (s fotografií)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Má obojí, číslo domu i jméno…"</string>
     <string name="quest_address_house_number_label">"Číslo domu:"</string>
 
     <!-- Fuzzy -->
@@ -2585,9 +2577,6 @@ sorted alphabetically by title -->
     <string name="link_backofyourhand_description">"Jak dobře znáte vaše okolí? Otestujte si své znalosti lokalizací ulic."</string>
 
     <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Porovnejte, jak OSM vypadala v prvních dnech provozu a jak vypadá teď!"</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"Prohlížejte, filtrujte a pište komentáře k poznámkám, které jste vytvořili vy nebo ostatní uživatelé. Mnoho poznámek lze vyřešit tak, že jejich informace zadáte do mapy v iD nebo JOSMu"</string>
 
     <!-- Quests
@@ -2680,4 +2669,18 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Jmenovka:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Seznam bytů:"</string>
     <string name="quest_entrance_reference_flat_range_to">"na"</string>
+    <string name="default_disabled_msg_overlay">"Tento typ úkolu je ve výchozím nastavení zakázán, protože již existuje překryvná aplikace, pomocí které je zadávání a aktualizace těchto údajů efektivnější a účinnější."</string>
+    <string name="quest_camp_drinking_water_title">"Mají zde táborníci volně k dispozici pitnou vodu?"</string>
+    <string name="quest_camp_shower_title">"Jsou zde sprchy?"</string>
+    <string name="quest_camp_power_supply_title">"Mohou si zde zákazníci nabíjet telefon, notebook apod.?"</string>
+    <string name="quest_camp_type_title">"Kdo zde může tábořit?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Jak stany, tak obytné vozy, cestovní přívěsy, …"</string>
+    <string name="quest_camp_type_caravans_only">"Pouze obytné vozy, cestovní přívěsy, …"</string>
+    <string name="quest_camp_type_tents_only">"Pouze stany"</string>
+    <string name="quest_camp_type_backcountry">"Táboření v přírodě (bez zázemí)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravdopodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tato odpověď neodpovídá tomu, co je o této silnici již zmapováno. Jste si jisti, že odpovídáte o správné silnici? Jste si jisti, že jste osobně provedli průzkum po celé délce, jak je vždy potřeba?"</string>
+    <string name="quest_recycling_type_pet">"Jen PET"</string>
+    <string name="street_parking_street_width">"Šířka ulice: %s"</string>
+    <string name="overlay_street_parking">"Parkování na ulici"</string>
 </resources>

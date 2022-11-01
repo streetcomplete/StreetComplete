@@ -5,10 +5,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 class HasDateTagGreaterThanTest {
-    private val date = LocalDate.of(2000, 11, 11)
+    private val date = LocalDate(2000, 11, 11)
     private val c = HasDateTagGreaterThan("check_date", FixedDate(date))
 
     @Test fun matches() {

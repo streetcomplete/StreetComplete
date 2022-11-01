@@ -8,9 +8,11 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.getIds
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
-import java.time.Instant
-import java.time.LocalDate
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.FutureTask
 
@@ -18,6 +20,9 @@ import java.util.concurrent.FutureTask
 class StatisticsController(
     private val editTypeStatisticsDao: EditTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,
+    private val currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao,
+    private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
+    private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: FutureTask<CountryBoundaries>,
     private val prefs: SharedPreferences,
     userLoginStatusSource: UserLoginStatusSource
@@ -42,6 +47,18 @@ class StatisticsController(
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         private set(value) {
             prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
+        }
+
+    override var currentWeekRank: Int
+        get() = prefs.getInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, -1)
+        private set(value) {
+            prefs.edit(true) { putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, value) }
+        }
+
+    override var activeDatesRange: Int
+        get() = prefs.getInt(Prefs.ACTIVE_DATES_RANGE, 100)
+        private set(value) {
+            prefs.edit(true) { putInt(Prefs.ACTIVE_DATES_RANGE, value) }
         }
 
     override var isSynchronizing: Boolean
@@ -79,16 +96,39 @@ class StatisticsController(
     override fun getCountryStatisticsOfCountryWithBiggestSolvedCount() =
         countryStatisticsDao.getCountryWithBiggestSolvedCount()
 
+    override fun getCurrentWeekEditCount(): Int =
+        currentWeekEditTypeStatisticsDao.getTotalAmount()
+
+    override fun getCurrentWeekEditTypeStatistics(): List<EditTypeStatistics> =
+        currentWeekEditTypeStatisticsDao.getAll()
+
+    override fun getCurrentWeekCountryStatistics(): List<CountryStatistics> =
+        currentWeekCountryStatisticsDao.getAll()
+
+    override fun getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount(): CountryStatistics? =
+        currentWeekCountryStatisticsDao.getCountryWithBiggestSolvedCount()
+
+    override fun getActiveDates(): List<LocalDate> =
+        activeDatesDao.getAll(activeDatesRange)
+
     fun addOne(type: String, position: LatLon) {
         editTypeStatisticsDao.addOne(type)
-        getRealCountryCode(position)?.let { countryStatisticsDao.addOne(it) }
+        currentWeekEditTypeStatisticsDao.addOne(type)
+        getRealCountryCode(position)?.let {
+            countryStatisticsDao.addOne(it)
+            currentWeekCountryStatisticsDao.addOne(it)
+        }
         listeners.forEach { it.onAddedOne(type) }
         updateDaysActive()
     }
 
     fun subtractOne(type: String, position: LatLon) {
         editTypeStatisticsDao.subtractOne(type)
-        getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }
+        currentWeekEditTypeStatisticsDao.subtractOne(type)
+        getRealCountryCode(position)?.let {
+            countryStatisticsDao.subtractOne(it)
+            currentWeekCountryStatisticsDao.subtractOne(it)
+        }
         listeners.forEach { it.onSubtractedOne(type) }
         updateDaysActive()
     }
@@ -108,7 +148,12 @@ class StatisticsController(
 
         editTypeStatisticsDao.replaceAll(statistics.types.associate { it.type to it.count })
         countryStatisticsDao.replaceAll(statistics.countries)
+        currentWeekEditTypeStatisticsDao.replaceAll(statistics.currentWeekTypes.associate { it.type to it.count })
+        currentWeekCountryStatisticsDao.replaceAll(statistics.currentWeekCountries)
+        currentWeekRank = statistics.currentWeekRank
+        activeDatesDao.replaceAll(statistics.activeDates)
         rank = statistics.rank
+        activeDatesRange = statistics.activeDatesRange
         daysActive = statistics.daysActive
         lastUpdate = statistics.lastUpdate
 
@@ -118,10 +163,15 @@ class StatisticsController(
     private fun clear() {
         editTypeStatisticsDao.clear()
         countryStatisticsDao.clear()
+        currentWeekEditTypeStatisticsDao.clear()
+        currentWeekCountryStatisticsDao.clear()
+        activeDatesDao.clear()
         prefs.edit(true) {
             remove(Prefs.USER_DAYS_ACTIVE)
+            remove(Prefs.ACTIVE_DATES_RANGE)
             remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
             remove(Prefs.USER_GLOBAL_RANK)
+            remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
             remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
         }
 
@@ -129,13 +179,14 @@ class StatisticsController(
     }
 
     private fun updateDaysActive() {
-        val today = LocalDate.now()
-        val lastUpdateDate = Instant.ofEpochMilli(lastUpdate).toLocalDate()
-        lastUpdate = Instant.now().toEpochMilli()
+        val today = systemTimeNow().toLocalDate()
+        val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
+        lastUpdate = nowAsEpochMilliseconds()
         if (today > lastUpdateDate) {
             daysActive++
             listeners.forEach { it.onUpdatedDaysActive() }
         }
+        activeDatesDao.addToday()
     }
 
     private fun getRealCountryCode(position: LatLon): String? =

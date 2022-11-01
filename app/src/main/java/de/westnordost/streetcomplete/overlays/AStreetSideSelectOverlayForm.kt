@@ -72,11 +72,11 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(SHOW_SIDES, streetSideSelect.showSides.name)
-        outState.putString(LEFT, streetSideSelect.left?.let { serialize(it, false) })
-        outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it, true) })
+        outState.putString(LEFT, streetSideSelect.left?.let { serialize(it) })
+        outState.putString(RIGHT, streetSideSelect.right?.let { serialize(it) })
     }
 
-    protected abstract fun serialize(item: StreetSideDisplayItem<I>, isRight: Boolean): String
+    protected abstract fun serialize(item: StreetSideDisplayItem<I>): String
 
     protected abstract fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<I>
 
@@ -84,7 +84,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
 
     protected abstract fun onClickSide(isRight: Boolean)
 
-    override fun isFormComplete() = streetSideSelect.isComplete
+    override fun isFormComplete() = streetSideSelect.left != null || streetSideSelect.right != null
 
     companion object {
         private const val SHOW_SIDES = "show_sides"

@@ -471,7 +471,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_powerPolesMaterial_metal">"Baja"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Saran batas kecepatan"</string>
-    <string name="quest_address_answer_house_name">"Nomor rumah tidak ada tapi ada namanya"</string>
     <string name="quest_address_house_name_label">"Nama rumah:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Jumlah lantai di atap"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Jumlah lantai (atap tidak dihitung)"</string>
@@ -628,8 +627,12 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_semi_detached">"Rumah semi terpisah"</string>
     <string name="quest_buildingType_terrace_description">"Barisan rumah yang mirip untuk rumah satu keluarga"</string>
     <string name="quest_buildingType_hotel">"Bangunan hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Asrama"</string>
     <string name="quest_buildingType_houseboat">"Rumah kapal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalo"</string>
     <string name="quest_buildingType_static_caravan">"Karavan Statik"</string>
     <string name="quest_buildingType_commercial">"Bangunan komersil"</string>
@@ -644,18 +647,32 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Toko"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Gudang"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kios/Warung"</string>
     <string name="quest_buildingType_storage_tank">"Tangki penyimpanan"</string>
     <string name="quest_buildingType_religious">"Bangunan religius"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Gereja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapel"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mesjid"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Bangunan kuil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagog"</string>
     <string name="quest_buildingType_civic">"Bangunan negara"</string>
     <string name="quest_buildingType_civic_description">"Bangunan publik biasanya memiliki fasilitas"</string>
@@ -692,6 +709,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Tidak punya no. rumah…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bangunan ini ditandai sebagai:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Kuil"</string>
 
     <!-- Fuzzy -->
@@ -824,9 +843,6 @@ Pisah sekarang?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apakah kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain menyelesaikannya."</string>
     <string name="quest_handrail_title">"Apa tangga ini punya susur tangan?"</string>
     <string name="about_summary_current_version">"Versi sekarang: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Apa nomor referensi kotak pos ini?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Tak ada nomor referensi yang terlihat…"</string>
@@ -1047,9 +1063,10 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="user_profile_local_rank">"Peringkat di %s"</string>
     <string name="user_profile_days_active">"Hari aktif"</string>
     <string name="user_profile_achievement_levels">"Level pencapaian"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
-    <string name="quest_address_street_description">"Tekan jalan di mana ia berada di peta atau masukkan tanpa singkatan pada kolom di bawah:"</string>
     <string name="quest_recycling_type_cooking_oil">"Minyak Memasak"</string>
     <string name="quest_recycling_type_engine_oil">"Minyak Mesin"</string>
     <string name="link_photon_description">"Ekstensi tunggal untuk Nominatim, memiliki fitur pencarian fuzi dan cari-sembari-mengetik"</string>
@@ -1151,9 +1168,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Truk-truk tinggi tidak muat"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ketuk jalan pada peta"</string>
     <string name="quest_crossing_type_marked">"Ditandai"</string>
     <string name="quest_parkingType_lane">"Parkir pada jalan"</string>
     <string name="quest_generic_answer_does_not_exist">"Ini tidak ada…"</string>
@@ -1239,7 +1253,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_buildingType_bridge">"Jembatan di antara bangunan (skyway)"</string>
     <string name="quest_dietType_explanation_halal">"Produk-produk Halal harus disiapkan dengan aturan khusus, dengan lembaga sertifikasi Halal menandai bahwa produk sesuai."</string>
     <string name="quest_picnicTableCover_title">"Apa meja piknik ini tertutup (dari hujan)?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Diameter ini terlihat tidak masuk akal."</string>
     <string name="quest_fireHydrant_confirmation_title">"Apa kamu yakin? Kadang diameternya dapat ditemukan pada hidran itu sendiri."</string>
     <string name="short_no_answer_on_button">"Tidak"</string>
     <string name="restore_confirmation">"Pulihkan"</string>
@@ -1248,11 +1261,9 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_access_yes">"Masyarakat umum"</string>
     <string name="quest_access_customers">"Orang yang mengunjungi tempat tertentu (contoh, hanya pelanggan)"</string>
     <string name="quest_access_private">"Hanya individu yang memiliki izin"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Tak dikenal. Coba masukkan jenis tempat, seperti “toko roti” atau tinggalkan sebuah catatan."</string>
     <string name="pref_title_language_select">"Pilih bahasa"</string>
     <string name="language_default">"Default Sistem"</string>
     <string name="on_floor">"pada lantai %s"</string>
-    <string name="quest_street_parking_title">"Jika bisa, bagaimana mobil dapat diparkir di sini?"</string>
     <string name="select_street_parking_position">"Pilih posisi:"</string>
     <string name="street_parking_parallel">"Paralel"</string>
     <string name="street_parking_diagonal">"Diagonal"</string>
@@ -1353,9 +1364,6 @@ sorted alphabetically by title -->
     <string name="quest_toiletAvailability_title">"Apakah tersedia kamar kecil di sini?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Apakah kamar kecil pada tempat ini ramah kursi roda?"</string>
     <string name="link_backofyourhand_description">"Sebaik apa kamu mengenal daerahmu? Uji pengetahuanmu dengan memposisikan jalanan."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Jelajahi bagaimana OSM dahulu saat baru dimulai dibandingkan bagaimana OSM terlihat sekarang!"</string>
 
     <!-- Quests
 sorted alphabetically by title -->

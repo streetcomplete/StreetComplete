@@ -37,8 +37,8 @@ class AchievementsControllerTest {
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
         userLinksDao = mock()
         statisticsSource = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(QuestOne, QuestTwo))
-        overlayRegistry = OverlayRegistry(listOf(OverlayOne))
+        questTypeRegistry = QuestTypeRegistry(listOf(0 to QuestOne, 1 to QuestTwo))
+        overlayRegistry = OverlayRegistry(listOf(0 to OverlayOne))
 
         listener = mock()
 
@@ -279,7 +279,7 @@ private object OverlayOne : Overlay {
     override val wikiLink: String? = null
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, Style>>()
-    override fun createForm(element: Element): AbstractOverlayForm? = null
+    override fun createForm(element: Element?): AbstractOverlayForm? = null
 
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }

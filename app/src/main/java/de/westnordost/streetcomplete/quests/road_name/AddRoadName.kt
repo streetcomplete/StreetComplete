@@ -6,8 +6,9 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.osm.applyTo
 
 class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
@@ -60,20 +61,9 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
                 if (singleName?.isRef() == true) {
                     tags["ref"] = singleName.name
                 } else {
-                    applyAnswerRoadName(answer, tags)
+                    answer.localizedNames.applyTo(tags)
                 }
             }
-        }
-    }
-
-    private fun applyAnswerRoadName(answer: RoadName, tags: Tags) {
-        for ((languageTag, name) in answer.localizedNames) {
-            val key = when (languageTag) {
-                "" -> "name"
-                "international" -> "int_name"
-                else -> "name:$languageTag"
-            }
-            tags[key] = name
         }
     }
 }

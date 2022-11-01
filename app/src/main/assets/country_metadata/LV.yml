@@ -1,6 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 centerLineStyle: white
 edgeLineStyle: white
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

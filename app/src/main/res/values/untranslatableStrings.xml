@@ -2,10 +2,11 @@
 <resources>
     <string name="app_name" translatable="false">Street­Complete</string>
 
+    <!-- e.g. "house number 123: Backstübchen" -->
     <string name="label_location_name">%1$s: %2$s</string>
-    <string name="label_housenumber_location_name">%1$s - %2$s: %3$s</string>
-    <string name="label_location_name_feature">%1$s: %2$s (%3$s)</string>
-    <string name="label_housenumber_location_name_feature">%1$s - %2$s: %3$s (%4$s)</string>
+    <!-- e.g. "house number 123 - on floor 3" -->
+    <string name="label_housenumber_location">%1$s - %2$s</string>
+    <!-- e.g. "McFit (Fitness Centre)" -->
     <string name="label_name_feature">%1$s (%2$s)</string>
 
     <!-- Placeholders: e.g. "it - Italian" -->
@@ -23,6 +24,7 @@
     <string name="quest_postboxRoyalCypher_type_gr" translatable="false">G R</string>
     <string name="quest_postboxRoyalCypher_type_eviir" translatable="false">E VII R</string>
     <string name="quest_postboxRoyalCypher_type_vr" translatable="false">V R</string>
+    <string name="quest_postboxRoyalCypher_type_ciiir" translatable="false">C III R</string>
 
     <string name="quest_policeType_type_it_carabinieri" translatable="false">Carabinieri</string>
     <string name="quest_policeType_type_it_guardia_costiera" translatable="false">Guardia Costiera</string>

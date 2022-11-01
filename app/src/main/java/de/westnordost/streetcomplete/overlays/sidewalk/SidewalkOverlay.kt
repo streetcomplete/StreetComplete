@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -29,7 +28,7 @@ class SidewalkOverlay : Overlay {
         // roads
         mapData.filter("""
             ways with
-              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              highway ~ motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
               and area != yes
         """).map { it to getSidewalkStyle(it) } +
         // footways etc, just to highlight e.g. separately mapped sidewalks
@@ -40,8 +39,8 @@ class SidewalkOverlay : Overlay {
             ) and area != yes
         """).map { it to PolylineStyle(StrokeStyle(Color.SKY)) }
 
-    override fun createForm(element: Element): AbstractOverlayForm? =
-        if (element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
         else null
 }
 
@@ -61,8 +60,12 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
     )
 }
 
+private val highwayValuesWhereSidewalkTaggingIsNotExpected = setOf(
+    "living_street", "pedestrian", "service", "motorway_link"
+)
+
 private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
-    tags["highway"] == "living_street" || tags["highway"] == "pedestrian" || tags["highway"] == "service"
+    tags["highway"] in highwayValuesWhereSidewalkTaggingIsNotExpected
 
 private val Sidewalk?.style get() = StrokeStyle(when (this) {
     Sidewalk.YES           -> Color.SKY

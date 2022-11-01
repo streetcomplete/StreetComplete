@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:rowCount="2"
+    android:columnCount="2">
+
+    <me.grantland.widget.AutofitLayout
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_white_corners"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/conscriptionNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/traffic_white"
+            android:background="@drawable/background_rectangular_sign_red"
+            android:minHeight="68dp"
+            android:textSize="@dimen/large_input"
+            android:imeOptions="actionNext"
+            tools:text="1234"
+            android:digits="0123456789.,- /"
+            style="@style/HouseNumberEditText" />
+
+    </me.grantland.widget.AutofitLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="128dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/conscriptionNumberInput"
+        android:text="@string/quest_housenumber_conscription_number"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" />
+
+    <me.grantland.widget.AutofitLayout
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_white_corners"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/streetNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/traffic_white"
+            android:background="@drawable/background_rectangular_sign_blue"
+            android:minHeight="68dp"
+            android:textSize="@dimen/large_input"
+            android:imeOptions="actionDone"
+            tools:text="12"
+            android:digits="0123456789.,- /"
+            style="@style/HouseNumberEditText" />
+
+    </me.grantland.widget.AutofitLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="128dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/streetNumberInput"
+        android:text="@string/quest_housenumber_street_number_optional"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" />
+
+</GridLayout>

@@ -31,6 +31,26 @@ class AddAddressStreetTest {
         assertEquals(false, questType.isApplicableTo(addr))
     }
 
+    @Test fun `not applicable to place with substreet name`() {
+        val addr = node(tags = mapOf(
+            "addr:housenumber" to "123",
+            "addr:substreet" to "onetwothree",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(addr))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(addr))
+    }
+
+    @Test fun `not applicable to place with parentstreet name`() {
+        val addr = node(tags = mapOf(
+            "addr:housenumber" to "123",
+            "addr:parentstreet" to "onetwothree",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(addr))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(addr))
+    }
+
     @Test fun `not applicable to place without street name but in a associatedStreet relation`() {
         val addr = node(1, tags = mapOf("addr:housenumber" to "123"))
         val associatedStreetRelation = rel(

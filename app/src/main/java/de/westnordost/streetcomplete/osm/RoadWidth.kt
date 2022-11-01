@@ -36,9 +36,9 @@ fun estimateRoadwayWidth(tags: Map<String, String>): Float? {
 /** Guess width of a roadway. Don't expect any precision from it! */
 fun guessRoadwayWidth(tags: Map<String, String>): Float {
     val widthOfOneSide = when (tags["highway"]) {
-        "motorway", "trunk" -> 2 * BROAD_LANE
-        "motorway_link", "trunk_link" -> BROAD_LANE
-        "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
+        "motorway" -> 2 * BROAD_LANE
+        "motorway_link" -> BROAD_LANE
+        "trunk", "primary" -> BROAD_LANE // to pay respect to that primary roads are usually broader than secondary etc
         "secondary", "tertiary", "unclassified" -> LANE
         "service" -> 2.5f
         else -> LANE
@@ -113,6 +113,7 @@ private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): 
     return leftWidth + rightWidth
 }
 
-private const val BROAD_LANE = 4f
-private const val LANE = 3f
+// rather under-estimate then over-estimate the road width
+private const val BROAD_LANE = 3.75f // standard interstate/motorway width
+private const val LANE = 2.75f // widest trucks are about 2.6m
 private const val SHOULDER = 2f

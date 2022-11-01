@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.content.res.Configuration
+import android.content.res.Resources
+import android.graphics.Point
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
@@ -26,10 +29,12 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
@@ -38,7 +43,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottom
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -55,6 +61,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.util.Locale
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
@@ -81,6 +88,20 @@ abstract class AbstractOverlayForm :
         }
     protected val countryInfo get() = _countryInfo!!
 
+    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
+    protected val countryOrSubdivisionCode: String? get() {
+        val latLon = geometry.center
+        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+    }
+
+    private val englishResources: Resources
+        get() {
+            val conf = Configuration(resources.configuration)
+            conf.setLocale(Locale.ENGLISH)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
+            return localizedContext.resources
+        }
+
     // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 
@@ -92,11 +113,15 @@ abstract class AbstractOverlayForm :
 
     // passed in parameters
     protected lateinit var overlay: Overlay private set
-    protected lateinit var element: Element private set
-    protected lateinit var geometry: ElementGeometry private set
+    protected var element: Element? = null
+        private set
+    private var _geometry: ElementGeometry? = null
+    protected val geometry: ElementGeometry
+    get() = _geometry ?: ElementPointGeometry(getMarkerPosition()!!)
+
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
-    override val elementKey: ElementKey get() = ElementKey(element.type, element.id)
+    override val elementKey: ElementKey? get() = element?.let { ElementKey(it.type, it.id) }
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
@@ -115,6 +140,8 @@ abstract class AbstractOverlayForm :
 
         /** Called when the user chose to split the way */
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
+
+        fun getMapPositionAt(screenPos: Point): LatLon?
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -125,8 +152,8 @@ abstract class AbstractOverlayForm :
 
         val args = requireArguments()
         overlay = overlayRegistry.getByName(args.getString(ARG_OVERLAY)!!)!!
-        element = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
-        geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
+        element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
+        _geometry = args.getString(ARG_GEOMETRY)?.let { Json.decodeFromString(it) }
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -144,6 +171,7 @@ abstract class AbstractOverlayForm :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.markerCreateLayout.root.isInvisible = _geometry != null
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -152,7 +180,9 @@ abstract class AbstractOverlayForm :
             cornerRadius, margin, margin, margin, margin
         )
 
-        binding.titleHintLabel.text = getNameAndLocationLabelString(element.tags, resources, featureDictionary)
+        setTitleHintLabel(
+            element?.tags?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
+        )
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
@@ -172,6 +202,13 @@ abstract class AbstractOverlayForm :
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
         binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
+
+        binding.markerCreateLayout.centeredMarkerLayout.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
     }
 
     override fun onStart() {
@@ -222,6 +259,11 @@ abstract class AbstractOverlayForm :
 
     /* ------------------------------- Interface for subclasses  ------------------------------- */
 
+    protected fun setTitleHintLabel(text: CharSequence?) {
+        binding.titleHintLabel.text = text
+        binding.titleHintLabelContainer.isGone = text == null
+    }
+
     /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
         if (binding.content.childCount > 0) {
@@ -231,6 +273,10 @@ abstract class AbstractOverlayForm :
         updateContentPadding()
         layoutInflater.inflate(resourceId, binding.content)
         return binding.content.getChildAt(0)
+    }
+
+    protected fun setMarkerIcon(iconResId: Int) {
+        binding.markerCreateLayout.createNoteIconView.setImageResource(iconResId)
     }
 
     private fun updateContentPadding() {
@@ -250,8 +296,9 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun checkIsFormComplete() {
-        binding.okButton.isEnabled = hasChanges()
-        if (isFormComplete()) {
+        val isComplete = isFormComplete()
+        binding.okButton.isEnabled = hasChanges() && isComplete
+        if (isComplete) {
             binding.okButtonContainer.popIn()
         } else {
             binding.okButtonContainer.popOut()
@@ -264,7 +311,7 @@ abstract class AbstractOverlayForm :
 
     protected open fun onDiscard() {}
 
-    protected open fun isFormComplete(): Boolean = false
+    protected abstract fun isFormComplete(): Boolean
 
     protected abstract fun onClickOk()
 
@@ -293,22 +340,25 @@ abstract class AbstractOverlayForm :
     private fun assembleOtherAnswers(): List<AnswerItem> {
         val answers = mutableListOf<AnswerItem>()
 
-        answers.add(AnswerItem(R.string.leave_note) { composeNote() })
+        val element = element
+        if (element != null) {
+            answers.add(AnswerItem(R.string.leave_note) { composeNote(element) })
 
-        if (element.isSplittable()) {
-            answers.add(AnswerItem(R.string.split_way) { splitWay() })
+            if (element.isSplittable()) {
+                answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
+            }
         }
 
         answers.addAll(otherAnswers)
         return answers
     }
 
-    protected fun splitWay() {
+    protected fun splitWay(element: Element) {
         listener?.onSplitWay(overlay, element as Way, geometry as ElementPolylinesGeometry)
     }
 
-    protected fun composeNote() {
-        val overlayTitle = requireContext().getString(overlay.title)
+    protected fun composeNote(element: Element) {
+        val overlayTitle = englishResources.getString(overlay.title)
         val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
@@ -321,6 +371,10 @@ abstract class AbstractOverlayForm :
             setLocked(false)
             return
         }
+
+        // use dummy element if element is null
+        val element = element ?: Node(0, geometry.center)
+
         withContext(Dispatchers.IO) {
             addElementEditsController.add(overlay, element, geometry, "survey", action)
         }
@@ -331,6 +385,15 @@ abstract class AbstractOverlayForm :
         binding.glassPane.isGone = !locked
     }
 
+    /* ------------------------------------- marker position ------------------------------------ */
+
+    private fun getMarkerPosition(): LatLon? {
+        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val screenPos = createNoteMarker.getLocationInWindow()
+        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
+        return listener?.getMapPositionAt(screenPos)
+    }
+
     companion object {
         private const val ARG_ELEMENT = "element"
         private const val ARG_GEOMETRY = "geometry"
@@ -338,9 +401,9 @@ abstract class AbstractOverlayForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(overlay: Overlay, element: Element, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
-            ARG_ELEMENT to Json.encodeToString(element),
-            ARG_GEOMETRY to Json.encodeToString(geometry),
+        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry?, rotation: Float, tilt: Float) = bundleOf(
+            ARG_ELEMENT to element?.let { Json.encodeToString(it) },
+            ARG_GEOMETRY to geometry?.let { Json.encodeToString(it) },
             ARG_OVERLAY to overlay.name,
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt

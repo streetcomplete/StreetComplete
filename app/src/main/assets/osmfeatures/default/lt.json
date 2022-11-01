@@ -2921,10 +2921,6 @@
                     "name": "Alkoholinių gėrimų parduotuvė",
                     "terms": "alkoholio parduotuvė"
                 },
-                "shop/antiques": {
-                    "name": "Atikvarų parduotuvė",
-                    "terms": "antikvariatas"
-                },
                 "shop/art": {
                     "name": "Meno parduotuvė"
                 },
@@ -2955,10 +2951,6 @@
                 },
                 "shop/bookmaker": {
                     "name": "Knygrišys"
-                },
-                "shop/books": {
-                    "name": "Knygynas",
-                    "terms": "knygynas,knygų parduotuvė"
                 },
                 "shop/boutique": {
                     "name": "Parduotuvė"
@@ -3023,9 +3015,6 @@
                 },
                 "shop/dairy": {
                     "name": "Pieno produktų parduotuvė"
-                },
-                "shop/deli": {
-                    "name": "Gastronomas"
                 },
                 "shop/department_store": {
                     "name": "Universalinė parduotuvė"
@@ -3139,9 +3128,6 @@
                 "shop/musical_instrument": {
                     "name": "Muzikos instrumentų parduotuvė"
                 },
-                "shop/newsagent": {
-                    "name": "Laikraščių/žurnalų parduotuvė"
-                },
                 "shop/optician": {
                     "name": "Optika"
                 },
@@ -3153,9 +3139,6 @@
                 },
                 "shop/pastry": {
                     "name": "Kepykla"
-                },
-                "shop/pawnbroker": {
-                    "name": "Lombardas"
                 },
                 "shop/perfumery": {
                     "name": "Parfumerijos parduotuvė"

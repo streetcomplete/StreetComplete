@@ -9,12 +9,15 @@
     <color name="background">#121212</color>
     <color name="background_transparent">#00121212</color>
     <color name="text">#fff</color>
+    <color name="text_based_on_main_colors">@color/accent</color>
     <color name="monochrome_icon">#ccc</color>
 
     <color name="hint_text">#999</color>
     <color name="label_text_below_image">#fff</color>
     <color name="title_text_next_to_image">#fff</color>
     <color name="description_text_next_to_image">#fff</color>
+
+    <color name="matched_search_text">#6fff</color>
 
     <color name="smoothness_vehicle_tyre">#70808b</color>
 

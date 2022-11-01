@@ -490,7 +490,7 @@ fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): 
 }
 
 /** returns whether this bounding box contains the given position */
-fun BoundingBox.contains(pos: LatLon): Boolean {
+operator fun BoundingBox.contains(pos: LatLon): Boolean {
     return if (crosses180thMeridian) {
         splitAt180thMeridian().any { it.containsCanonical(pos) }
     } else {
@@ -578,7 +578,7 @@ private fun Double.toDegrees() = this / PI * 180.0
 fun normalizeLongitude(lon: Double): Double {
     var normalizedLon = lon % 360 // normalizedLon is -360..360
     if (normalizedLon < -180) normalizedLon += 360
-    else if (normalizedLon > 180) normalizedLon -= 360
+    else if (normalizedLon >= 180) normalizedLon -= 360
     return normalizedLon
 }
 

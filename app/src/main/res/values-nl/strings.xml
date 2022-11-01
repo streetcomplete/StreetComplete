@@ -39,7 +39,7 @@
     <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Je kan ofwel een openbare opmerking zetten op deze locatie, die andere mappers hopelijk kunnen oplossen, ofwel de vraag voor jezelf verbergen"</string>
+    <string name="quest_leave_new_note_description">"Je kan ofwel een openbare opmerking achterlaten op deze locatie, die andere mappers hopelijk kunnen oplossen, ofwel de vraag voor jezelf verbergen"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"Oké"</string>
@@ -198,7 +198,7 @@
     <string name="quest_openingHours_answer_247">"24/7 geopend"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"verschilt per maand…"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Verschilt per maand…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Geen vaste openingstijden…"</string>
@@ -513,7 +513,7 @@ Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde st
     <string name="quest_wheelchairAccess_limited">"Gedeeltelijk"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bikeParkingCapacity_hint">"Let op dat bij dit type fietsenrekken vaak aan beide kanten fietsen geparkeerd kunnen worden."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Let op dat bij veel fietsenrekken aan beide kanten fietsen geparkeerd kunnen worden."</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Rolschaatsen"</string>
@@ -785,9 +785,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Alleen een adviessnelheids…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Naam van het gebouw:"</string>
 
     <!-- Fuzzy -->
@@ -834,7 +831,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_leave_new_note_create_image_error">"Kon geen bestand voor de foto aanmaken"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_dual">"fietsstrook op de weg, voor beide richtingen"</string>
+    <string name="quest_cycleway_value_lane_dual">"fietsstrook op de weg, in beide richtingen"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"gescheiden fietspad met tweerichtingsverkeer"</string>
@@ -861,10 +858,10 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_hasFeature_only">"Alleen"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, vis, melkproducten, eieren, …)."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, vis, melkproducten, eieren, honing, …)."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees, vis en gevogelte"</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees, vis en gevogelte."</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Antwoord alleen \"ja\" als deze plek voldoende hoofdgerechten biedt voor dit dieet."</string>
@@ -888,11 +885,11 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="default_disabled_msg_go_inside">"Dit type vragen is standaard uitgeschakeld omdat je voor het antwoord waarschijnlijk de locatie moet binnengaan."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_conscription_number">"Conscriptienummer (Tsjechië en Slowakije)"</string>
+    <string name="quest_housenumber_conscription_number">"Conscriptie-nummer"</string>
 
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <!-- Fuzzy -->
-    <string name="quest_housenumber_street_number_optional">"Oriëntatienummer (Tsjechië en Slowakije)"</string>
+    <string name="quest_housenumber_street_number_optional">"Oriëntatie-nummer (optioneel)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant…"</string>
@@ -901,7 +898,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_openingHours_emptyAnswer">"Beschrijf de aangegeven openingstijden. Als er geen openingstijden aangegeven zijn, ga het dan binnen vragen."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_none_but_no_oneway">"Geen, maar fietsers mogen de weg gebruiken in beide richtingen."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"geen, maar fietsers mogen de weg gebruiken in beide richtingen"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Waarom heeft dit geen naam?"</string>
@@ -916,7 +913,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heeft gewoon geen naam"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, …)"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoelpictogram zoals dit kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk betekent dat een rolstoelgebruiker naar binnen kan en het toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een leuning, verlaagde wastafel, …)."</string>
 
     <!-- Fuzzy -->
     <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
@@ -1024,7 +1021,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Je kan huisnummers invoeren gescheiden door komma's of met een bereik.
-Bijvoorbeeld 1,3 of 2–6."</string>
+Bijvoorbeeld 1,3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Voorwielvriendelijk fietsenrek"</string>
@@ -1045,7 +1042,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_bicycle_parking_type_title">"Welke soort fietsenstalling is dit?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"Fietssuggestiestrook"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"fietssuggestiestrook"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Wanneer wordt deze brievenbus geleegd?"</string>
@@ -1097,7 +1094,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_buildingType_answer_multiple_types">"Het heeft verschillende functies"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_answer_multiple_types_description">"Selecteer het hoofddoel van dit gebouw. Bv. als er op de benedenverdieping een winkel is met appartementen erboven, dan is het vooral een appartementsgebouw."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Selecteer het hoofddoel van dit gebouw. Bv. als er op de begane grond een winkel is met appartementen erboven, dan is het vooral een appartementsgebouw."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Het is nog in aanbouw"</string>
@@ -1112,22 +1109,22 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_buildingType_house">"Huis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments_description">"Huis met verschillende gezinnen, het kan winkels hebben op de benedenverdieping"</string>
+    <string name="quest_buildingType_apartments_description">"Huis voor meerdere gezinnen, mogelijk met winkels op de begane grond"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Appartementsgebouw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached">"Vrijstaande eensgezinswoning"</string>
+    <string name="quest_buildingType_detached">"Vrijstaande eengezinswoning"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_detached_description">"Een vrijstaande eengezinswoning"</string>
+    <string name="quest_buildingType_detached_description">"vrijstaande eengezinswoning"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Half-vrijstaand huis"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace_description">"Een rij van gelijkaardige eensgezinswoningen"</string>
+    <string name="quest_buildingType_terrace_description">"een rij van vergelijkbare eengezinswoningen"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Hotelgebouw"</string>
@@ -1137,6 +1134,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Woonboot"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
 
     <!-- Fuzzy -->
@@ -1162,6 +1161,8 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Opslagloods"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
@@ -1278,7 +1279,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"Gebouw met machines zoals pompen en transformatoren"</string>
-    <string name="quest_buildingType_hangar">"Hangaar"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"Opslag voor vliegtuigen, helikopters of ruimtevaartuigen"</string>
@@ -1306,7 +1307,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_maxspeed_answer_noSign2">"Geen bord, pas de standaard verkeersregels toe."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_no_sign">"Geen openingstijden zichtbaar."</string>
+    <string name="quest_openingHours_no_sign">"Geen openingstijden zichtbaar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Sportcentrum"</string>
@@ -1361,7 +1362,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="action_deselect_all">"Deselecteer alles"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_retail_description">"Inclusief gebouwen van restaurants, cafés, …"</string>
+    <string name="quest_buildingType_retail_description">"Inclusief gebouwen van restaurants, cafés, winkels…"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Volgende"</string>
@@ -1525,9 +1526,6 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="about_summary_current_version">"Huidige versie: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Wat is het referentienummer van deze brievenbus?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Geen referentienummer zichtbaar…"</string>
 
     <!-- Fuzzy -->
@@ -1537,7 +1535,7 @@ Bijvoorbeeld 1,3 of 2–6."</string>
     <string name="quest_recycling_materials_title">"Wat kan hier achtergelaten worden voor recycling?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_materials_note">"Als iets anders dan hier aakiesbaar gerecycled kan worden, geef dan een notitie."</string>
+    <string name="quest_recycling_materials_note">"Als iets anders dan hier aankiesbaar gerecycled kan worden, geef dan een notitie."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Batterijen"</string>
@@ -1681,7 +1679,7 @@ Het zoekt automatisch naar ontbrekende details in je omgeving: fietspaden, huisn
 Je kan meteen beginnen met het beantwoorden van de vragen en later inloggen om je antwoorden te publiceren."</string>
 
     <!-- Fuzzy -->
-    <string name="tutorial_stay_safe">"Wanneer je niet zeker bent, kan je altijd het antwoord \"Weet ik niet\" aanklikken en een opmerking achterlaten.
+    <string name="tutorial_stay_safe">"Wanneer je niet zeker bent, kan je altijd het antwoord \"Weet ik niet\" aantikken en een opmerking achterlaten.
 
 Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en betreed geen privé terreinen."</string>
 
@@ -1886,7 +1884,7 @@ Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en 
 
     <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"Je hebt geholpen %d adressen te lokaliseren!
-Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem"</string>
+Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem."</string>
 
     <!-- Fuzzy -->
     <string name="achievement_building_title">"Hoogbouw"</string>
@@ -1937,7 +1935,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="privacy_html_statistics">"&lt;p&gt;De gegevens die in je profiel worden weergegeven, worden samengevoegd uit je publiek beschikbare bijdragegeschiedenis aan OpenStreetMap en vervolgens gehost op mijn server.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen"</string>
+    <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen."</string>
 
     <!-- Can i think with Art, contributors about those whom made the illustrations? -->
     <!-- Fuzzy -->
@@ -1962,9 +1960,10 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="user_profile_local_rank">"Rang in %s"</string>
     <string name="user_profile_days_active">"Dagen actief"</string>
     <string name="user_profile_achievement_levels">"Prestatieniveaus"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Het hoort niet bij een straat met een naam."</string>
     <string name="quest_address_street_place_name_label">"Plaatsnaam:"</string>
-    <string name="quest_address_street_description">"Tik op de kaart op de weg waartoe het behoort of voer deze zonder afkortingen in in het onderstaande veld:"</string>
     <string name="quest_recycling_type_cooking_oil">"Bakolie"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Een op zichzelf staande uitbreiding van Nominatim met algemeen zoeken en zoeken terwijl je typt"</string>
@@ -1990,7 +1989,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten oppervlak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om het wgdek te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar het oppervlak verandert. Gebruik alstublieft \"Weet ik niet\" als er één wegdek is maar dat niet beschikbaar is als antwoord."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om het wegdek te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar het oppervlak verandert. Gebruik alstublieft \"Weet ik niet\" als er één wegdek is maar dat niet beschikbaar is als antwoord."</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van het oppervlak aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
@@ -2111,9 +2110,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tik de weg aan op de kaart"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
 
     <!-- Fuzzy -->
@@ -2150,7 +2146,9 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hier is geen fietspad."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant. Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant.
+
+Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selecteer dat er geen fietspad is"</string>
@@ -2161,7 +2159,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_surface_value_tartan">"Tartan"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om een fiets te parkeren?"</string>
+    <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om je fiets te parkeren?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning, bijvoorbeeld een rijtjeshuis"</string>
@@ -2191,7 +2189,7 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals_controlled">"Oversteekplaats bestuurd door verkeerslichten"</string>
+    <string name="quest_crossing_type_signals_controlled">"Oversteekplaats met verkeerslichten"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
     <string name="synced">"Gesynchroniseerd"</string>
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>
@@ -2280,7 +2278,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="action_manage_presets">"Voorinstellingen beheren"</string>
 
     <!-- Fuzzy -->
-    <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders mobieltje"</string>
+    <string name="team_mode_team_size_label2">"Hoeveel mensen doen er mee? Voer hetzelfde getal in op ieders mobieltje."</string>
     <string name="team_mode_choose_color2">"Nu moet ieder persoon een verschillende kleur kiezen. Kies de jouwe:"</string>
     <string name="link_organic_maps_description">"Kaart-app voor reizigers, wandelaars en fietsers die off-line werkt"</string>
     <string name="quest_kerb_height_no">"Helemaal geen rand"</string>
@@ -2320,7 +2318,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_traffic_calming_type_bump">"Verkeersdrempel (korter)"</string>
     <string name="quest_traffic_calming_type_hump">"Verkeersdrempel (langer)"</string>
     <string name="quest_traffic_calming_type_table">"Verkeersplateau"</string>
-    <string name="quest_traffic_calming_type_cushion">"Verkeerskussen (geen hinder voor brede voertuigen)"</string>
+    <string name="quest_traffic_calming_type_cushion">"Verkeersdrempel (geen hinder voor brede voertuigen)"</string>
     <string name="quest_traffic_calming_type_choker">"Wegversmalling"</string>
     <string name="quest_traffic_calming_type_island">"Verkeerseiland"</string>
     <string name="quest_traffic_calming_type_chicane">"Chicane"</string>
@@ -2328,7 +2326,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_surface_value_concrete_plates">"Betonnen platen"</string>
     <string name="quest_surface_value_concrete_lanes">"Betonnen stroken"</string>
     <string name="quest_fireHydrant_diameter_title">"Welke diameter wordt aangegeven op het bord voor deze brandkraan?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"Deze diameter lijkt onwaarschijnlijk."</string>
     <string name="quest_fireHydrant_confirmation_title">"Weet je het zeker? Soms kan de diameter op de brandkraan zelf staan."</string>
     <string name="quest_diet_answer_no_food">"Het heeft geen eten"</string>
     <string name="short_no_answer_on_button">"Nee"</string>
@@ -2341,7 +2338,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Zijn de ophaaltijden van deze brievenbus nog steeds correct?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Niet herkend. Probeer de soort winkel in te voeren, bijvoorbeeld 'bakkerij'. Overweeg anders een notitie achter te laten."</string>
     <string name="quest_bicycle_barrier_type_title">"Welk soort fietssluis is dit?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonaal over het pad"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Smalle doorgang, nauwer naar boven toe."</string>
@@ -2355,7 +2351,6 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
 
     <!-- Fuzzy -->
     <string name="on_floor">"op verdieping %s"</string>
-    <string name="quest_street_parking_title">"Hoe kunnen auto's hier parkeren, of helemaal niet?"</string>
     <string name="select_street_parking_orientation">"Selecteer de postitie ten op zichte van de rijbaan:"</string>
     <string name="select_street_parking_position">"Selecteer positie:"</string>
     <string name="select_street_parking_no">"Zijn er hier borden of weg makeringen?"</string>
@@ -2386,10 +2381,9 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="street_parking_no_other_reasons">"Geen specifiek bord / parkeren niet mogelijk"</string>
 
     <!-- Fuzzy -->
-    <string name="street_parking_conditional_restrictions_hint">"Als het mogelijk is om hier te parkeren of te stoppen, antwoord dan eerst hoe degenen die het mogen, hier parkeren. Welke beperkingen er precies gelden, kunt u later specificeren.
+    <string name="street_parking_conditional_restrictions_hint">"Als het mogelijk is om hier te parkeren of te stoppen, antwoord dan eerst hoe hier geparkeerd kan worden. Welke beperkingen er precies gelden, kunt u later specificeren.
 
 U kunt ook een notitie achterlaten (met een foto)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Zowel een huisnummer als een gebouwnaam"</string>
     <string name="quest_address_house_number_label">"Huisnummer:"</string>
 
     <!-- Fuzzy -->
@@ -2401,7 +2395,7 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_fireHydrant_position_lane">"Op de rijbaan"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_position_sidewalk">"op het voetpad"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Op het voetpad"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Op een parkeerplaats"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Ja (laat een notitie achter)"</string>
 
@@ -2412,10 +2406,10 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_smoothness_road_title">"Wat is de kwaliteit van het wegdek van deze weg?"</string>
     <string name="quest_smoothness_title_excellent">"Glad en gelijkmatig"</string>
     <string name="quest_smoothness_title_good">"Voornamelijk gelijkmatig"</string>
-    <string name="quest_smoothness_title_intermediate">"Een beethje hobbelig"</string>
-    <string name="quest_smoothness_title_bad">"Hobbeling"</string>
+    <string name="quest_smoothness_title_intermediate">"Een beetje hobbelig"</string>
+    <string name="quest_smoothness_title_bad">"Hobbelig"</string>
     <string name="quest_smoothness_title_very_bad">"Erg hobbelig"</string>
-    <string name="quest_smoothness_title_horrible">"Errg hobbeling en ongelijk"</string>
+    <string name="quest_smoothness_title_horrible">"Erg hobbelig en ongelijk"</string>
     <string name="quest_smoothness_title_very_horrible">"Bijna onbegaanbaar"</string>
     <string name="quest_smoothness_title_impassable">"Onbegaanbaar"</string>
     <string name="quest_smoothness_description_excellent_paved">"Geen hobbels of scheuren"</string>
@@ -2549,13 +2543,13 @@ sorted alphabetically by title -->
     <string name="quest_baby_changing_table_title2">"Heeft deze plek een plek om baby's te verschonen?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopBench_title2">"Is er een bankje bij deze halte? "</string>
+    <string name="quest_busStopBench_title2">"Is er een bankje bij deze halte?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Is er een afvalbak bij deze halte?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopLit_title2">"Is deze halte verlicht?"</string>
+    <string name="quest_busStopLit_title2">"Is deze bushalte verlicht?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Wat is de naam van deze halte?"</string>
@@ -2598,10 +2592,7 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ben je er zeker van dat fietsers op deze eenrichtingsweg niet in beide richtingen mogen fietsen? Misschien staat er een verkeersbord aan het eind van de straat."</string>
     <string name="link_valhalla_description">"Router met een zeer beperkt geheugengebruik, multimodaal routen, isochronen en meer."</string>
-    <string name="link_backofyourhand_description">"Hoe goed ken je je omgeving? Test je kennis door straten te zoeken."</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"Ontdek hoe het uitzicht van OSM doorheen de jaren geëvolueerd is!"</string>
+    <string name="link_backofyourhand_description">"Hoe goed ken jij je omgeving? Test je kennis door straten te zoeken."</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"Bekijk, filter en reageer eenvoudig op opmerkingen van jou en anderen. Veel opmerkingen kunnen worden opgelost door hun informatie via iD of JOSM op de kaart te zetten"</string>
@@ -2622,7 +2613,7 @@ sorted alphabetically by title -->
     <string name="quest_step_count_stile_hint">"Enkel het aantal treden tot de top. Als het aantal treden verschilt tussen beide kanten, geef dan het grootste getal."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shoulder_explanation2">"Een berm is een duidelijk afgebakende noodstopstrook. Het als berm aangewezen gebied is niet noodzakelijkerwijs over de gehele breedte verhard en niet noodzakelijk breed genoeg om een auto volledig van de rijbaan te laten stoppen."</string>
+    <string name="quest_shoulder_explanation2">"Een vluchtstrook is een duidelijk afgebakende noodstopstrook. Deze is niet noodzakelijkerwijs over de gehele breedte verhard en mogelijk niet breed genoeg om een auto volledig van de rijbaan te laten stoppen."</string>
     <string name="quest_cycleway_value_none_and_oneway">"geen, het is verboden te fietsen in deze richting"</string>
     <string name="map_btn_create_track">"Maak nieuwe spooropname"</string>
 
@@ -2648,7 +2639,7 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_title">"Worden hier tweedehandsfietsen verkocht?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_shop_second_hand_only_new">"Neen, enkel nieuwe"</string>
+    <string name="quest_bicycle_shop_second_hand_only_new">"Nee, enkel nieuwe"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_shop_second_hand_new_and_used">"Ja, zowel nieuw als tweedehands"</string>
@@ -2695,7 +2686,7 @@ sorted alphabetically by title -->
     <string name="lit_value_automatic">"Verlicht als iemand passeert"</string>
     <string name="overlay_sidewalk">"Voetpaden"</string>
     <string name="quest_generic_answer_is_indoors">"Dit is binnen"</string>
-    <string name="quest_summit_cross_title">"Is er een kruispunt hier?"</string>
+    <string name="quest_summit_cross_title">"Is hier een kruispunt?"</string>
     <string name="quest_entrance_reference">"Wat staat er bij deze ingang aangegeven?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Entree label en appartementen reeks"</string>
 
@@ -2708,4 +2699,49 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_entrance_reference_flat_range_label">"Appartementen volgorde:"</string>
     <string name="quest_entrance_reference_flat_range_to">"naar"</string>
+    <string name="default_disabled_msg_overlay">"Dit type vraag is standaard uitgeschakeld omdat er al een overlay is waarmee het effectiever en efficiënter is om deze gegevens in te voeren en bij te werken."</string>
+    <string name="quest_camp_drinking_water_title">"Is drinkwater hier gratis beschikbaar voor kampeerders?"</string>
+    <string name="quest_camp_shower_title">"Zijn hier douches?"</string>
+    <string name="quest_camp_power_supply_title">"Zijn er hier oplaadpunten voor telefoons, laptops e.d.?"</string>
+    <string name="quest_camp_type_title">"Mag je hier kamperen?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Zowel tenten, caravans als campers."</string>
+    <string name="quest_camp_type_caravans_only">"Alleen caravans en campers."</string>
+    <string name="quest_camp_type_tents_only">"Alleen tenten"</string>
+    <string name="quest_camp_type_backcountry">"Kampeer gelegenheid zonder faciliteiten"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
+    <string name="quest_recycling_type_pet">"Alleen plastic"</string>
+    <string name="street_parking_street_width">"Straatbreedte: %s"</string>
+    <string name="overlay_street_parking">"Parkeren op straat."</string>
+    <string name="link_ohsomehex_description">"Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd"</string>
+    <string name="link_opencampingmap_description">"Een kaart met campings"</string>
+    <string name="quest_atm_cashin_title">"Kan je bij deze geldautomaat ook geld storten?"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Het is een verzamelplaats voor noodgevallen"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Een verzamelplaats voor noodgevallen is waar mensen samenkomen tijdens een noodsituatie. Het ziet er meestal ongeveer zo uit:"</string>
+    <string name="quest_address_answer_house_name2">"Het heeft een huisnaam…"</string>
+    <string name="quest_address_street_street_name_label">"Straatnaam:"</string>
+    <string name="quest_address_street_hint2">"Tik op een straat om deze te selecteren"</string>
+    <string name="quest_bicycle_incline_title">"In welke richting gaat het hier naar boven?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Het gaat op en neer"</string>
+    <string name="quest_drinking_water_type_title">"Hoe wordt hier drinkwater aangeboden?"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Alleen flesjes bijvullen"</string>
+    <string name="quest_drinking_water_type_tap">"Waterkraan"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Handpomp"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Waterbron zonder pomp"</string>
+    <string name="quest_drinking_water_type_spring">"Bron"</string>
+    <string name="quest_drinking_water_type_disused">"Drinkwater werkt niet meer"</string>
+    <string name="overlay_addresses">"Adressen"</string>
+    <string name="overlay_shops">"Winkels"</string>
+    <string name="name_label">"Naam:"</string>
+    <string name="vacant_shop_title">"Leegstaande winkel"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Ander soort winkel"</string>
+    <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Vast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Te openen"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Verwijderbaar"</string>
+    <string name="quest_genericRef_title">"Wat is het identificatienummer hier?"</string>
+    <string name="quest_presets_share">"Delen"</string>
+    <string name="quest_presets_delete">"Verwijderen"</string>
 </resources>

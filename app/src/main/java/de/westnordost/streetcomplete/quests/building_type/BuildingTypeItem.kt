@@ -1,68 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.ABANDONED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.ALLOTMENT_HOUSE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.APARTMENTS
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.BOATHOUSE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.BRIDGE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.BUNGALOW
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.BUNKER
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CARPORT
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CATHEDRAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHAPEL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CHURCH
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CIVIC
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.COLLEGE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.COMMERCIAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.CONSTRUCTION
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.DETACHED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.DORMITORY
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.FARM_AUXILIARY
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.FIRE_STATION
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.GARAGE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.GARAGES
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.GOVERNMENT
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.GRANDSTAND
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.GREENHOUSE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HANGAR
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HISTORIC
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOSPITAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOTEL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOUSE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HOUSEBOAT
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.HUT
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.INDUSTRIAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.KINDERGARTEN
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.KIOSK
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.MOSQUE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.OFFICE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.PAGODA
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.PARKING
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.RELIGIOUS
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.RESIDENTIAL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.RETAIL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.ROOF
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.RUINS
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SCHOOL
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SEMI_DETACHED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SERVICE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHED
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SHRINE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SILO
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SPORTS_CENTRE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.STADIUM
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.STATIC_CARAVAN
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.STORAGE_TANK
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.SYNAGOGUE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TEMPLE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TERRACE
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TOILETS
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRAIN_STATION
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.TRANSPORTATION
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.UNIVERSITY
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.WAREHOUSE
+import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
@@ -136,6 +75,7 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     COMMERCIAL ->      R.string.quest_buildingType_commercial
     CIVIC ->           R.string.quest_buildingType_civic
     RELIGIOUS ->       R.string.quest_buildingType_religious
+    GUARDHOUSE ->      R.string.quest_buildingType_guardhouse
     CONSTRUCTION ->    null
 }
 
@@ -226,5 +166,6 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     COMMERCIAL ->      R.drawable.ic_building_office
     CIVIC ->           R.drawable.ic_building_civic
     RELIGIOUS ->       R.drawable.ic_building_temple
+    GUARDHOUSE ->      R.drawable.ic_building_guardhouse
     CONSTRUCTION ->    null
 }

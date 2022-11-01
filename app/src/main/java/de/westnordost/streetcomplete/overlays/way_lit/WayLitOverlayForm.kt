@@ -26,19 +26,17 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val litStatus = createLitStatus(element.tags)
-        currentLitStatus = litStatus
-        if (litStatus != null && litStatus != UNSUPPORTED) {
-            selectedItem = litStatus.asItem()
-        }
+        val litStatus = createLitStatus(element!!.tags)
+        currentLitStatus = if (litStatus != UNSUPPORTED) litStatus else null
+        selectedItem = currentLitStatus?.asItem()
     }
 
     override fun hasChanges(): Boolean =
         selectedItem?.value != currentLitStatus
 
     override fun onClickOk() {
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            selectedItem!!.value!!.applyTo(it)
-        }.create()))
+        val tagChanges = StringMapChangesBuilder(element!!.tags)
+        selectedItem!!.value!!.applyTo(tagChanges)
+        applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 }

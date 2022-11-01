@@ -1,14 +1,7 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
@@ -86,23 +79,45 @@ enum class Cycleway {
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
 }
 
-fun Cycleway.isAmbiguous(countryCode: String) = when (this) {
-    UNSPECIFIED_SHARED_LANE -> true
-    // all cycle lanes in Belgium and Norway are exclusive
-    UNSPECIFIED_LANE -> countryCode !in listOf("BE", "NO")
-    else -> false
+fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
+    UNSPECIFIED_SHARED_LANE ->
+        true
+    UNSPECIFIED_LANE ->
+        countryInfo.hasAdvisoryCycleLane && countryInfo.countryCode !in listOf("BE", "NL")
+    else ->
+        false
 }
 
-fun Cycleway.isSuperfluous(countryCode: String) = when (this) {
-    // all cycle lanes in Belgium and Norway are exclusive
-    EXCLUSIVE_LANE, ADVISORY_LANE -> countryCode in listOf("BE", "NO")
-    else -> false
+fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
+    val cycleways = mutableListOf(
+        NONE,
+        TRACK,
+        EXCLUSIVE_LANE,
+        ADVISORY_LANE,
+        UNSPECIFIED_LANE,
+        SUGGESTION_LANE,
+        SEPARATE,
+        PICTOGRAMS,
+        BUSWAY,
+        SIDEWALK_EXPLICIT,
+        DUAL_LANE,
+        DUAL_TRACK
+    )
+    if (countryInfo.hasAdvisoryCycleLane) {
+        cycleways.remove(UNSPECIFIED_LANE)
+    } else {
+        cycleways.remove(EXCLUSIVE_LANE)
+        cycleways.remove(ADVISORY_LANE)
+    }
+    // different tagging for NL / BE
+    if (countryInfo.countryCode in listOf("BE", "NL")) {
+        cycleways.remove(ADVISORY_LANE)
+    } else {
+        cycleways.remove(SUGGESTION_LANE)
+    }
+    return cycleways
 }
 
-fun Cycleway.isAvailableAsSelection(countryCode: String): Boolean =
-    !isUnknown && !isInvalid && !isAmbiguous(countryCode) && !isSuperfluous(countryCode)
-    /* suggestion lanes are only known in Belgium and Netherlands */
-    && (this != SUGGESTION_LANE || countryCode in listOf("NL", "BE"))
 
 val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f

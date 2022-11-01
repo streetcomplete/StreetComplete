@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:divider="@drawable/space_8dp"
+        android:showDividers="middle">
 
         <RadioButton
             android:id="@+id/replaceRadioButton"
@@ -18,14 +20,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <AutoCompleteTextView
-            android:id="@+id/presetsEditText"
+        <RelativeLayout
+            android:id="@+id/featureContainer"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:dropDownAnchor="@id/replaceRadioContainer"
-            android:completionThreshold="2"
-            android:hint="@string/quest_shop_gone_replaced_answer_hint"/>
+            android:padding="2dp"
+            android:background="@drawable/background_button_selectable_outline">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_expand_down_24dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"/>
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/featureView"
+                layout="@layout/view_feature"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

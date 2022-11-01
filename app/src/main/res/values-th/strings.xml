@@ -367,7 +367,6 @@
     <string name="quest_powerPolesMaterial_metal">"เหล็ก"</string>
     <string name="quest_powerPolesMaterial_concrete">"คอนกรีต"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"เพียงคำแนะนำจำกัดความเร็ว…"</string>
-    <string name="quest_address_answer_house_name">"ไม่มีเลขที่บ้าน มีแต่ชื่อ…"</string>
     <string name="quest_address_house_name_label">"ชื่อบ้าน:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"ชั้นในหลังคา"</string>
     <string name="quest_buildingLevels_levelsLabel2">"ชั้นปกติ (ไม่นับหลังคา)"</string>
@@ -520,8 +519,12 @@
     <string name="quest_buildingType_semi_detached">"บ้านแฝด"</string>
     <string name="quest_buildingType_terrace_description">"แถวเชิงเส้นของบ้านเดี่ยวที่คล้ายกัน"</string>
     <string name="quest_buildingType_hotel">"อาคารโรงแรม"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"หอพัก"</string>
     <string name="quest_buildingType_houseboat">"เรือนแพ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"บังกะโล"</string>
     <string name="quest_buildingType_static_caravan">"บ้านเคลื่อนที่"</string>
     <string name="quest_buildingType_commercial">"อาคารเชิงพาณิชย์"</string>
@@ -536,18 +539,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"ร้านค้า"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"โกดัง"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"ซุ้ม"</string>
     <string name="quest_buildingType_storage_tank">"ถังเก็บ"</string>
     <string name="quest_buildingType_religious">"อาคารทางศาสนา"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"โบสถ์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"โบสถ์"</string>
     <string name="quest_buildingType_cathedral">"มหาวิหาร"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"มัสยิด"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"อาคารวัด"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"เจดีย์"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"โบสถ์ยิว"</string>
     <string name="quest_buildingType_civic">"อาคารราชการ"</string>
     <string name="quest_buildingType_civic_description">"อาคารสาธารณะซึ่งมักเป็นที่อำนวยความสะดวกต่างๆ"</string>
@@ -584,6 +601,8 @@
     <string name="quest_buildingType_bunker">"บังเกอร์"</string>
     <string name="quest_address_answer_no_housenumber">"ไม่มีเลขที่บ้าน…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"อาคารถูกแท็กเป็น:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"ศาลเจ้า"</string>
 
     <!-- Fuzzy -->
@@ -712,9 +731,6 @@
     <string name="quest_maxweight_unsupported_sign_request_photo">"คุณต้องการที่จะสร้างหมายเหตุหรือเปล่า? หมายเหตุพร้อมรูปถ่ายจะช่วยให้ผู้ทำแผนที่รายอื่นมาช่วยดูแลได้"</string>
     <string name="quest_handrail_title">"ขั้นบันไดตรงนี้มีราวจับหรือไม่?"</string>
     <string name="about_summary_current_version">"เวอร์ชั่นปัจจุบัน: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"ตู้ไปรษณีย์นี้ มีหมายเลขอ้างอิงอะไร?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
@@ -926,9 +942,10 @@
     <string name="user_profile_days_active">"จำนวนวันที่"</string>
     <string name="user_profile_achievement_levels">"ระดับ
 ความสำเร็จ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ไม่ได้เป็นของถนนที่มีชื่อ"</string>
     <string name="quest_address_street_place_name_label">"ชื่อสถานที่:"</string>
-    <string name="quest_address_street_description">"แตะถนนที่เป็นที่ตั้งบนแผนที่หรือป้อนโดยไม่มีตัวย่อในช่องด้านล่าง:"</string>
     <string name="quest_recycling_type_cooking_oil">"น้ำมันปรุงอาหาร"</string>
     <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
@@ -1070,9 +1087,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"รถบรรทุกสูงผ่านไม่ได้"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"แตะถนนบนแผนที่"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมายจราจร"</string>
@@ -1285,7 +1299,6 @@
     <string name="quest_surface_value_concrete_plates">"แผ่นคอนกรีต"</string>
     <string name="quest_surface_value_concrete_lanes">"ช่องคอนกรีต"</string>
     <string name="quest_fireHydrant_diameter_title">"หัวจ่ายมีเส้นผ่านศูนย์กลางเท่าไหร่ที่ระบุบนป้าย?"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description">"เส้นผ่านศูนย์กลางที่ระบุไม่น่าจะถูกต้อง"</string>
     <string name="quest_fireHydrant_confirmation_title">"แน่ใจนะ? บางครั้งเส้นผ่านศูนย์อาจจะเขียนบนหัวจ่าย"</string>
     <string name="quest_diet_answer_no_food">"ไม่ขายอาหาร"</string>
     <string name="short_no_answer_on_button">"ไม่"</string>
@@ -1298,7 +1311,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"เวลาไขตู้ยังถูกรึเปล่า?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ข้อมูลไม่ถูกต้อง ลองใช้ประเภทของสถานที่ เช่น ร้านขนมปัง หรือสร้างโน้ตไว้"</string>
     <string name="quest_bicycle_barrier_type_title">"รั้วกั้นจักรยานเป็นแบบไหน?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"ทแยงมุมกับทาง"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ด้านบนแคบกว่าด้านล่าง คล้ายตัว A"</string>
@@ -1308,7 +1320,6 @@
     <string name="pref_title_language_select">"เลือกภาษา"</string>
     <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
     <string name="on_floor">"บนชั้น %s"</string>
-    <string name="quest_street_parking_title">"ตรงนี้จอดรถได้รึเปล่า?"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
     <string name="select_street_parking_position">"เลือกตำแหน่ง:"</string>
     <string name="select_street_parking_no">"มีป้ายหรือสัญลักษณ์บนถนนรึเปล่า?"</string>
@@ -1342,7 +1353,6 @@
     <string name="street_parking_conditional_restrictions_hint">"ถ้าจอดหรือหยุดรถตรงนี้ได้ กรุณาระบุเงื่อนไขอย่างคร่าว คุณสามารถระบุเงื่อนไขเพิ่มเติมได้ภายหลัง
 
 หรือสร้างโน๊ตไว้ (อาจจะแนบรูปด้วย)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"มีทั้งบ้านเลขที่และชื่ออาคาร"</string>
     <string name="quest_address_house_number_label">"บ้านเลขที่:"</string>
 
     <!-- Fuzzy -->
@@ -1541,9 +1551,6 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"แน่ใจนะว่านักปั่นจะต้องปั่นไปทางเดียวกันถนนเท่านั้น? ลองเช็คป้ายที่ปากทางถ้าไม่แน่ใจ"</string>
     <string name="link_valhalla_description">"ระบบนำทางที่ใช้หน่วยความจำนิดเดียว ค้นหาเส้นทางแบบหลายต่อ เส้นสมกาละ และอีกมากมาย"</string>
     <string name="link_backofyourhand_description">"คุณรู้จักเมืองคุณดีแค่ไหน? ลองค้นหาถนนแถวบ้านดู"</string>
-
-    <!-- Fuzzy -->
-    <string name="link_thenandnow_description">"ลองดูสิว่า OSM เปลี่ยนไปขนาดไหน!"</string>
 
     <!-- Fuzzy -->
     <string name="link_notesreview_description">"ดู กรอง และแสดงความเห็นบนโน๊ตได้อย่างง่ายดาย คุณสามารถแก้ปัญหาได้โดยการเติมข้อมูลลงไปในแผนที่ด้วยโปรแกรม iD หรือ JOSM"</string>

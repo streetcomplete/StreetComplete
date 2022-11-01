@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -33,14 +34,16 @@ class AddPlaceName(
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",                                                                                     // work
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & opening hours
                 "boat_rental",
@@ -128,14 +131,7 @@ class AddPlaceName(
                 tags["name:signed"] = "no"
             }
             is PlaceName -> {
-                for ((languageTag, name) in answer.localizedNames) {
-                    val key = when (languageTag) {
-                        "" -> "name"
-                        "international" -> "int_name"
-                        else -> "name:$languageTag"
-                    }
-                    tags[key] = name
-                }
+                answer.localizedNames.applyTo(tags)
             }
         }
     }
