@@ -2,17 +2,15 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
-import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterLastPickedButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
@@ -27,9 +25,9 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
-    private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
-    private val diameterInput by lazy { binding.root.findViewById<EditText>(R.id.diameterInput) }
+    override val contentLayoutResId get() = getHydrantDiameterSignLayoutResId(countryInfo.countryCode)
+    private val diameterInput by lazy { requireView().findViewById<EditText>(R.id.diameterInput) }
+    private val suggestionsButton by lazy { requireView().findViewById<View>(R.id.suggestionsButton) }
 
     private val diameterValue get() = diameterInput.intOrNull ?: 0
 
@@ -54,18 +52,15 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        layoutInflater.inflate(
-            getHydrantDiameterSignLayoutResId(countryInfo.countryCode),
-            view.findViewById(R.id.countrySign),
-        )
 
-        diameterInput.doAfterTextChanged { checkIsFormComplete() }
+        updateSuggestionsButtonVisibility()
 
-        binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
-    }
+        diameterInput.doAfterTextChanged {
+            checkIsFormComplete()
+            updateSuggestionsButtonVisibility()
+        }
 
-    private fun onLastPickedButtonClicked(position: Int) {
-        diameterInput.setText(lastPickedAnswers[position].toString())
+        suggestionsButton.setOnClickListener { showSuggestionsMenu() }
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -123,6 +118,24 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             .show()
         }
     }
+
+    private fun updateSuggestionsButtonVisibility() {
+        suggestionsButton.isGone = lastPickedAnswers.isEmpty() || diameterInput.intOrNull != null
+    }
+
+    private fun showSuggestionsMenu() {
+        val popup = PopupMenu(requireContext(), suggestionsButton)
+
+        for ((index, diameter) in lastPickedAnswers.withIndex()) {
+            popup.menu.add(Menu.NONE, index, Menu.NONE, diameter.toString())
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            diameterInput.setText(item.title.toString())
+            true
+        }
+        popup.show()
+    }
 }
 
 private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
@@ -132,36 +145,4 @@ private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (
     "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl
     "UK" -> R.layout.quest_fire_hydrant_diameter_sign_uk
     else -> R.layout.quest_fire_hydrant_diameter_sign_generic
-}
-
-private class LastPickedAdapter(
-    private val lastPickedAnswers: List<Int>,
-    private val onItemClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
-
-    class ViewHolder(
-        private val binding: QuestFireHydrantDiameterLastPickedButtonBinding,
-        private val onItemClicked: (position: Int) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
-        }
-
-        fun onBind(item: Int) {
-            binding.lastDiameterLabel.text = item.toString()
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = QuestFireHydrantDiameterLastPickedButtonBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, onItemClicked)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.onBind(lastPickedAnswers[position])
-    }
-
-    override fun getItemCount() = lastPickedAnswers.size
 }
