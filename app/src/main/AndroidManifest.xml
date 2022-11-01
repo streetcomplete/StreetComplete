@@ -62,10 +62,6 @@
                 <data android:scheme="https" />
                 <data android:host="streetcomplete.app" />
                 <data android:path="/s" />
-                <!-- allow capital letters too -->
-                <data android:scheme="HTTP" tools:ignore="AppLinkUrlError" />
-                <data android:scheme="HTTPS" tools:ignore="AppLinkUrlError" />
-                <data android:host="STREETCOMPLETE.APP" tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
         <activity
