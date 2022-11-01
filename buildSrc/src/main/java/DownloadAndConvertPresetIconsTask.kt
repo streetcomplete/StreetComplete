@@ -47,7 +47,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             val targetFile = File("$targetDir/$iconName.xml")
             targetFile.parentFile.mkdirs()
 
-            var previousAttemptFailed = false
+            var message: String = ""
+            var iconWasFound = false
             for (url in urls) {
 
                 try {
@@ -61,17 +62,16 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                         writeXml(drawable, targetFile)
                     }
                     index.add(iconName)
-                    if (previousAttemptFailed) {
-                        println("$icon was later found in $url")
-                    }
+                    iconWasFound = true
                     break
                 } catch (e: IOException) {
-                    println("$icon not found in $url")
-                    previousAttemptFailed = true
+                    message += "$icon not found in $url\n"
                 } catch (e: IllegalArgumentException) {
-                    println("$icon not supported: " + e.message)
-                    previousAttemptFailed = true
+                    message += "$icon not supported: ${e.message}\n"
                 }
+            }
+            if (!iconWasFound) {
+                print(message)
             }
         }
 
