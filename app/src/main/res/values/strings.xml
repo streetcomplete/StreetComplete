@@ -359,7 +359,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
     <string name="user_profile_current_week_title">This week</string>
 
-    <string name="user_profile_dates_mapped">Days you\'ve mapped recently</string>
+    <string name="user_profile_dates_mapped">Days you’ve mapped recently</string>
 
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>
