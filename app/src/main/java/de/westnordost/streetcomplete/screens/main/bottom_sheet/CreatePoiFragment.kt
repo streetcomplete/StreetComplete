@@ -17,6 +17,9 @@ import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 /** Abstract base class for a bottom sheet that lets the user create a note */
 class CreatePoiFragment : TagEditor() {
@@ -26,8 +29,8 @@ class CreatePoiFragment : TagEditor() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tagsText = arguments?.getString(ARG_PREFILLED_TAGS) ?: ""
-        newTags.putAll(tagsText.toTags())
+        val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
+        newTags.putAll(prefillTags)
         tagList.clear()
         tagList.addAll(newTags.toList())
         tagList.sortBy { it.first }
@@ -75,15 +78,13 @@ class CreatePoiFragment : TagEditor() {
         private const val ARG_ID = "feature_id"
 
         fun createFromFeature(feature: Feature?, pos: LatLon) = CreatePoiFragment().also {
-            val tagText = feature?.addTags?.map { it.key + "=" + it.value }?.joinToString("\n")
-            it.arguments = bundleOf(ARG_PREFILLED_TAGS to tagText, ARG_NAME to feature?.name, ARG_ID to feature?.id)
+            it.arguments = bundleOf(ARG_PREFILLED_TAGS to feature?.addTags?.let { Json.encodeToString(it) }, ARG_NAME to feature?.name, ARG_ID to feature?.id)
             // tag editor arguments are actually unnecessary here, but we still need an original element
             it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
         }
         fun createWithPrefill(prefill: String, pos: LatLon) = CreatePoiFragment().also {
-            // this will only prefill now if there is one equals sign in the line
-            // todo: maybe this could be improved
-            it.arguments = bundleOf(ARG_PREFILLED_TAGS to prefill)
+            // this will only prefill if there is one equals sign in the line
+            it.arguments = bundleOf(ARG_PREFILLED_TAGS to Json.encodeToString(prefill.toTags()))
             it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
         }
     }
