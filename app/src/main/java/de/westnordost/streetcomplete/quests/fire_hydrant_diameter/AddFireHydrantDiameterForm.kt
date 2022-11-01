@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -126,8 +125,8 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
     private fun showSuggestionsMenu() {
         val popup = PopupMenu(requireContext(), suggestionsButton)
 
-        for ((index, diameter) in lastPickedAnswers.withIndex()) {
-            popup.menu.add(Menu.NONE, index, Menu.NONE, diameter.toString())
+        for (diameter in lastPickedAnswers) {
+            popup.menu.add(diameter.toString())
         }
 
         popup.setOnMenuItemClickListener { item ->
