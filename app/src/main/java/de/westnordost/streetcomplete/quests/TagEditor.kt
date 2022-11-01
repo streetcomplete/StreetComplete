@@ -1,31 +1,23 @@
 package de.westnordost.streetcomplete.quests
 
 import android.app.ActionBar.LayoutParams
-import android.content.Context
 import android.content.SharedPreferences
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AutoCompleteTextView
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -39,16 +31,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.EditTagsBinding
-import de.westnordost.streetcomplete.quests.tree.SearchAdapter
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.util.EditTagsAdapter
 import de.westnordost.streetcomplete.util.ktx.copy
-import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.updateMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -121,17 +112,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        if (keySuggestionsForFeatureId.isEmpty() && valueSuggestionsByKey.isEmpty()) {
-            try {
-                val keySuggestions = resources.assets.open("tag_editor/keySuggestionsForFeature.json").reader().readText()
-                val valueSuggestions = resources.assets.open("tag_editor/valueSuggestionsByKey.json").reader().readText()
-                keySuggestionsForFeatureId.putAll(Json.decodeFromString(keySuggestions))
-                valueSuggestionsByKey.putAll(Json.decodeFromString(valueSuggestions))
-            } catch (e: Exception) {
-                Log.w("TagEditor", "failed to read and parse suggestions: ${e.message}")
-            }
-        }
-
         // definitely worth calling early! because it should be finished once we want to fill the quest list (in most cases)
         deferredQuests = viewLifecycleScope.async(Dispatchers.IO) {
             // create quests if we have dynamic quest creation on or a new POI, otherwise just load from db
@@ -288,11 +268,12 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         val action = UpdateElementTagsAction(builder.create())
+        val questKey: QuestKey? = arguments?.getString(ARG_QUEST_KEY)?.let { Json.decodeFromString(it) }
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             listener?.onEdited(tagEdit, element, geometry)
-            viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(tagEdit, originalElement, geometry, "survey", action) }
+            viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(tagEdit, originalElement, geometry, "survey", action, questKey) }
         } else {
-            elementEditsController.add(tagEdit, originalElement, geometry, "survey", action)
+            elementEditsController.add(tagEdit, originalElement, geometry, "survey", action, questKey)
             listener?.onEdited(tagEdit, element, geometry)
         }
     }
@@ -356,12 +337,14 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         private const val ARG_GEOMETRY = "geometry"
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
+        private const val ARG_QUEST_KEY = "quest_key"
 
-        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Float?, tilt: Float?) = bundleOf(
+        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Float?, tilt: Float?, questKey: QuestKey? = null) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_MAP_ROTATION to rotation,
-            ARG_MAP_TILT to tilt
+            ARG_MAP_TILT to tilt,
+            ARG_QUEST_KEY to questKey
         )
 
         var changes: StringMapChanges? = null
@@ -369,111 +352,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 }
 
-// use displaySet and dataSet: displaySet is the sorted map.toList
-// editing the map directly is not so simple, because the order may change if the key is changed (actually removed and re-added)
-private class EditTagsAdapter(
-    private val displaySet: MutableList<Pair<String, String>>,
-    private val dataSet: MutableMap<String, String>,
-    private val featureDictionary: FeatureDictionary,
-    context: Context,
-    private val onDataChanged: () -> Unit
-) :
-    RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
-    val suggestionHeight = TypedValue().apply { context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, this, false) }
-        .getDimension(context.resources.displayMetrics)
-    val suggestionMaxHeight = context.resources.displayMetrics.heightPixels - context.dpToPx(100)
-
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
-            setOnFocusChangeListener { _, focused -> if (focused)
-                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
-            }
-            onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
-                valueView.requestFocus() // move to value view if key is selected from suggestions
-            }
-            setAdapter(SearchAdapter(context, { search ->
-                if (!isFocused) return@SearchAdapter emptyList() // don't search if the field is not focused
-                val feature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
-                    ?: return@SearchAdapter defaultKeyList
-                val s = getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
-                val h = TypedValue()
-                context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
-                // limit the height of suggestions, because when all are shown the ones on top are hard to reach
-                val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
-                    else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
-                s
-            }, { it }))
-            doAfterTextChanged {
-                val position = absoluteAdapterPosition
-                val newKey = it.toString()
-                // do nothing if key is unchanged, happens when views are filled by EditTagsAdapter
-                if (displaySet[position].first == newKey) return@doAfterTextChanged
-                if (dataSet.containsKey(newKey)) {
-                    // don't store duplicate keys, user should rename or delete them
-                    context.toast(resources.getString(R.string.tag_editor_duplicate_key, newKey), Toast.LENGTH_LONG)
-                    return@doAfterTextChanged
-                }
-                val oldEntry = displaySet[position]
-                dataSet.remove(oldEntry.first)
-                val newEntry = newKey to oldEntry.second
-                dataSet[newEntry.first] = newEntry.second
-                displaySet[position] = newEntry
-                onDataChanged()
-            }
-        }
-
-        val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
-            setOnFocusChangeListener { _, focused -> if (focused)
-                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
-            }
-            setAdapter(SearchAdapter(context, { search ->
-                if (!isFocused) return@SearchAdapter emptyList()
-                val key = displaySet[absoluteAdapterPosition].first
-                val s = valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) }
-                val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
-                    else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
-                s
-            }, { it }))
-            doAfterTextChanged {
-                val position = absoluteAdapterPosition
-                if (displaySet[position].second == it.toString()) return@doAfterTextChanged
-                val oldEntry = displaySet[position]
-                val newEntry = oldEntry.first to it.toString()
-                dataSet[newEntry.first] = newEntry.second
-                displaySet[position] = newEntry
-                onDataChanged()
-            }
-        }
-
-        val delete: ImageView = view.findViewById<ImageView>(R.id.deleteButton).apply {
-            setOnClickListener {
-                val position = absoluteAdapterPosition
-                val oldEntry = displaySet.removeAt(position)
-                dataSet.remove(oldEntry.first)
-                onDataChanged()
-//                notifyItemRemoved(position) // crash when editing an entry, and deleting another one right after
-                notifyDataSetChanged()
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.row_edit_tag, viewGroup, false)
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.keyView.setText(displaySet[position].first)
-        viewHolder.valueView.setText(displaySet[position].second)
-    }
-
-    override fun getItemCount() = displaySet.size
-
-    override fun getItemId(position: Int) = position.toLong()
-}
 
 val tagEdit = object : ElementEditType {
     override val changesetComment get() = "Edit element"
@@ -487,39 +365,3 @@ private val emptyEntry = "" to ""
 
 // characters that should not be in keys, see https://taginfo.openstreetmap.org/reports/characters_in_keys
 private val problematicKeyCharacters = "[\\s=+/&<>;'\"?%#@,\\\\]".toRegex()
-
-private val keySuggestionsForFeatureId = hashMapOf<String, Pair<List<String>?, List<String>?>>()
-private val valueSuggestionsByKey = hashMapOf<String, List<String>>()
-private val defaultKeyList = listOf("amenity", "shop", "name", "man_made", "emergency", "natural", "office", "leisure", "tourism", "historic", "attraction")
-
-private fun getSuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
-    val fields = getMainSuggestions(featureId)
-    val moreFields = getSecondarySuggestions(featureId)
-    val suggestions = mutableSetOf<String>()
-    fields.forEach {
-        if (it.startsWith('{'))
-            suggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))
-        else suggestions.add(it)
-    }
-    moreFields.forEach {
-        if (it.startsWith('{'))
-            suggestions.addAll(getSecondarySuggestions(it.substringAfter('{').substringBefore('}')))
-        else suggestions.add(it)
-    }
-    suggestions.removeAll(tags.keys)
-    // suggestions should not be cluttered with all those address tags
-    val moveToEnd = suggestions.filter { it.startsWith("addr:") || it.startsWith("ref:") }
-    suggestions.removeAll(moveToEnd)
-    suggestions.addAll(moveToEnd)
-    return suggestions
-}
-
-private fun getMainSuggestions(featureId: String): List<String> {
-    val suggestions = keySuggestionsForFeatureId[featureId]?.first
-    return suggestions ?: if (featureId.contains('/')) getMainSuggestions(featureId.substringBeforeLast('/')) else emptyList()
-}
-
-private fun getSecondarySuggestions(featureId: String): List<String> {
-    val suggestions = keySuggestionsForFeatureId[featureId]?.second
-    return suggestions ?: if (featureId.contains('/')) getSecondarySuggestions(featureId.substringBeforeLast('/')) else emptyList()
-}
