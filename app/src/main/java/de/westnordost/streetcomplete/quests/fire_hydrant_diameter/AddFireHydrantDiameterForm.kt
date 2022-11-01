@@ -138,10 +138,10 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 }
 
 private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
-    "DE" -> R.layout.quest_fire_hydrant_diameter_sign_de
+    "DE", "BE" -> R.layout.quest_fire_hydrant_diameter_sign_de
     "FI" -> R.layout.quest_fire_hydrant_diameter_sign_fi
     "NL" -> R.layout.quest_fire_hydrant_diameter_sign_nl
     "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl
-    "UK" -> R.layout.quest_fire_hydrant_diameter_sign_uk
+    "GB", "IE" -> R.layout.quest_fire_hydrant_diameter_sign_uk
     else -> R.layout.quest_fire_hydrant_diameter_sign_generic
 }
