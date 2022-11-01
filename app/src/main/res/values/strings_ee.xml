@@ -327,6 +327,8 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
     <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/StreetComplete/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. The checkboxes replace the "nodes, ways with" part.</string>
+    <string name="custom_overlay_color_message">Select key to get color from. This does not work for nodes. Accepts regex, takes first match.</string>
+    <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="attach_photo_delete">Delete</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>
     <string name="quest_monitor_channel_name">Nearby Quest Monitor</string>

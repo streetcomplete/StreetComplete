@@ -30,19 +30,36 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
         val filter = try {
             prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.toElementFilterExpression() ?: return emptySequence()
         } catch (e: ParseException) { return emptySequence() }
+        val colorKeySelector = try {
+            prefs.getString(Prefs.CUSTOM_OVERLAY_COLOR_KEY, "")?.takeIf { it.isNotEmpty() }?.toRegex()
+        } catch (_: Exception) { null }
         return mapData
             .filter(filter)
-            .map { it to getStyle(it) }
+            .map { it to getStyle(it, colorKeySelector) }
     }
 
     override fun createForm(element: Element?) = CustomOverlayForm()
 }
 
-private fun getStyle(element: Element): Style {
-    val color = Color.LIME
+private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
+    val color = if (colorKeySelector == null) Color.LIME
+        else createColorFromString(element.tags.firstNotNullOfOrNull {
+                if (it.key.matches(colorKeySelector))
+                    it.value
+                else null
+            }).uppercase()
     return when {
         element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"])
-        IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, null)
-        else -> PolylineStyle(StrokeStyle(color))
+        IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, label = element.tags["name"])
+        else -> PolylineStyle(StrokeStyle(color)) // no label for lines, because this often leads to duplicate labels e.g. for roads
+    }
+}
+
+private fun createColorFromString(string: String?): String {
+    if (string == null) return Color.DATA_REQUESTED
+    val c = string.hashCode().toString(16)
+    return when {
+        c.length >= 6 -> "#${c.subSequence(c.length - 6, c.length)}"
+        else -> createColorFromString("${c}1") // the 1 is there to avoid very similar colors for numbers
     }
 }

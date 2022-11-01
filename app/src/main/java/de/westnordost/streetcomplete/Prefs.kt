@@ -85,6 +85,7 @@ object Prefs {
     const val SHOW_NEARBY_QUESTS_DISTANCE = "show_nearby_quests_distance"
     const val CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING = "close_form_immediately"
     const val CUSTOM_OVERLAY_FILTER = "custom_overlay_filter"
+    const val CUSTOM_OVERLAY_COLOR_KEY = "custom_overlay_color_key"
     const val SHOW_SOLVED_ANIMATION = "show_solved_animation"
     const val PREFER_EXTERNAL_SD = "prefer_external_sd"
     const val SHOW_NEXT_QUEST_IMMEDIATELY = "show_next_quest_immediately"

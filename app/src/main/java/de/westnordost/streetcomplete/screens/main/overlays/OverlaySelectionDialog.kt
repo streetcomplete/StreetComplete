@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -62,22 +63,39 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
     private fun showOverlayCustomizer(c: Context) {
         var d: AlertDialog? = null
 
-        val overlay = prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.split(" with ")?.takeIf { it.size == 2 }
+        val overlayFilter = prefs.getString(Prefs.CUSTOM_OVERLAY_FILTER, "")?.split(" with ")?.takeIf { it.size == 2 }
         val nodes = CheckBox(c).apply {
             text = "nodes"
-            isChecked = overlay?.get(0)?.contains("nodes") ?: true
+            isChecked = overlayFilter?.get(0)?.contains("nodes") ?: true
         }
         val ways = CheckBox(c).apply {
             text = "ways"
-            isChecked = overlay?.get(0)?.contains("ways") ?: true
+            isChecked = overlayFilter?.get(0)?.contains("ways") ?: true
         }
         val relations = CheckBox(c).apply {
             text = "relations"
-            isChecked = overlay?.get(0)?.contains("relations") ?: true
+            isChecked = overlayFilter?.get(0)?.contains("relations") ?: true
         }
         val tag = EditText(c).apply {
             setHint(R.string.custom_overlay_hint)
-            setText(overlay?.get(1) ?: "")
+            setText(overlayFilter?.get(1) ?: "")
+        }
+        val coloringText = TextView(c).apply {
+            setText(R.string.custom_overlay_color_message)
+        }
+        val color = EditText(c).apply {
+            setHint(R.string.custom_overlay_color_hint)
+            setText(prefs.getString(Prefs.CUSTOM_OVERLAY_COLOR_KEY, "")!!)
+            doAfterTextChanged {
+                try {
+                    it.toString().toRegex()
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = true
+                }
+                catch (e: Exception) {
+                    Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    d?.getButton(BUTTON_POSITIVE)?.isEnabled = false
+                }
+            }
         }
         fun filterString(): String {
             val types = listOfNotNull(
@@ -100,10 +118,12 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
         val linearLayout = LinearLayout(c).apply {
             orientation = LinearLayout.VERTICAL
             addView(TextView(context).apply { setHtml(resources.getString(R.string.custom_overlay_message)) })
+            addView(tag)
             addView(nodes)
             addView(ways)
             addView(relations)
-            addView(tag)
+            addView(coloringText)
+            addView(color)
             setPadding(30,10,30,10)
         }
         d = Builder(c)
@@ -111,7 +131,10 @@ class OverlaySelectionDialog(context: Context) : AlertDialog(context), KoinCompo
             .setView(linearLayout)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                prefs.edit { putString(Prefs.CUSTOM_OVERLAY_FILTER, filterString()) }
+                prefs.edit {
+                    putString(Prefs.CUSTOM_OVERLAY_FILTER, filterString())
+                    putString(Prefs.CUSTOM_OVERLAY_COLOR_KEY, color.text.toString())
+                }
                 if (selectedOverlay?.name == CustomOverlay::class.simpleName)
                     selectedOverlayController.apply { // trigger reload
                         val temp = selectedOverlay
