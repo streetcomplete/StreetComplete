@@ -275,6 +275,7 @@
     <string name="quest_tree_error">Not recognized. Try entering the genus, species or english name of the tree. Otherwise, consider leaving a note.</string>
     <string name="quest_tree_disabled_msg">This quest is disabled by default because it’s not easy to answer. Species/Genus must be chosen from suggestions, which are taken from most used values. You can provide suggestions from your own list of species with searchable names by providing a file in the main settings menu, containing \`&lt;species&gt; (&lt;name&gt;)\`.</string>
     <string name="quest_buildingType_has_address_title">What kind of building is this? (has address)</string>
+    <string name="default_disabled_msg_ee">This quest is disabled by default because it is only available in StreetComplete EE, and as such may not always be answerable.</string>
 
 
     <!-- additional strings for quests available in upstream StreetComplete -->

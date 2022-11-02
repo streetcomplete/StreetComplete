@@ -21,6 +21,7 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
     override val icon = R.drawable.ic_quest_bench_material
     override val isDeleteElementEnabled = true
     override val achievements = listOf(EditTypeAchievement.PEDESTRIAN, EditTypeAchievement.OUTDOORS)
+    override val defaultDisabledMessage: Int = R.string.default_disabled_msg_ee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_benchMaterial_title
 

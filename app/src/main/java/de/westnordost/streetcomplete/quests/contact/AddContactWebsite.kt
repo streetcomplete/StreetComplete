@@ -21,6 +21,7 @@ class AddContactWebsite : OsmFilterQuestType<String>() {
     override val changesetComment = "Add website"
     override val wikiLink = "Key:website"
     override val icon = R.drawable.ic_quest_website
+    override val defaultDisabledMessage: Int = R.string.default_disabled_msg_ee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_contact_website
 
