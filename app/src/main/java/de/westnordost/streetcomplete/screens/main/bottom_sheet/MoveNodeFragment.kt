@@ -1,15 +1,21 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.LengthUnit
+import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -21,17 +27,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
+import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
+import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
+import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -42,26 +51,28 @@ import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
-    Fragment(R.layout.fragment_create_note), IsCloseableBottomSheet, IsShowingElement {
+    Fragment(R.layout.fragment_create_note), IsCloseableBottomSheet, IsShowingElement, IsMapPositionAware {
 
-    private val binding by viewBinding(FragmentCreateNoteBinding::bind)
-    private val bottomSheetBinding get() = binding.questAnswerLayout
-    private val okButton get() = bottomSheetBinding.okButton
-    private val okButtonContainer get() = bottomSheetBinding.okButtonContainer
+    private var _binding: FragmentMoveNodeBinding? = null
+    private val binding: FragmentMoveNodeBinding get() = _binding!!
+    private val okButton get() = binding.okButton
+    private val okButtonContainer get() = binding.okButtonContainer
 
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryInfos: CountryInfos by inject()
 
     override val elementKey: ElementKey by lazy { ElementKey(node.type, node.id) }
 
     private lateinit var node: Node
     private lateinit var editType: ElementEditType
+    private lateinit var displayUnit: MeasureDisplayUnit
 
     private val hasChanges get() = getPosition() != node.position
-    private val isFormComplete get() = hasChanges //&& getPosition()?.distanceTo(node.position)?.let { it > 2.0 } ?: false // this is ugly
 
     interface Listener {
         fun getMapPositionAt(screenPos: Point): LatLon?
@@ -70,54 +81,57 @@ class MoveNodeFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private fun getPosition(): LatLon? {
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
-        val screenPos = createNoteMarker.getLocationInWindow()
-        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val args = requireArguments()
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
-        editType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(args.getString(ARG_QUESTTYPE)!!)!!
+        editType = questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OsmElementQuestType<*>
+            ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentMoveNodeBinding.inflate(inflater, container, false)
+        inflater.inflate(R.layout.fragment_move_node, binding.root)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         okButton.setOnClickListener { onClickOk() }
-        okButtonContainer.popIn()
-        okButton.popIn()
+        val countryInfo = countryInfos.getByLocation(countryBoundaries.get(), node.position.longitude, node.position.latitude)
+        displayUnit = if (countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH)
+                MeasureDisplayUnitFeetInch(1)
+            else
+                MeasureDisplayUnitMeter(2)
+        binding.createNoteIconView.setImageResource(editType.icon)
+        binding.createNoteMarker.visibility = View.VISIBLE
         highlightSimilarElements()
     }
 
     private fun highlightSimilarElements() {
         val feature = featureDictionaryFuture.get().byTags(node.tags).isSuggestion(false).find().firstOrNull()
         val tagsToFind = feature?.tags ?: node.tags
-        val mapData = mapDataWithEditsSource.getMapDataWithGeometry(node.position.enclosingBoundingBox(30.0))
-        mapData.filter { e -> e != node && tagsToFind.all { e.tags[it.key] == it.value } }
-            .forEach { e ->
-                val icon = getPinIcon(e.tags)
-                val title = getTitle(e.tags)
-                val geometry = mapData.getGeometry(e.type, e.id) ?: return@forEach
-                (parentFragment as? MainFragment)?.putMarkerForCurrentHighlighting(geometry, icon, title)
-            }
+        val mapData = mapDataWithEditsSource
+            .getMapDataWithGeometry(node.position.enclosingBoundingBox(MAX_MOVE_DISTANCE + 5.0))
+        for (e in mapData) {
+            if (!tagsToFind.all { e.tags[it.key] == it.value }) continue
+            val icon = getPinIcon(e.tags)
+            val title = getTitle(e.tags)
+            val geometry = mapData.getGeometry(e.type, e.id) ?: continue
+            (parentFragment as? MainFragment)?.putMarkerForCurrentHighlighting(geometry, icon, title)
+        }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        binding.markerCreateLayout.centeredMarkerLayout.setPadding(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
+    private fun getPosition(): LatLon? {
+        val createNoteMarker = binding.createNoteMarker
+        val screenPos = createNoteMarker.getLocationInWindow()
+        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
+        return listener?.getMapPositionAt(screenPos)
     }
 
     private fun onClickOk() {
         val pos = getPosition() ?: return
+        if (!checkIsDistanceOkAndUpdateText(pos)) return
         viewLifecycleScope.launch {
             val action = MoveNodeAction(pos)
             elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey", action)
@@ -125,18 +139,29 @@ class MoveNodeFragment :
         }
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        // todo: maybe move map to this position? what would a "normal" person expect?
-        return false
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double) = false
+
+    @UiThread override fun onMapMoved(position: LatLon) {
+        if (checkIsDistanceOkAndUpdateText(position))
+            okButtonContainer.popIn()
+        else
+            okButtonContainer.popOut()
     }
 
-    // todo:
-    //  nicer view with that crosshair and distance?
-    //   don't use the note layout!
-    //  hide ok button if not moved, or moved very far -> see MainFragment.onMapIsChanging
-    //  confirm large move
-    //  confirm very small move?
-    //  switch to satellite view??
+    private fun checkIsDistanceOkAndUpdateText(position: LatLon): Boolean {
+        binding.measurementSpeechBubble.isInvisible = !hasChanges
+
+        val moveDistance = position.distanceTo(node.position)
+        binding.measurementTextView.text = displayUnit.format(moveDistance.toFloat())
+        return when {
+            moveDistance < MIN_MOVE_DISTANCE -> false
+            moveDistance > MAX_MOVE_DISTANCE -> {
+                //context?.toast(R.string.node_moved_too_far) don't, this considerably slows down everything -> maybe just remove (also the string)?
+                false
+            }
+            else ->  true
+        }
+    }
 
     @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!hasChanges) {
@@ -156,15 +181,19 @@ class MoveNodeFragment :
 
     companion object {
         private const val ARG_NODE = "node"
-        private const val ARG_QUESTTYPE = "quest_type"
+        private const val ARG_QUEST_TYPE = "quest_type"
 
         fun create(elementEditType: ElementEditType, node: Node): MoveNodeFragment {
             val f = MoveNodeFragment()
             f.arguments = bundleOf(
                 ARG_NODE to Json.encodeToString(node),
-                ARG_QUESTTYPE to elementEditType.name
+                ARG_QUEST_TYPE to elementEditType.name
             )
             return f
         }
     }
 }
+
+// todo: find good values
+private const val MIN_MOVE_DISTANCE = 2.0
+private const val MAX_MOVE_DISTANCE = 30.0

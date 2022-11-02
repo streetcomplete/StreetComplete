@@ -78,6 +78,7 @@ import de.westnordost.streetcomplete.screens.HandlesOnBackPressed
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
@@ -331,6 +332,7 @@ class MainFragment :
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
+        if (f is IsMapPositionAware) f.onMapMoved(position)
     }
 
     override fun onPanBegin() {
@@ -484,7 +486,7 @@ class MainFragment :
         mapFragment.hideOverlay()
 
         mapFragment.show3DBuildings = false
-        val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, mapOffsetWithOpenBottomSheet)
+        val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())
         mapFragment.updateCameraPosition { position = offsetPos }
     }
 

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action reverts moving a node. */
@@ -22,6 +23,9 @@ object RevertMoveNodeAction : ElementEditAction, IsRevertAction {
         idProvider: ElementIdProvider
     ): MapDataChanges {
         val node = element as? Node ?: throw ConflictException("Element deleted")
-        return MapDataChanges(modifications = listOf(node.copy(position = (originalElement as Node).position)))
+        return MapDataChanges(modifications = listOf(node.copy(
+            position = (originalElement as Node).position,
+            timestampEdited = nowAsEpochMilliseconds()
+        )))
     }
 }

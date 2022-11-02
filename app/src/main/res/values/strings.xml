@@ -146,8 +146,9 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="split_way">Split way</string>
-    <string name="move_node">Move node</string>
-    <string name="quest_move_node_description">If it is at a wrong position, you can move the node. Please be aware that your displayed location and the map may not be exact.\nMove it now?</string>
+    <string name="move_node">At slightly wrong position</string>
+    <string name="quest_move_node_description">If it is at a wrong position, you can move this point. Please be aware that your displayed location and the map may not be exact.\nMove it now?</string>
+    <string name="node_moved_too_far">Moved too far</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>

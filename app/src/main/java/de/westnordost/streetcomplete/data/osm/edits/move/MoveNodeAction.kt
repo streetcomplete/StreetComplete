@@ -30,7 +30,10 @@ data class MoveNodeAction(val position: LatLon) : ElementEditAction, IsActionRev
         if (isGeometrySubstantiallyDifferent(originalElement, element)) {
             throw ConflictException("Element geometry changed substantially")
         }
-        return MapDataChanges(modifications = listOf(node.copy(position = position)))
+        return MapDataChanges(modifications = listOf(node.copy(
+            position = position,
+            timestampEdited = nowAsEpochMilliseconds()
+        )))
     }
 
     override fun createReverted(): ElementEditAction = RevertMoveNodeAction
