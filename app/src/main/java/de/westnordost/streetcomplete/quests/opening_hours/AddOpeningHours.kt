@@ -25,7 +25,7 @@ class AddOpeningHours(
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
     private val filter by lazy { ("""
-        nodes, ways, relations with
+        nodes, ways with
         (
           (
             (
@@ -44,14 +44,16 @@ class AddOpeningHours(
         mapOf(
             "amenity" to arrayOf(
                 // common
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino",                                                                     // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
-                "car_wash", "car_rental", "fuel",                                                                      // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
-                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
-                "coworking_space",                                                                                     // work
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
+                "food_court", "nightclub",
+                "cinema", "planetarium", "casino",                                                  // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
+                "internet_cafe", "payment_centre",
+                "car_wash", "car_rental", "fuel",                                                   // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                           // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                             // animals
+                "coworking_space",                                                                  // work
 
                 // name & opening hours
                 "boat_rental"

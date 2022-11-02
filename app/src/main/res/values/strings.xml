@@ -261,6 +261,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="about_category_feedback">Feedback</string>
 
+    <string name="about_title_get_involved">Get Involved</string>
+
     <string name="about_title_changelog">Version history</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="title_whats_new">What’s New?</string>
@@ -355,6 +357,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="user_profile_current_week_title">Last 7 days</string>
+
+    <string name="user_profile_dates_mapped">Days you’ve mapped recently</string>
 
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>
@@ -483,6 +488,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_display">"Display"</string>
+    <string name="pref_category_quests_overlays">Quests &amp; Overlays</string>
 
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>
@@ -564,6 +570,20 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_presets_selected">Selected</string>
     <string name="quest_presets_delete_message">"Delete preset “%s”? The quest selection and order for it will be irrevocably lost."</string>
 
+    <string name="quest_presets_rename">Rename</string>
+    <string name="quest_presets_share">Share</string>
+    <string name="quest_presets_delete">Delete</string>
+
+    <!-- Config via URL/QRCode -->
+
+    <string name="urlconfig_qr_code_description">Let others scan this QR code to share your preset.</string>
+    <string name="urlconfig_as_url">Or as URL:</string>
+    <string name="urlconfig_url_copied">URL copied to clipboard</string>
+    <string name="urlconfig_apply_title">Apply Preset</string>
+    <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
+    <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
+    <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
+    <string name="urlconfig_scan_qr_code_again">After installing the app, scan the QR code again to apply the preset.</string>
 
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
@@ -576,7 +596,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_accepts_cash_title2">"Is cash payment accepted here?"</string>
 
-    <string name="quest_accessPointRef_title">What’s the identification number here?</string>
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
@@ -594,16 +613,17 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
-    <string name="quest_address_answer_house_name2">It has a house name…</string>
+    <string name="quest_address_answer_house_name2">Address has a house name…</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
     <string name="quest_housenumber_multiple_numbers_description" tools:ignore="TypographyDashes">"You can enter comma-separated house numbers or ranges.\nFor example 1,3 or 2-6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
+    <string name="quest_address_answer_no_address">No address here</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2b">Is this correct?</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
 
     <string name="quest_address_street_title2">What street is this on?</string>
-    <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
+    <string name="quest_address_street_no_named_streets">It does not belong to a named street…</string>
     <string name="quest_address_street_place_name_label">Place name:</string>
     <string name="quest_address_street_street_name_label">Street name:</string>
     <string name="quest_address_street_hint2">Tap street on map to select it</string>
@@ -657,8 +677,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_bicycle_type_multiple">Chicane - more than two barriers</string>
     <string name="quest_barrier_bicycle_type_not_cycle_barrier">Not a cycle barrier, but some other barrier</string>
 
+    <string name="quest_bicycle_barrier_installation_title">Can this cycle barrier be opened (with or without a key)?</string>
+    <string name="quest_barrier_bicycle_installation_fixed">Fixed</string>
+    <string name="quest_barrier_bicycle_installation_openable">Openable</string>
+    <string name="quest_barrier_bicycle_installation_removable">Removable</string>
+
     <string name="quest_bicycle_incline_title">Which direction leads upwards here?</string>
-    <string name="quest_bicycle_incline_up_and_down">It\'s up and down hops</string>
+    <string name="quest_bicycle_incline_up_and_down">It’s up and down hops</string>
 
     <string name="quest_bicycle_parking_access_title2">Who is allowed to park a bicycle here? Parking may be free or paid.</string>
 
@@ -673,6 +698,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
+    <string name="quest_bicycle_parking_type_two_tier">Two-tier bike rack</string>
 
 
     <string name="quest_bicycle_rental_capacity_title">How many rental bicycle spaces are here?</string>
@@ -758,9 +784,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_terrace2">Row houses</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
     <string name="quest_buildingType_hotel">Hotel building</string>
-    <string name="quest_buildingType_dormitory">Dormitory</string>
+    <string name="quest_buildingType_dormitory">Dormitory building</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
-    <string name="quest_buildingType_bungalow">Bungalow</string>
+    <string name="quest_buildingType_bungalow">Bungalow building</string>
     <string name="quest_buildingType_bungalow_description2">small detached house (summer house, holiday cottage, cabin…)</string>
     <string name="quest_buildingType_static_caravan">Mobile home</string>
     <string name="quest_buildingType_commercial">Commercial building</string>
@@ -770,18 +796,18 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Retail building</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, stores…</string>
-    <string name="quest_buildingType_warehouse">Warehouse</string>
-    <string name="quest_buildingType_kiosk">Kiosk</string>
+    <string name="quest_buildingType_warehouse">Warehouse building</string>
+    <string name="quest_buildingType_kiosk">Kiosk building</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
     <string name="quest_buildingType_religious">Religious building</string>
-    <string name="quest_buildingType_church">Church</string>
-    <string name="quest_buildingType_chapel">Chapel</string>
+    <string name="quest_buildingType_church">Church building</string>
+    <string name="quest_buildingType_chapel">Chapel building</string>
     <string name="quest_buildingType_cathedral">Cathedral</string>
-    <string name="quest_buildingType_mosque">Mosque</string>
-    <string name="quest_buildingType_temple">Temple</string>
-    <string name="quest_buildingType_pagoda">Pagoda</string>
-    <string name="quest_buildingType_synagogue">Synagogue</string>
-    <string name="quest_buildingType_shrine">Shrine</string>
+    <string name="quest_buildingType_mosque">Mosque building</string>
+    <string name="quest_buildingType_temple">Temple building</string>
+    <string name="quest_buildingType_pagoda">Pagoda building</string>
+    <string name="quest_buildingType_synagogue">Synagogue building</string>
+    <string name="quest_buildingType_shrine">Shrine building</string>
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>
     <string name="quest_buildingType_kindergarten">Kindergarten building</string>
@@ -830,6 +856,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
+    <string name="quest_buildingType_guardhouse">Guardhouse</string>
+
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
@@ -893,10 +921,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
     <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
-    <string name="quest_cycleway_value_lane_soft">bicycle lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
@@ -971,6 +999,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
+    <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
 
@@ -1200,7 +1229,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
 
-    <string name="quest_postboxRef_title">What’s the identification number of this collection box?</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
 
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
@@ -1304,6 +1332,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_sidewalk_value_separate">sidewalk, but displayed separately on map</string>
+    <string name="quest_sidewalk_answer_different">Sidewalk situation is different</string>
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
     <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
     <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.\nDo the same for the other side if present.</string>
@@ -1579,5 +1608,9 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_addresses">Addresses</string>
 
-    <string name="overlay_street_parking">Street parking</string>
+    <string name="overlay_shops">Shops</string>
+    <string name="name_label">Name:</string>
+    <string name="vacant_shop_title">Vacant shop</string>
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">Other kind of place</string>
 </resources>

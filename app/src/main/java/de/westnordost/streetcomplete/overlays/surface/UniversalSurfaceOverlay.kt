@@ -82,7 +82,9 @@ class UniversalSurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = UniversalSurfaceOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null) UniversalSurfaceOverlayForm()
+        else null
 }
 
 private fun getStyle(element: Element): Style {

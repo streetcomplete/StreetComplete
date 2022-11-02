@@ -20,7 +20,7 @@ class TracktypeOverlayForm : AImageSelectOverlayForm<Tracktype>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val status = createTracktypeStatus(element.tags)
+        val status = createTracktypeStatus(element!!.tags)
         currentStatus = status
         if (status != null) {
             selectedItem = status.asItem()
@@ -31,7 +31,7 @@ class TracktypeOverlayForm : AImageSelectOverlayForm<Tracktype>() {
         selectedItem?.value != currentStatus
 
     override fun onClickOk() {
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
             selectedItem!!.value!!.applyTo(it)
         }.create()))
     }

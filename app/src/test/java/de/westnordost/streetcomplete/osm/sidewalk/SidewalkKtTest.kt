@@ -5,36 +5,36 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDate
 
 class SidewalkKtTest {
     @Test fun `apply simple values`() {
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.YES, Sidewalk.YES),
+            LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.YES),
             arrayOf(StringMapEntryAdd("sidewalk", "both"))
         )
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.NO, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.NO, Sidewalk.NO),
             arrayOf(StringMapEntryAdd("sidewalk", "no"))
         )
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.YES, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.NO),
             arrayOf(StringMapEntryAdd("sidewalk", "left"))
         )
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.NO, Sidewalk.YES),
+            LeftAndRightSidewalk(Sidewalk.NO, Sidewalk.YES),
             arrayOf(StringMapEntryAdd("sidewalk", "right"))
         )
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(StringMapEntryAdd("sidewalk", "separate"))
         )
     }
@@ -42,7 +42,7 @@ class SidewalkKtTest {
     @Test fun `apply value when each side differs`() {
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.YES, Sidewalk.SEPARATE),
+            LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.SEPARATE),
             arrayOf(
                 StringMapEntryAdd("sidewalk:left", "yes"),
                 StringMapEntryAdd("sidewalk:right", "separate")
@@ -50,7 +50,7 @@ class SidewalkKtTest {
         )
         verifyAnswer(
             mapOf(),
-            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.NO),
             arrayOf(
                 StringMapEntryAdd("sidewalk:left", "separate"),
                 StringMapEntryAdd("sidewalk:right", "no")
@@ -67,7 +67,7 @@ class SidewalkKtTest {
                 "sidewalk:left:surface" to "jello",
                 "sidewalk:both:oneway" to "yes"
             ),
-            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
                 StringMapEntryAdd("sidewalk", "separate"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
@@ -87,7 +87,7 @@ class SidewalkKtTest {
                 "sidewalk:left:surface" to "jello",
                 "sidewalk:both:oneway" to "yes"
             ),
-            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.YES),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.YES),
             arrayOf(
                 StringMapEntryAdd("sidewalk:left", "separate"),
                 StringMapEntryAdd("sidewalk:right", "yes"),
@@ -102,25 +102,67 @@ class SidewalkKtTest {
     @Test fun `updates check date`() {
         verifyAnswer(
             mapOf("sidewalk" to "both"),
-            SidewalkSides(Sidewalk.YES, Sidewalk.YES),
+            LeftAndRightSidewalk(Sidewalk.YES, Sidewalk.YES),
             arrayOf(
                 StringMapEntryModify("sidewalk", "both", "both"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
             )
         )
         verifyAnswer(
             mapOf("sidewalk:left" to "separate", "sidewalk:right" to "no"),
-            SidewalkSides(Sidewalk.SEPARATE, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.NO),
             arrayOf(
                 StringMapEntryModify("sidewalk:left", "separate", "separate"),
                 StringMapEntryModify("sidewalk:right", "no", "no"),
-                StringMapEntryAdd("check_date:sidewalk", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
             )
+        )
+    }
+
+    @Test fun `apply value only for one side`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightSidewalk(Sidewalk.YES, null),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:left", "yes")
+            )
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightSidewalk(null, Sidewalk.NO),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:right", "no")
+            )
+        )
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid left throws exception`() {
+        LeftAndRightSidewalk(Sidewalk.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid right throws exception`() {
+        LeftAndRightSidewalk(null, Sidewalk.INVALID).applyTo(StringMapChangesBuilder(mapOf()))
+    }
+
+    @Test fun validOrNullValues() {
+        assertEquals(
+            LeftAndRightSidewalk(null, null),
+            LeftAndRightSidewalk(Sidewalk.INVALID, Sidewalk.INVALID).validOrNullValues()
+        )
+        assertEquals(
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            LeftAndRightSidewalk(Sidewalk.NO, Sidewalk.INVALID).validOrNullValues()
+        )
+        assertEquals(
+            LeftAndRightSidewalk(null, Sidewalk.NO),
+            LeftAndRightSidewalk(Sidewalk.INVALID, Sidewalk.NO).validOrNullValues()
         )
     }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: SidewalkSides, expectedChanges: Array<StringMapEntryChange>) {
+private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightSidewalk, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
     answer.applyTo(cb)
     val changes = cb.create().changes

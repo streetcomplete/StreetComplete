@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays
 
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
+import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.surface.UniversalSurfaceOverlay
 import de.westnordost.streetcomplete.overlays.surface.RoadSurfaceOverlay
@@ -10,18 +11,22 @@ import de.westnordost.streetcomplete.overlays.surface.SidewalkSurfaceOverlay
 import de.westnordost.streetcomplete.overlays.tracktype.TracktypeOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+/* Each overlay is assigned an ordinal. This is used for serialization and is thus never changed,
+*  even if the order of overlays is changed.  */
 val overlaysModule = module {
     single { OverlayRegistry(listOf(
-        WayLitOverlay(),
-        SidewalkOverlay(),
-        TracktypeOverlay(),
-        RoadSurfaceOverlay(),
-        PathSurfaceOverlay(),
-        SidewalkSurfaceOverlay(),
-        UniversalSurfaceOverlay(),
-        StreetParkingOverlay(),
-        AddressOverlay()
+        0 to WayLitOverlay(),
+        1 to SidewalkOverlay(),
+        2 to StreetParkingOverlay(),
+        3 to AddressOverlay(),
+        4 to ShopsOverlay(get(named("FeatureDictionaryFuture"))),
+        5 to RoadSurfaceOverlay(),
+        6 to PathSurfaceOverlay(),
+        7 to SidewalkSurfaceOverlay(),
+        8 to UniversalSurfaceOverlay(),
+        9 to TracktypeOverlay(),
     )) }
 }

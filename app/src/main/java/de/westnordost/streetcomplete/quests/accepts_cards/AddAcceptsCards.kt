@@ -13,13 +13,14 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
-        nodes, ways, relations with (
+        nodes, ways with (
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
           or (shop and shop !~ no|vacant|mall)
         )
         and !payment:credit_cards and !payment:debit_cards
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
+        and (name or brand or name:signed = no)
         and access !~ private|no
     """
     override val changesetComment = "Survey whether payment with cards is accepted"

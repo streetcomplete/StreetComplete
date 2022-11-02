@@ -9,12 +9,12 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.area
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.lang.System.currentTimeMillis
 import kotlin.math.max
 
 /** Downloads all the things */
@@ -36,7 +36,7 @@ class Downloader(
         }
         Log.i(TAG, "Starting download ($sqkm km², bbox: $bboxString)")
 
-        val time = currentTimeMillis()
+        val time = nowAsEpochMilliseconds()
 
         mutex.withLock {
             coroutineScope {
@@ -48,13 +48,13 @@ class Downloader(
         }
         putDownloadedAlready(tiles)
 
-        val seconds = (currentTimeMillis() - time) / 1000.0
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
     }
 
     private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
-        val ignoreOlderThan = max(0, currentTimeMillis() - freshTime)
+        val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - freshTime)
         return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 

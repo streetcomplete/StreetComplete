@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -24,7 +25,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetOld() {
         dao.put(r(5, 8, 5, 8), "Huhu")
-        val huhus = dao.get(r(5, 8, 5, 8), System.currentTimeMillis() + 1000)
+        val huhus = dao.get(r(5, 8, 5, 8), nowAsEpochMilliseconds() + 1000)
         assertTrue(huhus.isEmpty())
     }
 
@@ -32,7 +33,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         dao.put(r(0, 0, 1, 3), "Huhu")
         Thread.sleep(2000)
         dao.put(r(1, 3, 5, 5), "Huhu")
-        val huhus = dao.get(r(0, 0, 2, 2), System.currentTimeMillis() - 1000)
+        val huhus = dao.get(r(0, 0, 2, 2), nowAsEpochMilliseconds() - 1000)
         assertTrue(huhus.isEmpty())
     }
 

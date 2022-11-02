@@ -4,10 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingStart="@dimen/activity_horizontal_margin"
-    android:paddingEnd="@dimen/activity_horizontal_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +22,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="48dp">
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:divider="@drawable/space_24dp"
+                android:paddingBottom="64dp"
+                android:showDividers="middle">
 
                 <RelativeLayout
                     android:id="@+id/profileContainer"
@@ -104,15 +106,40 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/buttonsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/profileButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        app:icon="@drawable/ic_open_in_browser_24dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/osm_profile" />
+
+                    <Button
+                        android:id="@+id/logoutButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/user_logout"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/badgesContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profileContainer"
                     app:flexWrap="wrap"
                     app:showDivider="middle"
                     app:dividerDrawableHorizontal="@drawable/space_16dp"
@@ -128,8 +155,8 @@
 
                         <TextView
                             android:id="@+id/localRankText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -164,8 +191,8 @@
 
                         <TextView
                             android:id="@+id/globalRankText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -198,8 +225,8 @@
 
                         <TextView
                             android:id="@+id/daysActiveText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -232,8 +259,8 @@
 
                         <TextView
                             android:id="@+id/achievementLevelsText"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
                             android:background="@drawable/background_inverted_text_circle"
                             android:gravity="center"
                             android:padding="8dp"
@@ -261,36 +288,141 @@
 
                 </com.google.android.flexbox.FlexboxLayout>
 
+                <LinearLayout
+                    android:id="@+id/currentWeekSolvedQuestsContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/space_4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textAlignment="gravity"
+                        android:textAppearance="@style/TextAppearance.Title"
+                        android:text="@string/user_profile_current_week_title" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_star_48dp" />
+
+                    <TextView
+                        android:id="@+id/currentWeekEditCountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textAlignment="gravity"
+                        android:textAppearance="@style/TextAppearance.Title"
+                        tools:text="1021" />
+
+                </LinearLayout>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/currentWeekBadgesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:flexWrap="wrap"
+                    app:showDivider="middle"
+                    app:dividerDrawableHorizontal="@drawable/space_16dp"
+                    app:dividerDrawableVertical="@drawable/space_8dp"
+                    app:showDividerVertical="middle"
+                    app:showDividerHorizontal="middle"
+                    app:alignContent="stretch">
+
+                    <RelativeLayout
+                        android:id="@+id/currentWeekLocalRankContainer"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/currentWeekLocalRankText"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="#1"/>
+
+                        <TextView
+                            android:id="@+id/currentWeekLocalRankLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@id/currentWeekLocalRankText"
+                            android:layout_below="@+id/currentWeekLocalRankText"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/user_profile_local_rank"
+                            tools:text="Rank in\nUnited States of America"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/currentWeekGlobalRankContainer"
+                        android:layout_width="84dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/currentWeekGlobalRankText"
+                            android:layout_width="84dp"
+                            android:layout_height="84dp"
+                            android:background="@drawable/background_inverted_text_circle"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:maxLines="1"
+                            android:textAppearance="@style/TextAppearance.Title"
+                            android:layout_centerHorizontal="true"
+                            app:autoSizeTextType="uniform"
+                            app:autoSizeMaxTextSize="22dp"
+                            app:autoSizeMinTextSize="12dp"
+                            android:textColor="@color/background"
+                            tools:text="#123456"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.Body"
+                            android:labelFor="@id/currentWeekGlobalRankText"
+                            android:layout_below="@id/currentWeekGlobalRankText"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/user_profile_global_rank"/>
+
+                    </RelativeLayout>
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textAlignment="gravity"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:text="@string/user_profile_dates_mapped" />
+
+                <ImageView
+                    android:id="@+id/datesActiveView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
         </ScrollView>
-
-        <RelativeLayout
-            android:id="@+id/buttonsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <Button
-                android:id="@+id/profileButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                app:icon="@drawable/ic_open_in_browser_24dp"
-                android:layout_centerHorizontal="true"
-                android:text="@string/osm_profile" />
-
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/user_logout"
-                style="@style/Widget.MaterialComponents.Button"/>
-
-        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

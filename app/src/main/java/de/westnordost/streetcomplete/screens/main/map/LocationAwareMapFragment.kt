@@ -322,7 +322,7 @@ private fun <T> ArrayList<ArrayList<T>>.takeLastNested(n: Int): ArrayList<ArrayL
         val s = get(i).size
         if (sum + s > n) {
             val result = ArrayList(subList(i + 1, size))
-            if (sum > n) result.add(0, ArrayList(get(i).takeLast(n - sum)))
+            if (n > sum) result.add(0, ArrayList(get(i).takeLast(n - sum)))
             return result
         }
         sum += s

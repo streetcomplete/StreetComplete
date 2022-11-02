@@ -751,9 +751,6 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"فقط یک محدودیت سرعت توصیه‌شده..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"بدون شماره پلاک اما دارای نام…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"نام خانه:"</string>
 
     <!-- Fuzzy -->
@@ -1103,6 +1100,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"خانه قایقی"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"بنگالو/کلبه"</string>
 
     <!-- Fuzzy -->
@@ -1128,6 +1127,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"انبار"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"دکه، کیوسک"</string>
 
     <!-- Fuzzy -->
@@ -1489,9 +1490,6 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"نسخه فعلی: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"شماره این صندوق پستی چیست؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"شماره یا کدی دیده نمی‌شود…"</string>
@@ -1918,9 +1916,10 @@
     <string name="user_profile_local_rank">"رتبه‌بندی در %s"</string>
     <string name="user_profile_days_active">"روزهای فعالیت"</string>
     <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
-    <string name="quest_address_street_description">"روی جاده‌ای که به آن تعلق دارد ضربه بزنید یا در بخش ذیل آن را بطور کامل وارد نمایید:"</string>
     <string name="quest_recycling_type_cooking_oil">"روغن پخت و پز"</string>
     <string name="quest_recycling_type_engine_oil">"روغن موتور"</string>
     <string name="link_photon_description">"یک افزونه مستقل به نام Nominatim ، در برگیرنده جستجوی فازی و جستجو براساس نوشتار شما می باشد."</string>
@@ -2064,9 +2063,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون‌های مرتفع مناسب نیست"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"روی جاده در نقشه ضربه بزنید"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"خط عابر دارای خط‌ کشی"</string>
@@ -2298,7 +2294,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"آیا زمان تخلیه این صندوق پستی هنوز درست است؟"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"معتبر نیست. سعی کنید نوع مکان را وارد کنید، به عنوان مثال \"نانوایی\". در غیر این صورت، یادداشت بگذارید."</string>
     <string name="quest_bicycle_barrier_type_title">"محدودیت مسیر دوچرخه از چه نوعی است؟"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"عبور از یک مسیر خاص"</string>
     <string name="quest_barrier_bicycle_type_tilted">"گذرگاه باریک، رو به جلو تنگ شونده"</string>
@@ -2345,7 +2340,6 @@
     <string name="street_parking_conditional_restrictions_hint">"اگر امکان توقف یا پارک در اینجا وجود دارد، ابتدا پاسخ دهید که چگونه در جاهای مجاز، پارک انجام می‌شود. این که دقیقا چه محدودیت‌هایی می‌تواند اعمال شود بعدا مشخص خواهد شد.
 
 همچنین می‌توانید یک یادداشت (با عکس) بگذارید."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"شماره پلاک و نام خانه…"</string>
     <string name="quest_address_house_number_label">"شماره پلاک خانه:"</string>
 
     <!-- Fuzzy -->
@@ -2689,4 +2683,37 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"داده‌های OSM را در محتوایی از تصاویر بزرگ گرفته تا مناظر منحصر بفرد در مکان و زمان جستجو نمایید"</string>
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان تجمع است"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطه تجمع جایی است که افراد در مواقع اضطراری در آن جمع می‌شوند. معمولاً شبیه این به نظر می‌رسد:"</string>
+    <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_street_hint2">"برای انتخاب خیابان روی نقشه ضربه بزنید"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_title">"کدام جهت در اینجا به سمت بالا منتهی می‌شود؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"فقط پر کردن بطری‌ها"</string>
+    <string name="quest_drinking_water_type_tap">"شیرآب"</string>
+    <string name="quest_drinking_water_type_hand_pump">"پمپ دستی"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"آب چاه بدون پمپ"</string>
+    <string name="quest_drinking_water_type_spring">"چشمه"</string>
+    <string name="overlay_addresses">"آدرس‌ها"</string>
+    <string name="overlay_shops">"فروشگاه‌ها"</string>
+    <string name="name_label">"نام:"</string>
+    <string name="vacant_shop_title">"مغازه خالی"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"قابل باز شدن"</string>
+    <string name="quest_buildingType_guardhouse">"نگهبانی"</string>
+    <string name="quest_genericRef_title">"شماره شناسایی اینجا چیست؟"</string>
 </resources>

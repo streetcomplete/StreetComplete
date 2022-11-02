@@ -1,41 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.AppCompat.Button.Small"
     android:layout_width="wrap_content"
     android:layout_height="51dp"
-    android:layout_alignBottom="@id/buildingImage"
-    android:layout_alignParentRight="true"
-    tools:ignore="RtlHardcoded">
-
-    <ImageView
-        android:id="@+id/lastBuildingIllustrationIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_building_levels_illustration"
-        app:layout_constraintLeft_toRightOf="@id/lastLevelsLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlHardcoded" />
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/lastLevelsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="RtlHardcoded"
+        android:layout_gravity="bottom"
         tools:text="3" />
+
+    <ImageView
+        android:id="@+id/lastBuildingIllustrationIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_building_levels_illustration"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/lastRoofLevelsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@id/lastBuildingIllustrationIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlHardcoded"
+        android:layout_gravity="top"
         tools:text="1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

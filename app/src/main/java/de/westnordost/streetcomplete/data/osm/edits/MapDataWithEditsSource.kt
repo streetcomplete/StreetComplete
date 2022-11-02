@@ -62,7 +62,36 @@ class MapDataWithEditsSource internal constructor(
             val modifiedElements = ArrayList<Pair<Element, ElementGeometry?>>()
             val modifiedDeleted = ArrayList<ElementKey>()
             synchronized(this) {
+                /* We don't want to callOnUpdated if none of the changes affects map data provided
+                 * by MapDataWithEditsSource.
+                 * This is the case if
+                 *  * All keys in deleted are already in deletedElements.
+                 *  * The modified versions of all elements in updated are the same before and after
+                 *    rebuildLocalChanges, except for the timestamp (expected to have few ms
+                 *    difference) and version (never updated locally).
+                 */
+                val deletedIsUnchanged = deletedElements.containsAll(deleted)
+                val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
+                    val key = ElementKey(element.type, element.id)
+                    if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
+                        null // we already have the updated version, so this element is unchanged
+                    } else {
+                        key to get(element.type, element.id) // elementKey and element as provided by MapDataWithEditsSource
+                    }
+                }
+
                 rebuildLocalChanges()
+
+                /* nothingChanged can be false at this point when e.g. there are two edits on the
+                   same element, and onUpdated is called after the first edit is uploaded. */
+                val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
+                    val updatedElement = get(it.first.type, it.first.id)
+                    // old and new elements are equal except version and timestamp, or both are null
+                    it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)
+                }
+                if (nothingChanged) {
+                    return
+                }
 
                 for (element in updated) {
                     val key = ElementKey(element.type, element.id)
@@ -438,3 +467,10 @@ class MapDataWithEditsSource internal constructor(
         listeners.forEach { it.onCleared() }
     }
 }
+
+private fun Element.isEqualExceptVersionAndTimestamp(element: Element?): Boolean =
+    id == element?.id && tags == element.tags && type == element.type && when (this) {
+        is Node -> position == (element as Node).position
+        is Way -> nodeIds == (element as Way).nodeIds
+        is Relation -> members == (element as Relation).members
+    }

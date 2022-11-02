@@ -82,4 +82,3 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
 fun getTitle(map: Map<String, String>): String? {
     return getNameLabel(map) ?: getShortHouseNumber(map)
 }
-

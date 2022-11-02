@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.quests.LocalizedName
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.p
 import org.junit.Test
@@ -48,11 +48,6 @@ class AddRoadNameTest {
                 LocalizedName("de", "A1")
             ),
             StringMapEntryAdd("name", "A1"),
-            StringMapEntryAdd("name:de", "A1")
-        )
-        questType.verifyAnswer(
-            tags,
-            roadName(LocalizedName("de", "A1")),
             StringMapEntryAdd("name:de", "A1")
         )
     }

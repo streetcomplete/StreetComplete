@@ -328,7 +328,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_powerPolesMaterial_metal">"Oceľ"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betón"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Iba odporúčaná rýchlosť…"</string>
-    <string name="quest_address_answer_house_name">"Nemá číslo domu, ale má názov…"</string>
     <string name="quest_address_house_name_label">"Názov budovy:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"poschodí v streche"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normálne poschodia (bez strechy)"</string>
@@ -493,8 +492,12 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_semi_detached">"Čiastočne spojený dom (dvojdom)"</string>
     <string name="quest_buildingType_terrace_description">"radová zástavba rodinných domov"</string>
     <string name="quest_buildingType_hotel">"Hotelová budova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Internát"</string>
     <string name="quest_buildingType_houseboat">"Hausbót"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalov"</string>
     <string name="quest_buildingType_static_caravan">"Mobilný dom"</string>
     <string name="quest_buildingType_commercial">"Komerčná budova"</string>
@@ -507,18 +510,34 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Obchod(y)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Sklad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Skladovacia nádrž"</string>
     <string name="quest_buildingType_religious">"Náboženská budova"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kostol"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kaplnka"</string>
     <string name="quest_buildingType_cathedral">"Katedrála"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mešita"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Chrám"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagóga"</string>
     <string name="quest_buildingType_civic">"Verejná budova"</string>
     <string name="quest_buildingType_civic_description">"verejná budova občianskeho vybavenia"</string>
@@ -577,6 +596,8 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Nemá číslo domu…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Táto budova bola označená ako:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Svätyňa"</string>
     <string name="quest_maxspeed_title_short2">"Aký je rýchlostný limit na tejto ceste?"</string>
     <string name="quest_maxspeed_answer_sign">"Značka"</string>
@@ -787,9 +808,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Aktuálna verzia: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Aké je referenčné číslo tejto poštovej schránky?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nie je tu žiadne referenčné číslo…"</string>
@@ -1216,9 +1234,10 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Úspechy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Nepatrí k žiadnej pomenovanej ulici"</string>
     <string name="quest_address_street_place_name_label">"Názov miesta:"</string>
-    <string name="quest_address_street_description">"Kliknite na mape na ulicu ku ktorej patrí, alebo ju zadajte bez skratiek do poľa nižšie:"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej na vyprážanie"</string>
     <string name="quest_recycling_type_engine_oil">"Motorový olej"</string>
     <string name="link_photon_description">"Samostatné rozšírenie pre Nominatim, umožňujúci vyhľadávanie s opravami (fuzzy search) a našepkávaním"</string>
@@ -1361,9 +1380,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Vysoký nákladiak sa nezmestí"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ťuknite na cestu na mape"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Označený prechod"</string>
@@ -1590,7 +1606,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Sú časy vybratia tejto poštovej schránky správne?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Nerozpoznané. Skúste zadať typ miesta, napríklad “pekáreň”. V opačnom prípade zvážte nechať poznámku."</string>
     <string name="quest_bicycle_barrier_type_title">"Aký je toto typ prekážky pre cyklistov?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonálne vzhľadom na chodník"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Zúžený prejazd, menší hore"</string>
@@ -1637,7 +1652,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="street_parking_conditional_restrictions_hint">"Ak je tu možné parkovať alebo zastaviť, najskôr odpovedzte, ako tu tí, ktorý tu môžu parkovať parkujú. To, aké obmedzenia tu platia môže byť upresnené neskôr.
 
 Taktiež môžete nechať poznámku (s fotkou)"</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Aj číslo domu, aj meno…"</string>
     <string name="quest_address_house_number_label">"Číslo domu:"</string>
 
     <!-- Fuzzy -->

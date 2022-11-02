@@ -1,18 +1,21 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
+import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
+import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -23,7 +26,8 @@ import kotlinx.coroutines.launch
  *  use. */
 class QuestPresetsAdapter(
     private val context: Context,
-    private val questPresetsController: QuestPresetsController
+    private val questPresetsController: QuestPresetsController,
+    private val urlConfigController: UrlConfigController
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
@@ -38,6 +42,14 @@ class QuestPresetsAdapter(
         override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
             presets.add(preset)
             notifyItemInserted(presets.size - 1)
+        } }
+
+        override fun onRenamedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
+            val index = presets.indexOfFirst { it.id == preset.id }
+            if (index != -1) {
+                presets[index] = preset
+                notifyItemChanged(index)
+            }
         } }
 
         override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
@@ -84,9 +96,8 @@ class QuestPresetsAdapter(
             binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) onSelectQuestPreset(with.id)
             }
-            binding.deleteButton.isEnabled = true
-            binding.deleteButton.isInvisible = with.id == 0L
-            binding.deleteButton.setOnClickListener { onClickDeleteQuestPreset(with) }
+            binding.menuButton.isEnabled = true
+            binding.menuButton.setOnClickListener { onClickMenuButton(with) }
         }
 
         private fun onSelectQuestPreset(presetId: Long) {
@@ -95,8 +106,52 @@ class QuestPresetsAdapter(
             }
         }
 
+        private fun onClickMenuButton(preset: QuestPreset) {
+            val popup = PopupMenu(itemView.context, binding.menuButton)
+            popup.setForceShowIcon(true)
+            if (preset.id != 0L) {
+                val renameItem = popup.menu.add(R.string.quest_presets_rename)
+                renameItem.setIcon(R.drawable.ic_edit_24dp)
+                renameItem.setOnMenuItemClickListener { onClickRenamePreset(preset); true }
+            }
+
+            val shareItem = popup.menu.add(R.string.quest_presets_share)
+            shareItem.setIcon(R.drawable.ic_share_24dp)
+            shareItem.setOnMenuItemClickListener { onClickSharePreset(preset); true }
+
+            if (preset.id != 0L) {
+                val deleteItem = popup.menu.add(R.string.quest_presets_delete)
+                deleteItem.setIcon(R.drawable.ic_delete_24dp)
+                deleteItem.setOnMenuItemClickListener { onClickDeleteQuestPreset(preset); true }
+            }
+
+            popup.show()
+        }
+
+        private fun onClickRenamePreset(preset: QuestPreset) {
+            val ctx = itemView.context
+            val dialog = EditTextDialog(ctx,
+                title = ctx.getString(R.string.quest_presets_rename),
+                text = preset.name,
+                callback = { name -> renameQuestPreset(preset.id, name) }
+            )
+            dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
+            dialog.show()
+        }
+
+        private fun renameQuestPreset(presetId: Long, name: String) {
+            viewLifecycleScope.launch(Dispatchers.IO) {
+                questPresetsController.rename(presetId, name)
+            }
+        }
+
+        private fun onClickSharePreset(preset: QuestPreset) {
+            val url = urlConfigController.create(preset.id)
+            UrlConfigQRCodeDialog(context, url).show()
+        }
+
         private fun onClickDeleteQuestPreset(preset: QuestPreset) {
-            AlertDialog.Builder(itemView.context, R.style.Theme_Bubble_Dialog_Alert)
+            AlertDialog.Builder(itemView.context)
                 .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
                 .setPositiveButton(R.string.delete_confirmation) { _, _ -> deleteQuestPreset(preset.id) }
                 .setNegativeButton(android.R.string.cancel, null)
@@ -104,7 +159,6 @@ class QuestPresetsAdapter(
         }
 
         private fun deleteQuestPreset(presetId: Long) {
-            binding.deleteButton.isEnabled = false
             viewLifecycleScope.launch(Dispatchers.IO) {
                 questPresetsController.delete(presetId)
             }

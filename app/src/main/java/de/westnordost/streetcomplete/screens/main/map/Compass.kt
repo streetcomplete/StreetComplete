@@ -12,6 +12,7 @@ import android.view.Display
 import android.view.Surface
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.lang.Math.toRadians
 import kotlin.math.PI
 import kotlin.math.abs
@@ -158,7 +159,7 @@ class Compass(
             location.latitude.toFloat(),
             location.longitude.toFloat(),
             location.altitude.toFloat(),
-            System.currentTimeMillis()
+            nowAsEpochMilliseconds()
         )
         declination = toRadians(geomagneticField.declination.toDouble()).toFloat()
     }

@@ -24,7 +24,9 @@ object Prefs {
     const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
     const val USER_DAYS_ACTIVE = "days_active"
     const val USER_GLOBAL_RANK = "user_global_rank"
+    const val USER_GLOBAL_RANK_CURRENT_WEEK = "user_global_rank_current_week"
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
+    const val ACTIVE_DATES_RANGE = "active_days_range"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
     const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"
     const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
@@ -46,6 +48,13 @@ object Prefs {
 
     const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
     const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
+
+    const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
+
+    const val LAST_SHOWN_USER_GLOBAL_RANK = "last_shown.user_global_rank"
+    const val LAST_SHOWN_USER_LOCAL_RANK = "last_shown.user_local_rank"
+    const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
+    const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
 
     enum class Autosync {
         ON, WIFI, OFF

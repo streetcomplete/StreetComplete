@@ -35,6 +35,7 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.verifyNoInteractions
+import org.mockito.Mockito.verifyNoMoreInteractions
 
 class MapDataWithEditsSourceTest {
 
@@ -975,6 +976,130 @@ class MapDataWithEditsSourceTest {
             ElementKey(NODE, 3)
         )
         verify(listener).onUpdated(eq(expectedMapDataWithGeometry), eq(expectedDeletions))
+    }
+
+    @Test
+    fun `does not call onUpdated when all deleted elements are already deleted`() {
+        mapDataChangesAre(deletions = listOf(node(4)))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry()
+        val deletions = listOf(ElementKey(NODE, 4))
+
+        mapDataListener.onUpdated(updatedMapData, deletions)
+
+        verifyNoInteractions(listener)
+    }
+
+    @Test
+    fun `does call onUpdated when not all deleted elements are already deleted`() {
+        mapDataChangesAre(deletions = listOf(node(4)))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry()
+        val deletions = listOf(ElementKey(NODE, 3), ElementKey(NODE, 4))
+        mapDataListener.onUpdated(updatedMapData, deletions)
+
+        val expectedDeletions = listOf(
+            ElementKey(NODE, 3),
+            ElementKey(NODE, 4)
+        )
+        verify(listener).onUpdated(eq(updatedMapData), eq(expectedDeletions))
+    }
+
+    @Test
+    fun `does not call onUpdated when all updated elements stayed the same`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified))
+        // 2. update map data
+        originalElementsAre(ndModified, ndModified4)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModified, ndModified4),
+            geometryEntries = listOf(pModified, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verifyNoInteractions(listener)
+    }
+
+    @Test
+    fun `does not call onUpdated when all updated elements stayed the same except for version and timestamp`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val pModified = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        val ndModifiedWithVersion = node(1, p(0.3, 0.0), version = 2)
+        val ndModified4WithTimestamp = node(4, p(0.5, 0.4), timestamp = 123L)
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 1 and node 4 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        thereAreNoMapDataChanges()
+        // 2. update map data
+        originalElementsAre(ndModifiedWithVersion, ndModified4WithTimestamp)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModifiedWithVersion, ndModified4WithTimestamp),
+            geometryEntries = listOf(pModified, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verifyNoMoreInteractions(listener)
+    }
+
+    @Test
+    fun `does call onUpdated when not all updated elements stayed the same`() {
+        val ndModified = node(1, p(0.3, 0.0))
+        val ndModified4 = node(4, p(0.5, 0.4))
+        val pModified4 = ElementGeometryEntry(NODE, 4, pGeom(0.5, 0.4))
+
+        val ndModifiedMoved = node(1, p(0.3, 0.1))
+        val pModifiedMoved = ElementGeometryEntry(NODE, 1, pGeom(0.3, 0.1))
+
+        thereAreNoOriginalElements()
+        mapDataChangesAre(modifications = listOf(ndModified, ndModified4))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        // simulating that an edit that modifies node 1 is uploaded:
+        // 1. remove from changes. (onSyncedEdit) should be called, but it is ignored anyway
+        mapDataChangesAre(modifications = listOf(ndModified4))
+        // 2. update map data
+        originalElementsAre(ndModifiedMoved, ndModified4)
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(ndModifiedMoved, ndModified4),
+            geometryEntries = listOf(pModifiedMoved, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verify(listener).onUpdated(eq(updatedMapData), eq(emptyList()))
     }
 
     //endregion

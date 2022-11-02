@@ -24,6 +24,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
 class TestQuestTypeB : TestQuestTypeA()
 class TestQuestTypeC : TestQuestTypeA()
 class TestQuestTypeD : TestQuestTypeA()
+class TestQuestTypeE : TestQuestTypeA()
 
 class TestQuestTypeDisabled : TestQuestTypeA() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

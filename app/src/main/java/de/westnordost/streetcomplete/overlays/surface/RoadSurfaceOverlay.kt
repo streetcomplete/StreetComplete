@@ -71,7 +71,9 @@ class RoadSurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = RoadSurfaceOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS) RoadSurfaceOverlayForm()
+        else null
 }
 
 private fun getStyle(element: Element): Style {

@@ -98,7 +98,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         }
          */
 
-        val status = createMainSurfaceStatus(element.tags)
+        val status = createMainSurfaceStatus(element!!.tags)
         currentStatus = status
         when (status) {
             is SingleSurface -> {
@@ -180,12 +180,12 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     override fun onClickOk() {
         val note = noteText()
         val surfaceObject = selectedStatusForMainSurface!!.value!!
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
             it.updateWithCheckDate("surface", surfaceObject.osmValue)
             if (surfaceObject.shouldBeDescribed) {
                 it["surface:note"] = note!!
             } else {
-                if (element.tags.containsKey("surface:note")) {
+                if (element!!.tags.containsKey("surface:note")) {
                     it.remove("surface:note")
                 }
             }

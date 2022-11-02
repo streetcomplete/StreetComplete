@@ -1,19 +1,85 @@
-v48.0-alpha1: |
+v49.0-beta2: |
+  <ul>
+  <li>Fix App links not working on Android 12+ (#4584)</li>
+  <li>Other small enhancements and fixes (#4513, #4574)</li>
+  </ul>
+
+v49.0-beta1: |
+  <h3>QR Codes</h3>
+  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3642, #3481, #4537)</p>
+  <h3>My Profile screen</h3>
+  <p>The My Profile screen is now more interesting and engaging! New graphics, new animations, weekly ranks and a calendar of your recent activity! (#2946, #3230, #4572, #4569, #3414, #4203), by @matkoniecz</p>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
+  <li>Cycle lanes: Adapt appearance of cycle lanes, depending on the country one is mapping in (#4502)</li>
+  <li>Cycle lanes, sidewalk surface: Also remember and offer shortcut to apply last selection for roads on which only one side is to be defined (#4524, #4503), by @Helium314</li>
+  <li>Shop overlay: Disable 3D buildings for easier placement of new shops (#4563)</li>
+  <li>Shop overlay: Allow input of names in different languages (in countries where that's common)</li>
+  <li>Shop overlay, Bus stop names, place names...: Remember user's choice about which primary language to use for multilingual names (#4257)</li>
+  <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
+  <li>Other small enhancements and fixes (#4559, #4560, #4513...)</li>
+  </ul>
+
+v48.0: |
+  <h2>M-M-M-Mega Update!</h2>
+  <p>A few things came together... this update contains what would usually be in 4 or so releases! Enjoy!</p>
   <h3>1️⃣️️ Addresses Overlay</h3>
-  <p>This now is the most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
-   You can add addresses to buildings, edit existing addresses and also add addresses at any position, using the same sleek UI as for the address quests.</p>
+  <p>The most efficient way to map addresses on-site, even in places where no buildings are mapped yet!<br/>
+  You can add addresses to buildings, edit existing ones and also add them at any new position, using the same sleek UI as for the address quests.</p>
+  <h3>🛍️ Shops Overlay</h3>
+  <p>Easily map and check what shops exist in your local shopping area!</p>
+  <h3>🚀 HUGE performance improvements (#4079, #4125), all by @Helium314</h3>
+  <p>The app is now more responsive during normal use thanks to extensive caching and other improvements, in particular, roughly:</p>
+  <ul>
+  <li>2x to 8x times faster display of quest pins and overlays</li>
+  <li>2x to 3x times faster showing of quest details</li>
+  <li>up to 2x times faster solving of quests</li>
+  <li>up to 2x faster upload and thus another 2x faster solving of quests if auto-sync is on (#4077, #4472)</li>
+  <li>slightly faster download (#4469)</li>
+  </ul>
   <h3>New Quests</h3>
   <ul>
   <li><i>How is drinking water provided here?</i> (#4423, #4390), by @matkoniecz</li>
   <li><i>Which direction leads upwards here?</i>, asked for mountainbike tracks (#4385), by @matkoniecz</li>
   <li><i>What’s the identification number here?</i>, asked for emergency access points (#4384, #4386), by @mcliquid</li>
+  <li><i>What’s the identification number here?</i>, asked for fire hydrants (#3059, #4386), by @mcliquid</li>
+  <li><i>Can this cycle barrier be opened?</i> (#4293, #4406), by @mnalis</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Enable quest that asks if cash is accepted in United Kingdom (#4517)</li>
+  <li>Clarify some wordings for buildings (#4431), by @matkoniecz</li>
+  <li>Do not ask for parking access if some access is already tagged (#4538, #4547), by @mnalis</li>
+  <li>Parking overlay: Simplify selecting that there is no parking (#4534)</li>
   </ul>
   <h3>Other enhancements</h3>
   <ul>
   <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
-  <li>Add links to documentation for tags changed as shown in undo dialog (#4419), by @matkoniecz</li>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
   <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  <li>Resurvey quests no longer vanish after splitting the way - only works if auto-sync is off (#3567, #4523), by @Helium314</li>
+  <li>Fix which tags the parking overlay removes when changing the answer (#4501, #4552), thanks @tapetis</li>
+  <li>Other small enhancements and fixes (#4453, #4496, #4506, #4494, #4499, #4544, #4540...), thanks @Helium314, @tapetis, @mnalis</li>
+  </ul>
+
+v47.2: |
+  <ul>
+  <li>Fix note quests by default would not show up if that note contained several paragraphs (#4482)</li>
+  <li>Do not ask for surfaces of private cycleways and footways (#4434, #4433), by @legofahrrad</li>
+  <li>Also ask for bus stop identification numbers in Australia and Turkey (#4487, #4489), thanks @andrewharvey</li>
+  <li>Other minor enhancements (#4486, #4475, #4490...), thanks @mnalis</li>
+  </ul>
+
+v47.1: |
+  <ul>
+  <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
+  <li>Do not show quests for kind of shops that cannot be referred to by name or type (#4448)</li>
+  <li>Sidewalk and street parking overlays: Allow to only specify the situation on one side (#4427)</li>
+  <li>Street parking overlay: Show parking areas semi-transparent in front of street side parkings</li>
+  <li>Overlays: Fix possible crash when editing roads with incomplete or invalid tagging</li>
+  <li>Other minor enhancements, fixes and crash fixes (#4424, #4429, #4435, #4447, ...), thanks @mcliquid, @Helium314</li>
   </ul>
 
 v47.0: |

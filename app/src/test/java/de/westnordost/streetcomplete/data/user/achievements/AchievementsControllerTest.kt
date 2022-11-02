@@ -37,8 +37,8 @@ class AchievementsControllerTest {
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
         userLinksDao = mock()
         statisticsSource = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(QuestOne, QuestTwo))
-        overlayRegistry = OverlayRegistry(listOf(OverlayOne))
+        questTypeRegistry = QuestTypeRegistry(listOf(0 to QuestOne, 1 to QuestTwo))
+        overlayRegistry = OverlayRegistry(listOf(0 to OverlayOne))
 
         listener = mock()
 

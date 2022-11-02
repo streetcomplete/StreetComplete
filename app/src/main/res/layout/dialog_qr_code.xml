@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dialog_vertical_margin"
+    android:paddingLeft="@dimen/dialog_horizontal_margin"
+    android:paddingRight="@dimen/dialog_horizontal_margin"
+    android:paddingBottom="@dimen/dialog_vertical_margin">
+
+    <TextView
+        android:id="@+id/qrCodeViewLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/urlconfig_qr_code_description"
+        android:labelFor="@id/qrCodeView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <ImageView
+        android:id="@+id/qrCodeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qrCodeViewLabel"
+        android:scaleType="fitXY"
+        android:layout_marginTop="16dp"
+         />
+
+    <TextView
+        android:id="@+id/dataViewLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/urlconfig_as_url"
+        android:labelFor="@id/urlView"
+        app:layout_constraintTop_toBottomOf="@id/qrCodeView"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/urlView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:textIsSelectable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/copyButton"
+        app:layout_constraintTop_toBottomOf="@id/dataViewLabel"
+        style="@style/Widget.AppCompat.EditText"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/copyButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        android:layout_marginStart="16dp"
+        app:iconPadding="0dp"
+        app:iconGravity="textStart"
+        app:icon="@drawable/ic_content_copy_24dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:contentDescription="@android:string/copyUrl"
+        app:layout_constraintStart_toEndOf="@id/urlView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/urlView"
+        app:layout_constraintBottom_toBottomOf="@id/urlView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

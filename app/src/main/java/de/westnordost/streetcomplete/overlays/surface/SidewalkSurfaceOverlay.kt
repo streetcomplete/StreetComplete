@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlayForm
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
 
@@ -64,7 +65,9 @@ class SidewalkSurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = SidewalkSurfaceOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkSurfaceOverlayForm()
+        else null
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {

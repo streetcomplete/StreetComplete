@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.surface.SidewalkSurfaceAnswer
 import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
+import de.westnordost.streetcomplete.quests.surface.SidewalkSurface
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
@@ -40,7 +41,7 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
     }
 
     private fun initStateFromTags() {
-        val sides = createSidewalkSides(element.tags)
+        val sides = createSidewalkSides(element!!.tags)
         val hasLeft = sides?.left == Sidewalk.YES
         val hasRight = sides?.right == Sidewalk.YES
 
@@ -51,8 +52,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
             else -> return
         }
         // actually init surface....
-        val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
-        val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
+        val leftSurfaceString = element!!.tags["sidewalk:both:surface"] ?: element!!.tags["sidewalk:left:surface"]
+        val rightSurfaceString = element!!.tags["sidewalk:both:surface"] ?: element!!.tags["sidewalk:right:surface"]
         val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
         val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
         if(leftSurfaceObject != null) {
@@ -99,8 +100,8 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         if (left?.shouldBeDescribed != true && right?.shouldBeDescribed != true) {
             streetSideSelect.saveLastSelection()
         }
-        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
-            SidewalkSurfaceAnswer(
+        applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
+            SidewalkSurface(
                 left?.let { leftSurface -> SurfaceAnswer(leftSurface, leftNote) },
                 right?.let { rightSurface -> SurfaceAnswer(rightSurface, rightNote) }
             ).applyTo(it)
@@ -124,7 +125,7 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         streetSideSelect.left?.value != currentSidewalk?.left ||
             streetSideSelect.right?.value != currentSidewalk?.right
 
-    override fun serialize(item: StreetSideDisplayItem<Surface>, isRight: Boolean) =
+    override fun serialize(item: StreetSideDisplayItem<Surface>): String =
         item.value.name
 
     override fun deserialize(str: String, isRight: Boolean) =

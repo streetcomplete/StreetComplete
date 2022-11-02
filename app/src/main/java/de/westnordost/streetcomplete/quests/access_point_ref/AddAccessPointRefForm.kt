@@ -35,7 +35,7 @@ class AddAccessPointRefForm : AbstractOsmQuestForm<AccessPointRefAnswer>() {
     private fun confirmNoRef() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoAccessPointRef) }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoVisibleAccessPointRef) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }

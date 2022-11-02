@@ -25,6 +25,15 @@ class QuestPresetsController(
         return presetId
     }
 
+    override fun getName(presetId: Long): String? {
+        return questPresetsDao.getName(presetId)
+    }
+
+    fun rename(presetId: Long, name: String) {
+        questPresetsDao.rename(presetId, name)
+        onRenamedQuestPreset(presetId, name)
+    }
+
     fun delete(presetId: Long) {
         if (presetId == selectedId) {
             selectedId = 0
@@ -35,6 +44,9 @@ class QuestPresetsController(
 
     override fun getAll(): List<QuestPreset> =
         questPresetsDao.getAll()
+
+    override fun getByName(name: String): QuestPreset? =
+        questPresetsDao.getAll().find { it.name == name }
 
     /* listeners */
 
@@ -49,6 +61,9 @@ class QuestPresetsController(
     }
     private fun onAddedQuestPreset(presetId: Long, presetName: String) {
         listeners.forEach { it.onAddedQuestPreset(QuestPreset(presetId, presetName)) }
+    }
+    private fun onRenamedQuestPreset(presetId: Long, presetName: String) {
+        listeners.forEach { it.onRenamedQuestPreset(QuestPreset(presetId, presetName)) }
     }
     private fun onDeletedQuestPreset(presetId: Long) {
         listeners.forEach { it.onDeletedQuestPreset(presetId) }

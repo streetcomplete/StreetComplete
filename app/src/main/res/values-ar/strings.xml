@@ -373,7 +373,6 @@
     <string name="quest_powerPolesMaterial_metal">"فولاذ"</string>
     <string name="quest_powerPolesMaterial_concrete">"أسمنت"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"مجرد حد للسرعة الموصى بها …"</string>
-    <string name="quest_address_answer_house_name">"لا يوجد رقم للمنزل ولكن يوجد اسم …"</string>
     <string name="quest_address_house_name_label">"اسم المنزل:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"طوابق في السطح"</string>
     <string name="quest_buildingLevels_levelsLabel2">"الطوابق (لا تحسب السطح)"</string>
@@ -534,8 +533,12 @@
     <string name="quest_buildingType_semi_detached">"منزل شبه مفصول"</string>
     <string name="quest_buildingType_terrace_description">"صف من المنازل العائلية المتماثلة التي تكون على شكل خطي"</string>
     <string name="quest_buildingType_hotel">"مبنى فندق"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"سكن جامعي"</string>
     <string name="quest_buildingType_houseboat">"المركب - منزل عائم"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"بيت من طابق واحد"</string>
     <string name="quest_buildingType_static_caravan">"منزل متنقل موجود في مكانه لفترة"</string>
     <string name="quest_buildingType_commercial">"مبنى تجاري"</string>
@@ -550,18 +553,32 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"محل (محلات)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"مستودع"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"كشك"</string>
     <string name="quest_buildingType_storage_tank">"خزان سوائل أو غاز (فوق الأرض)"</string>
     <string name="quest_buildingType_religious">"مبنى ديني"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"كنيسة"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"كنيسة صغيرة"</string>
     <string name="quest_buildingType_cathedral">"كاتدرائية"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"مسجد أو جامع"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"معبد"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"باغودة"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"كنيس - مجمع يهودي"</string>
     <string name="quest_buildingType_civic">"مبنى مرافق مدنية"</string>
     <string name="quest_buildingType_civic_description">"عادة ما يضم خدمة عامة (دورات مياه عامة ، مبنى بلدية ، وما إلى ذلك)."</string>
@@ -600,6 +617,8 @@
     <string name="quest_buildingType_bunker">"ملجأ محصّن"</string>
     <string name="quest_address_answer_no_housenumber">"لا يوجد رقم للمنزل…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"تم وضع وسم على المبنى على أنه:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"مزار"</string>
 
     <!-- Fuzzy -->
@@ -728,9 +747,6 @@
     <string name="quest_maxweight_unsupported_sign_request_photo">"هل تود ترك ملاحظة؟ ستسمح ملاحظة مع صورة لرسامي الخرائط الآخرين بالعناية بها."</string>
     <string name="quest_handrail_title">"هل هذه السلالم لها درابزين؟"</string>
     <string name="about_summary_current_version">"الإصدار الحالي: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"ما هو الرقم المرجعي لصندوق البريد هذا؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"لا يوجد رقم مرجعي مرئي …"</string>
@@ -942,9 +958,10 @@
 ناشط"</string>
     <string name="user_profile_achievement_levels">"الإنجازات
 المستويات"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"إنه لا ينتمي إلى شارع مسمى"</string>
     <string name="quest_address_street_place_name_label">"اسم مكان:"</string>
-    <string name="quest_address_street_description">"اضغط على الطريق التي ينتمي إليه على الخريطة أو أدخل اسمه الكامل وغير المختصر في الحقل أدناه:"</string>
     <string name="quest_recycling_type_cooking_oil">"زيت الطهي"</string>
     <string name="quest_recycling_type_engine_oil">"زيت المحرك"</string>
     <string name="link_photon_description">"امتداد مستقل لـ Nominatim، بما في ذلك البحث التقريبي والبحث أثناء الكتابة"</string>
@@ -1086,9 +1103,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"الشاحنات الطويلة لا يمكنها المرور"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"اضغط على الطريق على الخريطة"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"معبر مشاة بعلامات ولافتات مرورية"</string>
@@ -1315,7 +1329,6 @@
     <string name="quest_access_customers">"أي شخص يزور مكانًا معينًا (مثل العملاء فقط)"</string>
     <string name="quest_access_private">"فقط الأفراد الحاصلين على إذن/تصريح"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"هل ما زالت أوقات الاستلام لصندوق التجميع هذا صحيحة؟"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"ليست معروفة، حاول إدخال نوع المكان ، على سبيل المثال \"مخبز\"، إذا لم تعرف النوع الصحيح فكر في ترك ملاحظة."</string>
     <string name="quest_bicycle_barrier_type_title">"أي نوع من حواجز الدراجات هذا؟"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"قطري إلى المسار"</string>
     <string name="quest_barrier_bicycle_type_tilted">"ممر ضيق ، أصغر باتجاه الأعلى"</string>
@@ -1350,7 +1363,6 @@
     <string name="street_parking_conditional_restrictions_hint">"إذا كان من الممكن التوقف بشكل مطلق هنا ، حدد نوع موقف السيارات هل هو على الشارع أو بعيدًا عنه، كما يمكن تحديد قيود إضافية لاحقًا.
 
 كما يمكنك ترك ملاحظة بدلاً من ذلك (مع صورة)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"كلاً من رقم المنزل والاسم ..."</string>
     <string name="quest_address_house_number_label">"رقم المنزل:"</string>
     <string name="quest_shoulder_title">"هل هذا الطريق به كتف أو مسار طوارئ؟"</string>
     <string name="quest_fireHydrant_position_title">"أين يقع صنبور الحريق هذا؟"</string>

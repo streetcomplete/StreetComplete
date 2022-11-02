@@ -48,8 +48,8 @@ class StyleableOverlayManager(
     private var overlay: Overlay? = null
     set(value) {
         if (field == value) return
-        if (value != null) show() else hide()
         field = value
+        if (value != null) show() else hide()
     }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
@@ -85,11 +85,11 @@ class StyleableOverlayManager(
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
+        overlay = null
         selectedOverlaySource.removeListener(overlayListener)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        hide()
         viewLifecycleScope.cancel()
     }
 

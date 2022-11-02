@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -14,6 +15,7 @@ import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.osm.Tracktype
 import de.westnordost.streetcomplete.osm.createTracktypeStatus
 import de.westnordost.streetcomplete.overlays.StrokeStyle
+import de.westnordost.streetcomplete.overlays.surface.UniversalSurfaceOverlayForm
 
 class TracktypeOverlay : Overlay {
 
@@ -30,7 +32,9 @@ class TracktypeOverlay : Overlay {
             .filter("ways with tracktype=* or highway=track")
             .map { it to getStyle(it) }
 
-    override fun createForm(element: Element) = TracktypeOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && (element.tags["highway"] == "track" || "tracktype" in element.tags) ) TracktypeOverlayForm()
+        else null
 }
 
 private fun getStyle(element: Element): Style {

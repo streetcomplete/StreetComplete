@@ -10,9 +10,9 @@ jobs:
     name: Generate quest list
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'adopt'
@@ -21,7 +21,7 @@ jobs:
         run: chmod +x gradlew
       - name: Generate quest list
         run: ./gradlew generateQuestList
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: quest-list.csv
           path: ./quest-list.csv

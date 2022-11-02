@@ -1,27 +1,12 @@
 package de.westnordost.streetcomplete.data.quest
 
+import de.westnordost.streetcomplete.data.ObjectTypeRegistry
+
 /** Every osm quest needs to be registered here.
  *
- * Could theoretically be done with Reflection, but that doesn't really work on Android
+ * Could theoretically be done with Reflection, but that doesn't really work on Android.
+ *
+ * It is also used to define a (display) order of the quest types and to assign an ordinal to each
+ * quest type for serialization.
  */
-
-class QuestTypeRegistry(private val quests: List<QuestType>) : List<QuestType> by quests {
-
-    private val typeMap: Map<String, QuestType>
-
-    init {
-        val map = mutableMapOf<String, QuestType>()
-        for (questType in this) {
-            val questTypeName = questType.name
-            require(!map.containsKey(questTypeName)) {
-                "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
-            }
-            map[questTypeName] = questType
-        }
-        typeMap = map
-    }
-
-    fun getByName(typeName: String): QuestType? {
-        return typeMap[typeName]
-    }
-}
+class QuestTypeRegistry(ordinalsAndEntries: List<Pair<Int, QuestType>>) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries)

@@ -165,7 +165,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             }
              */
 
-            val status = createSurfaceStatus(element.tags)
+            val status = createSurfaceStatus(element!!.tags)
             currentStatus = status
             when (status) {
                 // surface=unpaved / surface=paved without note is treated as missing one
@@ -213,7 +213,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     selectedStatusForMainSurface = status.surface.asItem() // even if paved/unpaved
                 }
                 is SurfaceMissing -> {
-                    if (element.tags["segregated"] == "yes") {
+                    if (element!!.tags["segregated"] == "yes") {
                         switchToFootwayCyclewaySurfaceLayout()
                     }
                 }
@@ -344,7 +344,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         if (surface.shouldBeDescribed) {
             tags[noteTag] = noteText!!
         } else {
-            if (element.tags.containsKey(noteTag)) {
+            if (element!!.tags.containsKey(noteTag)) {
                 tags.remove(noteTag)
             }
         }
@@ -355,7 +355,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
             val footwaySurface = selectedStatusForFootwaySurface!!.value!!
             val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
-            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
                 // main surface cannot have note specified here
                 // TODO what if it originally had one? figure out how to display it? skip such rare objects?
                 applyNoteAsNeeded(it, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
@@ -375,7 +375,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         } else {
             // like RoadSurfaceOverlayForm is doing this
             val surfaceObject = selectedStatusForMainSurface!!.value!!
-            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element.tags).also {
+            applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
                 it.updateWithCheckDate("surface", surfaceObject.osmValue)
                 applyNoteAsNeeded(it, "surface:note", noteText(), surfaceObject)
 

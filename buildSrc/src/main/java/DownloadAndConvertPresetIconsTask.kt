@@ -35,28 +35,43 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val indexTargetFile = File(indexFile)
         indexTargetFile.parentFile.mkdirs()
 
+        val prefix = transformName("")
+        for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
+            file.delete()
+        }
+
         for (icon in icons) {
-            val url = getDownloadUrl(icon) ?: continue
+            val urls = getDownloadUrls(icon) ?: continue
 
             val iconName = transformName(icon)
             val targetFile = File("$targetDir/$iconName.xml")
             targetFile.parentFile.mkdirs()
 
-            try {
-                URL(url).openStream().use { input ->
-                    val factory = DocumentBuilderFactory.newInstance()
-                    factory.isIgnoringComments = true
-                    val svg = factory.newDocumentBuilder().parse(input)
+            var message: String = ""
+            var iconWasFound = false
+            for (url in urls) {
 
-                    val drawable = createAndroidDrawable(svg)
+                try {
+                    URL(url).openStream().use { input ->
+                        val factory = DocumentBuilderFactory.newInstance()
+                        factory.isIgnoringComments = true
+                        val svg = factory.newDocumentBuilder().parse(input)
 
-                    writeXml(drawable, targetFile)
+                        val drawable = createAndroidDrawable(svg)
+
+                        writeXml(drawable, targetFile)
+                    }
+                    index.add(iconName)
+                    iconWasFound = true
+                    break
+                } catch (e: IOException) {
+                    message += "$icon not found in $url\n"
+                } catch (e: IllegalArgumentException) {
+                    message += "$icon not supported: ${e.message}\n"
                 }
-                index.add(iconName)
-            } catch (e: IOException) {
-                println("$icon not found")
-            } catch (e: IllegalArgumentException) {
-                println("$icon not supported: " + e.message)
+            }
+            if (!iconWasFound) {
+                print(message)
             }
         }
 
@@ -94,7 +109,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         require(root.tagName  == "svg") { "Root must be <svg>" }
 
         val viewBox = root.getAttribute("viewBox")
-        require(viewBox.isNotEmpty()) { "viewBox is missing"}
+        require(viewBox.isNotEmpty()) { "viewBox is missing" }
         val rect = viewBox.split(' ')
 
         require(rect.size == 4) { "Expected viewBox to have 4 values" }
@@ -106,7 +121,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val x = root.getAttribute("x")
         require(x == "" || x == "0" || x == "0px") { "x must be 0" }
         val y = root.getAttribute("y")
-        require(y == "" || y == "0" || y == "0px") { "y must be 0"}
+        require(y == "" || y == "0" || y == "0px") { "y must be 0" }
 
         val width2 = root.getAttribute("width")
         val height2 = root.getAttribute("height")
@@ -140,7 +155,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
 
             val path = drawable.createElement("path")
             path.setAttribute("android:fillColor", "@android:color/white")
-            path.setAttribute("android:pathData", d)
+            path.setAttribute("android:pathData", makePathCompatible(d))
             vector.appendChild(path)
         }
 
@@ -148,6 +163,25 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     }
 
     private val supportedPathAttributes = setOf("d", "id")
+
+    private fun makePathCompatible(path: String): String {
+        val scientificNotation = Regex("\\d*\\.\\d+e-\\d+")
+        // likely only used for very small numbers, just round to 0
+        var result = scientificNotation.replace(path, "0")
+
+        val zeroBeforeDot = Regex("(?<before>[- ,a-zA-Z])\\.")
+        result = zeroBeforeDot.replace(result, "\${before}0.")
+
+        val spaceAfterDecimal = Regex("(\\d+\\.\\d+)\\.")
+        var i = 0
+        var previousPath: String
+        do {
+            if (i++ > 3) throw IllegalStateException()
+            previousPath = result
+            result = spaceAfterDecimal.replace(previousPath, "\$1 0.")
+        } while (result != previousPath)
+        return result
+    }
 
     private fun writeXml(xml: Document, targetFile: File) {
         FileOutputStream(targetFile).use { output ->
@@ -172,16 +206,26 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         return icons
     }
 
-    private fun getDownloadUrl(icon: String): String? {
+    private fun getDownloadUrls(icon: String): List<String>? {
         val prefix = icon.substringBefore('-', "")
         val file = icon.substringAfter('-')
-        return when(prefix) {
-            "iD" -> "https://raw.githubusercontent.com/openstreetmap/iD/develop/svg/iD-sprite/presets/$file.svg"
-            "maki" -> "https://raw.githubusercontent.com/mapbox/maki/main/icons/$file.svg"
-            "temaki" -> "https://raw.githubusercontent.com/ideditor/temaki/main/icons/$file.svg"
-            "fas" -> "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/$file.svg"
-            "far" -> "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/regular/$file.svg"
-            "fab" -> "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/brands/$file.svg"
+        return when (prefix) {
+            "iD" -> listOf("https://raw.githubusercontent.com/openstreetmap/iD/develop/svg/iD-sprite/presets/$file.svg")
+            "maki" -> listOf("https://raw.githubusercontent.com/mapbox/maki/main/icons/$file.svg")
+            "temaki" -> listOf("https://raw.githubusercontent.com/ideditor/temaki/main/icons/$file.svg")
+            // Font awesome is special...
+            "fas" -> listOf(
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/$file.svg",
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/$file.svg"
+            )
+            "far" -> listOf(
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/$file.svg",
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/regular/$file.svg",
+            )
+            "fab" -> listOf(
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/$file.svg",
+                "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/brands/$file.svg",
+            )
             else -> null
         }
     }

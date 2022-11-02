@@ -38,7 +38,7 @@
             android:layout_width="64dp"
             android:layout_height="56dp"
             tools:text="abc"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.applyTo
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
@@ -33,14 +34,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
                 tags["name:signed"] = "no"
             }
             is BusStopName -> {
-                for ((languageTag, name) in answer.localizedNames) {
-                    val key = when (languageTag) {
-                        "" -> "name"
-                        "international" -> "int_name"
-                        else -> "name:$languageTag"
-                    }
-                    tags[key] = name
-                }
+                answer.localizedNames.applyTo(tags)
             }
         }
     }

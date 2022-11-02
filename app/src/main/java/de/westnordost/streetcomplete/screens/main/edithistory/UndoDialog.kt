@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -66,7 +67,7 @@ class UndoDialog(
         val overlayResId = edit.overlayIcon
         if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
         binding.createdTimeText.text =
-            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
+            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, nowAsEpochMilliseconds(), DateUtils.MINUTE_IN_MILLIS)
         binding.descriptionContainer.addView(edit.descriptionView)
 
         setTitle(R.string.undo_confirm_title2)
@@ -153,7 +154,7 @@ class UndoDialog(
            "<li>" +
            context.resources.getString(
                change.titleResId,
-               "<tt>" + change.tagString() + "</tt>"
+               "<tt>" + change.toLinkedTagString() + "</tt>"
            ) +
            "</li>"
         })
@@ -167,21 +168,23 @@ class UndoDialog(
         txt.setHtml(
             context.resources.getString(R.string.create_node_action_description) +
             tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
-                "<li><tt>" + Html.escapeHtml("$key = $value") + "</tt></li>"
+                "<li><tt>" + linkedTagString(key, value) + "</tt></li>"
             }
         )
         return txt
     }
 }
 
-fun StringMapEntryChange.tagString(): String {
-    val valueText = when (this) {
+private fun StringMapEntryChange.toLinkedTagString(): String =
+    linkedTagString(key, when (this) {
         is StringMapEntryAdd -> value
         is StringMapEntryModify -> value
         is StringMapEntryDelete -> valueBefore
-    }
+    })
+
+private fun linkedTagString(key: String, value: String): String {
     val escapedKey = Html.escapeHtml(key)
-    val escapedValue = Html.escapeHtml(valueText)
+    val escapedValue = Html.escapeHtml(value)
     val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
     return "$keyLink = $escapedValue"
 }

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
@@ -80,7 +81,9 @@ class PathSurfaceOverlay : Overlay {
         "proposed:surface", // does not matter
     )
 
-    override fun createForm(element: Element) = UniversalSurfaceOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element != null && element.tags["highway"] in ALL_PATHS) UniversalSurfaceOverlayForm()
+        else null
 }
 
 private fun getStyle(element: Element): Style {

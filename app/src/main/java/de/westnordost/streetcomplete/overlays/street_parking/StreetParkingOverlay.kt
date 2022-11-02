@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -19,10 +20,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
-import de.westnordost.streetcomplete.osm.street_parking.StreetParkingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
-import de.westnordost.streetcomplete.osm.street_parking.StreetStandingProhibited
-import de.westnordost.streetcomplete.osm.street_parking.StreetStoppingProhibited
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
 import de.westnordost.streetcomplete.overlays.Color
@@ -48,9 +46,10 @@ class StreetParkingOverlay : Overlay {
             and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking
-        mapData.filter(
-            "ways with amenity = parking"
-        ).map { it to parkingLotStyle } +
+        mapData.filter("""
+            nodes, ways, relations with
+            amenity = parking
+        """).map { it to if (it is Node) parkingLotPointStyle else parkingLotAreaStyle } +
         // chokers
         mapData.filter(
             "nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table"
@@ -74,9 +73,10 @@ private val streetParkingTaggingNotExpected by lazy { """
       or maxspeed >= 70
 """.toElementFilterExpression() }
 
-private val parkingLotStyle = PolygonStyle(Color.BLUE)
+private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
+private val parkingLotPointStyle = PointStyle("ic_pin_parking_borderless")
 
-private val chokerStyle = PointStyle("ic_pin_choker")
+private val chokerStyle = PointStyle("ic_pin_choker_borderless")
 
 private fun getStreetParkingStyle(element: Element): Style {
     val parking = createStreetParkingSides(element.tags)
@@ -109,10 +109,7 @@ private val StreetParking?.style: StrokeStyle get() = when (this) {
     is StreetParkingPositionAndOrientation ->
                                 StrokeStyle(position.color, position.isDashed)
 
-    NoStreetParking,
-    StreetStandingProhibited,
-    StreetParkingProhibited,
-    StreetStoppingProhibited -> StrokeStyle(Color.BLACK)
+    NoStreetParking ->          StrokeStyle(Color.BLACK)
 
     StreetParkingSeparate ->    StrokeStyle(Color.INVISIBLE)
 

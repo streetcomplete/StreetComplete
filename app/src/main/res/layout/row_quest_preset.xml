@@ -19,14 +19,14 @@
         android:textSize="18sp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        tools:text="@string/quest_presets_default_name"/>
+        tools:text="This is a long preset name!"/>
 
     <ImageView
-        android:id="@+id/deleteButton"
+        android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete_24dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_more_24dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:padding="12dp"
         android:focusable="true"

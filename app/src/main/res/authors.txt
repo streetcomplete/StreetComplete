@@ -30,6 +30,9 @@ barrier_bicycle_barrier_sin... CC-BY 4.0         GeoJ https://wiki.openstreetmap
 barrier_bicycle_barrier_dou... CC-BY-SA 4.0      Im Fokus https://commons.wikimedia.org/wiki/File%3AWuppertal%2C%5FNBT%2C%5FSeitenast%5FTesche%2C%5Fnach%5FO%2C%5FBild%5F1%2Ejpg
 barrier_bicycle_barrier_tri... CC-BY-SA 4.0      HolgerJeromin https://commons.wikimedia.org/wiki/File:Umlaufgitter_Schatten_hoch.jpg
 barrier_bicycle_barrier_til... CC-BY-SA 2.0      M J Roscoe https://wiki.openstreetmap.org/wiki/File:Cycle_barrier_squeeze_image.jpg
+barrier_bicycle_installation_f CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_fixed.jpg
+barrier_bicycle_installation_o CC-BY-SA 4.0      Ellievking1 https://commons.wikimedia.org/wiki/File:Barrier_on_Formartine_and_Buchan_cycle_route_at_Auchnagatt.jpg
+barrier_bicycle_installation_r CC0               LEGOFAHRRAD https://commons.wikimedia.org/wiki/File:Cycle_barrier_removable_detail.jpg
 
 bicycle_parking_type_buildi... CC-BY-SA 3.0      Visitor7 https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      Rept0n1x https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
@@ -37,6 +40,7 @@ bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikim
 bicycle_parking_type_stand.jpg CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheelb... CC-BY-SA 4.0      Joxemai https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 bicycle_parking_type_handle... CC-BY-SA 4.0      Hiddewie https://commons.wikimedia.org/wiki/File:Bicycle_parking_handlebar_holder.jpg
+bicycle_parking_type_two_ti... CC0               Bukk https://commons.wikimedia.org/wiki/File:Double_stack_bike_stand.jpg
 
 bicycle_rental_docking_stat... CC-BY-SA 3.0      Siyuwj https://commons.wikimedia.org/wiki/File:Bicycle_rental_site_of_Tiangongyuan_Station.JPG
 bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.wikimedia.org/wiki/File:Stuttgart-Vaihingen_Train_Station_Mobility_Hub_IMG_5767.jpg
@@ -58,12 +62,12 @@ crossing_type_unmarked.jpg     CC0               Mateusz Konieczny
 crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 
 drinking_water_type_jet_water… CC-BY-SA 3.0      crop of image by Sulfur https://commons.wikimedia.org/wiki/File:Bubbler.jpg
-drinking_water_type_generic... CC-BY-SA-4.0      crop of image by Basotxerri https://commons.wikimedia.org/wiki/File:Bielerh%C3%B6he_-_Barbarakapelle_-_Brunnen_01.jpg
-drinking_water_type_bottle_re… CC-BY-SA-4.0      crop of image by Fantaglobe11 https://commons.wikimedia.org/wiki/File:Station_Alkmaar_watertappunt.jpg
+drinking_water_type_generic... CC-BY-SA 4.0      crop of image by Basotxerri https://commons.wikimedia.org/wiki/File:Bielerh%C3%B6he_-_Barbarakapelle_-_Brunnen_01.jpg
+drinking_water_type_bottle_re… CC-BY-SA 4.0      crop of image by Fantaglobe11 https://commons.wikimedia.org/wiki/File:Station_Alkmaar_watertappunt.jpg
 drinking_water_type_tap.jpg    CC-BY-SA 3.0      crop of image by Photo by CEphoto, Uwe Aranas / CC-BY-SA-3.0 https://wiki.openstreetmap.org/wiki/File:Le_Mont-Saint-Michel_France_Water-tap-01.jpg
 drinking_water_type_hand_pump.jpg CC-BY-SA 3.0   crop of image by ŠJů, Wikimedia Commons https://commons.wikimedia.org/wiki/File:Liboc,_V_domc%C3%ADch_17,_pumpa.jpg
-drinking_water_type_disused... CC-BY-SA-4.0      crop of image by Kolforn (Wikimedia) https://commons.wikimedia.org/wiki/File:2018-02-01_Disused_drinking_fountain_at_the_rear_of_Praia_da_Gal%C3%A9_(East),_Albufeira.JPG
-drinking_water_type_spring.jpg CC-BY-SA-4.0      crop of image by Dampftrain https://commons.wikimedia.org/wiki/File:Erdbachquelle.JPG
+drinking_water_type_disused... CC-BY-SA 4.0      crop of image by Kolforn (Wikimedia) https://commons.wikimedia.org/wiki/File:2018-02-01_Disused_drinking_fountain_at_the_rear_of_Praia_da_Gal%C3%A9_(East),_Albufeira.JPG
+drinking_water_type_spring.jpg CC-BY-SA 4.0      crop of image by Dampftrain https://commons.wikimedia.org/wiki/File:Erdbachquelle.JPG
 drinking_water_type_water_wel… CC-BY-SA 3.0      crop of image by Honza Groh (Jagro) https://commons.wikimedia.org/wiki/File:Zmiennica,_studna.jpg
 
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      Jwh https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
@@ -115,9 +119,9 @@ ic_link_wiki.png               fair use          used while linking and promotin
 ic_link_graphhopper.png        fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
 ic_link_organic_maps.png       fair use          used while linking and promoting this project
 
-ic_preset_far-*                CC-BY-4.0         from https://fontawesome.com/license/free
+ic_preset_far-*                CC-BY 4.0         from https://fontawesome.com/license/free
 ic_preset_fas-*                  and
-ic_preset_fab-*                SIL OFL 1.1
+ic_preset_fab-*                SIL OFL-1.1
 
 ic_preset_iD-*                 ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
 

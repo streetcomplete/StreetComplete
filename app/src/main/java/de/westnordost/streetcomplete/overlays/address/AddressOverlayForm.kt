@@ -3,29 +3,31 @@ package de.westnordost.streetcomplete.overlays.address
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
 import de.westnordost.streetcomplete.osm.address.AddressNumber
-import de.westnordost.streetcomplete.osm.address.applyTo
-import de.westnordost.streetcomplete.osm.address.createAddressNumber
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewController
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
+import de.westnordost.streetcomplete.osm.address.applyTo
+import de.westnordost.streetcomplete.osm.address.createAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.ShowHouseNumber
-import de.westnordost.streetcomplete.util.getNameAndLocationLabelString
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import org.koin.android.ext.android.inject
 
 class AddressOverlayForm : AbstractOverlayForm() {
@@ -46,9 +48,10 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private var isShowingHouseName: Boolean = false
     private var isShowingPlaceName = false
 
-    override val otherAnswers = listOf(
+    override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
-        AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
+        AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() },
+        if (element != null) AnswerItem(R.string.quest_address_answer_no_address) { confirmRemoveAddress() } else null,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,9 +72,9 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
         val tags = element?.tags
         if (tags != null) {
-            setTitleHintLabel(getNameAndLocationLabelString(
+            setTitleHintLabel(getNameAndLocationLabel(
                 tags, resources, featureDictionary,
-                showHouseNumber = ShowHouseNumber.NEVER
+                showHouseNumber = false
             ))
         }
         setMarkerIcon(R.drawable.ic_quest_housenumber)
@@ -145,8 +148,6 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
     override fun isFormComplete(): Boolean =
         numberOrNameInputCtrl.isComplete && streetOrPlaceCtrl.streetOrPlaceName != null
-        // can also be empty to delete the address tagging
-        || numberOrNameInputCtrl.isEmpty && streetOrPlaceCtrl.streetOrPlaceName == null
 
     override fun onClickOk() {
         val number = numberOrNameInputCtrl.addressNumber
@@ -187,6 +188,31 @@ class AddressOverlayForm : AbstractOverlayForm() {
         streetOrPlaceCtrl.selectPlaceName()
     }
 
+    /* -------------------------------------- Remove address ------------------------------------ */
+
+    private fun confirmRemoveAddress() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> removeAddress() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+    }
+
+    private fun removeAddress() {
+        val element = element!!
+        if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
+            applyEdit(DeletePoiNodeAction)
+        } else {
+            val tagChanges = StringMapChangesBuilder(element.tags)
+            for (tag in tagChanges) {
+                if (isAddressTag(tag.key, tag.value)) {
+                    tagChanges.remove(tag.key)
+                }
+            }
+            applyEdit(UpdateElementTagsAction(tagChanges.create()))
+        }
+    }
+
     companion object {
         private var lastBlockNumber: String? = null
         private var lastHouseNumber: String? = null
@@ -197,6 +223,13 @@ class AddressOverlayForm : AbstractOverlayForm() {
         private const val SHOW_HOUSE_NAME = "show_house_name"
     }
 }
+
+private fun isAddressTag(key: String, value: String): Boolean =
+    key.startsWith("addr:") ||
+    key.startsWith("source:addr:") ||
+    key.startsWith("note:addr:") ||
+    key == "noaddress" ||
+    key == "nohousenumber"
 
 private fun getAddressNumberLayoutResId(countryCode: String): Int = when (countryCode) {
     "JP" -> R.layout.view_house_number_japan

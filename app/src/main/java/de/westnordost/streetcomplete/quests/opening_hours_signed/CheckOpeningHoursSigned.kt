@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import java.util.concurrent.FutureTask
 
 class CheckOpeningHoursSigned(
@@ -25,7 +25,7 @@ class CheckOpeningHoursSigned(
 ) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
-        nodes, ways, relations with
+        nodes, ways with
           opening_hours:signed = no
           and (
             $hasOldOpeningHoursCheckDateFilter
@@ -75,9 +75,9 @@ class CheckOpeningHoursSigned(
                 .any { tags[it]?.toCheckDate() != null }
 
             if (!hasCheckDate) {
-                tags.setCheckDateForKey("opening_hours", LocalDateTime.ofInstant(
-                    Instant.ofEpochMilli(timestampEdited), ZoneId.systemDefault()
-                ).toLocalDate())
+                tags.setCheckDateForKey("opening_hours", Instant.fromEpochMilliseconds(timestampEdited)
+                    .toLocalDateTime(TimeZone.currentSystemDefault())
+                .date)
             }
         } else {
             tags["opening_hours:signed"] = "no"

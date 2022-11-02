@@ -358,7 +358,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Enbart rekommenderad hastighet…"</string>
-    <string name="quest_address_answer_house_name">"Inget husnummer men ett namn…"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (utan takvåningar)"</string>
@@ -511,8 +510,12 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_semi_detached">"Kedjehus"</string>
     <string name="quest_buildingType_terrace_description">"flera bredvid varandra liggande enfamiljshus"</string>
     <string name="quest_buildingType_hotel">"Hotellbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Studenthem/internat"</string>
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Stående husvagn"</string>
     <string name="quest_buildingType_commercial">"Kommersiell byggnad"</string>
@@ -527,18 +530,32 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Affär(er)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Lagerbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Fristående kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Lagringstank"</string>
     <string name="quest_buildingType_religious">"Religiös byggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kyrka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kapell"</string>
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Moské"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Tempelbyggnad"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagod"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Synagoga"</string>
     <string name="quest_buildingType_civic">"Offentlig byggnad"</string>
 
@@ -577,6 +594,8 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Den har inget husnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Byggnaden är definierad som:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Helgedom"</string>
     <string name="quest_maxspeed_title_short2">"Vad har den här gatan för hastighetsbegränsning?"</string>
     <string name="quest_maxspeed_answer_sign">"En skylt"</string>
@@ -696,9 +715,6 @@ Dela den nu?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vill du lämna en anteckning? En anteckning med ett foto gör att andra kartläggare kan ta hand om det."</string>
     <string name="quest_handrail_title">"Har trappan ett räcke?"</string>
     <string name="about_summary_current_version">"Aktuell version: %s"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Vad är referensnumret för denna brevlåda?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns…"</string>
@@ -911,9 +927,10 @@ rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Prestations-
 nivåer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
-    <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
     <string name="quest_recycling_type_cooking_oil">"Matlagningsolja"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolja"</string>
     <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
@@ -1033,9 +1050,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Tryck på vägen på kartan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Markerad korsning"</string>
@@ -1266,7 +1280,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Stämmer tömningstiderna för denna brevlåda fortfarande?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Känns ej igen. Prova att ange vad för slags ställe detta är, t.ex. \"bageri\". Överväg annars att lämna en anteckning."</string>
     <string name="quest_bicycle_barrier_type_title">"Vad för slags cykelgrind är detta?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Diagonala grindar"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Inåtlutande grindar"</string>
@@ -1311,7 +1324,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="street_parking_conditional_restrictions_hint">"Om det är möjligt att parkera eller stanna här, svara först på hur man får parkera här. Vilka regler som gäller kan anges senare.
 
 Du kan också lämna en anteckning (med bild)."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Både ett husnummer och ett namn…"</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
 
     <!-- Fuzzy -->
@@ -1628,4 +1640,57 @@ sorted alphabetically by title -->
     <string name="link_ohsomehex_description">"Utforska OSM-data från stort till smått och genom tid och rum"</string>
     <string name="link_opencampingmap_description">"En karta som visar campingplatser"</string>
     <string name="quest_atm_cashin_title">"Kan man sätta in pengar i denna bankomat?"</string>
+    <string name="create_node_action_description">"Du skapade en nod med …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Det är en återsamlingsplats"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En återsamlingsplats är en skyltad plats där man samlas vid en nödsituation. Vanligen ser de ut så här:"</string>
+    <string name="quest_address_answer_house_name2">"Den har ett husnamn…"</string>
+    <string name="quest_address_street_street_name_label">"Gatunamn:"</string>
+    <string name="quest_address_street_hint2">"Tryck på gatan för att välja den"</string>
+    <string name="quest_bicycle_incline_title">"Vilken riktning leder uppåt här?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Korta backar både upp och ner"</string>
+    <string name="quest_drinking_water_type_title">"Hur kan man få tag på dricksvatten här?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Annan sorts dricksfontän"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Vattenstråle"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Flaskpåfyllning"</string>
+    <string name="quest_drinking_water_type_tap">"Vattenkran"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Handpump"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Vattenbrunn utan pump"</string>
+    <string name="quest_drinking_water_type_spring">"Källa"</string>
+    <string name="quest_drinking_water_type_disused">"Övergiven dricksfontän"</string>
+    <string name="overlay_addresses">"Adresser"</string>
+    <string name="overlay_shops">"Butiker"</string>
+    <string name="name_label">"Namn:"</string>
+    <string name="vacant_shop_title">"Tom butikslokal"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <!-- Fuzzy -->
+    <string name="unknown_shop_title">"Okänd slags plats"</string>
+    <string name="quest_address_answer_no_address">"Ingen adress här"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_barrier_installation_title">"Kan den här cykelgrinden öppnas?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Öppningsbar"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Löstagbar"</string>
+    <string name="quest_buildingType_guardhouse">"Vaktkur"</string>
+    <string name="quest_genericRef_title">"Vad har detta för referensnummer?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sidewalk_answer_different">"Trottoarerna skiljer sig"</string>
+    <string name="about_title_get_involved">"Hjälp till"</string>
+    <string name="pref_category_quests_overlays">"Uppdrag &amp; extralager"</string>
+    <string name="quest_presets_rename">"Byt namn"</string>
+    <string name="quest_presets_share">"Dela"</string>
+    <string name="quest_presets_delete">"Radera"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Dela den här QR-koden för att låta andra använda din grupp."</string>
+    <string name="urlconfig_as_url">"Eller som URL:"</string>
+    <string name="urlconfig_url_copied">"URL kopierad till urklipp"</string>
+    <string name="urlconfig_apply_title">"Aktivera grupp"</string>
+    <string name="urlconfig_apply_message">"Aktivera och välj grupp %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Obs: Nuvarande grupp med samma namn kommer att skrivas över!"</string>
+    <string name="urlconfig_switch_hint">"Du kan växla aktiv grupp i inställningarna när du vill."</string>
+    <string name="urlconfig_scan_qr_code_again">"När du har installerat appen så skanna QR-koden igen för att aktivera gruppen."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Tvåvåningsställ"</string>
 </resources>

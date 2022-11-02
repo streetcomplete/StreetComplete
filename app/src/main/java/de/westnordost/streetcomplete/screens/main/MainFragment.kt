@@ -89,7 +89,6 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -231,7 +230,6 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.createButton.setOnClickListener { onClickCreateButton() }
-        binding.answersCounterFragment.setOnClickListener { starInfoMenu() }
 
         updateOffsetWithOpenBottomSheet()
     }
@@ -498,6 +496,10 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    override fun onNoteQuestClosed() {
+        closeBottomSheet()
+    }
+
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
@@ -519,6 +521,11 @@ class MainFragment :
 
     override fun onSelectedOverlayChanged() {
         updateCreateButtonVisibility()
+
+        val f = bottomSheetFragment
+        if (f is IsShowingElement) {
+            viewLifecycleScope.launch { closeBottomSheet() }
+        }
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -732,10 +739,6 @@ class MainFragment :
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
     }
 
-    fun starInfoMenu() {
-        val intent = Intent(requireContext(), UserActivity::class.java)
-        startActivity(intent)
-    }
     /* -------------------------------------- Context Menu -------------------------------------- */
 
     private fun showMapContextMenu(position: LatLon) {

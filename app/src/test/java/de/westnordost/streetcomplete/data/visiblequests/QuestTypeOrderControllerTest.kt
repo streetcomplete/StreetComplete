@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
@@ -12,10 +13,12 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyNoInteractions
 
 class QuestTypeOrderControllerTest {
     private lateinit var questTypeOrderDao: QuestTypeOrderDao
     private lateinit var questPresetsSource: QuestPresetsSource
+    private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var ctrl: QuestTypeOrderController
     private lateinit var listener: QuestTypeOrderSource.Listener
 
@@ -29,6 +32,12 @@ class QuestTypeOrderControllerTest {
     @Before fun setUp() {
         questTypeOrderDao = mock()
         questPresetsSource = mock()
+        questTypeRegistry = QuestTypeRegistry(listOf(
+            0 to questA,
+            1 to questB,
+            2 to questC,
+            3 to questD
+        ))
 
         on(questPresetsSource.addListener(any())).then { invocation ->
             questPresetsListener = (invocation.arguments[0] as QuestPresetsSource.Listener)
@@ -37,7 +46,7 @@ class QuestTypeOrderControllerTest {
 
         on(questPresetsSource.selectedId).thenReturn(0)
 
-        ctrl = QuestTypeOrderController(questTypeOrderDao, questPresetsSource)
+        ctrl = QuestTypeOrderController(questTypeOrderDao, questPresetsSource, questTypeRegistry)
 
         listener = mock()
         ctrl.addListener(listener)
@@ -66,15 +75,56 @@ class QuestTypeOrderControllerTest {
         )
     }
 
-    @Test fun `adding order item`() {
+    @Test fun getOrders() {
+        on(questTypeOrderDao.getAll(0)).thenReturn(listOf(
+            questA.name to questB.name,
+            questC.name to questD.name
+        ))
+        assertEquals(
+            listOf(questA to questB, questC to questD),
+            ctrl.getOrders()
+        )
+    }
+
+    @Test fun setOrders() {
+        ctrl.setOrders(listOf(questA to questB, questC to questD))
+        verify(questTypeOrderDao).setAll(0, listOf(
+            questA.name to questB.name,
+            questC.name to questD.name
+        ))
+        verify(listener).onQuestTypeOrdersChanged()
+    }
+
+    @Test fun `setOrders on not selected preset`() {
+        ctrl.setOrders(listOf(questA to questB, questC to questD), 1)
+        verify(questTypeOrderDao).setAll(1, listOf(
+            questA.name to questB.name,
+            questC.name to questD.name
+        ))
+        verifyNoInteractions(listener)
+    }
+
+    @Test fun `add order item`() {
         ctrl.addOrderItem(questA, questB)
         verify(questTypeOrderDao).put(0, questA.name to questB.name)
         verify(listener).onQuestTypeOrderAdded(questA, questB)
     }
 
-    @Test fun `clear orders`() {
+    @Test fun `add order item on not selected preset`() {
+        ctrl.addOrderItem(questA, questB, 1)
+        verify(questTypeOrderDao).put(1, questA.name to questB.name)
+        verifyNoInteractions(listener)
+    }
+
+    @Test fun clear() {
         ctrl.clear()
         verify(questTypeOrderDao).clear(0)
         verify(listener).onQuestTypeOrdersChanged()
+    }
+
+    @Test fun `clear not selected preset`() {
+        ctrl.clear(1)
+        verify(questTypeOrderDao).clear(1)
+        verifyNoInteractions(listener)
     }
 }

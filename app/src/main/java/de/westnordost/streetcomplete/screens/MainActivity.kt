@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
 import android.view.KeyEvent
@@ -16,6 +17,7 @@ import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
+import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
@@ -36,9 +38,11 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
@@ -70,6 +74,8 @@ class MainActivity :
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
+    private val urlConfigController: UrlConfigController by inject()
+    private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: SharedPreferences by inject()
 
     private val requestLocation = LocationRequester(this, this)
@@ -116,10 +122,38 @@ class MainActivity :
 
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
+
+        handleUrlConfig()
+    }
+
+    private fun handleUrlConfig() {
+        if (intent.action != Intent.ACTION_VIEW) return
+        val data = intent.data ?: return
+        val config = urlConfigController.parse(data.toString()) ?: return
+
+        val alreadyExists = questPresetsSource.getByName(config.presetName) != null
+
+        val name = "<i>" + Html.escapeHtml(config.presetName) + "</i>"
+        val text = StringBuilder()
+        text.append(getString(R.string.urlconfig_apply_message, name))
+        text.append("<br><br>")
+        if (alreadyExists) {
+            text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")
+            text.append("<br><br>")
+        } else {
+            text.append(getString(R.string.urlconfig_switch_hint))
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(R.string.urlconfig_apply_title)
+            .setMessage(text.toString().parseAsHtml())
+            .setPositiveButton(android.R.string.ok) { _, _ -> urlConfigController.apply(config) }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> }
+            .show()
     }
 
     private fun handleGeoUri() {
-        if (Intent.ACTION_VIEW != intent.action) return
+        if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
