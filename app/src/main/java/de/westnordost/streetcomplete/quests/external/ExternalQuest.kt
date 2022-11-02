@@ -1,50 +1,51 @@
 package de.westnordost.streetcomplete.quests.external
 
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 
-class ExternalQuest(private val externalList: ExternalList) : OsmElementQuestType<Boolean> {
+class ExternalQuest(private val externalList: ExternalList) : OtherSourceQuestType {
 
     override val changesetComment = "Edit user-defined list of elements"
     override val wikiLink = "Tags"
     override val icon = R.drawable.ic_quest_external
     override val defaultDisabledMessage = R.string.quest_external_message
 
-    override fun isApplicableTo(element: Element): Boolean =
-        externalList.questsMap.containsKey(ElementKey(element.type, element.id))
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val list = mutableListOf<Element>()
-        mapData.forEach {
-            if (externalList.questsMap.contains(ElementKey(it.type, it.id)))
-                list.add(it)
-        }
-        return list
-    }
-
     override fun getTitle(tags: Map<String, String>): Int = R.string.quest_external_title
 
     override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) { }
+    override val source: String = "external"
+
+    override fun download(bbox: BoundingBox) = getQuests(bbox)
+
+    override fun upload() { externalList.deleteSolved() }
+
+    override fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest> = externalList.get(bbox)
+
+    override fun get(id: String): OtherSourceQuest? = externalList.getQuest(id)
+
+    override fun onAddedEdit(edit: ElementEdit, id: String) = externalList.markSolved(id)
+
+    override fun onDeletedEdit(edit: ElementEdit, id: String?) {
+        id?.let { externalList.markSolved(it, false) }
+    }
+
+    override fun onSyncedEdit(edit: ElementEdit, id: String?) {
+        id?.let { externalList.markSolved(it) } // just mark as solved, and bunch-delete in the end
+    }
+
+    override fun deleteQuest(id: String): Boolean = externalList.delete(id)
+
+    override fun deleteMetadataOlderThan(timestamp: Long) { }
+
+    override val hasQuestSettings: Boolean = false
+
+    override fun getQuestSettingsDialog(context: Context): AlertDialog? = null
 
     override fun createForm() = ExternalForm(externalList)
 }
-
-/* ideally i could start some intent like
-     val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-         .addCategory(Intent.CATEGORY_OPENABLE)
-         .setType("application/octet-stream")
-     startActivityForResult(intent, REQUEST_CODE)
-   and get the resulting file using something like
-     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && resultData != null)
-            copyThatListTo("external.csv")
-     }
-   but this only works in a fragment (or other), but not here
-   -> need to put it to settings, which is much less nice than the quest settings...
- */

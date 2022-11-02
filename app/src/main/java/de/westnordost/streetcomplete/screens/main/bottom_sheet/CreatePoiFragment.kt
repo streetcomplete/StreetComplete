@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.quests.toTags
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -65,7 +66,7 @@ class CreatePoiFragment : TagEditor() {
 
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
             listener?.onCreatedNote(position)
-            viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags)) }
+            viewLifecycleScope.launch { elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags), questKey) }
         } else {
             elementEditsController.add(createPoiEdit, Node(0, position), ElementPointGeometry(position), "survey", CreateNodeAction(position, element.tags))
             listener?.onCreatedNote(position)
@@ -82,10 +83,10 @@ class CreatePoiFragment : TagEditor() {
             // tag editor arguments are actually unnecessary here, but we still need an original element
             it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
         }
-        fun createWithPrefill(prefill: String, pos: LatLon) = CreatePoiFragment().also {
+        fun createWithPrefill(prefill: String, pos: LatLon, questKey: QuestKey? = null) = CreatePoiFragment().also {
             // this will only prefill if there is one equals sign in the line
             it.arguments = bundleOf(ARG_PREFILLED_TAGS to Json.encodeToString(prefill.toTags()))
-            it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null))
+            it.requireArguments().putAll(createArguments(Node(0L, pos), ElementPointGeometry(pos), null, null, questKey))
         }
     }
 }

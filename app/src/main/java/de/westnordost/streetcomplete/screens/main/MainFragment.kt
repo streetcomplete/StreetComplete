@@ -550,10 +550,10 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    override fun onEditTags(element: Element, geometry: ElementGeometry) {
+    override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?) {
         val f = TagEditor()
         if (f.arguments == null) f.arguments = bundleOf()
-        val args = TagEditor.createArguments(element, geometry, mapFragment?.cameraPosition?.rotation, mapFragment?.cameraPosition?.tilt)
+        val args = TagEditor.createArguments(element, geometry, mapFragment?.cameraPosition?.rotation, mapFragment?.cameraPosition?.tilt, questKey)
         f.requireArguments().putAll(args)
         binding.otherQuestsScrollView.visibility = View.GONE
         childFragmentManager.commit(true) {
@@ -991,7 +991,11 @@ class MainFragment :
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
         }
+        offsetPos(pos)
+    }
 
+    fun offsetPos(pos: LatLon) {
+        val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
         mapFragment.updateCameraPosition { position = offsetPos }

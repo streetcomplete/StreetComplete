@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
@@ -147,7 +148,7 @@ abstract class AbstractOverlayForm :
         fun getMapPositionAt(screenPos: Point): LatLon?
 
         /** Called when the user chose to edit tags */
-        fun onEditTags(element: Element, geometry: ElementGeometry) // better than the static thing i guess
+        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey? = null)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 

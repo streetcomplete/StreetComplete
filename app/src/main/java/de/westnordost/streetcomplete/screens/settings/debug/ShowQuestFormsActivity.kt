@@ -205,7 +205,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         popQuestForm()
     }
 
-    override fun onEditTags(element: Element, geometry: ElementGeometry) {
+    override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?) {
         message("Showing Tag Editor")
         popQuestForm()
     }

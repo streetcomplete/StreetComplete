@@ -156,7 +156,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
 
     protected fun editTags(e: Element) {
         val geo = if (e is Node) ElementPointGeometry(e.position) else mapDataSource.getGeometry(e.type, e.id) ?: return
-        listener?.onEditTags(e, geo)
+        listener?.onEditTags(e, geo, questKey)
     }
 
     protected suspend fun editElement(element: Element, action: ElementEditAction) {

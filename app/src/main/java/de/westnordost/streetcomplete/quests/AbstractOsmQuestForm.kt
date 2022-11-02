@@ -103,7 +103,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         fun onQuestHidden(questKey: QuestKey)
 
         /** Called when the user chose to edit tags */
-        fun onEditTags(element: Element, geometry: ElementGeometry) // better than the static thing i guess
+        fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -162,7 +162,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
-        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry) })
+        answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { listener?.onEditTags(element, geometry, questKey) })
 
         if (element.isSplittable()) {
             answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })

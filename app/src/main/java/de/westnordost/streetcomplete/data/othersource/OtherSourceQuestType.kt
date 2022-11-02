@@ -49,7 +49,7 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     /**
      *  Upload changes to the server. Uploaded quests should not be created again on [download].
      *  Note that on each individual upload, [onSyncedEdit] will be called if there is a connected
-     *  ElementEdit.
+     *  ElementEdit before finally [upload] is called.
      */
     fun upload()
 

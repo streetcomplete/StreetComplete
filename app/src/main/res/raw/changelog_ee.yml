@@ -6,6 +6,7 @@ v49.0_ee: |
   <li>Add stepping_stones surface</li>
   <li>Autocomplete / suggestions for tag editor</li>
   <li>Add basic coloring to custom overlay</li>
+  <li>Update external quest: allow setting position and adding node (for details see message when enabling quest)</li>
   </ul>
 
 v48.0_ee: |

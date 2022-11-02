@@ -151,6 +151,7 @@ class OtherSourceQuestController(
         if (key is OtherSourceQuestKey) {
             getQuestType(key)?.onAddedEdit(edit, key.id)
             otherSourceDao.addElementEdit(key, edit.id)
+            questListeners.forEach { it.onUpdated(deletedQuestKeys = listOf(key)) }
         }
     }
 
@@ -164,10 +165,10 @@ class OtherSourceQuestController(
     // for undoing stuff
     override fun onDeletedEdits(edits: List<ElementEdit>) {
         val restoredQuests = edits.mapNotNull { edit ->
-            val type = edit.type as? OtherSourceQuestType ?: return@mapNotNull null
             val key = otherSourceDao.getKeyForElementEdit(edit.id)
             otherSourceDao.deleteElementEdit(edit.id)
-            type.onDeletedEdit(edit, key?.id)
+            val type = questTypeNamesBySource[key?.source]?.let { questTypeRegistry.getByName(it) } as? OtherSourceQuestType
+            type?.onDeletedEdit(edit, key?.id)
             if (key == null) null
             else getVisible(key)
         }

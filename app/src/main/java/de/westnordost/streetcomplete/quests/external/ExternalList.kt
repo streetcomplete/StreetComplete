@@ -1,54 +1,150 @@
 package de.westnordost.streetcomplete.quests.external
 
 import android.content.Context
+import android.util.Log
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.util.math.contains
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.io.File
-import java.lang.Exception
+import kotlin.Exception
 
-class ExternalList(context: Context) {
-    val questsMap = mutableMapOf<ElementKey, String>()
+class ExternalList(context: Context) : KoinComponent {
+    private val entriesById by lazy {
+        // need to load by lazy, because there is a problem if mapDataWithEditsSource is accessed early
+        val m = hashMapOf<String, ExternalEntry>()
+        load(m)
+        m
+    }
     private val path = context.getExternalFilesDir(null)
 
-    init { reload() }
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
+    private val questTypeRegistry: QuestTypeRegistry by inject()
 
-    fun reload() {
+    fun reload() = load(entriesById)
+
+    fun load(m: MutableMap<String, ExternalEntry>) {
         val file = File(path, FILENAME_EXTERNAL)
-        questsMap.clear()
+        m.clear()
         if (!file.exists()) return
-        questsMap.putAll(file.readLines().mapNotNull {
-            val elementType = it.substringBefore(',').trim()
-            val rest = it.substringAfter(',').trim()
-            val elementId = rest.substringBefore(',').trim()
-            val text =
-                if (rest.contains(','))
-                    rest.substringAfter(',').trim()
-                else ""
-
-            try {
-                ElementKey(ElementType.valueOf(elementType), elementId.toLong()) to text
-            } catch(e: Exception) {
-                null
-            }
-        }
-        )
+        m.putAll(file.readLines().asReversed().mapNotNull { line ->
+            val rawText = line.substringAfter(',').substringAfter(',')
+            val text = if (rawText.endsWith(",solved"))
+                    rawText.substringBeforeLast(',')
+                else rawText
+            val id = line.getId()
+            if (id == null) null
+            else
+                id to ExternalEntry(id).also {
+                    it.text = text
+                    it.solved = rawText.endsWith(",solved")
+                }
+        })
     }
 
-    fun remove(key: ElementKey) {
-        questsMap.remove(key)
+    fun getEntry(id: String) = entriesById[id]
+
+    fun getQuest(id: String): OtherSourceQuest? {
+        val entry = getEntry(id) ?: return null
+        if (entry.solved) return null
+        val geometry = entry.elementKey?.let { mapDataWithEditsSource.getGeometry(it.type, it.id) }
+            ?: entry.position?.let { ElementPointGeometry(it) } ?: return null
+        return OtherSourceQuest(
+            id,
+            geometry,
+            questTypeRegistry.getByName(ExternalQuest::class.simpleName!!) as OtherSourceQuestType,
+            geometry.center
+        ).apply { entry.elementKey?.let { elementKey = it } }
+    }
+
+    fun get(bbox: BoundingBox): List<OtherSourceQuest> {
+        val type = questTypeRegistry.getByName(ExternalQuest::class.simpleName!!) as OtherSourceQuestType
+        return entriesById.values.mapNotNull { entry ->
+            if (entry.solved) return@mapNotNull null
+            val geometry = entry.elementKey?.let { mapDataWithEditsSource.getGeometry(it.type, it.id) }
+                ?: entry.position?.let { ElementPointGeometry(it) } ?: return@mapNotNull null
+            if (geometry.center !in bbox) return@mapNotNull null
+            OtherSourceQuest(entry.id, geometry, type, geometry.center)
+        }
+    }
+
+    fun markSolved(id: String, solved: Boolean = true) {
+        if (entriesById[id]?.solved == solved) return
+        entriesById[id]?.solved = solved
         val file = File(path, FILENAME_EXTERNAL)
         val lines = file.readLines().toMutableList()
-        lines.removeAll { line ->
-            if (!line.contains(','))
-                false
-            else {
-                val lineSplit = line.split(",").map { it.trim() }
-                lineSplit[1].toLong() == key.id && lineSplit[0] == key.type.name
+        var lineToChange = -1
+        for (i in lines.indices) {
+            if (lines[i].getId() == id
+                && ((solved && !lines[i].endsWith(",solved"))
+                    || !solved && lines[i].endsWith(",solved"))
+            ) {
+                lineToChange = i
+                break
+            }
+        }
+        lines[lineToChange] = if (solved) lines[lineToChange] + ",solved"
+            else lines[lineToChange].substringBeforeLast(',')
+        file.writeText(lines.joinToString("\n"))
+    }
+
+
+    fun deleteSolved() { delete(entriesById.filterValues { it.solved }.map { it.key }) }
+
+    fun delete(id: String) = delete(listOf(id))
+
+    fun delete(idList: List<String>): Boolean {
+        val ids = idList.toMutableSet()
+        val deletedAny = entriesById.keys.removeAll(ids)
+        val file = File(path, FILENAME_EXTERNAL)
+        val lines = file.readLines().toMutableList()
+        val iterator = lines.iterator()
+        while (iterator.hasNext()) {
+            val id = iterator.next().getId()
+            if (id in ids) {
+                iterator.remove()
+                ids.remove(id)
+                if (ids.isEmpty()) break
             }
         }
         file.writeText(lines.joinToString("\n"))
+        return deletedAny
     }
 }
 
+private fun String.getId(): String? {
+    val first = substringBefore(',').trim()
+    val second = substringAfter(',').substringBefore(',').trim()
+    return if ((first.matches(nodeWayRelation) && second.toLongOrNull() != null) || (first.toDoubleOrNull() != null && second.toDoubleOrNull() != null))
+        "${first.uppercase()},${second.uppercase()}"
+    else null
+}
+
+data class ExternalEntry(val id: String ) {
+    val elementKey = try {
+        ElementKey(ElementType.valueOf(id.substringBefore(',').uppercase()),
+            id.substringAfter(',').substringBefore(',').toLong())
+    } catch (e: Exception) {
+        null
+    }
+    val position = try {
+        LatLon(id.substringBefore(',').toDouble(), id.substringAfter(',').substringBefore(',').toDouble())
+    } catch (e: Exception) {
+        null
+    }
+    var text: String = ""
+    var solved: Boolean = false
+}
+
 const val FILENAME_EXTERNAL = "external.csv"
+
+private val nodeWayRelation = "node|way|relation".toRegex(RegexOption.IGNORE_CASE)

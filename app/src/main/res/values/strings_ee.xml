@@ -196,8 +196,10 @@
 
     <!-- external quest (also uses osmose string above) -->
     <string name="quest_external_title">External quest: %s</string>
-    <string name="quest_external_message">Use for checking specific pre-defined elements, similar to notes. To use it, load a file in the main settings menu, containing \`type,id,message\`, e.g. NODE,1234,does this really exist?</string>
+    <string name="quest_external_message">Use for checking specific pre-defined elements or locations. You can also specify tags and add a node with them. To use it, load a file in the main settings menu, containing either \`type,id,message\` (e.g. NODE,1234,check position) or \`latitude,longitude,message\`. For adding nodes, put the tags in the message after \'addNode\', e.g. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_external_remove">Remove from list</string>
+    <string name="quest_external_add_node">Add node</string>
+    <string name="quest_external_add_node_text">You can add a node with: %s</string>
 
     <!-- bench material -->
     <string name="quest_benchMaterial_title">What’s this made of?</string>
@@ -326,7 +328,7 @@ This version lets you access your user statistics, but any quests solved using t
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
-    <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/StreetComplete/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. The checkboxes replace the "nodes, ways with" part.</string>
+    <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/StreetComplete/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
     <string name="custom_overlay_color_message">Select key to get color from. This does not work for nodes. Accepts regex, takes first match.</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="attach_photo_delete">Delete</string>

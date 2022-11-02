@@ -88,6 +88,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     protected val newTags = ConcurrentHashMap<String, String>()
     protected val tagList = mutableListOf<Pair<String, String>>() // sorted list of tags from newTags, need to keep in sync manually
     private lateinit var geometry: ElementGeometry
+    protected var questKey: QuestKey? = null
 
     // those 2 are lazy because resources require context to be initialized
     private val questIconWidth by lazy { (resources.displayMetrics.density * 56 + 0.5f).toInt() }
@@ -105,6 +106,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         val args = requireArguments()
         originalElement = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
+        questKey = arguments?.getString(ARG_QUEST_KEY)?.let { Json.decodeFromString(it) }
         newTags.putAll(originalElement.tags)
         tagList.addAll(newTags.toList().sortedBy { it.first })
         element = originalElement.copy(tags = newTags, timestampEdited = nowAsEpochMilliseconds()) // we don't want resurvey quests, user can just edit tag or delete and get quest again
@@ -268,7 +270,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         val action = UpdateElementTagsAction(builder.create())
-        val questKey: QuestKey? = arguments?.getString(ARG_QUEST_KEY)?.let { Json.decodeFromString(it) }
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false) && !prefs.getBoolean(Prefs.SHOW_NEXT_QUEST_IMMEDIATELY, false)) {
             listener?.onEdited(tagEdit, element, geometry)
             viewLifecycleScope.launch(Dispatchers.IO) { elementEditsController.add(tagEdit, originalElement, geometry, "survey", action, questKey) }
@@ -344,7 +345,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_MAP_ROTATION to rotation,
             ARG_MAP_TILT to tilt,
-            ARG_QUEST_KEY to questKey
+            ARG_QUEST_KEY to Json.encodeToString(questKey)
         )
 
         var changes: StringMapChanges? = null
