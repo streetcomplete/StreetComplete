@@ -36,7 +36,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
             "electronics_repair", "key_cutter", "stonemason"
         )
         return """
-            nodes, ways, relations with
+            nodes, ways with
             (
               (shop and shop !~ no|vacant|mall)
               or amenity ~ ${amenities.joinToString("|")}

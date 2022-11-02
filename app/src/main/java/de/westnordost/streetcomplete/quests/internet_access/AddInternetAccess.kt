@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 class AddInternetAccess : OsmFilterQuestType<InternetAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
         (
           amenity ~ library|community_centre|youth_centre
           or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet
