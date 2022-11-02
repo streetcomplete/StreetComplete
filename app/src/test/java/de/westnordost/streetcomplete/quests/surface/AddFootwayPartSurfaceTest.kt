@@ -58,9 +58,6 @@ class AddFootwayPartSurfaceTest {
     @Test fun `not applicable to private footways`() {
         assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private")
         assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "private", "foot" to "private")
-//      disabled failing tests for now due to https://github.com/streetcomplete/StreetComplete/pull/4548#discussion_r1012267037
-//      assertIsNotApplicable("highway" to "path", "segregated" to "yes", "foot" to "private")
-//      assertIsNotApplicable("highway" to "path", "segregated" to "yes", "access" to "yes", "foot" to "private")
     }
 
     @Test fun `applicable to access-restricted but foot allowed path`() {

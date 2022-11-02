@@ -58,9 +58,6 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `not applicable to private cycleways`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private")
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "private", "bicycle" to "private")
-//      disabled failing tests for now due to https://github.com/streetcomplete/StreetComplete/pull/4548#discussion_r1012267037
-//      assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "bicycle" to "private")
-//      assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "access" to "yes", "bicycle" to "private")
     }
 
     @Test fun `applicable to access-restricted but cycle allowed cycleway`() {
