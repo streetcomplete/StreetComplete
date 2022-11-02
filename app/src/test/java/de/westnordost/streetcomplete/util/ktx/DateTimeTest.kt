@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.util.ktx
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

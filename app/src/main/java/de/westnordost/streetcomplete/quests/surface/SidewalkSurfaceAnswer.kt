@@ -10,4 +10,3 @@ data class SidewalkSurface(
 object SidewalkIsDifferent : SidewalkSurfaceAnswer
 
 data class SidewalkSurfaceSide(val surface: Surface)
-

@@ -57,7 +57,7 @@ class EditHistoryAdapter(
 
     fun onSynced(edit: Edit) {
         val editIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
-        if(editIndex == -1) return
+        if (editIndex == -1) return
 
         val syncedItemIndex = rows.indexOfFirst { it is IsSyncedItem }
         if (syncedItemIndex != -1) {

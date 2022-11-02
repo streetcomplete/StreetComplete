@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
           access !~ no|private
           and !wheelchair
           and (name or brand or name:signed = no)

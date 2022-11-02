@@ -12,26 +12,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fire_hydrant_sign_pl" />
+        app:srcCompat="@drawable/fire_hydrant_sign_nl" />
 
     <EditText
         android:id="@+id/diameterInput"
-        android:layout_width="112dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="144dp"
         android:background="#25ffffff"
-        android:ems="3"
         android:inputType="number"
-        android:maxLength="3"
-        tools:text="132"
+        android:maxLength="4"
+        tools:text="1500"
         android:fontFamily="monospace"
         android:textColor="@color/traffic_white"
         android:textStyle="bold"
-        android:textSize="55dp"
         android:textAlignment="center"
+        android:textSize="52dp"
         app:layout_constraintLeft_toLeftOf="@+id/fireHydrantSign"
         app:layout_constraintTop_toTopOf="@+id/fireHydrantSign"
         tools:ignore="RtlHardcoded,SpUsage" />
+
+    <ImageView
+        android:id="@+id/suggestionsButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_expand_down_24dp"
+        app:tint="@color/traffic_white"
+        app:layout_constraintRight_toRightOf="@id/diameterInput"
+        app:layout_constraintTop_toTopOf="@id/diameterInput"
+        app:layout_constraintBottom_toBottomOf="@id/diameterInput"
+        style="@style/Base.Widget.AppCompat.Button.Borderless" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

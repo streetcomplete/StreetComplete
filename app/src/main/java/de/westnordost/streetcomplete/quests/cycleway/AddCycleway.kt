@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.INVALID
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS

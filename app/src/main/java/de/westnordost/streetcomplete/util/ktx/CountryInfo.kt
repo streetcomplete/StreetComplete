@@ -145,17 +145,16 @@ fun CountryInfo.getAdvisoryCycleLaneResId(isLeftHandedTraffic: Boolean): Int = w
     else ->                             R.drawable.ic_cycleway_shared_lane_white_dashed
 }
 
-
 fun CountryInfo.getPictogramCycleLaneResId(isLeftHandedTraffic: Boolean): Int =
     if (isLeftHandedTraffic) pictogramCycleLaneLeftHandedTrafficResId else pictogramCycleLaneResId
 
-private val CountryInfo.pictogramCycleLaneResId: Int get() = when(pictogramCycleLaneStyle) {
+private val CountryInfo.pictogramCycleLaneResId: Int get() = when (pictogramCycleLaneStyle) {
     "white" ->  R.drawable.ic_cycleway_pictograms_white
     "yellow" -> R.drawable.ic_cycleway_pictograms_yellow
     else ->     R.drawable.ic_cycleway_pictograms_white
 }
 
-private val CountryInfo.pictogramCycleLaneLeftHandedTrafficResId: Int get() = when(pictogramCycleLaneStyle) {
+private val CountryInfo.pictogramCycleLaneLeftHandedTrafficResId: Int get() = when (pictogramCycleLaneStyle) {
     "white" ->  R.drawable.ic_cycleway_pictograms_white_l
     "yellow" -> R.drawable.ic_cycleway_pictograms_yellow_l
     else ->     R.drawable.ic_cycleway_pictograms_white_l

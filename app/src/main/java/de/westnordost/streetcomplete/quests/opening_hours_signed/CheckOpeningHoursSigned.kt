@@ -25,7 +25,7 @@ class CheckOpeningHoursSigned(
 ) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
-        nodes, ways, relations with
+        nodes, ways with
           opening_hours:signed = no
           and (
             $hasOldOpeningHoursCheckDateFilter

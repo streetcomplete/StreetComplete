@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.urlconfig
 import java.math.BigInteger
 
 @JvmInline
-value class Ordinals(private val value: Set<Int>): Set<Int> by value
+value class Ordinals(private val value: Set<Int>) : Set<Int> by value
 
 fun Ordinals.toBooleanArray(): BooleanArray =
     BooleanArray(if (isEmpty()) 0 else max() + 1) { contains(it) }
