@@ -31,11 +31,9 @@ class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
         applyAnswer(ShoulderSides(streetSideSelect.left!!.value, streetSideSelect.right!!.value))
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Boolean>) =
-        if (item.value) "yes" else "no"
-
-    override fun deserialize(str: String, isRight: Boolean) =
-        (str == "yes").asStreetSideItem()
+    override fun serialize(item: Boolean) = if (item) "yes" else "no"
+    override fun deserialize(str: String) = (str == "yes")
+    override fun asStreetSideItem(item: Boolean, isRight: Boolean) = item.asStreetSideItem()
 
     private fun Boolean.asStreetSideItem(): StreetSideDisplayItem<Boolean> = when (this) {
         true -> StreetSideItem(true, countryInfo.shoulderLineStyleResId, R.string.quest_shoulder_value_yes)

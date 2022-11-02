@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.util.ktx.getAdvisoryCycleLaneResId
 import de.westnordost.streetcomplete.util.ktx.getDualCycleLaneResId
 import de.westnordost.streetcomplete.util.ktx.getExclusiveCycleLaneResId
 import de.westnordost.streetcomplete.util.ktx.getPictogramCycleLaneResId
+import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.DrawableWrapper
 import de.westnordost.streetcomplete.view.Image
@@ -40,15 +41,14 @@ fun Cycleway.asDialogItem(context: Context, countryInfo: CountryInfo, isContrafl
 
 fun Cycleway.asStreetSideItem(
     countryInfo: CountryInfo,
-    isContraflowInOneway: Boolean,
-    noEntrySignDrawableResId: Int
+    isContraflowInOneway: Boolean
 ) =
     StreetSideItem(
         this,
         getIconResId(countryInfo),
         getTitleResId(isContraflowInOneway),
         getDialogIconResId(countryInfo),
-        getFloatingIconResId(isContraflowInOneway, noEntrySignDrawableResId)
+        getFloatingIconResId(isContraflowInOneway, countryInfo.noEntrySignDrawableResId)
     )
 
 private fun Cycleway.getDialogIcon(context: Context, countryInfo: CountryInfo): Image {
