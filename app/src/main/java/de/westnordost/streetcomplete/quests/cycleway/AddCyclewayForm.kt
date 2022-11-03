@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.BOTH
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
@@ -124,8 +125,14 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
 
     override fun serialize(item: Cycleway) =  item.name
     override fun deserialize(str: String) = Cycleway.valueOf(str)
-    override fun asStreetSideItem(item: Cycleway, isRight: Boolean) =
-        item.asStreetSideItem(countryInfo, isContraflowInOneway(isRight))
+    override fun asStreetSideItem(item: Cycleway, isRight: Boolean): StreetSideDisplayItem<Cycleway> {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        // NONE_NO_ONEWAY is displayed as simply NONE if not in contraflow because the former makes
+        // only really sense in contraflow. This can only happen when applying the side(s) via the
+        // last answer button
+        val item2 = if (item == Cycleway.NONE_NO_ONEWAY && !isContraflowInOneway) Cycleway.NONE else item
+        return item2.asStreetSideItem(countryInfo, isContraflowInOneway)
+    }
 
     /* --------------------------------------- apply answer ------------------------------------- */
 
