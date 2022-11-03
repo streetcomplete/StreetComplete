@@ -117,15 +117,15 @@ fun fullElementSelectionDialog(context: Context, prefs: SharedPreferences, pref:
     return dialog
 }
 
-fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int): AlertDialog =
+fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref: String, messageId: Int, answerYes: Int, answerNo: Int): AlertDialog =
     AlertDialog.Builder(context)
         .setMessage(messageId)
         .setNeutralButton(android.R.string.cancel, null)
-        .setPositiveButton(R.string.quest_smoothness_generic_surface_yes) { _,_ ->
+        .setPositiveButton(answerYes) { _,_ ->
             prefs.edit().putBoolean(pref, true).apply()
             OsmQuestController.reloadQuestTypes()
         }
-        .setNegativeButton(R.string.quest_smoothness_generic_surface_no) { _,_ ->
+        .setNegativeButton(answerNo) { _,_ ->
             prefs.edit().putBoolean(pref, false).apply()
             OsmQuestController.reloadQuestTypes()
         }

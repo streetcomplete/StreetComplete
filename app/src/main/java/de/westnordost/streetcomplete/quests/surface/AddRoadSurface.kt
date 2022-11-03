@@ -59,7 +59,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD, R.string.quest_generic_surface_message)
+        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_ROAD,
+            R.string.quest_generic_surface_message,
+            R.string.quest_generic_surface_yes,
+            R.string.quest_smoothness_generic_surface_no
+        )
 }
 
 private const val ALLOW_GENERIC_ROAD = "qs_AddRoadSurface_allow_generic"

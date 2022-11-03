@@ -60,7 +60,11 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + SMOOTHNESS_FOR_ALL_PATH_SURFACES, R.string.quest_smoothness_generic_surface_message)
+        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + SMOOTHNESS_FOR_ALL_PATH_SURFACES,
+            R.string.quest_smoothness_generic_surface_message,
+            R.string.quest_smoothness_generic_surface_yes,
+            R.string.quest_smoothness_generic_surface_no
+        )
 }
 
 // smoothness is not asked for steps

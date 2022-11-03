@@ -217,6 +217,10 @@ class OsmQuestController internal constructor(
     ): List<Deferred<OsmQuest?>> {
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
+        val lazyTagOnlyMapData by lazy { MutableMapDataWithGeometry().apply {
+            lazyMapData.forEach { if (it.tags.isNotEmpty()) put(it, lazyMapData.getGeometry(it.type, it.id)) }
+            boundingBox = lazyMapData.boundingBox
+        } }
 
         return questTypes.map { questType ->
             scope.async {
@@ -225,7 +229,10 @@ class OsmQuestController internal constructor(
                 var appliesToElement = questType.isApplicableTo(element)
                 if (appliesToElement == null) {
                     Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
-                    val mapData = withContext(Dispatchers.IO) { lazyMapData }
+                    val mapData = withContext(Dispatchers.IO) {
+                        if (questType.name in questsRequiringElementsWithoutTags) lazyMapData
+                        else lazyTagOnlyMapData
+                    }
                     appliesToElement = questType.getApplicableElements(mapData)
                         .any { it.id == element.id && it.type == element.type }
                 }
@@ -237,7 +244,10 @@ class OsmQuestController internal constructor(
     }
 
     suspend fun createNonPoiQuestsForElement(element: Element, geometry: ElementGeometry): List<OsmQuest> {
-        return createQuestsForElementDeferred(element, geometry, allQuestTypes.filter { it.dotColor == "no" }).awaitAll().filterNotNull()
+        val t = nowAsEpochMilliseconds()
+        val a = createQuestsForElementDeferred(element, geometry, allQuestTypes.filter { it.dotColor == "no" }).awaitAll().filterNotNull()
+        Log.i("test_", "creating quests: ${nowAsEpochMilliseconds()-t}")
+        return a
     }
 
     private fun getObsoleteQuestKeys(

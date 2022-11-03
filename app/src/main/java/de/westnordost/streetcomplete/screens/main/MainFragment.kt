@@ -333,27 +333,17 @@ class MainFragment :
             return true
         }
 
-        if (childFragmentManager.fragments.isEmpty()) return false
-        val f = childFragmentManager.fragments.last()
+        val f = childFragmentManager.fragments.lastOrNull()
         if (f is IsCloseableBottomSheet) {
-            val action = getFragmentCloseAction(f)
-            f.onClickClose { action() }
+            if (f != bottomSheetFragment && f is AbstractQuestForm)
+                f.onClickClose { TagEditor.changes = StringMapChanges(emptySet()) }
+            else if (f == bottomSheetFragment)
+                f.onClickClose { closeBottomSheet() }
             return true
         }
 
         return false
     }
-
-    private fun getFragmentCloseAction(f: Fragment) =
-        when {
-            f != bottomSheetFragment && f is AbstractOsmQuestForm<*> -> fun() { TagEditor.changes = StringMapChanges(emptySet()) }
-            f == bottomSheetFragment -> ::closeBottomSheet // quest, overlay, create poi fragment
-            f is TagEditor -> fun() {
-                binding.otherQuestsScrollView.visibility = View.VISIBLE
-                childFragmentManager.popBackStack()
-            }
-            else -> fun() { } // this should never occur, but no need to crash or anything
-        }
 
     override fun onStop() {
         super.onStop()
@@ -451,13 +441,12 @@ class MainFragment :
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
-        // close only one fragment! may not be convenient, but simpler to implement
-        if (childFragmentManager.fragments.isEmpty()) return
-        val f = childFragmentManager.fragments.last()
+        val f = childFragmentManager.fragments.lastOrNull()
         if (f is IsCloseableBottomSheet) {
-            val action = getFragmentCloseAction(f)
-            if (!f.onClickMapAt(position, clickAreaSizeInMeters))
-                f.onClickClose { action() }
+            if (f != bottomSheetFragment && f is AbstractQuestForm && !f.onClickMapAt(position, clickAreaSizeInMeters))
+                f.onClickClose { TagEditor.changes = StringMapChanges(emptySet()) }
+            else if (f == bottomSheetFragment && !f.onClickMapAt(position, clickAreaSizeInMeters))
+                f.onClickClose { closeBottomSheet() }
         } else if (editHistoryFragment != null) {
             closeEditHistorySidebar()
         }
@@ -557,8 +546,8 @@ class MainFragment :
         f.requireArguments().putAll(args)
         binding.otherQuestsScrollView.visibility = View.GONE
         childFragmentManager.commit(true) {
-            replace(R.id.map_bottom_sheet_container, f, null) // null because we don't want to replace the quest in back stack
-            addToBackStack(null)
+            replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
+            addToBackStack(BOTTOM_SHEET)
         }
     }
 

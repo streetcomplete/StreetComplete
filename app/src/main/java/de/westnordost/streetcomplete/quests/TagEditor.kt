@@ -63,8 +63,6 @@ import java.util.concurrent.FutureTask
 import kotlin.math.min
 
 // todo: ideas for improvements
-//  opening tag editor loses state of quest below, probably because we're replacing the bottom sheet instead of adding
-//   either fix it, or also close the quest below when closing the editor
 //  ability to copy and paste everything (this is the only advantage of the old editor)
 //   button that copies all tags into clipboard: tagsList.joinToString("\n")
 //   and one that pastes clipboard into tags: newTags.putAll(clipboard.toTags())
