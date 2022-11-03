@@ -15,6 +15,7 @@ data class UrlConfig(
 )
 
 private const val URL = "https://streetcomplete.app/s"
+private const val URL2 = "streetcomplete://s"
 
 private const val PARAM_NAME = "n"
 private const val PARAM_QUESTS = "q"
@@ -29,11 +30,14 @@ fun parseConfigUrl(
     questTypeRegistry: QuestTypeRegistry,
     overlayRegistry: OverlayRegistry
 ): UrlConfig? {
-    val prefix = "$URL?"
-    if (!url.startsWith(prefix, ignoreCase = true)) return null
+    val length = when {
+        url.startsWith("$URL?", ignoreCase = true) -> URL.length + 1
+        url.startsWith("$URL2?", ignoreCase = true) -> URL2.length + 1
+        else -> return null
+    }
 
     val parameters: Map<String, String> = url
-        .substring(prefix.length)
+        .substring(length)
         .split('&')
         .associate {
             val keyValue = it.split('=')

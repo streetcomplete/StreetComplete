@@ -63,6 +63,12 @@
                 <data android:host="streetcomplete.app" />
                 <data android:path="/s" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="streetcomplete" />
+            </intent-filter>
         </activity>
         <activity
             android:name="de.westnordost.streetcomplete.screens.settings.SettingsActivity"
