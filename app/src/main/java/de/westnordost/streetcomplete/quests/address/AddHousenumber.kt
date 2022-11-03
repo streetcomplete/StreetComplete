@@ -29,6 +29,9 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
+        "LV", // https://github.com/streetcomplete/StreetComplete/issues/4597
+              // https://lists.openstreetmap.org/pipermail/talk-lv/2022-January/006357.html
+              // https://wiki.openstreetmap.org/wiki/Automated_edits/Latvia-bot
         "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
         "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
