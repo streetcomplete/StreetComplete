@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.surface
 
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
