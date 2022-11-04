@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -91,20 +90,19 @@ class MoveNodeFragment :
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMoveNodeBinding.inflate(inflater, container, false)
-        inflater.inflate(R.layout.fragment_move_node, binding.root)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         okButton.setOnClickListener { onClickOk() }
+        binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
         val countryInfo = countryInfos.getByLocation(countryBoundaries.get(), node.position.longitude, node.position.latitude)
         displayUnit = if (countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH)
                 MeasureDisplayUnitFeetInch(1)
             else
                 MeasureDisplayUnitMeter(2)
         binding.createNoteIconView.setImageResource(editType.icon)
-        binding.createNoteMarker.visibility = View.VISIBLE
         highlightSimilarElements()
     }
 
@@ -149,17 +147,20 @@ class MoveNodeFragment :
     }
 
     private fun checkIsDistanceOkAndUpdateText(position: LatLon): Boolean {
-        binding.measurementSpeechBubble.isInvisible = !hasChanges
-
         val moveDistance = position.distanceTo(node.position)
-        binding.measurementTextView.text = displayUnit.format(moveDistance.toFloat())
         return when {
-            moveDistance < MIN_MOVE_DISTANCE -> false
-            moveDistance > MAX_MOVE_DISTANCE -> {
-                //context?.toast(R.string.node_moved_too_far) don't, this considerably slows down everything -> maybe just remove (also the string)?
+            moveDistance < MIN_MOVE_DISTANCE -> {
+                binding.titleLabel.setText(R.string.node_moved_not_far_enough)
                 false
             }
-            else ->  true
+            moveDistance > MAX_MOVE_DISTANCE -> {
+                binding.titleLabel.setText(R.string.node_moved_too_far)
+                false
+            }
+            else -> {
+                binding.titleLabel.text = resources.getString(R.string.node_moved,displayUnit.format(moveDistance.toFloat()))
+                true
+            }
         }
     }
 
@@ -194,6 +195,5 @@ class MoveNodeFragment :
     }
 }
 
-// todo: find good values
 private const val MIN_MOVE_DISTANCE = 2.0
 private const val MAX_MOVE_DISTANCE = 30.0

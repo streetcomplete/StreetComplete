@@ -14,8 +14,6 @@
 
         <RelativeLayout
             android:id="@+id/createNoteMarker"
-            android:visibility="invisible"
-            tools:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="128dp">
 
@@ -43,47 +41,19 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <FrameLayout
-            android:id="@+id/measurementSpeechBubble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/speech_bubble_bottom_center"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.8"
-            android:visibility="invisible"
-            tools:visibility="visible">
-
-            <TextView
-                android:id="@+id/measurementTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="180dp"
-                android:layout_gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:gravity="center"
-                tools:text="99.99 m"
-                android:textSize="40dp"
-                android:textColor="@color/text"
-                tools:ignore="SpUsage" />
-
-        </FrameLayout>
-
         <LinearLayout
             android:id="@+id/speechBubbleTitleContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/speech_bubble_top"
+            android:background="@drawable/speech_bubble_none"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layoutDirection="locale"
-            android:layout_marginLeft="@dimen/horizontal_speech_bubble_margin"
-            android:layout_marginRight="72dp"
+            android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+            android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
             android:layout_marginBottom="4dp"
-            android:elevation="@dimen/speech_bubble_elevation">
+            android:elevation="@dimen/speech_bubble_elevation"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -97,7 +67,7 @@
 
                 <TextView
                     android:id="@+id/titleLabel"
-                    android:text="@string/move_node"
+                    android:text="@string/node_moved_not_far_enough"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.Title"/>
@@ -107,20 +77,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.Title.Hint"
-                    android:visibility="gone"/>
+                    android:text="@string/move_node_description"
+                    android:visibility="visible"/>
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@android:string/cancel"
+                    style="@style/BottomSheetButtonBarItem"/>
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/closeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="center"
-                android:src = "@drawable/ic_close_24dp"
-                android:background="?android:attr/actionBarItemBackground"
-                android:visibility="gone"
-                android:contentDescription="@string/close"
-                android:padding="16dp"/>
 
         </LinearLayout>
 

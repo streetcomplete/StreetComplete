@@ -209,7 +209,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun onClickMoveNodeAnswer() {
         context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_move_node_description)
+            .setMessage(R.string.quest_move_node_message)
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 listener?.onMoveNode(osmElementQuestType, element as Node)
