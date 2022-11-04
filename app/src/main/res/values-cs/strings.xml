@@ -27,16 +27,13 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Napsat poznámku?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"K tomuto úkolu můžete přidat veřejnou poznámku, ke které budou moci další uživatelé posílat komentáře a doufejme, že ji i vyřeší:"</string>
+    <string name="quest_leave_new_note_description">"Můžete k tomutu místu přidat poznámku pro ostatní uživatele, nebo pro sebe tento úkol skrýt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"OK"</string>
 
     <!-- Is this mean somethimg ike "I don't want to write note, just hide quest"? -->
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_no">"Ne, skrýt tento úkol"</string>
+    <string name="quest_leave_new_note_no">"Skrýt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_title">"Jak se jmenuje tato ulice?"</string>
@@ -120,8 +117,6 @@
 
     <!-- Fuzzy -->
     <string name="about_title_feedback">"Poslat zpětnou vazbu"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"Licence"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
 
@@ -130,7 +125,7 @@
     <string name="offline">"Nejste připojeni"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Pro odeslání odpovědí je nutné udělit přístup aplikaci StreetComplete k Vašemu účtu na OpenStreetMap. Chcete udělit přístup nyní?"</string>
+    <string name="confirmation_authorize_now">"Pro odeslání odpovědí je nutné udělit přístup aplikaci StreetComplete k vašemu účtu na OpenStreetMap. Chcete udělit přístup nyní?"</string>
 
     <!-- Fuzzy -->
     <string name="not_authorized">"Neautorizováno"</string>
@@ -148,7 +143,7 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Jen to spojuje dvě ulice"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Něco jiného (Napište do poznámky)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Něco jiného (napište do poznámky)"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Prohlášení o ochraně soukromí"</string>
@@ -190,11 +185,11 @@
     <string name="privacy_html">"&lt;p&gt;Á, někdo, kdo se zajímá o soukromí, paráda! Myslím, že pro vás máme jen dobré zprávy:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Přímé přispívání&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Nejdříve musíte vědět, že pomocí této aplikace skutečně a přímo přispíváte do OpenStreetMap.&lt;br/&gt;
+Nejdříve musíte vědět, že pomocí této aplikace skutečně a přímo přispíváte do OpenStreetMap (OSM).&lt;br/&gt;
 Cokoliv, čím pomocí této aplikace přispějete, bude přímo přidáno do mapy bez toho, aby byla mezi aplikací a OSM nějaká třetí strana.
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny provedené s vaším uživatelským účtem na OSM. To znamená, že datum, obsah a poloha vašich změn jsou veřejně viditelné na webu openstreetmap a propojené s vaším účtem.
+OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny provedené s vaším uživatelským účtem na OSM. To znamená, že datum, obsah a poloha vašich změn jsou veřejně viditelné na webu openstreetmap.org a propojené s vaším účtem.
 &lt;/p&gt;
 
 &lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
@@ -204,10 +199,11 @@ Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro
 
 &lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohli být kritické chyby, aby poškodili OSM data.&lt;br/&gt;
+Tato aplikace komunikuje přímo se servery OSM.&lt;br/&gt;
+Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohly být kritické chyby, aby poškodily OSM data.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Zapnuto"</string>
-    <string name="autosync_only_on_wifi">"Jen přes WiFi"</string>
+    <string name="autosync_only_on_wifi">"Jen přes Wi-Fi"</string>
     <string name="autosync_off">"Vypnuto"</string>
 
     <!-- Fuzzy -->
@@ -269,11 +265,11 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
     <!-- Fuzzy -->
     <string name="store_listing_full_description">"Se StreetComplete můžete pomoci vylepšit mapové podklady OpenStreetMap!
 
-Tato aplikace vyhledá data ve Vašem okolí, která nejsou kompletní, a která lze rozšířit a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace do mapy.
+Tato aplikace vyhledá data ve vašem okolí, která nejsou kompletní a která lze rozšířit, a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace do mapy.
 
-Vámi vložené informace jsou potom Vaším jménem přímo přidány do OpenStreetMap bez toho, aniž byste museli použít další editor. ( Pro nahrání Vašich odpovědí na server je nutné mít OpenStreetMap účet )
+Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenStreetMap, aniž byste museli použít další editor. (Pro nahrání vašich odpovědí na server je nutné mít účet v OpenStreetMap.)
 
-StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na to, aby se jednoduše používala a aby do OSM mohl přispívat opravdu každý."</string>
+Aplikace StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na to, aby se jednoduše používala a aby do OSM mohl přispívat opravdu každý."</string>
 
     <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Nemá žádný název…"</string>
@@ -282,7 +278,7 @@ StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na t
     <string name="quest_name_answer_noName_confirmation_title">"Opravdu nemá název?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_name_noName_confirmation_positive">"Ano, Opravdu je bez názvu"</string>
+    <string name="quest_name_noName_confirmation_positive">"Ano, opravdu je bez názvu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Přidat otevírací dobu"</string>
@@ -294,7 +290,7 @@ StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na t
     <string name="crash_title">"Ale ne, aplikace StreetComplete minule spadla!"</string>
 
     <!-- Fuzzy -->
-    <string name="crash_compose_email">"Napsat email"</string>
+    <string name="crash_compose_email">"Napsat e-mail"</string>
 
     <!-- Fuzzy -->
     <string name="no_email_client">"Nemáte nainstalovaný poštovní klient."</string>
@@ -440,7 +436,7 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Mimo obec (90)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Pokud je na křižovatce z hlavní ulice takováhle značka zóny, nenajdete v zóně další samostatné značky, protože uvedené omezení rychlosti na značce se vztahuje na celou zónu. (Typicky v centru města)"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Pokud je na křižovatce z hlavní ulice takováhle značka zóny, nenajdete v zóně další samostatné značky, protože uvedené omezení rychlosti na značce se vztahuje na celou zónu (typicky v centru města)."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Raketbal"</string>
 
@@ -494,7 +490,7 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_streetName_cantType_open_settings">"Otevřít nastavení"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_cantType_open_store">"Otevřít Google Play obchod"</string>
+    <string name="quest_streetName_cantType_open_store">"Otevřít obchod Google Play"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Pokud používáte výchozí klávesnici, je možné, že bude stačit v nastavení pouze povolit znakovou sadu jazyka, který potřebujete pro psaní.
@@ -714,7 +710,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_parkingType_underground">"Podzemní parkoviště"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_parkingType_multiStorage">"Víceposchoďové pakoviště"</string>
+    <string name="quest_parkingType_multiStorage">"Víceposchoďové parkoviště"</string>
 
     <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <!-- Fuzzy -->
@@ -733,7 +729,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Je tu jen doporučená rychlost…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_house_name_label">"Jméno budovy:"</string>
+    <string name="quest_address_house_name_label">"Název budovy:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"patra ve střeše"</string>
@@ -1967,7 +1963,7 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_buildingType_terrace2">"Řadové domy"</string>
 
     <!-- Fuzzy -->
-    <string name="at_housename">"Jméno budovy %s"</string>
+    <string name="at_housename">"Název budovy %s"</string>
 
     <!-- Fuzzy -->
     <string name="at_housenumber">"číslo domu %s"</string>
@@ -2596,7 +2592,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"Odstavný pruh je jasně vymezený pruh pro nouzové zastavení. Oblast označená jako odstavný pruh nemusí být zpevněná v celé své šířce a nemusí být ani dost široká na to, aby auto zastavilo úplně mimo jízdní pruh."</string>
-    <string name="quest_cycleway_value_none_and_oneway">"není, v tomto směru není jízda na kole povolená"</string>
+    <string name="quest_cycleway_value_none_and_oneway">"není, v tomto směru není jízda na kole povolena"</string>
     <string name="map_btn_create_track">"Vytvořit novou nahrávku trasy"</string>
 
     <!-- Fuzzy -->
@@ -2634,11 +2630,11 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_building_entrance_dead_end">"Slepá ulička, žádný vstup"</string>
-    <string name="ar_core_tracking_hint_tap_to_measure">"Dotkni se pro zahájení měření"</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">"Dotkněte se pro zahájení měření"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Je zde veřejně přístupná pumpička (alespoň pokud je otevřeno)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Je tam fungující pumpička na kolo?"</string>
     <string name="action_overlays">"Překryvné vrstvy"</string>
-    <string name="split_way">"Rozdělená cesta"</string>
+    <string name="split_way">"Rozdělit cestu"</string>
     <string name="quest_memorialType_title">"Jaký druh památníku to je?"</string>
     <string name="quest_memorialType_statue">"Socha"</string>
     <string name="quest_memorialType_bust">"Busta"</string>
@@ -2669,7 +2665,7 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Jmenovka:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Seznam bytů:"</string>
     <string name="quest_entrance_reference_flat_range_to">"na"</string>
-    <string name="default_disabled_msg_overlay">"Tento typ úkolu je ve výchozím nastavení zakázán, protože již existuje překryvná aplikace, pomocí které je zadávání a aktualizace těchto údajů efektivnější a účinnější."</string>
+    <string name="default_disabled_msg_overlay">"Tento typ úkolu je ve výchozím nastavení zakázán, protože již existuje překryvná vrstva, pomocí které je zadávání a aktualizace těchto údajů efektivnější a účinnější."</string>
     <string name="quest_camp_drinking_water_title">"Mají zde táborníci volně k dispozici pitnou vodu?"</string>
     <string name="quest_camp_shower_title">"Jsou zde sprchy?"</string>
     <string name="quest_camp_power_supply_title">"Mohou si zde zákazníci nabíjet telefon, notebook apod.?"</string>
@@ -2678,9 +2674,71 @@ sorted alphabetically by title -->
     <string name="quest_camp_type_caravans_only">"Pouze obytné vozy, cestovní přívěsy, …"</string>
     <string name="quest_camp_type_tents_only">"Pouze stany"</string>
     <string name="quest_camp_type_backcountry">"Táboření v přírodě (bez zázemí)"</string>
-    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravdopodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tato odpověď neodpovídá tomu, co je o této silnici již zmapováno. Jste si jisti, že odpovídáte o správné silnici? Jste si jisti, že jste osobně provedli průzkum po celé délce, jak je vždy potřeba?"</string>
     <string name="quest_recycling_type_pet">"Jen PET"</string>
     <string name="street_parking_street_width">"Šířka ulice: %s"</string>
     <string name="overlay_street_parking">"Parkování na ulici"</string>
+    <string name="link_ohsomehex_description">"Objevujte data OSM napříč měřítky, od velkého obrázku po jednotlivé objekty, v prostoru a čase"</string>
+    <string name="link_opencampingmap_description">"Mapa kempů"</string>
+    <string name="quest_atm_cashin_title">"Lze přes tento bankomat vkládat hotovost?"</string>
+    <string name="create_node_action_description">"Vytvořili jste uzel s …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Je to shromaždiště"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Shromaždiště je místo, kde se lidé shromažďují v případě nouze. Obvykle vypadá podobně jako toto:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_answer_house_name2">"Má název domu…"</string>
+    <string name="quest_address_street_street_name_label">"Název ulice:"</string>
+    <string name="quest_address_street_hint2">"Klepnutím na ulici v mapě ji vyberete"</string>
+    <string name="quest_bicycle_incline_title">"Který směr vede nahoru?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Jsou to hupy nahoru a dolů"</string>
+    <string name="quest_drinking_water_type_title">"Jak je zde k dispozici pitná voda?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Jiná vodní fontána"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fontána vystřikující malý proud vody"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Jen doplňování lahví"</string>
+    <string name="quest_drinking_water_type_tap">"Vodní kohoutek"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Ruční pumpa"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Vodní zdroj bez pumpy"</string>
+    <string name="quest_drinking_water_type_spring">"Pramen"</string>
+    <string name="quest_drinking_water_type_disused">"Nepoužívaný zdroj pitné vody"</string>
+    <string name="overlay_addresses">"Adresy"</string>
+    <string name="overlay_shops">"Obchody"</string>
+    <string name="name_label">"Název:"</string>
+    <string name="vacant_shop_title">"Prázdný obchod"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Jiný druh místa"</string>
+    <string name="quest_address_answer_no_address">"Zde není adresa"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Lze tuto bariéru pro kola otvírat (s klíčem nebo bez něj)?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Pevná"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Otvíratelná"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Odnímatelná"</string>
+    <string name="quest_buildingType_guardhouse">"Strážní domek"</string>
+    <string name="quest_genericRef_title">"Jaké je zde identifikační číslo?"</string>
+    <string name="quest_sidewalk_answer_different">"Situace s chodníky je jiná"</string>
+    <string name="about_title_get_involved">"Zapojte se"</string>
+    <string name="pref_category_quests_overlays">"Úkoly a překryvné vrstvy"</string>
+    <string name="quest_presets_rename">"Přejmenovat"</string>
+    <string name="quest_presets_share">"Sdílet"</string>
+    <string name="quest_presets_delete">"Smazat"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Nechte ostatní, aby sdíleli vaši předvolbu naskenováním tohoto QR kódu."</string>
+    <string name="urlconfig_as_url">"Nebo jako URL:"</string>
+    <string name="urlconfig_url_copied">"URL zkopírován do schránky"</string>
+    <string name="urlconfig_apply_title">"Použít předvolbu"</string>
+    <string name="urlconfig_apply_message">"Použít a vybrat předvolbu %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Poznámka: Vaše předvolba se stejným názvem bude přepsána!"</string>
+    <string name="urlconfig_switch_hint">"Předvolby v nastavení můžete kdykoliv přepínat."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Dvoupatrový stojan na kola"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Tento týden"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Dny, kdy jste naposledy mapovali"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"doporučený pruh pro cyklisty"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Po instalaci aplikace znovu naskenujte QR kód nebo klikněte na &lt;a href=\"%s\"&gt;tento odkaz&lt;/a&gt; pro použití předvolby."</string>
 </resources>

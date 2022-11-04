@@ -1700,6 +1700,8 @@ sorted alphabetically by title -->
     <string name="overlay_street_parking">"Strata parkado"</string>
     <string name="link_opencampingmap_description">"Monda mapo de kampadejoj"</string>
     <string name="quest_atm_cashin_title">"Ĉu oni povas enmeti monon per ĉi tiu bankaŭtomato?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Ĝi havas domnumero ..."</string>
 
     <!-- Fuzzy -->
@@ -1734,5 +1736,15 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_genericRef_title">"Kio estas la identiga numero ĉi tie?"</string>
+    <string name="about_title_get_involved">"Kontribuu"</string>
     <string name="pref_category_quests_overlays">"Taskoj &amp; supertavoloj"</string>
+    <string name="quest_presets_rename">"Ŝanĝi nomon"</string>
+    <string name="quest_presets_share">"Konigi"</string>
+    <string name="quest_presets_delete">"Forigi"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Ĉi semajno"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Tagoj dum tiuj vi mapis lastatempe"</string>
 </resources>

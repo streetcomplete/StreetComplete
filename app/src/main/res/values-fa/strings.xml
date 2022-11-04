@@ -2716,4 +2716,17 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_openable">"قابل باز شدن"</string>
     <string name="quest_buildingType_guardhouse">"نگهبانی"</string>
     <string name="quest_genericRef_title">"شماره شناسایی اینجا چیست؟"</string>
+    <string name="quest_presets_rename">"تغییر نام"</string>
+    <string name="quest_presets_share">"اشتراک‌گذاری"</string>
+    <string name="quest_presets_delete">"حذف"</string>
+    <string name="urlconfig_as_url">"یا به عنوان آدرس اینترنتی:"</string>
+    <string name="urlconfig_url_copied">"نشانی اینترنتی در کلیپ بورد کپی شد"</string>
+    <string name="urlconfig_apply_message">"%1$s از پیش تعیین شده اعمال و انتخاب شود؟"</string>
+    <string name="urlconfig_switch_hint">"هر زمان که بخواهید می‌توانید تنظیمات از پیش تعیین شده را در منوی تنظیمات تغییر دهید."</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"این هفته"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"روزهایی را که اخیراً نقشه‌برداری کرده‌اید"</string>
 </resources>

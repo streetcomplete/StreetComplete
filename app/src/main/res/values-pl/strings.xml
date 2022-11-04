@@ -80,8 +80,6 @@
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Inne (zostaw notatkę)"</string>
     <string name="about_title_privacy_statement">"Polityka prywatności"</string>
     <string name="about_summary_privacy_statement">"i wykorzystanie danych"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"święta i dni wolne"</string>
     <string name="quest_openingHours_public_holidays_short">"Święta"</string>
     <string name="quest_openingHours_open_end">"do ostatniego klienta"</string>
@@ -216,15 +214,11 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
 
     <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Czy to boisko jest przeznaczone konkretnie do tych sportów (są obecne linie i wyposażenie) czy jest ogólnego przeznaczenia dla wszystkich rodzajów dyscyplin sportowych?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Wyłącznie tych"</string>
     <string name="quest_manySports_confirmation_generic">"Ogólnego przeznaczenia"</string>
     <string name="quest_sport_manySports_confirmation_title">"Wybrałeś wiele sportów"</string>
     <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma oznaczenia chodnikowe dla niewidomych po obu stronach?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma wypustki dla niewidomych po obu stronach?"</string>
     <string name="quest_source_dialog_title">"Na pewno sprawdzono to na miejscu?"</string>
     <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały sprawdzone w terenie."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Czy ten parking dla rowerów jest zakryty (przed deszczem)?"</string>
@@ -249,8 +243,6 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
 
     <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"Sporty irlandzkie"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Siatkówka kopana"</string>
     <string name="quest_wheelchairAccess_limited">"Ograniczony"</string>
     <string name="quest_bikeParkingCapacity_hint">"Pamiętaj, że do większości stojaków rowerowych można przypiąć rowery z obu stron."</string>
@@ -272,15 +264,9 @@ Jeśli na całej ulicy nie ma znaków dotyczących podświetlonej sekcji, obowi�
     <string name="recycling_centre">"Punkt zbiórki"</string>
     <string name="overground_recycling_container">"Kontener"</string>
     <string name="underground_recycling_container">"Podziemny kontener"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Nie mogę wprowadzić liter ze znaku"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Brakuje układu klawiatury?"</string>
     <string name="quest_streetName_cantType_open_settings">"Otwórz ustawienia"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Odwiedź sklep aplikacji"</string>
     <string name="quest_streetName_cantType_description">"Jeśli używasz domyślnego układu klawiatury, to być może jesteś w stanie włączyć układ dla wymaganego języka w ustawieniach klawiatury.
 
@@ -292,14 +278,10 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"filarowy"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Podziemny"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Wewnętrzny"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Staw"</string>
 
     <!-- Fuzzy -->
@@ -314,7 +296,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="credits_author_title">"Autor i opiekun"</string>
 
     <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"i inni…"</string>
 
     <!-- Fuzzy -->
@@ -1990,12 +1971,66 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"Kod klatki schodowej:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Numery mieszkań:"</string>
     <string name="quest_entrance_reference_flat_range_to">"do"</string>
+    <string name="default_disabled_msg_overlay">"Ten typ jest domyślnie wyłączony, ponieważ istnieje już nakładka, dzięki której wprowadzanie i aktualizowanie tych danych jest bardziej efektywne."</string>
+    <string name="quest_camp_drinking_water_title">"Czy woda pitna jest tu dostępna za darmo dla obozowiczów?"</string>
     <string name="quest_camp_shower_title">"Czy są tutaj prysznice?"</string>
+    <string name="quest_camp_power_supply_title">"Czy obozowicze mogą tu naładować telefon, laptop itp.?"</string>
+    <string name="quest_camp_type_title">"Kto może tu obozować?"</string>
+    <string name="quest_camp_type_tents_and_caravans">"Zarówno namioty, jak i kampery, przyczepy podróżne, …"</string>
+    <string name="quest_camp_type_caravans_only">"Tylko kampery, przyczepy podróżne, ..."</string>
     <string name="quest_camp_type_tents_only">"Tylko namioty"</string>
+    <string name="quest_camp_type_backcountry">"Kemping bez udogodnień"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta średnica wygląda nieprawdopodobnie, zwykle wynosi od %1$d do %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ta odpowiedź nie pasuje do tego, jak droga została zmapowana. Czy na pewno odpowiadasz na temat właściwej drogi? Czy jesteś pewien, że osobiście sprawdziłeś na całej długości?"</string>
     <string name="quest_recycling_type_pet">"Tylko PET"</string>
     <string name="street_parking_street_width">"Szerokość ulicy: %s"</string>
     <string name="overlay_street_parking">"Parkowanie na ulicy"</string>
+    <string name="link_ohsomehex_description">"Przeglądaj dane OSM w różnych skalach, od dużego obrazu po pojedyncze obiekty w przestrzeni i czasie"</string>
     <string name="link_opencampingmap_description">"Mapa kempingów i pól namiotowych"</string>
+    <string name="quest_atm_cashin_title">"Czy możesz wpłacić gotówkę w tym bankomacie?"</string>
+    <string name="create_node_action_description">"Stworzyłeś węzeł z…"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"To miejsce zbiórki"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Miejsce zbiórki do ewakuacji - tam ludzie gromadzą się w nagłych wypadkach. Zwykle wygląda to tak:"</string>
     <string name="quest_address_street_street_name_label">"Nazwa ulicy:"</string>
+    <string name="quest_address_street_hint2">"Dotknij ulicy na mapie, aby ją wybrać"</string>
+    <string name="quest_drinking_water_type_title">"W jaki sposób dostarczana jest tutaj woda pitna?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Inna fontanna"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Fontanna emitująca mały strumień wody"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Tylko do napełniania butelek"</string>
+    <string name="quest_drinking_water_type_tap">"Kranik"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Pompa (ręczna)"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Studnia bez pompy"</string>
+    <string name="quest_drinking_water_type_spring">"Krynica"</string>
+    <string name="quest_drinking_water_type_disused">"Nieużywany obiekt wody pitnej"</string>
+    <string name="overlay_addresses">"Adresy"</string>
+    <string name="overlay_shops">"Sklepy"</string>
     <string name="name_label">"Nazwa:"</string>
+    <string name="vacant_shop_title">"Pusty sklep"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Inny rodzaj miejsca"</string>
+    <string name="quest_address_answer_no_address">"Brak adresu"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Czy tę barierę rowerową można otworzyć (z kluczem/bez)?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Stała"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Otwieralna"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Usuwalna"</string>
+    <string name="quest_buildingType_guardhouse">"Wartownia"</string>
+    <string name="quest_genericRef_title">"Jaki jest tutaj numer identyfikacyjny?"</string>
+    <string name="about_title_get_involved">"Zaangażuj się"</string>
+    <string name="pref_category_quests_overlays">"Zadania i nakładki"</string>
+    <string name="quest_presets_rename">"Zmień nazwę"</string>
+    <string name="quest_presets_share">"Udostępnij"</string>
+    <string name="quest_presets_delete">"Usuń"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Pozwól innym zeskanować ten kod QR, aby udostępnić Twoje ustawienie."</string>
+    <string name="urlconfig_as_url">"Lub jako URL:"</string>
+    <string name="urlconfig_url_copied">"URL skopiowany do schowka"</string>
+    <string name="urlconfig_apply_title">"Zastosuj"</string>
+    <string name="urlconfig_apply_message">"Zastosować i wybrać ustawienie %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Uwaga: Twoje ustawienia o tej samej nazwie zostanie nadpisany!"</string>
+    <string name="urlconfig_switch_hint">"Możesz zmienić ustawienia w dowolnym momencie."</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"W tym tygodniu"</string>
 </resources>

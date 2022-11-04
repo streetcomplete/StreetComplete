@@ -357,9 +357,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
-    <string name="user_profile_current_week_title">This week</string>
+    <string name="user_profile_current_week_title">Last 7 days</string>
 
-    <string name="user_profile_dates_mapped">Days you\'ve mapped recently</string>
+    <string name="user_profile_dates_mapped">Days you’ve mapped recently</string>
 
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>
@@ -583,7 +583,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
     <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
     <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
-    <string name="urlconfig_scan_qr_code_again">After installing the app, scan the QR code again to apply the preset.</string>
+    <string name="urlconfig_scan_qr_code_again2">"After installing the app, scan the QR code again or click &lt;a href=\"%s\">this link&lt;/a&gt; to apply the preset."</string>
 
     <!-- Quests -->
     <!-- sorted alphabetically by title -->
@@ -613,7 +613,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
-    <string name="quest_address_answer_house_name2">It has a house name…</string>
+    <string name="quest_address_answer_house_name2">Address has a house name…</string>
     <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
     <string name="quest_housenumber_multiple_numbers_description" tools:ignore="TypographyDashes">"You can enter comma-separated house numbers or ranges.\nFor example 1,3 or 2-6."</string>
     <string name="quest_address_answer_no_housenumber">It has no house number…</string>
@@ -1603,6 +1603,10 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="vacant_shop_title">Vacant shop</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>
+    <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
+    <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
+    <string name="confirmation_replace_shop_yes">"Different place now"</string>
+    <string name="confirmation_replace_shop_no">"Still same place"</string>
 
     <string name="overlay_street_parking">Street parking</string>
 </resources>

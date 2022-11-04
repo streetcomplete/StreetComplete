@@ -2513,6 +2513,8 @@ Que tipo de memorial é esse?"</string>
     <string name="create_node_action_description">"Você criou um nó com…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"É um ponto de encontro"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Um Ponto de Encontro é onde as pessoas se reúnem em caso de emergência. Geralmente se parece com isso:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Tem um nome de casa…"</string>
     <string name="quest_address_street_street_name_label">"Nome da rua:"</string>
     <string name="quest_address_street_hint2">"Toque na rua no mapa para selecioná-la"</string>
@@ -2543,4 +2545,29 @@ Que tipo de memorial é esse?"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
     <string name="quest_buildingType_guardhouse">"Guarita"</string>
     <string name="quest_genericRef_title">"Qual é o número de identificação aqui?"</string>
+    <string name="quest_sidewalk_answer_different">"A situação da calçada é diferente"</string>
+    <string name="about_title_get_involved">"Se envolva"</string>
+    <string name="pref_category_quests_overlays">"Missões e sobreposições"</string>
+    <string name="quest_presets_rename">"Renomear"</string>
+    <string name="quest_presets_share">"Compartilhar"</string>
+    <string name="quest_presets_delete">"Excluir"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Permita que outras pessoas digitalizem este código QR para compartilhar sua predefinição."</string>
+    <string name="urlconfig_as_url">"Ou como URL:"</string>
+    <string name="urlconfig_url_copied">"URL copiado para a área de transferência"</string>
+    <string name="urlconfig_apply_title">"Aplicar predefinição"</string>
+    <string name="urlconfig_apply_message">"Aplicar e selecionar a predefinição %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Nota: Sua predefinição com o mesmo nome será substituído!"</string>
+    <string name="urlconfig_switch_hint">"Você pode alternar as predefinições nas configurações a qualquer momento."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Bicicletário de dois andares"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Essa semana"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Dias que você mapeou recentemente"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"ciclovia consultiva"</string>
 </resources>
