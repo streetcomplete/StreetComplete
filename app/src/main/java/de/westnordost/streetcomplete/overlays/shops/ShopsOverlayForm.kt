@@ -240,7 +240,7 @@ private suspend fun createEditAction(
     val hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
     val isFeatureWithName = newFeature.addTags?.get("name") != null
-    val wasFeatureWithName = previousFeature.addTags?.get("name") != null
+    val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
 
     val doReplaceShop =
         if (hasAddedNames && !hasChangedFeature
