@@ -6,23 +6,20 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.asItem
-import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.GROUND_SURFACES
-import de.westnordost.streetcomplete.quests.surface.SidewalkSurfaceAnswer
-import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
-import de.westnordost.streetcomplete.osm.surface.asItem
-import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.quests.surface.SidewalkSurface
+import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
@@ -56,10 +53,10 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         val rightSurfaceString = element!!.tags["sidewalk:both:surface"] ?: element!!.tags["sidewalk:right:surface"]
         val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
         val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
-        if(leftSurfaceObject != null) {
+        if (leftSurfaceObject != null) {
             streetSideSelect.replacePuzzleSide(leftSurfaceObject.asStreetSideItem(resources), false)
         }
-        if(rightSurfaceObject != null) {
+        if (rightSurfaceObject != null) {
             streetSideSelect.replacePuzzleSide(rightSurfaceObject.asStreetSideItem(resources), true)
         }
     }
@@ -125,14 +122,17 @@ class SidewalkSurfaceOverlayForm : AStreetSideSelectOverlayForm<Surface>() {
         streetSideSelect.left?.value != currentSidewalk?.left ||
             streetSideSelect.right?.value != currentSidewalk?.right
 
-    override fun serialize(item: StreetSideDisplayItem<Surface>): String =
-        item.value.name
-
-    override fun deserialize(str: String, isRight: Boolean) =
-        Surface.valueOf(str).asStreetSideItem(resources)
-
     companion object {
         private const val LEFT_NOTE = "left_note"
         private const val RIGHT_NOTE = "right_note"
     }
+
+    override fun serialize(item: Surface): String =
+        item.name
+
+    override fun deserialize(str: String): Surface =
+        Surface.valueOf(str)
+
+    override fun asStreetSideItem(item: Surface, isRight: Boolean): StreetSideDisplayItem<Surface> =
+        item.asStreetSideItem(resources)
 }
