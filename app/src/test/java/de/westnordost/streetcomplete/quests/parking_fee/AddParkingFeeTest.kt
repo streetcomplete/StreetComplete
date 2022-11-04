@@ -7,11 +7,10 @@ import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
-import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import java.time.LocalDate
 
 class AddParkingFeeTest {
 
@@ -78,7 +77,7 @@ class AddParkingFeeTest {
             FeeAndMaxStay(HasFeeExceptAtHours(openingHours)),
             StringMapEntryModify("fee", "yes", "yes"),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)"),
-            StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:fee", nowAsCheckDateString())
         )
     }
 
@@ -123,10 +122,10 @@ class AddParkingFeeTest {
             mapOf("fee" to "no", "maxstay" to "no", "maxstay:conditional" to "1 hour @ ($openingHoursString)"),
             FeeAndMaxStay(HasNoFee, MaxstayAtHours(MaxstayDuration(1.0, Maxstay.Unit.HOURS), openingHours)),
             StringMapEntryModify("fee", "no", "no"),
-            StringMapEntryAdd("check_date:fee", LocalDate.now().toCheckDateString()),
+            StringMapEntryAdd("check_date:fee", nowAsCheckDateString()),
             StringMapEntryModify("maxstay:conditional", "1 hour @ ($openingHoursString)", "1 hour @ ($openingHoursString)"),
             StringMapEntryModify("maxstay", "no", "no"),
-            StringMapEntryAdd("check_date:maxstay", LocalDate.now().toCheckDateString())
+            StringMapEntryAdd("check_date:maxstay", nowAsCheckDateString())
         )
     }
 }

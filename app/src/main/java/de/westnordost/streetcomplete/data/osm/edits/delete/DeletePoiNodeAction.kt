@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
@@ -47,7 +48,7 @@ object DeletePoiNodeAction : ElementEditAction, IsActionRevertable {
         else {
             MapDataChanges(modifications = listOf(node.copy(
                 tags = emptyMap(),
-                timestampEdited = System.currentTimeMillis()
+                timestampEdited = nowAsEpochMilliseconds()
             )))
         }
     }

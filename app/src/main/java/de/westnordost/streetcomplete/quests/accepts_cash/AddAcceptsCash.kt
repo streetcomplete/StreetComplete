@@ -36,7 +36,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
             "electronics_repair", "key_cutter", "stonemason"
         )
         return """
-            nodes, ways, relations with
+            nodes, ways with
             (
               (shop and shop !~ no|vacant|mall)
               or amenity ~ ${amenities.joinToString("|")}
@@ -54,7 +54,10 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
     override val isReplaceShopEnabled = true
-    override val enabledInCountries = NoCountriesExcept("SE")
+    override val enabledInCountries = NoCountriesExcept(
+        "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
+        "SE"
+    )
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

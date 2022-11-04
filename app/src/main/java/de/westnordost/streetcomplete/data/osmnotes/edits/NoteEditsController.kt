@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 class NoteEditsController(
@@ -31,7 +31,7 @@ class NoteEditsController(
             action,
             text,
             imagePaths,
-            currentTimeMillis(),
+            nowAsEpochMilliseconds(),
             false,
             imagePaths.isNotEmpty(),
             track,

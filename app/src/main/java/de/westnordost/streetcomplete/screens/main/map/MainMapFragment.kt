@@ -109,11 +109,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
-        questPinsManager!!.isActive = pinMode == PinMode.QUESTS
+        questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
-        editHistoryPinsManager!!.isActive = pinMode == PinMode.EDITS
+        editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
         styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
@@ -273,16 +273,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
          */
         when (pinMode) {
             PinMode.QUESTS -> {
-                editHistoryPinsManager?.isActive = false
-                questPinsManager?.isActive = true
+                editHistoryPinsManager?.isVisible = false
+                questPinsManager?.isVisible = true
             }
             PinMode.EDITS -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = true
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = true
             }
             else -> {
-                questPinsManager?.isActive = false
-                editHistoryPinsManager?.isActive = false
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = false
             }
         }
     }

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
 
-    override val elementFilter = "nodes, ways, relations with tourism = information and !information"
+    override val elementFilter = "nodes, ways with tourism = information and !information"
     override val changesetComment = "Specify type of tourist informations"
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.ic_quest_information

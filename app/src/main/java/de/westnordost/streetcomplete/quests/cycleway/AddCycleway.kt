@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -22,7 +23,6 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.INVALID
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
@@ -126,14 +126,14 @@ class AddCycleway(
         *  years ago or have no known cycleway tags */
 
         val oldRoadsWithKnownCycleways = eligibleRoads.filter { way ->
-            val countryCode = mapData.getWayGeometry(way.id)?.center?.let { p ->
+            val countryInfo = mapData.getWayGeometry(way.id)?.center?.let { p ->
                 countryInfos.getByLocation(
                     countryBoundariesFuture.get(),
                     p.longitude,
                     p.latitude,
-                ).countryCode
+                )
             }
-            way.hasOldInvalidOrAmbiguousCyclewayTags(countryCode) == true
+            way.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo) == true
         }
 
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
@@ -361,19 +361,19 @@ class AddCycleway(
 
         private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 
-        private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryCode: String?): Boolean? {
+        private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInfo?): Boolean? {
             val sides = createCyclewaySides(tags, false)
             // has no cycleway tagging
             if (sides == null) return false
             // any cycleway tagging is not known: don't mess with that
             if (sides.any { it.isUnknown }) return false
             // has any invalid cycleway tags
-            if (sides.any { it == INVALID }) return true
+            if (sides.any { it.isInvalid }) return true
             // or it is older than x years
             if (olderThan4Years.matches(this)) return true
             // has any ambiguous cycleway tags
-            if (countryCode != null) {
-                if (sides.any { it.isAmbiguous(countryCode) }) return true
+            if (countryInfo != null) {
+                if (sides.any { it.isAmbiguous(countryInfo) }) return true
             } else {
                 if (sides.any { it == UNSPECIFIED_SHARED_LANE }) return true
                 // for this, a countryCode is necessary, thus return null if no country code is available

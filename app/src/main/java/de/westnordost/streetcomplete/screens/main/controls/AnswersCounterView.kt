@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.databinding.ViewAnswersCounterBinding
 
@@ -29,6 +30,10 @@ class AnswersCounterView @JvmOverloads constructor(
             field = value
             binding.progressView.isInvisible = !value
         }
+
+    var showLabel: Boolean
+        set(value) { binding.labelView.isGone = !value }
+        get() = binding.labelView.isGone
 
     fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
         if (this.uploadedCount < uploadedCount && animate) {

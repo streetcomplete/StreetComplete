@@ -5,10 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
 import org.junit.Test
-import java.time.LocalDate
 
 class SmoothnessAnswerKtTest {
 
@@ -32,7 +31,7 @@ class SmoothnessAnswerKtTest {
                 StringMapEntryModify("smoothness", "excellent", "excellent"),
                 StringMapEntryDelete("smoothness:date", "2000-10-10"),
                 StringMapEntryDelete("surface:grade", "1"),
-                StringMapEntryAdd("check_date:smoothness", LocalDate.now().toCheckDateString())
+                StringMapEntryAdd("check_date:smoothness", nowAsCheckDateString())
             ),
         )
     }

@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
+import kotlin.math.round
 import kotlin.random.Random
 
 /** Drawable that displays parking cars in the given orientation and position in the given size */
@@ -37,16 +38,19 @@ class StreetParkingDrawable(
     @Deprecated("Deprecated in Java")
     override fun getOpacity() = PixelFormat.TRANSLUCENT
 
-    override fun getIntrinsicWidth(): Int = (width * context.resources.displayMetrics.density).toInt()
-    override fun getIntrinsicHeight(): Int = (height * context.resources.displayMetrics.density).toInt()
+    override fun getIntrinsicWidth(): Int = round(width * context.resources.displayMetrics.density).toInt()
+    override fun getIntrinsicHeight(): Int = round(height * context.resources.displayMetrics.density).toInt()
 
     override fun draw(canvas: Canvas) {
         if (!isVisible) return
 
-        if (isUpsideDown) canvas.scale(1f, -1f, bounds.width() / 2f, bounds.height() / 2f)
+        if (isUpsideDown) {
+            val pivotY = bounds.height() / ceil(height / width / 2f)
+            canvas.scale(1f, -1f, bounds.width() / 2f, pivotY)
+        }
 
+        val height = bounds.height().toFloat() / (height / width) * 2f
         val width = bounds.width()
-        val height = width * 2
 
         val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
         val carWidth = 0.23f * width
@@ -56,7 +60,7 @@ class StreetParkingDrawable(
         val backgroundResId = getStreetDrawableResId(parkingOrientation, parkingPosition)
         val nyanResId = if (isApril1st()) R.drawable.car_nyan else null
 
-        for (y in 0..(ceil(1.0 * bounds.height() / height).toInt())) {
+        for (y in 0 until ceil(bounds.height() / height).toInt()) {
 
             // drawing the street background
             if (backgroundResId != null) {
@@ -83,7 +87,7 @@ class StreetParkingDrawable(
                 }
             }
 
-            canvas.translate(0f, height.toFloat())
+            canvas.translate(0f, height)
         }
     }
 }

@@ -42,7 +42,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
         /* Unfortunately, the filter above is not enough. In OSM, sidewalks may be mapped as
          * separate ways as well and it is not guaranteed that in this case, sidewalk = separate
          * (or foot = use_sidepath) is always tagged on the main road then. So, all roads should
-         * be excluded whose center is within of ~15 meters of a footway, to be on the safe side. */
+         * be excluded whose center is within several meters of a footway, to be on the safe side. */
 
         if (roadsWithMissingSidewalks.isNotEmpty()) {
 
@@ -75,11 +75,14 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
         return roadsWithMissingSidewalks + roadsWithInvalidSidewalkTags
     }
 
+    /* Calculate when footway is too far away from the road to be considered its sidewalk.
+       It is an estimate, and we deliberately err on the side of showing the quest too often. */
     private fun getMinDistanceToWays(tags: Map<String, String>): Float =
         (
             (estimateRoadwayWidth(tags) ?: guessRoadwayWidth(tags)) +
             (estimateParkingOffRoadWidth(tags) ?: 0f) +
-            (estimateCycleTrackWidth(tags) ?: 0f)
+            (estimateCycleTrackWidth(tags) ?: 0f) +
+            1.5f    // assumed sidewalk width
         ) / 2f +
         4f // + generous buffer for possible grass verge
 

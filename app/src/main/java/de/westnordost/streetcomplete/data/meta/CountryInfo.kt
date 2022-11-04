@@ -36,16 +36,19 @@ data class IncompleteCountryInfo(
     // sorted alphabetically for better overview
     val additionalStreetsignLanguages: List<String>? = null,
     val additionalValidHousenumberRegex: String? = null,
+    val advisoryCycleLaneStyle: String? = null,
     val advisorySpeedLimitSignStyle: String? = null,
     val atmOperators: List<String>? = null,
     val centerLineStyle: String? = null,
     val chargingStationOperators: List<String>? = null,
     val clothesContainerOperators: List<String>? = null,
     val edgeLineStyle: String? = null,
+    val exclusiveCycleLaneStyle: String? = null,
     val firstDayOfWorkweek: String? = null,
     val hasAdvisorySpeedLimitSign: Boolean? = null,
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
+    val hasAdvisoryCycleLane: Boolean? = null,
     val hasDailyAlternateSideParkingSign: Boolean? = null,
     val hasLivingStreet: Boolean? = null,
     val hasNoStandingSign: Boolean? = null,
@@ -64,6 +67,7 @@ data class IncompleteCountryInfo(
     val noStoppingSignStyle: String? = null,
     val officialLanguages: List<String>? = null,
     val orchardProduces: List<String>? = null,
+    val pictogramCycleLaneStyle: String? = null,
     val popularReligions: List<String>? = null,
     val popularSports: List<String>? = null,
     val postboxesHaveCollectionTimes: Boolean? = null,
@@ -88,8 +92,12 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.centerLineStyle }
     val edgeLineStyle: String
         get() = infos.firstNotNullOf { it.edgeLineStyle }
+    val exclusiveCycleLaneStyle: String
+        get() = infos.firstNotNullOf { it.exclusiveCycleLaneStyle }
     val firstDayOfWorkweek: String
         get() = infos.firstNotNullOf { it.firstDayOfWorkweek }
+    val hasAdvisoryCycleLane: Boolean
+        get() = infos.firstNotNullOf { it.hasAdvisoryCycleLane }
     val hasAdvisorySpeedLimitSign: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
     val hasBiWeeklyAlternateSideParkingSign: Boolean
@@ -118,6 +126,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.noStoppingSignStyle }
     val officialLanguages: List<String>
         get() = infos.firstNotNullOf { it.officialLanguages }
+    val pictogramCycleLaneStyle: String
+        get() = infos.firstNotNullOf { it.pictogramCycleLaneStyle }
     val popularReligions: List<String>
         get() = infos.firstNotNullOf { it.popularReligions }
     val postboxesHaveCollectionTimes: Boolean
@@ -142,6 +152,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOfOrNull { it.additionalStreetsignLanguages } ?: emptyList()
     val additionalValidHousenumberRegex: String?
         get() = infos.firstNotNullOfOrNull { it.additionalValidHousenumberRegex }
+    val advisoryCycleLaneStyle: String?
+        get() = infos.firstNotNullOfOrNull { it.advisoryCycleLaneStyle }
     val atmOperators: List<String>?
         get() = infos.firstNotNullOfOrNull { it.atmOperators }
     val chargingStationOperators: List<String>?

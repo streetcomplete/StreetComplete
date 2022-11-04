@@ -471,7 +471,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_powerPolesMaterial_metal">"Baja"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Saran batas kecepatan"</string>
-    <string name="quest_address_answer_house_name">"Nomor rumah tidak ada tapi ada namanya"</string>
     <string name="quest_address_house_name_label">"Nama rumah:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Jumlah lantai di atap"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Jumlah lantai (atap tidak dihitung)"</string>
@@ -846,9 +845,6 @@ Pisah sekarang?"</string>
     <string name="about_summary_current_version">"Versi sekarang: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Apa nomor referensi kotak pos ini?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Tak ada nomor referensi yang terlihat…"</string>
 
     <!-- Fuzzy -->
@@ -1071,7 +1067,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
-    <string name="quest_address_street_description">"Tekan jalan di mana ia berada di peta atau masukkan tanpa singkatan pada kolom di bawah:"</string>
     <string name="quest_recycling_type_cooking_oil">"Minyak Memasak"</string>
     <string name="quest_recycling_type_engine_oil">"Minyak Mesin"</string>
     <string name="link_photon_description">"Ekstensi tunggal untuk Nominatim, memiliki fitur pencarian fuzi dan cari-sembari-mengetik"</string>
@@ -1173,9 +1168,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Truk-truk tinggi tidak muat"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Ketuk jalan pada peta"</string>
     <string name="quest_crossing_type_marked">"Ditandai"</string>
     <string name="quest_parkingType_lane">"Parkir pada jalan"</string>
     <string name="quest_generic_answer_does_not_exist">"Ini tidak ada…"</string>
@@ -1269,7 +1261,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."
     <string name="quest_access_yes">"Masyarakat umum"</string>
     <string name="quest_access_customers">"Orang yang mengunjungi tempat tertentu (contoh, hanya pelanggan)"</string>
     <string name="quest_access_private">"Hanya individu yang memiliki izin"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Tak dikenal. Coba masukkan jenis tempat, seperti “toko roti” atau tinggalkan sebuah catatan."</string>
     <string name="pref_title_language_select">"Pilih bahasa"</string>
     <string name="language_default">"Default Sistem"</string>
     <string name="on_floor">"pada lantai %s"</string>

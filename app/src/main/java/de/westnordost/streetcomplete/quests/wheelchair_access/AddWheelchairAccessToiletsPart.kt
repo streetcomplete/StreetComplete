@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
          toilets = yes
          and name
          and access !~ no|private

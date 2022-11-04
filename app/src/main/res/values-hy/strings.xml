@@ -787,9 +787,6 @@
     <string name="quest_powerPolesMaterial_concrete">"Բետոն"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name">"Առանձնատուն չկա, բայց անուն…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Տան անվանումը."</string>
 
     <!-- Fuzzy -->
@@ -1528,9 +1525,6 @@
     <string name="about_summary_current_version">"Ընթացիկ տարբերակը %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Որն է այս փոստարկղի տեղեկատու համարը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Ոչ մի տեղեկանքի համար տեսանելի չէ…"</string>
 
     <!-- Fuzzy -->
@@ -1990,9 +1984,6 @@
     <string name="quest_address_street_place_name_label">"Տեղի անվանումը:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_street_description">"Հպեք այն ճանապարհը, որը պատկանում է քարտեզի վրա կամ մուտքագրեք այն առանց ներքեւի դաշտում առանց կրճատումների."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cooking_oil">"Յուղ"</string>
 
     <!-- Fuzzy -->
@@ -2290,9 +2281,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Բարձր բեռնատարները չեն տեղավորվում"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Թակել ճանապարհը քարտեզի վրա"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Նշանավոր"</string>
@@ -2793,9 +2781,6 @@
     <string name="quest_postboxCollectionTimes_resurvey_title">"Այս փոստարկղի հավաքածուները դեռ ճիշտ են:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_shop_gone_replaced_answer_error2">"Չճանաչված չէ: Փորձեք մուտք գործել տեղ, օրինակ, «Հացաբուլկեղեն»: Հակառակ դեպքում հաշվի առեք նոտա թողնելը:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_type_title">"Ինչ տեսակի հեծանիվ պատնեշ է սա:"</string>
 
     <!-- Fuzzy -->
@@ -2880,9 +2865,6 @@
     <string name="street_parking_conditional_restrictions_hint">"Եթե ​​հնարավոր է ամենեւին կայանել կամ կանգ առնել այստեղ, նախ պատասխանեք, թե ինչպես են թույլատրվում այստեղ կայանել: Ինչ սահմանափակումներ են կիրառվում հենց ավելի ուշ:
 
 Այլապես, կարող եք թողնել գրառում (լուսանկարով):"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name_and_housenumber">"Թե տան համարը, եւ անուն …"</string>
 
     <!-- Fuzzy -->
     <string name="quest_address_house_number_label">"Տան համարը."</string>

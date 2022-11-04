@@ -85,11 +85,11 @@ class StyleableOverlayManager(
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
+        overlay = null
         selectedOverlaySource.removeListener(overlayListener)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        hide()
         viewLifecycleScope.cancel()
     }
 

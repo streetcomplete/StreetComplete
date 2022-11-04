@@ -17,9 +17,6 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 
 @Serializable sealed class StreetParking
 
-@Serializable object StreetParkingProhibited : StreetParking()
-@Serializable object StreetStandingProhibited : StreetParking()
-@Serializable object StreetStoppingProhibited : StreetParking()
 @Serializable object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
 @Serializable object UnknownStreetParking : StreetParking()
@@ -50,7 +47,7 @@ fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
     return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
 }
 
-private val StreetParking.isValid: Boolean get() = when(this) {
+private val StreetParking.isValid: Boolean get() = when (this) {
     IncompleteStreetParking, UnknownStreetParking -> false
     else -> true
 }
@@ -81,33 +78,18 @@ private val ParkingPosition.estimatedWidthOnRoadFactor: Float get() = when (this
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     val currentParking = createStreetParkingSides(tags)
 
-    // was set before and changed: may be incorrect now - remove subtags!
-    if (currentParking?.left != null && currentParking.left != left ||
-        currentParking?.right != null && currentParking.right != right) {
-        /* This includes removing any parking:condition:*, which is a bit peculiar because most
-         * values are not even set in this function. But on the other hand, when the physical layout
-         * of the parking changes (=redesign of the street layout and furniture), the condition may
-         * very well change too, so better delete it to be on the safe side. (It is better to have
-         * no data than to have wrong data.) */
-        val parkingLaneSubtagging = Regex("^parking:(lane|condition):.*")
-        for (key in tags.keys) {
-            if (key.matches(parkingLaneSubtagging)) {
-                tags.remove(key)
-            }
-        }
+    // first clear previous
+    val keyToRemove = Regex("parking:lane:(both|left|right)(:(parallel|diagonal|perpendicular))?")
+    for (key in tags.keys) {
+        if (key.matches(keyToRemove)) tags.remove(key)
     }
 
+    val r = right ?: currentParking?.right
+    val l = left ?: currentParking?.left
+
     // parking:lane:<left/right/both>
-    val laneRight = if (right != null) {
-        right.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
-    } else {
-        null
-    }
-    val laneLeft = if (left != null) {
-        left.toOsmLaneValue() ?: throw IllegalArgumentException("Attempting to tag incomplete parking lane")
-    } else {
-        null
-    }
+    val laneRight = r?.toOsmLaneValue()
+    val laneLeft =  l?.toOsmLaneValue()
 
     if (laneLeft == laneRight) {
         if (laneLeft != null) tags["parking:lane:both"] = laneLeft
@@ -116,20 +98,9 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
         if (laneRight != null) tags["parking:lane:right"] = laneRight
     }
 
-    // parking:condition:<left/right/both>
-    val conditionRight = right?.toOsmConditionValue()
-    val conditionLeft = left?.toOsmConditionValue()
-
-    if (conditionLeft == conditionRight) {
-        if (conditionLeft != null) tags["parking:condition:both"] = conditionLeft
-    } else {
-        if (conditionLeft != null) tags["parking:condition:left"] = conditionLeft
-        if (conditionRight != null) tags["parking:condition:right"] = conditionRight
-    }
-
     // parking:lane:<left/right/both>:<parallel/diagonal/perpendicular>
-    val positionRight = (right as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
-    val positionLeft = (left as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+    val positionRight = (r as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
+    val positionLeft = (l as? StreetParkingPositionAndOrientation)?.position?.toOsmValue()
 
     if (laneLeft == laneRight && positionLeft == positionRight) {
         if (positionLeft != null) tags["parking:lane:both:$laneLeft"] = positionLeft
@@ -144,18 +115,11 @@ fun LeftAndRightStreetParking.applyTo(tags: Tags) {
 }
 
 /** get the OSM value for the parking:lane key */
-private fun StreetParking.toOsmLaneValue(): String? = when (this) {
+private fun StreetParking.toOsmLaneValue(): String = when (this) {
     is StreetParkingPositionAndOrientation -> orientation.toOsmValue()
-    NoStreetParking, StreetParkingProhibited, StreetStandingProhibited, StreetStoppingProhibited -> "no"
+    NoStreetParking -> "no"
     StreetParkingSeparate -> "separate"
-    UnknownStreetParking, IncompleteStreetParking -> null
-}
-
-private fun StreetParking.toOsmConditionValue(): String? = when (this) {
-    StreetParkingProhibited -> "no_parking"
-    StreetStandingProhibited -> "no_standing"
-    StreetStoppingProhibited -> "no_stopping"
-    else -> null
+    UnknownStreetParking, IncompleteStreetParking -> throw IllegalArgumentException("Attempting to tag invalid parking lane")
 }
 
 private fun ParkingPosition.toOsmValue() = when (this) {

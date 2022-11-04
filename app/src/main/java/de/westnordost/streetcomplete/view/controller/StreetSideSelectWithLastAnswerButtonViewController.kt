@@ -26,8 +26,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
     private val prefs: SharedPreferences,
     private val lastSelectionPreferencePrefix: String,
-    private val serializeLastSelection: (item: StreetSideDisplayItem<I>, isRight: Boolean) -> String,
-    private val deserializeLastSelection: (str: String, isRight: Boolean) -> StreetSideDisplayItem<I>
+    private val serializeLastSelection: (item: I) -> String,
+    private val deserializeLastSelection: (str: String) -> I,
+    private val asStreetSideItem: (item: I, isRight: Boolean) -> StreetSideDisplayItem<I>
 ) {
     /** Callback when the user makes a selection */
     var onInputChanged: (() -> Unit)? = null
@@ -36,8 +37,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     var onClickSide: ((isRight: Boolean) -> Unit)? = null
 
     /** Selection displayed in the last answer button and that is applied when pressed */
-    private val lastSelectionLeft: StreetSideDisplayItem<I>?
-    private val lastSelectionRight: StreetSideDisplayItem<I>?
+    private val lastSelectionLeft: I?
+    private val lastSelectionRight: I?
+    private val lastSelectionOneSide: I?
 
     /** Angle in degrees by which the street side select puzzle should be rotated from North */
     var offsetPuzzleRotation: Float = 0f
@@ -99,8 +101,15 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { deserializeLastSelection(it, false) }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { deserializeLastSelection(it, true) }
+        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { str ->
+            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        }
+        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { str ->
+            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        }
+        lastSelectionOneSide = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { str ->
+            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
@@ -171,40 +180,70 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val r = if (isUpsideDown) left else right
 
         prefs.edit {
-            putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it, false) })
-            putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it, true) })
+            if (showSides == Sides.BOTH) {
+                putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
+                putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
+            } else {
+                (l ?: r)?.let { putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
+            }
         }
     }
 
     private fun updateLastSelectionButton() {
         updateLastSelectionButtonVisibility()
-        if (showSides != Sides.RIGHT) {
-            lastSelectionLeft?.let { lastAnswerButtonBinding.leftSideImageView.setImage(it.icon) }
+        val left: I?
+        val right: I?
+        when (showSides) {
+            Sides.BOTH -> {
+                left = lastSelectionLeft
+                right = lastSelectionRight
+            }
+            Sides.LEFT -> {
+                left = lastSelectionOneSide
+                right = null
+            }
+            Sides.RIGHT -> {
+                left = null
+                right = lastSelectionOneSide
+            }
         }
-        if (showSides != Sides.LEFT) {
-            lastSelectionRight?.let { lastAnswerButtonBinding.rightSideImageView.setImage(it.icon) }
-        }
+        lastAnswerButtonBinding.leftSideImageView.setImage(left?.let { asStreetSideItem(it, false).icon })
+        lastAnswerButtonBinding.rightSideImageView.setImage(right?.let { asStreetSideItem(it, true).icon })
     }
 
     private fun updateLastSelectionButtonVisibility() {
         lastAnswerButtonBinding.root.isGone =
             when (showSides) {
                 Sides.BOTH -> lastSelectionLeft == null && lastSelectionRight == null
-                Sides.LEFT -> lastSelectionLeft == null
-                Sides.RIGHT -> lastSelectionRight == null
+                Sides.LEFT, Sides.RIGHT -> lastSelectionOneSide == null
             } ||
             left != null ||
             right != null ||
-            showSides != Sides.BOTH ||
             !puzzleView.isEnabled
     }
 
     private fun applyLastSelection() {
         val isUpsideDown = isStreetDisplayedUpsideDown()
-        val l = if (isUpsideDown) lastSelectionRight else lastSelectionLeft
-        val r = if (isUpsideDown) lastSelectionLeft else lastSelectionRight
-        if (l != null && showSides != Sides.RIGHT) replacePuzzleSide(l, false)
-        if (r != null && showSides != Sides.LEFT) replacePuzzleSide(r, true)
+
+        val l: I?
+        val r: I?
+        when (showSides) {
+            Sides.BOTH -> {
+                l = if (isUpsideDown) lastSelectionRight else lastSelectionLeft
+                r = if (isUpsideDown) lastSelectionLeft else lastSelectionRight
+            }
+            Sides.LEFT -> {
+                l = lastSelectionOneSide
+                r = null
+            }
+            Sides.RIGHT -> {
+                r = lastSelectionOneSide
+                l = null
+            }
+        }
+
+        if (l != null && showSides != Sides.RIGHT) replacePuzzleSide(asStreetSideItem(l, false), false)
+        if (r != null && showSides != Sides.LEFT) replacePuzzleSide(asStreetSideItem(r, true), true)
     }
 
     private fun isStreetDisplayedUpsideDown(): Boolean =

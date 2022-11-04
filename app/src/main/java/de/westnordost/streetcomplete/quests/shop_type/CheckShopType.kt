@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.osm.updateCheckDate
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
 
     private val disusedShopsFilter by lazy { """
-        nodes, ways, relations with (
+        nodes, ways with (
           shop = vacant
           or ${isShopExpressionFragment("disused")}
         ) and (

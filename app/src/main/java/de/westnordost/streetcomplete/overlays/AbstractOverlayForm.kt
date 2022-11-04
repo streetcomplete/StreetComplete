@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Point
 import android.location.Location
 import android.os.Bundle
@@ -60,6 +61,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.util.Locale
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
@@ -91,6 +93,14 @@ abstract class AbstractOverlayForm :
         val latLon = geometry.center
         return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
+
+    private val englishResources: Resources
+        get() {
+            val conf = Configuration(resources.configuration)
+            conf.setLocale(Locale.ENGLISH)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
+            return localizedContext.resources
+        }
 
     // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
@@ -348,7 +358,7 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun composeNote(element: Element) {
-        val overlayTitle = requireContext().getString(overlay.title)
+        val overlayTitle = englishResources.getString(overlay.title)
         val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }

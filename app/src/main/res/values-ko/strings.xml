@@ -472,7 +472,6 @@
     <string name="quest_powerPolesMaterial_metal">"철"</string>
     <string name="quest_powerPolesMaterial_concrete">"콘크리트"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"권장 속도만 있음…"</string>
-    <string name="quest_address_answer_house_name">"건물번호 대신 이름만 있음…"</string>
     <string name="quest_address_house_name_label">"건물 명칭:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"지붕 층수"</string>
 
@@ -1001,9 +1000,6 @@
     <string name="about_summary_current_version">"현재 버전: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"이 우체통의 관리 번호가 무엇인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"참조 번호가 보이지 않음…"</string>
 
     <!-- Fuzzy -->
@@ -1225,7 +1221,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
     <string name="quest_address_street_place_name_label">"장소명:"</string>
-    <string name="quest_address_street_description">"건물 번호가 속한 도로를 지도에서 선택하거나 도로명을 아래에 직접 풀어서 입력하세요:"</string>
     <string name="quest_recycling_type_cooking_oil">"조리용 기름"</string>
     <string name="quest_recycling_type_engine_oil">"엔진오일"</string>
     <string name="link_photon_description">"오픈스트리트맵 지물 탐색 엔진 Nominatim의 단독 실행 버전으로, 퍼지 검색과 입력중 검색을 지원합니다"</string>
@@ -1369,9 +1364,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭이 통과할 수 없음"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"추가하려면 도로를 탭하세요"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"횡단보도가 그려져 있음"</string>
@@ -1614,7 +1606,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"이 우체통의 수거 시각이 아직도 맞나요?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"인식할 수 없습니다. 장소의 유형(예: '빵집')을 입력해 주세요. 불가능하다면 참고를 남겨 주세요."</string>
     <string name="quest_bicycle_barrier_type_title">"이 자전거 방벽은 어떻게 생겼나요?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"대각선 방향"</string>
     <string name="quest_barrier_bicycle_type_tilted">"좁은 통로, 위로 갈수록 좁아짐"</string>
@@ -1661,7 +1652,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="street_parking_conditional_restrictions_hint">"만약 어떤 형태로든 이곳에 주정차가 가능하다면, 그런 상황에서 어떻게 주정차할 수 있는지를 선택하세요. 어떤 제한이 적용되는지는 나중에 추가할 수 있습니다.
 
 아니면, (사진과 함께) 참고를 남길 수도 있습니다."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"건물번호와 이름 둘 다 있음…"</string>
     <string name="quest_address_house_number_label">"건물번호:"</string>
 
     <!-- Fuzzy -->

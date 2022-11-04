@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notesModule
 import de.westnordost.streetcomplete.data.overlays.overlayModule
 import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
+import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
@@ -48,6 +49,7 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -58,7 +60,6 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
-import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit
 
 class StreetCompleteApplication : Application() {
@@ -112,7 +113,8 @@ class StreetCompleteApplication : Application() {
                 userModule,
                 arModule,
                 overlaysModule,
-                overlayModule
+                overlayModule,
+                urlConfigModule
             )
         }
 
@@ -131,7 +133,7 @@ class StreetCompleteApplication : Application() {
 
         applicationScope.launch {
             preloader.preload()
-            editHistoryController.deleteSyncedOlderThan(currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
+            editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
         }
 
         enqueuePeriodicCleanupWork()

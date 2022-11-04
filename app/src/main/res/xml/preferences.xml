@@ -19,7 +19,12 @@
 
     <PreferenceCategory
         android:key="display"
-        android:title="@string/pref_category_display">
+        android:title="@string/pref_category_quests_overlays">
+
+        <Preference
+            android:key="quest_presets"
+            android:title="@string/action_manage_presets"
+            android:widgetLayout="@layout/widget_image_next" />
 
         <Preference
             android:key="quests"
@@ -41,6 +46,12 @@
             android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
             android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
             android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/pref_category_display">
 
         <SwitchPreference
             android:key="display.keepScreenOn"

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import java.lang.System.currentTimeMillis
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import java.util.concurrent.CopyOnWriteArrayList
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
@@ -88,7 +88,7 @@ class EditHistoryController(
         getAll().firstOrNull { it.isUndoable }
 
     override fun getAll(): List<Edit> {
-        val maxAge = currentTimeMillis() - MAX_UNDO_HISTORY_AGE
+        val maxAge = nowAsEpochMilliseconds() - MAX_UNDO_HISTORY_AGE
 
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }

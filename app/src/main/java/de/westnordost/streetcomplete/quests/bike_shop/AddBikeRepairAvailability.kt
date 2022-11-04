@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways, relations with shop = bicycle
+        nodes, ways with shop = bicycle
         and (
             !service:bicycle:repair
             or service:bicycle:repair older today -6 years

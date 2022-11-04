@@ -368,7 +368,6 @@
     <string name="quest_powerPolesMaterial_metal">"Стомана"</string>
     <string name="quest_powerPolesMaterial_concrete">"Бетон"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Само препоръчително ограничение на скоростта…"</string>
-    <string name="quest_address_answer_house_name">"Няма номер, но има име"</string>
     <string name="quest_address_house_name_label">"Име на къща:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Етажи на покрива"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обикновени етажи (без покрива)"</string>
@@ -733,9 +732,6 @@
     <string name="about_summary_current_version">"Текуща версия: %s"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxRef_title">"Какъв номер има тази пощенска кутия?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Не се вижда номер…"</string>
 
     <!-- Fuzzy -->
@@ -950,7 +946,6 @@
     <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Няма определена улица"</string>
     <string name="quest_address_street_place_name_label">"Име на място:"</string>
-    <string name="quest_address_street_description">"Докоснете пътя на картата, към който е адреса или изпишете името му без съкращения по-долу:"</string>
     <string name="quest_recycling_type_cooking_oil">"Готварско олио"</string>
     <string name="quest_recycling_type_engine_oil">"Машинно масло"</string>
     <string name="link_photon_description">"Отделно разширение за Nominatim включващо удобно търсене на имена."</string>
@@ -1090,9 +1085,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могат да минат"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_street_hint">"Докоснете пътя"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Маркирано пресичане"</string>
@@ -1350,7 +1342,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Времената за събиране още ли са актуални за тази пощенска кутия?"</string>
-    <string name="quest_shop_gone_replaced_answer_error2">"Неразпознат тип. Опитайте да въведете типа, напр. \"bakery\". Или оставете бележка."</string>
     <string name="quest_bicycle_barrier_type_title">"Какъв тип бариера за велосипеди е това?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Диагонална на пътя"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Стеснение на пътя (по посока на движението)"</string>
@@ -1397,7 +1388,6 @@
     <string name="street_parking_conditional_restrictions_hint">"Ако е възможно спирането или паркирането тук, първият въпрос е относно начина на паркиране, след това е въпросът относно ограниченията.
 
 Разбира се, можете да оставите бележка придружена със снимка."</string>
-    <string name="quest_address_answer_house_name_and_housenumber">"Номер на къща и име на къща…"</string>
     <string name="quest_address_house_number_label">"Номер на къща:"</string>
 
     <!-- Fuzzy -->

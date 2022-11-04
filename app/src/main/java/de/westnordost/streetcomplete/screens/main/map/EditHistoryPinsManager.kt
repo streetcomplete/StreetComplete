@@ -34,15 +34,17 @@ class EditHistoryPinsManager(
     private val resources: Resources
 ) : DefaultLifecycleObserver {
 
-    /** Switch active-ness of edit history pins layer */
-    var isActive: Boolean = false
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+
+    /** Switch visibility of edit history pins layer */
+    var isVisible: Boolean = false
         set(value) {
             if (field == value) return
             field = value
-            if (value) start() else stop()
+            if (value) show() else hide()
         }
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+    private var isStarted: Boolean = false
 
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { updatePins() }
@@ -51,17 +53,29 @@ class EditHistoryPinsManager(
         override fun onInvalidated() { updatePins() }
     }
 
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+        isStarted = true
+        show()
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+        isStarted = false
+        hide()
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
-        stop()
         viewLifecycleScope.cancel()
     }
 
-    private fun start() {
+    private fun show() {
+        if (!isStarted || !isVisible) return
         updatePins()
         editHistorySource.addListener(editHistoryListener)
     }
 
-    private fun stop() {
+    private fun hide() {
         viewLifecycleScope.coroutineContext.cancelChildren()
         viewLifecycleScope.launch { pinsMapComponent.clear() }
         editHistorySource.removeListener(editHistoryListener)
@@ -72,7 +86,7 @@ class EditHistoryPinsManager(
 
     private fun updatePins() {
         viewLifecycleScope.launch {
-            if (this@EditHistoryPinsManager.isActive) {
+            if (this@EditHistoryPinsManager.isVisible) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
                 val pins = createEditPins(edits)
                 pinsMapComponent.set(pins)

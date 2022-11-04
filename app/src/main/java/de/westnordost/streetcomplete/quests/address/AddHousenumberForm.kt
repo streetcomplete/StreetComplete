@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameInputViewCo
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
+import de.westnordost.streetcomplete.osm.buildingSynonyms
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
@@ -83,7 +84,8 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
 
     private fun onNoHouseNumber() {
         val buildingValue = element.tags["building"]!!
-        val buildingType = BuildingType.getByTag("building", buildingValue)?.asItem()
+        val transformedBuildingValue = buildingSynonyms[buildingValue] ?: buildingValue
+        val buildingType = BuildingType.getByTag("building", transformedBuildingValue)?.asItem()
         if (buildingType != null) {
             showNoHouseNumberDialog(buildingType)
         } else {

@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.asItem
 import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() {
@@ -41,9 +40,7 @@ class AddSidewalkForm : AStreetSideSelectForm<Sidewalk, LeftAndRightSidewalk>() 
         applyAnswer(LeftAndRightSidewalk(streetSideSelect.left?.value, streetSideSelect.right?.value))
     }
 
-    override fun serialize(item: StreetSideDisplayItem<Sidewalk>, isRight: Boolean) =
-        item.value.name
-
-    override fun deserialize(str: String, isRight: Boolean) =
-        Sidewalk.valueOf(str).asStreetSideItem()!!
+    override fun serialize(item: Sidewalk) = item.name
+    override fun deserialize(str: String) = Sidewalk.valueOf(str)
+    override fun asStreetSideItem(item: Sidewalk, isRight: Boolean) = item.asStreetSideItem()!!
 }
