@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.overlays.surface.PathSurfaceOverlay
 import de.westnordost.streetcomplete.overlays.surface.SidewalkSurfaceOverlay
 import de.westnordost.streetcomplete.overlays.tracktype.TracktypeOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
+import de.westnordost.streetcomplete.overlays.surface.MagicPathSurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -28,5 +29,6 @@ val overlaysModule = module {
         7 to SidewalkSurfaceOverlay(),
         8 to UniversalSurfaceOverlay(),
         9 to TracktypeOverlay(),
+        10 to MagicPathSurfaceOverlay(),
     )) }
 }
