@@ -11,28 +11,35 @@ object IsIndoorsAnswer : SurfaceOrIsStepsAnswer
 
 data class SurfaceAnswer(val value: Surface, val note: String? = null) : SurfaceOrIsStepsAnswer
 
-fun SurfaceAnswer.applyTo(tags: Tags, key: String) {
+fun SurfaceAnswer.applyTo(tags: Tags, prefix: String? = null) {
     val osmValue = value.osmValue
+    val pre = if (prefix != null) "$prefix:" else ""
+    val key = "${pre}surface"
     val previousOsmValue = tags[key]
 
-    val replacesTracktype = tags.containsKey("tracktype")
-        && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
+    var replacesTracktype = false
+    if (prefix == null) {
+        replacesTracktype = tags.containsKey("tracktype")
+            && isSurfaceAndTracktypeMismatching(osmValue, tags["tracktype"]!!)
 
-    if (replacesTracktype) {
-        tags.remove("tracktype")
-        tags.removeCheckDatesForKey("tracktype")
+        if (replacesTracktype) {
+            tags.remove("tracktype")
+            tags.removeCheckDatesForKey("tracktype")
+        }
+    }
+
+    // remove smoothness tag if surface was changed
+    // or surface can be treated as outdated
+    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
+        tags.remove("$key:grade")
+        tags.remove("${pre}smoothness")
+        tags.remove("${pre}smoothness:date")
+        tags.removeCheckDatesForKey("${pre}smoothness")
     }
 
     // update surface + check date
     tags.updateWithCheckDate(key, osmValue)
-    // remove smoothness tag if surface was changed
-    // or surface can be treated as outdated
-    if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
-        tags.remove("surface:grade")
-        tags.remove("smoothness")
-        tags.remove("smoothness:date")
-        tags.removeCheckDatesForKey("smoothness")
-    }
+
     // add/remove note - used to describe generic surfaces
     if (note != null) {
         tags["$key:note"] = note

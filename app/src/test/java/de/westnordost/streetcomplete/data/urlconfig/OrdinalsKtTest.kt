@@ -13,13 +13,13 @@ internal class OrdinalsKtTest {
         )
 
         assertArrayEquals(
-            booleanArrayOf(0,1),
+            booleanArrayOf(0, 1),
             Ordinals(setOf(1)).toBooleanArray()
         )
 
         assertArrayEquals(
-            booleanArrayOf(1,1,0,0,1,0,0,0,0,0,1),
-            Ordinals(setOf(0,1,4,10)).toBooleanArray()
+            booleanArrayOf(1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+            Ordinals(setOf(0, 1, 4, 10)).toBooleanArray()
         )
     }
 
@@ -31,12 +31,12 @@ internal class OrdinalsKtTest {
 
         assertEquals(
             Ordinals(setOf(1)),
-            booleanArrayOf(0,1).toOrdinals()
+            booleanArrayOf(0, 1).toOrdinals()
         )
 
         assertEquals(
-            Ordinals(setOf(0,1,4,10)),
-            booleanArrayOf(1,1,0,0,1,0,0,0,0,0,1).toOrdinals()
+            Ordinals(setOf(0, 1, 4, 10)),
+            booleanArrayOf(1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1).toOrdinals()
         )
     }
 
@@ -48,12 +48,12 @@ internal class OrdinalsKtTest {
 
         assertEquals(
             4.toBigInteger(),
-            booleanArrayOf(0,0,1).toBigInteger()
+            booleanArrayOf(0, 0, 1).toBigInteger()
         )
 
         assertEquals(
             4.toBigInteger(),
-            booleanArrayOf(0,0,1,0).toBigInteger()
+            booleanArrayOf(0, 0, 1, 0).toBigInteger()
         )
     }
 
@@ -64,12 +64,12 @@ internal class OrdinalsKtTest {
         )
 
         assertArrayEquals(
-            booleanArrayOf(0,0,1),
+            booleanArrayOf(0, 0, 1),
             4.toBigInteger().toBooleanArray()
         )
 
         assertArrayEquals(
-            booleanArrayOf(0,0,1,0,1),
+            booleanArrayOf(0, 0, 1, 0, 1),
             20.toBigInteger().toBooleanArray()
         )
     }

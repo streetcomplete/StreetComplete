@@ -56,4 +56,3 @@ class RoadNameSuggestionsSource(
         private val ALL_ROADS_AND_PATHS = ALL_ROADS + ALL_PATHS
     }
 }
-

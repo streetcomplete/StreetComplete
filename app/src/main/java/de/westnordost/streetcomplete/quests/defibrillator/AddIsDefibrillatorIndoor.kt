@@ -16,7 +16,7 @@ class AddIsDefibrillatorIndoor : OsmFilterQuestType<Boolean>() {
         nodes with
          emergency = defibrillator
          and access !~ private|no
-         and !indoor
+         and !indoor and !location
     """
     override val changesetComment = "Determine whether defibrillators are inside buildings"
     override val wikiLink = "Key:indoor"

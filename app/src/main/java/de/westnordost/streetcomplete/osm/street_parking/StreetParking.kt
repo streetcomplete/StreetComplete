@@ -47,7 +47,7 @@ fun LeftAndRightStreetParking.validOrNullValues(): LeftAndRightStreetParking {
     return LeftAndRightStreetParking(left?.takeIf { it.isValid }, right?.takeIf { it.isValid })
 }
 
-private val StreetParking.isValid: Boolean get() = when(this) {
+private val StreetParking.isValid: Boolean get() = when (this) {
     IncompleteStreetParking, UnknownStreetParking -> false
     else -> true
 }

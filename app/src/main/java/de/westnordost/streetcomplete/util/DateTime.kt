@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.util
 
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
-import java.text.DateFormat
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
+import java.text.DateFormat
 import java.util.Locale
 
 fun timeOfDayToString(locale: Locale, minutes: Int): String {

@@ -60,7 +60,7 @@ class DatesActiveDrawable(
         }
 
         // grid + months
-        for (i in 0 .. datesActiveRange) {
+        for (i in 0..datesActiveRange) {
             val date = time.toLocalDate()
 
             val y = (height - 1) - (i + dayOffset) % height

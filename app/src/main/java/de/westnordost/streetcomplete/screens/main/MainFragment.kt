@@ -119,7 +119,6 @@ import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.screens.settings.DisplaySettingsFragment
-import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary

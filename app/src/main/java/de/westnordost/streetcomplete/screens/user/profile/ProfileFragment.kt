@@ -290,8 +290,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun updateLocalRankText(
-        statistics: CountryStatistics?, previousStatistics: CountryStatistics?,
-        min: Int, container: View, label: TextView, circle: TextView
+        statistics: CountryStatistics?,
+        previousStatistics: CountryStatistics?,
+        min: Int,
+        container: View,
+        label: TextView,
+        circle: TextView
     ) {
         val rank = statistics?.rank ?: 0
         val shouldShow = statistics != null && rank > 0 && statistics.count > min

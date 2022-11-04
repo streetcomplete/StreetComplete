@@ -22,8 +22,8 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.createLocalizedNames
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -78,7 +78,6 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             }
         }
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

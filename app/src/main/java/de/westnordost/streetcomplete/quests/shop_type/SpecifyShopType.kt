@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.removeCheckDates
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
-        nodes, ways, relations with (
+        nodes, ways with (
          shop = yes
          and !man_made
          and !historic

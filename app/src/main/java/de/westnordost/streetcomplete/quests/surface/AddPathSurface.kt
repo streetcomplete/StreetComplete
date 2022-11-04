@@ -47,7 +47,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {
             is SurfaceAnswer -> {
-                answer.applyTo(tags, "surface")
+                answer.applyTo(tags)
             }
             is IsActuallyStepsAnswer -> {
                 tags["highway"] = "steps"

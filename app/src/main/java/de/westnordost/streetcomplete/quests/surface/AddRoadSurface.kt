@@ -53,7 +53,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddRoadSurfaceForm(prefs.getBoolean(questPrefix(prefs) + ALLOW_GENERIC_ROAD, false))
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        answer.applyTo(tags, "surface")
+        answer.applyTo(tags)
     }
 
     override val hasQuestSettings = true
