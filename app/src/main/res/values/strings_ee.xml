@@ -314,19 +314,15 @@
     <string name="hide_button">Hide</string>
     <string name="tag_editor_last_edited">Last edited: %s</string>
     <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
-<!--    <string name="quest_edit_tags_title">Edit tags (%s)</string>
-    <string name="quest_edit_tags_save">Save</string> -->
-    <string name="tutorial_info_fork_title">Warning</string>
-    <string name="tutorial_info_fork_message">This modified version of StreetComplete is intended for users with more than basic knowledge about OSM.
-It gives you more control, but also more responsibility.\n
+    <string name="tutorial_info_fork_message">StreetComplete expert edition\n
+This modified version of StreetComplete is intended for users with more than basic knowledge about OSM. It gives you more control, but also more responsibility.\n
 This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.
-Quests added in this version may not be answerable in all cases and are thus disabled by default. Please hide them when in this case, and do not spam notes.\n
-By default, this version is configured to behave very similar to normal StreetComplete.\n\n
+Quests added in this version may not be answerable in all cases and are thus disabled by default. Please hide them in case they cannot be answered, and do not spam notes.\n
+By default, this version is configured to behave very similar to normal StreetComplete.\n
 You have access to your StreetComplete user statistics, but any quests solved using this version will not be counted towards them.</string>
     <string name="fork_about_title_repository">Expert edition project home</string>
     <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
     <string name="enqueue_download">Start after current search is done</string>
-<!--    <string name="create_poi_enter_tags">Enter tags</string> -->
     <string name="create_poi">Add POI</string>
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>

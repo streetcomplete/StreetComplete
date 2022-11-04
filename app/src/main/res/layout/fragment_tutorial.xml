@@ -328,6 +328,12 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/indicator_dot_default"/>
 
+                <ImageView
+                    android:id="@+id/dot4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/indicator_dot_default"/>
+
             </LinearLayout>
 
             <Button
@@ -355,6 +361,22 @@
             android:scaleY="1"
             app:layout_constraintRight_toRightOf="@id/mapImageView"
             app:layout_constraintBottom_toBottomOf="@id/mapImageView"/>
+
+        <TextView
+            android:id="@+id/tutorialStepFork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:scrollbars="vertical"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@id/bottomPart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAppearance="@style/TextAppearance.BigBody"
+            android:text="@string/tutorial_info_fork_message"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

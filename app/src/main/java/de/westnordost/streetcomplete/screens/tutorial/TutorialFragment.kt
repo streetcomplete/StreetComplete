@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
@@ -63,15 +64,8 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
                 step2Transition()
             }
             2 -> {
-                AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.tutorial_info_fork_title)
-                    .setMessage(R.string.tutorial_info_fork_message)
-                    .setCancelable(false)
-                    .setPositiveButton(android.R.string.ok) { _,_ ->
-                        currentPage = 3
-                        enableNextButton()
-                    }
-                    .show()
+                currentPage = 3
+                step3Transition()
             }
             MAX_PAGE_INDEX -> {
                 listener?.onTutorialFinished()
@@ -181,7 +175,6 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         val ctx = requireContext()
 
         updateIndicatorDots()
-        binding.nextButton.setText(R.string.letsgo)
 
         // 2nd text fade out
         val tutorialStepSolvingQuests = binding.tutorialStepSolvingQuests
@@ -226,8 +219,57 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         enableNextButton()
     }
 
+    private fun step3Transition() = viewLifecycleScope.launch {
+        val ctx = requireContext()
+
+        updateIndicatorDots()
+        binding.nextButton.setText(R.string.letsgo)
+        // todo: effectively i just want to show R.string.tutorial_info_fork_message
+
+        val tutorialStepStaySafe = binding.tutorialStepStaySafe
+        tutorialStepStaySafe.animate()
+            .setDuration(400)
+            .alpha(0f)
+            .translationY(ctx.pxToDp(100))
+            .withEndAction { tutorialStepStaySafe.visibility = View.GONE }
+            .start()
+
+        binding.mapImageView.animate()
+            .setDuration(400)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .scaleY(0f).scaleX(0f)
+            .withEndAction { binding.mapImageView.visibility = View.GONE }
+            .start()
+
+        binding.checkmarkView.animate()
+            .setDuration(400)
+            .alpha(0f)
+            .withEndAction { binding.checkmarkView.visibility = View.GONE }
+            .start()
+
+        binding.tutorialGpsButton.animate()
+            .setDuration(400)
+            .alpha(0f)
+            .withEndAction { binding.tutorialGpsButton.visibility = View.GONE }
+            .start()
+
+        binding.tutorialStepFork.translationY = ctx.pxToDp(-100)
+
+        delay(400)
+
+        binding.tutorialStepFork.animate()
+            .withStartAction { binding.tutorialStepFork.visibility = View.VISIBLE }
+            .setDuration(300)
+            .alpha(1f)
+            .translationY(0f)
+            .start()
+        binding.tutorialStepFork.movementMethod = ScrollingMovementMethod()
+
+        enableNextButton()
+    }
+
     private fun updateIndicatorDots() {
-        listOf(binding.dot1, binding.dot2, binding.dot3).forEachIndexed { index, dot ->
+        listOf(binding.dot1, binding.dot2, binding.dot3, binding.dot4).forEachIndexed { index, dot ->
             dot.setImageResource(
                 if (currentPage == index) R.drawable.indicator_dot_selected
                 else R.drawable.indicator_dot_default
