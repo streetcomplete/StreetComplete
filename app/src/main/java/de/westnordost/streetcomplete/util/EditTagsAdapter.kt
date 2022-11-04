@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
@@ -11,8 +12,10 @@ import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.tree.SearchAdapter
@@ -28,6 +31,7 @@ class EditTagsAdapter(
     private val dataSet: MutableMap<String, String>,
     private val featureDictionary: FeatureDictionary,
     context: Context,
+    private val prefs: SharedPreferences,
     private val onDataChanged: () -> Unit
 ) :
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
@@ -43,31 +47,48 @@ class EditTagsAdapter(
                 keySuggestionsForFeatureId.putAll(Json.decodeFromString(keySuggestions))
                 valueSuggestionsByKey.putAll(Json.decodeFromString(valueSuggestions))
             } catch (e: Exception) {
-                Log.w("TagEditor", "failed to read and parse suggestions: ${e.message}")
+                Log.w("EditTagsAdapter", "failed to read and parse suggestions: ${e.message}")
             }
         }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val keyView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.keyText).apply {
-            setOnFocusChangeListener { _, focused -> if (focused)
-                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+            var lastFeature: Feature? = null
+            val lastSuggestions = linkedSetOf<String>()
+            setOnFocusChangeListener { _, focused ->
+                val text = text.toString()
+                if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+                else if (text !in lastSuggestions && text.isNotBlank()) {
+                    // store most recently used keys on focus loss (user typed answer instead of tapping suggestion)
+                    val keys = linkedSetOf(text)
+                    val pref = "EditTagsAdapter_${lastFeature?.id}_keys"
+                    keys.addAll(prefs.getString(pref, "")!!.split("§§"))
+                    prefs.edit { putString(pref, keys.take(10).joinToString("§§")) }
+                }
             }
             onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
-                valueView.requestFocus() // move to value view if key is selected from suggestions
+                // store most recently used keys
+                val keys = linkedSetOf(text.toString())
+                val pref = "EditTagsAdapter_${lastFeature?.id}_keys"
+                keys.addAll(prefs.getString(pref, "")!!.split("§§"))
+                prefs.edit { putString(pref, keys.take(10).joinToString("§§")) }
+                // move to value view if key is selected from suggestions
+                valueView.requestFocus()
             }
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList() // don't search if the field is not focused
-                val feature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
-                    ?: return@SearchAdapter defaultKeyList
-                val s = getSuggestions(feature.id, dataSet).filter { it.startsWith(search) }
+                lastFeature = featureDictionary.byTags(dataSet).isSuggestion(false).find().firstOrNull()
+                val feature = lastFeature ?: return@SearchAdapter defaultKeyList
+                lastSuggestions.clear()
+                lastSuggestions.addAll(getKeySuggestions(feature.id, dataSet).filter { it.startsWith(search) })
                 val h = TypedValue()
                 context.theme.resolveAttribute(android.R.attr.listPreferredItemHeight, h, false)
                 // limit the height of suggestions, because when all are shown the ones on top are hard to reach
                 val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
                 else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
-                s
+                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * lastSuggestions.size).toInt()
+                lastSuggestions.toList()
             }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
@@ -89,17 +110,37 @@ class EditTagsAdapter(
         }
 
         val valueView: AutoCompleteTextView = view.findViewById<AutoCompleteTextView>(R.id.valueText).apply {
-            setOnFocusChangeListener { _, focused -> if (focused)
-                setText(text.toString()) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+            val lastSuggestions = mutableListOf<String>()
+            setOnFocusChangeListener { _, focused ->
+                val text = text.toString()
+                if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+                else if (text !in lastSuggestions && text.isNotBlank() && keyView.text.toString().isNotBlank()) {
+                    // store most recently used values on focus loss (user typed answer instead of tapping suggestion)
+                    val values = linkedSetOf(text)
+                    val pref = "EditTagsAdapter_${keyView.text}_values"
+                    values.addAll(prefs.getString(pref, "")!!.split("§§"))
+                    prefs.edit { putString(pref, values.take(10).joinToString("§§")) }
+                }
+            }
+            onItemClickListener = AdapterView.OnItemClickListener { _, _, _, _ ->
+                // store most recently used values
+                val values = linkedSetOf(text.toString())
+                val pref = "EditTagsAdapter_${keyView.text}_values"
+                values.addAll(prefs.getString(pref, "")!!.split("§§"))
+                prefs.edit { putString(pref, values.take(10).joinToString("§§")) }
             }
             setAdapter(SearchAdapter(context, { search ->
                 if (!isFocused) return@SearchAdapter emptyList()
                 val key = displaySet[absoluteAdapterPosition].first
-                val s = valueSuggestionsByKey[key].orEmpty().filter { it.startsWith(search) }
+                val suggestions = prefs.getString("EditTagsAdapter_${keyView.text}_values", "")!!
+                    .split("§§").filter { it.isNotEmpty() }.toMutableSet()
+                suggestions.addAll(valueSuggestionsByKey[key].orEmpty())
+                lastSuggestions.clear()
+                lastSuggestions.addAll(suggestions.filter { it.startsWith(search) })
                 val minus = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) rootWindowInsets.systemWindowInsetBottom
                 else 0
-                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * s.size).toInt()
-                s
+                dropDownHeight = (suggestionMaxHeight - minus).coerceAtMost(suggestionHeight * lastSuggestions.size).toInt()
+                lastSuggestions
             }, { it }))
             doAfterTextChanged {
                 val position = absoluteAdapterPosition
@@ -139,10 +180,10 @@ class EditTagsAdapter(
 
     override fun getItemId(position: Int) = position.toLong()
 
-    private fun getSuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
+    private fun getKeySuggestions(featureId: String, tags: Map<String, String>): Collection<String> {
         val fields = getMainSuggestions(featureId)
         val moreFields = getSecondarySuggestions(featureId)
-        val suggestions = mutableSetOf<String>()
+        val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
         fields.forEach {
             if (it.startsWith('{'))
                 suggestions.addAll(getMainSuggestions(it.substringAfter('{').substringBefore('}')))

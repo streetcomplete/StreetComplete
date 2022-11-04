@@ -243,12 +243,8 @@ class OsmQuestController internal constructor(
         }
     }
 
-    suspend fun createNonPoiQuestsForElement(element: Element, geometry: ElementGeometry): List<OsmQuest> {
-        val t = nowAsEpochMilliseconds()
-        val a = createQuestsForElementDeferred(element, geometry, allQuestTypes.filter { it.dotColor == "no" }).awaitAll().filterNotNull()
-        Log.i("test_", "creating quests: ${nowAsEpochMilliseconds()-t}")
-        return a
-    }
+    suspend fun createNonPoiQuestsForElement(element: Element, geometry: ElementGeometry): List<OsmQuest> =
+        createQuestsForElementDeferred(element, geometry, allQuestTypes.filter { it.dotColor == "no" }).awaitAll().filterNotNull()
 
     private fun getObsoleteQuestKeys(
         questsNow: Collection<OsmQuest>,

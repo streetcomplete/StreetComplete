@@ -155,7 +155,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
-        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, featureDictionaryFuture.get(), requireContext()) {
+        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, featureDictionaryFuture.get(), requireContext(), prefs) {
             viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(1000) }
             showOk()
         }.apply { setHasStableIds(true) }
