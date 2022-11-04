@@ -583,7 +583,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="urlconfig_apply_message">Apply and select preset %1$s?</string>
     <string name="urlconfig_apply_message_overwrite">Note: Your preset with the same name will be overwritten!</string>
     <string name="urlconfig_switch_hint">You can switch presets in the settings at any time.</string>
-    <string name="urlconfig_scan_qr_code_again">After installing the app, scan the QR code again to apply the preset.</string>
+    <string name="urlconfig_scan_qr_code_again2">"After installing the app, scan the QR code again or click &lt;a href=\"%s\">this link&lt;/a&gt; to apply the preset."</string>
 
     <!-- Quests -->
     <!-- sorted alphabetically by title -->

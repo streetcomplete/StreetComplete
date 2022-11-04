@@ -47,6 +47,6 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddPitchSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        answer.applyTo(tags, "surface")
+        answer.applyTo(tags)
     }
 }

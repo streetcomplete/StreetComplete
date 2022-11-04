@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.annotation.LayoutRes
@@ -28,7 +29,7 @@ class EditTextDialog(
         editText = view.findViewById(R.id.editText)
         editText.setText(text)
         editText.doAfterTextChanged {
-            getButton(BUTTON_POSITIVE)?.isEnabled = editText.nonBlankTextOrNull != null
+            updateEditButtonEnablement()
         }
 
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
@@ -38,5 +39,14 @@ class EditTextDialog(
         setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel)) { _, _ ->
             cancel()
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        updateEditButtonEnablement()
+    }
+
+    private fun updateEditButtonEnablement() {
+        getButton(BUTTON_POSITIVE)?.isEnabled = editText.nonBlankTextOrNull != null
     }
 }

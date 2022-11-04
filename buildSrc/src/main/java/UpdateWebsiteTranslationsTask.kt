@@ -32,7 +32,7 @@ open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
         "title_whats_new",
         "action_about2",
         "about_title_get_involved",
-        "urlconfig_scan_qr_code_again"
+        "urlconfig_scan_qr_code_again2"
     )
 
     @TaskAction fun run() {
