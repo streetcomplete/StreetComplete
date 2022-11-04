@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
@@ -40,12 +42,23 @@ class PathSurfaceOverlay : Overlay {
         val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
         return mapData
            .filter( """ways, relations with
-               highway ~ ${(ALL_PATHS).joinToString("|")}
-               and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
-               and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
-               and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
-               and (segregated = yes or (!cycleway:surface and !footway:surface))
-               """)
+               (
+                   highway ~ ${(ALL_PATHS).joinToString("|")}
+                   and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
+                   and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
+                   and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
+                   and (segregated = yes or (!cycleway:surface and !footway:surface))
+                   and !sidewalk:both:surface and !sidewalk:right:surface and !sidewalk:left:surface and !sidewalk:surface
+               )
+               or
+               (
+                   highway ~ ${(ALL_ROADS).joinToString("|")}
+                   and (sidewalk=both or sidewalk=left or sidewalk=right or sidewalk:left=yes or sidewalk:right=yes)
+                   and (!sidewalk:both:surface or sidewalk:both:surface ~ ${handledSurfaces.joinToString("|") })
+                   and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
+                   and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
+               )
+               """) // TODO: review all supported tags and skip some of them in either clause
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
     }
 
@@ -57,9 +70,9 @@ class PathSurfaceOverlay : Overlay {
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
         // note that sidewalk surface keys such as
-        // sidewalk:both:surface sidewalk:right:surface sidewalk:left:surface sidewalk:surface
-        // are not listed here so such ways will be skipped, also of they are paths
+        // are skipped for path query
         // some people tag combined footway-cycleway as cycleway with sidewalk...
+        "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
         // supported here
         "footway:surface", "cycleway:surface",
@@ -78,11 +91,21 @@ class PathSurfaceOverlay : Overlay {
     )
 
     override fun createForm(element: Element?) =
-        if (element != null && element.tags["highway"] in ALL_PATHS) UniversalSurfaceOverlayForm()
-        else null
+        if (element != null) {
+            if (element.tags["highway"] in ALL_PATHS) UniversalSurfaceOverlayForm()
+            else if (element.tags["highway"] in ALL_ROADS) SidewalkSurfaceOverlayForm()
+            else null
+        } else null
 }
 
 private fun getStyle(element: Element): Style {
+    if (element.tags["highway"] in ALL_PATHS) {
+        return getStyleForStandalonePath(element)
+    } else {
+        return getStyleForSidewalkAsProperty(element)
+    }
+}
+private fun getStyleForStandalonePath(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
@@ -141,8 +164,36 @@ private fun getStyle(element: Element): Style {
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 
     // label for debugging
-    //val label = element.tags[keyOfDominatingSurface]
-    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    // val label = element.tags[keyOfDominatingSurface]
+    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+}
+
+private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
+    val sidewalkSides = createSidewalkSides(element.tags)
+    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
+    if (sidewalkSides == null || isPrivateOnFoot(element)) {
+        return PolylineStyle(StrokeStyle(Color.INVISIBLE))
+    }
+
+    val leftSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:left:surface"]
+    val rightSurfaceString = element.tags["sidewalk:both:surface"] ?: element.tags["sidewalk:right:surface"]
+    val leftSurfaceObject = Surface.values().find { it.osmValue == leftSurfaceString }
+    val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
+    val leftColor = if (sidewalkSides.left != Sidewalk.YES) {
+        Color.INVISIBLE
+    } else {
+        leftSurfaceObject.color
+    }
+    val rightColor = if (sidewalkSides.right != Sidewalk.YES) {
+        Color.INVISIBLE
+    } else {
+        rightSurfaceObject.color
+    }
+    return PolylineStyle(
+        stroke = null,
+        strokeLeft = StrokeStyle(leftColor),
+        strokeRight = StrokeStyle(rightColor)
+    )
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
