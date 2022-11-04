@@ -52,6 +52,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -121,7 +122,6 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 .filter { it.elementType == element.type && it.elementId == element.id && it.type.dotColor == "no" }
         }
         _binding = EditTagsBinding.inflate(inflater, container, false)
-        inflater.inflate(R.layout.edit_tags, binding.root)
         return binding.root
     }
 
@@ -212,33 +212,31 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         parentFragmentManager.commit { // in parent fragment, because this handles the callbacks
             add(id, f, null) // add the quest instead of replacing tag editor, so that changes aren't lost
             addToBackStack(null)
-            // but hide tag editor while quest is shown
-            binding.editTags.visibility = View.GONE
-            binding.questsGrid.visibility = View.GONE
-            binding.okButton.visibility = View.GONE
-            binding.lastEditDate.visibility = View.GONE
         }
+        // hide tag editor while quest is shown
+        binding.editTags.visibility = View.GONE
+        binding.questsGrid.visibility = View.GONE
+        binding.okButton.visibility = View.GONE
+        binding.lastEditDate.visibility = View.GONE
 
-        viewLifecycleScope.launch(Dispatchers.IO) {
+        viewLifecycleScope.launch {
             // this thread waits while the quest form is showing
             // quest sets changes when answering, but does nothing else
             // when the quest form is closed without answer, changes are set to empty (in main fragment)
             changes = null
-            while (changes == null) { delay(50) }
+            withContext(Dispatchers.IO) { while (changes == null) { delay(50) } }
             val ch = changes
-            ch?.applyTo(newTags) // apply before showOk() (though it works also when applying after, maybe onClickClose stuff gets executed in a different thread
-            requireActivity().runOnUiThread {
-                binding.editTags.visibility = View.VISIBLE
-                binding.questsGrid.visibility = View.VISIBLE
-                binding.lastEditDate.visibility = View.VISIBLE
-                showOk()
-                f.onClickClose {
-                    parentFragmentManager.popBackStack()
-                    changes = null
-                }
+            binding.editTags.visibility = View.VISIBLE
+            binding.questsGrid.visibility = View.VISIBLE
+            binding.lastEditDate.visibility = View.VISIBLE
+            f.onClickClose {
+                parentFragmentManager.popBackStack()
+                changes = null
             }
-            if (ch?.isEmpty() != false) // usually changes is set to null after this check, but better be safe
+            if (ch?.isEmpty() != false) // usually changes is set to null after this check, but better be safe as the order is not strict
                 return@launch
+            ch.applyTo(newTags) // apply before showOk()
+            showOk()
             tagList.clear()
             tagList.addAll(newTags.toList())
             tagList.sortBy { it.first }
@@ -246,13 +244,11 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
                 tagList.remove(emptyEntry)
                 tagList.add(emptyEntry)
             }
-            requireActivity().runOnUiThread {
-                // data set changes include tags that were changed manually before opening the quest, so it really may be everything different!
-                binding.editTags.adapter?.notifyDataSetChanged()
-                // remove the quest immediately, because answering again may crash
-                binding.questsGrid.removeView(binding.questsGrid.findViewWithTag<ImageView>(quest.type.name))
-            }
-            updateQuests()
+            // data set changes include tags that were changed manually before opening the quest, so it really may be everything different!
+            binding.editTags.adapter?.notifyDataSetChanged()
+            // remove the quest immediately, because answering again may crash
+            binding.questsGrid.removeView(binding.questsGrid.findViewWithTag<ImageView>(quest.type.name))
+            withContext(Dispatchers.IO) { updateQuests() }
         }
     }
 
