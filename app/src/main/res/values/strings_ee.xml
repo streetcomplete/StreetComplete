@@ -25,6 +25,8 @@
     <string name="pref_save_gpx">Get GPX notes and attached photos and tracks</string>
     <string name="pref_save_gpx_not_found">No GPX notes found</string>
     <string name="pref_save_gpx_error">Error saving GPX notes</string>
+    <string name="pref_create_external_title">Allow creating external quests</string>
+    <string name="pref_create_external_summary">…as alternative to leaving a note. This can be used as locally stored note visible on the map. Note that you’ll need to enable external quests.</string>
 
     <!-- display settings -->
     <string name="pref_screen_display">Display</string>
@@ -337,5 +339,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="quest_monitor_channel_name_found">Nearby Quest Found</string>
     <string name="quest_monitor_passive">Monitoring locations</string>
     <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
+    <string name="create_external_button">Create external quest</string>
+    <string name="create_external_title_message">Enter message to be shown</string>
 
 </resources>

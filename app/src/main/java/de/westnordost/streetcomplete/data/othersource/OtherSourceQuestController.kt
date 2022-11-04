@@ -82,6 +82,10 @@ class OtherSourceQuestController(
 
     fun invalidate() = questListeners.forEach { it.onInvalidate() }
 
+    /** to be called if quests have been added outside a download, so they can be shown immediately */
+    fun addQuests(quests: Collection<OtherSourceQuest>) =
+        questListeners.forEach { it.onUpdated(addedQuests = quests) }
+
     // hiding / unhiding
 
     // tempHide is not really hiding, and is also used so pins actually disappear when quest is solved

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.external
 
 import android.content.Context
-import android.util.Log
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuest
+import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.math.contains
@@ -29,13 +29,17 @@ class ExternalList(context: Context) : KoinComponent {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val questController: OtherSourceQuestController by inject()
 
     fun reload() = load(entriesById)
 
     fun load(m: MutableMap<String, ExternalEntry>) {
         val file = File(path, FILENAME_EXTERNAL)
         m.clear()
-        if (!file.exists()) return
+        if (!file.exists()) {
+            file.parentFile?.mkdirs()
+            file.createNewFile()
+        }
         m.putAll(file.readLines().asReversed().mapNotNull { line ->
             val rawText = line.substringAfter(',').substringAfter(',')
             val text = if (rawText.endsWith(",solved"))
@@ -49,6 +53,16 @@ class ExternalList(context: Context) : KoinComponent {
                     it.solved = rawText.endsWith(",solved")
                 }
         })
+    }
+
+    fun addEntry(element: Element, message: String) {
+        val id = "${element.type},${element.id}".getId() ?: return
+        if (entriesById.containsKey(id)) return
+        val entry = ExternalEntry(id).apply { text = message }
+        entriesById[id] = entry
+        val file = File(path, FILENAME_EXTERNAL)
+        file.appendText("\n$id,$message")
+        getQuest(id)?.let { questController.addQuests(listOf(it)) }
     }
 
     fun getEntry(id: String) = entriesById[id]

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
@@ -37,6 +38,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.replaceShop
+import de.westnordost.streetcomplete.quests.external.ExternalList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
@@ -63,6 +65,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private val noteEditsController: NoteEditsController by inject()
     private val osmQuestController: OsmQuestController by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val externalList: ExternalList by inject()
 
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
 
@@ -203,12 +206,27 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun onClickCantSay() {
-        context?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_leave_new_note_title)
-            .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
-            .show()
+        context?.let {
+            val b = AlertDialog.Builder(it)
+                .setTitle(R.string.quest_leave_new_note_title)
+                .setMessage(R.string.quest_leave_new_note_description)
+                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
+                .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
+            if (prefs.getBoolean(Prefs.CREATE_EXTERNAL_QUESTS, false))
+                b.setNeutralButton(R.string.create_external_button) { _, _ ->
+                    val text = EditText(it)
+                    text.setPadding(30, 10, 30, 10)
+                    AlertDialog.Builder(it)
+                        .setTitle(R.string.create_external_title_message)
+                        .setView(text)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            externalList.addEntry(element, text.text.toString())
+                            listener?.onQuestHidden(questKey) // abuse this to close the quest form
+                        }
+                        .show()
+                }
+            b.show()
         }
     }
 
