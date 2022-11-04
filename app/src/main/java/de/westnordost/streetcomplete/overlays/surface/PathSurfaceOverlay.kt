@@ -55,16 +55,12 @@ class PathSurfaceOverlay : Overlay {
         }
     }
     // https://taginfo.openstreetmap.org/search?q=surface
-    // Maybe should be supported?
-    // some people tag combined footway-cycleway as cycleway with sidewalk...
-    // sidewalk:both:surface
-    // sidewalk:right:surface
-    // sidewalk:left:surface
-    // sidewalk:surface
-    // TODO: decide
-
-    // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
+        // note that sidewalk surface keys such as
+        // sidewalk:both:surface sidewalk:right:surface sidewalk:left:surface sidewalk:surface
+        // are not listed here so such ways will be skipped, also of they are paths
+        // some people tag combined footway-cycleway as cycleway with sidewalk...
+
         // supported here
         "footway:surface", "cycleway:surface",
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
