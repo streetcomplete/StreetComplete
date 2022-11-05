@@ -60,7 +60,7 @@ class LitStatusKtTest {
         )
     }
 
-    @Test fun `apply does not overwrite unspported value if 'yes'`() {
+    @Test fun `apply does not overwrite unsupported value if 'yes'`() {
         verifyAnswer(
             mapOf("lit" to "limited"),
             YES,
@@ -73,7 +73,7 @@ class LitStatusKtTest {
         )
     }
 
-    @Test fun `apply does overwrite unspported value if not 'yes'`() {
+    @Test fun `apply does overwrite unsupported value if not 'yes'`() {
         verifyAnswer(
             mapOf("lit" to "limited"),
             NO,
