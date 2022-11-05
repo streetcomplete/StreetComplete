@@ -36,12 +36,12 @@ import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import kotlinx.coroutines.launch
-import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import kotlin.coroutines.resume
 
 class ShopsOverlayForm : AbstractOverlayForm() {
 
@@ -203,8 +203,8 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         val dlg = AlertDialog.Builder(requireContext())
             .setTitle(R.string.confirmation_replace_shop_title)
             .setMessage(R.string.confirmation_replace_shop_message)
-            .setPositiveButton(R.string.confirmation_replace_shop_yes) { _,_ -> cont.resume(true) }
-            .setNegativeButton(R.string.confirmation_replace_shop_no) { _,_ -> cont.resume(false) }
+            .setPositiveButton(R.string.confirmation_replace_shop_yes) { _, _ -> cont.resume(true) }
+            .setNegativeButton(R.string.confirmation_replace_shop_no) { _, _ -> cont.resume(false) }
             .create()
         cont.invokeOnCancellation { dlg.cancel() }
         dlg.show()
@@ -216,9 +216,12 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 }
 
 private suspend fun createEditAction(
-    element: Element?, geometry: ElementGeometry,
-    newNames: List<LocalizedName>, previousNames: List<LocalizedName>,
-    newFeature: Feature, previousFeature: Feature?,
+    element: Element?,
+    geometry: ElementGeometry,
+    newNames: List<LocalizedName>,
+    previousNames: List<LocalizedName>,
+    newFeature: Feature,
+    previousFeature: Feature?,
     confirmReplaceShop: suspend () -> Boolean
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())

@@ -185,8 +185,6 @@ class AddFootwayPartSurfaceTest {
         )
     }
 
-
-
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }

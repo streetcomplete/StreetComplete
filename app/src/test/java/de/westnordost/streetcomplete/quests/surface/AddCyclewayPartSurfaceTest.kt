@@ -44,7 +44,6 @@ class AddCyclewayPartSurfaceTest {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "sidewalk" to "yes")
     }
 
-
     @Test fun `applicable to cycleway with unspecific surface without note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
         assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved")
@@ -184,8 +183,6 @@ class AddCyclewayPartSurfaceTest {
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete")
         )
     }
-
-
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
