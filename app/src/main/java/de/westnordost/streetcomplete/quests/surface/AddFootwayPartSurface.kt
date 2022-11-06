@@ -48,6 +48,7 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
             } else {
                 tags.remove("surface")
             }
+            tags.remove("smoothness")   // we've replaced or removed the surface above, so smoothness is likely wrong
         }
     }
 }
