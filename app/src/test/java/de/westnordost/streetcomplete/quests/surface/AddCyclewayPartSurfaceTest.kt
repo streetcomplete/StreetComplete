@@ -112,7 +112,11 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `smoothness tag removed when cycleway surface changes`() {
         questType.verifyAnswer(
-            mapOf("cycleway:surface" to "asphalt", "smoothness" to "excellent"),
+            mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "asphalt",
+                "smoothness" to "excellent"
+            ),
             SurfaceAnswer(Surface.PAVING_STONES),
             StringMapEntryDelete("smoothness", "excellent"),
             StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
