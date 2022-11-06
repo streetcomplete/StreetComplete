@@ -114,7 +114,7 @@ class AddFootwayPartSurfaceTest {
         questType.verifyAnswer(
             mapOf(
                 "footway:surface" to "asphalt",
-                "cycleway:surface" to "asphalt",
+                "cycleway:surface" to "gravel",
                 "smoothness" to "excellent"
             ),
             SurfaceAnswer(Surface.PAVING_STONES),
