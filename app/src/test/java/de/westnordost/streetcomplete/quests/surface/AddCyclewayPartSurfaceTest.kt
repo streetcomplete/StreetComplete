@@ -170,7 +170,7 @@ class AddCyclewayPartSurfaceTest {
             mapOf(
                 "surface" to "paving_stones",
                 "cycleway:surface" to "paving_stones",
-                "footway:surface" to "paving_stones",
+                "footway:surface" to "gravel",
             ),
             SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
