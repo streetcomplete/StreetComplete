@@ -41,13 +41,19 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
         answer.applyTo(tags, "cycleway")
         if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
             if (tags["footway:surface"] == tags["cycleway:surface"]) {
-                tags["surface"] = tags["cycleway:surface"]!!
+                if (tags["surface"] != tags["cycleway:surface"]!!) {
+                    tags["surface"] = tags["cycleway:surface"]!!
+                    tags.remove("smoothness")
+                }
             } else if (tags["footway:surface"] in ANYTHING_FULLY_PAVED && tags["cycleway:surface"] in ANYTHING_FULLY_PAVED) {
-                tags["surface"] = "paved"
+                if (tags["surface"] != "paved") {
+                    tags["surface"] = "paved"
+                    tags.remove("smoothness")
+                }
             } else {
                 tags.remove("surface")
+                tags.remove("smoothness")
             }
-            tags.remove("smoothness")   // we've replaced or removed the surface above, so smoothness is likely wrong
         }
     }
 }
