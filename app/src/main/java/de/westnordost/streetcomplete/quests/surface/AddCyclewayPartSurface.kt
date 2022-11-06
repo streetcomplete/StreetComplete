@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -41,6 +42,8 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
         if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
             if (tags["footway:surface"] == tags["cycleway:surface"]) {
                 tags["surface"] = tags["cycleway:surface"]!!
+            } else if (tags["footway:surface"] in ANYTHING_FULLY_PAVED && tags["cycleway:surface"] in ANYTHING_FULLY_PAVED) {
+                tags["surface"] = "paved"
             } else {
                 tags.remove("surface")
             }

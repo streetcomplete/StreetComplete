@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -42,6 +43,8 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
         if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
             if (tags["footway:surface"] == tags["cycleway:surface"]) {
                 tags["surface"] = tags["footway:surface"]!!
+            } else if (tags["footway:surface"] in ANYTHING_FULLY_PAVED && tags["cycleway:surface"] in ANYTHING_FULLY_PAVED) {
+                tags["surface"] = "paved"
             } else {
                 tags.remove("surface")
             }

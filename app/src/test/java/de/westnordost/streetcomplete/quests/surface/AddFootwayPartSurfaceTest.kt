@@ -151,6 +151,19 @@ class AddFootwayPartSurfaceTest {
         )
     }
 
+    @Test fun `surface changes to generic paved when similar for footway and cycleway`() {
+        questType.verifyAnswer(
+            mapOf(
+                "surface" to "paving_stones",
+                "footway:surface" to "paving_stones",
+                "cycleway:surface" to "asphalt",
+            ),
+            SurfaceAnswer(Surface.CONCRETE),
+            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
+            StringMapEntryModify("surface", "paving_stones", "paved")
+        )
+    }
+
     @Test fun `surface removed when different for footway and cycleway`() {
         questType.verifyAnswer(
             mapOf(
