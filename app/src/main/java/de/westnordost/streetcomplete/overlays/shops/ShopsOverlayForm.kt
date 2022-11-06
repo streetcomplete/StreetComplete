@@ -226,40 +226,42 @@ private suspend fun createEditAction(
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-    /* Do not replace shop if:
-    *  + only a name was added (name was missing before; user wouldn't be able to answer if
-    *    the place changed or not anyway, so rather keep previous information)
-    *  + only the feature was changed but the non-empty name did not change (if it was a
-    *    different shop now, it would also have a different name)
-    *
-    *  Ask whether it is still the same shop if:
-    *  + the name was changed
-    *  + the feature was changed and the name was empty before
-    *
-    *  Always replace shop if:
-    *  + the feature now or previous feature is a brand feature (i.e. it also overwrites the name)
-    */
-    val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
-    val hasChangedNames = previousNames != newNames
-    val hasChangedFeature = newFeature != previousFeature
-    val isFeatureWithName = newFeature.addTags?.get("name") != null
-    val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
+    if (element != null) {
+        /* Do not replace shop if:
+           + only a name was added (name was missing before; user wouldn't be able to answer if
+             the place changed or not anyway, so rather keep previous information)
+           + only the feature was changed but the non-empty name did not change (if it was a
+             different shop now, it would also have a different name)
 
-    val doReplaceShop =
-        if (hasAddedNames && !hasChangedFeature
-            || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
-        ) false
-        else if (isFeatureWithName || wasFeatureWithName) true
-        else confirmReplaceShop()
+           Ask whether it is still the same shop if:
+           + the name was changed
+           + the feature was changed and the name was empty before
 
-    if (doReplaceShop) {
-        tagChanges.replaceShop(newFeature.addTags)
-    } else {
-        for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-            tagChanges.remove(key)
-        }
-        for ((key, value) in newFeature.addTags) {
-            tagChanges[key] = value
+           Always replace shop if:
+           + the feature now or previous feature is a brand feature (i.e. it also overwrites the name)
+         */
+        val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
+        val hasChangedNames = previousNames != newNames
+        val hasChangedFeature = newFeature != previousFeature
+        val isFeatureWithName = newFeature.addTags?.get("name") != null
+        val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
+
+        val doReplaceShop =
+            if (hasAddedNames && !hasChangedFeature
+                || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
+            ) false
+            else if (isFeatureWithName || wasFeatureWithName) true
+            else confirmReplaceShop()
+
+        if (doReplaceShop) {
+            tagChanges.replaceShop(newFeature.addTags)
+        } else {
+            for ((key, value) in previousFeature?.removeTags.orEmpty()) {
+                tagChanges.remove(key)
+            }
+            for ((key, value) in newFeature.addTags) {
+                tagChanges[key] = value
+            }
         }
     }
 
