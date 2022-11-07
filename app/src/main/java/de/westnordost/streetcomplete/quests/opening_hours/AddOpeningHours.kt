@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
+import android.content.Context
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -16,6 +17,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpening
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours(
@@ -138,6 +140,7 @@ class AddOpeningHours(
 
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
+        if (prefs.getBoolean(RESURVEY_ALL_OPENING_HOURS, false)) return true
         val tags = element.tags
         // no opening_hours yet -> new survey
         val oh = tags["opening_hours"] ?: return true
@@ -181,4 +184,11 @@ class AddOpeningHours(
 
     private fun hasFeatureName(tags: Map<String, String>): Boolean =
         featureDictionaryFuture.get().byTags(tags).isSuggestion(false).find().isNotEmpty()
+
+    override val hasQuestSettings: Boolean = true
+
+    override fun getQuestSettingsDialog(context: Context) = booleanQuestSettingsDialog(context, prefs, RESURVEY_ALL_OPENING_HOURS, R.string.quest_settings_resurvey_all_opening_hours, R.string.quest_settings_resurvey_all_opening_hours_yes, R.string.quest_settings_resurvey_all_opening_hours_no)
+
 }
+
+private const val RESURVEY_ALL_OPENING_HOURS = "qs_AddOpeningHours_resurvey_all"

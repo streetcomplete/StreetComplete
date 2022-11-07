@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data
 
-import android.database.sqlite.SQLiteOpenHelper
+import io.requery.android.database.sqlite.SQLiteOpenHelper
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.After
 import org.junit.Assert

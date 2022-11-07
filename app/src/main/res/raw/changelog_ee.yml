@@ -1,3 +1,8 @@
+50.0_ee: |
+  <ul>
+  <li>Optionally resurvey opening hours StreetComplete doesn't understand</li>
+  </ul>
+
 v49.0_ee: |
   <ul>
   <li>Fix crash and quest filter bug in nearby quests monitor (#399)</li>

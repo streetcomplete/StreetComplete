@@ -163,6 +163,9 @@
     <string name="quest_settings_osmose_level_high_and_normal">High and normal priority</string>
     <string name="quest_settings_osmose_level_all">All</string>
     <string name="quest_settings_fixme_title">Select fixme values to ignore</string>
+    <string name="quest_settings_resurvey_all_opening_hours">Resurvey all opening hours, including values not understood by StreetComplete? If you choose yes, in some cases existing opening hours may not be shown when asking for resurvey.</string>
+    <string name="quest_settings_resurvey_all_opening_hours_yes">All</string>
+    <string name="quest_settings_resurvey_all_opening_hours_no">Default</string>
 
 
     <!-- quick settings -->
