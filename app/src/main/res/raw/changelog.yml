@@ -4,12 +4,15 @@ v49.0: |
   <h3>My Profile screen</h3>
   <p>The My Profile screen is now more interesting and engaging! New graphics, new animations, weekly ranks and a calendar of your recent activity! (#2946, #3230, #4572, #4569, #3414, #4203), by @matkoniecz</p>
   <h3>Enhanced Overlays</h3>
+  <ul>
   <li>Shop overlay: Disable 3D buildings for easier placement of new shops (#4563)</li>
   <li>Shop overlay: Allow input of names in different languages (in countries where that's common)</li>
+  <li>Shop overlay: On edit, in doubt ask whether it is still the same place or not (#4567)</li>
   <li>Shop overlay, Bus stop names, place names...: Remember user's choice about which primary language to use for multilingual names (#4257)</li>
   <li>Address overlay: Explicitly tag a building as having no address if the user stated this explicitly (#4583)</li>
   <li>Parking overlay: Fix images would not show in countries where they drive on the left side (#4590, #4600), by @tapetis</li>
   <li>Other small enhancements and fixes (#4559)</li>
+  </ul>
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
@@ -18,24 +21,8 @@ v49.0: |
   <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
   <li>Do not ask for housenumbers in Latvia (#4597)</li>
   <li>Fire hydrant diameter: Allow quick selection of previous values (#4369), by @FloEdelmann</li>
-  <li>Other small enhancements and fixes (#4560, #4513, #4574, #4601, #4223, #4592...), thanks @matkoniecz</li>
-  </ul>
-
-v49.0-beta1: |
-  <h3>QR Codes</h3>
-  <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3642, #3481, #4537)</p>
-  <h3>My Profile screen</h3>
-  <p>The My Profile screen is now more interesting and engaging! New graphics, new animations, weekly ranks and a calendar of your recent activity! (#2946, #3230, #4572, #4569, #3414, #4203), by @matkoniecz</p>
-  <h3>Enhanced Quests</h3>
-  <ul>
-  <li>Cycle lanes: Only show "advisory cycle lane" option in countries where a concept of such second-rate cycle lanes exist (#4502)</li>
-  <li>Cycle lanes: Adapt appearance of cycle lanes, depending on the country one is mapping in (#4502)</li>
-  <li>Cycle lanes, sidewalk surface: Also remember and offer shortcut to apply last selection for roads on which only one side is to be defined (#4524, #4503), by @Helium314</li>
-  <li>Shop overlay: Disable 3D buildings for easier placement of new shops (#4563)</li>
-  <li>Shop overlay: Allow input of names in different languages (in countries where that's common)</li>
-  <li>Shop overlay, Bus stop names, place names...: Remember user's choice about which primary language to use for multilingual names (#4257)</li>
-  <li>Bike parking type: add two-tier bike racks as answer option (#4473)</li>
-  <li>Other small enhancements and fixes (#4559, #4560, #4513...)</li>
+  <li>Cycleway and footway surfaces: Remove contradicting surface information (#4526, #4548), by @mnalis</li>
+  <li>Other small enhancements and fixes (#4560, #4513, #4574, #4601, #4223, #4592, #4603...), thanks @matkoniecz</li>
   </ul>
 
 v48.0: |

@@ -1643,6 +1643,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Du skapade en nod med …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Det är en återsamlingsplats"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En återsamlingsplats är en skyltad plats där man samlas vid en nödsituation. Vanligen ser de ut så här:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Den har ett husnamn…"</string>
     <string name="quest_address_street_street_name_label">"Gatunamn:"</string>
     <string name="quest_address_street_hint2">"Tryck på gatan för att välja den"</string>
@@ -1691,6 +1693,11 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Aktivera och välj grupp %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Obs: Nuvarande grupp med samma namn kommer att skrivas över!"</string>
     <string name="urlconfig_switch_hint">"Du kan växla aktiv grupp i inställningarna när du vill."</string>
-    <string name="urlconfig_scan_qr_code_again">"När du har installerat appen så skanna QR-koden igen för att aktivera gruppen."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Tvåvåningsställ"</string>
+    <string name="user_profile_current_week_title">"Senaste veckan"</string>
+    <string name="user_profile_dates_mapped">"Dagar när du har karterat"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"rekommenderat cykelfält"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Efter att ha installerat appen, skanna QR-koden igen och tryck på &lt;a href=\"%s\"&gt;den här länken&lt;/a&gt; för att aktivera gruppen."</string>
 </resources>

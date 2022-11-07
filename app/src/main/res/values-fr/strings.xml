@@ -1284,7 +1284,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
 
     <!-- Quest selection screen -->
     <string name="action_search">"Rechercher"</string>
-    <string name="action_manage_presets">"Gérer les pré-réglages"</string>
+    <string name="action_manage_presets">"Gérer les préréglages"</string>
     <string name="team_mode_team_size_label2">"Combien de personnes cartographient ? Indiquez le même chiffre sur tous les téléphones."</string>
     <string name="team_mode_choose_color2">"Ensuite, choisissez une couleur chacun. La vôtre :"</string>
     <string name="link_organic_maps_description">"Une carte fonctionnant hors ligne pour les voyageurs, les randonneurs et cyclistes"</string>
@@ -1568,10 +1568,10 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
-    <string name="quest_busStopRef_title2">"Quel est la référence de cet arrêt ?"</string>
+    <string name="quest_busStopRef_title2">"Quelle est la référence de cet arrêt ?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopShelter_title2">"Y a-t-il un abris à cet arrêt ?"</string>
+    <string name="quest_busStopShelter_title2">"Y a-t-il un abri à cet arrêt ?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Cet arrêt a-t-il un revêtement podotactile ?"</string>
@@ -1710,6 +1710,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Vous avez crée un noeud avec …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"C’est un point de rassemblement"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un point de rassemblement est un endroit où les gens se regroupent en cas d’urgence. Cela ressemble généralement à ceci :"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"La maison possède un nom…"</string>
     <string name="quest_address_street_street_name_label">"Nom de rue :"</string>
     <string name="quest_address_street_hint2">"Touchez la rue sur la carte pour la sélectionner"</string>
@@ -1755,6 +1757,10 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Appliquer et sélectionner le préréglage %1$s ?"</string>
     <string name="urlconfig_apply_message_overwrite">"Note : un préréglage existant avec le même nom sera écrasé !"</string>
     <string name="urlconfig_switch_hint">"Vous pouvez changer de préréglage dans les paramètres à tout moment."</string>
-    <string name="urlconfig_scan_qr_code_again">"Après avoir installé l’application, rescannez le code QR pour appliquer le préréglage."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Support pour vélos à deux étages"</string>
+    <string name="user_profile_current_week_title">"7 derniers jours"</string>
+    <string name="user_profile_dates_mapped">"Jours récents où vous avez cartographié"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"Chaucidou (chaussée à voie centrale banalisée)"</string>
 </resources>

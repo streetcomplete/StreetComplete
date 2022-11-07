@@ -1610,6 +1610,8 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Мапа кемпінгів"</string>
     <string name="quest_atm_cashin_title">"Чи приймає банкомат готівку?"</string>
     <string name="create_node_action_description">"Ви додали точку з …"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Цей будинок має назву…"</string>
     <string name="quest_address_street_street_name_label">"Назва вулиці:"</string>
     <string name="quest_address_street_hint2">"Торкніться потрібної вулиці на мапі"</string>

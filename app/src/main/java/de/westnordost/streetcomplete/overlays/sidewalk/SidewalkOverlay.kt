@@ -66,6 +66,7 @@ private val highwayValuesWhereSidewalkTaggingIsNotExpected = setOf(
 
 private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
     tags["highway"] in highwayValuesWhereSidewalkTaggingIsNotExpected
+        || tags["motorroad"] == "yes" || tags["expressway"] == "yes"
 
 private val Sidewalk?.style get() = StrokeStyle(when (this) {
     Sidewalk.YES           -> Color.SKY

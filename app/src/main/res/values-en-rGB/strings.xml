@@ -1373,7 +1373,7 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"You created a node with …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"It’s an Assembly Point"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:"</string>
-    <string name="quest_address_answer_house_name2">"It has a house name…"</string>
+    <string name="quest_address_answer_house_name2">"Address has a house name…"</string>
     <string name="quest_address_street_street_name_label">"Street name:"</string>
     <string name="quest_address_street_hint2">"Tap street on map to select it"</string>
     <string name="quest_bicycle_incline_title">"Which direction leads upwards here?"</string>
@@ -1395,9 +1395,7 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Can this cycle barrier be opened (with or without a key)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixed"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Openable"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removable"</string>
@@ -1418,6 +1416,10 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Apply and select preset %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Note: Your preset with the same name will be overwritten!"</string>
     <string name="urlconfig_switch_hint">"You can switch presets in the settings at any time."</string>
-    <string name="urlconfig_scan_qr_code_again">"After installing the app, scan the QR code again to apply the preset."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Two-tier bike rack"</string>
+    <string name="user_profile_current_week_title">"Last 7 days"</string>
+    <string name="user_profile_dates_mapped">"Days you’ve mapped recently"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"advisory bicycle lane"</string>
 </resources>

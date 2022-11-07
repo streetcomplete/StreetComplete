@@ -1022,7 +1022,7 @@ d'acompliment"</string>
     <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"Heu resolt %d missions que són útils per les persones que surten a l'aire lliure!"</string>
     <string name="quest_pedestrian_crossing_island">"Aquest pas de vianants té una illeta?"</string>
-    <string name="quest_generic_answer_noSign">"No hi ha cap cartell"</string>
+    <string name="quest_generic_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"La rampa per cadires de rodes es mostra com a via separada al mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
@@ -1234,8 +1234,8 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="about_title_faq">"PMF"</string>
     <string name="quest_buildingLevels_title2">"Quants nivells per sobre del soterrani té aquest edifici?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quants nivells per sobre del soterrani té aquesta part de l'edifici?"</string>
-    <string name="quest_crossing_title">"Hi han vorades per on es troba aquest camí? De quina mena?"</string>
-    <string name="pref_subtitle_quests_preset_name">"Preconfiguració: %s"</string>
+    <string name="quest_crossing_title">"Hi han vorades per on aquest camí creua la carretera? De quina mena?"</string>
+    <string name="pref_subtitle_quests_preset_name">"Predefinit: %s"</string>
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Aquest tipus de missió està desactivada per defecte perquè les formes del sostre sovint no són fàcilment visibles des del carrer. Aquest tipus de missió també consumeix molt temps; en la majoria dels casos és més fàcil i eficient traçar-ho a partir d'imatges aèries a casa."</string>
@@ -1292,7 +1292,7 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_traffic_calming_type_hump">"Ressalt (més ample)"</string>
     <string name="quest_traffic_calming_type_table">"Tauler (part superior plana)"</string>
     <string name="quest_traffic_calming_type_cushion">"Coixí (no afecta a vehícles amples)"</string>
-    <string name="quest_traffic_calming_type_choker">"Carretera estreta"</string>
+    <string name="quest_traffic_calming_type_choker">"Estretament a la carretera"</string>
     <string name="quest_traffic_calming_type_island">"Illa"</string>
     <string name="quest_traffic_calming_type_chicane">"Corbes deliverades"</string>
     <string name="quest_traffic_calming_type_rumble_strip">"Bandes Sonores"</string>
@@ -1691,6 +1691,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Has creat un node amb ..."</string>
     <string name="quest_accessPointRef_answer_assembly_point">"És un Punt de Trobada"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un Punt de Trobada és on la gent es reuneix en cas d'emegència. Normalment té aquest aspecte:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"La casa té un nom..."</string>
     <string name="quest_address_street_street_name_label">"Nom del carrer:"</string>
     <string name="quest_address_street_hint2">"Toqueu el carrer al mapa per seleccionar-lo"</string>
@@ -1724,4 +1726,16 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_openable">"Es pot obrir"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Es pot llevar"</string>
     <string name="quest_genericRef_title">"Ací quin és el nombre de referència?"</string>
+    <string name="pref_category_quests_overlays">"Missions i Superposicions"</string>
+    <string name="quest_presets_rename">"Ranomena"</string>
+    <string name="quest_presets_share">"Comparteix"</string>
+    <string name="quest_presets_delete">"Esborrar"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Deixa als altres escanejar aquest QR per a compartir la teua predifinició."</string>
+    <string name="urlconfig_as_url">"O com una URL:"</string>
+    <string name="urlconfig_url_copied">"URL copiada al portaretalls"</string>
+    <string name="urlconfig_switch_hint">"Pots canviar els predefinits a la configuració en qualsevol moment"</string>
+    <string name="user_profile_current_week_title">"Últims 7 dies"</string>
+    <string name="user_profile_dates_mapped">"Dies que els quals has mapejat recentment"</string>
 </resources>

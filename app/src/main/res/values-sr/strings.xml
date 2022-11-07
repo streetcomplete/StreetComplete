@@ -1557,6 +1557,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Додали сте тачку са…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Ово је место окупљања"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Зборно место где се људи окупљају у случају нужде. Обично изгледа овако:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Објекат има свој назив…"</string>
     <string name="quest_address_street_street_name_label">"Назив улице:"</string>
     <string name="quest_address_street_hint2">"Додирните улицу на карти"</string>
@@ -1603,6 +1605,11 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Желите ли да примените и одаберете предложак %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Напомена: Ваш истоимени предложак биће замењен!"</string>
     <string name="urlconfig_switch_hint">"Можете било кад да промените предлошке у поставкама."</string>
-    <string name="urlconfig_scan_qr_code_again">"Након инсталирања апликације, очитајте QR кôд како бисте применили предложак."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Паркинг клацкалица за бицикле"</string>
+    <string name="user_profile_current_week_title">"Последњих 7 дана"</string>
+    <string name="user_profile_dates_mapped">"Дани којима сте недавно картирали"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"препоручена трака за бицикле"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Након инсталирања апликације, поново очитајте QR кôд или додирните &lt;a href=\"%s\"&gt;ову везу&lt;/a&gt; како бисте применили предложак."</string>
 </resources>

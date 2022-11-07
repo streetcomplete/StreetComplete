@@ -2236,7 +2236,7 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_barrier_type_debris_pile">"Puin"</string>
     <string name="quest_barrier_type_stile_squeezer">"Smalle doorgang"</string>
     <string name="quest_barrier_type_stile_ladder">"Ladder (overstap)"</string>
-    <string name="quest_barrier_type_bicycle_barrier">"Fietsbarrière"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Fietssluis"</string>
     <string name="quest_barrier_type_kissing_gate">"Kissing gate"</string>
     <string name="quest_barrier_type_swing_gate">"Horizontale balk"</string>
     <string name="quest_policeType_title">"Welk soort politiebureau is dit?"</string>
@@ -2518,7 +2518,7 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="only_at_hours">"alleen op de volgende tijden:"</string>
     <string name="except_at_hours">"behalve op volgende tijden"</string>
     <string name="quest_bollard_type_not_bollard">"Geen paal, maar een andere barrière"</string>
-    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Geen fietsbarrière, maar een andere barrière"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Geen fietssluis, maar een andere barrière"</string>
     <string name="quest_smoking_no">"Nee, verboden"</string>
     <string name="quest_smoking_outside">"Alleen buiten"</string>
     <string name="quest_smoking_separated">"Alleen in gescheiden gebieden"</string>
@@ -2590,7 +2590,7 @@ sorted alphabetically by title -->
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Is het toilet op deze plek rolstoeltoegankelijk?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Ben je er zeker van dat fietsers op deze eenrichtingsweg niet in beide richtingen mogen fietsen? Misschien staat er een verkeersbord aan het eind van de straat."</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Weet je zeker dat fietsers op deze eenrichtingsweg niet in beide richtingen mogen fietsen? Misschien staat er een verkeersbord aan het eind van de straat."</string>
     <string name="link_valhalla_description">"Router met een zeer beperkt geheugengebruik, multimodaal routen, isochronen en meer."</string>
     <string name="link_backofyourhand_description">"Hoe goed ken jij je omgeving? Test je kennis door straten te zoeken."</string>
 
@@ -2621,7 +2621,7 @@ sorted alphabetically by title -->
     <string name="map_btn_stop_track">"Stop spooropname"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_rental_capacity_title">"Hoeveel plaatsen voor verhuurfietsen zijn er hier?"</string>
+    <string name="quest_bicycle_rental_capacity_title">"Hoeveel plaatsen voor huurfietsen zijn er hier?"</string>
     <string name="quest_bicycle_rental_type_title">"Wat voor soort fietsverhuur is dit?"</string>
 
     <!-- Fuzzy -->
@@ -2650,7 +2650,7 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"Helemaal geen fietsen verkocht"</string>
     <string name="quest_building_entrance_title">"Wat voor soort ingang is dit?"</string>
-    <string name="quest_building_entrance_main">"Hoofdingang van een publiek gebouw"</string>
+    <string name="quest_building_entrance_main">"Hoofdingang van een openbaar gebouw"</string>
 
     <!-- Fuzzy -->
     <string name="quest_building_entrance_staircase">"Ingang naar trappenhuis (bv. bij een appartementsgebouw)"</string>
@@ -2662,9 +2662,9 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_dead_end">"Doodlopend einde, geen ingang"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Druk op het scherm om te starten met meten"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Bevindt zich hier een publiek toegankelijke fietspomp (tenminste wanneer het geopend is)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Bevindt zich hier een werkende fietspomp?"</string>
+    <string name="quest_air_pump_bicycle_repair_station_title">"Is hier een werkende fietspomp?"</string>
     <string name="action_overlays">"Lagen"</string>
-    <string name="split_way">"Het verschilt"</string>
+    <string name="split_way">"Splitsen"</string>
     <string name="quest_memorialType_title">"Welk soort gedenkteken is dit?"</string>
     <string name="quest_memorialType_statue">"Standbeeld"</string>
     <string name="quest_memorialType_bust">"Borstbeeld"</string>
@@ -2684,46 +2684,51 @@ sorted alphabetically by title -->
     <string name="lit_value_no">"Onverlicht"</string>
     <string name="lit_value_24_7">"Altijd verlicht"</string>
     <string name="lit_value_automatic">"Verlicht als iemand passeert"</string>
-    <string name="overlay_sidewalk">"Voetpaden"</string>
+    <string name="overlay_sidewalk">"Trottoirs"</string>
     <string name="quest_generic_answer_is_indoors">"Dit is binnen"</string>
-    <string name="quest_summit_cross_title">"Is hier een kruispunt?"</string>
+    <string name="quest_summit_cross_title">"Is hier een topkruis?"</string>
     <string name="quest_entrance_reference">"Wat staat er bij deze ingang aangegeven?"</string>
-    <string name="quest_entrance_reference_select_flat_range_and_code">"Entree label en appartementen reeks"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"Ingangslabel en appartementenreeks"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_entrance_reference_select_flat_range_only">"Appartementen reeks"</string>
-    <string name="quest_entrance_reference_select_code_only">"Entree label"</string>
-    <string name="quest_entrance_reference_nothing_signed">"Geen teken met label of appartementen reeks"</string>
-    <string name="quest_entrance_reference_reference_label">"Entree label:"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"Appartementenreeks"</string>
+    <string name="quest_entrance_reference_select_code_only">"Ingangslabel"</string>
+    <string name="quest_entrance_reference_nothing_signed">"Geen teken met label of appartementenreeks"</string>
+    <string name="quest_entrance_reference_reference_label">"Ingangslabel:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_entrance_reference_flat_range_label">"Appartementen volgorde:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"Appartementenreeks:"</string>
     <string name="quest_entrance_reference_flat_range_to">"naar"</string>
-    <string name="default_disabled_msg_overlay">"Dit type vraag is standaard uitgeschakeld omdat er al een overlay is waarmee het effectiever en efficiënter is om deze gegevens in te voeren en bij te werken."</string>
+    <string name="default_disabled_msg_overlay">"Dit type vraag is standaard uitgeschakeld omdat er al een laag is waarmee het effectiever en efficiënter is om deze gegevens in te voeren en bij te werken."</string>
     <string name="quest_camp_drinking_water_title">"Is drinkwater hier gratis beschikbaar voor kampeerders?"</string>
     <string name="quest_camp_shower_title">"Zijn hier douches?"</string>
     <string name="quest_camp_power_supply_title">"Zijn er hier oplaadpunten voor telefoons, laptops e.d.?"</string>
-    <string name="quest_camp_type_title">"Mag je hier kamperen?"</string>
+    <string name="quest_camp_type_title">"Wie mag hier kamperen?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Zowel tenten, caravans als campers."</string>
     <string name="quest_camp_type_caravans_only">"Alleen caravans en campers."</string>
     <string name="quest_camp_type_tents_only">"Alleen tenten"</string>
-    <string name="quest_camp_type_backcountry">"Kampeer gelegenheid zonder faciliteiten"</string>
+    <string name="quest_camp_type_backcountry">"Kampeergelegenheid zonder faciliteiten"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
-    <string name="quest_recycling_type_pet">"Alleen plastic"</string>
+    <string name="quest_recycling_type_pet">"Alleen PET"</string>
     <string name="street_parking_street_width">"Straatbreedte: %s"</string>
     <string name="overlay_street_parking">"Parkeren op straat."</string>
     <string name="link_ohsomehex_description">"Verken OSM data op verschillende schalen, van het grote geheel tot individuele objecten in ruimte en tijd"</string>
-    <string name="link_opencampingmap_description">"Een kaart met campings"</string>
+    <string name="link_opencampingmap_description">"Een kaart met kampeerplaatsen"</string>
     <string name="quest_atm_cashin_title">"Kan je bij deze geldautomaat ook geld storten?"</string>
+    <string name="create_node_action_description">"Je hebt een punt aangemaakt met"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Het is een verzamelplaats voor noodgevallen"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Een verzamelplaats voor noodgevallen is waar mensen samenkomen tijdens een noodsituatie. Het ziet er meestal ongeveer zo uit:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Het heeft een huisnaam…"</string>
     <string name="quest_address_street_street_name_label">"Straatnaam:"</string>
     <string name="quest_address_street_hint2">"Tik op een straat om deze te selecteren"</string>
     <string name="quest_bicycle_incline_title">"In welke richting gaat het hier naar boven?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Het gaat op en neer"</string>
     <string name="quest_drinking_water_type_title">"Hoe wordt hier drinkwater aangeboden?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Ander soort drinkfontein"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Drinkfontein die een straaltje water geeft"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Alleen flesjes bijvullen"</string>
     <string name="quest_drinking_water_type_tap">"Waterkraan"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpomp"</string>
@@ -2738,10 +2743,39 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Ander soort winkel"</string>
     <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan deze fietssluis geopend worden (met of zonder sleutel)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Vast"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Te openen"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Verwijderbaar"</string>
+    <string name="quest_buildingType_guardhouse">"Wachthuisje"</string>
     <string name="quest_genericRef_title">"Wat is het identificatienummer hier?"</string>
+    <string name="quest_sidewalk_answer_different">"Trottoir-situatie is anders"</string>
+    <string name="about_title_get_involved">"Doe mee"</string>
+    <string name="pref_category_quests_overlays">"Vragen &amp; Lagen"</string>
+    <string name="quest_presets_rename">"Een andere naam geven"</string>
     <string name="quest_presets_share">"Delen"</string>
     <string name="quest_presets_delete">"Verwijderen"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Laat anderen deze QR code scannen om je voorinstelling te delen"</string>
+    <string name="urlconfig_as_url">"Of als URL:"</string>
+    <string name="urlconfig_url_copied">"URL naar klembord gekopieerd"</string>
+    <string name="urlconfig_apply_title">"Voorinstelling toepassen"</string>
+
+    <!-- Shouldn't this be "Select and apply..." (selection usually comes before application) -->
+    <string name="urlconfig_apply_message">"Voorinstelling %1$s toevoegen en selecteren?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Let op: Je voorinstelling met dezelfde naam zal worden vervangen!"</string>
+    <string name="urlconfig_switch_hint">"Je kunt altijd de voorinstellingen wisselen in de instellingen."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Fietsenrek op 2 niveaus"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Deze week"</string>
+
+    <!-- The English is ambiguous: is this about the days on which you've been out in the field mapping (surveying) or the days that were mapped (themselves)? -->
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Dagen waarop je recentelijk voor Street Complete actief bent geweest"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"aanbevolen fietsstrook"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Scan na het installeren van de app de QR code opnieuw of klik op &lt;a href=\"%s\"&gt;deze link&lt;/a&gt; om de voorinstelling toe te passen."</string>
 </resources>

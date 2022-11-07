@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Indstillinger"</string>
-    <string name="oauth_communication_error">"Kan ikke tilgå autoriseringsserveren"</string>
+    <string name="oauth_communication_error">"Kan ikke tilgå godkendelsesserveren"</string>
     <string name="oauth_failed_permissions">"Godkendelse mislykkedes: alle de angivne tilladelser skal gives"</string>
 
     <!-- Settings screen -->
@@ -1356,7 +1356,7 @@ fortrolighedserklæring&lt;/a&gt;  for mere information.&lt;/p&gt;"</string>
     <!-- Svar på spørgsmålet "Denne butik har stået tom. Hvad er her nu?" -->
     <string name="quest_shop_gone_vacant_answer">"Den står tom"</string>
     <string name="quest_shop_gone_replaced_answer">"En/Et…"</string>
-    <string name="quest_shop_gone_replaced_answer_hint">"Indtast her hvilken slags sted"</string>
+    <string name="quest_shop_gone_replaced_answer_hint">"Indtast type sted her"</string>
 
     <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Denne butik har stået tom. Hvad er her nu?"</string>
@@ -1903,6 +1903,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Du oprettede et punkt med …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Det er et samlingssted"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Et samlingssted er et sted, hvor folk samles i tilfælde af en nødsituation. Det ligner normalt dette:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Det har et husnavn …"</string>
     <string name="quest_address_street_street_name_label">"Gadenavn:"</string>
     <string name="quest_address_street_hint2">"Tryk på gaden på kortet for at vælge den"</string>
@@ -1949,8 +1951,15 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Anvend og vælg forudindstilling %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Bemærk: Din forudindstilling med samme navn vil blive overskrevet!"</string>
     <string name="urlconfig_switch_hint">"Du kan til enhver tid skifte forindstillinger i indstillingerne."</string>
-    <string name="urlconfig_scan_qr_code_again">"Når du har installeret appen, skal du scanne QR-koden igen for at anvende forudindstillingen."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Cykelstativ i to niveauer"</string>
+
+    <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Denne uge"</string>
+
+    <!-- Fuzzy -->
     <string name="user_profile_dates_mapped">"Dage, hvor du har kortlagt for nylig"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"2-minus-1-vej"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Når du har installeret appen, skal du scanne QR-koden igen eller klikke på &lt;a href=\"%s\"&gt;dette link&lt;/a&gt; for at anvende forudindstillingen."</string>
 </resources>
