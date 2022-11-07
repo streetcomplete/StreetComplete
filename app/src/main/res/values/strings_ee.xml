@@ -315,9 +315,9 @@
     <string name="tag_editor_last_edited">Last edited: %s</string>
     <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
     <string name="tutorial_info_fork_message">StreetComplete expert edition\n
-This modified version of StreetComplete is intended for users with more than basic knowledge about OSM. It gives you more control, but also more responsibility.\n
+This modified version of StreetComplete is intended for users with more than basic knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
 This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.
-Quests added in this version may not be answerable in all cases and are thus disabled by default. Please hide them in case they cannot be answered, and do not spam notes.\n
+Quests added in this version <i>may not be answerable</i> in all cases and are thus disabled by default. Please hide them in case they cannot be answered, and <i>do not spam notes</i>.\n\n
 By default, this version is configured to behave very similar to normal StreetComplete.\n
 You have access to your StreetComplete user statistics, but any quests solved using this version will not be counted towards them.</string>
     <string name="fork_about_title_repository">Expert edition project home</string>
@@ -327,7 +327,7 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="custom_overlay_title">Custom overlay</string>
     <string name="custom_overlay_hint">Element selection goes here</string>
     <string name="custom_overlay_message">&lt;a href=\"https://github.com/Helium314/StreetComplete/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection\"&gt;Click here&lt;/a&gt; to open info about the element selection syntax in a browser. Note that when selecting elements by age, the resurvey interval setting may influence the result. The checkboxes replace the "nodes, ways with" part.</string>
-    <string name="custom_overlay_color_message">Select key to get color from. This does not work for nodes. Accepts regex, takes first match.</string>
+    <string name="custom_overlay_color_message">Select key(s) to get color from. This does not work for nodes. Accepts regex, uses all matching tags to get a color.</string>
     <string name="custom_overlay_color_hint">Leave empty to show all in same color</string>
     <string name="attach_photo_delete">Delete</string>
     <string name="quest_monitor_found">%d quests nearby, closest:</string>

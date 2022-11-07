@@ -43,11 +43,11 @@ class CustomOverlay(val prefs: SharedPreferences) : Overlay {
 
 private fun getStyle(element: Element, colorKeySelector: Regex?): Style {
     val color = if (colorKeySelector == null) Color.LIME
-        else createColorFromString(element.tags.firstNotNullOfOrNull {
+        else createColorFromString(element.tags.mapNotNull {
                 if (it.key.matches(colorKeySelector))
-                    it.value
+                    it.value + it.key
                 else null
-            }).uppercase()
+            }.joinToString().takeIf { it.isNotEmpty() })
     return when {
         element is Node -> PointStyle("ic_custom_overlay_poi", element.tags["name"])
         IS_AREA_EXPRESSION.matches(element) -> PolygonStyle(color, label = element.tags["name"])

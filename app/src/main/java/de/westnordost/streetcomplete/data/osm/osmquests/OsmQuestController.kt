@@ -216,7 +216,9 @@ class OsmQuestController internal constructor(
         questTypes: Collection<OsmElementQuestType<*>>
     ): List<Deferred<OsmQuest?>> {
         val paddedBounds = geometry.getBounds().enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
-        val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds) }
+        val lazyMapData by lazy { mapDataSource.getMapDataWithGeometry(paddedBounds).apply {
+            (this as? MutableMapDataWithGeometry)?.put(element, geometry) // this is specifically for tag editor to show the current version of the element, otherwise it should not matter
+        } }
         val lazyTagOnlyMapData by lazy { MutableMapDataWithGeometry().apply {
             lazyMapData.forEach { if (it.tags.isNotEmpty()) put(it, lazyMapData.getGeometry(it.type, it.id)) }
             boundingBox = lazyMapData.boundingBox
