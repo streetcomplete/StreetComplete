@@ -96,7 +96,6 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
 fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
-    // TODO what about surface:note without surface? (see also above)
     if (surface != null && surfaceNote != null ) {
         return SingleSurfaceWithNote(surface, surfaceNote)
     }
