@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.overlays.Color
 val Surface?.color get() = when (this) {
     /*
     TODO - try using colours from the offical palette
+    TODO consider unifying paving stones and asphalt
     // blue
     const val BLUE = "#1A87E6"
     const val SKY = "#2FACE8"
