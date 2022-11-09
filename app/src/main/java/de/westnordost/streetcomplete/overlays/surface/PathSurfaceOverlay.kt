@@ -119,15 +119,23 @@ private fun getStyleForStandalonePath(element: Element): Style {
             keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in badSurfaces && surfaceStatus.cyclewayNote == null) {
-            // the worst case: so lets present it
+            // the worst case possible - bad surface without note: so lets present it
             dominatingSurface = surfaceStatus.cycleway
             noteProvided = surfaceStatus.cyclewayNote
             keyOfDominatingSurface = "cycleway:surface"
         } else if (surfaceStatus.footway in badSurfaces) {
-            // cycleway surface either has as bad data (also bad surface) or a bit better (bad surface with note)
+            // cycleway surface either has
+            // data as bad as this one (also bad surface, without note)
+            // or even worse (bad surface without note, while here maybe there is a note)
             dominatingSurface = surfaceStatus.footway
             keyOfDominatingSurface = "footway:surface"
             noteProvided = surfaceStatus.footwayNote
+        } else if (surfaceStatus.cycleway in badSurfaces) {
+            // so footway has no bad surface, while cycleway has bad surface
+            // lets take worse one
+            dominatingSurface = surfaceStatus.cycleway
+            keyOfDominatingSurface = "cycleway:surface"
+            noteProvided = surfaceStatus.cyclewayNote
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
