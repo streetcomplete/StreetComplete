@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -22,12 +23,15 @@ import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import java.util.concurrent.FutureTask
 
 abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
     // overridable by child classes
@@ -36,6 +40,7 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
     private val elementEditsController: ElementEditsController by inject()
     private val otherQuestController: OtherSourceQuestController by inject()
     protected val mapDataSource: MapDataWithEditsSource by inject()
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     protected var element: Element? = null
     private val dummyElement by lazy { Node(0, LatLon(0.0, 0.0)) }
@@ -57,8 +62,9 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         }
         // set element if available
         otherQuestController.getVisible(questKey as OtherSourceQuestKey)?.elementKey?.let { key ->
-            mapDataSource.get(key.type, key.id)?.let { element = it }
+            element = mapDataSource.get(key.type, key.id)
         }
+        element?.let { setTitleHintLabel(getNameAndLocationLabel(it.tags, resources, featureDictionaryFuture.get())) }
     }
 
     override fun onStart() {
