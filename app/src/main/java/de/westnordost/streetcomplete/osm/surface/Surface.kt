@@ -90,6 +90,10 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     return SurfaceMissing
 }
 
+/*
+* to be used when only surface and surface:note tag is relevant
+* for example if we want to tag road surface and we are free to skip sidewalk surface info
+* */
 fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
