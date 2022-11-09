@@ -59,6 +59,7 @@ sealed class SingleSurfaceInfo : SurfaceInfo()
 data class SingleSurface(val surface: Surface) : SingleSurfaceInfo()
 data class SingleSurfaceWithNote(val surface: Surface, val note: String) : SingleSurfaceInfo()
 object SurfaceMissing : SingleSurfaceInfo()
+data class SurfaceMissingWithNote(val note: String) : SingleSurfaceInfo()
 data class CyclewayFootwaySurfaces(val main: Surface?, val cycleway: Surface?, val footway: Surface?) : SurfaceInfo()
 data class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?, val cycleway: Surface?, val cyclewayNote: String?, val footway: Surface?, val footwayNote: String?) : SurfaceInfo()
 
@@ -70,11 +71,6 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
     val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
     val hasDedicatedFootwayCyclewayData = cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes" || cyclewaySurfaceNote != null || footwaySurfaceNote != null
-    // TODO
-    //  what about surface:note without surface? (see also below for this one)
-    //  what about surface:note and cycleway:surface or footway:surface?
-    //  ignore this? check and fix outside StreetComplete from time to time?
-    //  skip such ways? support them?
     if (cyclewaySurfaceNote != null || footwaySurfaceNote != null || (hasDedicatedFootwayCyclewayData && surfaceNote != null)) {
         return CyclewayFootwaySurfacesWithNote(surface, surfaceNote, cyclewaySurface, cyclewaySurfaceNote, footwaySurface, footwaySurfaceNote)
     }
@@ -83,6 +79,9 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     }
     if (surface != null && surfaceNote != null ) {
         return SingleSurfaceWithNote(surface, surfaceNote)
+    }
+    if (surface == null && surfaceNote != null ) {
+        return SurfaceMissingWithNote(surfaceNote)
     }
     if (surface != null) {
         return SingleSurface(surface)
@@ -100,6 +99,9 @@ fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     // TODO what about surface:note without surface? (see also above)
     if (surface != null && surfaceNote != null ) {
         return SingleSurfaceWithNote(surface, surfaceNote)
+    }
+    if (surface == null && surfaceNote != null ) {
+        return SurfaceMissingWithNote(surfaceNote)
     }
     if (surface != null) {
         return SingleSurface(surface)

@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
+import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -69,6 +70,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
                 when (gathered) {
                     is SingleSurfaceItem -> {
                         selectedStatusForMainSurface = gathered.surface
+                        binding.explanationInputMainSurface.text = null
                     }
                     is SingleSurfaceItemWithNote -> {
                         selectedStatusForMainSurface = gathered.surface
@@ -108,6 +110,9 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
                 binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
                 selectedStatusForMainSurface = status.surface.asItem()
             }
+            is SurfaceMissingWithNote -> {
+                binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
+            }
             is SurfaceMissing -> {
                 // nothing to do
             }
@@ -122,6 +127,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         if (mainSurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
             binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
+        } else if (noteText() != null) {
+            binding.explanationInputMainSurfaceContainer.isVisible = true
         }
     }
 
@@ -173,6 +180,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null
+            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || noteText() != status.note
             null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
         }
     }

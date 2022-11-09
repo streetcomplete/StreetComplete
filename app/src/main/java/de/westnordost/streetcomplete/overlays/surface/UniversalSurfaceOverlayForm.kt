@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
+import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
@@ -103,6 +104,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     when (gathered) {
                         is SingleSurfaceItem -> {
                             selectedStatusForMainSurface = gathered.surface
+                            binding.explanationInputMainSurface.text = null
                         }
                         is SingleSurfaceItemWithNote -> {
                             selectedStatusForMainSurface = gathered.surface
@@ -117,6 +119,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     when (gathered) {
                         is SingleSurfaceItem -> {
                             selectedStatusForCyclewaySurface = gathered.surface
+                            binding.explanationInputCyclewaySurface.text = null
                         }
                         is SingleSurfaceItemWithNote -> {
                             selectedStatusForCyclewaySurface = gathered.surface
@@ -131,6 +134,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     when (gathered) {
                         is SingleSurfaceItem -> {
                             selectedStatusForFootwaySurface = gathered.surface
+                            binding.explanationInputFootwaySurface.text = null
                         }
                         is SingleSurfaceItemWithNote -> {
                             selectedStatusForFootwaySurface = gathered.surface
@@ -216,6 +220,9 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                         switchToFootwayCyclewaySurfaceLayout()
                     }
                 }
+                is SurfaceMissingWithNote -> {
+                    binding.explanationInputMainSurface.text = SpannableStringBuilder(status.note)
+                }
             }
             updateSelectedCell()
         }
@@ -227,6 +234,8 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             if (mainSurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
                 binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
+            } else if (noteText() != null) {
+                binding.explanationInputMainSurfaceContainer.isVisible = true
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
@@ -235,6 +244,8 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             if (cyclewaySurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
                 binding.explanationInputCyclewaySurfaceContainer.isVisible = cyclewaySurfaceItem.value?.shouldBeDescribed ?: false
+            } else if (cyclewayNoteText() != null) {
+                binding.explanationInputMainSurfaceContainer.isVisible = true
             }
 
             val footwaySurfaceItem = selectedStatusForFootwaySurface
@@ -243,6 +254,8 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             if (footwaySurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
                 binding.explanationInputFootwaySurfaceContainer.isVisible = footwaySurfaceItem.value?.shouldBeDescribed ?: false
+            } else if (footwayNoteText() != null) {
+                binding.explanationInputMainSurfaceContainer.isVisible = true
             }
         }
 
@@ -324,6 +337,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null || noteText() != status.note
             is CyclewayFootwaySurfacesWithNote -> {
                 selectedStatusForMainSurface?.value != status.main || noteText() != status.note ||
                 selectedStatusForCyclewaySurface?.value != status.main || cyclewayNoteText() != status.cyclewayNote ||

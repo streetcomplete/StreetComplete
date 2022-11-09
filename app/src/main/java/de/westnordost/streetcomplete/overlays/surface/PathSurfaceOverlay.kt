@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
+import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -147,6 +148,9 @@ private fun getStyleForStandalonePath(element: Element): Style {
             keyOfDominatingSurface = "cycleway:surface"
         }
         is SurfaceMissing -> {
+            // no action needed
+        }
+        is SurfaceMissingWithNote -> {
             // no action needed
         }
     }
