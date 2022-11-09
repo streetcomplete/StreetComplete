@@ -313,9 +313,9 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
         private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
         private const val SELECTED_CYCLEWAY_SURFACE_INDEX = "selected_cycleway_surface_index"
-        private const val SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT = "selected_cycleway_surface_index_note_text" // this also needs support! TODO
+        private const val SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT = "selected_cycleway_surface_index_note_text"
         private const val SELECTED_FOOTWAY_SURFACE_INDEX = "selected_footway_surface_index"
-        private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text" // this also needs support! TODO
+        private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text"
     }
 
     fun noteText(): String? {
