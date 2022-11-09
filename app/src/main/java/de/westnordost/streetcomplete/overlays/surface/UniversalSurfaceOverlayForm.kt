@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.asItem
-import de.westnordost.streetcomplete.osm.surface.commonSurfaceDescription
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -310,11 +309,11 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
 
-    fun cyclewayNoteText(): String? {
+    private fun cyclewayNoteText(): String? {
         return binding.explanationInputCyclewaySurface.nonBlankTextOrNull
     }
 
-    fun footwayNoteText(): String? {
+    private fun footwayNoteText(): String? {
         return binding.explanationInputFootwaySurface.nonBlankTextOrNull
     }
 
@@ -334,7 +333,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         }
     }
 
-    private fun applyNoteAsNeeded(tags: StringMapChangesBuilder, noteTag: String, noteText: String?, surface: Surface?){
+    private fun applyNoteAsNeeded(tags: StringMapChangesBuilder, noteTag: String, noteText: String?, surface: Surface?) {
         if (surface == null) {
             if (tags.containsKey(noteTag)) {
                 tags.remove(noteTag)
@@ -361,7 +360,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                 applyNoteAsNeeded(it, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
                 applyNoteAsNeeded(it, "footway:surface:note", footwayNoteText(), footwaySurface)
                 if (mainSurface == null) {
-                    if(it.containsKey("surface")) {
+                    if (it.containsKey("surface")) {
                         it.remove("surface")
                     }
                     it["cycleway:surface"] = cyclewaySurface.osmValue
@@ -378,7 +377,6 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
                 it.updateWithCheckDate("surface", surfaceObject.osmValue)
                 applyNoteAsNeeded(it, "surface:note", noteText(), surfaceObject)
-
             }.create()))
         }
     }
