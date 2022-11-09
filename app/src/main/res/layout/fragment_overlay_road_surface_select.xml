@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="160dp"
-    android:orientation="vertical"><!-- TODO sane scaling with multiple surfaces shown-->
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/selectButtonMainSurface"
