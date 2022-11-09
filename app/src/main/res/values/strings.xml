@@ -1588,6 +1588,11 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_none">None</string>
     <string name="overlay_lit">Street lighting</string>
+    <string name="lit_value_yes">Lit</string>
+    <string name="lit_value_no">Not lit</string>
+    <string name="lit_value_24_7">Lit night and day</string>
+    <string name="lit_value_automatic">Lit when someone passes by</string>
+
     <string name="overlay_sidewalk">Sidewalks</string>
 
     <string name="overlay_addresses">Addresses</string>
@@ -1597,7 +1602,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="vacant_shop_title">Vacant shop</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>
-
     <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
     <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
@@ -1609,11 +1613,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_path_surface">Path surface</string>
     <string name="overlay_sidewalk_surface">Sidewalk surface info (when tagged on road)</string>
     <string name="overlay_universal_surface">All and any surface</string>
-
-    <string name="lit_value_yes">Lit</string>
-    <string name="lit_value_no">Not lit</string>
-    <string name="lit_value_24_7">Lit night and day</string>
-    <string name="lit_value_automatic">Lit when someone passes by</string>
 
     <string name="overlay_cycleway_label">Cycleway:</string>
     <string name="overlay_footway_label">Footway:</string>
