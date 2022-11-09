@@ -8,7 +8,7 @@ val Surface?.color get() = when (this) {
     // - use not only color, somehow?
     // https://icolorpalette.com/collection/color-palette-collection
     //
-    // unknown value is string pink as usual
+    // unknown value is crimson Color.DATA_REQUESTED as usual
     // no value should conflict with it
     //
     // surface=paved / surface=unpaved treated as unknown
