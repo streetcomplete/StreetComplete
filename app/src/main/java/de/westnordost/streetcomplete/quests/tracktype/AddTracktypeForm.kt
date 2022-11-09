@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.tracktype
-import de.westnordost.streetcomplete.osm.Tracktype
+
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddTracktypeForm : AImageListQuestForm<Tracktype, Tracktype>() {
