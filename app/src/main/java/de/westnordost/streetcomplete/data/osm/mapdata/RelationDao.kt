@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.ID
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.INDEX
@@ -13,9 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VER
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 /** Stores OSM relations */
 class RelationDao(private val db: Database) {
@@ -58,7 +58,7 @@ class RelationDao(private val db: Database) {
                     arrayOf(
                         relation.id,
                         relation.version,
-                        if (relation.tags.isNotEmpty()) Json.encodeToString(relation.tags) else null,
+                        if (relation.tags.isNotEmpty()) jsonAdapter.toJson(relation.tags) else null,
                         relation.timestampEdited,
                         time
                     )
@@ -88,7 +88,7 @@ class RelationDao(private val db: Database) {
                 Relation(
                     cursor.getLong(ID),
                     membersByRelationId.getValue(cursor.getLong(ID)),
-                    cursor.getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+                    cursor.getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let { HashMap<String, String>(it.size, 1.0f).apply { putAll(it) } } } ?: emptyMap(),
                     cursor.getInt(VERSION),
                     cursor.getLong(TIMESTAMP)
                 )
@@ -177,3 +177,6 @@ class RelationDao(private val db: Database) {
         }
     }
 }
+
+private val jsonAdapter: JsonAdapter<Map<String, String>> = Moshi.Builder().build()
+    .adapter(Types.newParameterizedType(Map::class.java, String::class.java, String::class.java))

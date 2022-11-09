@@ -2,6 +2,7 @@
   <ul>
   <li>Optionally resurvey opening hours StreetComplete doesn't understand</li>
   <li>Highlight nearby elements for POI quests</li>
+  <li>Improve database performance</li>
   </ul>
 
 v49.0_ee: |

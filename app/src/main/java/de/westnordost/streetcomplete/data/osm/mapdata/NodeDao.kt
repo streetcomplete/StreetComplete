@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -13,9 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.TIMESTAM
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 /** Stores OSM nodes */
 class NodeDao(private val db: Database) {
@@ -42,7 +42,7 @@ class NodeDao(private val db: Database) {
                     node.version,
                     node.position.latitude,
                     node.position.longitude,
-                    if (node.tags.isNotEmpty()) Json.encodeToString(node.tags) else null,
+                    if (node.tags.isNotEmpty()) jsonAdapter.toJson(node.tags) else null,
                     node.timestampEdited,
                     time
                 )
@@ -91,10 +91,13 @@ class NodeDao(private val db: Database) {
         db.query(NAME, columns = arrayOf(ID, LATITUDE, LONGITUDE, TAGS, VERSION, TIMESTAMP), where = inBoundsSql(bbox)) { it.toNode() }
 }
 
+private val jsonAdapter: JsonAdapter<Map<String, String>> = Moshi.Builder().build()
+    .adapter(Types.newParameterizedType(Map::class.java, String::class.java, String::class.java))
+
 private fun CursorPosition.toNode() = Node(
     getLong(ID),
     LatLon(getDouble(LATITUDE), getDouble(LONGITUDE)),
-    getStringOrNull(TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap(),
+    getStringOrNull(TAGS)?.let { jsonAdapter.fromJson(it)?.let { HashMap<String, String>(it.size, 1.0f).apply { putAll(it) } } } ?: emptyMap(),
     getInt(VERSION),
     getLong(TIMESTAMP),
 )

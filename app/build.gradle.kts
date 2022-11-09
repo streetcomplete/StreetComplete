@@ -194,6 +194,9 @@ dependencies {
     implementation("com.github.requery:sqlite-android:3.39.2")
     implementation("androidx.sqlite:sqlite:2.3.0-beta01")
 
+    // fast json serialization, used to write tags to database (and read)
+    implementation("com.squareup.moshi:moshi:1.14.0")
+
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
 
