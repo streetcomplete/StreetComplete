@@ -74,7 +74,7 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     //  what about surface:note without surface? (see also below for this one)
     //  what about surface:note and cycleway:surface or footway:surface?
     //  ignore this? check and fix outside StreetComplete from time to time?
-    //  skip such ways? present as missing data and throw away surface notes?
+    //  skip such ways? support them?
     if (cyclewaySurfaceNote != null || footwaySurfaceNote != null || (hasDedicatedFootwayCyclewayData && surfaceNote != null)) {
         return CyclewayFootwaySurfacesWithNote(surface, surfaceNote, cyclewaySurface, cyclewaySurfaceNote, footwaySurface, footwaySurfaceNote)
     }
