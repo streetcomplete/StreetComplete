@@ -43,6 +43,7 @@ enum class Surface(val osmValue: String) {
             "paving_stones:30" to "paving_stones",
             "soil" to "dirt",
             "trail" to null,
+            "cement" to "concrete", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158
             "bricks" to "paving_stones",
             "cobblestone:flattened" to  "sett",
             "brick" to "paving_stones",
