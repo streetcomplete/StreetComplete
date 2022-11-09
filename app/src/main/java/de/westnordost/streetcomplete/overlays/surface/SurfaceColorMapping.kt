@@ -12,7 +12,9 @@ val Surface?.color get() = when (this) {
     // no value should conflict with it
     //
     // surface=paved / surface=unpaved treated as unknown
-    // TODO what about footway:surface=paving_stones cycleway:surface=asphalt surface=paved
+    // in case like
+    // footway:surface=paving_stones cycleway:surface=asphalt surface=paved
+    // overlay asking for colour needs to decide which surface should be used
 
     // in general colours should be, in order
     // - distinctive from each other
