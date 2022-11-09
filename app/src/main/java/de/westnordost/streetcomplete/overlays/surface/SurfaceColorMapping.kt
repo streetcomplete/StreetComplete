@@ -4,6 +4,21 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.overlays.Color
 
 val Surface?.color get() = when (this) {
+    /*
+    TODO - try using colours from the offical palette
+    // blue
+    const val BLUE = "#1A87E6"
+    const val SKY = "#2FACE8"
+    const val CYAN = "#30D4EE"
+    // green-ish
+    const val AQUAMARINE = "#10C1B8"
+    const val TEAL = "#0DA082"
+    // orange-yellow
+    const val ORANGE = "#F37D1E"
+    const val GOLD = "#EEBD0D"
+    const val LIME = "#B6EF28"
+     */
+
     // design ideas:
     // - use not only color, somehow?
     // https://icolorpalette.com/collection/color-palette-collection
