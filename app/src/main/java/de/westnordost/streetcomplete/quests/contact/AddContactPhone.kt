@@ -45,9 +45,9 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
     ),
     "tourism" to arrayOf("zoo", "aquarium", "gallery", "museum", "alpine_hut", "camp_site", "caravan_site"),
     "shop" to arrayOf(
-        "beauty", "massage", "hairdresser","wool","tattoo","electrical","glaziery",
-        "computer","electronics","hifi","bicycle","outdoor","sports","art","craft","model",
-        "musical_instrument","camera","books","travel_agency","cheese","chocolate","coffee","health_food"
+        "beauty", "massage", "hairdresser", "wool", "tattoo", "electrical", "glaziery", "tailor",
+        "computer", "electronics", "hifi", "bicycle", "outdoor", "sports", "art", "craft", "model",
+        "musical_instrument", "camera", "books", "travel_agency", "cheese", "chocolate", "coffee", "health_food"
     ),
     "leisure" to arrayOf("fitness_centre", "bowling_alley", "sports_centre"),
     "office" to arrayOf(
@@ -58,5 +58,8 @@ val PLACES_FOR_CONTACT_QUESTS = mapOf(
         "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
         "electronics_repair", "stonemason", "winery"
     ),
-    "healthcare" to arrayOf("psychotherapist", "physiotherapist", "laboratory")
+    "healthcare" to arrayOf(
+        "psychotherapist", "physiotherapist", "laboratory", "dentist", "doctor", "alternative",
+        "optometrist", "podiatrist", "occupational_therapist", "pharmacy", "psychotherapist"
+    )
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ")
