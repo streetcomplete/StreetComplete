@@ -37,7 +37,9 @@ enum class Surface(val osmValue: String) {
         val surfaceReplacements: Map<String, String?> = mapOf(
             // that is intended for presentation of data
             // not for automatic bot replacements
-            // what about mud and metal_grid? Maybe start supporting as a full blown value TODO
+            // what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
+            // what about metal_grid?
+            // Maybe start supporting them as a full blown value TODO
             "cobblestone" to null,
             "earth" to "dirt",
             "paving_stones:30" to "paving_stones",
