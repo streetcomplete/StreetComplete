@@ -19,6 +19,9 @@ val Surface?.color get() = when (this) {
     const val LIME = "#B6EF28"
      */
 
+    // current one:
+    // https://davidmathlogic.com/colorblind/#%23DDDDDD-%23999999-%23B0B0E0-%2379A99C-%23BEADBE-%238888BB-%23000000-%237777AF-%23AA7777-%2370CC00-%23B0EF15-%23FFFF00-%23804000-%23BFA080-%23CCCCDD-%2310B4F2-%2395D4E1-%238DB7C1-%2368869A-%23F59709-%23CCFF00-%23CCFF00-%23CCFF00-%23FF0000
+
     // design ideas:
     // - use not only color, somehow?
     // https://icolorpalette.com/collection/color-palette-collection
