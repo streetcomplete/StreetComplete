@@ -27,11 +27,12 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 
+// remove before it gets to the PR TODO
 class UniversalSurfaceOverlay : Overlay {
 
     private val parentQuest = AddRoadSurface()
     override val title = R.string.overlay_universal_surface
-    override val icon = parentQuest.icon // use some icon which has mix of colours in background? TODO
+    override val icon = R.drawable.ic_quest_power
     override val changesetComment = parentQuest.changesetComment
     override val wikiLink: String = parentQuest.wikiLink
     override val achievements = parentQuest.achievements
