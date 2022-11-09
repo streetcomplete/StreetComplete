@@ -950,7 +950,7 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="user_statistics_filter_by_quest_type">"po vrsti"</string>
     <string name="user_profile_global_rank">"Globalni
 rang"</string>
-    <string name="user_profile_local_rank">"rang u
+    <string name="user_profile_local_rank">"rang u:
 %s"</string>
     <string name="user_profile_days_active">"Dani
 aktivnosti"</string>
@@ -1116,7 +1116,7 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Jeste li sigurni da ne postoji, čak ni na nešto pomaknutoj lokaciji? Ako niste potpuno sigurni, radije ostavite bilješku."</string>
     <string name="osm_element_gone_confirmation">"Ne postoji"</string>
-    <string name="leave_note">"Ostavite bilješku"</string>
+    <string name="leave_note">"Ostavi bilješku"</string>
     <string name="quest_shop_gone_title">"Što je tu sada?"</string>
     <string name="quest_shop_gone_vacant_answer">"Upražnjeno je"</string>
     <string name="quest_shop_gone_replaced_answer">"To je…"</string>
@@ -1591,9 +1591,7 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)."</string>
 
     <!-- Fuzzy -->
     <string name="quest_barrier_road_intersection">"Kako cesta ovdje prolazi kroz barijeru?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sidewalk_value_separate">"prikazan odvojeno na karti"</string>
+    <string name="quest_sidewalk_value_separate">"Nogostup, ali je prikazan odvojeno na karti"</string>
     <string name="quest_shoulder_value_yes">"zaustavna traka"</string>
     <string name="quest_shoulder_value_no">"bez zaustavne trake"</string>
     <string name="no_camera_permission_warning_title">"Dozvola korištenja kamere"</string>
@@ -1984,8 +1982,18 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Primjeni i odaberi grupu zadataka %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Upozorenje: Vaša grupa zadataka s istim nazivom će biti prebrisana!"</string>
     <string name="urlconfig_switch_hint">"Možete promijeniti Grupe zadataka u postavkama u bilo kojem trenutku."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
 
     <!-- Fuzzy -->
-    <string name="urlconfig_scan_qr_code_again">"Nakon instaliranja aplikacije, ponovno skenirajte QR kod da biste primijenili tu Grupu zadataka."</string>
-    <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
+    <string name="user_profile_current_week_title">"Zadnjih 7 dana"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Dani kojima ste nedavno kartirali"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_value_advisory_lane">"Preporučena traka za bicikle"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_scan_qr_code_again2">"Nakon instaliranja aplikacije ponovno skenirajte QR kod ili kliknite &lt;a href=\"%s\"&gt;ovu poveznicu&lt;/a&gt; za primjenu Grupe zadataka."</string>
 </resources>

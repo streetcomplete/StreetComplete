@@ -41,7 +41,7 @@ open class GenerateQuestListTask : DefaultTask() {
         wikiQuests = parseWikiTable(getWikiTableContent())
 
         val questFileContent = sourceDirectory.resolve("quests/QuestsModule.kt").readText()
-        val questNameRegex = Regex("(?<=^ {4})[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
+        val questNameRegex = Regex("(?<=^ {4}\\d+ to )[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
         val questNames =
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
 

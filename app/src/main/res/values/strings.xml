@@ -923,7 +923,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think something is missing -->
     <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
@@ -1589,6 +1589,16 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_none">None</string>
     <string name="overlay_lit">Street lighting</string>
     <string name="overlay_sidewalk">Sidewalks</string>
+
+    <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
+    <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
+    <string name="confirmation_replace_shop_yes">"Different place now"</string>
+    <string name="confirmation_replace_shop_no">"Still same place"</string>
+    <string name="name_label">Name:</string>
+    <string name="vacant_shop_title">Vacant shop</string>
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">Other kind of place</string>
+
     <string name="overlay_street_parking">Street parking</string>
     <string name="overlay_tracktype">Track firmess</string>
     <string name="overlay_road_surface">Road surface</string>
@@ -1607,10 +1617,4 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_path_surface_not_segregated">Single surface</string>
 
     <string name="overlay_addresses">Addresses</string>
-
-    <string name="overlay_shops">Shops</string>
-    <string name="name_label">Name:</string>
-    <string name="vacant_shop_title">Vacant shop</string>
-    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
-    <string name="unknown_shop_title">Other kind of place</string>
 </resources>

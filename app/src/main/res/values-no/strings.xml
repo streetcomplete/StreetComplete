@@ -2256,6 +2256,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Du lagde en node med …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Det er en møteplass"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"En møteplass er der man samles i en nødsituasjon. Det pleier å ligne på dette:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Det har et husnavn…"</string>
     <string name="quest_address_street_street_name_label">"Gatenavn:"</string>
     <string name="quest_address_street_hint2">"Trykk på gaten på kartet for å velge den"</string>
@@ -2297,4 +2299,13 @@ sorted alphabetically by title -->
     <string name="urlconfig_as_url">"Eller som en URL"</string>
     <string name="urlconfig_url_copied">"URL kopiert til utklippstavlen"</string>
     <string name="urlconfig_apply_title">"Bruk mal"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Denne uka"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Dine nylige kartleggingsdager"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"anbefalt sykkelfelt"</string>
 </resources>

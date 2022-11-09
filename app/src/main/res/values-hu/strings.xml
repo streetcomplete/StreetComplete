@@ -2470,6 +2470,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Létrehoztál egy pontot..."</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Gyülekezőhely"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"A gyülekezési pont az a hely, ahol az emberek vészhelyzet esetén összegyűlnek. Általában ehhez hasonlóan néz ki:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Van házszáma..."</string>
     <string name="quest_address_street_street_name_label">"Utcanév:"</string>
     <string name="quest_address_street_hint2">"Koppints az utcára a kiválasztáshoz"</string>
@@ -2503,4 +2505,7 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Mozgatható"</string>
     <string name="quest_buildingType_guardhouse">"Őrház"</string>
     <string name="quest_genericRef_title">"Mi az azonosítószám?"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Ezen a héten"</string>
 </resources>

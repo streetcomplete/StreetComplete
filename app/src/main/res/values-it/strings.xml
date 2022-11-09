@@ -402,7 +402,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non trovi nulla, dovresti chiedere gli orari di apertura all'interno."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_streetName_answer_noName_question">"Perché non ha un nome?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"È qualcosa tipo un viottolo d'accesso o una corsia di un parcheggio"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Sembra un vialetto d'accesso o la corsia di un parcheggio"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"È una strada agricola o forestale"</string>
     <string name="quest_streetName_answer_noName_noname">"Nessuna delle precedenti, semplicemente non ha nome"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Se i servizi igienici sono accessibili con la sedia a rotelle potrebbe esserci un simbolo come questo.
@@ -412,7 +412,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qui c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
 
     <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <string name="quest_generic_looks_like_this">"Normalmente è qualcosa tipo:"</string>
+    <string name="quest_generic_looks_like_this">"Solitamente si presentano così:"</string>
     <string name="quest_surface_value_metal">"Metallo"</string>
 
     <!-- Fuzzy -->
@@ -581,7 +581,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_toilets">"Servizi igienici"</string>
     <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
     <string name="quest_segregated_title">"Come sono disposte le corsie pedonali e ciclabili?"</string>
-    <string name="dialog_tutorial_upload">"Per caricare manualmente le tue modifiche, usa il pulsante simile a questo nella barra degli strumenti."</string>
+    <string name="dialog_tutorial_upload">"Per caricare manualmente le modifiche, premi il pulsante con questa icona nella barra degli strumenti."</string>
     <string name="quest_segregated_separated">"Separati tra loro"</string>
     <string name="quest_segregated_mixed">"Ciclisti e pedoni condividono lo stesso spazio"</string>
     <string name="quest_maxheight_title">"Qual è il limite di altezza qui?"</string>
@@ -666,7 +666,7 @@ Suddividere ora?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra improbabile. Sei sicuro sia corretto?"</string>
     <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente…"</string>
-    <string name="quest_maxweight_unsupported_sign_request_photo">"Vorresti lasciare una nota? Una nota con una foto permetterà ad altri mappatori di occuparsene."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Vuoi lasciare una nota? Una nota con foto allegata permetterà ad altri mappatori di occuparsene."</string>
     <string name="quest_handrail_title">"Queste scale hanno un corrimano?"</string>
     <string name="about_summary_current_version">"Versione corrente: %s"</string>
     <string name="quest_ref_answer_noRef">"Nessun numero o codice visibile…"</string>
@@ -782,7 +782,7 @@ Infine, ricorda di stare al sicuro: fa attenzione a ciò che ti circonda e non e
 
     <!-- Fuzzy -->
     <string name="link_learnosm_description">"Prima volta su OpenStreetMap? Questa è una guida per principianti"</string>
-    <string name="link_neis_one_description">"Una grande collezione di statistiche per i contributori di OpenStreetMap, come dove e come hai contribuito, chi c'è vicino a te, più le classifiche"</string>
+    <string name="link_neis_one_description">"Una grande raccolta di statistiche per chi contribuisce a OpenStreetMap: dove e come hai dato il tuo apporto, chi c'è vicino a te e, in più, le classifiche"</string>
     <string name="link_welcome_mat_description">"Informazioni generali su OpenStreetMap e come lavorare con OSM come organizzazione"</string>
     <string name="link_mapillary_description">"Un servizio e un'app per condividere immagini stradali create dagli utenti, con un permesso esplicito per usarle e contribuire a OSM"</string>
     <string name="link_openstreetcam_description">"Un servizio e un'app per condividere immagini stradali create dagli utenti, con un permesso esplicito per usarle e contribuire a OSM"</string>
@@ -1027,14 +1027,16 @@ riconoscimento"</string>
 
     <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"Il numero di corsie è differente su ogni lato"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo perché non utile in alcune regioni e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Questo tipo di missione non è attivo normalmente perché in alcune regioni non è utile e perché, per rispondere, probabilmente è necessario entrare nel luogo."</string>
     <string name="quest_dietType_explanation_kosher">"I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut."</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nessuna corsia ciclabile"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Al solito, tocca sul lato della figura, seleziona la risposta corretta e ripeti per l'altro lato. Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico che permette il transito delle bici in entrambi i sensi!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Come al solito, tocca un lato dell'illustrazione sottostante e scegli una risposta, poi ripeti per l'altro lato.
+
+Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio una strada a senso unico può permettere il transito delle bici in entrambi i sensi!"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Selezionare che non è presente una pista ciclabile o corsia dedicata"</string>
@@ -1290,7 +1292,7 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_smoothness_wrong_surface">"La superficie è diversa"</string>
     <string name="quest_smoothness_surface_value">"La superficie è stata indicata come:"</string>
     <string name="quest_smoothness_obstacle">"È presente un ostacolo"</string>
-    <string name="quest_smoothness_obstacle_hint">"Per favore, fornisci una risposta per l'uniformità. Ostacoli singoli come cordoli, dossi o grate per il bestiame possono essere ignorati. Ostacoli ripetuti o inaspettati devono essere presi in considerazione nella risposta."</string>
+    <string name="quest_smoothness_obstacle_hint">"Assegna una risposta per lo stato del manto stradale. La presenza di singoli ostacoli (cordoli, dossi, grate,...) può essere ignorata. Ostacoli ripetuti o difficilmente prevedibili, invece, devono essere considerati nella valutazione."</string>
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … segna per quale tipologia di veicoli la superficie è indicata. Da valutare nella sua interezza piuttosto che valutare le singole parti."</string>
     <string name="link_osmhydrant_description">"Cerca, aggiungi e modifica le caserme dei pompieri e gli idranti"</string>
     <string name="achievement_lifesaver_title">"Salvagente"</string>
@@ -1508,13 +1510,15 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Hai creato un nodo con…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"È un punto di raccolta"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un punto di raccolta è dove la popolazione può radunarsi in caso di emergenza. In genere assomiglia a questo:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"La casa ha un nome…"</string>
     <string name="quest_address_street_street_name_label">"Nome della strada:"</string>
     <string name="quest_address_street_hint2">"Premi sulla strada nella mappa per selezionarla"</string>
     <string name="quest_bicycle_incline_title">"In quale direzione si sale qua?"</string>
     <string name="quest_bicycle_incline_up_and_down">"È un saliscendi"</string>
     <string name="quest_drinking_water_type_title">"Come viene fornita l’acqua potabile qua?"</string>
-    <string name="quest_drinking_water_type_generic_water_fountain">"Un’altra fontanella"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Altra fontanella"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"La fontanella emette un piccolo getto d’acqua"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Solo per riempire le bottiglie"</string>
     <string name="quest_drinking_water_type_tap">"Rubinetto"</string>
@@ -1554,6 +1558,14 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Applicare e selezionare i preimpostati %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Attenzione: i tuoi preset con lo stesso nome saranno sovrascritti!"</string>
     <string name="urlconfig_switch_hint">"Puoi scegliere un diverso preset in ogni momento."</string>
-    <string name="urlconfig_scan_qr_code_again">"Dopo l'installazione dell'app, scansiona nuovamente il codice QR per applicare il preset."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Posteggio bici a due livelli"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_current_week_title">"Questa settimana"</string>
+
+    <!-- Fuzzy -->
+    <string name="user_profile_dates_mapped">"Giorni in cui hai recentemente mappato"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"corsia ciclabile a uso promiscuo"</string>
 </resources>

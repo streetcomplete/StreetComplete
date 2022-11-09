@@ -1352,6 +1352,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Criou uma nota com…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"É um ponto de encontro"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Um ponto de encontro é um local para onde as pessoas se devem dirigir no caso de emergência. Normalmente parece-se com isto:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"É o nome de um edifício…"</string>
     <string name="quest_address_street_street_name_label">"Nome da rua:"</string>
     <string name="quest_address_street_hint2">"Toque na rua no mapa para a selecionar"</string>
@@ -1397,6 +1399,5 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Aplicar e selecionar o modelo %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: o seu modelo com o mesmo nome será substituído!"</string>
     <string name="urlconfig_switch_hint">"Pode mudar de modelos nas configurações em qualquer altura."</string>
-    <string name="urlconfig_scan_qr_code_again">"Após instalar a aplicação, digitalize o código QR novamente para aplicar o modelo."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Suporte de bicicletas de dois níveis"</string>
 </resources>

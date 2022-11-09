@@ -1381,7 +1381,7 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Du hast einen Punkt erstellt mit …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Es ist ein Sammelplatz"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Ein Sammelplatz ist ein Ort, an dem sich Menschen im Notfall versammeln. Er sieht meist ähnlich aus wie dieser:"</string>
-    <string name="quest_address_answer_house_name2">"Es hat einen Hausnamen …"</string>
+    <string name="quest_address_answer_house_name2">"Adresse hat einen Hausnamen …"</string>
     <string name="quest_address_street_street_name_label">"Straßenname:"</string>
     <string name="quest_address_street_hint2">"Straße auf der Karte antippen, um sie auszuwählen"</string>
     <string name="quest_bicycle_incline_title">"Welche Richtung führt hier nach oben?"</string>
@@ -1403,9 +1403,7 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Anderer Ortstyp"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden (mit oder ohne Schlüssel)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fest"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Öffnen möglich"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Entfernbar"</string>
@@ -1426,11 +1424,15 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Voreinstellung %1$s anwenden und auswählen?"</string>
     <string name="urlconfig_apply_message_overwrite">"Hinweis: Deine Voreinstellung mit dem selben Namen wird überschrieben!"</string>
     <string name="urlconfig_switch_hint">"Du kannst die Voreinstellungen in den Einstellungen jederzeit ändern."</string>
-    <string name="urlconfig_scan_qr_code_again">"Scanne den QR-Code nach der Installation der App erneut, um die Voreinstellung zu übernehmen."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Doppelstock-Fahrradständer"</string>
-    <string name="user_profile_current_week_title">"Diese Woche"</string>
+    <string name="user_profile_current_week_title">"Letzte 7 Tage"</string>
     <string name="user_profile_dates_mapped">"Wann Du in letzter Zeit gemappt hast"</string>
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"Schutzstreifen"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Scanne den QR-Code oder klicke &lt;a href=\"%s\"&gt;diesen Link&lt;/a&gt; nach der Installation der App erneut, um die Voreinstellung zu übernehmen."</string>
+    <string name="confirmation_replace_shop_title">"Ist das jetzt ein anderer Ort?"</string>
+    <string name="confirmation_replace_shop_message">"In diesem Fall sind Details wie Öffnungszeiten auch geändert worden."</string>
+    <string name="confirmation_replace_shop_yes">"Jetzt ein anderer Ort"</string>
+    <string name="confirmation_replace_shop_no">"Noch der gleiche Ort"</string>
 </resources>

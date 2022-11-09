@@ -1873,6 +1873,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Ha creado un nodo con …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Es un punto de encuentro"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Un punto de reunión es donde las personas se reúnen en caso de una emergencia. Por lo general, se parece a esto:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Tiene un nombre de casa..."</string>
     <string name="quest_address_street_street_name_label">"Nombre de calle:"</string>
     <string name="quest_address_street_hint2">"Toque la calle en el mapa para seleccionarla"</string>
@@ -1917,5 +1919,4 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"¿Aplicar y seleccionar el ajuste preestablecido %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
     <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
-    <string name="urlconfig_scan_qr_code_again">"Después de instalar la aplicación, escanee el código QR nuevamente para aplicar el ajuste preestablecido."</string>
 </resources>

@@ -95,11 +95,14 @@ class AddPlaceName(
             ),
             "healthcare" to arrayOf(
                 // common
-                "audiologist", "optometrist", "counselling", "speech_therapist",
-                "sample_collection", "blood_donation",
+                "pharmacy", "doctor", "clinic", "dentist", "centre", "physiotherapist",
+                "laboratory", "alternative", "psychotherapist", "optometrist", "podiatrist",
+                "nurse", "counselling", "speech_therapist", "blood_donation", "sample_collection",
+                "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
+                "blood_bank", "nutrition_counselling",
 
-                // name & opening hours
-                "physiotherapist", "podiatrist",
+                // name & wheelchair
+                "rehabilitation", "hospice", "midwife", "birthing_centre"
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )

@@ -1,17 +1,17 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 384812
-  linesOfInterfaceMarkupChanged: 141659
+  linesOfCodeChanged: 385360
+  linesOfInterfaceMarkupChanged: 141664
   assetFilesChanged: 1947
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17085
+  linesOfCodeChanged: 17296
   linesOfInterfaceMarkupChanged: 4943
   assetFilesChanged: 610
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 16895
-  linesOfInterfaceMarkupChanged: 1888
+  linesOfCodeChanged: 17085
+  linesOfInterfaceMarkupChanged: 2357
   assetFilesChanged: 151
 - name: "Helium314"
   githubUsername: "Helium314"
@@ -26,16 +26,16 @@
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
   linesOfCodeChanged: 3950
+- name: "Matija Nalis"
+  githubUsername: "mnalis"
+  linesOfCodeChanged: 2871
+  linesOfInterfaceMarkupChanged: 229
+  assetFilesChanged: 69
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
   linesOfCodeChanged: 2627
   linesOfInterfaceMarkupChanged: 2180
   assetFilesChanged: 5
-- name: "Matija Nalis"
-  githubUsername: "mnalis"
-  linesOfCodeChanged: 2212
-  linesOfInterfaceMarkupChanged: 229
-  assetFilesChanged: 69
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -93,7 +93,7 @@
   assetFilesChanged: 56
 - name: "Tim"
   githubUsername: "tapetis"
-  linesOfCodeChanged: 334
+  linesOfCodeChanged: 341
   linesOfInterfaceMarkupChanged: 4
 - name: "mcliquid"
   githubUsername: "mcliquid"

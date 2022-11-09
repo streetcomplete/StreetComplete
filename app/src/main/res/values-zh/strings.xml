@@ -2760,6 +2760,5 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"应用并选择预设 %1$s？"</string>
     <string name="urlconfig_apply_message_overwrite">"注意：你的同名预设将被覆盖！"</string>
     <string name="urlconfig_switch_hint">"你可以在任何时候切换设置中的预设。"</string>
-    <string name="urlconfig_scan_qr_code_again">"安装应用程序后，再次扫描QR码以应用预设值。"</string>
     <string name="quest_bicycle_parking_type_two_tier">"双层自行车架"</string>
 </resources>
