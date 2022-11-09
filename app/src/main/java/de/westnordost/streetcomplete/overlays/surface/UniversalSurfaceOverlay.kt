@@ -65,7 +65,7 @@ class UniversalSurfaceOverlay : Overlay {
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
         // supported here
-        "footway:surface", "cycleway:surface", // TODO what about roads with THAT tags?
+        "footway:surface", "cycleway:surface", // roads with THAT tags will end with surface/footway display, but as it will happen in forkonly it is fine
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
         "cycleway:surface:note", "footway:surface:note", // TODO: verify support
 
