@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
-import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -11,15 +9,13 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
-import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val elementFilter = """
         ways with
           highway ~ ${ALL_PATHS_EXCEPT_STEPS.joinToString("|")}
-          and surface ${if (prefs.getBoolean(questPrefix(prefs) + SMOOTHNESS_FOR_ALL_PATH_SURFACES, false)) "" else "~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}"}
+          and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
           and access !~ private|no
           and segregated != yes
           and (!conveying or conveying = no)
@@ -56,18 +52,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
-
-    override val hasQuestSettings = true
-
-    override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + SMOOTHNESS_FOR_ALL_PATH_SURFACES,
-            R.string.quest_smoothness_generic_surface_message,
-            R.string.quest_smoothness_generic_surface_yes,
-            R.string.quest_smoothness_generic_surface_no
-        )
 }
 
 // smoothness is not asked for steps
 val ALL_PATHS_EXCEPT_STEPS = listOf("footway", "cycleway", "path", "bridleway")
-
-private const val SMOOTHNESS_FOR_ALL_PATH_SURFACES = "qs_AddPathSmoothness_all_surfaces"

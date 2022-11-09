@@ -155,9 +155,6 @@
     <string name="quest_generic_surface_message">Allow generic surface answers without requiring a note?</string>
     <string name="quest_generic_surface_yes">Allow without note</string>
     <string name="quest_generic_surface_no">Only with note (default)</string>
-    <string name="quest_smoothness_generic_surface_message">Ask smoothness for all surfaces? This will show images and descriptions for asphalt or gravel for surfaces the quest is not usually asked for.</string>
-    <string name="quest_smoothness_generic_surface_yes">All surfaces</string>
-    <string name="quest_smoothness_generic_surface_no">Default</string>
     <string name="quest_settings_osmose_level_title">Select issue severity levels to download</string>
     <string name="quest_settings_osmose_level_high">High priority (default)</string>
     <string name="quest_settings_osmose_level_high_and_normal">High and normal priority</string>

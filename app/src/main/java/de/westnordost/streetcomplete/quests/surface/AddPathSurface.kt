@@ -64,7 +64,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + ALLOW_GENERIC_PATH,
             R.string.quest_generic_surface_message,
             R.string.quest_generic_surface_yes,
-            R.string.quest_smoothness_generic_surface_no
+            R.string.quest_generic_surface_no
         )
 }
 

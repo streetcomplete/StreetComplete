@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
-import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -11,8 +9,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
-import de.westnordost.streetcomplete.quests.questPrefix
 
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
@@ -21,7 +17,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
             highway ~ ${ROADS_TO_ASK_SMOOTHNESS_FOR.joinToString("|")}
             or highway = service and service !~ driveway|slipway
           )
-          and surface ${if (prefs.getBoolean(questPrefix(prefs) + SMOOTHNESS_FOR_ALL_ROAD_SURFACES, false)) "" else "~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}"}
+          and surface ~ ${SURFACES_FOR_SMOOTHNESS.joinToString("|")}
           and (access !~ private|no or (foot and foot !~ private|no))
           and (
             !smoothness
@@ -58,15 +54,6 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
         if (answer is IsActuallyStepsAnswer) throw IllegalStateException()
         answer.applyTo(tags)
     }
-
-    override val hasQuestSettings = true
-
-    override fun getQuestSettingsDialog(context: Context): AlertDialog =
-        booleanQuestSettingsDialog(context, prefs, questPrefix(prefs) + SMOOTHNESS_FOR_ALL_ROAD_SURFACES,
-            R.string.quest_smoothness_generic_surface_message,
-            R.string.quest_smoothness_generic_surface_yes,
-            R.string.quest_smoothness_generic_surface_no
-        )
 }
 
 // surfaces that are actually used in AddSmoothnessForm
@@ -81,5 +68,3 @@ private val ROADS_TO_ASK_SMOOTHNESS_FOR = arrayOf(
     "unclassified", "residential", "living_street", "pedestrian", "track",
     // "service", // this is too much, and the information value is very low
 )
-
-private const val SMOOTHNESS_FOR_ALL_ROAD_SURFACES = "qs_AddRoadSmoothness_all_surfaces"
