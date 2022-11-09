@@ -18,7 +18,7 @@ val Surface?.color get() = when (this) {
 
     // in general colours should be, in order
     // - distinctive from each other
-    // - not confusing, especially with other elemnets (barriers, waterways)
+    // - not confusing, especially with other elements (barriers, waterways)
     // - similar values should have colours closer to each other
     //   surface=asphalt and surface=concrete should be more similar to each other
     //   than to the surface=woodchips
