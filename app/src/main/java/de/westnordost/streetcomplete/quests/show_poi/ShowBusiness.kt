@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.NoAnswerFragment
 import de.westnordost.streetcomplete.util.ktx.containsAny
@@ -25,10 +29,11 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
                 "cinema", "planetarium", "casino",                                                                     // amenities
-                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe", "payment_centre", // commercial
                 "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
                 "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+                "coworking_space",
 
                 "boat_rental",
                 "theatre",                             // culture
@@ -43,14 +48,13 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
                 "brothel", "gambling", "love_hotel", "stripclub"                         // bad stuff
             ),
             "tourism" to arrayOf(
-                "zoo", "aquarium", "theme_park", "gallery", "museum",
-                "attraction",
+                "zoo", "aquarium", "theme_park", "gallery", "museum", "attraction",
                 "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet" // accommodations
             ),
             "leisure" to arrayOf(
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon","escape_game",
-                "sauna","trampoline_park"
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "escape_game",
+                "sauna", "trampoline_park"
 
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
@@ -67,6 +71,8 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = NoAnswerFragment()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
-    }
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(IS_SHOP_EXPRESSION)
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {}
 }

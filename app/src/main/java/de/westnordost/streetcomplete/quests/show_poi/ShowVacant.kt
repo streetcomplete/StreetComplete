@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.quests.show_poi
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
 import de.westnordost.streetcomplete.osm.removeCheckDates
@@ -33,6 +37,9 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
     override fun getTitleArgs(tags: Map<String, String>): Array<String> {
         return arrayOf(tags.entries.toString())
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, timestampEdited: Long) {
         when (answer) {

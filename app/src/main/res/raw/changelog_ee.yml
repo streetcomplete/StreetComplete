@@ -1,6 +1,7 @@
 50.0_ee: |
   <ul>
   <li>Optionally resurvey opening hours StreetComplete doesn't understand</li>
+  <li>Highlight nearby elements for POI quests</li>
   </ul>
 
 v49.0_ee: |
