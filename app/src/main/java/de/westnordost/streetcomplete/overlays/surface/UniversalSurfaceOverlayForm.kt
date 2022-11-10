@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
+import de.westnordost.streetcomplete.osm.surface.removeAssociatedKeysIfSurfaceValueWasChanged
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
@@ -377,9 +378,14 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
                     if (it.containsKey("surface")) {
                         it.remove("surface")
                     }
+                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "cycleway:surface", cyclewaySurface)
+                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "footway:surface", footwaySurface)
                     it["cycleway:surface"] = cyclewaySurface.osmValue
                     it["footway:surface"] = footwaySurface.osmValue
                 } else {
+                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", mainSurface)
+                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "cycleway:surface", cyclewaySurface)
+                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "footway:surface", footwaySurface)
                     it["surface"] = mainSurface.osmValue
                     it["cycleway:surface"] = cyclewaySurface.osmValue
                     it["footway:surface"] = footwaySurface.osmValue
@@ -389,6 +395,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             // like RoadSurfaceOverlayForm is doing this
             val surfaceObject = selectedStatusForMainSurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", surfaceObject)
                 it.updateWithCheckDate("surface", surfaceObject.osmValue)
                 applyNoteAsNeeded(it, "surface:note", noteText(), surfaceObject)
             }.create()))

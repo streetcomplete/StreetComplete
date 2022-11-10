@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.removeAssociatedKeysIfSurfaceValueWasChanged
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
@@ -189,6 +190,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         val note = noteText()
         val surfaceObject = selectedStatusForMainSurface!!.value!!
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
+            removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", surfaceObject)
             it.updateWithCheckDate("surface", surfaceObject.osmValue)
             if (surfaceObject.shouldBeDescribed) {
                 it["surface:note"] = note!!

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
@@ -174,6 +175,16 @@ val ANYTHING_FULLY_PAVED = setOf(
 
 fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
     return setOf("$key:colour", "source:$key", "check_date:$key")
+}
+
+fun removeAssociatedKeysIfSurfaceValueWasChanged(tags: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
+    if (tags[surfaceKey] != surface.osmValue) {
+        for (key in associatedKeysToBeRemovedOnChange(surfaceKey)) {
+            if (presentTags.containsKey(key)) {
+                tags.remove(key)
+            }
+        }
+    }
 }
 
 val Surface.titleResId: Int get() = when (this) {
