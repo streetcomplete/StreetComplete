@@ -39,6 +39,7 @@
             android:textSize="@dimen/large_input"
             android:textAlignment="center"
             android:maxLines="1"
+            android:inputType="text|textNoSuggestions|textCapSentences"
             android:textColor="@color/traffic_white"
             android:background="#000000ff"
             tools:text="Sesame Street"
