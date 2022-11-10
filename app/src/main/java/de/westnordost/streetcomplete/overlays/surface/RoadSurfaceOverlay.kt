@@ -62,8 +62,8 @@ class RoadSurfaceOverlay : Overlay {
 
         // supported in all surface overlay
         "surface",
-        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO
-        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO
+        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
+        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
         "surface:colour", //  verify that it is removed on change TODO
         "surface:note" // TODO: test support
     )
