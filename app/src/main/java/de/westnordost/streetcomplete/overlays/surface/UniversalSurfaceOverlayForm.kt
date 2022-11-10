@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.applyNoteAsNeeded
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
@@ -348,22 +349,6 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         }
     }
 
-    private fun applyNoteAsNeeded(tags: StringMapChangesBuilder, noteTag: String, noteText: String?, surface: Surface?) {
-        if (surface == null) {
-            if (tags.containsKey(noteTag)) {
-                tags.remove(noteTag)
-            }
-            return
-        }
-        if (surface.shouldBeDescribed) {
-            tags[noteTag] = noteText!!
-        } else {
-            if (element!!.tags.containsKey(noteTag)) {
-                tags.remove(noteTag)
-            }
-        }
-    }
-
     override fun onClickOk() {
         if (selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null) {
             val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
@@ -372,8 +357,8 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
                 // main surface cannot have note specified here
                 // TODO what if it originally had one? figure out how to display it? skip such rare objects?
-                applyNoteAsNeeded(it, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
-                applyNoteAsNeeded(it, "footway:surface:note", footwayNoteText(), footwaySurface)
+                applyNoteAsNeeded(it, element!!.tags, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
+                applyNoteAsNeeded(it, element!!.tags, "footway:surface:note", footwayNoteText(), footwaySurface)
                 if (mainSurface == null) {
                     if (it.containsKey("surface")) {
                         it.remove("surface")
@@ -397,7 +382,7 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
                 removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", surfaceObject)
                 it.updateWithCheckDate("surface", surfaceObject.osmValue)
-                applyNoteAsNeeded(it, "surface:note", noteText(), surfaceObject)
+                applyNoteAsNeeded(it, element!!.tags, "surface:note", noteText(), surfaceObject)
             }.create()))
         }
     }

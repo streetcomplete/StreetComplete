@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
@@ -172,6 +173,23 @@ val ANYTHING_FULLY_PAVED = setOf(
     "concrete", "concrete:plates", "paving_stones",
     "metal", "wood", "unhewn_cobblestone"
 )
+
+fun applyNoteAsNeeded(tags: StringMapChangesBuilder, presentTags: Map<String, String>, noteTag: String, noteText: String?, surface: Surface?) {
+    if (surface == null) {
+        if (tags.containsKey(noteTag)) {
+            tags.remove(noteTag)
+        }
+        return
+    }
+    if (surface.shouldBeDescribed) {
+        tags[noteTag] = noteText!!
+    } else {
+        if (presentTags.containsKey(noteTag)) {
+            tags.remove(noteTag)
+        }
+    }
+}
+
 
 fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
     return setOf("$key:colour", "source:$key", "check_date:$key")
