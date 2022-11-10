@@ -174,18 +174,18 @@ val ANYTHING_FULLY_PAVED = setOf(
     "metal", "wood", "unhewn_cobblestone"
 )
 
-fun applyNoteAsNeeded(tags: StringMapChangesBuilder, presentTags: Map<String, String>, noteTag: String, noteText: String?, surface: Surface?) {
+fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String, String>, noteKey: String, noteText: String?, surface: Surface?) {
     if (surface == null) {
-        if (tags.containsKey(noteTag)) {
-            tags.remove(noteTag)
+        if (changes.containsKey(noteKey)) {
+            changes.remove(noteKey)
         }
         return
     }
     if (surface.shouldBeDescribed) {
-        tags[noteTag] = noteText!!
+        changes[noteKey] = noteText!!
     } else {
-        if (presentTags.containsKey(noteTag)) {
-            tags.remove(noteTag)
+        if (presentTags.containsKey(noteKey)) {
+            changes.remove(noteKey)
         }
     }
 }
@@ -195,11 +195,11 @@ fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
     return setOf("$key:colour", "source:$key", "check_date:$key")
 }
 
-fun removeAssociatedKeysIfSurfaceValueWasChanged(tags: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
-    if (tags[surfaceKey] != surface.osmValue) {
+fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
+    if (changes[surfaceKey] != surface.osmValue) {
         for (key in associatedKeysToBeRemovedOnChange(surfaceKey)) {
             if (presentTags.containsKey(key)) {
-                tags.remove(key)
+                changes.remove(key)
             }
         }
     }
