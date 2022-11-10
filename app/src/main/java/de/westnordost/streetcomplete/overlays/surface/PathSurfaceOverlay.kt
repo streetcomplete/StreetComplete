@@ -169,7 +169,7 @@ private fun getStyleForStandalonePath(element: Element): Style {
     val color = if (isNotSetButThatsOkay) {
         Color.INVISIBLE
     } else if (isNotSet && noteProvided != null) {
-        Color.BLACK // special styling needed for case where note is provided... - TODO test it in action
+        Color.BLACK
     } else {
         dominatingSurface.color
     }
