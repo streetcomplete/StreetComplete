@@ -36,10 +36,14 @@ enum class Surface(val osmValue: String) {
     companion object {
         val surfaceReplacements: Map<String, String?> = mapOf(
             // that is intended for presentation of data
-            // not for automatic bot replacements
+            // not for automatic bot replacements/bot edits
             // what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
             // what about metal_grid?
             // Maybe start supporting them as a full blown value TODO
+            // TODO: what happens when one value is converted and another is edited?
+            // footway:surface=brick cycleway:surface=brick
+            // and we edit one of them - what happens then?
+            // should it be treated as user accepting change?
             "cobblestone" to null,
             "earth" to "dirt",
             "paving_stones:30" to "paving_stones",
