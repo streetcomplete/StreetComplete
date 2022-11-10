@@ -135,7 +135,7 @@ private fun getStyle(element: Element): Style {
             // no action needed
         }
         is SurfaceMissingWithNote -> {
-            // no action needed
+            noteProvided = surfaceStatus.note
         }
     }
     // not set but indoor or private -> do not highlight as missing

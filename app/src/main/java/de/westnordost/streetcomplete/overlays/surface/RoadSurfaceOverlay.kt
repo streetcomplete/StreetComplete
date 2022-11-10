@@ -81,6 +81,7 @@ private fun getStyle(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
+    var noteProvided: String? = null
     var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
@@ -89,6 +90,7 @@ private fun getStyle(element: Element): Style {
             // use dashes?
             dominatingSurface = surfaceStatus.surface
             keyOfDominatingSurface = "surface"
+            noteProvided = surfaceStatus.note
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
@@ -101,15 +103,22 @@ private fun getStyle(element: Element): Style {
             // no action needed
         }
         is SurfaceMissingWithNote -> {
-            // no action needed
+            noteProvided = surfaceStatus.note
         }
         is CyclewayFootwaySurfacesWithNote -> {
             throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface:note and footway:surface:note")
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSetButThatsOkay = dominatingSurface in badSurfaces && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
-    val color = if (isNotSetButThatsOkay) Color.INVISIBLE else dominatingSurface.color
+    val isNotSet = dominatingSurface in badSurfaces
+    val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
+    val color = if (isNotSetButThatsOkay) {
+        Color.INVISIBLE
+    } else if (isNotSet && noteProvided != null) {
+        Color.BLACK
+    } else {
+        dominatingSurface.color
+    }
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
 
     // label for debugging
