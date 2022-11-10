@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -85,7 +86,9 @@ class PathSurfaceOverlay : Overlay {
         "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
         "surface:colour", // verify that it is removed on change TODO
         "surface:note"  // TODO: verify support
-    )
+    ) + associatedKeysToBeRemovedOnChange("surface") +
+    associatedKeysToBeRemovedOnChange("cycleway:surface") +
+    associatedKeysToBeRemovedOnChange("fotway:surface") // TODO remove double listing tags, pending https://github.com/streetcomplete/StreetComplete/issues/4626
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter

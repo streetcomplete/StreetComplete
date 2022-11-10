@@ -172,6 +172,10 @@ val ANYTHING_FULLY_PAVED = setOf(
     "metal", "wood", "unhewn_cobblestone"
 )
 
+fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
+    return setOf("$key:colour", "source:$key", "check_date:$key")
+}
+
 val Surface.titleResId: Int get() = when (this) {
     Surface.ASPHALT -> R.string.quest_surface_value_asphalt
     Surface.CONCRETE -> R.string.quest_surface_value_concrete
