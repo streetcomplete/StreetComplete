@@ -32,6 +32,7 @@ class ExternalQuest(private val externalList: ExternalList) : OtherSourceQuestTy
     override fun onAddedEdit(edit: ElementEdit, id: String) = externalList.markSolved(id)
 
     override fun onDeletedEdit(edit: ElementEdit, id: String?) {
+        if (edit.isSynced) return // if it's a real undo, can't undelete the line any more
         id?.let { externalList.markSolved(it, false) }
     }
 

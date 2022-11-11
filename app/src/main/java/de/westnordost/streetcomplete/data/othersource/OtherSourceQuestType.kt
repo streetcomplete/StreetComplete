@@ -66,7 +66,9 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
     fun onAddedEdit(edit: ElementEdit, id: String)
 
     /**
-     *  Called if the ElementEdit done as part of quest with the given [id] was deleted (undone).
+     *  Called if the ElementEdit done as part of quest with the given [id] was deleted.
+     *  This can be because an edit was undone (before or after upload), or because it was
+     *  already uploaded and removed because it is older than MAX_UNDO_HISTORY_AGE.
      *  [id] can be null in case edit was not properly associated with id.
      */
     fun onDeletedEdit(edit: ElementEdit, id: String?)

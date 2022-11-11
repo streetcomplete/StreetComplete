@@ -106,6 +106,7 @@ class ExternalList(context: Context) : KoinComponent {
                 break
             }
         }
+        if (lineToChange == -1) return // should not happen, but crashes also should not happen
         lines[lineToChange] = if (solved) lines[lineToChange] + ",solved"
             else lines[lineToChange].substringBeforeLast(',')
         file.writeText(lines.joinToString("\n"))

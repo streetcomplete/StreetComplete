@@ -33,6 +33,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : OtherSourceQuestType {
     override fun onAddedEdit(edit: ElementEdit, id: String) = osmoseDao.setDone(id)
 
     override fun onDeletedEdit(edit: ElementEdit, id: String?) {
+        if (edit.isSynced) return // already reported as done
         if (id == null)
             osmoseDao.setFromDoneToNotAnsweredNear(edit.position)
         else
