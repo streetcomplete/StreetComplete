@@ -43,7 +43,7 @@ class SurfaceKtTest {
 
     @Test
     fun `note tag results in a diferent status for roads`() {
-        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurface)
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurfaceWithNote)
     }
 
     @Test
