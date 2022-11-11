@@ -8,11 +8,11 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.Instant
 
 class AddFootwayPartSurfaceTest {
     private val questType = AddFootwayPartSurface()
@@ -78,7 +78,7 @@ class AddFootwayPartSurfaceTest {
             "segregated" to "yes",
             "footway:surface" to "asphalt",
             "check_date:footway:surface" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = nowAsEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -111,9 +111,9 @@ class AddFootwayPartSurfaceTest {
 
     @Test fun `smoothness tag removed when footway surface changes`() {
         questType.verifyAnswer(
-            mapOf("footway:surface" to "asphalt", "smoothness" to "excellent"),
+            mapOf("footway:surface" to "asphalt", "footway:smoothness" to "excellent"),
             SurfaceAnswer(Surface.PAVING_STONES),
-            StringMapEntryDelete("smoothness", "excellent"),
+            StringMapEntryDelete("footway:smoothness", "excellent"),
             StringMapEntryModify("footway:surface", "asphalt", "paving_stones")
         )
     }
