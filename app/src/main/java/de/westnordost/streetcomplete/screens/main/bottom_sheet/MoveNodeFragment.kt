@@ -113,6 +113,7 @@ class MoveNodeFragment :
             .getMapDataWithGeometry(node.position.enclosingBoundingBox(MAX_MOVE_DISTANCE + 5.0))
         for (e in mapData) {
             if (!tagsToFind.all { e.tags[it.key] == it.value }) continue
+            if (node == e) continue
             val icon = getPinIcon(e.tags)
             val title = getTitle(e.tags)
             val geometry = mapData.getGeometry(e.type, e.id) ?: continue
