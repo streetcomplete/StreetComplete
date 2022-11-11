@@ -99,6 +99,7 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
 * to be used when only surface and surface:note tag is relevant
 * for example if we want to tag road surface and we are free to skip sidewalk surface info
 * */
+// TODO this can and should get automated tests
 fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
@@ -114,6 +115,7 @@ fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     return SurfaceMissing
 }
 
+// TODO this can and should get automated tests
 fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
     var surfaceValue = providedSurfaceValue
     if (surfaceValue in Surface.surfaceReplacements) {
@@ -132,6 +134,7 @@ fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
     return foundSurface
 }
 
+// TODO this can and should get automated tests
 fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
     if (surfaceA == null || surfaceB == null) {
         return null
@@ -148,6 +151,7 @@ fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
     return null
 }
 
+// TODO this can and should get automated tests
 fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
     if (shared == "paved") {
@@ -174,6 +178,7 @@ val ANYTHING_FULLY_PAVED = setOf(
     "metal", "wood", "unhewn_cobblestone"
 )
 
+// TODO this can and should get automated tests
 fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String, String>, noteKey: String, noteText: String?, surface: Surface?) {
     if (surface == null) {
         if (changes.containsKey(noteKey)) {
@@ -190,11 +195,12 @@ fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String,
     }
 }
 
-
+// TODO this can and should get automated tests, probably
 fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
     return setOf("$key:colour", "source:$key") + getLastCheckDateKeys(key)
 }
 
+// TODO this can and should get automated tests, probably
 fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
     if (changes[surfaceKey] != surface.osmValue) {
         for (key in associatedKeysToBeRemovedOnChange(surfaceKey)) {
