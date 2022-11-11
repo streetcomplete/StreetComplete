@@ -71,24 +71,20 @@ class PathSurfaceOverlay : Overlay {
     }
     // https://taginfo.openstreetmap.org/search?q=surface
     val supportedSurfaceKeys = listOf(
-        // note that sidewalk surface keys such as
-        // are skipped for path query
+        // note that elements with sidewalk surface keys are exluded from path in the query above
         // some people tag combined footway-cycleway as cycleway with sidewalk...
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
-        // supported here
+        // supported in this overlay, not in all of them
         "footway:surface", "cycleway:surface",
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
         "cycleway:surface:note", "footway:surface:note", // TODO: verify support
 
+        // supported in all surface overlays
         "surface",
-        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
-        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
-        "surface:colour", // verify that it is removed on change TODO
         "surface:note"  // TODO: verify support
     ) + associatedKeysToBeRemovedOnChange("surface") +
-    associatedKeysToBeRemovedOnChange("cycleway:surface") +
-    associatedKeysToBeRemovedOnChange("fotway:surface") // TODO remove double listing tags, pending https://github.com/streetcomplete/StreetComplete/issues/4626
+    associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter

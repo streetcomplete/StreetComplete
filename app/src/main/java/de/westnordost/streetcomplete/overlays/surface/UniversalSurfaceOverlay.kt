@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -74,11 +75,9 @@ class UniversalSurfaceOverlay : Overlay {
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
         "surface",
-        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO https://github.com/streetcomplete/StreetComplete/issues/4626
-        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO https://github.com/streetcomplete/StreetComplete/issues/4626
-        "surface:colour", //  verify that it is removed on change TODO
         "surface:note" // TODO: verify support https://github.com/streetcomplete/StreetComplete/issues/4626
-    )
+    ) + associatedKeysToBeRemovedOnChange("surface") +
+        associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter

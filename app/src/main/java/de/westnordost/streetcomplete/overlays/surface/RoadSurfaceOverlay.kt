@@ -61,13 +61,10 @@ class RoadSurfaceOverlay : Overlay {
         // this is not a valid tag on road and therefore not supported here
         // "footway:surface", "cycleway:surface",
 
-        // supported in all surface overlay
+        // supported in all surface overlays
         "surface",
-        "check_date:surface", "check_date:footway:surface", "check_date:cycleway:surface", // verify that it is supported TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
-        "source:surface", "source:footway:surface", "source:cycleway:surface", // verify that it is removed on change TODO, see https://github.com/streetcomplete/StreetComplete/issues/4626
-        "surface:colour", //  verify that it is removed on change TODO
         "surface:note"
-    ) + associatedKeysToBeRemovedOnChange("surface") // TODO remove double listing tags, pending https://github.com/streetcomplete/StreetComplete/issues/4626
+    ) + associatedKeysToBeRemovedOnChange("surface")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter
