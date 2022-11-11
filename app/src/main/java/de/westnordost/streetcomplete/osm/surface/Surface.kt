@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
@@ -192,7 +193,7 @@ fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String,
 
 
 fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
-    return setOf("$key:colour", "source:$key", "check_date:$key")
+    return setOf("$key:colour", "source:$key") + getLastCheckDateKeys(key)
 }
 
 fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
