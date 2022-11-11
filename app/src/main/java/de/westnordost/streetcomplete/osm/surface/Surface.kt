@@ -134,7 +134,7 @@ fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
     return foundSurface
 }
 
-// TODO this can and should get automated tests
+// TODO run this tests
 fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
     if (surfaceA == null || surfaceB == null) {
         return null
@@ -151,7 +151,7 @@ fun commonSurfaceDescription(surfaceA: String?, surfaceB: String?): String? {
     return null
 }
 
-// TODO this can and should get automated tests
+// TODO run this tests
 fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     val shared = commonSurfaceDescription(surfaceA, surfaceB) ?: return null
     if (shared == "paved") {

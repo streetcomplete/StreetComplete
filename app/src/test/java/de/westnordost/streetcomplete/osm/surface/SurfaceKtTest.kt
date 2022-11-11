@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -28,5 +29,49 @@ class SurfaceKtTest {
     @Test
     fun `unknown surface does not crash or conflict`() {
         assertFalse(isSurfaceAndTracktypeMismatching("zażółć", "grade1"))
+    }
+
+    @Test
+    fun `specific surface generates specific surface status for roads`() {
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+    }
+
+    @Test
+    fun `specific surface generates specific surface status for paths`() {
+        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+    }
+
+    @Test
+    fun `note tag results in a diferent status for roads`() {
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurface)
+    }
+
+    @Test
+    fun `note tag results in a diferent status for paths`() {
+        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+    }
+
+    @Test
+    fun `find shared surface for two paved`() {
+        assertEquals(commonSurfaceDescription("asphalt", "paving_stones"), "paved")
+        assertEquals(commonSurfaceObject("asphalt", "paving_stones"), Surface.PAVED_ROAD)
+    }
+
+    @Test
+    fun `find shared surface for two unpaved`() {
+        assertEquals(commonSurfaceDescription("gravel", "sand"), "unpaved")
+        assertEquals(commonSurfaceObject("gravel", "sand"), Surface.UNPAVED_ROAD)
+    }
+
+    @Test
+    fun `find shared surface for two identical`() {
+        assertEquals(commonSurfaceDescription("sand", "sand"), "sand")
+        assertEquals(commonSurfaceObject("sand", "sand"), Surface.SAND)
+    }
+
+    @Test
+    fun `find shared surface for two without shared surface`() {
+        assertEquals(commonSurfaceDescription("asphalt", "sand"), null)
+        assertEquals(commonSurfaceObject("asphalt", "sand"), null)
     }
 }
