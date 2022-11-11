@@ -54,13 +54,13 @@ class SurfaceKtTest {
     @Test
     fun `find shared surface for two paved`() {
         assertEquals(commonSurfaceDescription("asphalt", "paving_stones"), "paved")
-        assertEquals(commonSurfaceObject("asphalt", "paving_stones"), Surface.PAVED_ROAD)
+        assertTrue(commonSurfaceObject("asphalt", "paving_stones")!!.osmValue == "paved")
     }
 
     @Test
     fun `find shared surface for two unpaved`() {
         assertEquals(commonSurfaceDescription("gravel", "sand"), "unpaved")
-        assertEquals(commonSurfaceObject("gravel", "sand"), Surface.UNPAVED_ROAD)
+        assertTrue(commonSurfaceObject("gravel", "sand")!!.osmValue == "unpaved")
     }
 
     @Test
