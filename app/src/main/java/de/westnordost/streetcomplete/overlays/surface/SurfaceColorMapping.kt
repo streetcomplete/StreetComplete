@@ -19,6 +19,7 @@ val Surface?.color get() = when (this) {
     CLAY, ARTIFICIAL_TURF, TARTAN -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note
     PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA, null -> Color.DATA_REQUESTED
 }    /*
+    // TODO create graphs as illustration of design process
     categorizing surface into 8+2 groups
 
     missing surface (including paved/unpaved) vs missing surface (including paved/unpaved) with note vs surface
