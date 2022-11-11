@@ -459,7 +459,11 @@ fun questTypeRegistry(
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-    139 to AddShoulder(), // needs minimal thinking
+
+    // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
+    // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
+    //139 to AddShoulder(), // needs minimal thinking
+
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
     142 to AddPathSmoothness(),
