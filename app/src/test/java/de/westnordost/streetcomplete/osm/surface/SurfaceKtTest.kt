@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.assertj.core.api.Assertions.assertThat
 
 class SurfaceKtTest {
     @Test
@@ -73,5 +77,23 @@ class SurfaceKtTest {
     fun `find shared surface for two without shared surface`() {
         assertEquals(commonSurfaceDescription("asphalt", "sand"), null)
         assertEquals(commonSurfaceObject("asphalt", "sand"), null)
+    }
+
+    @Test
+    fun `new schema`() {
+        val tags = mapOf("cycleway:surface" to "asphalt", "smoothness" to "excellent")
+        val surfaceKey = "cycleway:surface"
+        val expectedChanges = arrayOf(
+            StringMapEntryDelete("smoothness", "excellent"),
+            StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
+        )
+
+        // pack into function like
+        // fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String, String>, answer: T, vararg expectedChanges: StringMapEntryChange)
+        // ?
+        val cb = StringMapChangesBuilder(tags)
+        removeAssociatedKeysIfSurfaceValueWasChanged(cb, tags, surfaceKey, Surface.ASPHALT)
+        val changes = cb.create().changes
+        assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }
 }
