@@ -237,9 +237,6 @@
                     "label": "Ietilpība",
                     "placeholder": "50, 100, 200..."
                 },
-                "cash_in": {
-                    "label": "Naudas iemaksa"
-                },
                 "castle_type": {
                     "label": "Tips"
                 },
@@ -462,9 +459,6 @@
                 },
                 "fuel": {
                     "label": "Degviela"
-                },
-                "fuel_multi": {
-                    "label": "Degvielas veidi"
                 },
                 "gauge": {
                     "label": "Gabarīts"
@@ -860,7 +854,6 @@
                     "label": "Augs"
                 },
                 "plant/output/electricity": {
-                    "label": "Izejas jauda",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -1748,10 +1741,6 @@
                 "craft/boatbuilder": {
                     "name": "Laivu būvētājs",
                     "terms": "laivenieks,piķotājs"
-                },
-                "craft/brewery": {
-                    "name": "Darītava",
-                    "terms": "alkohols,alus,sidrs"
                 },
                 "craft/carpenter": {
                     "name": "Galdnieks"

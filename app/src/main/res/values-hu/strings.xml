@@ -124,7 +124,7 @@
     <string name="about_title_privacy_statement">"Adatvédelmi nyilatkozat"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_privacy_statement">"és Adatfelhasználás"</string>
+    <string name="about_summary_privacy_statement">"és adatfelhasználás"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Nemzeti ünnepek"</string>
@@ -265,7 +265,7 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="no_email_client">"Nincs telepített e-mail alkalmazásod."</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_keep_screen_on">"Kijelző maradjon bekapcsolva"</string>
+    <string name="pref_title_keep_screen_on">"A kijelző maradjon bekapcsolva"</string>
 
     <!-- Fuzzy -->
     <string name="download_server_error">"Kapcsolódási hiba a kérdések beolvasása során. Próbáld újra később."</string>
@@ -1805,7 +1805,7 @@ szintek"</string>
     <string name="resurvey_intervals_more_often">"Kérdezzen rá gyakrabban"</string>
     <string name="quest_is_defibrillator_inside_title">"Van-e defibrillátor (AED) egy épületben?"</string>
     <string name="about_title_translate">"Segíts az alkalmazás fordításában"</string>
-    <string name="about_description_translate">"a %1$s nyelvű fordítás %2$d%%-ban kész"</string>
+    <string name="about_description_translate">"A %1$s nyelvű fordítás %2$d%%-ban kész"</string>
     <string name="quest_oneway2_title">"Ez egy egyirányú utca? Melyik irányban?"</string>
     <string name="quest_oneway2_dir">"Egyirányú ebben az irányban"</string>
     <string name="quest_oneway2_no_oneway">"Nem egyerirányú"</string>
@@ -2505,7 +2505,28 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Mozgatható"</string>
     <string name="quest_buildingType_guardhouse">"Őrház"</string>
     <string name="quest_genericRef_title">"Mi az azonosítószám?"</string>
+    <string name="pref_category_quests_overlays">"Kérdések és kiemelések"</string>
+    <string name="quest_presets_rename">"Átnevez"</string>
+    <string name="quest_presets_share">"Megoszt"</string>
+    <string name="quest_presets_delete">"Töröl"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"A kiválasztott kérdéstípusok megosztása QR-kóddal."</string>
+    <string name="urlconfig_as_url">"URL"</string>
+    <string name="urlconfig_url_copied">"URL vágólapra másolva"</string>
+    <string name="urlconfig_apply_title">"Kiválasztás alkalmazása"</string>
+    <string name="urlconfig_apply_message">"Kérdések kiválasztása és alkalmazása? (%1$s)"</string>
+    <string name="urlconfig_apply_message_overwrite">"Ha van azonos névvel, az felül fog íródni!"</string>
+    <string name="urlconfig_switch_hint">"A kiválasztások között bármikor váltani lehet."</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Ezen a héten"</string>
+    <string name="user_profile_dates_mapped">"Térképezéssel töltött napok"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"nyitott kerékpársáv"</string>
+    <string name="confirmation_replace_shop_title">"Ez most egy másik üzlet?"</string>
+    <string name="confirmation_replace_shop_message">"Ebben az esetben a nyitvatartási idő, az elérhetőségek stb. is megváltoztak."</string>
+    <string name="confirmation_replace_shop_yes">"Ez egy másik üzlet lett"</string>
+    <string name="confirmation_replace_shop_no">"Ugyanaz a hely"</string>
 </resources>

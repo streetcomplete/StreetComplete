@@ -264,9 +264,6 @@
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
                 "building_area": {
                     "label": "Pastatas"
                 },
@@ -583,9 +580,6 @@
                 },
                 "fuel": {
                     "label": "Degalai"
-                },
-                "fuel_multi": {
-                    "label": "Kuro tipai"
                 },
                 "gambling": {
                     "label": "Žaidimai"
@@ -1048,7 +1042,6 @@
                     "label": "Tipas"
                 },
                 "plant/output/electricity": {
-                    "label": "Energijos išvesties galia",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -2136,10 +2129,6 @@
                 "craft/bookbinder": {
                     "name": "Knygrišys",
                     "terms": "knygryšys"
-                },
-                "craft/brewery": {
-                    "name": "Alaus darykla",
-                    "terms": "aludarė"
                 },
                 "craft/carpenter": {
                     "name": "Dailidė",

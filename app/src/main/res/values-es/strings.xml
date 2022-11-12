@@ -1848,6 +1848,9 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"Iluminado de noche y de día"</string>
     <string name="lit_value_automatic">"Se ilumina cuando alguien pasa"</string>
     <string name="overlay_sidewalk">"Aceras"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_generic_answer_is_indoors">"Esto está en el interior"</string>
     <string name="quest_entrance_reference">"¿Qué está señalizado en esta entrada?"</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">"Etiqueta de entrada y rango de pisos"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"Rango de pisos"</string>
@@ -1857,6 +1860,7 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_flat_range_label">"Rango planta:"</string>
     <string name="quest_entrance_reference_flat_range_to">"a"</string>
     <string name="default_disabled_msg_overlay">"Este tipo de búsqueda está deshabilitado de forma predeterminada porque ya existe una superposición con la que es más efectivo y eficiente agregar y actualizar estos datos."</string>
+    <string name="quest_camp_drinking_water_title">"¿Hay agua potable disponible gratuitamente para campistas?"</string>
     <string name="quest_camp_shower_title">"¿Hay duchas aquí?"</string>
     <string name="quest_camp_power_supply_title">"¿Hay alguna forma de que los clientes carguen su teléfono, computadora portátil, etc. aquí?"</string>
     <string name="quest_camp_type_title">"¿Quién puede acampar aquí?"</string>
@@ -1919,4 +1923,5 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"¿Aplicar y seleccionar el ajuste preestablecido %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
     <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
+    <string name="user_profile_current_week_title">"Últimos 7 días"</string>
 </resources>

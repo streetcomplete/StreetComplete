@@ -19,7 +19,7 @@
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_tilecache_size_message">"Spațiul rezervat  pe untitate de stocare externă pentru cache-ul de hartă, în megaocteți"</string>
+    <string name="pref_tilecache_size_message">"Spațiul rezervat pe untitate de stocare externă pentru cache-ul de hartă, în megaocteți"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Se arată toate notele"</string>
@@ -1497,6 +1497,7 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_barrier_bicycle_type_single">"Trecere între două bariere"</string>
     <string name="pref_title_language_select">"Selectați limba"</string>
     <string name="language_default">"Limba dispozitivului"</string>
+    <string name="on_floor">"la etajul %s"</string>
     <string name="select_street_parking_position">"Selectați poziția:"</string>
     <string name="select_street_parking_no">"Există semne sau marcaje aici?"</string>
     <string name="street_parking_parallel">"Paralel"</string>
@@ -1510,4 +1511,9 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="street_parking_separate">"Parcarea este afișată separat pe hartă"</string>
     <string name="street_parking_no">"Nu este parcare / nu este permisă parcarea"</string>
     <string name="street_parking_prohibited">"Parcarea interzisă"</string>
+    <string name="quest_address_house_number_label">"Numărul casei:"</string>
+    <string name="quest_fireHydrant_position_title">"Unde se află hidrantul?"</string>
+    <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
+    <string name="quest_fireHydrant_position_sidewalk">"Pe trotuar"</string>
+    <string name="quest_fireHydrant_position_parking_lot">"Într-un loc de parcare"</string>
 </resources>

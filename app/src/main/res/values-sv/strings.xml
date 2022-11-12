@@ -1700,4 +1700,8 @@ sorted alphabetically by title -->
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"rekommenderat cykelfält"</string>
     <string name="urlconfig_scan_qr_code_again2">"Efter att ha installerat appen, skanna QR-koden igen och tryck på &lt;a href=\"%s\"&gt;den här länken&lt;/a&gt; för att aktivera gruppen."</string>
+    <string name="confirmation_replace_shop_title">"Är det ett annat ställe nu?"</string>
+    <string name="confirmation_replace_shop_message">"I så fall kommer öppettiderna, kontaktinformation, m.m. att ha ändrats med."</string>
+    <string name="confirmation_replace_shop_yes">"Annat ställe nu"</string>
+    <string name="confirmation_replace_shop_no">"Fortfarande samma ställe"</string>
 </resources>

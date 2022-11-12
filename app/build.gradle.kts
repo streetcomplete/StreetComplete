@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4901
-        versionName = "49.0"
+        versionCode = 4902
+        versionName = "49.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -203,9 +203,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20221031"
+val nsiVersion = "v6.0.20221107"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.5.1"
+val presetsVersion = "v5.0.1"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

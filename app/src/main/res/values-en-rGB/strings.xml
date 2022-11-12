@@ -1087,7 +1087,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="street_parking_perpendicular">"Perpendicular"</string>
     <string name="street_parking_on_street">"On the carriageway"</string>
     <string name="street_parking_half_on_kerb">"Partially on carriageway"</string>
-    <string name="street_parking_on_kerb">"Yes,…"</string>
+    <string name="street_parking_on_kerb">"Adjacent to carriageway"</string>
 
     <!-- Not sure if we want commas… -->
     <string name="street_parking_street_side">"Adjacent to the carriageway only in dedicated spaces"</string>
@@ -1422,4 +1422,9 @@ sorted alphabetically by title -->
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"advisory bicycle lane"</string>
+    <string name="urlconfig_scan_qr_code_again2">"After installing the app, scan the QR code again or click &lt;a href=\"%s\"&gt;this link&lt;/a&gt; to apply the preset."</string>
+    <string name="confirmation_replace_shop_title">"Is it a different place now?"</string>
+    <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
+    <string name="confirmation_replace_shop_yes">"Different place now"</string>
+    <string name="confirmation_replace_shop_no">"Still same place"</string>
 </resources>

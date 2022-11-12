@@ -370,9 +370,6 @@
                     "label": "地庫樓層數",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "物料"
                 },
@@ -944,9 +941,6 @@
                 "fuel": {
                     "label": "燃料"
                 },
-                "fuel_multi": {
-                    "label": "燃料種類"
-                },
                 "gambling": {
                     "label": "遊戲"
                 },
@@ -1496,9 +1490,6 @@
                 "payment_multi": {
                     "label": "付款種類"
                 },
-                "payment_multi_fee": {
-                    "label": "付款種類"
-                },
                 "phases": {
                     "label": "相位",
                     "placeholder": "1, 2, 3..."
@@ -1601,7 +1592,6 @@
                     "label": "植物"
                 },
                 "plant/output/electricity": {
-                    "label": "電力輸出",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "playground": {
@@ -2226,7 +2216,6 @@
                 "tracktype": {
                     "label": "路徑種類",
                     "options": {
-                        "grade1": "實心：已鋪設路面或有剛硬的表面",
                         "grade2": "接近實心：混合了柔性物料的碎石/石塊",
                         "grade3": "混合了硬性與柔性的物料",
                         "grade4": "接近柔性：混合了硬性物料的土壤/砂粒/草",
@@ -3631,10 +3620,6 @@
                 "craft/bookbinder": {
                     "name": "書籍釘裝",
                     "terms": "釘裝"
-                },
-                "craft/brewery": {
-                    "name": "釀酒廠",
-                    "terms": "釀酒廠,啤酒釀造,啤酒釀製,啤酒釀制"
                 },
                 "craft/carpenter": {
                     "name": "木匠",
