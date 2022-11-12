@@ -5,7 +5,8 @@ import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.overlays.Color
 
 val Surface?.color get() = when (this) {
-    // https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28
+    // https://davidmathlogic.com/colorblind/#%23444444-%23FF0000-%231A87E6-%232FACE8-%2330D4EE-%2310C1B8-%230DA082-%23F37D1E-%23EEBD0D-%23B6EF28-%23DDDDDD-%23999999
+    // TODO! gray may be blocked by https://github.com/streetcomplete/StreetComplete/issues/4627
     ASPHALT, CONCRETE, PAVING_STONES, WOOD, METAL -> Color.BLUE
     CONCRETE_PLATES, CONCRETE_LANES, SETT -> Color.SKY
     COMPACTED -> Color.CYAN
