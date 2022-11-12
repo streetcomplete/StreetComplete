@@ -355,7 +355,7 @@ abstract class AbstractOverlayForm :
 
             if (element is Node // add moveNodeAnswer only if it's a free floating node
                 && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) { // todo: allow relations except multipolygon?
+                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
                 answers.add(AnswerItem(R.string.move_node) { moveNode() })
             }
 
