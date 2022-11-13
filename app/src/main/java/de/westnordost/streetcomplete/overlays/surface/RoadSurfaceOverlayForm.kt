@@ -167,11 +167,6 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         return true
     }
 
-    companion object {
-        private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
-        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
-    }
-
     fun noteText(): String? {
         return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
@@ -190,15 +185,24 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         val note = noteText()
         val surfaceObject = selectedStatusForMainSurface!!.value!!
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-            removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", surfaceObject)
-            it.updateWithCheckDate("surface", surfaceObject.osmValue)
+            editTags(it, element!!.tags, surfaceObject, note)
+        }.create()))
+    }
+
+    companion object {
+        fun editTags(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
+            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject)
+            changesBuilder.updateWithCheckDate("surface", surfaceObject.osmValue)
             if (surfaceObject.shouldBeDescribed) {
-                it["surface:note"] = note!!
+                changesBuilder["surface:note"] = note!!
             } else {
-                if (element!!.tags.containsKey("surface:note")) {
-                    it.remove("surface:note")
+                if (presentTags.containsKey("surface:note")) {
+                    changesBuilder.remove("surface:note")
                 }
             }
-        }.create()))
+        }
+
+        private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
+        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
     }
 }

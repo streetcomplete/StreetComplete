@@ -311,15 +311,6 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
             return true
         }
 
-        companion object {
-        private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
-        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
-        private const val SELECTED_CYCLEWAY_SURFACE_INDEX = "selected_cycleway_surface_index"
-        private const val SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT = "selected_cycleway_surface_index_note_text"
-        private const val SELECTED_FOOTWAY_SURFACE_INDEX = "selected_footway_surface_index"
-        private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text"
-    }
-
     fun noteText(): String? {
         return binding.explanationInputMainSurface.nonBlankTextOrNull
     }
@@ -353,37 +344,55 @@ class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
         if (selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null) {
             val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
             val footwaySurface = selectedStatusForFootwaySurface!!.value!!
-            val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                // main surface cannot have note specified here
-                // TODO what if it originally had one? figure out how to display it? skip such rare objects?
-                applyNoteAsNeeded(it, element!!.tags, "cycleway:surface:note", cyclewayNoteText(), cyclewaySurface)
-                applyNoteAsNeeded(it, element!!.tags, "footway:surface:note", footwayNoteText(), footwaySurface)
-                if (mainSurface == null) {
-                    if (it.containsKey("surface")) {
-                        it.remove("surface")
-                    }
-                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "cycleway:surface", cyclewaySurface)
-                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "footway:surface", footwaySurface)
-                    it["cycleway:surface"] = cyclewaySurface.osmValue
-                    it["footway:surface"] = footwaySurface.osmValue
-                } else {
-                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", mainSurface)
-                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "cycleway:surface", cyclewaySurface)
-                    removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "footway:surface", footwaySurface)
-                    it["surface"] = mainSurface.osmValue
-                    it["cycleway:surface"] = cyclewaySurface.osmValue
-                    it["footway:surface"] = footwaySurface.osmValue
-                }
+                editTagsWithSeparateCyclewayAndFootwayAnswer(it, element!!.tags, cyclewaySurface, cyclewayNoteText(), footwaySurface, footwayNoteText(), noteText())
             }.create()))
         } else {
             // like RoadSurfaceOverlayForm is doing this
             val surfaceObject = selectedStatusForMainSurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, element!!.tags, "surface", surfaceObject)
-                it.updateWithCheckDate("surface", surfaceObject.osmValue)
-                applyNoteAsNeeded(it, element!!.tags, "surface:note", noteText(), surfaceObject)
+                editTagsWithMainSurfaceAnswer(it, element!!.tags, surfaceObject, noteText())
             }.create()))
         }
     }
+
+    companion object {
+        fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
+            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject)
+            changesBuilder.updateWithCheckDate("surface", surfaceObject.osmValue)
+            applyNoteAsNeeded(changesBuilder, presentTags, "surface:note", note, surfaceObject)
+        }
+
+        fun editTagsWithSeparateCyclewayAndFootwayAnswer(it: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
+            // main surface cannot have note added by SC
+            // TODO what if it originally had one? figure out how to display it? skip such rare objects?
+            val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
+            applyNoteAsNeeded(it, presentTags, "cycleway:surface:note", cyclewayNote, cyclewaySurface)
+            applyNoteAsNeeded(it, presentTags, "footway:surface:note", footwayNote, footwaySurface)
+            if (mainSurface == null) {
+                if (it.containsKey("surface")) {
+                    it.remove("surface")
+                }
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "cycleway:surface", cyclewaySurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "footway:surface", footwaySurface)
+                it["cycleway:surface"] = cyclewaySurface.osmValue
+                it["footway:surface"] = footwaySurface.osmValue
+            } else {
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "surface", mainSurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "cycleway:surface", cyclewaySurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "footway:surface", footwaySurface)
+                it["surface"] = mainSurface.osmValue
+                it["cycleway:surface"] = cyclewaySurface.osmValue
+                it["footway:surface"] = footwaySurface.osmValue
+            }
+        }
+
+        private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
+        private const val SELECTED_MAIN_SURFACE_NOTE_TEXT = "selected_main_surface_note_text"
+        private const val SELECTED_CYCLEWAY_SURFACE_INDEX = "selected_cycleway_surface_index"
+        private const val SELECTED_CYCLEWAY_SURFACE_NOTE_TEXT = "selected_cycleway_surface_index_note_text"
+        private const val SELECTED_FOOTWAY_SURFACE_INDEX = "selected_footway_surface_index"
+        private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text"
+    }
+
 }
