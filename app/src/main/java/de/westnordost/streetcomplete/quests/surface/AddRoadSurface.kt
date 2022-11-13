@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.surface
+package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd

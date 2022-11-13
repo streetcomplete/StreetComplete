@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 data class SidewalkSurface(

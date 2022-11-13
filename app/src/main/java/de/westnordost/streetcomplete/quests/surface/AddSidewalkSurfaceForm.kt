@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm

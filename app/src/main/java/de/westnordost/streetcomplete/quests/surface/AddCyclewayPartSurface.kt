@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
+import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 

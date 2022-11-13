@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.surface
+package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.Tags

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.asStreetSideItem
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
@@ -19,7 +20,6 @@ import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.quests.surface.SidewalkSurface
-import de.westnordost.streetcomplete.quests.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController

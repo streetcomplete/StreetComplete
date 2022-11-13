@@ -10,6 +10,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 
 class AddSidewalkSurfaceTest {
     private val questType = AddSidewalkSurface()
