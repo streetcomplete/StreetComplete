@@ -362,27 +362,27 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
-        fun editTagsWithSeparateCyclewayAndFootwayAnswer(it: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
+        fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
             // main surface cannot have note added by SC
             // TODO what if it originally had one? figure out how to display it? skip such rare objects?
             val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
-            applyNoteAsNeeded(it, presentTags, "cycleway:surface:note", cyclewayNote, cyclewaySurface)
-            applyNoteAsNeeded(it, presentTags, "footway:surface:note", footwayNote, footwaySurface)
+            applyNoteAsNeeded(changesBuilder, presentTags, "cycleway:surface:note", cyclewayNote, cyclewaySurface)
+            applyNoteAsNeeded(changesBuilder, presentTags, "footway:surface:note", footwayNote, footwaySurface)
             if (mainSurface == null) {
-                if (it.containsKey("surface")) {
-                    it.remove("surface")
+                if (changesBuilder.containsKey("surface")) {
+                    changesBuilder.remove("surface")
                 }
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "cycleway:surface", cyclewaySurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "footway:surface", footwaySurface)
-                it["cycleway:surface"] = cyclewaySurface.osmValue
-                it["footway:surface"] = footwaySurface.osmValue
+                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
+                changesBuilder["cycleway:surface"] = cyclewaySurface.osmValue
+                changesBuilder["footway:surface"] = footwaySurface.osmValue
             } else {
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "surface", mainSurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "cycleway:surface", cyclewaySurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(it, presentTags, "footway:surface", footwaySurface)
-                it["surface"] = mainSurface.osmValue
-                it["cycleway:surface"] = cyclewaySurface.osmValue
-                it["footway:surface"] = footwaySurface.osmValue
+                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", mainSurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
+                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
+                changesBuilder["surface"] = mainSurface.osmValue
+                changesBuilder["cycleway:surface"] = cyclewaySurface.osmValue
+                changesBuilder["footway:surface"] = footwaySurface.osmValue
             }
         }
 
