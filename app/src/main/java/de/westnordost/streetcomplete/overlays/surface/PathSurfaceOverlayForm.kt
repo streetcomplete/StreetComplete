@@ -393,5 +393,4 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         private const val SELECTED_FOOTWAY_SURFACE_INDEX = "selected_footway_surface_index"
         private const val SELECTED_FOOTWAY_SURFACE_NOTE_TEXT = "selected_footway_surface_index_note_text"
     }
-
 }
