@@ -81,7 +81,9 @@ class SurfaceKtTest {
 
     @Test
     fun `new schema`() {
-        val tags = mapOf("cycleway:surface" to "asphalt", "smoothness" to "excellent")
+        // TODO: finish
+        // TODO SurfaceAnswer should get most of overlay code...
+        val tags = mapOf("surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red")
         val surfaceKey = "cycleway:surface"
         val expectedChanges = arrayOf(
             StringMapEntryDelete("smoothness", "excellent"),
