@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
-import de.westnordost.streetcomplete.osm.surface.applyNoteAsNeeded
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
@@ -367,23 +366,27 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             // TODO what if it originally had one? figure out how to display it? skip such rare objects?
             // TODO SurfaceAnswer should get most of overlay edit code...
             val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
-            applyNoteAsNeeded(changesBuilder, presentTags, "cycleway:surface:note", cyclewayNote, cyclewaySurface)
-            applyNoteAsNeeded(changesBuilder, presentTags, "footway:surface:note", footwayNote, footwaySurface)
             if (mainSurface == null) {
                 if (changesBuilder.containsKey("surface")) {
                     changesBuilder.remove("surface")
                 }
+                if (changesBuilder.containsKey("surface:note") && generalSurfaceNote == null) {
+                    changesBuilder.remove("surface:note")
+                }
+                if (generalSurfaceNote != null && changesBuilder["surface:note"] != generalSurfaceNote) {
+                    changesBuilder["surface:note"] = generalSurfaceNote
+                }
                 removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
                 removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
-                changesBuilder["cycleway:surface"] = cyclewaySurface.osmValue
-                changesBuilder["footway:surface"] = footwaySurface.osmValue
+                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             } else {
                 removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", mainSurface)
                 removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
                 removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
-                changesBuilder["surface"] = mainSurface.osmValue
-                changesBuilder["cycleway:surface"] = cyclewaySurface.osmValue
-                changesBuilder["footway:surface"] = footwaySurface.osmValue
+                SurfaceAnswer(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
+                SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
+                SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             }
         }
 

@@ -77,5 +77,44 @@ class PathSurfaceOverlayFormKtTest {
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.ASPHALT, null, Surface.GRAVEL, null, null, *expectedChanges)
     }
+
+    @Test
+    fun `note tag is removed if no longer supplied`() {
+        val tags = mapOf("highway" to "path", "surface" to "unpaved", "surface:note" to "you get what you reward for")
+        val expectedChanges = arrayOf(
+            StringMapEntryModify("surface", "unpaved", "ground"),
+            StringMapEntryDelete("surface:note", "you get what you reward for"),
+        )
+        verifyAnswerWithMainSurfaceOnly(tags, Surface.GROUND_AREA, null, *expectedChanges)
+    }
+
+    @Test
+    fun `note tags are removed if no longer supplied`() {
+        val tags = mapOf("highway" to "path",
+            "surface" to "unpaved", "surface:note" to "you get what you reward for",
+            "cycleway:surface" to "paving_stones", "cycleway:surface:note" to "a",
+            "footway:surface" to "asphalt", "footway:surface:note" to "🤷")
+        val expectedChanges = arrayOf(
+            StringMapEntryModify("surface", "unpaved", "paved"),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "sett"),
+            StringMapEntryModify("footway:surface", "asphalt", "unhewn_cobblestone"),
+            StringMapEntryDelete("surface:note", "you get what you reward for"),
+            StringMapEntryDelete("cycleway:surface:note", "a"),
+            StringMapEntryDelete("footway:surface:note", "🤷"),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.SETT, null, Surface.UNHEWN_COBBLESTONE, null, null, *expectedChanges)
+    }
+
+    @Test
+    fun `note tags are kept if in answer, even while surface tag is removed`() {
+        val tags = mapOf("highway" to "path",
+            "surface" to "unpaved", "surface:note" to "How do you eat an elephant? One bite at a time")
+        val expectedChanges = arrayOf(
+            StringMapEntryDelete("surface", "unpaved"),
+            StringMapEntryAdd("cycleway:surface", "paving_stones"),
+            StringMapEntryAdd("footway:surface", "sand"),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVING_STONES, null, Surface.SAND, null, "How do you eat an elephant? One bite at a time", *expectedChanges)
+    }
 }
 

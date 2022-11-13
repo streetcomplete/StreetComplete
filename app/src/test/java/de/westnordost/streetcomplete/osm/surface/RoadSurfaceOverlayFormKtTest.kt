@@ -50,10 +50,18 @@ class RoadSurfaceOverlayFormKtTest {
         verifyAnswer(tags, Surface.ASPHALT, "zażółć", *expectedChanges)
     }
 
+    @Test
+    fun `note tag is removed if no longer supplied`() {
+        val tags = mapOf("highway" to "tertiary", "surface" to "unpaved", "surface:note" to "you get what you reward for")
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface", "ground"),
+            StringMapEntryDelete("surface:note", "you get what you reward for"),
+        )
+        verifyAnswer(tags, Surface.GROUND_AREA, null, *expectedChanges)
+    }
 
     @Test
     fun `sidewalk surface marked as tag on road is not touched`() {
-        // may happen in cases where it was present already
         val tags = mapOf("highway" to "tertiary", "sidewalk:surface" to "paving_stones")
         val expectedChanges = arrayOf(
             StringMapEntryAdd("surface", "asphalt"),

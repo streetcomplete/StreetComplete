@@ -82,17 +82,17 @@ class SurfaceKtTest {
     @Test
     fun `test removing associated tags`() {
         val tags = mapOf("surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red")
-        val surfaceKey = "cycleway:surface"
+        val surfaceKey = "surface"
         val expectedChanges = arrayOf(
-            StringMapEntryDelete("smoothness", "excellent"),
-            StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
+            //StringMapEntryDelete("smoothness", "excellent"), // TODO that is overly confusing, it really should be rolled into general surface... // TODO - is surface:colour already considered somewhere?
+            StringMapEntryDelete("surface:colour", "red"),
         )
 
         // pack into function like
         // fun <T> OsmElementQuestType<T>.verifyAnswer(tags: Map<String, String>, answer: T, vararg expectedChanges: StringMapEntryChange)
         // ?
         val cb = StringMapChangesBuilder(tags)
-        removeAssociatedKeysIfSurfaceValueWasChanged(cb, tags, surfaceKey, Surface.ASPHALT)
+        removeAssociatedKeysIfSurfaceValueWasChanged(cb, tags, surfaceKey, Surface.PAVING_STONES)
         val changes = cb.create().changes
         assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }

@@ -199,8 +199,8 @@ fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
 }
 
 // TODO this can and should get automated tests, probably
-fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, surface: Surface) {
-    if (changes[surfaceKey] != surface.osmValue) {
+fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, newSurface: Surface) {
+    if (changes[surfaceKey] != newSurface.osmValue) {
         for (key in associatedKeysToBeRemovedOnChange(surfaceKey)) {
             if (presentTags.containsKey(key)) {
                 changes.remove(key)
