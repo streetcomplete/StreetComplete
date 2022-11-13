@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class UniversalSurfaceOverlayForm : AbstractOverlayForm() {
+class PathSurfaceOverlayForm : AbstractOverlayForm() {
     // TODO allow switching between "path surface" and "sidewalk tagged as road property surface"
     override val contentLayoutResId = R.layout.fragment_overlay_path_surface_select
     private val binding by contentViewBinding(FragmentOverlayPathSurfaceSelectBinding::bind)

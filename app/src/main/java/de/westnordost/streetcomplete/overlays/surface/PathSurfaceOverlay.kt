@@ -92,7 +92,7 @@ class PathSurfaceOverlay : Overlay {
 
     override fun createForm(element: Element?) =
         if (element != null) {
-            if (element.tags["highway"] in ALL_PATHS) UniversalSurfaceOverlayForm()
+            if (element.tags["highway"] in ALL_PATHS) PathSurfaceOverlayForm()
             else if (element.tags["highway"] in ALL_ROADS) SidewalkSurfaceOverlayForm()
             else null
         } else null

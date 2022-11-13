@@ -84,7 +84,7 @@ class UniversalSurfaceOverlay : Overlay {
     )
 
     override fun createForm(element: Element?) =
-        if (element != null) UniversalSurfaceOverlayForm()
+        if (element != null) PathSurfaceOverlayForm()
         else null
 }
 

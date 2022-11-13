@@ -5,14 +5,14 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.overlays.surface.RoadSurfaceOverlayForm
-import de.westnordost.streetcomplete.overlays.surface.UniversalSurfaceOverlayForm
+import de.westnordost.streetcomplete.overlays.surface.PathSurfaceOverlayForm
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
-class UniversalSurfaceOverlayFormKtTest {
+class PathSurfaceOverlayFormKtTest {
     private fun verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags: Map<String, String>, cyclewaySurfaceAnswer: Surface, cyclewayNote: String?, footwaySurfaceAnswer: Surface, footwayNote: String?, noteAnswer: String?, vararg expectedChanges: StringMapEntryChange) {
         val cb = StringMapChangesBuilder(tags)
-        UniversalSurfaceOverlayForm.editTagsWithSeparateCyclewayAndFootwayAnswer(cb, tags, cyclewaySurfaceAnswer, cyclewayNote, footwaySurfaceAnswer, footwayNote, noteAnswer)
+        PathSurfaceOverlayForm.editTagsWithSeparateCyclewayAndFootwayAnswer(cb, tags, cyclewaySurfaceAnswer, cyclewayNote, footwaySurfaceAnswer, footwayNote, noteAnswer)
         val changes = cb.create().changes
         Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }
