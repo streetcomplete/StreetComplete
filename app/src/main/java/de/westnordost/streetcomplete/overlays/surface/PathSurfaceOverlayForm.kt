@@ -365,6 +365,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
             // main surface cannot have note added by SC
             // TODO what if it originally had one? figure out how to display it? skip such rare objects?
+            // TODO SurfaceAnswer should get most of overlay edit code...
             val mainSurface = commonSurfaceObject(cyclewaySurface.osmValue, footwaySurface.osmValue)
             applyNoteAsNeeded(changesBuilder, presentTags, "cycleway:surface:note", cyclewayNote, cyclewaySurface)
             applyNoteAsNeeded(changesBuilder, presentTags, "footway:surface:note", footwayNote, footwaySurface)
