@@ -27,7 +27,7 @@ class PathSurfaceOverlayFormKtTest {
     @Test
     fun `single new different value is applied, associated tags are removed`() {
         // TODO SurfaceAnswer should get most of overlay edit code...
-        val tags = mapOf("surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red", "tractype" to "grade5")
+        val tags = mapOf("surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red", "tracktype" to "grade5")
         val expectedChanges = arrayOf(
             StringMapEntryDelete("smoothness", "bad"),
             StringMapEntryDelete("surface:colour", "red"),
