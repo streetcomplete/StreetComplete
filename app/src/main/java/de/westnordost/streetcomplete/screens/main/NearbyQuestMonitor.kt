@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
@@ -44,19 +45,21 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .build()
 
+    @SuppressLint("UnspecifiedImmutableFlag") // dear android studio: demanding to set mutability for API levels where it's not possible is a rather shitty idea
     private fun intent(position: LatLon): PendingIntent {
         val intent = Intent(this, MainActivity::class.java)
         intent.action = Intent.ACTION_VIEW
         intent.data = buildGeoUri(position.latitude, position.longitude)
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         } else {
-            PendingIntent.getActivity(this, 1, intent, 0)
+            PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
     }
 
     private val visibleQuestsSource: VisibleQuestsSource by inject()
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     override fun onBind(intent: Intent): IBinder {
         running = true
         // create notification channels and service notification
