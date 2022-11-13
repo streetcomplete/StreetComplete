@@ -16,15 +16,16 @@ import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.SurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.applyNoteAsNeeded
+import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.removeAssociatedKeysIfSurfaceValueWasChanged
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
@@ -357,9 +358,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
-            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject)
-            changesBuilder.updateWithCheckDate("surface", surfaceObject.osmValue)
-            applyNoteAsNeeded(changesBuilder, presentTags, "surface:note", note, surfaceObject)
+            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject) // TODO: into SurfaceAnswer!
+            SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
         fun editTagsWithSeparateCyclewayAndFootwayAnswer(it: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
