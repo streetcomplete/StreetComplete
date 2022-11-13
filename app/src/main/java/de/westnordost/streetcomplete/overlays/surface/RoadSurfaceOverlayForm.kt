@@ -15,8 +15,10 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceInfo
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
+import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
 import de.westnordost.streetcomplete.osm.surface.removeAssociatedKeysIfSurfaceValueWasChanged
@@ -191,15 +193,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTags(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
-            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject)
-            changesBuilder.updateWithCheckDate("surface", surfaceObject.osmValue)
-            if (surfaceObject.shouldBeDescribed) {
-                changesBuilder["surface:note"] = note!!
-            } else {
-                if (presentTags.containsKey("surface:note")) {
-                    changesBuilder.remove("surface:note")
-                }
-            }
+            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject) // TODO: into SurfaceAnswer!
+            SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"

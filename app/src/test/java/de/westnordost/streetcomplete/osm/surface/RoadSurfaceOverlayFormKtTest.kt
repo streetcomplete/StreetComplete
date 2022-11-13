@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
@@ -18,15 +19,45 @@ class RoadSurfaceOverlayFormKtTest {
 
     @Test
     fun `new different value is applied, associated tags are removed`() {
-        // TODO SurfaceAnswer should get most of overlay edit code...
-        val tags = mapOf("surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red", "tractype" to "grade5")
+        val tags = mapOf("highway" to "tertiary", "surface" to "asphalt", "smoothness" to "bad", "surface:colour" to "red", "tracktype" to "grade5")
         val expectedChanges = arrayOf(
             StringMapEntryDelete("smoothness", "bad"),
             StringMapEntryDelete("surface:colour", "red"),
-            StringMapEntryDelete("tractype", "grade5"),
-            StringMapEntryModify("surface", "asphalt", "paving_stones")
+            StringMapEntryDelete("tracktype", "grade5"),
+            StringMapEntryModify("surface", "asphalt", "paving_stones"),
         )
         verifyAnswer(tags, Surface.PAVING_STONES, null, *expectedChanges)
     }
-}
 
+    @Test
+    fun `note tag is applied`() {
+        val tags = mapOf("highway" to "tertiary")
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface", "paved"),
+            StringMapEntryAdd("surface:note", "zażółć"),
+        )
+        verifyAnswer(tags, Surface.PAVED_ROAD, "zażółć", *expectedChanges)
+    }
+
+    @Test
+    fun `note tag is applied also to specific surfaces if it was supplied`() {
+        // may happen in cases where it was present already
+        val tags = mapOf("highway" to "tertiary")
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface", "asphalt"),
+            StringMapEntryAdd("surface:note", "zażółć"),
+        )
+        verifyAnswer(tags, Surface.ASPHALT, "zażółć", *expectedChanges)
+    }
+
+
+    @Test
+    fun `sidewalk surface marked as tag on road is not touched`() {
+        // may happen in cases where it was present already
+        val tags = mapOf("highway" to "tertiary", "sidewalk:surface" to "paving_stones")
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("surface", "asphalt"),
+        )
+        verifyAnswer(tags, Surface.ASPHALT, null, *expectedChanges)
+    }
+}
