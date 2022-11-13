@@ -213,6 +213,7 @@
                 "aerialway/summer/access": {
                     "label": "Access (summer)",
                     "options": {
+                        "both": "Both",
                         "entry": "Entry",
                         "exit": "Exit"
                     }
@@ -231,6 +232,12 @@
                     "label": "Type"
                 },
                 "animal_boarding": {
+                    "label": "For Animals"
+                },
+                "animal_breeding": {
+                    "label": "For Animals"
+                },
+                "animal_shelter": {
                     "label": "For Animals"
                 },
                 "architect": {
@@ -294,6 +301,9 @@
                 "bath/open_air": {
                     "label": "Open Air"
                 },
+                "bath/sand_bath": {
+                    "label": "Sand Bath"
+                },
                 "beauty": {
                     "options": {
                         "cosmetics": "Cosmetics",
@@ -312,7 +322,8 @@
                     "label": "Type"
                 },
                 "bin": {
-                    "label": "Garbage Bin"
+                    "label": "Garbage Bin",
+                    "terms": "garbage can,trash can,bin,garbage,trash"
                 },
                 "blind": {
                     "label": "Blind Person Access",
@@ -356,12 +367,6 @@
                     "label": "Underground Levels",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "Building Levels"
-                },
-                "cash_in": {
-                    "label": "Cash Deposits"
-                },
                 "charge_fee": {
                     "placeholder": "1 EUR, 5 USD, 10 CAD…"
                 },
@@ -375,9 +380,6 @@
                     "options": {
                         "undefined": "Assumed to be No"
                     }
-                },
-                "departures_board": {
-                    "label": "Departures Board"
                 },
                 "direction_point": {
                     "placeholder": "45, 90, 180, 270"
@@ -479,6 +481,9 @@
                 },
                 "leisure/bleachers": {
                     "name": "Bleachers"
+                },
+                "place/neighbourhood": {
+                    "name": "Neighbourhood"
                 }
             }
         }

@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_rectangular_sign_blue"
-                android:inputType="text"
+                android:inputType="text|textNoSuggestions|textCapSentences"
                 android:imeOptions="actionDone"
                 android:textSize="@dimen/large_input"
                 android:textAlignment="center"

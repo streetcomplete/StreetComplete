@@ -1,16 +1,22 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
+import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestFireHydrantDiameterBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
+import de.westnordost.streetcomplete.util.mostCommonWithin
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
@@ -18,14 +24,42 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
     )
 
-    override val contentLayoutResId = R.layout.quest_fire_hydrant_diameter
-    private val binding by contentViewBinding(QuestFireHydrantDiameterBinding::bind)
+    override val contentLayoutResId get() = getHydrantDiameterSignLayoutResId(countryInfo.countryCode)
+    private val diameterInput by lazy { requireView().findViewById<EditText>(R.id.diameterInput) }
+    private val suggestionsButton by lazy { requireView().findViewById<View>(R.id.suggestionsButton) }
 
-    private val diameterValue get() = binding.diameterInput.intOrNull ?: 0
+    private val diameterValue get() = diameterInput.intOrNull ?: 0
+
+    private val lastPickedAnswers by lazy {
+        favs.get()
+            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
+            .sorted()
+            .toList()
+    }
+
+    private lateinit var favs: LastPickedValuesStore<Int>
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            key = javaClass.simpleName,
+            serialize = { it.toString() },
+            deserialize = { it.toInt() }
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.diameterInput.doAfterTextChanged { checkIsFormComplete() }
+
+        updateSuggestionsButtonVisibility()
+
+        diameterInput.doAfterTextChanged {
+            checkIsFormComplete()
+            updateSuggestionsButtonVisibility()
+        }
+
+        suggestionsButton.setOnClickListener { showSuggestionsMenu() }
     }
 
     override fun isFormComplete() = diameterValue > 0
@@ -38,8 +72,12 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         }
 
         if (isUnusualDiameter(diameter)) {
-            confirmUnusualInput(diameter.unit) { applyAnswer(diameter) }
+            confirmUnusualInput(diameter.unit) {
+                favs.add(diameterValue)
+                applyAnswer(diameter)
+            }
         } else {
+            favs.add(diameterValue)
             applyAnswer(diameter)
         }
     }
@@ -79,4 +117,31 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
             .show()
         }
     }
+
+    private fun updateSuggestionsButtonVisibility() {
+        suggestionsButton.isGone = lastPickedAnswers.isEmpty() || diameterInput.intOrNull != null
+    }
+
+    private fun showSuggestionsMenu() {
+        val popup = PopupMenu(requireContext(), suggestionsButton)
+
+        for (diameter in lastPickedAnswers) {
+            popup.menu.add(diameter.toString())
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            diameterInput.setText(item.title.toString())
+            true
+        }
+        popup.show()
+    }
+}
+
+private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
+    "DE", "BE" -> R.layout.quest_fire_hydrant_diameter_sign_de
+    "FI" -> R.layout.quest_fire_hydrant_diameter_sign_fi
+    "NL" -> R.layout.quest_fire_hydrant_diameter_sign_nl
+    "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl
+    "GB", "IE" -> R.layout.quest_fire_hydrant_diameter_sign_uk
+    else -> R.layout.quest_fire_hydrant_diameter_sign_generic
 }

@@ -35,7 +35,7 @@ class LaurelWreathDrawable(val resources: Resources) : Drawable() {
         val canvasHeight: Int = bounds.height()
         val circleRadius: Float = min(canvasWidth, canvasHeight).toFloat() / 2f
 
-        backgroundPaint.color = Color.HSVToColor(floatArrayOf(93f, level/10000f * 0.5f, 0.72f))
+        backgroundPaint.color = Color.HSVToColor(floatArrayOf(93f, level / 10000f * 0.5f, 0.72f))
 
         canvas.drawCircle((canvasWidth / 2).toFloat(), (canvasHeight / 2).toFloat(), circleRadius, backgroundPaint)
 

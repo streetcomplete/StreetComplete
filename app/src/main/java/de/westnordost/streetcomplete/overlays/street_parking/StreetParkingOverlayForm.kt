@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
@@ -82,11 +81,10 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         streetSideSelect.left?.value != currentParking?.left ||
         streetSideSelect.right?.value != currentParking?.right
 
-    override fun serialize(item: StreetSideDisplayItem<StreetParking>): String =
-        Json.encodeToString(item.value)
-
-    override fun deserialize(str: String, isRight: Boolean): StreetSideDisplayItem<StreetParking> =
-        Json.decodeFromString<StreetParking>(str).asStreetSideItem(requireContext(), isUpsideDown(isRight))
+    override fun serialize(item: StreetParking) = Json.encodeToString(item)
+    override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)
+    override fun asStreetSideItem(item: StreetParking, isRight: Boolean) =
+        item.asStreetSideItem(requireContext(), isUpsideDown(isRight))
 
     private fun isUpsideDown(isRight: Boolean) =
         if (isRight) isRightSideUpsideDown else isLeftSideUpsideDown

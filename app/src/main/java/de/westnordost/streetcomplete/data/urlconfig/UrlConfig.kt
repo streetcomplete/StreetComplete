@@ -15,6 +15,7 @@ data class UrlConfig(
 )
 
 private const val URL = "https://streetcomplete.app/s"
+private const val URL2 = "streetcomplete://s"
 
 private const val PARAM_NAME = "n"
 private const val PARAM_QUESTS = "q"
@@ -29,11 +30,14 @@ fun parseConfigUrl(
     questTypeRegistry: QuestTypeRegistry,
     overlayRegistry: OverlayRegistry
 ): UrlConfig? {
-    val prefix = "$URL?"
-    if (!url.startsWith(prefix, ignoreCase = true)) return null
+    val length = when {
+        url.startsWith("$URL?", ignoreCase = true) -> URL.length + 1
+        url.startsWith("$URL2?", ignoreCase = true) -> URL2.length + 1
+        else -> return null
+    }
 
     val parameters: Map<String, String> = url
-        .substring(prefix.length)
+        .substring(length)
         .split('&')
         .associate {
             val keyValue = it.split('=')
@@ -86,7 +90,7 @@ fun createConfigUrl(
             val ordinal1 = questTypeRegistry.getOrdinalOf(first)?.toString(ORDINAL_RADIX)
             val ordinal2 = questTypeRegistry.getOrdinalOf(second)?.toString(ORDINAL_RADIX)
             if (ordinal1 != null && ordinal2 != null) ordinal1 to ordinal2 else null
-        }.joinToString("-") { (first, second) -> "${first}.${second}" }
+        }.joinToString("-") { (first, second) -> "$first.$second" }
 
         parameters.add(PARAM_QUEST_ORDER to sortOrders)
     }

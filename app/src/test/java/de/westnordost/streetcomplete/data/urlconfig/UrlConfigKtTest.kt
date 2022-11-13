@@ -37,6 +37,13 @@ internal class UrlConfigKtTest {
         )
     }
 
+    @Test fun `parse config using custom url scheme`() {
+        assertEquals(
+            UrlConfig("Test", listOf(q0, q2, q3), emptyList(), null),
+            parseConfigUrl("streetcomplete://s?n=Test&q=d", quests, overlays)
+        )
+    }
+
     @Test fun `parse config with overlay`() {
         assertEquals(
             UrlConfig("Test", listOf(q0, q2, q3), emptyList(), o1),
@@ -77,7 +84,7 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://blorb.io/?n=Test&q=d", quests, overlays))
     }
 
-    @Test fun `reject misformed parameters`() {
+    @Test fun `reject malformed parameters`() {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test=Wrong&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n==Wrong&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&qo&q=d", quests, overlays))

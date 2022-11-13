@@ -2485,4 +2485,14 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"入口標示："</string>
     <string name="quest_entrance_reference_flat_range_label">"房間概況："</string>
     <string name="quest_entrance_reference_flat_range_to">"到那裡"</string>
+    <string name="default_disabled_msg_overlay">"這個任務類型預設已經關閉，因為已經有重疊的任務了，能夠更有效地輸入與更新這個資料。"</string>
+    <string name="quest_camp_drinking_water_title">"這邊的飲水是否免費提供給露營者？"</string>
+    <string name="quest_camp_shower_title">"這裡有淋浴設施嗎？"</string>
+    <string name="quest_camp_power_supply_title">"這裡有任何提供顧客充手機、筆電等的地方嗎？"</string>
+    <string name="quest_camp_type_title">"誰可以在這邊露營？"</string>
+    <string name="quest_camp_type_tents_and_caravans">"帳篷、房車、露營拖車，都可以…"</string>
+    <string name="quest_camp_type_caravans_only">"只有房車、露營拖車，…"</string>
+    <string name="quest_camp_type_tents_only">"只有帳篷"</string>
+    <string name="quest_camp_type_backcountry">"野外露營 (沒有設施)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。"</string>
 </resources>

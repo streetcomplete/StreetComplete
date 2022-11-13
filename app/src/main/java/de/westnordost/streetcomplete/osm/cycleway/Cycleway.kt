@@ -118,7 +118,6 @@ fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
     return cycleways
 }
 
-
 val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f
     DUAL_LANE -> 3f

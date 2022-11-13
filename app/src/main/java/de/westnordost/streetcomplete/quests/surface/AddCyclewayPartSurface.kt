@@ -11,7 +11,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override val elementFilter = """
         ways with (
           highway = cycleway
-          or (highway ~ path|footway and bicycle != no)
+          or (highway ~ path|footway and bicycle and bicycle != no)
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
@@ -37,6 +37,13 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
     override fun createForm() = AddPathPartSurfaceForm()
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
-        answer.applyTo(tags, "cycleway:surface")
+        answer.applyTo(tags, "cycleway")
+        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
+            if (tags["footway:surface"] == tags["cycleway:surface"]) {
+                tags["surface"] = tags["cycleway:surface"]!!
+            } else {
+                tags.remove("surface")
+            }
+        }
     }
 }

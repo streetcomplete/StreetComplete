@@ -38,7 +38,6 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
@@ -148,8 +147,8 @@ class MainActivity :
         AlertDialog.Builder(this)
             .setTitle(R.string.urlconfig_apply_title)
             .setMessage(text.toString().parseAsHtml())
-            .setPositiveButton(android.R.string.ok) { _,_ -> urlConfigController.apply(config) }
-            .setNegativeButton(android.R.string.cancel) { _,_ -> }
+            .setPositiveButton(android.R.string.ok) { _, _ -> urlConfigController.apply(config) }
+            .setNegativeButton(android.R.string.cancel) { _, _ -> }
             .show()
     }
 

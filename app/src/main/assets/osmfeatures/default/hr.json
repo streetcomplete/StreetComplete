@@ -310,11 +310,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "podzemne razine"
                 },
-                "building/levels_building": {
-                    "label": "Katova zgrade",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "razine zgrade,razine građevine,katovi"
-                },
                 "building/material": {
                     "label": "Materijal",
                     "terms": "matrijal"
@@ -488,7 +483,6 @@
                     "label": "Obilježavanje"
                 },
                 "departures_board": {
-                    "label": "Lista odlazaka",
                     "options": {
                         "no": "Nema",
                         "realtime": "U pravom vremenu",
@@ -646,9 +640,6 @@
                 },
                 "fuel": {
                     "label": "Gorivo"
-                },
-                "fuel_multi": {
-                    "label": "Tipovi goriva"
                 },
                 "gauge": {
                     "label": "Širina kolosijeka"
@@ -1097,10 +1088,6 @@
                     "label": "Načini plaćanja",
                     "terms": "način plaćanja"
                 },
-                "payment_multi_fee": {
-                    "label": "Načini plaćanja",
-                    "terms": "način plaćanja"
-                },
                 "phone": {
                     "label": "Telefon",
                     "placeholder": "+385 01 123 4567",
@@ -1150,7 +1137,6 @@
                     "label": "Elektrana"
                 },
                 "plant/output/electricity": {
-                    "label": "Električna snaga",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "polling_station": {
@@ -1448,7 +1434,6 @@
                 "tracktype": {
                     "label": "Vrsta poljskog ili šumskog puta",
                     "options": {
-                        "grade1": "Čvrsto: asfaltirana ili jako zbijeni makadam",
                         "grade2": "Većinom čvrsto: šljunak/kamenčići pomiješani sa mekšim materijalima",
                         "grade3": "Jednolika mješavina čvrstih i mekanih materijala",
                         "grade4": "Većinom mekano: zemlja/pjesak/trava sa nešto čvrstih materijala",
@@ -2196,9 +2181,6 @@
                 },
                 "craft/bookbinder": {
                     "name": "Knjigovezac"
-                },
-                "craft/brewery": {
-                    "name": "Pivara"
                 },
                 "craft/carpenter": {
                     "name": "Stolar"

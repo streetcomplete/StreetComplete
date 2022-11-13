@@ -104,7 +104,6 @@ class QuestTypeOrderControllerTest {
         verifyNoInteractions(listener)
     }
 
-
     @Test fun `add order item`() {
         ctrl.addOrderItem(questA, questB)
         verify(questTypeOrderDao).put(0, questA.name to questB.name)

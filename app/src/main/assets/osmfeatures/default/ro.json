@@ -386,9 +386,6 @@
                 "fuel": {
                     "label": "Benzină"
                 },
-                "fuel_multi": {
-                    "label": "Tipuri de Benzină"
-                },
                 "gender": {
                     "label": "Sex",
                     "options": {
@@ -1219,9 +1216,6 @@
                 },
                 "club": {
                     "name": "Club"
-                },
-                "craft/brewery": {
-                    "name": "Berărie"
                 },
                 "craft/electrician": {
                     "name": "Electrician"

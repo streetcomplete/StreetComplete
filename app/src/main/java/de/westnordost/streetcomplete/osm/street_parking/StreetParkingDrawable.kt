@@ -44,10 +44,13 @@ class StreetParkingDrawable(
     override fun draw(canvas: Canvas) {
         if (!isVisible) return
 
+        if (isUpsideDown) {
+            val pivotY = bounds.height() / ceil(height / width / 2f)
+            canvas.scale(1f, -1f, bounds.width() / 2f, pivotY)
+        }
+
         val height = bounds.height().toFloat() / (height / width) * 2f
         val width = bounds.width()
-
-        if (isUpsideDown) canvas.scale(1f, -1f, width / 2f, height)
 
         val omittedCarIndices = getOmittedCarIndices(parkingOrientation, parkingPosition)
         val carWidth = 0.23f * width

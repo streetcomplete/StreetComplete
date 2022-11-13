@@ -67,5 +67,4 @@ interface StatisticsSource {
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
-
 }

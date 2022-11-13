@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
-        nodes, ways, relations with (
+        nodes, ways with (
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
           or (shop and shop !~ no|vacant|mall)
         )

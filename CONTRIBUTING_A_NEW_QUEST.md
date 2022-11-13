@@ -132,7 +132,7 @@ Change its class name and the file name to the new one.
 
 In copied code change package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
 
-When commiting changes be careful to not change already existing quest - only new code (using built-in refactoring rename will affect also `QuestsModule.kt` entry for an existing quest).
+When committing changes be careful to not change already existing quest - only new code (using built-in refactoring rename will affect also `QuestsModule.kt` entry for an existing quest).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/9c65d00c7d096c3fee61650e1465a43b7e7f5712) in the example repository.
 
@@ -487,7 +487,7 @@ This quest will be triggered when:
 - `and access !~ private|no`
   - and `access` tag does neither have value `private` nor `no`
 - `and (!capacity or capacity older today -4 years)`
-  - and one of following is fullfilled:
+  - and one of following is fulfilled:
     - `capacity` tag is not present at all (`!capacity`)
     - element was not edited for a long time (base time is 4 years, but it can be influenced by user changing settings)
     - `check_date:capacity` with a date indicating that it is outdated (the same as above applies)

@@ -2523,6 +2523,8 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Δημιουργήσατε έναν κόμβο με ..."</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Είναι Σημείο Συγκέντρωσης"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Ένα Σημείο Συγκέντρωσης είναι όπου οι άνθρωποι συγκεντρώνονται σε περίπτωσης έκτακτης ανάγκης. Συνήθως μοιάζει με:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Έχει όνομα σπιτιού..."</string>
     <string name="quest_address_street_street_name_label">"Όνομα δρόμου:"</string>
     <string name="quest_address_street_hint2">"Πατήστε το δρόμο στο χάρτη για να τον επιλέξετε"</string>

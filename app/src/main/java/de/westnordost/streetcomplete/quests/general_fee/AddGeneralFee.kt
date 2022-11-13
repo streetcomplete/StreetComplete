@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
          (tourism = museum or leisure = beach_resort or tourism = gallery)
          and access !~ private|no
          and !fee

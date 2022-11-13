@@ -7,10 +7,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayAddressBinding
@@ -28,6 +31,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.isArea
 import org.koin.android.ext.android.inject
 
 class AddressOverlayForm : AbstractOverlayForm() {
@@ -151,25 +155,15 @@ class AddressOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val number = numberOrNameInputCtrl.addressNumber
-        val houseName = numberOrNameInputCtrl.houseName
+        val name = numberOrNameInputCtrl.houseName
         val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName
 
-        if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
         number?.streetHouseNumber?.let { lastHouseNumber = it }
+        if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
         lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
         lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
 
-        val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
-
-        number?.applyTo(tagChanges)
-        houseName?.let { tagChanges["addr:housename"] = it }
-        streetOrPlaceName?.applyTo(tagChanges)
-
-        if (element != null) {
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
-        } else {
-            applyEdit(CreateNodeAction(geometry.center, tagChanges))
-        }
+        applyEdit(createAddressElementEditAction(element, geometry, number, name, streetOrPlaceName))
     }
 
     /* ------------------------------ Show house name / place name ------------------------------ */
@@ -193,24 +187,11 @@ class AddressOverlayForm : AbstractOverlayForm() {
     private fun confirmRemoveAddress() {
         AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> removeAddress() }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                applyEdit(createRemoveAddressElementEditAction(element!!))
+            }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
-    }
-
-    private fun removeAddress() {
-        val element = element!!
-        if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
-            applyEdit(DeletePoiNodeAction)
-        } else {
-            val tagChanges = StringMapChangesBuilder(element.tags)
-            for (tag in tagChanges) {
-                if (isAddressTag(tag.key, tag.value)) {
-                    tagChanges.remove(tag.key)
-                }
-            }
-            applyEdit(UpdateElementTagsAction(tagChanges.create()))
-        }
     }
 
     companion object {
@@ -222,6 +203,47 @@ class AddressOverlayForm : AbstractOverlayForm() {
         private const val SHOW_PLACE_NAME = "show_place_name"
         private const val SHOW_HOUSE_NAME = "show_house_name"
     }
+}
+
+private fun createAddressElementEditAction(
+    element: Element?,
+    geometry: ElementGeometry,
+    number: AddressNumber?,
+    name: String?,
+    streetOrPlaceName: StreetOrPlaceName?
+): ElementEditAction {
+    val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
+
+    number?.applyTo(tagChanges)
+    name?.let { tagChanges["addr:housename"] = it }
+    streetOrPlaceName?.applyTo(tagChanges)
+    tagChanges.remove("noaddress")
+    tagChanges.remove("nohousenumber")
+
+    return if (element != null) {
+        UpdateElementTagsAction(tagChanges.create())
+    } else {
+        CreateNodeAction(geometry.center, tagChanges)
+    }
+}
+
+private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {
+    if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
+        return DeletePoiNodeAction
+    }
+    val tagChanges = StringMapChangesBuilder(element.tags)
+    for (tag in tagChanges) {
+        if (isAddressTag(tag.key, tag.value)) {
+            tagChanges.remove(tag.key)
+        }
+    }
+    // only add noaddress for areas (=buildings) because that's how it is defined in the wiki.
+    // Address nodes will be deleted or the address removed (see above)
+    if (element.isArea()) {
+        tagChanges["noaddress"] = "yes"
+    }
+
+    return UpdateElementTagsAction(tagChanges.create())
 }
 
 private fun isAddressTag(key: String, value: String): Boolean =

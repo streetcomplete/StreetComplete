@@ -224,9 +224,6 @@
                     "label": "อาคาร",
                     "terms": "สิ่งปลูกสร้าง,ตึก,อาคาร"
                 },
-                "building/levels_building": {
-                    "label": "ชั้นอาคาร"
-                },
                 "building/part": {
                     "label": "ส่วนอาคาร"
                 },
@@ -320,9 +317,6 @@
                 },
                 "fuel": {
                     "label": "เชื้อเพลิง"
-                },
-                "fuel_multi": {
-                    "label": "ประเภทเชื้อเพลิง"
                 },
                 "gender": {
                     "label": "เพศ",
@@ -1537,9 +1531,6 @@
                 },
                 "craft/bookbinder": {
                     "name": "คนเย็บเล่มหนังสือ"
-                },
-                "craft/brewery": {
-                    "name": "โรงเบียร์"
                 },
                 "craft/carpenter": {
                     "name": "ช่างไม้"

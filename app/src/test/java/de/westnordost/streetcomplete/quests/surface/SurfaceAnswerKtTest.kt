@@ -119,7 +119,7 @@ internal class SurfaceAnswerKtTest {
 
 private fun verifyAnswer(tags: Map<String, String>, answer: SurfaceAnswer, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb, "surface")
+    answer.applyTo(cb)
     val changes = cb.create().changes
     Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
 }
