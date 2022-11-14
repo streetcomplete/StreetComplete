@@ -226,42 +226,46 @@ private suspend fun createEditAction(
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
-    if (element != null) {
-        /* Do not replace shop if:
-           + only a name was added (name was missing before; user wouldn't be able to answer if
-             the place changed or not anyway, so rather keep previous information)
-           + only the feature was changed but the non-empty name did not change (if it was a
-             different shop now, it would also have a different name)
+    val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
+    val hasChangedNames = previousNames != newNames
+    val hasChangedFeature = newFeature != previousFeature
+    val isFeatureWithName = newFeature.addTags?.get("name") != null
+    val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
+    val wasVacant = element != null && IS_DISUSED_SHOP_EXPRESSION.matches(element)
 
-           Ask whether it is still the same shop if:
-           + the name was changed
-           + the feature was changed and the name was empty before
+    val doReplaceShop =
+        // do not replace shop if:
+        if (
+            // only a name was added (name was missing before; user wouldn't be able to answer
+            // if the place changed or not anyway, so rather keep previous information)
+            hasAddedNames && !hasChangedFeature
+            // only the feature was changed, the non-empty name did not change (if it was a
+            // different shop now, it would also have a different name)
+            || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
+            // place has been added, nothing to replace
+            || element == null
+        ) false
+        // always replace if:
+        else if (
+            // the feature is a brand feature or was a brand feature (i.e. overwrites the name)
+            isFeatureWithName || wasFeatureWithName
+            // was vacant before but not anymore (-> cleans up any previous tags that may be
+            // associated with the old place
+            || wasVacant && hasChangedFeature
+        ) true
+        // ask whether it is still the same shop if:
+        // + the name was changed
+        // + the feature was changed and the name was empty before
+        else confirmReplaceShop()
 
-           Always replace shop if:
-           + the feature now or previous feature is a brand feature (i.e. it also overwrites the name)
-         */
-        val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
-        val hasChangedNames = previousNames != newNames
-        val hasChangedFeature = newFeature != previousFeature
-        val isFeatureWithName = newFeature.addTags?.get("name") != null
-        val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
-
-        val doReplaceShop =
-            if (hasAddedNames && !hasChangedFeature
-                || hasChangedFeature && !hasChangedNames && previousNames.isNotEmpty()
-            ) false
-            else if (isFeatureWithName || wasFeatureWithName) true
-            else confirmReplaceShop()
-
-        if (doReplaceShop) {
-            tagChanges.replaceShop(newFeature.addTags)
-        } else {
-            for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-                tagChanges.remove(key)
-            }
-            for ((key, value) in newFeature.addTags) {
-                tagChanges[key] = value
-            }
+    if (doReplaceShop) {
+        tagChanges.replaceShop(newFeature.addTags)
+    } else {
+        for ((key, value) in previousFeature?.removeTags.orEmpty()) {
+            tagChanges.remove(key)
+        }
+        for ((key, value) in newFeature.addTags) {
+            tagChanges[key] = value
         }
     }
 
