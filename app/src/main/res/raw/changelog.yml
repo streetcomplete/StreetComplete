@@ -1,3 +1,10 @@
+v49.2: |
+  <p>Tiny bugfix release for v49.1, because</p>
+  <ul>
+  <li>Shop overlay: Fix adding places would only add the name and not the type (regression from #4605)</li>
+  <li>Shop overlay: Two small UI enhancements</li>
+  </ul>
+
 v49.1: |
   <ul>
   <li>Shop overlay: Don't show confirmation dialog when just adding a place (#4605)</li>

@@ -1745,8 +1745,8 @@ sorted alphabetically by title -->
     <string name="user_profile_current_week_title">"Últims 7 dies"</string>
     <string name="user_profile_dates_mapped">"Dies que els quals has mapejat recentment"</string>
     <string name="urlconfig_scan_qr_code_again2">"Després d'instal·lar l'aplicació, escaneja el QR una altra vegada o punxa &lt;a href=\"%s\"&gt;aquest enllaç&lt;/a&gt; per a aplicar la predefinició."</string>
-    <string name="confirmation_replace_shop_title">"Ara està en un lloc diferent?"</string>
+    <string name="confirmation_replace_shop_title">"Ara és en un negoci diferent?"</string>
     <string name="confirmation_replace_shop_message">"En aquest cas, les hores d'obertura, informació de contacte, etc. Hauran canviat també."</string>
-    <string name="confirmation_replace_shop_yes">"Ha canviat de lloc"</string>
-    <string name="confirmation_replace_shop_no">"Continua al mateix lloc"</string>
+    <string name="confirmation_replace_shop_yes">"Ha canviat el negoci"</string>
+    <string name="confirmation_replace_shop_no">"Continua siguent el mateix negoci"</string>
 </resources>

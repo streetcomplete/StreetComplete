@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Einstellungen"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Login-Server kann nicht erreicht werden"</string>
     <string name="oauth_failed_permissions">"Login fehlgeschlagen: Alle aufgeführten Berechtigungen müssen gewährt werden"</string>
 

@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4902
-        versionName = "49.1"
+        versionCode = 4903
+        versionName = "49.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -109,7 +109,7 @@ dependencies {
     val kotlinVersion = "1.7.10"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.0"
+    val koinVersion = "3.2.3"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
 
