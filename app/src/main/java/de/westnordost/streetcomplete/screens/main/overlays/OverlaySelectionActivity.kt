@@ -5,12 +5,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 
 class OverlaySelectionActivity :
-    FragmentContainerActivity(R.layout.activity_user) { // TODO how this even works? This layout gets passed down to AppCompatActivity - does it have any effect on anything?
+    FragmentContainerActivity(R.layout.activity_user) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            mainFragment = OverlayFragment() // TODO - is it just making layout specified to AppCompatActivity irrelevant?
+            mainFragment = OverlayFragment()
         }
     }
 }
