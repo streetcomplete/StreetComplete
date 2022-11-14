@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك امدرمان الوطني, FAISAL ISLAMIC BANK, بنك فيصل الاسلامي السوداني, بنك الخرطوم فرع الكلاكله شرق, Sudanese French Bank, بنك المزارع التجاري, صراف آلي بنك فيصل الإسلامي, البنك السوداني الفرنسي, Faisal Islamic Bank ATM, بنك فيصل الإسلامية السوداني, بنك الخرطوم Bank of Khartoum, صراف آلي بنك الخرطوم]
 firstDayOfWorkweek: Su
 mobileCountryCode: 634
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar, en]
+orchardProduces: [tomato, banana, date, lemon, lime, guava, mango, mangosteen, grapefruit, orange, chilli_pepper, sweet_pepper, orange, pineapple]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك امدرمان الوطني, FAISAL ISLAMIC BANK, بنك فيصل الاسلامي السوداني, بنك الخرطوم فرع الكلاكله شرق, Sudanese French Bank, بنك المزارع التجاري, صراف آلي بنك فيصل الإسلامي, البنك السوداني الفرنسي, Faisal Islamic Bank ATM, بنك فيصل الإسلامية السوداني, بنك الخرطوم Bank of Khartoum, صراف آلي بنك الخرطوم]
-orchardProduces: [tomato, banana, date, lemon, lime, guava, mango, mangosteen, grapefruit, orange, chilli_pepper, sweet_pepper, orange, pineapple]

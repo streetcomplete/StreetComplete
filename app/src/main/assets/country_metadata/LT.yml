@@ -1,5 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB "Swedbank", AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
 centerLineStyle: white
+chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
+clothesContainerOperators: [UAB „VAATC“]
 edgeLineStyle: white
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true
@@ -10,8 +13,5 @@ mobileCountryCode: 246
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
-postboxesHaveCollectionTimes: true
-atmOperators: [SEB, Swedbank, DNB, Luminor, Šiaulių bankas, Nordea, 'SEB, DNB', Medus, Citadele, AB "Swedbank", AB SEB bankas, Danske Bank, Nordea/Parex/Danske/Ūkio, AB Swedbank, Luminor/Citadele, Perlas]
-chargingStationOperators: [Ignitis, Spark, Ignitis grupė, UAB „Elinta“, LAKD, Ignitis ON, Iginitis group, Elinta Charge]
-clothesContainerOperators: [UAB „VAATC“]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
+postboxesHaveCollectionTimes: true

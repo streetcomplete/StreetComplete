@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Arab Bank, Housing Bank, دائرة الجمارك الأردنية, Islamic International Arab Bank, Jordan Islamic Bank, Jordan Kuwait Bank, Salwa Islamic Bank, Bank al Etihad]
 centerLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 416
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
+orchardProduces: [olive, tomato, peach, date, grape, chilli_pepper, sweet_pepper, lemon, lime, apricot, orange, apple, banana, grapefruit, almond, plum, pear]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [Arab Bank, Housing Bank, دائرة الجمارك الأردنية, Islamic International Arab Bank, Jordan Islamic Bank, Jordan Kuwait Bank, Salwa Islamic Bank, Bank al Etihad]
-orchardProduces: [olive, tomato, peach, date, grape, chilli_pepper, sweet_pepper, lemon, lime, apricot, orange, apple, banana, grapefruit, almond, plum, pear]

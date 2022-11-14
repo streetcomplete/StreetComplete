@@ -3,6 +3,6 @@ mobileCountryCode: 609
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar, fr, ff, snk, wo]
+orchardProduces: [date]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-orchardProduces: [date]

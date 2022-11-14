@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bank of Kigali, Ecobank]
 centerLineStyle: white
 edgeLineStyle: yellow
 mobileCountryCode: 635
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [rw, en, fr]
-atmOperators: [Bank of Kigali, Ecobank]
 orchardProduces: [banana, tea, coffee, tomato, pineapple, orange, chilli_pepper, sweet_pepper, lemon, lime, pepper, guava, mango, mangosteen, avocado, papaya]
