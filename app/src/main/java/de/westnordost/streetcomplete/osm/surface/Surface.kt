@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
@@ -193,22 +194,6 @@ fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String,
     }
 }
 
-// TODO this can and should get automated tests, probably
-fun associatedKeysToBeRemovedOnChange(key: String): Set<String> {
-    return setOf("$key:colour", "source:$key") + getLastCheckDateKeys(key)
-}
-
-// TODO this can and should get automated tests, probably
-fun removeAssociatedKeysIfSurfaceValueWasChanged(changes: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceKey: String, newSurface: Surface) {
-    if (changes[surfaceKey] != newSurface.osmValue) {
-        for (key in associatedKeysToBeRemovedOnChange(surfaceKey)) {
-            if (presentTags.containsKey(key)) {
-                changes.remove(key)
-            }
-        }
-    }
-}
-
 val Surface.titleResId: Int get() = when (this) {
     Surface.ASPHALT -> R.string.quest_surface_value_asphalt
     Surface.CONCRETE -> R.string.quest_surface_value_concrete
@@ -285,4 +270,10 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
 
 fun isSurfaceAndTracktypeMismatching(surface: String, tracktype: String): Boolean {
     return INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
+}
+
+fun associatedKeysToBeRemovedOnChange(prefix: String): Set<String> {
+    return setOf("${prefix}surface:grade", "${prefix}smoothness", "${prefix}smoothness:date",
+        "${prefix}smoothness", "${prefix}surface:colour", "source:${prefix}surface") +
+        getLastCheckDateKeys("${prefix}surface") + getLastCheckDateKeys("${prefix}smoothness")
 }

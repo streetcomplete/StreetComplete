@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.surface.Surface
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -113,6 +112,28 @@ internal class SurfaceAnswerKtTest {
             arrayOf(
                 StringMapEntryAdd("surface", "asphalt"),
                 StringMapEntryDelete("surface:note", "nurgle"),
+            )
+        )
+    }
+
+    @Test fun `remove surface colour when changing surface`() {
+        verifyAnswer(
+            mapOf("surface:colour" to "transparent", "surface" to "mud"),
+            SurfaceAnswer(Surface.ASPHALT),
+            arrayOf(
+                StringMapEntryModify("surface", "mud", "asphalt"),
+                StringMapEntryDelete("surface:colour", "transparent"),
+            )
+        )
+    }
+
+    @Test fun `keep surface colour when not changing surface`() {
+        verifyAnswer(
+            mapOf("surface:colour" to "transparent", "surface" to "asphalt"),
+            SurfaceAnswer(Surface.ASPHALT),
+            arrayOf(
+                StringMapEntryModify("surface", "asphalt", "asphalt"),
+                StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
             )
         )
     }

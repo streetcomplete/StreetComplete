@@ -54,7 +54,7 @@ class RoadSurfaceOverlayFormKtTest {
     fun `note tag is removed if no longer supplied`() {
         val tags = mapOf("highway" to "tertiary", "surface" to "unpaved", "surface:note" to "you get what you reward for")
         val expectedChanges = arrayOf(
-            StringMapEntryAdd("surface", "ground"),
+            StringMapEntryModify("surface", "unpaved", "ground"),
             StringMapEntryDelete("surface:note", "you get what you reward for"),
         )
         verifyAnswer(tags, Surface.GROUND_AREA, null, *expectedChanges)

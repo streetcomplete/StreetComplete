@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.commonSurfaceObject
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
-import de.westnordost.streetcomplete.osm.surface.removeAssociatedKeysIfSurfaceValueWasChanged
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
@@ -357,7 +356,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     companion object {
         fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
-            removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", surfaceObject) // TODO: into SurfaceAnswer!
             SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
@@ -376,14 +374,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 if (generalSurfaceNote != null && changesBuilder["surface:note"] != generalSurfaceNote) {
                     changesBuilder["surface:note"] = generalSurfaceNote
                 }
-                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
                 SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
                 SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             } else {
-                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "surface", mainSurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "cycleway:surface", cyclewaySurface)
-                removeAssociatedKeysIfSurfaceValueWasChanged(changesBuilder, presentTags, "footway:surface", footwaySurface)
                 SurfaceAnswer(mainSurface, generalSurfaceNote).applyTo(changesBuilder)
                 SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
                 SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
