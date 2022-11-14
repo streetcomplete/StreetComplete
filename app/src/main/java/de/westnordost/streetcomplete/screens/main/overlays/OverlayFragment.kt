@@ -47,7 +47,6 @@ class OverlayFragment :
         binding.overlaysList.layoutManager = LinearLayoutManager(context)
 
         binding.applyButton.setOnClickListener {
-            // TODO: consider removing this button
             changeEnabledOverlayToSelected()
         }
 
