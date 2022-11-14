@@ -57,7 +57,7 @@ class OverlayFragment :
             childFragmentManager.commit {
                 setReorderingAllowed(true)
                 setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                replace(R.id.fragment_container_in_overlay_selection, OverlaysTutorialFragment()) // id.fragment_container ???
+                replace(R.id.fragment_container_in_overlay_selection, OverlaysTutorialFragment())
                 addToBackStack("tutorial")
             }
         }
