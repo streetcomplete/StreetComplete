@@ -275,7 +275,7 @@ class LocalizedNameAdapter(
             val isFirst = index == 0
 
             buttonDelete.isInvisible = isFirst
-            buttonLanguage.isInvisible = languageTags.size <= 1
+            buttonLanguage.isEnabled = languageTags.size > 1
 
             input.setText(localizedName.name)
             input.requestFocus()
