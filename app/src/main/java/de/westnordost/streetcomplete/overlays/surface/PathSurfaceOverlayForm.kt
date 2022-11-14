@@ -327,8 +327,10 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     override fun hasChanges(): Boolean {
         // TODO wait, what currentStatus means here?
         // is it current as in "what is now tagged there"? Or is it "current" as in what is not answered by user?
-        // the first one - so we need beter name...
-        //
+        // the first one - so we need better name...
+        // see also currentLitStatus
+        // unmodifiedData ?
+        // pack input into InputViewController ?
         return when (val status = currentStatus) {
             is CyclewayFootwaySurfaces ->
                 selectedStatusForCyclewaySurface?.value != status.cycleway || selectedStatusForFootwaySurface?.value != status.footway
