@@ -75,7 +75,7 @@ class UniversalSurfaceOverlay : Overlay {
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
 
         "surface",
-        "surface:note" // TODO: verify support https://github.com/streetcomplete/StreetComplete/issues/4626
+        "surface:note"
     ) + associatedKeysToBeRemovedOnChange("surface") +
         associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
 

@@ -295,6 +295,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         /* -------------------------------------- apply answer -------------------------------------- */
 
         override fun isFormComplete(): Boolean {
+            // TODO should we allow editing surface:note
+            // TODO likely yes, then we need to allow saving it
+            // TODO: what about roads? is the same issue present there?
             if (selectedStatusForMainSurface == null) {
                 return selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null
             }

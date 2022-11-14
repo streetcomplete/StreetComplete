@@ -82,7 +82,7 @@ class PathSurfaceOverlay : Overlay {
 
         // supported in all surface overlays
         "surface",
-        "surface:note"  // TODO: verify support
+        "surface:note"
     ) + associatedKeysToBeRemovedOnChange("surface") +
     associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
 
