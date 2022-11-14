@@ -116,5 +116,37 @@ class PathSurfaceOverlayFormKtTest {
         )
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVING_STONES, null, Surface.SAND, null, "How do you eat an elephant? One bite at a time", *expectedChanges)
     }
+
+    @Test
+    fun `note tags are added`() {
+        val tags = mapOf("highway" to "path",
+            "surface" to "unpaved",
+            "cycleway:surface" to "paving_stones",
+            "footway:surface" to "asphalt",)
+        val expectedChanges = arrayOf(
+            StringMapEntryModify("surface", "unpaved", "paved"),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "paved"),
+            StringMapEntryModify("footway:surface", "asphalt", "paved"),
+            StringMapEntryAdd("cycleway:surface:note", "foo"),
+            StringMapEntryAdd("footway:surface:note", "bar"),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVED_AREA, "foo", Surface.PAVED_ROAD, "bar", null, *expectedChanges)
+    }
+
+    @Test
+    fun `note tags are modified`() {
+        val tags = mapOf("highway" to "path",
+            "surface" to "unpaved",
+            "cycleway:surface" to "paving_stones", "cycleway:surface:note" to "old",
+            "footway:surface" to "asphalt", "footway:surface:note" to "old",)
+        val expectedChanges = arrayOf(
+            StringMapEntryModify("surface", "unpaved", "paved"),
+            StringMapEntryModify("cycleway:surface", "paving_stones", "paved"),
+            StringMapEntryModify("footway:surface", "asphalt", "paved"),
+            StringMapEntryModify("cycleway:surface:note", "old", "foo"),
+            StringMapEntryModify("footway:surface:note", "old", "bar"),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVED_AREA, "foo", Surface.PAVED_ROAD, "bar", null, *expectedChanges)
+    }
 }
 
