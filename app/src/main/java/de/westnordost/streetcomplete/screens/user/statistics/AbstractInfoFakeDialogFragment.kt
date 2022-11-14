@@ -105,16 +105,14 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
 
     private fun createTitleImageFlingInAnimation(sourceView: View): ViewPropertyAnimator {
         sourceView.visibility = View.INVISIBLE
-        val root = sourceView.rootView as ViewGroup
         titleView.applyTransforms(Transforms.IDENTITY)
-        return titleView.animateFrom(sourceView, root)
+        return titleView.animateFrom(sourceView)
             .setDuration(ANIMATION_TIME_IN_MS)
             .setInterpolator(OvershootInterpolator())
     }
 
     private fun createTitleImageFlingOutAnimation(targetView: View): ViewPropertyAnimator {
-        val root = targetView.rootView as ViewGroup
-        return titleView.animateTo(targetView, root)
+        return titleView.animateTo(targetView)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .withEndAction {
