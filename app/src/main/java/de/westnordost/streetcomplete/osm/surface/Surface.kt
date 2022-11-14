@@ -177,23 +177,6 @@ val ANYTHING_FULLY_PAVED = setOf(
     "metal", "wood", "unhewn_cobblestone"
 )
 
-// TODO this can and should get automated tests
-fun applyNoteAsNeeded(changes: StringMapChangesBuilder, presentTags: Map<String, String>, noteKey: String, noteText: String?, surface: Surface?) {
-    if (surface == null) {
-        if (changes.containsKey(noteKey)) {
-            changes.remove(noteKey)
-        }
-        return
-    }
-    if (surface.shouldBeDescribed) {
-        changes[noteKey] = noteText!!
-    } else {
-        if (presentTags.containsKey(noteKey)) {
-            changes.remove(noteKey)
-        }
-    }
-}
-
 val Surface.titleResId: Int get() = when (this) {
     Surface.ASPHALT -> R.string.quest_surface_value_asphalt
     Surface.CONCRETE -> R.string.quest_surface_value_concrete
