@@ -80,19 +80,16 @@ private fun getStyle(element: Element): Style {
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
-    var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
             // TODO special styling needed I guess...
             // as it should not get pinking "no data"...
             // use dashes?
             dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
             noteProvided = surfaceStatus.note
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfaces -> {
             throw Exception("this should be impossible and excluded via supportedSurfaceKeys not including cycleway:surface and footway:surface")
@@ -118,10 +115,6 @@ private fun getStyle(element: Element): Style {
         dominatingSurface.color
     }
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
-
-    // label for debugging
-    // val label = element.tags[keyOfDominatingSurface]
-    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

@@ -93,42 +93,34 @@ private fun getStyle(element: Element): Style {
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
-    var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
             dominatingSurface = surfaceStatus.surface
             noteProvided = surfaceStatus.note
-            keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in badSurfaces && surfaceStatus.cyclewayNote == null) {
             // the worst case: so lets present it
             dominatingSurface = surfaceStatus.cycleway
             noteProvided = surfaceStatus.cyclewayNote
-            keyOfDominatingSurface = "cycleway:surface"
         } else if (surfaceStatus.footway in badSurfaces) {
             // cycleway surface either has as bad data (also bad surface) or a bit better (bad surface with note)
             dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
             noteProvided = surfaceStatus.footwayNote
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
             dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
             noteProvided = surfaceStatus.cyclewayNote
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in badSurfaces) {
             dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
             dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
         }
         is SurfaceMissing -> {
             // no action needed
@@ -149,10 +141,6 @@ private fun getStyle(element: Element): Style {
         dominatingSurface.color
     }
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
-
-    // label for debugging
-    // val label = element.tags[keyOfDominatingSurface]
-    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

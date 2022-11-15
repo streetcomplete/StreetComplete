@@ -110,49 +110,40 @@ private fun getStyleForStandalonePath(element: Element): Style {
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
-    var keyOfDominatingSurface: String? = null // TODO likely replace by translated value or skip it
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
             dominatingSurface = surfaceStatus.surface
             noteProvided = surfaceStatus.note
-            keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in badSurfaces && surfaceStatus.cyclewayNote == null) {
             // the worst case possible - bad surface without note: so lets present it
             dominatingSurface = surfaceStatus.cycleway
             noteProvided = surfaceStatus.cyclewayNote
-            keyOfDominatingSurface = "cycleway:surface"
         } else if (surfaceStatus.footway in badSurfaces) {
             // cycleway surface either has
             // data as bad as this one (also bad surface, without note)
             // or even worse (bad surface without note, while here maybe there is a note)
             dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
             noteProvided = surfaceStatus.footwayNote
         } else if (surfaceStatus.cycleway in badSurfaces) {
             // so footway has no bad surface, while cycleway has bad surface
             // lets take worse one
             dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
             noteProvided = surfaceStatus.cyclewayNote
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
             dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
         }
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
-            keyOfDominatingSurface = "surface"
         }
         is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in badSurfaces) {
             dominatingSurface = surfaceStatus.footway
-            keyOfDominatingSurface = "footway:surface"
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
             dominatingSurface = surfaceStatus.cycleway
-            keyOfDominatingSurface = "cycleway:surface"
         }
         is SurfaceMissing -> {
             // no action needed
@@ -173,10 +164,6 @@ private fun getStyleForStandalonePath(element: Element): Style {
         dominatingSurface.color
     }
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
-
-    // label for debugging
-    // val label = element.tags[keyOfDominatingSurface]
-    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
