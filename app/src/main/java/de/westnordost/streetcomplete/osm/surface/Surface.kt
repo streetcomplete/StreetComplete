@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),

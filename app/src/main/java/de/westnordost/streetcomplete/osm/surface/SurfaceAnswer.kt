@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -31,7 +30,7 @@ fun SurfaceAnswer.applyTo(tags: Tags, prefix: String? = null) {
     // remove smoothness tag if surface was changed
     // or surface can be treated as outdated
     if ((previousOsmValue != null && previousOsmValue != osmValue) || replacesTracktype) {
-        for(target in associatedKeysToBeRemovedOnChange(pre)) {
+        for (target in associatedKeysToBeRemovedOnChange(pre)) {
             tags.remove(target)
         }
     }
