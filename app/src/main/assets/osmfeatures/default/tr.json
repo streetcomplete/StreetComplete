@@ -361,10 +361,6 @@
                     "label": "Yeraltı Katlar",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "Bina Seviyeleri",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "Materyal"
                 },
@@ -408,9 +404,6 @@
                 "capacity_volume": {
                     "label": "Kapasite (Metreküp)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Nakite çevir"
                 },
                 "castle_type": {
                     "label": "Tür"
@@ -609,7 +602,6 @@
                     "label": "Anlam"
                 },
                 "departures_board": {
-                    "label": "Kalkış Panosu",
                     "options": {
                         "no": "Hiçbiri",
                         "realtime": "Gerçek Zamanlı",
@@ -872,9 +864,6 @@
                 },
                 "fuel": {
                     "label": "Benzin İstasyonu"
-                },
-                "fuel_multi": {
-                    "label": "Benzin Türü"
                 },
                 "gambling": {
                     "label": "Oyunlar"
@@ -1440,9 +1429,6 @@
                 "payment_multi": {
                     "label": "Ödeme Türleri"
                 },
-                "payment_multi_fee": {
-                    "label": "Ödeme Şekilleri"
-                },
                 "phases": {
                     "label": "Aşamalar",
                     "placeholder": "1, 2, 3..."
@@ -1562,7 +1548,6 @@
                     "label": "Üretim yöntemi"
                 },
                 "plant/output/electricity": {
-                    "label": "Güç Çıkışı",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2188,7 +2173,6 @@
                 "tracktype": {
                     "label": "Toprak Yol Durumu",
                     "options": {
-                        "grade1": "Sağlam: asfalt ya da sıkıştırılmış zemin",
                         "grade2": "Genellikle Sağlam: taş/çakıla karışmış yumuşak maddeler",
                         "grade3": "Sert ve yumuşak zemin maddelerinin karışımı",
                         "grade4": "Genellikle Yumuşak: toprak/kum/çimene karıştırılmış sert maddeler",
@@ -3767,10 +3751,6 @@
                 "craft/bookbinder": {
                     "name": "Ciltçi",
                     "terms": "ciltçi"
-                },
-                "craft/brewery": {
-                    "name": "Bira İşletmesi",
-                    "terms": "bira i̇şletmesi,bira fabrikası"
                 },
                 "craft/carpenter": {
                     "name": "Marangoz",
@@ -5761,9 +5741,6 @@
                 },
                 "power/plant/source/oil": {
                     "name": "Petrol Yakıtlı Enerji Santrali"
-                },
-                "power/plant/source/solar": {
-                    "name": "Güneş Paneli Çiftliği"
                 },
                 "power/plant/source/wind": {
                     "name": "Rüzgar Enerjisi Çiftliği"

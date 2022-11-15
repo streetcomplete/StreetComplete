@@ -281,6 +281,7 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
 
     <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Ĉu ĉi tiu necesejo estas paga?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Ĉu ĉi tiu transirejo havas taktilan pavimon ĉe ambaŭ flankoj?"</string>
     <string name="quest_source_dialog_title">"Ĉu vi certas, ke vi kontrolis tion je la loko?"</string>
     <string name="quest_source_dialog_note">"Nur informoj trovitaj per surloka kontrolo povas esti enmetitaj."</string>
 
@@ -1004,6 +1005,9 @@ Fine, memoru resti sekura: Estu konscia pri via ĉirkaŭaĵo kaj ne eniru privat
     <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"Mapo, kiu montras konstruaĵojn en 3D"</string>
     <string name="link_openvegemap_description">"Malkovru vegetarajn kaj veganajn restoraciojn en via urbo"</string>
+
+    <!-- Fuzzy -->
+    <string name="link_mapy_tactile_description">"Taktilaj mapoj por homoj kun vida malkapablo"</string>
     <string name="link_josm_description">"Plene prezentita OSM-redaktilo por la komputilo. Ĉi tiu estas la potenca ilo por regulaj kontribuantoj."</string>
     <string name="link_vespucci_description">"Altnivela OSM-redaktilo por Android"</string>
     <string name="link_ideditor_description">"Simpla OSM-redaktilo por la retumilo. Optimumigita por la komputilo aŭ grandaj tabuletoj"</string>
@@ -1189,7 +1193,7 @@ aktiva"</string>
     <string name="quest_maxheight_split_way_hint">"Se ĝi ne validas por la tuta vojo, konsideru respondi \"%s\"."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactile_paving_kerb_title">"Ĉu ĉi tiu trotuarrando havas specialajn kahelojn helpema por blinduloj?"</string>
+    <string name="quest_tactile_paving_kerb_title">"Ĉu ĉi tiu trotuarrando havas taktilan pavimon?"</string>
     <string name="quest_kerb_height_title">"Kiom alta estas ĉi tiu trotuarrando?"</string>
     <string name="quest_kerb_height_flush">"Sama nivelo kiel vojsurfaco"</string>
     <string name="quest_kerb_height_lowered">"Iom pli alta ol vojsurfaco"</string>
@@ -1568,6 +1572,9 @@ sorted alphabetically by title -->
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Ĉu estas ŝirmejo ĉe ĉi tiu haltejo?"</string>
+
+    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
+    <string name="quest_busStopTactilePaving_title">"Ĉu ĉi tiu haltejo havas taktilan pavimon?"</string>
     <string name="quest_dietType_halal_name_title2">"Ĉu halal-produktoj estas ofertitaj ĉi tie?"</string>
     <string name="quest_dietType_kosher_name_title2">"Ĉu koŝeraj produktoj estas ofertitaj ĉi tie?"</string>
     <string name="quest_dietType_vegan_title2">"Ĉu iuj veganaj aĵoj en la menuo ĉi tie?"</string>
@@ -1710,6 +1717,7 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_address_street_hint2">"Tuŝeti straton sur la mapo por elekti ĝin"</string>
     <string name="quest_bicycle_incline_title">"Kiu direkto iras supren?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Iras supremalsupren"</string>
 
     <!-- Fuzzy -->
     <string name="quest_drinking_water_type_title">"Kiel trinkakvo estas disponigita ĉi tie?"</string>
@@ -1735,6 +1743,9 @@ sorted alphabetically by title -->
     <string name="unknown_shop_title">"Alia kategorio"</string>
 
     <!-- Fuzzy -->
+    <string name="quest_bicycle_barrier_installation_title">"Ĉu oni povas malfermi ĉi tiun biciklan baron (kun aŭ sen ŝlosilo)?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_genericRef_title">"Kio estas la identiga numero ĉi tie?"</string>
     <string name="about_title_get_involved">"Kontribuu"</string>
     <string name="pref_category_quests_overlays">"Taskoj &amp; supertavoloj"</string>
@@ -1742,9 +1753,37 @@ sorted alphabetically by title -->
     <string name="quest_presets_share">"Konigi"</string>
     <string name="quest_presets_delete">"Forigi"</string>
 
+    <!-- Config via URL/QRCode -->
+    <!-- Fuzzy -->
+    <string name="urlconfig_qr_code_description">"Lasu aliajn skani ĉi tiun QR-kodon por kunhavigi viajn antaŭargodojn."</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_as_url">"aŭ havigu URL:"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_url_copied">"URL kopiita al tondujo"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_apply_title">"Alpiku antaŭagordojn"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_apply_message">"Ĉu apliku kaj elektu antaŭagordojn %1$s?"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_apply_message_overwrite">"Atentu: Via samnoma antaŭagordo anstataŭiĝos!"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_switch_hint">"Vi ĉiam povas ŝanĝi antaŭagordojn ĉe la argorda menuo."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_parking_type_two_tier">"Du etaĝa bicikla parkejo"</string>
+
     <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Ĉi semajno"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_dates_mapped">"Tagoj dum tiuj vi mapis lastatempe"</string>
+
+    <!-- Fuzzy -->
+    <string name="urlconfig_scan_qr_code_again2">"Post instali la aplikaĵon, skanu la QR-kodon denove aŭ alklaku &lt;a href=\"%s\"&gt;ĉi tiun ligilon&lt;/a&gt; por apliki antaŭagordojn."</string>
 </resources>

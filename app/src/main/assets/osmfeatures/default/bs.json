@@ -620,9 +620,6 @@
                 "craft/bookbinder": {
                     "name": "Knjigovezac"
                 },
-                "craft/brewery": {
-                    "name": "Pivara"
-                },
                 "craft/carpenter": {
                     "name": "Stolar"
                 },

@@ -1,4 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco BIC Angola, Banco Keve]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
@@ -7,5 +8,4 @@ mobileCountryCode: 631
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [pt]
-atmOperators: [Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco BIC Angola, Banco Keve]
 orchardProduces: [banana, coffee, pineapple, tomato, cacao, cashew_nut, sisal]

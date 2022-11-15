@@ -161,9 +161,6 @@
                 "building": {
                     "label": "Bygning"
                 },
-                "building/levels_building": {
-                    "placeholder": "2, 4, 6..."
-                },
                 "building_area": {
                     "label": "Bygning"
                 },
@@ -334,9 +331,6 @@
                 },
                 "fuel": {
                     "label": "Drivstoff"
-                },
-                "fuel_multi": {
-                    "label": "Drivstofftypar"
                 },
                 "gender": {
                     "label": "Kjønn",

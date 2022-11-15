@@ -2741,4 +2741,8 @@ sorted alphabetically by title -->
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"doporučený pruh pro cyklisty"</string>
     <string name="urlconfig_scan_qr_code_again2">"Po instalaci aplikace znovu naskenujte QR kód nebo klikněte na &lt;a href=\"%s\"&gt;tento odkaz&lt;/a&gt; pro použití předvolby."</string>
+    <string name="confirmation_replace_shop_title">"Je tu teď něco jiného?"</string>
+    <string name="confirmation_replace_shop_message">"V takovém případě se změnily i otevírací hodiny, kontaktní informace apod."</string>
+    <string name="confirmation_replace_shop_yes">"Teď je tu něco jiného"</string>
+    <string name="confirmation_replace_shop_no">"Je tu stále totéž"</string>
 </resources>

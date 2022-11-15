@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [fr]
+atmOperators: [Byblos Bank, بنك عودة, كاستنيا]
 centerLineStyle: yellow
 mobileCountryCode: 415
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [ar]
-postboxesHaveCollectionTimes: true
-atmOperators: [Byblos Bank, بنك عودة, كاستنيا]
 orchardProduces: [olive, apple, grape, tomato, almond, cherry, apricot, lemon, lime, peach, plum, pear, banana, walnut, avocado, orange]
+postboxesHaveCollectionTimes: true

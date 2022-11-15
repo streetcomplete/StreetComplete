@@ -355,11 +355,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "niveis,pisos,soto,sotos,subterráneos,sótano,subsolo,subchan"
                 },
-                "building/levels_building": {
-                    "label": "Andares do edificio",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "andares,pisos,niveis,plantas"
-                },
                 "building/material": {
                     "label": "Material"
                 },
@@ -402,9 +397,6 @@
                 },
                 "capacity_volume": {
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Pagamento en efectivo"
                 },
                 "castle_type": {
                     "label": "Tipo"
@@ -581,7 +573,6 @@
                     "label": "Denotación"
                 },
                 "departures_board": {
-                    "label": "Taboleiro de saídas",
                     "options": {
                         "no": "Ningún",
                         "realtime": "Tempo real",
@@ -830,9 +821,6 @@
                 },
                 "fuel": {
                     "label": "Combustíbel"
-                },
-                "fuel_multi": {
-                    "label": "Tipos de combustíbeis"
                 },
                 "gambling": {
                     "label": "Xogos"
@@ -1403,9 +1391,6 @@
                 "payment_multi": {
                     "label": "Tipos de pagamento"
                 },
-                "payment_multi_fee": {
-                    "label": "Tipos de pagamento"
-                },
                 "phases": {
                     "label": "Fases",
                     "placeholder": "1, 2, 3..."
@@ -1525,7 +1510,6 @@
                     "label": "Método de produción "
                 },
                 "plant/output/electricity": {
-                    "label": "Potencia de saída",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2110,7 +2094,6 @@
                 "tracktype": {
                     "label": "Tipo da pista",
                     "options": {
-                        "grade1": "Sólido: superficie pavimentada ou fortemente compactada",
                         "grade2": "Principalmente Sólido: grava/rocha con algún material brando mesturado",
                         "grade3": "Mesma mestura de materiais duros e brandos",
                         "grade4": "Principalmente Brando: terra/area/herba con algún material duro mesturado",
@@ -3685,10 +3668,6 @@
                 "craft/bookbinder": {
                     "name": "Encadernador",
                     "terms": "encadernador,libros"
-                },
-                "craft/brewery": {
-                    "name": "Cervexeiro",
-                    "terms": "cervexeiro,cervexaría,cervexa"
                 },
                 "craft/carpenter": {
                     "name": "Carpinteiro",
@@ -5581,9 +5560,6 @@
                 },
                 "power/plant/source/nuclear": {
                     "name": "Planta de enerxía nuclear"
-                },
-                "power/plant/source/solar": {
-                    "name": "Planta de enerxía solar"
                 },
                 "power/plant/source/wind": {
                     "name": "Planta de enerxía eólica"

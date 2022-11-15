@@ -80,7 +80,7 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Само повезује два пута"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Нешто друго (оставите напомену)"</string>
     <string name="about_title_privacy_statement">"Изјава о приватности"</string>
-    <string name="about_summary_privacy_statement">"и коришћења података"</string>
+    <string name="about_summary_privacy_statement">"и употреби података"</string>
     <string name="quest_openingHours_public_holidays">"Државним празницима"</string>
     <string name="quest_openingHours_public_holidays_short">"Празник"</string>
     <string name="quest_openingHours_open_end">"флексибилан крај"</string>
@@ -1612,4 +1612,8 @@ sorted alphabetically by title -->
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"препоручена трака за бицикле"</string>
     <string name="urlconfig_scan_qr_code_again2">"Након инсталирања апликације, поново очитајте QR кôд или додирните &lt;a href=\"%s\"&gt;ову везу&lt;/a&gt; како бисте применили предложак."</string>
+    <string name="confirmation_replace_shop_title">"Да ли је сада друго место?"</string>
+    <string name="confirmation_replace_shop_message">"У том случају, радно време, контакт подаци и др. се такође мењају."</string>
+    <string name="confirmation_replace_shop_yes">"Сада је друго место"</string>
+    <string name="confirmation_replace_shop_no">"И даље је исто место"</string>
 </resources>

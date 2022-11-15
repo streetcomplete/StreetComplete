@@ -2485,4 +2485,78 @@ sorted alphabetically by title -->
     <string name="quest_entrance_reference_reference_label">"入口標示："</string>
     <string name="quest_entrance_reference_flat_range_label">"房間概況："</string>
     <string name="quest_entrance_reference_flat_range_to">"到那裡"</string>
+    <string name="default_disabled_msg_overlay">"這個任務類型預設已經關閉，因為已經有重疊的任務了，能夠更有效地輸入與更新這個資料。"</string>
+    <string name="quest_camp_drinking_water_title">"這邊的飲水是否免費提供給露營者？"</string>
+    <string name="quest_camp_shower_title">"這裡有淋浴設施嗎？"</string>
+    <string name="quest_camp_power_supply_title">"這裡有任何提供顧客充手機、筆電等的地方嗎？"</string>
+    <string name="quest_camp_type_title">"誰可以在這邊露營？"</string>
+    <string name="quest_camp_type_tents_and_caravans">"帳篷、房車、露營拖車，都可以…"</string>
+    <string name="quest_camp_type_caravans_only">"只有房車、露營拖車，…"</string>
+    <string name="quest_camp_type_tents_only">"只有帳篷"</string>
+    <string name="quest_camp_type_backcountry">"野外露營 (沒有設施)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"這個答案並不符合原先有關道路的資訊，你確定你在回答正確的道路嗎？你確定你親身踏查整個道路長度，而且真的有踏查？"</string>
+    <string name="quest_recycling_type_pet">"只有 PET"</string>
+    <string name="street_parking_street_width">"道路寬度：%s"</string>
+    <string name="overlay_street_parking">"路邊停車"</string>
+    <string name="link_ohsomehex_description">"跨越時空，大尺度到單一物件探就 OSM 資料"</string>
+    <string name="link_opencampingmap_description">"露營場的地圖"</string>
+    <string name="quest_atm_cashin_title">"你可以在這個 ATM 存錢嗎？"</string>
+    <string name="create_node_action_description">"你用...創建節點"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"這裡是緊急集合點"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"緊急集合點是當緊急狀態時集合的地方，通常會長這樣子的："</string>
+    <string name="quest_address_answer_house_name2">"這個地址有房屋名稱…"</string>
+    <string name="quest_address_street_street_name_label">"道路名稱："</string>
+    <string name="quest_address_street_hint2">"點一下道路來選取道路"</string>
+    <string name="quest_bicycle_incline_title">"往上的方向是朝向什麼方向？"</string>
+    <string name="quest_bicycle_incline_up_and_down">"是上上下下的坡道"</string>
+    <string name="quest_drinking_water_type_title">"這裡的飲水如何提供？"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"其他飲用水泉"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"水泉會放出小流水"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"只有用瓶子裝"</string>
+    <string name="quest_drinking_water_type_tap">"水龍頭"</string>
+    <string name="quest_drinking_water_type_hand_pump">"手動泵"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"沒有泵的水井"</string>
+    <string name="quest_drinking_water_type_spring">"噴泉"</string>
+    <string name="quest_drinking_water_type_disused">"停止使用的飲水物件"</string>
+    <string name="overlay_addresses">"地址"</string>
+    <string name="overlay_shops">"商店"</string>
+    <string name="name_label">"名稱："</string>
+    <string name="vacant_shop_title">"閒置店面"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"其他類型"</string>
+    <string name="quest_address_answer_no_address">"這裡沒有地址"</string>
+    <string name="quest_bicycle_barrier_installation_title">"這裡的單車障礙物是否能開啟 (有或沒有鑰匙)？"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"固定的"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"可開啟的"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"可移動的"</string>
+    <string name="quest_buildingType_guardhouse">"警衛亭"</string>
+    <string name="quest_genericRef_title">"這裡的編號是多少？"</string>
+    <string name="quest_sidewalk_answer_different">"人行道路狀況不同"</string>
+    <string name="about_title_get_involved">"參與其中"</string>
+    <string name="pref_category_quests_overlays">"任務與套疊"</string>
+    <string name="quest_presets_rename">"重新命名"</string>
+    <string name="quest_presets_share">"分享"</string>
+    <string name="quest_presets_delete">"刪除"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"讓其他人掃描 QR code 來分享你的預設組合。"</string>
+    <string name="urlconfig_as_url">"或是用網址："</string>
+    <string name="urlconfig_url_copied">"網址已經複製到剪貼簿"</string>
+    <string name="urlconfig_apply_title">"套用預設組合"</string>
+    <string name="urlconfig_apply_message">"套用與選取預設組合 %1$s ？"</string>
+    <string name="urlconfig_apply_message_overwrite">"注意：相同名字的預設組合會被覆寫！"</string>
+    <string name="urlconfig_switch_hint">"你可以在任何時候在設定換預設組合。"</string>
+    <string name="quest_bicycle_parking_type_two_tier">"兩層自行車架"</string>
+    <string name="user_profile_current_week_title">"過去七天"</string>
+    <string name="user_profile_dates_mapped">"最近你畫地圖的天數"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"單車優先車道"</string>
+    <string name="urlconfig_scan_qr_code_again2">"在安裝 app 之後，再掃一次條碼或是點一下  &lt;a href=\"%s\"&gt;this link&lt;/a&gt; 來套用預設組合。"</string>
+    <string name="confirmation_replace_shop_title">"這裡現在是不同的地方嗎？"</string>
+    <string name="confirmation_replace_shop_message">"在這個例子下，營運時間、聯絡資訊等都會變動。"</string>
+    <string name="confirmation_replace_shop_yes">"現在是不同的地點了"</string>
+    <string name="confirmation_replace_shop_no">"還在相同的地點"</string>
 </resources>

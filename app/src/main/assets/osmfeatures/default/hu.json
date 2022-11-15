@@ -412,11 +412,6 @@
                     "placeholder": "2, 4, 6…",
                     "terms": "alagsor,pince,alsó szint"
                 },
-                "building/levels_building": {
-                    "label": "Épületszintek",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "épületszint,emelet"
-                },
                 "building/material": {
                     "label": "Anyag",
                     "terms": "anyag,építőanyag,alapanyag,összetevő,alkotóelem"
@@ -493,9 +488,6 @@
                 "capacity_volume": {
                     "label": "Kapacitás (köbméter)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Befizetés"
                 },
                 "castle_type": {
                     "label": "Típus",
@@ -778,7 +770,6 @@
                     "label": "Jelentőség"
                 },
                 "departures_board": {
-                    "label": "Indulásjelző tábla",
                     "options": {
                         "no": "Nincs",
                         "realtime": "Valós idejű",
@@ -1146,9 +1137,6 @@
                 },
                 "fuel": {
                     "label": "Üzemanyag"
-                },
-                "fuel_multi": {
-                    "label": "Üzemanyagtípusok"
                 },
                 "gambling": {
                     "label": "Szerencsejátékok"
@@ -1848,10 +1836,6 @@
                     "label": "Fizetési típusok",
                     "terms": "fizetési módok"
                 },
-                "payment_multi_fee": {
-                    "label": "Fizetési típusok",
-                    "terms": "fizetési módok"
-                },
                 "phases": {
                     "label": "Fázisok száma",
                     "placeholder": "1, 2, 3..."
@@ -1972,7 +1956,6 @@
                     "label": "Áramfejlesztés módja"
                 },
                 "plant/output/electricity": {
-                    "label": "Kimeneti teljesítmény",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2614,10 +2597,6 @@
                     "label": "Legutóbb felmérve",
                     "terms": "felmérés,megfigyelés,utolsó megfigyelés,adatfelvétel ideje"
                 },
-                "survey_point/datum_aligned": {
-                    "label": "A helyi geodéziai dátumhoz igazítva",
-                    "terms": "pontosan bemérve,földmérési adathoz igazítva,kimérve,geodéziai adathoz igazítva"
-                },
                 "survey_point/purpose": {
                     "label": "Cél",
                     "options": {
@@ -2737,7 +2716,6 @@
                 "tracktype": {
                     "label": "Mezőgazdasági/erdészeti út szilárdsága",
                     "options": {
-                        "grade1": "Szilárd: burkolt vagy erősen tömörített felület",
                         "grade2": "Többnyire szilárd: murva/kő valamennyi lazább anyaggal",
                         "grade3": "Szilárd és laza anyagok egyenletes keveréke",
                         "grade4": "Többnyire laza: föld/homok/fű út némi kemény anyaggal",
@@ -4632,10 +4610,6 @@
                     "name": "Könyvkötészet",
                     "terms": "könyvkötő"
                 },
-                "craft/brewery": {
-                    "name": "Sörfőzde",
-                    "terms": "sörfőző"
-                },
                 "craft/carpenter": {
                     "name": "Ács",
                     "terms": "tetőfedő,épületasztalos"
@@ -5181,9 +5155,6 @@
                     "name": "Autópálya fel- vagy lehajtó",
                     "terms": "kijárat,lehajtás,felhajtás"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Autópálya fel- vagy lehajtó"
-                },
                 "highway/passing_place": {
                     "name": "Kitérőhely"
                 },
@@ -5211,9 +5182,6 @@
                 "highway/primary_link": {
                     "name": "Főút fel- vagy lehajtó",
                     "terms": "elsőrendű főútcsatlakozás"
-                },
-                "highway/primary_link-US-CA": {
-                    "name": "Főút fel- vagy lehajtó"
                 },
                 "highway/raceway": {
                     "name": "Autóversenypálya",
@@ -5311,7 +5279,7 @@
                     "name": "Automatikus útdíjbeszedő kapu"
                 },
                 "highway/track": {
-                    "name": "Földút",
+                    "name": "Mezőgazdasági/erdészeti út",
                     "terms": "erdészeti út,mezőgazdasági út,tanyasi út,földút"
                 },
                 "highway/traffic_mirror": {
@@ -5331,9 +5299,6 @@
                 "highway/trunk_link": {
                     "name": "Autóút fel- vagy lehajtó",
                     "terms": "autóút csatlakozás"
-                },
-                "highway/trunk_link-US-CA": {
-                    "name": "Autóút fel- vagy lehajtó"
                 },
                 "highway/turning_circle": {
                     "name": "Megfordulókör",
@@ -6884,9 +6849,6 @@
                 },
                 "power/plant/source/oil": {
                     "name": "Kőolajtüzelésű erőmű területe"
-                },
-                "power/plant/source/solar": {
-                    "name": "Naperőmű"
                 },
                 "power/plant/source/waste": {
                     "name": "Hulladékégető erőmű területe"

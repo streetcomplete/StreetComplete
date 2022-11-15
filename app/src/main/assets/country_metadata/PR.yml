@@ -5,6 +5,6 @@ noEntrySignStyle: no entre
 noParkingSignStyle: mutcd text spanish
 noStoppingSignStyle: mutcd text spanish
 officialLanguages: [es, en]
+orchardProduces: [coffee, orange, banana, guava, mango, mangosteen, tomato, papaya, avocado, chilli_pepper, sweet_pepper, pineapple, coconut, lemon, lime, grapefruit]
 popularSports: [basketball, tennis, baseball]
 speedUnits: [miles per hour, kilometers per hour]
-orchardProduces: [coffee, orange, banana, guava, mango, mangosteen, tomato, papaya, avocado, chilli_pepper, sweet_pepper, pineapple, coconut, lemon, lime, grapefruit]

@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 lengthUnits: [foot and inch, meter]
 mobileCountryCode: 366
 officialLanguages: [en]
-speedUnits: [miles per hour, kilometers per hour]
 orchardProduces: [cacao, banana, coconut, guava, mango, mangosteen, grapefruit, orange, coffee, lemon, lime, avocado, tomato, pineapple, nutmeg, papaya]
+speedUnits: [miles per hour, kilometers per hour]

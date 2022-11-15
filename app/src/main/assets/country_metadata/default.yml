@@ -19,6 +19,7 @@ noEntrySignStyle: default
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
+orchardProduces: []
 pictogramCycleLaneStyle: white
 popularReligions: [christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh]
 popularSports: []
@@ -30,4 +31,3 @@ roofsAreUsuallyFlat: false
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
 workweekDays: 5
-orchardProduces: []

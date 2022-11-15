@@ -1,14 +1,14 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, AMK, Sathapana]
 centerLineStyle: yellow
+chargingStationOperators: [Green E-Bike]
 hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 456
 noParkingLineStyle: yellow-white on curb
 noStoppingLineStyle: red-white on curb
 officialLanguages: [km]
+orchardProduces: [rubber, banana, chilli_pepper, sweet_pepper, coconut, orange, guava, mango, mangosteen, pineapple, coffee, pepper, grapefruit, lemon, lime]
 popularReligions: [buddhist, muslim]
 postboxesHaveCollectionTimes: true
-atmOperators: [Canadia Bank, ABA Bank, ABA, T, Sathapana Bank, Maybank, ATM ABA Bank, ANZ Royal, FTB, ANZ, ACLEDA Bank, Cathay United Bank, BRED Bank, Mekong Bank, MB Bank, CAB Bank, RHB, Acleda, Sacombank, ATZ, QK4, AMK, Sathapana]
-chargingStationOperators: [Green E-Bike]
-orchardProduces: [rubber, banana, chilli_pepper, sweet_pepper, coconut, orange, guava, mango, mangosteen, pineapple, coffee, pepper, grapefruit, lemon, lime]

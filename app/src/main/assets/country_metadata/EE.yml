@@ -1,5 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ru]
+atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
+chargingStationOperators: [Elmo, ELMO]
+clothesContainerOperators: [Tallinna Jäätmekeskus]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -11,10 +14,7 @@ mobileCountryCode: 248
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [et]
+orchardProduces: [strawberry, apple, raspberry, plum, tomato]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA
-atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Nordea, Luminor, Sampo/Nordea, Sweedpank]
-chargingStationOperators: [Elmo, ELMO]
-clothesContainerOperators: [Tallinna Jäätmekeskus]
-orchardProduces: [strawberry, apple, raspberry, plum, tomato]

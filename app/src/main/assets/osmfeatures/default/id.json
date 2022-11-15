@@ -315,9 +315,6 @@
                 "building/levels/underground": {
                     "label": "Jumlah lantai bawah tanah"
                 },
-                "building/levels_building": {
-                    "label": "Jumlah Lantai Bangunan"
-                },
                 "building_area": {
                     "label": "Bangunan"
                 },
@@ -354,9 +351,6 @@
                 "capacity_volume": {
                     "label": "Capacity (Meter Kubik)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Tunai\nCash"
                 },
                 "castle_type": {
                     "label": "Tipe"
@@ -546,7 +540,6 @@
                     "label": "Denotasi"
                 },
                 "departures_board": {
-                    "label": "Papan Keberangkatan",
                     "options": {
                         "no": "Tidak ada",
                         "realtime": "Langsung",
@@ -804,9 +797,6 @@
                 },
                 "fuel": {
                     "label": "Bahan bakar"
-                },
-                "fuel_multi": {
-                    "label": "Tipe Bahan Bakar"
                 },
                 "gambling": {
                     "label": "Permainan Judi"
@@ -1231,7 +1221,6 @@
                 "tracktype": {
                     "label": "Tipe Trek",
                     "options": {
-                        "grade1": "Solid: diaspal atau permukaan keras sangat tetal",
                         "grade2": "Kebanyakan Padat: batu/kerikil dengan campuran bahan lunak",
                         "grade3": "Campuran imbang antara bahan padat dan lunak",
                         "grade4": "Kebanyakan Lembut: tanah/pasir/rumput dengan campuran bahan keras",
@@ -1678,9 +1667,6 @@
                 "craft/bookbinder": {
                     "name": "Tukang Jilid",
                     "terms": "penjilid buku,binder buku"
-                },
-                "craft/brewery": {
-                    "name": "Perusahaan Bir"
                 },
                 "craft/carpenter": {
                     "name": "Tukang Kayu"

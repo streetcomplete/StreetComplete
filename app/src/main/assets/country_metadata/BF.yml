@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bank of Africa, UBA, Ecobank]
 edgeLineStyle: short white dashes
 mobileCountryCode: 613
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fr, mos, dyu, ff]
+orchardProduces: [cashew_nut, almond, tomato, chilli_pepper, sweet_pepper, guava, mango, mangosteen, orange, lemon, lime, grapefruit]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [Bank of Africa, UBA, Ecobank]
-orchardProduces: [cashew_nut, almond, tomato, chilli_pepper, sweet_pepper, guava, mango, mangosteen, orange, lemon, lime, grapefruit]

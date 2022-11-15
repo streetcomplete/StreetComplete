@@ -184,7 +184,7 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             db.execSQL(ActiveDaysTable.CREATE)
         }
         if (oldVersion <= 7 && newVersion > 7) {
-            db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = AddShoulder", null)
+            db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = 'AddShoulder'", null)
         }
     }
 }

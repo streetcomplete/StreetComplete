@@ -284,10 +284,6 @@
                 "building/levels/underground": {
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "Building Levels",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building_area": {
                     "label": "Building"
                 },
@@ -594,9 +590,6 @@
                 },
                 "fuel": {
                     "label": "Fuel"
-                },
-                "fuel_multi": {
-                    "label": "Fuel Types"
                 },
                 "gambling": {
                     "label": "Games"
@@ -1029,7 +1022,6 @@
                     "label": "Plant"
                 },
                 "plant/output/electricity": {
-                    "label": "Power Output",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -1360,7 +1352,6 @@
                 "tracktype": {
                     "label": "Track Type",
                     "options": {
-                        "grade1": "Solid: paved or heavily compacted hardcore surface",
                         "grade2": "Mostly Solid: gravel/rock with some soft material mixed in",
                         "grade3": "Even mixture of hard and soft materials",
                         "grade4": "Mostly Soft: soil/sand/grass with some hard material mixed in",
@@ -2227,9 +2218,6 @@
                 },
                 "craft/bookbinder": {
                     "name": "Bookbinder"
-                },
-                "craft/brewery": {
-                    "name": "Brewery"
                 },
                 "craft/carpenter": {
                     "name": "Carpenter"

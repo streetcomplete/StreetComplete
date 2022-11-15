@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajero automático, Cajeros Automáticos, BPP, Banco de Credito y Comercio, Banco, BM, Cajeros]
 centerLineStyle: yellow
 mobileCountryCode: 368
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [es]
-popularSports: [baseball, basketball]
-atmOperators: [Banco Metropolitano, BANDEC, BPA, Banco Popular de Ahorro, Cajero automático, Cajeros Automáticos, BPP, Banco de Credito y Comercio, Banco, BM, Cajeros]
 orchardProduces: [guava, mango, mangosteen, banana, tomato, coffee, papaya, agave, coconut, chilli_pepper, sweet_pepper, pineapple, grapefruit, orange, cacao, grape, sisal, lemon, lime]
+popularSports: [baseball, basketball]
