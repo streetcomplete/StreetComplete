@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -65,6 +66,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.explanationInputMainSurface.doAfterTextChanged { checkIsFormComplete() }
 
         binding.selectButtonMainSurface.setOnClickListener {
             collectSurfaceData { gathered: SingleSurfaceItemInfo ->
@@ -153,6 +156,19 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /* -------------------------------------- apply answer -------------------------------------- */
 
     override fun isFormComplete(): Boolean {
+        when (val original = originalSurfaceStatus) {
+            is SingleSurfaceWithNote -> {
+                if (noteText() != original.note) {
+                    return true
+                }
+            }
+            is SurfaceMissingWithNote -> {
+                if (noteText() != original.note) {
+                    return true
+                }
+            }
+            else -> {}
+        }
         if (selectedStatusForMainSurface == null) {
             return false
         }

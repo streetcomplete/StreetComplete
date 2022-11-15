@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -98,6 +99,10 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            binding.explanationInputMainSurface.doAfterTextChanged { checkIsFormComplete() }
+            binding.explanationInputFootwaySurface.doAfterTextChanged { checkIsFormComplete() }
+            binding.explanationInputCyclewaySurface.doAfterTextChanged { checkIsFormComplete() }
 
             binding.selectButtonMainSurface.setOnClickListener {
                 collectSurfaceData { gathered: SingleSurfaceItemInfo ->
@@ -295,9 +300,35 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         /* -------------------------------------- apply answer -------------------------------------- */
 
         override fun isFormComplete(): Boolean {
-            // TODO should we allow editing surface:note
-            // TODO likely yes, then we need to allow saving it
-            // TODO: what about roads? is the same issue present there?
+            // should we allow editing surface:note?
+            // also where surface is not specified (maybe even surface=paved/unpaved cannot be really specified)
+            // so saving is allowed even in absense of surface
+            when (val original = originalSurfaceStatus) {
+                is SingleSurfaceWithNote -> {
+                    if (noteText() != original.note) {
+                        return true
+                    }
+                }
+                is SurfaceMissingWithNote -> {
+                    if (noteText() != original.note) {
+                        return true
+                    }
+                }
+                is CyclewayFootwaySurfacesWithNote -> {
+                    if (noteText() != original.note) {
+                        return true
+                    }
+                    if (cyclewayNoteText() != original.cyclewayNote) {
+                        return true
+                    }
+                    if (footwayNoteText() != original.footwayNote) {
+                        return true
+                    }
+                }
+                else -> {
+                    // do nothing
+                }
+            }
             if (selectedStatusForMainSurface == null) {
                 return selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null
             }

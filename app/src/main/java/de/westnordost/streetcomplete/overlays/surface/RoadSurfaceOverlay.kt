@@ -44,6 +44,7 @@ class RoadSurfaceOverlay : Overlay {
            .filter( """ways, relations with
                highway ~ ${(ALL_ROADS).joinToString("|")}
                and (!surface or surface ~ ${handledSurfaces.joinToString("|") })
+               and (!surface:note or surface)
                """)
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
     }

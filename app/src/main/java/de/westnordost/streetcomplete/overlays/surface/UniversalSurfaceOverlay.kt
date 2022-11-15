@@ -54,6 +54,9 @@ class UniversalSurfaceOverlay : Overlay {
                and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
                and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
                and (segregated = yes or (!cycleway:surface and !footway:surface))
+               and (!surface:note or surface)
+               and (!cycleway:surface:note or cycleway:surface)
+               and (!footway:surface:note or footway:surface)
                """)
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
     }
