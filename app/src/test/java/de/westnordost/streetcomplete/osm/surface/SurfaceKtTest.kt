@@ -78,4 +78,24 @@ class SurfaceKtTest {
         assertEquals(commonSurfaceDescription("asphalt", "sand"), null)
         assertEquals(commonSurfaceObject("asphalt", "sand"), null)
     }
+
+    @Test
+    fun `converting tags to enum works`() {
+        assertEquals(surfaceTextValueToSurfaceEnum("asphalt"), Surface.ASPHALT)
+        assertEquals(surfaceTextValueToSurfaceEnum("sand"), Surface.SAND)
+    }
+
+    @Test
+    fun `converting tags to enum converts popular synonyms`() {
+        // TODO is it actually a good idea? It seems to be asking for a nasty trap for various confusing behaviour
+        // otherwise: what to do with surface=earth? make it uneditable? try to deprecate and retag all popular values?
+        // try to ensure that it is used only where no confusing behaviour will happen
+        // (so not for cycleway:surface=paving_stones:30 - as changing footway:surface could result in retagging
+        // to cycleway:surface=paving_stones)
+        assertEquals(surfaceTextValueToSurfaceEnum("earth"), Surface.DIRT)
+        assertEquals(surfaceTextValueToSurfaceEnum("dirt"), Surface.DIRT)
+        assertEquals(surfaceTextValueToSurfaceEnum("soil"), Surface.DIRT)
+        assertEquals(surfaceTextValueToSurfaceEnum("paving_stones"), Surface.PAVING_STONES)
+        assertEquals(surfaceTextValueToSurfaceEnum("paving_stones:30"), Surface.PAVING_STONES)
+    }
 }
