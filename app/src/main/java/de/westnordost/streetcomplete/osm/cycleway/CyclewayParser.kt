@@ -23,8 +23,6 @@ import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.util.ktx.containsAny
 
-data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
-
 /** Returns the Cycleway values for the left and right side using the given tags */
 fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): LeftAndRightCycleway? {
     if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null

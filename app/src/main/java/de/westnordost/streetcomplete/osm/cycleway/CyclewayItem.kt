@@ -1,11 +1,10 @@
-package de.westnordost.streetcomplete.quests.cycleway
+package de.westnordost.streetcomplete.osm.cycleway
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE

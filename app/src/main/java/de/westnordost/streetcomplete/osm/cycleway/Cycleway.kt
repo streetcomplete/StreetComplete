@@ -3,14 +3,17 @@ package de.westnordost.streetcomplete.osm.cycleway
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 
+data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
+
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
      *  exclusive access for cyclists */
     EXCLUSIVE_LANE,
     /** [EXCLUSIVE_LANE] in both directions */
     DUAL_LANE,
-    /** a.k.a. cycle lane with dashed markings, protective lane, multipurpose lane, soft lane or
-     *  recommended lane. Usually priority access for cyclists, cars may use if necessary */
+    /** a.k.a. cycle lane with dashed markings, protective lane, multipurpose lane, soft lane,
+     *  recommended lane or cycle lanes on 2-1 roads. Usually priority access for cyclists, cars
+     *  may use if necessary */
     ADVISORY_LANE,
     /** some kind of cycle lane, not specified whether exclusive or advisory */
     UNSPECIFIED_LANE,
@@ -117,6 +120,8 @@ fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
     }
     return cycleways
 }
+
+
 
 val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f

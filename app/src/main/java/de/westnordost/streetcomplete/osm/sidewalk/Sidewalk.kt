@@ -44,8 +44,10 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
         if (left != null)  tags["sidewalk:left"] = left.osmValue
         if (right != null) tags["sidewalk:right"] = right.osmValue
         // In case of previous incorrect sidewalk tagging
-        tags.remove("sidewalk:both")
-        tags.remove("sidewalk")
+        if (left != null || right != null) {
+            tags.remove("sidewalk:both")
+            tags.remove("sidewalk")
+        }
     }
 
     if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {
