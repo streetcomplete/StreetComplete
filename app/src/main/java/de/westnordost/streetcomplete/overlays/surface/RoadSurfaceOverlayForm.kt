@@ -185,12 +185,12 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         val note = noteText()
         val surfaceObject = selectedStatusForMainSurface!!.value!!
         applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-            editTags(it, element!!.tags, surfaceObject, note)
+            editTags(it, surfaceObject, note)
         }.create()))
     }
 
     companion object {
-        fun editTags(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
+        fun editTags(changesBuilder: StringMapChangesBuilder, surfaceObject: Surface, note: String?) {
             SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 

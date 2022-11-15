@@ -12,7 +12,7 @@ import org.junit.Test
 class RoadSurfaceOverlayFormKtTest {
     private fun verifyAnswer(tags: Map<String, String>, surfaceAnswer: Surface, noteAnswer: String?, vararg expectedChanges: StringMapEntryChange) {
         val cb = StringMapChangesBuilder(tags)
-        RoadSurfaceOverlayForm.editTags(cb, tags, surfaceAnswer, noteAnswer)
+        RoadSurfaceOverlayForm.editTags(cb, surfaceAnswer, noteAnswer)
         val changes = cb.create().changes
         Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }

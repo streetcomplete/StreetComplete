@@ -352,23 +352,23 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             val cyclewaySurface = selectedStatusForCyclewaySurface!!.value!!
             val footwaySurface = selectedStatusForFootwaySurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                editTagsWithSeparateCyclewayAndFootwayAnswer(it, element!!.tags, cyclewaySurface, cyclewayNoteText(), footwaySurface, footwayNoteText(), noteText())
+                editTagsWithSeparateCyclewayAndFootwayAnswer(it, cyclewaySurface, cyclewayNoteText(), footwaySurface, footwayNoteText(), noteText())
             }.create()))
         } else {
             // like RoadSurfaceOverlayForm is doing this
             val surfaceObject = selectedStatusForMainSurface!!.value!!
             applyEdit(UpdateElementTagsAction(StringMapChangesBuilder(element!!.tags).also {
-                editTagsWithMainSurfaceAnswer(it, element!!.tags, surfaceObject, noteText())
+                editTagsWithMainSurfaceAnswer(it, surfaceObject, noteText())
             }.create()))
         }
     }
 
     companion object {
-        fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, surfaceObject: Surface, note: String?) {
+        fun editTagsWithMainSurfaceAnswer(changesBuilder: StringMapChangesBuilder, surfaceObject: Surface, note: String?) {
             SurfaceAnswer(surfaceObject, note).applyTo(changesBuilder)
         }
 
-        fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, presentTags: Map<String, String>, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
+        fun editTagsWithSeparateCyclewayAndFootwayAnswer(changesBuilder: StringMapChangesBuilder, cyclewaySurface: Surface, cyclewayNote: String?, footwaySurface: Surface, footwayNote: String?, generalSurfaceNote: String?) {
             // main surface cannot have note added by SC
             // TODO what if it originally had one? figure out how to display it? skip such rare objects?
             // TODO SurfaceAnswer should get most of overlay edit code...

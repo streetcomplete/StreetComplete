@@ -13,14 +13,14 @@ import org.junit.Test
 class PathSurfaceOverlayFormKtTest {
     private fun verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags: Map<String, String>, cyclewaySurfaceAnswer: Surface, cyclewayNote: String?, footwaySurfaceAnswer: Surface, footwayNote: String?, noteAnswer: String?, vararg expectedChanges: StringMapEntryChange) {
         val cb = StringMapChangesBuilder(tags)
-        PathSurfaceOverlayForm.editTagsWithSeparateCyclewayAndFootwayAnswer(cb, tags, cyclewaySurfaceAnswer, cyclewayNote, footwaySurfaceAnswer, footwayNote, noteAnswer)
+        PathSurfaceOverlayForm.editTagsWithSeparateCyclewayAndFootwayAnswer(cb, cyclewaySurfaceAnswer, cyclewayNote, footwaySurfaceAnswer, footwayNote, noteAnswer)
         val changes = cb.create().changes
         Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }
 
     private fun verifyAnswerWithMainSurfaceOnly(tags: Map<String, String>, surfaceAnswer: Surface, noteAnswer: String?, vararg expectedChanges: StringMapEntryChange) {
         val cb = StringMapChangesBuilder(tags)
-        RoadSurfaceOverlayForm.editTags(cb, tags, surfaceAnswer, noteAnswer)
+        RoadSurfaceOverlayForm.editTags(cb, surfaceAnswer, noteAnswer)
         val changes = cb.create().changes
         Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
     }
