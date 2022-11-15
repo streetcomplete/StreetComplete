@@ -99,10 +99,10 @@ class PathSurfaceOverlay : Overlay {
 }
 
 private fun getStyle(element: Element): Style {
-    if (element.tags["highway"] in ALL_PATHS) {
-        return getStyleForStandalonePath(element)
+    return if (element.tags["highway"] in ALL_PATHS) {
+        getStyleForStandalonePath(element)
     } else {
-        return getStyleForSidewalkAsProperty(element)
+        getStyleForSidewalkAsProperty(element)
     }
 }
 private fun getStyleForStandalonePath(element: Element): Style {
