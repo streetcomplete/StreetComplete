@@ -42,7 +42,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
-    private var currentStatus: SurfaceInfo? = null
+    private var originalSurfaceStatus: SurfaceInfo? = null
     private var isSegregatedLayout = false
 
     private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
@@ -169,7 +169,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
              */
 
             val status = createSurfaceStatus(element!!.tags)
-            currentStatus = status
+            originalSurfaceStatus = status
             when (status) {
                 // surface=unpaved / surface=paved without note is treated as missing one
                 is CyclewayFootwaySurfaces -> {
@@ -325,23 +325,17 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
     }
 
     override fun hasChanges(): Boolean {
-        // TODO wait, what currentStatus means here?
-        // is it current as in "what is now tagged there"? Or is it "current" as in what is not answered by user?
-        // the first one - so we need better name...
-        // see also currentLitStatus
-        // unmodifiedData ?
-        // pack input into InputViewController ?
-        return when (val status = currentStatus) {
+        return when (val original = originalSurfaceStatus) {
             is CyclewayFootwaySurfaces ->
-                selectedStatusForCyclewaySurface?.value != status.cycleway || selectedStatusForFootwaySurface?.value != status.footway
-            is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
-            is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
+                selectedStatusForCyclewaySurface?.value != original.cycleway || selectedStatusForFootwaySurface?.value != original.footway
+            is SingleSurface -> selectedStatusForMainSurface?.value != original.surface
+            is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != original.surface || noteText() != original.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
-            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null || noteText() != status.note
+            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null || noteText() != original.note
             is CyclewayFootwaySurfacesWithNote -> {
-                selectedStatusForMainSurface?.value != status.main || noteText() != status.note ||
-                selectedStatusForCyclewaySurface?.value != status.main || cyclewayNoteText() != status.cyclewayNote ||
-                selectedStatusForFootwaySurface?.value != status.main || footwayNoteText() != status.footwayNote
+                selectedStatusForMainSurface?.value != original.main || noteText() != original.note ||
+                selectedStatusForCyclewaySurface?.value != original.main || cyclewayNoteText() != original.cyclewayNote ||
+                selectedStatusForFootwaySurface?.value != original.main || footwayNoteText() != original.footwayNote
             }
             null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
         }

@@ -38,7 +38,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     /** items to display. May not be accessed before onCreate */
     val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
-    private var currentStatus: SingleSurfaceInfo? = null
+    private var originalSurfaceStatus: SingleSurfaceInfo? = null
 
     private var selectedStatusForMainSurface: DisplayItem<Surface>? = null
         set(value) {
@@ -102,7 +102,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
          */
 
         val status = createMainSurfaceStatus(element!!.tags)
-        currentStatus = status
+        originalSurfaceStatus = status
         when (status) {
             is SingleSurface -> {
                 selectedStatusForMainSurface = status.surface.asItem()
@@ -172,7 +172,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
     }
 
     override fun hasChanges(): Boolean {
-        return when (val status = currentStatus) {
+        return when (val status = originalSurfaceStatus) {
             is SingleSurface -> selectedStatusForMainSurface?.value != status.surface
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != status.surface || noteText() != status.note
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null

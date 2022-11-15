@@ -89,44 +89,44 @@ class UniversalSurfaceOverlay : Overlay {
 }
 
 private fun getStyle(element: Element): Style {
-    val surfaceStatus = createSurfaceStatus(element.tags)
+    val originalSurfaceStatus = createSurfaceStatus(element.tags)
     val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
-    when (surfaceStatus) {
+    when (originalSurfaceStatus) {
         is SingleSurfaceWithNote -> {
-            dominatingSurface = surfaceStatus.surface
-            noteProvided = surfaceStatus.note
+            dominatingSurface = originalSurfaceStatus.surface
+            noteProvided = originalSurfaceStatus.note
         }
-        is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in badSurfaces && surfaceStatus.cyclewayNote == null) {
+        is CyclewayFootwaySurfacesWithNote -> if (originalSurfaceStatus.cycleway in badSurfaces && originalSurfaceStatus.cyclewayNote == null) {
             // the worst case: so lets present it
-            dominatingSurface = surfaceStatus.cycleway
-            noteProvided = surfaceStatus.cyclewayNote
-        } else if (surfaceStatus.footway in badSurfaces) {
+            dominatingSurface = originalSurfaceStatus.cycleway
+            noteProvided = originalSurfaceStatus.cyclewayNote
+        } else if (originalSurfaceStatus.footway in badSurfaces) {
             // cycleway surface either has as bad data (also bad surface) or a bit better (bad surface with note)
-            dominatingSurface = surfaceStatus.footway
-            noteProvided = surfaceStatus.footwayNote
+            dominatingSurface = originalSurfaceStatus.footway
+            noteProvided = originalSurfaceStatus.footwayNote
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
-            noteProvided = surfaceStatus.cyclewayNote
+            dominatingSurface = originalSurfaceStatus.cycleway
+            noteProvided = originalSurfaceStatus.cyclewayNote
         }
         is SingleSurface -> {
-            dominatingSurface = surfaceStatus.surface
+            dominatingSurface = originalSurfaceStatus.surface
         }
-        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in badSurfaces) {
-            dominatingSurface = surfaceStatus.footway
+        is CyclewayFootwaySurfaces -> if (originalSurfaceStatus.footway in badSurfaces) {
+            dominatingSurface = originalSurfaceStatus.footway
         } else {
             // cycleway is arbitrarily taken as dominating here
             // though for bicycles surface is a bit more important
-            dominatingSurface = surfaceStatus.cycleway
+            dominatingSurface = originalSurfaceStatus.cycleway
         }
         is SurfaceMissing -> {
             // no action needed
         }
         is SurfaceMissingWithNote -> {
-            noteProvided = surfaceStatus.note
+            noteProvided = originalSurfaceStatus.note
         }
     }
     // not set but indoor or private -> do not highlight as missing
