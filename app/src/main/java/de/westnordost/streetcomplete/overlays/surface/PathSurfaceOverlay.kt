@@ -60,7 +60,7 @@ class PathSurfaceOverlay : Overlay {
                    and (!sidewalk:right:surface or sidewalk:right:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!sidewalk:left:surface or sidewalk:left:surface ~ ${handledSurfaces.joinToString("|") })
                )
-               """) // TODO: review all supported tags and skip some of them in either clause
+               """)
            .filter { element -> tagsHaveOnlyAllowedSurfaceKeys(element.tags) }.map { it to getStyle(it) }
     }
 
