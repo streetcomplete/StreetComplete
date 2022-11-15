@@ -151,8 +151,8 @@ private fun getStyle(element: Element): Style {
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 
     // label for debugging
-    //val label = element.tags[keyOfDominatingSurface]
-    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    // val label = element.tags[keyOfDominatingSurface]
+    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"

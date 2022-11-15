@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_AREA
-import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
+import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
+import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
@@ -120,8 +120,8 @@ private fun getStyle(element: Element): Style {
     return if (element.tags["area"] == "yes") PolygonStyle(color) else PolylineStyle(StrokeStyle(color), null, null)
 
     // label for debugging
-    //val label = element.tags[keyOfDominatingSurface]
-    //return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
+    // val label = element.tags[keyOfDominatingSurface]
+    // return if (element.tags["area"] == "yes") PolygonStyle(color, label) else PolylineStyle(color, null, null, label)
 }
 
 private fun isIndoor(tags: Map<String, String>): Boolean = tags["indoor"] == "yes"
