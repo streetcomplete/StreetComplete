@@ -31,29 +31,22 @@ enum class Surface(val osmValue: String) {
     GROUND_ROAD("ground"),
     PAVED_AREA("paved"),
     UNPAVED_AREA("unpaved"),
-    GROUND_AREA("ground");
+    GROUND_AREA("ground"),
+
+    // extra values, recording duplicates
+    SOIL("soil"),
+    EARTH("earth");
 
     companion object {
-        val surfaceReplacements: Map<String, String?> = mapOf(
-            // that is intended for presentation of data
-            // not for automatic bot replacements/bot edits
-            // what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
-            // what about metal_grid?
-            // Maybe start supporting them as a full blown value TODO
-            // TODO: what happens when one value is converted and another is edited?
-            // footway:surface=brick cycleway:surface=brick
-            // and we edit one of them - what happens then?
-            // should it be treated as user accepting change?
-            "cobblestone" to null,
-            "earth" to "dirt",
-            "paving_stones:30" to "paving_stones",
-            "soil" to "dirt",
-            "trail" to null,
-            "cement" to "concrete", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158
-            "bricks" to "paving_stones",
-            "cobblestone:flattened" to  "sett",
-            "brick" to "paving_stones",
+        val invalidSurfaces: Set<String> = setOf(
+            "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
+            "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
+            "trail", // https://wiki.openstreetmap.org/wiki/Tag:surface%3Dtrail TODO confirm this, ask top users what they meant
         )
+        // TODO what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
+        // TODO what about metal_grid?
+        // Maybe start supporting them as a full blown value TODO
+        // brick, bricks, paving_stones:30, cobblestone:flattened are for now not supperted at all and will leave object uneditable
     }
 }
 
@@ -112,14 +105,10 @@ fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     return SurfaceMissing
 }
 
-fun surfaceTextValueToSurfaceEnum(providedSurfaceValue: String?): Surface? {
-    var surfaceValue = providedSurfaceValue
-    if (surfaceValue in Surface.surfaceReplacements) {
-        surfaceValue = Surface.surfaceReplacements[surfaceValue]
-    }
+fun surfaceTextValueToSurfaceEnum(surfaceValue: String?): Surface? {
     val foundSurface = Surface.values().find { it.osmValue == surfaceValue }
 
-    // PAVED_AREA and UNPAVED_AREA are more geenric - and this can be also asked
+    // PAVED_AREA and UNPAVED_AREA are more generic - and this can be also asked
     // for objects which are not roads
     if (foundSurface == Surface.PAVED_ROAD) {
         return Surface.PAVED_AREA
@@ -180,7 +169,7 @@ val Surface.titleResId: Int get() = when (this) {
     Surface.FINE_GRAVEL -> R.string.quest_surface_value_fine_gravel
     Surface.PAVING_STONES -> R.string.quest_surface_value_paving_stones
     Surface.COMPACTED -> R.string.quest_surface_value_compacted
-    Surface.DIRT -> R.string.quest_surface_value_dirt
+    Surface.DIRT, Surface.SOIL, Surface.EARTH -> R.string.quest_surface_value_dirt
     Surface.SETT -> R.string.quest_surface_value_sett
     Surface.UNHEWN_COBBLESTONE -> R.string.quest_surface_value_unhewn_cobblestone
     Surface.GRASS_PAVER -> R.string.quest_surface_value_grass_paver
@@ -211,7 +200,7 @@ val Surface.iconResId: Int get() = when (this) {
     Surface.FINE_GRAVEL -> R.drawable.surface_fine_gravel
     Surface.PAVING_STONES -> R.drawable.surface_paving_stones
     Surface.COMPACTED -> R.drawable.surface_compacted
-    Surface.DIRT -> R.drawable.surface_dirt
+    Surface.DIRT, Surface.SOIL, Surface.EARTH -> R.drawable.surface_dirt
     Surface.SETT -> R.drawable.surface_sett
     Surface.UNHEWN_COBBLESTONE -> R.drawable.surface_cobblestone
     Surface.GRASS_PAVER -> R.drawable.surface_grass_paver

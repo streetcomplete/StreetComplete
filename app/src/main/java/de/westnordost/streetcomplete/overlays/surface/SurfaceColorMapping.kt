@@ -14,7 +14,7 @@ val Surface?.color get() = when (this) {
     GRASS_PAVER -> Color.TEAL
     SAND  -> Color.ORANGE
     GRASS  -> Color.LIME
-    DIRT, GROUND_ROAD, GROUND_AREA, WOODCHIPS -> Color.GOLD
+    DIRT, SOIL, EARTH, GROUND_ROAD, GROUND_AREA, WOODCHIPS -> Color.GOLD
     FINE_GRAVEL -> "#dddddd"
     GRAVEL, PEBBLES, ROCK -> "#999999"
     CLAY, ARTIFICIAL_TURF, TARTAN -> Color.BLACK // not encountered in normal situations, get the same as surface with surface:note

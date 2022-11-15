@@ -28,6 +28,12 @@ class AddRoadSurfaceTest {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade1")
     }
 
+    @Test fun `applicable to surface tags not providing proper info`() {
+        assertIsApplicable("highway" to "residential", "surface" to "paved")
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:note" to "wildly mixed asphalt, concrete, paving stones and sett")
+        assertIsApplicable("highway" to "residential", "surface" to "cobblestone")
+    }
+
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
     }

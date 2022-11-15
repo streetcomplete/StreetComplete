@@ -39,7 +39,7 @@ class RoadSurfaceOverlay : Overlay {
     override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.surfaceReplacements.keys
+        val handledSurfaces = Surface.values().map { it.osmValue }.toSet()
         return mapData
            .filter( """ways, relations with
                highway ~ ${(ALL_ROADS).joinToString("|")}
