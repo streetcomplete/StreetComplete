@@ -106,23 +106,13 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
 
     override fun onClickSide(isRight: Boolean) {
         val isContraflowInOneway = isContraflowInOneway(isRight)
-        val dialogItems = getSelectableCycleways(isRight)
+        val dialogItems = getSelectableCycleways(countryInfo, element.tags, isRight)
             .map { it.asDialogItem(requireContext(), countryInfo, isContraflowInOneway) }
 
         ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
             val streetSideItem = item.value!!.asStreetSideItem(countryInfo, isContraflowInOneway)
             streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
         }.show()
-    }
-
-    private fun getSelectableCycleways(isRight: Boolean): List<Cycleway> {
-        val values = getSelectableCyclewaysInCountry(countryInfo).toMutableList()
-        // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
-        if (isOneway && isReverseSideRight == isRight) {
-            values.remove(Cycleway.PICTOGRAMS)
-            values.add(values.indexOf(Cycleway.NONE) + 1, Cycleway.NONE_NO_ONEWAY)
-        }
-        return values
     }
 
     override fun serialize(item: Cycleway) =  item.name

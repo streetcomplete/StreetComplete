@@ -2,8 +2,20 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
+
+fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftAndRightCycleway {
+    val leftIsSelectable = left?.isSelectable(countryInfo) != false
+    val rightIsSelectable = right?.isSelectable(countryInfo) != false
+    if (leftIsSelectable && rightIsSelectable) return this
+    return LeftAndRightCycleway(
+        if (leftIsSelectable) left else null,
+        if (rightIsSelectable) right else null
+    )
+}
 
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
@@ -79,8 +91,12 @@ enum class Cycleway {
 
     val isInvalid get() = this == INVALID
 
+    /** Whether it can be assumed that this cycleway only allows traffic in one direction */
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
 }
+
+fun Cycleway.isSelectable(countryInfo: CountryInfo): Boolean =
+    !isInvalid && !isUnknown && !isAmbiguous(countryInfo)
 
 fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
     UNSPECIFIED_SHARED_LANE ->
@@ -91,7 +107,11 @@ fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
         false
 }
 
-fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
+fun getSelectableCycleways(
+    countryInfo: CountryInfo,
+    roadTags: Map<String, String>,
+    isRightSide: Boolean
+): List<Cycleway> {
     val cycleways = mutableListOf(
         NONE,
         TRACK,
@@ -106,6 +126,8 @@ fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
         DUAL_LANE,
         DUAL_TRACK
     )
+    // no need to distinguish between advisory and exclusive lane where the concept of exclusive
+    // lanes does not exist
     if (countryInfo.hasAdvisoryCycleLane) {
         cycleways.remove(UNSPECIFIED_LANE)
     } else {
@@ -118,10 +140,14 @@ fun getSelectableCyclewaysInCountry(countryInfo: CountryInfo): List<Cycleway> {
     } else {
         cycleways.remove(SUGGESTION_LANE)
     }
+    // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
+    val isReverseSideRight = isReversedOneway(roadTags) xor countryInfo.isLeftHandTraffic
+    if (isOneway(roadTags) && isReverseSideRight == isRightSide) {
+        cycleways.remove(PICTOGRAMS)
+        cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
+    }
     return cycleways
 }
-
-
 
 val Cycleway.estimatedWidth: Float get() = when (this) {
     EXCLUSIVE_LANE -> 1.5f
