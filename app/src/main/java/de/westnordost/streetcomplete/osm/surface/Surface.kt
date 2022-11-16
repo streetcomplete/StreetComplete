@@ -41,7 +41,7 @@ enum class Surface(val osmValue: String) {
         val invalidSurfaces: Set<String> = setOf(
             "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
             "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
-            "trail", // https://wiki.openstreetmap.org/wiki/Tag:surface%3Dtrail TODO confirm this, ask top users what they meant
+            "trail", // https://wiki.openstreetmap.org/wiki/Tag:surface%3Dtrail TODO confirm this deprecation with community (lets wait till 2022-12-01 to give time for response, remove that from PR if I will finish PR before that happens)
         )
         // TODO what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
         // TODO what about metal_grid?
