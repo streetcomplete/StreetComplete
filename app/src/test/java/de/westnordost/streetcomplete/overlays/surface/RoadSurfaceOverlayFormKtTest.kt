@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.osm.surface
+package de.westnordost.streetcomplete.overlays.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.overlays.surface.RoadSurfaceOverlayForm
+import de.westnordost.streetcomplete.osm.surface.Surface
 import org.assertj.core.api.Assertions
 import org.junit.Test
 

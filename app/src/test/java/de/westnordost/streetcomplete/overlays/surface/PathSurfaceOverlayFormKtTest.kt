@@ -1,12 +1,11 @@
-package de.westnordost.streetcomplete.osm.surface
+package de.westnordost.streetcomplete.overlays.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.overlays.surface.RoadSurfaceOverlayForm
-import de.westnordost.streetcomplete.overlays.surface.PathSurfaceOverlayForm
+import de.westnordost.streetcomplete.osm.surface.Surface
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -54,7 +53,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface", "compacted"),
             StringMapEntryAdd("footway:surface", "compacted"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.COMPACTED, null, Surface.COMPACTED, null, null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.COMPACTED, null,
+            Surface.COMPACTED, null, null, *expectedChanges)
     }
 
     @Test
@@ -65,7 +66,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface", "asphalt"),
             StringMapEntryAdd("footway:surface", "paving_stones"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.ASPHALT, null, Surface.PAVING_STONES, null, null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.ASPHALT, null,
+            Surface.PAVING_STONES, null, null, *expectedChanges)
     }
 
     @Test
@@ -75,7 +78,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface", "asphalt"),
             StringMapEntryAdd("footway:surface", "gravel"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.ASPHALT, null, Surface.GRAVEL, null, null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.ASPHALT, null,
+            Surface.GRAVEL, null, null, *expectedChanges)
     }
 
     @Test
@@ -102,7 +107,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryDelete("cycleway:surface:note", "a"),
             StringMapEntryDelete("footway:surface:note", "🤷"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.SETT, null, Surface.UNHEWN_COBBLESTONE, null, null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.SETT, null,
+            Surface.UNHEWN_COBBLESTONE, null, null, *expectedChanges)
     }
 
     @Test
@@ -114,7 +121,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface", "paving_stones"),
             StringMapEntryAdd("footway:surface", "sand"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVING_STONES, null, Surface.SAND, null, "How do you eat an elephant? One bite at a time", *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.PAVING_STONES, null,
+            Surface.SAND, null, "How do you eat an elephant? One bite at a time", *expectedChanges)
     }
 
     @Test
@@ -130,7 +139,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryAdd("cycleway:surface:note", "foo"),
             StringMapEntryAdd("footway:surface:note", "bar"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVED_AREA, "foo", Surface.PAVED_ROAD, "bar", null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.PAVED_AREA, "foo",
+            Surface.PAVED_ROAD, "bar", null, *expectedChanges)
     }
 
     @Test
@@ -146,7 +157,9 @@ class PathSurfaceOverlayFormKtTest {
             StringMapEntryModify("cycleway:surface:note", "old", "foo"),
             StringMapEntryModify("footway:surface:note", "old", "bar"),
         )
-        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags, Surface.PAVED_AREA, "foo", Surface.PAVED_ROAD, "bar", null, *expectedChanges)
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.PAVED_AREA, "foo",
+            Surface.PAVED_ROAD, "bar", null, *expectedChanges)
     }
 }
 
