@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
-import de.westnordost.streetcomplete.osm.cycleway.getSelectableCyclewaysInCountry
-import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
+import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
@@ -81,9 +81,7 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
     }
 
     private fun initStateFromTags() {
-        val sides = createCyclewaySides(element.tags, isLeftHandTraffic)
-        val left = sides?.left?.takeIf { !it.isAmbiguous(countryInfo) && !it.isInvalid && !it.isUnknown }
-        val right = sides?.right?.takeIf { !it.isAmbiguous(countryInfo) && !it.isInvalid && !it.isUnknown }
+        val sides = createCyclewaySides(element.tags, isLeftHandTraffic)?.selectableOrNullValues(countryInfo)
         val bothSidesWereDefinedBefore = sides?.left != null && sides.right != null
         val bicycleTrafficOnBothSidesIsLikely = !likelyNoBicycleContraflow.matches(element)
 
