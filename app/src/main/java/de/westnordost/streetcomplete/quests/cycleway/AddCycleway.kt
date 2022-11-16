@@ -164,46 +164,47 @@ class AddCycleway(
 
 // streets that may have cycleway tagging
 private val roadsFilter by lazy { """
-            ways with
-              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
-              and area != yes
-              and motorroad != yes
-              and bicycle_road != yes
-              and cyclestreet != yes
-              and bicycle != no
-              and bicycle != designated
-              and access !~ private|no
-              and bicycle != use_sidepath
-              and bicycle:backward != use_sidepath
-              and bicycle:forward != use_sidepath
-              and sidewalk != separate
-        """.toElementFilterExpression() }
+    ways with
+      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+      and area != yes
+      and motorroad != yes
+      and expressway != yes
+      and bicycle_road != yes
+      and cyclestreet != yes
+      and bicycle != no
+      and bicycle != designated
+      and access !~ private|no
+      and bicycle != use_sidepath
+      and bicycle:backward != use_sidepath
+      and bicycle:forward != use_sidepath
+      and sidewalk != separate
+""".toElementFilterExpression() }
 
 // streets that do not have cycleway tagging yet
 private val untaggedRoadsFilter by lazy { """
-            ways with (
-                highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
-              )
-              and !cycleway
-              and !cycleway:left
-              and !cycleway:right
-              and !cycleway:both
-              and !sidewalk:bicycle
-              and !sidewalk:left:bicycle
-              and !sidewalk:right:bicycle
-              and !sidewalk:both:bicycle
-              and (
-                !maxspeed
-                or maxspeed > 20
-                or $notIn30ZoneOrLess
-              )
-              and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-        """.toElementFilterExpression() }
+    ways with (
+        highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+        or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
+      )
+      and !cycleway
+      and !cycleway:left
+      and !cycleway:right
+      and !cycleway:both
+      and !sidewalk:bicycle
+      and !sidewalk:left:bicycle
+      and !sidewalk:right:bicycle
+      and !sidewalk:both:bicycle
+      and (
+        !maxspeed
+        or maxspeed > 20
+        or $notIn30ZoneOrLess
+      )
+      and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+""".toElementFilterExpression() }
 
 private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-            ways with highway ~ path|footway|cycleway|construction
-        """.toElementFilterExpression() }
+    ways with highway ~ path|footway|cycleway|construction
+""".toElementFilterExpression() }
 // highway=construction included, as situation often changes during and after construction
 
 private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
