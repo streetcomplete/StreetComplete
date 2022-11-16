@@ -71,7 +71,7 @@ class UniversalSurfaceOverlay : Overlay {
         // supported here
         "footway:surface", "cycleway:surface", // roads with THAT tags will end with surface/footway display, but as it will happen in forkonly it is fine
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
-        "cycleway:surface:note", "footway:surface:note", // TODO: verify support
+        "cycleway:surface:note", "footway:surface:note",
 
         // supported in this overlay, but not in all overlays
         // or more specifically: it can be safely ignored here, I think
