@@ -39,6 +39,7 @@ class AddCycleway(
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
