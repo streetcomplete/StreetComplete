@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
@@ -23,7 +24,7 @@ import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAns
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
-class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
+class AddCyclewayForm : AStreetSideSelectForm<Cycleway, LeftAndRightCycleway>() {
 
     override val buttonPanelAnswers get() =
         if (isDisplayingPrevious) listOf(
@@ -90,10 +91,10 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
             isLeftHandTraffic -> LEFT
             else -> RIGHT
         }
-        val leftItem = left?.asStreetSideItem(countryInfo, isContraflowInOneway(false))
+        val leftItem = sides?.left?.asStreetSideItem(countryInfo, isContraflowInOneway(false))
         streetSideSelect.setPuzzleSide(leftItem, false)
 
-        val rightItem = right?.asStreetSideItem(countryInfo, isContraflowInOneway(true))
+        val rightItem = sides?.right?.asStreetSideItem(countryInfo, isContraflowInOneway(true))
         streetSideSelect.setPuzzleSide(rightItem, true)
 
         // only show as re-survey (yes/no button) if the previous tagging was complete
@@ -127,38 +128,18 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, CyclewayAnswer>() {
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        val leftSide = streetSideSelect.left?.value
-        val rightSide = streetSideSelect.right?.value
+        val answer = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
+
+        // TODO move....
 
         // a cycleway that goes into opposite direction of a oneway street needs special tagging
         // as oneway:bicycle=* tag will differ from oneway=*
         // there is no need to tag cases where oneway:bicycle=* would merely repeat oneway=*
-        var leftSideDir = 0
-        var rightSideDir = 0
         var isOnewayNotForCyclists = false
-        if (isOneway && leftSide != null && rightSide != null) {
-            // if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
-            val reverseDir = if (isReversedOneway) 1 else -1
-
-            if (isReverseSideRight) {
-                if (rightSide.isSingleTrackOrLane()) {
-                    rightSideDir = reverseDir
-                }
-            } else {
-                if (leftSide.isSingleTrackOrLane()) {
-                    leftSideDir = reverseDir
-                }
-            }
-
-            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
-                || (if (isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
+        if (isOneway && answer.left != null && answer.right != null) {
+            isOnewayNotForCyclists = !answer.left.isOneway || !answer.right.isOneway
+                || (if (isReverseSideRight) answer.right else answer.left ) !== Cycleway.NONE
         }
-
-        val answer = CyclewayAnswer(
-            left = leftSide?.let { CyclewaySide(it, leftSideDir) },
-            right = rightSide?.let { CyclewaySide(it, rightSideDir) },
-            isOnewayNotForCyclists = isOnewayNotForCyclists
-        )
 
         val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(element.tags, isLeftHandTraffic)
         if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {

@@ -33,7 +33,7 @@ import java.util.concurrent.FutureTask
 class AddCycleway(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-) : OsmElementQuestType<CyclewayAnswer> {
+) : OsmElementQuestType<LeftAndRightCycleway> {
 
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
@@ -148,7 +148,7 @@ class AddCycleway(
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: CyclewayAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }
