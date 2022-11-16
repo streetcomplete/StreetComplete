@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
@@ -48,7 +50,7 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
     val sidewalkSides = createSidewalkSides(element.tags)
     // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
     if (sidewalkSides == null) {
-        if (sidewalkTaggingNotExpected(element.tags) || isPrivateOnFoot(element)) {
+        if (sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element)) {
             return PolylineStyle(StrokeStyle(Color.INVISIBLE))
         }
     }
@@ -60,13 +62,17 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
     )
 }
 
-private val highwayValuesWhereSidewalkTaggingIsNotExpected = setOf(
-    "living_street", "pedestrian", "service", "motorway_link"
-)
+private val sidewalkTaggingNotExpectedFilter by lazy { """
+    ways with
+      highway ~ living_street|pedestrian|service|motorway_link
+      or motorroad = yes
+      or expressway = yes
+      or maxspeed <= 10
+      or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+""".toElementFilterExpression() }
 
-private fun sidewalkTaggingNotExpected(tags: Map<String, String>): Boolean =
-    tags["highway"] in highwayValuesWhereSidewalkTaggingIsNotExpected
-        || tags["motorroad"] == "yes" || tags["expressway"] == "yes"
+private fun sidewalkTaggingNotExpected(element: Element) =
+    sidewalkTaggingNotExpectedFilter.matches(element)
 
 private val Sidewalk?.style get() = StrokeStyle(when (this) {
     Sidewalk.YES           -> Color.SKY
