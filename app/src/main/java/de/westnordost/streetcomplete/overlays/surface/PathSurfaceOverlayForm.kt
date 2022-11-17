@@ -241,6 +241,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             }
             if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurfaceContainer.isVisible = true
+                binding.mainSurfaceContainer.isVisible = true
+                binding.selectButtonMainSurface.isVisible = false
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
@@ -303,45 +305,46 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             // should we allow editing surface:note?
             // also where surface is not specified (maybe even surface=paved/unpaved cannot be really specified)
             // so saving is allowed even in absense of surface
-            when (val original = originalSurfaceStatus) {
-                is SingleSurfaceWithNote -> {
-                    if (noteText() != original.note) {
-                        return true
-                    }
-                }
-                is SurfaceMissingWithNote -> {
-                    if (noteText() != original.note) {
-                        return true
-                    }
-                }
-                is CyclewayFootwaySurfacesWithNote -> {
-                    if (noteText() != original.note) {
-                        return true
-                    }
-                    if (cyclewayNoteText() != original.cyclewayNote) {
-                        return true
-                    }
-                    if (footwayNoteText() != original.footwayNote) {
-                        return true
-                    }
-                }
-                else -> {
-                    // do nothing
-                }
+            if (isAnyOriginallyExistingNotesEdited()) {
+                return true
             }
             if (selectedStatusForMainSurface == null) {
-                return selectedStatusForCyclewaySurface != null && selectedStatusForFootwaySurface != null
+                if (selectedStatusForCyclewaySurface == null || selectedStatusForFootwaySurface == null) {
+                    return false
+                }
             }
-            val surfaceValue = selectedStatusForMainSurface!!.value
-            val note = noteText()
-            if (surfaceValue == null) {
+            return hasChanges()
+        }
+
+    private fun isAnyOriginallyExistingNotesEdited(): Boolean {
+        when (val original = originalSurfaceStatus) {
+            is SingleSurfaceWithNote -> {
+                if (noteText() != original.note) {
+                    return true
+                }
+            }
+            is SurfaceMissingWithNote -> {
+                if (noteText() != original.note) {
+                    return true
+                }
+            }
+            is CyclewayFootwaySurfacesWithNote -> {
+                if (noteText() != original.note) {
+                    return true
+                }
+                if (cyclewayNoteText() != original.cyclewayNote) {
+                    return true
+                }
+                if (footwayNoteText() != original.footwayNote) {
+                    return true
+                }
+            }
+            else -> {
                 return false
             }
-            if (surfaceValue.shouldBeDescribed) {
-                return note != null
-            }
-            return true
         }
+        return false
+    }
 
     fun noteText(): String? {
         return binding.explanationInputMainSurface.nonBlankTextOrNull
@@ -364,7 +367,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
             is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null || noteText() != original.note
             is CyclewayFootwaySurfacesWithNote -> {
-                selectedStatusForMainSurface?.value != original.main || noteText() != original.note ||
+                // selectedStatusForMainSurface?.value != original.main
+                // is not being checked as surface is dropped and will be derived from cycleway & footway surface
+                noteText() != original.note ||
                 selectedStatusForCyclewaySurface?.value != original.main || cyclewayNoteText() != original.cyclewayNote ||
                 selectedStatusForFootwaySurface?.value != original.main || footwayNoteText() != original.footwayNote
             }
