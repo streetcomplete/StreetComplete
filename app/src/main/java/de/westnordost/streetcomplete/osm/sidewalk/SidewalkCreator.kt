@@ -19,7 +19,7 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
        - sidewalk:right=yes
        First separating the values and then later conflating them again, if possible, solves this.
     */
-    tags.expandSides("sidewalk", false)
+    tags.expandSides("sidewalk", includeBareTag = false)
     tags.separateConflatedSidewalk()
 
     if (left != null)  tags["sidewalk:left"] = left.osmValue

@@ -4,23 +4,25 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 
 typealias Tags = StringMapChangesBuilder
 
-fun Tags.expandSides(key: String, includeBareTag: Boolean) {
-    val both = get("$key:both") ?: (if (includeBareTag) get(key) else null)
+fun Tags.expandSides(key: String, postfix: String? = null, includeBareTag: Boolean) {
+    val post = if (postfix != null) ":$postfix" else ""
+    val both = get("$key:both$post") ?: (if (includeBareTag) get("$key$post") else null)
     if (both != null) {
         // *:left/right is seen as more specific/correct in case the two contradict each other
-        if (!containsKey("$key:left")) set("$key:left", both)
-        if (!containsKey("$key:right")) set("$key:right", both)
+        if (!containsKey("$key:left$post")) set("$key:left$post", both)
+        if (!containsKey("$key:right$post")) set("$key:right$post", both)
     }
-    remove("$key:both")
-    if (includeBareTag) remove(key)
+    remove("$key:both$post")
+    if (includeBareTag) remove("$key$post")
 }
 
-fun Tags.mergeSides(key: String) {
-    val left = get("$key:left")
-    val right = get("$key:right")
+fun Tags.mergeSides(key: String, postfix: String? = null) {
+    val post = if (postfix != null) ":$postfix" else ""
+    val left = get("$key:left$post")
+    val right = get("$key:right$post")
     if (left != null && left == right) {
-        set("$key:both", left)
-        remove("$key:left")
-        remove("$key:right")
+        set("$key:both$post", left)
+        remove("$key:left$post")
+        remove("$key:right$post")
     }
 }

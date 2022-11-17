@@ -11,6 +11,14 @@ import org.junit.Test
 
 class StreetParkingCreatorKtTest {
 
+    @Test fun `apply nothing applies nothing`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightStreetParking(null, null),
+            arrayOf()
+        )
+    }
+
     @Test fun `apply no parking`() {
         verifyAnswer(
             mapOf(),
@@ -127,14 +135,53 @@ class StreetParkingCreatorKtTest {
         )
     }
 
-    @Test fun `changing one side replaces both-tag`() {
+    @Test fun `apply for one side does not touch the other side`() {
         verifyAnswer(
-            mapOf("parking:lane:both" to "separate"),
+            mapOf("parking:lane:left" to "separate"),
             LeftAndRightStreetParking(null, NoStreetParking),
             arrayOf(
-                StringMapEntryAdd("parking:lane:left", "separate"),
+                StringMapEntryAdd("parking:lane:right", "no")
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:lane:right" to "no"),
+            LeftAndRightStreetParking(StreetParkingSeparate, null),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "separate")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not touch the other side even if it is invalid`() {
+        verifyAnswer(
+            mapOf("parking:lane:left" to "narrow"),
+            LeftAndRightStreetParking(null, NoStreetParking),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:right", "no")
+            )
+        )
+        verifyAnswer(
+            mapOf("parking:lane:right" to "narrow"),
+            LeftAndRightStreetParking(StreetParkingSeparate, null),
+            arrayOf(
+                StringMapEntryAdd("parking:lane:left", "separate")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not change values for the other side even if it was defined for both sides before and invalid`() {
+        verifyAnswer(
+            mapOf(
+                "parking:lane" to "hexagonal",
+                "parking:lane:diagonal" to "on_kerb",
+            ),
+            LeftAndRightStreetParking(null, NoStreetParking),
+            arrayOf(
                 StringMapEntryAdd("parking:lane:right", "no"),
-                StringMapEntryDelete("parking:lane:both", "separate"),
+                StringMapEntryDelete("parking:lane", "hexagonal"),
+                StringMapEntryDelete("parking:lane:diagonal", "on_kerb"),
+                StringMapEntryAdd("parking:lane:left", "hexagonal"),
+                StringMapEntryAdd("parking:lane:left:diagonal", "on_kerb"),
             )
         )
     }
