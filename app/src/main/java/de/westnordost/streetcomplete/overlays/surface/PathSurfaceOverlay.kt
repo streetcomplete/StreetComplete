@@ -50,7 +50,7 @@ class PathSurfaceOverlay : Overlay {
                    and (!cycleway:surface or cycleway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (!footway:surface or footway:surface ~ ${handledSurfaces.joinToString("|") })
                    and (segregated = yes or (!cycleway:surface and !footway:surface))
-                   and (!surface:note or surface)
+                   and (!surface:note or (surface or cycleway:surface or footway:surface or segregated=yes))
                    and (!cycleway:surface:note or cycleway:surface)
                    and (!footway:surface:note or footway:surface)
                    and !sidewalk:both:surface and !sidewalk:right:surface and !sidewalk:left:surface and !sidewalk:surface
