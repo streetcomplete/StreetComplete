@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.width
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -63,7 +64,7 @@ class AddRoadWidth(
 
     override fun createForm() = AddWidthForm()
 
-    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val key = if (tags["traffic_calming"] in ROAD_NARROWERS) "maxwidth" else "width"
 
         tags[key] = answer.width.toOsmValue()

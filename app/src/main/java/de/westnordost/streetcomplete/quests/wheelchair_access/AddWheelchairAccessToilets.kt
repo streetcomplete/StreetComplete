@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
@@ -27,7 +28,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override fun createForm() = AddWheelchairAccessToiletsForm()
 
-    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("wheelchair", answer.osmValue)
     }
 }

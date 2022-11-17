@@ -203,7 +203,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createQuestChanges(answer: T): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
-        osmElementQuestType.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
+        osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
         val changes = changesBuilder.create()
         require(!changes.isEmpty()) {
             "${osmElementQuestType.name} was answered by the user but there are no changes!"

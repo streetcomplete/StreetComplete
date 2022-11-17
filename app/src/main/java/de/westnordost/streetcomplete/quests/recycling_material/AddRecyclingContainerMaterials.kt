@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -52,7 +53,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = recycling")
 
-    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {
             applyRecyclingMaterialsAnswer(answer.materials, tags)
         } else if (answer is IsWasteContainer) {

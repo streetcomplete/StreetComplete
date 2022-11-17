@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -40,7 +41,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
         if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) false
         else null
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
         if (tags["kerb"] != "no") {
             tags["barrier"] = "kerb"

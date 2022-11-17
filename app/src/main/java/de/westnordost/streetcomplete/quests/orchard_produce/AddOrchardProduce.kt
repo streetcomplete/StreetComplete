@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -22,7 +23,7 @@ class AddOrchardProduce : OsmFilterQuestType<List<OrchardProduce>>() {
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: List<OrchardProduce>, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: List<OrchardProduce>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["produce"] = answer.joinToString(";") { it.osmValue }
 
         val landuse = answer.singleOrNull()?.osmLanduseValue

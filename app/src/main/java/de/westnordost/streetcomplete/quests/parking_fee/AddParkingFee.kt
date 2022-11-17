@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -24,6 +25,6 @@ class AddParkingFee : OsmFilterQuestType<FeeAndMaxStay>() {
 
     override fun createForm() = AddParkingFeeForm()
 
-    override fun applyAnswerTo(answer: FeeAndMaxStay, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: FeeAndMaxStay, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

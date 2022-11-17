@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.drinking_water
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -39,7 +40,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override fun createForm() = AddDrinkingWaterForm()
 
-    override fun applyAnswerTo(answer: DrinkingWater, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: DrinkingWater, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["drinking_water"] = answer.osmValue
         answer.osmLegalValue?.let { tags["drinking_water:legal"] = it }
     }

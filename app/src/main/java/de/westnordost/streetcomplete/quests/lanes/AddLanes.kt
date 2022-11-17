@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.lanes
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_PAVED
@@ -32,7 +33,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
     override fun createForm() = AddLanesForm()
 
-    override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
 
         val laneCount = answer.total
 

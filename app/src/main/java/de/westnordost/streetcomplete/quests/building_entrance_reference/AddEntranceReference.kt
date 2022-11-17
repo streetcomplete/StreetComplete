@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_entrance_reference
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -87,7 +88,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
 
     override fun createForm() = AddEntranceReferenceForm()
 
-    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is FlatRange -> {
                 tags["addr:flats"] = answer.flatRange

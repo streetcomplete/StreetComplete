@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -33,7 +34,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override fun createForm() = AddPostboxRefForm()
 
-    override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoVisiblePostboxRef -> tags["ref:signed"] = "no"
             is PostboxRef ->          tags["ref"] = answer.ref

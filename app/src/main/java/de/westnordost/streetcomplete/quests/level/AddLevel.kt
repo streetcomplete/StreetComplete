@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.level
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -112,7 +113,7 @@ class AddLevel : OsmElementQuestType<String> {
 
     override fun createForm() = AddLevelForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["level"] = answer
     }
 }
