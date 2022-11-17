@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
-import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
@@ -64,15 +63,13 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, LeftAndRightCycleway>() 
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
     private val isOneway get() = isOneway(element.tags)
-
-    private val isForwardOneway get() = isForwardOneway(element.tags)
     private val isReversedOneway get() = isReversedOneway(element.tags)
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
     private fun isContraflowInOneway(isRight: Boolean): Boolean =
-        isOneway && (isReverseSideRight xor !isRight)
+        isOneway && (isReverseSideRight == isRight)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

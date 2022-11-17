@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.shoulders
 
+import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
+
 /** Returns on which sides are shoulders. Returns null if there is no shoulders tagging at all */
 fun createShoulders(tags: Map<String, String>, isLeftHandTraffic: Boolean): Shoulders? {
     val shoulder = createShouldersDefault(tags, isLeftHandTraffic)
@@ -22,11 +25,9 @@ private fun createShouldersDefault(tags: Map<String, String>, isLeftHandTraffic:
     "right" -> Shoulders(left = false, right = true)
     "both" -> Shoulders(left = true, right = true)
     "yes" -> {
-        val isForwardOneway = tags["oneway"] == "yes" || (tags["junction"] == "roundabout" && tags["oneway"] != "-1")
-        val isReversedOneway = tags["oneway"] == "-1"
-        val isOneway = isReversedOneway || isForwardOneway
+        val isReversedOneway = isReversedOneway(tags)
         val isReverseSideRight = isReversedOneway xor isLeftHandTraffic
-        if (isOneway) {
+        if (isOneway(tags)) {
             Shoulders(left = isReverseSideRight, right = !isReverseSideRight)
         } else {
             Shoulders(left = true, right = true)

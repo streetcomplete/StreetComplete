@@ -1,23 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.INVALID
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_SHARED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isReversedOneway

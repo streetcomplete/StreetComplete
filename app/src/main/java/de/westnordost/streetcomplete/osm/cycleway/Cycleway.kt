@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.isOneway
-import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
@@ -141,8 +140,7 @@ fun getSelectableCycleways(
         cycleways.remove(SUGGESTION_LANE)
     }
     // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
-    val isReverseSideRight = isReversedOneway(roadTags) xor countryInfo.isLeftHandTraffic
-    if (isOneway(roadTags) && isReverseSideRight == isRightSide) {
+    if (isInContraflowOfOneway(isRightSide, roadTags, countryInfo.isLeftHandTraffic)) {
         cycleways.remove(PICTOGRAMS)
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }

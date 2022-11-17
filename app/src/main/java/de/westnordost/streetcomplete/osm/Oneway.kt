@@ -17,3 +17,14 @@ fun isNotOnewayForCyclists(tags: Map<String, String>, isLeftHandTraffic: Boolean
     || tags[
         if (isLeftHandTraffic xor isReversedOneway(tags)) "cycleway:right" else "cycleway:left"
     ]?.startsWith("opposite") == true
+
+/** Return whether the given side is in the contra-flow of a oneway. E.g. in Germany for a forward
+ *  oneway, it is the left side */
+fun isInContraflowOfOneway(
+    isRightSide: Boolean,
+    tags: Map<String, String>,
+    isLeftHandTraffic: Boolean
+): Boolean {
+    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
+    return isOneway(tags) && isReverseSideRight == isRightSide
+}
