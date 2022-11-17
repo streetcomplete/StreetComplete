@@ -238,8 +238,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
             if (mainSurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
-                binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
-            } else if (noteText() != null) {
+            }
+            if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurfaceContainer.isVisible = true
             }
 
@@ -248,8 +248,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectedCellViewCyclewaySurface.isGone = cyclewaySurfaceItem == null
             if (cyclewaySurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
-                binding.explanationInputCyclewaySurfaceContainer.isVisible = cyclewaySurfaceItem.value?.shouldBeDescribed ?: false
-            } else if (cyclewayNoteText() != null) {
+            }
+            if (cyclewayNoteText() != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurfaceContainer.isVisible = true
             }
 
@@ -258,8 +258,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.selectedCellViewFootwaySurface.isGone = footwaySurfaceItem == null
             if (footwaySurfaceItem != null) {
                 ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
-                binding.explanationInputFootwaySurfaceContainer.isVisible = footwaySurfaceItem.value?.shouldBeDescribed ?: false
-            } else if (footwayNoteText() != null) {
+            }
+            if (footwayNoteText() != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurfaceContainer.isVisible = true
             }
         }

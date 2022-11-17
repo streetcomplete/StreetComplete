@@ -130,8 +130,8 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
         binding.selectedCellViewMainSurface.isGone = mainSurfaceItem == null
         if (mainSurfaceItem != null) {
             ItemViewHolder(binding.selectedCellViewMainSurface).bind(mainSurfaceItem)
-            binding.explanationInputMainSurfaceContainer.isVisible = mainSurfaceItem.value?.shouldBeDescribed ?: false
-        } else if (noteText() != null) {
+        }
+        if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
             binding.explanationInputMainSurfaceContainer.isVisible = true
         }
     }
