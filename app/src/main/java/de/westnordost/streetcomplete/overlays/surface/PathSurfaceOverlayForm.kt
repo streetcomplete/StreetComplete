@@ -370,8 +370,8 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 // selectedStatusForMainSurface?.value != original.main
                 // is not being checked as surface is dropped and will be derived from cycleway & footway surface
                 noteText() != original.note ||
-                selectedStatusForCyclewaySurface?.value != original.main || cyclewayNoteText() != original.cyclewayNote ||
-                selectedStatusForFootwaySurface?.value != original.main || footwayNoteText() != original.footwayNote
+                selectedStatusForCyclewaySurface?.value != original.cycleway || cyclewayNoteText() != original.cyclewayNote ||
+                selectedStatusForFootwaySurface?.value != original.footway || footwayNoteText() != original.footwayNote
             }
             null -> throw Exception("it was supposed to be set in onViewCreated - is it possible to trigger it before onViewCreated completes?")
         }
