@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -148,8 +149,13 @@ class AddCycleway(
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, timestampEdited: Long) {
-        answer.applyTo(tags)
+    override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        val countryInfo = countryInfos.getByLocation(
+            countryBoundariesFuture.get(),
+            geometry.center.longitude,
+            geometry.center.latitude
+        )
+        answer.applyTo(tags, countryInfo)
     }
 }
 
