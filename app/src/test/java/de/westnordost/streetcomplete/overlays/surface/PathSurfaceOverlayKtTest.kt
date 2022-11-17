@@ -88,4 +88,19 @@ class PathSurfaceOverlayKtTest {
         val mapData = TestMapDataWithGeometry(listOf(data))
         Assert.assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
     }
+
+    @Test
+    fun `test on real data`() {
+        // https://www.openstreetmap.org/way/395502477 version 8
+        val data = way(tags = mapOf(
+            "cycleway:surface" to "concrete",
+            "footway:surface" to "paved",
+            "footway:surface:note" to "incrustations de gravier sur béton",
+            "highway" to "path",
+            "segregated" to "yes",
+            "surface" to "concrete",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        Assert.assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
 }
