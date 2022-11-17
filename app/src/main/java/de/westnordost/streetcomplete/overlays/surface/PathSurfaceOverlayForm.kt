@@ -202,11 +202,11 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                     }
                     if (status.cyclewayNote != null) {
                         binding.explanationInputCyclewaySurface.text = SpannableStringBuilder(status.cyclewayNote)
-                        selectedStatusForCyclewaySurface = cyclewaySurface?.asItem()
+                        selectedStatusForCyclewaySurface = cyclewaySurface?.asItem() // even if paved/unpaved
                     }
                     if (status.footwayNote != null) {
                         binding.explanationInputFootwaySurface.text = SpannableStringBuilder(status.footwayNote)
-                        selectedStatusForFootwaySurface = footwaySurface?.asItem()
+                        selectedStatusForFootwaySurface = footwaySurface?.asItem() // even if paved/unpaved
                     }
                     switchToFootwayCyclewaySurfaceLayout()
                 }
