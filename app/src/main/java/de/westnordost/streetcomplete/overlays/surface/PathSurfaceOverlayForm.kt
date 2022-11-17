@@ -250,7 +250,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 ItemViewHolder(binding.selectedCellViewCyclewaySurface).bind(cyclewaySurfaceItem)
             }
             if (cyclewayNoteText() != null || cyclewaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputMainSurfaceContainer.isVisible = true
+                binding.explanationInputCyclewaySurfaceContainer.isVisible = true
             }
 
             val footwaySurfaceItem = selectedStatusForFootwaySurface
@@ -260,7 +260,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 ItemViewHolder(binding.selectedCellViewFootwaySurface).bind(footwaySurfaceItem)
             }
             if (footwayNoteText() != null || footwaySurfaceItem?.value?.shouldBeDescribed == true) {
-                binding.explanationInputMainSurfaceContainer.isVisible = true
+                binding.explanationInputFootwaySurfaceContainer.isVisible = true
             }
         }
 
