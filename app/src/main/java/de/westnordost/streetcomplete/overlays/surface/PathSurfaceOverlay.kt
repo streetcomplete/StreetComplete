@@ -81,7 +81,7 @@ class PathSurfaceOverlay : Overlay {
         // supported in this overlay, not in all of them
         "footway:surface", "cycleway:surface",
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
-        "cycleway:surface:note", "footway:surface:note", // TODO: verify support
+        "cycleway:surface:note", "footway:surface:note",
 
         // supported in all surface overlays
         "surface",
