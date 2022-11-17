@@ -52,6 +52,29 @@ class SurfaceKtTest {
     }
 
     @Test
+    fun `surface note is taken into account when generating surface status fo path with cycleway and footway split`() {
+        // https://www.openstreetmap.org/way/925626513 version 4
+        val tags = mapOf(
+            "bicycle" to "designated",
+            "cycleway:surface" to "paving_stones",
+            "foot" to "designated",
+            "footway:surface" to "asphalt",
+            "highway" to "path",
+            "lit" to "yes",
+            "oneway:bicycle" to "yes",
+            "path" to "sidewalk",
+            "segregated" to "yes",
+            "surface" to "paving_stones",
+            "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
+        )
+        val status = createSurfaceStatus(tags)
+        assertTrue(status is CyclewayFootwaySurfacesWithNote)
+        if (status is CyclewayFootwaySurfacesWithNote) {
+            assertEquals(status.note, "Rad Pflastersteine Fußgänger Asphalt")
+        }
+    }
+
+    @Test
     fun `find shared surface for two paved`() {
         assertEquals(commonSurfaceDescription("asphalt", "paving_stones"), "paved")
         assertTrue(commonSurfaceObject("asphalt", "paving_stones")!!.osmValue == "paved")
