@@ -90,7 +90,7 @@ class PathSurfaceOverlayKtTest {
     }
 
     @Test
-    fun `test on real data`() {
+    fun `test acceptance of more complex data`() {
         // https://www.openstreetmap.org/way/395502477 version 8
         val data = way(tags = mapOf(
             "cycleway:surface" to "concrete",
