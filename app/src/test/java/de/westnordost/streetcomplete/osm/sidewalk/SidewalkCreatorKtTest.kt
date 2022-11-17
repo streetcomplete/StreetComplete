@@ -7,10 +7,17 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import org.assertj.core.api.Assertions
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SidewalkCreatorKtTest {
+    @Test fun `apply nothing applies nothing`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightSidewalk(null, null),
+            arrayOf()
+        )
+    }
+
     @Test fun `apply simple values`() {
         verifyAnswer(
             mapOf(),
@@ -64,8 +71,7 @@ class SidewalkCreatorKtTest {
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate",
                 "sidewalk:both" to "yes and separate ;-)",
-                "sidewalk:left:surface" to "jello",
-                "sidewalk:both:oneway" to "yes"
+                "sidewalk" to "yadda"
             ),
             LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
@@ -73,8 +79,7 @@ class SidewalkCreatorKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
                 StringMapEntryDelete("sidewalk:both", "yes and separate ;-)"),
-                StringMapEntryDelete("sidewalk:left:surface", "jello"),
-                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
+                StringMapEntryDelete("sidewalk", "yadda"),
             )
         )
     }
@@ -84,8 +89,6 @@ class SidewalkCreatorKtTest {
             mapOf(
                 "sidewalk" to "both",
                 "sidewalk:both" to "yes",
-                "sidewalk:left:surface" to "jello",
-                "sidewalk:both:oneway" to "yes"
             ),
             LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.YES),
             arrayOf(
@@ -93,8 +96,6 @@ class SidewalkCreatorKtTest {
                 StringMapEntryAdd("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
-                StringMapEntryDelete("sidewalk:left:surface", "jello"),
-                StringMapEntryDelete("sidewalk:both:oneway", "yes"),
             )
         )
     }
@@ -109,7 +110,10 @@ class SidewalkCreatorKtTest {
             )
         )
         verifyAnswer(
-            mapOf("sidewalk:left" to "separate", "sidewalk:right" to "no"),
+            mapOf(
+                "sidewalk:left" to "separate",
+                "sidewalk:right" to "no"
+            ),
             LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.NO),
             arrayOf(
                 StringMapEntryModify("sidewalk:left", "separate", "separate"),
@@ -132,6 +136,76 @@ class SidewalkCreatorKtTest {
             LeftAndRightSidewalk(null, Sidewalk.NO),
             arrayOf(
                 StringMapEntryAdd("sidewalk:right", "no")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not touch the other side`() {
+        verifyAnswer(
+            mapOf("sidewalk:left" to "separate"),
+            LeftAndRightSidewalk(null, Sidewalk.YES),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:right", "yes")
+            )
+        )
+        verifyAnswer(
+            mapOf("sidewalk:right" to "yes"),
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:left", "no")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not touch the other side even if it is invalid`() {
+        verifyAnswer(
+            mapOf("sidewalk:left" to "some invalid value"),
+            LeftAndRightSidewalk(null, Sidewalk.YES),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:right", "yes")
+            )
+        )
+        verifyAnswer(
+            mapOf("sidewalk:right" to "another invalid value"),
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:left", "no")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not change values for the other side even if it was defined for both sides before and invalid`() {
+        verifyAnswer(
+            mapOf("sidewalk:both" to "some invalid value"),
+            LeftAndRightSidewalk(null, Sidewalk.YES),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryDelete("sidewalk:both", "some invalid value"),
+                StringMapEntryAdd("sidewalk:left", "some invalid value"),
+            )
+        )
+        verifyAnswer(
+            mapOf("sidewalk:both" to "some invalid value"),
+            LeftAndRightSidewalk(Sidewalk.YES, null),
+            arrayOf(
+                StringMapEntryAdd("sidewalk:left", "yes"),
+                StringMapEntryDelete("sidewalk:both", "some invalid value"),
+                StringMapEntryAdd("sidewalk:right", "some invalid value"),
+            )
+        )
+    }
+
+    @Test fun `apply conflates values`() {
+        verifyAnswer(
+            mapOf(
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            LeftAndRightSidewalk(Sidewalk.YES, null),
+            arrayOf(
+                StringMapEntryDelete("sidewalk:left", "yes"),
+                StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("sidewalk", "both"),
             )
         )
     }
