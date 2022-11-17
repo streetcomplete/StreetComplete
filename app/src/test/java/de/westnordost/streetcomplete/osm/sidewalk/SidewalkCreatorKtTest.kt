@@ -70,16 +70,14 @@ class SidewalkCreatorKtTest {
             mapOf(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate",
-                "sidewalk:both" to "yes and separate ;-)",
-                "sidewalk" to "yadda"
+                "sidewalk:both" to "yes and separate ;-)"
             ),
             LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
                 StringMapEntryAdd("sidewalk", "separate"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
-                StringMapEntryDelete("sidewalk:both", "yes and separate ;-)"),
-                StringMapEntryDelete("sidewalk", "yadda"),
+                StringMapEntryDelete("sidewalk:both", "yes and separate ;-)")
             )
         )
     }
@@ -152,7 +150,8 @@ class SidewalkCreatorKtTest {
             mapOf("sidewalk:right" to "yes"),
             LeftAndRightSidewalk(Sidewalk.NO, null),
             arrayOf(
-                StringMapEntryAdd("sidewalk:left", "no")
+                StringMapEntryAdd("sidewalk", "right"),
+                StringMapEntryDelete("sidewalk:right", "yes"),
             )
         )
     }

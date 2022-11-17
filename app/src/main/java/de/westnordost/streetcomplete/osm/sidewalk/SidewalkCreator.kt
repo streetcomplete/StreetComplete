@@ -36,26 +36,20 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
 
 /** converts sidewalk=both to sidewalk:left=yes + sidewalk:right=yes etc. */
 private fun Tags.separateConflatedSidewalk() {
-    when(val sidewalk = get("sidewalk")) {
-        "both" -> {
-            set("sidewalk:left", "yes")
-            set("sidewalk:right", "yes")
-        }
-        "left" -> {
-            set("sidewalk:left", "yes")
-            set("sidewalk:right", "no")
-        }
-        "right" -> {
-            set("sidewalk:left", "no")
-            set("sidewalk:right", "yes")
-        }
-        null -> {}
-        // for "separate", "no", etc., and also invalid values
-        else -> {
-            set("sidewalk:left", sidewalk)
-            set("sidewalk:right", sidewalk)
-        }
-    }
+    val leftRight = getSeparatedSidewalkValues(get("sidewalk")) ?: return
+    // don't overwrite more specific values if already set
+    if (!containsKey("sidewalk:left")) set("sidewalk:left", leftRight.first)
+    if (!containsKey("sidewalk:right")) set("sidewalk:right", leftRight.second)
+    remove("sidewalk")
+}
+
+private fun getSeparatedSidewalkValues(sidewalk: String?): Pair<String, String>? = when (sidewalk) {
+    "both" ->  Pair("yes", "yes")
+    "left" ->  Pair("yes", "no")
+    "right" -> Pair("no", "yes")
+    null ->    null
+    // for "separate", "no", etc., and also invalid values
+    else ->    Pair(sidewalk, sidewalk)
 }
 
 /** converts sidewalk:left=yes + sidewalk:right=yes to sidewalk=both etc. */
@@ -68,11 +62,11 @@ private fun Tags.conflateSidewalk() {
     }
 }
 
-private fun getConflatedSidewalkValue(left: String?, right: String?): String? =  when {
+private fun getConflatedSidewalkValue(left: String?, right: String?): String? = when {
     left == "yes" && right == "no" -> "left"
     left == "no" && right == "yes" -> "right"
     // works also for invalid values
-    left == right ->                  if (left == "yes") "both" else left
+    left == right ->  if (left == "yes") "both" else left
     else -> null
 }
 
@@ -84,3 +78,4 @@ private val Sidewalk.osmValue: String get() = when (this) {
         throw IllegalArgumentException("Attempting to tag invalid sidewalk")
     }
 }
+
