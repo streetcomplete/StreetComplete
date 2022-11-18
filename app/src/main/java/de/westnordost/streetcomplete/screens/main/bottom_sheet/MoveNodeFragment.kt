@@ -103,22 +103,6 @@ class MoveNodeFragment :
             else
                 MeasureDisplayUnitMeter(2)
         binding.createNoteIconView.setImageResource(editType.icon)
-        highlightSimilarElements()
-    }
-
-    private fun highlightSimilarElements() {
-        val feature = featureDictionaryFuture.get().byTags(node.tags).isSuggestion(false).find().firstOrNull()
-        val tagsToFind = feature?.tags ?: node.tags
-        val mapData = mapDataWithEditsSource
-            .getMapDataWithGeometry(node.position.enclosingBoundingBox(MAX_MOVE_DISTANCE + 5.0))
-        for (e in mapData) {
-            if (!tagsToFind.all { e.tags[it.key] == it.value }) continue
-            if (node == e) continue
-            val icon = getPinIcon(e.tags)
-            val title = getTitle(e.tags)
-            val geometry = mapData.getGeometry(e.type, e.id) ?: continue
-            (parentFragment as? MainFragment)?.putMarkerForCurrentHighlighting(geometry, icon, title)
-        }
     }
 
     private fun getPosition(): LatLon? {

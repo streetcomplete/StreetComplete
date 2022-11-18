@@ -52,6 +52,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
@@ -69,6 +70,7 @@ import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -481,9 +483,11 @@ class MainFragment :
 
     override fun onMoveNode(editType: ElementEditType, node: Node) {
         val mapFragment = mapFragment ?: return
-        showInBottomSheet(MoveNodeFragment.create(editType, node))
+        showInBottomSheet(MoveNodeFragment.create(editType, node), clearPreviousHighlighting = false)
+        mapFragment.clearSelectedPins()
         mapFragment.hideNonHighlightedPins()
-        mapFragment.hideOverlay()
+        if (editType !is Overlay)
+            mapFragment.hideOverlay()
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())
