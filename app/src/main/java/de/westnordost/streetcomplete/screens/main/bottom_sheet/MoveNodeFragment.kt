@@ -10,14 +10,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -28,9 +26,6 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.screens.main.MainFragment
-import de.westnordost.streetcomplete.screens.main.map.getPinIcon
-import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
@@ -39,7 +34,6 @@ import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -60,8 +54,6 @@ class MoveNodeFragment :
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
-    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val countryInfos: CountryInfos by inject()
 
@@ -143,7 +135,7 @@ class MoveNodeFragment :
                 false
             }
             else -> {
-                binding.titleLabel.text = resources.getString(R.string.node_moved,displayUnit.format(moveDistance.toFloat()))
+                binding.titleLabel.text = resources.getString(R.string.node_moved, displayUnit.format(moveDistance.toFloat()))
                 true
             }
         }
@@ -180,12 +172,16 @@ class MoveNodeFragment :
     }
 }
 
-// Require a minimum distance for two reasons:
+// Require a minimum distance because:
 // 1. The map is not perfectly precise, especially displayed road widths may be off by a few meters,
 //     so it may be hard to tell whether something really is misplaced (e.g. bench along a path)
 //     without good aerial imagery.
 // 2. The value added by moving nodes by such small distance, even if correct, is rather low.
+// 3. The position imprecision is already about 1.5 m because it is not really possible for the user
+//     to ascertain exactly what is the center of the icon, which is ca 3x3 m at maximum zoom.
 private const val MIN_MOVE_DISTANCE = 2.0
 // Move node functionality is meant for fixing slightly misplaced elements. If something moved far
-// away, it is reasonable to assume there are more substantial changes required, also to nearby elements.
+// away, it is reasonable to assume there are more substantial changes required, also to nearby
+// elements. Additionally, the default radius for highlighted elements is 30 m, so moving outside
+// should not be allowed.
 private const val MAX_MOVE_DISTANCE = 30.0
