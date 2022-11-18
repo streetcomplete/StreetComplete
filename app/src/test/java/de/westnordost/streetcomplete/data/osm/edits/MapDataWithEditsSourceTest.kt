@@ -892,7 +892,7 @@ class MapDataWithEditsSourceTest {
                     && it.getNodeGeometry(1) == pGeom(1.0, 1.0)
                     && it.getWayGeometry(1) == wgNew
                     && it.getRelationGeometry(1) == wgNew
-                              },
+            },
             deleted = eq(listOf())
         )
     }

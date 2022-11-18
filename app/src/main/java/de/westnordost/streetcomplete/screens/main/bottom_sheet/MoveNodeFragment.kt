@@ -196,5 +196,12 @@ class MoveNodeFragment :
     }
 }
 
+// Require a minimum distance for two reasons:
+// 1. The map is not perfectly precise, especially displayed road widths may be off by a few meters,
+//     so it may be hard to tell whether something really is misplaced (e.g. bench along a path)
+//     without good aerial imagery.
+// 2. The value added by moving nodes by such small distance, even if correct, is rather low.
 private const val MIN_MOVE_DISTANCE = 2.0
+// Move node functionality is meant for fixing slightly misplaced elements. If something moved far
+// away, it is reasonable to assume there are more substantial changes required, also to nearby elements.
 private const val MAX_MOVE_DISTANCE = 30.0
