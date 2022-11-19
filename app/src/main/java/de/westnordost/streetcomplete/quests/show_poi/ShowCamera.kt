@@ -13,7 +13,7 @@ class ShowCamera : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           man_made = surveillance
     """
-    override val changesetComment = "Change camera"
+    override val changesetComment = "Adjust surveillance cameras"
     override val wikiLink = "Tag:surveillance:type"
     override val icon = R.drawable.ic_quest_poi_camera
     override val dotColor = "mediumvioletred"

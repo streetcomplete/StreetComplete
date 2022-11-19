@@ -14,8 +14,8 @@ class ShowMachine : OsmFilterQuestType<Boolean>() {
           amenity ~ vending_machine|atm|telephone|charging_station|device_charging_station
           or atm = yes and (amenity or shop)
     """
-    override val changesetComment = "Change vending machine or similar"
-    override val wikiLink = "Tag:amenity"
+    override val changesetComment = "Adjust vending machine or similar"
+    override val wikiLink = "Tag:amenity=vending_machine"
     override val icon = R.drawable.ic_quest_poi_machine
     override val dotColor = "blue"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_machine

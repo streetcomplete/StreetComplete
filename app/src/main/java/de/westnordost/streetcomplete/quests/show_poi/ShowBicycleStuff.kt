@@ -13,8 +13,8 @@ class ShowBicycleStuff : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           amenity ~ bicycle_parking|bicycle_rental|bicycle_repair_station|compressed_air
     """
-    override val changesetComment = "Adjust bicycle parking or similar"
-    override val wikiLink = "nope"
+    override val changesetComment = "Adjust bicycle related elements"
+    override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_poi_bicycle
     override val dotColor = "mediumorchid"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_bike

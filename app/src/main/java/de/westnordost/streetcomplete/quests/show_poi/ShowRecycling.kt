@@ -12,8 +12,8 @@ class ShowRecycling : OsmFilterQuestType<Boolean>() {
         nodes, ways, relations with
           amenity ~ recycling|waste_basket|waste_disposal|waste_transfer_station|sanitary_dump_station
     """
-    override val changesetComment = "Change recycling"
-    override val wikiLink = "Key:amenity"
+    override val changesetComment = "Adjust recycling related elements"
+    override val wikiLink = "Key:amenity=recycling"
     override val icon = R.drawable.ic_quest_poi_recycling
     override val dotColor = "green"
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_recycling

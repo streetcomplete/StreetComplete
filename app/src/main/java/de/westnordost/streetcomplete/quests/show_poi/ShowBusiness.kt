@@ -60,7 +60,7 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "\n)"
 
-    override val changesetComment = "Change shop/business"
+    override val changesetComment = "Adjust shops and similar"
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.ic_quest_poi_business
     override val dotColor = "sandybrown"

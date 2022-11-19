@@ -44,7 +44,7 @@ class ShowOther : OsmFilterQuestType<Boolean>() {
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
         "\n)"
 
-    override val changesetComment = "Change miscellaneous element"
+    override val changesetComment = "Adjust public POIs and similar"
     override val wikiLink = "nope"
     override val icon = R.drawable.ic_quest_poi_other
     override val dotColor = "gold"

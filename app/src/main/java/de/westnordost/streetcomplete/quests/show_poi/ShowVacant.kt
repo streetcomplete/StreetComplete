@@ -23,7 +23,7 @@ class ShowVacant : OsmFilterQuestType<ShopTypeAnswer>() {
         or disused:amenity
         or disused:office
     """
-    override val changesetComment = "Check if vacant shop is still vacant"
+    override val changesetComment = "Adjust vacant places"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_poi_vacant
     override val dotColor = "grey"

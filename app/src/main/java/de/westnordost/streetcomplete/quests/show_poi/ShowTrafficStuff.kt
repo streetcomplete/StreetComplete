@@ -20,7 +20,7 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
          or type = restriction
          """
 
-    override val changesetComment = "Change crossing"
+    override val changesetComment = "Adjust traffic related elements"
     override val wikiLink = "Key:traffic_calming"
     override val icon = R.drawable.ic_quest_poi_traffic
     override val dotColor = "deepskyblue"

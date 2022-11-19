@@ -15,7 +15,7 @@ class ShowSeating : OsmFilterQuestType<Boolean>() {
         or leisure ~ picnic_table|bleachers
         or tourism = picnic_site
     """
-    override val changesetComment = "Adjust bench/seating"
+    override val changesetComment = "Adjust benches and similar"
     override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.ic_quest_poi_seating
     override val dotColor = "chocolate"
