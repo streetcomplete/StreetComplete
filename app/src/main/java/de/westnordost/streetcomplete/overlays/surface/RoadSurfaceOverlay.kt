@@ -83,9 +83,6 @@ private fun getStyle(element: Element): Style {
     var noteProvided: String? = null
     when (surfaceStatus) {
         is SingleSurfaceWithNote -> {
-            // TODO special styling needed I guess...
-            // as it should not get pinking "no data"...
-            // use dashes?
             dominatingSurface = surfaceStatus.surface
             noteProvided = surfaceStatus.note
         }
