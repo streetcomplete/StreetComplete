@@ -34,8 +34,15 @@ enum class Surface(val osmValue: String) {
     GROUND_AREA("ground"),
 
     // extra values, recording duplicates
+    MUD("mud"), // valid value, but not displayed specially in StreetComplete
+    EARTH("earth"), // synonym of "dirt", maybe more clear
+    // this values ideally would be removed from OpenStreetMap, but while they remain
+    // we want to handle them somehow
     SOIL("soil"),
-    EARTH("earth");
+    PAVING_STONES_WITH_WEIRD_SUFFIX("paving_stones:30"),
+    COBLLESTONE_FLATTENED("cobblestone:flattened"),
+    BRICK("brick"),
+    BRICKS("bricks");
 
     companion object {
         val invalidSurfaces: Set<String> = setOf(
@@ -148,12 +155,14 @@ val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ic
 
 val ANYTHING_UNPAVED = SOFT_SURFACES + setOf(
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver",
+    "earth", "mud",
 )
 
 val ANYTHING_FULLY_PAVED = setOf(
     "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
     "concrete", "concrete:plates", "paving_stones",
-    "metal", "wood", "unhewn_cobblestone"
+    "metal", "wood", "unhewn_cobblestone",
+    "brick", "bricks", "cobblestone:flattened", "paving_stones:30",
 )
 
 val Surface.titleResId: Int get() = when (this) {
@@ -162,10 +171,10 @@ val Surface.titleResId: Int get() = when (this) {
     Surface.CONCRETE_PLATES -> R.string.quest_surface_value_concrete_plates
     Surface.CONCRETE_LANES -> R.string.quest_surface_value_concrete_lanes
     Surface.FINE_GRAVEL -> R.string.quest_surface_value_fine_gravel
-    Surface.PAVING_STONES -> R.string.quest_surface_value_paving_stones
+    Surface.PAVING_STONES, Surface.PAVING_STONES_WITH_WEIRD_SUFFIX, Surface.BRICK, Surface.BRICKS -> R.string.quest_surface_value_paving_stones
     Surface.COMPACTED -> R.string.quest_surface_value_compacted
-    Surface.DIRT, Surface.SOIL, Surface.EARTH -> R.string.quest_surface_value_dirt
-    Surface.SETT -> R.string.quest_surface_value_sett
+    Surface.DIRT, Surface.SOIL, Surface.EARTH, Surface.MUD -> R.string.quest_surface_value_dirt
+    Surface.SETT, Surface.COBLLESTONE_FLATTENED -> R.string.quest_surface_value_sett
     Surface.UNHEWN_COBBLESTONE -> R.string.quest_surface_value_unhewn_cobblestone
     Surface.GRASS_PAVER -> R.string.quest_surface_value_grass_paver
     Surface.WOOD -> R.string.quest_surface_value_wood
@@ -193,10 +202,10 @@ val Surface.iconResId: Int get() = when (this) {
     Surface.CONCRETE_PLATES -> R.drawable.surface_concrete_plates
     Surface.CONCRETE_LANES -> R.drawable.surface_concrete_lanes
     Surface.FINE_GRAVEL -> R.drawable.surface_fine_gravel
-    Surface.PAVING_STONES -> R.drawable.surface_paving_stones
+    Surface.PAVING_STONES, Surface.PAVING_STONES_WITH_WEIRD_SUFFIX, Surface.BRICK, Surface.BRICKS -> R.drawable.surface_paving_stones
     Surface.COMPACTED -> R.drawable.surface_compacted
-    Surface.DIRT, Surface.SOIL, Surface.EARTH -> R.drawable.surface_dirt
-    Surface.SETT -> R.drawable.surface_sett
+    Surface.DIRT, Surface.SOIL, Surface.EARTH, Surface.MUD -> R.drawable.surface_dirt
+    Surface.SETT, Surface.COBLLESTONE_FLATTENED -> R.drawable.surface_sett
     Surface.UNHEWN_COBBLESTONE -> R.drawable.surface_cobblestone
     Surface.GRASS_PAVER -> R.drawable.surface_grass_paver
     Surface.WOOD -> R.drawable.surface_wood
