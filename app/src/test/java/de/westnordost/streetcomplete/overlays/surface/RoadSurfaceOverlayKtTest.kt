@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.overlays.surface
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class RoadSurfaceOverlayKtTest {
@@ -13,7 +15,7 @@ class RoadSurfaceOverlayKtTest {
             "highway" to "motorway",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        Assert.assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
 
     @Test
@@ -24,7 +26,7 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        Assert.assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
 
     @Test
@@ -42,10 +44,10 @@ class RoadSurfaceOverlayKtTest {
         val mapDataWithoutNote = TestMapDataWithGeometry(listOf(withoutNoteData))
         val styleWithNote = RoadSurfaceOverlay().getStyledElements(mapDataWithNote).first().second
         val styleWithoutNote = RoadSurfaceOverlay().getStyledElements(mapDataWithoutNote).first().second
-        Assert.assertTrue(styleWithNote is PolylineStyle)
-        Assert.assertTrue(styleWithoutNote is PolylineStyle)
+        assertTrue(styleWithNote is PolylineStyle)
+        assertTrue(styleWithoutNote is PolylineStyle)
         if (styleWithNote is PolylineStyle && styleWithoutNote is PolylineStyle) {
-            Assert.assertNotEquals(styleWithNote.stroke!!.color, styleWithoutNote.stroke!!.color)
+            assertNotEquals(styleWithNote.stroke!!.color, styleWithoutNote.stroke!!.color)
         }
     }
 
@@ -56,7 +58,7 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "explanation for missing surface tag",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        Assert.assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
     }
 
     @Test
@@ -67,6 +69,6 @@ class RoadSurfaceOverlayKtTest {
             "surface:note" to "patches of concrete and asphalt within sett",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        Assert.assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
     }
 }
