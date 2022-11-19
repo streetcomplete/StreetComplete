@@ -43,10 +43,6 @@ enum class Surface(val osmValue: String) {
             "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: after 2012-11-23 document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
             "trail", // https://wiki.openstreetmap.org/wiki/Tag:surface%3Dtrail TODO after 2022-12-01 confirm this deprecation with community (lets wait till to give time for response, remove that from PR if I will finish PR before that happens)
         )
-        // TODO what about mud? https://github.com/streetcomplete/StreetComplete/discussions/4300
-        // TODO what about metal_grid?
-        // Maybe start supporting them as a full blown value TODO
-        // brick, bricks, paving_stones:30, cobblestone:flattened are for now not supperted at all and will leave object uneditable
     }
 }
 
