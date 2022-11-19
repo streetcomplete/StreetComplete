@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
-import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -41,7 +40,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
     private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
+    val items: List<DisplayItem<Surface>> = Surface.selectableItems()
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
     private var originalSurfaceStatus: SurfaceInfo? = null
     private var isSegregatedLayout = false

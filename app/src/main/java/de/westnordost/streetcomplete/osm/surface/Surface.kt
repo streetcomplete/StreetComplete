@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
+import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
@@ -45,6 +47,14 @@ enum class Surface(val osmValue: String) {
     BRICKS("bricks");
 
     companion object {
+        fun selectableItems(): List<DisplayItem<Surface>> {
+            return values().filter { it !in GENERIC_ROAD_SURFACES && it !in ALIASED_SURFACES}.map { it.asItem() }
+        }
+
+        val ALIASED_SURFACES = listOf(
+            MUD, EARTH, SOIL, PAVING_STONES_WITH_WEIRD_SUFFIX, COBLLESTONE_FLATTENED, BRICK, BRICKS,
+        )
+
         val invalidSurfaces: Set<String> = setOf(
             "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
             "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: after 2012-11-23 document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete

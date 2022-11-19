@@ -37,7 +37,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface>> = Surface.values().filter { it !in GENERIC_ROAD_SURFACES }.map { it.asItem() }
+    val items: List<DisplayItem<Surface>> = Surface.selectableItems()
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
     private var originalSurfaceStatus: SingleSurfaceInfo? = null
 
