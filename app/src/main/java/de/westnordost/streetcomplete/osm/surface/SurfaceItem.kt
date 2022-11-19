@@ -23,4 +23,3 @@ fun Surface.asStreetSideItem(resources: Resources): StreetSideDisplayItem<Surfac
         ResImage(iconResId),
         DrawableImage(RotatedCircleDrawable(resources.getDrawable(iconResId)))
     )
-

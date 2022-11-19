@@ -5,9 +5,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
@@ -40,5 +37,4 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags)
     }
-
 }

@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.surface.IsActuallyStepsAnswer
 import de.westnordost.streetcomplete.osm.surface.IsIndoorsAnswer
 import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer

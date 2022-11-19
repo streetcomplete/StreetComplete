@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -39,6 +38,7 @@ import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
 import java.util.concurrent.FutureTask

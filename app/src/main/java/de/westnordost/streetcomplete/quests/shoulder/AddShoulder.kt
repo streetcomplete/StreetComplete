@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.shoulder
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 
 class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
