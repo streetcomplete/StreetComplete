@@ -62,9 +62,8 @@ class RoadSurfaceOverlay : Overlay {
         // this is not a valid tag on road and therefore not supported here
         // "footway:surface", "cycleway:surface",
 
-        // supported in all surface overlays
-        "surface",
-        "surface:note"
+        // supported in both surface overlays
+        "surface", "surface:note"
     ) + associatedKeysToBeRemovedOnChange("surface")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(

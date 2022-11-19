@@ -83,9 +83,8 @@ class PathSurfaceOverlay : Overlay {
         // really rare, but added by StreetComplete so also should be supported by it to allow editing added data
         "cycleway:surface:note", "footway:surface:note",
 
-        // supported in all surface overlays
-        "surface",
-        "surface:note"
+        // supported in both surface overlays
+        "surface", "surface:note"
     ) + associatedKeysToBeRemovedOnChange("surface") +
     associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
 
