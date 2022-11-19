@@ -41,7 +41,6 @@ enum class Surface(val osmValue: String) {
         val invalidSurfaces: Set<String> = setOf(
             "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
             "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: after 2012-11-23 document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
-            "trail", // https://wiki.openstreetmap.org/wiki/Tag:surface%3Dtrail TODO after 2022-12-01 confirm this deprecation with community (lets wait till to give time for response, remove that from PR if I will finish PR before that happens)
         )
     }
 }
