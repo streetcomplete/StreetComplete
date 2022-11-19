@@ -62,7 +62,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             updateSelectedCell()
         }
 
-        // TODO where this functions should be placed within file?
         override val otherAnswers: List<AnswerItem> get() {
             return if (isSegregatedLayout) {
                 listOf() // removing info about separate cycleway (or maybe ven removing info about supposed cycleway!) is requiring a note
