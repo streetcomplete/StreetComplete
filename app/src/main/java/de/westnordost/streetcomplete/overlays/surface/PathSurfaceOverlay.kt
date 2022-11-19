@@ -85,8 +85,8 @@ class PathSurfaceOverlay : Overlay {
 
         // supported in both surface overlays
         "surface", "surface:note"
-    ) + associatedKeysToBeRemovedOnChange("surface") +
-    associatedKeysToBeRemovedOnChange("cycleway:surface") + associatedKeysToBeRemovedOnChange("fotway:surface")
+    ) + associatedKeysToBeRemovedOnChange("") +
+    associatedKeysToBeRemovedOnChange("cycleway:") + associatedKeysToBeRemovedOnChange("fotway:")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter

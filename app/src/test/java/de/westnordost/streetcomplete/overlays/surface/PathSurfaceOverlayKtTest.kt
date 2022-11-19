@@ -105,4 +105,58 @@ class PathSurfaceOverlayKtTest {
         val mapData = TestMapDataWithGeometry(listOf(data))
         assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
+
+    @Test
+    fun `test acceptance of surface notes without surface on segregated ways`() {
+        // https://www.openstreetmap.org/way/395502477 version 8
+        val data = way(tags = mapOf(
+            "cycleway:surface" to "concrete",
+            "footway:surface" to "dirt",
+            "surface:note" to "really? really?",
+            "highway" to "path",
+            "segregated" to "yes",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
+
+    @Test
+    fun `test acceptance of surface notes without surface on real complicated way that seemed buggy`() {
+        // https://www.openstreetmap.org/way/925626513 version 4
+        val data = way(tags = mapOf(
+            "bicycle" to "designated",
+            "cycleway:surface" to "paving_stones",
+            "foot" to "designated",
+            "footway:surface" to "asphalt",
+            "highway" to "path",
+            "lit" to "yes",
+            "oneway:bicycle" to "yes",
+            "path" to "sidewalk",
+            "segregated" to "yes",
+            "surface" to "paving_stones",
+            "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
+
+    @Test
+    fun `test acceptance of surface notes without surface on real complicated way that seemed buggy - with footway set to dirt`() {
+        // https://www.openstreetmap.org/way/925626513 version 4
+        val data = way(tags = mapOf(
+            "bicycle" to "designated",
+            "cycleway:surface" to "paving_stones",
+            "check_date:cycleway:surface" to "2022-11-19",
+            "foot" to "designated",
+            "footway:surface" to "dirt",
+            "highway" to "path",
+            "lit" to "yes",
+            "oneway:bicycle" to "yes",
+            "path" to "sidewalk",
+            "segregated" to "yes",
+            "surface:note" to "Rad Pflastersteine Fußgänger Asphalt",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
 }

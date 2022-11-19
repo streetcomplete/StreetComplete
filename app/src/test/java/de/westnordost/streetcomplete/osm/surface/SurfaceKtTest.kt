@@ -115,4 +115,9 @@ class SurfaceKtTest {
         assertEquals(surfaceTextValueToSurfaceEnum("cement"), null)
         assertEquals(surfaceTextValueToSurfaceEnum("cobblestone"), null)
     }
+
+    @Test
+    fun `check date is among keys removed on surface change`() {
+        assertTrue("check_date:cycleway:surface" in associatedKeysToBeRemovedOnChange("cycleway:"))
+    }
 }

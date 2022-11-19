@@ -64,7 +64,7 @@ class RoadSurfaceOverlay : Overlay {
 
         // supported in both surface overlays
         "surface", "surface:note"
-    ) + associatedKeysToBeRemovedOnChange("surface")
+    ) + associatedKeysToBeRemovedOnChange("")
 
     private val allowedTagWithSurfaceInKey = supportedSurfaceKeys + listOf(
         "proposed:surface", // does not matter
