@@ -348,9 +348,13 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             is CyclewayFootwaySurfaces ->
                 selectedStatusForCyclewaySurface?.value != original.cycleway || selectedStatusForFootwaySurface?.value != original.footway
             is SingleSurface -> selectedStatusForMainSurface?.value != original.surface
+                || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
             is SingleSurfaceWithNote -> selectedStatusForMainSurface?.value != original.surface || noteText() != original.note
-            is SurfaceMissing -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
-            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null || noteText() != original.note
+                || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            is SurfaceMissing -> selectedStatusForMainSurface?.value != null
+                || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
+            is SurfaceMissingWithNote -> selectedStatusForMainSurface?.value != null  || noteText() != original.note
+                || selectedStatusForCyclewaySurface?.value != null || selectedStatusForFootwaySurface?.value != null
             is CyclewayFootwaySurfacesWithNote -> {
                 // selectedStatusForMainSurface?.value != original.main
                 // is not being checked as surface is dropped and will be derived from cycleway & footway surface
