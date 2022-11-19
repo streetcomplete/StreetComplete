@@ -22,9 +22,13 @@ import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.osm.surface.createMainSurfaceStatus
+import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_PAVED_SURFACES
+import de.westnordost.streetcomplete.quests.surface.COMMON_SPECIFIC_UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
 import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
+import de.westnordost.streetcomplete.quests.surface.GROUND_SURFACES
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -37,7 +41,7 @@ class RoadSurfaceOverlayForm : AbstractOverlayForm() {
 
     private val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
-    val items: List<DisplayItem<Surface>> = Surface.selectableItems()
+    val items: List<DisplayItem<Surface>> = (COMMON_SPECIFIC_PAVED_SURFACES + COMMON_SPECIFIC_UNPAVED_SURFACES + GROUND_SURFACES + GENERIC_ROAD_SURFACES).toItems()
     private val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
     private var originalSurfaceStatus: SingleSurfaceInfo? = null
 
