@@ -414,6 +414,9 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 SurfaceAnswer(footwaySurface, footwayNote).applyTo(changesBuilder, prefix = "footway")
                 SurfaceAnswer(cyclewaySurface, cyclewayNote).applyTo(changesBuilder, prefix = "cycleway")
             }
+            if (!changesBuilder.containsKey("segregated")) {
+                changesBuilder["segregated"] = "yes"
+            }
         }
 
         private const val SELECTED_MAIN_SURFACE_INDEX = "selected_main_surface_index"
