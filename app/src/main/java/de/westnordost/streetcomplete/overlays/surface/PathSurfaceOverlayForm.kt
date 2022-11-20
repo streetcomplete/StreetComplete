@@ -68,7 +68,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
 
         override val otherAnswers: List<AnswerItem> get() {
             return if (isSegregatedLayout) {
-                listOf() // removing info about separate cycleway (or maybe ven removing info about supposed cycleway!) is requiring a note
+                listOf() // removing info about separate cycleway is to complicated
             } else {
                 listOf(
                     AnswerItem(R.string.overlay_path_surface_segregated) {
