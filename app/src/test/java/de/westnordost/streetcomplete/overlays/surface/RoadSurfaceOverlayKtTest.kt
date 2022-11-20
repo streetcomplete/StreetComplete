@@ -76,10 +76,10 @@ class RoadSurfaceOverlayKtTest {
     fun `way with check date is eligible`() {
         val data = way(tags = mapOf(
             "highway" to "track",
-            "surface" to "https://en.wikipedia.org/wiki/Stone_frigate",
+            "surface" to "asphalt",
             "check_date:surface" to "2022-10-11",
         ))
         val mapData = TestMapDataWithGeometry(listOf(data))
-        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
 }
