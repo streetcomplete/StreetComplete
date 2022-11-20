@@ -97,7 +97,7 @@ interface OtherSourceQuestType : QuestType, ElementEditType {
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog?
 
-    /** quest settings should always exist, at least to disable downloading */
+    /** disabled by default, so either this must be enabled manually or overridden */
     var downloadEnabled: Boolean
         get() = prefs.getBoolean(downloadPref, false)
         set(value) = prefs.edit().putBoolean(downloadPref, value).apply()

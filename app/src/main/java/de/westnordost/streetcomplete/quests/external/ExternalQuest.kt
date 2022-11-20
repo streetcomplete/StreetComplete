@@ -23,6 +23,8 @@ class ExternalQuest(private val externalList: ExternalList) : OtherSourceQuestTy
 
     override fun download(bbox: BoundingBox) = getQuests(bbox)
 
+    override var downloadEnabled = true // it's not actually a download, so no need to ever disable
+
     override fun upload() { externalList.deleteSolved() }
 
     override fun getQuests(bbox: BoundingBox): Collection<OtherSourceQuest> = externalList.get(bbox)
