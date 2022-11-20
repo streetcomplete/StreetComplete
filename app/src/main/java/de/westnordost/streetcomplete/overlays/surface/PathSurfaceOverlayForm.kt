@@ -69,17 +69,35 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         override val otherAnswers: List<AnswerItem> get() {
             return if (isSegregatedLayout) {
                 listOf() // removing info about separate cycleway is to complicated
-            } else {
-                listOf(
-                    AnswerItem(R.string.overlay_path_surface_segregated) {
-                        // reset previous data
-                        selectedStatusForMainSurface = null
-                        binding.explanationInputMainSurface.text = null
-                        binding.selectButtonMainSurface.isVisible = false
-                        switchToFootwayCyclewaySurfaceLayout()
-                    }
-                )
+            } else if (bothFootAndBicycleTraffic(element!!.tags)) {
+                    listOf(
+                        AnswerItem(R.string.overlay_path_surface_segregated) {
+                            // reset previous data
+                            selectedStatusForMainSurface = null
+                            binding.explanationInputMainSurface.text = null
+                            binding.selectButtonMainSurface.isVisible = false
+                            switchToFootwayCyclewaySurfaceLayout()
+                        }
+                    )
+                } else {
+                listOf()
             }
+        }
+
+        private fun bothFootAndBicycleTraffic(tags: Map<String, String>): Boolean {
+            // in case where path is not clearly marked as carrying both foot and bicycle traffic
+            // mapper can leave a note
+            if(tags["highway"] == "footway") {
+                return tags["bicycle"] == "yes" || tags["bicycle"] == "designated"
+            }
+            if(tags["highway"] == "cycleway") {
+                return tags["foot"] == "yes" || tags["foot"] == "designated"
+            }
+            if(tags["highway"] == "path") {
+                return (tags["bicycle"] == "yes" || tags["bicycle"] == "designated") &&
+                    (tags["foot"] == "yes" || tags["foot"] == "designated")
+            }
+            return false
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
