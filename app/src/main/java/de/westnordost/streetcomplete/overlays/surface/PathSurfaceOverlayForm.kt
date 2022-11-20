@@ -71,14 +71,19 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 listOf() // removing info about separate cycleway (or maybe ven removing info about supposed cycleway!) is requiring a note
             } else {
                 listOf(
-                    AnswerItem(R.string.overlay_path_surface_segregated) { switchToFootwayCyclewaySurfaceLayout() }
+                    AnswerItem(R.string.overlay_path_surface_segregated) {
+                        // reset previous data
+                        selectedStatusForMainSurface = null
+                        binding.explanationInputMainSurface.text = null
+                        binding.selectButtonMainSurface.isVisible = false
+                        switchToFootwayCyclewaySurfaceLayout()
+                    }
                 )
             }
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
             isSegregatedLayout = true
-            binding.mainSurfaceContainer.isVisible = false
             binding.cyclewaySurfaceContainer.isVisible = true
             binding.footwaySurfaceContainer.isVisible = true
         }
@@ -231,7 +236,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             if (noteText() != null || mainSurfaceItem?.value?.shouldBeDescribed == true) {
                 binding.explanationInputMainSurfaceContainer.isVisible = true
                 binding.mainSurfaceContainer.isVisible = true
-                binding.selectButtonMainSurface.isVisible = false
             }
 
             val cyclewaySurfaceItem = selectedStatusForCyclewaySurface
