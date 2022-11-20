@@ -169,10 +169,10 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                 is CyclewayFootwaySurfaces -> {
                     val cyclewaySurface = status.cycleway
                     val footwaySurface = status.footway
-                    if (cyclewaySurface != null && !cyclewaySurface.shouldBeDescribed) {
+                    if (cyclewaySurface != null) {
                         selectedStatusForCyclewaySurface = cyclewaySurface.asItem()
                     }
-                    if (footwaySurface != null && !footwaySurface.shouldBeDescribed) {
+                    if (footwaySurface != null) {
                         selectedStatusForFootwaySurface = footwaySurface.asItem()
                     }
                     switchToFootwayCyclewaySurfaceLayout()

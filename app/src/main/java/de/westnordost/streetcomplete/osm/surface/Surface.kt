@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
-import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
     ASPHALT("asphalt"),
@@ -66,26 +65,34 @@ data class CyclewayFootwaySurfacesWithNote(val main: Surface?, val note: String?
 
 fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
+    val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
+    val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
     val surfaceNote = tags["surface:note"]
     val cyclewaySurfaceNote = tags["cycleway:surface:note"]
     val footwaySurfaceNote = tags["footway:surface:note"]
-    val cyclewaySurface = surfaceTextValueToSurfaceEnum(tags["cycleway:surface"])
-    val footwaySurface = surfaceTextValueToSurfaceEnum(tags["footway:surface"])
+    // we are treating surface=paved as not being specified at all
+    // to show user an empty space to fill missing data
+    // unless it has an associated note
+    val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
+    val cyclewaySurfaceIgnoringUnspecific = if (cyclewaySurface?.shouldBeDescribed == true && cyclewaySurfaceNote == null) { null } else { cyclewaySurface }
+    val footwaySurfaceIgnoringUnspecific = if (footwaySurface?.shouldBeDescribed == true && footwaySurfaceNote == null) { null } else { footwaySurface }
     val hasDedicatedFootwayCyclewayData = cyclewaySurface != null || footwaySurface != null || tags["segregated"] == "yes" || cyclewaySurfaceNote != null || footwaySurfaceNote != null
     if (cyclewaySurfaceNote != null || footwaySurfaceNote != null || (hasDedicatedFootwayCyclewayData && surfaceNote != null)) {
-        return CyclewayFootwaySurfacesWithNote(surface, surfaceNote, cyclewaySurface, cyclewaySurfaceNote, footwaySurface, footwaySurfaceNote)
+        // even if all surface are unspecific and end specified as null then we still want to give info that it is split in parts
+        // (like with case where it is segregated=yes)
+        return CyclewayFootwaySurfacesWithNote(surfaceIgnoringUnspecific, surfaceNote, cyclewaySurfaceIgnoringUnspecific, cyclewaySurfaceNote, footwaySurfaceIgnoringUnspecific, footwaySurfaceNote)
     }
     if (hasDedicatedFootwayCyclewayData) {
-        return CyclewayFootwaySurfaces(surface, cyclewaySurface, footwaySurface)
+        return CyclewayFootwaySurfaces(surfaceIgnoringUnspecific, cyclewaySurfaceIgnoringUnspecific, footwaySurfaceIgnoringUnspecific)
     }
-    if (surface != null && surfaceNote != null ) {
-        return SingleSurfaceWithNote(surface, surfaceNote)
+    if (surfaceIgnoringUnspecific != null && surfaceNote != null) {
+        return SingleSurfaceWithNote(surfaceIgnoringUnspecific, surfaceNote)
     }
-    if (surface == null && surfaceNote != null ) {
+    if (surfaceIgnoringUnspecific == null && surfaceNote != null ) {
         return SurfaceMissingWithNote(surfaceNote)
     }
-    if (surface != null) {
-        return SingleSurface(surface)
+    if (surfaceIgnoringUnspecific != null) {
+        return SingleSurface(surfaceIgnoringUnspecific)
     }
     return SurfaceMissing
 }
