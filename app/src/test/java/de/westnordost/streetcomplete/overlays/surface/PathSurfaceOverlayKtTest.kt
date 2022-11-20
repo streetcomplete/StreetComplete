@@ -169,4 +169,71 @@ class PathSurfaceOverlayKtTest {
         val mapData = TestMapDataWithGeometry(listOf(data))
         assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
+
+    @Test
+    fun `way with sidewalk surface tags on one side is eligible`() {
+        val data = way(tags = mapOf(
+            "highway" to "tertiary",
+            "sidewalk" to "both",
+            "sidewalk:right:surface" to "paved",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
+
+    @Test
+    fun `way with right-handed surface note sidewalk tags is eligible`() {
+        val data = way(tags = mapOf(
+            "highway" to "tertiary",
+            "sidewalk" to "both",
+            "sidewalk:right:surface" to "paved",
+            "sidewalk:right:surface:note" to "aaarghhhhhhh",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
+
+    @Test
+    fun `way with both-sided surface note sidewalk tags is eligible`() {
+        val data = way(tags = mapOf(
+            "highway" to "tertiary",
+            "sidewalk" to "both",
+            "sidewalk:both:surface" to "paved",
+            "sidewalk:both:surface:note" to "aaarghhhhhhh",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
+
+    @Test
+    fun `way with sidewalk surface tags and without sidewalk tags is ineligible`() {
+        val data = way(tags = mapOf(
+            "highway" to "tertiary",
+            "sidewalk:both:surface" to "paved",
+            "sidewalk:both:surface:note" to "aaarghhhhhhh",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+    }
+
+    @Test
+    fun `path with unhandled surface is rejected`() {
+        val data = way(tags = mapOf(
+            "highway" to "path",
+            "surface" to "surprise Japanese torpedo boats",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+    }
+
+    @Test
+    fun `road with unhandled sidewalk surface is rejected`() {
+        val data = way(tags = mapOf(
+            "highway" to "tertiary",
+            "sidewalk" to "both",
+            "sidewalk:both:surface" to "surprise Japanese torpedo boats",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+    }
 }
