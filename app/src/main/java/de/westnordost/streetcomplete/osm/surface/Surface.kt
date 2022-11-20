@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.quests.surface.GENERIC_AREA_SURFACES
+import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 import de.westnordost.streetcomplete.quests.surface.shouldBeDescribed
 
 enum class Surface(val osmValue: String) {
@@ -160,6 +162,7 @@ fun commonSurfaceObject(surfaceA: String?, surfaceB: String?): Surface? {
     }
     return Surface.values().firstOrNull { it.osmValue == shared }
 }
+val UNDERSPICIFED_SURFACES = GENERIC_ROAD_SURFACES + GENERIC_AREA_SURFACES + null
 
 val SOFT_SURFACES = setOf("ground", "earth", "dirt", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips")
 

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
+import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
@@ -77,7 +78,6 @@ class RoadSurfaceOverlay : Overlay {
 
 private fun getStyle(element: Element): Style {
     val surfaceStatus = createSurfaceStatus(element.tags)
-    val badSurfaces = listOf(null, PAVED_ROAD, PAVED_AREA, UNPAVED_ROAD, UNPAVED_AREA)
     var dominatingSurface: Surface? = null
     var noteProvided: String? = null
     when (surfaceStatus) {
@@ -102,7 +102,7 @@ private fun getStyle(element: Element): Style {
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSet = dominatingSurface in badSurfaces
+    val isNotSet = dominatingSurface in UNDERSPICIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
     val color = if (isNotSetButThatsOkay) {
         Color.INVISIBLE
