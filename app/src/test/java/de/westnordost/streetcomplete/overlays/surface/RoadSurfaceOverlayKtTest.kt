@@ -82,4 +82,14 @@ class RoadSurfaceOverlayKtTest {
         val mapData = TestMapDataWithGeometry(listOf(data))
         assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
     }
+
+    @Test
+    fun `way with surface tags being replaced is eligible`() {
+        val data = way(tags = mapOf(
+            "highway" to "track",
+            "surface" to "cobblestone",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(RoadSurfaceOverlay().getStyledElements(mapData).toList().size, 1)
+    }
 }

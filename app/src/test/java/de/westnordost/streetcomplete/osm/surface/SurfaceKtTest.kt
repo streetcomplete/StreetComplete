@@ -48,10 +48,32 @@ class SurfaceKtTest {
 
     @Test
     fun `note tag results in a diferent status for paths`() {
-        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt")) is SingleSurface)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "asphalt", "surface:note" to "useful info")) is SingleSurfaceWithNote)
     }
 
     @Test
+    fun `paved and unpaved is treated as missing surface for roads and paths`() {
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "unpaved")) is SurfaceMissing)
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "paved")) is SurfaceMissing)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "unpaved")) is SurfaceMissing)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "paved")) is SurfaceMissing)
+    }
+
+    @Test
+    fun `paved and unpaved is not removed when with nopte for both roads and paths`() {
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "paved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "unpaved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
+        assertTrue(createSurfaceStatus(mapOf("surface" to "paved", "surface:note" to "foobar")) is SingleSurfaceWithNote)
+    }
+
+    @Test
+    fun `cobblestone is treated as missing surface for roads`() {
+        assertTrue(createSurfaceStatus(mapOf("surface" to "cobblestone")) is SurfaceMissing)
+        assertTrue(createMainSurfaceStatus(mapOf("surface" to "cobblestone")) is SurfaceMissing)
+    }
+
+        @Test
     fun `surface note is taken into account when generating surface status fo path with cycleway and footway split`() {
         // https://www.openstreetmap.org/way/925626513 version 4
         val tags = mapOf(
