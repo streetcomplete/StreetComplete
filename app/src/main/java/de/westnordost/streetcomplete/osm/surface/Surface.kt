@@ -104,14 +104,15 @@ fun createSurfaceStatus(tags: Map<String, String>): SurfaceInfo {
 fun createMainSurfaceStatus(tags: Map<String, String>): SingleSurfaceInfo {
     val surface = surfaceTextValueToSurfaceEnum(tags["surface"])
     val surfaceNote = tags["surface:note"]
-    if (surface != null && surfaceNote != null ) {
-        return SingleSurfaceWithNote(surface, surfaceNote)
+    val surfaceIgnoringUnspecific = if (surface?.shouldBeDescribed == true && surfaceNote == null) { null } else { surface }
+    if (surfaceIgnoringUnspecific != null && surfaceNote != null ) {
+        return SingleSurfaceWithNote(surfaceIgnoringUnspecific, surfaceNote)
     }
-    if (surface == null && surfaceNote != null ) {
+    if (surfaceIgnoringUnspecific == null && surfaceNote != null ) {
         return SurfaceMissingWithNote(surfaceNote)
     }
-    if (surface != null) {
-        return SingleSurface(surface)
+    if (surfaceIgnoringUnspecific != null) {
+        return SingleSurface(surfaceIgnoringUnspecific)
     }
     return SurfaceMissing
 }
