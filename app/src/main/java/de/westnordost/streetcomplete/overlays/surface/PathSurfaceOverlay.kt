@@ -54,6 +54,7 @@ class PathSurfaceOverlay : Overlay {
                    and (!cycleway:surface:note or cycleway:surface)
                    and (!footway:surface:note or footway:surface)
                    and !sidewalk:both:surface and !sidewalk:right:surface and !sidewalk:left:surface and !sidewalk:surface
+                   and !sidewalk:both:surface:note and !sidewalk:right:surface:note and !sidewalk:left:surface:note
                )
                or
                (
@@ -77,6 +78,7 @@ class PathSurfaceOverlay : Overlay {
         // note that elements with sidewalk surface keys are exluded from path in the query above
         // some people tag combined footway-cycleway as cycleway with sidewalk...
         "sidewalk:both:surface", "sidewalk:right:surface", "sidewalk:left:surface", "sidewalk:surface",
+        "sidewalk:both:surface:note", "sidewalk:right:surface:note", "sidewalk:left:surface:note",
 
         // supported in this overlay, not in all of them
         "footway:surface", "cycleway:surface",
