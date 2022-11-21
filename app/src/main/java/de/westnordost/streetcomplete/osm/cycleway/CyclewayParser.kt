@@ -151,7 +151,6 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     expandSidesTag("cycleway", "lane", result)
     expandSidesTag("cycleway", "oneway", result)
     expandSidesTag("cycleway", "segregated", result)
-    expandSidesTag("sidewalk", "bicycle", result)
     return result
 }
 

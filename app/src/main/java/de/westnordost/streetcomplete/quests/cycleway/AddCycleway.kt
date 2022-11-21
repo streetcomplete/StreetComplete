@@ -155,7 +155,7 @@ class AddCycleway(
             geometry.center.longitude,
             geometry.center.latitude
         )
-        answer.applyTo(tags, countryInfo)
+        answer.applyTo(tags, countryInfo.isLeftHandTraffic)
     }
 }
 

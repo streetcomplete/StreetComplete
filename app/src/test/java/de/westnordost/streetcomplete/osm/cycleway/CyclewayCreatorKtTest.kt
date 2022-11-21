@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
-import de.westnordost.streetcomplete.quests.cycleway.CyclewaySide
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -20,7 +19,7 @@ class CyclewayCreatorKtTest {
                 "cycleway" to "no",
                 "cycleway:right" to "track"
             ),
-            CyclewayAnswer(null, null),
+            LeftAndRightCycleway(null, null),
             arrayOf()
         )
     }
@@ -91,10 +90,10 @@ class CyclewayCreatorKtTest {
     @Test fun `apply suggestion lane answer`() {
         verifyAnswer(
             mapOf(),
-            bothSidesAnswer(Cycleway.PICTOGRAMS),
+            bothSidesAnswer(Cycleway.SUGGESTION_LANE),
             arrayOf(
                 StringMapEntryAdd("cycleway:both", "shared_lane"),
-                StringMapEntryAdd("cycleway:both:lane", "pictogram")
+                StringMapEntryAdd("cycleway:both:lane", "advisory")
             )
         )
     }
@@ -141,6 +140,18 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply dual cycle track answer in oneway`() {
+        verifyAnswer(
+            mapOf("oneway" to "yes"),
+            bothSidesAnswer(Cycleway.DUAL_TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:both:oneway", "no"),
+                StringMapEntryAdd("oneway:bicycle", "no"),
+            )
+        )
+    }
+
     @Test fun `apply dual cycle lane answer`() {
         verifyAnswer(
             mapOf(),
@@ -153,10 +164,23 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply dual cycle lane answer in oneway`() {
+        verifyAnswer(
+            mapOf("oneway" to "yes"),
+            bothSidesAnswer(Cycleway.DUAL_LANE),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "lane"),
+                StringMapEntryAdd("cycleway:both:oneway", "no"),
+                StringMapEntryAdd("cycleway:both:lane", "exclusive"),
+                StringMapEntryAdd("oneway:bicycle", "no"),
+            )
+        )
+    }
+
     @Test fun `apply answer where left and right side are different`() {
         verifyAnswer(
             mapOf(),
-            CyclewayAnswer(CyclewaySide(Cycleway.TRACK), CyclewaySide(Cycleway.NONE)),
+            LeftAndRightCycleway(Cycleway.TRACK, Cycleway.NONE),
             arrayOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "no")
@@ -165,30 +189,24 @@ class CyclewayCreatorKtTest {
     }
 
     @Test fun `apply answer where there exists a cycleway in opposite direction of oneway`() {
-        // this would be a street that has tracks on both sides but is oneway=yes (in countries with
-        // right hand traffic)
         verifyAnswer(
-            mapOf(),
-            CyclewayAnswer(CyclewaySide(Cycleway.TRACK, -1), CyclewaySide(Cycleway.TRACK), true),
+            mapOf("oneway" to "yes"),
+            LeftAndRightCycleway(Cycleway.TRACK, Cycleway.TRACK),
             arrayOf(
-                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
-                StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryAdd("oneway:bicycle", "no")
             )
         )
     }
 
     @Test fun `apply answer where there exists a cycleway in opposite direction of backward oneway`() {
-        // this would be a street that has lanes on both sides but is oneway=-1 (in countries with
-        // right hand traffic)
         verifyAnswer(
-            mapOf(),
-            CyclewayAnswer(CyclewaySide(Cycleway.TRACK, +1), CyclewaySide(Cycleway.TRACK), true),
+            mapOf("oneway" to "-1"),
+            LeftAndRightCycleway(Cycleway.TRACK, Cycleway.TRACK),
             arrayOf(
-                StringMapEntryAdd("cycleway:left", "track"),
-                StringMapEntryAdd("cycleway:left:oneway", "yes"),
-                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:right:oneway", "yes"),
                 StringMapEntryAdd("oneway:bicycle", "no")
             )
         )
@@ -238,7 +256,9 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway", "shared_lane"),
                 StringMapEntryDelete("cycleway:lane", "pictogram"),
                 StringMapEntryDelete("cycleway:segregated", "definitely"),
-                StringMapEntryDelete("cycleway:oneway", "yes")
+                StringMapEntryDelete("cycleway:oneway", "yes"),
+                StringMapEntryAdd("cycleway:both:oneway", "yes"),
+                StringMapEntryAdd("cycleway:both:segregated", "yes"),
             )
         )
     }
@@ -248,25 +268,23 @@ class CyclewayCreatorKtTest {
             mapOf(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "pictogram",
-                "cycleway:both:segregated" to "definitely",
-                "cycleway:both:oneway" to "yes",
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "pictogram",
-                "cycleway:segregated" to "definitely",
+                "cycleway:segregated" to "yes",
                 "cycleway:oneway" to "yes",
             ),
-            CyclewayAnswer(CyclewaySide(Cycleway.TRACK), CyclewaySide(Cycleway.NONE), false),
+            LeftAndRightCycleway(Cycleway.TRACK, Cycleway.NONE),
             arrayOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryDelete("cycleway:both", "shared_lane"),
                 StringMapEntryDelete("cycleway:both:lane", "pictogram"),
-                StringMapEntryDelete("cycleway:both:segregated", "definitely"),
-                StringMapEntryDelete("cycleway:both:oneway", "yes"),
                 StringMapEntryDelete("cycleway", "shared_lane"),
                 StringMapEntryDelete("cycleway:lane", "pictogram"),
-                StringMapEntryDelete("cycleway:segregated", "definitely"),
                 StringMapEntryDelete("cycleway:oneway", "yes"),
+                StringMapEntryDelete("cycleway:segregated", "yes"),
+                StringMapEntryAdd("cycleway:both:oneway", "yes"),
+                StringMapEntryAdd("cycleway:left:segregated", "yes"),
             )
         )
     }
@@ -422,17 +440,109 @@ class CyclewayCreatorKtTest {
             )
         )
     }
+
+    @Test fun `apply value only for one side`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightCycleway(Cycleway.TRACK, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "track")
+            )
+        )
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightCycleway(null, Cycleway.TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:right", "track")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not touch the other side`() {
+        verifyAnswer(
+            mapOf("cycleway:right" to "no"),
+            LeftAndRightCycleway(Cycleway.TRACK, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "track")
+            )
+        )
+        verifyAnswer(
+            mapOf("cycleway:left" to "no"),
+            LeftAndRightCycleway(null, Cycleway.TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:right", "track")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not touch the other side even if it is invalid`() {
+        verifyAnswer(
+            mapOf("cycleway:right" to "invalid"),
+            LeftAndRightCycleway(Cycleway.TRACK, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "track")
+            )
+        )
+        verifyAnswer(
+            mapOf("cycleway:left" to "invalid"),
+            LeftAndRightCycleway(null, Cycleway.TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:right", "track")
+            )
+        )
+    }
+
+    @Test fun `apply for one side does not change values for the other side even if it was defined for both sides before and invalid`() {
+        verifyAnswer(
+            mapOf("cycleway:both" to "invalid"),
+            LeftAndRightCycleway(Cycleway.TRACK, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("cycleway:right", "invalid"),
+                StringMapEntryDelete("cycleway:both", "invalid"),
+            )
+        )
+        verifyAnswer(
+            mapOf("cycleway:both" to "invalid"),
+            LeftAndRightCycleway(null, Cycleway.TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "invalid"),
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryDelete("cycleway:both", "invalid"),
+            )
+        )
+    }
+
+    @Test fun `apply conflates values`() {
+        verifyAnswer(
+            mapOf("cycleway:left" to "no", "cycleway:right" to "no"),
+            LeftAndRightCycleway(Cycleway.NONE, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "no"),
+                StringMapEntryDelete("cycleway:left", "no"),
+                StringMapEntryDelete("cycleway:right", "no"),
+            )
+        )
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid left throws exception`() {
+        LeftAndRightCycleway(Cycleway.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `applying invalid right throws exception`() {
+        LeftAndRightCycleway(null, Cycleway.INVALID).applyTo(StringMapChangesBuilder(mapOf()), false)
+    }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: CyclewayAnswer, expectedChanges: Array<StringMapEntryChange>) {
+private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightCycleway, expectedChanges: Array<StringMapEntryChange>) {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb)
+    answer.applyTo(cb, false)
     val changes = cb.create().changes
     Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
 }
 
 
-private fun bothSidesAnswer(bothSides: Cycleway): CyclewayAnswer {
-    val side = CyclewaySide(bothSides)
-    return CyclewayAnswer(side, side)
-}
+private fun bothSidesAnswer(bothSides: Cycleway): LeftAndRightCycleway =
+    LeftAndRightCycleway(bothSides, bothSides)

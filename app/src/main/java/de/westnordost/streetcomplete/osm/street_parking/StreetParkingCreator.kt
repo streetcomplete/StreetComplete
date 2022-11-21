@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 fun LeftAndRightStreetParking.applyTo(tags: Tags) {
     if (left == null && right == null) return
     /* for being able to modify only one side (e.g. `left` is null while `right` is not null),
-       the sides conflated in :both keys need to be separated first. E.g. parking:lane=no
-       when left is made separate should become
+       the sides conflated in `:both` keys need to be separated first. E.g. `parking:lane=no`
+       when left side is made `separate´ should become
        - parking:lane:right=no
        - parking:lane:left=separate
        First separating the values and then later conflating them again, if possible, solves this.
      */
-    tags.expandSides("parking:lane", null, true)
+    tags.expandSides("parking:lane")
     ParkingOrientation.values().forEach { tags.expandSides("parking:lane", it.osmValue, true) }
 
     // parking:lane:<left/right>

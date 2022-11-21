@@ -2,36 +2,36 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
+import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
+import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.quests.cycleway.CyclewayAnswer
 
-fun CyclewayAnswer.applyTo(tags: Tags) {
+fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     if (left == null && right == null) return
+    /* for being able to modify only one side (e.g. `left` is null while `right` is not null),
+       the sides conflated in `:both` keys need to be separated first. E.g. `cycleway=no`
+       when left side is made `separate` should become
+       - cycleway:right=no
+       - cycleway:left=separate
+       First separating the values and then later conflating them again, if possible, solves this.
+     */
+    tags.expandSides("cycleway")
+    tags.expandSides("cycleway", "lane")
+    tags.expandSides("cycleway", "oneway")
+    tags.expandSides("cycleway", "segregated")
 
-    clearCycleway(null, tags)
-    if (left == right) {
-        applyCyclewayTo(left!!.cycleway, Side.BOTH, 0, tags)
-        clearCycleway(Side.LEFT, tags)
-        clearCycleway(Side.RIGHT, tags)
-    } else {
-        if (left != null) {
-            applyCyclewayTo(left.cycleway, Side.LEFT, left.dirInOneway, tags)
-        }
-        if (right != null) {
-            applyCyclewayTo(right.cycleway, Side.RIGHT, right.dirInOneway, tags)
-        }
-        clearCycleway(Side.BOTH, tags)
-    }
+    applyOnewayNotForBicycles(tags, isLeftHandTraffic)
+    left?.applyTo(tags, false, isLeftHandTraffic)
+    right?.applyTo(tags, true, isLeftHandTraffic)
 
-    // oneway situation for bicycles
-    if (isOnewayNotForCyclists) {
-        tags["oneway:bicycle"] = "no"
-    } else {
-        if (tags["oneway:bicycle"] == "no") {
-            tags.remove("oneway:bicycle")
-        }
-    }
+    tags.mergeSides("cycleway")
+    tags.mergeSides("cycleway", "lane")
+    tags.mergeSides("cycleway", "oneway")
+    tags.mergeSides("cycleway", "segregated")
 
     // update check date
     if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
@@ -39,69 +39,48 @@ fun CyclewayAnswer.applyTo(tags: Tags) {
     }
 }
 
-private enum class Side(val value: String) {
-    LEFT("left"),
-    RIGHT("right"),
-    BOTH("both")
-}
+private fun LeftAndRightCycleway.applyOnewayNotForBicycles(tags: Tags, isLeftHandTraffic: Boolean) {
+    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
+    val reverseSide = if (isReverseSideRight) right else left
+    val isOnewayButNotForCyclists = isOneway(tags) && (
+        left?.isOneway == false || right?.isOneway == false || (reverseSide != null && reverseSide != NONE)
+        )
 
-/** clear previous answers for the given side */
-private fun clearCycleway(side: Side?, tags: Tags) {
-    val sideVal = if (side == null) "" else ":" + side.value
-    val cyclewayKey = "cycleway$sideVal"
-
-    // only things are cleared that are set by this quest
-    // for example cycleway:surface should only be cleared by a cycleway surface quest etc.
-    tags.remove(cyclewayKey)
-    tags.remove("$cyclewayKey:lane")
-    tags.remove("$cyclewayKey:oneway")
-    tags.remove("$cyclewayKey:segregated")
-}
-
-private fun applyCyclewayTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags) {
-    val directionValue = when {
-        dir > 0 -> "yes"
-        dir < 0 -> "-1"
-        else -> null
+    // oneway situation for bicycles
+    if (isOnewayButNotForCyclists) {
+        tags["oneway:bicycle"] = "no"
+    } else {
+        if (tags["oneway:bicycle"] == "no") {
+            tags.remove("oneway:bicycle")
+        }
     }
+}
 
-    val cyclewayKey = "cycleway:" + side.value
-
-    when (cycleway) {
-        NONE,
-        NONE_NO_ONEWAY -> {
+private fun Cycleway.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
+    val side = if (isRight) "right" else "left"
+    val cyclewayKey = "cycleway:$side"
+    when (this) {
+        NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
         }
-        EXCLUSIVE_LANE,
-        ADVISORY_LANE,
         UNSPECIFIED_LANE -> {
             tags[cyclewayKey] = "lane"
-            if (directionValue != null) {
-                tags["$cyclewayKey:oneway"] = directionValue
-            }
-            if (cycleway == EXCLUSIVE_LANE) {
-                tags["$cyclewayKey:lane"] = "exclusive"
-            } else if (cycleway == ADVISORY_LANE) {
-                tags["$cyclewayKey:lane"] = "advisory"
-            }
+            // does not remove any cycleway:lane tag because this value is not considered explicit
         }
-        TRACK -> {
+        ADVISORY_LANE -> {
+            tags[cyclewayKey] = "lane"
+            tags["$cyclewayKey:lane"] = "advisory"
+        }
+        EXCLUSIVE_LANE, DUAL_LANE -> {
+            tags[cyclewayKey] = "lane"
+            tags["$cyclewayKey:lane"] = "exclusive"
+        }
+        TRACK, DUAL_TRACK -> {
             tags[cyclewayKey] = "track"
-            if (directionValue != null) {
-                tags["$cyclewayKey:oneway"] = directionValue
-            }
+            // only set if already set, because "yes" is considered the implicit default
             if (tags.containsKey("$cyclewayKey:segregated")) {
                 tags["$cyclewayKey:segregated"] = "yes"
             }
-        }
-        DUAL_TRACK -> {
-            tags[cyclewayKey] = "track"
-            tags["$cyclewayKey:oneway"] = "no"
-        }
-        DUAL_LANE -> {
-            tags[cyclewayKey] = "lane"
-            tags["$cyclewayKey:oneway"] = "no"
-            tags["$cyclewayKey:lane"] = "exclusive"
         }
         SIDEWALK_EXPLICIT -> {
             // https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
@@ -116,6 +95,10 @@ private fun applyCyclewayTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags
             tags[cyclewayKey] = "shared_lane"
             tags["$cyclewayKey:lane"] = "advisory"
         }
+        UNSPECIFIED_SHARED_LANE -> {
+            tags[cyclewayKey] = "shared_lane"
+            // does not remove any cycleway:lane tag because value is not considered explicit
+        }
         BUSWAY -> {
             tags[cyclewayKey] = "share_busway"
         }
@@ -127,21 +110,30 @@ private fun applyCyclewayTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags
         }
     }
 
+    // no oneway for dual lane etc.
+    if (!isOneway) {
+        tags["$cyclewayKey:oneway"] = "no"
+    } else {
+        val isPhysicalCycleway = this != NONE && this != NONE_NO_ONEWAY && this != SEPARATE
+        // ... but explicit oneway for lanes going in contraflow of oneways because this is not implied
+        if (isInContraflowOfOneway(isRight, tags, isLeftHandTraffic) && isPhysicalCycleway) {
+            tags["$cyclewayKey:oneway"] = if (isReversedOneway(tags)) "yes" else "-1"
+        } else {
+            // otherwise clear
+            if (tags["$cyclewayKey:oneway"] == "no") {
+                tags.remove("$cyclewayKey:oneway")
+            }
+        }
+    }
+
     // clear previous cycleway:lane value
-    if (!cycleway.isLane) {
+    if (!isLane) {
         tags.remove("$cyclewayKey:lane")
     }
-    // clear previous cycleway:oneway=no value (if not about to set a new value)
-    if (cycleway.isOneway && directionValue == null) {
-        if (tags["$cyclewayKey:oneway"] == "no") {
-            tags.remove("$cyclewayKey:oneway")
-        }
-    }
-    // clear previous cycleway:segregated=no value
-    if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
-        if (tags["$cyclewayKey:segregated"] == "no") {
-            tags.remove("$cyclewayKey:segregated")
-        }
+
+    // clear previous cycleway:segregated value
+    val touchedSegregatedValue = this in listOf(SIDEWALK_EXPLICIT, TRACK, DUAL_TRACK)
+    if (!touchedSegregatedValue) {
+        tags.remove("$cyclewayKey:segregated")
     }
 }
-

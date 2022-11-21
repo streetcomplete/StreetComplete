@@ -70,12 +70,10 @@ class CyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         streetSideSelect.saveLastSelection()
         val cycleways = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        cycleways.applyTo(tagChanges, countryInfo)
+        cycleways.applyTo(tagChanges, countryInfo.isLeftHandTraffic)
         // TODO confirm not oneway for cyclists?
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
-
-    // TODO selectable items in contraflow?!
 
     override fun hasChanges(): Boolean =
         streetSideSelect.left?.value != currentCycleway?.left  ||

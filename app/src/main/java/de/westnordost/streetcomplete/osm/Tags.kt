@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 
 typealias Tags = StringMapChangesBuilder
 
-fun Tags.expandSides(key: String, postfix: String? = null, includeBareTag: Boolean) {
+fun Tags.expandSides(key: String, postfix: String? = null, includeBareTag: Boolean = true) {
     val post = if (postfix != null) ":$postfix" else ""
     val both = get("$key:both$post") ?: (if (includeBareTag) get("$key$post") else null)
     if (both != null) {

@@ -16,7 +16,7 @@ class TagsKtTest {
 
     @Test fun `expand sides with bare tag`() {
         val tags = Tags(mapOf("a" to "blub"))
-        tags.expandSides("a", includeBareTag = true)
+        tags.expandSides("a")
         assertEquals(
             mapOf("a:left" to "blub", "a:right" to "blub"),
             tags.toMap()
@@ -25,7 +25,7 @@ class TagsKtTest {
 
     @Test fun `when expanding sides, explicit tag takes precedence over bare tag`() {
         val tags = Tags(mapOf("a" to "blub", "a:both" to "burg"))
-        tags.expandSides("a", includeBareTag = true)
+        tags.expandSides("a")
         assertEquals(
             mapOf("a:left" to "burg", "a:right" to "burg"),
             tags.toMap()
@@ -34,7 +34,7 @@ class TagsKtTest {
 
     @Test fun `when expanding sides, does not overwrite left and right tags`() {
         val tags = Tags(mapOf("a:both" to "gah", "a:left" to "le", "a:right" to "ri"))
-        tags.expandSides("a", includeBareTag = true)
+        tags.expandSides("a")
         assertEquals(
             mapOf("a:left" to "le", "a:right" to "ri"),
             tags.toMap()
@@ -59,7 +59,7 @@ class TagsKtTest {
         )
 
         val tags2 = Tags(mapOf("a:c" to "blarg"))
-        tags2.expandSides("a", "c", includeBareTag = true)
+        tags2.expandSides("a", "c")
         assertEquals(
             mapOf("a:left:c" to "blarg", "a:right:c" to "blarg"),
             tags2.toMap()
