@@ -75,7 +75,6 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
                             // reset previous data
                             selectedStatusForMainSurface = null
                             binding.explanationInputMainSurface.text = null
-                            binding.selectButtonMainSurface.isVisible = false
                             switchToFootwayCyclewaySurfaceLayout()
                         }
                     )
@@ -101,6 +100,7 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         }
 
         private fun switchToFootwayCyclewaySurfaceLayout() {
+            binding.selectButtonMainSurface.isVisible = false
             isSegregatedLayout = true
             binding.cyclewaySurfaceContainer.isVisible = true
             binding.footwaySurfaceContainer.isVisible = true
