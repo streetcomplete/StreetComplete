@@ -1,8 +1,11 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
+import de.westnordost.streetcomplete.osm.isOneway
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
@@ -15,6 +18,11 @@ fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftA
         if (rightIsSelectable) right else null
     )
 }
+
+fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
+    isOneway(tags)
+    && isNotOnewayForCyclists(tags, isLeftHandTraffic)
+    && !isNotOnewayForCyclists(StringMapChangesBuilder(tags).also { applyTo(it, isLeftHandTraffic) }, isLeftHandTraffic)
 
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually

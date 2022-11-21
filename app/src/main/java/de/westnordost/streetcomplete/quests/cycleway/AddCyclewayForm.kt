@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
+import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
-import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
@@ -126,27 +126,14 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, LeftAndRightCycleway>() 
 
     override fun onClickOk() {
         val answer = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
-
-        // TODO move....
-
-        // a cycleway that goes into opposite direction of a oneway street needs special tagging
-        // as oneway:bicycle=* tag will differ from oneway=*
-        // there is no need to tag cases where oneway:bicycle=* would merely repeat oneway=*
-        var isOnewayNotForCyclists = false
-        if (isOneway && answer.left != null && answer.right != null) {
-            isOnewayNotForCyclists = !answer.left.isOneway || !answer.right.isOneway
-                || (if (isReverseSideRight) answer.right else answer.left ) !== Cycleway.NONE
-        }
-
-        val wasOnewayNotForCyclists = isOneway && isNotOnewayForCyclists(element.tags, isLeftHandTraffic)
-        if (!isOnewayNotForCyclists && wasOnewayNotForCyclists) {
+        if (answer.wasNoOnewayForCyclistsButNowItIs(element.tags, isLeftHandTraffic)) {
             confirmNotOnewayForCyclists {
-                applyAnswer(answer)
                 streetSideSelect.saveLastSelection()
+                applyAnswer(answer)
             }
         } else {
-            applyAnswer(answer)
             streetSideSelect.saveLastSelection()
+            applyAnswer(answer)
         }
     }
 
@@ -158,9 +145,3 @@ class AddCyclewayForm : AStreetSideSelectForm<Cycleway, LeftAndRightCycleway>() 
             .show()
     }
 }
-
-private fun Cycleway.isSingleTrackOrLane() =
-    this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
-
-private fun Cycleway.isDualTrackOrLane() =
-    this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE

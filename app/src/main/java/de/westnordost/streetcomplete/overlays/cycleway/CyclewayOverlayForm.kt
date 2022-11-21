@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
+import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
@@ -67,11 +69,20 @@ class CyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
     }
 
     override fun onClickOk() {
-        streetSideSelect.saveLastSelection()
         val cycleways = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
+        if (cycleways.wasNoOnewayForCyclistsButNowItIs(element!!.tags, isLeftHandTraffic)) {
+            confirmNotOnewayForCyclists {
+                saveAndApply(cycleways)
+            }
+        } else {
+            saveAndApply(cycleways)
+        }
+    }
+
+    private fun saveAndApply(cycleways: LeftAndRightCycleway) {
+        streetSideSelect.saveLastSelection()
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         cycleways.applyTo(tagChanges, countryInfo.isLeftHandTraffic)
-        // TODO confirm not oneway for cyclists?
         applyEdit(UpdateElementTagsAction(tagChanges.create()))
     }
 
@@ -88,5 +99,13 @@ class CyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         // last answer button
         val item2 = if (item == Cycleway.NONE_NO_ONEWAY && !isContraflowInOneway) Cycleway.NONE else item
         return item2.asStreetSideItem(countryInfo, isContraflowInOneway)
+    }
+
+    private fun confirmNotOnewayForCyclists(callback: () -> Unit) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.quest_cycleway_confirmation_oneway_for_cyclists_too)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
     }
 }
