@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
+import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
@@ -24,7 +25,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.expandSides("cycleway", "oneway")
     tags.expandSides("cycleway", "segregated")
 
-    applyOnewayNotForBicycles(tags, isLeftHandTraffic)
+    applyOnewayNotForCyclists(tags, isLeftHandTraffic)
     left?.applyTo(tags, false, isLeftHandTraffic)
     right?.applyTo(tags, true, isLeftHandTraffic)
 
@@ -39,12 +40,21 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     }
 }
 
-private fun LeftAndRightCycleway.applyOnewayNotForBicycles(tags: Tags, isLeftHandTraffic: Boolean) {
-    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
-    val reverseSide = if (isReverseSideRight) right else left
+private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
+    // TODO:
+    /*
+     leftDirection ?: tags-leftDirection
+     rightDirection ?: tags-rightDirection
+
+     isOnewayNotForCyclists = leftDirection == 0 || rightDirection == 0 || leftDirection != rightDirection
+
+
+     */
+
     val isOnewayButNotForCyclists = isOneway(tags) && (
-        left?.isOneway == false || right?.isOneway == false || (reverseSide != null && reverseSide != NONE)
-        )
+        isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
+        ?: isNotOnewayForCyclists(tags, isLeftHandTraffic)
+    )
 
     // oneway situation for bicycles
     if (isOnewayButNotForCyclists) {

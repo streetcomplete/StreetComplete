@@ -525,6 +525,89 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply updates oneway not for cyclists`() {
+        // contra-flow side set to explicitly not oneway -> not oneway for cyclists
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes"
+            ),
+            LeftAndRightCycleway(Cycleway.NONE_NO_ONEWAY, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryModify("oneway:bicycle", "no", "no"),
+            )
+        )
+        // track on right side is dual-way -> not oneway for cyclists
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes"
+            ),
+            LeftAndRightCycleway(null, Cycleway.DUAL_TRACK),
+            arrayOf(
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryAdd("cycleway:right:oneway", "no"),
+                StringMapEntryModify("oneway:bicycle", "no", "no"),
+            )
+        )
+        // not a oneway at all
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "no"
+            ),
+            LeftAndRightCycleway(Cycleway.NONE, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no"),
+            )
+        )
+        // contra-flow side is explicitly oneway and flow-side is not dual-way
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes"
+            ),
+            LeftAndRightCycleway(Cycleway.NONE, Cycleway.NONE),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no"),
+            )
+        )
+        // no oneway for cyclists is deleted on left side but dual track on right side still there
+        // -> still not oneway for cyclists
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes",
+                "cycleway:both" to "track",
+                "cycleway:right:oneway" to "no",
+            ),
+            LeftAndRightCycleway(Cycleway.NONE, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryAdd("cycleway:right", "track"),
+                StringMapEntryDelete("cycleway:both", "track"),
+                StringMapEntryModify("oneway:bicycle", "no", "no"),
+            )
+        )
+        // no oneway for cyclists is deleted on left side -> oneway for cyclists now
+        verifyAnswer(
+            mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes",
+                "cycleway:left" to "no",
+                "cycleway:right" to "track",
+            ),
+            LeftAndRightCycleway(Cycleway.NONE, null),
+            arrayOf(
+                StringMapEntryModify("cycleway:left", "no", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no"),
+            )
+        )
+    }
+
     @Test(expected = IllegalArgumentException::class)
     fun `applying invalid left throws exception`() {
         LeftAndRightCycleway(Cycleway.INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)

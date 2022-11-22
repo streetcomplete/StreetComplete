@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
+import de.westnordost.streetcomplete.osm.isReversedOneway
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
@@ -22,7 +22,20 @@ fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftA
 fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
     isOneway(tags)
     && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-    && !isNotOnewayForCyclists(StringMapChangesBuilder(tags).also { applyTo(it, isLeftHandTraffic) }, isLeftHandTraffic)
+    && isNotOnewayForCyclistsNow(tags, isLeftHandTraffic) == false
+
+fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean? {
+    if (left?.isOneway == false || right?.isOneway == false) return true
+
+    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
+    val contraflowSide = if (isReverseSideRight) right else left
+    if (contraflowSide != null && contraflowSide != NONE) return true
+
+    // if the road is indeed a oneway also for cyclists can only be ascertained if both left and
+    // right side are defined because either of the two can make a road not a oneway for cyclists
+    if (left == null || right == null) return null
+    return false
+}
 
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
