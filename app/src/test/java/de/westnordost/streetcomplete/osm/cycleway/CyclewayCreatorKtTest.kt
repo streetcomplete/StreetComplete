@@ -66,6 +66,16 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply unspecified cycle lane answer does not remove previous specific lane answer`() {
+        verifyAnswer(
+            mapOf("cycleway:both:lane" to "exclusive"),
+            bothSidesAnswer(Cycleway.UNSPECIFIED_LANE),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "lane")
+            )
+        )
+    }
+
     @Test fun `apply bus lane answer`() {
         verifyAnswer(
             mapOf(),
