@@ -115,8 +115,10 @@ private fun createCyclewayForSide(
                     if (isDual) DUAL_LANE
                     else        UNSPECIFIED_LANE
                 }
-                "advisory" -> ADVISORY_LANE
-                else       -> UNKNOWN_LANE
+                "advisory"  -> ADVISORY_LANE
+                "yes", "right", "left", "both", "shoulder", "soft_lane", "mandatory" -> INVALID
+                "pictogram" -> INVALID
+                else        -> UNKNOWN_LANE
             }
         }
         "shared_lane" -> {
@@ -124,6 +126,8 @@ private fun createCyclewayForSide(
                 "advisory"  -> SUGGESTION_LANE
                 "pictogram" -> PICTOGRAMS
                 null        -> UNSPECIFIED_SHARED_LANE
+                "yes", "right", "left", "both", "shoulder", "soft_lane", "mandatory" -> INVALID
+                "exclusive" -> INVALID
                 else        -> UNKNOWN_SHARED_LANE
             }
         }
