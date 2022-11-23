@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.hasSidewalk
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -33,17 +34,34 @@ class SidewalkOverlay : Overlay {
               highway ~ motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
               and area != yes
         """).map { it to getSidewalkStyle(it) } +
-        // footways etc, just to highlight e.g. separately mapped sidewalks
+        // footways etc, just to highlight e.g. separately mapped sidewalks. However, it is also
+        // possible to add sidewalks to them. At least in NL, cycleways with sidewalks actually exist
         mapData.filter("""
             ways with (
-              highway ~ footway|steps
-              or highway ~ path|bridleway|cycleway and foot ~ yes|designated
+              highway ~ footway|steps|path|bridleway|cycleway
             ) and area != yes
-        """).map { it to PolylineStyle(StrokeStyle(Color.SKY)) }
+        """).map { it to getFootwayStyle(it) }
 
     override fun createForm(element: Element?) =
         if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
         else null
+}
+
+private fun getFootwayStyle(element: Element): PolylineStyle {
+    val foot = element.tags["foot"] ?: when (element.tags["highway"]) {
+        "footway" -> "designated"
+        "path" -> "yes"
+        else -> null
+    }
+
+    return when {
+        createSidewalkSides(element.tags).hasSidewalk() ->
+            getSidewalkStyle(element)
+        foot in listOf("yes", "designated") ->
+            PolylineStyle(StrokeStyle(Color.SKY))
+        else ->
+            PolylineStyle(StrokeStyle(Color.INVISIBLE))
+    }
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {
