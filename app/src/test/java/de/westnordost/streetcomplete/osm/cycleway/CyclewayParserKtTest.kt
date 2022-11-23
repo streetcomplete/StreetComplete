@@ -1,23 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.INVALID
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNKNOWN_SHARED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
+import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -36,6 +19,17 @@ class CyclewayParserKtTest {
         assertEquals(invalid, parse("cycleway" to "left"))
         assertEquals(invalid, parse("cycleway" to "right"))
         assertEquals(invalid, parse("cycleway" to "shared"))
+        assertEquals(invalid, parse("cycleway" to "none"))
+
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "yes"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "right"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "left"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "both"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "shoulder"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "soft_lane"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "advisory_lane"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "exclusive_lane"))
+        assertEquals(invalid, parse("cycleway" to "lane", "cycleway:lane" to "mandatory"))
     }
 
     @Test fun unknown() {
@@ -536,23 +530,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms`() {
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "exclusive_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "mandatory"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane`() {
         assertEquals(
             LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
@@ -612,25 +589,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms`() {
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "exclusive_lane",
-                "cycleway:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "mandatory",
-                "cycleway:oneway" to "no"
-            )
-        )
-    }
-
     @Test fun `advisory lane`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
@@ -685,30 +643,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `advisory lane synonyms`() {
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway" to "lane",
-                "cycleway:lane" to "dashed"
-            )
-        )
-    }
-
     @Test fun `suggestion lane`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
@@ -759,30 +693,6 @@ class CyclewayParserKtTest {
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "advisory",
                 "oneway" to "-1"
-            )
-        )
-    }
-
-    @Test fun `suggestion lane synonyms`() {
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway" to "shared_lane",
-                "cycleway:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway" to "shared_lane",
-                "cycleway:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway" to "shared_lane",
-                "cycleway:lane" to "dashed"
             )
         )
     }
@@ -845,10 +755,6 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(NONE, NONE),
             parse("cycleway" to "no")
-        )
-        assertEquals(
-            LeftAndRightCycleway(NONE, NONE),
-            parse("cycleway" to "none")
         )
     }
 
@@ -1443,23 +1349,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on left side`() {
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "exclusive_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "mandatory"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on left side`() {
         assertEquals(
             LeftAndRightCycleway(DUAL_LANE, null),
@@ -1487,58 +1376,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on left side`() {
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:left:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:left:oneway" to "no"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:both:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:oneway" to "no"
-            )
-        )
-    }
-
     @Test fun `advisory lane on left side`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, null),
@@ -1549,60 +1386,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `advisory lane synonyms on left side`() {
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "dashed"
-            )
-        )
-    }
-
     @Test fun `suggestion lane on left side`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, null),
             parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "advisory"
-            )
-        )
-    }
-
-    @Test fun `suggestion lane synonyms on left side`() {
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse(
-                "cycleway:left" to "shared_lane",
-                "cycleway:left:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse(
-                "cycleway:left" to "shared_lane",
-                "cycleway:left:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse(
-                "cycleway:left" to "shared_lane",
-                "cycleway:left:lane" to "dashed"
             )
         )
     }
@@ -1621,10 +1410,6 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(NONE, null),
             parse("cycleway:left" to "no")
-        )
-        assertEquals(
-            LeftAndRightCycleway(NONE, null),
-            parse("cycleway:left" to "none")
         )
     }
 
@@ -1821,25 +1606,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on left side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "mandatory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on left side opposite`() {
         assertEquals(
             LeftAndRightCycleway(DUAL_LANE, null),
@@ -1871,98 +1637,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on left side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:left:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:left:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:both:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "exclusive_lane",
-                "cycleway:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "mandatory",
-                "cycleway:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `advisory lane on left side opposite`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, null),
             parse(
                 "cycleway:left" to "opposite_lane",
                 "cycleway:left:lane" to "advisory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
-    @Test fun `advisory lane synonyms on left side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "advisory_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "soft_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, null),
-            parse(
-                "cycleway:left" to "opposite_lane",
-                "cycleway:left:lane" to "dashed",
                 "oneway" to "yes"
             )
         )
@@ -2112,23 +1792,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on right side`() {
-        assertEquals(
-            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "exclusive_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "mandatory"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, DUAL_LANE),
@@ -2157,42 +1820,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on right side`() {
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "exclusive_lane",
-                "cycleway:right:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "mandatory",
-                "cycleway:right:oneway" to "no"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "mandatory",
-                "cycleway:oneway" to "no"
-            )
-        )
-    }
-
     @Test fun `advisory lane on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, ADVISORY_LANE),
@@ -2203,60 +1830,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `advisory lane synonyms on right side`() {
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "lane",
-                "cycleway:right:lane" to "dashed"
-            )
-        )
-    }
-
     @Test fun `suggestion lane on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, SUGGESTION_LANE),
             parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "advisory"
-            )
-        )
-    }
-
-    @Test fun `suggestion lane synonyms on right side`() {
-        assertEquals(
-            LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse(
-                "cycleway:right" to "shared_lane",
-                "cycleway:right:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse(
-                "cycleway:right" to "shared_lane",
-                "cycleway:right:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse(
-                "cycleway:right" to "shared_lane",
-                "cycleway:right:lane" to "dashed"
             )
         )
     }
@@ -2275,10 +1854,6 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(null, NONE),
             parse("cycleway:right" to "no")
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, NONE),
-            parse("cycleway:right" to "none")
         )
     }
 
@@ -2521,25 +2096,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on right side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "exclusive_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "mandatory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on right side opposite`() {
         assertEquals(
             LeftAndRightCycleway(null, DUAL_LANE),
@@ -2571,79 +2127,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on right side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "exclusive_lane",
-                "cycleway:right:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "mandatory",
-                "cycleway:right:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, DUAL_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "mandatory",
-                "cycleway:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `advisory lane on right side opposite`() {
         assertEquals(
             LeftAndRightCycleway(null, ADVISORY_LANE),
             parse(
                 "cycleway:right" to "opposite_lane",
                 "cycleway:right:lane" to "advisory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
-    @Test fun `advisory lane synonyms on right side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "advisory_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "soft_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(null, ADVISORY_LANE),
-            parse(
-                "cycleway:right" to "opposite_lane",
-                "cycleway:right:lane" to "dashed",
                 "oneway" to "yes"
             )
         )
@@ -2772,23 +2261,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on both sides`() {
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "exclusive_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "mandatory"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on both sides`() {
         assertEquals(
             LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
@@ -2809,42 +2281,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on both sides`() {
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "mandatory",
-                "cycleway:both:oneway" to "no"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "exclusive_lane",
-                "cycleway:oneway" to "no"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "mandatory",
-                "cycleway:oneway" to "no"
-            )
-        )
-    }
-
     @Test fun `advisory lane on both sides`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
@@ -2855,60 +2291,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `advisory lane synonyms on both sides`() {
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "dashed"
-            )
-        )
-    }
-
     @Test fun `suggestion lane on both sides`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
             parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "advisory"
-            )
-        )
-    }
-
-    @Test fun `suggestion lane synonyms on both sides`() {
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "advisory_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "soft_lane"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "dashed"
             )
         )
     }
@@ -2927,10 +2315,6 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(NONE, NONE),
             parse("cycleway:both" to "no")
-        )
-        assertEquals(
-            LeftAndRightCycleway(NONE, NONE),
-            parse("cycleway:both" to "none")
         )
     }
 
@@ -3084,25 +2468,6 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive lane synonyms on both side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "exclusive_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "mandatory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `exclusive dual lane on both side opposite`() {
         assertEquals(
             LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
@@ -3124,79 +2489,12 @@ class CyclewayParserKtTest {
         )
     }
 
-    @Test fun `exclusive dual lane synonyms on both side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "exclusive_lane",
-                "cycleway:both:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "mandatory",
-                "cycleway:both:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "exclusive_lane",
-                "cycleway:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, DUAL_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "mandatory",
-                "cycleway:oneway" to "no",
-                "oneway" to "yes"
-            )
-        )
-    }
-
     @Test fun `advisory lane on both side opposite`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
             parse(
                 "cycleway:both" to "opposite_lane",
                 "cycleway:both:lane" to "advisory",
-                "oneway" to "yes"
-            )
-        )
-    }
-
-    @Test fun `advisory lane synonyms on both side opposite`() {
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "advisory_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "soft_lane",
-                "oneway" to "yes"
-            )
-        )
-        assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
-            parse(
-                "cycleway:both" to "opposite_lane",
-                "cycleway:both:lane" to "dashed",
                 "oneway" to "yes"
             )
         )
