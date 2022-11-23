@@ -107,7 +107,7 @@ private fun createCyclewayForSide(
     val result = when (cycleway) {
         "lane", "opposite_lane" -> {
             when (cyclewayLane) {
-                "exclusive", "exclusive_lane", "mandatory" -> {
+                "exclusive" -> {
                     if (isDual) DUAL_LANE
                     else        EXCLUSIVE_LANE
                 }
@@ -115,16 +115,16 @@ private fun createCyclewayForSide(
                     if (isDual) DUAL_LANE
                     else        UNSPECIFIED_LANE
                 }
-                "advisory", "advisory_lane", "soft_lane", "dashed" -> ADVISORY_LANE
-                else                                               -> UNKNOWN_LANE
+                "advisory" -> ADVISORY_LANE
+                else       -> UNKNOWN_LANE
             }
         }
         "shared_lane" -> {
             when (cyclewayLane) {
-                "advisory", "advisory_lane", "soft_lane", "dashed" -> SUGGESTION_LANE
-                "pictogram"                                        -> PICTOGRAMS
-                null                                               -> UNSPECIFIED_SHARED_LANE
-                else                                               -> UNKNOWN_SHARED_LANE
+                "advisory"  -> SUGGESTION_LANE
+                "pictogram" -> PICTOGRAMS
+                null        -> UNSPECIFIED_SHARED_LANE
+                else        -> UNKNOWN_SHARED_LANE
             }
         }
         "track", "opposite_track" -> {
@@ -135,9 +135,21 @@ private fun createCyclewayForSide(
             }
         }
         "separate" -> SEPARATE
-        "no", "none", "opposite" -> NONE
+        "no", "opposite" -> NONE
         "share_busway", "opposite_share_busway" -> BUSWAY
-        "yes", "right", "left", "both", "shared" -> INVALID
+        // values known to be invalid, ambiguous or obsolete:
+        // 1.2% - ambiguous: there are more precise tags
+        "yes", "right", "left", "both",
+        "on_street", "segregated", "shared", // segregated from, shared with what?
+        "sidewalk", "share_sidewalk", // allowed on sidewalk or mandatory on sidewalk?
+        "unmarked_lane", // I don't even...
+        // 0.4% - invalid: maybe synonymous(?) to valid tag or tag combination but never documented
+        "none", // no
+        "sidepath", "use_sidepath", // separate?
+        "buffered_lane", "buffered", "soft_lane", "doorzone", // lane + subtags?
+         // 0.1% - troll tags
+        "proposed", "construction",
+            -> INVALID
         null -> null
         else -> UNKNOWN
     }
