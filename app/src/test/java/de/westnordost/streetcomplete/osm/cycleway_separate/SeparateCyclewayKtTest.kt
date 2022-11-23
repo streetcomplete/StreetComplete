@@ -55,6 +55,16 @@ class SeparateCyclewayKtTest {
         assertEquals(EXCLUSIVE, parse("highway" to "cycleway"))
         assertEquals(EXCLUSIVE, parse("highway" to "cycleway", "foot" to "no"))
     }
+
+    @Test fun `parse cycleway with sidewalk`() {
+        assertEquals(WITH_SIDEWALK, parse("highway" to "path", "bicycle" to "designated", "sidewalk" to "left"))
+        assertEquals(WITH_SIDEWALK, parse("highway" to "footway", "bicycle" to "designated", "sidewalk" to "right"))
+        assertEquals(WITH_SIDEWALK, parse("highway" to "bridleway", "bicycle" to "designated", "sidewalk" to "both"))
+
+        assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "bicycle" to "designated", "sidewalk:left" to "yes"))
+        assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk:both" to "yes"))
+        assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk:right" to "yes"))
+    }
 }
 
 private fun parse(vararg pairs: Pair<String, String>) = createSeparateCycleway(mapOf(*pairs))

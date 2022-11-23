@@ -70,12 +70,20 @@ private fun getSeparateCyclewayStyle(element: Element) =
     PolylineStyle(StrokeStyle(createSeparateCycleway(element.tags).getColor()))
 
 private fun SeparateCycleway?.getColor() = when (this) {
-    SeparateCycleway.NONE ->           Color.BLACK
-    SeparateCycleway.ALLOWED ->        Color.BLACK
-    SeparateCycleway.NON_SEGREGATED -> Color.CYAN
-    SeparateCycleway.SEGREGATED ->     Color.BLUE
-    SeparateCycleway.EXCLUSIVE ->      Color.BLUE
-    null ->                            Color.INVISIBLE
+    SeparateCycleway.NONE,
+    SeparateCycleway.ALLOWED ->
+        Color.BLACK
+
+    SeparateCycleway.NON_SEGREGATED ->
+        Color.CYAN
+
+    SeparateCycleway.SEGREGATED,
+    SeparateCycleway.EXCLUSIVE,
+    SeparateCycleway.WITH_SIDEWALK ->
+        Color.BLUE
+
+    null ->
+        Color.INVISIBLE
 }
 
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
