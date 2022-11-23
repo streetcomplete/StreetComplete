@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
+import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
@@ -28,6 +31,11 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     applyOnewayNotForCyclists(tags, isLeftHandTraffic)
     left?.applyTo(tags, false, isLeftHandTraffic)
     right?.applyTo(tags, true, isLeftHandTraffic)
+
+    LeftAndRightSidewalk(
+        if (left == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+        if (right == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+    ).applyTo(tags)
 
     tags.mergeSides("cycleway")
     tags.mergeSides("cycleway", "lane")

@@ -124,7 +124,29 @@ class CyclewayCreatorKtTest {
             bothSidesAnswer(Cycleway.SIDEWALK_EXPLICIT),
             arrayOf(
                 StringMapEntryAdd("cycleway:both", "track"),
-                StringMapEntryAdd("cycleway:both:segregated", "no")
+                StringMapEntryAdd("cycleway:both:segregated", "no"),
+                StringMapEntryAdd("sidewalk", "both"),
+            )
+        )
+    }
+
+    @Test fun `apply cycleway on sidewalk answer on one side only`() {
+        verifyAnswer(
+            mapOf(),
+            LeftAndRightCycleway(null, Cycleway.SIDEWALK_EXPLICIT),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:both:segregated", "no"),
+                StringMapEntryAdd("sidewalk:right", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf("sidewalk" to "right"),
+            LeftAndRightCycleway(Cycleway.SIDEWALK_EXPLICIT, null),
+            arrayOf(
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:both:segregated", "no"),
+                StringMapEntryModify("sidewalk", "right", "both"),
             )
         )
     }
