@@ -10,6 +10,31 @@ class CyclewayParserKtTest {
     *  make (much) assumptions that the code is written in a way that if it is solved for one type,
     *  it is solved for all */
 
+    /* -------------------------------------- special cases ------------------------------------- */
+
+    @Test fun `do not interpret non-oneway for bicycles as NONE_NO_ONEWAY if the cycleway on the other side is not a oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(NONE, DUAL_TRACK),
+            parse(
+                "cycleway:right" to "track",
+                "cycleway:right:oneway" to "no",
+                "cycleway:left" to "no",
+                "oneway" to "yes",
+                "oneway:bicycle" to "no",
+            )
+        )
+        assertEquals(
+            LeftAndRightCycleway(DUAL_TRACK, NONE),
+            parseForLeftHandTraffic(
+                "cycleway:left" to "track",
+                "cycleway:left:oneway" to "no",
+                "cycleway:right" to "no",
+                "oneway" to "yes",
+                "oneway:bicycle" to "no",
+            )
+        )
+    }
+
     /* ------------------------------------------ cycleway -------------------------------------- */
 
     @Test fun invalid() {

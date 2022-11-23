@@ -62,8 +62,12 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     /* if there is no cycleway in a direction but it is a oneway in the other direction but not
        for cyclists, we have a special selection for that */
     if (isOnewayButNotForCyclists) {
-        if ((left == NONE || left == null) && !isReverseSideRight) left = NONE_NO_ONEWAY
-        if ((right == NONE || right == null) && isReverseSideRight) right = NONE_NO_ONEWAY
+        if ((left == NONE || left == null) && !isReverseSideRight && right?.isOneway != false) {
+            left = NONE_NO_ONEWAY
+        }
+        if ((right == NONE || right == null) && isReverseSideRight && left?.isOneway != false) {
+            right = NONE_NO_ONEWAY
+        }
     }
 
     if (left == null && right == null) return null
