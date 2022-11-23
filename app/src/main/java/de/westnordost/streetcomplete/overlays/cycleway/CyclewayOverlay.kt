@@ -16,6 +16,8 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -49,22 +51,34 @@ class CyclewayOverlay(
                 pos.longitude,
                 pos.latitude
             )
-            it to getCyclewayStyle(it, countryInfo)
+            it to getStreetCyclewayStyle(it, countryInfo)
         } +
-        // cycleways etc, just to highlight e.g. separately mapped cycleways
+        // separately mapped ways
         mapData.filter("""
-            ways with (
-              highway = cycleway
-              or highway ~ path|footway|bridleway and bicycle ~ yes|designated
-            ) and area != yes
-        """).map { it to PolylineStyle(StrokeStyle(Color.BLUE)) }
+            ways with
+              highway ~ cycleway|path|footway|bridleway
+              and area != yes
+        """).map { it to getSeparateCyclewayStyle(it) }
 
     override fun createForm(element: Element?) =
-        if (element != null && element.tags["highway"] in ALL_ROADS) CyclewayOverlayForm()
-        else null
+        if (element == null) null
+        else if (element.tags["highway"] in ALL_ROADS) StreetCyclewayOverlayForm()
+        else SeparateCyclewayForm()
 }
 
-private fun getCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
+private fun getSeparateCyclewayStyle(element: Element) =
+    PolylineStyle(StrokeStyle(createSeparateCycleway(element.tags).getColor()))
+
+private fun SeparateCycleway?.getColor() = when (this) {
+    SeparateCycleway.NONE ->           Color.BLACK
+    SeparateCycleway.ALLOWED ->        Color.BLACK
+    SeparateCycleway.NON_SEGREGATED -> Color.CYAN
+    SeparateCycleway.SEGREGATED ->     Color.BLUE
+    SeparateCycleway.EXCLUSIVE ->      Color.BLUE
+    null ->                            Color.INVISIBLE
+}
+
+private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
     val cycleways = createCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
     val isCycleStreet = element.tags["bicycle_road"] == "yes" || element.tags["cyclestreet"] == "yes"
 
@@ -105,9 +119,12 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
         if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
         else                          StrokeStyle(Color.GOLD)
 
-    ADVISORY_LANE, SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE ->
+    ADVISORY_LANE, SUGGESTION_LANE, UNSPECIFIED_SHARED_LANE ->
         if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
-        else                          StrokeStyle(Color.GOLD, dashed = true)
+        else                          StrokeStyle(Color.ORANGE)
+
+    PICTOGRAMS ->
+        StrokeStyle(Color.ORANGE, dashed = true)
 
     UNKNOWN, INVALID, null, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
         StrokeStyle(Color.DATA_REQUESTED)

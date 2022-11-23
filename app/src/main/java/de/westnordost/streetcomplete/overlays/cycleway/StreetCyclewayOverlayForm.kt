@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
-class CyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
+class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
 
     // TODO bicycle road!
 
