@@ -205,8 +205,8 @@ class AddCyclewayTest {
     @Test fun `not applicable to road with cycleway that is tagged with an unknown + invalid value`() {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "primary",
-            "cycleway:left" to "yes",
-            "cycleway:right" to "doorzone",
+            "cycleway:left" to "yes", // invalid
+            "cycleway:right" to "doorzone2", // unknown
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
 

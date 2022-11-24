@@ -56,7 +56,7 @@ class CyclewayOverlay(
         // separately mapped ways
         mapData.filter("""
             ways with
-              highway ~ cycleway|path|footway|bridleway
+              highway ~ cycleway|path|footway
               and area != yes
         """).map { it to getSeparateCyclewayStyle(it) }
 
@@ -71,7 +71,8 @@ private fun getSeparateCyclewayStyle(element: Element) =
 
 private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NONE,
-    SeparateCycleway.ALLOWED ->
+    SeparateCycleway.ALLOWED,
+    SeparateCycleway.NON_DESIGNATED ->
         Color.BLACK
 
     SeparateCycleway.NON_SEGREGATED ->

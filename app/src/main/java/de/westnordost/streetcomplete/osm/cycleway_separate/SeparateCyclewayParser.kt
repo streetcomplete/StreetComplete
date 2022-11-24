@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 /** Returns the situation for a separately mapped cycleway */
 fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
-    if (tags["highway"] !in listOf("path", "footway", "bridleway", "cycleway")) return null
+    if (tags["highway"] !in listOf("path", "footway", "cycleway")) return null
 
     // cycleway implies bicycle=designated
     val bicycle = tags["bicycle"] ?: if (tags["highway"] == "cycleway") "designated" else null
@@ -24,13 +24,7 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
         "path" -> "yes"
         else -> null
     }
-    val horse = tags["horse"] ?: when (tags["highway"]) {
-        "bridleway" -> "designated"
-        "path" -> "yes"
-        else -> null
-    }
-    val yesOrDesignated = listOf("yes", "designated")
-    if (foot !in yesOrDesignated && horse !in yesOrDesignated) return SeparateCycleway.EXCLUSIVE
+    if (foot !in listOf("yes", "designated")) return SeparateCycleway.EXCLUSIVE
 
     val segregated = tags["segregated"] == "yes"
     return if (segregated) SeparateCycleway.SEGREGATED else SeparateCycleway.NON_SEGREGATED
