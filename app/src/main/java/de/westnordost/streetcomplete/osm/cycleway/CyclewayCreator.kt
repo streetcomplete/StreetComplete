@@ -32,11 +32,6 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     left?.applyTo(tags, false, isLeftHandTraffic)
     right?.applyTo(tags, true, isLeftHandTraffic)
 
-    LeftAndRightSidewalk(
-        if (left == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
-        if (right == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
-    ).applyTo(tags)
-
     tags.mergeSides("cycleway")
     tags.mergeSides("cycleway", "lane")
     tags.mergeSides("cycleway", "oneway")
@@ -46,6 +41,13 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
         tags.updateCheckDateForKey("cycleway")
     }
+
+    // tag sidewalk after setting the check date because we want to primarily set the check date
+    // of the cycleway, not of the sidewalk, if there are no changes
+    LeftAndRightSidewalk(
+        if (left == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+        if (right == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+    ).applyTo(tags)
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
