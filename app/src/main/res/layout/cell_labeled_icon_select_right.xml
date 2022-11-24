@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
         android:scaleType="fitCenter"
-        tools:src="@drawable/ic_path_segregated_no"
+        tools:src="@drawable/ic_separate_cycleway_not_segregated"
         />
 
     <TextView

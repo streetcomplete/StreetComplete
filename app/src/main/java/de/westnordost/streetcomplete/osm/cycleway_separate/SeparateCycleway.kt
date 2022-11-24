@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.hasSidewalk
@@ -49,4 +50,8 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
     val segregated = tags["segregated"] == "yes"
     return if (segregated) SEGREGATED else NON_SEGREGATED
+}
+
+fun SeparateCycleway.applyTo(tags: Tags) {
+    TODO()
 }
