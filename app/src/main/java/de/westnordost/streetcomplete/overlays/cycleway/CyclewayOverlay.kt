@@ -79,7 +79,7 @@ private fun SeparateCycleway?.getColor() = when (this) {
 
     SeparateCycleway.SEGREGATED,
     SeparateCycleway.EXCLUSIVE,
-    SeparateCycleway.WITH_SIDEWALK ->
+    SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK ->
         Color.BLUE
 
     null ->

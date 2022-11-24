@@ -13,7 +13,7 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     if (bicycle != "designated") return if (bicycle == "yes") SeparateCycleway.ALLOWED else SeparateCycleway.NONE
 
     if (createSidewalkSides(tags).hasSidewalk() || tags["sidewalk"] == "yes") {
-        return SeparateCycleway.WITH_SIDEWALK
+        return SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK
     }
 
     // footway implies foot=designated, path implies foot=yes
