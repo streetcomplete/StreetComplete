@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import android.view.View
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
@@ -11,6 +12,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
 import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import de.westnordost.streetcomplete.view.image_select.Item
 
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
@@ -54,4 +56,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 *  Signage, however, is out of scope of this overlay. It would be better fitted as a quest (in
 *  countries and states where frequent signage is to be expected) */
 private fun SeparateCycleway.asItemTreatingAllowedAsNone(isLeftHandTraffic: Boolean) =
-    (if (this == ALLOWED) NONE else this).asItem(isLeftHandTraffic)
+    when (this) {
+        ALLOWED, NONE -> Item(this, R.drawable.ic_separate_cycleway_no, R.string.separate_cycleway_no_or_allowed)
+        else ->          asItem(isLeftHandTraffic)
+    }
