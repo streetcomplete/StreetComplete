@@ -1461,29 +1461,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
-    <string name="select_street_parking_position">"Select position:"</string>
-    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
-    <string name="street_parking_parallel">"Parallel"</string>
-    <string name="street_parking_diagonal">"Diagonal"</string>
-    <string name="street_parking_perpendicular">"Perpendicular"</string>
-    <string name="street_parking_on_street">"On street"</string>
-    <string name="street_parking_half_on_kerb">"Partially on street"</string>
-    <string name="street_parking_on_kerb">"Adjacent to street"</string>
-    <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
-    <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
-    <string name="street_parking_separate">Parking displayed separately on map</string>
-    <string name="street_parking_no">No parking here / Not allowed</string>
-    <string name="street_parking_prohibited">No parking</string>
-    <string name="street_stopping_prohibited">No stopping</string>
-    <string name="street_standing_prohibited">No standing</string>
-    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
-    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
-    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
-
-Alternatively, you can leave a note (with a photo)."</string>
-    <string name="street_parking_street_width">Street width: %s</string>
-
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
@@ -1617,4 +1594,28 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_no">"Still same place"</string>
 
     <string name="overlay_street_parking">Street parking</string>
+
+    <string name="select_street_parking_orientation">"Select orientation toward roadway:"</string>
+    <string name="select_street_parking_position">"Select position:"</string>
+    <string name="select_street_parking_no">"Any sign or road marking here?"</string>
+    <string name="street_parking_parallel">"Parallel"</string>
+    <string name="street_parking_diagonal">"Diagonal"</string>
+    <string name="street_parking_perpendicular">"Perpendicular"</string>
+    <string name="street_parking_on_street">"On street"</string>
+    <string name="street_parking_half_on_kerb">"Partially on street"</string>
+    <string name="street_parking_on_kerb">"Adjacent to street"</string>
+    <string name="street_parking_street_side">"Adjacent to street only in dedicated spaces"</string>
+    <string name="street_parking_painted_area_only">"On street only in dedicated spaces"</string>
+    <string name="street_parking_separate">Parking displayed separately on map</string>
+    <string name="street_parking_no">No parking here / Not allowed</string>
+    <string name="street_parking_prohibited">No parking</string>
+    <string name="street_stopping_prohibited">No stopping</string>
+    <string name="street_standing_prohibited">No standing</string>
+    <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
+    <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
+    <string name="street_parking_conditional_restrictions_hint">"If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
+
+Alternatively, you can leave a note (with a photo)."</string>
+    <string name="street_parking_street_width">Street width: %s</string>
+
 </resources>
