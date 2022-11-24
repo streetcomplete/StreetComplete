@@ -10,6 +10,7 @@ fun SeparateCycleway.asItem(isLeftHandTraffic: Boolean) =
 private val SeparateCycleway.titleResId: Int get() = when (this) {
     NONE ->           R.string.separate_cycleway_no
     ALLOWED ->        R.string.separate_cycleway_allowed
+    NON_DESIGNATED -> R.string.separate_cycleway_no_or_allowed
     NON_SEGREGATED -> R.string.separate_cycleway_non_segregated
     SEGREGATED ->     R.string.separate_cycleway_segregated
     EXCLUSIVE ->      R.string.separate_cycleway_exclusive
@@ -19,6 +20,7 @@ private val SeparateCycleway.titleResId: Int get() = when (this) {
 private fun SeparateCycleway.getIconResId(isLeftHandTraffic: Boolean): Int = when (this) {
     NONE ->           R.drawable.ic_separate_cycleway_no
     ALLOWED ->        R.drawable.ic_separate_cycleway_allowed
+    NON_DESIGNATED -> R.drawable.ic_separate_cycleway_no
     NON_SEGREGATED -> R.drawable.ic_separate_cycleway_not_segregated
     SEGREGATED ->     if (isLeftHandTraffic) R.drawable.ic_separate_cycleway_segregated_l
                       else                   R.drawable.ic_separate_cycleway_segregated

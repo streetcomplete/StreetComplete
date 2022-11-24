@@ -60,6 +60,7 @@ class SeparateCyclewayParserKtTest {
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "path", "bicycle" to "designated", "sidewalk" to "left"))
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "footway", "bicycle" to "designated", "sidewalk" to "right"))
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "bridleway", "bicycle" to "designated", "sidewalk" to "both"))
+        assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk" to "separate"))
 
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "cycleway", "bicycle" to "designated", "sidewalk:left" to "yes"))
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk:both" to "yes"))

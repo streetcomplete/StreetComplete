@@ -5,9 +5,12 @@ enum class SeparateCycleway {
     NONE,
     /** Bicycles allowed on footway / bridleway / path */
     ALLOWED,
-    /** Not segregated from footway / bridleway mapped on same way */
+    /** Unspecific value: This footway / bridleway / path is not designated for cyclists. I.e. it is
+     *  either NONE or ALLOWED. This value is never output by the parser. */
+    NON_DESIGNATED,
+    /** Designated but not segregated from footway / bridleway mapped on same way */
     NON_SEGREGATED,
-    /** Segregated from footway / bridleway mapped on same way */
+    /** Designated and segregated from footway / bridleway mapped on same way */
     SEGREGATED,
     /** This way is a cycleway only, no footway or bridleway mapped on the same way */
     EXCLUSIVE,

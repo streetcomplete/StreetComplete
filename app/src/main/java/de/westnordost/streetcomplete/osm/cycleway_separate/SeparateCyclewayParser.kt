@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.sidewalk.hasSidewalk
 
 /** Returns the situation for a separately mapped cycleway */
 fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
@@ -12,7 +13,8 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     val bicycle = tags["bicycle"] ?: if (tags["highway"] == "cycleway") "designated" else null
     if (bicycle != "designated") return if (bicycle == "yes") SeparateCycleway.ALLOWED else SeparateCycleway.NONE
 
-    if (createSidewalkSides(tags).hasSidewalk() || tags["sidewalk"] == "yes") {
+    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES || it == Sidewalk.SEPARATE } == true
+    if (hasSidewalk || tags["sidewalk"] == "yes") {
         return SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK
     }
 

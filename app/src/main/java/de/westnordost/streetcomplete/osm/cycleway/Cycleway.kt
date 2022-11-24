@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.osm.isReversedOneway
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
+fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
+    left?.let(block) == true || right?.let(block) == true
+
 fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftAndRightCycleway {
     val leftIsSelectable = left?.isSelectable(countryInfo) != false
     val rightIsSelectable = right?.isSelectable(countryInfo) != false

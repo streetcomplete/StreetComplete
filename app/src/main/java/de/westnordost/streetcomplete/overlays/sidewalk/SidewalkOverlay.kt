@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
+import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
-import de.westnordost.streetcomplete.osm.sidewalk.hasSidewalk
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -55,7 +55,7 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
     }
 
     return when {
-        createSidewalkSides(element.tags).hasSidewalk() ->
+        createSidewalkSides(element.tags)?.any { it == Sidewalk.YES } == true ->
             getSidewalkStyle(element)
         foot in listOf("yes", "designated") ->
             PolylineStyle(StrokeStyle(Color.SKY))
