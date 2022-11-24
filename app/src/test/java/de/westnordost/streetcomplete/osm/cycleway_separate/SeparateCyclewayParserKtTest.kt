@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import org.junit.Assert.*
 import org.junit.Test
 
-class SeparateCyclewayKtTest {
+class SeparateCyclewayParserKtTest {
 
     @Test fun `parse no cycleway at all`() {
         assertEquals(null, parse())
@@ -64,6 +64,8 @@ class SeparateCyclewayKtTest {
         assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "bicycle" to "designated", "sidewalk:left" to "yes"))
         assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk:both" to "yes"))
         assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk:right" to "yes"))
+
+        assertEquals(WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk" to "yes"))
     }
 }
 
