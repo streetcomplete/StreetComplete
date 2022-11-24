@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
-    override val changesetComment = "Add housenumbers"
+    override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
     override val achievements = listOf(POSTMAN)
