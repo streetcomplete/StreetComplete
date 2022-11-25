@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.view.image_select.DisplayItem
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
     override val items: List<DisplayItem<SeparateCycleway>> get() =
-        listOf(NON_DESIGNATED, NON_SEGREGATED, SEGREGATED, EXCLUSIVE, EXCLUSIVE_WITH_SIDEWALK).map {
+        listOf(NON_DESIGNATED, NON_SEGREGATED, SEGREGATED, EXCLUSIVE_WITH_SIDEWALK, EXCLUSIVE).map {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 
