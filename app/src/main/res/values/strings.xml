@@ -1571,7 +1571,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="separate_cycleway_non_segregated">Combined foot- and cycleway</string>
     <string name="separate_cycleway_segregated">Segregated cycle- and footway</string>
     <string name="separate_cycleway_exclusive">Exclusive cycleway</string>
-    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway with sidewalk (with kerb)</string>
+    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway with sidewalk (segregated by kerb)</string>
 
     <string name="overlay_none">None</string>
 

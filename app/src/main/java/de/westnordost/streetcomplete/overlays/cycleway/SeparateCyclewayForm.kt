@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
 import android.view.View
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
@@ -18,6 +19,9 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
         listOf(NON_DESIGNATED, NON_SEGREGATED, SEGREGATED, EXCLUSIVE, EXCLUSIVE_WITH_SIDEWALK).map {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
+
+    override val itemsPerRow = 1
+    override val cellLayoutId = R.layout.cell_labeled_icon_select_right
 
     private var currentCycleway: SeparateCycleway? = null
 
