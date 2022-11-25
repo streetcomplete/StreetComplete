@@ -49,6 +49,7 @@ data class IncompleteCountryInfo(
     val hasBiWeeklyAlternateSideParkingSign: Boolean? = null,
     val hasCenterLeftTurnLane: Boolean? = null,
     val hasAdvisoryCycleLane: Boolean? = null,
+    val hasBicycleBoulevard: Boolean? = null,
     val hasDailyAlternateSideParkingSign: Boolean? = null,
     val hasLivingStreet: Boolean? = null,
     val hasNoStandingSign: Boolean? = null,
@@ -100,6 +101,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOf { it.hasAdvisoryCycleLane }
     val hasAdvisorySpeedLimitSign: Boolean
         get() = infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
+    val hasBicycleBoulevard: Boolean
+        get() = infos.firstNotNullOf { it.hasBicycleBoulevard }
     val hasBiWeeklyAlternateSideParkingSign: Boolean
         get() = infos.firstNotNullOf { it.hasBiWeeklyAlternateSideParkingSign }
     val hasCenterLeftTurnLane: Boolean
