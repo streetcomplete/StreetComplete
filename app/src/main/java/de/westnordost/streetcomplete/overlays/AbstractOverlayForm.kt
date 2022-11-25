@@ -38,7 +38,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
-import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
@@ -51,7 +50,11 @@ import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.CharSequenceText
+import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.add
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -126,7 +129,7 @@ abstract class AbstractOverlayForm :
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
-    open val otherAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<IAnswerItem>()
 
     interface Listener {
         /** The GPS position at which the user is displayed at */
@@ -327,7 +330,7 @@ abstract class AbstractOverlayForm :
         for (i in answers.indices) {
             val otherAnswer = answers[i]
             val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
         }
         popup.show()
 
@@ -337,8 +340,8 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    private fun assembleOtherAnswers(): List<AnswerItem> {
-        val answers = mutableListOf<AnswerItem>()
+    private fun assembleOtherAnswers(): List<IAnswerItem> {
+        val answers = mutableListOf<IAnswerItem>()
 
         val element = element
         if (element != null) {
@@ -411,4 +414,16 @@ abstract class AbstractOverlayForm :
     }
 }
 
-data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)
+
+interface IAnswerItem {
+    val title: Text
+    val action: () -> Unit
+}
+
+data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = ResText(titleResourceId)
+}
+
+data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = CharSequenceText(titleString)
+}

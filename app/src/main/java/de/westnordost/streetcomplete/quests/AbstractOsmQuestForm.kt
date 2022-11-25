@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.add
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -79,8 +80,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
 
     // overridable by child classes
-    open val otherAnswers = listOf<AnswerItem>()
-    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<IAnswerItem>()
+    open val buttonPanelAnswers = listOf<IAnswerItem>()
 
     interface Listener {
         /** The GPS position at which the user is displayed at */
@@ -129,8 +130,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
     }
 
-    private fun assembleOtherAnswers(): List<AnswerItem> {
-        val answers = mutableListOf<AnswerItem>()
+    private fun assembleOtherAnswers(): List<IAnswerItem> {
+        val answers = mutableListOf<IAnswerItem>()
 
         answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
 
@@ -164,7 +165,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         for (i in answers.indices) {
             val otherAnswer = answers[i]
             val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
         }
         popup.show()
 

@@ -27,6 +27,10 @@ import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.updateConfiguration
+import de.westnordost.streetcomplete.view.CharSequenceText
+import de.westnordost.streetcomplete.view.ResText
+import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.setText
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -189,11 +193,11 @@ abstract class AbstractQuestForm :
         }
     }
 
-    protected fun setButtonPanelAnswers(buttonPanelAnswers: List<AnswerItem>) {
+    protected fun setButtonPanelAnswers(buttonPanelAnswers: List<IAnswerItem>) {
         binding.buttonPanel.removeAllViews()
         for (buttonPanelAnswer in buttonPanelAnswers) {
             val button = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
-            button.setText(buttonPanelAnswer.titleResourceId)
+            button.setText(buttonPanelAnswer.title)
             button.setOnClickListener { buttonPanelAnswer.action() }
         }
     }
@@ -237,4 +241,15 @@ abstract class AbstractQuestForm :
     }
 }
 
-data class AnswerItem(val titleResourceId: Int, val action: () -> Unit)
+interface IAnswerItem {
+    val title: Text
+    val action: () -> Unit
+}
+
+data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = ResText(titleResourceId)
+}
+
+data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
+    override val title: Text get() = CharSequenceText(titleString)
+}
