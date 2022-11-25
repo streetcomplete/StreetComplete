@@ -869,6 +869,20 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun shoulder() {
+        assertEquals(
+            LeftAndRightCycleway(SHOULDER, SHOULDER),
+            parse("cycleway" to "shoulder")
+        )
+    }
+
+    @Test fun `shoulder in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SHOULDER),
+            parse("cycleway" to "shoulder", "oneway" to "yes")
+        )
+    }
+
     /* ------------------------------ cycleway opposite taggings -------------------------------- */
 
     @Test fun `cycleway opposite`() {
@@ -1496,6 +1510,13 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `shoulder on left side`() {
+        assertEquals(
+            LeftAndRightCycleway(SHOULDER, null),
+            parse("cycleway:left" to "shoulder")
+        )
+    }
+
     /* ------------------------------ cycleway:left opposite tagging --------------------------- */
 
     @Test fun `left opposite`() {
@@ -1984,6 +2005,13 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `shoulder on right side`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SHOULDER),
+            parse("cycleway:right" to "shoulder")
+        )
+    }
+
     /* ------------------------------ cycleway:right opposite tagging --------------------------- */
 
     @Test fun `right opposite`() {
@@ -2398,6 +2426,13 @@ class CyclewayParserKtTest {
                 "oneway" to "-1",
                 "oneway:bicycle" to "no"
             )
+        )
+    }
+
+    @Test fun `shoulder on both sides`() {
+        assertEquals(
+            LeftAndRightCycleway(SHOULDER, SHOULDER),
+            parse("cycleway:both" to "shoulder")
         )
     }
 

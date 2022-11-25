@@ -90,6 +90,9 @@ enum class Cycleway {
     /** cycleway is mapped as a separate way */
     SEPARATE,
 
+    /** no cycle track or lane, but cyclists use shoudler */
+    SHOULDER,
+
     /** unknown cycleway tag set */
     UNKNOWN,
 
@@ -146,6 +149,7 @@ fun getSelectableCycleways(
         PICTOGRAMS,
         BUSWAY,
         SIDEWALK_EXPLICIT,
+        SHOULDER,
         DUAL_LANE,
         DUAL_TRACK
     )

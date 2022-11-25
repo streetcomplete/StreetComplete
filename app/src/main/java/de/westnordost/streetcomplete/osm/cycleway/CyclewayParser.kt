@@ -147,6 +147,7 @@ private fun createCyclewayForSide(
         "separate" -> SEPARATE
         "no", "opposite" -> NONE
         "share_busway", "opposite_share_busway" -> BUSWAY
+        "shoulder" -> SHOULDER
         // values known to be invalid, ambiguous or obsolete:
         // 1.2% - ambiguous: there are more precise tags
         "yes", "right", "left", "both",

@@ -85,6 +85,7 @@ private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int
     DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane
     SEPARATE ->          R.drawable.ic_cycleway_none
+    SHOULDER ->          R.drawable.ic_cycleway_shoulder
     else -> 0
 }
 
@@ -102,6 +103,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(countryInfo: CountryInfo): Int 
     DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual_l
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane_l
     SEPARATE ->          R.drawable.ic_cycleway_none
+    SHOULDER ->          R.drawable.ic_cycleway_shoulder
     else -> 0
 }
 
@@ -122,5 +124,6 @@ private fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (t
     DUAL_TRACK ->        R.string.quest_cycleway_value_track_dual
     BUSWAY ->            R.string.quest_cycleway_value_bus_lane
     SEPARATE ->          R.string.quest_cycleway_value_separate
+    SHOULDER ->          R.string.quest_cycleway_value_shoulder
     else -> 0
 }

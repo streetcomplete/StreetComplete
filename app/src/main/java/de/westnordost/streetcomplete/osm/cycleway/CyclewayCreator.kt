@@ -122,6 +122,9 @@ private fun Cycleway.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Bo
         BUSWAY -> {
             tags[cyclewayKey] = "share_busway"
         }
+        SHOULDER -> {
+            tags[cyclewayKey] = "shoulder"
+        }
         SEPARATE -> {
             tags[cyclewayKey] = "separate"
         }

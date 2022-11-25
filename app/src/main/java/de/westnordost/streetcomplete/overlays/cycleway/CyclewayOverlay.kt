@@ -144,7 +144,7 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
     SIDEWALK_EXPLICIT ->
         StrokeStyle(Color.CYAN, dashed = true)
 
-    NONE, NONE_NO_ONEWAY ->
+    NONE, NONE_NO_ONEWAY, SHOULDER ->
         StrokeStyle(Color.BLACK)
 
     SEPARATE ->
