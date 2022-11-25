@@ -658,6 +658,5 @@ private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightCycleway
     Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
 }
 
-
 private fun bothSidesAnswer(bothSides: Cycleway): LeftAndRightCycleway =
     LeftAndRightCycleway(bothSides, bothSides)
