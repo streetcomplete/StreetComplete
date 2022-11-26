@@ -182,6 +182,7 @@ abstract class AbstractOverlayForm :
         binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
             cornerRadius, margin, margin, margin, margin
         )
+        binding.speechbubbleContentContainer.clipToOutline = true
 
         setTitleHintLabel(
             element?.tags?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
