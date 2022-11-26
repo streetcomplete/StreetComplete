@@ -44,7 +44,7 @@ class PathSurfaceOverlay : Overlay {
     override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.invalidSurfaces
+        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.INVALID_SURFACES
         return mapData
            .filter( """ways, relations with
                (

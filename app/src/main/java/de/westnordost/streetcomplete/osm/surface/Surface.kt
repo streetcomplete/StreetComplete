@@ -48,7 +48,7 @@ enum class Surface(val osmValue: String) {
     BRICKS("bricks");
 
     companion object {
-        val invalidSurfaces: Set<String> = setOf(
+        val INVALID_SURFACES = setOf(
             "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
             "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 TODO: after 2012-11-23 document that it is an unwanted value at https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
         )

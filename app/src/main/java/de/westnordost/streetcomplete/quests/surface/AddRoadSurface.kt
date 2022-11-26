@@ -27,7 +27,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
-            surface ~ paved|unpaved|${Surface.invalidSurfaces.joinToString("|")}
+            surface ~ paved|unpaved|${Surface.INVALID_SURFACES.joinToString("|")}
             and !surface:note
             and !note:surface
           )
