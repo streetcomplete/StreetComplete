@@ -20,19 +20,19 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 
 class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
-    private var currentSidewalk: LeftAndRightSidewalk? = null
+    private var originalSidewalk: LeftAndRightSidewalk? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        originalSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        currentSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
-        streetSideSelect.setPuzzleSide(currentSidewalk?.left?.asStreetSideItem(), false)
-        streetSideSelect.setPuzzleSide(currentSidewalk?.right?.asStreetSideItem(), true)
+        streetSideSelect.setPuzzleSide(originalSidewalk?.left?.asStreetSideItem(), false)
+        streetSideSelect.setPuzzleSide(originalSidewalk?.right?.asStreetSideItem(), true)
     }
 
     override fun onClickSide(isRight: Boolean) {
@@ -51,8 +51,8 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != currentSidewalk?.left ||
-        streetSideSelect.right?.value != currentSidewalk?.right
+        streetSideSelect.left?.value != originalSidewalk?.left ||
+        streetSideSelect.right?.value != originalSidewalk?.right
 
     override fun serialize(item: Sidewalk) = item.name
     override fun deserialize(str: String) = Sidewalk.valueOf(str)
