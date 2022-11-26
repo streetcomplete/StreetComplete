@@ -47,7 +47,7 @@ class PathSurfaceOverlayFormKtTest {
 
     @Test
     fun `simplest possible applying new path surface with footway and cycleway parts`() {
-        val tags = mapOf("highway" to "path")
+        val tags = mapOf("highway" to "path",  "segregated" to "yes", "foot" to "designated", "bicycle" to "designated")
         val expectedChanges = arrayOf(
             StringMapEntryAdd("surface", "compacted"),
             StringMapEntryAdd("cycleway:surface", "compacted"),
@@ -60,7 +60,7 @@ class PathSurfaceOverlayFormKtTest {
 
     @Test
     fun `applying new path surface with footway and cycleway parts, with paved surface as shared value`() {
-        val tags = mapOf("highway" to "path")
+        val tags = mapOf("highway" to "path",  "segregated" to "yes", "foot" to "designated", "bicycle" to "designated")
         val expectedChanges = arrayOf(
             StringMapEntryAdd("surface", "paved"),
             StringMapEntryAdd("cycleway:surface", "asphalt"),
@@ -73,7 +73,7 @@ class PathSurfaceOverlayFormKtTest {
 
     @Test
     fun `applying new path surface with unpaved footway and paved cycleway part`() {
-        val tags = mapOf("highway" to "path")
+        val tags = mapOf("highway" to "path",  "segregated" to "yes", "foot" to "designated", "bicycle" to "designated")
         val expectedChanges = arrayOf(
             StringMapEntryAdd("cycleway:surface", "asphalt"),
             StringMapEntryAdd("footway:surface", "gravel"),
@@ -95,7 +95,7 @@ class PathSurfaceOverlayFormKtTest {
 
     @Test
     fun `note tags are removed if no longer supplied`() {
-        val tags = mapOf("highway" to "path",
+        val tags = mapOf("highway" to "path", "segregated" to "yes",
             "surface" to "unpaved", "surface:note" to "you get what you reward for",
             "cycleway:surface" to "paving_stones", "cycleway:surface:note" to "a",
             "footway:surface" to "asphalt", "footway:surface:note" to "🤷")
@@ -114,7 +114,7 @@ class PathSurfaceOverlayFormKtTest {
 
     @Test
     fun `note tags are kept if in answer, even while surface tag is removed`() {
-        val tags = mapOf("highway" to "path",
+        val tags = mapOf("highway" to "path", "segregated" to "yes",
             "surface" to "unpaved", "surface:note" to "How do you eat an elephant? One bite at a time")
         val expectedChanges = arrayOf(
             StringMapEntryDelete("surface", "unpaved"),
@@ -129,7 +129,7 @@ class PathSurfaceOverlayFormKtTest {
     @Test
     fun `note tags are added`() {
         val tags = mapOf("highway" to "path",
-            "surface" to "unpaved",
+            "surface" to "unpaved", "segregated" to "yes",
             "cycleway:surface" to "paving_stones",
             "footway:surface" to "asphalt",)
         val expectedChanges = arrayOf(
@@ -147,7 +147,7 @@ class PathSurfaceOverlayFormKtTest {
     @Test
     fun `note tags are modified`() {
         val tags = mapOf("highway" to "path",
-            "surface" to "unpaved",
+            "surface" to "unpaved", "segregated" to "yes",
             "cycleway:surface" to "paving_stones", "cycleway:surface:note" to "old",
             "footway:surface" to "asphalt", "footway:surface:note" to "old",)
         val expectedChanges = arrayOf(
@@ -160,6 +160,18 @@ class PathSurfaceOverlayFormKtTest {
         verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
             Surface.PAVED_AREA, "foo",
             Surface.PAVED_ROAD, "bar", null, *expectedChanges)
+    }
+
+    @Test
+    fun `segregated=yes tag is added`() {
+        val tags = mapOf("highway" to "path")
+        val expectedChanges = arrayOf(
+            StringMapEntryAdd("cycleway:surface", "paving_stones"),
+            StringMapEntryAdd("footway:surface", "sand"),
+            StringMapEntryAdd("segregated", "yes"),
+        )
+        verifyAnswerWithSeparateFootwayCyclewaySurfaces(tags,
+            Surface.PAVING_STONES, null, Surface.SAND, null, null, *expectedChanges)
     }
 }
 
