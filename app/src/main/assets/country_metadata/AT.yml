@@ -6,6 +6,7 @@ clothesContainerOperators: [Humana, Holding Graz, Kolping, Rotes Kreuz, MA 48, C
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
