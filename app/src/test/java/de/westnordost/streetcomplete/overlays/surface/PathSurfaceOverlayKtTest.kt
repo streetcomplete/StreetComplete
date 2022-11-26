@@ -38,6 +38,17 @@ class PathSurfaceOverlayKtTest {
     }
 
     @Test
+    fun `ineligible for paths with tagged sidewalks`() {
+        // popular tagging styke in Netherlands - see http://overpass-turbo.eu/s/1oel
+        val data = way(tags = mapOf(
+            "highway" to "cycleway",
+            "sidewalk" to "both",
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(data))
+        assertEquals(PathSurfaceOverlay().getStyledElements(mapData).toList().size, 0)
+    }
+
+    @Test
     fun `way with surface note without surface tag is ineligible`() {
         val data = way(tags = mapOf(
             "highway" to "path",
