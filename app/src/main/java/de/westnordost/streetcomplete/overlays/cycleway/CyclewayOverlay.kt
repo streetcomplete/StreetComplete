@@ -89,7 +89,7 @@ private fun SeparateCycleway?.getColor() = when (this) {
 
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
     val cycleways = createCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
-    val isCycleStreet = element.tags["bicycle_road"] == "yes" || element.tags["cyclestreet"] == "yes"
+    val isBicycleBoulevard = createBicycleBoulevard(element.tags) == BicycleBoulevard.YES
 
     // not set but on road that usually has no cycleway or it is private -> do not highlight as missing
     val isNoCyclewayExpected =
@@ -97,7 +97,7 @@ private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): 
 
     return PolylineStyle(
         stroke = when {
-            isCycleStreet ->        StrokeStyle(Color.BLUE)
+            isBicycleBoulevard ->   StrokeStyle(Color.GOLD, dashed = true)
             isNoCyclewayExpected -> StrokeStyle(Color.INVISIBLE)
             else ->                 null
         },
