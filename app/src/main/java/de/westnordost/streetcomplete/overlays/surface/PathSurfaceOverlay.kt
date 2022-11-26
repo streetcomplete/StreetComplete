@@ -11,13 +11,10 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_AREA
-import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
-import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
-import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
@@ -30,8 +27,6 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
-import de.westnordost.streetcomplete.quests.surface.GENERIC_AREA_SURFACES
-import de.westnordost.streetcomplete.quests.surface.GENERIC_ROAD_SURFACES
 
 class PathSurfaceOverlay : Overlay {
 
@@ -44,7 +39,7 @@ class PathSurfaceOverlay : Overlay {
     override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.INVALID_SURFACES
+        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
         return mapData
            .filter( """ways, relations with
                (

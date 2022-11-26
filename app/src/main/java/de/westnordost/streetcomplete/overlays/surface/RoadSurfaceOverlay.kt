@@ -8,13 +8,10 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfaces
 import de.westnordost.streetcomplete.osm.surface.CyclewayFootwaySurfacesWithNote
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SingleSurface
 import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_AREA
-import de.westnordost.streetcomplete.osm.surface.Surface.PAVED_ROAD
-import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
-import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
 import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
@@ -40,7 +37,7 @@ class RoadSurfaceOverlay : Overlay {
     override val hidesQuestTypes = setOf(parentQuest::class.simpleName!!, AddPathSurface::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, Style>> {
-        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + Surface.INVALID_SURFACES
+        val handledSurfaces = Surface.values().map { it.osmValue }.toSet() + INVALID_SURFACES
         return mapData
            .filter( """ways, relations with
                highway ~ ${(ALL_ROADS).joinToString("|")}

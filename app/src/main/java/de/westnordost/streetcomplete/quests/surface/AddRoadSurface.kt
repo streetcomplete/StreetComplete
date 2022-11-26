@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
-import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAnswer
 import de.westnordost.streetcomplete.osm.surface.applyTo
 
@@ -27,7 +27,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAnswer>() {
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
-            surface ~ paved|unpaved|${Surface.INVALID_SURFACES.joinToString("|")}
+            surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
             and !surface:note
             and !note:surface
           )
