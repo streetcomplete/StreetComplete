@@ -224,18 +224,18 @@ private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInf
     // has no cycleway tagging
     if (sides == null) return false
     // any cycleway tagging is not known: don't mess with that
-    if (sides.any { it.isUnknown }) return false
+    if (sides.any { it.cycleway.isUnknown }) return false
     // has any invalid cycleway tags
-    if (sides.any { it.isInvalid }) return true
+    if (sides.any { it.cycleway.isInvalid }) return true
     // or it is older than x years
     if (olderThan4Years.matches(this)) return true
     // has any ambiguous cycleway tags
     if (countryInfo != null) {
-        if (sides.any { it.isAmbiguous(countryInfo) }) return true
+        if (sides.any { it.cycleway.isAmbiguous(countryInfo) }) return true
     } else {
-        if (sides.any { it == UNSPECIFIED_SHARED_LANE }) return true
+        if (sides.any { it.cycleway == UNSPECIFIED_SHARED_LANE }) return true
         // for this, a countryCode is necessary, thus return null if no country code is available
-        if (sides.any { it == UNSPECIFIED_LANE }) return null
+        if (sides.any { it.cycleway == UNSPECIFIED_LANE }) return null
     }
     return false
 }

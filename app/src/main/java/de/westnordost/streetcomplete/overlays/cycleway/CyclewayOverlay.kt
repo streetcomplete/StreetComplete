@@ -103,8 +103,8 @@ private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): 
             isNoCyclewayExpected -> StrokeStyle(Color.INVISIBLE)
             else ->                 null
         },
-        strokeLeft = if (isNoCyclewayExpected) null else cycleways?.left.getStyle(countryInfo),
-        strokeRight = if (isNoCyclewayExpected) null else cycleways?.right.getStyle(countryInfo)
+        strokeLeft = if (isNoCyclewayExpected) null else cycleways?.left?.cycleway.getStyle(countryInfo),
+        strokeRight = if (isNoCyclewayExpected) null else cycleways?.right?.cycleway.getStyle(countryInfo)
     )
 }
 
@@ -123,10 +123,10 @@ private fun cyclewayTaggingNotExpected(element: Element) =
     cyclewayTaggingNotExpectedFilter.matches(element)
 
 private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
-    TRACK, DUAL_TRACK ->
+    TRACK ->
         StrokeStyle(Color.BLUE)
 
-    EXCLUSIVE_LANE, DUAL_LANE, UNSPECIFIED_LANE ->
+    EXCLUSIVE_LANE, UNSPECIFIED_LANE ->
         if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
         else                          StrokeStyle(Color.GOLD)
 

@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import kotlinx.serialization.Serializable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
+import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 
-data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
+data class LeftAndRightCycleway(val left: CyclewayAndDirection?, val right: CyclewayAndDirection?)
 
-fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
+fun LeftAndRightCycleway.any(block: (cycleway: CyclewayAndDirection) -> Boolean): Boolean =
     left?.let(block) == true || right?.let(block) == true
 
 fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftAndRightCycleway {
@@ -25,27 +28,49 @@ fun LeftAndRightCycleway.selectableOrNullValues(countryInfo: CountryInfo): LeftA
 fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean =
     isOneway(tags)
     && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-    && isNotOnewayForCyclistsNow(tags, isLeftHandTraffic) == false
+    && !isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
 
-fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean? {
-    if (left?.isOneway == false || right?.isOneway == false) return true
+fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, isLeftHandTraffic: Boolean): Boolean {
+    val onewayDir = when  {
+        isForwardOneway(tags) -> FORWARD
+        isReversedOneway(tags) -> BACKWARD
+        else -> return true
+    }
+    val previous = createCyclewaySides(tags, isLeftHandTraffic)
+    val l = (left ?: previous?.left)
+    val r = (right ?: previous?.right)
+    val leftDir = l?.direction?.takeIf { l.cycleway != NONE }
+    val rightDir = r?.direction?.takeIf { r.cycleway != NONE }
 
-    val isReverseSideRight = isReversedOneway(tags) xor isLeftHandTraffic
-    val contraflowSide = if (isReverseSideRight) right else left
-    if (contraflowSide != null && contraflowSide != NONE) return true
-
-    // if the road is indeed a oneway also for cyclists can only be ascertained if both left and
-    // right side are defined because either of the two can make a road not a oneway for cyclists
-    if (left == null || right == null) return null
-    return false
+    return leftDir == BOTH || rightDir == BOTH ||
+        leftDir != null && leftDir != onewayDir ||
+        rightDir != null && rightDir != onewayDir
 }
 
+@Serializable
+data class CyclewayAndDirection(val cycleway: Cycleway, val direction: Direction)
+
+fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
+    cycleway.isSelectable(countryInfo) &&
+    // only allow dual track and dual lanes (not dual pictograms or something)
+    (direction != BOTH || cycleway == TRACK || cycleway == UNSPECIFIED_LANE || cycleway == EXCLUSIVE_LANE)
+
+@Serializable
+enum class Direction {
+    FORWARD, BACKWARD, BOTH;
+
+    fun reverse(): Direction = when (this) {
+        FORWARD -> BACKWARD
+        BACKWARD -> FORWARD
+        BOTH -> BOTH
+    }
+}
+
+@Serializable
 enum class Cycleway {
     /** a.k.a. cycle lane with continuous markings, dedicated lane or simply (proper) lane. Usually
      *  exclusive access for cyclists */
     EXCLUSIVE_LANE,
-    /** [EXCLUSIVE_LANE] in both directions */
-    DUAL_LANE,
     /** a.k.a. cycle lane with dashed markings, protective lane, multipurpose lane, soft lane,
      *  recommended lane or cycle lanes on 2-1 roads. Usually priority access for cyclists, cars
      *  may use if necessary */
@@ -68,8 +93,6 @@ enum class Cycleway {
 
     /** cycle track, i.e. beyond curb or other barrier */
     TRACK,
-    /** [TRACK] in both directions */
-    DUAL_TRACK,
 
     /** cyclists share space with bus lane */
     BUSWAY,
@@ -105,7 +128,7 @@ enum class Cycleway {
     /** is a lane (cycleway=lane or cycleway=shared_lane), shared on busway doesn't count as a lane
      *  in that sense because it is not a subtag of the mentioned tags */
     val isLane get() = when (this) {
-        EXCLUSIVE_LANE, DUAL_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, UNKNOWN_LANE,
+        EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, UNKNOWN_LANE,
         SUGGESTION_LANE, PICTOGRAMS, UNSPECIFIED_SHARED_LANE, UNKNOWN_SHARED_LANE -> true
         else -> false
     }
@@ -115,13 +138,15 @@ enum class Cycleway {
         else -> false
     }
 
-    val isInvalid get() = this == INVALID
+    val isReversible get() = when (this) {
+        NONE, NONE_NO_ONEWAY, SEPARATE, SHOULDER -> false
+        else -> true
+    }
 
-    /** Whether it can be assumed that this cycleway only allows traffic in one direction */
-    val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
+    val isInvalid get() = this == INVALID
 }
 
-fun Cycleway.isSelectable(countryInfo: CountryInfo): Boolean =
+private fun Cycleway.isSelectable(countryInfo: CountryInfo): Boolean =
     !isInvalid && !isUnknown && !isAmbiguous(countryInfo)
 
 fun Cycleway.isAmbiguous(countryInfo: CountryInfo) = when (this) {
@@ -137,7 +162,8 @@ fun getSelectableCycleways(
     countryInfo: CountryInfo,
     roadTags: Map<String, String>,
     isRightSide: Boolean
-): List<Cycleway> {
+): List<CyclewayAndDirection> {
+    val dir = if (isRightSide xor countryInfo.isLeftHandTraffic) FORWARD else BACKWARD
     val cycleways = mutableListOf(
         NONE,
         TRACK,
@@ -149,10 +175,13 @@ fun getSelectableCycleways(
         PICTOGRAMS,
         BUSWAY,
         SIDEWALK_EXPLICIT,
-        SHOULDER,
-        DUAL_LANE,
-        DUAL_TRACK
+        SHOULDER
     )
+    val dualCycleways = listOf(
+        CyclewayAndDirection(if (countryInfo.hasAdvisoryCycleLane) EXCLUSIVE_LANE else UNSPECIFIED_LANE, BOTH),
+        CyclewayAndDirection(TRACK, BOTH),
+    )
+
     // no need to distinguish between advisory and exclusive lane where the concept of exclusive
     // lanes does not exist
     if (countryInfo.hasAdvisoryCycleLane) {
@@ -172,17 +201,15 @@ fun getSelectableCycleways(
         cycleways.remove(PICTOGRAMS)
         cycleways.add(cycleways.indexOf(NONE) + 1, NONE_NO_ONEWAY)
     }
-    return cycleways
+    return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
 }
 
-val Cycleway.estimatedWidth: Float get() = when (this) {
+val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {
     EXCLUSIVE_LANE -> 1.5f
-    DUAL_LANE -> 3f
     ADVISORY_LANE -> 1f
     UNSPECIFIED_LANE -> 1f
     UNKNOWN_LANE -> 1f
     SUGGESTION_LANE -> 0.75f
     TRACK -> 1.5f
-    DUAL_TRACK -> 3f
     else -> 0f
-}
+} * if (direction == BOTH) 2 else 1

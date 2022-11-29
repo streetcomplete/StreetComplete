@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.createBicycleBoulevard
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
@@ -22,19 +23,28 @@ import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowIt
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.AnswerItem2
 import de.westnordost.streetcomplete.overlays.IAnswerItem
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
-class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
+class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirection>() {
 
     override val otherAnswers: List<IAnswerItem> get() =
-        listOfNotNull(createSwitchBicycleBoulevardAnswer())
+        listOfNotNull(
+            createSwitchBicycleBoulevardAnswer(),
+            AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
+        )
 
     private var originalCycleway: LeftAndRightCycleway? = null
     private var originalBicycleBoulevard: BicycleBoulevard = BicycleBoulevard.NO
     private var bicycleBoulevard: BicycleBoulevard = BicycleBoulevard.NO
+    private var reverseDirection: Boolean = false
 
     /** returns whether the side that goes into the opposite direction of the driving direction of a
      * one-way is on the right side of the way */
@@ -48,6 +58,8 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
 
     private fun isContraflowInOneway(isRight: Boolean): Boolean =
         isOneway && (isReverseSideRight == isRight)
+
+    /* ---------------------------------------- lifecycle --------------------------------------- */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,12 +85,14 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
     private fun initStateFromTags() {
         bicycleBoulevard = originalBicycleBoulevard
 
-        val leftItem = originalCycleway?.left?.asStreetSideItem(countryInfo, isContraflowInOneway(false))
+        val leftItem = originalCycleway?.left?.asStreetSideItem(false, isContraflowInOneway(false), countryInfo)
         streetSideSelect.setPuzzleSide(leftItem, false)
 
-        val rightItem = originalCycleway?.right?.asStreetSideItem(countryInfo, isContraflowInOneway(true))
+        val rightItem = originalCycleway?.right?.asStreetSideItem(true, isContraflowInOneway(true), countryInfo)
         streetSideSelect.setPuzzleSide(rightItem, true)
     }
+
+    /* ----------------------------------- bicycle boulevards ----------------------------------- */
 
     private fun createSwitchBicycleBoulevardAnswer(): IAnswerItem? =
         if (bicycleBoulevard == BicycleBoulevard.YES) {
@@ -94,17 +108,6 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         } else {
             null
         }
-
-    override fun onClickSide(isRight: Boolean) {
-        val isContraflowInOneway = isContraflowInOneway(isRight)
-        val dialogItems = getSelectableCycleways(countryInfo, element!!.tags, isRight)
-            .map { it.asDialogItem(requireContext(), countryInfo, isContraflowInOneway) }
-
-        ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
-            val streetSideItem = item.value!!.asStreetSideItem(countryInfo, isContraflowInOneway)
-            streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
-        }.show()
-    }
 
     private fun removeBicycleBoulevard() {
         bicycleBoulevard = BicycleBoulevard.NO
@@ -130,6 +133,54 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         }
     }
 
+    /* ------------------------------ reverse cycleway direction -------------------------------- */
+
+    private fun selectReverseCyclewayDirection() {
+        confirmSelectReverseCyclewayDirection {
+            reverseDirection = true
+            context?.toast(R.string.cycleway_reverse_direction_toast)
+        }
+    }
+
+    private fun confirmSelectReverseCyclewayDirection(callback: () -> Unit) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.cycleway_reverse_direction_warning)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+    }
+
+    private fun reverseCyclewayDirection(isRight: Boolean) {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        reverseDirection = false
+        val value = streetSideSelect.getPuzzleSide(isRight)?.value ?: return
+        val newValue = value.copy(direction = value.direction.reverse())
+        val newItem = newValue.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)
+        streetSideSelect.replacePuzzleSide(newItem, isRight)
+    }
+
+    /* --------------------------------- select & apply answer ---------------------------------- */
+
+    override fun onClickSide(isRight: Boolean) {
+        if (reverseDirection) {
+            reverseCyclewayDirection(isRight)
+        } else {
+            selectCycleway(isRight)
+        }
+    }
+
+    private fun selectCycleway(isRight: Boolean) {
+        val isContraflowInOneway = isContraflowInOneway(isRight)
+        val dialogItems = getSelectableCycleways(countryInfo, element!!.tags, isRight)
+            .map { it.asDialogItem(isRight, isContraflowInOneway, requireContext(), countryInfo) }
+
+        ImageListPickerDialog(requireContext(), dialogItems, R.layout.labeled_icon_button_cell, 2) { item ->
+            val streetSideItem = item.value!!.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)
+            streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
+        }.show()
+    }
+
     override fun onClickOk() {
         if (bicycleBoulevard == BicycleBoulevard.YES) {
             val tags = StringMapChangesBuilder(element!!.tags)
@@ -146,6 +197,14 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         }
     }
 
+    private fun confirmNotOnewayForCyclists(callback: () -> Unit) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.quest_cycleway_confirmation_oneway_for_cyclists_too)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+    }
+
     private fun saveAndApplyCycleway(cycleways: LeftAndRightCycleway) {
         streetSideSelect.saveLastSelection()
         val tags = StringMapChangesBuilder(element!!.tags)
@@ -154,28 +213,22 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<Cycleway>() {
         applyEdit(UpdateElementTagsAction(tags.create()))
     }
 
+    /* ----------------------------- AStreetSideSelectOverlayForm ------------------------------- */
+
     override fun hasChanges(): Boolean =
         streetSideSelect.left?.value != originalCycleway?.left  ||
         streetSideSelect.right?.value != originalCycleway?.right ||
         originalBicycleBoulevard != bicycleBoulevard
 
-    override fun serialize(item: Cycleway) =  item.name
-    override fun deserialize(str: String) = Cycleway.valueOf(str)
-    override fun asStreetSideItem(item: Cycleway, isRight: Boolean): StreetSideDisplayItem<Cycleway> {
+    override fun serialize(item: CyclewayAndDirection) = Json.encodeToString(item)
+    override fun deserialize(str: String) = Json.decodeFromString<CyclewayAndDirection>(str)
+    override fun asStreetSideItem(item: CyclewayAndDirection, isRight: Boolean): StreetSideDisplayItem<CyclewayAndDirection> {
         val isContraflowInOneway = isContraflowInOneway(isRight)
         // NONE_NO_ONEWAY is displayed as simply NONE if not in contraflow because the former makes
         // only really sense in contraflow. This can only happen when applying the side(s) via the
         // last answer button
-        val item2 = if (item == Cycleway.NONE_NO_ONEWAY && !isContraflowInOneway) Cycleway.NONE else item
-        return item2.asStreetSideItem(countryInfo, isContraflowInOneway)
-    }
-
-    private fun confirmNotOnewayForCyclists(callback: () -> Unit) {
-        AlertDialog.Builder(requireContext())
-            .setMessage(R.string.quest_cycleway_confirmation_oneway_for_cyclists_too)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        val item2 = if (item.cycleway == Cycleway.NONE_NO_ONEWAY && !isContraflowInOneway) item.copy(cycleway = Cycleway.NONE) else item
+        return item2.asStreetSideItem(isRight, isContraflowInOneway, countryInfo)
     }
 
     companion object {

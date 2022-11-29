@@ -6,11 +6,16 @@ import android.graphics.drawable.Drawable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.util.ktx.getAdvisoryCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.getDualCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.getExclusiveCycleLaneResId
-import de.westnordost.streetcomplete.util.ktx.getPictogramCycleLaneResId
+import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneResId
+import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneMirroredResId
+import de.westnordost.streetcomplete.util.ktx.dualCycleLaneMirroredResId
+import de.westnordost.streetcomplete.util.ktx.dualCycleLaneResId
+import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneMirroredResId
+import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneResId
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawableResId
+import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredResId
+import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneResId
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.DrawableWrapper
 import de.westnordost.streetcomplete.view.Image
@@ -19,27 +24,37 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.controller.StreetSideItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun Cycleway.asDialogItem(context: Context, countryInfo: CountryInfo, isContraflowInOneway: Boolean) =
+fun CyclewayAndDirection.asDialogItem(
+    isRight: Boolean,
+    isContraflowInOneway: Boolean,
+    context: Context,
+    countryInfo: CountryInfo
+) =
     Item2(
         this,
-        getDialogIcon(context, countryInfo),
+        getDialogIcon(context, isRight, countryInfo),
         ResText(getTitleResId(isContraflowInOneway))
     )
 
-fun Cycleway.asStreetSideItem(
-    countryInfo: CountryInfo,
-    isContraflowInOneway: Boolean
+fun CyclewayAndDirection.asStreetSideItem(
+    isRight: Boolean,
+    isContraflowInOneway: Boolean,
+    countryInfo: CountryInfo
 ) =
     StreetSideItem(
         this,
-        getIconResId(countryInfo),
+        getIconResId(isRight, countryInfo),
         getTitleResId(isContraflowInOneway),
-        getDialogIconResId(countryInfo),
-        getFloatingIconResId(isContraflowInOneway, countryInfo.noEntrySignDrawableResId)
+        getDialogIconResId(isRight, countryInfo),
+        cycleway.getFloatingIconResId(isContraflowInOneway, countryInfo.noEntrySignDrawableResId)
     )
 
-private fun Cycleway.getDialogIcon(context: Context, countryInfo: CountryInfo): Image {
-    val id = getDialogIconResId(countryInfo)
+private fun CyclewayAndDirection.getDialogIcon(
+    context: Context,
+    isRight: Boolean,
+    countryInfo: CountryInfo
+): Image {
+    val id = getDialogIconResId(isRight, countryInfo)
     return if (countryInfo.isLeftHandTraffic) {
         DrawableImage(Rotate180Degrees(context.getDrawable(id)!!))
     } else {
@@ -47,11 +62,11 @@ private fun Cycleway.getDialogIcon(context: Context, countryInfo: CountryInfo): 
     }
 }
 
-private fun Cycleway.getDialogIconResId(countryInfo: CountryInfo): Int =
-    when (this) {
+private fun CyclewayAndDirection.getDialogIconResId(isRight: Boolean, countryInfo: CountryInfo): Int =
+    when (cycleway) {
         NONE ->     R.drawable.ic_cycleway_none_in_selection
         SEPARATE -> R.drawable.ic_cycleway_separate
-        else ->     getIconResId(countryInfo)
+        else ->     getIconResId(isRight, countryInfo)
     }
 
 private class Rotate180Degrees(drawable: Drawable) : DrawableWrapper(drawable) {
@@ -63,26 +78,41 @@ private class Rotate180Degrees(drawable: Drawable) : DrawableWrapper(drawable) {
 }
 
 private fun Cycleway.getFloatingIconResId(isContraflowInOneway: Boolean, noEntrySignDrawableResId: Int): Int? = when (this) {
-    NONE -> if (isContraflowInOneway) noEntrySignDrawableResId else null
+    NONE ->     if (isContraflowInOneway) noEntrySignDrawableResId else null
     SEPARATE -> R.drawable.ic_sidewalk_floating_separate
-    else -> null
+    else ->     null
 }
 
-private fun Cycleway.getIconResId(countryInfo: CountryInfo): Int =
-    if (countryInfo.isLeftHandTraffic) getLeftHandTrafficIconResId(countryInfo) else getRightHandTrafficIconResId(countryInfo)
+private fun CyclewayAndDirection.getIconResId(isRight: Boolean, countryInfo: CountryInfo): Int = when (direction) {
+    BOTH -> cycleway.getDualTrafficIconResId(countryInfo)
+    else -> {
+        val isForward = (direction == FORWARD)
+        val showMirrored = isForward xor isRight
+        if (showMirrored) cycleway.getLeftHandTrafficIconResId(countryInfo)
+        else              cycleway.getRightHandTrafficIconResId(countryInfo)
+    }
+}
+
+private fun Cycleway.getDualTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
+    UNSPECIFIED_LANE, EXCLUSIVE_LANE ->
+        if (countryInfo.isLeftHandTraffic) countryInfo.dualCycleLaneMirroredResId
+        else                               countryInfo.dualCycleLaneResId
+    TRACK ->
+        if (countryInfo.isLeftHandTraffic) R.drawable.ic_cycleway_track_dual_l
+        else                               R.drawable.ic_cycleway_track_dual
+    else -> 0
+}
 
 private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
-    UNSPECIFIED_LANE ->  countryInfo.getExclusiveCycleLaneResId(false)
-    EXCLUSIVE_LANE ->    countryInfo.getExclusiveCycleLaneResId(false)
-    ADVISORY_LANE ->     countryInfo.getAdvisoryCycleLaneResId(false)
-    SUGGESTION_LANE ->   countryInfo.getAdvisoryCycleLaneResId(false)
+    UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneResId
+    EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneResId
+    ADVISORY_LANE ->     countryInfo.advisoryCycleLaneResId
+    SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneResId
     TRACK ->             R.drawable.ic_cycleway_track
     NONE ->              R.drawable.ic_cycleway_none
     NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway
-    PICTOGRAMS ->        countryInfo.getPictogramCycleLaneResId(false)
+    PICTOGRAMS ->        countryInfo.pictogramCycleLaneResId
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
-    DUAL_LANE ->         countryInfo.getDualCycleLaneResId(false)
-    DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane
     SEPARATE ->          R.drawable.ic_cycleway_none
     SHOULDER ->          R.drawable.ic_cycleway_shoulder
@@ -90,38 +120,39 @@ private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int
 }
 
 private fun Cycleway.getLeftHandTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
-    UNSPECIFIED_LANE ->  countryInfo.getExclusiveCycleLaneResId(true)
-    EXCLUSIVE_LANE ->    countryInfo.getExclusiveCycleLaneResId(true)
-    ADVISORY_LANE ->     countryInfo.getAdvisoryCycleLaneResId(true)
-    SUGGESTION_LANE ->   countryInfo.getAdvisoryCycleLaneResId(true)
+    UNSPECIFIED_LANE ->  countryInfo.exclusiveCycleLaneMirroredResId
+    EXCLUSIVE_LANE ->    countryInfo.exclusiveCycleLaneMirroredResId
+    ADVISORY_LANE ->     countryInfo.advisoryCycleLaneMirroredResId
+    SUGGESTION_LANE ->   countryInfo.advisoryCycleLaneMirroredResId
     TRACK ->             R.drawable.ic_cycleway_track_l
     NONE ->              R.drawable.ic_cycleway_none
     NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway_l
-    PICTOGRAMS ->        countryInfo.getPictogramCycleLaneResId(true)
+    PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredResId
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
-    DUAL_LANE ->         countryInfo.getDualCycleLaneResId(true)
-    DUAL_TRACK ->        R.drawable.ic_cycleway_track_dual_l
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane_l
     SEPARATE ->          R.drawable.ic_cycleway_none
     SHOULDER ->          R.drawable.ic_cycleway_shoulder
     else -> 0
 }
 
-private fun Cycleway.getTitleResId(isContraflowInOneway: Boolean): Int = when (this) {
-    UNSPECIFIED_LANE ->  R.string.quest_cycleway_value_lane
-    EXCLUSIVE_LANE ->    R.string.quest_cycleway_value_lane
-    ADVISORY_LANE ->     R.string.quest_cycleway_value_advisory_lane
-    SUGGESTION_LANE ->   R.string.quest_cycleway_value_advisory_lane
-    TRACK ->             R.string.quest_cycleway_value_track
+private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): Int = when (cycleway) {
+    UNSPECIFIED_LANE, EXCLUSIVE_LANE -> {
+        if (direction == BOTH) R.string.quest_cycleway_value_lane_dual
+        else                   R.string.quest_cycleway_value_lane
+    }
+    TRACK -> {
+        if (direction == BOTH) R.string.quest_cycleway_value_track_dual
+        else                   R.string.quest_cycleway_value_track
+    }
     NONE -> {
         if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
         else                      R.string.quest_cycleway_value_none
     }
+    ADVISORY_LANE,
+    SUGGESTION_LANE ->   R.string.quest_cycleway_value_advisory_lane
     NONE_NO_ONEWAY ->    R.string.quest_cycleway_value_none_but_no_oneway
     PICTOGRAMS ->        R.string.quest_cycleway_value_shared
     SIDEWALK_EXPLICIT -> R.string.quest_cycleway_value_sidewalk
-    DUAL_LANE ->         R.string.quest_cycleway_value_lane_dual
-    DUAL_TRACK ->        R.string.quest_cycleway_value_track_dual
     BUSWAY ->            R.string.quest_cycleway_value_bus_lane
     SEPARATE ->          R.string.quest_cycleway_value_separate
     SHOULDER ->          R.string.quest_cycleway_value_shoulder

@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
-import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
 import de.westnordost.streetcomplete.osm.isOneway
-import de.westnordost.streetcomplete.osm.isReversedOneway
 import de.westnordost.streetcomplete.osm.mergeSides
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -45,29 +44,13 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     // tag sidewalk after setting the check date because we want to primarily set the check date
     // of the cycleway, not of the sidewalk, if there are no changes
     LeftAndRightSidewalk(
-        if (left == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
-        if (right == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+        if (left?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
+        if (right?.cycleway == SIDEWALK_EXPLICIT) Sidewalk.YES else null,
     ).applyTo(tags)
 }
 
 private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHandTraffic: Boolean) {
-    // TODO:
-    /*
-     leftDirection ?: tags-leftDirection
-     rightDirection ?: tags-rightDirection
-
-     isOnewayNotForCyclists = leftDirection == 0 || rightDirection == 0 || leftDirection != rightDirection
-
-
-     */
-
-    val isOnewayButNotForCyclists = isOneway(tags) && (
-        isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)
-        ?: isNotOnewayForCyclists(tags, isLeftHandTraffic)
-    )
-
-    // oneway situation for bicycles
-    if (isOnewayButNotForCyclists) {
+    if (isOneway(tags) && isNotOnewayForCyclistsNow(tags, isLeftHandTraffic)) {
         tags["oneway:bicycle"] = "no"
     } else {
         if (tags["oneway:bicycle"] == "no") {
@@ -76,10 +59,10 @@ private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags, isLeftHan
     }
 }
 
-private fun Cycleway.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
+private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
     val side = if (isRight) "right" else "left"
     val cyclewayKey = "cycleway:$side"
-    when (this) {
+    when (cycleway) {
         NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
         }
@@ -91,11 +74,11 @@ private fun Cycleway.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Bo
             tags[cyclewayKey] = "lane"
             tags["$cyclewayKey:lane"] = "advisory"
         }
-        EXCLUSIVE_LANE, DUAL_LANE -> {
+        EXCLUSIVE_LANE -> {
             tags[cyclewayKey] = "lane"
             tags["$cyclewayKey:lane"] = "exclusive"
         }
-        TRACK, DUAL_TRACK -> {
+        TRACK -> {
             tags[cyclewayKey] = "track"
             // only set if already set, because "yes" is considered the implicit default
             if (tags.containsKey("$cyclewayKey:segregated")) {
@@ -133,30 +116,40 @@ private fun Cycleway.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Bo
         }
     }
 
-    // no oneway for dual lane etc.
-    if (!isOneway) {
-        tags["$cyclewayKey:oneway"] = "no"
+    val isPhysicalCycleway = cycleway != NONE && cycleway != SEPARATE && cycleway != NONE_NO_ONEWAY
+    if (!isPhysicalCycleway) {
+        tags.remove("$cyclewayKey:oneway")
     } else {
-        val isPhysicalCycleway = this != NONE && this != NONE_NO_ONEWAY && this != SEPARATE
-        // ... but explicit oneway for lanes going in contraflow of oneways because this is not implied
-        if (isInContraflowOfOneway(isRight, tags, isLeftHandTraffic) && isPhysicalCycleway) {
-            tags["$cyclewayKey:oneway"] = if (isReversedOneway(tags)) "yes" else "-1"
-        } else {
-            // otherwise clear
-            if (tags["$cyclewayKey:oneway"] == "no") {
-                tags.remove("$cyclewayKey:oneway")
-            }
+        /* explicitly tag cycleway direction when either
+           - the selected direction is not the one assumed by default when the key is missing
+           - or the road is a oneway and the cycleway is on the contra-flow side
+           - or it is already tagged (to correct it if need be)
+         */
+        val isDefaultDirection = when (direction) {
+            FORWARD -> isRight xor isLeftHandTraffic
+            BACKWARD -> !isRight xor isLeftHandTraffic
+            BOTH -> false
+        }
+        val isInContraflowOfOneway = isInContraflowOfOneway(isRight, tags, isLeftHandTraffic)
+        if (!isDefaultDirection || isInContraflowOfOneway || tags.containsKey("$cyclewayKey:oneway")) {
+            tags["$cyclewayKey:oneway"] = direction.onewayValue
         }
     }
 
     // clear previous cycleway:lane value
-    if (!isLane) {
+    if (!cycleway.isLane) {
         tags.remove("$cyclewayKey:lane")
     }
 
     // clear previous cycleway:segregated value
-    val touchedSegregatedValue = this in listOf(SIDEWALK_EXPLICIT, TRACK, DUAL_TRACK)
+    val touchedSegregatedValue = cycleway in listOf(SIDEWALK_EXPLICIT, TRACK)
     if (!touchedSegregatedValue) {
         tags.remove("$cyclewayKey:segregated")
     }
+}
+
+private val Direction.onewayValue get() = when (this) {
+    FORWARD -> "yes"
+    BACKWARD -> "-1"
+    BOTH -> "no"
 }
