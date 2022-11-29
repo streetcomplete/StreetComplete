@@ -42,7 +42,7 @@ class BicycleBoulevardKtTest {
             arrayOf(StringMapEntryModify("cyclestreet", "no", "yes"))
         )
 
-        // keeping current tag in country where that country is not usually used
+        // keeping current tag in country where that tag is not usually used
         verifyAnswer(
             mapOf("cyclestreet" to "no"),
             YES, "DE",
