@@ -38,7 +38,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     override val otherAnswers: List<IAnswerItem> get() =
         listOfNotNull(
             createSwitchBicycleBoulevardAnswer(),
-            AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
+            createReverseCyclewayDirectionAnswer()
         )
 
     private var originalCycleway: LeftAndRightCycleway? = null
@@ -134,6 +134,10 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     }
 
     /* ------------------------------ reverse cycleway direction -------------------------------- */
+
+    private fun createReverseCyclewayDirectionAnswer(): IAnswerItem? =
+        if (bicycleBoulevard == BicycleBoulevard.YES) null
+        else AnswerItem(R.string.cycleway_reverse_direction, ::selectReverseCyclewayDirection)
 
     private fun selectReverseCyclewayDirection() {
         confirmSelectReverseCyclewayDirection {
