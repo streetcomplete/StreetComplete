@@ -39,6 +39,7 @@ fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>, is
     val previous = createCyclewaySides(tags, isLeftHandTraffic)
     val l = (left ?: previous?.left)
     val r = (right ?: previous?.right)
+    // "no cycleway" has no direction and should be ignored
     val leftDir = l?.direction?.takeIf { l.cycleway != NONE }
     val rightDir = r?.direction?.takeIf { r.cycleway != NONE }
 
