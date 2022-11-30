@@ -1570,7 +1570,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard">Bicycle boulevard</string>
     <string name="separate_cycleway_no">No cycling</string>
     <string name="separate_cycleway_allowed">Cyclists are admitted</string>
-    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists</string>
+    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (regardless of whether they are admitted or prohibited) </string>
     <string name="separate_cycleway_non_segregated">Combined foot- and cycleway</string>
     <string name="separate_cycleway_segregated">Segregated cycle- and footway</string>
     <string name="separate_cycleway_exclusive">Exclusive cycleway</string>
