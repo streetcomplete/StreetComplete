@@ -36,6 +36,40 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `fall back to bicycle=use_sidepath`() {
+        assertEquals(
+            cycleway(SEPARATE, SEPARATE),
+            parse("bicycle" to "use_sidepath")
+        )
+        assertEquals(
+            cycleway(NONE, SEPARATE),
+            parse("bicycle" to "use_sidepath", "cycleway:left" to "no")
+        )
+        assertEquals(
+            cycleway(SEPARATE, TRACK),
+            parse("bicycle" to "use_sidepath", "cycleway:right" to "track")
+        )
+    }
+
+    @Test fun `fall back to bicycle=use_sidepath with forward or backward`() {
+        assertEquals(
+            cycleway(null, SEPARATE),
+            parse("bicycle:forward" to "use_sidepath")
+        )
+        assertEquals(
+            cycleway(SEPARATE, null),
+            parse("bicycle:backward" to "use_sidepath")
+        )
+        assertEquals(
+            cycleway(SEPARATE, null, true),
+            parseForLeftHandTraffic("bicycle:forward" to "use_sidepath")
+        )
+        assertEquals(
+            cycleway(null, SEPARATE, true),
+            parseForLeftHandTraffic("bicycle:backward" to "use_sidepath")
+        )
+    }
+
     /* ----------------------------------------- direction -------------------------------------- */
 
     @Test fun `default directions`() {
