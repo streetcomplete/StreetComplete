@@ -106,11 +106,11 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
             binding.footwaySurfaceContainer.isVisible = true
         }
 
-        sealed class SingleSurfaceItemInfo
-        data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
-        data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
+        private sealed class SingleSurfaceItemInfo
+        private data class SingleSurfaceItem(val surface: DisplayItem<Surface>) : SingleSurfaceItemInfo()
+        private data class SingleSurfaceItemWithNote(val surface: DisplayItem<Surface>, val note: String) : SingleSurfaceItemInfo()
 
-        fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
+        private fun collectSurfaceData(callback: (SingleSurfaceItemInfo) -> Unit) {
             ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
                 val value = item.value
                 if (value != null && value.shouldBeDescribed) {
