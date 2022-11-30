@@ -39,13 +39,20 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
            specifically allows or forbids cycling on a footway, the user is left with his loose
            (mis)understanding of the local legislation to decide. After all, bicycle=yes/no
            is (usually) nothing physical, but merely describes what is legal. It is in that sense
-           then not information surveyable  on-the-ground, unless specifically signed.
-           bicycle=yes/no does not make a statement about from where this info is derived.
+           then not information surveyable on-the-ground, unless specifically signed.
+           bicycle=yes/no does however not make a statement about from where this info is derived.
 
            So, from an on-site surveyor point of view, it is always better to record what is signed,
            instead of what follows from that signage.
-           Signage, however, is out of scope of this overlay. It would be better fitted as a quest (in
-           countries and states where frequent signage is to be expected) */
+
+           Signage, however, is out of scope of this overlay because while the physical presence of
+           a cycleway can be validated at a glance, the presence of a sign requires to walk a bit up
+           or down the street in order to find (or not find) a sign.
+           More importantly, at the time of writing, there is no way to tag the information that a
+           bicycle=* access restriction is derived from the presence of a sign. This however is a
+           prerequisite for it being  displayed as a selectable option due to the reasons stated
+           above.
+        */
         currentCycleway = if (cycleway == NONE || cycleway == ALLOWED) NON_DESIGNATED else cycleway
         selectedItem = currentCycleway?.asItem(countryInfo.isLeftHandTraffic)
     }
