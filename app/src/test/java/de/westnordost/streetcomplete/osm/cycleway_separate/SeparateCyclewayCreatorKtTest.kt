@@ -48,18 +48,40 @@ class SeparateCyclewayCreatorKtTest {
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk" to "both",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             NONE,
             arrayOf(
                 StringMapEntryAdd("bicycle", "no"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:both" to "yes",
+            ),
+            NONE,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "no"),
+                StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            NONE,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "no"),
+                StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
     }
@@ -101,18 +123,40 @@ class SeparateCyclewayCreatorKtTest {
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk" to "both",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             ALLOWED,
             arrayOf(
                 StringMapEntryAdd("bicycle", "yes"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:both" to "yes",
+            ),
+            ALLOWED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "yes"),
+                StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            ALLOWED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "yes"),
+                StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
     }
@@ -170,16 +214,36 @@ class SeparateCyclewayCreatorKtTest {
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk" to "both",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             NON_DESIGNATED,
             arrayOf(
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            NON_DESIGNATED,
+            arrayOf(
+                StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "segregated" to "yes",
+                "sidewalk:both" to "yes",
+            ),
+            NON_DESIGNATED,
+            arrayOf(
+                StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
@@ -227,18 +291,38 @@ class SeparateCyclewayCreatorKtTest {
             mapOf(
                 "highway" to "footway",
                 "sidewalk" to "both",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             NON_SEGREGATED,
             arrayOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
                 StringMapEntryDelete("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "sidewalk:both" to "yes",
+            ),
+            NON_SEGREGATED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "designated"),
+                StringMapEntryAdd("segregated", "no"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            NON_SEGREGATED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "designated"),
+                StringMapEntryAdd("segregated", "no"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
     }
@@ -285,18 +369,38 @@ class SeparateCyclewayCreatorKtTest {
             mapOf(
                 "highway" to "footway",
                 "sidewalk" to "both",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             SEGREGATED,
             arrayOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "sidewalk:both" to "yes",
+            ),
+            SEGREGATED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "designated"),
+                StringMapEntryAdd("segregated", "yes"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "footway",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            SEGREGATED,
+            arrayOf(
+                StringMapEntryAdd("bicycle", "designated"),
+                StringMapEntryAdd("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
     }
@@ -343,9 +447,6 @@ class SeparateCyclewayCreatorKtTest {
                 "highway" to "cycleway",
                 "sidewalk" to "both",
                 "segregated" to "yes",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
-                "sidewalk:both" to "yes",
             ),
             EXCLUSIVE,
             arrayOf(
@@ -353,9 +454,36 @@ class SeparateCyclewayCreatorKtTest {
                 StringMapEntryModify("highway", "cycleway", "cycleway"),
                 StringMapEntryDelete("sidewalk", "both"),
                 StringMapEntryDelete("segregated", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "cycleway",
+                "segregated" to "yes",
+                "sidewalk:both" to "yes",
+            ),
+            EXCLUSIVE,
+            arrayOf(
+                StringMapEntryAdd("foot", "no"),
+                StringMapEntryModify("highway", "cycleway", "cycleway"),
+                StringMapEntryDelete("segregated", "yes"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "highway" to "cycleway",
+                "segregated" to "yes",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+            ),
+            EXCLUSIVE,
+            arrayOf(
+                StringMapEntryAdd("foot", "no"),
+                StringMapEntryModify("highway", "cycleway", "cycleway"),
+                StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryDelete("sidewalk:both", "yes"),
             )
         )
     }
@@ -416,22 +544,6 @@ class SeparateCyclewayCreatorKtTest {
         )
         verifyAnswer(
             mapOf("highway" to "cycleway", "sidewalk:left" to "yes"),
-            EXCLUSIVE_WITH_SIDEWALK,
-            arrayOf(
-                StringMapEntryModify("highway", "cycleway", "cycleway"),
-                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
-            )
-        )
-        verifyAnswer(
-            mapOf("highway" to "cycleway", "sidewalk:right" to "separate"),
-            EXCLUSIVE_WITH_SIDEWALK,
-            arrayOf(
-                StringMapEntryModify("highway", "cycleway", "cycleway"),
-                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
-            )
-        )
-        verifyAnswer(
-            mapOf("highway" to "cycleway", "sidewalk:both" to "even invalid"),
             EXCLUSIVE_WITH_SIDEWALK,
             arrayOf(
                 StringMapEntryModify("highway", "cycleway", "cycleway"),

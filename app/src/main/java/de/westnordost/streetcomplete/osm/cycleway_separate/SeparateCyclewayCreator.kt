@@ -50,7 +50,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
     }
 
     // tag or remove sidewalk
-    val hasSidewalk = createSidewalkSides(tags)?.any { it != Sidewalk.NO } == true || tags["sidewalk"] == "yes"
+    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     when (this) {
         EXCLUSIVE_WITH_SIDEWALK -> {
             if (!hasSidewalk) {

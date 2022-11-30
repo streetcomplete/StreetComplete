@@ -22,7 +22,7 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     val bicycle = tags["bicycle"] ?: if (tags["highway"] == "cycleway") "designated" else null
     if (bicycle != "designated") return if (bicycle == "yes") SeparateCycleway.ALLOWED else SeparateCycleway.NONE
 
-    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES || it == Sidewalk.SEPARATE } == true
+    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true
     if (hasSidewalk || tags["sidewalk"] == "yes") {
         return SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK
     }
