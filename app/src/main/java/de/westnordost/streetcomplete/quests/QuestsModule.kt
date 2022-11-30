@@ -126,7 +126,6 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
-import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.smoking.AddSmoking
 import de.westnordost.streetcomplete.quests.smoothness.AddPathSmoothness
@@ -462,7 +461,7 @@ fun questTypeRegistry(
 
     // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
     // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
-    //139 to AddShoulder(), // needs minimal thinking
+    // 139 to AddShoulder(), // needs minimal thinking
 
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
