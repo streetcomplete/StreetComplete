@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
-import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
@@ -117,17 +117,17 @@ private fun getStyleForStandalonePath(element: Element): Style {
             dominatingSurface = surfaceStatus.surface
             noteProvided = surfaceStatus.note
         }
-        is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in UNDERSPICIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
+        is CyclewayFootwaySurfacesWithNote -> if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES && surfaceStatus.cyclewayNote == null) {
             // the worst case possible - bad surface without note: so lets present it
             dominatingSurface = surfaceStatus.cycleway
             noteProvided = surfaceStatus.cyclewayNote
-        } else if (surfaceStatus.footway in UNDERSPICIFED_SURFACES) {
+        } else if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
             // cycleway surface either has
             // data as bad as this one (also bad surface, without note)
             // or even worse (bad surface without note, while here maybe there is a note)
             dominatingSurface = surfaceStatus.footway
             noteProvided = surfaceStatus.footwayNote
-        } else if (surfaceStatus.cycleway in UNDERSPICIFED_SURFACES) {
+        } else if (surfaceStatus.cycleway in UNDERSPECIFED_SURFACES) {
             // so footway has no bad surface, while cycleway has bad surface
             // lets take worse one
             dominatingSurface = surfaceStatus.cycleway
@@ -140,7 +140,7 @@ private fun getStyleForStandalonePath(element: Element): Style {
         is SingleSurface -> {
             dominatingSurface = surfaceStatus.surface
         }
-        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in UNDERSPICIFED_SURFACES) {
+        is CyclewayFootwaySurfaces -> if (surfaceStatus.footway in UNDERSPECIFED_SURFACES) {
             dominatingSurface = surfaceStatus.footway
         } else {
             // cycleway is arbitrarily taken as dominating here
@@ -155,7 +155,7 @@ private fun getStyleForStandalonePath(element: Element): Style {
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSet = dominatingSurface in UNDERSPICIFED_SURFACES
+    val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
 
     val color = if (isNotSetButThatsOkay) {
@@ -181,8 +181,8 @@ private fun getStyleForSidewalkAsProperty(element: Element): PolylineStyle {
     val rightSurfaceObject = Surface.values().find { it.osmValue == rightSurfaceString }
     val leftNote = if (element.tags["sidewalk:left:surface"] != null) { element.tags["sidewalk:left:surface"] } else { element.tags["sidewalk:both:surface"] }
     val rightNote = if (element.tags["sidewalk:right:surface"] != null) { element.tags["sidewalk:right:surface"] } else { element.tags["sidewalk:both:surface"] }
-    val leftIsNotSet = leftSurfaceObject in UNDERSPICIFED_SURFACES
-    val rightIsNotSet = rightSurfaceObject in UNDERSPICIFED_SURFACES
+    val leftIsNotSet = leftSurfaceObject in UNDERSPECIFED_SURFACES
+    val rightIsNotSet = rightSurfaceObject in UNDERSPECIFED_SURFACES
     val leftColor = if (sidewalkSides.left != Sidewalk.YES) {
         Color.INVISIBLE
     } else if (leftIsNotSet && leftNote != null) {

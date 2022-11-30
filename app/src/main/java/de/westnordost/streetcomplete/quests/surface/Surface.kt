@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_AREA
 import de.westnordost.streetcomplete.osm.surface.Surface.UNPAVED_ROAD
 import de.westnordost.streetcomplete.osm.surface.Surface.WOOD
 import de.westnordost.streetcomplete.osm.surface.Surface.WOODCHIPS
-import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 
 val COMMON_SPECIFIC_PAVED_SURFACES = listOf(
     ASPHALT, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
@@ -62,4 +62,4 @@ val GENERIC_AREA_SURFACES = listOf(
     PAVED_AREA, UNPAVED_AREA, GROUND_AREA
 )
 
-val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPICIFED_SURFACES
+val Surface.shouldBeDescribed: Boolean get() = this in UNDERSPECIFED_SURFACES

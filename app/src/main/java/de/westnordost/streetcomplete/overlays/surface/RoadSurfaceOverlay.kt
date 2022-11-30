@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.surface.SingleSurfaceWithNote
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissing
 import de.westnordost.streetcomplete.osm.surface.SurfaceMissingWithNote
-import de.westnordost.streetcomplete.osm.surface.UNDERSPICIFED_SURFACES
+import de.westnordost.streetcomplete.osm.surface.UNDERSPECIFED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.associatedKeysToBeRemovedOnChange
 import de.westnordost.streetcomplete.osm.surface.createSurfaceStatus
 import de.westnordost.streetcomplete.overlays.Color
@@ -99,7 +99,7 @@ private fun getStyle(element: Element): Style {
         }
     }
     // not set but indoor or private -> do not highlight as missing
-    val isNotSet = dominatingSurface in UNDERSPICIFED_SURFACES
+    val isNotSet = dominatingSurface in UNDERSPECIFED_SURFACES
     val isNotSetButThatsOkay = isNotSet && (isIndoor(element.tags) || isPrivateOnFoot(element)) || element.tags["leisure"] == "playground"
     val color = if (isNotSetButThatsOkay) {
         Color.INVISIBLE
