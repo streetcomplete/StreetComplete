@@ -86,13 +86,13 @@ class PathSurfaceOverlayForm : AbstractOverlayForm() {
         private fun bothFootAndBicycleTraffic(tags: Map<String, String>): Boolean {
             // in case where path is not clearly marked as carrying both foot and bicycle traffic
             // mapper can leave a note
-            if(tags["highway"] == "footway") {
+            if (tags["highway"] == "footway") {
                 return tags["bicycle"] == "yes" || tags["bicycle"] == "designated"
             }
-            if(tags["highway"] == "cycleway") {
+            if (tags["highway"] == "cycleway") {
                 return tags["foot"] == "yes" || tags["foot"] == "designated"
             }
-            if(tags["highway"] == "path") {
+            if (tags["highway"] == "path") {
                 return (tags["bicycle"] == "yes" || tags["bicycle"] == "designated") &&
                     (tags["foot"] == "yes" || tags["foot"] == "designated")
             }
