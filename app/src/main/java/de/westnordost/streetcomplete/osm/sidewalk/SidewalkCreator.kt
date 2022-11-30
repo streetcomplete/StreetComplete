@@ -29,7 +29,7 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
     if (left != null)  tags["sidewalk:left"] = left.osmValue
     if (right != null) tags["sidewalk:right"] = right.osmValue
 
-    // use shortcut syntax if possible, preferred by according to usage numbers on
+    // use shortcut syntax if possible, preferred by community according to usage numbers on taginfo
     tags.conflateSidewalk()
     tags.mergeSides("sidewalk")
 
