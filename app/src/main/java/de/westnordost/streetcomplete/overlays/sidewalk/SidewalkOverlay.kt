@@ -8,10 +8,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -42,9 +45,15 @@ class SidewalkOverlay : Overlay {
             ) and area != yes
         """).map { it to getFootwayStyle(it) }
 
-    override fun createForm(element: Element?) =
-        if (element != null && element.tags["highway"] in ALL_ROADS) SidewalkOverlayForm()
-        else null
+    override fun createForm(element: Element?): AbstractOverlayForm? {
+        if (element == null) return null
+
+        // allow editing of all roads and all exclusive cycleways
+        return if (
+            element.tags["highway"] in ALL_ROADS ||
+            createSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
+        ) SidewalkOverlayForm() else null
+    }
 }
 
 private fun getFootwayStyle(element: Element): PolylineStyle {
