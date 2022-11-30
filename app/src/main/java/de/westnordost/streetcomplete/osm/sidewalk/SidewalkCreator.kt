@@ -19,6 +19,10 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
        - sidewalk:right=yes
        First separating the values and then later conflating them again, if possible, solves this.
     */
+
+    /* NOT expanding the bare tag, because the bare tag follows a different schema
+       E.g. sidewalk=both  !=  sidewalk:left=both + sidewalk:right=both
+       See separateConflatedSidewalk for proper parsing of that */
     tags.expandSides("sidewalk", includeBareTag = false)
     tags.separateConflatedSidewalk()
 
