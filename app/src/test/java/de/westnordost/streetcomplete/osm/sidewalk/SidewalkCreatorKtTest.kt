@@ -39,11 +39,6 @@ class SidewalkCreatorKtTest {
             LeftAndRightSidewalk(Sidewalk.NO, Sidewalk.YES),
             arrayOf(StringMapEntryAdd("sidewalk", "right"))
         )
-        verifyAnswer(
-            mapOf(),
-            LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
-            arrayOf(StringMapEntryAdd("sidewalk", "separate"))
-        )
     }
 
     @Test fun `apply value when each side differs`() {
@@ -65,19 +60,20 @@ class SidewalkCreatorKtTest {
         )
     }
 
-    @Test fun `clean up previous tagging when applying simple values`() {
+    @Test fun `clean up previous tagging`() {
         verifyAnswer(
             mapOf(
+                "sidewalk" to "different",
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate",
                 "sidewalk:both" to "yes and separate ;-)"
             ),
             LeftAndRightSidewalk(Sidewalk.SEPARATE, Sidewalk.SEPARATE),
             arrayOf(
-                StringMapEntryAdd("sidewalk", "separate"),
+                StringMapEntryModify("sidewalk:both", "yes and separate ;-)", "separate"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "separate"),
-                StringMapEntryDelete("sidewalk:both", "yes and separate ;-)")
+                StringMapEntryDelete("sidewalk", "different"),
             )
         )
     }
@@ -205,6 +201,49 @@ class SidewalkCreatorKtTest {
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
                 StringMapEntryAdd("sidewalk", "both"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "sidewalk:right" to "no",
+            ),
+            LeftAndRightSidewalk(Sidewalk.YES, null),
+            arrayOf(
+                StringMapEntryDelete("sidewalk:right", "no"),
+                StringMapEntryAdd("sidewalk", "left"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "sidewalk:right" to "yes",
+            ),
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            arrayOf(
+                StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryAdd("sidewalk", "right"),
+            )
+        )
+        verifyAnswer(
+            mapOf(
+                "sidewalk:right" to "no",
+            ),
+            LeftAndRightSidewalk(Sidewalk.NO, null),
+            arrayOf(
+                StringMapEntryDelete("sidewalk:right", "no"),
+                StringMapEntryAdd("sidewalk", "no"),
+            )
+        )
+    }
+
+    @Test fun `apply does not conflate values non-yes-no-values`() {
+        verifyAnswer(
+            mapOf(
+                "sidewalk:right" to "separate",
+            ),
+            LeftAndRightSidewalk(Sidewalk.SEPARATE, null),
+            arrayOf(
+                StringMapEntryDelete("sidewalk:right", "separate"),
+                StringMapEntryAdd("sidewalk:both", "separate"),
             )
         )
     }

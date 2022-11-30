@@ -69,8 +69,15 @@ private fun Tags.conflateSidewalk() {
 private fun getConflatedSidewalkValue(left: String?, right: String?): String? = when {
     left == "yes" && right == "no" -> "left"
     left == "no" && right == "yes" -> "right"
-    // works also for invalid values
-    left == right ->  if (left == "yes") "both" else left
+    /* shall only work for "yes" and "no" because the wiki states that sidewalk:both=separate
+       should be preferred over sidewalk=separate: The former is more explicit while for the latter,
+       it is not entirely clear if it is meant for both sides or only one side.
+       (Same as with cycleway=separate vs cycleway:both=separate) */
+    left == right -> when (left) {
+        "yes" -> "both"
+        "no" ->  "no"
+        else ->  null
+    }
     else -> null
 }
 
