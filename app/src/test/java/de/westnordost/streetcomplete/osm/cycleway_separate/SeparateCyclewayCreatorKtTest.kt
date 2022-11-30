@@ -123,10 +123,23 @@ class SeparateCyclewayCreatorKtTest {
             NON_DESIGNATED,
             arrayOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()))
         )
+    }
+
+    @Test fun `apply non-designated does not change bicycle tag unless it is designated`() {
         verifyAnswer(
             mapOf("highway" to "footway", "bicycle" to "designated"),
             NON_DESIGNATED,
             arrayOf(StringMapEntryDelete("bicycle", "designated"))
+        )
+        verifyAnswer(
+            mapOf("highway" to "footway", "bicycle" to "yes"),
+            NON_DESIGNATED,
+            arrayOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()))
+        )
+        verifyAnswer(
+            mapOf("highway" to "footway", "bicycle" to "no"),
+            NON_DESIGNATED,
+            arrayOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()))
         )
     }
 
