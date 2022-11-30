@@ -44,7 +44,7 @@ class CyclewayOverlay(
         // roads
         mapData.filter("""
             ways with
-              highway ~ motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              highway ~ ${ALL_ROADS.joinToString("|")}
               and area != yes
         """).mapNotNull {
             val pos = mapData.getWayGeometry(it.id)?.center ?: return@mapNotNull null
@@ -110,7 +110,7 @@ private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): 
 
 private val cyclewayTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link
+      highway ~ track|living_street|pedestrian|service|motorway_link|motorway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 20
