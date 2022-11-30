@@ -65,7 +65,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         }
     }
 
-    // tag segregated (segregated always refers to footway-cycleway, not bridleway according to wiki)
+    // tag segregated
     when (this) {
         NONE, ALLOWED, NON_DESIGNATED, EXCLUSIVE, EXCLUSIVE_WITH_SIDEWALK -> {
             tags.remove("segregated")
