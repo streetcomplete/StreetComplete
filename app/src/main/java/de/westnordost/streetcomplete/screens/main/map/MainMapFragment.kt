@@ -247,6 +247,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.clear()
     }
 
+    fun clearSelectedPins() {
+        selectedPinsMapComponent?.clear()
+    }
+
     /* ----------------------------  Markers for current highlighting --------------------------- */
 
     override fun putMarkerForCurrentHighlighting(

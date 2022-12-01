@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -73,6 +74,7 @@ abstract class AbstractOverlayForm :
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val overlayRegistry: OverlayRegistry by inject()
+    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
@@ -140,6 +142,9 @@ abstract class AbstractOverlayForm :
 
         /** Called when the user chose to split the way */
         fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
+
+        /** Called when the user chose to move the node */
+        fun onMoveNode(editType: ElementEditType, node: Node)
 
         fun getMapPositionAt(screenPos: Point): LatLon?
     }
@@ -347,6 +352,13 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
+
+            if (element is Node // add moveNodeAnswer only if it's a free floating node
+                && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+                && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
+                answers.add(AnswerItem(R.string.move_node) { moveNode() })
+            }
+
         }
 
         answers.addAll(otherAnswers)
@@ -355,6 +367,10 @@ abstract class AbstractOverlayForm :
 
     protected fun splitWay(element: Element) {
         listener?.onSplitWay(overlay, element as Way, geometry as ElementPolylinesGeometry)
+    }
+
+    private fun moveNode() {
+        listener?.onMoveNode(overlay, element as Node)
     }
 
     protected fun composeNote(element: Element) {
