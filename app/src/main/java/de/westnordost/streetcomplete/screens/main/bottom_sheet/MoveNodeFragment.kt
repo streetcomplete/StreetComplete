@@ -209,7 +209,8 @@ class MoveNodeFragment :
 //     without good aerial imagery.
 // 2. The value added by moving nodes by such small distance, even if correct, is rather low.
 // 3. The position imprecision is already about 1.5 m because it is not really possible for the user
-//     to ascertain exactly what is the center of the icon, which is ca 3x3 m at maximum zoom.
+//     to ascertain exactly what is the center of an icon (e.g. in shop overlay), which is ca 3x3 m
+//     at maximum zoom.
 private const val MIN_MOVE_DISTANCE = 2.0
 // Move node functionality is meant for fixing slightly misplaced elements. If something moved far
 // away, it is reasonable to assume there are more substantial changes required, also to nearby
