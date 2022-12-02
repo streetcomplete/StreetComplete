@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.overlays
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.graphics.Point
+import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -146,7 +147,7 @@ abstract class AbstractOverlayForm :
         /** Called when the user chose to move the node */
         fun onMoveNode(editType: ElementEditType, node: Node)
 
-        fun getMapPositionAt(screenPos: Point): LatLon?
+        fun getMapPositionAt(screenPos: PointF): LatLon?
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -407,7 +408,7 @@ abstract class AbstractOverlayForm :
         val createNoteMarker = binding.markerCreateLayout.createNoteMarker
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos)
+        return listener?.getMapPositionAt(screenPos.toPointF())
     }
 
     companion object {

@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.graphics.Point
+import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
@@ -63,10 +64,13 @@ class MoveNodeFragment :
     private lateinit var editType: ElementEditType
     private lateinit var displayUnit: MeasureDisplayUnit
 
-    private val hasChanges get() = getPosition() != node.position
+    private lateinit var arrowDrawable: ArrowDrawable
+
+    private val hasChanges get() = getMarkerPosition() != node.position
 
     interface Listener {
-        fun getMapPositionAt(screenPos: Point): LatLon?
+        fun getMapPositionAt(screenPos: PointF): LatLon?
+        fun getScreenPositionAt(mapPos: LatLon): PointF?
 
         fun onMovedNode(editType: ElementEditType, position: LatLon)
     }
@@ -92,6 +96,10 @@ class MoveNodeFragment :
 
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
+        arrowDrawable = ArrowDrawable(resources)
+        binding.arrowView.setImageDrawable(arrowDrawable)
+        arrowDrawable.setTint(requireContext().getColor(R.color.accent))
+
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
         binding.moveNodeIconView.setImageResource(editType.icon)
@@ -109,15 +117,19 @@ class MoveNodeFragment :
         }
     }
 
-    private fun getPosition(): LatLon? {
-        val createNoteMarker = binding.moveNodeMarker
-        val screenPos = createNoteMarker.getLocationInWindow()
-        screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        return listener?.getMapPositionAt(screenPos)
+    private fun getMarkerScreenPosition(): PointF {
+        val moveNodeMarker = binding.moveNodeMarker
+        val screenPos = moveNodeMarker.getLocationInWindow()
+        screenPos.offset(moveNodeMarker.width / 2, moveNodeMarker.height / 2)
+        return screenPos.toPointF()
+    }
+
+    private fun getMarkerPosition(): LatLon? {
+        return listener?.getMapPositionAt(getMarkerScreenPosition())
     }
 
     private fun onClickOk() {
-        val pos = getPosition() ?: return
+        val pos = getMarkerPosition() ?: return
         if (!checkIsDistanceOkAndUpdateText(pos)) return
         viewLifecycleScope.launch {
             val action = MoveNodeAction(pos)
@@ -129,10 +141,17 @@ class MoveNodeFragment :
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double) = false
 
     @UiThread override fun onMapMoved(position: LatLon) {
+        updateArrowDrawable()
+
         if (checkIsDistanceOkAndUpdateText(position))
             binding.okButton.popIn()
         else
             binding.okButton.popOut()
+    }
+
+    private fun updateArrowDrawable() {
+        arrowDrawable.startPoint = listener?.getScreenPositionAt(node.position)
+        arrowDrawable.endPoint = getMarkerScreenPosition()
     }
 
     private fun checkIsDistanceOkAndUpdateText(position: LatLon): Boolean {

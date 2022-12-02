@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
@@ -497,6 +496,9 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    override fun getScreenPositionAt(mapPos: LatLon): PointF? =
+        mapFragment?.getPointOf(mapPos)
+
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
     override fun putMarkerForCurrentHighlighting(
@@ -533,8 +535,8 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    override fun getMapPositionAt(screenPos: Point): LatLon? =
-        mapFragment?.getPositionAt(screenPos.toPointF())
+    override fun getMapPositionAt(screenPos: PointF): LatLon? =
+        mapFragment?.getPositionAt(screenPos)
 
     override fun getRecordedTrack(): List<Trackpoint>? =
         mapFragment?.recordedTracks
