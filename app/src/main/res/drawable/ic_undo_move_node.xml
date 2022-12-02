@@ -2,20 +2,10 @@
     android:width="64dp"
     android:height="64dp"
     android:viewportWidth="24"
-    android:viewportHeight="14">
-    <group
-        android:translateY="11"
-        android:rotation="-90">
-        <path
-            android:fillColor="#c30"
-            android:pathData="M3,6v10h2v-10h3l-4,-6l-4,6z"/>
-    </group>
-    <group
-        android:translateY="3"
-        android:translateX="24"
-        android:rotation="90">
-        <path
-            android:fillColor="#c30"
-            android:pathData="M3,6v10h2v-10h3l-4,-6l-4,6z"/>
-    </group>
+    android:viewportHeight="24">
+  <path
+      android:pathData="M3.017,20.996 L3,10M21,3 L2.983,21.004m0,0L14,21"
+      android:strokeWidth="4"
+      android:strokeColor="#d14000"
+      android:strokeLineCap="round"/>
 </vector>
