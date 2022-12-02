@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.graphics.Point
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
@@ -32,8 +31,12 @@ import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -44,12 +47,9 @@ import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
-    Fragment(R.layout.fragment_create_note), IsCloseableBottomSheet, IsShowingElement, IsMapPositionAware {
+    Fragment(R.layout.fragment_move_node), IsCloseableBottomSheet, IsShowingElement, IsMapPositionAware {
 
-    private var _binding: FragmentMoveNodeBinding? = null
-    private val binding: FragmentMoveNodeBinding get() = _binding!!
-    private val okButton get() = binding.okButton
-    private val okButtonContainer get() = binding.okButtonContainer
+    private val binding by viewBinding(FragmentMoveNodeBinding::bind)
 
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
@@ -78,27 +78,39 @@ class MoveNodeFragment :
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
         editType = questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OsmElementQuestType<*>
             ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentMoveNodeBinding.inflate(inflater, container, false)
-        return binding.root
+        val isFeetAndInch = countryInfos.getByLocation(
+            countryBoundaries.get(),
+            node.position.longitude,
+            node.position.latitude
+        ).lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
+        displayUnit = if (isFeetAndInch) MeasureDisplayUnitFeetInch(4) else MeasureDisplayUnitMeter(10)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        okButton.setOnClickListener { onClickOk() }
+
+        binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
+
+        binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        val countryInfo = countryInfos.getByLocation(countryBoundaries.get(), node.position.longitude, node.position.latitude)
-        displayUnit = if (countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH)
-                MeasureDisplayUnitFeetInch(1)
-            else
-                MeasureDisplayUnitMeter(2)
-        binding.createNoteIconView.setImageResource(editType.icon)
+        binding.moveNodeIconView.setImageResource(editType.icon)
+
+        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+        binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+            cornerRadius, margin, margin, margin, margin
+        )
+
+        if (savedInstanceState == null) {
+            binding.speechbubbleContentContainer.startAnimation(
+                AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
+            )
+        }
     }
 
     private fun getPosition(): LatLon? {
-        val createNoteMarker = binding.createNoteMarker
+        val createNoteMarker = binding.moveNodeMarker
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         return listener?.getMapPositionAt(screenPos)
@@ -118,9 +130,9 @@ class MoveNodeFragment :
 
     @UiThread override fun onMapMoved(position: LatLon) {
         if (checkIsDistanceOkAndUpdateText(position))
-            okButtonContainer.popIn()
+            binding.okButton.popIn()
         else
-            okButtonContainer.popOut()
+            binding.okButton.popOut()
     }
 
     private fun checkIsDistanceOkAndUpdateText(position: LatLon): Boolean {
