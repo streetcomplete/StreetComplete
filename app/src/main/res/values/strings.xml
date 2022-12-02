@@ -151,7 +151,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_move_node_message">If it is at a wrong position, you can move this feature.\nMove it now?</string>
     <string name="node_moved_not_far_enough">Please move it further</string>
     <string name="node_moved_too_far">Moved too far. Consider leaving a note</string>
-    <string name="node_moved">Moved %s</string>
+    <string name="node_moved">Moved by %s</string>
     <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
