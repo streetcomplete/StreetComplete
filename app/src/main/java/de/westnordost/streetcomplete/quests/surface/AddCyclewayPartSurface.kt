@@ -38,12 +38,6 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags, "cycleway")
-        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
-            if (tags["footway:surface"] == tags["cycleway:surface"]) {
-                tags["surface"] = tags["cycleway:surface"]!!
-            } else {
-                tags.remove("surface")
-            }
-        }
+        answer.updateSegregatedFootAndCycleway(tags)
     }
 }
