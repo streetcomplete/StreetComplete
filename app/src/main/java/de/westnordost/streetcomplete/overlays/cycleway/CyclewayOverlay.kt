@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.createBicycleBoulevard
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -117,6 +118,7 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
       or cyclestreet = yes
       or bicycle_road = yes
       or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ ".*zone:?([1-9]|[1-2][0-9]|30)"
 """.toElementFilterExpression() }
 
 private fun cyclewayTaggingNotExpected(element: Element) =
