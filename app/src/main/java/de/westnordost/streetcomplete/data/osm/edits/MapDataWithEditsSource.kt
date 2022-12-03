@@ -196,7 +196,6 @@ class MapDataWithEditsSource internal constructor(
                             mapData.put(elem, getGeometry(elem.type, elem.id))
                         }
                     }
-
                 }
             }
 

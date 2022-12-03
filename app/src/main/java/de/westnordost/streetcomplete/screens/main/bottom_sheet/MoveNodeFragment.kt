@@ -143,10 +143,11 @@ class MoveNodeFragment :
     @UiThread override fun onMapMoved(position: LatLon) {
         updateArrowDrawable()
 
-        if (checkIsDistanceOkAndUpdateText(position))
+        if (checkIsDistanceOkAndUpdateText(position)) {
             binding.okButton.popIn()
-        else
+        } else {
             binding.okButton.popOut()
+        }
     }
 
     private fun updateArrowDrawable() {

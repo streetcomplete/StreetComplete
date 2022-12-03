@@ -483,8 +483,9 @@ class MainFragment :
         showInBottomSheet(MoveNodeFragment.create(editType, node), clearPreviousHighlighting = false)
         mapFragment.clearSelectedPins()
         mapFragment.hideNonHighlightedPins()
-        if (editType !is Overlay)
+        if (editType !is Overlay) {
             mapFragment.hideOverlay()
+        }
 
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())

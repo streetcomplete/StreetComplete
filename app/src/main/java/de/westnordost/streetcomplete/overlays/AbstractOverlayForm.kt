@@ -359,7 +359,6 @@ abstract class AbstractOverlayForm :
                 && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
                 answers.add(AnswerItem(R.string.move_node) { moveNode() })
             }
-
         }
 
         answers.addAll(otherAnswers)

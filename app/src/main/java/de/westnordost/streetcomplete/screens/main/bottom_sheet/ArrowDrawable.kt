@@ -43,17 +43,16 @@ class ArrowDrawable(private val resources: Resources) : Drawable() {
         val start = startPoint ?: return
         val endPoint = endPoint ?: return
 
-
         // draw line
         val angle = atan2(endPoint.y - start.y, endPoint.x - start.x).toDouble()
-        val dist = (endPoint - start).length() - paint.strokeWidth/sqrt(2f)
+        val dist = (endPoint - start).length() - paint.strokeWidth / sqrt(2f)
         val end = start.translate(dist, angle)
 
         canvas.drawLine(start.x, start.y, end.x, end.y, paint)
         // draw arrow
         val arrowHeadSize = 14 * resources.displayMetrics.density
-        val arrowHeadLineEnd1 = end.translate(arrowHeadSize, angle + PI * 3/4)
-        val arrowHeardLineEnd2 = end.translate(arrowHeadSize, angle - PI * 3/4)
+        val arrowHeadLineEnd1 = end.translate(arrowHeadSize, angle + PI * 3 / 4)
+        val arrowHeardLineEnd2 = end.translate(arrowHeadSize, angle - PI * 3 / 4)
         canvas.drawLine(end.x, end.y, arrowHeadLineEnd1.x, arrowHeadLineEnd1.y, paint)
         canvas.drawLine(end.x, end.y, arrowHeardLineEnd2.x, arrowHeardLineEnd2.y, paint)
     }
