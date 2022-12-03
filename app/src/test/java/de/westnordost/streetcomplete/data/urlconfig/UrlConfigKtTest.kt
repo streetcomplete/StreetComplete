@@ -84,7 +84,7 @@ internal class UrlConfigKtTest {
         assertNull(parseConfigUrl("https://blorb.io/?n=Test&q=d", quests, overlays))
     }
 
-    @Test fun `reject misformed parameters`() {
+    @Test fun `reject malformed parameters`() {
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test=Wrong&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n==Wrong&q=d", quests, overlays))
         assertNull(parseConfigUrl("https://streetcomplete.app/s?n=Test&qo&q=d", quests, overlays))

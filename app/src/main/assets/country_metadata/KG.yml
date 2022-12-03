@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, РСК, DemirBank, КБ Кыргызстан, Халык Банк, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Коммерческий банк Кыргызстан]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 livingStreetSignStyle: russia
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
+orchardProduces: [apple, tomato, apricot, hazelnut, grape, pear, peach, plum, walnut, cherry, raspberry, pistachio, almond, chilli_pepper, sweet_pepper, strawberry]
 popularReligions: [muslim]
 postboxesHaveCollectionTimes: true
-atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, РСК, DemirBank, КБ Кыргызстан, Халык Банк, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Коммерческий банк Кыргызстан]
-orchardProduces: [apple, tomato, apricot, hazelnut, grape, pear, peach, plum, walnut, cherry, raspberry, pistachio, almond, chilli_pepper, sweet_pepper, strawberry]

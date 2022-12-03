@@ -1,5 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Swedbank, Bankomat AB, Nordea, Bankomat, Handelsbanken, SEB, Kontanten, ICA Banken, ICA, Länsförsäkringar, ICA-banken, Kontanten AB, Nokas, Danske Bank, Uttag, Länsförsäkringar Bank, Forex, Autocash]
 centerLineStyle: white
+chargingStationOperators: [Fortum Charge & Drive, Tesla Motors Inc., Bee, Tesla, Vattenfall, InCharge, CaCharge, Göteborgs Energi, Umeå Energi, Sundsvall Elnät/Green Highway, Karlshamn Energi, Jämtkraft, Clever, CLEVER, Bee Charging Solutions, Ultra, BTEA, inCharge, e-on, charge&drive, VB Energi, SKF, NOVI Ressort, Mönsterås Kommun, Ljusdal Energi, Lidl, Kraftringen, Ionity, IKEA, Gävle Energi, Fyrfasen Energi, Fortum, Enkla Elbolaget, Drive&charge, Charge & Drive, Affärsverken]
+clothesContainerOperators: [Myrorna, Human Bridge, FTI]
 edgeLineStyle: short white dashes
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
@@ -10,10 +13,7 @@ noEntrySignStyle: yellow
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]
+orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]
 popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]
 postboxesHaveCollectionTimes: true
 regularShoppingDays: 5
-atmOperators: [Swedbank, Bankomat AB, Nordea, Bankomat, Handelsbanken, SEB, Kontanten, ICA Banken, ICA, Länsförsäkringar, ICA-banken, Kontanten AB, Nokas, Danske Bank, Uttag, Länsförsäkringar Bank, Forex, Autocash]
-chargingStationOperators: [Fortum Charge & Drive, Tesla Motors Inc., Bee, Tesla, Vattenfall, InCharge, CaCharge, Göteborgs Energi, Umeå Energi, Sundsvall Elnät/Green Highway, Karlshamn Energi, Jämtkraft, Clever, CLEVER, Bee Charging Solutions, Ultra, BTEA, inCharge, e-on, charge&drive, VB Energi, SKF, NOVI Ressort, Mönsterås Kommun, Ljusdal Energi, Lidl, Kraftringen, Ionity, IKEA, Gävle Energi, Fyrfasen Energi, Fortum, Enkla Elbolaget, Drive&charge, Charge & Drive, Affärsverken]
-clothesContainerOperators: [Myrorna, Human Bridge, FTI]
-orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]

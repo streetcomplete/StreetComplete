@@ -1401,7 +1401,7 @@ sorted alphabetically by title -->
     <string name="vacant_shop_title">"Leerstehendes Geschäft"</string>
 
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
-    <string name="unknown_shop_title">"Anderer Ortstyp"</string>
+    <string name="unknown_shop_title">"Andere Art von Ort"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
     <string name="quest_bicycle_barrier_installation_title">"Kann diese Fahrradbarriere geöffnet werden (mit oder ohne Schlüssel)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fest"</string>
@@ -1432,7 +1432,7 @@ sorted alphabetically by title -->
     <string name="quest_cycleway_value_advisory_lane">"Schutzstreifen"</string>
     <string name="urlconfig_scan_qr_code_again2">"Scanne den QR-Code oder klicke &lt;a href=\"%s\"&gt;diesen Link&lt;/a&gt; nach der Installation der App erneut, um die Voreinstellung zu übernehmen."</string>
     <string name="confirmation_replace_shop_title">"Ist das jetzt ein anderer Ort?"</string>
-    <string name="confirmation_replace_shop_message">"In diesem Fall sind Details wie Öffnungszeiten auch geändert worden."</string>
+    <string name="confirmation_replace_shop_message">"In diesem Fall werden auch Details wie Öffnungszeiten, Kontaktinformationen, etc. geändert worden sein."</string>
     <string name="confirmation_replace_shop_yes">"Jetzt ein anderer Ort"</string>
     <string name="confirmation_replace_shop_no">"Noch der gleiche Ort"</string>
 </resources>

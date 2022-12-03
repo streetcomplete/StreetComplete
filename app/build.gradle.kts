@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 4901
-        versionName = "49.0"
+        versionCode = 4903
+        versionName = "49.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -109,7 +109,7 @@ dependencies {
     val kotlinVersion = "1.7.10"
     val mockitoVersion = "3.12.4"
     val kotlinxCoroutinesVersion = "1.6.4"
-    val koinVersion = "3.2.0"
+    val koinVersion = "3.2.3"
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.8")
 
@@ -119,8 +119,8 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation("org.assertj:assertj-core:3.23.1")
 
-    androidTestImplementation("androidx.test:runner:1.4.0")
-    androidTestImplementation("androidx.test:rules:1.4.0")
+    androidTestImplementation("androidx.test:runner:1.5.1")
+    androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation("org.assertj:assertj-core:3.23.1")
 
@@ -134,14 +134,14 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.5.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.3")
+    implementation("androidx.fragment:fragment-ktx:1.5.4")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.3")
+    implementation("androidx.exifinterface:exifinterface:1.3.5")
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
@@ -190,7 +190,7 @@ dependencies {
     implementation("ch.poole:OpeningHoursParser:0.27.0")
 
     // measuring distance with AR
-    implementation("com.google.ar:core:1.33.0")
+    implementation("com.google.ar:core:1.34.0")
     implementation("com.google.ar.sceneform:core:1.17.1")
 }
 
@@ -203,9 +203,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20221031"
+val nsiVersion = "v6.0.20221107"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v3.5.1"
+val presetsVersion = "v5.0.1"
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"

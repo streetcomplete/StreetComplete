@@ -1,3 +1,19 @@
+v49.2: |
+  <p>Tiny bugfix release for v49.1, because</p>
+  <ul>
+  <li>Shop overlay: Fix adding places would only add the name and not the type (regression from #4605)</li>
+  <li>Shop overlay: Two small UI enhancements</li>
+  </ul>
+
+v49.1: |
+  <ul>
+  <li>Shop overlay: Don't show confirmation dialog when just adding a place (#4605)</li>
+  <li>Sidewalk overlay: Don't color missing sidewalks on motorways etc. as red (#4606)</li>
+  <li>Shop overlay, Bus stop names, place names...: Show name in several lines if it doesn't fit into one line (#4613)</li>
+  <li>Shoulders: Completely disable this quest because the definition in OSM right now is too fuzzy to be useful & easy to answer. See <a href="https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185">forum discussion</a>. (#4617)</li>
+  <li>Other small enhancements and fixes (#4610)</li>
+  </ul>
+
 v49.0: |
   <h3>QR Codes</h3>
   <p>Share your quest presets with friends via QR Code! Also, check out <a href="https://streetcomplete.app">streetcomplete.app</a>! (#3642, #3481, #4537)</p>

@@ -1352,9 +1352,7 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Criou uma nota com…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"É um ponto de encontro"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Um ponto de encontro é um local para onde as pessoas se devem dirigir no caso de emergência. Normalmente parece-se com isto:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_address_answer_house_name2">"É o nome de um edifício…"</string>
+    <string name="quest_address_answer_house_name2">"O endereço tem o nome do edifício…"</string>
     <string name="quest_address_street_street_name_label">"Nome da rua:"</string>
     <string name="quest_address_street_hint2">"Toque na rua no mapa para a selecionar"</string>
     <string name="quest_bicycle_incline_title">"Qual é a direção para cima aqui?"</string>
@@ -1376,9 +1374,7 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"Outro tipo de local"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Esta barreira de bicicletas pode ser aberta (com ou sem uma chave)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Pode ser aberta"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
@@ -1400,4 +1396,14 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message_overwrite">"Nota: o seu modelo com o mesmo nome será substituído!"</string>
     <string name="urlconfig_switch_hint">"Pode mudar de modelos nas configurações em qualquer altura."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Suporte de bicicletas de dois níveis"</string>
+    <string name="user_profile_current_week_title">"Últimos 7 dias"</string>
+    <string name="user_profile_dates_mapped">"Dias que mapeou recentemente"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"via recomendada para bicicletas"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Após instalar a aplicação, digitalize o código QR novamente ou clique &lt;a href=\"%s\"&gt;nesta hiperligação&lt;/a&gt; para aplicar o modelo."</string>
+    <string name="confirmation_replace_shop_title">"Agora é um sítio diferente?"</string>
+    <string name="confirmation_replace_shop_message">"Nesse caso, o horário de abertura, contactos, etc. terão de ser também alterados."</string>
+    <string name="confirmation_replace_shop_yes">"É um sítio diferente agora"</string>
+    <string name="confirmation_replace_shop_no">"Continua a ser o mesmo sítio"</string>
 </resources>

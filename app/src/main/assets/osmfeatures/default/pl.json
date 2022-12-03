@@ -411,18 +411,19 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "kondygnacje podziemne"
                 },
-                "building/levels_building": {
-                    "label": "Liczba kondygnacji",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "liczba kondygnacji"
-                },
                 "building/material": {
                     "label": "Materiał elewacji",
                     "terms": "materiał"
                 },
+                "building/part": {
+                    "label": "Część budynku"
+                },
                 "building_area": {
                     "label": "Budynek",
                     "terms": "budynek"
+                },
+                "building_area_yes": {
+                    "label": "Budynek"
                 },
                 "bunker_type": {
                     "label": "Rodzaj"
@@ -488,9 +489,6 @@
                 "capacity_volume": {
                     "label": "Objętość (m³)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Wpłatomat"
                 },
                 "castle_type": {
                     "label": "Rodzaj",
@@ -767,7 +765,6 @@
                     "label": "Znaczenie"
                 },
                 "departures_board": {
-                    "label": "Tablica odjazdów",
                     "options": {
                         "no": "Brak",
                         "realtime": "Tablica elektroniczna",
@@ -935,6 +932,9 @@
                     "label": "Woda pitna",
                     "terms": "woda pitna"
                 },
+                "drinking_water_available": {
+                    "label": "Dostępna woda pitna"
+                },
                 "drive_through": {
                     "label": "Drive-through (zakupy)",
                     "terms": "drive-through"
@@ -996,7 +996,10 @@
                     "label": "Rodzaj"
                 },
                 "entrance": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "home": "Prywatny dom lub mieszkanie"
+                    }
                 },
                 "except": {
                     "label": "Wyjątki"
@@ -1124,9 +1127,6 @@
                 },
                 "fuel": {
                     "label": "Paliwo"
-                },
-                "fuel_multi": {
-                    "label": "Rodzaje paliw"
                 },
                 "gambling": {
                     "label": "Gry"
@@ -1392,6 +1392,9 @@
                 "kerb/height": {
                     "label": "Wysokość"
                 },
+                "kitchen": {
+                    "label": "Kuchnia"
+                },
                 "kneipp_water_cure_multi": {
                     "label": "Rodzaje"
                 },
@@ -1557,6 +1560,9 @@
                     "placeholder": "40, 50, 60...",
                     "terms": "zalecane ograniczenie prędkości"
                 },
+                "maxspeed/hgv": {
+                    "label": "Ograniczenie prędkości dla ciężarówek"
+                },
                 "maxstay": {
                     "label": "Maksymalny czas postoju",
                     "terms": "maksymalny czas postoju"
@@ -1597,6 +1603,9 @@
                     "label": "Minimalna prędkość",
                     "placeholder": "20, 30, 40...",
                     "terms": "minimalna prędkość"
+                },
+                "model": {
+                    "label": "Model"
                 },
                 "monitoring_multi": {
                     "label": "Monitoring"
@@ -1820,10 +1829,6 @@
                     "label": "Rodzaje płatności",
                     "terms": "rodzaj płatności,sposób płatności,metoda płatności,płatność,karta płatnicza,karta kredytowa,gotówka"
                 },
-                "payment_multi_fee": {
-                    "label": "Rodzaje płatności",
-                    "terms": "rodzaje płatności"
-                },
                 "phases": {
                     "label": "Liczba faz",
                     "placeholder": "1, 2, 3..."
@@ -1944,7 +1949,6 @@
                     "label": "Metoda wytwarzania energii"
                 },
                 "plant/output/electricity": {
-                    "label": "Moc wyjściowa",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2537,6 +2541,9 @@
                 "studio": {
                     "label": "Rodzaj"
                 },
+                "subject": {
+                    "label": "Temat"
+                },
                 "substance": {
                     "label": "Substancja"
                 },
@@ -2564,6 +2571,7 @@
                         "ground": "ground (gruntowa)",
                         "paved": "paved (utwardzona)",
                         "paving_stones": "paving_stones (kostka chodnikowa)",
+                        "salt": "Sól",
                         "sand": "sand (piasek)",
                         "unpaved": "unpaved (nieutwardzona)",
                         "wood": "wood (drewno)"
@@ -2588,9 +2596,6 @@
                     "label": "Data ostatniej kontroli",
                     "terms": "data ostatniej kontroli"
                 },
-                "survey_point/datum_aligned": {
-                    "label": "Wyrównane do lokalnego układu odniesienia geodezyjnego"
-                },
                 "survey_point/purpose": {
                     "label": "Przeznaczenie",
                     "options": {
@@ -2602,8 +2607,10 @@
                 "survey_point/structure": {
                     "label": "Konstrukcja",
                     "options": {
+                        "beacon": "Nadajnik",
                         "block": "Blok",
-                        "cairn": "Kopiec"
+                        "cairn": "Kopiec",
+                        "cut": "Wytnij"
                     }
                 },
                 "swimming_pool": {
@@ -2696,7 +2703,6 @@
                 "tracktype": {
                     "label": "Spoistość drogi, zazwyczaj leśnej lub polnej (tracktype)",
                     "options": {
-                        "grade1": "Utwardzona lub mocno ubita nawierzchnia",
                         "grade2": "Żwirowa/tłuczniowa z niewielką domieszką piasku, mułu lub gliny",
                         "grade3": "Składająca się z równej ilości twardych i miękkich materiałów",
                         "grade4": "Ziemia/piasek/trawa z domieszką twardych materiałów",
@@ -3547,7 +3553,7 @@
                     "terms": "inpost,orlen paczka,aliexpress,cainiao,allegro,automat przesyłkowy,automat paczkowy"
                 },
                 "amenity/parking": {
-                    "name": "Parkirišče",
+                    "name": "Parking samochodowy",
                     "terms": "parking"
                 },
                 "amenity/parking/multi-storey": {
@@ -4325,6 +4331,10 @@
                     "name": "Budynek (ogólny)",
                     "terms": "budynek,budowla,dom"
                 },
+                "building/allotment_house": {
+                    "name": "Domek działkowy",
+                    "terms": "dom na działce,dom na ogródku działkowym,dom działkowy"
+                },
                 "building/apartments": {
                     "name": "Budynek mieszkalny wielorodzinny",
                     "terms": "blok,kamienica"
@@ -4595,10 +4605,6 @@
                 "craft/bookbinder": {
                     "name": "Introligator",
                     "terms": "introligator,oprawianie,rzemiosło,rzemieślnik,rzemieślnicy"
-                },
-                "craft/brewery": {
-                    "name": "Browar",
-                    "terms": "browar,piwo,rzemiosło,rzemieślnik,rzemieślnicy"
                 },
                 "craft/carpenter": {
                     "name": "Cieśla",
@@ -5463,7 +5469,7 @@
                 },
                 "landuse/allotments": {
                     "name": "Ogródki działkowe",
-                    "terms": "ogródki działkowe,ogród działkowy,działki"
+                    "terms": "ogródki działkowe,ogród działkowy,działki,rod"
                 },
                 "landuse/aquaculture": {
                     "name": "Teren akwakultury",
@@ -6997,10 +7003,6 @@
                 "power/plant/source/oil": {
                     "name": "Elektrownia zasilana ropą",
                     "terms": "elektrownia zasilana ropą"
-                },
-                "power/plant/source/solar": {
-                    "name": "Elektrownia słoneczna",
-                    "terms": "elektrownia słoneczna,farma fotowoltaiczna"
                 },
                 "power/plant/source/waste": {
                     "name": "Spalarnia odpadów",

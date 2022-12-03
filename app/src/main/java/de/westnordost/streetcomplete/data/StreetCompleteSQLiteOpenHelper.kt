@@ -183,7 +183,10 @@ class StreetCompleteSQLiteOpenHelper(context: Context, dbName: String) :
             db.execSQL(CountryStatisticsTables.create(CountryStatisticsTables.NAME_CURRENT_WEEK))
             db.execSQL(ActiveDaysTable.CREATE)
         }
+        if (oldVersion <= 7 && newVersion > 7) {
+            db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = 'AddShoulder'", null)
+        }
     }
 }
 
-private const val DB_VERSION = 7
+private const val DB_VERSION = 8

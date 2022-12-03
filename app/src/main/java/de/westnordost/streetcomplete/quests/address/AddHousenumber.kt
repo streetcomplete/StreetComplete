@@ -22,11 +22,11 @@ import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
 
-    override val changesetComment = "Add housenumbers"
+    override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
     override val achievements = listOf(POSTMAN)
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=address/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
         "LV", // https://github.com/streetcomplete/StreetComplete/issues/4597

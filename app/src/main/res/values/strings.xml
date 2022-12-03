@@ -147,6 +147,13 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="split_way">Split way</string>
 
+    <string name="move_node">It’s at slightly different position…</string>
+    <string name="quest_move_node_message">If it is at a wrong position, you can move this feature.\nMove it now?</string>
+    <string name="node_moved_not_far_enough">Please move it further</string>
+    <string name="node_moved_too_far">Moved too far. Consider leaving a note</string>
+    <string name="node_moved">Moved by %s</string>
+    <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
+
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
@@ -185,6 +192,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="split_way_action_description">You split the way</string>
     <string name="deleted_poi_action_description">You deleted it</string>
     <string name="create_node_action_description">You created a node with …</string>
+    <string name="move_node_action_description">You moved the node</string>
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>
@@ -923,7 +931,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think something is missing -->
     <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>

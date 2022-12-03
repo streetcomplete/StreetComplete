@@ -413,11 +413,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "地下室,地下楼层,楼层,层数"
                 },
-                "building/levels_building": {
-                    "label": "楼层数",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "楼层数,楼层,层数"
-                },
                 "building/material": {
                     "label": "材质",
                     "terms": "材质,材料,原料"
@@ -494,9 +489,6 @@
                 "capacity_volume": {
                     "label": "容量（立方米）",
                     "placeholder": "50，100，200..."
-                },
-                "cash_in": {
-                    "label": "货币兑换"
                 },
                 "castle_type": {
                     "label": "类型",
@@ -779,7 +771,6 @@
                     "label": "树木指示性"
                 },
                 "departures_board": {
-                    "label": "到站显示屏/牌",
                     "options": {
                         "no": "无",
                         "realtime": "实时",
@@ -1150,9 +1141,6 @@
                 },
                 "fuel": {
                     "label": "油站"
-                },
-                "fuel_multi": {
-                    "label": "燃料类型"
                 },
                 "gambling": {
                     "label": "游戏"
@@ -1859,10 +1847,6 @@
                     "label": "支付类型",
                     "terms": "支付类型,付款类型,收款类型"
                 },
-                "payment_multi_fee": {
-                    "label": "支付类型",
-                    "terms": "支付类型,付款类型,收款类型"
-                },
                 "phases": {
                     "label": "相数",
                     "placeholder": "1, 2, 3..."
@@ -1982,7 +1966,6 @@
                     "label": "发电方式"
                 },
                 "plant/output/electricity": {
-                    "label": "输出功率",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2146,7 +2129,31 @@
                     "label": "类型"
                 },
                 "religion": {
-                    "label": "宗教"
+                    "label": "宗教",
+                    "options": {
+                        "bahai": "巴哈教",
+                        "benzhu": "本主教",
+                        "buddhist": "佛教",
+                        "caodaism": "高台教",
+                        "chinese_folk": "中国民间宗教",
+                        "christian": "基督教",
+                        "confucian": "儒教",
+                        "hindu": "印度教",
+                        "jain": "耆那教",
+                        "jewish": "犹太教",
+                        "multifaith": "多重信仰",
+                        "muslim": "伊斯兰教",
+                        "none": "非宗教",
+                        "pagan": "异教",
+                        "shinto": "神道教",
+                        "sikh": "锡克教",
+                        "spiritualist": "唯心论",
+                        "taoist": "道教",
+                        "tenrikyo": "天理教",
+                        "unitarian_universalist": "唯一神教派",
+                        "vietnamese_folk": "越南民间宗教",
+                        "voodoo": "巫毒教"
+                    }
                 },
                 "reservation": {
                     "label": "预订",
@@ -2613,10 +2620,6 @@
                     "label": "最近察勘日期",
                     "terms": "上次,最近,检查,调查,确认,时间,日期"
                 },
-                "survey_point/datum_aligned": {
-                    "label": "与当地大地基准对齐",
-                    "terms": "大地基准,大地参考"
-                },
                 "survey_point/purpose": {
                     "label": "目的",
                     "options": {
@@ -2731,7 +2734,6 @@
                 "tracktype": {
                     "label": "辙路铺装类型",
                     "options": {
-                        "grade1": "坚固：铺装路面或紧密夯实路面",
                         "grade2": "亚坚固：砾石与软质材料混合",
                         "grade3": "硬质与软质材料等量混合",
                         "grade4": "近软质：土壤、沙地、草地与其他硬质材质混合",
@@ -4243,8 +4245,8 @@
                     "name": "限高杆"
                 },
                 "barrier/jersey_barrier": {
-                    "name": "水马",
-                    "terms": "水马"
+                    "name": "新泽西护栏",
+                    "terms": "护栏,混凝土,墙"
                 },
                 "barrier/kerb": {
                     "name": "路缘",
@@ -4575,10 +4577,6 @@
                 "craft/bookbinder": {
                     "name": "装订工人",
                     "terms": "书籍钉装员,装订商,装订工,钉书匠"
-                },
-                "craft/brewery": {
-                    "name": "酿酒厂",
-                    "terms": "酒厂,酿酒厂,酒坊"
                 },
                 "craft/carpenter": {
                     "name": "木匠",
@@ -5105,10 +5103,6 @@
                     "name": "高速公路匝道",
                     "terms": "高速公路连接路,连接路,匝道,高速,道路,路,公路,快速路,干道,马路"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "高速公路匝道",
-                    "terms": "高速公路连接路,连接路,匝道,高速,道路,路,公路,快速路,干道,马路"
-                },
                 "highway/passing_place": {
                     "name": "让车道",
                     "terms": "让车道,会车,避让区"
@@ -5137,10 +5131,6 @@
                     "terms": "主要道路,道路,路,公路,大道,高架路,干道,快速路,马路"
                 },
                 "highway/primary_link": {
-                    "name": "主要道路连接路",
-                    "terms": "主要道路连接路,连接路,匝道,道路,路,公路,大道,高架路,干道,快速路,马路"
-                },
-                "highway/primary_link-US-CA": {
                     "name": "主要道路连接路",
                     "terms": "主要道路连接路,连接路,匝道,道路,路,公路,大道,高架路,干道,快速路,马路"
                 },
@@ -5259,10 +5249,6 @@
                     "terms": "干线公路,道路,路,公路,干道,大道,快速路,国道,高架路,马路"
                 },
                 "highway/trunk_link": {
-                    "name": "干线道路连接路",
-                    "terms": "干线公路连接路,连接路,匝道,道路,路,公路,干道,大道,快速路,国道,高架路,马路"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "干线道路连接路",
                     "terms": "干线公路连接路,连接路,匝道,道路,路,公路,干道,大道,快速路,国道,高架路,马路"
                 },
@@ -6258,7 +6244,7 @@
                     "terms": "山峰"
                 },
                 "natural/reef": {
-                    "name": "礁",
+                    "name": "暗礁",
                     "terms": "礁,珊瑚,岩礁,暗礁,沙洲,沙滩,海滩,沙,滩,海洋,浅水"
                 },
                 "natural/ridge": {
@@ -6490,7 +6476,8 @@
                     "terms": "金融机构"
                 },
                 "office/financial_advisor": {
-                    "name": "经济办公室"
+                    "name": "财务顾问",
+                    "terms": "金融,股票,证券,基金,财富管理"
                 },
                 "office/forestry": {
                     "name": "林务管理",
@@ -6815,10 +6802,6 @@
                 "power/plant/source/oil": {
                     "name": "燃油发电厂"
                 },
-                "power/plant/source/solar": {
-                    "name": "太阳能发电场",
-                    "terms": "光伏发电站,太阳能板,光伏发电厂"
-                },
                 "power/plant/source/waste": {
                     "name": "垃圾焚烧发电厂"
                 },
@@ -7017,8 +7000,8 @@
                     "terms": "废弃的铁路"
                 },
                 "railway/buffer_stop": {
-                    "name": "止冲器",
-                    "terms": "止冲器,末端,缓冲器,缓冲,停车,减速,挡车,停止,轨道,股道,铁轨,铁路,路轨,火车,列车,站台"
+                    "name": "挡车器",
+                    "terms": "止冲挡,止冲器,车挡,末端,缓冲器,缓冲,停车,减速,挡车,停止,轨道,股道,铁轨,铁路,路轨,火车,列车,站台"
                 },
                 "railway/construction": {
                     "name": "在建铁路",

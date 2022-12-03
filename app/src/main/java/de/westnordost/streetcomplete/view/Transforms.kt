@@ -22,9 +22,11 @@ data class Transforms(
     }
 }
 
-fun View.getTransformationsTo(other: View, commonParent: ViewGroup): Transforms {
+fun View.getTransformationsTo(other: View): Transforms? {
     val otherRect = Rect()
     other.getHitRect(otherRect)
+    val commonParent = other.rootView as ViewGroup
+    if (rootView != commonParent) return null
     commonParent.offsetDescendantRectToMyCoords(other, otherRect)
     commonParent.offsetRectIntoDescendantCoords(this, otherRect)
     val rect = Rect()
@@ -81,14 +83,18 @@ fun ViewPropertyAnimator.transforms(transforms: Transforms): ViewPropertyAnimato
     return this
 }
 
-fun View.animateFrom(other: View, commonParent: ViewGroup): ViewPropertyAnimator {
+fun View.animateFrom(other: View): ViewPropertyAnimator {
+    val transforms = getTransformationsTo(other)
+    if (transforms == null) {
+        alpha = 0f
+        return animate().alpha(1f)
+    }
     val currentTransforms = Transforms(this)
-    val transforms = getTransformationsTo(other, commonParent)
     applyTransforms(transforms)
     return animate().transforms(currentTransforms)
 }
 
-fun View.animateTo(other: View, commonParent: ViewGroup): ViewPropertyAnimator {
-    val transforms = getTransformationsTo(other, commonParent)
+fun View.animateTo(other: View): ViewPropertyAnimator {
+    val transforms = getTransformationsTo(other) ?: return animate().alpha(0f)
     return animate().transforms(transforms)
 }

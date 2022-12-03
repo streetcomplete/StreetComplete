@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]
 centerLineStyle: yellow
 mobileCountryCode: 714
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
 officialLanguages: [es]
-popularSports: [soccer, basketball, baseball, tennis]
-atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]
 orchardProduces: [coffee, cacao, banana, orange, coconut, pineapple, avocado, guava, mango, mangosteen, tomato, papaya, chilli_pepper, sweet_pepper]
+popularSports: [soccer, basketball, baseball, tennis]

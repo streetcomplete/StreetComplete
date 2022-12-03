@@ -331,7 +331,10 @@
                     "terms": "soffa,sittmöbel,sittbräde,sits,bänk"
                 },
                 "bicycle_parking": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "building": "I en byggnad"
+                    }
                 },
                 "bin": {
                     "label": "Soptunna",
@@ -413,11 +416,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "underjordiska våningar,källare,våning,våningar"
                 },
-                "building/levels_building": {
-                    "label": "Byggnadsvåning",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "byggnadsvåningar,våningar,plan"
-                },
                 "building/material": {
                     "label": "Material",
                     "terms": "material,tillverkat av"
@@ -497,9 +495,6 @@
                 "capacity_volume": {
                     "label": "Kapacitet (kubikmeter)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Insättning av pengar"
                 },
                 "castle_type": {
                     "label": "Typ",
@@ -782,7 +777,6 @@
                     "label": "Betydelse"
                 },
                 "departures_board": {
-                    "label": "Avgångstavla",
                     "options": {
                         "no": "Ingen",
                         "realtime": "Realtid",
@@ -1153,9 +1147,6 @@
                 },
                 "fuel": {
                     "label": "Bränsle"
-                },
-                "fuel_multi": {
-                    "label": "Bränslen"
                 },
                 "gambling": {
                     "label": "Spel"
@@ -1870,10 +1861,6 @@
                     "label": "Betalningssätt",
                     "terms": "betalningssätt,betalning,betalningstyper,visa,kort,kreditkort,bankkort,kontant"
                 },
-                "payment_multi_fee": {
-                    "label": "Betalningssätt",
-                    "terms": "betalningssätt,betalning,betalningstyper,visa,kort,kreditkort,bankkort,kontant"
-                },
                 "phases": {
                     "label": "Faser",
                     "placeholder": "1, 2, 3..."
@@ -1994,7 +1981,6 @@
                     "label": "Genereringsmetod"
                 },
                 "plant/output/electricity": {
-                    "label": "Effektuttaget",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2654,10 +2640,6 @@
                     "label": "Senaste undersökningsdatum",
                     "terms": "senaste undersökningsdatum,undersökningsdatum"
                 },
-                "survey_point/datum_aligned": {
-                    "label": "Anpassad till lokalt geodetiskt referenssystem",
-                    "terms": "anpassad till lokalt geodetiskt referenssystem,geodetiskt referenssystem,referenssystem,geodetisk,referens"
-                },
                 "survey_point/purpose": {
                     "label": "Syfte",
                     "options": {
@@ -2777,7 +2759,6 @@
                 "tracktype": {
                     "label": "Typ av bruksväg",
                     "options": {
-                        "grade1": "Fast: asfalterad eller kraftigt packad hård yta",
                         "grade2": "Mestadels fast: grus/sten med inslag av mjukt material",
                         "grade3": "Jämn blandning av hårda och mjuka material",
                         "grade4": "Mestadels mjukt: jord/sand/gräs med inslag av hårt material",
@@ -4663,10 +4644,6 @@
                     "name": "Bokbindare",
                     "terms": "bokbindare,bokbindning,bok,böcker,bindning,bokbinderi,bokreparatör"
                 },
-                "craft/brewery": {
-                    "name": "Bryggeri",
-                    "terms": "bryggeri,ölframställning,öltillverkning,öl"
-                },
                 "craft/carpenter": {
                     "name": "Snickare",
                     "terms": "snickare,byggnadssnickare,timmerman,träarbetare,grovsnickare"
@@ -5223,10 +5200,6 @@
                     "name": "Anslutning, motorväg",
                     "terms": "anslutning,motorvägsanslutning,påfart,avfart,trafikplats"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Motorväganslutning",
-                    "terms": "anslutning,motorvägsanslutning,påfart,avfart,trafikplats"
-                },
                 "highway/passing_place": {
                     "name": "Mötesplats",
                     "terms": "mötesplats,passage,passeringsplats,möte"
@@ -5256,10 +5229,6 @@
                     "terms": "primär väg,primärväg,riksväg,huvudväg,länsväg"
                 },
                 "highway/primary_link": {
-                    "name": "Anslutning, primär väg",
-                    "terms": "anslutning,påfart,avfart,huvudväg,riksväg,primär väg,primärväg"
-                },
-                "highway/primary_link-US-CA": {
                     "name": "Anslutning, primär väg",
                     "terms": "anslutning,påfart,avfart,huvudväg,riksväg,primär väg,primärväg"
                 },
@@ -5380,10 +5349,6 @@
                     "terms": "stamväg,huvudväg,europaväg,riksväg,motortrafikled"
                 },
                 "highway/trunk_link": {
-                    "name": "Anslutning, stamväg",
-                    "terms": "ramp,anslutning,påfart,avfart,huvudväg,europaväg"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "Anslutning, stamväg",
                     "terms": "ramp,anslutning,påfart,avfart,huvudväg,europaväg"
                 },
@@ -7052,10 +7017,6 @@
                 "power/plant/source/oil": {
                     "name": "Oljeeldat kraftverk",
                     "terms": "oljeeldat kraftverk,oljekraftverk,olja,fossilkraftverk,fossil,eldkraftverk,kraftstation"
-                },
-                "power/plant/source/solar": {
-                    "name": "Solfarm",
-                    "terms": "solfarm,solkraft,solkraftverk,ljuskraft,ljuskraftverk,solpanel,solpark"
                 },
                 "power/plant/source/waste": {
                     "name": "Avfallsförbränningskraftverk",

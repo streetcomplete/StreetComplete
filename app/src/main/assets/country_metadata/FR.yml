@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [oc, ca, br]
 additionalValidHousenumberRegex: \p{N}{1,4}\sbis
 advisoryCycleLaneStyle: white dashes without pictogram
+atmOperators: [La Banque Postale, Crédit Agricole, Société Générale, Caisse d'Épargne, Crédit Mutuel, LCL, BNP Paribas, CIC, Banque Populaire, La Poste, Caisse d'Epargne, Crédit du Nord, Crédit Mutuel de Bretagne, HSBC, BNP, Credit Agricole, BRED, Banque Courtois, Credit Mutuel, Banque Postale, CA, Société Marseillaise de Crédit, Carrefour, BFC, Le Crédit Lyonnais, Banque de Savoie, Societe Generale, Banque Rhône-Alpes, Crédit Lyonnais, OPT, BCI, Banque Populaire Alsace Lorraine Champagne, Banque Chabrières, Banque Dupuy de Parseval, Carrefour Banque, Orange bank, Groupama, Banque Populaire Grand Ouest, BNP Parisbas, BNC, Banque Populaire du Sud, Banque Kolb, Banque de Polynésie, AXA, Crédit Maritime, BRED Banque Populaire, Banque Edel, Caisse d’Épargne, Euronet, CMB, Banque Tarneaud, Banque BCP, Crédit coopératif, BCP, Banque de Tahiti, Barclays, Accord, Banque Nuger, Banque Chaix, BPFC, La Caisse d'Epargne, Groupement des Mousquetaires, Banque de France, Banque Populaire Rives de Paris, BPE, Societé Générale, Banque Laydernier, La Banque Populaire, Caisse d’Epargne, Banque Tarneau, BPI, Socredo, C.I.C., Crédit Mutuel Hazebrouck, Euro information, Banque Populaire des Alpes, Caixa Geral de Depositos, C.A., Banque Accord, Banque Palatine, Banque Révillon, Macif, Crédit Agricole des Savoie, Caisse Epargne, Société Génerale, Crédit Agricole Alpes Provence, Auchan, Banque Populaire de l'Ouest, Societe Générale, Arkea, Socrédo, Point Cash, Société Général, Banque Crédit Agricole]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
@@ -13,10 +14,9 @@ mobileCountryCode: 208
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [fr]
+orchardProduces: [grape, apple, walnut, olive, plum, apricot, peach, chestnut, banana, tomato, hazelnut, pear, cherry, kiwi, strawberry]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
-atmOperators: [La Banque Postale, Crédit Agricole, Société Générale, Caisse d'Épargne, Crédit Mutuel, LCL, BNP Paribas, CIC, Banque Populaire, La Poste, Caisse d'Epargne, Crédit du Nord, Crédit Mutuel de Bretagne, HSBC, BNP, Credit Agricole, BRED, Banque Courtois, Credit Mutuel, Banque Postale, CA, Société Marseillaise de Crédit, Carrefour, BFC, Le Crédit Lyonnais, Banque de Savoie, Societe Generale, Banque Rhône-Alpes, Crédit Lyonnais, OPT, BCI, Banque Populaire Alsace Lorraine Champagne, Banque Chabrières, Banque Dupuy de Parseval, Carrefour Banque, Orange bank, Groupama, Banque Populaire Grand Ouest, BNP Parisbas, BNC, Banque Populaire du Sud, Banque Kolb, Banque de Polynésie, AXA, Crédit Maritime, BRED Banque Populaire, Banque Edel, Caisse d’Épargne, Euronet, CMB, Banque Tarneaud, Banque BCP, Crédit coopératif, BCP, Banque de Tahiti, Barclays, Accord, Banque Nuger, Banque Chaix, BPFC, La Caisse d'Epargne, Groupement des Mousquetaires, Banque de France, Banque Populaire Rives de Paris, BPE, Societé Générale, Banque Laydernier, La Banque Populaire, Caisse d’Epargne, Banque Tarneau, BPI, Socredo, C.I.C., Crédit Mutuel Hazebrouck, Euro information, Banque Populaire des Alpes, Caixa Geral de Depositos, C.A., Banque Accord, Banque Palatine, Banque Révillon, Macif, Crédit Agricole des Savoie, Caisse Epargne, Société Génerale, Crédit Agricole Alpes Provence, Auchan, Banque Populaire de l'Ouest, Societe Générale, Arkea, Socrédo, Point Cash, Société Général, Banque Crédit Agricole]
-orchardProduces: [grape, apple, walnut, olive, plum, apricot, peach, chestnut, banana, tomato, hazelnut, pear, cherry, kiwi, strawberry]

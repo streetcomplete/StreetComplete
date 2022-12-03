@@ -1,15 +1,15 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [HBL, UBL, Askari Bank, MCB, Meezan Bank, HBL ATM, NBP, Standard Chartered Bank, Allied Bank, JS Bank, Bank Al Habib, Bank Islami, Faysal Bank, ATM, Soneri Bank, National Bank, Bank Alfalah, Summit Bank, Habib Bank, Habib Metro Bank, Dubai Islamic Bank, Habib Bank Limited, Habib Bank ATM, Meezan Bank Limited, Habib Bank Ltd, National Bank of Pakistan, mohsin house, NIB Bank, UBL ATM]
 hasSlowZone: true
 isLeftHandTraffic: true
 mobileCountryCode: 410
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
 officialLanguages: [ur, en, pnb, sd, ps, skr, bal]
+orchardProduces: [guava, mango, mangosteen, orange, date, apple, tomato, chilli_pepper, sweet_pepper, banana, apricot, grape, peach, lemon, lime, almond, plum, walnut, papaya]
 popularReligions: [muslim, hindu, christian, sikh, animist]
 popularSports: [cricket, soccer, tennis, field_hockey]
 postboxesHaveCollectionTimes: true
 roofsAreUsuallyFlat: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE
-atmOperators: [HBL, UBL, Askari Bank, MCB, Meezan Bank, HBL ATM, NBP, Standard Chartered Bank, Allied Bank, JS Bank, Bank Al Habib, Bank Islami, Faysal Bank, ATM, Soneri Bank, National Bank, Bank Alfalah, Summit Bank, Habib Bank, Habib Metro Bank, Dubai Islamic Bank, Habib Bank Limited, Habib Bank ATM, Meezan Bank Limited, Habib Bank Ltd, National Bank of Pakistan, mohsin house, NIB Bank, UBL ATM]
-orchardProduces: [guava, mango, mangosteen, orange, date, apple, tomato, chilli_pepper, sweet_pepper, banana, apricot, grape, peach, lemon, lime, almond, plum, walnut, papaya]

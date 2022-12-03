@@ -403,11 +403,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "地下,地下階数"
                 },
-                "building/levels_building": {
-                    "label": "建物の地上階数",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "階数,総階数,階建て"
-                },
                 "building/material": {
                     "label": "建物の素材",
                     "terms": "材料,素材"
@@ -481,9 +476,6 @@
                 "capacity_volume": {
                     "label": "収容数",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "入金"
                 },
                 "castle_type": {
                     "label": "種類",
@@ -756,7 +748,6 @@
                     "label": "意味"
                 },
                 "departures_board": {
-                    "label": "出発案内板",
                     "options": {
                         "no": "なし",
                         "realtime": "リアルタイム",
@@ -1084,9 +1075,6 @@
                 },
                 "fuel": {
                     "label": "ガソリンスタンド"
-                },
-                "fuel_multi": {
-                    "label": "燃料の種類"
                 },
                 "gambling": {
                     "label": "遊戯の種類"
@@ -1757,10 +1745,6 @@
                     "label": "支払の種類",
                     "terms": "貨幣の種類,貨幣,コイン,紙幣,キャッシュ,支払"
                 },
-                "payment_multi_fee": {
-                    "label": "支払方法",
-                    "terms": "貨幣の種類,貨幣,コイン,紙幣,キャッシュ,支払"
-                },
                 "phases": {
                     "label": "相の数",
                     "placeholder": "1, 2, 3..."
@@ -1881,7 +1865,6 @@
                     "label": "発電方法"
                 },
                 "plant/output/electricity": {
-                    "label": "発電所出力形態：電気",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2599,7 +2582,6 @@
                 "tracktype": {
                     "label": "トラックの種類",
                     "options": {
-                        "grade1": "grade1-硬質: 舗装もしくは煉瓦・砕石の締固め路盤",
                         "grade2": "grade2-大部分が硬質: 砂利・岩と柔らかい物質の混合",
                         "grade3": "grade3-硬軟の物質の混合",
                         "grade4": "grade4-大部分が軟質: 土／砂／草と硬い物質の混合",
@@ -4434,10 +4416,6 @@
                     "name": "製本所",
                     "terms": "製本所,職人,工房"
                 },
-                "craft/brewery": {
-                    "name": "ビール醸造所",
-                    "terms": "ビール醸造所,職人,工房"
-                },
                 "craft/carpenter": {
                     "name": "工務店",
                     "terms": "工務店,職人,工房,大工,リフォーム,建具店,表具店,指物店,経師,建具師,指物師"
@@ -5010,9 +4988,6 @@
                     "name": "自動車専用道路の接続路",
                     "terms": "自動車専用道路,接続路,車道,幹線,公道"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "自動車専用道路の接続路"
-                },
                 "highway/passing_place": {
                     "name": "待避所",
                     "terms": "待避所,退避エリア"
@@ -5044,9 +5019,6 @@
                 "highway/primary_link": {
                     "name": "主要地方道の接続路",
                     "terms": "主要地方道,接続路,車道,幹線,公道"
-                },
-                "highway/primary_link-US-CA": {
-                    "name": "主要地方道の接続路"
                 },
                 "highway/raceway": {
                     "name": "モーターレース場",
@@ -5167,9 +5139,6 @@
                 "highway/trunk_link": {
                     "name": "国道の接続路",
                     "terms": "国道,接続路,車道,幹線,公道"
-                },
-                "highway/trunk_link-US-CA": {
-                    "name": "国道の接続路"
                 },
                 "highway/turning_circle": {
                     "name": "転回場",
@@ -6828,10 +6797,6 @@
                 "power/plant/source/oil": {
                     "name": "石油発電所",
                     "terms": "石油発電所,火力発電所,発電所,電力,石油"
-                },
-                "power/plant/source/solar": {
-                    "name": "太陽光発電所",
-                    "terms": "原子力発電所,ソーラー,電力,発電所"
                 },
                 "power/plant/source/waste": {
                     "name": "廃棄物発電所",

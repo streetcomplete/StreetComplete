@@ -1025,9 +1025,7 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
 
     <!-- Links screen -->
     <string name="links_empty">"Nie masz jeszcze linków"</string>
-
-    <!-- Fuzzy -->
-    <string name="quests_empty">"Nie masz jeszcze żadnych wykonanych edycji"</string>
+    <string name="quests_empty">"Nie masz jeszcze żadnych opublikowanych edycji"</string>
 
     <!-- Potrzebny kontekst -->
     <string name="unsynced_quests_description">"oraz %d nieopublikowanych zmian."</string>
@@ -1036,7 +1034,6 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="unsynced_quests_not_logged_in_description">"Masz %d nieopublikowanych zmian. Musisz się zalogować żeby je wysłać."</string>
 
     <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"Edycje"</string>
     <string name="user_achievements_title">"Osiągnięcia"</string>
     <string name="user_links_title">"Kolekcja linków"</string>
@@ -1858,7 +1855,7 @@ sorted alphabetically by title -->
     <string name="quest_busStopRef_title2">"Jaki jest numer referencyjny tego przystanku?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <string name="quest_busStopShelter_title2">"Czy jest schron na tym przystanku?"</string>
+    <string name="quest_busStopShelter_title2">"Czy ten przystanek ma schronienie?"</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <!-- Fuzzy -->
@@ -1940,7 +1937,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_shop_title">"Czy jest tu publiczna pompka rowerowa?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Czy jest tu działająca pompka rowerowa?"</string>
     <string name="action_overlays">"Nakładki"</string>
-    <string name="split_way">"Podziel drogę"</string>
+    <string name="split_way">"Podziel linię"</string>
     <string name="quest_memorialType_title">"Co to za pomnik?"</string>
     <string name="quest_memorialType_statue">"Statua"</string>
     <string name="quest_memorialType_bust">"Popiersie"</string>
@@ -1991,16 +1988,19 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Stworzyłeś węzeł z…"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"To miejsce zbiórki"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Miejsce zbiórki do ewakuacji - tam ludzie gromadzą się w nagłych wypadkach. Zwykle wygląda to tak:"</string>
+    <string name="quest_address_answer_house_name2">"Adres zawiera nazwę budynku…"</string>
     <string name="quest_address_street_street_name_label">"Nazwa ulicy:"</string>
     <string name="quest_address_street_hint2">"Dotknij ulicy na mapie, aby ją wybrać"</string>
+    <string name="quest_bicycle_incline_title">"W którą stronę wznosi się ścieżka?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Wznosi się i opada"</string>
     <string name="quest_drinking_water_type_title">"W jaki sposób dostarczana jest tutaj woda pitna?"</string>
-    <string name="quest_drinking_water_type_generic_water_fountain">"Inna fontanna"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Inne poidełko"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontanna emitująca mały strumień wody"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Tylko do napełniania butelek"</string>
     <string name="quest_drinking_water_type_tap">"Kranik"</string>
     <string name="quest_drinking_water_type_hand_pump">"Pompa (ręczna)"</string>
     <string name="quest_drinking_water_type_water_well_no_pump">"Studnia bez pompy"</string>
-    <string name="quest_drinking_water_type_spring">"Krynica"</string>
+    <string name="quest_drinking_water_type_spring">"Źródło"</string>
     <string name="quest_drinking_water_type_disused">"Nieużywany obiekt wody pitnej"</string>
     <string name="overlay_addresses">"Adresy"</string>
     <string name="overlay_shops">"Sklepy"</string>
@@ -2016,6 +2016,7 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Usuwalna"</string>
     <string name="quest_buildingType_guardhouse">"Wartownia"</string>
     <string name="quest_genericRef_title">"Jaki jest tutaj numer identyfikacyjny?"</string>
+    <string name="quest_sidewalk_answer_different">"Sytuacja na chodniku jest inna"</string>
     <string name="about_title_get_involved">"Zaangażuj się"</string>
     <string name="pref_category_quests_overlays">"Zadania i nakładki"</string>
     <string name="quest_presets_rename">"Zmień nazwę"</string>
@@ -2030,7 +2031,15 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Zastosować i wybrać ustawienie %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Uwaga: Twoje ustawienia o tej samej nazwie zostanie nadpisany!"</string>
     <string name="urlconfig_switch_hint">"Możesz zmienić ustawienia w dowolnym momencie."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Dwupoziomowy stojak na rowery"</string>
+    <string name="user_profile_current_week_title">"Ostatnie 7 dni"</string>
+    <string name="user_profile_dates_mapped">"Niedawne dni mapowania"</string>
 
-    <!-- Fuzzy -->
-    <string name="user_profile_current_week_title">"W tym tygodniu"</string>
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"segerowana ścieżka rowerowa"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Po zainstalowaniu aplikacji, zeskanuj kod QR ponownie albo kliknij &lt;a href=\"%s\"&gt;ten link&lt;/a&gt; aby zastosować zmiany."</string>
+    <string name="confirmation_replace_shop_title">"Czy jest to nadal ten sam obiekt?"</string>
+    <string name="confirmation_replace_shop_message">"W takim razie musiały zmienić się też godziny otwarcia, dane do kontaktu itp."</string>
+    <string name="confirmation_replace_shop_yes">"Jest tu co innego"</string>
+    <string name="confirmation_replace_shop_no">"Jest tu to samo"</string>
 </resources>

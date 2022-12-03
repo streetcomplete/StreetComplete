@@ -1,4 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [VÚB, Slovenská sporiteľňa, Tatra banka, ČSOB, Prima banka, Poštová banka, UniCredit Bank, OTP banka, Euronet, OTP Bank, 365.bank, ATM Point, General Bytes]
+chargingStationOperators: [ZSE, GreenWay, ejoin, ZSE Drive, ebajk connect, Slovnaft, Billa, ebajkconnect, VSE, ebajkonnect, Lidl, Greenway, Farmárska reštaurácia, EvMapa, BMW T.O.B.]
+clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, Humana, Nadácia ECO, Ľudia k ľuďom n.o., FCC Trnava, Ekotextil, ECO textil]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -6,11 +9,8 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
+orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZÓNA
-atmOperators: [VÚB, Slovenská sporiteľňa, Tatra banka, ČSOB, Prima banka, Poštová banka, UniCredit Bank, OTP banka, Euronet, OTP Bank, 365.bank, ATM Point, General Bytes]
-chargingStationOperators: [ZSE, GreenWay, ejoin, ZSE Drive, ebajk connect, Slovnaft, Billa, ebajkconnect, VSE, ebajkonnect, Lidl, Greenway, Farmárska reštaurácia, EvMapa, BMW T.O.B.]
-clothesContainerOperators: [Ekocharita, HUMANA, EKOCHARITA, Humana, Nadácia ECO, Ľudia k ľuďom n.o., FCC Trnava, Ekotextil, ECO textil]
-orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]

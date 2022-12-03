@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
+atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]
+chargingStationOperators: [Chargy, Enovos]
 exclusiveCycleLaneStyle: white
 hasAdvisorySpeedLimitSign: true
 hasBiWeeklyAlternateSideParkingSign: true
@@ -8,9 +10,7 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
+orchardProduces: [grape, apple, plum, pear, walnut, strawberry]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE
-atmOperators: [BCEE, BIL, P&T, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, Post, S-Bank, Banque Internationale à Luxembourg, Post.lu, BNP Paribas]
-chargingStationOperators: [Chargy, Enovos]
-orchardProduces: [grape, apple, plum, pear, walnut, strawberry]

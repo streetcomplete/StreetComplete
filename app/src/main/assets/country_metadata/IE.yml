@@ -1,6 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
+atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
 centerLineStyle: white
+chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
+clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
 edgeLineStyle: short yellow dashes
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
@@ -13,11 +16,8 @@ noParkingLineStyle: double yellow
 noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en, ga]
+orchardProduces: [apple, strawberry, pear, raspberry, cherry, apple, plum, grape, hop, tomato, strawberry, chilli_pepper, sweet_pepper, raspberry, tomato]
 popularSports: [gaelic_games, rugby]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 postboxesHaveRoyalCypher: true
-atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
-chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
-clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
-orchardProduces: [apple, strawberry, pear, raspberry, cherry, apple, plum, grape, hop, tomato, strawberry, chilli_pepper, sweet_pepper, raspberry, tomato]

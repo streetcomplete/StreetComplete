@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
@@ -118,6 +119,7 @@ class UndoDialog(
                 is DeletePoiNodeAction ->     createTextView(ResText(R.string.deleted_poi_action_description))
                 is SplitWayAction ->          createTextView(ResText(R.string.split_way_action_description))
                 is CreateNodeAction ->        createCreateNodeDescriptionView(action.position, action.tags)
+                is MoveNodeAction ->          createTextView(ResText(R.string.move_node_action_description))
                 else -> throw IllegalArgumentException()
             }
         }

@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Republic Bank, First Citizens Bank, RBC, Scotiabank, First Citizens, Scotia Bank, RBC Royal Bank, Eastern Credit Union, FCB, Republic Bank Ltd., Republic Bank ATM]
 isLeftHandTraffic: true
 mobileCountryCode: 374
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
+orchardProduces: [cacao, coffee, coconut, orange, banana, nutmeg, lemon, lime, chilli_pepper, sweet_pepper, pineapple, grapefruit, tomato, guava, mango, mangosteen, avocado, papaya]
 popularReligions: [christian, hindu]
 popularSports: [cricket]
-atmOperators: [Republic Bank, First Citizens Bank, RBC, Scotiabank, First Citizens, Scotia Bank, RBC Royal Bank, Eastern Credit Union, FCB, Republic Bank Ltd., Republic Bank ATM]
-orchardProduces: [cacao, coffee, coconut, orange, banana, nutmeg, lemon, lime, chilli_pepper, sweet_pepper, pineapple, grapefruit, tomato, guava, mango, mangosteen, avocado, papaya]

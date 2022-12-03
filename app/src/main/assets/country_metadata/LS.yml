@@ -1,4 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Standard Lesotho Bank, FNB, NedBank, NedBank ATM, Post Bank]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
@@ -8,4 +9,3 @@ mobileCountryCode: 651
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [st, en]
-atmOperators: [Standard Lesotho Bank, FNB, NedBank, NedBank ATM, Post Bank]

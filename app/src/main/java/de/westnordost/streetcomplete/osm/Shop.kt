@@ -163,7 +163,7 @@ fun isShopExpressionFragment(prefix: String? = null): String {
             // tourism = information only if it is an office, see above
             "gallery", // could be just an artist's show-room
             "museum" // only the larger ones are purpose-built
-            // tourist accomodations are usually always purpose-built / not in something that could
+            // tourist accommodations are usually always purpose-built / not in something that could
             // otherwise be just a showroom, office etc.
         ),
         "amenity" to listOf(

@@ -4,16 +4,15 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.toCheckDateString
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.time.Instant
-import java.time.LocalDate
 
 class AddCyclewayPartSurfaceTest {
     private val questType = AddCyclewayPartSurface()
@@ -44,7 +43,6 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `not applicable to cycleway with sidewalk`() {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "sidewalk" to "yes")
     }
-
 
     @Test fun `applicable to cycleway with unspecific surface without note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
@@ -79,7 +77,7 @@ class AddCyclewayPartSurfaceTest {
             "segregated" to "yes",
             "cycleway:surface" to "asphalt",
             "check_date:cycleway:surface" to "2001-01-01"
-        ), timestamp = Instant.now().toEpochMilli())
+        ), timestamp = nowAsEpochMilliseconds())
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -115,10 +113,10 @@ class AddCyclewayPartSurfaceTest {
             mapOf(
                 "footway:surface" to "gravel",
                 "cycleway:surface" to "asphalt",
-                "smoothness" to "intermediate"
+                "cycleway:smoothness" to "intermediate"
             ),
             SurfaceAnswer(Surface.PAVING_STONES),
-            StringMapEntryDelete("smoothness", "intermediate"),
+            StringMapEntryDelete("cycleway:smoothness", "intermediate"),
             StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
         )
     }
@@ -214,8 +212,6 @@ class AddCyclewayPartSurfaceTest {
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete")
         )
     }
-
-
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
         assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))

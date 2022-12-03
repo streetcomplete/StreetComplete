@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
@@ -41,7 +40,7 @@ import kotlinx.serialization.json.Json
 
 class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 
-    private var currentParking: LeftAndRightStreetParking? = null
+    private var originalParking: LeftAndRightStreetParking? = null
 
     private val isRightSideUpsideDown get() =
         !isForwardOneway && (isReversedOneway || isLeftHandTraffic)
@@ -73,14 +72,14 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun initStateFromTags() {
-        currentParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
-        streetSideSelect.setPuzzleSide(currentParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
-        streetSideSelect.setPuzzleSide(currentParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
+        originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
+        streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
+        streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
     }
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != currentParking?.left ||
-        streetSideSelect.right?.value != currentParking?.right
+        streetSideSelect.left?.value != originalParking?.left ||
+        streetSideSelect.right?.value != originalParking?.right
 
     override fun serialize(item: StreetParking) = Json.encodeToString(item)
     override fun deserialize(str: String) = Json.decodeFromString<StreetParking>(str)

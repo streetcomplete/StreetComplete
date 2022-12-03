@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Azizi Bank, AIB BANK]
 firstDayOfWorkweek: Sa
 mobileCountryCode: 412
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [fa, ps]
+orchardProduces: [grape, apple, almond, apricot, peach, walnut, plum, fig, pear, pistachio, olive, orange]
 popularReligions: [muslim]
 roofsAreUsuallyFlat: true
-atmOperators: [Azizi Bank, AIB BANK]
-orchardProduces: [grape, apple, almond, apricot, peach, walnut, plum, fig, pear, pistachio, olive, orange]

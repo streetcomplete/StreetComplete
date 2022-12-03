@@ -366,10 +366,6 @@
                     "label": "Maanalaiset kerrokset",
                     "placeholder": "2, 4, 6..."
                 },
-                "building/levels_building": {
-                    "label": "Rakennuksen kerrokset",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "Materiaali"
                 },
@@ -419,9 +415,6 @@
                 "capacity_volume": {
                     "label": "Tilavuus (kuutiometreissä)",
                     "placeholder": "50, 100, 200..."
-                },
-                "cash_in": {
-                    "label": "Käteisen talletus"
                 },
                 "castle_type": {
                     "label": "Tyyppi",
@@ -661,7 +654,6 @@
                     "label": "Merkittävyys"
                 },
                 "departures_board": {
-                    "label": "Lähtöjen tiedotustapa",
                     "options": {
                         "no": "Ei",
                         "realtime": "Reaaliaikainen",
@@ -954,9 +946,6 @@
                 },
                 "fuel": {
                     "label": "Polttoaine"
-                },
-                "fuel_multi": {
-                    "label": "Polttonesteet"
                 },
                 "gambling": {
                     "label": "Pelit"
@@ -1564,9 +1553,6 @@
                 "payment_multi": {
                     "label": "Maksutavat"
                 },
-                "payment_multi_fee": {
-                    "label": "Maksutavat"
-                },
                 "phases": {
                     "label": "Vaiheet",
                     "placeholder": "1, 2, 3..."
@@ -1664,7 +1650,6 @@
                     "label": "Energiantuottomenetelmä"
                 },
                 "plant/output/electricity": {
-                    "label": "Sähköntuotanto",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2256,7 +2241,6 @@
                 "tracktype": {
                     "label": "Tiepohja",
                     "options": {
-                        "grade1": "Kiinteä: päällystetty tai voimakkaasti pakkaantunut, kova pinta",
                         "grade2": "Enimmäkseen kiinteä: soraa/kiveä johon sekoittunut hieman pehmeää maa-ainesta",
                         "grade3": "Sekoitus kovaa ja pehmeää maa-ainesta",
                         "grade4": "Enimmäkseen pehmeä: multaa/hiekkaa/ruohoa johon sekoittunut hieman kovaa maa-ainesta",
@@ -3736,10 +3720,6 @@
                 "craft/bookbinder": {
                     "name": "Kirjasitomo"
                 },
-                "craft/brewery": {
-                    "name": "Olutpanimo",
-                    "terms": "panimo,olut,viina,viini,alkoholi,alko"
-                },
                 "craft/carpenter": {
                     "name": "Puuseppä"
                 },
@@ -4181,9 +4161,6 @@
                 "highway/motorway_link": {
                     "name": "Moottoritien ramppi"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Moottoritien ramppi"
-                },
                 "highway/passing_place": {
                     "name": "Ajoneuvojen kohtauspaikka"
                 },
@@ -4208,9 +4185,6 @@
                     "name": "Kantatie/seudullinen pääkatu"
                 },
                 "highway/primary_link": {
-                    "name": "Kantatien ramppi"
-                },
-                "highway/primary_link-US-CA": {
                     "name": "Kantatien ramppi"
                 },
                 "highway/raceway": {
@@ -4304,9 +4278,6 @@
                     "name": "Valtatie"
                 },
                 "highway/trunk_link": {
-                    "name": "Valtatien ramppi"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "Valtatien ramppi"
                 },
                 "highway/turning_circle": {
@@ -5503,10 +5474,6 @@
                 },
                 "power/plant/source/oil": {
                     "name": "Öljyvoimala"
-                },
-                "power/plant/source/solar": {
-                    "name": "Aurinkovoimala",
-                    "terms": "aurinkopuisto,voimalaitos,aurinkopaneeli"
                 },
                 "power/plant/source/waste": {
                     "name": "Jätevoimalaitos"

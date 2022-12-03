@@ -2729,4 +2729,5 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="user_profile_dates_mapped">"روزهایی را که اخیراً نقشه‌برداری کرده‌اید"</string>
+    <string name="confirmation_replace_shop_message">"در این صورت، ساعات کار، اطلاعات تماس و غیره نیز تغییر می‌کند."</string>
 </resources>

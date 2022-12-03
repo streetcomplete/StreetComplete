@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [BNI, BOA, BFV-SG, BMOI, BOA Madagascar, MCB]
 hasLivingStreet: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 646
 noParkingSignStyle: sadc
 noStoppingSignStyle: sadc
 officialLanguages: [mg, fr]
-atmOperators: [BNI, BOA, BFV-SG, BMOI, BOA Madagascar, MCB]
 orchardProduces: [coffee, vanilla, banana, guava, mango, mangosteen, coconut, cashew_nut, pineapple, sisal, orange, cacao, pistachio, pepper, tomato, apple, tung_nut]
