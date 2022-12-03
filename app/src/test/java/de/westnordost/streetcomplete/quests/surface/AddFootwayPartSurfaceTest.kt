@@ -130,7 +130,9 @@ class AddFootwayPartSurfaceTest {
                 "smoothness" to "good"
             ),
             SurfaceAnswer(Surface.PAVING_STONES),
-            StringMapEntryAdd("footway:surface", "paving_stones")
+            StringMapEntryAdd("footway:surface", "paving_stones"),
+            StringMapEntryModify("surface", "paving_stones", "paving_stones"),
+            StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
         )
     }
 

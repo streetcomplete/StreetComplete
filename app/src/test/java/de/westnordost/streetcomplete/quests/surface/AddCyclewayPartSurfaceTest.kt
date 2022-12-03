@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
@@ -129,7 +128,9 @@ class AddCyclewayPartSurfaceTest {
                 "smoothness" to "good"
             ),
             SurfaceAnswer(Surface.PAVING_STONES),
-            StringMapEntryAdd("cycleway:surface", "paving_stones")
+            StringMapEntryAdd("cycleway:surface", "paving_stones"),
+            StringMapEntryModify("surface", "paving_stones", "paving_stones"),
+            StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
         )
     }
 

@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
-import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -40,21 +39,6 @@ class AddFootwayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags, "footway")
-        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
-            if (tags["footway:surface"] == tags["cycleway:surface"]) {
-                if (tags["surface"] != tags["footway:surface"]!!) {
-                    tags["surface"] = tags["footway:surface"]!!
-                    tags.remove("smoothness")
-                }
-            } else if (tags["footway:surface"] in ANYTHING_FULLY_PAVED && tags["cycleway:surface"] in ANYTHING_FULLY_PAVED) {
-                if (tags["surface"] != "paved") {
-                    tags["surface"] = "paved"
-                    tags.remove("smoothness")
-                }
-            } else {
-                tags.remove("surface")
-                tags.remove("smoothness")
-            }
-        }
+        answer.updateSegregatedFootAndCycleway(tags)
     }
 }

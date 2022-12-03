@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
-import de.westnordost.streetcomplete.osm.ANYTHING_FULLY_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 
 class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
@@ -39,21 +38,6 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAnswer>() {
 
     override fun applyAnswerTo(answer: SurfaceAnswer, tags: Tags, timestampEdited: Long) {
         answer.applyTo(tags, "cycleway")
-        if (tags["cycleway:surface"] != null && tags["footway:surface"] != null) {
-            if (tags["footway:surface"] == tags["cycleway:surface"]) {
-                if (tags["surface"] != tags["cycleway:surface"]!!) {
-                    tags["surface"] = tags["cycleway:surface"]!!
-                    tags.remove("smoothness")
-                }
-            } else if (tags["footway:surface"] in ANYTHING_FULLY_PAVED && tags["cycleway:surface"] in ANYTHING_FULLY_PAVED) {
-                if (tags["surface"] != "paved") {
-                    tags["surface"] = "paved"
-                    tags.remove("smoothness")
-                }
-            } else {
-                tags.remove("surface")
-                tags.remove("smoothness")
-            }
-        }
+        answer.updateSegregatedFootAndCycleway(tags)
     }
 }
