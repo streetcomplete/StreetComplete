@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.quests.width
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.screens.measure.TakeMeasurementLauncher
@@ -60,7 +62,25 @@ class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(WidthAnswer(lengthInput.length!!, isARMeasurement))
+        val length = lengthInput.length!!
+        val newTags = element.tags + ("width" to length.toMeters().toString())
+        if (hasDubiousRoadWidth(newTags) != true) {
+            applyAnswer(WidthAnswer(length, isARMeasurement))
+        } else {
+            confirmDubuiousRoadWidth {
+                applyAnswer(WidthAnswer(length, isARMeasurement))
+            }
+        }
+    }
+
+    private fun confirmDubuiousRoadWidth(onConfirmed: () -> Unit) {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_road_width_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
     }
 
     override fun isFormComplete(): Boolean = lengthInput.length != null
