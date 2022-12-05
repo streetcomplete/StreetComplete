@@ -67,13 +67,13 @@ class AddWidthForm : AbstractOsmQuestForm<WidthAnswer>() {
         if (hasDubiousRoadWidth(newTags) != true) {
             applyAnswer(WidthAnswer(length, isARMeasurement))
         } else {
-            confirmDubuiousRoadWidth {
+            confirmDubiousRoadWidth {
                 applyAnswer(WidthAnswer(length, isARMeasurement))
             }
         }
     }
 
-    private fun confirmDubuiousRoadWidth(onConfirmed: () -> Unit) {
+    private fun confirmDubiousRoadWidth(onConfirmed: () -> Unit) {
         activity?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_generic_confirmation_title)
             .setMessage(R.string.quest_road_width_unusualInput_confirmation_description)
