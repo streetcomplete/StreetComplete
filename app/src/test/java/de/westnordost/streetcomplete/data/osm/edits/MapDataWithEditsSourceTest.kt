@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -12,8 +13,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.any
+import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
@@ -854,6 +857,46 @@ class MapDataWithEditsSourceTest {
         assertNull(s.getGeometry(NODE, 1))
     }
 
+    @Test
+    fun `onAddedEdit relays elements if only their geometry is updated`() {
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val p = p(1.0, 10.0)
+        val n = node(1, p)
+        val g = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0, 10.0))
+        val p2 = p(0.0, 0.0)
+        val n2 = node(2, p2)
+        val g2 = ElementGeometryEntry(elementType = NODE, elementId = 2, geometry = pGeom(0.0, 0.0))
+        val w = way(1, listOf(1, 2))
+        val wg = geometryCreator.create(w, listOf(p, p2))!!
+        val l = ElementGeometryEntry(elementType = WAY, elementId = 1, geometry = wg)
+        val r = rel(1, listOf(RelationMember(WAY, 1, "")))
+        val rg = ElementGeometryEntry(elementType = RELATION, elementId = 1, geometry = wg)
+        originalElementsAre(n, n2, w, r)
+        originalGeometriesAre(g, g2, l, rg)
+        val pNew = p(1.0, 1.0)
+
+        editsListener.onAddedEdit(edit(
+            element = n,
+            action = MoveNodeAction(pNew)
+        ))
+
+        verify(listener).onUpdated(
+            updated = argThat {
+                val wgNew = geometryCreator.create(w, listOf(pNew, p2))
+                it.nodes.single().copy(timestampEdited = 0) == n.copy(position = pNew, timestampEdited = 0)
+                    && it.ways.single() == w
+                    && it.relations.single() == r
+                    && it.getNodeGeometry(1) == pGeom(1.0, 1.0)
+                    && it.getWayGeometry(1) == wgNew
+                    && it.getRelationGeometry(1) == wgNew
+            },
+            deleted = eq(listOf())
+        )
+    }
+
     //endregion
 
     //region ElementEditsSource.Listener ::onDeletedEdit
@@ -899,6 +942,53 @@ class MapDataWithEditsSourceTest {
             updated = eq(MutableMapDataWithGeometry(listOf(n), listOf(p))),
             deleted = eq(delElements)
         )
+    }
+
+    @Test
+    fun `onDeletedEdit relays elements if only their geometry is updated`() {
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val p = p(1.0, 10.0)
+        val n = node(1, p)
+        val g = ElementGeometryEntry(elementType = NODE, elementId = 1, geometry = pGeom(1.0, 10.0))
+        val p2 = p(0.0, 0.0)
+        val n2 = node(2, p2)
+        val g2 = ElementGeometryEntry(elementType = NODE, elementId = 2, geometry = pGeom(0.0, 0.0))
+        val w = way(1, listOf(1, 2))
+        val wg = geometryCreator.create(w, listOf(p, p2))!!
+        val l = ElementGeometryEntry(elementType = WAY, elementId = 1, geometry = wg)
+        val r = rel(1, listOf(RelationMember(WAY, 1, "")))
+        val rg = ElementGeometryEntry(elementType = RELATION, elementId = 1, geometry = wg)
+        originalElementsAre(n, n2, w, r)
+        originalGeometriesAre(g, g2, l, rg)
+        val pNew = p(1.0, 1.0)
+
+        editsListener.onAddedEdit(edit(
+            element = n,
+            action = MoveNodeAction(pNew)
+        ))
+
+        verify(listener).onUpdated(
+            updated = argThat {
+                val wgNew = geometryCreator.create(w, listOf(pNew, p2))
+                it.nodes.single().copy(timestampEdited = 0) == n.copy(position = pNew, timestampEdited = 0)
+                    && it.ways.single() == w
+                    && it.relations.single() == r
+                    && it.getNodeGeometry(1) == pGeom(1.0, 1.0)
+                    && it.getWayGeometry(1) == wgNew
+                    && it.getRelationGeometry(1) == wgNew
+            },
+            deleted = eq(listOf())
+        )
+
+        editsListener.onDeletedEdits(listOf(edit(
+            element = n,
+            action = MoveNodeAction(pNew)
+        )))
+
+        verify(listener).onUpdated(updated = eq(MutableMapDataWithGeometry(listOf(n, w, r), listOf(g, l, rg))), deleted = eq(listOf()))
     }
 
     //endregion

@@ -1,4 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
+chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
+clothesContainerOperators: [Sorpa]
 edgeLineStyle: white dashes
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
@@ -9,8 +12,5 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 274
 noEntrySignStyle: yellow
 officialLanguages: [is]
-postboxesHaveCollectionTimes: true
-atmOperators: [Íslandsbanki, Arion banki, Landsbankinn, Landsbanki Íslands, Landsbanki, Tomato]
-chargingStationOperators: [Orka náttúrunnar, Ísorka, Orka Náttúrunnar]
-clothesContainerOperators: [Sorpa]
 orchardProduces: [tomato]
+postboxesHaveCollectionTimes: true

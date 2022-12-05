@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-noStoppingLineStyle: yellow on curb
 chargingStationOperators: [Tesla Motors, Volta, ChargePoint, SemaCharge, BGE, SemaConnect, EV Institute, Chargepoint, BWI Airport]
 clothesContainerOperators: [Planet Aid, JJ Recycling]
+noStoppingLineStyle: yellow on curb

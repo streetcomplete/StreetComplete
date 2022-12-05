@@ -5,5 +5,5 @@ mobileCountryCode: 358
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-speedUnits: [miles per hour, kilometers per hour]
 orchardProduces: [coconut, banana, nutmeg, guava, mango, mangosteen, avocado, lemon, lime, grapefruit, orange, tomato, cacao, pineapple, pepper]
+speedUnits: [miles per hour, kilometers per hour]

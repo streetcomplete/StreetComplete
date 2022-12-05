@@ -1574,7 +1574,7 @@ sorted alphabetically by title -->
     <string name="quest_generalFee_title2">"Has de pagar per poder entrar ací?"</string>
     <string name="quest_internet_access_title">"Quin tipus de connexió a internet ofereix aquest lloc?"</string>
     <string name="quest_level_title2">"A quin nivell es troba aquest lloc?"</string>
-    <string name="quest_lit_title">"Està il·luminat ací?"</string>
+    <string name="quest_lit_title">"Ací hi ha il·luminació?"</string>
     <string name="quest_openingHours_title">"Quin és l'horari d'obertura?"</string>
     <string name="quest_openingHours_signed_title">"Hi ha un cartell amb els horaris d'obertura?"</string>
     <string name="quest_openingHours_resurvey_title">"Continuen sent aquests els horaris d'obertura?"</string>
@@ -1725,7 +1725,10 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_fixed">"Fixa"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Es pot obrir"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Es pot llevar"</string>
+    <string name="quest_buildingType_guardhouse">"Garita de seguritat"</string>
     <string name="quest_genericRef_title">"Ací quin és el nombre de referència?"</string>
+    <string name="quest_sidewalk_answer_different">"La situació de la vorera és diferent"</string>
+    <string name="about_title_get_involved">"Involucra't"</string>
     <string name="pref_category_quests_overlays">"Missions i Superposicions"</string>
     <string name="quest_presets_rename">"Ranomena"</string>
     <string name="quest_presets_share">"Comparteix"</string>
@@ -1735,7 +1738,15 @@ sorted alphabetically by title -->
     <string name="urlconfig_qr_code_description">"Deixa als altres escanejar aquest QR per a compartir la teua predifinició."</string>
     <string name="urlconfig_as_url">"O com una URL:"</string>
     <string name="urlconfig_url_copied">"URL copiada al portaretalls"</string>
+    <string name="urlconfig_apply_title">"Aplicar predifinició"</string>
+    <string name="urlconfig_apply_message">"Aplica i selecciona la predifinició %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Nota: Es rescriurà la predifiniciò amb el mateix nom!"</string>
     <string name="urlconfig_switch_hint">"Pots canviar els predefinits a la configuració en qualsevol moment"</string>
     <string name="user_profile_current_week_title">"Últims 7 dies"</string>
     <string name="user_profile_dates_mapped">"Dies que els quals has mapejat recentment"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Després d'instal·lar l'aplicació, escaneja el QR una altra vegada o punxa &lt;a href=\"%s\"&gt;aquest enllaç&lt;/a&gt; per a aplicar la predefinició."</string>
+    <string name="confirmation_replace_shop_title">"Ara és en un negoci diferent?"</string>
+    <string name="confirmation_replace_shop_message">"En aquest cas, les hores d'obertura, informació de contacte, etc. Hauran canviat també."</string>
+    <string name="confirmation_replace_shop_yes">"Ha canviat el negoci"</string>
+    <string name="confirmation_replace_shop_no">"Continua siguent el mateix negoci"</string>
 </resources>

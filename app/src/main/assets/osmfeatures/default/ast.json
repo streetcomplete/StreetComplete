@@ -435,9 +435,6 @@
                 "fuel": {
                     "label": "Combustible"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustible"
-                },
                 "gauge": {
                     "label": "Anchu de vía"
                 },
@@ -796,7 +793,6 @@
                     "label": "Planta"
                 },
                 "plant/output/electricity": {
-                    "label": "Potencia de salida",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "population": {
@@ -1092,7 +1088,6 @@
                 "tracktype": {
                     "label": "Tipu de caleya",
                     "options": {
-                        "grade1": "Sólidu: superficie pavimentada o material duru bien apisonao",
                         "grade2": "Mayormente sólidu: grava/piedra con daqué material dondo amestáu",
                         "grade3": "Mestura igualada de materiales sólidos y dondos",
                         "grade4": "Mayormente dondu: tierra/sable/yerba con daqué de material sólidu amestáu",
@@ -1805,10 +1800,6 @@
                 "craft/bookbinder": {
                     "name": "Encuadernador",
                     "terms": "encuadernación"
-                },
-                "craft/brewery": {
-                    "name": "Cervecería",
-                    "terms": "fabrica de cerveza,embotelladora de cerveza"
                 },
                 "craft/carpenter": {
                     "name": "Carpintería",

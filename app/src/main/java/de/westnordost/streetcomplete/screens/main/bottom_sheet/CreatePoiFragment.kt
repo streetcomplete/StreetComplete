@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
@@ -62,7 +63,7 @@ class CreatePoiFragment : TagEditor() {
         val createNoteMarker = binding.markerCreateLayout.createNoteMarker
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
-        val position = listener?.getMapPositionAt(screenPos) ?: return
+        val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
 
         if (prefs.getBoolean(Prefs.CLOSE_FORM_IMMEDIATELY_AFTER_SOLVING, false)) {
             listener?.onCreatedNote(position)

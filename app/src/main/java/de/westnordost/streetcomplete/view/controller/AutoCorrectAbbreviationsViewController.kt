@@ -18,11 +18,6 @@ class AutoCorrectAbbreviationsViewController(private val editText: EditText) {
             editText.imeOptions = EditorInfo.IME_ACTION_DONE or editText.imeOptions
         }
 
-        editText.inputType =
-            EditorInfo.TYPE_CLASS_TEXT or
-                EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
-                EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
-
         editText.addTextChangedListener(AbbreviationAutoCorrecter())
 
         editText.setOnEditorActionListener { _, actionId, _ ->

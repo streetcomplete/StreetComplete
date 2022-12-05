@@ -1,4 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Otto, Suomen Automatia Oy, Nosto, Otto., Automatia Pankkiautomaatit Oy, Osuuspankki, TalletusOtto, OttoPlus, Nordea, Nokas CMS Oy, Automatia, bittiraha.fi, OP, atm, Aktia, Ottopiste, Otto-automaatti]
+chargingStationOperators: [Virta, Fortum Charge & Drive, Fortum, KSSe, Tesla Motors Inc., K-Lataus, Plugit, Lidl, Fortum Charge&Drive, PlugIt, Motonet, Helen, k-lataus, Virtapiste, Tesla, Helsingin Energia, Charge&Drive]
+clothesContainerOperators: [UFF, Rinki, HSY, Rosk'n roll, Rinki Oy, Fida, Suomen Pakkauskierrätys RINKI Oy, Auringonnousu]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -9,9 +12,6 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 244
 noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
+orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 postboxesHaveCollectionTimes: true
-atmOperators: [Otto, Suomen Automatia Oy, Nosto, Otto., Automatia Pankkiautomaatit Oy, Osuuspankki, TalletusOtto, OttoPlus, Nordea, Nokas CMS Oy, Automatia, bittiraha.fi, OP, atm, Aktia, Ottopiste, Otto-automaatti]
-chargingStationOperators: [Virta, Fortum Charge & Drive, Fortum, KSSe, Tesla Motors Inc., K-Lataus, Plugit, Lidl, Fortum Charge&Drive, PlugIt, Motonet, Helen, k-lataus, Virtapiste, Tesla, Helsingin Energia, Charge&Drive]
-clothesContainerOperators: [UFF, Rinki, HSY, Rosk'n roll, Rinki Oy, Fida, Suomen Pakkauskierrätys RINKI Oy, Auringonnousu]
-orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]

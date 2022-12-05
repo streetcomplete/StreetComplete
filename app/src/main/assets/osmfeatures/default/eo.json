@@ -413,11 +413,6 @@
                     "placeholder": "2, 4, 6…",
                     "terms": "keloj,subteraj etaĝoj,subetaĝoj"
                 },
-                "building/levels_building": {
-                    "label": "Etaĝoj de konstruaĵo",
-                    "placeholder": "2, 4, 6…",
-                    "terms": "etaĝoj,etaghoj,etagxoj,niveloj"
-                },
                 "building/material": {
                     "label": "Materialo de fasado",
                     "terms": "materialo"
@@ -494,9 +489,6 @@
                 "capacity_volume": {
                     "label": "Enhaveco [m³]",
                     "placeholder": "50, 100, 200…"
-                },
-                "cash_in": {
-                    "label": "Enpagoj"
                 },
                 "castle_type": {
                     "label": "Speco",
@@ -779,7 +771,6 @@
                     "label": "Signifo"
                 },
                 "departures_board": {
-                    "label": "Tabulo de forveturoj",
                     "options": {
                         "no": "neniu",
                         "realtime": "elektronika",
@@ -1150,9 +1141,6 @@
                 },
                 "fuel": {
                     "label": "Brulaĵo"
-                },
-                "fuel_multi": {
-                    "label": "Specoj de brulaĵoj"
                 },
                 "gambling": {
                     "label": "Ludoj"
@@ -1846,10 +1834,6 @@
                     "label": "Pagmanieroj",
                     "terms": "maniero de pago,kontanta mono,kreditkarto,pagkarto,bitcoin,bitmono"
                 },
-                "payment_multi_fee": {
-                    "label": "Pagmanieroj",
-                    "terms": "maniero de pago,kontanta mono,kreditkarto,pagkarto,bitcoin,bitmono"
-                },
                 "phases": {
                     "label": "Fazoj",
                     "placeholder": "1, 2, 3…"
@@ -1970,7 +1954,6 @@
                     "label": "Metodo de produkto"
                 },
                 "plant/output/electricity": {
-                    "label": "Povumo",
                     "placeholder": "500 MW, 1000 MW, 2000 MW…"
                 },
                 "plant/source": {
@@ -2596,10 +2579,6 @@
                     "label": "Antaŭe mapigita je",
                     "terms": "dato de kontrolo"
                 },
-                "survey_point/datum_aligned": {
-                    "label": "Alkonformigita al la loka geodezia referenca sistemo",
-                    "terms": "alĝustigita,korekta,misĝustigita,malĝustigita,movita,erara"
-                },
                 "survey_point/purpose": {
                     "label": "Celo",
                     "options": {
@@ -2711,7 +2690,6 @@
                 "tracktype": {
                     "label": "Kvalito de vojo",
                     "options": {
-                        "grade1": "Firma: malmoligita (asfalta) aŭ solide koherigita pavimo",
                         "grade2": "Plejparte firma: sablego/roko kun iomete da malmola materio (sablo, argilo)",
                         "grade3": "Egala miksaĵo de malmolaj kaj molaj (ŝuteblaj) materialoj",
                         "grade4": "Plejparte mola: tero/sablo/herbo kun iomete da malmolaj materialoj",
@@ -4545,10 +4523,6 @@
                     "name": "Librobindejo",
                     "terms": "bindejo,librobindisto,bindisto"
                 },
-                "craft/brewery": {
-                    "name": "Bierfarejo",
-                    "terms": "biero"
-                },
                 "craft/carpenter": {
                     "name": "Ĉarpentista laborejo",
                     "terms": "ĉarpentisto,charpentisto,cxarpentisto,meblisto,lignisto"
@@ -5126,10 +5100,6 @@
                     "name": "Aŭtovoja ligilo",
                     "terms": "enveturejo,elveturejo,aŭtoŝoseo,nodo"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Aŭtovoja ligilo",
-                    "terms": "enveturejo,elveturejo,aŭtoŝoseo,nodo"
-                },
                 "highway/passing_place": {
                     "name": "Preterpasejo",
                     "terms": "pasejo,preterveturejo"
@@ -5159,10 +5129,6 @@
                     "terms": "aŭtovojo,aŭtoŝoseo,vojego,unuaranga,unuaklasa,primara"
                 },
                 "highway/primary_link": {
-                    "name": "Unua-rang-voja ligilo",
-                    "terms": "nodo,elveturejo,enveturejo,vojkruciĝo"
-                },
-                "highway/primary_link-US-CA": {
                     "name": "Unua-rang-voja ligilo",
                     "terms": "nodo,elveturejo,enveturejo,vojkruciĝo"
                 },
@@ -5279,10 +5245,6 @@
                     "terms": "ekspresvojo,ekspresa vojo,aŭtovojo,aŭtoŝoseo,vojego"
                 },
                 "highway/trunk_link": {
-                    "name": "Ekspres-voja ligilo",
-                    "terms": "nodo,elveturejo,enveturejo,vojkruciĝo"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "Ekspres-voja ligilo",
                     "terms": "nodo,elveturejo,enveturejo,vojkruciĝo"
                 },
@@ -6960,10 +6922,6 @@
                 "power/plant/source/oil": {
                     "name": "Petrol-bruliganta elektrocentralo",
                     "terms": "elektrocentralo,centralo,elektrejo,petrolo,nafto,ŝtonoleo"
-                },
-                "power/plant/source/solar": {
-                    "name": "Sunenergia elektrocentralo",
-                    "terms": "elektrejo,centralo,sunpanelo,sunĉelo,fotovoltaiko,sunkolektroro,suncentralo"
                 },
                 "power/plant/source/waste": {
                     "name": "Rub-bruliganta elektrocentralo",

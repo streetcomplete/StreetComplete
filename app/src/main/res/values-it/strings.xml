@@ -1568,4 +1568,9 @@ sorted alphabetically by title -->
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"corsia ciclabile a uso promiscuo"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Dopo aver installato l’app, scansiona di nuovo il codice QR oppure clicca su &lt;a href=\"%s\"&gt;questo link&lt;/a&gt; per applicare il preset."</string>
+    <string name="confirmation_replace_shop_title">"Adesso è un altro negozio?"</string>
+    <string name="confirmation_replace_shop_message">"In quel caso, gli orari di apertura, le informazioni di contatto etc. saranno anch'esse cambiate."</string>
+    <string name="confirmation_replace_shop_yes">"Ora è differente"</string>
+    <string name="confirmation_replace_shop_no">"Sempre il solito posto"</string>
 </resources>

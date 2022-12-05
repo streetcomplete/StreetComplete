@@ -7,7 +7,6 @@ import android.animation.TimeAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
@@ -210,13 +209,13 @@ class AchievementInfoFragment :
             sourceView.visibility = View.INVISIBLE
             it.applyTransforms(Transforms.IDENTITY)
             it.alpha = 1f
-            it.animateFrom(sourceView, sourceView.rootView as ViewGroup)
+            it.animateFrom(sourceView)
                 .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(OvershootInterpolator())
         }
 
     private fun createAchievementIconFlingOutAnimation(targetView: View): ViewPropertyAnimator =
-        binding.achievementIconView.animateTo(targetView, targetView.rootView as ViewGroup)
+        binding.achievementIconView.animateTo(targetView)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .withEndAction {

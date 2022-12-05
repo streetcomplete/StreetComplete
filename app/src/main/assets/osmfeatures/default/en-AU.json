@@ -76,6 +76,9 @@
                 "length": {
                     "label": "Length (Metres)"
                 },
+                "maxspeed/hgv": {
+                    "label": "Heavy Vehicle Speed Limit"
+                },
                 "min_height": {
                     "label": "Height of Bottom (Metres)"
                 },
@@ -113,6 +116,9 @@
                 }
             },
             "presets": {
+                "aerialway/zip_line": {
+                    "name": "Flying Fox"
+                },
                 "amenity/arts_centre": {
                     "name": "Arts Centre"
                 },
@@ -187,12 +193,19 @@
                     "name": "Toilets",
                     "aliases": "Bathroom\nLavatory\nWater Closet\nRestroom"
                 },
+                "amenity/trolley_bay": {
+                    "name": "Trolley Bay"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Fuel Pump"
                 },
                 "amenity/waste_basket": {
                     "name": "Rubbish Bin",
                     "terms": "waste,bin,garbage,rubbish,litter,trash"
+                },
+                "amenity/weighbridge": {
+                    "name": "Weighbridge",
+                    "aliases": "Truck Scale"
                 },
                 "barrier/kerb": {
                     "name": "Kerb"
@@ -245,6 +258,14 @@
                     "name": "Inclined Lift",
                     "terms": "inclined elevator,cable railway"
                 },
+                "highway/footway": {
+                    "name": "Walkway",
+                    "aliases": "Footpath"
+                },
+                "highway/footway/informal": {
+                    "name": "Informal Walkway",
+                    "aliases": "Informal Footpath"
+                },
                 "highway/footway/marked": {
                     "name": "Marked Crossing"
                 },
@@ -264,6 +285,9 @@
                     "name": "Street Light",
                     "terms": "streetlamp,street lamp,lamp,light,gaslight"
                 },
+                "highway/traffic_signals": {
+                    "name": "Traffic Lights"
+                },
                 "indoor/elevator": {
                     "name": "Indoor Lift Shaft"
                 },
@@ -275,6 +299,9 @@
                 },
                 "leisure/fitness_centre": {
                     "name": "Gym / Fitness Centre"
+                },
+                "leisure/fitness_station": {
+                    "name": "Outdoor Exercise Equipment"
                 },
                 "leisure/horse_riding": {
                     "name": "Horseback Riding Centre"
@@ -290,6 +317,13 @@
                 },
                 "place/suburb": {
                     "name": "Suburb"
+                },
+                "playground/slide": {
+                    "name": "Slide",
+                    "aliases": "Slippery Dip"
+                },
+                "playground/zipwire": {
+                    "name": "Playground Flying Fox"
                 },
                 "shop/caravan": {
                     "name": "Caravan Dealership"
@@ -314,6 +348,9 @@
                 },
                 "shop/mall": {
                     "name": "Shopping Centre"
+                },
+                "shop/newsagent": {
+                    "name": "Newsagency"
                 },
                 "shop/tyres": {
                     "name": "Tyre Shop"

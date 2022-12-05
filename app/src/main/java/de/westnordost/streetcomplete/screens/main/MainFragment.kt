@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
@@ -95,6 +94,7 @@ import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
+import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
@@ -106,6 +106,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragmen
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreatePoiFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
@@ -187,6 +189,7 @@ class MainFragment :
     NoteDiscussionForm.Listener,
     LeaveNoteInsteadFragment.Listener,
     CreateNoteFragment.Listener,
+    MoveNodeFragment.Listener,
     EditHistoryFragment.Listener,
     MainMenuButtonFragment.Listener,
     UndoButtonFragment.Listener,
@@ -393,6 +396,7 @@ class MainFragment :
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
+        if (f is IsMapPositionAware) f.onMapMoved(position)
     }
 
     override fun onPanBegin() {
@@ -557,6 +561,30 @@ class MainFragment :
         closeBottomSheet()
     }
 
+    /* ------------------------------- MoveNodeFragment.Listener -------------------------------- */
+
+    override fun onMoveNode(editType: ElementEditType, node: Node) {
+        val mapFragment = mapFragment ?: return
+        showInBottomSheet(MoveNodeFragment.create(editType, node), clearPreviousHighlighting = false)
+        mapFragment.clearSelectedPins()
+        mapFragment.hideNonHighlightedPins()
+        if (editType !is Overlay) {
+            mapFragment.hideOverlay()
+        }
+
+        mapFragment.show3DBuildings = false
+        val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())
+        mapFragment.updateCameraPosition { position = offsetPos }
+    }
+
+    override fun onMovedNode(editType: ElementEditType, position: LatLon) {
+        showQuestSolvedAnimation(editType.icon, position)
+        closeBottomSheet()
+    }
+
+    override fun getScreenPositionAt(mapPos: LatLon): PointF? =
+        mapFragment?.getPointOf(mapPos)
+
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
     override fun putMarkerForCurrentHighlighting(
@@ -594,8 +622,8 @@ class MainFragment :
         closeBottomSheet()
     }
 
-    override fun getMapPositionAt(screenPos: Point): LatLon? =
-        mapFragment?.getPositionAt(screenPos.toPointF())
+    override fun getMapPositionAt(screenPos: PointF): LatLon? =
+        mapFragment?.getPositionAt(screenPos)
 
     override fun getRecordedTrack(): List<Trackpoint>? =
         mapFragment?.recordedTracks

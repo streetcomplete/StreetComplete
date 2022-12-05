@@ -363,10 +363,6 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "подруми,подземни спратови,подземни нивои"
                 },
-                "building/levels_building": {
-                    "label": "Спратови грађевине",
-                    "placeholder": "2, 4, 6..."
-                },
                 "building/material": {
                     "label": "Материјал"
                 },
@@ -409,9 +405,6 @@
                 "capacity_parking": {
                     "label": "Укупно места",
                     "placeholder": "10, 20, 30..."
-                },
-                "cash_in": {
-                    "label": "Новчана уплата"
                 },
                 "castle_type": {
                     "label": "Врста",
@@ -585,7 +578,6 @@
                     "label": "Означавање"
                 },
                 "departures_board": {
-                    "label": "Одласци",
                     "options": {
                         "no": "Ништа",
                         "realtime": "Реално време",
@@ -806,9 +798,6 @@
                 },
                 "fuel": {
                     "label": "Гориво"
-                },
-                "fuel_multi": {
-                    "label": "Врсте горива"
                 },
                 "gambling": {
                     "label": "Игре"
@@ -1284,10 +1273,6 @@
                     "label": "Врсте плаћања",
                     "terms": "начин плаћања,врсте плаћања,кеш,картица,кредит"
                 },
-                "payment_multi_fee": {
-                    "label": "Начини плаћања",
-                    "terms": "начин плаћања,врсте плаћања,кеш,картица,кредит"
-                },
                 "phases": {
                     "label": "Фазе",
                     "placeholder": "1, 2, 3..."
@@ -1337,7 +1322,6 @@
                     "label": "Постројење"
                 },
                 "plant/output/electricity": {
-                    "label": "Излазна снага",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2850,9 +2834,6 @@
                 "craft/bookbinder": {
                     "name": "Књиговезац"
                 },
-                "craft/brewery": {
-                    "name": "Пивара"
-                },
                 "craft/carpenter": {
                     "name": "Столар"
                 },
@@ -4108,9 +4089,6 @@
                 },
                 "power/plant/source/nuclear": {
                     "name": "Нуклеарна електрана"
-                },
-                "power/plant/source/solar": {
-                    "name": "Соларна фарма"
                 },
                 "power/plant/source/wind": {
                     "name": "Ветро-фарма"

@@ -1996,4 +1996,7 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="urlconfig_scan_qr_code_again2">"Nakon instaliranja aplikacije ponovno skenirajte QR kod ili kliknite &lt;a href=\"%s\"&gt;ovu poveznicu&lt;/a&gt; za primjenu Grupe zadataka."</string>
+    <string name="confirmation_replace_shop_title">"Koja je ovdje sada trgovina?"</string>
+    <string name="confirmation_replace_shop_yes">"Druga je trgovina"</string>
+    <string name="confirmation_replace_shop_no">"Nepromijenjeno"</string>
 </resources>

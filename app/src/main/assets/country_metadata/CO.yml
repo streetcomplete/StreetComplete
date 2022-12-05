@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Banco de Bogotá, Banco Popular, Colpatria, Grupo Aval, Servibanca S.A., Banco Caja Social, Citibank, Av Villas, Banco Agrario, Caja Social, Bacolombia, Banco Agrario de Colombia, Banco Colombia, Cajero Bancolombia, Scotiabank, A Toda Hora (ATH) S.A., cajero BBVA, Banco Pichincha, cespo, BancoBogota, Banco de Occidente, Casa Kennedy, Cajero, polv, VIA baloto, COOMULDESA, Banco AV Villas, CAJERO BANCO POPULAR]
 centerLineStyle: yellow
+chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
 mobileCountryCode: 732
 noEntrySignStyle: no entre
 noParkingSignStyle: mutcd
 noStoppingSignStyle: colombia
 officialLanguages: [es]
-popularSports: [soccer, tennis, basketball, baseball, volleyball]
-atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Banco de Bogotá, Banco Popular, Colpatria, Grupo Aval, Servibanca S.A., Banco Caja Social, Citibank, Av Villas, Banco Agrario, Caja Social, Bacolombia, Banco Agrario de Colombia, Banco Colombia, Cajero Bancolombia, Scotiabank, A Toda Hora (ATH) S.A., cajero BBVA, Banco Pichincha, cespo, BancoBogota, Banco de Occidente, Casa Kennedy, Cajero, polv, VIA baloto, COOMULDESA, Banco AV Villas, CAJERO BANCO POPULAR]
-chargingStationOperators: [Codensa, parqueadero, Terpel, Mobil]
 orchardProduces: [coffee, cacao, banana, avocado, guava, mango, mangosteen, lemon, lime, pineapple, coconut, orange, agave, chilli_pepper, sweet_pepper, tomato, rubber, papaya, grape]
+popularSports: [soccer, tennis, basketball, baseball, volleyball]

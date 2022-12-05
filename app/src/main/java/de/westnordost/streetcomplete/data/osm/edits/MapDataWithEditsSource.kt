@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -186,6 +188,14 @@ class MapDataWithEditsSource internal constructor(
                     } else {
                         // element that got edited by the deleted edit not found? Hmm, okay then (not sure if this can happen at all)
                         elementsToDelete.add(ElementKey(edit.elementType, edit.elementId))
+                    }
+
+                    if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
+                        val waysContainingNode = getWaysForNode(edit.elementId)
+                        val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
+                        for (elem in waysContainingNode + affectedRelations) {
+                            mapData.put(elem, getGeometry(elem.type, elem.id))
+                        }
                     }
                 }
             }
@@ -435,7 +445,21 @@ class MapDataWithEditsSource internal constructor(
                 else
                     createGeometry(element)
         }
-        return MapDataUpdates(updated = updates, deleted = deletedKeys)
+
+        // get affected ways and relations and update geometries if a node was moved
+        val elementsWithChangedGeometry = mutableListOf<Element>()
+        if (edit.action is MoveNodeAction || edit.action is RevertMoveNodeAction) {
+            val waysContainingNode = getWaysForNode(edit.elementId)
+            val affectedRelations = getRelationsForNode(edit.elementId) + waysContainingNode.flatMap { getRelationsForWay(it.id) }
+            for (element in waysContainingNode + affectedRelations) {
+                val key = ElementKey(element.type, element.id)
+                deletedElements.remove(key)
+                updatedElements[key] = element
+                updatedGeometries[key] = createGeometry(element)
+                elementsWithChangedGeometry.add(element) // questController needs to know that element was affected (though it was not updated in OSM sense)
+            }
+        }
+        return MapDataUpdates(updated = updates + elementsWithChangedGeometry, deleted = deletedKeys)
     }
 
     private fun createGeometry(element: Element): ElementGeometry? {

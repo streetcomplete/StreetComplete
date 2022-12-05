@@ -328,7 +328,19 @@
                     "terms": "assento,lugar para sentar,descanso,banco de jardim"
                 },
                 "bicycle_parking": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "building": "Dentro de edifício",
+                        "handlebar_holder": "Suporte de guiador",
+                        "lockers": "Cacifos individuais",
+                        "shed": "Abrigo fechado",
+                        "stands": "Suportes",
+                        "wall_loops": "Suporte de roda"
+                    }
+                },
+                "bike_ride": {
+                    "label": "Bike and Ride",
+                    "terms": "estacionamento,bicicletas,bicicleta,bike,biclas,binas,parque,parquemanto,transporte,público,park & ride,incentivo,dissuasor"
                 },
                 "bin": {
                     "label": "Caixote de lixo",
@@ -359,7 +371,8 @@
                     "label": "Tipo"
                 },
                 "booth": {
-                    "label": "Cabina"
+                    "label": "Cabina",
+                    "terms": "caixa,cabine,cabina"
                 },
                 "bottle": {
                     "label": "Enchimento de garrafas"
@@ -410,17 +423,16 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "cave,subsolo,pisos inferiores,andares inferiores,andares"
                 },
-                "building/levels_building": {
-                    "label": "Pisos do edifício",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "andares,pisos"
-                },
                 "building/material": {
                     "label": "Material",
                     "terms": "material,matéria-prima"
                 },
                 "building/part": {
                     "label": "Parte de edifício"
+                },
+                "building/prefabricated": {
+                    "label": "Pré-fabricado",
+                    "terms": "modular,portable,portátil,móvel,préfabricado"
                 },
                 "building_area": {
                     "label": "Edifício",
@@ -496,7 +508,7 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "cash_in": {
-                    "label": "Depósito"
+                    "label": "Depósitos"
                 },
                 "castle_type": {
                     "label": "Tipo",
@@ -623,7 +635,35 @@
                     }
                 },
                 "crop": {
-                    "label": "Colheitas"
+                    "label": "Colheitas",
+                    "options": {
+                        "asparagus": "Espargos",
+                        "barley": "Cevada",
+                        "beet": "Beterraba",
+                        "cassava": "Mandioca",
+                        "coffee": "Café",
+                        "cotton": "Algodão",
+                        "cranberries": "Arandos",
+                        "fast_growing_wood": "Madeira de crescimento rápido",
+                        "flowers": "Flores",
+                        "grape": "Uvas",
+                        "grass": "Relva",
+                        "hop": "Lúpulo",
+                        "lavender": "Alfazema",
+                        "maize": "Milho",
+                        "potato": "Batatas",
+                        "rape": "Colza",
+                        "rice": "Arroz",
+                        "soy": "Soja",
+                        "strawberry": "Morangos",
+                        "sugar_beet": "Beterraba sacarina",
+                        "sugarcane": "Cana de açúcar",
+                        "sunflower": "Girassol",
+                        "tea": "Chá",
+                        "tobacco": "Tabaco",
+                        "vegetable": "Hortaliças",
+                        "wheat": "Trigo"
+                    }
                 },
                 "crossing": {
                     "label": "Tipo"
@@ -779,7 +819,7 @@
                     "label": "Importância"
                 },
                 "departures_board": {
-                    "label": "Painel de partidas",
+                    "label": "Painel de partidas/chegadas",
                     "options": {
                         "no": "Nenhum",
                         "realtime": "Tempo real",
@@ -1017,6 +1057,18 @@
                 },
                 "entrance": {
                     "label": "Tipo",
+                    "options": {
+                        "emergency": "Saída de emergência",
+                        "entrance": "Apenas entrada",
+                        "exit": "Apenas saída",
+                        "garage": "Entrada de garagem",
+                        "home": "Habitação privada",
+                        "main": "Principal",
+                        "secondary": "Secundária",
+                        "service": "Serviço",
+                        "staircase": "Escadaria",
+                        "yes": "Não especificada"
+                    },
                     "terms": "tipo"
                 },
                 "except": {
@@ -1145,8 +1197,36 @@
                 "fuel": {
                     "label": "Combustível"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustível"
+                "fuel/fuel_multi": {
+                    "label": "Tipos de combustível",
+                    "options": {
+                        "GTL_diesel": "GPL",
+                        "HGV_diesel": "Diesel p/ veículos pesados",
+                        "LH2": "Hidrogénio líquido",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (vasilhas)",
+                        "biodiesel": "Biodiesel",
+                        "cng": "Gás natural comprimido (GNC)",
+                        "diesel": "Diesel",
+                        "e10": "E10",
+                        "e85": "E85",
+                        "h70": "Hidrogénio gasoso (700 bar)",
+                        "lpg": "Gás natural liquefeito (GNL)",
+                        "octane_100": "Gasolina (100 octanas)",
+                        "octane_80": "Gasolina (80 octanas)",
+                        "octane_85": "Gasolina (85 octanas)",
+                        "octane_87": "Gasolina (87 octanas)",
+                        "octane_88": "Gasolina (88 octanas)",
+                        "octane_89": "Gasolina (89 octanas)",
+                        "octane_90": "Gasolina (90 octanas)",
+                        "octane_91": "Gasolina (91 octanas)",
+                        "octane_92": "Gasolina (92 octanas)",
+                        "octane_93": "Gasolina (93 octanas)",
+                        "octane_95": "Gasolina (95 octanas)",
+                        "octane_97": "Gasolina (97 octanas)",
+                        "octane_98": "Gasolina (98 octanas)",
+                        "propane": "Propano"
+                    }
                 },
                 "gambling": {
                     "label": "Jogos"
@@ -1168,14 +1248,48 @@
                     "terms": "masculino,feminino,sexo,unisexo"
                 },
                 "generator/method": {
-                    "label": "Método"
+                    "label": "Método",
+                    "options": {
+                        "anaerobic_digestion": "Digestão anaeróbica",
+                        "barrage": "Maremotriz",
+                        "combustion": "Combustão",
+                        "fission": "Fissão",
+                        "fusion": "Fusão",
+                        "gasification": "Gasificação",
+                        "photovoltaic": "Fotovoltaico",
+                        "run-of-the-river": "Corrente fluvial",
+                        "stream": "Fluxo mareal",
+                        "thermal": "Térmico solar",
+                        "water-pumped-storage": "Reservatório reversível",
+                        "water-storage": "Água represada",
+                        "wind_turbine": "Turbina eólica"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "Potência de saída",
                     "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "Fonte de energia"
+                    "label": "Fonte de energia",
+                    "options": {
+                        "battery": "Bateria",
+                        "biofuel": "Biocombustível",
+                        "biogas": "Biogás",
+                        "biomass": "Biomassa",
+                        "coal": "Carvão",
+                        "diesel": "Diesel",
+                        "gas": "Gás natural",
+                        "gasoline": "Gasolina",
+                        "geothermal": "Energia geotérmica",
+                        "hydro": "Energia hidroelétrica",
+                        "nuclear": "Energia nuclear",
+                        "oil": "Óleo",
+                        "solar": "Radiação solar",
+                        "tidal": "Energia das marés",
+                        "waste": "Resíduos",
+                        "wave": "Energia das ondas",
+                        "wind": "Vento"
+                    }
                 },
                 "generator/type": {
                     "label": "Tipo"
@@ -1224,7 +1338,87 @@
                     "label": "Tipo"
                 },
                 "healthcare/speciality": {
-                    "label": "Especialidades"
+                    "label": "Especialidades",
+                    "options": {
+                        "abortion": "Aborto",
+                        "acupuncture": "Acunpunctura",
+                        "allergology": "Alergias",
+                        "anaesthetics": "Anestesiologia",
+                        "angiology": "Angiologia",
+                        "anthroposophical": "Antroposofia",
+                        "applied_kinesiology": "Kinesiologia aplicada",
+                        "aromatherapy": "Aromaterapia",
+                        "ayurveda": "Ayurveda",
+                        "behavior": "Terapia comportamental",
+                        "biochemistry": "Bioquímica",
+                        "biology": "Biologia",
+                        "blood_check": "Análises sanguíneas",
+                        "cardiology": "Cardiologia",
+                        "cardiothoracic_surgery": "Cirurgia cardiotóracica",
+                        "child_psychiatry": "Psiquiatria pediátrica",
+                        "chiropractic": "Quiropraxia",
+                        "clinical_pathology": "Patologia clínica",
+                        "dermatology": "Dermatologia",
+                        "diabetology": "Diabetologia",
+                        "endocrinology": "Endocrinologia",
+                        "fertility": "Fertilidade",
+                        "gastroenterology": "Gastroenterologia",
+                        "general": "Medicina geral",
+                        "geriatrics": "Geriatria",
+                        "gynaecology": "Obstetrícia e Ginecologia",
+                        "haematology": "Hematologia",
+                        "hepatology": "Hepatologia",
+                        "herbalism": "Herbalismo",
+                        "homeopathy": "Homeopatia",
+                        "humanistic": "Psicologia humanista",
+                        "hydrotherapy": "Hidroterapia",
+                        "hypnosis": "Hipnose",
+                        "infectious_diseases": "Doenças infecciosas",
+                        "intensive": "Cuidados intensivos",
+                        "internal": "Medicina interna",
+                        "naturopathy": "Naturopatia",
+                        "neonatology": "Neonatologia",
+                        "nephrology": "Nefrologia",
+                        "neurology": "Neurologia",
+                        "neuropsychiatry": "Neuropsiquiatria",
+                        "neurosurgery": "Neurocirurgia",
+                        "nuclear": "Medicina nuclear",
+                        "occupational": "Medicina ocupacional",
+                        "oncology": "Oncologia",
+                        "ophthalmology": "Oftalmologia",
+                        "orthodontics": "Ortodontia",
+                        "orthopaedics": "Cirurgia ortopédica",
+                        "osteopathy": "Osteopatia",
+                        "otolaryngology": "Otorrinolaringologia",
+                        "paediatric_surgery": "Cirurgia pediátrica",
+                        "paediatrics": "Pediatria",
+                        "palliative": "Cuidados paliativos",
+                        "pathology": "Patologia",
+                        "physiatry": "Fisiatria / Reabilitação",
+                        "plastic_surgery": "Cirurgia plástica",
+                        "podiatry": "Podologia",
+                        "proctology": "Proctologia",
+                        "psychiatry": "Psiquiatria",
+                        "pulmonology": "Pulmonologia",
+                        "radiology": "Radiologia",
+                        "radiotherapy": "Radioterapia",
+                        "reflexology": "Reflexologia",
+                        "reiki": "Reiki",
+                        "rheumatology": "Reumatologia",
+                        "shiatsu": "Shiatsu",
+                        "stomatology": "Estomatologia",
+                        "surgery": "Cirurgia geral",
+                        "systemic": "Terapia sistémica",
+                        "traditional_chinese_medicine": "Medicina tradicional chinesa",
+                        "transplant": "Transplantes",
+                        "trauma": "Traumatologia",
+                        "tropical": "Medicina tropical",
+                        "tuina": "Tuiná",
+                        "unani": "Medicina unani",
+                        "urology": "Urologia",
+                        "vaccination": "Vacinação",
+                        "vascular_surgery": "Cirurgia vascular"
+                    }
                 },
                 "heating": {
                     "label": "Aquecimento"
@@ -1516,7 +1710,8 @@
                     "label": "Nadador-salvador"
                 },
                 "line_attachment": {
-                    "label": "Ligação dos cabos"
+                    "label": "Ligação dos cabos",
+                    "terms": "catenária,conexão,ligar,conectar,fios"
                 },
                 "line_management": {
                     "label": "Gestão de cabos",
@@ -1643,6 +1838,10 @@
                     "label": "Velocidade mínima",
                     "placeholder": "20, 30, 40...",
                     "terms": "velocidade mínima"
+                },
+                "model": {
+                    "label": "Modelo",
+                    "terms": "model"
                 },
                 "monitoring_multi": {
                     "label": "Monitorização"
@@ -1864,10 +2063,48 @@
                 },
                 "payment_multi": {
                     "label": "Tipos de pagamento",
-                    "terms": "cobrança"
-                },
-                "payment_multi_fee": {
-                    "label": "Métodos de pagamento",
+                    "options": {
+                        "account_cards": "Cartões de pagamento",
+                        "alipay": "Alipay",
+                        "american_express": "American Express",
+                        "app": "Aplicação móvel",
+                        "apple_pay": "Apple Pay",
+                        "bancomat": "Bancomat",
+                        "blik": "Blik",
+                        "cards": "Cartão de pagamento",
+                        "cash": "Dinheiro",
+                        "cheque": "Cheque",
+                        "clipper": "Clipper",
+                        "coins": "Moedas",
+                        "contactless": "Pagamento sem contacto",
+                        "credit_cards": "Cartão de crédito",
+                        "cryptocurrencies": "Criptomoedas",
+                        "debit_cards": "Cartão de débito",
+                        "diners_club": "Diners Club",
+                        "discover_card": "Discover",
+                        "dkv": "DKV",
+                        "electronic_purses": "Carteira eletrónica",
+                        "ep_easycard": "悠遊卡EasyCard",
+                        "ep_geldkarte": "GeldKarte",
+                        "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
+                        "google_pay": "Google Pay",
+                        "jcb": "JCB",
+                        "maestro": "Maestro",
+                        "mastercard": "Mastercard",
+                        "mastercard_contactless": "Mastercard contactless",
+                        "notes": "Notas bancárias",
+                        "paypal": "PayPal",
+                        "prepaid_ticket": "Bilhete pré-pago",
+                        "telephone_cards": "Cartão telefónico",
+                        "unionpay": "UnionPay",
+                        "uta": "UTA",
+                        "v_pay": "V Pay",
+                        "visa": "Visa",
+                        "visa_debit": "Visa Debit",
+                        "visa_electron": "Visa Electron",
+                        "wechat": "WeChat Pay"
+                    },
                     "terms": "cobrança"
                 },
                 "phases": {
@@ -1989,8 +2226,21 @@
                 "plant/method": {
                     "label": "Método de geração"
                 },
+                "plant/output": {
+                    "label": "Tipo de energia produzida",
+                    "options": {
+                        "cold_air": "Ar frio",
+                        "cold_water": "Água fria",
+                        "compressed_air": "Ar comprimido",
+                        "electricity": "Eletricidade",
+                        "hot_air": "Ar quente",
+                        "hot_water": "Água quente",
+                        "steam": "Vapor",
+                        "vacuum": "Vácuo"
+                    }
+                },
                 "plant/output/electricity": {
-                    "label": "Potência de saída",
+                    "label": "Produção de eletricidade",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2012,6 +2262,10 @@
                 },
                 "population": {
                     "label": "População"
+                },
+                "population/date": {
+                    "label": "Data do census",
+                    "placeholder": "YYYY-MM-DD"
                 },
                 "portable": {
                     "label": "Portátil",
@@ -2168,6 +2422,30 @@
                 },
                 "religion": {
                     "label": "Religião",
+                    "options": {
+                        "bahai": "Bahá’í",
+                        "benzhu": "Benzhu",
+                        "buddhist": "Budista",
+                        "caodaism": "Caodaísta",
+                        "chinese_folk": "Religião tradicional chinesa",
+                        "christian": "Cristã",
+                        "confucian": "Confucionista",
+                        "hindu": "Hinduísta",
+                        "jain": "Jainista",
+                        "jewish": "Judaica",
+                        "multifaith": "Multifé",
+                        "muslim": "Muçulmana",
+                        "none": "Sem religião",
+                        "pagan": "Pagã",
+                        "shinto": "Xintoísta",
+                        "sikh": "Siquismo",
+                        "spiritualist": "Espiritualista",
+                        "taoist": "Taoísta",
+                        "tenrikyo": "Tenrikyo",
+                        "unitarian_universalist": "Universalista unitária",
+                        "vietnamese_folk": "Religião tradicional vietnamita",
+                        "voodoo": "Vudu"
+                    },
                     "terms": "fé"
                 },
                 "reservation": {
@@ -2482,6 +2760,9 @@
                     },
                     "terms": "referências"
                 },
+                "source/population": {
+                    "label": "Fonte"
+                },
                 "species": {
                     "label": "Espécie",
                     "placeholder": "Acer platanoides, Quercus robur…",
@@ -2592,11 +2873,22 @@
                     "label": "Tema",
                     "terms": "assunto,matéria,tópico"
                 },
+                "subject/wikidata": {
+                    "label": "Tema Wikidata",
+                    "terms": "assunto,tópico,palavra-chave,tema principal"
+                },
                 "substance": {
                     "label": "Substância"
                 },
                 "substation": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "distribution": "Distribuição regional",
+                        "generation": "Geração",
+                        "industrial": "Industrial",
+                        "minor_distribution": "Distribuição local",
+                        "transmission": "Transmissão"
+                    }
                 },
                 "supervised": {
                     "label": "Vigiado",
@@ -2617,11 +2909,17 @@
                         "grass": "Relva",
                         "gravel": "Gravilha",
                         "ground": "Chão",
+                        "metal": "Metal",
+                        "mud": "Lama (de modo persistente)",
                         "paved": "Pavimentada",
                         "paving_stones": "Pavimento ladrilhado",
+                        "salt": "Sal",
                         "sand": "Areia",
+                        "sett": "Calçada (paralelos regulares)",
+                        "unhewn_cobblestone": "Calçada (pedra irregular/arredondada)",
                         "unpaved": "Não pavimentada",
-                        "wood": "Madeira"
+                        "wood": "Madeira",
+                        "woodchips": "Serradura"
                     },
                     "terms": "piso,superfícies"
                 },
@@ -2743,6 +3041,14 @@
                     "label": "Posições",
                     "terms": "posição,postos"
                 },
+                "toilets/wheelchair": {
+                    "options": {
+                        "limited": "Limitado",
+                        "no": "Não",
+                        "yes": "Sim"
+                    },
+                    "terms": "acesso,cadeira,cadeirante,cadeira de rodas,wc,banheiro,casa de banho,retrete,acessível"
+                },
                 "toll": {
                     "label": "Portagem",
                     "terms": "pedágio,portagens"
@@ -2767,12 +3073,12 @@
                     "label": "Solidez da superfície",
                     "options": {
                         "grade1": "1 - Sólida: pavimentada ou com material fortemente compactado",
-                        "grade2": "2 - Sobretudo sólida: cascalho ou pedras misturadas com algum material macio",
+                        "grade2": "2 - Sobretudo sólida: mistura de gravilha com algum material macio",
                         "grade3": "3 - Intermédia: mistura equilibrada de materiais sólidos e macios",
                         "grade4": "4 - Sobretudo macia: terra, erva ou areia misturadas com algum material sólido",
-                        "grade5": "5 - Macia: terra, erva ou areia"
+                        "grade5": "5 - Macia: terra, erva ou areia sem material duro compactado"
                     },
-                    "placeholder": "Sólida, intermédia, macia..."
+                    "placeholder": "Sólida, Intermédia, Macia..."
                 },
                 "trade": {
                     "label": "Tipo"
@@ -2851,10 +3157,24 @@
                     "placeholder": "Padrão"
                 },
                 "tunnel_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "avalanche_protector": "Proteção contra avalanchas",
+                        "building_passage": "Passagem sob edifício",
+                        "culvert": "Túnel",
+                        "flooded": "Túnel inundado"
+                    }
                 },
                 "turning_circle": {
                     "label": "Formato"
+                },
+                "two_sided": {
+                    "label": "Dois lados",
+                    "options": {
+                        "undefined": "Não",
+                        "yes": "Sim"
+                    },
+                    "terms": "lados"
                 },
                 "usage_rail": {
                     "label": "Tipo de utilização",
@@ -2871,7 +3191,10 @@
                 "usage_waterway": {
                     "label": "Tipo de uso",
                     "options": {
+                        "headrace": "Adutor",
                         "irrigation": "Irrigação",
+                        "spillway": "Vertedouro",
+                        "tailrace": "Restituição",
                         "transmission": "Transmissão",
                         "transportation": "Transporte"
                     }
@@ -4474,6 +4797,10 @@
                     "name": "Edifício agrícola",
                     "terms": "campo,agrícola,agricultura,quinta,sítio,granja,rural"
                 },
+                "building/fire_station": {
+                    "name": "Edifício de quartel dos bombeiros",
+                    "terms": "bombeiros,fogo,voluntários,municipais,firefighter,incêndios,combate"
+                },
                 "building/garage": {
                     "name": "Garagem privada",
                     "terms": "garagem,abrigo de automóveis,veículos,carros"
@@ -4670,7 +4997,7 @@
                 },
                 "craft/brewery": {
                     "name": "Cervejaria artesanal",
-                    "terms": "brewery,mestre cervejeiro,cerveja,cervejaria,cerveja artesanal,álcool,bebida,cevada,trigo"
+                    "terms": "cerveja,artesanal,cervejaria,bar,cidra,álcool,alcool,bebida"
                 },
                 "craft/carpenter": {
                     "name": "Carpinteiro",
@@ -5266,10 +5593,6 @@
                     "name": "Ligação a autoestrada",
                     "terms": "ligação a autoestrada,entrada de autoestrada,saída de autoestrada,saída,acesso"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Ligação a autoestrada",
-                    "terms": "ligação a autoestrada,entrada de autoestrada,saída de autoestrada,saída,acesso"
-                },
                 "highway/passing_place": {
                     "name": "Lugar de passagem",
                     "terms": "local de passagem,alargamento de via"
@@ -5299,10 +5622,6 @@
                     "terms": "primary road,estrada nacional,rodovia principal,estrada primária,rodovia primária,primário"
                 },
                 "highway/primary_link": {
-                    "name": "Ligação a estrada primária",
-                    "terms": "primary link,ligação estrada nacional,ligação rodovia nacional,ligação nacional,ligação estrada principal,entrada estrada nacional,entrada rodovia nacional,entrada nacional,saída nacional,saída rodovia nacional,saída estrada nacional"
-                },
-                "highway/primary_link-US-CA": {
                     "name": "Ligação a estrada primária",
                     "terms": "primary link,ligação estrada nacional,ligação rodovia nacional,ligação nacional,ligação estrada principal,entrada estrada nacional,entrada rodovia nacional,entrada nacional,saída nacional,saída rodovia nacional,saída estrada nacional"
                 },
@@ -5427,10 +5746,6 @@
                     "terms": "via reservada a automóveis e motociclos,estrada reservada a automóveis e motociclos,via expressa,via reservada,itinerário principal,itinerário complementar,ip,ic"
                 },
                 "highway/trunk_link": {
-                    "name": "Ligação a via rápida",
-                    "terms": "ligação via rápida,entrada via rápida,saída via rápida,ligação via reservada a automóveis e motociclos,entrada via reservada a automóveis e motociclos,saída via reservada a automóveis e motociclos,ligação via expressa,entrada expressa,saída via expressa,ligação via reservada,entrada via reservada,saída via reservada,ip,ic"
-                },
-                "highway/trunk_link-US-CA": {
                     "name": "Ligação a via rápida",
                     "terms": "ligação via rápida,entrada via rápida,saída via rápida,ligação via reservada a automóveis e motociclos,entrada via reservada a automóveis e motociclos,saída via reservada a automóveis e motociclos,ligação via expressa,entrada expressa,saída via expressa,ligação via reservada,entrada via reservada,saída via reservada,ip,ic"
                 },
@@ -6467,6 +6782,10 @@
                     "name": "Fábrica",
                     "terms": "industrial,indústria,manofatura,manofaturação,fabrico,fabricar,works,refinaria,estrutura,fabricação,produção,montagem,factory"
                 },
+                "man_made/works/brewery": {
+                    "name": "Cervejaria industrial",
+                    "terms": "cerveja,industrial,indústria,cervejaria,bar,cidra,álcool,alcool,bebida"
+                },
                 "man_made/yes": {
                     "name": "Estrutura artificial"
                 },
@@ -6609,6 +6928,10 @@
                     "name": "Rocha solta",
                     "terms": "unattached rock,boulder,rock,pedregulho,rochedo,pedra,calhau,penedo"
                 },
+                "natural/strait": {
+                    "name": "Estreito",
+                    "terms": "strait"
+                },
                 "natural/tree": {
                     "name": "Árvore",
                     "terms": "tree,abeto,acácia,amendoeira,amoreira,carvalho,castanheiro,cedro,cerejeira,choupo,cipreste,damasqueiro,diospireiro,ébano,eucalipto,eucalito,figueira,freixo,laranjeira,limoeiro,loureiro,macieira,marmeleiro,nogueira,nespereira,oliveira,pereira,pessegueiro,pinheiro,plátano,salgueiro,sequoia,sobreiro"
@@ -6644,6 +6967,10 @@
                 "natural/water/moat": {
                     "name": "Fosso",
                     "terms": "moat,fosso inundado,muralha,castelo,fortaleza,baluarte"
+                },
+                "natural/water/oxbow": {
+                    "name": "Lago em ferradura",
+                    "terms": "anabranch,billabong,cut off,meander,oxbow,resaca,braço morto,meandro,rio"
                 },
                 "natural/water/pond": {
                     "name": "Lagoa",
@@ -6892,6 +7219,10 @@
                 "office/travel_agent": {
                     "name": "Agência de viagens"
                 },
+                "office/union": {
+                    "name": "Sindicato",
+                    "terms": "union,labor,sindicalismo"
+                },
                 "office/water_utility": {
                     "name": "Fornecedor de água",
                     "terms": "água,companhia de água,cooperativa de água,distribuidor,distribuição,águas"
@@ -7004,6 +7335,10 @@
                     "name": "Painel de atividades lúdicas",
                     "terms": "painel,jogos,recreio,brincar"
                 },
+                "playground/aerialrotator": {
+                    "name": "Rotador aéreo",
+                    "terms": "giratório,girar,rodar"
+                },
                 "playground/balancebeam": {
                     "name": "Trave de equilíbrio",
                     "terms": "barra,viga,transversal"
@@ -7044,6 +7379,10 @@
                     "name": "Barra fixa horizontal",
                     "terms": "barra horizontal"
                 },
+                "playground/map": {
+                    "name": "Mapa",
+                    "terms": "geografia,cartografia,cartográfico,mapear"
+                },
                 "playground/playhouse": {
                     "name": "Casa de brincar",
                     "terms": "casinha,brincar,casinhas,brincadeira,recreio"
@@ -7060,9 +7399,17 @@
                     "name": "Balancé",
                     "terms": "gangorra,baloiço,arre-burrinho,sobe e desce"
                 },
+                "playground/sledding": {
+                    "name": "Colina de trenó",
+                    "terms": "deslizar,tobogã,descer,sled"
+                },
                 "playground/slide": {
                     "name": "Escorrega",
                     "terms": "escorregador,escorregão,escorrego"
+                },
+                "playground/splash_pad": {
+                    "name": "Área de brincadeiras na água",
+                    "terms": "chapinhar,aquático,água"
                 },
                 "playground/springy": {
                     "name": "Baloiço de mola",
@@ -7076,9 +7423,25 @@
                     "name": "Baloiço",
                     "terms": "balanço,brincar,brincadeira,recreio"
                 },
+                "playground/teenshelter": {
+                    "name": "Abrigo",
+                    "terms": "refúgio"
+                },
+                "playground/tetherball": {
+                    "name": "Poste de espirobol",
+                    "terms": "tetherball,bola"
+                },
                 "playground/trampoline": {
                     "name": "Trampolim",
                     "terms": "tranpolins,saltar,saltos"
+                },
+                "playground/tunnel_tube": {
+                    "name": "Túnel de brincar",
+                    "terms": "tubo"
+                },
+                "playground/water": {
+                    "name": "Parafuso de Arquimedes",
+                    "terms": "água,broca,parafuso,lama"
                 },
                 "playground/zipwire": {
                     "name": "Corda suspensa",
@@ -7105,6 +7468,10 @@
                 "power/cable/underground": {
                     "name": "Cabo de eletricidade subterrâneo",
                     "terms": "elétrico,subterrâneo,eletricidade,tensão,voltagem,subsolo"
+                },
+                "power/catenary_mast": {
+                    "name": "Poste de catenária",
+                    "terms": "mastro,torre,linha,elétrica,cabo,elétrico,eletricidade,energia,ferroviário,ferrovia,ferroviária,comboios,caminhos de ferro"
                 },
                 "power/generator": {
                     "name": "Gerador elétrico",
@@ -7165,10 +7532,6 @@
                 "power/plant/source/oil": {
                     "name": "Central elétrica a petróleo",
                     "terms": "energia,crude,estação elétrica,eletricidade,combustível fóssil,combustíveis fósseis,carbono,combustão,energética"
-                },
-                "power/plant/source/solar": {
-                    "name": "Parque solar",
-                    "terms": "central solar,central fotovoltaica,painéis solares,painel solar,fotovoltaico,estação de produção energética,eletricidade,elétrica"
                 },
                 "power/plant/source/waste": {
                     "name": "Central de incineração de resíduos",
@@ -8432,6 +8795,10 @@
                     "name": "Ilha rodoviária",
                     "terms": "ilha de estrada,ilha na estrada,ilha central,trânsito,redutor de velocidade,redução de velocidade"
                 },
+                "traffic_calming/mini_bumps": {
+                    "name": "Minilombas",
+                    "terms": "lombas,velocidade,protuberâncias,redução,reduzir,abrandar,bumps,espaçadas,intervalos,pequenas"
+                },
                 "traffic_calming/rumble_strip": {
                     "name": "Banda cromática",
                     "terms": "rumble strip,bandas cromáticas,banda sonora,redutor de velocidade,redução de velocidade,rodoviária,estrada,linhas"
@@ -8439,6 +8806,9 @@
                 "traffic_calming/table": {
                     "name": "Lomba de topo plano (+3 m)",
                     "terms": "lomba,table,mesa,trânsito,rodoviária,redutor de velocidade,redução de velocidade,estrada"
+                },
+                "traffic_calming/yes": {
+                    "name": "Não especificado"
                 },
                 "traffic_sign": {
                     "name": "Sinal de trânsito",

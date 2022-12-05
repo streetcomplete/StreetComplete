@@ -331,7 +331,19 @@
                     "terms": "asientos,asiento,banco,escaño"
                 },
                 "bicycle_parking": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "building": "En un edificio",
+                        "handlebar_holder": "Soporte para el manillar",
+                        "lockers": "Casilleros individuales",
+                        "shed": "Cobertizo cerrado",
+                        "stands": "Soporte (soporta el cuadro de la bicicleta)",
+                        "wall_loops": "Doblador de ruedas (sólo soporta la rueda)"
+                    }
+                },
+                "bike_ride": {
+                    "label": "Aparcamiento disuasorio para bicicletas",
+                    "terms": "estacionar,estacionamiento,parking,transporte público,aparcar,aparcamiento,sistemas disuasorios,aparcamiento disuasorio,zona,bicicleta"
                 },
                 "bin": {
                     "label": "Papelera",
@@ -362,7 +374,8 @@
                     "label": "Tipo"
                 },
                 "booth": {
-                    "label": "Cabina"
+                    "label": "Cabina",
+                    "terms": "cabina"
                 },
                 "bottle": {
                     "label": "Llenado de botellas"
@@ -413,17 +426,16 @@
                     "placeholder": "2, 4, 6...",
                     "terms": "niveles,pisos,subterráneos,sótano,subsuelo"
                 },
-                "building/levels_building": {
-                    "label": "Niveles del edificio",
-                    "placeholder": "2, 4, 6...",
-                    "terms": "pisos,niveles,edificio"
-                },
                 "building/material": {
                     "label": "Material",
                     "terms": "material"
                 },
                 "building/part": {
                     "label": "Parte del edificio"
+                },
+                "building/prefabricated": {
+                    "label": "Prefabricado",
+                    "terms": "prefabricado,prefabricada,manufacturado,modular,portátil"
                 },
                 "building_area": {
                     "label": "Edificio",
@@ -499,7 +511,7 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "cash_in": {
-                    "label": "Pagar en efectivo"
+                    "label": "Depósitos"
                 },
                 "castle_type": {
                     "label": "Tipo",
@@ -534,7 +546,8 @@
                 },
                 "circumference": {
                     "label": "Circunferencia (a la altura del pecho)",
-                    "placeholder": "1 m, 20 cm, 30\"…"
+                    "placeholder": "1 m, 20 cm, 30\"…",
+                    "terms": "circunferencia,diámetro a la altura del pecho"
                 },
                 "clothes": {
                     "label": "Ropa",
@@ -626,7 +639,35 @@
                     }
                 },
                 "crop": {
-                    "label": "Cultivos"
+                    "label": "Cultivos",
+                    "options": {
+                        "asparagus": "Espárragos",
+                        "barley": "Cebada",
+                        "beet": "Remolacha",
+                        "cassava": "Yuca",
+                        "coffee": "Café",
+                        "cotton": "Algodón",
+                        "cranberries": "Arándanos",
+                        "fast_growing_wood": "Árboles forestales de cultivo corto",
+                        "flowers": "Flores",
+                        "grape": "Uvas",
+                        "grass": "Césped",
+                        "hop": "Lúpulo",
+                        "lavender": "Lavanda",
+                        "maize": "Maíz",
+                        "potato": "Papas",
+                        "rape": "Colza",
+                        "rice": "Arroz",
+                        "soy": "Soja",
+                        "strawberry": "Fresas / Frutillas",
+                        "sugar_beet": "Remolacha azucarera",
+                        "sugarcane": "Caña de azúcar",
+                        "sunflower": "Girasoles",
+                        "tea": "Té",
+                        "tobacco": "Tabaco",
+                        "vegetable": "Verduras",
+                        "wheat": "Trigo"
+                    }
                 },
                 "crossing": {
                     "label": "Tipo"
@@ -779,10 +820,11 @@
                     "terms": "denominación,nombre,valor,confesión,comunión"
                 },
                 "denotation": {
-                    "label": "Denotación"
+                    "label": "Denotación",
+                    "terms": "denotación,denotacion"
                 },
                 "departures_board": {
-                    "label": "Tablero de salidas",
+                    "label": "Tablero de Partida/Llegadas",
                     "options": {
                         "no": "Ninguno",
                         "realtime": "Tiempo real",
@@ -1022,6 +1064,18 @@
                 },
                 "entrance": {
                     "label": "Tipo",
+                    "options": {
+                        "emergency": "Salida de emergencia",
+                        "entrance": "Sólo entrada",
+                        "exit": "Sólo salida",
+                        "garage": "Puerta de la cochera",
+                        "home": "Casa o apartamento privado",
+                        "main": "Principal",
+                        "secondary": "Secundaria",
+                        "service": "Servicio",
+                        "staircase": "Escalera",
+                        "yes": "Sin especificar"
+                    },
                     "terms": "tipo,tipos"
                 },
                 "except": {
@@ -1154,8 +1208,36 @@
                 "fuel": {
                     "label": "Combustible"
                 },
-                "fuel_multi": {
-                    "label": "Tipos de combustible"
+                "fuel/fuel_multi": {
+                    "label": "Tipos de combustible",
+                    "options": {
+                        "GTL_diesel": "GTL diésel",
+                        "HGV_diesel": "Diésel para camiones",
+                        "LH2": "Hidrógeno líquido",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32 (envasado)",
+                        "biodiesel": "Biodiésel",
+                        "cng": "Gas natural comprimido (GNC)",
+                        "diesel": "Diésel",
+                        "e10": "Gasolina E10",
+                        "e85": "Gasolina E85",
+                        "h70": "Hidrógeno gaseoso (700 bar)",
+                        "lpg": "Gas natural licuado (GLP)",
+                        "octane_100": "Gasolina (100 octanos)",
+                        "octane_80": "Gasolina (80 octanos)",
+                        "octane_85": "Gasolina (85 octanos)",
+                        "octane_87": "Gasolina (87 octanos)",
+                        "octane_88": "Gasolina (88 octanos)",
+                        "octane_89": "Gasolina (89 octanos)",
+                        "octane_90": "Gasolina (90 octanos)",
+                        "octane_91": "Gasolina (91 octanos)",
+                        "octane_92": "Gasolina (92 octanos)",
+                        "octane_93": "Gasolina (93 octanos)",
+                        "octane_95": "Gasolina (95 octanos)",
+                        "octane_97": "Gasolina (97 octanos)",
+                        "octane_98": "Gasolina (98 octanos)",
+                        "propane": "Propano"
+                    }
                 },
                 "gambling": {
                     "label": "Juegos"
@@ -1177,14 +1259,48 @@
                     "terms": "género,sexo,femenino,masculino,unisex,no definido,hermafrodita,andrógino"
                 },
                 "generator/method": {
-                    "label": "Método"
+                    "label": "Método",
+                    "options": {
+                        "anaerobic_digestion": "Digestión anaeróbica",
+                        "barrage": "Presa mareomotriz",
+                        "combustion": "Combustión",
+                        "fission": "Fisión",
+                        "fusion": "Fusión",
+                        "gasification": "Gasificación",
+                        "photovoltaic": "Fotovoltaico",
+                        "run-of-the-river": "Central hidroeléctrica de pasada",
+                        "stream": "Corriente de marea",
+                        "thermal": "Solar térmica",
+                        "water-pumped-storage": "Acumulación por bombeo",
+                        "water-storage": "Embalse",
+                        "wind_turbine": "Turbina eólica"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "Potencia de salida",
                     "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "Fuente"
+                    "label": "Fuente",
+                    "options": {
+                        "battery": "Batería",
+                        "biofuel": "Combustibles de origen vegetal",
+                        "biogas": "Biogás",
+                        "biomass": "Materia vegetal",
+                        "coal": "Carbón",
+                        "diesel": "Diésel",
+                        "gas": "Gas natural",
+                        "gasoline": "Gasolina",
+                        "geothermal": "Energía geotérmica",
+                        "hydro": "Energía hidroeléctrica",
+                        "nuclear": "Energía nuclear",
+                        "oil": "Petróleo",
+                        "solar": "Radiación solar",
+                        "tidal": "Energía mareomotriz",
+                        "waste": "Residuos",
+                        "wave": "Energía undimotriz",
+                        "wind": "Viento"
+                    }
                 },
                 "generator/type": {
                     "label": "Tipo"
@@ -1233,7 +1349,94 @@
                     "label": "Tipo"
                 },
                 "healthcare/speciality": {
-                    "label": "Especialidades"
+                    "label": "Especialidades",
+                    "options": {
+                        "abortion": "Aborto",
+                        "acupuncture": "Acupuntura",
+                        "allergology": "Alergia y asma",
+                        "anaesthetics": "Anestesiología",
+                        "angiology": "Angiología",
+                        "anthroposophical": "Medicina antroposófica",
+                        "applied_kinesiology": "Kinesiología aplicada",
+                        "aromatherapy": "Aromaterapia",
+                        "ayurveda": "Ayurveda",
+                        "behavior": "Terapia conductual",
+                        "biochemistry": "Bioquímica",
+                        "biology": "Biología",
+                        "blood_check": "Análisis de sangre",
+                        "body": "Terapia corporal",
+                        "cardiology": "Cardiología",
+                        "cardiothoracic_surgery": "Cirugía cardiotorácica",
+                        "child_psychiatry": "Psiquiatría infantil y adolescente",
+                        "chiropractic": "Quiropráctica",
+                        "clinical_pathology": "Patología clínica",
+                        "community": "Comunidad y salud pública",
+                        "dental_oral_maxillo_facial_surgery": "Cirugía dental, oral y maxilofacial",
+                        "depth": "Psicología profunda",
+                        "dermatology": "Dermatología",
+                        "dermatovenereology": "Dermatovenereología",
+                        "diabetology": "Diabetología",
+                        "diagnostic_radiology": "Radiología diagnóstica",
+                        "emergency": "Medicina de emergencia",
+                        "endocrinology": "Endocrinología",
+                        "fertility": "Fertilidad",
+                        "gastroenterology": "Gastroenterología",
+                        "general": "Práctica general",
+                        "geriatrics": "Medicina geriatrica",
+                        "gynaecology": "Obstetricia y ginecología",
+                        "haematology": "Hematología",
+                        "hepatology": "Hepatología",
+                        "herbalism": "Herboristería",
+                        "homeopathy": "Homeopatía",
+                        "humanistic": "Psicología humanista",
+                        "hydrotherapy": "Hidroterapia",
+                        "hypnosis": "Hipnosis",
+                        "infectious_diseases": "Enfermedad infecciosa",
+                        "intensive": "Cuidados intensivos",
+                        "internal": "Medicina interna",
+                        "naturopathy": "Naturopatía",
+                        "neonatology": "Neonatología",
+                        "nephrology": "Nefrología",
+                        "neurology": "Neurología",
+                        "neuropsychiatry": "Neuropsiquiatría",
+                        "neurosurgery": "Neurocirugía",
+                        "nuclear": "Medicina nuclear",
+                        "occupational": "Medicina ocupacional",
+                        "oncology": "Oncología",
+                        "ophthalmology": "Oftalmología",
+                        "orthodontics": "Ortodoncia",
+                        "orthopaedics": "Cirugía ortopédica",
+                        "osteopathy": "Osteopatía",
+                        "otolaryngology": "Otorrinolaringología",
+                        "paediatric_surgery": "Cirugía pediátrica",
+                        "paediatrics": "Pediatría",
+                        "palliative": "Cuidados paliativos",
+                        "pathology": "Patología",
+                        "physiatry": "Fisiatría y rehabilitación",
+                        "plastic_surgery": "Cirugía plástica",
+                        "podiatry": "Podología",
+                        "proctology": "Cirugía colorrectal",
+                        "psychiatry": "Psiquiatría",
+                        "pulmonology": "Neumología",
+                        "radiology": "Radiología",
+                        "radiotherapy": "Radioterapia",
+                        "reflexology": "Reflexología",
+                        "reiki": "Reiki",
+                        "rheumatology": "Reumatología",
+                        "shiatsu": "Shiatsu",
+                        "stomatology": "Estomatología",
+                        "surgery": "Cirugía general",
+                        "systemic": "Terapia sistémica",
+                        "traditional_chinese_medicine": "Medicina tradicional china",
+                        "transplant": "Cirugía de trasplante",
+                        "trauma": "Cirugía traumatológica",
+                        "tropical": "Medicina tropical",
+                        "tuina": "Tui na",
+                        "unani": "Medicina unani",
+                        "urology": "Urología",
+                        "vaccination": "Vacunación",
+                        "vascular_surgery": "Cirugía vascular"
+                    }
                 },
                 "heating": {
                     "label": "Calefacción"
@@ -1479,7 +1682,8 @@
                         "evergreen": "Perenne",
                         "semi_deciduous": "Semicaducifolio",
                         "semi_evergreen": "Semiperenne"
-                    }
+                    },
+                    "terms": "ciclo de la hoja,hojas"
                 },
                 "leaf_type": {
                     "label": "Tipo de hoja",
@@ -1497,7 +1701,8 @@
                         "broadleaved": "Hoja ancha",
                         "leafless": "Sin hojas",
                         "needleleaved": "Coníferas"
-                    }
+                    },
+                    "terms": "tipo de hoja,hojas"
                 },
                 "leisure": {
                     "label": "Tipo"
@@ -1525,7 +1730,8 @@
                     "label": "Socorrista acuático"
                 },
                 "line_attachment": {
-                    "label": "Enganche de línea"
+                    "label": "Fijación de la línea",
+                    "terms": "fijación de la línea,enganche de la línea,soporte de la línea"
                 },
                 "line_management": {
                     "label": "Gestión de línea",
@@ -1651,6 +1857,10 @@
                     "label": "Límite mínimo de velocidad",
                     "placeholder": "20, 30, 40...",
                     "terms": "velocidad,límite mínimo de velocidad,mínima"
+                },
+                "model": {
+                    "label": "Modelo",
+                    "terms": "modelo"
                 },
                 "monitoring_multi": {
                     "label": "Supervisando"
@@ -1872,10 +2082,48 @@
                 },
                 "payment_multi": {
                     "label": "Formas de pago",
-                    "terms": "formas de pago,tarjeta de crédito,dinero,efectivo,trueque,cheque,fianza,metálico,moneda,billete,bitcoin,criptomoneda"
-                },
-                "payment_multi_fee": {
-                    "label": "Formas de pago",
+                    "options": {
+                        "account_cards": "Tarjeta de cuenta",
+                        "alipay": "Alipay",
+                        "american_express": "American Express",
+                        "app": "Aplicación móvil",
+                        "apple_pay": "Apple Pay",
+                        "bancomat": "Bancomat",
+                        "blik": "Blik",
+                        "cards": "Tarjeta de pago",
+                        "cash": "Efectivo",
+                        "cheque": "Cheque",
+                        "clipper": "Clipper",
+                        "coins": "Monedas",
+                        "contactless": "Pago sin contacto",
+                        "credit_cards": "Tarjeta de crédito",
+                        "cryptocurrencies": "Criptomoneda",
+                        "debit_cards": "Tarjeta de débito",
+                        "diners_club": "Diners Club",
+                        "discover_card": "Discover",
+                        "dkv": "DKV",
+                        "electronic_purses": "Monedero electrónico",
+                        "ep_easycard": "悠遊卡EasyCard",
+                        "ep_geldkarte": "GeldKarte",
+                        "ep_ipass": "iPASS一卡通",
+                        "girocard": "Girocard",
+                        "google_pay": "Google Pay",
+                        "jcb": "JCB",
+                        "maestro": "Maestro",
+                        "mastercard": "Mastercard",
+                        "mastercard_contactless": "Mastercard Contactless",
+                        "notes": "Papel moneda",
+                        "paypal": "PayPal",
+                        "prepaid_ticket": "Billete prepago",
+                        "telephone_cards": "Tarjeta telefónica",
+                        "unionpay": "UnionPay",
+                        "uta": "UTA",
+                        "v_pay": "V Pay",
+                        "visa": "Visa",
+                        "visa_debit": "Visa Débito",
+                        "visa_electron": "Visa Electron",
+                        "wechat": "WeChat Pay"
+                    },
                     "terms": "formas de pago,tarjeta de crédito,dinero,efectivo,trueque,cheque,fianza,metálico,moneda,billete,bitcoin,criptomoneda"
                 },
                 "phases": {
@@ -1997,8 +2245,21 @@
                 "plant/method": {
                     "label": "Método de generación"
                 },
+                "plant/output": {
+                    "label": "Forma de salida de la energía",
+                    "options": {
+                        "cold_air": "Aire frío",
+                        "cold_water": "Agua fría",
+                        "compressed_air": "Aire comprimido",
+                        "electricity": "Electricidad",
+                        "hot_air": "Aire caliente",
+                        "hot_water": "Agua caliente",
+                        "steam": "Vapor",
+                        "vacuum": "Vacío"
+                    }
+                },
                 "plant/output/electricity": {
-                    "label": "Potencia de salida",
+                    "label": "Salida de energía eléctrica",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
                 },
                 "plant/source": {
@@ -2020,6 +2281,10 @@
                 },
                 "population": {
                     "label": "Cantidad de población"
+                },
+                "population/date": {
+                    "label": "Fecha de la población",
+                    "placeholder": "AAAA-MM-DD"
                 },
                 "portable": {
                     "label": "Portátil",
@@ -2176,6 +2441,30 @@
                 },
                 "religion": {
                     "label": "Religión",
+                    "options": {
+                        "bahai": "Bahá'í",
+                        "benzhu": "Benzhu",
+                        "buddhist": "Budista",
+                        "caodaism": "Caodaísta",
+                        "chinese_folk": "Religión popular China",
+                        "christian": "Cristiano",
+                        "confucian": "Confuciano",
+                        "hindu": "Hindú",
+                        "jain": "Jainista",
+                        "jewish": "Judío",
+                        "multifaith": "Multirreligioso",
+                        "muslim": "Musulmán",
+                        "none": "No religioso",
+                        "pagan": "Pagano",
+                        "shinto": "Sintoísmo",
+                        "sikh": "Sijismo",
+                        "spiritualist": "Espiritista",
+                        "taoist": "Taoísta",
+                        "tenrikyo": "Tenrikyo",
+                        "unitarian_universalist": "Unitarismo universalista",
+                        "vietnamese_folk": "Religión popular vietnamita",
+                        "voodoo": "Vudú"
+                    },
                     "terms": "religión,confesión,judío,cristiano,católico,ateo,cienciología,testigos de jehová,umbanda,protestante,budista,dios,filosofía,wicca,ortodoxos,mormones,espiritual,ritual,helenismo,pastafarismo,chamanismo,brujería,pagano,islam,jediismo,satanismo,shinto,taoísmo,yoga,reiki,iglesia,templo,monasterio,capilla,catedral"
                 },
                 "reservation": {
@@ -2492,6 +2781,9 @@
                     },
                     "terms": "fuentes,referencias,orígenes,origen"
                 },
+                "source/population": {
+                    "label": "Fuente de la población"
+                },
                 "species": {
                     "label": "Especies",
                     "placeholder": "Acer platanoides, Quercus robur, …",
@@ -2611,7 +2903,18 @@
                     "label": "Sustancia"
                 },
                 "substation": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "compensation": "Compensación de potencia reactiva",
+                        "converter": "Convertidor CA/CC de alta tensión",
+                        "distribution": "Distribución regional",
+                        "generation": "Generación",
+                        "industrial": "Industrial",
+                        "minor_distribution": "Distribución local",
+                        "traction": "Suministro del sistema de tracción",
+                        "transition": "Transición de superficie/subterránea",
+                        "transmission": "Transmisión de alta tensión"
+                    }
                 },
                 "supervised": {
                     "label": "Vigilado",
@@ -2632,11 +2935,17 @@
                         "grass": "Césped",
                         "gravel": "Grava",
                         "ground": "Suelo",
+                        "metal": "Metal",
+                        "mud": "Continuamente embarrado",
                         "paved": "Pavimentado",
                         "paving_stones": "Adoquines",
+                        "salt": "Sal",
                         "sand": "Arena",
+                        "sett": "Adoquinado",
+                        "unhewn_cobblestone": "Empedrado (piedras sin cortar, redondeadas)",
                         "unpaved": "Sin pavimentar",
-                        "wood": "Madera"
+                        "wood": "Madera",
+                        "woodchips": "Astillas de madera"
                     },
                     "terms": "superficie"
                 },
@@ -2758,6 +3067,15 @@
                     "label": "Posiciones",
                     "terms": "posición"
                 },
+                "toilets/wheelchair": {
+                    "label": "Baño accesible para sillas de ruedas",
+                    "options": {
+                        "limited": "Limitado",
+                        "no": "No",
+                        "yes": "Sí"
+                    },
+                    "terms": "baño,inodoro,accesible,accesibilidad,discapacitados,minusválidos"
+                },
                 "toll": {
                     "label": "Peaje",
                     "terms": "peaje"
@@ -2781,7 +3099,7 @@
                 "tracktype": {
                     "label": "Tipo de pista",
                     "options": {
-                        "grade1": "Sólido: pavimentada o de superficie compacta y dura",
+                        "grade1": "Sólido: pavimentada",
                         "grade2": "Mayormente sólido: grava/roca con algún material suave mezclado",
                         "grade3": "Mezcla pareja de materiales duros y blandos",
                         "grade4": "Mayormente Suave: tierra/arena/césped con algún un material duro mezclado",
@@ -2887,10 +3205,24 @@
                     "placeholder": "Predeterminado"
                 },
                 "tunnel_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "avalanche_protector": "Protector contra avalanchas",
+                        "building_passage": "Pasaje del edificio",
+                        "culvert": "Alcantarilla",
+                        "flooded": "Túnel inundado"
+                    }
                 },
                 "turning_circle": {
                     "label": "Forma"
+                },
+                "two_sided": {
+                    "label": "Dos lados",
+                    "options": {
+                        "undefined": "No",
+                        "yes": "Sí"
+                    },
+                    "terms": "dos lados,doble lado,dos caras,doble cara"
                 },
                 "usage_rail": {
                     "label": "Tipo de uso",
@@ -3332,7 +3664,7 @@
                     "name": "Estación / Terminal de bus"
                 },
                 "amenity/cafe": {
-                    "name": "Cafetería",
+                    "name": "Café",
                     "terms": "café,cafe,cafetería,cafeteria,té,te,salón de té,salon de te,casa de té,casa de te,bar,restaurante"
                 },
                 "amenity/cafe/bubble_tea": {
@@ -3484,6 +3816,10 @@
                 "amenity/fast_food/burger": {
                     "name": "Hamburguesa (Comida rápida)",
                     "terms": "desayuno,cena,comedor,comer,parrilla,almuerzo,mesa,café,cafe,comida rápida,comida al paso"
+                },
+                "amenity/fast_food/cafeteria": {
+                    "name": "Cafetería",
+                    "terms": "cafetería,café,comedor,refectorio,cantina"
                 },
                 "amenity/fast_food/chicken": {
                     "name": "Pollo (Comida rápida)",
@@ -4560,6 +4896,10 @@
                     "name": "Edificio agrícola",
                     "terms": "edificio agrícola,edificio agricola,agrícola,agricola,granja,edificio agrario,construcción agrícola"
                 },
+                "building/fire_station": {
+                    "name": "Edificio de la estación de bomberos",
+                    "terms": "edificio de la estación de bomberos,estación de bomberos,bomberos"
+                },
                 "building/garage": {
                     "name": "Garaje privado",
                     "terms": "garaje,cochera"
@@ -4760,8 +5100,8 @@
                     "terms": "encuadernador,empastador,libro"
                 },
                 "craft/brewery": {
-                    "name": "Cervecería",
-                    "terms": "cervecería,fábrica de cerveza,cerveza"
+                    "name": "Cervecería artesanal",
+                    "terms": "alcohol,cerveza,bebida"
                 },
                 "craft/carpenter": {
                     "name": "Carpintero",
@@ -5216,7 +5556,7 @@
                     "name": "Centro de salud (tipo no especificado)"
                 },
                 "highway": {
-                    "name": "Elemento de carretera"
+                    "name": "Vía"
                 },
                 "highway/bridleway": {
                     "name": "Camino de herradura",
@@ -5228,6 +5568,10 @@
                 },
                 "highway/bus_stop": {
                     "name": "Parada de bus"
+                },
+                "highway/busway": {
+                    "name": "Vía de autobús",
+                    "terms": "autobús de tránsito rápido,bus rapid transit,brt,metrobús,metrobus,sistemas de autobús expreso,sistemas de transporte rápidos en autobuses,sistemas de transporte público masivo en autobuses,autobus,colectivo"
                 },
                 "highway/construction": {
                     "name": "Vía en construcción",
@@ -5370,10 +5714,6 @@
                     "name": "Enlace de autopista",
                     "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
-                "highway/motorway_link-US-CA": {
-                    "name": "Enlace de autopista",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
-                },
                 "highway/passing_place": {
                     "name": "Lugar de paso",
                     "terms": "lugar de paso,parada,zona de descanso"
@@ -5405,10 +5745,6 @@
                 "highway/primary_link": {
                     "name": "Enlace de carretera primaria",
                     "terms": "enlace carretera primaria,enlace a carretera primaria,enlace a vía primaria"
-                },
-                "highway/primary_link-US-CA": {
-                    "name": "Enlace principal",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
                 "highway/raceway": {
                     "name": "Pista de carreras de automovilismo",
@@ -5469,6 +5805,9 @@
                 "highway/service/parking_aisle": {
                     "name": "Pasillo de estacionamiento",
                     "terms": "pasillo,coche,carro,auto,automóvil,vehículo,aparcamiento,parking,aparcadero,estacionamiento,garaje,parqueadero,parqueo"
+                },
+                "highway/service_area": {
+                    "name": "Área de servicio pavimentada"
                 },
                 "highway/services": {
                     "name": "Área de servicio",
@@ -5533,10 +5872,6 @@
                 "highway/trunk_link": {
                     "name": "Enlace de carretera principal",
                     "terms": "enlace principal,enlace a carretera troncal"
-                },
-                "highway/trunk_link-US-CA": {
-                    "name": "Enlace troncal",
-                    "terms": "rampa de acceso,rampa de ingreso,rampa de salida,acceso,ingreso,salida,enlace,autopista,autovía"
                 },
                 "highway/turning_circle": {
                     "name": "Círculo de giro",
@@ -5832,7 +6167,7 @@
                     "terms": "terreno,religioso,religión,religion,monasterio,convento,seminario,casa de retiro,instituto religioso,capilla,templo,iglesia,lugar de oración,gruta"
                 },
                 "landuse/reservoir": {
-                    "name": "Reservorio"
+                    "name": "Embalse"
                 },
                 "landuse/residential": {
                     "name": "Área residencial",
@@ -6045,6 +6380,10 @@
                 "leisure/pitch/american_football": {
                     "name": "Campo de fútbol americano",
                     "terms": "cancha,campo,fútbol,football,americano,gridiron"
+                },
+                "leisure/pitch/american_handball": {
+                    "name": "Cancha de handball americano / Pista de balonmano americana",
+                    "terms": "handball,wallball,balonmano,cancha,pista"
                 },
                 "leisure/pitch/archery": {
                     "name": "Campo de tiro con arco",
@@ -6497,6 +6836,10 @@
                     "name": "Punto geodésico",
                     "terms": "vértice geodésico,punto geodésico"
                 },
+                "man_made/tailings_pond": {
+                    "name": "Estanque de relaves",
+                    "terms": "estanque,relaves,minería,separación,lodo"
+                },
                 "man_made/torii": {
                     "name": "Torii",
                     "terms": "puerta japonesa,santuario sintoísta"
@@ -6580,6 +6923,10 @@
                 "man_made/works": {
                     "name": "Fábrica",
                     "terms": "factoría,manofactura,industria,taller,ensamblaje,planta,materia prima,fabricado,producción,fabricación,ingenio,procesadora,refinería,cervecería,azucarera"
+                },
+                "man_made/works/brewery": {
+                    "name": "Cervecería industrial",
+                    "terms": "alcohol,cerveza,bebida"
                 },
                 "man_made/yes": {
                     "name": "Elemento artificial (tipo no especificado)"
@@ -6723,6 +7070,10 @@
                     "name": "Piedra sin unir",
                     "terms": "roca,piedra"
                 },
+                "natural/strait": {
+                    "name": "Estrecho",
+                    "terms": "estrecho,canal,paso,pasaje"
+                },
                 "natural/tree": {
                     "name": "Árbol",
                     "terms": "árbol,arbol,arbusto"
@@ -6730,6 +7081,10 @@
                 "natural/tree_row": {
                     "name": "Árboles en fila",
                     "terms": "fila,hilera,árboles,arboles"
+                },
+                "natural/tree_stump": {
+                    "name": "Tocón de árbol",
+                    "terms": "tocón,tocon,tueco,corte,árbol cortado,árbol quitado"
                 },
                 "natural/valley": {
                     "name": "Valle",
@@ -6758,6 +7113,10 @@
                 "natural/water/moat": {
                     "name": "Foso",
                     "terms": "foso"
+                },
+                "natural/water/oxbow": {
+                    "name": "Brazo muerto",
+                    "terms": "brazo muerto,meandro abandonado,hoz abandonada,lago en herradura,galacho"
                 },
                 "natural/water/pond": {
                     "name": "Estanque",
@@ -6992,6 +7351,10 @@
                     "name": "Oficina de investigador privado",
                     "terms": "investigador privado,detective privado"
                 },
+                "office/property_management": {
+                    "name": "Administración de propiedades / Oficina de arrendamiento",
+                    "terms": "alquiler de inmuebles,administración,inmobiliaria"
+                },
                 "office/quango": {
                     "name": "Oficina ONG cuasiautónoma",
                     "terms": "ong,no gubernamentales,organización,cuasi autónoma,cuasiautónoma"
@@ -7026,6 +7389,10 @@
                 },
                 "office/travel_agent": {
                     "name": "Agencia de viajes"
+                },
+                "office/union": {
+                    "name": "Oficina sindical",
+                    "terms": "sindicato,gremio"
                 },
                 "office/water_utility": {
                     "name": "Oficina de servicios públicos de agua",
@@ -7273,6 +7640,10 @@
                     "name": "Cable eléctrico subterráneo",
                     "terms": "cable,alimentación,energía,electricidad,subterráneo"
                 },
+                "power/catenary_mast": {
+                    "name": "Poste de la catenaria",
+                    "terms": "poste de la catenaria,pilón catenario,mástil catenario,línea aérea,cable aéreo"
+                },
                 "power/generator": {
                     "name": "Generador de energía",
                     "terms": "subestación,generador,generador eléctrico,generador de electricidad,generador de potencia,generador de energía,estación eléctrica,planta de electridad,central elécrica,electricidad,eléctrica,electrica"
@@ -7325,6 +7696,10 @@
                     "name": "Estación de energía hidroeléctrica",
                     "terms": "represa,presa,central eléctrica,central electrica,escurrimiento del río,marea,turbina de agua"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "Granja solar",
+                    "terms": "central fotovoltaica,paneles solares,parque solar,granja solar,solar a gran escala"
+                },
                 "power/plant/source/nuclear": {
                     "name": "Planta de energía nuclear",
                     "terms": "atómica,fisión,fision,central eléctrica,central electrica,reactor nuclear"
@@ -7334,8 +7709,8 @@
                     "terms": "carbón,combustión,combustible fósil,petróleo,central eléctrica"
                 },
                 "power/plant/source/solar": {
-                    "name": "Huerta solar",
-                    "terms": "central fotovoltaica,paneles solares,parque solar,parque fotovoltaico,huerta solar,huerto solar,granja solar,campo solar,solar"
+                    "name": "Planta de energía solar",
+                    "terms": "planta,energía,solar"
                 },
                 "power/plant/source/waste": {
                     "name": "Planta de energía de incineración de residuos",

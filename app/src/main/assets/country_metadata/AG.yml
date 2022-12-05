@@ -5,5 +5,5 @@ mobileCountryCode: 344
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [en]
-speedUnits: [miles per hour, kilometers per hour]
 orchardProduces: [guava, mango, mangosteen, lemon, lime, banana, tomato, pineapple, chilli_pepper, sweet_pepper]
+speedUnits: [miles per hour, kilometers per hour]

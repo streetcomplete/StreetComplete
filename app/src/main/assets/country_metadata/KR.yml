@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ko-Latn]
 advisorySpeedLimitSignStyle: white
+atmOperators: [신한은행, 우리은행, 국민은행, 하나은행, 농협, 농협은행, NH농협은행, IBK기업은행, 기업은행, Woori Bank, 부산은행, Citibank, KEB, KB국민은행, 경남은행, Shinhan Bank, KB, IBK]
 centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 450
 officialLanguages: [ko]
+orchardProduces: [apple, chilli_pepper, sweet_pepper, apple, chestnut, chilli_pepper, sweet_pepper, peach, persimmon, orange, peach, pear, grape, pear, tomato, plum, strawberry]
 popularReligions: [christian, buddhist, animist]
 popularSports: [baseball, badminton, archery]
 postboxesHaveCollectionTimes: true
-atmOperators: [신한은행, 우리은행, 국민은행, 하나은행, 농협, 농협은행, NH농협은행, IBK기업은행, 기업은행, Woori Bank, 부산은행, Citibank, KEB, KB국민은행, 경남은행, Shinhan Bank, KB, IBK]
-orchardProduces: [apple, chilli_pepper, sweet_pepper, apple, chestnut, chilli_pepper, sweet_pepper, peach, persimmon, orange, peach, pear, grape, pear, tomato, plum, strawberry]

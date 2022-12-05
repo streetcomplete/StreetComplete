@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sr, it]
+atmOperators: [Zagrebačka banka, PBZ, Euronet, Privredna banka Zagreb, Erste, HPB, Erste Bank, Hrvatska poštanska banka, ZABA, OTP Bank, RBA, OTP Banka, OTP, Raiffeisen, Euronet Worldwide, Splitska Banka, Raiffeisen Bank, Addiko Bank, otpbanka, Auro Domus, Hypo, Raiffeisenbank Austria, Erste Banka, Raiffeisenbank, Addiko, Privredna banka, Karlovačka banka, Sberbank, Kreditna banka Zagreb, Zagrebacka banka, MoneyGet, Hypo Group, Erste Bank Croatia, Erste & Steiermärkische banka, Raiffaisen Bank, HypoGroup Alpe Adria, Zagrebačka banka d.d., Jadranska banka, Volksbank, Poštanska banka, Raiffeisen banka, Erste&Steiermärkische Bank, Societe Generale - Splitska banka, Erste & Steiermärkische Bank, Hypo Alpe Adria, OTP banka d.d., Addiko Banka, Euonet, Hypo Alpe Adria Bank, BSpend, optbanka, Payten]
+chargingStationOperators: [ELEN, Elen, Tesla Motors Inc., MOL Plugee, Eurokod]
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true
@@ -10,10 +12,8 @@ mobileCountryCode: 219
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [hr]
+orchardProduces: [grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry]
 popularSports: [soccer, tennis, basketball, boules, handball]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA
-atmOperators: [Zagrebačka banka, PBZ, Euronet, Privredna banka Zagreb, Erste, HPB, Erste Bank, Hrvatska poštanska banka, ZABA, OTP Bank, RBA, OTP Banka, OTP, Raiffeisen, Euronet Worldwide, Splitska Banka, Raiffeisen Bank, Addiko Bank, otpbanka, Auro Domus, Hypo, Raiffeisenbank Austria, Erste Banka, Raiffeisenbank, Addiko, Privredna banka, Karlovačka banka, Sberbank, Kreditna banka Zagreb, Zagrebacka banka, MoneyGet, Hypo Group, Erste Bank Croatia, Erste & Steiermärkische banka, Raiffaisen Bank, HypoGroup Alpe Adria, Zagrebačka banka d.d., Jadranska banka, Volksbank, Poštanska banka, Raiffeisen banka, Erste&Steiermärkische Bank, Societe Generale - Splitska banka, Erste & Steiermärkische Bank, Hypo Alpe Adria, OTP banka d.d., Addiko Banka, Euonet, Hypo Alpe Adria Bank, BSpend, optbanka, Payten]
-chargingStationOperators: [ELEN, Elen, Tesla Motors Inc., MOL Plugee, Eurokod]
-orchardProduces: [grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry]

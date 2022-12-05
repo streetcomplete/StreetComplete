@@ -1726,7 +1726,7 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="only_at_hours">"kun på følgende tidspunkter:"</string>
     <string name="except_at_hours">"undtagen på følgende tidspunkter:"</string>
     <string name="quest_bollard_type_not_bollard">"Ikke en pullert, men en anden form for barriere"</string>
-    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Ikke en cykelbarriere, men en anden form for barriere"</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">"Ikke en cykelbarriere, men en anden barriere"</string>
     <string name="quest_smoking_no">"Nej, forbudt"</string>
     <string name="quest_smoking_outside">"Kun udenfor"</string>
     <string name="quest_smoking_separated">"Kun i adskilte områder"</string>
@@ -1930,7 +1930,7 @@ sorted alphabetically by title -->
     <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Kan denne cykelbarriere åbnes (med eller uden nøgle)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fast"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Kan åbnes"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Kan fjernes"</string>
@@ -1950,7 +1950,7 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_title">"Anvend forudindstilling"</string>
     <string name="urlconfig_apply_message">"Anvend og vælg forudindstilling %1$s?"</string>
     <string name="urlconfig_apply_message_overwrite">"Bemærk: Din forudindstilling med samme navn vil blive overskrevet!"</string>
-    <string name="urlconfig_switch_hint">"Du kan til enhver tid skifte forindstillinger i indstillingerne."</string>
+    <string name="urlconfig_switch_hint">"Du kan til enhver tid skifte forudindstillinger i indstillingerne."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Cykelstativ i to niveauer"</string>
 
     <!-- Fuzzy -->
@@ -1962,4 +1962,8 @@ sorted alphabetically by title -->
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"2-minus-1-vej"</string>
     <string name="urlconfig_scan_qr_code_again2">"Når du har installeret appen, skal du scanne QR-koden igen eller klikke på &lt;a href=\"%s\"&gt;dette link&lt;/a&gt; for at anvende forudindstillingen."</string>
+    <string name="confirmation_replace_shop_title">"Er det et andet sted nu?"</string>
+    <string name="confirmation_replace_shop_message">"I så fald vil åbningstider, kontaktoplysninger osv. også være ændret."</string>
+    <string name="confirmation_replace_shop_yes">"Andet sted nu"</string>
+    <string name="confirmation_replace_shop_no">"Stadig samme sted"</string>
 </resources>

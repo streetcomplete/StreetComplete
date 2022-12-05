@@ -139,7 +139,6 @@ import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingO
 import de.westnordost.streetcomplete.quests.service_building.AddServiceBuildingType
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
-import de.westnordost.streetcomplete.quests.shoulder.AddShoulder
 import de.westnordost.streetcomplete.quests.show_poi.ShowSeating
 import de.westnordost.streetcomplete.quests.show_poi.ShowBicycleStuff
 import de.westnordost.streetcomplete.quests.show_poi.ShowBusiness
@@ -511,7 +510,11 @@ fun getQuestTypeList(
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(countryInfos, countryBoundariesFuture), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-    139 to AddShoulder(), // needs minimal thinking
+
+    // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
+    // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
+    // 139 to AddShoulder(), // needs minimal thinking
+
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
     142 to AddPathSmoothness(),

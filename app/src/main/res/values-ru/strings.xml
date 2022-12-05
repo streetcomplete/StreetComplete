@@ -130,8 +130,6 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Зависит от месяца…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Плавающий график работы…"</string>
     <string name="quest_openingHours_comment_title">"Опишите режим работы"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
     <string name="quest_roofShape_title">"Какой формы крыша у этого здания?"</string>
 
@@ -2067,8 +2065,60 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"Карта кемпингов"</string>
     <string name="quest_atm_cashin_title">"Принимает ли банкомат наличные?"</string>
     <string name="create_node_action_description">"Вы создали точку с …"</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"Это Точка Сбора"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Точкой Сбора является место в котором люди собираются в экстренных ситуациях. Обычно оно выглядит так:"</string>
+    <string name="quest_address_answer_house_name2">"У адреса есть название дома…"</string>
+    <string name="quest_address_street_street_name_label">"Название улицы:"</string>
+    <string name="quest_address_street_hint2">"Нажмите на улицу на карте чтобы выбрать её"</string>
+    <string name="quest_bicycle_incline_title">"Какое направление здесь ведёт вверх?"</string>
+    <string name="quest_bicycle_incline_up_and_down">"То вверх, то вниз"</string>
+    <string name="quest_drinking_water_type_title">"Как здесь предоставляется питьевая вода?"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Другой питьевой фонтан"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Питьевой фонтан с небольшой струйкой воды"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Только наполнение бутылок"</string>
+    <string name="quest_drinking_water_type_tap">"Кран с водой"</string>
+    <string name="quest_drinking_water_type_hand_pump">"Ручная помпа"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"Колодец без помпы"</string>
     <string name="quest_drinking_water_type_spring">"Родник"</string>
+    <string name="quest_drinking_water_type_disused">"Заброшенный источник воды"</string>
     <string name="overlay_addresses">"Адреса"</string>
     <string name="overlay_shops">"Магазины"</string>
     <string name="name_label">"Название"</string>
+    <string name="vacant_shop_title">"Свободный магазин"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"Другой тип места"</string>
+    <string name="quest_address_answer_no_address">"Тут нет адреса"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Может ли эта преграда для велосипедов быть открыта (с ключом или без)?"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"Фиксировано"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"Открываемо"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"Убираемо"</string>
+    <string name="quest_buildingType_guardhouse">"Домик охранника"</string>
+    <string name="quest_genericRef_title">"Какой здесь идентификационный номер?"</string>
+    <string name="quest_sidewalk_answer_different">"Здесь другая ситуация с тротуарами"</string>
+    <string name="about_title_get_involved">"Принять участие"</string>
+    <string name="pref_category_quests_overlays">"Квесты и оверлеи"</string>
+    <string name="quest_presets_rename">"Переименовать"</string>
+    <string name="quest_presets_share">"Поделиться"</string>
+    <string name="quest_presets_delete">"Удалить"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Покажите другим этот QR код чтобы поделиться вашим пресетом."</string>
+    <string name="urlconfig_as_url">"Или в виде ссылки:"</string>
+    <string name="urlconfig_url_copied">"Ссылка скопирована в буфер обмена"</string>
+    <string name="urlconfig_apply_title">"Применить пресет"</string>
+    <string name="urlconfig_apply_message">"Применить и выбрать пресет %1$s?"</string>
+    <string name="urlconfig_apply_message_overwrite">"Важно: Ваш пресет с тем же названием будет перезаписан!"</string>
+    <string name="urlconfig_switch_hint">"Вы можете сменить пресет в настройках в любой момент."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Двухэтажная парковка для велосипедов"</string>
+    <string name="user_profile_current_week_title">"Последние 7 дней"</string>
+    <string name="user_profile_dates_mapped">"Недавние дни когда вы занимались маппингом"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"рекомендуемая полоса для велосипедистов"</string>
+    <string name="urlconfig_scan_qr_code_again2">"После установки приложения, снова просканируйте QR код или нажмите на &lt;a href=\"%s\"&gt;эту ссылку&lt;/a&gt; чтобы применить пресет."</string>
+    <string name="confirmation_replace_shop_title">"Это теперь другое место?"</string>
+    <string name="confirmation_replace_shop_message">"В таком случае, часы работы, контактная информация итд. тоже изменились."</string>
+    <string name="confirmation_replace_shop_yes">"Теперь это другое место"</string>
+    <string name="confirmation_replace_shop_no">"Это всё ещё то же место"</string>
 </resources>

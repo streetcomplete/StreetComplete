@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
+atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial Bank of Ceylon PLC, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
+chargingStationOperators: [Spark EV]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true
@@ -8,10 +10,8 @@ mobileCountryCode: 413
 noParkingLineStyle: yellow
 noStoppingLineStyle: double yellow
 officialLanguages: [si, ta]
+orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg]
 popularReligions: [buddhist, hindu, christian, muslim]
 popularSports: [soccer, tennis, cricket]
 postboxesHaveCollectionTimes: true
 postboxesHaveRoyalCypher: true
-atmOperators: [Commercial Bank, HNB, BOC, Hatton National Bank, Bank of Ceylon, People's Bank, Sampath Bank, NSB, Peoples Bank, BOC ATM, Union Bank, People’s Bank, HSBC, Nations Trust Bank, Commercial Bank of Ceylon PLC, Sampath ATM, HNB ATM, Seylan Bank, Commercial, Commercial Bank ATM, BOĆ, People‘s Bank]
-chargingStationOperators: [Spark EV]
-orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg]

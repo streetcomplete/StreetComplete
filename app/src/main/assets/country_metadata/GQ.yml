@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [SEGESA Comercial, BGFI bank]
 centerLineStyle: white
 edgeLineStyle: white
 mobileCountryCode: 627
 officialLanguages: [es, fr, pt, fan]
-workweekDays: 6
-atmOperators: [SEGESA Comercial, BGFI bank]
 orchardProduces: [coffee, cacao, banana, coconut]
+workweekDays: 6

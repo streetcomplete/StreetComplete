@@ -10,7 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
-/** Manages the UI for inputting the address number (usually housenumber, see [AddressStreetNameInputViewController])
+/** Manages the UI for inputting the address number (usually housenumber, see [AddressNumberInputViewController])
  *  and/or a house name.
  *
  *  Both inputs can be retracted and expanded with tapping on [toggleHouseNameButton] or

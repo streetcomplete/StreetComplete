@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, Itaú, Servipag, banco chile, Transbank]
 centerLineStyle: white
+chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
 mobileCountryCode: 730
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin
 officialLanguages: [es]
-atmOperators: [Banco de Chile, Banco Estado, BancoEstado, Santander, Redbanc, Banco Santander, Scotiabank, BCI, Caja Vecina, Itaú, Servipag, banco chile, Transbank]
-chargingStationOperators: [Enel, Copec, e, copec, CGE, Copec Voltex]
 orchardProduces: [grape, walnut, cherry, apple, avocado, hazelnut, olive, cranberry, plum, peach, tomato, almond, kiwi, pear, lemon, lime]

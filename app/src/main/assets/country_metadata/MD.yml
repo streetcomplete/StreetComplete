@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Moldindconbank, Victoriabank, Агропромбанк, Moldova Agroindbank, Mobiasbanca, Eximbank, ЗАО «Агропромбанк», FinComBank, Moldincombank, BCR, Сбербанк, BCR Chișinău, Banca de Economii, Moldindcombank, MAIB, Moldinconbank, Banca Comerciala Romaneasca, B.C. "Unibank" S.A., Unibank, Agroindbank, Moldova-Agroindbank, ЗАО Агропромбанк, Эксимбанк, АПБ, MICB, Приднестровский Сбербанк, Energbank, micb.md, Victoriabank1]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 259
 officialLanguages: [ro]
+orchardProduces: [grape, apple, walnut, plum, peach, tomato, cherry, apricot, pear, strawberry, chilli_pepper, sweet_pepper, raspberry, hazelnut, almond]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA
-atmOperators: [Moldindconbank, Victoriabank, Агропромбанк, Moldova Agroindbank, Mobiasbanca, Eximbank, ЗАО «Агропромбанк», FinComBank, Moldincombank, BCR, Сбербанк, BCR Chișinău, Banca de Economii, Moldindcombank, MAIB, Moldinconbank, Banca Comerciala Romaneasca, B.C. "Unibank" S.A., Unibank, Agroindbank, Moldova-Agroindbank, ЗАО Агропромбанк, Эксимбанк, АПБ, MICB, Приднестровский Сбербанк, Energbank, micb.md, Victoriabank1]
-orchardProduces: [grape, apple, walnut, plum, peach, tomato, cherry, apricot, pear, strawberry, chilli_pepper, sweet_pepper, raspberry, hazelnut, almond]
