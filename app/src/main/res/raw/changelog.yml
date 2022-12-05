@@ -1,7 +1,7 @@
 v50.0-beta1: |
   <h3>🚲️️ Cycleway Overlay (#4657, #4233)</h3>
-  <p>A new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on foot- and cycle paths.</p>
-  <h3>🚚📦 Move node (#3502, #4579), by @Helium314</h3>
+  <p>There is a new overlay which allows you to review and edit the streetside cycleway infrastructure as well as whether there is any segregation on combined foot- and cycle paths.</p>
+  <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
   <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
       quest and overlay. It lets you correct the position of the POI.</p>
   </ul>
