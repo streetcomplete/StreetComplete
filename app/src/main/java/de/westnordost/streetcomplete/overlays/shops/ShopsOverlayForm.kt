@@ -51,13 +51,16 @@ class ShopsOverlayForm : AbstractOverlayForm() {
     private val prefs: SharedPreferences by inject()
 
     private var originalFeature: Feature? = null
+    private var originalNoName: Boolean = false
     private var originalNames: List<LocalizedName> = emptyList()
 
     private lateinit var featureCtrl: FeatureViewController
+    private var isNoName: Boolean = false
     private var namesAdapter: LocalizedNameAdapter? = null
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() }
+    override val otherAnswers get() = listOfNotNull(
+        AnswerItem(R.string.quest_shop_gone_vacant_answer) { setVacant() },
+        createNoNameAnswer()
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +87,8 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 )
             }
         }
+        originalNoName = element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
+        isNoName = savedInstanceState?.getBoolean(NO_NAME) ?: originalNoName
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -137,11 +142,13 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         binding.nameContainer.namesList.isNestedScrollingEnabled = false
 
         updateNameContainerVisibility()
+        updateNoNameHint()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         namesAdapter?.names?.let { outState.putString(LOCALIZED_NAMES_DATA, Json.encodeToString(it)) }
+        outState.putBoolean(NO_NAME, isNoName)
     }
 
     private fun filterOnlyShops(feature: Feature): Boolean {
@@ -165,6 +172,16 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         onSelectedFeature(createVacantShop(requireContext().resources))
     }
 
+    private fun createNoNameAnswer(): AnswerItem? =
+        if (featureCtrl.feature == null || isNoName) null
+        else AnswerItem(R.string.quest_placeName_no_name_answer) { setNoName() }
+
+    private fun setNoName() {
+        isNoName = true
+        namesAdapter?.names = listOf()
+        updateNoNameHint()
+    }
+
     private fun updateNameContainerVisibility() {
         val selectedFeature = featureCtrl.feature
         /* the name input is only visible if the place is not vacant, if a feature has been selected
@@ -178,8 +195,14 @@ class ShopsOverlayForm : AbstractOverlayForm() {
         binding.nameLabel.isGone = isNameInputInvisible
     }
 
+    private fun updateNoNameHint() {
+        val showHint = isNoName && namesAdapter?.names?.isEmpty() == true
+        namesAdapter?.emptyNamesHint = if (showHint) getString(R.string.quest_placeName_no_name_answer) else null
+    }
+
     override fun hasChanges(): Boolean =
         originalFeature != featureCtrl.feature || originalNames != namesAdapter?.names
+        || originalNoName != isNoName
 
     override fun isFormComplete(): Boolean =
         featureCtrl.feature != null // name is not necessary
@@ -193,6 +216,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 element, geometry,
                 namesAdapter?.names.orEmpty(), originalNames,
                 featureCtrl.feature!!, originalFeature,
+                isNoName,
                 ::confirmReplaceShop
             ))
         }
@@ -211,6 +235,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     companion object {
         private const val LOCALIZED_NAMES_DATA = "localized_names_data"
+        private const val NO_NAME = "NO_NAME"
     }
 }
 
@@ -221,6 +246,7 @@ private suspend fun createEditAction(
     previousNames: List<LocalizedName>,
     newFeature: Feature,
     previousFeature: Feature?,
+    isNoName: Boolean,
     confirmReplaceShop: suspend () -> Boolean
 ): ElementEditAction {
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
@@ -269,8 +295,8 @@ private suspend fun createEditAction(
     }
 
     newNames.applyTo(tagChanges)
-    if (tagChanges["name"] != null) {
-        tagChanges.remove("noname")
+    if (newNames.isEmpty() && isNoName) {
+        tagChanges["name:signed"] = "no"
     }
 
     return if (element != null) {
