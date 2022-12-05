@@ -1570,11 +1570,11 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard">Bicycle boulevard</string>
     <string name="separate_cycleway_no">No cycling</string>
     <string name="separate_cycleway_allowed">Cyclists are allowed</string>
-    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (regardless of whether cycling is allowed or not) </string>
+    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (regardless of whether cycling is allowed or not)</string>
     <string name="separate_cycleway_non_segregated">Designated combined foot- and cycleway</string>
     <string name="separate_cycleway_segregated">Segregated cycle- and footway</string>
     <string name="separate_cycleway_exclusive">Exclusive cycleway</string>
-    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway with sidewalk (footway is segregated from cycleway by a kerb)</string>
+    <string name="separate_cycleway_with_sidewalk">Exclusive cycleway which has a sidewalk for foot traffic (with kerb)</string>
     <string name="cycleway_reverse_direction">Reverse cycleway direction</string>
     <string name="cycleway_reverse_direction_warning">That a cycleway goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
