@@ -77,8 +77,8 @@ fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
         if (isOneway(tags)) {
             if (roadType == "service" || roadType == "track") {
                 // a service road (e.g. driveway) or just some track should be at least as broad
-                // as the assumed width of a car
-                return usableWidth < 1.75f
+                // as the default profile of OSRM considers as passable by cars
+                return usableWidth < 1.9f
             } else {
                 // all others should at least be broad enough to accommodate a truck
                 return usableWidth < 2.6f
