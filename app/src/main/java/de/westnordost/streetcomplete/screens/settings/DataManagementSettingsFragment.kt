@@ -642,7 +642,8 @@ private const val REQUEST_CODE_TREES_EXPORT = 5332
 private const val REQUEST_CODE_EXTERNAL_IMPORT = 5333
 private const val REQUEST_CODE_EXTERNAL_EXPORT = 5334
 
-private const val LAST_KNOWN_DB_VERSION = 7L // TODO: adjust this every time the version changes and handle changes!
+// TODO: adjust this every time the version changes, and adjust data handling if necessary!
+private const val LAST_KNOWN_DB_VERSION = 8L
 
 private const val BACKUP_HIDDEN_OSM_QUESTS = "quests"
 private const val BACKUP_HIDDEN_NOTES = "notes"

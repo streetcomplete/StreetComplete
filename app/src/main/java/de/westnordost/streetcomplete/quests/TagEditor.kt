@@ -162,6 +162,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         binding.okButton.setOnClickListener {
             if (!tagsChangedAndOk()) return@setOnClickListener // for now keep the button visible and just do nothing if invalid
+            newTags.keys.removeAll { it.isBlank() } // if value is not blank ok button is disabled, so we discard only empty lines here
             showingTagEditor = false
             viewLifecycleScope.launch { applyEdit() } // tags are updated, and the different timestamp should not matter
         }
@@ -274,9 +275,13 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     }
 
     private fun tagsChangedAndOk(): Boolean =
-        newTags != originalElement.tags
-            && !newTags.containsKey("")
-            && !newTags.containsValue("")
+        originalElement.tags != HashMap<String, String>().apply {
+            putAll(newTags)
+            entries.removeAll { it.key.isBlank() && it.value.isBlank() }
+        }
+            && newTags.none {
+                (it.key.isBlank() && it.value.isNotBlank()) || (it.value.isBlank() && it.key.isNotBlank())
+            }
             && newTags.keys.all { it.length < 255 }
             && newTags.values.all { it.length < 255 }
             && newTags.isNotEmpty() // though this could be allowed...

@@ -156,8 +156,16 @@ class EditTagsAdapter(
         val delete: ImageView = view.findViewById<ImageView>(R.id.deleteButton).apply {
             setOnClickListener {
                 val position = absoluteAdapterPosition
-                val oldEntry = displaySet.removeAt(position)
-                dataSet.remove(oldEntry.first)
+                val oldEntry = displaySet[position]
+                if (oldEntry.second.isEmpty()) {
+                    // delete if value is empty
+                    displaySet.removeAt(position)
+                    dataSet.remove(oldEntry.first)
+                } else {
+                    // otherwise clear value
+                    displaySet[position] = displaySet[position].copy(second = "")
+                    dataSet[oldEntry.first] = ""
+                }
                 onDataChanged()
 //                notifyItemRemoved(position) // crash when editing an entry, and deleting another one right after
                 notifyDataSetChanged()

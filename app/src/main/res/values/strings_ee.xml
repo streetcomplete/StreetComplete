@@ -314,7 +314,7 @@
     <string name="hide_button">Hide</string>
     <string name="tag_editor_last_edited">Last edited: %s</string>
     <string name="tag_editor_duplicate_key">Ignoring change of duplicate key "%s"</string>
-    <string name="tutorial_info_fork_message">StreetComplete expert edition\n
+    <string name="tutorial_info_fork_message"><b>StreetComplete expert edition</b>\n\n
 This modified version of StreetComplete is intended for users with more than basic knowledge about OSM. It gives you more control, but also more <i>responsibility</i>.\n
 This especially applies for the possibility to modify tags arbitrarily and deleting any node, but also for modification of element selection for quests.
 Quests added in this version <i>may not be answerable</i> in all cases and are thus disabled by default. Please hide them in case they cannot be answered, and <i>do not spam notes</i>.\n\n
