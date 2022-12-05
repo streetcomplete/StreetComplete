@@ -20,6 +20,7 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library
           or tourism ~ apartment|hotel
         )
+        and indoor_seating != no
         and takeaway != only
         and !air_conditioning
     """
