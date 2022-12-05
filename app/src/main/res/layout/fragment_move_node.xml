@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/arrowView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tint="@color/accent"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:ignore="RtlHardcoded,RtlSymmetry,UselessParent">
+
+        <RelativeLayout
+            android:id="@+id/moveNodeMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="128dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:src="@drawable/pin"
+                tools:ignore="RtlSymmetry"/>
+
+            <ImageView
+                android:id="@+id/moveNodeIconView"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="7dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_quest_create_note" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <de.westnordost.streetcomplete.view.SlidingRelativeLayout
+        android:layout_width="@dimen/quest_form_width"
+        android:layout_height="match_parent"
+        android:id="@+id/bottomSheetContainer"
+        >
+
+        <FrameLayout
+            android:id="@+id/speechbubbleContentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-2.5dp"
+            android:layout_marginEnd="-2.5dp"
+            android:paddingBottom="4dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_alignParentBottom="true">
+
+            <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/speech_bubble_none"
+            android:elevation="@dimen/speech_bubble_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:divider="@drawable/button_bar_divider">
+
+                <RelativeLayout
+                    android:id="@+id/content"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="24dp">
+
+                    <TextView
+                        android:id="@+id/titleLabel"
+                        android:text="@string/node_moved_not_far_enough"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Title"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/move_node_description"
+                        android:layout_below="@id/titleLabel"
+                        />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/buttonPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="locale"
+                    style="@style/ButtonBar">
+
+                    <Button
+                        android:id="@+id/cancelButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@android:string/cancel"
+                        style="@style/BottomSheetButtonBarItem"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/okButton"
+            android:src="@drawable/ic_check_48dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:scaleType="centerInside"
+            style="@style/RoundAccentButton"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:alpha="0"
+            tools:alpha="1"
+            tools:visibility="visible"
+            tools:scaleX="1"
+            tools:scaleY="1"
+            android:padding="20dp"/>
+
+    </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
+
+</RelativeLayout>

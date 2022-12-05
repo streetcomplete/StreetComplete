@@ -1,3 +1,14 @@
+v50.0-beta1: |
+  <h3>🚚📦 Move node (#3502, #4579), by @Helium314</h3>
+  <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
+      quest and overlay. It lets you correct the position of the POI.</p>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Surfaces for segregated foot and cycleway: Correct common surface (#4615), by @mnalis</li>
+  <li>Other small enhancements (#4637), thanks @matkoniecz</li>
+  </ul>
+
 v49.2: |
   <p>Tiny bugfix release for v49.1, because</p>
   <ul>

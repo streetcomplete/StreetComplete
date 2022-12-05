@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splitWayRoot">
 
     <ImageView
@@ -33,7 +33,6 @@
                 android:src="@drawable/ic_undo_24dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"/>
-
 
             <FrameLayout
                 android:id="@+id/speechbubbleContentContainer"
@@ -66,7 +65,7 @@
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
                             android:paddingTop="10dp"
-                            android:paddingBottom="10dp">
+                            android:paddingBottom="24dp">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -100,19 +99,25 @@
 
         </RelativeLayout>
 
-        <TextView
+        <ImageView
             android:id="@+id/okButton"
-            android:text="@android:string/ok"
-            style="@style/RoundAccentButton"
+            android:src="@drawable/ic_check_48dp"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:scaleType="centerInside"
+            style="@style/RoundAccentButton"
             android:layout_margin="8dp"
             android:visibility="gone"
             android:scaleX="0.5"
             android:scaleY="0.5"
-            android:alpha="0"/>
+            android:alpha="0"
+            tools:alpha="1"
+            tools:visibility="visible"
+            tools:scaleX="1"
+            tools:scaleY="1"
+            android:padding="20dp"/>
 
         <View
             android:id="@+id/glassPane"
