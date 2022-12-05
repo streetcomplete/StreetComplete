@@ -1490,9 +1490,6 @@
                 "water": {
                     "label": "Vrsta"
                 },
-                "water_volume": {
-                    "terms": "rezervna količina vode (m³)"
-                },
                 "waterway": {
                     "label": "Vrsta"
                 },
@@ -2374,17 +2371,8 @@
                 "highway/footway": {
                     "name": "Pješačka staza"
                 },
-                "highway/footway/marked": {
-                    "name": "Označeni pješački prijelaz"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Nogostup"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Neoznačeni pješački prijelaz"
-                },
-                "highway/footway/zebra": {
-                    "name": "Označeni pješački prijelaz"
                 },
                 "highway/living_street": {
                     "name": "Područje smirenog prometa"
@@ -2844,9 +2832,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Podzemni cjevovod"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Ventil cjevovoda"
                 },
                 "man_made/pumping_station": {
                     "name": "Crpna stanica"

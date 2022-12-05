@@ -1,3 +1,61 @@
 {
-    "fr-FR": {}
+    "fr-FR": {
+        "presets": {
+            "categories": {
+                "category-path": {
+                    "name": "Chemins"
+                },
+                "category-road_major": {
+                    "name": "Routes Majeures"
+                },
+                "category-road_minor": {
+                    "name": "Routes Mineures"
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "Accés Autorisé",
+                    "options": {
+                        "customers": {
+                            "title": "Clients"
+                        }
+                    }
+                },
+                "access_simple": {
+                    "options": {
+                        "no": "Aucun",
+                        "private": "Privé"
+                    }
+                },
+                "addr/interpolation": {
+                    "options": {
+                        "alphabetic": "Alphabétique"
+                    }
+                },
+                "address": {
+                    "placeholders": {
+                        "country": "Pays",
+                        "neighbourhood": "Voisinage",
+                        "postcode": "Code Postal",
+                        "street": "Rue"
+                    }
+                },
+                "aerialway/duration": {
+                    "label": "Durée (minutes)"
+                },
+                "blind": {
+                    "options": {
+                        "limited": "Limité",
+                        "no": "Non",
+                        "yes": "Oui"
+                    }
+                }
+            },
+            "presets": {
+                "waterway/river": {
+                    "name": "Rivière"
+                }
+            }
+        }
+    }
 }

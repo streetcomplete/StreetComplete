@@ -948,9 +948,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_parking_fee_title">"Musí se tu platit za parkování?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"cyklopruh (přerušované značení)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Neopracované kočičí hlavy"</string>
 
     <!-- Fuzzy -->
@@ -986,9 +983,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Jaký je to druh parkoviště pro kola?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"navržený cyklopruh"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Jaké jsou časy výběrů této poštovní schránky?"</string>

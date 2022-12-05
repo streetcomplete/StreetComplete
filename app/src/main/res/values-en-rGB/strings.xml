@@ -408,7 +408,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_religion_chinese_folk">"Chinese folk religion"</string>
     <string name="quest_religion_for_wayside_shrine_title">"What religion is this shrine associated with?"</string>
     <string name="quest_parking_fee_title">"Do you have to pay to park here?"</string>
-    <string name="quest_cycleway_value_lane_soft">"cycle lane (dashed markings)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Unhewn cobblestone"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
     <string name="quest_fee_answer_hours">"Depends on time and day…"</string>
@@ -421,7 +420,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_bicycle_parking_type_locker">"Locker"</string>
     <string name="quest_bicycle_parking_type_building">"Building"</string>
     <string name="quest_bicycle_parking_type_title">"What type of bicycle parking is this?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"bicycle suggestion lane"</string>
     <string name="quest_postboxCollectionTimes_title">"What are the collection times of this postbox?"</string>
     <string name="quest_collectionTimes_add_times">"Add collection time"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"No times specified"</string>

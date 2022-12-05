@@ -1016,9 +1016,6 @@
     <string name="quest_parking_fee_title">"ഇവിടെ പാർക്ക് ചെയ്യുന്നതിന് ഒരു പണം നൽകേണ്ടതുണ്ടോ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"സൈക്കിൾ പാത (ഡാഷ് ചെയ്ത അടയാളങ്ങൾ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"അറിയപ്പെടാത്ത ചതുരക്കല്ല്"</string>
 
     <!-- Fuzzy -->
@@ -1053,9 +1050,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"ഏതുതരം സൈക്കിളുകൾ പാർക്ക് ചെയ്യുന്ന സ്ഥലമാണിത്?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"സൈക്കിളുകൾക്ക് നിർദ്ദേശിച്ച പാത"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"പോസ്റ്റ്ബോക്സിന്റെ ശേഖരണ സമയം എപ്പോഴാണ്?"</string>

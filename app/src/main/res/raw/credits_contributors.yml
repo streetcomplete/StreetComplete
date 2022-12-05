@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 385625
-  linesOfInterfaceMarkupChanged: 141677
-  assetFilesChanged: 1947
+  linesOfCodeChanged: 395266
+  linesOfInterfaceMarkupChanged: 142049
+  assetFilesChanged: 1950
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 17312
+  linesOfCodeChanged: 17352
   linesOfInterfaceMarkupChanged: 4943
   assetFilesChanged: 610
 - name: "Flo Edelmann"
@@ -13,11 +13,11 @@
   linesOfCodeChanged: 17087
   linesOfInterfaceMarkupChanged: 2357
   assetFilesChanged: 151
-- name: "Helium314"
+- name: "Helium"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 9796
-  linesOfInterfaceMarkupChanged: 532
-  assetFilesChanged: 69
+  linesOfCodeChanged: 10548
+  linesOfInterfaceMarkupChanged: 777
+  assetFilesChanged: 70
 - name: "ENT8R"
   githubUsername: "ENT8R"
   linesOfCodeChanged: 7366
@@ -28,7 +28,7 @@
   linesOfCodeChanged: 3950
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 2871
+  linesOfCodeChanged: 2987
   linesOfInterfaceMarkupChanged: 229
   assetFilesChanged: 69
 - name: "arrival-spring"

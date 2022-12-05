@@ -2396,9 +2396,6 @@
                     "label": "容積（公升）",
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "儲水量（立方米）"
-                },
                 "waterway": {
                     "label": "種類"
                 },

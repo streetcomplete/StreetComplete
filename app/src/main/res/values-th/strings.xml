@@ -467,9 +467,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"ศาลเจ้านี้เป็นของศาสนาใด?"</string>
     <string name="quest_parking_fee_title">"ต้องจ่ายค่าจอดรถที่นี่หรือไม่?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"ช่องทางจักรยาน (เส้นประ)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ก้อนหินปูถนน"</string>
     <string name="quest_streetSurface_square_title">"จตุรัสที่นี่มีพื้นผิวประเภทไหน?"</string>
     <string name="quest_fee_answer_hours">"ขึ้นอยู่กับวันและเวลา…"</string>
@@ -486,7 +483,6 @@
     <string name="quest_bicycle_parking_type_locker">"ตู้ล็อกเกอร์"</string>
     <string name="quest_bicycle_parking_type_building">"อาคาร"</string>
     <string name="quest_bicycle_parking_type_title">"เป็นที่จอดรถจักรยานประเภทใด?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"ทางที่แนะนำจักรยาน"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"ตู้ไปรษณีย์นี้ เปิดตู้กี่โมง?"</string>

@@ -443,9 +443,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Quale religione è rappresentata in questa edicola votiva?"</string>
     <string name="quest_parking_fee_title">"È necessario pagare per poter parcheggiare qui?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"corsia ciclabile (segni tratteggiati)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ciottoli grezzi"</string>
     <string name="quest_streetSurface_square_title">"Che tipo di pavimentazione ha questa piazza?"</string>
     <string name="quest_fee_answer_hours">"Dipende da giorno e ora…"</string>
@@ -460,7 +457,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_bicycle_parking_type_locker">"Armadietti"</string>
     <string name="quest_bicycle_parking_type_building">"Fabbricato"</string>
     <string name="quest_bicycle_parking_type_title">"Quale tipo di parcheggio per biciclette è questo?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"corsia preferenziale ciclabile"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Quali sono gli orari di raccolta di questa buca delle lettere?"</string>

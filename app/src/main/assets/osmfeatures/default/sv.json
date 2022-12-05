@@ -2987,10 +2987,6 @@
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "volym,liter,omfång,rymd,utrymme"
                 },
-                "water_volume": {
-                    "label": "Volym på vattenreservoarer (m³)",
-                    "terms": "volym på vattenreservoar (m³),volym,vattenreservoar,reservoar,m3"
-                },
                 "waterway": {
                     "label": "Typ"
                 },
@@ -5094,8 +5090,7 @@
                     "name": "Korsning"
                 },
                 "highway/crossing/marked": {
-                    "name": "Markerad gångpassage",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
+                    "name": "Markerad gångpassage"
                 },
                 "highway/crossing/uncontrolled": {
                     "name": "Markerat övergångsställe"
@@ -5123,8 +5118,7 @@
                     "terms": "cykel- och gångkorsning,gång- och cykelkorsning,gång och cykelkorsning,gc-korsning,cykelkorsning,gångkorsning,cykelpassage,gångpassage,övergångsställe,gående,cyklande,cykel,gång,cykelväg,gångväg,gc-passage,gc-övergång"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Markerad cykelkorsning",
-                    "terms": "markerad cykelkorsning,cykelöverfart,cykelkorsning,cykelpassage"
+                    "name": "Markerad cykelkorsning"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Omarkerad cykelkorsning",
@@ -5157,20 +5151,9 @@
                 "highway/footway/crossing": {
                     "name": "Gångpassage"
                 },
-                "highway/footway/marked": {
-                    "name": "Markerat övergångsställe",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,markerat övergångsställe,markerad gångpassage"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Trottoar",
                     "terms": "trottoar,gångbana,gångväg"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Omarkerad övergång",
-                    "terms": "övergångsställe för gående,övergångsställe,vägövergång,vägpassage,gångvägspassage,gångpassage,omarkerat övergångsställe,omarkerad gångpassage,omarkerad övergång"
-                },
-                "highway/footway/zebra": {
-                    "name": "Markerat övergångsställe"
                 },
                 "highway/give_way": {
                     "name": "Väjningsplikt",
@@ -6200,10 +6183,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Underjordisk pipeline",
                     "terms": "underjordisk pipeline,pipeline,underjordiskt rör,rör,olja,naturgas,gas,vatten,avlopp,oljepipeline,vattenrör,avloppsrör"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Kran till pipeline",
-                    "terms": "kran till pipeline,kran till rör,pipelinekran,pipelineventil,kran,ventil,olja,naturgas,gas,vatten,avlopp"
                 },
                 "man_made/pumping_station": {
                     "name": "Pumpstation",

@@ -442,9 +442,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Која религија је заступљена у овом храму?"</string>
     <string name="quest_parking_fee_title">"Да ли се овај паркинг плаћа?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"бициклистичка трака (испрекидане ознаке)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Нетесана калдрма"</string>
     <string name="quest_streetSurface_square_title">"Каква је површина овог трга?"</string>
     <string name="quest_fee_answer_hours">"Зависи од сата и дана…"</string>
@@ -461,7 +458,6 @@
     <string name="quest_bicycle_parking_type_locker">"Ормар"</string>
     <string name="quest_bicycle_parking_type_building">"Објекат"</string>
     <string name="quest_bicycle_parking_type_title">"Какав је ово паркинг за бицикле?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"препоручена бициклистичка трака"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"У које време се купи пошта из овог сандучета?"</string>
@@ -674,12 +670,13 @@
     <string name="quest_generic_answer_differs_along_the_way">"Различита у деловима…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Уколико се разликује дуж пута, прво морате да га поделите. Након тога, можете одговорити на задатак за сваки део посебно. Желите ли одмах да поделите пут?"</string>
+    <string name="quest_split_way_description">"Уколико постоји разлика дуж пута, разделите га прво. Након тога, одговарајте на задатак за сваки део посебно.
+Желите ли одмах да разделите пут?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_tutorial">"Додирните пут да га раздвојите на местима где се одговор разликује. Покушајте бити што прецизнији, можете и увеличати карту."</string>
+    <string name="quest_split_way_tutorial">"Додирните пут да га разделите на местима где се одговор разликује. Покушајте бити што прецизнији, можете и увеличати карту."</string>
     <string name="quest_split_way_too_imprecise">"Молимо да још увеличате карту"</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"То је подоста подела. Увек можете касније додатно поделити пут. "</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Доста пута сте извршили дељење. Увек можете накнадно да разделите пут."</string>
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Каква је овде површина тротоара?"</string>
@@ -832,7 +829,7 @@
 
     <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Добродошли у OpenStreetMap заједницу! У вашем профилу можете видети више информација о свакој врсти задатка који сте решили."</string>
-    <string name="achievement_surveyor_title">"Геодет"</string>
+    <string name="achievement_surveyor_title">"Геодета"</string>
     <string name="achievement_surveyor_solved_X">"Решили сте %d задатака! Наставите тако и откључајте још достигнућа која садрже OSM везе и друге пројекате и програме у вези са картама!"</string>
     <string name="achievement_regular_title">"Редован сарадник"</string>
     <string name="achievement_regular_description">"Овом апликацијом сте доприносили %d дана на OSM! Редовни сарадници су основ OSM платформе, хвала вам на преданости! ❤"</string>
@@ -942,7 +939,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"мала самостојећа кућа (летњиковац, викендица, колиба…)"</string>
-    <string name="quest_railway_crossing_barrier_title2">"Које препреке се користе на овом железничком прелазу?"</string>
+
+    <!-- Напомена: за препреку, званично се користи "Уређај за затварање саобраћаја", али сам оставио као препреку за сада. -->
+    <string name="quest_railway_crossing_barrier_title2">"Који тип препрека је на овом пружном прелазу?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Без препрека"</string>
     <string name="quest_steps_ramp_title">"Да ли ове степенице имају рампу? Које врсте?"</string>
     <string name="quest_steps_ramp_none">"Нема (употребљиве) рампе"</string>
@@ -1083,7 +1082,7 @@
     <string name="created_note_action_title">"Направљена напомена"</string>
     <string name="commented_note_action_title">"Коментарисана напомена"</string>
     <string name="hid_action_description">"Сакрили сте"</string>
-    <string name="split_way_action_description">"Поделили сте линију"</string>
+    <string name="split_way_action_description">"Разделили сте линију"</string>
     <string name="deleted_poi_action_description">"Избрисали сте"</string>
     <string name="added_tag_action_title">"Додато је %s"</string>
     <string name="removed_tag_action_title">"Уклоњено је %s"</string>
@@ -1126,7 +1125,7 @@
     <string name="quest_stile_type_title">"Која је ово врста пролаза?"</string>
     <string name="quest_buildingType_semi_detached_description2">"најчешће дводомке"</string>
     <string name="pref_title_quests2">"Одабир задатака и редослед приказа"</string>
-    <string name="pref_subtitle_quests">"укључено је %1$d од %2$d"</string>
+    <string name="pref_subtitle_quests">"Укључено %1$d од %2$d"</string>
     <string name="no_location_permission_warning_title">"Приступ локацији"</string>
     <string name="quest_surface_value_woodchips">"Пиљевина"</string>
     <string name="no_camera_app">"Није доступна апликација за камеру"</string>
@@ -1435,7 +1434,7 @@ sorted alphabetically by title -->
     <string name="quest_dietType_vegetarian_title2">"Постоји ли нека вегетеријанска ставка на менију?"</string>
     <string name="quest_drinking_water_title2">"Да ли је овде вода за пиће?"</string>
     <string name="quest_existence_title2">"Да ли ово још постоји?"</string>
-    <string name="quest_generalFee_title2">"Да ли треба да платите да бисте овде ушли?"</string>
+    <string name="quest_generalFee_title2">"Да ли се наплаћује улаз?"</string>
     <string name="quest_internet_access_title">"Какву интернет везу нуди ово место?"</string>
     <string name="quest_level_title2">"На ком спрату се ово место налази?"</string>
     <string name="quest_lit_title">"Да ли је овде осветљено?"</string>
@@ -1506,7 +1505,7 @@ sorted alphabetically by title -->
     <string name="quest_air_pump_bicycle_shop_title">"Да ли овде има пумпи за бицикле (бар када је отворено)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Да ли овде има пумпа за бицикле која ради?"</string>
     <string name="action_overlays">"Подлоге"</string>
-    <string name="split_way">"Подели линију"</string>
+    <string name="split_way">"Раздели линију"</string>
     <string name="quest_memorialType_title">"Какав је ово спомен-комплекс?"</string>
     <string name="quest_memorialType_statue">"Статуа"</string>
     <string name="quest_memorialType_bust">"Биста"</string>
@@ -1566,7 +1565,7 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_incline_up_and_down">"Иде горе-доле"</string>
     <string name="quest_drinking_water_type_title">"Како је овде доступна вода за пиће?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Други тип фонтанице"</string>
-    <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница са слабим водоскоком"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"Фонтаница слабог притиска"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само за допуну флашица"</string>
     <string name="quest_drinking_water_type_tap">"Вода из чесме"</string>
     <string name="quest_drinking_water_type_hand_pump">"Ручна пумпа"</string>
@@ -1598,7 +1597,7 @@ sorted alphabetically by title -->
     <string name="quest_presets_delete">"Избриши"</string>
 
     <!-- Config via URL/QRCode -->
-    <string name="urlconfig_qr_code_description">"Нека други очитају овај QR кôд како би делили ваше предлошке."</string>
+    <string name="urlconfig_qr_code_description">"Нека други очитају овај QR кôд како би користили ваше предлошке."</string>
     <string name="urlconfig_as_url">"или путем URL адресе:"</string>
     <string name="urlconfig_url_copied">"URL је копиран у оставу"</string>
     <string name="urlconfig_apply_title">"Примени предложак"</string>

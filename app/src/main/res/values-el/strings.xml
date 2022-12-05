@@ -1022,9 +1022,6 @@
     <string name="quest_parking_fee_title">"Κοστίζει κάποια χρέωση το παρκάρισμα εδώ;"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"λωρίδα ποδηλάτου (διακεκομμένη σήμανση)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Αδιαμόρφωτο λιθόστρωτο"</string>
 
     <!-- Fuzzy -->
@@ -1059,9 +1056,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ποιός είναι ο τύπος αυτού του πάρκινγκ ποδηλάτων;"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"πρόταση λωρίδας ποδηλάτου"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Ποιες είναι οι ώρες συλλογής αυτού του γραμματοκιβωτίου;"</string>
@@ -2529,6 +2523,7 @@ sorted alphabetically by title -->
     <string name="quest_address_street_street_name_label">"Όνομα δρόμου:"</string>
     <string name="quest_address_street_hint2">"Πατήστε το δρόμο στο χάρτη για να τον επιλέξετε"</string>
     <string name="quest_bicycle_incline_title">"Ποιά κατεύθυνση οδηγεί προς τα πάνω;"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Είναι με αναπηδήσεις"</string>
     <string name="quest_drinking_water_type_title">"Πώς προσφέρεται το πόσιμο νερό εδώ;"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Άλλη βρύση νερού"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Βρύση που αναδίδει πίδακα νερού"</string>
@@ -2554,4 +2549,30 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Αφαιρούμενο"</string>
     <string name="quest_buildingType_guardhouse">"Φυλάκιο"</string>
     <string name="quest_genericRef_title">"Ποιος είναι ο αναγνωριστικός αριθμός εδώ;"</string>
+    <string name="quest_sidewalk_answer_different">"Η κατάσταση στο πεζοδρόμιο είναι διαφορετική"</string>
+    <string name="about_title_get_involved">"Συμμετοχή"</string>
+    <string name="pref_category_quests_overlays">"Αναζητήσεις &amp; Επικαλύψεις"</string>
+    <string name="quest_presets_rename">"Μετονομασία"</string>
+    <string name="quest_presets_share">"Κοινοποίηση"</string>
+    <string name="quest_presets_delete">"Διαγραφή"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"Αφήστε άλλους να σαρώσουν αυτόν τον κωδικό QR για να μοιραστούν τις προεπιλογές σας."</string>
+    <string name="urlconfig_as_url">"Ή ως URL:"</string>
+    <string name="urlconfig_url_copied">"Το URL αντιγράφηκε στο πρόχειρο"</string>
+    <string name="urlconfig_apply_title">"Εφαρμογή προεπιλογής"</string>
+    <string name="urlconfig_apply_message">"Εφαρμογή και επιλογή προεπιλογής %1$s;"</string>
+    <string name="urlconfig_apply_message_overwrite">"Σημείωση: Η προεπιλογή σας με το ίδιο όνομα θα αντικατασταθεί!"</string>
+    <string name="urlconfig_switch_hint">"Μπορείτε να αλλάξετε προεπιλογές στις ρυθμίσεις ανά πάσα στιγμή."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Σχάρα δύο ποδηλάτων"</string>
+    <string name="user_profile_current_week_title">"Τελευταίες 7 μέρες"</string>
+    <string name="user_profile_dates_mapped">"Ημέρες που χαρτογραφήσατε πρόσφατα"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"προειδοποίηση ποδηλατόδρομου"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Μετά την εγκατάσταση της εφαρμογής, σαρώστε ξανά το QR ή κάντε κλικ στον &lt;a href=\"%s\"&gt; σύνδεσμο&lt;/a&gt; για εφαρμογή της προεπιλογής."</string>
+    <string name="confirmation_replace_shop_title">"Είναι διαφορετικό μέρος τώρα;"</string>
+    <string name="confirmation_replace_shop_message">"Σε αυτήν την περίπτωση, οι ώρες λειτουργίας, τα στοιχεία επικοινωνίας κ.λπ. θα έχουν αλλάξει επίσης."</string>
+    <string name="confirmation_replace_shop_yes">"Διαφορετικό μέρος τώρα"</string>
+    <string name="confirmation_replace_shop_no">"Ακόμα στο ίδιο μέρος"</string>
 </resources>

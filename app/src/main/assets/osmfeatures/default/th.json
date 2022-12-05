@@ -507,9 +507,6 @@
                 "water_source": {
                     "label": "แหล่งน้ำ"
                 },
-                "water_volume": {
-                    "label": "ปริมาณน้ำสำรอง (ลูกบาศก์เมตร)"
-                },
                 "website": {
                     "label": "เว็บไซต์"
                 },
@@ -1752,21 +1749,9 @@
                 "highway/footway/informal": {
                     "name": "ทางเดินไม่เป็นทางการ"
                 },
-                "highway/footway/marked": {
-                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
-                },
                 "highway/footway/sidewalk": {
                     "name": "ทางเท้า",
                     "aliases": "ทางเดิน"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
-                },
-                "highway/footway/unmarked": {
-                    "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
-                },
-                "highway/footway/zebra": {
-                    "name": "ทางข้ามคนเดินมีเครื่องหมายจราจร"
                 },
                 "highway/motorway_junction": {
                     "name": "ทางแยก / ทางออก ทางพิเศษ"

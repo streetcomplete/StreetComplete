@@ -6,6 +6,7 @@ clothesContainerOperators: [Tallinna Jäätmekeskus]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

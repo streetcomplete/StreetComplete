@@ -10,13 +10,16 @@ v50.0-beta1: |
   <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
   <li>Sidewalks: Support sidewalks mapped on exclusive cycleways</li>
   <li>Street parking: Fix a crash when editing partially (#4634)</li>
+  <li>Shops: Add option to explicitely state that a shop has no name (#4648)</li>
+  <li>Shops: Fix removing localized names did not actually remove them</li>
   <li>Other small enhancements (see #4657)</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Surfaces for segregated foot and cycleway: Correct common surface (#4615), by @mnalis</li>
   <li>Disabled cycleway quest by default because it can be done more comprehensively in the overlay</li>
-  <li>Other small enhancements (#4637, ...), thanks @matkoniecz</li>
+  <li>Road width: Ask for confirmation when adding improbable road widths (#4655)</li>
+  <li>Other small enhancements (#4637, #4643, #4649...), thanks @matkoniecz</li>
   </ul>
 
 v49.2: |

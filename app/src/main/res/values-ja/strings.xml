@@ -1024,9 +1024,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_parking_fee_title">"ここに駐車するのに料金がかかりますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"自転車レーン (破線)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"切断されていない石畳"</string>
 
     <!-- Fuzzy -->
@@ -1056,7 +1053,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"建物"</string>
     <string name="quest_bicycle_parking_type_title">"この駐輪場の種類は何ですか?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"自転車優先レーン"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"このポストの収集時刻は何時ですか?"</string>
@@ -1083,6 +1079,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_select_hint_most_specific">"最も近いものを選択してください："</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部の探索ではサードパーティから追加のデータをダウンロードします。特に一方通行の探索では westnordost.de にホストされているAPIに一方通行の候補を問い合わせます。&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"いいえ（メモを残す）"</string>
+    <string name="pref_quests_reset">"探索の有効化と表示順を両方とも規定値にリセットしますか？"</string>
     <string name="quest_generic_item_invalid_value">"より具体的な値を選択してください。"</string>
     <string name="quest_buildingType_answer_multiple_types">"複数の用途で利用されている"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"この建物の主な利用を選択してください。例えば1階に店舗があって2階以上がアパートになっているならその建物はアパートです。"</string>
@@ -1493,7 +1490,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_clothes_container_operator_title">"この衣類収集箱への寄付は誰が受け取りますか?"</string>
     <string name="quest_charging_station_operator_title">"この充電ステーションはどこが運営していますか?"</string>
     <string name="achievement_rare_title">"宝探し"</string>
+    <string name="achievement_citizen_title">"市民"</string>
     <string name="achievement_citizen_solved_X">"街での日常生活に役立つ探索を %d 件解決しました！"</string>
+    <string name="achievement_outdoors_title">"アウトドア"</string>
     <string name="achievement_outdoors_solved_X">"アウトドア愛好家に役立つ探索を %d 件解決しました！"</string>
     <string name="quest_pedestrian_crossing_island">"横断歩道に交通島はありますか?"</string>
     <string name="quest_generic_answer_noSign">"標識はありません"</string>
@@ -1624,11 +1623,20 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_bollard_type_rising">"昇降式"</string>
     <string name="quest_bollard_type_flexible">"フレキシブル素材"</string>
     <string name="quest_bollard_type_fixed">"固定式（移動不可）"</string>
+    <string name="pref_subtitle_quests_preset_name">"プリセット: %s"</string>
     <string name="pref_quests_deselect_all">"全ての探索を選択解除しますか？"</string>
     <string name="quest_buildingType_boathouse">"ボートハウス"</string>
+    <string name="action_manage_presets">"プリセット管理"</string>
     <string name="quest_kerb_height_no">"縁石なし"</string>
     <string name="quest_bollard_type_removable">"移動可能（鍵付き・鍵なし）"</string>
     <string name="quest_bollard_type_foldable2">"折りたたみ式（鍵付き・鍵なし）"</string>
+
+    <!-- Managing quest presets screen -->
+    <string name="quest_presets_preset_add">"プリセット追加"</string>
+    <string name="quest_presets_preset_name">"プリセット名"</string>
+    <string name="quest_presets_default_name">"既定"</string>
+    <string name="quest_presets_selected">"選択中"</string>
+    <string name="quest_presets_delete_message">"プリセット “%s”を削除しますか？探索の選択と表示順は失われ取り返しはつきません。"</string>
     <string name="quest_buildingType_bridge">"建物間の橋（渡り廊下）"</string>
     <string name="quest_picnicTableCover_title">"このピクニックテーブルには屋根がありますか（雨をしのげますか）？"</string>
     <string name="quest_surface_value_concrete_plates">"コンクリート平板"</string>
@@ -1754,10 +1762,32 @@ sorted alphabetically by title -->
     <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_and_oneway">"この向きでの自転車走行は禁止されている"</string>
     <string name="action_overlays">"オーバーレイ"</string>
+    <string name="quest_memorialType_title">"この場所にある記念碑はどのような種類ですか？"</string>
+    <string name="quest_memorialType_statue">"彫像"</string>
+    <string name="quest_memorialType_bust">"胸像"</string>
+    <string name="quest_memorialType_plaque">"銘板"</string>
+    <string name="quest_memorialType_war_memorial">"戦争記念碑"</string>
+    <string name="quest_memorialType_stone">"石碑"</string>
+    <string name="quest_memorialType_obelisk">"オベリスク"</string>
+    <string name="quest_memorialType_stele_wooden">"木碑（記念板）"</string>
+    <string name="quest_memorialType_stele_stone">"石碑（記念板）"</string>
+    <string name="quest_memorialType_sculpture">"その他の彫刻"</string>
 
     <!-- Overlays -->
     <string name="select_overlay">"オーバーレイを選択"</string>
     <string name="overlay_none">"なし"</string>
     <string name="overlay_lit">"街灯"</string>
     <string name="overlay_sidewalk">"歩道"</string>
+    <string name="quest_presets_rename">"改名"</string>
+    <string name="quest_presets_share">"共有"</string>
+    <string name="quest_presets_delete">"削除"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"このQRコードを読み込むとプリセットを共有できます。"</string>
+    <string name="urlconfig_apply_title">"プリセット適用"</string>
+    <string name="urlconfig_apply_message">"選択したプリセット %1$sを適用しますか？"</string>
+    <string name="urlconfig_apply_message_overwrite">"注意：同じ名前のプリセットは上書きされます！"</string>
+    <string name="urlconfig_switch_hint">"プリセットの変更は設定でいつでも可能です。"</string>
+    <string name="user_profile_current_week_title">"最近の７日間"</string>
+    <string name="urlconfig_scan_qr_code_again2">"アプリのインストール後、再度QRコードを読み取るか、&lt;a href=\"%s\"&gt;このリンク&lt;/a&gt;をクリックしてプリセットを適用して下さい。"</string>
 </resources>

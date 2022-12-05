@@ -247,6 +247,23 @@
         },
         "searchable": false
     },
+    "pipeline": {
+        "icon": "iD-pipeline-line",
+        "fields": [
+            "pipeline",
+            "operator"
+        ],
+        "geometry": [
+            "point",
+            "vertex",
+            "line",
+            "area"
+        ],
+        "tags": {
+            "natural": "*"
+        },
+        "searchable": false
+    },
     "place": {
         "fields": [
             "name",
@@ -9439,8 +9456,7 @@
             "fire_hydrant/pressure",
             "fire_hydrant/position",
             "level",
-            "survey/date",
-            "water_volume"
+            "survey/date"
         ],
         "geometry": [
             "point",
@@ -9695,8 +9711,7 @@
         ],
         "tags": {
             "entrance": "*"
-        },
-        "matchScore": 0.8
+        }
     },
     "entrance/emergency_ward_entrance": {
         "icon": "maki-hospital",
@@ -10386,54 +10401,13 @@
             "indoor": "yes"
         }
     },
-    "highway/crossing/uncontrolled": {
-        "icon": "temaki-pedestrian_crosswalk",
-        "fields": [
-            "crossing",
-            "tactile_paving",
-            "crossing/island",
-            "crossing_raised"
-        ],
-        "geometry": [
-            "vertex"
-        ],
-        "tags": {
-            "highway": "crossing",
-            "crossing": "uncontrolled"
-        },
-        "reference": {
-            "key": "crossing",
-            "value": "uncontrolled"
-        },
-        "searchable": false
-    },
-    "highway/crossing/zebra": {
-        "icon": "temaki-pedestrian_crosswalk",
-        "fields": [
-            "crossing",
-            "tactile_paving",
-            "crossing/island",
-            "crossing_raised"
-        ],
-        "geometry": [
-            "vertex"
-        ],
-        "tags": {
-            "highway": "crossing",
-            "crossing": "zebra"
-        },
-        "reference": {
-            "key": "crossing",
-            "value": "zebra"
-        },
-        "searchable": false
-    },
     "highway/crossing/marked": {
         "icon": "temaki-pedestrian_crosswalk",
         "fields": [
             "crossing",
             "tactile_paving",
             "crossing/island",
+            "crossing/markings",
             "crossing_raised"
         ],
         "moreFields": [
@@ -10449,7 +10423,30 @@
         "reference": {
             "key": "crossing",
             "value": "marked"
-        }
+        },
+        "searchable": false
+    },
+    "highway/crossing/zebra": {
+        "icon": "temaki-pedestrian_crosswalk",
+        "fields": [
+            "crossing",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised"
+        ],
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "highway": "crossing",
+            "crossing": "zebra"
+        },
+        "reference": {
+            "key": "crossing",
+            "value": "zebra"
+        },
+        "searchable": false
     },
     "highway/crossing/traffic_signals": {
         "icon": "temaki-railway_signals",
@@ -10457,6 +10454,7 @@
             "crossing",
             "tactile_paving",
             "crossing/island",
+            "crossing/markings",
             "crossing_raised",
             "button_operated",
             "traffic_signals/sound",
@@ -10477,6 +10475,27 @@
         "reference": {
             "key": "crossing",
             "value": "traffic_signals"
+        }
+    },
+    "highway/crossing/uncontrolled": {
+        "icon": "temaki-pedestrian_crosswalk",
+        "fields": [
+            "crossing",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised"
+        ],
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "highway": "crossing",
+            "crossing": "uncontrolled"
+        },
+        "reference": {
+            "key": "crossing",
+            "value": "uncontrolled"
         }
     },
     "highway/crossing/unmarked": {
@@ -10535,10 +10554,11 @@
         "icon": "temaki-cyclist_crosswalk",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
-            "crossing/island"
+            "crossing/island",
+            "crossing/markings",
+            "access"
         ],
         "geometry": [
             "line"
@@ -10592,6 +10612,32 @@
         },
         "matchScore": 0.9
     },
+    "highway/cycleway/crossing/marked": {
+        "icon": "temaki-cyclist_crosswalk",
+        "fields": [
+            "crossing",
+            "surface",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised",
+            "access"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "highway": "cycleway",
+            "cycleway": "crossing",
+            "crossing": "marked"
+        },
+        "reference": {
+            "key": "crossing",
+            "value": "marked"
+        },
+        "matchScore": 0.95,
+        "searchable": false
+    },
     "highway/cycleway/crossing/bicycle_foot": {
         "locationSet": {
             "exclude": [
@@ -10603,11 +10649,13 @@
         "icon": "temaki-ped_cyclist_crosswalk",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "smoothness",
             "tactile_paving",
-            "crossing/island"
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised",
+            "access"
         ],
         "geometry": [
             "line"
@@ -10629,14 +10677,18 @@
         },
         "matchScore": 0.9
     },
-    "highway/cycleway/crossing/marked": {
-        "icon": "temaki-cyclist_crosswalk",
+    "highway/cycleway/crossing/traffic_signals": {
+        "icon": "fas-biking",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
-            "crossing/island"
+            "crossing/island",
+            "crossing_raised",
+            "button_operated",
+            "traffic_signals/sound",
+            "traffic_signals/vibration",
+            "access"
         ],
         "geometry": [
             "line"
@@ -10644,11 +10696,36 @@
         "tags": {
             "highway": "cycleway",
             "cycleway": "crossing",
-            "crossing": "marked"
+            "crossing": "traffic_signals"
         },
         "reference": {
             "key": "crossing",
-            "value": "marked"
+            "value": "traffic_signals"
+        },
+        "matchScore": 0.95
+    },
+    "highway/cycleway/crossing/uncontrolled": {
+        "icon": "temaki-cyclist_crosswalk",
+        "fields": [
+            "crossing",
+            "surface",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised",
+            "access"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "highway": "cycleway",
+            "cycleway": "crossing",
+            "crossing": "uncontrolled"
+        },
+        "reference": {
+            "key": "crossing",
+            "value": "uncontrolled"
         },
         "matchScore": 0.95
     },
@@ -10656,10 +10733,11 @@
         "icon": "fas-biking",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
-            "crossing/island"
+            "crossing/island",
+            "crossing_raised",
+            "access"
         ],
         "geometry": [
             "line"
@@ -10814,10 +10892,12 @@
     "highway/footway/crossing": {
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
-            "crossing/island"
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised",
+            "access"
         ],
         "geometry": [
             "line"
@@ -10862,30 +10942,6 @@
         },
         "reference": {
             "key": "informal"
-        },
-        "searchable": false
-    },
-    "highway/footway/zebra": {
-        "icon": "temaki-pedestrian_crosswalk",
-        "fields": [
-            "crossing",
-            "access",
-            "surface",
-            "tactile_paving",
-            "crossing/island",
-            "crossing_raised"
-        ],
-        "geometry": [
-            "line"
-        ],
-        "tags": {
-            "highway": "footway",
-            "footway": "crossing",
-            "crossing": "zebra"
-        },
-        "reference": {
-            "key": "crossing",
-            "value": "zebra"
         },
         "searchable": false
     },
@@ -10943,15 +10999,16 @@
             "key": "conveying"
         }
     },
-    "highway/footway/marked": {
+    "highway/footway/crossing/marked": {
         "icon": "temaki-pedestrian_crosswalk",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing_raised"
+            "crossing/markings",
+            "crossing_raised",
+            "access"
         ],
         "moreFields": [
             "flashing_lights"
@@ -10967,37 +11024,47 @@
         "reference": {
             "key": "crossing",
             "value": "marked"
-        }
+        },
+        "searchable": false
     },
-    "highway/footway/sidewalk": {
-        "icon": "temaki-pedestrian",
+    "highway/footway/crossing/zebra": {
+        "icon": "temaki-pedestrian_crosswalk",
+        "fields": [
+            "crossing",
+            "surface",
+            "tactile_paving",
+            "crossing/island",
+            "crossing/markings",
+            "crossing_raised",
+            "access"
+        ],
         "geometry": [
             "line"
         ],
         "tags": {
-            "footway": "sidewalk"
-        },
-        "addTags": {
             "highway": "footway",
-            "footway": "sidewalk"
+            "footway": "crossing",
+            "crossing": "zebra"
         },
         "reference": {
-            "key": "footway",
-            "value": "sidewalk"
-        }
+            "key": "crossing",
+            "value": "zebra"
+        },
+        "searchable": false
     },
-    "highway/footway/traffic_signals": {
+    "highway/footway/crossing/traffic_signals": {
         "icon": "temaki-railway_signals",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
             "crossing/island",
+            "crossing/markings",
             "crossing_raised",
             "button_operated",
             "traffic_signals/sound",
-            "traffic_signals/vibration"
+            "traffic_signals/vibration",
+            "access"
         ],
         "moreFields": [
             "traffic_signals/arrow",
@@ -11017,15 +11084,42 @@
             "value": "traffic_signals"
         }
     },
-    "highway/footway/unmarked": {
+    "highway/footway/crossing/uncontrolled": {
         "icon": "temaki-pedestrian",
         "fields": [
             "crossing",
-            "access",
             "surface",
             "tactile_paving",
             "crossing/island",
-            "crossing_raised"
+            "crossing/markings",
+            "crossing_raised",
+            "access"
+        ],
+        "moreFields": [
+            "flashing_lights"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "highway": "footway",
+            "footway": "crossing",
+            "crossing": "uncontrolled"
+        },
+        "reference": {
+            "key": "crossing",
+            "value": "uncontrolled"
+        }
+    },
+    "highway/footway/crossing/unmarked": {
+        "icon": "temaki-pedestrian",
+        "fields": [
+            "crossing",
+            "surface",
+            "tactile_paving",
+            "crossing/island",
+            "crossing_raised",
+            "access"
         ],
         "moreFields": [
             "flashing_lights"
@@ -11041,6 +11135,40 @@
         "reference": {
             "key": "crossing",
             "value": "unmarked"
+        }
+    },
+    "highway/footway/sidewalk": {
+        "icon": "temaki-pedestrian",
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "footway": "sidewalk"
+        },
+        "addTags": {
+            "highway": "footway",
+            "footway": "sidewalk"
+        },
+        "reference": {
+            "key": "footway",
+            "value": "sidewalk"
+        }
+    },
+    "highway/footway/traffic_island": {
+        "icon": "temaki-pedestrian",
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "footway": "traffic_island"
+        },
+        "addTags": {
+            "highway": "footway",
+            "footway": "traffic_island"
+        },
+        "reference": {
+            "key": "footway",
+            "value": "traffic_island"
         }
     },
     "highway/give_way": {
@@ -15024,6 +15152,21 @@
             "value": "gaga"
         }
     },
+    "leisure/pitch/handball": {
+        "icon": "maki-pitch",
+        "geometry": [
+            "area",
+            "point"
+        ],
+        "tags": {
+            "leisure": "pitch",
+            "sport": "handball"
+        },
+        "reference": {
+            "key": "sport",
+            "value": "handball"
+        }
+    },
     "leisure/pitch/horseshoes": {
         "icon": "temaki-horseshoes",
         "geometry": [
@@ -16038,6 +16181,38 @@
             "man_made": "crane"
         }
     },
+    "man_made/crane/gantry_crane": {
+        "icon": "temaki-crane",
+        "geometry": [
+            "point",
+            "vertex",
+            "area"
+        ],
+        "tags": {
+            "man_made": "crane",
+            "crane:type": "gantry_crane"
+        },
+        "reference": {
+            "key": "crane:type",
+            "value": "gantry_crane"
+        }
+    },
+    "man_made/crane/portal_crane": {
+        "icon": "temaki-crane",
+        "geometry": [
+            "point",
+            "vertex",
+            "area"
+        ],
+        "tags": {
+            "man_made": "crane",
+            "crane:type": "portal_crane"
+        },
+        "reference": {
+            "key": "crane:type",
+            "value": "portal_crane"
+        }
+    },
     "man_made/cross": {
         "icon": "maki-religious-christian",
         "fields": [
@@ -16122,6 +16297,24 @@
         ],
         "tags": {
             "man_made": "flagpole"
+        }
+    },
+    "man_made/gantry": {
+        "icon": "temaki-toll_gantry",
+        "fields": [
+            "layer"
+        ],
+        "moreFields": [
+            "material",
+            "maxheight",
+            "operator",
+            "ref"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "man_made": "gantry"
         }
     },
     "man_made/gasometer": {
@@ -16602,27 +16795,6 @@
             "layer": "-1"
         }
     },
-    "man_made/pipeline/valve": {
-        "icon": "temaki-wheel",
-        "geometry": [
-            "vertex"
-        ],
-        "fields": [
-            "ref",
-            "operator",
-            "valve",
-            "location",
-            "diameter"
-        ],
-        "moreFields": [
-            "colour",
-            "manufacturer",
-            "material"
-        ],
-        "tags": {
-            "pipeline": "valve"
-        }
-    },
     "man_made/planter": {
         "icon": "maki-garden",
         "geometry": [
@@ -16953,6 +17125,25 @@
         "reference": {
             "key": "tower:type",
             "value": "defensive"
+        }
+    },
+    "man_made/tower/diving": {
+        "icon": "temaki-diving",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "fields": [
+            "{man_made/tower}",
+            "tower/platforms"
+        ],
+        "tags": {
+            "man_made": "tower",
+            "tower:type": "diving"
+        },
+        "reference": {
+            "key": "tower:type",
+            "value": "diving"
         }
     },
     "man_made/tower/minaret": {
@@ -18950,6 +19141,48 @@
             "office": "water_utility"
         }
     },
+    "pipeline/substation": {
+        "icon": "temaki-powered_pump",
+        "fields": [
+            "name",
+            "substation_pipeline",
+            "operator",
+            "building",
+            "substance",
+            "ref"
+        ],
+        "moreFields": [
+            "address"
+        ],
+        "geometry": [
+            "area",
+            "point"
+        ],
+        "tags": {
+            "pipeline": "substation"
+        }
+    },
+    "pipeline/valve": {
+        "icon": "temaki-wheel",
+        "geometry": [
+            "vertex"
+        ],
+        "fields": [
+            "ref",
+            "operator",
+            "valve",
+            "location",
+            "diameter"
+        ],
+        "moreFields": [
+            "colour",
+            "manufacturer",
+            "material"
+        ],
+        "tags": {
+            "pipeline": "valve"
+        }
+    },
     "piste/downhill": {
         "icon": "fas-skiing",
         "fields": [
@@ -19921,7 +20154,9 @@
             "generator/output/electricity"
         ],
         "moreFields": [
-            "{power/generator}"
+            "{power/generator}",
+            "height/hub",
+            "rotor/diameter"
         ],
         "geometry": [
             "point",
@@ -19929,6 +20164,10 @@
             "area"
         ],
         "tags": {
+            "power": "generator",
+            "generator:source": "wind"
+        },
+        "addTags": {
             "power": "generator",
             "generator:source": "wind",
             "generator:method": "wind_turbine"
@@ -19944,6 +20183,7 @@
             "name",
             "operator",
             "voltage",
+            "cables",
             "ref",
             "layer"
         ],
@@ -19960,6 +20200,7 @@
             "name",
             "operator",
             "voltage",
+            "cables",
             "ref",
             "layer"
         ],
@@ -20317,6 +20558,29 @@
             "power": "pole"
         }
     },
+    "power/portal": {
+        "icon": "temaki-power",
+        "fields": [
+            "ref",
+            "operator",
+            "structure_power",
+            "material"
+        ],
+        "moreFields": [
+            "colour",
+            "design",
+            "height",
+            "line_management",
+            "manufacturer"
+        ],
+        "geometry": [
+            "vertex",
+            "line"
+        ],
+        "tags": {
+            "power": "portal"
+        }
+    },
     "power/substation": {
         "icon": "temaki-power",
         "fields": [
@@ -20365,7 +20629,8 @@
             "design",
             "height",
             "material",
-            "line_attachment"
+            "line_attachment",
+            "structure_power"
         ],
         "moreFields": [
             "line_management",
@@ -21560,9 +21825,13 @@
     "railway/crossing": {
         "icon": "temaki-pedestrian",
         "fields": [
+            "crossing",
             "crossing/barrier",
             "crossing/bell",
             "crossing/light"
+        ],
+        "moreFields": [
+            "crossing/markings"
         ],
         "geometry": [
             "vertex"
@@ -25035,7 +25304,8 @@
         "icon": "temaki-spotting_scope",
         "geometry": [
             "point",
-            "vertex"
+            "vertex",
+            "area"
         ],
         "fields": [
             "direction"

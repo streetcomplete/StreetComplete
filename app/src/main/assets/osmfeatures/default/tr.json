@@ -2339,9 +2339,6 @@
                     "label": "Hacim",
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "Su Rezervi Hacmi (m³)"
-                },
                 "waterway": {
                     "label": "Tür"
                 },
@@ -4207,17 +4204,8 @@
                 "highway/footway/crossing": {
                     "name": "Yaya Geçidi"
                 },
-                "highway/footway/marked": {
-                    "name": "İşaretli Yaya Geçidi"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Kaldırım"
-                },
-                "highway/footway/unmarked": {
-                    "name": "İşaretsiz Yaya Geçidi"
-                },
-                "highway/footway/zebra": {
-                    "name": "İşaretli Yaya Geçidi"
                 },
                 "highway/give_way": {
                     "name": "Yol Ver İşareti",
@@ -5081,9 +5069,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Yeraltı Boru Hattı"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Boru Hattı Vanası"
                 },
                 "man_made/pumping_station": {
                     "name": "Pompa İstasyonu",
