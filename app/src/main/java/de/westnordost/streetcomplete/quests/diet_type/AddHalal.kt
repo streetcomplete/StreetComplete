@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -38,7 +39,7 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_halal)
 
-    override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is DietAvailability -> tags.updateWithCheckDate("diet:halal", answer.osmValue)
             NoFood -> tags["food"] = "no"

@@ -128,6 +128,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
 
     /* ------------------------------------------------------------------------------------------ */
 
+    fun getPuzzleSide(isRight: Boolean) =
+        if (isRight) right else left
+
     fun setPuzzleSide(item: StreetSideDisplayItem<I>?, isRight: Boolean) {
         if (isRight) {
             if (item != null) {

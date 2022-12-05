@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.drinking_water_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
@@ -29,7 +30,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
 
     override fun createForm() = AddDrinkingWaterTypeForm()
 
-    override fun applyAnswerTo(answer: DrinkingWaterType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: DrinkingWaterType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

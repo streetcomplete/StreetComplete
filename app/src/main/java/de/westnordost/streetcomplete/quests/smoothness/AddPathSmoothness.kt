@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -33,7 +34,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override fun createForm() = AddSmoothnessForm()
 
-    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

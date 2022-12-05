@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_entrance
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -66,7 +67,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     override fun createForm() = AddEntranceForm()
 
-    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             DeadEnd -> tags["noexit"] = "yes"
             is EntranceExistsAnswer -> tags["entrance"] = answer.osmValue

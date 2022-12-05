@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -37,7 +38,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
     override fun createForm() = AddSidewalkSurfaceForm()
 
-    override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
        when (answer) {
             is SidewalkIsDifferent -> {
                 deleteSmoothnessKeys(Side.LEFT, tags)

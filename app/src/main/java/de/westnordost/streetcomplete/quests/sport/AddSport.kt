@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -23,7 +24,7 @@ class AddSport : OsmFilterQuestType<List<Sport>>() {
 
     override fun createForm() = AddSportForm()
 
-    override fun applyAnswerTo(answer: List<Sport>, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: List<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["sport"] = answer.joinToString(";") { it.osmValue }
     }
 }

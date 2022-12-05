@@ -64,6 +64,6 @@ private fun createSidewalkSide(tag: String?): Sidewalk? = when (tag) {
     else -> INVALID
 }
 
-private val KNOWN_SIDEWALK_KEYS = listOf(
+val KNOWN_SIDEWALK_KEYS = listOf(
     "sidewalk", "sidewalk:left", "sidewalk:right", "sidewalk:both"
 )

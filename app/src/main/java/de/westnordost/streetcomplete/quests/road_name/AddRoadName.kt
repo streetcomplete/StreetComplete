@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.road_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -36,7 +37,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override fun createForm() = AddRoadNameForm()
 
-    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoRoadName -> tags["noname"] = "yes"
             is RoadIsServiceRoad -> {

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.accepts_cards
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -37,7 +38,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override fun createForm() = AddAcceptsCardsForm()
 
-    override fun applyAnswerTo(answer: CardAcceptance, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CardAcceptance, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["payment:debit_cards"] = answer.debit.toYesNo()
         tags["payment:credit_cards"] = answer.credit.toYesNo()
     }

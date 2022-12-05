@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -47,7 +48,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
 
     override fun createForm() = AddForestLeafTypeForm()
 
-    override fun applyAnswerTo(answer: ForestLeafType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ForestLeafType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["leaf_type"] = answer.osmValue
     }
 }

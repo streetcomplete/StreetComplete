@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
@@ -32,7 +33,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
     override fun createForm() = AddCyclewaySegregationForm()
 
-    override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("segregated", answer.value.toYesNo())
     }
 }

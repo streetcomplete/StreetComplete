@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -31,7 +32,7 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
 
     override fun createForm() = AddBicycleBarrierInstallationForm()
 
-    override fun applyAnswerTo(answer: BicycleBarrierInstallationAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BicycleBarrierInstallationAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BicycleBarrierInstallation -> tags["cycle_barrier:installation"] = answer.osmValue
             BarrierTypeIsNotBicycleBarrier -> tags["barrier"] = "yes"

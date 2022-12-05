@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.camping
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -32,7 +33,7 @@ class AddCampType : OsmFilterQuestType<CampType>() {
 
     override fun createForm() = AddCampTypeForm()
 
-    override fun applyAnswerTo(answer: CampType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CampType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             BACKCOUNTRY -> tags["backcountry"] = "yes"
             else -> {

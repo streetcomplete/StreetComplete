@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -21,7 +22,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
 
     override fun createForm() = AddParkingTypeForm()
 
-    override fun applyAnswerTo(answer: ParkingType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ParkingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["parking"] = answer.osmValue
     }
 }

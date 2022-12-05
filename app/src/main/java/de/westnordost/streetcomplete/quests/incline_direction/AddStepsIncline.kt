@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -23,6 +24,6 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     override fun createForm() = AddInclineForm()
 
-    override fun applyAnswerTo(answer: Incline, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: Incline, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.access_point_ref
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
@@ -25,7 +26,7 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
 
     override fun createForm() = AddAccessPointRefForm()
 
-    override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoVisibleAccessPointRef -> tags["ref:signed"] = "no"
             is AccessPointRef ->          tags["ref"] = answer.ref

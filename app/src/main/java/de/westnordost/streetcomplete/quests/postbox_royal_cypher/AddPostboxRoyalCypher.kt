@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -31,7 +32,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override fun createForm() = AddPostboxRoyalCypherForm()
 
-    override fun applyAnswerTo(answer: PostboxRoyalCypher, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: PostboxRoyalCypher, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["royal_cypher"] = answer.osmValue
     }
 }

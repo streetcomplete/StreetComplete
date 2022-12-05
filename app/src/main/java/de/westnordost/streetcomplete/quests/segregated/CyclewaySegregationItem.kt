@@ -12,6 +12,6 @@ private val CyclewaySegregation.titleResId: Int get() = when (this.value) {
 }
 
 private fun CyclewaySegregation.getIconResId(isLeftHandTraffic: Boolean): Int = when (this.value) {
-    true -> if (isLeftHandTraffic) R.drawable.ic_path_segregated_l else R.drawable.ic_path_segregated
-    false -> R.drawable.ic_path_segregated_no
+    true -> if (isLeftHandTraffic) R.drawable.ic_separate_cycleway_segregated_l else R.drawable.ic_separate_cycleway_segregated
+    false -> R.drawable.ic_separate_cycleway_not_segregated
 }

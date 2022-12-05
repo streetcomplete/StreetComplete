@@ -2,6 +2,7 @@
 advisoryCycleLaneStyle: white dashes without pictogram
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true
+hasBicycleBoulevard: true
 hasSlowZone: true
 mobileCountryCode: 212
 noParkingLineStyle: dashed yellow

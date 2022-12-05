@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -30,7 +31,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
     override fun createForm() = AddTracktypeForm()
 
-    override fun applyAnswerTo(answer: Tracktype, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Tracktype, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tracktype", answer.osmValue)
     }
 }

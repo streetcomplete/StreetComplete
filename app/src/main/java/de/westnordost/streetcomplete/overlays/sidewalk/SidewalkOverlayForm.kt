@@ -24,13 +24,13 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        originalSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        originalSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
         streetSideSelect.setPuzzleSide(originalSidewalk?.left?.asStreetSideItem(), false)
         streetSideSelect.setPuzzleSide(originalSidewalk?.right?.asStreetSideItem(), true)
     }

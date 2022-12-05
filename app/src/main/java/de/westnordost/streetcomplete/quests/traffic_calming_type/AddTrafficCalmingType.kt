@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -19,7 +20,7 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
 
     override fun createForm() = AddTrafficCalmingTypeForm()
 
-    override fun applyAnswerTo(answer: TrafficCalmingType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: TrafficCalmingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["traffic_calming"] = answer.osmValue
     }
 }
