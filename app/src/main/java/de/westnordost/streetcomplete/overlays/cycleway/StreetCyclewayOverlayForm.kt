@@ -131,6 +131,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         } else {
             (bicycleBoulevardSignView?.parent as? ViewGroup)?.removeView(bicycleBoulevardSignView)
         }
+        checkIsFormComplete()
     }
 
     /* ------------------------------ reverse cycleway direction -------------------------------- */
