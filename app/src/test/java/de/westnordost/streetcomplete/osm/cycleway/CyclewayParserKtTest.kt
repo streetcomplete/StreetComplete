@@ -41,12 +41,15 @@ class CyclewayParserKtTest {
             cycleway(SEPARATE, SEPARATE),
             parse("bicycle" to "use_sidepath")
         )
+    }
+
+    @Test fun `do not fall back to bicycle=use_sidepath if any side is defined normally`() {
         assertEquals(
-            cycleway(NONE, SEPARATE),
+            cycleway(NONE, null),
             parse("bicycle" to "use_sidepath", "cycleway:left" to "no")
         )
         assertEquals(
-            cycleway(SEPARATE, TRACK),
+            cycleway(null, TRACK),
             parse("bicycle" to "use_sidepath", "cycleway:right" to "track")
         )
     }

@@ -35,13 +35,13 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     *  direction.
     *  Whether there is anything each in the other direction, is not defined, so we have to treat
     *  it that way. */
-    val nakedCycleway = createCyclewayForSide(expandedTags, null, isLeftHandTraffic)
+    val nakedCycleway = createCyclewayForSide(expandedTags, null)
     if (isOneway && nakedCycleway != null && nakedCycleway != NONE) {
         val isRight = if (isOpposite) isReverseSideRight else !isReverseSideRight
         if (isRight) right = nakedCycleway else left = nakedCycleway
     } else {
-        left = createCyclewayForSide(expandedTags, false, isLeftHandTraffic)
-        right = createCyclewayForSide(expandedTags, true, isLeftHandTraffic)
+        left = createCyclewayForSide(expandedTags, false)
+        right = createCyclewayForSide(expandedTags, true)
     }
 
     val leftDir = createDirectionForSide(expandedTags, false, isLeftHandTraffic)
@@ -58,7 +58,15 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
         }
     }
 
-    if (left == null && right == null) return null
+    // use fallback only if no side is defined
+    if (left == null && right == null) {
+        left = createCyclewayForSideFallback(tags, false, isLeftHandTraffic)
+        right = createCyclewayForSideFallback(tags, true, isLeftHandTraffic)
+    }
+
+    if (left == null && right == null) {
+        return null
+    }
 
     return LeftAndRightCycleway(
         left?.let { CyclewayAndDirection(it, leftDir) },
@@ -66,12 +74,11 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     )
 }
 
-/** Returns the Cycleway value using the given tags, for the given side (left or right).
+/** Returns the Cycleway value using the given tags, for the given side.
  *  Returns null if nothing (understood) is tagged */
 private fun createCyclewayForSide(
     tags: Map<String, String>,
-    isRight: Boolean?,
-    isLeftHandTraffic: Boolean
+    isRight: Boolean?
 ): Cycleway? {
     val sideVal = when (isRight) {
         true -> ":right"
@@ -131,14 +138,6 @@ private fun createCyclewayForSide(
         else -> UNKNOWN
     }
 
-    // fall back to bicycle=use_sidepath if set because it implies there is a separate cycleway
-    if (result == null) {
-        if (isRight != null) {
-            val direction = if (isLeftHandTraffic xor isRight) "forward" else "backward"
-            if (tags["bicycle:$direction"] == "use_sidepath") return SEPARATE
-        }
-        if (tags["bicycle"] == "use_sidepath") return SEPARATE
-    }
     return result
 }
 
@@ -159,6 +158,24 @@ private fun createDirectionForSide(
         if (isRight xor isLeftHandTraffic) Direction.FORWARD else Direction.BACKWARD
 
     return explicitDirection ?: defaultDirection
+}
+
+
+/** Returns the cycleway value using the given tags for the given side using other tags that imply
+ *  that a cycleway may be there (or not there) */
+private fun createCyclewayForSideFallback(
+    tags: Map<String, String>,
+    isRight: Boolean?,
+    isLeftHandTraffic: Boolean
+): Cycleway? {
+    // fall back to bicycle=use_sidepath if set because it implies there is a separate cycleway
+    if (isRight != null) {
+        val direction = if (isLeftHandTraffic xor isRight) "forward" else "backward"
+        if (tags["bicycle:$direction"] == "use_sidepath") return SEPARATE
+    }
+    if (tags["bicycle"] == "use_sidepath") return SEPARATE
+
+    return null
 }
 
 private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, String> {
