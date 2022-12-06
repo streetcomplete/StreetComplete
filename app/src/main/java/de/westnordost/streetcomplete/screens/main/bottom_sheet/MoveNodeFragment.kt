@@ -98,7 +98,7 @@ class MoveNodeFragment :
 
         arrowDrawable = ArrowDrawable(resources)
         binding.arrowView.setImageDrawable(arrowDrawable)
-        arrowDrawable.setTint(requireContext().getColor(R.color.accent))
+        arrowDrawable.setTint(requireContext().resources.getColor(R.color.accent))
 
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
