@@ -337,5 +337,8 @@ You have access to your StreetComplete user statistics, but any quests solved us
     <string name="quest_monitor_error">Couldn’t start monitoring, possible permission issue</string>
     <string name="create_external_button">Create external quest</string>
     <string name="create_external_title_message">Enter message to be shown</string>
+    <string name="move_node_warning">Warning</string>
+    <string name="move_node_with_geometry">Moving this node will modify geometry of following ways or multipolygon relations: %s</string>
+    <string name="move_node_of_other_relation">This node is part of following non-multipolygon relations: %s</string>
 
 </resources>

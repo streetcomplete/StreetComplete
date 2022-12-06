@@ -113,6 +113,13 @@
                         android:text="@android:string/cancel"
                         style="@style/BottomSheetButtonBarItem"/>
 
+                    <Button
+                        android:id="@+id/mapButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@android:string/cancel"
+                        style="@style/BottomSheetButtonBarItem"/>
+
                 </LinearLayout>
 
             </LinearLayout>

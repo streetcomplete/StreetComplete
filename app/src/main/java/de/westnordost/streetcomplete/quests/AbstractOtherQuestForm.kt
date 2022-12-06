@@ -15,15 +15,18 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestController
 import de.westnordost.streetcomplete.data.othersource.OtherSourceQuestType
 import de.westnordost.streetcomplete.data.quest.OtherSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.checkIsSurvey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -92,6 +95,14 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
                 answers.add(AnswerItem(R.string.quest_generic_answer_show_edit_tags) { editTags(e) })
             if (e.type == ElementType.NODE)
                 answers.add(AnswerItem(R.string.quest_generic_answer_does_not_exist) { deletePoiNode(e) })
+            if (e is Node // add moveNodeAnswer only if it's a free floating node
+            /*&& mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()*/) {
+                answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
+            }
+            if (e.isSplittable()) {
+                answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
+            }
         }
         answers.addAll(otherAnswers)
         return answers
@@ -109,6 +120,27 @@ abstract class AbstractOtherQuestForm : AbstractQuestForm(), IsShowingQuestDetai
         viewLifecycleScope.launch { editElement(element, DeletePoiNodeAction) }
     }
 
+    private fun onClickMoveNodeAnswer() {
+        context?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_move_node_message)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                listener?.onMoveNode(questType as OtherSourceQuestType, element as Node)
+            }
+            .show()
+        }
+    }
+
+    private fun onClickSplitWayAnswer() {
+        context?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_split_way_description)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                listener?.onSplitWay(questType as OtherSourceQuestType, element as Way, geometry as ElementPolylinesGeometry)
+            }
+            .show()
+        }
+    }
 
     private fun showOtherAnswers() {
         val otherAnswersButton = view?.findViewById<ViewGroup>(R.id.buttonPanel)?.children?.firstOrNull() ?: return

@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.content.SharedPreferences
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
@@ -57,6 +60,7 @@ class MoveNodeFragment :
     private val overlayRegistry: OverlayRegistry by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val countryInfos: CountryInfos by inject()
+    private val prefs: SharedPreferences by inject()
 
     override val elementKey: ElementKey by lazy { ElementKey(node.type, node.id) }
 
@@ -65,6 +69,7 @@ class MoveNodeFragment :
     private lateinit var displayUnit: MeasureDisplayUnit
 
     private lateinit var arrowDrawable: ArrowDrawable
+    private val initialMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
 
     private val hasChanges get() = getMarkerPosition() != node.position
 
@@ -103,6 +108,8 @@ class MoveNodeFragment :
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
         binding.moveNodeIconView.setImageResource(editType.icon)
+        binding.mapButton.setOnClickListener { toggleBackground() }
+        updateMapButtonText()
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -115,6 +122,22 @@ class MoveNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+    }
+
+    private fun toggleBackground() {
+        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        updateMapButtonText()
+    }
+
+    private fun updateMapButtonText() {
+        val isMap = prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP"
+        val textId = if (isMap) R.string.background_type_aerial_esri else R.string.background_type_map
+        binding.mapButton.setText(textId)
+    }
+
+    private fun restoreBackground() {
+        if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
+            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
     }
 
     private fun getMarkerScreenPosition(): PointF {
@@ -131,6 +154,7 @@ class MoveNodeFragment :
     private fun onClickOk() {
         val pos = getMarkerPosition() ?: return
         if (!checkIsDistanceOkAndUpdateText(pos)) return
+        restoreBackground()
         viewLifecycleScope.launch {
             val action = MoveNodeAction(pos)
             elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey", action)
@@ -175,12 +199,14 @@ class MoveNodeFragment :
 
     @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!hasChanges) {
+            restoreBackground()
             onConfirmed()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
+                        restoreBackground()
                         onConfirmed()
                     }
                     .setNegativeButton(R.string.short_no_answer_on_button, null)

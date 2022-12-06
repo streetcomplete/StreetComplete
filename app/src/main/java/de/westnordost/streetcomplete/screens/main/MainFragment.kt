@@ -564,6 +564,26 @@ class MainFragment :
     /* ------------------------------- MoveNodeFragment.Listener -------------------------------- */
 
     override fun onMoveNode(editType: ElementEditType, node: Node) {
+        val ways = mapDataWithEditsSource.getWaysForNode(node.id)
+        val relations = mapDataWithEditsSource.getRelationsForNode(node.id)
+        if (ways.isNotEmpty() || relations.isNotEmpty()) {
+            val multipolygons = relations.filter { it.tags["type"] == "multipolygon" }
+            val message = if (ways.isNotEmpty() || multipolygons.isNotEmpty())
+                getString(R.string.move_node_with_geometry, (ways + multipolygons).map { featureDictionaryFuture.get().byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
+            else
+                getString(R.string.move_node_of_other_relation, relations.map { featureDictionaryFuture.get().byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.move_node_warning)
+                .setMessage(message)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok) { _,_ -> moveNode(editType, node) }
+                .show()
+        } else {
+            moveNode(editType, node)
+        }
+    }
+
+    private fun moveNode(editType: ElementEditType, node: Node) {
         val mapFragment = mapFragment ?: return
         showInBottomSheet(MoveNodeFragment.create(editType, node), clearPreviousHighlighting = false)
         mapFragment.clearSelectedPins()

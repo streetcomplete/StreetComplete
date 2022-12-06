@@ -4,6 +4,8 @@
   <li>Highlight nearby elements for POI quests</li>
   <li>Improve database performance</li>
   <li>Delete button in tag editor now deletes value, and deletes row only if value is empty</li>
+  <li>Allow moving nodes that are part of relations or ways, but show a clear warning</li>
+  <li>Add button to switch to satellite map while moving a node</li>
   </ul>
 
 v49.0_ee: |
