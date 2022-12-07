@@ -118,6 +118,7 @@ class ExternalList(context: Context) : KoinComponent {
     fun delete(id: String) = delete(listOf(id))
 
     fun delete(idList: List<String>): Boolean {
+        if (idList.isEmpty()) return false
         val ids = idList.toMutableSet()
         val deletedAny = entriesById.keys.removeAll(ids)
         val file = File(path, FILENAME_EXTERNAL)
