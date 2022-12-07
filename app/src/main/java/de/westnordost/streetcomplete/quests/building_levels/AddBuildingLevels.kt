@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
@@ -32,7 +33,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
 
     override fun createForm() = AddBuildingLevelsForm()
 
-    override fun applyAnswerTo(answer: BuildingLevelsAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BuildingLevelsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["building:levels"] = answer.levels.toString()
         answer.roofLevels?.let { tags["roof:levels"] = it.toString() }
     }

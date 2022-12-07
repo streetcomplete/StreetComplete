@@ -1920,9 +1920,6 @@
                     "label": "Запремина (у литрама)",
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "Запремина резерве воде (м³)"
-                },
                 "waterway": {
                     "label": "Врста"
                 },
@@ -3637,9 +3634,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Подземни цевовод"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Вентил цевовода"
                 },
                 "man_made/pumping_station": {
                     "name": "Црпна станица"

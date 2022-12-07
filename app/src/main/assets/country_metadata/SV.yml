@@ -1,8 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [Banco Agrícola, Banco de América Central, Banco Cuscatlan, Scotiabank, Caja de Crédito, Davivienda]
 centerLineStyle: yellow
 exclusiveCycleLaneStyle: white dots
-hasAdvisoryCycleLane: false
+hasAdvisoryCycleLane: true
+hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 706
 noParkingSignStyle: mutcd latin

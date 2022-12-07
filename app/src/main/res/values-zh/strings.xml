@@ -982,9 +982,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_parking_fee_title">"在这里停车需要付费吗？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"自行车车道（虚线标记）"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"鹅卵石"</string>
 
     <!-- Fuzzy -->
@@ -1020,9 +1017,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"这是哪种自行车停放设施？"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"自行车建议车道"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"此邮箱的收信时间是在什么时候？"</string>
@@ -1975,7 +1969,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"没有任何自行车道"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"像往常一样，点击插图的一侧，选择一个合适的答案，然后对另一侧做同样的操作。注意所有可用的选项：有些情况并不明显，比如一条单向行驶的道路允许骑自行车的人在两个方向行驶"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"像往常一样，点击插图的一侧，选择一个合适的答案，然后对另一侧做同样的操作。
+
+注意所有可用的选项：有些情况并不明显，比如一条单向行驶的道路允许骑行者在两个方向行驶！"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"当无自行车道,选择此项"</string>
@@ -2725,6 +2721,25 @@ sorted alphabetically by title -->
 
     <!-- Fuzzy -->
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"这个答案与已经绘制的关于这条路的地图不匹配。您确定您正在回答正确的道路吗？您确定您有亲自沿着整个路段上进行过调查吗？"</string>
+    <string name="street_parking_street_width">"街道宽度：%s"</string>
+    <string name="overlay_street_parking">"路边停车"</string>
+    <string name="link_ohsomehex_description">"在空间和时间上探索从大图景到单个物体的各种尺度的OSM数据"</string>
+    <string name="link_opencampingmap_description">"一张露营地地图"</string>
+    <string name="quest_atm_cashin_title">"你能在这台ATM机上存入现金吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="create_node_action_description">"你创建了一个节点带有..."</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"这是个集合点"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"集合点是人们在紧急情况下的集合地点。它通常看起来与此类似："</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_answer_house_name2">"地址有一座房子的名称..."</string>
+    <string name="quest_address_street_street_name_label">"街道名称："</string>
+    <string name="quest_address_street_hint2">"点击地图上的街道来选择它"</string>
+    <string name="quest_bicycle_incline_title">"在这里，哪个方向是向上的？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bicycle_incline_up_and_down">"它是上下跳跃的"</string>
     <string name="quest_drinking_water_type_title">"这里是如何提供饮用水的？"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"其它饮水装置"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"冒出小水柱的喷水机"</string>
@@ -2744,8 +2759,12 @@ sorted alphabetically by title -->
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"其他类型的场所"</string>
     <string name="quest_address_answer_no_address">"这里没有地址"</string>
+    <string name="quest_bicycle_barrier_installation_title">"这个自行车阻车柱能否被打开（有或没有钥匙）？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_guardhouse">"警卫室"</string>
     <string name="quest_genericRef_title">"这里的识别号码是什么？"</string>
-    <string name="quest_sidewalk_answer_different">"人行道的情况有所不同"</string>
+    <string name="quest_sidewalk_answer_different">"人行道的位置与实际不符"</string>
     <string name="about_title_get_involved">"参与其中"</string>
     <string name="pref_category_quests_overlays">"任务和叠加层"</string>
     <string name="quest_presets_rename">"重命名"</string>
@@ -2761,4 +2780,17 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message_overwrite">"注意：你的同名预设将被覆盖！"</string>
     <string name="urlconfig_switch_hint">"你可以在任何时候切换设置中的预设。"</string>
     <string name="quest_bicycle_parking_type_two_tier">"双层自行车架"</string>
+    <string name="user_profile_current_week_title">"最近7天"</string>
+    <string name="user_profile_dates_mapped">"你最近绘制的天数"</string>
+    <string name="urlconfig_scan_qr_code_again2">"安装应用程序后，再次扫描二维码或点击&lt;a href=\"%s\"&gt;此链接&lt;/a&gt;以应用预设。"</string>
+
+    <!-- Fuzzy -->
+    <string name="confirmation_replace_shop_title">"这个场所还是原来的吗？"</string>
+    <string name="confirmation_replace_shop_message">"在这种情况下，开放时间、联系信息等也需要发生变化。"</string>
+
+    <!-- Fuzzy -->
+    <string name="confirmation_replace_shop_yes">"已是不同的场所"</string>
+
+    <!-- Fuzzy -->
+    <string name="confirmation_replace_shop_no">"还是相同的场所"</string>
 </resources>

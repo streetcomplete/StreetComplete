@@ -28,11 +28,3 @@ global:
     barrier_color: '#888'
 
     tunnel_color: [1., 1., 1., 0.2]
-
-styles:
-    buildings-style:
-        base: polygons
-        blend: translucent
-    buildings-outline-style:
-        base: lines
-        blend: translucent

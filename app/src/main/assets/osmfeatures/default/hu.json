@@ -2943,10 +2943,6 @@
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "űrtartalom,térfogat,köbtartalom"
                 },
-                "water_volume": {
-                    "label": "Tárolt víztérfogat (m³)",
-                    "terms": "vízmennyiség,térfogat,kapacitás"
-                },
                 "waterway": {
                     "label": "Típus"
                 },
@@ -5046,8 +5042,7 @@
                     "name": "Gyalogosátkelő"
                 },
                 "highway/crossing/marked": {
-                    "name": "Jelölt gyalogátkelő",
-                    "terms": "zebra"
+                    "name": "Jelölt gyalogátkelő"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Jelzőlámpás gyalogátkelőhely"
@@ -5111,21 +5106,9 @@
                 "highway/footway/informal": {
                     "name": "Nem hivatalos ösvény"
                 },
-                "highway/footway/marked": {
-                    "name": "Jelölt gyalogátkelő"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Járda",
                     "terms": "járda,gyalogjáró,gyalogút"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "Jelzőlámpás gyalogátkelőhely"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Nem jelölt gyalogosátkelő"
-                },
-                "highway/footway/zebra": {
-                    "name": "Jelölt gyalogátkelő"
                 },
                 "highway/give_way": {
                     "name": "Elsőbbségadás kötelező",
@@ -6102,9 +6085,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Föld alatti csővezeték",
                     "terms": "gázvezeték,kőolajvezeték,vízvezeték"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Csővezeték-szelep"
                 },
                 "man_made/planter": {
                     "name": "Virágláda"

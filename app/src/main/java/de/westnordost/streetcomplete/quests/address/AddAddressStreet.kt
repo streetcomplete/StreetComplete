@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -62,7 +63,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

@@ -607,9 +607,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Ce religie este reprezentată la acest altar?"</string>
     <string name="quest_parking_fee_title">"Este o parcare cu plată?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"pistă pentru biciclete (marcaje punctate)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Piatră neacoperită"</string>
     <string name="quest_streetSurface_square_title">"Ce tip de suprafață are această piață?"</string>
     <string name="quest_fee_answer_hours">"Depinde de timp și zi …"</string>
@@ -626,7 +623,6 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="quest_bicycle_parking_type_locker">"Dulap"</string>
     <string name="quest_bicycle_parking_type_building">"Clădire"</string>
     <string name="quest_bicycle_parking_type_title">"Ce tip de parcare pentru biciclete este?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"indicare bandă biciclete"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Care sunt orele de colectare a corespondeței pentru această cutie poștală?"</string>

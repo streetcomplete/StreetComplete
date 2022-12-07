@@ -1001,9 +1001,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_parking_fee_title">"Existe custo para estacionar aqui?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"Ciclofaixa (marcas tracejadas)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Seixo bruto"</string>
 
     <!-- Fuzzy -->
@@ -1038,9 +1035,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Que tipo de estacionamento de bicicleta é esse?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"Faixa sugerida para bicicletas"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Quais os horários de coleta para esta caixa postal?"</string>

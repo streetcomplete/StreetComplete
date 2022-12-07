@@ -571,9 +571,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Agama apa yang direpresentasikan di kuil ini?"</string>
     <string name="quest_parking_fee_title">"Apakah parkir di sini bayar?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"Lajur Sepeda (garis putus-putus)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Berangkal tidak mulus"</string>
     <string name="quest_streetSurface_square_title">"Apakah permukaan dari alun-alun ini?"</string>
     <string name="quest_fee_answer_hours">"Tergantung waktu dan hari…"</string>
@@ -590,7 +587,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_bicycle_parking_type_locker">"Loker"</string>
     <string name="quest_bicycle_parking_type_building">"Bangunan"</string>
     <string name="quest_bicycle_parking_type_title">"Apa tipe parkir sepeda ini?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"Lajur sepeda yang disarankan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Kapan waktu pengambilan surat di kotak pos ini?"</string>

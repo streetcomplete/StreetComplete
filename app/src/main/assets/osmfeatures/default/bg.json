@@ -1746,8 +1746,7 @@
                     "name": "Пешеходна пътека"
                 },
                 "highway/crossing/marked": {
-                    "name": "Пешеходна пътека Зебра",
-                    "terms": "маркирана пешеходна пътека,зебра"
+                    "name": "Пешеходна пътека Зебра"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Немаркирана пешеходна пътека"
@@ -1773,12 +1772,6 @@
                 },
                 "highway/footway/crossing": {
                     "name": "Пешеходна пътека"
-                },
-                "highway/footway/marked": {
-                    "name": "Пешеходна пътека \"Зебра\""
-                },
-                "highway/footway/unmarked": {
-                    "name": "Немаркирана пешеходна пътека"
                 },
                 "highway/living_street": {
                     "name": "Улица в жилищна зона"

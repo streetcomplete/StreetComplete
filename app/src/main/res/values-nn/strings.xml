@@ -396,9 +396,6 @@
     <string name="quest_religion_chinese_folk">"Kinesisk folkereligion"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Kva religion er representert ved denne heilagdommen?"</string>
     <string name="quest_parking_fee_title">"Kostar det noko å parkera her?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"sykkelfelt (stipla linje)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Innstøypt elvestein"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
     <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett …"</string>
@@ -415,7 +412,6 @@
     <string name="quest_bicycle_parking_type_locker">"Skap"</string>
     <string name="quest_bicycle_parking_type_building">"Bygning"</string>
     <string name="quest_bicycle_parking_type_title">"Kva type parkering er her?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"sykkelfelt (tilrådande)"</string>
     <string name="quest_postboxCollectionTimes_title">"Når vert denne postkassen tømd?"</string>
     <string name="quest_collectionTimes_add_times">"Legg til tømmetider"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ingen særskilde tømmetider"</string>

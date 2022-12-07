@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 
@@ -21,7 +22,7 @@ class RemoveWrongSurface : OsmFilterQuestType<WrongSurfaceAnswer>() {
 
     override fun createForm() = RemoveWrongSurfaceForm()
 
-    override fun applyAnswerTo(answer: WrongSurfaceAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: WrongSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is TracktypeIsWrong -> {
                 tags.remove("tracktype")

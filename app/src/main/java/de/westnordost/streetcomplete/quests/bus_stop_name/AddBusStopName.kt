@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -28,7 +29,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     override fun createForm() = AddBusStopNameForm()
 
-    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoBusStopName -> {
                 tags["name:signed"] = "no"

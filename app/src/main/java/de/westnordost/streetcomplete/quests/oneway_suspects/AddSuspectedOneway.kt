@@ -4,6 +4,7 @@ import android.util.Log
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -140,7 +141,7 @@ class AddSuspectedOneway(
 
     override fun createForm() = AddSuspectedOnewayForm()
 
-    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SuspectedOnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (!answer.isOneway) {
             tags["oneway"] = "no"
         } else {

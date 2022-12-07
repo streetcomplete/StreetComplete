@@ -461,9 +461,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"በዚህ መቅደስ ውስጥ የትኛው ሃይማኖት ይወከላል?"</string>
     <string name="quest_parking_fee_title">"እዚህ ለማቆም መክፈል አለብዎት?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"የሳይክል መንገድ (የተሰረዙ ምልክቶች)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"ያልተቆረጠ ኮብልስቶን"</string>
     <string name="quest_streetSurface_square_title">"ይህ አደባባይ ምን ገጽታ አለው?"</string>
     <string name="quest_fee_answer_hours">"በሰዓት እና በቀን ሚወሰን…"</string>
@@ -480,7 +477,6 @@
     <string name="quest_bicycle_parking_type_locker">"መቆለፊያ"</string>
     <string name="quest_bicycle_parking_type_building">"ህንፃ"</string>
     <string name="quest_bicycle_parking_type_title">"ይህ ምን ዓይነት ብስክሌት መኪና ማቆሚያ ነው?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"የብስክሌት ጥቆማ መስመር"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"የዚህ የፖስታ ሣጥን መሰብሰብ ሰዐት ምንድን ነው?"</string>

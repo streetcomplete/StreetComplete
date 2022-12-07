@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -49,7 +50,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
         "nodes with barrier or traffic_calming or (kerb and kerb !~ no|flush)".toElementFilterExpression()
     }
 
-    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

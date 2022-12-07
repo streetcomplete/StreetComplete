@@ -490,9 +490,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est représentée dans ce sanctuaire ?"</string>
     <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"accotement (empruntable par les véhicules à moteur)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés non taillés"</string>
     <string name="quest_streetSurface_square_title">"Quel est le revêtement de cette place ?"</string>
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
@@ -509,7 +506,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_bicycle_parking_type_locker">"Casiers individuels"</string>
     <string name="quest_bicycle_parking_type_building">"Bâtiment"</string>
     <string name="quest_bicycle_parking_type_title">"De quel type de stationnement vélo s’agit-il ?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"Bande cyclable suggérée"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Quels sont les horaires de levée du courrier pour cette boîte aux lettres ?"</string>

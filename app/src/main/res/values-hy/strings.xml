@@ -1009,9 +1009,6 @@
     <string name="quest_parking_fee_title">"Պետք է վճարել այստեղ կայանելու համար:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"Cycle Lane (ցրված գծանշաններ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Unewn Cobblestone"</string>
 
     <!-- Fuzzy -->
@@ -1046,9 +1043,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ինչպիսի հեծանիվների կայանատեղի է սա:"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"Հեծանիվների առաջարկություն"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Որոնք են այս փոստարկղի հավաքածուները:"</string>

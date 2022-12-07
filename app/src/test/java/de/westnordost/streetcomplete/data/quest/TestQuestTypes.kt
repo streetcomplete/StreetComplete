@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -12,7 +13,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
 
     override fun getTitle(tags: Map<String, String>) = 0
     override fun isApplicableTo(element: Element): Boolean? = null
-    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {}
+    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override fun createForm(): AbstractOsmQuestForm<String> = object : AbstractOsmQuestForm<String>() {}
     override val changesetComment = "test me"
     override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.service_building
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 
@@ -29,7 +30,7 @@ class AddServiceBuildingType : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddServiceBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             "substation" -> {
                 tags["power"] = "substation"

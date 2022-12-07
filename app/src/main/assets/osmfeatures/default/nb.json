@@ -3901,17 +3901,8 @@
                 "highway/footway/conveying": {
                     "name": "Rullende fortau"
                 },
-                "highway/footway/marked": {
-                    "name": "Fotgjengerovergang"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Fortau"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Tilrettelagt kryssing"
-                },
-                "highway/footway/zebra": {
-                    "name": "Fotgjengerovergang"
                 },
                 "highway/give_way": {
                     "name": "Vikepliktskilt"
@@ -4438,9 +4429,6 @@
                 },
                 "man_made/pipeline": {
                     "name": "Rørledning"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Rørledningsventil"
                 },
                 "man_made/pumping_station": {
                     "name": "Pumpestasjon"

@@ -165,10 +165,10 @@
 
     <!-- Elements on map view -->
     <!-- Fuzzy -->
-    <string name="map_btn_zoom_out">"Kicsinyít"</string>
+    <string name="map_btn_zoom_out">"Kicsinyítés"</string>
 
     <!-- Fuzzy -->
-    <string name="map_btn_zoom_in">"Nagyít"</string>
+    <string name="map_btn_zoom_in">"Nagyítás"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Juhú, végre valakit érdekel az adatvédelem, remek! Szerintem csupa jó híreim vannak számodra:&lt;/p&gt;
@@ -797,9 +797,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_parking_fee_title">"Ez a parkoló fizetős?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"nyitott kerékpársáv (FEHÉR szaggatott vonal)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Nagy kavics (nem vágott)"</string>
 
     <!-- Fuzzy -->
@@ -834,9 +831,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ez milyen típusú kerékpárparkoló?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"kerékpárral javasolt sáv"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Mikor ürítik ezt a postaládát?"</string>
@@ -1428,7 +1422,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_recycling_materials_answer_waste_description">"Tehát ebbe a konténerbe bámilyen hulladék helyezhető, mint például zacskós háztartási vagy kereskedelmi hulladék?"</string>
 
     <!-- Fuzzy -->
-    <string name="user_profile">"Profilom"</string>
+    <string name="user_profile">"Saját profil"</string>
 
     <!-- Fuzzy -->
     <string name="user_login">"Bejelentkezés"</string>
@@ -2505,10 +2499,12 @@ sorted alphabetically by title -->
     <string name="quest_barrier_bicycle_installation_removable">"Mozgatható"</string>
     <string name="quest_buildingType_guardhouse">"Őrház"</string>
     <string name="quest_genericRef_title">"Mi az azonosítószám?"</string>
+    <string name="quest_sidewalk_answer_different">"A járdák helyzete eltérő"</string>
+    <string name="about_title_get_involved">"Kapcsolódj be"</string>
     <string name="pref_category_quests_overlays">"Kérdések és kiemelések"</string>
-    <string name="quest_presets_rename">"Átnevez"</string>
-    <string name="quest_presets_share">"Megoszt"</string>
-    <string name="quest_presets_delete">"Töröl"</string>
+    <string name="quest_presets_rename">"Átnevezés"</string>
+    <string name="quest_presets_share">"Megosztás"</string>
+    <string name="quest_presets_delete">"Törlés"</string>
 
     <!-- Config via URL/QRCode -->
     <string name="urlconfig_qr_code_description">"A kiválasztott kérdéstípusok megosztása QR-kóddal."</string>
@@ -2518,6 +2514,7 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message">"Kérdések kiválasztása és alkalmazása? (%1$s)"</string>
     <string name="urlconfig_apply_message_overwrite">"Ha van azonos névvel, az felül fog íródni!"</string>
     <string name="urlconfig_switch_hint">"A kiválasztások között bármikor váltani lehet."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"Kétszintes kerékpártartó"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Ezen a héten"</string>
@@ -2525,6 +2522,7 @@ sorted alphabetically by title -->
 
     <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"nyitott kerékpársáv"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Az alkalmazás telepítése után olvasd le újra a QR-kódot, vagy kattints &lt;a href=\"%s\"&gt;erre a hivatkozásra&lt;/a&gt; az előre beállított érték alkalmazásához."</string>
     <string name="confirmation_replace_shop_title">"Ez most egy másik üzlet?"</string>
     <string name="confirmation_replace_shop_message">"Ebben az esetben a nyitvatartási idő, az elérhetőségek stb. is megváltoztak."</string>
     <string name="confirmation_replace_shop_yes">"Ez egy másik üzlet lett"</string>

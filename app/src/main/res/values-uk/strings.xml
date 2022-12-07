@@ -474,9 +474,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Яку релігію представляє ця святиня?"</string>
     <string name="quest_parking_fee_title">"Чи треба тут платити за паркування?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"велосмуга (пунктирна розмітка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Неотесана бруківка"</string>
     <string name="quest_streetSurface_square_title">"Яке покриття цієї площі?"</string>
     <string name="quest_fee_answer_hours">"Залежить від часу та дня…"</string>
@@ -494,7 +491,6 @@
 "</string>
     <string name="quest_bicycle_parking_type_building">"Будівля"</string>
     <string name="quest_bicycle_parking_type_title">"Якого типу ця велопарковка?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"рекомендована для велосипедів полоса"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Який час виїмки цієї поштової скриньки?"</string>

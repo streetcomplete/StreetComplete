@@ -2469,14 +2469,8 @@
                 "highway/footway": {
                     "name": "Foot Path"
                 },
-                "highway/footway/marked": {
-                    "name": "Marked Crossing"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Pavement"
-                },
-                "highway/footway/zebra": {
-                    "name": "Marked Crossing"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign"

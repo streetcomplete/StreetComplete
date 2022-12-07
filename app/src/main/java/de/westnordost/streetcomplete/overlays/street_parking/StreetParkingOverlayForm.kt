@@ -66,13 +66,13 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
             getString(R.string.street_parking_street_width, widthFormatted)
         } else null
 
+        originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
     }
 
     private fun initStateFromTags() {
-        originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
         streetSideSelect.setPuzzleSide(originalParking?.left?.asStreetSideItem(requireContext(), isUpsideDown(false)), false)
         streetSideSelect.setPuzzleSide(originalParking?.right?.asStreetSideItem(requireContext(), isUpsideDown(true)), true)
     }
@@ -129,7 +129,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     /* --------------------------------------- apply answer ------------------------------------- */
 
     override fun onClickOk() {
-        if (streetSideSelect.isComplete) streetSideSelect.saveLastSelection()
+        streetSideSelect.saveLastSelection()
         val parking = LeftAndRightStreetParking(streetSideSelect.left?.value, streetSideSelect.right?.value)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         parking.applyTo(tagChanges)

@@ -424,9 +424,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Aké náboženstvo reprezentuje táto svätyňa?"</string>
     <string name="quest_parking_fee_title">"Je tu parkovanie spoplatnené?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"cyklopruh (prerušované značenie)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Neotesané dlažobné kocky"</string>
     <string name="quest_streetSurface_square_title">"Aký povrch má toto námestie?"</string>
 
@@ -447,9 +444,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_bicycle_parking_type_locker">"Kabínka"</string>
     <string name="quest_bicycle_parking_type_building">"Budova"</string>
     <string name="quest_bicycle_parking_type_title">"Aký typ parkoviska pre bicykle je toto?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"náznak cyklocesty"</string>
     <string name="quest_postboxCollectionTimes_title">"V akých časoch sa vyberá táto poštová schránka?"</string>
     <string name="quest_collectionTimes_add_times">"Pridať čas výberu"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Čas nie je špecifikovaný"</string>

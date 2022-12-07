@@ -558,9 +558,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"¿Este templo está dedicado a alguna religión en particular?"</string>
     <string name="quest_parking_fee_title">"¿Cuesta dinero aparcar aquí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"carril bici (línea discontinua)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrado natural"</string>
     <string name="quest_streetSurface_square_title">"¿Qué tipo de superficie tiene esta plaza?"</string>
     <string name="quest_fee_answer_hours">"Depende del día y la hora…"</string>
@@ -585,9 +582,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"¿Sabes el tipo de aparcamiento de bicis?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"carril recomendado para bicis"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"¿Cuáles son las horas de recogida de este buzón?"</string>
@@ -1910,6 +1904,7 @@ sorted alphabetically by title -->
     <string name="quest_buildingType_guardhouse">"Caseta de vigilancia"</string>
     <string name="quest_genericRef_title">"¿Cuál es el número de identificación aquí?"</string>
     <string name="quest_sidewalk_answer_different">"La situación de la acera es diferente"</string>
+    <string name="about_title_get_involved">"Involúcrate"</string>
     <string name="pref_category_quests_overlays">"Tareas &amp; Superposiciones"</string>
     <string name="quest_presets_rename">"Renombrar"</string>
     <string name="quest_presets_share">"Compartir"</string>
@@ -1924,4 +1919,9 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message_overwrite">"Nota: ¡Se sobrescribirá su preset con el mismo nombre!"</string>
     <string name="urlconfig_switch_hint">"Puede cambiar los ajustes preestablecidos en la configuración en cualquier momento."</string>
     <string name="user_profile_current_week_title">"Últimos 7 días"</string>
+    <string name="urlconfig_scan_qr_code_again2">"Después de instalar la aplicación, vuelva a escanear el código QR o haga clic en &lt;a href=\"%s\"&gt;este enlace&lt;/a&gt; para aplicar el ajuste preestablecido."</string>
+    <string name="confirmation_replace_shop_title">"¿Es un lugar diferente ahora?"</string>
+    <string name="confirmation_replace_shop_message">"En ese caso, el horario de apertura, la información de contacto, etc. también habrán cambiado."</string>
+    <string name="confirmation_replace_shop_yes">"Lugar diferente ahora"</string>
+    <string name="confirmation_replace_shop_no">"Sigue siendo el mismo lugar"</string>
 </resources>

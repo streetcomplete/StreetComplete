@@ -459,9 +459,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Este templo está adicado a algunha relixión de xeito particular?"</string>
     <string name="quest_parking_fee_title">"Custa cartos aparcar aquí?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"carril bici (liña descontinua)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Empedrado irregular (natural)"</string>
     <string name="quest_streetSurface_square_title">"Que tipo de superficie ten esta praza?"</string>
     <string name="quest_fee_answer_hours">"Depende do día e da hora…"</string>
@@ -478,7 +475,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_bicycle_parking_type_locker">"Consignas"</string>
     <string name="quest_bicycle_parking_type_building">"Edificio"</string>
     <string name="quest_bicycle_parking_type_title">"Cal é o tipo deste aparcadoiro de bicicletas?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"carril recomendado para bicicletas"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Sabes as horas de recollida desta caixa do correo?"</string>

@@ -479,9 +479,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"ما هو الدين الذي يمثله هذا الضريح؟"</string>
     <string name="quest_parking_fee_title">"هل يجب عليك الدفع لركن سيارتك هنا؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"مسار دراجات (علامات متقطعة)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"الحجارة المرصوفة غير مألوفة"</string>
     <string name="quest_streetSurface_square_title">"ما هو سطح هذا المربع؟"</string>
 
@@ -500,7 +497,6 @@
     <string name="quest_bicycle_parking_type_locker">"خزانة/خزائن"</string>
     <string name="quest_bicycle_parking_type_building">"بناء"</string>
     <string name="quest_bicycle_parking_type_title">"ما هو نوع مواقف الدراجات؟"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"مسار الدراجات المقترح"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"ما هي أوقات جمع البريد لصندوق البريد هذا؟"</string>
@@ -1591,4 +1587,89 @@ sorted alphabetically by title -->
     <string name="lit_value_24_7">"مضاء ليلا ونهارا"</string>
     <string name="lit_value_automatic">"مضاء عندما يمر شخص ما"</string>
     <string name="overlay_sidewalk">"الأرصفة"</string>
+    <string name="quest_generic_answer_is_indoors">"هذا موجود داخل المبنى"</string>
+    <string name="quest_summit_cross_title">"هل هناك صليبٌ على هذه القمة؟"</string>
+    <string name="quest_entrance_reference">"ما محتويات اللائحة عند هذا المدخل؟"</string>
+    <string name="quest_entrance_reference_select_flat_range_and_code">"ملصق المدخل ومجموعة الشقق"</string>
+    <string name="quest_entrance_reference_select_flat_range_only">"مجموعة من الشقق"</string>
+    <string name="quest_entrance_reference_select_code_only">"بطاقة الدخول"</string>
+    <string name="quest_entrance_reference_nothing_signed">"لا توجد علامة مع تسمية أو نطاق مسطح"</string>
+    <string name="quest_entrance_reference_reference_label">"بطاقة الدخول:"</string>
+    <string name="quest_entrance_reference_flat_range_label">"نطاق مسطح:"</string>
+    <string name="quest_entrance_reference_flat_range_to">"..."</string>
+    <string name="default_disabled_msg_overlay">"يتم تعطيل نوع المهمة هذا افتراضيًا نظرًا لوجود تراكب بالفعل يكون أكثر فعالية وكفاءة لإدخال هذه البيانات وتحديثها."</string>
+    <string name="quest_camp_drinking_water_title">"هل مياه الشرب متوفرة مجاناً للمخيمين؟
+"</string>
+    <string name="quest_camp_shower_title">"هل يوجد أدواش هنا؟"</string>
+    <string name="quest_camp_power_supply_title">"هل يوجد طريقة ليقوم الزبائن بشحن هواتفهم أو حواسبهم المحمولة أو ... هنا؟"</string>
+    <string name="quest_camp_type_title">"من يسمح له التخييم هنا؟"</string>
+    <string name="quest_camp_type_tents_and_caravans">"كل من الخيام والبيوت المتنقلة ، ومقطورات السفر ، ..."</string>
+    <string name="quest_camp_type_caravans_only">"فقط بيوت المتنقلة ، مقطورات السفر ، ..."</string>
+    <string name="quest_camp_type_tents_only">"خيام فقط"</string>
+    <string name="quest_camp_type_backcountry">"التخييم في Backcountry (لا توجد مرافق)"</string>
+    <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"هذا القطر يبدو غير صحيح، إنه عادةً بين %1$d و %2$d."</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"هذه الإجابة لا تتطابق مع ما تم تعيينه بالفعل حول هذا الطريق. هل أنت متأكد أنك تجيب عن الطريق الصحيح؟ هل أنت متأكد من أنك استطلعت رأيًا شخصيًا بطول كامل ، كما هو مطلوب دائمًا؟"</string>
+    <string name="quest_recycling_type_pet">"PET فقط"</string>
+    <string name="street_parking_street_width">"عرض الشارع: %s"</string>
+    <string name="overlay_street_parking">"وقوف السيارات في الشارع"</string>
+    <string name="link_ohsomehex_description">"استكشف بيانات OSM عبر المقاييس بدءًا من الصورة الكبيرة وحتى الكائنات الفردية عبر المكان والزمان"</string>
+    <string name="link_opencampingmap_description">"خريطة مواقع المعسكرات"</string>
+    <string name="quest_atm_cashin_title">"هل يمكنك إيداع النقود في جهاز الصراف الآلي هذا؟"</string>
+    <string name="create_node_action_description">"لقد أنشأت عقدة باستخدام ..."</string>
+    <string name="quest_accessPointRef_answer_assembly_point">"إنها نقطة تجميع"</string>
+    <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطة التجمع هي المكان الذي يتجمع فيه الناس في حالة الطوارئ. عادة ما يبدو مشابهًا لهذا:"</string>
+    <string name="quest_address_answer_house_name2">"العنوان له اسم منزل ..."</string>
+    <string name="quest_address_street_street_name_label">"اسم الشارع:"</string>
+    <string name="quest_address_street_hint2">"اضغط على الشارع على الخريطة لتحديده"</string>
+    <string name="quest_bicycle_incline_title">"أي اتجاه يقود إلى الأعلى هنا؟"</string>
+    <string name="quest_bicycle_incline_up_and_down">"إنها قفزات صعود وهبوط"</string>
+    <string name="quest_drinking_water_type_title">"كيف يتم توفير مياه الشرب هنا؟"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"نافورة مياه أخرى"</string>
+    <string name="quest_drinking_water_type_jet_water_fountain">"نافورة ماء تنبعث منها نفاثة صغيرة من الماء"</string>
+    <string name="quest_drinking_water_type_bottle_refill_only_fountain">"إعادة تعبئة الزجاجات فقط"</string>
+    <string name="quest_drinking_water_type_tap">"صنبور الماء"</string>
+    <string name="quest_drinking_water_type_hand_pump">"مضخة يدوية"</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">"بئر ماء بدون مضخة"</string>
+    <string name="quest_drinking_water_type_spring">"ينبوع"</string>
+    <string name="quest_drinking_water_type_disused">"كائن مياه الشرب المهجورة"</string>
+    <string name="overlay_addresses">"عناوين"</string>
+    <string name="overlay_shops">"محلات"</string>
+    <string name="name_label">"اسم:"</string>
+    <string name="vacant_shop_title">"محل شاغر"</string>
+
+    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
+    <string name="unknown_shop_title">"نوع آخر من الأماكن"</string>
+    <string name="quest_address_answer_no_address">"لا يوجد عنوان هنا"</string>
+    <string name="quest_bicycle_barrier_installation_title">"هل يمكن فتح حاجز الدورة هذا (بمفتاح أو بدونه)؟"</string>
+    <string name="quest_barrier_bicycle_installation_fixed">"مُثَبَّت"</string>
+    <string name="quest_barrier_bicycle_installation_openable">"منفتح"</string>
+    <string name="quest_barrier_bicycle_installation_removable">"قابل للإزالة"</string>
+    <string name="quest_buildingType_guardhouse">"بيت الحراسة"</string>
+    <string name="quest_genericRef_title">"ما هو رقم التعريف هنا؟"</string>
+    <string name="quest_sidewalk_answer_different">"وضع الرصيف مختلف"</string>
+    <string name="about_title_get_involved">"شارك"</string>
+    <string name="pref_category_quests_overlays">"المهام والتراكبات"</string>
+    <string name="quest_presets_rename">"إعادة تسمية"</string>
+    <string name="quest_presets_share">"يشارك"</string>
+    <string name="quest_presets_delete">"حذف"</string>
+
+    <!-- Config via URL/QRCode -->
+    <string name="urlconfig_qr_code_description">"اسمح للآخرين بمسح رمز الاستجابة السريعة هذا ضوئيًا لمشاركة إعدادك المسبق."</string>
+    <string name="urlconfig_as_url">"أو كعنوان URL:"</string>
+    <string name="urlconfig_url_copied">"تم نسخ URL إلى الحافظة"</string>
+    <string name="urlconfig_apply_title">"تطبيق الإعداد المسبق"</string>
+    <string name="urlconfig_apply_message">"تطبيق وتحديد الإعداد المسبق٪ 1 $ s؟"</string>
+    <string name="urlconfig_apply_message_overwrite">"ملاحظة: ستتم الكتابة فوق الإعداد المسبق الذي يحمل نفس الاسم!"</string>
+    <string name="urlconfig_switch_hint">"يمكنك تبديل الإعدادات المسبقة في الإعدادات في أي وقت."</string>
+    <string name="quest_bicycle_parking_type_two_tier">"رف دراجة من طبقتين"</string>
+    <string name="user_profile_current_week_title">"اخر 7 ايام"</string>
+    <string name="user_profile_dates_mapped">"الأيام التي حددتها مؤخرًا"</string>
+
+    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
+    <string name="quest_cycleway_value_advisory_lane">"حارة إرشادية للدراجات"</string>
+    <string name="urlconfig_scan_qr_code_again2">"بعد تثبيت التطبيق ، امسح رمز الاستجابة السريعة ضوئيًا مرة أخرى أو انقر على &lt;a href=\"٪s\"&gt; هذا الرابط &lt;/a&gt; لتطبيق الإعداد المسبق."</string>
+    <string name="confirmation_replace_shop_title">"هل هو مكان مختلف الآن؟"</string>
+    <string name="confirmation_replace_shop_message">"في هذه الحالة ، ستتغير أيضًا ساعات العمل ومعلومات الاتصال وما إلى ذلك."</string>
+    <string name="confirmation_replace_shop_yes">"مكان مختلف الآن"</string>
+    <string name="confirmation_replace_shop_no">"لا يزال نفس المكان"</string>
 </resources>

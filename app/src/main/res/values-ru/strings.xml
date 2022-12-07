@@ -620,9 +620,6 @@
     <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"К какой религии относится этот храм?"</string>
     <string name="quest_parking_fee_title">"Эта парковка платная?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"велосипедная полоса (пунктирная разметка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Необработанный булыжник"</string>
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
     <string name="quest_fee_answer_hours">"Зависит от времени суток и дня…"</string>
@@ -650,7 +647,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Какого типа данная велопарковка?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"велосипедная дорожка"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Какое время выемки писем у почтового ящика?"</string>

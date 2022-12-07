@@ -2260,9 +2260,6 @@
                     "label": "Volume (litros)",
                     "placeholder": "10000, 20000, 30000…"
                 },
-                "water_volume": {
-                    "label": "Volume de auga encorada (m³)"
-                },
                 "waterway": {
                     "label": "Tipo"
                 },
@@ -4027,8 +4024,7 @@
                     "name": "Paso de peóns"
                 },
                 "highway/crossing/marked": {
-                    "name": "Paso de peóns marcado",
-                    "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
+                    "name": "Paso de peóns marcado"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Paso de peóns sen marcar",
@@ -4052,8 +4048,7 @@
                     "terms": "peonil,peonal,ciclista,ciclismo,bicicleta"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Paso de bicicletas marcado",
-                    "terms": "paso de bicicleta,cruzamento de carril bici,cruzamento de ciclovía,cruzamento de bicicleta,cruzamento de bici,cruzamento de senda ciclista"
+                    "name": "Paso de bicicletas marcado"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Paso de bicicletas sen marcar",
@@ -4081,20 +4076,9 @@
                 "highway/footway/crossing": {
                     "name": "Paso de peóns"
                 },
-                "highway/footway/marked": {
-                    "name": "Paso de peóns marcado",
-                    "terms": "cebra,paso de cebra,cruzamento marcado,paso de peóns,cruzamento de peóns"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Beirarrúa",
                     "terms": "calzada,paseo,berma"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Paso peonil sen marcar",
-                    "terms": "cruzamento sen marcar,paso de peóns sen marcar"
-                },
-                "highway/footway/zebra": {
-                    "name": "Paso de peóns marcado"
                 },
                 "highway/give_way": {
                     "name": "Ceda o paso"
@@ -4936,10 +4920,6 @@
                 "man_made/pipeline/underground": {
                     "name": "Tubaxe subterránea",
                     "terms": "petróleo,gas natural,auga,alcantarillado,augas residuais,desechos,refugallos,tubería,gasoduto,oleoduto,tubaxe,tubaría,tuberia,tubo"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Válvula de tubaxe",
-                    "terms": "petróleo,gas natural,auga,alcantarillado,augas residuais,pluviais,oleoduto"
                 },
                 "man_made/pumping_station": {
                     "name": "Estación de bombeo",

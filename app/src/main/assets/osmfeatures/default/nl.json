@@ -3187,10 +3187,6 @@
                     "placeholder": "10000, 20000, 30000, …",
                     "terms": "volume (liter)"
                 },
-                "water_volume": {
-                    "label": "Watervoorraad (m³)",
-                    "terms": "water,volume,reserve,kubieke meter,inhoud,capaciteit"
-                },
                 "waterway": {
                     "label": "Type"
                 },
@@ -5366,8 +5362,7 @@
                     "name": "Oversteekplaats"
                 },
                 "highway/crossing/marked": {
-                    "name": "Gemarkeerde Voetgangersoversteekplaats",
-                    "terms": "oversteekplaats,zebrapad,voetganger,gemarkeerde"
+                    "name": "Gemarkeerde Voetgangersoversteekplaats"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Kruispunt met voetgangersverkeerslichten"
@@ -5398,8 +5393,7 @@
                     "terms": "oversteekplaats,gecombineerd,fietser,voetganger,zebrapad"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Gemarkeerde fietsoversteekplaats",
-                    "terms": "fiets,blokmarkering,oversteekplaats,fietser,bromfietser"
+                    "name": "Gemarkeerde fietsoversteekplaats"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Ongemarkeerde fietsoversteekplaats",
@@ -5444,23 +5438,9 @@
                 "highway/footway/informal": {
                     "name": "Informeel voetpad"
                 },
-                "highway/footway/marked": {
-                    "name": "Gemarkeerde Voetgangersoversteekplaats",
-                    "terms": "zebrapad,oversteekplaats,gemarkeerde,aangeduide,voetganger"
-                },
                 "highway/footway/sidewalk": {
                     "name": "Stoep",
                     "terms": "voetpad,trottoir"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "Kruispunt met voetgangersverkeerslichten"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Ongemarkeerde Voetgangersoversteekplaats",
-                    "terms": "oversteekplaats,voetganger,ongemarkeerde,niet aangeduide"
-                },
-                "highway/footway/zebra": {
-                    "name": "Zebrapad"
                 },
                 "highway/give_way": {
                     "name": "Voorrangsbord",
@@ -6501,10 +6481,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "Ondergrondse pijpleiding"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "Klep (pijplijn)",
-                    "terms": "aflsuitklep,ventiel"
                 },
                 "man_made/planter": {
                     "name": "Plantenbak",

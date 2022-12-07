@@ -5,6 +5,7 @@ chargingStationOperators: [Allego, NUON, Fastned, Nuon, EVBOX, Ecotap, Vattenfal
 clothesContainerOperators: [ROVA, Sympany, Leger des Heils ReShare, Leger des Heils, Gemeente Amsterdam, RD4, Curitas, Twiddus, Noppes, Leger des heils, hetgoed, Waardlanden, Opnieuw & Co, HVC]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

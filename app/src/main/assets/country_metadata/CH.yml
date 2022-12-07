@@ -5,6 +5,7 @@ clothesContainerOperators: [Texaid, Ville de Geneve, Contex, coop, TexAid, Coop,
 exclusiveCycleLaneStyle: yellow dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

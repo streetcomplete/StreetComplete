@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
@@ -24,7 +25,7 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
     override fun createForm() = AddParkingAccessForm()
 
-    override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["access"] = answer.osmValue
     }
 }

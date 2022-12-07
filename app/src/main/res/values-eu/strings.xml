@@ -1024,9 +1024,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_parking_fee_title">"Hemen aparkatzeko ordaindu behar da?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cycleway_value_lane_soft">"Bizikletentzako erraia (marka marratuak)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Landu gabeko galtzadarria"</string>
 
     <!-- Fuzzy -->
@@ -1061,9 +1058,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ze motako bizikleta aparkalekua da hau?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_value_suggestion_lane">"bizikletei proposatutako erraia"</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Zeintzuk dira postontzi honen bilketa orduak?"</string>

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.cuisine
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -31,7 +32,7 @@ class AddCuisine : OsmFilterQuestType<String>() {
 
     override fun createForm() = AddCuisineForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["cuisine"] = answer
     }
 }

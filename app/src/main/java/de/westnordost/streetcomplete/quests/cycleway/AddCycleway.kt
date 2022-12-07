@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -19,29 +20,16 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.ADVISORY_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.BUSWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.DUAL_TRACK
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.EXCLUSIVE_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.NONE_NO_ONEWAY
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.PICTOGRAMS
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SEPARATE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SIDEWALK_EXPLICIT
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.SUGGESTION_LANE
-import de.westnordost.streetcomplete.osm.cycleway.Cycleway.TRACK
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LANE
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
+import de.westnordost.streetcomplete.osm.cycleway.any
+import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.isNearAndAligned
@@ -50,12 +38,13 @@ import java.util.concurrent.FutureTask
 class AddCycleway(
     private val countryInfos: CountryInfos,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-) : OsmElementQuestType<CyclewayAnswer> {
+) : OsmElementQuestType<LeftAndRightCycleway> {
 
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
     override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
@@ -164,239 +153,103 @@ class AddCycleway(
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: CyclewayAnswer, tags: Tags, timestampEdited: Long) {
-        if (answer.left == answer.right) {
-            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.BOTH, 0, tags) }
-            deleteCyclewayAnswerIfExists(Side.LEFT, tags)
-            deleteCyclewayAnswerIfExists(Side.RIGHT, tags)
-        } else {
-            answer.left?.let { applyCyclewayAnswerTo(it.cycleway, Side.LEFT, it.dirInOneway, tags) }
-            answer.right?.let { applyCyclewayAnswerTo(it.cycleway, Side.RIGHT, it.dirInOneway, tags) }
-            deleteCyclewayAnswerIfExists(Side.BOTH, tags)
-        }
-        deleteCyclewayAnswerIfExists(null, tags)
-
-        applySidewalkAnswerTo(answer.left?.cycleway, answer.right?.cycleway, tags)
-
-        if (answer.isOnewayNotForCyclists) {
-            tags["oneway:bicycle"] = "no"
-        } else {
-            if (tags["oneway:bicycle"] == "no") {
-                tags.remove("oneway:bicycle")
-            }
-        }
-
-        // only set the check date if nothing was changed
-        if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
-            tags.updateCheckDateForKey("cycleway")
-        }
+    override fun applyAnswerTo(answer: LeftAndRightCycleway, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        val countryInfo = countryInfos.getByLocation(
+            countryBoundariesFuture.get(),
+            geometry.center.longitude,
+            geometry.center.latitude
+        )
+        answer.applyTo(tags, countryInfo.isLeftHandTraffic)
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("ways with highway = cycleway or (highway ~ path|footway and bicycle ~ yes|designated) or (highway=construction and construction ~ cycleway)")
 
-    /** Just add a sidewalk if we implicitly know from the answer that there is one */
-    private fun applySidewalkAnswerTo(cyclewayLeft: Cycleway?, cyclewayRight: Cycleway?, tags: Tags) {
-
-        /* only tag if we know the sidewalk value for both sides (because it is not possible in
-           OSM to specify the sidewalk value only for one side. sidewalk:right/left=yes is not
-           well established. */
-        if (cyclewayLeft?.isOnSidewalk == true && cyclewayRight?.isOnSidewalk == true) {
-            tags["sidewalk"] = "both"
-        }
-    }
-
-    private enum class Side(val value: String) {
-        LEFT("left"), RIGHT("right"), BOTH("both")
-    }
-
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int, tags: Tags) {
-        val directionValue = when {
-            dir > 0 -> "yes"
-            dir < 0 -> "-1"
-            else -> null
-        }
-
-        val cyclewayKey = "cycleway:" + side.value
-        when (cycleway) {
-            NONE, NONE_NO_ONEWAY -> {
-                tags[cyclewayKey] = "no"
-            }
-            EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE -> {
-                tags[cyclewayKey] = "lane"
-                if (directionValue != null) {
-                    tags["$cyclewayKey:oneway"] = directionValue
-                }
-                if (cycleway == EXCLUSIVE_LANE) {
-                    tags["$cyclewayKey:lane"] = "exclusive"
-                } else if (cycleway == ADVISORY_LANE) {
-                    tags["$cyclewayKey:lane"] = "advisory"
-                }
-            }
-            TRACK -> {
-                tags[cyclewayKey] = "track"
-                if (directionValue != null) {
-                    tags["$cyclewayKey:oneway"] = directionValue
-                }
-                if (tags.containsKey("$cyclewayKey:segregated")) {
-                    tags["$cyclewayKey:segregated"] = "yes"
-                }
-            }
-            DUAL_TRACK -> {
-                tags[cyclewayKey] = "track"
-                tags["$cyclewayKey:oneway"] = "no"
-            }
-            DUAL_LANE -> {
-                tags[cyclewayKey] = "lane"
-                tags["$cyclewayKey:oneway"] = "no"
-                tags["$cyclewayKey:lane"] = "exclusive"
-            }
-            SIDEWALK_EXPLICIT -> {
-                // https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
-                tags[cyclewayKey] = "track"
-                tags["$cyclewayKey:segregated"] = "no"
-            }
-            PICTOGRAMS -> {
-                tags[cyclewayKey] = "shared_lane"
-                tags["$cyclewayKey:lane"] = "pictogram"
-            }
-            SUGGESTION_LANE -> {
-                tags[cyclewayKey] = "shared_lane"
-                tags["$cyclewayKey:lane"] = "advisory"
-            }
-            BUSWAY -> {
-                tags[cyclewayKey] = "share_busway"
-            }
-            SEPARATE -> {
-                tags[cyclewayKey] = "separate"
-            }
-            else -> {
-                throw IllegalArgumentException("Invalid cycleway")
-            }
-        }
-
-        // clear previous cycleway:lane value
-        if (!cycleway.isLane) {
-            tags.remove("$cyclewayKey:lane")
-        }
-        // clear previous cycleway:oneway=no value (if not about to set a new value)
-        if (cycleway.isOneway && directionValue == null) {
-            if (tags["$cyclewayKey:oneway"] == "no") {
-                tags.remove("$cyclewayKey:oneway")
-            }
-        }
-        // clear previous cycleway:segregated=no value
-        if (cycleway != SIDEWALK_EXPLICIT && cycleway != TRACK) {
-            if (tags["$cyclewayKey:segregated"] == "no") {
-                tags.remove("$cyclewayKey:segregated")
-            }
-        }
-    }
-
-    /** clear previous answers for the given side */
-    private fun deleteCyclewayAnswerIfExists(side: Side?, tags: Tags) {
-        val sideVal = if (side == null) "" else ":" + side.value
-        val cyclewayKey = "cycleway$sideVal"
-
-        // only things are cleared that are set by this quest
-        // for example cycleway:surface should only be cleared by a cycleway surface quest etc.
-        tags.remove(cyclewayKey)
-        tags.remove("$cyclewayKey:lane")
-        tags.remove("$cyclewayKey:oneway")
-        tags.remove("$cyclewayKey:segregated")
-        tags.remove("sidewalk$sideVal:bicycle")
-    }
-
     override val hasQuestSettings = true
 
     override fun getQuestSettingsDialog(context: Context) =
         numberSelectionDialog(context, prefs, questPrefix(prefs) + PREF_CYCLEWAY_DISTANCE, 4, R.string.quest_settings_sidewalk_distance_message)
-
-    companion object {
-
-        /* Excluded is
-          - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
-          - if not already tagged with a cycleway: streets with low speed or that are not paved, as
-            they are very unlikely to have cycleway infrastructure
-                - for highway=residential without speed limit tagged assume low speed
-          - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
-          - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
-        */
-
-        // streets that may have cycleway tagging
-        private val roadsFilter by lazy { """
-            ways with
-              highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
-              and area != yes
-              and motorroad != yes
-              and bicycle_road != yes
-              and cyclestreet != yes
-              and bicycle != no
-              and bicycle != designated
-              and access !~ private|no
-              and bicycle != use_sidepath
-              and bicycle:backward != use_sidepath
-              and bicycle:forward != use_sidepath
-              and sidewalk != separate
-        """.toElementFilterExpression() }
-
-        // streets that do not have cycleway tagging yet
-        private val untaggedRoadsFilter by lazy { """
-            ways with (
-                highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
-                or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
-              )
-              and !cycleway
-              and !cycleway:left
-              and !cycleway:right
-              and !cycleway:both
-              and !sidewalk:bicycle
-              and !sidewalk:left:bicycle
-              and !sidewalk:right:bicycle
-              and !sidewalk:both:bicycle
-              and (
-                !maxspeed
-                or maxspeed > 20
-                or $notIn30ZoneOrLess
-              )
-              and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-        """.toElementFilterExpression() }
-
-        private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
-            ways with highway ~ path|footway|cycleway|construction
-        """.toElementFilterExpression() }
-        // highway=construction included, as situation often changes during and after construction
-
-        private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
-            """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""
-        }
-
-        private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
-
-        private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInfo?): Boolean? {
-            val sides = createCyclewaySides(tags, false)
-            // has no cycleway tagging
-            if (sides == null) return false
-            // any cycleway tagging is not known: don't mess with that
-            if (sides.any { it.isUnknown }) return false
-            // has any invalid cycleway tags
-            if (sides.any { it.isInvalid }) return true
-            // or it is older than x years
-            if (olderThan4Years.matches(this)) return true
-            // has any ambiguous cycleway tags
-            if (countryInfo != null) {
-                if (sides.any { it.isAmbiguous(countryInfo) }) return true
-            } else {
-                if (sides.any { it == UNSPECIFIED_SHARED_LANE }) return true
-                // for this, a countryCode is necessary, thus return null if no country code is available
-                if (sides.any { it == UNSPECIFIED_LANE }) return null
-            }
-            return false
-        }
-    }
 }
 
-private fun LeftAndRightCycleway.any(block: (cycleway: Cycleway) -> Boolean): Boolean =
-    left?.let(block) == true || right?.let(block) == true
+/* Excluded is
+  - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
+  - if not already tagged with a cycleway: streets with low speed or that are not paved, as
+    they are very unlikely to have cycleway infrastructure
+        - for highway=residential without speed limit tagged assume low speed
+  - if not already tagged, roads that are close (15m) to foot or cycleways (see #718)
+  - if already tagged, if not older than 4 years or if the cycleway tag uses some unknown value
+*/
+
+// streets that may have cycleway tagging
+private val roadsFilter by lazy { """
+    ways with
+      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+      and area != yes
+      and motorroad != yes
+      and expressway != yes
+      and bicycle_road != yes
+      and cyclestreet != yes
+      and bicycle != no
+      and bicycle != designated
+      and access !~ private|no
+      and bicycle != use_sidepath
+      and bicycle:backward != use_sidepath
+      and bicycle:forward != use_sidepath
+      and sidewalk != separate
+""".toElementFilterExpression() }
+
+// streets that do not have cycleway tagging yet
+private val untaggedRoadsFilter by lazy { """
+    ways with (
+        highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+        or highway = residential and (maxspeed > 33 or $notIn30ZoneOrLess)
+      )
+      and !cycleway
+      and !cycleway:left
+      and !cycleway:right
+      and !cycleway:both
+      and !sidewalk:bicycle
+      and !sidewalk:left:bicycle
+      and !sidewalk:right:bicycle
+      and !sidewalk:both:bicycle
+      and (
+        !maxspeed
+        or maxspeed > 20
+        or $notIn30ZoneOrLess
+      )
+      and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+""".toElementFilterExpression() }
+
+private val maybeSeparatelyMappedCyclewaysFilter by lazy { """
+    ways with highway ~ path|footway|cycleway|construction
+""".toElementFilterExpression() }
+// highway=construction included, as situation often changes during and after construction
+
+private val notIn30ZoneOrLess = MAXSPEED_TYPE_KEYS.joinToString(" or ") {
+    """$it and $it !~ ".*zone:?([1-9]|[1-2][0-9]|30)""""
+}
+
+private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
+
+private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInfo?): Boolean? {
+    val sides = createCyclewaySides(tags, false)
+    // has no cycleway tagging
+    if (sides == null) return false
+    // any cycleway tagging is not known: don't mess with that
+    if (sides.any { it.cycleway.isUnknown }) return false
+    // has any invalid cycleway tags
+    if (sides.any { it.cycleway.isInvalid }) return true
+    // or it is older than x years
+    if (olderThan4Years.matches(this)) return true
+    // has any ambiguous cycleway tags
+    if (countryInfo != null) {
+        if (sides.any { it.cycleway.isAmbiguous(countryInfo) }) return true
+    } else {
+        if (sides.any { it.cycleway == UNSPECIFIED_SHARED_LANE }) return true
+        // for this, a countryCode is necessary, thus return null if no country code is available
+        if (sides.any { it.cycleway == UNSPECIFIED_LANE }) return null
+    }
+    return false
+}
 
 private const val PREF_CYCLEWAY_DISTANCE = "qs_AddCycleway_distance"

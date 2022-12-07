@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.shoulder
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ANYTHING_UNPAVED
@@ -66,7 +67,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
 
     override fun createForm() = AddShoulderForm()
 
-    override fun applyAnswerTo(answer: ShoulderSides, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ShoulderSides, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["shoulder"] = answer.osmValue
     }
 }

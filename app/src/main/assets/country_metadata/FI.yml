@@ -5,6 +5,7 @@ clothesContainerOperators: [UFF, Rinki, HSY, Rosk'n roll, Rinki Oy, Fida, Suomen
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

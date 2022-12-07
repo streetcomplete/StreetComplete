@@ -584,7 +584,7 @@
                 },
                 "contact/webcam": {
                     "label": "adresse de visioconférence",
-                    "placeholder": "http://example.com/"
+                    "placeholder": "http://exemple.com/"
                 },
                 "content": {
                     "label": "Contenu"
@@ -666,7 +666,11 @@
                     }
                 },
                 "crossing": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "traffic_signals": "Passage avec feux de signalisation",
+                        "unmarked": "Pas de marquage routiers ni de feux de signalisation"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "Bras de barrière",
@@ -686,6 +690,14 @@
                 },
                 "crossing/light": {
                     "label": "Lumières"
+                },
+                "crossing/markings": {
+                    "options": {
+                        "no": "Non marqué",
+                        "pictograms": "Pictogrammes peints",
+                        "surface": "Traitement de surface uniquement",
+                        "zebra": "Barres longitudinales"
+                    }
                 },
                 "crossing_raised": {
                     "label": "Relevé",
@@ -2124,13 +2136,16 @@
                     "placeholder": "+33 1 23 45 67 89",
                     "terms": "téléphone,numéro de téléphone"
                 },
+                "pipeline": {
+                    "label": "Type"
+                },
                 "piste/difficulty": {
                     "label": "Difficulté",
                     "options": {
                         "advanced": "Avancé",
                         "easy": "Facile",
                         "expert": "Expert",
-                        "extreme": "Extrème",
+                        "extreme": "Extrême",
                         "freeride": "Hors-piste",
                         "intermediate": "Intermédiaire",
                         "novice": "Débutant"
@@ -2905,6 +2920,16 @@
                         "transmission": "Transport à haute tension"
                     }
                 },
+                "substation_pipeline": {
+                    "label": "Type",
+                    "options": {
+                        "distribution": "Distribution régionale",
+                        "industrial": "Industriel",
+                        "measurement": "Mesures",
+                        "minor_distribution": "Distribution locale",
+                        "valve": "Valve"
+                    }
+                },
                 "supervised": {
                     "label": "Supervisé par un agent",
                     "terms": "supervisé,gardé,surveillé"
@@ -3077,6 +3102,10 @@
                 "tower/construction": {
                     "label": "Type de tour, de pylône",
                     "placeholder": "Aubans, treillis, dissimulée, …"
+                },
+                "tower/platforms": {
+                    "label": "Plateformes",
+                    "placeholder": "1, 2, 3..."
                 },
                 "tower/type": {
                     "label": "Fonction"
@@ -3334,16 +3363,12 @@
                     "placeholder": "10 000, 20 000, 30 000…",
                     "terms": "volume,contenance,litre"
                 },
-                "water_volume": {
-                    "label": "Volume du réservoir d'eau (m³)",
-                    "terms": "volume,réserve"
-                },
                 "waterway": {
                     "label": "Type"
                 },
                 "website": {
                     "label": "Site Web",
-                    "placeholder": "https://exemple.com",
+                    "placeholder": "https://exemple.com/",
                     "terms": "site web,site internet,web,internet,site,page web,page internet,url,uri"
                 },
                 "wetland": {
@@ -3383,7 +3408,7 @@
                 },
                 "wikimedia_commons": {
                     "label": "Page Wikimedia Commons",
-                    "placeholder": "File:Example.jpg",
+                    "placeholder": "File:Exemple.jpg",
                     "terms": "wikimedia,wikimédia"
                 },
                 "wikipedia": {
@@ -3782,7 +3807,7 @@
                 },
                 "amenity/driving_school": {
                     "name": "Auto-école",
-                    "terms": "auto-école,école de conduite,auto ecole,ecole de conduite,code de la route,permis de conduire,driving school"
+                    "terms": "auto-école,école de conduite,auto ecole,ecole de conduite,code de la route,permis de conduire,driving school,moto école,moto-école"
                 },
                 "amenity/embassy": {
                     "name": "Ambassade"
@@ -3797,7 +3822,7 @@
                 },
                 "amenity/fast_food": {
                     "name": "Restauration rapide",
-                    "terms": "fast food,restauration rapide,service au comptoir,vente à emporter,à emporter,a emporter,burger,sandwich,kebab,panini,tacos"
+                    "terms": "fast food,restauration rapide,service au comptoir,vente à emporter,à emporter,a emporter,burger,sandwich,kebab,kébab,panini,tacos"
                 },
                 "amenity/fast_food/burger": {
                     "name": "Fast food de burger",
@@ -4620,6 +4645,9 @@
                 "barrier/border_control": {
                     "name": "Poste-frontière",
                     "terms": "poste-frontière,poste frontiere,contrôle à la frontière,contrôle aux frontières,point de contrôle à une frontière,controle,border control"
+                },
+                "barrier/bump_gate": {
+                    "name": "Barrière pendulaire"
                 },
                 "barrier/bus_trap": {
                     "name": "Entrée de voie de bus (Allemagne)"
@@ -5551,8 +5579,7 @@
                     "name": "Passage piéton"
                 },
                 "highway/crossing/marked": {
-                    "name": "Passage piéton marqué",
-                    "terms": "zebra,marquage,passage piéton"
+                    "name": "Passage piéton marqué"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Passage piéton avec Feux piétons",
@@ -5584,8 +5611,7 @@
                     "terms": "passage cycliste,passage piéton,passage clouté"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "Passage cycliste marqué",
-                    "terms": "passage cycliste,passage piéton,passage clouté"
+                    "name": "Passage cycliste marqué"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "Passage cycliste non marqué",
@@ -5628,27 +5654,30 @@
                 "highway/footway/crossing": {
                     "name": "Passage piéton"
                 },
+                "highway/footway/crossing/marked": {
+                    "name": "Passage piéton marqué"
+                },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "Passage piéton avec feu de signalisation"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "Passage piéton marqué"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "Passage piéton non marqué"
+                },
+                "highway/footway/crossing/zebra": {
+                    "name": "Passage piéton marqué"
+                },
                 "highway/footway/informal": {
                     "name": "Chemin piéton informel"
-                },
-                "highway/footway/marked": {
-                    "name": "Passage piéton marqué",
-                    "terms": "zebra,marquage,passage piéton"
                 },
                 "highway/footway/sidewalk": {
                     "name": "Trottoir",
                     "terms": "trottoir"
                 },
-                "highway/footway/traffic_signals": {
-                    "name": "Passage piéton avec feu de signalisation",
-                    "terms": "signalisation piétonnière,piéton,passage piéton,feux de signalisation"
-                },
-                "highway/footway/unmarked": {
-                    "name": "Passage piéton non marqué",
-                    "terms": "passage piéton non marqué"
-                },
-                "highway/footway/zebra": {
-                    "name": "Passage piéton marqué"
+                "highway/footway/traffic_island": {
+                    "name": "Île de refuge"
                 },
                 "highway/give_way": {
                     "name": "Cédez-le-passage",
@@ -6747,10 +6776,6 @@
                     "name": "Pipeline souterrain",
                     "terms": "pipeline,pétrole,gaz naturel,eau,égouts,gazoduc,oléoduc"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "Valve sur un pipeline",
-                    "terms": "pipeline,gazoduc,oléoduc"
-                },
                 "man_made/planter": {
                     "name": "Jardinière"
                 },
@@ -6816,6 +6841,9 @@
                 "man_made/tower/defensive": {
                     "name": "Tour fortifiée",
                     "terms": "tour fortifiée,tour de chateau,tour de château,défense,tour défensive"
+                },
+                "man_made/tower/diving": {
+                    "name": "Plongeoir"
                 },
                 "man_made/tower/minaret": {
                     "name": "Minaret",
@@ -7034,6 +7062,9 @@
                     "name": "Rangée d'arbres",
                     "terms": "rangée d'arbres,alignement d'arbres,arbres alignés"
                 },
+                "natural/tree_stump": {
+                    "name": "Souche d'arbre"
+                },
                 "natural/valley": {
                     "name": "Vallée",
                     "terms": "vallée,canyon,gorge"
@@ -7249,7 +7280,7 @@
                     "terms": "registre d'état civil"
                 },
                 "office/government/tax": {
-                    "name": "Bureau des impôts",
+                    "name": "Centre des impôts",
                     "terms": "bureau des impôts"
                 },
                 "office/guide": {
@@ -8039,7 +8070,7 @@
                 },
                 "shop/beauty": {
                     "name": "Salon de beauté",
-                    "terms": "salon de beauté,institut de beauté"
+                    "terms": "salon de beauté,institut de beauté,épilation"
                 },
                 "shop/beauty/nails": {
                     "name": "Manucure",
@@ -8081,7 +8112,7 @@
                     "terms": "brasserie,brasseur"
                 },
                 "shop/butcher": {
-                    "name": "Boucher",
+                    "name": "Boucherie",
                     "terms": "boucherie,charcuterie,charcutier,boucher"
                 },
                 "shop/camera": {
@@ -8321,7 +8352,7 @@
                 },
                 "shop/hairdresser": {
                     "name": "Salon de coiffure",
-                    "terms": "coiffeur"
+                    "terms": "coiffeur,barbier"
                 },
                 "shop/hairdresser_supply": {
                     "name": "Magasin de matériel de coiffure",

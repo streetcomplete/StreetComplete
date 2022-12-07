@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -18,8 +19,8 @@ import de.westnordost.streetcomplete.osm.estimateParkingOffRoadWidth
 import de.westnordost.streetcomplete.osm.estimateRoadwayWidth
 import de.westnordost.streetcomplete.osm.guessRoadwayWidth
 import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
+import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
 import de.westnordost.streetcomplete.quests.numberSelectionDialog
@@ -106,72 +107,64 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
 
     override fun createForm() = AddSidewalkForm()
 
-    override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: LeftAndRightSidewalk, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(maybeSeparatelyMappedSidewalksFilter)
 
-    companion object {
-        // streets that may have sidewalk tagging
-        private val roadsFilter by lazy { """
-            ways with
-              (
-                (
-                  highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
-                  and motorroad != yes
-                  and foot != no
-                )
-                or
-                (
-                  highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
-                  and (foot ~ yes|designated or bicycle ~ yes|designated)
-                )
-              )
-              and area != yes
-              and access !~ private|no
-        """.toElementFilterExpression() }
+    // streets that may have sidewalk tagging
+    private val roadsFilter by lazy { """
+        ways with
+          (
+            (
+              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+              and motorroad != yes
+              and expressway != yes
+              and foot != no
+            )
+            or
+            (
+              highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+              and (foot ~ yes|designated or bicycle ~ yes|designated)
+            )
+          )
+          and area != yes
+          and access !~ private|no
+    """.toElementFilterExpression() }
 
-    }
-
-        // streets that do not have sidewalk tagging yet
-        /* the filter additionally filters out ways that are unlikely to have sidewalks:
-         *
-         * + unpaved roads
-         * + roads that are probably not developed enough to have sidewalk (i.e. country roads)
-         * + roads with a very low speed limit
-         * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
-         *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
-         *   cycleway is separate, the sidewalk is too for sure
-        * */
-        private val untaggedRoadsFilter by lazy { """
-            ways with
-              highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
-              and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
-              and (!maxspeed or maxspeed > 9)
-              and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
-              and (
-                lit = yes
-                or highway = residential
-                or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
-                or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
-              )
-              and foot != use_sidepath
-              and bicycle != use_sidepath
-              and bicycle:backward != use_sidepath
-              and bicycle:forward != use_sidepath
-              and cycleway != separate
-              and cycleway:left != separate
-              and cycleway:right != separate
-              and cycleway:both != separate
-        """.toElementFilterExpression() }
-
-    private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
-        val sides = createSidewalkSides(tags) ?: return false
-        if (sides.any { it == INVALID || it == null }) return true
-        return false
-    }
+    // streets that do not have sidewalk tagging yet
+    /* the filter additionally filters out ways that are unlikely to have sidewalks:
+     *
+     * + unpaved roads
+     * + roads that are probably not developed enough to have sidewalk (i.e. country roads)
+     * + roads with a very low speed limit
+     * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
+     *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
+     *   cycleway is separate, the sidewalk is too for sure
+    * */
+    private val untaggedRoadsFilter by lazy { """
+        ways with
+          highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
+          and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
+          and (!maxspeed or maxspeed > 9)
+          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+          and (
+            lit = yes
+            or highway = residential
+            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
+            or (foot ~ yes|designated and highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link)
+          )
+          and foot != use_sidepath
+          and bicycle != use_sidepath
+          and bicycle:backward != use_sidepath
+          and bicycle:forward != use_sidepath
+          and cycleway != separate
+          and cycleway:left != separate
+          and cycleway:right != separate
+          and cycleway:both != separate
+    """.toElementFilterExpression() }
 
     override val hasQuestSettings = true
 
@@ -196,8 +189,11 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
             .create()
 }
 
-private fun LeftAndRightSidewalk.any(block: (sidewalk: Sidewalk?) -> Boolean): Boolean =
-    block(left) || block(right)
+private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
+    val sides = createSidewalkSides(tags) ?: return false
+    if (sides.any { it == INVALID || it == null }) return true
+    return false
+}
 
 private val ROADS_WITH_SIDEWALK = arrayOf(
     "motorway","motorway_link","trunk","trunk_link","primary","primary_link","secondary",

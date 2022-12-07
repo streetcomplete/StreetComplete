@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.show_poi
 
 import android.content.Context
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.questPrefix
@@ -27,7 +28,7 @@ class ShowFixme : OsmFilterQuestType<Boolean>() {
     override fun getTitleArgs(tags: Map<String, String>): Array<String>
         = arrayOf((tags["fixme"] ?: tags["FIXME"]).toString())
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (!answer) {
             tags.remove("fixme")
             tags.remove("FIXME")

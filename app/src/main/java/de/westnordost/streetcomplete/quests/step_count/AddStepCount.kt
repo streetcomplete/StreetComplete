@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.step_count
 import android.content.Context
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -47,7 +48,7 @@ class AddStepCount : OsmElementQuestType<Int> {
 
     override fun createForm() = AddStepCountForm()
 
-    override fun applyAnswerTo(answer: Int, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["step_count"] = answer.toString()
     }
 

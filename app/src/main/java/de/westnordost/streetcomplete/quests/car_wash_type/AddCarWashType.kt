@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -20,7 +21,7 @@ class AddCarWashType : OsmFilterQuestType<List<CarWashType>>() {
 
     override fun createForm() = AddCarWashTypeForm()
 
-    override fun applyAnswerTo(answer: List<CarWashType>, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: List<CarWashType>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val isAutomated = answer.contains(AUTOMATED)
         tags["automated"] = isAutomated.toYesNo()
 

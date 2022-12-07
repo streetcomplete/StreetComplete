@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -40,6 +41,6 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
 
     override fun createForm() = AddBarrierTypeForm()
 
-    override fun applyAnswerTo(answer: BarrierType, tags: Tags, timestampEdited: Long) =
+    override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)
 }

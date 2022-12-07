@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bench_material
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -30,7 +31,7 @@ class AddBenchMaterial : OsmFilterQuestType<BenchMaterial>() {
 
     override fun createForm() = AddBenchMaterialForm()
 
-    override fun applyAnswerTo(answer: BenchMaterial, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: BenchMaterial, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer == BenchMaterial.PICNIC) {
             tags.remove("amenity")
             tags["leisure"] = "picnic_table"

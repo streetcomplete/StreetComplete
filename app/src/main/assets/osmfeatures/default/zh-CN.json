@@ -424,6 +424,9 @@
                     "label": "建筑物",
                     "terms": "建筑物,建筑,结构,房子"
                 },
+                "building_area_yes": {
+                    "label": "建筑"
+                },
                 "bunker_type": {
                     "label": "类型"
                 },
@@ -615,7 +618,30 @@
                     }
                 },
                 "crop": {
-                    "label": "作物"
+                    "label": "作物",
+                    "options": {
+                        "coffee": "咖啡",
+                        "cotton": "棉花",
+                        "cranberries": "蔓越莓",
+                        "fast_growing_wood": "短轮伐期矮林",
+                        "flowers": "花卉",
+                        "grape": "葡萄",
+                        "hop": "啤酒花",
+                        "lavender": "薰衣草",
+                        "maize": "玉米",
+                        "potato": "马铃薯",
+                        "rape": "油菜",
+                        "rice": "稻",
+                        "soy": "大豆",
+                        "strawberry": "草莓",
+                        "sugar_beet": "甜菜",
+                        "sugarcane": "甘蔗",
+                        "sunflower": "向日葵",
+                        "tea": "茶",
+                        "tobacco": "烟草",
+                        "vegetable": "蔬菜",
+                        "wheat": "小麦"
+                    }
                 },
                 "crossing": {
                     "label": "类型"
@@ -1162,14 +1188,20 @@
                     "terms": "性别"
                 },
                 "generator/method": {
-                    "label": "模式"
+                    "label": "模式",
+                    "options": {
+                        "thermal": "太阳热能"
+                    }
                 },
                 "generator/output/electricity": {
                     "label": "电力输出",
                     "placeholder": "50 MW, 100 MW, 200 MW..."
                 },
                 "generator/source": {
-                    "label": "来源"
+                    "label": "来源",
+                    "options": {
+                        "solar": "太阳辐射"
+                    }
                 },
                 "generator/type": {
                     "label": "类型"
@@ -2959,9 +2991,6 @@
                     "label": "Volume (Liters)",
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "容量（升）"
-                },
-                "water_volume": {
-                    "label": "蓄水量 (m³)"
                 },
                 "waterway": {
                     "label": "类型"
@@ -5001,8 +5030,7 @@
                     "name": "路口"
                 },
                 "highway/crossing/marked": {
-                    "name": "人行横道 (有标线)",
-                    "terms": "人行横道,斑马线"
+                    "name": "人行横道 (有标线)"
                 },
                 "highway/crossing/unmarked": {
                     "name": "人行横道 (无标线)",
@@ -5027,8 +5055,7 @@
                     "terms": "自行车,步行,人行,过街,横道"
                 },
                 "highway/cycleway/crossing/marked": {
-                    "name": "自行车横道 (有标线)",
-                    "terms": "自行车横道,自行车横道线,自行车路口,单车横道线,单车路口"
+                    "name": "自行车横道 (有标线)"
                 },
                 "highway/cycleway/crossing/unmarked": {
                     "name": "自行车横道 (无标线)",
@@ -5060,20 +5087,9 @@
                 "highway/footway/crossing": {
                     "name": "人行横道"
                 },
-                "highway/footway/marked": {
-                    "name": "人行横道 (有标线)",
-                    "terms": "人行横道,斑马线"
-                },
                 "highway/footway/sidewalk": {
                     "name": "人行道",
                     "terms": "人行道,人行通道,路缘,路边,路牙,盲道"
-                },
-                "highway/footway/unmarked": {
-                    "name": "人行横道 (无标线)",
-                    "terms": "人行横道"
-                },
-                "highway/footway/zebra": {
-                    "name": "人行横道 (有标线)"
                 },
                 "highway/give_way": {
                     "name": "让行标志",
@@ -6043,10 +6059,6 @@
                     "name": "地下管道",
                     "terms": "管,管道,管路,管线,输油,输气,水管,污水,下水道"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "管道阀",
-                    "terms": "管道阀,阀门,石油,天然气,水,下水道,污水"
-                },
                 "man_made/pumping_station": {
                     "name": "泵站",
                     "terms": "泵站,泵房,水泵,抽水站,扬水站"
@@ -6796,11 +6808,19 @@
                 "power/plant/source/hydro": {
                     "name": "水力发电厂"
                 },
+                "power/plant/source/method/photovoltaic": {
+                    "name": "光伏发电厂",
+                    "terms": "太阳能,电,光伏"
+                },
                 "power/plant/source/nuclear": {
                     "name": "核能发电厂"
                 },
                 "power/plant/source/oil": {
                     "name": "燃油发电厂"
+                },
+                "power/plant/source/solar": {
+                    "name": "太阳能发电厂",
+                    "terms": "太阳能,发电,电厂,电站"
                 },
                 "power/plant/source/waste": {
                     "name": "垃圾焚烧发电厂"

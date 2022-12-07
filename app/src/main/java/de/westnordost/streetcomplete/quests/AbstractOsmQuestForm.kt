@@ -48,6 +48,7 @@ import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.add
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -89,8 +90,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
 
     // overridable by child classes
-    open val otherAnswers = listOf<AnswerItem>()
-    open val buttonPanelAnswers = listOf<AnswerItem>()
+    open val otherAnswers = listOf<IAnswerItem>()
+    open val buttonPanelAnswers = listOf<IAnswerItem>()
 
     interface Listener { // this is also used in AbstractOtherQuestForm for convenience
         /** The GPS position at which the user is displayed at */
@@ -160,8 +161,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
     }
 
-    private fun assembleOtherAnswers(): List<AnswerItem> {
-        val answers = mutableListOf<AnswerItem>()
+    private fun assembleOtherAnswers(): List<IAnswerItem> {
+        val answers = mutableListOf<IAnswerItem>()
 
         if (TagEditor.showingTagEditor) {
             // only allow few of the quest specific other answers in tag edit mode
@@ -207,7 +208,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         for (i in answers.indices) {
             val otherAnswer = answers[i]
             val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.titleResourceId)
+            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
         }
         popup.show()
 
@@ -268,7 +269,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         viewLifecycleScope.launch {
             if (TagEditor.showingTagEditor) {
                 val changesBuilder = StringMapChangesBuilder(element.tags)
-                osmElementQuestType.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
+                osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
                 TagEditor.changes = changesBuilder.create()
             } else
                 solve(UpdateElementTagsAction(createQuestChanges(answer)))
@@ -277,7 +278,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createQuestChanges(answer: T): StringMapChanges {
         val changesBuilder = StringMapChangesBuilder(element.tags)
-        osmElementQuestType.applyAnswerTo(answer, changesBuilder, element.timestampEdited)
+        osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
         val changes = changesBuilder.create()
         require(!changes.isEmpty()) {
             "${osmElementQuestType.name} was answered by the user but there are no changes!"

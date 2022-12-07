@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -51,7 +52,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
-    override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmValue != null) {
             tags.remove("crossing:chicane")
             tags.updateWithCheckDate("crossing:barrier", answer.osmValue)

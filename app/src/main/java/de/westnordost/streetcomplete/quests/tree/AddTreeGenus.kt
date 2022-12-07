@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.tree
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -29,7 +30,7 @@ class AddTreeGenus : OsmFilterQuestType<Tree>() {
 
     override val isDeleteElementEnabled = true
 
-    override fun applyAnswerTo(answer: Tree, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Tree, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.isSpecies)
             tags["species"] = answer.name
         else

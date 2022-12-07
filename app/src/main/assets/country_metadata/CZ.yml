@@ -6,6 +6,7 @@ clothesContainerOperators: [Textileco, Služby města Český Krumlov s.r.o., SA
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
 hasLivingStreet: true
 hasSlowZone: true
 isUsuallyAnyGlassRecyclableInContainers: true

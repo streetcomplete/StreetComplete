@@ -415,7 +415,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_religion_chinese_folk">"Chinesischer Volksglaube"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Schrein an?"</string>
     <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
-    <string name="quest_cycleway_value_lane_soft">"Schutzstreifen (gestrichelte Linie)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pflaster aus unbehauenem Stein"</string>
     <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit …"</string>
@@ -428,7 +427,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_bicycle_parking_type_locker">"Schließfächer"</string>
     <string name="quest_bicycle_parking_type_building">"Gebäude"</string>
     <string name="quest_bicycle_parking_type_title">"Was für ein Fahrradstellplatz ist das?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"Mehrzweckstreifen"</string>
 
     <!-- @FloEdelmann: Briefkasten ist das was man an der Haustür hat. Postkasten ist der gelbe von der Post. -->
     <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
@@ -1435,4 +1433,29 @@ sorted alphabetically by title -->
     <string name="confirmation_replace_shop_message">"In diesem Fall werden auch Details wie Öffnungszeiten, Kontaktinformationen, etc. geändert worden sein."</string>
     <string name="confirmation_replace_shop_yes">"Jetzt ein anderer Ort"</string>
     <string name="confirmation_replace_shop_no">"Noch der gleiche Ort"</string>
+    <string name="move_node">"An leicht anderer Stelle…"</string>
+    <string name="quest_move_node_message">"Du kannst die Position korrigieren, indem Du es verschiebst.
+Jetzt verschieben?"</string>
+    <string name="node_moved_not_far_enough">"Zu wenig verschoben"</string>
+    <string name="node_moved_too_far">"Zu weit verschoben. Verfasse stattdessen eine Notiz"</string>
+    <string name="node_moved">"Verschoben um %s"</string>
+    <string name="move_node_description">"Verschiebe die Karte um den Ort an die richtige Stelle zu verschieben. Nutze die Zoom-Funktion um so präzise wie möglich zu sein. Bitte sei Dir bewusst, dass deine eigene Position weniger exakt sein könnte als Dir angezeigt wird."</string>
+    <string name="move_node_action_description">"Du hast den Punkt verschoben"</string>
+    <string name="quest_cycleway_value_shoulder">"Keiner, aber Seitenstreifen für Radverkehr nutzbar"</string>
+    <string name="quest_placeName_no_name_answer">"Es gibt kein Schild für den Namen"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Diese Breite sieht implausibel aus. Nicht vergessen: Hier soll die Breite von Bordstein zu Bordstein angegeben werden, also inklusive Parkstreifen, Radfahrstreifen usw."</string>
+    <string name="overlay_cycleway">"Fahrradwege"</string>
+    <string name="bicycle_boulevard_is_a">"Es ist eine %1$s"</string>
+    <string name="bicycle_boulevard_is_not_a">"Es ist keine %1$s"</string>
+    <string name="bicycle_boulevard">"Fahrradstraße"</string>
+    <string name="separate_cycleway_no">"Kein Radverkehr"</string>
+    <string name="separate_cycleway_allowed">"Radverkehr ist erlaubt"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nicht für Radverkehr ausgewiesen (egal ob erlaubt oder nicht)"</string>
+    <string name="separate_cycleway_non_segregated">"Ausgewiesener gemeinsamer Fuß- und Radweg"</string>
+    <string name="separate_cycleway_segregated">"Getrennter Rad- und Fußweg"</string>
+    <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
+    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg, der einen Bürgersteig für Fußverkehr hat (mit Bordstein)"</string>
+    <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
+    <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
+    <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite die umgedreht werden soll"</string>
 </resources>

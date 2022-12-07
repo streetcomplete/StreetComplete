@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.crossing_type
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -63,7 +64,7 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
 
     override fun createForm() = AddCrossingTypeForm()
 
-    override fun applyAnswerTo(answer: CrossingType, tags: Tags, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: CrossingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val crossingValue = tags["crossing"]
         val isAndWasMarked = answer == CrossingType.MARKED && crossingValue in listOf("zebra", "marked", "uncontrolled")
         /* don't change the tag value of the synonyms for "marked" because it is something of a

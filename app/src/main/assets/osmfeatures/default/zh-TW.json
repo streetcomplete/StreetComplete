@@ -670,7 +670,12 @@
                     }
                 },
                 "crossing": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "traffic_signals": "有紅綠燈的行人穿越道",
+                        "uncontrolled": "僅道路標誌",
+                        "unmarked": "無道路標誌或紅綠燈"
+                    }
                 },
                 "crossing/barrier": {
                     "label": "起落欄柵",
@@ -690,6 +695,27 @@
                 },
                 "crossing/light": {
                     "label": "燈號"
+                },
+                "crossing/markings": {
+                    "label": "行人穿越道標誌",
+                    "options": {
+                        "dashes": "橫向虛線",
+                        "dots": "點狀虛線",
+                        "ladder": "帶有縱向桿狀標誌的梯狀線",
+                        "ladder:paired": "帶有成對縱向桿狀標誌的梯狀線",
+                        "ladder:skewed": "帶有斜向桿狀標誌的梯狀線",
+                        "lines": "橫向線",
+                        "lines:paired": "雙重橫向線",
+                        "no": "無標記",
+                        "pictograms": "彩繪象形圖示",
+                        "surface": "僅表面處理",
+                        "yes": "以某種方式標記",
+                        "zebra": "斑馬線",
+                        "zebra:bicolour": "帶有交替顏色的斑馬線",
+                        "zebra:double": "從中間分開的斑馬線",
+                        "zebra:paired": "成對的斑馬線"
+                    },
+                    "terms": "行人穿越道標記"
                 },
                 "crossing_raised": {
                     "label": "交通寧靜區",
@@ -847,7 +873,8 @@
                     "terms": "敘述,描述"
                 },
                 "design": {
-                    "label": "設計"
+                    "label": "設計",
+                    "terms": "設計"
                 },
                 "destination": {
                     "label": "目的地"
@@ -1270,7 +1297,7 @@
                         "photovoltaic": "太陽能發電",
                         "run-of-the-river": "川流式發電",
                         "stream": "海流能",
-                        "thermal": "太陽能集熱器",
+                        "thermal": "太陽熱能",
                         "water-pumped-storage": "抽水蓄能電站",
                         "water-storage": "水輪機",
                         "wind_turbine": "風力發電機"
@@ -1295,7 +1322,7 @@
                         "hydro": "水電",
                         "nuclear": "核能",
                         "oil": "油",
-                        "solar": "太陽能",
+                        "solar": "太陽輻射能",
                         "tidal": "潮汐能",
                         "waste": "廢棄物",
                         "wave": "波浪能",
@@ -1444,6 +1471,10 @@
                 "height": {
                     "label": "高度 (公尺)",
                     "terms": "高度 (m)"
+                },
+                "height/hub": {
+                    "label": "渦輪高度（公尺）",
+                    "terms": "渦輪高度（公尺）"
                 },
                 "height_building": {
                     "label": "建築物高度（公尺）",
@@ -2136,6 +2167,9 @@
                     "placeholder": "+31 42 123 4567",
                     "terms": "電話,話亭,電話亭"
                 },
+                "pipeline": {
+                    "label": "類型"
+                },
                 "piste/difficulty": {
                     "label": "難度",
                     "options": {
@@ -2502,6 +2536,10 @@
                 },
                 "rooms": {
                     "label": "房間數"
+                },
+                "rotor/diameter": {
+                    "label": "轉子直徑（公尺）",
+                    "terms": "轉子直徑（公尺）"
                 },
                 "roundtrip": {
                     "label": "組成迴圈",
@@ -2882,6 +2920,14 @@
                     "placeholder": "未知種類",
                     "terms": "結構"
                 },
+                "structure_power": {
+                    "label": "人造結構物",
+                    "options": {
+                        "lattice": "格狀",
+                        "solid": "堅實",
+                        "tubular": "管狀"
+                    }
+                },
                 "structure_waterway": {
                     "label": "結構體",
                     "options": {
@@ -2915,6 +2961,21 @@
                         "traction": "牽引變電所",
                         "transition": "地上/地下轉換變電站",
                         "transmission": "輸電變電所"
+                    }
+                },
+                "substation_pipeline": {
+                    "label": "類型",
+                    "options": {
+                        "compression": "壓縮變電站",
+                        "distribution": "配電站",
+                        "field_gathering": "集氣",
+                        "industrial": "工業",
+                        "inspection_gauge": "檢查儀表",
+                        "measurement": "測量",
+                        "minor_distribution": "小型配電站",
+                        "transmission": "輸電變電站",
+                        "valve": "閥門",
+                        "valve_group": "閥門組"
                     }
                 },
                 "supervised": {
@@ -3090,6 +3151,10 @@
                 "tower/construction": {
                     "label": "建材",
                     "placeholder": "拉線、鋼格、偽裝、..."
+                },
+                "tower/platforms": {
+                    "label": "平台",
+                    "placeholder": "1, 2, 3..."
                 },
                 "tower/type": {
                     "label": "類型"
@@ -3347,10 +3412,6 @@
                     "label": "容積（公升）",
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "容量,公升數"
-                },
-                "water_volume": {
-                    "label": "儲水量（立方公尺）",
-                    "terms": "儲水容量 (m³),儲水容量 (立方公尺)"
                 },
                 "waterway": {
                     "label": "種類"
@@ -5574,15 +5635,15 @@
                     "name": "穿越道"
                 },
                 "highway/crossing/marked": {
-                    "name": "標記人行穿越道",
-                    "terms": "有斑馬線穿越道"
+                    "name": "標記人行穿越道"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "有行人燈號的十字路口",
                     "terms": "有行人燈號的十字路口"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "標記人行穿越道"
+                    "name": "標記人行穿越道",
+                    "terms": "有斑馬線穿越道"
                 },
                 "highway/crossing/unmarked": {
                     "name": "無標記人行穿越道",
@@ -5607,6 +5668,13 @@
                     "terms": "自行車與行人穿越道"
                 },
                 "highway/cycleway/crossing/marked": {
+                    "name": "有標記的單車穿越道"
+                },
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "有紅綠燈的單車穿越道",
+                    "terms": "有紅綠燈的單車穿越道"
+                },
+                "highway/cycleway/crossing/uncontrolled": {
                     "name": "有標記的單車穿越道",
                     "terms": "有標記的腳踏車穿越道"
                 },
@@ -5653,27 +5721,34 @@
                 "highway/footway/crossing": {
                     "name": "行人穿越道"
                 },
+                "highway/footway/crossing/marked": {
+                    "name": "有標記人行穿越道"
+                },
+                "highway/footway/crossing/traffic_signals": {
+                    "name": "有行人燈號的十字路口",
+                    "terms": "有行人燈號的十字路口"
+                },
+                "highway/footway/crossing/uncontrolled": {
+                    "name": "有標記人行穿越道",
+                    "terms": "有標記人行穿越道"
+                },
+                "highway/footway/crossing/unmarked": {
+                    "name": "無標記人行穿越道",
+                    "terms": "無標記人行穿越道"
+                },
+                "highway/footway/crossing/zebra": {
+                    "name": "有標記人行穿越道"
+                },
                 "highway/footway/informal": {
                     "name": "非正式的步行路徑"
-                },
-                "highway/footway/marked": {
-                    "name": "有標記人行穿越道",
-                    "terms": "有斑馬線穿越道"
                 },
                 "highway/footway/sidewalk": {
                     "name": "路邊人行道",
                     "terms": "人行道"
                 },
-                "highway/footway/traffic_signals": {
-                    "name": "有行人燈號的十字路口",
-                    "terms": "有行人燈號的十字路口"
-                },
-                "highway/footway/unmarked": {
-                    "name": "無標記人行穿越道",
-                    "terms": "無斑馬線穿越道"
-                },
-                "highway/footway/zebra": {
-                    "name": "標記人行穿越道"
+                "highway/footway/traffic_island": {
+                    "name": "安全島",
+                    "terms": "安全島"
                 },
                 "highway/give_way": {
                     "name": "通行標誌",
@@ -6435,6 +6510,10 @@
                     "name": "加加球坑",
                     "terms": "加加球坑"
                 },
+                "leisure/pitch/handball": {
+                    "name": "團隊手球場",
+                    "terms": "團隊手球場,手球場"
+                },
                 "leisure/pitch/horseshoes": {
                     "name": "馬蹄鐵坑",
                     "terms": "馬蹄鐵坑"
@@ -6649,6 +6728,14 @@
                     "name": "起重機",
                     "terms": "起重機"
                 },
+                "man_made/crane/gantry_crane": {
+                    "name": "高架起重機",
+                    "terms": "高架起重機,跨越式起重機,高架式起重機,支架式起重機,門型起重機"
+                },
+                "man_made/crane/portal_crane": {
+                    "name": "跨式起重機",
+                    "terms": "跨式起重機,龍門型起重機,門式起重機,門形起重機,龍門起重機"
+                },
                 "man_made/cross": {
                     "name": "十字架",
                     "terms": "十字架"
@@ -6672,6 +6759,10 @@
                 "man_made/flagpole": {
                     "name": "旗桿",
                     "terms": "旗桿"
+                },
+                "man_made/gantry": {
+                    "name": "門架",
+                    "terms": "門架"
                 },
                 "man_made/gasometer": {
                     "name": "煤氣鼓",
@@ -6777,10 +6868,6 @@
                     "name": "地下管線",
                     "terms": "地下水管"
                 },
-                "man_made/pipeline/valve": {
-                    "name": "管道閥門",
-                    "terms": "管道閥門"
-                },
                 "man_made/planter": {
                     "name": "花盆",
                     "terms": "花盆"
@@ -6847,6 +6934,10 @@
                 "man_made/tower/defensive": {
                     "name": "守衛塔",
                     "terms": "槍塔,衛塔"
+                },
+                "man_made/tower/diving": {
+                    "name": "跳水平台",
+                    "terms": "跳水平台"
                 },
                 "man_made/tower/minaret": {
                     "name": "尖塔",
@@ -7370,6 +7461,17 @@
                 "office/yes": {
                     "name": "辦公室（未指定類型）"
                 },
+                "pipeline": {
+                    "name": "管線圖徵"
+                },
+                "pipeline/substation": {
+                    "name": "管線變電站",
+                    "terms": "管線變電站"
+                },
+                "pipeline/valve": {
+                    "name": "管線閥門",
+                    "terms": "管線閥門"
+                },
                 "piste/downhill": {
                     "name": "下坡滑雪道",
                     "terms": "下坡滑雪道"
@@ -7665,8 +7767,8 @@
                     "terms": "水力發電廠"
                 },
                 "power/plant/source/method/photovoltaic": {
-                    "name": "太陽能農場",
-                    "terms": "太陽能農場"
+                    "name": "光伏發電廠",
+                    "terms": "太陽能,光伏,電"
                 },
                 "power/plant/source/nuclear": {
                     "name": "核能發電廠",
@@ -7691,6 +7793,10 @@
                 "power/pole": {
                     "name": "電線桿",
                     "terms": "電線桿"
+                },
+                "power/portal": {
+                    "name": "電力門架",
+                    "terms": "電力門架"
                 },
                 "power/substation": {
                     "name": "變電所",

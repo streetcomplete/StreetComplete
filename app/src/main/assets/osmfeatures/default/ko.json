@@ -2219,10 +2219,6 @@
                     "placeholder": "10000, 20000, 30000…",
                     "terms": "부피(리터)"
                 },
-                "water_volume": {
-                    "label": "물 저장량(m³)",
-                    "terms": "저수량(m³)"
-                },
                 "waterway": {
                     "label": "유형"
                 },
@@ -4009,21 +4005,9 @@
                 "highway/footway/crossing": {
                     "name": "횡단보도"
                 },
-                "highway/footway/marked": {
-                    "name": "횡단보도"
-                },
                 "highway/footway/sidewalk": {
                     "name": "인도",
                     "terms": "보도,보행로"
-                },
-                "highway/footway/traffic_signals": {
-                    "name": "신호등이 있는 횡단보도"
-                },
-                "highway/footway/unmarked": {
-                    "name": "표시되지 않은 횡단보도"
-                },
-                "highway/footway/zebra": {
-                    "name": "횡단보도"
                 },
                 "highway/give_way": {
                     "name": "양보 표지판",
@@ -4876,9 +4860,6 @@
                 },
                 "man_made/pipeline/underground": {
                     "name": "지하 파이프라인"
-                },
-                "man_made/pipeline/valve": {
-                    "name": "파이프라인 밸브"
                 },
                 "man_made/pumping_station": {
                     "name": "펌프장",
