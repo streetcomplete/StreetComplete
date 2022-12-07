@@ -14,6 +14,7 @@ import java.time.LocalDate
 import java.util.Locale
 import java.util.TreeMap
 
+/** Get the translator credits from POEditor by extracting the information from various HTML pages*/
 open class GetTranslatorCreditsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var languageCodes: Collection<String>

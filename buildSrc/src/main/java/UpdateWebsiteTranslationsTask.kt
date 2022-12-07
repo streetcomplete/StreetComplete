@@ -5,7 +5,8 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-/** Update the metadata that contain the store descriptions for the app (for F-Droid) */
+/** Export the strings used on the streetcomplete.app website to the target directory as JSON files
+ *  */
 open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
 
     @get:Input var targetDir: String? = null
