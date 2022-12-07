@@ -18,7 +18,7 @@ import java.net.URL
  *
  *  DE.yml:
  *  popularSports: [soccer, tennis]  */
-open class GenerateMetadataByCountry : DefaultTask() {
+open class GenerateMetadataByCountryTask : DefaultTask() {
 
     @get:Input var sourceDir: String? = null
     @get:Input var targetDir: String? = null

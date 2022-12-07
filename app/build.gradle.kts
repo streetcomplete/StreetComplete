@@ -272,7 +272,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     mapStyleBranch = "jawg"
 }
 
-tasks.register<GenerateMetadataByCountry>("generateMetadataByCountry") {
+tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
     targetDir = "$projectDir/src/main/assets/country_metadata"
