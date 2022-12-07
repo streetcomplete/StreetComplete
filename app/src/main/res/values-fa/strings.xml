@@ -3,8 +3,6 @@
     <string name="action_settings">"تنظیمات"</string>
     <string name="oauth_communication_error">"سرور احراز هویت در دسترس نیست"</string>
     <string name="oauth_failed_permissions">"خطای مجوز: همهٔ مجوزهای فهرست‌شده باید داده شود"</string>
-
-    <!-- Settings screen -->
     <string name="pref_category_communication">"ارتباطات"</string>
     <string name="pref_category_display">"نمایش"</string>
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
@@ -21,15 +19,8 @@
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
     <string name="quest_leave_new_note_title">"در عوض یک یادداشت می‌گذارید؟"</string>
-
-    <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"می‌توانید در این مکان یادداشتی عمومی بگذارید تا نقشه‌کش‌های دیگر آن را حل نمایند. یا فقط این جستار را برای خودتان پنهان کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"گذاشتن یادداشت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"پنهان کن"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
     <string name="quest_streetName_description">"همان‌گونه که روی تابلوی خیابان نوشته شده، کلمات اختصاری را کامل بنویسید:"</string>
@@ -40,165 +31,57 @@
     <string name="quest_openingHours_end_time">"ساعت پایان کار"</string>
     <string name="quest_openingHours_add_months">"افزودن ماه"</string>
     <string name="quest_openingHours_add_hours">"افزودن ساعت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"افزودن روزهای هفته"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"انتخاب ماه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"انتخاب روزهای هفته"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"به عبارت دیگر، آیا شبانه‌روزی باز است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"آیا می‌توانید نکته‌ای به این یادداشت اضافه کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"نه، مخفی کن"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"ناشناس"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"ابطال ورودی؟"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"ابطال"</string>
-
-    <!-- به نظرم جُستار معادل خوبیه
-البته من واژهٔ پرسش را هم می‌پسندم -->
-    <!-- Fuzzy -->
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
-
-    <!-- Fuzzy -->
     <string name="action_upload">"بارگذاری پاسخ‌ها"</string>
-
-    <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
     <string name="no_changes">"شما هیچ پاسخی ندادید"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"بستن"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"خطا هنگام پویش جُستارها"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"خطا هنگام بارگذاری پاسخ‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="download_area_too_big">"لطفاً بیشتر بزرگنمایی کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"جستجوی کنونی را لغو می‌کنید و در عوض اینجا جستجو شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"موقعیت مکانی خاموش است. منوی تنظیمات برای روشن‌کردن آن باز شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"مجوز موقعیت مکانی برای نمایش موقعیت شما روی نقشه و پویش جُستارهای اطرافتان مورد نیاز می‌باشد."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"انتساب‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"‏ © %s Tobias Zwick و مشارکت‌کنندگان"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"صفحهٔ پروژه"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"روی گیت‌هاب"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"گزارش خطا"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"ارائه بازخورد"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"پروانه"</string>
     <string name="about_summary_license">"پروانهٔ عمومی همگانی GNU"</string>
-
-    <!-- Error messages and crash report -->
-    <!-- Fuzzy -->
     <string name="offline">"برون‌خط هستید"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"برای انتشار پاسخ‌هایتان، باید با حساب کاربری OSM خود احراز هویت کنید. اکنون انجام می‌دهید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="not_authorized">"احراز هویت نشده"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"این نسخه از برنامه بسیار قدیمی است. لطفا به‌روز کنید!"</string>
-
-    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"برای مرور خودکار جُستارهای اطراف، مکان‌نما را روشن کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"بعداً"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می‌نماید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"چیز دیگری است (یادداشت بگذارید)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"بیانیهٔ حریم شخصی"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"و استفاده از داده‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"تعطیلات عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"تعطیلات عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"پایان کار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"شبانه‌روزی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"ساعت‌ کاری منظمی ندارد…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"ساعت‌ کاری را توضیح دهید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"مختصر باشد. بهتر است از جمله‌بندی روی علائم استفاده کنید؛ مانند «با وقت قبلی». فقدان علائم لزوماً به این معنی نیست که ساعات کاری منظم ندارد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"یکی را انتخاب کنید:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"نمایش بیشتر…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"این سقف چند شکل مختلف دارد"</string>
-
-    <!-- Elements on map view -->
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"کوچک‌نمایی"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"بزرگ‌نمایی"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; آها، یکی که به حریم شخصی اهمیت می‌دهد؛ عالی! به نظر خودم که خبرهای خوبی برای شما دارم:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -218,1700 +101,599 @@
 &lt;p&gt; 
 این برنامه مستقیماً با سرورهای OSM ارتباط برقرار می‌کند.&lt;br/&gt;
 پیش از بارگذاری تغییرات شما، برنامه یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;پروندهٔ متنی ساده&lt;/a&gt; را که در سرور ما وجود دارد بررسی می‌کند تا اطمینان حاصل کند که این نسخه از برنامه برای بارگذاری تغییرات ممنوع نشده باشد. این یک اقدام احتیاطی است تا بتوانیم جلوی نسخه‌هایی از برنامه را بگیریم که مشخص شده اشکالات اساسی دارند؛ تا دادهٔ خراب به OSM نفرستند.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"روشن"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"فقط با وای‌فای"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_off">"خاموش"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"جنس سطح این قسمت از مسیر چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"روسازی‌شده (کلی)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"روسازی‌نشده (کلی)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"زمین (کلی)"</string>
     <string name="quest_surface_value_asphalt">"آسفالت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"متراکم شده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"بتن"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"خاکی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"شن ریزه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"چمنزار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"سنگفرش چمنی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"شن درشت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"سنگفرش هموار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"سنگ‌ریزه (با لبه‌های گرد)"</string>
     <string name="quest_surface_value_sand">"ماسه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"سنگفرش ناهموار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"چوب"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"آیا این خیابان پیاده‌رو دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"آیا این خیابان یکطرفه است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"شماره این ساختمان چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"برنامه نقشه‌بردار اوپن‌استریت‌مپ"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"اوپن‌استریت‌مپ را با کمک StreetComplete بهبود دهید!
 
 این برنامه نواقص نقشه را در اطراف شما پیدا می‌کند و آن‌ها را در قالب جُستارهایی روی نقشه نشان می‌دهد. هر یک از این جستارها را با رفتن به محل و پاسخ‌دادن به یک سوال ساده حل نمایید تا نقشه را روزآمد کنید.
 
 اطلاعاتی که وارد می‌کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در OSM اضافه می‌شود."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"بدون نام…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"واقعا نامی ندارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"بله، بدون نام است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"افزودن زمان ساعات کار"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"لطفاً گزارش خطا را برای سازنده ارسال کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"برنامه در آخرین تلاش دچار خطا شد!"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"ارسال ایمیل"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"هیچ برنامه‌ای برای رایانامه نصب ندارید."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"روشن‌ماندن صفحه‌نمایش"</string>
-
-    <!-- Fuzzy -->
     <string name="download_server_error">"خطای اتصال هنگام پوییدن جُستارها. بعداً دوباره تلاش کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="upload_server_error">"خطای اتصال هنگام بارگذاری پاسخ‌ها. بعداً دوباره تلاش کنید."</string>
-
-    <!-- Generic strings used in various quests -->
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"بله"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"خیر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"چند دوچرخه را می‌توان در اینجا پارک کرد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"این شماره پلاک بسیار غیرعادی به نظر می‌رسد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_title">"چه ورزشی در اینجا انجام می‌شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"هیچ ورزش خاصی انجام نمی‌شود"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"فوتبال"</string>
     <string name="quest_sport_tennis">"تنیس"</string>
     <string name="quest_sport_baseball">"بیسبال"</string>
     <string name="quest_sport_basketball">"بسکتبال"</string>
     <string name="quest_sport_golf">"گلف"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"سوارکاری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"دومیدانی"</string>
     <string name="quest_sport_volleyball">"والیبال"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"والیبال ساحلی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"فوتبال آمریکایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"اسکیت‌بورد"</string>
     <string name="quest_sport_bowls">"بولینگ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"گوی بازی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"تیراندازی"</string>
     <string name="quest_sport_cricket">"کریکت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"تنیس روی میز"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"ژیمناستیک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_archery">"تیراندازی با کمان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"فوتبال استرالیایی"</string>
     <string name="quest_sport_badminton">"بدمینتون"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"فوتبال کانادایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"هاکی روی چمن"</string>
     <string name="quest_sport_handball">"هندبال"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"هاکی روی یخ"</string>
     <string name="quest_sport_netball">"نتبال"</string>
     <string name="quest_sport_rugby">"راگبی"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"انتخاب:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"آیا این زمین ورزشی بر اساس خط‌کشی و تجهیزات موجود دقیقاً ویژهٔ این ورزش‌هاست یا یک زمین ورزشی همه‌منظوره برای انواع بازی‌هاست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"ویژهٔ این‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"همه‌منظوره"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"ورزش‌های زیادی را انتخاب کرده‌اید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"آیا استفاده از این سرویس‌بهداشتی پولی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"آیا این گذرگاه پیاده در هر دو طرف سنگفرش آجدار ویژه نابینایان دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"آیا مطمئن هستید که اینجا را در محل بررسی کرده‌اید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"فقط اطلاعاتی که در محل وجود دارد باید وارد شود."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"آیا این پارکینگ دوچرخه مسقف می‌باشد (از باران محافظت می‌شود)؟"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"تا پایان این نشست دیگر نپرس"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"به نظر می‌رسد این محدودیت سرعت درست نباشد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیتی در علائم نیامده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"آیا هر انتهای خیابان را بررسی کردید؟ اگر در کل خیابان علامتی برای بخش انتخاب‌شده وجود ندارد، محدودیت سرعت پیشفرض اعمال می‌شود."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"بله، بدون علائم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"محدودیت سرعت پیشفرض راه‌های شهری نسبت به راه‌های روستایی عدد کمتری می‌باشد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"شهری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"روستایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"اگر علامتی مانند این در تقاطع خیابان اصلی وجود دارد، علائم جداگانه‌ای در این محدوده پیدا نخواهید کرد زیرا محدودیت سرعت ذکرشده در آنجا به کل محدوده اعمال می‌شود."</string>
     <string name="quest_sport_softball">"سافتبال"</string>
     <string name="quest_sport_racquet">"راکت‌بال"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"اسکیت روی یخ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"تنیس بادی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"بازی‌های ایرلندی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"سپک تاکرا"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"تا اندازه‌ای"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"توجه کنید که در بیشتر پایه‌ها در هر طرف می‌توان یک دوچرخه پارک کرد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"اسکیت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به مکان وجود دارد و همچنین بیشتر اتاق‌های داخلی دسترسی ویلچر دارند."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به آن وجود دارد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"در نام %s مخفف هست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"این تأسیسات بازیافت از چه نوعی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"مرکز بازیافت"</string>
     <string name="overground_recycling_container">"مخزن"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"مخزن زیرزمینی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"نویسه‌های روی علامت را نمی‌توانم بنویسم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"نداشتن چیدمان صفحه‌کلید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"بازکردن تنظیمات"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"بازکردن فروشگاه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"اگر از صفحه‌کلید پیشفرض استفاده می‌کنید، می‌توانید چیدمان صفحه‌کلید را برای زبان موردنیاز خود در تنظیمات روش ورودی فعال نمایید.
 
 در غیر این صورت، می‌توانید برنامٔ صفحه‌کلید دیگری را از فروشگاه نصب کنید. صفحه‌کلیدهای محبوب که بسیاری از زبان‌ها را پشتیبانی می‌کنند عبارتند از Google Gboard،‏ SwiftKey Keyboard و Multiling O Keyboard."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(نامشخص)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"نوع این وسیله اطفاء حریق (شیر آتش‌نشانی) چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"شیر خیابانی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"زیرزمینی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"دیواری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"مخزنی"</string>
     <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;فهرست کامل روی GitHub&lt;/a&gt; را مشاهده نمایید."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"ترجمه‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"مشارکت‌کنندگان در کدنویسی"</string>
-
-    <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"سازنده و نگهدارنده"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"و دیگران…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"این یک خیابان محل سکونت است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"پس، علامتی مانند این وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"چه چیزی در اینجا به عمل می‌آید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapes">"انگور"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"آگاو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_almonds">"بادام"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apples">"سیب"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apricots">"زردآلو"</string>
     <string name="produce_avocados">"آووکادو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"موز"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"زغال اخته"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"کاکائو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"بادام‌زمینی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cherries">"گیلاس"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"شاه‌بلوط"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"نارگیل"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coffee">"قهوه"</string>
     <string name="produce_cranberries">"کرنبری/توت‌خرس"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"خرما"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"انجیر"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"گریپ فروت"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"گواوا"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"فندق"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hops">"هویج"</string>
     <string name="produce_jojoba">"جوجوبا"</string>
     <string name="produce_kiwis">"کیوی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"نخل کولا"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_lemons">"لیموترش"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_limes">"لیموترش سبز"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"انبه"</string>
     <string name="produce_mate">"مایت"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"جوز هندی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"نخل روغنی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_olives">"زیتون"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oranges">"پرتقال"</string>
     <string name="produce_papayas">"پاپایا/خربزه درختی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_peaches">"هلو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pears">"گلابی"</string>
     <string name="produce_chili">"فلفل"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"خرمالو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pineapples">"آناناس"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pepper">"فلفل"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pistachios">"پسته"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_plums">"آلو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"تمشک"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_rubber">"كائوچو"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_strawberries">"توت فرنگی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tea">"چای"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_vanilla">"وانیل"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_walnuts">"گردو"</string>
     <string name="produce_sisal">"سیسال"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"اینجا پویش نمی‌شود. بزرگ‌نمایی کنید یا نقشه را کمتر کج کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"این گذرگاه از چه نوعی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
-
-    <!-- Fuzzy -->
     <string name="action_undo">"برگشت"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"ترگیل"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"گوجه فرنگی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"نخل آراکا"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"فلفل شیرین"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"فندقی برزیلی"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"فندقی تنگا"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"این چه نوع پارکینگی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"پارکینگ محوطه‌ای"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"پارکینگ زیرزمینی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"پارکینگ طبقاتی"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"جنس این تیر برق چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"چوب"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"فولاد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"بتن"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"فقط یک محدودیت سرعت توصیه‌شده..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"نام خانه:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"طبقات پشت‌بام"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"طبقات (بدون شمارش پشت‌بام)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"متفاوت در هر بخش ساختمان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"در این حالت، مقدارهای بلندترین قسمت از ساختمان را وارد نمایید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا جهت‌های مخالف این راه با مانع فیزیکی یا فضای سبز مجزا شده است؟ محدودیت سرعت پیشفرض به این مسئله بستگی دارد."</string>
     <string name="about_category_feedback">"بازخورد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"آیا می‌خواهید این تصویر را حذف کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"مسیر کناررو یا خط دوچرخه‌رو حفاظت‌شده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"خط دوچرخه‌سواری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"هیچکدام"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"خط عبور صریحاً با سایر ترددها مشترک است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"با خط اتوبوس مشترک است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"با پیاده‌رو مشترک است."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_create_image_error">"فایل برای عکس ایجاد نمی‌شود"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"خط دوچرخه‌سواری، دوطرفه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"مسیر کناررو یا مسیر دوچرخه‌سواری حفاظت‌شده، دوطرفه"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"پیشرفته"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"فعال"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_type">"نوع جُستار"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"بازنشانی"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"برگشت"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"لغو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"فقط"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"در وعدهٔ غذایی گیاه‌خوار مطلق (vegan) محصولات حیوانی  وجود ندارد (بدون گوشت، طیور، ماهی، محصولات لبنی، تخم‌مرغ، عسل و…)."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"در وعدهٔ غذایی گیاه‌خوار (vegetarian) گوشت، ماهی یا طیور وجود ندارد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"فقط در صورتی «بله» را برگزینید که این مکان در میان گزینه‌های غذایی برای این نوع رژیم انتخابی قابل‌مقایسه ارائه می‌دهد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"در این کارواش نظافت خودرو چگونه انجام می‌شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"خودکار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"خودیار (self-service)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"کارگر خودرو را نظافت می‌کند"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"این نوع جُستار را فعال می‌کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا ابتدا باید وارد این مکان شوید تا بتوانید به جستاری از این نوع پاسخ دهید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"شماره جهت‌یابی (اختیاری)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"آنچه را که روی علائم نگاشته شده درج کنید. اگر علائمی وجود ندارد، ساعت کاری را از داخل بپرسید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"هیچ‌کدام، اما دوچرخه‌سواران ممکن است ازهر دو جهت جاده استفاده کنند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"چرا نام ندارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"چیزی شبیه به راه اختصاصی یا مسیر پارکینگ است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"جادهٔ کشاورزی یا جنگلی است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"هیچ یک از موارد فوق؛ واقعا نامی ندارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"اگر سرویس‌بهداشتی برای صندلی چرخدار قابل دسترسی است، علائمی مانند این شاید نصب شده باشد.
 تا اندازه‌ای یعنی صندلی چرخدار می‌تواند وارد سرویس بهداشتی شود و از آن استفاده کند، اما دست‌نرده ندارد یا دست‌شویی مناسب‌سازی نشده است."</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_create_note">"ایجاد یادداشت جدید"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"برای ایجاد یادداشت بزرگنمایی کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_description">"می‌توانید یادداشتی بنویسید تا نقشه‌کش‌های دیگر بدانند اینجا ایرادی دارد. با جابه‌جایی نقشه محل یادداشت را تنظیم کنید:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"معمولاً اینگونه به نظر می‌رسد:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"فلزی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"آیا اینجا مسیر یا خط دوچرخه‌سواری وجود دارد؟ از چه نوعی؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"ساختار این پل چگونه است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"بی‌سیم (Wi-Fi)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"با‌سیم (LAN)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"رایانه با دسترسی اینترنت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"بدون اتصال"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"آیا این نیمکت پشتی دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"میز پیک‌نیک است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"این مکان، عبادتگاه چه دینی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_christian">"مسیحیت"</string>
     <string name="quest_religion_muslim">"اسلام"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"هندویی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"بودایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"شینتو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"یهودیت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"تائوئیسم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"مورد استفاده تمام ادیان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"مذهب سیک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jain">"مذهب جین"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"مذهب بهائی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"کائودائیسم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"دین سنتی چین"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"این مکان مرتبط با چه دینی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"آیا برای پارک در اینجا باید پول پرداخت کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"سنگفرش ناهموار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"جنس سطح این میدان چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"بستگی به ساعت و روز دارد…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"افزودن زمان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"این ساختمان شماره‌های متعدد دارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"شماره‌های خانه را با کاما جدا کنید یا به شکل از-تا بنویسید.\nمانند 1,3 یا 2-6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"ایستاده (بدنهٔ دوچرخه را نگه می‌دارد)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"چرخ‌بند (فقط چرخ را نگه می‌دارد)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"اتاقک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"قفسه مجزا"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"ساختمان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"نوع پارکینگ دوچرخه چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"زمان جمع‌آوری این صندوق پستی را مشخص کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"افزودن زمان جمع‌آوری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"زمان مشخصی ندارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"آیا این جاده کامل شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"آیا این خط عبور دوچرخه کامل شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"آیا این پیاده‌رو کامل شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"آیا این راه کامل شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"آیا این ساختمان کامل شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"در %s نشان داده نمی‌شود"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"مشخص‌ترین مورد متناسب را انتخاب کنید:"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
-    <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"مطمئن هستید که مشخص‌تر از این نمی‌شود انتخاب کرد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; برای برخی از جُستارها، اطلاعات اضافی از شخص ثالث بارگیری می‌شود. به طور خاص، جستار یکطرفه درمورد نامزدهای احتمالی یکطرفه‌بودن از یک API پرس‌وجو می‌کند که روی westnordost.de میزبانی می‌شود.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"نه (یادداشت بگذارید)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_reset">"بازنشانی هر دو جُستار فعال شده و سفارشی شده به حالت پیشفرض؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"لطفا یک مقدار واضح‌تر را انتخاب کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"چندمنظوره است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"به‌سادگی کاربری اصلی این ساختمان را انتخاب کنید. برای مثال اگر در طبقه همکف یک فروشگاه هست و روی آن واحدهای آپارتمانی قرار دارد، هنوز هم یک ساختمان آپارتمانی به شمار می‌رود."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"هنوز در حال ساخت است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"مسکونی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"ساختمانی که مردم در آن زندگی می‌کنند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"خانه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"خانه برای چند خانواده؛ ممکن است خرده‌فروشی‌هایی در طبقه همکف داشته باشد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"ساختمان آپارتمانی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"خانه غیرمتصل"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"خانه غیرمتصل تک‌خانواری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"خانه نیمه‌متصل"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"ردیف خطی از خانه‌های مشابه تک‌خانواری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"ساختمان هتل"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"خوابگاه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"خانه قایقی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"بنگالو/کلبه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"خانه سیار (کاروان نیمه‌ثابت)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"ساختمان تجاری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"ساختمانی که افراد در آن کار، خرید یا هر فعالیت تجاری دیگری انجام می‌دهند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"ساختمان صنعتی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"به عنوان مثال، کارخانه، کارگاه، گاراژ تعمیر خودرو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"ساختمان اداری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"فروشگاه(ها)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"انبار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"دکه، کیوسک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"مخزن ذخیره"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"ساختمان مذهبی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"کلیسا"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"کلیسای کوچک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"کلیسای جامع"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"مسجد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"ساختمان معبد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"پاگودا/بتکده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"کنیسه/نیایش‌گاه یهودیان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"ساختمان عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"ساختمان عمومی که معمولاً مکان رفاهی در آن قرار دارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"ساختمان مهدکودک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"ساختمان مدرسه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"ساختمان دانشکده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"ساختمان بیمارستان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"ورزشگاه (استادیوم)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"ایستگاه قطار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"ساختمان حمل‌ونقل عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"ساختمان دانشگاه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"ساختمان دولتی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"برای خودروها"</string>
     <string name="quest_buildingType_carport">"سایبان خودرو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"سقف برای خودرو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"یک گاراژ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"چند گاراژ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"ساختمان پارکینگ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"درون مزرعه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"خانه کشاورز"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"ساختمان مسکونی در یک مزرعه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"ساختمان مزرعه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"ساختمانی در مزرعه که ساختمان مسکونی نیست"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"گلخانه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"دیگر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"الونک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"کلبه، کپر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"مسکن یا سرپناه کوچک و ساده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"سقف"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"ساختمان خدماتی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"ساختمان با ماشین آلات مانند پمپ و یا مبدل برق"</string>
     <string name="quest_buildingType_hangar">"آشیانه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"آشیانه برای هواپیما، هلیکوپتر یا فضاپیما"</string>
     <string name="quest_buildingType_bunker">"پناهگاه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"این ساختمان شماره ندارد…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"ساختمان به این عنوان برچسب‌گذاری شده بود:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"زیارتگاه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"محدویت سرعت در این خیابان چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"علامت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"درون منطقه رانندگی با سرعت کم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"بدون علامت. پیشفرض‌ها به کار می‌رود"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"بدون تابلوی ساعت کاری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"ورزشگاه (مرکز ورزشی)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"سرویس‌بهداشتی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"اینجا مسیر پیاده و مسیر دوچرخه چگونه ساخته شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"برای بارگذاری تغییرات به صورت دستی، از دکمه‌ای که در نوار ابزار مشابه این است استفاده کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"جدا از یکدیگر"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"مسیر دوچرخه‌سواران و پیاده‌ها مشترک است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"محدودیت ارتفاع در اینجا چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"آیا فضای کافی برای عبور آسان حتی بلندترین کامیون‌ها وجود دارد (حداقل حدود ۴٬۵ متر / ۱۵ فوت)؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"به نظر می‌رسد این ارتفاع درست نباشد. مطمئن هستید که درست است؟"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"%2$s, %1$s —"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"‏%1$s بست، %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"‏%1$s دوباره فعال کرد، %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"‏%1$s پنهان کرد، %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;تصاویری که به یادداشت اضافه می‌کنید روی سرور ما بارگذاری می‌شوند و چند روز بعد از حل‌شدن یادداشت حذف می‌شوند. فرادادهٔ آن‌ها قبل از بارگذاری حذف می‌شود.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"بدون انتخاب"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"شامل ساختمان‌هایی برای رستوران‌ها، کافه‌ها، فروشگاه‌ها…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"بعدی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"استحکام سطح این مسیر چگونه است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"سخت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"اغلب نرم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"نرم"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"آیا این ساختمان بطور کامل زیرِ زمین است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"تا اندازه‌ای یعنی نهایتاً یک پله به ارتفاع قوزک پا برای دسترسی به آن وجود دارد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"آیا اینجا برای صندلی چرخدار دسترس‌پذیر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"آیا این چراغ‌های راهنمایی دکمه‌ای برای درخواست چراغ سبز دارند؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"اینجا چند موتورسیکلت می‌توان پارک کرد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"آیا پارکینگ موتورسیکلت سرپوشیده است (از باران محافظت می‌شود)؟"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی کار زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جستار."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
-
-    <!-- Fuzzy -->
     <string name="restore_hidden_success">"%d جُستار پنهان بازگردانده شد"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"در طبقه %s"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
     <string name="underground">"زیر زمین"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"این خیابان این‌طور برچسب‌گذاری شده که در هیچ طرف پیاده‌رو ندارد. در صورتی که پیاده‌رو دارد، ولی با خط جداگانه نمایش داده شده، لطفاً پاسخ دهید «پیاده‌رو»."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"انتخاب زمینه"</string>
     <string name="theme_automatic">"خودکار"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"روشن"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"تیره"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_system_default">"پیشفرض سیستم"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"مکان را در برنامه دیگری باز نمایید"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"برنامه نقشه دیگری نصب نگردیده‌است"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
-    <!-- Fuzzy -->
     <string name="label_housenumber">"شماره خانه"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"شماره مجتمع"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"سراسر ایستگاه سرپوشیده است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"آیا این مسیر دریایی برای حمل‌ونقل پیاده‌ها استفاده می‌شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"آیا این مسیر دریایی برای حمل‌ونقل خودروها استفاده می‌شود؟"</string>
-
-    <!-- Add note interface -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"افزودن تصویر، یادداشت را بسیار سودمندتر می‌کند."</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"بهتر است یادداشت را به زبان محلی بنویسید، یا در غیر این صورت، به زبان انگلیسی."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"درختان اینجا پهن‌برگ هستند یا سوزنی‌؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"سوزنی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"پهن‌برگ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"هر دو وجود دارند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"سطح مسیر دوچرخه‌سواری از چه جنسی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"متفاوت در طول مسیر..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_description">"اگر در طول راه فرق می‌کند، اولین گام تقسیم راه است. پس از آن می‌توان برای هر قسمت به‌طور جداگانه پاسخ جُستار را ارائه نمود.  اکنون تقسیم می‌کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"روی مسیر ضربه بزنید تا از نقطه‌ای (هایی) که پاسخ فرق دارد، آن مسیر را تقسیم کنید. بزرگنمایی کنید و تا حد ممکن دقیق باشید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"لطفاً بزرگنمایی کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"راه به چند بخش تقسیم شد. همیشه می‌توانید راه را بیشتر تقسیم کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"سطح این پیاده‌رو از چه جنسی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"در اینجا محدودیت وزن چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"به نظر می‌رسد این وزن درست نباشد. آیا مطمئن هستید که درست است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"علامت فرق دارد..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می‌خواهید یادداشت بگذارید؟ یک یادداشت همراه با عکس به نقشه‌کش‌های دیگر کمک می‌کند آن را بهتر کنند."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"آیا این راه‌پله دست‌نرده دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"نسخه فعلی: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"شماره یا کدی دیده نمی‌شود…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"جاده در تصویر همانند مرکز آن روی نقشه چرخانده شده است."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"چه چیزی را می‌توان در اینجا برای بازیافت قرار داد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"اگر چیزی بازیافت می‌شود که در فهرست نیامده، لطفاً به جایش یادداشت بگذارید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"باتری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"قوطی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"لباس"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"زباله گیاهی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"بطری و بستوی شیشه‌ای"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"بطری و شیشه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"کاغذ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"پلاستیک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"هر نوع پلاستیکی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"کفش"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"لوازم برقی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"فقط بطری پلاستیکی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"فقط بسته‌بندی پلاستیکی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"ضایعات فلزی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"هر نوع شیشه‌ای"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"آیا فقط بطری شیشه‌ای و بستوی شیشه‌ای (مثل شیشه مربا) در اینجا بازیافت می‌شود یا هر نوع شیشه‌ای؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"نمونه‌هایی از شیشه که غالباً پذیرفته نمی‌شوند: شیشه‌مات، پنجره‌های شیشه‌ای، ظروف شیشه‌ای، لامپ‌های روشنایی‌ حبابی یا کم‌مصرف."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"تاریخچه نسخه‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"تازه‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"به برنامه امتیاز دهید"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"در گوگل‌پلی"</string>
-
-    <!-- اهدا کنید -->
     <string name="about_title_donate">"کمک مالی"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"قدردانی خود را نشان دهید! ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"با سپاس از تصمیم شما جهت حمایت از این برنامه! برای مشاهده کمکهای فعلی و کمک مالی خود، روی مکان مربوطه ضربه بزنید:"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"در عوض اینجا را کاوش کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_cancel">"کاوش فعلی را ادامه دهید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"فضاهای جداگانه برای مالکان/مستأجران مختلف"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_title">"این اطلاعات گردشگری از چه نوعی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"دفتر اطلاعات گردشگری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"صفحه اطلاعات"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_terminal">"پایانه اطلاعات"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_map">"نقشه"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_guidepost">"صفحه راهنما"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"اینجا برای زباله‌های عمومی است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"بنابراین، آیا این سطل که در آنجا قرار دارد برای هرگونه ضایعات، مانند زباله‌های خانگی یا تجاری می‌باشد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile">"نمایه من"</string>
-
-    <!-- Fuzzy -->
     <string name="user_login">"ورود"</string>
-
-    <!-- Fuzzy -->
     <string name="user_logout">"خروج"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_profile">"نمایه osm"</string>
-
-    <!-- Fuzzy -->
     <string name="next">"بعدی"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"بزن بریم!"</string>
-
-    <!-- Tutorial screen -->
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"به اوپن‌استریت‌مپ خوش‌آمدید"</string>
-
-    <!-- Free in this sentence mean free of cost or free as in freedom? -->
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm_subtitle">"نقشه جهانی ویکی رایگان"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_intro">"برنامه StreetComplete مشارکت در اوپن‌استریت‌مپ را آسان می‌کند.
 به طور خودکار به دنبال جزئیات از قلم افتاده در پیرامون شما می‌گردد: خطوط عبور دوچرخه، شماره خانه، ساعات کار و بسیاری موارد دیگر…"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"جزئیاتی که از قلم افتاده‌اند به محض پیدایش به عنوان جُستار در نقشه شما ظاهر می‌شود.
 
 می‌توانید بلافاصله پاسخگویی به آنها را شروع کرده و سپس برای انتشار پاسخ‌های خود، وارد حساب‌تان شوید."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"هر زمان که اطمینان ندارید، می توانید گزینه \"نمی توان بیان کرد\" را انتخاب نماید و یادداشت بگذارید.
 
 در آخر، به یاد داشته باشید که مطمئن باشید: از محیط پیرامون خود مطلع باشید و به مکان‌های خصوصی وارد نشوید."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_happy_mapping">"نقشه‌کشی مبارک!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_empty">"شما هنوز دستاوردی ندارید"</string>
-
-    <!-- Links screen -->
-    <!-- Fuzzy -->
     <string name="links_empty">"شما هنوز پیوندی ندارید"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"شما پاسخ هیچ جُستاری را نداده‌اید"</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_description">"%d جُستار ویرایش شده هنوز منتشر نشده است."</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_not_logged_in_description">"شما هنوز %d تغییر را منتشر نکرده‌اید. برای بارگذاری آنها باید وارد سامانه شوید."</string>
-
-    <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"پاسخ به جُستارها"</string>
-
-    <!-- Fuzzy -->
     <string name="user_achievements_title">"دستاوردها"</string>
-
-    <!-- Fuzzy -->
     <string name="user_links_title">"پیوند مجموعه"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_title">"نمایه"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"مستندات"</string>
-
-    <!-- Achievement screen -->
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_link">"پیوند بازنشده:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_links">"پیوندهای بازنشده:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_title">"مقدمه"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_description">"کسب اطلاعات بیشتر در مورد OSM و جامعه آن"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_title">"مشارکت"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر مشارکت در اوپن‌استریت‌مپ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_title">"نقشه‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_description">"نقشه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_title">"ويترين"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_description">"خدمات و برنامه‌های مبتنی بر اوپن‌استریت‌مپ"</string>
     <string name="link_category_goodies_title">"موارد کاربردی"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_goodies_description">"مطالبی جالب و سرگرم‌کننده مربوط به نقشه برای شما؛ امتحانشان کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_cyclosm_description">"نقشه دوچرخه‌سواری"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"نقشه‌ای برای جستجوی مکان‌های قابل دسترسی صندلی چرخدار"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"نقشه‌ای که ساختمان‌ها را به صورت سه‌بعدی نشان می‌دهد"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openvegemap_description">"رستوران‌های مناسب برای گیاه‌خوار و گیاه‌خوار مطلق را در شهر خود بشناسید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_touch_mapper_description">"نقشه‌های لمسی را به راحتی برای هر نشانی ترسیم کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapy_tactile_description">"نقشه‌های لمسی برای کم بینایان در مقیاس‌های مختلف"</string>
-
-    <!-- Fuzzy -->
     <string name="link_josm_description">"ویرایشگر کاملاً حرفه‌ای OSM برای رایانه. این ابزار قدرتمند برای مشارکت‌کنندگان فعال می‌باشد."</string>
-
-    <!-- Fuzzy -->
     <string name="link_vespucci_description">"ویرایشگر پیشرفته OSM برای Android"</string>
-
-    <!-- Fuzzy -->
     <string name="link_ideditor_description">"ویرایشگر ساده OSM به عنوان مرورگر. برای رایانه‌های شخصی یا رایانه‌های لوحی بزرگ بهینه‌سازی شده است"</string>
-
-    <!-- Fuzzy -->
     <string name="link_umap_description">"نقشه‌ها را با داده‌های سفارشی به سرعت ایجاد کرده و آنها را در وبسایت خود وارد نمایید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه‌های حمل‌ونقل عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wiki_description">"سایت ویکی osm نقطه شروع شما برای ویرایش هر چیزی مرتبط با اوپن‌استریت‌مپ است."</string>
-
-    <!-- Fuzzy -->
     <string name="link_learnosm_description">"تازه با اوپن‌استریت‌مپ آشنا شده‌اید؟ این یک راهنما برای مبتدی‌ها است"</string>
-
-    <!-- Fuzzy -->
     <string name="link_neis_one_description">"سیاهه‌ای بزرگ از آمار و تعداد مشارکت‌کنندگان در اوپن‌استریت‌مپ، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
-
-    <!-- Fuzzy -->
     <string name="link_welcome_mat_description">"اطلاعات کلی در مورد اوپن‌استریت‌مپ و نحوه کار با آن به عنوان یک سازمان"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapillary_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetcam_description">"سامانه و برنامه‌ای برای به اشتراک‌گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"مسیریابی پویا برای معلولان با صندلی چرخدار"</string>
-
-    <!-- Fuzzy -->
     <string name="link_nominatim_description">"کد جغرافیایی داده‌های OSM که توسط بسیاری از سامانه‌های دیگر استفاده می‌شود"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"ارائه همه جاده‌های یک شهر برای چاپ روی تیشرت، لیوان و…"</string>
-
-    <!-- Fuzzy -->
     <string name="link_myosmatic_description">"نقشه‌های قابل چاپ شهری را در چند گام ساده، به صورت انتخابی با فهرست راهنمای خیابانی ایجاد کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_brouter_description">"احتمالاً بهترین سامانهٔ مسیریابی برای دوچرخه‌سواران"</string>
-
-    <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"مشاهده ویرایش‌های OSM به صورت لحظه‌ای"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osrm_description">"سریع‌ترین سامانه مسیریابی"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_description">"مسیریابی انواع وسایل نقلیه و پیاده به صورت دلخواه ارائه می‌شود. همچنین بطور لحظه‌ای زمان رسیدن به مقصد نیز قابل مشاهده است (نمایش زمان دستیابی از نقطه شروع)"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_haiku_description">"استفاده از داده‌های OSM برای تولید یک هایکو (شعر بی قافیه سه سطری ژاپنی)"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openinframap_description">"نقشه‌ای که زیرساخت‌های برق، مخابرات، گاز و نفت را نشان می‌دهد"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openorienteeringmap_description">"برای ورزش جهت‌یابی، نقشه‌های چاپ‌کردنی بسازید"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetbrowser_description">"یک نقشه برای جستجوی عوارض نقشه OSM برحسب دسته‌بندی"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"تارنمای اخبار هفتگی درباره اتفاقات رخ داده در دنیای OSM"</string>
-
-    <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_title">"اولین جُستار حل شد"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"به جامعه اوپن‌استریت‌مپ خوش‌آمدید! در نمایه خود می‌توانید اطلاعات بیشتری را درباره هر گونه جُستاری که پاسخ داده‌اید مشاهده کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_title">"نقشه‌بردار"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_solved_X">"شما به %d جُستار پاسخ داده‌اید! ادامه دهید تا دستاوردهای بیشتری حاوی پیوندهایی به OSM و سایر برنامه‌ها و پروژه‌های مرتبط با نقشه کسب نمایید!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_title">"منظم"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_description">"شما %d روز با این برنامه به OSM یاری رسانده‌اید! مشارکت‌کنندگان فعال، ستون فقرات OSM هستند. سپاس از مشارکت و هم‌بخشی شما! ❤🙏"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"دوچرخه‌سوار"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"شما %d جُستار را حل نموده‌اید که به دوچرخه‌سواران کمک می‌کند!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_title">"جابجایی"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"شما %d جُستاری را حل نموده‌اید که کمک می‌کند کاربران صندلی چرخدار راحت‌تر در شهر رفت‌وآمد کنند!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_title">"نامه‌رسان"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"شما به مکان‌یابی %d آدرس کمک کردید!
 این داده‌ها نه‌تنها برای نامه‌رسان‌ها بلکه برای هر سامانه ناوبری ضروری است."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_title">"بلندمرتبه"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"شما %d جُستار مربوط به ساختمان‌ها را حل کردید. دقت نمایید که این برنامه فقط پس از مشخص شدن نوع ساختمان، شماره آن را می‌پرسد."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_title">"حس ششم"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"شما %d جُستار موردنیاز افراد کم‌بینا را پاسخ دادید."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_title">"دَوَندِه"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_solved_X">"شما %d جُستار مورد نیاز افراد پیاده را پاسخ دادید!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_title">"مهربان با حیوانات"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_solved_X">"شما %d جُستار موردعلاقهٔ افراد با رژیم غذایی بدون گوشت را پاسخ دادید!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_title">"در جاده"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند پاسخ داده و آن را در اوپن‌استریت‌مپ ثبت کردید!"</string>
-
-    <!-- Notifications -->
-    <!-- Fuzzy -->
     <string name="unread_messages_message">"شما %d پیام ناخوانده در صندوق پیام دارید"</string>
-
-    <!-- Fuzzy -->
     <string name="unread_messages_button">"گشودن صندوق پیام"</string>
-
-    <!-- Main menu -->
-    <!-- Fuzzy -->
     <string name="action_about2">"درباره"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_menu">"منو"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_statistics">"&lt;p&gt; داده‌های قابل مشاهده در نمایه شما از تاریخچه مشارکت‌های عمومی شما در اوپن‌استریت‌مپ جمع‌آوری شده و سپس روی سرور ما میزبانی می‌شود. &lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now_note2">"همچنین می‌توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
     <string name="credits_art_contributors_title">"مشارکت‌کنندگان هنری"</string>
     <string name="credits_projects_contributors_title">"پروژه‌های ساخته شده برای StreetComplete"</string>
     <string name="credits_main_contributors_title">"مشارکت‌کنندگان اصلی"</string>
-
-    <!-- User statistics screen -->
     <string name="stats_are_syncing">"آمار شما همچنان در حال همگام سازی است. بعداً این صفحه را بررسی کنید."</string>
     <string name="user_statistics_country_rank">"رتبه‌بندی در %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"نقشه‌برداری پویا %s"</string>
     <string name="user_statistics_filter_by_country">"براساس کشور"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"براساس نوع جُستار"</string>
     <string name="user_profile_global_rank">"رتبه‌بندی جهانی"</string>
     <string name="user_profile_local_rank">"رتبه‌بندی در %s"</string>
     <string name="user_profile_days_active">"روزهای فعالیت"</string>
     <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
     <string name="quest_recycling_type_cooking_oil">"روغن پخت و پز"</string>
@@ -1928,32 +710,20 @@
     <string name="quest_board_type_nature">"طبیعت (موضوعات متعدد)"</string>
     <string name="quest_board_type_notice_board">"این یک تابلوی اعلانات است"</string>
     <string name="quest_board_type_public_transport">"حمل‌ونقل عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_title">"موضوع این تابلو اطلاع‌رسانی چیست؟"</string>
     <string name="quest_board_type_map">"این یک نقشه است."</string>
     <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
     <string name="quest_board_type_map_description">"اگر تابلو در مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل‌ونقل عمومی می‌تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ‌های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
     <string name="quest_surface_detailed_answer_impossible">"چندین سطح …"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطوح ناممکن است؟ گزینه \"اختلاف جنس سطوح در طول مسیر\" را مدنظر قرار دهید، تا بتوانید با جدا کردن مسیر اختلاف جنس سطح را مشخص کنید. لطفاً اگر جنس یکسان وجود دارد از پاسخ  \"نمی توان بیان کرد\" استفاده کنید اما به عنوان یک پاسخ در دسترس نیست."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"لطفاً به طور خلاصه ماهیت جنس سطح را در اینجا مشخص کنید، به عنوان مثال \"ماسه‌ای با قطعات سنگفرش\". طول متن به 255 نویسه محدود شده است."</string>
     <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
     <string name="quest_buildingType_terrace2">"خانه‌های ردیفی"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housename">"نام خانه %s"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housenumber">"شماره خانه %s:"</string>
     <string name="quest_openingHours_add_off_days">"افزودن روزهای حراج"</string>
     <string name="quest_openingHours_off_day">"روز حراج"</string>
     <string name="quest_openingHours_unspecified_range">"مشخص نشده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"آیا اینجا هنوز خط دوچرخه‌سواری وجود دارد؟"</string>
     <string name="pref_title_resurvey_intervals">"فواصل تکرار بررسی"</string>
     <string name="resurvey_intervals_less_often">"کمتر بپرسید"</string>
@@ -1970,12 +740,8 @@
     <string name="quest_steps_incline_up">"این راه بالا"</string>
     <string name="quest_step_count_title">"چند پله در اینجا وجود دارد؟"</string>
     <string name="quest_traffic_signals_sound_title">"آیا سیگنال‌های صوتی برای نابینایان در اینجا وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"آیا این چراغ‌های راهنمایی برای افراد نابینا مجهز به دکمه لمسی برای عبور ایمن است؟"</string>
     <string name="quest_traffic_signals_vibrate_description">"نکته: اغلب این دکمه یک دکمه ارتعاشی یا یک مخروط چرخان در زیر بخش دکمه چراغ راهنمایی است."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"خانه غیرمتصل کوچک (خانه تابستانی، کلبه تعطیلات، کابین …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"از چه موانعی در این گذرگاه راه‌آهن استفاده می‌شود؟"</string>
     <string name="quest_railway_crossing_barrier_none2">"بدون موانع"</string>
@@ -1984,23 +750,15 @@
     <string name="quest_steps_ramp_bicycle">"سطح شیب‌دار دوچرخه"</string>
     <string name="quest_steps_ramp_stroller">"سطح شیب‌دار کالسکه"</string>
     <string name="quest_steps_ramp_wheelchair">"سطح شیب‌دار صندلی چرخدار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"نام بانک این خودپرداز چیست؟"</string>
     <string name="quest_clothes_container_operator_title">"چه کسی کمک‌های مالی برای این سطل پوشاک را پرداخت می‌کند؟"</string>
     <string name="quest_charging_station_operator_title">"متصدی این ایستگاه شارژ کیست؟"</string>
     <string name="link_indoorequal_description">"نقشه‌های داخلی مراکز خرید، ایستگاه‌های راه‌آهن و غیره را بیابید"</string>
     <string name="achievement_rare_title">"شکارچی گنج"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"شما %d جُستار را یافتید و پاسخ دادید که هنوز ناتمام بوده‌اند، تبریک می گویم!"</string>
     <string name="achievement_citizen_title">"رتبه عالی"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"شما %d جُستار مفید در زندگی روزمره این شهر را پاسخ دادید!"</string>
     <string name="achievement_outdoors_title">"فضای پیرامون"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"شما %d جُستار مفید برای گردشگران را پاسخ دادید!"</string>
     <string name="quest_pedestrian_crossing_island">"آیا این گذرگاهِ پیاده جزیره دارد؟"</string>
     <string name="quest_generic_answer_noSign">"اینجا تابلو ندارد"</string>
@@ -2017,135 +775,79 @@
     <string name="quest_buildingType_abandoned_description">"ساختمان بلا استفاده که کارکرد اصلی یا هدف آن ناشناخته است"</string>
     <string name="quest_buildingType_ruins">"خرابه"</string>
     <string name="quest_buildingType_ruins_description">"ساختمانی متروکه، ویران و غیرقابل شناسایی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"چند خودرو در این ایستگاه شارژ می‌تواند به طور همزمان شارژ شود؟"</string>
     <string name="link_disaster_ninja_description">"نقشه‌ای که بلایای طبیعی اخیر را نشان می‌دهد که برای نقشه‌برداران بشردوستانه جالب است. همچنین، بسیاری از آمارهای متنوع را برای تجزیه و تحلیل چگونگی نقشه‌کشی و به‌روز بودن مکان‌ها نشان می‌دهد."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_title">"این مسیر چند خط عبور برای خودروها دارد؟"</string>
     <string name="quest_lanes_answer_lanes">"با خط‌کشی خطوط عبور"</string>
     <string name="quest_lanes_answer_noLanes">"بدون خط‌کشی خطوط عبور"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"دارای دوربرگردان برای چرخش به چپ دو طرفه می‌باشد
 "</string>
     <string name="quest_address_answer_no_housenumber_message2b">"آیا این درست است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"محدودیت ارتفاع زیر پل چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"اگر برای کل راه اعمال نمی‌شود، پاسخ \"%s\" را در نظر بگیرید."</string>
     <string name="quest_tactile_paving_kerb_title">"آیا اینجا جدول در کناره مسیر وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"ارتفاع این جدول چقدر است؟"</string>
     <string name="quest_kerb_height_flush">"هم سطح جاده"</string>
     <string name="quest_kerb_height_lowered">"کمی بالاتر از سطح جاده"</string>
     <string name="quest_kerb_height_raised">"جدول برجسته"</string>
     <string name="quest_kerb_height_lowered_ramp">"جدول شیب‌دار
 "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"تعداد کل خطوط تردد (هر دو جهت) قابل استفاده خودروها را مشخص کنید. پس، خطوط دوچرخه و خطوط اختصاصی پارکینگ حساب نمی‌شوند.
 اگر خط ویژه اتوبوس در میان این خطوط وجود دارد، لطفاً در عوض یادداشت بگذارید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"تعداد خطوط تردد قابل استفاده خودروها در اینجا را مشخص کنید. پس، خطوط دوچرخه و خطوط اختصاصی پارکینگ حساب نمی‌شوند.
 اگر خط ویژه اتوبوس در میان این خطوط وجود دارد، لطفاً در عوض یادداشت بگذارید."</string>
     <string name="quest_surface_value_rock">"سنگ"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"کامیون‌های مرتفع می‌توانند عبور کنند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون‌های مرتفع مناسب نیست"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"خط عابر دارای خط‌ کشی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"پارکینگ فقط در کنار جاده است"</string>
     <string name="quest_parkingType_lane">"پارکینگ بخشی از مسیراست"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"سخت اما روسازی‌نشده"</string>
     <string name="quest_tracktype_grade3a">"اغلب سخت"</string>
     <string name="quest_generic_answer_does_not_exist">"وجود ندارد…"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"اطمینان دارید که وجود ندارد؟ شاید فقط موقعیت آن اندکی متفاوت باشد. اگر تردید دارید، بهتر است به جای این کار، یادداشتی بگذارید."</string>
     <string name="osm_element_gone_confirmation">"وجود ندارد"</string>
     <string name="leave_note">"درج یادداشت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"چه چیز دیگری اینجاست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"خالی است"</string>
     <string name="quest_shop_gone_replaced_answer">"یک…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"نوع مکان اینجا را وارد کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"این فروشگاه متروکه است. اکنون چه عارضه‌ای اینجاست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"تعداد خطوط برای هر سمت متفاوت است"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"این نوع جُستار به صورت پیشفرض غیرفعال است زیرا در برخی مناطق مفید نیست و احتمالاً مجبور خواهید بود که وارد مکان شوید تا به جُستاری از این نوع پاسخ دهید."</string>
     <string name="quest_dietType_explanation_kosher">"محصولات کوشر مطابق با قوانین خاص تهیه می‌شود و مراکز صدور گواهینامه کوشر، محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"اصلاً مسیر دوچرخه‌سواری وجود ندارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"طبق معمول، روی یک سمت تصویر ضربه بزنید، یک پاسخ مناسب را انتخاب نمایید و همین روش را برای سمت دیگر انجام دهید.
 به همه گزینه‌های موجود توجه داشته باشید: بعضی موارد واضح نیستند، مانند جاده یک طرفه ای که دوچرخه‌سواران می‌توانند در هر دو جهت حرکت کنند!"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"انتخاب اینکه، هیچ مسیر دوچرخه‌ای وجود ندارد"</string>
     <string name="quest_construction_completed_at_known_date">"تمام می‌شود در تاریخ …"</string>
     <string name="quest_construction_completion_date_title">"چه زمانی کامل خواهد شد؟"</string>
     <string name="quest_surface_value_clay">"خاکی"</string>
     <string name="quest_surface_value_artificial_turf">"چمن مصنوعی"</string>
     <string name="quest_surface_value_tartan">"شطرنجی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"برای پارک دوچرخه در اینجا باید هزینه پرداخت کرد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"خانه متصل و تک‌خانواری"</string>
     <string name="quest_drinking_water_potable_signed">"آب شرب (تایید شده)"</string>
     <string name="quest_drinking_water_potable_unsigned">"آب شرب (تایید نشده)"</string>
     <string name="quest_drinking_water_not_potable_signed">"آب غیرقابل شرب (تایید شده)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"آب غیرقابل شرب (تایید نشده)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"رمز ملی روی این صندوق پستی چیست؟"</string>
     <string name="quest_postboxRoyalCypher_type_none">"هیچ رمز ملی قابل مشاهده نیست"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"تاج اسکاتلند"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"ایستگاه آتش‌نشانی"</string>
     <string name="quest_recycling_type_beverage_cartons">"فقط جعبه‌های نوشیدنی"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"فقط بطری و جعبه پلاستیکی"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode">"حالت گروهی"</string>
-
-    <!-- Team mode -->
     <string name="team_mode_exit">"خروج از حالت گروهی"</string>
     <string name="team_mode_description">"هنگام نقشه‌برداری از یک منطقه با هم در یک گروه می‌توانید برای تقسیم جُستارها بین همه اعضای گروه وارد حالت گروهی شوید."</string>
     <string name="team_mode_team_size_hint">"حالت گروهی برای گروه های ۲ تا ۱۲ نفره استفاده می‌شود."</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی غیرفعال است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"کنترل عبور و مرور با چراغ‌های راهنمایی"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
     <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"جداگانه روی نقشه نمایش داده می‌شود"</string>
-
-    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"یادداشت ایجاد شد"</string>
     <string name="commented_note_action_title">"نظر به یادداشت"</string>
     <string name="hid_action_description">"شما آن را پنهان کردید"</string>
@@ -2174,12 +876,8 @@
     <string name="quest_barrier_type_log">"کُنده"</string>
     <string name="quest_barrier_type_kerb">"جدول"</string>
     <string name="quest_barrier_type_height_restrictor">"دیوار مرتفع"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"نرده گردان تمام قد"</string>
     <string name="quest_barrier_type_turnstile">"نرده گردان"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"عبور از دیوار / حصار / غیره"</string>
     <string name="quest_barrier_type_debris_pile">"انبوهی از آوار"</string>
     <string name="quest_barrier_type_stile_squeezer">"نرده را کنار بزنید"</string>
@@ -2191,8 +889,6 @@
     <string name="quest_barrier_type_kissing_gate_conversion">"تبدیل به دروازه لمسی"</string>
     <string name="quest_stile_type_title">"این چه نوع نرده‌ای است؟"</string>
     <string name="quest_buildingType_semi_detached_description2">"خانه(های) تک‌خانواری متصل"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"انتخاب و اولویت جُستارها"</string>
     <string name="pref_subtitle_quests">"%1$d از %2$d فعال شده
 
@@ -2213,8 +909,6 @@
     <string name="quest_buildingLevels_title_buildingPart2">"این بخش از ساختمان چند طبقه روی زمین دارد؟"</string>
     <string name="quest_crossing_title">"آیا در جایی که این مسیر به این جاده می‌رسد جداولی وجود دارد؟ از چه نوعی؟"</string>
     <string name="pref_subtitle_quests_preset_name">"پیش‌تنظیم: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا شکل سقف، معمولاً از خیابان به راحتی دیده نمی‌شود. همچنین این نوع جُستار بسیار وقت‌گیر است؛ در بیشتر موارد ترسیم آن در خانه و از روی تصاویر هوایی آسان‌تر و کارآمدتر است."</string>
     <string name="quest_religion_animist">"متحرک"</string>
     <string name="quest_construction_steps_title">"آیا این مراحل تکمیل شده است؟"</string>
@@ -2222,12 +916,8 @@
     <string name="quest_buildingType_boathouse">"ساختمان نگهداری قایق‌ها"</string>
     <string name="quest_buildingType_allotment_house">"ساختمان پُشتی باغ"</string>
     <string name="quest_buildingType_grandstand">"جایگاه تماشاچیان"</string>
-
-    <!-- Quest selection screen -->
     <string name="action_search">"جُستجو"</string>
     <string name="action_manage_presets">"مدیریت پیش‌تنظیم‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"چند نفر در حال نقشه‌کشی هستند؟ شماره یکسانی را در تلفن همه وارد کنید."</string>
     <string name="team_mode_choose_color2">"در گام بعد، هر فرد باید رنگ متفاوتی را انتخاب کند. رنگ خود را انتخاب کنید:"</string>
     <string name="link_organic_maps_description">"برنامه نقشه برای مسافران، کوهنوردان و دوچرخه‌سواران که بصورت آفلاین کار می‌کند"</string>
@@ -2239,18 +929,12 @@
     <string name="no_search_results">"موردی پیدا نشد"</string>
     <string name="quest_selection_hint_title">"کار زیاد است؟"</string>
     <string name="quest_selection_hint_message">"مشارکت در درجه اول باید سرگرم کننده باشد! اگر از تعداد جُستارها غافلگیر شده‌اید، همیشه می‌توانید در تنظیمات مشخص کنید که کدام جُستارها و به چه ترتیب برای شما نمایش داده شوند."</string>
-
-    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"افزودن پیش‌تنظیم"</string>
     <string name="quest_presets_preset_name">"نام پیش‌تنظیم"</string>
     <string name="quest_presets_default_name">"پیشفرض"</string>
     <string name="quest_presets_selected">"انتخابی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"پیش‌تنظیم \"%s\" حذف شود؟ انتخاب و ترتیب جُستارهای آن به طور برگشت ناپذیری از بین می‌رود."</string>
     <string name="notification_syncing">"همگام سازی داده‌ها…"</string>
-
-    <!-- Android notifications -->
     <string name="notification_channel_sync">"همگام سازی داده"</string>
     <string name="quest_board_type_sport">"ورزش، تمرینات"</string>
     <string name="quest_generic_hasFeature_optional">"اختیاری"</string>
@@ -2258,9 +942,6 @@
     <string name="quest_laundrySelfService_title2">"آیا این لباسشویی خدمات سلف سرویس ارائه می‌دهد؟"</string>
     <string name="quest_dietType_explanation_halal">"محصولات حلال بر اساس قوانین ویژه‌ای تهیه می‌شوند و مراکز صدور گواهینامه حلال، محصولات را مطابق با آن نشانه‌گذاری می‌کنند."</string>
     <string name="quest_picnicTableCover_title">"آیا این میز مسافرتی سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"این‌ها پله هستند"</string>
     <string name="quest_barrier_type_passage_conversion">"تبدیل به گذرگاه بر روی دیوار/حصار/غیره."</string>
     <string name="quest_barrier_type_gate_conversion">"تبدیل به دروازه"</string>
@@ -2285,21 +966,15 @@
     <string name="quest_access_yes">"همگانی"</string>
     <string name="quest_access_customers">"هر کسی که از یک مکان خاص بازدید می‌کند (به عنوان مثال فقط مشتریان)"</string>
     <string name="quest_access_private">"فقط افراد با مجوز"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"آیا زمان تخلیه این صندوق پستی هنوز درست است؟"</string>
     <string name="quest_bicycle_barrier_type_title">"محدودیت مسیر دوچرخه از چه نوعی است؟"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"عبور از یک مسیر خاص"</string>
     <string name="quest_barrier_bicycle_type_tilted">"گذرگاه باریک، رو به جلو تنگ شونده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"عبور از بین دو مانع"</string>
     <string name="quest_barrier_bicycle_type_double">"مانع - مانع در هر طرف"</string>
     <string name="quest_barrier_bicycle_type_multiple">"مانع - بیش از دو مانع"</string>
     <string name="pref_title_language_select">"زبان را انتخاب کنید"</string>
     <string name="language_default">"پیش‌فرض سیستم"</string>
-
-    <!-- Fuzzy -->
     <string name="on_floor">"در طبقه %s:"</string>
     <string name="select_street_parking_orientation">"انتخاب جهت در راستای مسیر:"</string>
     <string name="select_street_parking_position">"انتخاب موقعیت:"</string>
@@ -2307,20 +982,10 @@
     <string name="street_parking_parallel">"موازی"</string>
     <string name="street_parking_diagonal">"مورب"</string>
     <string name="street_parking_perpendicular">"عمود"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_street">"در جاده"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"بخشی روی مسیر"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"کنار و حاشیه جاده"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_street_side">"در حاشیه مسیر و فقط در فضاهای اختصاص یافته"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"روی مسیر و فقط در جاهای اختصاص یافته"</string>
     <string name="street_parking_separate">"پارکینگ به صورت جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="street_parking_no">"پارکینگی موجود نیست / مجاز نیست"</string>
@@ -2329,30 +994,18 @@
     <string name="street_standing_prohibited">"توقف ممنوع"</string>
     <string name="street_parking_conditional_restrictions">"پارک / توقف با شرایط محدود"</string>
     <string name="street_parking_no_other_reasons">"فاقد تابلوی خاص / پارک کردن ممکن نیست"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"اگر امکان توقف یا پارک در اینجا وجود دارد، ابتدا پاسخ دهید که چگونه در جاهای مجاز، پارک انجام می‌شود. این که دقیقا چه محدودیت‌هایی می‌تواند اعمال شود بعدا مشخص خواهد شد.
 
 همچنین می‌توانید یک یادداشت (با عکس) بگذارید."</string>
     <string name="quest_address_house_number_label">"شماره پلاک خانه:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"آیا این جاده شانه دارد؟"</string>
     <string name="quest_fireHydrant_position_title">"این شیر آتش‌نشانی در کجا قرار دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"در چمن یا خاک"</string>
     <string name="quest_fireHydrant_position_lane">"در جاده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"در پیاده‌رو"</string>
     <string name="quest_fireHydrant_position_parking_lot">"در یک پارکینگ"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"بله (یادداشت بگذارید)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"کیفیت سطح این میدان چگونه است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"کیفیت سطح این جاده در اینجا چگونه است؟"</string>
     <string name="quest_smoothness_title_excellent">"صاف و یک‌دست"</string>
     <string name="quest_smoothness_title_good">"اکثرا حتی"</string>
@@ -2378,46 +1031,27 @@
     <string name="quest_smoothness_description_very_bad_paved">"چاله‌های عمیق، شیارها یا سایر آسیب‌های خطرناک"</string>
     <string name="quest_smoothness_description_very_bad_sett">"شکاف‌های بزرگ، جابجایی، سنگ‌های گم شده یا نامنظم یا آسیب‌های خطرناک"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"سنگ‌ها، شکاف‌ها یا سایر موانع خطرناک پنهان و پراکنده"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"وجود برخی از سنگ‌های بزرگ، چاله‌های عمیق، برآمدگی‌ها، شیارها، پوسیدگی‌ها و یا سایر موانع خطرناک"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_horrible">"فقط توسط خودروهای برون جاده‌ای قابل استفاده است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_horrible">"فقط توسط خودروهای برون جاده‌ای قابل استفاده است"</string>
     <string name="quest_smoothness_description_impassable">"برای هر وخودروئی مناسب نیست، فقط با پای پیاده قابل عبور است"</string>
     <string name="quest_smoothness_wrong_surface">"سطح متفاوت است"</string>
     <string name="quest_smoothness_surface_value">"سطح اینجا به این صورت برچسب گذاری شده:"</string>
     <string name="quest_smoothness_obstacle">"یک مانع وجود دارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"لطفا یک پاسخ کلی برای میزان همواری ارائه دهید. موانع تکی مانند هاشور حاشیه‌ای، سرعت گیر یا شبکه گاوی شکل را می‌توان نادیده گرفت. موانع متعدد یا غیرمنتظره باید در پاسخ به حساب بیایند."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲، 🚗، 🚙، … مشخص کنید سطح برای کدام وسایل نقلیه باید مناسب باشد. آنچه اهمیت دارد، تصویر کلی است تا مشکلات تک‌و‌توک."</string>
     <string name="link_osmhydrant_description">"جستجو، افزودن و ویرایش ایستگاه‌های آتش‌نشانی و شیر آتش‌نشانی"</string>
     <string name="achievement_lifesaver_title">"نجات‌دهنده"</string>
     <string name="achievement_lifesaver_solved_X">"شما %d جُستاری را که به خدمات اضطراری و اولین پاسخ دهندگان کمک می کند، حل نمودید!"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
-    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"آیا خود شخص می‌تواند در این جایگاه سوخت، نازل را بردارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"این نوع جُستار به طور پیشفرض غیرفعال است زیرا یا بسیار وقت‌گیر است یا انتخاب درست اغلب دشوار است. فقط در صورتی این نوع جستار را فعال کنید که واقعاً دنبال اضافه‌کردن این نوع داده باشید."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"شن و ماسه سست و سخت فشرده شده و بسیار کم"</string>
     <string name="quest_barrier_path_intersection">"این مسیر در اینجا چگونه از مانع عبور می‌کند؟"</string>
     <string name="quest_barrier_road_intersection">"این جاده در اینجا چگونه از مانع عبور می‌کند؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"به صورت جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="quest_shoulder_value_yes">"شانه"</string>
     <string name="quest_shoulder_value_no">"بدون شانه"</string>
     <string name="no_camera_permission_warning_title">"مجوز تصویربرداری"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"این مجوز برای اندازه‌گیری مسافت‌ها از طریق واقعیت افزوده لازم است."</string>
     <string name="ar_core_error_sdk_too_old">"این برنامه بسیار قدیمی است، لطفاً بروزرسانی کنید."</string>
     <string name="ar_core_tracking_error_bad_state">"مشکلی پیش آمد. اندازه‌گیری را از ابتدا آغاز کنید."</string>
@@ -2429,40 +1063,22 @@
     <string name="quest_bicycle_parking_access_title2">"چه کسی اجازه دارد اینجا دوچرخه پارک کند؟ پارکینگ ممکن است رایگان یا پولی باشد."</string>
     <string name="quest_playground_access_title2">"چه کسانی مجاز به استفاده از این زمین بازی هستند؟"</string>
     <string name="quest_sidewalk_answer_none_title">"انتخاب‌کردن اینکه پیاده روها وجود ندارد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_side_select_interface_explanation">"روی هر طرف ضربه بزنید و وضعیت آن طرف را انتخاب کنید.
 در صورت وجود همین کار را برای طرف دیگر انجام دهید."</string>
-
-    <!-- AR Measure screen -->
     <string name="ar_measure">"اندازه‌گیری"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"زاویه حاده، کمی فاصله بگیرید"</string>
     <string name="default_disabled_msg_no_ar">"برای حل این چالش به یک متر نواری نیاز دارید زیرا اندازه‌گیری با دوربین در این دستگاه پشتیبانی نمی‌شود."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"پهنای این مسیر دوچرخه‌سواری در اینجا چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_title">"پهنای این جاده در اینجا چقدر است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"عرض جاده از حاشیه تا حاشیه: این شامل هر چیزی در سطح خیابان مانند جای پارک در خیابان یا خطوط دوچرخه‌سواری است، اما هر چیزی فراتر از آن مانند مسیرهای دوچرخه‌سواری یا پارک در کنار جاده را حذف می‌کند."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"برای پشتیبانی از این برنامه از شما سپاسگزاریم!
 متأسفانه، به دلیل خط‌ مشی فروشگاه Google Play، هیچ پیوندی برای کمک مالی در برنامه نمایش داده نمی‌شود. در این زمینه، حتی پیونددادن به صفحهٔ اصلی پروژهٔ ما مجاز نیست."</string>
     <string name="link_osmand_description">"برنامهٔ همراه برای مشاهدهٔ نقشه و ناوبری؛ برخط و برون‌خط"</string>
     <string name="link_sunders_description">"نقشه دوربین‌ها و تجهیزات نظارتی"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"به جهت‌یاب نزدیک‌تر شوید، اما مراقب عبور و مرور باشید!"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_surface_title">"جنس سطح این پیاده‌رو چیست؟"</string>
     <string name="quest_tactilePaving_incorrect">"فقط در یک سمت"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"بله، …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"نه، اما یک مدت زمان حداکثر وجود دارد…"</string>
     <string name="unit_days">"روزها"</string>
@@ -2478,44 +1094,22 @@
     <string name="quest_smoking_separated">"فقط در مناطق تفکیک شده"</string>
     <string name="quest_smoking_yes">"بله، در همه جا"</string>
     <string name="quest_seating_name_title">"این مکان چه نوع نیمکتی دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"فقط خوراک آماده"</string>
     <string name="quest_seating_indoor_only">"فقط صندلی‌های داخل ساختمان"</string>
     <string name="quest_seating_outdoor_only">"فقط صندلی در فضای باز"</string>
     <string name="quest_seating_indoor_and_outdoor">"هم در فضای داخلی و هم در فضای باز"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا برای تأیید صندلی در فضای باز، شاید لازم باشد در زمان خاصی از سال بررسی انجام شود."</string>
     <string name="no_camera_permission_toast">"محدودیت تصویربرداری"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"آیا در اینجا پرداخت نقدی پذیرفته می‌شود؟"</string>
     <string name="quest_address_street_title2">"اینجا در کدام خیابان است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"آیا این مکان تهویه هوا دارد؟"</string>
     <string name="quest_baby_changing_table_title2">"آیا این مکان میز تعویض کودک دارد؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"آیا در این ایستگاه، نیمکت وجود دارد؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"آیا در این ایستگاه، سطل زباله وجود دارد؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"آیا این ایستگاه روشنایی دارد؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"اسم این ایستگاه چیست؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"شماره شناسایی این ایستگاه چیست؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"آیا این ایستگاه، سایبان دارد؟"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"آیا ایستگاه دارای سنگفرش لمسی نابینایان است؟"</string>
     <string name="quest_dietType_halal_name_title2">"آیا محصولات حلال در این محل ارائه می‌شود؟"</string>
     <string name="quest_dietType_kosher_name_title2">"آیا محصولات کوشر در اینجا ارائه می‌شود؟"</string>
@@ -2534,69 +1128,31 @@ sorted alphabetically by title -->
     <string name="quest_shop_type_title2">"این چه نوع مغازه‌ای است؟"</string>
     <string name="quest_smoking_title2">"آیا سیگار کشیدن در اینجا مجاز است؟"</string>
     <string name="quest_smoothness_title">"کیفیت سطح اینجا چگونه است؟"</string>
-
-    <!-- صرف ترجمه لغت به لغت اشتباه است . لطفا از سرویس های مترجم استفاده نشود -->
     <string name="quest_summit_register_title2">"آیا ثبت‌نام برای اجلاس سران در اینجا وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_title">"سطح از چه نوع مصالحی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"آیا در اینجا سرویس‌بهداشتی وجود دارد؟"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"آیا سرویس‌بهداشتی در این مکان با صندلی چرخدار قابل دسترسی است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"آیا مطمئن هستید که دوچرخه‌سواران مجاز به استفاده از این خیابان یک طرفه در هر دو جهت نیستند؟ بررسی کنید که آیا در انتهای خیابان تابلویی وجود دارد یا خیر."</string>
-
-    <!-- Fuzzy -->
     <string name="link_valhalla_description">"مسیریاب با اشغال بسیار کم حافظه، مسیریابی چندگانه، چندزمانه و غیره."</string>
     <string name="link_backofyourhand_description">"چقدر منطقه خود را می‌شناسید؟ دانستنی‌های خود را با مکان‌یابی خیابان‌ها محک بزنید."</string>
-
-    <!-- Fuzzy -->
     <string name="link_notesreview_description">"یادداشت‌هایی را که شما و دیگران ایجاد کرده‌اید به‌آسانی ببینید، پالایش کنید و روی آن‌ها نظر دهید. بسیاری از یادداشت‌ها را می‌توانیم حل کنیم بدین شکل که اطلاعات موجود در آن‌ها را با ویرایشگر iD یا JOSM روی نقشه اضافه کنیم."</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
-    <!-- Fuzzy -->
     <string name="quest_accepts_cards">"آیا کارت‌اعتباری یا نقدی در اینجا پذیرفته می‌شود؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"هر دو"</string>
     <string name="quest_accepts_cards_credit_only">"فقط کارت‌اعتباری"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accepts_cards_dedit_only">"فقط کارت‌های نقدی"</string>
     <string name="quest_accepts_cards_unavailable">"نه کارت نقدی و نه اعتباری"</string>
     <string name="quest_barrier_type_gate_any_size">"ورودی، هر اندازه"</string>
     <string name="quest_air_pump_compressor_title">"آیا تلمبه باد در اینجا موجود است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"فقط درج تعداد پله‌ها برای رسیدن به بالا. اگر تعداد پله‌ها در هر طرف تفاوت دارد، عدد بزرگ‌تر را وارد کنید."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_explanation2">"شانه، یک خط توقف اضطراری است که به وضوح با خط‌کشی مشخص شده است. منطقه‌ای که به عنوان شانه تعیین می‌شود الزوماً تمام عرض آن روسازی نشده است و الزوماً به اندازه کافی عریض نیست که یک خودرو کاملاً خارج از خط عبور و مرور توقف کند."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ممنوع، دوچرخه‌سواری در این جهت مجاز نیست"</string>
     <string name="map_btn_create_track">"ضبط رد جدید"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_stop_track">"توقف ضبط رد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_capacity_title">"چند مکان دوچرخه کرایه‌ای در اینجا وجود دارد؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_title">"نوع دوچرخه کرایه‌ای را مشخص کنید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_docking_station">"ایستگاه توقف دوچرخه‌ها با امکان قفل"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_dropoff_point">"محل تعیین شده (دوچرخه‌ها به صورت جداگانه قفل می‌شوند)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_human">"کرایه دوچرخه از مسئول"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_rental_type_shop_with_rental">"فروشگاه دوچرخه با ارائه دوچرخه کرایه‌ای"</string>
     <string name="quest_bicycle_shop_repair_title">"آیا تعمیر دوچرخه در اینجا وجود دارد؟"</string>
     <string name="quest_bicycle_shop_second_hand_title">"دوچرخه‌های دست دوم در اینجا فروخته می‌شود؟"</string>
@@ -2606,8 +1162,6 @@ sorted alphabetically by title -->
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"اصلا دوچرخه فروخته نمی‌شود"</string>
     <string name="quest_building_entrance_title">"ورودی ساختمان از چه نوعی است؟"</string>
     <string name="quest_building_entrance_main">"ورودی اصلی ساختمان عمومی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_entrance_staircase">"ورودی راه پله (به عنوان مثال ساختمان آپارتمان)"</string>
     <string name="quest_building_entrance_service">"ورودی خدمات / کارکنان"</string>
     <string name="quest_building_entrance_exit">"فقط خروج"</string>
@@ -2616,15 +1170,9 @@ sorted alphabetically by title -->
     <string name="quest_building_entrance_yes">"ورودی‌های دیگر"</string>
     <string name="quest_building_entrance_dead_end">"بن‌بست، بدون ورودی"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"برای شروع اندازه‌گیری، روی صفحه ضربه بزنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_air_pump_bicycle_shop_title">"تلمبه‌باد عمومی دوچرخه در اینجا هست (حداقل وقتی باز است)؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_air_pump_bicycle_repair_station_title">"آیا تلمبه سالم برای دوچرخه در این محل هست؟"</string>
     <string name="action_overlays">"همپوشانی‌ها"</string>
-
-    <!-- Fuzzy -->
     <string name="split_way">"تقاطع"</string>
     <string name="quest_memorialType_title">"این چه بنای یادبودی است؟"</string>
     <string name="quest_memorialType_statue">"مجسمهٔ شخص"</string>
@@ -2632,14 +1180,10 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_plaque">"لوح / پلاک"</string>
     <string name="quest_memorialType_war_memorial">"یادبود جنگ"</string>
     <string name="quest_memorialType_stone">"سنگ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_memorialType_obelisk">"ستون هرمی شکل سنگی"</string>
     <string name="quest_memorialType_stele_wooden">"ایستاسنگ چوبی (لوح یادبود)"</string>
     <string name="quest_memorialType_stele_stone">"ایستاسنگ سنگی (لوح یادبود)"</string>
     <string name="quest_memorialType_sculpture">"مجسمهٔ دیگر"</string>
-
-    <!-- Overlays -->
     <string name="select_overlay">"انتخاب پوشش"</string>
     <string name="overlay_none">"هیچ‌کدام"</string>
     <string name="overlay_lit">"روشنایی خیابان"</string>
@@ -2651,8 +1195,6 @@ sorted alphabetically by title -->
     <string name="quest_generic_answer_is_indoors">"در داخل ساختمان است"</string>
     <string name="quest_summit_cross_title">"آیا صلیب در این قله هست؟"</string>
     <string name="quest_entrance_reference">"روی این تابلو چه نوشته شده است؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_entrance_reference_select_flat_range_and_code">"برچسب ورودی و محدوده واحد‌های مجتمع"</string>
     <string name="quest_entrance_reference_select_flat_range_only">"محدوده واحدهای مجتمع"</string>
     <string name="quest_entrance_reference_select_code_only">"برچسب ورودی"</string>
@@ -2678,28 +1220,16 @@ sorted alphabetically by title -->
     <string name="link_opencampingmap_description">"نقشه اُردوگاه‌ها"</string>
     <string name="quest_atm_cashin_title">"آیا پول نقد را در این خودپرداز می‌توانید واریز کنید؟"</string>
     <string name="create_node_action_description">"شما یک گره ایجاد کردید با ..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessPointRef_answer_assembly_point">"این یک مکان تجمع است"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"نقطه تجمع جایی است که افراد در مواقع اضطراری در آن جمع می‌شوند. معمولاً شبیه این به نظر می‌رسد:"</string>
     <string name="quest_address_answer_house_name2">"آدرس دارای شماره خانه است..."</string>
     <string name="quest_address_street_street_name_label">"نام خیابان:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_hint2">"برای انتخاب خیابان روی نقشه ضربه بزنید"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_incline_title">"کدام جهت در اینجا به سمت بالا منتهی می‌شود؟"</string>
     <string name="quest_bicycle_incline_up_and_down">"دارای پستی و بلندی هست"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_type_title">"آب آشامیدنی در اینجا چگونه تامین می‌شود؟"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"فواره دیگر"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"فواره قطره های کوچک آب می پاشد"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"فقط پر کردن بطری‌ها"</string>
     <string name="quest_drinking_water_type_tap">"شیرآب"</string>
     <string name="quest_drinking_water_type_hand_pump">"پمپ دستی"</string>
@@ -2710,8 +1240,6 @@ sorted alphabetically by title -->
     <string name="overlay_shops">"فروشگاه‌ها"</string>
     <string name="name_label">"نام:"</string>
     <string name="vacant_shop_title">"مغازه خالی"</string>
-
-    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
     <string name="quest_address_answer_no_address">"بدون آدرس"</string>
     <string name="quest_bicycle_barrier_installation_title">"آیا این مانع دوچرخه باز میشود(با یا بدون کلید)؟"</string>
@@ -2726,8 +1254,6 @@ sorted alphabetically by title -->
     <string name="quest_presets_rename">"تغییر نام"</string>
     <string name="quest_presets_share">"اشتراک‌گذاری"</string>
     <string name="quest_presets_delete">"حذف"</string>
-
-    <!-- Config via URL/QRCode -->
     <string name="urlconfig_qr_code_description">"این کد QR را به دیگران نشان دهید تا پیش تنظیم های‌تان را اشتراک بگذارند."</string>
     <string name="urlconfig_as_url">"یا به عنوان آدرس اینترنتی:"</string>
     <string name="urlconfig_url_copied">"نشانی اینترنتی در کلیپ بورد کپی شد"</string>
@@ -2736,14 +1262,8 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message_overwrite">"نکته: پیش تنظیم شما با همین نام دوباره نویسی میشود!"</string>
     <string name="urlconfig_switch_hint">"هر زمان که بخواهید می‌توانید تنظیمات از پیش تعیین شده را در منوی تنظیمات تغییر دهید."</string>
     <string name="quest_bicycle_parking_type_two_tier">"قفسه دوچرخه دو تایره"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"این هفته"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_dates_mapped">"روزهایی را که اخیراً نقشه‌برداری کرده‌اید"</string>
-
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"خط دوچرخه ادعا شده"</string>
     <string name="urlconfig_scan_qr_code_again2">"بعد از نصب برنامه، کد QR را اسکن کنید یا روی &lt;a href=\"%s\"&gt;این لینک&lt;/a&gt; کلیک کنید تا پیش‌تنظیم اعمال شود."</string>
     <string name="confirmation_replace_shop_title">"اینجا یک مکان متفاوت است؟"</string>

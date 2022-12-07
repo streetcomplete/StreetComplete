@@ -1,4 +1,3 @@
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
@@ -44,27 +43,22 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
         val apiToken = apiToken ?: return
         val projectId = projectId ?: return
 
-        val languageCodes = fetchLocalizations(apiToken, projectId) { it["code"] as String }
+        val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         val json = Json {
             prettyPrint = true
         }
 
         for (languageCode in languageCodes) {
             println(languageCode)
-            fetchLocalization(apiToken, projectId, languageCode, "key_value_json") { inputStream ->
-                val txt = inputStream.bufferedReader().use { it.readText() }
-                if (txt.isNotEmpty()) {
-                    val translations = json.decodeFromString<Map<String, String>>(txt)
-                    val lang = if (languageCode.toLowerCase() == "en-us") "en" else languageCode.toLowerCase()
-                    val strings = translations.filterKeys { it in keys || it in requiredKeys }
-                    // only accept complete translations
-                    if (requiredKeys.all { it in strings.keys }) {
-                        val dir = File("$targetDir/$lang/")
-                        dir.mkdirs()
-                        val file = File(dir, "strings.json")
-                        file.writeText(json.encodeToString(strings))
-                    }
-                }
+            val translations = fetchLocalizationJson(apiToken, projectId, languageCode)
+            val lang = if (languageCode.toLowerCase() == "en-us") "en" else languageCode.toLowerCase()
+            val strings = translations.filterKeys { it in keys || it in requiredKeys }
+            // only accept complete translations
+            if (requiredKeys.all { it in strings.keys }) {
+                val dir = File("$targetDir/$lang/")
+                dir.mkdirs()
+                val file = File(dir, "strings.json")
+                file.writeText(json.encodeToString(strings))
             }
         }
     }

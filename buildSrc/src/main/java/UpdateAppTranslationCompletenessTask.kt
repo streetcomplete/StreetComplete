@@ -16,15 +16,10 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
         val apiToken = apiToken ?: return
         val projectId = projectId ?: return
 
-        val localizationStatus = fetchLocalizations(apiToken, projectId) {
-            LocalizationStatus(
-                Locale.forLanguageTag(it.string("code")!!).transformPOEditorLanguageTag(),
-                it.int("percentage")!!
-            )
-        }
-        for (status in localizationStatus) {
-            val locale = status.locale
-            val completedPercentage = status.completedPercentage
+        val localizations = fetchAvailableLocalizations(apiToken, projectId)
+        for (status in localizations) {
+            val locale = Locale.forLanguageTag(status.code).transformPOEditorLanguageTag()
+            val completedPercentage = status.percentage
 
             val androidResCodes = locale.toAndroidResCodes()
 
@@ -45,5 +40,3 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
         }
     }
 }
-
-private data class LocalizationStatus(val locale: Locale, val completedPercentage: Int)

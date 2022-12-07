@@ -7,24 +7,44 @@ import java.util.Locale
 
 /** Fetch the localization for the given language code in the given format and do something
  *  with the contents */
-fun <T> fetchLocalization(apiToken: String, projectId: String, languageCode: String, format: String, block: (InputStream) -> T): T {
-    val url = URL(fetchLocalizationDownloadUrl(apiToken, projectId, languageCode, format))
-    return url.retryingQuotaConnection(null, block)
+fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: String): Map<String, String> {
+    val code = if (languageCode == "sr-latn") "sr-cyrl" else languageCode
+
+    val url = URL(fetchLocalizationDownloadUrl(apiToken, projectId, code, "key_value_json"))
+    return url.retryingQuotaConnection(null) { inputSteam ->
+        val txt = inputSteam.bufferedReader().use { it.readText() }
+        val obj = Parser.default().parse(txt.reader()) as JsonObject
+        val result = obj.entries.associate { it.key to it.value as String }
+
+        if (languageCode == "sr-latn") {
+            result.mapValues { it.value.serbianCyrillicToLatin() }
+        } else {
+            result
+        }
+    }
 }
 
 /** Fetch language codes of available translations from POEditor API */
-fun <T> fetchLocalizations(apiToken: String, projectId: String, mapping: (JsonObject) -> T): List<T> {
-    return URL("https://api.poeditor.com/v2/languages/list").retryingQuotaConnection({ connection ->
+fun fetchAvailableLocalizations(apiToken: String, projectId: String): List<Localization> {
+    val result = URL("https://api.poeditor.com/v2/languages/list").retryingQuotaConnection({ connection ->
         connection.doOutput = true
         connection.requestMethod = "POST"
         connection.outputStream.bufferedWriter().use { it.write("api_token=$apiToken&id=$projectId") }
     }) { inputStream ->
         val response = Parser.default().parse(inputStream) as JsonObject
         response.obj("result")!!.array<JsonObject>("languages")!!.map {
-            mapping(it)
+            Localization(it.string("code")!!, it.int("translations")!!, it.int("percentage")!!)
         }
+    }.toMutableList()
+
+    val serbian = result.find { it.code == "sr-cyrl" }
+    if (serbian != null) {
+        result.add(serbian.copy(code = "sr-latn"))
     }
+    return result
 }
+
+data class Localization(val code: String, val translations: Int, val percentage: Int)
 
 /** Fetch the download URL for the given language code. Handle quota. */
 private fun fetchLocalizationDownloadUrl(apiToken: String, projectId: String, languageCode: String, format: String): String {

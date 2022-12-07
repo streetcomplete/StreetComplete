@@ -19,7 +19,7 @@ open class UpdateAppTranslationsTask : DefaultTask() {
         val projectId = projectId ?: return
         val exportLanguages = languageCodes?.map { Locale.forLanguageTag(it) }
 
-        val languageTags = fetchLocalizations(apiToken, projectId) { it.string("code")!! }
+        val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
         for (languageTag in languageTags) {
             val locale = Locale.forLanguageTag(languageTag)
 
@@ -34,9 +34,13 @@ open class UpdateAppTranslationsTask : DefaultTask() {
             println()
 
             // download the translation and save it in the appropriate directory
-            val text = fetchLocalization(apiToken, projectId, languageTag, "android_strings") { inputStream ->
-                inputStream.readBytes().toString(Charsets.UTF_8)
-            }
+            val translations = fetchLocalizationJson(apiToken, projectId, languageTag)
+            val text = """<?xml version="1.0" encoding="utf-8"?>
+<resources>
+${translations.entries.joinToString("\n") { (key, value) ->
+"    <string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
+} }
+</resources>"""
             for (androidResCode in androidResCodes) {
                 File(targetFiles(androidResCode)).writeText(text)
             }

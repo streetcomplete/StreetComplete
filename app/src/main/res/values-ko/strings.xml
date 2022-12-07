@@ -3,9 +3,6 @@
     <string name="action_settings">"설정"</string>
     <string name="oauth_communication_error">"인증 서버에 접속할 수 없습니다"</string>
     <string name="oauth_failed_permissions">"인증 실패: 목록에 있는 모든 권한을 허가해야 합니다"</string>
-
-    <!-- Settings screen -->
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"연결"</string>
     <string name="pref_category_display">"화면"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -22,22 +19,12 @@
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"다른 편집자들의 의견을 받아 문제 해결의 실마리를 찾도록 공개된 참고를 작성하거나 그냥 이 기기에서만 숨길 수 있습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"예"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"아니오, 그냥 숨기기"</string>
     <string name="quest_streetName_title">"이 도로의 이름은 무엇인가요?"</string>
     <string name="quest_streetName_description">"도로명 표지판에 표기된 명칭 그대로, 약자는 풀어서 입력하세요:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"도로명 표지판은 도로의 한쪽 끝에만 있는 경우가 종종 있습니다. 또한, 더 큰 도로에 속한 주변 도로의 경우에는 도로명 표지판이 없을 수도 있다는 점을 상기하세요. 집이 있는 도로의 대다수는 이름이 있습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"이름을 풀어쓸 수 있다면 풀어써야 합니다. 자주 쓰이는 줄임말 대부분은 입력할 때 자동으로 바뀌지만, 항상 그렇지는 않습니다."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"줄임말 없음"</string>
     <string name="quest_openingHours_start_time">"개점 시각"</string>
@@ -49,17 +36,12 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">"요일 선택"</string>
     <string name="quest_openingHours_24_7_confirmation">"24시간 내내 쉬는 날 없이 열려 있나요?"</string>
     <string name="quest_noteDiscussion_title">"이 참고에 기여할 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"아니오, 숨깁니다"</string>
     <string name="quest_noteDiscussion_anonymous">"익명 사용자"</string>
     <string name="confirmation_discard_title">"대답을 취소하시겠습니까?"</string>
     <string name="confirmation_discard_positive">"버리기"</string>
     <string name="action_download">"이 구역의 과제 찾기"</string>
     <string name="action_upload">"답변 올리기"</string>
-
-    <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
     <string name="no_changes">"답변을 하지 않았습니다"</string>
     <string name="close">"닫기"</string>
     <string name="download_error">"과제를 찾는 중 오류 발생"</string>
@@ -71,17 +53,11 @@
     <string name="about_title_authors">"제작자"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick와 기여자들"</string>
     <string name="about_title_repository">"프로젝트 홈"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"GitHub으로 열기"</string>
     <string name="about_title_report_error">"오류 보고"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"피드백 주기"</string>
     <string name="about_title_license">"라이선스"</string>
     <string name="about_summary_license">"GNU 일반 공중 사용권"</string>
-
-    <!-- Error messages and crash report -->
     <string name="offline">"현재 오프라인입니다"</string>
     <string name="confirmation_authorize_now">"답변을 올리려면 OSM 사용자 계정을 인증해야 합니다. 지금 인증하시겠습니까?"</string>
     <string name="not_authorized">"인증되지 않음"</string>
@@ -91,39 +67,21 @@
     <string name="quest_streetName_answer_noProperStreet_link">"두 도로를 연결하는 역할만 함"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"기타 (참고 남기기)"</string>
     <string name="about_title_privacy_statement">"개인정보 보호방침"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"및 데이터 사용처"</string>
     <string name="quest_openingHours_public_holidays">"공휴일"</string>
     <string name="quest_openingHours_public_holidays_short">"공휴일"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"유동적임"</string>
     <string name="quest_openingHours_answer_247">"24시간 연중무휴"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"월별로 다름…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"개점 시간이 불규칙적임…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"영업 시간 설명"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"가급적 표지판에 써진 대로 간단히 옮기세요(예를 들어 \"예약제\"). 표지판이 없다고 해서 반드시 정해진 영업 시간이 없는 것은 아닙니다."</string>
     <string name="quest_roofShape_title">"건물 지붕의 기본 형태가 무엇인가요?"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"하나를 선택하세요:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"더보기…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
     <string name="quest_roofShape_answer_many">"여러 모양을 가지고 있습니다"</string>
-
-    <!-- Elements on map view -->
     <string name="map_btn_zoom_out">"축소"</string>
     <string name="map_btn_zoom_in">"확대"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;아, 개인정보 보호에 관심이 많으시군요! 걱정하지 않으셔도 될 것 같습니다:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -151,8 +109,6 @@
     <string name="quest_surface_value_unpaved">"비포장 (기타)"</string>
     <string name="quest_surface_value_ground">"토양 (기타)"</string>
     <string name="quest_surface_value_asphalt">"아스팔트"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"압축토"</string>
     <string name="quest_surface_value_concrete">"콘크리트"</string>
     <string name="quest_surface_value_dirt">"흙"</string>
@@ -160,34 +116,16 @@
     <string name="quest_surface_value_grass">"잔디"</string>
     <string name="quest_surface_value_grass_paver">"잔디블럭"</string>
     <string name="quest_surface_value_gravel">"자갈"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"돌 포장"</string>
     <string name="quest_surface_value_pebblestone">"조약돌"</string>
     <string name="quest_surface_value_sand">"모래"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"포석"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"목재"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"이 도로에 인도가 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"이 도로는 어디에 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"일방통행 도로인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"이 건물의 건물번호는 무엇인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap 조사 앱"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"StreetComplete로 OpenStreetMap을 개선하는 데 도움을 주세요!
 
 이 앱은 근처의 미완성이거나 보충이 필요한 자료를 찾아 지도에 표기합니다. 현장에서 간단한 질문에 대답해 정보를 보충할 수 있습니다.
@@ -197,8 +135,6 @@
     <string name="quest_name_answer_noName_confirmation_title">"정말로 이름이 없나요?"</string>
     <string name="quest_name_noName_confirmation_positive">"예, 이름 없음"</string>
     <string name="quest_openingHours_add_times">"영업 시간 추가"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"오류 보고서를 개발자에게 보내 주실 수 있으신가요?"</string>
     <string name="crash_title">"이런, StreetComplete가 오류로 종료되었어요!"</string>
     <string name="crash_compose_email">"이메일 보내기"</string>
@@ -206,15 +142,9 @@
     <string name="pref_title_keep_screen_on">"화면 계속 켜기"</string>
     <string name="download_server_error">"과제를 찾는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
     <string name="upload_server_error">"답변을 업로드하는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
-
-    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"예"</string>
     <string name="quest_generic_hasFeature_no">"아니오"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"여기에 자전거를 몇 대까지 주차할 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"건물번호가 일반적이지 않습니다."</string>
     <string name="quest_sport_title">"어떤 운동을 하는 곳인가요?"</string>
     <string name="quest_sport_answer_multi">"특정 운동이 아님"</string>
@@ -239,31 +169,21 @@
     <string name="quest_sport_australian_football">"호주 풋볼"</string>
     <string name="quest_sport_badminton">"배드민턴"</string>
     <string name="quest_sport_canadian_football">"캐나다 풋볼"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"필드하키"</string>
     <string name="quest_sport_handball">"핸드볼"</string>
     <string name="quest_sport_ice_hockey">"아이스하키"</string>
     <string name="quest_sport_netball">"네트볼"</string>
     <string name="quest_sport_rugby">"럭비"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
     <string name="quest_select_hint">"선택하세요:"</string>
     <string name="quest_sport_manySports_confirmation_description">"이 운동시설이 정확히 아래의 운동종목에 맞추어진 (표시선과 장비가 있음) 시설인가요, 아니면 다양한 종목의 운동을 할 수 있는 다용도 시설인가요?"</string>
     <string name="quest_manySports_confirmation_specific">"전용 시설"</string>
     <string name="quest_manySports_confirmation_generic">"다용도 시설"</string>
     <string name="quest_sport_manySports_confirmation_title">"여러 운동종목을 선택했습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"화장실 요금이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"횡단보도 양쪽 모두에 점자 타일이 있나요?"</string>
     <string name="quest_source_dialog_title">"현장에서 확인한 게 맞나요?"</string>
     <string name="quest_source_dialog_note">"현장 조사로 얻은 정보만 입력해야 합니다."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"자전거 주차장에 (비를 막아주는) 지붕이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"다음 실행 시까지 보지 않기"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"제한속도가 현실적인 것 같지 않습니다."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"정말 속도 제한이 없나요?"</string>
@@ -271,101 +191,45 @@
 강조된 부분을 포함하는 도로 전체에 표지판이 없다면, 기본 속도 제한이 적용됩니다."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"네, 표지판 없음"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"시내 도로는 도시 외곽 도로에 비해 기본 제한 속도가 낮습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"도시"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"시골"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"주요 도로 교차로에 이 같은 표지판이 있다면, 주요 도로에 적용된 속도 제한이 모든 영역에 적용되기 때문에 이 영역에서 개별 표지판을 찾을 수 없을 것입니다."</string>
     <string name="quest_sport_softball">"소프트볼"</string>
     <string name="quest_sport_racquet">"라켓볼"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"빙상 스케이트"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"패들테니스"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"아일랜드 전통놀이"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"세팍타크로"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"제한 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"일반적인 자전거 거치대는 양 쪽에서 주차할 수 있다는 점을 유의하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"롤러스케이팅"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"입구에 계단이 발목 높이를 초과하지 않으며 휠체어로 대부분의 내부 시설을 이용할 수 있는 경우 '제한 있음'을 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"계단이 발목 높이를 초과하지 않는 경우 '제한 있음'을 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"이름 %s의 축약형이 있나요?"</string>
     <string name="quest_recycling_type_title">"어떤 형태의 재활용 시설인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"센터"</string>
     <string name="overground_recycling_container">"컨테이너"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"지하 컨테이너"</string>
     <string name="quest_streetName_answer_cantType">"표지판에 나와 있는 문자를 입력할 수 없음"</string>
     <string name="quest_streetName_cantType_title">"키보드 레이아웃이 없나요?"</string>
     <string name="quest_streetName_cantType_open_settings">"설정 열기"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"앱 스토어로 이동"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"기본 키보드를 사용하고 있다면, 키보드 설정에서 원하는 언어의 키보드를 간단하게 활성화할 수 있습니다.
 
 기본 키보드를 사용하고 있지 않다면, 앱 스토어에서 많은 언어를 지원하는 키보드를 다운로드하세요. 대표적으로 구글 Gboard, SwiftKey Keyboard, Multiling O Keyboard가 있습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(미지정)"</string>
     <string name="quest_fireHydrant_type_title">"어떤 종류의 소화전인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"기둥형"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"지하형"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"벽에 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"호수형"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
     <string name="credits_translations_title">"번역"</string>
     <string name="credits_contributors_title">"코드 기여자"</string>
-
-    <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"제작자·유지보수자"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"그 외…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"주택가 거리입니다"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"그러면, 이렇게 생긴 표지판이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"이곳의 재배 작물이 무엇인가요?"</string>
     <string name="produce_grapes">"포도"</string>
     <string name="produce_agaves">"용설란"</string>
@@ -373,28 +237,16 @@
     <string name="produce_apples">"사과"</string>
     <string name="produce_apricots">"살구"</string>
     <string name="produce_avocados">"아보카도"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"바나나"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"블루베리"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"카카오"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"캐슈넛"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cherries">"체리"</string>
     <string name="produce_chestnuts">"밤"</string>
     <string name="produce_coconuts">"코코넛"</string>
     <string name="produce_coffee">"커피"</string>
     <string name="produce_cranberries">"크랜베리"</string>
     <string name="produce_dates">"대추"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"무화과"</string>
     <string name="produce_grapefruits">"그레이프프루트"</string>
     <string name="produce_guavas">"구아바"</string>
@@ -407,11 +259,7 @@
     <string name="produce_limes">"라임"</string>
     <string name="produce_mangos">"망고"</string>
     <string name="produce_mate">"마테나무"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"육두구"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"기름야자나무"</string>
     <string name="produce_olives">"올리브"</string>
     <string name="produce_oranges">"오렌지"</string>
@@ -419,8 +267,6 @@
     <string name="produce_peaches">"복숭아"</string>
     <string name="produce_pears">"배"</string>
     <string name="produce_chili">"고추"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"감"</string>
     <string name="produce_pineapples">"파인애플"</string>
     <string name="produce_pepper">"후추"</string>
@@ -433,40 +279,20 @@
     <string name="produce_vanilla">"바닐라"</string>
     <string name="produce_walnuts">"호두"</string>
     <string name="produce_sisal">"사이잘"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"이곳을 탐색할 수 없습니다. 더 확대하거나 지도를 똑바로 세워 보세요."</string>
     <string name="quest_crossing_type_title">"어떤 종류의 횡단보도인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="action_undo">"되돌리기"</string>
     <string name="produce_mangosteen">"망고스틴"</string>
     <string name="produce_tomatoes">"토마토"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"빈랑"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"피망"</string>
     <string name="produce_brazil_nuts">"브라질 땅콩"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"캔들넛"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"어떤 종류의 주차장인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"지상 주차장"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"지하 주차장"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"주차장 건물"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">"이 전봇대의 재질은 무엇인가요?"</string>
     <string name="quest_powerPolesMaterial_wood">"나무"</string>
     <string name="quest_powerPolesMaterial_metal">"철"</string>
@@ -474,122 +300,60 @@
     <string name="quest_maxspeed_answer_advisory_speed_limit">"권장 속도만 있음…"</string>
     <string name="quest_address_house_name_label">"건물 명칭:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"지붕 층수"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"기본 층수(지붕 층수는 제외)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"건물 부분별로 다름"</string>
     <string name="quest_buildingLevels_answer_description">"부분별로 층수가 다르다면 가장 높은 부분의 값을 입력하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"이 도로의 중앙선이 물리적(장벽 등)으로 분리되어 있나요? 기본 속도 제한은 이 경우에 해당하는지 아닌지에 따라 다릅니다."</string>
     <string name="about_category_feedback">"피드백"</string>
     <string name="quest_leave_new_note_photo">"사진 첨부"</string>
     <string name="quest_leave_new_note_photo_delete_title">"이 사진을 삭제할까요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"자전거 도로"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"자전거 차로"</string>
     <string name="quest_cycleway_value_none">"없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"다른 교통수단과 차로 공유 명시"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"버스 차로 공유"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"인도 겸용 포장"</string>
     <string name="quest_leave_new_note_create_image_error">"사진 파일을 생성할 수 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"양방향 자전거 차로"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"양방향 자전거 도로"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"상세"</string>
     <string name="quest_enabled">"활성화됨"</string>
     <string name="quest_type">"과제 유형"</string>
     <string name="action_reset">"초기화"</string>
     <string name="undo_confirm_positive">"되돌리기"</string>
     <string name="undo_confirm_negative">"취소"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"이것만 가능"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"비건 식단에는 동물성 재료(고기, 생선, 우유, 계란, 꿀 등…)가 없어야 합니다."</string>
     <string name="quest_dietType_explanation_vegetarian">"채식주의자 식단에는 고기, 생선이 없어야 합니다."</string>
     <string name="quest_dietType_explanation">"해당하는 식단의 비중이 다른 식단과 유사하거나 높을 때만 “예”라고 답하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"어떤 종류의 세차기인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"자동"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"셀프 서비스"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"직원이 세차를 해줌"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"이 유형의 과제를 활성화하시겠습니까?"</string>
     <string name="default_disabled_msg_go_inside">"이 유형의 과제에 답변하려면 보통 해당 장소에 직접 들어가야 하기 때문에 기본적으로 비활성화되어 있습니다."</string>
     <string name="quest_housenumber_conscription_number">"징병 지번"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"방위각(선택)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"반대쪽에도 자전거 도로가 있음…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"표지판에 적혀 있는 내용을 적어야 합니다. 표지판이 없다면 안에 들어가서 영업 시간을 물어보아야 합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"없음, 그렇지만 자전거 이용자들은 양방향에서 도로를 이용할 수 있음"</string>
     <string name="quest_streetName_answer_noName_question">"왜 이름이 없나요?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"진입로거나 주차장 통로임"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"농로거나 임도임"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"위에서 고를 수 없음, 그냥 이름이 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"휠체어가 이용 가능한 화장실이라면 이런 휠체어 표지판이 있을 수도 있습니다.
 휠체어가 화장실에 들어와 사용할 수는 있으나, 손잡이가 없거나 전용 세면대가 없는 경우 '제한 있음'을 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_create_note">"새 참고 만들기"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"참고를 만들려면 더 확대하세요"</string>
     <string name="create_new_note_description">"참고를 남겨 이 곳의 문제를 다른 기여자들에게 알릴 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"주로 이렇게 생겼습니다:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"금속"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"여기에 자전거 도로가 있나요? 어떤 종류인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"이 다리의 구조가 무엇인가요?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"유선 (LAN)"</string>
     <string name="quest_internet_access_terminal">"인터넷 연결이 되는 컴퓨터"</string>
     <string name="quest_internet_access_no">"인터넷 불가"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"이 벤치에 등받이가 있나요?"</string>
     <string name="quest_bench_answer_picnic_table">"소풍 탁자입니다"</string>
     <string name="quest_religion_for_place_of_worship_title">"이 장소는 무슨 종교를 위한 장소인가요?"</string>
@@ -600,146 +364,74 @@
     <string name="quest_religion_shinto">"신토"</string>
     <string name="quest_religion_jewish">"유대교"</string>
     <string name="quest_religion_taoist">"도교"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"어떤 종교든 상관없이 이용함"</string>
     <string name="quest_religion_sikh">"시크교"</string>
     <string name="quest_religion_jain">"자이나교"</string>
     <string name="quest_religion_bahai">"바하이 신앙"</string>
     <string name="quest_religion_caodaist">"까오다이교"</string>
     <string name="quest_religion_chinese_folk">"중국 토착 종교"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"어떤 종교의 성지인가요?"</string>
     <string name="quest_parking_fee_title">"이곳에 주차 요금이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"거친 조약돌"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"이 광장의 포장재는 무엇인가요?"</string>
     <string name="quest_fee_answer_hours">"시간과 날짜에 따라 다름…"</string>
     <string name="quest_fee_add_times">"시간 추가"</string>
     <string name="quest_housenumber_multiple_numbers">"건물번호가 여러 개 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"건물번호를 쉼표로 분리하거나, 대시로 범위를 표기할 수 있습니다.\n예시: 1,3 또는 2–6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"스탠드(자전거 프레임에 걸침)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"바퀴 거치대(바퀴만 넣어야 함)"</string>
     <string name="quest_bicycle_parking_type_shed">"보관소"</string>
     <string name="quest_bicycle_parking_type_locker">"보관함"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"어떤 형태의 자전거 주차장인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"이 우체통의 수거 시각은 언제인가요?"</string>
     <string name="quest_collectionTimes_add_times">"수거 시각 추가"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"수거 시각 미표시"</string>
     <string name="quest_construction_road_title">"이 도로가 개통하였나요?"</string>
     <string name="quest_construction_cycleway_title">"이 자전거길이 개통하였나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"이 인도가 개통하였나요?"</string>
     <string name="quest_construction_generic_title">"이 길이 개통하였나요?"</string>
     <string name="quest_construction_building_title">"이 건물이 완공되었나요?"</string>
     <string name="questList_disabled_in_country">"%s에서 수행 불가"</string>
     <string name="quest_select_hint_most_specific">"가장 정확한 답변을 선택해 주세요:"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">"더 구체적인 선택지가 없습니까?"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 과제에서는 제3자 서비스에서 추가 정보를 가져오기도 합니다. 특히 일방통행로 과제에서는 westnordost.de의 API를 호출해서 일방통행로일 가능성이 높은 후보를 가져옵니다.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"아니오 (참고 남기기)"</string>
     <string name="pref_quests_reset">"과제 활성화 여부를 초기화하고 기본값으로 되돌리시겠습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"더 구체적인 값을 선택해 주세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"다용도 건물입니다"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"이 건물의 핵심 용도를 선택해 주세요. 예를 들어 1층에 상점이 있는 아파트라면 주 용도는 여전히 아파트로 간주합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"아직 공사 중입니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"주거용"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"사람이 거주하는 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"주택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"다수의 가족이 사는 집, 1층에 가게가 있을 수 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"아파트"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"외딴 집"</string>
     <string name="quest_buildingType_detached_description">"다른 건물과 떨어져 있는 단독주택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"한쪽 벽면이 옆집과 붙어 있는 주택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 줄지어 있는 단독주택"</string>
     <string name="quest_buildingType_hotel">"호텔 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"기숙사"</string>
     <string name="quest_buildingType_houseboat">"선상 가옥"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"방갈로"</string>
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
     <string name="quest_buildingType_commercial">"상업 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"사람들이 일하거나 물건을 파는 등의 상업 활동을 하는 건물"</string>
     <string name="quest_buildingType_industrial">"산업 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"예: 공장, 작업장, 자동차 수리점, …"</string>
     <string name="quest_buildingType_office">"사무용 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"상점"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"창고"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"키오스크"</string>
     <string name="quest_buildingType_storage_tank">"저장 탱크"</string>
     <string name="quest_buildingType_religious">"종교 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"교회"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"예배당"</string>
     <string name="quest_buildingType_cathedral">"대성당"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"모스크"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"사원"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"사찰 탑"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"유대교 회당"</string>
     <string name="quest_buildingType_civic">"공공 건물"</string>
     <string name="quest_buildingType_civic_description">"대개 편의시설을 갖춘 공공 건물"</string>
@@ -769,244 +461,95 @@
     <string name="quest_buildingType_hut">"오두막"</string>
     <string name="quest_buildingType_hut_description">"작고 단순한 주택이나 쉼터"</string>
     <string name="quest_buildingType_roof">"지붕"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"발전소 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"펌프나 변압기 같은 기계가 있는 건물"</string>
     <string name="quest_buildingType_hangar">"격납고"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"비행기, 헬리콥터, 우주선을 두는 창고"</string>
     <string name="quest_buildingType_bunker">"벙커"</string>
     <string name="quest_address_answer_no_housenumber">"건물번호가 없음…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"성지"</string>
     <string name="quest_maxspeed_title_short2">"이 거리의 속도 제한은 얼마인가요?"</string>
     <string name="quest_maxspeed_answer_sign">"표지판"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"저속 구간에 위치해 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"표지판이 없음, 기본값을 적용"</string>
     <string name="quest_openingHours_no_sign">"영업 시간 표지판이 없음"</string>
     <string name="quest_buildingType_sports_centre">"스포츠 센터"</string>
     <string name="quest_buildingType_toilets">"화장실"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"속도 제한이 어떻게 정해져있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"여기에 인도와 자전거 도로가 어떻게 놓여 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"변경한 내용을 수동으로 업로드하려면 툴바에서 이렇게 생긴 버튼을 사용하세요."</string>
     <string name="quest_segregated_separated">"서로 분리됨"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"자전거와 사람이 같은 공간을 공유함"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"여기의 높이 제한은 얼마인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"표지판이 없음…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"대형 트럭(최소 4.5 미터 / 15 피트 이상)이 통과하기에 충분한 공간이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"높이 제한이 현실적인 것 같지 않습니다. 이 높이가 맞습니까?"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"%1$s 닫음, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"%1$s 다시 엶, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s 숨김, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 제거됩니다.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"모두 선택 해제"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"식당, 카페 등을 위한 건물을 포함"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"다음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"이 농로는 얼마나 단단한가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"단단함"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"거의 부드러움"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"부드러움"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"이 건물이 완전히 지하에 있나요?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"들어가는 길에 계단이 발목 높이를 초과하지 않는 경우 '제한 있음'을 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"휠체어로 이 장소를 이용할 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"이 신호등에 보행자 신호를 요청하는 버튼이 달려 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"여기에 오토바이 몇 대가 주차할 수 있나요?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"이 오토바이 주차장에 지붕이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"이 유형의 과제를 해결하려면 속도 제한 표지판을 찾아 강조된 부분만이 아니라 도로 전체를 확인해야 하기 때문에 기본적으로 비활성화되어 있습니다. 한 과제를 해결하기 위해 불필요하게 많은 노력이 필요할 수 있습니다."</string>
     <string name="pref_title_quests_restore_hidden">"숨겨진 과제 복원"</string>
     <string name="restore_hidden_success">"숨겨진 과제 %d개가 복원되었습니다"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"%s층에 있음"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
     <string name="underground">"지하"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"인도"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"인도 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"이 도로에 보행자 통행이 금지되어 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"이 도로의 양쪽에는 모두 인도가 없다고 기록되어 있습니다. 실제로 인도가 있지만 차도와 별개로 지도에 표시되어 있다면, \"인도\"를 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"무슨 건물인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"테마 선택"</string>
     <string name="theme_automatic">"자동"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"밝음"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"어두움"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_system_default">"시스템 기본값"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"다른 앱에서 위치 열기"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
     <string name="label_housenumber">"건물번호"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"거리 블록 번호"</string>
     <string name="quest_busStopShelter_covered">"별도의 구조물로 덮여있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"보행자가 이 페리 노선을 이용할 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"자동차가 이 페리 노선을 이용할 수 있나요?"</string>
-
-    <!-- Add note interface -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"사진을 추가하면 참고를 읽는 다른 사람들에게 도움이 됩니다."</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"참고는 현지어나 현지어를 모를 경우 영어로 작성하는 것이 좋습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"여기 있는 나무의 잎의 종류는 무엇인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"침엽수"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"활엽수"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"둘 다 존재함"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"이 자전거 도로의 포장재가 무엇인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"부분별로 다름…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_description">"부분별로 대답이 다르다면, 먼저 길을 분할해야 합니다. 그런 다음, 나뉘어진 부분에 대해 과제를 각각 수행할 수 있습니다.
 분할하시겠습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"분할할 지점을 한 곳 이상 선택하세요. 최대한 정확히 나눠 주세요, 지도 확대도 가능합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"더 확대해 주세요"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"분할 지점이 너무 많습니다. 필요하다면 나중에 분할해 주세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"이 보도의 포장재가 무엇인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"하중 제한이 현실적인 것 같지 않습니다. 이 무게가 맞습니까?"</string>
     <string name="quest_maxweight_answer_other_sign">"표지판이 다르게 생김…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"참고를 남기고 싶으신가요? 사진과 함께 참고를 남기면 다른 매퍼가 이를 대신 처리해 줄 수 있습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"이 계단에 난간이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"현재 버전: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"참조 번호가 보이지 않음…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"아래 그림의 회전 방향은 위 지도의 핀 부분에서와 같습니다."</string>
     <string name="quest_recycling_materials_title">"이 분리수거함에 무엇을 넣을 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"이 중에 원하는 답이 없다면, 대신 참고를 남겨 주세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"배터리"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"캔"</string>
     <string name="quest_recycling_type_clothes">"의류"</string>
     <string name="quest_recycling_type_green_waste">"정원 폐기물"</string>
@@ -1022,25 +565,13 @@
     <string name="quest_recycling_type_scrap_metal">"고철류"</string>
     <string name="quest_recycling_type_any_glass">"모든 유리"</string>
     <string name="quest_recycling_glass_title">"유리병만 넣을 수 있나요, 아니면 모든 종류의 유리를 넣을 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"넣을 수 없는 유리의 예시: 강화유리, 창문, 유리 제품(그릇 등), 전구, 거울 등."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"버전 역사"</string>
     <string name="title_whats_new">"무엇이 바뀌었나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"이 앱 평가하기"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"구글 플레이에서"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_donate">"기부"</string>
     <string name="about_summary_donate">"감사하는 마음을 보여주세요! ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"이 앱을 지원하기로 결정해 주셔서 감사합니다! 기부 현황을 보거나 기부하고 싶으시다면, 원하시는 플랫폼을 터치해 주세요:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"대신 여기를 탐색"</string>
     <string name="confirmation_cancel_prev_download_cancel">"현재 탐색 유지"</string>
@@ -1058,11 +589,7 @@
     <string name="user_logout">"로그아웃"</string>
     <string name="osm_profile">"OSM 프로필"</string>
     <string name="next">"다음"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"시작합시다!"</string>
-
-    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"오픈스트리트맵에 오신 것을 환영합니다"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"자유로운 위키형 세계 지도"</string>
     <string name="tutorial_intro">"StreetComplete를 이용하면 손쉽게 오픈스트리트맵에 기여할 수 있어요.
@@ -1070,31 +597,20 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="tutorial_solving_quests">"탐색이 끝나면, 지도에 채워넣어야 할 데이터가 과제 형태로 지도에 표시돼요.
 
 여기서 바로 과제를 해결할 수도 있고, 먼저 로그인한 다음에 과제를 해결할 수도 있어요."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"대답에 확신이 들지 않으면, 언제든지 \"답할 수 없음\"을 선택해 참고를 남기세요.
 
 마지막으로, 안전하게 활동하세요: 주변 상황에 유의하고, 사유지에 들어가지 마세요."</string>
     <string name="tutorial_happy_mapping">"즐거운 지도 제작 시간 보내세요!"</string>
     <string name="achievements_empty">"아직 달성한 업적이 없습니다"</string>
-
-    <!-- Links screen -->
     <string name="links_empty">"아직 링크가 없습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"아직 아무 답변도 업로드하지 않았습니다"</string>
     <string name="unsynced_quests_description">"아직 올리지 않은 답변 %d개."</string>
     <string name="unsynced_quests_not_logged_in_description">"아직 변경 내역 %d개를 업로드하지 않았습니다. 변경 내역을 업로드하려면 로그인하세요."</string>
-
-    <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"해결한 과제"</string>
     <string name="user_achievements_title">"업적"</string>
     <string name="user_links_title">"링크 모음"</string>
     <string name="user_profile_title">"프로필"</string>
     <string name="user_statistics_quest_wiki_link">"문서"</string>
-
-    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"잠금 해제된 링크:"</string>
     <string name="achievements_unlocked_links">"잠금 해제된 링크:"</string>
     <string name="link_category_intro_title">"소개"</string>
@@ -1108,11 +624,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="link_category_goodies_title">"유용한 사이트"</string>
     <string name="link_category_goodies_description">"한번쯤 다뤄 볼 만한 흥미로운 지도 관련 사이트"</string>
     <string name="link_cyclosm_description">"자전거 이용자들을 위한 지도"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"휠체어가 접근할 수 있는 곳을 찾는 지도"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"건물을 3D로 보여주는 지도"</string>
     <string name="link_openvegemap_description">"여러분의 도시에 채식주의나 비건 식당이 있는지 찾아보세요"</string>
     <string name="link_touch_mapper_description">"점자 지도를 어느 곳이나 손쉽게 만들 수 있습니다"</string>
@@ -1129,12 +641,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="link_welcome_mat_description">"오픈스트리트맵에 관한 일반적인 정보와 단체로써 오픈스트리트맵에 기여하는 방법"</string>
     <string name="link_mapillary_description">"불특정 다수가 찍은 거리 사진을 공유하는 서비스이자 앱. 오픈스트리트맵에 기여할 때 자유롭게 이용할 수 있습니다"</string>
     <string name="link_openstreetcam_description">"수많은 사람이 거리 사진을 공유하는 서비스이자 앱. 여기 있는 사진들은 오픈스트리트맵에 기여할 때 자유롭게 이용할 수 있습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"휠체어 이용자를 위한 길안내용 내비게이션"</string>
     <string name="link_nominatim_description">"오픈스트리트맵 데이터 지오코더, 수많은 서비스에 사용됩니다"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"도시의 모든 도로를 티셔츠, 머그 컵 등등에 담습니다"</string>
     <string name="link_myosmatic_description">"인쇄 가능한 도시 지도를 손쉽게 만들 수 있습니다. 원한다면 지도 옆에 도로명을 나열할 수도 있습니다."</string>
     <string name="link_brouter_description">"아마도 가장 우수한 자전거용 경로 탐색 엔진"</string>
@@ -1145,13 +653,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="link_openinframap_description">"전력, 통신, 가스, 유류 기반시설을 보여주는 지도"</string>
     <string name="link_openorienteeringmap_description">"오리엔티어링을 위한 인쇄용 지도를 제작합니다"</string>
     <string name="link_openstreetbrowser_description">"오픈스트리트맵의 지물들을 카테고리별로 보여주는 지도"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"오픈스트리트맵 세계에서 일어나는 소식이 매주 올라오는 블로그"</string>
     <string name="link_figuregrounder_description">"피겨 그라운드 지도(건물이 있는 부분과 없는 부분을 표현한 지도)를 생성합니다"</string>
     <string name="achievement_first_edit_title">"첫 과제 해결"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"오픈스트리트맵 커뮤니티에 오신 것을 환영합니다! 프로필 화면에 들어가면 본인이 해결한 과제를 유형별로 볼 수 있습니다."</string>
     <string name="achievement_surveyor_title">"조사자"</string>
     <string name="achievement_surveyor_solved_X">"과제 %d개를 해결했습니다! 계속 과제를 해결해서 업적을 해제할수록 더 많은 오픈스트리트맵 관련 앱과 프로젝트를 볼 수 있어요!"</string>
@@ -1162,13 +666,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="achievement_wheelchair_title">"휠체어 이용자"</string>
     <string name="achievement_wheelchair_solved_X">"휠체어를 이용하는 사람을 위한 과제를 %d개 해결했습니다!"</string>
     <string name="achievement_postman_title">"우체부"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"주소 %d개를 기여했습니다!
 주소 데이터는 우체부에게도 필요하지만, 내비게이션에도 필요합니다."</string>
     <string name="achievement_building_title">"고층 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"건물 관련 과제를 %d 개 해결했습니다.
 이 앱은 건물의 용도가 결정된 후에만 건물번호를 물어본다는 점을 참고하세요."</string>
     <string name="achievement_blind_title">"여섯 번째 감각"</string>
@@ -1178,15 +678,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="achievement_veg_title">"동물 애호가"</string>
     <string name="achievement_veg_solved_X">"고기를 먹지 않는 사람들을 위한 과제를 %d 개 해결했습니다!"</string>
     <string name="achievement_car_title">"주행"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"도로와 도로 관련 시설을 위한 과제를 %d개 해결했습니다!"</string>
-
-    <!-- Notifications -->
     <string name="unread_messages_message">"수신함에 읽지 않은 메시지가 %d개 있습니다"</string>
     <string name="unread_messages_button">"수신함 열기"</string>
-
-    <!-- Main menu -->
     <string name="action_about2">"정보"</string>
     <string name="map_btn_menu">"메뉴"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;프로필에 나와 있는 데이터는 누구나 볼 수 있는 여러분의 오픈스트리트맵 기여 내역에서 가져와 합산하여 StreetComplete 서버에 저장합니다.&lt;/p&gt;"</string>
@@ -1194,14 +688,10 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="credits_art_contributors_title">"그림 기여자"</string>
     <string name="credits_projects_contributors_title">"StreetComplete를 지원하는 프로젝트"</string>
     <string name="credits_main_contributors_title">"주요 기여자"</string>
-
-    <!-- User statistics screen -->
     <string name="stats_are_syncing">"통계를 동기화하는 중입니다. 잠시 후에 확인하세요."</string>
     <string name="user_statistics_country_rank">"%2$s에서의 순위: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"지도 제작 포털 %s"</string>
     <string name="user_statistics_filter_by_country">"국가별"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"과제 유형별"</string>
     <string name="user_profile_global_rank">"전 세계
 순위"</string>
@@ -1211,8 +701,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 날(일)"</string>
     <string name="user_profile_achievement_levels">"기여
 레벨"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"이름이 있는 도로에 속해 있지 않음"</string>
     <string name="quest_address_street_place_name_label">"장소명:"</string>
     <string name="quest_recycling_type_cooking_oil">"조리용 기름"</string>
@@ -1229,34 +717,20 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_board_type_nature">"자연 (다양한 주제)"</string>
     <string name="quest_board_type_notice_board">"공지 알림판입니다"</string>
     <string name="quest_board_type_public_transport">"대중교통"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_title">"이 안내판의 주제가 무엇인가요?"</string>
     <string name="quest_board_type_map">"지도입니다"</string>
     <string name="quest_board_type_map_title">"지도 외엔 아무것도 없나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_map_description">"만약 안내판이 특정 주제를 다루고 있다면, 지도의 유무와 관계없이 해당 주제를 적어 주세요. 예를 들어 대중교통 안내판에는 버스 노선도가 있을 수 있습니다. 만약 답변 목록에서 주제를 찾을 수 없다면, 참고를 남겨 주세요."</string>
     <string name="quest_surface_detailed_answer_impossible">"혼합 재질임…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"정말 재질을 고를 수 없나요? 중간에 재질이 바뀐다면 \"부분별로 다름\"을 선택하여 재질이 바뀌는 곳을 기준으로 길을 분할할 수 있습니다. 선택지가 없는 단일 재질의 경우 \"답할 수 없음\"을 선택하세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"포장재의 특성을 간략하게 (예: \"모래 사이사이에 조약돌이 들어가 있음\") 적어 주세요. 최대 255자까지 적을 수 있습니다."</string>
     <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
     <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housename">"건물 명칭 %s"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housenumber">"건물번호 %s"</string>
     <string name="quest_openingHours_add_off_days">"휴일 추가"</string>
     <string name="quest_openingHours_off_day">"휴일"</string>
     <string name="quest_openingHours_unspecified_range">"명시되어 있지 않음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"현재 자전거 도로가 아래의 형태로 있나요?"</string>
     <string name="pref_title_resurvey_intervals">"재조사 간격"</string>
     <string name="resurvey_intervals_less_often">"더 가끔 물어보기"</string>
@@ -1273,12 +747,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_steps_incline_up">"이 방향"</string>
     <string name="quest_step_count_title">"계단이 몇칸인가요?"</string>
     <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"이 신호등에 시각 장애인에게 횡단해도 좋음을 알려주는 촉각 알림이 있나요?"</string>
     <string name="quest_traffic_signals_vibrate_description">"힌트: 촉각 알림은 보통 신호등 버튼 아래쪽에 진동하는 버튼이나 회전하는 고깔입니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"작은 외딴 집(여름 별장, 전원주택, 오두막, …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"철길 건널목에 어떤 장벽이 있나요?"</string>
     <string name="quest_railway_crossing_barrier_none2">"장벽 없음"</string>
@@ -1287,23 +757,15 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_steps_ramp_bicycle">"자전거용 경사로"</string>
     <string name="quest_steps_ramp_stroller">"유모차용 경사로"</string>
     <string name="quest_steps_ramp_wheelchair">"휠체어용 경사로"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"이 ATM은 어느 은행 소속인가요?"</string>
     <string name="quest_clothes_container_operator_title">"이 헌옷 수거함은 누가 운영하나요?"</string>
     <string name="quest_charging_station_operator_title">"이 충전소는 누가 운영하나요?"</string>
     <string name="link_indoorequal_description">"쇼핑몰, 지하철역 등에서 실내 지도를 찾아보세요"</string>
     <string name="achievement_rare_title">"모험가"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"다른 사람들이 잘 해결하지 않는 과제를 %d개 해결했습니다. 축하드립니다!"</string>
     <string name="achievement_citizen_title">"시민"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"도시에서의 일상에 유용한 과제를 %d개 해결했습니다!"</string>
     <string name="achievement_outdoors_title">"외출"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"외출하는 사람들에게 유용한 과제를 %d개 해결했습니다!"</string>
     <string name="quest_pedestrian_crossing_island">"이 보행자 횡단보도에 교통섬이 있나요?"</string>
     <string name="quest_generic_answer_noSign">"표지판이 없음"</string>
@@ -1320,134 +782,76 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_abandoned_description">"원래의 목적을 알 수 없는, 사용하지 않는 건물"</string>
     <string name="quest_buildingType_ruins">"폐허"</string>
     <string name="quest_buildingType_ruins_description">"버려지고 부서져 알아보기 힘든 건물"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"이 충전소에서 최대 몇 대의 차량이 동시에 충전할 수 있나요?"</string>
     <string name="link_disaster_ninja_description">"최근에 일어난 자연재해를 보여주는 지도로, 인도주의 지도 제작자들에게 유용합니다. 또한 어느 지역의 지도가 자세하고 최신인지를 분석해 통계로 보여줍니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_title">"이 도로는 몇 차로인가요?"</string>
     <string name="quest_lanes_answer_lanes">"차선이 그려져 있음"</string>
     <string name="quest_lanes_answer_noLanes">"차선이 그려져 있지 않음"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"양방향에서 사용하는 좌회전 차로 있음"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"위 내용이 맞나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"다리 밑 도로의 통과 높이 제한이 얼마인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"만약 선 전체에 적용되는 답변을 찾을 수 없다면, \"%s\"라고 답변해 보세요."</string>
     <string name="quest_tactile_paving_kerb_title">"이 연석에 점자 타일이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"이 연석의 높이가 얼마인가요?"</string>
     <string name="quest_kerb_height_flush">"차도와 높이가 동일함"</string>
     <string name="quest_kerb_height_lowered">"차도보다 약간 더 높음"</string>
     <string name="quest_kerb_height_raised">"높은 연석"</string>
     <string name="quest_kerb_height_lowered_ramp">"경사진 연석"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"차량이 이용하는 차선이 그려진 갯수를 (양 방향 모두) 답하세요. 즉, 자전거 차선이나 갓길 주차로는 세지 않습니다.
 만약 버스 전용 차로가 있다면, 참고를 대신 남겨 주세요."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"차량이 이용하는 차선이 그려진 갯수를 답하세요. 즉, 자전거 차선이나 갓길 주차로는 세지 않습니다.
 만약 버스 전용 차로가 있다면, 참고를 대신 남겨 주세요."</string>
     <string name="quest_surface_value_rock">"바위"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"큰 트럭이 통과할 수 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭이 통과할 수 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"횡단보도가 그려져 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"도로변에 위치하지 않은 주차장"</string>
     <string name="quest_parkingType_lane">"도로변 주차장"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
     <string name="quest_tracktype_grade3a">"거의 단단함"</string>
     <string name="quest_generic_answer_does_not_exist">"존재하지 않습니다…"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"정말 존재하지 않습니까? 혹시 바로 옆에 있는 것은 아닌가요? 확신이 들지 않는다면, 대신 참고를 남기는 것이 좋습니다."</string>
     <string name="osm_element_gone_confirmation">"존재하지 않습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="leave_note">"참고 남기기"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"지금은 여기에 무엇이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"비어 있습니다"</string>
     <string name="quest_shop_gone_replaced_answer">"새로 바뀐 상점명:"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"이 장소의 유형을 입력하세요"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"이 가게는 비어 있었습니다. 지금 여기에 무엇이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"차선 수가 방향에 따라 다름"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"이 유형의 과제는 일부 지역에서 유용하지 않고, 답변하려면 보통 해당 장소에 직접 들어가야 하기 때문에 기본적으로 비활성화되어 있습니다."</string>
     <string name="quest_dietType_explanation_kosher">"코셔 제품은 특수 규정에 따라 제조되어야 하며, 카샤룻 인증 기관에서 적합 평가를 받아야 합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"자전거 도로 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"평소와 마찬가지로, 그림에서 한 쪽을 탭한 후 적절한 답변을 고르고, 반대쪽도 동일하게 합니다. 모든 선택지를 꼼꼼히 확인하세요: 한눈에 알아보기 힘든 경우도 존재하는데, 예를 들어, 양방향 자전거 통행이 가능한 일방통행로 등이 있습니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"자전거 도로가 없음을 표시하기"</string>
     <string name="quest_construction_completed_at_known_date">"완공일자는…"</string>
     <string name="quest_construction_completion_date_title">"완공일자가 언제인가요?"</string>
     <string name="quest_surface_value_clay">"찰흙"</string>
     <string name="quest_surface_value_artificial_turf">"인조잔디"</string>
     <string name="quest_surface_value_tartan">"타탄"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"이곳에 자전거 주차 요금이 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"다른 건물과 붙어있는 단독주택"</string>
     <string name="quest_drinking_water_potable_signed">"마실 수 있음(표지판 있음)"</string>
     <string name="quest_drinking_water_potable_unsigned">"마실 수 있음(표지판 없음)"</string>
     <string name="quest_drinking_water_not_potable_signed">"마실 수 없음(표지판 있음)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"마실 수 없음(표지판 없음)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"이 우체통에 어떤 왕실 문장이 박혀 있나요?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"왕실 문장이 보이지 않음"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"스코틀랜드 왕관"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"소방서"</string>
     <string name="quest_recycling_type_beverage_cartons">"종이팩만 취급"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"플라스틱 병(페트병 등)과 종이팩만 취급"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode">"팀 모드"</string>
-
-    <!-- Team mode -->
     <string name="team_mode_exit">"팀 모드 종료"</string>
     <string name="team_mode_description">"여러 명이 그룹이 지어 동시에 한 장소를 조사하고 싶다면, 팀 모드를 활성화해 자료를 팀원들과 나눠 가지세요."</string>
     <string name="team_mode_team_size_hint">"팀 모드를 통해 2명에서 12명까지 무리를 지어 활동할 수 있습니다."</string>
     <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"신호등이 있는 건널목"</string>
     <string name="undo_confirm_title2">"이 편집을 취소할까요?"</string>
     <string name="synced">"동기화됨"</string>
     <string name="toast_undo_unavailable">"이 편집은 이미 동기화되었으므로 되돌릴 수 없습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"지도에 별도로 표시됨"</string>
-
-    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"생성된 참고"</string>
     <string name="commented_note_action_title">"댓글을 단 참고"</string>
     <string name="hid_action_description">"사용자가 숨김"</string>
@@ -1476,37 +880,19 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_barrier_type_log">"나무기둥"</string>
     <string name="quest_barrier_type_kerb">"연석"</string>
     <string name="quest_barrier_type_height_restrictor">"높이 제한기"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"전신 회전문"</string>
     <string name="quest_barrier_type_turnstile">"회전문"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"벽이나 울타리 등에 난 통로"</string>
     <string name="quest_barrier_type_debris_pile">"잔해 더미"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_squeezer">"좁은문"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_stile_ladder">"사다리문"</string>
     <string name="quest_barrier_type_bicycle_barrier">"자전거 차단기"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate">"한명만 들어갈 수 있는 문"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_swing_gate">"회전차단봉"</string>
     <string name="quest_policeType_title">"어떤 형태의 경찰서인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_kissing_gate_conversion">"한명만 들어갈 수 있는 문으로 바뀜"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_stile_type_title">"어떤 형태의 문인가요?"</string>
     <string name="quest_buildingType_semi_detached_description2">"여러 가구가 붙어있는 단독주택"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"과제 선택 및 우선순위"</string>
     <string name="pref_subtitle_quests">"%2$d개 중 %1$d개 선택됨"</string>
     <string name="no_location_permission_warning_title">"위치정보 접근 허용"</string>
@@ -1525,8 +911,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingLevels_title_buildingPart2">"이 건물 부분은 지하층 위로 몇층인가요?"</string>
     <string name="quest_crossing_title">"이 길이 도로와 만나는 지점에 연석이 있나교? 어떤 종류인가요?"</string>
     <string name="pref_subtitle_quests_preset_name">"프리셋: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"지붕 형태를 길거리에서 보는 것이 쉽지 않기 때문에 이 과제는 기본적으로 비활성화 되어있습니다. 이 과제는 또 시간을 많이 소모합니다; 대부분의 경우 집에서 위성사진을 통해 정보를 채워넣는 게 더 쉽고 효율적입니다."</string>
     <string name="quest_religion_animist">"애니미즘"</string>
     <string name="quest_construction_steps_title">"이 계단이 완공되었나요?"</string>
@@ -1534,12 +918,8 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_boathouse">"선상가옥"</string>
     <string name="quest_buildingType_allotment_house">"공동정원 변소"</string>
     <string name="quest_buildingType_grandstand">"관중석"</string>
-
-    <!-- Quest selection screen -->
     <string name="action_search">"검색"</string>
     <string name="action_manage_presets">"프리셋 관리"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"몇명이서 탐사하나요? 모든 사람의 폰에 같은 숫자를 입력하세요."</string>
     <string name="team_mode_choose_color2">"이제, 모두가 각자 다른 색깔을 골라야 합니다. 색을 골라주세요:"</string>
     <string name="link_organic_maps_description">"오프라인에서도 작동하는 여행객, 등산객, 자전거 이용자용 지도 앱"</string>
@@ -1551,18 +931,12 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="no_search_results">"아무것도 없음"</string>
     <string name="quest_selection_hint_title">"할 게 너무 많나요?"</string>
     <string name="quest_selection_hint_message">"기여는 일단 재밌어야죠! 과제 수가 너무 많아 부담스럽다면, 어떤 과제를 어떤 순서대로 볼지 설정에서 언제든지 조정할 수 있습니다."</string>
-
-    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"프리셋 추가"</string>
     <string name="quest_presets_preset_name">"프리셋 이름"</string>
     <string name="quest_presets_default_name">"기본값"</string>
     <string name="quest_presets_selected">"선택됨"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"프리셋 \"%s\"을(를) 지울까요? 해당되는 과제 목록과 순서가 지워지며 되돌릴 수 없습니다."</string>
     <string name="notification_syncing">"데이터 동기화 중…"</string>
-
-    <!-- Android notifications -->
     <string name="notification_channel_sync">"데이터 동기화"</string>
     <string name="quest_board_type_sport">"스포츠, 운동"</string>
     <string name="quest_generic_hasFeature_optional">"선택적"</string>
@@ -1570,9 +944,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_laundrySelfService_title2">"이 세탁소는 셀프 빨래방인가요?"</string>
     <string name="quest_dietType_explanation_halal">"할랄 제품은 특수 규정에 따라 제조되어야 하며, 할랄 인증 기관에서 적합 평가를 받아야 합니다."</string>
     <string name="quest_picnicTableCover_title">"이 소풍 탁자에 (비를 막아주는) 지붕이 있나요?"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"이 부분은 계단입니다"</string>
     <string name="quest_barrier_type_passage_conversion">"벽이나 울타리를 통과하는 통로로 변환합니다."</string>
     <string name="quest_barrier_type_gate_conversion">"출입구로 바뀜"</string>
@@ -1597,21 +968,15 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_access_yes">"누구나 가능"</string>
     <string name="quest_access_customers">"특정 장소에 방문하는 사람(손님 등)만 가능"</string>
     <string name="quest_access_private">"권한이 있는 사람만 가능"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"이 우체통의 수거 시각이 아직도 맞나요?"</string>
     <string name="quest_bicycle_barrier_type_title">"이 자전거 방벽은 어떻게 생겼나요?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"대각선 방향"</string>
     <string name="quest_barrier_bicycle_type_tilted">"좁은 통로, 위로 갈수록 좁아짐"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"두 방벽 사이의 통로"</string>
     <string name="quest_barrier_bicycle_type_double">"시케인 - 양쪽에 방벽이 있음"</string>
     <string name="quest_barrier_bicycle_type_multiple">"시케인 - 방벽이 세 개 이상 있음"</string>
     <string name="pref_title_language_select">"언어 선택"</string>
     <string name="language_default">"시스템 기본값"</string>
-
-    <!-- Fuzzy -->
     <string name="on_floor">"%s이(가) 위치한 층수:"</string>
     <string name="select_street_parking_orientation">"도로에서 볼 때의 주차 방향을 선택하세요:"</string>
     <string name="select_street_parking_position">"주차 장소를 선택하세요:"</string>
@@ -1619,20 +984,10 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="street_parking_parallel">"평행 주차"</string>
     <string name="street_parking_diagonal">"대각선 주차"</string>
     <string name="street_parking_perpendicular">"수직 주차"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_street">"도로 주차"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"도로에 걸쳐서 주차"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"도로 옆에 주차"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_street_side">"도로 옆 지정된 공간에만 주차"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"도로에 지정된 공간에만 주차"</string>
     <string name="street_parking_separate">"지도에 별도로 주차공간이 표시됨"</string>
     <string name="street_parking_no">"주차 불가능 / 금지"</string>
@@ -1641,30 +996,18 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="street_standing_prohibited">"운전자 하차 금지 (정차 가능)"</string>
     <string name="street_parking_conditional_restrictions">"주정차 일부 제한"</string>
     <string name="street_parking_no_other_reasons">"명확한 표시 없음 / 주차 불가"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"만약 어떤 형태로든 이곳에 주정차가 가능하다면, 그런 상황에서 어떻게 주정차할 수 있는지를 선택하세요. 어떤 제한이 적용되는지는 나중에 추가할 수 있습니다.
 
 아니면, (사진과 함께) 참고를 남길 수도 있습니다."</string>
     <string name="quest_address_house_number_label">"건물번호:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
     <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"잔디 또는 흙"</string>
     <string name="quest_fireHydrant_position_lane">"길가"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"인도"</string>
     <string name="quest_fireHydrant_position_parking_lot">"주차장"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"예 (참고 남기기)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"이 광장의 표면 상태가 어떠한가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"이 도로의 노면 상태가 어떠한가요?"</string>
     <string name="quest_smoothness_title_excellent">"매끈하고 고름"</string>
     <string name="quest_smoothness_title_good">"대체로 고름"</string>
@@ -1690,8 +1033,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoothness_description_very_bad_paved">"깊은 포트홀, 바퀴 자국 또는 기타 위험한 손상"</string>
     <string name="quest_smoothness_description_very_bad_sett">"큰 틈, 제 위치를 벗어났거나 빠진 돌 또는 불규칙한 모양의 돌 또는 위험한 손상"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"없어지거나 깨진 돌, 틈 또는 기타 위험한 손상"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"일부 큰 돌, 깊은 포트홀, 턱, 바퀴 자국, 침식 또는 기타 위험한 손상"</string>
     <string name="quest_smoothness_description_horrible">"오프로드 차량 또는 도보로만 적절하게 사용 가능"</string>
     <string name="quest_smoothness_description_very_horrible">"특수 오프로드 차량 또는 도보로만 적절하게 사용 가능"</string>
@@ -1699,33 +1040,20 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoothness_wrong_surface">"표면 재질이 다름"</string>
     <string name="quest_smoothness_surface_value">"표면의 재질이 이렇게 등록돼 있습니다:"</string>
     <string name="quest_smoothness_obstacle">"장애물이 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"부드러움에 대한 일반적인 답변을 해 주세요. 연석, 과속 방지턱 또는 가축 통행 방지 시설물과 같은 단일 장애물은 무시할 수 있습니다. 반복되거나 예상치 못한 장애물은 답에 포함되어야 합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … 이 노면을 이용해도 괜찮을 교통수단을 선택해주세요. 한두개의 손상보다 전체적인 상태에 유의하세요."</string>
     <string name="link_osmhydrant_description">"소방서 및 소화전 조회, 추가 및 편집"</string>
     <string name="achievement_lifesaver_title">"생명의 은인"</string>
     <string name="achievement_lifesaver_solved_X">"응급 구조대와 긴급 구조원을 돕는 %d개의 과제를 해결했습니다!"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
-    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"이 주유소에서 직접 주유를 할 수 있습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"이 과제 유형은 시간이 많이 걸리고 종종 올바른 선택을 하기 어렵기 때문에 기본적으로 비활성화되어 있습니다. 이러한 종류의 데이터를 추가할 의지가 확실한 경우에만 이 과제 유형을 활성화하세요."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"단단함, 느슨한 자갈이나 모래가 거의 없음"</string>
     <string name="quest_barrier_path_intersection">"이 길은 여기에서 어떤 장벽을 거치나요?"</string>
     <string name="quest_barrier_road_intersection">"이 도로는 여기에서 어떤 장벽을 거치나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"지도에 별도로 표시됨"</string>
     <string name="quest_shoulder_value_yes">"갓길 있음"</string>
     <string name="quest_shoulder_value_no">"갓길 없음"</string>
     <string name="no_camera_permission_warning_title">"카메라 권한 필요"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"사진을 찍고 카메라로 거리 측정을 위해서는 권한이 필요합니다."</string>
     <string name="ar_core_error_sdk_too_old">"이 앱은 너무 오래되었습니다, 업데이트하세요."</string>
     <string name="ar_core_tracking_error_bad_state">"문제 발생. 측정을 다시 시도하세요."</string>
@@ -1739,25 +1067,13 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_sidewalk_answer_none_title">"인도가 있는지 선택하기"</string>
     <string name="quest_side_select_interface_explanation">"한 쪽을 탭하여 올바른 답을 고르세요.
 반대쪽도 존재하면 동일하게 하세요."</string>
-
-    <!-- AR Measure screen -->
     <string name="ar_measure">"측정"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"기울기 너무 큼, 멀어지세요"</string>
     <string name="default_disabled_msg_no_ar">"카메라를 이용한 측량이 이 기기에서 불가능하므로 이 과제를 해결하기 위해서는 줄자가 필요합니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"이 자전거길의 폭은 얼마인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_title">"이 도로의 폭은 얼마인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"연석 끝에서 끝까지의 길이: 여기에는 갓길 주차공간이나 자전거 차선과 같이 도로 표면에 있는 모든 것을 포함하나 자전거길이나 도로 옆 주차공간 같이 그 너머의 것은 배제합니다."</string>
     <string name="quest_sidewalk_answer_none">"인도 없음"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"저희 앱을 후원해주시려는 마음은 감사합니다!
 안타깝게도, 구글 플레이 스토어 정책상, 기부 링크를 앱 내부에 표시할 수 없습니다. 저희의 경우, 프로젝트 홈으로 연결하는 것 조차 불가능합니다."</string>
     <string name="link_osmand_description">"온라인 또는 오프라인 지도 열람 및 길찾기용 모바일 앱"</string>
@@ -1765,8 +1081,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="ar_core_tracking_error_no_plane_hit">"교통 흐름에 주의하며 화살표에 가까이 가세요!"</string>
     <string name="quest_sidewalk_surface_title">"이 인도의 포장재는 무엇인가요?"</string>
     <string name="quest_tactilePaving_incorrect">"한쪽에만 있음"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"맞으나…"</string>
     <string name="quest_fee_answer_no_but_maxstay">"아니오, 대신 최대 주차 가능 시간이 있음…"</string>
     <string name="unit_days">"일"</string>
@@ -1782,42 +1096,21 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_smoking_separated">"흡연전용구역만"</string>
     <string name="quest_smoking_yes">"어디서든 가능"</string>
     <string name="quest_seating_name_title">"이 장소에 있는 의자는 어떤 종류인가요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"포장만"</string>
     <string name="quest_seating_indoor_only">"실내석만"</string>
     <string name="quest_seating_outdoor_only">"실외석만"</string>
     <string name="quest_seating_indoor_and_outdoor">"실내외석"</string>
     <string name="no_camera_permission_toast">"카메라 권한 없음"</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"이곳에서 현금 결제가 가능한가요?"</string>
     <string name="quest_address_street_title2">"이것은 어느 거리에 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"이곳에 에어컨이 있나요?"</string>
     <string name="quest_baby_changing_table_title2">"이곳에 기저귀 갈이대가 있나요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"이 정류장에 의자가 있나요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"이 정류장에 쓰레기통이 있나요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"이 정류장에 조명이 있나요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"이 정류장의 이름은 무엇인가요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopRef_title2">"이 정류장의 관리번호가 무엇인가요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"이 정류장에 지붕이 있나요?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"이 정류소는 점자 블록이 있나요?"</string>
     <string name="quest_dietType_halal_name_title2">"할랄 음식을 제공하나요?"</string>
     <string name="quest_dietType_kosher_name_title2">"이곳에서 코셔 음식을 주문할 수 있나요?"</string>
@@ -1838,13 +1131,8 @@ sorted alphabetically by title -->
     <string name="quest_surface_title">"이곳의 바닥 재질이 무엇인가요?"</string>
     <string name="quest_toiletAvailability_title">"여기에 화장실이 있나요?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"이 장소의 화장실에 휠체어가 갈 수 있나요?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"이 일방통행로에서 자전거 양방향 통행이 불가능한 게 맞나요? 확실하지 않으면, 도로 끝에 표지판이 있는지 확인하세요."</string>
     <string name="link_backofyourhand_description">"당신은 당신의 동네를 얼마나 알고계신가요? 길을 가보면서 당신의 지식을 시험해보세요."</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cards">"이곳에서 신용카드나 체크카드를 사용할 수 있나요?"</string>
     <string name="quest_accepts_cards_debit_and_credit">"신용카드와 체크카드 모두"</string>
     <string name="quest_accepts_cards_credit_only">"신용카드만"</string>
@@ -1885,8 +1173,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_stele_wooden">"나무비 (기념비)"</string>
     <string name="quest_memorialType_stele_stone">"비석 (기념석판)"</string>
     <string name="quest_memorialType_sculpture">"기타 조각품"</string>
-
-    <!-- Overlays -->
     <string name="select_overlay">"오버레이 선택"</string>
     <string name="overlay_none">"없음"</string>
     <string name="overlay_lit">"거리 조명"</string>

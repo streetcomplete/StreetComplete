@@ -3,8 +3,6 @@
     <string name="action_settings">"Beállítások"</string>
     <string name="oauth_communication_error">"Nem lehet elérni a hitelesítési kiszolgálót"</string>
     <string name="oauth_failed_permissions">"A hitelesítés sikertelen,: az összes felsorolt engedélyt meg kell adni"</string>
-
-    <!-- Settings screen -->
     <string name="pref_category_communication">"Kommunikáció"</string>
     <string name="pref_category_display">"Megjelenítés"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -12,11 +10,7 @@
     <string name="pref_title_show_notes_not_phrased_as_questions">"Összes megjegyzés megjelenítése"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Jelenjenek meg a nem kérdésként megfogalmazott megjegyzések is"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"A nem kérdésként megfogalmazott megjegyzések figyelmen kívül hagyása"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Térképgyorsítótár mérete"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Kövess"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-közreműködők"</string>
     <string name="quest_generic_otherAnswers">"További válaszok…"</string>
@@ -26,93 +20,44 @@
     <string name="quest_generic_confirmation_no">"Majd megnézem"</string>
     <string name="quest_leave_new_note_title">"Inkább írsz egy megjegyzést?"</string>
     <string name="quest_leave_new_note_description">"Írhatsz ide egy nyilvános megjegyzést, amelyhez más térképezők is hozzászólhatnak, és remélhetőleg megoldják; vagy elrejtheted a kérdést magadnak"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"OK"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Nem, csak legyen elrejtve"</string>
     <string name="quest_streetName_title">"Mi a neve ennek az utcának?"</string>
     <string name="quest_streetName_description">"ahogy az utcanévtáblán áll, a rövidítések kiírva:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Néha csak az utca egyik végén van utcanévtábla. Az is lehet, hogy a nagyobb utcákhoz tartozó mellékutcáknak nincs külön utcanévtáblájuk. Általában minden utcának van neve, amelyben házak állnak."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ha a név leírható rövidítés nélkül, akkor ki kell írni az egész nevét. Gépeléskor sok gyakori rövidítés automatikusan kiegészül, de valószínűleg nem az összes."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nincs rövidítés"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"nyitás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"zárás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Hónap hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Óra hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Nap hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"Hónap kijelölése"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Nap kijelölése"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"Vagyis minden nap minden órájában nyitva tart?"</string>
     <string name="quest_noteDiscussion_title">"Közre tudsz működni ebben a megjegyzésben?"</string>
     <string name="quest_noteDiscussion_no">"Nem, elrejtés"</string>
     <string name="quest_noteDiscussion_anonymous">"Névtelen"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Elveted a bevitelt?"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Elvetés"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"Kérdések beolvasása itt"</string>
-
-    <!-- Fuzzy -->
     <string name="action_upload">"Válaszok feltöltése"</string>
-
-    <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
     <string name="no_changes">"Nem válaszoltál"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"bezárás"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"Hiba a kérdések beolvasása során"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"Hiba a válaszok feltöltése során"</string>
     <string name="download_area_too_big">"Nagyíts rá jobban"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Törlöd a jelenlegi keresést, és inkább itt olvasol be?"</string>
     <string name="turn_on_location_request">"Helyzetmeghatározás kikapcsolva. Bekapcsolod most?"</string>
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Szerzők"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick és közreműködők"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"Források"</string>
     <string name="about_summary_repository">"a GitHubon"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>
     <string name="about_title_feedback">"Visszajelzés küldése"</string>
     <string name="about_title_license">"Licenc"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
-
-    <!-- Error messages and crash report -->
     <string name="offline">"Offline vagy"</string>
     <string name="confirmation_authorize_now">"Válaszaid közzétételéhez azonosítanod kell magad az OSM-fiókoddal. Hitelesíted most?"</string>
     <string name="not_authorized">"Nem hitelesített"</string>
@@ -122,55 +67,21 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Csak összeköt két utat"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Valami más (leírom megjegyzésben)"</string>
     <string name="about_title_privacy_statement">"Adatvédelmi nyilatkozat"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"és adatfelhasználás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Nemzeti ünnepek"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"NÜ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"rugalmas zárás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Éjjel-nappal nyitva"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Hónaptól függően változik…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nincs rendszeres nyitvatartás…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Nyitvatartás leírása"</string>
     <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitvatartás."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Milyen alapformájú ennek az épületnek a teteje?"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Jelölj ki egyet:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Továbbiak…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Több különböző alakja van"</string>
-
-    <!-- Elements on map view -->
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Kicsinyítés"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Nagyítás"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Juhú, végre valakit érdekel az adatvédelem, remek! Szerintem csupa jó híreim vannak számodra:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Közvetlen közreműködések&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -190,8 +101,6 @@ Az alkalmazás senkivel sem osztja meg a helyzetedet. Kizárólag arra használj
 &lt;p&gt;
 Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával.
 A módosításaid feltöltése előtt azonban az alkalmazás először leellenőrzi egy &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, amely kiszűri az alkalmazás azon verzióit, amelyekben olyan súlyos programhibák vannak, amelyek potenciálisan károsíthatnák az OSM adatait.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"Be"</string>
     <string name="autosync_only_on_wifi">"Csak Wi-Fi használatakor"</string>
     <string name="autosync_off">"Ki"</string>
@@ -202,82 +111,39 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="quest_surface_value_asphalt">"Aszfalt"</string>
     <string name="quest_surface_value_compacted">"Tömörített (makadám)"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Föld"</string>
     <string name="quest_surface_value_fine_gravel">"Murva"</string>
     <string name="quest_surface_value_grass">"Fű"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Gyephézagos térkő"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Zúzott kő"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Térkő"</string>
     <string name="quest_surface_value_pebblestone">"Kavics"</string>
     <string name="quest_surface_value_sand">"Homok"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Macskakő"</string>
     <string name="quest_surface_value_wood">"Fa"</string>
     <string name="quest_sidewalk_title">"Van járda ebben az utcában?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hol található ez az utca?"</string>
     <string name="quest_oneway_title">"Ez egyirányú utca?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Mi a házszáma ennek az épületnek?"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap-felmérő alkalmazás"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"Segítsd fejleszteni az OpenStreetMapet a StreetComplete-tel!
 
 Ez az alkalmazás hiányos és bővíthető adatokat keres a környékeden és megjeleníti őket térképen. Egy egyszerű kérdésre válaszolva ezeket az adatokat mind meg lehet adni terepen.
 
 A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez nincs szükség más szerkesztőprogramra."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Nincs neve…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Tényleg nincs neve?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Így van, nincs neve"</string>
-
-    <!-- Az új helyesírási szabályzat szerint a nyitvatartás egybeirandó -->
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Nyitvatartás hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"El tudnád küldeni a hibajelentést a fejlesztőnek?"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"Jaj ne, a StreetComplete legutóbb összeomlott!"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"E-mail küldése"</string>
     <string name="no_email_client">"Nincs telepített e-mail alkalmazásod."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"A kijelző maradjon bekapcsolva"</string>
-
-    <!-- Fuzzy -->
     <string name="download_server_error">"Kapcsolódási hiba a kérdések beolvasása során. Próbáld újra később."</string>
-
-    <!-- Fuzzy -->
     <string name="upload_server_error">"Kapcsolódási hiba a válaszok feltöltése során. Próbáld újra később."</string>
-
-    <!-- Generic strings used in various quests -->
     <string name="quest_generic_hasFeature_yes">"Igen"</string>
     <string name="quest_generic_hasFeature_no">"Nem"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Hány kerékpárt lehet itt tárolni?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ez a házszám nagyon szokatlannak tűnik."</string>
     <string name="quest_sport_title">"Milyen sportot lehet ezen a pályán űzni?"</string>
@@ -288,183 +154,84 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_sport_basketball">"Kosárlabda"</string>
     <string name="quest_sport_golf">"Golf"</string>
     <string name="quest_sport_equestrian">"Lovaglás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Atlétika"</string>
     <string name="quest_sport_volleyball">"Röplabda"</string>
     <string name="quest_sport_beachvolleyball">"Strandröplabda"</string>
     <string name="quest_sport_american_football">"Amerikai futball"</string>
     <string name="quest_sport_skateboard">"Gördeszka"</string>
     <string name="quest_sport_bowls">"Gyepteke"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"Pétanque"</string>
     <string name="quest_sport_shooting">"Sportlövészet"</string>
     <string name="quest_sport_cricket">"Krikett"</string>
     <string name="quest_sport_table_tennis">"Asztalitenisz"</string>
     <string name="quest_sport_gymnastics">"Torna"</string>
     <string name="quest_sport_archery">"Íjászat"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Ausztrál futball"</string>
     <string name="quest_sport_badminton">"Tollaslabda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Kanadai futball"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Gyeplabda"</string>
     <string name="quest_sport_handball">"Kézilabda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Jégkorong"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rögbi"</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"Válassz:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Ezen a sportpályán kifejezetten ezeket a sportágakat lehet űzni (fel vannak festve a jelzések és van hozzájuk felszerelés) vagy ez egy általános célú sportpálya mindenféle sportághoz?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Kifejezetten ezeket"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Általános célú"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Sok sportágat jelöltél ki"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Fizetős ez a WC?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Van vakvezető burkolat a gyalogosátkelő mindkét oldalán?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Biztos, hogy ellenőrizted a helyszínen?"</string>
     <string name="quest_source_dialog_note">"Csak olyan információt adj meg, amit helyszíni felmérésnél szereztél."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Fedett (esőtől védett) ez a kerékpárparkoló?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Ne mutasd többször ebben a munkamenetben"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ez a sebességkorlátozás valószínűtlen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Biztos, hogy nincs sebességkorlátozó tábla?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"Megnézted az utca végein?
 Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapértelmezett sebességkorlátozás érvényes."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Igen, nincs tábla"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Lakott területen alacsonyabb a megengedett sebesség, mint országúton."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Lakott terület"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Lakott területen kívül"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ha ilyen tábla található egy magasabb rendű utca kereszteződésénél, akkor nincsenek egyedi táblák a zónán belül, mivel a jelzett sebességkorlátozás az egész zónára érvényes."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Raketball"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Jégkorcsolya"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"Kispályás tenisz"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"Kelta játékok"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Részben"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"Vedd figyelembe, hogy a legtöbb rendes támasznak mindkét oldalán tárolható egy-egy kerékpár."</string>
     <string name="quest_sport_roller_skating">"Görkorcsolya"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"A „részben” azt jelenti, hogy a bejáratnál legfeljebb egy lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokot kell megtenni."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Van rövidítés ebben a névben: %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"Ez milyen típusú újrahasznosító létesítmény?"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"Központ"</string>
     <string name="overground_recycling_container">"Konténer"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Föld alatti konténer"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Nem tudom begépelni a táblán lévő karatereket"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Hiányzó billentyűzetkiosztás?"</string>
     <string name="quest_streetName_cantType_open_settings">"Beállítások megnyitása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Áruház megnyitása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Ha az alapértelmezett billentyűzetet használod, akkor valószínűleg csak engedélyezned kell a szükséges billentyűzetkiosztást a beviteli mód beállításainál.
 
 Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű billentyűzetek, amelyek számos nyelvet támogatnak, a Google Gboard, a SwiftKey Keyboard vagy a Multiling O Keyboard."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(nincs meghatározva)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Ez milyen típusú tűzcsap?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Oszlop"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Föld alatti"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Fali"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Tó"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors">"&lt;a href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;A teljes lista a GitHubon&lt;/a&gt; található."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"Fordítás"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"A kódolásban közreműködők"</string>
-
-    <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"Szerző és működtető"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"és még sokan mások…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Ez lakó-pihenő övezet"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Tehát ki van téve egy ilyen tábla?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Mit termesztenek itt?"</string>
     <string name="produce_grapes">"Szőlő"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"Agávé"</string>
     <string name="produce_almonds">"Mandula"</string>
     <string name="produce_apples">"Alma"</string>
@@ -479,44 +246,20 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_coconuts">"Kókusz"</string>
     <string name="produce_coffee">"Kávé"</string>
     <string name="produce_cranberries">"Vörösáfonya"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"Datolya"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"Füge"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Grépfrút"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"Guáva"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Mogyoró"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hops">"Komló"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kivi"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Koladió"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_lemons">"Citrom"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_limes">"Lime"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"Mangó"</string>
     <string name="produce_mate">"Maté"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Szerecsendió"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Olajpálma"</string>
     <string name="produce_olives">"Olíva"</string>
     <string name="produce_oranges">"Narancs"</string>
@@ -524,15 +267,11 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_peaches">"Őszibarack"</string>
     <string name="produce_pears">"Körte"</string>
     <string name="produce_chili">"Csili"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"Datolyaszilva"</string>
     <string name="produce_pineapples">"Ananász"</string>
     <string name="produce_pepper">"Bors"</string>
     <string name="produce_pistachios">"Pisztácia"</string>
     <string name="produce_plums">"Szilva"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"Málna"</string>
     <string name="produce_rubber">"Gumi"</string>
     <string name="produce_strawberries">"Eper"</string>
@@ -543,1213 +282,422 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="cannot_find_bbox_or_reduce_tilt">"Nem lehet beolvasni. Próbálj jobban belenagyítani, vagy kevésbé elforgatni a térképet."</string>
     <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
-
-    <!-- Fuzzy -->
     <string name="action_undo">"Visszavonás"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangosztán"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Paradicsom"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Bételdió"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Édes paprika"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Brazil dió"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"Tung dió"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"Ez milyen típusú parkoló?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Önálló parkoló"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Mélygarázs"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Parkolóház"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Milyen anyagból van ez a villanyoszlop?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Fa"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Acél"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Csak egy javasolt sebességhatár…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Ház neve:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"tetőtér szintjei"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"normál szintek (tetőtér nélkül)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Épületrészenként különböző"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"Ebben az esetben egyszerűen a legmagasabb épületrész emeleteit add meg."</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Az úttest két iránya itt el van választva fizikailag (pl. egy akadállyal)? Az alapértelmezett sebességkorlátozás attól függ, hogy ez a helyzet áll-e fent, vagy sem."</string>
     <string name="about_category_feedback">"Visszajelzés"</string>
     <string name="quest_leave_new_note_photo">"Fénykép csatolása"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Törölni szeretnéd ezt a fényképet?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"egyirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"kerékpársáv (SÁRGA folytonos vagy szaggatott vonal)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"nincs"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"kerékpáros nyom (piktogram)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"busz- és kerékpársáv"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"gyalog- és kerékpárút"</string>
     <string name="quest_leave_new_note_create_image_error">"Nem sikerült a fényképhez fájlt létrehozni"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"kétirányú kerékpársáv"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"kétirányú kerékpárút, fizikailag elválasztott kerékpársáv"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Speciális"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"Engedélyezve"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_type">"Kérdéstípus"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"Alaphelyzetbe állítás"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Visszavonás"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"Mégse"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Kizárólag"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"A vegán étel nem tartalmaz állati eredetű terméket (pl. húst, tejterméket, tojást stb.)."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Vegetáriánus ételben nem lehet hús."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Csak akkor válaszolj igennel, ha a hely valóban megfelelő ételeket kínál az ilyen étrenden élőknek (előételek és hasonlók nem számítanak)."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"Milyen fajta autómosó ez?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Automata"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Önkiszolgáló"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Személyzet mossa az autót"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"Engedélyezed az ilyen típusú kérdéseket?"</string>
-
-    <!-- A string nevéből derül ki, hogy itt az enter alatt nem azt értik, hogy megadni, hanem azt, hogy belépni. -->
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"Ez a kérdéstípus azért van alapértelmezésben letiltva, mert megválaszolásához valószínűleg be kell menned az adott helyre."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Helyrajzi szám"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Házszám (nem kötelező)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Kerékpárút van a másik oldalon is…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Azt kellene leírnod, hogy mi van kiírva az üzletre. Ha semmi, akkor bent kellene megkérdezni a nyitvatartást."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"nincs, de az úton mindkét irányba szabad kerékpározni"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Miért nincs neve?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"Olyan, mint egy kocsibeálló vagy egy parkolón belüli út"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"Mezőgazdasági vagy erdészeti út"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"A fentiek közül egyik sem; egyszerűen nincs neve"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Ha akadálymentes, akkor talán látható rajta egy ehhez hasonló jel.
 A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehet használni, de nincs korlát vagy megfelelő mosdókagyló."</string>
     <string name="map_btn_create_note">"Új megjegyzés létrehozása"</string>
     <string name="create_new_note_unprecise">"Megjegyzés létrehozásához közelíts rá jobban"</string>
     <string name="create_new_note_description">"Jegyzet elhelyezésével tájékoztatod a többi térképezőt arról, hogy itt teendő van. A jegyzet helyét a térkép mozgatásával lehet beállítani:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Általában így néz ki:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"Fém"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Van itt kerékpárút vagy kerékpársáv? Ha igen, milyen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Milyen a szerkezete ennek a hídnak?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"Vezetékes (LAN)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"Internetre csatlakoztatott számítógép"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Nincs csatlakozás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Van támlája ennek a padnak?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Ez egy piknikezőasztal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Milyen vallást gyakorolnak itt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_christian">"keresztény"</string>
     <string name="quest_religion_muslim">"iszlám"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"hindu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"buddhista"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"sintó"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"zsidó"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"taoista"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"több vallás használja"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"szikh"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jain">"dzsainista"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"bahái"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"kaodaista (vietnami)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"kínai népi vallásosság"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Melyik valláshoz tartozik ez a szentély?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Ez a parkoló fizetős?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Nagy kavics (nem vágott)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Milyen a burkolata ennek a térnek?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Naptól és napszaktól függ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Időpontok hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Több házszáma van"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"A házszámokat megadhatod vesszővel elválasztva vagy tartományként is. Például 1,3 vagy 2–6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"U-, P- vagy hasonló támasz (a vázat rögzíti)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"Kerékgörbítő (csak a kereket rögzíti)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"Zárt rácsos"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"Egyenként zárható"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Ez milyen típusú kerékpárparkoló?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Mikor ürítik ezt a postaládát?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"Ürítési idő hozzáadása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"Nincsen meghatározott időpont"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"Befejezték már ezt az utat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"Befejezték már ezt a kerékpárutat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"Befejezték már ezt a járdát?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"Befejezték már ezt az utat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Befejezték már ezt az épületet?"</string>
-
-    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"Soha nem jelenik meg itt: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Válaszd ki a leginkább rá jellemzőt:"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
-    <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Biztos, hogy nem tudod pontosabban meghatározni?"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik féltől származó adatok is letöltésre kerülnek. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nincs (megjegyzés írása)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_reset">"Alaphelyzetbe állítod az engedélyezett kérdéstípusokat és a sorrendet is?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Kérjük, válassz konkrétabb értéket."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"Többcélú"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"Jelöld ki az épület fő rendeltetését. Ha például a földszinten egy üzlet van, fölötte pedig lakások, akkor az még inkább egy társasház."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Még építés alatt áll"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"Lakóház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"olyan épület, amelyben emberek laknak"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"Családi ház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"több család otthona, a földszinten esetleg boltokkal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Társasház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Családi ház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"Egyedül álló (nem iker-) ház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Ikerház"</string>
     <string name="quest_buildingType_terrace_description">"Hasonló, egybeépített családi házakból álló sor"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Szállodaépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Kollégium"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Lakóhajó"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"Kunyhó"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"Rögzített lakókocsi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Üzleti épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"ahol emberek dolgoznak, vásárolnak vagy más üzleti tevékenységet végeznek"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Ipari épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"például gyár, műhely, autószerelő műhely stb."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Irodaház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Bolt(ok)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Raktár"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"Trafik"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Tárolótartály"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Vallási épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Templom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Kápolna"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"Székesegyház (katedrális)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Mecset"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Nem keresztény templom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Zsinagóga"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Közösségi épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"valamely hasznos vagy fontos létesítménynek otthont adó középület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Óvodaépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"Iskolaépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"Főiskolai épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Kórházépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"Stadion"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Vasútállomás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"Tömegközlekedési épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"Egyetemi épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"Kormányzati épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"Autóknak"</string>
     <string name="quest_buildingType_carport">"Garázstető"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"tető egy autó fölött"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Egy garázs"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"Több garázs"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"Parkolóház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"Tanyán"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"Tanya"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"a tanyán lévő lakóépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"Tanyaépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"a tanyán lévő minden egyéb, nem lakóépület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Üvegház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Egyéb"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"Fészer"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Kunyhó"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"kicsi, egyszerű lakhely vagy menedékhely"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"Tető"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"Kiszolgáló épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"gépészetet (pl. szivattyú, transzformátor) tartalmazó épület"</string>
     <string name="quest_buildingType_hangar">"Hangár"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"repülőgép, helikopter, űrhajó tárolására szolgáló épület"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Nincs házszáma…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Az épület címkéje:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Szentély"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Mekkora a sebességkorlátozás ebben az utcában?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"Jelzőtábla"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"(Korlátozott sebességű) zónában van"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Nincs jelzőtábla, a KRESZ érvényes"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"Nincs kiírva nyitva tartás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Sportközpont"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"WC"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Mi határozza meg a sebességkorlátozást?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Milyen itt a gyalog- és a kerékpárút?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"Módosításaid kézi feltöltéséhez használd az eszköztárban lévő gombot, amely így néz ki."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"El vannak választva"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"A kerékpárosok és a gyalogosok ugyanazt az utat használják"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Mekkora itt a magasságkorlátozás?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Nincs jelzőtábla…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"Van elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_closed2">"Lezárta %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Újra megnyitotta %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Elrejtette %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;A megjegyzéshez csatolt fényképek feltöltődnek a szerveremre, a megjegyzés megoldása után pár nappal pedig törlődnek. A metaadataikat feltöltés előtt eltávolítjuk.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"Kijelölés megszüntetése"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"többek között éttermek, kávéházak stb. épületei"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Következő"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"Mennyire szilárd ennek az útnak a felszíne?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Szilárd"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Viszonylag puha"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Puha"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Teljesen a föld alatt van ez az épület?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokkal el lehet érni."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Akadálymentes ez a hely?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"Van ezen a jelzőlámpán olyan gomb, amellyel zöld jelzés kérhető?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Hány motorkerékpár parkolhat itt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Fedett (esőtől védett) ez a motorkerékpár-parkoló?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen kérdésnek a megválaszolását."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"Rejtett kérdések visszaállítása"</string>
-
-    <!-- Fuzzy -->
     <string name="restore_hidden_success">"%d rejtett kérdés visszaállítása"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"a(z) %s. szinten"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
     <string name="underground">"föld alatti"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"járda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"nincs járda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ezt azt utat úgy jelölték meg, hogy egyik oldalon sincs járda. Abban az esetben, ha végső soron van járda, csak külön vonalként szerepel a térképen, kérlek a \"járdá\"-t jelöld meg."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"Téma kiválasztása"</string>
     <string name="theme_automatic">"Automatikus"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"Világos"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"Sötét"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_system_default">"Rendszer alapértelmezett"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"Hely megnyitása egy másik alkalmazásban"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"Nem található másik térképalkalmazás"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
-    <!-- Fuzzy -->
     <string name="label_housenumber">"házszám"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"háztömb szám"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"Az egész megálló fedett"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Ez a komp szállít gyalogosokat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Ez a komp szállít gépjárműveket?"</string>
-
-    <!-- Add note interface -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"Fénykép hozzáadásával a megjegyzés sokkal hasznosabb lesz."</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Legjobb, ha a megjegyzést a helyi nyelven vagy angolul írod."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"Az itteni fák tűlevelűek vagy lombosak?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"Tűlevelű"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"Lombos"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Mindkettő megtalálható"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Mi a burkolata itt a kerékpárútnak?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Az út mentén változik…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_description">"Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a kérdést meg tudod válaszolni az egyes darabokra külön-külön. Felosztod most?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Koppints az út azon pontja(i)ra, ahol a válasz megváltozik. Próbálj meg a lehető legpontosabb lenni, ráközelíthetsz, mint mindig."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Kérlek közelíts rá jobban"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Ez jó pár új darab. Később is ugyanúgy tovább oszthatod az utat."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Mi a burkolata itt a járdának?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Mekkora itt a tömegkorlátozás?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"Ez a tömeg valószínűtlen. Biztosan helyes?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"A tábla máshogy néz ki…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"Szeretnél megjegyzést hagyni? Egy megjegyzés és egy hozzá csatolt fénykép lehetővé teszi a többi szerkesztőnek, hogy megoldják."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Ez a lépcső rendelkezik korláttal?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"Jelenlegi verzió: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Nem látható azonosító szám…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Az ábrán látható út ugyanúgy van elforgatva, mint a térképen a jelölő helyén. "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Miket lehet itthagyni újrahasznosításra?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"Ha az itt kiválaszthatókon kívül bármi egyéb szintén újrahasznosítható, akkor inkább kérlek hagyj egy megjegyzést."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Elem"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"Fém italdoboz"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"Ruha"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"Kerti hulladék"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"Üveg italdoboz és befőttesüveg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"Palack és befőttesüveg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"Papír"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"Műanyag"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"Bármilyen műanyag"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Cipő"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"Elektromos készülék"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"Kizárólag műanyag palack"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"Kizárólag műanyag csomagolás"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"Fémhulladék"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"Bármilyen üveg"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"Kizárólag üvegpalack és befőttesüveg újrahasznosítható itt, vagy bármilyen üveg?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Ezeket az üvegtípusokat például gyakran nem fogadják el: edzett üveg, ablaktábla, üvegáru, villanykörte vagy tükör."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"Verziótörténet"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"Újdonságok"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"Értékeld az alkalmazást"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"a Google Play-en"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_donate">"Támogatás"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"Fejezd ki az elismerésedet! ❤️"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"Köszönjük, hogy az alkalmazás támogatására készülsz! A jelenlegi támogatások megtekintéséhez és a támogatáshoz koppints a megfelelő platformra:"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Inkább itt olvassa be"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_cancel">"Jelenlegi beolvasás folytatása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages_description">"Külön helyek a különböző lakóknak/bérlőknek"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_title">"Ez milyen típusú turistainformáció?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Turistainformációs iroda"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_board">"Információs tábla"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_terminal">"Információs terminál"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_map">"Térkép"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tourism_information_guidepost">"Irányjelző"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste">"Általános hulladéknak fenntartott"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_answer_waste_description">"Tehát ebbe a konténerbe bámilyen hulladék helyezhető, mint például zacskós háztartási vagy kereskedelmi hulladék?"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile">"Saját profil"</string>
-
-    <!-- Fuzzy -->
     <string name="user_login">"Bejelentkezés"</string>
-
-    <!-- Fuzzy -->
     <string name="user_logout">"Kijelentkezés"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_profile">"OSM profil"</string>
-
-    <!-- Fuzzy -->
     <string name="next">"Következő"</string>
-
-    <!-- Fuzzy -->
     <string name="letsgo">"Gyerünk!"</string>
-
-    <!-- Tutorial screen -->
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm">"Üdvözlünk az OpenStreetMap-en"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_welcome_to_osm_subtitle">"a szabad, szerkeszthető világtérképen"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_intro">"A StreetComplete-tel könnyedén közreműködhetsz az OpenStreetMap-hez. Automatikusan hiányzó részleteket keres a környékeden: kerékpársávokat, házszámokat, nyitvatartási időket és még sok mást…"</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_solving_quests">"Amint talál, a hiányzó részletek kérdésként fognak megjelenni a térképeden.
 
 Egyből elkezdheted megoldani őket és majd később bejelentkezhetsz, hogy fel tudd tölteni a válaszaidat."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_stay_safe">"Amennyiben bizonytalan vagy, mindig válaszolhatod azt, hogy \"Nem tudom\" és hagyhatsz egy megjegyzést.
 
 Végül, légy óvatos: figyelj a környezetedre és ne lépj magánterületre."</string>
-
-    <!-- Fuzzy -->
     <string name="tutorial_happy_mapping">"Jó térképezést!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_empty">"Még nincsenek kitüntetéseid"</string>
-
-    <!-- Links screen -->
-    <!-- Fuzzy -->
     <string name="links_empty">"Még nincsenek hivatkozásaid"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"Még nem küldtél be egy választ sem a kérdésekre"</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_description">"plusz %d még nem közzétett módosítás."</string>
-
-    <!-- Fuzzy -->
     <string name="unsynced_quests_not_logged_in_description">"Van %d db, még nem közzétett módosításod. Jelentkezz be, hogy feltölthesd őket."</string>
-
-    <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"Megoldott kérdések"</string>
-
-    <!-- Fuzzy -->
     <string name="user_achievements_title">"Kitüntetések"</string>
-
-    <!-- Fuzzy -->
     <string name="user_links_title">"Hivatkozás-gyűjtemény"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_title">"Profil"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_quest_wiki_link">"Dokumentáció"</string>
-
-    <!-- Achievement screen -->
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_link">"Feloldott hivatkozás:"</string>
-
-    <!-- Fuzzy -->
     <string name="achievements_unlocked_links">"Feloldott hivatkozások:"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_title">"Bevezetés"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_intro_description">"Tudj meg többet az OSM-ról és a közösségről"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_title">"Közreműködés"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_editors_description">"Szerkesztők és más közreműködési lehetőségek az OpenStreetMap-hez"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_title">"Térképek"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_maps_description">"OpenStreetMap alapú térképek"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_title">"Gyűjtemény"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_showcase_description">"OpenStreetMap alapú szolgáltatások és alkalmazások"</string>
     <string name="link_category_goodies_title">"Különlegességek"</string>
-
-    <!-- Fuzzy -->
     <string name="link_category_goodies_description">"Térképekkel kapcsolatos érdekes dolgok, amiket érdemes kipróbálnod"</string>
-
-    <!-- Fuzzy -->
     <string name="link_cyclosm_description">"Térkép kerékpárosoknak"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"Térkép kerekesszékkel elérhető helyek megtalálásához"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"Térkép, amely 3D-ben jeleníti meg az épületeket"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openvegemap_description">"Fedezz fel vegetáriánus és vegán éttermeket a városodban"</string>
-
-    <!-- Fuzzy -->
     <string name="link_touch_mapper_description">"Alkoss tapintható térképeket könnyen bármely helyről"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapy_tactile_description">"Tapintható térképek látássérültek számára számos méretben"</string>
-
-    <!-- Fuzzy -->
     <string name="link_josm_description">"Teljes értékű OSM szerkesztő asztali gépre. Ez a leghatékonyabb eszköz a rendszeres közreműködők számára."</string>
-
-    <!-- Fuzzy -->
     <string name="link_vespucci_description">"Haladó OSM szerkesztő Androidra"</string>
     <string name="link_ideditor_description">"Böngészőalapú OSM-szerkesztő. Asztali számítógépre vagy nagyobb táblagépre optimalizálva"</string>
-
-    <!-- Fuzzy -->
     <string name="link_umap_description">"Alkoss könnyedén térképet egyedi adatokkal és ágyazd be a honlapodra"</string>
-
-    <!-- Fuzzy -->
     <string name="link_opnvkarte_description">"Térkép tömegközlekedési útvonalakról és megállókról"</string>
-
-    <!-- Fuzzy -->
     <string name="link_pic4review_description">"Fejleszd az OSM-et azáltal, hogy képeket tekintesz meg egy városról"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wiki_description">"A wiki a kiindulópont minden OpenStreetMap-pel kapcsolatos témához"</string>
-
-    <!-- Fuzzy -->
     <string name="link_learnosm_description">"Új vagy az OpenStreetMap-en? Ez egy kezdők kézikönyve"</string>
-
-    <!-- Fuzzy -->
     <string name="link_neis_one_description">"Hatalmas statisztika-gyűjtemény OpenStreetMap közreműködőknek, mint például hol és hogyan működtél közre, kik szerkesztenek a közeledben, valamint ranglisták is találhatók itt"</string>
-
-    <!-- Fuzzy -->
     <string name="link_welcome_mat_description">"Általános információk az OpenStreetMap-pel kapcsolatban és hogy miként tudod az OpenStreetMap-et felhasználni szervezetként"</string>
-
-    <!-- Fuzzy -->
     <string name="link_mapillary_description">"Egy szolgáltatás és app utcaszintű fényképekre, amelyekre engedélyünk van, hogy felhasználhatjuk az OSM szerkesztése során"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetcam_description">"Egy szolgáltatás és app utcaszintű fényképekre, amelyekre engedélyünk van, hogy felhasználhatjuk az OSM szerkesztése során"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"Részletes navigáció kerekesszékes felhasználók számára"</string>
-
-    <!-- Fuzzy -->
     <string name="link_nominatim_description">"Címkereső az OSM adatokhoz, számos más szolgáltatás is használja"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"Megjeleníti egy város összes útját pólóra, bögrére… nyomtatáshoz"</string>
-
-    <!-- Fuzzy -->
     <string name="link_myosmatic_description">"Nyomtatható térkép hozható létre néhány egyszerű lépéssel, opcionálisan utcanévjegyzékkel együtt"</string>
-
-    <!-- Fuzzy -->
     <string name="link_brouter_description">"Valószínűleg a legjobb útvonaltervező kerékpárosok számára"</string>
-
-    <!-- Fuzzy -->
     <string name="link_show_me_the_way_description">"Figyeld az OpenStreetMap szerkesztéseket valós időben"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osrm_description">"A leggyorsabb útvonaltervező"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_description">"Útvonaltervező számos járműtípushoz és gyalog, külön-külön beállításokkal. Izokrón is megjeleníthető segítségével (adott pontról adott idő alatt elérhető terület)."</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_haiku_description">"OSM adatok alapján haikut hoz létre (egy japán versforma)"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openinframap_description">"Térkép, amely az elektromos, telekommunikációs, gáz és olaj infrastruktúrát jeleníti meg"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openorienteeringmap_description">"Nyomtatható tájfutótérképek hozhatók létre"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openstreetbrowser_description">"Térkép, amelyen az OpenStreetMap térképadatok kategóriák szerint böngészhetők"</string>
-
-    <!-- Fuzzy -->
     <string name="link_weeklyosm_description">"Heti hír blog arról, hogy mi történik éppen az OpenStreetMap világában"</string>
-
-    <!-- Fuzzy -->
     <string name="link_figuregrounder_description">"Egy város vagy környék beépítettségét megjelenítő térkép alkotása poszterekhez"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_title">"Első megoldott kérdés"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"Köszöntünk az OpenStreetMap közösségében! A profil menüben további információt találsz minden kérdéstípushoz, amit megoldottál."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_title">"Felmérő"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_surveyor_solved_X">"%d kérdést megoldottál! Csak így tovább, ezzel még több kitüntetés jár, amik hivatkozásokat tartalmaznak OSM-mel kapcsolatos további alkalmazásokhoz és projektekhez!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_title">"Rendszeres"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_regular_description">"%d napon közreműködtél az OSM-hez ezzel az alkalmazással! A rendszeres közreműködők alkotják az OSM gerincét, köszönjük az elkötelezettségedet! ❤"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_title">"Kerékpáros"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_bicyclist_solved_X">"%d kérdést megoldottál, amelyek a kerékpárosokat segítik!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_title">"Mobilitás"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_wheelchair_solved_X">"%d kérdést megoldottál, amelyek a kerekesszékesek városi közlekedését segítik!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_title">"Postás"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"%d címet segítettél meghatározni! Ez az adat létfontosságú nemcsak a postásoknak, hanem valamennyi navigációs rendszer számára is."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_title">"Felhőkarcoló"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"%d épülettel kapcsolatos kérdést megoldottál.
 Ez az app csak akkor kérdezi meg egy épület házszámát, ha a típusa már meg lett adva."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_title">"Hatodik érzék"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_blind_solved_X">"%d kérdést megoldottál, amelyek a látássérültek számára hasznosak."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_title">"Futó"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_pedestrian_solved_X">"%d kérdést megoldottál, amelyek a gyalogosok számára hasznosak!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_title">"Állatbarát"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_veg_solved_X">"%d kérdést megoldottál, amelyek a húsmentes étrendet folytatók számára hasznosak!"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_title">"Úton"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_car_solved_X">"%d kérdést megoldottál, amelyek az utca infrastuktúrához adtak további részleteket, értelmet adva így a \"street\"-nek az OpenStreetMap-ben!"</string>
-
-    <!-- Notifications -->
-    <!-- Fuzzy -->
     <string name="unread_messages_message">"%d olvasatlan üzeneted van a postaládádban"</string>
-
-    <!-- Fuzzy -->
     <string name="unread_messages_button">"Bejövő üzenetek mgnyitása"</string>
-
-    <!-- Main menu -->
-    <!-- Fuzzy -->
     <string name="action_about2">"Névjegy"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_menu">"Menü"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_statistics">"&lt;p&gt;A profilodon szereplő adatok a nyilvánosan elérhető OpenStreetMap szerkesztési előzményeidből származnak és a szerveremen találhatóak.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Később is megteheted a profil menüben."</string>
-
-    <!-- Fuzzy -->
     <string name="credits_art_contributors_title">"Grafikai közreműködők"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"StreetComplete-hez felhasznált projektek"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_main_contributors_title">"Fő közreműködők"</string>
-
-    <!-- User statistics screen -->
-    <!-- Fuzzy -->
     <string name="stats_are_syncing">"A statisztikáid még frissítés alatt állnak. Nézz vissza később."</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_country_rank">"%2$si helyezés: %1$d"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_country_wiki_link">"Térképportál %s"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_country">"ország szerint"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"kérdéstípus szerint"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_global_rank">"Globális
 helyezés"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_local_rank">"Helyezés itt:
 %s"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_days_active">"Aktív
 napok"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Kitüntetés
 szintek"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
     <string name="quest_recycling_type_cooking_oil">"Sütőolaj"</string>
@@ -1766,32 +714,20 @@ szintek"</string>
     <string name="quest_board_type_nature">"Természet (több téma)"</string>
     <string name="quest_board_type_notice_board">"Ez egy figyelmeztető tábla"</string>
     <string name="quest_board_type_public_transport">"Tömegközlekedés"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_title">"Mi a témája ennek az információs táblának?"</string>
     <string name="quest_board_type_map">"Ez egy térkép"</string>
     <string name="quest_board_type_map_title">"Csak és kizálólag egy térkép?"</string>
     <string name="quest_board_type_map_description">"Ha a tábla egy bizonyos témáról szól, akkor kérlek, azt add meg, függetlenül attól, hogy egy térkép is szerepel rajta. Például egy tömegközlekedési tábla tartalmazhat egy buszútvonalakat ábrázoló térképet. Ha a téma nem szerepel a lehetséges válaszok között, akkor kérlek inkább hagyj egy megjegyzést."</string>
     <string name="quest_surface_detailed_answer_impossible">"Többféle felület…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Biztos, hogy lehetetlen meghatározni a felületet? Ne feledd, az \"Az út mentén változik\" válasz esetén az utat elvághatod az útburkolat változásainál. Kérlek, akkor válaszd a \"Nem tudom\" lehetőséget, ha egyetlen útburkolat jellemzi, de az nem szerepel a válaszok között."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_detailed_answer_impossible_description">"Kérlek, röviden jellemezd az útburkolatot, például \"Homok, macskaköves részekkel\". A szöveg hossza legfeljebb 255 karakter lehet."</string>
     <string name="quest_streetName_menuItem_international">"nemzetközi"</string>
     <string name="quest_buildingType_terrace2">"Sorház"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housename">"Ház neve %s"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housenumber">"házszám %s"</string>
     <string name="quest_openingHours_add_off_days">"Szabadnapok hozzáadása"</string>
     <string name="quest_openingHours_off_day">"Szabadnap"</string>
     <string name="quest_openingHours_unspecified_range">"Nincs megadva"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"Itt még mindig ez a kerékpárúthelyzet?"</string>
     <string name="pref_title_resurvey_intervals">"Újbóli felmérések intervallumai"</string>
     <string name="resurvey_intervals_less_often">"Kérdezzen rá ritkábban"</string>
@@ -1808,12 +744,8 @@ szintek"</string>
     <string name="quest_steps_incline_up">"Ebben az irányban felfelé"</string>
     <string name="quest_step_count_title">"Hány lépcsőfok található itt?"</string>
     <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_vibrate_title">"Rendelkezik ez a közlekedési lámpa a biztonságos átkelés idején a vakok számára szolgáló tapintható jelzéssel?"</string>
     <string name="quest_traffic_signals_vibrate_description">"Tipp: Ez gyakran a jelzőgomb házán alul található rezgő gomb vagy forgó kúp."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"apró lakóház (nyaraló, hétvégi ház …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"Milyen akadály található ezen a vasúti átkelőhelyen?"</string>
     <string name="quest_railway_crossing_barrier_none2">"Nincs akadály"</string>
@@ -1822,23 +754,15 @@ szintek"</string>
     <string name="quest_steps_ramp_bicycle">"Kerékpáros rámpa"</string>
     <string name="quest_steps_ramp_stroller">"Babakocsi rámpa"</string>
     <string name="quest_steps_ramp_wheelchair">"Kerekesszékes rámpa"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"Melyik bankhoz tartozik ez az ATM?"</string>
     <string name="quest_clothes_container_operator_title">"Ki fogadja az ebből a ruhagyűjtő konténerből származó adományokat?"</string>
     <string name="quest_charging_station_operator_title">"Ki az üzemeltetője ennek a töltőállomásnak?"</string>
     <string name="link_indoorequal_description">"Plázák, vasútállomások, stb. beltéri térképei"</string>
     <string name="achievement_rare_title">"Kincsvadász"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"%d olyan kérdést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!"</string>
     <string name="achievement_citizen_title">"Polgár"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"%d olyan kérdést megoldottál, amik a városi mindennapi élethez hasznosak!"</string>
     <string name="achievement_outdoors_title">"Túrázó"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"%d olyan kérdést megoldottál, amik a túrázók számára hasznosak!"</string>
     <string name="quest_pedestrian_crossing_island">"Ez a gyalogosátkelőhely rendelkezik járdaszigettel?"</string>
     <string name="quest_generic_answer_noSign">"Nincs tábla"</string>
@@ -1855,130 +779,74 @@ szintek"</string>
     <string name="quest_buildingType_abandoned_description">"használaton kívüli épület, aminek az eredeti funkciója vagy rendeltetése ismeretlen"</string>
     <string name="quest_buildingType_ruins">"Romok"</string>
     <string name="quest_buildingType_ruins_description">"elhagyatott, romos és beazonosíthatatlan épület"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"Hány autó tölthető egyidejűleg ezen a töltőállomáson?"</string>
     <string name="link_disaster_ninja_description">"Térkép, amely megjeleníti a közelmúltbéli természeti katasztrófákat, hasznos információt szolgáltatva a humanitárius térképezőknek. Valamint számos érdekes statisztikát is megjelenít arról, hogy mennyire feltérképezettek és naprakészek az egyes helyek."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_title">"Hány forgalmi sávval rendelkezik ez az út?"</string>
     <string name="quest_lanes_answer_lanes">"Jelölt sávok"</string>
     <string name="quest_lanes_answer_noLanes">"Nincsenek jelölt sávok"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Kétirányú balra kanyarodó sávval rendelkezik (USA és Kanada)"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ez helyes?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"Mekkora a magasságkorlátozás a híd alatt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_split_way_hint">"Ha nem az egész útra érvényes, akkor inkább válaszold ezt: \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Van vakvezető burkolat ezen a járdaszegélyen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_kerb_height_title">"Milyen magas ez a járdaszegély?"</string>
     <string name="quest_kerb_height_flush">"Az útfelülettel megegyező"</string>
     <string name="quest_kerb_height_lowered">"Valamivel magasabb az útfelületnél"</string>
     <string name="quest_kerb_height_raised">"Megemelt járdaszegély"</string>
     <string name="quest_kerb_height_lowered_ramp">"Süllyesztett járdaszegély"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description2">"Add meg az autóforgalom számára használható, jelölt sávok számát (két irányban együttesen). A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha buszsáv is van, akkor inkább írj egy megjegyzést."</string>
     <string name="quest_surface_value_rock">"Kő"</string>
     <string name="quest_maxheight_answer_noSign_question_yes">"Magas kamionok át tudnak haladni"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question_no">"Magas kamionok nem férnek el"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_marked">"Jelzett átkelő"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_street_side">"Közvetlen az út melletti parkoló"</string>
     <string name="quest_parkingType_lane">"Útfelületen lévő parkoló"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2a">"Szilárd, de burkolatlan"</string>
     <string name="quest_tracktype_grade3a">"Többnyire szilárd"</string>
     <string name="quest_generic_answer_does_not_exist">"Nem létezik…"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"Biztos vagy benne, hogy nem létezik, kissé eltérő helyen sem? Ha nem biztos, inkább hagyj megjegyzést."</string>
     <string name="osm_element_gone_confirmation">"Nem létezik"</string>
     <string name="leave_note">"Megyjegyzés írása"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_title">"Mi található itt helyette?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_gone_vacant_answer">"Üresen áll"</string>
     <string name="quest_shop_gone_replaced_answer">"Egy…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Add meg a hely típusát"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shop_vacant_type_title">"Ez az üzlet üresen állt. Mi található most itt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"A sávok száma eltérő a két oldalon"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mivel egyes régiókban kevésbé hasznos, valamint a kérdés megválaszolásához jó eséllyel be kell menni az adott helyre."</string>
     <string name="quest_dietType_explanation_kosher">"A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Nincs kerékpárút vagy kerékpársáv egyáltalán"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Szokás szerint koppints az ábra egyik oldalára, válaszd ki a megfelelő választ, majd tedd meg hasonlóan a másik oldalon is. Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelmű, például olyan egyirányú út esetében, amelyen a kerékpárosok mindkét irányban közlekedhetnek."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"„Nincs kerékpárút” válasz"</string>
     <string name="quest_construction_completed_at_known_date">"Ekkor lesz készen…"</string>
     <string name="quest_construction_completion_date_title">"Mikor lesz ez készen?"</string>
     <string name="quest_surface_value_clay">"Salak"</string>
     <string name="quest_surface_value_artificial_turf">"Műfű"</string>
     <string name="quest_surface_value_tartan">"Rekortán"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_fee_title">"Fizetős ez a kerékpárparkoló?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description2">"családi ház, mely egy sorház része"</string>
     <string name="quest_drinking_water_potable_signed">"Biztonságosan iható (jelzett)"</string>
     <string name="quest_drinking_water_potable_unsigned">"Biztonságosan iható (jelzetlen)"</string>
     <string name="quest_drinking_water_not_potable_signed">"Nem iható biztonságosan (jelzett)"</string>
     <string name="quest_drinking_water_not_potable_unsigned">"Nem iható biztonságosan (jelzetlen)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxRoyalCypher_title">"Milyen királyi monogram található ezen a postaládán?"</string>
     <string name="quest_postboxRoyalCypher_type_none">"Nem látható rajta királyi monogram"</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skócia koronája"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_fire_station">"Tűzoltóállomás"</string>
     <string name="quest_recycling_type_beverage_cartons">"Csak italoskarton"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kizárólag műanyag palack és karton"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode">"Csapat mód"</string>
-
-    <!-- Team mode -->
     <string name="team_mode_exit">"Kilépés csapat módból"</string>
     <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapat módban felosztani a feladatokat."</string>
     <string name="team_mode_team_size_hint">"A csapat mód 2-től 12 személyig használható."</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals_controlled">"Jelzőlámpával szabályozott"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
     <string name="synced">"Szinkronizált"</string>
     <string name="toast_undo_unavailable">"Ez a szerkesztés már szinkronizálásra került és nem visszavonható"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_separate">"a térképen külön szerepel"</string>
-
-    <!-- Edit history sidebar -->
     <string name="created_note_action_title">"Létrehozott megjegyzés"</string>
     <string name="commented_note_action_title">"Kommentált megjegyzés"</string>
     <string name="hid_action_description">"Elrejtetted"</string>
@@ -2007,12 +875,8 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_log">"Farönk"</string>
     <string name="quest_barrier_type_kerb">"Járdaszegély"</string>
     <string name="quest_barrier_type_height_restrictor">"Magassági akadály"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_full_height_turnstile">"Egész alakos forgókapu"</string>
     <string name="quest_barrier_type_turnstile">"Forgókapu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_type_passage">"Átjáró falon/kerítésen/egyeben"</string>
     <string name="quest_barrier_type_debris_pile">"Törmelékhalom"</string>
     <string name="quest_barrier_type_stile_squeezer">"Szűk átjáró"</string>
@@ -2024,8 +888,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
     <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
     <string name="quest_buildingType_semi_detached_description2">"csatlakozó családi ház(ak)"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests2">"Kérdések kiválasztása és prioritásuk"</string>
     <string name="pref_subtitle_quests">"%1$d/%2$d engedélyezve"</string>
     <string name="no_location_permission_warning_title">"Helymeghatározási engedély"</string>
@@ -2044,8 +906,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_buildingLevels_title_buildingPart2">"A pince fölött hány szintje van az épületrésznek?"</string>
     <string name="quest_crossing_title">"Van-e járdaszegély ott, ahol ez a vonal találkozik ezzel az úttal? Ha igen, milyen?"</string>
     <string name="pref_subtitle_quests_preset_name">"Előre beállított érték: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_roofShape">"Ez a kérdéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Ez a kérdéstípus ráadásul meglehetősen időigényes is; az esetek többségében könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni."</string>
     <string name="quest_religion_animist">"Animista"</string>
     <string name="quest_construction_steps_title">"Be van-e fejezve ez a lépcső?"</string>
@@ -2053,12 +913,8 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_buildingType_boathouse">"Csónakház"</string>
     <string name="quest_buildingType_allotment_house">"Kiskerti melléképület"</string>
     <string name="quest_buildingType_grandstand">"Lelátó"</string>
-
-    <!-- Quest selection screen -->
     <string name="action_search">"Keresés"</string>
     <string name="action_manage_presets">"Előre beállított értékek kezelése"</string>
-
-    <!-- Fuzzy -->
     <string name="team_mode_team_size_label2">"Hány ember térképezik? Mindenkinek a telefonján azonos értéket adjatok meg."</string>
     <string name="team_mode_choose_color2">"Ezután mindenkinek kell egy eltérő színt választania. A tied:"</string>
     <string name="link_organic_maps_description">"Offline módon is működő térképalkalmazás utazóknak, túrázóknak és kerékpárosoknak"</string>
@@ -2070,18 +926,12 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="no_search_results">"Nincs találat"</string>
     <string name="quest_selection_hint_title">"Túl sok a tennivaló?"</string>
     <string name="quest_selection_hint_message">"A közreműködésnek elsősorban szórakoztatónak kell lennie! Ha a kérdések nagy száma megterhelő, akkor a beállításokban finomhangolhatod, hogy mely kérdések és milyen sorrendben jelenjenek meg."</string>
-
-    <!-- Managing quest presets screen -->
     <string name="quest_presets_preset_add">"Előre beállított érték hozzáadása"</string>
     <string name="quest_presets_preset_name">"Előre beállított érték neve"</string>
     <string name="quest_presets_default_name">"Alapértelmezett"</string>
     <string name="quest_presets_selected">"Kijelölve"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_presets_delete_message">"Törlöd ezt az előre beállított értéket: „%s”? A kérdésválasztás és a sorrend véglegesen elvész."</string>
     <string name="notification_syncing">"Adatok szinkronizálása…"</string>
-
-    <!-- Android notifications -->
     <string name="notification_channel_sync">"Adatok szinkronizálása"</string>
     <string name="quest_board_type_sport">"Sport, gyakorlatok"</string>
     <string name="quest_generic_hasFeature_optional">"Opcionális"</string>
@@ -2089,9 +939,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_laundrySelfService_title2">"Ez a mosoda önkiszolgáló?"</string>
     <string name="quest_dietType_explanation_halal">"A halal termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével."</string>
     <string name="quest_picnicTableCover_title">"Fedett (esőtől védett) ez a piknikezőasztal?"</string>
-
-    <!-- e.g. "it is displayed as a footway on the map but actually these are steps" -->
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_is_actually_steps">"Ezek lépcsők"</string>
     <string name="quest_barrier_type_passage_conversion">"Falon/kerítésen lévő átjáróvá alakítva"</string>
     <string name="quest_barrier_type_gate_conversion">"Kapuvá alakítva"</string>
@@ -2116,21 +963,15 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_access_yes">"Bárki a nagyközönségből"</string>
     <string name="quest_access_customers">"Ez adott hely látogatói (pl. ügyfelek részére)"</string>
     <string name="quest_access_private">"Kizárólag engedéllyel rendelkező személy(ek)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_resurvey_title">"Még mindig pontos ennek a postaládának az ürítési ideje?"</string>
     <string name="quest_bicycle_barrier_type_title">"Ez milyen típusú kerékpáros akadály?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Az ösvényre átlósan"</string>
     <string name="quest_barrier_bicycle_type_tilted">"Keskeny átjáró, fölfelé keskenyedik"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_barrier_bicycle_type_single">"Átjáró két akadály között"</string>
     <string name="quest_barrier_bicycle_type_double">"S-kanyar mindkét oldalon akadállyal"</string>
     <string name="quest_barrier_bicycle_type_multiple">"S-kanyar legalább három akadállyal"</string>
     <string name="pref_title_language_select">"Nyelv kiválasztása"</string>
     <string name="language_default">"Rendszer alapértelmezett"</string>
-
-    <!-- Fuzzy -->
     <string name="on_floor">"%s. emeleten:"</string>
     <string name="select_street_parking_orientation">"Az úttesthez viszonyított irányultság kiválasztása:"</string>
     <string name="select_street_parking_position">"Helyzet kiválasztása:"</string>
@@ -2138,20 +979,10 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="street_parking_parallel">"Párhuzamosan"</string>
     <string name="street_parking_diagonal">"Harántirányban"</string>
     <string name="street_parking_perpendicular">"Merőlegesen"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_street">"Az úttesten"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_half_on_kerb">"Részben az úttesten"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_on_kerb">"Az úttest mellett"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_street_side">"Az úttest mellett, csak az erre kijelölt helyeken"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_painted_area_only">"Az úttesten, csak az erre kijelölt helyeken"</string>
     <string name="street_parking_separate">"A parkoló külön szerepel a térképen"</string>
     <string name="street_parking_no">"Nincs parkoló / nem megengedett"</string>
@@ -2160,30 +991,18 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="street_standing_prohibited">"No standing (USA)"</string>
     <string name="street_parking_conditional_restrictions">"Feltételesen korlátozott várakozás/megállás"</string>
     <string name="street_parking_no_other_reasons">"Nincs kifejezett jel / nem lehet parkolni"</string>
-
-    <!-- Fuzzy -->
     <string name="street_parking_conditional_restrictions_hint">"Ha egyáltalán lehet itt parkolni vagy megállni, akkor először is arra válaszolj, hogy hogyan lehet itt szabályosan parkolni. Az esetleges korlátozásokat később lehet pontosítani.
 
 Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_address_house_number_label">"Házszám:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_shoulder_title">"Van leállósáv ezen az úton?"</string>
     <string name="quest_fireHydrant_position_title">"Hol található ez a tűzcsap?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_green">"Füvön vagy földön"</string>
     <string name="quest_fireHydrant_position_lane">"Úttesten"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_position_sidewalk">"Járdán"</string>
     <string name="quest_fireHydrant_position_parking_lot">"Parkolóhelyen"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Igen (megjegyzés írása)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_square_title">"Milyen a felszín minősége ezen a téren?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_road_title">"Milyen az felszín minősége ezen az úton?"</string>
     <string name="quest_smoothness_title_excellent">"Tükörsima"</string>
     <string name="quest_smoothness_title_good">"Jobbára sima"</string>
@@ -2209,8 +1028,6 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_smoothness_description_very_bad_paved">"Mély kátyúk, nyomvályúk vagy egyéb veszélyes sérülések"</string>
     <string name="quest_smoothness_description_very_bad_sett">"Nagy hézagok, elmozdult, hiányzó vagy szabálytalan alakú kövek vagy veszélyes sérülések"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Hiányzó vagy törött kövek, hézagok vagy más veszélyes sérülések"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Néhány nagy kő, mély kátyúk, zökkenők, nyomvályúk, erózió vagy más veszélyes sérülések"</string>
     <string name="quest_smoothness_description_horrible">"Megfelelően csak terepjáróval vagy gyalogosan használható"</string>
     <string name="quest_smoothness_description_very_horrible">"Megfelelően csak különleges terepjáróval vagy gyalogosan használható"</string>
@@ -2218,33 +1035,20 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_smoothness_wrong_surface">"A felszín nem ilyen"</string>
     <string name="quest_smoothness_surface_value">"A felszín így volt címkézve:"</string>
     <string name="quest_smoothness_obstacle">"Van rajta akadály"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_obstacle_hint">"Kérjük, általánosan határozd meg a simaságot. Az egyedi akadályok (pl járdaszegélyek, fekvőrendőr vagy szarvasmarha-rács) figyelmen kívül hagyhatók. Az ismétlődő vagy váratlan akadályokat viszont bele kell számítani a válaszba."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … add meg, hogy mely járművekkel lehet használni a felszínt. Az összkép számít, nem az egyedi sérülések."</string>
     <string name="link_osmhydrant_description">"Tűzoltóságok és tűzcsapok keresése, hozzáadása és szerkesztése"</string>
     <string name="achievement_lifesaver_title">"Életmentő"</string>
     <string name="achievement_lifesaver_solved_X">"Választ adtál %d olyan kérdésre, amellyel a mentőknek, a tűzoltóknak és más segélyszolgálatoknak nyújtottál segítséget!"</string>
-
-    <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
-    <!-- Fuzzy -->
     <string name="quest_fuelSelfService_title">"Tankolhatsz te magad is ezen a benzinkúton?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_difficult_and_time_consuming">"Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mert elég időigényes és gyakran nehéz helyesen válaszolni rá. Csak akkor engedélyezd, ha valóban elkötelezett vagy ilyen jellegű adatok hozzáadása iránt."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Keményre tömörödött, nagyon kevés laza kavics vagy homok"</string>
     <string name="quest_barrier_path_intersection">"Hogyan keresztezi itt ez az ösvény az akadályt?"</string>
     <string name="quest_barrier_road_intersection">"Hogyan keresztezi itt ez az út az akadályt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_separate">"gyalogjárda, a térképen külön szerepel"</string>
     <string name="quest_shoulder_value_yes">"leállósáv"</string>
     <string name="quest_shoulder_value_no">"nincs leállíósáv"</string>
     <string name="no_camera_permission_warning_title">"Kamera engedély"</string>
-
-    <!-- Fuzzy -->
     <string name="no_camera_permission_warning">"Az engedély szükséges a kiterjesztett valósággal történő távolságméréshez."</string>
     <string name="ar_core_error_sdk_too_old">"Az alkalmazás túl régi, próbáld meg frissíteni."</string>
     <string name="ar_core_tracking_error_bad_state">"Valami hiba történt. Próbáld újraindítani a mérést."</string>
@@ -2258,25 +1062,13 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_sidewalk_answer_none_title">"Hiányzó gyalogjárda"</string>
     <string name="quest_side_select_interface_explanation">"Koppints az egyik oldalra, és válaszd a megfelelő választ.
 Tedd meg a másiknál is, ha van olyan."</string>
-
-    <!-- AR Measure screen -->
     <string name="ar_measure">"Mérés"</string>
-
-    <!-- Fuzzy -->
     <string name="ar_core_tracking_error_too_steep_angle">"Túl meredek szög, állj egy kicsit távolabb"</string>
     <string name="default_disabled_msg_no_ar">"Szükséged lesz egy mérőszalagra ezen kérdés megoldásához, mert ez az eszköz nem támogatja a kamerás mérést."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_width_title">"Milyen széles a kerékpárút?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_title">"Mekkora az út szélessége?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_road_width_explanation">"Az úttest szélessége a két járdaszegély között: Ebben benne van a parkolónak használt rész és a kerékpársáv, de nem tartalmazza az azon túli részeket, mint például a külön kerékpárutat vagy az úttest melletti parkolót."</string>
     <string name="quest_sidewalk_answer_none">"Egyáltalán nincs járda"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate_google_play2">"Köszönjük, hogy támogatod ezt az alkalmazást!
 Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthetők meg adományozásra vezető linkek. Még a projekt honlapjára mutató hivatkozás sem megengedett."</string>
     <string name="link_osmand_description">"Telefonos app online és offline térpépböngészéshez és navigációhoz"</string>
@@ -2284,8 +1076,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="ar_core_tracking_error_no_plane_hit">"Menj közelebb a nyílhoz, de vigyázz a forgalomra!"</string>
     <string name="quest_sidewalk_surface_title">"Milyen a felülete itt a járdának?"</string>
     <string name="quest_tactilePaving_incorrect">"Csak az egyik oldalon"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_yes_but">"Igen, …"</string>
     <string name="quest_fee_answer_no_but_maxstay">"Nem, de van időkorlát…"</string>
     <string name="unit_days">"nap"</string>
@@ -2301,44 +1091,22 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_smoking_separated">"Csak elkülönített helyen"</string>
     <string name="quest_smoking_yes">"Igen, mindenhol"</string>
     <string name="quest_seating_name_title">"Milyen ülőhelyekkel rendelkezik ez a hely?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_seating_takeaway">"Csak elvitel"</string>
     <string name="quest_seating_indoor_only">"Csak beltéri ülőhelyek"</string>
     <string name="quest_seating_outdoor_only">"Csak kültéri ülőhelyek"</string>
     <string name="quest_seating_indoor_and_outdoor">"Beltéri és kültéri ülőhelyek"</string>
     <string name="default_disabled_msg_summer_outdoor_seating">"Ez a kérdés alapértelmezett ki van kapcsolva, mert lehet hogy csak az év egy bizonyos szakában ellenőrizhetők a kültéri ülőhelyek."</string>
     <string name="no_camera_permission_toast">"Nincs hozzáférés a kamerához."</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cash_title2">"Készpénzzel lehet fizetni?"</string>
     <string name="quest_address_street_title2">"Melyik utcában van?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_airConditioning_title">"Ez a hely légkondícionált?"</string>
     <string name="quest_baby_changing_table_title2">"Van itt pelenkázóasztal?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Van pad ennél a megállónál?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBin_title2">"Van szemeteskosár ennél a megállónál?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopLit_title2">"Kivilágított ez a megálló?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopName_title2">"Mi a neve ennek a megállónak?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
-    <!-- Fuzzy -->
     <string name="quest_busStopRef_title2">"Mi a megálló hivatkozási száma?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopShelter_title2">"Van esőbeálló ennél a megállónál?"</string>
-
-    <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopTactilePaving_title">"Van vakvezető burkolat ennél a megállónál?"</string>
     <string name="quest_dietType_halal_name_title2">"Vannak itt halal ételek?"</string>
     <string name="quest_dietType_kosher_name_title2">"Vannak itt kóser ételek?"</string>
@@ -2359,30 +1127,19 @@ sorted alphabetically by title -->
     <string name="quest_smoothness_title">"Milyen az útfelület simasága?"</string>
     <string name="quest_summit_register_title2">"Van-e itt csúcsnapló?"</string>
     <string name="quest_surface_title">"Milyen itt a burkolat?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_title">"Van-e itt wc?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"A wc kerekesszékkel is használható?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Biztos, hogy a kerékpárosok nem használhatják ezt az egyirányú utcát mindkét irányban? Kétség esetén nézd meg, hogy van-e engedélyező tábla az utca végén."</string>
     <string name="link_valhalla_description">"Nagyon kis memóriaigényű útválasztó motor, multimodális útválasztás, izokronok és még sok más."</string>
     <string name="link_backofyourhand_description">"Mennyire ismered jól a területet? Teszteld tudásodat az utcák megkeresésével."</string>
     <string name="link_notesreview_description">"Kényelmesen láthatja, szűrheti és kommentálhatja az Ön és mások által készített jegyzeteket. Sok jegyzet megoldható a bennük szereplő információknak az iD vagy a JOSM segítségével történő térképre helyezésével."</string>
-
-    <!-- Quests
-sorted alphabetically by title -->
     <string name="quest_accepts_cards">"Elfogadnak itt hitel- vagy bankkártyát?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accepts_cards_debit_and_credit">"Mindkettőt"</string>
     <string name="quest_accepts_cards_credit_only">"Csak hitelkártyát"</string>
     <string name="quest_accepts_cards_dedit_only">"Csak bankkártyát"</string>
     <string name="quest_accepts_cards_unavailable">"Egyik fajta kártyát sem"</string>
     <string name="quest_barrier_type_gate_any_size">"Kapu (mérettől függetlenül)"</string>
     <string name="quest_air_pump_compressor_title">"Van itt légkompresszor?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_step_count_stile_hint">"Csak a csúcsra vezető lépések száma. Ha a lépések száma oldalanként eltér, adjuk meg a nagyobb számot."</string>
     <string name="quest_shoulder_explanation2">"A leállósáv egy egyértelműen kijelölt vészmegállósáv. A leállósávként kijelölt terület nem feltétlenül teljes szélességében burkolt, és nem feltétlenül elég széles ahhoz, hogy egy autó teljesen meg tudjon állni a forgalmi sávban."</string>
     <string name="quest_cycleway_value_none_and_oneway">"kerékpározás nincs megengedve ebbe az irányba"</string>
@@ -2424,8 +1181,6 @@ sorted alphabetically by title -->
     <string name="quest_memorialType_stele_wooden">"Fából készült"</string>
     <string name="quest_memorialType_stele_stone">"Kőből faragott"</string>
     <string name="quest_memorialType_sculpture">"Más szobor"</string>
-
-    <!-- Overlays -->
     <string name="select_overlay">"Válassz kiemelést"</string>
     <string name="overlay_none">"Nincs"</string>
     <string name="overlay_lit">"Utcai világítás"</string>
@@ -2464,8 +1219,6 @@ sorted alphabetically by title -->
     <string name="create_node_action_description">"Létrehoztál egy pontot..."</string>
     <string name="quest_accessPointRef_answer_assembly_point">"Gyülekezőhely"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"A gyülekezési pont az a hely, ahol az emberek vészhelyzet esetén összegyűlnek. Általában ehhez hasonlóan néz ki:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name2">"Van házszáma..."</string>
     <string name="quest_address_street_street_name_label">"Utcanév:"</string>
     <string name="quest_address_street_hint2">"Koppints az utcára a kiválasztáshoz"</string>
@@ -2480,19 +1233,12 @@ sorted alphabetically by title -->
     <string name="quest_drinking_water_type_water_well_no_pump">"Szivattyú nélküli kút"</string>
     <string name="quest_drinking_water_type_spring">"Forrás"</string>
     <string name="quest_drinking_water_type_disused">"Nem használt vízforrás"</string>
-
-    <!-- Azért fordítottam egyes számmal, mert a korábbi, többi fordítás is így van. -->
     <string name="overlay_addresses">"Cím"</string>
     <string name="overlay_shops">"Üzlet"</string>
     <string name="name_label">"Név:"</string>
     <string name="vacant_shop_title">"Üres üzlethelyiség"</string>
-
-    <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
-    <!-- Fuzzy -->
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
     <string name="quest_address_answer_no_address">"Nincs cím"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_barrier_installation_title">"Ki lehet nyitni a kerékpárakadályt?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Rögzített"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Nyitható"</string>
@@ -2505,8 +1251,6 @@ sorted alphabetically by title -->
     <string name="quest_presets_rename">"Átnevezés"</string>
     <string name="quest_presets_share">"Megosztás"</string>
     <string name="quest_presets_delete">"Törlés"</string>
-
-    <!-- Config via URL/QRCode -->
     <string name="urlconfig_qr_code_description">"A kiválasztott kérdéstípusok megosztása QR-kóddal."</string>
     <string name="urlconfig_as_url">"URL"</string>
     <string name="urlconfig_url_copied">"URL vágólapra másolva"</string>
@@ -2515,16 +1259,27 @@ sorted alphabetically by title -->
     <string name="urlconfig_apply_message_overwrite">"Ha van azonos névvel, az felül fog íródni!"</string>
     <string name="urlconfig_switch_hint">"A kiválasztások között bármikor váltani lehet."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Kétszintes kerékpártartó"</string>
-
-    <!-- Fuzzy -->
     <string name="user_profile_current_week_title">"Ezen a héten"</string>
     <string name="user_profile_dates_mapped">"Térképezéssel töltött napok"</string>
-
-    <!-- A kind of second-grade cycle lane. It has a lower minimum width and other traffic may drive or even legally stop on it and thus conceptually akin to "sharrows". It is often used in places where there is not enough space for both full car lanes and full cycle lanes. Hence it is usually not mandatory for cyclists. The concept of such a cycle lanes only exists in some countries. It is called differently in different countries, some examples: "advisory cycle lane" (GB), "suggestion cycle lane" (NL,BE), "protective lane" (DE,CZ), "multiple-purpose strip" (AT), see https://github.com/streetcomplete/countrymetadata/blob/master/data/hasAdvisoryCycleLane.yml if you think somehting is missing -->
     <string name="quest_cycleway_value_advisory_lane">"nyitott kerékpársáv"</string>
     <string name="urlconfig_scan_qr_code_again2">"Az alkalmazás telepítése után olvasd le újra a QR-kódot, vagy kattints &lt;a href=\"%s\"&gt;erre a hivatkozásra&lt;/a&gt; az előre beállított érték alkalmazásához."</string>
     <string name="confirmation_replace_shop_title">"Ez most egy másik üzlet?"</string>
     <string name="confirmation_replace_shop_message">"Ebben az esetben a nyitvatartási idő, az elérhetőségek stb. is megváltoztak."</string>
     <string name="confirmation_replace_shop_yes">"Ez egy másik üzlet lett"</string>
     <string name="confirmation_replace_shop_no">"Ugyanaz a hely"</string>
+    <string name="move_node">"Kicsit más helyzetben van..."</string>
+    <string name="node_moved_not_far_enough">"Kérjük, vigye tovább"</string>
+    <string name="node_moved_too_far">"Túl messzire került. Fontolja meg, hogy megjegyzést hagyjon"</string>
+    <string name="move_node_action_description">"Áthelyezte a csomópontot"</string>
+    <string name="quest_placeName_no_name_answer">"Nincs névtábla"</string>
+    <string name="quest_road_width_unusualInput_confirmation_description">"Ez a szélesség valószínűtlennek tűnik. Ne feledje, ennek a szélességnek a járdaszegélytől a járdaszegélyig terjedő szélességnek kell lennie, beleértve az utcai parkolást, a kerékpársávokat stb. is."</string>
+    <string name="separate_cycleway_no">"Nincs kerékpározás"</string>
+    <string name="separate_cycleway_allowed">"Kerékpárosok számára engedélyezett"</string>
+    <string name="separate_cycleway_no_or_allowed">"Nem kerékpárosok számára kijelölt (függetlenül attól, hogy a kerékpározás engedélyezett-e vagy sem)"</string>
+    <string name="separate_cycleway_non_segregated">"Kijelölt kombinált gyalogos- és kerékpárút"</string>
+    <string name="separate_cycleway_segregated">"Elkülönített kerékpár- és gyalogút"</string>
+    <string name="separate_cycleway_exclusive">"Kizárólag kerékpárút"</string>
+    <string name="separate_cycleway_with_sidewalk">"Kizárólagos kerékpárút, amely a gyalogosforgalom számára járdával (járdaszegéllyel) rendelkezik"</string>
+    <string name="cycleway_reverse_direction">"A kerékpárút irányának megfordítása"</string>
+    <string name="cycleway_reverse_direction_toast">"Érintse meg, hogy melyik oldala legyen fordítva"</string>
 </resources>

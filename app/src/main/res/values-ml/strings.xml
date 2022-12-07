@@ -1,257 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"സജ്ജീകരണങ്ങള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"അംഗീകാരമുള്ള സെർവറിലേക്ക് എത്തിച്ചേരാനാകുന്നില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"അംഗീകാരം പരാജയപ്പെട്ടു: ലിസ്റ്റുചെയ്ത എല്ലാ അനുമതികളും നൽകേണ്ടതുണ്ട്"</string>
-
-    <!-- Settings screen -->
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"ആശയവിനിമയം"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"ഡിസ്പ്ലേ"</string>
     <string name="pref_tilecache_size_summary">"%d മെഗാബൈറ്റുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"പുറം സ്റ്റോറേജിൽ റിസേർവ് ചെയ്തിരിക്കുന്ന മെഗാബിറ്റ് സ്പേസ്  സ്പെയ്സ് കാഷെ ടൈലുകളിലേക് "</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"എല്ലാ കുറിപ്പുകളും കാണിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"ചോദ്യങ്ങളായും പരാമർശിക്കാതെ കുറിപ്പുകൾ കാണിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"ചോദ്യങ്ങൾ ആയി പറയാത്ത നോട്സ് അവഗണിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"മാപ്പ് കാഷെ വലുപ്പം"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"എന്നെ പിന്തുടരുക"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap സംഭാവന ചെയ്യുന്നവർ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"മറ്റ് ഉത്തരങ്ങൾ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"പറയാൻ കഴിയില്ല…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"നിങ്ങള്ക്ക് ഉറപ്പാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"അതെ, എനിക്കുറപ്പാണ് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"ഞാൻ പരിശോധിക്കും"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"പകരം ഒരു കുറിപ്പ് ഇടൂ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"മറ്റ് മാപ്പ് നിർമാതാക്കൾക്ക് അഭിപ്രായമിടാനും ആശയപരമായി പരിഹരിക്കാനുമുള്ള ഒരു പൊതു കുറിപ്പിനായി നിങ്ങൾക്ക് ഈ സ്ഥലം നൽകാം:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_yes">"ശരി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"വേണ്ട, മറയ്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_title">"ഈ റോഡിന്റെ പേരെന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_description">"തെരുവ് ചിഹ്നത്തിൽ എഴുതിയിരിക്കുന്നതുപോലെ, ചുരുക്കരൂപങ്ങൾ വികസിപ്പിച്ചു കൊണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"ചിലപ്പോൾ തെരുവ് ചിഹ്നം തെരുവിലെ ഒരു അറ്റത്ത് മാത്രമാണ്. കൂടാതെ, ഒരു വലിയ തെരുവിൽ ഉൾപ്പെടുന്ന സൈഡ് റോഡുകൾക്  ചിഹ്നം ഉണ്ടായിരിക്കില്ലെന്ന് ഓർക്കുക. സാധാരണയായി, വീടുകൾ ഉള്ള തെരുവിന് പേര് ഉണ്ട് 
 "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"ഒരു ചുരുക്കെഴുത്ത് ഇല്ലാതെ പേര് സ്പെല്ലിംഗ് ആണെങ്കിൽ, അത് വിപുലമാക്കണം. എല്ലാം ഇല്ലെങ്കിലും നിങ്ങൾ സാധാരണ ടൈപ്പ് ചെയ്യുമ്പോൾ തന്നെ പല ചുരുക്കെഴുത്തും വികസിപ്പിക്കുന്നു."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"ചുരുക്കെഴുത്ത് ഇല്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"തുറക്കുന്ന സമയം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"അടയ്ക്കുന്ന സമയം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"മാസം ചേർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"മണിക്കൂർ ചേർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"ദിനങ്ങൾ ചേർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"മാസം തിരഞ്ഞെടുക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"ദിനങ്ങൾ തിരഞ്ഞെടുക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"മറ്റു വാക്കുകളിൽ പറഞ്ഞാൽ, അത് എല്ലാ ദിവസവും ഏത് സമയത്തും തുറക്കണോ ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"ഈ കുറിപ്പിന് സംഭാവന ചെയ്യാൻ കഴിയുമോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"ഇല്ല, മറയ്ക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"അജ്ഞാതനായ"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"വിവരങ്ങൾ ഉപേക്ഷിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"ഉപേക്ഷിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="action_download">"ഇവിടെ അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="action_upload">"ഉത്തരങ്ങൾ അപ്ലോഡ് ചെയ്യൂ"</string>
-
-    <!-- when the user left the answer form empty -->
-    <!-- Fuzzy -->
     <string name="no_changes">"നിങ്ങൾ ശൂന്യമായി ഫോം വിട്ടു"</string>
-
-    <!-- Fuzzy -->
     <string name="close">"അടയ്ക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"ക്വസ്റ്റുകൾക്കായി സ്കാൻ ചെയ്യുമ്പോൾ പിശകുണ്ടായി"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"ഉത്തരങ്ങൾ അപ്ലോഡ് ചെയ്യുമ്പോൾ പിശകുണ്ടായി"</string>
-
-    <!-- Fuzzy -->
     <string name="download_area_too_big">"കൂടുതൽ സൂം ഇൻ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"നിലവിലുള്ള തിരയൽ റദ്ദാക്കി പകരം ഇവിടെ സ്കാൻ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="turn_on_location_request">"ലൊക്കേഷൻ ഓഫാണ്. അത് ഇപ്പോൾ ചെയ്യാനുള്ള ക്രമീകരണങ്ങളിൽ പോകണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"നിങ്ങളുടെ സമീപത്തായുള്ള അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യാൻ നിങ്ങളുടെ ലൊക്കേഷൻ ആവശ്യമാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"രചയിതാക്കൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© %s തോബിയാസ് സ്വിക്കും മറ്റ് സംഭാവകരും"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"ഉറവിട റിപ്പോസിറ്ററി"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"GitHub- ൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"പിശക് റിപ്പോർട്ട് ചെയ്യുക   "</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"ഫീഡ്ബാക്ക് നൽകുക"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"ലൈസൻസ്"</string>
     <string name="about_summary_license">"ഗ്നുജനറൽ പബ്ലിക് ലൈസൻസ്"</string>
-
-    <!-- Error messages and crash report -->
-    <!-- Fuzzy -->
     <string name="offline">"നിങ്ങൾ ഓഫ്ലൈനിലാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"നിങ്ങളുടെ ഉത്തരങ്ങൾ ഏതെങ്കിലും നന്മയ്ക്കായി പ്രയോഗിക്കുന്നതിന് നിങ്ങളുടെ OSM ഉപയോക്തൃ അക്കൗണ്ടുമായി നിങ്ങൾ അംഗീകരിക്കേണ്ടതുണ്ട്. ഇപ്പോൾ അംഗീകൃതമോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="not_authorized">"അംഗീകാരമില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"സ്ട്രീറ്റ് കോംപ്ലെറ്റിന്റെ ഈ പതിപ്പ് ഏതെങ്കിലും ഉത്തരങ്ങൾ അപ്ലോഡ് ചെയ്യുന്നതിൽ നിന്നും വിലക്കിയിരിക്കുന്നു! ദയവായി നിങ്ങളുടെ പതിപ്പ് അപ്ഡേറ്റുചെയ്യുക!"</string>
-
-    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"നിങ്ങളുടെ ചുറ്റുമുള്ള ക്വസ്റ്റുകൾക്കായി സ്വയം സ്കാൻ ചെയ്യുന്നതിന്, ലൊക്കേഷൻ ഓണാക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="later">"പിന്നീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"അത് രണ്ടു റോഡുകളുമായും ബന്ധിപ്പിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"മറ്റെന്തെങ്കിലും (കുറിപ്പ് നൽകുക)"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"സ്വകാര്യത പ്രസ്താവന"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"ഡാറ്റാ ഉപയോഗം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"പൊതു അവധികൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"തുറന്ന അറ്റം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"24/7  പ്രവർത്തിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"മാസം കൊണ്ട് വ്യത്യാസമുണ്ട്…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"സ്ഥിരമായി ആരംഭിക്കുന്ന സമയം ഇല്ല…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"പ്രവർത്തന സമയം വിവരിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"ചുരുക്കമായിരിക്കുക, ചിഹ്നങ്ങളിൽ നിന്ന് വാക്കുകളെ ഉപയോഗിക്കുക. അതായത് \"അപ്പോയ്ന്റ്മെന്റ് വഴി\". എന്ന ഒരു അടയാളം ഇല്ലെന്നത് തുറന്നിരിക്കുന്ന സമയമില്ലെന്ന് അർത്ഥമാക്കുന്നില്ല."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"ഈ കെട്ടിടത്തിന്റെ മേൽക്കൂരയുടെ  ആകൃതി എന്താണ് ?"</string>
-
-    <!-- As in: "select ONE of the pictures below" -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"ഒന്ന് തിരഞ്ഞെടുക്കുക:"</string>
-
-    <!-- As in: "show more of those pictures to select an answer from -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"കൂടുതൽ കാണിക്കുക…"</string>
-
-    <!-- it is used in generic list, not only for roof shape but rename would break translations -->
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"ഇതിന് പല വ്യത്യസ്ത രൂപങ്ങൾ ഉണ്ട്"</string>
-
-    <!-- Elements on map view -->
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"സൂം ഔട്ട് ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"വലുതാക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; ഓ, സ്വകാര്യതയെക്കുറിച്ച് ശ്രദ്ധിക്കുന്നയാൾ, കൊള്ളാം! നിങ്ങൾക്ക് നല്ല വാർത്ത മാത്രമേയുള്ളൂവെന്ന് ഞാൻ കരുതുന്നു:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; നേരിട്ടുള്ള സംഭാവനകൾ &lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -271,1350 +102,470 @@
 &lt;p&gt;
 സൂചിപ്പിച്ചപോലെ, അപ്ലിക്കേഷൻ ഒഎസ്‍മ്മുമായി നേരിട്ടാണ് ആശയവിനിമയം നടത്തുന്നത്. 
 എന്നിരുന്നാലും, നിങ്ങളുടെ മാറ്റങ്ങൾ അപ്‌ലോഡ് ചെയ്യുന്നതിനു മുമ്പ്, അപ്ലിക്കേഷൻ a&lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; എന്തെങ്കിലും മാറ്റങ്ങൾ അപ്‌ലോഡുചെയ്യുന്നതിൽ നിന്ന് ഇത് നിരോധിച്ചിട്ടുണ്ടോ എന്ന് എന്റെ സെർവറിൽ ഇവ പരിശോധിക്കുന്നു. ഒ‌എസ്‌എം ഡാറ്റയെ ദുഷിപ്പിക്കുന്നതിൽ നിന്ന് ഗുരുതരമായ ബഗുകളുള്ള അപ്ലിക്കേഷന്റെ പതിപ്പുകൾ സൂക്ഷിക്കാൻ കഴിയുന്ന ഒരു മുൻകരുതൽ നടപടിയാണിത്.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_on">"ഓൺ"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Wifi- ൽ മാത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="autosync_off">"ഓഫ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"ഈ റോഡിൻറെ പ്രതലം എന്താണ് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"ടാർ റോഡ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"നിരക്കാത്ത റോഡുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"നിലം "</string>
     <string name="quest_surface_value_asphalt">"അസ്ഫാൽറ്റ് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"കോംപാക്റ്റുചെയ്ത"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"കോൺക്രീറ്റ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"അഴുക്ക്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"ശാന്തമായ ചരൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"പുല്ല് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"പുല്ല് മേട "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"ചരൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"കല്ലുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"കല്ലുകൾ"</string>
     <string name="quest_surface_value_sand">"മണല്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"സജ്ജമാക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"മരം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"ഈ തെരുവിൽ ഒരു നടപ്പാത ഉണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ഈ തെരുവ് എവിടെയാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"ഇത് ഒരു വൺ-വേ സ്ട്രീറ്റ് ആണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_title">"ഈ കെട്ടിടത്തിന്റെ വീട്ടുനമ്പർ എത്രയാണ് ?"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap സർവേയർ അപ്ലിക്കേഷൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"സ്ട്രീറ്റ്കംപ്ലീറ്റ്  ഉപയോഗിച്ച് ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് മെച്ചപ്പെടുത്താൻ സഹായിക്കുക!"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"ഇതിനു പേര് ഇല്ല…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"പേര് ഇല്ലേ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"അതെ, പേര് ഇല്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"തുറക്കുന്ന സമയം ചേർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_message">"പിശക് റിപ്പോർട്ട് ഡവലപ്പർക്ക് അയയ്ക്കാമോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"StreetComplete കഴിഞ്ഞ തവണ തകർന്നു!"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"ഇമെയിൽ രചിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"നിങ്ങൾ ഇമെയിൽ ക്ലയന്റ് ഇൻസ്റ്റാൾ ചെയ്തിട്ടില്ല."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"സ്ക്രീൻ ഓണാക്കി  വെക്കുക "</string>
-
-    <!-- Fuzzy -->
     <string name="download_server_error">"ക്വസ്റ്റുകൾക്കായി സ്കാൻ ചെയ്യുമ്പോൾ കണക്ഷൻ പിശക്. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="upload_server_error">"ഉത്തരങ്ങൾ അപ്ലോഡുചെയ്യുന്നതിനിടെ കണക്ഷൻ പിശക്. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
-
-    <!-- Generic strings used in various quests -->
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"ശെരി "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"ഇല്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"ഇവിടെ എത്ര ബൈക്കുകൾ പാർക്ക് ചെയ്യാനാകും?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"ഈ വീട് നമ്പർ വളരെ അസാധാരണമാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_title">"ഇവിടെ എന്ത് കായിക ഇനം ആണ് നടക്കുന്നത് ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"പ്രതേകിച്ച് അങ്ങനെ ഒരു കായിക ഇനം മാത്രമല്ല "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"ഫുട്ബോൾ "</string>
     <string name="quest_sport_tennis">"ടെന്നീസ് "</string>
     <string name="quest_sport_baseball">"ബെയ്സ്ബാൾ"</string>
     <string name="quest_sport_basketball">"ബാസ്‌ക്കറ്റ്‌ ബാള്‍"</string>
     <string name="quest_sport_golf">"ഗോള്‍ഫ്‌"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"അശ്വാരൂഢമായി (കുതിര) ബന്ധപ്പെട്ട കായിക വിനോദങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"ട്രാക്ക് &amp; ഫീൽഡ്"</string>
     <string name="quest_sport_volleyball">"വോളിബോള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"ബീച്ച് വോളിബോള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"അമേരിക്കൻ ഫുട്ബോൾ "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"സ്കേറ്റ്ബോർഡിങ്ങ്"</string>
     <string name="quest_sport_bowls">"പാത്രങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_boules">"ബ്യൂൾസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"വെടിവെയ്‌പ്‌"</string>
     <string name="quest_sport_cricket">"ക്രിക്കറ്റ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"ടേബിള്‍ ടെന്നീസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"ജിംനാസ്റ്റിക്സ് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_archery">"അമ്പയെത്ത്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"ഓസ്‌ട്രേലിയ ഫുട്ബോൾ"</string>
     <string name="quest_sport_badminton">"ബാഡ്‌മിൻ്റൺ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"കനേഡിയൻ ഫുട്ബോൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"ഫീൽഡ് ഹോക്കി "</string>
     <string name="quest_sport_handball">"ഹാൻഡ്ബോൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"ഐസ് ഹോക്കി "</string>
     <string name="quest_sport_netball">"നെറ്റ്ബോൾ "</string>
     <string name="quest_sport_rugby">"റഗ്ബി "</string>
-
-    <!-- As in: "select any of the pictures below that fit" -->
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"തിരഞ്ഞെടുക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"ഈ കായിക മേഖല രൂപകൽപന ചെയ്തത് ഏതെങ്കിലും പ്രത്യേകമായ കായിക ഇനത്തിന് വേണ്ടിയാണോ (അടയാളങ്ങളും ഉപകരണങ്ങളും നിലവിൽ ഉണ്ട്) അതോ എല്ലാ തരം കായിക ഇനങ്ങൾക്കും വേണ്ടിയുള്ളതാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"പ്രത്യേകിച്ചും ഇവ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"പൊതുവായ ആവശ്യത്തിന് "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"നിങ്ങൾ ഒരുപാട് കായിക വിനോദങ്ങൾ തിരഞ്ഞെടുത്തിരിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"ഈ റെസ്റ്റ്റൂമിന് വാടക കൊടുക്കണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"ഈ ക്രോസ്‍വാക്കിന്റെ ഇരുവശത്തും സ്പർശനനടപ്പാതയുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"ഇത് നിങ്ങൾ നേരിട്ട് കണ്ട് ഉറപ്പ് വരുത്തിയത് ആണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"സർവേയിലൂടെ കണ്ടെത്തിയ വിവരങ്ങൾ മാത്രം എന്റർ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"ഈ സൈക്കിൾ പാർക്കിംഗിന് മൂടിയുണ്ടോ(മഴയിൽ നിന്ന് സംരക്ഷിക്കാൻ)?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"ഈ സെഷനായി വീണ്ടും കാണിക്കരുത്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"ഈ വേഗത പരിധി അസാധ്യമാണെന്ന് തോന്നുന്നു."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"ഒരു പരിധിയും പോസ്റ്റുചെയ്തിട്ടില്ലെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"തെരുവിന്റെ അവസാനം വരെ പരിശോധിച്ചോ? ഹൈലൈറ്റ് ചെയ്യപ്പെട്ട വിഭാഗത്തിന് വേണ്ടിയുള്ള അടയാളങ്ങളൊന്നും തെരുവിൽ എവിടെയും കാണുന്നില്ലെങ്കിൽ, സ്വാഭാവിക വേഗ പരിധി ബാധകമാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"അതെ, അടയാളമില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"ബിൽറ്റ്-അപ്പ് ഏരിയയിലെ റോഡുകൾക്ക് ഗ്രാമീണ റോഡുകളേക്കാൾ സ്ഥിരസ്ഥിതി വേഗത കുറവാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"നിർമ്മിത വിസ്തൃതി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"ഗ്രാമീണമായ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"പ്രധാന തെരുവ് കവലയിൽ ഇതുപോലുള്ള ഒരു അടയാളം ഉണ്ടെങ്കിൽ, സോണിനുള്ളിൽ നിങ്ങൾക്ക് പ്രത്യേക ചിഹ്നങ്ങൾ വേറെ കണ്ടെത്താനാവില്ല, കാരണം അവിടെ നിശ്ചയിച്ച വേഗത പരിധി മുഴുവൻ സോണിനും ബാധകമാണ്"</string>
     <string name="quest_sport_softball">"സോഫ്ട്ബോൾ"</string>
     <string name="quest_sport_racquet">"റാക്കറ്റ് ബോൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"ഐസ് സ്കേറ്റിംഗ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"പാഡിൽ ടെന്നീസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"ഗാലിക് ഗെയിമുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"സെപക് തക്ര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"ഭാഗികമായി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"ഓരോ ബൈക്കും പാർക്ക് ചെയ്യുന്നതിന് ഇരുവശത്തുനിന്നും സാധാരണ സ്റ്റാൻഡുകൾ ഉപയോഗിക്കാൻ ശ്രദ്ധിക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"റോളർ സ്കേറ്റിംങ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"ഭാഗികമായി അർത്ഥമാക്കുന്നത് ആ സ്ഥലത്തേക്ക് പ്രവേശിക്കാൻ ഒരു ചവിട്ടുപടിയിൽ കൂടുതൽ ഇല്ല എന്നും ഉള്ളിലെ മിക്ക മുറികളിലും വീൽചെയർ ലഭ്യമാവുന്നതുമാണ് എന്നാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"ഭാഗികമായി അർത്ഥമാക്കുന്നത് ഇവിടെ ഒന്നിൽ കൂടുതൽ ചവിട്ടുപടികൾ ഇല്ല എന്നാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s എന്ന ഈ സ്ഥലത്തിൻ്റെ ചുരുക്കപ്പേര് എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"എന്ത് തരം പുനഃചംക്രമണ പ്രക്രിയ സൗകര്യം ആണ് ഇവിടെ?"</string>
-
-    <!-- Fuzzy -->
     <string name="recycling_centre">"കേന്ദ്രം"</string>
     <string name="overground_recycling_container">"ശേഖരണി"</string>
-
-    <!-- Fuzzy -->
     <string name="underground_recycling_container">"ഭൂമിക്കടിയിലുള്ള ശേഖരണി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"ഈ ചിഹ്നത്തിലെ അക്ഷരങ്ങൾ എഴുതാൻ കഴിയുന്നില്ല "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"കീബോർഡ് ലേഔട്ട് കാണുന്നില്ലെ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"സജ്ജീകരണങ്ങൾ തുറക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"ആപ്പ് സ്റ്റോർ സന്ദർശിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"നിങ്ങൾ ഒരു ഡിഫാൾട്ട് കീബോർഡ് ഉപയോഗിക്കുകയാണെങ്കിൽ, ഇൻപുട്ട് രീതി ക്രമീകരണങ്ങളിൽ നിങ്ങൾക്ക് ആവശ്യമുള്ള ഭാഷയ്ക്കായി കീബോർഡ് ലേഔട്ട് പ്രവർത്തനക്ഷമമാക്കാനുള്ള അവസരമുണ്ട്. അല്ലെങ്കിൽ, മറ്റ് കീബോഡ് ആപ്പ് സ്റ്റോറിൽ നിന്ന് ഡൗൺലോ‍ഡ് ചെയ്യാം.  ഗൂഗിൾ ജിബോർഡ്, സ്വിഫ്റ്റ്കീ ബോർഡ്, മൾട്ടി ഒ കീബോർഡ് എന്നിവ പ്രശസ്തമായ ബഹുഭാഷാ കീബോർഡുകളാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(വ്യക്തമാക്കാത്ത)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"എന്ത് തരം തീ അണയ്ക്കുന്നതിനുള്ള സൗകര്യം ആണ് ഇത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"തൂൺ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"ഭൂമിക്കടിയിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"ചുവർ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"കുളം"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors">"മുഴുവൻ ലിസ്റ്റ് കാണാനായി ഗിത്ത്ഹബ്ബ് &lt; a href href=\"https://github.com/streetcomplete/StreetComplete/graphs/contributors\"&gt;കാണുക&lt;/a&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_translations_title">"വിവർത്തനങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="credits_contributors_title">"കോഡ് സംഭാവകർ"</string>
-
-    <!-- Credits screen -->
-    <!-- Fuzzy -->
     <string name="credits_author_title">"രചയിതാവും പരിപാലകനും"</string>
-
-    <!-- As in "Person A, Person B, Person C and more..." -->
-    <!-- Fuzzy -->
     <string name="credits_and_more">"കൂടുതൽ…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"ഇത് ഒരു സജീവമായ തെരുവാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"അതിനാൽ, ഇതുപോലുള്ള ഒരു അടയാളം ഉണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"എന്താണ് ഇവിടെ കൃഷി ചെയ്യുന്നത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapes">"മുന്തിരികള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_agaves">"അഗാവ്സ്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_almonds">"ബദാം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apples">"ആപ്പിളുകള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_apricots">"ആപ്രിക്കോട്ട്"</string>
     <string name="produce_avocados">"അവക്കാഡോ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_bananas">"പഴങ്ങള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_blueberries">"ഞാവൽ പഴം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cacao">"കോക്കോ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"കശുവണ്ടി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_cherries">"ചെറിപ്പഴം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_chestnuts">"ചെസ്റ്റ്നട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coconuts">"തേങ്ങ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_coffee">"കാപ്പി"</string>
     <string name="produce_cranberries">"ക്രാൻബെറി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_dates">"ഈത്തപ്പഴം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_figs">"അത്തിപ്പഴം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_grapefruits">"മുന്തിരിങ്ങ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_guavas">"പേരയ്ക്ക"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"ഹെസൽ നട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_hops">"ഹോപ്സ്"</string>
     <string name="produce_jojoba">"ജോജോബ"</string>
     <string name="produce_kiwis">"കിവി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"കോല നട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_lemons">"നാരങ്ങകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_limes">"കറി നാരങ്ങകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangos">"മാങ്ങ"</string>
     <string name="produce_mate">"ഇണ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_nutmeg">"ജാതിക്ക"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oil_palms">"എണ്ണപ്പന"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_olives">"ഒലീവ്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_oranges">"ഓറഞ്ച്"</string>
     <string name="produce_papayas">"പപ്പായ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_peaches">"പീച്ച്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pears">"പിയേഴ്സ്"</string>
     <string name="produce_chili">"മുളക്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_persimmons">"പെർസിമോൺസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pineapples">"കൈതച്ചക്ക"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pepper">"കുരുമുളക്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_pistachios">"പിസ്ത"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_plums">"പ്ലം"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_raspberries">"റാസ്ബെറി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_rubber">"റബ്ബർ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_strawberries">"സ്ട്രൊബറി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tea">"തേയില"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_vanilla">"വാനില"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_walnuts">"വാൽനട്ട്"</string>
     <string name="produce_sisal">"സൈസൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"ഇവിടെ സ്കാൻ ചെയ്യാൻ കഴിയില്ല. സൂം ഇൻ ചെയ്യാൻ ശ്രമിക്കുക അല്ലെങ്കിൽ മാപ്പ് കുറച്ച് ചെരിച്ച് ചെയ്യുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"ഇത് ഏതുതരം ക്രോസിംഗ് ആണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"റോഡ് അടയാളങ്ങളില്ലാതെയുള്ള ക്രോസിംഗ്"</string>
-
-    <!-- Fuzzy -->
     <string name="action_undo">"പഴയരീതിയിലാക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_mangosteen">"മാംഗോസ്റ്റിൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tomatoes">"തക്കാളി"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"പാക്ക്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"മധുരമുള്ളത്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"ബ്രസീൽ നട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"ടംഗ് നട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"എന്ത് തരം പാർക്കിംഗ് ആണ് ഇവിടെ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"പാർക്കിംഗ് കേന്ദ്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"ഭൂമിക്കടിയിലുള്ള പാർക്കിംഗ് കേന്ദ്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"വണ്ടികൾ ഇടുന്ന സ്ഥലം"</string>
-
-    <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"ഈ ഇലക്ട്രിക്ക് പോസ്റ്റ് എന്ത് കൊണ്ട് നിർമിച്ചതാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"തടി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"സ്റ്റീൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"കോൺക്രീറ്റ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"ഇത് നിർദേശ വേഗപരിധി മാത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"വീട്ടുപേര്:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"മേൽക്കൂര എത്ര നിലകളുണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"കെട്ടിടത്തിൻ്റെ നിലകൾ (മേൽക്കൂര കൂട്ടാതെ) "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"ഓരോ കെട്ടിട ഭാഗത്തിനും വ്യത്യാസമുണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"ഈ സാഹചര്യത്തിൽ, കെട്ടിടത്തിന്റെ ഉയർന്ന ഭാഗത്തെ മൂല്യങ്ങൾ നൽകുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ഈ റോഡുകൾ പ്രത്യക്ഷമായി വേർതിരിക്കപ്പെട്ടിട്ടുണ്ടോ (അതായത് എന്തെങ്കിലും തടസ്സത്തിലൂടെ)? സ്ഥിരസ്ഥിതി വേഗത പരിധി ഇങ്ങനെയാണോ അല്ലയോ എന്നതിനെ ആശ്രയിച്ചിരിക്കുന്നു. "</string>
     <string name="about_category_feedback">"പ്രതികരണം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"ഫോട്ടോ കൂട്ടിചേർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"താങ്കൾക്ക് ഈ ചിത്രം മായ്ച്ച് കളയണമോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"സൈക്കിൾ പാത"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"സൈക്കിൾ പാത"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"ഒന്നുമില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"ഈ പാത മറ്റ് ട്രാഫിക്കുകളുമായി വ്യക്തമായി പങ്കിട്ടുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"ബസ്സുകൾക്കുള്ള പാതയിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"വ്യക്തമായി പങ്കിട്ട നടപ്പാത"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_create_image_error">"ചിത്രങ്ങൾക്കായുള്ള ഫയൽ നിർമിക്കാനാവുന്നില്ല."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"സൈക്കിൾ പാത, രണ്ട് ദിശകളിലേക്കും"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"സൈക്കിൾ പാത, രണ്ട് ദിശകളിലേക്കും"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_advanced">"ഉയർന്ന വിഭാഗം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_enabled">"സാധ്യമാക്കി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_type">"അന്വേഷണത്തിൻ്റെ തരം"</string>
-
-    <!-- Fuzzy -->
     <string name="action_reset">"പുനഃക്രമീകരിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"പഴയതിലേക്ക് തിരിച്ച പോകുക"</string>
-
-    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"വേണ്ടെന്ന് വെയ്ക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"മാത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"പൂർണ്ണ സസ്യാഹാരം മാത്രം ഒരു മാംസാഹാരവും അടങ്ങില്ല ( ഇറച്ചി, മീൻ, കോഴി ഇറച്ചി, പാൽ ഉൽപന്നങ്ങൾ, മുട്ട , …)."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"ഇറച്ചി, മീൻ, കോഴി ഇറച്ചി എന്നിവ ഇല്ലാത്ത സസ്യാഹാരം "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"ഈ ഭക്ഷണം സ്ഥലം ശരിയായ ഭക്ഷണ ഓപ്ഷനുകളിൽ നൽകുന്നുവെങ്കിൽ, “അതെ” എന്ന് മാത്രം മറുപടി നൽകുക, തുടക്കക്കാരെയും മറ്റും അവഗണിക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"എന്ത് തരം കാർ വാഷ് ആണ് ഇവിടെ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"യാന്ത്രികമായ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"സ്വയം ചെയ്യണോ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"ജോലിക്കാർ കാർ വൃത്തിയാക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"ഈ അന്വേഷണ രീതി സാധ്യമാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"സ്ഥിരസ്ഥിതിയായ അന്വേഷണ രീതിയ്ക്ക് ഇവ അപ്രാപ്തമാണ്, കാരണം ഈ തരത്തിലുള്ള അന്വേഷണത്തിന് ഉത്തരം നൽകാൻ നിങ്ങൾ ഈ സ്ഥലത്ത് പ്രവേശിക്കേണ്ടതുണ്ട്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"നിർബന്ധിത നമ്പർ"</string>
-
-    <!-- an (optional) number that is unique within one street like a normal housenumber but used sometimes in addition to conscription numbers in Czechia, Slovakia -->
-    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"ക്രമീകരണ നമ്പർ (ആവശ്യമെങ്കിൽ)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"മറുവശത്ത് സൈക്കിൾപാതയാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"ഈ ചിഹ്നത്തിലുള്ളത് താങ്കൾ വിവരിക്കേണ്ടതുണ്ട്. ചിഹ്നങ്ങൾ ഇല്ലെങ്കിൽ, നിങ്ങൾ തുറക്കുന്ന സമയം ചോദിക്കണം."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"ഒന്നുമില്ല, എന്നാൽ സൈക്കിൾ യാത്രക്കാർക്ക് രണ്ട് ദിശകളിലേയും റോഡ് ഉപയോഗിക്കാം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"എന്തുകൊണ്ട് ഇതിന് പേരില്ല?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"ഇത് ഒരു ചെറിയ റോഡ് അല്ലെങ്കിൽ പാർക്കിംഗ് ഇടനാഴി പോലെയാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"ഇത് ഒരു കൃഷിസ്ഥലത്തേക്കോ അല്ലെങ്കിൽ കാടിലേക്കോ ഉള്ള റോഡാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"മുകളിൽ പറയുന്നത് ഒന്നു അല്ല, അതിന് പേരില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"വിശ്രമമുറിയിൽ വീൽചെയർ ലഭ്യമാകുമെങ്കിൽ ഇതുപോലുള്ള ഒരു വീൽചെയർ ചിഹ്നം ദൃശ്യമാകും.
 ഇത് ഭാഗികമായി അർത്ഥമാക്കുന്നത് വീൽചെയറ് ഉപയോഗിച്ച്  വിശ്രമമുറിയിൽ പ്രവേശിക്കാനാവും എന്നാണ്, എന്നാൽ കൈവരിയോ പിടിച്ച് കയറാനുള്ള പിടിയോ ഇല്ല എന്നാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_create_note">"പുതിയ കുറിപ്പ് നിർമിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"ഒരു കുറിപ്പ് നിർമിക്കുന്നതിന് കൂടുതൽ സൂം ഇൻ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_description">"നിങ്ങൾക്ക് ഇവിടുത്തെ പ്രശ്നം ഒരു കുറിപ്പ് ആയി രേഖപ്പെടുത്താം. അത് മറ്റുള്ള മാപ്പർമാർക്ക് അതുവഴി ഇവിടുത്തെ പ്രശ്നം അറിയാൻ കഴിയും. കുറിപ്പിൻ്റെ സ്ഥാനം നീക്കി കൊണ്ട് മാപ്പിൽ പ്രശ്നം രേഖപ്പെടുത്താം:"</string>
-
-    <!-- E.g "tactile paving at a crosswalk usually looks like this: <picture of tactile paving shown> -->
-    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"സാധാരണ ഇങ്ങനെയാണ് കാണുന്നത്:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"ലോഹം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"ഇവിടെ സൈക്കിൾ സവാരിക്കാർക്കായി പാതയുണ്ടോ? ഉണ്ടെങ്കിൽ എന്ത് തരം?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"ഈ പാലത്തിൻ്റെ രൂപം എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"വൈ-ഫൈ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"കേബിൾ മാർഗം (LAN)"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"ഇൻ്റർനെറ്റോടുകൂടിയ കമ്പ്യൂട്ടർ സൗകര്യം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"കണക്ഷൻ ലഭ്യമല്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"ഈ ബെഞ്ചിൽ ചാരി ഇരിക്കാൻ സൗകര്യമുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"ഇതൊരു പിക്നിക് പട്ടികയാണ്"</string>
     <string name="quest_religion_for_place_of_worship_title">"ഇവിടെ ഏത് മതമാണ് ആചരിക്കുന്നത്? "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_christian">"ക്രിസ്തുമതം"</string>
     <string name="quest_religion_muslim">"ഇസ്‍ലാം മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"ഹിന്ദു മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"ബുദ്ധമതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"ഷിന്റോ മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"ജൂതമതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"താവോയിസം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"ഏത് മതക്കാർക്കും ഉപയോഗിക്കാൻ വേണ്ടി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"സിക്ക് മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_jain">"ജൈനമതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"ബഹായി മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"കോഡായിസം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"ചൈനീസ് നാടോടി മതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"ഈ ആരാധനാലയം ഏത് മതത്തെ പ്രതിനിധീകരിക്കുന്നു?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"ഇവിടെ പാർക്ക് ചെയ്യുന്നതിന് ഒരു പണം നൽകേണ്ടതുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"അറിയപ്പെടാത്ത ചതുരക്കല്ല്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"ഈ ചത്വരത്തിൻ്റെ പ്രതലം എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"അത് ദിവസത്തെയും സമയത്തെയും സംബന്ധിച്ചായിരിക്ക…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"സമയം ചേര്‍ക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"ഇവിടെ ഒന്നിൽ കൂടുതൽ വീട്ട് നമ്പർ ഉണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"നിങ്ങൾക്ക് ലളിതമായി അല്പ വിരാമമോ-തുടർക്കുറിയോ ഉപയോഗിച്ച് വീട്ട് നമ്പറുകളുടെ ശ്രേണി അടയാളപ്പെടുത്താം. ഉദാഹരണം 1,2 അല്ലെങ്കിൽ 2–6."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"സൈക്കിൾ പാർക്ക് ചെയ്യാനുള്ള കേന്ദ്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"സൈക്കിളിൻ്റെ ചക്രങ്ങളെ മാത്രം പിടിച്ച് നിർത്തി പാർക്ക് ചെയ്യുന്ന സംവിധാനം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"ഷെഡ്ഡ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"ലോക്കർ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"ഏതുതരം സൈക്കിളുകൾ പാർക്ക് ചെയ്യുന്ന സ്ഥലമാണിത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"പോസ്റ്റ്ബോക്സിന്റെ ശേഖരണ സമയം എപ്പോഴാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"ശേഖരണ സമയം ചേ‍ർക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"സമയം വ്യക്തമാക്കിയിട്ടില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"ഈ റോഡ് പൂർത്തിയായിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"ഈ സൈക്കിൾ പാത പൂർത്തിയായിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"ഈ നടപ്പാത പൂർത്തിയായിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"ഈ വഴി പൂ‍ർത്തിയായിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"ഈ കെട്ടിടം പൂർത്തിയായിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"%s ൽ ഒരിക്കലും കാണിച്ചിട്ടില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"ഏറ്റവും യോജിക്കുന്ന ഒന്ന് തിരഞ്ഞെടുക്കുക"</string>
-
-    <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
-    <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"നിങ്ങൾക്ക് ഇത് കൂടുതൽ വ്യക്തമായി നിർണ്ണയിക്കാൻ കഴിയില്ലെന്ന് ഉറപ്പാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; ചില അന്വേഷണങ്ങൾക്കായി, മൂന്നാം കക്ഷികൾ അധികമായി ദത്തം ഡൗൺലോഡ് ചെയ്യുന്നു. പ്രത്യേകിച്ച് API യിലെ ഒരേ വഴിയിലുള്ള സംശയങ്ങൾ, 
 &lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"ഇല്ല( കുറിപ്പ് രേഖപ്പെടുത്താം )"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_quests_reset">"രണ്ട് തിരയലുകളും പുനക്രമീകരിച്ചതിനു ശേഷം ഡിഫാൾട്ട് ക്രമം സജ്ജമാക്കണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"ദയവായി കൂടുതൽ വ്യക്തമായ മൂല്യം തിരെഞ്ഞെടുക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"ഇതിൽ പല ഉപയോങ്ങൾ ഉണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"കെട്ടിടത്തിന്റെ മുഖ്യ ഉപയോഗം തിരഞ്ഞെടുക്കുക. ഉദാ. താഴത്തെ നിലയിൽ ഒരു അപ്പാ‍ർട്ട്മെന്റ് കടയുണ്ടെങ്കിൽ, ഇത് അപ്പാർട്ട്മെന്റ് കെട്ടിടമാണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"ഇത് ഇപ്പോഴും നിർമ്മിച്ച് കൊണ്ടിരിക്കുകയാണോ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"പാര്‍പ്പിടങ്ങള്‍"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"ആളുകൾ താമസിക്കുന്ന കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"ഒന്നിലേറെ കുടുംബങ്ങൾക്ക് താമസിക്കാൻ കഴിയുന്നതും താഴത്തെ നിലയിൽ ചെറുകിട കച്ചവട സ്ഥാപനങ്ങൾ ഉള്ളതുമായ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"അപ്പാർട്ട് മെൻ്റ് കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"വെവ്വേറെയായ വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"വെവ്വേറെയായ ഒറ്റകുടുംബം താമസിക്കുന്ന വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"പകുതി-വെവ്വേറെയായ വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"അണു കുടുംബങ്ങൾക്കുള്ള ഒരേ വരിയിലുള്ള വീടുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"ഹോട്ടൽ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"ഡോ‍ർമെട്രി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"ഹൗസ് ബോട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow">"ബംഗ്ലാവ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"സ്റ്റാറ്റിക്ക് കാരവാൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"വാടക കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"ആളുകൾ ജോലി ചെയ്യുന്ന കടകളോ മറ്റേതെങ്കിലും വാണിജ്യ പ്രവർത്തനങ്ങൾ ചെയ്യുന്നതോ ആയ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"വ്യവസായിക കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"ഉദാഹരണം, ഫാക്ടറി, വർക്കഷോപ്പ്, കാറുകൾ നന്നാക്കുന്ന സ്ഥലം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"ഓഫീസ് കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"കടകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"പണ്ടകശാല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kiosk">"വഴിയോരകട"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"സംഭരണി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"ആരാധനാലയം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"ക്രിസ്ത്യൻ പള്ളി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"അൾത്താര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"കത്തീഡ്രൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"മുസ്ലിം പള്ളി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"ക്ഷേത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"പഗോഡ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"ജൂത പള്ളി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"നഗരത്തിലുള്ള കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"പൊതുജനങ്ങളുടെ സൗകര്യത്തിനായി നിർമിച്ച കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"കിൻ്റർഗാർഡൻ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"സ്കൂൾ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"കോളേജ് കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"ആശുപത്രി കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"മൈതാനം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"ട്രെയിൻ സ്റ്റേഷൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"പൊതുഗതാഗതവുമായി ബന്ധപ്പെട്ട കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"സർവ്വകലാശാല കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"സർക്കാർ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"കാറുകൾക്ക് വേണ്ടി"</string>
     <string name="quest_buildingType_carport">"കാർ‌പോർട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"കാറുകൾക്കുള്ള മേൽക്കൂര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"ഒറ്റ ഗാരേജ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"ഒന്നിലധികം ഗാരേ‍ജ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"പാർക്കിംഗിനുള്ള കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"കൃഷിയിടത്തിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"കളപ്പുര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"കൃഷിയിടത്തിലെ താമസത്തിനുള്ള കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"കൃഷിയുമായി ബന്ധപ്പെടുന്ന കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"കൃഷിയുമായി ബന്ധപ്പെടുന്ന കെട്ടിടം ഇവ താമസത്തിനുള്ളതല്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"ഹരിതഗൃഹം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"മറ്റുള്ളവ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"ആല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"കുടിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"ചെറുതും ലളിതവുമായ ഭവനം അല്ലെങ്കിൽ പാർപ്പിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"മേൽക്കുര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"സേവന കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"പമ്പുകൾക്കും ട്രാൻസ്ഫോമറുകൾക്കുമായുള്ള കെട്ടിടം"</string>
     <string name="quest_buildingType_hangar">"വിമാനശാല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"വിമാനം, ഹെലികോപ്ട‍ർ തുടങ്ങിയവ സൂക്ഷിക്കുന്ന സ്ഥലം"</string>
     <string name="quest_buildingType_bunker">"വിറകുസംഭരണപ്പെട്ടി"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"ഈ വീടിന് നമ്പർ ഇല്ല…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"ഈ കെട്ടിടം tag ചെയ്തിരിക്കുന്നത്:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"പ്രതിഷ്ഠ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"ഈ പാതയിലൂടെയുള്ള വേഗ പരിധി എത്രയാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"ഒരു ചിഹ്നം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"ഇത് ഒരു വേഗത കുറഞ്ഞ മേഖലയിൽ ആണ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"അടയാളങ്ങളില്ല, "</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"തുറക്കുന്ന സമയത്തെ ചിഹ്നങ്ങളൊന്നുമില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"കായിക കേന്ദ്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"മൂത്രപ്പുര"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"എങ്ങനെയാണ് വേഗ പരിധി നിശ്ചയിക്കുന്നത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_title">"ഇവിടെ എങ്ങനെയാണ്‌ നടപ്പാതയും സൈക്കിൾ‌പാതയും സ്ഥാപിച്ചിരിക്കുന്നത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"നിങ്ങളുടെ നൽകിയ മാറ്റങ്ങൾ സ്വമേധയാ അപ്‌ലോഡു ചെയ്യാൻ, ഇതുപോലുള്ള ടൂൾബാറിലെ ബട്ടൺ ഉപയോഗിക്കുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"പരസ്പരം വേർതിരിച്ചിരിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"സൈക്കിൾ യാത്രക്കാരും കാൽനടയാത്രക്കാരും ഒരേ പാത പങ്കിടുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"ഇവിടെ ഉയര പരിധി എത്രയാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"അടയാളങ്ങളില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"ഉയരമുള്ള ട്രക്കുകൾക്ക് കടന്നു പോകാനുള്ള (കുറഞ്ഞത് 4.5 മീറ്റർ / 15 അടി) സ്ഥലമുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"ഈ ഉയരം അസ്വാഭാവികമായി തോന്നുന്നു. ഇത് ശരിയാണെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-
-    <!-- first placeholder is the person, second placeholder is the date -->
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"അടച്ചു %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"വീണ്ടും തുറന്നു %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"മറച്ചത് %1$s, %2$s"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt; നിങ്ങൾ ഒരു കുറിപ്പിലേക്ക് അറ്റാച്ചുചെയ്യുന്ന ഫോട്ടോകൾ എന്റെ സെർവറിലേക്ക് അപ്‌ലോഡുചെയ്യുകയും ആ കുറിപ്പ് പരിഹരിച്ചതിന് കുറച്ച് ദിവസങ്ങൾക്ക് ശേഷം ഇല്ലാതാക്കുകയും ചെയ്യും. അപ്‌ലോഡുചെയ്യുന്നതിന് മുമ്പ് അവരുടെ മെറ്റാ ഡാറ്റ നീക്കംചെയ്യുന്നു. &lt;\p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="action_deselect_all">"തിരഞ്ഞെടുത്തത്‌ എല്ലാം നിരസിക്കുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"റെസ്റ്റോറന്റുകൾ, കഫേകൾ എന്നിവയ്ക്കുള്ള കെട്ടിടങ്ങൾ ഉൾപ്പെടെ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"അടുത്തത്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"ഈ ട്രാക്കിന്റെ പ്രതലത്തിന്റെ ദൃഢത എത്രയാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"ഖരം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"അധികം മൃദുവായ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"മൃദു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"ഈ കെട്ടിടം മുഴുവനായി ഭൂമിക്കടിയിലാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"ഇത് ഭാഗികമായി അർത്ഥമാക്കുന്നത് ഇവയെ തിരിച്ചെടുക്കാൻ ഒന്നിൽ കൂടുതൽ വഴികളില്ല എന്നാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"ഇവിടെ വീൽചെയറിന് എത്തിപ്പെടാൻ കഴിയുമോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"ട്രാഫിക് ലൈറ്റിൽ കാൽ നടക്കാർക്ക് കടന്നു പോകാൻ അഭ്യർത്ഥന നടത്താൻ സ്വിച്ച് വല്ലതും നൽകിയിട്ടുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"ഇവിടെ എത്ര ബൈക്കുകൾ വരെ പാർക്ക് ചെയ്യാം?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"ഈ ബൈക്ക് പാർക്കിംഗ് കേന്ദ്രം മഴയിൽ നിന്നും വെയിലിൽ നിന്നും രക്ഷ നൽകുന്ന രീതിയിൽ മൂടിയുള്ളത് ആണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"ഈ തിരയൽ ഇപ്പോൾ അസാധുവാക്കിയിരിക്കുന്നു കാരണം വേഗ പരിധി അടയാളങ്ങൾക്ക് വേണ്ടി തിരയുമ്പോൾ പ്രാമുഖ്യമുള്ള ഭാഗങ്ങൾ മാത്രമല്ല മുഴുവൻ തെരുവും പരിശോധിക്കേണ്ടതുണ്ട് ഇത് ചില സമയങ്ങളിൽ ഒരു തിരയൽ പരിഹരിക്കുന്നതിനായി വലിച്ചുനീട്ടുന്ന പ്രക്രിയായി തോന്നിയേക്കാം."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"മറഞ്ഞിരിക്കുന്ന ചേദ്യങ്ങളെ പുനഃശേഖരിക്കുക "</string>
-
-    <!-- Fuzzy -->
     <string name="restore_hidden_success">"മറഞ്ഞിരിക്കുന്ന %d ചോദ്യങ്ങൾ പുനഃശേഖരിച്ചു"</string>
-
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
-    <!-- Fuzzy -->
     <string name="on_level">"%s ലെവലിൽ"</string>
-
-    <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <!-- Fuzzy -->
     <string name="underground">"ഭൂമിക്കടിയിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"നടപ്പാത"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"നടപ്പാതയില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"ഈ പാതയിൽ കാൽനടക്കാർക്ക് നിരോധനമുണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"ഈ പാതയുടെ ഇരുവശവും നടപ്പാതയില്ലെന്ന് അടയാളപ്പെടുത്തിയിരിക്കുന്നു. ഒരു നടപ്പാത ഉണ്ടെങ്കിൽ അത് ഒരു പ്രത്യേകമായി കാണിച്ചിട്ടുണ്ടെങ്കിൽ, ദയവായി \"നടപ്പാത\" എന്ന് നൽകുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"എന്ത് തരം കെട്ടിടം ആണ് ഇത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"തീം തിരഞ്ഞെടുക്കുക"</string>
     <string name="theme_automatic">"സ്വയം"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_light">"വെളിച്ചം"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_dark">"ഇരുട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="theme_system_default">"സിസ്റ്റം ഡിഫാൾട്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="action_open_location">"ലൊക്കേഷൻ വേറൊരു ആപ്പിൽ കാണുക"</string>
-
-    <!-- Fuzzy -->
     <string name="map_application_missing">"മാപ്പ് കാണാൻ കഴിയുന്ന വേറൊരു ആപ്പും ഈ ഫോണിൽ ചേർത്തിട്ടില്ല"</string>
-
-    <!-- In Japan, addresses are chiefly house number + block number (because most streets don't have a name) -->
-    <!-- Fuzzy -->
     <string name="label_housenumber">"വീട്ട് നമ്പർ"</string>
-
-    <!-- Fuzzy -->
     <string name="label_blocknumber">"ബ്ലോക്ക് നമ്പർ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"സ്റ്റോപ്പ് മൊത്തം മൂടിയിട്ടുണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"ഈ കടത്ത് കാൽനടക്കാരെ കൊണ്ടുപോകുന്നതാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"ഈ കടത്ത്‌ വെള്ളം പോകുന്ന റൂട്ടിൽ വാഹനങ്ങളെ കടത്തുമോ?"</string>
-
-    <!-- Add note interface -->
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"കുറിപ്പിൻ്റെ കൂടെ ചിത്രം കൂടി ചേർത്താൽ വളരെ ഉപകാരപ്രദമായിരിക്കും"</string>
-
-    <!-- Fuzzy -->
     <string name="create_new_note_hint">"നോട്ട് പ്രാദേശിക ഭാഷയിൽ എഴുതുന്നതാണ് ഏറ്റവും ഉചിതം അതുമല്ലെങ്കിൾ ഇംഗ്ലീഷിൽ എഴുതുകയോ ചെയ്യുക"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leafType_title">"മരങ്ങൾക്ക് ഇലകളാണോ സൂചികളാണോ ഉള്ളത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"സൂചികൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"വീതിയേറിയ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"രണ്ടും ഉണ്ട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"സൈക്കിൾ പാതയുടെ പ്രതലം എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"ഉടനീളം വ്യത്യസ്തമാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_description">"പാതയിലുടനീളം വ്യത്യാസങ്ങൾ കാണുന്നു എങ്കിൽ, ആദ്യത്തെ ഘട്ടം പാതയെ വിഭജിക്കൽ ആണ്. അതിനു ശേഷം ഓരോ വിഭജിച്ച പാതയ്ക്കും ഉള്ള തിരയൽ വെവ്വേറെ ആയി ചെയ്യാവുന്നത് ആണ്. ഇപ്പോൾ വിഭജിക്കണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"ഉത്തരം വ്യത്യാസപ്പെട്ടിരിക്കുന്ന സ്ഥല(ങ്ങൾ) വിഭജിക്കാൻ വഴിയിൽ ടാപ്പ് ചെയ്യുക. കഴിയുന്നത്ര കൃത്യമാക്കുവാൻ ശ്രമിക്കുക, നിങ്ങൾക്ക് ഇത് പതിവുപോലെ സൂം ഇൻ ചെയ്യാൻ കഴിയും."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"വീണ്ടും സൂം ചെയ്യുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"ഇത് കുറച്ച് വിഭജനങ്ങളാണ്. നിങ്ങൾക്ക്  പിന്നീട് വഴി വേർപെടുത്താൻ കഴിയും."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"ഇവിടുത്തെ നടപ്പാതയുടെ പ്രതലം എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"ഇവിടെ ഭാരപരിധി എത്രയാണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"ഈ ഭാരം അസംഭവ്യമായി തോന്നുന്നു, താങ്കൾക്ക് ഇത് ശരിയാണെന്ന് ഉറപ്പാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"ചിഹ്നം വ്യത്യസ്‌തമായി തോന്നുന്നു…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"ഒരു കുറിപ്പ് ഇടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ? ഒരു ഫോട്ടോയുള്ള കുറിപ്പ് മറ്റ് മാപ്പർമാരെ പരിപാലിക്കാൻ പ്രാപ്തമാക്കും."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_handrail_title">"ഈ പടികൾക്ക് കൈവരി ഉണ്ടോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_current_version">"നിലവിലുള്ള വേർഷൻ: %s"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"റഫറൻസ് നമ്പറുകളൊന്നും കാണുന്നില്ല…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"ഈ ചിത്രീകരണത്തിലെ റോഡ്, പിൻ ലൊക്കേഷനിലെ മാപ്പിലെ പോലെ തന്നെ തിരിച്ചിരിക്കുന്നു."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"റീസൈക്ലിംഗിനായി ഇവിടെ എന്താണ് അവശേഷിപ്പിച്ചിരിക്കുന്നത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"ഇവിടെ നിന്ന് തിരഞ്ഞെടുക്കുന്നതിൽ വ്യത്യസ്തമായി മറ്റെന്തങ്കിലും റീസൈക്കിൾ ചെയ്യാൻ കഴിയുമെങ്കിൽ ഒരു കുറുപ്പ് എഴുതുക."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"ബാറ്ററികൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"കാനുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"വസ്ത്രങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"പൂന്തോട്ടമാലിന്യം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"ഗ്ലാസ് കുപ്പികളും ജാറുകളും"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"കുപ്പികളും ജാറുകളും"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"കടലാസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"പ്ലാസ്റ്റിക്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"ഏത് പ്ലാസ്റ്റിക്കും"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"ഷൂസ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"വൈദ്യുത ഉപകരണങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"പ്ലാസ്റ്റിക് പാത്രങ്ങൾ മാത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"പ്ലാസ്റ്റിക്ക് പാക്കേജുകൾ മാത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"വീണ്ടും ഉരുക്കാന്‍ കഴിയുന്ന ലോഹക്കഷണം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"ഏതെങ്കിലും ഗ്ലാസ്സ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"ഗ്ലാസ് കുപ്പികളും ജാറുകളും മാത്രമാണോ ഇവിടെ റീസൈക്കിൾ ചെയ്യൂ ? അതോ ഏത് തരത്തിലുള്ള ഗ്ലാസും പറ്റുമോ ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"8,60,159 lines"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_changelog">"വെർഷൻ ചരിത്രം"</string>
-
-    <!-- Fuzzy -->
     <string name="title_whats_new">"എന്താണ് പുതിയത്?"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_rate">"ഈ ആപ്ലികേഷനെ റേറ്റ് ചെയ്യൂ"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_rate">"ഗൂഗിൾ പ്ലേയിൽ"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_donate">"സംഭാവന"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_donate">"നിങ്ങളുടെ അഭിനന്ദനം പ്രകടിപ്പിക്കുക!"</string>
-
-    <!-- Fuzzy -->
     <string name="about_description_donate">"ഈ അപ്ലിക്കേഷനെ പരിഗണിച്ചതിന് നന്ദി! നിലവിലെ സംഭാവനകൾ കാണുന്നതിനും സംഭാവന ചെയ്യുന്നതിനും ബന്ധപ്പെട്ട പ്ലാറ്റ്‌ഫോമിൽ ടാപ്പു ചെയ്യുക"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"ivi"</string>
     <string name="confirmation_cancel_prev_download_cancel">"നിലവിലെ സ്കാൻ തുടരുക"</string>
@@ -1631,8 +582,6 @@
     <string name="osm_profile">"Osm പ്രൊഫൈൽ"</string>
     <string name="next">"അടുത്തത്"</string>
     <string name="letsgo">"നമുക്ക് പോകാം!"</string>
-
-    <!-- Tutorial screen -->
     <string name="tutorial_welcome_to_osm">"ഓപ്പൺസ്ട്രീറ്റ്മാപ്പിലേക്ക് സ്വാഗതം"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"സൌജന്യ വിക്കി വേൾഡ് മാപ്പ്"</string>
     <string name="tutorial_intro">"StreetComplete വഴി Opentreetmap- ലേക്ക് സംഭാവന ചെയ്യുന്നത് എളുപ്പമാക്കുന്നു.
@@ -1645,24 +594,15 @@
 അവസാനമായി, സുരക്ഷിതരായിരിക്കുക: നിങ്ങളുടെ ചുറ്റുപാടുകളെക്കുറിച്ച് അറിഞ്ഞിരിക്കുക, സ്വകാര്യ സ്ഥലത്ത് പ്രവേശിക്കരുത്."</string>
     <string name="tutorial_happy_mapping">"ഹാപ്പി മാപ്പിംഗ്!"</string>
     <string name="achievements_empty">"നിങ്ങൾക്ക് ഇതുവരെ നേട്ടങ്ങളൊന്നുമില്ല"</string>
-
-    <!-- Links screen -->
     <string name="links_empty">"നിങ്ങൾക്ക് ഇതുവരെ ലിങ്കുകളൊന്നുമില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quests_empty">"നിങ്ങൾ ഇതുവരെ ഉത്തരങ്ങൾ പ്രസിദ്ധീകരിച്ചിട്ടില്ല"</string>
     <string name="unsynced_quests_description">"കൂടാതെ, %d ഇതുവരെ പ്രസിദ്ധീകരിക്കാത്ത ഉത്തരങ്ങളും"</string>
     <string name="unsynced_quests_not_logged_in_description">"നിങ്ങൾക്ക് %d ഉത്തരങ്ങൾ ഇതുവരെ പ്രസിദ്ധീകരിച്ചിട്ടില്ല . അവ അപ്ലോഡുചെയ്തതിന് നിങ്ങൾ ലോഗിൻ ചെയ്യേണ്ടതുണ്ട്."</string>
-
-    <!-- User screen -->
-    <!-- Fuzzy -->
     <string name="user_quests_title">"പരിഹരിച്ച ക്വസ്റ്റുകൾ"</string>
     <string name="user_achievements_title">"നേട്ടങ്ങൾ"</string>
     <string name="user_links_title">"ലിങ്ക് ശേഖരം"</string>
     <string name="user_profile_title">"പ്രൊഫൈൽ"</string>
     <string name="user_statistics_quest_wiki_link">"പ്രമാണീകരണം"</string>
-
-    <!-- Achievement screen -->
     <string name="achievements_unlocked_link">"അൺലോക്കുചെയ്ത ലിങ്ക്:"</string>
     <string name="achievements_unlocked_links">"അൺലോക്കുചെയ്ത ലിങ്കുകൾ:"</string>
     <string name="link_category_intro_title">"പരിചയപ്പെടുത്തൽ"</string>
@@ -1676,11 +616,7 @@
     <string name="link_category_goodies_title">"പ്രായമായ സ്ത്രീകൾ"</string>
     <string name="link_category_goodies_description">"നിങ്ങൾക്ക് പരീക്ഷിക്കാവുന്ന രസകരമായ മാപ്പ് അനുബന്ധ കാര്യങ്ങൾ"</string>
     <string name="link_cyclosm_description">"സൈക്കിൾ സഞ്ചാരികളക്കുള്ള ഒരു മാപ്പ്"</string>
-
-    <!-- Fuzzy -->
     <string name="link_wheelmap_description">"വീൽചെയർ ചെന്നെത്തുന്ന സ്ഥലങ്ങൾ കണ്ടെത്തുന്നതിനുള്ള ഒരു മാപ്പ്"</string>
-
-    <!-- Fuzzy -->
     <string name="link_osm_buildings_description">"3 ഡിയിൽ കെട്ടിടങ്ങൾ കാണിക്കുന്ന ഒരു മാപ്പ്"</string>
     <string name="link_openvegemap_description">"നിങ്ങളുടെ നഗരത്തിലെ വെജിറ്റേറിയൻ റെസ്റ്റോറന്റുകൾ കണ്ടെത്തുക"</string>
     <string name="link_touch_mapper_description">"ഏത് മേൽവിലാസത്തിലെയും തൊട്ടറിയാൻ കഴിയുന്ന മാപ്പുകൾ സൃഷ്ടിക്കുക"</string>
@@ -1697,12 +633,8 @@
     <string name="link_welcome_mat_description">"ഓപൺ സ്ട്രീറ്റ് മാപ്പുകളെക്കുറിച്ചുള്ള പൊതുവായ വിവരങ്ങളും സ്ഥാപനം എന്ന നിലയിൽ ഒഎസ്എം എങ്ങനെ പ്രവർത്തിക്കുമെന്നും"</string>
     <string name="link_mapillary_description">"ഒഎസ്എമ്മിലേക്ക് സംഭാവന ചെയ്യാനുപയോഗിക്കുന്ന വ്യക്തമായ അനുമതിയോടെ ക്രൗഡ്‍സോഴ്സ് ചെയ്ത സ്ട്രീറ്റ്-ലെവൽ ഫോട്ടോകൾ പങ്ക് വെക്കാനുള്ള സേവന ആപ്പ്"</string>
     <string name="link_openstreetcam_description">"ഒഎസ്എമ്മിലേക്ക് സംഭാവന ചെയ്യാനുപയോഗിക്കുന്ന വ്യക്തമായ അനുമതിയോടെ ക്രൗഡ്‍സോഴ്സ് ചെയ്ത സ്ട്രീറ്റ്-ലെവൽ ഫോട്ടോകൾ പങ്ക് വെക്കാനുള്ള സേവന ആപ്പ്"</string>
-
-    <!-- Fuzzy -->
     <string name="link_openrouteservice_wheelchair_description">"വീൽചെയർ ഉപയോക്താക്കൾക്കായി കൃത്യമായ നാവിഗേഷൻ."</string>
     <string name="link_nominatim_description">"ഒഎസ്എം ഡാറ്റയ്ക്ക് വേണ്ടിയുള്ള ജിയോകോഡർ, മറ്റനേകം സേവനങ്ങൾ ഉപയോഗിക്കന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="link_city_roads_description">"ഒരു നഗരത്തിലെ എല്ലാ റോഡുകളും അച്ചടിച്ച്, ടി-ഷർട്ടുകളിലും, മഗ്ഗുകളിലും മറ്റും,.."</string>
     <string name="link_myosmatic_description">"സ്ട്രീറ്റ് ഡയറക്ടറി ഐച്ഛികമാക്കി ലളിതമായ ഘട്ടങ്ങളിലൂടെ പ്രിന്റ് ചെയ്യാവുന്ന സിറ്റി മാപ്പുകൾ സൃഷ്ടിക്കുക"</string>
     <string name="link_brouter_description">"ഒരുപക്ഷേ സൈക്ലിസ്റ്റുകൾക്കുള്ള ഏറ്റവും മികച്ച റൂട്ടിംഗ് എഞ്ചിൻ"</string>
@@ -1713,8 +645,6 @@
     <string name="link_openorienteeringmap_description">"ഓറിയന്ററിംഗ് വിനോദത്തിനായി അച്ചടിക്കാവുന്ന മാപ്പുകൾ സൃഷ്ടിക്കുക"</string>
     <string name="link_weeklyosm_description">"ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് ലോകത്തെ വിശേഷങ്ങളുമായി ഒരു പ്രതിവാര വാർത്താ ബ്ലോഗ്"</string>
     <string name="achievement_first_edit_title">"ആദ്യ പ്രശ്നം പരിഹരിച്ചു"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_first_edit_description">"ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് കമ്മ്യൂണിറ്റിയിലേക്ക് സ്വാഗതം! നിങ്ങളുടെ പ്രൊഫൈൽ സ്ക്രീനിൽ, നിങ്ങൾ പരിഹരിച്ച ഓരോ തരം പ്രശ്നങ്ങളുടെയും കൂടുതൽ വിവരങ്ങൾ കാണാം."</string>
     <string name="achievement_surveyor_title">"സർവേയർ"</string>
     <string name="achievement_surveyor_solved_X">"നിങ്ങൾ %d പ്രശ്നങ്ങൾ പരിഹരിച്ചു! ഒ‌എസ്‌എമ്മിലേക്കും മറ്റ് മാപ്പുമായി ബന്ധപ്പെട്ട ആപ്പുകളിലേക്കും പ്രോജക്‌റ്റുകളിലേക്കുമുള്ള ലിങ്കുകൾ അടങ്ങുന്ന കൂടുതൽ നേട്ടങ്ങൾ അൺലോക്ക് ചെയ്യുന്നത് തുടരുക"</string>
@@ -1725,12 +655,8 @@
     <string name="achievement_wheelchair_title">"ചലനക്ഷമത"</string>
     <string name="achievement_wheelchair_solved_X">"വീൽചെയർ ഉപയോക്താക്കളെ സഹായിക്കുന്ന %d പ്രശ്നങ്ങൾ നിങ്ങൾ പരിഹരിച്ചു!"</string>
     <string name="achievement_postman_title">"പോസ്റ്റ്മാൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_postman_solved_X">"%D വിലാസങ്ങൾ കണ്ടെത്താൻ നിങ്ങൾ സഹായിച്ചു!
 പോസ്റ്റ്മാന് മാത്രമല്ല, എല്ലാത്തരം നാവിഗേഷൻ സിസ്റ്റത്തിനും ഈ ഡാറ്റ അത്യാവശ്യമാണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_building_solved_X">"നിങ്ങൾ കെട്ടിടവുമായി ബന്ധപ്പെട്ട %d ചോദ്യങ്ങൾ പരിഹരിച്ചു.
 ഈ അപ്ലിക്കേഷൻ ഒരു കെട്ടിടത്തിന്റെ തരം നിർണ്ണയിച്ചതിനുശേഷം മാത്രമാണ് വീട്നംബർ ചോദിക്കുന്നത്"</string>
     <string name="achievement_blind_title">"ആറാം ഇന്ദ്രിയം"</string>
@@ -1739,32 +665,22 @@
     <string name="achievement_pedestrian_solved_X">"കാൽനടയായി ആളുകൾക്ക് താൽപ്പര്യമുള്ള %d ക്വസ്റ്റുകൾ പരിഹരിച്ചു!"</string>
     <string name="achievement_veg_title">"മൃഗങ്ങളോട് ദയ"</string>
     <string name="achievement_car_title">"റോഡിൽ"</string>
-
-    <!-- Notifications -->
     <string name="unread_messages_message">"നിങ്ങളുടെ ഇൻബോക്സിൽ നിങ്ങൾ വായിക്കാത്ത %d സന്ദേശങ്ങൾ ഉണ്ട്"</string>
     <string name="unread_messages_button">"ഇൻബോക്സ് തുറക്കുക"</string>
-
-    <!-- Main menu -->
     <string name="action_about2">"ഇതിനെ കുറിച്ച്"</string>
     <string name="map_btn_menu">"മെനു"</string>
     <string name="confirmation_authorize_now_note2">"നിങ്ങൾക്ക് ഇത് പ്രൊഫൈൽ സ്ക്രീനിൽ പോയി പിന്നീടും ചെയ്യാനാകും."</string>
     <string name="credits_art_contributors_title">"കല സംഭാവകർ"</string>
     <string name="credits_main_contributors_title">"പ്രധാന സംഭാവകർ"</string>
-
-    <!-- User statistics screen -->
     <string name="stats_are_syncing">"നിങ്ങളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ ഇപ്പോഴും സമന്വയിപ്പിക്കുന്നു. ഈ സ്ക്രീൻ പിന്നീട് പരിശോധിക്കുക."</string>
     <string name="user_statistics_country_rank">"%2$s യിൽ റാങ്ക് : %1$d"</string>
     <string name="user_statistics_country_wiki_link">"മാപ്പിംഗ് പോർട്ടൽ %s"</string>
     <string name="user_statistics_filter_by_country">"രാജ്യം അനുസരിച്ച്"</string>
-
-    <!-- Fuzzy -->
     <string name="user_statistics_filter_by_quest_type">"പ്രശ്നങ്ങളുടെ തരം അനുസരിച്ച്"</string>
     <string name="user_profile_global_rank">"ലോകവാപകമായ
 റാങ്ക്"</string>
     <string name="user_profile_local_rank">"%s യിലെ റാങ്ക്"</string>
     <string name="user_profile_days_active">"സജീവമായ ദിവസങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_street_no_named_streets">"ഈ തെരുവിന് പേരില്ല"</string>
     <string name="quest_address_street_place_name_label">"സ്ഥലപ്പേര്"</string>
     <string name="quest_recycling_type_cooking_oil">"പാചക എണ്ണ"</string>
@@ -1779,8 +695,6 @@
     <string name="quest_board_type_nature">"പ്രകൃതി (ഒന്നിലധികം വിഷയങ്ങൾ)"</string>
     <string name="quest_board_type_notice_board">"ഇത് ഒരു അറിയിപ്പ് ബോർഡാണ്"</string>
     <string name="quest_board_type_public_transport">"പൊതു ഗതാഗതം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_board_type_title">"ഈ വിവര ബോർഡിലെ വിഷയം എന്താണ്?"</string>
     <string name="quest_board_type_map">"ഇത് ഒരു മാപ്പാണ്"</string>
     <string name="quest_board_type_map_title">"ഇത് ഒരു മാപ്പ് മാത്രമാണോ?"</string>
@@ -1788,17 +702,11 @@
     <string name="quest_surface_detailed_answer_impossible_description">"ദയവായി ഇവിടെ ഹ്രസ്വമായി ഉപരിതലത്തിന്റെ സ്വഭാവം വ്യക്തമാക്കുക, ഉദാഹരണത്തിന് \"കോബ്ലെസ്റ്റോണിന്റെ പാടുകളുള്ള മണൽ വഴി \". കുറിപ്പിന്റെ ദൈർഘ്യം 255 അക്ഷരങ്ങളായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു."</string>
     <string name="quest_streetName_menuItem_international">"അന്താരാഷ്ട്രം"</string>
     <string name="quest_buildingType_terrace2">"ഒരേ ചുമരുള്ള വീടുകൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housename">"വീട്ടുപേര് %s"</string>
-
-    <!-- Fuzzy -->
     <string name="at_housenumber">"വീട്ട് നമ്പർ %s"</string>
     <string name="quest_openingHours_add_off_days">"ഒഴിവുദിനങ്ങൾ ചേർക്കുക"</string>
     <string name="quest_openingHours_off_day">"ഒഴിവുദിനം"</string>
     <string name="quest_openingHours_unspecified_range">"വ്യക്തമാക്കിയിട്ടില്ല"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_resurvey_title">"ഇവിടെ സൈക്കിൾ വഴിയുടെ അവസ്ഥ ഇപ്പോഴും ഇതാണോ?"</string>
     <string name="pref_title_resurvey_intervals">"റി സർവേ ഇടവേളകൾ"</string>
     <string name="resurvey_intervals_less_often">"കുറച്ച് തവണ ചോദിക്കുക"</string>
@@ -1817,8 +725,6 @@
     <string name="quest_traffic_signals_sound_title">"ഇവിടെ അന്ധരായവർക്ക് വേണ്ടി ശബ്ദ സന്ദേശങ്ങൾ നൽകുന്നുണ്ടോ?\""</string>
     <string name="quest_traffic_signals_vibrate_title">"അന്ധതയുള്ളവർക്ക് സുരക്ഷിതമായി ക്രോസ് ചെയ്യാൻ വേണ്ടി ഈ ട്രാഫിക് ലൈറ്റുകളിൽ സ്പർശിക്കാൻ സാധിക്കുന്ന തരത്തിലുള്ള സൂചനകളുണ്ടോ?"</string>
     <string name="quest_traffic_signals_vibrate_description">"സൂചന: ഇത് ഒന്നുകിൽ ട്രാഫിക് ലൈറ്റിന്റെ ബട്ടൺ കേസിന്റെ അടിഭാഗത്തുള്ള കമ്പനം ചെയ്യുന്ന ബട്ടണോ അല്ലെങ്കിൽ തിരിയുന്ന കോണോ ആണ്."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description2">"ചെറു വീട് (വേനൽക്കാല വീട്, അവധിക്കാല കോട്ട, ക്യാബിൻ …)"</string>
     <string name="quest_railway_crossing_barrier_title2">"ഈ റെയിൽവേ ക്രോസിംഗിൽ എന്ത് തരം തടസ്സങ്ങൾ ഉപയോഗിക്കുന്നു?"</string>
     <string name="quest_railway_crossing_barrier_none2">"തടസ്സങ്ങളൊന്നുമില്ല"</string>
@@ -1827,23 +733,15 @@
     <string name="quest_steps_ramp_bicycle">"സൈക്കിൾ റാമ്പ്"</string>
     <string name="quest_steps_ramp_stroller">"സ്ട്രോളർ റാമ്പ്"</string>
     <string name="quest_steps_ramp_wheelchair">"വീൽചെയർ റാമ്പ്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_atm_operator_title">"ഈ എടിഎമ്മിന്റെ ബാങ്കിന്റെ പേരെന്താണ്?"</string>
     <string name="quest_clothes_container_operator_title">"ഈ ക്ലോത്തിങ് ബിന്നിലേക്ക് ആരാണ് സംഭാവനകൾ സ്വീകരിക്കുക?"</string>
     <string name="quest_charging_station_operator_title">"ഈ ചാർജിംഗ് സ്റ്റേഷന്റെ ഓപ്പറേറ്റർ ആരാണ്?"</string>
     <string name="link_indoorequal_description">"മാളുകൾ, റെയിൽവേ സ്റ്റേഷനുകൾ തുടങ്ങിയവയുടെ ഇൻഡോർ മാപ്പുകൾ കണ്ടെത്തുക."</string>
     <string name="achievement_rare_title">"നിധി വേട്ട"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_rare_solved_X">"നിങ്ങൾ പരിഹരിക്കാൻ ബുദ്ധിമുട്ടുള്ള %d പ്രശ്നങ്ങൾ കണ്ടെത്തി പരിഹരിചിരിക്കുന്നു, അഭിനന്ദനങ്ങൾ!"</string>
     <string name="achievement_citizen_title">"പൗരൻ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_citizen_solved_X">"നഗരത്തിലെ ദൈനംദിന ജീവിതത്തിന് ഉപയോഗപ്രദമായ %d പ്രശ്നങ്ങൾ നിങ്ങൾ പരിഹരിച്ചു!"</string>
     <string name="achievement_outdoors_title">"പുറംഭാഗങ്ങൾ"</string>
-
-    <!-- Fuzzy -->
     <string name="achievement_outdoors_solved_X">"പുറത്തുള്ള ആളുകൾക്ക് %d ഉപകാരപ്രദമായ രീതിയിൽ നിങ്ങൾ പ്രശ്നം പരിഹരിച്ചു!"</string>
     <string name="quest_pedestrian_crossing_island">"കാൽനടയാത്രക്കാർക്കുള്ള ഈ ക്രോസിങിൽ ഒരു ചെറിയ തുരുത്തുണ്ടോ?"</string>
     <string name="quest_generic_answer_noSign">"ഒരു അടയാളവുമില്ല"</string>
@@ -1860,19 +758,13 @@
     <string name="quest_buildingType_abandoned_description">"ഉപയോഗിക്കാത്ത ഈ കെട്ടിടത്തിന്റെ യഥാർത്ഥ പ്രവർത്തനം അല്ലെങ്കിൽ ഉദ്ദേശ്യം അജ്ഞാതമാണ്"</string>
     <string name="quest_buildingType_ruins">"അവശിഷ്ടങ്ങൾ"</string>
     <string name="quest_buildingType_ruins_description">"ഉപയോഗശൂന്യമായതും നശിപ്പിക്കപ്പെട്ടതും തിരിച്ചറിയാൻ സാധിക്കാത്തതുമായ കെട്ടിടം"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_charging_station_capacity_title">"ഈ ചാർജിംഗ് സ്റ്റേഷനിൽ ഒരേ സമയം എത്ര കാറുകൾ വരെ ചാർജ്ജ് ചെയ്യാം ?"</string>
     <string name="link_disaster_ninja_description">"സമീപകാലത്തെ പ്രകൃതി ദുരന്തങ്ങൾ കാണിക്കുന്ന മാപ്പ്, ഹ്യുമാനിറ്റേറിയൻ മാപ്പർമാർക്ക് താൽപര്യമുള്ളതാണ്. കൂടാതെ, മാപ്പ് ചെയ്തതും പരിഷ്കരിച്ചതും  അപഗ്രഥനം ചെയ്യാനുള്ള രസകരമായ സ്ഥിതിവിവരക്കണക്കുകളും കാണിക്കുന്നു."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_title">"ഈ റോഡിൽ കാറുകൾക്കായി എത്ര വരികൾ ഉണ്ട്"</string>
     <string name="quest_lanes_answer_lanes">"അടയാളപ്പെടുത്തിയ പാതകൾ"</string>
     <string name="quest_lanes_answer_noLanes">"അടയാളപ്പെടുത്തിയ പാതകളൊന്നുമില്ല"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"ഇരുവശത്തേക്കും പോകാവുന്ന ഇടത്തേക്ക് തിരിയുന്ന വരി അതിനുണ്ട്"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"ഇത് ശരിയാണോ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxheight_below_bridge_title">"പാലത്തിന് താഴെയുള്ള ഉയരനിയന്ത്രണം എത്രയാണ് ?"</string>
     <string name="quest_kerb_height_flush">"റോഡ് ഉപരിതലത്തോട് ഒരേ ലെവൽ"</string>
     <string name="quest_kerb_height_lowered">"റോഡ് ഉപരിതലത്തേക്കാൾ അൽപ്പം ഉയർന്നത്"</string>
@@ -1883,8 +775,6 @@
     <string name="quest_parkingType_street_side">"വഴിയിൽ നിന്ന് അല്പം മാറിയുള്ള പാർക്കിങ്"</string>
     <string name="quest_tracktype_grade3a">"കൂടുതലും ദൃഢമായത്"</string>
     <string name="quest_generic_answer_does_not_exist">"അത് നിലവിലില്ല …"</string>
-
-    <!-- Fuzzy -->
     <string name="osm_element_gone_description">"അത് നിലവിലില്ലെന്ന് നിങ്ങൾക്ക് ഉറപ്പുണ്ടോ, അല്പം മാറി വേറെ സ്ഥലത്തുപോലും ഇല്ലേ? സംശയമുണ്ടെങ്കിൽ, പകരം ഒരു കുറിപ്പ് നല്കാം."</string>
     <string name="osm_element_gone_confirmation">"അത് നിലവിലില്ല"</string>
     <string name="leave_note">"കുറിപ്പ് നല്കുക"</string>
@@ -1893,10 +783,6 @@
     <string name="quest_shop_gone_replaced_answer">"A(n)…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"ഇത് ഏത് തരം സ്ഥലം ആണെന്ന് ടൈപ്പുചെയ്യുക"</string>
     <string name="quest_shop_vacant_type_title">"ഈ കട ഒഴിഞ്ഞുകിടക്കുന്നു. ഇപ്പോൾ ഇവിടെ എന്താണ്?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_lanes_answer_lanes_odd2">"വരികളുടെ എണ്ണം ഓരോ വശത്തും വ്യത്യാസപ്പെട്ടിരിക്കുന്നു"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"ഇവിടെ സൈക്കിൾ പാത ഇല്ല"</string>
 </resources>
