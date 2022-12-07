@@ -105,10 +105,10 @@ open class GetTranslatorCreditsTask : DefaultTask() {
             .cookie("PHPSESSID", phpsessid)
             .get()
 
-        return doc.select("div.contributor-wrapper").map { contributor ->
+        return doc.select("div[id^=userRow]").map { contributor ->
+            val id = contributor.id().substringAfter("userRow").toInt()
             val name = contributor.select("span.user-name").text()
-            val id = contributor.select("a[data-user]").attr("data-user").toInt()
-            val avatarUrl = contributor.select("img.avatar-24").attr("src")
+            val avatarUrl = contributor.select("img.avatar").attr("src")
             User(id, name, avatarUrl)
         }
     }
