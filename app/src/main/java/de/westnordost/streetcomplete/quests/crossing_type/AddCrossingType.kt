@@ -82,9 +82,10 @@ class AddCrossingType : OsmElementQuestType<CrossingType> {
             tags["traffic_calming"] = "table"
         else if (tags["traffic_calming"] == "table")
             tags.remove("traffic_calming") // user de-selected that it's raised
-        if (answer.zebra)
+        if (answer.zebra) {
             tags["crossing_ref"] = "zebra"
-        else if (tags["crossing"] == "unmarked" && tags["crossing_ref"] == "zebra")
+            tags["crossing:markings"] = "zebra"
+        } else if (tags["crossing"] == "unmarked" && tags["crossing_ref"] == "zebra")
             tags.remove("crossing_ref") // remove zebra if user selected an unmarked crossing
     }
 }
