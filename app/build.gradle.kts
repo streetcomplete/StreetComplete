@@ -207,6 +207,8 @@ val nsiVersion = "v6.0.20221205"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v5.1.0"
 
+val poEditorProjectId = "97843"
+
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
     doLast {
@@ -257,12 +259,14 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     group = "streetcomplete"
     languageCodes = bcp47ExportLanguages
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/strings.xml" }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
     group = "streetcomplete"
     apiToken = properties["POEditorAPIToken"] as String
+    projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 

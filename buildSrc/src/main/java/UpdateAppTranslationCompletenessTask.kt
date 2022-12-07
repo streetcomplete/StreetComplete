@@ -1,17 +1,22 @@
+import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.util.Locale
 
 /** Update a resources file that specifies the current translation completeness for every language */
-open class UpdateAppTranslationCompletenessTask : AUpdateFromPOEditorTask() {
+open class UpdateAppTranslationCompletenessTask : DefaultTask() {
 
+    @get:Input var projectId: String? = null
+    @get:Input var apiToken: String? = null
     @get:Input var targetFiles: ((androidResCode: String) -> String)? = null
 
     @TaskAction fun run() {
         val targetFiles = targetFiles ?: return
+        val apiToken = apiToken ?: return
+        val projectId = projectId ?: return
 
-        val localizationStatus = fetchLocalizations {
+        val localizationStatus = fetchLocalizations(apiToken, projectId) {
             LocalizationStatus(
                 Locale.forLanguageTag(it.string("code")!!).transformPOEditorLanguageTag(),
                 it.int("percentage")!!

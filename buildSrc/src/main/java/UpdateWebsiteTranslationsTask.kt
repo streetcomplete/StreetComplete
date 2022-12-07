@@ -1,14 +1,17 @@
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
 /** Export the strings used on the streetcomplete.app website to the target directory as JSON files
  *  */
-open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
+open class UpdateWebsiteTranslationsTask : DefaultTask() {
 
+    @get:Input var projectId: String? = null
+    @get:Input var apiToken: String? = null
     @get:Input var targetDir: String? = null
 
     private val requiredKeys = setOf(
@@ -38,15 +41,17 @@ open class UpdateWebsiteTranslationsTask : AUpdateFromPOEditorTask() {
 
     @TaskAction fun run() {
         val targetDir = targetDir ?: return
+        val apiToken = apiToken ?: return
+        val projectId = projectId ?: return
 
-        val languageCodes = fetchLocalizations { it["code"] as String }
+        val languageCodes = fetchLocalizations(apiToken, projectId) { it["code"] as String }
         val json = Json {
             prettyPrint = true
         }
 
         for (languageCode in languageCodes) {
             println(languageCode)
-            fetchLocalization(languageCode, "key_value_json") { inputStream ->
+            fetchLocalization(apiToken, projectId, languageCode, "key_value_json") { inputStream ->
                 val txt = inputStream.bufferedReader().use { it.readText() }
                 if (txt.isNotEmpty()) {
                     val translations = json.decodeFromString<Map<String, String>>(txt)
