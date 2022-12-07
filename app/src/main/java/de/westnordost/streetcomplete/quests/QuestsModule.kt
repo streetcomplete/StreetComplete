@@ -165,7 +165,6 @@ import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddPitchSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.surface.AddSidewalkSurface
-import de.westnordost.streetcomplete.quests.surface.RemoveWrongSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingKerb
@@ -545,7 +544,8 @@ fun getQuestTypeList(
     ApplicationConstants.EE_QUEST_OFFSET + 0 to AddBenchMaterial(),
     ApplicationConstants.EE_QUEST_OFFSET + 1 to AddContactPhone(),
     ApplicationConstants.EE_QUEST_OFFSET + 2 to AddContactWebsite(),
-    ApplicationConstants.EE_QUEST_OFFSET + 3 to RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
+    // wrongSurface removed because AddRoadSurface now does similar checks
+//    ApplicationConstants.EE_QUEST_OFFSET + 3 to RemoveWrongSurface(), // from https://github.com/matkoniecz/Zazolc/commit/c74eac081d41e07bfbaf0a5fb1ce51dca822b495
     ApplicationConstants.EE_QUEST_OFFSET + 4 to AddCuisine(),
     ApplicationConstants.EE_QUEST_OFFSET + 5 to AddHealthcareSpeciality(),
     ApplicationConstants.EE_QUEST_OFFSET + 6 to AddServiceBuildingType(),
